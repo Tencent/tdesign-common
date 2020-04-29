@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+    <link rel="stylesheet/less" type="text/css" href="../../index.less">
+    
+    <script>
+        less = {env: "development",};
+      </script>
+      <script src="../../less.js" data-env="development"></script>
+      <style>
+        .demo-wrap{
+          
+          
+        }
+        .demo-wrap__name{
+          font-size: 36px;
+          margin-bottom: 40px;
+          line-height: 60px;
+          border-bottom: 1px solid #ddd;
+          background-color: #f2f2f2;
+          padding:0 40px 10px;
+        }
+        .demo-wrap__info{
+          font-size: 14px;
+          color:#999;
+          line-height: initial;
+        }
+        .demo-item{
+          margin:0 40px;
+        }
+        .demo-item + .demo-item{
+          margin-top: 30px;
+          border-top: 1px solid #ddd;
+          padding-top: 30px;
+        }
+        .demo-item__title{
+          font-size: 22px;
+          height: 30px;
+          margin-bottom: 10px;
+        }
+      </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    
+    <div class="demo-wrap__name">
+      <h1 class="">Button</h1>
+      <p class="demo-wrap__info">开发者：</p>
+      <p class="demo-wrap__info">创建日期：</p>
+      <p class="demo-wrap__info">说明：</p>
+    </div>
+    <div class="demo-item">
+      <h2 class="demo-item__title">默认</h2>
+      <button class="t-btn">Button</button>
+    </div>
+    <div class="demo-item">
+      <h2 class="demo-item__title">状态</h2>
+      <button class="t-btn">Button</button>
+      <button class="t-btn is-hover">Button hover</button>
+      <button class="t-btn is-disabled">Button disabled</button>
+    </div>
+    <div class="demo-item">
+      <h2 class="demo-item__title">类型</h2>
+      <button class="t-btn">Button</button>
+      <button class="t-btn t-btn--line">Button line</button>
+      
+    </div>
+    <div class="demo-item">
+      <h2 class="demo-item__title">尺寸(如果有)</h2>
+      <button class="t-btn">Button</button>
+      <button class="t-btn size-l">Button line</button>
+  
+    </div>
+  </div>
+    
+    
+    
+</body>
+</html>

@@ -1,21 +1,9 @@
-// base
-@import './vars.less';
-@import './normalize.less';
-@import './components.less';
-@import './animation.less';
 
-// mixins
-@import './mixins/clearfix.less';
+// 变量
+@import './_variables.less';  
 
-[class^='@{prefix}'], [class^='@{prefix}'] * {
-  box-sizing: border-box;
-  font-family: @font-family;
-}
+// reset文件
+@import './_reset.less';  
 
-[class^='@{prefix}'] {
-  ul, dl, li, dd, dt, p {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-}
+
+
