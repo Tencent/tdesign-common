@@ -1,16 +1,17 @@
 @import './_var.less';
 
-.@{prefix}-btn{
+.@{prefix}-button{
     border: none;
-    background-color: @btn-default-bg-color;
-    color: @btn-default-text-color;
-    font-size: @font-size-base;
+    background-color: @button-default-bg-color;
+    color: @button-default-text-color;
+    font-size: @button-size-base;
     padding: 0 20px;
     height: 30px;
     outline: none;
+    border-radius: @button-border-radius;
 
     &.is-disabled{
-        opacity: 0.6;
+        opacity: 0.4;
         cursor: not-allowed;
     }
     &.is-hover{
@@ -19,12 +20,12 @@
     }
 
     &--line{
-        background-color: @btn-line-bg-color;
-        color: @btn-line-text-color;
-        border: 1px solid @btn-line-border-color;
+        background-color: @button-line-bg-color;
+        color: @button-line-text-color;
+        border: 1px solid @button-line-border-color;
     }
 
-    &.size-l{
+    &--size-m{
         height: 48px;
         padding: 0 30px;
     }
