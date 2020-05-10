@@ -11,3 +11,6 @@
 style/.DS_Store
 style/web/.DS_Store
 style/mobile/.DS_Store
+
+style/web/dist/
+style/web/dist/node-modules
