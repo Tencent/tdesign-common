@@ -1,33 +1,101 @@
 @import './_var.less';
 
-.@{prefix}-button{
-    border: none;
-    background-color: @button-default-bg-color;
-    color: @button-default-text-color;
-    font-size: @button-size-base;
-    padding: 0 20px;
-    height: 30px;
-    outline: none;
-    border-radius: @button-border-radius;
 
-    &.is-disabled{
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-    &.is-hover{
-        opacity: 0.9;
-        cursor: not-allowed;
-    }
+.@{prefix}-button {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: @button-border-width solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  font-size: @button-default-font-size;
+  height: @button-default-height;
+  border-radius: @button-border-radius;
+  color: @button-default-color;
+  border-color: @button-default-border-color;
+  background-color: #fff;
+  outline: none;
+  -webkit-appearance: none;
 
-    &--line{
-        background-color: @button-line-bg-color;
-        color: @button-line-text-color;
-        border: 1px solid @button-line-border-color;
+  &--theme {
+    &-default {
+      background-color: @button-default-bg-color;
+      color: @button-default-color;
     }
+    &-normal {
+      color: @button-normal-color;
+      background-color: @button-normal-background-color;
+      border: 1px solid @button-normal-border-color;
+    }
+    &-ghost {
+      min-width: @button-default-min-width;
+      color: @button-ghost-color;
+      background-color: transparent;
+      border: 1px solid @button-ghost-border-color;
+    }
+    &-text {
+      color: @button-text-color;
+      background: none;
+      border: none;
+    }
+  }
 
-    &--size-m{
-        height: 48px;
-        padding: 0 30px;
+  &--size {
+    &-default {
+      height: @button-default-height;
+      line-height: @button-default-height - 4px;
+      font-size: @font-size * 1.6;
+      padding-left:@spacer*2;
+      padding-right:@spacer*2;
     }
-    
+    &-large {
+        height: @button-default-height;
+        line-height: @button-default-height - 4px;
+        font-size: @font-size * 1.6;
+        padding-left:@spacer*3;
+        padding-right:@spacer*3;
+    }
+    &-small {
+        height: @button-small-height;
+        line-height: @button-small-height - 4px;
+        font-size: @font-size-base;
+        padding-left:@spacer;
+        padding-right:@spacer;
+    }
+  }
+  &__icon {
+    line-height: inherit;
+  }
+  &__icon + &__text{
+    margin-left: 5px;
+  }
+  &__suffix-icon {
+  }
+  &--square {
+    border-radius: 0;
+  }
+  &--circle {
+    border-radius: 999px;
+  }
+  &.@{prefix}-is {
+    &-block {
+      display: flex;
+      width: 100%;
+    }
+    &-disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    &-hover {
+      opacity: 0.9;
+      cursor: not-allowed;
+    }
+    &-loading {
+    }
+  }
 }
