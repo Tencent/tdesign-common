@@ -58,7 +58,7 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase:  'dist',
+        contentBase:  './',
         compress: true,
         port: 9000,
         open:false,
