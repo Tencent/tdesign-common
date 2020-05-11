@@ -3,7 +3,6 @@
 # Edit at https://www.gitignore.io/?templates=less
 
 ### Less ###
-*.css
 
 # End of https://www.gitignore.io/api/less
 
@@ -11,3 +10,6 @@
 style/.DS_Store
 style/web/.DS_Store
 style/mobile/.DS_Store
+
+style/web/dist/
+style/web/node_modules/
