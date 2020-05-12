@@ -13,3 +13,6 @@ style/mobile/.DS_Store
 
 style/web/dist/
 style/web/node_modules/
+
+# ALL node_modules
+**/node_modules
