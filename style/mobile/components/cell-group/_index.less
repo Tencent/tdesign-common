@@ -1,0 +1,23 @@
+@import './_var.less';
+@import '../../mixins/_index.less';
+.@{prefix}-cell-group {
+  background-color: @cell-group-background-color;
+  &--title {
+    padding: @cell-group-title-padding;
+    color: @cell-group-title-color;
+    font-size: @cell-group-title-font-size;
+    line-height: @cell-group-title-line-height;
+  }
+}
+
+// TODO: 换成兼容1px的细线
+.border--top-bottom {
+  position: relative;
+  &::before {
+    .hairline-top();
+  }
+  &::after {
+    .hairline-bottom();
+
+  }
+}

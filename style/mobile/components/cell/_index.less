@@ -1,0 +1,30 @@
+@import './_var.less';
+@import '../../mixins/_index.less';
+
+.@{prefix}-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: @cell-vertical-padding @cell-horizontal-padding;
+  background: @cell-background-color;
+  font-size: @cell-font-size;
+
+  &--label {
+    width: @cell-label-width;
+    margin-right: @cell-horizontal-padding;
+    color: @text-level-1-color;
+  }
+  &--value {
+    flex: 1;
+    text-align: right;
+  }
+  &__left {
+    text-align: left;
+  }
+  &:not(:last-child)::after {
+    .hairline-bottom();
+    left: @cell-horizontal-padding;
+  }
+}
