@@ -13,6 +13,7 @@ style/mobile/.DS_Store
 
 style/web/dist/
 style/web/node_modules/
+style/web/components/.yo-repository/
 
 # ALL node_modules
 **/node_modules
