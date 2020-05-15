@@ -1,0 +1,77 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import '../../base.less';
+@import './_var.less';
+@import './_mixin.less';
+
+.@{prefix}-input {
+  width: @input-width-wide;
+  position: relative;
+  box-sizing: border-box;
+  &__inner {
+    height: @input-height-low;
+    line-height: @input-height-low;
+    .input-inner-base();
+  }
+  &__extra {
+    font-size: @input-extra-fontsize;
+    color: @input-extra-color-default;
+  }
+
+  &__status {
+    position: absolute;
+    right: -@spacer*3;
+    top: 0;
+  }
+
+  .input-status(success);
+  .input-status(warning);
+  .input-status(error);
+  .input-status(disabled);
+
+  .input-anyffix(preffix);
+  .input-anyffix(suffix);
+
+  .input-size(high);
+  .input-size(narrow);
+  .input-size(middle);
+
+  &.@{prefix}-input-group {
+    line-height: normal;
+    display: inline-table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    .input-group-anypend(prepend);
+    .input-group-anypend(append);
+
+    &>.@{prefix}-input__inner {
+      vertical-align: middle;
+      display: table-cell;
+    }
+  }
+}
+
+.@{prefix}-textarea {
+  width: @input-width-wide;
+  position: relative;
+  box-sizing: border-box;
+  &__inner {
+    .input-inner-base();
+    padding: @input-padding-horizontal-default - 0.7px @input-padding-horizontal-default;
+  }
+
+  &.@{prefix}-textarea--limit {
+    &>.@{prefix}-textarea__inner {
+      resize: none;
+      padding-bottom: @spacer*3;
+    }
+    &>.@{prefix}-textarea__count {
+      position: absolute;
+      bottom: @spacer - 2;
+      right: @spacer - 2;
+      font-size: @input-fontsize;
+      color: @input-extra-color-default;
+    }
+  }
+}
