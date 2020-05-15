@@ -38,48 +38,55 @@
       background-color: transparent;
       border: 1px solid @button-ghost-border-color;
     }
-    &-warning{
+    &-error {
       color: @error-color;
       background-color: @button-line-background-color;
       border: 1px solid @error-color;
+    }
+    &-warning {
+      color: @warning-color;
+      background-color: @button-line-background-color;
+      border: 1px solid @warning-color;
     }
     &-text {
       color: @button-text-color;
       background: none;
       border: none;
-      &.@{prefix}-button--size-default{
+      &.@{prefix}-button--size-default {
         width: auto;
         height: auto;
         line-height: normal;
-        padding:0;
+        padding: 0;
       }
     }
   }
 
   &--size {
-    &-default {
+    &-large {
+      width: 100%;
       height: @button-default-height;
       line-height: @button-default-line-height;
-      font-size: @font-size * 1.6;
+      font-size: @button-default-font-size;
+      padding-left: @spacer*3;
+      padding-right: @spacer*3;
+    }
+    &-default {
+      width: auto;
+      height: @button-default-height;
+      line-height: @button-default-line-height;
+      font-size: @button-default-font-size;
       padding-left: @spacer*2;
       padding-right: @spacer*2;
     }
     &-small {
-      height: @button-default-height;
-      line-height: @button-default-line-height;
-      font-size: @font-size * 1.6;
-      padding-left: @spacer*3;
-      padding-right: @spacer*3;
-    }
-    &-mini {
-      height: @button-mini-height;
-      line-height: @button-mini-line-height;
+      height: @button-small-height;
+      line-height: @button-small-line-height;
       font-size: @font-size-base;
       padding-left: @spacer + 1;
       padding-right: @spacer + 1;
 
       & .@{prefix}-button__icon {
-        font-size: @font-size * 1.6;
+        font-size: @button-default-font-size;
       }
     }
   }
@@ -100,7 +107,7 @@
   &--circle {
     border-radius: 999px;
   }
-  &.@{prefix}-is {
+  & .@{prefix}-is {
     &-block {
       display: flex;
       width: 100%;
@@ -114,6 +121,7 @@
       cursor: not-allowed;
     }
     &-loading {
+      //TODO: 缺少动画
     }
   }
 }
