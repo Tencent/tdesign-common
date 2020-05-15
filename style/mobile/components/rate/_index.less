@@ -1,0 +1,41 @@
+@import './_var.less';
+
+.@{prefix}-rate {
+  display: inline-flex;
+
+  &--list {
+    display: inline-flex;
+  }
+
+  &--item {
+    position: relative;
+    margin-right: 4px;
+  }
+
+  &--icon,
+  &--icon-left,
+  &--icon-right {
+    color: #CCCCCC;
+  }
+
+  &--icon-left {
+    position: absolute;
+    left: 0;
+
+    width: 50%;
+    overflow: hidden;
+  }
+
+  &-full &--icon,
+  &-full &--icon-left,
+  &-full &--icon-right,
+  &-half &--icon-left {
+    color: #FFAA00;
+  }
+
+  &--text {
+    font-size: 16px;
+    color: #BBB;
+    margin-left: 14px;
+  }
+}
