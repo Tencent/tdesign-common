@@ -1,0 +1,203 @@
+@import '../../base.less';
+@import './_var.less';
+@import './_mixin.less';
+
+
+.@{prefix}-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    white-space: nowrap;
+    font-size: 0;
+    color: @text-level-2-color;
+
+    // 数据统计  
+    &__total {
+        font-size: @pagination-font-default;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    // 选择框
+    &__select-demo {
+        flex-shrink: 0;
+        margin-right: @spacer*2;
+        width: 88px;
+        height: @pagination-height-default;
+
+    }
+
+    // 前进 后退按钮  
+    &__btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border: 1px solid @pagination-border-color;
+        cursor: pointer;
+        .pagination-btn(@pagination-height-default);
+
+        &.t-is-disabled {
+            cursor: not-allowed;
+        }
+
+        &--prev {
+            margin-right: @spacer;
+        }
+
+        &--next {
+            margin-left: @spacer;
+        }
+
+        // 极简版  
+        &+.t-pagination__select {
+            margin-right: 0;
+        }
+
+        // hover
+        &:hover,
+        &:active {
+            color: @pagination-primary-color-hover;
+            border-color: @pagination-primary-color-hover;
+        }
+
+        // 不可点
+        &.t-is-disabled,
+        &.t-is-disabled:hover,
+        &.t-is-disabled:active {
+            background-color: @pagination-color-disabled;
+            color: @text-level-3-color;
+            border-color: @pagination-border-color;
+        }
+    }
+
+    &__pager {
+        flex-shrink: 0;
+        display: inline-flex;
+        vertical-align: middle;
+
+        li:not(:last-child) {
+            margin-right: @spacer;
+        }
+
+    }
+
+    &__number {
+        display: inline-block;
+        border: 1px solid @pagination-border-color;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer;
+        .pagination-number--size(@pagination-height-default;
+            @pagination-font-default;
+            @pagination-padding-horizontal-default; );
+
+        &:hover {
+            .pagination-number--color(@pagination-primary-color-hover;
+                @pagination-text-color-primary)
+        }
+
+        &:active {
+            .pagination-number--color(@pagination-primary-color-active;
+                @pagination-text-color-primary)
+        }
+
+        &.t-is-active {
+            .pagination-number--color(@pagination-primary-color;
+                @pagination-text-color-primary);
+
+            &.t-is-disabled,
+            &.t-is-disabled:hover,
+            &.t-is-disabled:active {
+                .pagination-number--color(@pagination-primary-color-disabled;
+                    @pagination-text-color-primary);
+            }
+        }
+
+        &.t-is-disabled {
+            cursor: not-allowed;
+            background-color: @pagination-color-disabled;
+            color: @text-level-3-color;
+
+            &:hover,
+            &:active {
+                background-color: @pagination-color-disabled;
+                color: @text-level-3-color;
+                border-color: @pagination-border-color;
+            }
+        }
+
+        // 更多
+        &--more {
+            border: none;
+            padding: 0;
+
+            &:hover,
+            &:active {
+                background: @pagination-color-disabled ;
+            }
+
+            &.t-is-disabled,
+            &.t-is-disabled:hover,
+            &.t-is-disabled:active {
+                background: none;
+            }
+        }
+
+    }
+
+
+    // 跳转输入框  
+    &__jump {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+        margin-left: @spacer;
+        font-size: @pagination-font-default;
+    }
+
+    &__input {
+        margin-left: @spacer/2;
+        margin-right: @spacer/2;
+        height: @pagination-height-default;
+        width: 48px;
+    }
+
+    // 迷你尺寸  
+    &.t-is-small {
+        .@{prefix}-pagination {
+            &__total {
+                font-size: @pagination-font-s;
+            }
+
+            &__number {
+                border: none;
+                .pagination-number--size(@pagination-height-s;
+                    @pagination-font-s;
+                    @pagination-padding-horizontal-s;
+                );
+
+                &.t-is-disabled {
+                    background: none;
+                }
+
+                &.t-is-active {
+                    &.t-is-disabled {
+                        .pagination-number--color(@pagination-primary-color-disabled;
+                            @pagination-text-color-primary);
+                    }
+                }
+            }
+
+            &__btn {
+                border: none;
+                background: none;
+                .pagination-btn(@pagination-height-s);
+
+            }
+        }
+
+    }
+}
