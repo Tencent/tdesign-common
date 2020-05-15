@@ -7,30 +7,37 @@
   width: @input-width-wide;
   position: relative;
   box-sizing: border-box;
+
+  // 真正的输入框
   &__inner {
     height: @input-height-low;
     line-height: @input-height-low;
     .input-inner-base();
   }
+  // 底部的额外消息
   &__extra {
     font-size: @input-extra-fontsize;
     color: @input-extra-color-default;
   }
 
+  // 输入框后面的状态图标
   &__status {
     position: absolute;
     right: -@spacer*3;
     top: 0;
   }
 
+  // 输入框状态
   .input-status(success);
   .input-status(warning);
   .input-status(error);
   .input-status(disabled);
 
+  // 输入框的前置、后置图标
   .input-anyffix(preffix);
   .input-anyffix(suffix);
 
+  // 输入框高度、宽度
   .input-size(high);
   .input-size(narrow);
   .input-size(middle);
@@ -42,6 +49,7 @@
     border-collapse: separate;
     border-spacing: 0;
 
+    // 输入框的前置、后置元素
     .input-group-anypend(prepend);
     .input-group-anypend(append);
 
@@ -56,11 +64,14 @@
   width: @input-width-wide;
   position: relative;
   box-sizing: border-box;
+
+  // 真正的textarea
   &__inner {
     .input-inner-base();
     padding: @input-padding-horizontal-default - 0.7px @input-padding-horizontal-default;
   }
 
+  // 限制字数的textarea
   &.@{prefix}-textarea--limit {
     &>.@{prefix}-textarea__inner {
       resize: none;
