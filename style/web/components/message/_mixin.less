@@ -1,0 +1,16 @@
+.message() {
+    font-size: @msg-font-default;
+    outline: none;
+    border: none;
+    background-color: @msg-color-block;
+    box-shadow: @msg-shadow;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    .message-size(@msg-height-default, @msg-font-size)
+}
+
+.message-size(@height; @font-size) {
+    height: @height ;
+    font-size: @font-size;
+}
