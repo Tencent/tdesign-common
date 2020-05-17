@@ -7,10 +7,11 @@
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
-    .message-size(@msg-height-default, @msg-font-size)
+    .message-size(@msg-height-default, @msg-font-size, @msg-padding-horizontal-default)
 }
 
-.message-size(@height; @font-size) {
+.message-size(@height; @font-size; @padding-horizontal) {
     height: @height ;
     font-size: @font-size;
+    padding: 0 @padding-horizontal;
 }

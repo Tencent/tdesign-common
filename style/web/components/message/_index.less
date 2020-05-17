@@ -9,20 +9,17 @@
 
     &--closeabled {
         min-width: @msg-min-width;
-    }
-
-    &__inner {
-        margin-right: @spacer * 3;
+        .@{prefix}-message__inner {
+            margin-right: @spacer * 3;
+        }
     }
 
     &__icon {
         margin-right: @spacer;
-        margin-left: @spacer * 3;
     }
 
     &__icon--close {
         margin-left: auto;
-        margin-right: @spacer * 3;
         right: 24px;
         cursor: pointer;
     }
