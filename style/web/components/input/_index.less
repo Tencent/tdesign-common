@@ -4,14 +4,14 @@
 @import './_mixin.less';
 
 .@{prefix}-input {
-  width: @input-width-wide;
+  width: @input-width-default;
   position: relative;
   box-sizing: border-box;
 
   // 真正的输入框
   &__inner {
-    height: @input-height-low;
-    line-height: @input-height-low;
+    height: @input-height-default;
+    line-height: @input-height-default;
     .input-inner-base();
   }
   // 底部的额外消息
@@ -61,7 +61,7 @@
 }
 
 .@{prefix}-textarea {
-  width: @input-width-wide;
+  width: @input-width-default;
   position: relative;
   box-sizing: border-box;
 
