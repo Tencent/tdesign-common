@@ -1,7 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
@@ -26,18 +24,6 @@ module.exports = {
                     'css-loader',
                     'less-loader',
                 ] // 将 Less 编译为 CSS
-            },
-            {
-                test:/\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                    options:{
-                        "presets": [
-                            "@babel/preset-env","@babel/react"
-                        ]   
-                    }
-                },
-                exclude: /node_modules/,
             },
         ]
     },
