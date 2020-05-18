@@ -59,15 +59,15 @@
         // hover
         &:hover,
         &:active {
-            color: @pagination-primary-color-hover;
-            border-color: @pagination-primary-color-hover;
+            color: @pagination-bg-color-hover;
+            border-color: @pagination-bg-color-hover;
         }
 
         // 不可点
         &.t-is-disabled,
         &.t-is-disabled:hover,
         &.t-is-disabled:active {
-            background-color: @pagination-color-disabled;
+            background-color: @pagination-bg-color-disabled;
             color: @text-level-3-color;
             border-color: @pagination-border-color;
         }
@@ -95,35 +95,35 @@
             @pagination-padding-horizontal-default; );
 
         &:hover {
-            .pagination-number--color(@pagination-primary-color-hover;
-                @pagination-text-color-primary)
+            .pagination-number--color(@pagination-bg-color-hover;
+                @text-anti-primary-color)
         }
 
         &:active {
-            .pagination-number--color(@pagination-primary-color-active;
-                @pagination-text-color-primary)
+            .pagination-number--color(@pagination-bg-color-active;
+                @text-anti-primary-color)
         }
 
-        &.t-is-active {
-            .pagination-number--color(@pagination-primary-color;
-                @pagination-text-color-primary);
+        &.t-is-current {
+            .pagination-number--color(@pagination-bg-color-current;
+                @text-anti-primary-color);
 
             &.t-is-disabled,
             &.t-is-disabled:hover,
             &.t-is-disabled:active {
-                .pagination-number--color(@pagination-primary-color-disabled;
-                    @pagination-text-color-primary);
+                .pagination-number--color(@pagination-bg-color-disabled;
+                    @text-anti-primary-color);
             }
         }
 
         &.t-is-disabled {
             cursor: not-allowed;
-            background-color: @pagination-color-disabled;
+            background-color: @pagination-bg-color-disabled;
             color: @text-level-3-color;
 
             &:hover,
             &:active {
-                background-color: @pagination-color-disabled;
+                background-color: @pagination-bg-color-disabled;
                 color: @text-level-3-color;
                 border-color: @pagination-border-color;
             }
@@ -136,7 +136,7 @@
 
             &:hover,
             &:active {
-                background: @pagination-color-disabled ;
+                background: @pagination-bg-color-disabled ;
             }
 
             &.t-is-disabled,
@@ -166,7 +166,7 @@
     }
 
     // 迷你尺寸  
-    &.t-is-small {
+    &.t-size-s {
         .@{prefix}-pagination {
             &__total {
                 font-size: @pagination-font-s;
@@ -183,10 +183,10 @@
                     background: none;
                 }
 
-                &.t-is-active {
+                &.t-is-current {
                     &.t-is-disabled {
-                        .pagination-number--color(@pagination-primary-color-disabled;
-                            @pagination-text-color-primary);
+                        .pagination-number--color(@pagination-bg-color-current-disabled;
+                            @text-anti-primary-color);
                     }
                 }
             }
