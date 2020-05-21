@@ -46,8 +46,8 @@
   }
 }
 
-.input-anyffix(@position) {
-  &.@{prefix}-input--@{anyffix} {
+.input-fix-position(@position) {
+  &.@{prefix}-input--@{position} {
     &>.@{prefix}-input__inner {
       & when (@position = prefix) {
         padding-left: @spacer*3;
@@ -56,7 +56,7 @@
         padding-right: @spacer*3;
       }
     }
-    &>.@{prefix}-input__@{anyffix} {
+    &>.@{prefix}-input__@{position} {
       position: absolute;
       top: 0;
       & when (@position = prefix) {
