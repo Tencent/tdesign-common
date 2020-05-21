@@ -46,23 +46,23 @@
   }
 }
 
-.input-anyffix(@anyffix) {
+.input-anyffix(@position) {
   &.@{prefix}-input--@{anyffix} {
     &>.@{prefix}-input__inner {
-      & when (@anyffix = preffix) {
+      & when (@position = prefix) {
         padding-left: @spacer*3;
       }
-      & when (@anyffix = suffix) {
+      & when (@position = suffix) {
         padding-right: @spacer*3;
       }
     }
     &>.@{prefix}-input__@{anyffix} {
       position: absolute;
       top: 0;
-      & when (@anyffix = preffix) {
+      & when (@position = prefix) {
         left: @spacer/2;
       }
-      & when (@anyffix = suffix) {
+      & when (@position = suffix) {
         right: @spacer/2;
       }
       height: 100%;
