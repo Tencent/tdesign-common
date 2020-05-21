@@ -9,19 +9,18 @@
 
   &--item {
     position: relative;
-    margin-right: 4px;
+    margin-right: @rate-space;
   }
 
   &--icon,
   &--icon-left,
   &--icon-right {
-    color: #CCCCCC;
+    color: @rate-bg-color-default;
   }
 
   &--icon-left {
     position: absolute;
     left: 0;
-
     width: 50%;
     overflow: hidden;
   }
@@ -30,12 +29,12 @@
   &-full &--icon-left,
   &-full &--icon-right,
   &-half &--icon-left {
-    color: #FFAA00;
+    color: @rate-bg-color-selected;
   }
 
   &--text {
-    font-size: 16px;
-    color: #BBB;
-    margin-left: 14px;
+    font-size: @rate-text-font-size;
+    color: @rate-text-color;
+    margin-left: @rate-text-margin-left;
   }
 }
