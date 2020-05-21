@@ -1,7 +1,10 @@
 @import './_var.less';
 @import '../../mixins/_index.less';
 .@{prefix}-cell-group {
-  background-color: @cell-group-background-color;
+  margin: @spacer-1 0;
+  &-container {
+    background-color: @cell-group-background-color;
+  }
   &--title {
     padding: @cell-group-title-padding;
     color: @cell-group-title-color;
