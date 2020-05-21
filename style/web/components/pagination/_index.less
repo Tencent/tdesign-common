@@ -9,7 +9,7 @@
     justify-content: flex-end;
     white-space: nowrap;
     font-size: 0;
-    color: @text-level-2-color;
+    color: @pagination-text-color;
 
     // 数据统计  
     &__total {
@@ -39,7 +39,7 @@
         cursor: pointer;
         .pagination-btn(@pagination-height-default);
 
-        &.t-is-disabled {
+        &.@{prefix}-is-disabled {
             cursor: not-allowed;
         }
 
@@ -52,7 +52,7 @@
         }
 
         // 极简版  
-        &+.t-pagination__select {
+        &+.@{prefix}-pagination__select {
             margin-right: 0;
         }
 
@@ -64,11 +64,11 @@
         }
 
         // 不可点
-        &.t-is-disabled,
-        &.t-is-disabled:hover,
-        &.t-is-disabled:active {
+        &.@{prefix}-is-disabled,
+        &.@{prefix}-is-disabled:hover,
+        &.@{prefix}-is-disabled:active {
             background-color: @pagination-bg-color-disabled;
-            color: @text-level-3-color;
+            color: @pagination-text-color-disabled;
             border-color: @pagination-border-color;
         }
     }
@@ -96,35 +96,35 @@
 
         &:hover {
             .pagination-number--color(@pagination-bg-color-hover;
-                @text-anti-primary-color)
+                @pagination-text-color-active)
         }
 
         &:active {
             .pagination-number--color(@pagination-bg-color-active;
-                @text-anti-primary-color)
+                @pagination-text-color-active)
         }
 
-        &.t-is-current {
+        &.@{prefix}-is-current {
             .pagination-number--color(@pagination-bg-color-current;
-                @text-anti-primary-color);
+                @pagination-text-color-active);
 
-            &.t-is-disabled,
-            &.t-is-disabled:hover,
-            &.t-is-disabled:active {
+            &.@{prefix}-is-disabled,
+            &.@{prefix}-is-disabled:hover,
+            &.@{prefix}-is-disabled:active {
                 .pagination-number--color(@pagination-bg-color-disabled;
-                    @text-anti-primary-color);
+                    @pagination-text-color-active);
             }
         }
 
-        &.t-is-disabled {
+        &.@{prefix}-is-disabled {
             cursor: not-allowed;
             background-color: @pagination-bg-color-disabled;
-            color: @text-level-3-color;
+            color: @pagination-text-color-disabled;
 
             &:hover,
             &:active {
                 background-color: @pagination-bg-color-disabled;
-                color: @text-level-3-color;
+                color: @pagination-text-color-disabled;
                 border-color: @pagination-border-color;
             }
         }
@@ -139,9 +139,9 @@
                 background: @pagination-bg-color-disabled ;
             }
 
-            &.t-is-disabled,
-            &.t-is-disabled:hover,
-            &.t-is-disabled:active {
+            &.@{prefix}-is-disabled,
+            &.@{prefix}-is-disabled:hover,
+            &.@{prefix}-is-disabled:active {
                 background: none;
             }
         }
@@ -166,7 +166,7 @@
     }
 
     // 迷你尺寸  
-    &.t-size-s {
+    &.@{prefix}-size-s {
         .@{prefix}-pagination {
             &__total {
                 font-size: @pagination-font-s;
@@ -179,14 +179,14 @@
                     @pagination-padding-horizontal-s;
                 );
 
-                &.t-is-disabled {
+                &.@{prefix}-is-disabled {
                     background: none;
                 }
 
-                &.t-is-current {
-                    &.t-is-disabled {
+                &.@{prefix}-is-current {
+                    &.@{prefix}-is-disabled {
                         .pagination-number--color(@pagination-bg-color-current-disabled;
-                            @text-anti-primary-color);
+                            @pagination-text-color-active);
                     }
                 }
             }
