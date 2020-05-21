@@ -23,6 +23,20 @@
   outline: none;
   -webkit-appearance: none;
 
+  &::after {
+    background-color: #000;
+    content: " ";
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute
+  }
+  &:not(.is-disabled):active::after {
+      opacity: 0.1
+  }
+  
   &--theme {
     &-default {
       background-color: @button-default-bg-color;
