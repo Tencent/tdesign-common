@@ -5,17 +5,10 @@
 .@{prefix}-button{
   .button;
 
-  &__inner{
-      display: flex;
-      width:100%;
-      height:100%;
-      align-items: center;
-      
-      .@{prefix}-icon + .@{prefix}-button__text{
-          margin-left: @spacer;
-      }
-
-  }
+  
+  .@{prefix}-icon + .@{prefix}-button__text{
+    margin-left: @spacer;
+    }
 
   // 默认
   &--primary{
@@ -32,12 +25,17 @@
         border-color: @btn-primary-color-hover;
         background-color:@btn-primary-color-hover
     }
+    &:active{
+        border-color: @btn-primary-color-active;
+        background-color:@btn-primary-color-active
+    }
 
     &.t-is-disabled{
         cursor:not-allowed;
         border-color: @btn-primary-color-disabled;
         background-color:@btn-primary-color-disabled;
-        &:hover{
+        &:hover,
+        &:active{
             border-color: @btn-primary-color-disabled;
             background-color:@btn-primary-color-disabled;
         }
@@ -56,8 +54,14 @@
     );
 
     &:hover{
-        color:@btn-primary-color;
-        border-color: @btn-primary-color;
+        color:@btn-primary-color-hover;
+        border-color: @btn-primary-color-hover;
+        background-color:@btn-line-bg-color-hover
+    }
+
+    &:active{
+        color:@btn-primary-color-active;
+        border-color: @btn-primary-color-active;
         background-color:@btn-line-bg-color-hover
     }
 
@@ -66,7 +70,8 @@
         color:@btn-line-text-color-disabled;
         background-color:@btn-line-bg-color-disabled;
 
-        &:hover{
+        &:hover,
+        &:active{
             color:@btn-line-text-color-disabled;
             border-color: @btn-line-border-color;
             background-color:@btn-line-bg-color-disabled;
@@ -86,8 +91,13 @@
     );
 
     &:hover{
-        color:@btn-primary-color;
-        border-color: @btn-primary-color;
+        color:@btn-primary-color-hover;
+        border-color: @btn-primary-color-hover;
+        background-color:@btn-line-bg-color-hover
+    }
+    &:active{
+        color:@btn-primary-color-active;
+        border-color: @btn-primary-color-active;
         background-color:@btn-line-bg-color-hover
     }
 
@@ -96,7 +106,8 @@
         color:@btn-line-text-color-disabled;
         background-color:@btn-line-bg-color-disabled;
 
-        &:hover{
+        &:hover,
+        &:active{
             color:@btn-line-text-color-disabled;
             border-color: @btn-line-border-color;
             background-color:@btn-line-bg-color-disabled;
@@ -119,12 +130,17 @@
         border-color: @btn-warning-color-hover;
         background-color:@btn-warning-color-hover
     }
+    &:active{
+        border-color: @btn-warning-color-active;
+        background-color:@btn-warning-color-active
+    }
 
     &.t-is-disabled{
         cursor:not-allowed;
         border-color: @btn-warning-color-disabled;
         background-color:@btn-warning-color-disabled;
-        &:hover{
+        &:hover,
+        &:active{
             border-color: @btn-warning-color-disabled;
             background-color:@btn-warning-color-disabled;
         }
@@ -146,13 +162,18 @@
         color:@btn-warning-color-hover;
         border-color: @btn-warning-color-hover;
     }
+    &:active{
+        color:@btn-warning-color-active;
+        border-color: @btn-warning-color-active;
+    }
 
     &.t-is-disabled{
         cursor:not-allowed;
         color:@btn-line-text-color-disabled;
         border-color: @btn-line-border-color;
         background-color:@btn-line-bg-color-disabled;
-        &:hover{
+        &:hover,
+        &:active{
             color:@btn-line-text-color-disabled;
             border-color: @btn-line-border-color;
             background-color:@btn-line-bg-color-disabled;
@@ -172,12 +193,16 @@
     &:hover{
         background-color:@btn-link-bg-color-hover
     }
+    &:active{
+        background-color:@btn-link-bg-color-active
+    }
 
     &.t-is-disabled{
         cursor:not-allowed;
         color:@btn-line-text-color-disabled;
 
-        &:hover{
+        &:hover,
+        &:active{
             color:@btn-line-text-color-disabled;
             background-color:transparent;
         }
@@ -199,13 +224,18 @@
         color: @btn-primary-color-hover;
         border:1px solid @btn-primary-color-hover;
     }
+    &:active{
+        color: @btn-primary-color-active;
+        border:1px solid @btn-primary-color-active;
+    }
 
     &.t-is-disabled{
         cursor:not-allowed;
         color:@btn-primary-color-disabled;
         border-color: @btn-primary-color-disabled;
 
-        &:hover{
+        &:hover,
+        &:active{
             color:@btn-primary-color-disabled;
             border-color: @btn-primary-color-disabled;
         }
@@ -224,8 +254,12 @@
     );
 
     &:hover{
-        color: @btn-primary-color;
-        border:1px solid @btn-primary-color;
+        color: @btn-primary-color-hover;
+        border:1px solid @btn-primary-color-hover;
+    }
+    &:active{
+        color: @btn-primary-color-active;
+        border:1px solid @btn-primary-color-active;
     }
 
     &.t-is-disabled{
@@ -233,7 +267,8 @@
         color:@btn-line-text-color-disabled;
         border-color: @btn-line-border-color;
 
-        &:hover{
+        &:hover,
+        &:active{
             color:@btn-line-text-color-disabled;
             border-color: @btn-line-border-color;
         }
@@ -253,11 +288,16 @@
     &:hover{
         background-color:@btn-primary-color-hover;
     }
+    &:active{
+        background-color:@btn-primary-color-active;
+    }
 
     &.t-is-disabled{
         cursor:not-allowed;
         background-color:@btn-primary-color-disabled;
-        &:hover{
+
+        &:hover,
+        &:active{
             background-color:@btn-primary-color-disabled;
         }
     }
@@ -276,11 +316,15 @@
     &:hover{
         background-color:@btn-link-bg-color-hover;
     }
+    &:active{
+        background-color:@btn-link-bg-color-active;
+    }
 
     &.t-is-disabled{
         cursor:not-allowed;
         background-color:transparent;
-        &:hover{
+        &:hover,
+        &:active{
             background-color:transparent;
         }
     }

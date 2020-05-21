@@ -1,8 +1,9 @@
 @import './_var.less';
 
-
 .@{prefix}-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   white-space: nowrap;
   text-align: center;
@@ -27,54 +28,78 @@
       background-color: @button-default-bg-color;
       color: @button-default-color;
     }
-    &-normal {
-      color: @button-normal-color;
-      background-color: @button-normal-background-color;
-      border: 1px solid @button-normal-border-color;
+    &-line {
+      color: @button-line-color;
+      background-color: @button-line-background-color;
+      border: 1px solid @button-line-border-color;
     }
     &-ghost {
-      min-width: @button-default-min-width;
       color: @button-ghost-color;
       background-color: transparent;
       border: 1px solid @button-ghost-border-color;
+    }
+    &-error {
+      color: @error-color;
+      background-color: @button-line-background-color;
+      border: 1px solid @error-color;
+    }
+    &-warning {
+      color: @warning-color;
+      background-color: @button-line-background-color;
+      border: 1px solid @warning-color;
     }
     &-text {
       color: @button-text-color;
       background: none;
       border: none;
+      &.@{prefix}-button--size-default {
+        width: auto;
+        height: auto;
+        line-height: normal;
+        padding: 0;
+      }
     }
   }
 
   &--size {
-    &-default {
-      height: @button-default-height;
-      line-height: @button-default-height - 4px;
-      font-size: @font-size * 1.6;
-      padding-left:@spacer*2;
-      padding-right:@spacer*2;
-    }
     &-large {
-        height: @button-default-height;
-        line-height: @button-default-height - 4px;
-        font-size: @font-size * 1.6;
-        padding-left:@spacer*3;
-        padding-right:@spacer*3;
+      width: 100%;
+      height: @button-default-height;
+      line-height: @button-default-line-height;
+      font-size: @button-default-font-size;
+      padding-left: @spacer*3;
+      padding-right: @spacer*3;
+    }
+    &-default {
+      width: auto;
+      height: @button-default-height;
+      line-height: @button-default-line-height;
+      font-size: @button-default-font-size;
+      padding-left: @spacer*2;
+      padding-right: @spacer*2;
     }
     &-small {
-        height: @button-small-height;
-        line-height: @button-small-height - 4px;
-        font-size: @font-size-base;
-        padding-left:@spacer;
-        padding-right:@spacer;
+      height: @button-small-height;
+      line-height: @button-small-line-height;
+      font-size: @font-size-base;
+      padding-left: @spacer + 1;
+      padding-right: @spacer + 1;
+
+      & .@{prefix}-button__icon {
+        font-size: @button-default-font-size;
+      }
     }
   }
   &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    border-radius: @button-icon-border-radius;
     line-height: inherit;
   }
-  &__icon + &__text{
-    margin-left: 5px;
-  }
-  &__suffix-icon {
+  &__icon + &__text {
+    margin-left: @spacer;
   }
   &--square {
     border-radius: 0;
@@ -86,6 +111,7 @@
     &-block {
       display: flex;
       width: 100%;
+      border:none;
     }
     &-disabled {
       opacity: 0.6;
@@ -96,6 +122,7 @@
       cursor: not-allowed;
     }
     &-loading {
+      //TODO: 缺少动画
     }
   }
 }
