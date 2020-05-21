@@ -41,22 +41,58 @@
   .input-size(high);
   .input-size(narrow);
   .input-size(middle);
+}
 
-  &.@{prefix}-input-group {
-    line-height: normal;
-    display: inline-table;
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-
-    // 输入框的前置、后置元素
-    .input-group-anypend(prepend);
-    .input-group-anypend(append);
-
-    &>.@{prefix}-input__inner {
-      vertical-align: middle;
-      display: table-cell;
+.@{prefix}-input-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  &--seperate {
+    &>.@{prefix}-input-group__seperator,
+    &>.@{prefix}-input:not(:last-child) {
+      margin-right: @spacer + 1px;
     }
+    &>.@{prefix}-input-group__seperator {
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+
+  .@{prefix}-input,
+  .@{prefix}-button,
+  .@{prefix}-select {
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+  }
+
+  .@{prefix}-input__inner,
+  .@{prefix}-button,
+  .@{prefix}-select {
+    position: relative;
+    z-index: 0;
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 1;
+    }
+  }
+}
+
+.@{prefix}-decorator {
+  line-height: normal;
+  display: inline-table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  .decorator-item(prepend);
+  .decorator-item(append);
+
+  &>.@{prefix}-input {
+    width: 100%;
+    vertical-align: middle;
+    display: table-cell;
   }
 }
 

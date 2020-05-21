@@ -88,29 +88,22 @@
   }
 }
 
-.input-group-anypend(@anypend) {
-  .@{prefix}-input-group__@{anypend} {
+.decorator-item(@position) {
+  .@{prefix}-decorator__@{position} {
     background-color: @input-append-color;
     color: @input-text-color-default;
     vertical-align: middle;
     display: table-cell;
     position: relative;
     border: 1px solid @input-border-color-default;
-    & when (@anypend = append) {
+    & when (@position = append) {
       border-left: none;
     }
-    & when (@anypend = prepend) {
+    & when (@position = prepend) {
       border-right: none;
     }
     padding: 0 @spacer*2;
     width: 1px;
     white-space: nowrap;
-    &--button {
-      border: none;
-    }
-    .t-button,
-    .t-select {
-      margin: 0 -@spacer*2;
-    }
   }
 }
