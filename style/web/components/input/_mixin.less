@@ -72,16 +72,16 @@
 }
 
 .input-size(@size) {
-  & when(@size = high) {
-    &.@{prefix}-input--high {
+  & when(@size = l) {
+    &.@{prefix}-size-l {
       &>.@{prefix}-input__inner {
         height: @input-height-high;
         line-height: @input-height-high;
       }
     }
   }
-  & when not (@size = high) {
-    &.@{prefix}-input--@{size} {
+  & when not (@size = l) {
+    &.@{prefix}-size-@{size} {
       @width-size: "input-width-@{size}";
       width: @@width-size;
     }
