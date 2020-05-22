@@ -1,0 +1,40 @@
+@import './_var.less';
+
+.@{prefix}-rate {
+  display: inline-flex;
+
+  &--list {
+    display: inline-flex;
+  }
+
+  &--item {
+    position: relative;
+    margin-right: @rate-space;
+  }
+
+  &--icon,
+  &--icon-left,
+  &--icon-right {
+    color: @rate-bg-color-default;
+  }
+
+  &--icon-left {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+
+  &-full &--icon,
+  &-full &--icon-left,
+  &-full &--icon-right,
+  &-half &--icon-left {
+    color: @rate-bg-color-selected;
+  }
+
+  &--text {
+    font-size: @rate-text-font-size;
+    color: @rate-text-color;
+    margin-left: @rate-text-margin-left;
+  }
+}
