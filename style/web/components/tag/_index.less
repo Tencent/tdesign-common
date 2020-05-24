@@ -54,6 +54,14 @@
       border-color: currentColor;
       cursor: default;
     }
+
+    // 失效标签
+    &.@{prefix}-tag--disabled {
+      color: @grey;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-color;
+      cursor: text;
+    }
   }
 
   &--primary {
