@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -20,13 +21,22 @@ module.exports = {
         test: /\.less$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader', // 配合 autoprefixer +  browserslist 食用，相关配置写在 package.json
           'less-loader',
         ],
       },
     ],
   },
   plugins: [
+    // stylelint
+    new StylelintPlugin({
+      files: ['**/*.{html,vue,css,less}'],
+      fix: false,
+      cache: true,
+      failOnError: false
+    }),
+
     // 单独分离css
     new MiniCssExtractPlugin({
       filename: 'tdesign.css',
