@@ -1,5 +1,6 @@
-@import './_var.less';
-@import '../../mixins/_index.less';
+@import "./_var.less";
+
+@import "../../mixins/_index.less";
 
 .@{prefix}-cell {
   position: relative;
@@ -16,13 +17,16 @@
     margin-right: @cell-horizontal-padding;
     color: @text-level-1-color;
   }
+
   &--value {
     flex: 1;
     text-align: right;
   }
+
   &__left {
     text-align: left;
   }
+
   &:not(:last-child)::after {
     .hairline-bottom();
     left: @cell-horizontal-padding;

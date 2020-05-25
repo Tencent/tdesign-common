@@ -57,11 +57,10 @@ html {
 [class^='@{prefix}'],
 [class^='@{prefix}'] * ,
 [class^='@{prefix}']::before,
-[class^='@{prefix}']::after
-{
-    box-sizing: border-box;
-    font-family: @font-family;
-  }
+[class^='@{prefix}']::after {
+  box-sizing: border-box;
+  font-family: @font-family;
+}
 
 img,
 video {
@@ -92,6 +91,7 @@ a,
 input,
 button,
 textarea {
+
   &:focus {
     outline: none;
   }

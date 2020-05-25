@@ -1,4 +1,4 @@
-@import './_var.less';
+@import "./_var.less";
 
 .@{prefix}-button {
   display: inline-flex;
@@ -10,9 +10,8 @@
   background-image: none;
   border: @button-border-width solid transparent;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all .3s;
   user-select: none;
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
   font-size: @button-default-font-size;
   height: @button-default-height;
@@ -21,6 +20,8 @@
   border-color: @button-default-border-color;
   background-color: #fff;
   outline: none;
+  
+  /* stylelint-disable-next-line */
   -webkit-appearance: none;
 
   &::after {
@@ -33,39 +34,47 @@
     left: 0;
     position: absolute
   }
+
   &:not(.@{prefix}-is-disabled):active::after {
-      opacity: 0.1
+    opacity: .1
   }
   
   &--theme {
+
     &-default {
       background-color: @button-default-bg-color;
       color: @button-default-color;
     }
+
     &-line {
       color: @button-line-color;
       background-color: @button-line-background-color;
       border: 1px solid @button-line-border-color;
     }
+
     &-ghost {
       color: @button-ghost-color;
       background-color: transparent;
       border: 1px solid @button-ghost-border-color;
     }
+
     &-error {
       color: @error-color;
       background-color: @button-line-background-color;
       border: 1px solid @error-color;
     }
+
     &-warning {
       color: @warning-color;
       background-color: @button-line-background-color;
       border: 1px solid @warning-color;
     }
+
     &-text {
       color: @button-text-color;
       background: none;
-      border: none;
+      border: 0;
+
       &.@{prefix}-button--size-default {
         width: auto;
         height: auto;
@@ -76,6 +85,7 @@
   }
 
   &--size {
+
     &-large {
       width: 100%;
       height: @button-default-height;
@@ -84,6 +94,7 @@
       padding-left: @spacer*3;
       padding-right: @spacer*3;
     }
+
     &-default {
       width: auto;
       height: @button-default-height;
@@ -92,6 +103,7 @@
       padding-left: @spacer*2;
       padding-right: @spacer*2;
     }
+
     &-small {
       height: @button-small-height;
       line-height: @button-small-line-height;
@@ -104,6 +116,7 @@
       }
     }
   }
+
   &__icon {
     display: inline-flex;
     align-items: center;
@@ -112,29 +125,37 @@
     border-radius: @button-icon-border-radius;
     line-height: inherit;
   }
+
   &__icon + &__text {
     margin-left: @spacer;
   }
+
   &--square {
     border-radius: 0;
   }
+
   &--circle {
     border-radius: 999px;
   }
+
   &.@{prefix}-is {
+
     &-block {
       display: flex;
       width: 100%;
-      border:none;
+      border: 0;
     }
+
     &-disabled {
-      opacity: 0.6;
+      opacity: .6;
       cursor: not-allowed;
     }
+
     &-hover {
-      opacity: 0.9;
+      opacity: .9;
       cursor: not-allowed;
     }
+
     &-loading {
       //TODO: 缺少动画
     }
