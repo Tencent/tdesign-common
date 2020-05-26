@@ -11,33 +11,75 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
+// 暂时这样写，后面等全局的色值确定后再更改
+// color
+@dark: #000;
+@white: #fff;
+
+@grey-0: #fbfbfb;
+@grey-1: #f0f2f5;
+@grey-2: #eee;
+@grey-3: #ddd;
+@grey-4: #bbb;
+@grey-5: #888;
+@grey-6: #444;
+
+@blue-0: #d5e2f9;
+@blue-1: #aac5f2;
+@blue-2: #2a6fdf;
+@blue-3: #0052d9;
+@blue-4: #0041be;
+
+@orange-0: #fff3d9;
+@orange-1: #ffaa00;
+
+@green-0: #e1f8e1;
+@green-1: #35cd35;
+
+@red-0: #ffdfd5;
+@red-1: #ff3e00;
+
+// 基础颜色
+@primary-color: @blue-3; // 色彩-品牌-可操作
+@success-color: @green-1; // 色彩-功能-成功
+@warning-color: @orange-1; // 色彩-功能-警告
+@error-color: @red-1; // 色彩-功能-失败
+@info-color: @grey-4;
+
+@primary-color-light: @blue-0;
+@success-color-light: @green-0;
+@warning-color-light: @orange-0;
+@error-color-light: @red-0;
+@info-color-light: @grey-1;
+
 // 因为通过讨论 Tag 组件的选中态只针对于一个特定主题
 // checked [false - default; true - primary]
 @tag-default-background-color: @grey-0;
-@tag-default-border-color: @grey-2;
-@tag-default-hover-color: @blue-1;
-@tag-default-click-color: @blue-2;
-@tag-checked-color: @blue;
-@tag-checked-background-color: @blue-light;
-@tag-checked-border-color: @blue-0;
+@tag-default-border-color: @grey-3;
+@tag-default-hover-color: @blue-2;
+@tag-default-click-color: @blue-4;
+@tag-checked-color: @blue-3;
+@tag-checked-background-color: @primary-color-light;
+@tag-checked-border-color: @blue-1;
 
 // disabled
+@tag-disabled-color: @grey-4;
 @tag-disabled-background-color: @grey-1;
-@tag-disabled-color: @grey-2;
+@tag-disabled-border-color: @grey-3;
 
 // dark color
-@tag-primary-color: @blue;
-@tag-success-color: @green;
-@tag-info-color: @grey;
-@tag-warning-color: @orange;
-@tag-danger-color: @red;
+@tag-primary-color: @primary-color;
+@tag-success-color: @success-color;
+@tag-info-color: @info-color;
+@tag-warning-color: @warning-color;
+@tag-danger-color: @error-color;
 
 // light color
-@tag-primary-light-color: @blue-light;
-@tag-success-light-color: @green-light;
-@tag-info-light-color: @grey-light;
-@tag-warning-light-color: @orange-light;
-@tag-danger-light-color: @red-light;
+@tag-primary-light-color: @primary-color-light;
+@tag-success-light-color: @success-color-light;
+@tag-info-light-color: @info-color-light;
+@tag-warning-light-color: @warning-color-light;
+@tag-danger-light-color: @error-color-light;
 
 // plain
 @tag-plain-background-color: @white;
