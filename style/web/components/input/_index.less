@@ -4,7 +4,7 @@
 @import './_mixin.less';
 
 .@{prefix}-input {
-  width: @input-width-default;
+  width: 100%;
   position: relative;
   box-sizing: border-box;
 
@@ -38,10 +38,12 @@
   .input-fix-position(suffix);
 
   // 输入框大小
-  .input-size(l);
-  .input-size(m);
-  .input-size(s);
-  .input-size(full-width);
+  &.@{prefix}-size-l {
+    &>.@{prefix}-input__inner {
+      height: @input-height-high;
+      line-height: @input-height-high;
+    }
+  }
 }
 
 .@{prefix}-input-group {
@@ -57,6 +59,10 @@
       height: 32px;
       line-height: 32px;
     }
+  }
+
+  .@{prefix}-input {
+    flex: 1;
   }
 
   .@{prefix}-input,
@@ -98,7 +104,7 @@
 }
 
 .@{prefix}-textarea {
-  width: @input-width-default;
+  width: 100%;
   position: relative;
   box-sizing: border-box;
 
