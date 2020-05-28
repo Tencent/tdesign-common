@@ -87,3 +87,31 @@ td:not([align]),
 th:not([align]) {
   text-align: left;
 }
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a,
+input,
+button,
+textarea {
+  &:focus {
+    outline: none;
+  }
+}
