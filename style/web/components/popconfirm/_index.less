@@ -7,7 +7,7 @@
   background: @bg-color-block;
   box-shadow: @popconfirm-shadow1, @popconfirm-shadow2;
   position: @popconfirm-position;
-  &-hidden {
+  &--position-hidden {
     display: none
   }
   &__content{
@@ -58,57 +58,57 @@
     transform: @popconfirm-arrow-rotate;
     border-width:@popconfirm-arrow-border-width;
   }
-  &-bottomRight .@{popconfirm-cls}__arrow, 
-  &-bottomCenter .@{popconfirm-cls}__arrow, 
-  &-bottomLeft .@{popconfirm-cls}__arrow{
+  &--position-bottomRight .@{popconfirm-cls}__arrow, 
+  &--position-bottom .@{popconfirm-cls}__arrow, 
+  &--position-bottom-left .@{popconfirm-cls}__arrow{
     top: @popconfirm-arrow-absolute-offset;
     border-color: @popconfirm-arrow-bottom-border-color;
     box-shadow: @popconfirm-arrow-bottom-shadow;
   }
-  &-topRight .@{popconfirm-cls}__arrow, 
-  &-topCenter .@{popconfirm-cls}__arrow, 
-  &-topLeft .@{popconfirm-cls}__arrow{
+  &--position-topRight .@{popconfirm-cls}__arrow, 
+  &--position-top .@{popconfirm-cls}__arrow, 
+  &--position-top-left .@{popconfirm-cls}__arrow{
     bottom: @popconfirm-arrow-absolute-offset;
     border-color: @popconfirm-arrow-top-border-color;
     box-shadow: @popconfirm-arrow-top-shadow;
     right: @popconfirm-arrow-margin;
   }
-  &-bottomRight .@{popconfirm-cls}__arrow, 
-  &-topRight .@{popconfirm-cls}__arrow {
+  &--position-bottomRight .@{popconfirm-cls}__arrow, 
+  &--position-topRight .@{popconfirm-cls}__arrow {
     right: @popconfirm-arrow-margin;
   }
-  &-bottomCenter .@{popconfirm-cls}__arrow, 
-  &-topCenter .@{popconfirm-cls}__arrow {
+  &--position-bottom .@{popconfirm-cls}__arrow, 
+  &--position-top .@{popconfirm-cls}__arrow {
     left: 50%;
     transform: translateX(-50%) @popconfirm-arrow-rotate
   }
-  &-bottomLeft .@{popconfirm-cls}__arrow, 
-  &-topLeft .@{popconfirm-cls}__arrow {
+  &--position-bottom-left .@{popconfirm-cls}__arrow, 
+  &--position-top-left .@{popconfirm-cls}__arrow {
     left: @popconfirm-arrow-margin;
   }
-  &-leftTop .@{popconfirm-cls}__arrow, 
-  &-leftCenter .@{popconfirm-cls}__arrow, 
-  &-leftBottom .@{popconfirm-cls}__arrow{
+  &--position-left-top .@{popconfirm-cls}__arrow, 
+  &--position-left .@{popconfirm-cls}__arrow, 
+  &--position-left-bottom .@{popconfirm-cls}__arrow{
     right: @popconfirm-arrow-absolute-offset;
     border-color: @popconfirm-arrow-left-border-color;
   }
-  &-rightTop .@{popconfirm-cls}__arrow, 
-  &-rightCenter .@{popconfirm-cls}__arrow, 
-  &-rightBottom .@{popconfirm-cls}__arrow{
+  &--position-right-top .@{popconfirm-cls}__arrow, 
+  &--position-right .@{popconfirm-cls}__arrow, 
+  &--position-right-bottom .@{popconfirm-cls}__arrow{
     border-color: @popconfirm-arrow-right-border-color;
     left: @popconfirm-arrow-absolute-offset;
   }
-  &-leftTop .@{popconfirm-cls}__arrow, 
-  &-rightTop .@{popconfirm-cls}__arrow{
+  &--position-left-top .@{popconfirm-cls}__arrow, 
+  &--position-right-top .@{popconfirm-cls}__arrow{
     top: @popconfirm-arrow-margin;
   }
-  &-leftCenter .@{popconfirm-cls}__arrow, 
-  &-rightCenter .@{popconfirm-cls}__arrow{
+  &--position-left .@{popconfirm-cls}__arrow, 
+  &--position-right .@{popconfirm-cls}__arrow{
     top: 50%;
     transform: translateY(-50%) @popconfirm-arrow-rotate
   }
-  &-leftBottom .@{popconfirm-cls}__arrow, 
-  &-rightBottom .@{popconfirm-cls}__arrow{
+  &--position-left-bottom .@{popconfirm-cls}__arrow, 
+  &--position-right-bottom .@{popconfirm-cls}__arrow{
     bottom: @popconfirm-arrow-margin;
   }
 }
