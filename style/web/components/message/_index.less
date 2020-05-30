@@ -1,0 +1,26 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import '../../base.less';
+@import './_var.less';
+@import './_mixin.less';
+
+// <name> 替换为组件名
+.@{prefix}-message {
+    .message;
+
+    &--closeabled {
+        min-width: @msg-min-width;
+        .@{prefix}-message__inner {
+            margin-right: @spacer * 3;
+        }
+    }
+
+    &__icon {
+        margin-right: @spacer;
+    }
+
+    &__icon--close {
+        margin-left: auto;
+        right: 24px;
+        cursor: pointer;
+    }
+}
