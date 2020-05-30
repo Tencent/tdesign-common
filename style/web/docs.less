@@ -1,6 +1,11 @@
 @d-prefix: tdesign;
 
 /* 用于重构稿演示相关的样式 公共部分 */
+
+body {
+  padding-bottom: 100px;
+}
+
 .tdesign-demo-wrap {
 }
 
@@ -21,6 +26,11 @@
 
 .tdesign-demo-item {
   margin: 0 40px;
+  > p {
+    color: #333333;
+    font-size: 14px;
+    line-height: 2;
+  }
 }
 
 .tdesign-demo-item + .tdesign-demo-item {
@@ -46,6 +56,15 @@
 
 .tdesign-demo-block {
   margin-bottom: 10px;
+}
+
+.tdesign-demo-block-line {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.tdesign-demo-block-line + .tdesign-demo-block-line {
+  margin-left: 16px;
 }
 
 @import "./_variables.less";
