@@ -3,4 +3,7 @@
 
 # 测试和打包目录
 __test__/
+
+**/dist
 dist/
+style/web/.stylelintcache

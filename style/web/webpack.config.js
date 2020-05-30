@@ -34,7 +34,7 @@ module.exports = {
       files: ['**/*.{html,vue,css,less}'],
       fix: false,
       cache: true,
-      failOnError: false
+      failOnError: false,
     }),
 
     // 单独分离css

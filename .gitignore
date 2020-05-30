@@ -18,3 +18,5 @@ style/web/components/.yo-repository/
 # ALL node_modules
 **/node_modules
 **/dist
+
+style/web/.stylelintcache
