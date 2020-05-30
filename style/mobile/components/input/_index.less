@@ -1,5 +1,6 @@
-@import './_var.less';
-@import '../../mixins/_index.less';
+@import "./_var.less";
+
+@import "../../mixins/_index.less";
 
 .@{prefix}-input {
 
@@ -8,17 +9,22 @@
     align-items: center;
     width: 100%;
     font-size: @input-font-size;
-    &--suffix, &--icon {
+    
+    &--suffix,
+    &--icon {
       flex: 0 0 auto;
       margin-left: @spacer-1;
+
       i {
         font-size: @input-icon-font-size;
         color: @input-icon-color;
       }
     }
+
     &--suffix {
       position: relative;
       padding-left: 12px;
+
       &::after {
         .hairline-left();
       }
@@ -55,12 +61,15 @@
     &:read-only {
       cursor: default;
     }
+
     &__right {
       text-align: right;
     }
   }
+
   &--textarea {
     padding: @input-vertical-padding @input-horizontal-padding;
+
     textarea {
       display: block;
       box-sizing: border-box;
@@ -74,17 +83,20 @@
       resize: none;
       font-size: @input-font-size;
     }
+
     &-label {
       position: relative;
       padding: @input-vertical-padding @input-horizontal-padding;
       font-size: @input-font-size;
       color: @input-label-text-color;
+
       &::after {
         .hairline-bottom();
         left: @input-horizontal-padding;
       }
     }
   }
+
   &--count {
     text-align: right;
   }
@@ -92,13 +104,17 @@
 
 .@{prefix}-input__error {
   align-items: start;
+
   .@{prefix}-input {
+
     &--control {
       color: @input-error-text-color;
+
       &::placeholder {
         color: @input-error-text-color;
       }
     }
+
     &__error-msg {
       text-align: left;
       padding-top: @spacer-1;
