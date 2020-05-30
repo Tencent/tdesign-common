@@ -22,7 +22,7 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { importLoaders: 1 } },
-          'postcss-loader', // 配合 autoprefixer +  browserslist 食用，相关配置写在 package.json
+          'postcss-loader', // 配合 autoprefixer +  browserslist 使用，相关配置写在 package.json
           'less-loader',
         ],
       },
