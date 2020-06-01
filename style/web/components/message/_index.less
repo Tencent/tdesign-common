@@ -5,24 +5,56 @@
 
 @import "./_mixin.less";
 
+
+@keyframes icon-loading-rotate {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 // <name> 替换为组件名
 .@{prefix}-message {
   .message;
 
-  &--closeabled {
+  .@{prefix}-message-icon {
+    color: @primary-color;
+    margin-right: @spacer;
+
+    &__close {
+      margin-left: auto;
+      right: 24px;
+      cursor: pointer;
+      color: @text-level-4-color;
+    }
+  }
+
+  &.@{prefix}-is-closeabled {
     min-width: @msg-min-width;
+
     .@{prefix}-message__inner {
       margin-right: @spacer * 3;
     }
   }
 
-  &__icon {
-    margin-right: @spacer;
+  &--success .@{prefix}-message-icon {
+    color: @success-color;
   }
 
-  &__icon--close {
-    margin-left: auto;
-    right: 24px;
-    cursor: pointer;
+  &--warning .@{prefix}-message-icon {
+    color: @warning-color;
   }
+
+  &--error .@{prefix}-message-icon {
+    color: @error-color;
+  }
+
+  &--loading .@{prefix}-message-icon {
+    animation: icon-loading-rotate 1s linear infinite;
+  }
+
 }
