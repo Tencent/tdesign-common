@@ -1,0 +1,95 @@
+@import './_var.less';
+
+.@{prefix}-select{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  vertical-align: middle;
+  height: @select-background-color;
+  background: @select-background-color;
+  border: 1px solid @select-border-color;
+  box-shadow: @select-box-shabow;
+
+  &:hover, :active {
+    cursor: pointer;
+    border-color: @select-active-border-color;
+    & > .@{prefix}-select-arrow,
+    & > .@{prefix}-select-close {
+      color: @select-selected-color;
+    }
+  }
+
+  & .ul {    
+    color: @select-selected-color;
+    display: block;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    .@{prefix}-select-ul-s {
+      line-height: @select-selected-height-s;
+      padding: @select-ul-s-padding;
+      .@{prefix}-select-ul-s-checkbox {
+        height: @select-selected-height-s;
+        width: @select-selected-height-s;
+      }
+    }
+    .@{prefix}-select-ul-default {
+      line-height: @select-selected-height-default;
+      padding: @select-ul-default-padding;
+      .@{prefix}-select-ul-default-checkbox {
+        height: @select-selected-height-default;
+        width: @select-selected-height-default;
+      }
+    }
+    .@{prefix}-select-ul-l {
+      line-height: @select-selected-height-l;
+      padding: @select-ul-l-padding;
+      .@{prefix}-select-ul-l-checkbox {
+        height: @select-selected-height-l;
+        width: @select-selected-height-l;
+      }
+    }
+  }
+
+  & .@{prefix}-multi-selected-tag {
+    background-color: @select-selected-tag-background-color;
+    &.@{prefix}-tag-s-height {
+      height: @select-tag-s-height;
+      padding: @select-tag-s-padding;
+      margin: @select-tag-s-margin;
+    }
+    &.@{prefix}-tag-default-height {
+      height: @select-tag-defalut-height;
+      padding: @select-tag-defalut-padding;
+      margin: @select-tag-defalut-margin;
+    }
+    &.@{prefix}-tag-l-height {
+      height: @select-tag-l-height;
+      padding: @select-tag-l-padding;
+      margin: @select-tag-l-margin;
+    }
+  }
+  & .@{prefix}-select-disabled {
+    background-color: #F0F2F5;
+    & .@{prefix}-select-placeholder {
+      color: #BBBBBB;
+    }
+  }
+  & .@{prefix}-select-group-split-line {
+    background-color: #F0F0F0;
+    height: 1px;
+  }
+  & .@{prefix}-select-icon-s {
+    height: @select-icon-s-size;
+    width:  @select-icon-s-size;
+  }
+  & .@{prefix}-select-icon-default {
+    height:  @select-icon-default-size;
+    width:  @select-icon-default-size;
+  }
+  & .@{prefix}-select-icon-l {
+    height:  @select-icon-l-size;
+    width:  @select-icon-l-size;
+  }
+}
