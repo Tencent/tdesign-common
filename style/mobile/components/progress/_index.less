@@ -1,0 +1,55 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import '../../base.less';
+@import './_var.less';
+@import './_mixin.less';
+
+.@{prefix}-progress {
+
+  &_default &__percent {
+    background-color: @primary-color;
+  }
+
+  &_error &__percent {
+    background-color: @error-color;
+  }
+
+  &__inner {
+    display:flex;
+    align-items:center;
+    min-height: @progress-height-8;
+    padding: 0 @progress-space-4;
+  }
+
+  &__bd {
+    position: relative;
+    z-index:1;
+    flex:1;
+    height: @progress-height;
+    background-color:#EEEEEE;
+  }
+  
+  &__percent {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:10;
+    width:100%;
+    background-color: @primary-color;
+  }
+
+  &__ft {
+    margin-left: @progress-space-3;
+    min-width: @progress-min-width;
+  }
+
+  &__text-info {
+    display:inline-block;
+    text-align: right;
+    font-size: @progress-font-size;
+    color: @progress-text-color;
+    line-height: @progress-text-line-height;
+  }
+}
+
