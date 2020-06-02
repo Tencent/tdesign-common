@@ -1,200 +1,191 @@
-@import '../../base.less';
-@import './_var.less';
-@import './_mixin.less';
+@import "../../base.less";
 
+@import "./_var.less";
+
+@import "./_mixin.less";
 
 .@{prefix}-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  white-space: nowrap;
+  font-size: 0;
+  color: @pagination-text-color;
+
+  // 数据统计
+  &__total {
+    font-size: @pagination-font-default;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 0;
-    color: @pagination-text-color;
+  }
 
-    // 数据统计  
-    &__total {
-        font-size: @pagination-font-default;
-        flex: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+  // 选择框
+  &__select {
+    flex-shrink: 0;
+    margin-right: @spacer*2;
+    height: @pagination-height-default;
+  }
+
+  // 前进 后退按钮
+  &__btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1px solid @pagination-border-color;
+    cursor: pointer;
+    .pagination-btn(@pagination-height-default);
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
     }
 
-    // 选择框
-    &__select {
-        flex-shrink: 0;
-        margin-right: @spacer*2;
-        height: @pagination-height-default;
+    &--prev {
+      margin-right: @spacer;
     }
 
-    // 前进 后退按钮  
-    &__btn {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-        border: 1px solid @pagination-border-color;
-        cursor: pointer;
-        .pagination-btn(@pagination-height-default);
+    &--next {
+      margin-left: @spacer;
+    }
+
+    // 极简版
+    &+.@{prefix}-pagination__select {
+      margin-right: 0;
+    }
+
+    // hover
+    &:hover,
+    &:active {
+      color: @pagination-bg-color-hover;
+      border-color: @pagination-bg-color-hover;
+    }
+
+    // 不可点
+    &.@{prefix}-is-disabled,
+    &.@{prefix}-is-disabled:hover,
+    &.@{prefix}-is-disabled:active {
+      background-color: @pagination-bg-color-disabled;
+      color: @pagination-text-color-disabled;
+      border-color: @pagination-border-color;
+    }
+  }
+
+  &__pager {
+    flex-shrink: 0;
+    display: inline-flex;
+    vertical-align: middle;
+
+    li:not(:last-child) {
+      margin-right: @spacer;
+    }
+
+  }
+
+  &__number {
+    display: inline-block;
+    border: 1px solid @pagination-border-color;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    .pagination-number--size(@pagination-height-default; @pagination-font-default; @pagination-padding-horizontal-default; );
+
+    &:hover {
+      .pagination-number--color(@pagination-bg-color-hover; @pagination-text-color-active)
+    }
+
+    &:active {
+      .pagination-number--color(@pagination-bg-color-active; @pagination-text-color-active)
+    }
+
+    &.@{prefix}-is-current {
+      .pagination-number--color(@pagination-bg-color-current; @pagination-text-color-active);
+
+      &.@{prefix}-is-disabled,
+      &.@{prefix}-is-disabled:hover,
+      &.@{prefix}-is-disabled:active {
+        .pagination-number--color(@pagination-bg-color-disabled; @pagination-text-color-active);
+      }
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
+      background-color: @pagination-bg-color-disabled;
+      color: @pagination-text-color-disabled;
+
+      &:hover,
+      &:active {
+        background-color: @pagination-bg-color-disabled;
+        color: @pagination-text-color-disabled;
+        border-color: @pagination-border-color;
+      }
+    }
+
+    // 更多
+    &--more {
+      border: 0 none;
+      padding: 0;
+
+      &:hover,
+      &:active {
+        background: @pagination-bg-color-disabled ;
+      }
+
+      &.@{prefix}-is-disabled,
+      &.@{prefix}-is-disabled:hover,
+      &.@{prefix}-is-disabled:active {
+        background: none;
+      }
+    }
+
+  }
+
+
+  // 跳转输入框
+  &__jump {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: @spacer;
+    font-size: @pagination-font-default;
+  }
+
+  &__input {
+    margin-left: @spacer/2;
+    margin-right: @spacer/2;
+    height: @pagination-height-default;
+  }
+
+  // 迷你尺寸
+  &.@{prefix}-size-s {
+    .@{prefix}-pagination {
+
+      &__total {
+        font-size: @pagination-font-s;
+      }
+
+      &__number {
+        border: 0 none;
+        .pagination-number--size(@pagination-height-s; @pagination-font-s; @pagination-padding-horizontal-s;);
 
         &.@{prefix}-is-disabled {
-            cursor: not-allowed;
-        }
-
-        &--prev {
-            margin-right: @spacer;
-        }
-
-        &--next {
-            margin-left: @spacer;
-        }
-
-        // 极简版  
-        &+.@{prefix}-pagination__select {
-            margin-right: 0;
-        }
-
-        // hover
-        &:hover,
-        &:active {
-            color: @pagination-bg-color-hover;
-            border-color: @pagination-bg-color-hover;
-        }
-
-        // 不可点
-        &.@{prefix}-is-disabled,
-        &.@{prefix}-is-disabled:hover,
-        &.@{prefix}-is-disabled:active {
-            background-color: @pagination-bg-color-disabled;
-            color: @pagination-text-color-disabled;
-            border-color: @pagination-border-color;
-        }
-    }
-
-    &__pager {
-        flex-shrink: 0;
-        display: inline-flex;
-        vertical-align: middle;
-
-        li:not(:last-child) {
-            margin-right: @spacer;
-        }
-
-    }
-
-    &__number {
-        display: inline-block;
-        border: 1px solid @pagination-border-color;
-        box-sizing: border-box;
-        text-align: center;
-        cursor: pointer;
-        .pagination-number--size(@pagination-height-default;
-            @pagination-font-default;
-            @pagination-padding-horizontal-default; );
-
-        &:hover {
-            .pagination-number--color(@pagination-bg-color-hover;
-                @pagination-text-color-active)
-        }
-
-        &:active {
-            .pagination-number--color(@pagination-bg-color-active;
-                @pagination-text-color-active)
+          background: none;
         }
 
         &.@{prefix}-is-current {
-            .pagination-number--color(@pagination-bg-color-current;
-                @pagination-text-color-active);
-
-            &.@{prefix}-is-disabled,
-            &.@{prefix}-is-disabled:hover,
-            &.@{prefix}-is-disabled:active {
-                .pagination-number--color(@pagination-bg-color-disabled;
-                    @pagination-text-color-active);
-            }
+          &.@{prefix}-is-disabled {
+            .pagination-number--color(@pagination-bg-color-current-disabled; @pagination-text-color-active);
+          }
         }
+      }
 
-        &.@{prefix}-is-disabled {
-            cursor: not-allowed;
-            background-color: @pagination-bg-color-disabled;
-            color: @pagination-text-color-disabled;
-
-            &:hover,
-            &:active {
-                background-color: @pagination-bg-color-disabled;
-                color: @pagination-text-color-disabled;
-                border-color: @pagination-border-color;
-            }
-        }
-
-        // 更多
-        &--more {
-            border: none;
-            padding: 0;
-
-            &:hover,
-            &:active {
-                background: @pagination-bg-color-disabled ;
-            }
-
-            &.@{prefix}-is-disabled,
-            &.@{prefix}-is-disabled:hover,
-            &.@{prefix}-is-disabled:active {
-                background: none;
-            }
-        }
-
+      &__btn {
+        border: 0 none;
+        background: none;
+        .pagination-btn(@pagination-height-s);
+      }
     }
 
-
-    // 跳转输入框  
-    &__jump {
-        display: inline-flex;
-        align-items: center;
-        flex-shrink: 0;
-        margin-left: @spacer;
-        font-size: @pagination-font-default;
-    }
-
-    &__input {
-        margin-left: @spacer/2;
-        margin-right: @spacer/2;
-        height: @pagination-height-default;
-    }
-
-    // 迷你尺寸  
-    &.@{prefix}-size-s {
-        .@{prefix}-pagination {
-            &__total {
-                font-size: @pagination-font-s;
-            }
-
-            &__number {
-                border: none;
-                .pagination-number--size(@pagination-height-s;
-                    @pagination-font-s;
-                    @pagination-padding-horizontal-s;
-                );
-
-                &.@{prefix}-is-disabled {
-                    background: none;
-                }
-
-                &.@{prefix}-is-current {
-                    &.@{prefix}-is-disabled {
-                        .pagination-number--color(@pagination-bg-color-current-disabled;
-                            @pagination-text-color-active);
-                    }
-                }
-            }
-
-            &__btn {
-                border: none;
-                background: none;
-                .pagination-btn(@pagination-height-s);
-
-            }
-        }
-
-    }
+  }
 }
