@@ -5,32 +5,25 @@
 
 @import "./_mixin.less";
 
-
-@keyframes icon-loading-rotate {
-
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 // <name> 替换为组件名
 .@{prefix}-message {
   .message;
 
-  .@{prefix}-message-icon {
-    color: @primary-color;
+  .@{prefix}-icon {
+    color: @msg-primary-color;
     margin-right: @spacer;
+  }
 
-    &__close {
-      margin-left: auto;
-      right: 24px;
-      cursor: pointer;
-      color: @text-level-4-color;
-    }
+  &--success .@{prefix}-icon {
+    color: @msg-success-color;
+  }
+
+  &--warning .@{prefix}-icon {
+    color: @msg-warning-color;
+  }
+
+  &--error .@{prefix}-icon {
+    color: @msg-error-color;
   }
 
   &.@{prefix}-is-closeabled {
@@ -39,22 +32,14 @@
     .@{prefix}-message__inner {
       margin-right: @spacer * 3;
     }
-  }
 
-  &--success .@{prefix}-message-icon {
-    color: @success-color;
-  }
-
-  &--warning .@{prefix}-message-icon {
-    color: @warning-color;
-  }
-
-  &--error .@{prefix}-message-icon {
-    color: @error-color;
-  }
-
-  &--loading .@{prefix}-message-icon {
-    animation: icon-loading-rotate 1s linear infinite;
+    .@{prefix}-icon-close {
+      margin-right: 0;
+      margin-left: auto;
+      right: 24px;
+      cursor: pointer;
+      color: @msg-close-icon-color;
+    }
   }
 
 }
