@@ -1,0 +1,15 @@
+.notification() {
+  font-size: @notification-font-default;
+  outline: 0;
+  border: 0;
+  background-color: @notification-color-block;
+  box-shadow: @notification-shadow;
+  box-sizing: border-box;
+  .notification-size(@notification-width-default, @notification-font-size, @notification-padding-default)
+}
+
+.notification-size(@height; @font-size; @padding-horizontal) {
+  width: @height ;
+  font-size: @font-size;
+  padding: @padding-horizontal;
+}

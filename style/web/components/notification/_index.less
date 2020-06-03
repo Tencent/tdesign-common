@@ -6,6 +6,28 @@
 @import "./_mixin.less";
 
 .@{prefix}-notification {
+  .notification;
 
+  &__titleWrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    height: 24px;
+    font-family: PingFangSC-Medium;
+    font-size: 16px;
+    color: #000;
+    line-height: 24px;
+  }
+
+  &__content {
+    height: 22px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #444;
+    line-height: 22px;
+    padding-top: 8px;
+  }
 }
 
