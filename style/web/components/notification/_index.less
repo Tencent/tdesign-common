@@ -8,7 +8,17 @@
 .@{prefix}-notification {
   .notification;
 
-  &__titleWrap {
+  &__icon--wrap {
+    width: 20px;
+    text-align: center;
+  }
+
+  &__main--wrap {
+    flex: 1;
+    margin-left: 10px;
+  }
+
+  &__title--wrap {
     display: flex;
     justify-content: space-between;
   }
@@ -21,13 +31,62 @@
     line-height: 24px;
   }
 
+  &__icon--close {
+    cursor: pointer;
+  }
+
   &__content {
-    height: 22px;
+    // height: 22px;
     font-family: PingFangSC-Regular;
     font-size: 14px;
     color: #444;
     line-height: 22px;
-    padding-top: 8px;
+    margin-top: 8px;
+    max-height: 66px;
+    overflow: hidden;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+    // 需要排查兼容性
+    // 暂时没找到其他方案，先ignore
+
+    /* stylelint-disable-next-line */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    
+    /* stylelint-disable-next-line */
+    -webkit-box-orient: vertical;
+  }
+
+  &__detail {
+    margin-top: 21px;
+    text-align: right;
+    height: 22px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  &__detail--item {
+    padding: 5px 16px;
+    cursor: pointer;
+  }
+
+  &__detail--item:hover {
+    background: #f5f5f5;
+    border-radius: 2px;
+  }
+
+  &__detail--item:active {
+    background: #ddd;
+    border-radius: 2px;
+  }
+
+  &__detail--item + &__detail--item {
+    margin-left: 24px;
+  }
+
+  &__detail--active {
+    color: #0052d9;
   }
 }
 
