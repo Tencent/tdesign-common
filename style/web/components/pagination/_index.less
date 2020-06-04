@@ -36,6 +36,8 @@
     flex-shrink: 0;
     border: 1px solid @pagination-border-color;
     cursor: pointer;
+    color: @pagination-icon-color-disabled;
+    border-radius: @pagination-border-radius-base;
     .pagination-btn(@pagination-height-default);
 
     &.@{prefix}-is-disabled {
@@ -67,7 +69,7 @@
     &.@{prefix}-is-disabled:hover,
     &.@{prefix}-is-disabled:active {
       background-color: @pagination-bg-color-disabled;
-      color: @pagination-text-color-disabled;
+      color: @pagination-icon-color-disabled;
       border-color: @pagination-border-color;
     }
   }
@@ -88,6 +90,7 @@
     border: 1px solid @pagination-border-color;
     box-sizing: border-box;
     text-align: center;
+    border-radius: @pagination-border-radius-base;
     cursor: pointer;
     .pagination-number--size(@pagination-height-default; @pagination-font-default; @pagination-padding-horizontal-default; );
 
@@ -105,7 +108,7 @@
       &.@{prefix}-is-disabled,
       &.@{prefix}-is-disabled:hover,
       &.@{prefix}-is-disabled:active {
-        .pagination-number--color(@pagination-bg-color-disabled; @pagination-text-color-active);
+        .pagination-number--color(@pagination-bg-color-current-disabled; @pagination-text-color-active);
       }
     }
 
@@ -129,13 +132,18 @@
 
       &:hover,
       &:active {
-        background: @pagination-bg-color-disabled ;
+        background: @pagination-bg-color-more;
       }
 
       &.@{prefix}-is-disabled,
       &.@{prefix}-is-disabled:hover,
       &.@{prefix}-is-disabled:active {
         background: none;
+      }
+
+      .@{prefix}-icon-more {
+        transform: rotate(90deg);
+        color: @pagination-icon-color-disabled;
       }
     }
 
@@ -171,6 +179,7 @@
 
         &.@{prefix}-is-disabled {
           background: none;
+          color: @pagination-icon-color-disabled;
         }
 
         &.@{prefix}-is-current {
