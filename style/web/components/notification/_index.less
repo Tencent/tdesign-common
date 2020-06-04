@@ -52,7 +52,7 @@
     /* stylelint-disable-next-line */
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    
+
     /* stylelint-disable-next-line */
     -webkit-box-orient: vertical;
   }
@@ -87,6 +87,99 @@
 
   &__detail--active {
     color: #0052d9;
+  }
+
+  // animation
+  &__show--top-left {
+    animation-duration: 1s;
+    animation-name: slidein-top-left;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+
+    @keyframes slidein-top-left {
+    
+      from {
+        position: fixed;
+        top: 16px;
+        left: -100%;
+      }
+    
+      to {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+      }
+    }
+  }
+
+  &__show--top-right {
+    animation-duration: 1s;
+    animation-name: slidein-top-right;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+
+    @keyframes slidein-top-right {
+    
+      from {
+        position: fixed;
+        top: 16px;
+        right: -100%;
+      }
+    
+      to {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+      }
+    }
+  }
+
+  &__show--bottom-left {
+    animation-duration: 1s;
+    animation-name: slidein-bottom-left;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+
+    @keyframes slidein-bottom-left {
+    
+      from {
+        position: fixed;
+        bottom: 16px;
+        left: -100%;
+      }
+    
+      to {
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+      }
+    }
+  }
+
+  &__show--bottom-right {
+    animation-duration: 1s;
+    animation-name: slidein-bottom-right;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+
+    @keyframes slidein-bottom-right {
+      
+      from {
+        position: fixed;
+        bottom: 16px;
+        right: -100%;
+      }
+    
+      to {
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+      }
+    }
   }
 }
 
