@@ -24,28 +24,25 @@
   }
 }
 
+.input-disabled {
+  color: @input-text-color-disabled;
+  background-color: @input-bg-color-disabled;
+  cursor: not-allowed;
+
+  &:hover {
+    border-color: @input-border-color-default;
+  }
+}
+
 .input-status(@status) {
   &.@{prefix}-input.@{prefix}-is-@{status} {
     &>.@{prefix}-input__inner {
-      & when(@status = disabled) {
-        color: @input-text-color-disabled;
-        background-color: @input-bg-color-disabled;
-        cursor: not-allowed;
-
-        &:hover {
-          border-color: @input-border-color-default;
-        }
-      }
-      & when not (@status = disabled) {
-        border-color: @@borderColor;
-        @borderColor: "input-border-color-@{status}";
-      }
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-@{status}";
     }
     &>.@{prefix}-input__extra {
-      & when not(@status = disabled) {
-        color: @@fontColor;
-        @fontColor: "input-extra-color-@{status}";
-      }
+      color: @@fontColor;
+      @fontColor: "input-extra-color-@{status}";
     }
   }
 }
