@@ -1,0 +1,269 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-tag {
+  display: inline-block;
+  padding: @tag-medium-padding;
+  height: 24px;
+  font-size: @tag-medium-font-size;
+  line-height: 22px;
+  color: @tag-text-color;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  box-sizing: border-box;
+  border-radius: @border-radius-square;
+  white-space: nowrap;
+
+  .@{prefix}-icon {
+    font-size: @tag-medium-font-size;
+  }
+
+  .@{prefix}-icon-close {
+    font-size: @tag-small-font-size;
+    border-radius: @border-radius-50;
+    cursor: pointer;
+
+    &:hover {
+      color: @tag-text-color;
+      background-color: @tag-default-hover-color;
+    }
+  }
+
+  &--default {
+    color: @tag-text-color-1;
+    background-color: @tag-default-background-color;
+    border-color: @tag-default-border-color;
+    &.@{prefix}-tag--checked {
+      color: @tag-checked-color;
+      background-color: @tag-checked-background-color;
+      border-color: @tag-checked-border-color;
+    }
+
+    &:hover {
+      color: @tag-default-hover-color;
+      border-color: currentColor;
+      cursor: default;
+
+      .@{prefix}-icon-close {
+
+        &:hover {
+          color: @tag-text-color;
+        }
+      }
+    }
+
+    &:active {
+      color: @tag-default-click-color;
+      border-color: currentColor;
+      cursor: default;
+    }
+
+    // 失效标签
+    &.@{prefix}-tag--disabled {
+      color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
+      cursor: text;
+      .@{prefix}-icon {
+        color: @tag-disabled-color;
+        cursor: text;
+
+        &:hover {
+          color: @tag-disabled-color;
+          background-color: transparent;
+          cursor: text;
+        }
+      }
+    }
+  }
+
+  &--primary {
+    background-color: @tag-primary-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-primary-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-primary-color;
+        background-color: @tag-primary-light-color;
+      }
+    }
+  }
+
+  &--success {
+    background-color: @tag-success-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-success-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-success-color;
+        background-color: @tag-success-light-color;
+      }
+    }
+  }
+
+  &--info {
+    background-color: @tag-info-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-info-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-info-color;
+        background-color: @tag-info-light-color;
+      }
+    }
+  }
+
+  &--warning {
+    background-color: @tag-warning-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-warning-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-warning-color;
+        background-color: @tag-warning-light-color;
+      }
+    }
+  }
+
+  &--danger {
+    background-color: @tag-danger-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-danger-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-danger-color;
+        background-color: @tag-danger-light-color;
+      }
+    }
+  }
+
+  &--primary-light {
+    color: @tag-primary-color;
+    background-color: @tag-primary-light-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-primary-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-text-color;
+        background-color: @tag-primary-color;
+      }
+    }
+  }
+
+  &--success-light {
+    color: @tag-success-color;
+    background-color: @tag-success-light-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-success-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-text-color;
+        background-color: @tag-success-color;
+      }
+    }
+  }
+
+  &--info-light {
+    color: @tag-info-color;
+    background-color: @tag-info-light-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-info-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-text-color;
+        background-color: @tag-info-color;
+      }
+    }
+  }
+
+  &--warning-light {
+    color: @tag-warning-color;
+    background-color: @tag-warning-light-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-warning-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-text-color;
+        background-color: @tag-warning-color;
+      }
+    }
+  }
+
+  &--danger-light {
+    color: @tag-danger-color;
+    background-color: @tag-danger-light-color;
+    &.@{prefix}-tag--plain {
+      color: @tag-danger-color;
+    }
+    .@{prefix}-icon-close {
+
+      &:hover {
+        color: @tag-text-color;
+        background-color: @tag-danger-color;
+      }
+    }
+  }
+
+  &.@{prefix}-tag--plain {
+    background-color: @tag-plain-background-color;
+    border-color: currentColor;
+  }
+
+  &.@{prefix}-tag--small {
+    padding: @tag-small-padding;
+    height: 20px;
+    font-size: @tag-small-font-size;
+    line-height: 18px;
+    .@{prefix}-icon {
+      font-size: @tag-small-font-size;
+    }
+  }
+
+  &.@{prefix}-tag--large {
+    padding: @tag-large-padding;
+    height: 32px;
+    font-size: @tag-large-font-size;
+    line-height: 30px;
+    .@{prefix}-icon {
+      font-size: @tag-large-font-size;
+    }
+  }
+
+  &.@{prefix}-tag--round {
+    border-radius: @border-radius-round;
+  }
+  &.@{prefix}-tag--mark {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: @border-radius-round;
+    border-top-right-radius: @border-radius-round;
+  }
+
+  &.@{prefix}-tag--ellipsis {
+    .text-ellipsis();
+  }
+}
+

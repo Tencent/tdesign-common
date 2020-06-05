@@ -1,352 +1,369 @@
-@import '../../base.less';
-@import './_var.less';
-@import './_mixin.less';
+@import "../../base.less";
 
-.@{prefix}-button{
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-button {
   .button;
 
   
-  .@{prefix}-icon + .@{prefix}-button__text{
+  .@{prefix}-icon + .@{prefix}-button__text {
     margin-left: @spacer;
-    }
+  }
 
   // 默认
-  &--primary{
+  &--primary {
     color: @text-anti-primary-color;
-    border:1px solid @btn-primary-color;
+    border: 1px solid @btn-primary-color;
     background-color: @btn-primary-color;
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        border-color: @btn-primary-color-hover;
-        background-color:@btn-primary-color-hover
-    }
-    &:active{
-        border-color: @btn-primary-color-active;
-        background-color:@btn-primary-color-active
+    &:hover {
+      border-color: @btn-primary-color-hover;
+      background-color: @btn-primary-color-hover
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
+    &:active {
+      border-color: @btn-primary-color-active;
+      background-color: @btn-primary-color-active
+    }
+
+    &.t-is-disabled {
+      cursor: not-allowed;
+      border-color: @btn-primary-color-disabled;
+      background-color: @btn-primary-color-disabled;
+
+      &:hover,
+      &:active {
         border-color: @btn-primary-color-disabled;
-        background-color:@btn-primary-color-disabled;
-        &:hover,
-        &:active{
-            border-color: @btn-primary-color-disabled;
-            background-color:@btn-primary-color-disabled;
-        }
+        background-color: @btn-primary-color-disabled;
+      }
     }
   }
 
   // 次要按钮
-  &--line{
+  &--line {
     color: @btn-line-text-color;
-    border:1px solid @btn-line-border-color;
+    border: 1px solid @btn-line-border-color;
     background-color: @btn-line-bg-color;
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        color:@btn-primary-color-hover;
-        border-color: @btn-primary-color-hover;
-        background-color:@btn-line-bg-color-hover
+    &:hover {
+      color: @btn-primary-color-hover;
+      border-color: @btn-primary-color-hover;
+      background-color: @btn-line-bg-color-hover
     }
 
-    &:active{
-        color:@btn-primary-color-active;
-        border-color: @btn-primary-color-active;
-        background-color:@btn-line-bg-color-hover
+    &:active {
+      color: @btn-primary-color-active;
+      border-color: @btn-primary-color-active;
+      background-color: @btn-line-bg-color-hover
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        color:@btn-line-text-color-disabled;
-        background-color:@btn-line-bg-color-disabled;
+    &.t-is-disabled {
+      cursor: not-allowed;
+      color: @btn-line-text-color-disabled;
+      background-color: @btn-line-bg-color-disabled;
 
-        &:hover,
-        &:active{
-            color:@btn-line-text-color-disabled;
-            border-color: @btn-line-border-color;
-            background-color:@btn-line-bg-color-disabled;
-        }
+      &:hover,
+      &:active {
+        color: @btn-line-text-color-disabled;
+        border-color: @btn-line-border-color;
+        background-color: @btn-line-bg-color-disabled;
+      }
     }
   }
 
   // 虚线按钮
-  &--dashed{
+  &--dashed {
     color: @btn-line-text-color;
-    border:1px dashed @btn-line-border-color;
+    border: 1px dashed @btn-line-border-color;
     background-color: @btn-line-bg-color;
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        color:@btn-primary-color-hover;
-        border-color: @btn-primary-color-hover;
-        background-color:@btn-line-bg-color-hover
-    }
-    &:active{
-        color:@btn-primary-color-active;
-        border-color: @btn-primary-color-active;
-        background-color:@btn-line-bg-color-hover
+    &:hover {
+      color: @btn-primary-color-hover;
+      border-color: @btn-primary-color-hover;
+      background-color: @btn-line-bg-color-hover
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        color:@btn-line-text-color-disabled;
-        background-color:@btn-line-bg-color-disabled;
+    &:active {
+      color: @btn-primary-color-active;
+      border-color: @btn-primary-color-active;
+      background-color: @btn-line-bg-color-hover
+    }
 
-        &:hover,
-        &:active{
-            color:@btn-line-text-color-disabled;
-            border-color: @btn-line-border-color;
-            background-color:@btn-line-bg-color-disabled;
-        }
+    &.t-is-disabled {
+      cursor: not-allowed;
+      color: @btn-line-text-color-disabled;
+      background-color: @btn-line-bg-color-disabled;
+
+      &:hover,
+      &:active {
+        color: @btn-line-text-color-disabled;
+        border-color: @btn-line-border-color;
+        background-color: @btn-line-bg-color-disabled;
+      }
     }
   }
 
   // 告警按钮
-  &--warning{
+  &--warning {
     color: @text-anti-primary-color;
-    border:1px solid @btn-warning-color;
+    border: 1px solid @btn-warning-color;
     background-color: @btn-warning-color;
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        border-color: @btn-warning-color-hover;
-        background-color:@btn-warning-color-hover
-    }
-    &:active{
-        border-color: @btn-warning-color-active;
-        background-color:@btn-warning-color-active
+    &:hover {
+      border-color: @btn-warning-color-hover;
+      background-color: @btn-warning-color-hover
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
+    &:active {
+      border-color: @btn-warning-color-active;
+      background-color: @btn-warning-color-active
+    }
+
+    &.t-is-disabled {
+      cursor: not-allowed;
+      border-color: @btn-warning-color-disabled;
+      background-color: @btn-warning-color-disabled;
+
+      &:hover,
+      &:active {
         border-color: @btn-warning-color-disabled;
-        background-color:@btn-warning-color-disabled;
-        &:hover,
-        &:active{
-            border-color: @btn-warning-color-disabled;
-            background-color:@btn-warning-color-disabled;
-        }
+        background-color: @btn-warning-color-disabled;
+      }
     }
   }
 
   // 次要告警按钮
-  &--warning-line{
+  &--warning-line {
     color: @btn-warning-color;
-    border:1px solid @btn-warning-color;
+    border: 1px solid @btn-warning-color;
     background-color: @btn-line-bg-color;
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        color:@btn-warning-color-hover;
-        border-color: @btn-warning-color-hover;
-    }
-    &:active{
-        color:@btn-warning-color-active;
-        border-color: @btn-warning-color-active;
+    &:hover {
+      color: @btn-warning-color-hover;
+      border-color: @btn-warning-color-hover;
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        color:@btn-line-text-color-disabled;
+    &:active {
+      color: @btn-warning-color-active;
+      border-color: @btn-warning-color-active;
+    }
+
+    &.t-is-disabled {
+      cursor: not-allowed;
+      color: @btn-line-text-color-disabled;
+      border-color: @btn-line-border-color;
+      background-color: @btn-line-bg-color-disabled;
+
+      &:hover,
+      &:active {
+        color: @btn-line-text-color-disabled;
         border-color: @btn-line-border-color;
-        background-color:@btn-line-bg-color-disabled;
-        &:hover,
-        &:active{
-            color:@btn-line-text-color-disabled;
-            border-color: @btn-line-border-color;
-            background-color:@btn-line-bg-color-disabled;
-        }
+        background-color: @btn-line-bg-color-disabled;
+      }
     }
   }
 
   // 链接文字按钮
-  &--link{
+  &--link {
     color: @btn-primary-color;
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        background-color:@btn-link-bg-color-hover
-    }
-    &:active{
-        background-color:@btn-link-bg-color-active
+    &:hover {
+      background-color: @btn-link-bg-color-hover
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        color:@btn-line-text-color-disabled;
+    &:active {
+      background-color: @btn-link-bg-color-active
+    }
 
-        &:hover,
-        &:active{
-            color:@btn-line-text-color-disabled;
-            background-color:transparent;
-        }
+    &.t-is-disabled {
+      cursor: not-allowed;
+      color: @btn-line-text-color-disabled;
+
+      &:hover,
+      &:active {
+        color: @btn-line-text-color-disabled;
+        background-color: transparent;
+      }
     }
   }
 
   // 幽灵按钮
-  &--ghost{
+  &--ghost {
     color: @btn-primary-color;
-    border:1px solid @btn-primary-color;
+    border: 1px solid @btn-primary-color;
      
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        color: @btn-primary-color-hover;
-        border:1px solid @btn-primary-color-hover;
-    }
-    &:active{
-        color: @btn-primary-color-active;
-        border:1px solid @btn-primary-color-active;
+    &:hover {
+      color: @btn-primary-color-hover;
+      border: 1px solid @btn-primary-color-hover;
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        color:@btn-primary-color-disabled;
+    &:active {
+      color: @btn-primary-color-active;
+      border: 1px solid @btn-primary-color-active;
+    }
+
+    &.t-is-disabled {
+      cursor: not-allowed;
+      color: @btn-primary-color-disabled;
+      border-color: @btn-primary-color-disabled;
+
+      &:hover,
+      &:active {
+        color: @btn-primary-color-disabled;
         border-color: @btn-primary-color-disabled;
-
-        &:hover,
-        &:active{
-            color:@btn-primary-color-disabled;
-            border-color: @btn-primary-color-disabled;
-        }
+      }
     }
   }
 
   // 幽灵次要按钮
-  &--ghost-line{
+  &--ghost-line {
     color: @text-anti-primary-color;
-    border:1px solid @text-anti-primary-color;
+    border: 1px solid @text-anti-primary-color;
      
     .button-size(
-        @btn-height-default ;
-        @btn-font-default ;
-        @btn-padding-horizontal-default;
+      @btn-height-default ;
+      @btn-font-default ;
+      @btn-padding-horizontal-default;
     );
 
-    &:hover{
-        color: @btn-primary-color-hover;
-        border:1px solid @btn-primary-color-hover;
-    }
-    &:active{
-        color: @btn-primary-color-active;
-        border:1px solid @btn-primary-color-active;
+    &:hover {
+      color: @btn-primary-color-hover;
+      border: 1px solid @btn-primary-color-hover;
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        color:@btn-line-text-color-disabled;
+    &:active {
+      color: @btn-primary-color-active;
+      border: 1px solid @btn-primary-color-active;
+    }
+
+    &.t-is-disabled {
+      cursor: not-allowed;
+      color: @btn-line-text-color-disabled;
+      border-color: @btn-line-border-color;
+
+      &:hover,
+      &:active {
+        color: @btn-line-text-color-disabled;
         border-color: @btn-line-border-color;
-
-        &:hover,
-        &:active{
-            color:@btn-line-text-color-disabled;
-            border-color: @btn-line-border-color;
-        }
+      }
     }
   }
 
   // 蓝底图标按钮
-  &--icon-primary{
+  &--icon-primary {
     background-color: @btn-primary-color;
     border-radius: @border-radius-50;
     .button-size(
-        36px ;
-        0 ;
-        10px;
+      36px ;
+      0 ;
+      10px;
     );
 
-    &:hover{
-        background-color:@btn-primary-color-hover;
-    }
-    &:active{
-        background-color:@btn-primary-color-active;
+    &:hover {
+      background-color: @btn-primary-color-hover;
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        background-color:@btn-primary-color-disabled;
+    &:active {
+      background-color: @btn-primary-color-active;
+    }
 
-        &:hover,
-        &:active{
-            background-color:@btn-primary-color-disabled;
-        }
+    &.t-is-disabled {
+      cursor: not-allowed;
+      background-color: @btn-primary-color-disabled;
+
+      &:hover,
+      &:active {
+        background-color: @btn-primary-color-disabled;
+      }
     }
   }
 
   // 一般图标按钮
-  &--icon{
+  &--icon {
      
     border-radius: @border-radius-50;
     .button-size(
-        36px ;
-        0 ;
-        10px;
+      36px ;
+      0 ;
+      10px;
     );
 
-    &:hover{
-        background-color:@btn-link-bg-color-hover;
-    }
-    &:active{
-        background-color:@btn-link-bg-color-active;
+    &:hover {
+      background-color: @btn-link-bg-color-hover;
     }
 
-    &.t-is-disabled{
-        cursor:not-allowed;
-        background-color:transparent;
-        &:hover,
-        &:active{
-            background-color:transparent;
-        }
+    &:active {
+      background-color: @btn-link-bg-color-active;
+    }
+
+    &.t-is-disabled {
+      cursor: not-allowed;
+      background-color: transparent;
+
+      &:hover,
+      &:active {
+        background-color: transparent;
+      }
     }
   }
 
-  &.@{prefix}-size-s{
+  &.@{prefix}-size-s {
     .button-size(
-        @btn-height-s;
-        @btn-font-s ;
-        @btn-padding-horizontal-s;
+      @btn-height-s;
+      @btn-font-s ;
+      @btn-padding-horizontal-s;
     );
   }
-  &.@{prefix}-size-l{
+
+  &.@{prefix}-size-l {
     .button-size(
-        @btn-height-l ;
-        @btn-font-l ;
-        @btn-padding-horizontal-l;
+      @btn-height-l ;
+      @btn-font-l ;
+      @btn-padding-horizontal-l;
     );
   }
-  &.@{prefix}-size-full-width{
+
+  &.@{prefix}-size-full-width {
     display: block;
-    width:100%;
+    width: 100%;
   }
 
 }
