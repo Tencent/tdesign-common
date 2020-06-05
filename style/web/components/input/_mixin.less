@@ -25,7 +25,7 @@
 }
 
 .input-status(@status) {
-  &.@{prefix}-input--@{status} {
+  &.@{prefix}-input.@{prefix}-is-@{status} {
     &>.@{prefix}-input__inner {
       & when(@status = disabled) {
         color: @input-text-color-disabled;
@@ -94,8 +94,8 @@
   }
 }
 
-.decorator-item(@position) {
-  .@{prefix}-decorator__@{position} {
+.addon-item(@position) {
+  .@{prefix}-addon__@{position} {
     background-color: @input-append-color;
     color: @input-text-color-default;
     vertical-align: middle;
