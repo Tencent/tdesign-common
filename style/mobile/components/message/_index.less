@@ -1,9 +1,9 @@
-@import './_var.less';
+@import "./_var.less";
 
 .@{prefix}-message {
   position: fixed;
   top: @message-margin-x;
-  left:@message-margin-y;
+  left: @message-margin-y;
   right: @message-margin-y;
   display: flex;
   justify-content: @message-align;
@@ -18,10 +18,10 @@
   }
 
   &--txt {
-    display: -webkit-box;
+    display: -webkit-box; // stylelint-disable-line
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: vertical; // stylelint-disable-line
     overflow: hidden;
   }
 
@@ -56,6 +56,7 @@
 }
 
 @keyframes messageEnter {
+
   from {
     transform: translate3d(0, calc(-100% - @message-margin-y), 0);
   }
@@ -66,6 +67,7 @@
 }
 
 @keyframes messageOut {
+
   from {
     transform: translate3d(0, 0, 0);
   }

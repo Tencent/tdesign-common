@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-@import '../../base.less';
-@import './_var.less';
-@import './_mixin.less';
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
 
 .@{prefix}-input {
   width: 100%;
@@ -50,6 +52,7 @@
   position: relative;
   display: flex;
   align-items: stretch;
+
   &--seperate {
     &>.@{prefix}-input-group__seperator,
     &>.@{prefix}-input:not(:last-child) {
@@ -68,6 +71,7 @@
   .@{prefix}-input,
   .@{prefix}-button,
   .@{prefix}-select {
+
     &:not(:first-child) {
       margin-left: -1px;
     }
@@ -78,6 +82,7 @@
   .@{prefix}-select {
     position: relative;
     z-index: 0;
+
     &:hover,
     &:focus,
     &:active {
@@ -111,7 +116,7 @@
   // 真正的textarea
   &__inner {
     .input-inner-base();
-    padding: @input-padding-horizontal-default - 0.7px @input-padding-horizontal-default;
+    padding: @input-padding-horizontal-default - .7px @input-padding-horizontal-default;
   }
 
   // 限制字数的textarea
