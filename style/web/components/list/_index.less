@@ -14,10 +14,10 @@
   }
 
   &-item {
-    font-size: 14px;
-    padding: 10px 24px;
+    font-size: @font-size-base;
+    padding: @spacer @spacer-3;
     border-bottom: 1px solid transparent;
-    background: #fff;
+    background: @list-bg-color-default;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,15 +32,15 @@
 
     &-meta {
       display: flex;
-      padding: 10px 0;
+      padding: @spacer 0;
 
       &-avatar {
         width: 56px;
         height: 56px;
         border-radius: 28px;
         overflow: hidden;
-        background: #f0f0f0;
-        margin-right: 16px;
+        background: @list-avatar-bg-color;
+        margin-right: @spacer-2;
 
         img {
           width: 100%;
@@ -51,9 +51,9 @@
       &-content {
 
         &-title {
-          font-size: 16px;
+          font-size: @font-size-l;
           font-weight: bold;
-          margin-bottom: 8px;
+          margin-bottom: @spacer;
         }
       }
     }
@@ -66,22 +66,24 @@
         display: inline-block;
 
         &:not(:last-child) {
-          margin-right: 16px;
+          margin-right: @spacer-2;
+        }
+
+        & > a {
+          text-decoration: none;
+          color: @list-action-color;
         }
       }
     }
 
     &-extra {
-      margin: 10px 0 10px 16px;
+      margin: @spacer 0 @spacer @spacer-2;
     }
   }
 
   &--split {
-    .@{prefix}-list-items {
-
-      &-item {
-        border-color: #f0f0f0;
-      }
+    .@{prefix}-list-item {
+      border-color: @list-item-border-color;
     }
   }
 
@@ -91,7 +93,7 @@
       &-item {
 
         &:nth-child(even) {
-          background: #fbfbfb;
+          background: @list-bg-color-strip;
         }
       }
     }
@@ -107,38 +109,38 @@
   }
 
   &.t-size-s {
-    .@{prefix}-list-items-item {
-      padding: 4px 24px;
+    .@{prefix}-list-item {
+      padding: @spacer / 2 @spacer-3;
     }
   }
 
   &.t-size-l {
-    .@{prefix}-list-items-item {
-      padding: 16px 24px;
+    .@{prefix}-list-item {
+      padding: @spacer-2 @spacer-3;
     }
   }
 
   &-load {
-    background: #fff;
+    background: @list-bg-color-default;
     text-align: center;
-    padding: 36px;
-    font-size: 12px;
+    padding: @spacer-4;
+    font-size: @font-size-s;
 
     &.@{prefix}-list-load--loading {
-      color: @text-level-4-color;
+      color: @list-text-color-loading;
     }
 
     &.@{prefix}-list-load--load-more {
-      color: @primary-color;
+      color: @list-text-color-load-more;
       cursor: pointer;
-      font-size: 14px;
+      font-size: @font-size-base;
     }
   }
 
   &-header,
   &-footer {
-    background: #fff;
-    padding: 16px 24px;
+    background: @list-bg-color-default;
+    padding: @spacer-2 @spacer-3;
   }
 }
 
