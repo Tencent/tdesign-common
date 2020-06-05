@@ -1,0 +1,131 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import '../../base.less';
+@import './_var.less';
+@import './_mixin.less';
+
+.@{prefix}-input {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+
+  // 真正的输入框
+  &__inner {
+    height: @input-height-default;
+    line-height: @input-height-default;
+    .input-inner-base();
+  }
+  // 底部的额外消息
+  &__extra {
+    font-size: @input-extra-fontsize;
+    color: @input-extra-color-default;
+  }
+
+  // 输入框后面的状态图标
+  &__status {
+    position: absolute;
+    right: -@spacer*3;
+    top: 0;
+  }
+
+  // 输入框状态
+  .input-status(success);
+  .input-status(warning);
+  .input-status(error);
+  .input-status(disabled);
+
+  // 输入框的前置、后置图标
+  .input-fix-position(prefix);
+  .input-fix-position(suffix);
+
+  // 输入框大小
+  &.@{prefix}-size-l {
+    &>.@{prefix}-input__inner {
+      height: @input-height-high;
+      line-height: @input-height-high;
+    }
+  }
+}
+
+.@{prefix}-input-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  &--seperate {
+    &>.@{prefix}-input-group__seperator,
+    &>.@{prefix}-input:not(:last-child) {
+      margin-right: @spacer + 1px;
+    }
+    &>.@{prefix}-input-group__seperator {
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+
+  .@{prefix}-input {
+    flex: 1;
+  }
+
+  .@{prefix}-input,
+  .@{prefix}-button,
+  .@{prefix}-select {
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+  }
+
+  .@{prefix}-input__inner,
+  .@{prefix}-button,
+  .@{prefix}-select {
+    position: relative;
+    z-index: 0;
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 1;
+    }
+  }
+}
+
+.@{prefix}-decorator {
+  line-height: normal;
+  display: inline-table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  .decorator-item(prepend);
+  .decorator-item(append);
+
+  &>.@{prefix}-input {
+    width: 100%;
+    vertical-align: middle;
+    display: table-cell;
+  }
+}
+
+.@{prefix}-textarea {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+
+  // 真正的textarea
+  &__inner {
+    .input-inner-base();
+    padding: @input-padding-horizontal-default - 0.7px @input-padding-horizontal-default;
+  }
+
+  // 限制字数的textarea
+  &.@{prefix}-textarea--limit {
+    &>.@{prefix}-textarea__inner {
+      resize: none;
+      padding-bottom: @spacer*3;
+    }
+    &>.@{prefix}-textarea__count {
+      position: absolute;
+      bottom: @spacer - 2;
+      right: @spacer - 2;
+      font-size: @input-fontsize;
+      color: @input-extra-color-default;
+    }
+  }
+}

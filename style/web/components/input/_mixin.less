@@ -1,0 +1,111 @@
+.input-inner-base() {
+  border-width: 1px;
+  border-style: solid;
+  border-color: @input-border-color-default;
+  padding: 0 @input-padding-horizontal-default;
+  background-color: @input-bg-color-default;
+  outline: none;
+  color: @input-text-color-default;
+  font-size: @input-fontsize;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &::placeholder {
+    color: @input-placeholder-color;
+  }
+  &:hover {
+    border-color: @input-border-color-default-focus;
+  }
+  &:focus {
+    border-color: @input-border-color-default-focus;
+  }
+}
+
+.input-status(@status) {
+  &.@{prefix}-input--@{status} {
+    &>.@{prefix}-input__inner {
+      & when(@status = disabled) {
+        color: @input-text-color-disabled;
+        background-color: @input-bg-color-disabled;
+        cursor: not-allowed;
+        &:hover {
+          border-color: @input-border-color-default;
+        }
+      }
+      & when not (@status = disabled) {
+        @borderColor: "input-border-color-@{status}";
+        border-color: @@borderColor;
+      }
+    }
+    &>.@{prefix}-input__extra {
+      & when not(@status = disabled) {
+        @fontColor: "input-extra-color-@{status}";
+        color: @@fontColor;
+      }
+    }
+  }
+}
+
+.input-fix-position(@position) {
+  &.@{prefix}-input--@{position} {
+    &>.@{prefix}-input__inner {
+      & when (@position = prefix) {
+        padding-left: @spacer*3;
+      }
+      & when (@position = suffix) {
+        padding-right: @spacer*3;
+      }
+    }
+    &>.@{prefix}-input__@{position} {
+      position: absolute;
+      top: 0;
+      & when (@position = prefix) {
+        left: @spacer/2;
+      }
+      & when (@position = suffix) {
+        right: @spacer/2;
+      }
+      height: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.input-size(@size) {
+  & when(@size = l) {
+    &.@{prefix}-size-l {
+      &>.@{prefix}-input__inner {
+        height: @input-height-high;
+        line-height: @input-height-high;
+      }
+    }
+  }
+  & when not (@size = l) {
+    &.@{prefix}-size-@{size} {
+      @width-size: "input-width-@{size}";
+      width: @@width-size;
+    }
+  }
+}
+
+.decorator-item(@position) {
+  .@{prefix}-decorator__@{position} {
+    background-color: @input-append-color;
+    color: @input-text-color-default;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    border: 1px solid @input-border-color-default;
+    & when (@position = append) {
+      border-left: none;
+    }
+    & when (@position = prepend) {
+      border-right: none;
+    }
+    padding: 0 @spacer*2;
+    width: 1px;
+    white-space: nowrap;
+  }
+}
