@@ -1,0 +1,111 @@
+@import './_var.less';
+
+.@{prefix}-dialog {
+  position: fixed;
+  z-index: 5000;//层级规范？
+  top: 50%;
+  left: 16px;
+  right: 16px;
+  transform: translate(0, -50%);
+  background-color: @dialog-bg-color;
+  text-align: center;
+  border-radius: @dialog-border-radius;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  &__header {
+    font-weight: 700;
+    font-size: @dialog-header-font-size;
+    line-height: @dialog-header-line-height;
+    padding: @dialog-header-padding;
+    color: @dialog-header-text-color;
+  }
+  &__body {
+    max-height: 288px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: @dialog-body-padding;
+    margin: @dialog-body-margin;
+    font-size: @dialog-body-font-size;
+    line-height: @dialog-body-line-height;
+    color: @dialog-body-text-color;
+    &:first-child {
+      min-height: 40px;
+      padding: @dialog-body-first-child-padding;
+      margin: @dialog-body-first-child-margin;
+      font-weight: 700;
+      color: @dialog-header-text-color;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  &__footer {
+    position: relative;
+    min-height: 56px;
+    display: flex;
+    &:after {
+      content: " ";
+      .hairline-top(@dialog-btn-border-color);
+    }
+  }
+  &__btn {
+    position: relative;
+    display: block;
+    flex: 1;
+    font-size: @dialog-btn-font-size;
+    padding: @dialog-btn-padding;
+    line-height: @dialog-btn-line-height;
+    color: @dialog-btn-color;
+    font-weight: 700;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    &:active {
+      background-color: @dialog-btn-bg-color-active;
+    }
+    &:after {
+      content: " ";
+      .hairline-left(@dialog-btn-border-color);
+    }
+    &:first-child {
+      &:after {
+        display: none;
+      }
+    }
+    &--default {
+      color: @dialog-btn-default-color;
+    }
+    &--warning {
+      color: @dialog-btn-warning-color;
+    }
+  }
+  &__content{
+    & + .@{prefix}-dialog__input{
+      margin-top: @dialog-input-margin-top * 2;
+    }
+  }
+  &__input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background-color: @dialog-input-bg-color;
+    font-size: @dialog-input-font-size;
+    color: @dialog-input-color;
+    border-radius: @dialog-input-radius;
+    line-height: @dialog-input-line-height;
+    padding: @dialog-input-padding;
+    margin-top: @dialog-input-margin-top;
+    box-sizing: border-box;
+    &::-webkit-input-placeholder{
+      color: @dialog-input-placeholder-color;
+    }
+  }
+}
+@media screen and (min-width: 352px) {
+  .weui-dialog {
+    width: 320px;
+    margin: 0 auto;
+  }
+}
