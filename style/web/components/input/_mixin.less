@@ -1,0 +1,115 @@
+.input-inner-base() {
+  border-width: 1px;
+  border-style: solid;
+  border-color: @input-border-color-default;
+  padding: 0 @input-padding-horizontal-default;
+  background-color: @input-bg-color-default;
+  outline: none;
+  color: @input-text-color-default;
+  font-size: @input-fontsize;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+
+  &::placeholder {
+    color: @input-placeholder-color;
+  }
+
+  &:hover {
+    border-color: @input-border-color-default-focus;
+  }
+
+  &:focus {
+    border-color: @input-border-color-default-focus;
+  }
+}
+
+.input-status(@status) {
+  &.@{prefix}-input--@{status} {
+    &>.@{prefix}-input__inner {
+      & when(@status = disabled) {
+        color: @input-text-color-disabled;
+        background-color: @input-bg-color-disabled;
+        cursor: not-allowed;
+
+        &:hover {
+          border-color: @input-border-color-default;
+        }
+      }
+      & when not (@status = disabled) {
+        border-color: @@borderColor;
+        @borderColor: "input-border-color-@{status}";
+      }
+    }
+    &>.@{prefix}-input__extra {
+      & when not(@status = disabled) {
+        color: @@fontColor;
+        @fontColor: "input-extra-color-@{status}";
+      }
+    }
+  }
+}
+
+.input-fix-position(@position) {
+  &.@{prefix}-input--@{position} {
+    &>.@{prefix}-input__inner {
+      & when (@position = prefix) {
+        padding-left: @spacer*3;
+      }
+      & when (@position = suffix) {
+        padding-right: @spacer*3;
+      }
+    }
+    &>.@{prefix}-input__@{position} {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      & when (@position = prefix) {
+        left: @spacer/2;
+      }
+      & when (@position = suffix) {
+        right: @spacer/2;
+      }
+    }
+  }
+}
+
+.input-size(@size) {
+  & when(@size = l) {
+    &.@{prefix}-size-l {
+      &>.@{prefix}-input__inner {
+        height: @input-height-high;
+        line-height: @input-height-high;
+      }
+    }
+  }
+  & when not (@size = l) {
+    &.@{prefix}-size-@{size} {
+      width: @@width-size;
+      @width-size: "input-width-@{size}";
+    }
+  }
+}
+
+.decorator-item(@position) {
+  .@{prefix}-decorator__@{position} {
+    background-color: @input-append-color;
+    color: @input-text-color-default;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    border: 1px solid @input-border-color-default;
+    padding: 0 @spacer*2;
+    width: 1px;
+    white-space: nowrap;
+    & when (@position = append) {
+      border-left: 0;
+    }
+    & when (@position = prepend) {
+      border-right: 0;
+    }
+  }
+}
