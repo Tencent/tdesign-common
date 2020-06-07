@@ -1,0 +1,88 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-steps {
+  display: flex;
+  width: 100%;
+  .step-item-basic();
+
+  // 水平步骤条
+  &--horizontal {
+    // 默认锚点
+    &.@{prefix}-steps--default-anchor {
+      .@{prefix}-steps-item-content {
+        margin-top: 2px;
+      }
+      .@{prefix}-steps-item-title {
+        width: fit-content;
+      }
+      // 默认锚点的连接线，以 title 为起点
+      .connector-default(horizontal);
+    }
+    // 点状锚点
+    &.@{prefix}-steps--dot-anchor {
+      .@{prefix}-steps-item {
+        overflow: visible;
+  
+        &--finish {
+          .dot-anchor-status(finish);
+        }
+  
+        &--process {
+          .dot-anchor-status(process);
+        }
+  
+        &--error {
+          .dot-anchor-status(error);
+        }
+      }
+      .@{prefix}-steps-item__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .dot-icon(horizontal);
+      // 点状锚点连接线，以整个 item 为起点
+      .connector-dot(horizontal);
+    }
+  }
+
+  // 垂直步骤条
+  &--vertical {
+    flex-direction: column;
+    // 默认步骤条连接线，以 item 为起点
+    .connector-default(vertical);
+    // 默认锚点
+    &.@{prefix}-steps--default-anchor {
+      .@{prefix}-steps-item-content {
+        margin-top: 2px;
+      }
+    }
+    // 点状锚点
+    &.@{prefix}-steps--dot-anchor {
+      // 点状步骤条连接线，以 item 为起点
+      .connector-dot(vertical);
+      .@{prefix}-steps-item {
+        margin-bottom: 0;
+  
+        &--finish {
+          .dot-anchor-status(finish);
+        }
+  
+        &--process {
+          .dot-anchor-status(process);
+        }
+  
+        &--error {
+          .dot-anchor-status(error);
+        }
+      }
+      .dot-icon(vertical);
+    }
+  }
+}

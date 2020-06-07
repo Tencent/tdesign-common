@@ -1,0 +1,258 @@
+.step-item-basic() {
+  .@{prefix}-steps-item {
+    flex: 1;
+    overflow: hidden;
+    vertical-align: top;
+    margin-right: @spacer;
+    position: relative;
+
+    &:last-child {
+      flex: none;
+    }
+
+    &__inner {
+      width: fit-content;
+      position: relative;
+      display: flex;
+    }
+
+    &--finish {
+      .default-anchor-status(finish);
+    }
+
+    &--process {
+      .default-anchor-status(process);
+    }
+
+    &--error {
+      .default-anchor-status(error);
+    }
+
+    &-icon {
+      vertical-align: top;
+      font-size: @font-size-base;
+      margin-right: @spacer;
+      color: @border-level-2-color;
+
+      &__number {
+        display: block;
+        width: @spacer-3;
+        height: @spacer-3;
+        text-align: center;
+        border: 2px solid @border-level-2-color;
+        border-radius: 50%;
+        color: @border-level-2-color;
+      }
+
+      & > .t-icon {
+        font-size: @spacer-3;
+      }
+      
+    }
+
+    &-title {
+      position: relative;
+      padding-right: @spacer;
+      color: @border-level-2-color;
+      font-size: @font-size-base;
+    }
+
+    &-description {
+      color: @text-level-3-color;
+      font-size: @font-size-s;
+      margin-bottom: @spacer;
+    }
+  }
+}
+
+// anchor 状态
+@anchor-status: wait;
+.default-anchor-status(@anchor-status) {
+  & when(@anchor-status = wait) {};
+  & when(@anchor-status = finish) {
+    .@{prefix}-steps-item-icon {
+
+      .t-icon {
+        color: @primary-color;
+      }
+    }
+
+    .@{prefix}-steps-item-title {
+      color: @text-level-1-color;
+    }
+  };
+  & when(@anchor-status = process) {
+    .@{prefix}-steps-item-icon {
+
+      .t-icon {
+        color: @primary-color;
+      }
+
+      &__number {
+        color: @primary-color;
+        border-color: @primary-color;
+      }
+    }
+
+    .@{prefix}-steps-item-title {
+      color: @primary-color;
+    }
+  };
+  & when(@anchor-status = error) {
+    .@{prefix}-steps-item-icon {
+
+      .t-icon {
+        color: @error-color;
+      }
+
+      &__number {
+        color: @error-color;
+        border-color: @error-color;
+      }
+    }
+
+    .@{prefix}-steps-item-title {
+      color: @error-color;
+    }
+  };
+};
+
+.dot-anchor-status(@anchor-status) {
+  & when(@anchor-status = wait) {};
+  & when(@anchor-status = finish) {
+    .@{prefix}-steps-item-icon {
+      border-color: @primary-color;
+    }
+  };
+  & when(@anchor-status = process) {
+    .@{prefix}-steps-item-icon {
+      background: @primary-color;
+      border-color: @primary-color;
+    }
+  };
+  & when(@anchor-status = error) {
+    .@{prefix}-steps-item-icon {
+      background: @error-color;
+      border-color: @error-color;
+    }
+  };
+}
+
+// icon 和 内容
+@item-direction: horizontal;
+.dot-icon(@item-direction) {
+  .@{prefix}-steps-item-icon {
+    display: block;
+    width: @spacer;
+    height: @spacer;
+    border: 2px solid @border-level-2-color;
+    border-radius: 50%;
+    margin-bottom: @spacer;
+    position: relative;
+    & when(@item-direction = vertical) {
+      top: @dot-steps-anchor-position-top;
+    }
+  }
+  .@{prefix}-steps-item-content {
+    & when(@item-direction = horizontal) {
+      text-align: center;
+      width: @dot-steps-content-width;
+    }
+  }
+}
+
+// 连接线
+.connector-default(@direction) {
+  & when (@direction = horizontal) {
+    .@{prefix}-steps-item:not(:last-child) {
+      .@{prefix}-steps-item-title:after {
+        content: "";
+        display: block;
+        width: 9999px;
+        height: 2px;
+        background: @border-level-2-color;
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  
+    .@{prefix}-steps-item--finish:not(:last-child) {
+      .@{prefix}-steps-item-title:after {
+        background: @primary-color;
+      }
+    }
+  }
+
+  & when (@direction = vertical) {
+    .@{prefix}-steps-item {
+      padding-bottom: @spacer-3;
+      margin-bottom: @spacer;
+  
+      &:not(:last-child):before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 2px;
+        background: #ddd;
+        position: absolute;
+        left: 10.5px;
+        top: 32px;
+      }
+  
+      &--finish {
+  
+        &:not(:last-child):before {
+          background: @primary-color;
+        }
+      }
+    }
+  }
+}
+.connector-dot(@direction) {
+  & when(@direction = horizontal) {
+    .@{prefix}-steps-item:not(:last-child) {
+
+      &:after {
+        content: "";
+        display: block;
+        width: calc(100% - @spacer-2);
+        height: 2px;
+        background: #ddd;
+        position: absolute;
+        left: calc(@dot-steps-content-width / 2 + @spacer);
+        top: @dot-steps-connector-position-top-horizontal;
+      }
+    }
+  
+    .@{prefix}-steps-item--finish:not(:last-child) {
+
+      &:after {
+        background: @primary-color;
+      }
+    }
+  }
+  & when(@direction = vertical) {
+    .@{prefix}-steps-item {
+
+      &:not(:last-child):before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 2px;
+        background: @border-level-2-color;
+        position: absolute;
+        left: @dot-steps-connector-position-left-vertical;
+        top: @dot-steps-connector-position-top-vertical;
+      }
+
+      &--finish {
+
+        &:not(:last-child):before {
+          background: @primary-color;
+        }
+      }
+    }
+  }
+}
