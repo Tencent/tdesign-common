@@ -30,7 +30,7 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: @dialog-body-padding;
-    margin: @dialog-body-margin;
+    margin-bottom: @dialog-body-margin-bottom;
     font-size: @dialog-body-font-size;
     line-height: @dialog-body-line-height;
     color: @dialog-body-text-color;
@@ -39,7 +39,7 @@
     &:first-child {
       min-height: @dialog-body-min-height;
       padding: @dialog-body-first-child-padding;
-      margin: @dialog-body-first-child-margin;
+      margin-bottom: 0;
       font-weight: 700;
       color: @dialog-title-text-color;
       display: flex;
@@ -53,7 +53,7 @@
     position: relative;
     display: flex;
 
-    &:after {
+    &:before {
       content: " ";
       .hairline-top(@dialog-btn-border-color);
     }
@@ -76,7 +76,7 @@
       background-color: @dialog-btn-bg-color-active;
     }
 
-    &:after {
+    &:before {
       content: " ";
       .hairline-left(@dialog-btn-border-color);
     }
