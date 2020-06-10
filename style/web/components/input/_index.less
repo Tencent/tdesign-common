@@ -34,13 +34,7 @@
   .input-status(success);
   .input-status(warning);
   .input-status(error);
-
-  &.@{prefix}-is-disabled {
-
-    .@{prefix}-input__inner {
-      .input-disabled();
-    }
-  }
+  .input-disabled();
 
   // 输入框的前置、后置图标
   .input-fix-position(prefix);
@@ -114,7 +108,13 @@
   &.@{prefix}-is-disabled {
 
     .@{prefix}-textarea__inner {
-      .input-disabled();
+      color: @input-text-color-disabled;
+      background-color: @input-bg-color-disabled;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: @input-border-color-default;
+      }
     }
   }
 
