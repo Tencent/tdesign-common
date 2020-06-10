@@ -25,12 +25,16 @@
 }
 
 .input-disabled {
-  color: @input-text-color-disabled;
-  background-color: @input-bg-color-disabled;
-  cursor: not-allowed;
+  &.@{prefix}-input.@{prefix}-is-disabled {
+    &>.@{prefix}-input__inner {
+      color: @input-text-color-disabled;
+      background-color: @input-bg-color-disabled;
+      cursor: not-allowed;
 
-  &:hover {
-    border-color: @input-border-color-default;
+      &:hover {
+        border-color: @input-border-color-default;
+      }
+    }
   }
 }
 
