@@ -33,7 +33,13 @@
   .input-status(success);
   .input-status(warning);
   .input-status(error);
-  .input-disabled();
+
+  &.@{prefix}-is-disabled {
+
+    .@{prefix}-input__inner {
+      .input-disabled();
+    }
+  }
 
   // 输入框的前置、后置图标
   .input-fix-position(prefix);
@@ -112,6 +118,13 @@
   width: 100%;
   position: relative;
   box-sizing: border-box;
+
+  &.@{prefix}-is-disabled {
+
+    .@{prefix}-textarea__inner {
+      .input-disabled();
+    }
+  }
 
   // 真正的textarea
   &__inner {
