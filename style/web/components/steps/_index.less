@@ -56,7 +56,9 @@
   &--vertical {
     flex-direction: column;
     // 默认步骤条连接线，以 item 为起点
-    .connector-default(vertical);
+    &.@{prefix}-steps--positive {
+      .connector-default(vertical);
+    }
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
       .@{prefix}-steps-item-content {
@@ -66,7 +68,9 @@
     // 点状锚点
     &.@{prefix}-steps--dot-anchor {
       // 点状步骤条连接线，以 item 为起点
-      .connector-dot(vertical);
+      &.@{prefix}-steps--positive {
+        .connector-dot(vertical);
+      }
       .@{prefix}-steps-item {
         margin-bottom: 0;
   
@@ -83,6 +87,14 @@
         }
       }
       .dot-icon(vertical);
+    }
+    // 倒序
+    &.@{prefix}-steps--reverse {
+      flex-direction: column-reverse;
+      .connector-default(vertical, true);
+      &.@{prefix}-steps--dot-anchor {
+        .connector-dot(vertical, true);
+      }
     }
   }
 }

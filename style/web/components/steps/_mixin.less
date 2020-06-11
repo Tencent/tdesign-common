@@ -162,7 +162,7 @@
 }
 
 // 连接线
-.connector-default(@direction) {
+.connector-default(@direction; @isReverse:false) {
   & when (@direction = horizontal) {
     .@{prefix}-steps-item:not(:last-child) {
       .@{prefix}-steps-item-title:after {
@@ -190,27 +190,51 @@
       padding-bottom: @spacer-3;
       margin-bottom: @spacer;
   
-      &:not(:last-child):before {
-        content: "";
-        display: block;
-        height: 100%;
-        width: 2px;
-        background: #ddd;
-        position: absolute;
-        left: 10.5px;
-        top: 32px;
-      }
-  
-      &--finish {
-  
+      & when(@isReverse = false) {
+
         &:not(:last-child):before {
-          background: @primary-color;
+          content: "";
+          display: block;
+          height: 100%;
+          width: 2px;
+          background: #ddd;
+          position: absolute;
+          left: 10.5px;
+          top: 32px;
+        }
+    
+        &--finish {
+    
+          &:not(:last-child):before {
+            background: @primary-color;
+          }
+        }
+      }
+      & when(@isReverse = true) {
+
+        &:not(:first-child):before {
+          content: "";
+          display: block;
+          height: 100%;
+          width: 2px;
+          background: #ddd;
+          position: absolute;
+          left: 10.5px;
+          top: 32px;
+        }
+    
+        &--process {
+    
+          &:not(:first-child):before {
+            background: @primary-color;
+          }
         }
       }
     }
   }
 }
-.connector-dot(@direction) {
+
+.connector-dot(@direction; @isReverse:false) {
   & when(@direction = horizontal) {
     .@{prefix}-steps-item:not(:last-child) {
 
@@ -236,21 +260,49 @@
   & when(@direction = vertical) {
     .@{prefix}-steps-item {
 
-      &:not(:last-child):before {
-        content: "";
-        display: block;
-        height: 100%;
-        width: 2px;
-        background: @border-level-2-color;
-        position: absolute;
-        left: @dot-steps-connector-position-left-vertical;
-        top: @dot-steps-connector-position-top-vertical;
-      }
-
-      &--finish {
+      & when(@isReverse = false) {
 
         &:not(:last-child):before {
-          background: @primary-color;
+          content: "";
+          display: block;
+          height: 100%;
+          width: 2px;
+          background: @border-level-2-color;
+          position: absolute;
+          left: @dot-steps-connector-position-left-vertical;
+          top: @dot-steps-connector-position-top-vertical;
+        }
+  
+        &--finish {
+  
+          &:not(:last-child):before {
+            background: @primary-color;
+          }
+        }
+      }
+      & when(@isReverse = true) {
+        margin-bottom: 0;
+
+        &:not(:first-child):before {
+          content: "";
+          display: block;
+          height: 100%;
+          width: 2px;
+          background: @border-level-2-color;
+          position: absolute;
+          left: @dot-steps-connector-position-left-vertical;
+          top: @dot-steps-connector-position-top-vertical;
+        }
+
+        &:fist-child:before {
+          display: none;
+        }
+  
+        &--process, {
+  
+          &:not(:first-child):before {
+            background: @primary-color;
+          }
         }
       }
     }
