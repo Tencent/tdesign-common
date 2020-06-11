@@ -1,0 +1,172 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-head-menu {
+  width: 100%;
+  background: @menu-theme-light;
+  box-shadow: 0 8px 10px -5px rgba(0,0,0,.08), 0 16px 24px 2px rgba(0,0,0,.04), 0 6px 30px 5px rgba(0,0,0,.05);
+
+  &-wrapper {
+    display: flex;
+  }
+
+  .t-menu-logo:not(:empty) {
+    width: 256px;
+    left: 25px;
+  }
+
+  .t-menu {
+    flex: 1;
+  }
+
+  .t-menu-options:not(:empty) {
+    width: 320px;
+    position: relative;
+    text-align: right;
+  }
+
+  .t-submenu {
+    background: @menu-theme-light;
+
+    .t-menu-item {
+      color: @menu-light-item-color;
+    }
+
+    .t-menu-item--active {
+      color: @menu-light-active-color;
+      border-bottom: 2px solid @menu-light-active-color;
+    }
+  }
+}
+
+.@{prefix}-menu {
+  font-size: @menu-fontsize;
+
+  &-item {
+    position: relative;
+    min-width: 128px;
+    float: left;
+    height: 64px;
+    line-height: 64px;
+    opacity: .6;
+    text-align: center;
+    color: @menu-light-item-color;
+
+    &--active {
+      opacity: 1;
+      color: @menu-light-active-color;
+      border-bottom: 2px solid @menu-light-active-color;
+    }
+  }
+
+  &--dark {
+    background: @menu-theme-dark;
+
+    .@{prefix}-menu-item {
+      color: @menu-dark-item-color;
+
+      &--active {
+        color: @menu-dark-active-color;
+        border-bottom: 2px solid @menu-dark-active-color;
+      }
+    }
+  }
+
+  &-dropdown {
+    position: absolute;
+    top: 68px;
+    background: #fff;
+
+    .t-menu-item {
+      height: 40px;
+      line-height: 40px;
+      color: #000;
+    }
+  }
+}
+
+.@{prefix}-default-menu {
+  width: 256px;
+  display: inline-block;
+  background: @menu-theme-light;
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.10), 0 8px 10px 1px rgba(0,0,0,.06), 0 3px 14px 6px rgba(0,0,0,.05);
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .t-menu-logo:not(:empty) {
+      width: 100%;
+      padding: 18px 24px;
+      border-bottom: 0;
+      border-bottom: solid 1px @menu-border-color;
+    }
+
+    .t-menu {
+      flex: 1;
+    }
+
+    .t-submenu {
+
+      &--active {
+
+        >.t-menu-item {
+          margin: 4px 0;
+          height: 40px;
+          line-height: 40px;
+          color: @menu-light-active-color;
+          background: @menu-light-active-bg;
+        }
+
+        .t-menu-dropdown {
+          display: block;
+        }
+      }
+    }
+
+    .t-menu-options:not(:empty) {
+      width: 100%;
+      position: relative;
+      padding: 16px;
+      top: 0;
+      left: 0;
+      text-align: left;
+      border-top: solid 1px @menu-border-color;
+    }
+
+    .t-menu-dropdown {
+      display: none;
+      position: static;
+      .@{prefix}-menu-item {
+        padding-left: 60px;
+      }
+    }
+
+    .@{prefix}-menu-item {
+      padding: 0 24px;
+      height: 48px;
+      line-height: 48px;
+      float: none;
+      border-bottom: 0;
+      text-align: left;
+
+      .t-icon {
+        font-size: 20px;
+        margin-right: 20px;
+      }
+
+      &--active {
+        margin: 4px 0;
+        height: 40px;
+        line-height: 40px;
+        color: @menu-light-active-color;
+        background: @menu-light-active-bg;
+      }
+    }
+  }
+}
