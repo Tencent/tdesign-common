@@ -1,8 +1,8 @@
-@import './_var.less';
+@import "./_var.less";
 
 .@{prefix}-dialog {
   position: fixed;
-  z-index: 5000;//TODO 层级规范
+  z-index: 5000; //TODO 层级规范
   top: 50%;
   left: 16px;
   right: 16px;
@@ -18,7 +18,7 @@
     padding: @dialog-header-padding;
   }
 
-  &__title{
+  &__title {
     font-weight: 700;
     font-size: @dialog-title-font-size;
     line-height: @dialog-title-line-height;
@@ -46,7 +46,6 @@
       flex-direction: column;
       justify-content: center;
     }
-
   }
 
   &__footer {
@@ -57,7 +56,6 @@
       content: " ";
       .hairline-top(@dialog-btn-border-color);
     }
-
   }
 
   &__btn {
@@ -70,7 +68,7 @@
     color: @dialog-btn-color;
     font-weight: 700;
     text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     &:active {
       background-color: @dialog-btn-bg-color-active;
@@ -82,6 +80,7 @@
     }
 
     &:first-child {
+
       &:after {
         display: none;
       }
@@ -95,11 +94,11 @@
     &--warning {
       color: @dialog-btn-warning-color;
     }
-
   }
 
-  &__text{
-    & + .@{prefix}-dialog__input{
+  &__text {
+    /* stylelint-disable-line */
+    & + .@{prefix}-dialog__input {
       margin-top: @dialog-input-margin-top * 2;
     }
   }
@@ -108,8 +107,12 @@
     width: 100%;
     border: 0;
     outline: 0;
+
+    /* stylelint-disable-next-line */
     -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    /* stylelint-disable-next-line */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background-color: @dialog-input-bg-color;
     font-size: @dialog-input-font-size;
     color: @dialog-input-color;
@@ -119,12 +122,10 @@
     margin-top: @dialog-input-margin-top;
     box-sizing: border-box;
 
-    &::-webkit-input-placeholder{
+    &::-webkit-input-placeholder { /* stylelint-disable-line */
       color: @dialog-input-placeholder-color;
     }
-
   }
-
 }
 
 @media screen and (min-width: 352px) {
