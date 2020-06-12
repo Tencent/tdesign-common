@@ -10,7 +10,7 @@
   background-image: none;
   border: @button-border-width solid transparent;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all .3s;
   user-select: none;
   touch-action: manipulation;
   font-size: @button-default-font-size;
@@ -36,7 +36,7 @@
   }
 
   &:not(.@{prefix}-is-disabled):active::after {
-    opacity: 0.1;
+    opacity: .1;
   }
 
   &--default {
@@ -88,6 +88,7 @@
   }
 
   &--size {
+
     &-large {
       width: 100%;
       height: @button-default-height;
@@ -141,6 +142,7 @@
   }
 
   &.@{prefix}-is {
+
     &-block {
       display: flex;
       width: 100%;
@@ -148,12 +150,12 @@
     }
 
     &-disabled {
-      opacity: 0.6;
+      opacity: .6;
       cursor: not-allowed;
     }
 
     &-hover {
-      opacity: 0.9;
+      opacity: .9;
       cursor: not-allowed;
     }
 

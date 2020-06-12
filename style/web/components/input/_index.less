@@ -6,6 +6,7 @@
 @import "./_mixin.less";
 
 .@{prefix}-input {
+  display: inline-block;
   width: 100%;
   position: relative;
   box-sizing: border-box;
@@ -50,23 +51,8 @@
 
 .@{prefix}-input-group {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: stretch;
-
-  &--seperate {
-    &>.@{prefix}-input-group__seperator,
-    &>.@{prefix}-input:not(:last-child) {
-      margin-right: @spacer + 1px;
-    }
-    &>.@{prefix}-input-group__seperator {
-      height: 32px;
-      line-height: 32px;
-    }
-  }
-
-  .@{prefix}-input {
-    flex: 1;
-  }
 
   .@{prefix}-input,
   .@{prefix}-button,
@@ -74,6 +60,12 @@
 
     &:not(:first-child) {
       margin-left: -1px;
+    }
+  }
+
+  &--seperate {
+    .@{prefix}-input + .@{prefix}-input {
+      margin-left: 8px;
     }
   }
 
@@ -112,6 +104,19 @@
   width: 100%;
   position: relative;
   box-sizing: border-box;
+
+  &.@{prefix}-is-disabled {
+
+    .@{prefix}-textarea__inner {
+      color: @input-text-color-disabled;
+      background-color: @input-bg-color-disabled;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: @input-border-color-default;
+      }
+    }
+  }
 
   // 真正的textarea
   &__inner {
