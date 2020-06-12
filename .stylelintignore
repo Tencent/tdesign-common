@@ -1,0 +1,9 @@
+# 已打包的内容
+*.min.css
+
+# 测试和打包目录
+__test__/
+
+**/dist
+dist/
+style/web/.stylelintcache
