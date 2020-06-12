@@ -6,6 +6,7 @@
 @import "./_mixin.less";
 
 .@{prefix}-head-menu {
+  position: relative;
   width: 100%;
   background: @menu-theme-light;
   box-shadow: 0 8px 10px -5px rgba(0,0,0,.08), 0 16px 24px 2px rgba(0,0,0,.04), 0 6px 30px 5px rgba(0,0,0,.05);
@@ -34,6 +35,8 @@
     background: @menu-theme-light;
 
     .t-menu-item {
+      position: relative;
+      // display: flex;
       color: @menu-light-item-color;
     }
 
@@ -91,10 +94,42 @@
 }
 
 .@{prefix}-default-menu {
+  position: relative;
   width: 256px;
   display: inline-block;
   background: @menu-theme-light;
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.10), 0 8px 10px 1px rgba(0,0,0,.06), 0 3px 14px 6px rgba(0,0,0,.05);
+
+  &-collapsed {
+    width: 72px;
+
+    .t-submenu {
+
+      >.t-menu-item {
+        padding: 0;
+        min-width: auto;
+
+        span {
+          display: none;
+        }
+
+        .t-icon {
+          margin: 0;
+          left: 50% !important;
+          transform: translate(-50%,-50%) !important;
+        }
+      }
+    }
+
+    .t-menu-options {
+      text-align: center;
+
+      .t-icon {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
 
   &-wrapper {
     display: flex;
@@ -110,10 +145,24 @@
     }
 
     .t-menu {
+      position: relative;
       flex: 1;
     }
 
+    .t-menu-group {
+
+      &-title {
+        margin: 4px 0;
+        padding: 0 24px;
+        height: 32px;
+        line-height: 32px;
+        color: #888;
+        font-size: 12px;
+      }
+    }
+
     .t-submenu {
+      position: relative;
 
       &--active {
 
@@ -126,6 +175,10 @@
         }
 
         .t-menu-dropdown {
+          display: block;
+        }
+
+        .t-menu-popup {
           display: block;
         }
       }
@@ -149,7 +202,17 @@
       }
     }
 
+    .t-menu-popup {
+      width: 216px;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      background: #fff;
+    }
+
     .@{prefix}-menu-item {
+      position: relative;
       padding: 0 24px;
       height: 48px;
       line-height: 48px;
@@ -160,6 +223,14 @@
       .t-icon {
         font-size: 20px;
         margin-right: 20px;
+      }
+
+      .t-icon:last-child {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        font-size: 14px;
       }
 
       &--active {
