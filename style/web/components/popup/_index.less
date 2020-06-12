@@ -1,0 +1,43 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import '../../base.less';
+@import './_var.less';
+@import './_mixin.less';
+
+.@{prefix}-popup {
+  color: white;
+  background-color: #909090;
+  padding: 3px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  z-index: 1000;
+
+  &-reference {
+    display: inline-block;
+  }
+}
+
+.popper-arrow,
+.popper-arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  z-index: -1;
+}
+.popper-arrow::before {
+  content: '';
+  transform: rotate(45deg);
+  background: #909090;
+}
+.@{prefix}-popup[data-popper-placement^='top'] > .popper-arrow {
+  bottom: -4px;
+}
+.@{prefix}-popup[data-popper-placement^='bottom'] > .popper-arrow {
+  top: -4px;
+}
+.@{prefix}-popup[data-popper-placement^='left'] > .popper-arrow {
+  right: -4px;
+}
+.@{prefix}-popup[data-popper-placement^='right'] > .popper-arrow {
+  left: -4px;
+}
