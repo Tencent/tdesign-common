@@ -1,11 +1,11 @@
-@import "../../base.less";
+@prefix: t;
 
 .@{prefix}-icon {
   display: inline-block;
-  font-size: @icon-default;
   vertical-align: middle;
   width: 1em;
   height: 1em;
+  font-size: 16px;
 }
 
 .@{prefix}-icon::before {
@@ -16,7 +16,21 @@
   animation: t-spin 1s linear infinite;
 }
 
-.@{prefix}-icon-demo {
-  background-image: url(http://ue.qzone.qq.com/16);
-  background-size: 100% 100%;
+.@{prefix}-icon {
+  fill: currentColor;
+  &.@{prefix}-size-xs {
+    font-size: 12px;
+  }
+  &.@{prefix}-size-s {
+    font-size: 14px;
+  }
+  &.@{prefix}-size-m {
+    font-size: 16px;
+  }
+  &.@{prefix}-size-l {
+    font-size: 18px;
+  }
+  &.@{prefix}-size-xl {
+    font-size: 20px;
+  }
 }
