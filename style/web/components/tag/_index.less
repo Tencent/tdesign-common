@@ -86,6 +86,7 @@
     background-color: @tag-primary-color;
     &.@{prefix}-tag--plain {
       color: @tag-primary-color;
+      border-color: @tag-primary-light-color;
     }
     .@{prefix}-icon-close {
 
@@ -100,6 +101,7 @@
     background-color: @tag-success-color;
     &.@{prefix}-tag--plain {
       color: @tag-success-color;
+      border-color: @tag-success-light-color;
     }
     .@{prefix}-icon-close {
 
@@ -114,6 +116,7 @@
     background-color: @tag-info-color;
     &.@{prefix}-tag--plain {
       color: @tag-info-color;
+      border-color: @tag-info-light-color;
     }
     .@{prefix}-icon-close {
 
@@ -128,6 +131,7 @@
     background-color: @tag-warning-color;
     &.@{prefix}-tag--plain {
       color: @tag-warning-color;
+      border-color: @tag-warning-light-color;
     }
     .@{prefix}-icon-close {
 
@@ -142,6 +146,7 @@
     background-color: @tag-danger-color;
     &.@{prefix}-tag--plain {
       color: @tag-danger-color;
+      border-color: @tag-danger-light-color;
     }
     .@{prefix}-icon-close {
 
@@ -152,9 +157,10 @@
     }
   }
 
-  &--primary-light {
+  &--primary.@{prefix}-tag--light {
     color: @tag-primary-color;
     background-color: @tag-primary-light-color;
+    border-color: @tag-primary-light-color;
     &.@{prefix}-tag--plain {
       color: @tag-primary-color;
     }
@@ -167,9 +173,10 @@
     }
   }
 
-  &--success-light {
+  &--success.@{prefix}-tag--light {
     color: @tag-success-color;
     background-color: @tag-success-light-color;
+    border-color: @tag-success-light-color;
     &.@{prefix}-tag--plain {
       color: @tag-success-color;
     }
@@ -182,9 +189,10 @@
     }
   }
 
-  &--info-light {
+  &--info.@{prefix}-tag--light {
     color: @tag-info-color;
     background-color: @tag-info-light-color;
+    border-color: @tag-info-light-color;
     &.@{prefix}-tag--plain {
       color: @tag-info-color;
     }
@@ -197,9 +205,10 @@
     }
   }
 
-  &--warning-light {
+  &--warning.@{prefix}-tag--light {
     color: @tag-warning-color;
     background-color: @tag-warning-light-color;
+    border-color: @tag-warning-light-color;
     &.@{prefix}-tag--plain {
       color: @tag-warning-color;
     }
@@ -212,9 +221,10 @@
     }
   }
 
-  &--danger-light {
+  &--danger.@{prefix}-tag--light {
     color: @tag-danger-color;
     background-color: @tag-danger-light-color;
+    border-color: @tag-danger-light-color;
     &.@{prefix}-tag--plain {
       color: @tag-danger-color;
     }
@@ -229,7 +239,6 @@
 
   &.@{prefix}-tag--plain {
     background-color: @tag-plain-background-color;
-    border-color: currentColor;
   }
 
   &.@{prefix}-tag--small {
