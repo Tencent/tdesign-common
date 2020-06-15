@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-@import '../../base.less';
-@import './_var.less';
-@import './_mixin.less';
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
 
 .@{prefix}-popup {
   color: white;
@@ -24,8 +26,9 @@
   height: 8px;
   z-index: -1;
 }
+
 .popper-arrow::before {
-  content: '';
+  content: "";
   transform: rotate(45deg);
   background: #909090;
 }
