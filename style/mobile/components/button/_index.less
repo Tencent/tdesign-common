@@ -20,7 +20,7 @@
   border-color: @button-default-border-color;
   background-color: #fff;
   outline: none;
-  
+
   /* stylelint-disable-next-line */
   -webkit-appearance: none;
 
@@ -32,62 +32,59 @@
     right: 0;
     bottom: 0;
     left: 0;
-    position: absolute
+    position: absolute;
   }
 
   &:not(.@{prefix}-is-disabled):active::after {
-    opacity: .1
+    opacity: .1;
   }
-  
-  &--theme {
 
-    &-default {
-      color: @button-default-color;
-      background-color: @button-default-bg-color;
-      border: 1px solid @button-default-border-color;
+  &--default {
+    color: @button-default-color;
+    background-color: @button-default-bg-color;
+    border: 1px solid @button-default-border-color;
+  }
+
+  &--primary {
+    color: @button-anti-primary-color;
+    background-color: @button-primary-color;
+    border: 1px solid @button-primary-color;
+  }
+
+  &--warning {
+    color: @button-anti-primary-color;
+    background-color: @button-warning-color;
+    border: 1px solid @button-warning-color;
+  }
+
+  &--danger {
+    color: @button-anti-primary-color;
+    background-color: @button-danger-color;
+    border: 1px solid @button-danger-color;
+  }
+
+  &--success {
+    color: @button-anti-primary-color;
+    background-color: @button-success-color;
+    border: 1px solid @button-success-color;
+  }
+
+  &--text {
+    color: @button-text-color;
+    background: none;
+    border: 0;
+
+    &.@{prefix}-button--size-default {
+      width: auto;
+      height: auto;
+      line-height: normal;
+      padding: 0;
     }
+  }
 
-    &-primary {
-      background-color: @button-primary-bg-color;
-      color: @button-primary-color;
-    }
-
-    &-ghost {
-      color: @button-ghost-color;
-      background-color: transparent;
-      border: 1px solid @button-ghost-border-color;
-    }
-
-    &-success {
-      color: @success-color;
-      background-color: @button-default-bg-color;
-      border: 1px solid @success-color;
-    }
-
-    &-danger {
-      color: @error-color;
-      background-color: @button-default-bg-color;
-      border: 1px solid @error-color;
-    }
-
-    &-warning {
-      color: @warning-color;
-      background-color: @button-default-bg-color;
-      border: 1px solid @warning-color;
-    }
-
-    &-text {
-      color: @button-text-color;
-      background: none;
-      border: 0;
-
-      &.@{prefix}-button--size-default {
-        width: auto;
-        height: auto;
-        line-height: normal;
-        padding: 0;
-      }
-    }
+  &--ghost {
+    background-color: transparent;
+    border: 1px solid @button-ghost-border-color;
   }
 
   &--size {
@@ -160,6 +157,25 @@
     &-hover {
       opacity: .9;
       cursor: not-allowed;
+    }
+
+    &-plain {
+      background-color: @button-default-bg-color;
+      &.@{prefix}-button--primary {
+        color: @button-primary-color;
+      }
+
+      &.@{prefix}-button--success {
+        color: @button-success-color;
+      }
+
+      &.@{prefix}-button--danger {
+        color: @button-danger-color;
+      }
+
+      &.@{prefix}-button--warning {
+        color: @button-warning-color;
+      }
     }
 
     &-loading {

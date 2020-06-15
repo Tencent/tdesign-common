@@ -1,0 +1,91 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+// <name> 替换为组件名
+.@{prefix}-dialog {
+  
+  width: @dialog-size-s-width;
+  background-color: @dialog-bg-color;
+  position: relative;
+  border-radius: @border-radius-base;
+
+  &__header {
+    color: @dialog-header-text-color;
+    font-size: @dialog-header-font-size;
+    // remove space between inline-block elements.
+    word-spacing: -6px;
+
+    > h5 {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 22px;
+    }
+  }
+
+  &__body {
+    color: @dialog-body-text-color;
+    font-size: @dialog-body-text-font-size;
+    line-height: 22px;
+  }
+
+  &__footer {
+    text-align: right;
+    // remove space between inline-block elements.
+    word-spacing: -6px;
+
+    .t-button + .t-button {
+      margin-left: @spacer;
+    }
+  }
+
+  &--default {
+    padding: @dialog-default-spacer;
+    .@{prefix}-dialog__body {
+      padding: @dialog-default-body-spacer;
+    }
+  }
+
+  &--primary {
+    padding: @dialog-primary-spacer;
+    .@{prefix}-dialog__header > h5 {
+      margin-left: 8px;
+    }
+
+    .t-icon-prompt-fill {
+      color: @primary-color;
+      font-size: 20px;
+    }
+    .@{prefix}-dialog__body {
+      padding: @dialog-parimary-body-spacer;
+    }
+  }
+
+  > .t-icon-close {
+    position: absolute;
+    top: @dialog-spacer;
+    right: @dialog-spacer;
+  }
+
+  > .t-icon-close:hover {
+    cursor: pointer;
+  }
+
+}
+
+.@{prefix}-dialog-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: @mask-active;
+
+  .t-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
