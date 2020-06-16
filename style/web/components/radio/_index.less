@@ -1,0 +1,88 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+// <name> 替换为组件名
+.@{radio-cls} {
+  cursor: pointer;
+
+  &__former {
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  &__input {
+    position: relative;
+    display: inline-block;
+    width: @radio-size;
+    height: @radio-size;
+    vertical-align: middle;
+    border-radius: @border-radius-50;
+    border: 1px solid @radio-border-color;
+    background-color: @radio-input-color;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: (@radio-size - @radio-dot-size) / 2 - 1px;
+      left: (@radio-size - @radio-dot-size) / 2 - 1px;
+      opacity: 0;
+      width: @radio-dot-size;
+      height: @radio-dot-size;
+      border-radius: @border-radius-50;
+      background-color: @radio-dot-color;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    margin-left: @radio-input-label-spacer;
+    color: @radio-label-color;
+    vertical-align: middle;
+    font-size: @radio-font;
+  }
+
+  &:hover {
+    .@{radio-cls}__input {
+      border-color: @radio-dot-color;
+    }
+  }
+
+  &.@{radio-cls}-checked {
+    .@{radio-cls}__input {
+      border-color: @radio-dot-color;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    cursor: not-allowed;
+
+    .@{radio-cls}__input {
+      background-color: @radio-input-color-disabled;
+    }
+
+    &:hover {
+      .@{radio-cls}__input {
+        border-color: @radio-border-color;
+      }
+    }
+
+    &.@{radio-cls}-checked {
+      .@{radio-cls}__input {
+        border-color: @radio-border-color;
+
+        &::after {
+          background-color: @radio-dot-color-disabled;
+        }
+      }
+    }
+  }
+}
