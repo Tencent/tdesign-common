@@ -16,11 +16,17 @@
     line-height: 64px;
     text-align: center;
     color: @menu-light-item-color;
+    cursor: pointer;
 
     &--active {
       opacity: 1;
       color: @menu-light-active-color;
       border-bottom: 2px solid @menu-light-active-color;
+    }
+
+    &--disabled {
+      color: @menu-item-disabled-color;
+      cursor: not-allowed;
     }
   }
 
