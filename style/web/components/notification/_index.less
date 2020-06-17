@@ -13,6 +13,27 @@
     text-align: center;
   }
 
+  .t-icon {
+    font-size: 20px;
+    padding-top: 1px;
+  }
+  // icon theme
+  &__icon-info {
+    color: #0052d9;
+  }
+
+  &__icon-success {
+    color: #35cd35;;
+  }
+
+  &__icon-warning {
+    color: #fa0;
+  }
+
+  &__icon-error {
+    color: #ff3e00;
+  }
+
   &__main--wrap {
     flex: 1;
     margin-left: 10px;
@@ -36,7 +57,6 @@
   }
 
   &__content {
-    // height: 22px;
     font-family: PingFangSC-Regular;
     font-size: 14px;
     color: #444;
@@ -96,6 +116,7 @@
     position: fixed;
     top: 16px;
     left: 16px;
+    transition: all .3s;
 
     @keyframes slidein-top-left {
     
@@ -117,6 +138,7 @@
     position: fixed;
     top: 16px;
     right: 16px;
+    transition: all .3s;
 
     @keyframes slidein-top-right {
     
@@ -138,6 +160,7 @@
     position: fixed;
     bottom: 16px;
     left: 16px;
+    transition: all .3s;
 
     @keyframes slidein-bottom-left {
     
@@ -159,6 +182,7 @@
     position: fixed;
     bottom: 16px;
     right: 16px;
+    transition: all .3s;
 
     @keyframes slidein-bottom-right {
     
