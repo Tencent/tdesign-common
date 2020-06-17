@@ -6,13 +6,19 @@
 @import "./_mixin.less";
 
 // <name> 替换为组件名
+.@{radio-cls}-group {
+  display: inline-block;
+}
 .@{radio-cls} {
+  position: relative;
   cursor: pointer;
+  margin-right: @radio-margin-right;
 
   &__former {
     opacity: 0;
-    height: 0;
-    width: 0;
+    position: absolute;
+    // height: 0;
+    // width: 0;
   }
 
   &__input {
