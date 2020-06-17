@@ -53,7 +53,7 @@
     }
 
     // 极简版
-    &+.@{prefix}-pagination__select {
+    & + .@{prefix}-pagination__select {
       margin-right: 0;
     }
 
@@ -82,7 +82,6 @@
     li:not(:last-child) {
       margin-right: @spacer;
     }
-
   }
 
   &__number {
@@ -95,11 +94,11 @@
     .pagination-number--size(@pagination-height-default; @pagination-font-default; @pagination-padding-horizontal-default; );
 
     &:hover {
-      .pagination-number--color(@pagination-bg-color-hover; @pagination-text-color-active)
+      .pagination-number--color(@pagination-bg-color-hover; @pagination-text-color-active);
     }
 
     &:active {
-      .pagination-number--color(@pagination-bg-color-active; @pagination-text-color-active)
+      .pagination-number--color(@pagination-bg-color-active; @pagination-text-color-active);
     }
 
     &.@{prefix}-is-current {
@@ -130,9 +129,16 @@
       border: 0 none;
       padding: 0;
 
+      &.more-quickprev {
+        .@{prefix}-icon-double-arrow-right {
+          transform: rotate(-180deg);
+        }
+      }
+
       &:hover,
       &:active {
         background: @pagination-bg-color-more;
+        color: @pagination-bg-color-active;
       }
 
       &.@{prefix}-is-disabled,
@@ -146,9 +152,7 @@
         color: @pagination-icon-color-disabled;
       }
     }
-
   }
-
 
   // 跳转输入框
   &__jump {
@@ -159,10 +163,11 @@
     font-size: @pagination-font-default;
   }
 
-  &__input {
-    margin-left: @spacer/2;
-    margin-right: @spacer/2;
+  .@{prefix}-input {
+    margin-left: @spacer / 2;
+    margin-right: @spacer / 2;
     height: @pagination-height-default;
+    width: 48px;
   }
 
   // 迷你尺寸
@@ -195,6 +200,5 @@
         .pagination-btn(@pagination-height-s);
       }
     }
-
   }
 }
