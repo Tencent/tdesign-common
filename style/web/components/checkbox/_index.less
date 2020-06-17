@@ -6,13 +6,19 @@
 @import "./_mixin.less";
 
 // <name> 替换为组件名
-.@{prefix}-checkbox {
+.@{checkbox-cls}-group {
+  display: inline-block;
+}
+.@{checkbox-cls} {
+  position: relative;
   cursor: pointer;
+  margin-right: @checkbox-margin-right;
 
   &__former {
     opacity: 0;
-    height: 0;
-    width: 0;
+    position: absolute;
+    // height: 0;
+    // width: 0;
   }
 
   &__input {
@@ -28,7 +34,7 @@
       content: "";
       position: absolute;
       top: (@checkbox-size) / 2 - 1px;
-      left: (@checkbox-size - @checkbox-check-size) / 2 - 1px;
+      left: (@checkbox-size - @checkbox-check-size) / 2;
       opacity: 0;
       width: @checkbox-check-width;
       height: @checkbox-check-height;
