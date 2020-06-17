@@ -8,15 +8,14 @@
 .@{prefix}-menu {
   font-size: @menu-fontsize;
 
-  &-item {
+  &__item {
     position: relative;
     min-width: 128px;
     float: left;
     height: 64px;
     line-height: 64px;
-    // opacity: .6;
     text-align: center;
-    color: rgba(0, 0, 0, .6);
+    color: @menu-light-item-color;
 
     &--active {
       opacity: 1;
@@ -28,25 +27,25 @@
   &--dark {
     background: @menu-theme-dark;
 
-    .@{prefix}-menu-item {
-      color: rgba(255,255,255,.8);
+    .@{prefix}-menu__item {
+      color: @menu-dark-item-color;
 
       &--active {
         color: @menu-dark-active-color;
-        border-bottom: 2px solid @menu-dark-active-color;
+        border-color: @menu-dark-active-color;
       }
     }
   }
 
-  &-dropdown {
+  &__dropdown {
     position: absolute;
     top: 68px;
-    background: #fff;
+    background: @menu-popup-bg-color;
 
-    .@{prefix}-menu-item {
+    .@{prefix}-menu__item {
       height: 40px;
       line-height: 40px;
-      color: #000;
+      color: @menu-dropdown-item-color;
     }
   }
 }
@@ -67,14 +66,13 @@
 .@{prefix}-head-menu {
   position: relative;
   width: 100%;
-  box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .08),
-    0 16px 24px 2px rgba(0, 0, 0, .04), 0 6px 30px 5px rgba(0, 0, 0, .05);
+  box-shadow: @menu-head-shadow;
 
-  &-wrapper {
+  &__inner {
     display: flex;
   }
 
-  .@{prefix}-menu-logo:not(:empty) {
+  .@{prefix}-menu__logo:not(:empty) {
     width: 256px;
     left: 25px;
     font-size: 0;
@@ -84,7 +82,7 @@
     flex: 1;
   }
 
-  .@{prefix}-menu-options:not(:empty) {
+  .@{prefix}-menu__options:not(:empty) {
     width: 320px;
     position: relative;
     text-align: right;
@@ -93,9 +91,9 @@
   .@{prefix}-submenu {
     background: @menu-theme-light;
 
-    .@{prefix}-menu-item {
+    .@{prefix}-menu__item {
       position: relative;
-      color: #444;
+      color: @menu-head-item-color;
 
       &--active {
         color: @menu-light-active-color;
@@ -111,14 +109,14 @@
   width: 256px;
   display: inline-block;
   background: @menu-theme-light;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),
-    0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
+  box-shadow: @menu-default-shadow;
 
   &-collapsed {
     width: 72px;
 
     .@{prefix}-submenu {
-      > .@{prefix}-menu-item {
+
+      > .@{prefix}-menu__item {
         padding: 0;
         min-width: auto;
 
@@ -134,7 +132,7 @@
       }
     }
 
-    .@{prefix}-menu-options {
+    .@{prefix}-menu__options {
       text-align: center;
 
       .@{prefix}-icon {
@@ -144,12 +142,12 @@
     }
   }
 
-  &-wrapper {
+  &__inner {
     display: flex;
     flex-direction: column;
     height: 100%;
 
-    .@{prefix}-menu-logo:not(:empty) {
+    .@{prefix}-menu__logo:not(:empty) {
       width: 100%;
       padding: 18px 24px;
       border-bottom: 0;
@@ -169,7 +167,7 @@
         padding: 0 24px;
         height: 32px;
         line-height: 32px;
-        color: #888;
+        color: @menu-menu-group-title-color;
         font-size: @menu-extra-fontsize;
       }
     }
@@ -179,7 +177,7 @@
 
       &--active {
 
-        > .@{prefix}-menu-item {
+        > .@{prefix}-menu__item {
           margin: 4px 0;
           height: 40px;
           line-height: 40px;
@@ -187,17 +185,14 @@
           background: @menu-light-active-bg;
         }
 
-        .@{prefix}-menu-dropdown {
-          display: block;
-        }
-
-        .@{prefix}-menu-popup {
+        .@{prefix}-menu__dropdown,
+        .@{prefix}-menu__popup {
           display: block;
         }
       }
     }
 
-    .@{prefix}-menu-options:not(:empty) {
+    .@{prefix}-menu__options:not(:empty) {
       width: 100%;
       position: relative;
       padding: 16px;
@@ -207,24 +202,25 @@
       border-top: solid 1px @menu-border-color;
     }
 
-    .@{prefix}-menu-dropdown {
+    .@{prefix}-menu__dropdown {
       display: none;
       position: static;
-      .@{prefix}-menu-item {
+
+      .@{prefix}-menu__item {
         padding-left: 60px;
       }
     }
 
-    .@{prefix}-menu-popup {
+    .@{prefix}-menu__popup {
       width: 216px;
       display: none;
       position: absolute;
       top: 0;
       left: 100%;
-      background: #fff;
+      background: @menu-popup-bg-color;
     }
 
-    .@{prefix}-menu-item {
+    .@{prefix}-menu__item {
       position: relative;
       padding: 0 24px;
       height: 48px;
