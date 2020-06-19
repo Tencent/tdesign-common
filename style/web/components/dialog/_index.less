@@ -82,11 +82,7 @@
 
 // t-dialog 组件本身
 .@{prefix}-dialog-ctx {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // height: 100%;
+  position: relative;
 
   &.t-is-visable {
     visibility: visible;
@@ -119,7 +115,6 @@
 
   .@{prefix}-dialog {
     position: fixed;
-    z-index: 10;
     border: @dialog-border;
 
     &--center {
