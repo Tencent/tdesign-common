@@ -1,0 +1,214 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-tabs {
+  overflow: hidden;
+  background-color: @tab-bg-color;
+
+
+  &__header {
+    
+    &.@{prefix}-is-left {
+      float: left;
+    }
+
+    &.@{prefix}-is-right {
+      float: right;
+    }
+  }
+
+  &__nav {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__add-btn {
+    width: @tab-nav-btn-width;
+    height: 100%;
+    display: block;
+    background-color: @tab-add-btn-bg-color;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    border-left: 1px solid @tab-bar-bg-color;
+    border-bottom: 1px solid @tab-bar-bg-color;
+    cursor: pointer;
+
+    &.@{prefix}-size-m {
+      height: @tab-nav-height-size-m;
+      line-height: @tab-nav-height-size-m;
+    }
+
+    &.@{prefix}-size-l {
+      height: @tab-nav-height-size-l;
+      line-height: @tab-nav-height-size-l;
+    }
+  }
+
+  &__nav-container {
+    position: relative;
+
+    &.@{prefix}-is-top::after,
+    &.@{prefix}-is-bottom::after {
+      .bar-track-pseudo(100%, 1px, auto, auto, 0, 0);
+    }
+    
+    &.@{prefix}-is-left::after {
+      .bar-track-pseudo(1px, 100%, 0, 0);
+    }
+
+    &.@{prefix}-is-right::after {
+      .bar-track-pseudo(1px, 100%, 0, auto, auto, 0);
+    }
+
+    &.@{prefix}-is-addable {
+      margin-right: @tab-nav-btn-width;
+    }
+
+    &.@{prefix}-tabs__nav--card::after {
+      content: "";
+      background-color: transparent;
+    }
+  }
+
+  &__scroll-btn {
+    position: absolute;
+    z-index: 1;
+    width: @tab-nav-btn-width;
+    height: 100%;
+    display: block;
+    background-color: @tab-scroll-btn-bg-color;
+    text-align: center;
+    border-bottom: 1px solid @tab-bar-bg-color;
+    cursor: pointer;
+
+    &.@{prefix}-size-m {
+      height: @tab-nav-height-size-m;
+      line-height: @tab-nav-height-size-m;
+    }
+
+    &.@{prefix}-size-l {
+      height: @tab-nav-height-size-l;
+      line-height: @tab-nav-height-size-l;
+    }
+
+    &--left {
+      left: 0;
+      box-shadow: @tab-btn-shadow-offset 0 @tab-btn-shadow-offset 0 @tab-btn-shadow-color;
+    }
+
+    &--right {
+      right: 0;
+      box-shadow: -@tab-btn-shadow-offset 0 @tab-btn-shadow-offset 0 @tab-btn-shadow-color;
+    }
+  }
+
+  &__nav-scroll {
+    overflow: hidden;
+    
+    &.@{prefix}-is-scrollable {
+      margin-left: @tab-nav-btn-width;
+      margin-right: @tab-nav-btn-width;
+    }
+  }
+
+  &__nav-wrap {
+    position: relative;
+    white-space: nowrap;
+    font-size: 0;
+    display: inline-block;
+  }
+
+  &__bar {
+    position: absolute;
+    background-color: @tab-bar-active-color;
+    z-index: 1;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+    &.@{prefix}-is-top,
+    &.@{prefix}-is-bottom {
+      bottom: 0;
+      left: 0;
+      height: @tab-nav-bar-size;
+    }
+
+    &.@{prefix}-is-left {
+      top: 0;
+      right: 0;
+      width: @tab-nav-bar-size;
+    }
+
+    &.@{prefix}-is-right {
+      top: 0;
+      left: 0;
+      width: @tab-nav-bar-size;
+    }
+  }
+
+  &__nav-item {
+    display: inline-block;
+    padding-left: @tab-nav-horizontal-padding;
+    padding-right: @tab-nav-horizontal-padding;
+    font-size: @tab-nav-font-size-middle;
+    color: @tab-text-color;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.@{prefix}-is-left,
+    &.@{prefix}-is-right {
+      display: block;
+    }
+
+    &.@{prefix}-size-m {
+      height: @tab-nav-height-size-m;
+      line-height: @tab-nav-height-size-m;
+    }
+
+    &.@{prefix}-size-l {
+      height: @tab-nav-height-size-l;
+      line-height: @tab-nav-height-size-l;
+    }
+
+    &.@{prefix}-is-active {
+      color: @tab-text-active-color;
+    }
+
+    &.@{prefix}-is-disabled {
+      color: @tab-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &__nav--card {
+    background-color: @tab-card-inactive-color;
+
+    &.t-tabs__nav-item {
+      border-bottom: 1px solid @tab-bar-bg-color;
+
+      &:not(:first-of-type) {
+        border-left: 1px solid @tab-bar-bg-color;
+      }
+  
+      &:last-of-type {
+        border-right: 1px solid @tab-bar-bg-color;
+      }
+
+      &.@{prefix}-is-active {
+        color: @tab-text-active-color;
+        background-color: @tab-nav-card-active-color;
+        border-bottom-color: @tab-nav-card-border-active-color;
+      }
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    position: relative;
+  }
+}
