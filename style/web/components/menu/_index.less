@@ -18,13 +18,13 @@
     color: @menu-light-item-color;
     cursor: pointer;
 
-    &--active {
+    &.@{prefix}-is-active {
       opacity: 1;
       color: @menu-light-active-color;
       border-bottom: 2px solid @menu-light-active-color;
     }
 
-    &--disabled {
+    &.@{prefix}-is-disabled {
       color: @menu-item-disabled-color;
       cursor: not-allowed;
     }
@@ -36,7 +36,7 @@
     .@{prefix}-menu__item {
       color: @menu-dark-item-color;
 
-      &--active {
+      &.@{prefix}-is-active {
         color: @menu-dark-active-color;
         border-color: @menu-dark-active-color;
       }
@@ -108,7 +108,7 @@
       position: relative;
       color: @menu-head-item-color;
 
-      &--active {
+      &.@{prefix}-is-active {
         color: @menu-light-active-color;
         border-bottom: 2px solid @menu-light-active-color;
       }
@@ -124,7 +124,7 @@
   background: @menu-theme-light;
   box-shadow: @menu-default-shadow;
 
-  &-collapsed {
+  &.@{prefix}-is-collapsed {
     width: 72px;
 
     .@{prefix}-submenu {
@@ -188,7 +188,7 @@
     .@{prefix}-submenu {
       position: relative;
 
-      &--active {
+      &.@{prefix}-is-active {
 
         > .@{prefix}-menu__item {
           margin: 4px 0;
@@ -248,7 +248,7 @@
         margin-right: 20px;
       }
 
-      &--active {
+      &.@{prefix}-is-active {
         margin: 4px 0;
         height: 40px;
         line-height: 40px;
