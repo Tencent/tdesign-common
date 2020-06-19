@@ -1,19 +1,21 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-@import '../../base.less';
-@import './_var.less';
-@import './_mixin.less';
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
 
 // <name> 替换为组件名
 .@{prefix}-checkbox {
   cursor: pointer;
 
-  &__former{
+  &__former {
     opacity: 0;
     height: 0;
     width: 0;
   }
 
-  &__input{
+  &__input {
     position: relative;
     display: inline-block;
     width: @checkbox-size;
@@ -21,8 +23,9 @@
     vertical-align: middle;
     border: 1px solid @checkbox-border-color;
     background-color: @checkbox-input-color;
-    &::after{
-      content: '';
+
+    &::after {
+      content: "";
       position: absolute;
       top: (@checkbox-size) / 2 - 1px;
       left: (@checkbox-size - @checkbox-check-size) / 2 - 1px;
@@ -37,7 +40,7 @@
     }
   }
 
-  &__label{
+  &__label {
     display: inline-block;
     margin-left: @checkbox-input-label-spacer;
     color: @checkbox-label-color;
@@ -45,43 +48,44 @@
     font-size: @checkbox-font;
   }
 
-  &:hover{
-    .@{checkbox-cls}__input{
+  &:hover {
+    .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-hover;
     }
   }
 
-  &.@{checkbox-cls}-checked{
-    .@{checkbox-cls}__input{
+  &.@{checkbox-cls}-checked {
+    .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-checked;
       background-color: @checkbox-input-color-checked;
-      &::after{
+
+      &::after {
         opacity: 1;
       }
     }
   }
 
-  &.@{prefix}-is-disabled{
+  &.@{prefix}-is-disabled {
     cursor: not-allowed;
 
-    .@{checkbox-cls}__input{
+    .@{checkbox-cls}__input {
       background-color: @checkbox-input-color-disabled;
     }
 
-    &:hover{
-      .@{checkbox-cls}__input{
+    &:hover {
+      .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
       }
     }
 
-    &.@{checkbox-cls}-checked{
-      .@{checkbox-cls}__input{
+    &.@{checkbox-cls}-checked {
+      .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
-        &::after{
+
+        &::after {
           border-color: @checkbox-check-color-disabled;
         }
       }
     }
   }
 }
-
