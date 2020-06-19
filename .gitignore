@@ -16,6 +16,7 @@ style/web/node_modules/
 style/web/components/.yo-repository/
 
 # ALL node_modules
+**/package-lock.json
 **/node_modules
 **/dist
 dist/
