@@ -1,0 +1,260 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-menu {
+  font-size: @menu-fontsize;
+
+  &__item {
+    position: relative;
+    min-width: 128px;
+    float: left;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    color: @menu-light-item-color;
+    cursor: pointer;
+
+    &.@{prefix}-is-active {
+      opacity: 1;
+      color: @menu-light-active-color;
+      border-bottom: 2px solid @menu-light-active-color;
+    }
+
+    &.@{prefix}-is-disabled {
+      color: @menu-item-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &--dark {
+    background: @menu-theme-dark;
+
+    .@{prefix}-menu__item {
+      color: @menu-dark-item-color;
+
+      &.@{prefix}-is-active {
+        color: @menu-dark-active-color;
+        border-color: @menu-dark-active-color;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 68px;
+    background: @menu-popup-bg-color;
+
+    .@{prefix}-menu__item {
+      height: 40px;
+      line-height: 40px;
+      color: @menu-dropdown-item-color;
+    }
+  }
+}
+
+// submenu
+.@{prefix}-submenu {
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: @menu-fontsize;
+  }
+}
+
+// head-menu
+.@{prefix}-head-menu {
+  position: relative;
+  width: 100%;
+  box-shadow: @menu-head-shadow;
+
+  &__inner {
+    display: flex;
+  }
+
+  .@{prefix}-menu__logo:not(:empty) {
+    width: 256px;
+    left: 25px;
+    font-size: 0;
+  }
+
+  .@{prefix}-menu {
+    flex: 1;
+  }
+
+  .@{prefix}-menu__options:not(:empty) {
+    position: relative;
+    max-width: 320px;
+    height: 64px;
+    line-height: 64px;
+    text-align: right;
+
+    .@{prefix}-icon {
+      margin-right: 24px;
+      font-size: 24px;
+    }
+  }
+
+  .@{prefix}-submenu {
+    background: @menu-theme-light;
+
+    .@{prefix}-menu__item {
+      position: relative;
+      color: @menu-head-item-color;
+
+      &.@{prefix}-is-active {
+        color: @menu-light-active-color;
+        border-bottom: 2px solid @menu-light-active-color;
+      }
+    }
+  }
+}
+
+// default-menu
+.@{prefix}-default-menu {
+  position: relative;
+  width: 256px;
+  display: inline-block;
+  background: @menu-theme-light;
+  box-shadow: @menu-default-shadow;
+
+  &.@{prefix}-is-collapsed {
+    width: 72px;
+
+    .@{prefix}-submenu {
+
+      > .@{prefix}-menu__item {
+        padding: 0;
+        min-width: auto;
+
+        span {
+          display: none;
+        }
+
+        .@{prefix}-icon {
+          margin: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .@{prefix}-menu__options {
+      text-align: center;
+
+      .@{prefix}-icon {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .@{prefix}-menu__logo:not(:empty) {
+      width: 100%;
+      padding: 18px 24px;
+      border-bottom: 0;
+      border-bottom: solid 1px @menu-border-color;
+      font-size: 0;
+    }
+
+    .@{prefix}-menu {
+      position: relative;
+      flex: 1;
+    }
+
+    .@{prefix}-menu-group {
+
+      &-title {
+        margin: 4px 0;
+        padding: 0 24px;
+        height: 32px;
+        line-height: 32px;
+        color: @menu-menu-group-title-color;
+        font-size: @menu-extra-fontsize;
+      }
+    }
+
+    .@{prefix}-submenu {
+      position: relative;
+
+      &.@{prefix}-is-active {
+
+        > .@{prefix}-menu__item {
+          margin: 4px 0;
+          height: 40px;
+          line-height: 40px;
+          color: @menu-light-active-color;
+          background: transparent;
+        }
+
+        .@{prefix}-menu__dropdown,
+        .@{prefix}-menu__popup {
+          display: block;
+        }
+      }
+    }
+
+    .@{prefix}-menu__options:not(:empty) {
+      width: 100%;
+      position: relative;
+      padding: 16px;
+      top: 0;
+      left: 0;
+      text-align: left;
+      border-top: solid 1px @menu-border-color;
+    }
+
+    .@{prefix}-menu__dropdown {
+      display: none;
+      position: static;
+
+      .@{prefix}-menu__item {
+        padding-left: 60px;
+      }
+    }
+
+    .@{prefix}-menu__popup {
+      width: 216px;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      margin-left: 1px;
+      background: @menu-popup-bg-color;
+    }
+
+    .@{prefix}-menu__item {
+      position: relative;
+      padding: 0 24px;
+      height: 48px;
+      line-height: 48px;
+      float: none;
+      border-bottom: 0;
+      text-align: left;
+
+      .@{prefix}-icon {
+        font-size: 20px;
+        margin-right: 20px;
+      }
+
+      &.@{prefix}-is-active {
+        margin: 4px 0;
+        height: 40px;
+        line-height: 40px;
+        color: @menu-light-active-color;
+        background: @menu-light-active-bg;
+      }
+    }
+  }
+}
