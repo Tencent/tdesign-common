@@ -4,15 +4,15 @@
 @import './_mixin.less';
 
 // <name> 替换为组件名
-.@{prefix}-checkbox{
+.@{prefix}-checkbox {
   cursor: pointer;
-  
+
   &__former{
     opacity: 0;
     height: 0;
     width: 0;
   }
-  
+
   &__input{
     position: relative;
     display: inline-block;
@@ -36,7 +36,7 @@
       background: transparent;
     }
   }
-  
+
   &__label{
     display: inline-block;
     margin-left: @checkbox-input-label-spacer;
@@ -44,13 +44,13 @@
     vertical-align: middle;
     font-size: @checkbox-font;
   }
-  
+
   &:hover{
     .@{checkbox-cls}__input{
       border-color: @checkbox-border-color-hover;
     }
   }
-  
+
   &.@{checkbox-cls}-checked{
     .@{checkbox-cls}__input{
       border-color: @checkbox-border-color-checked;
@@ -60,20 +60,20 @@
       }
     }
   }
-  
+
   &.@{prefix}-is-disabled{
     cursor: not-allowed;
-  
+
     .@{checkbox-cls}__input{
       background-color: @checkbox-input-color-disabled;
     }
-  
+
     &:hover{
       .@{checkbox-cls}__input{
         border-color: @checkbox-border-color;
       }
     }
-  
+
     &.@{checkbox-cls}-checked{
       .@{checkbox-cls}__input{
         border-color: @checkbox-border-color;
