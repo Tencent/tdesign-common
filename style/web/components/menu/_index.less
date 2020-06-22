@@ -33,6 +33,10 @@
   &--dark {
     background: @menu-theme-dark;
 
+    .@{prefix}-icon {
+      color: @menu-theme-light;
+    }
+
     .@{prefix}-menu__item {
       color: @menu-dark-item-color;
 
@@ -102,7 +106,7 @@
   }
 
   .@{prefix}-submenu {
-    background: @menu-theme-light;
+    // background: @menu-theme-light;
 
     .@{prefix}-menu__item {
       position: relative;
@@ -113,6 +117,17 @@
         border-bottom: 2px solid @menu-light-active-color;
       }
     }
+  }
+
+  &.@{prefix}-menu-mode__tile {
+
+    .@{prefix}-submenu {
+      background: @menu-theme-light;
+    }
+  }
+
+  &.@{prefix}-menu-mode__dropdown {
+
   }
 }
 
