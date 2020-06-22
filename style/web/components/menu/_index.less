@@ -49,13 +49,12 @@
 
   &__dropdown {
     position: absolute;
+    background: @menu-theme-light;
     top: 68px;
-    background: @menu-popup-bg-color;
 
     .@{prefix}-menu__item {
       height: 40px;
       line-height: 40px;
-      color: @menu-dropdown-item-color;
     }
   }
 }
@@ -106,7 +105,6 @@
   }
 
   .@{prefix}-submenu {
-    // background: @menu-theme-light;
 
     .@{prefix}-menu__item {
       position: relative;
@@ -126,8 +124,11 @@
     }
   }
 
-  &.@{prefix}-menu-mode__dropdown {
+  &__dropdown {
 
+    .@{prefix}-menu__item {
+      background: @menu-popup-bg-color;
+    }
   }
 }
 
