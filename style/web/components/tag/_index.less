@@ -24,6 +24,8 @@
   }
 
   .@{prefix}-icon-close {
+    position: relative;
+    top: -1px;
     font-size: @tag-small-font-size;
     border-radius: @border-radius-50;
     cursor: pointer;
@@ -115,7 +117,7 @@
   &--info {
     background-color: @tag-info-color;
     &.@{prefix}-tag--plain {
-      color: @tag-info-color;
+      color: @dark;
       border-color: @tag-info-light-color;
     }
     .@{prefix}-icon-close {
@@ -190,11 +192,11 @@
   }
 
   &--info.@{prefix}-tag--light {
-    color: @tag-info-color;
+    color: @dark;
     background-color: @tag-info-light-color;
     border-color: @tag-info-light-color;
     &.@{prefix}-tag--plain {
-      color: @tag-info-color;
+      color: @dark;
     }
     .@{prefix}-icon-close {
 
@@ -241,7 +243,7 @@
     background-color: @tag-plain-background-color;
   }
 
-  &.@{prefix}-tag--small {
+  &.@{prefix}-size-s {
     padding: @tag-small-padding;
     height: 20px;
     font-size: @tag-small-font-size;
@@ -251,7 +253,7 @@
     }
   }
 
-  &.@{prefix}-tag--large {
+  &.@{prefix}-size-l {
     padding: @tag-large-padding;
     height: 32px;
     font-size: @tag-large-font-size;
