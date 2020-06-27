@@ -155,11 +155,16 @@
 
     .@{prefix}-submenu {
 
+      &-icon {
+        display: none;
+      }
+
       > .@{prefix}-menu__item {
         padding: 0;
         min-width: initial;
 
         .@{prefix}-icon {
+          position: relative;
           margin: 0;
           left: 50%;
           transform: translate(-50%, -50%);
