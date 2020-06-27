@@ -146,15 +146,18 @@
   &.@{prefix}-is-collapsed {
     width: 72px;
 
+    .@{prefix}-menu__item {
+
+      span {
+        display: none;
+      }
+    }
+
     .@{prefix}-submenu {
 
       > .@{prefix}-menu__item {
         padding: 0;
         min-width: initial;
-
-        span {
-          display: none;
-        }
 
         .@{prefix}-icon {
           margin: 0;
