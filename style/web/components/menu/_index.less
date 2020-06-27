@@ -10,7 +10,6 @@
 
   &__item {
     position: relative;
-    min-width: 128px;
     float: left;
     height: 64px;
     line-height: 64px;
@@ -76,6 +75,10 @@
   position: relative;
   width: 100%;
   box-shadow: @menu-head-shadow;
+
+  .@{prefix}-menu__item {
+    min-width: 128px;
+  }
 
   &__inner {
     display: flex;
@@ -147,7 +150,7 @@
 
       > .@{prefix}-menu__item {
         padding: 0;
-        min-width: auto;
+        min-width: initial;
 
         span {
           display: none;
