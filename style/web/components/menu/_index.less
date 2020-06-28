@@ -146,10 +146,21 @@
   &.@{prefix}-is-collapsed {
     width: 72px;
 
+    .@{prefix}-menu {
+
+      > .@{prefix}-menu__item {
+        text-align: center;
+      }
+    }
+
     .@{prefix}-menu__item {
 
       span {
         display: none;
+      }
+
+      .@{prefix}-icon {
+        margin-right: initial;
       }
     }
 
