@@ -153,6 +153,14 @@
   opacity: 1;
   transition: opacity .2s;
 
+  &&--hidden { /* 隐藏 */
+    display: none;
+  }
+
+  &&--closing {
+    opacity: 0;
+  }
+
   &--info {
     background-color: @alert-info-bg-color;
 
