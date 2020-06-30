@@ -23,15 +23,6 @@
       background-color: mix(@@theme-color, @color-white, @backgroundColorWeight);
       border-color: mix(@@theme-color, @color-white, @borderColorWeight);
       color: mix(@@theme-color, @color-white, @fontColorWeight);
-
-      .@{prefix}-tag__close {
-        color: mix(@tag-success-color, @color-white, @fontColorWeight);
-
-        &:hover {
-          color: @color-white;
-          background-color: mix(@tag-success-color, @color-white, @hoverColorWeight);
-        }
-      }
     }
 
     .for(@themes, (@i + 1));
@@ -89,10 +80,7 @@
     cursor: pointer;
   }
 
-  &.@{prefix}-tag--disabled {
-    cursor: not-allowed;
-    color: @tag-disabled-color;
-  }
+
 
 
   &.@{prefix}-tag--size {
@@ -157,6 +145,17 @@
     &.@{prefix}-tag--disabled {
       cursor: not-allowed;
       color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
+    }
+  }
+
+  &.@{prefix}-tag--closable {  
+    &.@{prefix}-tag--disabled {
+      cursor: not-allowed;
+      color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
     }
   }
 
