@@ -1,0 +1,166 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-switch {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  outline: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  height: @switch-height-default;
+  line-height: @switch-height-default;
+  border-radius: @switch-height-default / 2;
+  min-width: @switch-min-width-default;
+  transition: background-color .3s ease-in-out;
+  background-color: @switch-unchecked-bg-color;
+  cursor: pointer;
+  user-select: none;
+
+  &__handle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1px;
+    left: 1px;
+    width: @switch-height-default - 2px;
+    height: @switch-height-default - 2px;
+    border-radius: 100%;
+    background-color: #fff;
+    transition: all .2s ease-in-out;
+
+    .@{prefix}-icon {
+      font-size: @switch-height-default - 4px;
+      color: transparent;
+    }
+  }
+
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    padding: 0 @switch-content-margin-right-default 0 @switch-content-margin-left-default;
+    font-size: @switch-content-font-size-default;
+    min-width: @switch-min-width-default;
+    .@{prefix}-icon {
+      font-size: @switch-content-font-size-default;
+    }
+  }
+
+  &.@{prefix}-is-checked {
+    background-color: @switch-checked-bg-color;
+
+    .@{prefix}-switch__handle {
+      left: calc(100% - 1px);
+      transform: translate(-100%, 0);
+    }
+    .@{prefix}-switch__content {
+      padding: 0 @switch-content-margin-left-default 0 @switch-content-margin-right-default;
+    }
+  }
+
+  &.@{prefix}-is-loading {
+    cursor: not-allowed;
+    background-color: @switch-unchecked-bg-color-loading;
+
+    .@{prefix}-switch__handle {
+      .@{prefix}-icon {
+        color: @switch-unchecked-bg-color-loading;
+      }
+    }
+
+    &.@{prefix}-is-checked {
+      background-color: @switch-checked-bg-color-loading;
+
+      .@{prefix}-switch__handle {
+        .@{prefix}-icon {
+          color: @switch-checked-bg-color-loading;
+        }
+      }
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    cursor: not-allowed;
+    background-color: @switch-unchecked-bg-color-disabled;
+
+    &.@{prefix}-is-checked {
+      background-color: @switch-checked-bg-color-disabled;
+
+      .@{prefix}-switch__handle {
+        .@{prefix}-icon {
+          color: @switch-checked-bg-color-disabled;
+        }
+      }
+    }
+  }
+}
+
+.@{prefix}-switch.@{prefix}-size-l {
+  min-width: @switch-min-width-l;
+  height: @switch-height-l;
+  line-height: @switch-height-l;
+  border-radius: @switch-height-l / 2;
+
+  .@{prefix}-switch__handle {
+    width: @switch-height-l - 2px;
+    height: @switch-height-l - 2px;
+    .@{prefix}-icon {
+      font-size: @switch-height-l - 4px;
+    }
+  }
+
+  .@{prefix}-switch__content {
+    padding: 0 @switch-content-margin-right-l 0 @switch-content-margin-left-l;
+    min-width: @switch-min-width-l;
+    font-size: @switch-content-font-size-l;
+
+    .@{prefix}-icon {
+      font-size: @switch-content-font-size-l;
+    }
+  }
+
+  &.@{prefix}-is-checked {
+    .@{prefix}-switch__content {
+      padding: 0 @switch-content-margin-left-l 0 @switch-content-margin-right-l;
+    }
+  }
+}
+
+.@{prefix}-switch.@{prefix}-size-s {
+  min-width: @switch-min-width-s;
+  height: @switch-height-s;
+  line-height: @switch-height-s;
+  border-radius: @switch-height-s / 2;
+
+  .@{prefix}-switch__handle {
+    width: @switch-height-s - 2px;
+    height: @switch-height-s - 2px;
+
+    .@{prefix}-icon {
+      font-size: @switch-height-s - 4px;
+    }
+  }
+
+  .@{prefix}-switch__content {
+    padding: 0 @switch-content-margin-right-s 0 @switch-content-margin-left-s;
+    min-width: @switch-min-width-s;
+    font-size: @switch-content-font-size-s;
+
+    .@{prefix}-icon {
+      font-size: @switch-content-font-size-s;
+    }
+  }
+
+  &.@{prefix}-is-checked {
+    .@{prefix}-switch__content {
+      padding: 0 @switch-content-margin-left-s 0 @switch-content-margin-right-s;
+    }
+  }
+}
