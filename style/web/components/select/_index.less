@@ -135,6 +135,13 @@
     background: @select-hover-background-color;
   }
 }
+.@{prefix}-select-option.@{prefix}-is-disabled {
+  color: @select-disabled-color;
+  cursor: not-allowed;
+  &:hover, :active {
+    background: @select-background-color;
+  }
+}
 .@{prefix}-select-option.@{prefix}-size-l {
   height: @select-option-height-l;
   padding: @select-option-padding-l;
