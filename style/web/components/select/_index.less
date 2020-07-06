@@ -1,7 +1,7 @@
-@import './_var.less';
+@import "./_var.less";
 
 // select
-.@{prefix}-select{
+.@{prefix}-select {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -13,7 +13,8 @@
   box-shadow: @select-box-shabow;
   padding: @select-padding;
 
-  &:hover, :active {
+  &:hover,
+  :active {
     cursor: pointer;
     border-color: @select-active-border-color;
     & > .@{prefix}-select-right-icon {
@@ -33,19 +34,19 @@
   // & .@{prefix}-select-left-icon {
   // }
   .@{prefix}-select-arrow.@{prefix}-is-visible {
-    -moz-transform:scaleY(-1);
-    -webkit-transform:scaleY(-1);
-    -o-transform:scaleY(-1);
-    transform:scaleY(-1);
+    transform: scaleY(-1);
+
     /*IE*/
-    filter:FlipV;
+    filter: FlipV;
   }
   .@{prefix}-select-input {
     .@{prefix}-input__inner {
       border: 0;
       padding: 0;
     }
-    &:focus, :hover {
+
+    &:focus,
+    :hover {
       border: 0;
     }
   }
@@ -81,7 +82,7 @@
 
 // dropdown
 .@{prefix}-select-dropdown {
-  top: @dropdown-top !important;
+  top: @dropdown-top !important; // stylelint-disable-line
   max-height: @dropdown-max-height;
   overflow-y: auto;
 }
@@ -131,14 +132,17 @@
   cursor: pointer;
   padding: @select-option-padding-default;
 
-  &:hover, :active {
+  &:hover,
+  :active {
     background: @select-hover-background-color;
   }
 }
 .@{prefix}-select-option.@{prefix}-is-disabled {
   color: @select-disabled-color;
   cursor: not-allowed;
-  &:hover, :active {
+
+  &:hover,
+  :active {
     background: @select-background-color;
   }
 }
