@@ -8,7 +8,133 @@
 // <name> 替换为组件名
 .@{radio-cls}-group {
   display: inline-block;
+
+  &.@{radio-cls}-group-outline {
+    .@{radio-button--cls} {
+      &.@{prefix}-is-checked {
+        color: @radio-button-color-outline-checked;
+      }
+      &.@{prefix}-is-disabled {
+        &.@{prefix}-is-checked {
+          border-color: @radio-button-border-color-outline-disabled-checked;
+          background-color: @radio-button-background-color-outline-disabled-checked;
+        }
+      }
+    }
+  }
+
+  &.@{radio-cls}-group-solid {
+    .@{radio-button--cls} {
+      &.@{prefix}-is-checked {
+        color: @radio-button-color-solid-checked;
+        background-color: @radio-button-background-color-solid-checked;
+      }
+      &.@{prefix}-is-disabled {
+        &.@{prefix}-is-checked {
+          border-color: @radio-button-border-color-solid-disabled-checked;
+          background-color: @radio-button-background-color-solid-disabled-checked;
+        }
+      }
+    }
+  }
+
+  &.@{radio-cls}-group-small {
+    .@{radio-button--cls} {
+      padding: @radio-button-padding-small;
+      font-size: @radio-button-font-size-small;
+    }
+  }
+
+  &.@{radio-cls}-group-default {
+    .@{radio-button--cls} {
+      padding: @radio-button-padding-default;
+      font-size: @radio-button-font-size-default;
+    }
+  }
+
+  &.@{radio-cls}-group-large {
+    .@{radio-button--cls} {
+      padding: @radio-button-padding-large;
+      font-size: @radio-button-font-size-large;
+    }
+  }
+
+  .@{radio-button--cls} {
+    cursor: pointer;
+    position: relative;
+    border: @radio-button-border;
+    border-color: @radio-button-border-color-default;
+    border-right: 0;
+    line-height: 2.5;
+
+    &:first-child {
+      border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;
+    }
+
+    &:last-child {
+      border-right: @radio-button-border;
+      border-right-color: @radio-button-border-color-default;
+      border-radius: 0 @radio-button-border-radius @radio-button-border-radius 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -1px;
+      height: 100%;
+      z-index: 1;
+    }
+
+    &__former {
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+
+    &:hover {
+      border-color: @radio-button-border-color-hover;
+
+      &::after {
+        width: 1px;
+        background-color: @radio-button-border-color-hover;
+      }
+    }
+
+    &.@{prefix}-is-checked {
+      border-color: @radio-button-border-color-checked;
+
+      &::after {
+        width: 1px;
+        background-color: @radio-button-border-color-hover;
+      }
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
+      color: @radio-button-color-disabled;
+      background-color: @radio-button-background-color-disabled;
+
+      &:hover {
+        border-color: @radio-button-border-color-default;
+        color: @radio-button-color-disabled;
+
+        &::after {
+          width: 0;
+        }
+      }
+
+      &.@{prefix}-is-checked {
+        color: @radio-button-color-disabled-checked;
+
+        &::after {
+          width: 0;
+        }
+      }
+    }
+  }
 }
+
 .@{radio-cls} {
   position: relative;
   cursor: pointer;
