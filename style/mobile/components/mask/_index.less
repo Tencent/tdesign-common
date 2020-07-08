@@ -1,0 +1,20 @@
+@import "./_var.less";
+.@{prefix}-mask {
+  position: fixed;
+  z-index: @mask-z-index;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: @mask-bg-color;
+
+  &--transparent {
+    position: fixed;
+    z-index: @mask-z-index;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+}
