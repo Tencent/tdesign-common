@@ -10,7 +10,6 @@
 
   &__item {
     position: relative;
-    min-width: 128px;
     float: left;
     height: 64px;
     line-height: 64px;
@@ -33,6 +32,10 @@
   &--dark {
     background: @menu-theme-dark;
 
+    .@{prefix}-icon {
+      color: @menu-theme-light;
+    }
+
     .@{prefix}-menu__item {
       color: @menu-dark-item-color;
 
@@ -45,13 +48,12 @@
 
   &__dropdown {
     position: absolute;
+    background: @menu-theme-light;
     top: 68px;
-    background: @menu-popup-bg-color;
 
     .@{prefix}-menu__item {
       height: 40px;
       line-height: 40px;
-      color: @menu-dropdown-item-color;
     }
   }
 }
@@ -73,6 +75,10 @@
   position: relative;
   width: 100%;
   box-shadow: @menu-head-shadow;
+
+  .@{prefix}-menu__item {
+    min-width: 128px;
+  }
 
   &__inner {
     display: flex;
@@ -102,7 +108,6 @@
   }
 
   .@{prefix}-submenu {
-    background: @menu-theme-light;
 
     .@{prefix}-menu__item {
       position: relative;
@@ -112,6 +117,20 @@
         color: @menu-light-active-color;
         border-bottom: 2px solid @menu-light-active-color;
       }
+    }
+  }
+
+  &.@{prefix}-menu-mode__tile {
+
+    .@{prefix}-submenu {
+      background: @menu-theme-light;
+    }
+  }
+
+  &__dropdown {
+
+    .@{prefix}-menu__item {
+      background: @menu-popup-bg-color;
     }
   }
 }
@@ -127,18 +146,39 @@
   &.@{prefix}-is-collapsed {
     width: 72px;
 
+    .@{prefix}-menu {
+
+      > .@{prefix}-menu__item {
+        text-align: center;
+        padding: 0;
+      }
+    }
+
+    .@{prefix}-menu__item {
+
+      span {
+        display: none;
+      }
+
+      .@{prefix}-icon {
+        margin-right: initial;
+      }
+    }
+
     .@{prefix}-submenu {
+
+      &-icon {
+        display: none;
+      }
 
       > .@{prefix}-menu__item {
         padding: 0;
-        min-width: auto;
-
-        span {
-          display: none;
-        }
+        min-width: initial;
 
         .@{prefix}-icon {
+          position: absolute;
           margin: 0;
+          top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
