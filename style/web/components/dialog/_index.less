@@ -7,7 +7,6 @@
 
 // <name> 替换为组件名
 .@{prefix}-dialog {
-  
   width: @dialog-size-s-width;
   background-color: @dialog-bg-color;
   position: relative;
@@ -76,16 +75,47 @@
 
 }
 
-.@{prefix}-dialog-mask {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: @mask-active;
+// t-dialog 组件本身
+.@{prefix}-dialog-ctx {
+  position: relative;
 
-  .t-dialog {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &.t-is-visable {
+    visibility: visible;
+  }
+
+  &.t-not-visable {
+    visibility: hidden;
+  }
+
+  &.t-is-display {
+    display: block;
+  }
+
+  &.t-not-display {
+    display: none;
+  }
+
+  .@{prefix}-dialog-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: @mask-active;
+
+    &--hidden {
+      background: none;
+    }
+  }
+
+  .@{prefix}-dialog {
+    position: fixed;
+    border: @dialog-border;
+
+    &--center {
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
   }
 }
