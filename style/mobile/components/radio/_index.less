@@ -12,9 +12,7 @@
     border: 1px solid #ccc;
     flex-shrink: 0;
     position: relative;
-
-    &--checked::after {
-      content: "";
+    .@{prefix}-is-checked {
       display: inline-block;
       position: absolute;
       height: @radio-inner-height;
@@ -25,8 +23,7 @@
       transform: translate(-50%, -50%);
       background-color: @radio-selected-color;
     }
-
-    &--disabled {
+    &.@{prefix}-is-disabled {
       background-color: #f9f9f9;
       opacity: .4;
     }
@@ -39,8 +36,7 @@
   &__content-title {
     font-size: @radio-title-font-size;
     color: @radio-title-font-color;
-
-    &--disable {
+    &.@{prefix}-is-disabled {
       color: @radio-content-color;
     }
   }

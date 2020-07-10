@@ -14,31 +14,40 @@
     margin-right: @spacer;
   }
 
-  &--success > .@{prefix}-icon {
+  &.t-is-success > .@{prefix}-icon {
     color: @msg-success-color;
   }
 
-  &--warning > .@{prefix}-icon {
+  &.t-is-warning > .@{prefix}-icon {
     color: @msg-warning-color;
   }
 
-  &--error > .@{prefix}-icon {
+  &.t-is-error > .@{prefix}-icon {
     color: @msg-error-color;
   }
 
-  &.@{prefix}-is-closeabled {
+  &.@{prefix}-is-closable {
     min-width: @msg-min-width;
 
     .@{prefix}-message__inner {
       margin-right: @spacer * 3;
     }
 
-    > .@{prefix}-icon-close {
+    > .@{prefix}-icon-close,
+    > .@{prefix}-message-close {
       margin-right: 0;
       margin-left: auto;
       right: 24px;
       cursor: pointer;
       color: @msg-close-icon-color;
     }
+  }
+}
+
+.@{prefix}-message-list {
+  position: fixed;
+  z-index: 6000;
+  .@{prefix}-message {
+    margin-bottom: 8px;
   }
 }
