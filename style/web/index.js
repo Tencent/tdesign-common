@@ -1,2 +1,2 @@
-import "./index.less"
-import "./docs.less"
+import './index.less';
+import './docs.less';

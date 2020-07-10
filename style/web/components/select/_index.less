@@ -1,0 +1,179 @@
+@import "./_var.less";
+
+// select
+.@{prefix}-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  vertical-align: middle;
+  line-height: @select-height-default;
+  background: @select-background-color;
+  border: 1px solid @select-border-color;
+  box-shadow: @select-box-shabow;
+  padding: @select-padding;
+
+  &:hover,
+  :active {
+    cursor: pointer;
+    border-color: @select-active-border-color;
+
+    & > .@{prefix}-select-right-icon {
+      color: @select-selected-color;
+    }
+  }
+
+  & .@{prefix}-select-placeholder {
+    color: @select-placeholder-color;
+  }
+
+  & .@{prefix}-select-right-icon {
+    position: absolute;
+    height: 100%;
+    margin: @select-icon-margin;
+    right: 0;
+    top: 0;
+  }
+  // & .@{prefix}-select-left-icon {
+  // }
+  .@{prefix}-select-arrow.@{prefix}-is-visible {
+    transform: scaleY(-1);
+
+    /*IE*/
+    filter: FlipV;
+  }
+
+  .@{prefix}-select-input {
+
+    .@{prefix}-input__inner {
+      border: 0;
+      padding: 0;
+    }
+
+    &:focus,
+    :hover {
+      border: 0;
+    }
+  }
+
+  .@{prefix}-tag,
+  +.@{prefix}-tag {
+    margin: @select-tag-margin;
+  }
+}
+
+.@{prefix}-select.@{prefix}-size-l {
+  line-height: @select-height-l;
+
+  .@{prefix}-select-input {
+    line-height: @select-height-l;
+    height: @select-height-l;
+  }
+}
+
+.@{prefix}-select.@{prefix}-size-s {
+  line-height: @select-height-s;
+
+  .@{prefix}-select-input {
+    line-height: @select-height-s;
+    height: @select-height-s;
+  }
+}
+
+.@{prefix}-select.@{prefix}-is-disabled {
+  cursor: auto;
+  background-color: @select-disabled-background-color;
+  color: @select-placeholder-color;
+  border-color: @select-border-color;
+
+  & > .@{prefix}-select-right-icon {
+    color: @select-border-color;
+  }
+}
+
+// dropdown
+.@{prefix}-select-dropdown {
+  top: @dropdown-top !important; // stylelint-disable-line
+  max-height: @dropdown-max-height;
+  overflow-y: auto;
+}
+
+.@{prefix}-select-dropdown.@{prefix}-popup {
+  padding: 0;
+}
+// loading tips
+.@{prefix}-select-loading-tips.@{prefix}-size-s {
+  line-height: @select-height-s;
+}
+
+.@{prefix}-select-loading-tips {
+  text-align: center;
+  line-height: @select-height-default;
+}
+
+.@{prefix}-select-loading-tips.@{prefix}-size-l {
+  line-height: @select-height-l;
+}
+
+// option group
+.@{prefix}-option-group-header {
+  color: @option-group-header-color;
+  display: block;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  height: @select-option-height-default;
+  line-height: @select-option-line-height;
+  padding: @select-option-padding-default;
+}
+
+.@{prefix}-option-group-header.@{prefix}-size-l {
+  height: @select-option-height-l;
+  padding: @select-option-padding-l;
+}
+
+.@{prefix}-option-group-header.@{prefix}-size-s {
+  height: @select-option-height-s;
+  padding: @select-option-padding-s;
+}
+
+// option
+.@{prefix}-select-option {
+  display: block;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  height: @select-option-height-default;
+  line-height: @select-option-line-height;
+  cursor: pointer;
+  padding: @select-option-padding-default;
+
+  &:hover,
+  :active {
+    background: @select-hover-background-color;
+  }
+}
+
+.@{prefix}-select-option.@{prefix}-is-disabled {
+  color: @select-disabled-color;
+  cursor: not-allowed;
+
+  &:hover,
+  :active {
+    background: @select-background-color;
+  }
+}
+
+.@{prefix}-select-option.@{prefix}-size-l {
+  height: @select-option-height-l;
+  padding: @select-option-padding-l;
+}
+
+.@{prefix}-select-option.@{prefix}-size-s {
+  height: @select-option-height-s;
+  padding: @select-option-padding-s;
+}
+
+.@{prefix}-select-option.@{prefix}-is-selected {
+  color: @select-selected-color;
+}

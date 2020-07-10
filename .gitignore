@@ -23,3 +23,6 @@ dist/
 style/web/.stylelintcache
 
 .history
+
+# contributors
+contributors/members.txt

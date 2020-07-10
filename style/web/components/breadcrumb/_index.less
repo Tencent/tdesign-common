@@ -11,70 +11,49 @@
   &__item {
     display: flex;
     align-items: center;
-    margin-right: @spacer;
-    color: @breadcrumb-default-color;
+    color: @breadcrumb-text-color-default;
     text-decoration: none;
 
-    &.t-is-current {
-      color: @breadcrumb-current-color;
+    &.@{prefix}-is-current {
+      color: @breadcrumb-text-color-current;
 			
       .t-icon {
-        color: @breadcrumb-current-icon-color;
+        color: @breadcrumb-icon-color-current;
       }
     }
 
     .t-icon {
       margin-right: @spacer-half;
     }
+		
     .t-separator {
       margin-left: @spacer;
     }
 
-    .t-icon__arrow-down {
-      .v-inlineblock;
-      margin: 0 @spacer 0 -@spacer;
-      height: 6px;
-      width: 6px;
-      border-width: 1px 1px 0 0;
-      border-color: @breadcrumb-default-color;
-      border-style: solid;
-      transform: matrix(.71, .71, .71, -.71, 0, 0);
-    }
-
     //箭头型
-    &--arrow {        
-
-      &:after {
-        content: "";
-        .v-inlineblock;
-        height: 6px;
-        width: 6px;
-        border-width: 1px 1px 0 0;
-        border-color: @breadcrumb-default-color;
-        border-style: solid;
-        transform: matrix(.71, .71, -.71, .71, 0, 0);
-      }
+    &--arrow {
+      .v-inlineblock;
+      margin: 0 @spacer-half;
+      line-height: 0;
+      color: @breadcrumb-icon-arrow-color-default;
     }
 
     //斜杠型
     &--slash {        
-
-      &:after {
-        content: "/";
-        .v-inlineblock;
-        color: @breadcrumb-default-color;
-      }
+      .v-inlineblock;
+      margin: 0 @spacer-half;
+      line-height: 0;
+      color: @breadcrumb-icon-slash-color-default;
     }
   }
         
   &__inner {
     .v-inlineblock;
-    padding-right: @spacer;
     font-size: @breadcrumb-font-base;
     word-break: break-all;
 
     &:hover {
-      color: @breadcrumb-color-hover;
+      color: @breadcrumb-text-color-hover;
     }
   }
         
@@ -83,13 +62,19 @@
     position: relative;
 
     &:hover {
-
-      .t-icon__arrow-down {
-        border-color: @breadcrumb-color-hover;
-      }
 			
       .@{prefix}-breadcrumb__option {
         display: block;
+      }
+    }
+	
+    &-item {
+
+      &:hover {
+				
+        .t-icon {
+          color: @breadcrumb-icon-color-hover;
+        }
       }
     }
   }
@@ -109,15 +94,15 @@
       padding: @spacer;
       font-size: @breadcrumb-font-base;
       line-height: @breadcrumb-line-height-s;
-      color: @breadcrumb-current-color;
+      color: @breadcrumb-text-color-current;
       .t-overflow;
 
       &:hover {
-        color: @breadcrumb-color-hover;
+        color: @breadcrumb-text-color-hover;
       }
 
       &.t-is-active {
-        color: @breadcrumb-color-hover;
+        color: @breadcrumb-text-color-hover;
       }
     }
   }
@@ -131,7 +116,7 @@
     transform: translateX(-50%);
     width: 300px;
     padding: @spacer;
-    color: @breadcrumb-current-color;
+    color: @breadcrumb-text-color-current;
     background: #fff;
     border-radius: @border-radius * .5;
     box-shadow: @breadcrumb-option-box-shadow;
