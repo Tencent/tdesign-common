@@ -1,6 +1,7 @@
 .input-inner-base() {
   border-width: 1px;
   border-style: solid;
+  border-radius: @border-radius;
   border-color: @input-border-color-default;
   padding: 0 @input-padding-horizontal-default;
   background-color: @input-bg-color-default;
@@ -108,9 +109,11 @@
     white-space: nowrap;
     & when (@position = append) {
       border-left: 0;
+      border-radius: 0 @border-radius @border-radius 0;
     }
     & when (@position = prepend) {
       border-right: 0;
+      border-radius: @border-radius 0 0 @border-radius;
     }
   }
 }
