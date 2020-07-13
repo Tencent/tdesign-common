@@ -17,7 +17,8 @@
     color: @menu-light-item-color;
     cursor: pointer;
 
-    &.@{prefix}-is-active {
+    &.@{prefix}-is-active,
+    &:hover {
       opacity: 1;
       color: @menu-light-active-color;
       border-bottom: 2px solid @menu-light-active-color;
@@ -58,16 +59,9 @@
   }
 }
 
-// submenu
-.@{prefix}-submenu {
-
-  &-icon {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    font-size: @menu-fontsize;
-  }
+// head-submenu
+.@{prefix}-head-submenu {
+  position: absolute;
 }
 
 // head-menu
@@ -88,6 +82,13 @@
     width: 256px;
     left: 25px;
     font-size: 0;
+
+    &--center {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
   }
 
   .@{prefix}-menu {
@@ -122,8 +123,27 @@
 
   &.@{prefix}-menu-mode__tile {
 
-    .@{prefix}-submenu {
+    height: 128px;
+
+    .@{prefix}-menu__item {
+      position: initial;
+    }
+
+    .@{prefix}-head-submenu {
+      position: absolute;
+      left: 0;
+      right: 0;
       background: @menu-theme-light;
+
+      .@{prefix}-menu__item {
+        color: @menu-light-item-color;
+      }
+
+      .@{prefix}-is-active {
+        opacity: 1;
+        color: @menu-light-active-color;
+        border-bottom: 2px solid @menu-light-active-color;
+      }
     }
   }
 
@@ -262,6 +282,10 @@
       .@{prefix}-menu__item {
         padding-left: 60px;
       }
+
+      &--show {
+        display: block;
+      }
     }
 
     .@{prefix}-menu__popup {
@@ -286,6 +310,14 @@
       .@{prefix}-icon {
         font-size: 20px;
         margin-right: 20px;
+      }
+
+      .@{prefix}-submenu-icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
       }
 
       &.@{prefix}-is-active {
