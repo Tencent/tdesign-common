@@ -10,6 +10,7 @@
   line-height: @select-height-default;
   background: @select-background-color;
   border: 1px solid @select-border-color;
+  border-radius: 2px;
   box-shadow: @select-box-shabow;
   padding: @select-padding;
 
@@ -151,6 +152,9 @@
   &:hover,
   :active {
     background: @select-hover-background-color;
+  }
+  .@{prefix}-checkbox__label {
+    color: @select-option-checkbox-color;
   }
 }
 
