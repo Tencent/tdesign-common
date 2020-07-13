@@ -7,12 +7,20 @@
 
 .@{prefix}-progress {
 
-  &_default &__percent {
+  &--info &__percent {
     background-color: @primary-color;
   }
 
-  &_error &__percent {
+  &--info &__text-percentage {
+    color: @progress-text-color;
+  }
+
+  &--error &__percent {
     background-color: @error-color;
+  }
+
+  &--error &__text-percentage {
+    color: @error-color;
   }
 
   &__inner {
@@ -46,7 +54,7 @@
     min-width: @progress-mini-width;
   }
 
-  &__text-info {
+  &__text-percentage {
     display: inline-block;
     text-align: right;
     font-size: @progress-font-size;
@@ -54,4 +62,3 @@
     line-height: @progress-text-line-height;
   }
 }
-
