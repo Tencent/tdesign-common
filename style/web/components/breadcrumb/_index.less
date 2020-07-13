@@ -1,0 +1,157 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-breadcrumb {
+  .breadcrumb;
+
+        
+  &__item {
+    display: flex;
+    align-items: center;
+    color: @breadcrumb-text-color-default;
+    text-decoration: none;
+
+    &.@{prefix}-is-current {
+      color: @breadcrumb-text-color-current;
+			
+      .t-icon {
+        color: @breadcrumb-icon-color-current;
+      }
+    }
+
+    .t-icon {
+      margin-right: @spacer-half;
+    }
+		
+    .t-separator {
+      margin-left: @spacer;
+    }
+
+    //箭头型
+    &--arrow {
+      .v-inlineblock;
+      margin: 0 @spacer-half;
+      line-height: 0;
+      color: @breadcrumb-icon-arrow-color-default;
+    }
+
+    //斜杠型
+    &--slash {        
+      .v-inlineblock;
+      margin: 0 @spacer-half;
+      line-height: 0;
+      color: @breadcrumb-icon-slash-color-default;
+    }
+  }
+        
+  &__inner {
+    .v-inlineblock;
+    font-size: @breadcrumb-font-base;
+    word-break: break-all;
+
+    &:hover {
+      color: @breadcrumb-text-color-hover;
+    }
+  }
+        
+  //下拉框
+  &__select {
+    position: relative;
+
+    &:hover {
+			
+      .@{prefix}-breadcrumb__option {
+        display: block;
+      }
+    }
+	
+    &-item {
+
+      &:hover {
+				
+        .t-icon {
+          color: @breadcrumb-icon-color-hover;
+        }
+      }
+    }
+  }
+        
+  &__option {
+    display: none;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 120px;
+    background: #fff;
+    box-shadow: @breadcrumb-option-box-shadow;
+    z-index: 20;
+
+    &-item {
+      padding: @spacer;
+      font-size: @breadcrumb-font-base;
+      line-height: @breadcrumb-line-height-s;
+      color: @breadcrumb-text-color-current;
+      .t-overflow;
+
+      &:hover {
+        color: @breadcrumb-text-color-hover;
+      }
+
+      &.t-is-active {
+        color: @breadcrumb-text-color-hover;
+      }
+    }
+  }
+        
+  //文案超长
+  &__inner-msg {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    width: 300px;
+    padding: @spacer;
+    color: @breadcrumb-text-color-current;
+    background: #fff;
+    border-radius: @border-radius * .5;
+    box-shadow: @breadcrumb-option-box-shadow;
+    z-index: 20;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 6px 0 6px;
+      border-color: #fff transparent transparent transparent;
+      z-index: 20;
+    }
+
+  }
+
+  &--text-oveflow {
+    position: relative;
+
+    &:hover {
+
+      .@{prefix}-breadcrumb__inner-msg {
+        display: block;
+      }
+
+    }
+
+    .@{prefix}-breadcrumb__inner {
+      max-width: 200px;
+      .t-overflow;
+    }
+  }
+}
