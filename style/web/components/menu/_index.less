@@ -51,6 +51,7 @@
     position: absolute;
     background: @menu-theme-light;
     top: 68px;
+    z-index: @menu-outer-zindex;
 
     .@{prefix}-menu__item {
       height: 40px;
@@ -134,6 +135,7 @@
       left: 0;
       right: 0;
       background: @menu-theme-light;
+      z-index: @menu-outer-zindex;
 
       .@{prefix}-menu__item {
         color: @menu-light-item-color;
@@ -308,6 +310,7 @@
       left: 100%;
       margin-left: 1px;
       background: @menu-popup-bg-color;
+      z-index: @menu-outer-zindex;
     }
 
     .@{prefix}-menu__item {
