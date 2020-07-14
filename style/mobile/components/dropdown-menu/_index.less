@@ -1,0 +1,275 @@
+@import "./_var.less";
+@import "../../mixins/_index.less";
+
+/** dropdwon-menu */
+.@{prefix}-dropdown-menu {
+  &__bar {
+    position: relative;
+    display: flex;
+    height: 48px;
+    background: @dropdown-menu-color-block;
+    &::after {
+      .hairline-bottom();
+    }
+  }
+  &__item {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    &.@{prefix}-is-active .@{prefix}-dropdown-menu__title {
+      color: @dropdown-menu-primary-color;
+      &::after {
+        border-top-color: @dropdown-menu-primary-color;
+      }
+    }
+    &.@{prefix}-is-disabled .@{prefix}-dropdown-menu__title {
+      color: @dropdown-menu-disabled-color;
+      &::after {
+        border-top-color: @dropdown-menu-disabled-color;
+      }
+    }
+  }
+  &__title {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 0 @spacer;
+    color: #000;
+    font-size: 16px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -5px;
+      margin-top: -2px;
+      border-width: 6px 5px;
+      border-style: solid;
+      border-color: @dropdown-menu-level-2-color transparent transparent;
+    }
+  }
+}
+
+/** dropdwon-item */
+.@{prefix}-dropdown-item {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: @dropdown-item-z-index;
+  overflow: hidden;
+  &__content {
+    position: absolute;
+    max-height: @dropdown-item-height;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: @dropdown-item-content-z-index;
+  }
+  &__bd {
+    flex: 1;
+    background: @dropdown-menu-color-block;
+  }
+  &__ft {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 56px;
+    &::before {
+      z-index: 1;
+      .hairline-top();
+    }
+    .@{prefix}-button {
+      flex: 1;
+      height: 100%;
+      border-radius: 0;
+      border: none;
+      &::after {
+        display: none;
+      }
+      &--text {
+        color: #000;
+      }
+    }
+  }
+  .@{prefix}-cell {
+    &-group {
+      margin: 0;
+      &-container {
+        &::before,&::after{
+          display: none;
+        }
+        
+      }
+    }
+    &--value {
+      overflow: hidden;
+    }
+  }
+  .@{prefix}-radio,
+  .@{prefix}-check-box {
+    flex-direction: row-reverse;
+    white-space: nowrap;
+    &__content-wrap {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .@{prefix}-check-box {
+    &__icon-left {
+      margin-right: 0;
+      margin-left: @spacer / 2;
+      &.@{prefix}-is-checked
+        + .@{prefix}-check-box__content-wrap
+        .@{prefix}-check-box__content-title {
+        color: @dropdown-menu-primary-color;
+      }
+    }
+  }
+  .@{prefix}-radio__content-wrap {
+    margin-left: 0;
+  }
+  /** 树形结构 */
+  .@{prefix}-is-tree {
+    height: 70%;
+    .@{prefix}-dropdown-item__bd {
+      display: flex;
+      align-items: flex-start;
+      overflow: hidden;
+      .@{prefix}-cell-group {
+        flex: 1;
+        margin: 0;
+      }
+    }
+    .@{prefix}-check-group {
+      .@{prefix}-cell:not(:last-child)::after {
+        display: none;
+      }
+    }
+    .@{prefix}-cell {
+      background: none;
+      &-group {
+        height: 100%;
+        &-container {
+          height: 100%;
+          overflow-y: auto;
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+    &.@{prefix}-is-col2 .@{prefix}-cell-group,
+    &.@{prefix}-is-col3 .@{prefix}-cell-group {
+      &:nth-child(1) {
+        background: #f5f5f5;
+        .@{prefix}-cell-group-container {
+          background: none;
+          .@{prefix}-check-box__icon-left,
+          .@{prefix}-radio__default-shape {
+            display: none;
+          }
+        }
+      }
+    }
+    &.@{prefix}-is-col3 .@{prefix}-cell-group {
+      &:nth-child(2) {
+        background: #f9f9f9;
+        .@{prefix}-cell-group-container {
+          background: none;
+          .@{prefix}-check-box__icon-left {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  /** multi 多选多列情况 */
+  .@{prefix}-is-multi {
+    .@{prefix}-dropdown-item__bd {
+      padding-top: @spacer;
+      padding-bottom: @spacer;
+      overflow-y: auto;
+    }
+    .@{prefix}-cell {
+      padding-top: @spacer;
+      padding-bottom: @spacer;
+      &:not(:last-child)::after {
+        display: none;
+      }
+      &-group-container {
+        &::after {
+          display: none;
+        }
+      }
+    }
+    .@{prefix}-check-box {
+      text-align: center;
+      height: 37px;
+      background: #f5f5f5;
+      border-radius: @dropdown-item-border-radius;
+      padding-left: @spacer;
+      padding-right: @spacer;
+      &__icon-left {
+        display: none;
+      }
+    }
+    &.@{prefix}-is-col2 {
+      .@{prefix}-cell {
+        width: 50%;
+        display: inline-block;
+        padding-left: @spacer;
+        padding-right: @spacer;
+        &-group {
+          padding-left: @spacer;
+          padding-right: @spacer;
+        }
+      }
+    }
+    &.@{prefix}-is-col3 {
+      .@{prefix}-cell {
+        width: 33.33%;
+        display: inline-block;
+        padding-left: @spacer;
+        padding-right: @spacer;
+        &-group {
+          padding-left: @spacer;
+          padding-right: @spacer;
+        }
+      }
+    }
+  }
+  /** dropRadio */
+  &__radio {
+    .@{prefix}-radio__default-shape {
+      display: none;
+    }
+    &.@{prefix}-is-checked {
+      .@{prefix}-radio {
+        &__default-shape {
+          display: block;
+          color: @dropdown-menu-primary-color;
+          background: none;
+          border: none;
+          border-radius: 0;
+          width: auto;
+          height: auto;
+          font-size: 0;
+          .@{prefix}-icon svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+        &__content-title {
+          color: @dropdown-menu-primary-color;
+        }
+      }
+    }
+  }
+}
