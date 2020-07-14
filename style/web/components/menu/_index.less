@@ -83,11 +83,11 @@
     left: 25px;
     font-size: 0;
 
-    &--center {
+    .@{prefix}-menu__logo--center {
       position: relative;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -168,7 +168,7 @@
 
     .@{prefix}-menu {
 
-      > .@{prefix}-menu__item {
+      >.@{prefix}-menu__item {
         text-align: center;
         padding: 0;
       }
@@ -191,7 +191,7 @@
         display: none;
       }
 
-      > .@{prefix}-menu__item {
+      >.@{prefix}-menu__item {
         padding: 0;
         min-width: initial;
 
@@ -250,7 +250,7 @@
 
       &.@{prefix}-is-active {
 
-        > .@{prefix}-menu__item {
+        >.@{prefix}-menu__item {
           margin: 4px 0;
           height: 40px;
           line-height: 40px;
