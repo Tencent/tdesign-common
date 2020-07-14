@@ -258,9 +258,19 @@
           background: transparent;
         }
 
-        .@{prefix}-menu__dropdown,
         .@{prefix}-menu__popup {
           display: block;
+        }
+      }
+
+      &.@{prefix}-is-opened {
+
+        .@{prefix}-submenu-icon {
+          transform: rotate(180deg);
+        }
+
+        .@{prefix}-menu__dropdown {
+          height: auto;
         }
       }
     }
@@ -276,8 +286,10 @@
     }
 
     .@{prefix}-menu__dropdown {
-      display: none;
+      // display: none;
       position: static;
+      overflow: hidden;
+      height: 0;
 
       .@{prefix}-menu__item {
         padding-left: 60px;
@@ -317,6 +329,8 @@
         right: 0;
         top: 50%;
         transform: translateX(-50%);
+        transition: .3s all;
+        transform: rotate(0deg);
         font-size: 12px;
       }
 
