@@ -40,11 +40,32 @@
   .input-fix-position(prefix);
   .input-fix-position(suffix);
 
+  .@{prefix}-input__suffix-clear {
+    cursor: pointer;
+  }
+
   // 输入框大小
   &.@{prefix}-size-l {
     &>.@{prefix}-input__inner {
       height: @input-height-high;
       line-height: @input-height-high;
+    }
+  }
+
+  .@{prefix}-input__prefix,
+  .@{prefix}-input__suffix {
+    .@{prefix}-icon {
+      color: @text-level-3-color;
+    }
+  }
+
+  // 输入框被聚焦
+  &.@{prefix}-is-focused {
+    .@{prefix}-input__prefix,
+    .@{prefix}-input__suffix {
+      .@{prefix}-icon {
+        color: @input-border-color-default-focus;
+      }
     }
   }
 }
@@ -54,18 +75,66 @@
   display: inline-flex;
   align-items: stretch;
 
+  .@{prefix}-input {
+    .@{prefix}-input__inner {
+      border-radius: 0;
+    }
+
+    &:first-child {
+      .@{prefix}-input__inner {
+        border-radius: @border-radius 0 0 @border-radius;
+      }
+    }
+
+    &:last-child {
+      .@{prefix}-input__inner {
+        border-radius: 0 @border-radius @border-radius 0;
+      }
+    }
+  }
+
   .@{prefix}-input,
   .@{prefix}-button,
   .@{prefix}-select {
+    border-radius: 0;
 
     &:not(:first-child) {
       margin-left: -1px;
+    }
+  }
+  .@{prefix}-button,
+  .@{prefix}-select {
+
+    &:first-child {
+      border-radius: @border-radius 0 0 @border-radius;
+    }
+
+    &:last-child {
+      border-radius: 0 @border-radius @border-radius 0;
     }
   }
 
   &--seperate {
     .@{prefix}-input + .@{prefix}-input {
       margin-left: 8px;
+    }
+    .@{prefix}-button,
+    .@{prefix}-select {
+      border-radius: @border-radius;
+
+      &:first-child,
+      &:last-child {
+        border-radius: @border-radius;
+      }
+    }
+    .@{prefix}-input {
+
+      &:first-child,
+      &:last-child {
+        .@{prefix}-input__inner {
+          border-radius: @border-radius;
+        }
+      }
     }
   }
 
@@ -97,6 +166,30 @@
     width: 100%;
     vertical-align: middle;
     display: table-cell;
+  }
+
+  &--prepend {
+    &>.@{prefix}-input {
+      .@{prefix}-input__inner {
+        border-radius: 0 @border-radius @border-radius 0;
+      }
+    }
+  }
+
+  &--append {
+    &>.@{prefix}-input {
+      .@{prefix}-input__inner {
+        border-radius: @border-radius 0 0 @border-radius;
+      }
+    }
+  }
+
+  &--prepend&--append {
+    &>.@{prefix}-input {
+      .@{prefix}-input__inner {
+        border-radius: 0;
+      }
+    }
   }
 }
 

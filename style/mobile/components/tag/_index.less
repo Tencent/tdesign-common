@@ -17,7 +17,7 @@
 
     @theme: extract(@themes, @i);
 
-    @theme-color: 'tag-@{theme}-color';
+    @theme-color: "tag-@{theme}-color";
 
     &.@{prefix}-tag--theme-@{theme} {
       background-color: mix(@@theme-color, @color-white, @backgroundColorWeight);
