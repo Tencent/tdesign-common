@@ -296,6 +296,8 @@
       left: 0;
       height: 1px;
       background-color: @primary-color;
+      animation: tTableProgressbar 2s ease-in-out;
+      animation-fill-mode: both;
     }
 
     .@{prefix}-table--loading-message {
@@ -315,4 +317,11 @@
     }
   }
 
+}
+
+@keyframes tTableProgressbar {
+
+  0% { width: 0; }
+
+  100% { width: 100%; }
 }
