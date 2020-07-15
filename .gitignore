@@ -23,6 +23,7 @@ dist/
 style/web/.stylelintcache
 
 .history
+temp*
 
 # contributors
 contributors/members.txt
