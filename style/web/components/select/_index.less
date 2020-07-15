@@ -10,6 +10,7 @@
   line-height: @select-height-default;
   background: @select-background-color;
   border: 1px solid @select-border-color;
+  border-radius: 2px;
   box-shadow: @select-box-shabow;
   padding: @select-padding;
 
@@ -34,11 +35,9 @@
     right: 0;
     top: 0;
   }
-  // & .@{prefix}-select-left-icon {
-  // }
-  .@{prefix}-select-arrow.@{prefix}-is-visible {
+  .@{prefix}-select-right-icon.@{prefix}-is-visible {
     transform: scaleY(-1);
-
+  
     /*IE*/
     filter: FlipV;
   }
@@ -151,6 +150,9 @@
   &:hover,
   :active {
     background: @select-hover-background-color;
+  }
+  .@{prefix}-checkbox__label {
+    color: @select-option-checkbox-color;
   }
 }
 

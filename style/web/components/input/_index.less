@@ -51,6 +51,23 @@
       line-height: @input-height-high;
     }
   }
+
+  .@{prefix}-input__prefix,
+  .@{prefix}-input__suffix {
+    .@{prefix}-icon {
+      color: @text-level-3-color;
+    }
+  }
+
+  // 输入框被聚焦
+  &.@{prefix}-is-focused {
+    .@{prefix}-input__prefix,
+    .@{prefix}-input__suffix {
+      .@{prefix}-icon {
+        color: @input-border-color-default-focus;
+      }
+    }
+  }
 }
 
 .@{prefix}-input-group {
