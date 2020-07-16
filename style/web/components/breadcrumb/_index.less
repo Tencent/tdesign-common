@@ -6,8 +6,10 @@
 
 .@{prefix}-breadcrumb {
   .breadcrumb;
-
-        
+  &__separator {
+    margin:0 @spacer;
+  }
+       
   &__item {
     display: flex;
     align-items: center;
@@ -24,10 +26,6 @@
 
     .t-icon {
       margin-right: @spacer-half;
-    }
-		
-    .t-separator {
-      margin-left: @spacer;
     }
 
     //箭头型
