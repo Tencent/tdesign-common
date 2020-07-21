@@ -60,6 +60,9 @@
   bottom: 0;
   z-index: @dropdown-item-z-index;
   overflow: hidden;
+  &.@{prefix}-is-expanded &__content {
+    transform: translate(0, 0);
+  }
   &__content {
     position: absolute;
     max-height: @dropdown-item-height;
@@ -69,10 +72,12 @@
     display: flex;
     flex-direction: column;
     z-index: @dropdown-item-content-z-index;
+    transform: translate(0, -100%);
   }
   &__bd {
     flex: 1;
     background: @dropdown-menu-color-block;
+    overflow: auto;
   }
   &__ft {
     position: relative;
@@ -96,6 +101,9 @@
         color: #000;
       }
     }
+  }
+  .@{prefix}-mask {
+      position: absolute;
   }
   .@{prefix}-cell {
     &-group {
