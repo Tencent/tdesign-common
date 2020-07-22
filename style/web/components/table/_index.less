@@ -1,0 +1,327 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-table {
+  font-size: @table-font-size;
+
+  &-content {
+    position: relative;
+  }
+
+  &-pagination {
+    padding: @table-padding-normal;
+  }
+
+  // table 标签基础样式
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    position: relative;
+    padding: @table-padding-normal;
+    border-bottom: 1px solid @table-border-color;
+    line-height: @table-line-height;
+    vertical-align: middle;
+  }
+
+  th {
+    color: @table-head-text-color;
+  }
+
+  td {
+
+    > a {
+      text-decoration: none;
+      color: @table-link-text-color;
+    }
+  }
+
+  // 紧凑型表格
+  &.@{prefix}-size-s {
+
+    th,
+    td {
+      padding: @table-padding-small;
+    }
+  }
+
+  // 宽松型表格
+  &.@{prefix}-size-l {
+
+    th,
+    td {
+      padding: @table-padding-large;
+    }
+  }
+
+  // 展开/收起列
+  .@{prefix}-table-expandable-icon-cell,
+  .@{prefix}-table-selection-cell {
+    width: 16px;
+  }
+
+  // @todo: 待优化
+  .@{prefix}-radio,
+  .@{prefix}-checkbox {
+    line-height: 1;
+    font-size: 0;
+    vertical-align: middle;
+  }
+
+  // 边框线表格
+  &--bordered {
+
+    th,
+    td {
+      border: 1px solid @table-border-color;
+    }
+  }
+
+  // 斑马线表格
+  &--striped {
+
+    tbody {
+
+      tr {
+
+        &:nth-of-type(odd) {
+          background-color: @table-highlight-bg-color;
+        }
+      }
+    }
+
+    &.@{prefix}-table--hoverable {
+
+      tbody {
+
+        tr {
+          transition: background-color .3s ease-in;
+
+          &:hover {
+            background-color: @table-highlight-dark-bg-color;
+          }
+        }
+      }
+    }
+  }
+
+  // 可悬停表格
+  &--hoverable {
+
+    tbody {
+
+      tr {
+        transition: background-color .3s ease-in;
+
+        &:hover {
+          background-color: @table-highlight-bg-color;
+        }
+      }
+    }
+  }
+
+  // 文本顶端对齐
+  &.@{prefix}-table-valign__top {
+
+    tbody {
+
+      td {
+
+        vertical-align: top;
+      }
+    }
+  }
+
+  // column highlight
+  .@{prefix}-table__cell--highlight {
+    background-color: @table-highlight-bg-color;
+  }
+
+  // 表头固定表格
+  &__header--fixed {
+
+    table {
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      overflow-wrap: break-word;
+      white-space: nowrap;
+    }
+
+    .@{prefix}-table__header {
+      overflow: hidden;
+      box-shadow: @shadow-1;
+    }
+
+    .@{prefix}-table__body {
+      overflow-y: auto;
+    }
+  }
+
+  // 列固定表格
+  &__cell--fixed {
+
+    .@{prefix}-table__header,
+    .@{prefix}-table__body {
+      overflow-x: scroll;
+    }
+
+    table {
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      position: relative;
+    }
+
+    .@{prefix}-table__cell--fixed-left,
+    .@{prefix}-table__cell--fixed-right {
+      z-index: 1;
+      background-color: #fff;
+    }
+
+    .@{prefix}-table__cell--fixed-left-last {
+
+      &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: -1px;
+        content: "";
+        width: 20px;
+        transform: translateX(100%);
+        transition: box-shadow .3s;
+        pointer-events: none;
+      }
+    }
+
+    .@{prefix}-table__cell--fixed-right-first {
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: -1px;
+        content: "";
+        width: 20px;
+        transform: translateX(-100%);
+        transition: box-shadow .3s;
+        pointer-events: none;
+      }
+    }
+
+    &.@{prefix}-table--has-fixed {
+
+      .@{prefix}-table__cell--fixed-left-last {
+
+        &:after {
+          box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, .1);
+        }
+      }
+
+      .@{prefix}-table__cell--fixed-right-first {
+
+        &:after {
+          box-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, .1);
+        }
+      }
+    }
+  }
+
+  // 列宽调整表头单元格
+  .@{prefix}-table__cell-resizable {
+    position: relative;
+
+    .@{prefix}-table__cell--resizer {
+      position: absolute;
+      top: 0;
+      right: -5px;
+      bottom: 0;
+      z-index: 10;
+      width: 10px;
+      cursor: col-resize;
+    }
+  }
+
+  // 数据行金融
+  .@{prefix}-table__row--disabled {
+    color: @table-row-disabled-color;
+
+    a {
+      color: @table-row-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  // 复杂表头容器
+  .@{prefix}-table__cell--title {
+    display: flex;
+  }
+
+  .@{prefix}-table__cell--sortable {
+    position: relative;
+
+    .@{prefix}-table__cell--title {
+      margin-right: 20px;
+      display: flex;
+
+      .@{prefix}-table__cell--filter {
+        margin-left: 10px;
+      }
+    }
+
+    .@{prefix}-table__cell--sort-trigger {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 20px;
+    }
+  }
+
+  // 表格加载态
+  .@{prefix}-table--loading {
+    position: relative;
+
+    .@{prefix}-table--loading-progressbar {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 1px;
+      background-color: @primary-color;
+      animation: tTableProgressbar 2s ease-in-out;
+      animation-fill-mode: both;
+    }
+
+    .@{prefix}-table--loading-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      color: @text-level-4-color;
+    }
+  }
+
+  .@{prefix}-table--loading-async {
+    text-align: center;
+
+    .@{prefix}-icon {
+      vertical-align: middle;
+    }
+  }
+
+}
+
+@keyframes tTableProgressbar {
+
+  0% { width: 0; }
+
+  100% { width: 100%; }
+}

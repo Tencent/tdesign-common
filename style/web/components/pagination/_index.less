@@ -99,7 +99,7 @@
     cursor: pointer;
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
-        @pagination-padding-horizontal-default;
+      @pagination-padding-horizontal-default;
     );
 
     &:hover {
@@ -190,6 +190,7 @@
   // 迷你尺寸
   &.@{prefix}-size-s {
     .@{prefix}-pagination {
+
       &__total {
         font-size: @pagination-font-s;
       }
@@ -198,7 +199,7 @@
         border: 0 none;
         .pagination-number--size(
           @pagination-height-s; @pagination-font-s;
-            @pagination-padding-horizontal-s;
+          @pagination-padding-horizontal-s;
         );
 
         &.@{prefix}-is-disabled {
@@ -210,7 +211,7 @@
           &.@{prefix}-is-disabled {
             .pagination-number--color(
               @pagination-bg-color-current-disabled;
-                @pagination-text-color-active
+              @pagination-text-color-active
             );
           }
         }
