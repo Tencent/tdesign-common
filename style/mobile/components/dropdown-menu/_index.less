@@ -22,6 +22,7 @@
       color: @dropdown-menu-primary-color;
       &::after {
         border-top-color: @dropdown-menu-primary-color;
+        transform: translate(0, -3px) rotate(180deg);
       }
     }
     &.@{prefix}-is-disabled .@{prefix}-dropdown-menu__title {
@@ -43,10 +44,12 @@
       position: absolute;
       top: 50%;
       right: -5px;
-      margin-top: -2px;
+      margin-top: -5px;
       border-width: 6px 5px;
       border-style: solid;
       border-color: @dropdown-menu-level-2-color transparent transparent;
+      transition: transform 300ms ease;
+      transform: translate(0, 3px) rotate(0deg);
     }
   }
 }
@@ -76,6 +79,7 @@
   }
   &__bd {
     flex: 1;
+    display: flex;
     background: @dropdown-menu-color-block;
     overflow: auto;
   }
@@ -139,6 +143,9 @@
         color: @dropdown-menu-primary-color;
       }
     }
+  }
+  .@{prefix}-cell-group {
+    flex: 1;
   }
   .@{prefix}-radio__content-wrap {
     margin-left: 0;
