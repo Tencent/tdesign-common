@@ -79,7 +79,6 @@
   }
   &__bd {
     flex: 1;
-    display: flex;
     background: @dropdown-menu-color-block;
     overflow: auto;
   }
@@ -265,7 +264,7 @@
     .@{prefix}-radio__default-shape {
       display: none;
     }
-    &.@{prefix}-is-checked {
+    &.@{prefix}-is-tick {
       .@{prefix}-radio {
         &__default-shape {
           display: block;
@@ -281,6 +280,10 @@
             height: 16px;
           }
         }
+      }
+    }
+    &.@{prefix}-is-checked {
+      .@{prefix}-radio {
         &__content-title {
           color: @dropdown-menu-primary-color;
         }
