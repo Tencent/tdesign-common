@@ -7,42 +7,70 @@
 
 .@{prefix}-popup {
   color: @popup-text-color;
-  box-shadow: @popup-shadow;
-  background: @popup-bg;
-  padding: @popup-padding;
-  border: solid 1px @border-level-1-color;
-  border-radius: @border-radius;
   display: inline-block;
-  position: relative;
   z-index: 1001;
+
+  &-content {
+    position: relative;
+    background: @popup-bg;
+    margin: 8px;
+  }
+
+  &-tooltips {
+    border: solid 1px @border-level-1-color;
+    box-shadow: @popup-shadow;
+    border-radius: @border-radius;
+    padding: @popup-padding;
+  }
 
   &-reference {
     display: inline-block;
   }
 }
 
-.@{prefix}-popup_arrow,
-.@{prefix}-popup_arrow::before {
+.@{prefix}-popup_arrow {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  z-index: 1000;
-}
-.@{prefix}-popup_arrow::before {
-  content: "";
-  transform: rotate(45deg);
-  background: #fff;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: @arrow-bg;
+  }
 }
 
-.@{prefix}-popup[data-popper-placement^='top'] > .@{prefix}-popup_arrow {
-  bottom: -6px;
+.@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-popup_arrow {
+  bottom: -5px;
 }
-.@{prefix}-popup[data-popper-placement^='bottom'] > .@{prefix}-popup_arrow {
-  top: -6px;
+.@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-popup_arrow {
+  top: -5px;
 }
-.@{prefix}-popup[data-popper-placement^='left'] > .@{prefix}-popup_arrow {
-  right: -6px;
+.@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-popup_arrow {
+  right: -5px;
 }
-.@{prefix}-popup[data-popper-placement^='right'] > .@{prefix}-popup_arrow {
-  left: -6px;
+.@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-popup_arrow {
+  left: -5px;
+}
+
+// animation
+.@{popup-flow}-enter,
+.@{popup-flow}-exiting,
+.@{popup-flow}-leave-to {
+  opacity: 0;
+}
+.@{popup-flow}-enter-to,
+.@{popup-flow}-entering,
+.@{popup-flow}-leave {
+  opacity: 1;
+  transform: none;
+}
+.@{popup-flow}-enter-active {
+  transition: @flowin-transition;
+}
+.@{popup-flow}-leave-active {
+  transition: @flowin-transition;
 }
