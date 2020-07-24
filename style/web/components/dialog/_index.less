@@ -18,7 +18,7 @@
     // remove space between inline-block elements.
     word-spacing: -6px;
 
-    > h5 {
+    >h5 {
       display: inline-block;
       vertical-align: middle;
       line-height: 22px;
@@ -36,13 +36,14 @@
     // remove space between inline-block elements.
     word-spacing: -6px;
 
-    .t-button + .t-button {
+    .t-button+.t-button {
       margin-left: @spacer;
     }
   }
 
   &--default {
     padding: @dialog-default-spacer;
+
     .@{prefix}-dialog__body {
       padding: @dialog-default-body-spacer;
     }
@@ -50,7 +51,8 @@
 
   &--primary {
     padding: @dialog-primary-spacer;
-    .@{prefix}-dialog__header > h5 {
+
+    .@{prefix}-dialog__header>h5 {
       margin-left: 8px;
     }
 
@@ -58,18 +60,19 @@
       color: @primary-color;
       font-size: 20px;
     }
+
     .@{prefix}-dialog__body {
       padding: @dialog-parimary-body-spacer;
     }
   }
 
-  > .t-icon-close {
+  >.t-icon-close {
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
   }
 
-  > .t-icon-close:hover {
+  >.t-icon-close:hover {
     cursor: pointer;
   }
 
@@ -112,10 +115,16 @@
     position: fixed;
     border: @dialog-border;
 
-    &--center {
+    &--top {
       top: 20%;
       left: 50%;
       transform: translate(-50%, 0);
+    }
+
+    &--center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }
