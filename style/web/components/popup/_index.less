@@ -9,11 +9,11 @@
   color: @popup-text-color;
   display: inline-block;
   z-index: 1001;
-  padding: 8px;
 
   &-content {
     position: relative;
     background: @popup-bg;
+    margin: 8px;
   }
 
   &-tooltips {
@@ -30,7 +30,7 @@
 
 .@{prefix}-popup_arrow {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   width: 10px;
   height: 10px;
   &::before {
@@ -39,7 +39,6 @@
     width: 10px;
     height: 10px;
     transform: rotate(45deg);
-    box-shadow: @popup-shadow;
     background: @arrow-bg;
   }
 }
