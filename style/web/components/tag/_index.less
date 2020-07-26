@@ -38,7 +38,8 @@
     }
   }
 
-  &--close {
+  &--close,
+  &--check {
 
     &:hover {
       color: @tag-default-hover-color;
@@ -71,6 +72,10 @@
       cursor: default;
     }
 
+    &.@{prefix}-tag--check {
+      cursor: pointer;
+    }
+
     // 失效标签
     &.@{prefix}-tag--disabled {
       color: @tag-disabled-color;
@@ -87,16 +92,6 @@
           cursor: text;
         }
       }
-    }
-  }
-
-
-  &--check {
-
-    &:hover {
-      color: @tag-default-hover-color;
-      border-color: currentColor;
-      cursor: pointer;
     }
   }
 
