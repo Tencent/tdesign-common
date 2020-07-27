@@ -5,40 +5,40 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-notice-bar {
-  background-color: @notice-bar-bg-color-1;
+.@{prefix}-noticebar {
+  background-color: @noticebar-bg-color-1;
 
   &--info {
-    background-color: @notice-bar-bg-color-1;
+    background-color: @noticebar-bg-color-1;
   }
 
   &&--info .@{prefix}-icon {
-    color: @notice-bar-icon-color-1;
+    color: @noticebar-icon-color-1;
   }
 
   &&--info &__text {
-    color: @notice-bar-text-color-1;
+    color: @noticebar-text-color-1;
   }
 
   &--error {
-    background-color: @notice-bar-bg-color-2;
+    background-color: @noticebar-bg-color-2;
   }
 
   &&--error .@{prefix}-icon {
-    color: @notice-bar-icon-color-2;
+    color: @noticebar-icon-color-2;
   }
 
   &&--error &__text {
-    color: @notice-bar-text-color-2;
+    color: @noticebar-text-color-2;
   }
   
   &__inner {
     display: flex;
-    padding: @notice-bar-space-4 @notice-bar-space-4;
+    padding: @noticebar-space-4 @noticebar-space-4;
   }
 
   &__hd {
-    margin-right: @notice-bar-space-2;
+    margin-right: @noticebar-space-2;
   }
 
   &__bd {
@@ -51,7 +51,7 @@
     position: relative;
     z-index: 1;
 
-    min-height: @notice-bar-min-height;
+    min-height: @noticebar-min-height;
     overflow: hidden;
   }
 
@@ -73,9 +73,9 @@
   }
 
   &__text {
-    font-size: @notice-bar-text-font-size;
+    font-size: @noticebar-text-font-size;
     line-height: 1.5;
-    color: @notice-bar-text-color-1;
+    color: @noticebar-text-color-1;
 
     display: -webkit-box; // stylelint-disable-line
     text-overflow: ellipsis;
@@ -86,9 +86,9 @@
 
   &__text-detail {
     display: inline-block;
-    padding-left: @notice-bar-space-2;
+    padding-left: @noticebar-space-2;
     line-height: 1.5;
-    font-size: @notice-bar-text-font-size;
+    font-size: @noticebar-text-font-size;
     color: @primary-color;
     text-decoration: underline;
   }
@@ -98,17 +98,17 @@
   }
 
   &__ft {
-    margin-left: @notice-bar-space-4;
+    margin-left: @noticebar-space-4;
   }
 
   .@{prefix}-icon {
     display: block;
     position: relative;
-    top: @notice-bar-top;
-    color: @notice-bar-icon-color-1;
+    top: @noticebar-top;
+    color: @noticebar-icon-color-1;
   }
 
   & + & {
-    margin-top: @notice-bar-space-4;
+    margin-top: @noticebar-space-4;
   }
 }
