@@ -49,13 +49,28 @@
 
   &__dropdown {
     position: absolute;
+    display: none;
     background: @menu-theme-light;
     top: 68px;
     z-index: @menu-outer-zindex;
 
+    &.t-is-show {
+      display: block;
+    }
+
     .@{prefix}-menu__item {
       height: 40px;
       line-height: 40px;
+    }
+  }
+}
+
+.@{prefix}-menu-mode__dropdown {
+
+  .@{prefix}-is-opened {
+
+    .@{prefix}-menu__dropdown {
+      display: block;
     }
   }
 }
@@ -251,7 +266,7 @@
 
     .@{prefix}-menu {
       position: relative;
-      // overflow-y: auto; // 临时屏蔽
+      overflow-y: auto;
       flex: 1;
     }
 
