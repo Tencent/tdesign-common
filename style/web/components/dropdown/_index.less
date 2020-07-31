@@ -1,0 +1,57 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-dropdown {
+  background-color: @dropdown-bg-color;
+  position: relative;
+  border-radius: @border-radius;
+  display: flex;
+  justify-content: start;
+
+  &__column {
+    font-size: 14px;
+    color: rgba(0,0,0,0.90);
+    text-align: left;
+    max-height: 380px;
+    overflow-y: auto;
+  }
+
+  &.multi-layer {
+    .@{prefix}-dropdown__column {
+      min-width: 152px;
+    }
+  }
+
+  &__item {
+    padding: 9px 12px;
+    position: relative;
+    min-width: 112px;
+    .t-icon {
+      position: absolute;
+      right: 10px;
+    }
+    &.active {
+      color: #0052D9;
+      font-weight: bold;
+    }
+    &.hover {
+      color: #0052D9;
+      font-weight: bold;
+      background: #EBF2FF;
+    }
+    &.disable {
+      color: rgba(0,0,0,0.16);
+      cursor: not-allowed;
+    }
+  }
+
+  &__split {
+    width: 100%;
+    height: 1px;
+    background: #EEEEEE;
+  }
+}
