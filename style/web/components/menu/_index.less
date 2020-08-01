@@ -189,6 +189,17 @@
   box-shadow: @menu-default-shadow;
   transition: .3s width;
 
+  &.@{prefix}-menu-mode__popup {
+
+    .@{prefix}-is-active {
+
+      .@{prefix}-menu__popup {
+
+        display: none;
+      }
+    }
+  }
+
   &.@{prefix}-is-collapsed {
     width: 72px;
 
@@ -266,8 +277,12 @@
 
     .@{prefix}-menu {
       position: relative;
-      overflow-y: auto;
+      // overflow-y: auto;
       flex: 1;
+
+      &--scroll {
+        overflow-y: auto;
+      }
     }
 
     .@{prefix}-menu-group {
@@ -295,9 +310,9 @@
           background: transparent;
         }
 
-        .@{prefix}-menu__popup {
-          display: block;
-        }
+        // .@{prefix}-menu__popup {
+        //   // display: block;
+        // }
       }
 
       &.@{prefix}-is-opened {
@@ -308,6 +323,10 @@
 
         .@{prefix}-menu__dropdown {
           height: auto;
+        }
+
+        .@{prefix}-menu__popup {
+          display: block;
         }
       }
     }
