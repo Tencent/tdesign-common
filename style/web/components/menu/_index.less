@@ -49,9 +49,14 @@
 
   &__dropdown {
     position: absolute;
+    display: none;
     background: @menu-theme-light;
     top: 68px;
     z-index: @menu-outer-zindex;
+
+    &.t-is-show {
+      display: block;
+    }
 
     .@{prefix}-menu__item {
       height: 40px;
@@ -60,9 +65,14 @@
   }
 }
 
-// head-submenu
-.@{prefix}-head-submenu {
-  position: absolute;
+.@{prefix}-menu-mode__dropdown {
+
+  .@{prefix}-is-opened {
+
+    .@{prefix}-menu__dropdown {
+      display: block;
+    }
+  }
 }
 
 // head-menu
@@ -126,6 +136,13 @@
 
     // height: 128px;
 
+    .@{prefix}-is-active {
+
+      .@{prefix}-head-submenu {
+        display: block;
+      }
+    }
+
     .@{prefix}-menu__item {
       position: initial;
     }
@@ -137,6 +154,11 @@
       height: 64px;
       background: @menu-theme-light;
       z-index: @menu-outer-zindex;
+      display: none;
+
+      &--show {
+        display: block;
+      }
 
       .@{prefix}-menu__item {
         color: @menu-light-item-color;
@@ -165,6 +187,18 @@
   display: inline-block;
   background: @menu-theme-light;
   box-shadow: @menu-default-shadow;
+  transition: .3s width;
+
+  &.@{prefix}-menu-mode__popup {
+
+    .@{prefix}-is-active {
+
+      .@{prefix}-menu__popup {
+
+        display: none;
+      }
+    }
+  }
 
   &.@{prefix}-is-collapsed {
     width: 72px;
@@ -185,6 +219,16 @@
 
       .@{prefix}-icon {
         margin-right: initial;
+      }
+    }
+
+    .@{prefix}-menu__popup {
+
+      .@{prefix}-menu__item {
+
+        span {
+          display: block;
+        }
       }
     }
 
@@ -233,7 +277,12 @@
 
     .@{prefix}-menu {
       position: relative;
+      // overflow-y: auto;
       flex: 1;
+
+      &--scroll {
+        overflow-y: auto;
+      }
     }
 
     .@{prefix}-menu-group {
@@ -261,9 +310,9 @@
           background: transparent;
         }
 
-        .@{prefix}-menu__popup {
-          display: block;
-        }
+        // .@{prefix}-menu__popup {
+        //   // display: block;
+        // }
       }
 
       &.@{prefix}-is-opened {
@@ -274,6 +323,10 @@
 
         .@{prefix}-menu__dropdown {
           height: auto;
+        }
+
+        .@{prefix}-menu__popup {
+          display: block;
         }
       }
     }
