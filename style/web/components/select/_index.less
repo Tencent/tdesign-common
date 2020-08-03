@@ -26,6 +26,11 @@
 
   & .@{prefix}-select-placeholder {
     color: @select-placeholder-color;
+    margin-left: @select-placeholder-margin;
+  }
+
+  & .@{prefix}-select-selectedSingle {
+    margin-left: @select-placeholder-margin;
   }
 
   & .@{prefix}-select-right-icon {
@@ -34,6 +39,7 @@
     margin: @select-icon-margin;
     right: 0;
     top: 0;
+    color: @select-icon-color;
   }
   .@{prefix}-select-right-icon.@{prefix}-is-visible {
     transform: scaleY(-1);
@@ -43,6 +49,7 @@
   }
 
   .@{prefix}-select-input {
+    margin-left: @select-placeholder-margin;
 
     .@{prefix}-input__inner {
       border: 0;
@@ -115,6 +122,11 @@
 }
 
 // option group
+.@{prefix}-option-group +.@{prefix}-option-group {
+  border-top: 1px @select-optiongroup-border-color solid;
+  padding-top: @select-optiongroup-border-padding;
+  margin-top: @select-optiongroup-border-margin;
+}
 .@{prefix}-option-group-header {
   color: @option-group-header-color;
   display: block;
@@ -124,6 +136,9 @@
   height: @select-option-height-default;
   line-height: @select-option-line-height;
   padding: @select-option-padding-default;
+}
+.@{prefix}-option-group .@{prefix}-select-option:hover {  
+  color: @option-group-header-color;
 }
 
 .@{prefix}-option-group-header.@{prefix}-size-l {
