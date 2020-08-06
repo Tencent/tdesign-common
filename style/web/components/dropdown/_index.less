@@ -14,14 +14,17 @@
   &__menu {
     display: flex;
     justify-content: start;
+
     &__column {
       font-size: @dropdown-text-font;
       color: @dropdown-text-color;
       text-align: left;
       overflow-y: auto;
+
       &.submenu__visible {
         border-right: @dropdown-border;
       }
+
       /**滚动条*/
     }
   }
@@ -32,8 +35,10 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+
     &.has-suffix {
       padding-right: 30px;
+
       .children-suffix {
         position: absolute;
         right: 10px;
@@ -46,18 +51,22 @@
       color: @dropdown-active-color;
       font-weight: bold;
     }
+
     &.@{prefix}-is-focused {
       color: @dropdown-active-color;
       font-weight: bold;
       background: @dropdown-active-bg-color;
     }
+
     &.@{prefix}-is-disabled {
       color: @dropdown-disable-color;
       cursor: not-allowed;
     }
+
     &.top-split {
       border-top: @dropdown-border;
     }
+
     &__content {
       display: flex;
       align-items: center;
@@ -65,8 +74,9 @@
       .@{prefix}-icon {
         margin: 3px;
       }
+
       &__text {
-        overflow:hidden;
+        overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
