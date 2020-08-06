@@ -318,7 +318,7 @@
 
   // 一般图标按钮
   &--icon {
-     
+    border: 1px solid @btn-line-border-color;
     border-radius: @border-radius-50;
     .button-size(
       36px ;
@@ -327,7 +327,8 @@
     );
 
     &:hover {
-      background-color: @btn-link-bg-color-hover;
+      border-color: @btn-primary-color-hover;
+      // background-color: @btn-link-bg-color-hover;
     }
 
     &:active {
