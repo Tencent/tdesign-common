@@ -74,10 +74,52 @@
   // 边框线表格
   &--bordered {
 
-    th,
-    td {
+    // th,
+    // td {
+    //   border: 1px solid @table-border-color;
+    // }
+
+    // 表格边框优化，适配固定列/固定表头场景
+    .@{prefix}-table-content {
       border: 1px solid @table-border-color;
+      border-bottom: 0 none;
+
+      th {
+        border-right: 1px solid @table-border-color;
+        border-bottom: 1px solid @table-border-color;
+
+        &:last-child {
+          border-right: 0 none;
+        }
+      }
+
+      td {
+        border-right: 1px solid @table-border-color;
+        border-bottom: 1px solid @table-border-color;
+
+        &:last-child {
+          border-right: 0 none;
+        }
+      }
     }
+
+    // 固定表头表格底部边框线显示优化
+    &.@{prefix}-table__header--fixed {
+      .@{prefix}-table-content {
+        border-bottom: 1px solid @table-border-color;
+
+        tr {
+
+          &:last-child {
+
+            td {
+              border-bottom: 0 none;
+            }
+          }
+        }
+      }
+    }
+
   }
 
   // 斑马线表格
