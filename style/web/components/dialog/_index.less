@@ -3,11 +3,14 @@
 
 @import "./_var.less";
 
+@import "./_animate.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
 .@{prefix}-dialog {
-  width: @dialog-size-s-width;
+  min-width: @dialog-size-s-width;
+  max-width: @dialog-size-l-width;
   background-color: @dialog-bg-color;
   position: relative;
   border-radius: @border-radius;
@@ -105,6 +108,42 @@
     display: none;
   }
 
+  .@{prefix}-dialog-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2500;
+    overflow: auto;
+    outline: 0;
+
+    &.@{prefix}-dialog--top {
+      .@{prefix}-dialog {
+        top: 20%;
+        margin: 0 auto;
+      }
+    }
+
+    &.@{prefix}-dialog--center {
+      text-align: center;
+
+      &:before {
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle;
+        content: "";
+      }
+      .@{prefix}-dialog {
+        top: 0;
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+      }
+    }
+  }
+
   .@{prefix}-dialog-mask {
     position: fixed;
     top: 0;
@@ -115,23 +154,11 @@
 
     &--hidden {
       background: none;
+      display: none;
     }
   }
 
   .@{prefix}-dialog {
-    position: fixed;
     border: @dialog-border;
-
-    &--top {
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, 0);
-    }
-
-    &--center {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 }
