@@ -242,6 +242,14 @@
     .@{prefix}-table__cell--fixed-right {
       z-index: 1;
       background-color: #fff;
+      transition: background-color .3s ease-in;
+    }
+
+    tbody tr:hover {
+      .@{prefix}-table__cell--fixed-left,
+      .@{prefix}-table__cell--fixed-right {
+        background-color: @table-highlight-dark-bg-color;
+      }
     }
 
     .@{prefix}-table__cell--fixed-left-last {
