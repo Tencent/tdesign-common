@@ -242,6 +242,14 @@
     .@{prefix}-table__cell--fixed-right {
       z-index: 1;
       background-color: #fff;
+      transition: background-color .3s ease-in;
+    }
+
+    tbody tr:hover {
+      .@{prefix}-table__cell--fixed-left,
+      .@{prefix}-table__cell--fixed-right {
+        background-color: @table-highlight-dark-bg-color;
+      }
     }
 
     .@{prefix}-table__cell--fixed-left-last {
@@ -342,7 +350,13 @@
       width: 20px;
     }
   }
-
+  // 默认空表格
+  .@{prefix}-table--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+  }
   // 表格加载态
   .@{prefix}-table--loading {
     position: relative;
