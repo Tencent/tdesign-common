@@ -6,6 +6,8 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  vertical-align: middle;
   white-space: nowrap;
   border-radius: @btn-border-radius;
 }
@@ -15,4 +17,8 @@
   font-size: @font-size;
   padding-left: @padding-horizontal;
   padding-right: @padding-horizontal;
+
+  .@{prefix}-icon {
+    font-size: @font-size;
+  }
 }
