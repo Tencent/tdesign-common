@@ -65,7 +65,7 @@
 
     .t-icon-prompt_fill {
       color: @primary-color;
-      font-size: 20px;
+      font-size: @dialog-icon-size;
     }
 
     .@{prefix}-dialog__body {
@@ -77,6 +77,7 @@
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
+    font-size: @dialog-icon-size;
   }
 
   >.t-icon-close:hover {
