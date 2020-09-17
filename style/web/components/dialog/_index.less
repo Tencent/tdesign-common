@@ -90,6 +90,7 @@
 // t-dialog 组件本身
 .@{prefix}-dialog-ctx {
   position: relative;
+  text-align: center;
 
   &.t-is-visable {
     visibility: visible;
@@ -107,42 +108,6 @@
     display: none;
   }
 
-  .@{prefix}-dialog-wrap {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2500;
-    overflow: auto;
-    outline: 0;
-
-    &.@{prefix}-dialog--top {
-      .@{prefix}-dialog {
-        top: 20%;
-        margin: 0 auto;
-      }
-    }
-
-    &.@{prefix}-dialog--center {
-      text-align: center;
-
-      &:before {
-        display: inline-block;
-        width: 0;
-        height: 100%;
-        vertical-align: middle;
-        content: "";
-      }
-      .@{prefix}-dialog {
-        top: 0;
-        display: inline-block;
-        text-align: left;
-        vertical-align: middle;
-      }
-    }
-  }
-
   .@{prefix}-dialog-mask {
     position: fixed;
     top: 0;
@@ -155,9 +120,34 @@
       background: none;
       display: none;
     }
+
+    &--center {
+
+      &:before {
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle;
+        content: "";
+      }
+    }
   }
 
   .@{prefix}-dialog {
     border: @dialog-border;
+    text-align: left;
+
+    &--top {
+      top: 20%;
+      margin: 0 auto;
+    }
+
+    &--center {
+      top: 0;
+      display: inline-block;
+      text-align: left;
+      margin: 0 auto;
+      vertical-align: middle;
+    }
   }
 }
