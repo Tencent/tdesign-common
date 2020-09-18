@@ -26,6 +26,11 @@
 
   & .@{prefix}-select-placeholder {
     color: @select-placeholder-color;
+    margin-left: @select-placeholder-margin;
+  }
+
+  & .@{prefix}-select-selectedSingle {
+    margin-left: @select-placeholder-margin;
   }
 
   & .@{prefix}-select-right-icon {
@@ -34,6 +39,7 @@
     margin: @select-icon-margin;
     right: 0;
     top: 0;
+    color: @select-icon-color;
   }
   .@{prefix}-select-right-icon.@{prefix}-is-visible {
     transform: scaleY(-1);
@@ -41,8 +47,12 @@
     /*IE*/
     filter: FlipV;
   }
+  .@{prefix}-select-input {
+    width: auto;
+  }
 
   .@{prefix}-select-input {
+    margin-left: @select-placeholder-margin;
 
     .@{prefix}-input__inner {
       border: 0;
@@ -92,9 +102,12 @@
 
 // dropdown
 .@{prefix}-select-dropdown {
-  top: @dropdown-top !important; // stylelint-disable-line
+  margin: 0;
+  padding: 0;
   max-height: @dropdown-max-height;
   overflow-y: auto;
+  box-shadow: @select-dropdown-shadow;
+  border-radius: @border-radius;
 }
 
 .@{prefix}-select-dropdown.@{prefix}-popup {
@@ -115,6 +128,11 @@
 }
 
 // option group
+.@{prefix}-option-group +.@{prefix}-option-group {
+  border-top: 1px @select-optiongroup-border-color solid;
+  padding-top: @select-optiongroup-border-padding;
+  margin-top: @select-optiongroup-border-margin;
+}
 .@{prefix}-option-group-header {
   color: @option-group-header-color;
   display: block;

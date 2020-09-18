@@ -1,0 +1,102 @@
+@import "../../base.less";
+
+.@{prefix}-dialog-zoom-enter,
+.@{prefix}-dialog-zoom-appear {
+  opacity: 0;
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.08, .82, .17, 1);
+  animation-play-state: paused;
+}
+
+.@{prefix}-dialog-zoom-exit {
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.6, .04, .98, .34);
+  animation-play-state: paused;
+}
+
+.@{prefix}-dialog-zoom-enter.@{prefix}-dialog-zoom-enter-active,
+.@{prefix}-dialog-zoom-appear.@{prefix}-dialog-zoom-appear-active {
+  animation-name: tDialogZoomIn;
+  animation-play-state: running;
+}
+
+.@{prefix}-dialog-zoom-exit.@{prefix}-dialog-zoom-exit-active {
+  animation-name: tDialogZoomOut;
+  animation-play-state: running;
+}
+
+@keyframes tDialogZoomIn {
+
+  0% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes tDialogZoomOut {
+
+  0% {
+    transform: scale(1, 1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+}
+
+.@{prefix}-dialog-fade-enter,
+.@{prefix}-dialog-fade-appear {
+  opacity: 0;
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
+  animation-play-state: paused;
+}
+
+.@{prefix}-dialog-fade-exit {
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
+  animation-play-state: paused;
+}
+
+.@{prefix}-dialog-fade-enter.@{prefix}-dialog-fade-enter-active,
+.@{prefix}-dialog-fade-appear.@{prefix}-dialog-fade-appear-active {
+  animation-name: tDialogFadeIn;
+  animation-play-state: running;
+}
+
+.@{prefix}-dialog-fade-exit.@{prefix}-dialog-fade-exit-active {
+  animation-name: tDialogFadeOut;
+  animation-play-state: running;
+}
+
+@keyframes tDialogFadeIn {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tDialogFadeOut {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
