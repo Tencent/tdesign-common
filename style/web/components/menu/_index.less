@@ -17,7 +17,8 @@
     color: @menu-light-item-color;
     cursor: pointer;
 
-    &.@{prefix}-is-active {
+    &.@{prefix}-is-active,
+    &:hover {
       opacity: 1;
       color: @menu-light-active-color;
       border-bottom: 2px solid @menu-light-active-color;
@@ -48,8 +49,14 @@
 
   &__dropdown {
     position: absolute;
+    display: none;
     background: @menu-theme-light;
     top: 68px;
+    z-index: @menu-outer-zindex;
+
+    &.t-is-show {
+      display: block;
+    }
 
     .@{prefix}-menu__item {
       height: 40px;
@@ -58,15 +65,13 @@
   }
 }
 
-// submenu
-.@{prefix}-submenu {
+.@{prefix}-menu-mode__dropdown {
 
-  &-icon {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    font-size: @menu-fontsize;
+  .@{prefix}-is-opened {
+
+    .@{prefix}-menu__dropdown {
+      display: block;
+    }
   }
 }
 
@@ -88,6 +93,13 @@
     width: 256px;
     left: 25px;
     font-size: 0;
+
+    .@{prefix}-menu__logo--center {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   .@{prefix}-menu {
@@ -122,8 +134,41 @@
 
   &.@{prefix}-menu-mode__tile {
 
-    .@{prefix}-submenu {
+    // height: 128px;
+
+    .@{prefix}-is-active {
+
+      .@{prefix}-head-submenu {
+        display: block;
+      }
+    }
+
+    .@{prefix}-menu__item {
+      position: initial;
+    }
+
+    .@{prefix}-head-submenu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 64px;
       background: @menu-theme-light;
+      z-index: @menu-outer-zindex;
+      display: none;
+
+      &--show {
+        display: block;
+      }
+
+      .@{prefix}-menu__item {
+        color: @menu-light-item-color;
+      }
+
+      .@{prefix}-is-active {
+        opacity: 1;
+        color: @menu-light-active-color;
+        border-bottom: 2px solid @menu-light-active-color;
+      }
     }
   }
 
@@ -142,13 +187,25 @@
   display: inline-block;
   background: @menu-theme-light;
   box-shadow: @menu-default-shadow;
+  transition: .3s width;
+
+  &.@{prefix}-menu-mode__popup {
+
+    .@{prefix}-is-active {
+
+      .@{prefix}-menu__popup {
+
+        display: none;
+      }
+    }
+  }
 
   &.@{prefix}-is-collapsed {
     width: 72px;
 
     .@{prefix}-menu {
 
-      > .@{prefix}-menu__item {
+      >.@{prefix}-menu__item {
         text-align: center;
         padding: 0;
       }
@@ -165,13 +222,23 @@
       }
     }
 
+    .@{prefix}-menu__popup {
+
+      .@{prefix}-menu__item {
+
+        span {
+          display: block;
+        }
+      }
+    }
+
     .@{prefix}-submenu {
 
       &-icon {
         display: none;
       }
 
-      > .@{prefix}-menu__item {
+      >.@{prefix}-menu__item {
         padding: 0;
         min-width: initial;
 
@@ -210,7 +277,12 @@
 
     .@{prefix}-menu {
       position: relative;
+      // overflow-y: auto;
       flex: 1;
+
+      &--scroll {
+        overflow-y: auto;
+      }
     }
 
     .@{prefix}-menu-group {
@@ -230,7 +302,7 @@
 
       &.@{prefix}-is-active {
 
-        > .@{prefix}-menu__item {
+        >.@{prefix}-menu__item {
           margin: 4px 0;
           height: 40px;
           line-height: 40px;
@@ -238,7 +310,21 @@
           background: transparent;
         }
 
-        .@{prefix}-menu__dropdown,
+        // .@{prefix}-menu__popup {
+        //   // display: block;
+        // }
+      }
+
+      &.@{prefix}-is-opened {
+
+        .@{prefix}-submenu-icon {
+          transform: rotate(180deg);
+        }
+
+        .@{prefix}-menu__dropdown {
+          height: auto;
+        }
+
         .@{prefix}-menu__popup {
           display: block;
         }
@@ -256,11 +342,17 @@
     }
 
     .@{prefix}-menu__dropdown {
-      display: none;
+      // display: none;
       position: static;
+      overflow: hidden;
+      height: 0;
 
       .@{prefix}-menu__item {
         padding-left: 60px;
+      }
+
+      &--show {
+        display: block;
       }
     }
 
@@ -272,6 +364,7 @@
       left: 100%;
       margin-left: 1px;
       background: @menu-popup-bg-color;
+      z-index: @menu-outer-zindex;
     }
 
     .@{prefix}-menu__item {
@@ -286,6 +379,16 @@
       .@{prefix}-icon {
         font-size: 20px;
         margin-right: 20px;
+      }
+
+      .@{prefix}-submenu-icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateX(-50%);
+        transition: .3s all;
+        transform: rotate(0deg);
+        font-size: 12px;
       }
 
       &.@{prefix}-is-active {

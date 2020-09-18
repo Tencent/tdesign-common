@@ -7,16 +7,15 @@
 @import "./_mixin.less";
 
 .@{popconfirm-cls} {
-  background: @bg-color-block;
-  box-shadow: @popconfirm-shadow1, @popconfirm-shadow2;
-  position: @popconfirm-position;
 
   &--position-hidden {
     display: none;
   }
 
   &__content {
-    background-color: @bg-color-block;
+    background: @bg-color-block;
+    box-shadow: @popconfirm-shadow1, @popconfirm-shadow2;
+    position: @popconfirm-position;
     padding: @popconfirm-padding;
   }
 

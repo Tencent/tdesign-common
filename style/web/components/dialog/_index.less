@@ -15,10 +15,13 @@
   &__header {
     color: @dialog-header-text-color;
     font-size: @dialog-header-font-size;
+    height: @dialog-header-height;
+    display: flex;
+    align-items: top;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
-    > h5 {
+    >h5 {
       display: inline-block;
       vertical-align: middle;
       line-height: 22px;
@@ -29,10 +32,13 @@
     color: @dialog-body-text-color;
     font-size: @dialog-body-text-font-size;
     line-height: 22px;
+    overflow: auto;
   }
 
   &__footer {
+    width: 100%;
     text-align: right;
+    padding-top: 24px;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
@@ -43,14 +49,17 @@
 
   &--default {
     padding: @dialog-default-spacer;
+
     .@{prefix}-dialog__body {
-      padding: @dialog-default-body-spacer;
+      // padding: @dialog-default-body-spacer;
+      max-height: calc(100% - (@dialog-header-height + @dialog-spacer * 2));
     }
   }
 
   &--primary {
     padding: @dialog-primary-spacer;
-    .@{prefix}-dialog__header > h5 {
+
+    .@{prefix}-dialog__header>h5 {
       margin-left: 8px;
     }
 
@@ -58,18 +67,19 @@
       color: @primary-color;
       font-size: 20px;
     }
+
     .@{prefix}-dialog__body {
       padding: @dialog-parimary-body-spacer;
     }
   }
 
-  > .t-icon-close {
+  >.t-icon-close {
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
   }
 
-  > .t-icon-close:hover {
+  >.t-icon-close:hover {
     cursor: pointer;
   }
 
@@ -112,10 +122,16 @@
     position: fixed;
     border: @dialog-border;
 
-    &--center {
+    &--top {
       top: 20%;
       left: 50%;
       transform: translate(-50%, 0);
+    }
+
+    &--center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

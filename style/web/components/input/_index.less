@@ -40,11 +40,32 @@
   .input-fix-position(prefix);
   .input-fix-position(suffix);
 
+  .@{prefix}-input__suffix-clear {
+    cursor: pointer;
+  }
+
   // 输入框大小
   &.@{prefix}-size-l {
     &>.@{prefix}-input__inner {
       height: @input-height-high;
       line-height: @input-height-high;
+    }
+  }
+
+  .@{prefix}-input__prefix,
+  .@{prefix}-input__suffix {
+    .@{prefix}-icon {
+      color: @text-level-3-color;
+    }
+  }
+
+  // 输入框被聚焦
+  &.@{prefix}-is-focused {
+    .@{prefix}-input__prefix,
+    .@{prefix}-input__suffix {
+      .@{prefix}-icon {
+        color: @input-border-color-default-focus;
+      }
     }
   }
 }

@@ -2,10 +2,10 @@
 
 .@{prefix}-dialog {
   position: fixed;
-  z-index: 5000; //TODO 层级规范
+  z-index: 2500; //TODO 层级规范
   top: 50%;
-  left: 16px;
-  right: 16px;
+  left: 0;
+  right: 0;
   transform: translate(0, -50%);
   background-color: @dialog-bg-color;
   text-align: center;
@@ -65,11 +65,12 @@
     font-size: @dialog-btn-font-size;
     padding: @dialog-btn-padding;
     line-height: @dialog-btn-line-height;
-    color: @dialog-btn-color;
+    color: @dialog-btn-default-color;
     font-weight: 700;
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
+    &--active,
     &:active {
       background-color: @dialog-btn-bg-color-active;
     }
@@ -87,12 +88,20 @@
 
     }
 
-    &--default {
-      color: @dialog-btn-default-color;
+    &--primary {
+      color: @dialog-btn-primary-color;
+    }
+
+    &--success {
+      color: @dialog-btn-success-color;
     }
 
     &--warning {
       color: @dialog-btn-warning-color;
+    }
+
+    &--error {
+      color: @dialog-btn-error-color;
     }
   }
 

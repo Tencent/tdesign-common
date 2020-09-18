@@ -20,10 +20,12 @@
   white-space: nowrap;
 
   .@{prefix}-icon {
+    margin-right: 5px;
     font-size: @tag-medium-font-size;
   }
 
   .@{prefix}-icon-close {
+    margin-right: 0;
     position: relative;
     top: -1px;
     font-size: @tag-small-font-size;
@@ -33,6 +35,15 @@
     &:hover {
       color: @tag-text-color;
       background-color: @tag-default-hover-color;
+    }
+  }
+
+  &--close,
+  &--check {
+
+    &:hover {
+      color: @tag-default-hover-color;
+      border-color: currentColor;
     }
   }
 
@@ -47,9 +58,7 @@
     }
 
     &:hover {
-      color: @tag-default-hover-color;
-      border-color: currentColor;
-      cursor: default;
+      cursor: text;
 
       .@{prefix}-icon-close {
 
@@ -60,9 +69,11 @@
     }
 
     &:active {
-      color: @tag-default-click-color;
-      border-color: currentColor;
       cursor: default;
+    }
+
+    &.@{prefix}-tag--check {
+      cursor: pointer;
     }
 
     // 失效标签
@@ -71,6 +82,12 @@
       background-color: @tag-disabled-background-color;
       border-color: @tag-disabled-border-color;
       cursor: text;
+
+      &:hover {
+        color: @tag-disabled-color;
+        background-color: @tag-disabled-background-color;
+        border-color: @tag-disabled-border-color;
+      }
       .@{prefix}-icon {
         color: @tag-disabled-color;
         cursor: text;
