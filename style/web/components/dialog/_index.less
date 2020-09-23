@@ -130,24 +130,22 @@
 
   .@{prefix}-dialog {
     position: fixed;
-    left: 0;
-    right: 0;
-    height: auto;
-    bottom: auto;
-    top: auto;
-    margin: auto;
+    pointer-events: auto;
     z-index: 5;
     border: @dialog-border;
-    pointer-events: auto;
 
     &--top {
       top: 20%;
+      left: 50%;
+      transform-origin: -25% 25%;
+      transform: translate(-50%, 0);
     }
 
     &--center {
       top: 50%;
-      transform-origin: 50% -25%;
-      transform: translateY(-50%);
+      left: 50%;
+      transform-origin: -25% -25%;
+      transform: translate(-50%, -50%);
     }
   }
 }
