@@ -1,31 +1,42 @@
 @import "../../base.less";
 
-.@{prefix}-dialog-zoom-enter,
-.@{prefix}-dialog-zoom-appear {
+.animation-enter {
   animation-duration: 200ms;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(.08, .82, .17, 1);
   animation-play-state: paused;
 }
 
-.@{prefix}-dialog-zoom-exit {
+.animation-exit {
   animation-duration: 200ms;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(.6, .04, .98, .34);
   animation-play-state: paused;
 }
 
-.@{prefix}-dialog-zoom-enter.@{prefix}-dialog-zoom-enter-active,
-.@{prefix}-dialog-zoom-appear.@{prefix}-dialog-zoom-appear-active {
-  animation-name: tDialogZoomIn;
+.animation-active {
   animation-play-state: running;
   animation-fill-mode: both;
 }
 
+.@{prefix}-dialog-zoom-enter,
+.@{prefix}-dialog-zoom-appear {
+  .animation-enter;
+}
+
+.@{prefix}-dialog-zoom-exit {
+  .animation-exit
+}
+
+.@{prefix}-dialog-zoom-enter.@{prefix}-dialog-zoom-enter-active,
+.@{prefix}-dialog-zoom-appear.@{prefix}-dialog-zoom-appear-active {
+  animation-name: tDialogZoomIn;
+  .animation-active;
+}
+
 .@{prefix}-dialog-zoom-exit.@{prefix}-dialog-zoom-exit-active {
   animation-name: tDialogZoomOut;
-  animation-play-state: running;
-  animation-fill-mode: both;
+  .animation-active;
 }
 
 @keyframes tDialogZoomIn {
@@ -42,6 +53,60 @@
     opacity: 0;
     transform: scale(.3);
   }
+}
+
+@keyframes tDialogMaskIn {
+  from {
+    opacity: 1;
+  }
+}
+
+@keyframes tDialogMaskOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.@{prefix}-dialog-vue-zoom {
+  &-enter-active {
+
+    .@{prefix}-dialog {
+      .animation-enter
+    }
+  }
+
+  &-leave-active {
+
+    .@{prefix}-dialog {
+      .animation-exit
+    }
+
+  }
+
+  &-enter-to {
+    .@{prefix}-dialog {
+      animation-name: tDialogZoomIn;
+      .animation-active;
+    }
+
+    .@{prefix}-dialog-mask {
+      animation-name: tDialogMaskIn;
+      .animation-active;
+    }
+  }
+
+  &-leave-to {
+    .@{prefix}-dialog {
+      animation-name: tDialogZoomOut;
+      .animation-active;
+    }
+
+    .@{prefix}-dialog-mask {
+      animation-name: tDialogMaskOut;
+      .animation-active;
+    }
+  }
+
 }
 
 .@{prefix}-dialog-fade-enter,
