@@ -1,0 +1,90 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-tooltip {
+  color: @tooltip-text-color;
+  display: inline-block;
+
+  &-content {
+    position: relative;
+    background: @tooltip-bg;
+    box-shadow: @tooltip-shadow;
+    border-radius: @border-radius;
+    padding: @tooltip-padding;
+  }
+
+  &-reference {
+    margin: 10px;
+    // display: inline-block;
+  }
+}
+
+.@{prefix}-tooltip__arrow {
+  position: absolute;
+  z-index: 1;
+  background: inherit;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: inherit;
+  }
+}
+
+.@{prefix}-tooltip[data-popper-placement^='bottom'],
+.@{prefix}-tooltip[data-popper-placement^='top'] {
+  .@{prefix}-tooltip-content--arrow {
+    margin: 8px 0;
+  }
+}
+
+.@{prefix}-tooltip[data-popper-placement^='left'],
+.@{prefix}-tooltip[data-popper-placement^='right'] {
+  .@{prefix}-tooltip-content--arrow {
+    margin: 0 8px;
+  }
+}
+
+
+
+.@{prefix}-tooltip[data-popper-placement^='top'] .@{prefix}-tooltip__arrow {
+  bottom: 5px;
+  left: -5px !important;
+}
+.@{prefix}-tooltip[data-popper-placement^='bottom'] .@{prefix}-tooltip__arrow {
+  top: -5px;
+  left: -5px !important;
+}
+.@{prefix}-tooltip[data-popper-placement^='left'] .@{prefix}-tooltip__arrow {
+  right: 5px;
+  top: -5px !important;
+}
+.@{prefix}-tooltip[data-popper-placement^='right'] .@{prefix}-tooltip__arrow {
+  left: -5px;
+  top: -5px !important;
+}
+
+// animation
+.@{tooltip-flow}-enter,
+.@{tooltip-flow}-exiting,
+.@{tooltip-flow}-leave-to {
+  opacity: 0;
+}
+.@{tooltip-flow}-enter-to,
+.@{tooltip-flow}-entering,
+.@{tooltip-flow}-leave {
+  opacity: 1;
+  transform: none;
+}
+.@{tooltip-flow}-enter-active {
+  transition: @flowin-transition;
+}
+.@{tooltip-flow}-leave-active {
+  transition: @flowin-transition;
+}
