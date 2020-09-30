@@ -9,20 +9,21 @@
 
 // <name> 替换为组件名
 .@{prefix}-tree {
-  font-size: 16px;
   line-height: 32px;
+  font-size: 14px;
+  color: rgba(0,0,0,.65);
 
-  &-item {
+  &__item {
     display: flex;
     word-break: keep-all;
     white-space: nowrap;
-
-    &__label {
-      padding: 0;
-    }
   }
 
-  &-lines {
+  &__label {
+    padding: 0;
+  }
+
+  &__lines {
     display: flex;
 
     dd {
@@ -50,16 +51,20 @@
     }
   }
 
-  &-icon {
+  &__content {
     display: flex;
     margin-left: -32px;
+  }
+
+  &__icon {
+    display: flex;
     width: 32px;
     height: 32px;
     justify-content: center;
     align-items: center;
   }
 
-  &-icon:before {
+  &__icon:before {
     content: "";
     width: 14px;
     height: 14px;
@@ -72,53 +77,53 @@
   }
 }
 
-.t-tree-line {
+.t-tree__line {
 
-  &__root:after {
+  &--root:after {
     box-shadow: -1px 0 0 0 #ddd;
   }
 
-  &__trunk:before {
+  &--trunk:before {
     box-shadow: inset -1px 0 0 0 #ddd;
   }
 
-  &__trunk:after {
+  &--trunk:after {
     box-shadow: -1px 0 0 0 #ddd;
   }
 
-  &__branch:before {
+  &--branch:before {
     box-shadow: inset -1px 0 0 0 #ddd;
   }
 
-  &__branch:after {
+  &--branch:after {
     box-shadow: -1px -1px 0 0 #ddd;
   }
 
-  &__seed:before {
+  &--seed:before {
     box-shadow: inset 0 -1px 0 0 #ddd;
   }
 
-  &__seed:after {
+  &--seed:after {
     box-shadow: -1px 0 0 0 #ddd;
   }
 
-  &__corner:before {
+  &--corner:before {
     box-shadow: inset -1px 0 0 0 #ddd;
   }
 
-  &__corner:after {
+  &--corner:after {
     box-shadow: 0 -1px 0 0 #ddd;
   }
 
-  &__leaf:before {
+  &--leaf:before {
     box-shadow: inset 0 -1px 0 0 #ddd;
   }
 
-  &__end:before {
+  &--end:before {
     box-shadow: inset -1px 0 0 0 #ddd;
   }
 
-  &__empty {
+  &--empty {
     display: block;
   }
 }
