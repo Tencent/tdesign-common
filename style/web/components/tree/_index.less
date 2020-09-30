@@ -9,4 +9,62 @@
 
 // <name> 替换为组件名
 .@{prefix}-tree {
+  font-size: 16px;
+  line-height: 32px;
+
+  &-item {
+    display: flex;
+    word-break: keep-all;
+    white-space: nowrap;
+
+    &__label {
+      padding: 0;
+    }
+  }
+
+  &-lines {
+    display: flex;
+
+    dd {
+      display: block;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &-icon {
+    display: flex;
+    margin-left: -32px;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-icon:before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    display: block;
+    border: 1px solid #999;
+    border-radius: 32px;
+    background-color: #fff;;
+    text-align: center;
+    line-height: 10px;
+  }
+}
+
+.t-icon-tree {
+
+  &_open:before {
+    content: "-";
+  }
+
+  &_close:before {
+    content: "+";
+  }
+
+  &_leaf:before {
+    content: "";
+  }
 }
