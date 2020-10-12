@@ -24,6 +24,7 @@
   &__nav {
     position: relative;
     overflow: hidden;
+    user-select: none;
   }
 
   &__add-btn {
@@ -121,6 +122,7 @@
     white-space: nowrap;
     font-size: 0;
     display: inline-block;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
   }
 
   &__bar {
@@ -182,6 +184,14 @@
     &.@{prefix}-is-disabled {
       color: @tab-disabled-color;
       cursor: not-allowed;
+    }
+
+    & > .remove-btn {
+      transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+      &:hover {
+        transform: scale(1.3);
+      }
     }
   }
 

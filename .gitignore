@@ -16,8 +16,16 @@ style/web/node_modules/
 style/web/components/.yo-repository/
 
 # ALL node_modules
+node_modules
+package-lock.json
 **/package-lock.json
 **/node_modules
 **/dist
 dist/
 style/web/.stylelintcache
+
+.history
+temp*
+
+# contributors
+contributors/members.txt

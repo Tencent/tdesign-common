@@ -1,0 +1,237 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-upload {
+
+  &-list__file {
+    & .@{prefix}-icon {
+      font-size: 40px;
+      color: @primary-color;
+    }
+  }
+
+  &-list__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    width: 496px;
+    height: 124px;
+    padding: 12px;
+    border: 1px solid @border-level-2-color;
+    border-radius: @border-radius;
+    font-size: @font-size-base;
+
+    &.@{prefix}-is--error {
+      .@{prefix}-upload-list__name {
+        color: @error-color-6;
+      }
+      .@{prefix}-upload-list__file .@{prefix}-icon {
+        color: @error-color-6;
+      }
+    }
+  }
+
+  &-list__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &-list__control {
+    cursor: pointer;
+
+    &:hover {
+      color: @error-color-6;
+    }
+  }
+
+  &-list__file {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin-right: 12px;
+  }
+
+  &-list__img {
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+    cursor: pointer;
+  }
+
+  &-list__name {
+    max-width: 200px;
+    .text-ellipsis();
+  }
+}
+
+// 照片墙
+.@{prefix}-upload {
+
+  &-card {
+    font-size: @font-size-base;
+    overflow: hidden;
+    width: 512px;
+
+    &__item {
+      position: relative;
+      width: 24%;
+      margin: 12px 1.33% 40px 0;
+      float: left;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      border-radius: @border-radius;
+      background-color: @bg-color-hover;
+
+      &:nth-of-type(4n) {
+        margin-right: 0;
+      }
+
+      &::after {
+        content: "";
+        padding-top: 100%;
+        display: block;
+      }
+
+      &:hover .@{prefix}-upload-card__mask {
+        opacity: 1;
+      }
+
+      &.@{prefix}-is--error {
+
+        & .@{prefix}-icon-warning_fill {
+          color: @error-color-6;
+          margin-bottom: 10px;
+        }
+
+        & .@{prefix}-upload-card__status {
+          color: @error-color-6;
+        }
+      }
+
+      & .@{prefix}-icon-add {
+        font-size: 30px;
+        color: #999;
+      }
+
+      &.@{prefix}-is--empty {
+        cursor: pointer;
+
+        &:hover {
+          border-color: @primary-color;
+          border-style: dashed;
+        }
+      }
+    }
+
+    &-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    & .t-icon-loading {
+      color: @primary-color;
+      margin-bottom: 10px;
+    }
+
+    &__name {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      max-width: 100%;
+      .text-ellipsis();
+    }
+
+    &__content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: #eee;
+      overflow: hidden;
+    }
+
+    &__image {
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+    }
+
+    &__status {
+      color: @text-level-4-color;
+      font-size: @font-size-s;
+    }
+
+    &__mask {
+      .horizontal-vertical-center-with-flex();
+      .fill-with-position-absolute();
+      background-color: rgba(0, 0, 0, .6);
+      color: #fff;
+      opacity: 0;
+      transition: opacity .5s ease-in-out;
+      will-change: transform;
+    }
+
+    &__mask--disabled {
+      opacity: .3;
+      cursor: default;
+    }
+
+    &__mask__item {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+
+      &:first-child {
+        padding-right: 16px;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+// 拖拽
+.@{prefix}-upload {
+
+  &--dragable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 336px;
+    height: 140px;
+    border: 1px dashed #ddd;
+    border-radius: 2px;
+    font-size: @font-size-base;
+    color: #666;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    &--highlight {
+      color: @primary-color;
+    }
+
+    &.@{prefix}-is--active {
+      background-color: @bg-color-hover;
+      border-color: @primary-color;
+    }
+
+    &:hover {
+      border-color: @primary-color;
+    }
+  }
+}

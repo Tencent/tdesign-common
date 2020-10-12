@@ -1,0 +1,78 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-divider {
+  margin: 40px 0;
+  font-size: 14px;
+  border-top-width: 1px;
+  border-top-color: @divider-border-color;
+  border-top-style: solid;
+  color: rgba(0,0,0,.9);
+  box-sizing: border-box;
+
+  &--dashed {
+    border-top-style: dashed;
+  }
+
+  &--horizontal {
+    width: 100%;
+    display: flex;
+  }
+
+  &--vertical {
+    border-top: 0;
+    display: inline-block;
+    margin: 0 12px;
+    border-left: 1px solid @divider-border-color;
+    height: .9em;
+    vertical-align: middle;
+  }
+
+  &--with-text {
+    display: flex;
+    border-top: 0;
+    white-space: nowrap;
+    .@{prefix}-divider-inner-text {
+      padding: 0 1em;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: relative;
+      top: 50%;
+      width: 50%;
+      border-top: 1px solid @divider-border-color;
+      transform: translateY(50%);
+    }
+
+    &-left {
+
+      &::before {
+        width: 5%;
+      }
+
+      &::after {
+        width: 95%;
+      }
+    }
+
+    &-right {
+
+      &::before {
+        width: 95%;
+      }
+
+      &::after {
+        width: 5%;
+      }
+    }
+
+  }
+}
+

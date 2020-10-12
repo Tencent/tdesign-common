@@ -3,23 +3,27 @@
 
 @import "./_var.less";
 
+@import "./_animate.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
 .@{prefix}-dialog {
-  
   width: @dialog-size-s-width;
   background-color: @dialog-bg-color;
   position: relative;
-  border-radius: @border-radius-base;
+  border-radius: @border-radius;
 
   &__header {
     color: @dialog-header-text-color;
     font-size: @dialog-header-font-size;
+    height: @dialog-header-height;
+    display: flex;
+    align-items: top;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
-    > h5 {
+    >h5 {
       display: inline-block;
       vertical-align: middle;
       line-height: 22px;
@@ -30,10 +34,13 @@
     color: @dialog-body-text-color;
     font-size: @dialog-body-text-font-size;
     line-height: 22px;
+    overflow: auto;
   }
 
   &__footer {
+    width: 100%;
     text-align: right;
+    padding-top: 24px;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
@@ -44,48 +51,113 @@
 
   &--default {
     padding: @dialog-default-spacer;
+
     .@{prefix}-dialog__body {
-      padding: @dialog-default-body-spacer;
+      // padding: @dialog-default-body-spacer;
+      max-height: calc(100% - (@dialog-header-height + @dialog-spacer * 2));
     }
   }
 
   &--primary {
     padding: @dialog-primary-spacer;
-    .@{prefix}-dialog__header > h5 {
+
+    .@{prefix}-dialog__header>h5 {
       margin-left: 8px;
     }
 
-    .t-icon-prompt-fill {
+    .t-icon-prompt_fill {
       color: @primary-color;
       font-size: 20px;
     }
+
     .@{prefix}-dialog__body {
       padding: @dialog-parimary-body-spacer;
     }
   }
 
-  > .t-icon-close {
+  >.t-icon-close {
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
   }
 
-  > .t-icon-close:hover {
+  >.t-icon-close:hover {
     cursor: pointer;
   }
 
 }
 
-.@{prefix}-dialog-mask {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: @mask-active;
+// t-dialog 组件本身
+.@{prefix}-dialog-ctx {
+  position: relative;
 
-  .t-dialog {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &.t-is-visable {
+    visibility: visible;
+  }
+
+  &.t-not-visable {
+    visibility: hidden;
+  }
+
+  &.t-is-display {
+    display: block;
+  }
+
+  &.t-not-display {
+    display: none;
+  }
+
+  .@{prefix}-dialog-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2500;
+    overflow: auto;
+    outline: 0;
+
+    &.@{prefix}-dialog--top {
+      .@{prefix}-dialog {
+        top: 20%;
+        margin: 0 auto;
+      }
+    }
+
+    &.@{prefix}-dialog--center {
+      text-align: center;
+
+      &:before {
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle;
+        content: "";
+      }
+      .@{prefix}-dialog {
+        top: 0;
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .@{prefix}-dialog-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: @mask-active;
+
+    &--hidden {
+      background: none;
+      display: none;
+    }
+  }
+
+  .@{prefix}-dialog {
+    border: @dialog-border;
   }
 }
