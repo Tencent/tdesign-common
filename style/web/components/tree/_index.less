@@ -27,24 +27,23 @@
 
   &__item {
     each(range(200), {
-      &-level-@{value} {
-        padding-left: (@tree-node-padding-basic * @value)
-      }
-    })
-  }
-
-  &__clicked {
-    background-color: @tree-node-bg-color-clicked;
-    color: @tree-node-text-color-clicked;
-  }
-
-  &__hoverable &__item:hover {
-    cursor: pointer;
-    background-color: @tree-node-bg-color-hover;
+    &-level-@{value} {
+      padding-left: (@tree-node-padding-basic * @value)
+    }
+  })
+    &.t-is-clicked {
+      background-color: @tree-node-bg-color-clicked;
+      color: @tree-node-text-color-clicked;
+    }
   }
 
   &__operations {
     float: right;
+  }
+
+  &--hoverable &__item:hover {
+    cursor: pointer;
+    background-color: @tree-node-bg-color-hover;
   }
 }
 
