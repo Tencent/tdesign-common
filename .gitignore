@@ -24,6 +24,9 @@ package-lock.json
 dist/
 style/web/.stylelintcache
 
+# webpack hmr files
+**/*.hot-update.js
+**/*.hot-update.json
 .history
 temp*
 
