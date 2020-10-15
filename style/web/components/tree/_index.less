@@ -5,6 +5,7 @@
 
 @import "./_mixin.less";
 
+
 // <name> 替换为组件名
 .@{prefix}-tree {
   line-height: 32px;
@@ -28,7 +29,13 @@
   &__item {
     each(range(200), {
     &-level-@{value} {
-      padding-left: (@tree-node-padding-basic * @value)
+      padding-left: (@tree-node-padding-basic * @value);
+    }
+    &.show {
+      display: block;
+    }
+    &.hide {
+      display: none;
     }
   })
     &.t-is-active {
@@ -39,6 +46,7 @@
 
   &__operations {
     float: right;
+    cursor: pointer;
   }
 
   &--hoverable &__item:hover {
