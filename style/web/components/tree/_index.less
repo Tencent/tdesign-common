@@ -37,7 +37,7 @@
   &__item {
     each(range(200), {
     &-level-@{value} {
-      padding-left: (@tree-node-padding-basic * @value);
+      // padding-left: (@tree-node-padding-basic * @value);
       // transition: .3s height ease-in-out,.3s padding-top ease-in-out,.3s padding-bottom ease-in-out;
 
       // transition: .3s height ease-in-out;
@@ -58,6 +58,11 @@
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
     }
+  }
+
+  &__item {
+    --level: 0;
+    padding-left: calc(24px * var(--level));
   }
 
   &__operations {
