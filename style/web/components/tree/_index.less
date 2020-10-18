@@ -5,15 +5,6 @@
 
 @import "./_mixin.less";
 
-// @keyframes mymove {
-//   from {
-//     height: 0;
-//   }
-//   to {
-//     height: 100px;
-//   }
-// }
-
 // <name> 替换为组件名
 .@{prefix}-tree {
   line-height: 32px;
@@ -35,25 +26,17 @@
   }
 
   &__item {
-    each(range(200), {
-    &-level-@{value} {
-      // padding-left: (@tree-node-padding-basic * @value);
-      // transition: .3s height ease-in-out,.3s padding-top ease-in-out,.3s padding-bottom ease-in-out;
+    --level: 0;
+    padding-left: calc(@tree-node-padding-basic * var(--level));
 
-      // transition: .3s height ease-in-out;
-
-      // overflow: hidden;
-      // animation: mymove 5s;
-      // animation: mymove 3s infinite alternate;
-      // color: yellow;
+    &.show {
+      display: block;
     }
-      &.show {
-        display: block;
-      }
-      &.hide {
-        display: none;
-      }
-    })
+
+    &.hide {
+      display: none;
+    }
+
     &.t-is-active {
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
