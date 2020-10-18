@@ -5,8 +5,224 @@
 
 @import "./_mixin.less";
 
-// <name> 替换为组件名
-.@{prefix}-cascader {
-  
+& .@{prefix}-cascader-input {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid @cascader-highlight-color;
+  border-radius: 2px;
+  vertical-align: middle;
+  padding: 0px 26px 0px 4px;
+  font-size: 14px;
+  line-height: @cascader-height-default - 2px;
+  cursor: default;
+
+  & .@{prefix}-cascader-placeholder {
+    color: @cascader-light-color;
+    text-align: left;
+  }
+
+  & .@{prefix}-cascader-input-content {
+    color: @cascader-dark-color;
+    text-align: left;
+  }
+
+  & .@{prefix}-cascader-right-icon {
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+    color: @cascader-icon-color;
+    margin: 0px 5px;
+    line-height: @cascader-height-default - 2px;
+  }
+
+  & .@{prefix}-cascader-right-icon.@{prefix}-size-l {
+    line-height: @cascader-height-l - 2px;
+  }
+
+  & .@{prefix}-cascader-right-icon.@{prefix}-size-s {
+    line-height: @cascader-height-s - 2px;
+  }
+
+  & .@{prefix}-tag {
+    margin: 4px 4px 4px 0px;
+  }
+
+  & .@{prefix}-tag--default {
+    color: @cascader-tag-color;
+    background-color: @cascader-tag-background-color;
+    border-color: @cascader-tag-border-color;
+  }
+
+  & .@{prefix}-tag--disabled {
+    cursor: auto;
+    background-color: @cascader-disabled-tag-background-color;
+    color: @cascader-disabled-tag-color;
+  }
 }
 
+.@{prefix}-cascader {
+  margin: 10px 0 5px 0;
+  background: #fff;
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.10), 0 8px 10px 1px rgba(0,0,0,.06), 0 3px 14px 6px rgba(0,0,0,.05);
+  border-radius: 2px;
+  
+  & .@{prefix}-cascader-panel {
+    display: flex;
+    height: 100%;
+    cursor: default;
+
+    & .@{prefix}-cascader-menu {
+      min-width: @cascader-width-s - 2px;
+      height: 100%;
+      overflow: auto;
+
+      & .@{prefix}-cascader-item {
+        height: @cascader-item-height;
+        padding-left: 12px;
+        line-height: @cascader-item-height;
+        position: relative;
+        color: @cascader-dark-color;
+
+        & .@{prefix}-cascader-item__label {
+          font-size: 14px;
+        }
+
+        & .@{prefix}-cascader-item_highlight {
+          color: @cascader-highlight-color;
+        }
+
+        &:hover,
+        :active {
+          background: @cascader-item-hover-color;
+          cursor: pointer;
+        }
+      }
+
+      & .@{prefix}-cascader-item-expand {
+        background: @cascader-item-expand-background-color;
+        color: @cascader-highlight-color;
+      }
+
+      & .@{prefix}-cascader-item-selected {
+        background: @cascader-item-selected-color;
+      }
+    }
+    & .@{prefix}-cascader-menu.@{prefix}-search-menu {
+      min-width: 100%;
+      max-height: 240px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    & .@{prefix}-cascader-menu.@{prefix}-width-l {
+      min-width: @cascader-width-l - 2px;
+    }
+
+    & .@{prefix}-cascader-menu-seperator {
+      border-right: 1px solid @cascader-menu-seperator-color;
+    }
+
+    & .@{prefix}-cascader-search-menu {
+
+    }
+
+  }
+
+  & .@{prefix}-cascader-status {
+    position: relative;
+    min-width: @cascader-width-s - 2px;
+    font-size: 14px;
+    cursor: default;
+
+    & .@{prefix}-cascader-data__loading {
+      color: @cascader-light-gray-color;
+      line-height: @cascader-item-height;
+      margin-left: 10px;
+    }
+
+    & .@{prefix}-cascader-data__exception {
+      color: @cascader-dark-color;
+      line-height: @cascader-item-height;
+      margin-left: 10px;
+    }
+
+    & .@{prefix}-cascader-data__retry {
+      color: @cascader-highlight-color;
+      line-height: @cascader-item-height;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    & .@{prefix}-cascader-data__empty {
+      color: @cascader-light-color;
+      line-height: @cascader-item-height;
+      margin-left: 10px;
+    }
+
+    .@{prefix}-cascader-right-icon {
+      position: absolute;
+      height: 100%;
+      right: 0;
+      top: 0;
+      color: @cascader-light-color;
+      margin: 0 5px;
+      line-height: @cascader-item-height;
+      cursor: pointer;
+    }
+  }
+
+  & .@{prefix}-cascader-status.@{prefix}-width-l {
+    min-width: @cascader-width-l - 2px;
+  }
+}
+
+.@{prefix}-cascader-search {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid @cascader-highlight-color;
+  border-radius: 2px;
+  vertical-align: middle;
+  padding: 0px 26px 0px 4px;
+  font-size: 14px;
+  line-height: @cascader-height-default - 2px;
+
+  .@{prefix}-cascader-search-input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+  }
+}
+
+.@{prefix}-cascader-search-panel {
+
+}
+
+.@{prefix}-cascader-right-icon {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  color: @cascader-light-color;
+  margin: 0 5px;
+  line-height: @cascader-height-default - 2px;
+}
+
+.@{prefix}-is-disabled {
+  cursor: auto;
+  background-color: @cascader-disabled-tag-background-color;
+  color: @cascader-disabled-tag-color;
+  border-color: @cascader-disabled-border-color;
+}
+
+.@{prefix}-cascader-input.@{prefix}-size-l,
+.@{prefix}-cascader-right-icon.@{prefix}-size-l {
+  line-height: @cascader-height-l - 2px;
+}
+
+.@{prefix}-cascader-input.@{prefix}-size-s,
+.@{prefix}-cascader-right-icon.@{prefix}-size-s {
+  line-height: @cascader-height-s - 2px;
+}
