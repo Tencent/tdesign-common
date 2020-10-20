@@ -35,34 +35,20 @@
   }
 
   &__item {
-    each(range(200), {
-    &-level-@{value} {
-      // padding-left: (@tree-node-padding-basic * @value);
-      // transition: .3s height ease-in-out,.3s padding-top ease-in-out,.3s padding-bottom ease-in-out;
+    --level: 0;
+    padding-left: calc(24px * var(--level));
 
-      // transition: .3s height ease-in-out;
+    &--open {
 
-      // overflow: hidden;
-      // animation: mymove 5s;
-      // animation: mymove 3s infinite alternate;
-      // color: yellow;
+      .t-tree__icon {
+        transform: rotate(90deg);
+      }
     }
-      &.show {
-        display: block;
-      }
-      &.hide {
-        display: none;
-      }
-    })
+
     &.t-is-active {
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
     }
-  }
-
-  &__item {
-    --level: 0;
-    padding-left: calc(24px * var(--level));
   }
 
   &__operations {
