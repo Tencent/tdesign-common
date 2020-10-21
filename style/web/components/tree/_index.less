@@ -19,23 +19,28 @@
   &__label {
     display: inline-block;
     vertical-align: middle;
-    line-height: 1.5;
+    line-height: 40px;
     max-width: 300px;
-    margin: 10px 0 10px 8px;
+    margin: 0 0 0 8px;
   }
 
   &__item {
     --level: 0;
     padding-left: calc(24px * var(--level));
+    height: 40px;
+
+    .@{prefix}-tree__icon {
+      transition: transform .3s;
+    }
 
     &--open {
 
-      .t-tree__icon {
+      .@{prefix}-tree__icon {
         transform: rotate(90deg);
       }
     }
 
-    &.t-is-active {
+    &.@{prefix}-is-active {
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
     }
@@ -49,6 +54,28 @@
   &--hoverable &__item:hover {
     cursor: pointer;
     background-color: @tree-node-bg-color-hover;
+  }
+}
+
+.@{prefix}-tree-toggle-enter-active {
+  animation: t-tree-toggle .3s;
+}
+.@{prefix}-tree-toggle-leave-active {
+  animation: t-tree-toggle .3s reverse;
+}
+
+@keyframes t-tree-toggle {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  50% {
+    opacity: 0;
+    height: 40px;
+  }
+  100% {
+    opacity: 1;
+    height: 40px;
   }
 }
 
