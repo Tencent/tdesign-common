@@ -3,6 +3,8 @@
 
 @import "./_var.less";
 
+@import "./_animate.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -65,7 +67,7 @@
 
     .t-icon-prompt_fill {
       color: @primary-color;
-      font-size: 20px;
+      font-size: @dialog-icon-size;
     }
 
     .@{prefix}-dialog__body {
@@ -77,6 +79,7 @@
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
+    font-size: @dialog-icon-size;
   }
 
   >.t-icon-close:hover {
@@ -87,7 +90,13 @@
 
 // t-dialog 组件本身
 .@{prefix}-dialog-ctx {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  outline: none;
 
   &.t-is-visable {
     visibility: visible;
@@ -106,12 +115,14 @@
   }
 
   .@{prefix}-dialog-mask {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
     background: @mask-active;
+    pointer-events: auto;
 
     &--hidden {
       background: none;
@@ -120,17 +131,21 @@
 
   .@{prefix}-dialog {
     position: fixed;
+    pointer-events: auto;
+    z-index: 5;
     border: @dialog-border;
 
     &--top {
       top: 20%;
       left: 50%;
+      transform-origin: -25% 25%;
       transform: translate(-50%, 0);
     }
 
     &--center {
       top: 50%;
       left: 50%;
+      transform-origin: -25% -25%;
       transform: translate(-50%, -50%);
     }
   }
