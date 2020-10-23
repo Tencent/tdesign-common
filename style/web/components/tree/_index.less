@@ -7,28 +7,15 @@
 
 // <name> 替换为组件名
 .@{prefix}-tree {
-  line-height: 32px;
+  line-height: 40px;
   font-size: 14px;
   color: @tree-node-text-color;
 
-  // 默认图标
-  &__icon {
-    vertical-align: middle;
-    display: inline-block;
-  }
-
-  &__label {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 41px;
-    max-width: 300px;
-    margin: 0 0 0 8px;
-  }
-
   &__item {
     --level: 0;
+    display: flex;
     padding-left: calc(24px * var(--level));
-    height: 41px;
+    height: 40px;
 
     &--open {
 
@@ -47,6 +34,24 @@
     .@{prefix}-tree__icon {
       transition: transform .3s;
     }
+  }
+
+  // 默认图标
+  &__icon {
+    align-self: center;
+    vertical-align: middle;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+  }
+
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 40px;
+    margin-left: 4px;
   }
 
   &__operations {
@@ -78,12 +83,12 @@
 
   50% {
     opacity: 0;
-    height: 41px;
+    height: 40px;
   }
 
   100% {
     opacity: 1;
-    height: 41px;
+    height: 40px;
   }
 }
 
