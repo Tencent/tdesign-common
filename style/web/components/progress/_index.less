@@ -5,13 +5,8 @@
 
 @import "./_mixin.less";
 // 进度条基本样式
-.@{prefix}-progress--bar {
-  width: 100%;
-  height: 4px;
-  background: @progress-track-color;
-  border-radius: 2px;
-  overflow: hidden;
-
+.@{prefix}-progress {
+  
   &--inner {
     position: relative;
     height: 100%;
@@ -23,13 +18,18 @@
     margin-left: 10px;
     color: @progress-info-dark;
     white-space: nowrap;
-
-
   }
 
-  &-icon {
-    font-size: inherit;
+  &--icon {
+    font-size: 1.25em;
   }
+}
+.@{prefix}-progress--bar {
+  width: 100%;
+  height: 6px;
+  background: @progress-track-color;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 //标准进度条
@@ -37,15 +37,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  .@{prefix}-progress--bar {
-    height: 6px;
-    border-radius: 3px;
-  }
-
-  &--info {
-    white-space: nowrap;
-  }
 }
 
 //条形进度条 百分比内置
@@ -53,7 +44,7 @@
   height: 18px;
   border-radius: 9px;
 
-  .@{prefix}-progress--bar--info {
+  .@{prefix}-progress--info {
     min-width: 2em;
     position: absolute;
     top: 50%;
@@ -68,28 +59,23 @@
 .@{prefix}-progress--circle {
   position: relative;
 
-  .@{prefix}-progress--bar--info {
+  .@{prefix}-progress--info {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
     min-width: 2em;
     margin: 0;
-    font-size: 1em;
+    font-size: inherit;
     line-height: 1;
     text-align: center;
     transform: translate(-50%, -50%);
   }
 }
 
-//进度条图标样式
-.@{prefix}-progress--icon {
-  font-size: 17px;
-}
-
 //进度条状态
 .@{prefix}-progress--status--active {
-  .@{prefix}-progress--bar--inner {
+  .@{prefix}-progress--inner {
 
     &:before {
       position: absolute;
@@ -107,7 +93,7 @@
 }
 
 .@{prefix}-progress--status--success {
-  .@{prefix}-progress--bar--inner {
+  .@{prefix}-progress--inner {
     background: @progress-success;
   }
 
@@ -117,7 +103,7 @@
 }
 
 .@{prefix}-progress--status--warning {
-  .@{prefix}-progress--bar--inner {
+  .@{prefix}-progress--inner {
     background: @progress-warning;
   }
 
@@ -127,7 +113,7 @@
 }
 
 .@{prefix}-progress--status--error {
-  .@{prefix}-progress--bar--inner {
+  .@{prefix}-progress--inner {
     background: @progress-error;
   }
 
