@@ -1,0 +1,31 @@
+.@{prefix}-demo-badge {
+  &-color {
+    .@{prefix}-badge + .@{prefix}-badge {
+      margin-left: 4px;
+    }
+  }
+  &-group {
+    .@{prefix}-badge {
+      vertical-align: middle;
+      + .@{prefix}-badge {
+        margin-left: 38px;
+      }
+    }
+  }
+  &-host {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    background: #fbfbfb;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    + .@{prefix}-demo-badge-host {
+      margin-left: 38px;
+    }
+  }
+  &-color {
+    + .@{prefix}-demo-badge-color {
+      margin-left: 4px;
+    }
+  }
+}
