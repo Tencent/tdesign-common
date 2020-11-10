@@ -1,15 +1,18 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-@import '../../base.less';
+@import "../../base.less";
 
-@import './_var.less';
+@import "./_var.less";
 
-@import './_mixin.less';
+@import "./_mixin.less";
 
 // Badge
 .@{prefix}-badge {
   position: relative;
   display: inline-block;
-  &--dot, &--circle, &--round {
+
+  &--dot,
+  &--circle,
+  &--round {
     position: absolute;
     top: 0;
     right: 0;
@@ -34,7 +37,9 @@
     background-color: @badge-color;
     // box-shadow: 0 0 0 1px #fff;
   }
-  &--circle, &--round {
+
+  &--circle,
+  &--round {
     padding-right: 4px;
     padding-left: 4px;
     min-width: @badge-height;
@@ -42,6 +47,7 @@
     border-radius: @badge-height / 2;
     background-color: @badge-color;
     line-height: @badge-height;
+
     &.t-size-s {
       padding-right: 3px;
       padding-left: 3px;
@@ -50,6 +56,7 @@
       line-height: @badge-height-s;
     }
   }
+
   &--round {
     border-radius: @border-radius;
   }
