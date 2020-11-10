@@ -8,32 +8,23 @@
 & .@{prefix}-cascader-input {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: @cascader-input-width;
   border: 1px solid @cascader-highlight-color;
   border-radius: 2px;
   vertical-align: middle;
   padding: 0px 26px 0px 4px;
-  font-size: 14px;
   line-height: @cascader-height-default - 2px;
   cursor: default;
 
   & .@{prefix}-cascader-placeholder {
     color: @cascader-light-color;
-    text-align: left;
   }
 
   & .@{prefix}-cascader-input-content {
     color: @cascader-dark-color;
-    text-align: left;
   }
 
   & .@{prefix}-cascader-right-icon {
-    position: absolute;
-    height: 100%;
-    right: 0px;
-    top: 0px;
-    color: @cascader-icon-color;
-    margin: 0px 5px;
     line-height: @cascader-height-default - 2px;
   }
 
@@ -57,8 +48,8 @@
 
   & .@{prefix}-tag--disabled {
     cursor: auto;
-    background-color: @cascader-disabled-tag-background-color;
-    color: @cascader-disabled-tag-color;
+    background-color: @cascader-tag-background-color-disabled;
+    color: @cascader-tag-color-disabled;
   }
 }
 
@@ -85,35 +76,30 @@
         position: relative;
         color: @cascader-dark-color;
 
-        & .@{prefix}-cascader-item__label {
-          font-size: 14px;
-        }
-
         & .@{prefix}-cascader-item_highlight {
           color: @cascader-highlight-color;
         }
 
         &:hover,
         :active {
-          background: @cascader-item-hover-color;
+          background: @cascader-item-color-hover;
           cursor: pointer;
         }
       }
 
       & .@{prefix}-cascader-item-expand {
-        background: @cascader-item-expand-background-color;
+        background: @cascader-item-background-color-expanded;
         color: @cascader-highlight-color;
       }
 
       & .@{prefix}-cascader-item-selected {
-        background: @cascader-item-selected-color;
+        background: @cascader-item-color-selected;
       }
     }
     & .@{prefix}-cascader-menu.@{prefix}-search-menu {
       min-width: 100%;
       max-height: 240px;
       overflow-y: auto;
-      font-size: 14px;
     }
 
     & .@{prefix}-cascader-menu.@{prefix}-width-l {
@@ -123,17 +109,11 @@
     & .@{prefix}-cascader-menu-seperator {
       border-right: 1px solid @cascader-menu-seperator-color;
     }
-
-    & .@{prefix}-cascader-search-menu {
-
-    }
-
   }
 
   & .@{prefix}-cascader-status {
     position: relative;
     min-width: @cascader-width-s - 2px;
-    font-size: 14px;
     cursor: default;
 
     & .@{prefix}-cascader-data__loading {
@@ -162,12 +142,6 @@
     }
 
     .@{prefix}-cascader-right-icon {
-      position: absolute;
-      height: 100%;
-      right: 0;
-      top: 0;
-      color: @cascader-light-color;
-      margin: 0 5px;
       line-height: @cascader-item-height;
       cursor: pointer;
     }
@@ -186,7 +160,6 @@
   border-radius: 2px;
   vertical-align: middle;
   padding: 0px 26px 0px 4px;
-  font-size: 14px;
   line-height: @cascader-height-default - 2px;
 
   .@{prefix}-cascader-search-input {
@@ -194,10 +167,6 @@
     border: 0;
     background: transparent;
   }
-}
-
-.@{prefix}-cascader-search-panel {
-
 }
 
 .@{prefix}-cascader-right-icon {
@@ -212,9 +181,9 @@
 
 .@{prefix}-is-disabled {
   cursor: auto;
-  background-color: @cascader-disabled-tag-background-color;
-  color: @cascader-disabled-tag-color;
-  border-color: @cascader-disabled-border-color;
+  background-color: @cascader-tag-background-color-disabled;
+  color: @cascader-tag-color-disabled;
+  border-color: @cascader-border-color-disabled;
 }
 
 .@{prefix}-cascader-input.@{prefix}-size-l,
