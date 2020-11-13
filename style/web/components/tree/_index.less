@@ -11,7 +11,7 @@
   font-size: 14px;
   color: @tree-node-text-color;
 
-  &__item {
+  & &__item {
     --level: 0;
     display: flex;
     padding-left: calc(24px * var(--level));
@@ -29,14 +29,14 @@
     }
   }
 
-  &--fx {
+  & &--fx {
     .@{prefix}-tree__icon {
       transition: transform .3s;
     }
   }
 
   // 默认图标
-  &__icon {
+  & &__icon {
     align-self: center;
     width: 24px;
     height: 24px;
@@ -45,22 +45,25 @@
     cursor: pointer;
   }
 
-  &__label {
+  & &__label {
+    flex: 1 0 auto;
     line-height: 40px;
     margin-left: 4px;
   }
 
-  &__operations {
-    float: right;
-    cursor: pointer;
+  & &__operations {
+    display: flex;
+    flex: 0 0 auto;
+    justify-self: flex-end;
+    justify-content: flex-end;
   }
 
-  &--hoverable &__item:hover {
+  & &--hoverable &__item:hover {
     cursor: pointer;
     background-color: @tree-node-bg-color-hover;
   }
 
-  &__item.t-is-disabled {
+  & &__item.t-is-disabled {
     color: #ddd;
   }
 }
