@@ -19,7 +19,7 @@
   }
 
 
-  &__line {
+  &_line {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@
     background-color: @border-level-1-color;
   }
 
-  &__line .point {
+  &_line .point {
     position: absolute;
     display: block;
     width: 100%;
@@ -38,16 +38,16 @@
   }
 
 
-  &__item {
+  &_item {
     padding: 3px 0 3px 16px;
   }
 
-  &__item.act a {
+  &_item.act .&_link {
     color: @anchor-text-color-hover;
     word-break: break-all;
   }
 
-  a {
+  &_link {
     color: @anchor-text-color-default;
     text-decoration: none;
   }
