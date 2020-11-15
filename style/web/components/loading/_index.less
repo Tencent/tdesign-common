@@ -1,0 +1,46 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-loading {
+  color: #0052d9;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  font-size: 0;
+
+  .@{prefix}-icon-loading {
+    font-size: 14px;
+  }
+
+  &-m {
+    .@{prefix}-icon-loading {
+      font-size: 36px; 
+    }
+  }
+
+  &-l {
+    .@{prefix}-icon-loading {
+      font-size: 56px; 
+    }
+  }
+
+  &-text {
+    color: #0052d9;
+    font-size: 16px;
+    width: auto;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+
+    span {
+      display: inline-block;
+      vertical-align: middle; 
+    }
+  }
+}
+
