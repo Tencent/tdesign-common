@@ -1,5 +1,5 @@
-import camelCase from 'lodash/camelCase';
-import { TreeNode } from './TreeNode';
+import camelCase from "lodash/camelCase";
+import { TreeNode } from "./TreeNode";
 
 export interface TreeStoreOptions {
   // 数据字段映射
@@ -90,6 +90,10 @@ export class TreeStore {
     return this.nodes;
   }
 
+  getRoots(): TreeNode[] {
+    return this.roots;
+  }
+
   // 给树添加节点
   append(list: Array<object>): void {
     list.forEach((item) => {
@@ -102,10 +106,7 @@ export class TreeStore {
   // 更新树结构
   // 清空 nodes 数组，然后遍历所有根节点重新插入 node
   refreshNodes(): void {
-    const {
-      roots,
-      nodes,
-    } = this;
+    const { roots, nodes } = this;
     nodes.length = 0;
     roots.forEach((node) => {
       const list = node.walk();
@@ -115,9 +116,7 @@ export class TreeStore {
 
   // 更新所有树节点状态
   refreshState(): void {
-    const {
-      nodes,
-    } = this;
+    const { nodes } = this;
     nodes.forEach((node) => {
       node.update();
     });
@@ -141,14 +140,13 @@ export class TreeStore {
         this.updateTimer = null;
         if (this.shouldReflow) {
           this.shouldReflow = false;
-          this.emit('reflow');
+          this.emit("reflow");
         }
         const updatedList = Array.from(this.updatedMap.keys());
         this.updatedMap.clear();
         if (updatedList.length > 0) {
-          const updatedNodes = updatedList
-            .map(value => this.getNode(value));
-          this.emit('update', {
+          const updatedNodes = updatedList.map((value) => this.getNode(value));
+          this.emit("update", {
             nodes: updatedNodes,
           });
         }
@@ -158,9 +156,7 @@ export class TreeStore {
 
   // 获取选中态节点 value 数组
   getChecked(map?: Map<string, boolean>): string[] {
-    const {
-      nodes,
-    } = this;
+    const { nodes } = this;
     const list: string[] = [];
     const checkedMap = map || this.checkedMap;
     nodes.forEach((node) => {
@@ -215,7 +211,7 @@ export class TreeStore {
     const config = this.config || {};
     const methodName = camelCase(`on-${name}`);
     const method = config[methodName];
-    if (typeof method === 'function') {
+    if (typeof method === "function") {
       method(state);
     }
   }
