@@ -15,7 +15,7 @@ const defaultStatus: any = {
   loading: false,
 };
 
-export default class TreeNode {
+export class TreeNode {
   // 节点隶属的树实例
   tree: TreeStore;
   // 节点 id ，唯一标志
@@ -529,3 +529,5 @@ export default class TreeNode {
     return list;
   }
 }
+
+export default TreeNode;
