@@ -82,52 +82,28 @@
   /* 连接线 */
   &__line {
 
-    &--root:after {
-      box-shadow: -1px 0 0 0 #ddd;
-    }
-
-    &--trunk:before {
+    &--top:before {
       box-shadow: inset -1px 0 0 0 #ddd;
     }
 
-    &--trunk:after {
+    &--left:before {
+      box-shadow: inset 0 -1px 0 0 #ddd;
+    }
+
+    &--bottom:after {
       box-shadow: -1px 0 0 0 #ddd;
     }
 
-    &--branch:before {
-      box-shadow: inset -1px 0 0 0 #ddd;
+    &--right:after {
+      box-shadow: 0 -1px 0 0 #ddd;
     }
 
-    &--branch:after {
+    &--left_top:before {
+      box-shadow: inset -1px -1px 0 0 #ddd;
+    }
+
+    &--right_bottom:after {
       box-shadow: -1px -1px 0 0 #ddd;
-    }
-
-    &--seed:before {
-      box-shadow: inset 0 -1px 0 0 #ddd;
-    }
-
-    &--seed:after {
-      box-shadow: -1px 0 0 0 #ddd;
-    }
-
-    &--corner:before {
-      box-shadow: inset -1px 0 0 0 #ddd;
-    }
-
-    &--corner:after {
-      box-shadow: 0 -1px 0 0 #ddd;
-    }
-
-    &--leaf:before {
-      box-shadow: inset 0 -1px 0 0 #ddd;
-    }
-
-    &--leaf:after {
-      box-shadow: 0 -1px 0 0 #ddd;
-    }
-
-    &--end:before {
-      box-shadow: inset -1px 0 0 0 #ddd;
     }
 
     &--empty {
