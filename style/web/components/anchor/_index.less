@@ -35,8 +35,8 @@
     display: block;
     width: 100%;
     height: 16px;
-    top: -24px;
-    margin: 4px 0;
+    top: -1*@anchor-item-height;
+    transform: translateY(4px);
     background-color: @anchor-text-color-hover;
   }
 
@@ -50,7 +50,7 @@
     color: @anchor-text-color-hover;
   }
 
-  &_link {
+  &-item_link {
     color: @anchor-text-color-default;
     text-decoration: none;
   }
