@@ -11,6 +11,10 @@
   color: @anchor-text-color-default;
   font-size: @anchor-font-base;
 
+  .@{prefix}-is-active>a {
+    color: @anchor-text-color-hover;
+  }
+
   &.@{prefix}--affix {
     position: fixed;
     top: 20px;
@@ -42,12 +46,11 @@
 
 
   &-item {
-    padding: 3px 0 3px 16px;
+    padding: 0 8px 0 16px;
+    line-height: 24px;
+    max-height: 72px;
+    overflow: hidden;
     word-break: break-all;
-  }
-
-  &-is-active>a {
-    color: @anchor-text-color-hover;
   }
 
   &-item_link {
@@ -66,4 +69,34 @@
   &.@{prefix}-size-l {
     width: @anchor-width-l;
   }
+}
+
+.@{prefix}-anchor-target{
+  cursor: pointer;
+
+  font-size: @anchor-font-base;
+  
+  //&:hover
+  @keyframes fadeOut {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
+//激活锚点 滚动到指定锚点 标题后边出现定位提示
+&.@{prefix}-is-active::after{
+    display: inline-block;
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: @anchor-text-color-hover;
+    vertical-align: middle;
+    animation: fadeOut 2s 3s linear 1;
+    animation-fill-mode: forwards
+  }
+
 }
