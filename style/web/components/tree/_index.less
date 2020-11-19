@@ -106,6 +106,7 @@
 
   // 默认图标
   & &__icon {
+    flex: 0 0 auto;
     align-self: center;
     width: 24px;
     height: 24px;
@@ -114,17 +115,29 @@
     cursor: pointer;
   }
 
+  & &__icon:empty {
+    cursor: initial;
+  }
+
   & &__label {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     line-height: 40px;
     margin-left: 4px;
+  }
+
+  & &__space {
+    display: block;
+    flex: 1 0 auto;
   }
 
   & &__operations {
     display: flex;
     flex: 0 0 auto;
-    justify-self: flex-end;
     justify-content: flex-end;
+  }
+
+  & &__operations .@{prefix}-icon {
+    cursor: pointer;
   }
 
   & &--hoverable &__item:hover {
