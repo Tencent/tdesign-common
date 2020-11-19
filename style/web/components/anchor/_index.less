@@ -38,13 +38,12 @@
     position: absolute;
     display: block;
     width: 100%;
-    height: 16px;
+    height: 24px;
     top: -1*@anchor-item-height;
-    transform: translateY(4px);
     background-color: @anchor-text-color-hover;
   }
 
-//锚点item
+  //锚点item
   &-item {
     padding: 0 8px 0 16px;
   }
@@ -62,14 +61,16 @@
     margin-right: -4px;
     padding-right: 10px;
   }
+
   &-item_link:before {
-    content: '...';
+    content: "...";
     position: absolute;
     right: 0;
     bottom: 0;
   }
-  &-item_link::after{
-    content: '';
+
+  &-item_link::after {
+    content: "";
     position: absolute;
     right: 0;
     width: 10px;
@@ -106,20 +107,29 @@
       display: none;
     }
   }
-  //激活锚点 滚动到指定锚点 标题后边出现定位提示
-  &.@{prefix}-is-active::after {
-    display: inline-block;
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: @anchor-text-color-hover;
-    vertical-align: middle;
-    animation: fadeOut 2s 3s linear 1;
-    animation-fill-mode: forwards
-  }
 
   //锚点hover样式
   //使用 t-popup组件包裹 <a class="t-icon t-icon-file-copy"></a>
+  //默认隐藏
+  .@{prefix}-copy {
+    display: none;
+  }
+  //hover样式 展示
+  &:hover .@{prefix}-copy {
+    display: inline-block;
+  }
+}
 
+//激活锚点 滚动到指定锚点 标题后边出现定位提示
+//target属性参考文档https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target
+:target::after {
+  display: inline-block;
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: @anchor-text-color-hover;
+  vertical-align: middle;
+  animation: fadeOut 2s 2s linear 1;
+  animation-fill-mode: forwards
 }
