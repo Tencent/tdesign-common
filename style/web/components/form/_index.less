@@ -1,0 +1,29 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-form {
+  font-size: 14px;
+
+  &__item {
+    display: flex;
+    margin: 0 0 26px;
+  }
+
+  &__label {
+    display: flex;
+    flex-grow: 0;
+    height: 40px;
+    align-items: center;
+  }
+
+  &__controls {
+    display: flex;
+    flex: 1 1 0;
+    height: 40px;
+    align-items: center;
+  }
+}
