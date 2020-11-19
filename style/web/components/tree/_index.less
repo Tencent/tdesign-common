@@ -45,6 +45,7 @@
     top: 0;
     display: flex;
     opacity: 1;
+    pointer-events: none;
 
     dd {
       display: flex;
@@ -95,13 +96,9 @@
       border-top: 1px solid #ddd;
     }
 
-    &--empty {
-      display: block;
+    &--icon {
+      mask-image: radial-gradient(circle at 50% 50%, transparent 8px, #000 8px);
     }
-  }
-
-  &__line--icon {
-    mask-image: radial-gradient(circle at 50% 50%, transparent 8px, #000 8px);
   }
 
   // 默认图标
