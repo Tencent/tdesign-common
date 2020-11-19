@@ -10,7 +10,7 @@
   width: @anchor-width-default;
   color: @anchor-text-color-default;
   font-size: @anchor-font-base;
-
+  //锚点 item 被选中
   .@{prefix}-is-active>a {
     color: @anchor-text-color-hover;
   }
@@ -22,7 +22,7 @@
     z-index: 11;
   }
 
-
+  //锚点组件左侧线条
   &_line {
     position: absolute;
     top: 0;
@@ -44,18 +44,38 @@
     background-color: @anchor-text-color-hover;
   }
 
-
+//锚点item
   &-item {
     padding: 0 8px 0 16px;
+  }
+
+  &-item_link {
+    display: inline-block;
+    position: relative;
     line-height: 24px;
     max-height: 72px;
     overflow: hidden;
     word-break: break-all;
-  }
-
-  &-item_link {
     color: @anchor-text-color-default;
     text-decoration: none;
+    text-align: justify;
+    margin-right: -4px;
+    padding-right: 10px;
+  }
+  &-item_link:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &-item_link::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 10px;
+    height: 24px;
+    margin-top: 4px;
+    background: #fff;
   }
 
   a:hover {
@@ -73,10 +93,8 @@
 
 .@{prefix}-anchor-target{
   cursor: pointer;
-
   font-size: @anchor-font-base;
-  
-  //&:hover
+
   @keyframes fadeOut {
     0%{
         opacity: 1;
@@ -98,5 +116,8 @@
     animation: fadeOut 2s 3s linear 1;
     animation-fill-mode: forwards
   }
+
+  //锚点hover样式
+  //使用 t-popup组件包裹 <a class="t-icon t-icon-file-copy"></a>
 
 }
