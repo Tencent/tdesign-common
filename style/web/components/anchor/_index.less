@@ -71,23 +71,25 @@
   }
 }
 
-.@{prefix}-anchor-target{
+.@{prefix}-anchor-target {
   cursor: pointer;
 
   font-size: @anchor-font-base;
   
   //&:hover
   @keyframes fadeOut {
-    0%{
-        opacity: 1;
+
+    0% {
+      opacity: 1;
     }
-    100%{
-        opacity: 0;
-        display: none;
+
+    100% {
+      opacity: 0;
+      display: none;
     }
-}
-//激活锚点 滚动到指定锚点 标题后边出现定位提示
-&.@{prefix}-is-active::after{
+  }
+  //激活锚点 滚动到指定锚点 标题后边出现定位提示
+  &.@{prefix}-is-active::after {
     display: inline-block;
     content: "";
     width: 6px;
