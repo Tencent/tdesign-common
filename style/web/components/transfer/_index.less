@@ -1,0 +1,133 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../_variables.less";
+
+.@{prefix}-transfer {
+  font-size: @transfer-font-size;
+  line-height: 22px;
+  position: relative;
+  display: inline-block;
+  background: @transfer-bg-color;
+  box-shadow: @transfer-box-shadow;
+  border-radius: @transfer-border-radius;
+
+  &-list {
+    position: relative;
+    display: inline-block;
+    width: @transfer-common-width;
+    height: @transfer-common-height;
+    padding-top: 40px;
+    //border: 1px solid @transfer-border-color;
+    border-bottom: 0;
+    word-break: break-word;
+    vertical-align: middle;
+
+    &-left {
+      border-right: 1px solid @transfer-border-color;
+    }
+
+    &-right {
+      border-left: 1px solid @transfer-border-color;
+    }
+
+    &__header {
+      position: absolute;
+      top: 0;
+      border-bottom: 1px solid @transfer-border-color;
+      height: 40px;
+      line-height: 40px;
+      width: 100%;
+      padding: 0 24px 0 12px;
+    }
+
+    &__body {
+      position: relative;
+      height: 100%;
+
+      input {
+        border: 0;
+      }
+    }
+
+    &-with-search {
+      padding-top: 32px;
+    }
+
+    &-search-wrapper {
+      position: absolute;
+      top: 0;
+      border-bottom: 1px solid @transfer-border-color;
+    }
+
+    &__content {
+      height: 100%;
+      overflow: auto;
+    }
+
+    &__item {
+      padding: 9px 24px 9px 12px;
+      display: flex;
+      cursor: pointer;
+    }
+
+    &__item:hover {
+      background: @transfer-bg-hover;
+    }
+
+    &__wrapper {
+      position: relative;
+      height: 100%;
+      overflow: auto;
+      padding: 12px;
+    }
+
+    &__footer {
+      height: 40px;
+      text-align: right;
+      vertical-align: middle;
+      padding: 12px;
+      line-height: 16px;
+    }
+  }
+
+  &-operations {
+    display: inline-block;
+    width: 24px;
+    margin: auto 8px;
+    vertical-align: middle;
+
+    button {
+      width: 24px;
+      height: 24px;
+      padding: 0;
+    }
+
+    button:first-child {
+      margin-bottom: 14px;
+    }
+  }
+
+  &-empty {
+    text-align: center;
+    position: absolute;
+    color: #bbb;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.@{prefix}-transfer-wrapper {
+  .@{prefix}-transfer-list {
+    @transfer-wrap-height: 320px;
+  }
+}
+
+.@{prefix}-transfer-footer {
+  .@{prefix}-transfer-list {
+    height: @transfer-footer-height;
+    padding-bottom: 40px;
+  }
+}
