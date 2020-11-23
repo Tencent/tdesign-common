@@ -2,9 +2,7 @@ import get from 'lodash/get';
 import uniqueId from 'lodash/uniqueId';
 import { TreeStore } from './TreeStore';
 
-const {
-  hasOwnProperty,
-} = Object.prototype;
+const { hasOwnProperty } = Object.prototype;
 
 const defaultStatus: any = {
   expandMutex: false,
@@ -158,16 +156,11 @@ export class TreeNode {
 
   // 设置状态
   set(item: any): void {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
     const keys = Object.keys(item);
     const changedProps: any = {};
     keys.forEach((key) => {
-      if (
-        hasOwnProperty.call(defaultStatus, key)
-        || key === 'label'
-      ) {
+      if (hasOwnProperty.call(defaultStatus, key) || key === 'label') {
         if (this[key] !== item[key]) {
           changedProps[key] = true;
         }
@@ -195,10 +188,7 @@ export class TreeNode {
 
   // 获取兄弟节点，包含自己在内
   getSiblings(): TreeNode[] {
-    const {
-      parent,
-      tree,
-    } = this;
+    const { parent, tree } = this;
     let list: Array<TreeNode> = [];
     if (parent) {
       if (Array.isArray(parent.children)) {
@@ -516,9 +506,7 @@ export class TreeNode {
 
   // 获取包含自己在内所有的子节点
   walk(): TreeNode[] {
-    const {
-      children,
-    } = this;
+    const { children } = this;
     let list: TreeNode[] = [];
     list.push(this);
     if (Array.isArray(children) && children.length > 0) {

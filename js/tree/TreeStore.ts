@@ -34,6 +34,8 @@ export interface TreeStoreOptions {
   onReflow?: Function;
   // 节点信息变更后触发
   onUpdate?: Function;
+  // scoped slots 中转对象
+  scopedSlots?: any;
 }
 
 // 构建一个树的数据模型
@@ -114,10 +116,7 @@ export class TreeStore {
   // 更新树结构
   // 清空 nodes 数组，然后遍历所有根节点重新插入 node
   refreshNodes(): void {
-    const {
-      roots,
-      nodes,
-    } = this;
+    const { roots, nodes } = this;
     nodes.length = 0;
     roots.forEach((node) => {
       const list = node.walk();
@@ -127,9 +126,7 @@ export class TreeStore {
 
   // 更新所有树节点状态
   refreshState(): void {
-    const {
-      nodes,
-    } = this;
+    const { nodes } = this;
     nodes.forEach((node) => {
       node.update();
     });
