@@ -94,18 +94,33 @@
 
   &-operations {
     display: inline-block;
-    width: 24px;
     margin: auto 8px;
     vertical-align: middle;
+    overflow: hidden;
 
     button {
-      width: 24px;
-      height: 24px;
-      padding: 0;
+      display: block;
+      font-size: 16px;
+      line-height: 16px;
     }
 
     button:first-child {
       margin-bottom: 14px;
+    }
+
+    .t-icon {
+      font-size: 16px;
+      line-height: 12px;
+    }
+
+    .t-button--line {
+      padding: 3px;
+      height: 24px;
+    }
+
+    .t-button--primary {
+      height: 24px;
+      padding: 3px;
     }
   }
 
