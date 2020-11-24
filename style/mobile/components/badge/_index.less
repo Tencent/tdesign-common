@@ -35,7 +35,7 @@
   }
 
   &--small {
-    transform: translate(50%,-50%) scale(0.75);
+    transform: translate(50%,-50%) scale(.75);
   }
 
   &--circle {
@@ -48,6 +48,7 @@
 
   &--ribbon {
     transform: rotate(45deg);
+
     &::before {
       content: "";
       position: absolute;
@@ -58,6 +59,7 @@
       border-bottom: @badge-height solid @badge-color;
       border-left: @badge-height solid transparent;
     }
+    
     &::after {
       content: "";
       position: absolute;
