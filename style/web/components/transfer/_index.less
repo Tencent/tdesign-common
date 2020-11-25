@@ -85,7 +85,7 @@
       padding: 12px;
     }
 
-    &__footer {
+    &__pagination {
       height: 40px;
       text-align: right;
       vertical-align: middle;
@@ -146,9 +146,26 @@
   }
 }
 
-.@{prefix}-transfer-footer {
+// 只有翻页时候的高度
+.@{prefix}-transfer-pagination {
   .@{prefix}-transfer-list {
-    height: @transfer-footer-height;
+    height: @transfer-with-pagination-height;
     padding-bottom: 40px;
+  }
+}
+
+// 只有footer时候的高度
+.@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-footer-height;
+    padding-bottom: 40px;
+  }
+}
+
+// 同时有翻页和footer时候的高度
+.@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-both-height;
+    padding-bottom: 80px;
   }
 }
