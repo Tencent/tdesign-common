@@ -136,7 +136,6 @@
       background: #e5e5e5;
       border-radius: 3px;
     }
-
   }
 
   &__control {
@@ -191,6 +190,7 @@
         line-height: 22px;
         color: #000;
         opacity: .6;
+        cursor: default;
 
         &:last-child {
           margin-right: 0;
@@ -205,16 +205,11 @@
       }
     }
 
-    &-body {
-
-      &-cell {
-        cursor: pointer;
+    .@{prefix}-is-disabled {
+      .@{prefix}-calendar__table-body-cell-value,
+      .@{prefix}-calendar__table-body-cell-value {
+        opacity: .16;
       }
     }
-  }
-
-  .@{prefix}-is-disabled {
-    color: #000;
-    opacity: .16;
   }
 }
