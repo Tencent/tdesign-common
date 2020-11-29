@@ -5,48 +5,34 @@
 
 @import "./_mixin.less";
 
-& .@{prefix}-cascader-input {
+.@{prefix}-cascader-input {
   position: relative;
   display: inline-block;
   width: @cascader-input-width;
   border: 1px solid @cascader-highlight-color;
   border-radius: 2px;
-  vertical-align: middle;
   padding: 0px 26px 0px 4px;
   line-height: @cascader-height-default;
+  vertical-align: middle;
   cursor: default;
 
-  & .@{prefix}-cascader-placeholder {
+  & .@{prefix}-cascader-input__placeholder {
     color: @cascader-light-color;
   }
 
-  & .@{prefix}-cascader-input-content {
+  & .@{prefix}-cascader-input__content {
     color: @cascader-dark-color;
   }
 
-  & .@{prefix}-cascader-right-icon {
-    line-height: @cascader-height-default;
-  }
-
-  & .@{prefix}-cascader-right-icon.@{prefix}-size-l {
-    line-height: @cascader-height-l - 2px;
-  }
-
-  & .@{prefix}-cascader-right-icon.@{prefix}-size-s {
-    line-height: @cascader-height-s - 2px;
-  }
-
   & .@{prefix}-tag {
+    cursor: pointer;
     margin: 4px 4px 4px 0px;
-  }
-
-  & .@{prefix}-tag--default {
     color: @cascader-tag-color;
     background-color: @cascader-tag-background-color;
     border-color: @cascader-tag-border-color;
   }
 
-  & .@{prefix}-tag--disabled {
+  & .@{prefix}-is-disabled {
     cursor: auto;
     background-color: @cascader-tag-background-color-disabled;
     color: @cascader-tag-color-disabled;
@@ -56,13 +42,13 @@
 .@{prefix}-cascader {
   margin: 10px 0 5px 0;
   background: #fff;
-  box-shadow: 0 5px 5px -3px rgba(0,0,0,.10), 0 8px 10px 1px rgba(0,0,0,.06), 0 3px 14px 6px rgba(0,0,0,.05);
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .10), 0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
   border-radius: 2px;
+  cursor: default;
   
   & .@{prefix}-cascader-panel {
     display: flex;
     height: 100%;
-    cursor: default;
 
     & .@{prefix}-cascader-menu {
       min-width: @cascader-width-s - 2px;
@@ -70,33 +56,33 @@
       overflow: auto;
 
       & .@{prefix}-cascader-item {
-        height: @cascader-item-height;
         padding-left: 12px;
-        line-height: @cascader-item-height;
         position: relative;
+        height: @cascader-item-height;
+        line-height: @cascader-item-height;
         color: @cascader-dark-color;
 
-        & .@{prefix}-cascader-item_highlight {
+        & .@{prefix}-item--highlight {
           color: @cascader-highlight-color;
         }
 
-        &:hover,
-        :active {
+        &:hover {
           background: @cascader-item-color-hover;
           cursor: pointer;
         }
       }
 
-      & .@{prefix}-cascader-item-expand {
+      & .@{prefix}-cascader-item--expanded {
         background: @cascader-item-background-color-expanded;
         color: @cascader-highlight-color;
       }
 
-      & .@{prefix}-cascader-item-selected {
+      & .@{prefix}-cascader-item--selected {
         background: @cascader-item-color-selected;
       }
     }
-    & .@{prefix}-cascader-menu.@{prefix}-search-menu {
+    
+    & .@{prefix}-cascader-menu.@{prefix}-is-search {
       min-width: 100%;
       max-height: 240px;
       overflow-y: auto;
@@ -106,44 +92,37 @@
       min-width: @cascader-width-l - 2px;
     }
 
-    & .@{prefix}-cascader-menu-seperator {
+    & .@{prefix}-cascader-menu__seperator {
       border-right: 1px solid @cascader-menu-seperator-color;
     }
   }
 
   & .@{prefix}-cascader-status {
+    cursor: default;
     position: relative;
     min-width: @cascader-width-s - 2px;
-    cursor: default;
 
-    & .@{prefix}-cascader-data__loading {
+    & .@{prefix}-cascader__data {
+      line-height: @cascader-item-height;
+      margin-left: 10px;
+    }
+
+    & .@{prefix}-cascader__data.@{prefix}-is-loading {
       color: @cascader-light-gray-color;
-      line-height: @cascader-item-height;
-      margin-left: 10px;
     }
 
-    & .@{prefix}-cascader-data__exception {
+    & .@{prefix}-cascader__data.@{prefix}-is-exception {
       color: @cascader-dark-color;
-      line-height: @cascader-item-height;
-      margin-left: 10px;
     }
 
-    & .@{prefix}-cascader-data__retry {
+    & .@{prefix}-cascader__data.@{prefix}-is-retry {
       color: @cascader-highlight-color;
-      line-height: @cascader-item-height;
       margin-left: 5px;
       cursor: pointer;
     }
 
-    & .@{prefix}-cascader-data__empty {
+    & .@{prefix}-cascader__data.@{prefix}-is-empty {
       color: @cascader-light-color;
-      line-height: @cascader-item-height;
-      margin-left: 10px;
-    }
-
-    .@{prefix}-cascader-right-icon {
-      line-height: @cascader-item-height;
-      cursor: pointer;
     }
   }
 
@@ -153,30 +132,36 @@
 }
 
 .@{prefix}-cascader-search {
+  width: 100%;
   position: relative;
   display: inline-block;
-  width: 100%;
-  border: 1px solid @cascader-highlight-color;
-  border-radius: 2px;
   vertical-align: middle;
   padding: 0px 26px 0px 4px;
   line-height: @cascader-height-default;
+  border: 1px solid @cascader-highlight-color;
+  border-radius: 2px;
 
   .@{prefix}-cascader-search-input {
-    width: 100%;
     border: 0;
     background: transparent;
   }
 }
 
-.@{prefix}-cascader-right-icon {
+.@{prefix}-cascader-icon {
   position: absolute;
   height: 100%;
   right: 0;
   top: 0;
   color: @cascader-light-color;
   margin: 0 5px;
-  line-height: @cascader-height-default;
+
+  /* stylelint-disable-next-line */
+  line-height: @cascader-height-default !important;
+}
+
+.@{prefix}-cascader-icon.@{prefix}-is-loading {
+  /* stylelint-disable-next-line */
+  line-height: @cascader-item-height !important;
 }
 
 .@{prefix}-is-disabled {
@@ -187,23 +172,25 @@
 }
 
 .@{prefix}-cascader-input.@{prefix}-size-l,
-.@{prefix}-cascader-right-icon.@{prefix}-size-l {
-  line-height: @cascader-height-l - 2px;
+.@{prefix}-cascader-icon.@{prefix}-size-l {
+  /* stylelint-disable-next-line */
+  line-height: @cascader-height-l - 2px !important;
 }
 
 .@{prefix}-cascader-input.@{prefix}-size-s,
-.@{prefix}-cascader-right-icon.@{prefix}-size-s {
-  line-height: @cascader-height-s - 2px;
+.@{prefix}-cascader-icon.@{prefix}-size-s {
+  /* stylelint-disable-next-line */
+  line-height: @cascader-height-s - 2px !important;
 }
 
-.@{prefix}-cascader-panel.@{prefix}-cascader-normal {
+.@{prefix}-cascader-panel.@{prefix}-cascader--normal {
   height: @cascader-panel-height-normal;
 }
 
-.@{prefix}-cascader-panel.@{prefix}-cascader-multiple {
+.@{prefix}-cascader-panel.@{prefix}-cascader--multiple {
   height: @cascader-panel-height-multiple;
 }
 
-.@{prefix}-cascader-panel.@{prefix}-cascader-tip {
+.@{prefix}-cascader-panel.@{prefix}-cascader--tip {
   height: @cascader-panel-height-tips;
 }
