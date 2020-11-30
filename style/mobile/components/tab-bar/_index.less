@@ -1,20 +1,17 @@
 @import "./_var.less";
-
 @import "../../mixins/_index.less";
 
-@name: ~"@{prefix}-tab-bar";
-
-.@{name}{
+.@{prefix}-tab-bar{
   width: 100%;
-  height: 48px;
+  height: @tab-bar-height;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: @tab-bar-bg-color;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   position: relative;
   &::before{
-    .hairline-top(@color: @border-level-1-color);
+    .hairline-top(@color: @tab-bar-border-color);
   }
   .@{prefix}-tab-bar-item:first-child{
     &::before{
@@ -23,7 +20,7 @@
   }
 }
 
-.@{name}-item{
+.@{prefix}-tab-bar-item{
   height: 100%;
   flex-basis: 0;
   flex-grow: 1;
@@ -32,10 +29,10 @@
   user-select: none;
   position: relative;
   &:hover{
-    background-color: rgba(0, 0, 0, .05);
+    background-color: @tab-bar-hover-bg-color;
   }
   &::before{
-    .hairline-left(@color: @border-level-1-color);
+    .hairline-left(@color: @tab-bar-border-color);
   }
   &__content{
     width: 100%;
@@ -45,9 +42,9 @@
     align-items: center;
     justify-content: center;
     &.is-checked{
-      color: #0052D9;
-      .@{name}-item__icon-menu{
-        background-color: #0052D9;
+      color: @tab-bar-active-color;
+      .@{prefix}-tab-bar-item__icon-menu{
+        background-color: @tab-bar-active-color;
       }
     }
     &.s{
@@ -85,9 +82,8 @@
     top: 0;
     left: 7%;
     width: 86%;
-    background-color: #fff;
+    background-color: @tab-bar-bg-color;
     transform: translate3d(0, calc(-100% - 16px), 0);
-    color: #000;
     &::before{
       display: block;
       content: "";
@@ -97,7 +93,7 @@
       width: 0;
       height: 0;
       border: 8px solid transparent;
-      border-top: 8px solid #fff;
+      border-top: 8px solid @tab-bar-bg-color;
       transform: translate3d(-50%, 16px, 0);
     }
     &-item{
@@ -107,7 +103,7 @@
       align-items: center;
       justify-content: center;
       &:hover{
-        background-color: rgba(0, 0, 0, .05);
+        background-color: @tab-bar-hover-bg-color;
       }
     }
   }
