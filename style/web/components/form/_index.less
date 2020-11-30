@@ -8,6 +8,10 @@
 .@{prefix}-form {
   font-size: 14px;
 
+  &--label-right {
+    justify-content: flex-end;
+  }
+
   &__item {
     display: flex;
     margin: 0 0 26px;
@@ -18,12 +22,19 @@
     flex-grow: 0;
     height: 40px;
     align-items: center;
+
+    label::after {
+      content: ":";
+      position: relative;
+      margin: 0 8px 0 2px;
+    }
   }
 
   &__controls {
     display: flex;
     flex: 1 1 0;
     height: 40px;
+    margin-left: 24px;
     align-items: center;
   }
 }
