@@ -695,6 +695,8 @@ export class TreeNode {
       node.update();
       node.updateChecked();
     });
+
+    tree.reflow();
   }
 
   // 将当前节点追加到某个父节点的子节点列表中
