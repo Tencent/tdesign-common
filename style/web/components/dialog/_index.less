@@ -75,17 +75,19 @@
     }
   }
 
-  >.t-icon-close {
+  &__close {
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
-    font-size: @dialog-icon-size;
-  }
+    
+    &:hover {
+      cursor: pointer;
+    }
 
-  >.t-icon-close:hover {
-    cursor: pointer;
+    .t-icon {
+      font-size: @dialog-icon-size;
+    }
   }
-
 }
 
 // t-dialog 组件本身

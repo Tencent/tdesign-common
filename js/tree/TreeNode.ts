@@ -65,10 +65,6 @@ export class TreeNode {
 
     const spec = {
       ...defaultStatus,
-      activable: false,
-      checkable: false,
-      expandMutex: false,
-      disabled: false,
       actived: false,
       expanded: false,
       checked: false,
