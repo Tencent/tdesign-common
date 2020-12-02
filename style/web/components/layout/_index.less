@@ -1,0 +1,46 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-layout,
+.@{prefix}-layout * {
+  box-sizing: border-box;
+}
+
+.@{prefix}-layout {
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+  flex: auto;
+
+  &-has-sider {
+    flex-direction: row;
+  }
+}
+
+.@{prefix}-layout--header {
+  height: 64px;
+  line-height: 64px;
+  color: rgba(0,0,0,.3);
+  background-color: #fff;
+}
+
+.@{prefix}-layout--content {
+  color: rgba(0,0,0,.3);
+  flex: auto;
+}
+
+.@{prefix}-layout--sider {
+  position: relative;
+  transition: all .22s;
+  background: #fff;
+  width: 232px;
+}
+
+.@{prefix}-layout--footer {
+  color: rgba(0,0,0,.3);
+  padding: 24px;
+}
