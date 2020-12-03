@@ -534,12 +534,7 @@ export class TreeStore {
 
   // 移除指定节点
   remove(para?: string | TreeNode): void {
-    let node = null;
-    if (typeof para === 'string') {
-      node = this.getNode(para);
-    } else if (para instanceof TreeNode) {
-      node = para;
-    }
+    let node = this.getNode(para);
     if (node) {
       node.remove();
     }
