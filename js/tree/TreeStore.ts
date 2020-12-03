@@ -2,6 +2,8 @@ import difference from 'lodash/difference';
 import camelCase from 'lodash/camelCase';
 import TreeNode from './TreeNode';
 
+export type TreeNodeValue = string | TreeNode;
+
 export interface TreeStoreOptions {
   // 数据字段映射
   keys?: any;
@@ -151,7 +153,7 @@ export class TreeStore {
   }
 
   // 获取节点对象
-  getNode(item: string | TreeNode): TreeNode {
+  getNode(item: TreeNodeValue): TreeNode {
     let node = null;
     if (typeof item === 'string') {
       node = this.nodeMap.get(item);
@@ -167,7 +169,7 @@ export class TreeStore {
   }
 
   // 获取指定节点的父节点
-  getParent(value: string | TreeNode): TreeNode {
+  getParent(value: TreeNodeValue): TreeNode {
     let parent = null;
     const node = this.getNode(value);
     if (node) {
@@ -177,7 +179,7 @@ export class TreeStore {
   }
 
   // 获取指定节点的所有父节点
-  getParents(value: string | TreeNode): TreeNode[] {
+  getParents(value: TreeNodeValue): TreeNode[] {
     const node = this.getNode(value);
     let parents: TreeNode[] = [];
     if (node) {
@@ -187,7 +189,7 @@ export class TreeStore {
   }
 
   // 获取指定节点在其所在 children 中的位置
-  getNodeIndex(value: string | TreeNode): number {
+  getNodeIndex(value: TreeNodeValue): number {
     const node = this.getNode(value);
     let index = -1;
     if (node) {
@@ -197,7 +199,7 @@ export class TreeStore {
   }
 
   // 获取所有符合条件的节点
-  getNodes(item?: string | TreeNode, options?: TreeFilterOptions): TreeNode[] {
+  getNodes(item?: TreeNodeValue, options?: TreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val = '';
     if (typeof item === 'string') {
@@ -279,7 +281,7 @@ export class TreeStore {
   }
 
   // 在目标节点之前插入节点
-  insertBefore(value: string | TreeNode, item: any): void {
+  insertBefore(value: TreeNodeValue, item: any): void {
     const node = this.getNode(value);
     if (node) {
       node.insertBefore(item);
@@ -287,7 +289,7 @@ export class TreeStore {
   }
 
   // 在目标节点之后插入节点
-  insertAfter(value: string | TreeNode, item: any): void {
+  insertAfter(value: TreeNodeValue, item: any): void {
     const node = this.getNode(value);
     if (node) {
       node.insertAfter(item);
@@ -359,7 +361,7 @@ export class TreeStore {
   }
 
   // 获取指定范围的高亮节点
-  getActivedNodes(item?: string | TreeNode): TreeNode[] {
+  getActivedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
     nodes = nodes.filter(node => node.isActived());
     return nodes;
@@ -476,7 +478,7 @@ export class TreeStore {
   }
 
   // 获取指定节点下的选中节点
-  getCheckedNodes(item?: string | TreeNode): TreeNode[] {
+  getCheckedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
     nodes = nodes.filter(node => node.isChecked());
     return nodes;
@@ -533,7 +535,7 @@ export class TreeStore {
   }
 
   // 移除指定节点
-  remove(para?: string | TreeNode): void {
+  remove(para?: TreeNodeValue): void {
     let node = this.getNode(para);
     if (node) {
       node.remove();
