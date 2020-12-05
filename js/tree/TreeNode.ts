@@ -697,8 +697,30 @@ export class TreeNode {
 
   // 将当前节点追加到某个父节点的子节点列表中
   appendTo(tree: TreeStore, parent?: TreeNode, index?: number): void {
-    this.remove();
     const parentNode = parent;
+
+    const targetParents = parentNode.getParents();
+    const includeCurrent = targetParents.some(node => (node.value === this.value));
+    if (includeCurrent) {
+      // 不能将父节点插入到子节点
+      return;
+    }
+
+    if (Array.isArray(parentNode.children)) {
+      let targetIndex = 0;
+      if (typeof index === 'number') {
+        targetIndex = index;
+      }
+      const targetPosNode = parentNode.children[targetIndex];
+      if (targetPosNode.value === this.value) {
+        // 无需将节点插入到原位置
+        return;
+      }
+    }
+
+    this.remove();
+    this.parent = parentNode;
+
     let siblings = null;
     if (parentNode instanceof TreeNode) {
       if (!Array.isArray(parentNode.children)) {
@@ -708,7 +730,6 @@ export class TreeNode {
     } else {
       siblings = tree.children;
     }
-    this.parent = parentNode;
     if (Array.isArray(siblings)) {
       if (typeof index === 'number') {
         siblings.splice(index, 0, this);
