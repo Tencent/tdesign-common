@@ -18,6 +18,7 @@
     flex-wrap: nowrap;
     padding-left: calc(24px * var(--level));
     height: 40px;
+    cursor: pointer; // 【待定】
 
     .@{prefix}-icon-arrow-right {
       display: inline-block;
@@ -28,6 +29,10 @@
       .@{prefix}-icon-arrow-right {
         transform: rotate(90deg);
       }
+    }
+
+    &--hidden {
+      display: none; // 【待定】新增样式，未给示例
     }
 
     &.@{prefix}-is-active {
@@ -113,7 +118,6 @@
     height: 24px;
     text-align: center;
     line-height: 24px;
-    cursor: pointer;
     user-select: none;
 
     .t-icon-loading-blue {
@@ -155,6 +159,10 @@
 
   & &__item.t-is-disabled {
     color: #ddd;
+    cursor: default;
+    .@{prefix}-checkbox {
+      cursor: default;
+    }
   }
 }
 
