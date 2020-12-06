@@ -1,0 +1,137 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-anchor {
+  position: relative;
+  background: @bg-color-block;
+  width: @anchor-width-default;
+  color: @anchor-text-color-default;
+  font-size: @anchor-font-base;
+  //锚点 item 被选中
+  .@{prefix}-is-active>a {
+    color: @anchor-text-color-hover;
+  }
+
+  &.@{prefix}--affix {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 11;
+  }
+
+  //锚点组件左侧线条
+  &_line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background-color: @border-level-1-color;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  &_line .point {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 24px;
+    top: -1*@anchor-item-height;
+    background-color: @anchor-text-color-hover;
+  }
+
+  //锚点item
+  &-item {
+    padding: 0 8px 0 16px;
+  }
+
+  &-item_link {
+    display: inline-block;
+    position: relative;
+    line-height: 24px;
+    max-height: 72px;
+    overflow: hidden;
+    word-break: break-all;
+    color: @anchor-text-color-default;
+    text-decoration: none;
+    text-align: justify;
+    margin-right: -4px;
+    padding-right: 10px;
+  }
+
+  &-item_link:before {
+    content: "...";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  &-item_link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 10px;
+    height: 24px;
+    margin-top: 4px;
+    background: #fff;
+  }
+
+  a:hover {
+    color: @anchor-text-color-hover;
+    cursor: pointer;
+  }
+
+  &.@{prefix}-size-s {
+    width: @anchor-width-s;
+  }
+  &.@{prefix}-size-l {
+    width: @anchor-width-l;
+  }
+}
+
+.@{prefix}-anchor-target {
+  cursor: pointer;
+  font-size: @anchor-font-base;
+
+  @keyframes fadeOut {
+
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  //锚点hover样式
+  //使用 t-popup组件包裹 <a class="t-icon t-icon-file-copy"></a>
+  //默认隐藏
+  .@{prefix}-copy {
+    display: none;
+  }
+  //hover样式 展示
+  &:hover .@{prefix}-copy {
+    display: inline-block;
+  }
+
+  //激活锚点 滚动到指定锚点 标题后边出现定位提示
+  //target属性参考文档https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target
+  &:target::after {
+    display: inline-block;
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: @anchor-text-color-hover;
+    vertical-align: middle;
+    animation: fadeOut 2s 2s linear 1;
+    animation-fill-mode: forwards
+  }
+}
+
+
