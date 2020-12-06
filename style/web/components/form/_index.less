@@ -23,12 +23,29 @@
     height: 40px;
     align-items: center;
 
+    &--left {
+      text-align: left;
+      width: 100%;
+    }
+
+    &--right {
+      text-align: right;
+      width: 100%;
+    }
+
+    &--top {
+      text-align: left;
+      margin-left: 24px;
+    }
+
     label::after {
       content: ":";
       position: relative;
       margin: 0 8px 0 2px;
     }
   }
+
+ 
 
   &__controls {
     display: flex;
