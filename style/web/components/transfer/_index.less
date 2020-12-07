@@ -34,12 +34,22 @@
 
     &__header {
       position: absolute;
+      display: flex;
+      justify-content: space-between;
       top: 0;
       border-bottom: 1px solid @transfer-border-color;
       height: 40px;
       line-height: 40px;
       width: 100%;
       padding: 0 24px 0 12px;
+
+      div {
+        display: inline-block;
+      }
+
+      >span {
+        color: rgba(0,0,0,.3);
+      }
     }
 
     &__body {
@@ -98,6 +108,7 @@
       left: 0;
       bottom: 0;
       border-top: 1px solid @transfer-border-color;
+      width: 100%;
     }
   }
 
@@ -161,7 +172,7 @@
 .@{prefix}-transfer-footer {
   .@{prefix}-transfer-list {
     height: @transfer-with-footer-height;
-    padding-bottom: 40px;
+    padding-bottom: 48px;
   }
 }
 
@@ -169,6 +180,6 @@
 .@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
   .@{prefix}-transfer-list {
     height: @transfer-with-both-height;
-    padding-bottom: 80px;
+    padding-bottom: 88px;
   }
 }
