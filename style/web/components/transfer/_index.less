@@ -160,6 +160,13 @@
   }
 }
 
+// 只有search时候的高度
+.@{prefix}-transfer-search {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-search-height;
+  }
+}
+
 // 只有翻页时候的高度
 .@{prefix}-transfer-pagination {
   .@{prefix}-transfer-list {
@@ -179,7 +186,31 @@
 // 同时有翻页和footer时候的高度
 .@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
   .@{prefix}-transfer-list {
+    height: @transfer-with-footer-both-height;
+    padding-bottom: 88px;
+  }
+}
+
+// 同时有search和footer时候的高度
+.@{prefix}-transfer-search.@{prefix}-transfer-footer {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-footer-both-height;
+    padding-bottom: 48px;
+  }
+}
+
+// 同时有search和pagination时候的高度
+.@{prefix}-transfer-search.@{prefix}-transfer-pagination {
+  .@{prefix}-transfer-list {
     height: @transfer-with-both-height;
+    padding-bottom: 40px;
+  }
+}
+
+// 同时有search和pagination和footer
+.@{prefix}-transfer-search.@{prefix}-transfer-footer.@{prefix}-transfer-pagination {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-all-height;
     padding-bottom: 88px;
   }
 }
