@@ -14,6 +14,7 @@
   box-shadow: @select-box-shabow;
   padding: @select-padding;
 
+  
   &:hover,
   :active {
     cursor: pointer;
@@ -91,8 +92,17 @@
   }
 }
 
-.@{prefix}-select.has-prefix {
+.@{prefix}-select.@{prefix}-has-prefix {
   padding-left: @select-padding-prefix;
+}
+
+.@{prefix}-select.@{prefix}-is-active {
+  cursor: pointer;
+  border-color: @select-active-border-color;
+
+  & > .@{prefix}-select-right-icon {
+    color: @select-selected-color;
+  }
 }
 
 .@{prefix}-select.@{prefix}-size-l {
@@ -162,6 +172,7 @@
 
 .@{prefix}-select-loading-tips {
   text-align: center;
+  color: @select-loading-tips-color;
   line-height: @select-height-default;
 }
 
