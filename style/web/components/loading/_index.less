@@ -13,9 +13,33 @@
     text-align: center;
     position: absolute;
     left: 0;
-    right: 0;
-    top: 50%;
-    margin-top: -12px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 2000;
+
+    .@{prefix}-icon-loading {
+      position: absolute;
+      top: 50%;
+      margin-top: -12px;
+    }
+  }
+
+  &-parent__relative {
+    position: relative;
+  }
+
+  &-mask {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  &-fullscreen {
+    position: fixed;
+  }
+
+  &-lock {
+    overflow: hidden;
   }
 
   .@{prefix}-icon-loading {
@@ -24,13 +48,13 @@
 
   &-s {
     .@{prefix}-icon-loading {
-      font-size: 14px; 
+      font-size: 14px;
     }
   }
 
   &-l {
     .@{prefix}-icon-loading {
-      font-size: 56px; 
+      font-size: 56px;
     }
   }
 
@@ -44,7 +68,7 @@
 
     span {
       display: inline-block;
-      vertical-align: middle; 
+      vertical-align: middle;
     }
   }
 
@@ -54,4 +78,3 @@
     pointer-events: none;
   }
 }
-
