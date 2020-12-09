@@ -14,7 +14,6 @@
   box-shadow: @select-box-shabow;
   padding: @select-padding;
 
-  
   &:hover,
   :active {
     cursor: pointer;
@@ -32,9 +31,7 @@
 
   & .@{prefix}-select-selectedSingle {
     margin-left: @select-placeholder-margin;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    .text-ellipsis();
     display: block;
   }
 
@@ -92,17 +89,8 @@
   }
 }
 
-.@{prefix}-select.@{prefix}-has-prefix {
+.@{prefix}-select.has-prefix {
   padding-left: @select-padding-prefix;
-}
-
-.@{prefix}-select.@{prefix}-is-active {
-  cursor: pointer;
-  border-color: @select-active-border-color;
-
-  & > .@{prefix}-select-right-icon {
-    color: @select-selected-color;
-  }
 }
 
 .@{prefix}-select.@{prefix}-size-l {
@@ -172,7 +160,6 @@
 
 .@{prefix}-select-loading-tips {
   text-align: center;
-  color: @select-loading-tips-color;
   line-height: @select-height-default;
 }
 
@@ -189,9 +176,7 @@
 .@{prefix}-option-group-header {
   color: @option-group-header-color;
   display: block;
-  overflow: hidden;
-  word-wrap: break-word;
-  text-overflow: ellipsis;
+  .text-ellipsis();
   height: @select-option-height-default;
   line-height: @select-option-line-height;
   padding: @select-option-padding-default;
@@ -210,9 +195,7 @@
 // option
 .@{prefix}-select-option {
   display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  .text-ellipsis();
   height: @select-option-height-default;
   line-height: @select-option-line-height;
   cursor: pointer;
