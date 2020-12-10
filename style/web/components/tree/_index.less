@@ -20,7 +20,7 @@
     height: 40px;
     cursor: pointer; // 【待定】
 
-    .@{prefix}-icon-arrow-right {
+    .@{prefix}-icon-chevron-right {
       display: inline-block;
       transform: rotate(0);
       position: relative;
@@ -29,7 +29,7 @@
     }
 
     &--open {
-      .@{prefix}-icon-arrow-right {
+      .@{prefix}-icon-chevron-right {
         transform: rotate(90deg);
         color: @tree-node-icon-color-active;
       }
@@ -45,8 +45,8 @@
     }
   }
 
-  &--fx .@{prefix}-icon-arrow-right {
-    transition: transform .3s;
+  &--fx .@{prefix}-icon-chevron-right {
+    transition: transform @tree-node-animation-time;
   }
 
   &__lines {
@@ -96,12 +96,12 @@
     --beforeDepth: 1;
     position: absolute;
     width: 16px;
-    border-left: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-left: 1px solid green;
+    border-bottom: 1px solid green; // #eee
     left: -52%;
     bottom: 45%;
     // height: calc(36px * var(--depth) - 4px);
-    // animation: t-tree-toggle-line 3s;
+    // animation: t-tree-toggle-line @tree-node-animation-time;
     z-index: 1;
   }
 
@@ -192,25 +192,25 @@
 
 .@{prefix}-tree--fx {
   .@{prefix}-tree-toggle-enter-active {
-    animation: t-tree-toggle .3s;
+    animation: t-tree-toggle @tree-node-animation-time linear;
   }
   .@{prefix}-tree-toggle-leave-active {
-    animation: t-tree-toggle .3s reverse;
+    animation: t-tree-toggle @tree-node-animation-time linear reverse;
   }
   .@{prefix}-tree__lines {
 
     dd:before,
     dd:after {
-      transition: all .3s;
+      transition: all @tree-node-animation-time;
     }
   }
 
   .@{prefix}-tree__icon-enter-active {
-    animation: t-tree-toggle-line .3s;
+    animation: t-tree-toggle-line @tree-node-line-animation-time linear;
   }
 
   .@{prefix}-tree__icon-exit-active {
-    animation: t-tree-toggle-line .3s;
+    animation: t-tree-toggle-line @tree-node-line-animation-time linear;
   }
 }
 
@@ -236,7 +236,6 @@
 
   0% {
     height: calc(36px * var(--beforeDepth) - 4px);
-    // height: 0;
   }
 
   100% {
