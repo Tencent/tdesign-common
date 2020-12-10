@@ -92,6 +92,8 @@ export class TreeStore {
   children: TreeNode[];
   // 所有节点集合
   nodes: TreeNode[];
+  // 所有可见节点集合
+  visibleNodes: TreeNode[];
   // 所有节点映射
   nodeMap: Map<string, TreeNode>;
   // 配置选项
@@ -129,6 +131,7 @@ export class TreeStore {
     };
     this.config = config;
     this.nodes = [];
+    this.visibleNodes = [];
     this.children = [];
     this.nodeMap = new Map();
     this.activedMap = new Map();
@@ -166,6 +169,11 @@ export class TreeStore {
   // 获取节点在总节点列表中的位置
   getIndex(node: TreeNode): number {
     return this.nodes.indexOf(node);
+  }
+
+  // 获取节点在所有可见节点列表中的位置
+  getVisibleIndex(node: TreeNode): number {
+    return this.visibleNodes.indexOf(node);
   }
 
   // 获取指定节点的父节点
@@ -307,6 +315,11 @@ export class TreeStore {
     });
   }
 
+  // 更新可见树节点结构
+  refreshVisibleNodes(): void {
+    this.visibleNodes = this.nodes.filter(node => node.visible);
+  }
+
   // 更新所有树节点状态
   refreshState(): void {
     const { nodes } = this;
@@ -334,6 +347,7 @@ export class TreeStore {
       this.updateTimer = null;
       if (this.shouldReflow) {
         this.refreshNodes();
+        this.refreshVisibleNodes();
         this.emit('reflow');
       }
       const updatedList = Array.from(this.updatedMap.keys());
@@ -451,6 +465,8 @@ export class TreeStore {
     relatedNodes.forEach((node) => {
       node.update();
     });
+    // 更新可见节点集合
+    this.refreshVisibleNodes();
   }
 
   // 获取选中态节点 value 数组
@@ -536,7 +552,7 @@ export class TreeStore {
 
   // 移除指定节点
   remove(para?: TreeNodeValue): void {
-    let node = this.getNode(para);
+    const node = this.getNode(para);
     if (node) {
       node.remove();
     }

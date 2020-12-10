@@ -23,16 +23,20 @@
     .@{prefix}-icon-arrow-right {
       display: inline-block;
       transform: rotate(0);
+      position: relative;
+      color: @tree-node-icon-color;
+      z-index: 2;
     }
 
     &--open {
       .@{prefix}-icon-arrow-right {
         transform: rotate(90deg);
+        color: @tree-node-icon-color-active;
       }
     }
 
     &--hidden {
-      display: none; // 【待定】新增样式，未给示例
+      display: none;
     }
 
     &.@{prefix}-is-active {
@@ -86,7 +90,26 @@
     }
   }
 
-  /* 连接线 */
+  /* 连接线（react） */
+  &__line {
+    --depth: 1;
+    --beforeDepth: 1;
+    position: absolute;
+    width: 16px;
+    border-left: 1px solid green; //#eee
+    border-bottom: 1px solid green;
+    left: -52%;
+    bottom: 45%;
+    // height: calc(36px * var(--depth) - 4px);
+    // animation: t-tree-toggle-line 3s;
+    z-index: 1;
+  }
+
+  &__line--leaf {
+    width: 32px;
+  }
+
+  /* 连接线（vue） */
   &__lines &__line {
 
     &--top:before {
@@ -118,6 +141,7 @@
     height: 24px;
     text-align: center;
     line-height: 24px;
+    position: relative;
     user-select: none;
 
     .t-icon-loading-blue {
@@ -180,6 +204,14 @@
       transition: all .3s;
     }
   }
+
+  .@{prefix}-tree__icon-enter-active {
+    animation: t-tree-toggle-line .3s;
+  }
+
+  .@{prefix}-tree__icon-exit-active {
+    animation: t-tree-toggle-line .3s;
+  }
 }
 
 @keyframes t-tree-toggle {
@@ -198,4 +230,17 @@
     opacity: 1;
     height: 40px;
   }
+}
+
+@keyframes t-tree-toggle-line {
+
+  0% {
+    height: calc(36px * var(--beforeDepth) - 4px);
+    // height: 0;
+  }
+
+  100% {
+    height: calc(36px * var(--depth) - 4px);
+  }
+
 }
