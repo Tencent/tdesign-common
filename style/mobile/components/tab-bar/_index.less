@@ -1,7 +1,10 @@
-@import "./_var.less";
-@import "../../mixins/_index.less";
+@import "../../base.less";
 
-.@{prefix}-tab-bar{
+@import "./_var.less";
+
+@tab-bar-cls: ~"@{prefix}-tab-bar";
+
+.@{tab-bar-cls} {
   width: 100%;
   height: @tab-bar-height;
   box-sizing: border-box;
@@ -10,17 +13,19 @@
   flex-wrap: nowrap;
   align-items: center;
   position: relative;
-  &::before{
+
+  &::before {
     .hairline-top(@color: @tab-bar-border-color);
   }
-  .@{prefix}-tab-bar-item:first-child{
-    &::before{
-      border: none;
+  .@{tab-bar-cls}-item:first-child {
+
+    &::before {
+      border: unset;
     }
   }
 }
 
-.@{prefix}-tab-bar-item{
+.@{tab-bar-cls}-item {
   height: 100%;
   flex-basis: 0;
   flex-grow: 1;
@@ -28,40 +33,49 @@
   cursor: pointer;
   user-select: none;
   position: relative;
-  &:hover{
+
+  &:hover {
     background-color: @tab-bar-hover-bg-color;
   }
-  &::before{
+
+  &::before {
     .hairline-left(@color: @tab-bar-border-color);
   }
-  &__content{
+
+  &__content {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    &.is-checked{
+
+    &.t-is-checked {
       color: @tab-bar-active-color;
-      .@{prefix}-tab-bar-item__icon-menu{
+      .@{tab-bar-cls}-item__icon-menu {
         background-color: @tab-bar-active-color;
       }
     }
-    &.s{
+
+    &.t-size-s {
       font-size: 12px;
     }
   }
-  &__text{
+
+  &__text {
     display: flex;
     align-items: center;
   }
-  &__icon-menu{
+
+  &__icon-menu {
     width: 8px;
     height: 1px;
     background-color: #666;
     position: relative;
     margin-right: 4px;
-    &::before, &::after{
+
+    &::before,
+    &::after {
       display: block;
       content: "";
       position: absolute;
@@ -70,21 +84,25 @@
       width: inherit;
       height: inherit;
     }
-    &::before{
+
+    &::before {
       top: -4px;
     }
-    &::after{
+
+    &::after {
       bottom: -4px;
     }
   }
-  &__spread{
+
+  &__spread {
     position: absolute;
     top: 0;
     left: 7%;
     width: 86%;
     background-color: @tab-bar-bg-color;
     transform: translate3d(0, calc(-100% - 16px), 0);
-    &::before{
+
+    &::before {
       display: block;
       content: "";
       position: absolute;
@@ -96,13 +114,15 @@
       border-top: 8px solid @tab-bar-bg-color;
       transform: translate3d(-50%, 16px, 0);
     }
-    &-item{
+
+    &-item {
       width: 100%;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      &:hover{
+
+      &:hover {
         background-color: @tab-bar-hover-bg-color;
       }
     }
@@ -110,13 +130,14 @@
 }
 
 .spread-enter-active,
-.spread-leave-active{
+.spread-leave-active {
   transition-property: opacity, transform;
   transition-duration: .3s;
   transition-timing-function: ease;
 }
+
 .spread-enter-from,
-.spread-leave-to{
+.spread-leave-to {
   transform: translate3d(0, -100%, 0);
   opacity: 0;
 }
