@@ -6,7 +6,7 @@
 @import "./_mixin.less";
 
 .@{prefix}-loading {
-  color: @primary-color-8;
+  color: @loading-color;
   display: inline-block;
 
   &__wrapper {
@@ -24,19 +24,19 @@
 
   &-s {
     .@{prefix}-icon-loading {
-      font-size: 14px; 
+      font-size: @loading-text-size-small;
     }
   }
 
   &-l {
     .@{prefix}-icon-loading {
-      font-size: 56px; 
+      font-size: @loading-text-size-large; 
     }
   }
 
   &-text {
-    color: @primary-color-8;
-    font-size: 16px;
+    color: @loading-color;
+    font-size: @loading-text-size;
     width: auto;
     height: 24px;
     display: inline-block;
