@@ -1,0 +1,49 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-tooltip {
+  color: @tooltip-text-color;
+  display: inline-block;
+  background: @tooltip-bg;
+
+  &-content {
+    background: @tooltip-bg;
+  }
+
+  &-reference {
+    margin: 10px;
+  }
+
+  .@{prefix}-popup__arrow {
+    background: inherit;
+    width: auto;
+    height: auto;
+
+    &::before {
+      background: inherit;
+    }
+  }
+}
+
+.@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+  bottom: 5px;
+  margin-left: -5px;
+}
+
+.@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+  margin-left: -5px;
+}
+
+.@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+  right: 5px;
+  margin-top: -5px;
+}
+
+.@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+  left: -5px;
+  margin-top: -5px;
+}
