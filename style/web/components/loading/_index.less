@@ -31,7 +31,7 @@
   }
 
   &-mask {
-    background-color: rgba(255, 255, 255, .9);
+    background-color: @loading-mask-color;
   }
 
   &-fullscreen {
@@ -43,18 +43,18 @@
   }
 
   .@{prefix}-icon-loading {
-    font-size: 36px;
+    font-size: @loading-icon-size;
   }
 
-  &-s {
+  &.@{prefix}-size-s {
     .@{prefix}-icon-loading {
-      font-size: @loading-text-size-small;
+      font-size: @loading-icon-size-small;
     }
   }
 
-  &-l {
+  &.@{prefix}-size-l {
     .@{prefix}-icon-loading {
-      font-size: @loading-text-size-large; 
+      font-size: @loading-icon-size-large; 
     }
   }
 
@@ -69,6 +69,7 @@
     span {
       display: inline-block;
       vertical-align: middle;
+      margin-left: 5px;
     }
   }
 
