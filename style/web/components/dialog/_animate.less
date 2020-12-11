@@ -1,0 +1,167 @@
+@import "../../base.less";
+
+.@{prefix}-dialog-zoom {
+  @keyframes tDialogZoomIn {
+
+    from {
+      opacity: 1;
+      transform: scale(.01);
+    }
+
+  }
+
+  @keyframes tDialogZoomOut {
+
+    to {
+      opacity: 0;
+      transform: scale(.01);
+    }
+  }
+
+  @keyframes tDialogMaskIn {
+
+    from {
+      opacity: 1;
+    }
+  }
+
+  @keyframes tDialogMaskOut {
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  .animation-enter {
+    animation-duration: 200ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(.08, .82, .17, 1);
+    animation-play-state: paused;
+  }
+
+  .animation-exit {
+    animation-duration: 200ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(.6, .04, .98, .34);
+    animation-play-state: paused;
+  }
+
+  .animation-active {
+    animation-play-state: running;
+    animation-fill-mode: both;
+  }
+
+  &-enter,
+  &-appear {
+    .animation-enter;
+  }
+
+  &-exit {
+    .animation-exit
+  }
+
+  &-enter-active,
+  &-appear-active {
+    animation-name: tDialogZoomIn;
+    .animation-active;
+  }
+
+  &-exit-active {
+    animation-name: tDialogZoomOut;
+    .animation-active;
+  }
+
+  &__vue {
+
+    &-enter-active {
+
+      .@{prefix}-dialog {
+        animation-name: tDialogZoomIn;
+        .animation-enter
+      }
+
+      .@{prefix}-dialog-mask {
+        animation-name: tDialogMaskIn;
+        .animation-active;
+      }
+    }
+
+    &-leave-active {
+
+      .@{prefix}-dialog {
+        animation-name: tDialogZoomOut;
+        .animation-exit
+      }
+
+      .@{prefix}-dialog-mask {
+        animation-name: tDialogMaskOut;
+        .animation-active;
+      }
+
+    }
+
+    &-enter-to {
+      .@{prefix}-dialog {
+        .animation-active;
+      }
+
+    }
+
+    &-leave-to {
+      .@{prefix}-dialog {
+        .animation-active;
+      }
+
+    }
+
+  }
+}
+
+.@{prefix}-dialog-fade-enter,
+.@{prefix}-dialog-fade-appear {
+  opacity: 0;
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
+  animation-play-state: paused;
+}
+
+.@{prefix}-dialog-fade-exit {
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
+  animation-play-state: paused;
+}
+
+.@{prefix}-dialog-fade-enter.@{prefix}-dialog-fade-enter-active,
+.@{prefix}-dialog-fade-appear.@{prefix}-dialog-fade-appear-active {
+  animation-name: tDialogFadeIn;
+  animation-play-state: running;
+}
+
+.@{prefix}-dialog-fade-exit.@{prefix}-dialog-fade-exit-active {
+  animation-name: tDialogFadeOut;
+  animation-play-state: running;
+}
+
+@keyframes tDialogFadeIn {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tDialogFadeOut {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
