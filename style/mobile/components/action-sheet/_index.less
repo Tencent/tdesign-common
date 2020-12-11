@@ -1,0 +1,110 @@
+@import './_var.less';
+@import '../popup/_index.less';
+
+.@{prefix}-action-sheet {
+  &__panel {
+    background-color: @action-sheet-panel-bg-color;
+  }
+
+  &__menu-wrapper {
+    display: flex;
+  }
+
+  &__menu {
+    background-color: #fff;
+  }
+
+  &__panel-grid &__menu {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: 55px 55px 55px 55px;
+    grid-template-rows: 84px 84px;
+    grid-row-gap: 12px;
+    grid-column-gap: 39px;
+    padding: 24px 0;
+    width: 100vw;
+  }
+
+  &__panel-grid &__cell {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  &__panel-grid &__cell-text {
+    margin-top: 8px;
+    font-size: 14px;
+    padding: 0;
+
+  }
+
+  &__panel-list &__cell::after {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #dedede;
+    transform-origin: 0 100%;
+    transform: scaleY(0.5);
+  }
+
+  &__cell {
+    position: relative;
+    font-size: 16px;
+    text-align: center;
+    padding: 13px 0;
+    width: 100%;
+    background-color: @action-sheet-cell-bg-color;
+
+    &:not(:disabled):active {
+      background-color: @action-sheet-cell-active-bg-color;
+    }
+
+    &:disabled {
+      color: #BBBBBB;
+    }
+
+    &-icon {
+      width: 48px;
+      height: 48px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 @action-sheet-padding-x;
+    }
+  }
+
+  &__action {
+    width: 100%;
+    margin-top: @action-sheet-action-space;
+    background-color: #fff;
+    padding: 13px 0;
+/*     padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom); */
+  }
+
+  &__indicator {
+    display: flex;
+    justify-content: center;
+    &-item {
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: #CCCCCC;
+    }
+
+    &-item.on {
+      background-color: #0052D9;
+    }
+  }
+}
