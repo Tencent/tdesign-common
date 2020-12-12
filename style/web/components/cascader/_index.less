@@ -5,28 +5,26 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-cascader-input {
+.@{prefix}-cascader {
   position: relative;
-  display: inline-block;
   width: @cascader-input-width;
   border: 1px solid @cascader-highlight-color;
-  border-radius: 2px;
+  border-radius: @border-radius;
   padding: 0px 26px 0px 4px;
   line-height: @cascader-height-default;
   vertical-align: middle;
   cursor: default;
 
-  & .@{prefix}-cascader-input__placeholder {
+  & .@{prefix}-cascader__placeholder {
     color: @cascader-light-color;
   }
 
-  & .@{prefix}-cascader-input__content {
+  & .@{prefix}-cascader__content {
     color: @cascader-dark-color;
   }
 
   & .@{prefix}-tag {
     cursor: pointer;
-    margin: 4px 4px 4px 0px;
     color: @cascader-tag-color;
     background-color: @cascader-tag-background-color;
     border-color: @cascader-tag-border-color;
@@ -39,11 +37,11 @@
   }
 }
 
-.@{prefix}-cascader {
+.@{prefix}-cascader-dropdown {
   margin: 10px 0 5px 0;
-  background: #fff;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .10), 0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
-  border-radius: 2px;
+  background: @bg-color-block;
+  box-shadow: @shadow-2;
+  border-radius: @border-radius;
   cursor: default;
   
   & .@{prefix}-cascader-panel {
@@ -72,19 +70,23 @@
         }
       }
 
-      & .@{prefix}-cascader-item--expanded {
+      & .@{prefix}-is-expanded {
         background: @cascader-item-background-color-expanded;
         color: @cascader-highlight-color;
       }
 
-      & .@{prefix}-cascader-item--selected {
+      & .@{prefix}-is-selected {
         background: @cascader-item-color-selected;
+      }
+
+      & .@{prefix}-is-disabled {
+        color: @cascader-item-color-disabled;
+        background-color: transparent;
       }
     }
     
     & .@{prefix}-cascader-menu.@{prefix}-is-search {
-      min-width: 100%;
-      // max-height: 240px;
+      min-width: @cascader-input-width;
       overflow-y: auto;
     }
 
@@ -132,14 +134,13 @@
 }
 
 .@{prefix}-cascader-search {
-  width: 100%;
+  width: @cascader-input-width;
   position: relative;
-  display: inline-block;
   vertical-align: middle;
   padding: 0px 26px 0px 4px;
   line-height: @cascader-height-default;
   border: 1px solid @cascader-highlight-color;
-  border-radius: 2px;
+  border-radius: @border-radius;
 
   .@{prefix}-cascader-search-input {
     border: 0;
@@ -164,20 +165,24 @@
   line-height: @cascader-item-height !important;
 }
 
-.@{prefix}-is-disabled {
+.@{prefix}-cascader-icon.@{prefix}-is-expanded {
+  color: @cascader-highlight-color;
+}
+
+.@{prefix}-cascader.@{prefix}-is-disabled {
   cursor: auto;
   background-color: @cascader-tag-background-color-disabled;
   color: @cascader-tag-color-disabled;
   border-color: @cascader-border-color-disabled;
 }
 
-.@{prefix}-cascader-input.@{prefix}-size-l,
+.@{prefix}-cascader.@{prefix}-size-l,
 .@{prefix}-cascader-icon.@{prefix}-size-l {
   /* stylelint-disable-next-line */
   line-height: @cascader-height-l - 2px !important;
 }
 
-.@{prefix}-cascader-input.@{prefix}-size-s,
+.@{prefix}-cascader.@{prefix}-size-s,
 .@{prefix}-cascader-icon.@{prefix}-size-s {
   /* stylelint-disable-next-line */
   line-height: @cascader-height-s - 2px !important;
@@ -189,7 +194,6 @@
 
 .@{prefix}-cascader-panel.@{prefix}-cascader--multiple {
   height: @cascader-panel-height-multiple;
-  width: @cascader-input-width;
 }
 
 .@{prefix}-cascader-panel.@{prefix}-cascader--tip {
