@@ -21,6 +21,7 @@
     cursor: pointer; // 【待定】
     will-change: display;
 
+    .@{prefix}-icon-arrow-right,
     .@{prefix}-icon-chevron-right {
       display: inline-block;
       transform: rotate(0);
@@ -30,6 +31,7 @@
     }
 
     &--open {
+      .@{prefix}-icon-arrow-right,
       .@{prefix}-icon-chevron-right {
         transform: rotate(90deg);
         color: @tree-node-icon-color-active;
@@ -42,8 +44,11 @@
     }
   }
 
-  &--fx .@{prefix}-icon-chevron-right {
-    transition: transform @tree-node-animation-time;
+  &--fx {
+    .@{prefix}-icon-arrow-right,
+    .@{prefix}-icon-chevron-right {
+      transition: color,transform @tree-node-animation-time;
+    }
   }
 
   &__lines {
