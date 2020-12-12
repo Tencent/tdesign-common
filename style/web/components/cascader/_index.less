@@ -10,7 +10,7 @@
   width: @cascader-input-width;
   border: 1px solid @cascader-highlight-color;
   border-radius: @border-radius;
-  padding: 0px 26px 0px 4px;
+  padding: @cascader-input-padding;
   line-height: @cascader-height-default;
   vertical-align: middle;
   cursor: default;
@@ -49,19 +49,25 @@
     height: 100%;
 
     & .@{prefix}-cascader-menu {
-      min-width: @cascader-width-s - 2px;
+      width: @cascader-width-s - 2px;
       height: 100%;
       overflow: auto;
 
       & .@{prefix}-cascader-item {
-        padding-left: 12px;
         position: relative;
         height: @cascader-item-height;
         line-height: @cascader-item-height;
         color: @cascader-dark-color;
+        padding-left: 8px;
 
         & .@{prefix}-item--highlight {
           color: @cascader-highlight-color;
+        }
+
+        .@{prefix}-cascader-item__label {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
 
         &:hover {
@@ -86,12 +92,12 @@
     }
     
     & .@{prefix}-cascader-menu.@{prefix}-is-search {
-      min-width: @cascader-input-width;
+      width: @cascader-input-width;
       overflow-y: auto;
     }
 
     & .@{prefix}-cascader-menu.@{prefix}-width-l {
-      min-width: @cascader-width-l - 2px;
+      width: @cascader-width-l - 2px;
     }
 
     & .@{prefix}-cascader-menu__seperator {
@@ -101,12 +107,13 @@
 
   & .@{prefix}-cascader-status {
     cursor: default;
+    display: flex;
     position: relative;
-    min-width: @cascader-width-s - 2px;
+    width: @cascader-width-s;
 
     & .@{prefix}-cascader__data {
       line-height: @cascader-item-height;
-      margin-left: 10px;
+      margin-left: 8px;
     }
 
     & .@{prefix}-cascader__data.@{prefix}-is-loading {
@@ -119,7 +126,7 @@
 
     & .@{prefix}-cascader__data.@{prefix}-is-retry {
       color: @cascader-highlight-color;
-      margin-left: 5px;
+      margin-left: 6px;
       cursor: pointer;
     }
 
@@ -129,7 +136,7 @@
   }
 
   & .@{prefix}-cascader-status.@{prefix}-width-l {
-    min-width: @cascader-width-l - 2px;
+    min-width: @cascader-width-l;
   }
 }
 
@@ -137,7 +144,7 @@
   width: @cascader-input-width;
   position: relative;
   vertical-align: middle;
-  padding: 0px 26px 0px 4px;
+  padding: @cascader-input-padding;
   line-height: @cascader-height-default;
   border: 1px solid @cascader-highlight-color;
   border-radius: @border-radius;
@@ -148,24 +155,26 @@
   }
 }
 
+.@{prefix}-cascader-input-icon {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  color: @cascader-light-color;
+  margin-right: 8px;
+}
+
 .@{prefix}-cascader-icon {
   position: absolute;
   height: 100%;
   right: 0;
   top: 0;
   color: @cascader-light-color;
-  margin: 0 5px;
-
-  /* stylelint-disable-next-line */
-  line-height: @cascader-height-default !important;
+  margin-right: 8.5px;
 }
 
+.@{prefix}-cascader-icon.@{prefix}-is-expanded,
 .@{prefix}-cascader-icon.@{prefix}-is-loading {
-  /* stylelint-disable-next-line */
-  line-height: @cascader-item-height !important;
-}
-
-.@{prefix}-cascader-icon.@{prefix}-is-expanded {
   color: @cascader-highlight-color;
 }
 
@@ -176,16 +185,12 @@
   border-color: @cascader-border-color-disabled;
 }
 
-.@{prefix}-cascader.@{prefix}-size-l,
-.@{prefix}-cascader-icon.@{prefix}-size-l {
-  /* stylelint-disable-next-line */
-  line-height: @cascader-height-l - 2px !important;
+.@{prefix}-cascader.@{prefix}-size-l {
+  line-height: @cascader-height-l - 2px;
 }
 
-.@{prefix}-cascader.@{prefix}-size-s,
-.@{prefix}-cascader-icon.@{prefix}-size-s {
-  /* stylelint-disable-next-line */
-  line-height: @cascader-height-s - 2px !important;
+.@{prefix}-cascader.@{prefix}-size-s {
+  line-height: @cascader-height-s - 2px;
 }
 
 .@{prefix}-cascader-panel.@{prefix}-cascader--normal {
