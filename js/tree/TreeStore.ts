@@ -519,7 +519,7 @@ export class TreeStore {
           });
         } else {
           this.checkedMap.set(val, true);
-          node.update();
+          node.updateChecked();
         }
       }
     });
@@ -527,7 +527,7 @@ export class TreeStore {
       const checked = this.getChecked();
       const relatedNodes = this.getRelatedNodes(checked);
       relatedNodes.forEach((node) => {
-        node.update();
+        node.updateChecked();
       });
     }
   }
@@ -538,7 +538,7 @@ export class TreeStore {
     const relatedNodes = this.getRelatedNodes(checked);
     this.checkedMap.clear();
     relatedNodes.forEach((node) => {
-      node.update();
+      node.updateChecked();
     });
   }
 

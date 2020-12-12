@@ -14,8 +14,6 @@ const defaultStatus: any = {
   loading: false,
 };
 
-// vm 开头的属性为视图属性，不可以从外部设置
-// 用于同步实际视图状态，触发视图更新
 export class TreeNode {
   // 节点隶属的树实例
   tree: TreeStore;
@@ -39,8 +37,6 @@ export class TreeNode {
   activable: boolean;
   // 是否可选中
   checkable: boolean;
-  // 视图呈现：是否可选中
-  vmCheckable: boolean;
   // 节点在视图上实际的选中态
   checked: boolean;
   // 节点实际是否为半选状态
@@ -119,7 +115,7 @@ export class TreeNode {
     // 因此初始化状态放到子节点插入之后
     this.checked = false;
     this.indeterminate = false;
-    this.update();
+    this.updateChecked();
   }
 
   // 追加数据
@@ -591,11 +587,11 @@ export class TreeNode {
     }
     if (options.directly) {
       if (config.checkStrictly) {
-        this.update();
+        this.updateChecked();
       } else {
         const relatedNodes = tree.getRelatedNodes([this.value]);
         relatedNodes.forEach((node) => {
-          node.update();
+          node.updateChecked();
         });
       }
     }
@@ -634,17 +630,6 @@ export class TreeNode {
 
   // 更新节点状态
   update(): void {
-    const {
-      tree,
-    } = this;
-    this.vmCheckable = this.isCheckable();
-    if (this.vmCheckable) {
-      this.checked = this.isChecked();
-      if (this.checked) {
-        tree.checkedMap.set(this.value, true);
-      }
-      this.indeterminate = this.isIndeterminate();
-    }
     if (Array.isArray(this.children) && this.children.length <= 0) {
       this.children = null;
     }
@@ -652,6 +637,19 @@ export class TreeNode {
     this.actived = this.isActived();
     this.expanded = this.isExpanded();
     this.visible = this.getVisible();
+    this.tree.updated(this);
+  }
+
+  // 更新选中态属性值
+  updateChecked(): void {
+    const {
+      tree,
+    } = this;
+    this.checked = this.isChecked();
+    if (this.checked) {
+      tree.checkedMap.set(this.value, true);
+    }
+    this.indeterminate = this.isIndeterminate();
     tree.updated(this);
   }
 
@@ -664,6 +662,7 @@ export class TreeNode {
     if (Array.isArray(children)) {
       children.forEach((node) => {
         node.update();
+        node.updateChecked();
         node.updateChildren();
       });
     }
@@ -677,6 +676,7 @@ export class TreeNode {
     } = this;
     if (parent) {
       parent.update();
+      parent.updateChecked();
       parent.updateParents();
     }
   }
@@ -689,6 +689,7 @@ export class TreeNode {
     const relatedNodes = tree.getRelatedNodes([this.value]);
     relatedNodes.forEach((node) => {
       node.update();
+      node.updateChecked();
     });
 
     tree.reflow();
@@ -748,6 +749,7 @@ export class TreeNode {
         tree.expandedMap.set(node.value, true);
       }
       node.update();
+      node.updateChecked();
     });
 
     tree.reflow();
