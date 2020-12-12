@@ -14,6 +14,8 @@ const defaultStatus: any = {
   loading: false,
 };
 
+// vm 开头为视图属性，不可以外部设置
+// 用于触发视图更新
 export class TreeNode {
   // 节点隶属的树实例
   tree: TreeStore;
@@ -37,6 +39,8 @@ export class TreeNode {
   activable: boolean;
   // 是否可选中
   checkable: boolean;
+  // 是否可选中的视图呈现
+  vmCheckable: boolean;
   // 节点在视图上实际的选中态
   checked: boolean;
   // 节点实际是否为半选状态
@@ -645,12 +649,15 @@ export class TreeNode {
     const {
       tree,
     } = this;
-    this.checked = this.isChecked();
-    if (this.checked) {
-      tree.checkedMap.set(this.value, true);
+    this.vmCheckable = this.isCheckable();
+    if (this.vmCheckable) {
+      this.checked = this.isChecked();
+      if (this.checked) {
+        tree.checkedMap.set(this.value, true);
+      }
+      this.indeterminate = this.isIndeterminate();
+      tree.updated(this);
     }
-    this.indeterminate = this.isIndeterminate();
-    tree.updated(this);
   }
 
   // 更新所有子节点状态
