@@ -31,6 +31,8 @@
 
   & .@{prefix}-select-selectedSingle {
     margin-left: @select-placeholder-margin;
+    .text-ellipsis();
+    display: block;
   }
 
   & .@{prefix}-select-right-icon {
@@ -47,8 +49,15 @@
     /*IE*/
     filter: FlipV;
   }
+  & .@{prefix}-select-left-icon {
+    position: absolute;
+    height: 100%;
+    margin: @select-icon-margin;
+    left: 0;
+    top: 0;
+  }
   .@{prefix}-select-input {
-    width: auto;
+    width: @select-input-width;
   }
 
   .@{prefix}-select-input {
@@ -63,12 +72,25 @@
     :hover {
       border: 0;
     }
+    
+    input {
+      height: @select-input-height;
+      line-height: @select-input-height;
+    }
   }
 
   .@{prefix}-tag,
   +.@{prefix}-tag {
     margin: @select-tag-margin;
   }
+  .@{prefix}-tag {
+    height: @select-tag-height-default;
+    line-height: @select-tag-height-default - 2px;
+  }
+}
+
+.@{prefix}-select.has-prefix {
+  padding-left: @select-padding-prefix;
 }
 
 .@{prefix}-select.@{prefix}-size-l {
@@ -76,7 +98,16 @@
 
   .@{prefix}-select-input {
     line-height: @select-height-l - 2px;
-    height: @select-height-l;
+    height: @select-height-l - 2px;
+
+    .@{prefix}-input__inner {
+      height: @select-height-l - 2px;
+      line-height: @select-height-l - 2px;
+    }
+  }
+  .@{prefix}-tag.@{prefix}-size-l {
+    height: @select-tag-height-l;
+    line-height: @select-tag-height-l - 2px;
   }
 }
 
@@ -85,12 +116,21 @@
 
   .@{prefix}-select-input {
     line-height: @select-height-s - 2px;
-    height: @select-height-s;
+    height: @select-height-s - 2px;
+
+    .@{prefix}-input__inner {
+      height: @select-height-s - 2px;
+      line-height: @select-height-s - 2px;
+    }
+  }
+  .@{prefix}-tag.@{prefix}-size-s {
+    height: @select-tag-height-s;
+    line-height: @select-tag-height-s - 2px;
   }
 }
 
 .@{prefix}-select.@{prefix}-is-disabled {
-  cursor: auto;
+  cursor: not-allowed;
   background-color: @select-disabled-background-color;
   color: @select-placeholder-color;
   border-color: @select-border-color;
@@ -136,9 +176,7 @@
 .@{prefix}-option-group-header {
   color: @option-group-header-color;
   display: block;
-  overflow: hidden;
-  word-wrap: break-word;
-  text-overflow: ellipsis;
+  .text-ellipsis();
   height: @select-option-height-default;
   line-height: @select-option-line-height;
   padding: @select-option-padding-default;
@@ -157,9 +195,7 @@
 // option
 .@{prefix}-select-option {
   display: block;
-  overflow: hidden;
-  word-wrap: break-word;
-  text-overflow: ellipsis;
+  .text-ellipsis();
   height: @select-option-height-default;
   line-height: @select-option-line-height;
   cursor: pointer;
