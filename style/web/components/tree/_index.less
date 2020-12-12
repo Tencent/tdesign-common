@@ -21,20 +21,23 @@
     cursor: pointer; // 【待定】
     will-change: display;
 
-    .@{prefix}-icon-arrow-right,
-    .@{prefix}-icon-chevron-right {
+    .@{prefix}-icon {
       display: inline-block;
-      transform: rotate(0);
       position: relative;
       color: @tree-node-icon-color;
       z-index: 2;
     }
 
+    .@{prefix}-icon-chevron-right {
+      transform: rotate(0);
+    }
+
     &--open {
-      .@{prefix}-icon-arrow-right,
+      .@{prefix}-icon {
+        color: @tree-node-icon-color-active;
+      }
       .@{prefix}-icon-chevron-right {
         transform: rotate(90deg);
-        color: @tree-node-icon-color-active;
       }
     }
 
@@ -45,7 +48,6 @@
   }
 
   &--fx {
-    .@{prefix}-icon-arrow-right,
     .@{prefix}-icon-chevron-right {
       transition: color,transform @tree-node-animation-time;
     }
