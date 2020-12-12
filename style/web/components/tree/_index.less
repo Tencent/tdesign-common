@@ -19,6 +19,7 @@
     padding-left: calc(24px * var(--level));
     height: 40px;
     cursor: pointer; // 【待定】
+    will-change: display;
 
     .@{prefix}-icon-chevron-right {
       display: inline-block;
@@ -103,6 +104,7 @@
     // height: calc(36px * var(--depth) - 4px);
     // animation: t-tree-toggle-line @tree-node-animation-time;
     z-index: 1;
+    will-change: height;
   }
 
   &__line--leaf {
