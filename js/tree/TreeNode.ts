@@ -67,6 +67,9 @@ export class TreeNode {
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
 
+    this.children = null;
+    this.vmCheckable = false;
+
     const spec = {
       ...defaultStatus,
       actived: false,
@@ -145,6 +148,7 @@ export class TreeNode {
       }
     });
     tree.reflow(this);
+    this.updateRelated();
   }
 
   // 插入一个同级节点数据
