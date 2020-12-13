@@ -53,89 +53,20 @@
     }
   }
 
-  &__lines {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    opacity: 1;
-    pointer-events: none;
-
-    dd {
-      display: flex;
-      width: 24px;
-      height: 40px;
-      flex-direction: column;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-
-    dd:before,
-    dd:after {
-      content: "";
-      display: block;
-      flex: 0 0 auto;
-      width: 12px;
-      height: 20px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: rgba(238, 238, 238, 0);
-    }
-
-    dd:before {
-      width: 12px;
-    }
-
-    dd:after {
-      width: 13px;
-      height: 21px;
-      margin-left: 11px;
-      margin-top: -1px;
-    }
-  }
-
-  /* 连接线（react） */
   &__line {
     --depth: 1;
-    --beforeDepth: 1;
     position: absolute;
     width: 16px;
+    margin-left: -12px;
+    bottom: 20px;
     border-left: 1px solid green;
     border-bottom: 1px solid green; // #eee
-    left: -52%;
-    bottom: 45%;
-    // height: calc(36px * var(--depth) - 4px);
-    // animation: t-tree-toggle-line @tree-node-animation-time;
-    z-index: 1;
+    height: calc(40px * var(--depth) - 8px);
     will-change: height;
   }
 
   &__line--leaf {
     width: 32px;
-  }
-
-  /* 连接线（vue） */
-  &__lines &__line {
-
-    &--top:before {
-      border-right-color: rgba(238, 238, 238, 1);
-    }
-
-    &--left:before {
-      border-bottom-color: rgba(238, 238, 238, 1);
-    }
-
-    &--bottom:after {
-      border-left-color: rgba(238, 238, 238, 1);
-    }
-
-    &--right:after {
-      border-top-color: rgba(238, 238, 238, 1);
-    }
-
-    &--icon {
-      mask-image: radial-gradient(circle at 50% 50%, transparent 8px, #000 8px);
-    }
   }
 
   // 默认图标
@@ -202,21 +133,12 @@
   .@{prefix}-tree-toggle-leave-active {
     animation: t-tree-toggle @tree-node-animation-time linear reverse;
   }
-  .@{prefix}-tree__lines {
-
-    dd:before,
-    dd:after {
-      transition: all @tree-node-animation-time;
-    }
-  }
-
-  .@{prefix}-tree__icon-enter-active {
-    animation: t-tree-toggle-line @tree-node-line-animation-time linear;
-  }
-
-  .@{prefix}-tree__icon-exit-active {
-    animation: t-tree-toggle-line @tree-node-line-animation-time linear;
-  }
+  // .@{prefix}-tree__icon-enter-active {
+  //   animation: t-tree-toggle-line @tree-node-animation-time linear;
+  // }
+  // .@{prefix}-tree__icon-exit-active {
+  //   animation: t-tree-toggle-line @tree-node-animation-time linear reverse;
+  // }
 }
 
 @keyframes t-tree-toggle {
@@ -246,5 +168,4 @@
   100% {
     height: calc(40px * var(--depth) - 8px);
   }
-
 }
