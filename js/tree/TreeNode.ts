@@ -29,6 +29,8 @@ export class TreeNode {
   parent: TreeNode;
   // 子节点列表
   children: TreeNode[] | boolean;
+  // 是否为叶节点
+  vmIsLeaf: boolean;
   // 节点在视图上实际的展开状态
   expanded: boolean;
   // 展开时是否收起同级节点，对子节点生效
@@ -69,6 +71,7 @@ export class TreeNode {
 
     this.children = null;
     this.vmCheckable = false;
+    this.vmIsLeaf = false;
 
     const spec = {
       ...defaultStatus,
@@ -518,7 +521,13 @@ export class TreeNode {
 
   // 是叶节点
   isLeaf(): boolean {
-    return !this.children;
+    let isLeaf = false;
+    if (Array.isArray(this.children)) {
+      isLeaf = this.children.length <= 0;
+    } else {
+      isLeaf = !this.children;
+    }
+    return isLeaf;
   }
 
   // 是否为半选状态
@@ -638,9 +647,7 @@ export class TreeNode {
 
   // 更新节点状态
   update(): void {
-    if (Array.isArray(this.children) && this.children.length <= 0) {
-      this.children = null;
-    }
+    this.vmIsLeaf = this.isLeaf();
     this.level = this.getLevel();
     this.actived = this.isActived();
     this.expanded = this.isExpanded();
