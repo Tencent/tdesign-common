@@ -19,7 +19,7 @@
     padding-left: calc(24px * var(--level));
     height: 40px;
     cursor: pointer; // 【待定】
-    will-change: display;
+    will-change: height;
 
     .@{prefix}-icon {
       display: inline-block;
@@ -240,11 +240,11 @@
 @keyframes t-tree-toggle-line {
 
   0% {
-    height: calc(36px * var(--beforeDepth) - 4px);
+    height: calc(40px * var(--beforeDepth) - 8px);
   }
 
   100% {
-    height: calc(36px * var(--depth) - 4px);
+    height: calc(40px * var(--depth) - 8px);
   }
 
 }
