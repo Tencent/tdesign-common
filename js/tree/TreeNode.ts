@@ -89,6 +89,8 @@ export class TreeNode {
 
     if (parent && parent instanceof TreeNode) {
       this.parent = parent;
+    } else {
+      this.parent = null;
     }
 
     // 子节点为 true 的状态逻辑需要放到状态计算之前

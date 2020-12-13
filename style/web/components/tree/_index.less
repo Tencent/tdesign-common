@@ -47,12 +47,6 @@
     }
   }
 
-  &--fx {
-    .@{prefix}-icon-chevron-right {
-      transition: color,transform @tree-node-animation-time;
-    }
-  }
-
   &__line {
     --depth: 1;
     position: absolute;
@@ -67,6 +61,17 @@
 
   &__line--leaf {
     width: 32px;
+  }
+
+  &--fx {
+    .@{prefix}-tree__line {
+      transition: height linear;
+      transition-duration: @tree-node-animation-time;
+      transition-delay: 0;
+    }
+    .@{prefix}-icon-chevron-right {
+      transition: color,transform @tree-node-animation-time;
+    }
   }
 
   // 默认图标
@@ -131,14 +136,8 @@
     animation: t-tree-toggle @tree-node-animation-time linear;
   }
   .@{prefix}-tree-toggle-leave-active {
-    animation: t-tree-toggle @tree-node-animation-time linear reverse;
+    animation: t-tree-toggle @tree-node-animation-time reverse linear;
   }
-  // .@{prefix}-tree__icon-enter-active {
-  //   animation: t-tree-toggle-line @tree-node-animation-time linear;
-  // }
-  // .@{prefix}-tree__icon-exit-active {
-  //   animation: t-tree-toggle-line @tree-node-animation-time linear reverse;
-  // }
 }
 
 @keyframes t-tree-toggle {
@@ -156,16 +155,5 @@
   100% {
     opacity: 1;
     height: 40px;
-  }
-}
-
-@keyframes t-tree-toggle-line {
-
-  0% {
-    height: calc(40px * var(--beforeDepth) - 8px);
-  }
-
-  100% {
-    height: calc(40px * var(--depth) - 8px);
   }
 }
