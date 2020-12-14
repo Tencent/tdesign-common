@@ -31,6 +31,10 @@ export class TreeNode {
   children: TreeNode[] | boolean;
   // 是否为叶节点
   vmIsLeaf: boolean;
+  // 是否为子节点中的第一个
+  vmIsFirst: boolean;
+  // 是否为子节点中的最后
+  vmIsLast: boolean;
   // 节点在视图上实际的展开状态
   expanded: boolean;
   // 展开时是否收起同级节点，对子节点生效
@@ -72,6 +76,8 @@ export class TreeNode {
     this.children = null;
     this.vmCheckable = false;
     this.vmIsLeaf = false;
+    this.vmIsFirst = false;
+    this.vmIsLast = false;
 
     const spec = {
       ...defaultStatus,
@@ -647,8 +653,20 @@ export class TreeNode {
     return visible;
   }
 
+  isFirst(): boolean {
+    const siblings = this.getSiblings();
+    return siblings[0] === this;
+  }
+
+  isLast(): boolean {
+    const siblings = this.getSiblings();
+    return siblings[siblings.length - 1] === this;
+  }
+
   // 更新节点状态
   update(): void {
+    this.vmIsFirst = this.isFirst();
+    this.vmIsLast = this.isLast();
     this.vmIsLeaf = this.isLeaf();
     this.level = this.getLevel();
     this.actived = this.isActived();

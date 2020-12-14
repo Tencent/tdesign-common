@@ -48,27 +48,38 @@
   }
 
   &__line {
-    --depth: 1;
+    --level: 0;
+    --color: green; // #eee;
+    --space: 24px;
+    --iconSize: 16px;
     position: absolute;
-    width: 16px;
-    margin-left: -12px;
+    left: calc(24px * var(--level) - 12px);
     bottom: 20px;
-    border-left: 1px solid green;
-    border-bottom: 1px solid green; // #eee
-    height: calc(40px * var(--depth) - 8px);
-    will-change: height;
+    width: 1px;
+    height: 40px;
   }
 
-  &__line--leaf {
+  &__line::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 40px;
+    width: 16px;
+    border-left: 1px solid var(--color);
+    border-bottom: 1px solid var(--color);
+  }
+
+  &__line--first::before {
+    height: 32px;
+  }
+
+  &__line--leaf::before {
     width: 32px;
   }
 
   &--fx {
-    .@{prefix}-tree__line {
-      transition: height linear;
-      transition-duration: @tree-node-animation-time;
-      transition-delay: 0;
-    }
     .@{prefix}-icon-chevron-right {
       transition: color,transform @tree-node-animation-time;
     }
