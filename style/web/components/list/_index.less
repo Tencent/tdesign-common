@@ -6,7 +6,7 @@
 @import "./_mixin.less";
 
 .@{prefix}-list {
-  overflow: scroll;
+  overflow: auto;
 
   &-items {
     list-style: none;
@@ -21,6 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    line-height: 22px;
 
     &-main {
       display: flex;
@@ -65,7 +66,11 @@
         display: inline-block;
 
         &:not(:last-child) {
-          margin-right: @spacer-2;
+          margin-right: @spacer-3;
+        }
+
+        .@{prefix}-icon {
+          color: @text-level-4-color;
         }
 
         & > a {
@@ -97,10 +102,7 @@
 
   &--vertical-action {
     .@{prefix}-list-item {
-
-      &-main {
-        display: block;
-      }
+      flex-direction: column;
     }
   }
 
@@ -124,6 +126,10 @@
 
     &.@{prefix}-list__load--loading {
       color: @list-text-color-loading;
+
+      .@{prefix}-icon {
+        color: @primary-color-5;
+      }
     }
 
     &.@{prefix}-list__load--load-more {

@@ -12,7 +12,10 @@
 .@{checkbox-cls} {
   position: relative;
   cursor: pointer;
-  margin-right: @checkbox-margin-right;
+
+  & + .@{checkbox-cls} {
+    margin-left: @spacer-3;
+  }
 
   &__former {
     opacity: 0;
@@ -94,6 +97,10 @@
   &.@{prefix}-is-disabled {
     cursor: not-allowed;
 
+    .@{checkbox-cls}__label {
+      color: @checkbox-check-color-disabled;
+    }
+  
     .@{checkbox-cls}__input {
       background-color: @checkbox-input-color-disabled;
     }
