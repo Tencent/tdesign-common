@@ -38,19 +38,50 @@
       margin-left: 24px;
     }
 
-    //label::after {
-    //  content: ":";
-    //  position: relative;
-    //  margin: 0 8px 0 2px;
-    //}
+
+    &--required {
+
+      label::before {
+        display: inline-block;
+        margin-right: 4px;
+        color: @error-color;
+        line-height: 1;
+        content: "*";
+      }
+    }
+
+    &--colon {
+
+      label::after {
+        content: ":";
+        position: relative;
+        margin: 0 8px 0 2px;
+      }
+    }
   }
 
-
-
   &__controls {
-    display: flex;
+    display: block;
     flex: 1 1 0;
     height: 40px;
     align-items: center;
+
+    &--content {
+      display: flex;
+      height: 40px;
+      align-items: center;
+    }
+  }
+
+  .t-is-success {
+    color: @success-color;
+  }
+
+  .t-is-error {
+    color: @error-color;
+  }
+
+  .t-is-warning {
+    color: @warning-color;
   }
 }
