@@ -16,10 +16,9 @@
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    padding-left: calc(24px * var(--level));
+    padding-left: calc(@tree-node-padding-basic * var(--level));
     height: 40px;
     cursor: pointer; // 【待定】
-    will-change: height;
 
     .@{prefix}-icon {
       display: inline-block;
@@ -28,8 +27,9 @@
       z-index: 2;
     }
 
-    .@{prefix}-icon-chevron-right {
-      transform: rotate(0);
+    .@{prefix}-checkbox {
+      font-size: 0;
+      padding-top: 1px;
     }
 
     &--open {
@@ -45,15 +45,16 @@
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
     }
+
   }
 
   &__line {
     --level: 0;
     --color: green; // #eee;
-    --space: 24px;
+    --space: @tree-node-padding-basic;
     --iconSize: 16px;
     position: absolute;
-    left: calc(24px * var(--level) - 12px);
+    left: calc(@tree-node-padding-basic * var(--level) - 12px);
     bottom: 20px;
     width: 1px;
     height: 40px;
@@ -89,10 +90,10 @@
   & &__icon {
     flex: 0 0 auto;
     align-self: center;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     text-align: center;
-    line-height: 24px;
+    line-height: 32px;
     position: relative;
     user-select: none;
 
@@ -108,7 +109,6 @@
   & &__label {
     flex: 0 0 auto;
     line-height: 40px;
-    margin-left: 4px;
     flex-wrap: nowrap;
   }
 
