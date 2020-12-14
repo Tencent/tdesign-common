@@ -178,6 +178,9 @@ export class TreeNode {
       if (typeof index === 'number') {
         siblings.splice(index, 0, node);
       }
+      siblings.forEach((node) => {
+        node.update();
+      });
     }
     tree.reflow();
   }
@@ -736,6 +739,7 @@ export class TreeNode {
   // 将当前节点追加到某个父节点的子节点列表中
   appendTo(tree: TreeStore, parent?: TreeNode, index?: number): void {
     const parentNode = parent;
+    if (!parentNode) return;
 
     const targetParents = parentNode.getParents();
     const includeCurrent = targetParents.some(node => (node.value === this.value));
@@ -786,6 +790,10 @@ export class TreeNode {
       if (node.expanded) {
         tree.expandedMap.set(node.value, true);
       }
+    });
+
+    const updateNodes = parentNode.walk();
+    updateNodes.forEach((node) => {
       node.update();
       node.updateChecked();
     });
