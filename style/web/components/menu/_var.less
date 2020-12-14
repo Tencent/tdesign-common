@@ -15,11 +15,11 @@
 
 // 颜色
 @menu-theme-light: @bg-color-block;
-@menu-theme-dark: #272B30;
+@menu-theme-dark: @dark-bg-color;
 @menu-theme-primary: @primary-color;
 
-@menu-light-item-color: rgba(0, 0, 0, .6);
-@menu-dark-item-color: rgba(255,255,255,.8);
+@menu-light-item-color: @text-level-2-color;
+@menu-dark-item-color: @text-anti-primary-color;
 
 @menu-item-disabled-color: @text-level-4-color;
 
@@ -36,7 +36,7 @@
 
 @menu-popup-bg-color: @bg-color-block;
 
-@menu-head-item-color: #444;
+@menu-head-item-color: @text-level-2-color;
 
 
 // 边距
@@ -58,4 +58,5 @@
 
 // box-shadow
 @menu-head-shadow: 0 8px 10px -5px rgba(0, 0, 0, .08), 0 16px 24px 2px rgba(0, 0, 0, .04), 0 6px 30px 5px rgba(0, 0, 0, .05);
+@menu-head-submenu-shadow: inset 0 -1px 0 0 #eee;
 @menu-default-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);

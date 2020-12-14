@@ -21,12 +21,14 @@
   th,
   td {
     position: relative;
-    padding: @table-padding-normal;
+    padding: 10px 24px;
     border-bottom: 1px solid @table-border-color;
     line-height: @table-line-height;
     vertical-align: middle;
+    font-weight: normal;
   }
 
+  thead td,
   th {
     color: @table-head-text-color;
   }
@@ -97,7 +99,7 @@
       }
     }
 
-    .@{prefix}-table--loading {
+    .@{prefix}-table--loading, .@{prefix}-table--empty {
       border-bottom: 1px solid @table-border-color;
     }
 
