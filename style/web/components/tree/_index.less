@@ -58,7 +58,7 @@
     --space: @tree-node-padding-basic;
     --iconSize: 16px;
     position: absolute;
-    left: calc(@tree-node-padding-basic * var(--level) - 12px);
+    left: calc(@tree-node-padding-basic * var(--level) - 16px);
     bottom: 20px;
     width: 1px;
     height: 40px;
@@ -94,10 +94,11 @@
   & &__icon {
     flex: 0 0 auto;
     align-self: center;
-    width: 32px;
-    height: 32px;
+    width: 16px;
+    height: 16px;
     text-align: center;
-    line-height: 32px;
+    line-height: 16px;
+    margin-right: 8px;
     position: relative;
     user-select: none;
 
