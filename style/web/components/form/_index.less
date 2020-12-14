@@ -22,20 +22,15 @@
     flex-grow: 0;
     height: 40px;
     align-items: center;
+    flex-direction: row;
+    padding-right: 24px;
 
     &--left {
-      text-align: left;
-      width: 100%;
+      justify-content: flex-start;
     }
 
     &--right {
-      text-align: right;
-      width: 100%;
-    }
-
-    &--top {
-      text-align: left;
-      margin-left: 24px;
+      justify-content: flex-end;
     }
 
 
@@ -61,7 +56,7 @@
   }
 
   &__controls {
-    display: block;
+    display: flex;
     flex: 1 1 0;
     height: 40px;
     align-items: center;
