@@ -831,6 +831,10 @@ export class TreeNode {
     nodes.forEach((node) => {
       node.clean();
     });
+    // 同级节点的连线状态会受到影响
+    siblings.forEach((node) => {
+      node.update();
+    });
     // 父节点选中态会受到影响
     this.updateParents();
     tree.reflow();
