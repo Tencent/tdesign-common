@@ -10,8 +10,7 @@
   line-height: @select-height-default - 2px;
   background: @select-background-color;
   border: 1px solid @select-border-color;
-  border-radius: 2px;
-  box-shadow: @select-box-shabow;
+  border-radius: @border-radius;
   padding: @select-padding;
 
   &:hover,
@@ -153,6 +152,21 @@
 .@{prefix}-select-dropdown.@{prefix}-popup {
   padding: 0;
 }
+// empty
+.@{prefix}-select-empty.@{prefix}-size-s {
+  line-height: @select-height-s;
+}
+
+.@{prefix}-select-empty {
+  text-align: center;
+  color: @select-empty-color;
+  line-height: @select-height-default;
+}
+
+.@{prefix}-select-empty.@{prefix}-size-l {
+  line-height: @select-height-l;
+}
+
 // loading tips
 .@{prefix}-select-loading-tips.@{prefix}-size-s {
   line-height: @select-height-s;
@@ -200,6 +214,7 @@
   line-height: @select-option-line-height;
   cursor: pointer;
   padding: @select-option-padding-default;
+  color: @option-color;
 
   &:hover,
   :active {

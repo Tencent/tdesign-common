@@ -1,0 +1,201 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+// <name> 替换为组件名
+.@{prefix}-tree {
+  line-height: 40px;
+  font-size: 14px;
+  color: @tree-node-text-color;
+
+  & &__item {
+    --level: 0;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    padding-left: calc(24px * var(--level));
+    height: 40px;
+    cursor: pointer; // 【待定】
+
+    .@{prefix}-icon-arrow-right {
+      display: inline-block;
+      transform: rotate(0);
+    }
+
+    &--open {
+      .@{prefix}-icon-arrow-right {
+        transform: rotate(90deg);
+      }
+    }
+
+    &--hidden {
+      display: none; // 【待定】新增样式，未给示例
+    }
+
+    &.@{prefix}-is-active {
+      background-color: @tree-node-bg-color-active;
+      color: @tree-node-text-color-active;
+    }
+  }
+
+  &--fx .@{prefix}-icon-arrow-right {
+    transition: transform .3s;
+  }
+
+  &__lines {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    opacity: 1;
+    pointer-events: none;
+
+    dd {
+      display: flex;
+      width: 24px;
+      height: 40px;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    dd:before,
+    dd:after {
+      content: "";
+      display: block;
+      flex: 0 0 auto;
+      width: 12px;
+      height: 20px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba(238, 238, 238, 0);
+    }
+
+    dd:before {
+      width: 12px;
+    }
+
+    dd:after {
+      width: 13px;
+      height: 21px;
+      margin-left: 11px;
+      margin-top: -1px;
+    }
+  }
+
+  /* 连接线 */
+  &__lines &__line {
+
+    &--top:before {
+      border-right-color: rgba(238, 238, 238, 1);
+    }
+
+    &--left:before {
+      border-bottom-color: rgba(238, 238, 238, 1);
+    }
+
+    &--bottom:after {
+      border-left-color: rgba(238, 238, 238, 1);
+    }
+
+    &--right:after {
+      border-top-color: rgba(238, 238, 238, 1);
+    }
+
+    &--icon {
+      mask-image: radial-gradient(circle at 50% 50%, transparent 8px, #000 8px);
+    }
+  }
+
+  // 默认图标
+  & &__icon {
+    flex: 0 0 auto;
+    align-self: center;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    user-select: none;
+
+    .t-icon-loading-blue {
+      color: #2163db;
+    }
+  }
+
+  & &__icon:empty {
+    cursor: initial;
+  }
+
+  & &__label {
+    flex: 0 0 auto;
+    line-height: 40px;
+    margin-left: 4px;
+    flex-wrap: nowrap;
+  }
+
+  & &__space {
+    display: block;
+    flex: 1 0 auto;
+  }
+
+  & &__operations {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  & &__operations .@{prefix}-icon {
+    cursor: pointer;
+  }
+
+  &--hoverable &__item:hover {
+    cursor: pointer;
+    background-color: @tree-node-bg-color-hover;
+  }
+
+  & &__item.t-is-disabled {
+    color: #ddd;
+    cursor: default;
+    .@{prefix}-checkbox {
+      cursor: default;
+    }
+  }
+}
+
+.@{prefix}-tree--fx {
+  .@{prefix}-tree-toggle-enter-active {
+    animation: t-tree-toggle .3s;
+  }
+  .@{prefix}-tree-toggle-leave-active {
+    animation: t-tree-toggle .3s reverse;
+  }
+  .@{prefix}-tree__lines {
+
+    dd:before,
+    dd:after {
+      transition: all .3s;
+    }
+  }
+}
+
+@keyframes t-tree-toggle {
+
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+
+  50% {
+    opacity: 0;
+    height: 40px;
+  }
+
+  100% {
+    opacity: 1;
+    height: 40px;
+  }
+}
