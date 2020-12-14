@@ -1,0 +1,224 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../_variables.less";
+
+.@{prefix}-transfer {
+  font-size: @transfer-font-size;
+  line-height: 22px;
+  position: relative;
+  display: inline-block;
+  background: @transfer-bg-color;
+  box-shadow: @transfer-box-shadow;
+  border-radius: @transfer-border-radius;
+
+  &-list {
+    position: relative;
+    display: inline-block;
+    width: @transfer-common-width;
+    height: @transfer-common-height;
+    padding-top: 40px;
+    //border: 1px solid @transfer-border-color;
+    border-bottom: 0;
+    word-break: break-word;
+    vertical-align: middle;
+
+    &-source {
+      border-right: 1px solid @transfer-border-color;
+    }
+
+    &-target {
+      border-left: 1px solid @transfer-border-color;
+    }
+
+    &__header {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      top: 0;
+      border-bottom: 1px solid @transfer-border-color;
+      height: 40px;
+      line-height: 40px;
+      width: 100%;
+      padding: 0 12px 0 12px;
+
+      div {
+        display: flex;
+
+        > span {
+          margin-left: 8px;
+        }
+      }
+
+      >span {
+        color: @text-level-3-color;
+      }
+    }
+
+    &__body {
+      position: relative;
+      height: 100%;
+
+      input {
+        border: 0;
+      }
+    }
+
+    &-with-search {
+      padding-top: 32px;
+    }
+
+    &-search-wrapper {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      border-bottom: 1px solid @transfer-border-color;
+    }
+
+    &__content {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
+
+    &__item {
+      padding: 9px 12px 9px 12px;
+      display: flex;
+      cursor: pointer;
+
+      >span {
+        margin-left: 8px;
+      }
+    }
+
+    &__item:hover {
+      background: @transfer-bg-hover;
+    }
+
+    &__wrapper {
+      position: relative;
+      height: 100%;
+      overflow: auto;
+      padding: 12px;
+    }
+
+    &__pagination {
+      height: 40px;
+      text-align: right;
+      vertical-align: middle;
+      padding: 4px;
+      line-height: 16px;
+    }
+
+    &__footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border-top: 1px solid @transfer-border-color;
+      width: 100%;
+    }
+  }
+
+  &-operations {
+    display: inline-block;
+    margin: auto 8px;
+    vertical-align: middle;
+    overflow: hidden;
+
+    button {
+      display: block;
+      padding-left: 3px;
+      padding-right: 3px;
+      padding-top: 0;
+      height: 24px;
+      line-height: 14px;
+    }
+
+    button:first-child {
+      margin-bottom: 14px;
+    }
+
+    .t-icon {
+      font-size: 16px;
+    }
+
+    .t-icon + .t-button__text {
+      margin-left: 0;
+    }
+
+    .t-button--icon-only {
+      width: 24px;
+    }
+  }
+
+  &-empty {
+    text-align: center;
+    position: absolute;
+    color: @text-level-3-color;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.@{prefix}-transfer-wrapper {
+  .@{prefix}-transfer-list {
+    @transfer-wrap-height: 320px;
+  }
+}
+
+// 只有search时候的高度
+.@{prefix}-transfer-search {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-search-height;
+  }
+}
+
+// 只有翻页时候的高度
+.@{prefix}-transfer-pagination {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-pagination-height;
+    padding-bottom: 40px;
+  }
+}
+
+// 只有footer时候的高度
+.@{prefix}-transfer-footer {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-footer-height;
+    padding-bottom: 48px;
+  }
+}
+
+// 同时有翻页和footer时候的高度
+.@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-footer-both-height;
+    padding-bottom: 88px;
+  }
+}
+
+// 同时有search和footer时候的高度
+.@{prefix}-transfer-search.@{prefix}-transfer-footer {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-footer-both-height;
+    padding-bottom: 48px;
+  }
+}
+
+// 同时有search和pagination时候的高度
+.@{prefix}-transfer-search.@{prefix}-transfer-pagination {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-both-height;
+    padding-bottom: 40px;
+  }
+}
+
+// 同时有search和pagination和footer
+.@{prefix}-transfer-search.@{prefix}-transfer-footer.@{prefix}-transfer-pagination {
+  .@{prefix}-transfer-list {
+    height: @transfer-with-all-height;
+    padding-bottom: 88px;
+  }
+}
