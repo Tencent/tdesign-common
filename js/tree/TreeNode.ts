@@ -5,6 +5,31 @@ const {
   hasOwnProperty,
 } = Object.prototype;
 
+export interface SettingOptions {
+  directly?: boolean;
+}
+
+export interface TreeNodeProps {
+  value?: string;
+  label?: string;
+  expanded?: boolean;
+  expandMutex?: boolean;
+  actived?: boolean;
+  activable?: boolean;
+  checkable?: boolean;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  draggable?: boolean;
+  visible?: boolean;
+  loading?: boolean;
+}
+
+export interface TreeNodeData extends TreeNodeProps {
+  [key: string]: any;
+  children?: TreeNodeData[];
+}
+
 const defaultStatus = {
   expandMutex: false,
   activable: false,
@@ -24,7 +49,7 @@ export class TreeNode {
   // 节点文本
   label: string;
   // 节点数据
-  dataset: any;
+  dataset: TreeNodeData;
   // 父节点
   parent: TreeNode;
   // 子节点列表
@@ -62,7 +87,7 @@ export class TreeNode {
   // 节点是否正在加载数据
   loading: boolean;
 
-  constructor(tree: TreeStore, data?: any, parent?: TreeNode) {
+  constructor(tree: TreeStore, data?: TreeNodeData, parent?: TreeNode) {
     this.dataset = data;
     this.tree = tree;
 
@@ -137,7 +162,7 @@ export class TreeNode {
   }
 
   // 追加数据
-  append(list: any[]): void {
+  append(list: TreeNodeData[]): void {
     if (list.length <= 0) {
       return;
     }
@@ -163,7 +188,7 @@ export class TreeNode {
   }
 
   // 插入一个同级节点数据
-  insert(item: any, index?: number): void {
+  insert(item: TreeNode | TreeNodeData, index?: number): void {
     const {
       tree,
       parent,
@@ -186,13 +211,13 @@ export class TreeNode {
   }
 
   // 在当前节点之前插入节点
-  insertBefore(item: any) {
+  insertBefore(item: TreeNode | TreeNodeData) {
     const index = this.getIndex();
     this.insert(item, index);
   }
 
   // 在当前节点之后插入节点
-  insertAfter(item: any) {
+  insertAfter(item: TreeNode | TreeNodeData) {
     const index = this.getIndex();
     this.insert(item, index + 1);
   }
@@ -229,20 +254,16 @@ export class TreeNode {
   }
 
   // 设置状态
-  set(item: any): void {
+  set(item: TreeNodeProps): void {
     const {
       tree,
     } = this;
     const keys = Object.keys(item);
-    const changedProps: any = {};
     keys.forEach((key) => {
       if (
         hasOwnProperty.call(defaultStatus, key)
         || key === 'label'
       ) {
-        if (this[key] !== item[key]) {
-          changedProps[key] = true;
-        }
         this[key] = item[key];
       }
     });
@@ -364,7 +385,7 @@ export class TreeNode {
   }
 
   // 设置节点展开状态
-  setExpanded(expanded: boolean, opts?: any): string[] {
+  setExpanded(expanded: boolean, opts?: SettingOptions): string[] {
     const {
       tree,
     } = this;
@@ -449,7 +470,7 @@ export class TreeNode {
   }
 
   // 设置节点激活态
-  setActived(actived: boolean, opts?: any): string[] {
+  setActived(actived: boolean, opts?: SettingOptions): string[] {
     const {
       tree,
     } = this;
@@ -568,7 +589,7 @@ export class TreeNode {
 
   // 更新单个节点的选中态
   // 返回树选中列表
-  setChecked(checked: boolean, opts?: any): string[] {
+  setChecked(checked: boolean, opts?: SettingOptions): string[] {
     const {
       tree,
     } = this;
