@@ -18,7 +18,6 @@
     flex-wrap: nowrap;
     padding-left: calc(@tree-node-padding-basic * var(--level));
     height: 40px;
-    cursor: pointer; // 【待定】
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
@@ -48,6 +47,10 @@
       }
     }
 
+    &--clickable {
+      cursor: pointer;
+    }
+
     &.@{prefix}-is-active {
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
@@ -61,7 +64,7 @@
     --space: @tree-node-padding-basic;
     --iconSize: 16px;
     position: absolute;
-    left: calc(@tree-node-padding-basic * var(--level) - 16px);
+    left: calc(@tree-node-padding-basic * var(--level) - 12px);
     bottom: 20px;
     width: 1px;
     height: 40px;
@@ -97,12 +100,14 @@
   & &__icon {
     flex: 0 0 auto;
     align-self: center;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
     text-align: center;
-    line-height: 32px;
+    line-height: 24px;
     position: relative;
     user-select: none;
+    cursor: pointer;
 
     .t-icon-loading-blue {
       color: #2163db;
