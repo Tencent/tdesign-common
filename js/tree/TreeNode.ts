@@ -416,7 +416,8 @@ export class TreeNode {
   // 节点展开关闭后需要调用的状态检查函数
   afterExpanded(): void {
     this.update();
-    if (this.children === true) {
+    // 节点展开时检查延迟加载的数据
+    if (this.expanded && this.children === true) {
       this.loadChildren();
     }
   }
