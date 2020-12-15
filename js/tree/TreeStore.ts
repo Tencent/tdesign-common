@@ -5,6 +5,8 @@ import TreeNode from './TreeNode';
 
 export type TreeNodeValue = string | TreeNode;
 
+export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
+
 export interface TreeStoreOptions {
   // 自动生成的 value 的前缀
   prefix?: string;
@@ -33,7 +35,7 @@ export interface TreeStoreOptions {
   // 是否延迟加载
   lazy?: boolean;
   // 取值方式，可选值 ['all', 'parentFirst', 'onlyLeaf']
-  valueMode?: string;
+  valueMode?: TypeValueMode;
   // 节点过滤函数
   filter?: (node: TreeNode) => boolean;
   // load函数运行后触发
@@ -594,3 +596,5 @@ export class TreeStore {
     }
   }
 }
+
+export default TreeStore;
