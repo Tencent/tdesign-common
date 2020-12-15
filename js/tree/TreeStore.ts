@@ -69,7 +69,7 @@ export interface TreeStoreOptions {
   scopedSlots?: any;
 }
 
-function parseNodeData(tree: TreeStore, para: string | TreeNodeData | TreeNode, item: TreeNodeData) {
+function parseNodeData(tree: TreeStore, para: TreeNodeValue | TreeNodeData, item: TreeNodeData) {
   let value = '';
   let node = null;
   let data = null;
@@ -264,7 +264,7 @@ export class TreeStore {
    * appendNodes(TreeNode, item)
    * appendNodes(TreeNode, TreeNode)
    */
-  appendNodes(para?: string | TreeNodeData | TreeNode, item?: TreeNodeData): void {
+  appendNodes(para?: TreeNodeValue | TreeNode, item?: TreeNodeData): void {
     const spec = parseNodeData(this, para, item);
     if (spec.data) {
       if (!spec.node) {
