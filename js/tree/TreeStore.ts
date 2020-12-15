@@ -1,5 +1,6 @@
 import difference from 'lodash/difference';
 import camelCase from 'lodash/camelCase';
+import isPlainObject from 'lodash/isPlainObject';
 import TreeNode from './TreeNode';
 
 export type TreeNodeValue = string | TreeNode;
@@ -65,7 +66,7 @@ export interface TreeFilterOptions {
   props?: TreeNodeProps;
 }
 
-function getPara(tree: TreeStore, para: any, item: any) {
+function parseNodeData(tree: TreeStore, para: any, item: any) {
   let value = '';
   let node = null;
   let data = null;
@@ -95,7 +96,7 @@ export class TreeStore {
   // 所有节点映射
   nodeMap: Map<string, TreeNode>;
   // 配置选项
-  config: any;
+  config: TreeStoreOptions;
   // 活动节点集合
   activedMap: Map<string, boolean>;
   // 数据被更新的节点集合
@@ -227,7 +228,7 @@ export class TreeStore {
       if (typeof conf.filter === 'function') {
         nodes = nodes.filter(node => conf.filter(node));
       }
-      if (typeof conf.props === 'object') {
+      if (isPlainObject(conf.props)) {
         nodes = nodes.filter((node) => {
           const result = Object.keys(conf.props).every((key) => {
             const propEqual = node[key] === conf.props[key];
@@ -250,16 +251,18 @@ export class TreeStore {
     this.reflow();
   }
 
-  // 向指定节点追加节点或者数据
-  // 支持下列使用方式
-  // appendNodes(item)
-  // appendNodes(TreeNode)
-  // appendNodes(value, item)
-  // appendNodes(value, TreeNode)
-  // appendNodes(TreeNode, item)
-  // appendNodes(TreeNode, TreeNode)
+  /**
+   * 向指定节点追加节点或者数据
+   * 支持下列使用方式
+   * appendNodes(item)
+   * appendNodes(TreeNode)
+   * appendNodes(value, item)
+   * appendNodes(value, TreeNode)
+   * appendNodes(TreeNode, item)
+   * appendNodes(TreeNode, TreeNode)
+   */
   appendNodes(para?: any, item?: any): void {
-    const spec = getPara(this, para, item);
+    const spec = parseNodeData(this, para, item);
     if (spec.data) {
       if (!spec.node) {
         // 在根节点插入
