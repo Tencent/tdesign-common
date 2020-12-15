@@ -1,33 +1,39 @@
 // 颜色
-@select-background-color: #FFFFFF;
-@select-border-color: #DDDDDD;
-@select-active-border-color: #0052D9;
-@select-selected-color: #0052D9;
-@select-selected-tag-background-color: #F0F2F5;
-@select-checked-background-color: #0052D9;
-@select-hover-background-color: #F5F5F5;
-@option-group-header-color: #888888;
-@select-disabled-background-color: #F5F5F5;
+@select-background-color: @bg-color-block;
+@select-border-color: @border-level-2-color;
+@select-active-border-color: @primary-color;
+@select-selected-color: @primary-color;
+@select-selected-tag-background-color: @bg-color;
+@select-checked-background-color: @primary-color;
+@select-hover-background-color: @bg-color-hover;
+@option-group-header-color: @text-level-3-color;
+@option-color: @text-level-1-color;
+@select-disabled-background-color: @bg-color-disabled;
 @select-placeholder-color: @placeholder-color;
-@select-disabled-color: #BBBBBB;
-@select-option-checkbox-color: #444444;
-@select-icon-color: rgba(0,0,0,.30);
-@select-optiongroup-border-color: #EEEEEE;
+@select-disabled-color: @text-level-4-color;
+@select-empty-color: @text-level-4-color;
+@select-option-checkbox-color: @text-level-2-color;
+@select-icon-color: @text-level-1-color;
+@select-optiongroup-border-color: @border-level-1-color;
 // 尺寸
-@select-height-s:24px;
-@select-height-default:32px;
-@select-height-l:40px;
-@select-option-height-s:32px;
-@select-option-height-default:40px;
-@select-option-height-l:48px;
+@select-height-s: 24px;
+@select-height-default: 32px;
+@select-height-l: 40px;
+@select-option-height-s: 32px;
+@select-option-height-default: 40px;
+@select-option-height-l: 48px;
 @select-icon-s: 12px;
 @select-icon-default: 14px;
 @select-icon-l: 16px;
 @select-option-line-height: 22px;
 @dropdown-max-height: 300px;
+@select-input-height: 30px;
+@select-input-width: 48px;
+@select-tag-height-default: 22px;
+@select-tag-height-l: 30px;
+@select-tag-height-s: 18px;
 
 //阴影
-@select-box-shabow: inset 0 1px 3px 0 #FFFFFF;
 @select-dropdown-shadow: @shadow-2;
 
 // padding
@@ -36,6 +42,7 @@
 @select-option-padding-l: 13px 16px;
 @select-padding: 0 26px 0 4px;
 @select-optiongroup-border-padding: 7px;
+@select-padding-prefix: 26px;
 
 // margin
 @select-icon-margin: 0 5px;
