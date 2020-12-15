@@ -5,7 +5,7 @@ const {
   hasOwnProperty,
 } = Object.prototype;
 
-const defaultStatus: any = {
+const defaultStatus = {
   expandMutex: false,
   activable: false,
   checkable: false,
@@ -284,8 +284,8 @@ export class TreeNode {
 
   // 获取根节点
   getRoot(): TreeNode {
-    const parents = this.getParents().reverse();
-    return parents[0] || null;
+    const parents = this.getParents();
+    return parents[parents.length - 1] || null;
   }
 
   // 获取节点在父节点的子节点列表中的位置
@@ -484,14 +484,8 @@ export class TreeNode {
       value,
       parent,
     } = this;
-    let {
-      checked,
-    } = this;
-    if (parent) {
-      if (parent.isChecked()) {
-        checked = true;
-      }
-    }
+    let { checked } = this;
+    checked = parent && parent.isChecked();
     if (checked) {
       tree.checkedMap.set(value, true);
     }
@@ -505,9 +499,7 @@ export class TreeNode {
       children,
       tree,
     } = this;
-    const {
-      checkStrictly,
-    } = tree.config;
+    const { checkStrictly } = tree.config;
     let checked = false;
     const checkedMap = map || tree.checkedMap;
     if (tree.nodeMap.get(this.value)) {

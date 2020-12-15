@@ -6,8 +6,10 @@ import TreeNode from './TreeNode';
 export type TreeNodeValue = string | TreeNode;
 
 export interface TreeStoreOptions {
+  // 自动生成的 value 的前缀
+  prefix?: string;
   // 数据字段映射
-  keys?: any;
+  keys?: { [key: string]: string };
   // 是否展开全部
   expandAll?: boolean;
   // 初始展开级别
@@ -33,7 +35,7 @@ export interface TreeStoreOptions {
   // 取值方式，可选值 ['all', 'parentFirst', 'onlyLeaf']
   valueMode?: string;
   // 节点过滤函数
-  filter?: Function;
+  filter?: (node: TreeNode) => boolean;
   // load函数运行后触发
   onLoad?: Function;
   // 节点增删改查后触发
