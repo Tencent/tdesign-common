@@ -16,97 +16,83 @@
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    padding-left: calc(24px * var(--level));
+    padding-left: calc(@tree-node-padding-basic * var(--level));
     height: 40px;
-    cursor: pointer; // 【待定】
+    transform: translateZ(0); // 开启硬件加速
+    backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
+    perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
 
-    .@{prefix}-icon-arrow-right {
+    .@{prefix}-icon {
       display: inline-block;
+      position: relative;
+      color: @tree-node-icon-color;
+      z-index: 2;
+    }
+
+    .@{prefix}-checkbox {
+      font-size: 0;
+      padding-top: 1px;
+    }
+
+    .@{prefix}-icon-chevron-right {
       transform: rotate(0);
     }
 
     &--open {
-      .@{prefix}-icon-arrow-right {
+      .@{prefix}-icon {
+        color: @tree-node-icon-color-active;
+      }
+      .@{prefix}-icon-chevron-right {
         transform: rotate(90deg);
       }
     }
 
-    &--hidden {
-      display: none; // 【待定】新增样式，未给示例
+    &--clickable {
+      cursor: pointer;
     }
 
     &.@{prefix}-is-active {
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
     }
+
   }
 
-  &--fx .@{prefix}-icon-arrow-right {
-    transition: transform .3s;
-  }
-
-  &__lines {
+  &__line {
+    --level: 0;
+    --color: #eee;
+    --space: @tree-node-padding-basic;
+    --iconSize: 16px;
     position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    opacity: 1;
-    pointer-events: none;
-
-    dd {
-      display: flex;
-      width: 24px;
-      height: 40px;
-      flex-direction: column;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-
-    dd:before,
-    dd:after {
-      content: "";
-      display: block;
-      flex: 0 0 auto;
-      width: 12px;
-      height: 20px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: rgba(238, 238, 238, 0);
-    }
-
-    dd:before {
-      width: 12px;
-    }
-
-    dd:after {
-      width: 13px;
-      height: 21px;
-      margin-left: 11px;
-      margin-top: -1px;
-    }
+    left: calc(@tree-node-padding-basic * var(--level) - 12px);
+    bottom: 20px;
+    width: 1px;
+    height: 40px;
   }
 
-  /* 连接线 */
-  &__lines &__line {
+  &__line::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 40px;
+    width: 16px;
+    border-left: 1px solid var(--color);
+    border-bottom: 1px solid var(--color);
+  }
 
-    &--top:before {
-      border-right-color: rgba(238, 238, 238, 1);
-    }
+  &__line--first::before {
+    height: 32px;
+  }
 
-    &--left:before {
-      border-bottom-color: rgba(238, 238, 238, 1);
-    }
+  &__line--leaf::before {
+    width: 32px;
+  }
 
-    &--bottom:after {
-      border-left-color: rgba(238, 238, 238, 1);
-    }
-
-    &--right:after {
-      border-top-color: rgba(238, 238, 238, 1);
-    }
-
-    &--icon {
-      mask-image: radial-gradient(circle at 50% 50%, transparent 8px, #000 8px);
+  &--fx {
+    .@{prefix}-icon-chevron-right {
+      transition: color,transform @tree-node-animation-time;
     }
   }
 
@@ -116,9 +102,12 @@
     align-self: center;
     width: 24px;
     height: 24px;
+    margin-right: 4px;
     text-align: center;
     line-height: 24px;
+    position: relative;
     user-select: none;
+    cursor: pointer;
 
     .t-icon-loading-blue {
       color: #2163db;
@@ -132,7 +121,6 @@
   & &__label {
     flex: 0 0 auto;
     line-height: 40px;
-    margin-left: 4px;
     flex-wrap: nowrap;
   }
 
@@ -168,17 +156,10 @@
 
 .@{prefix}-tree--fx {
   .@{prefix}-tree-toggle-enter-active {
-    animation: t-tree-toggle .3s;
+    animation: t-tree-toggle @tree-node-animation-time linear;
   }
   .@{prefix}-tree-toggle-leave-active {
-    animation: t-tree-toggle .3s reverse;
-  }
-  .@{prefix}-tree__lines {
-
-    dd:before,
-    dd:after {
-      transition: all .3s;
-    }
+    animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
   }
 }
 
