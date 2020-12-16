@@ -159,9 +159,7 @@
     animation: t-tree-toggle @tree-node-animation-time linear;
   }
   .@{prefix}-tree-toggle-leave-active {
-    animation: t-tree-toggle @tree-node-animation-time reverse linear;
-    opacity: 0; // 防止 react-transition-group 卸载节点，页面闪烁!
-    height: 0; // 防止 react-transition-group 卸载节点，页面闪烁!
+    animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
   }
 }
 
