@@ -68,16 +68,15 @@
       align-items: center;
     }
   }
+}
 
-  .t-is-success {
-    color: @success-color;
-  }
+.@{prefix}-form-inline {
+  display: flex;
+  flex-wrap: wrap;
 
-  .t-is-error {
-    color: @error-color;
-  }
-
-  .t-is-warning {
-    color: @warning-color;
+  .@{prefix}-form__item {
+    margin-right: 24px;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
