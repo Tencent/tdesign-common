@@ -33,6 +33,10 @@
 
 {{ fixedHeader }}
 
+固定列：
+
+{{ fixedColumn }}
+
 ### 1.3 自定义单元格
 
 {{ customCell }}
@@ -66,20 +70,11 @@
 
 在涉及到表单选择、或批量操作场景中，可在数据行前直接单选或多选操作对象。
 
-{{ selectable }}
+单选：
 
-### 1.9 自定义显示列
-{{ customRow }}
+{{ selectSingle }}
 
-### 1.10 异步加载
-{{ sync }}
+多选：
 
-### 1.11 普通加载
-{{ loading }}
-
-### 1.12 非受控筛选
-{{ noControl }}
-
-### 1.13 受控筛选
-{{ control }}
+{{ selectMultiple }}
 
