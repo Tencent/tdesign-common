@@ -5,7 +5,32 @@ const {
   hasOwnProperty,
 } = Object.prototype;
 
-const defaultStatus: any = {
+export interface SettingOptions {
+  directly?: boolean;
+}
+
+export interface TreeNodeProps {
+  value?: string;
+  label?: string;
+  expanded?: boolean;
+  expandMutex?: boolean;
+  actived?: boolean;
+  activable?: boolean;
+  checkable?: boolean;
+  checked?: boolean;
+  indeterminate?: boolean;
+  disabled?: boolean;
+  draggable?: boolean;
+  visible?: boolean;
+  loading?: boolean;
+}
+
+export interface TreeNodeData extends TreeNodeProps {
+  [key: string]: any;
+  children?: TreeNodeData[];
+}
+
+const defaultStatus = {
   expandMutex: false,
   activable: false,
   checkable: false,
@@ -14,6 +39,8 @@ const defaultStatus: any = {
   loading: false,
 };
 
+// vm 开头为视图属性，不可以外部设置
+// 用于触发视图更新
 export class TreeNode {
   // 节点隶属的树实例
   tree: TreeStore;
@@ -22,11 +49,17 @@ export class TreeNode {
   // 节点文本
   label: string;
   // 节点数据
-  dataset: any;
+  dataset: TreeNodeData;
   // 父节点
   parent: TreeNode;
   // 子节点列表
   children: TreeNode[] | boolean;
+  // 是否为叶节点
+  vmIsLeaf: boolean;
+  // 是否为子节点中的第一个
+  vmIsFirst: boolean;
+  // 是否为子节点中的最后
+  vmIsLast: boolean;
   // 节点在视图上实际的展开状态
   expanded: boolean;
   // 展开时是否收起同级节点，对子节点生效
@@ -37,6 +70,8 @@ export class TreeNode {
   activable: boolean;
   // 是否可选中
   checkable: boolean;
+  // 是否可选中的视图呈现
+  vmCheckable: boolean;
   // 节点在视图上实际的选中态
   checked: boolean;
   // 节点实际是否为半选状态
@@ -52,7 +87,7 @@ export class TreeNode {
   // 节点是否正在加载数据
   loading: boolean;
 
-  constructor(tree: TreeStore, data?: any, parent?: TreeNode) {
+  constructor(tree: TreeStore, data?: TreeNodeData, parent?: TreeNode) {
     this.dataset = data;
     this.tree = tree;
 
@@ -63,12 +98,14 @@ export class TreeNode {
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
 
+    this.children = null;
+    this.vmCheckable = false;
+    this.vmIsLeaf = false;
+    this.vmIsFirst = false;
+    this.vmIsLast = false;
+
     const spec = {
       ...defaultStatus,
-      activable: false,
-      checkable: false,
-      expandMutex: false,
-      disabled: false,
       actived: false,
       expanded: false,
       checked: false,
@@ -83,6 +120,8 @@ export class TreeNode {
 
     if (parent && parent instanceof TreeNode) {
       this.parent = parent;
+    } else {
+      this.parent = null;
     }
 
     // 子节点为 true 的状态逻辑需要放到状态计算之前
@@ -123,7 +162,7 @@ export class TreeNode {
   }
 
   // 追加数据
-  append(list: any[]): void {
+  append(list: TreeNodeData[]): void {
     if (list.length <= 0) {
       return;
     }
@@ -145,10 +184,11 @@ export class TreeNode {
       }
     });
     tree.reflow(this);
+    this.updateRelated();
   }
 
   // 插入一个同级节点数据
-  insert(item: any, index?: number): void {
+  insert(item: TreeNode | TreeNodeData, index?: number): void {
     const {
       tree,
       parent,
@@ -163,18 +203,21 @@ export class TreeNode {
       if (typeof index === 'number') {
         siblings.splice(index, 0, node);
       }
+      siblings.forEach((node) => {
+        node.update();
+      });
     }
     tree.reflow();
   }
 
   // 在当前节点之前插入节点
-  insertBefore(item: any) {
+  insertBefore(item: TreeNode | TreeNodeData) {
     const index = this.getIndex();
     this.insert(item, index);
   }
 
   // 在当前节点之后插入节点
-  insertAfter(item: any) {
+  insertAfter(item: TreeNode | TreeNodeData) {
     const index = this.getIndex();
     this.insert(item, index + 1);
   }
@@ -211,20 +254,16 @@ export class TreeNode {
   }
 
   // 设置状态
-  set(item: any): void {
+  set(item: TreeNodeProps): void {
     const {
       tree,
     } = this;
     const keys = Object.keys(item);
-    const changedProps: any = {};
     keys.forEach((key) => {
       if (
         hasOwnProperty.call(defaultStatus, key)
         || key === 'label'
       ) {
-        if (this[key] !== item[key]) {
-          changedProps[key] = true;
-        }
         this[key] = item[key];
       }
     });
@@ -266,8 +305,8 @@ export class TreeNode {
 
   // 获取根节点
   getRoot(): TreeNode {
-    const parents = this.getParents().reverse();
-    return parents[0] || null;
+    const parents = this.getParents();
+    return parents[parents.length - 1] || null;
   }
 
   // 获取节点在父节点的子节点列表中的位置
@@ -346,7 +385,7 @@ export class TreeNode {
   }
 
   // 设置节点展开状态
-  setExpanded(expanded: boolean, opts?: any): string[] {
+  setExpanded(expanded: boolean, opts?: SettingOptions): string[] {
     const {
       tree,
     } = this;
@@ -398,7 +437,8 @@ export class TreeNode {
   // 节点展开关闭后需要调用的状态检查函数
   afterExpanded(): void {
     this.update();
-    if (this.children === true) {
+    // 节点展开时检查延迟加载的数据
+    if (this.expanded && this.children === true) {
       this.loadChildren();
     }
   }
@@ -430,7 +470,7 @@ export class TreeNode {
   }
 
   // 设置节点激活态
-  setActived(actived: boolean, opts?: any): string[] {
+  setActived(actived: boolean, opts?: SettingOptions): string[] {
     const {
       tree,
     } = this;
@@ -466,14 +506,8 @@ export class TreeNode {
       value,
       parent,
     } = this;
-    let {
-      checked,
-    } = this;
-    if (parent) {
-      if (parent.isChecked()) {
-        checked = true;
-      }
-    }
+    let { checked } = this;
+    checked = parent && parent.isChecked();
     if (checked) {
       tree.checkedMap.set(value, true);
     }
@@ -487,9 +521,7 @@ export class TreeNode {
       children,
       tree,
     } = this;
-    const {
-      checkStrictly,
-    } = tree.config;
+    const { checkStrictly } = tree.config;
     let checked = false;
     const checkedMap = map || tree.checkedMap;
     if (tree.nodeMap.get(this.value)) {
@@ -514,7 +546,13 @@ export class TreeNode {
 
   // 是叶节点
   isLeaf(): boolean {
-    return !this.children;
+    let isLeaf = false;
+    if (Array.isArray(this.children)) {
+      isLeaf = this.children.length <= 0;
+    } else {
+      isLeaf = !this.children;
+    }
+    return isLeaf;
   }
 
   // 是否为半选状态
@@ -551,7 +589,7 @@ export class TreeNode {
 
   // 更新单个节点的选中态
   // 返回树选中列表
-  setChecked(checked: boolean, opts?: any): string[] {
+  setChecked(checked: boolean, opts?: SettingOptions): string[] {
     const {
       tree,
     } = this;
@@ -632,11 +670,21 @@ export class TreeNode {
     return visible;
   }
 
+  isFirst(): boolean {
+    const siblings = this.getSiblings();
+    return siblings[0] === this;
+  }
+
+  isLast(): boolean {
+    const siblings = this.getSiblings();
+    return siblings[siblings.length - 1] === this;
+  }
+
   // 更新节点状态
   update(): void {
-    if (Array.isArray(this.children) && this.children.length <= 0) {
-      this.children = null;
-    }
+    this.vmIsFirst = this.isFirst();
+    this.vmIsLast = this.isLast();
+    this.vmIsLeaf = this.isLeaf();
     this.level = this.getLevel();
     this.actived = this.isActived();
     this.expanded = this.isExpanded();
@@ -649,12 +697,15 @@ export class TreeNode {
     const {
       tree,
     } = this;
-    this.checked = this.isChecked();
-    if (this.checked) {
-      tree.checkedMap.set(this.value, true);
+    this.vmCheckable = this.isCheckable();
+    if (this.vmCheckable) {
+      this.checked = this.isChecked();
+      if (this.checked) {
+        tree.checkedMap.set(this.value, true);
+      }
+      this.indeterminate = this.isIndeterminate();
+      tree.updated(this);
     }
-    this.indeterminate = this.isIndeterminate();
-    tree.updated(this);
   }
 
   // 更新所有子节点状态
@@ -701,8 +752,31 @@ export class TreeNode {
 
   // 将当前节点追加到某个父节点的子节点列表中
   appendTo(tree: TreeStore, parent?: TreeNode, index?: number): void {
-    this.remove();
     const parentNode = parent;
+    if (!parentNode) return;
+
+    const targetParents = parentNode.getParents();
+    const includeCurrent = targetParents.some(node => (node.value === this.value));
+    if (includeCurrent) {
+      // 不能将父节点插入到子节点
+      return;
+    }
+
+    if (Array.isArray(parentNode.children)) {
+      let targetIndex = 0;
+      if (typeof index === 'number') {
+        targetIndex = index;
+      }
+      const targetPosNode = parentNode.children[targetIndex];
+      if (targetPosNode.value === this.value) {
+        // 无需将节点插入到原位置
+        return;
+      }
+    }
+
+    this.remove();
+    this.parent = parentNode;
+
     let siblings = null;
     if (parentNode instanceof TreeNode) {
       if (!Array.isArray(parentNode.children)) {
@@ -712,7 +786,6 @@ export class TreeNode {
     } else {
       siblings = tree.children;
     }
-    this.parent = parentNode;
     if (Array.isArray(siblings)) {
       if (typeof index === 'number') {
         siblings.splice(index, 0, this);
@@ -731,6 +804,10 @@ export class TreeNode {
       if (node.expanded) {
         tree.expandedMap.set(node.value, true);
       }
+    });
+
+    const updateNodes = parentNode.walk();
+    updateNodes.forEach((node) => {
       node.update();
       node.updateChecked();
     });
@@ -767,6 +844,10 @@ export class TreeNode {
     // 清理与树的关系，但不清理自身状态
     nodes.forEach((node) => {
       node.clean();
+    });
+    // 同级节点的连线状态会受到影响
+    siblings.forEach((node) => {
+      node.update();
     });
     // 父节点选中态会受到影响
     this.updateParents();

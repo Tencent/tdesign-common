@@ -155,6 +155,7 @@
       background: @menu-theme-light;
       z-index: @menu-outer-zindex;
       display: none;
+      box-shadow: @menu-head-submenu-shadow;
 
       &--show {
         display: block;
@@ -173,6 +174,7 @@
   }
 
   &__dropdown {
+    box-shadow: @menu-head-submenu-shadow;
 
     .@{prefix}-menu__item {
       background: @menu-popup-bg-color;
@@ -269,10 +271,11 @@
 
     .@{prefix}-menu__logo:not(:empty) {
       width: 100%;
-      padding: 18px 24px;
-      border-bottom: 0;
-      border-bottom: solid 1px @menu-border-color;
-      font-size: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid @menu-border-color;
     }
 
     .@{prefix}-menu {
@@ -365,6 +368,7 @@
       margin-left: 1px;
       background: @menu-popup-bg-color;
       z-index: @menu-outer-zindex;
+      box-shadow: @menu-default-shadow;
     }
 
     .@{prefix}-menu__item {
@@ -378,6 +382,7 @@
 
       .@{prefix}-icon {
         font-size: 20px;
+        margin-left: 2px;
         margin-right: 20px;
       }
 

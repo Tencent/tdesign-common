@@ -18,21 +18,21 @@
 @checkbox-border-color-checked: @primary-color;
 @checkbox-border-color-hover: @primary-color;
 
-@checkbox-input-color: #fff;
+@checkbox-input-color: @bg-color-block;
 @checkbox-input-color-checked: @primary-color;
-@checkbox-input-color-disabled: #F5F5F5;
+@checkbox-input-color-disabled: @bg-color-disabled;
 
-@checkbox-check-color: #fff;
-@checkbox-check-color-disabled: #bbb;
+@checkbox-check-color: @bg-color-block;
+@checkbox-check-color-disabled: @text-level-4-color;
 
 @checkbox-input-color-indeterminate: @primary-color;
-@checkbox-indeterminate-color-disabled: #bbb;
+@checkbox-indeterminate-color-disabled: @text-level-4-color;
 
-@checkbox-label-color: rgba(0, 0, 0, .65);
+@checkbox-label-color: @text-level-2-color;
 
 // 尺寸
 @checkbox-size: 16px;
-@checkbox-border-radius: 2px;
+@checkbox-border-radius: @border-radius;
 @checkbox-margin-right: @spacer;
 
 @checkbox-check-width: 5px;
@@ -40,7 +40,7 @@
 @checkbox-check-size: (@checkbox-check-width+@checkbox-check-height)/sqrt(2);
 
 @checkbox-indeterminate-height: 2px;
-@checkbox-indeterminate-color: #fff;
+@checkbox-indeterminate-color: @bg-color-block;
 
 // 字号
 @checkbox-font: @font-size-base;

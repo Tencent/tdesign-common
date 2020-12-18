@@ -1,0 +1,187 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+// <name> 替换为组件名
+.@{prefix}-tree {
+  line-height: 40px;
+  font-size: 14px;
+  color: @tree-node-text-color;
+
+  & &__item {
+    --level: 0;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    padding-left: calc(@tree-node-padding-basic * var(--level));
+    height: 40px;
+    transform: translateZ(0); // 开启硬件加速
+    backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
+    perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
+
+    .@{prefix}-icon {
+      display: inline-block;
+      position: relative;
+      color: @tree-node-icon-color;
+      z-index: 2;
+    }
+
+    .@{prefix}-checkbox {
+      font-size: 0;
+      padding-top: 1px;
+    }
+
+    .@{prefix}-icon-chevron-right {
+      transform: rotate(0);
+    }
+
+    &--open {
+      .@{prefix}-icon {
+        color: @tree-node-icon-color-active;
+      }
+      .@{prefix}-icon-chevron-right {
+        transform: rotate(90deg);
+      }
+    }
+
+    &--clickable {
+      cursor: pointer;
+    }
+
+    &.@{prefix}-is-active {
+      background-color: @tree-node-bg-color-active;
+      color: @tree-node-text-color-active;
+    }
+
+  }
+
+  &__line {
+    --level: 0;
+    --color: #eee;
+    --space: @tree-node-padding-basic;
+    --iconSize: 16px;
+    position: absolute;
+    left: calc(@tree-node-padding-basic * var(--level) - 12px);
+    bottom: 20px;
+    width: 1px;
+    height: 40px;
+    pointer-events: none;
+  }
+
+  &__line::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 40px;
+    width: 16px;
+    border-left: 1px solid var(--color);
+    border-bottom: 1px solid var(--color);
+  }
+
+  &__line--first::before {
+    height: 32px;
+  }
+
+  &__line--leaf::before {
+    width: 32px;
+  }
+
+  &--fx {
+    .@{prefix}-icon-chevron-right {
+      transition: color,transform @tree-node-animation-time;
+    }
+  }
+
+  // 默认图标
+  & &__icon {
+    flex: 0 0 auto;
+    align-self: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    text-align: center;
+    line-height: 24px;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+
+    .t-icon-loading-blue {
+      color: #2163db;
+    }
+  }
+
+  & &__icon:empty {
+    cursor: initial;
+  }
+
+  & &__label {
+    flex: auto;
+    line-height: 40px;
+    flex-wrap: nowrap;
+
+    &--strictly {
+      flex: none;
+    }
+  }
+
+  & &__space {
+    display: block;
+    flex: 1 0 auto;
+  }
+
+  & &__operations {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  & &__operations .@{prefix}-icon {
+    cursor: pointer;
+  }
+
+  &--hoverable &__item:hover {
+    cursor: pointer;
+    background-color: @tree-node-bg-color-hover;
+  }
+
+  & &__item.t-is-disabled {
+    color: #ddd;
+    cursor: default;
+    .@{prefix}-checkbox {
+      cursor: default;
+    }
+  }
+}
+
+.@{prefix}-tree--fx {
+  .@{prefix}-tree-toggle-enter-active {
+    animation: t-tree-toggle @tree-node-animation-time linear;
+  }
+  .@{prefix}-tree-toggle-leave-active {
+    animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
+  }
+}
+
+@keyframes t-tree-toggle {
+
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+
+  50% {
+    opacity: 0;
+    height: 40px;
+  }
+
+  100% {
+    opacity: 1;
+    height: 40px;
+  }
+}

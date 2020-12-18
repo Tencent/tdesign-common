@@ -1,10 +1,38 @@
-import difference from "lodash/difference";
-import camelCase from "lodash/camelCase";
-import TreeNode from "./TreeNode";
+import difference from 'lodash/difference';
+import camelCase from 'lodash/camelCase';
+import isPlainObject from 'lodash/isPlainObject';
+import {
+  TreeNode,
+  TreeNodeProps,
+  TreeNodeData,
+} from './TreeNode';
+
+export type TreeNodeValue = string | TreeNode;
+
+export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
+
+export interface RelatedNodesOptions {
+  withParents?: boolean;
+}
+
+export interface TreeEventState {
+  node?: TreeNode;
+  nodes?: TreeNode[];
+  map?: Map<string, boolean>;
+  data?: TreeNodeData[];
+}
+
+export interface TreeFilterOptions {
+  level?: number;
+  filter?: Function;
+  props?: TreeNodeProps;
+}
 
 export interface TreeStoreOptions {
+  // 自动生成的 value 的前缀
+  prefix?: string;
   // 数据字段映射
-  keys?: any;
+  keys?: { [key: string]: string };
   // 是否展开全部
   expandAll?: boolean;
   // 初始展开级别
@@ -28,43 +56,19 @@ export interface TreeStoreOptions {
   // 是否延迟加载
   lazy?: boolean;
   // 取值方式，可选值 ['all', 'parentFirst', 'onlyLeaf']
-  valueMode?: string;
+  valueMode?: TypeValueMode;
   // 节点过滤函数
-  filter?: Function;
+  filter?: (node: TreeNode) => boolean;
   // load函数运行后触发
   onLoad?: Function;
   // 节点增删改查后触发
   onReflow?: Function;
   // 节点信息变更后触发
   onUpdate?: Function;
-  // scoped slots 中转对象
-  scopedSlots?: any;
 }
 
-export interface TreeNodeProps {
-  value?: string;
-  label?: string;
-  expanded?: boolean;
-  expandMutex?: boolean;
-  actived?: boolean;
-  activable?: boolean;
-  checkable?: boolean;
-  checked?: boolean;
-  indeterminate?: boolean;
-  disabled?: boolean;
-  draggable?: boolean;
-  visible?: boolean;
-  loading?: boolean;
-}
-
-export interface TreeFilterOptions {
-  level?: number;
-  filter?: Function;
-  props?: TreeNodeProps;
-}
-
-function getPara(tree: TreeStore, para: any, item: any) {
-  let value = "";
+function parseNodeData(tree: TreeStore, para: TreeNodeValue | TreeNodeData, item: TreeNodeData) {
+  let value = '';
   let node = null;
   let data = null;
   if (typeof para === "string") {
@@ -93,7 +97,7 @@ export class TreeStore {
   // 所有节点映射
   nodeMap: Map<string, TreeNode>;
   // 配置选项
-  config: any;
+  config: TreeStoreOptions;
   // 活动节点集合
   activedMap: Map<string, boolean>;
   // 数据被更新的节点集合
@@ -121,8 +125,7 @@ export class TreeStore {
       checkable: false,
       checkStrictly: false,
       activable: false,
-      valueMode: "onlyLeaf",
-      scopedSlots: null,
+      valueMode: 'onlyLeaf',
       ...options,
     };
     this.config = config;
@@ -137,7 +140,6 @@ export class TreeStore {
     this.updateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
-    this.scopedSlots = config.scopedSlots;
   }
 
   // 配置选项
@@ -151,7 +153,7 @@ export class TreeStore {
   }
 
   // 获取节点对象
-  getNode(item: string | TreeNode): TreeNode {
+  getNode(item: TreeNodeValue): TreeNode {
     let node = null;
     if (typeof item === "string") {
       node = this.nodeMap.get(item);
@@ -167,7 +169,7 @@ export class TreeStore {
   }
 
   // 获取指定节点的父节点
-  getParent(value: string | TreeNode): TreeNode {
+  getParent(value: TreeNodeValue): TreeNode {
     let parent = null;
     const node = this.getNode(value);
     if (node) {
@@ -177,7 +179,7 @@ export class TreeStore {
   }
 
   // 获取指定节点的所有父节点
-  getParents(value: string | TreeNode): TreeNode[] {
+  getParents(value: TreeNodeValue): TreeNode[] {
     const node = this.getNode(value);
     let parents: TreeNode[] = [];
     if (node) {
@@ -187,7 +189,7 @@ export class TreeStore {
   }
 
   // 获取指定节点在其所在 children 中的位置
-  getNodeIndex(value: string | TreeNode): number {
+  getNodeIndex(value: TreeNodeValue): number {
     const node = this.getNode(value);
     let index = -1;
     if (node) {
@@ -197,7 +199,7 @@ export class TreeStore {
   }
 
   // 获取所有符合条件的节点
-  getNodes(item?: string | TreeNode, options?: TreeFilterOptions): TreeNode[] {
+  getNodes(item?: TreeNodeValue, options?: TreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val = "";
     if (typeof item === "string") {
@@ -219,13 +221,13 @@ export class TreeStore {
         level: Infinity,
         ...options,
       };
-      if (typeof conf.level === "number" && conf.level !== Infinity) {
-        nodes = nodes.filter((node) => node.level <= conf.level);
+      if (typeof conf.level === 'number' && conf.level !== Infinity) {
+        nodes = nodes.filter(node => node.level <= conf.level);
       }
       if (typeof conf.filter === "function") {
         nodes = nodes.filter((node) => conf.filter(node));
       }
-      if (typeof conf.props === "object") {
+      if (isPlainObject(conf.props)) {
         nodes = nodes.filter((node) => {
           const result = Object.keys(conf.props).every((key) => {
             const propEqual = node[key] === conf.props[key];
@@ -240,7 +242,7 @@ export class TreeStore {
   }
 
   // 给树添加节点数据
-  append(list: any[]): void {
+  append(list: TreeNodeData[]): void {
     list.forEach((item) => {
       const node = new TreeNode(this, item);
       this.children.push(node);
@@ -248,16 +250,18 @@ export class TreeStore {
     this.reflow();
   }
 
-  // 向指定节点追加节点或者数据
-  // 支持下列使用方式
-  // appendNodes(item)
-  // appendNodes(TreeNode)
-  // appendNodes(value, item)
-  // appendNodes(value, TreeNode)
-  // appendNodes(TreeNode, item)
-  // appendNodes(TreeNode, TreeNode)
-  appendNodes(para?: any, item?: any): void {
-    const spec = getPara(this, para, item);
+  /**
+   * 向指定节点追加节点或者数据
+   * 支持下列使用方式
+   * appendNodes(item)
+   * appendNodes(TreeNode)
+   * appendNodes(value, item)
+   * appendNodes(value, TreeNode)
+   * appendNodes(TreeNode, item)
+   * appendNodes(TreeNode, TreeNode)
+   */
+  appendNodes(para?: TreeNodeValue | TreeNode, item?: TreeNodeData): void {
+    const spec = parseNodeData(this, para, item);
     if (spec.data) {
       if (!spec.node) {
         // 在根节点插入
@@ -279,7 +283,7 @@ export class TreeStore {
   }
 
   // 在目标节点之前插入节点
-  insertBefore(value: string | TreeNode, item: any): void {
+  insertBefore(value: TreeNodeValue, item: TreeNodeData): void {
     const node = this.getNode(value);
     if (node) {
       node.insertBefore(item);
@@ -287,7 +291,7 @@ export class TreeStore {
   }
 
   // 在目标节点之后插入节点
-  insertAfter(value: string | TreeNode, item: any): void {
+  insertAfter(value: TreeNodeValue, item: TreeNodeData): void {
     const node = this.getNode(value);
     if (node) {
       node.insertAfter(item);
@@ -336,8 +340,8 @@ export class TreeStore {
       }
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
-        const updatedNodes = updatedList.map((value) => this.getNode(value));
-        this.emit("update", {
+        const updatedNodes = updatedList.map(value => this.getNode(value));
+        this.emit('update', {
           nodes: updatedNodes,
           map: this.updatedMap,
         });
@@ -359,7 +363,7 @@ export class TreeStore {
   }
 
   // 获取指定范围的高亮节点
-  getActivedNodes(item?: string | TreeNode): TreeNode[] {
+  getActivedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
     nodes = nodes.filter((node) => node.isActived());
     return nodes;
@@ -476,7 +480,7 @@ export class TreeStore {
   }
 
   // 获取指定节点下的选中节点
-  getCheckedNodes(item?: string | TreeNode): TreeNode[] {
+  getCheckedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
     nodes = nodes.filter((node) => node.isChecked());
     return nodes;
@@ -533,13 +537,8 @@ export class TreeStore {
   }
 
   // 移除指定节点
-  remove(para?: string | TreeNode): void {
-    let node = null;
-    if (typeof para === "string") {
-      node = this.getNode(para);
-    } else if (para instanceof TreeNode) {
-      node = para;
-    }
+  remove(para?: TreeNodeValue): void {
+    const node = this.getNode(para);
     if (node) {
       node.remove();
     }
@@ -555,7 +554,7 @@ export class TreeStore {
 
   // 获取节点状态变化可能影响的周边节点
   // 实现最小遍历集合
-  getRelatedNodes(list: string[], options?: any): TreeNode[] {
+  getRelatedNodes(list: string[], options?: RelatedNodesOptions): TreeNode[] {
     const conf = {
       withParents: true,
       ...options,
@@ -583,7 +582,7 @@ export class TreeStore {
   }
 
   // 触发绑定的事件
-  emit(name: string, state?: any): void {
+  emit(name: string, state?: TreeEventState): void {
     const config = this.config || {};
     const methodName = camelCase(`on-${name}`);
     const method = config[methodName];
@@ -592,3 +591,5 @@ export class TreeStore {
     }
   }
 }
+
+export default TreeStore;
