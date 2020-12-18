@@ -78,6 +78,9 @@
       color: @@fontColor;
       @fontColor: "input-extra-color-success";
     }
+    .@{prefix}-icon {
+      color: @success-color;
+    }
   }
 
   &__controls.@{prefix}-is-error {
@@ -89,6 +92,9 @@
       color: @@fontColor;
       @fontColor: "input-extra-color-error";
     }
+    .@{prefix}-icon {
+      color: @error-color;
+    }
   }
   
   &__controls.@{prefix}-is-warning {
@@ -99,6 +105,9 @@
     .@{prefix}-input__extra {
       color: @@fontColor;
       @fontColor: "input-extra-color-warning";
+    }
+    .@{prefix}-icon {
+      color: @warning-color;
     }
   }
 }
