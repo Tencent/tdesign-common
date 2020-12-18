@@ -68,6 +68,39 @@
       align-items: center;
     }
   }
+
+  &__controls.@{prefix}-is-success {
+    .@{prefix}-input__inner {
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-success";
+    }
+    .@{prefix}-input__extra {
+      color: @@fontColor;
+      @fontColor: "input-extra-color-success";
+    }
+  }
+
+  &__controls.@{prefix}-is-error {
+    .@{prefix}-input__inner {
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-error";
+    }
+    .@{prefix}-input__extra {
+      color: @@fontColor;
+      @fontColor: "input-extra-color-error";
+    }
+  }
+  
+  &__controls.@{prefix}-is-warning {
+    .@{prefix}-input__inner {
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-warning";
+    }
+    .@{prefix}-input__extra {
+      color: @@fontColor;
+      @fontColor: "input-extra-color-warning";
+    }
+  }
 }
 
 .@{prefix}-form-inline {
