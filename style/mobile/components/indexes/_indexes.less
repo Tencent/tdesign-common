@@ -1,0 +1,53 @@
+@prefix: t;
+@indexes-bg-color: #F5F5F5;
+@indexes-active-color: #0052D9;
+
+.@{prefix}-indexes {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  position: relative;
+  background-color: @indexes-bg-color;
+
+  &__sidebar {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+
+    &-item {
+      padding: 5px 10px;
+
+      &--active {
+        color: @indexes-active-color;
+      }
+    }
+  }
+
+  &__current {
+    padding: 20px;
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, .2);
+  }
+  &__anchor {
+    line-height: 32px;
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  &__cell {
+    line-height: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #fff;
+  }
+}
