@@ -8,10 +8,11 @@
 .@{prefix}-cascader {
   position: relative;
   width: @cascader-input-width;
-  border: 1px solid @cascader-highlight-color;
+  border: 1px solid @border-level-2-color;
   border-radius: @border-radius;
   padding: @cascader-input-padding;
   line-height: @cascader-height-default;
+  background-color: @bg-color-block;
   vertical-align: middle;
   cursor: default;
 
@@ -56,8 +57,8 @@
 
       & .@{prefix}-cascader-item {
         position: relative;
-        height: @cascader-item-height;
-        line-height: @cascader-item-height;
+        height: @cascader-item-height-default;
+        line-height: @cascader-item-height-default;
         color: @cascader-dark-color;
         padding-left: 8px;
 
@@ -75,6 +76,16 @@
           background: @cascader-item-color-hover;
           cursor: pointer;
         }
+      }
+
+      .@{prefix}-cascader-item.@{prefix}-size-s {
+        height: @cascader-item-height-s;
+        line-height: @cascader-item-height-s;
+      }
+
+      .@{prefix}-cascader-item.@{prefix}-size-l {
+        height: @cascader-item-height-l;
+        line-height: @cascader-item-height-l;
       }
 
       & .@{prefix}-is-expanded {
@@ -113,7 +124,7 @@
     width: @cascader-width-s;
 
     & .@{prefix}-cascader__data {
-      line-height: @cascader-item-height;
+      line-height: @cascader-item-height-default;
       margin-left: 8px;
     }
 
@@ -141,28 +152,10 @@
   }
 }
 
-.@{prefix}-cascader-search {
-  width: @cascader-input-width;
-  position: relative;
-  vertical-align: middle;
-  padding: @cascader-input-padding;
-  line-height: @cascader-height-default;
-  border: 1px solid @cascader-highlight-color;
-  border-radius: @border-radius;
-
-  .@{prefix}-cascader-search-input {
-    border: 0;
-    background: transparent;
-  }
-}
-
-.@{prefix}-cascader-input-icon {
-  position: absolute;
-  height: 100%;
-  right: 0;
-  top: 0;
-  color: @cascader-light-color;
-  margin-right: 8px;
+.@{prefix}-cascader-search-input {
+  width: 100%;
+  border: 0;
+  background: transparent;
 }
 
 .@{prefix}-cascader-icon {
@@ -171,7 +164,7 @@
   right: 0;
   top: 0;
   color: @cascader-light-color;
-  margin-right: 8.5px;
+  margin-right: 8px;
 }
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
@@ -184,6 +177,10 @@
   background-color: @cascader-tag-background-color-disabled;
   color: @cascader-tag-color-disabled;
   border-color: @cascader-border-color-disabled;
+}
+
+.@{prefix}-cascader.@{prefix}-is-popup {
+  border: 1px solid @cascader-highlight-color;
 }
 
 .@{prefix}-cascader.@{prefix}-size-l {
