@@ -71,7 +71,7 @@ function parseNodeData(tree: TreeStore, para: TreeNodeValue | TreeNodeData, item
   let value = '';
   let node = null;
   let data = null;
-  if (typeof para === "string") {
+  if (typeof para === 'string') {
     value = para;
     data = item;
     node = tree.getNode(value);
@@ -155,7 +155,7 @@ export class TreeStore {
   // 获取节点对象
   getNode(item: TreeNodeValue): TreeNode {
     let node = null;
-    if (typeof item === "string") {
+    if (typeof item === 'string') {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
@@ -201,8 +201,8 @@ export class TreeStore {
   // 获取所有符合条件的节点
   getNodes(item?: TreeNodeValue, options?: TreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
-    let val = "";
-    if (typeof item === "string") {
+    let val = '';
+    if (typeof item === 'string') {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
@@ -224,7 +224,7 @@ export class TreeStore {
       if (typeof conf.level === 'number' && conf.level !== Infinity) {
         nodes = nodes.filter(node => node.level <= conf.level);
       }
-      if (typeof conf.filter === "function") {
+      if (typeof conf.filter === 'function') {
         nodes = nodes.filter((node) => conf.filter(node));
       }
       if (isPlainObject(conf.props)) {
@@ -336,7 +336,7 @@ export class TreeStore {
       this.updateTimer = null;
       if (this.shouldReflow) {
         this.refreshNodes();
-        this.emit("reflow");
+        this.emit('reflow');
       }
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
@@ -346,7 +346,7 @@ export class TreeStore {
           map: this.updatedMap,
         });
       } else if (this.shouldReflow) {
-        this.emit("update", {
+        this.emit('update', {
           nodes: [],
           map: this.updatedMap,
         });
@@ -463,11 +463,11 @@ export class TreeStore {
     const checkedMap = map || this.checkedMap;
     nodes.forEach((node) => {
       if (node.isChecked(checkedMap)) {
-        if (valueMode === "parentFirst" && !checkStrictly) {
+        if (valueMode === 'parentFirst' && !checkStrictly) {
           if (!node.parent || !node.parent.isChecked(checkedMap)) {
             list.push(node.value);
           }
-        } else if (valueMode === "onlyLeaf" && !checkStrictly) {
+        } else if (valueMode === 'onlyLeaf' && !checkStrictly) {
           if (node.isLeaf()) {
             list.push(node.value);
           }
@@ -498,7 +498,7 @@ export class TreeStore {
     list.forEach((val: string) => {
       const node = this.getNode(val);
       if (node) {
-        if (valueMode === "parentFirst" && !checkStrictly) {
+        if (valueMode === 'parentFirst' && !checkStrictly) {
           const childrenNodes = node.walk();
           childrenNodes.forEach((childNode) => {
             this.checkedMap.set(childNode.value, true);
@@ -586,7 +586,7 @@ export class TreeStore {
     const config = this.config || {};
     const methodName = camelCase(`on-${name}`);
     const method = config[methodName];
-    if (typeof method === "function") {
+    if (typeof method === 'function') {
       method(state);
     }
   }
