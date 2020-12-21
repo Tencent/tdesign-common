@@ -225,7 +225,7 @@ export class TreeStore {
         nodes = nodes.filter(node => node.level <= conf.level);
       }
       if (typeof conf.filter === 'function') {
-        nodes = nodes.filter(node => conf.filter(node));
+        nodes = nodes.filter((node) => conf.filter(node));
       }
       if (isPlainObject(conf.props)) {
         nodes = nodes.filter((node) => {
@@ -365,7 +365,7 @@ export class TreeStore {
   // 获取指定范围的高亮节点
   getActivedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isActived());
+    nodes = nodes.filter((node) => node.isActived());
     return nodes;
   }
 
@@ -482,7 +482,7 @@ export class TreeStore {
   // 获取指定节点下的选中节点
   getCheckedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isChecked());
+    nodes = nodes.filter((node) => node.isChecked());
     return nodes;
   }
 
