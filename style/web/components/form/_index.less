@@ -1,0 +1,129 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-form {
+  font-size: 14px;
+
+  &--label-right {
+    justify-content: flex-end;
+  }
+
+  &__item {
+    display: flex;
+    margin: 0 0 26px;
+  }
+
+  &__label {
+    display: flex;
+    flex-grow: 0;
+    height: 40px;
+    align-items: center;
+    flex-direction: row;
+    padding-right: 24px;
+    white-space: nowrap;
+
+    &--left {
+      justify-content: flex-start;
+    }
+
+    &--right {
+      justify-content: flex-end;
+    }
+
+
+    &--required {
+
+      label::before {
+        display: inline-block;
+        margin-right: 4px;
+        color: @error-color;
+        line-height: 1;
+        content: "*";
+      }
+    }
+
+    &--colon {
+
+      label::after {
+        content: ":";
+        position: relative;
+        margin: 0 8px 0 2px;
+      }
+    }
+  }
+
+  &__controls {
+    display: block;
+    flex: 1 1 0;
+    height: 40px;
+    align-items: center;
+
+    &--content {
+      display: flex;
+      height: 40px;
+      align-items: center;
+    }
+  }
+
+  &__controls.@{prefix}-is-success {
+    .@{prefix}-input__inner {
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-success";
+    }
+    .@{prefix}-input__extra {
+      color: @@fontColor;
+      @fontColor: "input-extra-color-success";
+    }
+    .@{prefix}-icon {
+      color: @success-color;
+    }
+  }
+
+  &__controls.@{prefix}-is-error {
+    .@{prefix}-input__inner {
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-error";
+    }
+    .@{prefix}-input__extra {
+      color: @@fontColor;
+      @fontColor: "input-extra-color-error";
+    }
+    .@{prefix}-icon {
+      color: @error-color;
+    }
+  }
+
+  &__controls.@{prefix}-is-warning {
+    .@{prefix}-input__inner {
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-warning";
+    }
+    .@{prefix}-input__extra {
+      color: @@fontColor;
+      @fontColor: "input-extra-color-warning";
+    }
+    .@{prefix}-icon {
+      color: @warning-color;
+    }
+  }
+
+  &__status {
+    position: absolute;
+    right: -32px;
+  }
+}
+
+.@{prefix}-form-inline {
+  display: flex;
+  flex-wrap: wrap;
+
+  .@{prefix}-form__item {
+    margin-right: 24px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

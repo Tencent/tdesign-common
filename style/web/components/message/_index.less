@@ -9,21 +9,27 @@
 .@{prefix}-message {
   .message;
 
-  > .@{prefix}-icon {
+  @{msg-icon-selector} {
     color: @msg-primary-color;
     margin-right: @spacer;
   }
 
-  &.t-is-success > .@{prefix}-icon {
-    color: @msg-success-color;
+  &.t-is-success {
+    @{msg-icon-selector} {
+      color: @msg-success-color;
+    }
   }
 
-  &.t-is-warning > .@{prefix}-icon {
-    color: @msg-warning-color;
+  &.t-is-warning {
+    @{msg-icon-selector} {
+      color: @msg-warning-color;
+    }
   }
 
-  &.t-is-error > .@{prefix}-icon {
-    color: @msg-error-color;
+  &.t-is-error {
+    @{msg-icon-selector} {
+      color: @msg-error-color;
+    }
   }
 
   &.@{prefix}-is-closable {
@@ -47,6 +53,7 @@
 .@{prefix}-message-list {
   position: fixed;
   z-index: 6000;
+
   .@{prefix}-message {
     margin-bottom: 8px;
   }

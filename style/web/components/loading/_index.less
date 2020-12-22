@@ -1,0 +1,80 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-loading {
+  color: @loading-color;
+  display: inline-block;
+
+  &__wrapper {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 3500;
+
+    .@{prefix}-icon-loading {
+      position: absolute;
+      top: 50%;
+      margin-top: -12px;
+    }
+  }
+
+  &-parent__relative {
+    position: relative;
+  }
+
+  &-mask {
+    background-color: @loading-mask-color;
+  }
+
+  &-fullscreen {
+    position: fixed;
+  }
+
+  &-lock {
+    overflow: hidden;
+  }
+
+  .@{prefix}-icon-loading {
+    font-size: @loading-icon-size;
+  }
+
+  &.@{prefix}-size-s {
+    .@{prefix}-icon-loading {
+      font-size: @loading-icon-size-small;
+    }
+  }
+
+  &.@{prefix}-size-l {
+    .@{prefix}-icon-loading {
+      font-size: @loading-icon-size-large; 
+    }
+  }
+
+  &-text {
+    color: @loading-color;
+    font-size: @loading-text-size;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+  }
+
+  &--blur {
+    opacity: .6;
+    user-select: none;
+    pointer-events: none;
+  }
+}

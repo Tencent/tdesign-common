@@ -7,3 +7,4 @@ __test__/
 **/dist
 dist/
 style/web/.stylelintcache
+static

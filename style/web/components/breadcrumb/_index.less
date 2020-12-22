@@ -16,6 +16,7 @@
     align-items: center;
     color: @breadcrumb-text-color-default;
     text-decoration: none;
+    cursor: pointer;
 
     &.@{prefix}-is-current {
       color: @breadcrumb-text-color-current;
@@ -85,7 +86,7 @@
     left: 50%;
     transform: translateX(-50%);
     max-width: 120px;
-    background: #fff;
+    background: @breadcrumb-option-box-bg;
     box-shadow: @breadcrumb-option-box-shadow;
     z-index: 20;
 
@@ -116,7 +117,7 @@
     width: 300px;
     padding: @spacer;
     color: @breadcrumb-text-color-current;
-    background: #fff;
+    background: @bg-color-block;
     border-radius: @border-radius * .5;
     box-shadow: @breadcrumb-option-box-shadow;
     z-index: 20;
@@ -131,7 +132,7 @@
       height: 0;
       border-style: solid;
       border-width: 8px 6px 0 6px;
-      border-color: #fff transparent transparent transparent;
+      border-color: @bg-color-block transparent transparent transparent;
       z-index: 20;
     }
 

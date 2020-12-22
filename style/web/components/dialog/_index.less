@@ -17,7 +17,6 @@
   &__header {
     color: @dialog-header-text-color;
     font-size: @dialog-header-font-size;
-    height: @dialog-header-height;
     display: flex;
     align-items: top;
     // remove space between inline-block elements.
@@ -28,6 +27,11 @@
       vertical-align: middle;
       line-height: 22px;
     }
+
+    .@{prefix}-icon {
+      font-size: @dialog-icon-size;
+      margin-right: 8px;
+    }
   }
 
   &__body {
@@ -35,12 +39,12 @@
     font-size: @dialog-body-text-font-size;
     line-height: 22px;
     overflow: auto;
+    padding: 24px 0;
   }
 
   &__footer {
     width: 100%;
     text-align: right;
-    padding-top: 24px;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
@@ -61,31 +65,21 @@
   &--primary {
     padding: @dialog-primary-spacer;
 
-    .@{prefix}-dialog__header>h5 {
-      margin-left: 8px;
-    }
-
-    .t-icon-prompt_fill {
-      color: @primary-color;
-      font-size: @dialog-icon-size;
-    }
-
     .@{prefix}-dialog__body {
       padding: @dialog-parimary-body-spacer;
     }
   }
 
-  >.t-icon-close {
+  &__close {
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
-    font-size: @dialog-icon-size;
+    font-size: 16px;
+    
+    &:hover {
+      cursor: pointer;
+    }
   }
-
-  >.t-icon-close:hover {
-    cursor: pointer;
-  }
-
 }
 
 // t-dialog 组件本身
