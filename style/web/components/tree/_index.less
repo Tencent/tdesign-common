@@ -68,6 +68,7 @@
     bottom: 20px;
     width: 1px;
     height: 40px;
+    pointer-events: none;
   }
 
   &__line::before {
@@ -119,9 +120,13 @@
   }
 
   & &__label {
-    flex: 0 0 auto;
+    flex: auto;
     line-height: 40px;
     flex-wrap: nowrap;
+
+    &--strictly {
+      flex: none;
+    }
   }
 
   & &__space {

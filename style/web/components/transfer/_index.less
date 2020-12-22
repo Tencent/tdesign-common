@@ -80,6 +80,10 @@
       height: 100%;
       width: 100%;
       overflow: auto;
+
+      .t-checkbox-group {
+        width: 100%;
+      }
     }
 
     &__item {
@@ -99,6 +103,7 @@
     &__wrapper {
       position: relative;
       height: 100%;
+      width: 100%;
       overflow: auto;
       padding: 12px;
     }
@@ -162,12 +167,6 @@
   }
 }
 
-.@{prefix}-transfer-wrapper {
-  .@{prefix}-transfer-list {
-    @transfer-wrap-height: 320px;
-  }
-}
-
 // 只有search时候的高度
 .@{prefix}-transfer-search {
   .@{prefix}-transfer-list {
@@ -220,5 +219,13 @@
   .@{prefix}-transfer-list {
     height: @transfer-with-all-height;
     padding-bottom: 88px;
+  }
+}
+
+.@{prefix}-transfer-wrapper {
+  .@{prefix}-transfer-list {
+    height: @transfer-wrap-height;
+    width: 206px;
+    overflow: scroll;
   }
 }

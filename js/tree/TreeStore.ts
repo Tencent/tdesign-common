@@ -65,8 +65,6 @@ export interface TreeStoreOptions {
   onReflow?: Function;
   // 节点信息变更后触发
   onUpdate?: Function;
-  // scoped slots 中转对象
-  scopedSlots?: any;
 }
 
 function parseNodeData(tree: TreeStore, para: TreeNodeValue | TreeNodeData, item: TreeNodeData) {
@@ -128,7 +126,6 @@ export class TreeStore {
       checkStrictly: false,
       activable: false,
       valueMode: 'onlyLeaf',
-      scopedSlots: null,
       ...options,
     };
     this.config = config;
@@ -143,7 +140,6 @@ export class TreeStore {
     this.updateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
-    this.scopedSlots = config.scopedSlots;
   }
 
   // 配置选项
@@ -229,7 +225,7 @@ export class TreeStore {
         nodes = nodes.filter(node => node.level <= conf.level);
       }
       if (typeof conf.filter === 'function') {
-        nodes = nodes.filter(node => conf.filter(node));
+        nodes = nodes.filter((node) => conf.filter(node));
       }
       if (isPlainObject(conf.props)) {
         nodes = nodes.filter((node) => {
@@ -369,7 +365,7 @@ export class TreeStore {
   // 获取指定范围的高亮节点
   getActivedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isActived());
+    nodes = nodes.filter((node) => node.isActived());
     return nodes;
   }
 
@@ -486,7 +482,7 @@ export class TreeStore {
   // 获取指定节点下的选中节点
   getCheckedNodes(item?: TreeNodeValue): TreeNode[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isChecked());
+    nodes = nodes.filter((node) => node.isChecked());
     return nodes;
   }
 
