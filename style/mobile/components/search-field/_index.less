@@ -56,13 +56,16 @@
     padding: 0 @search-field-input-horizontal-padding;
     border: 0;
 
+    /* stylelint-disable-next-line */
     &::-webkit-input-placeholder, 
     &::placeholder {
       color: @search-field-placeholder-text-color;
     }
 
-    &::-webkit-search-cancel-button {
+    &::-webkit-search-cancel-button { /* stylelint-disable-line */
       display: none;
+
+      /* stylelint-disable-next-line */
       -webkit-appearance: none;
     }
   }
@@ -89,7 +92,9 @@
   }
 
   &.@{prefix}-is-focused {
+
     .@{prefix}-search-field {
+      
       &__cancel-button {
         display: block;
       }
