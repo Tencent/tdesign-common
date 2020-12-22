@@ -1,0 +1,105 @@
+@import "./_var.less";
+@import "./_mixin.less";
+
+.@{prefix}-steps {
+  display: flex;
+  width: 100%;
+  .step-item-basic();
+
+  // 水平方向
+  &--horizontal {
+    // 内容最大宽度
+    .@{prefix}-steps-item-content {
+      max-width: 80px;
+      margin-top: @spacer;
+    }
+
+    &.@{prefix}-steps--default-anchor {
+      .@{prefix}-steps-item {
+        &--finish {
+          .default-number-status(finish);
+        }
+
+        &--process {
+          .default-number-status(process);
+        }
+
+        &--error {
+          .default-number-status(error);
+          .@{prefix}-steps-item-title {
+            color: @error-color;
+          }
+        }
+      }
+    }
+    .connector-default(horizontal);
+
+    &.@{prefix}-steps--dot-anchor {
+      // .dot-anchor-status();
+      .@{prefix}-steps-item {
+        &--finish {
+          .dot-anchor-status(finish);
+        }
+
+        &--process {
+          .dot-anchor-status(process);
+        }
+
+        &--error {
+          .dot-anchor-status(error);
+          .@{prefix}-steps-item-title {
+            color: @error-color;
+          }
+        }
+      }
+    }
+  }
+
+  // 垂直
+  &--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &.@{prefix}-steps--default-anchor {
+      .@{prefix}-steps-item {
+        position: relative;
+        &__inner {
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        &-content {
+          margin-left: @spacer;
+        }
+
+        &-title {
+          text-align: left;
+          margin-bottom: @spacer;
+        }
+
+        &-description {
+          text-align: left;
+        }
+      }
+
+      .@{prefix}-steps-item {
+        &--finish {
+          .default-number-status(finish);
+        }
+
+        &--process {
+          .default-number-status(process);
+        }
+
+        &--error {
+          .default-number-status(error);
+          .@{prefix}-steps-item-title {
+            color: @error-color;
+          }
+        }
+      }
+      .connector-default(vertical);
+    }
+  }
+
+}
