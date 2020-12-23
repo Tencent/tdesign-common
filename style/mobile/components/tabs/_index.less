@@ -6,18 +6,19 @@
 
 .@{prefix}-tabs {
   position: relative;
+
   &__nav {
     position: relative;
     overflow: hidden;
     user-select: none;
     background-color: @tab-nav-bg-color;
     
-    &-wrap{
+    &-wrap {
       display: flex;
       position: relative;
     }
     
-    &-item{
+    &-item {
       flex: 1;
       text-align: center;
       color: @tab-nav-text-color;
@@ -27,26 +28,28 @@
       position: relative;
       padding: @tab-nav-item-padding;
       display: inline-block; 
-      &.@{prefix}-is-active{
+      &.@{prefix}-is-active {
         color: @tab-nav-active-color;
         font-weight: @tab-nav-active-font-weight;
       }
-      &.@{prefix}-is-disabled{
+      &.@{prefix}-is-disabled {
         color: @tab-nav-disabled-color;
         cursor: not-allowed;
       }
-      &:after{
+
+      &:after {
         content: "";
         width: 100%;
         height: 1px;
-        transform: scaleY(0.5);
+        transform: scaleY(.5);
         position: absolute;
         bottom: 0;
         left: 0;
         background-color: @tab-line-color;
       }
     }
-    &-line{
+
+    &-line {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -56,11 +59,12 @@
       background-color: @tab-line-active-color;
       transition: all .3s cubic-bezier(.645, .045, .355, 1);
     }
-    &--scroll{
+
+    &--scroll {
       overflow-x: auto;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
-      .@{prefix}-tabs__nav-item{
+      .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
       }
     }
@@ -71,33 +75,38 @@
       background: transparent;
     }
   }
+
   &--horizontal {
     display: flex;
-    .@{prefix}-tabs__nav--scroll{
+    .@{prefix}-tabs__nav--scroll {
       overflow-y: auto;
       overflow-x: hidden;
     }
     .@{prefix}-tabs__content {
       flex: 1;
     }
-    .@{prefix}-tabs__nav{
+    .@{prefix}-tabs__nav {
       background-color: @tab-nav-horizontal-bg-color;
-      &-wrap{
+      
+      &-wrap {
         flex-direction: column;
       }
-      &-line{
+      
+      &-line {
         top: 0;
         left: 0;
         width: @tab-line-height;
         height: @tab-nav-horizontal-item-height;
       }
-      &-item{
+      
+      &-item {
         display: block;
         flex: 1 0 auto;
         height: @tab-nav-horizontal-item-height;
         line-height: @tab-nav-horizontal-item-height;
         padding: @tab-nav-horizontal-item-padding;
-        &:after{
+        
+        &:after {
           bottom: 0;
           left: auto;
           right: 0;
@@ -105,26 +114,22 @@
           transform: scaleX(.5);
           height: 100%;
         }
-        &.@{prefix}-is-active{
+        &.@{prefix}-is-active {
           background-color: @tab-nav-bg-color;
-          &:after{
+          
+          &:after {
             content: none;
           }
         }
       }
     }  
   }
-  // &--right .@{prefix}-tabs__nav-line{
-  //   left: auto;
-  //   right: 0;
-  // }
-  // &--right .@{prefix}-tabs__nav-item:after{
-  //   left: 0;
-  // }
+  
   &__content {
     position: relative;
     overflow: hidden;
   }
+  
   &__panel {
     background-color: @tab-panel-bg-color;
   }
