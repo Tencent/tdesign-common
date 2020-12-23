@@ -1,4 +1,5 @@
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-steps {
@@ -15,6 +16,7 @@
     }
 
     .@{prefix}-steps-item {
+
       &--finish {
         .default-number-status(finish);
       }
@@ -38,8 +40,10 @@
   &--vertical {
     flex-direction: column;
     align-items: flex-start;
+
     .@{prefix}-steps-item {
       position: relative;
+
       &__inner {
         flex-direction: row;
         align-items: flex-start;
@@ -62,7 +66,9 @@
     }
 
     &.@{prefix}-steps--default-anchor {
+
       .@{prefix}-steps-item {
+
         &--finish {
           .default-number-status(finish);
         }
@@ -81,9 +87,13 @@
     }
 
     .connector-default(vertical);
+
     &.@{prefix}-steps--dot-anchor {
+
       .@{prefix}-steps-item {
+
         &-icon {
+
           &__dot {
             display: block;
             width: @dot-steps-anchor-width;
@@ -94,6 +104,7 @@
             margin-top: 1px;
           }
         }
+
         &-title {
           margin-top: 0;
         }
