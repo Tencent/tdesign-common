@@ -27,16 +27,6 @@
         border-radius: 50%;
         color: @border-level-2-color;
       }
-
-      &__dot {
-        display: block;
-        width: @spacer-3;
-        height: @spacer-3;
-        text-align: center;
-        border: 2px solid @border-level-2-color;
-        border-radius: 50%;
-        color: @border-level-2-color;
-      }
     }
 
     &-content {
@@ -102,28 +92,6 @@
     }
   }
 }
-
-.dot-anchor-status(@anchor-status) {
-  & when(@anchor-status = finish) {
-    .@{prefix}-steps-item-icon__number {
-      border-color: @primary-color;
-      color: @primary-color;
-    }
-  };
-  & when(@anchor-status = process) {
-    .@{prefix}-steps-item-icon__number {
-      background: @primary-color;
-      border-color: @primary-color;
-    }
-  };
-  & when(@anchor-status = error) {
-    .@{prefix}-steps-item-icon__number {
-      background: @error-color;
-      color: @text-anti-primary-color;
-      border-color: @error-color;
-    }
-  };
-};
 
 .default-number-status(@anchor-status) {
   & when(@anchor-status = finish) {
