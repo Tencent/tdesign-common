@@ -9,34 +9,34 @@
   .notification;
 
   &__icon {
-    width: 23px;
+    width: 24px;
     text-align: center;
+    margin-right: 8px;
+
+    .@{prefix}-icon {
+      font-size: 24px;
+    }
   }
 
-  .t-icon {
-    font-size: 23px;
-    padding-top: 1px;
-  }
   // icon theme
-  .t-icon.t-is-info {
-    color: #0052d9;
+  .@{prefix}-icon.t-is-info {
+    color: @primary-color;
   }
 
-  .t-icon.t-is-success {
-    color: #35cd35;;
+  .@{prefix}-icon.t-is-success {
+    color: @success-color;;
   }
 
-  .t-icon.t-is-warning {
-    color: #fa0;
+  .@{prefix}-icon.t-is-warning {
+    color: @warning-color;
   }
 
-  .t-icon.t-is-error {
-    color: #ff3e00;
+  .@{prefix}-icon.t-is-error {
+    color: @error-color;
   }
 
   &__main {
     flex: 1;
-    margin-left: 10px;
   }
 
   &__title__wrap {
@@ -47,18 +47,20 @@
   &__title {
     font-family: PingFangSC-Medium;
     font-size: 16px;
-    color: #000;
+    color: @text-level-1-color;
     line-height: 24px;
   }
 
-  .t-icon-close {
+  .@{prefix}-icon-close {
     cursor: pointer;
+    font-size: 16px;
+    color: @text-level-2-color;
   }
 
   &__content {
     font-family: PingFangSC-Regular;
     font-size: 14px;
-    color: #444;
+    color: @text-level-2-color;
     line-height: 22px;
     margin-top: 8px;
     max-height: 66px;
@@ -92,13 +94,13 @@
   }
 
   &__detail--item:hover {
-    background: #f5f5f5;
+    background: @bg-color-hover;
     border-radius: 2px;
   }
 
   &__detail--item:active {
-    background: #ddd;
-    border-radius: 2px;
+    background: @border-radius;
+    border-radius: @border-radius;
   }
 
   &__detail--item + &__detail--item {
@@ -106,7 +108,7 @@
   }
 
   &__detail--item.t-is-active {
-    color: #0052d9;
+    color: @primary-color-8;
   }
 
   // animation
