@@ -1,0 +1,45 @@
+@import "./_var.less";
+
+.@{prefix}-navbar {
+  background-color: @bg-color-block;
+  position: relative;
+  display: flex;
+  height: @navbar-height;
+  align-items: center;
+  padding: 0 @navbar-horizontal-padding;
+  justify-content: center;
+  font-size: @navbar-font-size;
+
+  &__back {
+    cursor: pointer;
+    position: absolute;
+    left: @navbar-horizontal-padding;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__text {
+    font-family: "PingFangSC Medium";
+    user-select: none;
+    color: @navbar-font-color;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  &__right {
+    position: absolute;
+    right: @navbar-horizontal-padding;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &--more {
+      font-style: normal;
+      display: inline-block;
+
+      &::before {
+        font-size: 14px;
+        content: "\2022 \2022 \2022";
+      }
+    }
+  }
+}

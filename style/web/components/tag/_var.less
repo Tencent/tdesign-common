@@ -13,23 +13,12 @@
 
 // 暂时这样写，后面等全局的色值确定后再更改
 // color
-@dark: #000;
-@white: #fff;
-
 @grey-0: #fbfbfb;
-@grey-1: #f0f2f5;
-@grey-2: #eee;
-@grey-3: #ddd;
+@grey-1: #f5f5f5;
 @grey-4: #bbb;
-@grey-5: #888;
-@grey-6: #444;
 
 // 基础颜色
-// @primary-color: @primary-color-6; // 色彩-品牌-可操作
-// @success-color: @success-color-6; // 色彩-功能-成功
-// @warning-color: @warning-color-6; // 色彩-功能-警告
-// @error-color: @error-color-6; // 色彩-功能-失败
-@info-color: @grey-4;
+@info-color: #d6d6d6;
 
 @primary-color-light: @primary-color-1;
 @success-color-light: @success-color-1;
@@ -39,18 +28,18 @@
 
 // 因为通过讨论 Tag 组件的选中态只针对于一个特定主题
 // checked [false - default; true - primary]
-@tag-default-background-color: @grey-0;
-@tag-default-border-color: @grey-3;
+@tag-default-background-color: @bg-color-fade;
+@tag-default-border-color: @border-level-2-color;
 @tag-default-hover-color: @primary-color-5;
 @tag-default-click-color: @primary-color-7;
-@tag-checked-color: @primary-color-6;
-@tag-checked-background-color: @primary-color-light;
+@tag-checked-color: @primary-color-8;
+@tag-checked-background-color: #d6e2f9;
 @tag-checked-border-color: @primary-color-2;
 
 // disabled
 @tag-disabled-color: @grey-4;
-@tag-disabled-background-color: #f5f5f5;
-@tag-disabled-border-color: @grey-3;
+@tag-disabled-background-color: @bg-color-disabled;
+@tag-disabled-border-color: @border-level-2-color;
 
 // dark color
 @tag-primary-color: @primary-color;
@@ -67,12 +56,12 @@
 @tag-danger-light-color: @error-color-light;
 
 // plain
-@tag-plain-background-color: @white;
+@tag-plain-background-color: @bg-color-fade;
 
 // font size
 @tag-small-font-size: @font-size-s;
 @tag-medium-font-size: @font-size-base;
-@tag-large-font-size: @font-size-l;
+@tag-large-font-size: @font-size-base;
 
 // padding
 @tag-small-padding: 0px @spacer;
@@ -80,8 +69,8 @@
 @tag-large-padding: 0px 12px;
 
 // text color
-@tag-text-color: @white;
-@tag-text-color-1: @dark;
+@tag-text-color: rgba(255, 255, 255, .9);
+@tag-text-color-1: @text-level-1-color;
 
 // shape
 @border-radius-square: @border-radius;

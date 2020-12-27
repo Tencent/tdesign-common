@@ -13,6 +13,8 @@
   background-color: @dialog-bg-color;
   position: relative;
   border-radius: @border-radius;
+  max-height: 100%;
+  overflow: auto;
 
   &__header {
     color: @dialog-header-text-color;
@@ -79,6 +81,15 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__close::after {
+    content: "";
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    bottom: -24px;
+    left: -24px;
   }
 }
 
