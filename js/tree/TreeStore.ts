@@ -40,7 +40,7 @@ export interface TreeStoreOptions {
   // 是否互斥展开(手风琴)
   expandMutex?: boolean;
   // 展开子节点时，是否展开父节点
-  expandParent?: string | boolean;
+  expandParent?: boolean;
   // 是否可高亮
   activable?: boolean;
   // 是否可多选高亮
