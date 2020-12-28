@@ -21,8 +21,6 @@ export interface TreeNodeProps {
   indeterminate?: boolean;
   disabled?: boolean;
   draggable?: boolean;
-  visible?: boolean;
-  loading?: boolean;
 }
 
 export interface TreeNodeData extends TreeNodeProps {
@@ -227,28 +225,21 @@ export class TreeNode {
     const config = this?.tree?.config || {};
     if (this.children === true && !this.loading) {
       if (typeof config.load === 'function') {
-        this.set({
-          loading: true,
-        });
+        this.loading = true;
         this.update();
         let list = [];
-        try {
-          list = await config.load(this);
-          this.tree.emit('load', {
-            node: this,
-            data: list,
-          });
-        } catch (err) {
-          console.error(err);
-        }
-        this.set({
-          loading: false,
+        list = await config.load(this);
+        this.tree.emit('load', {
+          node: this,
+          data: list,
         });
+        this.loading = false;
         if (Array.isArray(list) && list.length > 0) {
           this.append(list);
         } else {
           this.children = false;
         }
+        this.update();
       }
     }
   }
