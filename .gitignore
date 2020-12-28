@@ -34,3 +34,7 @@ temp*
 contributors/members.txt
 
 /.idea
+
+# test
+coverage
+test-report.html
