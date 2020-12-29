@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@import "../../mixins/_text.less";
+
 .@{prefix}-table {
   font-size: @table-font-size;
 
@@ -38,6 +40,18 @@
     > a {
       text-decoration: none;
       color: @table-link-text-color;
+    }
+
+    &.align-left {
+      text-align: left;
+    }
+
+    &.align-right {
+      text-align: right;
+    }
+
+    &.text-ellipsis {
+      .text-ellipsis()
     }
   }
 
@@ -252,6 +266,7 @@
     }
 
     &.@{prefix}-table--striped {
+
       tbody tr:nth-of-type(odd) {
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
