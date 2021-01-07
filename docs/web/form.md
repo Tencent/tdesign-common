@@ -27,11 +27,11 @@
 
 #### 2.1.2. 表单提示状态
 以icon或者提示文字的形式来提示用户对表单的填写
-{{ validator-status }}
+{{ validatorStatus }}
 
 #### 2.1.3. 自定义表单校验
 以icon或者提示文字的形式来提示用户对表单的填写
-{{ custom-validator }}
+{{ customValidator }}
 
 ## 2.2. 对齐方式
 根据具体目标和制约因素，选择最佳的标签对齐方式，默认对齐方式为右对齐
