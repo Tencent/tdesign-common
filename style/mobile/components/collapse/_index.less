@@ -1,7 +1,6 @@
 @import "./_var.less";
 
 .@{prefix}-collapse {
-  
   &__title {
     font-size: @collapse-content-font-size;
     padding-top: @collapse-content-padding * 2;
@@ -28,7 +27,7 @@
 
     .@{prefix}-collapse-panel__content,
     .@{prefix}-collapse-panel__header {
-      opacity: .3;
+      opacity: 0.3;
     }
   }
 
@@ -107,8 +106,12 @@
     color: @collapse-list-content-text-color;
     font-size: @collapse-content-font-size;
   }
-  
+
   &__body {
     padding: 0px @collapse-horizontal-padding;
+  }
+  &__body-slot {
+    padding-top: @collapse-content-padding;
+    padding-bottom: @collapse-content-padding;
   }
 }
