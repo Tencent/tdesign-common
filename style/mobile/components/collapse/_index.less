@@ -1,7 +1,7 @@
 @import "./_var.less";
 
 .@{prefix}-collapse {
-  
+
   &__title {
     font-size: @collapse-content-font-size;
     padding-top: @collapse-content-padding * 2;
@@ -107,8 +107,13 @@
     color: @collapse-list-content-text-color;
     font-size: @collapse-content-font-size;
   }
-  
+
   &__body {
     padding: 0px @collapse-horizontal-padding;
+  }
+
+  &__body-slot {
+    padding-top: @collapse-content-padding;
+    padding-bottom: @collapse-content-padding;
   }
 }
