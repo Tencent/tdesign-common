@@ -1,4 +1,4 @@
-## Form 表单 
+## Form 表单
 用以收集、校验和提交数据的表单，由输入框、单选框、复选框、选择器等控件组成。
 ### 何时使用
 用于需要收集信息；
@@ -19,23 +19,23 @@
 
 ## 2. 组件使用
 ### 2.1. 组件状态
-#### 2.1.1. 表单验证状态
+#### 2.1.1. 验证状态
 在防止用户犯错的前提下，尽可能让用户更早地发现并纠正错误。
 表单内置的校验规则有：date / url / email / required / boolean / max / min / len / number / enum / idcard / telnumber / pattern。
 其中 `date` / `url` / `email` 等校验规则参数参看：<a href="https://github.com/validatorjs/validator.js" target="_blank">https://github.com/validatorjs/validator.js</a>
 {{ validator }}
 
-#### 2.1.2. 表单提示状态
+#### 2.1.2. 提示状态
 以icon或者提示文字的形式来提示用户对表单的填写
-{{ validatorStatus }}
+{{ validator-status }}
 
-#### 2.1.3. 自定义表单校验
+### 2.2. 表单校验
 以icon或者提示文字的形式来提示用户对表单的填写
-{{ customValidator }}
+{{ custom-validator }}
 
-## 2.2. 对齐方式
+### 2.3. 对齐方式
 根据具体目标和制约因素，选择最佳的标签对齐方式，默认对齐方式为右对齐
 {{ align }}
 
-## 2.3. 布局方式
+### 2.4. 布局方式
 {{ layout }}
