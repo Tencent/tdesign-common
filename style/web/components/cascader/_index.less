@@ -90,18 +90,23 @@
         line-height: @cascader-item-height-l;
       }
 
-      & .@{prefix}-is-expanded {
-        background: @cascader-item-background-color-expanded;
-        color: @cascader-highlight-color;
-      }
-
-      & .@{prefix}-is-selected {
+      .@{prefix}-cascader-item.@{prefix}-is-selected {
         background: @cascader-item-color-selected;
       }
 
-      & .@{prefix}-is-disabled {
+      .@{prefix}-cascader-item.@{prefix}-is-disabled {
         color: @cascader-item-color-disabled;
         background-color: transparent;
+      }
+
+      .@{prefix}-cascader-item.@{prefix}-is-expanded {
+        background: @cascader-item-background-color-expanded;
+        color: @cascader-highlight-color;
+
+        &:hover {
+          background: @cascader-item-color-hover;
+          cursor: pointer;
+        }
       }
     }
     
@@ -172,7 +177,7 @@
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
 .@{prefix}-cascader-icon.@{prefix}-is-loading {
-  background: transparent !important;
+  background: transparent;
   color: @cascader-highlight-color;
 }
 
