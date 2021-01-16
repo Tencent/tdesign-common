@@ -10,6 +10,7 @@
   line-height: 40px;
   font-size: 14px;
   color: @tree-node-text-color;
+  will-change: height;
 
   // 禁用态颜色处理
   &.@{prefix}-is-disabled {
@@ -161,6 +162,10 @@
 
   & &__operations .@{prefix}-icon {
     cursor: pointer;
+  }
+
+  &--transparent {
+    opacity: .3;
   }
 
   &--hoverable &__item:hover {
