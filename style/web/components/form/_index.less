@@ -40,7 +40,7 @@
       label::before {
         display: inline-block;
         margin-right: 4px;
-        color: @error-color;
+        color: @form-color-error;
         line-height: 1;
         content: "*";
       }
@@ -70,44 +70,44 @@
   }
 
   &__controls.@{prefix}-is-success {
-    .@{prefix}-input__inner {
-      border-color: @@borderColor;
-      @borderColor: "input-border-color-success";
-    }
-    .@{prefix}-input__extra {
-      color: @@fontColor;
-      @fontColor: "input-extra-color-success";
-    }
+    //.@{prefix}-input__inner {
+    //  border-color: @@borderColor;
+    //  @borderColor: "form-color-success";
+    //}
+    //.@{prefix}-input__extra {
+    //  color: @@fontColor;
+    //  @fontColor: "form-color-success";
+    //}
     .@{prefix}-icon {
-      color: @success-color;
+      color: @form-color-success;
     }
   }
 
   &__controls.@{prefix}-is-error {
     .@{prefix}-input__inner {
       border-color: @@borderColor;
-      @borderColor: "input-border-color-error";
+      @borderColor: "form-color-error";
     }
     .@{prefix}-input__extra {
       color: @@fontColor;
-      @fontColor: "input-extra-color-error";
+      @fontColor: "form-color-error";
     }
     .@{prefix}-icon {
-      color: @error-color;
+      color: @form-color-error;
     }
   }
 
   &__controls.@{prefix}-is-warning {
     .@{prefix}-input__inner {
       border-color: @@borderColor;
-      @borderColor: "input-border-color-warning";
+      @borderColor: "form-color-warning";
     }
     .@{prefix}-input__extra {
       color: @@fontColor;
-      @fontColor: "input-extra-color-warning";
+      @fontColor: "form-color-warning";
     }
     .@{prefix}-icon {
-      color: @warning-color;
+      color: @form-color-warning;
     }
   }
 

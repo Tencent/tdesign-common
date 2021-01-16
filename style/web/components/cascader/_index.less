@@ -55,6 +55,7 @@
       width: @cascader-width-s - 2px;
       height: 100%;
       overflow: auto;
+      box-sizing: content-box;
 
       & .@{prefix}-cascader-item {
         position: relative;
@@ -89,18 +90,23 @@
         line-height: @cascader-item-height-l;
       }
 
-      & .@{prefix}-is-expanded {
-        background: @cascader-item-background-color-expanded;
-        color: @cascader-highlight-color;
-      }
-
-      & .@{prefix}-is-selected {
+      .@{prefix}-cascader-item.@{prefix}-is-selected {
         background: @cascader-item-color-selected;
       }
 
-      & .@{prefix}-is-disabled {
+      .@{prefix}-cascader-item.@{prefix}-is-disabled {
         color: @cascader-item-color-disabled;
         background-color: transparent;
+      }
+
+      .@{prefix}-cascader-item.@{prefix}-is-expanded {
+        background: @cascader-item-background-color-expanded;
+        color: @cascader-highlight-color;
+
+        &:hover {
+          background: @cascader-item-color-hover;
+          cursor: pointer;
+        }
       }
     }
     
@@ -165,11 +171,13 @@
   right: 0;
   top: 0;
   color: @cascader-light-color;
+  background: transparent;
   margin-right: 8px;
 }
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
 .@{prefix}-cascader-icon.@{prefix}-is-loading {
+  background: transparent;
   color: @cascader-highlight-color;
 }
 
