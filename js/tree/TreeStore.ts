@@ -8,7 +8,7 @@ import {
 } from './TreeNode';
 import { KeysType, TreeNodeValueType } from './interface/TreeCommonType';
 import { TreeOptionData } from '../../../src/_type';
-import { TreeNodeModel } from './interface';
+import { TreeNodeModel } from './interface/TreeNodeModel';
 
 export type TreeNodeValue = string | number | TreeNode<TreeOptionData>;
 export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
@@ -114,8 +114,12 @@ export class TreeStore<DataOption = TreeOptionData> {
   checkedMap: Map<TreeNodeValueType, boolean>;
   // 展开节点的集合
   expandedMap: Map<TreeNodeValueType, boolean>;
+  // 符合过滤条件的节点的集合
+  filterMap: Map<TreeNodeValueType, boolean>
   // 数据更新计时器
   updateTimer: number;
+  // 过滤数据更新计时器
+  filterUpdateTimer: number;
   // 识别是否需要重排
   shouldReflow: boolean;
   // 过滤器函数
@@ -144,8 +148,10 @@ export class TreeStore<DataOption = TreeOptionData> {
     this.expandedMap = new Map();
     this.checkedMap = new Map();
     this.updatedMap = new Map();
+    this.filterMap = new Map();
     // 这个计时器确保频繁的 update 事件被归纳为1次完整数据更新后的触发
     this.updateTimer = null;
+    this.filterUpdateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
   }
@@ -636,6 +642,57 @@ export class TreeStore<DataOption = TreeOptionData> {
       isLeaf,
     };
     return treeNodeModel;
+  }
+
+  updateFilterNodes() {
+    if (this.filterUpdateTimer) {
+      return;
+    }
+    this.filterUpdateTimer = setTimeout(() => {
+      this.filterUpdateTimer = null;
+      const filterNodeKeys = [...this.filterMap.keys()];
+      // 存放所有符合过滤条件的节点的各级父节点
+      const filterNodeParentsMap = new Map();
+      const onlyFilterRoot = filterNodeKeys.every((value: TreeNodeValueType) => {
+        const node = this.getNode(value);
+        return !node || !node.getParent();
+      });
+      const allNodes = this.getNodes();
+      // 当 filterMap 中，只有根节点时，重置所有节点的状态
+      if (onlyFilterRoot) {
+        allNodes.forEach((node: TreeNode<DataOption>) => {
+          node.disabled = false;
+        });
+      } else {
+        filterNodeKeys.forEach((value: TreeNodeValueType) => {
+          const node = this.getNode(value);
+          if (!node) {
+            return;
+          }
+          const parents = node.getParents();
+          // 处理符合过滤条件的节点的各级父节点
+          parents.forEach((node: TreeNode<DataOption>) => {
+          // 父节点不符合过滤条件，才放入 filterNodeParentsMap
+            if (!this.filterMap.get(node.value) && !filterNodeParentsMap.get(node.value)) {
+              filterNodeParentsMap.set(node.value, node);
+            }
+          });
+        });
+        allNodes.forEach((node: TreeNode<DataOption>) => {
+          if (filterNodeParentsMap.get(node.value)) {
+            // 符合过滤条件的节点、的各级父节点（路径节点），显示、并 disabled
+            node.visible = true;
+            node.expanded = true;
+            node.disabled = true;
+          } else if (!this.filterMap.get(node.value) && node.visible) {
+            // 不符合过滤条件的、过滤之前已经手动展开的节点，disabled
+            node.disabled = true;
+          } else {
+            node.disabled = false;
+          }
+        });
+      }
+    });
   }
 }
 

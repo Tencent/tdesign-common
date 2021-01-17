@@ -27,6 +27,11 @@ export interface TreeNodeProps {
   loading?: boolean;
 }
 
+// export interface TreeNodeData extends TreeNodeProps {
+//   [key: string]: any;
+//   children?: TreeNodeData[];
+// }
+
 export type TreeNodeData<DataOption> = TreeNodeProps & DataOption & {
   children?: TreeNodeData<DataOption>[];
 }
@@ -653,6 +658,7 @@ export class TreeNode<DataOption> {
     const {
       nodeMap,
       config,
+      filterMap,
       getTreeNodeModelFromTreeNode,
     } = this.tree;
     let visible = true;
@@ -662,13 +668,22 @@ export class TreeNode<DataOption> {
       if (parents.length > 0) {
         expandVisible = parents.every((node: TreeNode<DataOption>) => node.isExpanded());
       }
-      let filterVisible = true;
+      let filterVisible = false;
       if (typeof config.filter === 'function') {
         const treeNodeModel = getTreeNodeModelFromTreeNode(this);
         filterVisible = config.filter(treeNodeModel);
+        if (filterVisible) {
+          filterMap.set(this.value, true);
+        } else {
+          if (filterMap.get(this.value)) {
+            filterMap.delete(this.value);
+          }
+        }
+        // 更新经过过滤的节点状态
+        this.tree.updateFilterNodes();
       }
       // 父节点展开 或 满足过滤条件，均显示当前节点
-      visible = (expandVisible && filterVisible);
+      visible = expandVisible || filterVisible;
     } else {
       visible = false;
     }
@@ -877,7 +892,7 @@ export class TreeNode<DataOption> {
 
   /** *** 对外暴露方法 *** **/
   // 返回路径节点数据集合
-  getPathData(): DataOption[] {
+  getPathData = (): DataOption[] => {
     const nodes = this.getParents();
     nodes.unshift(this);
     const pathDataList = nodes.reverse().map(node => node.dataset);
@@ -885,47 +900,45 @@ export class TreeNode<DataOption> {
   }
 
   // 获取单个父节点数据
-  getParentData(): DataOption {
-    return this.parent.dataset;
-  }
+   getParentData = (): DataOption => this.parent && this.parent.dataset;
 
-  // 获取所有父节点数据
-  getParentsData(): DataOption[] {
-    const parentsData = [];
-    let node = this.parent;
-    while (node) {
-      parentsData.push(node.dataset);
-      node = node.parent;
-    }
-    return parentsData;
-  }
+   // 获取所有父节点数据
+   getParentsData = (): DataOption[] => {
+     const parentsData = [];
+     let node = this.parent;
+     while (node) {
+       parentsData.push(node.dataset);
+       node = node.parent;
+     }
+     return parentsData;
+   }
 
-  // 获取根节点
-  getRootData(): DataOption {
-    const parents = this.getParents();
-    return parents[parents.length - 1].dataset || null;
-  }
+   // 获取根节点
+   getRootData = (): DataOption => {
+     const parents = this.getParents();
+     return parents[parents.length - 1].dataset || null;
+   }
 
-  // 获取兄弟节点，包含自己在内
-  getSiblingsData(): DataOption[] {
-    const {
-      parent,
-      tree,
-    } = this;
-    let list = [];
-    if (parent) {
-      if (Array.isArray(parent.children)) {
-        list = parent.children;
-      }
-    } else if (tree) {
-      list = tree.children;
-    }
-    const dataList: DataOption[] = [];
-    list.forEach((node: TreeNode<DataOption>) => {
-      dataList.push(node.dataset);
-    });
-    return dataList;
-  }
+   // 获取兄弟节点，包含自己在内
+   getSiblingsData = (): DataOption[] => {
+     const {
+       parent,
+       tree,
+     } = this;
+     let list = [];
+     if (parent) {
+       if (Array.isArray(parent.children)) {
+         list = parent.children;
+       }
+     } else if (tree) {
+       list = tree.children;
+     }
+     const dataList: DataOption[] = [];
+     list.forEach((node: TreeNode<DataOption>) => {
+       dataList.push(node.dataset);
+     });
+     return dataList;
+   }
 }
 
 export default TreeNode;
