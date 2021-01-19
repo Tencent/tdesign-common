@@ -26,8 +26,32 @@
       }
     }
 
-    .t-icon {
+    &:last-child {
+      color: @breadcrumb-text-color-current;
+      .@{prefix}-breadcrumb__separator {
+        display: none;
+      }
+    }
+
+    .@{prefix}-icon {
       margin-right: @spacer-half;
+    }
+
+    .@{prefix}-link {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: @breadcrumb-text-color-hover;
+      }
+    }
+
+    .@{prefix}-disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        color: inherit;
+      }
     }
 
     //箭头型
@@ -51,10 +75,6 @@
     .v-inlineblock;
     font-size: @breadcrumb-font-base;
     word-break: break-all;
-
-    &:hover {
-      color: @breadcrumb-text-color-hover;
-    }
   }
         
   //下拉框
@@ -150,7 +170,7 @@
     }
 
     .@{prefix}-breadcrumb__inner {
-      max-width: 200px;
+      max-width: 120px;
       .t-overflow;
     }
   }
