@@ -34,15 +34,17 @@
     user-select: none;
     font-size: @segmented-control-text-size;
 
-    &::before {
-      .hairline-left(@color: @segmented-control-active-bg-color);
-    }
+    // &::before {
+    //   .hairline-left(@color: @segmented-control-active-bg-color);
+    // }
+    border-left: 1px solid @segmented-control-active-bg-color;
 
     &:first-child {
 
-      &::before {
-        border: unset;
-      }
+      // &::before {
+      //   border: unset;
+      // }
+      border-left: unset;
     }
 
     &.@{prefix}-is-active {
