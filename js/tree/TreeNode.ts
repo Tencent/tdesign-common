@@ -682,6 +682,7 @@ export class TreeNode<DataOption> {
         // 更新经过过滤的节点状态
         this.tree.updateFilterNodes();
       }
+
       // 父节点展开 或 满足过滤条件，均显示当前节点
       visible = expandVisible || filterVisible;
     } else {

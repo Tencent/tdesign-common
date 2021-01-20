@@ -611,6 +611,9 @@ export class TreeStore<DataOption = TreeOptionData> {
   getTreeNodeModelFromTreeNode(node: TreeNode<DataOption>): TreeNodeModel<DataOption> {
     const {
       dataset,
+      actived,
+      expanded,
+      checked,
       getPathData,
       append,
       getIndex,
@@ -627,6 +630,9 @@ export class TreeStore<DataOption = TreeOptionData> {
     } = node;
     const treeNodeModel : TreeNodeModel<DataOption> = {
       data: dataset,
+      actived,
+      expanded,
+      checked,
       getPathData,
       appendData: append,
       getIndex,
