@@ -10,7 +10,7 @@ import { KeysType, TreeNodeValueType } from './interface/TreeCommonType';
 import { TreeOptionData } from '../../../src/_type';
 import { TreeNodeModel } from './interface/TreeNodeModel';
 
-export type TreeNodeValue = string | number | TreeNode<TreeOptionData>;
+export type TreeNodeValue = TreeNodeValueType | TreeNode<TreeOptionData>;
 export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
 
 export interface RelatedNodesOptions {

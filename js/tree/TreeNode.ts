@@ -167,6 +167,62 @@ export class TreeNode<DataOption> {
     this.updateChecked();
   }
 
+
+  /* ***** 状态初始化-相关方法 ***** */
+  // 初始化选中态
+  initChecked() {
+    const {
+      tree,
+      value,
+      parent,
+    } = this;
+    let { checked } = this;
+    checked = parent && parent.isChecked();
+    if (checked) {
+      tree.checkedMap.set(value, true);
+    }
+    this.checked = checked;
+  }
+
+  // 初始化节点展开状态
+  initExpanded(): void {
+    const { tree } = this;
+    let { expanded } = this;
+    const { config } = tree;
+    if (
+      typeof config.expandLevel === 'number'
+        && this.getLevel() < config.expandLevel
+    ) {
+      tree.expandedMap.set(this.value, true);
+      expanded = true;
+    }
+    if (config.expandAll) {
+      expanded = true;
+    }
+    if (this.children === true && config.lazy) {
+      expanded = false;
+    }
+    if (expanded) {
+      tree.expandedMap.set(this.value, true);
+    } else {
+      tree.expandedMap.delete(this.value);
+    }
+    this.expanded = expanded;
+  }
+
+  // 初始化高亮状态
+  initActived(): void {
+    const {
+      tree,
+      actived,
+    } = this;
+    if (actived) {
+      tree.activedMap.set(this.value, true);
+    }
+  }
+
+
+  /* ***** 节点操作-相关方法 ***** */
   // 追加数据
   append(data: TreeNodeData<TreeOptionData> | TreeNodeData<TreeOptionData>[]): void {
     const list = [];
@@ -197,6 +253,71 @@ export class TreeNode<DataOption> {
     });
     tree.reflow(this);
     this.updateRelated();
+  }
+
+  // 将当前节点追加到某个父节点的子节点列表中
+  appendTo(tree: TreeStore, parent?: TreeNode<DataOption>, index?: number): void {
+    const parentNode = parent;
+    if (!parentNode) return;
+
+    const targetParents = parentNode.getParents();
+    const includeCurrent = targetParents.some(node => (node.value === this.value));
+    if (includeCurrent) {
+      // 不能将父节点插入到子节点
+      return;
+    }
+
+    if (Array.isArray(parentNode.children)) {
+      let targetIndex = 0;
+      if (typeof index === 'number') {
+        targetIndex = index;
+      }
+      const targetPosNode = parentNode.children[targetIndex];
+      if (targetPosNode.value === this.value) {
+        // 无需将节点插入到原位置
+        return;
+      }
+    }
+
+    this.remove();
+    this.parent = parentNode;
+
+    let siblings = null;
+    if (parentNode instanceof TreeNode) {
+      if (!Array.isArray(parentNode.children)) {
+        parentNode.children = [];
+      }
+      siblings = parent.children;
+    } else {
+      siblings = tree.children;
+    }
+    if (Array.isArray(siblings)) {
+      if (typeof index === 'number') {
+        siblings.splice(index, 0, this);
+      } else {
+        siblings.push(this);
+      }
+    }
+
+    // 插入节点应当继承展开状态
+    // 但建议不要继承选中状态和高亮状态
+    const nodes = this.walk();
+    nodes.forEach((item) => {
+      const node = item;
+      node.tree = tree;
+      tree.nodeMap.set(node.value, node);
+      if (node.expanded) {
+        tree.expandedMap.set(node.value, true);
+      }
+    });
+
+    const updateNodes = parentNode.walk();
+    updateNodes.forEach((node) => {
+      node.update();
+      node.updateChecked();
+    });
+
+    tree.reflow();
   }
 
   // 插入一个同级节点数据
@@ -232,6 +353,45 @@ export class TreeNode<DataOption> {
   insertAfter(newData: DataOption) : void {
     const index = this.getIndex();
     this.insert(newData, index + 1);
+  }
+
+  // 从一个树移除本节点
+  remove(): void {
+    const {
+      tree,
+    } = this;
+
+    const nodes = this.walk();
+    const siblings = this.getSiblings();
+    const index = this.getIndex();
+    // 从父节点的子节点列表中移除自己
+    // 但不要将自己的父节点移除，避免渲染与判断失败
+    if (Array.isArray(siblings)) {
+      siblings.splice(index, 1);
+    }
+    // 清理与树的关系，但不清理自身状态
+    nodes.forEach((node) => {
+      node.clean();
+    });
+    // 同级节点的连线状态会受到影响
+    siblings.forEach((node) => {
+      node.update();
+    });
+    // 父节点选中态会受到影响
+    this.updateParents();
+    tree.reflow();
+  }
+
+  // 清除本节点与一个树的关系
+  clean(): void {
+    const {
+      tree,
+      value,
+    } = this;
+    tree.activedMap.delete(value);
+    tree.checkedMap.delete(value);
+    tree.expandedMap.delete(value);
+    tree.nodeMap.delete(value);
   }
 
   // 异步加载子节点数据
@@ -275,6 +435,7 @@ export class TreeNode<DataOption> {
     tree.updated(this);
   }
 
+  /* ***** 节点获取-相关方法 ***** */
   // 获取单个父节点
   getParent(): TreeNode<DataOption> {
     return this.parent;
@@ -297,7 +458,7 @@ export class TreeNode<DataOption> {
       parent,
       tree,
     } = this;
-    let list: Array<TreeNode<DataOption>> = [];
+    let list = [];
     if (parent) {
       if (Array.isArray(parent.children)) {
         list = parent.children;
@@ -328,6 +489,52 @@ export class TreeNode<DataOption> {
     return nodes.reverse();
   }
 
+  // 获取节点所在层级
+  getLevel(): number {
+    const parents = this.getParents();
+    return parents.length;
+  }
+
+  // 判断节点是否可视
+  getVisible(): boolean {
+    const {
+      nodeMap,
+      config,
+      filterMap,
+      getTreeNodeModelFromTreeNode,
+    } = this.tree;
+    let visible = true;
+    if (nodeMap.get(this.value)) {
+      const parents = this.getParents();
+      let expandVisible = true;
+      if (parents.length > 0) {
+        expandVisible = parents.every((node: TreeNode<DataOption>) => node.isExpanded());
+      }
+      let filterVisible = false;
+      if (typeof config.filter === 'function') {
+        const treeNodeModel = getTreeNodeModelFromTreeNode(this);
+        filterVisible = config.filter(treeNodeModel);
+        if (filterVisible) {
+          filterMap.set(this.value, true);
+        } else {
+          if (filterMap.get(this.value)) {
+            filterMap.delete(this.value);
+          }
+        }
+        // 更新经过过滤的节点状态
+        this.tree.updateFilterNodes();
+      }
+
+      // 父节点展开 或 满足过滤条件，均显示当前节点
+      visible = expandVisible || filterVisible;
+    } else {
+      visible = false;
+    }
+    return visible;
+  }
+
+
+  /* ***** 节点状态判断-相关方法 ***** */
   // 判断节点是否被禁用
   isDisabled() {
     return this?.tree?.config?.disabled || this.disabled;
@@ -348,30 +555,14 @@ export class TreeNode<DataOption> {
     return this?.tree?.config?.checkable || this.checkable;
   }
 
-  // 初始化节点展开状态
-  initExpanded(): void {
-    const { tree } = this;
-    let { expanded } = this;
-    const { config } = tree;
-    if (
-      typeof config.expandLevel === 'number'
-      && this.getLevel() < config.expandLevel
-    ) {
-      tree.expandedMap.set(this.value, true);
-      expanded = true;
-    }
-    if (config.expandAll) {
-      expanded = true;
-    }
-    if (this.children === true && config.lazy) {
-      expanded = false;
-    }
-    if (expanded) {
-      tree.expandedMap.set(this.value, true);
-    } else {
-      tree.expandedMap.delete(this.value);
-    }
-    this.expanded = expanded;
+  // 检查节点是否被激活
+  isActived(map?: Map<string, boolean>): boolean {
+    const {
+      tree,
+      value,
+    } = this;
+    const activedMap = map || tree.activedMap;
+    return !!(tree.nodeMap.get(value) && activedMap.get(value));
   }
 
   // 检查节点是否已展开
@@ -382,6 +573,95 @@ export class TreeNode<DataOption> {
     } = this;
     const expandedMap = map || tree.expandedMap;
     return !!(tree.nodeMap.get(value) && expandedMap.get(value));
+  }
+
+  // 计算属性，判断节点是否被选中
+  // map: 预期选中项map，用于计算节点在预期环境中的选中态
+  isChecked(map?: Map<TreeNodeValueType, boolean>): boolean {
+    const {
+      children,
+      tree,
+    } = this;
+    const { checkStrictly } = tree.config;
+    let checked = false;
+    const checkedMap = map || tree.checkedMap;
+    if (tree.nodeMap.get(this.value)) {
+      if (checkedMap.get(this.value)) {
+        // 如果在 checked 节点列表中，则直接为 true
+        checked = true;
+      } else if (Array.isArray(children) && children.length > 0 && !checkStrictly) {
+        // 如果是父节点，需检查所有子节点状态
+        checked = children.every((node) => {
+          const childIsChecked = node.isChecked(checkedMap);
+          return childIsChecked;
+        });
+      } else if (!checkStrictly) {
+        // 从父节点状态推断子节点状态
+        // 这里再调用 isChecked 会导致死循环
+        const parents = this.getParents();
+        checked = parents.some(node => (checkedMap.get(node.value)));
+      }
+    }
+    return !!checked;
+  }
+
+  // 是否为半选状态
+  isIndeterminate(): boolean {
+    const {
+      children,
+    } = this;
+    let indeterminate = false;
+    if (Array.isArray(children)) {
+      // 叶节点不存在半选状态
+      let childChecked: null | boolean = null;
+      indeterminate = children.some((node: TreeNode<DataOption>) => {
+        if (node.isIndeterminate()) {
+          // 子节点有任意一个半选，则其为半选状态
+          return true;
+        }
+        if (childChecked === null) {
+          childChecked = node.isChecked();
+        }
+        if (childChecked !== node.isChecked()) {
+          // 子节点选中状态不一致，则其为半选状态
+          return true;
+        }
+        return false;
+      });
+    }
+    return indeterminate;
+  }
+
+  isFirst(): boolean {
+    const siblings = this.getSiblings();
+    return siblings[0] === this;
+  }
+
+  isLast(): boolean {
+    const siblings = this.getSiblings();
+    return siblings[siblings.length - 1] === this;
+  }
+
+  // 是叶节点
+  isLeaf(): boolean {
+    let isLeaf = false;
+    if (Array.isArray(this.children)) {
+      isLeaf = this.children.length <= 0;
+    } else {
+      isLeaf = !this.children;
+    }
+    return isLeaf;
+  }
+
+
+  /* ***** 节点状态切换-相关方法 ***** */
+  // 节点展开关闭后需要调用的状态检查函数
+  afterExpanded(): void {
+    this.update();
+    // 节点展开时检查延迟加载的数据
+    if (this.expanded && this.children === true) {
+      this.loadChildren();
+    }
   }
 
   // 展开或者关闭节点
@@ -441,36 +721,6 @@ export class TreeNode<DataOption> {
     return tree.getExpanded(map);
   }
 
-  // 节点展开关闭后需要调用的状态检查函数
-  afterExpanded(): void {
-    this.update();
-    // 节点展开时检查延迟加载的数据
-    if (this.expanded && this.children === true) {
-      this.loadChildren();
-    }
-  }
-
-  // 初始化高亮状态
-  initActived(): void {
-    const {
-      tree,
-      actived,
-    } = this;
-    if (actived) {
-      tree.activedMap.set(this.value, true);
-    }
-  }
-
-  // 检查节点是否被激活
-  isActived(map?: Map<string, boolean>): boolean {
-    const {
-      tree,
-      value,
-    } = this;
-    const activedMap = map || tree.activedMap;
-    return !!(tree.nodeMap.get(value) && activedMap.get(value));
-  }
-
   // 切换节点激活态
   toggleActived(): TreeNodeValueType[] {
     return this.setActived(!this.isActived());
@@ -504,89 +754,6 @@ export class TreeNode<DataOption> {
       this.update();
     }
     return tree.getActived(map);
-  }
-
-  // 初始化选中态
-  initChecked() {
-    const {
-      tree,
-      value,
-      parent,
-    } = this;
-    let { checked } = this;
-    checked = parent && parent.isChecked();
-    if (checked) {
-      tree.checkedMap.set(value, true);
-    }
-    this.checked = checked;
-  }
-
-  // 计算属性，判断节点是否被选中
-  // map: 预期选中项map，用于计算节点在预期环境中的选中态
-  isChecked(map?: Map<TreeNodeValueType, boolean>): boolean {
-    const {
-      children,
-      tree,
-    } = this;
-    const { checkStrictly } = tree.config;
-    let checked = false;
-    const checkedMap = map || tree.checkedMap;
-    if (tree.nodeMap.get(this.value)) {
-      if (checkedMap.get(this.value)) {
-        // 如果在 checked 节点列表中，则直接为 true
-        checked = true;
-      } else if (Array.isArray(children) && children.length > 0 && !checkStrictly) {
-        // 如果是父节点，需检查所有子节点状态
-        checked = children.every((node) => {
-          const childIsChecked = node.isChecked(checkedMap);
-          return childIsChecked;
-        });
-      } else if (!checkStrictly) {
-        // 从父节点状态推断子节点状态
-        // 这里再调用 isChecked 会导致死循环
-        const parents = this.getParents();
-        checked = parents.some(node => (checkedMap.get(node.value)));
-      }
-    }
-    return !!checked;
-  }
-
-  // 是叶节点
-  isLeaf(): boolean {
-    let isLeaf = false;
-    if (Array.isArray(this.children)) {
-      isLeaf = this.children.length <= 0;
-    } else {
-      isLeaf = !this.children;
-    }
-    return isLeaf;
-  }
-
-  // 是否为半选状态
-  isIndeterminate(): boolean {
-    const {
-      children,
-    } = this;
-    let indeterminate = false;
-    if (Array.isArray(children)) {
-      // 叶节点不存在半选状态
-      let childChecked: null | boolean = null;
-      indeterminate = children.some((node: TreeNode<DataOption>) => {
-        if (node.isIndeterminate()) {
-          // 子节点有任意一个半选，则其为半选状态
-          return true;
-        }
-        if (childChecked === null) {
-          childChecked = node.isChecked();
-        }
-        if (childChecked !== node.isChecked()) {
-          // 子节点选中状态不一致，则其为半选状态
-          return true;
-        }
-        return false;
-      });
-    }
-    return indeterminate;
   }
 
   // 切换选中态
@@ -647,60 +814,8 @@ export class TreeNode<DataOption> {
     return tree.getChecked(map);
   }
 
-  // 获取节点所在层级
-  getLevel(): number {
-    const parents = this.getParents();
-    return parents.length;
-  }
 
-  // 判断节点是否可视
-  getVisible(): boolean {
-    const {
-      nodeMap,
-      config,
-      filterMap,
-      getTreeNodeModelFromTreeNode,
-    } = this.tree;
-    let visible = true;
-    if (nodeMap.get(this.value)) {
-      const parents = this.getParents();
-      let expandVisible = true;
-      if (parents.length > 0) {
-        expandVisible = parents.every((node: TreeNode<DataOption>) => node.isExpanded());
-      }
-      let filterVisible = false;
-      if (typeof config.filter === 'function') {
-        const treeNodeModel = getTreeNodeModelFromTreeNode(this);
-        filterVisible = config.filter(treeNodeModel);
-        if (filterVisible) {
-          filterMap.set(this.value, true);
-        } else {
-          if (filterMap.get(this.value)) {
-            filterMap.delete(this.value);
-          }
-        }
-        // 更新经过过滤的节点状态
-        this.tree.updateFilterNodes();
-      }
-
-      // 父节点展开 或 满足过滤条件，均显示当前节点
-      visible = expandVisible || filterVisible;
-    } else {
-      visible = false;
-    }
-    return visible;
-  }
-
-  isFirst(): boolean {
-    const siblings = this.getSiblings();
-    return siblings[0] === this;
-  }
-
-  isLast(): boolean {
-    const siblings = this.getSiblings();
-    return siblings[siblings.length - 1] === this;
-  }
-
+  /* ***** 节点状态更新-相关方法 ***** */
   // 更新节点状态
   update(): void {
     this.vmIsFirst = this.isFirst();
@@ -771,110 +886,8 @@ export class TreeNode<DataOption> {
     tree.reflow();
   }
 
-  // 将当前节点追加到某个父节点的子节点列表中
-  appendTo(tree: TreeStore, parent?: TreeNode<DataOption>, index?: number): void {
-    const parentNode = parent;
-    if (!parentNode) return;
 
-    const targetParents = parentNode.getParents();
-    const includeCurrent = targetParents.some(node => (node.value === this.value));
-    if (includeCurrent) {
-      // 不能将父节点插入到子节点
-      return;
-    }
-
-    if (Array.isArray(parentNode.children)) {
-      let targetIndex = 0;
-      if (typeof index === 'number') {
-        targetIndex = index;
-      }
-      const targetPosNode = parentNode.children[targetIndex];
-      if (targetPosNode.value === this.value) {
-        // 无需将节点插入到原位置
-        return;
-      }
-    }
-
-    this.remove();
-    this.parent = parentNode;
-
-    let siblings = null;
-    if (parentNode instanceof TreeNode) {
-      if (!Array.isArray(parentNode.children)) {
-        parentNode.children = [];
-      }
-      siblings = parent.children;
-    } else {
-      siblings = tree.children;
-    }
-    if (Array.isArray(siblings)) {
-      if (typeof index === 'number') {
-        siblings.splice(index, 0, this);
-      } else {
-        siblings.push(this);
-      }
-    }
-
-    // 插入节点应当继承展开状态
-    // 但建议不要继承选中状态和高亮状态
-    const nodes = this.walk();
-    nodes.forEach((item) => {
-      const node = item;
-      node.tree = tree;
-      tree.nodeMap.set(node.value, node);
-      if (node.expanded) {
-        tree.expandedMap.set(node.value, true);
-      }
-    });
-
-    const updateNodes = parentNode.walk();
-    updateNodes.forEach((node) => {
-      node.update();
-      node.updateChecked();
-    });
-
-    tree.reflow();
-  }
-
-  // 清除本节点与一个树的关系
-  clean(): void {
-    const {
-      tree,
-      value,
-    } = this;
-    tree.activedMap.delete(value);
-    tree.checkedMap.delete(value);
-    tree.expandedMap.delete(value);
-    tree.nodeMap.delete(value);
-  }
-
-  // 从一个树移除本节点
-  remove(): void {
-    const {
-      tree,
-    } = this;
-
-    const nodes = this.walk();
-    const siblings = this.getSiblings();
-    const index = this.getIndex();
-    // 从父节点的子节点列表中移除自己
-    // 但不要将自己的父节点移除，避免渲染与判断失败
-    if (Array.isArray(siblings)) {
-      siblings.splice(index, 1);
-    }
-    // 清理与树的关系，但不清理自身状态
-    nodes.forEach((node) => {
-      node.clean();
-    });
-    // 同级节点的连线状态会受到影响
-    siblings.forEach((node) => {
-      node.update();
-    });
-    // 父节点选中态会受到影响
-    this.updateParents();
-    tree.reflow();
-  }
-
+  /* ***** 节点基础操作-获取包含自己在内所有的子节点 ***** */
   // 获取包含自己在内所有的子节点
   walk(): TreeNode<DataOption>[] {
     const {
@@ -891,7 +904,7 @@ export class TreeNode<DataOption> {
   }
 
 
-  /** *** 对外暴露方法 *** **/
+  /* ***** 对外暴露方法 ***** */
   // 返回路径节点数据集合
   getPathData = (): DataOption[] => {
     const nodes = this.getParents();
