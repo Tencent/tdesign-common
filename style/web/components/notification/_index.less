@@ -1,8 +1,6 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-notification {
@@ -117,13 +115,12 @@
     top: 0;
     left: 0;
   }
-  
+
   &__show--top-left > & {
     animation-duration: .3s;
     animation-name: slidein-top-left;
 
     @keyframes slidein-top-left {
-
       from {
         opacity: 0;
         transform: translate3d(-100%, 0, 0);
@@ -135,31 +132,30 @@
       }
     }
   }
-  
+
   &__show--top-right {
     position: fixed;
     top: 0;
     right: 0;
   }
-  
+
   &__show--top-right > & {
     animation-duration: .3s;
     animation-name: slidein-top-right;
-  
+
     @keyframes slidein-top-right {
-  
       from {
         opacity: 0;
         transform: translate3d(100%, 0, 0);
       }
-  
+
       to {
         opacity: 1;
         transform: translate3d(0, 0, 0);
       }
     }
   }
-  
+
   &__show--bottom-left {
     position: fixed;
     bottom: 0;
@@ -167,25 +163,24 @@
     display: flex;
     flex-direction: column-reverse;
   }
-  
+
   &__show--bottom-left > & {
     animation-duration: .3s;
     animation-name: slidein-bottom-left;
-  
+
     @keyframes slidein-bottom-left {
-  
       from {
         opacity: 0;
         transform: translate3d(-100%, 0, 0);
       }
-  
+
       to {
         opacity: 1;
         transform: translate3d(0, 0, 0);
       }
     }
   }
-  
+
   &__show--bottom-right {
     position: fixed;
     bottom: 0;
@@ -193,18 +188,17 @@
     display: flex;
     flex-direction: column-reverse;
   }
-  
+
   &__show--bottom-right > & {
     animation-duration: .3s;
     animation-name: slidein-bottom-right;
-  
+
     @keyframes slidein-bottom-right {
-  
       from {
         opacity: 0;
         transform: translate3d(100%, 0, 0);
       }
-  
+
       to {
         opacity: 1;
         transform: translate3d(0, 0, 0);
