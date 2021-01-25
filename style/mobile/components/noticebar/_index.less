@@ -1,8 +1,6 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-noticebar {
@@ -31,7 +29,7 @@
   &&--error &__text {
     color: @noticebar-text-color-2;
   }
-  
+
   &__inner {
     display: flex;
     padding: @noticebar-space-4 @noticebar-space-4;
@@ -61,7 +59,7 @@
     left: 0;
     z-index: 100;
   }
-  
+
   &__list--scrolling &__text {
     white-space: nowrap;
   }

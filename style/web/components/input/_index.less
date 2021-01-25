@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-input {
@@ -111,7 +110,6 @@
   }
   .@{prefix}-button,
   .@{prefix}-select {
-
     &:first-child {
       border-radius: @border-radius 0 0 @border-radius;
     }
@@ -135,7 +133,6 @@
       }
     }
     .@{prefix}-input {
-
       &:first-child,
       &:last-child {
         .@{prefix}-input__inner {

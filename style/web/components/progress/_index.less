@@ -1,12 +1,10 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 // 进度条基本样式
 .@{prefix}-progress {
-
   &--inner {
     position: relative;
     height: 100%;
@@ -82,7 +80,6 @@
 //进度条状态
 .@{prefix}-progress--status--active {
   .@{prefix}-progress--inner {
-
     &:before {
       position: absolute;
       top: 0;
@@ -136,7 +133,6 @@
 }
 
 @keyframes progress-active-animation {
-
   0% {
     width: 0;
     opacity: .1;
