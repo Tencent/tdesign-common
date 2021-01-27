@@ -7,8 +7,25 @@
 
 .@{prefix}-time-picker {
   width: 320px;
+  border: @border-level-1-color;
+  background: @bg-color-block;
+  border-radius: @border-radius;
   display: inline-block;
   position: relative;
+  font-size: 1em;
+
+  &.@{prefix}-is-focus {
+    box-shadow: @shadow-2;
+  }
+
+  &.@{prefix}-is-disabled {
+    .disabled-tag;
+  }
+
+  & > *:focus,
+  & > *:active {
+    outline: 0;
+  }
 
   &__custom-icon {
     z-index: 2;
@@ -17,10 +34,8 @@
     top: 0;
     bottom: 0;
     width: 1.8em;
-    display: flex;
+    .flex-center;
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
     pointer-events: none;
 
     & img,
@@ -50,7 +65,7 @@
     top: 0;
     height: 32px;
     font-size: 20px;
-    color: #b2b2b2;
+    color: @mask-disabled;
   }
 
   &__icon-time {
@@ -78,7 +93,7 @@
   }
 
   &__group {
-    border: 1px solid #ddd;
+    border: 1px solid @border-level-2-color;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -99,34 +114,34 @@
     }
 
     &:hover {
-      border: 1px solid #0052d9;
+      border: 1px solid @primary-color-8;
     }
 
     &.active {
-      border: 1px solid #0052d9;
+      border: 1px solid @primary-color-8;
     }
 
     &-text {
-      color: rgba(0, 0, 0, .3);
+      color: @text-level-1-color;
     }
   }
 
   &__input {
     height: @input-height;
     padding: 0 8px 0 4px;
-    display: flex;
-    align-items: center;
+    .flex-center;
     border-radius: 2px;
     transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
     font-size: 14px;
+    background-color: @bg-color-fade;
 
     &:hover {
-      border-color: #0052d9;
+      border-color: @primary-color-8;
     }
 
     &-placeholder {
       margin-left: 4px;
-      color: rgba(0, 0, 0, .3);
+      color: @text-level-1-color;
     }
 
     &-item {
@@ -137,18 +152,18 @@
         padding: 0;
         margin-left: 4px;
         color: transparent;
-        text-shadow: 0 0 0 #000;
+        text-shadow: 0 0 0 @mask-active;
         cursor: pointer;
         height: inherit;
         outline: none;
         width: 30px;
         text-align: center;
         border: 1px solid transparent;
+        background-color: @bg-color-fade;
 
         &:focus {
-          // &:hover {
-          border-color: rgb(221, 221, 221);
-          background-color: rgba(251, 251, 251);
+          border-color: @bg-color;
+          background-color: @bg-color-hover;
         }
       }
     }
@@ -156,11 +171,11 @@
   }
 
   &__input-disabled {
-    border: 1px solid #ddd;
-    background-color: #f5f5f5;
+    border: 1px solid @border-level-2-color;
+    background-color: @bg-color-hover;
 
     &-placeholder {
-      color: rgba(0, 0, 0, .16);
+      color: @text-level-4-color;
     }
 
     &-item {
@@ -174,10 +189,9 @@
 
 .@{prefix}-time-picker-panel {
   width: 320px;
-  background: #fff;
+  background: @bg-color-block;
   border-radius: 2px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),
-    0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
+  box-shadow: @shadow-2;
   display: inline-block;
   position: relative;
   font-size: 1em;
@@ -193,31 +207,27 @@
   &__header {
     width: 100%;
     height: 48px;
-    background-color: #fbfbfb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: @bg-color-block;
+    .flex-center;
     text-align: center;
     border: 0;
 
     &.disabled {
-      background-color: #f5f5f5;
-      border: 1px solid #ddd;
+      background-color: @mask-disabled;;
+      border: 1px solid @border-level-2-color;;
     }
   }
 
   &__body {
     width: 100%;
     height: 290px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .flex-center;
 
     &-scroll {
       flex: 1 0 auto;
       box-sizing: border-box;
       height: 100%;
-      border-right: 1px solid #eee;
+      border-right: 1px solid @border-level-1-color;
       padding-bottom: 20px;
       overflow-y: scroll;
       text-align: center;
@@ -231,7 +241,7 @@
 
       &::-webkit-scrollbar-thumb {
         width: 6px;
-        background: #e5e5e5;
+        background: @border-level-1-color;
         border-radius: 3px;
       }
 
@@ -272,8 +282,8 @@
         }
 
         &.@{prefix}-is-current {
-          color: #0052d9;
-          background-color: #ebf2ff;
+          color: @primary-color-8;
+          background-color: @bg-color-block;
         }
 
       }
@@ -285,7 +295,7 @@
     z-index: 5;
     top: 48px;
     left: 0;
-    background: #fff;
+    background: @bg-color-block;
     box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
     width: 320px;
     height: 10em;
@@ -323,26 +333,26 @@
       & .minutes,
       & .seconds,
       & .apms {
-        border-left: 1px solid #fff;
+        border-left: 1px solid @bg-color-block;
       }
 
       & li {
         list-style: none;
         text-align: center;
         padding: .3em 0;
-        color: #161616;
+        color: @text-level-2-color;
 
         &:not(.hint):not([disabled]):hover,
         &:not(.hint):not([disabled]):focus {
-          background: #ebf2ff;
-          color: #0052d9;
+          background: @bg-color-block;
+          color: @primary-color-8;
         }
 
         &:not([disabled]).active,
         :not([disabled]).active:hover,
         :not([disabled]).active:focus {
-          background: #ebf2ff;
-          color: #0052d9;
+          background: @bg-color-block;
+          color: @primary-color-8;
         }
 
         & [disabled],
@@ -355,7 +365,7 @@
     }
 
     & .hint {
-      color: #a5a5a5;
+      color: @mask-disabled;
       cursor: default;
       font-size: .8em;
     }
@@ -372,19 +382,15 @@
     flex-flow: row nowrap;
     justify-content: flex-end;
     align-items: stretch;
-
-    /* Prevent browser focusing on the controls layer */
     pointer-events: none;
 
     & > * {
       cursor: pointer;
       width: auto;
-      display: flex;
+      .flex-center;
       flex-flow: column nowrap;
-      justify-content: center;
-      align-items: center;
       padding: 0 .35em;
-      color: #d2d2d2;
+      color: @mask-disabled;
       line-height: 100%;
       font-style: normal;
       pointer-events: initial;
@@ -392,7 +398,7 @@
     }
 
     & > *:hover {
-      color: #797979;
+      color: @mask-disabled;
     }
 
     & > *:focus,
@@ -415,7 +421,7 @@
 
 .@{prefix}-time-picker-panel-section {
   width: 497px;
-  background-color: #fff;
+  background-color: @bg-color-block;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),
     0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
 
@@ -427,7 +433,7 @@
       box-shadow: none;
 
       .@{prefix}-time-picker-panel__body {
-        border-right: 1px solid #eee;
+        border-right: 1px solid @border-level-1-color;
       }
     }
 
@@ -435,14 +441,14 @@
       box-shadow: none;
 
       .@{prefix}-time-picker-panel__body {
-        border-left: 1px solid #eee;
+        border-left: 1px solid @border-level-1-color;
       }
     }
 
     .@{prefix}-time-picker-panel__gap {
       width: 20px;
       height: 100%;
-      background-color: #fbfbfb;
+      background-color: @bg-color-block;
       position: relative;
 
       &-top {
@@ -450,10 +456,10 @@
         height: 48px;
         display: flex;
         align-items: center;
-        background-color: #fbfbfb;
+        background-color: @bg-color-block;
 
         &.disabled {
-          background-color: #d2d2d2;;
+          background-color: @border-level-2-color;
         }
       }
     }
@@ -464,26 +470,24 @@
     height: 64px;
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: @bg-color-block;
     position: relative;
-    border-top: 1px solid #eee;
+    border-top: 1px solid @border-level-1-color;
 
     > button:first-child {
       padding: 0 24px;
     }
 
     &-button {
+      .flex-center;
       width: 88px;
       height: 32px;
       position: absolute;
       right: 24px;
-      background-color: #0052d9;
-      border-radius: 2px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-size: 14px;
+      background-color: @primary-color-8;
+      border-radius: @border-radius;
+      color: @text-anti-primary-color;
+      font-size: @font-size-base;
       line-height: 22px;
       cursor: pointer;
     }
