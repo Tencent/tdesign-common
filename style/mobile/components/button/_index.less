@@ -115,11 +115,18 @@
   /* stylelint-disable-next-line */
   -webkit-appearance: none;
 
-  .@{prefix}-button__text {
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__text {
     line-height: 1.5;
   }
 
-  .@{prefix}-icon+.@{prefix}-button__text {
+  .@{prefix}-icon+&__text {
     margin-left: @spacer-2;
   }
 

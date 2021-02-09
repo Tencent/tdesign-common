@@ -11,10 +11,6 @@
   background: @cell-background-color;
   font-size: @cell-font-size;
   line-height: @cell-line-height;
-
-  .@{prefix}-icon {
-    float: right;
-  }
   
   &__label {
     // width: @cell-label-width;
@@ -38,15 +34,21 @@
   }
 
   &__left-icon {
-    color: @bg-color-icon-fade;
+    color: @text-level-3-color;
     line-height: 24px;
     margin-right: @spacer-2;
+    & > .@{prefix}-icon {
+      float: left;
+    }
   }
 
   &__icon {
-    color: @bg-color-icon-fade;
+    color: @text-level-3-color;
     line-height: 24px;
     margin-left: @spacer-2;
+    & > .@{prefix}-icon {
+      float: right;
+    }
   }
 
   &__left {
