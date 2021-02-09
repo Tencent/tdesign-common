@@ -29,6 +29,14 @@
     top: 0;
   }
 
+  &.t-input--suffix > span.t-input__clear {
+    display: none;
+  }
+
+  &.t-input--suffix:hover > span.t-input__clear {
+    display: flex;
+  }
+
   // 输入框状态
   .input-status(success);
   .input-status(warning);
