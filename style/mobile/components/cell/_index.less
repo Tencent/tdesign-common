@@ -10,20 +10,53 @@
   padding: @cell-vertical-padding @cell-horizontal-padding;
   background: @cell-background-color;
   font-size: @cell-font-size;
-
+  line-height: @cell-line-height;
+  
   &__label {
-    width: @cell-label-width;
-    margin-right: @cell-horizontal-padding;
+    // width: @cell-label-width;
+    flex: 1;
     color: @text-level-1-color;
+  }
+
+  &__summary {
+    color: @text-level-3-color;
+    font-size: @cell-summary-font-size;
+    line-height: 22px;
+    margin-top: @spacer;
   }
 
   &__value {
     flex: 1;
     text-align: right;
+    vertical-align: middle;
+    overflow: hidden;
+    color: @text-level-3-color;
+  }
+
+  &__left-icon {
+    color: @text-level-3-color;
+    line-height: 24px;
+    margin-right: @spacer-2;
+    & > .@{prefix}-icon {
+      float: left;
+    }
+  }
+
+  &__icon {
+    color: @text-level-3-color;
+    line-height: 24px;
+    margin-left: @spacer-2;
+    & > .@{prefix}-icon {
+      float: right;
+    }
   }
 
   &__left {
     text-align: left;
+
+    .@{prefix}-icon {
+      float: left;
+    }
   }
 
   &:not(:last-child)::after {
