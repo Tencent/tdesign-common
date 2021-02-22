@@ -4,6 +4,8 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
+@form-item-height: 40px;
+
 .@{prefix}-form {
   font-size: 14px;
 
@@ -19,7 +21,7 @@
   &__label {
     display: flex;
     flex-grow: 0;
-    height: 40px;
+    min-height: @form-item-height;
     align-items: center;
     flex-direction: row;
     padding-right: 24px;
@@ -56,12 +58,12 @@
   &__controls {
     display: block;
     flex: 1 1 0;
-    height: 40px;
+    min-height: @form-item-height;
     align-items: center;
 
     &--content {
       display: flex;
-      height: 40px;
+      min-height: @form-item-height;
       align-items: center;
     }
   }
