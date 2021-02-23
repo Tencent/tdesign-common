@@ -2,6 +2,14 @@
 @import "../../mixins/_index.less";
 
 .@{prefix}-input {
+
+  .@{prefix}-cell__label {
+    width: @input-label-width;
+    flex: none;
+
+    margin-right: @spacer-4;
+  }
+
   &-wrap {
     display: flex;
     align-items: center;
@@ -82,6 +90,10 @@
       font-size: @input-font-size;
     }
 
+    textarea::placeholder {
+      color: @text-level-3-color;
+    }
+
     &-label {
       position: relative;
       padding: @input-vertical-padding @input-horizontal-padding;
@@ -116,7 +128,7 @@
       text-align: left;
       padding-top: @spacer-1;
       font-size: @input-error-msg-font-size;
-      line-height: 1;
+      line-height: 20px;
     }
   }
 }
