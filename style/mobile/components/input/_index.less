@@ -19,11 +19,15 @@
     &--suffix,
     &--icon {
       flex: 0 0 auto;
-      margin-left: @spacer-1;
+      margin-left: @spacer-3;
+      display: table;
+      color: @input-suffix-color;
 
-      i {
+      .@{prefix}-icon {
         font-size: @input-icon-font-size;
         color: @input-icon-color;
+        vertical-align: middle;
+        display: table-cell;
       }
     }
 
@@ -109,6 +113,10 @@
 
   &--count {
     text-align: right;
+    height: 22px;
+    font-size: 14px;
+    color: @input-counter-color;
+    line-height: 22px;
   }
 }
 
