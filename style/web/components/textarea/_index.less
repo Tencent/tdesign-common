@@ -1,0 +1,33 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+.@{prefix} {
+  &-textarea {
+    position: relative;
+
+    &__wrap {
+      width: 100%;
+      height: 56px;
+      border: 1px solid #dddd;
+      padding: 8px 12px;
+      min-height: 56px;
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      resize: vertical;
+
+      &:focus {
+        border-width: 1px;
+        border: 1px solid #0052d9;
+      }
+    }
+    
+    &__limit {
+      color: rgba(0, 0, 0, .3);
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      font-size: 14px;
+    }
+  }
+}
