@@ -1,10 +1,8 @@
 @import "./_var.less";
-
 @import "../../mixins/_index.less";
 
 /** dropdwon-menu */
 .@{prefix}-dropdown-menu {
-
   &__bar {
     position: relative;
     display: flex;
@@ -125,12 +123,10 @@
     position: absolute;
   }
   .@{prefix}-cell {
-
     &-group {
       margin: 0;
 
       &-container {
-
         &::before,
         &::after {
           display: none;
@@ -154,7 +150,6 @@
     }
   }
   .@{prefix}-checkbox {
-
     &__icon-left {
       margin-right: 0;
       margin-left: @spacer / 2;
@@ -207,7 +202,6 @@
     }
     &.t-is-col2 .@{prefix}-cell-group,
     &.t-is-col3 .@{prefix}-cell-group {
-
       &:nth-child(1) {
         background: @dropdown-menu-tree-col1-color;
         .@{prefix}-cell-group-container {
@@ -220,7 +214,6 @@
       }
     }
     &.t-is-col3 .@{prefix}-cell-group {
-
       &:nth-child(2) {
         background: @dropdown-menu-tree-col2-color;
         .@{prefix}-cell-group-container {
@@ -249,7 +242,6 @@
       }
 
       &-group-container {
-
         &::after {
           display: none;
         }
@@ -305,7 +297,6 @@
 
     &.t-is-tick {
       .@{prefix}-radio {
-
         &__default-shape {
           display: block;
           color: @dropdown-menu-primary-color;
@@ -325,7 +316,6 @@
 
     &.t-is-checked {
       .@{prefix}-radio {
-
         &__content-title {
           color: @dropdown-menu-primary-color;
         }

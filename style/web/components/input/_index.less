@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-input {
@@ -28,6 +27,14 @@
     position: absolute;
     right: -@spacer*3;
     top: 0;
+  }
+
+  &.t-input--suffix > span.t-input__clear {
+    display: none;
+  }
+
+  &.t-input--suffix:hover > span.t-input__clear {
+    display: flex;
   }
 
   // 输入框状态
@@ -111,7 +118,6 @@
   }
   .@{prefix}-button,
   .@{prefix}-select {
-
     &:first-child {
       border-radius: @border-radius 0 0 @border-radius;
     }
@@ -135,7 +141,6 @@
       }
     }
     .@{prefix}-input {
-
       &:first-child,
       &:last-child {
         .@{prefix}-input__inner {
