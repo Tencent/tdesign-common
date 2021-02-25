@@ -20,10 +20,13 @@
 
       &__number {
         display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: @spacer-3;
         height: @spacer-3;
         text-align: center;
-        border: 2px solid @border-level-2-color;
+        border: 1px solid @border-level-2-color;
         border-radius: 50%;
         color: @border-level-2-color;
       }
@@ -35,14 +38,17 @@
 
     &-title {
       position: relative;
-      color: @text-level-1-color;
+      color: @title-color;
       text-align: center;
+      line-height: 22px;
       font-size: @font-size-base;
       text-align: center;
+      margin-bottom: 4px;
     }
 
     &-description {
       color: @text-level-3-color;
+      line-height: 20px;
       font-size: @font-size-s;
       margin-bottom: @spacer;
     }
@@ -56,16 +62,17 @@
       .@{prefix}-steps-item__inner:after {
         content: "";
         display: block;
-        width: calc(100% - @connector-default-icon-width);
-        height: 2px;
+        height: 1px;
         background: @border-level-2-color;
         position: absolute;
+        width: calc(100% - @connector-default-icon-width);
         left: calc(50% + @connector-default-icon-width / 2);
         top: (@connector-default-icon-width / 2);
       }
     }
 
-    .@{prefix}-steps-item--finish:not(:last-child) {
+    .@{prefix}-steps-item--finish:not(:last-child),
+    .@{prefix}-steps-item--default:not(:last-child){
       .@{prefix}-steps-item__inner:after {
         background: @primary-color;
       }
@@ -77,7 +84,7 @@
         content: "";
         display: block;
         height: calc(100% - @connector-default-icon-width);
-        width: 2px;
+        width: 1px;
         background: @border-level-2-color;
         position: absolute;
         left: (@connector-default-icon-width / 2);
@@ -85,7 +92,8 @@
       }
     }
 
-    .@{prefix}-steps-item--finish:not(:last-child) {
+    .@{prefix}-steps-item--finish:not(:last-child),
+    .@{prefix}-steps-item--default:not(:last-child) {
       .@{prefix}-steps-item__inner:after {
         background: @primary-color;
       }
@@ -94,6 +102,12 @@
 }
 
 .default-number-status(@anchor-status) {
+  & when(@anchor-status = default) {
+    .@{prefix}-steps-item-icon__number {
+      border-color: @primary-color;
+      color: @primary-color;
+    }
+  };
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item-icon__number {
       border-color: @primary-color;
@@ -103,6 +117,7 @@
   & when(@anchor-status = process) {
     .@{prefix}-steps-item-icon__number {
       background: @primary-color;
+      color: @border-level-2-color;
       border-color: @primary-color;
     }
   };

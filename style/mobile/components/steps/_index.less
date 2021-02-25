@@ -15,7 +15,13 @@
       margin-top: @spacer;
     }
 
+    .connector-default(horizontal);
+
     .@{prefix}-steps-item {
+
+      &--default {
+        .default-number-status(default);
+      }
 
       &--finish {
         .default-number-status(finish);
@@ -31,9 +37,9 @@
           color: @error-color;
         }
       }
-    }
-    .connector-default(horizontal);
 
+
+    }
   }
 
   // 垂直
@@ -63,11 +69,19 @@
       &-description {
         text-align: left;
       }
+
+      &-extra {
+        margin-bottom: 19px;
+      }
     }
 
     &.@{prefix}-steps--default-anchor {
 
       .@{prefix}-steps-item {
+
+        &--default {
+          .default-number-status(default);
+        }
 
         &--finish {
           .default-number-status(finish);
