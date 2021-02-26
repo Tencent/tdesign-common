@@ -1,7 +1,5 @@
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-breadcrumb {
@@ -10,7 +8,7 @@
   &__separator {
     margin: 0 @spacer;
   }
-       
+
   &__item {
     display: flex;
     align-items: center;
@@ -20,7 +18,7 @@
 
     &.@{prefix}-is-current {
       color: @breadcrumb-text-color-current;
-			
+
       .t-icon {
         color: @breadcrumb-icon-color-current;
       }
@@ -63,42 +61,40 @@
     }
 
     //斜杠型
-    &--slash {        
+    &--slash {
       .v-inlineblock;
       margin: 0 @spacer-half;
       line-height: 0;
       color: @breadcrumb-icon-slash-color-default;
     }
   }
-        
+
   &__inner {
     .v-inlineblock;
     font-size: @breadcrumb-font-base;
     word-break: break-all;
   }
-        
+
   //下拉框
   &__select {
     position: relative;
 
     &:hover {
-			
+
       .@{prefix}-breadcrumb__option {
         display: block;
       }
     }
-	
-    &-item {
 
+    &-item {
       &:hover {
-				
         .t-icon {
           color: @breadcrumb-icon-color-hover;
         }
       }
     }
   }
-        
+
   &__option {
     display: none;
     position: absolute;
@@ -126,7 +122,7 @@
       }
     }
   }
-        
+
   //文案超长
   &__inner-msg {
     display: none;

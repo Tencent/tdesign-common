@@ -23,8 +23,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: @spacer-3;
-        height: @spacer-3;
+        width: @connector-default-icon-width;
+        height: @connector-default-icon-width;
         text-align: center;
         border: 1px solid @border-level-2-color;
         border-radius: 50%;
@@ -123,9 +123,9 @@
   };
   & when(@anchor-status = error) {
     .@{prefix}-steps-item-icon__number {
-      background: @error-color;
+      background: @step-error-bg-color;
       color: @text-anti-primary-color;
-      border-color: @error-color;
+      border-color: @step-error-bg-color;
     }
   };
 }

@@ -1,5 +1,4 @@
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-steps {
@@ -18,7 +17,6 @@
     .connector-default(horizontal);
 
     .@{prefix}-steps-item {
-
       &--default {
         .default-number-status(default);
       }
@@ -34,7 +32,7 @@
       &--error {
         .default-number-status(error);
         .@{prefix}-steps-item-title {
-          color: @error-color;
+          color: @step-error-title-color;
         }
       }
 
@@ -78,7 +76,6 @@
     &.@{prefix}-steps--default-anchor {
 
       .@{prefix}-steps-item {
-
         &--default {
           .default-number-status(default);
         }
@@ -105,9 +102,7 @@
     &.@{prefix}-steps--dot-anchor {
 
       .@{prefix}-steps-item {
-
         &-icon {
-
           &__dot {
             display: block;
             width: @dot-steps-anchor-width;
