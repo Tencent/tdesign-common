@@ -1,11 +1,8 @@
-import uniqueId from 'lodash/uniqueId';
-import { TreeStore } from './TreeStore';
-import { TreeNodeValueType } from './interface';
-import { TreeOptionData } from '../../../src/_type';
+import uniqueId from "lodash/uniqueId";
+import { TreeStore } from "./TreeStore";
+import { TreeNodeValueType, TreeOptionData } from "./interface";
 
-const {
-  hasOwnProperty,
-} = Object.prototype;
+const { hasOwnProperty } = Object.prototype;
 
 export interface SettingOptions {
   directly?: boolean;
@@ -32,9 +29,10 @@ export interface TreeNodeProps {
 //   children?: TreeNodeData[];
 // }
 
-export type TreeNodeData<DataOption> = TreeNodeProps & DataOption & {
-  children?: TreeNodeData<DataOption>[];
-}
+export type TreeNodeData<DataOption> = TreeNodeProps &
+  DataOption & {
+    children?: TreeNodeData<DataOption>[];
+  };
 
 const defaultStatus = {
   expandMutex: false,
@@ -93,16 +91,20 @@ export class TreeNode<DataOption> {
   // 节点是否正在加载数据
   loading: boolean;
 
-  constructor(tree: TreeStore, data?: TreeNodeData<DataOption>, parent?: TreeNode<DataOption>) {
+  constructor(
+    tree: TreeStore,
+    data?: TreeNodeData<DataOption>,
+    parent?: TreeNode<DataOption>
+  ) {
     this.dataset = data;
     this.tree = tree;
 
     const config = tree.config || {};
-    const prefix = config.prefix || 't';
+    const prefix = config.prefix || "t";
     const keys = tree?.config?.keys || {};
-    const propChildren = keys.children || 'children';
-    const propLabel = keys.label || 'label';
-    const propValue = keys.value || 'value';
+    const propChildren = keys.children || "children";
+    const propLabel = keys.label || "label";
+    const propValue = keys.value || "value";
 
     this.children = null;
     this.vmCheckable = false;
@@ -120,7 +122,7 @@ export class TreeNode<DataOption> {
     const children = spec[propChildren];
 
     this.set(spec);
-    this.label = spec[propLabel] || '';
+    this.label = spec[propLabel] || "";
     this.value = spec[propValue] || uniqueId(prefix);
     this.tree.nodeMap.set(this.value, this);
 
@@ -167,15 +169,10 @@ export class TreeNode<DataOption> {
     this.updateChecked();
   }
 
-
   /* ***** 状态初始化-相关方法 ***** */
   // 初始化选中态
   initChecked() {
-    const {
-      tree,
-      value,
-      parent,
-    } = this;
+    const { tree, value, parent } = this;
     let { checked } = this;
     checked = parent && parent.isChecked();
     if (checked) {
@@ -190,8 +187,8 @@ export class TreeNode<DataOption> {
     let { expanded } = this;
     const { config } = tree;
     if (
-      typeof config.expandLevel === 'number'
-        && this.getLevel() < config.expandLevel
+      typeof config.expandLevel === "number" &&
+      this.getLevel() < config.expandLevel
     ) {
       tree.expandedMap.set(this.value, true);
       expanded = true;
@@ -212,19 +209,17 @@ export class TreeNode<DataOption> {
 
   // 初始化高亮状态
   initActived(): void {
-    const {
-      tree,
-      actived,
-    } = this;
+    const { tree, actived } = this;
     if (actived) {
       tree.activedMap.set(this.value, true);
     }
   }
 
-
   /* ***** 节点操作-相关方法 ***** */
   // 追加数据
-  append(data: TreeNodeData<TreeOptionData> | TreeNodeData<TreeOptionData>[]): void {
+  append(
+    data: TreeNodeData<TreeOptionData> | TreeNodeData<TreeOptionData>[]
+  ): void {
     const list = [];
     if (!Array.isArray(data)) {
       list.push(data);
@@ -237,10 +232,7 @@ export class TreeNode<DataOption> {
     if (!Array.isArray(this.children)) {
       this.children = [];
     }
-    const {
-      children,
-      tree,
-    } = this;
+    const { children, tree } = this;
     list.forEach((item) => {
       let node = null;
       if (item instanceof TreeNode) {
@@ -256,12 +248,18 @@ export class TreeNode<DataOption> {
   }
 
   // 将当前节点追加到某个父节点的子节点列表中
-  appendTo(tree: TreeStore, parent?: TreeNode<DataOption>, index?: number): void {
+  appendTo(
+    tree: TreeStore,
+    parent?: TreeNode<DataOption>,
+    index?: number
+  ): void {
     const parentNode = parent;
     if (!parentNode) return;
 
     const targetParents = parentNode.getParents();
-    const includeCurrent = targetParents.some(node => (node.value === this.value));
+    const includeCurrent = targetParents.some(
+      (node) => node.value === this.value
+    );
     if (includeCurrent) {
       // 不能将父节点插入到子节点
       return;
@@ -269,7 +267,7 @@ export class TreeNode<DataOption> {
 
     if (Array.isArray(parentNode.children)) {
       let targetIndex = 0;
-      if (typeof index === 'number') {
+      if (typeof index === "number") {
         targetIndex = index;
       }
       const targetPosNode = parentNode.children[targetIndex];
@@ -292,7 +290,7 @@ export class TreeNode<DataOption> {
       siblings = tree.children;
     }
     if (Array.isArray(siblings)) {
-      if (typeof index === 'number') {
+      if (typeof index === "number") {
         siblings.splice(index, 0, this);
       } else {
         siblings.push(this);
@@ -321,11 +319,11 @@ export class TreeNode<DataOption> {
   }
 
   // 插入一个同级节点数据
-  insert(item: TreeNode<DataOption> | TreeNodeData<DataOption>, index?: number): void {
-    const {
-      tree,
-      parent,
-    } = this;
+  insert(
+    item: TreeNode<DataOption> | TreeNodeData<DataOption>,
+    index?: number
+  ): void {
+    const { tree, parent } = this;
     const siblings = this.getSiblings();
     let node = null;
     if (item instanceof TreeNode) {
@@ -333,7 +331,7 @@ export class TreeNode<DataOption> {
       node.appendTo(tree, parent, index);
     } else if (item) {
       node = new TreeNode(tree, item, parent);
-      if (typeof index === 'number') {
+      if (typeof index === "number") {
         siblings.splice(index, 0, node);
       }
       siblings.forEach((node) => {
@@ -344,22 +342,20 @@ export class TreeNode<DataOption> {
   }
 
   // 在当前节点之前插入节点
-  insertBefore(newData: DataOption) : void {
+  insertBefore(newData: DataOption): void {
     const index = this.getIndex();
     this.insert(newData, index);
   }
 
   // 在当前节点之后插入节点
-  insertAfter(newData: DataOption) : void {
+  insertAfter(newData: DataOption): void {
     const index = this.getIndex();
     this.insert(newData, index + 1);
   }
 
   // 从一个树移除本节点
   remove(): void {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
 
     const nodes = this.walk();
     const siblings = this.getSiblings();
@@ -384,10 +380,7 @@ export class TreeNode<DataOption> {
 
   // 清除本节点与一个树的关系
   clean(): void {
-    const {
-      tree,
-      value,
-    } = this;
+    const { tree, value } = this;
     tree.activedMap.delete(value);
     tree.checkedMap.delete(value);
     tree.expandedMap.delete(value);
@@ -398,12 +391,12 @@ export class TreeNode<DataOption> {
   async loadChildren(): Promise<void> {
     const config = this?.tree?.config || {};
     if (this.children === true && !this.loading) {
-      if (typeof config.load === 'function') {
+      if (typeof config.load === "function") {
         this.loading = true;
         this.update();
         let list = [];
         list = await config.load(this);
-        this.tree.emit('load', {
+        this.tree.emit("load", {
           node: this,
           data: list,
         });
@@ -420,15 +413,10 @@ export class TreeNode<DataOption> {
 
   // 设置状态
   set(item: TreeNodeProps): void {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (
-        hasOwnProperty.call(defaultStatus, key)
-        || key === 'label'
-      ) {
+      if (hasOwnProperty.call(defaultStatus, key) || key === "label") {
         this[key] = item[key];
       }
     });
@@ -454,10 +442,7 @@ export class TreeNode<DataOption> {
 
   // 获取兄弟节点，包含自己在内
   getSiblings(): TreeNode<DataOption>[] {
-    const {
-      parent,
-      tree,
-    } = this;
+    const { parent, tree } = this;
     let list = [];
     if (parent) {
       if (Array.isArray(parent.children)) {
@@ -508,10 +493,12 @@ export class TreeNode<DataOption> {
       const parents = this.getParents();
       let expandVisible = true;
       if (parents.length > 0) {
-        expandVisible = parents.every((node: TreeNode<DataOption>) => node.isExpanded());
+        expandVisible = parents.every((node: TreeNode<DataOption>) =>
+          node.isExpanded()
+        );
       }
       let filterVisible = false;
-      if (typeof config.filter === 'function') {
+      if (typeof config.filter === "function") {
         const treeNodeModel = getTreeNodeModelFromTreeNode(this);
         filterVisible = config.filter(treeNodeModel);
         if (filterVisible) {
@@ -532,7 +519,6 @@ export class TreeNode<DataOption> {
     }
     return visible;
   }
-
 
   /* ***** 节点状态判断-相关方法 ***** */
   // 判断节点是否被禁用
@@ -557,20 +543,14 @@ export class TreeNode<DataOption> {
 
   // 检查节点是否被激活
   isActived(map?: Map<string, boolean>): boolean {
-    const {
-      tree,
-      value,
-    } = this;
+    const { tree, value } = this;
     const activedMap = map || tree.activedMap;
     return !!(tree.nodeMap.get(value) && activedMap.get(value));
   }
 
   // 检查节点是否已展开
   isExpanded(map?: Map<string, boolean>): boolean {
-    const {
-      tree,
-      value,
-    } = this;
+    const { tree, value } = this;
     const expandedMap = map || tree.expandedMap;
     return !!(tree.nodeMap.get(value) && expandedMap.get(value));
   }
@@ -578,10 +558,7 @@ export class TreeNode<DataOption> {
   // 计算属性，判断节点是否被选中
   // map: 预期选中项map，用于计算节点在预期环境中的选中态
   isChecked(map?: Map<TreeNodeValueType, boolean>): boolean {
-    const {
-      children,
-      tree,
-    } = this;
+    const { children, tree } = this;
     const { checkStrictly } = tree.config;
     let checked = false;
     const checkedMap = map || tree.checkedMap;
@@ -589,7 +566,11 @@ export class TreeNode<DataOption> {
       if (checkedMap.get(this.value)) {
         // 如果在 checked 节点列表中，则直接为 true
         checked = true;
-      } else if (Array.isArray(children) && children.length > 0 && !checkStrictly) {
+      } else if (
+        Array.isArray(children) &&
+        children.length > 0 &&
+        !checkStrictly
+      ) {
         // 如果是父节点，需检查所有子节点状态
         checked = children.every((node) => {
           const childIsChecked = node.isChecked(checkedMap);
@@ -599,7 +580,7 @@ export class TreeNode<DataOption> {
         // 从父节点状态推断子节点状态
         // 这里再调用 isChecked 会导致死循环
         const parents = this.getParents();
-        checked = parents.some(node => (checkedMap.get(node.value)));
+        checked = parents.some((node) => checkedMap.get(node.value));
       }
     }
     return !!checked;
@@ -607,9 +588,7 @@ export class TreeNode<DataOption> {
 
   // 是否为半选状态
   isIndeterminate(): boolean {
-    const {
-      children,
-    } = this;
+    const { children } = this;
     let indeterminate = false;
     if (Array.isArray(children)) {
       // 叶节点不存在半选状态
@@ -653,7 +632,6 @@ export class TreeNode<DataOption> {
     return isLeaf;
   }
 
-
   /* ***** 节点状态切换-相关方法 ***** */
   // 节点展开关闭后需要调用的状态检查函数
   afterExpanded(): void {
@@ -671,9 +649,7 @@ export class TreeNode<DataOption> {
 
   // 设置节点展开状态
   setExpanded(expanded: boolean, opts?: SettingOptions): TreeNodeValueType[] {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
     const options = {
       directly: false,
       ...opts,
@@ -698,7 +674,7 @@ export class TreeNode<DataOption> {
         if (node.parent) {
           isExpandMutex = node.parent.isExpandMutex();
         } else {
-          isExpandMutex =  tree?.config?.expandMutex;
+          isExpandMutex = tree?.config?.expandMutex;
         }
         if (isExpandMutex) {
           const siblings = node.getSiblings();
@@ -728,9 +704,7 @@ export class TreeNode<DataOption> {
 
   // 设置节点激活态
   setActived(actived: boolean, opts?: SettingOptions): TreeNodeValueType[] {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
     const options = {
       directly: false,
       ...opts,
@@ -764,9 +738,7 @@ export class TreeNode<DataOption> {
   // 更新单个节点的选中态
   // 返回树选中列表
   setChecked(checked: boolean, opts?: SettingOptions): TreeNodeValueType[] {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
     const config = tree.config || {};
     const options = {
       directly: false,
@@ -814,7 +786,6 @@ export class TreeNode<DataOption> {
     return tree.getChecked(map);
   }
 
-
   /* ***** 节点状态更新-相关方法 ***** */
   // 更新节点状态
   update(): void {
@@ -830,9 +801,7 @@ export class TreeNode<DataOption> {
 
   // 更新选中态属性值
   updateChecked(): void {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
     this.vmCheckable = this.isCheckable();
     if (this.vmCheckable) {
       this.checked = this.isChecked();
@@ -847,9 +816,7 @@ export class TreeNode<DataOption> {
   // 更新所有子节点状态
   // 注意:不包含自己
   updateChildren(): void {
-    const {
-      children,
-    } = this;
+    const { children } = this;
     if (Array.isArray(children)) {
       children.forEach((node) => {
         node.update();
@@ -862,9 +829,7 @@ export class TreeNode<DataOption> {
   // 父节点状态更新
   // 注意:不包含自己
   updateParents(): void {
-    const {
-      parent,
-    } = this;
+    const { parent } = this;
     if (parent) {
       parent.update();
       parent.updateChecked();
@@ -874,9 +839,7 @@ export class TreeNode<DataOption> {
 
   // 更新上下游相关节点
   updateRelated() {
-    const {
-      tree,
-    } = this;
+    const { tree } = this;
     const relatedNodes = tree.getRelatedNodes([this.value]);
     relatedNodes.forEach((node) => {
       node.update();
@@ -886,13 +849,10 @@ export class TreeNode<DataOption> {
     tree.reflow();
   }
 
-
   /* ***** 节点基础操作-获取包含自己在内所有的子节点 ***** */
   // 获取包含自己在内所有的子节点
   walk(): TreeNode<DataOption>[] {
-    const {
-      children,
-    } = this;
+    const { children } = this;
     let list: TreeNode<DataOption>[] = [];
     list.push(this);
     if (Array.isArray(children) && children.length > 0) {
@@ -903,56 +863,52 @@ export class TreeNode<DataOption> {
     return list;
   }
 
-
   /* ***** 对外暴露方法 ***** */
   // 返回路径节点数据集合
   getPathData = (): DataOption[] => {
     const nodes = this.getParents();
     nodes.unshift(this);
-    const pathDataList = nodes.reverse().map(node => node.dataset);
+    const pathDataList = nodes.reverse().map((node) => node.dataset);
     return pathDataList;
-  }
+  };
 
   // 获取单个父节点数据
-   getParentData = (): DataOption => this.parent && this.parent.dataset;
+  getParentData = (): DataOption => this.parent && this.parent.dataset;
 
-   // 获取所有父节点数据
-   getParentsData = (): DataOption[] => {
-     const parentsData = [];
-     let node = this.parent;
-     while (node) {
-       parentsData.push(node.dataset);
-       node = node.parent;
-     }
-     return parentsData;
-   }
+  // 获取所有父节点数据
+  getParentsData = (): DataOption[] => {
+    const parentsData = [];
+    let node = this.parent;
+    while (node) {
+      parentsData.push(node.dataset);
+      node = node.parent;
+    }
+    return parentsData;
+  };
 
-   // 获取根节点
-   getRootData = (): DataOption => {
-     const parents = this.getParents();
-     return parents[parents.length - 1].dataset || null;
-   }
+  // 获取根节点
+  getRootData = (): DataOption => {
+    const parents = this.getParents();
+    return parents[parents.length - 1].dataset || null;
+  };
 
-   // 获取兄弟节点，包含自己在内
-   getSiblingsData = (): DataOption[] => {
-     const {
-       parent,
-       tree,
-     } = this;
-     let list = [];
-     if (parent) {
-       if (Array.isArray(parent.children)) {
-         list = parent.children;
-       }
-     } else if (tree) {
-       list = tree.children;
-     }
-     const dataList: DataOption[] = [];
-     list.forEach((node: TreeNode<DataOption>) => {
-       dataList.push(node.dataset);
-     });
-     return dataList;
-   }
+  // 获取兄弟节点，包含自己在内
+  getSiblingsData = (): DataOption[] => {
+    const { parent, tree } = this;
+    let list = [];
+    if (parent) {
+      if (Array.isArray(parent.children)) {
+        list = parent.children;
+      }
+    } else if (tree) {
+      list = tree.children;
+    }
+    const dataList: DataOption[] = [];
+    list.forEach((node: TreeNode<DataOption>) => {
+      dataList.push(node.dataset);
+    });
+    return dataList;
+  };
 }
 
 export default TreeNode;

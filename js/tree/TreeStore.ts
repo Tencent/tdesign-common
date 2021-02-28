@@ -1,17 +1,12 @@
-import difference from 'lodash/difference';
-import camelCase from 'lodash/camelCase';
-import isPlainObject from 'lodash/isPlainObject';
-import {
-  TreeNode,
-  TreeNodeProps,
-  TreeNodeData,
-} from './TreeNode';
-import { KeysType, TreeNodeValueType } from './interface/TreeCommonType';
-import { TreeOptionData } from '../../../src/_type';
-import { TreeNodeModel } from './interface/TreeNodeModel';
+import difference from "lodash/difference";
+import camelCase from "lodash/camelCase";
+import isPlainObject from "lodash/isPlainObject";
+import { TreeNode, TreeNodeProps, TreeNodeData } from "./TreeNode";
+import { KeysType, TreeNodeValueType } from "./interface/TreeCommonType";
+import { TreeNodeModel, TreeOptionData } from "./interface";
 
 export type TreeNodeValue = TreeNodeValueType | TreeNode<TreeOptionData>;
-export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
+export type TypeValueMode = "all" | "parentFirst" | "onlyLeaf";
 
 export interface RelatedNodesOptions {
   withParents?: boolean;
@@ -74,12 +69,12 @@ export interface TreeStoreOptions {
 function parseNodeData(
   tree: TreeStore,
   para: TreeNodeValue | TreeNodeData<TreeOptionData>,
-  item: TreeNodeData<TreeOptionData>,
+  item: TreeNodeData<TreeOptionData>
 ) {
-  let value = '';
+  let value = "";
   let node = null;
   let data = null;
-  if (typeof para === 'string') {
+  if (typeof para === "string") {
     value = para;
     data = item;
     node = tree.getNode(value);
@@ -115,7 +110,7 @@ export class TreeStore<DataOption = TreeOptionData> {
   // 展开节点的集合
   expandedMap: Map<TreeNodeValueType, boolean>;
   // 符合过滤条件的节点的集合
-  filterMap: Map<TreeNodeValueType, boolean>
+  filterMap: Map<TreeNodeValueType, boolean>;
   // 数据更新计时器
   updateTimer: number;
   // 过滤数据更新计时器
@@ -137,7 +132,7 @@ export class TreeStore<DataOption = TreeOptionData> {
       checkable: false,
       checkStrictly: false,
       activable: false,
-      valueMode: 'onlyLeaf',
+      valueMode: "onlyLeaf",
       ...options,
     };
     this.config = config;
@@ -169,7 +164,7 @@ export class TreeStore<DataOption = TreeOptionData> {
   // 获取节点对象
   getNode(item: TreeNodeValue): TreeNode<DataOption> {
     let node = null;
-    if (typeof item === 'string') {
+    if (typeof item === "string") {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
@@ -213,10 +208,13 @@ export class TreeStore<DataOption = TreeOptionData> {
   }
 
   // 获取所有符合条件的节点
-  getNodes(item?: TreeNodeValue, options?: TreeFilterOptions): TreeNode<DataOption>[] {
+  getNodes(
+    item?: TreeNodeValue,
+    options?: TreeFilterOptions
+  ): TreeNode<DataOption>[] {
     let nodes: TreeNode<DataOption>[] = [];
-    let val : TreeNodeValue = '';
-    if (typeof item === 'string') {
+    let val: TreeNodeValue = "";
+    if (typeof item === "string") {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
@@ -235,10 +233,10 @@ export class TreeStore<DataOption = TreeOptionData> {
         level: Infinity,
         ...options,
       };
-      if (typeof conf.level === 'number' && conf.level !== Infinity) {
-        nodes = nodes.filter(node => node.level <= conf.level);
+      if (typeof conf.level === "number" && conf.level !== Infinity) {
+        nodes = nodes.filter((node) => node.level <= conf.level);
       }
-      if (typeof conf.filter === 'function') {
+      if (typeof conf.filter === "function") {
         nodes = nodes.filter((node) => {
           const treeNodeModel = this.getTreeNodeModelFromTreeNode(node);
           return conf.filter(treeNodeModel);
@@ -276,7 +274,10 @@ export class TreeStore<DataOption = TreeOptionData> {
    * appendNodes(TreeNode, item)
    * appendNodes(TreeNode, TreeNode)
    */
-  appendNodes(para?: DataOption | TreeNode<DataOption>, item?: TreeNodeData<DataOption>): void {
+  appendNodes(
+    para?: DataOption | TreeNode<DataOption>,
+    item?: TreeNodeData<DataOption>
+  ): void {
     const spec = parseNodeData(this, para, item);
     if (spec.data) {
       if (!spec.node) {
@@ -352,17 +353,17 @@ export class TreeStore<DataOption = TreeOptionData> {
       this.updateTimer = null;
       if (this.shouldReflow) {
         this.refreshNodes();
-        this.emit('reflow');
+        this.emit("reflow");
       }
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
-        const updatedNodes = updatedList.map(value => this.getNode(value));
-        this.emit('update', {
+        const updatedNodes = updatedList.map((value) => this.getNode(value));
+        this.emit("update", {
           nodes: updatedNodes,
           map: this.updatedMap,
         });
       } else if (this.shouldReflow) {
-        this.emit('update', {
+        this.emit("update", {
           nodes: [],
           map: this.updatedMap,
         });
@@ -381,7 +382,7 @@ export class TreeStore<DataOption = TreeOptionData> {
   // 获取指定范围的高亮节点
   getActivedNodes(item?: TreeNodeValue): TreeNode<DataOption>[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isActived());
+    nodes = nodes.filter((node) => node.isActived());
     return nodes;
   }
 
@@ -479,11 +480,11 @@ export class TreeStore<DataOption = TreeOptionData> {
     const checkedMap = map || this.checkedMap;
     nodes.forEach((node) => {
       if (node.isChecked(checkedMap)) {
-        if (valueMode === 'parentFirst' && !checkStrictly) {
+        if (valueMode === "parentFirst" && !checkStrictly) {
           if (!node.parent || !node.parent.isChecked(checkedMap)) {
             list.push(node.value);
           }
-        } else if (valueMode === 'onlyLeaf' && !checkStrictly) {
+        } else if (valueMode === "onlyLeaf" && !checkStrictly) {
           if (node.isLeaf()) {
             list.push(node.value);
           }
@@ -498,7 +499,7 @@ export class TreeStore<DataOption = TreeOptionData> {
   // 获取指定节点下的选中节点
   getCheckedNodes(item?: TreeNodeValue): TreeNode<DataOption>[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isChecked());
+    nodes = nodes.filter((node) => node.isChecked());
     return nodes;
   }
 
@@ -514,7 +515,7 @@ export class TreeStore<DataOption = TreeOptionData> {
     list.forEach((val: string) => {
       const node = this.getNode(val);
       if (node) {
-        if (valueMode === 'parentFirst' && !checkStrictly) {
+        if (valueMode === "parentFirst" && !checkStrictly) {
           const childrenNodes = node.walk();
           childrenNodes.forEach((childNode) => {
             this.checkedMap.set(childNode.value, true);
@@ -570,7 +571,10 @@ export class TreeStore<DataOption = TreeOptionData> {
 
   // 获取节点状态变化可能影响的周边节点
   // 实现最小遍历集合
-  getRelatedNodes(list: TreeNodeValueType[], options?: RelatedNodesOptions): TreeNode<DataOption>[] {
+  getRelatedNodes(
+    list: TreeNodeValueType[],
+    options?: RelatedNodesOptions
+  ): TreeNode<DataOption>[] {
     const conf = {
       withParents: true,
       ...options,
@@ -602,13 +606,15 @@ export class TreeStore<DataOption = TreeOptionData> {
     const config = this.config || {};
     const methodName = camelCase(`on-${name}`);
     const method = config[methodName];
-    if (typeof method === 'function') {
+    if (typeof method === "function") {
       method(state);
     }
   }
 
   // TreeNode 对象 => TreeNodeModel 对象
-  getTreeNodeModelFromTreeNode(node: TreeNode<DataOption>): TreeNodeModel<DataOption> {
+  getTreeNodeModelFromTreeNode(
+    node: TreeNode<DataOption>
+  ): TreeNodeModel<DataOption> {
     const {
       dataset,
       actived,
@@ -628,7 +634,7 @@ export class TreeStore<DataOption = TreeOptionData> {
       isLast,
       isLeaf,
     } = node;
-    const treeNodeModel : TreeNodeModel<DataOption> = {
+    const treeNodeModel: TreeNodeModel<DataOption> = {
       data: dataset,
       actived,
       expanded,
@@ -659,10 +665,12 @@ export class TreeStore<DataOption = TreeOptionData> {
       const filterNodeKeys = [...this.filterMap.keys()];
       // 存放所有符合过滤条件的节点的各级父节点
       const filterNodeParentsMap = new Map();
-      const onlyFilterRoot = filterNodeKeys.every((value: TreeNodeValueType) => {
-        const node = this.getNode(value);
-        return !node || !node.getParent();
-      });
+      const onlyFilterRoot = filterNodeKeys.every(
+        (value: TreeNodeValueType) => {
+          const node = this.getNode(value);
+          return !node || !node.getParent();
+        }
+      );
       const allNodes = this.getNodes();
       // 当 filterMap 中，只有根节点时，重置所有节点的状态
       if (onlyFilterRoot) {
@@ -678,8 +686,11 @@ export class TreeStore<DataOption = TreeOptionData> {
           const parents = node.getParents();
           // 处理符合过滤条件的节点的各级父节点
           parents.forEach((node: TreeNode<DataOption>) => {
-          // 父节点不符合过滤条件，才放入 filterNodeParentsMap
-            if (!this.filterMap.get(node.value) && !filterNodeParentsMap.get(node.value)) {
+            // 父节点不符合过滤条件，才放入 filterNodeParentsMap
+            if (
+              !this.filterMap.get(node.value) &&
+              !filterNodeParentsMap.get(node.value)
+            ) {
               filterNodeParentsMap.set(node.value, node);
             }
           });
