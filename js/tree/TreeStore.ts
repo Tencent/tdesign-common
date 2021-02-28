@@ -435,13 +435,13 @@ export class TreeStore<DataOption = TreeOptionData> {
   }
 
   // 批量设置展开节点
-  setExpanded(list: string[]): void {
+  setExpanded(list: TreeNodeValueType[]): void {
     this.setExpandedDirectly(list);
     this.updateExpanded(list);
   }
 
   // 直接设置展开节点数据，不更新节点状态
-  setExpandedDirectly(list: string[], expanded = true): void {
+  setExpandedDirectly(list: TreeNodeValueType[], expanded = true): void {
     list.forEach((val) => {
       if (expanded) {
         this.expandedMap.set(val, true);
