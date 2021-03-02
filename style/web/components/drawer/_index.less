@@ -1,0 +1,177 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+
+@componentName: drawer;
+.@{prefix}-@{componentName} {
+  position: fixed;
+  z-index: 1500;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  &-attach {
+    position: absolute;
+  }
+
+  &-left,
+  &-right {
+    top: 0;
+  }
+
+  &-left {
+    left: 0;
+  }
+
+  &-right {
+    right: 0;
+  }
+
+  &-top,
+  &-bottom {
+    left: 0;
+  }
+
+  &-top {
+    top: 0;
+  }
+
+  &-bottom {
+    bottom: 0;
+  }
+
+  &__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: @mask-active;
+    transition: opacity @default-duration @default-timing-function;
+    opacity: 0;
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    background: @drawer-bg-color;
+    // 这里之所以设置了宽度为 300，高度为 300 是为了在 UI 静态展示的时候有一个默认值，
+    // 实际上如果是纵向的，宽度是 js 代码设置，高度是 100%，如果是横向的，高度是 js 代码设置，宽度是 100%
+    width: 300px;
+    height: 300px;
+    font-size: @drawer-body-text-font-size;
+    color: @drawer-body-text-color;
+    box-shadow: @dialog-box-shadow;
+    overflow: hidden;
+    pointer-events: auto;
+    transition: transform @default-duration @default-timing-function,
+      visibility @default-duration @default-timing-function;
+    position: relative;
+  }
+
+  .@{prefix}-@{componentName}__content-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+
+    &-left,
+    &-right {
+      top: 0;
+    }
+
+    &-left {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    &-right {
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    &-top,
+    &-bottom {
+      left: 0;
+    }
+
+    &-top {
+      top: 0;
+      transform: translateY(-100%);
+    }
+
+    &-bottom {
+      bottom: 0;
+      transform: translateY(100%);
+    }
+  }
+
+  &__header {
+    padding: @spacer-2 @spacer-2;
+    border-bottom: 1px solid @drawer-border-color;
+    border-radius: 2px 2px 0 0;
+    font-size: @drawer-header-font-size;
+    color: @drawer-header-text-color;
+  }
+
+  &__body {
+    padding: @spacer-2;
+    overflow: auto;
+    flex: 1;
+  }
+
+  &__footer {
+    width: 100%;
+    padding: 10px @spacer-2;
+    border-top: 1px solid @drawer-border-color;
+    background-color: @drawer-bg-color;
+
+    .@{prefix}-button {
+      margin-left: @spacer-1;
+    }
+
+    .@{prefix}-button:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 18px;
+    right: 16px;
+    cursor: pointer;
+
+    .@{prefix}-icon {
+      font-size: @drawer-icon-size;
+      vertical-align: unset;
+    }
+  }
+}
+
+.@{prefix}-@{componentName}-open {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+
+  > .@{prefix}-@{componentName}__content-wrapper {
+    visibility: visible;
+  }
+
+  .@{prefix}-@{componentName}__mask {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// 需要在 t-drawer-open 后面，优先级才比 open 高
+.@{prefix}-@{componentName}-no-mask {
+  pointer-events: none;
+}
+
+[tabindex="-1"]:focus {
+  outline: none !important; /* stylelint-disable-line */
+}

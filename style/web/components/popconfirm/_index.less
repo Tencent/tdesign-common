@@ -1,13 +1,10 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{popconfirm-cls} {
-
   &--position-hidden {
     display: none;
   }
@@ -19,10 +16,11 @@
 
   &__body {
     text-align: left;
-    padding-left: @popconfirm-spacer;
+
     > .@{prefix}-icon {
       display: inline-block;
-      margin-right: 8px;
+      margin-right: 6px;
+      font-size: 20px;
     }
   }
 

@@ -1,23 +1,33 @@
 @import "./_var.less";
-
 @import "../../mixins/_index.less";
 
 .@{prefix}-input {
+
+  .@{prefix}-cell__label {
+    width: @input-label-width;
+    flex: none;
+
+    margin-right: @spacer-4;
+  }
 
   &-wrap {
     display: flex;
     align-items: center;
     width: 100%;
     font-size: @input-font-size;
-    
+
     &--suffix,
     &--icon {
       flex: 0 0 auto;
-      margin-left: @spacer-1;
+      margin-left: @spacer-3;
+      display: table;
+      color: @input-suffix-color;
 
-      i {
+      .@{prefix}-icon {
         font-size: @input-icon-font-size;
         color: @input-icon-color;
+        vertical-align: middle;
+        display: table-cell;
       }
     }
 
@@ -84,6 +94,10 @@
       font-size: @input-font-size;
     }
 
+    textarea::placeholder {
+      color: @text-level-3-color;
+    }
+
     &-label {
       position: relative;
       padding: @input-vertical-padding @input-horizontal-padding;
@@ -99,14 +113,17 @@
 
   &--count {
     text-align: right;
+    height: 22px;
+    font-size: 14px;
+    color: @input-counter-color;
+    line-height: 22px;
   }
 }
 
 .@{prefix}-input__error {
-  align-items: start;
+  align-items: flex-start;
 
   .@{prefix}-input {
-
     &--control {
       color: @input-error-text-color;
 
@@ -119,7 +136,7 @@
       text-align: left;
       padding-top: @spacer-1;
       font-size: @input-error-msg-font-size;
-      line-height: 1;
+      line-height: 20px;
     }
   }
 }

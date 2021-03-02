@@ -1,15 +1,21 @@
 // Color
-@table-head-text-color: @text-level-3-color;
+@table-head-text-color: @text-level-2-color;
 @table-border-color: @border-level-1-color;
 @table-link-text-color: @primary-color;
-@table-action-bg-color: #F5F5F5;
-@table-highlight-bg-color: #fbfbfb;
-@table-highlight-dark-bg-color: #F5F5F5;
+@table-action-bg-color: @bg-color-hover;
+@table-highlight-bg-color: @bg-color-fade;
+@table-highlight-dark-bg-color: @bg-color-hover;
 @table-row-disabled-color: @text-level-4-color;
 
 // Size
-@table-line-height: 1.5;
+@table-line-height: 22px;
 @table-font-size: 14px;
 @table-padding-normal: @table-font-size * 1.0;
 @table-padding-small: @table-font-size * .5;
 @table-padding-large: @table-font-size * 1.5;
+
+// Safari 13-14 有 bug: box-shadow 第三个值 spread-radius 为负值，且相对于容器宽度占比较大时，会显示为黑块
+// https://bugs.webkit.org/show_bug.cgi?id=209930
+// https://medium.com/@andrea.verlicchi/inset-box-shadow-rendering-bug-on-safari-ios-13-4-6bf4256a1ee0
+@table-fixed-cell-box-shadow-spread-radius: -10px;
+@table-fixed-cell-box-shadow-width: 30px;

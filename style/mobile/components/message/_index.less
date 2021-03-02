@@ -10,6 +10,7 @@
   align-items: center;
   z-index: @message-z-index;
   color: @message-text-color;
+  font-size: @message-text-font-size;
   padding: @message-padding-top @message-padding-right @message-padding-bottom @message-padding-left;
   border-radius: @message-border-radius;
 
@@ -42,6 +43,7 @@
   }
 
   .@{prefix}-icon {
+    flex-shrink: 0;
     font-size: @message-icon-size;
     margin-right: @message-icon-margin-right;
   }
@@ -56,7 +58,6 @@
 }
 
 @keyframes messageEnter {
-
   from {
     transform: translate3d(0, calc(-100% - @message-margin-y), 0);
   }
@@ -67,7 +68,6 @@
 }
 
 @keyframes messageOut {
-
   from {
     transform: translate3d(0, 0, 0);
   }

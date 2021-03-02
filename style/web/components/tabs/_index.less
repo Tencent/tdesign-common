@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-tabs {
@@ -38,6 +37,8 @@
     border-left: 1px solid @tab-bar-bg-color;
     border-bottom: 1px solid @tab-bar-bg-color;
     cursor: pointer;
+    color: @text-level-3-color;
+    font-size: @font-size-l;
 
     &.@{prefix}-size-m {
       height: @tab-nav-height-size-m;
@@ -86,6 +87,8 @@
     text-align: center;
     border-bottom: 1px solid @tab-bar-bg-color;
     cursor: pointer;
+    color: @text-level-3-color;
+    font-size: @font-size-l;
 
     &.@{prefix}-size-m {
       height: @tab-nav-height-size-m;
@@ -160,6 +163,7 @@
 
     &:hover {
       cursor: pointer;
+      color: @primary-color;
     }
 
     &.@{prefix}-is-left,
@@ -179,6 +183,7 @@
 
     &.@{prefix}-is-active {
       color: @tab-text-active-color;
+      font-weight: @tab-nav-font-weight-medium;
     }
 
     &.@{prefix}-is-disabled {

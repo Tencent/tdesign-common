@@ -1,10 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_animate.less";
-
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -13,11 +10,29 @@
   background-color: @dialog-bg-color;
   position: relative;
   border-radius: @border-radius;
+  max-height: 100%;
+  overflow: auto;
+
+  // icon theme
+  .@{prefix}-icon.t-is-info {
+    color: @primary-color;
+  }
+
+  .@{prefix}-icon.t-is-success {
+    color: @success-color;;
+  }
+
+  .@{prefix}-icon.t-is-warning {
+    color: @warning-color;
+  }
+
+  .@{prefix}-icon.t-is-error {
+    color: @error-color;
+  }
 
   &__header {
     color: @dialog-header-text-color;
     font-size: @dialog-header-font-size;
-    height: @dialog-header-height;
     display: flex;
     align-items: top;
     // remove space between inline-block elements.
@@ -28,6 +43,11 @@
       vertical-align: middle;
       line-height: 22px;
     }
+
+    .@{prefix}-icon {
+      font-size: @dialog-icon-size;
+      margin-right: 8px;
+    }
   }
 
   &__body {
@@ -35,12 +55,12 @@
     font-size: @dialog-body-text-font-size;
     line-height: 22px;
     overflow: auto;
+    padding: 24px 0;
   }
 
   &__footer {
     width: 100%;
     text-align: right;
-    padding-top: 24px;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
@@ -61,35 +81,44 @@
   &--primary {
     padding: @dialog-primary-spacer;
 
-    .@{prefix}-dialog__header>h5 {
-      margin-left: 8px;
-    }
-
-    .t-icon-prompt_fill {
-      color: @primary-color;
-      font-size: 20px;
-    }
-
     .@{prefix}-dialog__body {
       padding: @dialog-parimary-body-spacer;
     }
   }
 
-  >.t-icon-close {
+  &__close {
     position: absolute;
     top: @dialog-spacer;
     right: @dialog-spacer;
+    font-size: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
-  >.t-icon-close:hover {
-    cursor: pointer;
+  &__close::after {
+    content: "";
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    bottom: -24px;
+    left: -24px;
   }
-
 }
 
 // t-dialog 组件本身
 .@{prefix}-dialog-ctx {
-  position: relative;
+  pointer-events: none;
+  outline: none;
+
+  &.@{prefix}-dialog-ctx--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
   &.t-is-visable {
     visibility: visible;
@@ -107,57 +136,42 @@
     display: none;
   }
 
-  .@{prefix}-dialog-wrap {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2500;
-    overflow: auto;
-    outline: 0;
-
-    &.@{prefix}-dialog--top {
-      .@{prefix}-dialog {
-        top: 20%;
-        margin: 0 auto;
-      }
-    }
-
-    &.@{prefix}-dialog--center {
-      text-align: center;
-
-      &:before {
-        display: inline-block;
-        width: 0;
-        height: 100%;
-        vertical-align: middle;
-        content: "";
-      }
-      .@{prefix}-dialog {
-        top: 0;
-        display: inline-block;
-        text-align: left;
-        vertical-align: middle;
-      }
-    }
-  }
-
   .@{prefix}-dialog-mask {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
     background: @mask-active;
+    pointer-events: auto;
 
     &--hidden {
       background: none;
-      display: none;
     }
   }
 
   .@{prefix}-dialog {
+    pointer-events: auto;
+    z-index: 5;
     border: @dialog-border;
+
+    &.@{prefix}-dialog--fixed {
+      position: fixed;
+    }
+
+    &--top {
+      top: 20%;
+      left: 50%;
+      transform-origin: -25% 25%;
+      transform: translate(-50%, 0);
+    }
+
+    &--center {
+      top: 50%;
+      left: 50%;
+      transform-origin: -25% -25%;
+      transform: translate(-50%, -50%);
+    }
   }
 }

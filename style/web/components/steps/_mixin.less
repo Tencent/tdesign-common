@@ -35,9 +35,11 @@
       color: @border-level-2-color;
 
       &__number {
-        display: block;
-        width: @spacer-3;
-        height: @spacer-3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
         text-align: center;
         border: 2px solid @border-level-2-color;
         border-radius: 50%;
@@ -45,9 +47,8 @@
       }
 
       & > .t-icon {
-        font-size: @spacer-3;
+        font-size: 24px;
       }
-      
     }
 
     &-title {
@@ -71,7 +72,6 @@
   & when(@anchor-status = wait) {};
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item-icon {
-
       .t-icon {
         color: @primary-color;
       }
@@ -83,14 +83,15 @@
   };
   & when(@anchor-status = process) {
     .@{prefix}-steps-item-icon {
-
       .t-icon {
         color: @primary-color;
       }
 
       &__number {
-        color: @primary-color;
         border-color: @primary-color;
+        background-color: @primary-color;
+        color: @text-anti-primary-color;
+        font-weight: bold;
       }
     }
 
@@ -100,7 +101,6 @@
   };
   & when(@anchor-status = error) {
     .@{prefix}-steps-item-icon {
-
       .t-icon {
         color: @error-color;
       }
@@ -177,7 +177,7 @@
         transform: translateY(-50%);
       }
     }
-  
+
     .@{prefix}-steps-item--finish:not(:last-child) {
       .@{prefix}-steps-item-title:after {
         background: @primary-color;
@@ -189,42 +189,38 @@
     .@{prefix}-steps-item {
       padding-bottom: @spacer-3;
       margin-bottom: @spacer;
-  
-      & when(@isReverse = false) {
 
+      & when(@isReverse = false) {
         &:not(:last-child):before {
           content: "";
           display: block;
           height: 100%;
           width: 2px;
-          background: #ddd;
+          background: @border-level-2-color;
           position: absolute;
           left: 10.5px;
           top: 32px;
         }
-    
+
         &--finish {
-    
           &:not(:last-child):before {
             background: @primary-color;
           }
         }
       }
       & when(@isReverse = true) {
-
         &:not(:first-child):before {
           content: "";
           display: block;
           height: 100%;
           width: 2px;
-          background: #ddd;
+          background: @border-level-2-color;
           position: absolute;
           left: 10.5px;
           top: 32px;
         }
-    
+
         &--process {
-    
           &:not(:first-child):before {
             background: @primary-color;
           }
@@ -237,21 +233,19 @@
 .connector-dot(@direction; @isReverse:false) {
   & when(@direction = horizontal) {
     .@{prefix}-steps-item:not(:last-child) {
-
       &:after {
         content: "";
         display: block;
         width: calc(100% - @spacer-2);
         height: 2px;
-        background: #ddd;
+        background: @border-level-2-color;
         position: absolute;
         left: calc(@dot-steps-content-width / 2 + @spacer);
         top: @dot-steps-connector-position-top-horizontal;
       }
     }
-  
-    .@{prefix}-steps-item--finish:not(:last-child) {
 
+    .@{prefix}-steps-item--finish:not(:last-child) {
       &:after {
         background: @primary-color;
       }
@@ -261,7 +255,6 @@
     .@{prefix}-steps-item {
 
       & when(@isReverse = false) {
-
         &:not(:last-child):before {
           content: "";
           display: block;
@@ -272,9 +265,8 @@
           left: @dot-steps-connector-position-left-vertical;
           top: @dot-steps-connector-position-top-vertical;
         }
-  
+
         &--finish {
-  
           &:not(:last-child):before {
             background: @primary-color;
           }
@@ -297,9 +289,8 @@
         &:fist-child:before {
           display: none;
         }
-  
+
         &--process, {
-  
           &:not(:first-child):before {
             background: @primary-color;
           }

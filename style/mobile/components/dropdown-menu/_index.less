@@ -1,10 +1,8 @@
 @import "./_var.less";
-
 @import "../../mixins/_index.less";
 
 /** dropdwon-menu */
 .@{prefix}-dropdown-menu {
-
   &__bar {
     position: relative;
     display: flex;
@@ -27,7 +25,7 @@
 
       &::after {
         border-top-color: @dropdown-menu-primary-color;
-        transform: translate(0, -3px) rotate(180deg);
+        transform: translate(10px, -3px) rotate(180deg);
       }
     }
     &.t-is-disabled .@{prefix}-dropdown-menu__title {
@@ -57,7 +55,7 @@
       border-style: solid;
       border-color: @dropdown-menu-level-2-color transparent transparent;
       transition: transform 300ms ease;
-      transform: translate(0, 3px) rotate(0deg);
+      transform: translate(10px, 3px) rotate(0deg);
     }
   }
 }
@@ -125,12 +123,10 @@
     position: absolute;
   }
   .@{prefix}-cell {
-
     &-group {
       margin: 0;
 
       &-container {
-
         &::before,
         &::after {
           display: none;
@@ -143,7 +139,7 @@
     }
   }
   .@{prefix}-radio,
-  .@{prefix}-check-box {
+  .@{prefix}-checkbox {
     flex-direction: row-reverse;
     white-space: nowrap;
 
@@ -153,14 +149,13 @@
       text-overflow: ellipsis;
     }
   }
-  .@{prefix}-check-box {
-
+  .@{prefix}-checkbox {
     &__icon-left {
       margin-right: 0;
       margin-left: @spacer / 2;
       &.t-is-checked
-      + .@{prefix}-check-box__content-wrap
-      .@{prefix}-check-box__content-title {
+      + .@{prefix}-checkbox__content-wrap
+      .@{prefix}-checkbox__content-title {
         color: @dropdown-menu-primary-color;
       }
     }
@@ -207,12 +202,11 @@
     }
     &.t-is-col2 .@{prefix}-cell-group,
     &.t-is-col3 .@{prefix}-cell-group {
-
       &:nth-child(1) {
         background: @dropdown-menu-tree-col1-color;
         .@{prefix}-cell-group-container {
           background: none;
-          .@{prefix}-check-box__icon-left,
+          .@{prefix}-checkbox__icon-left,
           .@{prefix}-radio__default-shape {
             display: none;
           }
@@ -220,12 +214,11 @@
       }
     }
     &.t-is-col3 .@{prefix}-cell-group {
-
       &:nth-child(2) {
         background: @dropdown-menu-tree-col2-color;
         .@{prefix}-cell-group-container {
           background: none;
-          .@{prefix}-check-box__icon-left {
+          .@{prefix}-checkbox__icon-left {
             display: none;
           }
         }
@@ -249,13 +242,12 @@
       }
 
       &-group-container {
-
         &::after {
           display: none;
         }
       }
     }
-    .@{prefix}-check-box {
+    .@{prefix}-checkbox {
       text-align: center;
       height: 37px;
       background: @dropdown-menu-tree-col1-color;
@@ -305,7 +297,6 @@
 
     &.t-is-tick {
       .@{prefix}-radio {
-
         &__default-shape {
           display: block;
           color: @dropdown-menu-primary-color;
@@ -325,7 +316,6 @@
 
     &.t-is-checked {
       .@{prefix}-radio {
-
         &__content-title {
           color: @dropdown-menu-primary-color;
         }

@@ -1,0 +1,228 @@
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+
+.@{prefix}-calendar {
+  border: 1px solid rgb(238, 238, 238);
+  background-color: #fff;
+
+  &--full {
+    min-width: 800px;
+
+    .@{prefix}-calendar__control {
+      height: 90px;
+      padding: 46px 36px 20px;
+    }
+
+    .@{prefix}-calendar__panel {
+      padding: 10px 36px 35px;
+      position: relative;
+
+      &-title {
+        font-size: 20px;
+        line-height: 30px;
+        color: #000;
+        opacity: .9;
+        position: absolute;
+        top: -36px;
+      }
+    }
+
+    .@{prefix}-calendar__table {
+      &-head-cell,
+      &-body-cell {
+        margin-right: 12px;
+      }
+
+      &-body-cell {
+        border-top: 1px solid #eee;
+        height: 87.4px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &-content {
+          min-height: 60px;
+          padding-top: 8px;
+        }
+      }
+    }
+
+    .@{prefix}-is-checked {
+      border-top: 1px solid #296ee0;
+      background-color: #ebf2ff;
+    }
+  }
+
+  &--card {
+    width: 358px;
+    height: 348px;
+
+    .@{prefix}-calendar__control {
+      height: 58px;
+      padding: 16px 29px 18px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .@{prefix}-calendar__panel {
+      padding: 20px 14px;
+      height: 290px;
+    }
+
+    .@{prefix}-calendar__table {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-self: start;
+      align-items: flex-start;
+
+      &-head,
+      &-body {
+        &-row {
+          flex: 1;
+        }
+
+        &-cell {
+          justify-content: center;
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+
+      &-body {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        flex: 1;
+
+        &-cell {
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            background-color: transparent;
+          }
+
+          &-value {
+            padding: 3px 6px;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 3px;
+
+            &:hover {
+              background-color: #f5f5f5;
+            }
+          }
+        }
+      }
+    }
+
+    .@{prefix}-is-checked {
+      .@{prefix}-calendar__table-body-cell-value {
+        background-color: #2052d9;
+        color: #fff;
+      }
+    }
+  }
+
+  &--through {
+    height: 1200px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 6px;
+      background: #e5e5e5;
+      border-radius: 3px;
+    }
+  }
+
+  &__control {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &-section {
+      height: 100%;
+      margin-right: 24px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &-cell {
+        height: 100%;
+        margin-right: 4px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &__panel {
+    width: 100%;
+  }
+
+  &__table {
+    width: 100%;
+    height: 100%;
+
+    &-head,
+    &-body {
+      width: 100%;
+
+      &-row {
+        width: 100%;
+        display: flex;
+      }
+
+      &-cell {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 14px;
+        line-height: 22px;
+        color: #000;
+        opacity: .6;
+        cursor: default;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &-head {
+      &-row {
+        padding-bottom: 4px;
+      }
+    }
+
+    &-body {
+      &-cell {
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
+      }
+    }
+
+    .@{prefix}-is-disabled {
+      .@{prefix}-calendar__table-body-cell-value,
+      .@{prefix}-calendar__table-body-cell-value {
+        opacity: .16;
+      }
+    }
+  }
+}

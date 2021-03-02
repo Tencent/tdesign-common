@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-menu {
@@ -155,6 +154,7 @@
       background: @menu-theme-light;
       z-index: @menu-outer-zindex;
       display: none;
+      box-shadow: @menu-head-submenu-shadow;
 
       &--show {
         display: block;
@@ -173,6 +173,7 @@
   }
 
   &__dropdown {
+    box-shadow: @menu-head-submenu-shadow;
 
     .@{prefix}-menu__item {
       background: @menu-popup-bg-color;
@@ -212,7 +213,6 @@
     }
 
     .@{prefix}-menu__item {
-
       span {
         display: none;
       }
@@ -225,7 +225,6 @@
     .@{prefix}-menu__popup {
 
       .@{prefix}-menu__item {
-
         span {
           display: block;
         }
@@ -233,7 +232,6 @@
     }
 
     .@{prefix}-submenu {
-
       &-icon {
         display: none;
       }
@@ -269,10 +267,11 @@
 
     .@{prefix}-menu__logo:not(:empty) {
       width: 100%;
-      padding: 18px 24px;
-      border-bottom: 0;
-      border-bottom: solid 1px @menu-border-color;
-      font-size: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid @menu-border-color;
     }
 
     .@{prefix}-menu {
@@ -286,7 +285,6 @@
     }
 
     .@{prefix}-menu-group {
-
       &-title {
         margin: 4px 0;
         padding: 0 24px;
@@ -365,6 +363,7 @@
       margin-left: 1px;
       background: @menu-popup-bg-color;
       z-index: @menu-outer-zindex;
+      box-shadow: @menu-default-shadow;
     }
 
     .@{prefix}-menu__item {
@@ -378,6 +377,7 @@
 
       .@{prefix}-icon {
         font-size: 20px;
+        margin-left: 2px;
         margin-right: 20px;
       }
 

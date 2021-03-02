@@ -1,7 +1,5 @@
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-pagination {
@@ -9,7 +7,6 @@
   align-items: center;
   justify-content: flex-end;
   white-space: nowrap;
-  font-size: 0;
   color: @pagination-text-color;
 
   // 数据统计
@@ -190,9 +187,13 @@
   // 迷你尺寸
   &.@{prefix}-size-s {
     .@{prefix}-pagination {
-
       &__total {
         font-size: @pagination-font-s;
+      }
+
+      &__select {
+        height: @pagination-height-s;
+        font-size: @font-size-s;
       }
 
       &__number {

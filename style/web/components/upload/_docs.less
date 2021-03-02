@@ -12,8 +12,9 @@
   }
 
   &-tip {
-    color: #999;
+    color: rgba(0,0,0,.3);
     font-size: @font-size-s;
+    margin-top: 12px;
   }
 }
 
@@ -32,6 +33,7 @@
 
     & .t-button {
       margin-right: 10px;
+      color: rgba(0,0,0,.9);
     }
   }
 }
@@ -40,15 +42,21 @@
   border: 1px dashed #f0f0f0;
   border-radius: 2px 2px 0 0;
   font-size: @font-size-base;
-  height: 328px;
+  min-height: 252px;
   overflow-y: auto;
 
-  &--empty {
+  &--empty,
+  &--draging {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #999;
     font-size: @font-size-base;
+    height: 210px;
+  }
+
+  &-header {
+    border-bottom: 1px dashed #f0f0f0;
   }
 
   &-header,
@@ -60,7 +68,6 @@
   }
 
   &-header {
-
     & div {
       display: flex;
       align-items: center;
@@ -73,9 +80,11 @@
     }
   }
 
-  &-item {
+  &-item + &-item {
     border-top: 1px dashed #f0f0f0;
+  }
 
+  &-item {
     & div {
       display: flex;
       height: 100%;
@@ -83,6 +92,13 @@
       align-items: center;
       overflow: hidden;
     }
+  }
+
+  &-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 284px;
   }
 
   &__name {

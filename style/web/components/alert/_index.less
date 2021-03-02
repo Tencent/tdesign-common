@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 /* Alert */
@@ -125,13 +124,13 @@
 
 .@{prefix}-alert__operation {
   flex: 0 0 auto;
-  padding: 0 16px;
+  padding: 0 8px;
   color: @primary-color;
   cursor: pointer;
 }
 
 .@{prefix}-alert__icon + .@{prefix}-alert__content {
-  margin-left: 12px;
+  margin-left: 10px;
 }
 
 .@{prefix}-alert__collapse {
@@ -142,7 +141,7 @@
 
 .@{prefix}-alert__close {
   font-size: 14px;
-  color: @alert-close-color;
+  color: @text-level-3-color;
   cursor: pointer;
 }
 
@@ -244,9 +243,11 @@
 }
 
 .@{prefix}-alert-swiper__close {
-  padding: 14px 20px 14px 0;
+  padding: 14px 20px 14px 4px;
   flex: 0 0 auto;
   font-size: 14px;
-  color: @alert-close-color;
+  color: @text-level-3-color;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }

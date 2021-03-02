@@ -15,7 +15,7 @@
  * colors for dialog element
  */
 @dialog-border-color: transparent;
-@dialog-bg-color: #ffffff;
+@dialog-bg-color: @bg-color-block;
 @dialog-header-text-color: @text-level-1-color;
 @dialog-body-text-color: @text-level-2-color;
 
@@ -28,12 +28,14 @@
 @dialog-size-l-width: 960px;
 @dialog-size-s-width: 480px;
 @dialog-header-height: 50px;
+@dialog-icon-size: 24px;
+@dialog-close-icon-size: 16px;
 
 /**
  * dialog type
  */
 @dialog-spacer: @spacer-3;
-@dialog-default-spacer: @dialog-spacer @dialog-spacer @dialog-spacer @spacer-4;
+@dialog-default-spacer: @spacer-3 @spacer-4;
 @dialog-default-body-spacer: @dialog-spacer @spacer @dialog-spacer 0;
 @dialog-primary-spacer: @dialog-spacer;
 @dialog-parimary-body-spacer: @dialog-spacer 28px @dialog-spacer 28px;
@@ -41,4 +43,4 @@
 /**
  * dialog border
  */
-@dialog-border: 1px solid #f9f9f9;
+@dialog-border: 1px solid @border-level-1-color;

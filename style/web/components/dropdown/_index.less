@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-dropdown {
@@ -35,6 +34,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: @text-level-1-color;
 
     &.has-suffix {
       padding-right: 30px;
@@ -47,14 +47,18 @@
       }
     }
 
+    &:hover,
+    &.@{prefix}-is-focused {
+      color: @dropdown-active-color;
+      background: @dropdown-active-bg-color;
+    }
+
     &.@{prefix}-is-active {
       color: @dropdown-active-color;
-      font-weight: bold;
     }
 
     &.@{prefix}-is-focused {
       color: @dropdown-active-color;
-      font-weight: bold;
       background: @dropdown-active-bg-color;
     }
 

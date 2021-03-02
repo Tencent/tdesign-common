@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -12,7 +11,10 @@
 .@{checkbox-cls} {
   position: relative;
   cursor: pointer;
-  margin-right: @checkbox-margin-right;
+
+  & + .@{checkbox-cls} {
+    margin-left: @spacer-3;
+  }
 
   &__former {
     opacity: 0;
@@ -94,6 +96,10 @@
   &.@{prefix}-is-disabled {
     cursor: not-allowed;
 
+    .@{checkbox-cls}__label {
+      color: @checkbox-check-color-disabled;
+    }
+  
     .@{checkbox-cls}__input {
       background-color: @checkbox-input-color-disabled;
     }

@@ -18,26 +18,26 @@
 @radio-border-color: @border-level-2-color;
 
 @radio-input-color: @bg-color-block;
-@radio-input-color-disabled: #F5F5F5;
+@radio-input-color-disabled: @bg-color-disabled;
 
-@radio-dot-color: #0052D9;
-@radio-dot-color-disabled: #bbb;
+@radio-dot-color: @primary-color;
+@radio-dot-color-disabled: @bg-color-disabled;
 
-@radio-label-color: rgba(0, 0, 0, .65);
+@radio-label-color: @text-level-1-color;
 
 @radio-button-border-color-default: @border-level-2-color;
-@radio-button-border-color-hover: #2A6FDF;
-@radio-button-color-outline-hover: #2A6FDF;
-@radio-button-border-color-checked: #0041BE;
-@radio-button-color-outline-checked: #0041BE;
-@radio-button-background-color-disabled: #F5F5F5;
-@radio-button-color-disabled: #BBBBBB;
+@radio-button-border-color-hover: @primary-color-hover;
+@radio-button-color-outline-hover: @primary-color-hover;
+@radio-button-border-color-checked: @primary-color;
+@radio-button-color-outline-checked: @primary-color;
+@radio-button-background-color-disabled: @bg-color-disabled;
+@radio-button-color-disabled: @text-level-4-color;
 @radio-button-border-color-outline-disabled-checked: #C8CBD0;
 @radio-button-background-color-outline-disabled-checked: #D7DBE2;
-@radio-button-color-disabled-checked: #FFFFFF;
+@radio-button-color-disabled-checked: @text-anti-primary-color;
 
-@radio-button-color-solid-checked: #FFFFFF;
-@radio-button-background-color-solid-checked: #0052D9;
+@radio-button-color-solid-checked: @border-level-2-color;
+@radio-button-background-color-solid-checked: @primary-color;
 @radio-button-border-color-solid-disabled-checked: #AAC5F2;
 @radio-button-background-color-solid-disabled-checked: #AAC5F2;
 
@@ -45,18 +45,18 @@
 @radio-size: 16px;
 @radio-dot-size: @radio-size/2;
 @radio-margin-right: @spacer;
-@radio-button-border-radius: 2px;
+@radio-button-border-radius: @border-radius;
 
 // 字号
 @radio-font: @font-size-base;
 @radio-button-font-size-small: @font-size-s;
-@radio-button-font-size-default: @font-size-base;
+@radio-button-font-size-medium: @font-size-base;
 @radio-button-font-size-large: @font-size-l;
 
 // padding
 @radio-input-label-spacer: @spacer;
 @radio-button-padding-small: 3px 8px;
-@radio-button-padding-default: 5px 16px;
+@radio-button-padding-medium: 5px 16px;
 @radio-button-padding-large: 8px 24px;
 
 @radio-button-border: 1px solid;
