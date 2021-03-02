@@ -55,13 +55,14 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-[class^='@{prefix}'],
-[class^='@{prefix}'] * ,
-[class^='@{prefix}']::before,
-[class^='@{prefix}']::after {
+[class^='@{prefix}-'],
+[class^='@{prefix}-'] * ,
+[class^='@{prefix}-']::before,
+[class^='@{prefix}-']::after {
   box-sizing: border-box;
   font-family: @font-family;
 }
+
 
 img,
 video {
@@ -116,7 +117,6 @@ a,
 input,
 button,
 textarea {
-
   &:focus {
     outline: none;
   }

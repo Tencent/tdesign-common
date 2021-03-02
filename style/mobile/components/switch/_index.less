@@ -1,5 +1,4 @@
 @import "./_var.less";
-
 @import "../../mixins/_index.less";
 
 .@{prefix}-switch {
@@ -25,7 +24,7 @@
     line-height: @switch-height;
     border-radius: @switch-border-radius;
     vertical-align: middle;
-    border: @switch-border;
+    border: 0;
     background-color: @switch-background-color;
     cursor: pointer;
     user-select: none;
@@ -35,12 +34,13 @@
       content: "";
       width: @switch-node-width;
       height: @switch-node-height;
+      border: 0;
       border-radius: 100%;
       background-color: @switch-node-background-color;
       box-shadow: @switch-node-box-shadow;
       position: absolute;
-      left: 1px;
-      top: 1px;
+      left: 2px;
+      top: 2px;
       cursor: pointer;
       transition: left .3s ease-in-out, width .3s ease-in-out;
     }

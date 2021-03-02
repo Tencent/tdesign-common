@@ -1,9 +1,7 @@
 @import "./_var.less";
-
 @import "../../mixins/_index.less";
 
 .@{prefix}-cell-group {
-
   &-container {
     background-color: @cell-group-background-color;
   }
@@ -14,6 +12,14 @@
     background-color: @cell-group-title-background-color;
     font-size: @cell-group-title-font-size;
     line-height: @cell-group-title-line-height;
+  }
+
+  &--summary {
+    font-size: 14px;
+    color: @cell-group-title-color;
+    padding: @cell-group-title-padding;
+    line-height: @cell-group-title-line-height;
+    background-color: transparent;
   }
 }
 

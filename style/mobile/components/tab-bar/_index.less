@@ -16,7 +16,6 @@
     .hairline-top(@color: @tab-bar-border-color);
   }
   .@{tab-bar-cls}-item:first-child {
-
     &::before {
       border: unset;
     }
@@ -31,6 +30,10 @@
   cursor: pointer;
   user-select: none;
   position: relative;
+
+  &.@{prefix}-no-border::before {
+    border: unset;
+  }
 
   &:hover {
     background-color: @tab-bar-hover-bg-color;
@@ -49,20 +52,29 @@
     justify-content: center;
 
     &.@{prefix}-is-checked {
-      color: @tab-bar-active-color;
+      .@{tab-bar-cls}-item__text,
+      .@{tab-bar-cls}-item__icon {
+        color: @tab-bar-active-color;
+      }
       .@{tab-bar-cls}-item__icon-menu {
         background-color: @tab-bar-active-color;
       }
     }
 
     &.t-size-s {
-      font-size: 12px;
+      .@{tab-bar-cls}-item__text {
+        font-size: 12px;
+        line-height: 1;
+        margin-top: 2px;
+      }
     }
   }
 
   &__text {
     display: flex;
     align-items: center;
+    font-size: 16px;
+    color: rgba(0, 0, 0, .6);
   }
 
   &__icon-menu {

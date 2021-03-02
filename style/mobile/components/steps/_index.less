@@ -1,5 +1,4 @@
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-steps {
@@ -15,7 +14,12 @@
       margin-top: @spacer;
     }
 
+    .connector-default(horizontal);
+
     .@{prefix}-steps-item {
+      &--default {
+        .default-number-status(default);
+      }
 
       &--finish {
         .default-number-status(finish);
@@ -28,12 +32,12 @@
       &--error {
         .default-number-status(error);
         .@{prefix}-steps-item-title {
-          color: @error-color;
+          color: @step-error-title-color;
         }
       }
-    }
-    .connector-default(horizontal);
 
+
+    }
   }
 
   // 垂直
@@ -63,11 +67,18 @@
       &-description {
         text-align: left;
       }
+
+      &-extra {
+        margin-bottom: 19px;
+      }
     }
 
     &.@{prefix}-steps--default-anchor {
 
       .@{prefix}-steps-item {
+        &--default {
+          .default-number-status(default);
+        }
 
         &--finish {
           .default-number-status(finish);
@@ -91,9 +102,7 @@
     &.@{prefix}-steps--dot-anchor {
 
       .@{prefix}-steps-item {
-
         &-icon {
-
           &__dot {
             display: block;
             width: @dot-steps-anchor-width;
