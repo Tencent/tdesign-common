@@ -41,7 +41,7 @@
   white-space: nowrap;
   font-size: 12px;
   height: 22px;
-  line-height: 22px;
+  line-height: 20px;
   padding: 0px 12px;
   font-size: 12px;
   max-width: 120px;
@@ -69,46 +69,52 @@
     width: 100%;
   }
 
-  .@{prefix}__icon {
+  .@{prefix}-icon {
     font-size: @tag-medium-font-size;
   }
 
-  .@{prefix}__icon-close {
+  .@{prefix}-icon-close {
     font-size: @tag-small-font-size;
     border-radius: @border-radius-50;
     cursor: pointer;
+    position: relative;
+    top: -1px;
+    float: none;
+    margin-left: @spacer-2;
   }
-
-
-
 
   &.@{prefix}-tag--size {
     &-small {
-      height: 19px;
-      line-height: 19px;
+      height: 22px;
+      line-height: 20px;
       padding: 0px 8px;
       font-size: 10px;
 
       .@{prefix}-icon {
         font-size: 10px;
       }
+
+      .@{prefix}-icon-close {
+        margin-left: @spacer-1;
+      }
     }
 
     &-medium {
-      height: 22px;
+      height: 24px;
       line-height: 22px;
-      padding: 0px 12px;
+      padding: 0px 11px;
       font-size: 12px;
 
       .@{prefix}-icon {
         font-size: 12px;
+        line-height: 22px;
       }
     }
 
     &-large {
-      height: 29px;
-      line-height: 29px;
-      padding: 0px 12px;
+      height: 30px;
+      line-height: 28px;
+      padding: 0px 15px;
       font-size: 14px;
 
       .@{prefix}-icon {

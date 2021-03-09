@@ -31,7 +31,7 @@
   @{attr}: e(@attr-prepend) @bg-color-block;
 
   &:active {
-    @{attr}: e(@attr-prepend) @bg-color-block;
+    @{attr}: e(@attr-prepend) @bg-color-active;
   }
 
   &.t-is-disabled {
@@ -69,9 +69,9 @@
 .button-attr-border-color-gray(@attr: 'border', @attr-prepend: '1px solid') {
   @{attr}: e(@attr-prepend) @border-level-2-color;
 
-  &:active {
-    @{attr}: e(@attr-prepend) @primary-color-active;
-  }
+  // &:active {
+  //   @{attr}: e(@attr-prepend) @primary-color-active;
+  // }
 
   &.t-is-disabled {
     @{attr}: e(@attr-prepend) @border-level-2-color;
@@ -82,9 +82,9 @@
 .button-attr-color-text(@attr: color, @attr-prepend: '') {
   @{attr}: e(@attr-prepend) @text-level-1-color;
 
-  &:active {
-    @{attr}: e(@attr-prepend) @primary-color-active;
-  }
+  // &:active {
+  //   @{attr}: e(@attr-prepend) @primary-color-active;
+  // }
 
   &.t-is-disabled {
     @{attr}: e(@attr-prepend) @text-color-disabled;
@@ -115,8 +115,19 @@
   /* stylelint-disable-next-line */
   -webkit-appearance: none;
 
-  .@{prefix}-icon + .@{prefix}-button__text {
-    margin-left: @spacer;
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__text {
+    line-height: 1.5;
+  }
+
+  .@{prefix}-icon+&__text {
+    margin-left: @spacer-2;
   }
 
   // 主要按钮
@@ -129,10 +140,12 @@
       .button-attr-color-danger(background-color);
       .button-attr-color-danger(border, "1px solid");
     }
+
     &.@{prefix}-is-ghost {
       .button-attr-color-none(background-color);
       .button-attr-color-primary(color);
       .button-attr-color-primary(border, "1px solid");
+
       &.@{prefix}-button--theme-danger {
         .button-attr-color-none(background-color);
         .button-attr-color-danger(color);
@@ -144,26 +157,30 @@
   // 次要按钮
   &--variant-outline {
     .button-attr-color-text();
-    .button-attr-color-primary(border, "1px solid");
     .button-attr-color-white-bg(background-color);
     .button-attr-border-color-gray(border, "1px solid");
+
     &.@{prefix}-button--theme-primary {
       .button-attr-color-primary(color);
       .button-attr-color-primary(border, "1px solid");
     }
+
     &.@{prefix}-button--theme-danger {
       .button-attr-color-danger(color);
       .button-attr-color-danger(border, "1px solid");
     }
+
     &.@{prefix}-is-ghost {
       .button-attr-color-none(background-color);
       .button-attr-color-white-ghost(color);
       .button-attr-color-white-ghost(border, "1px solid");
+
       &.@{prefix}-button--theme-primary {
         .button-attr-color-none(background-color);
         .button-attr-color-primary(color);
         .button-attr-color-primary(border, "1px solid");
       }
+
       &.@{prefix}-button--theme-danger {
         .button-attr-color-none(background-color);
         .button-attr-color-danger(color);
@@ -179,14 +196,20 @@
     border: 0;
     height: auto;
     line-height: auto;
+    margin: 0;
+    padding: 0;
+
     &.@{prefix}-button--theme-danger {
       .button-attr-color-danger(color);
     }
+
     &.@{prefix}-is-ghost {
       .button-attr-color-white-ghost(color);
+
       &.@{prefix}-button--theme-primary {
         .button-attr-color-primary(color);
       }
+
       &.@{prefix}-button--theme-danger {
         .button-attr-color-danger(color);
       }
@@ -203,9 +226,13 @@
     font-size: @btn-font-s;
     padding-left: @btn-padding-horizontal-s;
     padding-right: @btn-padding-horizontal-s;
-  
+
     .@{prefix}-icon {
       font-size: @btn-font-s;
+    }
+    
+    .@{prefix}-button__text {
+      line-height: 22px;
     }
   }
 
@@ -216,10 +243,6 @@
     font-size: @btn-font-l;
     padding-left: @btn-padding-horizontal-l;
     padding-right: @btn-padding-horizontal-l;
-  
-    .@{prefix}-icon {
-      font-size: @btn-font-l;
-    }
   }
 
   &.@{prefix}-is-block {
@@ -230,9 +253,11 @@
   &--icon-only:not(&--shape-round) {
     width: @btn-height-default;
     padding: 0;
+
     &.@{prefix}-size-s {
       width: @btn-height-s;
     }
+
     &.@{prefix}-size-l {
       width: @btn-height-l;
     }

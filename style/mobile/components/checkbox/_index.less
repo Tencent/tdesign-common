@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    position: relative;
     &.@{prefix}-is-checked {
       font-size: @checkbox-icon-checked;
       justify-content: center;
@@ -40,5 +41,12 @@
     font-size: @checkbox-content-font-size;
     color: @checkbox-content-color;
     margin-top: 4px;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
