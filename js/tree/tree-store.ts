@@ -124,7 +124,7 @@ export class TreeStore {
   }
 
   // 获取指定节点的父节点
-  public getParent(value: TreeNodeValue): TreeNode {
+  public getParent(value: TypeTargetNode): TreeNode {
     let parent = null;
     const node = this.getNode(value);
     if (node) {
@@ -134,7 +134,7 @@ export class TreeStore {
   }
 
   // 获取指定节点的所有父节点
-  public getParents(value: TreeNodeValue): TreeNode[] {
+  public getParents(value: TypeTargetNode): TreeNode[] {
     const node = this.getNode(value);
     let parents: TreeNode[] = [];
     if (node) {
@@ -144,7 +144,7 @@ export class TreeStore {
   }
 
   // 获取指定节点在其所在 children 中的位置
-  public getNodeIndex(value: TreeNodeValue): number {
+  public getNodeIndex(value: TypeTargetNode): number {
     const node = this.getNode(value);
     let index = -1;
     if (node) {
@@ -221,7 +221,7 @@ export class TreeStore {
    * appendNodes(TreeNode, TreeNode)
    */
   public appendNodes(
-    para?: TreeNodeValue | TreeNode | TypeTreeNodeData,
+    para?: TypeTargetNode | TypeTreeNodeData,
     item?: TypeTreeNodeData | TreeNode,
   ): void {
     const spec = parseNodeData(this, para, item);
@@ -246,7 +246,7 @@ export class TreeStore {
   }
 
   // 在目标节点之前插入节点
-  public insertBefore(value: TreeNodeValue, item: TypeTreeNodeData): void {
+  public insertBefore(value: TypeTargetNode, item: TypeTreeNodeData): void {
     const node = this.getNode(value);
     if (node) {
       node.insertBefore(item);
@@ -254,7 +254,7 @@ export class TreeStore {
   }
 
   // 在目标节点之后插入节点
-  public insertAfter(value: TreeNodeValue, item: TypeTreeNodeData): void {
+  public insertAfter(value: TypeTargetNode, item: TypeTreeNodeData): void {
     const node = this.getNode(value);
     if (node) {
       node.insertAfter(item);
@@ -500,8 +500,8 @@ export class TreeStore {
   }
 
   // 移除指定节点
-  public remove(para?: TreeNodeValue): void {
-    const node = this.getNode(para);
+  public remove(value?: TypeTargetNode): void {
+    const node = this.getNode(value);
     if (node) {
       node.remove();
     }
