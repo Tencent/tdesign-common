@@ -7,17 +7,17 @@ import {
   TypeIdMap,
   TypeTimer,
   TypeTargetNode,
-  ITreeNodeData,
-  ITreeStoreOptions,
-  ITreeFilterOptions,
-  IRelatedNodesOptions,
-  ITreeEventState,
+  TypeTreeNodeData,
+  TypeTreeStoreOptions,
+  TypeTreeFilterOptions,
+  TypeRelatedNodesOptions,
+  TypeTreeEventState,
 } from './types';
 
 function parseNodeData(
   tree: TreeStore,
-  para: TreeNodeValue | TreeNode | ITreeNodeData,
-  item: ITreeNodeData | TreeNode,
+  para: TreeNodeValue | TreeNode | TypeTreeNodeData,
+  item: TypeTreeNodeData | TreeNode,
 ) {
   let value = '';
   let node = null;
@@ -48,7 +48,7 @@ export class TreeStore {
   // 所有节点映射
   public nodeMap: Map<string, TreeNode>;
   // 配置选项
-  public config: ITreeStoreOptions;
+  public config: TypeTreeStoreOptions;
   // 活动节点集合
   public activedMap: TypeIdMap;
   // 数据被更新的节点集合
@@ -68,8 +68,8 @@ export class TreeStore {
   // 过滤器函数
   public filter: Function;
 
-  public constructor(options: ITreeStoreOptions) {
-    const config: ITreeStoreOptions = {
+  public constructor(options: TypeTreeStoreOptions) {
+    const config: TypeTreeStoreOptions = {
       keys: {},
       expandAll: false,
       expandMutex: false,
@@ -98,7 +98,7 @@ export class TreeStore {
   }
 
   // 配置选项
-  public setConfig(options: ITreeStoreOptions) {
+  public setConfig(options: TypeTreeStoreOptions) {
     Object.assign(this.config, options);
   }
 
@@ -156,7 +156,7 @@ export class TreeStore {
   // 获取所有符合条件的节点
   public getNodes(
     item?: TypeTargetNode,
-    options?: ITreeFilterOptions,
+    options?: TypeTreeFilterOptions,
   ): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
@@ -175,7 +175,7 @@ export class TreeStore {
     }
 
     if (options) {
-      const conf: ITreeFilterOptions = {
+      const conf: TypeTreeFilterOptions = {
         level: Infinity,
         ...options,
       };
@@ -202,7 +202,7 @@ export class TreeStore {
   }
 
   // 给树添加节点数据
-  public append(list: ITreeNodeData[]): void {
+  public append(list: TypeTreeNodeData[]): void {
     list.forEach((item) => {
       const node = new TreeNode(this, item);
       this.children.push(node);
@@ -221,8 +221,8 @@ export class TreeStore {
    * appendNodes(TreeNode, TreeNode)
    */
   public appendNodes(
-    para?: TreeNodeValue | TreeNode | ITreeNodeData,
-    item?: ITreeNodeData | TreeNode,
+    para?: TreeNodeValue | TreeNode | TypeTreeNodeData,
+    item?: TypeTreeNodeData | TreeNode,
   ): void {
     const spec = parseNodeData(this, para, item);
     if (spec.data) {
@@ -246,7 +246,7 @@ export class TreeStore {
   }
 
   // 在目标节点之前插入节点
-  public insertBefore(value: TreeNodeValue, item: ITreeNodeData): void {
+  public insertBefore(value: TreeNodeValue, item: TypeTreeNodeData): void {
     const node = this.getNode(value);
     if (node) {
       node.insertBefore(item);
@@ -254,7 +254,7 @@ export class TreeStore {
   }
 
   // 在目标节点之后插入节点
-  public insertAfter(value: TreeNodeValue, item: ITreeNodeData): void {
+  public insertAfter(value: TreeNodeValue, item: TypeTreeNodeData): void {
     const node = this.getNode(value);
     if (node) {
       node.insertAfter(item);
@@ -519,7 +519,7 @@ export class TreeStore {
   // 实现最小遍历集合
   public getRelatedNodes(
     list: TreeNodeValue[],
-    options?: IRelatedNodesOptions,
+    options?: TypeRelatedNodesOptions,
   ): TreeNode[] {
     const conf = {
       withParents: true,
@@ -548,7 +548,7 @@ export class TreeStore {
   }
 
   // 触发绑定的事件
-  public emit(name: string, state?: ITreeEventState): void {
+  public emit(name: string, state?: TypeTreeEventState): void {
     const config = this.config || {};
     const methodName = camelCase(`on-${name}`);
     const method = config[methodName];

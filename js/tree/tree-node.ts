@@ -5,9 +5,9 @@ import {
   TreeNodeState,
   TypeIdMap,
   TypeTreeItem,
-  ISettingOptions,
-  ITreeNodeModel,
-  ITreeNodeData,
+  TypeSettingOptions,
+  TypeTreeNodeModel,
+  TypeTreeNodeData,
 } from './types';
 
 const { hasOwnProperty } = Object.prototype;
@@ -31,7 +31,7 @@ export class TreeNode {
   // 节点文本
   public label: string;
   // 节点数据
-  public dataset: ITreeNodeData;
+  public dataset: TypeTreeNodeData;
   // 父节点
   public parent: TreeNode;
   // 子节点列表
@@ -71,7 +71,7 @@ export class TreeNode {
 
   public constructor(
     tree: TreeStore,
-    data?: ITreeNodeData,
+    data?: TypeTreeNodeData,
     parent?: TreeNode,
   ) {
     this.dataset = data;
@@ -195,7 +195,7 @@ export class TreeNode {
 
   /* ***** 节点操作-相关方法 ***** */
   // 追加数据
-  public append(data: ITreeNodeData | ITreeNodeData[]): void {
+  public append(data: TypeTreeNodeData | TypeTreeNodeData[]): void {
     const list = [];
     if (!Array.isArray(data)) {
       list.push(data);
@@ -619,7 +619,7 @@ export class TreeNode {
   }
 
   // 设置节点展开状态
-  public setExpanded(expanded: boolean, opts?: ISettingOptions): TreeNodeValue[] {
+  public setExpanded(expanded: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const options = {
       directly: false,
@@ -674,7 +674,7 @@ export class TreeNode {
   }
 
   // 设置节点激活态
-  public setActived(actived: boolean, opts?: ISettingOptions): TreeNodeValue[] {
+  public setActived(actived: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const options = {
       directly: false,
@@ -708,7 +708,7 @@ export class TreeNode {
 
   // 更新单个节点的选中态
   // 返回树选中列表
-  public setChecked(checked: boolean, opts?: ISettingOptions): TreeNodeValue[] {
+  public setChecked(checked: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const config = tree.config || {};
     const options = {
@@ -834,8 +834,8 @@ export class TreeNode {
     return list;
   }
 
-  // TreeNode 对象 => ITreeNodeModel 对象
-  public getTreeNodeModel(): ITreeNodeModel {
+  // TreeNode 对象 => TypeTreeNodeModel 对象
+  public getTreeNodeModel(): TypeTreeNodeModel {
     const {
       dataset,
       actived,
@@ -857,7 +857,7 @@ export class TreeNode {
       isLast,
       isLeaf,
     } = this;
-    const nodeModel: ITreeNodeModel = {
+    const nodeModel: TypeTreeNodeModel = {
       data: dataset,
       actived,
       expanded,
@@ -883,28 +883,28 @@ export class TreeNode {
 
   /* ***** 对外暴露方法 ***** */
   // 返回路径节点数据集合
-  public getPathData = (): ITreeNodeData[] => {
+  public getPathData = (): TypeTreeNodeData[] => {
     const nodes = this.getPath();
     return nodes.map(node => node.dataset);
   };
 
   // 获取单个父节点数据
-  public getParentData = (): ITreeNodeData => (this.parent?.dataset);
+  public getParentData = (): TypeTreeNodeData => (this.parent?.dataset);
 
   // 获取所有父节点数据
-  public getParentsData = (): ITreeNodeData[] => {
+  public getParentsData = (): TypeTreeNodeData[] => {
     const nodes = this.getParents();
     return nodes.map(node => node.dataset);
   };
 
   // 获取根节点
-  public getRootData = (): ITreeNodeData => {
+  public getRootData = (): TypeTreeNodeData => {
     const root = this.getRoot();
     return root?.dataset;
   };
 
   // 获取兄弟节点，包含自己在内
-  public getSiblingsData = (): ITreeNodeData[] => {
+  public getSiblingsData = (): TypeTreeNodeData[] => {
     const nodes = this.getSiblings();
     return nodes.map(node => node.dataset);
   };

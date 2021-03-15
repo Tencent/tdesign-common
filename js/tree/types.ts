@@ -161,37 +161,37 @@ export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
 
 export type TypeTimer = number;
 
-export interface ISettingOptions {
+export interface TypeSettingOptions {
   directly?: boolean;
 }
 
-export interface IRelatedNodesOptions {
+export interface TypeRelatedNodesOptions {
   withParents?: boolean;
 }
 
-export interface ITreeFilterOptions {
+export interface TypeTreeFilterOptions {
   level?: number;
   filter?: Function;
   props?: TreeNodeState;
 }
 
-export interface ITreeNodeData extends TreeNodeState {
-  children?: ITreeNodeData[];
+export interface TypeTreeNodeData extends TreeNodeState {
+  children?: TypeTreeNodeData[];
   [key: string]: unknown;
 };
 
-export type TypeTreeItem = ITreeNodeData | TreeNode;
+export type TypeTreeItem = TypeTreeNodeData | TreeNode;
 
-export type ITreeNodeModel = TreeNodeModel<ITreeNodeData>
+export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>
 
-export interface ITreeEventState {
+export interface TypeTreeEventState {
   node?: TreeNode;
   nodes?: TreeNode[];
   map?: TypeIdMap;
-  data?: ITreeNodeData[];
+  data?: TypeTreeNodeData[];
 }
 
-export interface ITreeStoreOptions {
+export interface TypeTreeStoreOptions {
   // 自动生成的 value 的前缀
   prefix?: string;
   // 数据字段映射
@@ -223,7 +223,7 @@ export interface ITreeStoreOptions {
   valueMode?: TypeValueMode;
   // 节点过滤函数
   // filter?: (node: TreeNode) => boolean;
-  filter?: (node: TreeNodeModel<ITreeNodeData>) => boolean;
+  filter?: (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
   // load函数运行后触发
   onLoad?: Function;
   // 节点增删改查后触发
