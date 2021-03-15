@@ -72,7 +72,7 @@ export interface TreeNodeState {
   activable?: boolean;
 };
 
-export interface TreeNodeModel<DataOption> extends TreeNodeState {
+export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeState {
   /**
    * 节点数据
    */
@@ -159,7 +159,7 @@ export type TypeIdMap = Map<TreeNodeValue, boolean>;
 
 export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
 
-export type TypeTimer = ReturnType<typeof setTimeout>;
+export type TypeTimer = number;
 
 export interface ISettingOptions {
   directly?: boolean;

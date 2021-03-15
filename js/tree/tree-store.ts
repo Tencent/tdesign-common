@@ -8,7 +8,6 @@ import {
   TypeTimer,
   TypeTargetNode,
   ITreeNodeData,
-  ITreeNodeModel,
   ITreeStoreOptions,
   ITreeFilterOptions,
   IRelatedNodesOptions,

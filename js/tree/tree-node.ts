@@ -884,48 +884,29 @@ export class TreeNode {
   /* ***** 对外暴露方法 ***** */
   // 返回路径节点数据集合
   public getPathData = (): ITreeNodeData[] => {
-    const nodes = this.getParents();
-    nodes.unshift(this);
-    const pathDataList = nodes.reverse().map(node => node.dataset);
-    return pathDataList;
+    const nodes = this.getPath();
+    return nodes.map(node => node.dataset);
   };
 
   // 获取单个父节点数据
-  public getParentData = (): ITreeNodeData => this.parent && this.parent.dataset;
+  public getParentData = (): ITreeNodeData => (this.parent?.dataset);
 
   // 获取所有父节点数据
   public getParentsData = (): ITreeNodeData[] => {
-    const parentsData = [];
-    let node = this.parent;
-    while (node) {
-      parentsData.push(node.dataset);
-      node = node.parent;
-    }
-    return parentsData;
+    const nodes = this.getParents();
+    return nodes.map(node => node.dataset);
   };
 
   // 获取根节点
   public getRootData = (): ITreeNodeData => {
-    const parents = this.getParents();
-    return parents[parents.length - 1].dataset || null;
+    const root = this.getRoot();
+    return root?.dataset;
   };
 
   // 获取兄弟节点，包含自己在内
   public getSiblingsData = (): ITreeNodeData[] => {
-    const { parent, tree } = this;
-    let list = [];
-    if (parent) {
-      if (Array.isArray(parent.children)) {
-        list = parent.children;
-      }
-    } else if (tree) {
-      list = tree.children;
-    }
-    const dataList: ITreeNodeData[] = [];
-    list.forEach((node: TreeNode) => {
-      dataList.push(node.dataset);
-    });
-    return dataList;
+    const nodes = this.getSiblings();
+    return nodes.map(node => node.dataset);
   };
 }
 
