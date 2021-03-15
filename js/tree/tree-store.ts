@@ -19,10 +19,10 @@ function parseNodeData(
   para: TreeNodeValue | TreeNode | TypeTreeNodeData,
   item: TypeTreeNodeData | TreeNode,
 ) {
-  let value = '';
+  let value: TreeNodeValue = '';
   let node = null;
   let data = null;
-  if (typeof para === 'string') {
+  if (typeof para === 'string' || typeof para === 'number') {
     value = para;
     data = item;
     node = tree.getNode(value);

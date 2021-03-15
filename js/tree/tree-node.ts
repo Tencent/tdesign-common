@@ -417,7 +417,7 @@ export class TreeNode {
   // 获取兄弟节点，包含自己在内
   public getSiblings(): TreeNode[] {
     const { parent, tree } = this;
-    let list = [];
+    let list: TreeNode[] = [];
     if (parent) {
       if (Array.isArray(parent.children)) {
         list = parent.children;
