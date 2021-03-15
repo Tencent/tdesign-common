@@ -1,9 +1,10 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
+
+@form-item-height: 40px;
 
 .@{prefix}-form {
   font-size: 14px;
@@ -20,7 +21,7 @@
   &__label {
     display: flex;
     flex-grow: 0;
-    height: 40px;
+    min-height: @form-item-height;
     align-items: center;
     flex-direction: row;
     padding-right: 24px;
@@ -36,18 +37,16 @@
 
 
     &--required {
-
       label::before {
         display: inline-block;
         margin-right: 4px;
-        color: @error-color;
+        color: @form-color-error;
         line-height: 1;
         content: "*";
       }
     }
 
     &--colon {
-
       label::after {
         content: ":";
         position: relative;
@@ -59,55 +58,55 @@
   &__controls {
     display: block;
     flex: 1 1 0;
-    height: 40px;
+    min-height: @form-item-height;
     align-items: center;
 
     &--content {
       display: flex;
-      height: 40px;
+      min-height: @form-item-height;
       align-items: center;
     }
   }
 
   &__controls.@{prefix}-is-success {
-    .@{prefix}-input__inner {
-      border-color: @@borderColor;
-      @borderColor: "input-border-color-success";
-    }
-    .@{prefix}-input__extra {
-      color: @@fontColor;
-      @fontColor: "input-extra-color-success";
-    }
+    //.@{prefix}-input__inner {
+    //  border-color: @@borderColor;
+    //  @borderColor: "form-color-success";
+    //}
+    //.@{prefix}-input__extra {
+    //  color: @@fontColor;
+    //  @fontColor: "form-color-success";
+    //}
     .@{prefix}-icon {
-      color: @success-color;
+      color: @form-color-success;
     }
   }
 
   &__controls.@{prefix}-is-error {
     .@{prefix}-input__inner {
       border-color: @@borderColor;
-      @borderColor: "input-border-color-error";
+      @borderColor: "form-color-error";
     }
     .@{prefix}-input__extra {
       color: @@fontColor;
-      @fontColor: "input-extra-color-error";
+      @fontColor: "form-color-error";
     }
     .@{prefix}-icon {
-      color: @error-color;
+      color: @form-color-error;
     }
   }
 
   &__controls.@{prefix}-is-warning {
     .@{prefix}-input__inner {
       border-color: @@borderColor;
-      @borderColor: "input-border-color-warning";
+      @borderColor: "form-color-warning";
     }
     .@{prefix}-input__extra {
       color: @@fontColor;
-      @fontColor: "input-extra-color-warning";
+      @fontColor: "form-color-warning";
     }
     .@{prefix}-icon {
-      color: @warning-color;
+      color: @form-color-warning;
     }
   }
 

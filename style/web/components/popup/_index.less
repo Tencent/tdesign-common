@@ -1,13 +1,13 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 .@{prefix}-popup {
   color: @popup-text-color;
   display: inline-block;
+  z-index: 5500;
 
   &-content {
     position: relative;

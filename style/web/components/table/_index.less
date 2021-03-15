@@ -1,6 +1,18 @@
 @import "../../base.less";
-
 @import "./_var.less";
+@import "../../mixins/_text.less";
+
+.bordered {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-left: 1px solid @table-border-color;
+  pointer-events: none;
+}
 
 .@{prefix}-table {
   font-size: @table-font-size;
@@ -31,19 +43,30 @@
   thead td,
   th {
     color: @table-head-text-color;
+    font-weight: bold;
   }
 
   td {
-
     > a {
       text-decoration: none;
       color: @table-link-text-color;
+    }
+
+    &.align-left {
+      text-align: left;
+    }
+
+    &.align-right {
+      text-align: right;
+    }
+
+    &.text-ellipsis {
+      .text-ellipsis()
     }
   }
 
   // 紧凑型表格
   &.@{prefix}-size-s {
-
     th,
     td {
       padding: @table-padding-small;
@@ -52,7 +75,6 @@
 
   // 宽松型表格
   &.@{prefix}-size-l {
-
     th,
     td {
       padding: @table-padding-large;
@@ -81,25 +103,53 @@
       border-bottom: 0;
 
       th {
-        border-right: 1px solid @table-border-color;
+        border-left: 1px solid @table-border-color;
         border-bottom: 1px solid @table-border-color;
 
-        &:last-child {
-          border-right: 0;
+        &:first-child {
+
+          border-left: 0;
+
+          &::before {
+            border-left: 0;
+          }
         }
       }
 
       td {
-        border-right: 1px solid @table-border-color;
+        border-left: 1px solid @table-border-color;
         border-bottom: 1px solid @table-border-color;
 
-        &:last-child {
-          border-right: 0;
+        &.t-table__cell--fixed-left-last {
+          & + td {
+            border-left: 0px;
+          }
+
+          &::before {
+            border-right: 1px solid @table-border-color;;
+          }
+        }
+
+        &.@{prefix}-table__cell--fixed-left,
+        &.@{prefix}-table__cell--fixed-right {
+          border-left: 0px;
+
+          &::before {
+            .bordered();
+          }
+        }
+
+        &:first-child {
+          border-left: 0;
+
+          &::before {
+            border-left: 0;
+          }
         }
       }
     }
 
-    .@{prefix}-table--loading, .@{prefix}-table--empty {
+    .@{prefix}-table--loading {
       border-bottom: 1px solid @table-border-color;
     }
 
@@ -114,9 +164,7 @@
         border-bottom: 1px solid @table-border-color;
 
         tr {
-
           &:last-child {
-
             td {
               border-bottom: 0;
             }
@@ -128,11 +176,8 @@
 
   // 斑马线表格
   &--striped {
-
     tbody {
-
       tr {
-
         &:nth-of-type(odd) {
           background-color: @table-highlight-bg-color;
         }
@@ -140,9 +185,7 @@
     }
 
     &.@{prefix}-table--hoverable {
-
       tbody {
-
         tr {
           transition: background-color .3s ease-in;
 
@@ -156,14 +199,12 @@
 
   // 可悬停表格
   &--hoverable {
-
     tbody {
-
       tr {
         transition: background-color .3s ease-in;
 
         &:hover {
-          background-color: @table-highlight-bg-color;
+          background-color: @table-highlight-dark-bg-color;
         }
       }
     }
@@ -171,9 +212,7 @@
 
   // 文本顶端对齐
   &.@{prefix}-table-valign__top {
-
     tbody {
-
       td {
         vertical-align: top;
       }
@@ -188,7 +227,6 @@
   // 20200728 优化表头固定和列固定
   // 表头固定表格
   &__header--fixed {
-
     table {
       table-layout: fixed;
     }
@@ -251,14 +289,22 @@
       position: relative;
     }
 
+    &.@{prefix}-table--striped {
+      tbody tr:nth-of-type(odd) {
+        .@{prefix}-table__cell--fixed-left,
+        .@{prefix}-table__cell--fixed-right {
+          background-color: @table-highlight-bg-color;
+        }
+      }
+    }
+
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
       z-index: 1;
       background-color: #fff;
       transition: background-color .3s ease-in;
     }
-
-    tbody tr:hover {
+    &.@{prefix}-table--hoverable tbody tr:hover {
       .@{prefix}-table__cell--fixed-left,
       .@{prefix}-table__cell--fixed-right {
         background-color: @table-highlight-dark-bg-color;
@@ -266,14 +312,13 @@
     }
 
     .@{prefix}-table__cell--fixed-left-last {
-
       &:after {
         position: absolute;
         top: 0;
         right: 0;
         bottom: -1px;
         content: "";
-        width: 20px;
+        width: @table-fixed-cell-box-shadow-width;
         transform: translateX(100%);
         transition: box-shadow .3s;
         pointer-events: none;
@@ -281,14 +326,13 @@
     }
 
     .@{prefix}-table__cell--fixed-right-first {
-
       &:after {
         position: absolute;
         top: 0;
         left: 0;
         bottom: -1px;
         content: "";
-        width: 20px;
+        width: @table-fixed-cell-box-shadow-width;
         transform: translateX(-100%);
         transition: box-shadow .3s;
         pointer-events: none;
@@ -297,16 +341,14 @@
 
     &.@{prefix}-table--has-fixed {
       .@{prefix}-table__cell--fixed-left-last {
-
         &:after {
-          box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, .1);
+          box-shadow: inset 10px 0 10px @table-fixed-cell-box-shadow-spread-radius rgba(0, 0, 0, .1);
         }
       }
 
       .@{prefix}-table__cell--fixed-right-first {
-
         &:after {
-          box-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, .1);
+          box-shadow: inset -10px 0 10px @table-fixed-cell-box-shadow-spread-radius rgba(0, 0, 0, .1);
         }
       }
     }
@@ -416,7 +458,6 @@
 }
 
 @keyframes tTableProgressbar {
-
   0% {
     width: 0;
   }

@@ -1,6 +1,6 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-@import "../../base.less";
 
+@import "../../base.less";
 @import "./_var.less";
 
 
@@ -30,7 +30,7 @@
       display: inline-block; 
       &.@{prefix}-is-active {
         color: @tab-nav-active-color;
-        font-weight: @tab-nav-active-font-weight;
+        font-family: @font-family-medium;
       }
       &.@{prefix}-is-disabled {
         color: @tab-nav-disabled-color;
@@ -61,11 +61,15 @@
     }
 
     &--scroll {
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
+      margin-bottom: -10px;
       .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
+      }
+      .@{prefix}-tabs__nav-wrap {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 10px;
       }
     }
     
@@ -79,8 +83,14 @@
   &--horizontal {
     display: flex;
     .@{prefix}-tabs__nav--scroll {
-      overflow-y: auto;
-      overflow-x: hidden;
+      margin-bottom: 0;
+      margin-right: -10px;
+      .@{prefix}-tabs__nav-wrap {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-right: 10px;
+      }
     }
     .@{prefix}-tabs__content {
       flex: 1;
@@ -89,6 +99,7 @@
       background-color: @tab-nav-horizontal-bg-color;
       
       &-wrap {
+        
         flex-direction: column;
       }
       

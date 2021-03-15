@@ -1,0 +1,492 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+
+.@{prefix}-time-picker {
+  width: 320px;
+  border: @border-level-1-color;
+  background: @bg-color-block;
+  border-radius: @border-radius;
+  display: inline-block;
+  position: relative;
+  font-size: 1em;
+
+  &.@{prefix}-is-focus {
+    box-shadow: @shadow-2;
+  }
+
+  &.@{prefix}-is-disabled {
+    .disabled-tag;
+  }
+
+  & > *:focus,
+  & > *:active {
+    outline: 0;
+  }
+
+  &__custom-icon {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1.8em;
+    .flex-center;
+    flex-flow: column nowrap;
+    pointer-events: none;
+
+    & img,
+    & svg {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0;
+      border: 0;
+      outline: 0;
+      max-width: 1em;
+      height: auto;
+    }
+  }
+
+  &__time-picker-overlay {
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 6px;
+    top: 0;
+    height: 32px;
+    font-size: 20px;
+    color: @mask-disabled;
+  }
+
+  &__icon-time {
+    font-size: 16px;
+  }
+
+  &__icon-time-show {
+    display: block;
+  }
+
+  &__icon-clear {
+    cursor: pointer;
+    display: none;
+    font-size: 18px;
+  }
+
+  &:hover {
+    .@{prefix}-time-picker__icon-time {
+      display: none;
+    }
+
+    .@{prefix}-time-picker__icon-clear {
+      display: block;
+    }
+  }
+
+  &__group {
+    border: 1px solid @border-level-2-color;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 2px;
+
+    &.disabled {
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        cursor: not-allowed;
+      }
+    }
+
+    &:hover {
+      border: 1px solid @primary-color-8;
+    }
+
+    &.active {
+      border: 1px solid @primary-color-8;
+    }
+
+    &-text {
+      color: @text-level-1-color;
+    }
+  }
+
+  &__input {
+    height: @input-height;
+    padding: 0 8px 0 4px;
+    .flex-center;
+    border-radius: 2px;
+    transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+    font-size: 14px;
+    background-color: @bg-color-fade;
+
+    &:hover {
+      border-color: @primary-color-8;
+    }
+
+    &-placeholder {
+      margin-left: 4px;
+      color: @text-level-1-color;
+    }
+
+    &-item {
+      height: 22px;
+      margin-right: 4px;
+
+      &-input {
+        padding: 0;
+        margin-left: 4px;
+        color: transparent;
+        text-shadow: 0 0 0 @mask-active;
+        cursor: pointer;
+        height: inherit;
+        outline: none;
+        width: 30px;
+        text-align: center;
+        border: 1px solid transparent;
+        background-color: @bg-color-fade;
+
+        &:focus {
+          border-color: @bg-color;
+          background-color: @bg-color-hover;
+        }
+      }
+    }
+
+  }
+
+  &__input-disabled {
+    border: 1px solid @border-level-2-color;
+    background-color: @bg-color-hover;
+
+    &-placeholder {
+      color: @text-level-4-color;
+    }
+
+    &-item {
+      &-input {
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.@{prefix}-time-picker-panel {
+  width: 320px;
+  background: @bg-color-block;
+  border-radius: 2px;
+  box-shadow: @shadow-2;
+  display: inline-block;
+  position: relative;
+  font-size: 1em;
+  font-family: sans-serif;
+
+  &__container {
+    position: absolute;
+    left: 0;
+    top: @container-top;
+    z-index: 10;
+  }
+
+  &__header {
+    width: 100%;
+    height: 48px;
+    background-color: @bg-color-block;
+    .flex-center;
+    text-align: center;
+    border: 0;
+
+    &.disabled {
+      background-color: @mask-disabled;;
+      border: 1px solid @border-level-2-color;;
+    }
+  }
+
+  &__body {
+    width: 100%;
+    height: 290px;
+    .flex-center;
+
+    &-scroll {
+      flex: 1 0 auto;
+      box-sizing: border-box;
+      height: 100%;
+      border-right: 1px solid @border-level-1-color;
+      padding-bottom: 20px;
+      overflow-y: scroll;
+      text-align: center;
+      list-style: none;
+      position: relative;
+      transition: background .3s;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        width: 6px;
+        background: @border-level-1-color;
+        border-radius: 3px;
+      }
+
+      &:after {
+        display: block;
+        height: 50%;
+        content: "";
+      }
+
+      &:before {
+        display: block;
+        height: 50%;
+        content: "";
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      &-item {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 22px;
+        color: rgba(0, 0, 0, .9);
+
+        &.@{prefix}-is-disabled {
+          color: rgba(0, 0, 0, .3);
+          cursor: not-allowed;
+        }
+
+        &.@{prefix}-is-hidden {
+          display: none;
+          cursor: not-allowed;
+        }
+
+        &.@{prefix}-is-current {
+          color: @primary-color-8;
+          background-color: @bg-color-block;
+        }
+
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    z-index: 5;
+    top: 48px;
+    left: 0;
+    background: @bg-color-block;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
+    width: 320px;
+    height: 10em;
+    font-weight: normal;
+
+    & .drop-up {
+      top: auto;
+      bottom: calc(2.2em + 1px);
+    }
+
+    & .select-list {
+      width: 320px;
+      height: 10em;
+      overflow: hidden;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: stretch;
+      justify-content: space-between;
+
+      &:focus,
+      & .active {
+        outline: 0;
+      }
+    }
+
+    & ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      outline: 0;
+      flex: 1 1 .00001px;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      & .minutes,
+      & .seconds,
+      & .apms {
+        border-left: 1px solid @bg-color-block;
+      }
+
+      & li {
+        list-style: none;
+        text-align: center;
+        padding: .3em 0;
+        color: @text-level-2-color;
+
+        &:not(.hint):not([disabled]):hover,
+        &:not(.hint):not([disabled]):focus {
+          background: @bg-color-block;
+          color: @primary-color-8;
+        }
+
+        &:not([disabled]).active,
+        :not([disabled]).active:hover,
+        :not([disabled]).active:focus {
+          background: @bg-color-block;
+          color: @primary-color-8;
+        }
+
+        & [disabled],
+        [disabled]:hover {
+          background: transparent;
+          opacity: .3;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    & .hint {
+      color: @mask-disabled;
+      cursor: default;
+      font-size: .8em;
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: stretch;
+    pointer-events: none;
+
+    & > * {
+      cursor: pointer;
+      width: auto;
+      .flex-center;
+      flex-flow: column nowrap;
+      padding: 0 .35em;
+      color: @mask-disabled;
+      line-height: 100%;
+      font-style: normal;
+      pointer-events: initial;
+      transition: color .2s, opacity .2s;
+    }
+
+    & > *:hover {
+      color: @mask-disabled;
+    }
+
+    & > *:focus,
+    & > *:active {
+      outline: 0;
+    }
+
+    & img,
+    & svg {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0;
+      border: 0;
+      outline: 0;
+      max-width: 1em;
+      height: auto;
+    }
+  }
+}
+
+.@{prefix}-time-picker-panel-section {
+  width: 497px;
+  background-color: @bg-color-block;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),
+    0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
+
+  &__body {
+    width: 100%;
+    display: flex;
+
+    & > .@{prefix}-time-picker-panel:first-child {
+      box-shadow: none;
+
+      .@{prefix}-time-picker-panel__body {
+        border-right: 1px solid @border-level-1-color;
+      }
+    }
+
+    & > .@{prefix}-time-picker-panel:last-child {
+      box-shadow: none;
+
+      .@{prefix}-time-picker-panel__body {
+        border-left: 1px solid @border-level-1-color;
+      }
+    }
+
+    .@{prefix}-time-picker-panel__gap {
+      width: 20px;
+      height: 100%;
+      background-color: @bg-color-block;
+      position: relative;
+
+      &-top {
+        width: 100%;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        background-color: @bg-color-block;
+
+        &.disabled {
+          background-color: @border-level-2-color;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    background-color: @bg-color-block;
+    position: relative;
+    border-top: 1px solid @border-level-1-color;
+
+    > button:first-child {
+      padding: 0 24px;
+    }
+
+    &-button {
+      .flex-center;
+      width: 88px;
+      height: 32px;
+      position: absolute;
+      right: 24px;
+      background-color: @primary-color-8;
+      border-radius: @border-radius;
+      color: @text-anti-primary-color;
+      font-size: @font-size-base;
+      line-height: 22px;
+      cursor: pointer;
+    }
+  }
+}

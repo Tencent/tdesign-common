@@ -1,8 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
-
 @import "./_var.less";
-
 @import "./_mixin.less";
 
 @inputCls: ~"@{prefix}-input";
@@ -13,6 +12,7 @@
   position: relative;
   box-sizing: border-box;
   padding: 0 32px;
+  user-select: none;
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -36,7 +36,7 @@
     height: 32px;
     position: absolute;
     top: 0;
-    border: 1px solid @input-border-color-default;
+    border: 1px solid @input-number-border-color-default;
     box-sizing: border-box;
     border-radius: @border-radius;
     background-color: #fff;
@@ -91,7 +91,7 @@
   }
 }
 
-.@{inputNumberCls}.@{prefix}-size-small {
+.@{inputNumberCls}.@{prefix}-size-s {
   padding: 0 24px;
   .@{inputCls}__inner {
     height: 24px;
@@ -105,7 +105,7 @@
   }
 }
 
-.@{inputNumberCls}.@{prefix}-size-large {
+.@{inputNumberCls}.@{prefix}-size-l {
   padding: 0 40px;
   .@{inputCls}__inner {
     height: 40px;
@@ -149,7 +149,7 @@
     width: 32px;
     height: 50%;
     border: 0;
-    border-left: 1px solid @input-border-color-default;
+    border-left: 1px solid @input-number-border-color-default;
     left: initial;
     top: initial;
     right: 1px;
@@ -168,11 +168,11 @@
   }
   .@{inputNumberCls}__decrease {
     bottom: 1px;
-    border-top: 1px solid @input-border-color-default;
+    border-top: 1px solid @input-number-border-color-default;
   }
 
   .@{inputNumberCls}__increase {
     top: 1px;
-    border-bottom: 1px solid @input-border-color-default;
+    border-bottom: 1px solid @input-number-border-color-default;
   }
 }
