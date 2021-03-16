@@ -46,7 +46,7 @@ export class TreeStore {
   // 所有节点集合
   public nodes: TreeNode[];
   // 所有节点映射
-  public nodeMap: Map<string, TreeNode>;
+  public nodeMap: Map<TreeNodeValue, TreeNode>;
   // 配置选项
   public config: TypeTreeStoreOptions;
   // 活动节点集合
@@ -110,7 +110,7 @@ export class TreeStore {
   // 获取节点对象
   public getNode(item: TypeTargetNode): TreeNode {
     let node = null;
-    if (typeof item === 'string') {
+    if (typeof item === 'string' || typeof item === 'number') {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
@@ -213,6 +213,7 @@ export class TreeStore {
   /**
    * 向指定节点追加节点或者数据
    * 支持下列使用方式
+   * item: 节点数据, TreeNode: 节点实例, value: 节点值(ID)
    * appendNodes(item)
    * appendNodes(TreeNode)
    * appendNodes(value, item)
