@@ -176,6 +176,7 @@ export class TreeStore {
 
     if (options) {
       const conf: TypeTreeFilterOptions = {
+        filter: null,
         level: Infinity,
         ...options,
       };
