@@ -9,6 +9,7 @@ import {
   TypeTargetNode,
   TypeTreeNodeData,
   TypeTreeStoreOptions,
+  TypeTreeFilter,
   TypeTreeFilterOptions,
   TypeRelatedNodesOptions,
   TypeTreeEventState,
@@ -61,24 +62,31 @@ export class TreeStore {
   public filterMap: TypeIdMap;
   // 数据更新计时器
   public updateTimer: TypeTimer;
-  // 过滤数据更新计时器
-  public filterUpdateTimer: TypeTimer;
   // 识别是否需要重排
   public shouldReflow: boolean;
-  // 过滤器函数
-  public filter: Function;
+  // 树节点过滤器
+  public prevFilter: TypeTreeFilter;
 
   public constructor(options: TypeTreeStoreOptions) {
     const config: TypeTreeStoreOptions = {
+      prefix: 't',
       keys: {},
       expandAll: false,
+      expandLevel: 0,
       expandMutex: false,
       expandParent: false,
+      activable: false,
       activeMultiple: false,
       checkable: false,
       checkStrictly: false,
-      activable: false,
+      disabled: false,
+      load: null,
+      lazy: false,
       valueMode: 'onlyLeaf',
+      filter: null,
+      onLoad: null,
+      onReflow: null,
+      onUpdate: null,
       ...options,
     };
     this.config = config;
@@ -90,9 +98,9 @@ export class TreeStore {
     this.checkedMap = new Map();
     this.updatedMap = new Map();
     this.filterMap = new Map();
+    this.prevFilter = null;
     // 这个计时器确保频繁的 update 事件被归纳为1次完整数据更新后的触发
     this.updateTimer = null;
-    this.filterUpdateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
   }
@@ -299,23 +307,36 @@ export class TreeStore {
     this.updateTimer = setTimeout(() => {
       clearTimeout(this.updateTimer);
       this.updateTimer = null;
+
+      // 检查节点是否需要回流，重排数组
       if (this.shouldReflow) {
         this.refreshNodes();
         this.emit('reflow');
       }
+
+      // 检查节点是否有被过滤，锁定路径节点
+      // 在此之前要遍历节点生成一个经过排序的节点数组
+      // 以便于优化锁定检查算法
+      this.lockFilterPathNodes();
+
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
+        // 统计需要更新状态的节点，派发更新事件
         const updatedNodes = updatedList.map(value => this.getNode(value));
         this.emit('update', {
           nodes: updatedNodes,
           map: this.updatedMap,
         });
       } else if (this.shouldReflow) {
+        // 单纯的回流不需要更新节点状态
+        // 但需要触发更新事件
         this.emit('update', {
           nodes: [],
           map: this.updatedMap,
         });
       }
+
+      // 每次回流检查完毕，还原检查状态
       this.shouldReflow = false;
       this.updatedMap.clear();
     });
@@ -559,58 +580,60 @@ export class TreeStore {
     }
   }
 
-  public updateFilterNodes() {
-    if (this.filterUpdateTimer) {
+  // 锁定过滤节点的路径节点
+  // 使得路径节点展开，可见，且不可操作
+  public lockFilterPathNodes() {
+    const {
+      config,
+      filterMap,
+    } = this;
+
+    // 之前没有设置过过滤器
+    // 当前也没有过滤器
+    // 则无需处理锁定节点
+    if (!config.filter && !this.prevFilter) {
       return;
     }
-    this.filterUpdateTimer = setTimeout(() => {
-      this.filterUpdateTimer = null;
-      const filterNodeKeys = [...this.filterMap.keys()];
-      // 存放所有符合过滤条件的节点的各级父节点
-      const filterNodeParentsMap = new Map();
-      const onlyFilterRoot = filterNodeKeys.every((value: TreeNodeValue) => {
-        const node = this.getNode(value);
-        return !node || !node.getParent();
-      });
-      const allNodes = this.getNodes();
-      // 当 filterMap 中，只有根节点时，重置所有节点的状态
-      if (onlyFilterRoot) {
-        allNodes.forEach((item: TreeNode) => {
-          const node = item;
-          node.disabled = false;
-        });
-      } else {
-        filterNodeKeys.forEach((value: TreeNodeValue) => {
-          const node = this.getNode(value);
-          if (!node) {
-            return;
-          }
-          const parents = node.getParents();
-          // 处理符合过滤条件的节点的各级父节点
-          parents.forEach((node: TreeNode) => {
-            // 父节点不符合过滤条件，才放入 filterNodeParentsMap
-            if (
-              !this.filterMap.get(node.value)
-              && !filterNodeParentsMap.get(node.value)
-            ) {
-              filterNodeParentsMap.set(node.value, node);
-            }
-          });
-        });
-        allNodes.forEach((item: TreeNode) => {
-          const node = item;
-          if (filterNodeParentsMap.get(node.value)) {
-            // 符合过滤条件的节点、的各级父节点（路径节点），显示、并 disabled
-            node.visible = true;
-            node.expanded = true;
-            node.disabled = true;
-          } else if (!this.filterMap.get(node.value) && node.visible) {
-            // 不符合过滤条件的、过滤之前已经手动展开的节点，disabled
-            node.disabled = true;
-          } else {
-            node.disabled = false;
-          }
-        });
+    this.prevFilter = config.filter;
+
+    const allNodes = this.getNodes();
+    allNodes.forEach((node: TreeNode) => {
+      node.lock(false);
+    });
+    if (allNodes.length === filterMap.size) {
+      // 未经任何过滤，则无需处理锁定节点
+      return;
+    }
+
+    // 构造路径节点map
+    const map = new Map();
+
+    // 全部节点要经过排序，才能使用这个算法
+    // 比起每个过滤节点调用 getParents 方法检查父节点状态
+    // 算法复杂度 O(n^2) => O(n)
+    allNodes.reverse().forEach((node: TreeNode) => {
+      // 被过滤节点父节点固定为展开状态
+      const parent = node.getParent();
+      if (node.vmIsRest) {
+        if (parent) {
+          parent.expanded = true;
+        }
+        // 被过滤节点固定为展示状态
+        node.visible = true;
+      }
+      if (node.vmIsRest || map.get(node.value)) {
+        if (parent && !parent.vmIsRest) {
+          map.set(parent.value, true);
+        }
+      }
+    });
+
+    // 锁定路径节点展示样式
+    const filterPathValues = Array.from(map.keys());
+    filterPathValues.forEach((value: TreeNodeValue) => {
+      const node = this.getNode(value);
+      if (node) {
+        node.lock(true);
       }
     });
   }

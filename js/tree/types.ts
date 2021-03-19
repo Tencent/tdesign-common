@@ -184,6 +184,8 @@ export type TypeTreeItem = TypeTreeNodeData | TreeNode;
 
 export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>
 
+export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
+
 export interface TypeTreeEventState {
   node?: TreeNode;
   nodes?: TreeNode[];

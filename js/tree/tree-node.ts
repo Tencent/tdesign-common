@@ -42,6 +42,10 @@ export class TreeNode {
   public vmIsFirst: boolean;
   // 是否为子节点中的最后
   public vmIsLast: boolean;
+  // 节点是否是经过过滤剩下的
+  public vmIsRest: boolean;
+  // 节点是否展示为锁定状态
+  public vmIsLocked: boolean;
   // 节点在视图上实际的展开状态
   public expanded: boolean;
   // 展开时是否收起同级节点，对子节点生效
@@ -89,6 +93,8 @@ export class TreeNode {
     this.vmIsLeaf = false;
     this.vmIsFirst = false;
     this.vmIsLast = false;
+    this.vmIsRest = true;
+    this.vmIsLocked = false;
 
     const spec = {
       ...defaultStatus,
@@ -147,7 +153,8 @@ export class TreeNode {
     this.updateChecked();
   }
 
-  /* ***** 状态初始化-相关方法 ***** */
+  /* ------ 状态初始化 ------ */
+
   // 初始化选中态
   public initChecked() {
     const { tree, value, parent } = this;
@@ -193,7 +200,8 @@ export class TreeNode {
     }
   }
 
-  /* ***** 节点操作-相关方法 ***** */
+  /* ------ 节点操作 ------ */
+
   // 追加数据
   public append(data: TypeTreeNodeData | TypeTreeNodeData[]): void {
     const list = [];
@@ -397,7 +405,8 @@ export class TreeNode {
     tree.updated(this);
   }
 
-  /* ***** 节点获取-相关方法 ***** */
+  /* ------ 节点获取 ------- */
+
   // 获取单个父节点
   public getParent(): TreeNode {
     return this.parent;
@@ -454,47 +463,71 @@ export class TreeNode {
     return parents.length;
   }
 
-  // 判断节点是否可视
-  public getVisible(): boolean {
+  /* ------ 节点状态判断 ------ */
+
+  // 判断节点是否被过滤
+  public isRest(): boolean {
     const {
-      nodeMap,
       config,
       filterMap,
     } = this.tree;
+
+    let rest = true;
+    if (typeof config.filter === 'function') {
+      const nodeModel = this.getTreeNodeModel();
+      rest = config.filter(nodeModel);
+    }
+
+    if (rest) {
+      filterMap.set(this.value, true);
+    } else {
+      if (filterMap.get(this.value)) {
+        filterMap.delete(this.value)
+      }
+    }
+
+    return rest;
+  }
+
+  // 判断节点是否可视
+  public isVisible(): boolean {
+    const {
+      nodeMap,
+    } = this.tree;
+
     let visible = true;
+
+    // 锁定状态，直接呈现
+    if (this.vmIsLocked) {
+      return true;
+    }
+
+    // 在当前树上，未被移除
     if (nodeMap.get(this.value)) {
-      const parents = this.getParents();
+
+      // 节点未被过滤
+      const filterVisible = this.isRest();
+
+      // 所有父节点展开
       let expandVisible = true;
+      const parents = this.getParents();
       if (parents.length > 0) {
         expandVisible = parents.every((node: TreeNode) => node.isExpanded());
       }
-      let filterVisible = false;
-      if (typeof config.filter === 'function') {
-        const nodeModel = this.getTreeNodeModel();
-        filterVisible = config.filter(nodeModel);
-        if (filterVisible) {
-          filterMap.set(this.value, true);
-        } else {
-          if (filterMap.get(this.value)) {
-            filterMap.delete(this.value);
-          }
-        }
-        // 更新经过过滤的节点状态
-        this.tree.updateFilterNodes();
-      }
 
-      // 父节点展开 或 满足过滤条件，均显示当前节点
-      visible = expandVisible || filterVisible;
+      // 节点为未被过滤节点的父节点
+      visible = expandVisible && filterVisible;
     } else {
       visible = false;
     }
     return visible;
   }
 
-  /* ***** 节点状态判断-相关方法 ***** */
   // 判断节点是否被禁用
   public isDisabled() {
-    return this?.tree?.config?.disabled || this.disabled;
+    if (this.vmIsLocked) return true;
+    const treeDisabled = this?.tree?.config?.disabled;
+    return treeDisabled || this.disabled;
   }
 
   // 判断节点是否支持互斥展开
@@ -521,7 +554,8 @@ export class TreeNode {
 
   // 检查节点是否已展开
   public isExpanded(map?: Map<string, boolean>): boolean {
-    const { tree, value } = this;
+    const { tree, value, vmIsLocked } = this;
+    if (vmIsLocked) return true;
     const expandedMap = map || tree.expandedMap;
     return !!(tree.nodeMap.get(value) && expandedMap.get(value));
   }
@@ -603,7 +637,14 @@ export class TreeNode {
     return isLeaf;
   }
 
-  /* ***** 节点状态切换-相关方法 ***** */
+  /* ------ 节点状态切换 ------ */
+
+  public lock(lockState: boolean): void {
+    this.vmIsLocked = lockState;
+    this.expanded = this.isExpanded();
+    this.visible = this.isVisible();
+  }
+
   // 节点展开关闭后需要调用的状态检查函数
   public afterExpanded(): void {
     this.update();
@@ -757,16 +798,18 @@ export class TreeNode {
     return tree.getChecked(map);
   }
 
-  /* ***** 节点状态更新-相关方法 ***** */
+  /* ------ 节点状态更新 ------ */
+
   // 更新节点状态
   public update(): void {
-    this.vmIsFirst = this.isFirst();
-    this.vmIsLast = this.isLast();
-    this.vmIsLeaf = this.isLeaf();
     this.level = this.getLevel();
     this.actived = this.isActived();
     this.expanded = this.isExpanded();
-    this.visible = this.getVisible();
+    this.visible = this.isVisible();
+    this.vmIsRest = this.isRest();
+    this.vmIsFirst = this.isFirst();
+    this.vmIsLast = this.isLast();
+    this.vmIsLeaf = this.isLeaf();
     this.tree.updated(this);
   }
 
@@ -816,11 +859,11 @@ export class TreeNode {
       node.update();
       node.updateChecked();
     });
-
     tree.reflow();
   }
 
-  /* ***** 节点基础操作-获取包含自己在内所有的子节点 ***** */
+  /* ------ 节点遍历 ------ */
+
   // 获取包含自己在内所有的子节点
   public walk(): TreeNode[] {
     const { children } = this;
@@ -857,6 +900,7 @@ export class TreeNode {
       isLast,
       isLeaf,
     } = this;
+
     const nodeModel: TypeTreeNodeModel = {
       data: dataset,
       actived,
@@ -878,10 +922,12 @@ export class TreeNode {
       isLast,
       isLeaf,
     };
+
     return nodeModel;
   }
 
-  /* ***** 对外暴露方法 ***** */
+  /* ------ 对外暴露方法 ------ */
+
   // 返回路径节点数据集合
   public getPathData = (): TypeTreeNodeData[] => {
     const nodes = this.getPath();
