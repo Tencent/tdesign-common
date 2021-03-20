@@ -610,7 +610,7 @@ export class TreeStore {
 
     // 全部节点要经过排序，才能使用这个算法
     // 比起每个过滤节点调用 getParents 方法检查父节点状态
-    // 算法复杂度 O(n^2) => O(n)
+    // 算法复杂度 O(N*log(N)) => O(N)
     allNodes.reverse().forEach((node: TreeNode) => {
       // 被过滤节点父节点固定为展开状态
       const parent = node.getParent();
