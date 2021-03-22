@@ -31,7 +31,7 @@
   @{attr}: e(@attr-prepend) @bg-color-block;
 
   &:active {
-    @{attr}: e(@attr-prepend) @bg-color-block;
+    @{attr}: e(@attr-prepend) @bg-color-active;
   }
 
   &.t-is-disabled {
@@ -69,9 +69,9 @@
 .button-attr-border-color-gray(@attr: 'border', @attr-prepend: '1px solid') {
   @{attr}: e(@attr-prepend) @border-level-2-color;
 
-  &:active {
-    @{attr}: e(@attr-prepend) @primary-color-active;
-  }
+  // &:active {
+  //   @{attr}: e(@attr-prepend) @primary-color-active;
+  // }
 
   &.t-is-disabled {
     @{attr}: e(@attr-prepend) @border-level-2-color;
@@ -82,9 +82,9 @@
 .button-attr-color-text(@attr: color, @attr-prepend: '') {
   @{attr}: e(@attr-prepend) @text-level-1-color;
 
-  &:active {
-    @{attr}: e(@attr-prepend) @primary-color-active;
-  }
+  // &:active {
+  //   @{attr}: e(@attr-prepend) @primary-color-active;
+  // }
 
   &.t-is-disabled {
     @{attr}: e(@attr-prepend) @text-color-disabled;
@@ -157,7 +157,6 @@
   // 次要按钮
   &--variant-outline {
     .button-attr-color-text();
-    .button-attr-color-primary(border, "1px solid");
     .button-attr-color-white-bg(background-color);
     .button-attr-border-color-gray(border, "1px solid");
 
@@ -197,6 +196,8 @@
     border: 0;
     height: auto;
     line-height: auto;
+    margin: 0;
+    padding: 0;
 
     &.@{prefix}-button--theme-danger {
       .button-attr-color-danger(color);

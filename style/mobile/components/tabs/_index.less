@@ -30,7 +30,7 @@
       display: inline-block; 
       &.@{prefix}-is-active {
         color: @tab-nav-active-color;
-        font-weight: @tab-nav-active-font-weight;
+        font-family: @font-family-medium;
       }
       &.@{prefix}-is-disabled {
         color: @tab-nav-disabled-color;
@@ -61,11 +61,19 @@
     }
 
     &--scroll {
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
+      
       .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
+        margin-bottom: 10px;
+      }
+      .@{prefix}-tabs__nav-wrap {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: -10px;
+      }
+      .@{prefix}-tabs__nav-line {
+        bottom: 10px;
       }
     }
     
@@ -79,9 +87,18 @@
   &--horizontal {
     display: flex;
     .@{prefix}-tabs__nav--scroll {
-      overflow-y: auto;
-      overflow-x: hidden;
+      .@{prefix}-tabs__nav-wrap {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-right: -10px;
+      }
+      .@{prefix}-tabs__nav-item {
+        margin-right: 10px;
+        margin-bottom: 0;
+      }
     }
+    
     .@{prefix}-tabs__content {
       flex: 1;
     }
@@ -89,6 +106,7 @@
       background-color: @tab-nav-horizontal-bg-color;
       
       &-wrap {
+        
         flex-direction: column;
       }
       
@@ -102,24 +120,16 @@
       &-item {
         display: block;
         flex: 1 0 auto;
+        width: @tab-nav-horizontal-item-width;
         height: @tab-nav-horizontal-item-height;
         line-height: @tab-nav-horizontal-item-height;
         padding: @tab-nav-horizontal-item-padding;
         
         &:after {
-          bottom: 0;
-          left: auto;
-          right: 0;
-          width: 1px;
-          transform: scaleX(.5);
-          height: 100%;
+          content: none;
         }
         &.@{prefix}-is-active {
           background-color: @tab-nav-bg-color;
-          
-          &:after {
-            content: none;
-          }
         }
       }
     }  

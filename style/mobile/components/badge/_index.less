@@ -10,20 +10,24 @@
   display: inline-block;
 
   &--basic {
-    transform: translate(50%,-50%);
-    position: absolute;
-    right: 0;
-    top: 0;
+    display: inline-block;
     z-index: 100;
     font-size: @badge-font-size;
     color: @badge-text-color;
     background-color: @badge-color;
     min-width: @badge-height;
     height: @badge-height;
-    padding: 0 6px;
+    padding: 0 4px;
     text-align: center;
     line-height: @badge-height;
     font-weight: @badge-font-weight;
+  }
+
+  &--has-children {
+    transform: translate(50%,-50%);
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
   &--dot {
@@ -43,6 +47,13 @@
 
   &--round {
     border-radius: @badge-round-border-radius;
+  }
+
+  // 绸带外层样式，用于定位
+  &__ribbon--outer {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   &--ribbon {
