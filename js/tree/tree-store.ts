@@ -240,7 +240,7 @@ export class TreeStore {
         // 在根节点插入
         if (spec.data instanceof TreeNode) {
           spec.data.appendTo(this);
-        } else if (Array.isArray(spec.data)){
+        } else if (Array.isArray(spec.data)) {
           this.append(spec.data);
         } else {
           this.append([spec.data]);
@@ -249,7 +249,7 @@ export class TreeStore {
         // 插入到目标节点之下
         if (spec.data instanceof TreeNode) {
           spec.data.appendTo(this, spec.node);
-        } else if (Array.isArray(spec.data)){
+        } else if (Array.isArray(spec.data)) {
           spec.node.append(spec.data);
         } else {
           spec.node.append([spec.data]);
