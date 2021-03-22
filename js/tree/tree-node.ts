@@ -482,7 +482,7 @@ export class TreeNode {
       filterMap.set(this.value, true);
     } else {
       if (filterMap.get(this.value)) {
-        filterMap.delete(this.value)
+        filterMap.delete(this.value);
       }
     }
 
@@ -504,7 +504,6 @@ export class TreeNode {
 
     // 在当前树上，未被移除
     if (nodeMap.get(this.value)) {
-
       // 节点未被过滤
       const filterVisible = this.isRest();
 
