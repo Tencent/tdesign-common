@@ -28,7 +28,11 @@
     }
   }
 
-  & &__item {
+  &__empty {
+    text-align: center;
+  }
+
+  &__item {
     --level: 0;
     position: relative;
     display: flex;
@@ -116,7 +120,7 @@
   }
 
   // 默认图标
-  & &__icon {
+  &__icon {
     flex: 0 0 auto;
     align-self: center;
     width: 24px;
@@ -133,11 +137,11 @@
     }
   }
 
-  & &__icon:empty {
+  &__icon:empty {
     cursor: initial;
   }
 
-  & &__label {
+  &__label {
     flex: auto;
     line-height: 40px;
     flex-wrap: nowrap;
@@ -147,19 +151,19 @@
     }
   }
 
-  & &__space {
+  &__space {
     display: block;
     flex: 1 0 auto;
   }
 
-  & &__operations {
+  &__operations {
     display: flex;
     flex: 0 0 auto;
     justify-content: flex-end;
     align-items: center;
   }
 
-  & &__operations .@{prefix}-icon {
+  &__operations .@{prefix}-icon {
     cursor: pointer;
   }
 
@@ -168,7 +172,7 @@
     background-color: @tree-node-bg-color-hover;
   }
 
-  & &__item.t-is-disabled {
+  &__item.t-is-disabled {
     color: @tree-disabled-color;
     cursor: default;
     .@{prefix}-checkbox {
