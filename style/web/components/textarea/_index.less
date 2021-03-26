@@ -25,7 +25,7 @@
     &__limit {
       position: absolute;
       bottom: @spacer;
-      right: @spacer - 2;
+      right: @spacer-2;
       font-size: @input-fontsize;
       color: @input-extra-color-default;
     }
@@ -38,6 +38,10 @@
       &:hover {
         border-color: @input-border-color-default;
       }
+    }
+
+    .@{prefix}-resize-none {
+      resize: none;
     }
   }
 }
