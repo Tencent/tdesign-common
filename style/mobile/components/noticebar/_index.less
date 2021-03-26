@@ -30,9 +30,13 @@
     color: @noticebar-text-color-2;
   }
 
+  &&--error &__text-detail {
+    color: @noticebar-text-color-2;
+  }
+
   &__inner {
     display: flex;
-    padding: @noticebar-space-4 @noticebar-space-4;
+    padding: @noticebar-space-4 @noticebar-space-5;
   }
 
   &__hd {
@@ -42,8 +46,6 @@
   &__bd {
     flex: 1;
   }
-
-  &__list {}
 
   &__list--scrolling {
     position: relative;
@@ -63,8 +65,6 @@
   &__list--scrolling &__text {
     white-space: nowrap;
   }
-
-  &__item {}
 
   &__item-detail {
     display: flex;
@@ -96,7 +96,7 @@
   }
 
   &__ft {
-    margin-left: @noticebar-space-4;
+    margin-left: @noticebar-space-5;
   }
 
   .@{prefix}-icon {
@@ -104,10 +104,10 @@
     position: relative;
     top: @noticebar-top;
     color: @noticebar-icon-color-1;
-    font-size: @icon-x;
+    font-size: @noticebar-icon-size;
   }
 
   & + & {
-    margin-top: @noticebar-space-4;
+    margin-top: @noticebar-space-5;
   }
 }
