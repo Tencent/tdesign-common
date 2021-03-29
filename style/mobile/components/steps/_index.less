@@ -35,8 +35,37 @@
           color: @step-error-title-color;
         }
       }
+    }
 
 
+    &.@{prefix}-steps--icon-anchor {
+
+      .@{prefix}-steps-item {
+        &-icon {
+          &__number {
+            display: flex;
+            width: @step-horizontal-icon-width;
+            height: @step-horizontal-icon-width;
+            box-sizing: border-box;
+            border: 1px solid @primary-color;
+            border-radius: 50%;
+            margin-top: 1px;
+          }
+        }
+
+      }
+      .@{prefix}-steps-item:not(:last-child) {
+        .@{prefix}-steps-item__inner:after {
+          content: "";
+          display: block;
+          height: 1px;
+          background-color: @step-process-bg-color;
+          position: absolute;
+          width: calc(100% - @step-horizontal-icon-width);
+          left: calc(50% + @step-horizontal-icon-width / 2);
+          top: (@step-horizontal-icon-width / 2);
+        }
+      }
     }
   }
 
