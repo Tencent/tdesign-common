@@ -36,6 +36,8 @@ export class TreeNode {
   public parent: TreeNode;
   // 子节点列表
   public children: TreeNode[] | boolean;
+  // 暴露的 treeNodeModel，这个对象的属性和 api 提供给用户使用
+  public model: TypeTreeNodeModel;
   // 是否为叶节点
   public vmIsLeaf: boolean;
   // 是否为子节点中的第一个
@@ -88,6 +90,7 @@ export class TreeNode {
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
 
+    this.model = null;
     this.children = null;
     this.vmCheckable = false;
     this.vmIsLeaf = false;
@@ -890,52 +893,72 @@ export class TreeNode {
       checked,
       indeterminate,
       loading,
-
-      // 被重新定义的对外暴露方法
-      appendData,
-      getPathModel,
-      getParentModel,
-      getParentsModel,
-      getRootModel,
-      getSiblingsModel,
-      getChildrenModel,
     } = this;
 
-    // 同名方法，需要重新绑定 this 指向
-    const getLevel = () => this.getLevel();
-    const getIndex = () => this.getIndex();
-    const isFirst = () => this.isFirst();
-    const isLast = () => this.isLast();
-    const isLeaf = () => this.isLeaf();
-    const insertBefore = (newData: TypeTreeItem) => this.insertBefore(newData);
-    const insertAfter = (newData: TypeTreeItem) => this.insertAfter(newData);
+    let { model } = this;
 
-    const nodeModel: TypeTreeNodeModel = {
-      value,
-      label,
-      data: dataset,
-      actived,
-      expanded,
-      checked,
-      indeterminate,
-      loading,
-      getPath: getPathModel,
-      appendData,
-      getLevel,
-      getIndex,
-      getParent: getParentModel,
-      getParents: getParentsModel,
-      getChildren: getChildrenModel,
-      getRoot: getRootModel,
-      getSiblings: getSiblingsModel,
-      insertBefore,
-      insertAfter,
-      isFirst,
-      isLast,
-      isLeaf,
-    };
+    if (!model) {
+      const {
+        // 被重新定义的对外暴露方法
+        appendData,
+        getPathModel,
+        getParentModel,
+        getParentsModel,
+        getRootModel,
+        getSiblingsModel,
+        getChildrenModel,
+      } = this;
 
-    return nodeModel;
+      // 同名方法，需要重新绑定 this 指向
+      const getLevel = () => this.getLevel();
+      const getIndex = () => this.getIndex();
+      const isFirst = () => this.isFirst();
+      const isLast = () => this.isLast();
+      const isLeaf = () => this.isLeaf();
+      const insertBefore = (newData: TypeTreeItem) => this.insertBefore(newData);
+      const insertAfter = (newData: TypeTreeItem) => this.insertAfter(newData);
+
+      model = {
+        // 属性
+        value,
+        label,
+        data: dataset,
+        actived,
+        expanded,
+        checked,
+        indeterminate,
+        loading,
+        // 方法
+        getPath: getPathModel,
+        appendData,
+        getLevel,
+        getIndex,
+        getParent: getParentModel,
+        getParents: getParentsModel,
+        getChildren: getChildrenModel,
+        getRoot: getRootModel,
+        getSiblings: getSiblingsModel,
+        insertBefore,
+        insertAfter,
+        isFirst,
+        isLast,
+        isLeaf,
+      };
+
+      this.model = model;
+    } else {
+      Object.assign(model, {
+        value,
+        label,
+        data: dataset,
+        actived,
+        expanded,
+        checked,
+        indeterminate,
+        loading,
+      });
+    }
+    return model;
   }
 
   /* ------ 对外暴露方法 ------ */
