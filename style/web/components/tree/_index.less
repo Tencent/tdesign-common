@@ -77,7 +77,15 @@
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
     }
+  }
 
+  &--hoverable &__item:hover {
+    cursor: pointer;
+    background-color: @tree-node-bg-color-hover;
+  }
+
+  &--hoverable &__item.@{prefix}-is-active:hover {
+    background-color: @tree-node-bg-color-active-hover;
   }
 
   &__line {
@@ -165,11 +173,6 @@
 
   &__operations .@{prefix}-icon {
     cursor: pointer;
-  }
-
-  &--hoverable &__item:hover {
-    cursor: pointer;
-    background-color: @tree-node-bg-color-hover;
   }
 
   &__item.t-is-disabled {
