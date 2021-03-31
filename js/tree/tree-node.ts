@@ -888,7 +888,6 @@ export class TreeNode {
       getPathData,
       append,
       getIndex,
-      getLevel,
       getParentData,
       getParentsData,
       getRootData,
@@ -900,6 +899,10 @@ export class TreeNode {
       isLeaf,
     } = this;
 
+    const getLevel = () => {
+      return this.getLevel();
+    };
+
     const nodeModel: TypeTreeNodeModel = {
       data: dataset,
       actived,
@@ -909,8 +912,8 @@ export class TreeNode {
       loading,
       getPathData,
       appendData: append,
-      getIndex,
       getLevel,
+      getIndex,
       getParentData,
       getParentsData,
       getRootData,
