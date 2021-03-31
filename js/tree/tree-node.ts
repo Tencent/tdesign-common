@@ -877,33 +877,42 @@ export class TreeNode {
   }
 
   // TreeNode 对象 => TypeTreeNodeModel 对象
+  // 用于 treeNode 对外暴露的 api
+  // 经过封装的对象，减少了对外暴露的 api，利于代码重构
   public getModel(): TypeTreeNodeModel {
     const {
+      // 同步节点属性
+      value,
+      label,
       dataset,
       actived,
       expanded,
       checked,
       indeterminate,
       loading,
+
+      // 被重新定义的对外暴露方法
       getPathData,
-      append,
-      getIndex,
+      appendData,
       getParentData,
       getParentsData,
       getRootData,
       getSiblingsData,
-      insertBefore,
-      insertAfter,
-      isFirst,
-      isLast,
-      isLeaf,
+      getChildrenData,
     } = this;
 
-    const getLevel = () => {
-      return this.getLevel();
-    };
+    // 同名方法，需要重新绑定 this 指向
+    const getLevel = () => this.getLevel();
+    const getIndex = () => this.getIndex();
+    const isFirst = () => this.isFirst();
+    const isLast = () => this.isLast();
+    const isLeaf = () => this.isLeaf();
+    const insertBefore = (newData: TypeTreeItem) => this.insertBefore(newData);
+    const insertAfter = (newData: TypeTreeItem) => this.insertAfter(newData);
 
     const nodeModel: TypeTreeNodeModel = {
+      value,
+      label,
       data: dataset,
       actived,
       expanded,
@@ -911,11 +920,12 @@ export class TreeNode {
       indeterminate,
       loading,
       getPathData,
-      appendData: append,
+      appendData,
       getLevel,
       getIndex,
       getParentData,
       getParentsData,
+      getChildrenData,
       getRootData,
       getSiblingsData,
       insertBefore,
@@ -955,6 +965,23 @@ export class TreeNode {
   public getSiblingsData = (): TypeTreeNodeData[] => {
     const nodes = this.getSiblings();
     return nodes.map(node => node.dataset);
+  };
+
+  // 给当前节点添加数据
+  public appendData = (data: TypeTreeNodeData | TypeTreeNodeData[]) => {
+    return this.append(data);
+  };
+
+  // 返回当前节点的第一层子节点数据集合
+  public getChildrenData = (): TypeTreeNodeData[] => {
+    const { children } = this;
+    const childrenData: TypeTreeNodeData[] = [];
+    if (Array.isArray(children)) {
+      children.forEach(node => {
+        childrenData.push(node.dataset);
+      });
+    }
+    return childrenData;
   };
 }
 

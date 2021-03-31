@@ -74,21 +74,29 @@ export interface TreeNodeState {
 
 export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeState {
   /**
-   * 节点数据
+   * 当前节点值或者ID
    */
-  data: DataOption;
+  value: TreeNodeValue;
+  /**
+   * 当前节点标签文本
+   */
+  label: string;
   /**
    * 当前节点是否处于高亮激活态
    */
   actived: boolean;
   /**
-   * 当前节点是否展开
-   */
-  expanded: boolean;
-  /**
    * 当前节点是否被选中
    */
   checked: boolean;
+  /**
+   * 节点数据
+   */
+  data: DataOption;
+  /**
+   * 当前节点是否展开
+   */
+  expanded: boolean;
   /**
    * 当前节点是否处于半选状态
    */
@@ -98,13 +106,9 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
    */
   loading: boolean;
   /**
-   * 获取节点全路径
-   */
-  getPathData: () => DataOption[];
-  /**
    * 追加子节点数据
    */
-  appendData: (data: DataOption | DataOption[]) => void;
+  appendData: (data: DataOption | Array<DataOption>) => void;
   /**
    * 获取节点在父节点的子节点列表中的位置，如果没有父节点，则获取节点在根节点列表的位置
    */
@@ -120,7 +124,15 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
   /**
    * 获取所有父节点
    */
-  getParentsData: () => DataOption[];
+  getParentsData: () => Array<DataOption>;
+  /**
+   * 获取当前节点的直接子节点
+   */
+  getChildrenData: () => Array<DataOption>;
+  /**
+   * 获取节点全路径
+   */
+  getPathData: () => Array<DataOption>;
   /**
    * 获取根节点
    */
@@ -128,15 +140,15 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
   /**
    * 获取兄弟节点，包含自己在内
    */
-  getSiblingsData: () => DataOption[];
-  /**
-   * 在当前节点前插入新节点
-   */
-  insertBefore: (newData: DataOption) => void;
+  getSiblingsData: () => Array<DataOption>;
   /**
    * 在当前节点前插入新节点
    */
   insertAfter: (newData: DataOption) => void;
+  /**
+   * 在当前节点前插入新节点
+   */
+  insertBefore: (newData: DataOption) => void;
   /**
    * 是否为兄弟节点中的第一个节点
    */
