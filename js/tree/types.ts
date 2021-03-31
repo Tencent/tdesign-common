@@ -120,27 +120,27 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
   /**
    * 获取单个父节点
    */
-  getParentData: () => DataOption;
+  getParent: () => TreeNodeModel;
   /**
    * 获取所有父节点
    */
-  getParentsData: () => Array<DataOption>;
+  getParents: () => TreeNodeModel[];
   /**
    * 获取当前节点的直接子节点
    */
-  getChildrenData: () => Array<DataOption>;
+  getChildren: () => TreeNodeModel[];
   /**
    * 获取节点全路径
    */
-  getPathData: () => Array<DataOption>;
+  getPath: () => TreeNodeModel[];
   /**
    * 获取根节点
    */
-  getRootData: () => DataOption;
+  getRoot: () => TreeNodeModel;
   /**
    * 获取兄弟节点，包含自己在内
    */
-  getSiblingsData: () => Array<DataOption>;
+  getSiblings: () => TreeNodeModel[];
   /**
    * 在当前节点前插入新节点
    */

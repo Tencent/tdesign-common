@@ -892,13 +892,13 @@ export class TreeNode {
       loading,
 
       // 被重新定义的对外暴露方法
-      getPathData,
       appendData,
-      getParentData,
-      getParentsData,
-      getRootData,
-      getSiblingsData,
-      getChildrenData,
+      getPathModel,
+      getParentModel,
+      getParentsModel,
+      getRootModel,
+      getSiblingsModel,
+      getChildrenModel,
     } = this;
 
     // 同名方法，需要重新绑定 this 指向
@@ -919,15 +919,15 @@ export class TreeNode {
       checked,
       indeterminate,
       loading,
-      getPathData,
+      getPath: getPathModel,
       appendData,
       getLevel,
       getIndex,
-      getParentData,
-      getParentsData,
-      getChildrenData,
-      getRootData,
-      getSiblingsData,
+      getParent: getParentModel,
+      getParents: getParentsModel,
+      getChildren: getChildrenModel,
+      getRoot: getRootModel,
+      getSiblings: getSiblingsModel,
       insertBefore,
       insertAfter,
       isFirst,
@@ -940,48 +940,48 @@ export class TreeNode {
 
   /* ------ 对外暴露方法 ------ */
 
-  // 返回路径节点数据集合
-  public getPathData = (): TypeTreeNodeData[] => {
-    const nodes = this.getPath();
-    return nodes.map(node => node.dataset);
-  };
-
-  // 获取单个父节点数据
-  public getParentData = (): TypeTreeNodeData => (this.parent?.dataset);
-
-  // 获取所有父节点数据
-  public getParentsData = (): TypeTreeNodeData[] => {
-    const nodes = this.getParents();
-    return nodes.map(node => node.dataset);
-  };
-
-  // 获取根节点
-  public getRootData = (): TypeTreeNodeData => {
-    const root = this.getRoot();
-    return root?.dataset;
-  };
-
-  // 获取兄弟节点，包含自己在内
-  public getSiblingsData = (): TypeTreeNodeData[] => {
-    const nodes = this.getSiblings();
-    return nodes.map(node => node.dataset);
-  };
-
   // 给当前节点添加数据
   public appendData = (data: TypeTreeNodeData | TypeTreeNodeData[]) => {
     return this.append(data);
   };
 
+  // 返回路径节点数据集合
+  public getPathModel = (): TypeTreeNodeModel[] => {
+    const nodes = this.getPath();
+    return nodes.map(node => node.getModel());
+  };
+
+  // 获取单个父节点数据
+  public getParentModel = (): TypeTreeNodeModel => (this.parent?.getModel());
+
+  // 获取所有父节点数据
+  public getParentsModel = (): TypeTreeNodeModel[] => {
+    const nodes = this.getParents();
+    return nodes.map(node => node.getModel());
+  };
+
+  // 获取根节点
+  public getRootModel = (): TypeTreeNodeModel => {
+    const root = this.getRoot();
+    return root?.getModel();
+  };
+
+  // 获取兄弟节点，包含自己在内
+  public getSiblingsModel = (): TypeTreeNodeModel[] => {
+    const nodes = this.getSiblings();
+    return nodes.map(node => node.getModel());
+  };
+
   // 返回当前节点的第一层子节点数据集合
-  public getChildrenData = (): TypeTreeNodeData[] => {
+  public getChildrenModel = (): TypeTreeNodeModel[] => {
     const { children } = this;
-    const childrenData: TypeTreeNodeData[] = [];
+    const childrenModel: TypeTreeNodeModel[] = [];
     if (Array.isArray(children)) {
       children.forEach(node => {
-        childrenData.push(node.dataset);
+        childrenModel.push(node.getModel());
       });
     }
-    return childrenData;
+    return childrenModel;
   };
 }
 
