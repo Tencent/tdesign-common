@@ -23,6 +23,7 @@ function parseNodeData(
   let value: TreeNodeValue = '';
   let node = null;
   let data = null;
+
   if (typeof para === 'string' || typeof para === 'number') {
     value = para;
     data = item;
@@ -168,7 +169,7 @@ export class TreeStore {
   ): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
-    if (typeof item === 'string') {
+    if (typeof item === 'string' || typeof item === 'number') {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
