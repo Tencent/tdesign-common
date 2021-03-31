@@ -193,7 +193,7 @@ export class TreeStore {
       }
       if (typeof conf.filter === 'function') {
         nodes = nodes.filter((node) => {
-          const nodeModel = node.getTreeNodeModel();
+          const nodeModel = node.getModel();
           return conf.filter(nodeModel);
         });
       }

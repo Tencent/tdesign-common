@@ -474,7 +474,7 @@ export class TreeNode {
 
     let rest = true;
     if (typeof config.filter === 'function') {
-      const nodeModel = this.getTreeNodeModel();
+      const nodeModel = this.getModel();
       rest = config.filter(nodeModel);
     }
 
@@ -877,7 +877,7 @@ export class TreeNode {
   }
 
   // TreeNode 对象 => TypeTreeNodeModel 对象
-  public getTreeNodeModel(): TypeTreeNodeModel {
+  public getModel(): TypeTreeNodeModel {
     const {
       dataset,
       actived,
