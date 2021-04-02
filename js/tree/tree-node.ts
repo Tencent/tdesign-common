@@ -964,9 +964,7 @@ export class TreeNode {
   /* ------ 对外暴露方法 ------ */
 
   // 给当前节点添加数据
-  public appendData = (data: TypeTreeNodeData | TypeTreeNodeData[]) => {
-    return this.append(data);
-  };
+  public appendData = (data: TypeTreeNodeData | TypeTreeNodeData[]) => this.append(data);
 
   // 返回路径节点数据集合
   public getPathModel = (): TypeTreeNodeModel[] => {
@@ -1000,7 +998,7 @@ export class TreeNode {
     const { children } = this;
     const childrenModel: TypeTreeNodeModel[] = [];
     if (Array.isArray(children)) {
-      children.forEach(node => {
+      children.forEach((node) => {
         childrenModel.push(node.getModel());
       });
     }

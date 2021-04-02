@@ -485,7 +485,8 @@ export class TreeStore {
 
   // 批量设置选中态
   public setChecked(list: TreeNodeValue[]): void {
-    const { valueMode, checkStrictly } = this.config;
+    const { valueMode, checkStrictly, checkable } = this.config;
+    if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
       const node = this.getNode(val);
       if (node) {
