@@ -994,13 +994,23 @@ export class TreeNode {
   };
 
   // 返回当前节点的第一层子节点数据集合
-  public getChildrenModel = (): TypeTreeNodeModel[] => {
+  public getChildrenModel = (deep?: boolean): boolean | TypeTreeNodeModel[] => {
+    let childrenModel: boolean | TypeTreeNodeModel[] = false;
     const { children } = this;
-    const childrenModel: TypeTreeNodeModel[] = [];
     if (Array.isArray(children)) {
-      children.forEach((node) => {
-        childrenModel.push(node.getModel());
-      });
+      if (children.length > 0) {
+        if (deep) {
+          const nodes = this.walk();
+          nodes.shift();
+          childrenModel = nodes.map(node => node.getModel());
+        } else {
+          childrenModel = children.map(node => node.getModel());
+        }
+      } else {
+        childrenModel = false;
+      }
+    } else if (typeof children === 'boolean') {
+      childrenModel = children;
     }
     return childrenModel;
   };

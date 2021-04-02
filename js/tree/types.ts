@@ -128,7 +128,7 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
   /**
    * 获取当前节点的直接子节点
    */
-  getChildren: () => TreeNodeModel[];
+  getChildren: (deep?: boolean) => boolean | TreeNodeModel[];
   /**
    * 获取节点全路径
    */
