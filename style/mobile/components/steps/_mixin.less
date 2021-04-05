@@ -117,15 +117,15 @@
   & when(@anchor-status = process) {
     .@{prefix}-steps-item-icon__number {
       background: @primary-color;
-      color: @border-level-2-color;
+      color: #fff;
       border-color: @primary-color;
     }
   };
   & when(@anchor-status = error) {
     .@{prefix}-steps-item-icon__number {
-      background: @step-error-bg-color;
+      background: @error-color-6;
       color: @text-anti-primary-color;
-      border-color: @step-error-bg-color;
+      border-color: @error-color-6;
     }
   };
 }
