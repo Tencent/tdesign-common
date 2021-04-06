@@ -6,7 +6,7 @@
 
 a.@{prefix}-menu__item {
   text-decoration: none;
-  color: inherit;
+  color: unset;
 
   &:hover,
   &:active {
@@ -25,6 +25,13 @@ a.@{prefix}-menu__item {
     text-align: center;
     color: @menu-light-item-color;
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    a {
+      color: inherit !important;
+      text-decoration:none;
+    }
 
     &.@{prefix}-is-active,
     &:hover {
