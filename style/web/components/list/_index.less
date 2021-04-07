@@ -4,6 +4,7 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
+
 .@{prefix}-list {
   overflow: auto;
 
@@ -14,13 +15,22 @@
 
   &-item {
     font-size: @font-size-base;
-    padding: @spacer @spacer-3;
-    border-bottom: 1px solid transparent;
+    padding: @list-item-spacer-default @spacer-3;
     background: @list-bg-color-default;
     display: flex;
     justify-content: space-between;
     align-items: center;
     line-height: 22px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+    }
 
     &-main {
       display: flex;
@@ -41,6 +51,7 @@
         overflow: hidden;
         background: @list-avatar-bg-color;
         margin-right: @spacer-2;
+        flex-shrink: 0;
 
         img {
           width: 100%;
@@ -53,13 +64,20 @@
       &-title {
         font-size: @font-size-l;
         font-weight: bold;
-        margin-bottom: @spacer;
+        margin-bottom: @spacer * .75;
+        color: @text-level-1-color;
+      }
+
+      &-description {
+        margin-right: @spacer-3;
+        color: @text-level-1-color;
       }
     }
 
     &__action {
       list-style: none;
       padding: 0;
+      flex-shrink: 0;
 
       & > li {
         display: inline-block;
@@ -85,8 +103,8 @@
   }
 
   &--split {
-    .@{prefix}-list-item {
-      border-color: @list-item-border-color;
+    .@{prefix}-list-item::after {
+      background: @list-item-split-color;
     }
   }
 
