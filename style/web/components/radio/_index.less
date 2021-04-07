@@ -15,6 +15,7 @@
       }
       &.@{prefix}-is-disabled {
         &.@{prefix}-is-checked {
+          color: @radio-button-color-outline-disabled-checked;
           border-color: @radio-button-border-color-outline-disabled-checked;
           background-color: @radio-button-background-color-outline-disabled-checked;
         }
@@ -38,6 +39,7 @@
   }
 
   &.@{radio-cls}-group-small {
+    height: @spacer * 3;
     .@{radio-button--cls} {
       padding: @radio-button-padding-small;
       font-size: @radio-button-font-size-small;
@@ -45,6 +47,7 @@
   }
 
   &.@{radio-cls}-group-medium {
+    height: @spacer * 4;
     .@{radio-button--cls} {
       padding: @radio-button-padding-medium;
       font-size: @radio-button-font-size-medium;
@@ -52,6 +55,7 @@
   }
 
   &.@{radio-cls}-group-large {
+    height: @spacer * 5;
     .@{radio-button--cls} {
       padding: @radio-button-padding-large;
       font-size: @radio-button-font-size-large;
@@ -142,8 +146,6 @@
   &__former {
     opacity: 0;
     position: absolute;
-    // height: 0;
-    // width: 0;
   }
 
   &__input {
@@ -195,6 +197,10 @@
 
   &.@{prefix}-is-disabled {
     cursor: not-allowed;
+
+    .@{radio-cls}__label {
+      color: @radio-button-color-disabled;
+    }
 
     .@{radio-cls}__input {
       background-color: @radio-input-color-disabled;
