@@ -22,19 +22,23 @@
 #### 2.1.1. 验证状态
 在防止用户犯错的前提下，尽可能让用户更早地发现并纠正错误。
 表单内置的校验规则有：date / url / email / required / boolean / max / min / len / number / enum / idcard / telnumber / pattern。
-其中 `date` / `url` / `email` 等校验规则参数参看：<a href="https://github.com/validatorjs/validator.js" target="_blank">https://github.com/validatorjs/validator.js</a>
+其中 `date` / `url` / `email` 等校验规则参数参看：[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)
+
 {{ validator }}
 
 #### 2.1.2. 提示状态
 以icon或者提示文字的形式来提示用户对表单的填写
+
 {{ validator-status }}
 
 ### 2.2. 表单校验
 以icon或者提示文字的形式来提示用户对表单的填写
+
 {{ custom-validator }}
 
 ### 2.3. 对齐方式
 根据具体目标和制约因素，选择最佳的标签对齐方式，默认对齐方式为右对齐
+
 {{ align }}
 
 ### 2.4. 布局方式
