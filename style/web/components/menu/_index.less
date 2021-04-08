@@ -4,16 +4,6 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
-a.@{prefix}-menu__item {
-  text-decoration: none;
-  color: unset;
-
-  &:hover,
-  &:active {
-    color: inherit;
-  }
-}
-
 .@{prefix}-menu {
   font-size: @menu-fontsize;
 
@@ -25,13 +15,6 @@ a.@{prefix}-menu__item {
     text-align: center;
     color: @menu-light-item-color;
     cursor: pointer;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    a {
-      color: unset;
-      text-decoration: none;
-    }
 
     &.@{prefix}-is-active,
     &:hover {
@@ -81,7 +64,7 @@ a.@{prefix}-menu__item {
   }
 }
 
-.@{prefix}-menu-mode__popup {
+.@{prefix}-menu-mode__dropdown {
 
   .@{prefix}-is-opened {
 
@@ -99,7 +82,6 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__item {
     min-width: 128px;
-    overflow: unset;
   }
 
   &__inner {
@@ -149,7 +131,7 @@ a.@{prefix}-menu__item {
     }
   }
 
-  &.@{prefix}-menu-mode__normal {
+  &.@{prefix}-menu-mode__tile {
 
     // height: 128px;
 
@@ -207,7 +189,6 @@ a.@{prefix}-menu__item {
   background: @menu-theme-light;
   box-shadow: @menu-default-shadow;
   transition: .3s width;
-  white-space: nowrap;
 
   &.@{prefix}-menu-mode__popup {
 
@@ -419,13 +400,4 @@ a.@{prefix}-menu__item {
       }
     }
   }
-}
-
-// opacity-transition
-.@{prefix}-opacity-transition {
-  transition: opacity .3s cubic-bezier(.55,0,.1,1);
-}
-.horizontal-collapse-transition .@{prefix}-submenu__title .@{prefix}-submenu__icon-arrow {
-  transition: .2s;
-  opacity: 0;
 }
