@@ -87,6 +87,23 @@
   }
 }
 
+// 状态色 - 无框背景 - 既文字背景
+.button-attr-color-text-bg(@attr, @attr-prepend: '') {
+  @{attr}: e(@attr-prepend) transparent;
+
+  &:hover {
+    @{attr}: e(@attr-prepend) @bg-color-hover;
+  }
+
+  &:active {
+    @{attr}: e(@attr-prepend) @bg-color-active;
+  }
+
+  &.t-is-disabled {
+    @{attr}: e(@attr-prepend) transparent;
+  }
+}
+
 // border 状态色 - 灰
 .button-attr-border-color-gray(@attr: 'border', @attr-prepend: '1px solid') {
   @{attr}: e(@attr-prepend) @border-level-2-color;
@@ -128,6 +145,9 @@
     @btn-font-default ;
     @btn-padding-horizontal-default;
   );
+  .@{prefix}-icon {
+    font-size: @btn-icon-size;
+  }
   .@{prefix}-icon + .@{prefix}-button__text {
     margin-left: @spacer;
   }
@@ -219,13 +239,14 @@
   // 文字按钮
   &--variant-text {
     .button-attr-color-primary(color);
-    background: none;
+    .button-attr-color-text-bg(background-color);
     border: 0;
     &.@{prefix}-button--theme-danger {
       .button-attr-color-danger(color);
     }
     &.@{prefix}-button--ghost {
       .button-attr-color-white-ghost(color);
+      background: none;
       &.@{prefix}-button--theme-primary {
         .button-attr-color-primary(color);
       }
@@ -288,6 +309,9 @@
     text-align: center;
     border-radius: @btn-height-default / 2;
 
+    .@{prefix}-icon {
+      font-size: @btn-icon-size--icon-only;
+    }
     &.@{prefix}-size-s {
       width: @btn-height-default;
       border-radius: @btn-height-s / 2;
