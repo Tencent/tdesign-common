@@ -22,9 +22,13 @@
   }
 
   &-pagination {
-    padding: @table-padding-normal;
+    padding: @table-padding-normal  @table-padding-horizontal;
+    box-sizing: border-box;
   }
 
+  .@{prefix}-icon {
+    font-size: @font-size-l;
+  }
   // table 标签基础样式
   table {
     width: 100%;
@@ -43,7 +47,7 @@
   thead td,
   th {
     color: @table-head-text-color;
-    font-weight: bold;
+    font-weight: 500;
   }
 
   td {
