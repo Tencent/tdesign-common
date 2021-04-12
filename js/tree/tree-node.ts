@@ -1,4 +1,5 @@
 import uniqueId from 'lodash/uniqueId';
+import get from 'lodash/get';
 import { TreeStore } from './tree-store';
 import {
   TreeNodeValue,
@@ -85,7 +86,7 @@ export class TreeNode {
 
     const config = tree.config || {};
     const prefix = config.prefix || 't';
-    const keys = tree?.config?.keys || {};
+    const keys = get(tree, 'config.keys') || {};
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
@@ -374,7 +375,7 @@ export class TreeNode {
 
   // 异步加载子节点数据
   public async loadChildren(): Promise<void> {
-    const config = this?.tree?.config || {};
+    const config = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
       if (typeof config.load === 'function') {
         this.loading = true;
@@ -528,23 +529,23 @@ export class TreeNode {
   // 判断节点是否被禁用
   public isDisabled() {
     if (this.vmIsLocked) return true;
-    const treeDisabled = this?.tree?.config?.disabled;
-    return treeDisabled || this.disabled;
+    const treeDisabled = get(this, 'tree.config.disabled');
+    return !!(treeDisabled || this.disabled);
   }
 
   // 判断节点是否支持互斥展开
   public isExpandMutex() {
-    return this?.tree?.config?.expandMutex || this.expandMutex;
+    return !!(get(this, 'tree.config.expandMutex') || this.expandMutex);
   }
 
   // 节点可高亮
   public isActivable() {
-    return this?.tree?.config?.activable || this.activable;
+    return !!(get(this, 'tree.config.activable') || this.activable);
   }
 
   // 是否可选
   public isCheckable() {
-    return this?.tree?.config?.checkable || this.checkable;
+    return !!(get(this, 'tree.config.checkable') || this.checkable);
   }
 
   // 检查节点是否被激活
@@ -678,7 +679,7 @@ export class TreeNode {
     if (expanded) {
       const shouldExpandNodes = [];
       shouldExpandNodes.push(this);
-      if (tree?.config?.expandParent) {
+      if (get(tree, 'config.expandParent')) {
         this.getParents().forEach((node) => {
           shouldExpandNodes.push(node);
         });
