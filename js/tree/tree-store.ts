@@ -124,7 +124,7 @@ export class TreeStore {
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
     }
-    return node || null;
+    return node;
   }
 
   // 获取节点在总节点列表中的位置

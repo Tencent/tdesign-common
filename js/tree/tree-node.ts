@@ -1,4 +1,5 @@
 import uniqueId from 'lodash/uniqueId';
+import get from 'lodash/get';
 import { TreeStore } from './tree-store';
 import {
   TreeNodeValue,
@@ -85,7 +86,7 @@ export class TreeNode {
 
     const config = tree.config || {};
     const prefix = config.prefix || 't';
-    const keys = tree?.config?.keys || {};
+    const keys = get(tree, 'config.keys') || {};
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
@@ -374,7 +375,7 @@ export class TreeNode {
 
   // 异步加载子节点数据
   public async loadChildren(): Promise<void> {
-    const config = this?.tree?.config || {};
+    const config = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
       if (typeof config.load === 'function') {
         this.loading = true;
@@ -528,23 +529,23 @@ export class TreeNode {
   // 判断节点是否被禁用
   public isDisabled() {
     if (this.vmIsLocked) return true;
-    const treeDisabled = this?.tree?.config?.disabled;
-    return treeDisabled || this.disabled;
+    const treeDisabled = get(this, 'tree.config.disabled');
+    return !!(treeDisabled || this.disabled);
   }
 
   // 判断节点是否支持互斥展开
   public isExpandMutex() {
-    return this?.tree?.config?.expandMutex || this.expandMutex;
+    return !!(get(this, 'tree.config.expandMutex') || this.expandMutex);
   }
 
   // 节点可高亮
   public isActivable() {
-    return this?.tree?.config?.activable || this.activable;
+    return !!(get(this, 'tree.config.activable') || this.activable);
   }
 
   // 是否可选
   public isCheckable() {
-    return this?.tree?.config?.checkable || this.checkable;
+    return !!(get(this, 'tree.config.checkable') || this.checkable);
   }
 
   // 检查节点是否被激活
@@ -678,7 +679,7 @@ export class TreeNode {
     if (expanded) {
       const shouldExpandNodes = [];
       shouldExpandNodes.push(this);
-      if (tree?.config?.expandParent) {
+      if (get(tree, 'config.expandParent')) {
         this.getParents().forEach((node) => {
           shouldExpandNodes.push(node);
         });
@@ -900,24 +901,23 @@ export class TreeNode {
     if (!model) {
       const {
         // 被重新定义的对外暴露方法
-        appendData,
-        getPathModel,
-        getParentModel,
-        getParentsModel,
-        getRootModel,
-        getSiblingsModel,
-        getChildrenModel,
+        modelGetLevel,
+        modelGetIndex,
+        modelIsFirst,
+        modelIsLast,
+        modelIsLeaf,
+        modelInsertBefore,
+        modelInsertAfter,
+        modelAppendData,
+        modelGetPath,
+        modelGetParent,
+        modelGetParents,
+        modelGetRoot,
+        modelGetSiblings,
+        modelGetChildren,
       } = this;
 
       // 同名方法，需要重新绑定 this 指向
-      const getLevel = () => this.getLevel();
-      const getIndex = () => this.getIndex();
-      const isFirst = () => this.isFirst();
-      const isLast = () => this.isLast();
-      const isLeaf = () => this.isLeaf();
-      const insertBefore = (newData: TypeTreeItem) => this.insertBefore(newData);
-      const insertAfter = (newData: TypeTreeItem) => this.insertAfter(newData);
-
       model = {
         // 属性
         value,
@@ -929,20 +929,20 @@ export class TreeNode {
         indeterminate,
         loading,
         // 方法
-        getPath: getPathModel,
-        appendData,
-        getLevel,
-        getIndex,
-        getParent: getParentModel,
-        getParents: getParentsModel,
-        getChildren: getChildrenModel,
-        getRoot: getRootModel,
-        getSiblings: getSiblingsModel,
-        insertBefore,
-        insertAfter,
-        isFirst,
-        isLast,
-        isLeaf,
+        getPath: modelGetPath,
+        appendData: modelAppendData,
+        getLevel: modelGetLevel,
+        getIndex: modelGetIndex,
+        getParent: modelGetParent,
+        getParents: modelGetParents,
+        getChildren: modelGetChildren,
+        getRoot: modelGetRoot,
+        getSiblings: modelGetSiblings,
+        insertBefore: modelInsertBefore,
+        insertAfter: modelInsertAfter,
+        isFirst: modelIsFirst,
+        isLast: modelIsLast,
+        isLeaf: modelIsLeaf,
       };
 
       this.model = model;
@@ -963,38 +963,46 @@ export class TreeNode {
 
   /* ------ 对外暴露方法 ------ */
 
+  public modelGetLevel = () => this.getLevel();
+  public modelGetIndex = () => this.getIndex();
+  public modelIsFirst = () => this.isFirst();
+  public modelIsLast = () => this.isLast();
+  public modelIsLeaf = () => this.isLeaf();
+  public modelInsertBefore = (newData: TypeTreeItem) => this.insertBefore(newData);
+  public modelInsertAfter = (newData: TypeTreeItem) => this.insertAfter(newData);
+
   // 给当前节点添加数据
-  public appendData = (data: TypeTreeNodeData | TypeTreeNodeData[]) => this.append(data);
+  public modelAppendData = (data: TypeTreeNodeData | TypeTreeNodeData[]) => this.append(data);
 
   // 返回路径节点数据集合
-  public getPathModel = (): TypeTreeNodeModel[] => {
+  public modelGetPath = (): TypeTreeNodeModel[] => {
     const nodes = this.getPath();
     return nodes.map(node => node.getModel());
   };
 
   // 获取单个父节点数据
-  public getParentModel = (): TypeTreeNodeModel => (this.parent?.getModel());
+  public modelGetParent = (): TypeTreeNodeModel => (this.parent?.getModel());
 
   // 获取所有父节点数据
-  public getParentsModel = (): TypeTreeNodeModel[] => {
+  public modelGetParents = (): TypeTreeNodeModel[] => {
     const nodes = this.getParents();
     return nodes.map(node => node.getModel());
   };
 
   // 获取根节点
-  public getRootModel = (): TypeTreeNodeModel => {
+  public modelGetRoot = (): TypeTreeNodeModel => {
     const root = this.getRoot();
     return root?.getModel();
   };
 
   // 获取兄弟节点，包含自己在内
-  public getSiblingsModel = (): TypeTreeNodeModel[] => {
+  public modelGetSiblings = (): TypeTreeNodeModel[] => {
     const nodes = this.getSiblings();
     return nodes.map(node => node.getModel());
   };
 
   // 返回当前节点的第一层子节点数据集合
-  public getChildrenModel = (deep?: boolean): boolean | TypeTreeNodeModel[] => {
+  public modelGetChildren = (deep?: boolean): boolean | TypeTreeNodeModel[] => {
     let childrenModel: boolean | TypeTreeNodeModel[] = false;
     const { children } = this;
     if (Array.isArray(children)) {
