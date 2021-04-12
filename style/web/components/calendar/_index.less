@@ -3,8 +3,8 @@
 @import "./_mixin.less";
 
 .@{prefix}-calendar {
-  border: 1px solid rgb(238, 238, 238);
-  background-color: #fff;
+  border: 1px solid @border-level-1-color;
+  background-color: @bg-color-block;
 
   &--full {
     min-width: 800px;
@@ -21,8 +21,7 @@
       &-title {
         font-size: 20px;
         line-height: 30px;
-        color: #000;
-        opacity: .9;
+        color:@text-level-1-color;
         position: absolute;
         top: -36px;
       }
@@ -35,7 +34,7 @@
       }
 
       &-body-cell {
-        border-top: 1px solid #eee;
+        border-top: 1px solid @border-level-1-color;
         height: 87.4px;
         display: flex;
         flex-direction: column;
@@ -49,19 +48,26 @@
     }
 
     .@{prefix}-is-checked {
-      border-top: 1px solid #296ee0;
-      background-color: #ebf2ff;
+      background-color: @primary-color-1;
+      border-top: 1px solid @primary-color-8;
+    }
+
+    
+    .@{prefix}-calendar__footer {
+      height: 90px;
+      padding: 46px 36px 20px;
+      border-top: 1px solid @border-level-1-color;
     }
   }
 
   &--card {
     width: 358px;
-    height: 348px;
+    // height: 348px;
 
     .@{prefix}-calendar__control {
       height: 58px;
       padding: 16px 29px 18px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid @border-level-1-color;
     }
 
     .@{prefix}-calendar__panel {
@@ -112,7 +118,7 @@
             border-radius: 3px;
 
             &:hover {
-              background-color: #f5f5f5;
+              background-color: @primary-color-1;
             }
           }
         }
@@ -121,9 +127,15 @@
 
     .@{prefix}-is-checked {
       .@{prefix}-calendar__table-body-cell-value {
-        background-color: #2052d9;
+        background-color: @primary-color-8;
         color: #fff;
       }
+    }
+
+    .@{prefix}-calendar__footer {
+      height: 64px;
+      padding: 16px;
+      border-top: 1px solid @border-level-1-color;
     }
   }
 
@@ -192,8 +204,7 @@
         justify-content: flex-end;
         font-size: 14px;
         line-height: 22px;
-        color: #000;
-        opacity: .6;
+        color: @text-level-2-color;
         cursor: default;
 
         &:last-child {
@@ -213,7 +224,10 @@
         cursor: pointer;
 
         &:hover {
-          background-color: #f5f5f5;
+          background-color: @bg-color-hover;
+        }
+        &-value {
+          color: @text-level-2-color;
         }
       }
     }
