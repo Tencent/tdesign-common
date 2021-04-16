@@ -3,4 +3,11 @@
 @import "./_variables.less";
 
 
+[class^='@{prefix}-'],
+[class^='@{prefix}-'] * ,
+[class^='@{prefix}-']::before,
+[class^='@{prefix}-']::after {
+  box-sizing: border-box;
+  font-family: @font-family;
+}
 
