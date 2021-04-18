@@ -3,6 +3,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../input/_index.less";
 
 .@{prefix}-upload {
   &-list__file {
@@ -59,8 +60,8 @@
 
   &-list__img {
     object-fit: cover;
-    min-width: 100%;
-    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     cursor: pointer;
   }
 
@@ -231,5 +232,84 @@
     &:hover {
       border-color: @primary-color;
     }
+  }
+}
+
+.@{prefix}-upload__tips {
+  display: block;
+  color: @placeholder-color;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.@{prefix}-upload__placeholder {
+  color: @placeholder-color;
+}
+
+.@{prefix}-upload__single-display-text {
+  color: @form-text-color;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+}
+
+.@{prefix}-upload__single-name {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.@{prefix}-icon-clear-circle-filled {
+  color: @upload-icon-color;
+  margin-top: 2px;
+
+  &:hover {
+    color: @upload-icon-color-hover;
+    cursor: pointer;
+  }
+}
+
+.@{prefix}-upload__single-percent {
+  margin-left: 8px;
+}
+
+.@{prefix}-upload__single-progress {
+  color: #2a6fdf;
+}
+
+.@{prefix}-upload__single-input-delete {
+  margin-left: 16px;
+  font-size: 14px;
+  color: #0052d9;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.@{prefix}-upload__single-input-preview {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  max-width: calc(100% - 162px);
+}
+
+.@{prefix}-upload__single-input-text {
+  display: block;
+  .text-ellipsis()
+}
+
+.@{prefix}-upload__single-input {
+  display: flex;
+  align-items: center;
+  .@{prefix}-upload__trigger {
+    margin-left: 16px;
+  }
+  .@{prefix}-upload__single-progress {
+    width: 60px;
+    white-space: nowrap;
+  }
+  .@{prefix}-input__inner {
+    display: flex;
+    justify-content: space-between;
   }
 }
