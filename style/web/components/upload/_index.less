@@ -196,33 +196,27 @@
       text-align: center;
       display: block;
       cursor: pointer;
-
-      &:first-child {
-        padding-right: 16px;
-        margin-right: 16px;
-      }
     }
   }
 }
 
 // 拖拽
 .@{prefix}-upload {
-  &--dragable {
+  &__highlight {
+    color: @primary-color;
+  }
+
+  &__dragger {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 336px;
     height: 140px;
     border: 1px dashed @border-level-2-color;
     border-radius: 2px;
     font-size: @font-size-base;
     color: @text-level-2-color;
-    margin-bottom: 10px;
     cursor: pointer;
-
-    &--highlight {
-      color: @primary-color;
-    }
+    padding: 12px;
 
     &.@{prefix}-is--active {
       background-color: @bg-color-hover;
@@ -233,12 +227,30 @@
       border-color: @primary-color;
     }
   }
+
+  &__dragger-center {
+    justify-content: center;
+  }
+
+  &__dragger-text {
+    display: flex;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  &__single-name {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
 }
 
 .@{prefix}-upload__tips {
+  margin-top: 10px;
+}
+
+.@{prefix}-upload__small {
   display: block;
   color: @placeholder-color;
-  margin-top: 10px;
   font-size: 12px;
   line-height: 20px;
 }
@@ -247,9 +259,12 @@
   color: @placeholder-color;
 }
 
+.@{prefix}-display-text--margin {
+  margin-top: 10px;
+}
+
 .@{prefix}-upload__single-display-text {
   color: @form-text-color;
-  margin-top: 10px;
   font-size: 12px;
   line-height: 20px;
   display: flex;
@@ -298,7 +313,7 @@
   .text-ellipsis()
 }
 
-.@{prefix}-upload__single-input {
+.@{prefix}-upload__single-file-input {
   display: flex;
   align-items: center;
   .@{prefix}-upload__trigger {
@@ -312,4 +327,41 @@
     display: flex;
     justify-content: space-between;
   }
+}
+
+.@{prefix}-upload__dragger-progress {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .@{prefix}-icon-check-circle-filled {
+    color: @success-color;
+  }
+  .@{prefix}-icon-error-circle-filled {
+    color: @error-color;
+  }
+  .@{prefix}-icon-check-circle-filled,
+  .@{prefix}-icon-error-circle-filled {
+    font-size: 20px;
+  }
+}
+
+.@{prefix}-upload__draggar-img-wrap {
+  width: 116px;
+  height: 116px;
+  margin-right: 12px;
+  background-color: #f0f2f5;
+}
+
+.@{prefix}-upload__dragger-progress-info {
+  flex: 1;
+  .@{prefix}-upload__single-display-text {
+    margin-bottom: 8px;
+  }
+  .@{prefix}-button {
+    margin-top: 25px;
+  }
+}
+
+.@{prefix}-upload__dragger-progress-cancel {
+  padding: 0;
 }
