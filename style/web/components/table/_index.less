@@ -32,6 +32,8 @@
   // table 标签基础样式
   table {
     width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
   }
 
   th,
@@ -42,6 +44,10 @@
     line-height: @table-line-height;
     vertical-align: middle;
     font-weight: normal;
+
+    &:not([align]) {
+      text-align: left;
+    }
   }
 
   thead td,

@@ -9,8 +9,7 @@
   overflow: auto;
 
   &-items {
-    list-style: none;
-    padding: 0;
+    .list-style-none();
   }
 
   &-item {
@@ -54,6 +53,7 @@
         flex-shrink: 0;
 
         img {
+          max-width: 100%;
           width: 100%;
           height: 100%;
         }
@@ -62,9 +62,10 @@
       &-content {}
 
       &-title {
+        padding: 0;
         font-size: @font-size-l;
         font-weight: bold;
-        margin-bottom: @spacer * .75;
+        margin: 0 0 @spacer * .75;
         color: @text-level-1-color;
       }
 

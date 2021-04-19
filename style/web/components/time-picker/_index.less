@@ -221,15 +221,14 @@
 
     &-scroll {
       flex: 1 0 auto;
-      box-sizing: border-box;
       height: 100%;
       border-right: 1px solid @border-level-1-color;
       padding-bottom: 20px;
       overflow-y: scroll;
       text-align: center;
-      list-style: none;
       position: relative;
       transition: background .3s;
+      .list-style-none();
 
       &::-webkit-scrollbar {
         width: 6px;

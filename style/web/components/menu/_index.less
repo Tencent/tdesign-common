@@ -7,6 +7,11 @@
 .@{prefix}-menu {
   font-size: @menu-fontsize;
 
+  ul&,
+  ul {
+    .list-style-none();
+  }
+
   &__item {
     position: relative;
     float: left;
