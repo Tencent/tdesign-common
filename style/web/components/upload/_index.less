@@ -6,6 +6,20 @@
 @import "../input/_index.less";
 
 .@{prefix}-upload {
+
+  .@{prefix}-icon-check-circle-filled {
+    color: @success-color;
+  }
+  .@{prefix}-icon-error-circle-filled {
+    color: @error-color;
+  }
+  .@{prefix}-icon-loading {
+    color: @primary-color;
+  }
+  .@{prefix}-icon-time-filled {
+    color: rgba(0, 0, 0, .4);;
+  }
+
   &-list__file {
     & .@{prefix}-icon {
       font-size: 40px;
@@ -144,7 +158,6 @@
     }
 
     & .@{prefix}-icon-loading {
-      color: @primary-color;
       margin-bottom: 10px;
     }
 
@@ -333,12 +346,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  .@{prefix}-icon-check-circle-filled {
-    color: @success-color;
-  }
-  .@{prefix}-icon-error-circle-filled {
-    color: @error-color;
-  }
   .@{prefix}-icon-check-circle-filled,
   .@{prefix}-icon-error-circle-filled {
     font-size: 20px;
@@ -364,4 +371,73 @@
 
 .@{prefix}-upload__dragger-progress-cancel {
   padding: 0;
+}
+
+.@{prefix}-upload__flow {
+  min-width: 496px;
+  max-width: 960px;
+
+  &-placeholder {
+    display: inline-block;
+    margin-left: 16px;
+  }
+
+  &-op {
+    display: flex;
+    align-items: center;
+  }
+
+  &-bottom {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+    .@{prefix}-button + .@{prefix}-button {
+      margin-left: 8px;
+    }
+  }
+
+  &-empty {
+    width: 100%;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, .4);
+  }
+
+  &-table {
+    width: 100%;
+    border: 1px dashed #ddd;
+    margin-top: 24px;
+
+    > tr {
+      border-top: 1px solid #ddd;
+    }
+
+    > tr > th {
+      color: rgba(0, 0, 0, .4);
+      font-weight: normal;
+      border: 1px solid #ddd;
+    }
+
+    > tr > td,
+    > tr > th {
+      padding: 10px 24px;
+    }
+  }
+
+  &-button {
+    color: rgba(0, 0, 0, .4);
+    cursor: pointer;
+  }
+
+  &-button:hover {
+    color: @text-level-2-color;
+  }
+
+  &-status {
+    .@{prefix}-icon {
+      margin-right: 10px;
+    }
+  }
 }
