@@ -1,0 +1,575 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+
+// <name> 替换为组件名
+.@{prefix}-date-picker {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+  &--container {
+    background-color: @dropdown-background;
+    box-shadow: @day-calendar-shadow;
+  }
+  &--text {
+    font-size: @font-size-small;
+  }
+
+  &--multiple .@{prefix}-form-controls {
+    min-width: 640px;
+  }
+  // &--multiple-time .@{prefix}-form-controls {
+  //   min-width: 275px;
+  // }
+  // &--multiple-seconds .@{prefix}-form-controls {
+  //   min-width: 340px;
+  // }
+
+  .@{prefix}-align-items-center {
+    align-items: center;
+  }
+  .@{prefix}-align-items-end {
+    align-items: flex-end;
+  }
+
+  // .@{prefix}-date-small { font-size: @form-small-font-size;height: @form-small-height; }
+
+  // .@{prefix}-date-large { font-size: @form-large-font-size; line-height: @form-large-line-height;}
+
+  // /* Enter and leave animations can use different */
+  // /* durations and timing functions.              */
+  .@{prefix}-slide-fade-enter-active {
+    transition: all 0.2s ease;
+  }
+
+  .@{prefix}-slide-fade-leave-active {
+    transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  .@{prefix}-slide-fade-enter,
+  .@{prefix}-slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+}
+
+.@{prefix}-date-picker--calendar-inline-view {
+  position: relative;
+  border: 1px dashed transparent;
+  width: auto;
+  box-shadow: none;
+  z-index: auto;
+  left: auto;
+  top: auto;
+  right: auto;
+
+  border-color: @day-calendar-border-color;
+
+  &:before,
+  &:after {
+    border: 1px solid transparent;
+    content: " ";
+    display: block;
+    position: relative;
+  }
+
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+.@{prefix}-date-picker--panels {
+  display: flex;
+  min-width: 320px;
+  max-width: 100%;
+
+  background-color: @day-calendar-background;
+
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+.@{prefix}-date-picker--panel {
+  position: relative;
+
+  &:nth-child(2) {
+    &::before {
+      content: " ";
+      width: 1px;
+      height: 95%;
+      display: block;
+      position: absolute;
+      left: 0px;
+      top: 16px;
+      border-left: 1px solid @day-calendar-border-color;
+    }
+  }
+}
+
+.@{prefix}-date-picker-presets {
+  float: left;
+  text-align: left;
+  padding: 8px 16px;
+  min-width: 100px;
+
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
+
+  li {
+    font-size: @font-size-regular;
+    line-height: @font-line-height;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0px;
+    cursor: pointer;
+    // min-width: 100px;
+    float: left;
+  }
+}
+
+.@{prefix}-date-picker--apply {
+  border-top: 1px solid @day-calendar-border-color;
+
+  padding: 8px 16px;
+  text-align: left;
+  float: right;
+
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+.@{prefix}-date-picker--calendar {
+  width: @day-calendar-width;
+  margin: @day-calendar-margin;
+
+  &-days,
+  &-weekdays,
+  &-months {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    list-style: none;
+
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+  }
+
+  &-weekdays {
+    border-bottom: 1px solid #ccc;
+    border-color: @day-calendar-border-color;
+  }
+
+  &-days {
+    flex-wrap: wrap;
+    padding: @day-margin-lr;
+  }
+  &-day {
+    font-size: @font-size-regular;
+    line-height: @font-line-height;
+    font-weight: 400;
+    width: @day-width;
+    height: @day-width;
+    max-width: @day-width;
+    max-height: @day-width;
+    line-height: @day-width - @day-padding * 2;
+    margin: @day-margin-tb 0;
+    padding: @day-padding;
+
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: @day-border-radius;
+    position: relative;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: @day-color;
+
+    flex: @day-width;
+
+    &--weekend,
+    &--weekend {
+      color: @day-weekdays-color;
+    }
+
+    &--today {
+      font-weight: bold;
+      color: @day-today-color;
+
+      &:hover,
+      &:focus {
+        background-color: @day-today-bg;
+      }
+    }
+
+    &.@{prefix}-date-selected &--text,
+    &.@{prefix}-date-selected:hover &--text,
+    &.@{prefix}-active &--text,
+    &.@{prefix}-active:hover &--text {
+      background-color: @day-selected-bg;
+      border-color: @day-calendar-border-color;
+      color: @day-selected-color;
+    }
+    &.@{prefix}-date-selected.@{prefix}-date-picker--calendar-day--selected-end-date
+      &--text,
+    &.@{prefix}-date-selected.@{prefix}-date-picker--calendar-day--selected-start-date
+      &--text {
+      color: @day-color;
+      background-color: @day-today-bg;
+    }
+
+    &--in-range {
+      background-color: @day-in-range-bg;
+      border-color: @day-calendar-border-color;
+      color: @day-in-range-color;
+      border-radius: 0;
+    }
+
+    &--start-date,
+    &--start-date:hover {
+      // background-color: @day-selected-bg;
+      // border-color: @day-calendar-border-color;
+      // color: @day-selected-color;
+      border-radius: @day-calendar-border-radius 0 0 @day-calendar-border-radius;
+
+      .@{prefix}-date-picker--calendar-day--text {
+        border-radius: @day-calendar-border-radius 0 0
+          @day-calendar-border-radius;
+      }
+      .@{prefix}-date-picker--calendar-day--text:hover {
+        background-color: @color-primary;
+      }
+    }
+
+    &--end-date,
+    &--end-date:hover {
+      border-radius: 0 @day-calendar-border-radius @day-calendar-border-radius 0;
+      .@{prefix}-date-picker--calendar-day--text {
+        border-radius: 0 @day-calendar-border-radius @day-calendar-border-radius
+          0;
+      }
+      .@{prefix}-date-picker--calendar-day--text:hover {
+        background-color: @color-primary;
+      }
+    }
+
+    &--start-date.@{prefix}-date-picker--calendar-day--end-date {
+      border-radius: @day-calendar-border-radius;
+
+      .@{prefix}-date-picker--calendar-day--text {
+        border-radius: @day-calendar-border-radius;
+      }
+    }
+
+    &--start-date &--text,
+    &--end-date &--text {
+      // margin: 4px;
+      background-color: @day-selected-bg;
+      // border-color: @day-calendar-border-color;
+      border-color: @day-in-range-bg;
+      color: @day-selected-color;
+    }
+
+    &--text {
+      border-radius: @day-border-radius;
+      margin: 0;
+      padding: 0 @day-margin-lr;
+      // width: @day-width - @day-padding * 4;
+      // height: @day-width - @day-padding * 4;
+      width: @day-width;
+      height: @day-width;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        background-color: @day-hover-bg;
+      }
+    }
+
+    &--off {
+      background-color: @day-calendar-background;
+      border-color: @day-disabled-border-color;
+      color: @day-disabled-color;
+    }
+
+    &.@{prefix}-disabled {
+      color: @day-disabled-color;
+
+      cursor: not-allowed;
+      text-decoration: line-through;
+      pointer-events: none;
+      background: transparent;
+    }
+  }
+
+  &-weekday {
+    width: @day-width;
+    height: @day-width;
+    line-height: @day-width;
+    margin: @day-margin-tb @day-margin-lr;
+    padding: @day-padding;
+
+    // cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: @day-calendar-border-radius;
+
+    // flex: @day-width;
+
+    // &:hover {
+    //   background: @day-hover-bg;
+    // }
+  }
+
+  .@{prefix}-date-picker--month,
+  .@{prefix}-date-picker--next,
+  .@{prefix}-date-picker--prev {
+    width: @day-width;
+    height: @day-width;
+    line-height: @day-width;
+    padding: @day-padding;
+
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    // border-radius: @day-calendar-border-radius;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .@{prefix}-date-picker--month {
+    display: flex;
+    flex: 1;
+    width: auto;
+    align-items: center;
+    align-content: center;
+    padding: @day-padding @day-width;
+    justify-content: center;
+    color: @day-current-month-color;
+
+    .@{prefix}-select,
+    > span {
+      display: inline-block;
+    }
+
+    .@{prefix}-select + .@{prefix}-select,
+    > span + span {
+      margin-left: 8px;
+    }
+  }
+
+  &-times {
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    width: @day-calendar-width;
+  }
+
+  &-months {
+    // width: 210px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  &-month {
+    cursor: pointer;
+    font-size: @font-size-regular;
+    line-height: @font-line-height;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    min-width: @day-month-width;
+    min-height: @day-width;
+    line-height: @day-width;
+    padding: @day-padding;
+    margin: @day-month-margin;
+
+    &:hover {
+      color: @day-hover-color;
+    }
+
+    &.@{prefix}-active,
+    &.@{prefix}-active:hover {
+      background-color: @day-selected-bg;
+      border-color: @day-calendar-border-color;
+      color: @day-selected-color;
+    }
+  }
+
+  .@{prefix}-date-picker__title {
+    background: @day-months-bg;
+    border-radius: @day-border-radius @day-border-radius 0 0;
+    padding: @day-calendar-title-padding 0;
+  }
+
+  // &-select.@{prefix}-select:not([multiple]):not([size]) {
+  //   width: 64px;
+  //   padding: 2px;
+  //   outline: 0;
+  //   font-size: @font-size-small;
+  //   height: 24px;
+  //   line-height: 16px;
+  // }
+
+  .@{prefix}-date-picker--sp {
+    color: @day-sp-color;
+  }
+
+  .@{prefix}-date-picker--prev,
+  .@{prefix}-date-picker--next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: @day-width;
+    text-align: center;
+    cursor: pointer;
+    color: @day-next-color;
+    fill: @day-next-color;
+
+    // Hover/focus state
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      outline: 0;
+      opacity: 0.9;
+      color: day-color;
+      fill: day-color;
+    }
+  }
+  .@{prefix}-date-picker--prev {
+    left: 0;
+  }
+  .@{prefix}-date-picker--next {
+    right: 0;
+  }
+
+  // Icons
+  .@{prefix}-date-picker--prev-icon,
+  .@{prefix}-date-picker--next-icon {
+    display: inline-block;
+    width: @day-width;
+    height: @day-width;
+  }
+}
+
+.@{prefix}-date-picker--month-picker .@{prefix}-date-picker--calendar {
+  width: (@day-month-width + @day-month-margin * 2) * 6 + @day-calendar-margin *
+    2;
+}
+
+.@{prefix}-date-time--panel {
+  width: 320px;
+  height: 230px;
+  position: relative;
+  display: flex;
+
+  &.@{prefix}-inline {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    top: 50%;
+    position: absolute;
+    margin: 0 auto;
+    margin-top: -14px;
+    height: @day-width;
+    // z-index: -1;
+    width: 85%;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
+    border-color: @day-calendar-border-color;
+  }
+  &-col {
+    position: relative;
+    overflow-y: auto;
+    flex: 1 1;
+    // firefox
+    scrollbar-width: none;
+    margin: 0 8px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &-btn {
+      height: @day-width;
+      min-height: @day-width;
+      padding: 0;
+      // color: #252525;
+      cursor: pointer;
+      position: relative;
+      border: none;
+      background: none;
+      font-size: @font-size-regular;
+      line-height: @font-line-height;
+      width: 100%;
+      outline: none;
+      appearance: none;
+      border-radius: @day-border-radius;
+
+      color: @day-disabled-color;
+
+      &:hover {
+        color: @day-hover-color;
+      }
+      &.@{prefix}-active {
+        font-weight: 500;
+        color: @color-primary;
+        background-color: @day-in-range-bg;
+      }
+      &.@{prefix}-disabled {
+        color: @day-disabled-color;
+        cursor: not-allowed;
+        text-decoration: line-through;
+        pointer-events: none;
+        background: transparent;
+      }
+    }
+  }
+}
+
+.@{prefix}-date-time--current {
+  text-align: center;
+}
