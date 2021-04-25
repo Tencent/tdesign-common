@@ -68,7 +68,7 @@
     :hover {
       border: 0;
     }
-    
+
     input {
       height: @select-input-height;
       line-height: @select-input-height;
@@ -189,12 +189,15 @@
   margin-top: @select-optiongroup-border-margin;
 }
 .@{prefix}-option-group-header {
-  color: @option-group-header-color;
-  display: block;
-  .text-ellipsis();
-  height: @select-option-height-default;
-  line-height: @select-option-line-height;
-  padding: @select-option-padding-default;
+  ul&,
+  & {
+    color: @option-group-header-color;
+    display: block;
+    .text-ellipsis();
+    height: @select-option-height-default;
+    line-height: @select-option-line-height;
+    padding: @select-option-padding-default;
+  }
 }
 
 .@{prefix}-option-group-header.@{prefix}-size-l {
@@ -248,4 +251,5 @@
 
 .@{prefix}-select-option.@{prefix}-is-selected {
   color: @select-selected-color;
+  background-color: @primary-color-1;
 }

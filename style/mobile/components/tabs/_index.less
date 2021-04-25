@@ -12,12 +12,12 @@
     overflow: hidden;
     user-select: none;
     background-color: @tab-nav-bg-color;
-    
+
     &-wrap {
       display: flex;
       position: relative;
     }
-    
+
     &-item {
       flex: 1;
       text-align: center;
@@ -27,7 +27,7 @@
       line-height: @tab-nav-height;
       position: relative;
       padding: @tab-nav-item-padding;
-      display: inline-block; 
+      display: inline-block;
       &.@{prefix}-is-active {
         color: @tab-nav-active-color;
         font-family: @font-family-medium;
@@ -61,7 +61,7 @@
     }
 
     &--scroll {
-      
+
       .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
         margin-bottom: 10px;
@@ -75,8 +75,14 @@
       .@{prefix}-tabs__nav-line {
         bottom: 10px;
       }
+      .@{prefix}-tabs__nav-wrap {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 10px;
+      }
     }
-    
+
     ::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -98,25 +104,25 @@
         margin-bottom: 0;
       }
     }
-    
+
     .@{prefix}-tabs__content {
       flex: 1;
     }
     .@{prefix}-tabs__nav {
       background-color: @tab-nav-horizontal-bg-color;
-      
+
       &-wrap {
-        
+
         flex-direction: column;
       }
-      
+
       &-line {
         top: 0;
         left: 0;
         width: @tab-line-height;
         height: @tab-nav-horizontal-item-height;
       }
-      
+
       &-item {
         display: block;
         flex: 1 0 auto;
@@ -124,7 +130,7 @@
         height: @tab-nav-horizontal-item-height;
         line-height: @tab-nav-horizontal-item-height;
         padding: @tab-nav-horizontal-item-padding;
-        
+
         &:after {
           content: none;
         }
@@ -132,14 +138,14 @@
           background-color: @tab-nav-bg-color;
         }
       }
-    }  
+    }
   }
-  
+
   &__content {
     position: relative;
     overflow: hidden;
   }
-  
+
   &__panel {
     background-color: @tab-panel-bg-color;
   }

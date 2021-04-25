@@ -1,3 +1,4 @@
+@import "../../base.less";
 @import "./_var.less";
 @import "../popup/_index.less";
 
@@ -8,33 +9,31 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 
+  &__menu-wrapper {
+    background-color: #fbfbfb;
+  }
+
   &__menu-slider {
     display: flex;
   }
 
-  &__menu {
-    background-color: #fff;
+  &__menu-page {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &__panel-grid &__menu {
     padding-top: @action-sheet-grid-padding-top;
     width: 100%;
     flex-shrink: 0;
-
-    > div {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 @action-sheet-grid-page-padding-x;
-    }
   }
 
   &__panel-grid &__cell {
     display: flex;
     flex-direction: column;
-    padding: 4px;
-    margin-right: @action-sheet-grid-cell-space;
     width: @action-sheet-grid-cell-width;
     margin-bottom: @action-sheet-grid-row-space;
+    padding: 0;
 
     &:nth-child(4n) {
       margin-right: 0;
@@ -45,6 +44,7 @@
     margin-top: 8px;
     font-size: 14px;
     padding: 0;
+    color: rgba(0, 0, 0, .3);
   }
 
   &__panel-list &__cell::after {
@@ -66,7 +66,6 @@
     width: 100%;
     font-size: @action-sheet-cell-font-size;
     padding: @action-sheet-cell-padding-y 0;
-    background-color: @action-sheet-cell-bg-color;
 
     &:not(:disabled):active {
       background-color: @action-sheet-cell-active-bg-color;
@@ -102,12 +101,16 @@
     background-color: #fff;
     padding: @action-sheet-action-padding-y 0;
     font-size: @action-sheet-action-font-size;
+
+    &:active {
+      background-color: @action-sheet-cell-active-bg-color;
+    }
   }
 
   &__indicator {
     display: flex;
     justify-content: center;
-    margin-bottom: @action-sheet-grid-indicator-margin-bottom;
+    padding-bottom: 12px;
 
     &-item {
       border-radius: 100%;
