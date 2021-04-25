@@ -340,7 +340,7 @@ a.@{prefix}-menu__item {
       &.@{prefix}-is-opened {
 
         .@{prefix}-submenu-icon {
-          transform: rotate(180deg);
+          transform: rotate(180deg) translateY(50%);
         }
 
         .@{prefix}-menu__dropdown {
@@ -409,9 +409,9 @@ a.@{prefix}-menu__item {
         position: absolute;
         right: 0;
         top: 50%;
-        transform: translateX(-50%);
         transition: .3s all;
-        transform: rotate(0deg);
+        transform-origin: center;
+        transform: rotate(0deg) translateY(-50%);
         font-size: 12px;
       }
 
