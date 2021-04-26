@@ -3,7 +3,7 @@
 .@{prefix}-radio {
   display: flex;
   align-items: center;
-
+  padding-left: 28px;
   &__former {
     display: none;
     position: absolute;
@@ -18,6 +18,10 @@
     border: 1px solid #ccc;
     flex-shrink: 0;
     position: relative;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -28px;
     .@{prefix}-is-checked {
       display: inline-block;
       position: absolute;
@@ -35,13 +39,10 @@
     }
   }
 
-  &__content-wrap {
-    margin-left: 9px;
-  }
-
   &__content-title {
     font-size: @radio-title-font-size;
     color: @radio-title-font-color;
+    position: relative;
     &.@{prefix}-is-disabled {
       color: @radio-content-color;
     }
@@ -52,5 +53,6 @@
     font-size: @radio-content-font-size;
     color: @radio-content-color;
     margin-top: 4px;
+    position: relative;
   }
 }
