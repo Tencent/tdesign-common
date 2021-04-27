@@ -20,6 +20,7 @@
 
     & > .@{prefix}-select-right-icon {
       color: @select-selected-color;
+      opacity: 100%;
     }
   }
 
@@ -41,6 +42,7 @@
     right: 0;
     top: 0;
     color: @select-icon-color;
+    opacity: @opacity-40;
   }
   .@{prefix}-select-active-icon {
     color: @select-active-border-color;
@@ -90,6 +92,10 @@
 
 .@{prefix}-select.@{prefix}-is-active {
   border-color: @select-active-border-color;
+  .@{prefix}-select-right-icon {
+    color: @select-active-border-color;
+    opacity: 100%;
+  }
 }
 
 .@{prefix}-select.@{prefix}-select-selected {
@@ -100,6 +106,7 @@
   .@{prefix}-select-right-icon,
   .@{prefix}-select-left-icon {
     color: @select-active-border-color;
+    opacity: 100%;
   }
 }
 
@@ -156,10 +163,12 @@
 
   & > .@{prefix}-select-right-icon {
     color: @select-disabled-icon-color;
+    opacity: @opacity-26;
   }
 
   & > .@{prefix}-select-left-icon {
     color: @select-disabled-icon-color;
+    opacity: @opacity-26;
   }
 }
 .@{prefix}-select-popup-reference {
