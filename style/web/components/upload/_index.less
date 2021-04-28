@@ -98,6 +98,7 @@
       width: @img-size;
       margin: 0 8px 16px 0;
       float: left;
+      cursor: pointer;
       box-sizing: border-box;
       border-radius: @border-radius;
 
@@ -127,10 +128,9 @@
         color: @text-level-3-color;
       }
 
-      &.@{prefix}-is--empty {
-        cursor: pointer;
+      &.@{prefix}-is--background {
         border: 1px dashed @border-level-2-color;
-
+        background-color: @bg-color;
         &:hover {
           border-color: @primary-color;
         }
@@ -366,6 +366,8 @@
   height: 116px;
   margin-right: 12px;
   background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
 
   > img {
     max-width: 100%;
@@ -471,4 +473,8 @@
 
 .@{prefix}-upload__tips-imgcard {
   margin-top: -6px;
+}
+
+small.@{prefix}-upload__tips-error {
+  color: @error-color;
 }
