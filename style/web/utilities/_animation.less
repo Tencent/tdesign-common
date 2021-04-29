@@ -18,3 +18,40 @@
     transform: rotate(360deg);
   }
 }
+
+// 颜色 切换
+// .anim-color-change(@attr, @from, @to ) {
+//   from {
+//     @attr: @from;
+//   }
+
+//   to {
+//     @attr: @to;
+//   }
+// }
+
+
+// 定义一个从A到B到动画
+.anim-g-attr-change(@name, @attr, @from, @to, ) {
+  @keyf: ~"@keyframes @{name}  { from";
+  @anim: ~" }  ";
+
+  @{keyf} {
+    .anim-g-attr-change-from(e(@attr), e(@from));
+  }
+
+  to {
+    .anim-g-attr-change-to(e(@attr), e(@to));
+  }
+  // 以下代码主要为了添加闭合标签
+  @{anim} {
+
+  }
+
+}
+.anim-g-attr-change-from (@name, @value) {
+  @{name}: @value;
+}
+.anim-g-attr-change-to (@name, @value) {
+  @{name}: @value;
+}
