@@ -19,7 +19,18 @@
 
   &-content {
     position: relative;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: @table-scroll-btn-bg-color;
+      border-radius: 11px;
+    }
   }
+
 
   &-pagination {
     padding: @table-padding-normal  @table-padding-horizontal;
@@ -272,6 +283,15 @@
     .@{prefix}-table__body {
       overflow-y: auto;
       width: fit-content;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: @table-scroll-btn-bg-color;
+        border-radius: 11px;
+      }
     }
   }
 
