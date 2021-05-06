@@ -5,6 +5,8 @@
 @import "./_mixin.less";
 
 .@{popconfirm-cls} {
+  border-radius: 3px;
+
   &--position-hidden {
     display: none;
   }
@@ -19,7 +21,7 @@
 
     > .@{prefix}-icon {
       display: inline-block;
-      margin-right: 6px;
+      margin-right: 8px;
       font-size: 20px;
     }
   }
@@ -82,7 +84,7 @@
   &--position-bottom .@{popconfirm-cls}__arrow,
   &--position-top .@{popconfirm-cls}__arrow {
     left: 50%;
-    transform: translateX(-50%) @popconfirm-arrow-rotate
+    transform: translateX(-50%) @popconfirm-arrow-rotate;
   }
 
   &--position-bottom-left .@{popconfirm-cls}__arrow,
@@ -112,7 +114,7 @@
   &--position-left .@{popconfirm-cls}__arrow,
   &--position-right .@{popconfirm-cls}__arrow {
     top: 50%;
-    transform: translateY(-50%) @popconfirm-arrow-rotate
+    transform: translateY(-50%) @popconfirm-arrow-rotate;
   }
 
   &--position-left-bottom .@{popconfirm-cls}__arrow,
@@ -120,4 +122,3 @@
     bottom: @popconfirm-arrow-margin;
   }
 }
-
