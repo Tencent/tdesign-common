@@ -17,7 +17,7 @@
   box-sizing: border-box;
   border-radius: @border-radius-square;
   white-space: nowrap;
-
+  
   .@{prefix}-icon {
     margin-right: 4px;
     font-size: @tag-medium-font-size;
@@ -53,11 +53,16 @@
       color: @tag-checked-color;
       background-color: @tag-checked-background-color;
       border-color: @tag-checked-border-color;
+      
+      &:hover {
+        color: @tag-default-hover-color;
+        border-color: currentColor;
+      }
     }
 
     &:hover {
       cursor: text;
-
+      
       .@{prefix}-icon-close {
         &:hover {
           color: @tag-text-color;
