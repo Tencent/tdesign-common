@@ -10,11 +10,12 @@
   vertical-align: middle;
   white-space: nowrap;
   border-radius: @btn-border-radius;
-  transition: all .3s;
+  transition: all @anim-duration-base linear;
   user-select: none;
   touch-action: manipulation;
 }
-.button-size(@height;@font-size;@padding-horizontal) {
+
+.button-size(@height, @font-size, @padding-horizontal) {
   height: @height ;
   line-height: @height - 4px;
   font-size: @font-size;
