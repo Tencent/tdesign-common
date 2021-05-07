@@ -16,7 +16,6 @@
   &.@{prefix}--affix {
     position: fixed;
     top: 20px;
-    right: 20px;
     z-index: 11;
   }
 
@@ -39,6 +38,7 @@
     height: 22px;
     top: -1*@anchor-item-height;
     background-color: @anchor-text-color-hover;
+    transition: all .2s cubic-bezier(.24, .41, .51, .9);
   }
 
   //锚点item

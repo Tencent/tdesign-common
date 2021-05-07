@@ -5,7 +5,7 @@
 
 @themes: primary, success, warning, info, danger;
 
-.genEffect(@fontColorWeight; @borderColorWeight; @backgroundColorWeight; @hoverColorWeight) {
+.genVariant(@fontColorWeight; @borderColorWeight; @backgroundColorWeight; @hoverColorWeight) {
 
   &.@{prefix}-tag--theme-default {
     color: @tag-default-color;
@@ -51,17 +51,17 @@
   text-overflow: ellipsis;
   user-select: none;
 
-  &--effect {
+  &--variant {
     &-dark {
-      .genEffect(0, 100, 100, 100)
+      .genVariant(0, 100, 100, 100)
     }
 
     &-light {
-      .genEffect(100, 10, 10, 10)
+      .genVariant(100, 10, 10, 10)
     }
 
     &-plain {
-      .genEffect(100, 50, 0, 5)
+      .genVariant(100, 50, 0, 5)
     }
   }
 
