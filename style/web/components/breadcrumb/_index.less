@@ -6,7 +6,7 @@
   .breadcrumb;
 
   &__separator {
-    margin: 0 @spacer;
+    margin: 0 @spacer-half;
   }
 
   &__item {
@@ -14,7 +14,6 @@
     align-items: center;
     color: @breadcrumb-text-color-default;
     text-decoration: none;
-    cursor: pointer;
 
     &.@{prefix}-is-current {
       color: @breadcrumb-text-color-current;
@@ -168,6 +167,11 @@
     .@{prefix}-breadcrumb__inner {
       max-width: 120px;
       .t-overflow;
+
+      &:hover {
+        color: @breadcrumb-text-color-hover;
+        cursor: pointer;
+      }
     }
   }
 }

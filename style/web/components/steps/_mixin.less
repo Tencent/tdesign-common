@@ -39,16 +39,22 @@
       color: @border-level-2-color;
 
       &__number {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 22px;
-        height: 22px;
-        text-align: center;
-        border: 2px solid @border-level-2-color;
-        border-radius: 50%;
+        .default-step-icon;
         color: @border-level-2-color;
+        border: @step-sperator-line-width solid @border-level-2-color;
       }
+
+      &__finish {
+        .default-step-icon;
+        border: @step-stroke-width solid @primary-color;
+      }
+
+      &__error {
+        .default-step-icon;
+        border: @step-stroke-width solid @error-color-6;
+        color: #000;
+      }
+
 
       & > .t-icon {
         font-size: 24px;
@@ -58,22 +64,38 @@
     &-title {
       position: relative;
       padding-right: @spacer;
-      color: @border-level-2-color;
-      font-size: @font-size-base;
+      color: @text-color-placeholder;
+      font-size: @font-size-l;
+      line-height: 24px;
     }
 
     &-description {
-      color: @text-level-3-color;
-      font-size: @font-size-s;
+      color: @text-color-placeholder;
+      font-size: @font-size-base;
       margin-bottom: @spacer;
+      line-height: 22px;
     }
   }
+}
+// step 图标状态
+.default-step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  margin-top: 3px;
+  font-size: @font-size-l;
 }
 
 // anchor 状态
 @anchor-status: wait;
 .default-anchor-status(@anchor-status) {
-  & when(@anchor-status = wait) {};
+  & when(@anchor-status = wait) {
+  };
+
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item-icon {
       .t-icon {
@@ -83,6 +105,10 @@
 
     .@{prefix}-steps-item-title {
       color: @text-level-1-color;
+    }
+
+    .@{prefix}-steps-item-description {
+      color: @text-color-secondary;
     }
   };
   & when(@anchor-status = process) {
@@ -102,6 +128,10 @@
     .@{prefix}-steps-item-title {
       color: @primary-color;
     }
+
+    .@{prefix}-steps-item-description {
+      color: @text-color-secondary;
+    }
   };
   & when(@anchor-status = error) {
     .@{prefix}-steps-item-icon {
@@ -117,6 +147,10 @@
 
     .@{prefix}-steps-item-title {
       color: @error-color;
+    }
+
+    .@{prefix}-steps-item-description {
+      color: @text-color-secondary;
     }
   };
 };
@@ -173,7 +207,7 @@
         content: "";
         display: block;
         width: 9999px;
-        height: 2px;
+        height: @step-sperator-line-width;
         background: @border-level-2-color;
         position: absolute;
         left: 100%;
@@ -192,18 +226,18 @@
   & when (@direction = vertical) {
     .@{prefix}-steps-item {
       padding-bottom: @spacer-3;
-      margin-bottom: @spacer;
+      margin-bottom: 5px;
 
       & when(@isReverse = false) {
         &:not(:last-child):before {
           content: "";
           display: block;
           height: 100%;
-          width: 2px;
+          width: @step-sperator-line-left;
           background: @border-level-2-color;
           position: absolute;
-          left: 10.5px;
-          top: 32px;
+          left: @step-sperator-line-left;
+          top: @step-sperator-line-top;
         }
 
         &--finish {
@@ -217,11 +251,11 @@
           content: "";
           display: block;
           height: 100%;
-          width: 2px;
+          width: @step-stroke-width;
           background: @border-level-2-color;
           position: absolute;
-          left: 10.5px;
-          top: 32px;
+          left: @step-sperator-line-left;
+          top: @step-sperator-line-top;
         }
 
         &--process {
@@ -241,7 +275,7 @@
         content: "";
         display: block;
         width: calc(100% - @spacer-2);
-        height: 2px;
+        height: @step-stroke-width;
         background: @border-level-2-color;
         position: absolute;
         left: calc(@dot-steps-content-width / 2 + @spacer);
@@ -263,7 +297,7 @@
           content: "";
           display: block;
           height: 100%;
-          width: 2px;
+          width: @step-stroke-width;
           background: @border-level-2-color;
           position: absolute;
           left: @dot-steps-connector-position-left-vertical;
@@ -283,7 +317,7 @@
           content: "";
           display: block;
           height: 100%;
-          width: 2px;
+          width: @step-stroke-width;
           background: @border-level-2-color;
           position: absolute;
           left: @dot-steps-connector-position-left-vertical;
