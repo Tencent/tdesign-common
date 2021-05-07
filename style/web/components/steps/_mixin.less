@@ -41,17 +41,17 @@
       &__number {
         .default-step-icon;
         color: @border-level-2-color;
-        border: 1px solid @border-level-2-color;
+        border: @step-sperator-line-width solid @border-level-2-color;
       }
 
       &__finish {
         .default-step-icon;
-        border: 1px solid @primary-color;
+        border: @step-stroke-width solid @primary-color;
       }
 
       &__error {
         .default-step-icon;
-        border: 1px solid @error-color-6;
+        border: @step-stroke-width solid @error-color-6;
         color: #000;
       }
 
@@ -207,7 +207,7 @@
         content: "";
         display: block;
         width: 9999px;
-        height: 1px;
+        height: @step-sperator-line-width;
         background: @border-level-2-color;
         position: absolute;
         left: 100%;
@@ -233,11 +233,11 @@
           content: "";
           display: block;
           height: 100%;
-          width: 1px;
+          width: @step-sperator-line-left;
           background: @border-level-2-color;
           position: absolute;
-          left: 11px;
-          top: 35px;
+          left: @step-sperator-line-left;
+          top: @step-sperator-line-top;
         }
 
         &--finish {
@@ -251,11 +251,11 @@
           content: "";
           display: block;
           height: 100%;
-          width: 1px;
+          width: @step-stroke-width;
           background: @border-level-2-color;
           position: absolute;
-          left: 11px;
-          top: 35px;
+          left: @step-sperator-line-left;
+          top: @step-sperator-line-top;
         }
 
         &--process {
@@ -275,7 +275,7 @@
         content: "";
         display: block;
         width: calc(100% - @spacer-2);
-        height: 1px;
+        height: @step-stroke-width;
         background: @border-level-2-color;
         position: absolute;
         left: calc(@dot-steps-content-width / 2 + @spacer);
@@ -297,7 +297,7 @@
           content: "";
           display: block;
           height: 100%;
-          width: 1px;
+          width: @step-stroke-width;
           background: @border-level-2-color;
           position: absolute;
           left: @dot-steps-connector-position-left-vertical;
@@ -317,7 +317,7 @@
           content: "";
           display: block;
           height: 100%;
-          width: 1px;
+          width: @step-stroke-width;
           background: @border-level-2-color;
           position: absolute;
           left: @dot-steps-connector-position-left-vertical;
