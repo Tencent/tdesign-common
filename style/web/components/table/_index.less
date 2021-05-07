@@ -105,7 +105,7 @@
   // 展开/收起列
   .@{prefix}-table-expandable-icon-cell,
   .@{prefix}-table-selection-cell {
-    width: 16px;
+    padding: 10px 8px;
   }
 
   // @todo: 待优化
@@ -491,6 +491,22 @@
   display: inline-grid;
   vertical-align: middle;
   width: 14px;
+}
+
+.t-table-expand-box {
+  display: inline-grid;
+  vertical-align: middle;
+  color: @table-icon-default-color;
+  width: 13px;
+  cursor: pointer;
+
+  &:hover {
+    color: @table-icon-active-color;
+  }
+}
+
+.t-table-expanded-cell {
+  padding-left: 45px !important;
 }
 
 @keyframes tTableProgressbar {
