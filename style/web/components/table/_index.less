@@ -486,6 +486,38 @@
   margin-left: 5px;
   background-color: transparent;
   display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    color: @table-icon-active-color;
+  }
+}
+
+.t-table-filter-pop {
+  .t-table-filter-pop-content {
+    margin: -8px;
+    
+    .@{prefix}-table-filter-pop-content__inner {
+      padding: 16px;
+
+      .t-checkbox, .t-radio {
+        display: block;
+        margin: 0;
+      }
+
+      .t-checkbox + .t-checkbox, .t-radio + .t-radio {
+        margin-top: 16px;
+      }
+    }
+    .@{prefix}-table-filter-pop-content__button {
+      border-top: 1px solid @table-border-color;
+      padding: 16px;
+
+      .t-button + .t-button {
+        margin-left: @spacer-2;
+      }
+    }
+  }
 }
 
 .t-table-sort-icon-active {
