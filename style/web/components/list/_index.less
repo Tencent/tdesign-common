@@ -4,23 +4,32 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
+
 .@{prefix}-list {
   overflow: auto;
 
   &-items {
-    list-style: none;
-    padding: 0;
+    .list-style-none();
   }
 
   &-item {
     font-size: @font-size-base;
-    padding: @spacer @spacer-3;
-    border-bottom: 1px solid transparent;
+    padding: @list-item-spacer-default @spacer-3;
     background: @list-bg-color-default;
     display: flex;
     justify-content: space-between;
     align-items: center;
     line-height: 22px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+    }
 
     &-main {
       display: flex;
@@ -32,7 +41,7 @@
 
     &__meta {
       display: flex;
-      padding: @spacer 0;
+      padding: @spacer*.5 0;
 
       &-avatar {
         width: 56px;
@@ -41,25 +50,33 @@
         overflow: hidden;
         background: @list-avatar-bg-color;
         margin-right: @spacer-2;
+        flex-shrink: 0;
 
         img {
+          max-width: 100%;
           width: 100%;
           height: 100%;
         }
       }
 
-      &-content {}
-
       &-title {
+        padding: 0;
         font-size: @font-size-l;
         font-weight: bold;
-        margin-bottom: @spacer;
+        margin: 0 0 @spacer;
+        color: @text-level-1-color;
+      }
+
+      &-description {
+        margin-right: @spacer-3;
+        color: @text-level-1-color;
       }
     }
 
     &__action {
       list-style: none;
       padding: 0;
+      flex-shrink: 0;
 
       & > li {
         display: inline-block;
@@ -85,8 +102,8 @@
   }
 
   &--split {
-    .@{prefix}-list-item {
-      border-color: @list-item-border-color;
+    .@{prefix}-list-item::after {
+      background: @list-item-split-color;
     }
   }
 
@@ -119,8 +136,11 @@
   &__load {
     background: @list-bg-color-default;
     text-align: center;
-    padding: @spacer-4;
     font-size: @font-size-s;
+
+    &:not(:empty) {
+      padding: @spacer-4; // 如果不是空子元素才设置padding
+    }
 
     &.@{prefix}-list__load--loading {
       color: @list-text-color-loading;
@@ -133,7 +153,7 @@
     &.@{prefix}-list__load--load-more {
       color: @list-text-color-load-more;
       cursor: pointer;
-      font-size: @font-size-base;
+      font-size: @font-size-s;
     }
   }
 

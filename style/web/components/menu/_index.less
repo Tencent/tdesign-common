@@ -4,8 +4,23 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
+a.@{prefix}-menu__item {
+  text-decoration: none;
+  color: unset;
+
+  &:hover,
+  &:active {
+    color: inherit;
+  }
+}
+
 .@{prefix}-menu {
   font-size: @menu-fontsize;
+
+  ul&,
+  ul {
+    .list-style-none();
+  }
 
   &__item {
     position: relative;
@@ -15,6 +30,13 @@
     text-align: center;
     color: @menu-light-item-color;
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    a {
+      color: unset;
+      text-decoration: none;
+    }
 
     &.@{prefix}-is-active,
     &:hover {
@@ -64,7 +86,7 @@
   }
 }
 
-.@{prefix}-menu-mode__dropdown {
+.@{prefix}-menu-mode__popup {
 
   .@{prefix}-is-opened {
 
@@ -82,6 +104,7 @@
 
   .@{prefix}-menu__item {
     min-width: 128px;
+    overflow: unset;
   }
 
   &__inner {
@@ -131,7 +154,7 @@
     }
   }
 
-  &.@{prefix}-menu-mode__tile {
+  &.@{prefix}-menu-mode__normal {
 
     // height: 128px;
 
@@ -189,6 +212,7 @@
   background: @menu-theme-light;
   box-shadow: @menu-default-shadow;
   transition: .3s width;
+  white-space: nowrap;
 
   &.@{prefix}-menu-mode__popup {
 
@@ -316,7 +340,7 @@
       &.@{prefix}-is-opened {
 
         .@{prefix}-submenu-icon {
-          transform: rotate(180deg);
+          transform: rotate(180deg) translateY(50%);
         }
 
         .@{prefix}-menu__dropdown {
@@ -346,7 +370,7 @@
       height: 0;
 
       .@{prefix}-menu__item {
-        padding-left: 60px;
+        padding-left: 64px;
       }
 
       &--show {
@@ -376,7 +400,7 @@
       text-align: left;
 
       .@{prefix}-icon {
-        font-size: 20px;
+        font-size: 18px;
         margin-left: 2px;
         margin-right: 20px;
       }
@@ -385,9 +409,9 @@
         position: absolute;
         right: 0;
         top: 50%;
-        transform: translateX(-50%);
         transition: .3s all;
-        transform: rotate(0deg);
+        transform-origin: center;
+        transform: rotate(0deg) translateY(-50%);
         font-size: 12px;
       }
 
@@ -400,4 +424,13 @@
       }
     }
   }
+}
+
+// opacity-transition
+.@{prefix}-opacity-transition {
+  transition: opacity .3s cubic-bezier(.55,0,.1,1);
+}
+.horizontal-collapse-transition .@{prefix}-submenu__title .@{prefix}-submenu__icon-arrow {
+  transition: .2s;
+  opacity: 0;
 }

@@ -11,40 +11,52 @@
 
   // 水平步骤条
   &--horizontal {
+
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
       .@{prefix}-steps-item-content {
-        margin-top: 2px;
+        margin-top: 5px;
       }
+
       .@{prefix}-steps-item-title {
         width: fit-content;
+        margin-bottom: 3px;
       }
+
+      .@{prefix}-steps-item-icon {
+        &>.t-icon {
+          font-size: 35px;
+        }
+      }
+
       // 默认锚点的连接线，以 title 为起点
       .connector-default(horizontal);
     }
+
     // 点状锚点
     &.@{prefix}-steps--dot-anchor {
       .@{prefix}-steps-item {
         overflow: visible;
-  
+
         &--finish {
           .dot-anchor-status(finish);
         }
-  
+
         &--process {
           .dot-anchor-status(process);
         }
-  
+
         &--error {
           .dot-anchor-status(error);
         }
       }
+
       .@{prefix}-steps-item__inner {
         display: flex;
         flex-direction: column;
         align-items: center;
       }
-  
+
       .dot-icon(horizontal);
       // 点状锚点连接线，以整个 item 为起点
       .connector-dot(horizontal);
@@ -54,43 +66,59 @@
   // 垂直步骤条
   &--vertical {
     flex-direction: column;
+
     // 默认步骤条连接线，以 item 为起点
     &.@{prefix}-steps--positive {
       .connector-default(vertical);
     }
+
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
       .@{prefix}-steps-item-content {
         margin-top: 2px;
       }
+
+      .@{prefix}-steps-item-title {
+        margin-bottom: 4px;
+      }
+
+      .@{prefix}-steps-item-icon {
+
+      }
     }
+
     // 点状锚点
     &.@{prefix}-steps--dot-anchor {
+
       // 点状步骤条连接线，以 item 为起点
       &.@{prefix}-steps--positive {
         .connector-dot(vertical);
       }
+
       .@{prefix}-steps-item {
         margin-bottom: 0;
-  
+
         &--finish {
           .dot-anchor-status(finish);
         }
-  
+
         &--process {
           .dot-anchor-status(process);
         }
-  
+
         &--error {
           .dot-anchor-status(error);
         }
       }
+
       .dot-icon(vertical);
     }
+
     // 倒序
     &.@{prefix}-steps--reverse {
       flex-direction: column-reverse;
       .connector-default(vertical, true);
+
       &.@{prefix}-steps--dot-anchor {
         .connector-dot(vertical, true);
       }

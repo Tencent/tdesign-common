@@ -1,6 +1,9 @@
 @import "./_var.less";
 
 // select
+.@{prefix}-select-wrap {
+  width: 100%;
+}
 .@{prefix}-select {
   position: relative;
   display: inline-block;
@@ -20,6 +23,7 @@
 
     & > .@{prefix}-select-right-icon {
       color: @select-selected-color;
+      opacity: 100%;
     }
   }
 
@@ -41,6 +45,10 @@
     right: 0;
     top: 0;
     color: @select-icon-color;
+    opacity: @opacity-40;
+  }
+  .@{prefix}-select-active-icon {
+    color: @select-active-border-color;
   }
   .@{prefix}-select-right-icon.@{prefix}-is-visible {
     transform: scaleY(-1);
@@ -68,7 +76,7 @@
     :hover {
       border: 0;
     }
-    
+
     input {
       height: @select-input-height;
       line-height: @select-input-height;
@@ -85,12 +93,21 @@
   }
 }
 
+.@{prefix}-select.@{prefix}-is-active {
+  border-color: @select-active-border-color;
+  .@{prefix}-select-right-icon {
+    color: @select-active-border-color;
+    opacity: 100%;
+  }
+}
+
 .@{prefix}-select.@{prefix}-has-prefix {
   padding-left: @select-padding-prefix;
 }
 
 .@{prefix}-select.@{prefix}-no-border {
   border: 0;
+  width: auto;
 }
 
 .@{prefix}-select.@{prefix}-size-l {
@@ -136,13 +153,21 @@
   border-color: @select-border-color;
 
   & > .@{prefix}-select-right-icon {
-    color: @select-border-color;
+    color: @select-disabled-icon-color;
+    opacity: @opacity-26;
+  }
+
+  & > .@{prefix}-select-left-icon {
+    color: @select-disabled-icon-color;
+    opacity: @opacity-26;
   }
 }
-
+.@{prefix}-select-popup-reference {
+  width: 100%;
+}
 // dropdown
 .@{prefix}-select-dropdown {
-  margin: 0;
+  margin-top: @select-dropdown-margin-top;
   padding: 0;
   max-height: @dropdown-max-height;
   overflow-y: auto;
@@ -189,12 +214,15 @@
   margin-top: @select-optiongroup-border-margin;
 }
 .@{prefix}-option-group-header {
-  color: @option-group-header-color;
-  display: block;
-  .text-ellipsis();
-  height: @select-option-height-default;
-  line-height: @select-option-line-height;
-  padding: @select-option-padding-default;
+  ul&,
+  & {
+    color: @option-group-header-color;
+    display: block;
+    .text-ellipsis();
+    height: @select-option-height-default;
+    line-height: @select-option-line-height;
+    padding: @select-option-padding-default;
+  }
 }
 
 .@{prefix}-option-group-header.@{prefix}-size-l {
@@ -248,4 +276,5 @@
 
 .@{prefix}-select-option.@{prefix}-is-selected {
   color: @select-selected-color;
+  background-color: @primary-color-1;
 }

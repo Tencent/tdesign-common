@@ -22,12 +22,18 @@
   }
 
   &-pagination {
-    padding: @table-padding-normal;
+    padding: @table-padding-normal  @table-padding-horizontal;
+    box-sizing: border-box;
   }
 
+  .@{prefix}-icon {
+    font-size: @font-size-l;
+  }
   // table 标签基础样式
   table {
     width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
   }
 
   th,
@@ -38,12 +44,16 @@
     line-height: @table-line-height;
     vertical-align: middle;
     font-weight: normal;
+
+    &:not([align]) {
+      text-align: left;
+    }
   }
 
   thead td,
   th {
     color: @table-head-text-color;
-    font-weight: bold;
+    font-weight: 500;
   }
 
   td {
@@ -238,6 +248,7 @@
     }
 
     .@{prefix}-table__header {
+      width: fit-content;
       position: relative;
       z-index: 10;
 
@@ -260,6 +271,7 @@
 
     .@{prefix}-table__body {
       overflow-y: auto;
+      width: fit-content;
     }
   }
 

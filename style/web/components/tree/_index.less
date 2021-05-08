@@ -9,14 +9,37 @@
   line-height: 40px;
   font-size: 14px;
   color: @tree-node-text-color;
+  will-change: height;
 
-  & &__item {
+  // 禁用态颜色处理
+  &.@{prefix}-is-disabled {
+    color: @tree-disabled-color;
+    .@{prefix}-icon {
+      color: @tree-disabled-color;
+    }
+    .@{prefix}-tree__item {
+      &.@{prefix}-is-active {
+        background-color: @tree-node-bg-color-hover;
+        color: @tree-disabled-color;
+      }
+      .@{prefix}-icon {
+        color: @tree-node-icon-color;
+      }
+    }
+  }
+
+  &__empty {
+    text-align: center;
+  }
+
+  &__item {
     --level: 0;
     position: relative;
     display: flex;
     flex-wrap: nowrap;
     padding-left: calc(@tree-node-padding-basic * var(--level));
     height: 40px;
+    cursor: default;
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
@@ -54,12 +77,20 @@
       background-color: @tree-node-bg-color-active;
       color: @tree-node-text-color-active;
     }
+  }
 
+  &--hoverable &__item:hover {
+    cursor: pointer;
+    background-color: @tree-node-bg-color-hover;
+  }
+
+  &--hoverable &__item.@{prefix}-is-active:hover {
+    background-color: @tree-node-bg-color-active-hover;
   }
 
   &__line {
     --level: 0;
-    --color: #eee;
+    --color: @tree-node-icon-line-color;
     --space: @tree-node-padding-basic;
     --iconSize: 16px;
     position: absolute;
@@ -97,7 +128,7 @@
   }
 
   // 默认图标
-  & &__icon {
+  &__icon {
     flex: 0 0 auto;
     align-self: center;
     width: 24px;
@@ -110,15 +141,15 @@
     cursor: pointer;
 
     .t-icon-loading-blue {
-      color: #2163db;
+      color: @tree-node-icon-color-active;
     }
   }
 
-  & &__icon:empty {
+  &__icon:empty {
     cursor: initial;
   }
 
-  & &__label {
+  &__label {
     flex: auto;
     line-height: 40px;
     flex-wrap: nowrap;
@@ -128,29 +159,24 @@
     }
   }
 
-  & &__space {
+  &__space {
     display: block;
     flex: 1 0 auto;
   }
 
-  & &__operations {
+  &__operations {
     display: flex;
     flex: 0 0 auto;
     justify-content: flex-end;
     align-items: center;
   }
 
-  & &__operations .@{prefix}-icon {
+  &__operations .@{prefix}-icon {
     cursor: pointer;
   }
 
-  &--hoverable &__item:hover {
-    cursor: pointer;
-    background-color: @tree-node-bg-color-hover;
-  }
-
-  & &__item.t-is-disabled {
-    color: #ddd;
+  &__item.t-is-disabled {
+    color: @tree-disabled-color;
     cursor: default;
     .@{prefix}-checkbox {
       cursor: default;

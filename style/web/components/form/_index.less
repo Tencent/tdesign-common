@@ -4,7 +4,7 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
-@form-item-height: 40px;
+@form-item-height: 32px;
 
 .@{prefix}-form {
   font-size: 14px;
@@ -15,7 +15,8 @@
 
   &__item {
     display: flex;
-    margin: 0 0 26px;
+    margin: 0 0 @spacer-3;
+    align-items: flex-start;
   }
 
   &__label {
@@ -26,6 +27,7 @@
     flex-direction: row;
     padding-right: 24px;
     white-space: nowrap;
+    line-height: 22px;
 
     &--left {
       justify-content: flex-start;
@@ -108,6 +110,12 @@
     .@{prefix}-icon {
       color: @form-color-warning;
     }
+  }
+
+  &__help {
+    font-size: @input-extra-fontsize;
+    color: @@fontColor;
+    @fontColor: "input-extra-color-success";
   }
 
   &__status {

@@ -127,7 +127,7 @@
     }
   }
 
-  &--seperate {
+  &--separate {
     .@{prefix}-input + .@{prefix}-input {
       margin-left: 8px;
     }
@@ -135,16 +135,24 @@
     .@{prefix}-select {
       border-radius: @border-radius;
 
-      &:first-child,
+      &:first-child {
+        border-radius: @border-radius 0 0 @border-radius;
+      }
+
       &:last-child {
-        border-radius: @border-radius;
+        border-radius: 0 @border-radius @border-radius 0;
       }
     }
     .@{prefix}-input {
-      &:first-child,
+      &:first-child {
+        .@{prefix}-input__inner {
+          border-radius: @border-radius 0 0 @border-radius;
+        }
+      }
+
       &:last-child {
         .@{prefix}-input__inner {
-          border-radius: @border-radius;
+          border-radius: 0 @border-radius @border-radius 0;
         }
       }
     }
@@ -201,46 +209,6 @@
       .@{prefix}-input__inner {
         border-radius: 0;
       }
-    }
-  }
-}
-
-.@{prefix}-textarea {
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-
-  &.@{prefix}-is-disabled {
-
-    .@{prefix}-textarea__inner {
-      color: @input-text-color-disabled;
-      background-color: @input-bg-color-disabled;
-      cursor: not-allowed;
-
-      &:hover {
-        border-color: @input-border-color-default;
-      }
-    }
-  }
-
-  // 真正的textarea
-  &__inner {
-    .input-inner-base();
-    padding: @input-padding-horizontal-default - .7px @input-padding-horizontal-default;
-  }
-
-  // 限制字数的textarea
-  &.@{prefix}-textarea--limit {
-    &>.@{prefix}-textarea__inner {
-      resize: none;
-      padding-bottom: @spacer*3;
-    }
-    &>.@{prefix}-textarea__count {
-      position: absolute;
-      bottom: @spacer - 2;
-      right: @spacer - 2;
-      font-size: @input-fontsize;
-      color: @input-extra-color-default;
     }
   }
 }

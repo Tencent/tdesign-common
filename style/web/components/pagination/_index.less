@@ -22,7 +22,6 @@
   &__select {
     flex-shrink: 0;
     margin-right: @spacer*2;
-    width: 90px;
     height: @pagination-height-default;
     font-size: @font-size-base;
     color: @pagination-text-color;
@@ -39,7 +38,7 @@
     flex-shrink: 0;
     border: 1px solid @pagination-border-color;
     cursor: pointer;
-    color: @pagination-icon-color-disabled;
+    color: @pagination-text-color;
     border-radius: @pagination-border-radius-base;
     .pagination-btn(@pagination-height-default);
 
@@ -82,6 +81,8 @@
     display: inline-flex;
     vertical-align: middle;
 
+    .list-style-none();
+
     li:not(:last-child) {
       margin-right: @spacer;
     }
@@ -90,7 +91,6 @@
   &__number {
     display: inline-block;
     border: 1px solid @pagination-border-color;
-    box-sizing: border-box;
     text-align: center;
     border-radius: @pagination-border-radius-base;
     cursor: pointer;
@@ -100,14 +100,13 @@
     );
 
     &:hover {
-      .pagination-number--color(
-        @pagination-bg-color-hover; @pagination-text-color-active
-      );
+      color: @pagination-bg-color-hover;
+      border-color: @pagination-bg-color-hover;
     }
 
     &:active {
       .pagination-number--color(
-        @pagination-bg-color-active; @pagination-text-color-active
+        @pagination-bg-color-active; @pagination-text-color-active;
       );
     }
 

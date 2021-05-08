@@ -34,11 +34,13 @@
     color: @dialog-header-text-color;
     font-size: @dialog-header-font-size;
     display: flex;
-    align-items: top;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
     >h5 {
+      padding: 0;
+      margin: 0;
+      font-weight: normal;
       display: inline-block;
       vertical-align: middle;
       line-height: 22px;
@@ -56,6 +58,10 @@
     line-height: 22px;
     overflow: auto;
     padding: 24px 0;
+
+    &__icon {
+      padding: @spacer-3 0  @spacer-3 @spacer-4;
+    }
   }
 
   &__footer {
@@ -67,15 +73,16 @@
     .t-button + .t-button {
       margin-left: @spacer;
     }
+    
   }
 
   &--default {
     padding: @dialog-default-spacer;
 
     .@{prefix}-dialog__body {
-      // padding: @dialog-default-body-spacer;
       max-height: calc(100% - (@dialog-header-height + @dialog-spacer * 2));
     }
+
   }
 
   &--primary {
@@ -88,22 +95,16 @@
 
   &__close {
     position: absolute;
-    top: @dialog-spacer;
+    top: 22px;
     right: @dialog-spacer;
     font-size: 16px;
+    color: rgba(0, 0, 0, .9);
+
 
     &:hover {
       cursor: pointer;
+      color: @primary-color;
     }
-  }
-
-  &__close::after {
-    content: "";
-    position: absolute;
-    top: -24px;
-    right: -24px;
-    bottom: -24px;
-    left: -24px;
   }
 }
 
