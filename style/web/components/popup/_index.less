@@ -19,6 +19,8 @@
     box-shadow: @popup-shadow;
     border-radius: @border-radius;
     padding: @popup-padding;
+    font-size: @font-size-base;
+    line-height: 22px;
   }
 
   &-reference {
@@ -45,14 +47,14 @@
 .@{prefix}-popup[data-popper-placement^='bottom'],
 .@{prefix}-popup[data-popper-placement^='top'] {
   .@{prefix}-popup-content--arrow {
-    margin: 8px 0;
+    margin: 16px 0;
   }
 }
 
 .@{prefix}-popup[data-popper-placement^='left'],
 .@{prefix}-popup[data-popper-placement^='right'] {
   .@{prefix}-popup-content--arrow {
-    margin: 0 8px;
+    margin: 0 16px;
   }
 }
 
