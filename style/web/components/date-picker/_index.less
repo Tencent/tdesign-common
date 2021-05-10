@@ -1,5 +1,4 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
@@ -18,6 +17,7 @@
     background-color: @dropdown-background;
     // box-shadow: @day-calendar-shadow;
   }
+
   &--text {
     font-size: @font-size-small;
   }
@@ -35,6 +35,7 @@
   .@{prefix}-align-items-center {
     align-items: center;
   }
+
   .@{prefix}-align-items-end {
     align-items: flex-end;
   }
@@ -46,11 +47,11 @@
   // /* Enter and leave animations can use different */
   // /* durations and timing functions.              */
   .@{prefix}-slide-fade-enter-active {
-    transition: all 0.2s ease;
+    transition: all .2s ease;
   }
 
   .@{prefix}-slide-fade-leave-active {
-    transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: all .1s cubic-bezier(1, .5, .8, 1);
   }
 
   .@{prefix}-slide-fade-enter,
@@ -187,6 +188,7 @@
     flex-wrap: wrap;
     padding: @day-margin-lr;
   }
+
   &-day {
     font-size: @font-size-regular;
     line-height: @font-line-height;
@@ -205,7 +207,7 @@
     vertical-align: middle;
     border-radius: @day-border-radius;
     position: relative;
-    border: none;
+    border: 0 none;
 
     display: flex;
     justify-content: center;
@@ -238,6 +240,7 @@
       border-color: @day-calendar-border-color;
       color: @day-selected-color;
     }
+
     &.@{prefix}-date-selected.@{prefix}-date-picker--calendar-day--selected-end-date
       &--text,
     &.@{prefix}-date-selected.@{prefix}-date-picker--calendar-day--selected-start-date
@@ -264,6 +267,7 @@
         border-radius: @day-calendar-border-radius 0 0
           @day-calendar-border-radius;
       }
+
       .@{prefix}-date-picker--calendar-day--text:hover {
         background-color: @color-primary;
       }
@@ -276,6 +280,7 @@
         border-radius: 0 @day-calendar-border-radius @day-calendar-border-radius
           0;
       }
+
       .@{prefix}-date-picker--calendar-day--text:hover {
         background-color: @color-primary;
       }
@@ -309,6 +314,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       &:hover {
         background-color: @day-hover-bg;
       }
@@ -404,6 +410,7 @@
     position: relative;
     flex-wrap: wrap;
   }
+
   &-month {
     cursor: pointer;
     font-size: @font-size-regular;
@@ -468,14 +475,16 @@
     &:focus {
       text-decoration: none;
       outline: 0;
-      opacity: 0.9;
+      opacity: .9;
       color: day-color;
       fill: day-color;
     }
   }
+
   .@{prefix}-date-picker--prev {
     left: 0;
   }
+
   .@{prefix}-date-picker--next {
     right: 0;
   }
@@ -523,6 +532,7 @@
     border-width: 1px 0;
     border-color: @day-calendar-border-color;
   }
+
   &-col {
     position: relative;
     overflow-y: auto;
@@ -542,7 +552,7 @@
       // color: #252525;
       cursor: pointer;
       position: relative;
-      border: none;
+      border: 0 none;
       background: none;
       font-size: @font-size-regular;
       line-height: @font-line-height;
@@ -556,11 +566,13 @@
       &:hover {
         color: @day-hover-color;
       }
+
       &.@{prefix}-active {
         font-weight: 500;
         color: @color-primary;
         background-color: @day-in-range-bg;
       }
+
       &.@{prefix}-disabled {
         color: @day-disabled-color;
         cursor: not-allowed;
