@@ -95,6 +95,7 @@
 
 .@{prefix}-select.@{prefix}-is-active {
   border-color: @select-active-border-color;
+  box-shadow: @select-input-shadow;
   .@{prefix}-select-right-icon {
     color: @select-active-border-color;
     opacity: 100%;
@@ -167,7 +168,7 @@
 }
 // dropdown
 .@{prefix}-select-dropdown {
-  margin-top: @select-dropdown-margin-top;
+  margin: @select-dropdown-margin;
   padding: @select-dropdown-padding;
   max-height: @dropdown-max-height;
   overflow-y: auto;
