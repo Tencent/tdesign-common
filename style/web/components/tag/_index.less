@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-tag {
@@ -39,6 +41,7 @@
 
   &--close,
   &--check {
+
     &:hover {
       color: @tag-default-hover-color;
       border-color: currentColor;
@@ -53,12 +56,18 @@
       color: @tag-checked-color;
       background-color: @tag-checked-background-color;
       border-color: @tag-checked-border-color;
+
+      &:hover {
+        color: @tag-default-hover-color;
+        border-color: currentColor;
+      }
     }
 
     &:hover {
       cursor: text;
 
       .@{prefix}-icon-close {
+
         &:hover {
           color: @tag-text-color;
         }
@@ -78,7 +87,7 @@
       color: @tag-disabled-color;
       background-color: @tag-disabled-background-color;
       border-color: @tag-disabled-border-color;
-      cursor: text;
+      cursor: not-allowed;
 
       &:hover {
         color: @tag-disabled-color;
@@ -87,12 +96,12 @@
       }
       .@{prefix}-icon {
         color: @tag-disabled-color;
-        cursor: text;
+        cursor: not-allowed;
 
         &:hover {
           color: @tag-disabled-color;
           background-color: transparent;
-          cursor: text;
+          cursor: not-allowed;
         }
       }
     }
@@ -105,6 +114,7 @@
       border-color: @tag-primary-light-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-primary-color;
         background-color: @tag-primary-light-color;
@@ -119,6 +129,7 @@
       border-color: @tag-success-light-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-success-color;
         background-color: @tag-success-light-color;
@@ -133,6 +144,7 @@
       border-color: @tag-default-border-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-info-color;
         background-color: @tag-info-light-color;
@@ -147,6 +159,7 @@
       border-color: @tag-warning-light-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-warning-color;
         background-color: @tag-warning-light-color;
@@ -161,6 +174,7 @@
       border-color: @tag-danger-light-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-danger-color;
         background-color: @tag-danger-light-color;
@@ -176,6 +190,7 @@
       color: @tag-primary-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-primary-color;
@@ -191,6 +206,7 @@
       color: @tag-success-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-success-color;
@@ -206,6 +222,7 @@
       color: @tag-text-color-1;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-info-color;
@@ -221,6 +238,7 @@
       color: @tag-warning-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-warning-color;
@@ -236,6 +254,7 @@
       color: @tag-danger-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-danger-color;
