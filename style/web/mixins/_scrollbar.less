@@ -1,0 +1,15 @@
+.scrollbar() {
+  // Firefox 等浏览器标准支持的滚动条样式设置
+  scrollbar-color: @gray-color-4;
+  scrollbar-width: thin;
+  // Safari/Chrome 中滚动条样式设置
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: @gray-color-4;
+    border-radius: 11px;
+  }
+}

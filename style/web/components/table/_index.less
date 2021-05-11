@@ -1,6 +1,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "../../mixins/_text.less";
+@import "../../mixins/_scrollbar.less";
 
 .bordered {
   content: "";
@@ -20,15 +21,16 @@
   &-content {
     position: relative;
 
-    &::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
+    // &::-webkit-scrollbar {
+    //   width: 6px;
+    //   height: 6px;
+    // }
 
-    &::-webkit-scrollbar-thumb {
-      background: @table-scroll-btn-bg-color;
-      border-radius: 11px;
-    }
+    // &::-webkit-scrollbar-thumb {
+    //   background: @table-scroll-btn-bg-color;
+    //   border-radius: 11px;
+    // }
+    .scrollbar()
   }
 
 
@@ -266,6 +268,7 @@
       width: fit-content;
       position: relative;
       z-index: 10;
+      margin-right: 6px;
 
       &:after {
         position: absolute;
@@ -288,14 +291,7 @@
       overflow-y: auto;
       width: fit-content;
 
-      &::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: @table-scroll-btn-bg-color;
-        border-radius: 11px;
-      }
+      .scrollbar()
     }
   }
 
