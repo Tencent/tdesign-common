@@ -34,6 +34,7 @@
     color: @dialog-header-text-color;
     font-size: @dialog-header-font-size;
     display: flex;
+    align-items: center;
     // remove space between inline-block elements.
     word-spacing: -6px;
 
@@ -95,15 +96,26 @@
 
   &__close {
     position: absolute;
-    top: 22px;
+    top: 29px;
     right: @dialog-spacer;
-    font-size: 16px;
-    color: rgba(0, 0, 0, .9);
-
+    font-size: @dialog-close-icon-size;
+    color: @dialog-body-text-color;
+    display: flex;
+    width: @dialog-close-icon-size;
+    height: @dialog-close-icon-size;
+    align-items: center;
+    justify-content: center;
+    border-radius: @border-radius;    
+    background: @dialog-bg-color;
 
     &:hover {
       cursor: pointer;
-      color: @primary-color;
+      background: @dialog-close-icon-hover;
+
+    }
+
+    &:active {
+      background: @dialog-close-icon-active;
     }
   }
 }
