@@ -36,6 +36,7 @@
     margin-left: @select-placeholder-margin;
     .text-ellipsis();
     display: block;
+    color: @select-input-color;
   }
 
   & .@{prefix}-select-right-icon {
@@ -62,6 +63,7 @@
     margin: @select-icon-margin;
     left: 0;
     top: 0;
+    color: @select-icon-color
   }
 
   .@{prefix}-select-input {
@@ -150,7 +152,7 @@
 .@{prefix}-select.@{prefix}-is-disabled {
   cursor: not-allowed;
   background-color: @select-disabled-background-color;
-  color: @select-placeholder-color;
+  color: @select-disabled-placeholder-color;
   border-color: @select-border-color;
 
   & > .@{prefix}-select-right-icon {
@@ -246,18 +248,21 @@
   padding: @select-option-padding-default;
   color: @option-color;
 
-  &:hover,
+  &:hover {
+    background: @select-option-background-color-hover;
+  }
   :active {
-    background: @select-hover-background-color;
+    background: @select-option-background-color-active;
   }
   .@{prefix}-checkbox__label {
-    color: @select-option-checkbox-color;
+    color: @option-color;
   }
 }
 
 .@{prefix}-select-option.@{prefix}-is-disabled {
-  color: @select-disabled-color;
   cursor: not-allowed;
+  color: @select-disabled-color;
+  background: @select-background-color;
 
   &:hover,
   :active {
@@ -277,5 +282,5 @@
 
 .@{prefix}-select-option.@{prefix}-is-selected {
   color: @select-selected-color;
-  background-color: @primary-color-1;
+  background-color: @brand-color-light;
 }
