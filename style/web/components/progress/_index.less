@@ -13,7 +13,6 @@
   }
 
   &--info {
-    min-width: 2em;
     margin-left: 10px;
     color: @progress-info-dark;
     white-space: nowrap;
@@ -43,13 +42,28 @@
   height: 18px;
   border-radius: 9px;
   .@{prefix}-progress--info {
-    min-width: 2em;
+    font-size: 12px;
+  }
+}
+
+.@{prefix}-progress--over-ten {
+  .@{prefix}-progress--info {
     position: absolute;
     top: 50%;
     z-index: 10;
     right: 10px;
-    font-size: 12px;
+    color: #ffffff;
     transform: translateY(-50%);
+  }
+}
+
+.@{prefix}-progress--under-ten {
+  .@{prefix}-progress--info,
+  .@{prefix}-progress--inner {
+    display: inline-block;
+  }
+  .@{prefix}-progress--info {
+    vertical-align: top;
   }
 }
 
@@ -62,7 +76,6 @@
     top: 50%;
     left: 50%;
     width: 100%;
-    min-width: 2em;
     margin: 0;
     font-size: inherit;
     line-height: 1;
