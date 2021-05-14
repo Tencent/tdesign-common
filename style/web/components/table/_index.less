@@ -1,6 +1,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "../../mixins/_text.less";
+@import "../../mixins/_scrollbar.less";
 
 .bordered {
   content: "";
@@ -19,7 +20,9 @@
 
   &-content {
     position: relative;
+    .scrollbar()
   }
+
 
   &-pagination {
     padding: @table-padding-normal  @table-padding-horizontal;
@@ -53,10 +56,15 @@
   thead td,
   th {
     color: @table-head-text-color;
-    font-weight: 500;
+    font-weight: 700;
   }
 
-  td {
+  td[key="row-select"] {
+    padding: 10px 0 10px 24px;
+  }
+
+  td,
+  th {
     > a {
       text-decoration: none;
       color: @table-link-text-color;
@@ -68,6 +76,10 @@
 
     &.align-right {
       text-align: right;
+    }
+
+    &.align-center {
+      text-align: center;
     }
 
     &.text-ellipsis {
@@ -94,7 +106,7 @@
   // 展开/收起列
   .@{prefix}-table-expandable-icon-cell,
   .@{prefix}-table-selection-cell {
-    width: 16px;
+    padding: 0;
   }
 
   // @todo: 待优化
@@ -251,6 +263,7 @@
       width: fit-content;
       position: relative;
       z-index: 10;
+      margin-right: 6px;
 
       &:after {
         position: absolute;
@@ -272,6 +285,8 @@
     .@{prefix}-table__body {
       overflow-y: auto;
       width: fit-content;
+
+      .scrollbar()
     }
   }
 
@@ -454,6 +469,11 @@
       vertical-align: middle;
     }
   }
+
+
+  .t-table-expanded-cell {
+    padding-left: 45px;
+  }
 }
 
 .t-table-filter-icon,
@@ -461,6 +481,44 @@
   margin-left: 5px;
   background-color: transparent;
   display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    color: @table-icon-active-color;
+  }
+}
+
+.t-table-filter-pop {
+  .t-table-filter-pop-content {
+    margin: -8px;
+    
+    .@{prefix}-table-filter-pop-content__inner {
+      padding: 16px;
+
+      .t-checkbox,
+      .t-radio {
+        display: block;
+        margin: 0;
+      }
+
+      .t-checkbox + .t-checkbox,
+      .t-radio + .t-radio {
+        margin-top: 16px;
+      }
+    }
+    .@{prefix}-table-filter-pop-content__button {
+      border-top: 1px solid @table-border-color;
+      padding: 16px;
+
+      .t-button + .t-button {
+        margin-left: @spacer-2;
+      }
+    }
+  }
+}
+
+.t-table-sort-icon-active {
+  color: @table-icon-active-color;
 }
 
 .t-table-double-icons {
@@ -468,6 +526,19 @@
   vertical-align: middle;
   width: 14px;
 }
+
+.t-table-expand-box {
+  padding: 10px 8px;
+  display: inline-grid;
+  vertical-align: middle;
+  color: @table-icon-default-color;
+  cursor: pointer;
+
+  &:hover {
+    color: @table-icon-active-color;
+  }
+}
+
 
 @keyframes tTableProgressbar {
   0% {

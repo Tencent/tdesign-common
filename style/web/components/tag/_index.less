@@ -53,6 +53,11 @@
       color: @tag-checked-color;
       background-color: @tag-checked-background-color;
       border-color: @tag-checked-border-color;
+
+      &:hover {
+        color: @tag-default-hover-color;
+        border-color: currentColor;
+      }
     }
 
     &:hover {
@@ -78,7 +83,7 @@
       color: @tag-disabled-color;
       background-color: @tag-disabled-background-color;
       border-color: @tag-disabled-border-color;
-      cursor: text;
+      cursor: not-allowed;
 
       &:hover {
         color: @tag-disabled-color;
@@ -87,12 +92,12 @@
       }
       .@{prefix}-icon {
         color: @tag-disabled-color;
-        cursor: text;
+        cursor: not-allowed;
 
         &:hover {
           color: @tag-disabled-color;
           background-color: transparent;
-          cursor: text;
+          cursor: not-allowed;
         }
       }
     }

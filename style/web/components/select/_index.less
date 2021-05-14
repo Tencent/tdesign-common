@@ -1,6 +1,9 @@
 @import "./_var.less";
 
 // select
+.@{prefix}-select-wrap {
+  width: 100%;
+}
 .@{prefix}-select {
   position: relative;
   display: inline-block;
@@ -33,6 +36,7 @@
     margin-left: @select-placeholder-margin;
     .text-ellipsis();
     display: block;
+    color: @select-input-color;
   }
 
   & .@{prefix}-select-right-icon {
@@ -59,6 +63,7 @@
     margin: @select-icon-margin;
     left: 0;
     top: 0;
+    color: @select-icon-color
   }
 
   .@{prefix}-select-input {
@@ -92,6 +97,7 @@
 
 .@{prefix}-select.@{prefix}-is-active {
   border-color: @select-active-border-color;
+  box-shadow: @select-input-shadow;
   .@{prefix}-select-right-icon {
     color: @select-active-border-color;
     opacity: 100%;
@@ -146,7 +152,7 @@
 .@{prefix}-select.@{prefix}-is-disabled {
   cursor: not-allowed;
   background-color: @select-disabled-background-color;
-  color: @select-placeholder-color;
+  color: @select-disabled-placeholder-color;
   border-color: @select-border-color;
 
   & > .@{prefix}-select-right-icon {
@@ -164,8 +170,8 @@
 }
 // dropdown
 .@{prefix}-select-dropdown {
-  margin-top: @select-dropdown-margin-top;
-  padding: 0;
+  margin: @select-dropdown-margin;
+  padding: @select-dropdown-padding;
   max-height: @dropdown-max-height;
   overflow-y: auto;
   box-shadow: @select-dropdown-shadow;
@@ -242,18 +248,22 @@
   padding: @select-option-padding-default;
   color: @option-color;
 
-  &:hover,
+  &:hover {
+    background: @select-option-background-color-hover;
+  }
+
   :active {
-    background: @select-hover-background-color;
+    background: @select-option-background-color-active;
   }
   .@{prefix}-checkbox__label {
-    color: @select-option-checkbox-color;
+    color: @option-color;
   }
 }
 
 .@{prefix}-select-option.@{prefix}-is-disabled {
-  color: @select-disabled-color;
   cursor: not-allowed;
+  color: @select-disabled-color;
+  background: @select-background-color;
 
   &:hover,
   :active {
@@ -273,5 +283,5 @@
 
 .@{prefix}-select-option.@{prefix}-is-selected {
   color: @select-selected-color;
-  background-color: @primary-color-1;
+  background-color: @brand-color-light;
 }

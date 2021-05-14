@@ -41,7 +41,7 @@
 
     &__meta {
       display: flex;
-      padding: @spacer 0;
+      padding: @spacer*.5 0;
 
       &-avatar {
         width: 56px;
@@ -59,13 +59,11 @@
         }
       }
 
-      &-content {}
-
       &-title {
         padding: 0;
         font-size: @font-size-l;
         font-weight: bold;
-        margin: 0 0 @spacer * .75;
+        margin: 0 0 @spacer;
         color: @text-level-1-color;
       }
 
@@ -138,8 +136,11 @@
   &__load {
     background: @list-bg-color-default;
     text-align: center;
-    padding: @spacer-4;
     font-size: @font-size-s;
+
+    &:not(:empty) {
+      padding: @spacer-4; // 如果不是空子元素才设置padding
+    }
 
     &.@{prefix}-list__load--loading {
       color: @list-text-color-loading;
@@ -152,7 +153,7 @@
     &.@{prefix}-list__load--load-more {
       color: @list-text-color-load-more;
       cursor: pointer;
-      font-size: @font-size-base;
+      font-size: @font-size-s;
     }
   }
 
