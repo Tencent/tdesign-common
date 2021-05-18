@@ -1,4 +1,5 @@
 import { TreeNode } from './tree-node';
+import { TreeOptionData } from '../common';
 
 // ------ 自动规范类型 start -------
 
