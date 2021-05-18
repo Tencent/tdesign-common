@@ -19,7 +19,7 @@
   }
 
   &--text {
-    font-size: @font-size-small;
+    font-size: @datepicker-font-size-s;
   }
 
   &--multiple .@{prefix}-form-controls {
@@ -132,8 +132,8 @@
   }
 
   li {
-    font-size: @font-size-regular;
-    line-height: @font-line-height;
+    font-size: @datepicker-font-size;
+    line-height: @datepicker-line-height;
     font-weight: 400;
     white-space: nowrap;
     text-align: left;
@@ -190,8 +190,8 @@
   }
 
   &-day {
-    font-size: @font-size-regular;
-    line-height: @font-line-height;
+    font-size: @datepicker-font-size;
+    line-height: @datepicker-line-height;
     font-weight: 400;
     width: @day-width;
     height: @day-width;
@@ -267,7 +267,7 @@
       }
 
       .@{prefix}-date-picker--calendar-day--text:hover {
-        background-color: @color-primary;
+        background-color: @datepicker-active-background;
       }
     }
 
@@ -280,7 +280,7 @@
       }
 
       .@{prefix}-date-picker--calendar-day--text:hover {
-        background-color: @color-primary;
+        background-color: @datepicker-active-background;
       }
     }
 
@@ -411,8 +411,8 @@
 
   &-month {
     cursor: pointer;
-    font-size: @font-size-regular;
-    line-height: @font-line-height;
+    font-size: @datepicker-font-size;
+    line-height: @datepicker-line-height;
     white-space: nowrap;
     text-align: center;
     vertical-align: middle;
@@ -445,7 +445,7 @@
   //   width: 64px;
   //   padding: 2px;
   //   outline: 0;
-  //   font-size: @font-size-small;
+  //   font-size: @datepicker-font-size-s;
   //   height: 24px;
   //   line-height: 16px;
   // }
@@ -552,8 +552,8 @@
       position: relative;
       border: 0 none;
       background: none;
-      font-size: @font-size-regular;
-      line-height: @font-line-height;
+      font-size: @datepicker-font-size;
+      line-height: @datepicker-line-height;
       width: 100%;
       outline: none;
       appearance: none;
@@ -567,7 +567,7 @@
 
       &.@{prefix}-active {
         font-weight: 500;
-        color: @color-primary;
+        color: @datepicker-active-background;
         background-color: @day-in-range-bg;
       }
 
