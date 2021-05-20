@@ -11,7 +11,7 @@
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  padding: 0 32px;
+  padding: 0 @input-number-button-width;
   user-select: none;
 
   input::-webkit-outer-spin-button,
@@ -24,22 +24,22 @@
   }
 
   .@{inputCls}__inner {
-    width: 56px;
+    width: @input-number-inner-width;
     text-align: center;
     border-radius: 0;
-    color: @text-level-1-color;
+    color: @input-number-inner-color;
   }
 
   &__decrease,
   &__increase {
-    width: 32px;
-    height: 32px;
+    width: @input-number-button-width;
+    height: @input-number-button-height;
     position: absolute;
     top: 0;
-    border: 1px solid @input-number-border-color-default;
+    border: 1px solid @input-number-button-border-color;
     box-sizing: border-box;
     border-radius: @border-radius;
-    background-color: #fff;
+    background-color: @input-number-button-bg-color;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,18 +47,18 @@
     cursor: pointer;
 
     &:hover {
-      color: #0052d9;
+      color: @input-number-button-color-hover;
     }
 
     .@{prefix}-icon {
-      font-size: 16px;
-      transition: all .15s;
+      font-size: @input-number-font-size;
+      transition: all input-number-button-anim-duration;
     }
 
     &.@{prefix}-is-disabled {
-      color: #ddd;
+      color: @input-number-button-color-disabled;
       cursor: no-drop;
-      background-color: #f5f5f5;
+      background-color: @input-number-button-bg-color-disabled;
     }
   }
 
@@ -76,64 +76,70 @@
 
   &--normal {
     padding: 0;
+
+    .@{inputCls}__inner {
+      text-align: left;
+    }
   }
 }
 
 .@{inputNumberCls}.@{prefix}-is-disabled {
   .@{inputCls}__inner {
     cursor: no-drop;
-    background-color: #f5f5f5;
-    color: rgba(0,0,0,.16);
-    border-color: #ddd;
+    background-color: @input-number-bg-color-disabled;
+    color: @input-number-inner-color-disabled;
+    border-color: @input-number-border-color-disabled;
   }
-  
+
   .@{inputNumberCls}__decrease,
   .@{inputNumberCls}__increase {
-    color: #ddd;
+    color: @input-number-button-color-disabled;
     cursor: no-drop;
-    background-color: #f5f5f5;
+    background-color: @input-number-button-bg-color-disabled;
   }
 }
 
 .@{inputNumberCls}.@{prefix}-size-s {
-  padding: 0 24px;
+  padding: 0 @input-number-button-width-s;
   .@{inputCls}__inner {
-    height: 24px;
-    line-height: 24px;
+    height: @input-number-inner-height-s;
+    line-height: @input-number-inner-height-s;
   }
   .@{inputNumberCls}__decrease,
   .@{inputNumberCls}__increase {
-    font-size: 14px;
-    width: 24px;
-    height: 24px;
+    font-size: @input-number-font-size-s;
+    width: @input-number-button-width-s;
+    height: @input-number-button-height-s;
   }
 }
 
 .@{inputNumberCls}.@{prefix}-size-l {
-  padding: 0 40px;
+  padding: 0 @input-number-button-width-l;
   .@{inputCls}__inner {
-    height: 40px;
-    line-height: 40px;
+    height: @input-number-inner-height-l;
+    line-height: @input-number-inner-height-l;
   }
   .@{inputNumberCls}__decrease,
   .@{inputNumberCls}__increase {
-    font-size: 18px;
-    width: 40px;
-    height: 40px;
+    font-size: @input-number-font-size-l;
+    width: @input-number-button-width-l;
+    height: @input-number-button-height-l;
   }
 
   &.@{prefix}-is-controls-right {
     .@{inputCls}__inner {
-      width: 112px;
-      height: 40px;
-      line-height: 40px;
-      padding-right: 48px;
+      width: @input-number-right-inner-width-l +
+        @input-number-right-button-width-l;
+      height: @input-number-inner-height-l;
+      line-height: @input-number-inner-height-l;
+      padding-right: @input-number-right-button-width-l +
+        @input-padding-horizontal-default;
     }
 
     .@{inputNumberCls}__decrease,
     .@{inputNumberCls}__increase {
-      width: 40px;
-      font-size: 16px;
+      width: @input-number-right-button-width-l;
+      font-size: @input-number-right-font-size-l;
     }
   }
 }
@@ -141,26 +147,27 @@
 .@{inputNumberCls}.@{prefix}-is-controls-right {
   padding: 0;
   .@{inputCls}__inner {
-    width: 88px;
+    width: @input-number-right-inner-width + @input-number-right-button-width;
     box-sizing: border-box;
-    padding-right: 40px;
+    padding-right: @input-number-right-button-width +
+      @input-padding-horizontal-default;
+    text-align: left;
     border-radius: @border-radius;
   }
 
   .@{inputNumberCls}__decrease,
   .@{inputNumberCls}__increase {
-
-    width: 32px;
+    width: @input-number-right-button-width;
     height: 50%;
     border: 0;
-    border-left: 1px solid @input-number-border-color-default;
+    border-left: 1px solid @input-number-right-button-border-color;
     left: initial;
     top: initial;
     right: 1px;
     border-radius: 0;
 
     .@{prefix}-icon {
-      font-size: 12px;
+      font-size: @input-number-right-font-size;
     }
 
     &:hover {
@@ -168,15 +175,14 @@
         transform: scale(1.08);
       }
     }
-
   }
   .@{inputNumberCls}__decrease {
     bottom: 1px;
-    border-top: 1px solid @input-number-border-color-default;
+    border-top: 1px solid @input-number-right-button-border-color;
   }
 
   .@{inputNumberCls}__increase {
     top: 1px;
-    border-bottom: 1px solid @input-number-border-color-default;
+    border-bottom: 1px solid @input-number-right-button-border-color;
   }
 }
