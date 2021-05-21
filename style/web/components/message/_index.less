@@ -44,11 +44,24 @@
 
     > .@{prefix}-icon-close,
     > .@{prefix}-message-close {
+      display: inline-flex;
+      font-size: @font-size-l;
       margin-right: 0;
       margin-left: auto;
       right: 24px;
       cursor: pointer;
       color: @msg-close-icon-color;
+    }
+
+    > .@{prefix}-message-close .@{prefix}-icon-close{
+      border-radius: @border-radius;
+      &:hover {
+        background: @bg-color-secondarycontainer-hover;
+      }
+
+      &:active {
+        background: @bg-color-secondarycontainer-active;
+      }
     }
   }
 }
