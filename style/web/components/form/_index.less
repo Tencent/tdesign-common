@@ -64,9 +64,12 @@
     align-items: center;
 
     &--content {
+      display: flex;
+      align-items: center;
       min-height: @form-item-height;
     }
   }
+
 
   &__controls.@{prefix}-is-success {
     //.@{prefix}-input__inner {
@@ -111,6 +114,7 @@
   }
 
   &__help {
+    margin-top: @from-help-text-margin-top;
     font-size: @input-extra-fontsize;
     color: @@fontColor;
     @fontColor: "input-extra-color-success";
