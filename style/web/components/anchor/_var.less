@@ -1,12 +1,40 @@
-//文字颜色
-@anchor-text-color-default: @text-level-1-color;
-@anchor-text-color-hover: @primary-color;
+//颜色
+@anchor-text-color-default: @text-color-primary;
+@anchor-text-color-hover: @brand-color;
+// 被选中的字体、左侧竖线色值
+@anchor-text-color-active: @brand-color;
+@anchor-bg-color: @bg-color-container;
+// anchor左侧竖线颜色
+@anchor-border-color: @border-level-1-color;
+
+// 位置
+// 固定模式时的top值
+@anchor-affix-top: 20px;
 
 // 尺寸
 @anchor-width-s: 120px;
 @anchor-width-default: 200px;
 @anchor-width-l: 320px;
-@anchor-item-height:24px;
+@anchor-item-height: 24px;
+// 锚点最大高度，可折行，最大3行
+@anchor-item-max-height: @anchor-item-height * 3;
+@anchor-item-line-height: 22px;
+// 选中竖线的宽度
+@anchor-point-width: 1px;
+// 选中竖线的高度
+@anchor-point-height: 22px;
+@anchor-target-width: 6px;
 
 //字号
-@anchor-font-base: @font-size-base;
+@anchor-font-size: @font-size-base;
+
+// 间距
+// 一级锚点padding
+@anchor-item-padding: 0 @spacer-1 0 @spacer-2;
+// 二级锚点padding
+@anchor-sub-item-padding: 0 @spacer-1 0 @spacer-2;
+
+// 动画
+@anchor-point-transition: all @anim-duration-base
+  cubic-bezier(.24, .41, .51, .9);
+@anchor-target-animation: fadeOut 2s 2s linear 1;
