@@ -42,7 +42,6 @@
       margin-right: @spacer * 3;
     }
 
-    > .@{prefix}-icon-close,
     > .@{prefix}-message-close {
       display: inline-flex;
       font-size: @font-size-l;
@@ -51,16 +50,17 @@
       right: 24px;
       cursor: pointer;
       color: @msg-close-icon-color;
-    }
 
-    > .@{prefix}-message-close .@{prefix}-icon-close{
-      border-radius: @border-radius;
-      &:hover {
-        background: @bg-color-secondarycontainer-hover;
-      }
-
-      &:active {
-        background: @bg-color-secondarycontainer-active;
+      .@{prefix}-icon-close {
+        border-radius: @border-radius;
+        
+        &:hover {
+          background: @bg-color-container-hover;
+        }
+  
+        &:active {
+          background: @bg-color-container-active;
+        }
       }
     }
   }
