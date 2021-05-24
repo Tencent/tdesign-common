@@ -28,11 +28,11 @@
   }
 
   &-reference {
-    margin: 10px;
+    margin: @tooltip-reference-margin;
   }
 
   &-default {
-    margin: 8px;
+    margin: @tooltip-default-margin;
   }
   
   .@{prefix}-popup__arrow {
@@ -47,20 +47,20 @@
 }
 
 .@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
-  bottom: 5px;
-  margin-left: -5px;
+  bottom: @tooltip-arrow-position;
+  margin-left: -@tooltip-arrow-position;
 }
 
 .@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
-  margin-left: -5px;
+  margin-left: -@tooltip-arrow-position;
 }
 
 .@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
-  right: 5px;
-  margin-top: -5px;
+  right: @tooltip-arrow-position;
+  margin-top: -@tooltip-arrow-position;
 }
 
 .@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
-  left: -5px;
-  margin-top: -5px;
+  left: -@tooltip-arrow-position;
+  margin-top: -@tooltip-arrow-position;
 }
