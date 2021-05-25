@@ -10,6 +10,10 @@ import {
   TypeTreeNodeModel,
   TypeTreeNodeData,
 } from './types';
+import {
+  createNodeModel,
+  updateNodeModel,
+} from './tree-node-model';
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -642,6 +646,8 @@ export class TreeNode {
 
   /* ------ 节点状态切换 ------ */
 
+  // 锁定节点
+  // 搜索过滤节点时，路径节点需要固定呈现，视其为锁定态
   public lock(lockState: boolean): void {
     this.vmIsLocked = lockState;
     this.expanded = this.isExpanded();
@@ -884,144 +890,14 @@ export class TreeNode {
   // 用于 treeNode 对外暴露的 api
   // 经过封装的对象，减少了对外暴露的 api，利于代码重构
   public getModel(): TypeTreeNodeModel {
-    const {
-      // 同步节点属性
-      value,
-      label,
-      dataset,
-      actived,
-      expanded,
-      checked,
-      indeterminate,
-      loading,
-    } = this;
-
     let { model } = this;
-
     if (!model) {
-      const {
-        // 被重新定义的对外暴露方法
-        modelGetLevel,
-        modelGetIndex,
-        modelIsFirst,
-        modelIsLast,
-        modelIsLeaf,
-        modelInsertBefore,
-        modelInsertAfter,
-        modelAppendData,
-        modelGetPath,
-        modelGetParent,
-        modelGetParents,
-        modelGetRoot,
-        modelGetSiblings,
-        modelGetChildren,
-      } = this;
-
-      // 同名方法，需要重新绑定 this 指向
-      model = {
-        // 属性
-        value,
-        label,
-        data: dataset,
-        actived,
-        expanded,
-        checked,
-        indeterminate,
-        loading,
-        // 方法
-        getPath: modelGetPath,
-        appendData: modelAppendData,
-        getLevel: modelGetLevel,
-        getIndex: modelGetIndex,
-        getParent: modelGetParent,
-        getParents: modelGetParents,
-        getChildren: modelGetChildren,
-        getRoot: modelGetRoot,
-        getSiblings: modelGetSiblings,
-        insertBefore: modelInsertBefore,
-        insertAfter: modelInsertAfter,
-        isFirst: modelIsFirst,
-        isLast: modelIsLast,
-        isLeaf: modelIsLeaf,
-      };
-
+      model = createNodeModel(this);
       this.model = model;
-    } else {
-      Object.assign(model, {
-        value,
-        label,
-        data: dataset,
-        actived,
-        expanded,
-        checked,
-        indeterminate,
-        loading,
-      });
     }
+    updateNodeModel(this, model);
     return model;
   }
-
-  /* ------ 对外暴露方法 ------ */
-
-  public modelGetLevel = () => this.getLevel();
-  public modelGetIndex = () => this.getIndex();
-  public modelIsFirst = () => this.isFirst();
-  public modelIsLast = () => this.isLast();
-  public modelIsLeaf = () => this.isLeaf();
-  public modelInsertBefore = (newData: TypeTreeItem) => this.insertBefore(newData);
-  public modelInsertAfter = (newData: TypeTreeItem) => this.insertAfter(newData);
-
-  // 给当前节点添加数据
-  public modelAppendData = (data: TypeTreeNodeData | TypeTreeNodeData[]) => this.append(data);
-
-  // 返回路径节点数据集合
-  public modelGetPath = (): TypeTreeNodeModel[] => {
-    const nodes = this.getPath();
-    return nodes.map(node => node.getModel());
-  };
-
-  // 获取单个父节点数据
-  public modelGetParent = (): TypeTreeNodeModel => (this.parent?.getModel());
-
-  // 获取所有父节点数据
-  public modelGetParents = (): TypeTreeNodeModel[] => {
-    const nodes = this.getParents();
-    return nodes.map(node => node.getModel());
-  };
-
-  // 获取根节点
-  public modelGetRoot = (): TypeTreeNodeModel => {
-    const root = this.getRoot();
-    return root?.getModel();
-  };
-
-  // 获取兄弟节点，包含自己在内
-  public modelGetSiblings = (): TypeTreeNodeModel[] => {
-    const nodes = this.getSiblings();
-    return nodes.map(node => node.getModel());
-  };
-
-  // 返回当前节点的第一层子节点数据集合
-  public modelGetChildren = (deep?: boolean): boolean | TypeTreeNodeModel[] => {
-    let childrenModel: boolean | TypeTreeNodeModel[] = false;
-    const { children } = this;
-    if (Array.isArray(children)) {
-      if (children.length > 0) {
-        if (deep) {
-          const nodes = this.walk();
-          nodes.shift();
-          childrenModel = nodes.map(node => node.getModel());
-        } else {
-          childrenModel = children.map(node => node.getModel());
-        }
-      } else {
-        childrenModel = false;
-      }
-    } else if (typeof children === 'boolean') {
-      childrenModel = children;
-    }
-    return childrenModel;
-  };
 }
 
 export default TreeNode;
