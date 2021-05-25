@@ -132,7 +132,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
 }
 
 // 更新封装对象
-export function updateNodeModel(node: TreeNode, model: TypeTreeNodeModel) {
+export function updateNodeModel(model: TypeTreeNodeModel, node: TreeNode) {
   // 同步节点属性
   const props = getExposedProps(node);
   Object.assign(model, props);

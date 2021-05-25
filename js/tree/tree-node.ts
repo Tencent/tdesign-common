@@ -895,7 +895,7 @@ export class TreeNode {
       model = createNodeModel(this);
       this.model = model;
     }
-    updateNodeModel(this, model);
+    updateNodeModel(model, this);
     return model;
   }
 }
