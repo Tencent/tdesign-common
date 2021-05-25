@@ -24,6 +24,7 @@ const defaultStatus = {
   disabled: false,
   draggable: false,
   loading: false,
+  state: 0,
 };
 
 // vm 开头为视图属性，不可以外部设置
@@ -79,6 +80,8 @@ export class TreeNode {
   public level: number;
   // 节点是否正在加载数据
   public loading: boolean;
+  // 节点自定义状态
+  public state: string | number;
 
   public constructor(
     tree: TreeStore,
@@ -97,6 +100,7 @@ export class TreeNode {
 
     this.model = null;
     this.children = null;
+    this.state = 0;
     this.vmCheckable = false;
     this.vmIsLeaf = false;
     this.vmIsFirst = false;

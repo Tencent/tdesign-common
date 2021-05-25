@@ -16,6 +16,7 @@ function getExposedProps(node: TreeNode) {
     checked,
     indeterminate,
     loading,
+    state,
   } = node;
 
   return {
@@ -27,6 +28,7 @@ function getExposedProps(node: TreeNode) {
     checked,
     indeterminate,
     loading,
+    state,
   };
 }
 

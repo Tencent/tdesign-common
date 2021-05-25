@@ -71,6 +71,11 @@ export interface TreeNodeState {
    * @default false
    */
   activable?: boolean;
+  /**
+   * 节点状态标志，用于强制触发节点更新
+   * @default 0
+   */
+  state?: string | number;
 };
 
 export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeState {
@@ -106,6 +111,10 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
    * 当前节点是否处于加载中状态
    */
   loading: boolean;
+  /**
+   * 节点状态标志
+   */
+  state: string | number;
   /**
    * 追加子节点数据
    */
