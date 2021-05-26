@@ -1,35 +1,26 @@
+import pick from 'lodash/pick';
+import { TreeNode } from './tree-node';
 import {
   TypeTreeNodeModel,
   TypeTreeNodeData,
   TypeTreeItem,
+  TreeNodeModelProps,
 } from './types';
-import { TreeNode } from './tree-node';
 
 // 获取节点需要暴露的属性
-function getExposedProps(node: TreeNode) {
-  const {
-    value,
-    label,
-    dataset,
-    actived,
-    expanded,
-    checked,
-    indeterminate,
-    loading,
-    state,
-  } = node;
-
-  return {
-    value,
-    label,
-    data: dataset,
-    actived,
-    expanded,
-    checked,
-    indeterminate,
-    loading,
-    state,
-  };
+function getExposedProps(node: TreeNode): TreeNodeModelProps {
+  const props = pick(node, [
+    'value',
+    'label',
+    'data',
+    'actived',
+    'expanded',
+    'checked',
+    'indeterminate',
+    'loading',
+    'state',
+  ]) as TreeNodeModelProps;
+  return props;
 }
 
 // 封装对外暴露的对象

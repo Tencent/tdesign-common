@@ -78,43 +78,46 @@ export interface TreeNodeState {
   state?: string | number;
 };
 
-export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeState {
+export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOptionData> {
   /**
    * 当前节点值或者ID
    */
-  value: TreeNodeValue;
-  /**
-   * 当前节点标签文本
-   */
-  label: string;
-  /**
-   * 当前节点是否处于高亮激活态
-   */
-  actived: boolean;
-  /**
-   * 当前节点是否被选中
-   */
-  checked: boolean;
-  /**
-   * 节点数据
-   */
-  data: DataOption;
-  /**
-   * 当前节点是否展开
-   */
-  expanded: boolean;
-  /**
-   * 当前节点是否处于半选状态
-   */
-  indeterminate: boolean;
-  /**
-   * 当前节点是否处于加载中状态
-   */
-  loading: boolean;
-  /**
-   * 节点状态标志
-   */
-  state: string | number;
+   value: TreeNodeValue;
+   /**
+    * 当前节点标签文本
+    */
+   label: string;
+   /**
+    * 当前节点是否处于高亮激活态
+    */
+   actived: boolean;
+   /**
+    * 当前节点是否被选中
+    */
+   checked: boolean;
+   /**
+    * 节点数据
+    */
+   data: DataOption;
+   /**
+    * 当前节点是否展开
+    */
+   expanded: boolean;
+   /**
+    * 当前节点是否处于半选状态
+    */
+   indeterminate: boolean;
+   /**
+    * 当前节点是否处于加载中状态
+    */
+   loading: boolean;
+   /**
+    * 节点状态标志
+    */
+   state: string | number;
+};
+
+export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeModelProps {
   /**
    * 追加子节点数据
    */

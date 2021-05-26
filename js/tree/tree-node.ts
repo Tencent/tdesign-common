@@ -37,7 +37,7 @@ export class TreeNode {
   // 节点文本
   public label: string;
   // 节点数据
-  public dataset: TypeTreeNodeData;
+  public data: TypeTreeNodeData;
   // 父节点
   public parent: TreeNode;
   // 子节点列表
@@ -88,7 +88,7 @@ export class TreeNode {
     data?: TypeTreeNodeData,
     parent?: TreeNode,
   ) {
-    this.dataset = data;
+    this.data = data;
     this.tree = tree;
 
     const config = tree.config || {};
