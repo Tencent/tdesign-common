@@ -18,7 +18,6 @@ function getExposedProps(node: TreeNode): TreeNodeModelProps {
     'checked',
     'indeterminate',
     'loading',
-    'state',
   ]) as TreeNodeModelProps;
   return props;
 }
