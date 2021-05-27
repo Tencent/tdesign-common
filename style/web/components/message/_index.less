@@ -10,13 +10,13 @@
 
   @{msg-icon-selector} {
     color: @msg-primary-color;
-    margin-right: @spacer;
+    margin-right: @msg-icon-margin-right;
   }
 
-  >.t-icon {
-    font-size: @font-size-l;
+  > .t-icon {
+    font-size: @msg-icon-size;
   }
-  
+
   &.t-is-success {
     @{msg-icon-selector} {
       color: @msg-success-color;
@@ -39,27 +39,27 @@
     min-width: @msg-min-width;
 
     .@{prefix}-message__inner {
-      margin-right: @spacer * 3;
+      margin-right: @msg-inner-margin-right;
     }
 
     > .@{prefix}-message-close {
       display: inline-flex;
-      font-size: @font-size-l;
+      font-size: @msg-close-font-size;
       margin-right: 0;
       margin-left: auto;
-      right: 24px;
+      right: @msg-icon-position-right;
       cursor: pointer;
       color: @msg-close-icon-color;
 
       .@{prefix}-icon-close {
-        border-radius: @border-radius;
-        
+        border-radius: @msg-border-radius;
+
         &:hover {
-          background: @bg-color-container-hover;
+          background: @msg-close-bg-color-hover;
         }
-  
+
         &:active {
-          background: @bg-color-container-active;
+          background: @msg-close-bg-color-active;
         }
       }
     }
@@ -71,6 +71,6 @@
   z-index: 6000;
 
   .@{prefix}-message {
-    margin-bottom: 8px;
+    margin-bottom: @msg-list-margin-bottom;
   }
 }

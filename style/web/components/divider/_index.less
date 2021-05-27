@@ -5,12 +5,12 @@
 @import "./_mixin.less";
 
 .@{prefix}-divider {
-  margin: 24px 0;
-  font-size: 14px;
-  border-top-width: 1px;
+  margin: @divider-horizontal-margin;
+  font-size: @divider-font-size;
+  border-top-width: @divider-border-width;
   border-top-color: @divider-border-color;
   border-top-style: solid;
-  color: rgba(0,0,0,.9);
+  color: @divider-color;
   box-sizing: border-box;
 
   &--dashed {
@@ -25,9 +25,9 @@
   &--vertical {
     border-top: 0;
     display: inline-block;
-    margin: 0 12px;
-    border-left: 1px solid @divider-border-color;
-    height: .9em;
+    margin: @divider-vertical-margin;
+    border-left: @divider-border-width solid @divider-border-color;
+    height: @divider-vertical-height;
     vertical-align: middle;
   }
 
@@ -36,7 +36,7 @@
     border-top: 0;
     white-space: nowrap;
     .@{prefix}-divider-inner-text {
-      padding: 0 1em;
+      padding: @divider-inner-text-padding;
       display: inline-block;
     }
 
@@ -46,7 +46,7 @@
       position: relative;
       top: 50%;
       width: 50%;
-      border-top: 1px solid @divider-border-color;
+      border-top: @divider-border-width solid @divider-border-color;
       transform: translateY(50%);
     }
 
@@ -69,7 +69,5 @@
         width: 5%;
       }
     }
-
   }
 }
-
