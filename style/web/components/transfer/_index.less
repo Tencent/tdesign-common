@@ -39,7 +39,15 @@
       height: 40px;
       line-height: 40px;
       width: 100%;
-      padding: 0 12px 0 12px;
+      padding: @transfer-list-header-padding;
+
+      .@{prefix}-checkbox {
+        margin-right: 0;
+
+        &__label {
+          margin: 0;
+        }
+      }
 
       div {
         display: flex;
@@ -50,7 +58,7 @@
       }
 
       >span {
-        color: @text-level-3-color;
+        color: @text-color-placeholder;
       }
     }
 
@@ -85,11 +93,19 @@
     }
 
     &__item {
-      padding: 9px 12px 9px 12px;
+      padding: @transfer-list-item-padding;
       display: flex;
       cursor: pointer;
-      margin: 4px 8px 0px 8px;
+      margin: @transfer-list-item-margin;
       border-radius: 3px;
+
+      .@{prefix}-checkbox {
+        margin-right: 0;
+
+        &__label {
+          margin: 0;
+        }
+      }
 
       >span {
         margin-left: 8px;
@@ -159,7 +175,7 @@
   &-empty {
     text-align: center;
     position: absolute;
-    color: @text-level-3-color;
+    color: @text-color-placeholder;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

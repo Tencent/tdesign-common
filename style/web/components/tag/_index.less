@@ -11,9 +11,6 @@
   font-size: @tag-medium-font-size;
   line-height: 22px;
   color: @tag-text-color;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
   box-sizing: border-box;
   border-radius: @border-radius-square;
   white-space: nowrap;
@@ -43,6 +40,11 @@
       color: @tag-default-hover-color;
       border-color: currentColor;
     }
+
+    &:active {
+      color: @tag-default-click-color;
+      background-color: @tag-default-click-background-color;
+    }
   }
 
   &--default {
@@ -55,9 +57,10 @@
       border-color: @tag-checked-border-color;
 
       &:hover {
-        color: @tag-default-hover-color;
         border-color: currentColor;
+        background-color: @brand-color-7;
       }
+      
     }
 
     &:hover {

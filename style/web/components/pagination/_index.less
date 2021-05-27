@@ -40,7 +40,6 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    border: 1px solid @pagination-border-color;
     cursor: pointer;
     color: @pagination-text-color;
     border-radius: @pagination-border-radius-base;
@@ -64,10 +63,12 @@
     }
 
     // hover
-    &:hover,
+    &:hover {
+      background-color: @pagination-bg-color-btn-hover;
+    }
+
     &:active {
-      color: @pagination-bg-color-hover;
-      border-color: @pagination-bg-color-hover;
+      background-color: @pagination-bg-color-btn-active;
     }
 
     // 不可点
@@ -107,7 +108,7 @@
       color: @pagination-bg-color-hover;
       border-color: @pagination-bg-color-hover;
     }
-
+    
     &:active {
       .pagination-number--color(
         @pagination-bg-color-active; @pagination-text-color-active;
@@ -152,10 +153,14 @@
         }
       }
 
-      &:hover,
+      &:hover {
+        color: @pagination-text-color-btn;
+        background-color: @pagination-bg-color-btn-hover;
+      }
+
       &:active {
-        background: @pagination-bg-color-more;
-        color: @pagination-bg-color-active;
+        color: @pagination-text-color-btn;
+        background-color: @pagination-bg-color-btn-active;
       }
 
       &.@{prefix}-is-disabled,
@@ -201,6 +206,17 @@
 
       &__number {
         border: 0 none;
+
+        &:hover {
+          color: @pagination-text-color-btn;
+          background-color: @pagination-bg-color-btn-hover;
+        }
+  
+        &:active {
+          color: @pagination-text-color-btn;
+          background-color: @pagination-bg-color-btn-active;
+        }
+
         .pagination-number--size(
           @pagination-height-s; @pagination-font-s;
           @pagination-padding-horizontal-s;
@@ -231,6 +247,7 @@
 
   //diabled
   &.@{prefix}-is-disabled {
+    background-color: @gray-color-1;
     .@{prefix}-pagination__jump {
       color: @pagination-text-color-disabled;
     }
