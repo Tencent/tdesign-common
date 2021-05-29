@@ -22,8 +22,8 @@
 
   &__body {
     text-align: left;
-    padding-left: @popconfirm-spacer;
-    > .@{prefix}-icon {
+
+    >.@{prefix}-icon {
       display: inline-block;
       margin-right: 8px;
     }
@@ -43,11 +43,11 @@
     text-align: right;
     margin-top: @popconfirm-buttons-margin-top;
 
-    > .@{prefix}-button {
+    >span {
       margin-right: @popconfirm-button-margin;
     }
 
-    > .@{prefix}-button:last-child {
+    >span:last-child {
       margin-right: 0;
     }
   }
@@ -125,4 +125,3 @@
     bottom: @popconfirm-arrow-margin;
   }
 }
-
