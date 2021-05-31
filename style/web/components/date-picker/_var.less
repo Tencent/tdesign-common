@@ -15,6 +15,7 @@
 @datepicker-font-size: @font-size-base;
 @datepicker-line-height: 22px;
 @datepicker-font-size-s: @font-size-s;
+@datepicker-font-weight-medium: 500;
 @datepicker-z-index-dropdown: 888;
 // calendar width calculation
 @day-width: 32px;
@@ -28,12 +29,11 @@
 
 @day-calendar-border-radius: 12px;
 
-@day-calendar-shadow: 0 2px 4px -1px rgba(0, 0, 0, .12),
-  0 4px 5px 0 rgba(0, 0, 0, .08), 0 1px 10px 0 rgba(0, 0, 0, .05);
+@day-calendar-shadow: @shadow-1;
 
 // Colors
 
-@day-calendar-background: #ffffff;
+@day-calendar-background: @bg-color-container;
 @day-calendar-border-color: transparent;
 
 @day-weekdays-color: rgba(black, .54);
@@ -61,8 +61,8 @@
 // prev icon and next icon
 
 @day-month-margin: 4px;
-@day-month-width: 48px;
+@day-month-width: 40px;
+@day-year-width: 48px;
 
-@dropdown-background: #ffffff;
-@form-background: #ffffff;
+@datepicker-dropdown-background: #ffffff;
 @day-border-radius: 2px;

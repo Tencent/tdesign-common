@@ -19,8 +19,7 @@
 
   &--container {
     margin: 8px 0;
-    background-color: @dropdown-background;
-    // box-shadow: @day-calendar-shadow;
+    background-color: @datepicker-dropdown-background;
   }
 
   &--text {
@@ -170,6 +169,7 @@
 
   &-days,
   &-weekdays,
+  &-years,
   &-months {
     margin: 0;
     padding: 0;
@@ -408,25 +408,27 @@
     width: @day-calendar-width;
   }
 
-  &-months {
-    // width: 210px;
+  &-years, &-months {
     position: relative;
     flex-wrap: wrap;
+    justify-content:space-around;
   }
 
-  &-month {
+  &-years {
+    padding: 16px 25px 25px 24px;
+  }
+
+  &-month, &-year {
     cursor: pointer;
     font-size: @datepicker-font-size;
-    line-height: @datepicker-line-height;
+    font-weight: @datepicker-font-weight-medium;
     white-space: nowrap;
     text-align: center;
     vertical-align: middle;
     float: left;
-    min-width: @day-month-width;
-    min-height: @day-width;
-    line-height: @day-width;
     padding: @day-padding;
     margin: @day-month-margin;
+    border-radius: 50%;
 
     &:hover {
       color: @day-hover-color;
@@ -438,6 +440,20 @@
       border-color: @day-calendar-border-color;
       color: @day-selected-color;
     }
+  }
+
+  &-month {
+    min-width: @day-month-width;
+    min-height: @day-month-width;
+    line-height: @day-month-width;
+  }
+
+  &-year {
+    padding: 0;
+    min-width: @day-year-width;
+    min-height: @day-year-width;
+    line-height: @day-year-width;
+    // margin-right: 26px;
   }
 
   .@{prefix}-date-picker__title {
