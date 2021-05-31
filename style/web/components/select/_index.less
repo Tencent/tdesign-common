@@ -20,7 +20,7 @@
   :active {
     cursor: pointer;
     border-color: @select-active-border-color;
-
+    transition: border-color @anim-duration-base @anim-time-fn-easing;
     & > .@{prefix}-select-right-icon {
       color: @select-selected-color;
       opacity: 1;
@@ -53,6 +53,7 @@
   }
   .@{prefix}-select-right-icon.@{prefix}-is-visible {
     transform: scaleY(-1);
+    transition: transform @anim-duration-base @anim-time-fn-easing;
 
     /*IE*/
     filter: FlipV;
@@ -249,7 +250,8 @@
   color: @option-color;
 
   &:hover {
-    background: @select-option-background-color-hover;
+    background-color: @select-option-background-color-hover;
+    transition: background-color @anim-duration-base @anim-time-fn-easing;
   }
 
   :active {
@@ -284,6 +286,7 @@
 .@{prefix}-select-option.@{prefix}-is-selected {
   color: @select-selected-color;
   background-color: @brand-color-light;
+  transition: all @anim-duration-base linear;
 }
 
 .@{prefix}-select-option +.@{prefix}-select-option {

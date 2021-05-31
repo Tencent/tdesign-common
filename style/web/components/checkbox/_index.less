@@ -52,10 +52,11 @@
     vertical-align: middle;
     font-size: @checkbox-font;
   }
-
+ 
   &:hover {
     .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-hover;
+      transition: border-color @anim-duration-base linear;
     }
   }
 
@@ -63,6 +64,7 @@
     .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-checked;
       background-color: @checkbox-input-color-checked;
+      transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
       &::after {
         opacity: 1;
@@ -83,6 +85,7 @@
     .@{checkbox-cls}__input {
       border-color: @checkbox-input-color-indeterminate;
       background-color: @checkbox-input-color-indeterminate;
+      transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
       &::after {
         opacity: 1;
