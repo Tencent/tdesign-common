@@ -9,7 +9,7 @@
   display: inline-block;
 
   .@{checkbox-cls} {
-    margin-right: @spacer-2;
+    margin-right: @checkbox-group-margin;
 
     &:last-child {
       margin-right: 0;
@@ -24,6 +24,10 @@
   cursor: pointer;
   color: @checkbox-label-color;
 
+  & + .@{checkbox-cls} {
+    margin-left: @checkbox-margin;
+  }
+  
   &__former {
     .input-visually-hidden();
   }
@@ -123,7 +127,7 @@
         border-color: @checkbox-border-color;
 
         &::after {
-          border-color: @checkbox-check-color-disabled;
+          border-color: @checkbox-check-icon-disabled-color;
         }
       }
     }
