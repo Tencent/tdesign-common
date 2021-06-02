@@ -47,7 +47,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: @mask-active;
+    background-color: @drawer-mask;
     transition: opacity @default-duration @default-timing-function;
     opacity: 0;
   }
@@ -58,8 +58,8 @@
     background: @drawer-bg-color;
     // 这里之所以设置了宽度为 300，高度为 300 是为了在 UI 静态展示的时候有一个默认值，
     // 实际上如果是纵向的，宽度是 js 代码设置，高度是 100%，如果是横向的，高度是 js 代码设置，宽度是 100%
-    width: 300px;
-    height: 300px;
+    width: @drawer-header-font-size;
+    height: @drawer-header-font-size;
     font-size: @drawer-body-text-font-size;
     color: @drawer-body-text-color;
     box-shadow: @dialog-box-shadow;
@@ -108,27 +108,31 @@
   }
 
   &__header {
-    padding: @spacer-2 @spacer-2;
-    border-bottom: 1px solid @drawer-border-color;
-    border-radius: 2px 2px 0 0;
+    padding: @drawer-header-padding;
     font-size: @drawer-header-font-size;
+    font-weight: @drawer-header-font-weight;
+    line-height: @drawer-header-line-height;
     color: @drawer-header-text-color;
+    border-bottom: 1px solid @drawer-border-color;
+    border-radius: @drawer-header-border-radius;
   }
 
   &__body {
-    padding: @spacer-2;
+    padding: @drawer-body-padding;
     overflow: auto;
     flex: 1;
   }
 
   &__footer {
     width: 100%;
-    padding: 10px @spacer-2;
+    height: auto;
+    padding: @drawer-footer-padding;
+    text-align: @drawer-footer-text-align;
     border-top: 1px solid @drawer-border-color;
     background-color: @drawer-bg-color;
 
     .@{prefix}-button {
-      margin-left: @spacer-1;
+      margin-left: @drawer-footer-btn-margin-left;
     }
 
     .@{prefix}-button:first-child {
@@ -138,10 +142,10 @@
 
   &__close-btn {
     position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 18px;
-    right: 16px;
+    width: @drawer-close-btn-size;
+    height: @drawer-close-btn-size;
+    top: @drawer-close-btn-position-top;
+    right: @drawer-close-btn-position-right;
     cursor: pointer;
 
     .@{prefix}-icon {
@@ -173,5 +177,5 @@
 }
 
 [tabindex="-1"]:focus {
-  outline: none !important; /* stylelint-disable-line */
+  outline: none !important;/* stylelint-disable-line */
 }
