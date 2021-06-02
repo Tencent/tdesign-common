@@ -25,12 +25,12 @@
 
   &__select {
     flex-shrink: 0;
-    margin-right: @spacer*2;
+    margin-right: @pagination-select-margin;
     height: @pagination-height-default;
     font-size: @font-size-base;
     color: @pagination-text-color;
     .@{prefix}-select {
-      line-height: 30px;
+      line-height: @pagination-height-default - 2;
     }
   }
 
@@ -50,11 +50,11 @@
     }
 
     &--prev {
-      margin-right: @spacer;
+      margin-right: @pagination-btn-margin;
     }
 
     &--next {
-      margin-left: @spacer;
+      margin-left: @pagination-btn-margin;
     }
 
     // 极简版
@@ -89,7 +89,7 @@
     .list-style-none();
 
     li:not(:last-child) {
-      margin-right: @spacer;
+      margin-right: @pagination-pager-margin;
     }
   }
 
@@ -108,7 +108,7 @@
       color: @pagination-bg-color-hover;
       border-color: @pagination-bg-color-hover;
     }
-    
+
     &:active {
       .pagination-number--color(
         @pagination-bg-color-active; @pagination-text-color-active;
@@ -181,15 +181,15 @@
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
-    margin-left: @spacer;
+    margin-left: @pagination-jump-margin;
     font-size: @pagination-font-default;
   }
 
   .@{prefix}-input {
-    margin-left: @spacer / 2;
-    margin-right: @spacer / 2;
+    margin-left: @pagination-input-margin;
+    margin-right: @pagination-input-margin;
     height: @pagination-height-default;
-    width: 48px;
+    width: @pagination-input-width;
   }
 
   // 迷你尺寸
@@ -211,7 +211,7 @@
           color: @pagination-text-color-btn;
           background-color: @pagination-bg-color-btn-hover;
         }
-  
+
         &:active {
           color: @pagination-text-color-btn;
           background-color: @pagination-bg-color-btn-active;
