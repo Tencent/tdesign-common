@@ -1,23 +1,21 @@
 // 颜色
-@select-background-color: @bg-color-container;
+@select-bg-color: @bg-color-container;
 @select-border-color: @border-level-2-color;
-@select-active-border-color: @brand-color;
+@select-border-color-active: @brand-color;
 @select-selected-color: @brand-color;
-@select-selected-tag-background-color: @bg-color;
-@select-checked-background-color: @brand-color;
-@select-option-background-color-hover: @bg-color-container-hover;
-@select-option-background-color-active: @bg-color-container-active;
+@select-option-bg-color-hover: @bg-color-container-hover;
+@select-option-bg-color-active: @bg-color-container-active;
 @select-option-checkbox-color: @bg-color-container-hover;
-
-@option-group-header-color: @text-level-3-color;
-@option-color: @text-color-primary;
-@select-disabled-background-color: @bg-color-component-disabled;
+@select-selected-bg-color: @brand-color-light;
+@option-group-header-color: @text-color-placeholder;
+@select-option-color: @text-color-primary;
+@select-bg-color-disabled: @bg-color-component-disabled;
 @select-placeholder-color: @text-color-placeholder;
-@select-disabled-placeholder-color: @text-color-disabled;
-@select-disabled-color: @text-level-4-color;
-@select-empty-color: @text-level-4-color;
+@select-placeholder-color-disabled: @text-color-disabled;
+@select-color-disabled: @text-color-disabled;
+@select-color-empty: @text-color-disabled;
 @select-icon-color: @text-color-placeholder;
-@select-disabled-icon-color: @text-color-disabled;
+@select-icon-color-disabled: @text-color-disabled;
 @select-optiongroup-border-color: @border-level-1-color;
 @select-input-color: @text-color-primary;
 
@@ -42,6 +40,9 @@
 @select-dropdown-shadow: @shadow-2;
 @select-input-shadow: 0 0 2px 2px @brand-color-focus;
 
+//radius
+@select-border-radius: @border-radius;
+
 //透明度
 @select-opacity-40: .4;
 @select-opacity-26: .26;
@@ -54,6 +55,7 @@
 @select-optiongroup-border-padding: 7px;
 @select-padding-prefix: 26px;
 @select-dropdown-padding: 8px;
+@select-dropdown-popup-padding: 0;
 // margin
 @select-icon-margin: 0 8px;
 @select-tag-margin: 4px 4px 4px 0;
