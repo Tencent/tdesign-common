@@ -12,16 +12,29 @@
 // 如：@button-line-height-s
 
 // 颜色
-@notification-font-size: @text-level-2-color;
-@notification-close-icon-color: @text-level-4-color;
-@notification-color-block:@bg-color-block;
+@notification-font-size: @text-color-secondary;
+@notification-close-icon-color: @text-color-disabled;
+@notification-color-block:@bg-color-container;
+@notification-title-color: @text-color-primary;
+@notification-icon-info-color: @brand-color;
+@notification-icon-success-color: @success-color;
+@notification-icon-warning-color: @warning-color;
+@notification-icon-error-color: @error-color;
+@notification-close-icon-color: @text-color-secondary;
+@notification-content-color: @text-color-secondary;
+@notification-detail-item-bg-color-hover: @bg-color-container-hover;
+@notification-detail-item-bg-color-active: @bg-color-component-active;
+@notification-detail-item-is-active-color: @brand-color-8;
 
 // 尺寸
-// @notification-height-s: 36px;
-// @notification-height-default: 48px;
 @notification-width-default: 400px;
+@notification-icon-width: @icon-l;
+@notification-title-line-height: @spacer-3;
+@notification-content-text-height: 22px;
+@notification-content-max-height: 66px;
+
 // 圆角
-// @notification-border-radius: @border-radius;
+@notification-detail-item-border-radius: @border-radius;
 
 // 阴影
 @notification-shadow: @shadow-2;
@@ -30,9 +43,19 @@
 @notification-font-s: @font-size-s;
 @notification-font-default: @font-size-base;
 @notification-font-l: @font-size*1.6;
+@notification-icon-font-size: @font-size*2.4;
+@notification-title-font-size: @font-size-l;
+@notification-icon-close-font-size: @font-size-l;
+@notification-content-font-size:@font-size-base;
+@notification-detail-font-size:@font-size-base;
 
 // padding
-// @notification-padding-horizontal-s: @spacer*2;
-// @notification-padding-horizontal-default: @spacer*3;
-// @notification-padding-horizontal-l: @spacer*4;
 @notification-padding-default: @spacer*3;
+@notification-content-padding-right: 5px;
+@notification-detail-item-padding: 5px 16px;
+
+//margin
+@notification-icon-margin-right: @spacer;
+@notification-content-margin-top: @spacer;
+@notification-detail-margin-top: 21px;
+@notification-detail-item-margin-left: @spacer;
