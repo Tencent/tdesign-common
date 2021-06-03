@@ -11,15 +11,15 @@
   box-sizing: border-box;
   vertical-align: middle;
   line-height: @select-height-default - 2px;
-  background: @select-background-color;
+  background: @select-bg-color;
   border: 1px solid @select-border-color;
-  border-radius: @border-radius;
+  border-radius: @select-border-radius;
   padding: @select-padding;
 
   &:hover,
   :active {
     cursor: pointer;
-    border-color: @select-active-border-color;
+    border-color: @select-border-color-active;
     transition: border-color @anim-duration-base @anim-time-fn-easing;
     & > .@{prefix}-select-right-icon {
       color: @select-selected-color;
@@ -49,7 +49,7 @@
     opacity: @select-opacity-40;
   }
   .@{prefix}-select-active-icon {
-    color: @select-active-border-color;
+    color: @select-border-color-active;
   }
   .@{prefix}-select-right-icon.@{prefix}-is-visible {
     transform: scaleY(-1);
@@ -97,10 +97,10 @@
 }
 
 .@{prefix}-select.@{prefix}-is-active {
-  border-color: @select-active-border-color;
+  border-color: @select-border-color-active;
   box-shadow: @select-input-shadow;
   .@{prefix}-select-right-icon {
-    color: @select-active-border-color;
+    color: @select-border-color-active;
     opacity: 1;
   }
 }
@@ -152,17 +152,17 @@
 
 .@{prefix}-select.@{prefix}-is-disabled {
   cursor: not-allowed;
-  background-color: @select-disabled-background-color;
-  color: @select-disabled-placeholder-color;
+  background-color: @select-bg-color-disabled;
+  color: @select-placeholder-color-disabled;
   border-color: @select-border-color;
 
   & > .@{prefix}-select-right-icon {
-    color: @select-disabled-icon-color;
+    color: @select-icon-color-disabled;
     opacity: @select-opacity-26;
   }
 
   & > .@{prefix}-select-left-icon {
-    color: @select-disabled-icon-color;
+    color: @select-icon-color-disabled;
     opacity: @select-opacity-26;
   }
 }
@@ -176,11 +176,11 @@
   max-height: @dropdown-max-height;
   overflow-y: auto;
   box-shadow: @select-dropdown-shadow;
-  border-radius: @border-radius;
+  border-radius: @select-border-radius;
 }
 
 .@{prefix}-select-dropdown.@{prefix}-popup {
-  padding: 0;
+  padding: @select-dropdown-popup-padding;
 }
 // empty
 .@{prefix}-select-empty.@{prefix}-size-s {
@@ -189,7 +189,7 @@
 
 .@{prefix}-select-empty {
   text-align: center;
-  color: @select-empty-color;
+  color: @select-color-empty;
   line-height: @select-height-default;
 }
 
@@ -247,29 +247,29 @@
   line-height: @select-option-line-height;
   cursor: pointer;
   padding: @select-option-padding-default;
-  color: @option-color;
+  color: @select-option-color;
 
   &:hover {
-    background-color: @select-option-background-color-hover;
+    background-color: @select-option-bg-color-hover;
     transition: background-color @anim-duration-base @anim-time-fn-easing;
   }
 
   :active {
-    background: @select-option-background-color-active;
+    background: @select-option-bg-color-active;
   }
   .@{prefix}-checkbox__label {
-    color: @option-color;
+    color: @select-option-color;
   }
 }
 
 .@{prefix}-select-option.@{prefix}-is-disabled {
   cursor: not-allowed;
-  color: @select-disabled-color;
-  background: @select-background-color;
+  color: @select-color-disabled;
+  background: @select-bg-color;
 
   &:hover,
   :active {
-    background: @select-background-color;
+    background: @select-bg-color;
   }
 }
 
@@ -285,7 +285,7 @@
 
 .@{prefix}-select-option.@{prefix}-is-selected {
   color: @select-selected-color;
-  background-color: @brand-color-light;
+  background-color: @select-selected-bg-color;
   transition: all @anim-duration-base linear;
 }
 
