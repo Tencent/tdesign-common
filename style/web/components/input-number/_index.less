@@ -35,6 +35,7 @@
     width: @input-number-button-width;
     height: @input-number-button-height;
     position: absolute;
+    z-index: 0;
     top: 0;
     border: 1px solid @input-number-button-border-color;
     box-sizing: border-box;
@@ -45,12 +46,17 @@
     align-items: center;
     z-index: 1;
     cursor: pointer;
+    transition: all @anim-time-fn-easing @anim-duration-base;
+    .click-animation-elem(@gray-color-3);
 
     &:hover {
       color: @input-number-button-color-hover;
+      background-color: @gray-color-1
     }
 
     .@{prefix}-icon {
+      position: relative;
+      z-index: 1;
       font-size: @input-number-font-size;
       transition: all input-number-button-anim-duration;
     }
