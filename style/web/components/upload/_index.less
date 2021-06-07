@@ -95,7 +95,6 @@
     width: 100%;
 
     &__item {
-      width: @img-size;
       margin: 0 8px 16px 0;
       float: left;
       cursor: pointer;
@@ -201,6 +200,7 @@
       transition: opacity .5s ease-in-out;
       will-change: transform;
       opacity: 0;
+      border-radius: 3px;
     }
 
     &__mask--disabled {
@@ -276,6 +276,10 @@
   &__dragger-center {
     justify-content: center;
     align-items: center;
+  }
+
+  &__dragger-error {
+    border-color: @error-color;
   }
 
   &__dragger-text {
