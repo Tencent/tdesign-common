@@ -99,7 +99,6 @@
       float: left;
       cursor: pointer;
       box-sizing: border-box;
-      border-radius: @border-radius;
 
       &::after {
         content: "";
@@ -128,9 +127,6 @@
       }
 
       &.@{prefix}-is--background {
-        border: 1px dashed @border-level-2-color;
-        background-color: @bg-color;
-
         &:hover {
           border-color: @primary-color;
         }
@@ -147,6 +143,12 @@
       .text-ellipsis();
     }
 
+    &__box {
+      background-color: @bg-color;
+      border: 1px dashed @border-level-2-color;
+      border-radius: @border-radius;
+    }
+
     &__content {
       position: relative;
       width: @img-size;
@@ -155,6 +157,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      box-sizing: border-box;
     }
 
     &-container {
@@ -200,7 +203,6 @@
       transition: opacity .5s ease-in-out;
       will-change: transform;
       opacity: 0;
-      border-radius: 3px;
     }
 
     &__mask--disabled {
