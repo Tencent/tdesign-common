@@ -16,7 +16,7 @@
     display: inline-block;
     width: @transfer-common-width;
     height: @transfer-common-height;
-    padding-top: 40px;
+    padding-top: @transfer-list-header-height;
     //border: 1px solid @transfer-border-color;
     border-bottom: 0;
     word-break: break-word;
@@ -35,11 +35,16 @@
       display: flex;
       justify-content: space-between;
       top: 0;
-      border-bottom: 1px solid @transfer-border-color;
-      height: 40px;
-      line-height: 40px;
-      width: 100%;
+      height: @transfer-list-header-height;
+      line-height: @transfer-list-header-height;
+      width: @transfer-list-header-width;
       padding: @transfer-list-header-padding;
+      margin: @transfer-list-header-margin;
+
+      & + :not(.@{prefix}-transfer-list-with-search) {
+        border-top: 1px solid @transfer-border-color;
+      }
+     
 
       .@{prefix}-checkbox {
         margin-right: 0;
@@ -78,8 +83,10 @@
     &-search-wrapper {
       position: absolute;
       top: 0;
-      width: 100%;
-      border-bottom: 1px solid @transfer-border-color;
+      width: @transfer-list-search-wrapper-width;
+      border: @transfer-list-search-wrapper-border;
+      border-radius: @transfer-list-search-wrapper-border-radius;
+      margin: 0 @transfer-list-margin-horizontal;
     }
 
     &__content {

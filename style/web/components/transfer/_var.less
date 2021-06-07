@@ -22,11 +22,20 @@
 // 包裹树组件时候transfer的高度
 @transfer-wrap-height: 320px;
 
-@transfer-list-header-padding: 0 12px 0 12px;
+@transfer-list-margin-horizontal: 8px;
 
-@transfer-list-item-padding: 5px 12px 5px 12px;
+@transfer-list-header-height: 48px;
+@transfer-list-header-padding: 0 12px;
+@transfer-list-header-margin: 0 @transfer-list-margin-horizontal;
+@transfer-list-header-width: @transfer-common-width - @transfer-list-margin-horizontal * 2;
 
-@transfer-list-item-margin: 4px 8px 0px 8px;
+@transfer-list-item-padding: 5px 12px;
+@transfer-list-item-margin: 4px @transfer-list-margin-horizontal 0px @transfer-list-margin-horizontal;
+
+@transfer-list-search-wrapper-border: 1px solid @transfer-border-color;
+@transfer-list-search-wrapper-border-radius: 3px;
+@transfer-list-search-wrapper-margin: 0 @transfer-list-margin-horizontal;
+@transfer-list-search-wrapper-width: @transfer-common-width - @transfer-list-margin-horizontal * 2;
 
 //other
 @transfer-box-shadow: @shadow-1;
