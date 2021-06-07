@@ -1,4 +1,9 @@
+@import "./_var.less";
+
 .button() {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
   font-size: @btn-font-default;
   outline: none;
   border: 0;
@@ -15,12 +20,12 @@
   touch-action: manipulation;
 }
 
-.button-size(@height, @font-size, @padding-horizontal) {
+.button-size(@height, @font-size, @padding-horizontal, @border-width: @btn-border-width) {
   height: @height ;
-  line-height: @height - 4px;
+  line-height: @height - @border-width * 2;
   font-size: @font-size;
-  padding-left: @padding-horizontal;
-  padding-right: @padding-horizontal;
+  padding-left: @padding-horizontal - @border-width;
+  padding-right: @padding-horizontal - @border-width;
 
   .@{prefix}-icon {
     font-size: @font-size;
