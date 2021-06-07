@@ -7,30 +7,30 @@
   .notification;
 
   &__icon {
-    width: 24px;
+    width: @notification-icon-width;
     text-align: center;
-    margin-right: 8px;
+    margin-right: @notification-icon-margin-right;
 
     .@{prefix}-icon {
-      font-size: 24px;
+      font-size: @notification-icon-font-size;
     }
   }
 
   // icon theme
   .@{prefix}-icon.t-is-info {
-    color: @primary-color;
+    color: @notification-icon-info-color;
   }
 
   .@{prefix}-icon.t-is-success {
-    color: @success-color;;
+    color: @notification-icon-success-color;
   }
 
   .@{prefix}-icon.t-is-warning {
-    color: @warning-color;
+    color: @notification-icon-warning-color;
   }
 
   .@{prefix}-icon.t-is-error {
-    color: @error-color;
+    color: @notification-icon-error-color;
   }
 
   &__main {
@@ -44,26 +44,26 @@
 
   &__title {
     font-family: PingFangSC-Medium;
-    font-size: 16px;
-    color: @text-level-1-color;
-    line-height: 24px;
+    font-size: @notification-title-font-size;
+    color: @notification-title-color;
+    line-height: @notification-title-line-height;
   }
 
   .@{prefix}-icon-close {
     cursor: pointer;
-    font-size: 16px;
-    color: @text-level-2-color;
+    font-size: @notification-icon-close-font-size;
+    color: @notification-close-icon-color;
   }
 
   &__content {
     font-family: PingFangSC-Regular;
-    font-size: 14px;
-    color: @text-level-2-color;
-    line-height: 22px;
-    margin-top: 8px;
-    max-height: 66px;
+    font-size: @notification-content-font-size;
+    color: @notification-content-color;
+    line-height: @notification-content-text-height;
+    margin-top: @notification-content-margin-top;
+    max-height: @notification-content-max-height;
     overflow: hidden;
-    padding-right: 5px;
+    padding-right: @notification-content-padding-right;
     text-overflow: ellipsis;
     word-break: break-all;
     // 需要排查兼容性
@@ -78,35 +78,38 @@
   }
 
   &__detail {
-    margin-top: 21px;
+    margin-top: @notification-detail-margin-top;
     text-align: right;
-    height: 22px;
+    height: @notification-content-text-height;
     font-family: PingFangSC-Regular;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: @notification-detail-font-size;
+    line-height: @notification-content-text-height;
   }
 
   &__detail--item {
-    padding: 5px 16px;
+    padding: @notification-detail-item-padding;
+    color: @notification-detail-item-color;
     cursor: pointer;
   }
 
   &__detail--item:hover {
-    background: @bg-color-hover;
-    border-radius: 2px;
+    color: @notification-detail-item-color-hover;
+    background: @notification-detail-item-bg-color-hover;
+    border-radius: @notification-detail-item-border-radius;
   }
 
   &__detail--item:active {
-    background: @border-radius;
-    border-radius: @border-radius;
+    color: @notification-detail-item-color-active;
+    background: @notification-detail-item-bg-color-active;
+    border-radius: @notification-detail-item-border-radius;
   }
 
   &__detail--item + &__detail--item {
-    margin-left: 8px;
+    margin-left: @notification-detail-item-margin-left;
   }
 
   &__detail--item.t-is-active {
-    color: @primary-color-8;
+    color: @notification-detail-item-is-active-color;
   }
 
   // animation

@@ -6,37 +6,38 @@
 
 // <name> 替换为组件名
 .@{prefix}-dialog {
-  width: @dialog-size-s-width;
+  width: @dialog-width;
   background-color: @dialog-bg-color;
   position: relative;
-  border-radius: @border-radius;
+  border-radius: @dialog-border-radius;
   max-height: 100%;
   overflow: auto;
 
   // icon theme
   .@{prefix}-icon.t-is-info {
-    color: @primary-color;
+    color: @dialog-info-icon-color;
   }
 
   .@{prefix}-icon.t-is-success {
-    color: @success-color;;
+    color: @dialog-success-icon-color;
   }
 
   .@{prefix}-icon.t-is-warning {
-    color: @warning-color;
+    color: @dialog-warning-icon-color;
   }
 
   .@{prefix}-icon.t-is-error {
-    color: @error-color;
+    color: @dialog-error-icon-color;
   }
 
   &__header {
     color: @dialog-header-text-color;
     font-size: @dialog-header-font-size;
+    font-weight: @dialog-header-font-weight;
     display: flex;
     align-items: center;
     // remove space between inline-block elements.
-    word-spacing: -6px;
+    word-spacing: @dialog-word-spacing;
 
     >h5 {
       padding: 0;
@@ -44,24 +45,24 @@
       font-weight: normal;
       display: inline-block;
       vertical-align: middle;
-      line-height: 22px;
+      line-height: @dialog-header-line-height;
     }
 
     .@{prefix}-icon {
       font-size: @dialog-icon-size;
-      margin-right: 8px;
+      margin-right: @dialog-header-icon-margin-right;
     }
   }
 
   &__body {
     color: @dialog-body-text-color;
     font-size: @dialog-body-text-font-size;
-    line-height: 22px;
+    line-height: @dialog-body-line-height;
     overflow: auto;
-    padding: 24px 0;
+    padding: @dialog-body-padding;
 
     &__icon {
-      padding: @spacer-3 0  @spacer-3 @spacer-4;
+      padding: @dialog-body-icon-padding;
     }
   }
 
@@ -69,10 +70,10 @@
     width: 100%;
     text-align: right;
     // remove space between inline-block elements.
-    word-spacing: -6px;
+    word-spacing: @dialog-word-spacing;
 
     .t-button + .t-button {
-      margin-left: @spacer;
+      margin-left: @dialog-footer-button-margin-left;
     }
     
   }
@@ -81,7 +82,7 @@
     padding: @dialog-default-spacer;
 
     .@{prefix}-dialog__body {
-      max-height: calc(100% - (@dialog-header-height + @dialog-spacer * 2));
+      max-height: calc(100% - (@dialog-header-height + @dialog-default-padding * 2));
     }
 
   }
@@ -96,16 +97,16 @@
 
   &__close {
     position: absolute;
-    top: 29px;
-    right: @dialog-spacer;
+    top: @dialog-close-position-top;
+    right: @dialog-close-position-right;
     font-size: @dialog-close-icon-size;
-    color: @dialog-body-text-color;
+    color: @dialog-close-color;
     display: flex;
     width: @dialog-close-icon-size;
     height: @dialog-close-icon-size;
     align-items: center;
     justify-content: center;
-    border-radius: @border-radius;    
+    border-radius: @dialog-close-border-radius;    
     background: @dialog-bg-color;
 
     &:hover {
@@ -131,6 +132,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: @z-index-dialog;
   }
 
   &.t-is-visable {
@@ -156,7 +158,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: @mask-active;
+    background: @dialog-mask-bg-color;
     pointer-events: auto;
 
     &--hidden {
@@ -171,10 +173,11 @@
 
     &.@{prefix}-dialog--fixed {
       position: fixed;
+      z-index: @z-index-dialog;
     }
 
     &--top {
-      top: 20%;
+      top: @dialog-top-position-top;
       left: 50%;
       transform-origin: -25% 25%;
       transform: translate(-50%, 0);

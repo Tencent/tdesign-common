@@ -4,10 +4,8 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
-@form-item-height: 32px;
-
 .@{prefix}-form {
-  font-size: 14px;
+  font-size: @form-font-size;
 
   &--label-right {
     justify-content: flex-end;
@@ -15,7 +13,7 @@
 
   &__item {
     display: flex;
-    margin: 0 0 @spacer-3;
+    margin: @form-item-margin;
     align-items: flex-start;
   }
 
@@ -25,9 +23,9 @@
     min-height: @form-item-height;
     align-items: center;
     flex-direction: row;
-    padding-right: 24px;
+    padding-right: @form-label-padding-right;
     white-space: nowrap;
-    line-height: 22px;
+    line-height: @form-label-line-height;
 
     &--left {
       justify-content: flex-start;
@@ -37,13 +35,12 @@
       justify-content: flex-end;
     }
 
-
     &--required {
       label::before {
         display: inline-block;
-        margin-right: 4px;
+        margin-right: @form-label-margin-right-required;
         color: @form-color-error;
-        line-height: 1;
+        line-height: @form-label-line-height;
         content: "*";
       }
     }
@@ -52,7 +49,7 @@
       label::after {
         content: ":";
         position: relative;
-        margin: 0 8px 0 2px;
+        margin: @form-label-margin-colon;
       }
     }
   }
@@ -69,7 +66,6 @@
       min-height: @form-item-height;
     }
   }
-
 
   &__controls.@{prefix}-is-success {
     //.@{prefix}-input__inner {
@@ -115,14 +111,14 @@
 
   &__help {
     margin-top: @from-help-text-margin-top;
-    font-size: @input-extra-fontsize;
+    font-size: @input-extra-font-size;
     color: @@fontColor;
     @fontColor: "input-extra-color-success";
   }
 
   &__status {
     position: absolute;
-    right: -32px;
+    right: @form-status-position-right;
   }
 }
 
@@ -131,7 +127,7 @@
   flex-wrap: wrap;
 
   .@{prefix}-form__item {
-    margin-right: 24px;
+    margin-right: @form-item-margin-right-inline;
     display: flex;
     flex-wrap: wrap;
   }

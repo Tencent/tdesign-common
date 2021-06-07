@@ -11,12 +11,36 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-
 // 颜色
+// 进度条背景色值(未完成部分进度)
 @progress-track-color: @bg-color-component;
+// 进度条已完成进度色值(默认状态)
 @progress-inner-color: @brand-color;
+// 进度条已完成进度色值(成功状态)
 @progress-success: @success-color;
 @progress-error: @error-color;
 @progress-warning: @warning-color;
-@progress-info-dark:@text-color-primary;
-@progress-info-light:@text-anti-primary-color;
+// 进度条已完成进度色值(active状态)
+@progress-inner-bg-color-active: @text-color-anti;
+// 进度条深色label字体颜色(在进度条外或未完成进度灰色色块里显示的色值)
+@progress-info-dark-color: @text-color-primary;
+// 进度条浅色label字体颜色(在进度条色块内显示的色值)
+@progress-info-light-color: @text-color-anti;
+@progress-circle-info-color: @text-color-primary;
+
+// 尺寸
+// line 进度条线宽
+@progress-line-stroke-width: 6px;
+// plump 进度条线宽
+@progress-stroke-plump-width: 18px;
+
+// 字体
+@progress-icon-font-size: 1.25em;
+@progress-icon-circle-font-size: 3.75em;
+@progress-plump-font-size: @font-size-s;
+@progress-circle-font-size: inherit;
+
+// 间距
+@progress-info-spacer: 10px;
+
+@progress-inner-border-radius: 50px;
