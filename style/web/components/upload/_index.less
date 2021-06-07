@@ -95,12 +95,10 @@
     width: 100%;
 
     &__item {
-      width: @img-size;
       margin: 0 8px 16px 0;
       float: left;
       cursor: pointer;
       box-sizing: border-box;
-      border-radius: @border-radius;
 
       &::after {
         content: "";
@@ -129,9 +127,6 @@
       }
 
       &.@{prefix}-is--background {
-        border: 1px dashed @border-level-2-color;
-        background-color: @bg-color;
-
         &:hover {
           border-color: @primary-color;
         }
@@ -148,6 +143,12 @@
       .text-ellipsis();
     }
 
+    &__box {
+      background-color: @bg-color;
+      border: 1px dashed @border-level-2-color;
+      border-radius: @border-radius;
+    }
+
     &__content {
       position: relative;
       width: @img-size;
@@ -156,6 +157,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      box-sizing: border-box;
     }
 
     &-container {
@@ -216,6 +218,28 @@
       cursor: pointer;
     }
   }
+
+  &-dialog {
+    .t-dialog {
+      max-width: 80%;
+
+      &--default {
+        padding: 32px;
+      }
+
+      &__body {
+        padding-bottom: 0;
+
+        &-img-box {
+          img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 
 // 拖拽
@@ -254,6 +278,14 @@
   &__dragger-center {
     justify-content: center;
     align-items: center;
+  }
+
+  &__dragger-error {
+    border-color: @error-color;
+
+    &:hover {
+      border-color: @error-color;
+    }
   }
 
   &__dragger-text {
