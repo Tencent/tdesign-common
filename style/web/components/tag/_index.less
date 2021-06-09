@@ -7,15 +7,12 @@
 .@{prefix}-tag {
   display: inline-block;
   padding: @tag-medium-padding;
-  height: 24px;
+  height: @tag-line-height-medium;
   font-size: @tag-medium-font-size;
-  line-height: 22px;
+  line-height: @tag-line-height-medium;
   color: @tag-text-color;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
   box-sizing: border-box;
-  border-radius: @border-radius-square;
+  border-radius: @tag-border-radius-square;
   white-space: nowrap;
 
   .@{prefix}-icon {
@@ -43,6 +40,11 @@
       color: @tag-default-hover-color;
       border-color: currentColor;
     }
+
+    &:active {
+      color: @tag-default-click-color;
+      background-color: @tag-default-click-background-color;
+    }
   }
 
   &--default {
@@ -55,8 +57,8 @@
       border-color: @tag-checked-border-color;
 
       &:hover {
-        color: @tag-default-hover-color;
         border-color: currentColor;
+        background-color: @brand-color-7;
       }
     }
 
@@ -256,7 +258,7 @@
     padding: @tag-small-padding;
     height: 20px;
     font-size: @tag-small-font-size;
-    line-height: 18px;
+    line-height: @tag-line-height-small;
     .@{prefix}-icon {
       font-size: @tag-small-font-size;
     }
@@ -266,24 +268,23 @@
     padding: @tag-large-padding;
     height: 32px;
     font-size: @tag-large-font-size;
-    line-height: 30px;
+    line-height: @tag-line-height-large;
     .@{prefix}-icon {
       font-size: @tag-large-font-size;
     }
   }
 
   &.@{prefix}-tag--round {
-    border-radius: @border-radius-round;
+    border-radius: @tag-border-radius-round;
   }
   &.@{prefix}-tag--mark {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    border-bottom-right-radius: @border-radius-round;
-    border-top-right-radius: @border-radius-round;
+    border-bottom-right-radius: @tag-border-radius-round;
+    border-top-right-radius: @tag-border-radius-round;
   }
 
   &.@{prefix}-tag--ellipsis {
     .text-ellipsis();
   }
 }
-

@@ -1,4 +1,5 @@
 import { TreeNode } from './tree-node';
+import { TreeOptionData } from '../common';
 
 // ------ 自动规范类型 start -------
 
@@ -72,7 +73,7 @@ export interface TreeNodeState {
   activable?: boolean;
 };
 
-export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeState {
+export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOptionData> {
   /**
    * 当前节点值或者ID
    */
@@ -105,6 +106,9 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
    * 当前节点是否处于加载中状态
    */
   loading: boolean;
+};
+
+export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeModelProps {
   /**
    * 追加子节点数据
    */

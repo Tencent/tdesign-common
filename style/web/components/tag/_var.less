@@ -30,11 +30,12 @@
 // checked [false - default; true - primary]
 @tag-default-background-color: @bg-color-fade;
 @tag-default-border-color: @border-level-2-color;
-@tag-default-hover-color: @brand-color-7;
+@tag-default-hover-color: @brand-color-8;
 @tag-default-click-color: @brand-color-9;
-@tag-checked-color: @primary-color-8;
-@tag-checked-background-color: #d6e2f9;
+@tag-checked-color: rgba(255, 255, 255);
+@tag-checked-background-color: @brand-color;
 @tag-checked-border-color: @brand-color-3;
+@tag-default-click-background-color: @gray-color-6;
 
 // disabled
 @tag-disabled-color: @grey-4;
@@ -70,8 +71,16 @@
 
 // text color
 @tag-text-color: rgba(255, 255, 255, .9);
-@tag-text-color-1: @text-level-1-color;
+@tag-text-color-1: @text-color-primary;
 
 // shape
-@border-radius-square: @border-radius;
-@border-radius-round: 12px;
+@tag-border-radius-square: @border-radius;
+@tag-border-radius-round: 12px;
+
+// height
+@tag-height: 24px;
+
+// 行高
+@tag-line-height-small: 18px; // add 小标签行高
+@tag-line-height-medium: 24px; // add 正常标签行高
+@tag-line-height-large: 30px; // add 大标签行高

@@ -35,16 +35,16 @@
   }
 
   .animation-enter {
-    animation-duration: 200ms;
+    animation-duration: @dialog-anim-duration;
     animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(.08, .82, .17, 1);
+    animation-timing-function: @dialog-anim-time-fn-enter;
     animation-play-state: paused;
   }
 
   .animation-exit {
-    animation-duration: 200ms;
+    animation-duration: @dialog-anim-duration;
     animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(.6, .04, .98, .34);
+    animation-timing-function: @dialog-anim-time-fn-exit;
     animation-play-state: paused;
   }
 
@@ -121,16 +121,16 @@
 .@{prefix}-dialog-fade-enter,
 .@{prefix}-dialog-fade-appear {
   opacity: 0;
-  animation-duration: 200ms;
+  animation-duration: @dialog-anim-duration;
   animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
+  animation-timing-function: @dialog-anim-time-fn-fade;
   animation-play-state: paused;
 }
 
 .@{prefix}-dialog-fade-exit {
-  animation-duration: 200ms;
+  animation-duration: @dialog-anim-duration;
   animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
+  animation-timing-function: @dialog-anim-time-fn-fade;
   animation-play-state: paused;
 }
 

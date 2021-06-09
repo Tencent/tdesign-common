@@ -1,17 +1,12 @@
 .notification() {
-  font-size: @notification-font-default;
+  font-size: @notification-font-size;
   outline: 0;
   border: 0;
   background-color: @notification-color-block;
   display: flex;
   box-shadow: @notification-shadow;
   box-sizing: border-box;
-  border-radius: 2px;
-  .notification-size(@notification-width-default, @notification-font-size, @notification-padding-default)
-}
-
-.notification-size(@height; @font-size; @padding-horizontal) {
-  width: @height ;
-  font-size: @font-size;
-  padding: @padding-horizontal;
+  border-radius: @border-radius;
+  width: @notification-width-default;
+  padding: @notification-padding-default;
 }

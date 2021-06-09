@@ -12,7 +12,7 @@
 .@{prefix}-layout {
   display: flex;
   flex-direction: column;
-  background: #f0f2f5;
+  background: @layout-bg-color;
   flex: auto;
 
   &-has-sider {
@@ -21,25 +21,23 @@
 }
 
 .@{prefix}-layout--header {
-  height: 64px;
-  line-height: 64px;
-  color: rgba(0,0,0,.3);
-  background-color: #fff;
+  height: @layout-hearder-height;
+  line-height: @layout-hearder-height;
+  background-color: @layout-header-bg-color;
 }
 
 .@{prefix}-layout--content {
-  color: rgba(0,0,0,.3);
   flex: auto;
 }
 
 .@{prefix}-layout--sider {
   position: relative;
-  transition: all .22s;
-  background: #fff;
-  width: 232px;
+  transition: all @layout-sider-anim-duration;
+  background: @layout-sider-bg-color;
+  width: @layout-sider-width;
 }
 
 .@{prefix}-layout--footer {
-  color: rgba(0,0,0,.3);
+  color: @layout-footer-color;
   padding: 24px;
 }

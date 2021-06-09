@@ -101,6 +101,10 @@
       .t-icon {
         color: @primary-color;
       }
+
+      &__number {
+        border-color: @primary-color;
+      }
     }
 
     .@{prefix}-steps-item-title {
@@ -183,7 +187,7 @@
     display: block;
     width: @spacer;
     height: @spacer;
-    border: 2px solid @border-level-2-color;
+    border: 2px solid rgba(0, 0, 0, .4);
     border-radius: 50%;
     margin-bottom: @spacer;
     position: relative;
@@ -219,6 +223,7 @@
     .@{prefix}-steps-item--finish:not(:last-child) {
       .@{prefix}-steps-item-title:after {
         background: @primary-color;
+        height: 2px;
       }
     }
   }
@@ -243,6 +248,7 @@
         &--finish {
           &:not(:last-child):before {
             background: @primary-color;
+            width: 2px;
           }
         }
       }
@@ -258,8 +264,10 @@
           top: @step-sperator-line-top;
         }
 
-        &--process {
+        &--process,
+        &--finish {
           &:not(:first-child):before {
+            width: 2px;
             background: @primary-color;
           }
         }
@@ -286,6 +294,7 @@
     .@{prefix}-steps-item--finish:not(:last-child) {
       &:after {
         background: @primary-color;
+        height: 2px;
       }
     }
   }
@@ -307,6 +316,7 @@
         &--finish {
           &:not(:last-child):before {
             background: @primary-color;
+            width: 2px;
           }
         }
       }
@@ -320,7 +330,7 @@
           width: @step-stroke-width;
           background: @border-level-2-color;
           position: absolute;
-          left: @dot-steps-connector-position-left-vertical;
+          left: @dot-steps-connector-position-left-vertical-reverse;
           top: @dot-steps-connector-position-top-vertical;
         }
 
@@ -328,8 +338,10 @@
           display: none;
         }
 
-        &--process, {
+        &--process,
+        &--finish {
           &:not(:first-child):before {
+            width: 2px;
             background: @primary-color;
           }
         }

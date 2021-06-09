@@ -1,23 +1,23 @@
 .input-inner-base() {
   border-width: 1px;
   border-style: solid;
-  border-radius: @border-radius;
+  border-radius: @input-border-radius;
   border-color: @input-border-color-default;
   padding: 0 @input-padding-horizontal-default;
   background-color: @input-bg-color-default;
   outline: none;
   color: @input-text-color-default;
-  font-size: @input-fontsize;
+  font-size: @input-font-size;
   width: 100%;
   box-sizing: border-box;
-  transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  transition: @input-inner-transition;
 
   &::placeholder {
     color: @input-placeholder-color;
   }
 
   &:hover {
-    border-color: @input-border-color-default-focus;
+    border-color: @input-border-color-default-hover;
   }
 
   &:focus {
@@ -27,7 +27,7 @@
 
 .input-disabled {
   &.@{prefix}-input.@{prefix}-is-disabled {
-    &>.@{prefix}-input__inner {
+    & > .@{prefix}-input__inner {
       color: @input-text-color-disabled;
       background-color: @input-bg-color-disabled;
       cursor: not-allowed;
@@ -41,11 +41,11 @@
 
 .input-status(@status) {
   &.@{prefix}-is-@{status} {
-    &>.@{prefix}-input__inner {
+    & > .@{prefix}-input__inner {
       border-color: @@borderColor;
       @borderColor: "input-border-color-@{status}";
     }
-    &>.@{prefix}-input__extra {
+    & > .@{prefix}-input__extra {
       color: @@fontColor;
       @fontColor: "input-extra-color-@{status}";
     }
@@ -54,15 +54,15 @@
 
 .input-fix-position(@position) {
   &.@{prefix}-input--@{position} {
-    &>.@{prefix}-input__inner {
+    & > .@{prefix}-input__inner {
       & when (@position = prefix) {
-        padding-left: @spacer*3;
+        padding-left: @input-fix-padding;
       }
       & when (@position = suffix) {
-        padding-right: @spacer*3;
+        padding-right: @input-fix-padding;
       }
     }
-    &>.@{prefix}-input__@{position} {
+    & > .@{prefix}-input__@{position} {
       position: absolute;
       top: 0;
       height: 100%;
@@ -71,10 +71,10 @@
       align-items: center;
       font-size: @font-size-l;
       & when (@position = prefix) {
-        left: @spacer-3/4;
+        left: @input-fix-position;
       }
       & when (@position = suffix) {
-        right: @spacer-3/4;
+        right: @input-fix-position;
       }
     }
   }
@@ -83,9 +83,9 @@
 .input-size(@size) {
   & when(@size = l) {
     &.@{prefix}-size-l {
-      &>.@{prefix}-input__inner {
-        height: @input-height-high;
-        line-height: @input-height-high;
+      & > .@{prefix}-input__inner {
+        height: @input-height-l;
+        line-height: @input-height-l;
       }
     }
   }
@@ -105,16 +105,16 @@
     display: table-cell;
     position: relative;
     border: 1px solid @input-border-color-default;
-    padding: 0 @spacer*2;
+    padding: @input-addon-item-padding;
     width: 1px;
     white-space: nowrap;
     & when (@position = append) {
       border-left: 0;
-      border-radius: 0 @border-radius @border-radius 0;
+      border-radius: 0 @input-border-radius @input-border-radius 0;
     }
     & when (@position = prepend) {
       border-right: 0;
-      border-radius: @border-radius 0 0 @border-radius;
+      border-radius: @input-border-radius 0 0 @input-border-radius;
     }
   }
 }

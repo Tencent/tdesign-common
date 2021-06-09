@@ -8,6 +8,7 @@ __test__/
 dist/
 style/web/.stylelintcache
 static
+lib
 
 # test
 coverage
