@@ -15,6 +15,7 @@
 @datepicker-font-size: @font-size-base;
 @datepicker-line-height: 22px;
 @datepicker-font-size-s: @font-size-s;
+@datepicker-font-size-l: @font-size-l;
 @datepicker-font-weight-medium: 500;
 @datepicker-z-index-dropdown: 888;
 // calendar width calculation
@@ -23,7 +24,7 @@
 @day-margin-tb: 3px;
 @day-margin-lr: 8px;
 @days-width: (@day-width * 7 + @day-margin-lr * 14 + @day-padding * 2 + 2);
-@day-calendar-width: @days-width;
+@day-panel-width: 320px;
 @day-calendar-margin: 0;
 @day-calendar-title-padding: 8px;
 
@@ -38,7 +39,7 @@
 
 @day-weekdays-color: rgba(black, .54);
 
-@day-color: rgba(#000, .6);
+@day-color: @text-color-secondary;
 @day-hover-color: rgba(0, 0, 0, .9);
 @day-hover-bg: #f5f5f5;
 
@@ -66,3 +67,17 @@
 
 @datepicker-dropdown-background: #ffffff;
 @day-border-radius: 2px;
+
+
+/****/
+// border
+@border-color: #d9d9d9;
+@border-main: 1px solid @border-color;
+@border-color-2: lighten(@border-color, 5.9124%);
+@border-main-2: 1px solid @border-color-2;
+
+@input-border-radius-default: 4px;
+@input-border-radius-small: 2px;
+@disabled-color: #c0c0c0;
+@input-inner-height-default: 22px;
+@primary-color-ligher-7: lighten(@primary-color, (96 - 43) * 1%);
