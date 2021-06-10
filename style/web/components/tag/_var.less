@@ -1,15 +1,4 @@
-// 组件变量
-// 名称可按如下规则定义：
 // <component>-[type]-[attrtype]-<attr>-[status]
-
-// component:组件名，如button，
-// type: 组件类型，如 button 的次要按钮（line）
-// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（boder）等
-// attr: 属性名称，如color、height、radius等
-// status: 表示组件状态或尺寸，如 hover、disabled、s、l 等
-
-// 如：@button-line-bg-color-hover
-// 如：@button-line-height-s
 
 // 暂时这样写，后面等全局的色值确定后再更改
 // color
@@ -29,18 +18,16 @@
 // 因为通过讨论 Tag 组件的选中态只针对于一个特定主题
 // checked [false - default; true - primary]
 @tag-default-background-color: @bg-color-fade;
-@tag-default-border-color: @border-level-2-color;
+@tag-default-border-color: transparent;
 @tag-default-hover-color: @brand-color-8;
 @tag-default-click-color: @brand-color-9;
 @tag-checked-color: rgba(255, 255, 255);
 @tag-checked-background-color: @brand-color;
-@tag-checked-border-color: @brand-color-3;
 @tag-default-click-background-color: @gray-color-6;
 
 // disabled
 @tag-disabled-color: @grey-4;
 @tag-disabled-background-color: @bg-color-disabled;
-@tag-disabled-border-color: @border-level-2-color;
 
 // dark color
 @tag-primary-color: @primary-color;
@@ -77,10 +64,15 @@
 @tag-border-radius-square: @border-radius;
 @tag-border-radius-round: 12px;
 
-// height
-@tag-height: 24px;
+// width
+@tag-default-border-width: 1px;
 
-// 行高
-@tag-line-height-small: 18px; // add 小标签行高
-@tag-line-height-medium: 24px; // add 正常标签行高
-@tag-line-height-large: 30px; // add 大标签行高
+// height
+@tag-height-small: 20px;
+@tag-height-medium: 24px;
+@tag-height-large: 32px;
+
+// line-height
+@tag-line-height-small: @tag-height-small - 2 * @tag-default-border-width;
+@tag-line-height-medium: @tag-height-medium - 2 * @tag-default-border-width;
+@tag-line-height-large: @tag-height-large - 2 * @tag-default-border-width;
