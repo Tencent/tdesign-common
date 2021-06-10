@@ -200,7 +200,6 @@ a.@{prefix}-menu__item {
 
   &.@{prefix}-menu--dark {
     background: @menu-theme-dark;
-
     .@{prefix}-menu__logo:not(:empty) {
       border-bottom-color: @gray-color-10;
     }
@@ -213,13 +212,32 @@ a.@{prefix}-menu__item {
       &:hover:not(.@{prefix}-is-active) {
         background-color: @gray-color-10;
       }
+
+      &.@{prefix}-is-active {
+        background-color: @menu-default-active-color;
+      }
+
+      .@{prefix}-icon {
+        color: @menu-item-color--dark;
+      }
     }
+
 
     .@{prefix}-submenu {
       position: relative;
       &.@{prefix}-is-active {
         > .@{prefix}-menu__item {
           color: @menu-theme-light;
+        }
+      }
+    }
+
+    .@{prefix}-menu__popup {
+      background: @menu-theme-dark;
+
+      .@{prefix}-menu__item {
+        &.@{prefix}-is-active {
+          background-color: @menu-default-active-color;
         }
       }
     }
@@ -261,6 +279,10 @@ a.@{prefix}-menu__item {
       .@{prefix}-menu__item {
         span {
           display: inline;
+        }
+
+        &.@{prefix}-menu__item--plain::after {
+          content: "";
         }
       }
     }
