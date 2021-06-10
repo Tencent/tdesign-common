@@ -3,10 +3,11 @@
 @select-border-color: @border-level-2-color;
 @select-border-color-active: @brand-color;
 @select-selected-color: @brand-color;
+@select-selected-bg-color: @brand-color-light;
+@select-selected-bg-color-hover: inherit;
 @select-option-bg-color-hover: @bg-color-container-hover;
 @select-option-bg-color-active: @bg-color-container-active;
 @select-option-checkbox-color: @bg-color-container-hover;
-@select-selected-bg-color: @brand-color-light;
 @option-group-header-color: @text-color-placeholder;
 @select-option-color: @text-color-primary;
 @select-bg-color-disabled: @bg-color-component-disabled;
@@ -18,7 +19,9 @@
 @select-icon-color-disabled: @text-color-disabled;
 @select-optiongroup-border-color: @border-level-1-color;
 @select-input-color: @text-color-primary;
-
+@select-option-checkbox-label-color-hover: inherit;
+@select-option-checkbox-input-color-hover: inherit;
+@select-right-icon-hover: @brand-color;
 // 尺寸
 @select-height-s: 24px;
 @select-height-default: 32px;
@@ -26,9 +29,6 @@
 @select-option-height-s: 32px;
 @select-option-height-default: 40px;
 @select-option-height-l: 48px;
-@select-icon-s: 12px;
-@select-icon-default: 14px;
-@select-icon-l: 16px;
 @select-option-line-height: 22px;
 @dropdown-max-height: 300px;
 @select-input-height: 30px;
@@ -44,8 +44,8 @@
 @select-border-radius: @border-radius;
 
 //透明度
-@select-opacity-40: .4;
-@select-opacity-26: .26;
+@select-right-icon-opacity: .4;
+@select-right-icon-opacity-disabled:.26;
 
 // padding
 @select-option-padding-s: 5px 8px;

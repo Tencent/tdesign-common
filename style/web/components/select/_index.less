@@ -22,7 +22,7 @@
     border-color: @select-border-color-active;
     transition: border-color @anim-duration-base @anim-time-fn-easing;
     & > .@{prefix}-select-right-icon {
-      color: @select-selected-color;
+      color: @select-right-icon-hover;
       opacity: 1;
     }
   }
@@ -46,7 +46,7 @@
     right: 0;
     top: 0;
     color: @select-icon-color;
-    opacity: @select-opacity-40;
+    opacity: @select-right-icon-opacity;
   }
   .@{prefix}-select-active-icon {
     color: @select-border-color-active;
@@ -158,12 +158,12 @@
 
   & > .@{prefix}-select-right-icon {
     color: @select-icon-color-disabled;
-    opacity: @select-opacity-26;
+    opacity: @select-right-icon-opacity-disabled;
   }
 
   & > .@{prefix}-select-left-icon {
     color: @select-icon-color-disabled;
-    opacity: @select-opacity-26;
+    opacity: @select-right-icon-opacity-disabled;
   }
 }
 .@{prefix}-select-popup-reference {
@@ -252,6 +252,12 @@
   &:hover {
     background-color: @select-option-bg-color-hover;
     transition: background-color @anim-duration-base @anim-time-fn-easing;
+    .@{prefix}-checkbox__label {
+      color: @select-option-checkbox-label-color-hover;
+    }
+    .@{prefix}-checkbox__input {
+      border-color: @select-option-checkbox-input-color-hover;
+    }
   }
 
   :active {
@@ -287,6 +293,9 @@
   color: @select-selected-color;
   background-color: @select-selected-bg-color;
   transition: all @anim-duration-base linear;
+  &:hover{
+    background-color: @select-selected-bg-color-hover;
+  }
 }
 
 .@{prefix}-select-option +.@{prefix}-select-option {
