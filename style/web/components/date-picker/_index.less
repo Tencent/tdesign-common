@@ -244,25 +244,19 @@
   color: #000;
   
   &__wrapper {
-    display: inline-flex;
-    height: 24px;
+    height: 40px;
+    margin-top: 4px;
     width: 100%;
-    // border-radius: 50%;
-    border: 1px solid transparent;
-
-    box-sizing: content-box;
-    // border-left: 6px solid #fff;
-    // border-right: 6px solid #fff;
-    align-items:center;
     cursor: pointer;
 
     > span {
-      width: 24px;
-      height: 24px;
       display: block;
-      margin: 0 auto;
-      line-height: 24px;
+      width: 40px;
+      line-height: 40px;
       border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
 
       &:hover {
         // background-color: @datepicker-cell-hover-color;
@@ -276,7 +270,7 @@
   }
 
   &--now {
-    .t-date-cell__wrapper {
+    .t-date-cell__wrapper > span {
       box-shadow: inset 0px 0px 0px 1px @primary-color;
       color: @primary-color;
     }
@@ -290,33 +284,38 @@
   }
 
   &--active {
-    .t-date-cell__wrapper {
+    .t-date-cell__wrapper > span {
       color: #fff;
       background-color: @primary-color;
     }
 
     &-start {
       .t-date-cell__wrapper {
-        border-left-color: #fff;
+        // margin-left: 10px;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
       }
     }
 
     &-end {
       .t-date-cell__wrapper {
-        border-right-color: #fff;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
       }
     }
   }
 
   &--last-day-of-month {
     .t-date-cell__wrapper {
-      border-right-color: #fff; 
+      border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
     }
   }
 
   &--first-day-of-month {
     .t-date-cell__wrapper {
-      border-left-color: #fff; 
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
     }
   }
 
@@ -338,22 +337,6 @@
   }
 }
 
-.t-date-day,
-.t-date-date {
-  tbody {
-    tr {
-      .t-date-cell__wrapper{
-        margin-top: 8px;
-      }
-      &:first-child{
-        .t-date-cell__wrapper{
-          margin-top: 6px;
-        }
-      }
-    }
-  }
-}
-
 .t-date-year,
 .t-date-month {
   tbody {
@@ -361,8 +344,6 @@
       .t-date-cell__wrapper {
         margin-top: 28px;
         width: 38px;
-        // border-left-width: 22px;
-        // border-right-width: 22px;
       }  
       &:first-child{
         .t-date-cell__wrapper {
@@ -394,7 +375,6 @@
     width: 100%;
     border-collapse: collapse;
     border: none;
-    margin: 0 20px;
     user-select: none;
   }
 
@@ -403,7 +383,7 @@
   }
 
   th {
-    padding: 16px 0;
+    padding: 16px 0 8px 0;
     margin-bottom: 5px;
     font-weight: 500;
   }
@@ -412,16 +392,20 @@
     padding: 0;
     text-align: center;
     border: none;
+    position: relative;
 
+    // 每列开头和结尾均为圆形边框
     &:first-child {
-      .t-date-item__wrapper {
-        border-left: none;
+      .t-date-cell__wrapper {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
       }
     }
 
     &:last-child {
-      .t-date-item__wrapper {
-        border-right: none;
+      .t-date-cell__wrapper {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
       }
     }
   }
@@ -433,23 +417,7 @@
   }
 
   .t-date-header {
-
     display: flex;
-  
-    // &__text {
-    //   flex: 1;
-    //   justify-content: center;
-    //   display: flex;
-    //   align-items: center;
-      
-    //   .t-date-header__btn {
-    //     color: #000;
-  
-    //     &:hover {
-    //       color: #4088ff;
-    //     }
-    //   }
-    // }
   
     &__btn {
       // padding: 0;
@@ -472,13 +440,9 @@
 }
 
 .t-date-range {
-  width: 640px;
+  // width: 640px;
   overflow: hidden;
   display: flex;
-}
-
-.t-date-time-range {
-  width: 640px;
 }
 
 .@{prefix}-date-picker--apply {
