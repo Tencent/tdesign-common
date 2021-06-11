@@ -57,7 +57,7 @@
 
 使用场景 - 组件默认第一列为“周一”，可以通过firstDayOfWeek属性设置成其他星期(只对mode为"month"有效)。
 
-{{ firstDayOfWeek }}
+{{ first-day-of-week }}
 
 ### 2.4 自定义日历范围
 定义 - 通过组件属性指定年月份选择框的值范围。
@@ -71,7 +71,7 @@
 
 使用场景 - 某些业务场景下可能需要隐藏、disabled掉组件右上角的空间，甚至做更多的自定义配置，可以通过controllerConfig属性来实现
 
-{{ controllerConfig }}
+{{ controller-config }}
 
 ## 3. 事件示例
 
@@ -90,7 +90,7 @@
 💡 简单的说就是把@aa-bbb换成:onAaBbb
 ```
 
-{{ eventsPropsApi }}
+{{ events-props-api }}
 
 ## 4. 插槽示例
 
@@ -108,7 +108,7 @@
 ```
 使用场景 - 默认情况下日历单元格中会显示当前日期，如果还需要额外显示其他信息，可以通过cellAppend具名插槽来实现。
 
-{{ cellAppend }}
+{{ cell-append }}
 
 ### 4.3 单元格插槽-自定义内容
 定义 - 完全重写单元格展示的内容。
@@ -120,11 +120,19 @@
 ### 4.4 卡片风格下的单元格插槽
 使用场景 - 卡片风格下单元格的空间非常有限，可以slot-scope的data.theme来判断当前是那种风格，然后做出不同渲染 :)
 
-{{ cardCell }}
+{{ card-cell }}
 
 ### 4.5 属性插槽
 定义 - 通过Props API来使用插槽。
 
 使用场景 - 某些场景下可能希望通过Props API来渲染插槽内容，head、cell、cellAppend都有其对应的Props API，以下简单演示了head、cell的Props API
 
-{{ slotPropsApi }}
+{{ slot-props-api }}
+
+
+### 4.6 自定义周显示
+定义 - 通过week属性或者插槽自定义周的展示。
+
+使用场景 - 默认情况下日历的周我们用“一”到“日”显示，但有些场景下可能希望自定义展示。
+
+{{ week }}

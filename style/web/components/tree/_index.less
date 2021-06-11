@@ -37,7 +37,7 @@
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    padding-left: calc(@tree-node-padding-basic * var(--level));
+    padding-left: @tree-node-item-padding-left;
     height: @tree-node-item-height;
     margin-bottom: @tree-node-item-margin-bottom;
     cursor: default;
@@ -95,7 +95,7 @@
     --space: @tree-node-padding-basic;
     --iconSize: @icon-default;
     position: absolute;
-    left: calc(@tree-node-padding-basic * var(--level) - 12px);
+    left: @tree-line-position-left;
     bottom: @tree-line-position-bottom;
     width: @tree-line-width;
     height: @tree-node-item-height;
