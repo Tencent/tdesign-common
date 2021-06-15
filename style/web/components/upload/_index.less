@@ -106,7 +106,7 @@
       }
 
       &:hover .@{prefix}-upload-card__mask {
-        .hover-transition(hover);
+        .hover-transition(opacity);
         opacity: 1;
       }
 
@@ -129,7 +129,7 @@
 
       &.@{prefix}-is--background {
         border: 1px dashed @border-level-2-color;
-        background-color: @bg-color;
+        background-color: @bg-color-page;
         .hover-transition(border-color);
 
         &:hover {
