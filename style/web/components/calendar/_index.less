@@ -35,7 +35,7 @@
       }
 
       &-body-cell {
-        border-top: 1px solid @calendar-body-cell-border-color;
+        border-top: @calendar-border-size solid @calendar-body-cell-border-color;
         padding: @calendar-body-cell-padding;
         height: @calendar-body-cell-height;
         line-height: @calendar-body-line-height;
@@ -53,7 +53,7 @@
 
     .@{prefix}-is-checked {
       background-color: @calendar-body-cell-check-bg-color;
-      border-top: 1px solid @primary-color-8;
+      border-top: @calendar-border-size solid @calendar-body-cell-border-check-color;
     }
 
 
@@ -190,11 +190,11 @@
       }
 
       &-year {
-        width: 94px;
+        width: @calendar-section-year-width;
       }
 
       &-month {
-        width: 70px;
+        width: @calendar-section-month-width;
       }
     }
   }
