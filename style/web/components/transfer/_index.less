@@ -4,7 +4,7 @@
 
 .@{prefix}-transfer {
   font-size: @transfer-font-size;
-  line-height: 22px;
+  line-height: @transfer-line-height;
   position: relative;
   display: inline-block;
   background: @transfer-bg-color;
@@ -44,7 +44,6 @@
       & + :not(.@{prefix}-transfer-list-with-search) {
         border-top: 1px solid @transfer-border-color;
       }
-     
 
       .@{prefix}-checkbox {
         margin-right: 0;
@@ -58,11 +57,11 @@
         display: flex;
 
         > span {
-          margin-left: 8px;
+          margin-left: @transfer-list-header-text-margin-left;
         }
       }
 
-      >span {
+      > span {
         color: @text-color-placeholder;
       }
     }
@@ -77,7 +76,7 @@
     }
 
     &-with-search {
-      padding-top: 32px;
+      padding-top: @transfer-list-with-search-padding-top;
     }
 
     &-search-wrapper {
@@ -104,7 +103,7 @@
       display: flex;
       cursor: pointer;
       margin: @transfer-list-item-margin;
-      border-radius: 3px;
+      border-radius: @transfer-border-radius;
 
       .@{prefix}-checkbox {
         margin-right: 0;
@@ -114,8 +113,8 @@
         }
       }
 
-      >span {
-        margin-left: 8px;
+      > span {
+        margin-left: @transfer-list-item-text-margin-left;
       }
     }
 
@@ -128,14 +127,14 @@
       height: 100%;
       width: 100%;
       overflow: auto;
-      padding: 12px;
+      padding: @transfer-list-wrapper-padding;
     }
 
     &__pagination {
-      height: 40px;
+      height: @transfer-list-pagination-height;
       vertical-align: middle;
-      padding: 4px;
-      line-height: 16px;
+      padding: @transfer-list-pagination-padding;
+      line-height: @transfer-list-pagination-line-height;
     }
 
     &__footer {
@@ -149,25 +148,23 @@
 
   &-operations {
     display: inline-block;
-    margin: auto 8px;
+    margin: @transfer-operations-margin;
     vertical-align: middle;
     overflow: hidden;
 
     button {
       display: block;
-      padding-left: 3px;
-      padding-right: 3px;
-      padding-top: 0;
-      height: 24px;
-      line-height: 14px;
+      padding: @transfer-operations-button-padding;
+      height: @transfer-operations-button-height;
+      line-height: @transfer-operations-button-line-height;
     }
 
     button:first-child {
-      margin-bottom: 14px;
+      margin-bottom: @transfer-operations-button-first-margin-bottom;
     }
 
     .t-icon {
-      font-size: 16px;
+      font-size: @transfer-operations-icon-size;
     }
 
     .t-icon + .t-button__text {
@@ -175,7 +172,7 @@
     }
 
     .t-button--icon-only {
-      width: 24px;
+      width: @transfer-operations-button-icon-width;
     }
   }
 
