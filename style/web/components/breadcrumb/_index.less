@@ -170,7 +170,12 @@
 
       &:hover {
         color: @breadcrumb-text-color-hover;
+        transition: color @anim-duration-base linear;
         cursor: pointer;
+      }
+      
+      &:active {
+        .color-change;
       }
     }
   }
