@@ -106,6 +106,7 @@
       }
 
       &:hover .@{prefix}-upload-card__mask {
+        .hover-transition(opacity);
         opacity: 1;
       }
 
@@ -127,6 +128,10 @@
       }
 
       &.@{prefix}-is--background {
+        border: 1px dashed @border-level-2-color;
+        background-color: @bg-color-page;
+        .hover-transition(border-color);
+
         &:hover {
           border-color: @primary-color;
         }
@@ -259,6 +264,7 @@
     cursor: pointer;
     padding: 12px;
     position: relative;
+    .hover-transition(border-color);
 
     &.@{prefix}-is--active {
       background-color: @bg-color-hover;
@@ -334,6 +340,7 @@
 .@{prefix}-icon-clear-circle-filled {
   color: @upload-icon-color;
   margin-top: 2px;
+  .hover-transition(color);
 
   &:hover {
     color: @upload-icon-color-hover;
@@ -484,6 +491,7 @@
   &-button {
     color: rgba(0, 0, 0, .4);
     cursor: pointer;
+    .hover-transition(color);
   }
 
   &-button:hover {
