@@ -149,6 +149,7 @@
     // input readonly
     &--readonly {
       cursor: default;
+
       &:focus {
         .input-active();
       }
@@ -163,13 +164,10 @@
       .t-picker__input-icon--suffix {
         visibility: hidden;
       }
+
       .t-picker__input-icon--clear {
         visibility: visible;
       }
-    }
-
-    .t-input__input {
-      border: none;
     }
 
     &-separator {
@@ -228,6 +226,7 @@
         + .t-button {
           margin-left: 0;
         }
+
         &:hover {
           color: #4088ff;
         }
@@ -321,7 +320,7 @@
 
   &--additional {
     .t-date-cell__wrapper {
-      color: #BFBFBF;
+      color: #bfbfbf;
       background: #fff;
       border-color: #fff;
     }
@@ -345,14 +344,15 @@
         margin-top: 28px;
         width: 38px;
       }  
-      &:first-child{
+
+      &:first-child {
         .t-date-cell__wrapper {
           margin-top: 24px;
         } 
       }
 
       &:last-child {
-        .t-date-cell{
+        .t-date-cell {
           text-align: left;
         } 
       }
@@ -362,19 +362,18 @@
 
 .t-time-range {
   display: flex;
+
   .t-time:first-child {
     border-right: @border-main-2;
   }
 }
 
 .t-date {
-
   width: 320px;
 
   table {
     width: 100%;
     border-collapse: collapse;
-    border: none;
     user-select: none;
   }
 
@@ -391,7 +390,6 @@
   td {
     padding: 0;
     text-align: center;
-    border: none;
     position: relative;
 
     // 每列开头和结尾均为圆形边框
@@ -425,7 +423,7 @@
   
       &--prev-month,
       &--next-year {
-        margin-left: 4px!important;
+        margin-left: 4px;
       }
   
       &--next-year {
