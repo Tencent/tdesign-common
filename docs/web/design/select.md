@@ -41,7 +41,7 @@
 ### 组件搭配使用
 
 #### 当选项较多时，可与搜索框结合使用，便于用户搜索对象
-<img width="" src="/uploads/44FCA377E244458DA4430D9BCEE2735B/image.png" alt="image.png" />
+<!-- <img width="" src="/uploads/44FCA377E244458DA4430D9BCEE2735B/image.png" alt="image.png" /> -->
 
 
 

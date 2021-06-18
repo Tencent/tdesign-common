@@ -22,7 +22,7 @@
 #### 分页控件在空状态下建议放出来，给用户一个预期。
 
 建议：
-<img width="" src="/uploads/102A5DF0F21F42D6BBDAE3D5764CA653/image.png" alt="image.png" />
+<!-- <img width="" src="/uploads/102A5DF0F21F42D6BBDAE3D5764CA653/image.png" alt="image.png" /> -->
 
 慎用：
 ![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1822808.jpg)

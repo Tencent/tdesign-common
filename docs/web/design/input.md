@@ -9,13 +9,13 @@
 在某些更加特殊的场景下，比如表格或者尺寸有固定要求的浮层，由于对布局的控制更加严格，为了更好的输入和展示体验，提示文字可以以气泡的形式出现，具体更加详细的规范内容请参考气泡提示
 
 文本提示：
-<img src="/uploads/1097EAEC149E4D3A81B3B13C692646DC/image.png" alt="image.png" />
+<!-- <img src="/uploads/1097EAEC149E4D3A81B3B13C692646DC/image.png" alt="image.png" /> -->
 
 
 错误反馈提示：
-<img src="/uploads/4E4446C4BB9D4FBC8F6E077DA08E3AA5/image.png" alt="image.png" />
+<!-- <img src="/uploads/4E4446C4BB9D4FBC8F6E077DA08E3AA5/image.png" alt="image.png" /> -->
 
 
 密码输入提示，针对密码输入有多条规则要求的输入框而定制的特殊样式：
 
-<img src="/uploads/0670EDA9C953424BB6B9B2AD7E65AD36/image.png" alt="image.png" />
+<!-- <img src="/uploads/0670EDA9C953424BB6B9B2AD7E65AD36/image.png" alt="image.png" /> -->

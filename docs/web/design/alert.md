@@ -24,7 +24,7 @@
 ### 常见用法
 
 #### 当提示内容较多时，可使用折叠的方式做部分内容的隐藏，节省页面高度空间。
-<img width="" src="/uploads/828D2D3407824C8097B71E86CB460525/image.png" alt="image.png" />
+<!-- <img width="" src="/uploads/828D2D3407824C8097B71E86CB460525/image.png" alt="image.png" /> -->
 
 
 ### 建议/慎用案例

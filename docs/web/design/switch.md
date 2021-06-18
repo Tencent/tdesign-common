@@ -8,7 +8,7 @@
 
 #### 与对话框搭配使用，当做危险操作时，建议呼起对话框做二次确认操作。
 
-<img src="/uploads/2C036502D3AE42BDAB89FC877DBB6672/image.png" alt="image.png" />
+<!-- <img src="/uploads/2C036502D3AE42BDAB89FC877DBB6672/image.png" alt="image.png" /> -->
 
 
 

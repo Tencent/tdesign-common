@@ -41,8 +41,8 @@
 #### 表单中的单选框选项全部外显，选项数量不宜过多，当界面空间承载有限时，可考虑使用下拉选择。
 
 
-<img width="" src="/uploads/2F4839170ABB4A9FBF98C290C9310F4D/image.png" alt="image.png" />
-<img width="" src="/uploads/5323D59B42A54C82AD33D052F1576941/image.png" alt="image.png" />
+<!-- <img width="" src="/uploads/2F4839170ABB4A9FBF98C290C9310F4D/image.png" alt="image.png" /> -->
+<!-- <img width="" src="/uploads/5323D59B42A54C82AD33D052F1576941/image.png" alt="image.png" /> -->
 
 
 

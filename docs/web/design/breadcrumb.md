@@ -18,7 +18,7 @@
 #### 面包屑作为一个辅助导航，避免视觉上过于强调成为页面视觉焦点
 
 建议：
-<img width="" src="/uploads/878E307B418C4CA8804C4C3EA90A885D/image.png" alt="image.png" />
+<!-- <img width="" src="/uploads/878E307B418C4CA8804C4C3EA90A885D/image.png" alt="image.png" /> -->
 
 慎用：
-<img width="" src="/uploads/2E805EDC471740AE965EB750FDF4149A/image.png" alt="image.png" />
+<!-- <img width="" src="/uploads/2E805EDC471740AE965EB750FDF4149A/image.png" alt="image.png" /> -->
