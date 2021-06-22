@@ -1,0 +1,362 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+.@{prefix}-date-picker {
+  padding: 0;
+
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+  .@{prefix}-date-picker-popup-reference {
+    width: 100%;
+  }
+
+  &--container {
+    margin: 8px 0;
+    background-color: @datepicker-dropdown-background;
+  }
+
+
+  &--multiple .@{prefix}-form-controls {
+    min-width: 640px;
+  }
+
+}
+
+.@{prefix}-date-picker--panels {
+  display: flex;
+  min-width: 320px;
+  max-width: 100%;
+
+  background-color: @datepicker-background;
+
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+.@{prefix}-date-picker--panel {
+  position: relative;
+  width: @datepicker-panel-width;
+  margin: 0;
+
+  &:nth-child(2) {
+    &::before {
+      content: " ";
+      width: 1px;
+      height: 95%;
+      display: block;
+      position: absolute;
+      left: 0px;
+      top: 16px;
+      border-left: 1px solid @datepicker-border-color;
+    }
+  }
+}
+.@{prefix}-date-picker-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid @border-level-1-color;
+
+  .@{prefix}-date-picker-header-title, .@{prefix}-date-header__btn {
+    font-size: @datepicker-font-size-l;
+    font-weight: @datepicker-font-weight-medium;
+  }
+
+  .@{prefix}-date-picker-header-controller {
+    float: right;
+
+    &__btn {
+      color: @datepicker-button-text-color;
+      padding: 4px;
+      .@{prefix}-icon {
+        font-size: 16px;
+      }
+
+      &:nth-child(2) {
+        margin: 0 8px;
+      }
+
+      &:nth-child(3) {
+        padding-right: 0;
+      }
+    }
+  }
+}
+.@{prefix}-date-picker-presets {
+  float: left;
+  text-align: left;
+  padding: 8px 16px;
+  min-width: 100px;
+
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
+
+  li {
+    font-size: @datepicker-font-size;
+    line-height: @datepicker-line-height;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0px;
+    cursor: pointer;
+    // min-width: 100px;
+    float: left;
+  }
+}
+
+@icon-color: #bfbfbf;
+
+.@{prefix}-picker-datetime-range {
+  min-width: 408px;
+}
+
+.@{prefix}-date-cell {
+  color: #000;
+  
+  &__wrapper {
+    height: @datepicker-cell-width-default;
+    margin-top: 4px;
+    width: 100%;
+    cursor: pointer;
+
+    > span {
+      display: block;
+      width: @datepicker-cell-width-default;
+      line-height: @datepicker-cell-width-default;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &:hover {
+        box-shadow: inset 0px 0px 0px 1px @primary-color;
+        transition: box-shadow @anim-duration-base @anim-time-fn-ease-in;
+      }
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+
+  &--now {
+    .@{prefix}-date-cell__wrapper {
+      position: absolute;
+      top: 0;
+
+      &::after {
+        display: block;
+        content: "";
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: @primary-color;
+        position: relative;
+        left: 20px;
+        top: 34px;
+      }
+    }
+  }
+
+  &--highlight {
+    .@{prefix}-date-cell__wrapper {
+      background-color: @datepicker-highlight-color;
+      border-color: @datepicker-highlight-color;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &--active {
+    .@{prefix}-date-cell__wrapper {
+      & > span {
+        color: #fff;
+        background-color: @primary-color;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &-start {
+      .@{prefix}-date-cell__wrapper {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+    }
+
+    &-end {
+      .@{prefix}-date-cell__wrapper {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+    }
+  }
+
+  &--last-day-of-month {
+    .@{prefix}-date-cell__wrapper {
+      border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
+    }
+  }
+
+  &--first-day-of-month {
+    .@{prefix}-date-cell__wrapper {
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
+    }
+  }
+
+  &--additional {
+    .@{prefix}-date-cell__wrapper {
+      color: #bfbfbf;
+      background: #fff;
+      border-color: #fff;
+    }
+  }
+
+  &--disabled {
+    .@{prefix}-date-cell__wrapper {
+      cursor: not-allowed;
+      background: #f5f5f5;
+      border-color: #f5f5f5;
+      color: @datepicker-disabled-color;
+    }
+  }
+}
+
+.@{prefix}-date-year {
+  tbody {
+    tr {
+      .@{prefix}-date-cell__wrapper {
+        margin-top: 8px;
+        height: @datepicker-cell-width-year;
+
+        .@{prefix}-date-cell__text {
+          height: @datepicker-cell-width-year;
+          width: @datepicker-cell-width-year;
+          line-height: @datepicker-cell-width-year;
+        }
+
+        &::after {
+          left: 36px;
+          top: 40px;
+        }
+      }  
+
+      &:first-child {
+        .@{prefix}-date-cell__wrapper {
+          margin-top: 16px;
+        } 
+      }
+
+      &:last-child {
+        .t-date-cell {
+          text-align: left;
+        } 
+      }
+    }
+  }
+}
+
+.@{prefix}-date-month {
+  tbody {
+    tr {
+      .@{prefix}-date-cell__wrapper {
+        margin-top: 8px;
+      }
+
+      &:first-child {
+        .@{prefix}-date-cell__wrapper {
+          margin-top: 16px;
+        } 
+      }
+
+      &:last-child {
+        .@{prefix}-date-cell {
+          text-align: left;
+        } 
+      }
+    }
+  }
+}
+
+.@{prefix}-date {
+  width: 320px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    user-select: none;
+  }
+
+  tbody {
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  th {
+    padding: 16px 0 8px 0;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+
+  td {
+    padding: 0;
+    text-align: center;
+    position: relative;
+
+    // 每列开头和结尾均为圆形边框
+    &:first-child {
+      .t-date-cell__wrapper {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+    }
+
+    &:last-child {
+      .t-date-cell__wrapper {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+    }
+  }
+
+  &__sub-panel {
+    &--hide {
+      display: none;
+    }
+  }
+}
+
+.@{prefix}-date-range {
+  overflow: hidden;
+  display: flex;
+}
+
+.@{prefix}-date-picker--apply {
+  border-top: 1px solid @datepicker-border-color;
+
+  padding: 8px 16px;
+  text-align: left;
+  float: right;
+
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}

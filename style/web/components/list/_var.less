@@ -14,13 +14,37 @@
 @import "../../_variables.less";
 
 // 颜色
-@list-bg-color-default: @bg-color-block;
-@list-bg-color-strip: @bg-color-fade;
+@list-bg-color-default: @bg-color-container;
+@list-bg-color-strip: @bg-color-secondarycontainer;
 @list-item-split-color: @border-level-1-color;
-@list-avatar-bg-color: @bg-color;
+@list-avatar-bg-color: @bg-color-page;
 @list-text-color-loading: @text-color-placeholder;
+@list-icon-color-loading: @brand-color-5;
 @list-text-color-load-more: @text-color-placeholder;
-@list-action-color: @primary-color;
-@list-item-spacer-small: @spacer * .5;
-@list-item-spacer-default: @spacer * 1.5;
-@list-item-spacer-large: @spacer * 2;
+@list-meta-title-color: @text-color-primary;
+@list-meta-description-color: @text-color-primary;
+@list-action-color: @brand-color;
+@list-action-icon-color: @text-color-secondary;
+
+// 间距
+@list-padding: @spacer-2 @spacer-3;
+@list-item-spacer-small: @spacer / 2 @spacer-3;
+@list-item-spacer-default: @spacer * 1.5 @spacer-3;
+@list-item-spacer-large: @spacer-2 @spacer-3;
+@list-meta-padding: @spacer*.5 0;
+@list-avatar-margin-right: @spacer-2;
+@list-meta-title-margin: 0 0 @spacer;
+@list-meta-description-margin-right: @spacer-3;
+@list-action-margin-right: @spacer-3;
+@list-extra-margin: @spacer 0 @spacer @spacer-2;
+@list-load-not-empty-padding: @spacer-4;
+
+// 尺寸
+@list-item-line-height: 22px;
+@list-avatar-size: 56px;
+
+// 字体
+@list-item-font-size: @font-size-base;
+@list-meta-title-font-size: @font-size-l;
+@list-load-font-size: @font-size-s;
+@list-load-more-font-size: @font-size-s;

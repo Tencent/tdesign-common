@@ -4,7 +4,6 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
-
 .@{prefix}-list {
   overflow: auto;
 
@@ -13,13 +12,13 @@
   }
 
   &-item {
-    font-size: @font-size-base;
-    padding: @list-item-spacer-default @spacer-3;
+    font-size: @list-item-font-size;
+    padding: @list-item-spacer-default;
     background: @list-bg-color-default;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    line-height: 22px;
+    line-height: @list-item-line-height;
     position: relative;
 
     &::after {
@@ -41,15 +40,15 @@
 
     &__meta {
       display: flex;
-      padding: @spacer*.5 0;
+      padding: @list-meta-padding;
 
       &-avatar {
-        width: 56px;
-        height: 56px;
-        border-radius: 28px;
+        width: @list-avatar-size;
+        height: @list-avatar-size;
+        border-radius: @list-avatar-size / 2;
         overflow: hidden;
         background: @list-avatar-bg-color;
-        margin-right: @spacer-2;
+        margin-right: @list-avatar-margin-right;
         flex-shrink: 0;
 
         img {
@@ -61,15 +60,15 @@
 
       &-title {
         padding: 0;
-        font-size: @font-size-l;
+        font-size: @list-meta-title-font-size;
         font-weight: bold;
-        margin: 0 0 @spacer;
-        color: @text-color-primary;
+        margin: @list-meta-title-margin;
+        color: @list-meta-title-color;
       }
 
       &-description {
-        margin-right: @spacer-3;
-        color: @text-color-primary;
+        margin-right: @list-meta-description-margin-right;
+        color: @list-meta-description-color;
       }
     }
 
@@ -82,11 +81,11 @@
         display: inline-block;
 
         &:not(:last-child) {
-          margin-right: @spacer-3;
+          margin-right: @list-action-margin-right;
         }
 
         .@{prefix}-icon {
-          color: @text-color-secondary;
+          color: @list-action-icon-color;
         }
 
         & > a {
@@ -97,7 +96,7 @@
     }
 
     &__extra {
-      margin: @spacer 0 @spacer @spacer-2;
+      margin: @list-extra-margin;
     }
   }
 
@@ -123,44 +122,43 @@
 
   &.t-size-s {
     .@{prefix}-list-item {
-      padding: @spacer / 2 @spacer-3;
+      padding: @list-item-spacer-small;
     }
   }
 
   &.t-size-l {
     .@{prefix}-list-item {
-      padding: @spacer-2 @spacer-3;
+      padding: @list-item-spacer-large;
     }
   }
 
   &__load {
     background: @list-bg-color-default;
     text-align: center;
-    font-size: @font-size-s;
+    font-size: @list-load-font-size;
 
     &:not(:empty) {
-      padding: @spacer-4; // 如果不是空子元素才设置padding
+      padding: @list-load-not-empty-padding; // 如果不是空子元素才设置padding
     }
 
     &.@{prefix}-list__load--loading {
       color: @list-text-color-loading;
 
       .@{prefix}-icon {
-        color: @primary-color-5;
+        color: @list-icon-color-loading;
       }
     }
 
     &.@{prefix}-list__load--load-more {
       color: @list-text-color-load-more;
       cursor: pointer;
-      font-size: @font-size-s;
+      font-size: @list-load-more-font-size;
     }
   }
 
   &__header,
   &__footer {
     background: @list-bg-color-default;
-    padding: @spacer-2 @spacer-3;
+    padding: @list-padding;
   }
 }
-
