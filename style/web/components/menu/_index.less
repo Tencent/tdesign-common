@@ -61,12 +61,14 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__options:not(:empty) {
     position: relative;
+    display: flex;
+    align-items: center;
     max-width: 320px;
     height: 64px;
     line-height: 64px;
     text-align: right;
     margin-right: 8px;
-    overflow: scroll;
+    overflow-x: scroll;
 
     .@{prefix}-icon {
       width: 40px;
