@@ -9,11 +9,11 @@
   display: flex;
   align-items: center;
   color: @msg-color-text;
-  .message-size(@msg-height-default, @msg-font-size-default, @msg-padding-horizontal-default);
+  line-height: @msg-content-line-height;
+  .message-size(@msg-font-size-default, @msg-padding-vertical-default, @msg-padding-horizontal-default);
 }
 
-.message-size(@height; @font-size; @padding-horizontal) {
-  height: @height;
+.message-size(@font-size, @padding-vertical, @padding-horizontal) {
   font-size: @font-size;
-  padding: 0 @padding-horizontal;
+  padding: @padding-vertical @padding-horizontal;
 }
