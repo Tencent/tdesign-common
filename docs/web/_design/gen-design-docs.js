@@ -28,11 +28,12 @@ function canmelCase(name) {
 }
 
 docs.forEach((doc) => {
+  if (doc.includes('gen-design-docs.js')) return;
   const fileName = canmelCase(path.basename(doc));
   const data = fs.readFileSync(doc, 'utf-8').toString();
   let [, designContent] = data.split('## 组件设计指南');
-  if (!designContent) return;
+  if (!designContent || fileName === 'gen') return;
 
   designContent = `## 组件设计指南\n${designContent}`;
-  fs.writeFileSync(path.join(__dirname, `./design/${fileName}`), designContent);
+  fs.writeFileSync(path.join(__dirname, `../design/${fileName}.md`), designContent);
 });
