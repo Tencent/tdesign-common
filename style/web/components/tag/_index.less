@@ -7,15 +7,13 @@
 .@{prefix}-tag {
   display: inline-block;
   padding: @tag-medium-padding;
-  height: 24px;
+  height: @tag-height-medium;
   font-size: @tag-medium-font-size;
-  line-height: 22px;
+  line-height: @tag-line-height-medium;
   color: @tag-text-color;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
   box-sizing: border-box;
-  border-radius: @border-radius-square;
+  border-radius: @tag-border-radius-square;
+  border: @tag-default-border-width solid @tag-default-border-color;
   white-space: nowrap;
 
   .@{prefix}-icon {
@@ -26,7 +24,6 @@
   .@{prefix}-icon-close {
     margin-right: 0;
     margin-left: 4px;
-    margin-top: -2px;
     font-size: @tag-large-font-size;
     border-radius: @border-radius-50;
     cursor: pointer;
@@ -41,18 +38,24 @@
   &--check {
     &:hover {
       color: @tag-default-hover-color;
-      border-color: currentColor;
+    }
+
+    &:active {
+      color: @tag-default-click-color;
+      background-color: @tag-default-click-background-color;
     }
   }
 
   &--default {
     color: @tag-text-color-1;
     background-color: @tag-default-background-color;
-    border-color: @tag-default-border-color;
     &.@{prefix}-tag--checked {
       color: @tag-checked-color;
       background-color: @tag-checked-background-color;
-      border-color: @tag-checked-border-color;
+
+      &:hover {
+        background-color: @brand-color-7;
+      }
     }
 
     &:hover {
@@ -77,22 +80,20 @@
     &.@{prefix}-tag--disabled {
       color: @tag-disabled-color;
       background-color: @tag-disabled-background-color;
-      border-color: @tag-disabled-border-color;
-      cursor: text;
+      cursor: not-allowed;
 
       &:hover {
         color: @tag-disabled-color;
         background-color: @tag-disabled-background-color;
-        border-color: @tag-disabled-border-color;
       }
       .@{prefix}-icon {
         color: @tag-disabled-color;
-        cursor: text;
+        cursor: not-allowed;
 
         &:hover {
           color: @tag-disabled-color;
           background-color: transparent;
-          cursor: text;
+          cursor: not-allowed;
         }
       }
     }
@@ -100,9 +101,9 @@
 
   &--primary {
     background-color: @tag-primary-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-primary-color;
-      border-color: @tag-primary-light-color;
     }
     .@{prefix}-icon-close {
       &:hover {
@@ -114,9 +115,9 @@
 
   &--success {
     background-color: @tag-success-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-success-color;
-      border-color: @tag-success-light-color;
     }
     .@{prefix}-icon-close {
       &:hover {
@@ -128,9 +129,9 @@
 
   &--info {
     background-color: @info-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-text-color-1;
-      border-color: @tag-default-border-color;
     }
     .@{prefix}-icon-close {
       &:hover {
@@ -142,9 +143,9 @@
 
   &--warning {
     background-color: @tag-warning-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-warning-color;
-      border-color: @tag-warning-light-color;
     }
     .@{prefix}-icon-close {
       &:hover {
@@ -156,9 +157,9 @@
 
   &--danger {
     background-color: @tag-danger-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-danger-color;
-      border-color: @tag-danger-light-color;
     }
     .@{prefix}-icon-close {
       &:hover {
@@ -171,7 +172,7 @@
   &--primary.@{prefix}-tag--light {
     color: @tag-primary-color;
     background-color: @tag-primary-light-color;
-    border-color: @tag-primary-light-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-primary-color;
     }
@@ -186,7 +187,7 @@
   &--success.@{prefix}-tag--light {
     color: @tag-success-color;
     background-color: @tag-success-light-color;
-    border-color: @tag-success-light-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-success-color;
     }
@@ -201,7 +202,7 @@
   &--info.@{prefix}-tag--light {
     color: @tag-text-color-1;
     background-color: @tag-info-light-color;
-    border-color: @tag-info-light-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-text-color-1;
     }
@@ -216,7 +217,7 @@
   &--warning.@{prefix}-tag--light {
     color: @tag-warning-color;
     background-color: @tag-warning-light-color;
-    border-color: @tag-warning-light-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-warning-color;
     }
@@ -231,7 +232,7 @@
   &--danger.@{prefix}-tag--light {
     color: @tag-danger-color;
     background-color: @tag-danger-light-color;
-    border-color: @tag-danger-light-color;
+
     &.@{prefix}-tag--plain {
       color: @tag-danger-color;
     }
@@ -249,9 +250,10 @@
 
   &.@{prefix}-size-s {
     padding: @tag-small-padding;
-    height: 20px;
+    height: @tag-height-small;
     font-size: @tag-small-font-size;
-    line-height: 18px;
+    line-height: @tag-line-height-small;
+
     .@{prefix}-icon {
       font-size: @tag-small-font-size;
     }
@@ -259,26 +261,27 @@
 
   &.@{prefix}-size-l {
     padding: @tag-large-padding;
-    height: 32px;
+    height: @tag-height-large;
     font-size: @tag-large-font-size;
-    line-height: 30px;
+    line-height: @tag-line-height-large;
+
     .@{prefix}-icon {
       font-size: @tag-large-font-size;
     }
   }
 
   &.@{prefix}-tag--round {
-    border-radius: @border-radius-round;
+    border-radius: @tag-border-radius-round;
   }
+
   &.@{prefix}-tag--mark {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    border-bottom-right-radius: @border-radius-round;
-    border-top-right-radius: @border-radius-round;
+    border-bottom-right-radius: @tag-border-radius-round;
+    border-top-right-radius: @tag-border-radius-round;
   }
 
   &.@{prefix}-tag--ellipsis {
     .text-ellipsis();
   }
 }
-

@@ -5,8 +5,10 @@
 @import "./_mixin.less";
 
 .@{prefix}-loading {
-  color: @loading-color;
   display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  color: @loading-color;
 
   &__wrapper {
     text-align: center;
@@ -21,7 +23,7 @@
     .@{prefix}-icon-loading {
       position: absolute;
       top: 50%;
-      margin-top: -12px;
+      margin-top: @loading-wrapper-icon-margin-top;
     }
   }
 
@@ -35,6 +37,18 @@
 
   &-fullscreen {
     position: fixed;
+
+    .@{prefix}-loading {
+      top: 50%;
+
+      .@{prefix}-icon-loading {
+        font-size: @loading-fullscreen-icon-size;
+      }
+    }
+
+    &.@{prefix}-loading-mask {
+      background-color: @loading-fullscreen-mask-bg-color;
+    }
   }
 
   &-lock {
@@ -53,22 +67,16 @@
 
   &.@{prefix}-size-l {
     .@{prefix}-icon-loading {
-      font-size: @loading-icon-size-large; 
+      font-size: @loading-icon-size-large;
     }
   }
 
   &-text {
-    color: @loading-color;
     font-size: @loading-text-size;
     width: auto;
     display: inline-block;
     vertical-align: middle;
-
-    span {
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 5px;
-    }
+    margin-left: @loading-text-margin-left;
   }
 
   &--blur {
@@ -77,3 +85,18 @@
     pointer-events: none;
   }
 }
+
+.@{prefix}-loading__content {
+  position: absolute;
+  left: 48%;
+  top: 20%;
+}
+
+// .@{prefix}-loading__wraper {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   left: 0;
+//   top: 0;
+//   background-color: rgba(255, 255, 255, .5);
+// }

@@ -1,7 +1,7 @@
 .pagination-number--size(@height; @font-size; @padding-horizontal) {
   height: @height ;
   min-width: @height;
-  line-height: @height;
+  line-height: @height - 2;
   font-size: @font-size;
   padding-left: @padding-horizontal;
   padding-right: @padding-horizontal;
@@ -11,6 +11,7 @@
   background-color: @bg-color;
   color: @text-color;
   border-color: @bg-color;
+  transition: all @anim-duration-base @anim-time-fn-ease-in;
 }
 
 .pagination-btn(@height) {

@@ -19,6 +19,8 @@
     box-shadow: @popup-shadow;
     border-radius: @border-radius;
     padding: @popup-padding;
+    font-size: @popup-content-font-size;
+    line-height: @popup-content-line-height;
   }
 
   &-reference {
@@ -29,14 +31,14 @@
 .@{prefix}-popup__arrow {
   position: absolute;
   z-index: 1;
-  width: 10px;
-  height: 10px;
+  width: @popup-arrow-width;
+  height: @popup-arrow-height;
 
   &::before {
     position: absolute;
     content: "";
-    width: 10px;
-    height: 10px;
+    width: @popup-arrow-width;
+    height: @popup-arrow-height;
     transform: rotate(45deg);
     background: @arrow-bg;
   }
@@ -45,30 +47,30 @@
 .@{prefix}-popup[data-popper-placement^='bottom'],
 .@{prefix}-popup[data-popper-placement^='top'] {
   .@{prefix}-popup-content--arrow {
-    margin: 8px 0;
+    margin: @popup-content-arrow-spacer 0;
   }
 }
 
 .@{prefix}-popup[data-popper-placement^='left'],
 .@{prefix}-popup[data-popper-placement^='right'] {
   .@{prefix}-popup-content--arrow {
-    margin: 0 8px;
+    margin: 0 @popup-content-arrow-spacer;
   }
 }
 
 
 
 .@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-popup__arrow {
-  bottom: -5px;
+  bottom: -@popup-arrow-position;
 }
 .@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-popup__arrow {
-  top: -5px;
+  top: -@popup-arrow-position;
 }
 .@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-popup__arrow {
-  right: -5px;
+  right: -@popup-arrow-position;
 }
 .@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-popup__arrow {
-  left: -5px;
+  left: -@popup-arrow-position;
 }
 
 // animation

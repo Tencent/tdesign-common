@@ -7,10 +7,11 @@
 /* Alert */
 .@{prefix}-alert {
   display: flex;
-  padding: 14px 24px;
+  padding: @alert-padding;
   opacity: 1;
   transition: opacity .2s;
-
+  border-radius: @border-radius;
+  
   &.@{prefix}-is-hidden { /* 隐藏 */
     display: none;
   }
@@ -101,7 +102,6 @@
   font-size: 14px;
   line-height: 20px;
   overflow: hidden;
-  opacity: .8;
 }
 
 .@{prefix}-alert__title,
@@ -246,7 +246,7 @@
   padding: 14px 20px 14px 4px;
   flex: 0 0 auto;
   font-size: 14px;
-  color: @text-level-3-color;
+  color: @text-color-placeholder;
   cursor: pointer;
   display: flex;
   align-items: center;

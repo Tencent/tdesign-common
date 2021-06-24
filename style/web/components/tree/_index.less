@@ -6,8 +6,8 @@
 
 // <name> 替换为组件名
 .@{prefix}-tree {
-  line-height: 40px;
-  font-size: 14px;
+  line-height: @tree-node-item-line-height;
+  font-size: @tree-font-size;
   color: @tree-node-text-color;
   will-change: height;
 
@@ -23,7 +23,7 @@
         color: @tree-disabled-color;
       }
       .@{prefix}-icon {
-        color: @tree-node-icon-color;
+        color: @tree-icon-color-disabled;
       }
     }
   }
@@ -37,8 +37,9 @@
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    padding-left: calc(@tree-node-padding-basic * var(--level));
-    height: 40px;
+    padding-left: @tree-node-item-padding-left;
+    height: @tree-node-item-height;
+    margin-bottom: @tree-node-item-margin-bottom;
     cursor: default;
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
@@ -53,7 +54,7 @@
 
     .@{prefix}-checkbox {
       font-size: 0;
-      padding-top: 1px;
+      padding-top: @tree-node-item-checkbox-padding-top;
     }
 
     .@{prefix}-icon-chevron-right {
@@ -92,12 +93,12 @@
     --level: 0;
     --color: @tree-node-icon-line-color;
     --space: @tree-node-padding-basic;
-    --iconSize: 16px;
+    --iconSize: @icon-default;
     position: absolute;
-    left: calc(@tree-node-padding-basic * var(--level) - 12px);
-    bottom: 20px;
-    width: 1px;
-    height: 40px;
+    left: @tree-line-position-left;
+    bottom: @tree-line-position-bottom;
+    width: @tree-line-width;
+    height: @tree-node-item-height;
     pointer-events: none;
   }
 
@@ -107,18 +108,18 @@
     bottom: 0;
     left: 0;
     display: block;
-    height: 40px;
-    width: 16px;
+    height: @tree-node-item-height;
+    width: @tree-line-width-before;
     border-left: 1px solid var(--color);
     border-bottom: 1px solid var(--color);
   }
 
   &__line--first::before {
-    height: 32px;
+    height: @tree-line-height-first;
   }
 
   &__line--leaf::before {
-    width: 32px;
+    width: @tree-line-height-leaf;
   }
 
   &--fx {
@@ -131,11 +132,11 @@
   &__icon {
     flex: 0 0 auto;
     align-self: center;
-    width: 24px;
-    height: 24px;
-    margin-right: 4px;
+    width: @tree-node-icon-size;
+    height: @tree-node-icon-size;
+    margin-right: @tree-node-icon-margin-right;
     text-align: center;
-    line-height: 24px;
+    line-height: @tree-node-icon-size;
     position: relative;
     user-select: none;
     cursor: pointer;
@@ -151,7 +152,7 @@
 
   &__label {
     flex: auto;
-    line-height: 40px;
+    line-height: @tree-node-item-line-height;
     flex-wrap: nowrap;
 
     &--strictly {
@@ -201,11 +202,11 @@
 
   50% {
     opacity: 0;
-    height: 40px;
+    height: @tree-node-item-height;
   }
 
   100% {
     opacity: 1;
-    height: 40px;
+    height: @tree-node-item-height;
   }
 }

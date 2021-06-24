@@ -11,36 +11,60 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-/**
- * colors for dialog element
- */
+// 颜色
 @dialog-border-color: transparent;
-@dialog-bg-color: @bg-color-block;
-@dialog-header-text-color: @text-level-1-color;
-@dialog-body-text-color: @text-level-2-color;
+@dialog-bg-color: @bg-color-container;
+@dialog-header-text-color: @text-color-primary;
+@dialog-body-text-color: @text-color-secondary;
+@dialog-close-icon-hover: @bg-color-container-hover;
+@dialog-close-icon-active:@bg-color-container-active;
+@dialog-info-icon-color: @brand-color;
+@dialog-success-icon-color: @success-color;
+@dialog-warning-icon-color: @warning-color;
+@dialog-error-icon-color: @error-color;
+@dialog-close-color: @text-color-secondary;
+@dialog-mask-bg-color: @mask-active;
 
-@dialog-header-font-size: 16px;
+// 字体
+@dialog-header-font-size: @font-size-l;
+@dialog-header-font-weight: normal;
 @dialog-body-text-font-size: @font-size-base;
 
-/**
- * dialog size
- */
-@dialog-size-l-width: 960px;
-@dialog-size-s-width: 480px;
+// 尺寸
+// @dialog-size-l-width: 960px;
+// @dialog-size-s-width: 480px;
+@dialog-width: 480px;
 @dialog-header-height: 50px;
 @dialog-icon-size: 24px;
-@dialog-close-icon-size: 16px;
+@dialog-close-icon-size: 20px;
 
-/**
- * dialog type
- */
-@dialog-spacer: @spacer-3;
-@dialog-default-spacer: @spacer-3 @spacer-4;
-@dialog-default-body-spacer: @dialog-spacer @spacer @dialog-spacer 0;
+// 间距
+@dialog-spacer: @spacer-4;
+@dialog-default-spacer: 28px @spacer-4 @spacer-4 @spacer-4;
+// @dialog-default-body-spacer: @dialog-spacer @spacer @dialog-spacer 0;
 @dialog-primary-spacer: @dialog-spacer;
 @dialog-parimary-body-spacer: @dialog-spacer 28px @dialog-spacer 28px;
+@dialog-default-padding: @dialog-spacer;
+@dialog-header-line-height: 22px;
+@dialog-header-icon-margin-right: @spacer;
+@dialog-body-line-height: 22px;
+@dialog-body-padding: @spacer-3 0;
+@dialog-body-icon-padding: @spacer-3 0  @spacer-3 @spacer-4; 
+@dialog-footer-button-margin-left: @spacer;
+@dialog-word-spacing: -6px;
 
-/**
- * dialog border
- */
+// 边框
 @dialog-border: 1px solid @border-level-1-color;
+@dialog-border-radius: @border-radius;
+@dialog-close-border-radius: @border-radius;
+
+// 位置
+@dialog-close-position-top: 29px;
+@dialog-close-position-right: @dialog-spacer;
+@dialog-top-position-top: 20%;
+
+// 动画
+@dialog-anim-duration: @anim-duration-base;
+@dialog-anim-time-fn-enter: cubic-bezier(.08, .82, .17, 1);
+@dialog-anim-time-fn-exit: cubic-bezier(.6, .04, .98, .34);
+@dialog-anim-time-fn-fade: cubic-bezier(.55, 0, .55, .2);

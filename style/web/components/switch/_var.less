@@ -11,6 +11,20 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
+// 颜色
+@switch-checked-bg-color: @brand-color;
+@switch-checked-bg-color-loading: @brand-color-2;
+@switch-checked-bg-color-disabled: @brand-color-2;
+
+@switch-unchecked-bg-color: @gray-color-5;
+@switch-unchecked-bg-color-loading: @gray-color-2;
+@switch-unchecked-bg-color-disabled: @gray-color-2;
+
+@switch-handle-bg-color: @bg-color-container;
+@switch-content-color-checked: @text-color-anti;
+@switch-content-color-unchecked: @text-color-anti;
+
+// 尺寸
 @switch-height-l: 24px;
 @switch-height-default: 20px;
 @switch-height-s: 16px;
@@ -19,27 +33,25 @@
 @switch-min-width-default: 40px;
 @switch-min-width-s: 32px;
 
-@switch-checked-bg-color: @primary-color;
-@switch-checked-bg-color-loading: @primary-color-disabled;
-@switch-checked-bg-color-disabled: @primary-color-disabled;
-@switch-checked-handle-color: @switch-checked-bg-color-loading;
+@switch-width-border-l: 1px;
+@switch-width-border-default: 1px;
+@switch-width-border-s: 1px;
 
-@switch-unchecked-bg-color: #BBBBBB;
-@switch-unchecked-bg-color-loading: #EEEEEE;
-@switch-unchecked-bg-color-disabled: #BBBBBB;
-@switch-unchecked-handle-color: @switch-unchecked-bg-color-loading;
-
-@switch-handle-bg-color: @bg-color-block;
-
-@switch-content-font-size-l: 12px;
-@switch-content-font-size-default: 12px;
+// 字体
+@switch-content-font-size-l: @font-size-s;
+@switch-content-font-size-default: @font-size-s;
 @switch-content-font-size-s: 9px;
 
-@switch-content-margin-left-l: 24px + 3px;
+// 间距
+@switch-content-margin-left-l: @switch-min-width-l / 2 + 3px;
 @switch-content-margin-right-l: 8px;
 
-@switch-content-margin-left-default: 20px + 2px;
+@switch-content-margin-left-default: @switch-min-width-default / 2 + 2px;
 @switch-content-margin-right-default: 6px;
 
-@switch-content-margin-left-s: 16px + 2px;
+@switch-content-margin-left-s: @switch-min-width-s / 2 + 2px;
 @switch-content-margin-right-s: 5px;
+
+// 动画
+@switch-transition: all @anim-duration-base @anim-time-fn-ease-out;
+@switch-handle-transition: all @anim-duration-base ease-in-out;

@@ -13,15 +13,16 @@
 
 
 //文字颜色
-@breadcrumb-text-color-default: @text-level-3-color;
-@breadcrumb-text-color-hover: @primary-color;
-@breadcrumb-text-color-current: @text-level-1-color;
+@breadcrumb-text-color-default: @text-color-placeholder;
+@breadcrumb-text-color-hover: @brand-color;
+@breadcrumb-text-color-current: @text-color-primary;
+@breadcrumb-text-color-disabled: @text-color-disabled;
 
 //icon颜色
-@breadcrumb-icon-arrow-color-default: @text-level-3-color;
-@breadcrumb-icon-slash-color-default: @text-level-1-color;
-@breadcrumb-icon-color-hover: @primary-color;
-@breadcrumb-icon-color-current: @text-level-2-color;
+@breadcrumb-icon-arrow-color-default: @text-color-placeholder;
+@breadcrumb-icon-slash-color-default: @text-color-placeholder;
+@breadcrumb-icon-color-hover: @brand-color;
+@breadcrumb-icon-color-current: @text-color-placeholder;
 
 //字号
 @breadcrumb-font-base: @font-size-base;
@@ -34,5 +35,10 @@
 
 @breadcrumb-option-box-bg:@bg-color-block;
 //间距
-@spacer-half: @spacer * .5;
+@breadcrumb-spacer-half: @spacer * .5;
+
+// 尺寸
+@breadcrumb-inner-max-width-default: 120px;
+@breadcrumb-option-max-width: 120px;
+@breadcrumb-inner-msg-width: 300px;
 

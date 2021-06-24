@@ -1,29 +1,80 @@
-# 1.**组件设计指南**
+## 组件设计指南
 
-## 1.1.组件搭配使用
 
-### 1.1.1.搭配**滑块Slider**使用。
+### 3.1. 组件搭配使用
 
-![](https://iwiki.oa.tencent.com/download/attachments/458424884/%E6%88%AA%E5%9C%96%202020-11-29%20%E4%B8%8B%E5%8D%889.53.26.png?version=1&modificationDate=1606658012000&api=v2)
 
-## 1.2.常见用法
+#### 3.1.1. 使用说明
 
-### 1.2.1.数值范围
+（1）为方便用户理解，需要在搜索框内提示具体可检索的数据类型，尽量避免出现“请在此搜索”、“请输入你要搜索的内容”等过于空泛的提示
 
-注意考虑数值的范围，及数值上限与下限时按钮的状态；如果直接输入数值超出范围，则气泡提示，并自动纠正为与数值范围内最近的合理值。
+![基础搜索框-1](https://tdesign.gtimg.com/site/design/images/基础搜索框-1.jpg)
 
-  
 
-![](https://iwiki.oa.tencent.com/download/attachments/458424884/image2020-8-19_15-57-8.png?version=1&modificationDate=1606656584000&api=v2)
 
-### 1.2.2.数值范围
+（2）搜索的内容需要进行即时的反馈，以引导或告知用户搜索的内容
 
-设定默认值
+![使用场景2-1](https://tdesign.gtimg.com/site/design/images/使用场景2-1.jpg)
 
-在数值范围内，可设定默认值（不一定要从最小值开始），帮助用户减少点击次数提升操作效率。
 
-  
 
-![](https://iwiki.oa.tencent.com/download/attachments/458424884/image2020-8-19_15-59-53.png?version=1&modificationDate=1606656584000&api=v2)
+#### 3.1.2. 组件的状态
 
-  
+搜索框状态可分为：默认态、可清空态、批量内容展示态
+
+默认态：
+
+![基础搜索框-2](https://tdesign.gtimg.com/site/design/images/基础搜索框-2.jpg)
+
+
+
+批量搜索展开态：
+
+![批量搜索框-输入中](https://tdesign.gtimg.com/site/design/images/批量搜索框-输入中-1850477.jpg)
+
+![批量搜索框-输入后-1](https://tdesign.gtimg.com/site/design/images/批量搜索框-输入后-1.jpg)
+
+
+
+#### 3.1.3. 交互逻辑
+
+（1）基础搜索框
+
+默认状态
+
+![基础搜索框-正常](https://tdesign.gtimg.com/site/design/images/基础搜索框-正常-1850501.jpg)
+
+
+
+输入中：回车或点击下拉内容可触发搜索，输入内容后出现清空按钮
+
+![基础搜索框-输入中](https://tdesign.gtimg.com/site/design/images/基础搜索框-输入中-1850507.jpg)
+
+
+
+输入完成（不带清空按钮）
+
+![基础搜索框-输入后](https://tdesign.gtimg.com/site/design/images/基础搜索框-输入后-1850514.jpg)
+
+
+
+（2）批量搜索框
+
+默认状态
+
+![基础搜索框-3](https://tdesign.gtimg.com/site/design/images/基础搜索框-3.jpg)
+
+
+
+输入中：可选择联想内容，选后可继续输入进行搜索
+
+![使用场景2-2](https://tdesign.gtimg.com/site/design/images/使用场景2-2.jpg)
+
+
+
+输入完成
+
+![批量搜索框-输入后-2](https://tdesign.gtimg.com/site/design/images/批量搜索框-输入后-2.jpg)
+
+
+

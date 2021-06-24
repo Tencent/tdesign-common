@@ -15,7 +15,7 @@
   line-height: @switch-height-default;
   border-radius: @switch-height-default / 2;
   min-width: @switch-min-width-default;
-  transition: background-color .3s ease-in-out;
+  transition: @switch-transition;
   background-color: @switch-unchecked-bg-color;
   cursor: pointer;
   user-select: none;
@@ -25,13 +25,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 1px;
-    left: 1px;
-    width: @switch-height-default - 2px;
-    height: @switch-height-default - 2px;
+    top: @switch-width-border-default;
+    left: @switch-width-border-default;
+    width: @switch-height-default - 2px * @switch-width-border-default;
+    height: @switch-height-default - 2px * @switch-width-border-default;
     border-radius: 100%;
-    background-color: #fff;
-    transition: all .2s ease-in-out;
+    background-color: @switch-handle-bg-color;
+    transition: @switch-handle-transition;
 
     .@{prefix}-icon {
       font-size: @switch-height-default - 4px;
@@ -42,8 +42,9 @@
   &__content {
     display: inline-flex;
     align-items: center;
-    color: #fff;
-    padding: 0 @switch-content-margin-right-default 0 @switch-content-margin-left-default;
+    color: @switch-content-color-unchecked;
+    padding: 0 @switch-content-margin-right-default 0
+      @switch-content-margin-left-default;
     font-size: @switch-content-font-size-default;
     min-width: @switch-min-width-default;
     .@{prefix}-icon {
@@ -55,11 +56,13 @@
     background-color: @switch-checked-bg-color;
 
     .@{prefix}-switch__handle {
-      left: calc(100% - 1px);
+      left: calc(100% - @switch-width-border-default);
       transform: translate(-100%, 0);
     }
     .@{prefix}-switch__content {
-      padding: 0 @switch-content-margin-left-default 0 @switch-content-margin-right-default;
+      padding: 0 @switch-content-margin-left-default 0
+        @switch-content-margin-right-default;
+      color: @switch-content-color-checked;
     }
   }
 
@@ -107,8 +110,10 @@
   border-radius: @switch-height-l / 2;
 
   .@{prefix}-switch__handle {
-    width: @switch-height-l - 2px;
-    height: @switch-height-l - 2px;
+    top: @switch-width-border-l;
+    left: @switch-width-border-l;
+    width: @switch-height-l - 2px * @switch-width-border-l;
+    height: @switch-height-l - 2px * @switch-width-border-l;
     .@{prefix}-icon {
       font-size: @switch-height-l - 4px;
     }
@@ -125,6 +130,9 @@
   }
 
   &.@{prefix}-is-checked {
+    .@{prefix}-switch__handle {
+      left: calc(100% - @switch-width-border-l);
+    }
     .@{prefix}-switch__content {
       padding: 0 @switch-content-margin-left-l 0 @switch-content-margin-right-l;
     }
@@ -138,8 +146,10 @@
   border-radius: @switch-height-s / 2;
 
   .@{prefix}-switch__handle {
-    width: @switch-height-s - 2px;
-    height: @switch-height-s - 2px;
+    top: @switch-width-border-s;
+    left: @switch-width-border-s;
+    width: @switch-height-s - 2px * @switch-width-border-s;
+    height: @switch-height-s - 2px * @switch-width-border-s;
 
     .@{prefix}-icon {
       font-size: @switch-height-s - 4px;
@@ -157,6 +167,9 @@
   }
 
   &.@{prefix}-is-checked {
+    .@{prefix}-switch__handle {
+      left: calc(100% - @switch-width-border-s);
+    }
     .@{prefix}-switch__content {
       padding: 0 @switch-content-margin-left-s 0 @switch-content-margin-right-s;
     }

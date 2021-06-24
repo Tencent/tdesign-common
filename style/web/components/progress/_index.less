@@ -9,18 +9,17 @@
     position: relative;
     height: 100%;
     background: @progress-inner-color;
-    border-radius: 50px;
+    border-radius: @progress-inner-border-radius;
   }
 
   &--info {
-    min-width: 2em;
-    margin-left: 10px;
-    color: @progress-info-dark;
+    margin-left: @progress-info-spacer;
+    color: @progress-info-dark-color;
     white-space: nowrap;
   }
 
   &--icon {
-    font-size: 1.25em;
+    font-size: @progress-icon-font-size;
   }
 }
 .@{prefix}-progress--bar {
@@ -40,16 +39,31 @@
 
 //条形进度条 百分比内置
 .@{prefix}-progress--plump {
-  height: 18px;
-  border-radius: 9px;
+  height: @progress-stroke-plump-width;
+  border-radius: @progress-stroke-plump-width / 2;
   .@{prefix}-progress--info {
-    min-width: 2em;
+    font-size: @progress-plump-font-size;
+  }
+}
+
+.@{prefix}-progress--over-ten {
+  .@{prefix}-progress--info {
     position: absolute;
     top: 50%;
     z-index: 10;
-    right: 10px;
-    font-size: 12px;
+    right: @progress-info-spacer;
+    color: @progress-info-light-color;
     transform: translateY(-50%);
+  }
+}
+
+.@{prefix}-progress--under-ten {
+  .@{prefix}-progress--info,
+  .@{prefix}-progress--inner {
+    display: inline-block;
+  }
+  .@{prefix}-progress--info {
+    vertical-align: top;
   }
 }
 
@@ -62,9 +76,8 @@
     top: 50%;
     left: 50%;
     width: 100%;
-    min-width: 2em;
     margin: 0;
-    font-size: inherit;
+    font-size: @progress-circle-font-size;
     line-height: 1;
     text-align: center;
     transform: translate(-50%, -50%);
@@ -76,7 +89,7 @@
     stroke: @progress-inner-color;
   }
   .@{prefix}-progress--icon {
-    font-size: 3.75em;
+    font-size: @progress-icon-circle-font-size;
   }
 }
 
@@ -91,8 +104,9 @@
       left: 0;
       z-index: 1;
       content: "";
-      animation: progress-active-animation 2s cubic-bezier(.23, .99, .86, .2) infinite;
-      background: @progress-info-light;
+      animation: progress-active-animation 2s
+        cubic-bezier(.23, .99, .86, .2) infinite;
+      background: @progress-inner-bg-color-active;
       opacity: .2;
     }
   }
@@ -151,4 +165,3 @@
     opacity: 0;
   }
 }
-

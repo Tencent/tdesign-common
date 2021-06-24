@@ -1,3 +1,4 @@
+@import "../_variables.less";
 
 @keyframes t-fade-out {
   from {
@@ -16,5 +17,76 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+// 颜色 切换
+// .anim-color-change(@attr, @from, @to ) {
+//   from {
+//     @attr: @from;
+//   }
+
+//   to {
+//     @attr: @to;
+//   }
+// }
+
+
+// 定义一个从A到B到动画
+.anim-g-attr-change(@name, @attr, @from, @to, ) {
+  @keyf: ~"@keyframes @{name}  { from";
+  @anim: ~" }  ";
+
+  @{keyf} {
+    .anim-g-attr-change-from(e(@attr), e(@from));
+  }
+
+  to {
+    .anim-g-attr-change-to(e(@attr), e(@to));
+  }
+  // 以下代码主要为了添加闭合标签
+  @{anim} {
+
+  }
+
+}
+.anim-g-attr-change-from (@name, @value) {
+  @{name}: @value;
+}
+.anim-g-attr-change-to (@name, @value) {
+  @{name}: @value;
+}
+
+// 点击斜8动画元素，父元素需设置 position: relative; overflow: hidden;
+.click-animation-elem(@bg-color) {
+  overflow: hidden;
+  &:not(.@{prefix}-is-disabled)::before {
+    content: "";
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 0;
+    display: block;
+    width: calc(100% + 20px);
+    height: 100%;
+    opacity: 0;
+    background: @bg-color;
+    transform: translateX(calc(100%)) skewX(-8deg);
+    transition: opacity @anim-duration-base @anim-time-fn-easing;
+  }
+  &.@{prefix}-clicked::before {
+    opacity: 1;
+    animation: me-clicked-animation @anim-duration-base @anim-time-fn-easing both;
+  }
+}
+
+@keyframes me-clicked-animation {
+  0% {
+    transform: translateX(0) skewX(-8deg);
+    animation-timing-function: @anim-time-fn-easing;
+  }
+
+  100% {
+    transform: translateX(calc(100%)) skewX(-8deg);
+    opacity: 1;
   }
 }

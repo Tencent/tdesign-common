@@ -15,20 +15,22 @@
 
 // 颜色
 @checkbox-border-color: @border-level-2-color;
-@checkbox-border-color-checked: @primary-color;
-@checkbox-border-color-hover: @primary-color;
+@checkbox-border-color-checked: @brand-color;
+@checkbox-border-color-hover: @brand-color;
 
 @checkbox-input-color: @bg-color-block;
-@checkbox-input-color-checked: @primary-color;
+@checkbox-input-color-checked: @brand-color;
 @checkbox-input-color-disabled: @bg-color-disabled;
 
 @checkbox-check-color: @bg-color-block;
-@checkbox-check-color-disabled: @text-level-4-color;
+@checkbox-check-color-disabled: @text-color-disabled;
+// 图标禁止选中状态下时icon的色值变量
+@checkbox-check-icon-disabled-color: @text-color-disabled;
 
-@checkbox-input-color-indeterminate: @primary-color;
-@checkbox-indeterminate-color-disabled: @text-level-4-color;
+@checkbox-input-color-indeterminate: @brand-color;
+@checkbox-indeterminate-color-disabled: @text-color-disabled;
 
-@checkbox-label-color: @text-level-2-color;
+@checkbox-label-color: @text-color-primary;
 
 // 尺寸
 @checkbox-size: 16px;
@@ -47,3 +49,8 @@
 
 // padding
 @checkbox-input-label-spacer: @spacer;
+
+// 组合复选框margin
+@checkbox-group-margin: @spacer-2;
+// 单个复选框margin
+@checkbox-margin: inherit;

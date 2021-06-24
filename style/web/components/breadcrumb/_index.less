@@ -6,7 +6,7 @@
   .breadcrumb;
 
   &__separator {
-    margin: 0 @spacer;
+    margin: 0 @breadcrumb-spacer-half;
   }
 
   &__item {
@@ -14,7 +14,6 @@
     align-items: center;
     color: @breadcrumb-text-color-default;
     text-decoration: none;
-    cursor: pointer;
 
     &.@{prefix}-is-current {
       color: @breadcrumb-text-color-current;
@@ -32,7 +31,7 @@
     }
 
     .@{prefix}-icon {
-      margin-right: @spacer-half;
+      margin-right: @breadcrumb-spacer-half;
     }
 
     .@{prefix}-link {
@@ -55,7 +54,7 @@
     //箭头型
     &--arrow {
       .v-inlineblock;
-      margin: 0 @spacer-half;
+      margin: 0 @breadcrumb-spacer-half;
       line-height: 0;
       color: @breadcrumb-icon-arrow-color-default;
     }
@@ -63,7 +62,7 @@
     //斜杠型
     &--slash {
       .v-inlineblock;
-      margin: 0 @spacer-half;
+      margin: 0 @breadcrumb-spacer-half;
       line-height: 0;
       color: @breadcrumb-icon-slash-color-default;
     }
@@ -101,7 +100,7 @@
     top: 28px;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 120px;
+    max-width: @breadcrumb-option-max-width;
     background: @breadcrumb-option-box-bg;
     box-shadow: @breadcrumb-option-box-shadow;
     z-index: 20;
@@ -130,7 +129,7 @@
     left: 50%;
     bottom: 30px;
     transform: translateX(-50%);
-    width: 300px;
+    width: @breadcrumb-inner-msg-width;
     padding: @spacer;
     color: @breadcrumb-text-color-current;
     background: @bg-color-block;
@@ -166,8 +165,18 @@
     }
 
     .@{prefix}-breadcrumb__inner {
-      max-width: 120px;
+      max-width: @breadcrumb-inner-max-width-default;
       .t-overflow;
+
+      &:hover {
+        color: @breadcrumb-text-color-hover;
+        transition: color @anim-duration-base linear;
+        cursor: pointer;
+      }
+      
+      &:active {
+        .color-change;
+      }
     }
   }
 }
