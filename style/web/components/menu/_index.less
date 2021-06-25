@@ -44,7 +44,7 @@ a.@{prefix}-menu__item {
       left: 50%;
       transform: translate(-50%, -50%);
     }
-    
+
     .@{prefix}-menu__logo--left {
       position: relative;
       top: 50%;
@@ -61,12 +61,14 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__options:not(:empty) {
     position: relative;
+    display: flex;
+    align-items: center;
     max-width: 320px;
     height: 64px;
     line-height: 64px;
     text-align: right;
     margin-right: 8px;
-    overflow: scroll;
+    overflow-x: scroll;
 
     .@{prefix}-icon {
       width: 40px;
@@ -81,12 +83,13 @@ a.@{prefix}-menu__item {
     height: 40px;
     line-height: 40px;
     justify-content: center;
-    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
   }
 
   .@{prefix}-head-menu__submenu-box {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
 
     li.@{prefix}-menu__item {
@@ -120,7 +123,7 @@ a.@{prefix}-menu__item {
     text-align: center;
     color: @submenu-item-color;
     cursor: pointer;
-    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
     position: relative;
 
     &:before {
@@ -132,7 +135,7 @@ a.@{prefix}-menu__item {
       width: 100%;
       transform: scale(0);
       content: "";
-      transition: all .3s cubic-bezier(.645, .045, .355, 1);
+      transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
     }
 
     &.@{prefix}-is-active,
@@ -195,7 +198,7 @@ a.@{prefix}-menu__item {
   width: 232px;
   display: inline-block;
   background: @menu-theme-light;
-  transition: width .3s cubic-bezier(.645, .045, .355, 1);
+  transition: width @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
   white-space: nowrap;
 
   &.@{prefix}-menu--dark {
@@ -221,7 +224,6 @@ a.@{prefix}-menu__item {
         color: @menu-item-color--dark;
       }
     }
-
 
     .@{prefix}-submenu {
       position: relative;
@@ -378,12 +380,12 @@ a.@{prefix}-menu__item {
   .@{prefix}-submenu {
     margin-bottom: 4px;
 
-    >.@{prefix}-menu__item {
+    > .@{prefix}-menu__item {
       margin: 4px 0;
     }
 
     &.@{prefix}-is-active {
-      >.@{prefix}-menu__item {
+      > .@{prefix}-menu__item {
         color: @menu-light-active-color;
       }
     }
@@ -411,7 +413,7 @@ a.@{prefix}-menu__item {
     // display: none;
     // position: static;
     overflow: hidden;
-    transition: max-height .3s cubic-bezier(.645, .045, .355, 1);
+    transition: max-height @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
     // height: 0;
 
     .@{prefix}-menu__item {
@@ -456,7 +458,7 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius;
-    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
 
     &:first-child {
       margin-top: 0;
@@ -487,10 +489,10 @@ a.@{prefix}-menu__item {
 
     &:hover:not(.@{prefix}-is-active) {
       background: @menu-light-active-bg;
-    }
 
-    & + .@{prefix}-menu__item {
-      margin-top: 4px;
+      & + .@{prefix}-menu__item {
+        margin-top: 4px;
+      }
     }
   }
 }
@@ -509,7 +511,7 @@ a.@{prefix}-menu__item {
     position: relative;
 
     .@{prefix}-submenu-icon {
-      transition: .3s all;
+      transition: @anim-duration-slow all;
       width: 16px;
       height: 16px;
     }
@@ -563,7 +565,7 @@ a.@{prefix}-menu__item {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  
+
   .@{prefix}-icon + &__content {
     margin-left: 16px;
   }
@@ -627,7 +629,8 @@ a.@{prefix}-menu__item {
   &__popup {
     max-height: 0;
     overflow: hidden;
-    transition: max-height @anim-duration-base @anim-time-fn-easing, padding @anim-duration-base @anim-time-fn-easing;
+    transition: max-height @anim-duration-base @anim-time-fn-easing,
+      padding @anim-duration-base @anim-time-fn-easing;
     position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
@@ -635,24 +638,37 @@ a.@{prefix}-menu__item {
     .list-style-none();
     padding: 0px 8px;
 
-    // &::before {
-    //   top: 0;
-    //   bottom: 0;
-    //   content: " ";
-    //   height: 100%;
-    //   left: -18px;
-    //   opacity: .0001;
-    //   position: absolute;
-    //   right: 0;
-    //   top: -20px;
-    //   width: 100%;
-    //   z-index: -1;
-    // }
-
     &.t-is-opened {
       padding: 8px;
       max-height: 500px;
       box-shadow: @menu-default-shadow;
+    }
+
+    &.@{prefix}-menu__popup-scale {
+      overflow: unset;
+      transform: scaleY(0);
+      transform-origin: center top;
+      transition: transform @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+      padding: 8px;
+
+      &::before {
+        top: 0;
+        bottom: 0;
+        content: " ";
+        height: 100%;
+        left: -18px;
+        opacity: .0001;
+        position: absolute;
+        right: 0;
+        top: -20px;
+        width: 100%;
+        z-index: -1;
+      }
+
+      &.t-is-opened {
+        display: block;
+        transform: scale(1);
+      }
     }
 
     .@{prefix}-menu__item {
@@ -674,7 +690,6 @@ a.@{prefix}-menu__item {
   }
 
   &__options:not(:empty) {
-    
     .@{prefix}-icon {
       margin-right: 16px;
       color: @menu-item-color--light;
@@ -689,11 +704,11 @@ a.@{prefix}-menu__item {
 
 // opacity-transition
 .@{prefix}-opacity-transition {
-  transition: opacity .3s cubic-bezier(.55, 0, .1, 1);
+  transition: opacity @anim-duration-slow cubic-bezier(.55, 0, .1, 1);
 }
 .horizontal-collapse-transition
 .@{prefix}-submenu__title
 .@{prefix}-submenu__icon-arrow {
-  transition: .2s;
+  transition: @anim-duration-base;
   opacity: 0;
 }
