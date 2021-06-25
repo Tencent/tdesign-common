@@ -2,20 +2,26 @@
 
 
 ### 组件搭配使用
-#### 多输入框组合使用时，光标自动跳转；
-在多个输入框组合的场景下（如电话），输入完一个内容框后，光标需要自动跳转至下一个内容框，以方便用户无缝衔接输入。
 
-#### 与气泡提示结合
-在某些更加特殊的场景下，比如表格或者尺寸有固定要求的浮层，由于对布局的控制更加严格，为了更好的输入和展示体验，提示文字可以以气泡的形式出现，具体更加详细的规范内容请参考气泡提示
+
+
+#### 与气泡提示结合，可以用来解释说明或提示错误反馈。
 
 文本提示：
-<img src="/uploads/1097EAEC149E4D3A81B3B13C692646DC/image.png" alt="image.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%E6%A1%86%201.png"/>
 
 
 错误反馈提示：
-<img src="/uploads/4E4446C4BB9D4FBC8F6E077DA08E3AA5/image.png" alt="image.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%E6%A1%86%202.png"/>
 
 
 密码输入提示，针对密码输入有多条规则要求的输入框而定制的特殊样式：
 
-<img src="/uploads/0670EDA9C953424BB6B9B2AD7E65AD36/image.png" alt="image.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%E6%A1%86%203.png"/>
+
+
+
+
+
+
+

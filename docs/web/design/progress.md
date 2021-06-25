@@ -3,14 +3,13 @@
 
 ### 与页面布局相关
 
-#### 整体页面加载时，加载组件放置在页面正中间
+#### 页面加载时，加载组件放置在页面正中间
 
-<img src="https://tdesign.gtimg.com/site/design/progress%E5%B0%BA%E5%AF%B81-0918.jpg"/>
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BF%9B%E5%BA%A6%E6%9D%A1-%E5%B8%83%E5%B1%80-%E4%B8%AD%E9%97%B4@2x.png)
 
-#### 部分区块加载时，加载组件放置在区块内
+#### 局部加载时，加载组件放置在区块内
 
-<img src="https://tdesign.gtimg.com/site/design/progress%E5%B0%BA%E5%AF%B83-0918.jpg"/>
-
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BF%9B%E5%BA%A6%E6%9D%A1-%E5%B8%83%E5%B1%80-%E5%8C%BA%E5%9D%97%E5%86%85@2x.png)
 ### 相似组件
 
 | 组件名 | 何时使用                                                               |

@@ -3,12 +3,12 @@
 
 
 
-### 组件搭配使用
+### 组件常见用法
 
 
 #### 与对话框搭配使用，当做危险操作时，建议呼起对话框做二次确认操作。
 
-<img src="/uploads/2C036502D3AE42BDAB89FC877DBB6672/image.png" alt="image.png" />
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-%E6%95%B4%E4%BD%93%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)
 
 
 
@@ -17,13 +17,13 @@
 
 #### 开关对应的标签文案要准确简洁，只需表示所控制的内容，千万不要加入一些逻辑词语，或者和开关本身相反的内容。
 
-![正确&错误范例1](https://tdesign.gtimg.com/site/design/images/正确&错误范例1-1849383.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-%E6%AD%A3%E9%94%99-1.png)
 
 
 
 #### 开关适用于即时生效的操作，在表单场景下不建议使用开关。
 
-![正确&错误范例二](https://tdesign.gtimg.com/site/design/images/正确&错误范例二.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-%E6%AD%A3%E9%94%99-2.png)
 
 
 

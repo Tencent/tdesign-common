@@ -5,27 +5,27 @@
 
 #### 在小型模块内（空间有限）用到的分页控件，可以使用极简版或迷你版，以节省空间。
 
-![使用规范4](https://tdesign.gtimg.com/site/design/images/使用规范4-1822867.jpg)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%201.png"/>
 
-#### 分页控件一般出现在页面模块（列表、表格）后面，通常居于页面底部的右下角。
+#### 分页控件一般出现在页面模块（列表、表格）下方，通常居于底部左侧、中间和右侧位置
 
-![对齐方式](https://tdesign.gtimg.com/site/design/images/对齐方式-1822898.jpg)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202.png"/>
 
 ### 组件搭配使用
 
-#### 当模块内有多选选项时，在选中多选的状态下，建议选择可展示数据总量的分页控件。
+#### 可与数据统计提示搭配使用，更好辅助用户了解条目数量。
 
-![使用规范3](https://tdesign.gtimg.com/site/design/images/使用规范3-1822839.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%203.png"/>
 
 ### 建议/慎用示例
 
 #### 分页控件在空状态下建议放出来，给用户一个预期。
 
 建议：
-<img width="" src="/uploads/102A5DF0F21F42D6BBDAE3D5764CA653/image.png" alt="image.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%204.png"/>
 
 慎用：
-![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1822808.jpg)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%205.png"/>
 
 
 

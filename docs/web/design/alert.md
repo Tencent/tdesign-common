@@ -7,42 +7,39 @@
 
 站点顶部：
 
-![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1837953.jpg)
+![使用规范1](../../images/使用规范1-1837953.jpg)
 
 
 
 内容顶部：
 
-![使用规范2](https://tdesign.gtimg.com/site/design/images/使用规范2-1837976.jpg)
+![使用规范2](../../images/使用规范2-1837976.jpg)
 
 
 
 对话框内容区：
 
-![使用规范3](https://tdesign.gtimg.com/site/design/images/使用规范3-1837985.jpg)
-
-### 常见用法
-
-#### 当提示内容较多时，可使用折叠的方式做部分内容的隐藏，节省页面高度空间。
-<img width="" src="/uploads/828D2D3407824C8097B71E86CB460525/image.png" alt="image.png" />
+![使用规范3](../../images/使用规范3-1837985.jpg)
 
 
-### 建议/慎用案例
+
+
+### 建议/慎用示例
 
 #### 当页面中需要多条警告时，建议使用轮播的告警。
 
-![正确&错误范例](https://tdesign.gtimg.com/site/design/images/正确&错误范例.jpg)
+![正确&错误范例](../../images/正确&错误范例.jpg)
 
 
 
 
-![正确&错误范例2](https://tdesign.gtimg.com/site/design/images/正确&错误范例2-1838001.jpg)
+![正确&错误范例2](../../images/正确&错误范例2-1838001.jpg)
 
 
 
 #### 清晰表述警示内容，避免模糊不清。
 
-![正确&错误范例3](https://tdesign.gtimg.com/site/design/images/正确&错误范例3-1838009.jpg)
+![正确&错误范例3](../../images/正确&错误范例3-1838009.jpg)
 
 
 
