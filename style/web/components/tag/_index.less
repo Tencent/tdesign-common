@@ -1,11 +1,15 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
   padding: @tag-medium-padding;
   height: @tag-height-medium;
   font-size: @tag-medium-font-size;
@@ -36,6 +40,7 @@
 
   &--close,
   &--check {
+
     &:hover {
       color: @tag-default-hover-color;
     }
@@ -62,6 +67,7 @@
       cursor: text;
 
       .@{prefix}-icon-close {
+
         &:hover {
           color: @tag-text-color;
         }
@@ -106,6 +112,7 @@
       color: @tag-primary-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-primary-color;
         background-color: @tag-primary-light-color;
@@ -120,6 +127,7 @@
       color: @tag-success-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-success-color;
         background-color: @tag-success-light-color;
@@ -134,6 +142,7 @@
       color: @tag-text-color-1;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-info-color;
         background-color: @tag-info-light-color;
@@ -148,6 +157,7 @@
       color: @tag-warning-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-warning-color;
         background-color: @tag-warning-light-color;
@@ -162,6 +172,7 @@
       color: @tag-danger-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-danger-color;
         background-color: @tag-danger-light-color;
@@ -177,6 +188,7 @@
       color: @tag-primary-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-primary-color;
@@ -192,6 +204,7 @@
       color: @tag-success-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-success-color;
@@ -207,6 +220,7 @@
       color: @tag-text-color-1;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-info-color;
@@ -222,6 +236,7 @@
       color: @tag-warning-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-warning-color;
@@ -237,6 +252,7 @@
       color: @tag-danger-color;
     }
     .@{prefix}-icon-close {
+
       &:hover {
         color: @tag-text-color;
         background-color: @tag-danger-color;
@@ -282,6 +298,7 @@
   }
 
   &.@{prefix}-tag--ellipsis {
+    display: inline-block;
     .text-ellipsis();
   }
 }
