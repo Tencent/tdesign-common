@@ -34,8 +34,8 @@
 #### 表单中的单选框选项全部外显，选项数量不宜过多，当界面空间承载有限时，可考虑使用下拉选择。
 
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/wecom-temp-1275d6ccf9c1588b21989e612b6f7a64.png)
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/wecom-temp-2139e718ea845644a80112b689b56dac.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/image-1.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/image-2.png)
 
 
 

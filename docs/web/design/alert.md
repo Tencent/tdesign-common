@@ -7,19 +7,19 @@
 
 站点顶部：
 
-![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1837953.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-1.png)
 
 
 
 内容顶部：
 
-![使用规范2](https://tdesign.gtimg.com/site/design/images/使用规范2-1837976.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-2.png)
 
 
 
 对话框内容区：
 
-![使用规范3](https://tdesign.gtimg.com/site/design/images/使用规范3-1837985.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-3.png)
 
 
 
@@ -28,18 +28,18 @@
 
 #### 当页面中需要多条警告时，建议使用轮播的告警。
 
-![正确&错误范例](https://tdesign.gtimg.com/site/design/images/正确&错误范例.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%BB%BA%E8%AE%AE-1.png)
 
 
 
 
-![正确&错误范例2](https://tdesign.gtimg.com/site/design/images/正确&错误范例2-1838001.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%BB%BA%E8%AE%AE-2.png)
 
 
 
 #### 清晰表述警示内容，避免模糊不清。
 
-![正确&错误范例3](https://tdesign.gtimg.com/site/design/images/正确&错误范例3-1838009.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%BB%BA%E8%AE%AE3.png)
 
 
 

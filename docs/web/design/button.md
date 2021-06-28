@@ -7,19 +7,19 @@
 
 #### 在页面、表单、对话框等场景中按钮一般会处于用户浏览路径上，便于用户发现，高效引导行动。
 
-![ia_200000007](https://tdesign.gtimg.com/site/design/images/ia_200000007.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%80.png)
 
 
 
 #### 主按钮通常单独使用，是页面里的最主要的视觉焦点，在一个页面中，建议最多只出现一个主按钮。
 
-![ia_200000008](https://tdesign.gtimg.com/site/design/images/ia_200000008.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%802.png)
 
 
 
 #### 当有限的空间中需要放置按钮数量过多时，可以适当将次按钮折叠。
 
-![ia_200000009](https://tdesign.gtimg.com/site/design/images/ia_200000009.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%803.png)
 
 
 
@@ -27,7 +27,7 @@
 
 #### 不同类型按钮搭配使用，可以用来表达不同的强调级别。
 
-![ia_200000011](https://tdesign.gtimg.com/site/design/images/ia_200000011.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E6%90%AD%E9%85%8D%E4%BD%BF%E7%94%A8.png)
 
 
 
@@ -36,13 +36,13 @@
 
 #### 用户在使用主、次按钮时，需要表达主次关系，突出强调的最主要操作，其他操作使用次按钮，禁止同时使用多个主按钮。
 
-![ia_200000012](https://tdesign.gtimg.com/site/design/images/ia_200000012-1762824.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%BB%BA%E8%AE%AE1.png)
 
 
 
 #### 多个按钮组合使用时，每个按钮之间需存在一定间隔，不建议连在一起。
 
-![ia_200000013](https://tdesign.gtimg.com/site/design/images/ia_200000013-1762831.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%BB%BA%E8%AE%AE2.png)
 
 
 

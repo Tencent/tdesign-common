@@ -8,12 +8,12 @@
 
 
 #### 列表与加载搭配使用
-配图：加载
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-%E5%8A%A0%E8%BD%BD.png)
 
 #### 列表与分页搭配使用
-配图：分页
 
-![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1834986.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-%E5%88%86%E9%A1%B5.png)
 
 
 
@@ -23,18 +23,18 @@
 
 #### 列表建议只展示用户必须的信息，将其余的信息及字段隐藏。
 
-![正确&错误范例1](https://tdesign.gtimg.com/site/design/images/正确&错误范例1-1835022.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-3.png)
 
 
 #### 列表适合展示多个相同结构的内容，如果字段类型过多且简短，建议使用表格。
 
-![正确&错误范例2](https://tdesign.gtimg.com/site/design/images/正确&错误范例2-1835040.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-4.png)
 
 
 
 #### 列表的操作建议保证在3个及以内，尽量不超出。超出使用下拉菜单收纳，不建议放出过多操作。
 
-![正确&错误范例3](https://tdesign.gtimg.com/site/design/images/正确&错误范例3-1835058.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-5.png)
 
 
 
