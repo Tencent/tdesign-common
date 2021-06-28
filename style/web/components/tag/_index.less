@@ -5,7 +5,9 @@
 @import "./_mixin.less";
 
 .@{prefix}-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
   padding: @tag-medium-padding;
   height: @tag-height-medium;
   font-size: @tag-medium-font-size;
@@ -282,6 +284,7 @@
   }
 
   &.@{prefix}-tag--ellipsis {
+    display: inline-block;
     .text-ellipsis();
   }
 }
