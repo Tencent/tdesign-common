@@ -13,7 +13,7 @@
 
 #### 侧边导航中，尽量确保一屏展示完导航菜单。如内容过多，可尝试将菜单分类将二级收起，鼠标hover时出现。
 
-![正确&错误范例1](https://tdesign.gtimg.com/site/design/images/正确&错误范例1-1824651.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%BC%E8%88%AA.png)
 
 
 
