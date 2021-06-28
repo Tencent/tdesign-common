@@ -230,6 +230,10 @@ a.@{prefix}-menu__item {
       &.@{prefix}-is-active {
         > .@{prefix}-menu__item {
           color: @menu-theme-light;
+
+          .@{prefix}-icon {
+            color: @menu-theme-light;
+          }
         }
       }
     }
@@ -379,16 +383,6 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-submenu {
     margin-bottom: 4px;
-
-    > .@{prefix}-menu__item {
-      margin: 4px 0;
-    }
-
-    &.@{prefix}-is-active {
-      > .@{prefix}-menu__item {
-        color: @menu-light-active-color;
-      }
-    }
   }
 
   .@{prefix}-menu__options:not(:empty) {
@@ -406,6 +400,18 @@ a.@{prefix}-menu__item {
       padding: 8px;
       cursor: pointer;
       color: @text-color-primary;
+    }
+  }
+
+  .@{prefix}-menu__item {
+    &.@{prefix}-is-opened {
+      margin: 4px 0;
+      color: @menu-light-active-color;
+      background-color: unset;
+
+      .@{prefix}-icon {
+        color: @menu-light-active-color;
+      }
     }
   }
 
@@ -589,6 +595,13 @@ a.@{prefix}-menu__item {
       &.@{prefix}-is-active {
         color: @menu-item-active-color--dark;
         background-color: @menu-item-active-bg--dark;
+      }
+
+      &.@{prefix}-is-opened {
+
+        .@{prefix}-icon {
+          color: @menu-item-active-color--dark;
+        }
       }
 
       &:hover:not(.@{prefix}-is-active) {
