@@ -151,11 +151,11 @@
       .text-ellipsis();
     }
 
-    &__box {
-      background-color: @upload-card-box-bg-color;
-      border: @upload-card-box-border;
-      border-radius: @upload-card-box-border-radius;
-    }
+    // &__box {
+    //   background-color: @upload-card-box-bg-color;
+    //   border: @upload-card-box-border;
+    //   border-radius: @upload-card-box-border-radius;
+    // }
 
     &__content {
       position: relative;
@@ -298,6 +298,12 @@
     font-size: @upload-dragger-text-font-size;
     line-height: @upload-dragger-text-line-height;
     color: @upload-dragger-text-color;
+
+    .@{prefix}-upload__single-name {
+      flex: 1;
+      width: @upload-dragger-text-single-name-width;
+      .text-ellipsis();
+    }
   }
 }
 
