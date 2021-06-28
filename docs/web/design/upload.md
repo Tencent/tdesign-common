@@ -6,5 +6,5 @@
 上传组件需要呈现清晰的使用状态，包含初始状态、拖拽状态、上传过程、上传成功和上传失败等
 
 
-![状态](../../images/状态.png)
+![状态](https://tdesign.gtimg.com/site/design/images/状态.png)
 

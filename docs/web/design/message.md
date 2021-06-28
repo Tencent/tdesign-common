@@ -8,7 +8,7 @@
 
 （示例：因为网络原因，加载页面时出错）
 
-![使用规范1](../../images/使用规范1-1837369.jpg)
+![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1837369.jpg)
 
 
 
