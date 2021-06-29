@@ -220,21 +220,16 @@ a.@{prefix}-menu__item {
         background-color: @menu-default-active-color;
       }
 
+      &.@{prefix}-is-opened {
+        color: @menu-theme-light;
+
+        .@{prefix}-icon {
+          color: @menu-theme-light;
+        }
+      } 
+
       .@{prefix}-icon {
         color: @menu-item-color--dark;
-      }
-    }
-
-    .@{prefix}-submenu {
-      position: relative;
-      &.@{prefix}-is-active {
-        > .@{prefix}-menu__item {
-          color: @menu-theme-light;
-
-          .@{prefix}-icon {
-            color: @menu-theme-light;
-          }
-        }
       }
     }
 
@@ -383,6 +378,7 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-submenu {
     margin-bottom: 4px;
+    position: relative;
   }
 
   .@{prefix}-menu__options:not(:empty) {
