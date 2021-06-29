@@ -522,8 +522,8 @@ a.@{prefix}-menu__item {
       height: 16px;
     }
 
-    &.@{prefix}-is-opened {
-      .@{prefix}-submenu-icon {
+    &.@{prefix}-is-opened > li{
+      & > .@{prefix}-submenu-icon {
         transform: rotate(180deg);
       }
     }
