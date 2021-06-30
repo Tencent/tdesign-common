@@ -516,14 +516,24 @@ a.@{prefix}-menu__item {
   .@{prefix}-submenu {
     position: relative;
 
+    &.@{prefix}-is-active {
+      > .@{prefix}-menu__item {
+        color: @menu-theme-dark;
+
+        .@{prefix}-icon {
+          color: @menu-theme-dark;
+        }
+      }
+    }
+
     .@{prefix}-submenu-icon {
       transition: @anim-duration-slow all;
       width: 16px;
       height: 16px;
     }
 
-    &.@{prefix}-is-opened {
-      .@{prefix}-submenu-icon {
+    &.@{prefix}-is-opened > li {
+      & > .@{prefix}-submenu-icon {
         transform: rotate(180deg);
       }
     }
@@ -545,6 +555,10 @@ a.@{prefix}-menu__item {
     a {
       color: unset;
       text-decoration: none;
+
+      &.@{prefix}-menu__item-link {
+        color: unset
+      }
     }
 
     // @menu-item-hover-color--light
