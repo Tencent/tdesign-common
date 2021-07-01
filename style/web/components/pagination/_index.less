@@ -43,10 +43,11 @@
     cursor: pointer;
     color: @pagination-text-color;
     border-radius: @pagination-border-radius-base;
+    font-size: @pagination-btn-font-size;
     .pagination-btn(@pagination-height-default);
 
     &.@{prefix}-is-disabled {
-      cursor: auto;
+      cursor: not-allowed;
     }
 
     &--prev {
@@ -60,24 +61,6 @@
     // 极简版
     & + .@{prefix}-pagination__select {
       margin-right: 0;
-    }
-
-    // hover
-    &:hover {
-      background-color: @pagination-bg-color-btn-hover;
-    }
-
-    &:active {
-      background-color: @pagination-bg-color-btn-active;
-    }
-
-    // 不可点
-    &.@{prefix}-is-disabled,
-    &.@{prefix}-is-disabled:hover,
-    &.@{prefix}-is-disabled:active {
-      background-color: @pagination-bg-color-disabled;
-      color: @pagination-icon-color-disabled;
-      border-color: @pagination-border-color;
     }
   }
 
@@ -99,9 +82,10 @@
     text-align: center;
     border-radius: @pagination-border-radius-base;
     cursor: pointer;
+
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
-      @pagination-padding-horizontal-default;
+      @pagination-padding-horizontal-default; @pagination-height-default - 2;
     );
 
     &:hover {
@@ -207,19 +191,19 @@
       &__number {
         border: 0 none;
 
-        &:hover {
+        &:hover:not(&.@{prefix}-is-current) {
           color: @pagination-text-color-btn;
           background-color: @pagination-bg-color-btn-hover;
         }
 
-        &:active {
+        &:active:not(&.@{prefix}-is-current) {
           color: @pagination-text-color-btn;
           background-color: @pagination-bg-color-btn-active;
         }
 
         .pagination-number--size(
           @pagination-height-s; @pagination-font-s;
-          @pagination-padding-horizontal-s;
+          @pagination-padding-horizontal-s; @pagination-height-s;
         );
 
         &.@{prefix}-is-disabled {
@@ -240,6 +224,7 @@
       &__btn {
         border: 0 none;
         background: none;
+
         .pagination-btn(@pagination-height-s);
       }
     }
