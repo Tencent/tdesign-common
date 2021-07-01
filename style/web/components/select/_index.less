@@ -27,7 +27,7 @@
     }
   }
 
-  & .@{prefix}-select-placeholder {
+  &:not(.@{prefix}-is-disabled) .@{prefix}-select-placeholder {
     color: @select-placeholder-color;
     margin-left: @select-placeholder-margin;
   }
@@ -46,7 +46,6 @@
     right: 0;
     top: 0;
     color: @select-icon-color;
-    opacity: @select-right-icon-opacity;
   }
   .@{prefix}-select-active-icon {
     color: @select-border-color-active;
@@ -64,7 +63,7 @@
     margin: @select-icon-margin;
     left: 0;
     top: 0;
-    color: @select-icon-color
+    color: @select-icon-color;
   }
 
   .@{prefix}-select-input {
@@ -87,7 +86,7 @@
   }
 
   .@{prefix}-tag,
-  +.@{prefix}-tag {
+  + .@{prefix}-tag {
     margin: @select-tag-margin;
   }
   .@{prefix}-tag {
@@ -112,6 +111,13 @@
 .@{prefix}-select.@{prefix}-no-border {
   border: 0;
   width: auto;
+  
+  &:hover {
+    background: @select-option-bg-color-hover;
+  }
+  > .@{prefix}-select-selectedSingle {
+    margin-right: @select-no-border-margin-right;
+  }
 }
 
 .@{prefix}-select.@{prefix}-size-l {
@@ -158,12 +164,10 @@
 
   & > .@{prefix}-select-right-icon {
     color: @select-icon-color-disabled;
-    opacity: @select-right-icon-opacity-disabled;
   }
 
   & > .@{prefix}-select-left-icon {
     color: @select-icon-color-disabled;
-    opacity: @select-right-icon-opacity-disabled;
   }
 }
 .@{prefix}-select-popup-reference {
@@ -212,7 +216,7 @@
 }
 
 // option group
-.@{prefix}-option-group +.@{prefix}-option-group {
+.@{prefix}-option-group + .@{prefix}-option-group {
   border-top: 1px @select-optiongroup-border-color solid;
   padding-top: @select-optiongroup-border-padding;
   margin-top: @select-optiongroup-border-margin;
@@ -242,6 +246,7 @@
 // option
 .@{prefix}-select-option {
   display: block;
+  border-radius: @select-option-border-radius;
   .text-ellipsis();
   height: @select-option-height-default;
   line-height: @select-option-line-height;
@@ -260,9 +265,10 @@
     }
   }
 
-  :active {
+  &:active {
     background: @select-option-bg-color-active;
   }
+
   .@{prefix}-checkbox__label {
     color: @select-option-color;
   }
@@ -293,12 +299,12 @@
   color: @select-selected-color;
   background-color: @select-selected-bg-color;
   transition: all @anim-duration-base linear;
-  
+
   &:hover {
     background-color: @select-selected-bg-color-hover;
   }
 }
 
-.@{prefix}-select-option +.@{prefix}-select-option {
+.@{prefix}-select-option + .@{prefix}-select-option {
   margin-top: @select-options-margin;
 }

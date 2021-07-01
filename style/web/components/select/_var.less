@@ -4,14 +4,14 @@
 @select-border-color-active: @brand-color;
 @select-selected-color: @brand-color;
 @select-selected-bg-color: @brand-color-light;
-@select-selected-bg-color-hover: inherit;
+@select-selected-bg-color-hover: @select-selected-bg-color;
 @select-option-bg-color-hover: @bg-color-container-hover;
 @select-option-bg-color-active: @bg-color-container-active;
 @select-option-checkbox-color: @bg-color-container-hover;
 @select-option-group-header-color: @text-color-placeholder;
 @select-option-color: @text-color-primary;
 @select-bg-color-disabled: @bg-color-component-disabled;
-@select-placeholder-color: @text-color-placeholder;
+@select-placeholder-color: @text-color-placeholder; // 如果需要改变文字颜色的透明度请通过这里修改
 @select-placeholder-color-disabled: @text-color-disabled;
 @select-color-disabled: @text-color-disabled;
 @select-color-empty: @text-color-disabled;
@@ -20,7 +20,7 @@
 @select-optiongroup-border-color: @border-level-1-color;
 @select-input-color: @text-color-primary;
 @select-option-checkbox-label-color-hover: inherit;
-@select-option-checkbox-input-color-hover: inherit;
+@select-option-checkbox-input-color-hover: @brand-color;
 @select-right-icon-hover: @brand-color;
 // 尺寸
 @select-height-s: 24px;
@@ -42,10 +42,9 @@
 
 //radius
 @select-border-radius: @border-radius;
+@select-option-border-radius: @border-radius;
 
 //透明度
-@select-right-icon-opacity: .4;
-@select-right-icon-opacity-disabled:.26;
 
 // padding
 @select-option-padding-s: 5px 8px;
@@ -63,4 +62,4 @@
 @select-optiongroup-border-margin: 7px;
 @select-dropdown-margin: 8px 0;
 @select-options-margin: 4px;
-
+@select-no-border-margin-right: @spacer;
