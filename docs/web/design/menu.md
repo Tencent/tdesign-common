@@ -3,20 +3,11 @@
 
 ### 与页面布局相关
 
-导航栏的对齐布局方式可参考【布局Layout】。
-
-
-
+导航栏的对齐布局方式可参考【[布局Layout](.layout)】。
 
 
 ### 建议/慎用示例
 
-#### 侧边导航中，尽量确保一屏展示完导航菜单。如内容过多，可尝试将菜单分类将二级收起，鼠标hover时出现。
+当侧边导航菜单过多时，可将菜单分层级显示，避免内容过多无法在一屏显示完整。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%BC%E8%88%AA.png)
-
-
-
-#### 在侧边导航中，为确保内容聚焦，建议同一时刻只能展开一个二级菜单，点击展开其他将收起之前展开的二级菜单。
-
-![正确&错误范例2](https://tdesign.gtimg.com/site/design/images/正确&错误范例2-1824666.jpg)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%201.png"/>
