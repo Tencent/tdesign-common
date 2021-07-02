@@ -46,18 +46,25 @@
 
 .@{prefix}-popup[data-popper-placement^='bottom'],
 .@{prefix}-popup[data-popper-placement^='top'] {
-  .@{prefix}-popup-content--arrow {
-    margin: @popup-content-arrow-spacer 0;
+  .@{prefix}-popup-content {
+    margin: @popup-content-margin 0;
+
+    &--arrow {
+      margin: @popup-content-arrow-spacer 0;
+    }
   }
 }
 
 .@{prefix}-popup[data-popper-placement^='left'],
 .@{prefix}-popup[data-popper-placement^='right'] {
-  .@{prefix}-popup-content--arrow {
-    margin: 0 @popup-content-arrow-spacer;
+  .@{prefix}-popup-content {
+    margin: 0 @popup-content-margin;
+
+    &--arrow {
+      margin: 0 @popup-content-arrow-spacer;
+    }
   }
 }
-
 
 
 .@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-popup__arrow {

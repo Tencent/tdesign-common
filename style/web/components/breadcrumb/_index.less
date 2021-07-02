@@ -7,6 +7,8 @@
 
   &__separator {
     margin: 0 @breadcrumb-spacer-half;
+    display: flex;
+    align-items: center;
   }
 
   &__item {
@@ -31,7 +33,7 @@
     }
 
     .@{prefix}-icon {
-      margin-right: @breadcrumb-spacer-half;
+      font-size: @breadcrumb-icon-size;
     }
 
     .@{prefix}-link {
@@ -72,6 +74,10 @@
     .v-inlineblock;
     font-size: @breadcrumb-font-base;
     word-break: break-all;
+
+    .@{prefix}-icon {
+      margin-right: @breadcrumb-spacer-half;
+    }
   }
 
   //下拉框
@@ -108,7 +114,7 @@
     &-item {
       padding: @spacer;
       font-size: @breadcrumb-font-base;
-      line-height: @breadcrumb-line-height-s;
+      line-height: @breadcrumb-line-height;
       color: @breadcrumb-text-color-current;
       .t-overflow;
 
@@ -155,6 +161,8 @@
 
   &--text-oveflow {
     position: relative;
+    display: flex;
+    align-items: center;
 
     &:hover {
 
