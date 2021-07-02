@@ -24,24 +24,20 @@
 
 Small 最大宽度120
 
-::: demo demos/small
-:::
+{{ small }}
 
 Large 最大宽度320
 
-::: demo demos/large
-:::
+{{ large }}
 
 ### 指定容器
 
 可以指定一个的容器进行锚点定位
 
-::: demo demos/container
-:::
+{{ container }}
 
 ### 特定交互的锚点Target
 
 用于锚点定位后的交互, 包括: 高亮当前锚点、复制链接
 
-::: demo demos/target
-:::
+{{ target }}
