@@ -502,18 +502,19 @@
 
     .@{prefix}-table-filter-pop-content__inner {
       padding: 16px;
-
-      .t-checkbox,
-      .t-radio {
-        display: block;
-        margin: 0;
-      }
-
-      .t-checkbox + .t-checkbox,
-      .t-radio + .t-radio {
-        margin-top: 16px;
-      }
     }
+
+    .@{prefix}-radio-group {
+      display: block;
+      height: auto;
+    }
+
+    .@{prefix}-checkbox,
+    .@{prefix}-radio {
+      display: block;
+      line-height: 34px;
+    }
+
     .@{prefix}-table-filter-pop-content__button {
       border-top: 1px solid @table-border-color;
       padding: 16px;
