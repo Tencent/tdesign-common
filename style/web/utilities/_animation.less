@@ -75,7 +75,7 @@
   }
   &.@{prefix}-clicked::before {
     opacity: 1;
-    animation: me-clicked-animation @anim-duration-base @anim-time-fn-easing both;
+    animation: me-clicked-animation @anim-duration-base*2 @anim-time-fn-easing both;
   }
 }
 
@@ -85,8 +85,12 @@
     animation-timing-function: @anim-time-fn-easing;
   }
 
-  100% {
+  50% {
     transform: translateX(calc(100%)) skewX(-8deg);
     opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
