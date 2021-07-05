@@ -116,5 +116,4 @@
 
 ## 合并单元格
 
-::: demo demos/mergeCells
-:::
+{{ mergeCells }}
