@@ -77,7 +77,7 @@
   // 输入框被聚焦
   &.@{prefix}-is-focused {
     .@{prefix}-input__prefix,
-    .@{prefix}-input__suffix {
+    .@{prefix}-input__suffix:not(.@{prefix}-input__clear) { // 除了clear icon其他都在focus时变色
       .@{prefix}-icon {
         color: @input-border-color-default-focus;
       }
