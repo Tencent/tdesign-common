@@ -2,44 +2,29 @@
 
 
 ### 与页面布局相关
+选择器下拉面板出现时，应确保其布局在页面可视区内。
 
-#### 选择器下拉面板出现时需考虑所处页面的位置，确保在可视区内。
-
-
-不同页面位置展开方式-左上角：
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%B7%A6%E4%B8%8A%E8%A7%92.png)
+<em>图示：不同页面位置展开方式-左上角</em>
 
-
-
-
-不同页面位置展开方式-右下角：
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%8F%B3%E4%B8%8B%E8%A7%92.png)
+<em>图示：不同页面位置展开方式-右下角</em>
 
-
-不同页面位置展开方式-左下角：
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%B7%A6%E4%B8%8B%E8%A7%92.png)
+<em>图示：不同页面位置展开方式-左下角</em>
 
-
-
-不同页面位置展开方式-右上角：
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%8F%B3%E4%B8%8A%E8%A7%92.png)
-
-
-
-
-
-
+<em>图示：不同页面位置展开方式-右上角</em>
 
 
 ### 组件搭配使用
 
-#### 当选项较多时，可与搜索框结合使用，便于用户搜索对象
+与搜索框搭配使用，当选项较多时，便于用户快速搜索到相关对象。
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E7%BB%84%E4%BB%B6%E6%90%AD%E9%85%8D%E4%BD%BF%E7%94%A8.png)
-
 
 
 
