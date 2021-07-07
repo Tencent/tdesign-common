@@ -29,29 +29,7 @@
 
 ### 不同位置的抽屉
 
-#### 右侧抽屉（最常用）
-
-抽屉从右侧向左侧滑出。
-
-{{ position-right }}
-
-#### 左侧抽屉
-
-抽屉从左侧向右侧滑出。
-
-{{ position-left }}
-
-#### 顶部抽屉
-
-抽屉从顶部向底部滑出。
-
-{{ position-top }}
-
-#### 底部抽屉
-
-抽屉从底部向顶部滑出。
-
-{{ position-bottom }}
+{{ placement }}
 
 ### 不同尺寸的抽屉
 
@@ -63,9 +41,13 @@
 
 ### 弹出模式抽屉
 
+整个页面的 push 模式需设置 attach 为 body。（抽屉组件默认挂载到元素本身所在的位置）
+
 {{ popup }}
 
 ### 渲染和呈现在当前父元素的抽屉
+
+添加 API `showInAttachedElement` 即可
 
 {{ attach-parent }}
 
