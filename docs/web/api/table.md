@@ -64,11 +64,11 @@
 
 #### 单字段排序
 
-{{ singleSort }}
+{{ single-sort }}
 
 #### 多字段排序
 
-{{ multipleSort }}
+{{ multiple-sort }}
 
 ### 可选择数据行
 
@@ -90,17 +90,13 @@
 
 #### 远程数据分页
 
-{{ pagination-ajax }}
+{{ ajax }}
 
 ### 自定义内容
 
 ### 自定义单元格
 
 {{ custom-cell }}
-
-### 自定义表头
-
-{{ custom-header }}
 
 ### 筛选
 
