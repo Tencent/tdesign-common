@@ -14,10 +14,16 @@
 
 底部区域（Footer）：位于页面底部，通常用于放置辅助信息。
 
-![](https://iwiki.oa.tencent.com/download/attachments/444689894/%E5%B8%83%E5%B1%80%E9%85%8D%E5%9B%BE1.jpg?version=1&modificationDate=1606100425000&api=v2)
+<img style="margin-top: 10px;" width="100%" src="https://iwiki.oa.tencent.com/download/attachments/444689894/%E5%B8%83%E5%B1%80%E9%85%8D%E5%9B%BE1.jpg?version=1&modificationDate=1606100425000&api=v2" />
 
 ## 组件类型
 在TDesign中，提供 3 种不同形式的布局：侧边导航布局、顶部导航布局和组合导航布局。
+
+### 基础用法
+
+`<t-layout>`：layout容器、可包裹子组件`<t-header>`、`<t-footer>`、`<t-aside>`、`<t-content>`。当子元素中包含 `<t-aside>` 时，全部子元素会水平排列，否则会垂直排列。
+
+{{ base }}
 
 ### 侧边导航布局
 

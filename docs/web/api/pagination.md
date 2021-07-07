@@ -53,4 +53,4 @@
 
 ### 极简迷你版分页
 
-{{ simpleMini }}
+{{ simple-mini }}
