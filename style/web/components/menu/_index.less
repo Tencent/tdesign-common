@@ -52,10 +52,6 @@ a.@{prefix}-menu__item {
     margin-right: 8px;
     overflow: hidden;
 
-    &:hover {
-      overflow-x: scroll;
-    }
-
     .@{prefix}-icon {
       width: 40px;
       height: 40px;
@@ -83,18 +79,28 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu__item {
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: flex-start;
       padding-left: 16px;
       min-width: 100%;
       margin-left: 0;
+      color: @head-menu-popup-item-color;
 
       & + .@{prefix}-menu__item {
         margin-top: 4px;
       }
+
+      &.@{prefix}-is-active {
+        color: @head-menu-popup-item-active-color;
+        background-color: @head-menu-popup-item-active-bg;
+      }
     }
   }
 
-  .@{prefix}-submenu-icon {
+  .@{prefix}-submenu-icon { // to remove
+    margin-left: 8px;
+  }
+
+  .@{prefix}-fake-arrow {
     margin-left: 8px;
   }
 
@@ -191,6 +197,10 @@ a.@{prefix}-menu__item {
         padding: 0;
         justify-content: center;
       }
+    }
+
+    .@{prefix}-fake-arrow {
+      display: none;
     }
 
     .@{prefix}-menu__item {
@@ -337,6 +347,22 @@ a.@{prefix}-menu__item {
     }
   }
 
+  .@{prefix}-menu__dropdown {
+    // display: none;
+    // position: static;
+    overflow: hidden;
+    transition: max-height @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+    // height: 0;
+
+    .@{prefix}-menu__item {
+      padding-left: 64px;
+    }
+
+    &--show {
+      display: block;
+    }
+  }
+
   .@{prefix}-menu__sub {
     padding: 0;
     max-height: 0;
@@ -386,7 +412,7 @@ a.@{prefix}-menu__item {
       color: @text-color-secondary;
     }
 
-    .@{prefix}-submenu-icon {
+    .@{prefix}-fake-arrow {
       margin-left: auto;
     }
 
