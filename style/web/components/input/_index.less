@@ -56,6 +56,7 @@
     & > .@{prefix}-input__inner {
       height: @input-height-l;
       line-height: @input-height-l;
+      font-size: @input-font-size-l;
     }
   }
 
@@ -63,6 +64,7 @@
     & > .@{prefix}-input__inner {
       height: @input-height-s;
       line-height: @input-height-s;
+      font-size: @input-font-size-s;
     }
   }
 
@@ -71,6 +73,16 @@
     .@{prefix}-icon {
       font-size: @input-inner-icon-font-size;
       color: @text-level-3-color;
+    }
+  }
+
+  .@{prefix}-input__suffix:is(.@{prefix}-input__clear) { // 除了clear icon其他都在focus时变色
+    .@{prefix}-icon {
+      transition: all @anim-time-fn-easing @anim-duration-base;
+
+      &:hover {
+        color: @input-border-color-default-hover;
+      }
     }
   }
 
@@ -146,15 +158,19 @@
       }
     }
     .@{prefix}-input {
+      .@{prefix}-input__inner {
+        border-radius: @input-border-radius;
+      }
+
       &:first-child {
         .@{prefix}-input__inner {
-          border-radius: @input-border-radius 0 0 @input-border-radius;
+          border-radius: @input-border-radius;
         }
       }
 
       &:last-child {
         .@{prefix}-input__inner {
-          border-radius: 0 @input-border-radius @input-border-radius 0;
+          border-radius: @input-border-radius;
         }
       }
     }
