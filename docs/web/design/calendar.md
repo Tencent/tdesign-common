@@ -1,26 +1,22 @@
-## 组件设计指南
 
 
 ### 与页面布局相关
 
 事项日历面板，通常单独出现在整一页面内容区中。
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%201.png"/>
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%E5%8E%86%201.png"/>
-
-卡片日历面板，通常单独出现在位置有限的内容区/卡片内/表单内显示。
-
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%E5%8E%86%202.png"/>
+卡片日历面板，通常单独出现在位置有限的内容区、卡片内或表单内显示。
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%202.png"/>
 
 ### 组件搭配使用
 
 事项日历与标签搭配使用，将事项进行分类，例如：分为警告事件、正常事件和错误事件。
-
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%E5%8E%86%203.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%203.png"/>
 
 
 ### 相似组件
 
 | 组件名 | 何时使用                                                                       |
 | :----- | :----------------------------------------------------------------------------- |
-| 日 历 | 同一页面内容篇幅较长，用户需要快速定位到某部分内容时，可通过锚点进行内容间的跳转。 |
-| 日历选择器| 当内容过多时，可以将不同类型内容分类，使用选项卡进行扁平化收纳。                |
+| [日 历](./calendar) | 同一页面内容篇幅较长，用户需要快速定位到某部分内容时，可通过锚点进行内容间的跳转。 |
+| [日历选择器](./DatePicker)| 当内容过多时，可以将不同类型内容分类，使用选项卡进行扁平化收纳。                |

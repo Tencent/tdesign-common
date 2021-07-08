@@ -1,9 +1,8 @@
-## 组件设计指南
 
 
 ### 与页面布局相关
 
-常使用在站点顶部、内容区顶部或对话框内容区等位置。
+常布局在页面全局顶部、对应内容区顶部或对话框内容区。
 
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-1.png)

@@ -1,4 +1,3 @@
-## 组件设计指南
 
 
 
@@ -14,7 +13,7 @@
 
 ### 组件常见用法
 
-当单元格显示数据较多时，可以多行显示（如显示3行）或者截断显示，鼠标hover时呈现详情内容。
+当单元格显示数据较多时，可最多显示3行，无法显示的内容隐藏，当鼠标hover时显示隐藏内容。
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC%203.png"/>
 
