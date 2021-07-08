@@ -1,4 +1,3 @@
-## 组件设计指南
 
 
 
@@ -11,6 +10,13 @@
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-%E5%8A%A0%E8%BD%BD.png)
 
+
+
+<em>图示：滚动加载更多</em>
+
+
+<em>图示：点击加载更多</em>
+
 列表与分页搭配使用
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-%E5%88%86%E9%A1%B5.png)
@@ -18,7 +24,7 @@
 
 
 
-### 建议/慎用示例
+### 推荐/慎用示例
 
 列表建议只展示用户必须的信息，将其余的信息及字段隐藏。
 

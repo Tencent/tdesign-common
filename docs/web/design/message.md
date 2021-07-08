@@ -1,4 +1,3 @@
-## 组件设计指南
 
 
 
@@ -9,7 +8,14 @@
 
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/meaaage03.png)
-<em>图示：因为网络原因，加载页面时出错</em>
+<em>图示：上方居中</em>
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage04.png)
+<em>图示：右上角</em>
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage05.png)
+<em>图示：左下角</em>
+
 
 
 
