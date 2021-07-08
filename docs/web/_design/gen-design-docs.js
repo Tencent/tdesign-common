@@ -34,6 +34,6 @@ docs.forEach((doc) => {
   let [, designContent] = data.split('## 组件设计指南');
   if (!designContent || fileName === 'gen') return;
 
-  designContent = `## 组件设计指南\n${designContent}`;
+  designContent = `${designContent}`;
   fs.writeFileSync(path.join(__dirname, `../design/${fileName}.md`), designContent);
 });
