@@ -92,8 +92,29 @@
   top: 20%;
 }
 
-.@{prefix}-loading-gradient {
-  background: conic-gradient(from 90deg at 50% 50%, #fff 0deg, @loading-gradient-color 360deg);
-  border-radius: 50%;
+.@{prefix}-loading__gradient {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+
+  > div {
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from 90deg at 50% 50%, #fff 0deg, @loading-gradient-color 360deg);
+    border-radius: 50%;
+  }
+
+  &-small {
+    .gradient-size(@loading-gradient-size-s, @loading-gradient-padding-s, @loading-gradient-mask-size-s);
+  }
+
+  &-medium {
+    .gradient-size(@loading-gradient-size-m, @loading-gradient-padding-m, @loading-gradient-mask-size-m);
+  }
+
+  &-large {
+    .gradient-size(@loading-gradient-size-l, @loading-gradient-padding-l, @loading-gradient-mask-size-l);
+  }
 }
 
