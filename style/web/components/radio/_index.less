@@ -9,6 +9,10 @@
   display: inline-flex;
   align-items: center;
 
+  .@{radio-cls} {
+    margin-right: @radio-margin-right;
+  }
+
   &.@{radio-cls}-group-outline {
     .@{radio-button--cls} {
       &.@{prefix}-is-checked {
@@ -134,7 +138,6 @@
 .@{radio-cls} {
   position: relative;
   cursor: pointer;
-  margin-right: @radio-margin-right;
 
   &__former {
     opacity: 0;
