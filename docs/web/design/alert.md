@@ -13,7 +13,7 @@
 <em>内容顶部</em>
 
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-3.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-3@2x.png)
 <em>对话框内容区</em>
 
 
@@ -22,14 +22,17 @@
 
 当页面中需要多条警告时，建议使用轮播的告警。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%BB%BA%E8%AE%AE-1.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-5@2x.png)
 
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%BB%BA%E8%AE%AE-2.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-6@2x.png)
 
 清晰表述警示内容，避免模糊不清。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%BB%BA%E8%AE%AE3.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E6%8E%A8%E8%8D%907@2x.png)
+
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E6%8E%A8%E8%8D%908@2x.png)
 
 
 

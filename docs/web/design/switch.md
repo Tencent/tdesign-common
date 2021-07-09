@@ -16,13 +16,17 @@
 
 开关文案要准确简洁，只需表达所控制的内容，避免加入逻辑词语或与开关作用相反的内容。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-%E6%AD%A3%E9%94%99-1.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-2@2x.png)
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-3@2x.png)
 
 
 
 开关适用于即时生效的操作，在表单场景下不建议使用开关。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-%E6%AD%A3%E9%94%99-2.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-4@2x.png)
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-5@2x.png)
 
 
 

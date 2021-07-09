@@ -18,5 +18,6 @@
 
 ### 推荐/慎用示例
 使用带数字的徽标时，需根据场景和信息类型定义最长数量，避免数值过多。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Group%20551.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BE%BD%E7%AB%A0%205.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BE%BD%E7%AB%A0%206.png"/>
 

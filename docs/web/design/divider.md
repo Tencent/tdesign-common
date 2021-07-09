@@ -21,4 +21,5 @@
 
 当有明显的留白或副标题已经对内容起到分割作用时，要避免过度使用分割线导致的视觉干扰。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E5%89%B2%204.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider%204.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider%205.png"/>
