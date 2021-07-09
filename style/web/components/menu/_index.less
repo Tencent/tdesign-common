@@ -60,6 +60,21 @@ a.@{prefix}-menu__item {
     }
   }
 
+  .@{prefix}-submenu {
+    .@{prefix}-menu__item {
+      overflow: unset;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        right: 0;
+        height: 20px;
+      }
+    }
+  }
+
   .@{prefix}-menu__item {
     min-width: @head-menu-item-width;
     height: @head-menu-item-height;
@@ -605,19 +620,22 @@ a.@{prefix}-menu__item {
 
   &__popup {
     max-height: 0;
+    --popup-height: 300px;
     overflow: hidden;
-    transition: max-height @anim-duration-base @anim-time-fn-easing,
-      padding @anim-duration-base @anim-time-fn-easing;
+    transition: max-height @anim-duration-base @anim-time-fn-easing;
     position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
     border-radius: @border-radius;
     .list-style-none();
-    padding: 0px 8px;
+
+    &-wrapper {
+      padding: 8px;
+    }
 
     &.t-is-opened {
-      padding: 8px;
-      max-height: 500px;
+      overflow-y: auto;
+      max-height: var(--popup-height);
       box-shadow: @menu-default-shadow;
     }
 
