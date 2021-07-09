@@ -88,11 +88,6 @@ a.@{prefix}-menu__item {
       & + .@{prefix}-menu__item {
         margin-top: 4px;
       }
-
-      &.@{prefix}-is-active {
-        color: @head-menu-popup-item-active-color;
-        background-color: @head-menu-popup-item-active-bg;
-      }
     }
   }
 
@@ -206,6 +201,14 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu__item {
       text-overflow: initial;
       justify-content: center;
+
+      &.@{prefix}-is-active.@{prefix}-is-opened {
+        background-color: @default-menu-active-color;
+
+        .@{prefix}-icon {
+          color: @menu-theme-light;
+        }
+      }
 
       &.@{prefix}-menu__item--plain::after {
         content: "1";
@@ -666,11 +669,11 @@ a.@{prefix}-menu__item {
   &__options:not(:empty) {
     .@{prefix}-icon {
       margin-right: 16px;
+      border-radius: @border-radius;
       color: @menu-item-color--light;
       transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
       &:hover {
-        border-radius: @border-radius;
         background-color: @menu-item-active-bg--light;
       }
     }
