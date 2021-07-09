@@ -106,7 +106,7 @@
 .@{prefix}-upload {
   &-card {
     font-size: @upload-card-font-size;
-    line-height:@upload-card-line-height;
+    line-height: @upload-card-line-height;
     overflow: hidden;
     width: 100%;
 
@@ -233,6 +233,7 @@
         border-left: 1px @upload-card-mask-color solid;
         height: @upload-card-mask-divider-height;
       }
+
       > .t-icon {
         cursor: pointer;
         font-size: @upload-icon-size;
@@ -432,15 +433,12 @@
   }
 }
 
-.@{prefix}-upload__dragger-img-wrap + .@{prefix}-upload__dragger-progress-info{
-  .dragger-inner-max-width(
-    @upload-dragger-width, 
-    @upload-dragger-padding, 
-    (@upload-dragger-img-wrap-width + @upload-dragger-img-wrap-margin-right)
-  );
-  margin-left: @upload-dragger-img-wrap-margin-right;
+.@{prefix}-upload__dragger {
+  &-img-wrap + &-progress-info {
+    .dragger-inner-max-width(@upload-dragger-width, @upload-dragger-padding, (@upload-dragger-img-wrap-width + @upload-dragger-img-wrap-margin-right));
+    margin-left: @upload-dragger-img-wrap-margin-right;
+  }
 }
-
 
 .@{prefix}-upload__dragger-progress-info {
   flex: 1;
