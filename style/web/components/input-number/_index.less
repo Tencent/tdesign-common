@@ -80,10 +80,10 @@
       }
 
       &:hover {
+        border-color: @input-number-button-border-color;
         .@{prefix}-icon {
           color: @input-number-button-color-disabled;
         }
-        border-color: @input-number-button-border-color;
       }
     }
   }
@@ -243,16 +243,16 @@
       }
 
       &:hover {
+        border-color: @input-number-button-border-color;
         .@{prefix}-icon {
           color: @input-number-button-color-disabled;
         }
-        border-color: @input-number-button-border-color;
       }
     }
   }
   .@{inputNumberCls}__decrease {
     bottom: 1px;
-    border-bottom-right-radius: calc(@border-radius - 1px)
+    border-bottom-right-radius: calc(@border-radius - 1px);
   }
 
   .@{inputNumberCls}__increase {
