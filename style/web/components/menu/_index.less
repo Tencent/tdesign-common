@@ -83,6 +83,10 @@ a.@{prefix}-menu__item {
     transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
   }
 
+  &__submenu {
+    border-top: 1px solid @head-menu-submenu-border-color;
+  }
+
   .@{prefix}-menu__popup {
     top: 60px;
     left: -4px;
@@ -535,7 +539,6 @@ a.@{prefix}-menu__item {
     }
 
     &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
-      color: @menu-item-hover-color--light;
       background-color: @menu-item-hover-bg--light;
     }
 
@@ -620,7 +623,6 @@ a.@{prefix}-menu__item {
 
   &__popup {
     max-height: 0;
-    --popup-height: 300px;
     overflow: hidden;
     transition: max-height @anim-duration-base @anim-time-fn-easing;
     position: absolute;
@@ -631,11 +633,12 @@ a.@{prefix}-menu__item {
 
     &-wrapper {
       padding: 8px;
+      height: 100%;
+      overflow-y: auto;
     }
 
     &.t-is-opened {
-      overflow-y: auto;
-      max-height: var(--popup-height);
+      max-height: 300px;
       box-shadow: @menu-default-shadow;
     }
 
