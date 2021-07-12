@@ -52,15 +52,27 @@ a.@{prefix}-menu__item {
     margin-right: 8px;
     overflow: hidden;
 
-    &:hover {
-      overflow-x: scroll;
-    }
-
     .@{prefix}-icon {
       width: 40px;
       height: 40px;
       padding: 8px;
       line-height: 40px;
+    }
+  }
+
+  .@{prefix}-submenu {
+    > .@{prefix}-menu__item {
+      overflow: unset;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        right: 0;
+        height: 20px;
+      }
     }
   }
 
@@ -70,6 +82,10 @@ a.@{prefix}-menu__item {
     line-height: @head-menu-item-height;
     justify-content: center;
     transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+  }
+
+  &__submenu {
+    border-top: 1px solid @head-menu-submenu-border-color;
   }
 
   .@{prefix}-menu__popup {
@@ -87,6 +103,7 @@ a.@{prefix}-menu__item {
       padding-left: 16px;
       min-width: 100%;
       margin-left: 0;
+      color: @head-menu-popup-item-color;
 
       & + .@{prefix}-menu__item {
         margin-top: 4px;
@@ -94,7 +111,11 @@ a.@{prefix}-menu__item {
     }
   }
 
-  .@{prefix}-submenu-icon {
+  .@{prefix}-submenu-icon { // to remove
+    margin-left: 8px;
+  }
+
+  .@{prefix}-fake-arrow {
     margin-left: 8px;
   }
 
@@ -193,9 +214,21 @@ a.@{prefix}-menu__item {
       }
     }
 
+    .@{prefix}-fake-arrow {
+      display: none;
+    }
+
     .@{prefix}-menu__item {
       text-overflow: initial;
       justify-content: center;
+
+      &.@{prefix}-is-active.@{prefix}-is-opened {
+        background-color: @default-menu-active-color;
+
+        .@{prefix}-icon {
+          color: @menu-theme-light;
+        }
+      }
 
       &.@{prefix}-menu__item--plain::after {
         content: "1";
@@ -337,6 +370,22 @@ a.@{prefix}-menu__item {
     }
   }
 
+  .@{prefix}-menu__dropdown {
+    // display: none;
+    // position: static;
+    overflow: hidden;
+    transition: max-height @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+    // height: 0;
+
+    .@{prefix}-menu__item {
+      padding-left: 64px;
+    }
+
+    &--show {
+      display: block;
+    }
+  }
+
   .@{prefix}-menu__sub {
     padding: 0;
     max-height: 0;
@@ -386,7 +435,7 @@ a.@{prefix}-menu__item {
       color: @text-color-secondary;
     }
 
-    .@{prefix}-submenu-icon {
+    .@{prefix}-fake-arrow {
       margin-left: auto;
     }
 
@@ -491,7 +540,6 @@ a.@{prefix}-menu__item {
     }
 
     &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
-      color: @menu-item-hover-color--light;
       background-color: @menu-item-hover-bg--light;
     }
 
@@ -577,18 +625,34 @@ a.@{prefix}-menu__item {
   &__popup {
     max-height: 0;
     overflow: hidden;
-    transition: max-height @anim-duration-base @anim-time-fn-easing,
-      padding @anim-duration-base @anim-time-fn-easing;
+    transition: max-height @anim-duration-moderate @anim-time-fn-easing,
+      width @anim-duration-moderate @anim-time-fn-easing, 
+      opacity @anim-duration-base linear;
     position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
     border-radius: @border-radius;
+    opacity: 0;
     .list-style-none();
-    padding: 0px 8px;
 
-    &.t-is-opened {
+    &-wrapper {
       padding: 8px;
-      max-height: 500px;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    &.@{prefix}-is-vertical {
+      max-height: unset;
+      width: 0;
+
+      &.@{prefix}-is-opened {
+        width: var(--popup-width, 216px);
+      }
+    }
+
+    &.@{prefix}-is-opened {
+      max-height: var(--popup-max-height, 364px);
+      opacity: 1;
       box-shadow: @menu-default-shadow;
     }
 
@@ -640,11 +704,11 @@ a.@{prefix}-menu__item {
   &__options:not(:empty) {
     .@{prefix}-icon {
       margin-right: 16px;
+      border-radius: @border-radius;
       color: @menu-item-color--light;
       transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
       &:hover {
-        border-radius: @border-radius;
         background-color: @menu-item-active-bg--light;
       }
     }

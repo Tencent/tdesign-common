@@ -20,53 +20,40 @@
 
   .@{prefix}-icon {
     margin-right: 4px;
-    font-size: @tag-medium-font-size;
+    width: @tag-icon-size;
+    height: @tag-icon-size;
   }
 
   .@{prefix}-icon-close {
     margin-right: 0;
     margin-left: 4px;
+    fill: @tag-close-icon-color;
     font-size: @tag-large-font-size;
-    border-radius: @border-radius-50;
     cursor: pointer;
 
     &:hover {
-      color: @tag-text-color;
-      background-color: @tag-default-hover-color;
+      fill: @tag-close-icon-hover-color;
     }
   }
 
-  &--close,
-  &--check {
-    &:hover {
-      color: @tag-default-hover-color;
-    }
+  &:hover {
+    background-color: @gray-color-4;
+  }
 
-    &:active {
-      color: @tag-default-click-color;
-      background-color: @tag-default-click-background-color;
-    }
+  ::selection {
+    background: transparent;
   }
 
   &--default {
     color: @tag-text-color-1;
     background-color: @tag-default-background-color;
+
     &.@{prefix}-tag--checked {
       color: @tag-checked-color;
       background-color: @tag-checked-background-color;
 
       &:hover {
         background-color: @brand-color-7;
-      }
-    }
-
-    &:hover {
-      cursor: text;
-
-      .@{prefix}-icon-close {
-        &:hover {
-          color: @tag-text-color;
-        }
       }
     }
 
@@ -81,19 +68,20 @@
     // 失效标签
     &.@{prefix}-tag--disabled {
       color: @tag-disabled-color;
-      background-color: @tag-disabled-background-color;
+      background-color: @tag-disabled-bg;
       cursor: not-allowed;
 
       &:hover {
         color: @tag-disabled-color;
-        background-color: @tag-disabled-background-color;
+        background-color: @tag-disabled-bg;
       }
+      
       .@{prefix}-icon {
         color: @tag-disabled-color;
         cursor: not-allowed;
 
         &:hover {
-          color: @tag-disabled-color;
+          color: @tag-close-icon-hover-color;
           background-color: transparent;
           cursor: not-allowed;
         }
