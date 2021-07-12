@@ -19,6 +19,7 @@
       color: @textarea-text-color;
       resize: vertical;
       outline: none;
+      line-height: @textarea-line-height;
       transition: all @anim-time-fn-easing @anim-duration-base;
 
       &:hover {
@@ -27,7 +28,7 @@
 
       &:focus {
         border-color: @textarea-border-color-focus;
-        box-shadow: 0 0 2px @textarea-border-color-focus;
+        box-shadow: 0 0 0 2px @textarea-box-shadow-color-focus;
       }
 
       &::placeholder {
