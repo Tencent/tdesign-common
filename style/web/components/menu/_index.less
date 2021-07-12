@@ -661,3 +661,86 @@ a.@{prefix}-menu__item {
   transition: @anim-duration-base;
   opacity: 0;
 }
+
+// react TODO: 对齐vue之后要删掉
+.@{prefix}-head-menu__submenu-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  li.@{prefix}-menu__item {
+    &.@{prefix}-is-active,
+    &:hover {
+      color: @submenu-item-active-color;
+      background-color: inherit;
+    }
+  }
+}
+
+.@{prefix}-head-menu__submenu,
+.@{prefix}-head-menu__submenu-box {
+  margin: 0;
+  padding: 0;
+  background-color: @submenu-color-bg;
+  height: 48px;
+  font-size: 14px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid @gray-color-3;
+}
+
+.@{prefix}-submenu__item,
+.@{prefix}-head-menu__submenu-box > .@{prefix}-menu__item {
+  min-width: 88px;
+  height: 48px;
+  line-height: 32px;
+  padding: 8px 16px;
+  text-align: center;
+  color: @submenu-item-color;
+  cursor: pointer;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: @submenu-item-active-color;
+    width: 100%;
+    transform: scale(0);
+    content: "";
+  }
+
+  &.@{prefix}-is-active,
+  &:hover {
+    color: @submenu-item-active-color;
+
+    &::before {
+      transform: scale(1);
+    }
+  }
+}
+
+.@{prefix}-menu__dropdown {
+  // display: none;
+  // position: static;
+  overflow: hidden;
+  transition: max-height @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+  // height: 0;
+
+  .@{prefix}-menu__item {
+    padding-left: 64px;
+  }
+
+  &--show {
+    display: block;
+  }
+}
+
+.@{prefix}-menu {
+  > li.@{prefix}-menu__item {
+    overflow: unset;
+  }
+}
