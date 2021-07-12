@@ -25,6 +25,12 @@
     min-width: 640px;
   }
 
+  .@{prefix}-is-active {
+    input {
+      border-color: @datepicker-input-border-color-active;
+      box-shadow: @datepicker-input-shadow;
+    }
+  }
 }
 
 .@{prefix}-date-picker--panels {
@@ -59,7 +65,7 @@
   }
 }
 .@{prefix}-date-picker-header {
-  padding: 20px 24px;
+  padding: 20px @datepicker-panel-padding;
   border-bottom: 1px solid @border-level-1-color;
 
   .@{prefix}-date-picker-header-title, .@{prefix}-date-header__btn {
@@ -73,6 +79,8 @@
     &__btn {
       color: @datepicker-button-text-color;
       padding: 4px;
+      height: 32px;
+      width: 32px;
       .@{prefix}-icon {
         font-size: 16px;
       }
@@ -90,7 +98,7 @@
 .@{prefix}-date-picker-presets {
   float: left;
   text-align: left;
-  padding: 8px 16px;
+  padding: 8px @datepicker-panel-padding;
   min-width: 100px;
 
   ul {
@@ -105,12 +113,22 @@
     line-height: @datepicker-line-height;
     font-weight: 400;
     white-space: nowrap;
-    text-align: left;
-    vertical-align: middle;
     padding: 0px;
     cursor: pointer;
-    // min-width: 100px;
     float: left;
+    margin-right: 16px;
+
+    &:last-child {
+      margin: 0;
+    }
+    
+    a {
+      color: @datepicker-presets-text-color;
+
+      &:hover {
+        color: @datepicker-presets-text-color-hover;
+      }
+    }
   }
 }
 
@@ -153,6 +171,7 @@
     .@{prefix}-date-cell__wrapper {
       position: absolute;
       top: 0;
+      color: @datepicker-now-color;
 
       &::after {
         display: block;
@@ -160,9 +179,9 @@
         height: 6px;
         width: 6px;
         border-radius: 50%;
-        background-color: @primary-color;
+        background-color: @datepicker-now-color;
         position: relative;
-        left: 20px;
+        left: 17px;
         top: 34px;
       }
     }
@@ -172,6 +191,7 @@
     .@{prefix}-date-cell__wrapper {
       background-color: @datepicker-highlight-color;
       border-color: @datepicker-highlight-color;
+      transition: background @anim-duration-base, border @anim-duration-base;
 
       &::after {
         display: none;
@@ -285,17 +305,21 @@
 
       &:first-child {
         .@{prefix}-date-cell__wrapper {
-          margin-top: 16px;
+          margin-top: 20px;
         } 
       }
 
       &:last-child {
-        .@{prefix}-date-cell {
-          text-align: left;
+        .@{prefix}-date-cell__wrapper {
+          margin-bottom: 12px;
         } 
       }
     }
   }
+}
+
+.@{prefix}-date-date {
+  margin: 0 20px 24px 20px;
 }
 
 .@{prefix}-date {
@@ -308,14 +332,15 @@
   }
 
   tbody {
-    font-weight: 500;
+    font-weight: @datepicker-font-weight-medium;
     margin-top: 2px;
   }
 
   th {
+    color: @datepicker-th-font-color;
     padding: 16px 0 8px 0;
     margin-bottom: 5px;
-    font-weight: 500;
+    font-weight: @datepicker-th-font-weight;
   }
 
   td {
@@ -352,9 +377,7 @@
 }
 
 .@{prefix}-date-picker--apply {
-  border-top: 1px solid @datepicker-border-color;
-
-  padding: 8px 16px;
+  margin: 0 16px 16px 16px;
   text-align: left;
   float: right;
 
