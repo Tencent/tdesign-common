@@ -624,11 +624,14 @@ a.@{prefix}-menu__item {
   &__popup {
     max-height: 0;
     overflow: hidden;
-    transition: max-height @anim-duration-base @anim-time-fn-easing;
+    transition: max-height @anim-duration-moderate @anim-time-fn-easing,
+      width @anim-duration-moderate @anim-time-fn-easing, 
+      opacity @anim-duration-base linear;
     position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
     border-radius: @border-radius;
+    opacity: 0;
     .list-style-none();
 
     &-wrapper {
@@ -637,8 +640,18 @@ a.@{prefix}-menu__item {
       overflow-y: auto;
     }
 
-    &.t-is-opened {
-      max-height: 300px;
+    &.@{prefix}-is-vertical {
+      max-height: unset;
+      width: 0;
+
+      &.@{prefix}-is-opened {
+        width: var(--popup-width, 216px);
+      }
+    }
+
+    &.@{prefix}-is-opened {
+      max-height: var(--popup-max-height, 364px);
+      opacity: 1;
       box-shadow: @menu-default-shadow;
     }
 
