@@ -65,7 +65,10 @@
   }
 }
 .@{prefix}-date-picker-header {
-  padding: 20px @datepicker-panel-padding;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px 20px @datepicker-panel-padding ;
   border-bottom: 1px solid @border-level-1-color;
 
   .@{prefix}-date-picker-header-title, .@{prefix}-date-header__btn {
@@ -74,12 +77,9 @@
   }
 
   .@{prefix}-date-picker-header-controller {
-    float: right;
-
     &__btn {
       color: @datepicker-button-text-color;
       padding: 4px;
-      height: 32px;
       width: 32px;
       .@{prefix}-icon {
         font-size: 16px;
@@ -92,6 +92,9 @@
       &:nth-child(3) {
         padding-right: 0;
       }
+    }
+    &__btn--now {
+      color: @datepicker-button-text-now-color;
     }
   }
 }
