@@ -30,14 +30,11 @@
     fill: @tag-close-icon-color;
     font-size: @tag-large-font-size;
     cursor: pointer;
+    transition: fill @anim-duration-base @anim-time-fn-easing;
 
     &:hover {
       fill: @tag-close-icon-hover-color;
     }
-  }
-
-  &:hover {
-    background-color: @gray-color-4;
   }
 
   ::selection {
@@ -53,7 +50,7 @@
       background-color: @tag-checked-background-color;
 
       &:hover {
-        background-color: @brand-color-7;
+        background-color: @tag-checked-hover-bg;
       }
     }
 
@@ -62,7 +59,12 @@
     }
 
     &.@{prefix}-tag--check {
+      transition: background-color @anim-duration-base @anim-time-fn-easing;
       cursor: pointer;
+
+      &:hover:not(.@{prefix}-tag--checked):not(.@{prefix}-tag--disabled) {
+        background-color: @tag-check-hover-bg;
+      }
     }
 
     // 失效标签
@@ -113,20 +115,6 @@
       &:hover {
         color: @tag-success-color;
         background-color: @tag-success-light-color;
-      }
-    }
-  }
-
-  &--info {
-    background-color: @info-color;
-
-    &.@{prefix}-tag--plain {
-      color: @tag-text-color-1;
-    }
-    .@{prefix}-icon-close {
-      &:hover {
-        color: @tag-info-color;
-        background-color: @tag-info-light-color;
       }
     }
   }
@@ -185,21 +173,6 @@
       &:hover {
         color: @tag-text-color;
         background-color: @tag-success-color;
-      }
-    }
-  }
-
-  &--info.@{prefix}-tag--light {
-    color: @tag-text-color-1;
-    background-color: @tag-info-light-color;
-
-    &.@{prefix}-tag--plain {
-      color: @tag-text-color-1;
-    }
-    .@{prefix}-icon-close {
-      &:hover {
-        color: @tag-text-color;
-        background-color: @tag-info-color;
       }
     }
   }
@@ -274,5 +247,21 @@
   &.@{prefix}-tag--ellipsis {
     display: inline-block;
     .text-ellipsis();
+  }
+}
+
+a {
+  .@{prefix}-tag {
+    cursor: pointer;
+  
+    &:hover {
+      color: @link-tag-hover-color;
+      background-color: @link-tag-hover-bg;
+    }
+  
+    &:active {
+      color: @link-tag-active-color;
+      background-color: @link-tag-active-bg;
+    }
   }
 }

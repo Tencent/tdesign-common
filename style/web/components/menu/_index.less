@@ -419,7 +419,7 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius;
-    transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+    transition: background-color @anim-duration-slow @anim-time-fn-easing;
 
     &:first-child {
       margin-top: 0;
@@ -755,7 +755,6 @@ a.@{prefix}-menu__item {
   border-top: 1px solid @gray-color-3;
 }
 
-.@{prefix}-submenu__item,
 .@{prefix}-head-menu__submenu-box > .@{prefix}-menu__item {
   min-width: 88px;
   height: 48px;
