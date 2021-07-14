@@ -8,15 +8,17 @@
 
 ##### 通常情况下，锚点固定在页面内容区左侧或右侧，用户可以通过锚点快速定位内容。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%B7%A6%E8%BE%B9@2x.png)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%B7%A6%E8%BE%B9@2x.png" />
+    <p>图示：锚点定位位于内容区左侧</p>
+  </div>
 
-
-图示：锚点定位位于内容区左侧
-
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%8F%B3%E8%BE%B9@2x.png)
-
-图示：锚点定位位于内容区右侧
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%8F%B3%E8%BE%B9@2x.png" />
+    <p>图示：锚点定位位于内容区右侧</p>
+  </div>
+</div>
 
 ### 相似组件
 

@@ -18,24 +18,48 @@
 
 ##### 带有详情信息的单选框，建议就近展开相关内容，不要用单选框触发一个弹窗。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE1@2x.png)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE1@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE2@2x.png)
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE2@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
 
 ##### 在表单中不要用单选框开启一个功能，建议使用多选框或开关来开启/关闭一个功能。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-3@2x.png)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-3@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%904@2x.png)
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%904@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
 ##### 表单中的单选框选项全部外显，选项数量不宜过多，当界面空间承载有限时，可考虑使用下拉选择。
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-6@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-6@2x.png)
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%90%E6%85%8E%E7%94%A87@2x.png)
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%90%E6%85%8E%E7%94%A87@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
 
