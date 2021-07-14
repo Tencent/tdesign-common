@@ -1,20 +1,27 @@
 
 
+### 何时使用
+
+在完结某个独立页面后的反馈，如：付款成功页面；
+
+在一个操作区域或一系列操作完成之后的总体反馈，如：提交分步骤表单中的某个表单；
+
+在某个操作点之后的反馈，如：针对信息复制操作的结果反馈。
 
 ### 与页面布局相关
 
-全局提示常出现在页面顶部居中、内容区右上方和左下方等位置，提示用户却不过于干扰；
+##### 全局提示常出现在页面顶部居中、内容区右上方和左下方等位置，提示用户却不过于干扰；
 
 
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/meaaage03.png)
-<em>图示：上方居中</em>
+图示：上方居中
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage04.png)
-<em>图示：右上角</em>
+图示：右上角
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage05.png)
-<em>图示：左下角</em>
+图示：左下角
 
 
 
