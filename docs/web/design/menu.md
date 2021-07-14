@@ -4,8 +4,6 @@
 
 导航菜单是整个网站的必要元素，可根据业务场景使用不同的导航样式和布局；
 
-关于导航的页面布局，可参考【[布局Layout](.layout)】。
-
 
 ### 与页面布局相关
 
@@ -15,5 +13,15 @@
 ### 建议/慎用示例
 
 ##### 当侧边导航菜单过多时，可将菜单分层级显示，避免内容过多无法在一屏显示完整。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%BC%E8%88%AAmenu%201.png"/>
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%BC%E8%88%AAmenu%202.png"/>
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%BC%E8%88%AAmenu%201.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%BC%E8%88%AAmenu%202.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
