@@ -35,26 +35,36 @@
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-4@2x.png)
 
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-5@2x.png)
+
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
 
 ##### 列表适合展示多个相同结构的内容，如果字段类型过多且简短，建议使用表格。
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-6@2x.png)
 
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-7@2x.png)
+
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
 
 ##### 列表的操作建议保证在3个及以内，尽量不超出。超出使用下拉菜单收纳，不建议放出过多操作。
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-8@2x.png)
 
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%97%E8%A1%A8-9@2x.png)
 
-
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
 ### 相似组件
 

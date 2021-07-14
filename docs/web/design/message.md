@@ -12,19 +12,22 @@
 
 ##### 全局提示常出现在页面顶部居中、内容区右上方和左下方等位置，提示用户却不过于干扰；
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/meaaage03.png"/>
+    <p>图示：上方居中</p>
+  </div>
 
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage04.png"/>
+    <p>图示：右上角</p>
+  </div>
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/meaaage03.png)
-图示：上方居中
-
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage04.png)
-图示：右上角
-
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage05.png)
-图示：左下角
-
-
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage05.png"/>
+    <p>图示：左下角</p>
+  </div>
+</div>
 
 ### 相似组件
 

@@ -28,9 +28,15 @@
 ### 推荐/慎用示例
 
 ##### 分页控件在空状态下建议显示，用以给用户预期。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%204%20.png"/>
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%205.png"/>
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%204%20.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%205.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>

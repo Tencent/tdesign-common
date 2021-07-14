@@ -41,13 +41,17 @@
 
 ##### 当选项较多且字段长度不一时，建议将多选框对齐。
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-7@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-7@2x.png)
-
-
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-8@2x.png)
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-8@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
 ### 相似组件
