@@ -74,12 +74,13 @@
 .@{prefix}-swiper__trigger-wrap {
   position: absolute;
   right: @spacer-4;
-  padding: @swiper-trigger-wrap-padding;
+  z-index: 100;
   flex: 0 0 auto;
+  padding: @swiper-trigger-wrap-padding;
+  margin: 0;
   font-size: @font-size-xl;
   line-height: @text-line-height-s;
   height: @spacer-5;
-  z-index: 100;
 
   > li {
     display: inline-block;
