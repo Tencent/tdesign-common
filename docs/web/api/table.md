@@ -82,7 +82,7 @@
 
 #### 多选
 
-{{ select-multuple }}
+{{ select-multiple }}
 ### 分页
 
 #### 远程数据分页
