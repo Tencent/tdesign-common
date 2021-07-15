@@ -1,6 +1,7 @@
 
 
 
+
 ### 何时使用
 
 当需要用户关注的信息时，用较强反馈提示用户。
@@ -12,17 +13,17 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E7%AB%99%E7%82%B9%E9%A1%B6%E9%83%A8@2x.png"/>
-    <p>站点顶部</p>
+    <em>站点顶部</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%86%85%E5%AE%B9%E9%A1%B6%E9%83%A811@2x.png"/>
-    <p>内容顶部</p>
+    <em>内容顶部</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E5%AF%B9%E8%AF%9D%E6%A1%86%E5%86%85%E5%AE%B9%E5%8C%BA11@2x.png"/>
-    <p>对话框内容区</p>
+    <em>对话框内容区</em>
   </div>
 </div>
 
@@ -43,19 +44,17 @@
   </div>
 </div>
 
+<hr />
+
 ##### 清晰表述警示内容，避免模糊不清。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E6%8E%A8%E8%8D%907@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E6%8E%A8%E8%8D%907@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E6%8E%A8%E8%8D%908@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A-%E6%8E%A8%E8%8D%908@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+
 
 
 ### 相似组件

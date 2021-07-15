@@ -1,5 +1,6 @@
 
 
+
 ### 何时使用
 
 页面内容较多，需要分步骤完成，通过显示步骤让用户对整个流程有所预期时；
@@ -11,17 +12,17 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%201.png"/>
-    <p>图示：位于页面上方</p>
+    <em>图示：位于页面上方</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%202.png"/>
-    <p>图示：位于页面下方</p>
+    <em>图示：位于页面下方</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%203.png"/>
-    <p>图示：位于页面左侧</p>
+    <em>图示：位于页面左侧</em>
   </div>
 </div>
 
@@ -31,19 +32,21 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%204.png"/>
-    <p>图示：正序</p>
+    <em>图示：正序</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%205.png"/>
-    <p>图示：倒序</p>
+    <em>图示：倒序</em>
   </div>
 </div>
 
-
+<hr />
 
 ##### 常见的完整流程包含3种步骤：已完成、进行中、未完成。
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%AD%A5%E9%AA%A4%202%202.png"/>
+
+<hr />
 
 ##### 在当前流程出现失败或告警状态时，对应步骤条标题和图标可变为红色/橙色，起到突出提示的作用。
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%AD%A5%E9%AA%A4%203%202.png"/>

@@ -1,5 +1,6 @@
 
 
+
 ### 何时使用
 
 在完结某个独立页面后的反馈，如：付款成功页面；
@@ -15,17 +16,17 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/meaaage03.png"/>
-    <p>图示：上方居中</p>
+    <em>图示：上方居中</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage04.png"/>
-    <p>图示：右上角</p>
+    <em>图示：右上角</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage05.png"/>
-    <p>图示：左下角</p>
+    <em>图示：左下角</em>
   </div>
 </div>
 

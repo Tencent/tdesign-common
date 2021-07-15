@@ -4,6 +4,7 @@
 
 标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
 
+
 ### 与页面布局相关
 
 ##### 在页面、表单、对话框等场景中按钮一般会处于用户浏览路径上，便于用户发现，高效引导行动。
@@ -11,24 +12,24 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%801@2x.png" />
-    <p>图示：位于字段后面</p>
+    <em>图示：位于字段后面</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%802@2x.png" />
-    <p>图示：位于内容下方</p>
+    <em>图示：位于内容下方</em>
   </div>
 </div>
 
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-3@2x.png" />
-    <p>图示：位于起始点后面</p>
+    <em>图示：位于起始点后面</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%804@2x.png" />
-    <p>图示：位于内容后面</p>
+    <em>图示：位于内容后面</em>
   </div>
 </div>
 
@@ -36,11 +37,26 @@
 
 ##### 主按钮通常单独使用，是页面里的最主要的视觉焦点，在一个页面中，建议最多只出现一个主按钮。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%805@2x.png" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE-%E5%B8%83%E5%B1%805@2x.png" />
+  </div>
+
+  <div class="item"></div>
+</div>
+
+
+<hr />
 
 ##### 当有限的空间中需要放置按钮数量过多时，可以适当将次按钮折叠。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE---4@2x.png" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8C%89%E9%92%AE---4@2x.png" />
+  </div>
+
+  <div class="item"></div>
+</div>
 
 
 ### 组件搭配使用
@@ -68,6 +84,7 @@
   </div>
 </div>
 
+<hr />
 
 ##### 多个按钮组合使用时，每个按钮之间需存在一定间隔，不建议连在一起。
 
