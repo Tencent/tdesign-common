@@ -71,7 +71,7 @@
         color: @cascader-dark-color;
         padding-left: 8px;
 
-        & .@{prefix}-item--highlight {
+        & .@{prefix}-cascader-item--highlight {
           color: @cascader-highlight-color;
         }
 
@@ -79,6 +79,11 @@
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
+        }
+
+        &.@{prefix}-cascader-item__is-empty {
+          color: @cascader-light-color;
+          text-align: center;
         }
 
         &:hover {
