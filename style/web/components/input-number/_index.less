@@ -3,6 +3,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../../utilities/_animation.less";
 
 @inputCls: ~"@{prefix}-input";
 @inputNumberCls: ~"@{prefix}-input-number";
@@ -173,7 +174,7 @@
       height: @input-number-inner-height-l;
       line-height: @input-number-inner-height-l;
       padding-right: @input-number-right-button-width-l +
-        @input-padding-horizontal-default;
+        @input-number-padding-horizontal-default;
     }
 
     .@{inputNumberCls}__decrease,
@@ -203,7 +204,7 @@
     box-sizing: border-box;
     margin: 0;
     padding-right: @input-number-right-button-width +
-      @input-padding-horizontal-default;
+      @input-number-padding-horizontal-default;
     text-align: left;
     border-radius: @border-radius;
   }

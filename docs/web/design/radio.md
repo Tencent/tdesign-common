@@ -1,5 +1,7 @@
 
 
+
+
 ### 何时使用
 
 用于在多个互斥的备选项中选中一个选项时；
@@ -18,19 +20,13 @@
 
 ##### 带有详情信息的单选框，建议就近展开相关内容，不要用单选框触发一个弹窗。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE1@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE1@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE2@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE2@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
-
+<hr />
 
 ##### 在表单中不要用单选框开启一个功能，建议使用多选框或开关来开启/关闭一个功能。
 
@@ -46,6 +42,7 @@
   </div>
 </div>
 
+<hr />
 
 ##### 表单中的单选框选项全部外显，选项数量不宜过多，当界面空间承载有限时，可考虑使用下拉选择。
 

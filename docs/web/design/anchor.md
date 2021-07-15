@@ -1,5 +1,6 @@
 
 
+
 ### 何时使用
 ##### 当页面内容过多，用户需要快速定位到某部分内容时，可通过锚点进行内容间的跳转，多用于文档类型页面，业务可以根据需要使用。
 
@@ -11,12 +12,12 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%B7%A6%E8%BE%B9@2x.png" />
-    <p>图示：锚点定位位于内容区左侧</p>
+    <em>图示：锚点定位位于内容区左侧</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%8F%B3%E8%BE%B9@2x.png" />
-    <p>图示：锚点定位位于内容区右侧</p>
+    <em>图示：锚点定位位于内容区右侧</em>
   </div>
 </div>
 

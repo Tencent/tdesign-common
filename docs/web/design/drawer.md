@@ -1,5 +1,6 @@
 
 
+
 ### 何时使用
 
 当需要一个附加的面板来对页面内容做补充说明时；
@@ -11,6 +12,8 @@
 ##### 整体界面布局，抽屉在整个页面出现
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-%E6%95%B4%E4%BD%93%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)
+
+<hr />
 
 局部区域布局，抽屉仅在当前操作的区域内出现，而不会覆盖整个页面
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-%E5%B1%80%E9%83%A8%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)

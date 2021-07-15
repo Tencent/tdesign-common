@@ -3,6 +3,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../../mixins/_layout.less";
 
 // <name> 替换为组件名
 .@{checkbox-cls}-group {
@@ -27,7 +28,7 @@
   & + .@{checkbox-cls} {
     margin-left: @checkbox-margin;
   }
-  
+
   &__former {
     .input-visually-hidden();
   }
@@ -56,7 +57,7 @@
     vertical-align: middle;
     font-size: @checkbox-font;
   }
- 
+
   &:hover {
     .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-hover;

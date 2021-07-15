@@ -1,5 +1,6 @@
 
 
+
 ### 何时使用
 
 需要从一个数据集中选择多个选项时；
@@ -16,6 +17,7 @@
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-1@2x.png)
 
+<hr />
 
 ##### 与对话框搭配使用。多选框所在选项勾选时需警示或二次确认时，点击后可弹出模态对话框提示。
 
@@ -29,6 +31,7 @@
 
 ![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-3@2x.png)
 
+<hr />
 
 ##### 若需要通过操作多选框隐藏部分内容，可以使用就地隐藏/展开的方式。
 
