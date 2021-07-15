@@ -1,25 +1,40 @@
-## 组件设计指南
 
+
+### 何时使用
+
+当需要一个附加的面板来对页面内容做补充说明时；
+
+当需要在当前任务流中插入临时操作任务时。
 
 ### 与页面布局相关
 
-#### 整界面布局，抽屉在整个页面出现
+##### 整体界面布局，抽屉在整个页面出现
 
-![](https://iwiki.oa.tencent.com/download/attachments/450401568/%E6%88%AA%E5%B1%8F2020-12-02%20%E4%B8%8B%E5%8D%886.59.09.png?version=2&modificationDate=1606907955000&api=v2)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-%E6%95%B4%E4%BD%93%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)
 
-#### 局部区域布局，抽屉仅在当前操作的区域内出现，而不会覆盖整个页面
-![](https://tdesign.gtimg.com/site/design/20210524162829.png)
+局部区域布局，抽屉仅在当前操作的区域内出现，而不会覆盖整个页面
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-%E5%B1%80%E9%83%A8%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)
 
-### 正确/慎用示例
+### 推荐/慎用示例
 
-#### 避免抽屉面积过大，造成覆盖页面较多、无法看到页面的关键信息
+##### 避免抽屉面积过大，造成覆盖页面较多、无法看到页面的关键信息
 
-![](https://iwiki.oa.tencent.com/download/attachments/450401568/%E6%88%AA%E5%B1%8F2020-12-02%20%E4%B8%8B%E5%8D%887.44.20.png?version=1&modificationDate=1606909499000&api=v2)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-3@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-4@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 ### 相似组件
 
 | 组件名 | 何时使用                                                                                |
 | :----- | :-------------------------------------------------------------------------------------- |
-| 抽屉   | 当需要一个附加的面板来对页面内容做补充说明时；当需要在当前任务流中插入临时操作任务时。  |
-| 对话框 | 需要对用户进行阻断式提示时。                                                            |
+| [抽屉](./drawer)  | 当需要一个附加的面板来对页面内容做补充说明时；当需要在当前任务流中插入临时操作任务时。  |
+| [对话框](./dailog) | 需要对用户进行阻断式提示时。                                                            |
 

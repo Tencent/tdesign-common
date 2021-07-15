@@ -15,6 +15,10 @@
   pointer-events: none;
 }
 
+.scrollbar {
+  .scrollbar()
+}
+
 .@{prefix}-table {
   font-size: @table-font-size;
 
@@ -282,6 +286,10 @@
       }
     }
 
+    .@{prefix}-table__header {
+      .scrollbar()
+    }
+
     .@{prefix}-table__body {
       overflow-y: auto;
       width: fit-content;
@@ -431,13 +439,6 @@
       width: 20px;
     }
   }
-  // 默认空表格
-  .@{prefix}-table--empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 120px;
-  }
   // 表格加载态
   .@{prefix}-table--loading {
     position: relative;
@@ -476,6 +477,15 @@
   }
 }
 
+// 默认空表格
+.@{prefix}-table--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  color: @table-color-empty;
+}
+
 .t-table-filter-icon,
 .t-table-sort-icon {
   margin-left: 5px;
@@ -491,21 +501,22 @@
 .t-table-filter-pop {
   .t-table-filter-pop-content {
     margin: -8px;
-    
+
     .@{prefix}-table-filter-pop-content__inner {
       padding: 16px;
-
-      .t-checkbox,
-      .t-radio {
-        display: block;
-        margin: 0;
-      }
-
-      .t-checkbox + .t-checkbox,
-      .t-radio + .t-radio {
-        margin-top: 16px;
-      }
     }
+
+    .@{prefix}-radio-group {
+      display: block;
+      height: auto;
+    }
+
+    .@{prefix}-checkbox,
+    .@{prefix}-radio {
+      display: block;
+      line-height: 34px;
+    }
+
     .@{prefix}-table-filter-pop-content__button {
       border-top: 1px solid @table-border-color;
       padding: 16px;

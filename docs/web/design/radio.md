@@ -1,48 +1,65 @@
-## 组件设计指南
 
+
+### 何时使用
+
+用于在多个互斥的备选项中选中一个选项时；
+
+单选框的所有选项是显性的，因此常用于选项较少的场景；若选项较多，考虑使用下拉列表。
 
 ### 组件搭配使用
 
+##### 与文字提示搭配使用，当单选框需要对某种状态进行说明时，利用文字提示进行解释说明。
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-1@2x.png)
 
 
 
+### 推荐/慎用示例
+
+##### 带有详情信息的单选框，建议就近展开相关内容，不要用单选框触发一个弹窗。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE1@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE2@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
 
-#### 有不可用的选项时，置灰选项，鼠标hover时，提示不可选的原因。
+##### 在表单中不要用单选框开启一个功能，建议使用多选框或开关来开启/关闭一个功能。
 
-![特殊情况2](https://tdesign.gtimg.com/site/design/images/特殊情况2.jpg)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-3@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-
-
-### 建议/慎用示例
-
-#### 不要用单选框触发一个弹窗，弹窗承载的信息可以使用表单就地展开的展示方式。
-
-![正确&错误示例1](https://tdesign.gtimg.com/site/design/images/正确&错误示例1.jpg)
-
-
-
-
-
-#### 带有详情信息的单选框采用竖排的布局方式，凸显信息的从属关系。若信息较多时，建议采用底色将信息分组。
-
-![正确&错误示例2](https://tdesign.gtimg.com/site/design/images/正确&错误示例2.jpg)
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%904@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
+##### 表单中的单选框选项全部外显，选项数量不宜过多，当界面空间承载有限时，可考虑使用下拉选择。
 
-#### 在表单中不要用单选框开启一个功能，建议使用checkbox开启/关闭一个功能（临时标记，需提交才可生效）。
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-6@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-![正确&错误示例3](https://tdesign.gtimg.com/site/design/images/正确&错误示例3.jpg)
-
-
-
-
-#### 表单中的单选框选项全部外显，选项数量不宜过多，当界面空间承载有限时，可考虑使用下拉选择。
-
-
-<!-- <img width="" src="/uploads/2F4839170ABB4A9FBF98C290C9310F4D/image.png" alt="image.png" /> -->
-<!-- <img width="" src="/uploads/5323D59B42A54C82AD33D052F1576941/image.png" alt="image.png" /> -->
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%90%E6%85%8E%E7%94%A87@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
 

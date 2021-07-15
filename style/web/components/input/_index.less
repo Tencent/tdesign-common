@@ -30,11 +30,14 @@
   }
 
   &.t-input--suffix > span.t-input__clear {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: @input-inner-transition;
   }
 
   &.t-input--suffix:hover > span.t-input__clear {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
   }
 
   // 输入框状态
@@ -56,6 +59,7 @@
     & > .@{prefix}-input__inner {
       height: @input-height-l;
       line-height: @input-height-l;
+      font-size: @input-font-size-l;
     }
   }
 
@@ -63,6 +67,7 @@
     & > .@{prefix}-input__inner {
       height: @input-height-s;
       line-height: @input-height-s;
+      font-size: @input-font-size-s;
     }
   }
 
@@ -77,7 +82,7 @@
   // 输入框被聚焦
   &.@{prefix}-is-focused {
     .@{prefix}-input__prefix,
-    .@{prefix}-input__suffix {
+    .@{prefix}-input__suffix:not(.@{prefix}-input__clear) { // 除了clear icon其他都在focus时变色
       .@{prefix}-icon {
         color: @input-border-color-default-focus;
       }
@@ -146,15 +151,19 @@
       }
     }
     .@{prefix}-input {
+      .@{prefix}-input__inner {
+        border-radius: @input-border-radius;
+      }
+
       &:first-child {
         .@{prefix}-input__inner {
-          border-radius: @input-border-radius 0 0 @input-border-radius;
+          border-radius: @input-border-radius;
         }
       }
 
       &:last-child {
         .@{prefix}-input__inner {
-          border-radius: 0 @input-border-radius @input-border-radius 0;
+          border-radius: @input-border-radius;
         }
       }
     }

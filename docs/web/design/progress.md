@@ -1,15 +1,42 @@
-## 组件设计指南
 
+
+### 何时使用
+
+在一个操作需要较长时间才能完成（可能超过 4 秒），会打断当前界面或者需要在后台运行，需要显示该操作的当前进度和状态。
+
+给予用户完成任务的明确预期，如软件安装进度的场景。
 
 ### 与页面布局相关
 
-#### 整体页面加载时，加载组件放置在页面正中间
+##### 展示整个页面加载进度时，通常进度条放置在页面正中间。
 
-<img src="https://tdesign.gtimg.com/site/design/progress%E5%B0%BA%E5%AF%B81-0918.jpg"/>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BF%9B%E5%BA%A6%E6%9D%A1-1@2x.png" />
+    <p>图示：环形进度条在页面居中</p>
+  </div>
 
-#### 部分区块加载时，加载组件放置在区块内
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BF%9B%E5%BA%A6%E6%9D%A1-%E7%BA%BF%E6%80%A71@2x.png" />
+    <p>图示：线形进度条在页面居中</p>
+  </div>
+</div>
 
-<img src="https://tdesign.gtimg.com/site/design/progress%E5%B0%BA%E5%AF%B83-0918.jpg"/>
+
+##### 展示页面局部数据变化进度时，进度条组件放置在对应局部区块内。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BF%9B%E5%BA%A6%E6%9D%A1-2@2x.png" />
+    <p>图示：环形进度条在局部居中</p>
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BF%9B%E5%BA%A6%E6%9D%A1-%E7%BA%BF%E6%80%A72@2x.png" />
+    <p>图示：线形进度条在局部居中</p>
+  </div>
+</div>
+
 
 ### 相似组件
 

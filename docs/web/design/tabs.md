@@ -1,33 +1,82 @@
-## 组件设计指南
 
+
+### 何时使用
+当内容过多时需要将不同类型内容进行扁平化收纳。
 
 ### 与页面布局相关
-可根据实际使用情况（空间有限，或有特殊诉求的场景等），在内容模块中左右上下不同位置放置选项卡。
 
+##### 可根据实际使用情况（空间有限，或有特殊诉求的场景等），在内容模块的上下左右不同位置放置选项卡。
 
-![不同位置选项卡](https://tdesign.gtimg.com/site/design/images/不同位置选项卡-1820535.jpg)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-1@2x.png"/>
+    <p>图示：居于上方</p>
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-2@2x.png"/>
+    <p>图示：居于下方</p>
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-3@2x.png"/>
+    <p>图示：居于左侧</p>
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-4@2x.png"/>
+    <p>图示：居于右侧</p>
+  </div>
+</div>
 
 
 ### 组件搭配使用
 
-当出现多层级内容时，需注意不同层级选项卡的层级。
+##### 不同层级选项卡搭配使用，可以更好区分不同主次内容的层级。
 
-![功能选项卡与下划线选项卡组合](https://tdesign.gtimg.com/site/design/images/功能选项卡与下划线选项卡组合-1820562.jpg) 
-
-
-### 正确/错误案例
-
-#### 当标签过多一行展示不下时，不要使用多行的tab，可以考虑使用滑动展示。
-
-![正确&错误范例1](https://tdesign.gtimg.com/site/design/images/正确&错误范例1.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-5@2x.png)
 
 
+### 推荐/慎用示例
 
-#### 选项卡内的ICON需要结合文字一同展示，不能只使用ICON。
+##### 当标签过多无法在一行展示完整时，不要让选项卡换行，可以考虑使用滑动展示。
 
-![正确&错误范例2](https://tdesign.gtimg.com/site/design/images/正确&错误范例2.jpg)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-6@2x.png"/>
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-#### 选项卡操作时仅在同页面内进行切换，不会进行页面跳转（顶部导航选项卡除外），如需要进行页面跳转请使用文字链。
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1----7@2x.png"/>
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
-![正确&错误范例3](https://tdesign.gtimg.com/site/design/images/正确&错误范例3.jpg)
+##### 选项卡内的图标需要结合文字展示，不能只使用图标。
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-8@2x.png"/>
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-9@2x.png"/>
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
+
+##### 切换选项卡时在同一页面内进行，建议不要跳转新启页面。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-10@2x.png"/>
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-11@2x.png"/>
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>

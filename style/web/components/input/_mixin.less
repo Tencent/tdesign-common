@@ -21,7 +21,10 @@
   }
 
   &:focus {
+    position: relative;
+    z-index: 1;
     border-color: @input-border-color-default-focus;
+    box-shadow: 0 0 0 2px @input-box-shadow-color-default-focus;
   }
 }
 
@@ -36,6 +39,12 @@
         border-color: @input-border-color-default;
       }
     }
+    & > .@{prefix}-input__prefix,
+    & > .@{prefix}-input__suffix {
+      .@{prefix}-icon {
+        color: @input-text-color-disabled;
+      }
+    }
   }
 }
 
@@ -44,6 +53,11 @@
     & > .@{prefix}-input__inner {
       border-color: @@borderColor;
       @borderColor: "input-border-color-@{status}";
+
+      &:focus {
+        box-shadow: 0 0 0 2px @@boxShadowColor;
+        @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+      }
     }
     & > .@{prefix}-input__extra {
       color: @@fontColor;
@@ -65,6 +79,7 @@
     & > .@{prefix}-input__@{position} {
       position: absolute;
       top: 0;
+      z-index: 2;
       height: 100%;
       text-align: center;
       display: flex;

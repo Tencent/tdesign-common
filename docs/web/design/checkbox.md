@@ -1,63 +1,64 @@
-## 组件设计指南
+
+
+### 何时使用
+
+需要从一个数据集中选择多个选项时；
+
+需要对两种状态进行切换时（选中或未选中，打开或关闭），可单独使用多选框；
+
+多选框是一个标记控件，不会立即生效，需要通过触发操作按钮，如：提交、确认等后生效。
+
 
 
 ### 组件搭配使用
 
-#### 与气泡提示搭配使用。在危险操作时用以增加操作成本，只有选择后才可触发下一步操作，此时若未选择，点击按钮时弹出相关提示。
+##### 与气泡提示搭配使用。多选框所在选项为必选项时，用户漏选则弹出气泡提示。
 
-![使用规范3](https://tdesign.gtimg.com/site/design/images/使用规范3-1850005.jpg)
-
-
-
-#### 在表格使用中，如果需要对多行数据同时进行操作，则应该为每一行添加一个多选框。并显示“已选 XX 项”信息，同时表格顶部的批量操作按钮变为可点击态。
-
-![使用规范4](https://tdesign.gtimg.com/site/design/images/使用规范4-1850017.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-1@2x.png)
 
 
+##### 与对话框搭配使用。多选框所在选项勾选时需警示或二次确认时，点击后可弹出模态对话框提示。
+
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-2@2x.png)
 
 
 
 ### 常见用法
 
-#### 多选框可在表单中单独使用，用以表示两种状态（选中和未选中）之间的切换，用户可以根据需求选择。
+##### 多选框可在表单中单独使用。
 
-![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1849982.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-3@2x.png)
 
 
+##### 若需要通过操作多选框隐藏部分内容，可以使用就地隐藏/展开的方式。
 
-### 建议/慎用示例
-
-#### 不要在非编辑态下使用多选框。
-
-![正确&错误示例1](https://tdesign.gtimg.com/site/design/images/正确&错误示例1-1850079.jpg)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-4@2x.png)
 
 
 
-#### 不要用多选框触发一个弹窗。
 
-![正确&错误示例2](https://tdesign.gtimg.com/site/design/images/正确&错误示例2-1850091.jpg)
+### 推荐/慎用示例
 
+##### 当选项较多且字段长度不一时，建议将多选框对齐。
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-7@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
-#### 若需要通过操作多选框隐藏部分内容，可以使用就地隐藏/展开的方式。
-
-![正确&错误示例3](https://tdesign.gtimg.com/site/design/images/正确&错误示例3-1850104.jpg)
-
-
-
-#### 当选项较多且字段长度不一时，不要根据字段长度排列多选框。
-
-即使字段长度不同，多选框也需要对齐，以便用户更快获取信息。
-
-![正确&错误示例4](https://tdesign.gtimg.com/site/design/images/正确&错误示例4-1850117.jpg)
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-8@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
 
 
 ### 相似组件
 
 | 组件名 | 何时使用                             |
 | :----- | :----------------------------------- |
-| 多选框 | 标记控件，需要与“提交”等操作结合使用 |
-| 开关   | 即时生效的控件，可单独使用           |
+| [多选框](./checkbox) | 标记控件，需要与“提交”等操作结合使用 |
+| [开关](./switch)   | 即时生效的控件，可单独使用           |
 
 

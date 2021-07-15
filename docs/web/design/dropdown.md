@@ -1,10 +1,15 @@
-## 组件设计指南
 
 
+### 何时使用
 
-### 3.1. 与页面布局相关
+在有限的空间内，需要承载多种操作，并且不影响页面结构；
 
-下拉菜单在页面内四个区域会有不同的布局方式。
+常与表格、列表等组件组合使用，可以将不常用的操作进行收纳，减少对空间的占用。
+
+
+### 与页面布局相关
+
+##### 下拉菜单在页面内四个区域会有不同的布局方式。
 
 ![其它场景备份](https://tdesign.gtimg.com/site/design/images/其它场景备份-1847338.jpg)
 
@@ -12,24 +17,29 @@
 
 （1）区域一：在区域一中触发的下拉菜单，在右下角展示，并向右下角拓展。
 
-<img src="https://tdesign.gtimg.com/site/design/images/编组 7-1847349.jpg" />
+![编组 7](https://tdesign.gtimg.com/site/design/images/编组 7-1847349.jpg)
 
 
 
 （2）区域二：在区域二中触发的下拉菜单，在左下角展示，并向左下角拓展。
 
-<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份 3-1847356.jpg" />
+![其它场景备份 3](https://tdesign.gtimg.com/site/design/images/其它场景备份 3-1847356.jpg)
 
 
 
 （3）区域三：在区域三中触发的下拉菜单，在右上角展示，并向右上角拓展。
 
-<img src="https://tdesign.gtimg.com/site/design/images/编组 8-1847379.jpg" />
+![编组 8](https://tdesign.gtimg.com/site/design/images/编组 8-1847379.jpg)
+
 
 
 （4）区域四：在区域四中触发的下拉菜单，在左上角展示，并向左上角拓展。
 
-<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份 4-1847386.jpg" />
+![其它场景备份 4](https://tdesign.gtimg.com/site/design/images/其它场景备份 4-1847386.jpg)
+
+
+
+
 
 
 

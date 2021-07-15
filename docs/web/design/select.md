@@ -1,49 +1,40 @@
-## 组件设计指南
 
+
+
+### 何时使用
+
+需要在有限的空间展示大量选项，并从中选取单个或多个选项时。
 
 ### 与页面布局相关
+##### 选择器下拉面板出现时，应确保其布局在页面可视区内。
 
-#### 选择器下拉面板需考虑所处页面的位置，当在页面底部时，下拉面板向上展开。
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%B7%A6%E4%B8%8A%E8%A7%92.png"/>
+    <p>图示：不同页面位置展开方式-左上角</p>
+  </div>
 
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%8F%B3%E4%B8%8B%E8%A7%92.png"/>
+    <p>图示：不同页面位置展开方式-右下角</p>
+  </div>
 
-![表单选择器-区域二](https://tdesign.gtimg.com/site/design/images/表单选择器-区域二-1851419.jpg)
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%B7%A6%E4%B8%8B%E8%A7%92.png"/>
+    <p>图示：不同页面位置展开方式-左下角</p>
+  </div>
 
-
-不同页面位置展开方式-左上角：
-
-![其它场景-区域一](https://tdesign.gtimg.com/site/design/images/其它场景-区域一-1851435.jpg)
-
-
-
-
-不同页面位置展开方式-右下角：
-
-![其它场景-区域二](https://tdesign.gtimg.com/site/design/images/其它场景-区域二-1851442.jpg)
-
-
-不同页面位置展开方式-左下角：
-
-![其它场景-区域三](https://tdesign.gtimg.com/site/design/images/其它场景-区域三-1851452.jpg)
-
-
-
-不同页面位置展开方式-右上角：
-
-![其它场景-区域四](https://tdesign.gtimg.com/site/design/images/其它场景-区域四-1851460.jpg)
-
-
-
-
-
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E5%8F%B3%E4%B8%8A%E8%A7%92.png"/>
+    <p>图示：不同页面位置展开方式-右上角</p>
+  </div>
+</div>
 
 
 ### 组件搭配使用
 
-#### 当选项较多时，可与搜索框结合使用，便于用户搜索对象
-<!-- <img width="" src="/uploads/44FCA377E244458DA4430D9BCEE2735B/image.png" alt="image.png" /> -->
-
-
+##### 与搜索框搭配使用，当选项较多时，便于用户快速搜索到相关对象。
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E6%8B%A9%E5%99%A8-%E7%BB%84%E4%BB%B6%E6%90%AD%E9%85%8D%E4%BD%BF%E7%94%A8.png)
 
 
 

@@ -1,45 +1,40 @@
-## 组件设计指南
 
 
+### 何时使用
 
-### 组件常用用法
+在完结某个独立页面后的反馈，如：付款成功页面；
 
-#### 针对一个操作区域的总体反馈；
+在一个操作区域或一系列操作完成之后的总体反馈，如：提交分步骤表单中的某个表单；
 
-（示例：提交一个就地编辑的表单，提交过程需要时间，loading后给出结果反馈）
-
-![使用规范2](https://tdesign.gtimg.com/site/design/images/使用规范2-1837382.jpg)
-
-
-
-#### 跟随一个操作点，对用户刚才的操作进行成功、警告和错误等反馈。
-
-（示例：复制成功后在页面中央顶部出现toast提示，3秒后自动消失）
-
-![使用规范3](https://tdesign.gtimg.com/site/design/images/使用规范3.jpg)
-
-
+在某个操作点之后的反馈，如：针对信息复制操作的结果反馈。
 
 ### 与页面布局相关
 
-#### 全局提示常出现在页面顶部居中、内容区右上方和左下方等位置，提示用户却不过于干扰；
+##### 全局提示常出现在页面顶部居中、内容区右上方和左下方等位置，提示用户却不过于干扰；
 
-（示例：因为网络原因，加载页面时出错）
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/meaaage03.png"/>
+    <p>图示：上方居中</p>
+  </div>
 
-![使用规范1](https://tdesign.gtimg.com/site/design/images/使用规范1-1837369.jpg)
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage04.png"/>
+    <p>图示：右上角</p>
+  </div>
 
-
-
-
-
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/td%E9%85%8D%E5%9B%BE/meaaage05.png"/>
+    <p>图示：左下角</p>
+  </div>
+</div>
 
 ### 相似组件
 
 | 相似组件             | 何时使用                                                     |
 | :------------------- | :----------------------------------------------------------- |
-| 全局提示             | 对用户的操作作出轻量的全局反馈。 |
-| 警告 Alert           | 警告常用于承载站内相关产品某项功能的解释说明、使用注意事项等，置于内容展示区域顶部，非悬浮层。 |
-| 消息通知Notification | 需要提醒用户来自系统的消息，且不打断用户；带有解释描述的提醒内容；需要用户进行相关交互时，如：确认操作等。 |
+| [全局提示](./message)| 对用户的操作作出轻量的全局反馈。 |
+| [警告](./Alert)  | 警告常用于承载站内相关产品某项功能的解释说明、使用注意事项等，置于内容展示区域顶部，非悬浮层。 |
+| [消息通知](./Notification) | 需要提醒用户来自系统的消息，且不打断用户时；带有解释描述的提醒内容时。 |
 
 
