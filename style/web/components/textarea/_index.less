@@ -40,17 +40,17 @@
       position: absolute;
       bottom: @textarea-limit-position-bottom;
       right: @textarea-limit-position-right;
-      font-size: @input-font-size;
+      font-size: @font-size-base;
       color: @textarea-limit-color;
     }
 
     .@{prefix}-is-disabled {
-      color: @input-text-color-disabled;
-      background-color: @input-bg-color-disabled;
+      color: @text-color-disabled;
+      background-color: @bg-color-component-disabled;
       cursor: not-allowed;
 
       &:hover {
-        border-color: @input-border-color-default;
+        border-color: @border-level-2-color;
       }
     }
 

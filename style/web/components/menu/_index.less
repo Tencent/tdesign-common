@@ -3,6 +3,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../../mixins/_layout.less";
 
 a.@{prefix}-menu__item {
   text-decoration: none;
@@ -514,7 +515,7 @@ a.@{prefix}-menu__item {
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: @border-radius;
-    
+
     ::selection {
       background: transparent;
     }
@@ -626,7 +627,7 @@ a.@{prefix}-menu__item {
     max-height: 0;
     overflow: hidden;
     transition: max-height @anim-duration-moderate @anim-time-fn-easing,
-      width @anim-duration-moderate @anim-time-fn-easing, 
+      width @anim-duration-moderate @anim-time-fn-easing,
       opacity @anim-duration-base linear;
     position: absolute;
     background: @menu-theme-light;
