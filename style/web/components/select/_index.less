@@ -1,4 +1,6 @@
+@import "../../base.less";
 @import "./_var.less";
+@import "../../mixins/_text.less";
 
 // select
 .@{prefix}-select-wrap {
@@ -117,7 +119,7 @@
 .@{prefix}-select.@{prefix}-no-border {
   border: 0;
   width: auto;
-  
+
   &:hover {
     background: @select-option-bg-color-hover;
   }
