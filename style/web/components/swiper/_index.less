@@ -1,0 +1,105 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+
+/* Swiper */
+.@{prefix}-swiper {
+  position: relative;
+  display: flex;
+  opacity: 1;
+  transition: opacity .2s;
+
+  &.@{prefix}-is-hidden { /* 隐藏 */
+    display: none;
+  }
+
+  &--closing {
+    opacity: 0;
+  }
+
+  .@{prefix}-swiper__trigger-wrap {
+    color: @swiper-trigger-wrap-inactive;
+  }
+
+  .@{prefix}-swiper__trigger--active {
+    color: @swiper-trigger-wrap-active;
+  }
+}
+
+.@{prefix}-swiper__content {
+  flex: 1 1 auto;
+  z-index: 1;
+  overflow: hidden;
+  height: @swiper-content-height;
+}
+
+.@{prefix}-swiper__swiper-wrap {
+  position: relative;
+  display: flex;
+  left: 0;
+  transition: left 1s, transform 2s;
+
+  > * {
+    flex: 1;
+  }
+
+  &--horizontal {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    left: 0;
+    transition: left 1s, transform 2s;
+
+    > * {
+      flex: 1;
+    }
+  }
+
+  &--vertical {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    transition: top 1s, transform 2s;
+
+    > * {
+      flex: 1;
+    }
+  }
+}
+
+.@{prefix}-swiper__trigger-wrap {
+  position: absolute;
+  right: @swiper-close-width;
+  z-index: 100;
+  flex: 0 0 auto;
+  padding: @swiper-trigger-wrap-padding;
+  margin: 0;
+  font-size: @swiper-trigger-wrap-font;
+  line-height: @swiper-trigger-line-height;
+  height: @swiper-content-height;
+
+  > li {
+    display: inline-block;
+    list-style-type: none;
+    cursor: pointer;
+
+    &:before {
+      content: "\2022";
+    }
+  }
+}
+
+.@{prefix}-swiper__close {
+  position: absolute;
+  right: 0;
+  z-index: 100;
+  width: @swiper-close-width;
+  height: @swiper-content-height;
+  padding: @swiper-close-padding;
+  font-size: @swiper-close-font;
+  color: @swiper-close-color;
+  cursor: pointer;
+  align-items: center;
+}

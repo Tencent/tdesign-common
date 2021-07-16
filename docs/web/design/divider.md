@@ -1,5 +1,6 @@
 
 
+
 ### 何时使用
 
 需要对不同章节的文本段落进行分割时；
@@ -13,10 +14,14 @@
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E5%89%B2%E7%BA%BF%202nd%20%E6%94%B9%201.png"/>
 
+<hr />
+
 ##### 内嵌布局。一般在两侧预留缺口，区分同一模块下的相关内容，让用户浏览时更加高效。
 
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E5%89%B2%E7%BA%BF%202nd%20%E6%94%B9%202.png"/>
+
+<hr />
 
 ##### 组合布局。通栏分割线与内嵌分割线的组合布局。
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E5%89%B2%E7%BA%BF%202nd%20%E6%94%B9%203.png"/>

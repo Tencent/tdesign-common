@@ -2,6 +2,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+
 .@{prefix} {
   &-textarea {
     position: relative;
@@ -40,17 +41,17 @@
       position: absolute;
       bottom: @textarea-limit-position-bottom;
       right: @textarea-limit-position-right;
-      font-size: @input-font-size;
+      font-size: @textarea-font-size;
       color: @textarea-limit-color;
     }
 
     .@{prefix}-is-disabled {
-      color: @input-text-color-disabled;
-      background-color: @input-bg-color-disabled;
+      color: @textarea-color-text-disabled;
+      background-color: @textarea-bg-color-disabled;
       cursor: not-allowed;
 
       &:hover {
-        border-color: @input-border-color-default;
+        border-color: @textarea-border-color;
       }
     }
 

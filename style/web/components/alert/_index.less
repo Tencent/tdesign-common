@@ -11,12 +11,12 @@
   opacity: 1;
   transition: opacity .2s;
   border-radius: @border-radius;
-  
+
   &.@{prefix}-is-hidden { /* 隐藏 */
     display: none;
   }
 
-  &&--closing {
+  &--closing {
     opacity: 0;
   }
 
@@ -38,7 +38,7 @@
 
   &--success {
     background-color: @alert-success-bg-color;
-    
+
     .@{prefix}-alert__icon {
       color: @alert-success-icon-color;
     }
@@ -83,24 +83,18 @@
       color: @alert-error-trigger-active-color;
     }
   }
-
-  // &--closable,
-  // &--collapsed,
-  // &--expanded
-  // {
-  // }
 }
 
 .@{prefix}-alert__icon,
 .@{prefix}-alert__close {
   flex: 0 0 auto;
-  line-height: 20px;
+  line-height: @text-line-height-s;
 }
 
 .@{prefix}-alert__content {
   flex: 1 1 0;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: @font-size-base;
+  line-height: @text-line-height-s;
   overflow: hidden;
 }
 
@@ -114,7 +108,7 @@
   font-weight: bold;
 
   + .@{prefix}-alert__message {
-    margin-top: 8px;
+    margin-top: @spacer;
   }
 }
 
@@ -124,7 +118,7 @@
 
 .@{prefix}-alert__operation {
   flex: 0 0 auto;
-  padding: 0 8px;
+  padding: 0 @spacer;
   color: @primary-color;
   cursor: pointer;
 }
@@ -140,13 +134,13 @@
 }
 
 .@{prefix}-alert__close {
-  font-size: 14px;
+  font-size: @font-size-base;
   color: @text-level-3-color;
   cursor: pointer;
 }
 
-
 /* Alert Swiper */
+// can be removed when web-angular migrate swiper to a single component.
 .@{prefix}-alert-swiper {
   display: flex;
   opacity: 1;
@@ -156,7 +150,7 @@
     display: none;
   }
 
-  &&--closing {
+  &--closing {
     opacity: 0;
   }
 
