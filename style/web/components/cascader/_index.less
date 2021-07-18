@@ -15,11 +15,11 @@
   vertical-align: middle;
   cursor: default;
 
-  & .@{prefix}-cascader__placeholder {
+  & .@{prefix}-cascader-placeholder {
     color: @cascader-light-color;
   }
 
-  & .@{prefix}-cascader__content {
+  & .@{prefix}-cascade-content {
     color: @cascader-dark-color;
   }
 
@@ -30,11 +30,19 @@
     background-color: @cascader-tag-background-color;
     border-color: @cascader-tag-border-color;
   }
+  &:hover:not(.@{prefix}-is-disabled),
+  :active:not(.@{prefix}-is-disabled) {
+    cursor: pointer;
+    border-color: @cascader-active-border-color;
 
+    & > .@{prefix}-icon {
+      color: @cascader-selected-color;
+    }
+  }
   & .@{prefix}-is-disabled {
-    cursor: auto;
+    cursor: not-allowed;
     background-color: @cascader-tag-background-color-disabled;
-    color: @cascader-tag-color-disabled;
+    color: @cascader-item-color-disabled;
   }
 }
 
@@ -45,7 +53,7 @@
   border-radius: @border-radius;
   cursor: default;
   padding: 0;
-  
+
   & .@{prefix}-cascader-panel {
     display: flex;
     height: 100%;
@@ -63,7 +71,7 @@
         color: @cascader-dark-color;
         padding-left: 8px;
 
-        & .@{prefix}-item--highlight {
+        & .@{prefix}-cascader-item--highlight {
           color: @cascader-highlight-color;
         }
 
@@ -71,6 +79,11 @@
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
+        }
+
+        &.@{prefix}-cascader-item__is-empty {
+          color: @cascader-light-color;
+          text-align: center;
         }
 
         &:hover {
@@ -90,7 +103,10 @@
       }
 
       .@{prefix}-cascader-item.@{prefix}-is-selected {
-        background: @cascader-item-color-selected;
+        color: @cascader-item-color-selected;
+        & .@{prefix}-checkbox__label {
+          color: @cascader-item-color-selected;
+        }
       }
 
       .@{prefix}-cascader-item.@{prefix}-is-disabled {
@@ -108,7 +124,7 @@
         }
       }
     }
-    
+
     & .@{prefix}-cascader-menu.@{prefix}-is-search {
       width: @cascader-input-width;
       overflow-y: auto;
@@ -181,7 +197,7 @@
 }
 
 .@{prefix}-cascader.@{prefix}-is-disabled {
-  cursor: auto;
+  cursor: not-allowed;
   background-color: @cascader-tag-background-color-disabled;
   color: @cascader-tag-color-disabled;
   border-color: @cascader-border-color-disabled;
@@ -192,11 +208,18 @@
 }
 
 .@{prefix}-cascader.@{prefix}-size-l {
-  line-height: @cascader-height-l - 2px;
+  min-height: @cascader-height-l;
+  line-height: @cascader-height-l - 1px;
+}
+
+.@{prefix}-cascader.@{prefix}-size-m {
+  min-height: @cascader-height-default;
+  line-height: @cascader-height-default - 2px;
 }
 
 .@{prefix}-cascader.@{prefix}-size-s {
-  line-height: @cascader-height-s - 2px;
+  min-height: @cascader-height-s;
+  line-height: @cascader-height-s - 4px;
 }
 
 .@{prefix}-cascader-panel.@{prefix}-cascader--normal {
