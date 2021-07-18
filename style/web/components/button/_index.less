@@ -1,7 +1,6 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
-@import "../../utilities/_animation.less";
 
 .button-attr-color(@theme, @attr, @attr-prepend: '', @ghost: false) {
   @theme-default: e("btn-color-@{theme}");
@@ -310,25 +309,25 @@
 }
 
 .@{prefix}-button:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
-  .click-animation-elem(@btn-color-white-bg-active);
+  --ripple-color: @btn-color-white-bg-active;
 }
 
 .@{prefix}-button--variant-base:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
-  .click-animation-elem(@btn-color-gray-bg-active);
+  --ripple-color: @btn-color-gray-bg-active;
 }
 
 .@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
-  .click-animation-elem(@btn-color-primary-active);
+  --ripple-color: @btn-color-primary-active;
 }
 
 .@{prefix}-button--variant-base.@{prefix}-button--theme-success:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
-  .click-animation-elem(@btn-color-success-active);
+  --ripple-color: @btn-color-success-active;
 }
 
 .@{prefix}-button--variant-base.@{prefix}-button--theme-warning:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
-  .click-animation-elem(@btn-color-warning-active);
+  --ripple-color: @btn-color-warning-active;
 }
 
 .@{prefix}-button--variant-base.@{prefix}-button--theme-danger:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
-  .click-animation-elem(@btn-color-danger-active);
+  --ripple-color: @btn-color-danger-active;
 }

@@ -317,6 +317,13 @@ textarea {
 }
 
 /**
+ * Remove the cancel button in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-cancel-button{
+  -webkit-appearance: none;
+}
+
+/**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
