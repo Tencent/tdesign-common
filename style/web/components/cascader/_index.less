@@ -197,7 +197,7 @@
 }
 
 .@{prefix}-cascader.@{prefix}-is-disabled {
-  cursor: auto;
+  cursor: not-allowed;
   background-color: @cascader-tag-background-color-disabled;
   color: @cascader-tag-color-disabled;
   border-color: @cascader-border-color-disabled;
@@ -208,10 +208,17 @@
 }
 
 .@{prefix}-cascader.@{prefix}-size-l {
+  min-height: @cascader-height-l;
   line-height: @cascader-height-l - 2px;
 }
 
+.@{prefix}-cascader.@{prefix}-size-m {
+  min-height: @cascader-height-default;
+  line-height: @cascader-height-default - 2px;
+}
+
 .@{prefix}-cascader.@{prefix}-size-s {
+  min-height: @cascader-height-s;
   line-height: @cascader-height-s - 2px;
 }
 
