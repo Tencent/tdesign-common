@@ -40,7 +40,7 @@
 
 ### 渲染和呈现在当前父元素的抽屉
 
-添加 API `showInAttachedElement` 即可
+添加 API `showInAttachedElement` ，父元素需要有定位属性，如：position: relative
 
 {{ attach-parent }}
 
