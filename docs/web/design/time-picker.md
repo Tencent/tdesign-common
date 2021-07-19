@@ -1,13 +1,16 @@
-## 组件设计指南
 
+
+### 何时使用
+
+当在表单中需要时间输入，或表格中需要进行时间条件筛选时。
 
 ### 组件搭配使用
-#### 可与日期选择器一起使用，表达某日期精准的时间
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E5%99%A8-%E6%90%AD%E9%85%8D@2x.png)
+##### 可与日期选择器一起使用，表达某日期精准的时间
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E5%99%A8-1@2x.png)
 
 ### 常见用法
-#### 时间选择器常用在表单设计中
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E5%99%A8-%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95@2x.png)
+##### 时间选择器常用在表单设计中
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E5%99%A8-2.png)
 
 ### 相似组件
 

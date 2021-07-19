@@ -11,27 +11,40 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-@tab-bg-color: @bg-color-block;
-@tab-bar-bg-color: #eeeeee;
-@tab-add-btn-bg-color: @bg-color-block;
-@tab-scroll-btn-bg-color: @bg-color-block;
+// 默认选项卡
+@tab-default-bg: @bg-color-container;
+@tab-default-bg-hover: @bg-color-container-hover;
+@tab-default-bg-active: @bg-color-container-active;
 
-@tab-text-color: @text-level-2-color;
+@tab-default-text: @text-color-secondary;
+@tab-default-text-select: @brand-color;
+@tab-default-text-disabled: @text-color-disabled;
 
-@tab-bar-active-color: #0052d9;
-@tab-text-active-color: #0052d9;
-@tab-nav-card-active-color: @bg-color-block;
-@tab-nav-card-border-active-color: @bg-color-block;
-@tab-card-inactive-color: #fbfbfb;
-@tab-disabled-color: rgba(0, 0, 0, .25);
-@tab-btn-shadow-color: #eee;
+@tab-default-icon: @text-color-secondary;
+@tab-default-icon-select: @brand-color;
+@tab-default-icon-disabled: @text-color-disabled;
 
-@tab-nav-bar-size: 2px;
-@tab-nav-height-size-m: 48px;
-@tab-nav-height-size-l: 64px;
-@tab-nav-btn-width: 40px;
-@tab-nav-horizontal-padding: 28px;
-@tab-btn-shadow-offset: 5px;
+@tab-default-stroke: @component-stroke;
+@tab-default-stroke-select: @brand-color;
+@tab-default-stroke-size: 2px;
 
-@tab-nav-font-size-middle: @font-size-base;
-@tab-nav-font-weight-medium: 500;
+// 卡片选项卡
+@tab-card-bg: @bg-color-secondarycontainer;
+@tab-card-bg-hover: @bg-color-secondarycontainer-hover;
+@tab-card-bg-active: @bg-color-secondarycontainer-active;
+@tab-card-bg-select: @bg-color-container;
+
+@tab-card-text: @text-color-secondary;
+@tab-card-text-select: @brand-color;
+@tab-card-text-disabled: @text-color-disabled;
+
+@tab-card-icon: @text-color-secondary;
+@tab-card-icon-select: @text-color-primary;
+@tab-card-icon-disabled: @text-color-disabled;
+
+@tab-card-stroke: @component-stroke;
+
+// 其他
+@tab-height-middle: 48px;
+@tab-height-large: 64px;
+@tab-btn-width: 40px;

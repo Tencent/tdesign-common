@@ -1,3 +1,7 @@
 .hover-transition(@attr) {
   transition: @attr @anim-duration-base linear;
 }
+
+.dragger-inner-max-width(@outterWidth, @padding, @margin) {
+  max-width: @outterWidth - @padding * 2 - @margin;
+}

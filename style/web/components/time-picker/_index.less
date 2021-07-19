@@ -2,6 +2,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../../mixins/_layout.less";
 
 .@{prefix}-time-picker {
   width: @time-picker-width-common;
@@ -22,16 +23,31 @@
   &__group {
     position: relative;
 
+    &.@{prefix}-is-focused {
+      .@{prefix}-input__inner {
+        border-color: @time-picker-input-color-focused;
+      }
+      .@{prefix}-input__suffix:not(.@{prefix}-input__clear) {
+        .@{prefix}-icon {
+          color: @time-picker-input-color-focused;
+        }
+      }
+    }
+
     &.active {
       border: @time-picker-input-border-active;
       box-shadow: @time-picker-input-shadow-active;
-      & + .@{prefix}-time-picker__icon-wrap > .@{prefix}-time-picker__icon-clear {
+      &+ .@{prefix}-time-picker__icon-wrap > .@{prefix}-time-picker__icon-clear {
         display: block;
       }
     }
 
     &-text {
       color: @time-picker-input-text-color;
+    }
+
+    input {
+      cursor: pointer;
     }
   }
 
@@ -40,6 +56,7 @@
     top: 0;
     height: 100%;
     padding: @time-picker-input-padding;
+    z-index: 1;
     .flex-center;
 
     border-radius: @border-radius;
@@ -51,7 +68,7 @@
     }
 
     &-placeholder {
-      margin-left: 4px;
+      margin-left: @time-picker-input-placeholder-margin-left;
       color: @time-picker-panel-input-placeholder-color;
     }
 
@@ -63,16 +80,17 @@
       }
 
       &-input {
-        padding: 0;
+        margin: @time-picker-input-item-input-margin;
         color: inherit;
         background: none;
         cursor: pointer;
         height: inherit;
         outline: none;
-        width: @time-picker-panel-item-input-width;
+        width: @time-picker-input-item-input-width;
         text-align: center;
+        border-radius: @time-picker-input-item-input-radius;
         border: 0;
-        
+
         &:focus {
           border-color: @bg-color-page;
           background-color: @bg-color-container-hover;
@@ -82,7 +100,7 @@
   }
 
   &__input-disabled {
-    border: 1px solid @border-level-2-color;
+    border: @time-picker-input-border-disabled;
     background-color: @bg-color-container-hover;
 
     &-placeholder {
@@ -104,7 +122,7 @@
 
 .@{prefix}-time-picker-panel {
   width: @time-picker-width-common;
-  padding: @time-picker-panel-padding;
+
   background: @time-picker-background-color-common;
   border-radius: @border-radius;
   display: inline-block;
@@ -114,9 +132,11 @@
   &__body {
     width: 100%;
     height: @time-picker-panel-body-height;
+
     position: relative;
     user-select: none;
-    
+    margin: @time-picker-panel-body-margin;
+
     &-active-mask {
       position: absolute;
       top: 50%;
@@ -126,7 +146,9 @@
 
       > div {
         flex: 1;
-        transform: translateY(-(@time-picker-panel-item-height + @time-picker-panel-item-margin) /2 );
+        transform: translateY(
+          -(@time-picker-panel-item-height + @time-picker-panel-item-margin) /2
+        );
         height: @time-picker-panel-item-height;
         background-color: @time-picker-panel-item-background-color-current;
         margin: @time-picker-panel-item-margin;
@@ -141,7 +163,6 @@
       overflow-y: scroll;
       text-align: center;
       position: relative;
-      transition: background .3s;
       .list-style-none();
 
       &::-webkit-scrollbar {
@@ -189,13 +210,13 @@
 
         &.@{prefix}-is-current {
           color: @time-picker-panel-item-color-current;
-         
         }
       }
     }
   }
 }
 
+// TODO: 结构比较复杂且不清晰 有时间优化DOM结构
 .@{prefix}-time-picker-panel-section {
   width: @time-picker-panel-section-width;
   background-color: @time-picker-background-color-common;
@@ -203,32 +224,11 @@
   &__body {
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    padding: @time-picker-panel-body-padding;
 
-    & > .@{prefix}-time-picker-panel:first-child {
-      box-shadow: none;
-    }
-
-    & > .@{prefix}-time-picker-panel:last-child {
-      box-shadow: none;
-    }
-
-    .@{prefix}-time-picker-panel__gap {
-      width: 20px;
-      height: 100%;
-      background-color: @time-picker-background-color-common;
-      position: relative;
-
-      &-top {
-        width: 100%;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        background-color: @time-picker-background-color-common;
-
-        &.disabled {
-          background-color: @border-level-2-color;
-        }
-      }
+    > *:nth-child(2) {
+      margin-left: @time-picker-panel-section-second-body-margin-left;
     }
   }
 

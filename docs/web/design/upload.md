@@ -1,10 +1,34 @@
-## 组件设计指南
 
+
+
+### 何时使用
+
+需要上传文件时；
+
+需要显示上传进度时。
 
 ### 常见用法
 
-上传组件需要呈现清晰的使用状态，包含初始状态、拖拽状态、上传过程、上传成功和上传失败等
+##### 上传组件需要呈现清晰的使用状态，包含初始状态、拖拽状态、上传过程、上传成功和上传失败等。
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A01@2x.png"/>
+  </div>
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0.png)
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-2@2x.png"/>
+  </div>
 
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-3@2x.png"/>
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-4@2x.png"/>
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-5@2x.png"/>
+  </div>
+</div>

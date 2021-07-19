@@ -6,8 +6,7 @@
 
 .@{prefix}-tabs {
   overflow: hidden;
-  background-color: @tab-bg-color;
-
+  background-color: @tab-default-bg;
 
   &__header {
 
@@ -26,28 +25,89 @@
     user-select: none;
   }
 
-  &__add-btn {
-    width: @tab-nav-btn-width;
-    height: 100%;
-    display: block;
-    background-color: @tab-add-btn-bg-color;
-    text-align: center;
+  &__operations {
+    display: flex;
+    flex-direction: row;
     position: absolute;
-    right: 0;
-    border-left: 1px solid @tab-bar-bg-color;
-    border-bottom: 1px solid @tab-bar-bg-color;
+    border-bottom: 1px solid @tab-card-stroke;
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+
+      .@{prefix}-tabs__btn {
+        &:first-child::before {
+          content: "";
+          display: block;
+          width: 40px;
+          height: 100%;
+          background: linear-gradient(270deg, rgba(0, 0, 0, .05) 0%, rgba(255, 255, 255, 0) 100%);
+          position: absolute;
+          top: 0;
+          left: -40px;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    width: @tab-btn-width;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: @tab-card-bg;
+    border-left: 1px solid @tab-card-stroke;
     cursor: pointer;
-    color: @text-level-3-color;
+    color: @tab-default-text;
     font-size: @font-size-l;
+    transition: all @anim-duration-moderate @anim-time-fn-easing;
+    z-index: 1;
+    opacity: 1;
+
+    &:hover {
+      background-color: @tab-card-bg-hover;
+    }
 
     &.@{prefix}-size-m {
-      height: @tab-nav-height-size-m;
-      line-height: @tab-nav-height-size-m;
+      height: @tab-height-middle;
+      line-height: @tab-height-middle;
     }
 
     &.@{prefix}-size-l {
-      height: @tab-nav-height-size-l;
-      line-height: @tab-nav-height-size-l;
+      height: @tab-height-large;
+      line-height: @tab-height-large;
+    }
+
+    &--left {
+      border-right: 1px solid @tab-card-stroke;
+      
+      &:after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(270deg, rgba(0, 0, 0, .05) 0%, rgba(255, 255, 255, 0) 100%);
+        transform: rotate(-180deg);
+        position: absolute;
+        top: 0;
+        right: -40px;
+      }
+      
+      &.fade-enter,
+      &.fade-leave-to {
+        transform: translateX(-50px);
+      }
+    }
+
+    &--right {
+      &.fade-enter,
+      &.fade-leave-to {
+        transform: translateX(50px);
+      }
     }
   }
 
@@ -71,161 +131,206 @@
     }
 
     &.@{prefix}-is-addable {
-      margin-right: @tab-nav-btn-width;
+      margin-right: @tab-btn-width;
     }
 
-    &.@{prefix}-tabs__nav--card::after {
-      content: "";
-      background-color: transparent;
+    &.@{prefix}-tabs__nav--card {
+      // border-bottom: 1px solid @tab-default-stroke;
+
+      &:after {
+        content: "";
+        background-color: transparent;
+      }
     }
   }
 
   &__scroll-btn {
     position: absolute;
     z-index: 1;
-    width: @tab-nav-btn-width;
+    width: @tab-btn-width;
     height: 100%;
     display: block;
-    background-color: @tab-scroll-btn-bg-color;
+    background-color: @tab-card-bg;
     text-align: center;
-    border-bottom: 1px solid @tab-bar-bg-color;
+    border-bottom: 1px solid @tab-default-stroke;
     cursor: pointer;
-    color: @text-level-3-color;
+    color: @tab-card-text;
     font-size: @font-size-l;
 
     &.@{prefix}-size-m {
-      height: @tab-nav-height-size-m;
-      line-height: @tab-nav-height-size-m;
+      height: @tab-height-middle;
+      line-height: @tab-height-middle;
     }
 
     &.@{prefix}-size-l {
-      height: @tab-nav-height-size-l;
-      line-height: @tab-nav-height-size-l;
-    }
-
-    &--left {
-      left: 0;
-      box-shadow: @tab-btn-shadow-offset 0 @tab-btn-shadow-offset 0 @tab-btn-shadow-color;
-    }
-
-    &--right {
-      right: 0;
-      box-shadow: -@tab-btn-shadow-offset 0 @tab-btn-shadow-offset 0 @tab-btn-shadow-color;
+      height: @tab-height-large;
+      line-height: @tab-height-large;
     }
   }
 
   &__nav-scroll {
-    overflow: auto;
-
-    &.@{prefix}-is-scrollable {
-      margin-left: @tab-nav-btn-width;
-      margin-right: @tab-nav-btn-width;
-    }
+    position: relative;
+    display: inline-block;
+    display: flex;
+    flex: auto;
+    align-self: stretch;
+    overflow: hidden;
+    white-space: nowrap;
+    transform: translate(0);
   }
 
   &__nav-wrap {
     position: relative;
-    white-space: nowrap;
+    display: flex;
     font-size: 0;
-    display: inline-block;
-    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+    &.@{prefix}-is-smooth {
+      transition: transform @anim-duration-moderate @anim-time-fn-easing;
+    }
+
+    &.@{prefix}-is-vertical {
+      flex-direction: column;
+    }
   }
 
   &__bar {
     position: absolute;
-    background-color: @tab-bar-active-color;
+    background-color: @tab-default-stroke-select;
     z-index: 1;
-    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all @anim-duration-moderate @anim-time-fn-easing;
 
     &.@{prefix}-is-top {
       bottom: 0;
       left: 0;
-      height: @tab-nav-bar-size;
+      height: @tab-default-stroke-size;
     }
 
     &.@{prefix}-is-bottom {
       top: 0;
       left: 0;
-      height: @tab-nav-bar-size;
+      height: @tab-default-stroke-size;
     }
 
     &.@{prefix}-is-left {
       top: 0;
       right: 0;
-      width: @tab-nav-bar-size;
+      width: @tab-default-stroke-size;
     }
 
     &.@{prefix}-is-right {
       top: 0;
       left: 0;
-      width: @tab-nav-bar-size;
+      width: @tab-default-stroke-size;
     }
   }
 
   &__nav-item {
-    display: inline-block;
-    padding-left: @tab-nav-horizontal-padding;
-    padding-right: @tab-nav-horizontal-padding;
-    font-size: @tab-nav-font-size-middle;
-    color: @tab-text-color;
+    display: inline-flex;
+    align-items: center;
+    font-size: @font-size-base;
+    color: @tab-default-text;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color @anim-time-fn-easing @anim-duration-base;
 
-    &:hover {
-      cursor: pointer;
-      color: @primary-color;
+    &-wrapper {
+      display: block;
+      padding: 5px 8px;
+      margin-left: 8px;
+      margin-right: 8px;
+      line-height: 22px;
+      border-radius: @border-radius;
+      transition: background-color @anim-time-fn-easing @anim-duration-base;
+    }
+
+    &.@{prefix}-size-l {
+      font-size: @font-size-l;
+      
+      .@{prefix}-tabs__nav-item-wrapper {
+        padding: 9px 12px;
+      }
+    }
+
+    &-text-wrapper {
+      position: relative;
+    }
+
+    &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
+      .@{prefix}-tabs__nav-item-wrapper {
+        background-color: @gray-color-1;
+      }
     }
 
     &.@{prefix}-is-left,
     &.@{prefix}-is-right {
-      display: block;
+      display: flex;
+      align-items: center;
     }
 
     &.@{prefix}-size-m {
-      height: @tab-nav-height-size-m;
-      line-height: @tab-nav-height-size-m;
+      height: @tab-height-middle;
+      line-height: @tab-height-middle;
     }
 
     &.@{prefix}-size-l {
-      height: @tab-nav-height-size-l;
-      line-height: @tab-nav-height-size-l;
+      height: @tab-height-large;
+      line-height: @tab-height-large;
     }
 
     &.@{prefix}-is-active {
-      color: @tab-text-active-color;
-      font-weight: @tab-nav-font-weight-medium;
+      color: @tab-default-text-select;
+      font-weight: 500;
     }
 
     &.@{prefix}-is-disabled {
-      color: @tab-disabled-color;
+      color: @tab-default-text-disabled;
       cursor: not-allowed;
     }
 
     & > .remove-btn {
+      margin-left: 8px;
       transition: all .3s cubic-bezier(.645, .045, .355, 1);
-
-      &:hover {
-        transform: scale(1.3);
-      }
     }
   }
 
   &__nav--card {
-    background-color: @tab-card-inactive-color;
+    background-color: @tab-card-bg;
 
-    &.t-tabs__nav-item {
-      border-bottom: 1px solid @tab-bar-bg-color;
+    &.@{prefix}-tabs__nav-item {
+      padding-left: 16px;
+      padding-right: 16px;
+      border-bottom: 1px solid @tab-card-stroke;
+      
+      &::after {
+        display: none;
+      }
+
+      &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active) {
+        &:hover {
+          background-color: @gray-color-2;
+        }
+      }
 
       &:not(:first-of-type) {
-        border-left: 1px solid @tab-bar-bg-color;
+        border-left: 1px solid @tab-card-stroke;
       }
 
       &:last-of-type {
-        border-right: 1px solid @tab-bar-bg-color;
+        border-right: 1px solid @tab-card-stroke;
       }
 
       &.@{prefix}-is-active {
-        color: @tab-text-active-color;
-        background-color: @tab-nav-card-active-color;
-        border-bottom-color: @tab-nav-card-border-active-color;
+        color: @tab-card-text-select;
+        background-color: @tab-card-bg-select;
+        border-bottom-color: @tab-card-bg-select;
+      }
+
+      &.@{prefix}-size-l {
+        padding-left: 24px;
+        padding-right: 24px;
       }
     }
   }

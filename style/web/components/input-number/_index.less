@@ -3,6 +3,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../../utilities/_animation.less";
 
 @inputCls: ~"@{prefix}-input";
 @inputNumberCls: ~"@{prefix}-input-number";
@@ -24,9 +25,9 @@
   }
 
   .@{inputCls}__inner {
-    width: @input-number-inner-width;
     text-align: center;
-    border-radius: 0;
+    margin: 0 @spacer / 2;
+    width: @input-number-inner-width;
     color: @input-number-inner-color;
   }
 
@@ -51,40 +52,70 @@
 
     &:hover {
       color: @input-number-button-color-hover;
-      background-color: @gray-color-1
+      border-color: @input-number-button-color-hover;
+
+      .@{prefix}-icon {
+        color: @input-number-button-color-hover;
+      }
+    }
+
+    &:active {
+      color: @input-number-button-color-hover;
+      background-color: @gray-color-1;
     }
 
     .@{prefix}-icon {
       position: relative;
       z-index: 1;
       font-size: @input-number-font-size;
-      transition: all input-number-button-anim-duration;
+      color: @text-color-secondary;
     }
 
     &.@{prefix}-is-disabled {
       color: @input-number-button-color-disabled;
       cursor: no-drop;
       background-color: @input-number-button-bg-color-disabled;
+
+      .@{prefix}-icon {
+        color: @input-number-button-color-disabled;
+      }
+
+      &:hover {
+        border-color: @input-number-button-border-color;
+        .@{prefix}-icon {
+          color: @input-number-button-color-disabled;
+        }
+      }
     }
   }
 
   &__decrease {
     left: 0;
-    border-right: 0;
-    border-radius: @border-radius 0 0 @border-radius;
   }
 
   &__increase {
     right: 0;
-    border-left: 0;
-    border-radius: 0 @border-radius @border-radius 0;
   }
 
   &--normal {
     padding: 0;
+    border-radius: @border-radius;
 
     .@{inputCls}__inner {
       text-align: left;
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: no-drop;
+      color: @input-number-button-color-disabled;
+
+      &:hover {
+        border-color: @input-number-button-border-color;
+      }
+
+      .@{inputCls}__inner:focus {
+        box-shadow: none;
+      }
     }
   }
 }
@@ -102,6 +133,10 @@
     color: @input-number-button-color-disabled;
     cursor: no-drop;
     background-color: @input-number-button-bg-color-disabled;
+
+    .@{prefix}-icon {
+      color: @text-color-secondary;
+    }
   }
 }
 
@@ -139,7 +174,7 @@
       height: @input-number-inner-height-l;
       line-height: @input-number-inner-height-l;
       padding-right: @input-number-right-button-width-l +
-        @input-padding-horizontal-default;
+        @input-number-padding-horizontal-default;
     }
 
     .@{inputNumberCls}__decrease,
@@ -152,11 +187,24 @@
 
 .@{inputNumberCls}.@{prefix}-is-controls-right {
   padding: 0;
+
+  &:hover {
+    .@{inputCls}__inner {
+      border-color: @input-number-border-color-hover;
+    }
+    .@{inputNumberCls}__decrease,
+    .@{inputNumberCls}__increase {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
   .@{inputCls}__inner {
     width: @input-number-right-inner-width + @input-number-right-button-width;
     box-sizing: border-box;
+    margin: 0;
     padding-right: @input-number-right-button-width +
-      @input-padding-horizontal-default;
+      @input-number-padding-horizontal-default;
     text-align: left;
     border-radius: @border-radius;
   }
@@ -164,31 +212,52 @@
   .@{inputNumberCls}__decrease,
   .@{inputNumberCls}__increase {
     width: @input-number-right-button-width;
-    height: 50%;
+    height: calc(50% - 2px);
     border: 0;
-    border-left: 1px solid @input-number-right-button-border-color;
     left: initial;
     top: initial;
     right: 1px;
     border-radius: 0;
+    background: @input-number-right-button-bg-color;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
 
     .@{prefix}-icon {
       font-size: @input-number-right-font-size;
     }
 
     &:hover {
+      background: @input-number-right-button-hover-bg-color;
       .@{prefix}-icon {
-        transform: scale(1.08);
+        color: @text-color-primary;
+      }
+    }
+
+    &.@{prefix}-is-disabled {
+      color: @input-number-button-color-disabled;
+      cursor: no-drop;
+      background-color: @input-number-button-bg-color-disabled;
+
+      .@{prefix}-icon {
+        color: @input-number-button-color-disabled;
+      }
+
+      &:hover {
+        border-color: @input-number-button-border-color;
+        .@{prefix}-icon {
+          color: @input-number-button-color-disabled;
+        }
       }
     }
   }
   .@{inputNumberCls}__decrease {
     bottom: 1px;
-    border-top: 1px solid @input-number-right-button-border-color;
+    border-bottom-right-radius: calc(@border-radius - 1px);
   }
 
   .@{inputNumberCls}__increase {
     top: 1px;
-    border-bottom: 1px solid @input-number-right-button-border-color;
+    border-top-right-radius: calc(@border-radius - 1px);
   }
 }

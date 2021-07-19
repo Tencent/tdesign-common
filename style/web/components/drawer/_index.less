@@ -48,7 +48,7 @@
     width: 100%;
     height: 100%;
     background-color: @drawer-mask;
-    transition: opacity @default-duration @default-timing-function;
+    transition: opacity @drawer-default-duration @drawer-default-timing-function;
     opacity: 0;
   }
 
@@ -65,8 +65,8 @@
     box-shadow: @dialog-box-shadow;
     overflow: hidden;
     pointer-events: auto;
-    transition: transform @default-duration @default-timing-function,
-      visibility @default-duration @default-timing-function;
+    transition: transform @drawer-slow-duration @drawer-default-timing-function,
+      visibility @drawer-slow-duration @drawer-default-timing-function;
     position: relative;
   }
 
@@ -142,10 +142,15 @@
 
   &__close-btn {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: @drawer-close-btn-size;
     height: @drawer-close-btn-size;
     top: @drawer-close-btn-position-top;
     right: @drawer-close-btn-position-right;
+    color: @drawer-close-btn-color;
+    background-color: @drawer-close-btn-background-color;
     cursor: pointer;
 
     .@{prefix}-icon {

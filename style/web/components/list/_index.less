@@ -3,6 +3,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../../mixins/_layout.less";
 
 .@{prefix}-list {
   overflow: auto;
@@ -86,6 +87,12 @@
 
         .@{prefix}-icon {
           color: @list-action-icon-color;
+          font-size: @list-icon-size;
+
+          &:hover {
+            color: @list-link-color;
+            cursor: pointer;
+          }
         }
 
         & > a {
@@ -136,6 +143,13 @@
     background: @list-bg-color-default;
     text-align: center;
     font-size: @list-load-font-size;
+    line-height: @list-load-line-height;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     &:not(:empty) {
       padding: @list-load-not-empty-padding; // 如果不是空子元素才设置padding
@@ -146,6 +160,9 @@
 
       .@{prefix}-icon {
         color: @list-icon-color-loading;
+        font-size: @list-icon-size;
+        margin-right: @list-load-icon-margin;
+
       }
     }
 

@@ -1,50 +1,40 @@
 // <component>-[type]-[attrtype]-<attr>-[status]
 
-// 暂时这样写，后面等全局的色值确定后再更改
-// color
-@grey-0: #fbfbfb;
-@grey-1: #f5f5f5;
-@grey-4: #bbb;
-
-// 基础颜色
-@info-color: #d6d6d6;
-
 @primary-color-light: @primary-color-1;
 @success-color-light: @success-color-1;
 @warning-color-light: @warning-color-1;
 @error-color-light: @error-color-1;
-@info-color-light: @grey-1;
 
 // 因为通过讨论 Tag 组件的选中态只针对于一个特定主题
 // checked [false - default; true - primary]
-@tag-default-background-color: @bg-color-fade;
+@tag-default-background-color: @gray-color-3;
 @tag-default-border-color: transparent;
 @tag-default-hover-color: @brand-color-8;
 @tag-default-click-color: @brand-color-9;
 @tag-checked-color: rgba(255, 255, 255);
 @tag-checked-background-color: @brand-color;
-@tag-default-click-background-color: @gray-color-6;
+@tag-check-hover-bg: @gray-color-4;
+@tag-checked-hover-bg: @brand-color-7;
+@tag-default-click-bg: @gray-color-6;
 
 // disabled
-@tag-disabled-color: @grey-4;
-@tag-disabled-background-color: @bg-color-disabled;
+@tag-disabled-color: @font-gray-4;
+@tag-disabled-bg: @gray-color-1;
 
 // dark color
 @tag-primary-color: @primary-color;
 @tag-success-color: @success-color;
-@tag-info-color: @info-color;
 @tag-warning-color: @warning-color;
 @tag-danger-color: @error-color;
 
 // light color
 @tag-primary-light-color: @primary-color-light;
 @tag-success-light-color: @success-color-light;
-@tag-info-light-color: @info-color-light;
 @tag-warning-light-color: @warning-color-light;
 @tag-danger-light-color: @error-color-light;
 
 // plain
-@tag-plain-background-color: @bg-color-fade;
+@tag-plain-background-color: @gray-color-3;
 
 // font size
 @tag-small-font-size: @font-size-s;
@@ -58,7 +48,7 @@
 
 // text color
 @tag-text-color: rgba(255, 255, 255, .9);
-@tag-text-color-1: @text-color-primary;
+@tag-text-color-1: @font-gray-1;
 
 // shape
 @tag-border-radius-square: @border-radius;
@@ -76,3 +66,14 @@
 @tag-line-height-small: @tag-height-small - 2 * @tag-default-border-width;
 @tag-line-height-medium: @tag-height-medium - 2 * @tag-default-border-width;
 @tag-line-height-large: @tag-height-large - 2 * @tag-default-border-width;
+
+// icon
+@tag-icon-size: 16px;
+@tag-close-icon-color:  @font-gray-3;
+@tag-close-icon-hover-color: @font-gray-1;
+
+// link
+@link-tag-hover-bg: @gray-color-4;
+@link-tag-hover-color: @brand-color-8;
+@link-tag-active-bg: @gray-color-6;
+@link-tag-active-color: @brand-color-9;

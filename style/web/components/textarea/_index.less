@@ -2,6 +2,7 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+
 .@{prefix} {
   &-textarea {
     position: relative;
@@ -19,6 +20,8 @@
       color: @textarea-text-color;
       resize: vertical;
       outline: none;
+      line-height: @textarea-line-height;
+      transition: all @anim-time-fn-easing @anim-duration-base;
 
       &:hover {
         border-color: @textarea-border-color-hover;
@@ -26,6 +29,7 @@
 
       &:focus {
         border-color: @textarea-border-color-focus;
+        box-shadow: 0 0 0 2px @textarea-box-shadow-color-focus;
       }
 
       &::placeholder {
@@ -37,17 +41,17 @@
       position: absolute;
       bottom: @textarea-limit-position-bottom;
       right: @textarea-limit-position-right;
-      font-size: @input-font-size;
+      font-size: @textarea-font-size;
       color: @textarea-limit-color;
     }
 
     .@{prefix}-is-disabled {
-      color: @input-text-color-disabled;
-      background-color: @input-bg-color-disabled;
+      color: @textarea-color-text-disabled;
+      background-color: @textarea-bg-color-disabled;
       cursor: not-allowed;
 
       &:hover {
-        border-color: @input-border-color-default;
+        border-color: @textarea-border-color;
       }
     }
 

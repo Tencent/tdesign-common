@@ -17,6 +17,7 @@
 @upload-icon-loading-color: @primary-color;
 @upload-icon-time-filled-color: @text-color-placeholder;
 @upload-highlight-color: @primary-color;
+@upload-icon-add-color: @text-color-primary;
 @upload-small-color: @placeholder-color;
 @upload-placeholder-color: @placeholder-color;
 @upload-icon-color: @text-color-placeholder;
@@ -26,7 +27,6 @@
 @upload-list-control-color-hover: @error-color-6;
 @upload-card-item-error-icon-warning-color: @error-color-6;
 @upload-card-item-status-color: @error-color-6;
-@upload-card-item-icon-add-color: @text-level-3-color;
 @upload-card-item-bg-color: @bg-color-page;
 @upload-card-item-bg-border-color-hover: @primary-color;
 @upload-card-name-color: @text-color-primary;
@@ -41,10 +41,10 @@
 @upload-dragger-border-color-hover: @primary-color;
 @upload-dragger-error-border-color: @error-color;
 @upload-dragger-error-border-color-hover: @error-color;
-@upload-dragger-text-color: @text-color-secondary;
+@upload-dragger-text-color: @text-color-primary;
 @upload-dragger-img-wrap-bg-color: #f0f2f5;
 @upload-dragger-progress-info-button-bg-color-hover: transparent;
-@upload-single-display-text-color: @form-text-color;
+@upload-single-display-text-color: @text-color-secondary;
 @upload-single-progress-color: #2a6fdf;
 @upload-single-input-delete-color: @brand-color-8;
 @upload-flow-empty-color: @text-color-placeholder;
@@ -61,12 +61,12 @@
 // 字体
 @upload-list-file-icon-font-size: 40px;
 @upload-list-item-font-size: @font-size-base;
-@upload-card-font-size: @font-size-base;
+@upload-card-font-size: @font-size-s;
 @upload-card-item-icon-add-font-size: 30px;
 @upload-card-status-font-size: @font-size-s;
 @upload-dragger-font-size: @font-size-base;
 @upload-dragger-text-font-size: @font-size-base;
-@upload-dragger-progress-icon-font-size: 20px;
+@upload-dragger-progress-icon-font-size: @font-size-l;
 @upload-small-font-size: @font-size-s;
 @upload-single-display-text-font-size: @font-size-s;
 @upload-single-input-delete-font-size: @font-size-base;
@@ -79,18 +79,20 @@
 @upload-list-item-width: 496px;
 @upload-list-item-height: 124px;
 @upload-list-name-max-width: 200px;
-@upload-card-mask-item-width: 30px;
-@upload-card-mask-item-height: 30px;
+@upload-card-mask-divider-height: @font-size-l;
+// @upload-card-mask-item-width: 30px;
+// @upload-card-mask-item-height: 30px;
 @upload-single-file-input-single-progress-width: 60px;
 @upload-dragger-width: 336px;
-@upload-dragger-height: 140px;
-@upload-dragger-img-wrap-width: 116px;
-@upload-dragger-img-wrap-height: 116px;
-@upload-dragger-text-single-name-width: 120px;
+@upload-dragger-height: 144px;
+@upload-dragger-img-wrap-width: 112px;
+@upload-dragger-img-wrap-height: 112px;
 @upload-flow-image-flow-width: 498px;
 @upload-flow-max-width: 960px;
 @upload-flow-min-width: 496px;
 @upload-flow-empty-height: 210px;
+@upload-icon-size: @font-size-l;
+@upload-icon-size-large: @font-size * 2.4;
 
 // 边框
 @upload-card-item-bg-border: 1px dashed @border-level-2-color;
@@ -105,6 +107,7 @@
 @upload-flow-table-tr-border-top: 1px solid #ddd;
 @upload-flow-table-th-border: 1px solid #ddd;
 @upload-flow-card-area-border: 1px dashed @border-level-2-color;
+@upload-card-contariner-border: 1px dashed @border-level-2-color;
 
 // 位置
 @upload-dragger-btns-bottom: 8px;
@@ -114,34 +117,36 @@
 @upload-list-file-margin-right: 12px;
 @upload-list-item-padding: 12px;
 @upload-list-item-margin-top: 12px;
-@upload-single-name-margin-right: 15px;
+@upload-single-name-margin-right: @spacer-2;
 @upload-single-name-margin-bottom: @spacer;
 @upload-single-display-text-line-height: 20px;
 @upload-single-percent-margin-left: @spacer;
 @upload-single-input-delete-margin-left: @spacer-2;
 @upload-single-input-delete-line-height: 22px;
 @upload-single-file-input-trigger-margin-left: @spacer-2;
-@upload-card-item-margin: 0 @spacer @spacer-2 0;
+@upload-card-line-height: @text-line-height-s;
+@upload-card-item-margin: 0 @spacer 0 0;
 @upload-card-item-error-icon-warning-margin-bottom: 10px;
 @upload-card-icon-loading-margin-bottom: 10px;
 @upload-card-name-margin-top: @spacer;
-@upload-card-container-icon-add-margin-bottom: 10px;
+@upload-card-container-icon-add-margin-bottom: @spacer;
+@upload-card-content-padding: @spacer;
 @upload-card-status-wrap-svg-margin-bottom: 6px;
-@upload-dragger-padding: 12px;
+@upload-dragger-padding: @spacer-2;
 @upload-dragger-text-line-height: 22px;
-@upload-dragger-img-wrap-margin-right: 12px;
+@upload-dragger-img-wrap-margin-right: @spacer-2;
 @upload-dragger-progress-info-single-display-text-margin-bottom: @spacer;
 @upload-dragger-progress-cancel-padding: 0;
 @upload-flow-placeholder-margin-left: @spacer-2;
 @upload-flow-bottom-margin-top: @spacer-3;
 @upload-flow-button-margin-left: @spacer;
 @upload-flow-table-margin-top: @spacer-3;
-@upload-flow-status-icon-margin-right: 10px;
+@upload-flow-status-icon-margin-right: @spacer;
 @upload-flow-table-td-th-padding: 10px @spacer-3;
-@upload-flow-card-area-padding: 12px 4px 0 12px;
+@upload-flow-card-area-padding: 12px;
 @upload-flow-card-area-margin-top: @spacer-3;
 @upload-small-line-height: 20px;
 @upload-display-text-margin-top: 10px;
 @upload-icon-clear-circle-filled-margin-top: 2px;
-@upload-tips-margin-top: 10px;
-@upload-tips-imgcard-margin-top: -6px;
+@upload-tips-margin-top: @spacer;
+@upload-card-mask-divider-margin: 0 @spacer-2;

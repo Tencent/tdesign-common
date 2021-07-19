@@ -1,19 +1,25 @@
-## 组件设计指南
+
+
+
+### 何时使用
+##### 当页面内容过多，用户需要快速定位到某部分内容时，可通过锚点进行内容间的跳转，多用于文档类型页面，业务可以根据需要使用。
 
 
 ### 与页面布局相关
 
-通常情况下，锚点固定在页面内容区左侧或右侧，用户可以通过锚点快速定位内容。
+##### 通常情况下，锚点固定在页面内容区左侧或右侧，用户可以通过锚点快速定位内容。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80-%E5%B7%A6%E8%BE%B9@2x.png)
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%B7%A6%E8%BE%B9@2x.png" />
+    <em>图示：锚点定位位于内容区左侧</em>
+  </div>
 
-
-<em>图示：锚点定位位于内容区左侧</em>
-
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80-%E5%8F%B3%E8%BE%B9@2x.png)
-
-<em>图示：锚点定位位于内容区右侧</em>
-
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%8F%B3%E8%BE%B9@2x.png" />
+    <em>图示：锚点定位位于内容区右侧</em>
+  </div>
+</div>
 
 ### 相似组件
 

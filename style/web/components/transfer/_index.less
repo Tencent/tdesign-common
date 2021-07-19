@@ -8,8 +8,6 @@
   position: relative;
   display: inline-block;
   background: @transfer-bg-color;
-  box-shadow: @transfer-box-shadow;
-  border-radius: @transfer-border-radius;
 
   &-list {
     position: relative;
@@ -17,17 +15,13 @@
     width: @transfer-common-width;
     height: @transfer-common-height;
     padding-top: @transfer-list-header-height;
-    //border: 1px solid @transfer-border-color;
-    border-bottom: 0;
     word-break: break-word;
     vertical-align: middle;
 
-    &-source {
-      border-right: 1px solid @transfer-border-color;
-    }
-
+    &-source,
     &-target {
-      border-left: 1px solid @transfer-border-color;
+      border: 1px solid @transfer-border-color;
+      border-radius: @transfer-border-radius;
     }
 
     &__header {
@@ -69,10 +63,7 @@
     &__body {
       position: relative;
       height: 100%;
-
-      input {
-        border: 0;
-      }
+      padding: @transfer-list-body-padding;
     }
 
     &-with-search {
@@ -83,8 +74,6 @@
       position: absolute;
       top: 0;
       width: @transfer-list-search-wrapper-width;
-      border: @transfer-list-search-wrapper-border;
-      border-radius: @transfer-list-search-wrapper-border-radius;
       margin: 0 @transfer-list-margin-horizontal;
     }
 
@@ -92,7 +81,7 @@
       height: 100%;
       width: 100%;
       overflow: auto;
-
+      
       .t-checkbox-group {
         width: 100%;
       }
@@ -104,7 +93,12 @@
       cursor: pointer;
       margin: @transfer-list-item-margin;
       border-radius: @transfer-border-radius;
+      transition: background-color @anim-duration-base @anim-time-fn-easing;
 
+      &:first-child {
+        margin-top: 0;
+      }
+      
       .@{prefix}-checkbox {
         margin-right: 0;
 
@@ -116,10 +110,15 @@
       > span {
         margin-left: @transfer-list-item-text-margin-left;
       }
+      
     }
 
     &__item:hover {
       background: @transfer-bg-hover;
+      transition: background-color @anim-duration-base @anim-time-fn-easing;
+    }
+    &__item.@{prefix}-is-checked {
+      background: @transfer-bg-checked;
     }
 
     &__wrapper {

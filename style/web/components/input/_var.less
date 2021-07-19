@@ -17,9 +17,13 @@
 @input-border-color-default: @border-level-2-color;
 @input-border-color-default-hover: @brand-color;
 @input-border-color-default-focus: @brand-color;
+@input-box-shadow-color-default-focus: @brand-color-focus;
 @input-border-color-success: @success-color;
+@input-box-shadow-color-success-focus: @success-color-focus;
 @input-border-color-warning: @warning-color;
+@input-box-shadow-color-warning-focus: @warning-color-focus;
 @input-border-color-error: @error-color;
+@input-box-shadow-color-error-focus: @error-color-focus;
 
 @input-text-color-default: @text-color-primary;
 @input-text-color-disabled: @text-color-disabled;
@@ -33,17 +37,17 @@
 @input-extra-color-warning: @warning-color;
 @input-extra-color-error: @error-color;
 
-@input-append-color: @bg-color-secondarycontainer;
+@input-append-color: @bg-color-secondarycontainer-hover;
 
 // 位置
-@input-fix-position: @spacer-3 / 4;
+@input-fix-position: @spacer;
 
 // 间距
 @input-padding-horizontal-default: @spacer;
 @input-margin-distance-default: @spacer;
 @input-status-position-right: -@spacer-3;
 @input-addon-item-padding: 0 @spacer-3 / 2;
-@input-fix-padding: @spacer-3;
+@input-fix-padding: @spacer-4;
 
 @textarea-limited-padding: @spacer*4;
 
@@ -54,11 +58,13 @@
 @input-inner-icon-font-size: inherit;
 
 // 字号
+@input-font-size-l: @font-size-l;
 @input-font-size: @font-size-base;
+@input-font-size-s: @font-size-s;
 @input-extra-font-size: inherit;
 
 // 边框
 @input-border-radius: @border-radius;
 
 // 动画
-@input-inner-transition: border-color @anim-time-fn-easing @anim-duration-base;
+@input-inner-transition: all @anim-time-fn-easing @anim-duration-base;

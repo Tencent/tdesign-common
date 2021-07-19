@@ -1,24 +1,30 @@
-## 组件设计指南
+
+
+### 何时使用
+
+需要用户录入信息时；
+
+需要对用户录入的进行进行即时的反馈时。
+
 
 
 ### 组件搭配使用
 
 
+##### 与气泡搭配使用，在需要对输入框中内容进行提示或反馈时，可通过气泡内容展示。
 
-#### 与文字提示搭配使用，可以用来解释说明或提示错误反馈。
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%201.png"/>
+<em>图示：文本提示</em>
 
+<hr />
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%E6%A1%86%201.png"/>
-<em>图示：用来表达解释说明</em>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%202.png"/>
+<em>图示：错误反馈提示</em>
 
+<hr />
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%E6%A1%86%202.png"/>
-<em>图示：用来表达错误反馈</em>
-
-
-
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%E6%A1%86%203.png"/>
-<em>图示：特殊规则的提示</em>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%BE%93%E5%85%A5%203.png"/>
+<em>图示：密码输入提示，针对密码输入有多条规则要求的输入框而定制的特殊样式</em>
 
 
 
