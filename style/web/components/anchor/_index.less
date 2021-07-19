@@ -10,7 +10,7 @@
   font-size: @anchor-font-size;
   //锚点 item 被选中
   .@{prefix}-is-active > a {
-    color: @anchor-text-color-active;
+    color: @anchor-text-color-current;
   }
 
   &.@{prefix}--affix {
@@ -37,13 +37,19 @@
     width: @anchor-point-width;
     height: @anchor-point-height;
     top: -1 * @anchor-item-height;
-    background-color: @anchor-text-color-active;
+    background-color: @anchor-text-color-current;
     transition: @anchor-point-transition;
   }
 
   //锚点item
   &-item {
     padding: @anchor-item-padding;
+    display: flex;
+    flex-direction: column;
+
+    &.@{prefix}-is-active {
+      font-weight: 500;
+    }
 
     .@{prefix}-anchor-item {
       padding: @anchor-sub-item-padding;
@@ -64,29 +70,17 @@
     padding-right: 10px;
   }
 
-  &-item_link:before {
-    // 用于文字超出时显示...
-    content: "...";
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  a {
+    line-height: @anchor-item-height;
+    transition: color @anim-duration-base linear;
   }
-
-  &-item_link::after {
-    // 用于文字未超出时遮住...
-    content: "";
-    position: absolute;
-    right: 0;
-    width: 10px; // 文字溢出...的固定宽度，所以不做变量抽离
-    height: @anchor-item-line-height;
-    margin-top: 4px;
-    background: @anchor-bg-color;
-  }
-
+  
   a:hover {
     color: @anchor-text-color-hover;
-    transition: color @anim-duration-base linear;
     cursor: pointer;
+  }
+  a:active {
+    color: @anchor-text-color-active;
   }
 
   &.@{prefix}-size-s {
@@ -100,7 +94,8 @@
 .@{prefix}-anchor-target {
   cursor: pointer;
   font-size: @anchor-font-size;
-
+  line-height: @anchor-item-height;
+  
   @keyframes fadeOut {
     0% {
       opacity: 1;
@@ -117,6 +112,7 @@
   //默认隐藏
   .@{prefix}-copy {
     display: none;
+    margin: @anchor-target-copy-margin;
   }
   //hover样式 展示
   &:hover .@{prefix}-copy {
