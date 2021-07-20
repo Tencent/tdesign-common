@@ -26,6 +26,8 @@
 @notification-icon-warning-color: @warning-color;
 @notification-icon-error-color: @error-color-6;
 @notification-detail-item-color: inherit;
+@notification-close-bg-color-hover: @bg-color-container-hover;
+@notification-close-bg-color-active: @bg-color-container-active;
 
 // 尺寸
 @notification-width-default: 400px;
@@ -36,6 +38,7 @@
 
 // 圆角
 @notification-detail-item-border-radius: @border-radius;
+@notification-close-border-radius: @border-radius;
 
 // 阴影
 @notification-shadow: @shadow-2;
@@ -50,11 +53,10 @@
 @notification-icon-close-font-size: @font-size-l;
 @notification-title-font-size: @font-size-l;
 
-
 // padding
 @notification-detail-item-padding: 5px 16px;
 @notification-content-padding-right: 5px;
-@notification-padding-default: (@spacer * 3);
+@notification-padding-default: 20px @spacer-3 @spacer-3 @spacer-3;
 
 //margin
 @notification-detail-margin-top: 21px;

@@ -53,6 +53,15 @@
     cursor: pointer;
     font-size: @notification-icon-close-font-size;
     color: @notification-close-icon-color;
+    border-radius: @notification-close-border-radius;
+   
+    &:hover {
+      background: @notification-close-bg-color-hover;
+    }
+
+    &:active {
+      background: @notification-close-bg-color-active;
+    }
   }
 
   &__content {
