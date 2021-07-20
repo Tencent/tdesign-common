@@ -28,6 +28,12 @@ a.@{prefix}-menu__item {
     li + li {
       margin-left: 4px;
     }
+
+    .@{prefix}-menu {
+      &:first-child {
+        margin-left: 24px;
+      }
+    }
   }
 
   .@{prefix}-menu__logo:not(:empty) {
@@ -91,8 +97,6 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__popup {
     top: 60px;
-    left: -4px;
-    right: -4px;
     min-width: 100%;
     box-sizing: content-box;
     transform-origin: center top;
@@ -102,6 +106,7 @@ a.@{prefix}-menu__item {
       align-items: center;
       justify-content: flex-start;
       padding-left: 16px;
+      padding-right: 16px;
       min-width: 100%;
       margin-left: 0;
       color: @head-menu-popup-item-color;
@@ -272,6 +277,16 @@ a.@{prefix}-menu__item {
 
       > .@{prefix}-menu__item {
         min-width: initial;
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          right: -20px;
+          top: 0;
+          bottom: 0;
+          width: 20px;
+        }
       }
     }
 
@@ -406,7 +421,6 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-menu__popup {
-    width: 216px;
     top: 0;
     left: calc(100% + 16px);
   }
@@ -471,10 +485,6 @@ a.@{prefix}-menu__item {
       align-items: center;
       padding-left: 24px;
     }
-
-    &:empty {
-      width: 24px;
-    }
   }
 
   .@{prefix}-submenu {
@@ -512,7 +522,7 @@ a.@{prefix}-menu__item {
     text-align: center;
     color: @menu-item-color--light;
     cursor: pointer;
-    overflow: hidden;
+    // overflow: hidden;
     text-overflow: ellipsis;
     border-radius: @border-radius;
 
@@ -645,6 +655,10 @@ a.@{prefix}-menu__item {
     &.@{prefix}-is-vertical {
       max-height: unset;
       width: 0;
+
+      .@{prefix}-menu__popup-wrapper {
+        min-width: 216px;
+      }
 
       &.@{prefix}-is-opened {
         width: var(--popup-width, 216px);
