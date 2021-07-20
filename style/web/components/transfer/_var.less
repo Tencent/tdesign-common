@@ -41,10 +41,8 @@
 // 包裹树组件时候transfer的高度
 @transfer-wrap-height: 320px;
 @transfer-list-header-height: 48px;
-@transfer-list-header-width: @transfer-common-width -
-  @transfer-list-margin-horizontal * 2;
-@transfer-list-search-wrapper-width: @transfer-common-width -
-  @transfer-list-margin-horizontal * 2;
+@transfer-list-header-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
+@transfer-list-search-wrapper-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
 @transfer-list-pagination-height: 40px;
 @transfer-list-pagination-line-height: 16px;
 @transfer-operations-button-height: 24px;

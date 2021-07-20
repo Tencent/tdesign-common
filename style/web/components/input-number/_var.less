@@ -33,12 +33,7 @@
 @input-number-button-color-hover: @brand-color-8; // 数字输入框操作按钮hover字体色
 @input-number-bg-color-disabled: @bg-color-component-disabled; // 数字输入区域disabled背景颜色
 @input-number-border-color-disabled: @text-color-disabled; // 数字输入区域disabled边框颜色
-@input-number-inner-color-disabled: rgba(
-  0,
-  0,
-  0,
-  .16
-); // 数字输入区域disabled文字颜色
+@input-number-inner-color-disabled: @text-color-disabled; // 数字输入区域disabled文字颜色
 @input-number-button-color-disabled: @text-color-disabled; // 数字输入框操作按钮disabled图标颜色
 @input-number-button-bg-color-disabled: @bg-color-component-disabled; // 数字输入框操作按钮disabled背景颜色
 
@@ -68,7 +63,7 @@
 // 字号
 @input-number-font-size: @font-size-l; // 数字输入框操作按钮字号
 @input-number-font-size-s: @font-size-base; // 小尺寸数字输入框操作按钮字号
-@input-number-font-size-l: @font-size * 1.8; // 大尺寸数字输入框操作按钮字号
+@input-number-font-size-l: (@font-size * 1.8); // 大尺寸数字输入框操作按钮字号
 @input-number-right-font-size: @font-size-s; // 右侧调整数字输入框操作按钮字号
 @input-number-right-font-size-l: @font-size-l; // 大尺寸右侧调整数字输入框操作按钮字号
 
