@@ -15,13 +15,13 @@
 
 ##### 与气泡提示搭配使用。多选框所在选项为必选项时，用户漏选则弹出气泡提示。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-1@2x.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-1@2x.png)
 
 <hr />
 
 ##### 与对话框搭配使用。多选框所在选项勾选时需警示或二次确认时，点击后可弹出模态对话框提示。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-2@2x.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-2@2x.png)
 
 
 
@@ -29,13 +29,13 @@
 
 ##### 多选框可在表单中单独使用。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-3@2x.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-3@2x.png)
 
 <hr />
 
 ##### 若需要通过操作多选框隐藏部分内容，可以使用就地隐藏/展开的方式。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-4@2x.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-4@2x.png)
 
 
 
@@ -46,12 +46,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-7@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-5@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%A4%9A%E9%80%89-8@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-6@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>

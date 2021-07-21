@@ -7,7 +7,7 @@
 
 ### 与页面布局相关
 
-##### 事项日历面板，通常单独出现在整一页面内容区中。
+##### 事项日历面板，通常单独出现在整个页面内容区中。
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%201.png"/>
 
 <hr />
@@ -15,9 +15,9 @@
 ##### 卡片日历面板，通常单独出现在位置有限的内容区、卡片内或表单内显示。
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%202.png"/>
 
-### 组件搭配使用
+### 常见用法
 
-##### 事项日历与标签搭配使用，将事项进行分类，例如：分为警告事件、正常事件和错误事件。
+##### 事项日历中，可用图标、颜色、文字等形式将事项进行分类，例如：分为警告事件、正常事件和错误事件。
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%203.png"/>
 
 

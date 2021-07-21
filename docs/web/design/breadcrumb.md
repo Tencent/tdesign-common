@@ -17,11 +17,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%9D%A2%E5%8C%85%E5%B1%91-1@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/bread-1@2x.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%9D%A2%E5%8C%85%E5%B1%91-2@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/bread-2@2x.png" />
   </div>
 </div>
 
@@ -32,12 +32,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%9D%A2%E5%8C%85%E5%B1%91-3@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/bread-3@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%9D%A2%E5%8C%85%E5%B1%91-4@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/bread-4@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>

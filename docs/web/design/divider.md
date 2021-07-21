@@ -12,19 +12,19 @@
 ##### 通栏布局。横向贯穿整个页面，区分更加独立的内容信息，让信息分隔的更明显。
 
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E5%89%B2%E7%BA%BF%202nd%20%E6%94%B9%201.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider-1.png"/>
 
 <hr />
 
 ##### 内嵌布局。一般在两侧预留缺口，区分同一模块下的相关内容，让用户浏览时更加高效。
 
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E5%89%B2%E7%BA%BF%202nd%20%E6%94%B9%202.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider-2.png"/>
 
 <hr />
 
 ##### 组合布局。通栏分割线与内嵌分割线的组合布局。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E5%89%B2%E7%BA%BF%202nd%20%E6%94%B9%203.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider-3.png"/>
 
 
 
@@ -34,12 +34,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider%204.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider-4.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider%205.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/divider-5.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
+

@@ -12,7 +12,7 @@
 
 ##### 与文字提示搭配使用，当单选框需要对某种状态进行说明时，利用文字提示进行解释说明。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-1@2x.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-1@2x.png)
 
 
 
@@ -20,10 +20,10 @@
 
 ##### 带有详情信息的单选框，建议就近展开相关内容，不要用单选框触发一个弹窗。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE1@2x.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-2@2x.png" />
 <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E5%BB%BA%E8%AE%AE2@2x.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-3@2x.png" />
 <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
 <hr />
@@ -32,12 +32,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-3@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-4@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%904@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-5@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
@@ -48,12 +48,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-6@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-6@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86-%E6%8E%A8%E8%8D%90%E6%85%8E%E7%94%A87@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-7@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>

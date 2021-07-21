@@ -12,7 +12,7 @@
 
 ##### 与对话框搭配使用，当开启或关闭开关会带来操作风险时，可利用对话框进行二次确认。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-%E6%95%B4%E4%BD%93%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/switch-1@2x.png)
 
 
 
@@ -23,31 +23,19 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-2@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/switch-2@2x.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-3@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/switch-3@2x.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
 <hr />
 
-##### 开关适用于即时生效的操作，在表单场景下不建议使用开关。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-4@2x.png"/>
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
-
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%BC%80%E5%85%B3-5@2x.png"/>
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
 
 
 ### 相似组件

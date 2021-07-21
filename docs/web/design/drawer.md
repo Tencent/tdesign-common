@@ -11,12 +11,11 @@
 
 ##### 整体界面布局，抽屉在整个页面出现
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-%E6%95%B4%E4%BD%93%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)
-
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-1@2x.png)
 <hr />
 
 局部区域布局，抽屉仅在当前操作的区域内出现，而不会覆盖整个页面
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-%E5%B1%80%E9%83%A8%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80@2x.png)
+![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-2@2x.png)
 
 ### 推荐/慎用示例
 
@@ -24,12 +23,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-3@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-3@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89-4@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-4@2x.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
