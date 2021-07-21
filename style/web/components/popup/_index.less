@@ -70,15 +70,32 @@
 
 .@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-popup__arrow {
   bottom: -(@popup-arrow-position);
+
+  &::before {
+    box-shadow: @popup-top-arrow-shadow;
+  }
 }
 .@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-popup__arrow {
   top: -(@popup-arrow-position);
+
+  &::before {
+    box-shadow: @popup-bottom-arrow-shadow;
+  }
+
 }
 .@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-popup__arrow {
   right: -(@popup-arrow-position);
+
+  &::before {
+    box-shadow: @popup-left-arrow-shadow;
+  }
 }
 .@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-popup__arrow {
   left: -(@popup-arrow-position);
+
+  &::before {
+    box-shadow: @popup-right-arrow-shadow;
+  }
 }
 
 // animation
