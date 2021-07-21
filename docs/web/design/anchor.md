@@ -11,12 +11,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%B7%A6%E8%BE%B9@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/anchor-1@2x.png" />
     <em>图示：锚点定位位于内容区左侧</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%94%9A%E7%82%B9-%E5%8F%B3%E8%BE%B9@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/anchor-2@2x.png" />
     <em>图示：锚点定位位于内容区右侧</em>
   </div>
 </div>

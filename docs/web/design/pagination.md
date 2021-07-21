@@ -13,18 +13,18 @@
 
 ##### 当空间有限时使用分页控件，可以使用极简版或迷你版，以节省空间。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%201.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-1@2x.png"/>
 
 ### 对齐/布局方式
 ##### 分页控件一般出现在模块下方，通常居于底部位置。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%AF%B9%E9%BD%90%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-2@2x.png"/>
 
 ### 组件搭配使用
 
 ##### 可与数据统计提示搭配使用，更好辅助用户了解条目数量。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%203.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-3@2x.png"/>
 
 ### 推荐/慎用示例
 
@@ -32,12 +32,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%204%20.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-4@2x.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5%202nd%20%E6%94%B9%205.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-5@2x.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>

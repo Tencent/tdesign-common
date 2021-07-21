@@ -11,17 +11,17 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%201.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-1@2x.png"/>
     <em>图示：位于页面上方</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%202.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-2@2x.png"/>
     <em>图示：位于页面下方</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%203.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-3@2x.png"/>
     <em>图示：位于页面左侧</em>
   </div>
 </div>
@@ -31,12 +31,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%204.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-4@2x.png"/>
     <em>图示：正序</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/group%20%E6%AD%A5%E9%AA%A4%205.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-5@2x.png"/>
     <em>图示：倒序</em>
   </div>
 </div>
@@ -44,12 +44,12 @@
 <hr />
 
 ##### 常见的完整流程包含3种步骤：已完成、进行中、未完成。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%AD%A5%E9%AA%A4%202%202.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-6@2x.png"/>
 
 <hr />
 
 ##### 在当前流程出现失败或告警状态时，对应步骤条标题和图标可变为红色/橙色，起到突出提示的作用。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%AD%A5%E9%AA%A4%203%202.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-7@2x.png"/>
 
 
 ### 推荐/慎用示例
@@ -57,12 +57,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/step%205.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-8@2x.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/step%206.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-9@2x.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>

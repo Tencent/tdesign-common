@@ -13,12 +13,13 @@
 ### 组件搭配使用
 
 与筛选搭配使用，按一定的数据维度进行筛选。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC%201.png"/>
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-1.png"/>
 
 <hr />
 
 与文字提示搭配使用，鼠标hover时呈现说明内容。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC%202.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-2.png"/>
 
 
 
@@ -28,12 +29,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC%203.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-3.png"/>
     <em>图示：单行截断</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC%204.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-4.png"/>
     <em>图示：3行限制截断</em>
   </div>
 </div>
@@ -44,12 +45,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC%205.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-5.png"/>
     <em>图示：隐藏部分操作</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC%206.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-6.png"/>
     <em>图示：图标操作</em>
   </div>
 </div>

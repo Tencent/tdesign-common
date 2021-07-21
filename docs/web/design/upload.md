@@ -29,6 +29,6 @@
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-5@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/upload-5@2x.png"/>
   </div>
 </div>
