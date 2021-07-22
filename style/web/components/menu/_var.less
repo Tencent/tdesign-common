@@ -4,7 +4,7 @@
 
 // component:组件名，如button，
 // type: 组件类型，如 button 的次要按钮（line）
-// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（boder）等
+// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（border）等
 // attr: 属性名称，如color、height、radius等
 // status: 表示组件状态或尺寸，如 hover、disabled、s、l 等
 
@@ -14,8 +14,8 @@
 @import "../../_variables.less";
 
 // 颜色
-@menu-theme-light: @bg-color-block;
-@menu-theme-dark: @dark-bg-color;
+@menu-theme-light: @bg-color-container;
+@menu-theme-dark: @gray-color-12;
 @menu-theme-primary: @primary-color;
 
 @menu-item-color--light: @text-color-secondary;
@@ -34,6 +34,7 @@
 @head-menu-bg--dark: @gray-color-12;
 
 @menu-item-disabled-color: @text-level-4-color;
+@menu-item-disabled-color-dark: @font-white-4;
 
 @menu-menu-group-title-color: @text-color-placeholder;
 @menu-group-title-bg--collapse: @gray-color-3;
@@ -80,13 +81,13 @@
 
 // 边距
 @menu-padding-horizontal-default: @spacer;
-@menu-padding-horizontal-high: @spacer*1.5;
+@menu-padding-horizontal-high: (@spacer * 1.5);
 
-@textarea-limited-padding: @spacer*4;
+@textarea-limited-padding: (@spacer * 4);
 
 // 高度
-@menu-height-default: @spacer*4; // low
-@menu-height-high: @spacer*5;
+@menu-height-default: (@spacer * 4); // low
+@menu-height-high: (@spacer * 5);
 
 // z-index
 @menu-outer-zindex: 1000;

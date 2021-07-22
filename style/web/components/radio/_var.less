@@ -4,7 +4,7 @@
 
 // component:组件名，如button，
 // type: 组件类型，如 button 的次要按钮（line）
-// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（boder）等
+// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（border）等
 // attr: 属性名称，如color、height、radius等
 // status: 表示组件状态或尺寸，如 hover、disabled、s、l 等
 
@@ -46,8 +46,8 @@
 
 // 尺寸
 @radio-size: 16px;
-@radio-dot-size: @radio-size/2;
-@radio-margin-right: @spacer * 3;
+@radio-dot-size: (@radio-size / 2);
+@radio-margin-right: (@spacer * 3);
 @radio-button-border-radius: @border-radius;
 @radio-height-small: 24px;
 @radio-height-medium: 32px;

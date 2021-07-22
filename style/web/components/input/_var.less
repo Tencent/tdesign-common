@@ -4,7 +4,7 @@
 
 // component:组件名，如button，
 // type: 组件类型，如 button 的次要按钮（line）
-// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（boder）等
+// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（border）等
 // attr: 属性名称，如color、height、radius等
 // status: 表示组件状态或尺寸，如 hover、disabled、s、l 等
 
@@ -46,15 +46,15 @@
 @input-padding-horizontal-default: @spacer;
 @input-margin-distance-default: @spacer;
 @input-status-position-right: -@spacer-3;
-@input-addon-item-padding: 0 @spacer-3 / 2;
+@input-addon-item-padding: 0 (@spacer-3 / 2);
 @input-fix-padding: @spacer-4;
 
-@textarea-limited-padding: @spacer*4;
+@textarea-limited-padding: (@spacer * 4);
 
 // 尺寸
-@input-height-s: @spacer*3;
-@input-height-default: @spacer*4;
-@input-height-l: @spacer*5;
+@input-height-s: (@spacer * 3);
+@input-height-default: (@spacer * 4);
+@input-height-l: (@spacer * 5);
 @input-inner-icon-font-size: inherit;
 
 // 字号

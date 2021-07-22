@@ -4,7 +4,7 @@
 
 // component:组件名，如button，
 // type: 组件类型，如 button 的次要按钮（line）
-// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（boder）等
+// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（border）等
 // attr: 属性名称，如color、height、radius等
 // status: 表示组件状态或尺寸，如 hover、disabled、s、l 等
 
@@ -39,7 +39,7 @@
 @popconfirm-arrow-margin: @spacer-3;
 @popconfirm-arrow-absolute-offset: -4px;
 @popconfirm-arrow-border-width: 4px;
-@popconfirm-arrow-size: @popconfirm-arrow-border-width *2;
+@popconfirm-arrow-size: (@popconfirm-arrow-border-width * 2);
 @popconfirm-arrow-rotate: rotate(45deg);
 @popconfirm-arrow-top-border-color: transparent #fff #fff transparent;
 @popconfirm-arrow-bottom-border-color: #fff transparent transparent #fff;

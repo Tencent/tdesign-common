@@ -93,9 +93,6 @@
 // anchor 状态
 @anchor-status: wait;
 .default-anchor-status(@anchor-status) {
-  & when(@anchor-status = wait) {
-  };
-
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item-icon {
       .t-icon {
@@ -161,7 +158,6 @@
 };
 
 .dot-anchor-status(@anchor-status) {
-  & when(@anchor-status = wait) {};
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item-icon {
       border-color: @steps-item-icon-dot-border-color-finish;

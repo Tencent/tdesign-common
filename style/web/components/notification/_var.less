@@ -4,7 +4,7 @@
 
 // component:组件名，如button，
 // type: 组件类型，如 button 的次要按钮（line）
-// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（boder）等
+// attrtype: 属性的具体应用场景。如颜色，用于背景（bg）、文本（text）、边框（border）等
 // attr: 属性名称，如color、height、radius等
 // status: 表示组件状态或尺寸，如 hover、disabled、s、l 等
 
@@ -26,6 +26,8 @@
 @notification-icon-warning-color: @warning-color;
 @notification-icon-error-color: @error-color-6;
 @notification-detail-item-color: inherit;
+@notification-close-bg-color-hover: @bg-color-container-hover;
+@notification-close-bg-color-active: @bg-color-container-active;
 
 // 尺寸
 @notification-width-default: 400px;
@@ -36,6 +38,7 @@
 
 // 圆角
 @notification-detail-item-border-radius: @border-radius;
+@notification-close-border-radius: @border-radius;
 
 // 阴影
 @notification-shadow: @shadow-2;
@@ -44,17 +47,16 @@
 @notification-font-size: @font-size-base;
 @notification-detail-font-size:@font-size-base;
 @notification-font-s: @font-size-s;
-@notification-font-l: @font-size*1.6;
+@notification-font-l: (@font-size * 1.6);
 @notification-content-font-size:@font-size-base;
-@notification-icon-font-size: @font-size*2.4;
+@notification-icon-font-size: (@font-size * 2.4);
 @notification-icon-close-font-size: @font-size-l;
 @notification-title-font-size: @font-size-l;
-
 
 // padding
 @notification-detail-item-padding: 5px 16px;
 @notification-content-padding-right: 5px;
-@notification-padding-default: @spacer*3;
+@notification-padding-default: 20px @spacer-3 @spacer-3 @spacer-3;
 
 //margin
 @notification-detail-margin-top: 21px;
