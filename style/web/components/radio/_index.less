@@ -33,10 +33,12 @@
       border-color: @radio-button-background-color-solid;
       background-color: @radio-button-background-color-solid;
       transition: font-weight @anim-duration-base @anim-time-fn-ease-out;
+
       &:hover {
         color: @radio-label-color;
         font-weight: @radio-font-weight-medium;
       }
+
       &::before {
         content: "";
         position: absolute;
@@ -46,11 +48,13 @@
         height: calc(100% - 16px);
         background-color: @font-gray-4;
       }
+
       &:first-child {
         &::before {
           width: 0;
         }
       }
+
       &::after {
         content: "";
         position: absolute;
@@ -70,20 +74,24 @@
         border-color: @radio-button-border-color-solid-checked;
         z-index: 1;
         font-weight: @radio-font-weight-medium;
+
         &::before {
           width: 0;
         }
+
         & + label {
           &::before {
             width: 0;
           }
         }
+
         &::after {
           opacity: 1;
         }
       }
       &.@{prefix}-is-disabled {
         background-color: @radio-button-background-color-solid;
+
         &:hover {
           font-weight: @radio-font-weight-normal;
           border-color: @radio-button-background-color-solid;
