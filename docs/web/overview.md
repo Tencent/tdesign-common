@@ -15,13 +15,6 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="./button">
-      <img src="https://tdesign.gtimg.com/site/doc/doc-button.png" />
-      <p class="name">Button 按钮</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
     <a class="item" href="./divider">
       <img src="https://tdesign.gtimg.com/site/doc/doc-divider.png" />
       <p class="name">Divider 按分割线</p>
