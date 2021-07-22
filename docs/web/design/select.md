@@ -36,7 +36,7 @@
 ### 组件搭配使用
 
 ##### 与搜索框搭配使用，当选项较多时，便于用户快速搜索到相关对象。
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/select-5@2x.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/select-5@2x.png" />
 
 
 

@@ -11,11 +11,11 @@
 
 ##### 整体界面布局，抽屉在整个页面出现
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-1@2x.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-1@2x.png" />
 <hr />
 
 局部区域布局，抽屉仅在当前操作的区域内出现，而不会覆盖整个页面
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-2@2x.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/drawer-2@2x.png" />
 
 ### 推荐/慎用示例
 

@@ -35,7 +35,7 @@
 
 ##### 不同层级选项卡搭配使用，可以更好区分不同主次内容的层级。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-5@2x.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-5@2x.png"/>
 
 
 ### 推荐/慎用示例

@@ -11,53 +11,47 @@
 
 ##### 下拉菜单在页面内四个区域会有不同的布局方式。
 
-![其它场景备份](https://tdesign.gtimg.com/site/design/images/其它场景备份-1847338.jpg)
-
+<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份-1847338.jpg" />
 
 
 （1）区域一：在区域一中触发的下拉菜单，在右下角展示，并向右下角拓展。
 
-![编组 7](https://tdesign.gtimg.com/site/design/images/编组 7-1847349.jpg)
+<img src="https://tdesign.gtimg.com/site/design/images/编组 7-1847349.jpg" />
 
 
 
 （2）区域二：在区域二中触发的下拉菜单，在左下角展示，并向左下角拓展。
 
-![其它场景备份 3](https://tdesign.gtimg.com/site/design/images/其它场景备份 3-1847356.jpg)
-
+<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份 3-1847356.jpg" />
 
 
 （3）区域三：在区域三中触发的下拉菜单，在右上角展示，并向右上角拓展。
 
-![编组 8](https://tdesign.gtimg.com/site/design/images/编组 8-1847379.jpg)
-
+<img src="https://tdesign.gtimg.com/site/design/images/编组 8-1847379.jpg" />
 
 
 （4）区域四：在区域四中触发的下拉菜单，在左上角展示，并向左上角拓展。
 
-![其它场景备份 4](https://tdesign.gtimg.com/site/design/images/其它场景备份 4-1847386.jpg)
+<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份 4-1847386.jpg" />
 
 
 
 
 
 
-
-### 3.2. 正确/错误范例
+### 正确/错误范例
 
 (1)在一些重大变化或逻辑相反的操作，加入分割线进行区分，并至于普通操作下面减少误触。
 
-![正确&错误范例1](https://tdesign.gtimg.com/site/design/images/正确&错误范例1-1847399.jpg)
-
+<img src="https://tdesign.gtimg.com/site/design/images/正确&错误范例1-1847399.jpg" />
 
 
 (2)如出现大量操作需要收纳，尽可能将操作进行分类并采用多层下拉菜单，而非平铺至下拉菜单超出长度。
 
-![正确&错误范例2](https://tdesign.gtimg.com/site/design/images/正确&错误范例2-1847407.jpg)
+<img src="https://tdesign.gtimg.com/site/design/images/正确&错误范例2-1847407.jpg" />
 
 
-
-### 3.3. 相似组件
+### 相似组件
 
 | 组件名   | 何时使用                                                     |
 | :------- | :----------------------------------------------------------- |

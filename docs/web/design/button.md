@@ -63,7 +63,7 @@
 
 ##### 不同类型按钮搭配使用，可以用来表达不同的强调级别。
 
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-7@2x.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-7@2x.png" />
 
 
 

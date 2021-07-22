@@ -8,7 +8,7 @@
 
 与选择器一起使用时，可对选择的颗粒度（年、月、日）进行切换
 
-![](https://iwiki.oa.tencent.com/download/attachments/453023855/image2020-11-30_15-13-13.png?version=1&modificationDate=1606720393000&api=v2)
+<img src="https://iwiki.oa.tencent.com/download/attachments/453023855/image2020-11-30_15-13-13.png?version=1&modificationDate=1606720393000&api=v2" />
 
 ### 相似组件
 

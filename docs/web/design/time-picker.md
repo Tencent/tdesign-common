@@ -6,11 +6,11 @@
 
 ### 组件搭配使用
 ##### 可与日期选择器一起使用，表达某日期精准的时间
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/timepicker-1@2x.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/timepicker-1@2x.png" />
 
 ### 常见用法
 ##### 时间选择器常用在表单设计中
-![](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/timepicker-2@2x.png)
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/timepicker-2@2x.png" />
 
 ### 相似组件
 
