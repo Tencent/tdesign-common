@@ -6,6 +6,7 @@
 
 .@{prefix}-form {
   font-size: @form-font-size;
+  line-height: @form-label-line-height;
 
   &--label-right {
     justify-content: flex-end;
@@ -89,6 +90,8 @@
       @borderColor: "form-color-error";
     }
     .@{prefix}-input__extra {
+      display: inline-block;
+      margin-top: @from-help-text-margin-top;
       color: @@fontColor;
       @fontColor: "form-color-error";
     }
@@ -105,6 +108,8 @@
       @borderColor: "form-color-warning";
     }
     .@{prefix}-input__extra {
+      display: inline-block;
+      margin-top: @from-help-text-margin-top;
       color: @@fontColor;
       @fontColor: "form-color-warning";
     }
@@ -122,8 +127,21 @@
   }
 
   &__status {
-    position: absolute;
-    right: @form-status-position-right;
+    display: flex;
+    margin-left: @form-status-margin-left;
+
+    &-without-icon {
+      width: 25px;
+      height: 25px;
+    }
+
+    button {
+      width: @form-status-button-width;
+    }
+    
+    button + button {
+      margin-left: @form-status-margin-left;
+    }
   }
 }
 
