@@ -525,6 +525,7 @@ a.@{prefix}-menu__item {
     // overflow: hidden;
     text-overflow: ellipsis;
     border-radius: @border-radius;
+    --ripple-color: @menu-item-animation-bg--light;
 
     ::selection {
       background: transparent;
@@ -585,6 +586,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__item {
       color: @menu-item-color--dark;
+      --ripple-color: @menu-item-animation-bg--dark;
 
       &.@{prefix}-is-active {
         color: @menu-item-active-color--dark;
