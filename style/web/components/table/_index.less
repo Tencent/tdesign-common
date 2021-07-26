@@ -272,10 +272,10 @@
       &:after {
         position: absolute;
         left: 0;
-        bottom: -7px;
+        bottom: 0px;
         right: 0;
         content: " ";
-        height: 7px;
+        height: 4px;
         pointer-events: none;
         background: linear-gradient(
           180deg,
@@ -303,6 +303,26 @@
     &.@{prefix}-table__header--fixed {
       .@{prefix}-table__header {
         overflow: hidden;
+        width: 100%;
+        table {
+          padding-bottom: 6px;
+          position: relative;
+          &::after {
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            right: 0;
+            content: " ";
+            height: 4px;
+            pointer-events: none;
+            border-top: 1px solid @table-border-color;
+            background: linear-gradient(
+              180deg,
+              rgba(0, 0, 0, .04) 0%,
+              rgba(0, 0, 0, .01) 100%,
+            );
+          }
+        }
       }
       .@{prefix}-table__body {
         overflow: auto scroll;
