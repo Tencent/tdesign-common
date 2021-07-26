@@ -29,9 +29,26 @@
   }
 
   &.@{radio-cls}-group-solid {
+    border-color: @radio-button-background-color-solid;
+    padding: @radio-group-padding;
+    border-radius: @radio-button-border-radius; 
+    background-color: @radio-button-background-color-solid;
+    position: relative;
+
+    .@{radio-cls}-group-solid-bg-block {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 0;
+      height: calc(100% - 4px);
+      background-color: @radio-button-background-color-solid-checked;
+      transition: all @anim-duration-base @anim-time-fn-easing;
+      border-radius: 2px;
+    }
+
     .@{radio-button--cls} {
-      border-color: @radio-button-background-color-solid;
-      background-color: @radio-button-background-color-solid;
+      border: none;
+      background-color: transparent;
       transition: font-weight @anim-duration-base @anim-time-fn-ease-out;
 
       &:hover {
@@ -47,46 +64,30 @@
         width: 1px;
         height: calc(100% - 16px);
         background-color: @font-gray-4;
+        transition: opacity @anim-duration-base @anim-time-fn-ease-out;
       }
 
       &:first-child {
         &::before {
-          width: 0;
+          opacity: 0;
         }
       }
 
-      &::after {
-        content: "";
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: calc(100% - 5px); // 还有1px留给分隔符
-        height: calc(100% - 4px);
-        background-color: @radio-button-background-color-solid-checked;
-        z-index: -1;
-        border-radius: 2px;
-        opacity: 0;
-        transition: opacity @anim-duration-base @anim-time-fn-ease-out;
-      }
       &.@{prefix}-is-checked {
         position: relative;
         color: @radio-button-color-solid-checked;
-        border-color: @radio-button-border-color-solid-checked;
         z-index: 1;
         font-weight: @radio-font-weight-medium;
+        border: none;
 
         &::before {
-          width: 0;
+          opacity: 0;
         }
 
         & + label {
           &::before {
-            width: 0;
+            opacity: 0;
           }
-        }
-
-        &::after {
-          opacity: 1;
         }
       }
       &.@{prefix}-is-disabled {
@@ -95,13 +96,6 @@
         &:hover {
           font-weight: @radio-font-weight-normal;
           border-color: @radio-button-background-color-solid;
-        }
-        &.@{prefix}-is-checked {
-          &::after {
-            width: calc(100% - 4px); // 覆盖radio-button的after伪类width: 0属性
-            font-weight: @radio-font-weight-medium;
-            background-color: @radio-button-background-color-solid-disabled-checked;
-          }
         }
       }
     }
@@ -112,6 +106,7 @@
     .@{radio-button--cls} {
       padding: @radio-button-padding-small;
       font-size: @radio-button-font-size-small;
+      line-height: @radio-button-line-height-small;
     }
   }
 
