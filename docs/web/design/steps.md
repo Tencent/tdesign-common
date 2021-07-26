@@ -44,12 +44,12 @@
 <hr />
 
 ##### 常见的完整流程包含3种步骤：已完成、进行中、未完成。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-6@2x.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%AD%A5%E9%AA%A4%E6%9D%A1--5@2x.png"/>
 
 <hr />
 
 ##### 在当前流程出现失败或告警状态时，对应步骤条标题和图标可变为红色/橙色，起到突出提示的作用。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-7@2x.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%AD%A5%E9%AA%A4%E6%9D%A1----6@2x.png"/>
 
 
 ### 推荐/慎用示例

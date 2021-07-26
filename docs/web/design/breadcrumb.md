@@ -21,7 +21,6 @@
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/bread-2@2x.png" />
   </div>
 </div>
 

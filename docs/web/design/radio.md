@@ -12,7 +12,7 @@
 
 ##### 与文字提示搭配使用，当单选框需要对某种状态进行说明时，利用文字提示进行解释说明。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/radio-1@2x.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%8D%95%E9%80%89%E6%A1%86----------1@2x.png" />
 
 
 
