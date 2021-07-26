@@ -60,7 +60,8 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 8px;
+        top: 50%;
+        transform: translateY(-50%);
         width: 1px;
         height: calc(100% - 16px);
         background-color: @font-gray-4;
@@ -91,11 +92,15 @@
         }
       }
       &.@{prefix}-is-disabled {
-        background-color: @radio-button-background-color-solid;
+        background-color: transparent;
 
         &:hover {
           font-weight: @radio-font-weight-normal;
           border-color: @radio-button-background-color-solid;
+        }
+
+        &.@{prefix}-is-checked ~ .@{radio-cls}-group-solid-bg-block {
+          background-color: @radio-button-background-color-solid-disabled-checked;
         }
       }
     }
@@ -107,6 +112,10 @@
       padding: @radio-button-padding-small;
       font-size: @radio-button-font-size-small;
       line-height: @radio-button-line-height-small;
+
+      &::before {
+        height: calc(100% - 16px);
+      }
     }
   }
 
@@ -115,6 +124,10 @@
     .@{radio-button--cls} {
       padding: @radio-button-padding-medium;
       font-size: @radio-button-font-size-medium;
+
+      &::before {
+        height: calc(100% - 20px);
+      }
     }
   }
 
@@ -123,6 +136,10 @@
     .@{radio-button--cls} {
       padding: @radio-button-padding-large;
       font-size: @radio-button-font-size-large;
+
+      &::before {
+        height: calc(100% - 24px);
+      }
     }
   }
 
