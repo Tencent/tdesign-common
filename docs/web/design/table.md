@@ -12,14 +12,26 @@
 
 ### 组件搭配使用
 
-与筛选搭配使用，按一定的数据维度进行筛选。
+##### 与筛选搭配使用，按一定的数据维度进行筛选。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-1.png"/>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-1.png" />
+  </div>
+
+  <div class="item"></div>
+</div>
 
 <hr />
 
-与文字提示搭配使用，鼠标hover时呈现说明内容。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-2.png"/>
+##### 与文字提示搭配使用，鼠标hover时呈现说明内容。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-2.png"
+
+  <div class="item"></div>
+</div>
 
 
 
@@ -29,12 +41,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-3.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC------------3@2x.png"/>
     <em>图示：单行截断</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-4.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC---------4@2x.png"/>
     <em>图示：3行限制截断</em>
   </div>
 </div>
@@ -45,7 +57,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/table-5.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%A1%A8%E6%A0%BC----------5@2x.png"/>
     <em>图示：隐藏部分操作</em>
   </div>
 

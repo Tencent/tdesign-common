@@ -45,7 +45,7 @@
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-6@2x.png"/>
 <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1----7@2x.png"/>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/tabs----%E6%85%8E%E7%94%A81@2x.png"/>
 <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
 <hr />

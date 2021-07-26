@@ -24,7 +24,14 @@
 
 ##### 可与数据统计提示搭配使用，更好辅助用户了解条目数量。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-3@2x.png"/>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-3@2x.png" />
+  </div>
+
+  <div class="item"></div>
+</div>
+
 
 ### 推荐/慎用示例
 
@@ -32,7 +39,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-4@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E5%88%86%E9%A1%B5--------%E6%8E%A8%E8%8D%901@2x.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
