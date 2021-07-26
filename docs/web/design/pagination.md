@@ -13,12 +13,24 @@
 
 ##### 当空间有限时使用分页控件，可以使用极简版或迷你版，以节省空间。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-1@2x.png"/>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-1@2x.png"/>
+  </div>
+
+  <div class="item"></div>
+</div>
 
 ### 对齐/布局方式
 ##### 分页控件一般出现在模块下方，通常居于底部位置。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-2@2x.png"/>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-2@2x.png"/>
+  </div>
+
+  <div class="item"></div>
+</div>
 
 ### 组件搭配使用
 
