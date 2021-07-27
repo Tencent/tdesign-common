@@ -50,7 +50,7 @@
     }
   }
 
-  &:active {
+  &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
     .@{prefix}-switch__handle::before {
       left: 0;
       right: -6px;
@@ -141,7 +141,7 @@
   line-height: @switch-height-l;
   border-radius: (@switch-height-l / 2);
 
-  &:active {
+  &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
     .@{prefix}-switch__handle::before {
       left: 0;
       right: -8px;
@@ -190,7 +190,7 @@
   line-height: @switch-height-s;
   border-radius: (@switch-height-s / 2);
 
-  &:active {
+  &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
     .@{prefix}-switch__handle::before {
       left: 0;
       right: -4px;
