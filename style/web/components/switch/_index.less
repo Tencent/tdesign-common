@@ -29,13 +29,40 @@
     left: @switch-width-border-default;
     width: (@switch-height-default - 2px * @switch-width-border-default);
     height: (@switch-height-default - 2px * @switch-width-border-default);
-    border-radius: 100%;
-    background-color: @switch-handle-bg-color;
+    border-radius: 12px;
     transition: @switch-handle-transition;
 
     .@{prefix}-icon {
       font-size: (@switch-height-default - 4px);
       color: transparent;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 12px;
+      background-color: @switch-handle-bg-color;
+      transition: @switch-handle-transition;
+    }
+  }
+
+  &:active {
+    .@{prefix}-switch__handle::before {
+      left: 0;
+      right: -6px;
+    }
+    &.@{prefix}-is-checked {
+      .@{prefix}-switch__handle::before {
+        right: 0;
+        left: -6px;
+      }
+    }
+    .@{prefix}-switch__content {
+      opacity: 0;
     }
   }
 
@@ -47,8 +74,9 @@
       @switch-content-margin-left-default;
     font-size: @switch-content-font-size-default;
     min-width: @switch-min-width-default;
+    transition: @switch-content-transition;
     .@{prefix}-icon {
-      font-size: @switch-content-font-size-default;
+      font-size: @switch-content-font-size-l;
     }
   }
 
@@ -69,6 +97,10 @@
   &.@{prefix}-is-loading {
     cursor: not-allowed;
     background-color: @switch-unchecked-bg-color-loading;
+
+    .@{prefix}-loading {
+      display: inline-flex;
+    }
 
     .@{prefix}-switch__handle {
       .@{prefix}-icon {
@@ -109,6 +141,19 @@
   line-height: @switch-height-l;
   border-radius: (@switch-height-l / 2);
 
+  &:active {
+    .@{prefix}-switch__handle::before {
+      left: 0;
+      right: -8px;
+    }
+    &.@{prefix}-is-checked {
+      .@{prefix}-switch__handle::before {
+        right: 0;
+        left: -8px;
+      }
+    }
+  }
+
   .@{prefix}-switch__handle {
     top: @switch-width-border-l;
     left: @switch-width-border-l;
@@ -122,7 +167,7 @@
   .@{prefix}-switch__content {
     padding: 0 @switch-content-margin-right-l 0 @switch-content-margin-left-l;
     min-width: @switch-min-width-l;
-    font-size: @switch-content-font-size-l;
+    font-size: @switch-content-font-size-s;
 
     .@{prefix}-icon {
       font-size: @switch-content-font-size-l;
@@ -145,6 +190,19 @@
   line-height: @switch-height-s;
   border-radius: (@switch-height-s / 2);
 
+  &:active {
+    .@{prefix}-switch__handle::before {
+      left: 0;
+      right: -4px;
+    }
+    &.@{prefix}-is-checked {
+      .@{prefix}-switch__handle::before {
+        right: 0;
+        left: -4px;
+      }
+    }
+  }
+
   .@{prefix}-switch__handle {
     top: @switch-width-border-s;
     left: @switch-width-border-s;
@@ -162,7 +220,7 @@
     font-size: @switch-content-font-size-s;
 
     .@{prefix}-icon {
-      font-size: @switch-content-font-size-s;
+      font-size: @switch-content-font-size-l;
     }
   }
 
