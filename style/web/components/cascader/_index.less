@@ -44,6 +44,14 @@
     background-color: @cascader-tag-background-color-disabled;
     color: @cascader-item-color-disabled;
   }
+  &.@{prefix}-is-active {
+    border-color: @cascader-active-border-color;
+    box-shadow: @cascader-input-shadow;
+    .@{prefix}-icon {
+      color: @cascader-active-border-color;
+      opacity: 1;
+    }
+  }
 }
 
 .@{prefix}-cascader-dropdown {
