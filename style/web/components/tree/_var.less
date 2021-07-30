@@ -19,7 +19,7 @@
 @tree-node-icon-color-active: @brand-color-8;
 @tree-node-bg-color-active: #ebf2ff;
 @tree-node-bg-color-active-hover: #e1e6ff;
-@tree-node-icon-color: #c2c2c2;
+@tree-node-icon-color: @font-gray-2;
 @tree-node-icon-line-color: @border-level-1-color;
 @tree-disabled-color: @border-level-2-color;
 @tree-icon-color-disabled: @tree-node-icon-color;
@@ -31,18 +31,21 @@
 @tree-node-padding-basic: 24px;
 @tree-node-icon-margin-right: 4px;
 @tree-node-item-margin-bottom: 0;
-@tree-node-item-padding-left: calc(@tree-node-padding-basic * var(--level));
-@tree-line-position-bottom: 20px;
-@tree-line-position-left: calc(@tree-node-padding-basic * var(--level) - 12px);
+@tree-node-item-padding-left: calc(@tree-node-padding-basic * var(--level) + 8px);
+@tree-line-position-bottom: 15px;
+@tree-line-position-left: calc(@tree-node-padding-basic * var(--level) - 10px);
 @tree-node-item-checkbox-padding-top:1px;
+@tree-node-item-click-color: @gray-color-3;
 
 //尺寸
 @tree-line-width: 1px;
-@tree-node-item-height: 40px;
-@tree-node-icon-size: @icon-l;
-@tree-node-item-line-height: 40px;
+@tree-node-item-height: 32px;
+@tree-node-item-label-height: 28px;
+@tree-node-item-spacer: 4px;
+@tree-node-icon-size: @icon-default;
+@tree-node-item-line-height: 32px;
 @tree-line-width-before: 16px;
-@tree-line-height-first: 32px;
+@tree-line-height-first: 20px;
 @tree-line-height-leaf: 32px;
 
 // 动画
