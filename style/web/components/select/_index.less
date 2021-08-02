@@ -184,11 +184,15 @@
 // dropdown
 .@{prefix}-select-dropdown {
   margin: @select-dropdown-margin;
-  padding: @select-dropdown-padding;
+  padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
   max-height: @select-dropdown-max-height;
   overflow-y: auto;
   box-shadow: @select-dropdown-shadow;
   border-radius: @select-border-radius;
+
+  > div {
+    padding: @select-dropdown-padding;
+  }
 }
 
 .@{prefix}-select-dropdown.@{prefix}-popup {
