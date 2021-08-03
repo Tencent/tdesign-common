@@ -24,6 +24,5 @@
 
 // 动画
 @popup-flow: t-popup_animation;
-@cubic-bezier: cubic-bezier(0, .48, .33, 1);
-@duration: .2s;
-@flowin-transition: opacity @duration @cubic-bezier;
+@popup-flow-duration: @anim-duration-base;
+@popup-flow-transition: opacity @popup-flow-duration @anim-time-fn-easing;

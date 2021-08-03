@@ -4,7 +4,7 @@
 @import "./_mixin.less";
 .@{prefix}-date-picker {
   padding: 0;
-
+  
   &::after {
     display: block;
     clear: both;
@@ -16,7 +16,6 @@
   }
 
   &--container {
-    margin: 8px 0;
     background-color: @datepicker-dropdown-background;
   }
 
@@ -389,5 +388,9 @@
     display: block;
     clear: both;
     content: "";
+  }
+  
+  > button:last-child {
+    margin-left: @datepicker-apply-btn-margin;
   }
 }
