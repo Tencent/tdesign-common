@@ -47,13 +47,13 @@
     }
 
     .@{radio-button--cls} {
+      color: @radio-button-color-solid;
       border: 0;
       background-color: transparent;
-      transition: font-weight @anim-duration-base @anim-time-fn-ease-out;
+      transition: color @anim-duration-base @anim-time-fn-ease-out;
 
       &:hover {
-        color: @radio-label-color;
-        font-weight: @radio-font-weight-medium;
+        color: @radio-button-color-solid-hover;
       }
 
       &::before {
@@ -78,7 +78,6 @@
         position: relative;
         color: @radio-button-color-solid-checked;
         z-index: 1;
-        font-weight: @radio-font-weight-medium;
         border: 0;
 
         &::before {
@@ -95,7 +94,6 @@
         background-color: transparent;
 
         &:hover {
-          font-weight: @radio-font-weight-normal;
           border-color: @radio-button-background-color-solid;
         }
 
