@@ -4,26 +4,30 @@
 
 ##### 在 TDesign 中，有2种滑块类型：单游标滑块、双游标滑块。
 
-## 单游标滑块
 
-在滑动轴上，只有一个游标，称为单游标滑块。
+### 默认滑块
+ {{ base }}
 
-### 横向单游标滑块：
+### 垂直
+ {{ vertical }}
 
-{{ horizontal }}
+### 禁用状态
+ {{ disabled }}
 
-### 纵向单游标滑块：
+### 水平带标签
+ {{ marks }}
 
-{{ vertical }}
+### 垂直带标签
+ {{ vertical-marks }}
 
-## 双游标滑块
+### 设置步长
+ {{ step }}
 
-在滑动轴上，有两个游标，称为双游标滑块。
+### 设置最大值最小值
+ {{ min-and-max }}
 
-### 横向双游标滑块：
+### 数字输入框
+ {{ input-number }}
 
-{{ horizontal-double }}
-
-### 纵向双游标滑块：
-
-{{ vertical-double }}
+### 垂直数字输入框
+ {{  input-number-vertical }}

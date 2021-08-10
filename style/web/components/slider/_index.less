@@ -1,0 +1,220 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+
+.@{prefix}-slider-contianer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.is-vertical {
+    height: 100%;
+    flex-direction: column;
+  }
+
+}
+.@{prefix}-slider-input-container {
+  display: flex;
+}
+
+.@{prefix}-slider-input {
+  margin-left: 24px;
+
+  &.is-vertical {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+
+  &.is-range {
+    margin-left: 12px;
+  }
+}
+
+.@{prefix}-slider {
+  height: 18px;
+  width: 100%;
+  position: relative;
+  padding: 7px 0;
+
+  &__rail {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: @slider-background;
+    transition: background-color .3s;
+
+    &:hover {
+      background-color: @slider-background-hover;
+    }
+  }
+
+  &__track {
+    position: absolute;
+    height: 4px;
+    background-color: @slider-background-current;
+    right: auto;
+  }
+
+  &__step {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+  }
+
+  &__handle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: @slider-controlbar-background;
+    border: 2px solid @slider-controlbar-border;
+    border-radius: 50%;
+    margin-top: -5px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: box-shadow .3s;
+
+    &:hover,
+    :active {
+      box-shadow: 0 0 0 3px rgba(@slider-controlbar-background-active, .8);
+    }
+  }
+
+  &__button {
+    width: 14px;
+    height: 14px;
+    border: 2px solid @slider-controlbar-border;
+    background-color: @slider-controlbar-background;
+    border-radius: 50%;
+    transition: .2s;
+    user-select: none;
+
+    &:hover {
+      background-color: @slider-controlbar-background-hover;
+    }
+
+    &:active {
+      box-shadow: 0 0 0 3px rgba(@slider-controlbar-background-active, .8);
+    }
+  }
+
+  &__button-wrapper {
+    position: absolute;
+    z-index: 2;
+    top: -6px;
+    transform: translateX(-50%);
+    background-color: transparent;
+    text-align: center;
+    user-select: none;
+    line-height: normal;
+    outline: none;
+  }
+
+  &__stop {
+    position: absolute;
+    width: 1px;
+    height: 6px;
+    background-color: @slider-background;
+    top: 4px;
+  }
+
+  &__mark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+  }
+
+  &__mark-text {
+    position: absolute;
+    display: inline-block;
+    font-size: 12px;
+    color: @slider-text;
+    top: 13px;
+    line-height: 20px;
+    transform: translateX(-50%);
+    margin-top: 4px;
+  }
+}
+
+.@{prefix}-slider-vertical {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+  .@{prefix}-slider__rail {
+    width: 4px;
+    height: 100%;
+  }
+
+  .@{prefix}-slider__track {
+    width: 4px;
+    top: auto;
+  }
+
+  .@{prefix}-slider__step {
+    width: 4px;
+    height: 100%;
+  }
+
+  .@{prefix}-slider__handle {
+    margin-top: -6px;
+    margin-left: -5px;
+    top: auto;
+    transform: translateY(50%);
+  }
+
+  .@{prefix}-slider__mark {
+    top: 0;
+    left: 12px;
+    width: 18px;
+    height: 100%;
+  }
+
+  .@{prefix}-slider__stop {
+    width: 6px;
+    height: 1px;
+    left: 4px;
+    background-color: @slider-background;
+  }
+
+  .@{prefix}-slider__mark-text {
+    transform: translateY(-50%);
+    margin-top: 0;
+    margin-left: 2px;
+  }
+
+  .@{prefix}-slider__button-wrapper {
+    top: auto;
+    left: -12px;
+    transform: translate(50%, 50%);
+  }
+}
+
+.@{prefix}-is-disabled {
+  pointer-events: none;
+
+  .@{prefix}-slider__track {
+    background-color: @slider-background-current-disabled;
+  }
+
+  .@{prefix}-slider__rail {
+    background-color: @slider-background-disabled;
+  }
+
+  .@{prefix}-slider__handle {
+    border: 2px solid @slider-background-current-disabled;
+  }
+
+  .@{prefix}-slider__button {
+    border-color: @slider-controlbar-border-disabled;
+    outline: none;
+  }
+
+  .@{prefix}-slider__mark-text {
+    color: @slider-text-disabled;
+  }
+}
