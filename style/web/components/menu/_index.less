@@ -52,7 +52,6 @@ a.@{prefix}-menu__item {
     position: relative;
     display: flex;
     align-items: center;
-    max-width: 320px;
     height: 64px;
     line-height: 64px;
     text-align: right;
@@ -208,15 +207,9 @@ a.@{prefix}-menu__item {
   &.@{prefix}-is-collapsed {
     width: @default-menu-collapse-width;
 
-    .@{prefix}-menu__logo:not(:empty) {
-      padding-left: 0;
-      justify-content: center;
-    }
-
     .@{prefix}-menu {
       .@{prefix}-menu__item {
-        padding: 0;
-        justify-content: center;
+        padding: 0 14px;
       }
     }
 
@@ -226,7 +219,6 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__item {
       text-overflow: initial;
-      justify-content: center;
 
       &.@{prefix}-is-active.@{prefix}-is-opened {
         background-color: @default-menu-active-color;
@@ -434,7 +426,8 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius;
-    transition: background-color @anim-duration-slow @anim-time-fn-easing;
+    transition: background-color @anim-duration-slow @anim-time-fn-easing,
+      padding @anim-duration-slow @anim-time-fn-easing;
 
     &:first-child {
       margin-top: 0;
@@ -483,7 +476,6 @@ a.@{prefix}-menu__item {
     &:not(:empty) {
       display: flex;
       align-items: center;
-      padding-left: 24px;
     }
   }
 
@@ -501,7 +493,6 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-submenu-icon {
-      transition: transform @anim-duration-base @anim-time-fn-easing;
       width: 16px;
       height: 16px;
     }
