@@ -32,6 +32,4 @@
 
 {{ loading }}
 
-### 插件
 
-{{ plugin }}
