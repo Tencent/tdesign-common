@@ -440,63 +440,67 @@
   .@{prefix}-table__cell--title {
     display: flex;
   }
+}
 
-  .@{prefix}-table__cell--sortable {
-    position: relative;
+.@{prefix}-table__cell--sortable {
+  position: relative;
 
-    .@{prefix}-table__cell--title {
-      margin-right: 20px;
-      display: flex;
+  .@{prefix}-table__cell--title {
+    margin-right: 20px;
+    display: flex;
 
-      .@{prefix}-table__cell--filter {
-        margin-left: 10px;
-      }
-    }
-
-    .@{prefix}-table__cell--sort-trigger {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 20px;
-    }
-  }
-  // 表格加载态
-  .@{prefix}-table--loading {
-    position: relative;
-
-    .@{prefix}-table--loading-progressbar {
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 1px;
-      background-color: @brand-color;
-      animation: tTableProgressbar 2s ease-in-out;
-      animation-fill-mode: both;
-    }
-
-    .@{prefix}-table--loading-message {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 120px;
-      color: @text-color-disabled;
+    .@{prefix}-table__cell--filter {
+      margin-left: 10px;
     }
   }
 
-  .@{prefix}-table--loading-async {
-    text-align: center;
-
-    .@{prefix}-icon {
-      vertical-align: middle;
-    }
+  .@{prefix}-table__cell--sort-trigger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
   }
+}  
 
+// 表格加载态
+.@{prefix}-table--loading {
+  position: relative;
+}
 
-  .t-table-expanded-cell {
-    padding-left: 45px;
+.@{prefix}-table--loading-progressbar {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  background-color: @brand-color;
+  animation: tTableProgressbar 2s ease-in-out;
+  animation-fill-mode: both;
+}
+
+.@{prefix}-table--loading-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  color: @text-color-disabled;
+}
+
+.@{prefix}-table-expanded-cell {
+  padding-left: 45px;
+}
+
+.@{prefix}-table--loading-async {
+  text-align: center;
+  color: @font-gray-3;
+  .@{prefix}-icon-loading {
+    margin-right: 10px;
   }
+}
+
+.@{prefix}-table--loading-status-load-more {
+  cursor: pointer;
 }
 
 // 默认空表格
