@@ -1,0 +1,13 @@
+.input-status(@status) {
+  &.@{prefix}-is-@{status} {
+    .@{prefix}-input__inner {
+      border-color: @@borderColor;
+      @borderColor: "input-border-color-@{status}";
+
+      &:focus {
+        box-shadow: 0 0 0 2px @@boxShadowColor;
+        @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+      }
+    }
+  }
+}

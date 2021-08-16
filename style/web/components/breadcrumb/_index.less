@@ -48,12 +48,11 @@
     .@{prefix}-disabled {
       cursor: not-allowed;
 
-      &:hover {
-        color: inherit;
-      }
       .@{prefix}-breadcrumb__inner {
+        color: @breadcrumb-text-color-disabled;
+
         &:hover {
-          color: inherit;
+          color: @breadcrumb-text-color-disabled;
           cursor: not-allowed;
         }
         
