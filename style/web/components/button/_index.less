@@ -35,10 +35,18 @@
     font-size: @btn-icon-size;
   }
 
-  .@{prefix}-icon + .@{prefix}-button__text {
+  .@{prefix}-loading {
+    font-size: @btn-loading-size;
+  }
+
+  .@{prefix}-icon  + .@{prefix}-button__text {
     margin-left: @spacer;
   }
 
+  .@{prefix}-loading + .@{prefix}-button__text {
+    margin-left: @spacer;
+  }
+  
   // 主要按钮
   &--variant-base {
     .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, 0);
@@ -295,6 +303,10 @@
 
     .@{prefix}-icon {
       font-size: @btn-icon-size;
+    }
+
+    .@{prefix}-loading {
+      font-size: @btn-loading-size;
     }
 
     &.@{prefix}-size-s {
