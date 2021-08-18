@@ -27,13 +27,7 @@
 
 ##### 与对话框搭配使用。多选框所在选项勾选时需警示或二次确认时，点击后可弹出模态对话框提示。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-2@2x.png" />
-  </div>
-
-  <div class="item"></div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-2@2x.png" />
 
 ### 常见用法
 
