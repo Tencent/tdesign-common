@@ -70,8 +70,11 @@
       .@{prefix}-icon {
         color: @tree-node-icon-color-active;
       }
-      .@{prefix}-folder-icon {
-        transform: rotate(90deg);
+
+      .@{prefix}-tree__icon {
+        &--default {
+          transform: rotate(90deg);
+        }
       }
     }
 
@@ -118,7 +121,7 @@
   }
 
   &__line--leaf::before {
-    width: 25px;
+    width: 14px;
   }
 
   &--fx {
@@ -137,6 +140,7 @@
     user-select: none;
     cursor: pointer;
     border-radius: @border-radius;
+    transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
     &:not(:empty):hover {
       background-color: @tree-node-bg-color-hover;
@@ -188,6 +192,7 @@
     flex: 0 0 auto;
     justify-content: flex-end;
     align-items: center;
+    margin-left: auto;
   }
 
   &__operations .@{prefix}-icon {
