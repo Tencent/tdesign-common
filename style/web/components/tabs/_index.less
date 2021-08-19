@@ -238,6 +238,8 @@
 
     &-text-wrapper {
       position: relative;
+      display: flex;
+      align-items: center;
     }
 
     &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
@@ -264,7 +266,8 @@
 
     &.@{prefix}-is-active {
       color: @tab-default-text-select;
-      font-weight: 500;
+      // font-weight: 500;
+      text-shadow: 0 0 .3px currentColor; // 由于在wins上字体变粗时会扩大width的宽度，导致有抖动的问题；因此采用text-shadow来代替
     }
 
     &.@{prefix}-is-disabled {
@@ -313,6 +316,15 @@
       &.@{prefix}-size-l {
         padding-left: 24px;
         padding-right: 24px;
+      }
+    }
+
+    .@{prefix}-icon-close {
+      color: @tab-card-icon;
+      transition: color @anim-time-fn-easing @anim-duration-base;
+
+      &:hover {
+        color: @tab-card-icon-select;
       }
     }
   }
