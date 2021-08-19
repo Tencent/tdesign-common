@@ -23,7 +23,7 @@
     cursor: pointer;
     border-color: @select-border-color-active;
     transition: border-color @anim-duration-base @anim-time-fn-easing;
-    & > .@{prefix}-select-right-icon {
+    & > .@{prefix}-select-right-icon:not(.@{prefix}-select-right-icon__clear) {
       color: @select-right-icon-hover;
       opacity: 1;
     }
@@ -105,8 +105,12 @@
 
 .@{prefix}-select.@{prefix}-is-active {
   border-color: @select-border-color-active;
-  box-shadow: @select-input-shadow;
-  .@{prefix}-select-right-icon {
+
+  &:not(.@{prefix}-no-border) {
+    box-shadow: @select-input-shadow; // 无边框选择器没有阴影
+  }
+
+  .@{prefix}-select-right-icon:not(.@{prefix}-select-right-icon__clear) {
     color: @select-border-color-active;
     opacity: 1;
   }
@@ -119,10 +123,16 @@
 .@{prefix}-select.@{prefix}-no-border {
   border: 0;
   width: auto;
+  transition: background-color @anim-duration-base linear;
 
   &:hover {
-    background: @select-option-bg-color-hover;
+    background-color: @select-option-bg-color-hover;
   }
+
+  &:active {
+    background-color: @select-option-bg-color-active;
+  }
+
   > .@{prefix}-select-selectedSingle {
     margin-right: @select-no-border-margin-right;
   }
@@ -130,6 +140,7 @@
 
 .@{prefix}-select.@{prefix}-size-l {
   line-height: (@select-height-l - 2px);
+  font-size: @select-font-size-l;
 
   .@{prefix}-select-input {
     line-height: (@select-height-l - 2px);
@@ -148,6 +159,7 @@
 
 .@{prefix}-select.@{prefix}-size-s {
   line-height: (@select-height-s - 2px);
+  font-size: @select-font-size-s;
 
   .@{prefix}-select-input {
     line-height: (@select-height-s - 2px);
@@ -265,6 +277,11 @@
   cursor: pointer;
   padding: @select-option-padding-default;
   color: @select-option-color;
+  --ripple-color: @gray-color-3;
+
+  span {
+    position: relative;
+  }
 
   &:hover {
     background-color: @select-option-bg-color-hover;
@@ -275,10 +292,6 @@
     .@{prefix}-checkbox__input {
       border-color: @select-option-checkbox-input-color-hover;
     }
-  }
-
-  &:active {
-    background: @select-option-bg-color-active;
   }
 
   .@{prefix}-checkbox__label {
@@ -300,11 +313,13 @@
 .@{prefix}-select-option.@{prefix}-size-l {
   height: @select-option-height-l;
   padding: @select-option-padding-l;
+  font-size: @select-font-size-l;
 }
 
 .@{prefix}-select-option.@{prefix}-size-s {
   height: @select-option-height-s;
   padding: @select-option-padding-s;
+  font-size: @select-font-size-s;
 }
 
 .@{prefix}-select-option.@{prefix}-is-selected {

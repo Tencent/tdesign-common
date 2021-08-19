@@ -83,8 +83,24 @@
       width: 100%;
       overflow: auto;
       
-      .t-checkbox-group {
+      .@{prefix}-checkbox-group {
         width: 100%;
+        
+        .@{prefix}-checkbox {
+          margin-right: @transfer-list-margin-horizontal;
+
+          & + .@{prefix}-checkbox {
+            margin-left: @transfer-list-margin-horizontal;
+          }
+
+          &__label {
+            margin: 0;
+  
+            > span {
+              margin-left: @transfer-list-item-text-margin-left;
+            }
+          }
+        }
       }
     }
 
@@ -99,19 +115,7 @@
       &:first-child {
         margin-top: 0;
       }
-      
-      .@{prefix}-checkbox {
-        margin-right: 0;
 
-        &__label {
-          margin: 0;
-        }
-      }
-
-      > span {
-        margin-left: @transfer-list-item-text-margin-left;
-      }
-      
     }
 
     &__item:hover {
