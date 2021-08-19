@@ -36,6 +36,20 @@
 
   &-mask {
     background-color: @loading-mask-color;
+
+    &-text {
+      position: relative;
+      top: 50%;
+      margin-top: @loading-wrapper-icon-margin-top;
+
+      .@{prefix}-icon-loading {
+        position: unset;
+      }
+
+      .@{prefix}-loading-text {
+        margin-top: @loading-wrapper-icon-margin-top;
+      }
+    }
   }
 
   &-fullscreen {
