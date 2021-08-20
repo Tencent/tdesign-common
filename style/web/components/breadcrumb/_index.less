@@ -85,7 +85,7 @@
     word-break: break-all;
 
     .@{prefix}-icon {
-      margin: 0 @breadcrumb-spacer-half @breadcrumb-content-icon-margin-bottom;
+      margin: 0 @breadcrumb-spacer-half;
     }
   }
 
@@ -183,6 +183,8 @@
 
     .@{prefix}-breadcrumb__inner {
       max-width: @breadcrumb-inner-max-width-default;
+      display: inline-flex;
+      align-items: center;
       .t-overflow;
 
       &:hover {
