@@ -128,6 +128,15 @@
   padding: 0 @spacer;
   color: @brand-color;
   cursor: pointer;
+  transition: color @anim-duration-base;
+  
+  &:hover {
+    color: @brand-color-hover;
+  }
+  
+  &:active {
+    color: @brand-color-active;
+  }
 }
 
 .@{prefix}-alert__icon + .@{prefix}-alert__content {

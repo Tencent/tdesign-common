@@ -150,8 +150,17 @@
     top: @drawer-close-btn-position-top;
     right: @drawer-close-btn-position-right;
     color: @drawer-close-btn-color;
-    background-color: @drawer-close-btn-background-color;
+    background-color: @drawer-close-btn-bg-color;
     cursor: pointer;
+    transition: background-color @anim-duration-base;
+
+    &:hover {
+      background-color: @dialog-close-btn-bg-hover;
+    }
+    
+    &:active {
+      background-color: @dialog-close-btn-bg-active;
+    }
 
     .@{prefix}-icon {
       font-size: @drawer-icon-size;
