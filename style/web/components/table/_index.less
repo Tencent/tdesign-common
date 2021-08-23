@@ -416,6 +416,28 @@
   .@{prefix}-table__cell--title {
     display: flex;
   }
+
+  // 表格行可以拖拽
+  &.@{prefix}-table__row--draggable {
+    tbody{
+      tr{
+        &:not(.@{prefix}-table__row--dragging){
+          transition: transform 0.3s;
+          transform: translateY(0px);
+        }
+        &.@{prefix}-table__row--dragging{
+          box-sizing: border-box;
+          position: fixed !important;
+          z-index: 10000;
+          transform-origin: 0% 0%;
+          box-shadow: 0 2px 6px 0 rgb(0 0 0 / 20%);
+          pointer-events: none;
+          opacity: 0.8;
+          background: #fff;
+        }
+      }
+    } 
+  }
 }
 
 .@{prefix}-table__cell--sortable {
