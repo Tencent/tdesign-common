@@ -62,8 +62,11 @@
       font-size: 0;
     }
 
-    .@{prefix}-folder-icon {
-      transform: rotate(0);
+    .@{prefix}-tree__icon--default {
+      .@{prefix}-icon {
+        transition: transform @anim-time-fn-easing @anim-duration-base;
+        transform: rotate(0);
+      }
     }
 
     &--open {
@@ -71,8 +74,8 @@
         color: @tree-node-icon-color-active;
       }
 
-      .@{prefix}-tree__icon {
-        &--default {
+      .@{prefix}-tree__icon--default {
+        .@{prefix}-icon {
           transform: rotate(90deg);
         }
       }
@@ -140,7 +143,7 @@
     user-select: none;
     cursor: pointer;
     border-radius: @border-radius;
-    transition: background-color @anim-duration-moderate @anim-time-fn-easing;
+    transition: all @anim-duration-moderate @anim-time-fn-easing;
 
     &:not(:empty):hover {
       background-color: @tree-node-bg-color-hover;
