@@ -141,6 +141,7 @@
 }
 
 .@{inputNumberCls}.@{prefix}-size-s {
+  width: @input-number-width-s;
   padding: 0 @input-number-button-width-s;
   .@{inputCls}__inner {
     height: @input-number-inner-height-s;
@@ -155,6 +156,7 @@
 }
 
 .@{inputNumberCls}.@{prefix}-size-l {
+  width: @input-number-width-l;
   padding: 0 @input-number-button-width-l;
   .@{inputCls}__inner {
     height: @input-number-inner-height-l;
@@ -186,6 +188,10 @@
 .@{inputNumberCls}.@{prefix}-is-controls-right {
   width: @input-number-right-width;
   padding: 0;
+  
+  &.@{prefix}-size-l {
+    width: @input-number-right-width-l;
+  }
 
   &:hover {
     .@{inputCls}__inner {
