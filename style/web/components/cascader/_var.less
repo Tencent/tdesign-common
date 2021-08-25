@@ -46,9 +46,9 @@
 @cascader-height-l: 40px;
 
 // 输入框字体大小
-@cascader-font-size-s: 12px;
-@cascader-font-size-default: 14px;
-@cascader-font-size-l: 16px;
+@cascader-font-size-s: @font-size-s;
+@cascader-font-size-default: @font-size-base;
+@cascader-font-size-l: @font-size-l;
 
 // 菜单选项高度
 @cascader-item-height-s: 32px;
@@ -67,8 +67,9 @@
 @cascader-content-margin-left: 4px;
 
 // 下拉面板
-@cascader-dropdown-border: .5px solid @gray-color-4;
-@cascader-dropdown-border-radius: 3px;
+@cascader-dropdown-margin: 10px 0 5px 0;
+@cascader-dropdown-border: .5px solid @bg-color-secondarycontainer-active;
+@cascader-dropdown-border-radius: @border-radius;
 
 // menu面板
 @cascader-menu-padding: 8px;
@@ -76,3 +77,7 @@
 @cascader-menu-item-margin-top: 4px;
 @cascader-menu-item-padding-left: 12px;
 @cascader-menu-item-icon-color: @text-color-secondary;
+
+// tag
+@cascader-tag-margin-right: 4px;
+@cascader-tag-margin: 2px 4px 2px 0;

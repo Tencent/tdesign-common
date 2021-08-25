@@ -10,7 +10,6 @@
   border: 1px solid @border-level-2-color;
   border-radius: @border-radius;
   padding: @cascader-input-padding;
-  line-height: @cascader-height-default;
   background-color: @bg-color-container;
   vertical-align: middle;
   cursor: default;
@@ -20,23 +19,18 @@
   overflow: hidden;
   flex-wrap: wrap;
 
-  & .@{prefix}-tag {
-    margin-bottom: 4px;
-  }
-
   & .@{prefix}-cascader-placeholder {
     color: @cascader-light-color;
     margin-left: @cascader-content-margin-left;
   }
 
   & .@{prefix}-cascader-content {
-    color: @cascader-dark-color;
     margin-left: @cascader-content-margin-left;
   }
 
   & .@{prefix}-tag {
     cursor: pointer;
-    margin-right: 4px;
+    margin: @cascader-tag-margin;
     color: @cascader-tag-color;
     background-color: @cascader-tag-background-color;
     border-color: @cascader-tag-border-color;
@@ -55,6 +49,9 @@
     cursor: not-allowed;
     background-color: @cascader-tag-background-color-disabled;
     color: @cascader-item-color-disabled;
+    .@{prefix}-cascader-content {
+      color: @cascader-item-color-disabled;
+    }
   }
   &.@{prefix}-is-active {
     border-color: @cascader-active-border-color;
@@ -66,13 +63,13 @@
     }
 
     .@{prefix}-fake-arrow {
-      color: @cascader-highlight-color
+      color: @cascader-highlight-color;
     }
   }
 }
 
 .@{prefix}-cascader-dropdown {
-  margin: 10px 0 5px 0;
+  margin: @cascader-dropdown-margin;
   background: @bg-color-container;
   box-shadow: @shadow-2;
   border-radius: @border-radius;
@@ -121,7 +118,7 @@
         }
 
         .@{prefix}-icon-chevron-right {
-          color: @cascader-menu-item-icon-color
+          color: @cascader-menu-item-icon-color;
         }
         
         &:hover {
