@@ -15,8 +15,8 @@
 @cascader-highlight-color: @text-color-brand;
 @cascader-border-color-disabled: @border-level-2-color;
 @cascader-active-border-color: @brand-color;
-@cascader-selected-color: @brand-color;
-@cascader-input-shadow: 0 0 2px 2px @brand-color-focus;
+@cascader-selected-color: @text-color-placeholder;
+@cascader-input-shadow: 0 0 0px 2px @brand-color-focus;
 @cascader-color-default: @text-color-primary;
 @cascader-light-color: @text-color-placeholder;
 @cascader-light-gray-color: @text-color-secondary;
@@ -38,12 +38,17 @@
 
 // 输入框尺寸
 @cascader-input-width: 320px;
-@cascader-input-padding: 0px 26px 0px 8px;
+@cascader-input-padding: 4px 26px 4px 4px;
 
 // 输入框高度
 @cascader-height-s: 24px;
 @cascader-height-default: 32px;
 @cascader-height-l: 40px;
+
+// 输入框字体大小
+@cascader-font-size-s: @font-size-s;
+@cascader-font-size-default: @font-size-base;
+@cascader-font-size-l: @font-size-l;
 
 // 菜单选项高度
 @cascader-item-height-s: 32px;
@@ -58,3 +63,21 @@
 @cascader-panel-height-normal: 200px;
 @cascader-panel-height-multiple: 280px;
 @cascader-panel-height-tips: 40px;
+
+@cascader-content-margin-left: 4px;
+
+// 下拉面板
+@cascader-dropdown-margin: 10px 0 5px 0;
+@cascader-dropdown-border: .5px solid @bg-color-secondarycontainer-active;
+@cascader-dropdown-border-radius: @border-radius;
+
+// menu面板
+@cascader-menu-padding: 8px;
+@cascader-menu-item-border-radius: 2px 3px 3px 3px;
+@cascader-menu-item-margin-top: 4px;
+@cascader-menu-item-padding-left: 12px;
+@cascader-menu-item-icon-color: @text-color-secondary;
+
+// tag
+@cascader-tag-margin-right: 4px;
+@cascader-tag-margin: 2px 4px 2px 0;
