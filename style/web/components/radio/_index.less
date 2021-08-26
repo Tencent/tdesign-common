@@ -20,8 +20,8 @@
       }
       &.@{prefix}-is-disabled {
         &.@{prefix}-is-checked {
-          color: @radio-button-color-outline-disabled-checked;
-          border-color: @radio-button-border-color-outline-disabled-checked;
+          color: @brand-color-disabled;
+          border-color: @brand-color-disabled;
           background-color: @radio-button-background-color-outline-disabled-checked;
         }
       }
@@ -29,79 +29,76 @@
   }
 
   &.@{radio-cls}-group-solid {
+    border-color: @radio-button-background-color-solid;
+    padding: @radio-group-padding;
+    border-radius: @radio-button-border-radius; 
+    background-color: @radio-button-background-color-solid;
+    position: relative;
+
+    .@{radio-cls}-group-solid-bg-block {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 0;
+      height: calc(100% - 4px);
+      background-color: @radio-button-background-color-solid-checked;
+      transition: all @anim-duration-base @anim-time-fn-easing;
+      border-radius: 2px;
+    }
+
     .@{radio-button--cls} {
-      border-color: @radio-button-background-color-solid;
-      background-color: @radio-button-background-color-solid;
-      transition: font-weight @anim-duration-base @anim-time-fn-ease-out;
+      color: @radio-button-color-solid;
+      border: 0;
+      background-color: transparent;
 
       &:hover {
-        color: @radio-label-color;
-        font-weight: @radio-font-weight-medium;
+        color: @radio-button-color-solid-hover;
       }
 
       &::before {
         content: "";
         position: absolute;
         left: 0;
-        top: 8px;
+        top: 50%;
+        transform: translateY(-50%);
         width: 1px;
         height: calc(100% - 16px);
         background-color: @font-gray-4;
+        transition: opacity @anim-duration-base @anim-time-fn-ease-out;
       }
 
       &:first-child {
         &::before {
-          width: 0;
+          opacity: 0;
         }
       }
 
-      &::after {
-        content: "";
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: calc(100% - 5px); // 还有1px留给分隔符
-        height: calc(100% - 4px);
-        background-color: @radio-button-background-color-solid-checked;
-        z-index: -1;
-        border-radius: 2px;
-        opacity: 0;
-        transition: opacity @anim-duration-base @anim-time-fn-ease-out;
-      }
       &.@{prefix}-is-checked {
         position: relative;
         color: @radio-button-color-solid-checked;
-        border-color: @radio-button-border-color-solid-checked;
         z-index: 1;
-        font-weight: @radio-font-weight-medium;
+        border: 0;
+        transition: color @anim-duration-base linear;
 
         &::before {
-          width: 0;
+          opacity: 0;
         }
 
         & + label {
           &::before {
-            width: 0;
+            opacity: 0;
           }
-        }
-
-        &::after {
-          opacity: 1;
         }
       }
       &.@{prefix}-is-disabled {
-        background-color: @radio-button-background-color-solid;
+        background-color: transparent;
 
         &:hover {
-          font-weight: @radio-font-weight-normal;
           border-color: @radio-button-background-color-solid;
         }
-        &.@{prefix}-is-checked {
-          &::after {
-            width: calc(100% - 4px); // 覆盖radio-button的after伪类width: 0属性
-            font-weight: @radio-font-weight-medium;
-            background-color: @radio-button-background-color-solid-disabled-checked;
-          }
+
+        &.@{prefix}-is-checked ~ .@{radio-cls}-group-solid-bg-block {
+          background-color: @radio-button-background-color-solid-disabled-checked;
         }
       }
     }
@@ -112,6 +109,11 @@
     .@{radio-button--cls} {
       padding: @radio-button-padding-small;
       font-size: @radio-button-font-size-small;
+      line-height: @radio-button-line-height-small;
+
+      &::before {
+        height: calc(100% - 16px);
+      }
     }
   }
 
@@ -120,6 +122,10 @@
     .@{radio-button--cls} {
       padding: @radio-button-padding-medium;
       font-size: @radio-button-font-size-medium;
+
+      &::before {
+        height: calc(100% - 20px);
+      }
     }
   }
 
@@ -128,6 +134,10 @@
     .@{radio-button--cls} {
       padding: @radio-button-padding-large;
       font-size: @radio-button-font-size-large;
+
+      &::before {
+        height: calc(100% - 24px);
+      }
     }
   }
 
@@ -139,6 +149,7 @@
     border-right: 0;
     line-height: 22px;
     transition: color @anim-duration-base @anim-time-fn-ease-out;
+    color: @radio-label-color;
 
     &:first-child {
       border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;

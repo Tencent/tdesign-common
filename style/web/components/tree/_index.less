@@ -36,8 +36,9 @@
     --level: 0;
     position: relative;
     display: flex;
+    align-items: center;
     flex-wrap: nowrap;
-    padding-left: @tree-node-item-padding-left;
+    padding: 4px 0 4px @tree-node-item-padding-left;
     height: @tree-node-item-height;
     margin-bottom: @tree-node-item-margin-bottom;
     cursor: default;
@@ -45,48 +46,52 @@
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
 
+    & + .@{prefix}-tree__item {
+      margin-top: @tree-node-item-spacer;
+    }
+
     .@{prefix}-icon {
       display: inline-block;
       position: relative;
       color: @tree-node-icon-color;
       z-index: 2;
+      font-size: @font-size-l;
     }
 
     .@{prefix}-checkbox {
       font-size: 0;
-      padding-top: @tree-node-item-checkbox-padding-top;
     }
 
-    .@{prefix}-folder-icon {
-      transform: rotate(0);
+    .@{prefix}-tree__icon--default {
+      .@{prefix}-icon {
+        transition: transform @anim-time-fn-easing @anim-duration-base;
+        transform: rotate(0);
+      }
     }
 
     &--open {
       .@{prefix}-icon {
         color: @tree-node-icon-color-active;
       }
-      .@{prefix}-folder-icon {
-        transform: rotate(90deg);
+
+      .@{prefix}-tree__icon--default {
+        .@{prefix}-icon {
+          transform: rotate(90deg);
+        }
       }
     }
 
     &--clickable {
       cursor: pointer;
     }
-
-    &.@{prefix}-is-active {
-      background-color: @tree-node-bg-color-active;
-      color: @tree-node-text-color-active;
-    }
   }
 
-  &--hoverable &__item:hover {
-    cursor: pointer;
+  &--block-node &__label {
+    flex: 1;
+  }
+
+  &--hoverable &__label:not(.@{prefix}-is-active):not(.@{prefix}-is-checked):hover {
     background-color: @tree-node-bg-color-hover;
-  }
-
-  &--hoverable &__item.@{prefix}-is-active:hover {
-    background-color: @tree-node-bg-color-active-hover;
   }
 
   &__line {
@@ -98,7 +103,7 @@
     left: @tree-line-position-left;
     bottom: @tree-line-position-bottom;
     width: @tree-line-width;
-    height: @tree-node-item-height;
+    height: 40px;
     pointer-events: none;
   }
 
@@ -108,7 +113,7 @@
     bottom: 0;
     left: 0;
     display: block;
-    height: @tree-node-item-height;
+    height: 36px;
     width: @tree-line-width-before;
     border-left: 1px solid var(--color);
     border-bottom: 1px solid var(--color);
@@ -119,7 +124,7 @@
   }
 
   &__line--leaf::before {
-    width: @tree-line-height-leaf;
+    width: 14px;
   }
 
   &--fx {
@@ -130,16 +135,19 @@
 
   // 默认图标
   &__icon {
-    flex: 0 0 auto;
-    align-self: center;
     width: @tree-node-icon-size;
     height: @tree-node-icon-size;
-    margin-right: @tree-node-icon-margin-right;
-    text-align: center;
     line-height: @tree-node-icon-size;
+    font-size: 0; // 当子元素只有一个且为image类型时，会有隐藏占位，因此将font-size设0
     position: relative;
     user-select: none;
     cursor: pointer;
+    border-radius: @border-radius;
+    transition: all @anim-duration-moderate @anim-time-fn-easing;
+
+    &:not(:empty):hover {
+      background-color: @tree-node-bg-color-hover;
+    }
 
     .t-icon-loading-blue {
       color: @tree-node-icon-color-active;
@@ -152,8 +160,25 @@
 
   &__label {
     flex: auto;
-    line-height: @tree-node-item-line-height;
+    line-height: @tree-node-item-label-height;
     flex-wrap: nowrap;
+    margin-left: 4px;
+    padding: 0 4px;
+    border-radius: @border-radius;
+    cursor: pointer;
+    --ripple-color: @gray-color-3;
+    transition: background-color @anim-duration-moderate @anim-time-fn-easing;
+
+    &.@{prefix}-is-checked,
+    &.@{prefix}-is-active {
+      font-weight: 500;
+      color: @tree-node-text-color-active;
+      background-color: @tree-node-bg-color-active;
+    }
+
+    &::selection {
+      background-color: transparent;
+    }
 
     &--strictly {
       flex: none;
@@ -170,6 +195,7 @@
     flex: 0 0 auto;
     justify-content: flex-end;
     align-items: center;
+    margin-left: auto;
   }
 
   &__operations .@{prefix}-icon {

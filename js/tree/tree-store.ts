@@ -109,6 +109,7 @@ export class TreeStore {
   // 配置选项
   public setConfig(options: TypeTreeStoreOptions) {
     Object.assign(this.config, options);
+    this.refreshState();
   }
 
   // 获取根孩子节点列表

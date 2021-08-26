@@ -814,6 +814,7 @@ export class TreeNode {
     this.level = this.getLevel();
     this.actived = this.isActived();
     this.expanded = this.isExpanded();
+    this.vmCheckable = this.isCheckable();
     this.visible = this.isVisible();
     this.vmIsRest = this.isRest();
     this.vmIsFirst = this.isFirst();

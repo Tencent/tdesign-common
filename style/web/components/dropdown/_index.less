@@ -15,7 +15,7 @@
     justify-content: flex-start;
 
     &__column {
-      font-size: @dropdown-text-font;
+      font-size: @dropdown-text-font-size;
       color: @dropdown-text-color;
       text-align: left;
       overflow-y: auto;
@@ -29,37 +29,28 @@
   }
 
   &__item {
-    padding: @dropdown-item-padding;
     position: relative;
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-radius: @border-radius;
     color: @dropdown-text-color;
+    padding: @dropdown-item-padding;
+    margin: @dropdown-item-margin;
+    --ripple-color: @bg-color-container-active;
 
-    &.has-suffix {
-      padding-right: 30px;
-
-      .children-suffix {
-        position: absolute;
-        right: 10px;
-        top: 11px;
-        color: @dropdown-suffix-color;
-      }
+    &:first-child,
+    &:last-child {
+      margin: @dropdown-item-ends-margin;
     }
 
-    &:hover,
-    &.@{prefix}-is-focused {
-      color: @dropdown-active-color;
-      background: @dropdown-active-bg-color;
+    &:hover {
+      background-color: @dropdown-hover-bg-color;
     }
 
     &.@{prefix}-is-active {
       color: @dropdown-active-color;
-    }
-
-    &.@{prefix}-is-focused {
-      color: @dropdown-active-color;
-      background: @dropdown-active-bg-color;
+      background-color: @dropdown-active-bg-color;
     }
 
     &.@{prefix}-is-disabled {
@@ -67,17 +58,23 @@
       cursor: not-allowed;
     }
 
-    &.top-split {
-      border-top: @dropdown-border;
+    &_is_divided {
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background: @border-level-1-color;
+      }
     }
 
     &__content {
       display: flex;
+      flex: 1;
       align-items: center;
-
-      .@{prefix}-icon {
-        margin: 3px;
-      }
+      max-width: 100%;
 
       &__text {
         overflow: hidden;
@@ -85,11 +82,21 @@
         white-space: nowrap;
       }
     }
+
+    &.has-suffix {
+      .children-suffix {
+        color: currentColor;
+      }
+
+      .@{prefix}-dropdown__item__content {
+        max-width: calc(100% - @dropdown-text-font-size);
+      }
+    }
   }
 
   &__split {
     width: 100%;
     height: 1px;
-    background: @dropdown-split-color;
+    background-color: @dropdown-split-color;
   }
 }

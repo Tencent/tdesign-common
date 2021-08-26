@@ -10,7 +10,8 @@
   display: inline-block;
   position: relative;
   font-size: @time-picker-font-size;
-
+  color: @time-picker-input-text-color;
+  
   &.@{prefix}-is-disabled {
     .disabled-tag;
   }
@@ -90,6 +91,10 @@
         text-align: center;
         border-radius: @time-picker-input-item-input-radius;
         border: 0;
+
+        &-meridiem {
+          width: @time-picker-input-item-input-meridiem-width;
+        }
 
         &:focus {
           border-color: @bg-color-page;

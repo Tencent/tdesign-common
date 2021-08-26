@@ -17,31 +17,30 @@
 // 颜色
 @radio-border-color: @border-level-2-color;
 
-@radio-input-color: @bg-color-block;
-@radio-input-color-disabled: @bg-color-disabled;
+@radio-input-color: @bg-color-container;
+@radio-input-color-disabled: @bg-color-component-disabled;
 
 @radio-dot-color: @brand-color;
-@radio-dot-color-disabled: @bg-color-disabled;
+@radio-dot-color-disabled: @bg-color-component-disabled;
 @radio-dot-color-disabled-checked: @text-color-disabled;
 
 @radio-label-color: @text-color-primary;
 
 @radio-button-border-color-default: @border-level-2-color;
-@radio-button-border-color-hover: @primary-color-hover;
-@radio-button-color-outline-hover: @primary-color-hover;
+@radio-button-border-color-hover: @brand-color-hover;
+@radio-button-color-outline-hover: @brand-color-hover;
 @radio-button-border-color-checked: @brand-color;
 @radio-button-color-outline-checked: @brand-color;
-@radio-button-background-color-disabled: @bg-color-disabled;
+@radio-button-background-color-disabled: @bg-color-component-disabled;
 @radio-button-color-disabled: @text-color-disabled;
-@radio-button-border-color-outline-disabled: @bg-color-active;
-@radio-button-color-outline-disabled-checked: @brand-color-2;
-@radio-button-border-color-outline-disabled-checked: @brand-color-2;
-@radio-button-background-color-outline-disabled-checked: @bg-color-block;
-@radio-button-color-disabled-checked: @text-anti-primary-color;
+@radio-button-background-color-outline-disabled-checked: @bg-color-container;
+@radio-button-color-disabled-checked: @text-color-anti;
 
+@radio-button-color-solid: @text-color-secondary;
+@radio-button-color-solid-hover: @text-color-primary;
 @radio-button-background-color-solid: @gray-color-3;
 @radio-button-color-solid-checked: @text-color-anti;
-@radio-button-background-color-solid-checked: @primary-color;
+@radio-button-background-color-solid-checked: @brand-color;
 @radio-button-border-color-solid-checked: @gray-color-3;
 @radio-button-background-color-solid-disabled-checked: @brand-color-3;
 
@@ -64,6 +63,11 @@
 @radio-font-weight-normal: 400;
 @radio-font-weight-medium: 500;
 
+// 行高
+@radio-button-line-height-small: @text-line-height-s;
+@radio-button-line-height-medium: @text-line-height-base;
+@radio-button-line-height-large: @text-line-height-l;
+
 // padding
 @radio-input-label-spacer: @spacer;
 @radio-button-padding-small: 0px 8px;
@@ -71,3 +75,4 @@
 @radio-button-padding-large: 8px 24px;
 
 @radio-button-border: 1px solid;
+@radio-group-padding: 2px;

@@ -12,7 +12,7 @@
 
   &__content {
     position: @popconfirm-position;
-    padding: @popconfirm-padding;
+    padding: @popconfirm-padding + 4 @popconfirm-padding;
   }
 
   &__body {
@@ -36,7 +36,7 @@
     vertical-align: top;
     max-width: @popconfirm-max-width;
     font-size: @font-size-base;
-    color: @text-level-1-color;
+    color: @text-color-primary;
     line-height: @popconfirm-title-line-height;
     margin-right: @popconfirm-title-margin-right;
   }
@@ -56,10 +56,6 @@
   &__buttons {
     text-align: right;
     margin-top: @popconfirm-buttons-margin-top;
-
-    >span {
-      margin-right: @popconfirm-button-margin;
-    }
 
     >span:last-child {
       margin-right: 0;

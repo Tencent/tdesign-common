@@ -22,6 +22,7 @@
     padding: @popup-padding;
     font-size: @popup-content-font-size;
     line-height: @popup-content-line-height;
+    transition: max-height @popup-flow-duration @anim-time-fn-easing;  
   }
 
   &-reference {
@@ -111,8 +112,8 @@
   transform: none;
 }
 .@{popup-flow}-enter-active {
-  transition: @flowin-transition;
+  transition: @popup-flow-transition;
 }
 .@{popup-flow}-leave-active {
-  transition: @flowin-transition;
+  transition: @popup-flow-transition;
 }
