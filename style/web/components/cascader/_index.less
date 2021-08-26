@@ -66,11 +66,13 @@
       color: @cascader-highlight-color;
     }
   }
+  &.@{prefix}-cascader-is-multiple {
+    padding: 2px 24px 2px 4px;
+  }
 }
 
 .@{prefix}-cascader-dropdown {
   margin: @cascader-dropdown-margin;
-  background: @bg-color-container;
   box-shadow: @shadow-2;
   border-radius: @border-radius;
   cursor: default;
@@ -87,6 +89,7 @@
       overflow: auto;
       box-sizing: content-box;
       padding: @cascader-menu-padding;
+      background: @bg-color-container;
 
       & .@{prefix}-cascader-item {
         position: relative;
@@ -115,6 +118,7 @@
         &.@{prefix}-cascader-item__is-empty {
           color: @cascader-light-color;
           text-align: center;
+          padding-left: 0;
         }
 
         .@{prefix}-icon-chevron-right {
@@ -123,6 +127,7 @@
         
         &:hover {
           background: @cascader-item-color-hover;
+          transition: background @anim-duration-base @anim-time-fn-ease-in;
           cursor: pointer;
         }
       }
@@ -130,11 +135,13 @@
       .@{prefix}-cascader-item.@{prefix}-size-s {
         height: @cascader-item-height-s;
         line-height: @cascader-item-height-s;
+        font-size: @cascader-font-size-s;
       }
 
       .@{prefix}-cascader-item.@{prefix}-size-l {
         height: @cascader-item-height-l;
         line-height: @cascader-item-height-l;
+        font-size: @cascader-font-size-l;
       }
 
       .@{prefix}-cascader-item.@{prefix}-is-selected {
@@ -158,13 +165,7 @@
         }
 
         &:hover {
-          background: @cascader-item-color-hover;
           cursor: pointer;
-          color: @cascader-color-default;
-          
-          .@{prefix}-icon-chevron-right {
-            color: @cascader-menu-item-icon-color;
-          }
         }
       }
     }
@@ -276,4 +277,20 @@
 
 .@{prefix}-cascader-panel.@{prefix}-cascader--tip {
   height: @cascader-panel-height-tips;
+}
+
+
+.@{prefix}-cascader-close-icon-fade {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    transition: opacity @anim-duration-base @anim-time-fn-ease-in;
+  }
+
+  &-leave-active {
+    transition: opacity 0s;
+  }
 }
