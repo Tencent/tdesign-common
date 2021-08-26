@@ -420,22 +420,20 @@
   // 表格行可以拖拽
   &.@{prefix}-table__row--draggable {
     tbody {
-      tr {
-        &:not(.@{prefix}-table__row--dragging) {
-          transition: transform .3s;
+      &.dragging {
+        tr {
+          transition: transform .2s;
           transform: translateY(0px);
         }
-        &.@{prefix}-table__row--dragging {
-          position: fixed;
-          box-sizing: border-box;
-          z-index: @z-index-dragging;
-          transform-origin: 0% 0%;
-          box-shadow: 0 2px 6px 0 rgb(0 0 0 / 20%);
-          pointer-events: none;
-          opacity: .8;
+      }
+      // 比如分页数据变化时，不需要过渡
+      tr {
+        &.v-leave-active {
+          display: none;
         }
       }
-    } 
+    }
+
   }
 }
 
