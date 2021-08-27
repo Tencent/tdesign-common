@@ -66,8 +66,34 @@
       color: @cascader-highlight-color;
     }
   }
+  &.@{prefix}-size-l {
+    min-height: @cascader-height-l;
+    font-size: @cascader-font-size-l;
+  }
+  
+  &.@{prefix}-size-m {
+    min-height: @cascader-height-default;
+    font-size: @cascader-font-size-default;
+  }
+  
+  &.@{prefix}-size-s {
+    min-height: @cascader-height-s;
+    font-size: @cascader-font-size-s;
+  }
+
   &.@{prefix}-cascader-is-multiple {
-    padding: 2px 24px 2px 4px;
+    padding: @cascader-input-padding-is-multiple;
+    &.@{prefix}-size-l {
+      min-height: calc(@cascader-height-l + 2px);
+    }
+    
+    &.@{prefix}-size-m {
+      min-height: calc(@cascader-height-default + 2px);
+    }
+    
+    &.@{prefix}-size-s {
+      min-height: @cascader-item-height-s;
+    }
   }
 }
 
@@ -232,7 +258,7 @@
   top: 0;
   color: @cascader-light-color;
   background: transparent;
-  margin: 0 8px;
+  margin: @cascader-icon-margin;
 }
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
@@ -252,21 +278,6 @@
   border: 1px solid @cascader-highlight-color;
 }
 
-.@{prefix}-cascader.@{prefix}-size-l {
-  min-height: @cascader-height-l;
-  font-size: @cascader-font-size-l;
-}
-
-.@{prefix}-cascader.@{prefix}-size-m {
-  min-height: @cascader-height-default;
-  font-size: @cascader-font-size-default;
-}
-
-.@{prefix}-cascader.@{prefix}-size-s {
-  min-height: @cascader-height-s;
-  font-size: @cascader-font-size-s;
-}
-
 .@{prefix}-cascader-panel.@{prefix}-cascader--normal {
   height: @cascader-panel-height-normal;
 }
@@ -281,6 +292,8 @@
 
 
 .@{prefix}-cascader-close-icon-fade {
+  &-enter,
+  &-leave,
   &-enter-from,
   &-leave-to {
     opacity: 0;
