@@ -12,21 +12,21 @@
   background: @cell-background-color;
   font-size: @cell-font-size;
   line-height: @cell-line-height;
-  
-  &__label {
+
+  &__title {
     // width: @cell-label-width;
     flex: 1;
     color: @text-level-1-color;
   }
 
-  &__summary {
+  &__description {
     color: @text-level-3-color;
     font-size: @cell-summary-font-size;
     line-height: 22px;
     margin-top: @spacer;
   }
 
-  &__value {
+  &__note {
     flex: 1;
     text-align: right;
     vertical-align: middle;
@@ -43,7 +43,7 @@
     }
   }
 
-  &__icon {
+  &__right-icon {
     color: @text-level-3-color;
     line-height: 24px;
     margin-left: @spacer-2;
@@ -52,10 +52,26 @@
     }
   }
 
+  &--hover {
+    cursor: pointer;
+
+    &:active {
+      background-color: @cell-hover-color;
+    }
+  }
+
+  &--bordered {
+    &::after {
+      .hairline-bottom(@cell-border-color);
+      left: @cell-horizontal-padding;
+      right: @cell-horizontal-padding;
+    }
+  }
+
   &__left {
     text-align: left;
 
-    .@{prefix}-icon {
+    .@{prefix}-right-icon {
       float: left;
     }
   }
@@ -63,5 +79,17 @@
   &:not(:last-child)::after {
     .hairline-bottom();
     left: @cell-horizontal-padding;
+  }
+
+  &--middle {
+    align-items: center;
+  }
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  &--bottom {
+    align-items: flex-end;
   }
 }
