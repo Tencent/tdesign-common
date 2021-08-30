@@ -2,6 +2,7 @@
 
 @import "../../base.less";
 @import "./_var.less";
+@import "../../utilities/_animation.less";
 
 .@{prefix}-loading {
   display: inline-block;
@@ -94,6 +95,10 @@
     user-select: none;
     pointer-events: none;
   }
+}
+
+.@{prefix}-icon-loading {
+  animation: t-spin 1s linear infinite;
 }
 
 .@{prefix}-loading__content {
