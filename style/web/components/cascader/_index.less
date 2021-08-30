@@ -26,6 +26,7 @@
 
   & .@{prefix}-cascader-content {
     margin-left: @cascader-content-margin-left;
+    .text-ellipsis()
   }
 
   & .@{prefix}-tag {
@@ -136,9 +137,23 @@
 
         .@{prefix}-cascader-item__label {
           display: block;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
+          position: relative;
+          .text-ellipsis();
+
+          .t-cascader-item__label--ellipsis {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            overflow: hidden;
+            
+            .t-popup-reference {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
 
         &.@{prefix}-cascader-item__is-empty {
