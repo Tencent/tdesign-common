@@ -6,15 +6,19 @@
   font-size: @transfer-font-size;
   line-height: @transfer-line-height;
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   background: @transfer-bg-color;
   color: @transfer-font-color;
+  max-height: 100%;
 
   &-list {
     position: relative;
     display: inline-block;
-    width: @transfer-common-width;
-    height: @transfer-common-height;
+    min-width: @transfer-common-width;
+    height: auto;
+    min-height: @transfer-common-height;
     padding-top: @transfer-list-header-height;
     word-break: break-word;
     vertical-align: middle;
