@@ -16,13 +16,13 @@
     width: @transfer-common-width;
     height: @transfer-common-height;
     padding-top: @transfer-list-header-height;
-    border: 0;
+    border: @transfer-list-border;
     word-break: break-word;
     vertical-align: middle;
 
     &-source,
     &-target {
-      border: 1px solid @transfer-border-color;
+      border: @transfer-border;
       border-radius: @transfer-border-radius;
     }
 
@@ -38,7 +38,7 @@
       margin: @transfer-list-header-margin;
 
       & + :not(.@{prefix}-transfer-list-with-search) {
-        border-top: 1px solid @transfer-border-color;
+        border-top: @transfer-border;
       }
 
       .@{prefix}-checkbox {
@@ -70,14 +70,14 @@
 
     &-with-search {
       padding-top: @transfer-list-with-search-padding-top;
-      border-top: 0;
+      border-top: @transfer-list-with-search-border;
     }
 
     &-search-wrapper {
       position: absolute;
       top: 0;
       width: @transfer-list-search-wrapper-width;
-      margin: 0 @transfer-list-margin-horizontal;
+      margin: @transfer-list-search-wrapper-margin;
     }
 
     &__content {
@@ -148,7 +148,7 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      border-top: 1px solid @transfer-border-color;
+      border-top: @transfer-border;
       width: 100%;
     }
   }
