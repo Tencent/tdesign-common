@@ -17,8 +17,7 @@
     position: relative;
     display: inline-block;
     min-width: @transfer-common-width;
-    height: auto;
-    min-height: @transfer-common-height;
+    height: @transfer-common-height;
     padding-top: @transfer-list-header-height;
     word-break: break-word;
     vertical-align: middle;
@@ -200,6 +199,13 @@
 .@{prefix}-transfer-search {
   .@{prefix}-transfer-list {
     height: @transfer-with-search-height;
+  }
+}
+
+// 与Tree组件结合使用时的高度
+.@{prefix}-transfer-with-tree {
+  .@{prefix}-transfer-list {
+    height: auto;
   }
 }
 
