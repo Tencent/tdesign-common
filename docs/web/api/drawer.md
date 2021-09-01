@@ -26,6 +26,8 @@
 
 ### 不同尺寸的抽屉
 
+通过 `size` 属性控制抽屉展示宽度。
+
 {{ size }}
 
 ### 自定义头部和页脚的抽屉
@@ -33,14 +35,14 @@
 {{ custom }}
 
 ### 弹出模式抽屉
-
-整个页面的 push 模式需设置 attach 为 body。（抽屉组件默认挂载到元素本身所在的位置）
+支持覆盖及推开内容区域的方式展示抽屉，
+整个页面的 push 模式需设置 attach 为 body。（抽屉组件默认挂载到元素本身所在的位置）。
 
 {{ popup }}
 
 ### 渲染和呈现在当前父元素的抽屉
 
-添加 API `showInAttachedElement` ，父元素需要有定位属性，如：position: relative
+通过 `showInAttachedElement` 属性指定抽屉出现的父容器元素，父元素需要有定位属性，如：position: relative。
 
 {{ attach-parent }}
 
