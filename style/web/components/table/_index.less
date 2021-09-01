@@ -378,12 +378,16 @@
     }
 
     &.@{prefix}-table--has-fixed {
-      .@{prefix}-table__cell--fixed-left-last {
-        box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
-      }
+      // 只在水平方向有滚动条时才展示列的阴影
+      .t-table-content--scrollablex {
 
-      .@{prefix}-table__cell--fixed-right-first {
-        box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
+        .@{prefix}-table__cell--fixed-left-last {
+          box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
+        }
+  
+        .@{prefix}-table__cell--fixed-right-first {
+          box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
+        }
       }
     }
   }
