@@ -77,7 +77,7 @@
         color: @tag-disabled-color;
         background-color: @tag-disabled-bg;
       }
-      
+
       .@{prefix}-icon {
         color: @tag-disabled-color;
         cursor: not-allowed;
@@ -253,12 +253,13 @@
 a {
   .@{prefix}-tag {
     cursor: pointer;
-  
+    transition: background-color @anim-duration-base @anim-time-fn-easing;
+
     &:hover {
       color: @link-tag-hover-color;
       background-color: @link-tag-hover-bg;
     }
-  
+
     &:active {
       color: @link-tag-active-color;
       background-color: @link-tag-active-bg;

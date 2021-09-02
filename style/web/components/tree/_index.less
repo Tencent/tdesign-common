@@ -62,16 +62,22 @@
       font-size: 0;
     }
 
-    .@{prefix}-folder-icon {
-      transform: rotate(0);
+    .@{prefix}-tree__icon--default {
+      .@{prefix}-icon {
+        transition: transform @anim-time-fn-easing @anim-duration-base;
+        transform: rotate(0);
+      }
     }
 
     &--open {
       .@{prefix}-icon {
         color: @tree-node-icon-color-active;
       }
-      .@{prefix}-folder-icon {
-        transform: rotate(90deg);
+
+      .@{prefix}-tree__icon--default {
+        .@{prefix}-icon {
+          transform: rotate(90deg);
+        }
       }
     }
 
@@ -80,8 +86,12 @@
     }
   }
 
-  &--hoverable &__label {
+  &--block-node &__label {
     flex: 1;
+  }
+
+  &--hoverable &__label:not(.@{prefix}-is-active):not(.@{prefix}-is-checked):hover {
+    background-color: @tree-node-bg-color-hover;
   }
 
   &__line {
@@ -103,7 +113,7 @@
     bottom: 0;
     left: 0;
     display: block;
-    height: 40px;
+    height: 36px;
     width: @tree-line-width-before;
     border-left: 1px solid var(--color);
     border-bottom: 1px solid var(--color);
@@ -114,7 +124,7 @@
   }
 
   &__line--leaf::before {
-    width: @tree-line-height-leaf;
+    width: 14px;
   }
 
   &--fx {
@@ -133,6 +143,7 @@
     user-select: none;
     cursor: pointer;
     border-radius: @border-radius;
+    transition: all @anim-duration-moderate @anim-time-fn-easing;
 
     &:not(:empty):hover {
       background-color: @tree-node-bg-color-hover;
@@ -165,10 +176,6 @@
       background-color: @tree-node-bg-color-active;
     }
 
-    &:not(.@{prefix}-is-active):not(.@{prefix}-is-checked):hover {
-      background-color: @tree-node-bg-color-hover;
-    }
-
     &::selection {
       background-color: transparent;
     }
@@ -188,6 +195,7 @@
     flex: 0 0 auto;
     justify-content: flex-end;
     align-items: center;
+    margin-left: auto;
   }
 
   &__operations .@{prefix}-icon {

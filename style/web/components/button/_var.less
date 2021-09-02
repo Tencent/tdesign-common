@@ -5,16 +5,20 @@
 
 // 圆角
 @btn-border-radius: @border-radius;
+@btn-shape-border-radius-s: (@btn-height-s / 2);
+@btn-shape-border-radius-default: (@btn-height-default / 2);
+@btn-shape-border-radius-l: (@btn-height-l / 2);
 
 // 阴影
 
 //字号
 @btn-font-s: @font-size-s;
 @btn-font-default: @font-size-base;
-@btn-font-l: (@font-size * 1.6);
+@btn-font-l: @font-size-l;
 
 // 图标大小
-@btn-icon-size: 16px;
+@btn-icon-size: (@font-size * 1.6);
+@btn-loading-size: (@font-size * 1.4);
 
 // padding
 @btn-padding-horizontal-s: @spacer;
@@ -46,7 +50,6 @@
 @btn-color-danger-hover: @error-color-hover;
 @btn-color-danger-active: @error-color-active;
 @btn-color-danger-disabled: @error-color-disabled;
-
 
 // 状态色 - 白 背景
 @btn-color-white-bg: @bg-color-container;

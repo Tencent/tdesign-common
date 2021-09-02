@@ -2,7 +2,7 @@
 @import "./_var.less";
 @import "./_mixin.less";
 
-.button-attr-color(@theme, @attr, @attr-prepend: '', @ghost: false) {
+.button-attr-color(@theme, @attr, @attr-prepend: "", @ghost: false) {
   @theme-default: e("btn-color-@{theme}");
   @theme-hover: e("btn-color-@{theme}-hover");
   @theme-active: e("btn-color-@{theme}-active");
@@ -25,7 +25,8 @@
 .@{prefix}-button {
   .button;
 
-  .@{prefix}-button__text, .@{prefix}-icon {
+  .@{prefix}-button__text,
+  .@{prefix}-icon {
     position: relative;
     z-index: 1;
   }
@@ -34,10 +35,18 @@
     font-size: @btn-icon-size;
   }
 
-  .@{prefix}-icon+.@{prefix}-button__text {
+  .@{prefix}-loading {
+    font-size: @btn-loading-size;
+  }
+
+  .@{prefix}-icon  + .@{prefix}-button__text {
     margin-left: @spacer;
   }
 
+  .@{prefix}-loading + .@{prefix}-button__text {
+    margin-left: @spacer;
+  }
+  
   // 主要按钮
   &--variant-base {
     .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, 0);
@@ -275,14 +284,14 @@
   }
 
   &--shape-round {
-    border-radius: (@btn-height-default / 2);
+    border-radius: @btn-shape-border-radius-default;
 
     &.@{prefix}-size-s {
-      border-radius: (@btn-height-s / 2);
+      border-radius: @btn-shape-border-radius-s;
     }
 
     &.@{prefix}-size-l {
-      border-radius: (@btn-height-l / 2);
+      border-radius: @btn-shape-border-radius-l;
     }
   }
 
@@ -290,20 +299,24 @@
     width: @btn-height-default;
     padding: 0;
     text-align: center;
-    border-radius: (@btn-height-default / 2);
+    border-radius: @btn-shape-border-radius-default;
 
     .@{prefix}-icon {
       font-size: @btn-icon-size;
     }
 
+    .@{prefix}-loading {
+      font-size: @btn-loading-size;
+    }
+
     &.@{prefix}-size-s {
       width: @btn-height-default;
-      border-radius: (@btn-height-s / 2);
+      border-radius: @btn-shape-border-radius-s;
     }
 
     &.@{prefix}-size-l {
       width: @btn-height-default;
-      border-radius: (@btn-height-l / 2);
+      border-radius: @btn-shape-border-radius-l;
     }
   }
 }

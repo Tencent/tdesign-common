@@ -47,13 +47,12 @@
     }
 
     .@{radio-button--cls} {
+      color: @radio-button-color-solid;
       border: 0;
       background-color: transparent;
-      transition: font-weight @anim-duration-base @anim-time-fn-ease-out;
 
       &:hover {
-        color: @radio-label-color;
-        font-weight: @radio-font-weight-medium;
+        color: @radio-button-color-solid-hover;
       }
 
       &::before {
@@ -78,8 +77,8 @@
         position: relative;
         color: @radio-button-color-solid-checked;
         z-index: 1;
-        font-weight: @radio-font-weight-medium;
         border: 0;
+        transition: color @anim-duration-base linear;
 
         &::before {
           opacity: 0;
@@ -95,7 +94,6 @@
         background-color: transparent;
 
         &:hover {
-          font-weight: @radio-font-weight-normal;
           border-color: @radio-button-background-color-solid;
         }
 
@@ -151,6 +149,7 @@
     border-right: 0;
     line-height: 22px;
     transition: color @anim-duration-base @anim-time-fn-ease-out;
+    color: @radio-label-color;
 
     &:first-child {
       border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;

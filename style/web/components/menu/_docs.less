@@ -81,5 +81,20 @@
 .tdesign-demo-item--menu {
   .@{d-prefix}-demo-item__body {
     background-color: #e6e6e6;
+    overflow: unset;
+  }
+}
+
+.t-menu__logo {
+  & > * {
+    margin-left: 24px;
+  }
+}
+
+.t-is-collapsed {
+  .t-menu__logo {
+    & > * {
+      margin: 0 auto;
+    }
   }
 }

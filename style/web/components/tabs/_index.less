@@ -8,6 +8,10 @@
   overflow: hidden;
   background-color: @tab-default-bg;
 
+  .@{prefix}-icon {
+    font-size: 16px;
+  }
+
   &__header {
 
     &.@{prefix}-is-left {
@@ -39,15 +43,8 @@
       right: 0;
 
       .@{prefix}-tabs__btn {
-        &:first-child::before {
-          content: "";
-          display: block;
-          width: 40px;
-          height: 100%;
-          background: linear-gradient(270deg, rgba(0, 0, 0, .05) 0%, rgba(255, 255, 255, 0) 100%);
-          position: absolute;
-          top: 0;
-          left: -40px;
+        &:first-child {
+          box-shadow: -10px 0px 20px 5px rgba(0, 0, 0, .05);
         }
       }
     }
@@ -84,18 +81,7 @@
 
     &--left {
       border-right: 1px solid @tab-card-stroke;
-      
-      &:after {
-        content: "";
-        display: block;
-        width: 40px;
-        height: 100%;
-        background: linear-gradient(270deg, rgba(0, 0, 0, .05) 0%, rgba(255, 255, 255, 0) 100%);
-        transform: rotate(-180deg);
-        position: absolute;
-        top: 0;
-        right: -40px;
-      }
+      box-shadow: 10px 0px 20px 5px rgba(0, 0, 0, .05);
       
       &.fade-enter,
       &.fade-leave-to {
@@ -235,6 +221,7 @@
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color @anim-time-fn-easing @anim-duration-base;
+    --ripple-color: @bg-color-container-active;
 
     &-wrapper {
       display: block;
@@ -244,6 +231,7 @@
       line-height: 22px;
       border-radius: @border-radius;
       transition: background-color @anim-time-fn-easing @anim-duration-base;
+      --ripple-color: @bg-color-container-active;
     }
 
     &.@{prefix}-size-l {
@@ -256,6 +244,8 @@
 
     &-text-wrapper {
       position: relative;
+      display: flex;
+      align-items: center;
     }
 
     &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
@@ -282,7 +272,8 @@
 
     &.@{prefix}-is-active {
       color: @tab-default-text-select;
-      font-weight: 500;
+      // font-weight: 500;
+      text-shadow: 0 0 .3px currentColor; // 由于在wins上字体变粗时会扩大width的宽度，导致有抖动的问题；因此采用text-shadow来代替
     }
 
     &.@{prefix}-is-disabled {
@@ -331,6 +322,15 @@
       &.@{prefix}-size-l {
         padding-left: 24px;
         padding-right: 24px;
+      }
+    }
+
+    .@{prefix}-icon-close {
+      color: @tab-card-icon;
+      transition: color @anim-time-fn-easing @anim-duration-base;
+
+      &:hover {
+        color: @tab-card-icon-select;
       }
     }
   }

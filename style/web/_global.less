@@ -1,0 +1,28 @@
+@import "./_variables.less";
+
+// 统一的scrollbar
+.narrow-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    background: #e5e5e5;
+    border-radius: 3px;
+  }
+}
+
+// 统一的可旋转箭头
+.@{prefix}-fake-arrow {
+  path {
+    transition: d @anim-duration-base;
+    stroke: currentColor;
+  }
+
+  &--active {
+    path {
+      d: path("M3.75 10.2002L7.99274 5.7998L12.2361 10.0425");
+    }
+  }
+}

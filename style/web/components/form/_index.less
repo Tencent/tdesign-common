@@ -6,34 +6,39 @@
 
 .@{prefix}-form {
   font-size: @form-font-size;
-  line-height: @form-label-line-height;
 
-  &--label-right {
-    justify-content: flex-end;
+  &:not(.@{prefix}-form-inline) {
+    .@{prefix}-form__item {
+      &:last-of-type {
+        margin: 0;
+      }
+    }
   }
 
   &__item {
-    display: flex;
     margin: @form-item-margin;
-    align-items: flex-start;
   }
 
   &__label {
-    display: flex;
-    flex-grow: 0;
-    min-height: @form-item-height;
-    align-items: center;
-    flex-direction: row;
+    float: left;
     padding-right: @form-label-padding-right;
+    vertical-align: middle;
+    line-height: @form-item-height;
+    color: @form-color-label;
+    box-sizing: border-box;
     white-space: nowrap;
-    line-height: @form-label-line-height;
+
+    &--top {
+      float: none;
+      min-height: @form-item-height;
+    }
 
     &--left {
-      justify-content: flex-start;
+      text-align: left;
     }
 
     &--right {
-      justify-content: flex-end;
+      text-align: right;
     }
 
     &--required {
@@ -56,16 +61,23 @@
   }
 
   &__controls {
-    display: block;
-    flex: 1 1 0;
     min-height: @form-item-height;
-    align-items: center;
 
     &--content {
       display: flex;
       align-items: center;
       min-height: @form-item-height;
     }
+
+    // formItem 嵌套情况无间距
+    .@{prefix}-form__item {
+      margin: 0 @form-item-margin-right-inline 0 0;
+    }
+
+    // 输入框状态
+    .input-status(success);
+    .input-status(warning);
+    .input-status(error);
   }
 
   &__controls.@{prefix}-is-success {
@@ -121,6 +133,7 @@
   }
 
   &__help {
+    display: inline-block;
     margin-top: @from-help-text-margin-top;
     color: @@fontColor;
     @fontColor: "form-color-help";
@@ -151,7 +164,7 @@
 
   .@{prefix}-form__item {
     margin-right: @form-item-margin-right-inline;
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-flex;
+    align-items: center;
   }
 }

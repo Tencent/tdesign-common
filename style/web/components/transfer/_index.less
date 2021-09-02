@@ -8,6 +8,7 @@
   position: relative;
   display: inline-block;
   background: @transfer-bg-color;
+  color: @transfer-font-color;
 
   &-list {
     position: relative;
@@ -15,12 +16,13 @@
     width: @transfer-common-width;
     height: @transfer-common-height;
     padding-top: @transfer-list-header-height;
+    border: @transfer-list-border;
     word-break: break-word;
     vertical-align: middle;
 
     &-source,
     &-target {
-      border: 1px solid @transfer-border-color;
+      border: @transfer-border;
       border-radius: @transfer-border-radius;
     }
 
@@ -36,7 +38,7 @@
       margin: @transfer-list-header-margin;
 
       & + :not(.@{prefix}-transfer-list-with-search) {
-        border-top: 1px solid @transfer-border-color;
+        border-top: @transfer-border;
       }
 
       .@{prefix}-checkbox {
@@ -68,22 +70,40 @@
 
     &-with-search {
       padding-top: @transfer-list-with-search-padding-top;
+      border-top: @transfer-list-with-search-border;
     }
 
     &-search-wrapper {
       position: absolute;
       top: 0;
       width: @transfer-list-search-wrapper-width;
-      margin: 0 @transfer-list-margin-horizontal;
+      margin: @transfer-list-search-wrapper-margin;
     }
 
     &__content {
       height: 100%;
       width: 100%;
       overflow: auto;
-      
-      .t-checkbox-group {
+
+      .@{prefix}-checkbox-group {
         width: 100%;
+
+        .@{prefix}-checkbox {
+          margin-right: @transfer-list-margin-horizontal;
+          --ripple-color: @gray-color-3;
+
+          & + .@{prefix}-checkbox {
+            margin-left: @transfer-list-margin-horizontal;
+          }
+
+          &__label {
+            margin: 0;
+
+            > span {
+              margin-left: @transfer-list-item-text-margin-left;
+            }
+          }
+        }
       }
     }
 
@@ -98,19 +118,7 @@
       &:first-child {
         margin-top: 0;
       }
-      
-      .@{prefix}-checkbox {
-        margin-right: 0;
 
-        &__label {
-          margin: 0;
-        }
-      }
-
-      > span {
-        margin-left: @transfer-list-item-text-margin-left;
-      }
-      
     }
 
     &__item:hover {
@@ -140,7 +148,7 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      border-top: 1px solid @transfer-border-color;
+      border-top: @transfer-border;
       width: 100%;
     }
   }
@@ -197,7 +205,7 @@
 .@{prefix}-transfer-pagination {
   .@{prefix}-transfer-list {
     height: @transfer-with-pagination-height;
-    padding-bottom: 40px;
+    padding-bottom: @transfer-with-pagination-padding-bottom;
   }
 }
 
@@ -205,7 +213,7 @@
 .@{prefix}-transfer-footer {
   .@{prefix}-transfer-list {
     height: @transfer-with-footer-height;
-    padding-bottom: 48px;
+    padding-bottom: @transfer-with-footer-padding-bottom;
   }
 }
 
@@ -213,7 +221,7 @@
 .@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
   .@{prefix}-transfer-list {
     height: @transfer-with-footer-both-height;
-    padding-bottom: 88px;
+    padding-bottom: @transfer-with-pagination-footer-padding-bottom;
   }
 }
 
@@ -221,7 +229,7 @@
 .@{prefix}-transfer-search.@{prefix}-transfer-footer {
   .@{prefix}-transfer-list {
     height: @transfer-with-footer-both-height;
-    padding-bottom: 48px;
+    padding-bottom: @transfer-with-search-footer-padding-bottom;
   }
 }
 
@@ -229,7 +237,7 @@
 .@{prefix}-transfer-search.@{prefix}-transfer-pagination {
   .@{prefix}-transfer-list {
     height: @transfer-with-both-height;
-    padding-bottom: 40px;
+    padding-bottom: @transfer-with-search-pagination-padding-bottom;
   }
 }
 
@@ -237,14 +245,14 @@
 .@{prefix}-transfer-search.@{prefix}-transfer-footer.@{prefix}-transfer-pagination {
   .@{prefix}-transfer-list {
     height: @transfer-with-all-height;
-    padding-bottom: 88px;
+    padding-bottom: @transfer-with-all-padding-bottom;
   }
 }
 
 .@{prefix}-transfer-wrapper {
   .@{prefix}-transfer-list {
     height: @transfer-wrap-height;
-    width: 206px;
+    width: @transfer-wrap-width;
     overflow: scroll;
   }
 }

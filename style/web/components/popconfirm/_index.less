@@ -12,7 +12,7 @@
 
   &__content {
     position: @popconfirm-position;
-    padding: @popconfirm-padding;
+    padding: @popconfirm-padding + 4 @popconfirm-padding;
   }
 
   &__body {
@@ -56,10 +56,6 @@
   &__buttons {
     text-align: right;
     margin-top: @popconfirm-buttons-margin-top;
-
-    >span {
-      margin-right: @popconfirm-button-margin;
-    }
 
     >span:last-child {
       margin-right: 0;

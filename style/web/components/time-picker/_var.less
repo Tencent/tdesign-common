@@ -12,11 +12,13 @@
 
 @time-picker-panel-body-height: 326px;
 @time-picker-panel-item-height: 32px;
-@time-picker-input-item-input-width: 32px;
+@time-picker-input-item-input-width: 28px;
+@time-picker-input-item-input-meridiem-width: 36px;
 
 @time-picker-panel-footer-height: 72px;
 
 // color
+
 @time-picker-background-color-common: @bg-color-container;
 
 @time-picker-input-border-color-hover: @brand-color;
@@ -43,16 +45,16 @@
 @time-picker-input-border-active: 1px solid @brand-color-8;
 @time-picker-input-border-disabled: 1px solid @border-level-2-color;
 
-@time-picker-input-padding: 0 @spacer 0 0;
+@time-picker-input-padding: 0 @spacer 0 (@spacer / 2);
 @time-picker-input-placeholder-margin-left: @spacer;
 @time-picker-input-item-input-margin: 0 2px;
 @time-picker-input-item-input-radius: @border-radius;
 
 @time-picker-panel-container-margin: @spacer 0;
-@time-picker-panel-body-margin: @spacer-3 0;
+@time-picker-panel-body-margin: @spacer-3 0 0 0;
 @time-picker-panel-body-padding: 0 @spacer-2;
 @time-picker-panel-item-border-radius: @border-radius;
-@time-picker-panel-item-margin: 8px; // 暂时不能写成@spacer 因为计算滚动的这个值在DOM内部单独定义了 如果随spacer改变会有影响。
+@time-picker-panel-item-margin: @spacer; 
 @time-picker-panel-section-second-body-margin-left: @spacer-4;
 
 @time-picker-panel-footer-padding: 0 @spacer-3;
