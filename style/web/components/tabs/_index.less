@@ -221,6 +221,7 @@
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color @anim-time-fn-easing @anim-duration-base;
+    --ripple-color: @bg-color-container-active;
 
     &-wrapper {
       display: block;
@@ -230,6 +231,7 @@
       line-height: 22px;
       border-radius: @border-radius;
       transition: background-color @anim-time-fn-easing @anim-duration-base;
+      --ripple-color: @bg-color-container-active;
     }
 
     &.@{prefix}-size-l {

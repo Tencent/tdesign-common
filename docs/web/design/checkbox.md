@@ -46,13 +46,8 @@
 
 ##### 若需要通过操作多选框隐藏部分内容，可以使用就地隐藏/展开的方式。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-4@2x.png" />
-  </div>
 
-  <div class="item"></div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/checkbox-4@2x.png" />
 
 
 

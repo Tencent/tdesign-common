@@ -2,6 +2,7 @@
 
 @import "../../base.less";
 @import "./_var.less";
+@import "../../utilities/_animation.less";
 
 .@{prefix}-loading {
   display: inline-block;
@@ -96,6 +97,10 @@
   }
 }
 
+.@{prefix}-icon-loading {
+  animation: t-spin 1s linear infinite;
+}
+
 .@{prefix}-loading__content {
   position: absolute;
   left: 48%;
@@ -114,5 +119,8 @@
     background: conic-gradient(from 90deg at 50% 50%,#fff 0deg, @loading-gradient-color 360deg);
     border-radius: 50%;
     mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
+    
+    /* stylelint-disable-next-line */
+    -webkit-mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
   }
 }
