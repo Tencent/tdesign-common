@@ -209,7 +209,18 @@
         }
 
         .@{prefix}-select {
-          padding-right: @calendar-control-section-cell-select-padding-left;
+
+          &.@{prefix}-size-l {
+            padding-right: @calendar-control-section-cell-select-padding-left-l;
+          }
+
+          &.@{prefix}-size-m {
+            padding-right: @calendar-control-section-cell-select-padding-left-m;
+          }
+
+          &.@{prefix}-size-s {
+            padding-right: @calendar-control-section-cell-select-padding-left-s;
+          }
         }
       }
     }
