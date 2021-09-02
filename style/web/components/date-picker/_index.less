@@ -259,8 +259,10 @@
   &--disabled {
     .@{prefix}-date-cell__wrapper {
       cursor: not-allowed;
-      background: @datepicker-disabled-color;
-      color: @datepicker-disabled-color;
+
+      & > span:hover {
+        box-shadow: none;
+      }
     }
   }
 }
