@@ -73,11 +73,12 @@
 
       &::after {
         opacity: 1;
-        top: ((@checkbox-size) / 2 - 1.5px);
-        left: ((@checkbox-size - @checkbox-check-size) / 2);
+        top: ((@checkbox-size) / 2 - 2px); 
+        left: @checkbox-check-left;
         width: @checkbox-check-width;
         height: @checkbox-check-height;
         border: 2px solid @checkbox-check-color;
+        border-radius: 0 0 1px 0;
         border-top: 0;
         border-left: 0;
         transform: rotate(45deg) scale(1) translate(-50%, -50%);
@@ -94,9 +95,9 @@
 
       &::after {
         opacity: 1;
-        width: 100%;
+        width: @checkbox-indeterminate-width;
         height: @checkbox-indeterminate-height;
-        left: 0;
+        left: -1px;
         right: 0;
         top: ((@checkbox-size - 2 - @checkbox-indeterminate-height) * .5);
         border: unset;
