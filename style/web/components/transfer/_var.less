@@ -6,22 +6,34 @@
 @transfer-font-color: @text-color-primary;
 
 // 间距
-@transfer-list-margin-horizontal: 8px;
-@transfer-list-header-padding: 0 12px;
+@transfer-list-margin-horizontal: @spacer;
+@transfer-list-header-padding: 0 @spacer * 1.5;
 @transfer-list-header-margin: 0 @transfer-list-margin-horizontal;
-@transfer-list-header-text-margin-left: 8px;
-@transfer-list-body-padding: 8px 0;
-@transfer-list-item-padding: 5px 12px;
-@transfer-list-item-margin: 4px @transfer-list-margin-horizontal 0px
+@transfer-list-header-text-margin-left: @spacer;
+@transfer-list-body-padding: @spacer 0 @spacer 0;
+@transfer-list-item-padding: 5px @spacer * 1.5;
+@transfer-list-item-margin: @spacer * .5 @transfer-list-margin-horizontal 0px
   @transfer-list-margin-horizontal;
-@transfer-list-item-text-margin-left: 8px;
+@transfer-list-item-text-margin-left: @spacer;
 @transfer-list-search-wrapper-margin: 0 @transfer-list-margin-horizontal;
 @transfer-list-with-search-padding-top: 40px;
-@transfer-list-wrapper-padding: 12px;
-@transfer-list-pagination-padding: 4px;
-@transfer-operations-margin: auto 8px;
+@transfer-list-wrapper-padding: @spacer * 1.5;
+@transfer-list-pagination-padding: 0 @spacer 0 @spacer * .5;
+@transfer-operations-margin: auto @spacer;
 @transfer-operations-button-padding: 0 3px 1px;
 @transfer-operations-button-first-margin-bottom: 14px;
+// 有翻页时候transfer的下内边距
+@transfer-with-pagination-padding-bottom: 40px;
+// 有footer时候transfer的下内边距
+@transfer-with-footer-padding-bottom: 48px;
+// 有翻页和footer时候transfer的下内边距
+@transfer-with-pagination-footer-padding-bottom: 88px;
+// search&footer
+@transfer-with-search-footer-padding-bottom: 48px;
+// pagination&search
+@transfer-with-search-pagination-padding-bottom: 40px;
+//pagination&footer&search
+@transfer-with-all-padding-bottom: 88px;
 
 // 尺寸
 @transfer-common-width: 196px;
@@ -41,6 +53,7 @@
 @transfer-with-all-height: 328px;
 // 包裹树组件时候transfer的高度
 @transfer-wrap-height: 320px;
+@transfer-wrap-width: 206px;
 @transfer-list-header-height: 48px;
 @transfer-list-header-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
 @transfer-list-search-wrapper-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
@@ -55,6 +68,9 @@
 @transfer-font-size: @font-size-base;
 
 // 边框
+@transfer-border: 1px solid @transfer-border-color;
+@transfer-list-border: 0;
+@transfer-list-with-search-border: 0;
 @transfer-border-radius: @border-radius;
 
 // 阴影

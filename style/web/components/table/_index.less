@@ -22,6 +22,7 @@
 .@{prefix}-table {
   font-size: @table-font-size;
   color: @table--text-color;
+  background-color: @table-bg;
 
   &-content {
     position: relative;
@@ -60,7 +61,6 @@
   thead td,
   th {
     color: @table-head-text-color;
-    font-weight: 700;
   }
 
   td[key="row-select"] {
@@ -127,6 +127,8 @@
     .@{prefix}-table-content {
       border: 1px solid @table-border-color;
       border-bottom: 0;
+      border-left: 0;
+      border-radius: @border-radius;
 
       th {
         border-left: 1px solid @table-border-color;
@@ -166,7 +168,7 @@
         }
 
         &:first-child {
-          border-left: 0;
+          border-left: 1px solid @table-border-color;
 
           &::before {
             border-left: 0;
@@ -198,6 +200,10 @@
         }
       }
     }
+
+    .@{prefix}-table__cell--sort-trigger {
+      margin-left: auto;
+    }
   }
 
   // 斑马线表格
@@ -217,6 +223,10 @@
 
           &:hover {
             background-color: @table-highlight-dark-bg-color;
+          }
+
+          &:nth-of-type(odd):hover {
+            background-color: @table-highlight-bg-color--hover;
           }
         }
       }
@@ -267,23 +277,7 @@
       width: fit-content;
       position: relative;
       z-index: 10;
-      margin-right: 6px;
-
-      &:after {
-        position: absolute;
-        left: 0;
-        bottom: 0px;
-        right: 0;
-        content: " ";
-        height: 4px;
-        pointer-events: none;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, .04) 0%,
-          rgba(0, 0, 0, .01) 50%,
-          rgba(0, 0, 0, 0) 100%
-        );
-      }
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, .05), 0px 4px 5px rgba(0, 0, 0, .08), 0px 2px 4px -1px rgba(0, 0, 0, .12);
     }
 
     .@{prefix}-table__header {
@@ -298,33 +292,20 @@
     }
   }
 
+  &__cell {
+    &--selectable {
+      & + td {
+        padding-left: 0;
+      }
+    }
+  }
+
   // 列固定表格
   &__cell--fixed {
     &.@{prefix}-table__header--fixed {
       .@{prefix}-table__header {
         overflow: hidden;
         width: 100%;
-
-        table {
-          padding-bottom: 6px;
-          position: relative;
-
-          &::after {
-            position: absolute;
-            left: 0;
-            bottom: 0px;
-            right: 0;
-            content: " ";
-            height: 4px;
-            pointer-events: none;
-            border-top: 1px solid @table-border-color;
-            background: linear-gradient(
-              180deg,
-              rgba(0, 0, 0, .04) 0%,
-              rgba(0, 0, 0, .01) 100%,
-            );
-          }
-        }
       }
       .@{prefix}-table__body {
         overflow: auto scroll;
@@ -358,7 +339,7 @@
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
       z-index: 1;
-      background-color: #fff;
+      background-color: @table-bg;
       transition: background-color .3s ease-in;
     }
     &.@{prefix}-table--hoverable tbody tr:hover {
@@ -397,15 +378,16 @@
     }
 
     &.@{prefix}-table--has-fixed {
-      .@{prefix}-table__cell--fixed-left-last {
-        &:after {
-          box-shadow: inset 10px 0 10px @table-fixed-cell-box-shadow-spread-radius rgba(0, 0, 0, .1);
+      // 可向左滚动时，左边显示固定列显示阴影，右边同理
+      .@{prefix}-table-content--scrollable-to-left {
+        .@{prefix}-table__cell--fixed-left-last {
+          box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
         }
       }
 
-      .@{prefix}-table__cell--fixed-right-first {
-        &:after {
-          box-shadow: inset -10px 0 10px @table-fixed-cell-box-shadow-spread-radius rgba(0, 0, 0, .1);
+      .@{prefix}-table-content--scrollable-to-right {
+        .@{prefix}-table__cell--fixed-right-first {
+          box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
         }
       }
     }
@@ -441,62 +423,80 @@
     display: flex;
   }
 
-  .@{prefix}-table__cell--sortable {
-    position: relative;
-
-    .@{prefix}-table__cell--title {
-      margin-right: 20px;
-      display: flex;
-
-      .@{prefix}-table__cell--filter {
-        margin-left: 10px;
+  // 表格行可以拖拽
+  &.@{prefix}-table__row--draggable {
+    tbody {
+      &.dragging {
+        tr {
+          transition: transform .2s;
+          transform: translateY(0px);
+        }
+      }
+      // 比如分页数据变化时，不需要过渡
+      tr {
+        &.v-leave-active {
+          display: none;
+        }
       }
     }
 
-    .@{prefix}-table__cell--sort-trigger {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 20px;
-    }
   }
-  // 表格加载态
-  .@{prefix}-table--loading {
-    position: relative;
+}
 
-    .@{prefix}-table--loading-progressbar {
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 1px;
-      background-color: @brand-color;
-      animation: tTableProgressbar 2s ease-in-out;
-      animation-fill-mode: both;
-    }
+.@{prefix}-table__cell--sortable {
+  position: relative;
 
-    .@{prefix}-table--loading-message {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 120px;
-      color: @text-color-disabled;
+  .@{prefix}-table__cell--title {
+    display: flex;
+
+    .@{prefix}-table__cell--filter {
+      margin-left: 10px;
     }
   }
 
-  .@{prefix}-table--loading-async {
-    text-align: center;
-
-    .@{prefix}-icon {
-      vertical-align: middle;
-    }
+  .@{prefix}-table__cell--sort-trigger {
+    width: 20px;
   }
+}  
 
+// 表格加载态
+.@{prefix}-table--loading {
+  position: relative;
+}
 
-  .t-table-expanded-cell {
-    padding-left: 45px;
+.@{prefix}-table--loading-progressbar {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  background-color: @brand-color;
+  animation: tTableProgressbar 2s ease-in-out;
+  animation-fill-mode: both;
+}
+
+.@{prefix}-table--loading-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  color: @text-color-disabled;
+}
+
+.@{prefix}-table-expanded-cell {
+  padding-left: 45px;
+}
+
+.@{prefix}-table--loading-async {
+  text-align: center;
+  color: @font-gray-3;
+  .@{prefix}-icon-loading {
+    margin-right: 10px;
   }
+}
+
+.@{prefix}-table--loading-status-load-more {
+  cursor: pointer;
 }
 
 // 默认空表格
@@ -510,7 +510,7 @@
 
 .t-table-filter-icon,
 .t-table-sort-icon {
-  margin-left: 5px;
+  margin-left: 8px;
   background-color: transparent;
   display: inline-block;
   cursor: pointer;
@@ -518,6 +518,10 @@
   &:hover {
     color: @table-icon-active-color;
   }
+}
+
+.t-table-sort-icon {
+  position: absolute;
 }
 
 .t-table-filter-pop {

@@ -62,16 +62,22 @@
       font-size: 0;
     }
 
-    .@{prefix}-folder-icon {
-      transform: rotate(0);
+    .@{prefix}-tree__icon--default {
+      .@{prefix}-icon {
+        transition: transform @anim-time-fn-easing @anim-duration-base;
+        transform: rotate(0);
+      }
     }
 
     &--open {
       .@{prefix}-icon {
         color: @tree-node-icon-color-active;
       }
-      .@{prefix}-folder-icon {
-        transform: rotate(90deg);
+
+      .@{prefix}-tree__icon--default {
+        .@{prefix}-icon {
+          transform: rotate(90deg);
+        }
       }
     }
 
@@ -118,7 +124,7 @@
   }
 
   &__line--leaf::before {
-    width: 25px;
+    width: 14px;
   }
 
   &--fx {
@@ -137,6 +143,7 @@
     user-select: none;
     cursor: pointer;
     border-radius: @border-radius;
+    transition: all @anim-duration-moderate @anim-time-fn-easing;
 
     &:not(:empty):hover {
       background-color: @tree-node-bg-color-hover;
@@ -188,6 +195,7 @@
     flex: 0 0 auto;
     justify-content: flex-end;
     align-items: center;
+    margin-left: auto;
   }
 
   &__operations .@{prefix}-icon {

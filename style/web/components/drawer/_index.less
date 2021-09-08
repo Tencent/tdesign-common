@@ -108,6 +108,7 @@
   }
 
   &__header {
+    min-height: @drawer-header-height;
     padding: @drawer-header-padding;
     font-size: @drawer-header-font-size;
     font-weight: @drawer-header-font-weight;
@@ -125,7 +126,7 @@
 
   &__footer {
     width: 100%;
-    height: auto;
+    min-height: @drawer-footer-height;
     padding: @drawer-footer-padding;
     text-align: @drawer-footer-text-align;
     border-top: 1px solid @drawer-border-color;
@@ -150,8 +151,17 @@
     top: @drawer-close-btn-position-top;
     right: @drawer-close-btn-position-right;
     color: @drawer-close-btn-color;
-    background-color: @drawer-close-btn-background-color;
+    background-color: @drawer-close-btn-bg-color;
     cursor: pointer;
+    transition: background-color @anim-duration-base;
+
+    &:hover {
+      background-color: @dialog-close-btn-bg-hover;
+    }
+    
+    &:active {
+      background-color: @dialog-close-btn-bg-active;
+    }
 
     .@{prefix}-icon {
       font-size: @drawer-icon-size;

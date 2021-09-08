@@ -50,7 +50,6 @@
       color: @radio-button-color-solid;
       border: 0;
       background-color: transparent;
-      transition: color @anim-duration-base @anim-time-fn-ease-out;
 
       &:hover {
         color: @radio-button-color-solid-hover;
@@ -79,6 +78,7 @@
         color: @radio-button-color-solid-checked;
         z-index: 1;
         border: 0;
+        transition: color @anim-duration-base linear;
 
         &::before {
           opacity: 0;

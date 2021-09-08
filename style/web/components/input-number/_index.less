@@ -14,6 +14,7 @@
   box-sizing: border-box;
   padding: 0 @input-number-button-width;
   user-select: none;
+  width: @input-number-width;
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -27,7 +28,7 @@
   .@{inputCls}__inner {
     text-align: center;
     margin: 0 (@spacer / 2);
-    width: @input-number-inner-width;
+    width: calc(100% - 8px);
     color: @input-number-inner-color;
   }
 
@@ -140,6 +141,7 @@
 }
 
 .@{inputNumberCls}.@{prefix}-size-s {
+  width: @input-number-width-s;
   padding: 0 @input-number-button-width-s;
   .@{inputCls}__inner {
     height: @input-number-inner-height-s;
@@ -154,6 +156,7 @@
 }
 
 .@{inputNumberCls}.@{prefix}-size-l {
+  width: @input-number-width-l;
   padding: 0 @input-number-button-width-l;
   .@{inputCls}__inner {
     height: @input-number-inner-height-l;
@@ -168,8 +171,6 @@
 
   &.@{prefix}-is-controls-right {
     .@{inputCls}__inner {
-      width: @input-number-right-inner-width-l +
-        @input-number-right-button-width-l;
       height: @input-number-inner-height-l;
       line-height: @input-number-inner-height-l;
       padding-right: @input-number-right-button-width-l +
@@ -185,7 +186,12 @@
 }
 
 .@{inputNumberCls}.@{prefix}-is-controls-right {
+  width: @input-number-right-width;
   padding: 0;
+  
+  &.@{prefix}-size-l {
+    width: @input-number-right-width-l;
+  }
 
   &:hover {
     .@{inputCls}__inner {
@@ -199,7 +205,7 @@
   }
 
   .@{inputCls}__inner {
-    width: @input-number-right-inner-width + @input-number-right-button-width;
+    width: 100%;
     box-sizing: border-box;
     margin: 0;
     padding-right: (@input-number-right-button-width +

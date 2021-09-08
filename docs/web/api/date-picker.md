@@ -66,3 +66,7 @@
 #### 在选择界面外部使用快捷标签
 
 {{ date-presets-alt }}
+
+### 设置禁用日期
+
+{{ disable-date }}
