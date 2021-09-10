@@ -260,8 +260,11 @@
     .@{prefix}-date-cell__wrapper {
       cursor: not-allowed;
 
-      & > span:hover {
-        box-shadow: none;
+      > span {
+        color: @datepicker-disabled-color;
+        &:hover {
+          box-shadow: none;
+        }
       }
     }
   }
