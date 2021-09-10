@@ -245,8 +245,10 @@
   }
 
   &.@{prefix}-tag--ellipsis {
-    display: inline-block;
-    .text-ellipsis();
+    .@{prefix}-tag--text {
+      display: inline-block;
+      .text-ellipsis();
+    }
   }
 }
 
