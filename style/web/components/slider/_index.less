@@ -110,6 +110,7 @@
     user-select: none;
     line-height: normal;
     outline: none;
+    cursor: pointer;
   }
 
   &__stop {
@@ -195,8 +196,7 @@
 }
 
 .@{prefix}-is-disabled {
-  pointer-events: none;
-
+  cursor: not-allowed;
   .@{prefix}-slider__track {
     background-color: @slider-background-current-disabled;
   }
@@ -216,5 +216,9 @@
 
   .@{prefix}-slider__mark-text {
     color: @slider-text-disabled;
+  }
+
+  .@{prefix}-slider__button-wrapper {
+    cursor: not-allowed;
   }
 }
