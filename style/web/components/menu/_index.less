@@ -37,9 +37,9 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-menu__logo:not(:empty) {
-    width: 256px;
     height: 100%;
     font-size: 0;
+    margin-right: 32px;
   }
 
   .@{prefix}-menu {
@@ -48,17 +48,19 @@ a.@{prefix}-menu__item {
     align-items: center;
   }
 
-  .@{prefix}-menu__options:not(:empty) {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 64px;
-    line-height: 64px;
-    text-align: right;
-    margin-right: 8px;
-    overflow: hidden;
+  .@{prefix}-menu__operations {
+    &:not(:empty) {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 64px;
+      line-height: 64px;
+      text-align: right;
+      margin-right: 8px;
+      overflow: hidden;
+    }
 
-    .@{prefix}-icon {
+    &-icon {
       width: 40px;
       height: 40px;
       padding: 8px;
@@ -159,7 +161,7 @@ a.@{prefix}-menu__item {
       border-bottom-color: @gray-color-10;
     }
 
-    .@{prefix}-menu__options:not(:empty) {
+    .@{prefix}-menu__operations:not(:empty) {
       border-top-color: @gray-color-10;
     }
 
@@ -299,10 +301,10 @@ a.@{prefix}-menu__item {
       }
     }
 
-    .@{prefix}-menu__options {
+    .@{prefix}-menu__operations {
       text-align: center;
 
-      .@{prefix}-icon {
+      &-icon {
         display: block;
         margin: 0 auto;
       }
@@ -348,16 +350,18 @@ a.@{prefix}-menu__item {
     position: relative;
   }
 
-  .@{prefix}-menu__options:not(:empty) {
-    width: 100%;
-    position: relative;
-    padding: 8px 16px;
-    top: 0;
-    left: 0;
-    text-align: left;
-    border-top: solid 1px @menu-border-color;
+  .@{prefix}-menu__operations {
+    &:not(:empty) {
+      width: 100%;
+      position: relative;
+      padding: 8px 16px;
+      top: 0;
+      left: 0;
+      text-align: left;
+      border-top: solid 1px @menu-border-color;
+    }
 
-    .@{prefix}-icon {
+    &-icon {
       width: 32px;
       height: 32px;
       padding: 8px;
@@ -619,8 +623,8 @@ a.@{prefix}-menu__item {
       }
     }
 
-    .@{prefix}-menu__options:not(:empty) {
-      .@{prefix}-icon {
+    .@{prefix}-menu__operations {
+      &-icon {
         color: @menu-theme-light;
 
         &:hover {
@@ -686,8 +690,8 @@ a.@{prefix}-menu__item {
     }
   }
 
-  &__options:not(:empty) {
-    .@{prefix}-icon {
+  &__operations {
+    &-icon {
       margin-right: 16px;
       border-radius: @border-radius;
       color: @menu-item-color--light;
