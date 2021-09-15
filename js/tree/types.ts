@@ -71,7 +71,7 @@ export interface TreeNodeState {
    * @default false
    */
   activable?: boolean;
-};
+}
 
 export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOptionData> {
   /**
@@ -106,9 +106,10 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
    * 当前节点是否处于加载中状态
    */
   loading: boolean;
-};
+}
 
-export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData> extends TreeNodeModelProps {
+export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData>
+extends TreeNodeModelProps {
   /**
    * 追加子节点数据
    */
@@ -165,7 +166,7 @@ export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionDat
    * 是否为叶子节点
    */
   isLeaf: () => boolean;
-};
+}
 
 // ------ 自动规范类型 end -------
 
@@ -194,7 +195,7 @@ export interface TypeTreeFilterOptions {
 export interface TypeTreeNodeData extends TreeNodeState {
   children?: TypeTreeNodeData[];
   [key: string]: unknown;
-};
+}
 
 export type TypeTreeItem = TypeTreeNodeData | TreeNode;
 

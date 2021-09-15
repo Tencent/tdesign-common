@@ -1,4 +1,4 @@
-import TreeStore from '../../../js/tree/tree-store';
+import * as TreeStore from '../../../js/tree/tree-store.ts';
 import { wait } from './kit';
 
 describe('tree', () => {

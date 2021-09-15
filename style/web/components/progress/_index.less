@@ -5,6 +5,7 @@
 @import "./_mixin.less";
 // 进度条基本样式
 .@{prefix}-progress {
+
   &--inner {
     position: relative;
     height: 100%;
@@ -97,6 +98,7 @@
 //进度条状态
 .@{prefix}-progress--status--active {
   .@{prefix}-progress--inner {
+
     &:before {
       position: absolute;
       top: 0;
@@ -151,6 +153,7 @@
 }
 
 @keyframes progress-active-animation {
+
   0% {
     width: 0;
     opacity: .1;

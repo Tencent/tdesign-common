@@ -1,5 +1,4 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
@@ -79,13 +78,11 @@
       }
 
       .@{prefix}-icon {
-        color: @tag-disabled-color;
+        fill: @tag-disabled-color;
         cursor: not-allowed;
 
         &:hover {
-          color: @tag-close-icon-hover-color;
-          background-color: transparent;
-          cursor: not-allowed;
+          fill: @tag-disabled-color;
         }
       }
     }
@@ -97,12 +94,6 @@
     &.@{prefix}-tag--plain {
       color: @tag-primary-color;
     }
-    .@{prefix}-icon-close {
-      &:hover {
-        color: @tag-primary-color;
-        background-color: @tag-primary-color-light;
-      }
-    }
   }
 
   &--success {
@@ -110,12 +101,6 @@
 
     &.@{prefix}-tag--plain {
       color: @tag-success-color;
-    }
-    .@{prefix}-icon-close {
-      &:hover {
-        color: @tag-success-color;
-        background-color: @tag-success-color-light;
-      }
     }
   }
 
@@ -125,12 +110,6 @@
     &.@{prefix}-tag--plain {
       color: @tag-warning-color;
     }
-    .@{prefix}-icon-close {
-      &:hover {
-        color: @tag-warning-color;
-        background-color: @tag-warning-color-light;
-      }
-    }
   }
 
   &--danger {
@@ -139,70 +118,86 @@
     &.@{prefix}-tag--plain {
       color: @tag-danger-color;
     }
-    .@{prefix}-icon-close {
-      &:hover {
-        color: @tag-danger-color;
-        background-color: @tag-error-color-light;
-      }
-    }
   }
 
-  &--primary.@{prefix}-tag--light {
-    color: @tag-primary-color;
-    background-color: @tag-primary-color-light;
-
-    &.@{prefix}-tag--plain {
+  &--primary {
+    &.@{prefix}-tag--light {
       color: @tag-primary-color;
+      background-color: @tag-primary-color-light;
+  
+      &.@{prefix}-tag--plain {
+        color: @tag-primary-color;
+      }
     }
     .@{prefix}-icon-close {
+      fill: @brand-color;
+
       &:hover {
-        color: @tag-text-color;
-        background-color: @tag-primary-color;
+        fill: @brand-color-hover;
       }
     }
   }
 
-  &--success.@{prefix}-tag--light {
-    color: @tag-success-color;
-    background-color: @tag-success-color-light;
-
-    &.@{prefix}-tag--plain {
+  &--success {
+    &.@{prefix}-tag--light {
       color: @tag-success-color;
+      background-color: @tag-success-color-light;
+  
+      &.@{prefix}-tag--plain {
+        color: @tag-success-color;
+      }
     }
     .@{prefix}-icon-close {
+      fill: @success-color;
+
       &:hover {
-        color: @tag-text-color;
-        background-color: @tag-success-color;
+        fill: @success-color-hover;
       }
     }
   }
 
-  &--warning.@{prefix}-tag--light {
-    color: @tag-warning-color;
-    background-color: @tag-warning-color-light;
-
-    &.@{prefix}-tag--plain {
+  &--warning {
+    &.@{prefix}-tag--light {
       color: @tag-warning-color;
+      background-color: @tag-warning-color-light;
+  
+      &.@{prefix}-tag--plain {
+        color: @tag-warning-color;
+      }
     }
     .@{prefix}-icon-close {
+      fill: @warning-color;
+
       &:hover {
-        color: @tag-text-color;
-        background-color: @tag-warning-color;
+        fill: @warning-color-hover;
       }
     }
   }
 
-  &--danger.@{prefix}-tag--light {
-    color: @tag-danger-color;
-    background-color: @tag-error-color-light;
-
-    &.@{prefix}-tag--plain {
+  &--danger {
+    &.@{prefix}-tag--light {
       color: @tag-danger-color;
+      background-color: @tag-error-color-light;
+  
+      &.@{prefix}-tag--plain {
+        color: @tag-danger-color;
+      }
     }
     .@{prefix}-icon-close {
+      fill: @error-color;
+
       &:hover {
-        color: @tag-text-color;
-        background-color: @tag-danger-color;
+        fill: @error-color-hover;
+      }
+    }
+  }
+
+  &--dark&:not(.@{prefix}-tag--default) {
+    .@{prefix}-icon-close {
+      fill: @tag-close-icon-color--dark;
+      
+      &:hover {
+        fill: @tag-close-icon-hover-color--dark;
       }
     }
   }
@@ -255,7 +250,7 @@
 a {
   .@{prefix}-tag {
     cursor: pointer;
-    transition: background-color @anim-duration-base @anim-time-fn-easing;
+    transition: all @anim-duration-base linear;
 
     &:hover {
       color: @link-tag-hover-color;
