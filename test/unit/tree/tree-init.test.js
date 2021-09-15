@@ -1,5 +1,5 @@
-import TreeStore from '../../../js/tree/tree-store';
-import TreeNode from '../../../js/tree/tree-node';
+import * as TreeStore from '../../../js/tree/tree-store.ts';
+import * as TreeNode from '../../../js/tree/tree-node.ts';
 
 /**
  * ```bash

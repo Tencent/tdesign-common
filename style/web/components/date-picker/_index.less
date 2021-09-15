@@ -1,4 +1,5 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
@@ -26,6 +27,7 @@
   }
 
   .@{prefix}-is-active {
+
     input {
       border-color: @datepicker-input-border-color-active;
       box-shadow: @datepicker-input-shadow;
@@ -52,6 +54,7 @@
   margin: 0;
 
   &:nth-child(2) {
+
     &::before {
       content: " ";
       width: 1px;
@@ -77,6 +80,7 @@
   }
 
   .@{prefix}-date-picker-header-controller {
+
     &__btn {
       color: @datepicker-button-text-color;
       padding: 4px;
@@ -218,6 +222,7 @@
 
   &--active {
     .@{prefix}-date-cell__wrapper {
+
       & > span {
         color: @text-color-anti;
         background-color: @brand-color;
@@ -277,6 +282,7 @@
   // disable 相邻需要半圆连接
   &--disabled  + &--disabled {
     .@{prefix}-date-cell__wrapper {
+
       &::before {
         content: "";
         width: 100%;
@@ -295,6 +301,7 @@
   padding-bottom: @datepicker-panel-padding;
 
   tbody {
+
     tr {
       .@{prefix}-date-cell__wrapper {
         margin-top: 8px;
@@ -319,6 +326,7 @@
       }
 
       &:last-child {
+
         .t-date-cell {
           text-align: left;
         } 
@@ -328,7 +336,9 @@
 }
 
 .@{prefix}-date-picker-month {
+
   tbody {
+
     tr {
       .@{prefix}-date-cell__wrapper {
         margin-top: 8px;
@@ -385,6 +395,7 @@
 
     // 每列开头和结尾均为圆形边框
     &:first-child {
+
       .t-date-cell__wrapper {
         border-top-left-radius: 50%;
         border-bottom-left-radius: 50%;
@@ -392,6 +403,7 @@
     }
 
     &:last-child {
+
       .t-date-cell__wrapper {
         border-top-right-radius: 50%;
         border-bottom-right-radius: 50%;
@@ -400,6 +412,7 @@
   }
 
   &__sub-panel {
+
     &--hide {
       display: none;
     }
