@@ -3,6 +3,8 @@
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
+@import "../../mixins/_text.less";
+
 
 .@{prefix}-cascader {
   position: relative;
@@ -26,6 +28,7 @@
 
   & .@{prefix}-cascader-content {
     margin-left: @cascader-content-margin-left;
+    .text-ellipsis()
   }
 
   & .@{prefix}-tag {
@@ -66,11 +69,39 @@
       color: @cascader-highlight-color;
     }
   }
+  &.@{prefix}-size-l {
+    min-height: @cascader-height-l;
+    font-size: @cascader-font-size-l;
+  }
+  
+  &.@{prefix}-size-m {
+    min-height: @cascader-height-default;
+    font-size: @cascader-font-size-default;
+  }
+  
+  &.@{prefix}-size-s {
+    min-height: @cascader-height-s;
+    font-size: @cascader-font-size-s;
+  }
+
+  &.@{prefix}-cascader-is-multiple {
+    padding: @cascader-input-padding-is-multiple;
+    &.@{prefix}-size-l {
+      min-height: calc(@cascader-height-l + 2px);
+    }
+    
+    &.@{prefix}-size-m {
+      min-height: calc(@cascader-height-default + 2px);
+    }
+    
+    &.@{prefix}-size-s {
+      min-height: @cascader-item-height-s;
+    }
+  }
 }
 
 .@{prefix}-cascader-dropdown {
   margin: @cascader-dropdown-margin;
-  background: @bg-color-container;
   box-shadow: @shadow-2;
   border-radius: @border-radius;
   cursor: default;
@@ -87,15 +118,17 @@
       overflow: auto;
       box-sizing: content-box;
       padding: @cascader-menu-padding;
+      background: @bg-color-container;
 
       & .@{prefix}-cascader-item {
         position: relative;
         height: @cascader-item-height-default;
         line-height: @cascader-item-height-default;
         color: @cascader-dark-color;
-        padding-left: @cascader-menu-item-padding-left;
+        padding: @cascader-menu-item-padding;
         border-radius: @cascader-menu-item-border-radius;
         margin-top: @cascader-menu-item-margin-top;
+        --ripple-color: @bg-color-container-active;
 
         &:first-child {
           margin-top: 0;
@@ -107,14 +140,29 @@
 
         .@{prefix}-cascader-item__label {
           display: block;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
+          position: relative;
+          .text-ellipsis();
+
+          .t-cascader-item__label--ellipsis {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            overflow: hidden;
+            
+            .t-popup-reference {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
 
         &.@{prefix}-cascader-item__is-empty {
           color: @cascader-light-color;
           text-align: center;
+          padding-left: 0;
         }
 
         .@{prefix}-icon-chevron-right {
@@ -123,6 +171,7 @@
         
         &:hover {
           background: @cascader-item-color-hover;
+          transition: background @anim-duration-base @anim-time-fn-ease-in;
           cursor: pointer;
         }
       }
@@ -130,11 +179,13 @@
       .@{prefix}-cascader-item.@{prefix}-size-s {
         height: @cascader-item-height-s;
         line-height: @cascader-item-height-s;
+        font-size: @cascader-font-size-s;
       }
 
       .@{prefix}-cascader-item.@{prefix}-size-l {
         height: @cascader-item-height-l;
         line-height: @cascader-item-height-l;
+        font-size: @cascader-font-size-l;
       }
 
       .@{prefix}-cascader-item.@{prefix}-is-selected {
@@ -158,13 +209,7 @@
         }
 
         &:hover {
-          background: @cascader-item-color-hover;
           cursor: pointer;
-          color: @cascader-color-default;
-          
-          .@{prefix}-icon-chevron-right {
-            color: @cascader-menu-item-icon-color;
-          }
         }
       }
     }
@@ -231,7 +276,7 @@
   top: 0;
   color: @cascader-light-color;
   background: transparent;
-  margin: 0 8px;
+  margin: @cascader-icon-margin;
 }
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
@@ -251,21 +296,6 @@
   border: 1px solid @cascader-highlight-color;
 }
 
-.@{prefix}-cascader.@{prefix}-size-l {
-  min-height: @cascader-height-l;
-  font-size: @cascader-font-size-l;
-}
-
-.@{prefix}-cascader.@{prefix}-size-m {
-  min-height: @cascader-height-default;
-  font-size: @cascader-font-size-default;
-}
-
-.@{prefix}-cascader.@{prefix}-size-s {
-  min-height: @cascader-height-s;
-  font-size: @cascader-font-size-s;
-}
-
 .@{prefix}-cascader-panel.@{prefix}-cascader--normal {
   height: @cascader-panel-height-normal;
 }
@@ -276,4 +306,23 @@
 
 .@{prefix}-cascader-panel.@{prefix}-cascader--tip {
   height: @cascader-panel-height-tips;
+}
+
+
+.@{prefix}-cascader-close-icon-fade {
+
+  &-enter,
+  &-leave,
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    transition: opacity @anim-duration-base @anim-time-fn-ease-in;
+  }
+
+  &-leave-active {
+    transition: opacity 0s;
+  }
 }

@@ -51,6 +51,7 @@
     }
 
     &-left {
+
       &::before {
         width: 5%;
       }
@@ -61,6 +62,7 @@
     }
 
     &-right {
+
       &::before {
         width: 95%;
       }
@@ -70,4 +72,16 @@
       }
     }
   }
+}
+
+.@{prefix}-divider--dashed {
+
+  &::before,
+  &::after {
+    border-top: @divider-border-width dashed @divider-border-color;
+  }
+}
+
+.@{prefix}-divider--vertical.@{prefix}-divider--dashed {
+  border-left: @divider-border-width dashed @divider-border-color;
 }

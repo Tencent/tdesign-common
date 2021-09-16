@@ -69,6 +69,7 @@
 
   td,
   th {
+
     > a {
       text-decoration: none;
       color: @table-link-text-color;
@@ -93,6 +94,7 @@
 
   // 紧凑型表格
   &.@{prefix}-size-s {
+
     th,
     td {
       padding: @table-padding-small;
@@ -101,6 +103,7 @@
 
   // 宽松型表格
   &.@{prefix}-size-l {
+
     th,
     td {
       padding: @table-padding-large;
@@ -149,6 +152,7 @@
         border-bottom: 1px solid @table-border-color;
 
         &.t-table__cell--fixed-left-last {
+
           & + td {
             border-left: 0px;
           }
@@ -192,7 +196,9 @@
         border-bottom: 1px solid @table-border-color;
 
         tr {
+
           &:last-child {
+
             td {
               border-bottom: 0;
             }
@@ -208,8 +214,11 @@
 
   // 斑马线表格
   &--striped {
+
     tbody {
+
       tr {
+
         &:nth-of-type(odd) {
           background-color: @table-highlight-bg-color;
         }
@@ -217,7 +226,9 @@
     }
 
     &.@{prefix}-table--hoverable {
+
       tbody {
+
         tr {
           transition: background-color .3s ease-in;
 
@@ -235,7 +246,9 @@
 
   // 可悬停表格
   &--hoverable {
+
     tbody {
+
       tr {
         transition: background-color .3s ease-in;
 
@@ -248,7 +261,9 @@
 
   // 文本顶端对齐
   &.@{prefix}-table-valign__top {
+
     tbody {
+
       td {
         vertical-align: top;
       }
@@ -263,6 +278,7 @@
   // 20200728 优化表头固定和列固定
   // 表头固定表格
   &__header--fixed {
+
     table {
       table-layout: fixed;
     }
@@ -293,7 +309,9 @@
   }
 
   &__cell {
+
     &--selectable {
+
       & + td {
         padding-left: 0;
       }
@@ -328,6 +346,7 @@
     }
 
     &.@{prefix}-table--striped {
+
       tbody tr:nth-of-type(odd) {
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
@@ -350,6 +369,7 @@
     }
 
     .@{prefix}-table__cell--fixed-left-last {
+
       &:after {
         position: absolute;
         top: 0;
@@ -364,6 +384,7 @@
     }
 
     .@{prefix}-table__cell--fixed-right-first {
+
       &:after {
         position: absolute;
         top: 0;
@@ -378,12 +399,17 @@
     }
 
     &.@{prefix}-table--has-fixed {
-      .@{prefix}-table__cell--fixed-left-last {
-        box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
+      // 可向左滚动时，左边显示固定列显示阴影，右边同理
+      .@{prefix}-table-content--scrollable-to-left {
+        .@{prefix}-table__cell--fixed-left-last {
+          box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
+        }
       }
 
-      .@{prefix}-table__cell--fixed-right-first {
-        box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
+      .@{prefix}-table-content--scrollable-to-right {
+        .@{prefix}-table__cell--fixed-right-first {
+          box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
+        }
       }
     }
   }
@@ -420,8 +446,11 @@
 
   // 表格行可以拖拽
   &.@{prefix}-table__row--draggable {
+
     tbody {
+
       &.dragging {
+
         tr {
           transition: transform .2s;
           transform: translateY(0px);
@@ -429,6 +458,7 @@
       }
       // 比如分页数据变化时，不需要过渡
       tr {
+
         &.v-leave-active {
           display: none;
         }
@@ -520,6 +550,7 @@
 }
 
 .t-table-filter-pop {
+
   .t-table-filter-pop-content {
     margin: -8px;
 
@@ -573,6 +604,7 @@
 
 
 @keyframes tTableProgressbar {
+
   0% {
     width: 0;
   }

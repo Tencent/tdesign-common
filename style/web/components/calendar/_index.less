@@ -27,6 +27,7 @@
     }
 
     .@{prefix}-calendar__table {
+
       &-head-cell,
       &-body-cell {
         margin-right: @calendar-table-margin-right;
@@ -85,6 +86,7 @@
 
       &-head,
       &-body {
+
         &-row {
           flex: @calendar-body-row-flex;
           background: @calendar-card-head-row-bg;
@@ -207,6 +209,21 @@
         &:last-child {
           margin-right: 0;
         }
+
+        .@{prefix}-select {
+
+          &.@{prefix}-size-l {
+            padding-right: @calendar-control-section-cell-select-padding-left-l;
+          }
+
+          &.@{prefix}-size-m {
+            padding-right: @calendar-control-section-cell-select-padding-left-m;
+          }
+
+          &.@{prefix}-size-s {
+            padding-right: @calendar-control-section-cell-select-padding-left-s;
+          }
+        }
       }
     }
   }
@@ -265,6 +282,7 @@
     }
 
     &-body {
+
       &-cell {
         cursor: pointer;
 

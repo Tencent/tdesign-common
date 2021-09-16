@@ -20,11 +20,12 @@
       text-align: left;
       overflow-y: auto;
 
-      &.submenu__visible {
-        border-right: @dropdown-border;
+      &:not(:first-child) {
+        border-left: @dropdown-border;
       }
-
-      /**滚动条*/
+    }
+    .@{prefix}-divider {
+      margin: @dropdown-item-divider-margin;
     }
   }
 
@@ -58,18 +59,6 @@
       cursor: not-allowed;
     }
 
-    &_is_divided {
-      &::after {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        background: @border-level-1-color;
-      }
-    }
-
     &__content {
       display: flex;
       flex: 1;
@@ -84,6 +73,7 @@
     }
 
     &.has-suffix {
+
       .children-suffix {
         color: currentColor;
       }

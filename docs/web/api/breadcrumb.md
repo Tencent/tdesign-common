@@ -27,4 +27,6 @@
 
 ### option 选项面包屑
 
+使用 `options` API 配置面包屑内容。
+
 {{ option }}

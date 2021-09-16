@@ -72,7 +72,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
     // 返回路径节点数据集合
     getPath(): TypeTreeNodeModel[] {
       const nodes = node.getPath();
-      return nodes.map((node: TreeNode) => node.getModel());
+      return nodes.map((item: TreeNode) => item.getModel());
     },
 
     // 获取单个父节点数据
@@ -83,7 +83,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
     // 获取所有父节点数据
     getParents(): TypeTreeNodeModel[] {
       const nodes = node.getParents();
-      return nodes.map((node: TreeNode) => node.getModel());
+      return nodes.map((item: TreeNode) => item.getModel());
     },
 
     // 获取根节点
@@ -95,7 +95,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
     // 获取兄弟节点，包含自己在内
     getSiblings(): TypeTreeNodeModel[] {
       const nodes = node.getSiblings();
-      return nodes.map((node: TreeNode) => node.getModel());
+      return nodes.map((item: TreeNode) => item.getModel());
     },
 
     // 返回当前节点的第一层子节点数据集合
@@ -107,9 +107,9 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
           if (deep) {
             const nodes = node.walk();
             nodes.shift();
-            childrenModel = nodes.map(node => node.getModel());
+            childrenModel = nodes.map((item) => item.getModel());
           } else {
-            childrenModel = children.map(node => node.getModel());
+            childrenModel = children.map((item) => item.getModel());
           }
         } else {
           childrenModel = false;

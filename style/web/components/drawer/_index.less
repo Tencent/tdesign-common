@@ -1,6 +1,8 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 @componentName: drawer;
@@ -108,6 +110,7 @@
   }
 
   &__header {
+    min-height: @drawer-header-height;
     padding: @drawer-header-padding;
     font-size: @drawer-header-font-size;
     font-weight: @drawer-header-font-weight;
@@ -125,7 +128,7 @@
 
   &__footer {
     width: 100%;
-    height: auto;
+    min-height: @drawer-footer-height;
     padding: @drawer-footer-padding;
     text-align: @drawer-footer-text-align;
     border-top: 1px solid @drawer-border-color;

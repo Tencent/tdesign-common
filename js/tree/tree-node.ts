@@ -31,52 +31,76 @@ const defaultStatus = {
 export class TreeNode {
   // 节点隶属的树实例
   public tree: TreeStore;
+
   // 节点 id ，唯一标志
   public value: string;
+
   // 节点文本
   public label: string;
+
   // 节点数据
   public data: TypeTreeNodeData;
+
   // 父节点
   public parent: TreeNode;
+
   // 子节点列表
   public children: TreeNode[] | boolean;
+
   // 暴露的 treeNodeModel，这个对象的属性和 api 提供给用户使用
   public model: TypeTreeNodeModel;
+
   // 是否为叶节点
   public vmIsLeaf: boolean;
+
   // 是否为子节点中的第一个
   public vmIsFirst: boolean;
+
   // 是否为子节点中的最后
   public vmIsLast: boolean;
+
   // 节点是否是经过过滤剩下的
   public vmIsRest: boolean;
+
   // 节点是否展示为锁定状态
   public vmIsLocked: boolean;
+
   // 节点在视图上实际的展开状态
   public expanded: boolean;
+
   // 展开时是否收起同级节点，对子节点生效
   public expandMutex: boolean;
+
   // 节点在视图上实际的激活状态
   public actived: boolean;
+
   // 是否可激活
   public activable: boolean;
+
   // 是否可选中
   public checkable: boolean;
+
   // 是否可选中的视图呈现
   public vmCheckable: boolean;
+
   // 节点在视图上实际的选中态
   public checked: boolean;
+
   // 节点实际是否为半选状态
   public indeterminate: boolean;
+
   // 节点是否已禁用
   public disabled: boolean;
+
   // 节点是否可拖动
   public draggable: boolean;
+
   // 节点是否可视
   public visible: boolean;
+
   // 节点在树中的层级
   public level: number;
+
   // 节点是否正在加载数据
   public loading: boolean;
 
@@ -249,7 +273,7 @@ export class TreeNode {
     if (!parentNode) return;
 
     const targetParents = parentNode.getParents();
-    const includeCurrent = targetParents.some(node => node.value === this.value);
+    const includeCurrent = targetParents.some((node) => node.value === this.value);
     if (includeCurrent) {
       // 不能将父节点插入到子节点
       return;
@@ -324,8 +348,8 @@ export class TreeNode {
       if (typeof index === 'number') {
         siblings.splice(index, 0, node);
       }
-      siblings.forEach((node) => {
-        node.update();
+      siblings.forEach((sibling) => {
+        sibling.update();
       });
     }
     tree.reflow();
@@ -488,10 +512,8 @@ export class TreeNode {
 
     if (rest) {
       filterMap.set(this.value, true);
-    } else {
-      if (filterMap.get(this.value)) {
-        filterMap.delete(this.value);
-      }
+    } else if (filterMap.get(this.value)) {
+      filterMap.delete(this.value);
     }
 
     return rest;
@@ -592,7 +614,7 @@ export class TreeNode {
         // 从父节点状态推断子节点状态
         // 这里再调用 isChecked 会导致死循环
         const parents = this.getParents();
-        checked = parents.some(node => checkedMap.get(node.value));
+        checked = parents.some((node) => checkedMap.get(node.value));
       }
     }
     return !!checked;
