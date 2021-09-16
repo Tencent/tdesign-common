@@ -5,7 +5,7 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-noticebar {
+.@{prefix}-notice-bar {
   background-color: @noticebar-bg-color-1;
 
   &--info {
@@ -38,11 +38,11 @@
 
   &__inner {
     display: flex;
-    padding: @noticebar-space-4 @noticebar-space-5;
+    padding: @spacer-3 @spacer-4;
   }
 
   &__hd {
-    margin-right: @noticebar-space-2;
+    margin-right: @spacer-2;
   }
 
   &__bd {
@@ -74,7 +74,7 @@
 
   &__text {
     font-size: @noticebar-text-font-size;
-    line-height: 1.5;
+    line-height: @noticebar-min-height;
     color: @noticebar-text-color-1;
 
     display: -webkit-box; // stylelint-disable-line
@@ -86,7 +86,7 @@
 
   &__text-detail {
     display: inline-block;
-    padding-left: @noticebar-space-2;
+    padding-left: @spacer-2;
     line-height: 1.5;
     font-size: @noticebar-text-font-size;
     color: @primary-color;
@@ -98,7 +98,7 @@
   }
 
   &__ft {
-    margin-left: @noticebar-space-5;
+    margin-left: @spacer * 5;
   }
 
   .@{prefix}-icon {
@@ -108,6 +108,6 @@
   }
 
   & + & {
-    margin-top: @noticebar-space-5;
+    margin-top: @spacer * 5;
   }
 }

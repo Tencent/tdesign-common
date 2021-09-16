@@ -1,19 +1,89 @@
 // 尺寸
-@btn-height-s: 30px;
-@btn-height-default: 48px;
-@btn-height-l: 48px;
+@btn-height-s: 28px;
+@btn-height-default: 36px;
+@btn-height-l: 40px;
+@btn-height-block: 44px;
 
 // 圆角
 @btn-border-radius: @border-radius;
+@btn-shape-border-radius-s: (@btn-height-s / 2);
+@btn-shape-border-radius-default: (@btn-height-default / 2);
+@btn-shape-border-radius-l: (@btn-height-l / 2);
 
 // 阴影
 
 //字号
-@btn-font-s: @font-size-base;
-@btn-font-default: @font-size*1.6;
-@btn-font-l: @font-size*1.6;
+@btn-font-default: @font-size-base;
+
+// 图标大小
+@btn-icon-size: (@font-size * 1.6);
+@btn-loading-size: (@font-size * 1.4);
 
 // padding
-@btn-padding-horizontal-s: 9px;
-@btn-padding-horizontal-default: 50px;
-@btn-padding-horizontal-l: @spacer*3;
+@btn-padding-horizontal-s: (@spacer * 4);
+@btn-padding-horizontal-default: (@spacer * 5);
+@btn-padding-horizontal-l: (@spacer * 3);
+
+@btn-border-width: 1px;
+
+// 状态色 - 主色
+@btn-color-primary: @primary-color;
+@btn-color-primary-active: @primary-color-active;
+@btn-color-primary-disabled: @primary-color-disabled;
+
+// 状态色 - 成功
+@btn-color-success: @success-color;
+@btn-color-success-active: @success-color-active;
+@btn-color-success-disabled: @success-color-disabled;
+
+// 状态色 - 警告
+@btn-color-warning: @warning-color;
+@btn-color-warning-active: @warning-color-active;
+@btn-color-warning-disabled: @warning-color-disabled;
+
+// 状态色 - 危险
+@btn-color-danger: @error-color;
+@btn-color-danger-active: @error-color-active;
+@btn-color-danger-disabled: @error-color-disabled;
+
+// 状态色 - 白 背景
+@btn-color-white-bg: @bg-color-container;
+@btn-color-white-bg-hover: @bg-color-container;
+@btn-color-white-bg-active: @bg-color-container-active;
+@btn-color-white-bg-disabled: @bg-color-component-disabled;
+
+// 状态色 - 白 ghost
+@btn-color-white-ghost: @bg-color-container;
+@btn-color-white-ghost-active: @primary-color-active;
+@btn-color-white-ghost-disabled: @border-level-2-color;
+
+// 状态色 - 灰 背景
+@btn-color-gray-bg: @bg-color-component;
+@btn-color-gray-bg-active: @bg-color-component-active;
+@btn-color-gray-bg-disabled: @bg-color-component-disabled;
+
+// 状态色 - 无框背景 - 既文字背景
+@btn-color-text-bg: transparent;
+@btn-color-text-bg-active: @bg-color-container-active;
+@btn-color-text-bg-disabled: transparent;
+
+// 状态色 - border 灰
+@btn-color-border-gray: @border-level-2-color;
+@btn-color-border-gray-active: @primary-color-active;
+@btn-color-border-gray-disabled: @border-level-2-color;
+
+// 状态色 - 文字 for 描边
+@btn-color-text: @text-primary-color;
+@btn-color-text-active: @primary-color-active;
+@btn-color-text-disabled: @text-color-disabled;
+
+// 状态色 - 灰字 for base default | 灰色文字按钮
+@btn-color-text-gray: @text-primary-color;
+@btn-color-text-gray-hover: @text-primary-color;
+@btn-color-text-gray-active: @text-primary-color;
+@btn-color-text-gray-disabled: @text-color-disabled;
+
+@btn-color-none: transparent;
+@btn-color-none-hover: transparent;
+@btn-color-none-active: transparent;
+@btn-color-none-disabled: transparent;
