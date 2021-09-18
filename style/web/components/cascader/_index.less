@@ -31,10 +31,21 @@
     .text-ellipsis()
   }
 
+  .@{prefix}-input__inner {
+    border: 0;
+    padding: 0;
+    margin-left: @cascader-content-margin-left;
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+      border-color: transparent;
+    }
+  }
+
   & .@{prefix}-tag {
     cursor: pointer;
     margin: @cascader-tag-margin;
-    color: @cascader-tag-color;
     background-color: @cascader-tag-background-color;
     border-color: @cascader-tag-border-color;
   }
@@ -138,6 +149,10 @@
           color: @cascader-highlight-color;
         }
 
+        &.@{prefix}-cascader-have-icon {
+          padding: @cascader-menu-item-padding-expanded;
+        }
+
         .@{prefix}-cascader-item__label {
           display: block;
           position: relative;
@@ -190,8 +205,22 @@
 
       .@{prefix}-cascader-item.@{prefix}-is-selected {
         color: @cascader-item-color-selected;
+
         & .@{prefix}-checkbox__label {
           color: @cascader-item-color-selected;
+        }
+      }
+      
+      & .@{prefix}-checkbox {
+        max-width: 100%;
+        
+        .@{prefix}-checkbox__input {
+          flex-shrink: 0;
+        }
+
+        & .@{prefix}-checkbox__label {
+          display: block;
+          .text-ellipsis()
         }
       }
 
@@ -310,6 +339,7 @@
 
 
 .@{prefix}-cascader-close-icon-fade {
+
   &-enter,
   &-leave,
   &-enter-from,

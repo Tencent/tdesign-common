@@ -6,14 +6,17 @@
   font-size: @transfer-font-size;
   line-height: @transfer-line-height;
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   background: @transfer-bg-color;
   color: @transfer-font-color;
+  max-height: 100%;
 
   &-list {
     position: relative;
     display: inline-block;
-    width: @transfer-common-width;
+    min-width: @transfer-common-width;
     height: @transfer-common-height;
     padding-top: @transfer-list-header-height;
     border: @transfer-list-border;
@@ -198,6 +201,13 @@
 .@{prefix}-transfer-search {
   .@{prefix}-transfer-list {
     height: @transfer-with-search-height;
+  }
+}
+
+// 与Tree组件结合使用时的高度
+.@{prefix}-transfer-with-tree {
+  .@{prefix}-transfer-list {
+    height: auto;
   }
 }
 

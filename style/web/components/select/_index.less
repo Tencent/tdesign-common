@@ -29,6 +29,10 @@
     }
   }
 
+  &.@{prefix}-no-border {
+    line-height: @select-height-default;
+  }
+
   .@{prefix}-select-placeholder {
     margin-left: @select-placeholder-margin;
   }
@@ -73,6 +77,7 @@
 
   .@{prefix}-select-input {
     margin-left: @select-placeholder-margin;
+    width: auto;
 
     .@{prefix}-input__inner {
       border: 0;
@@ -106,7 +111,7 @@
   }
 }
 
-.@{prefix}-select.@{prefix}-is-active {
+.@{prefix}-select.@{prefix}-is-active:not(.@{prefix}-is-disabled) {
   border-color: @select-border-color-active;
 
   &:not(.@{prefix}-no-border) {
@@ -253,6 +258,7 @@
   margin-top: @select-optiongroup-border-margin;
 }
 .@{prefix}-option-group-header {
+
   ul&,
   & {
     color: @select-option-group-header-color;

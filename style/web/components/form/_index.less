@@ -9,6 +9,7 @@
 
   &:not(.@{prefix}-form-inline) {
     .@{prefix}-form__item {
+
       &:last-of-type {
         margin: 0;
       }
@@ -42,6 +43,7 @@
     }
 
     &--required {
+
       label::before {
         display: inline-block;
         margin-right: @form-label-margin-right-required;
@@ -52,6 +54,7 @@
     }
 
     &--colon {
+
       label::after {
         content: ":";
         position: relative;
@@ -102,8 +105,6 @@
       @borderColor: "form-color-error";
     }
     .@{prefix}-input__extra {
-      display: inline-block;
-      margin-top: @from-help-text-margin-top;
       color: @@fontColor;
       @fontColor: "form-color-error";
     }
@@ -120,8 +121,6 @@
       @borderColor: "form-color-warning";
     }
     .@{prefix}-input__extra {
-      display: inline-block;
-      margin-top: @from-help-text-margin-top;
       color: @@fontColor;
       @fontColor: "form-color-warning";
     }
@@ -167,4 +166,9 @@
     display: inline-flex;
     align-items: center;
   }
+}
+
+.@{prefix}-input__extra {
+  display: inline-block;
+  margin-top: @from-help-text-margin-top;
 }

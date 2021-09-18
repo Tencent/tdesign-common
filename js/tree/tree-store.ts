@@ -45,26 +45,37 @@ function parseNodeData(
 export class TreeStore {
   // 根节点集合
   public children: TreeNode[];
+
   // 所有节点集合
   public nodes: TreeNode[];
+
   // 所有节点映射
   public nodeMap: Map<TreeNodeValue, TreeNode>;
+
   // 配置选项
   public config: TypeTreeStoreOptions;
+
   // 活动节点集合
   public activedMap: TypeIdMap;
+
   // 数据被更新的节点集合
   public updatedMap: TypeIdMap;
+
   // 选中节点集合
   public checkedMap: TypeIdMap;
+
   // 展开节点的集合
   public expandedMap: TypeIdMap;
+
   // 符合过滤条件的节点的集合
   public filterMap: TypeIdMap;
+
   // 数据更新计时器
   public updateTimer: TypeTimer;
+
   // 识别是否需要重排
   public shouldReflow: boolean;
+
   // 树节点过滤器
   public prevFilter: TypeTreeFilter;
 
@@ -191,7 +202,7 @@ export class TreeStore {
         ...options,
       };
       if (typeof conf.level === 'number' && conf.level !== Infinity) {
-        nodes = nodes.filter(node => node.level <= conf.level);
+        nodes = nodes.filter((node) => node.level <= conf.level);
       }
       if (typeof conf.filter === 'function') {
         nodes = nodes.filter((node) => {
@@ -328,7 +339,7 @@ export class TreeStore {
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
         // 统计需要更新状态的节点，派发更新事件
-        const updatedNodes = updatedList.map(value => this.getNode(value));
+        const updatedNodes = updatedList.map((value) => this.getNode(value));
         this.emit('update', {
           nodes: updatedNodes,
           map: this.updatedMap,
@@ -357,7 +368,7 @@ export class TreeStore {
   // 获取指定范围的高亮节点
   public getActivedNodes(item?: TypeTargetNode): TreeNode[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isActived());
+    nodes = nodes.filter((node) => node.isActived());
     return nodes;
   }
 
@@ -474,7 +485,7 @@ export class TreeStore {
   // 获取指定节点下的选中节点
   public getCheckedNodes(item?: TypeTargetNode): TreeNode[] {
     let nodes = this.getNodes(item);
-    nodes = nodes.filter(node => node.isChecked());
+    nodes = nodes.filter((node) => node.isChecked());
     return nodes;
   }
 

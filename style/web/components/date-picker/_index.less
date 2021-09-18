@@ -1,4 +1,5 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
@@ -26,6 +27,7 @@
   }
 
   .@{prefix}-is-active {
+
     input {
       border-color: @datepicker-input-border-color-active;
       box-shadow: @datepicker-input-shadow;
@@ -52,6 +54,7 @@
   margin: 0;
 
   &:nth-child(2) {
+
     &::before {
       content: " ";
       width: 1px;
@@ -77,6 +80,7 @@
   }
 
   .@{prefix}-date-picker-header-controller {
+
     &__btn {
       color: @datepicker-button-text-color;
       padding: 4px;
@@ -146,6 +150,7 @@
     margin-top: 4px;
     width: 100%;
     cursor: pointer;
+    position: relative;
 
     > span {
       display: block;
@@ -155,6 +160,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      z-index: 10;
 
       &:hover {
         box-shadow: inset 0px 0px 0px 1px @brand-color;
@@ -199,8 +205,24 @@
     }
   }
 
+  &--additional {
+    .@{prefix}-date-cell__wrapper {
+      color: @datepicker-disabled-color;
+      background: @text-color-anti;
+
+      > span {
+        color: @datepicker-disabled-color;
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
   &--active {
     .@{prefix}-date-cell__wrapper {
+
       & > span {
         color: @text-color-anti;
         background-color: @brand-color;
@@ -240,14 +262,15 @@
     }
   }
 
-  &--additional {
+  &--disabled {
     .@{prefix}-date-cell__wrapper {
-      color: @datepicker-disabled-color;
-      background: @text-color-anti;
+      cursor: not-allowed;
+      border-radius: 50%;
+      background-color: @datepicker-disabled-background;
+      border-color: @datepicker-disabled-background;
 
       > span {
         color: @datepicker-disabled-color;
-        background: @bg-color-container;
 
         &:hover {
           box-shadow: none;
@@ -256,12 +279,19 @@
     }
   }
 
-  &--disabled {
+  // disable 相邻需要半圆连接
+  &--disabled  + &--disabled {
     .@{prefix}-date-cell__wrapper {
-      cursor: not-allowed;
 
-      & > span:hover {
-        box-shadow: none;
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -50%;
+        top: 0;
+        background: @datepicker-disabled-background;
+        pointer-events: none;
       }
     }
   }
@@ -271,6 +301,7 @@
   padding-bottom: @datepicker-panel-padding;
 
   tbody {
+
     tr {
       .@{prefix}-date-cell__wrapper {
         margin-top: 8px;
@@ -295,6 +326,7 @@
       }
 
       &:last-child {
+
         .t-date-cell {
           text-align: left;
         } 
@@ -304,7 +336,9 @@
 }
 
 .@{prefix}-date-picker-month {
+
   tbody {
+
     tr {
       .@{prefix}-date-cell__wrapper {
         margin-top: 8px;
@@ -361,6 +395,7 @@
 
     // 每列开头和结尾均为圆形边框
     &:first-child {
+
       .t-date-cell__wrapper {
         border-top-left-radius: 50%;
         border-bottom-left-radius: 50%;
@@ -368,6 +403,7 @@
     }
 
     &:last-child {
+
       .t-date-cell__wrapper {
         border-top-right-radius: 50%;
         border-bottom-right-radius: 50%;
@@ -376,6 +412,7 @@
   }
 
   &__sub-panel {
+
     &--hide {
       display: none;
     }
