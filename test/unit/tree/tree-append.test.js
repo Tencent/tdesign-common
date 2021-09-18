@@ -3,7 +3,7 @@ import { wait } from './kit';
 
 describe('tree', () => {
   describe('tree:append', () => {
-    it('TreeStore.append get multi nodes', async () => {
+    it('append 方法添加多个节点', async () => {
       const tree = new TreeStore();
       tree.append([{}, {}]);
       await wait(1);
