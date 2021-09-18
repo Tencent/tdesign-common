@@ -4,7 +4,7 @@ import TreeNode from '../../../js/tree/tree-node';
 /**
  * ```bash
  * # 针对 tree 组件单独调用测试命令
- * npx jest --config test/script/jest.unit.conf.js --coverage ./test/unit/tree
+ * JEST_REPORT=default npx jest --config test/script/jest.unit.conf.js --coverage ./test/unit/tree
  * ```
  * */
 
