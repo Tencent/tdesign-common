@@ -42,6 +42,8 @@ function parseNodeData(
 }
 
 // 构建一个树的数据模型
+// 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
+// 任何一次数据写入，会触发相应节点的状态更新
 export class TreeStore {
   // 根节点集合
   public children: TreeNode[];
@@ -230,6 +232,16 @@ export class TreeStore {
       this.children.push(node);
     });
     this.reflow();
+  }
+
+  // 重新加载数据
+  public reload(list: TypeTreeNodeData[]): void {
+    this.expandedMap.clear();
+    this.checkedMap.clear();
+    this.activedMap.clear();
+    this.filterMap.clear();
+    this.removeAll();
+    this.append(list);
   }
 
   /**
