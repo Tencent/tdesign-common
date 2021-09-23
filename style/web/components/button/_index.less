@@ -32,11 +32,11 @@
   }
 
   .@{prefix}-icon {
-    font-size: @btn-icon-size;
+    font-size: @btn-icon-size-default;
   }
 
   .@{prefix}-loading {
-    font-size: @btn-loading-size;
+    font-size: @btn-icon-size-default;
   }
 
   .@{prefix}-icon  + .@{prefix}-button__text {
@@ -49,7 +49,7 @@
   
   // 主要按钮
   &--variant-base {
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, 0);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
     color: @text-color-anti;
     .button-attr-color("gray-bg", background-color);
     .button-attr-color("text-gray", color);
@@ -100,7 +100,7 @@
 
   // 次要按钮
   &--variant-outline {
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, @btn-border-width);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, @btn-border-width);
     .button-attr-color("text", color);
 
     .button-attr-color("white-bg", background-color);
@@ -155,7 +155,7 @@
 
   // 虚线按钮
   &--variant-dashed {
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, @btn-border-width);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, @btn-border-width);
     .button-attr-color("text", color);
     .button-attr-color("primary", border, "1px dashed");
     .button-attr-color("white-bg", background-color);
@@ -210,7 +210,7 @@
 
   // 文字按钮
   &--variant-text {
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, 0);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
     .button-attr-color("text-gray", color);
     .button-attr-color("text-bg", background-color);
     border: 0;
@@ -258,11 +258,11 @@
   }
 
   &.@{prefix}-size-s {
-    .button-size(@btn-height-s, @btn-font-s , @btn-padding-horizontal-s);
+    .button-size(@btn-height-s, @btn-font-s, @btn-icon-size-s, @btn-padding-horizontal-s);
   }
 
   &.@{prefix}-size-l {
-    .button-size(@btn-height-l , @btn-font-l , @btn-padding-horizontal-l);
+    .button-size(@btn-height-l , @btn-font-l, @btn-icon-size-l, @btn-padding-horizontal-l);
   }
 
   &.@{prefix}-size-full-width {
@@ -301,12 +301,9 @@
     text-align: center;
     border-radius: @btn-shape-border-radius-default;
 
-    .@{prefix}-icon {
-      font-size: @btn-icon-size;
-    }
-
+    .@{prefix}-icon,
     .@{prefix}-loading {
-      font-size: @btn-loading-size;
+      font-size: @btn-icon-size-default;
     }
 
     &.@{prefix}-size-s {
