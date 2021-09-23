@@ -15,6 +15,10 @@
   display: inline-flex;
   align-items: center;
 
+  &--inherit-color {
+    color: inherit
+  }
+
   &__wrapper {
     text-align: center;
     position: absolute;
@@ -118,10 +122,10 @@
   &-conic {
     width: 100%;
     height: 100%;
-    background: conic-gradient(from 90deg at 50% 50%,#fff 0deg, @loading-gradient-color 360deg);
+    background: conic-gradient(from 90deg at 50% 50%,#fff 0deg, currentColor 360deg);
     border-radius: 50%;
     mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
-    
+
     /* stylelint-disable-next-line */
     -webkit-mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
   }
