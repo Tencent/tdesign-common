@@ -16,20 +16,22 @@
   color: @toast-text-color;
   background: rgba(0,0,0,.6);
   text-align: center;
-  padding: @spacer-2;
+  padding: @spacer-5;
   z-index: @toast-z-index;
 
-  .t-icon {
+  .@{prefix}-icon {
     color: inherit;
-    font-size: 40px;
+    font-size: 48px;
   }
 
   &__text {
     font-size: @toast-font-size-base;
     white-space: pre-wrap;
     word-break: break-word;
-    line-height: 24px;
-    margin-top: @spacer;
+    line-height: 22px;
+    font-size: 14px;
+    margin-top: @spacer-3;
+    min-width: 82px;
   }
 
   &--text {
@@ -38,11 +40,8 @@
     padding-bottom: @spacer;
     .@{prefix}-toast__text {
       margin-top: 0;
+      min-width: auto;
     }
-  }
-
-  &:not(&--text) {
-    min-height: 104px;
   }
 
   /** 有无icon判断 */
@@ -70,5 +69,20 @@
     left: 50%;
     bottom: @spacer-3;
     transform: translateX(-50%);
+  }
+
+  &--row {
+    flex-direction: row;
+    padding: 14px 24px ;
+    .@{prefix}-icon {
+      color: inherit;
+      font-size: 24px;
+    }
+    .@{prefix}-toast__text {
+      margin-top: 0;
+      margin-left: @spacer-2;
+      min-width: auto;
+      line-height: 24px;
+    }
   }
 }

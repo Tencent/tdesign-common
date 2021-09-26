@@ -8,25 +8,24 @@
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  padding: @cell-vertical-padding @cell-horizontal-padding;
+  padding: @cell-vertical-padding @cell-vertical-padding @cell-vertical-padding @cell-horizontal-padding;
   background: @cell-background-color;
   font-size: @cell-font-size;
   line-height: @cell-line-height;
-  
-  &__label {
-    // width: @cell-label-width;
+
+  &__title {
     flex: 1;
     color: @text-level-1-color;
   }
 
-  &__summary {
+  &__description {
     color: @text-level-3-color;
     font-size: @cell-summary-font-size;
     line-height: 22px;
     margin-top: @spacer;
   }
 
-  &__value {
+  &__note {
     flex: 1;
     text-align: right;
     vertical-align: middle;
@@ -37,13 +36,13 @@
   &__left-icon {
     color: @text-level-3-color;
     line-height: 24px;
-    margin-right: @spacer-2;
+    margin-right: @spacer-1;
     & > .@{prefix}-icon {
       float: left;
     }
   }
 
-  &__icon {
+  &__right-icon {
     color: @text-level-3-color;
     line-height: 24px;
     margin-left: @spacer-2;
@@ -52,16 +51,45 @@
     }
   }
 
+  &--hover {
+    cursor: pointer;
+
+    &:active {
+      background-color: @cell-hover-color;
+    }
+  }
+
+  &--bordered {
+
+    &::after {
+      .hairline-bottom(@cell-border-color);
+      left: @cell-horizontal-padding;
+    }
+  }
+
   &__left {
     text-align: left;
 
-    .@{prefix}-icon {
+    .@{prefix}-right-icon {
       float: left;
     }
   }
 
-  &:not(:last-child)::after {
-    .hairline-bottom();
-    left: @cell-horizontal-padding;
+  &--middle {
+    align-items: center;
+  }
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  &--bottom {
+    align-items: flex-end;
+  }
+
+  &--required {
+    font-size: @cell-font-size;
+    color: @cell-required-color;
+    vertical-align: middle;
   }
 }

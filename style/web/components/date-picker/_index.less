@@ -5,12 +5,6 @@
 @import "./_mixin.less";
 .@{prefix}-date-picker {
   padding: 0;
-  
-  &::after {
-    display: block;
-    clear: both;
-    content: "";
-  }
 
   .@{prefix}-date-picker-popup-reference {
     width: 100%;
@@ -19,6 +13,7 @@
   &--container {
     border-radius: @datepicker-panel-border-radius;
     background-color: @datepicker-dropdown-background;
+    overflow: auto;
   }
 
 
@@ -95,7 +90,7 @@
     }
 
     &__btn--now {
-      color: @datepicker-button-text-now-color;
+      color: @datepicker-button-text-color;
     }
   }
 }
@@ -136,15 +131,12 @@
   }
 }
 
-@icon-color: #bfbfbf;
-
 .@{prefix}-picker-datetime-range {
   min-width: 408px;
 }
 
 .@{prefix}-date-cell {
-  color: #000;
-  
+
   &__wrapper {
     height: @datepicker-cell-width-default;
     margin-top: 4px;
@@ -208,7 +200,7 @@
   &--additional {
     .@{prefix}-date-cell__wrapper {
       color: @datepicker-disabled-color;
-      background: @text-color-anti;
+      background: @bg-color-container;
 
       > span {
         color: @datepicker-disabled-color;
@@ -429,12 +421,6 @@
   text-align: left;
   float: right;
 
-  &::after {
-    display: block;
-    clear: both;
-    content: "";
-  }
-  
   > button:last-child {
     margin-left: @datepicker-apply-btn-margin;
   }
