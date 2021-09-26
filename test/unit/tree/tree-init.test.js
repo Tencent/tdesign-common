@@ -1,13 +1,6 @@
 import TreeStore from '../../../js/tree/tree-store';
 import TreeNode from '../../../js/tree/tree-node';
 
-/**
- * ```bash
- * # 针对 tree 组件单独调用测试命令
- * JEST_REPORT=default npx jest --config test/script/jest.unit.conf.js --coverage ./test/unit/tree
- * ```
- * */
-
 describe('tree', () => {
   describe('tree:init', () => {
     it('TreeStore 初始化空数据', () => {
