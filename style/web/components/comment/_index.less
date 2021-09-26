@@ -4,7 +4,6 @@
 @import "./_mixin.less";
 
 .@{prefix}-comment {
-  background-color: @bg-color-container;
   color: @comment-text-color-default;
 
   &__inner {
@@ -14,6 +13,7 @@
   &__avatar {
     flex-shrink: 0;
     margin-right: @comment-avatar-margin-right;
+    cursor: pointer;
   }
 
   &__avatar-image {
@@ -40,17 +40,20 @@
 
   &__name {
     font-size: @comment-author-text-size;
-    line-height: @comment-author-text-height;
+    line-height: @comment-text-height;
+    font-weight: bold;
+    cursor: pointer;
   }
 
   &__time {
     font-size: @comment-secondary-text-size;
-    line-height: @comment-secondary-text-height;
+    line-height: @comment-text-height;
     color: @comment-text-color-secondary;
   }
 
   &__detail {
     word-break: break-all;
+    line-height: @comment-text-height;
   }
 
   &__actions {
@@ -72,14 +75,17 @@
   }
 
   &__reply {
+    margin-top: @comment-reply-margin-top;
     margin-left: @comment-reply-margin-left;
 
     &--comment {
       background-color: @comment-bg-color-secondary;
+      padding: 16px 24px;
     }
 
     &--quote {
       border-left: 4px solid @comment-border-color-default;
+      padding-left: 16px;
     }
   }
 }
