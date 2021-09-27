@@ -20,6 +20,7 @@
   align-items: center;
   overflow: hidden;
   flex-wrap: wrap;
+  transition: border-color @anim-duration-base @anim-time-fn-ease-in;
 
   & .@{prefix}-cascader-placeholder {
     color: @cascader-light-color;
@@ -53,7 +54,6 @@
   :active:not(.@{prefix}-is-disabled) {
     cursor: pointer;
     border-color: @cascader-active-border-color;
-    transition: border-color @anim-duration-base @anim-time-fn-ease-in;
 
     & > .@{prefix}-icon {
       color: @cascader-selected-color;
@@ -72,7 +72,7 @@
     box-shadow: @cascader-input-shadow;
     transition: box-shadow @anim-duration-base @anim-time-fn-ease-in;
 
-    .@{prefix}-icon {
+    .@{prefix}-icon:not(.@{prefix}-icon-close-circle-filled) {
       color: @cascader-active-border-color;
     }
 
@@ -140,6 +140,7 @@
         border-radius: @cascader-menu-item-border-radius;
         margin-top: @cascader-menu-item-margin-top;
         --ripple-color: @bg-color-container-active;
+        transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
         &:first-child {
           margin-top: 0;
@@ -186,7 +187,6 @@
         
         &:hover {
           background: @cascader-item-color-hover;
-          transition: background @anim-duration-base @anim-time-fn-ease-in;
           cursor: pointer;
         }
       }
