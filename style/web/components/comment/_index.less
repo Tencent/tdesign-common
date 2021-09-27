@@ -56,6 +56,12 @@
     line-height: @comment-text-height;
   }
 
+  &__quote {
+    margin-top: @comment-quote-margin-top;
+    border-left: 4px solid @comment-border-color-default;
+    padding-left: 16px;
+  }
+
   &__actions {
     margin-top: @comment-actions-margin-top;
     display: flex;
@@ -78,15 +84,8 @@
     margin-top: @comment-reply-margin-top;
     margin-left: @comment-reply-margin-left;
 
-    &--comment {
-      background-color: @comment-bg-color-secondary;
-      padding: 16px 24px;
-    }
-
-    &--quote {
-      border-left: 4px solid @comment-border-color-default;
-      padding-left: 16px;
-    }
+    background-color: @comment-bg-color-secondary;
+    padding: 16px 24px;
   }
 }
 
