@@ -17,7 +17,7 @@
   }
 
   &__item {
-    margin: @form-item-margin;
+    margin-bottom: @form-item-margin-bottom;
   }
 
   &__label {
@@ -160,10 +160,13 @@
 .@{prefix}-form-inline {
   display: flex;
   flex-wrap: wrap;
+  row-gap: @form-item-row-gap;
 
   .@{prefix}-form__item {
-    margin-right: @form-item-margin-right-inline;
+    margin: 0;
+    width: 50%;
     display: inline-block;
+    padding-right: @form-item-padding-right-inline;
   }
 }
 
