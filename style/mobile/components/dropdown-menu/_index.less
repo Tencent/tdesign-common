@@ -61,7 +61,7 @@
   }
 }
 
-/** dropdwon-item */
+/** dropdown-item */
 .@{prefix}-dropdown-item {
   position: fixed;
   right: 0;
@@ -87,6 +87,17 @@
     flex-direction: column;
     z-index: 1600;
     transform: translate(0, -100%);
+  }
+
+  &__cell {
+    width: 100%;
+    padding: 12px 16px;
+    line-height: 24px;
+    font-size: 16px;
+    text-align: left;
+    .@{prefix}-icon {
+      float: left;
+    }
   }
 
   &__bd {
@@ -125,22 +136,22 @@
   .@{prefix}-mask {
     position: absolute;
   }
-  .@{prefix}-cell {
-    &-group {
-      margin: 0;
+  // .@{prefix}-cell {
+  //   &-group {
+  //     margin: 0;
 
-      &-container {
-        &::before,
-        &::after {
-          display: none;
-        }
-      }
-    }
+  //     &-container {
+  //       &::before,
+  //       &::after {
+  //         display: none;
+  //       }
+  //     }
+  //   }
 
-    &__value {
-      overflow: hidden;
-    }
-  }
+  //   &__value {
+  //     overflow: hidden;
+  //   }
+  // }
   .@{prefix}-radio,
   .@{prefix}-checkbox {
     flex-direction: row-reverse;
@@ -174,7 +185,7 @@
       text-overflow: ellipsis;
     }
   }
-  .@{prefix}-cell-group {
+  .@{prefix}-dropdown-item__tree-group {
     flex: 1;
   }
   .@{prefix}-radio__content-wrap {
@@ -191,64 +202,58 @@
       display: flex;
       align-items: flex-start;
       overflow: hidden;
-      .@{prefix}-cell-group {
+      .@{prefix}-dropdown-item__tree-group {
         flex: 1;
         margin: 0;
       }
     }
     .@{prefix}-check-group {
-      .@{prefix}-cell:not(:last-child)::after {
+      .@{prefix}-dropdown-item__cell:not(:last-child)::after {
         display: none;
       }
     }
     .@{prefix}-checkbox__content-wrap {
       overflow: hidden;
     }
-    .@{prefix}-cell {
+    .@{prefix}-dropdown-item__cell {
       background: none;
 
       &::after {
         display: none;
       }
 
-      &-group {
-        height: 100%;
+      // &-group {
+      //   height: 100%;
 
-        &-container {
-          height: 100%;
-          overflow-y: auto;
+      //   &-container {
+      //     height: 100%;
+      //     overflow-y: auto;
 
-          &::after {
-            display: none;
-          }
-        }
-      }
+      //     &::after {
+      //       display: none;
+      //     }
+      //   }
+      // }
     }
-    &.@{prefix}-is-col2 .@{prefix}-cell-group,
-    &.@{prefix}-is-col3 .@{prefix}-cell-group {
+    &.@{prefix}-is-col2 .@{prefix}-dropdown-item__tree-group,
+    &.@{prefix}-is-col3 .@{prefix}-dropdown-item__tree-group {
       width: 33.33%;
 
       &:nth-child(1) {
         background: @dropdown-menu-tree-col1-color;
-        .@{prefix}-cell-group-container {
-          background: none;
-          .@{prefix}-checkbox__icon-left,
-          .@{prefix}-radio__default-shape {
-            display: none;
-          }
+        .@{prefix}-checkbox__icon-left,
+        .@{prefix}-radio__default-shape {
+          display: none;
         }
       }
     }
-    &.@{prefix}-is-col3 .@{prefix}-cell-group {
+    &.@{prefix}-is-col3 .@{prefix}-dropdown-item__tree-group {
       width: 33.33%;
 
       &:nth-child(2) {
         background: @dropdown-menu-tree-col2-color;
-        .@{prefix}-cell-group-container {
-          background: none;
-          .@{prefix}-checkbox__icon-left {
-            display: none;
-          }
+        .@{prefix}-checkbox__icon-left {
+          display: none;
         }
       }
     }
@@ -261,7 +266,7 @@
       padding-bottom: @spacer;
       overflow-y: auto;
     }
-    .@{prefix}-cell {
+    .@{prefix}-dropdown-item__cell {
       padding-top: @spacer;
       padding-bottom: @spacer;
 
@@ -269,11 +274,11 @@
         display: none;
       }
 
-      &-group-container {
-        &::after {
-          display: none;
-        }
-      }
+      // &-group-container {
+      //   &::after {
+      //     display: none;
+      //   }
+      // }
     }
     .@{prefix}-checkbox {
       &__icon-left {
@@ -305,7 +310,7 @@
     }
 
     &.@{prefix}-is-col2 {
-      .@{prefix}-cell {
+      .@{prefix}-dropdown-item__cell {
         width: 50%;
         display: inline-block;
         padding-left: @spacer;
@@ -319,7 +324,7 @@
     }
 
     &.@{prefix}-is-col3 {
-      .@{prefix}-cell {
+      .@{prefix}-dropdown-item__cell {
         width: 33.33%;
         display: inline-block;
         padding-left: @spacer;
