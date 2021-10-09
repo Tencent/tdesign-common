@@ -29,7 +29,8 @@
 @input-text-color-disabled: @text-color-disabled;
 @input-placeholder-color: @text-color-placeholder;
 
-@input-bg-color-default: @bg-color-container; // TODO 暗黑模式要确认用哪个token
+// input 输入框需要在浅色主题下有默认白色背景，而在暗色等其他主题下 transparent 适配背景色，因此不使用通用背景 token
+@input-bg-color-default: @bg-color-specialcomponent;
 @input-bg-color-disabled: @bg-color-component-disabled;
 
 @input-extra-color-default: @text-color-placeholder;
