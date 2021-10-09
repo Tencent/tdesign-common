@@ -91,14 +91,20 @@
   }
 
   &__cell {
+    position: relative;
     width: 100%;
-    padding: 12px 16px;
+    padding: @cell-vertical-padding @cell-horizontal-padding;
     line-height: 24px;
     font-size: 16px;
     text-align: left;
     .@{prefix}-icon {
       float: left;
     }
+  }
+
+  &__content.@{prefix}-is-single &__cell::after {
+    .hairline-bottom(@cell-border-color);
+    left: @cell-horizontal-padding;
   }
 
   &__bd {
