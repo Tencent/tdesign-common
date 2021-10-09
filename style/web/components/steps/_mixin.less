@@ -95,6 +95,7 @@
 .default-anchor-status(@anchor-status) {
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item-icon {
+
       .t-icon {
         color: @steps-item-icon-anchor-color;
       }
@@ -115,6 +116,7 @@
   };
   & when(@anchor-status = process) {
     .@{prefix}-steps-item-icon {
+
       .t-icon {
         color: @steps-item-icon-anchor-color;
       }
@@ -129,6 +131,7 @@
 
     .@{prefix}-steps-item-title {
       color: @steps-title-color-process;
+      font-weight: bold;
     }
 
     .@{prefix}-steps-item-description {
@@ -137,6 +140,7 @@
   };
   & when(@anchor-status = error) {
     .@{prefix}-steps-item-icon {
+
       .t-icon {
         color: @steps-item-icon-anchor-color-error;
       }
@@ -231,6 +235,7 @@
       margin-bottom: @steps-item-margin-bottom-vertical;
 
       & when(@isReverse = false) {
+
         &:not(:last-child):before {
           content: "";
           display: block;
@@ -243,6 +248,7 @@
         }
 
         &--finish {
+
           &:not(:last-child):before {
             background: @steps-line-bg-color-vertical-finish;
             width: @steps-line-width;
@@ -250,6 +256,7 @@
         }
       }
       & when(@isReverse = true) {
+
         &:not(:first-child):before {
           content: "";
           display: block;
@@ -263,6 +270,7 @@
 
         &--process,
         &--finish {
+
           &:not(:first-child):before {
             width: @steps-line-width;
             background: @steps-line-bg-color-vertical-process;
@@ -276,6 +284,7 @@
 .connector-dot(@direction; @isReverse:false) {
   & when(@direction = horizontal) {
     .@{prefix}-steps-item:not(:last-child) {
+
       &:after {
         content: "";
         display: block;
@@ -289,6 +298,7 @@
     }
 
     .@{prefix}-steps-item--finish:not(:last-child) {
+
       &:after {
         background: @steps-line-dot-bg-color-vertical-finish;
         height: @steps-line-height;
@@ -299,6 +309,7 @@
     .@{prefix}-steps-item {
 
       & when(@isReverse = false) {
+
         &:not(:last-child):before {
           content: "";
           display: block;
@@ -311,6 +322,7 @@
         }
 
         &--finish {
+
           &:not(:last-child):before {
             background: @steps-line-dot-bg-color-vertical-finish;
             width: @steps-line-width;
@@ -337,6 +349,7 @@
 
         &--process,
         &--finish {
+
           &:not(:first-child):before {
             width: @steps-line-width;
             background: @steps-line-dot-bg-color-vertical-process;

@@ -22,11 +22,7 @@
 
 ### 自定义类对话框
 
-可自定义主体和底部按钮。
-
-主体：此处需开发提供定义文案；
-
-底部按钮有两个控制属性：confirmBtn 和 cancelBtn。属性类型有多种：string | ButtonProps | TNode。
+可自定义对话框内容和底部按钮。
 
 {{ custom }}
 
@@ -37,11 +33,14 @@
 {{ modal }}
 
 ### 弹出位置
+可以通过 `placement` 和 `top` 属性来自定义控制对话框位置。
 
 {{ position }}
 
 
 ### 挂载元素
+
+指定对话框元素挂载 DOM
 
 {{ attach }}
 

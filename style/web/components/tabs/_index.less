@@ -43,6 +43,7 @@
       right: 0;
 
       .@{prefix}-tabs__btn {
+
         &:first-child {
           box-shadow: -10px 0px 20px 5px rgba(0, 0, 0, .05);
         }
@@ -90,6 +91,7 @@
     }
 
     &--right {
+
       &.fade-enter,
       &.fade-leave-to {
         transform: translateX(50px);
@@ -221,6 +223,7 @@
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color @anim-time-fn-easing @anim-duration-base;
+    --ripple-color: @bg-color-container-active;
 
     &-wrapper {
       display: block;
@@ -230,6 +233,7 @@
       line-height: 22px;
       border-radius: @border-radius;
       transition: background-color @anim-time-fn-easing @anim-duration-base;
+      --ripple-color: @bg-color-container-active;
     }
 
     &.@{prefix}-size-l {
@@ -248,7 +252,7 @@
 
     &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
       .@{prefix}-tabs__nav-item-wrapper {
-        background-color: @gray-color-1;
+        background-color: @bg-color-container-hover;
       }
     }
 
@@ -298,8 +302,9 @@
       }
 
       &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active) {
+
         &:hover {
-          background-color: @gray-color-2;
+          background-color: @bg-color-secondarycontainer-hover;
         }
       }
 

@@ -24,21 +24,24 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 1px;
+    width: @anchor-point-width;
     height: 100%;
     background-color: @anchor-border-color;
-    overflow: hidden;
     cursor: pointer;
   }
 
-  &_line .point {
+  .cursor-wrapper {
     position: absolute;
     display: block;
-    width: @anchor-point-width;
-    height: @anchor-point-height;
-    top: -1 * @anchor-item-height;
-    background-color: @anchor-text-color-current;
+    height: 0;
+    opacity: 0;
     transition: @anchor-point-transition;
+
+    .cursor {
+      width: @anchor-point-width;
+      height: 100%;
+      background-color: @anchor-text-color-current;
+    }
   }
 
   //锚点item
@@ -99,6 +102,7 @@
   color: @anchor-text-color-default;
 
   @keyframes fadeOut {
+
     0% {
       opacity: 1;
     }

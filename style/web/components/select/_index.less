@@ -17,21 +17,28 @@
   border: 1px solid @select-border-color;
   border-radius: @select-border-radius;
   padding: @select-padding;
+  transition: border-color @anim-duration-base @anim-time-fn-easing;
 
   &:hover,
   :active {
     cursor: pointer;
     border-color: @select-border-color-active;
-    transition: border-color @anim-duration-base @anim-time-fn-easing;
     & > .@{prefix}-select-right-icon:not(.@{prefix}-select-right-icon__clear) {
       color: @select-right-icon-hover;
       opacity: 1;
     }
   }
 
+  &.@{prefix}-no-border {
+    line-height: @select-height-default;
+  }
+
+  .@{prefix}-select-placeholder {
+    margin-left: @select-placeholder-margin;
+  }
+
   &:not(.@{prefix}-is-disabled) .@{prefix}-select-placeholder {
     color: @select-placeholder-color;
-    margin-left: @select-placeholder-margin;
   }
 
   & .@{prefix}-select-selectedSingle {
@@ -48,6 +55,7 @@
     right: 0;
     top: 0;
     color: @select-icon-color;
+    transition: color @anim-duration-base @anim-time-fn-easing;
   }
   .@{prefix}-select-active-icon {
     color: @select-border-color-active;
@@ -66,10 +74,12 @@
     left: 0;
     top: 0;
     color: @select-icon-color;
+    transition: color @anim-duration-base @anim-time-fn-easing;
   }
 
   .@{prefix}-select-input {
     margin-left: @select-placeholder-margin;
+    width: auto;
 
     .@{prefix}-input__inner {
       border: 0;
@@ -103,7 +113,7 @@
   }
 }
 
-.@{prefix}-select.@{prefix}-is-active {
+.@{prefix}-select.@{prefix}-is-active:not(.@{prefix}-is-disabled) {
   border-color: @select-border-color-active;
 
   &:not(.@{prefix}-no-border) {
@@ -250,6 +260,7 @@
   margin-top: @select-optiongroup-border-margin;
 }
 .@{prefix}-option-group-header {
+  
   ul&,
   & {
     color: @select-option-group-header-color;
@@ -281,7 +292,8 @@
   cursor: pointer;
   padding: @select-option-padding-default;
   color: @select-option-color;
-  --ripple-color: @gray-color-3;
+  --ripple-color: @bg-color-container-active;
+  transition: background-color @anim-duration-base @anim-time-fn-easing;
 
   span {
     position: relative;
@@ -289,7 +301,6 @@
 
   &:hover {
     background-color: @select-option-bg-color-hover;
-    transition: background-color @anim-duration-base @anim-time-fn-easing;
     .@{prefix}-checkbox__label {
       color: @select-option-checkbox-label-color-hover;
     }

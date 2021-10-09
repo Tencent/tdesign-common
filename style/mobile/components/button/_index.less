@@ -1,4 +1,5 @@
 @import "../../base.less";
+
 @import "./_var.less";
 @import "./_mixin.less";
 
@@ -6,14 +7,14 @@
   @theme-default: e("btn-color-@{theme}");
   @theme-active: e("btn-color-@{theme}-active");
   @theme-disabled: e("btn-color-@{theme}-disabled");
-    @{attr}: e(@attr-prepend) @@theme-default;
+  @{attr}: e(@attr-prepend) @@theme-default;
 
   &:active {
-      @{attr}: e(@attr-prepend) @@theme-active;
+    @{attr}: e(@attr-prepend) @@theme-active;
   }
 
   &.@{prefix}-is-disabled {
-      @{attr}: e(@attr-prepend) @@theme-disabled;
+    @{attr}: e(@attr-prepend) @@theme-disabled;
   }
 }
 
@@ -264,7 +265,7 @@
   &.@{prefix}-size-full-width {
     display: block;
     width: 100%;
-    height:@btn-height-block;
+    height: @btn-height-block;
   }
 
   &--icon-only:not(&--shape-round) {

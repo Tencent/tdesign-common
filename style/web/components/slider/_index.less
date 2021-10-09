@@ -1,4 +1,5 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
 @import "./_var.less";
 @import "./_mixin.less";
@@ -110,6 +111,7 @@
     user-select: none;
     line-height: normal;
     outline: none;
+    cursor: pointer;
   }
 
   &__stop {
@@ -136,6 +138,7 @@
     line-height: 20px;
     transform: translateX(-50%);
     margin-top: 4px;
+    cursor: pointer;
   }
 }
 
@@ -195,8 +198,7 @@
 }
 
 .@{prefix}-is-disabled {
-  pointer-events: none;
-
+  cursor: not-allowed;
   .@{prefix}-slider__track {
     background-color: @slider-background-current-disabled;
   }
@@ -216,5 +218,10 @@
 
   .@{prefix}-slider__mark-text {
     color: @slider-text-disabled;
+    cursor: not-allowed;
+  }
+
+  .@{prefix}-slider__button-wrapper {
+    cursor: not-allowed;
   }
 }

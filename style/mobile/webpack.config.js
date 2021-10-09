@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -26,22 +25,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    // 单独分离css
-    new MiniCssExtractPlugin({
-      filename: 'tdesign.css',
-    }),
-
-    // 压缩css
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-      canPrint: true,
-    }),
-  ],
   devServer: {
     contentBase: './',
     compress: true,

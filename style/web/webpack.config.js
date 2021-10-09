@@ -1,7 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -28,30 +26,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    // stylelint
-    new StylelintPlugin({
-      files: ['**/*.{html,vue,css,less}'],
-      fix: false,
-      cache: true,
-      failOnError: false,
-    }),
-
-    // 单独分离css
-    new MiniCssExtractPlugin({
-      filename: 'tdesign.css',
-    }),
-
-    // 压缩css
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-      canPrint: true,
-    }),
-  ],
   devServer: {
     contentBase: './',
     host: '0.0.0.0',

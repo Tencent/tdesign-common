@@ -2,19 +2,19 @@
 
 // 因为通过讨论 Tag 组件的选中态只针对于一个特定主题
 // checked [false - default; true - primary]
-@tag-default-background-color: @gray-color-3;
+@tag-default-background-color: @bg-color-component;
 @tag-default-border-color: transparent;
 @tag-default-hover-color: @brand-color-8;
 @tag-default-click-color: @brand-color-9;
-@tag-checked-color: rgba(255, 255, 255);
+@tag-checked-color: @text-color-anti;
 @tag-checked-background-color: @brand-color;
-@tag-check-hover-bg: @gray-color-4;
-@tag-checked-hover-bg: @brand-color-7;
-@tag-default-click-bg: @gray-color-6;
+@tag-check-hover-bg: @bg-color-component-hover;
+@tag-checked-hover-bg: @brand-color-hover;
+@tag-default-click-bg: @bg-color-component-active;
 
 // disabled
-@tag-disabled-color: @font-gray-4;
-@tag-disabled-bg: @gray-color-1;
+@tag-disabled-color: @text-color-disabled;
+@tag-disabled-bg: @bg-color-component-disabled;
 
 // dark color
 @tag-primary-color: @brand-color;
@@ -29,7 +29,7 @@
 @tag-error-color-light: @error-color-1;
 
 // plain
-@tag-plain-background-color: @gray-color-3;
+@tag-plain-background-color: @bg-color-component;
 
 // font size
 @tag-small-font-size: @font-size-s;
@@ -42,8 +42,8 @@
 @tag-large-padding: 0px 12px;
 
 // text color
-@tag-text-color: rgba(255, 255, 255, .9);
-@tag-text-color-1: @font-gray-1;
+@tag-text-color: @text-color-anti;
+@tag-default-text-color: @text-color-primary;
 
 // shape
 @tag-border-radius-square: @border-radius;
@@ -64,11 +64,13 @@
 
 // icon
 @tag-icon-size: 16px;
-@tag-close-icon-color:  @font-gray-3;
-@tag-close-icon-hover-color: @font-gray-1;
+@tag-close-icon-color:  @text-color-placeholder;
+@tag-close-icon-hover-color: @text-color-primary;
+@tag-close-icon-color--dark: @font-white-1;
+@tag-close-icon-hover-color--dark: @font-white-2;
 
 // link
-@link-tag-hover-bg: @gray-color-4;
+@link-tag-hover-bg: @bg-color-component-hover;
 @link-tag-hover-color: @brand-color-8;
-@link-tag-active-bg: @gray-color-6;
+@link-tag-active-bg: @bg-color-component-active;
 @link-tag-active-color: @brand-color-9;

@@ -9,6 +9,7 @@
 
   &:not(.@{prefix}-form-inline) {
     .@{prefix}-form__item {
+
       &:last-of-type {
         margin: 0;
       }
@@ -16,7 +17,7 @@
   }
 
   &__item {
-    margin: @form-item-margin;
+    margin-bottom: @form-item-margin-bottom;
   }
 
   &__label {
@@ -26,6 +27,7 @@
     line-height: @form-item-height;
     color: @form-color-label;
     box-sizing: border-box;
+    white-space: nowrap;
 
     &--top {
       float: none;
@@ -41,6 +43,7 @@
     }
 
     &--required {
+
       label::before {
         display: inline-block;
         margin-right: @form-label-margin-right-required;
@@ -51,6 +54,7 @@
     }
 
     &--colon {
+
       label::after {
         content: ":";
         position: relative;
@@ -101,8 +105,6 @@
       @borderColor: "form-color-error";
     }
     .@{prefix}-input__extra {
-      display: inline-block;
-      margin-top: @from-help-text-margin-top;
       color: @@fontColor;
       @fontColor: "form-color-error";
     }
@@ -119,8 +121,6 @@
       @borderColor: "form-color-warning";
     }
     .@{prefix}-input__extra {
-      display: inline-block;
-      margin-top: @from-help-text-margin-top;
       color: @@fontColor;
       @fontColor: "form-color-warning";
     }
@@ -160,10 +160,16 @@
 .@{prefix}-form-inline {
   display: flex;
   flex-wrap: wrap;
+  row-gap: @form-item-row-gap;
 
   .@{prefix}-form__item {
-    margin-right: @form-item-margin-right-inline;
-    display: inline-flex;
-    align-items: center;
+    margin: 0;
+    display: inline-block;
+    padding-right: @form-item-padding-right-inline;
   }
+}
+
+.@{prefix}-input__extra {
+  display: inline-block;
+  margin-top: @from-help-text-margin-top;
 }

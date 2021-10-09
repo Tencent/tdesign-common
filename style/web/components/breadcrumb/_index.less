@@ -101,7 +101,9 @@
     }
 
     &-item {
+
       &:hover {
+
         .t-icon {
           color: @breadcrumb-icon-color-hover;
         }
@@ -183,8 +185,11 @@
 
     .@{prefix}-breadcrumb__inner {
       max-width: @breadcrumb-inner-max-width-default;
-      display: inline-flex;
-      align-items: center;
+      display: inline-block;
+
+      .@{prefix}-icon {
+        vertical-align: text-bottom;
+      }
       .t-overflow;
 
       &:hover {
