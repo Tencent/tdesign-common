@@ -29,6 +29,10 @@
 
 {{ img-flow-list }}
 
+### 自定义上传方法
+
+{{ request-method }}
+
 ### 自定义风格上传
 
 {{ single-custom }}
