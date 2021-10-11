@@ -96,6 +96,34 @@ a.@{prefix}-menu__item {
 
   &__submenu {
     border-top: 1px solid @head-menu-submenu-border-color;
+
+    // menu 双层导航使用了 Tabs 实现，需要 tab 样式保持跟 menu theme 一致，不跟随整体亮色/暗色模式切换
+    .@{prefix}-tabs {
+      background: #fff;
+
+      &__nav-item {
+        color: @font-gray-2;
+        --ripple-color: @menu-item-animation-bg--light;
+    
+        &-wrapper {
+          --ripple-color: @menu-item-animation-bg--light;
+        }
+    
+        &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
+          .@{prefix}-tabs__nav-item-wrapper {
+            background-color: @menu-light-hover-bg;
+          }
+        }
+    
+        &.@{prefix}-is-active {
+          color: @submenu-item-active-color;
+        }
+    
+        &.@{prefix}-is-disabled {
+          color: @menu-item-disabled-color;
+        }
+      }
+    }
   }
 
   .@{prefix}-menu__popup {
@@ -378,7 +406,7 @@ a.@{prefix}-menu__item {
       height: 32px;
       padding: 8px;
       cursor: pointer;
-      color: @text-color-primary;
+      color: @menu-operations-color;
     }
   }
 
@@ -632,6 +660,10 @@ a.@{prefix}-menu__item {
       }
     }
 
+    .@{prefix}-head-menu__submenu {
+      border-top: 1px solid transparent;
+    }
+
     .@{prefix}-menu__operations {
 
       &-icon {
@@ -639,6 +671,34 @@ a.@{prefix}-menu__item {
 
         &:hover {
           background-color: @menu-item-active-bg--dark;
+        }
+      }
+    }
+
+    // menu 双层导航使用了 Tabs 实现，需要 tab 样式保持跟 menu theme 一致，不跟随整体亮色/暗色模式切换
+    .@{prefix}-tabs {
+      background: @gray-color-11;
+
+      &__nav-item {
+        color: #fff;
+        --ripple-color: @gray-color-9;
+    
+        &-wrapper {
+          --ripple-color: @gray-color-9;
+        }
+    
+        &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
+          .@{prefix}-tabs__nav-item-wrapper {
+            background-color: @menu-dark-hover-bg;
+          }
+        }
+    
+        &.@{prefix}-is-active {
+          color: @submenu-dark-item-active-color;
+        }
+    
+        &.@{prefix}-is-disabled {
+          color: @menu-item-disabled-color-dark;
         }
       }
     }
