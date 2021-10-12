@@ -1,29 +1,22 @@
-import TreeStore from '../../../js/tree/tree-store.ts';
-import TreeNode from '../../../js/tree/tree-node.ts';
-
-/**
- * ```bash
- * # 针对 tree 组件单独调用测试命令
- * npx jest --config test/script/jest.unit.conf.js --coverage ./test/unit/tree
- * ```
- * */
+import TreeStore from '../../../js/tree/tree-store';
+import TreeNode from '../../../js/tree/tree-node';
 
 describe('tree', () => {
   describe('tree:init', () => {
-    it('TreeStore init empty tree', () => {
+    it('TreeStore 初始化空数据', () => {
       const tree = new TreeStore();
       expect(typeof tree).toBe('object');
       expect(typeof tree.config).toBe('object');
     });
 
-    it('TreeNode init empty node', () => {
+    it('TreeNode 初始化空节点', () => {
       const tree = new TreeStore();
       const node = new TreeNode(tree, {});
       expect(typeof node).toBe('object');
       expect(typeof node.value).toBe('string');
     });
 
-    it('TreeNode init tree data', () => {
+    it('TreeNode 初始化正常数据', () => {
       const tree = new TreeStore();
       const node = new TreeNode(tree, {
         value: '1',
