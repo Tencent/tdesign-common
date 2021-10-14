@@ -43,5 +43,3 @@
 前缀图标自定义。
 
 {{ prefix }}
-
-:: BASE_PROPS ::
