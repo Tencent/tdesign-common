@@ -374,44 +374,56 @@
 
     .@{prefix}-table__cell--fixed-left-last {
 
+      &:before {
+        z-index: -1;
+        background-color: inherit;
+      }
+
       &:after {
         position: absolute;
-        top: 0;
+        top: 0px;
         right: 0;
-        bottom: -1px;
+        bottom: 0px;
         content: "";
         width: @table-fixed-cell-box-shadow-width;
-        transform: translateX(100%);
         transition: box-shadow .3s;
         pointer-events: none;
+        z-index: -2;
+        transform: translateY(1px);
       }
     }
 
     .@{prefix}-table__cell--fixed-right-first {
 
+      &:before {
+        z-index: -1;
+        background-color: inherit;
+      }
+
       &:after {
         position: absolute;
-        top: 0;
+        top: 0px;
         left: 0;
-        bottom: -1px;
+        bottom: 0px;
         content: "";
         width: @table-fixed-cell-box-shadow-width;
-        transform: translateX(-100%);
         transition: box-shadow .3s;
         pointer-events: none;
+        z-index: -2;
+        transform: translateY(1px);
       }
     }
 
     &.@{prefix}-table--has-fixed {
       // 可向左滚动时，左边显示固定列显示阴影，右边同理
       .@{prefix}-table-content--scrollable-to-left {
-        .@{prefix}-table__cell--fixed-left-last {
+        .@{prefix}-table__cell--fixed-left-last::after {
           box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
         }
       }
 
       .@{prefix}-table-content--scrollable-to-right {
-        .@{prefix}-table__cell--fixed-right-first {
+        .@{prefix}-table__cell--fixed-right-first::after {
           box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
         }
       }
