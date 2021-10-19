@@ -162,16 +162,16 @@ a.@{prefix}-menu__item {
   &.@{prefix}-menu--dark {
     background: @menu-theme-dark;
     .@{prefix}-menu__logo:not(:empty) {
-      border-bottom-color: @component-border;
+      border-bottom-color: @menu-border-color--dark;
     }
 
     .@{prefix}-menu__operations:not(:empty) {
-      border-top-color: @component-border;
+      border-top-color: @menu-border-color--dark;
     }
 
     .@{prefix}-menu__item {
       &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-disabled) {
-        background-color: @component-border;
+        background-color: @menu-border-color--dark;
       }
 
       &.@{prefix}-is-active:not(.@{prefix}-is-opened) {
