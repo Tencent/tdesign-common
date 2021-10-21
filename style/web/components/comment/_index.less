@@ -1,0 +1,91 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import "../../base.less";
+@import "./_var.less";
+@import "./_mixin.less";
+
+.@{prefix}-comment {
+  color: @comment-text-color-default;
+
+  &__inner {
+    display: flex;
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    margin-right: @comment-avatar-margin-right;
+    cursor: pointer;
+  }
+
+  &__avatar-image {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
+
+  &__content {
+    flex: auto;
+    font-size: @comment-content-text-size;
+  }
+
+  &__author {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: @comment-author-margin-bottom;
+
+    & > span {
+      padding-right: @comment-padding-s;
+    }
+  }
+
+  &__name {
+    font-size: @comment-author-text-size;
+    line-height: @comment-text-height;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__time {
+    font-size: @comment-secondary-text-size;
+    line-height: @comment-text-height;
+    color: @comment-text-color-secondary;
+  }
+
+  &__detail {
+    word-break: break-all;
+    line-height: @comment-text-height;
+  }
+
+  &__quote {
+    margin-top: @comment-quote-margin-top;
+    border-left: 4px solid @comment-border-color-default;
+    padding-left: 16px;
+  }
+
+  &__actions {
+    margin-top: @comment-actions-margin-top;
+    display: flex;
+    justify-content: flex-end;
+
+    & > li {
+      color: @comment-text-color-secondary;
+      margin-left: @comment-action-margin-left;
+      font-size: @comment-secondary-text-size;
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        color: @comment-text-color-hover;
+      }
+    }
+  }
+
+  &__reply {
+    margin-top: @comment-reply-margin-top;
+    margin-left: @comment-reply-margin-left;
+
+    background-color: @comment-bg-color-secondary;
+    padding: 16px 24px;
+  }
+}
+

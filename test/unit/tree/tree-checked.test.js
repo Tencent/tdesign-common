@@ -1,9 +1,9 @@
-import TreeStore from '../../../js/tree/tree-store.ts';
+import TreeStore from '../../../js/tree/tree-store';
 import { wait } from './kit';
 
 describe('tree', () => {
   describe('tree:checked', () => {
-    it('TreeNode.setChecked changed checked property', async () => {
+    it('setChecked 方法可以修改选中属性', async () => {
       const tree = new TreeStore({
         checkable: true,
       });
@@ -27,7 +27,7 @@ describe('tree', () => {
 
     // 手动测试中发现，选中节点意外影响了节点的高亮状态
     // 添加此测试排除模型出错的可能性
-    it('TreeNode.setChecked will not access other property', async () => {
+    it('setChecked 方法不会影响其他属性', async () => {
       const tree = new TreeStore({
         checkable: true,
       });
