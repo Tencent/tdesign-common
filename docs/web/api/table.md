@@ -67,7 +67,7 @@
 - 设置表格排序属性 `sort` 的值为 { sortBy: 'date', descending: true }，其中 descending 表示是否为降序排序，值为 true 表示降序，值为 false 表示升序
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑（:onSortChange 或 @sort-change）
 
-<br>至此，单字段排序功能完成。<br><br>
+至此，单字段排序功能完成。
 
 在某些特殊的场景下，可能某些字段只能支持降序排，不能升序徘。为此，我们特别提供了列属性 `sortType`，用于自定义支持哪些排序方式。sortType 可选值有 desc/asc/all，分别表示只能降序徘、只能升序徘、降序和升序都可以。
 
@@ -80,20 +80,19 @@
 - 设置表格排序属性 `sort` 的值为 [{ sortBy: 'date', descending: true }, { sortBy: 'cost', descending: false }]
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑（:onSortChange 或 @sort-change）
 
-<br>至此，多字段排序功能完成。<br><br>
+至此，多字段排序功能完成。
 
 {{ multiple-sort }}
 
 #### 本地数据排序
 
 本地数据排序，表示组件内部会对参数 data 进行数据排序。如果 data 数据为 10 条，就仅对这 10 条数据进行排序。
-<br>
 
 - 将需要排序的列属性 `sorter` 设置为 true，示例：{ colKey: 'date', title: '日期', sorter: (a, b) => a.status - b.status  }
 - 设置表格排序属性 `sort` 的值为 { sortBy: 'date', descending: true }
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑（:onSortChange 或 @sort-change）
 
-<br>至此，本地单字段排序功能完成。和前面提到的单字段排序仅有 `sorter` 配置的区别 <br><br>
+至此，本地单字段排序功能完成。和前面提到的单字段排序仅有 `sorter` 配置的区别
 
 {{ data-sort }}
 
