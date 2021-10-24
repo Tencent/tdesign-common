@@ -88,7 +88,7 @@
 
 本地数据排序，表示组件内部会对参数 data 进行数据排序。如果 data 数据为 10 条，就仅对这 10 条数据进行排序。
 
-- 将需要排序的列属性 `sorter` 设置为 true，示例：`{ colKey: 'date', title: '日期', sorter: (a, b) => a.status - b.status  }`
+- 将需要排序的列属性 `sorter` 设置为排序函数，示例：`{ colKey: 'date', title: '日期', sorter: (a, b) => a.status - b.status  }`
 - 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑
 
