@@ -12,18 +12,16 @@
 
     &__inner {
       width: 100%;
-      height: @textarea-height;
       border: 1px solid @textarea-border-color;
       border-radius: @textarea-border-radius;
       padding: @textarea-padding;
-      min-height: @textarea-height;
       font-family: PingFangSC-Regular;
       font-size: @textarea-font-size;
       color: @textarea-text-color;
       resize: vertical;
       outline: none;
       line-height: @textarea-line-height;
-      transition: all @anim-time-fn-easing @anim-duration-base;
+      transition: all @anim-time-fn-easing @anim-duration-base, height 0s;
 
       &:hover {
         border-color: @textarea-border-color-hover;
