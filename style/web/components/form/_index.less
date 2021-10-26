@@ -20,6 +20,11 @@
     margin-bottom: @form-item-margin-bottom;
   }
 
+  &__item-with-help,
+  &__item-with-extra {
+    margin-bottom: 0;
+  }
+
   &__label {
     float: left;
     padding-right: @form-label-padding-right;
@@ -132,8 +137,11 @@
   }
 
   &__help {
+    height: auto;
+    min-height: @form-item-margin-bottom;
+    line-height: @form-item-help-line-height;
+    font-size: @form-item-help-font-size;
     display: inline-block;
-    margin-top: @from-help-text-margin-top;
     color: @@fontColor;
     @fontColor: "form-color-help";
   }
@@ -171,6 +179,9 @@
 }
 
 .@{prefix}-input__extra {
+  height: auto;
+  min-height: @form-item-margin-bottom;
+  line-height: @form-item-help-line-height;
+  font-size: @form-item-help-font-size;
   display: inline-block;
-  margin-top: @from-help-text-margin-top;
 }
