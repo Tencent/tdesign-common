@@ -9,7 +9,7 @@
 .@{prefix}-cascader {
   position: relative;
   width: @cascader-input-width;
-  border: 1px solid @border-level-2-color;
+  border: @cascader-border;
   border-radius: @border-radius;
   padding: @cascader-input-padding;
   background-color: transparent;
@@ -33,18 +33,22 @@
   }
 
   &.@{prefix}-size-s {
-    
+
     .@{prefix}-input__inner {
       height: calc(@cascader-height-s - 2px);
       line-height: calc(@cascader-height-default - 4px);
+    }
+
+    & .@{prefix}-tag {
+      margin: @cascader-tag-margin-s;
     }
   }
   
   &.@{prefix}-size-m {
 
     .@{prefix}-input__inner {
-      height: 28px;
-      line-height: 28px;
+      height: @cascader-input-inner-height;
+      line-height: @cascader-input-inner-height;
     }
   }
 
@@ -98,7 +102,7 @@
   }
   &.@{prefix}-size-l {
     min-height: @cascader-height-l;
-    font-size: @cascader-font-size-l;
+    // font-size: @cascader-font-size-l;
   }
   
   &.@{prefix}-size-m {
@@ -113,16 +117,9 @@
 
   &.@{prefix}-cascader-is-multiple {
     padding: @cascader-input-padding-is-multiple;
-    &.@{prefix}-size-l {
-      min-height: calc(@cascader-height-l + 2px);
-    }
-    
-    &.@{prefix}-size-m {
-      min-height: calc(@cascader-height-default + 2px);
-    }
-    
+
     &.@{prefix}-size-s {
-      min-height: @cascader-item-height-s;
+      padding: @cascader-input-padding-is-multiple-s;
     }
   }
 }
@@ -281,40 +278,6 @@
       border-right: .5px solid @cascader-menu-seperator-color;
     }
   }
-
-  & .@{prefix}-cascader-status {
-    cursor: default;
-    display: flex;
-    position: relative;
-    width: @cascader-width-s;
-
-    & .@{prefix}-cascader__data {
-      line-height: @cascader-item-height-default;
-      margin-left: 8px;
-    }
-
-    & .@{prefix}-cascader__data.@{prefix}-is-loading {
-      color: @cascader-light-gray-color;
-    }
-
-    & .@{prefix}-cascader__data.@{prefix}-is-exception {
-      color: @cascader-dark-color;
-    }
-
-    & .@{prefix}-cascader__data.@{prefix}-is-retry {
-      color: @cascader-highlight-color;
-      margin-left: 6px;
-      cursor: pointer;
-    }
-
-    & .@{prefix}-cascader__data.@{prefix}-is-empty {
-      color: @cascader-light-color;
-    }
-  }
-
-  & .@{prefix}-cascader-status.@{prefix}-width-l {
-    min-width: @cascader-width-l;
-  }
 }
 
 .@{prefix}-cascader-search-input {
@@ -331,6 +294,7 @@
   color: @cascader-light-color;
   background: transparent;
   margin: @cascader-icon-margin;
+  font-size: @cascader-font-size-default;
 }
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
