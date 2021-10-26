@@ -26,6 +26,6 @@
 
 {{ button }}
 
-### 透传属性
+### 透传 Popup 属性
 
 {{ inherit }}
