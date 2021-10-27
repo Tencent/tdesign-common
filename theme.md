@@ -43,15 +43,17 @@
 
 你可以在自己的项目自行修改这些变量的值，比如使用 modifyVars ：
 ``` json
-loaderOptions: {
-    less: {
-    lessOptions: {
-        modifyVars: {
-        '@brand-color': '#ebb105',
+{
+    loaderOptions: {
+        less: {
+            lessOptions: {
+                modifyVars: {
+                    '@td-brand-color': '#ebb105',
+                },
+                javascriptEnabled: true,
+            },
         },
-        javascriptEnabled: true,
-    },
-    },
+    }
 }
 ```
 
