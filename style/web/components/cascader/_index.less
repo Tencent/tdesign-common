@@ -87,10 +87,6 @@
     box-shadow: @cascader-input-shadow;
     transition: box-shadow @anim-duration-base @anim-time-fn-ease-in;
 
-    .@{prefix}-icon:not(.@{prefix}-icon-close-circle-filled) {
-      color: @cascader-active-border-color;
-    }
-
     .@{prefix}-fake-arrow {
       color: @cascader-highlight-color;
     }
@@ -180,6 +176,11 @@
             .@{prefix}-popup-reference {
               width: 100%;
               height: 100%;
+              .t-trigger {
+                width: 100%;
+                height: 100%;
+                display: block;
+              }
             }
           }
 
