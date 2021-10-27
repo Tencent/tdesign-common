@@ -322,6 +322,10 @@
   --ripple-color: @btn-color-white-bg-active;
 }
 
+.@{prefix}-button--variant-base:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+  --ripple-color: @btn-color-gray-bg-active;
+}
+
 .@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-primary-active;
 }
