@@ -22,6 +22,11 @@
   flex-wrap: wrap;
   transition: border-color @anim-duration-base @anim-time-fn-ease-in;
 
+  &:hover {
+    border-color: @cascader-active-border-color;
+    cursor: pointer;
+  }
+
   & .@{prefix}-cascader-placeholder {
     color: @cascader-light-color;
     margin-left: @cascader-content-margin-left;
@@ -67,18 +72,8 @@
   & .@{prefix}-tag {
     cursor: pointer;
     margin: @cascader-tag-margin;
-    background-color: @cascader-tag-background-color;
-    border-color: @cascader-tag-border-color;
   }
-  &:hover:not(.@{prefix}-is-disabled),
-  :active:not(.@{prefix}-is-disabled) {
-    cursor: pointer;
-    border-color: @cascader-active-border-color;
 
-    & > .@{prefix}-icon {
-      color: @cascader-selected-color;
-    }
-  }
   & .@{prefix}-is-disabled {
     cursor: not-allowed;
     background-color: @cascader-tag-background-color-disabled;
@@ -102,7 +97,6 @@
   }
   &.@{prefix}-size-l {
     min-height: @cascader-height-l;
-    // font-size: @cascader-font-size-l;
   }
   
   &.@{prefix}-size-m {
@@ -164,7 +158,7 @@
         }
 
         &.@{prefix}-cascader-item-have-icon {
-          padding: @cascader-menu-item-padding-expanded;
+          padding: @cascader-menu-item-padding-have-icon;
         }
         
 
@@ -173,16 +167,17 @@
           position: relative;
           .text-ellipsis();
 
-          .t-cascader-item__label--ellipsis {
+          .@{prefix}-cascader-item__label--ellipsis {
             width: 100%;
-            height: 100%;
+            height: 24px;
             position: absolute;
             left: 0;
-            top: 0;
+            top: 50%;
             opacity: 0;
             overflow: hidden;
+            transform: translateY(-50%);
             
-            .t-popup-reference {
+            .@{prefix}-popup-reference {
               width: 100%;
               height: 100%;
             }
@@ -197,10 +192,11 @@
           color: @cascader-light-color;
           text-align: center;
           padding-left: 0;
-        }
 
-        .@{prefix}-icon-chevron-right {
-          color: @cascader-menu-item-icon-color;
+          &:hover {
+            background: none;
+            cursor: default
+          }
         }
         
         &:hover {
@@ -249,6 +245,7 @@
       .@{prefix}-cascader-item.@{prefix}-is-disabled {
         color: @cascader-item-color-disabled;
         background-color: transparent;
+        cursor: not-allowed;
       }
 
       .@{prefix}-cascader-item.@{prefix}-is-expanded {
@@ -277,6 +274,10 @@
     & .@{prefix}-cascader-menu__seperator {
       border-right: .5px solid @cascader-menu-seperator-color;
     }
+    & .@{prefix}-cascader-menu__filter {
+      width: @cascader-input-width;
+      box-sizing: border-box;
+    }
   }
 }
 
@@ -291,13 +292,14 @@
   height: 100%;
   right: 0;
   top: 0;
-  color: @cascader-light-color;
+  color: @cascader-icon-color;
   background: transparent;
   margin: @cascader-icon-margin;
-  font-size: @cascader-font-size-default;
+  font-size: @cascader-icon-size;
 }
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
+.@{prefix}-cascader-icon.@{prefix}-is-selected,
 .@{prefix}-cascader-icon.@{prefix}-is-loading {
   background: transparent;
   color: @cascader-highlight-color;
