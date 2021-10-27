@@ -3,28 +3,27 @@
 
 // 统一的scrollbar
 .narrow-scrollbar {
-
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    width: 6px;
-    background: @scrollbar-color;
-    border-radius: 3px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: @scrollbar-color;
   }
 }
 
 // 统一的可旋转箭头
 .@{prefix}-fake-arrow {
-
   path {
     transition: d @anim-duration-base;
     stroke: currentColor;
   }
 
   &--active {
-
     path {
       d: path("M3.75 10.2002L7.99274 5.7998L12.2361 10.0425");
     }
