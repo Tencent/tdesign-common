@@ -8,9 +8,14 @@
 
   &--full {
     min-width: @calendar-full-min-width;
-
+    
     .@{prefix}-calendar__control {
       padding: @calendar-control-padding;
+    }
+
+    .@{prefix}-calendar__title {
+      font-size: @font-size-xl;
+      flex: 1;
     }
 
     .@{prefix}-calendar__panel {
@@ -26,11 +31,17 @@
       }
     }
 
+    .@{prefix}-calendar__control-tag {
+      height: @calendar-control-tag-height;
+      padding: @calendar-control-tag-padding;
+    }
+
     .@{prefix}-calendar__table {
 
       &-head-cell,
       &-body-cell {
         margin-right: @calendar-table-margin-right;
+        position: relative;
       }
 
       &-body-cell {
@@ -42,6 +53,9 @@
         flex-direction: column;
         align-items: flex-end;
         margin-left: @calendar-body-cell-margin-left;
+        transition-timing-function: @anim-time-fn-ease-in;
+        transition-duration: @anim-duration-base;
+        transition-property: border-top , background;
 
         &-content {
           min-height: @calendar-body-cell-content-min-height;
@@ -54,6 +68,24 @@
       height: @calendar-footer-height;
       padding: @calendar-footer-padding;
       border-top: 1px solid @calendar-border-color;
+    }
+
+    .@{prefix}-is-checked {
+      background-color: @calendar-body-cell-check-bg-color;
+
+      &:hover {
+        background-color: @calendar-body-cell-check-bg-color;
+      }
+    }
+
+    .@{prefix}-is-disabled {
+      .@{prefix}-calendar__table-body-cell-value {
+        color: @calendar-body-cell-value-disabled-color;
+      }
+    }
+
+    .@{prefix}-is-now {
+      border-top: 1px solid @brand-color;
     }
   }
 
@@ -127,6 +159,9 @@
             font-size: @calendar-card-body-cell-value-font-size;
             text-align: center;
             border-radius: @calendar-card-body-cell-value-border-radius;
+            transition-timing-function: @anim-time-fn-ease-in;
+            transition-duration: @anim-duration-base;
+            transition-property: color, background;
 
             &:hover {
               box-shadow: inset 0px 0px 0px 1px @brand-color;
@@ -139,11 +174,7 @@
     }
     
 
-    .@{prefix}-is-checked {
-      &.@{prefix}-calendar__table-body-cell {
-        background-color: @calendar-bg;
-        border-top: 0;
-      }
+    .@{prefix}-is-now {
 
       .@{prefix}-calendar__table-body-cell-value {
         color: @brand-color;
@@ -164,25 +195,20 @@
       }
     }
 
+    .@{prefix}-is-checked {
+
+      .@{prefix}-calendar__table-body-cell-value {
+        background: @brand-color;
+        border-radius: 100%;
+        color: white;
+        font-weight: bold;
+      }
+    }
+
     .@{prefix}-calendar__footer {
       height: @calendar-card-footer-height;
       padding: @calendar-card-footer-padding;
       border-top: 1px solid @calendar-border-color;
-    }
-  }
-
-  &--through {
-    height: @calendar-through-height;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      width: @calendar-scrollbar-thumb-width;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      width: @calendar-scrollbar-thumb-width;
-      background: @calendar-scrollbar-thumb-bg;
-      border-radius: @calendar-scrollbar-thumb-border-radius;
     }
   }
 
@@ -299,15 +325,5 @@
       }
     }
 
-    .@{prefix}-is-checked {
-      background-color: @calendar-body-cell-check-bg-color;
-      border-top: @calendar-border-size solid @calendar-body-cell-border-check-color;
-    }
-
-    .@{prefix}-is-disabled {
-      .@{prefix}-calendar__table-body-cell-value {
-        color: @calendar-body-cell-value-disabled-color;
-      }
-    }
   }
 }
