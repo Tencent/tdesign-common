@@ -71,6 +71,41 @@
   --td-font-gray-3: rgba(0, 0, 0, .4);
   --td-font-gray-4: rgba(0, 0, 0, .26);
 
+  // 基础颜色
+  --td-brand-color: var(--td-brand-color-8);     // 色彩-品牌-可操作
+  --td-warning-color: var(--td-warning-color-5); // 色彩-功能-警告
+  --td-error-color: var(--td-error-color-6);     // 色彩-功能-失败
+  --td-success-color: var(--td-success-color-5); // 色彩-功能-成功
+
+
+  // 基础颜色的扩展 用于 hover / 聚焦 / 禁用 / 点击 等状态
+  --td-brand-color-hover: var(--td-brand-color-7);     // hover态
+  --td-brand-color-focus: var(--td-brand-color-2);     // focus态，包括鼠标和键盘
+  --td-brand-color-active: var(--td-brand-color-9);    // 点击态
+  --td-brand-color-disabled: var(--td-brand-color-3);  // 禁用态
+  --td-brand-color-light: var(--td-brand-color-1);     // 浅色的选中态
+
+  // 警告色扩展
+  --td-warning-color-hover: var(--td-warning-color-4);
+  --td-warning-color-focus: var(--td-warning-color-2);
+  --td-warning-color-active: var(--td-warning-color-6);
+  --td-warning-color-disabled: var(--td-warning-color-3);
+  --td-warning-color-light: var(--td-warning-color-1);
+
+  // 失败/错误色扩展
+  --td-error-color-hover: var(--td-error-color-5);
+  --td-error-color-focus: var(--td-error-color-2);
+  --td-error-color-active: var(--td-error-color-7);
+  --td-error-color-disabled: var(--td-error-color-3);
+  --td-error-color-light: var(--td-error-color-1);
+
+  // 成功色扩展
+  --td-success-color-hover: var(--td-success-color-4);
+  --td-success-color-focus: var(--td-success-color-2);
+  --td-success-color-active: var(--td-success-color-6);
+  --td-success-color-disabled: var(--td-success-color-3);
+  --td-success-color-light: var(--td-success-color-1);
+
   // 遮罩
   --td-mask-active: rgba(0, 0, 0, .6); // 遮罩-弹出
   --td-mask-disabled: rgba(255, 255, 255, .6); // 遮罩-禁用
