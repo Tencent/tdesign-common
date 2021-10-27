@@ -299,15 +299,24 @@
   background: transparent;
 }
 
-.@{prefix}-cascader-icon {
+.icon-position() {
   position: absolute;
   height: 100%;
   right: 0;
   top: 0;
-  color: @cascader-icon-color;
   background: transparent;
   margin: @cascader-icon-margin;
   font-size: @cascader-icon-size;
+}
+
+.@{prefix}-cascader-icon {
+  color: @cascader-icon-color;
+  .icon-position();
+}
+
+.@{prefix}-cascader-item-icon {
+  color: @cascader-item-icon-color;
+  .icon-position();
 }
 
 .@{prefix}-cascader-icon.@{prefix}-is-expanded,
