@@ -73,10 +73,6 @@
     .@{prefix}-is-checked {
       background-color: @calendar-body-cell-check-bg-color;
 
-      .@{prefix}-calendar__table-body-cell-value {
-        color: @brand-color;
-      }
-
       &:hover {
         background-color: @calendar-body-cell-check-bg-color;
       }
@@ -89,7 +85,11 @@
     }
 
     .@{prefix}-is-now {
-      border-top: 1px solid @brand-color;
+      border-top: 1px solid @calendar-highlight-color;
+
+      .@{prefix}-calendar__table-body-cell-value {
+        color: @calendar-highlight-color;
+      }
     }
   }
 
@@ -168,7 +168,7 @@
             transition-property: color, background;
 
             &:hover {
-              box-shadow: inset 0px 0px 0px 1px @brand-color;
+              box-shadow: inset 0px 0px 0px 1px @calendar-highlight-color;
               transition: box-shadow @anim-duration-base @anim-time-fn-ease-in;
               border-radius: 100%;
             }
@@ -181,7 +181,7 @@
     .@{prefix}-is-now {
 
       .@{prefix}-calendar__table-body-cell-value {
-        color: @brand-color;
+        color: @calendar-highlight-color;
         font-weight: bold;
         position: relative;
 
@@ -193,7 +193,7 @@
           transform: translate(-50%);
           width: @calendar-card-checked-pointer-width;
           height: @calendar-card-checked-pointer-width;
-          background: @brand-color;
+          background: @calendar-highlight-color;
           border-radius: @calendar-card-checked-pointer-border-radius;
         }
       }
@@ -202,7 +202,7 @@
     .@{prefix}-is-checked {
 
       .@{prefix}-calendar__table-body-cell-value {
-        background: @brand-color;
+        background: @calendar-highlight-color;
         border-radius: 100%;
         color: white;
         font-weight: bold;
