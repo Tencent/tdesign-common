@@ -61,6 +61,14 @@
           min-height: @calendar-body-cell-content-min-height;
           padding-top: @calendar-body-cell-content-padding-top;
         }
+
+        &.@{prefix}-is-checked {
+          background-color: @calendar-body-cell-check-bg-color;
+    
+          &:hover {
+            background-color: @calendar-body-cell-check-bg-color;
+          }
+        }
       }
     }
 
@@ -68,14 +76,6 @@
       height: @calendar-footer-height;
       padding: @calendar-footer-padding;
       border-top: 1px solid @calendar-border-color;
-    }
-
-    .@{prefix}-is-checked {
-      background-color: @calendar-body-cell-check-bg-color;
-
-      &:hover {
-        background-color: @calendar-body-cell-check-bg-color;
-      }
     }
 
     .@{prefix}-is-disabled {
