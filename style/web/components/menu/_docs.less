@@ -78,13 +78,6 @@
   }
 }
 
-.tdesign-demo-item--menu {
-  .@{d-prefix}-demo-item__body {
-    background-color: #e6e6e6;
-    overflow: unset;
-  }
-}
-
 .t-menu__logo {
 
   & > * {
@@ -102,7 +95,15 @@
   }
 }
 
-:root.dark {
+.@{d-prefix}-demo-item--menu {
+  --bg-color-demo: var(--bg-color-demo-secondary);
+
+  .@{d-prefix}-demo-item__body {
+    overflow: unset;
+  }
+}
+
+:root[theme-mode="dark"] {
   
   .tdesign-demo-item--menu {
     .@{d-prefix}-demo-item__body {
