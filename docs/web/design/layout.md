@@ -42,4 +42,4 @@
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/layout5.png" />
 
-更多布局设计可参考： 全局样式-Layout布局
+更多布局设计可参考： [全局样式-Layout布局](/design/layout)
