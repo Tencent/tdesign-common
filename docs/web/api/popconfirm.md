@@ -20,10 +20,12 @@
 
 {{ describe }}
 
-### 自定义按钮
+### 自定义气泡确认框按钮
+通过 `confirmBtn` 和 `cancelBtn` 属性来自定义确认和取消按钮，支持传入 Button 组件属性或使用 slot 方式
 
 {{ button }}
 
-### 透传属性
+### 透传 Popup 属性
+通过 `popupProps` 可以透传弹窗底层依赖的 Popup 组件所有已支持的属性
 
 {{ inherit }}
