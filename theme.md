@@ -48,7 +48,7 @@
         less: {
             lessOptions: {
                 modifyVars: {
-                    '@td-brand-color': '#ebb105',
+                    '@brand-color': '#ebb105',
                 },
                 javascriptEnabled: true,
             },
