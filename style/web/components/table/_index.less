@@ -490,13 +490,20 @@
   .@{prefix}-table__cell--title {
     display: flex;
 
+    &>div:first-child {
+      flex: 1;
+      text-align: inherit;
+    }
+
     .@{prefix}-table__cell--filter {
       margin-left: 10px;
+      text-align: center;
     }
   }
 
   .@{prefix}-table__cell--sort-trigger {
     width: 20px;
+    text-align: center;
   }
 }  
 
