@@ -297,7 +297,7 @@
       width: fit-content;
       position: relative;
       z-index: 10;
-      box-shadow: 0px 1px 10px rgba(0, 0, 0, .05), 0px 4px 5px rgba(0, 0, 0, .08), 0px 2px 4px -1px rgba(0, 0, 0, .12);
+      background-color: @bg-color-secondarycontainer;
     }
 
     .@{prefix}-table__header {
@@ -381,15 +381,15 @@
 
       &:after {
         position: absolute;
-        top: 0px;
+        top: 0;
         right: 0;
-        bottom: 0px;
+        bottom: 0;
         content: "";
         width: @table-fixed-cell-box-shadow-width;
         transition: box-shadow .3s;
         pointer-events: none;
         z-index: -2;
-        transform: translateY(1px);
+        transform: translateX(100%);
       }
     }
 
@@ -402,15 +402,15 @@
 
       &:after {
         position: absolute;
-        top: 0px;
+        top: 0;
         left: 0;
-        bottom: 0px;
+        bottom: 0;
         content: "";
         width: @table-fixed-cell-box-shadow-width;
         transition: box-shadow .3s;
         pointer-events: none;
         z-index: -2;
-        transform: translateY(1px);
+        transform: translateX(-100%);
       }
     }
 
@@ -418,13 +418,13 @@
       // 可向左滚动时，左边显示固定列显示阴影，右边同理
       .@{prefix}-table-content--scrollable-to-left {
         .@{prefix}-table__cell--fixed-left-last::after {
-          box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
+          box-shadow: inset 8px 0px 8px -4px var(--td-table-shadow-color);
         }
       }
 
       .@{prefix}-table-content--scrollable-to-right {
         .@{prefix}-table__cell--fixed-right-first::after {
-          box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
+          box-shadow: inset -8px 0px 8px -4px var(--td-table-shadow-color);
         }
       }
     }
