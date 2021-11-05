@@ -20,14 +20,9 @@
 
 {{ operation }}
 
-
-### 指令调用形式的消息通知
-
-{{ plugin }}
-
 ### 位置控制
 
-全局提示显示位置可控制，placement 用于控制大概位置，offset 用于设置相对于 placement 所在位置的偏移
+全局提示显示位置可控制，`placement` 用于控制大概位置，`offset` 用于设置相对于 `placement` 所在位置的偏移
 
 {{ placement }}
 

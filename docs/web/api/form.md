@@ -16,7 +16,7 @@
 
 ### 登录表单
 
-专门适用于登录页面的账号级密码输入的表单。
+专门适用于登录页面的账号和密码输入的表单。
 
 {{ login }}
 
@@ -44,18 +44,19 @@
 
 #### 验证规则
 
-表单内置的校验规则有：date / url / email / required / boolean / max / min / len / number / enum / idcard / telnumber / pattern。
+表单内置的校验规则有：`date` / `url` / `email` / `required` / `boolean` / `max` / `min` / `len` / `number` / `enum` / `idcard` / `telnumber` / `pattern` 。
+
 其中 `date` / `url` / `email` 等校验规则参数参看：[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)。
 
 {{ validator }}
 
 #### 提示状态
 
-以 icon 及提示文字的形式来提示用户对表单的填写。
+通过图标及提示文字的形式来提示用户对表单的填写。
 
 {{ validator-status }}
 
-### 自定义校验
+### 自定义校验的表单
 
 支持自定义配置及异步校验。
 
