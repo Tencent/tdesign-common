@@ -3,23 +3,28 @@
 
 ### 何时使用
 
-当需要展示或操作与“日期”相关数据时使用，可支持年/月形式的切换。
+当需要展示或操作与“日期”相关数据时。
 
 ### 与页面布局相关
 
 ##### 事项日历面板，通常单独出现在整个页面内容区中。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%201.png"/>
+
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%201.png" />
 
 <hr />
 
 ##### 卡片日历面板，通常单独出现在位置有限的内容区、卡片内或表单内显示。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%202.png"/>
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%202.png" />
+
 
 ### 常见用法
 
 ##### 事项日历中，可用图标、颜色、文字等形式将事项进行分类，例如：分为警告事件、正常事件和错误事件。
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%203.png"/>
 
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%97%A5%203.png" />
 
 ### 相似组件
 

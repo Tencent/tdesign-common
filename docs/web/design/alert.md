@@ -4,7 +4,7 @@
 
 ### 何时使用
 
-当需要用户关注的信息时，用较强反馈提示用户。
+当有重要的提示信息，需要引起用户关注时。
 
 ### 与页面布局相关
 
@@ -13,17 +13,17 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/alert-1@2x.png"/>
-    <em>站点顶部</em>
+    <em>图示：站点顶部</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/alert-2@2x.png"/>
-    <em>内容顶部</em>
+    <em>图示：内容顶部</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/alert-3@2x.png"/>
-    <em>对话框内容区</em>
+    <em>图示：对话框内容区</em>
   </div>
 </div>
 
@@ -46,16 +46,23 @@
 
 <hr />
 
-##### 清晰表述警示内容，避免模糊不清。
-
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A----4@2x.png" />
-<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+##### 应清晰表述警示内容，避免模糊不清。
 
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A----5@2x.png" />
-<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A----4@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E8%AD%A6%E5%91%8A----5@2x.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
+
+<hr />
 
 ### 相似组件
 
