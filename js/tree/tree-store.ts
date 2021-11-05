@@ -316,6 +316,7 @@ export class TreeStore {
     const { nodes } = this;
     nodes.forEach((node) => {
       node.update();
+      node.updateChecked();
     });
   }
 
