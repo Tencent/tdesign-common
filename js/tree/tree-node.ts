@@ -190,10 +190,10 @@ export class TreeNode {
   // 初始化选中态
   public initChecked() {
     const { tree, value, parent } = this;
-    const { config } = tree;
+    const { checkStrictly } = tree.config;
     let { checked } = this;
     checked = parent?.isChecked();
-    if (checked && !config.checkStrictly) {
+    if (checked && !checkStrictly) {
       tree.checkedMap.set(value, true);
     }
     this.checked = checked;
@@ -623,7 +623,11 @@ export class TreeNode {
 
   // 是否为半选状态
   public isIndeterminate(): boolean {
-    const { children } = this;
+    const { children, tree } = this;
+    const { checkStrictly } = tree.config;
+    if (checkStrictly) {
+      return false;
+    }
     let indeterminate = false;
     if (Array.isArray(children)) {
       // 叶节点不存在半选状态
