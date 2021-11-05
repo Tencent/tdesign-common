@@ -190,9 +190,10 @@ export class TreeNode {
   // 初始化选中态
   public initChecked() {
     const { tree, value, parent } = this;
+    const { config } = tree;
     let { checked } = this;
     checked = parent?.isChecked();
-    if (checked) {
+    if (checked && !config.checkStrictly) {
       tree.checkedMap.set(value, true);
     }
     this.checked = checked;
