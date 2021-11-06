@@ -154,4 +154,10 @@
 
 ### 树形结构的表格
 
+请使用 `EnhancedTable`，`Table/PrimaryTable/BaseTable` 等不支持树形结构。
+
+如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。如果数据中的子节点字段不是 `children`，可以使用 `tree.childreKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
+
+除了定义子节点别名，树形结构还支持定义缩进距离、第几列显示为树结点展开等。更多信息查看 API 文档的 `tree` 属性。
+
 {{ tree }}
