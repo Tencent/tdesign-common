@@ -155,7 +155,7 @@
         border-left: 1px solid @table-border-color;
         border-bottom: 1px solid @table-border-color;
 
-        &.t-table__cell--fixed-left-last {
+        &.@{prefix}-table__cell--fixed-left-last {
 
           & + td {
             border-left: 0px;
@@ -445,7 +445,7 @@
     }
   }
 
-  // 数据行金融
+  // 数据行禁用
   .@{prefix}-table__row--disabled {
     color: @table-row-disabled-color;
 
@@ -557,8 +557,8 @@
   border-bottom: 1px solid @table-border-color;
 }
 
-.t-table-filter-icon,
-.t-table-sort-icon {
+.@{prefix}-table-filter-icon,
+.@{prefix}-table-sort-icon {
   margin-left: 8px;
   background-color: transparent;
   display: inline-block;
@@ -569,13 +569,13 @@
   }
 }
 
-.t-table-sort-icon {
+.@{prefix}-table-sort-icon {
   position: absolute;
 }
 
-.t-table-filter-pop {
+.@{prefix}-table-filter-pop {
 
-  .t-table-filter-pop-content {
+  .@{prefix}-table-filter-pop-content {
     margin: -8px;
 
     .@{prefix}-table-filter-pop-content__inner {
@@ -604,17 +604,17 @@
   }
 }
 
-.t-table-sort-icon-active {
+.@{prefix}-table-sort-icon-active {
   color: @table-icon-active-color;
 }
 
-.t-table-double-icons {
+.@{prefix}-table-double-icons {
   display: inline-grid;
   vertical-align: middle;
   width: 14px;
 }
 
-.t-table-expand-box {
+.@{prefix}-table-expand-box {
   padding: 10px 8px;
   display: inline-grid;
   vertical-align: middle;
@@ -638,19 +638,19 @@
   }
 }
 
-// .t-table-row--level-1,
-// .t-table-row--level-2,
-// .t-table-row--level-3,
-// .t-table-row--level-4,
-// .t-table-row--level-5,
-// .t-table-row--level-6,
-// .t-table-row--level-7 {
+// .@{prefix}-table__row--level-1,
+// .@{prefix}-table__row--level-2,
+// .@{prefix}-table__row--level-3,
+// .@{prefix}-table__row--level-4,
+// .@{prefix}-table__row--level-5,
+// .@{prefix}-table__row--level-6,
+// .@{prefix}-table__row--level-7 {
 //   > td:first-child > div {
 //     padding-left: 24px * @i;
 //   }
 // } 
 .row-level(@n, @i: 1) when (@i =< @n) {
-  .@{prefix}-table-row--level-@{i} > td:first-child > div {
+  .@{prefix}-table__row--level-@{i} > td:first-child > div {
     padding-left: 24px * @i;
   }
   .row-level(@n, (@i + 1));
