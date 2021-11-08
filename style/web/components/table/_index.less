@@ -328,6 +328,11 @@
       .@{prefix}-table__header {
         overflow: hidden;
         width: 100%;
+
+        .@{prefix}-table__cell--fixed-left,
+        .@{prefix}-table__cell--fixed-right {
+          background-color: @bg-color-secondarycontainer;
+        }
       }
       .@{prefix}-table__body {
         overflow: auto scroll;
