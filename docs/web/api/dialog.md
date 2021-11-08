@@ -51,7 +51,7 @@
 
 插件调用方式三：`this.$dialog.alert(options)`
 
-<br>
+<br />
 
 函数调用方式一：`DialogPlugin(options)`
 
@@ -59,7 +59,7 @@
 
 函数调用方式三：`DialogPlugin.alert(options)`
 
-<br>
+<br />
 
 组件实例：`DialogInstance = this.$dialog(options)` 或者 组件实例：`DialogInstance = DialogPlugin(options)`
 
