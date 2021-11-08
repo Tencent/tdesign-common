@@ -47,7 +47,7 @@
   th,
   td {
     position: relative;
-    padding: 10px 24px;
+    padding: @table-td-padding-vertical-top @table-td-padding-horizontal @table-td-padding-vertical-bottom @table-td-padding-horizontal;
     border-bottom: 1px solid @table-border-color;
     line-height: @table-line-height;
     vertical-align: middle;
@@ -64,7 +64,7 @@
   }
 
   td[key="row-select"] {
-    padding: 10px 0 10px 24px;
+    padding: @table-td-padding-vertical-top 0 @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   }
 
   td,
