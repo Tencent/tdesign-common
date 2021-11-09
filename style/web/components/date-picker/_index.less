@@ -94,42 +94,6 @@
     }
   }
 }
-.@{prefix}-date-picker-presets {
-  float: left;
-  text-align: left;
-  margin: @datepicker-btn-margin;
-  min-width: 100px;
-
-  ul {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    width: 100%;
-  }
-
-  li {
-    font-size: @datepicker-font-size;
-    line-height: @datepicker-line-height;
-    font-weight: 400;
-    white-space: nowrap;
-    padding: 0px;
-    cursor: pointer;
-    float: left;
-    margin-right: 16px;
-
-    &:last-child {
-      margin: 0;
-    }
-    
-    a {
-      color: @datepicker-presets-text-color;
-
-      &:hover {
-        color: @datepicker-presets-text-color-hover;
-      }
-    }
-  }
-}
 
 .@{prefix}-picker-datetime-range {
   min-width: 408px;
@@ -356,7 +320,7 @@
 }
 
 .@{prefix}-date-picker-date {
-  padding: 0 20px @datepicker-panel-padding 20px;
+  padding: 0 16px 16px 16px;
 }
 
 .@{prefix}-date {
@@ -417,10 +381,57 @@
   display: flex;
 }
 
+.@{prefix}-date-picker__footer {
+  width: 320px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.@{prefix}-date-picker--ranges-show {
+  .@{prefix}-date-picker__footer {
+    width: 640px;
+  }
+}
+
+.@{prefix}-date-picker-presets {
+  margin: @datepicker-btn-margin;
+  min-width: 100px;
+  justify-content: space-between;
+
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
+
+  li {
+    font-size: @datepicker-font-size;
+    line-height: @datepicker-line-height;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 0px;
+    cursor: pointer;
+    float: left;
+    margin-right: 16px;
+
+    &:last-child {
+      margin: 0;
+    }
+    
+    a {
+      color: @datepicker-presets-text-color;
+
+      &:hover {
+        color: @datepicker-presets-text-color-hover;
+      }
+    }
+  }
+}
+
 .@{prefix}-date-picker--apply {
   margin: @datepicker-btn-margin;
-  text-align: left;
-  float: right;
+  display: flex;
 
   > button:last-child {
     margin-left: @datepicker-apply-btn-margin;
