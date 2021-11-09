@@ -19,7 +19,7 @@
 .@{prefix}-slider-input-container {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 24px;
 
   &.is-vertical {
     padding-top: 16px;
@@ -34,7 +34,7 @@
   }
 
   .t-input-number {
-    width: 66px
+    width: 80px
   }
 }
 
@@ -57,6 +57,7 @@
     height: 4px;
     background-color: @slider-background;
     transition: background-color .3s;
+    border-radius: 4px;
 
     &:hover {
       background-color: @slider-background-hover;
@@ -68,6 +69,7 @@
     height: 4px;
     background-color: @slider-background-current;
     right: auto;
+    border-radius: 4px;
   }
 
   &__step {
@@ -78,8 +80,8 @@
   }
 
   &__button {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border: 2px solid @slider-controlbar-border;
     background-color: @slider-controlbar-background;
     border-radius: 50%;
@@ -98,7 +100,7 @@
   &__button-wrapper {
     position: absolute;
     z-index: 2;
-    top: -6px;
+    top: -7px;
     transform: translateX(-50%);
     background-color: transparent;
     text-align: center;
@@ -190,7 +192,7 @@
 
   .@{prefix}-slider__button-wrapper {
     top: auto;
-    left: -12px;
+    left: -14px;
     transform: translate(50%, 50%);
   }
 }
