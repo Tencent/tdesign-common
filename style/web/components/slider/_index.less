@@ -18,15 +18,27 @@
 }
 .@{prefix}-slider-input-container {
   display: flex;
+  align-items: center;
+  margin-left: 20px;
+
+  &.is-vertical {
+    padding-top: 16px;
+    margin-left: 0px;
+  }
+
+  .center-line {
+    width: 8px;
+    height: 1px;
+    background: rgba(0, 0, 0, .9);
+    margin: 0 8px;
+  }
+
+  .t-input-number {
+    width: 66px
+  }
 }
 
 .@{prefix}-slider-input {
-  margin-left: 24px;
-
-  &.is-vertical {
-    margin-left: 0px;
-    margin-top: 20px;
-  }
 
   &.is-range {
     margin-left: 12px;
@@ -74,6 +86,10 @@
     transition: .2s;
     user-select: none;
 
+    &.dragging {
+      box-shadow: @slider-input-shadow;
+    }
+
     &:hover {
       background-color: @slider-controlbar-background-hover;
     }
@@ -114,9 +130,13 @@
     color: @slider-text;
     top: 13px;
     line-height: 20px;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     margin-top: 4px;
     cursor: pointer;
+
+    &:last-child {
+      transform: translateX(-100%);
+    }
   }
 }
 

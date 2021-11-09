@@ -110,7 +110,9 @@
       color: @input-number-button-color-disabled;
 
       &:hover {
-        border-color: @input-number-button-border-color;
+        .@{inputCls}__inner {
+          border-color: @input-number-button-border-color;
+        }
       }
 
       .@{inputCls}__inner:focus {
@@ -125,7 +127,6 @@
     cursor: no-drop;
     background-color: @input-number-bg-color-disabled;
     color: @input-number-inner-color-disabled;
-    border-color: @input-number-border-color-disabled;
   }
 
   .@{inputNumberCls}__decrease,
@@ -137,6 +138,10 @@
     .@{prefix}-icon {
       color: @text-color-secondary;
     }
+  }
+
+  &:hover {
+    
   }
 }
 
