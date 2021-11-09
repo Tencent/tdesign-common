@@ -220,12 +220,14 @@
   &--striped {
 
     &.@{prefix}-table__header--fixed {
+
       tbody tr:nth-of-type(even) {
         background-color: @table-highlight-bg-color;
       }
     }
 
     &:not(.@{prefix}-table__header--fixed) {
+
       tbody tr:nth-of-type(odd) {
         background-color: @table-highlight-bg-color;
       }
@@ -234,12 +236,14 @@
     &.@{prefix}-table--hoverable {
 
       &.@{prefix}-table__header--fixed {
+
         tbody tr:nth-of-type(even):hover {
           background-color: @table-highlight-bg-color--hover;
         }
       }
 
       &:not(.@{prefix}-table__header--fixed) {
+
         tbody tr:nth-of-type(odd):hover {
           background-color: @table-highlight-bg-color--hover;
         }
@@ -366,6 +370,7 @@
 
     &.@{prefix}-table--striped {
       &.@{prefix}-table__header--fixed {
+
         tbody tr:nth-of-type(even) {
           .@{prefix}-table__cell--fixed-left,
           .@{prefix}-table__cell--fixed-right {
@@ -374,6 +379,7 @@
         }
       }
       &:not(.@{prefix}-table__header--fixed) {
+        
         tbody tr:nth-of-type(odd) {
           .@{prefix}-table__cell--fixed-left,
           .@{prefix}-table__cell--fixed-right {
