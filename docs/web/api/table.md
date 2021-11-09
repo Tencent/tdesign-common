@@ -43,18 +43,25 @@
 
 #### 自定义单元格的表格
 
-标题默认使用 `title` 渲染，自定义标题则有以下几种方式：
+单元格默认使用 `row[colKey]` 渲染数据内容，自定义单元格有以下 3 种方式：
+
+- 使用 `cell` 作为渲染函数，函数参数为：`cell(h, {col, colIndex, row, rowIndex})`
+
+- 插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称
+
+- 【不推荐使用】使用 `render` 渲染函数，函数参数为：`render(h, {col, colIndex, row, rowIndex, type})`，其中 `type` 的值为 `title`
+
+{{ custom-cell }}
+
+#### 自定义表头的表格
+
+标题默认使用 `title` 渲染，自定义标题则有以下 3 种方式：
 
 - 使用 `title` 作为渲染函数，函数参数为：`title({ col, colIndex })`
 
 - 插槽，使用 `title` 的值作为插槽名称
 
-- 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({col, colIndex, row, rowIndex, type})`，
-单元格的 `type` 值为 cell，标题的 `type` 值为 title。使用排序、过滤等功能时不能使用该方法
-
-{{ custom-cell }}
-
-#### 自定义表头的表格
+- 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({col, colIndex, row, rowIndex, type})`，其中 `type` 值为 `cell`。使用排序、过滤等功能时不能使用该方法
 
 {{ custom-header }}
 
