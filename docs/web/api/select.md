@@ -48,6 +48,12 @@
 
 输入过滤已选项。在有特定诉求的业务场景时使用。默认过滤文本，有 `filter` 方法时，按照 `filter` 方法过滤。
 
+1、`filterable`和`onSearch`(`@search`)存在时，执行远程搜索。
+
+2、`filter`存在时（不需要有`filterable`），执行`filter`方法。
+
+3、仅有`filterable`时，执行默认过滤 不区分大小写。
+
 {{ filterable }}
 
 ### 远程搜索选择器
