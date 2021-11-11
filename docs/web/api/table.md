@@ -6,9 +6,11 @@
 
 因此，表格组件有三个：基础表格（BaseTable）、主表格（PrimaryTable）、增强型表格（EnhancedTable），三种表格都会导出。默认导出 PrimaryTable。
 
-- 基础表格（BaseTable）包含一些基础功能：固定表头、固定列、加载态、分页、合并单元格、自定义单元格、自定义表头、文本省略、对齐方式、表格事件、尺寸、行类名、边框、斑马线、悬浮态、空数据等。
-- 主表格（PrimaryTable）包含一些更高级的功能：行展开/收起、过滤、排序、异步加载、拖拽排序等。且包含 BaseTable 的所有功能
-- 增强型表格（EnhancedTable）包含一些更复杂的功能：树形结构等。且包含 BaseTable 和 PrimaryTable 的所有功能
+### 表格分类
+
+- 基础表格（BaseTable）包含一些基础功能：固定表头、固定列、加载态、分页、合并单元格、自定义单元格、自定义表头、文本省略、对齐方式、表格事件、尺寸、行类名、边框、斑马线、悬浮态、空数据等
+- 主表格（PrimaryTable）包含一些更高级的功能：行展开/收起、过滤、排序、异步加载、拖拽排序等。PrimaryTable 包含 BaseTable 的所有功能
+- 增强型表格（EnhancedTable）包含一些更复杂的功能：树形结构等。EnhancedTable 包含 BaseTable 和 PrimaryTable 的所有功能
 
 一般情况下，直接使用 PrimaryTable 即可满足 90% 的需求，即默认导出的表格。涉及到非常复杂的需求后，使用 EnhancedTable。
 
