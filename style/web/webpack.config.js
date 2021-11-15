@@ -26,6 +26,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'tdesign.css',
+    }),
+  ],
   devServer: {
     contentBase: './',
     host: '0.0.0.0',

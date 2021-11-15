@@ -12,8 +12,8 @@
 
 ##### 与对话框搭配使用，当开启或关闭开关会带来操作风险时，可利用对话框进行二次确认。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/switch-1@2x.png" />
 
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/switch-1@2x.png" />
 
 
 

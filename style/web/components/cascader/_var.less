@@ -11,49 +11,41 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-// 颜色
+// base
 @cascader-highlight-color: @text-color-brand;
+@cascader-border: 1px solid @border-level-2-color;
 @cascader-border-color-disabled: @border-level-2-color;
 @cascader-active-border-color: @brand-color;
 @cascader-selected-color: @text-color-placeholder;
 @cascader-input-shadow: 0 0 0px 2px @brand-color-focus;
 @cascader-color-default: @text-color-primary;
 @cascader-light-color: @text-color-placeholder;
-@cascader-light-gray-color: @text-color-secondary;
 @cascader-dark-color: @text-color-primary;
 
+// tag
 @cascader-tag-color: @text-color-primary;
-@cascader-tag-background-color: @bg-color-secondarycontainer;
 @cascader-tag-border-color: @border-level-2-color;
 @cascader-tag-color-disabled: @text-color-disabled;
 @cascader-tag-background-color-disabled: @bg-color-component-disabled;
-
-@cascader-item-color-selected: @brand-color;
-@cascader-item-color-hover: @bg-color-container-hover;
-@cascader-item-color-disabled: @text-color-disabled;
-@cascader-item-background-color-expanded: @brand-color-focus;
-
-@cascader-menu-seperator-color: @component-stroke;
+@cascader-tag-margin: 2px 4px 2px 0;
+@cascader-tag-margin-s: 1px 1px 1px 0;
 
 // 输入框尺寸
 @cascader-input-width: 320px;
 @cascader-input-padding: 0px 26px 0px 4px;
-@cascader-input-padding-is-multiple: 2px 24px 2px 4px;
+@cascader-input-padding-is-multiple: 1px 28px 1px 3px;
+@cascader-input-padding-is-multiple-s: 0px 28px 0px 1px;
+@cascader-input-inner-height: 28px;
 
-// 输入框高度
+// 外框主体高度
 @cascader-height-s: 24px;
 @cascader-height-default: 32px;
 @cascader-height-l: 40px;
 
-// 输入框字体大小
+// 外框主体字体大小
 @cascader-font-size-s: @font-size-s;
 @cascader-font-size-default: @font-size-base;
 @cascader-font-size-l: @font-size-l;
-
-// 菜单选项高度
-@cascader-item-height-s: 32px;
-@cascader-item-height-default: 40px;
-@cascader-item-height-l: 48px;
 
 // 菜单项宽度
 @cascader-width-s: 150px;
@@ -63,23 +55,35 @@
 @cascader-panel-height-normal: 200px;
 @cascader-panel-height-multiple: 280px;
 @cascader-panel-height-tips: 40px;
-
 @cascader-content-margin-left: 4px;
 
 // 下拉面板
-@cascader-dropdown-margin: 10px 0 5px 0;
-@cascader-dropdown-border: .5px solid @bg-color-secondarycontainer-active;
 @cascader-dropdown-border-radius: @border-radius;
+@cascader-dropdown-border: .5px solid @bg-color-secondarycontainer-active;
+@cascader-dropdown-margin: 10px 0 5px 0;
 
 // menu面板
+@cascader-menu-seperator-color: @component-stroke;
 @cascader-menu-padding: 8px;
-@cascader-menu-item-border-radius: 2px 3px 3px 3px;
-@cascader-menu-item-margin-top: 4px;
-@cascader-menu-item-padding-expanded: 0 22px 0 12px;
-@cascader-menu-item-padding: 0 12px;
-@cascader-menu-item-icon-color: @text-color-secondary;
-@cascader-icon-margin: 0 8px;
 
-// tag
-@cascader-tag-margin-right: 4px;
-@cascader-tag-margin: 2px 4px 2px 0;
+// item
+@cascader-item-color-selected: @brand-color;
+@cascader-item-color-hover: @bg-color-container-hover;
+@cascader-item-color-disabled: @text-color-disabled;
+@cascader-item-background-color-expanded: @brand-color-light;
+@cascader-item-height-s: 32px;
+@cascader-item-height-default: 40px;
+@cascader-item-height-l: 48px;
+@cascader-item-margin-top: 4px;
+@cascader-item-border-radius: @border-radius;
+@cascader-item-padding-have-icon: 0 22px 0 8px;
+@cascader-item-padding: 0 8px;
+@cascader-item-padding-have-icon-l: 0 22px 0 12px;
+@cascader-item-padding-l: 0 12px;
+@cascader-item-icon-color: @text-color-secondary;
+
+// icon
+@cascader-icon-margin: 0 8px;
+@cascader-icon-size: 16px;
+@cascader-icon-color: @text-color-placeholder;
+

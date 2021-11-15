@@ -5,12 +5,18 @@
 @import "./_mixin.less";
 
 .@{prefix}-tooltip {
-  color: @tooltip-text-color;
   display: inline-block;
-  background: @tooltip-bg;
   border: 0;
   margin-bottom: 1px;
   max-width: @tooltip-max-width;
+
+  &:not(.@{prefix}-tooltip-light) {
+    color: @tooltip-text-color;
+  }
+
+  &-default {
+    background: @tooltip-bg;
+  }
 
   &-primary {
     background: @tooltip-bg-primary;
@@ -35,7 +41,7 @@
   &-default {
     margin: @tooltip-default-margin;
   }
-  
+
   .@{prefix}-popup__arrow {
     background: inherit;
     width: auto;
@@ -49,19 +55,12 @@
 
 .@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
   bottom: @tooltip-arrow-position;
-  margin-left: -@tooltip-arrow-position;
-}
-
-.@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
-  margin-left: -@tooltip-arrow-position;
 }
 
 .@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
   right: @tooltip-arrow-position;
-  margin-top: -@tooltip-arrow-position;
 }
 
 .@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-tooltip .@{prefix}-popup__arrow {
   left: -@tooltip-arrow-position;
-  margin-top: -@tooltip-arrow-position;
 }

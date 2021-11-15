@@ -4,13 +4,15 @@
 .narrow-scrollbar {
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    width: 6px;
-    background: #e5e5e5;
-    border-radius: 3px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: @scrollbar-color;
   }
 }
 

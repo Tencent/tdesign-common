@@ -18,15 +18,27 @@
 }
 .@{prefix}-slider-input-container {
   display: flex;
-}
-
-.@{prefix}-slider-input {
+  align-items: center;
   margin-left: 24px;
 
   &.is-vertical {
+    padding-top: 16px;
     margin-left: 0px;
-    margin-top: 20px;
   }
+
+  .center-line {
+    width: 8px;
+    height: 1px;
+    background: rgba(0, 0, 0, .9);
+    margin: 0 8px;
+  }
+
+  .t-input-number {
+    width: 80px
+  }
+}
+
+.@{prefix}-slider-input {
 
   &.is-range {
     margin-left: 12px;
@@ -45,6 +57,7 @@
     height: 4px;
     background-color: @slider-background;
     transition: background-color .3s;
+    border-radius: 4px;
 
     &:hover {
       background-color: @slider-background-hover;
@@ -56,6 +69,7 @@
     height: 4px;
     background-color: @slider-background-current;
     right: auto;
+    border-radius: 4px;
   }
 
   &__step {
@@ -65,46 +79,28 @@
     cursor: pointer;
   }
 
-  &__handle {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background-color: @slider-controlbar-background;
-    border: 2px solid @slider-controlbar-border;
-    border-radius: 50%;
-    margin-top: -5px;
-    transform: translateX(-50%);
-    cursor: pointer;
-    transition: box-shadow .3s;
-
-    &:hover,
-    :active {
-      box-shadow: 0 0 0 3px rgba(@slider-controlbar-background-active, .8);
-    }
-  }
-
   &__button {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border: 2px solid @slider-controlbar-border;
     background-color: @slider-controlbar-background;
     border-radius: 50%;
     transition: .2s;
     user-select: none;
 
-    &:hover {
-      background-color: @slider-controlbar-background-hover;
+    &.dragging {
+      box-shadow: @slider-input-shadow;
     }
 
-    &:active {
-      box-shadow: 0 0 0 3px rgba(@slider-controlbar-background-active, .8);
+    &:hover {
+      background-color: @slider-controlbar-background-hover;
     }
   }
 
   &__button-wrapper {
     position: absolute;
     z-index: 2;
-    top: -6px;
+    top: -7px;
     transform: translateX(-50%);
     background-color: transparent;
     text-align: center;
@@ -136,9 +132,13 @@
     color: @slider-text;
     top: 13px;
     line-height: 20px;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     margin-top: 4px;
     cursor: pointer;
+
+    &:last-child {
+      transform: translateX(-100%);
+    }
   }
 }
 
@@ -192,7 +192,7 @@
 
   .@{prefix}-slider__button-wrapper {
     top: auto;
-    left: -12px;
+    left: -14px;
     transform: translate(50%, 50%);
   }
 }

@@ -1,25 +1,24 @@
 @slider-background: @bg-color-component;
-@slider-background-current: @brand-color-8;
+@slider-background-current: @brand-color;
 @slider-text: @text-color-primary;
-@slider-controlbar-background: @bg-color-container;
-@slider-controlbar-border: @brand-color-8;
+@slider-controlbar-background: #fff; // 滑块背景色不随默认/暗色模式切换改变，固定为白色，故不使用背景色 token
+@slider-controlbar-border: @brand-color;
 
 @slider-input-background: @bg-color-container;
 @slider-input-border: @component-border;
 @slider-input-text: @text-color-primary;
 
 @slider-background-hover: @bg-color-component-hover;
+@slider-controlbar-background-hover: @gray-color-1; // 滑块背景色不随默认/暗色模式切换改变，hover 后颜色固定为 @gray-color-1
 
-@slider-controlbar-background-hover: @bg-color-container-hover;
-@slider-controlbar-background-active: @brand-color-2;
-
-@slider-controlbar-border-focus: @brand-color-2;
+@slider-controlbar-border-focus: @brand-color-focus;
 @slider-background-disabled: @bg-color-component-disabled;
-@slider-background-current-disabled: @brand-color-3;
-@slider-controlbar-border-disabled: @brand-color-3;
+@slider-background-current-disabled: @brand-color-disabled;
+@slider-controlbar-border-disabled: @brand-color-disabled;
 @slider-text-disabled: @text-color-disabled;
-@slider-input-border-hover: @brand-color-8;
-@slider-input-border-select: @brand-color-8;
-@slider-input-border-focus: @brand-color-2;
+@slider-input-border-hover: @brand-color;
+@slider-input-border-select: @brand-color;
+@slider-input-border-focus: @brand-color-focus;
 @slider-input-background-disabled: @bg-color-component-disabled;
 @slider-input-text-disabled: @text-color-disabled;
+@slider-input-shadow: 0 0 0px 2px @brand-color-focus;

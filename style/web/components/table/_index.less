@@ -47,11 +47,12 @@
   th,
   td {
     position: relative;
-    padding: 10px 24px;
+    padding: @table-td-padding-vertical-top @table-td-padding-horizontal @table-td-padding-vertical-bottom @table-td-padding-horizontal;
     border-bottom: 1px solid @table-border-color;
     line-height: @table-line-height;
     vertical-align: middle;
     font-weight: normal;
+    overflow-wrap: break-word;
 
     &:not([align]) {
       text-align: left;
@@ -64,7 +65,7 @@
   }
 
   td[key="row-select"] {
-    padding: 10px 0 10px 24px;
+    padding: @table-td-padding-vertical-top 0 @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   }
 
   td,
@@ -126,6 +127,10 @@
 
   // 边框线表格
   &--bordered {
+    .@{prefix}-table--empty {
+      border-left: 1px  solid  @table-border-color;
+      border-right: 1px  solid  @table-border-color;
+    }
     // 表格边框优化，适配固定列/固定表头场景
     .@{prefix}-table-content {
       border: 1px solid @table-border-color;
@@ -151,7 +156,7 @@
         border-left: 1px solid @table-border-color;
         border-bottom: 1px solid @table-border-color;
 
-        &.t-table__cell--fixed-left-last {
+        &.@{prefix}-table__cell--fixed-left-last {
 
           & + td {
             border-left: 0px;
@@ -215,17 +220,35 @@
   // 斑马线表格
   &--striped {
 
-    tbody {
+    &.@{prefix}-table__header--fixed {
 
-      tr {
+      tbody tr:nth-of-type(even) {
+        background-color: @table-highlight-bg-color;
+      }
+    }
 
-        &:nth-of-type(odd) {
-          background-color: @table-highlight-bg-color;
-        }
+    &:not(.@{prefix}-table__header--fixed) {
+
+      tbody tr:nth-of-type(odd) {
+        background-color: @table-highlight-bg-color;
       }
     }
 
     &.@{prefix}-table--hoverable {
+
+      &.@{prefix}-table__header--fixed {
+
+        tbody tr:nth-of-type(even):hover {
+          background-color: @table-highlight-bg-color--hover;
+        }
+      }
+
+      &:not(.@{prefix}-table__header--fixed) {
+
+        tbody tr:nth-of-type(odd):hover {
+          background-color: @table-highlight-bg-color--hover;
+        }
+      }
 
       tbody {
 
@@ -234,10 +257,6 @@
 
           &:hover {
             background-color: @table-highlight-dark-bg-color;
-          }
-
-          &:nth-of-type(odd):hover {
-            background-color: @table-highlight-bg-color--hover;
           }
         }
       }
@@ -293,7 +312,7 @@
       width: fit-content;
       position: relative;
       z-index: 10;
-      box-shadow: 0px 1px 10px rgba(0, 0, 0, .05), 0px 4px 5px rgba(0, 0, 0, .08), 0px 2px 4px -1px rgba(0, 0, 0, .12);
+      background-color: @bg-color-secondarycontainer;
     }
 
     .@{prefix}-table__header {
@@ -324,6 +343,11 @@
       .@{prefix}-table__header {
         overflow: hidden;
         width: 100%;
+
+        .@{prefix}-table__cell--fixed-left,
+        .@{prefix}-table__cell--fixed-right {
+          background-color: @bg-color-secondarycontainer;
+        }
       }
       .@{prefix}-table__body {
         overflow: auto scroll;
@@ -346,11 +370,22 @@
     }
 
     &.@{prefix}-table--striped {
+      &.@{prefix}-table__header--fixed {
 
-      tbody tr:nth-of-type(odd) {
-        .@{prefix}-table__cell--fixed-left,
-        .@{prefix}-table__cell--fixed-right {
-          background-color: @table-highlight-bg-color;
+        tbody tr:nth-of-type(even) {
+          .@{prefix}-table__cell--fixed-left,
+          .@{prefix}-table__cell--fixed-right {
+            background-color: @table-highlight-bg-color;
+          }
+        }
+      }
+      &:not(.@{prefix}-table__header--fixed) {
+        
+        tbody tr:nth-of-type(odd) {
+          .@{prefix}-table__cell--fixed-left,
+          .@{prefix}-table__cell--fixed-right {
+            background-color: @table-highlight-bg-color;
+          }
         }
       }
     }
@@ -370,45 +405,57 @@
 
     .@{prefix}-table__cell--fixed-left-last {
 
+      &:before {
+        z-index: -1;
+        background-color: inherit;
+      }
+
       &:after {
         position: absolute;
         top: 0;
         right: 0;
-        bottom: -1px;
+        bottom: 0;
         content: "";
         width: @table-fixed-cell-box-shadow-width;
-        transform: translateX(100%);
         transition: box-shadow .3s;
         pointer-events: none;
+        z-index: -2;
+        transform: translateX(100%);
       }
     }
 
     .@{prefix}-table__cell--fixed-right-first {
 
+      &:before {
+        z-index: -1;
+        background-color: inherit;
+      }
+
       &:after {
         position: absolute;
         top: 0;
         left: 0;
-        bottom: -1px;
+        bottom: 0;
         content: "";
         width: @table-fixed-cell-box-shadow-width;
-        transform: translateX(-100%);
         transition: box-shadow .3s;
         pointer-events: none;
+        z-index: -2;
+        transform: translateX(-100%);
       }
     }
 
     &.@{prefix}-table--has-fixed {
       // 可向左滚动时，左边显示固定列显示阴影，右边同理
       .@{prefix}-table-content--scrollable-to-left {
-        .@{prefix}-table__cell--fixed-left-last {
-          box-shadow: 1px 0px 10px rgba(0, 0, 0, .05), 4px 0px 5px rgba(0, 0, 0, .08), 2px 0px 4px -1px rgba(0, 0, 0, .12);
+        .@{prefix}-table__cell--fixed-left-last::after {
+          box-shadow: inset 8px 0px 8px -4px var(--td-table-shadow-color);
         }
       }
 
       .@{prefix}-table-content--scrollable-to-right {
-        .@{prefix}-table__cell--fixed-right-first {
-          box-shadow: -1px 0px 10px rgba(0, 0, 0, .05), -4px 0px 5px rgba(0, 0, 0, .08), -2px 0px 4px -1px rgba(0, 0, 0, .12);
+        .@{prefix}-table__cell--fixed-right-first::after {
+          box-shadow: inset -8px 0px 8px -4px var(--td-table-shadow-color);
         }
       }
     }
@@ -429,7 +476,7 @@
     }
   }
 
-  // 数据行金融
+  // 数据行禁用
   .@{prefix}-table__row--disabled {
     color: @table-row-disabled-color;
 
@@ -474,13 +521,20 @@
   .@{prefix}-table__cell--title {
     display: flex;
 
+    &>div:first-child {
+      flex: 1;
+      text-align: inherit;
+    }
+
     .@{prefix}-table__cell--filter {
       margin-left: 10px;
+      text-align: center;
     }
   }
 
   .@{prefix}-table__cell--sort-trigger {
     width: 20px;
+    text-align: center;
   }
 }  
 
@@ -531,10 +585,11 @@
   justify-content: center;
   height: 120px;
   color: @table-color-empty;
+  border-bottom: 1px solid @table-border-color;
 }
 
-.t-table-filter-icon,
-.t-table-sort-icon {
+.@{prefix}-table-filter-icon,
+.@{prefix}-table-sort-icon {
   margin-left: 8px;
   background-color: transparent;
   display: inline-block;
@@ -545,13 +600,13 @@
   }
 }
 
-.t-table-sort-icon {
+.@{prefix}-table-sort-icon {
   position: absolute;
 }
 
-.t-table-filter-pop {
+.@{prefix}-table-filter-pop {
 
-  .t-table-filter-pop-content {
+  .@{prefix}-table-filter-pop-content {
     margin: -8px;
 
     .@{prefix}-table-filter-pop-content__inner {
@@ -580,17 +635,17 @@
   }
 }
 
-.t-table-sort-icon-active {
+.@{prefix}-table-sort-icon-active {
   color: @table-icon-active-color;
 }
 
-.t-table-double-icons {
+.@{prefix}-table-double-icons {
   display: inline-grid;
   vertical-align: middle;
   width: 14px;
 }
 
-.t-table-expand-box {
+.@{prefix}-table-expand-box {
   padding: 10px 8px;
   display: inline-grid;
   vertical-align: middle;
@@ -612,4 +667,8 @@
   100% {
     width: 100%;
   }
+}
+
+.t-table-expandable-icon-cell + .t-table__cell--selectable[key="row-select"] {
+  padding-left: 10px;
 }

@@ -73,13 +73,17 @@
     }
 
     &.has-suffix {
-
+      
       .children-suffix {
         color: currentColor;
+        font-size: @dropdown-text-icon-size;
+        margin-left: @dropdown-item-icon-margin-left;
       }
 
       .@{prefix}-dropdown__item__content {
-        max-width: calc(100% - @dropdown-text-font-size);
+        max-width: calc(
+          100% - @dropdown-text-icon-size - @dropdown-item-icon-margin-left
+        );
       }
     }
   }

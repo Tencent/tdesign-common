@@ -1,6 +1,8 @@
 const baseConfig = require('./jest.base.conf');
 
-module.exports = {
+const reportDefault = process.env.JEST_REPORT === 'default';
+
+const config = {
   ...baseConfig,
   testEnvironment: 'jsdom',
   testRegex: 'unit/.*\\.test\\.js$',
@@ -12,5 +14,10 @@ module.exports = {
     'js/**/*.{ts,tsx,js,jsx}',
     '!**/node_modules/**',
   ],
-  coverageReporters: ['html', 'text-summary'],
 };
+
+if (!reportDefault) {
+  config.coverageReporters = ['html', 'text-summary'];
+}
+
+module.exports = config;

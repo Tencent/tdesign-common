@@ -49,6 +49,7 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   overflow: auto;
+  flex-wrap: wrap;
 }
 
 .tdesign-demo-item__body + .tdesign-demo-item__body {
@@ -85,11 +86,19 @@
   row-gap: 16px;
 }
 
+// 竖排展示 demo 行间距 32px
+.tdesign-demo-block-column-large {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
 // 横排排展示 demo 列间距 16px
 .tdesign-demo-block-row {
   display: flex;
   column-gap: 16px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @import "./_variables.less";
