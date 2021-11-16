@@ -97,6 +97,15 @@
     //  color: @@fontColor;
     //  @fontColor: "form-color-success";
     //}
+    .input-status(success);
+    .@{prefix}-form__status {
+      .@{prefix}-icon {
+        color: @form-color-success;
+      }
+    }
+  }
+
+  &__controls.@{prefix}-is-success-noborder {
     .@{prefix}-form__status {
       .@{prefix}-icon {
         color: @form-color-success;
