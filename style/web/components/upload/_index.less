@@ -190,7 +190,7 @@
       flex-direction: column;
       background-color: @upload-card-container-bg-color;
       border: @upload-card-contariner-border;
-      > .@{prefix}-icon {
+      > .@{prefix}-icon, .@{prefix}-loading {
         font-size: @upload-icon-size-large;
         margin-bottom: @upload-card-container-icon-add-margin-bottom;
       }
@@ -203,8 +203,13 @@
     &__status-wrap {
       text-align: center;
 
+
       > svg {
         margin-bottom: @upload-card-status-wrap-svg-margin-bottom;
+      }
+
+      .@{prefix}-icon,.@{prefix}-loading {
+        font-size: @upload-icon-size-middle;
       }
     }
 
@@ -385,6 +390,11 @@
   color: @upload-single-progress-color;
   display: flex;
   align-items: center;
+
+  .@{prefix}-loading {
+    font-size: @upload-icon-size;
+    flex-shrink: 0;
+  }
 }
 
 .@{prefix}-upload__single-input-delete {
@@ -426,7 +436,7 @@
 .@{prefix}-upload__dragger-progress {
   width: 100%;
   display: flex;
-  .@{prefix}-icon {
+  .@{prefix}-icon,.@{prefix}-loading {
     font-size: @upload-icon-size;
     flex-shrink: 0;
   }
@@ -547,7 +557,7 @@
     display: flex;
     align-items: center;
 
-    .@{prefix}-icon {
+    .@{prefix}-icon,.@{prefix}-loading {
       margin-right: @upload-flow-status-icon-margin-right;
       font-size: @upload-icon-size;
     }
