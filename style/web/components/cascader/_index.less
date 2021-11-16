@@ -22,9 +22,13 @@
   flex-wrap: wrap;
   transition: border-color @anim-duration-base @anim-time-fn-ease-in;
 
-  &:hover {
+  &:hover:not(.@{prefix}-is-disabled) {
+    //cursor: pointer;
     border-color: @cascader-active-border-color;
-    cursor: pointer;
+
+    & > .@{prefix}-icon {
+      color: @cascader-icon-color;
+    }
   }
 
   & .@{prefix}-cascader-placeholder {
@@ -34,27 +38,8 @@
 
   & .@{prefix}-cascader-content {
     margin-left: @cascader-content-margin-left;
+    color: @cascader-dark-color;
     .text-ellipsis()
-  }
-
-  &.@{prefix}-size-s {
-
-    .@{prefix}-input__inner {
-      height: calc(@cascader-height-s - 2px);
-      line-height: calc(@cascader-height-default - 4px);
-    }
-
-    & .@{prefix}-tag {
-      margin: @cascader-tag-margin-s;
-    }
-  }
-  
-  &.@{prefix}-size-m {
-
-    .@{prefix}-input__inner {
-      height: @cascader-input-inner-height;
-      line-height: @cascader-input-inner-height;
-    }
   }
 
   .@{prefix}-input__inner {
@@ -94,15 +79,29 @@
   &.@{prefix}-size-l {
     min-height: @cascader-height-l;
   }
-  
+
   &.@{prefix}-size-m {
     min-height: @cascader-height-default;
     font-size: @cascader-font-size-default;
+
+    .@{prefix}-input__inner {
+      height: @cascader-input-inner-height;
+      line-height: @cascader-input-inner-height;
+    }
   }
-  
+
   &.@{prefix}-size-s {
     min-height: @cascader-height-s;
     font-size: @cascader-font-size-s;
+
+    .@{prefix}-input__inner {
+      height: calc(@cascader-height-s - 2px);
+      line-height: calc(@cascader-height-default - 4px);
+    }
+
+    & .@{prefix}-tag {
+      margin: @cascader-tag-margin-s;
+    }
   }
 
   &.@{prefix}-cascader-is-multiple {
@@ -177,7 +176,7 @@
             opacity: 0;
             overflow: hidden;
             transform: translateY(-50%);
-            
+
             .@{prefix}-popup-reference {
               width: 100%;
               height: 100%;
@@ -205,7 +204,7 @@
             cursor: default
           }
         }
-        
+
         &:hover {
           background: @cascader-item-color-hover;
           cursor: pointer;
@@ -236,10 +235,10 @@
           color: @cascader-item-color-selected;
         }
       }
-      
+
       & .@{prefix}-checkbox {
         max-width: 100%;
-        
+
         .@{prefix}-checkbox__input {
           flex-shrink: 0;
         }
