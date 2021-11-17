@@ -50,13 +50,17 @@
       margin-top: @tree-node-item-spacer;
     }
 
-    .@{prefix}-icon {
+    .@{prefix}-icon,.@{prefix}-loading {
       display: inline-block;
       position: relative;
-      color: @tree-node-icon-color;
       z-index: 2;
       font-size: @font-size-l;
     }
+    
+    .@{prefix}-icon {
+      color: @tree-node-icon-color;
+    }
+    
 
     .@{prefix}-checkbox {
       font-size: 0;

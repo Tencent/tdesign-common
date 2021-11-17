@@ -83,25 +83,24 @@
     }
 
     // 输入框状态
-    .input-status(success);
     .input-status(warning);
     .input-status(error);
   }
 
   &__controls.@{prefix}-is-success {
-    //.@{prefix}-input__inner {
-    //  border-color: @@borderColor;
-    //  @borderColor: "form-color-success";
-    //}
-    //.@{prefix}-input__extra {
-    //  color: @@fontColor;
-    //  @fontColor: "form-color-success";
-    //}
     .@{prefix}-form__status {
       .@{prefix}-icon {
         color: @form-color-success;
       }
     }
+    .@{prefix}-input__extra {
+      color: @form-color-success;
+    }
+  }
+
+  &__controls.@{prefix}-form--success-border {
+    // 输入框状态
+    .input-status(success);
   }
 
   &__controls.@{prefix}-is-error {
