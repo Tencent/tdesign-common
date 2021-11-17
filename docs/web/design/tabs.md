@@ -43,17 +43,13 @@
 
 ##### 当标签过多无法在一行展示完整时，不要让选项卡换行，可以考虑使用滑动展示。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-6@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/tabs----%E6%85%8E%E7%94%A81@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-6@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/tabs----%E6%85%8E%E7%94%A81@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+
 
 
 <hr />
@@ -62,17 +58,13 @@
 
 ##### 选项卡内的图标需要结合文字展示，不能只使用图标。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-8@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-9@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-8@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-9@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+
 
 
 <hr />
@@ -81,15 +73,9 @@
 
 
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-10@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-10@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-11@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-11@2x.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 

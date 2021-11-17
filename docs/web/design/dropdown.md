@@ -1,61 +1,82 @@
 
 
+
 ### 何时使用
 
-在有限的空间内，需要承载多种操作，并且不影响页面结构；
+在不影响页面结构，但需要集成多种操作时；
+当功能模块入口较多，需收纳部分低频入口，减少对空间的占用时。
 
-常与表格、列表等组件组合使用，可以将不常用的操作进行收纳，减少对空间的占用。
-
-
-### 与页面布局相关
+### 与布局相关
 
 ##### 下拉菜单在页面内四个区域会有不同的布局方式。
 
-<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份-1847338.jpg" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203143.png" />
+    <em>图示：不同页面位置展开方式-左上角。</em>
+  </div>
 
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203206.png" />
+    <em>图示：不同页面位置展开方式-右上角。</em>
+  </div>
+</div>
 
-（1）区域一：在区域一中触发的下拉菜单，在右下角展示，并向右下角拓展。
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203232.png" />
+    <em>图示：不同页面位置展开方式-左下角。</em>
+  </div>
 
-<img src="https://tdesign.gtimg.com/site/design/images/编组 7-1847349.jpg" />
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203242.png" />
+    <em>图示：不同页面位置展开方式-右下角。</em>
+  </div>
+</div>
 
-
-
-（2）区域二：在区域二中触发的下拉菜单，在左下角展示，并向左下角拓展。
-
-<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份 3-1847356.jpg" />
-
-
-（3）区域三：在区域三中触发的下拉菜单，在右上角展示，并向右上角拓展。
-
-<img src="https://tdesign.gtimg.com/site/design/images/编组 8-1847379.jpg" />
-
-
-（4）区域四：在区域四中触发的下拉菜单，在左上角展示，并向左上角拓展。
-
-<img src="https://tdesign.gtimg.com/site/design/images/其它场景备份 4-1847386.jpg" />
-
-
-
+<hr />
 
 
 
 ### 正确/错误范例
 
-(1)在一些重大变化或逻辑相反的操作，加入分割线进行区分，并至于普通操作下面减少误触。
+##### 针对重要或逻辑相反的操作，应与其他操作进行区分，并至降低优先级减少误触。。
 
-<img src="https://tdesign.gtimg.com/site/design/images/正确&错误范例1-1847399.jpg" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203724.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203820.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
+
+<hr />
 
 
-(2)如出现大量操作需要收纳，尽可能将操作进行分类并采用多层下拉菜单，而非平铺至下拉菜单超出长度。
+##### 当菜单项过多时，应对齐进行分类并分级显示，避免菜单太长，造成操作不便。
 
-<img src="https://tdesign.gtimg.com/site/design/images/正确&错误范例2-1847407.jpg" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203523.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
 
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211025203532.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
+
+<hr />
 
 ### 相似组件
 
-| 组件名   | 何时使用                                                     |
-| :------- | :----------------------------------------------------------- |
-| 下拉菜单 | 下拉菜单主要用于对过多的操作进行收纳，常跟随于按钮后面，点击后是触发相应的操作。 |
-| 选择器   | 选择器主要用于收纳选项，是一种录入信息类控件，常用于表单、筛选等信息录入场景。 |
-
+| 组件名 | 何时使用                                                     |
+| :----- | :----------------------------------------------------------- |
+| [下拉菜单](./dropdown)   | 在不影响页面结构，但需要集成多种操作时；当功能模块入口较多，需收纳部分低频入口，减少对空间的占用时。 |
+| [选择器](./select)   | 需要在有限的空间展示大量选项，用来进行数据处理时。                     |
 
