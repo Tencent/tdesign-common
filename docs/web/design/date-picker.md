@@ -27,31 +27,24 @@
 
 ##### 与表格搭配使用，按日期或日期区间对表格数据进行筛选。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker3.png" />
-  </div>
-</div>
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker3.png" />
+
 
 <hr />
 
 ##### 与按钮单选框搭配使用，将用户高频关注的时间段设为默认选项，进行快捷切换以减少用户操作步骤。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker4.png" />
-  </div>
-</div>
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker4.png" />
+
 
 <hr />
 
 ##### 与选择器搭配使用，对选择的颗粒度（年、月、日）进行切换，常用于日期选择器类型的选择。
 
-<div class="legend">
-  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker5.png" />
-  </div>
-</div>
+
 
 ### 常见用法
 
