@@ -299,7 +299,7 @@
     position: relative;
   }
 
-  &:hover {
+  &:not(.@{prefix}-is-disabled):hover {
     background-color: @select-option-bg-color-hover;
     .@{prefix}-checkbox__label {
       color: @select-option-checkbox-label-color-hover;
@@ -312,7 +312,7 @@
   .@{prefix}-checkbox__label {
     color: @select-option-color;
     .text-ellipsis();
-    width: 100%;
+    flex: 1;
   }
 
   .@{prefix}-checkbox {
