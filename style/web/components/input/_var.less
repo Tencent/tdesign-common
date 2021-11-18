@@ -17,13 +17,9 @@
 @input-border-color-default: @border-level-2-color;
 @input-border-color-default-hover: @brand-color;
 @input-border-color-default-focus: @brand-color;
-@input-box-shadow-color-default-focus: @brand-color-focus;
 @input-border-color-success: @success-color;
-@input-box-shadow-color-success-focus: @success-color-focus;
 @input-border-color-warning: @warning-color;
-@input-box-shadow-color-warning-focus: @warning-color-focus;
 @input-border-color-error: @error-color;
-@input-box-shadow-color-error-focus: @error-color-focus;
 
 @input-text-color-default: @text-color-primary;
 @input-text-color-disabled: @text-color-disabled;
@@ -71,6 +67,13 @@
 
 // 边框
 @input-border-radius: @border-radius;
+
+// box
+@input-box-shadow-color-default-focus: @brand-color-focus;
+@input-box-shadow-color-success-focus: @success-color-focus;
+@input-box-shadow-color-warning-focus: @warning-color-focus;
+@input-box-shadow-color-error-focus: @error-color-focus;
+@input-box-shadow-focus: 0 0 0 2px @input-box-shadow-color-default-focus;
 
 // 动画
 @input-inner-transition: all @anim-time-fn-easing @anim-duration-base;
