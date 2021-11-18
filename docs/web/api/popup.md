@@ -22,13 +22,16 @@
 
 ### 位置方向
 
-使用 `placement` 控制浮层方向，如果需要浮层箭头，设置 `showArrow=true` 即可
+使用 `placement` 控制浮层方向，如果需要浮层箭头，设置 `showArrow=true` 即可。
 
 {{ placement }}
 
 ### 浮层样式
 
+浮层样式可以使用 overlayClassName 或者 overlayStyle 定义。
+
 1、 `overlayClassName` 用于定义浮层样式类名。
+
 2、 `overlayStyle` 用于定义浮层样式，比如浮层宽度。浮层宽度默认根据内容宽度呈现，可自由设置宽度和最大宽度。值为类型为函数时，可以实现浮层宽度和触发元素同宽。
 
 {{ style }}
