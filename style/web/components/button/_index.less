@@ -7,6 +7,7 @@
   @theme-hover: e("btn-color-@{theme}-hover");
   @theme-active: e("btn-color-@{theme}-active");
   @theme-disabled: e("btn-color-@{theme}-disabled");
+  @theme-focus: e("btn-color-@{theme}-focus");
   @{attr}: e(@attr-prepend) @@theme-default;
 
   &:hover {
@@ -36,42 +37,42 @@
   }
 
   .@{prefix}-loading {
-    font-size: @btn-icon-size-default;
+    font-size: @btn-loading-size;
   }
 
   .@{prefix}-icon  + .@{prefix}-button__text {
-    margin-left: @spacer;
+    margin-left: @btn-icon-text-margin-left;
   }
 
   .@{prefix}-loading + .@{prefix}-button__text {
-    margin-left: @spacer;
+    margin-left: @btn-icon-text-margin-left;
   }
-  
+
   // 主要按钮
   &--variant-base {
     .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
-    color: @text-color-anti;
+    color: @btn-text-variant-base-color;
     .button-attr-color("gray-bg", background-color);
     .button-attr-color("text-gray", color);
 
     &.@{prefix}-button--theme-primary {
       .button-attr-color("primary", background-color);
-      color: @text-color-anti;
+      color: @btn-text-variant-base-color;
     }
 
     &.@{prefix}-button--theme-success {
       .button-attr-color("success", background-color);
-      color: @text-color-anti;
+      color: @btn-text-variant-base-color;
     }
 
     &.@{prefix}-button--theme-warning {
       .button-attr-color("warning", background-color);
-      color: @text-color-anti;
+      color: @btn-text-variant-base-color;
     }
 
     &.@{prefix}-button--theme-danger {
       .button-attr-color("danger", background-color);
-      color: @text-color-anti;
+      color: @btn-text-variant-base-color;
     }
 
     &.@{prefix}-button--ghost {
@@ -303,9 +304,12 @@
     text-align: center;
     border-radius: @btn-shape-border-radius-default;
 
-    .@{prefix}-icon,
-    .@{prefix}-loading {
+    .@{prefix}-icon {
       font-size: @btn-icon-size-default;
+    }
+
+    .@{prefix}-loading {
+      font-size: @btn-loading-size;
     }
 
     &.@{prefix}-size-s {
