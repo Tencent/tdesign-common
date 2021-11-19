@@ -56,11 +56,11 @@
       z-index: 2;
       font-size: @font-size-l;
     }
-    
+
     .@{prefix}-icon {
       color: @tree-node-icon-color;
     }
-    
+
 
     .@{prefix}-checkbox {
       font-size: 0;
@@ -68,7 +68,7 @@
 
     .@{prefix}-tree__icon--default {
       .@{prefix}-icon {
-        transition: transform @anim-time-fn-easing @anim-duration-base;
+        transition: color,transform @anim-time-fn-easing @anim-duration-base;
         transform: rotate(0);
       }
     }
@@ -147,7 +147,7 @@
     user-select: none;
     cursor: pointer;
     border-radius: @border-radius;
-    transition: all @anim-duration-moderate @anim-time-fn-easing;
+    transition: color,transform @anim-duration-moderate @anim-time-fn-easing;
 
     &:not(:empty):hover {
       background-color: @tree-node-bg-color-hover;
