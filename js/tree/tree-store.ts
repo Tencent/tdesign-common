@@ -121,8 +121,21 @@ export class TreeStore {
 
   // 配置选项
   public setConfig(options: TypeTreeStoreOptions) {
-    Object.assign(this.config, options);
-    this.refreshState();
+    let hasChanged = false;
+    Object.keys(options).forEach((key) => {
+      const val = options[key];
+      if (val !== this.config[key]) {
+        hasChanged = true;
+        this.config[key] = val;
+      }
+    });
+    if (hasChanged) {
+      // 在 td-tree 的 render 方法中调用 setConfig
+      // 这样减少了 watch 属性
+      // 仅在属性变更后刷新状态
+      // 这样可以避免触发渲染死循环
+      this.refreshState();
+    }
   }
 
   // 获取根孩子节点列表
