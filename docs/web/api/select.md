@@ -64,7 +64,7 @@
 
 可根据需求定制选择器内容。在有复杂逻辑或有特定诉求的业务场景时使用。`reserveKeyword` 用于 `multiple` 且 `filterable` 时，选中一个选项后保留当前的搜索关键词。
 
-{{ custom }}
+{{ remote-search }}
 
 ### 可创建新条目的选择器
 
@@ -96,13 +96,7 @@
 
 {{ label-in-value }}
 
-### 定制数据 keys 的选择器
-
-定制数据 keys。options 数据 key 不为 label 或 value 时使用。
-
-{{ keys }}
-
-### 自定义下拉列表宽度选择器
+### 自定义下拉框宽度选择器
 
 自定义下拉样式的选择器，在需要自定义下拉样式时使用。
 
