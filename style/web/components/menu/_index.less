@@ -1,8 +1,11 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
+
 @import "../../mixins/_layout.less";
 
 a.@{prefix}-menu__item {
@@ -30,7 +33,6 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu {
-
       &:first-child {
         margin-left: 24px;
       }
@@ -50,7 +52,6 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-menu__operations {
-
     &:not(:empty) {
       position: relative;
       display: flex;
@@ -71,10 +72,11 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-submenu {
+
     > .@{prefix}-menu__item {
       overflow: unset;
 
-      &:before {
+      &::before {
         content: "";
         display: block;
         position: absolute;
@@ -107,25 +109,27 @@ a.@{prefix}-menu__item {
 
       &__nav-item {
         color: @font-gray-2;
-        --ripple-color: @menu-item-animation-bg--light;
-    
+
         &-wrapper {
           --ripple-color: @menu-item-animation-bg--light;
         }
-    
+
         &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
+
           .@{prefix}-tabs__nav-item-wrapper {
             background-color: @menu-light-hover-bg;
           }
         }
-    
+
         &.@{prefix}-is-active {
           color: @submenu-item-active-color;
         }
-    
+
         &.@{prefix}-is-disabled {
           color: @menu-item-disabled-color;
         }
+
+        --ripple-color: @menu-item-animation-bg--light;
       }
     }
   }
@@ -164,6 +168,7 @@ a.@{prefix}-menu__item {
 
   // 多层情况
   .@{prefix}-menu__popup-inner {
+
     .@{prefix}-menu__popup {
       top: -8px;
       left: calc(100% + 16px);
@@ -193,6 +198,7 @@ a.@{prefix}-menu__item {
 
   &.@{prefix}-menu--dark {
     background: @menu-theme-dark;
+
     .@{prefix}-menu__logo:not(:empty) {
       border-bottom-color: @menu-border-color--dark;
     }
@@ -202,6 +208,7 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu__item {
+
       &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-disabled) {
         background-color: @menu-border-color--dark;
       }
@@ -223,6 +230,7 @@ a.@{prefix}-menu__item {
       background: @menu-theme-dark;
 
       .@{prefix}-menu__item {
+
         &.@{prefix}-is-active {
           background-color: @default-menu-active-color;
         }
@@ -238,6 +246,7 @@ a.@{prefix}-menu__item {
     width: @default-menu-collapse-width;
 
     .@{prefix}-menu {
+
       .@{prefix}-menu__item {
         padding: 0 14px;
       }
@@ -273,6 +282,7 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu__popup {
+
       .@{prefix}-menu__item {
         padding-left: @popup-item-padding-left;
         justify-content: flex-start;
@@ -292,12 +302,12 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-submenu {
-
       &-icon {
         display: none;
       }
 
       .@{prefix}-menu__popup {
+
         .@{prefix}-submenu-icon {
           display: initial;
         }
@@ -368,7 +378,6 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu-group {
-
       &-title {
         position: relative;
         padding: 20px 16px 8px;
@@ -386,7 +395,6 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-menu__operations {
-
     &:not(:empty) {
       width: 100%;
       position: relative;
@@ -407,6 +415,7 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-menu__item {
+
     &.@{prefix}-is-opened {
       margin: 4px 0;
       color: @menu-light-active-color;
@@ -463,7 +472,8 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius;
-    transition: background-color @anim-duration-slow @anim-time-fn-easing,
+    transition:
+      background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
 
     &:first-child {
@@ -509,7 +519,6 @@ a.@{prefix}-menu__item {
   .list-style-none();
 
   &__logo {
-
     &:not(:empty) {
       display: flex;
       align-items: center;
@@ -520,6 +529,7 @@ a.@{prefix}-menu__item {
     position: relative;
 
     &.@{prefix}-is-active {
+
       > .@{prefix}-menu__item {
         color: @menu-theme-dark;
 
@@ -535,6 +545,7 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
+
       & .@{prefix}-submenu-icon {
         transform: scaleY(-1);
       }
@@ -553,7 +564,6 @@ a.@{prefix}-menu__item {
     // overflow: hidden;
     text-overflow: ellipsis;
     border-radius: @border-radius;
-    --ripple-color: @menu-item-animation-bg--light;
 
     ::selection {
       background: transparent;
@@ -564,7 +574,7 @@ a.@{prefix}-menu__item {
       text-decoration: none;
 
       &.@{prefix}-menu__item-link {
-        color: unset
+        color: unset;
       }
     }
 
@@ -586,6 +596,8 @@ a.@{prefix}-menu__item {
       color: @menu-item-disabled-color;
       cursor: not-allowed;
     }
+
+    --ripple-color: @menu-item-animation-bg--light;
   }
 
   &__content {
@@ -599,6 +611,7 @@ a.@{prefix}-menu__item {
   }
 
   &--dark {
+
     &.@{prefix}-head-menu {
       background-color: @head-menu-bg--dark;
 
@@ -609,7 +622,6 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__item {
       color: @menu-item-color--dark;
-      --ripple-color: @menu-item-animation-bg--dark;
 
       &.@{prefix}-is-active {
         color: @menu-item-active-color--dark;
@@ -618,6 +630,7 @@ a.@{prefix}-menu__item {
 
       &.@{prefix}-is-opened {
         color: @menu-item-active-color--dark;
+
         .@{prefix}-icon {
           color: @menu-item-active-color--dark;
         }
@@ -631,6 +644,8 @@ a.@{prefix}-menu__item {
         color: @menu-item-hover-color--dark;
         background-color: @menu-item-hover-bg--dark;
       }
+
+      --ripple-color: @menu-item-animation-bg--dark;
     }
 
     .@{prefix}-menu__popup {
@@ -644,6 +659,7 @@ a.@{prefix}-menu__item {
           color: @menu-item-active-color--dark;
           background-color: @menu-item-active-bg--dark;
         }
+
         &:hover:not(.@{prefix}-is-active) {
           color: @menu-item-hover-color--dark;
           background-color: @menu-item-hover-bg--dark;
@@ -656,7 +672,6 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu__operations {
-
       &-icon {
         color: @menu-theme-light;
 
@@ -672,25 +687,27 @@ a.@{prefix}-menu__item {
 
       &__nav-item {
         color: #fff;
-        --ripple-color: @gray-color-9;
-    
+
         &-wrapper {
           --ripple-color: @gray-color-9;
         }
-    
+
         &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
+
           .@{prefix}-tabs__nav-item-wrapper {
             background-color: @menu-dark-hover-bg;
           }
         }
-    
+
         &.@{prefix}-is-active {
           color: @submenu-dark-item-active-color;
         }
-    
+
         &.@{prefix}-is-disabled {
           color: @menu-item-disabled-color-dark;
         }
+
+        --ripple-color: @gray-color-9;
       }
     }
   }
@@ -698,7 +715,8 @@ a.@{prefix}-menu__item {
   &__popup {
     max-height: 0;
     overflow: hidden;
-    transition: max-height @anim-duration-moderate @anim-time-fn-easing,
+    transition:
+      max-height @anim-duration-moderate @anim-time-fn-easing,
       width @anim-duration-moderate @anim-time-fn-easing,
       opacity @anim-duration-base linear;
     position: absolute;
@@ -733,7 +751,6 @@ a.@{prefix}-menu__item {
       overflow: visible;
 
       .@{prefix}-menu__popup {
-        @horizontal-spacer: 16px;
         top: 0;
         left: calc(100% + @horizontal-spacer);
 
@@ -746,6 +763,7 @@ a.@{prefix}-menu__item {
           top: 0;
           bottom: 0;
         }
+        @horizontal-spacer: 16px;
       }
     }
 
@@ -768,7 +786,6 @@ a.@{prefix}-menu__item {
   }
 
   &__operations {
-
     &-icon {
       margin-right: 16px;
       border-radius: @border-radius;
@@ -786,6 +803,7 @@ a.@{prefix}-menu__item {
 .@{prefix}-opacity-transition {
   transition: opacity @anim-duration-slow cubic-bezier(.55, 0, .1, 1);
 }
+
 .horizontal-collapse-transition
 .@{prefix}-submenu__title
 .@{prefix}-submenu__icon-arrow {

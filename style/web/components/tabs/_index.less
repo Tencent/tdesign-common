@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-tabs {
@@ -43,9 +45,8 @@
       right: 0;
 
       .@{prefix}-tabs__btn {
-
         &:first-child {
-          box-shadow: -10px 0px 20px 5px rgba(0, 0, 0, .05);
+          box-shadow: -10px 0 20px 5px rgb(0 0 0 / 5%);
         }
       }
     }
@@ -82,8 +83,8 @@
 
     &--left {
       border-right: 1px solid @tab-card-stroke;
-      box-shadow: 10px 0px 20px 5px rgba(0, 0, 0, .05);
-      
+      box-shadow: 10px 0 20px 5px rgb(0 0 0 / 5%);
+
       &.fade-enter,
       &.fade-leave-to {
         transform: translateX(-50px);
@@ -91,7 +92,6 @@
     }
 
     &--right {
-
       &.fade-enter,
       &.fade-leave-to {
         transform: translateX(50px);
@@ -125,7 +125,7 @@
     &.@{prefix}-tabs__nav--card {
       // border-bottom: 1px solid @tab-default-stroke;
 
-      &:after {
+      &::after {
         content: "";
         background-color: transparent;
       }
@@ -223,7 +223,6 @@
     cursor: pointer;
     flex-shrink: 0;
     transition: background-color @anim-time-fn-easing @anim-duration-base;
-    --ripple-color: @bg-color-container-active;
 
     &-wrapper {
       display: block;
@@ -233,12 +232,13 @@
       line-height: 22px;
       border-radius: @border-radius;
       transition: background-color @anim-time-fn-easing @anim-duration-base;
+
       --ripple-color: @bg-color-container-active;
     }
 
     &.@{prefix}-size-l {
       font-size: @font-size-l;
-      
+
       .@{prefix}-tabs__nav-item-wrapper {
         padding: 9px 12px;
       }
@@ -251,6 +251,7 @@
     }
 
     &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
+
       .@{prefix}-tabs__nav-item-wrapper {
         background-color: @bg-color-container-hover;
       }
@@ -287,6 +288,8 @@
       margin-left: 8px;
       transition: all .3s cubic-bezier(.645, .045, .355, 1);
     }
+
+    --ripple-color: @bg-color-container-active;
   }
 
   &__nav--card {
@@ -296,13 +299,12 @@
       padding-left: 16px;
       padding-right: 16px;
       border-bottom: 1px solid @tab-card-stroke;
-      
+
       &::after {
         display: none;
       }
 
       &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active) {
-
         &:hover {
           background-color: @bg-color-secondarycontainer-hover;
         }

@@ -1,8 +1,8 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
-@import "./_var.less";
 
+@import "./_var.less";
 
 .@{prefix}-tabs {
   position: relative;
@@ -28,16 +28,18 @@
       position: relative;
       padding: @tab-nav-item-padding;
       display: inline-block;
+
       &.@{prefix}-is-active {
         color: @tab-nav-active-color;
         font-family: @font-family-medium;
       }
+
       &.@{prefix}-is-disabled {
         color: @tab-nav-disabled-color;
         cursor: not-allowed;
       }
 
-      &:after {
+      &::after {
         content: "";
         width: 100%;
         height: 1px;
@@ -60,17 +62,20 @@
       transition: all .3s cubic-bezier(.645, .045, .355, 1);
     }
 
-    &--scroll {  
+    &--scroll {
+
       .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
         margin-bottom: 10px;
       }
+
       .@{prefix}-tabs__nav-wrap {
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         margin-bottom: -10px;
       }
+
       .@{prefix}-tabs__nav-line {
         bottom: 10px;
       }
@@ -79,13 +84,16 @@
 
   &--horizontal {
     display: flex;
+
     .@{prefix}-tabs__nav--scroll {
+
       .@{prefix}-tabs__nav-wrap {
         height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
         margin-right: -10px;
       }
+
       .@{prefix}-tabs__nav-item {
         margin-right: 10px;
         margin-bottom: 0;
@@ -95,11 +103,11 @@
     .@{prefix}-tabs__content {
       flex: 1;
     }
+
     .@{prefix}-tabs__nav {
       background-color: @tab-nav-horizontal-bg-color;
 
       &-wrap {
-
         flex-direction: column;
       }
 
@@ -118,9 +126,10 @@
         line-height: @tab-nav-horizontal-item-height;
         padding: @tab-nav-horizontal-item-padding;
 
-        &:after {
+        &::after {
           content: none;
         }
+
         &.@{prefix}-is-active {
           background-color: @tab-nav-bg-color;
         }
@@ -137,4 +146,3 @@
     background-color: @tab-panel-bg-color;
   }
 }
-

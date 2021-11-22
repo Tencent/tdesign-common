@@ -1,7 +1,6 @@
 @import "../_variables.less";
 
 @keyframes t-fade-out {
-
   from {
     opacity: 1;
   }
@@ -12,7 +11,6 @@
 }
 
 @keyframes t-spin {
-
   from {
     transform: rotate(0deg);
   }
@@ -22,22 +20,8 @@
   }
 }
 
-// 颜色 切换
-// .anim-color-change(@attr, @from, @to ) {
-//   from {
-//     @attr: @from;
-//   }
-
-//   to {
-//     @attr: @to;
-//   }
-// }
-
-
 // 定义一个从A到B到动画
 .anim-g-attr-change(@name, @attr, @from, @to, ) {
-  @keyf: ~"@keyframes @{name}  { from";
-  @anim: ~" }  ";
 
   @{keyf} {
     .anim-g-attr-change-from(e(@attr), e(@from));
@@ -50,7 +34,8 @@
   @{anim} {
 
   }
-
+  @keyf: ~"@keyframes @{name}  { from";
+  @anim: ~" }  ";
 }
 .anim-g-attr-change-from (@name, @value) {
   @{name}: @value;

@@ -1,10 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
-@import "./_var.less";
-@import "./_mixin.less";
-@import "../../mixins/_text.less";
 
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "../../mixins/_text.less";
 
 .@{prefix}-cascader {
   position: relative;
@@ -39,7 +41,7 @@
   & .@{prefix}-cascader-content {
     margin-left: @cascader-content-margin-left;
     color: @cascader-dark-color;
-    .text-ellipsis()
+    .text-ellipsis();
   }
 
   .@{prefix}-input__inner {
@@ -63,10 +65,12 @@
     cursor: not-allowed;
     background-color: @cascader-tag-background-color-disabled;
     color: @cascader-item-color-disabled;
+
     .@{prefix}-cascader-content {
       color: @cascader-item-color-disabled;
     }
   }
+
   &.@{prefix}-is-active {
     border-color: @cascader-active-border-color;
     box-shadow: @cascader-input-shadow;
@@ -76,6 +80,7 @@
       color: @cascader-highlight-color;
     }
   }
+
   &.@{prefix}-size-l {
     min-height: @cascader-height-l;
   }
@@ -120,7 +125,7 @@
   cursor: default;
   padding: 0;
   border-radius: @cascader-dropdown-border-radius;
-  
+
   & .@{prefix}-cascader-panel {
     display: flex;
     height: 100%;
@@ -140,7 +145,6 @@
         padding: @cascader-item-padding;
         border-radius: @cascader-item-border-radius;
         margin-top: @cascader-item-margin-top;
-        --ripple-color: @bg-color-container-active;
         transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
         &:first-child {
@@ -156,6 +160,7 @@
         }
 
         &.@{prefix}-cascader-item-is-leaf {
+
           .@{prefix}-checkbox {
             width: 100%;
           }
@@ -200,7 +205,7 @@
 
           &:hover {
             background: none;
-            cursor: default
+            cursor: default;
           }
         }
 
@@ -208,6 +213,8 @@
           background: @cascader-item-color-hover;
           cursor: pointer;
         }
+
+        --ripple-color: @bg-color-container-active;
       }
 
       .@{prefix}-cascader-item.@{prefix}-size-s {
@@ -284,6 +291,7 @@
     & .@{prefix}-cascader-menu__seperator {
       border-right: .5px solid @cascader-menu-seperator-color;
     }
+
     & .@{prefix}-cascader-menu__filter {
       width: @cascader-input-width;
       box-sizing: border-box;
@@ -315,7 +323,7 @@
 .@{prefix}-cascader-item-icon {
   color: @cascader-item-icon-color;
   .icon-position();
-  
+
   &.@{prefix}-loading {
     position: absolute;
   }
@@ -351,9 +359,7 @@
   height: @cascader-panel-height-tips;
 }
 
-
 .@{prefix}-cascader-close-icon-fade {
-
   &-enter,
   &-leave,
   &-enter-from,

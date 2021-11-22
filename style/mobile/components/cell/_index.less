@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../mixins/_index.less";
 
 .@{prefix}-cell {
@@ -37,6 +39,7 @@
     color: @text-level-3-color;
     line-height: 24px;
     margin-right: @spacer-1;
+
     & > .@{prefix}-icon {
       float: left;
     }
@@ -46,6 +49,7 @@
     color: @text-level-3-color;
     line-height: 24px;
     margin-left: @spacer-2;
+
     & > .@{prefix}-icon {
       float: right;
     }
@@ -60,10 +64,9 @@
   }
 
   &--bordered {
-
     &::after {
-      .hairline-bottom(@cell-border-color);
       left: @cell-horizontal-padding;
+      .hairline-bottom(@cell-border-color);
     }
   }
 

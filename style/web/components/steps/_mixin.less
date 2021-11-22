@@ -1,4 +1,5 @@
 .step-item-basic() {
+
   .@{prefix}-steps-item {
     flex: 1;
     overflow: hidden;
@@ -39,22 +40,21 @@
       color: @steps-item-icon-color;
 
       &__number {
-        .default-step-icon;
         color: @steps-item-icon-number-color-default;
         border: @step-stroke-width solid @steps-item-icon-border-color-default;
+        .default-step-icon;
       }
 
       &__finish {
-        .default-step-icon;
         border: @step-stroke-width solid @steps-item-icon-border-color-finish;
+        .default-step-icon;
       }
 
       &__error {
-        .default-step-icon;
         border: @step-stroke-width solid @steps-item-icon-border-color-error;
         color: @steps-item-icon-number-color-error;
+        .default-step-icon;
       }
-
 
       & > .t-icon {
         font-size: @steps-item-t-icon-font-size-default;
@@ -94,8 +94,8 @@
 @anchor-status: wait;
 .default-anchor-status(@anchor-status) {
   & when(@anchor-status = finish) {
-    .@{prefix}-steps-item-icon {
 
+    .@{prefix}-steps-item-icon {
       .t-icon {
         color: @steps-item-icon-anchor-color;
       }
@@ -115,8 +115,8 @@
     }
   };
   & when(@anchor-status = process) {
-    .@{prefix}-steps-item-icon {
 
+    .@{prefix}-steps-item-icon {
       .t-icon {
         color: @steps-item-icon-anchor-color;
       }
@@ -139,8 +139,8 @@
     }
   };
   & when(@anchor-status = error) {
-    .@{prefix}-steps-item-icon {
 
+    .@{prefix}-steps-item-icon {
       .t-icon {
         color: @steps-item-icon-anchor-color-error;
       }
@@ -163,17 +163,20 @@
 
 .dot-anchor-status(@anchor-status) {
   & when(@anchor-status = finish) {
+
     .@{prefix}-steps-item-icon {
       border-color: @steps-item-icon-dot-border-color-finish;
     }
   };
   & when(@anchor-status = process) {
+
     .@{prefix}-steps-item-icon {
       background: @steps-item-icon-dot-bg-color-process;
       border-color: @steps-item-icon-dot-border-color-process;
     }
   };
   & when(@anchor-status = error) {
+
     .@{prefix}-steps-item-icon {
       background: @steps-item-icon-dot-bg-color-error;
       border-color: @steps-item-icon-dot-border-color-error;
@@ -184,6 +187,7 @@
 // icon 和 内容
 @item-direction: horizontal;
 .dot-icon(@item-direction) {
+
   .@{prefix}-steps-item-icon {
     display: block;
     width: @steps-dot-item-icon-width;
@@ -196,6 +200,7 @@
       top: @steps-dot-anchor-position-top;
     }
   }
+
   .@{prefix}-steps-item-content {
     & when(@item-direction = horizontal) {
       text-align: @steps-item-conten-text-align-horizontal;
@@ -207,7 +212,9 @@
 // 连接线
 .connector-default(@direction; @isReverse:false) {
   & when (@direction = horizontal) {
+
     .@{prefix}-steps-item:not(:last-child) {
+
       .@{prefix}-steps-item-title:after {
         content: "";
         display: block;
@@ -222,6 +229,7 @@
     }
 
     .@{prefix}-steps-item--finish:not(:last-child) {
+
       .@{prefix}-steps-item-title:after {
         background: @steps-line-bg-color-horizontal-finish;
         height: @steps-line-height;
@@ -230,13 +238,13 @@
   }
 
   & when (@direction = vertical) {
+
     .@{prefix}-steps-item {
       padding-bottom: @steps-item-padding-bottom-vertical;
       margin-bottom: @steps-item-margin-bottom-vertical;
 
       & when(@isReverse = false) {
-
-        &:not(:last-child):before {
+        &:not(:last-child)::before {
           content: "";
           display: block;
           height: 100%;
@@ -248,16 +256,14 @@
         }
 
         &--finish {
-
-          &:not(:last-child):before {
+          &:not(:last-child)::before {
             background: @steps-line-bg-color-vertical-finish;
             width: @steps-line-width;
           }
         }
       }
       & when(@isReverse = true) {
-
-        &:not(:first-child):before {
+        &:not(:first-child)::before {
           content: "";
           display: block;
           height: 100%;
@@ -270,8 +276,7 @@
 
         &--process,
         &--finish {
-
-          &:not(:first-child):before {
+          &:not(:first-child)::before {
             width: @steps-line-width;
             background: @steps-line-bg-color-vertical-process;
           }
@@ -283,9 +288,9 @@
 
 .connector-dot(@direction; @isReverse:false) {
   & when(@direction = horizontal) {
-    .@{prefix}-steps-item:not(:last-child) {
 
-      &:after {
+    .@{prefix}-steps-item:not(:last-child) {
+      &::after {
         content: "";
         display: block;
         width: @steps-item-connector-line-width;
@@ -298,19 +303,18 @@
     }
 
     .@{prefix}-steps-item--finish:not(:last-child) {
-
-      &:after {
+      &::after {
         background: @steps-line-dot-bg-color-vertical-finish;
         height: @steps-line-height;
       }
     }
   }
   & when(@direction = vertical) {
+
     .@{prefix}-steps-item {
 
       & when(@isReverse = false) {
-
-        &:not(:last-child):before {
+        &:not(:last-child)::before {
           content: "";
           display: block;
           height: 100%;
@@ -322,8 +326,7 @@
         }
 
         &--finish {
-
-          &:not(:last-child):before {
+          &:not(:last-child)::before {
             background: @steps-line-dot-bg-color-vertical-finish;
             width: @steps-line-width;
           }
@@ -332,7 +335,7 @@
       & when(@isReverse = true) {
         margin-bottom: 0;
 
-        &:not(:first-child):before {
+        &:not(:first-child)::before {
           content: "";
           display: block;
           height: 100%;
@@ -343,14 +346,13 @@
           top: @steps-dot-connector-position-top-vertical;
         }
 
-        &:fist-child:before {
+        &:fist-child::before {
           display: none;
         }
 
         &--process,
         &--finish {
-
-          &:not(:first-child):before {
+          &:not(:first-child)::before {
             width: @steps-line-width;
             background: @steps-line-dot-bg-color-vertical-process;
           }

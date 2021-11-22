@@ -1,15 +1,10 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .button-attr-color(@theme, @attr, @attr-prepend: "", @ghost: false) {
-  @theme-default: e("btn-color-@{theme}");
-  @theme-hover: e("btn-color-@{theme}-hover");
-  @theme-active: e("btn-color-@{theme}-active");
-  @theme-disabled: e("btn-color-@{theme}-disabled");
-  @theme-focus: e("btn-color-@{theme}-focus");
-  @{attr}: e(@attr-prepend) @@theme-default;
-
   &:hover {
     @{attr}: e(@attr-prepend) @@theme-hover;
   }
@@ -21,6 +16,13 @@
   &.@{prefix}-is-disabled {
     @{attr}: e(@attr-prepend) @@theme-disabled;
   }
+  @theme-default: e("btn-color-@{theme}");
+  @theme-hover: e("btn-color-@{theme}-hover");
+  @theme-active: e("btn-color-@{theme}-active");
+  @theme-disabled: e("btn-color-@{theme}-disabled");
+  @theme-focus: e("btn-color-@{theme}-focus");
+
+  @{attr}: e(@attr-prepend) @@theme-default;
 }
 
 .@{prefix}-button {
@@ -50,29 +52,29 @@
 
   // 主要按钮
   &--variant-base {
-    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
     color: @btn-text-variant-base-color;
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
     .button-attr-color("gray-bg", background-color);
     .button-attr-color("text-gray", color);
 
     &.@{prefix}-button--theme-primary {
-      .button-attr-color("primary", background-color);
       color: @btn-text-variant-base-color;
+      .button-attr-color("primary", background-color);
     }
 
     &.@{prefix}-button--theme-success {
-      .button-attr-color("success", background-color);
       color: @btn-text-variant-base-color;
+      .button-attr-color("success", background-color);
     }
 
     &.@{prefix}-button--theme-warning {
-      .button-attr-color("warning", background-color);
       color: @btn-text-variant-base-color;
+      .button-attr-color("warning", background-color);
     }
 
     &.@{prefix}-button--theme-danger {
-      .button-attr-color("danger", background-color);
       color: @btn-text-variant-base-color;
+      .button-attr-color("danger", background-color);
     }
 
     &.@{prefix}-button--ghost {
@@ -211,10 +213,10 @@
 
   // 文字按钮
   &--variant-text {
+    border: 0;
     .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
     .button-attr-color("text-gray", color);
     .button-attr-color("text-bg", background-color);
-    border: 0;
 
     &.@{prefix}-button--theme-primary {
       .button-attr-color("primary", color);
@@ -233,8 +235,8 @@
     }
 
     &.@{prefix}-button--ghost {
-      .button-attr-color("white-ghost", color, "", true);
       background: none;
+      .button-attr-color("white-ghost", color, "", true);
 
       &.@{prefix}-button--theme-primary {
         .button-attr-color("primary", color, "", true);

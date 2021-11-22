@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -13,24 +15,28 @@
     margin-right: @msg-icon-margin-right;
   }
 
-  > .@{prefix}-icon,.@{prefix}-loading {
+  > .@{prefix}-icon,
+  .@{prefix}-loading {
     flex-shrink: 0;
     font-size: @msg-icon-size;
   }
 
   &.@{prefix}-is-success {
+
     @{msg-icon-selector} {
       color: @msg-success-color;
     }
   }
 
   &.@{prefix}-is-warning {
+
     @{msg-icon-selector} {
       color: @msg-warning-color;
     }
   }
 
   &.@{prefix}-is-error {
+
     @{msg-icon-selector} {
       color: @msg-error-color;
     }

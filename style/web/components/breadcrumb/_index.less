@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-breadcrumb {
@@ -27,6 +29,7 @@
 
     &:last-child {
       color: @breadcrumb-text-color-current;
+
       .@{prefix}-breadcrumb__separator {
         display: none;
       }
@@ -55,7 +58,7 @@
           color: @breadcrumb-text-color-disabled;
           cursor: not-allowed;
         }
-        
+
         &:active {
           animation: none;
         }
@@ -64,25 +67,25 @@
 
     //箭头型
     &--arrow {
-      .v-inlineblock;
       margin: 0 @breadcrumb-spacer-half;
       line-height: 0;
       color: @breadcrumb-icon-arrow-color-default;
+      .v-inlineblock;
     }
 
     //斜杠型
     &--slash {
-      .v-inlineblock;
       margin: 0 @breadcrumb-spacer-half;
       line-height: 0;
       color: @breadcrumb-icon-slash-color-default;
+      .v-inlineblock;
     }
   }
 
   &__inner {
-    .v-inlineblock;
     font-size: @breadcrumb-font-base;
     word-break: break-all;
+    .v-inlineblock;
 
     .@{prefix}-icon {
       margin: 0 @breadcrumb-spacer-half;
@@ -101,9 +104,7 @@
     }
 
     &-item {
-
       &:hover {
-
         .t-icon {
           color: @breadcrumb-icon-color-hover;
         }
@@ -154,7 +155,7 @@
     box-shadow: @breadcrumb-option-box-shadow;
     z-index: 20;
 
-    &:before {
+    &::before {
       content: "";
       position: absolute;
       bottom: -8px;
@@ -163,11 +164,10 @@
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 8px 6px 0 6px;
+      border-width: 8px 6px 0;
       border-color: @bg-color-container transparent transparent transparent;
       z-index: 20;
     }
-
   }
 
   &--text-oveflow {
@@ -180,7 +180,6 @@
       .@{prefix}-breadcrumb__inner-msg {
         display: block;
       }
-
     }
 
     .@{prefix}-breadcrumb__inner {
@@ -197,7 +196,7 @@
         transition: color @anim-duration-base linear;
         cursor: pointer;
       }
-      
+
       &:active {
         .color-change;
       }

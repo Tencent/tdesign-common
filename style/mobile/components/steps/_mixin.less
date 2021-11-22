@@ -1,4 +1,5 @@
 .step-item-basic {
+
   .@{prefix}-steps-item {
     flex: 1;
     vertical-align: top;
@@ -58,7 +59,9 @@
 // 连接线
 .connector-default(@direction; @isReverse:false) {
   & when (@direction = horizontal) {
+
     .@{prefix}-steps-item:not(:last-child) {
+
       .@{prefix}-steps-item__inner:after {
         content: "";
         display: block;
@@ -73,13 +76,16 @@
 
     .@{prefix}-steps-item--finish:not(:last-child),
     .@{prefix}-steps-item--default:not(:last-child) {
+
       .@{prefix}-steps-item__inner:after {
         background: @primary-color;
       }
     }
   }
   & when(@direction = vertical) {
+
     .@{prefix}-steps-item:not(:last-child) {
+
       .@{prefix}-steps-item__inner:after {
         content: "";
         display: block;
@@ -94,6 +100,7 @@
 
     .@{prefix}-steps-item--finish:not(:last-child),
     .@{prefix}-steps-item--default:not(:last-child) {
+
       .@{prefix}-steps-item__inner:after {
         background: @primary-color;
       }
@@ -103,18 +110,21 @@
 
 .default-number-status(@anchor-status) {
   & when(@anchor-status = default) {
+
     .@{prefix}-steps-item-icon__number {
       border-color: @primary-color;
       color: @primary-color;
     }
   };
   & when(@anchor-status = finish) {
+
     .@{prefix}-steps-item-icon__number {
       border-color: @primary-color;
       color: @primary-color;
     }
   };
   & when(@anchor-status = process) {
+
     .@{prefix}-steps-item-icon__number {
       background: @primary-color;
       color: #fff;
@@ -122,6 +132,7 @@
     }
   };
   & when(@anchor-status = error) {
+
     .@{prefix}-steps-item-icon__number {
       background: @error-color-6;
       color: @text-anti-primary-color;

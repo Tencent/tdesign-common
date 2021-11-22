@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-divider {
@@ -35,6 +37,7 @@
     display: flex;
     border-top: 0;
     white-space: nowrap;
+
     .@{prefix}-divider-inner-text {
       padding: @divider-inner-text-padding;
       display: inline-block;
@@ -51,7 +54,6 @@
     }
 
     &-left {
-
       &::before {
         width: 5%;
       }
@@ -62,7 +64,6 @@
     }
 
     &-right {
-
       &::before {
         width: 95%;
       }
@@ -75,7 +76,6 @@
 }
 
 .@{prefix}-divider--dashed {
-
   &::before,
   &::after {
     border-top: @divider-border-width dashed @divider-border-color;

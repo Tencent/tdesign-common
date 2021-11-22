@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -14,11 +16,15 @@
   }
 
   &.@{radio-cls}-group-outline {
+
     .@{radio-button--cls} {
+
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
+
       &.@{prefix}-is-disabled {
+
         &.@{prefix}-is-checked {
           color: @brand-color-disabled;
           border-color: @brand-color-disabled;
@@ -31,7 +37,7 @@
   &.@{radio-cls}-group-filled {
     border-color: @radio-button-group-background-color-filled;
     padding: @radio-group-padding;
-    border-radius: @radio-button-border-radius; 
+    border-radius: @radio-button-border-radius;
     background-color: @radio-button-group-background-color-filled;
     position: relative;
 
@@ -68,7 +74,6 @@
       }
 
       &:first-child {
-
         &::before {
           opacity: 0;
         }
@@ -86,12 +91,12 @@
         }
 
         & + label {
-
           &::before {
             opacity: 0;
           }
         }
       }
+
       &.@{prefix}-is-disabled {
         background-color: transparent;
 
@@ -107,17 +112,23 @@
   }
 
   &.@{radio-cls}-group-primary-filled {
+
     .@{radio-cls}-group-filled-bg-block {
       background-color: @radio-button-background-color-primary-filled-checked;
     }
+
     .@{radio-button--cls} {
+
       &.@{prefix}-is-checked {
         color: @radio-button-color-primary-filled-checked;
       }
+
       &.@{prefix}-is-disabled {
+
         &.@{prefix}-is-checked {
           color: @radio-button-color-primary-filled-disabled-checked;
         }
+
         &.@{prefix}-is-checked ~ .@{radio-cls}-group-filled-bg-block {
           background-color: @radio-button-background-color-primary-filled-disabled-checked;
         }
@@ -127,6 +138,7 @@
 
   &.@{radio-cls}-group-small {
     height: @radio-height-small;
+
     .@{radio-button--cls} {
       padding: @radio-button-padding-small;
       font-size: @radio-button-font-size-small;
@@ -140,6 +152,7 @@
 
   &.@{radio-cls}-group-medium {
     height: @radio-height-medium;
+
     .@{radio-button--cls} {
       padding: @radio-button-padding-medium;
       font-size: @radio-button-font-size-medium;
@@ -152,6 +165,7 @@
 
   &.@{radio-cls}-group-large {
     height: @radio-height-large;
+
     .@{radio-button--cls} {
       padding: @radio-button-padding-large;
       font-size: @radio-button-font-size-large;
@@ -197,6 +211,7 @@
       border-right: @radio-button-border;
       border-color: @radio-button-border-color-checked;
       transition: border-color @anim-duration-base @anim-time-fn-ease-out;
+
       + .@{radio-button--cls} {
         border-left: 0;
       }
@@ -271,12 +286,14 @@
   }
 
   &:hover {
+
     .@{radio-cls}__input {
       border-color: @radio-dot-color;
     }
   }
 
   &.@{prefix}-is-checked {
+
     .@{radio-cls}__input {
       border-color: @radio-dot-color;
 
@@ -298,12 +315,14 @@
     }
 
     &:hover {
+
       .@{radio-cls}__input {
         border-color: @radio-border-color;
       }
     }
 
     &.@{prefix}-is-checked {
+
       .@{radio-cls}__input {
         border-color: @radio-border-color;
 

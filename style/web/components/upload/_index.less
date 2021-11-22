@@ -1,32 +1,44 @@
-// 组件允许单个组件打包，因此默认引入公共基础样式
+// 组件允许单个组件打包，因此默认引入公共基础样式 --
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
+
 @import "../input/_index.less";
+
 @import "../../mixins/_text.less";
+
 @import "../../mixins/_layout.less";
 
 .@{prefix}-upload {
+
   .@{prefix}-icon {
     font-size: @upload-icon-size;
     flex-shrink: 0;
   }
+
   .@{prefix}-icon-check-circle-filled {
     color: @upload-icon-check-circle-filled-color;
   }
+
   .@{prefix}-icon-error-circle-filled {
     color: @upload-icon-error-circle-filled-color;
   }
+
   .@{prefix}-icon-loading {
     color: @upload-icon-loading-color;
   }
+
   .@{prefix}-icon-time-filled {
     color: @upload-icon-time-filled-color;
   }
+
   .@{prefix}-icon-add {
     color: @upload-icon-add-color;
   }
+
   .@{prefix}-upload-icon-delete {
     color: @upload-single-display-text-color;
     cursor: pointer;
@@ -60,9 +72,11 @@
     font-size: @upload-list-item-font-size;
 
     &.@{prefix}-is--error {
+
       .@{prefix}-upload-list__name {
         color: @upload-list-item-error-color;
       }
+
       .@{prefix}-upload-list__file .@{prefix}-icon {
         color: @upload-list-item-error-color;
       }
@@ -98,7 +112,6 @@
     color: @upload-highlight-color;
   }
 
-
   &__single-name {
     margin-right: @upload-single-name-margin-right;
   }
@@ -106,7 +119,6 @@
 
 // 照片墙
 .@{prefix}-upload {
-
   &-card {
     font-size: @upload-card-font-size;
     line-height: @upload-card-line-height;
@@ -114,7 +126,6 @@
     width: 100%;
 
     & .@{prefix}-is-disabled {
-      
       & :hover {
         cursor: not-allowed;
       }
@@ -132,11 +143,12 @@
       }
 
       &:hover .@{prefix}-upload-card__mask {
-        .hover-transition(opacity);
         opacity: 1;
+        .hover-transition(opacity);
       }
 
       &.@{prefix}-is--error {
+
         & .@{prefix}-icon-warning_fill {
           color: @upload-card-item-error-icon-warning-color;
           margin-bottom: @upload-card-item-error-icon-warning-margin-bottom;
@@ -190,7 +202,9 @@
       flex-direction: column;
       background-color: @upload-card-container-bg-color;
       border: @upload-card-contariner-border;
-      > .@{prefix}-icon, .@{prefix}-loading {
+
+      > .@{prefix}-icon,
+      .@{prefix}-loading {
         font-size: @upload-icon-size-large;
         margin-bottom: @upload-card-container-icon-add-margin-bottom;
       }
@@ -203,12 +217,12 @@
     &__status-wrap {
       text-align: center;
 
-
       > svg {
         margin-bottom: @upload-card-status-wrap-svg-margin-bottom;
       }
 
-      .@{prefix}-icon,.@{prefix}-loading {
+      .@{prefix}-icon,
+      .@{prefix}-loading {
         font-size: @upload-icon-size-middle;
       }
     }
@@ -228,13 +242,13 @@
     }
 
     &__mask {
-      .horizontal-vertical-center-with-flex();
-      .fill-with-position-absolute();
       background-color: @upload-card-mask-bg-color;
       color: @upload-card-mask-color;
       transition: opacity .5s ease-in-out;
       will-change: transform;
       opacity: 0;
+      .horizontal-vertical-center-with-flex();
+      .fill-with-position-absolute();
     }
 
     &__mask--disabled {
@@ -243,7 +257,6 @@
     }
 
     &__mask__item {
-
       &-divider {
         margin: @upload-card-mask-divider-margin;
         border-left: 1px @upload-card-mask-color solid;
@@ -258,7 +271,6 @@
   }
 
   &-dialog {
-
     .t-dialog {
       max-width: 80%;
 
@@ -270,7 +282,6 @@
         padding-bottom: 0;
 
         &-img-box {
-
           img {
             display: block;
             max-width: 100%;
@@ -284,7 +295,6 @@
 
 // 拖拽
 .@{prefix}-upload {
-
   &__dragger {
     display: flex;
     width: @upload-dragger-width;
@@ -336,7 +346,6 @@
     margin-bottom: @upload-single-name-margin-bottom;
     .dragger-inner-max-width(@upload-dragger-width, @upload-dragger-padding, 0);
 
-
     .@{prefix}-upload__single-name {
       .text-ellipsis();
     }
@@ -360,7 +369,6 @@
 
 .@{prefix}-display-text--margin {
   margin-top: @upload-display-text-margin-top;
-
 }
 
 .@{prefix}-upload__single-display-text {
@@ -420,12 +428,15 @@
 .@{prefix}-upload__single-file-input {
   display: flex;
   align-items: center;
+
   .@{prefix}-upload__trigger {
     margin-left: @upload-single-file-input-trigger-margin-left;
   }
+
   .@{prefix}-upload__single-progress {
     white-space: nowrap;
   }
+
   .@{prefix}-input__inner {
     display: flex;
     align-items: center;
@@ -436,7 +447,9 @@
 .@{prefix}-upload__dragger-progress {
   width: 100%;
   display: flex;
-  .@{prefix}-icon,.@{prefix}-loading {
+
+  .@{prefix}-icon,
+  .@{prefix}-loading {
     font-size: @upload-icon-size;
     flex-shrink: 0;
   }
@@ -458,18 +471,19 @@
 }
 
 .@{prefix}-upload__dragger {
-
   &-img-wrap + &-progress-info {
-    .dragger-inner-max-width(@upload-dragger-width, @upload-dragger-padding, (@upload-dragger-img-wrap-width + @upload-dragger-img-wrap-margin-right));
     margin-left: @upload-dragger-img-wrap-margin-right;
+    .dragger-inner-max-width(@upload-dragger-width, @upload-dragger-padding, (@upload-dragger-img-wrap-width + @upload-dragger-img-wrap-margin-right));
   }
 }
 
 .@{prefix}-upload__dragger-progress-info {
   flex: 1;
+
   .@{prefix}-upload__single-display-text {
     margin-bottom: @upload-dragger-progress-info-single-display-text-margin-bottom;
   }
+
   .@{prefix}-button:hover {
     background-color: @upload-dragger-progress-info-button-bg-color-hover;
   }
@@ -501,6 +515,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: @upload-flow-bottom-margin-top;
+
     .@{prefix}-button + .@{prefix}-button {
       margin-left: @upload-flow-button-margin-left;
     }
@@ -557,7 +572,8 @@
     display: flex;
     align-items: center;
 
-    .@{prefix}-icon,.@{prefix}-loading {
+    .@{prefix}-icon,
+    .@{prefix}-loading {
       margin-right: @upload-flow-status-icon-margin-right;
       font-size: @upload-icon-size;
     }
@@ -570,7 +586,6 @@
     width: 100%;
   }
 }
-
 
 small.@{prefix}-upload__tips-error {
   color: @upload-tips-error-color;

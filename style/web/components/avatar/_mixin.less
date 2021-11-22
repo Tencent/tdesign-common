@@ -5,6 +5,7 @@
   height: @size;
   font-size: @font-size;
   line-height: @size;
+
   &.@{prefix}-avatar__icon {
     font-size: @avatar-icon-size;
   }
@@ -24,6 +25,7 @@
 }
 
 .generate-z-index(@n, @i: 1) when (@i =< @n) {
+
   & .@{prefix}-avatar:nth-child(@{i}) {
     z-index: (@avatar-group-init-zIndex - @i);
   }
