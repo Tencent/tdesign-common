@@ -3,10 +3,8 @@
   "less.validate": false,
   "scss.validate": false,
   "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
-  },
-  "[less]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.words": [
     "stylelint"
