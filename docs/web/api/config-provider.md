@@ -22,6 +22,10 @@
 
 {{ popconfirm }}
 
+### Table 表格
+
+{{ table }}
+
 ### 其他组件
 
 {{ others }}
