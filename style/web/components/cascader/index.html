@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cascader</title>
+
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css">
+    <!-- 
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+    
+</head>
+<body style="font-size: 14px;">
+  <div class="tdesign-demo-wrap">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1 class="">Cascader</h1>
+      <p class="tdesign-demo-wrap__info">开发者：bingolin</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020.10.14</p>
+      <p class="tdesign-demo-wrap__info">说明：tdesign cascader 组件的基本样式</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+    <!-- 默认组件 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">默认</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-cascader t-is-popup">          
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-up t-cascader-icon" style="line-height: 32px;"></i>
+          </div>
+          <div class="t-popup t-cascader-dropdown" style="height: 200px;">
+            <div class="t-cascader-panel t-cascader--noraml" >
+              <ul class="t-cascader-menu">
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">香蕉🍌</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">苹果</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">葡萄🍇</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">橘子🍊</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">雪梨🍐</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">西瓜🍉</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">哈密瓜🍈</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+    </div>
+
+    <!-- 组件类型 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">类型</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-cascader t-is-popup">
+          <span class="t-cascader__content">云数据库 /Redis / 备机监控</span>
+          <i class="t-icon t-icon-arrow-up t-cascader-icon" style="line-height: 32px;"></i>
+        </div>
+        <div class="t-popup t-cascader-dropdown" style="height: 200px;">
+          <div class="t-cascader-panel t-cascader-noraml">
+            <ul class="t-cascader-menu t-cascader-menu__seperator">
+              <li class="t-cascader-item t-is-expanded">
+                <span class="t-cascader-item__label">云数据库</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon t-is-expanded" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">API网光</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item t-is-disabled">
+                <span class="t-cascader-item__label">DDOS防护</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">私有网络</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">云服务器总带宽</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">更多1</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">更多2</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+            </ul>
+            <ul class="t-cascader-menu t-cascader-menu__seperator">
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">MySQL</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">CTSDB</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item t-is-expanded">
+                <span class="t-cascader-item__label">Redis</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon t-is-expanded" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">MongoDB</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">MariaDB</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+            </ul>
+            <ul class="t-cascader-menu">
+              <li class="t-cascader-item">
+                <span class="t-cascader-item__label">主机监控</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item t-is-selected">
+                <span class="t-cascader-item__label">备选监控</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        
+        <div class="t-cascader t-is-popup">          
+          <span class="t-tag">
+            广东
+            <i class="t-icon t-icon-close"></i>
+          </span>
+          <span class="t-tag">
+            广州
+            <i class="t-icon t-icon-close"></i>
+          </span>
+          <span class="t-tag">
+            宝安区
+            <i class="t-icon t-icon-close"></i>
+          </span>
+          <i class="t-icon t-icon-arrow-up t-cascader-icon" style="line-height: 32px;"></i>
+        </div>
+        <div class="t-popup t-cascader-dropdown" style="height: 280px;">
+          <div class="t-cascader-panel t-cascader--multiple" >
+            <ul class="t-cascader-menu t-cascader-menu__seperator">
+              <li class="t-cascader-item">
+                <label class="t-checkbox t-is-indeterminate">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">广东</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">天津</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item t-is-disabled">
+                <label class="t-checkbox t-is-disabled">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">浙江</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">上海</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">山东</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">安徽</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">山西</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+            </ul>
+            <ul class="t-cascader-menu t-cascader-menu__seperator">
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">广州</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox t-is-indeterminate">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">深圳</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">珠海</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">汕头</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">佛山</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">东莞</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">惠州</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+            </ul>
+            <ul class="t-cascader-menu">
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">南山区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox t-is-checked">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">宝安区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">坪山区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">龙岗区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">福田区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">罗湖区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">盐田区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+        
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">状态 - 禁用</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <div class="t-cascader t-is-disabled">          
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-down t-cascader-icon" style="line-height: 32px;"></i>
+          </div>
+          <div style="height: 25px; width: 100%;"></div>
+          <div class="t-cascader t-is-disabled">          
+            <span class="t-tag t-is-disabled">
+              广东
+              <i class="t-icon t-icon-close"></i>
+            </span>
+            <span class="t-tag t-is-disabled">
+              广州
+              <i class="t-icon t-icon-close"></i>
+            </span>
+            <span class="t-tag t-is-disabled">
+              宝安区
+              <i class="t-icon t-icon-close"></i>
+            </span>
+            <i class="t-icon t-icon-arrow-down t-cascader-icon" style="line-height: 32px;"></i>
+          </div>
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">状态 - 数据加载</h2>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-cascader t-is-popup">          
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-up t-cascader-icon" style="line-height: 32px;"></i>
+          </div>
+          <div class="t-popup t-cascader-dropdown" style="height: 40px;">
+            <div class="t-cascader-status">
+              <span class="t-cascader__data t-is-loading">数据加载中</span>
+              <i class="t-icon t-icon-refresh t-cascader-icon t-is-loading" style="line-height: 40px;"></i>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-cascader t-is-popup">          
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-up t-cascader-icon" style="line-height: 32px;"></i>
+          </div>
+          <div class="t-popup t-cascader-dropdown" style="height: 40px;">
+            <div class="t-cascader-status">
+              <span class="t-cascader__data t-is-exception">网络异常</span>
+              <span class="t-cascader__data t-is-retry">重新加载</span>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-cascader t-is-popup">          
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-up t-cascader-icon" style="line-height: 32px;"></i>
+          </div>
+          <div class="t-popup t-cascader-dropdown" style="height: 40px;">
+            <div class="t-cascader-status">
+              <span class="t-cascader__data t-is-empty">暂无数据</span>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+      <div class="tdesign-demo-item__body" style="display: flex;">
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-popup t-cascader-dropdown" style="height: 200px;">
+            <div class="t-cascader-panel t-cascader-noraml" >
+              <ul class="t-cascader-menu">
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">香蕉🍌</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">加载中</span>
+                  <i class="t-icon t-icon-loading t-cascader-icon t-is-loading" style="line-height: 40px;"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        <div class="t-popup t-cascader-dropdown" style="height: 200px; margin-left: 50px;">
+          <div class="t-cascader-panel t-cascader-noraml">
+            <ul class="t-cascader-menu t-cascader-menu__seperator">
+              <li class="t-cascader-item">
+                <label class="t-checkbox t-is-checked">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">宝安区</span>
+                <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+              </li>
+              <li class="t-cascader-item">
+                <label class="t-checkbox t-is-checked">
+                  <span class="t-checkbox__input"></span>
+                </label>
+                <span class="t-cascader-item__label">宝安区</span>
+                <i class="t-icon t-icon-loading t-cascader-icon t-is-loading" style="line-height: 40px;"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">状态 - 搜索</h2>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-cascader t-is-popup t-is-search">          
+          <input class="t-cascader-search-input" type="text" value="私有">
+          <i class="t-icon t-icon-arrow-up t-cascader-icon" style="line-height: 32px;"></i>
+        </div>
+        <div class="t-popup t-cascader-dropdown">
+          <div class="t-cascader-panel t-cascader-noraml">
+            <ul class="t-cascader-menu t-is-search">
+              <li class="t-cascader-item"><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+              <li class="t-cascader-item"><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+              <li class="t-cascader-item"><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+              <li class="t-cascader-item"><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+              <li class="t-cascader-item"><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+              <li class="t-cascader-item"><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+              <li class="t-cascader-item"><span>黑石</span><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+              <li class="t-cascader-item"><span>黑石</span><span class="t-item--highlight">私有</span><span>网络/云服务器/数据库</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件尺寸 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">尺寸</h2>
+      <div class="tdesign-demo-item__body">
+        <h3 class="tdesign-demo-block__title">尺寸 - 高度 - 小</h3>
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-cascader t-size-s">          
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-down t-cascader-icon" style="line-height: 24px;"></i>
+          </div>
+          <div class="t-popup t-cascader-dropdown" style="height: 160px;">
+            <div class="t-cascader-panel t-cascader--noraml" >
+              <ul class="t-cascader-menu">
+                <li class="t-cascader-item t-size-s">
+                  <span class="t-cascader-item__label">香蕉🍌</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 32px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-s">
+                  <span class="t-cascader-item__label">苹果</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 32px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-s">
+                  <span class="t-cascader-item__label">葡萄🍇</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 32px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-s">
+                  <span class="t-cascader-item__label">橘子🍊</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 32px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-s">
+                  <span class="t-cascader-item__label">雪梨🍐</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 32px;"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        <h3 class="tdesign-demo-block__title">尺寸 - 高度 - 默认（中）</h3>
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-cascader">          
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-down t-cascader-icon" style="line-height: 32px;"></i>
+          </div>
+          <div class="t-popup t-cascader-dropdown" style="height: 200px;">
+            <div class="t-cascader-panel t-cascader--noraml" >
+              <ul class="t-cascader-menu">
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">香蕉🍌</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">苹果</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">葡萄🍇</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">橘子🍊</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">雪梨🍐</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        <h3 class="tdesign-demo-block__title">尺寸 - 高度 - 大</h3>
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-cascader t-size-l">
+            <span class="t-cascader__placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-down t-cascader-icon" style="line-height: 40px;"></i>
+          </div>
+          <div class="t-popup t-cascader-dropdown" style="height: 240px;">
+            <div class="t-cascader-panel t-cascader--noraml" >
+              <ul class="t-cascader-menu">
+                <li class="t-cascader-item t-size-l">
+                  <span class="t-cascader-item__label">香蕉🍌</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 48px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-l">
+                  <span class="t-cascader-item__label">苹果</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 48px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-l">
+                  <span class="t-cascader-item__label">葡萄🍇</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 48px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-l">
+                  <span class="t-cascader-item__label">橘子🍊</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 48px;"></i>
+                </li>
+                <li class="t-cascader-item t-size-l">
+                  <span class="t-cascader-item__label">雪梨🍐</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 48px;"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        <h3 class="tdesign-demo-block__title">尺寸 - 宽度 - 默认（小）</h3>
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-popup t-cascader-dropdown" style="height: 200px;">
+            <div class="t-cascader-panel t-cascader-noraml" >
+              <ul class="t-cascader-menu">
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">香蕉🍌</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">苹果</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">葡萄🍇</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">橘子🍊</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        <h3 class="tdesign-demo-block__title">尺寸 - 宽度 - 大</h3>
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <!-- 内容区 Start-->
+          <div class="t-popup t-cascader-dropdown" style="height: 200px;">
+            <div class="t-cascader-panel t-cascader-noraml" >
+              <ul class="t-cascader-menu t-width-l">
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">香蕉🍌</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">苹果</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">葡萄🍇</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+                <li class="t-cascader-item">
+                  <span class="t-cascader-item__label">橘子🍊</span>
+                  <i class="t-icon t-icon-arrow-right t-cascader-icon" style="line-height: 40px;"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+        </div>
+        
+        <!-- 内容区 End-->
+        
+      </div>
+  </div>
+    
+</body>
+</html>

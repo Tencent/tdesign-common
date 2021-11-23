@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select</title>
+    <!-- 文档公共样式 及组件特有示例样式-->
+    <link rel="stylesheet"  href="../../docs.css" />
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css">
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+</head>
+<body>
+  <div class="tdesign-demo-wrap" style="font-size: 14px;">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1 class="">Select</h1>
+      <p class="tdesign-demo-wrap__info">开发者：flyge(葛凡飞)</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020-06-01</p>
+      <p class="tdesign-demo-wrap__info">说明：Select组件样式示例</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+
+    <!-- 默认样式 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">默认</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-select" style="height: 32px;">
+          <span class="t-select-placeholder">请选择</span>
+          <i class="t-icon t-icon-arrow-up t-select-right-icon" style="line-height: 32px;"></i>
+        </div>
+
+        <div role="tooltip" aria-hidden="false" class="t-popup undefined t-select-dropdown" data-popper-placement="bottom-start" style="margin-top: 8px; width: 100%;top: 0;">
+          <div>
+            <ul class="create-option"></ul>
+            <ul>
+              <li title="苹果apple~~~~" class="t-select-option">
+                苹果apple~~~~
+              </li>
+              <li title="香蕉banana~~~" class="t-select-option t-is-disabled">
+                香蕉banana~~~
+              </li>
+              <li title="橘子orange~~~" class="t-select-option">
+                橘子orange~~~
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件尺寸 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">尺寸</h2>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-select t-size-s" style="">
+            <span class="t-select-placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-up t-select-right-icon" style="line-height: 24px;"></i>
+          </div>
+
+          <div role="tooltip" aria-hidden="false" class="t-popup undefined t-select-dropdown" data-popper-placement="bottom-start" style="margin-top: 8px; width: 100%;top: 0;">
+            <div>
+              <ul class="create-option"></ul>
+              <ul>
+                <li title="苹果apple~~~~" class="t-select-option t-size-s">
+                  苹果apple~~~~
+                </li>
+                <li title="香蕉banana~~~" class="t-select-option t-size-s">
+                  香蕉banana~~~
+                </li>
+                <li title="橘子orange~~~" class="t-select-option t-size-s">
+                  橘子orange~~~
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-block">
+          <div class="t-select" style="">
+            <span class="t-select-placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-up t-select-right-icon" style="line-height: 32px;"></i>
+          </div>
+
+          <div role="tooltip" aria-hidden="false" class="t-popup undefined t-select-dropdown" data-popper-placement="bottom-start" style="margin-top: 8px; width: 100%;top: 0;">
+            <div>
+              <ul class="create-option"></ul>
+              <ul>
+                <li title="苹果apple~~~~" class="t-select-option">
+                  苹果apple~~~~
+                </li>
+                <li title="香蕉banana~~~" class="t-select-option">
+                  香蕉banana~~~
+                </li>
+                <li title="橘子orange~~~" class="t-select-option">
+                  橘子orange~~~
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-block">
+          <div class="t-select t-size-l" style="">
+            <span class="t-select-placeholder">请选择</span>
+            <i class="t-icon t-icon-arrow-up t-select-right-icon" style="line-height: 40px;"></i>
+          </div>
+
+          <div role="tooltip" aria-hidden="false" class="t-popup t-select-dropdown" data-popper-placement="bottom-start" style="margin-top: 8px; width: 100%;top: 0;">
+            <div>
+              <ul class="create-option"></ul>
+              <ul>
+                <li title="苹果apple~~~~" class="t-select-option t-size-l">
+                  苹果apple~~~~
+                </li>
+                <li title="香蕉banana~~~" class="t-select-option t-size-l">
+                  香蕉banana~~~
+                </li>
+                <li title="橘子orange~~~" class="t-select-option t-size-l">
+                  橘子orange~~~
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">禁用状态</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <div class="t-select t-is-disabled" style="">
+            <span class="t-select-placeholder"> -请选择-</span>
+            <svg class="t-icon t-icon-arrow-down t-select-right-icon">
+              <use xlink:href="#t-icon-arrow-down"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-select t-is-disabled">
+            <span class="t-tag t-tag--default t-tag--dark t-tag--disabled">
+              苹果apple~~~~
+              <i class="t-icon t-icon-close"></i>
+            </span>
+            <span class="t-tag t-tag--default t-tag--dark t-tag--disabled">
+              橘子orange~~~
+              <i class="t-icon t-icon-close"></i>
+            </span>
+            <svg class="t-icon t-icon-arrow-down t-select-right-icon">
+              <use xlink:href="#t-icon-arrow-down"></use>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+
+      <h2 class="tdesign-demo-item__title">选中状态</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="t-select" style="height: 32px;">
+          <span class="t-select-placeholder">请选择</span>
+          <i class="t-icon t-icon-arrow-up t-select-right-icon" style="line-height: 32px;"></i>
+        </div>
+        <div role="tooltip" aria-hidden="false" class="t-popup undefined t-select-dropdown" data-popper-placement="bottom-start" style="margin-top: 8px; width: 100%;top: 0;">
+          <div>
+            <ul class="create-option"></ul>
+            <ul>
+              <li title="苹果apple~~~~" class="t-select-option">
+                苹果apple~~~~
+              </li>
+              <li title="香蕉banana~~~" class="t-select-option t-is-selected">
+                香蕉banana~~~
+              </li>
+              <li title="橘子orange~~~" class="t-select-option">
+                橘子orange~~~
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件类型 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">多选</h2>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-select" style="">
+          <span class="t-tag t-tag--default t-tag--dark">
+            苹果apple
+          </span>
+          <span class="t-tag t-tag--default t-tag--dark">
+            香蕉banana
+            <i class="t-icon t-icon-close"></i>
+          </span>
+          <i class="t-icon t-icon-arrow-up t-select-right-icon" style="line-height: 32px;"></i>
+        </div>
+        <div role="tooltip" aria-hidden="false" class="t-popup undefined t-select-dropdown" data-popper-placement="bottom-start" style="margin-top: 8px; width: 100%;top: 0;">
+          <div>
+            <ul>
+              <li title="苹果apple" class="t-select-option t-is-disabled t-is-selected">
+                <label class="t-checkbox t-is-checked t-is-disabled">
+                  <input type="checkbox" class="t-checkbox__former" disabled="" value="">
+                  <span class="t-checkbox__input"></span>
+                  <span class="t-checkbox__label">苹果apple</span>
+                </label>
+              </li>
+              <li title="香蕉banana" class="t-select-option t-is-selected">
+                <label class="t-checkbox t-is-checked">
+                  <input type="checkbox" class="t-checkbox__former" value="">
+                  <span class="t-checkbox__input"></span>
+                  <span class="t-checkbox__label">香蕉banana</span>
+                </label>
+              </li>
+              <li title="橘子orange" class="t-select-option">
+                <label class="t-checkbox">
+                  <input type="checkbox" class="t-checkbox__former" value="">
+                  <span class="t-checkbox__input"></span>
+                  <span class="t-checkbox__label">橘子orange</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!--选项分组 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">选项分组</h2>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-select" style="">
+          <span class="t-select-placeholder">请选择</span>
+          <i class="t-icon t-icon-arrow-up t-select-right-icon" style="line-height: 32px;"></i>
+        </div>
+
+        <div role="tooltip" aria-hidden="false" class="t-popup undefined t-select-dropdown" data-popper-placement="bottom-start" style="margin-top: 8px; width: 100%;top: 0;">
+          <div>
+            <ul class="t-option-group-header">水果</ul>
+            <ul>
+              <li data-v-3ea0af00="" title="苹果apple~~~~" class="t-select-option">
+                苹果apple~~~~
+              </li>
+              <li data-v-3ea0af00="" title="香蕉banana~~~" class="t-select-option">
+                香蕉banana~~~
+              </li>
+              <li data-v-3ea0af00="" title="橘子orange~~~" class="t-select-option">
+                橘子orange~~~
+              </li>
+            </ul>
+            <ul class="t-option-group-header">蔬菜</ul>
+            <ul>
+              <li data-v-3ea0af00="" title="茄子" class="t-select-option">
+                茄子
+              </li>
+              <li data-v-3ea0af00="" title="西红柿" class="t-select-option">
+                西红柿
+              </li>
+              <li data-v-3ea0af00="" title="白菜" class="t-select-option">
+                白菜
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

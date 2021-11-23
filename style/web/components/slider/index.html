@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slider</title>
+
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css" />
+    <!-- 
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link
+      rel="stylesheet"
+      href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css"
+    />
+  </head>
+  <body>
+    <div class="tdesign-demo-wrap">
+      <!-- 开发者信息 -->
+      <div class="tdesign-demo-wrap__name">
+        <h1 class="">Slider</h1>
+        <p class="tdesign-demo-wrap__info">开发者：mengxiazeng</p>
+        <p class="tdesign-demo-wrap__info">创建日期：2020.11.14</p>
+        <p class="tdesign-demo-wrap__info">
+          说明：tdesign slider组件的基本样式
+        </p>
+      </div>
+
+      <!-- 组件开始区 -->
+
+      <!-- 默认样式 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">默认</h2>
+
+        <!-- 灰底区域 可多个 -->
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-slider">
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="left: 0%; width: 30%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="left: 0%"></div>
+              <div class="t-slider__stop" style="left: 25%"></div>
+              <div class="t-slider__stop" style="left: 50%"></div>
+              <div class="t-slider__stop" style="left: 75%"></div>
+              <div class="t-slider__stop" style="left: 100%"></div>
+            </div>
+            <div class="t-slider__handle" style="left: 30%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="left: 0%">0</div>
+              <div class="t-slider__mark-text" style="left: 25%">1</div>
+              <div class="t-slider__mark-text" style="left: 50%">2</div>
+              <div class="t-slider__mark-text" style="left: 75%">3</div>
+              <div class="t-slider__mark-text" style="left: 100%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 组件状态 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">状态</h2>
+        <!-- 灰底区域 可多个 -->
+        <div class="tdesign-demo-item__body">
+          Normal
+          <!-- 内容区 Start-->
+          <div class="t-slider">
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="left: 0%; width: 30%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="left: 0%"></div>
+              <div class="t-slider__stop" style="left: 25%"></div>
+              <div class="t-slider__stop" style="left: 50%"></div>
+              <div class="t-slider__stop" style="left: 75%"></div>
+              <div class="t-slider__stop" style="left: 100%"></div>
+            </div>
+            <div class="t-slider__handle" style="left: 30%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="left: 0%">0</div>
+              <div class="t-slider__mark-text" style="left: 25%">1</div>
+              <div class="t-slider__mark-text" style="left: 50%">2</div>
+              <div class="t-slider__mark-text" style="left: 75%">3</div>
+              <div class="t-slider__mark-text" style="left: 100%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+        <div class="tdesign-demo-item__body">
+          Selected
+          <!-- 内容区 Start-->
+          <div class="t-slider">
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="left: 0%; width: 30%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="left: 0%"></div>
+              <div class="t-slider__stop" style="left: 25%"></div>
+              <div class="t-slider__stop" style="left: 50%"></div>
+              <div class="t-slider__stop" style="left: 75%"></div>
+              <div class="t-slider__stop" style="left: 100%"></div>
+            </div>
+            <div class="t-slider__handle" style="left: 30%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="left: 0%">0</div>
+              <div class="t-slider__mark-text" style="left: 25%">1</div>
+              <div class="t-slider__mark-text" style="left: 50%">2</div>
+              <div class="t-slider__mark-text" style="left: 75%">3</div>
+              <div class="t-slider__mark-text" style="left: 100%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+        <div class="tdesign-demo-item__body">
+          Disable
+          <!-- 内容区 Start-->
+          <div class="t-slider t-is-disabled">
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="left: 0%; width: 30%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="left: 0%"></div>
+              <div class="t-slider__stop" style="left: 25%"></div>
+              <div class="t-slider__stop" style="left: 50%"></div>
+              <div class="t-slider__stop" style="left: 75%"></div>
+              <div class="t-slider__stop" style="left: 100%"></div>
+            </div>
+            <div class="t-slider__handle" style="left: 30%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="left: 0%">0</div>
+              <div class="t-slider__mark-text" style="left: 25%">1</div>
+              <div class="t-slider__mark-text" style="left: 50%">2</div>
+              <div class="t-slider__mark-text" style="left: 75%">3</div>
+              <div class="t-slider__mark-text" style="left: 100%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 组件类型 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">类型</h2>
+        <div class="tdesign-demo-item__body">
+          单游标滑块
+          <!-- 内容区 Start-->
+          <div class="t-slider">
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="left: 0%; width: 30%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="left: 0%"></div>
+              <div class="t-slider__stop" style="left: 25%"></div>
+              <div class="t-slider__stop" style="left: 50%"></div>
+              <div class="t-slider__stop" style="left: 75%"></div>
+              <div class="t-slider__stop" style="left: 100%"></div>
+            </div>
+            <div class="t-slider__handle" style="left: 30%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="left: 0%">0</div>
+              <div class="t-slider__mark-text" style="left: 25%">1</div>
+              <div class="t-slider__mark-text" style="left: 50%">2</div>
+              <div class="t-slider__mark-text" style="left: 75%">3</div>
+              <div class="t-slider__mark-text" style="left: 100%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+        <div class="tdesign-demo-item__body">
+          双游标滑块
+          <!-- 内容区 Start-->
+          <div class="t-slider">
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="left: 22%; width: 15%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="left: 0%"></div>
+              <div class="t-slider__stop" style="left: 25%"></div>
+              <div class="t-slider__stop" style="left: 50%"></div>
+              <div class="t-slider__stop" style="left: 75%"></div>
+              <div class="t-slider__stop" style="left: 100%"></div>
+            </div>
+            <div class="t-slider__handle" style="left: 22%"></div>
+            <div class="t-slider__handle" style="left: 37%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="left: 0%">0</div>
+              <div class="t-slider__mark-text" style="left: 25%">1</div>
+              <div class="t-slider__mark-text" style="left: 50%">2</div>
+              <div class="t-slider__mark-text" style="left: 75%">3</div>
+              <div class="t-slider__mark-text" style="left: 100%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 纵向滑块 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">纵向滑块</h2>
+        <div class="tdesign-demo-item__body" style="height: 300px;display: flex; flex-direction: row;">
+          <!-- 内容区 Start-->
+          <div
+            class="t-slider t-slider-vertical"
+            style="display: inline-block; width: 200px"
+          >
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="bottom: 0%; height: 30%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="top: 100%"></div>
+              <div class="t-slider__stop" style="top: 75%"></div>
+              <div class="t-slider__stop" style="top: 50%"></div>
+              <div class="t-slider__stop" style="top: 25%"></div>
+              <div class="t-slider__stop" style="top: 0%"></div>
+            </div>
+            <div class="t-slider__handle" style="bottom: 30%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="top: 100%">0</div>
+              <div class="t-slider__mark-text" style="top: 75%">1</div>
+              <div class="t-slider__mark-text" style="top: 50%">2</div>
+              <div class="t-slider__mark-text" style="top: 25%">3</div>
+              <div class="t-slider__mark-text" style="top: 0%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+          <!-- 内容区 Start-->
+          <div
+            class="t-slider t-slider-vertical"
+            style="display: inline-block; width: 200px"
+          >
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="bottom: 30%; height: 20%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="top: 100%"></div>
+              <div class="t-slider__stop" style="top: 75%"></div>
+              <div class="t-slider__stop" style="top: 50%"></div>
+              <div class="t-slider__stop" style="top: 25%"></div>
+              <div class="t-slider__stop" style="top: 0%"></div>
+            </div>
+            <div class="t-slider__handle" style="bottom: 30%"></div>
+            <div class="t-slider__handle" style="bottom: 50%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="top: 100%">0</div>
+              <div class="t-slider__mark-text" style="top: 75%">1</div>
+              <div class="t-slider__mark-text" style="top: 50%">2</div>
+              <div class="t-slider__mark-text" style="top: 25%">3</div>
+              <div class="t-slider__mark-text" style="top: 0%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+          <!-- 内容区 Start-->
+          <div
+            class="t-slider t-slider-vertical t-is-disabled"
+            style="display: inline-block; width: 200px"
+          >
+            <div class="t-slider__rail"></div>
+            <div class="t-slider__track" style="bottom: 0%; height: 30%"></div>
+            <div class="t-slider__step">
+              <div class="t-slider__stop" style="top: 100%"></div>
+              <div class="t-slider__stop" style="top: 75%"></div>
+              <div class="t-slider__stop" style="top: 50%"></div>
+              <div class="t-slider__stop" style="top: 25%"></div>
+              <div class="t-slider__stop" style="top: 0%"></div>
+            </div>
+            <div class="t-slider__handle" style="bottom: 30%"></div>
+            <div class="t-slider__mark">
+              <div class="t-slider__mark-text" style="top: 100%">0</div>
+              <div class="t-slider__mark-text" style="top: 75%">1</div>
+              <div class="t-slider__mark-text" style="top: 50%">2</div>
+              <div class="t-slider__mark-text" style="top: 25%">3</div>
+              <div class="t-slider__mark-text" style="top: 0%">4</div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

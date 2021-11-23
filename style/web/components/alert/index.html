@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alert</title>
+      <!-- 文档公共样式 及组件特有示例样式-->
+    <link rel="stylesheet"  href="../../docs.css" />
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css">
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+
+</head>
+<body>
+  <div class="tdesign-demo-wrap">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1>Alert</h1>
+      <p class="tdesign-demo-wrap__info">开发者：yanniswang</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020-06-01</p>
+      <p class="tdesign-demo-wrap__info">说明：TDesign alert 组件的基本样式</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+
+    <!-- 默认样式 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">基础警告</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--success">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条成功的消息提示
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条普通的消息提示
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--warning">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条警示信息
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--error">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  高危操作/出错信息提示
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">带图标的警告</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--success">
+            <div class="t-alert__icon">
+              <i class="t-icon t-icon-success_fill"></i>
+            </div>
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条成功的消息提示
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info">
+            <div class="t-alert__icon">
+              <i class="t-icon t-icon-prompt_fill"></i>
+            </div>
+            <div class="t-alert__content">
+              这是一条普通的消息提示
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--warning">
+            <div class="t-alert__icon">
+              <i class="t-icon t-icon-warning_fill"></i>
+            </div>
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条警示信息
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--error">
+            <div class="t-alert__icon">
+              <i class="t-icon t-icon-warning_fill"></i>
+            </div>
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  高危操作/出错信息提示
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件类型 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">带操作的警告</h2>
+      <h3>1)带关闭操作</h3>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--success t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条成功的消息提示
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条普通的消息提示
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--warning t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条警示信息
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--error t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  高危操作/出错信息提示
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+      <h3>2)可自定义关闭操作</h3>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条普通的消息提示
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              知道了
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条普通的消息提示
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              不再提醒
+            </div>
+          </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+      <h3>3)带相关操作</h3>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--success t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条成功的消息
+                </div>
+                <div class="t-alert__operation">
+                  相关操作
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条普通的消息提示
+                </div>
+                <div class="t-alert__operation">
+                  相关操作
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--warning t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条警示信息
+                </div>
+                <div class="t-alert__operation">
+                  相关操作
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--error t-alert--closable">
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  高危操作/出错信息提示
+                </div>
+                <div class="t-alert__operation">
+                  相关操作
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件尺寸 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">带相关描述文字的警告</h2>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info t-alert--closable">
+            <div class="t-alert__icon">
+              <i class="t-icon t-icon-prompt_fill"></i>
+            </div>
+            <div class="t-alert__content">
+              <div class="t-alert__title">
+                这是一条普通的消息提示
+              </div>
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  这是一条普通的消息提示描述，这是一条普通的消息提示描述，这是一条普通的消息提示描述，这是一条普通的消息提示描述，
+                </div>
+                <div class="t-alert__operation">
+                  相关操作
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+
+    <!-- 组件尺寸 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">带折叠的警告</h2>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info t-alert--closable t-alert-collapsed">
+            <div class="t-alert__icon">
+              <i class="t-icon t-icon-prompt_fill"></i>
+            </div>
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  <div>
+                    1. 小程序云服务器有奖内测中，即刻成为产品体验官
+                  </div>
+                  <div>
+                    2. 云服务器限时秒杀，首购1C1G仅需99元/年， 还有多款配置供您选择!
+                  </div>
+                  <div class="t-alert__collapse">
+                    展开更多
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-alert t-alert--info t-alert--closable t-alert--expanded">
+            <div class="t-alert__icon">
+              <i class="t-icon t-icon-prompt_fill"></i>
+            </div>
+            <div class="t-alert__content">
+              <div class="t-alert__message">
+                <div class="t-alert__description">
+                  <div>
+                    1. 小程序云服务器有奖内测中，即刻成为产品体验官
+                  </div>
+                  <div>
+                    2. 云服务器限时秒杀，首购1C1G仅需99元/年， 还有多款配置供您选择!
+                  </div>
+                  <div>
+                    3. 小程序云服务器有奖内测中，即刻成为产品体验官
+                  </div>
+                  <div>
+                    4. 云服务器限时秒杀，首购1C1G仅需99元/年， 还有多款配置供您选择!
+                  </div>
+                  <div>
+                    5. 小程序云服务器有奖内测中，即刻成为产品体验官
+                  </div>
+                  <div>
+                    6. 云服务器限时秒杀，首购1C1G仅需99元/年， 还有多款配置供您选择!
+                  </div>
+                  <div class="t-alert__collapse">
+                    收起
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="t-alert__close">
+              <i class="t-icon t-icon-close"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+    <!-- 组件尺寸 -->
+</body>
+<script>
+  function handleClose(el) {
+    el.parentNode.addEventListener('transitionend', () => {
+      el.parentNode.classList.add('t-is-hidden')
+    }, true)
+    el.parentNode.classList.add('t-alert--closing')
+  }
+
+  Array.prototype.forEach.call(document.getElementsByClassName('t-alert__close'), el => {
+    el.addEventListener('click', () => handleClose(el), true)
+  })
+  Array.prototype.forEach.call(document.getElementsByClassName('t-swiper__close'), el => {
+    el.addEventListener('click', () => handleClose(el), true)
+  })
+</script>
+</html>

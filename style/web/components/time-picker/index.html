@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimePicker</title>
+    <!-- 文档公共样式 及组件特有示例样式-->
+    <link rel="stylesheet" href="../../docs.css" />
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css">
+    <!--
+        TDesign 图标库，桌面端与移动端用同样的资源
+        使用方式：<i class="t-icon t-icon-delete"></i>
+      -->
+    <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+
+</head>
+<body>
+  <div class="tdesign-demo-wrap">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1 class="">TimePicker 时间选择器</h1>
+      <p class="tdesign-demo-wrap__info">开发者：yorickili</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020-11-11</p>
+      <p class="tdesign-demo-wrap__info">说明：TDesign TimePicker 组件的基本样式</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+    <!-- 默认样式 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">时分秒</h2>
+
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+          <div class="tdesign-demo-block">
+            <div class="t-time-picker">
+              <div class="t-time-picker-panel__header">
+                00 : 00 : 00
+              </div>
+              <div class="t-time-picker-panel__body">
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">时分</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+
+        <div class="tdesign-demo-block">
+          <div class="t-time-picker">
+            <div class="t-time-picker-panel__header">
+              00 : 00
+            </div>
+            <div class="t-time-picker-panel__body">
+              <ul class="t-time-picker-panel__body-scroll">
+                <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                <li class="t-time-picker-panel__body-scroll-item t-is-disabled">01</li>
+                <li class="t-time-picker-panel__body-scroll-item t-is-disabled">02</li>
+                <li class="t-time-picker-panel__body-scroll-item">03</li>
+                <li class="t-time-picker-panel__body-scroll-item">04</li>
+                <li class="t-time-picker-panel__body-scroll-item">05</li>
+                <li class="t-time-picker-panel__body-scroll-item">06</li>
+                <li class="t-time-picker-panel__body-scroll-item">07</li>
+                <li class="t-time-picker-panel__body-scroll-item">08</li>
+                <li class="t-time-picker-panel__body-scroll-item">09</li>
+                <li class="t-time-picker-panel__body-scroll-item">10</li>
+                <li class="t-time-picker-panel__body-scroll-item">10</li>
+                <li class="t-time-picker-panel__body-scroll-item">11</li>
+              </ul>
+              <ul class="t-time-picker-panel__body-scroll">
+                <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                <li class="t-time-picker-panel__body-scroll-item">01</li>
+                <li class="t-time-picker-panel__body-scroll-item">02</li>
+                <li class="t-time-picker-panel__body-scroll-item">03</li>
+                <li class="t-time-picker-panel__body-scroll-item">04</li>
+                <li class="t-time-picker-panel__body-scroll-item">05</li>
+                <li class="t-time-picker-panel__body-scroll-item">06</li>
+                <li class="t-time-picker-panel__body-scroll-item">07</li>
+                <li class="t-time-picker-panel__body-scroll-item">08</li>
+                <li class="t-time-picker-panel__body-scroll-item">09</li>
+                <li class="t-time-picker-panel__body-scroll-item">10</li>
+                <li class="t-time-picker-panel__body-scroll-item">10</li>
+                <li class="t-time-picker-panel__body-scroll-item">11</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件类型 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">时间区间</h2>
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-time-picker-panel-section">
+          <div class="t-time-picker-panel-section__body">
+            <div class="t-time-picker">
+              <div class="t-time-picker-panel__header">
+                <span>00 : 00 : 00</span>
+              </div>
+              <div class="t-time-picker-panel__body">
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="t-time-picker-panel__gap">
+              <div class="t-time-picker-panel__gap-top">至</div>
+            </div>
+
+            <div class="t-time-picker">
+              <div class="t-time-picker-panel__header">
+                <span>00 : 00 : 00</span>
+              </div>
+              <div class="t-time-picker-panel__body">
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item t-is-disabled">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+                <ul class="t-time-picker-panel__body-scroll">
+                  <li class="t-time-picker-panel__body-scroll-item t-is-current">00</li>
+                  <li class="t-time-picker-panel__body-scroll-item">01</li>
+                  <li class="t-time-picker-panel__body-scroll-item">02</li>
+                  <li class="t-time-picker-panel__body-scroll-item">03</li>
+                  <li class="t-time-picker-panel__body-scroll-item">04</li>
+                  <li class="t-time-picker-panel__body-scroll-item">05</li>
+                  <li class="t-time-picker-panel__body-scroll-item">06</li>
+                  <li class="t-time-picker-panel__body-scroll-item">07</li>
+                  <li class="t-time-picker-panel__body-scroll-item">08</li>
+                  <li class="t-time-picker-panel__body-scroll-item">09</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">10</li>
+                  <li class="t-time-picker-panel__body-scroll-item">11</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="t-time-picker-panel-section__footer">
+            <div class="t-time-picker-panel-section__footer-button">确定</div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badge</title>
+
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css" />
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link
+      rel="stylesheet"
+      href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css"
+    />
+  </head>
+  <body>
+    <div class="tdesign-demo-wrap">
+      <!-- 开发者信息 -->
+      <div class="tdesign-demo-wrap__name">
+        <h1 class="">Badge</h1>
+        <p class="tdesign-demo-wrap__info">开发者：ikeqcheng</p>
+        <p class="tdesign-demo-wrap__info">创建日期：2020-10-09</p>
+        <p class="tdesign-demo-wrap__info">说明：TDesign Badge</p>
+      </div>
+
+      <!-- 组件开始区 -->
+
+      <!-- 默认样式 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">默认</h2>
+
+        <!-- 灰底区域 可多个 -->
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">2</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">99</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">99+</span>
+            </span>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">颜色</h2>
+
+        <!-- 灰底区域 可多个 -->
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span
+                class="t-badge--dot"
+                style="background-color: rgb(33, 150, 243)"
+              ></span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span
+                class="t-badge--circle"
+                style="background-color: rgb(33, 150, 243)"
+                >99+</span
+              >
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span
+                class="t-badge--round"
+                style="background-color: rgb(33, 150, 243)"
+                >new</span
+              >
+            </span>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">形状</h2>
+
+        <!-- 灰底区域 可多个 -->
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">2</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">99</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--round">new</span>
+            </span>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 组件类型 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">类型</h2>
+        <h3>1.红点样式徽标数：</h3>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--dot"></span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              解锁新徽章
+              <span class="t-badge--dot" style="right: -3px"></span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <svg
+                class="t-icon"
+                viewBox="0 0 16 16"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                style="font-size: 24px"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8,9 C9.40504021,9 10.7254812,9.36221239 11.8730402,9.99835445 L11.885,10 L12.4565011,10.2862457 C12.7901689,10.4574447 13,10.8009441 13,11.1759685 L13,13 C13,13.5522847 12.5522847,14 12,14 L4,14 C3.44771525,14 3,13.5522847 3,13 L3,11.1762791 C3,10.8012353 3.20985249,10.4577217 3.54354665,10.2865317 L4.121,10 L4.126,9.999 L4.27379497,9.91895294 C5.38659871,9.3321599 6.6545093,9 8,9 Z M8,10 C6.51283435,10 5.13398645,10.4637634 4.00018867,11.2545577 L4,13 L12,13 L12.0003287,11.2549186 C10.8664331,10.4639045 9.48739188,10 8,10 Z M8,2.49576492 C9.65685425,2.49576492 11,3.83891067 11,5.49576492 C11,7.15261916 9.65685425,8.49576492 8,8.49576492 C6.34314575,8.49576492 5,7.15261916 5,5.49576492 C5,3.83891067 6.34314575,2.49576492 8,2.49576492 Z M8,3.49576492 C6.8954305,3.49576492 6,4.39119542 6,5.49576492 C6,6.60033441 6.8954305,7.49576492 8,7.49576492 C9.1045695,7.49576492 10,6.60033441 10,5.49576492 C10,4.39119542 9.1045695,3.49576492 8,3.49576492 Z"
+                ></path>
+              </svg>
+              <span class="t-badge--dot" style="margin-top: 2px"></span>
+            </span>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+        <h3>2.数字样式徽标数：</h3>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">2</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">99</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">99+</span>
+            </span>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+        <h3>3.自定义式徽标数：</h3>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <span class="t-badge">
+            <button
+              class="t-button t-button--primary t-button--shape-circle"
+              style="width: 24px; height: 24px"
+            ></button>
+            <span class="t-badge--round" style="right: -12px; margin-top: 4px"
+              >new</span
+            >
+          </span>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 组件尺寸 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">尺寸</h2>
+        <h3>1.默认大小</h3>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">2</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">99</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle">99+</span>
+            </span>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+        <h3>2.小</h3>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle t-size-s">2</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle t-size-s">99</span>
+            </span>
+          </div>
+          <div class="tdesign-demo-block-line">
+            <span class="t-badge">
+              <button class="t-button t-button--line"></button>
+              <span class="t-badge--circle t-size-s">99+</span>
+            </span>
+          </div>
+
+          <!-- 内容区 End-->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

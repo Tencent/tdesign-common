@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs</title>
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css">
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+
+</head>
+<body>
+  <div class="tdesign-demo-wrap tdesign-demo-item--tabs">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1 class="">Tabs</h1>
+      <p class="tdesign-demo-wrap__info">开发者：bombren</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020-06-08</p>
+      <p class="tdesign-demo-wrap__info">说明：TDesign tabs 组件的基本样式</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+    <!-- 默认样式 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">默认</h2>
+
+      <h1>demo: 常规</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-top">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-top" style="width: 112px;left: 112px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">状态</h2>
+
+      <h1>demo: 选项在底部</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">bottom选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">bottom选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">bottom选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">bottom选项卡4的内容</p>
+            </div>
+          </div>
+          <div class="t-tabs__header t-is-bottom">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-bottom">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-bottom" style="width: 112px;left: 112px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: 选项在左侧</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-left">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-left">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-left" style="height: 48px;top: 48px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-left">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-left t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-left">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-left">选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">left选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">left选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">left选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">left选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: 选项在右侧</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-right">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-right">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-right" style="height: 48px;top: 48px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-right">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-right t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-right">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-right">选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">right选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">right选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">right选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">right选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+
+    <!-- 组件类型 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">类型</h2>
+
+      <h1>demo: 卡片类型，禁用</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-tabs__nav--card t-is-top">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <!-- <div class="t-tabs__bar t-is-top" style="width: 112px;transform: translateX(112px);"></div> -->
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">card选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m t-is-active">card选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">card选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m t-is-disabled">card选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">card选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">card选项卡2的内容，选项卡4禁用</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">card选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">card选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: icon选项卡</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-top">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-top" style="width: 131px;left: 131px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m"><span class="fork-icon"></span>选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-active"><span class="fork-icon"></span>选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m"><span class="fork-icon"></span>选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m"><span class="fork-icon"></span>选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: 常规禁用</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-top">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-top" style="width: 112px;left: 112px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-disabled">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">选项卡3禁用</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: 卡片型，带增加按钮</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs" style="max-width: 800px;">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <span class="t-tabs__add-btn t-size-m"> + </span>
+              <div class="t-tabs__nav-container t-tabs__nav--card t-is-top t-is-addable">
+                <!-- <span class="t-tabs__scroll-btn"> ← </span>
+                <span class="t-tabs__scroll-btn"> → </span> -->
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <!-- <div class="t-tabs__bar t-is-top" style="width: 112px;transform: translateX(112px);"></div> -->
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡四</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡五</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡六</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡七</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡八</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡九</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: 卡片型，带左右scroll按钮</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs" style="max-width: 800px;">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <!-- <span class="t-tabs__add-btn t-size-m"> + </span> -->
+              <div class="t-tabs__nav-container t-tabs__nav--card t-is-top">
+                <span class="t-tabs__scroll-btn t-tabs__scroll-btn--left t-size-m"> ← </span>
+                <span class="t-tabs__scroll-btn t-tabs__scroll-btn--right t-size-m"> → </span>
+                <div class="t-tabs__nav-scroll t-is-scrollable">
+                  <div class="t-tabs__nav-wrap">
+                    <!-- <div class="t-tabs__bar t-is-top" style="width: 112px;transform: translateX(112px);"></div> -->
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡四</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡五</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡六</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡七</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡八</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡九</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: 常规，带左右scroll按钮</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs" style="max-width: 800px;">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <!-- <span class="t-tabs__add-btn t-size-m"> + </span> -->
+              <div class="t-tabs__nav-container t-is-top">
+                <span class="t-tabs__scroll-btn t-tabs__scroll-btn--left t-size-m"> ← </span>
+                <span class="t-tabs__scroll-btn t-tabs__scroll-btn--right t-size-m"> → </span>
+                <div class="t-tabs__nav-scroll t-is-scrollable">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-top" style="width: 112px;left: 112px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡四</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡五</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡六</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡七</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡八</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡九</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo：卡片型，同时有add和scroll按钮</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs" style="max-width: 800px;">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <span class="t-tabs__add-btn t-size-m"> + </span>
+              <div class="t-tabs__nav-container t-tabs__nav--card t-is-top t-is-addable">
+                <span class="t-tabs__scroll-btn t-tabs__scroll-btn--left t-size-m"> ← </span>
+                <span class="t-tabs__scroll-btn t-tabs__scroll-btn--right t-size-m"> → </span>
+                <div class="t-tabs__nav-scroll t-is-scrollable">
+                  <div class="t-tabs__nav-wrap">
+                    <!-- <div class="t-tabs__bar t-is-top" style="width: 112px;transform: translateX(112px);"></div> -->
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡四</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡五</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡六</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡七</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡八</div>
+                    <div class="t-tabs__nav-item t-tabs__nav--card t-size-m">选项卡九</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+    </div>
+
+    <!-- 组件尺寸 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">尺寸(如果有)</h2>
+
+      <h1>demo: middle尺寸</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-top">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-top" style="width: 112px;left: 112px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-m">选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">middle size选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">middle size选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">middle size选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">middle size选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <h1>demo: large尺寸</h1>
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <div class="t-tabs">
+          <div class="t-tabs__header t-is-top">
+            <div class="t-tabs__nav">
+              <div class="t-tabs__nav-container t-is-top">
+                <div class="t-tabs__nav-scroll">
+                  <div class="t-tabs__nav-wrap">
+                    <div class="t-tabs__bar t-is-top" style="width: 112px;left: 112px;"></div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-l">选项卡一</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-l t-is-active">选项卡二</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-l">选项卡三</div>
+                    <div class="t-tabs__nav-item t-tabs__nav-item--base t-size-l">选项卡四</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="t-tabs__content">
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">large size选项卡1的内容</p>
+            </div>
+            <div class="t-tab-panel">
+              <p style="padding: 25px;">large size选项卡2的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">large size选项卡3的内容</p>
+            </div>
+            <div class="t-tab-panel" style="display: none;">
+              <p style="padding: 25px;">large size选项卡4的内容</p>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

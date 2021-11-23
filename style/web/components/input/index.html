@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input</title>
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css" />
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+  </head>
+  <body>
+    <div class="tdesign-demo-wrap">
+      <!-- 开发者信息 -->
+      <div class="tdesign-demo-wrap__name">
+        <h1 class="tdesign-demo-wrap__title">Input</h1>
+        <p class="tdesign-demo-wrap__info">开发者：JrainLau</p>
+        <p class="tdesign-demo-wrap__info">创建日期：2020-05-14</p>
+        <p class="tdesign-demo-wrap__info">说明：TDesign Input 组件</p>
+      </div>
+
+      <!-- 组件开始区 -->
+
+      <!-- 默认样式 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">组件类型</h2>
+
+        <!-- 灰底区域 可多个 -->
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <h4>1.基础输入框</h4>
+          <br />
+          <div class="t-input">
+            <input
+              class="t-input__inner"
+              type="text"
+              placeholder="请输入内容"
+            />
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <h4>2.文本域输入框</h4>
+          <br />
+          <div class="t-textarea">
+            <textarea
+              class="t-textarea__inner"
+              rows="2"
+              placeholder="请输入内容"
+            ></textarea>
+          </div>
+          <br />
+          <div class="t-textarea t-textarea--limit">
+            <textarea
+              class="t-textarea__inner"
+              rows="2"
+              placeholder="请输入内容"
+            >
+有限制的输入内容</textarea
+            >
+            <span class="t-textarea__count">5/150</span>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <h4>3.前后置标签输入框</h4>
+          <br />
+          <div class="t-addon t-addon--append">
+            <div class="t-input">
+              <input type="text" class="t-input__inner" />
+            </div>
+            <div class="t-addon__append">
+              .com
+            </div>
+          </div>
+          <br />
+          <div class="t-addon t-addon--prepend t-addon--append">
+            <div class="t-addon__prepend">
+              Http://
+            </div>
+            <div class="t-input">
+              <input type="text" class="t-input__inner" />
+            </div>
+            <div class="t-addon__append">
+              .com
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <h4>4.组合输入框</h4>
+          <br />
+          <div class="t-input-group t-input-group--separate">
+            <div class="t-input t-input--narrow">
+              <input type="text" class="t-input__inner" />
+            </div>
+            <div class="t-input">
+              <input type="text" class="t-input__inner" />
+            </div>
+          </div>
+          <div class="tdesign-demo-divide"></div>
+          <div class="t-input-group t-input-group">
+            <div class="t-input t-input--narrow">
+              <input type="text" class="t-input__inner" />
+            </div>
+            <div class="t-input">
+              <input type="text" class="t-input__inner" />
+            </div>
+          </div>
+          <div class="tdesign-demo-divide"></div>
+          <div>
+            <div class="t-input-group t-input-group--separate">
+              <div class="t-input" style="width: 100px;">
+                <input type="text" class="t-input__inner" />
+              </div>
+              <span>&nbsp;-&nbsp;</span>
+              <div class="t-input" style="width: 100px;">
+                <input type="text" class="t-input__inner" />
+              </div>
+              <div class="t-input" style="width: 100px;">
+                <input type="text" class="t-input__inner" />
+              </div>
+              <div class="t-input" style="width: 100px;">
+                <input type="text" class="t-input__inner" />
+              </div>
+            </div>
+            <div class="t-input-group t-input-group">
+              <button class="t-button t-button--line">
+                之间<i class="t-icon t-icon-warning"></i>
+              </button>
+              <div class="t-input" style="width: 100px;">
+                <input type="text" class="t-input__inner" />
+              </div>
+            </div>
+          </div>
+          <div class="tdesign-demo-divide"></div>
+          <div class="t-input-group t-input-group">
+            <button class="t-button t-button--line">
+              广东<i class="t-icon t-icon-warning"></i>
+            </button>
+            <div class="t-input">
+              <input type="text" class="t-input__inner" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <h4>5.可清空内容输入框</h4>
+          <br />
+          <div class="t-input t-input--suffix">
+            <input type="text" class="t-input__inner" />
+            <span class="t-input__suffix">
+              <i class="t-icon t-icon-warning"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <h4>6.带icon输入框（包含密码输入框）</h4>
+          <br />
+          <div class="t-input t-input--prefix t-input--suffix">
+            <span class="t-input__prefix">
+              <i class="t-icon t-icon-warning"></i>
+            </span>
+            <input type="text" class="t-input__inner" />
+            <span class="t-input__suffix">
+              <i class="t-icon t-icon-warning"></i>
+            </span>
+          </div>
+          <br />
+          <div
+            class="t-input t-input--password t-input--prefix t-input--suffix"
+          >
+            <span class="t-input__prefix">
+              <i class="t-icon t-icon-warning"></i>
+            </span>
+            <input type="password" class="t-input__inner" />
+            <span class="t-input__suffix">
+              <i class="t-icon t-icon-warning"></i>
+            </span>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <!-- 组件状态 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">组件状态</h2>
+
+        <!-- 灰底区域 可多个 -->
+        <div class="tdesign-demo-item__body">
+          <div class="tdesign-demo-block">
+            <h4>1.正常</h4>
+            <br />
+            <div class="t-input">
+              <input type="text" class="t-input__inner" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <div class="tdesign-demo-block">
+            <h4>2.禁用</h4>
+            <br />
+            <div class="t-input t-is-disabled">
+              <input
+                type="text"
+                disabled
+                class="t-input__inner"
+                value="禁用状态"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <div class="tdesign-demo-block">
+            <h4>3.状态</h4>
+            <br />
+            <div class="t-input t-is-success">
+              <input type="text" class="t-input__inner" value="成功状态" />
+            </div>
+            <br />
+            <div class="t-input t-is-warning">
+              <input type="text" class="t-input__inner" value="警告状态" />
+            </div>
+            <br />
+            <div class="t-input t-is-error">
+              <input type="text" class="t-input__inner" value="错误状态" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <div class="tdesign-demo-block">
+            <h4>4.带额外内容提示</h4>
+            <br />
+            <div class="t-input">
+              <input
+                type="text"
+                class="t-input__inner"
+                placeholder="请输入内容"
+              />
+              <span class="t-input__extra"
+                >这里是额外的提示语，有可能会很多文字，有可能会很多文字</span
+              >
+            </div>
+            <br />
+            <div class="t-input t-is-success">
+              <input
+                type="text"
+                class="t-input__inner"
+                placeholder="请输入内容"
+              />
+              <span class="t-input__extra"
+                >这里是额外的提示语，有可能会很多文字，有可能会很多文字</span
+              >
+            </div>
+            <br />
+            <div class="t-input t-is-warning">
+              <input
+                type="text"
+                class="t-input__inner"
+                placeholder="请输入内容"
+              />
+              <span class="t-input__extra"
+                >这里是额外的提示语，有可能会很多文字，有可能会很多文字</span
+              >
+            </div>
+            <br />
+            <div class="t-input t-is-error">
+              <input
+                type="text"
+                class="t-input__inner"
+                placeholder="请输入内容"
+              />
+              <span class="t-input__extra"
+                >这里是额外的提示语，有可能会很多文字，有可能会很多文字</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="tdesign-demo-item__body">
+          <div class="tdesign-demo-block">
+            <h4>5.带状态图标提示</h4>
+            <br />
+            <div class="t-input t-input--password">
+              <input
+                type="password"
+                class="t-input__inner"
+                placeholder="请输入内容"
+              />
+              <span class="t-input__status">
+                <i class="t-icon t-icon-warning"></i>
+              </span>
+            </div>
+            <br />
+            <div class="t-input t-input--error">
+              <input
+                type="text"
+                class="t-input__inner"
+                placeholder="请输入内容"
+              />
+              <span class="t-input__extra"
+                >这里是额外的提示语，有可能会很多文字，有可能会很多文字</span
+              >
+              <span class="t-input__status">
+                <i class="t-icon t-icon-warning"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 组件尺寸 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">尺寸(如果有)</h2>
+        <div class="tdesign-demo-item__body">
+          <h4>1.不同高度尺寸：高，低</h4>
+          <br />
+          <div class="t-input t-size-l">
+            <input
+              type="text"
+              class="t-input__inner"
+              placeholder="请输入内容"
+            />
+          </div>
+          <br />
+          <div class="t-input t-size-m">
+            <input
+              type="text"
+              class="t-input__inner"
+              placeholder="请输入内容"
+            />
+          </div>
+        </div>
+
+        <!-- 内容区 Start-->
+
+        <!-- 内容区 End-->
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件名称</title>
+
+    <!-- 组件样式（全部的） -->
+    <link rel="stylesheet" href="../../dist/tdesign.css">
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<span class="t-icon t-icon-prompt_fill"></span>
+    -->
+    <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+
+</head>
+<body>
+  <div class="tdesign-demo-wrap">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1 class="">Switch</h1>
+      <p class="tdesign-demo-wrap__info">开发者：chazzhou</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020-06-30</p>
+      <p class="tdesign-demo-wrap__info">说明：TDesign switch 组件的基本样式</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+
+    <!-- 默认样式 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">组件类型</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        <div class="tdesign-demo-block">
+          <h4 class="tdesign-demo-block__title">基础</h4>
+          <button class="t-switch">
+            <span class="t-switch__handle"></span>
+          </button>
+          <button class="t-switch t-is-checked">
+            <span class="t-switch__handle"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        <div class="tdesign-demo-block">
+          <h4 class="tdesign-demo-block__title">带描述的开关</h4>
+          <div>
+            <button class="t-switch t-size-l">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                关
+              </div>
+            </button>
+
+            <button class="t-switch t-size-l t-is-checked">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                开
+              </div>
+            </button>
+          </div>
+          <br>
+          <div>
+            <button class="t-switch t-size-l">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                <i class="t-icon t-icon-close"></i>
+              </div>
+            </button>
+
+            <button class="t-switch t-size-l t-is-checked">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                <i class="t-icon t-icon-tick"></i>
+              </div>
+            </button>
+          </div>
+          <br>
+
+          <div>
+            <button class="t-switch">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                关
+              </div>
+            </button>
+
+            <button class="t-switch t-is-checked">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                开
+              </div>
+            </button>
+          </div>
+          <br>
+          <div>
+            <button class="t-switch">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                <i class="t-icon t-icon-close"></i>
+              </div>
+            </button>
+
+            <button class="t-switch t-is-checked">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                <i class="t-icon t-icon-tick"></i>
+              </div>
+            </button>
+          </div>
+          <br>
+
+          <div>
+            <button class="t-switch t-size-s">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                关
+              </div>
+            </button>
+
+            <button class="t-switch t-size-s t-is-checked">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                开
+              </div>
+            </button>
+          </div>
+          <br>
+          <div>
+            <button class="t-switch t-size-s">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                <i class="t-icon t-icon-close"></i>
+              </div>
+            </button>
+
+            <button class="t-switch t-size-s t-is-checked">
+              <span class="t-switch__handle"></span>
+              <div class="t-switch__content">
+                <i class="t-icon t-icon-tick"></i>
+              </div>
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">组件状态</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        <div class="tdesign-demo-block">
+          <h4 class="tdesign-demo-block__title">正常</h4>
+          <button class="t-switch">
+            <span class="t-switch__handle"></span>
+          </button>
+          <button class="t-switch t-is-checked">
+            <span class="t-switch__handle"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        <div class="tdesign-demo-block">
+          <h4 class="tdesign-demo-block__title">加载状态</h4>
+          <button class="t-switch t-is-loading">
+            <span class="t-switch__handle">
+              <i class="t-icon t-icon-loading"></i>
+            </span>
+          </button>
+          <button class="t-switch t-is-loading t-is-checked">
+            <span class="t-switch__handle">
+              <i class="t-icon t-icon-loading"></i>
+            </span>
+          </button>
+
+          <button class="t-switch t-size-l t-is-loading">
+            <span class="t-switch__handle">
+              <i class="t-icon t-icon-loading"></i>
+            </span>
+          </button>
+          <button class="t-switch t-size-l t-is-loading t-is-checked">
+            <span class="t-switch__handle">
+              <i class="t-icon t-icon-loading"></i>
+            </span>
+          </button>
+
+          <button class="t-switch t-size-s t-is-loading">
+            <span class="t-switch__handle">
+              <i class="t-icon t-icon-loading"></i>
+            </span>
+          </button>
+          <button class="t-switch t-size-s t-is-loading t-is-checked">
+            <span class="t-switch__handle">
+              <i class="t-icon t-icon-loading"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tdesign-demo-item__body">
+        <div class="tdesign-demo-block">
+          <h4 class="tdesign-demo-block__title">禁用状态</h4>
+          <button class="t-switch t-is-disabled">
+            <span class="t-switch__handle"></span>
+          </button>
+          <button class="t-switch t-is-disabled t-is-checked">
+            <span class="t-switch__handle"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 组件大小 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">组件大小</h2>
+      <div class="tdesign-demo-item__body">
+        <div class="tdesign-demo-block">
+          <h4 class="tdesign-demo-block__title">1.开关提供大、中（默认）、小3中尺寸：</h4>
+          <button class="t-switch t-size-s">
+            <span class="t-switch__handle"></span>
+          </button>
+          <button class="t-switch">
+            <span class="t-switch__handle"></span>
+          </button>
+          <button class="t-switch t-size-l">
+            <span class="t-switch__handle"></span>
+          </button>
+          <br>
+          <br>
+          <button class="t-switch t-is-checked t-size-s">
+            <span class="t-switch__handle"></span>
+          </button>
+          <button class="t-switch t-is-checked">
+            <span class="t-switch__handle"></span>
+          </button>
+          <button class="t-switch t-is-checked t-size-l">
+            <span class="t-switch__handle"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<script>
+  [...document.querySelectorAll('.t-switch')].forEach(elem => {
+    elem.addEventListener('click', function() {
+      this.classList.toggle('t-is-checked');
+    });
+  });
+</script>
+</body>
+</html>

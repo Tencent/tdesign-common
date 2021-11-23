@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagination</title>
+  <!-- 文档公共样式 及组件特有示例样式-->
+  <link rel="stylesheet" href="../../docs.css" />
+  <!-- 组件样式（全部的） -->
+  <link rel="stylesheet" href="../../dist/tdesign.css">
+  <!-- 
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+  <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+
+</head>
+
+<body>
+  <div class="tdesign-demo-wrap">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1>Pagination</h1>
+      <p class="tdesign-demo-wrap__info">开发者：amaoliu / barkzhang</p>
+      <p class="tdesign-demo-wrap__info">创建日期：</p>
+      <p class="tdesign-demo-wrap__info">说明：</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+
+    <!-- 少量页面 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base  ">
+      <h2 class="tdesign-demo-item__title">少量页面</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-pagination">
+            <!-- 页数 -->
+            <ul class="t-pagination__pager">
+              <li class="t-pagination__number">1</li>
+              <li class="t-pagination__number">2</li>
+              <li class="t-pagination__number t-is-current">3</li>
+              <li class="t-pagination__number">4</li>
+              <li class="t-pagination__number">5</li>
+            </ul>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+    <!-- 大量页面 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">大量页面</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="tdesign-demo-block">
+          <div class="t-pagination">
+            <!-- 向前按钮-->
+            <div class="t-pagination__btn t-pagination__btn--prev">
+              <i class="t-icon t-icon-arrow-left"></i>
+            </div>
+            <!-- 页数 -->
+            <ul class="t-pagination__pager">
+              <li class="t-pagination__number">1</li>
+              <li class="t-pagination__number">2</li>
+              <li class="t-pagination__number t-is-current">3</li>
+              <li class="t-pagination__number">4</li>
+              <li class="t-pagination__number">5</li>
+            </ul>
+            <!-- 向后按钮-->
+            <div class="t-pagination__btn t-pagination__btn--next">
+              <i class="t-icon t-icon-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+    <!-- 带数据总量显示 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">带数据总量显示</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-pagination ">
+          <!--数据统计区-->
+          <div class="t-pagination__total">共 658 项数据</div>
+
+          <!-- 向前按钮-->
+          <div class="t-pagination__btn t-pagination__btn--prev">
+            <i class="t-icon t-icon-arrow-left"></i>
+          </div>
+          <!-- 页数 -->
+          <ul class="t-pagination__pager">
+            <li class="t-pagination__number">1</li>
+            <li class="t-pagination__number t-pagination__number--more more-quickprev">
+              <!-- hover态时替换掉more图标-->
+              <i class="t-icon t-icon-double-arrow-right"></i>
+            </li>
+            <li class="t-pagination__number">50</li>
+            <li class="t-pagination__number t-is-current">51</li>
+            <li class="t-pagination__number">52</li>
+            <li class="t-pagination__number">53</li>
+            <li class="t-pagination__number">54</li>
+            <li class="t-pagination__number t-pagination__number--more more-quicknext">
+              <!-- hover态时替换掉more图标-->
+              <i class="t-icon t-icon-double-arrow-right"></i>
+            </li>
+            <li class="t-pagination__number">90</li>
+          </ul>
+          <!-- 向后按钮-->
+          <div class="t-pagination__btn t-pagination__btn--next">
+            <i class="t-icon t-icon-arrow-right"></i>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+    <!-- 带页面展示数量选择 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">带页面展示数量选择</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-pagination">
+          <!-- select-->
+          <div class="t-pagination__select t-pagination__select-demo"></div>
+          <!-- 向前按钮-->
+          <div class="t-pagination__btn t-pagination__btn--prev">
+            <i class="t-icon t-icon-arrow-left"></i>
+          </div>
+          <!-- 页数 -->
+          <ul class="t-pagination__pager">
+            <li class="t-pagination__number">1</li>
+            <li class="t-pagination__number t-pagination__number--more more-quickprev"><i
+                class="t-icon t-icon-more"></i></li>
+            <li class="t-pagination__number">50</li>
+            <li class="t-pagination__number t-is-current">51</li>
+            <li class="t-pagination__number">52</li>
+            <li class="t-pagination__number">53</li>
+            <li class="t-pagination__number">54</li>
+            <li class="t-pagination__number t-pagination__number--more more-quicknext"><i
+                class="t-icon t-icon-more"></i></li>
+            <li class="t-pagination__number">90</li>
+          </ul>
+          <!-- 向后按钮-->
+          <div class="t-pagination__btn t-pagination__btn--next">
+            <i class="t-icon t-icon-arrow-right"></i>
+          </div>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+    <!-- 带快速跳转 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">带快速跳转</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-pagination">
+
+          <!-- 向前按钮-->
+          <div class="t-pagination__btn t-pagination__btn--prev">
+            <i class="t-icon t-icon-arrow-left"></i>
+          </div>
+          <!-- 页数 -->
+          <ul class="t-pagination__pager">
+            <li class="t-pagination__number">1</li>
+            <li class="t-pagination__number t-pagination__number--more more-quickprev"><i
+                class="t-icon t-icon-more"></i></li>
+            <li class="t-pagination__number">50</li>
+            <li class="t-pagination__number t-is-current">51</li>
+            <li class="t-pagination__number">52</li>
+            <li class="t-pagination__number">53</li>
+            <li class="t-pagination__number">54</li>
+            <li class="t-pagination__number t-pagination__number--more more-quicknext"><i
+                class="t-icon t-icon-more"></i></li>
+            <li class="t-pagination__number">90</li>
+          </ul>
+          <!-- 向后按钮-->
+          <div class="t-pagination__btn t-pagination__btn--next">
+            <i class="t-icon t-icon-arrow-right"></i>
+          </div>
+          <!-- 跳转-->
+          <div class="t-pagination__jump">
+            跳转
+            <div class="t-input">
+              <input class="t-input__inner" type="text"/>
+            </div>
+            页
+          </div>
+
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+    <!-- 极简版 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">极简版</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-pagination">
+
+          <!-- 向前按钮-->
+          <div class="t-pagination__btn t-pagination__btn--prev">
+            <i class="t-icon t-icon-arrow-left"></i>
+          </div>
+          <!-- select-->
+          <div class="t-pagination__select t-pagination__select-demo"></div>
+          <!-- 向后按钮-->
+          <div class="t-pagination__btn t-pagination__btn--next">
+            <i class="t-icon t-icon-arrow-right"></i>
+          </div>
+
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+
+    <!-- 极简迷你版 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">极简迷你版</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-pagination t-size-s">
+
+          <!-- 向前按钮-->
+          <div class="t-pagination__btn t-pagination__btn--prev">
+            <i class="t-icon t-icon-arrow-left"></i>
+          </div>
+          <!-- select-->
+          <div class="t-pagination__select t-pagination__select-demo"></div>
+          <!-- 向后按钮-->
+          <div class="t-pagination__btn t-pagination__btn--next">
+            <i class="t-icon t-icon-arrow-right"></i>
+          </div>
+
+        </div>
+        <!-- 内容区 End-->
+      </div>
+    </div>
+    <!-- 类型 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">类型</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <h3 class="tdesign-demo-block__title">禁用</h2>
+            <div class="t-pagination">
+
+              <!-- 向前按钮-->
+              <div class="t-pagination__btn t-pagination__btn--prev t-is-disabled">
+                <i class="t-icon t-icon-arrow-left"></i>
+              </div>
+              <!-- 页数 -->
+              <ul class="t-pagination__pager">
+                <li class="t-pagination__number t-is-disabled ">1</li>
+                <li class="t-pagination__number t-pagination__number--more more-quickprev t-is-disabled"><i
+                    class="t-icon t-icon-more"></i></li>
+                <li class="t-pagination__number t-is-disabled">50</li>
+                <li class="t-pagination__number t-is-disabled t-is-current">51</li>
+                <li class="t-pagination__number t-is-disabled">52</li>
+                <li class="t-pagination__number t-is-disabled">53</li>
+                <li class="t-pagination__number t-is-disabled">54</li>
+                <li class="t-pagination__number t-pagination__number--more more-quickprev t-is-disabled"><i
+                    class="t-icon t-icon-more"></i></li>
+                <li class="t-pagination__number t-is-disabled">90</li>
+              </ul>
+              <!-- 向后按钮-->
+              <div class="t-pagination__btn t-pagination__btn--next t-is-disabled">
+                <i class="t-icon t-icon-arrow-right"></i>
+              </div>
+
+            </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <div class="t-pagination  t-size-s">
+
+            <!-- 向前按钮-->
+            <div class="t-pagination__btn t-pagination__btn--prev t-is-disabled">
+              <i class="t-icon t-icon-arrow-left"></i>
+            </div>
+            <!-- 页数 -->
+            <ul class="t-pagination__pager">
+              <li class="t-pagination__number t-is-disabled">1</li>
+
+              <li class="t-pagination__number t-is-disabled">2</li>
+              <li class="t-pagination__number t-is-disabled t-is-current">3</li>
+              <li class="t-pagination__number t-is-disabled">4</li>
+              <li class="t-pagination__number t-is-disabled">5</li>
+
+            </ul>
+            <!-- 向后按钮-->
+            <div class="t-pagination__btn t-pagination__btn--next t-is-disabled">
+              <i class="t-icon t-icon-arrow-right"></i>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+    <!-- 尺寸 -->
+    <div class="tdesign-demo-item  tdesign-demo-item--pagination-base">
+      <h2 class="tdesign-demo-item__title">尺寸</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <h3 class="tdesign-demo-block__title">默认</h2>
+            <div class="t-pagination ">
+              <!--数据统计区-->
+              <div class="t-pagination__total">共 658 项数据</div>
+
+              <!-- 向前按钮-->
+              <div class="t-pagination__btn t-pagination__btn--prev">
+                <i class="t-icon t-icon-arrow-left"></i>
+              </div>
+              <!-- 页数 -->
+              <ul class="t-pagination__pager">
+                <li class="t-pagination__number">1</li>
+                <li class="t-pagination__number t-pagination__number--more"><i class="t-icon t-icon-more"></i></li>
+                <li class="t-pagination__number">50</li>
+                <li class="t-pagination__number t-is-current">51</li>
+                <li class="t-pagination__number">52</li>
+                <li class="t-pagination__number">53</li>
+                <li class="t-pagination__number">54</li>
+                <li class="t-pagination__number t-pagination__number--more"><i class="t-icon t-icon-more"></i></li>
+                <li class="t-pagination__number">90</li>
+              </ul>
+              <!-- 向后按钮-->
+              <div class="t-pagination__btn t-pagination__btn--next">
+                <i class="t-icon t-icon-arrow-right"></i>
+              </div>
+
+            </div>
+        </div>
+        <div class="tdesign-demo-block">
+          <h3 class="tdesign-demo-block__title">迷你</h2>
+            <div class="t-pagination  t-size-s">
+              <!--数据统计区-->
+              <div class="t-pagination__total">共 658 项数据</div>
+
+              <!-- 向前按钮-->
+              <div class="t-pagination__btn t-pagination__btn--prev">
+                <i class="t-icon t-icon-arrow-left"></i>
+              </div>
+              <!-- 页数 -->
+              <ul class="t-pagination__pager">
+                <li class="t-pagination__number">1</li>
+
+                <li class="t-pagination__number">2</li>
+                <li class="t-pagination__number t-is-current">3</li>
+                <li class="t-pagination__number">4</li>
+                <li class="t-pagination__number">5</li>
+
+              </ul>
+              <!-- 向后按钮-->
+              <div class="t-pagination__btn t-pagination__btn--next">
+                <i class="t-icon t-icon-arrow-right"></i>
+              </div>
+
+            </div>
+        </div>
+
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+
+
+</body>
+
+</html>

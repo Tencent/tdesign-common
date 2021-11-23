@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <link rel="stylesheet" href="../../dist/tdesign.css" />
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link
+      rel="stylesheet"
+      href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css"
+    />
+    <style>
+      .disable-button {
+        padding: 40px;
+        margin-bottom: 40px;
+        position: sticky;
+        top: 0;
+        background: #fff;
+        border-bottom: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tdesign-demo-wrap tdesign-demo-wrap--button">
+      <!-- 开发者信息 -->
+      <div class="tdesign-demo-wrap__name">
+        <h1 class="">Button</h1>
+        <p class="tdesign-demo-wrap__info">开发者：youngerwang / chazzhou</p>
+        <p class="tdesign-demo-wrap__info">创建日期：</p>
+        <p class="tdesign-demo-wrap__info">
+          说明：tdesign button 组件的基本样式
+        </p>
+      </div>
+
+      <div class="disable-button">
+        禁用
+        <button class="t-switch t-size-m"><span class="t-switch__handle"></span><div class="t-switch__content t-size-m"></div></button>
+      </div>
+
+      <!-- 组件开始区 -->
+
+      <!-- 组件类型 variant -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">组件类型 variant</h2>
+
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+            <button class="t-button t-button--variant-base">主要按钮</button>
+            <button class="t-button t-button--variant-outline">次要按钮</button>
+            <button class="t-button t-button--variant-dashed">虚框按钮</button>
+            <button class="t-button t-button--variant-text">文字按钮</button>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 组件主题 theme -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">主题 theme</h2>
+
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-button--theme-primary">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-button--theme-primary">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-button--theme-primary">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-button--theme-primary">文字按钮</button>
+          </div>
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-button--theme-danger">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-button--theme-danger">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-button--theme-danger">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-button--theme-danger">文字按钮</button>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 图标按钮 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">图标按钮</h2>
+
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+            <button class="t-button t-button--variant-base">
+              <i class="t-icon t-icon-download"></i>
+              <span class="t-button__text">
+                下载文件
+              </span>
+            </button>
+            <button class="t-button t-button--variant-outline">
+              <i class="t-icon t-icon-download"></i>
+              <span class="t-button__text">
+                次要按钮
+              </span>
+            </button>
+            <button class="t-button t-button--variant-dashed">
+              <i class="t-icon t-icon-download"></i>
+              <span class="t-button__text">
+                虚框按钮
+              </span>
+            </button>
+            <button class="t-button t-button--variant-base t-button--icon-only t-button--shape-circle">
+              <i class="t-icon t-icon-download"></i>
+            </button>
+            <button class="t-button t-button--variant-outline t-button--icon-only t-button--shape-circle">
+              <i class="t-icon t-icon-download"></i>
+            </button>
+            <button class="t-button t-button--variant-dashed t-button--icon-only t-button--shape-circle">
+              <i class="t-icon t-icon-download"></i>
+            </button>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 幽灵按钮 ghost -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title">幽灵按钮 ghost</h2>
+
+        <div class="tdesign-demo-item__body" style="background-color: #aaa;">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-button--ghost">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-button--ghost">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-button--ghost">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-button--ghost">文字按钮</button>
+          </div>
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-button--theme-primary t-button--ghost">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-button--theme-primary t-button--ghost">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-button--theme-primary t-button--ghost">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-button--theme-primary t-button--ghost">文字按钮</button>
+          </div>
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-button--theme-danger t-button--ghost">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-button--theme-danger t-button--ghost">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-button--theme-danger t-button--ghost">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-button--theme-danger t-button--ghost">文字按钮</button>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 组件尺寸 -->
+      <div class="tdesign-demo-item tdesign-demo-item--button-size">
+        <h2 class="tdesign-demo-item__title">尺寸</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-size-l">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-size-l">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-size-l">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-size-l">文字按钮</button>
+          </div>
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-size-m">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-size-m">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-size-m">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-size-m">文字按钮</button>
+          </div>
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-size-s">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-size-s">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-size-s">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-size-s">文字按钮</button>
+          </div>
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-size-full-width">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-size-full-width">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-size-full-width">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-size-full-width">文字按钮</button>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <!-- 块级按钮 -->
+      <div class="tdesign-demo-item tdesign-demo-item--button-size">
+        <h2 class="tdesign-demo-item__title">块级按钮</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="tdesign-demo-block">
+            <button class="t-button t-button--variant-base t-size-full-width">主要按钮</button>
+            <button class="t-button t-button--variant-outline t-size-full-width">次要按钮</button>
+            <button class="t-button t-button--variant-dashed t-size-full-width">虚框按钮</button>
+            <button class="t-button t-button--variant-text t-size-full-width">文字按钮</button>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+    </div>
+    <script>
+      let disabled = false;
+      const buttons = document.querySelectorAll('.t-button');
+      const disableSwitch = document.querySelector('.disable-button .t-switch');
+
+      disableSwitch.addEventListener('click', function() {
+        if (disabled) {
+          disabled = false;
+          Array.prototype.forEach.call(buttons, function(button) {
+            button.classList.remove('t-is-disabled')
+          });
+          disableSwitch.classList.remove('t-is-checked');
+        } else {
+          disabled = true;
+          Array.prototype.forEach.call(buttons, function(button) {
+            button.classList.add('t-is-disabled')
+          });
+          disableSwitch.classList.add('t-is-checked');
+        }
+      });
+    </script>
+  </body>
+</html>

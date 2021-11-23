@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InputNumber</title>
+  <!-- 组件样式（全部的） -->
+  <link rel="stylesheet" href="../../dist/tdesign.css" />
+  <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+  <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css" />
+</head>
+
+<body>
+  <div class="tdesign-demo-wrap">
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1 class="tdesign-demo-wrap__title">InputNumber</h1>
+      <p class="tdesign-demo-wrap__info">Kyrielin</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020-11-26</p>
+      <p class="tdesign-demo-wrap__info">说明：TDesign InputNumber 组件</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+    <!-- 默认样式 -->
+    <div class="tdesign-demo-item tdesign-demo-item--input-number">
+      <h2 class="tdesign-demo-item__title">组件类型</h2>
+      <p>1. 输入居中，两侧调整数值：</p>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item">
+        <!-- 内容区 Start-->
+        <div class="t-input-number">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+
+        <div class="t-input-number t-is-disabled">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" disabled type="number" />
+          </div>
+        </div>
+
+        <div class="t-input-number">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase t-is-disabled">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+
+        <div class="t-input-number">
+          <span class="t-input-number__decrease t-is-disabled">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+
+        <div class="t-input-number">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input t-is-error">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+      </div>
+
+      <p>2. 输入居左，右侧调整数值：</p>
+      <div class="tdesign-demo-item">
+        <div class="t-input-number t-is-controls-right">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-arrow-up"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-arrow-down"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 尺寸 -->
+    <div class="tdesign-demo-item tdesign-demo-item--input-number">
+      <h2 class="tdesign-demo-item__title">组件大小</h2>
+      <p>1.两侧型数字输入框提供小、中（默认）</p>
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item">
+        <!-- 内容区 Start-->
+        <div class="t-input-number t-size-s">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+
+        <br />
+
+        <div class="t-input-number">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+      </div>
+
+      <p>2.右侧型数字输入框提供中（默认）、大</p>
+      <div class="tdesign-demo-item">
+        <div class="t-input-number t-is-controls-right">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-arrow-down"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-arrow-up"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+
+        <br />
+
+        <div class="t-input-number t-is-controls-right t-size-l">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-arrow-down"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-arrow-up"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- 禁用 -->
+    <div class="tdesign-demo-item tdesign-demo-item--input-number">
+      <h2 class="tdesign-demo-item__title">禁用</h2>
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item">
+        <!-- 内容区 Start-->
+        <div class="t-input-number t-is-disabled">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-add"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-remove"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+        <div class="t-input-number t-is-controls-right t-is-disabled">
+          <span class="t-input-number__decrease">
+            <i class="t-icon t-icon-arrow-down"></i>
+          </span>
+          <span class="t-input-number__increase">
+            <i class="t-icon t-icon-arrow-up"></i>
+          </span>
+          <div class="t-input">
+            <input class="t-input__inner" type="number" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</body>
+
+</html>

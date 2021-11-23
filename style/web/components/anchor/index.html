@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anchor</title>
+    <link rel="stylesheet" href="../../dist/tdesign.css" />
+    <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+    <link
+      rel="stylesheet"
+      href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css"
+    />
+  </head>
+  <body>
+    <div class="tdesign-demo-wrap tdesign-demo-wrap--anchor">
+      <!-- 开发者信息 -->
+      <div class="tdesign-demo-wrap__name">
+        <h1 class="">Anchor</h1>
+        <p class="tdesign-demo-wrap__info">开发者：kobejia</p>
+        <p class="tdesign-demo-wrap__info">创建日期：2020-10-16</p>
+        <p class="tdesign-demo-wrap__info">
+          说明：<br>
+          tdesign Anchor组件的基本样式<br>
+          锚点左侧line的top偏移距离为24的倍数，如 24*n，高度为对应item的高度;
+        </p>
+      </div>
+
+      <!-- 组件开始区 -->
+      <!-- 默认样式 -->
+      <div class="t-anchor t--affix" id="demo-test">
+        <div class="t-anchor_line">
+          <div class="point"></div>
+        </div>
+        <div class="t-anchor_content">
+          <div class="t-anchor-item">
+            <a href="#default" class="t-anchor-item_link" title="默认">默认</a>
+          </div>
+          <div class="t-anchor-item">
+            <a href="#leveln" class="t-anchor-item_link" title="多级锚点">多级锚点</a>
+          </div>
+          <div class="t-anchor-item"><a href="#act" class="t-anchor-item_link" title="状态">状态</a></div>
+          <div class="t-anchor-item">
+            <a href="#size" class="t-anchor-item_link" title="尺寸">尺寸</a>
+            <div class="t-anchor-item">
+              <a href="#size-d" class="t-anchor-item_link" title="尺寸">尺寸-默认</a>
+            </div>
+            <div class="t-anchor-item">
+              <a href="#size-l" class="t-anchor-item_link" title="尺寸">尺寸-大</a>
+            </div>
+            <div class="t-anchor-item">
+              <a href="#size-s" class="t-anchor-item_link" title="尺寸">尺寸-小</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 默认样式 -->
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item_title" id="default">默认</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-anchor">
+            <div class="t-anchor_line">
+              <div class="point" style="display: none"></div>
+            </div>
+            <div class="t-anchor__content">
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="定义">定义</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="服务功能">服务功能</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="使用说明">使用说明</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="保密协议">保密协议</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="其他">其他</a>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item_title" id="default">内容过长换行</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-anchor">
+            <div class="t-anchor_line">
+              <div class="point" style="display: none"></div>
+            </div>
+            <div class="t-anchor__content">
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="定义">定义</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="服务功能">服务功能服务功能服务功能服务功能服务功能服务功能服务功能服务功能服务功能服务功能</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="使用说明">使用说明</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="保密协议">保密协议</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="其他">其他</a>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item_title" id="leveln">多级锚点</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-anchor">
+            <div class="t-anchor_line">
+              <div class="point" style="display: none"></div>
+            </div>
+            <div class="t-anchor__content">
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="定义">定义</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="服务功能">服务功能</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#"  class="t-anchor-item_link" title="使用说明">使用说明</a>
+                <div class="t-anchor-item">
+                  <a href="#" class="t-anchor-item_link" title="定义">定义</a>
+                </div>
+                <div class="t-anchor-item">
+                  <a href="#" class="t-anchor-item_link" title="服务功能">服务功能</a>
+                </div>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="保密协议">保密协议</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="其他">其他</a>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item_title" id="act">状态-selected</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-anchor">
+            <div class="t-anchor_line">
+              <div class="point" style="top: 72px"></div>
+            </div>
+            <div class="t-anchor__content">
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="定义">定义</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="服务功能">服务功能</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="使用说明">使用说明</a>
+                <div class="t-anchor-item t-is-active">
+                  <a href="#" class="t-anchor-item_link" title="定义">定义</a>
+                </div>
+                <div class="t-anchor-item">
+                  <a href="#" class="t-anchor-item_link" title="服务功能">服务功能</a>
+                </div>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="保密协议">保密协议</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#" class="t-anchor-item_link" title="其他">其他</a>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+      <div class="tdesign-demo-item">
+        <h1 class="tdesign-demo-item__title" id="size">尺寸</h1>
+        <h2 class="tdesign-demo-item__title" id="size-d">尺寸-默认</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-anchor">
+            <div class="t-anchor_line">
+              <div class="point"></div>
+            </div>
+            <div class="t-anchor_content">
+              <div class="t-anchor-item">
+                <a href="#default" class="t-anchor-item_link" title="默认">默认</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#leveln" class="t-anchor-item_link" title="多级锚点">多级锚点</a>
+              </div>
+              <div class="t-anchor-item"><a href="#act" class="t-anchor-item_link" title="状态">状态</a></div>
+              <div class="t-anchor-item">
+                <a href="#size" class="t-anchor-item_link" title="尺寸">尺寸</a>
+                <div class="t-anchor-item">
+                  <a href="#size-l" class="t-anchor-item_link" title="尺寸">尺寸-大</a>
+                </div>
+                <div class="t-anchor-item">
+                  <a href="#size-s" class="t-anchor-item_link" title="尺寸">尺寸-小</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title" id="size-l">尺寸-大</h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-anchor t-size-l">
+            <div class="t-anchor_line">
+              <div class="point"></div>
+            </div>
+            <div class="t-anchor_content">
+              <div class="t-anchor-item">
+                <a href="#default" class="t-anchor-item_link" title="默认">默认</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#leveln" class="t-anchor-item_link" title="多级锚点">多级锚点</a>
+              </div>
+              <div class="t-anchor-item"><a href="#act" class="t-anchor-item_link" title="状态">状态</a></div>
+              <div class="t-anchor-item">
+                <a href="#size" class="t-anchor-item_link" title="尺寸">尺寸</a>
+                <div class="t-anchor-item">
+                  <a href="#size-l" class="t-anchor-item_link" title="尺寸">尺寸-大</a>
+                </div>
+                <div class="t-anchor-item">
+                  <a href="#size-s" class="t-anchor-item_link" title="尺寸">尺寸-小</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+
+      <div class="tdesign-demo-item">
+        <h2 class="tdesign-demo-item__title t-anchor-target t-is-active" id="size-s">尺寸-小
+          <a class="t-icon t-icon-file-copy t-copy"></a>
+        </h2>
+        <div class="tdesign-demo-item__body">
+          <!-- 内容区 Start-->
+          <div class="t-anchor t-size-s">
+            <div class="t-anchor_line">
+              <div class="point"></div>
+            </div>
+            <div class="t-anchor_content">
+              <div class="t-anchor-item">
+                <a href="#default" class="t-anchor-item_link" title="默认">默认</a>
+              </div>
+              <div class="t-anchor-item">
+                <a href="#leveln" class="t-anchor-item_link" title="多级锚点">多级锚点</a>
+              </div>
+              <div class="t-anchor-item"><a href="#act" class="t-anchor-item_link" title="状态">状态</a></div>
+              <div class="t-anchor-item">
+                <a href="#size" class="t-anchor-item_link" title="尺寸">尺寸</a>
+                <div class="t-anchor-item">
+                  <a href="#size-l" class="t-anchor-item_link" title="尺寸">尺寸-大</a>
+                </div>
+                <div class="t-anchor-item">
+                  <a href="#size-s" class="t-anchor-item_link" title="尺寸">尺寸-小</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 End-->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    //demo test code
+    document.querySelector("#demo-test").addEventListener("click", function(e){
+      if(e.target.className === "t-anchor-item_link"){
+        var idx = 0;
+        document.querySelector("#demo-test").querySelectorAll(".t-anchor-item_link").forEach(function(item,index){
+          item.parentElement.className = "t-anchor-item";
+          if(item.href === e.target.href){
+            idx = index;
+          }
+        });
+        document.querySelector("#demo-test .point").style.top = 24*(idx) + "px";
+        e.target.parentElement.className = "t-anchor-item t-is-active";
+        
+      }
+      console.log("34543543")
+    })
+    
+  </script>
+</html>

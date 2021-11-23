@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form</title>
+  <!-- 组件样式（全部的） -->
+  <link rel="stylesheet" href="../../dist/tdesign.css">
+  <!--
+      TDesign 图标库，桌面端与移动端用同样的资源
+      使用方式：<i class="t-icon t-icon-delete"></i>
+    -->
+  <link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">
+
+</head>
+
+<body>
+  <div class="tdesign-demo-wrap">
+
+    <!-- 开发者信息 -->
+    <div class="tdesign-demo-wrap__name">
+      <h1 class="">Form</h1>
+      <p class="tdesign-demo-wrap__info">开发者：fishcui, harveyhe, kyriexzhang</p>
+      <p class="tdesign-demo-wrap__info">创建日期：2020-11-19</p>
+      <p class="tdesign-demo-wrap__info">说明：TDesign form 组件的基本样式</p>
+    </div>
+
+    <!-- 组件开始区 -->
+
+
+    <!-- 默认样式 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">默认</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+
+        <!-- 内容区 Start-->
+        <div class="t-form">
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>输入框</label>
+            </div>
+            <div class="t-form__controls t-col">
+              <div class="t-input">
+                <input class="t-input__inner" type="text" placeholder="请输入内容" />
+              </div>
+            </div>
+          </div>
+
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>输入框</label>
+            </div>
+            <div class="t-form__controls t-col">
+              <div class="t-input">
+                <input class="t-input__inner" type="text" placeholder="请输入内容" />
+              </div>
+            </div>
+          </div>
+
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>单选框</label>
+            </div>
+            <div class="t-form__controls t-col">
+              <label class="t-radio">
+                <input type="radio" class="t-radio__former" value="" />
+                <span class="t-radio__input"></span><span class="t-radio__label">未选中项</span>
+              </label>
+
+              <label class="t-radio t-is-checked">
+                <input type="radio" class="t-radio__former" value="" />
+                <span class="t-radio__input"></span><span class="t-radio__label">选中项</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>多选框</label>
+            </div>
+            <div class="t-form__controls t-col">
+              <label class="t-checkbox t-is-checked">
+                <input type="checkbox" class="t-checkbox__former" value="" />
+                <span class="t-checkbox__input"></span><span class="t-checkbox__label">选中项</span>
+              </label>
+
+              <label class="t-checkbox t-is-checked">
+                <input type="checkbox" class="t-checkbox__former" value="" />
+                <span class="t-checkbox__input"></span><span class="t-checkbox__label">选中项</span>
+              </label>
+
+              <label class="t-checkbox t-is-disabled">
+                <input type="checkbox" class="t-checkbox__former" value="" />
+                <span class="t-checkbox__input"></span><span class="t-checkbox__label">未选禁用项</span>
+              </label>
+
+            </div>
+          </div>
+
+
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>开关</label>
+            </div>
+            <div class="t-form__controls t-col">
+              <button class="t-switch">
+                <span class="t-switch__handle"></span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <!-- 内容区 End-->
+
+      </div>
+    </div>
+
+    <!-- 组件状态 -->
+    <div class="tdesign-demo-item">
+      <h2 class="tdesign-demo-item__title">状态</h2>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <h4>1. 表单布局通过UI布局控制，在此不详述</h4>
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <h4>2 表单验证状态</h4>
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>失败</label>
+            </div>
+            <div class="t-form__controls t-col  t-is-error">
+              <div class="t-input">
+                <input type="text" class="t-input__inner" placeholder="请输入内容" />
+                <span class="t-input__extra">这里是额外的提示语，有可能会很多文字，有可能会很多文字</span>
+              </div>
+            </div>
+          </div>
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>警告</label>
+            </div>
+            <div class="t-form__controls t-col t-is-warning">
+              <div class="t-input">
+                <input type="text" class="t-input__inner" placeholder="请输入内容" />
+                <span class="t-input__extra">这里是额外的提示语，有可能会很多文字，有可能会很多文字</span>
+              </div>
+            </div>
+          </div>
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-col t-col-1">
+              <label>成功</label>
+            </div>
+            <div class="t-form__controls t-col  t-is-success">
+              <div class="t-input">
+                <input type="text" class="t-input__inner" placeholder="请输入内容" />
+                <span class="t-input__extra">这里是额外的提示语，有可能会很多文字，有可能会很多文字</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- 内容区 End-->
+      </div>
+
+      <!-- 灰底区域 可多个 -->
+      <div class="tdesign-demo-item__body">
+        <!-- 内容区 Start-->
+        <!-- tdesign-demo-block block内容容器，加了上间距 -->
+        <div class="tdesign-demo-block">
+          <h4>3. 表单提示状态</h4>
+          <div class="t-form__item t-row">
+            <div class="t-form__controls t-col t-is-success">
+              <div class="t-input t-input--password">
+                <input type="password" class="t-input__inner" placeholder="请输入内容" />
+                <span class="t-input__status">
+                  <i class="t-icon t-icon-warning_fill"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="t-form__item t-row">
+            <div class="t-form__controls t-col t-is-error">
+              <div class="t-input">
+                <input type="text" class="t-input__inner" placeholder="请输入内容" />
+                <span class="t-input__extra">这里是额外的提示语，有可能会很多文字，有可能会很多文字</span>
+                <span class="t-input__status">
+                  <i class="t-icon t-icon-error-circle-filled"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 内容区 End-->
+    </div>
+
+    <!-- 灰底区域 可多个 -->
+    <div class="tdesign-demo-item__body">
+      <!-- 内容区 Start-->
+      <!-- tdesign-demo-block block内容容器，加了上间距 -->
+      <div class="tdesign-demo-block">
+        <h4>4. 动态增减表单</h4>
+        <div class="t-form__item t-row">
+          <div class="t-input t-input--password">
+            <input type="password" class="t-input__inner" placeholder="请输入内容" />
+            <span class="t-input__status">
+              <i class="t-icon t-icon-add-rectangle"></i>
+            </span>
+          </div>
+        </div>
+        <div class="t-form__item t-row">
+          <div class="t-input t-input--password">
+            <input type="password" class="t-input__inner" placeholder="请输入内容" />
+            <span class="t-input__status">
+              <i class="t-icon t-icon-minus-rectangle"></i>
+            </span>
+          </div>
+        </div>
+
+      </div>
+      <!-- 内容区 End-->
+    </div>
+  </div>
+
+  <!-- 对齐方式 -->
+  <div class="tdesign-demo-item">
+    <h2 class="tdesign-demo-item__title">对齐方式</h2>
+
+    <div class="tdesign-demo-item__body">
+      <!-- 内容区 Start-->
+      <!-- tdesign-demo-block block内容容器，加了上间距 -->
+      <div class="tdesign-demo-block">
+        <h4>1.左对齐</h4>
+        <div class="t-form__item t-row">
+          <div class="t-form__label t-form__label--left t-col t-col-1">
+            <label>名称</label>
+          </div>
+          <div class="t-form__controls t-col">
+            <div class="t-input">
+              <input class="t-input__inner" type="text" placeholder="请输入内容" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 内容区 End-->
+    </div>
+
+    <div class="tdesign-demo-item__body">
+      <!-- 内容区 Start-->
+      <!-- tdesign-demo-block block内容容器，加了上间距 -->
+      <div class="tdesign-demo-block">
+        <h4>2.右对齐</h4>
+        <div class="t-form__item t-row">
+          <div class="t-form__label t-form__label--right t-col t-col-1">
+            <label>名称</label>
+          </div>
+          <div class="t-form__controls t-col">
+            <div class="t-input">
+              <input class="t-input__inner" type="text" placeholder="请输入内容" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 内容区 End-->
+    </div>
+
+
+    <div class="tdesign-demo-item__body">
+      <!-- 内容区 Start-->
+      <!-- tdesign-demo-block block内容容器，加了上间距 -->
+      <div class="tdesign-demo-block">
+        <h4>3.顶部对齐</h4>
+        <div class="t-form__item t-row">
+          <div class="t-form__label t-form__label--top t-col t-col-12">
+            <label>名称</label>
+          </div>
+          <div class="t-form__controls t-col">
+            <div class="t-input">
+              <input class="t-input__inner" type="text" placeholder="请输入内容" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 内容区 End-->
+    </div>
+
+
+    <div class="tdesign-demo-item__body">
+      <!-- 内容区 Start-->
+      <!-- tdesign-demo-block block内容容器，加了上间距 -->
+      <div class="tdesign-demo-block">
+        <h4>4.内联</h4>
+        <div class="t-form t-form-inline">
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-form__label--top t-col">
+              <label>名称</label>
+            </div>
+            <div class="t-form__controls t-col">
+              <div class="t-input">
+                <input class="t-input__inner" type="text" placeholder="请输入内容" />
+              </div>
+            </div>
+          </div>
+          <div class="t-form__item t-row">
+            <div class="t-form__label t-form__label--top t-col">
+              <label>名称</label>
+            </div>
+            <div class="t-form__controls t-col">
+              <div class="t-input">
+                <input class="t-input__inner" type="text" placeholder="请输入内容" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- 内容区 End-->
+    </div>
+
+  </div>
+
+  <!-- 组件尺寸 -->
+  <div class="tdesign-demo-item">
+    <h2 class="tdesign-demo-item__title">尺寸(如果有)</h2>
+    <div class="tdesign-demo-item__body">
+
+      <!-- 内容区 Start-->
+      <h4>与各表单大小变化一致，不再赘述</h4>
+      <!-- 内容区 End-->
+    </div>
+
+  </div>
+
+</body>
+
+</html>
