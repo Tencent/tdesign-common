@@ -14,7 +14,7 @@
   max-width: 70%;
   border-radius: @border-radius;
   color: @toast-text-color;
-  background: rgba(0,0,0,.6);
+  background: rgb(0 0 0 / 60%);
   text-align: center;
   padding: @spacer-5;
   z-index: @toast-z-index;
@@ -29,7 +29,6 @@
     white-space: pre-wrap;
     word-break: break-word;
     line-height: 22px;
-    font-size: 14px;
     margin-top: @spacer-3;
     min-width: 82px;
   }
@@ -57,7 +56,7 @@
   &--middle {
     left: 50%;
     top: 50%;
-    transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%, -50%, 0);
   }
 
   &--top {
@@ -74,7 +73,7 @@
 
   &--row {
     flex-direction: row;
-    padding: 14px 24px ;
+    padding: 14px 24px;
 
     .@{prefix}-icon {
       color: inherit;

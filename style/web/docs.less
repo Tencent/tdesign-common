@@ -1,3 +1,11 @@
+@import "./_variables.less";
+
+@import "./mixins/_index.less";
+
+@import "./utilities/_index.less";
+
+@import "./components/_docs.less";
+
 @d-prefix: tdesign;
 
 /* 用于重构稿演示相关的样式 公共部分 */
@@ -44,12 +52,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
   min-height: 204px;
   padding: 40px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   overflow: auto;
-  flex-wrap: wrap;
 }
 
 .tdesign-demo-item__body + .tdesign-demo-item__body {
@@ -100,11 +108,3 @@
   align-items: center;
   flex-wrap: wrap;
 }
-
-@import "./_variables.less";
-
-@import "./mixins/_index.less";
-
-@import "./utilities/_index.less";
-
-@import "./components/_docs.less";
