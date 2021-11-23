@@ -266,9 +266,12 @@
 
 // option group
 .@{prefix}-option-group + .@{prefix}-option-group {
-  border-top: 1px @select-optiongroup-border-color solid;
   padding-top: @select-optiongroup-border-padding;
   margin-top: @select-optiongroup-border-margin;
+}
+
+.@{prefix}-option-group__divider + .@{prefix}-option-group__divider {
+  border-top: 1px @select-optiongroup-border-color solid;
 }
 
 .@{prefix}-option-group-header {

@@ -57,11 +57,11 @@
 
 单元格默认使用 `row[colKey]` 渲染数据内容，自定义单元格有以下 3 种方式：
 
-- 使用 `cell` 作为渲染函数，函数参数为：`cell(h, {col, colIndex, row, rowIndex})`
+- 使用 `cell` 作为渲染函数，函数参数为：`cell(h, {col, colIndex, row, rowIndex})`。
 
-- 插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称
+- 插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。
 
-- 【不推荐使用】使用 `render` 渲染函数，函数参数为：`render(h, {col, colIndex, row, rowIndex, type})`，其中 `type` 的值为 `title`
+- 【不推荐使用】使用 `render` 渲染函数，函数参数为：`render(h, {col, colIndex, row, rowIndex, type})`，其中 `type` 的值为 `title`。
 
 {{ custom-cell }}
 
@@ -69,11 +69,11 @@
 
 标题默认使用 `title` 渲染，自定义标题则有以下 3 种方式：
 
-- 使用 `title` 作为渲染函数，函数参数为：`title({ col, colIndex })`
+- 使用 `title` 作为渲染函数，函数参数为：`title({ col, colIndex })`。
 
-- 插槽，使用 `title` 的值作为插槽名称
+- 插槽，使用 `title` 的值作为插槽名称。
 
-- 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({col, colIndex, row, rowIndex, type})`，其中 `type` 值为 `cell`。使用排序、过滤等功能时不能使用该方法
+- 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({col, colIndex, row, rowIndex, type})`，其中 `type` 值为 `cell`。使用排序、过滤等功能时不能使用该方法。
 
 {{ custom-header }}
 
@@ -83,9 +83,9 @@
 
 #### 单字段排序
 
-- 将需要排序的列属性 `sorter` 设置为 `true`，示例：`{ colKey: 'date', title: '日期', sorter: true }`
-- 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`，其中 `descending` 表示是否为降序排序，值为 `true` 表示降序，值为 `false` 表示升序
-- 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑
+- 将需要排序的列属性 `sorter` 设置为 `true`，示例：`{ colKey: 'date', title: '日期', sorter: true }`。
+- 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`，其中 `descending` 表示是否为降序排序，值为 `true` 表示降序，值为 `false` 表示升序。
+- 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
 
 提供列属性 `sortType`，用于自定义支持排序方式。可选值有 `desc`/`asc`/`all`，分别表示只能降序徘、只能升序徘、降序和升序。
 
@@ -93,10 +93,10 @@
 
 #### 多字段排序
 
-- 设置表格属性 `multipleSort` 为 true
-- 将需要排序的列属性 `sorter` 设置为 true，可以设置多个列，示例：`[{ colKey: 'date', title: '日期', sorter: true }, { colKey: 'cost', title: '花费', sorter: true }]`
+- 设置表格属性 `multipleSort` 为 true。
+- 将需要排序的列属性 `sorter` 设置为 true，可以设置多个列，示例：`[{ colKey: 'date', title: '日期', sorter: true }, { colKey: 'cost', title: '花费', sorter: true }]`。
 - 设置表格排序属性 `sort` 的值为 `[{ sortBy: 'date', descending: true }, { sortBy: 'cost', descending: false }]`
-- 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑
+- 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
 
 {{ multiple-sort }}
 
@@ -104,9 +104,10 @@
 
 本地数据排序，表示组件内部会对参数 data 进行数据排序。如果 data 数据为 10 条，就仅对这 10 条数据进行排序。
 
-- 将需要排序的列属性 `sorter` 设置为排序函数，示例：`{ colKey: 'date', title: '日期', sorter: (a, b) => a.status - b.status  }`
-- 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`
-- 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑
+- 将需要排序的列属性 `sorter` 设置为排序函数，示例：`{ colKey: 'date', title: '日期', sorter: (a, b) => a.status - b.status  }`。
+- 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`。
+- 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
+- 排序发生变化时，因为是本地数据排序，因此数据也会发生变化，需要监听 `onDatachange`，事件处理受控数据。
 
 {{ data-sort }}
 
@@ -130,7 +131,7 @@
 {{ pagination-ajax }}
 #### 本地数据分页
 
-本地数据分页，表示组件内部会对参数 `data` 进行分页
+本地数据分页，表示组件内部会对参数 `data` 进行分页。
 
 {{ pagination }}
 
