@@ -48,6 +48,11 @@
       .@{prefix}-steps-item {
         overflow: visible;
 
+        .@{prefix}-steps-item-title {
+          padding-right: 0;
+          margin-bottom: @steps-item-title-margin-bottom;
+        }
+
         &--finish {
           .dot-anchor-status(finish);
         }
