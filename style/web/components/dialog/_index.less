@@ -1,8 +1,11 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_animate.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -78,7 +81,6 @@
     .t-button + .t-button {
       margin-left: @dialog-footer-button-margin-left;
     }
-    
   }
 
   &--default {
@@ -87,7 +89,6 @@
     .@{prefix}-dialog__body {
       max-height: calc(100% - (@dialog-header-height + @dialog-default-padding * 2));
     }
-
   }
 
   &--primary {
@@ -109,7 +110,7 @@
     height: @dialog-close-icon-size;
     align-items: center;
     justify-content: center;
-    border-radius: @dialog-close-border-radius;    
+    border-radius: @dialog-close-border-radius;
     background: @dialog-bg-color;
     transition: all @anim-duration-base linear;
 

@@ -1,29 +1,28 @@
 .@{d-prefix}-demo-item--tree {
-
   .tdesign-tree-line .operations .t-button {
     margin: 0 10px 10px 0;
   }
-  
+
   .tdesign-tree-line .custom-line {
     display: flex;
     position: absolute;
     top: 2px;
     left: 9px;
   }
-  
+
   .tdesign-tree-line .custom-line-box {
     display: flex;
     flex: 0 0 auto;
   }
-  
+
   .tdesign-tree-line .custom-line span {
     position: relative;
     flex: 0 0 auto;
     width: 24px;
     height: 40px;
   }
-  
-  .tdesign-tree-line .custom-line span:last-child:before {
+
+  .tdesign-tree-line .custom-line span:last-child::before {
     content: "";
     position: absolute;
     display: block;
@@ -32,14 +31,14 @@
     width: 12px;
     height: 26px;
     border-left: 1px solid #ddd;
-    border-bottom: 1px solid #0052D9;
+    border-bottom: 1px solid #0052d9;
   }
-  
-  .tdesign-tree-line .custom-line-leaf span:last-child:before {
+
+  .tdesign-tree-line .custom-line-leaf span:last-child::before {
     width: 16px;
   }
-  
-  .tdesign-tree-line .custom-line-cross:before {
+
+  .tdesign-tree-line .custom-line-cross::before {
     content: "";
     display: block;
     position: absolute;
@@ -49,7 +48,7 @@
     width: 1px;
     border-left: 1px solid #ddd;
   }
-  
+
   .tdesign-tree-line .custom-line-icon {
     position: absolute;
     top: 6px;
@@ -59,13 +58,13 @@
     width: 16px;
     height: 16px;
     border-radius: 16px;
-    border: 1px solid #0052D9;
+    border: 1px solid #0052d9;
     background-color: #fff;
     justify-content: center;
     align-items: center;
   }
-  
-  .tdesign-tree-line .custom-line span:last-child:after {
+
+  .tdesign-tree-line .custom-line span:last-child::after {
     content: "";
     position: absolute;
     display: block;
@@ -76,7 +75,7 @@
     width: 8px;
     height: 8px;
     border-radius: 2px;
-    border: 1px solid #0052D9;
+    border: 1px solid #0052d9;
     background-color: #fff;
     transform: rotate(45deg);
     transform-origin: 50%, 50%;

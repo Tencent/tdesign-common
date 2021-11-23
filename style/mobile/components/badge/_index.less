@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -24,7 +26,7 @@
   }
 
   &--has-children {
-    transform: translate(50%,-50%);
+    transform: translate(50%, -50%);
     position: absolute;
     right: 0;
     top: 0;
@@ -38,7 +40,7 @@
   }
 
   &--small {
-    transform: translate(50%,-50%) scale(.75);
+    transform: translate(50%, -50%) scale(.75);
   }
 
   &--circle {
@@ -70,7 +72,7 @@
       border-bottom: @badge-height solid @badge-color;
       border-left: @badge-height solid transparent;
     }
-    
+
     &::after {
       content: "";
       position: absolute;
@@ -83,4 +85,3 @@
     }
   }
 }
-

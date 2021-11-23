@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../mixins/_index.less";
 
 .@{prefix}-switch {
@@ -12,6 +14,7 @@
     margin: @switch-text-margin;
     color: @switch-text-color;
     opacity: .3;
+
     &.@{prefix}-is-disabled {
       opacity: .16;
     }
@@ -31,7 +34,7 @@
     user-select: none;
     transition: all .3s ease-in-out;
 
-    &:after {
+    &::after {
       content: "";
       width: @switch-node-width;
       height: @switch-node-height;
@@ -50,7 +53,7 @@
       border-color: @switch-checked-background-color;
       background-color: @switch-checked-background-color;
 
-      &:after {
+      &::after {
         left: @switch-checked-translateX;
       }
     }
@@ -59,7 +62,7 @@
       cursor: not-allowed;
       opacity: .6;
 
-      &:after {
+      &::after {
         cursor: not-allowed;
       }
     }

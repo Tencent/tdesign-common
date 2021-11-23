@@ -1,6 +1,7 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
 
 @themes: primary, success, warning, default, danger;
@@ -15,10 +16,6 @@
 
   .for(@themes, @i: 1) when(@i =< length(@themes)) {
 
-    @theme: extract(@themes, @i);
-
-    @theme-color: "tag-@{theme}-color";
-
     &.@{prefix}-tag--theme-@{theme} {
       background-color: mix(@@theme-color, @color-white, @backgroundColorWeight);
       border-color: mix(@@theme-color, @color-white, @borderColorWeight);
@@ -26,6 +23,10 @@
     }
 
     .for(@themes, (@i + 1));
+
+    @theme: extract(@themes, @i);
+
+    @theme-color: "tag-@{theme}-color";
   }
 
   .for(@themes);
@@ -42,27 +43,24 @@
   font-size: 12px;
   height: 22px;
   line-height: 20px;
-  padding: 0px 12px;
-  font-size: 12px;
+  padding: 0 12px;
   max-width: 120px;
-  white-space: nowrap;
   word-wrap: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   user-select: none;
 
   &--variant {
-
     &-dark {
-      .genVariant(0, 100, 100, 100)
+      .genVariant(0, 100, 100, 100);
     }
 
     &-light {
-      .genVariant(100, 10, 10, 10)
+      .genVariant(100, 10, 10, 10);
     }
 
     &-plain {
-      .genVariant(100, 50, 0, 5)
+      .genVariant(100, 50, 0, 5);
     }
   }
 
@@ -85,11 +83,10 @@
   }
 
   &.@{prefix}-tag--size {
-
     &-small {
       height: 22px;
       line-height: 20px;
-      padding: 0px 8px;
+      padding: 0 8px;
       font-size: 10px;
 
       .@{prefix}-icon {
@@ -104,7 +101,7 @@
     &-medium {
       height: 24px;
       line-height: 22px;
-      padding: 0px 11px;
+      padding: 0 11px;
       font-size: 12px;
 
       .@{prefix}-icon {
@@ -116,7 +113,7 @@
     &-large {
       height: 30px;
       line-height: 28px;
-      padding: 0px 15px;
+      padding: 0 15px;
       font-size: 14px;
 
       .@{prefix}-icon {
@@ -172,5 +169,4 @@
       border-color: @tag-disabled-border-color;
     }
   }
-
 }

@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 /* Alert */
@@ -129,11 +131,11 @@
   color: @brand-color;
   cursor: pointer;
   transition: color @anim-duration-base;
-  
+
   &:hover {
     color: @brand-color-hover;
   }
-  
+
   &:active {
     color: @brand-color-active;
   }
@@ -246,7 +248,7 @@
     list-style-type: none;
     cursor: pointer;
 
-    &:before {
+    &::before {
       content: "\2022";
     }
   }

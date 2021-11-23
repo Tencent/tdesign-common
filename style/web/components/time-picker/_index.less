@@ -1,8 +1,11 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
+
 @import "../../mixins/_layout.less";
 
 .@{prefix}-time-picker {
@@ -12,7 +15,7 @@
   position: relative;
   font-size: @time-picker-font-size;
   color: @time-picker-input-text-color;
-  
+
   &.@{prefix}-is-disabled {
     cursor: not-allowed;
   }
@@ -26,10 +29,13 @@
     position: relative;
 
     &.@{prefix}-is-focused {
+
       .@{prefix}-input__inner {
         border-color: @time-picker-input-color-focused;
       }
+
       .@{prefix}-input__suffix:not(.@{prefix}-input__clear) {
+
         .@{prefix}-icon {
           color: @time-picker-input-color-focused;
         }
@@ -39,6 +45,7 @@
     &.active {
       border: @time-picker-input-border-active;
       box-shadow: @time-picker-input-shadow-active;
+
       &+ .@{prefix}-time-picker__icon-wrap > .@{prefix}-time-picker__icon-clear {
         display: block;
       }
@@ -59,11 +66,10 @@
     height: 100%;
     padding: @time-picker-input-padding;
     z-index: 1;
-    .flex-center;
-
     border-radius: @border-radius;
     transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
     font-size: @time-picker-font-size;
+    .flex-center;
 
     &:hover {
       border-color: @time-picker-input-border-color-hover;
@@ -115,7 +121,6 @@
     }
 
     &-item {
-
       &-input {
         pointer-events: none;
       }
@@ -130,7 +135,6 @@
 
 .@{prefix}-time-picker-panel {
   width: @time-picker-width-common;
-
   background: @time-picker-background-color-common;
   border-radius: @border-radius;
   display: inline-block;
@@ -140,7 +144,6 @@
   &__body {
     width: 100%;
     height: @time-picker-panel-body-height;
-
     position: relative;
     user-select: none;
     margin: @time-picker-panel-body-margin;
@@ -154,9 +157,10 @@
 
       > div {
         flex: 1;
-        transform: translateY(
-          -((@time-picker-panel-item-height + @time-picker-panel-item-margin) /2)
-        );
+        transform:
+          translateY(
+            -((@time-picker-panel-item-height + @time-picker-panel-item-margin) /2)
+          );
         height: @time-picker-panel-item-height;
         background-color: @time-picker-panel-item-background-color-current;
         margin: @time-picker-panel-item-margin;
@@ -177,8 +181,8 @@
         width: 0; // 不展示滚动
       }
 
-      &:after,
-      &:before {
+      &::after,
+      &::before {
         display: block;
         height: 50%;
         content: "";

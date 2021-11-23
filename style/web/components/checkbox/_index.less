@@ -1,8 +1,11 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
+
 @import "../../mixins/_layout.less";
 
 // <name> 替换为组件名
@@ -59,6 +62,7 @@
   }
 
   &:hover {
+
     .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-hover;
       transition: border-color @anim-duration-base linear;
@@ -66,6 +70,7 @@
   }
 
   &.@{prefix}-is-checked {
+
     .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-checked;
       background-color: @checkbox-input-color-checked;
@@ -73,12 +78,12 @@
 
       &::after {
         opacity: 1;
-        top: ((@checkbox-size) / 2 - 2px); 
+        top: ((@checkbox-size) / 2 - 2px);
         left: @checkbox-check-left;
         width: @checkbox-check-width;
         height: @checkbox-check-height;
         border: 2px solid @checkbox-check-color;
-        border-radius: 0 0 1px 0;
+        border-radius: 0 0 1px;
         border-top: 0;
         border-left: 0;
         transform: rotate(45deg) scale(1) translate(-50%, -50%);
@@ -88,6 +93,7 @@
   }
 
   &.@{prefix}-is-indeterminate {
+
     .@{checkbox-cls}__input {
       border-color: @checkbox-input-color-indeterminate;
       background-color: @checkbox-input-color-indeterminate;
@@ -119,12 +125,14 @@
     }
 
     &:hover {
+
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
       }
     }
 
     &.@{prefix}-is-checked {
+
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
 
@@ -135,6 +143,7 @@
     }
 
     &.@{prefix}-is-indeterminate {
+
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
 

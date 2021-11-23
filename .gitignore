@@ -19,6 +19,8 @@ style/web/components/.yo-repository/
 node_modules
 package-lock.json
 **/package-lock.json
+yarn.lock
+**/yarn.lock
 **/node_modules
 **/dist
 dist/

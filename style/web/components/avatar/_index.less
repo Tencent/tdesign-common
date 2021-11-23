@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-avatar {
@@ -40,8 +42,8 @@
   }
 
   &.@{prefix}-avatar--offset-right {
-    & .@{prefix}-avatar {
 
+    & .@{prefix}-avatar {
       &:not(:last-child) {
         .avatar-group-offset-right(@avatar-group-offset-medium);
 
@@ -65,9 +67,8 @@
     }
 
     & .@{prefix}-avatar {
-
       &:not(:first-child) {
-        .avatar-group-size--left()
+        .avatar-group-size--left();
       }
     }
   }

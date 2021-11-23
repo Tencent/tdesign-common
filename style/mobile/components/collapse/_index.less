@@ -1,14 +1,12 @@
 @import "../../base.less";
+
 @import "./_var.less";
 
 .@{prefix}-collapse {
-
   &__title {
     font-size: @collapse-content-font-size;
+    padding: @collapse-content-padding;
     padding-top: @collapse-content-padding * 2;
-    padding-bottom: @collapse-content-padding;
-    padding-left: @collapse-content-padding;
-    padding-right: @collapse-content-padding;
     color: #999;
   }
 }
@@ -110,7 +108,7 @@
   }
 
   &__body {
-    padding: 0px @collapse-horizontal-padding;
+    padding: 0 @collapse-horizontal-padding;
   }
 
   &__body-slot {

@@ -29,7 +29,9 @@
 }
 
 .input-disabled {
+
   &.@{prefix}-input.@{prefix}-is-disabled {
+
     & > .@{prefix}-input__inner {
       color: @input-text-color-disabled;
       background-color: @input-bg-color-disabled;
@@ -39,8 +41,10 @@
         border-color: @input-border-color-default;
       }
     }
+
     & > .@{prefix}-input__prefix,
     & > .@{prefix}-input__suffix {
+
       .@{prefix}-icon {
         color: @input-text-color-disabled;
       }
@@ -49,16 +53,19 @@
 }
 
 .input-status(@status) {
+
   &.@{prefix}-is-@{status} {
+
     & > .@{prefix}-input__inner {
       border-color: @@borderColor;
-      @borderColor: "input-border-color-@{status}";
 
       &:focus {
         box-shadow: 0 0 0 2px @@boxShadowColor;
         @boxShadowColor: "input-box-shadow-color-@{status}-focus";
       }
+      @borderColor: "input-border-color-@{status}";
     }
+
     & > .@{prefix}-input__extra {
       color: @@fontColor;
       @fontColor: "input-extra-color-@{status}";
@@ -67,7 +74,9 @@
 }
 
 .input-fix-position(@position) {
+
   &.@{prefix}-input--@{position} {
+
     & > .@{prefix}-input__inner {
       & when (@position = prefix) {
         padding-left: @input-fix-padding;
@@ -76,6 +85,7 @@
         padding-right: @input-fix-padding;
       }
     }
+
     & > .@{prefix}-input__@{position} {
       position: absolute;
       top: 0;
@@ -97,7 +107,9 @@
 
 .input-size(@size) {
   & when(@size = l) {
+
     &.@{prefix}-size-l {
+
       & > .@{prefix}-input__inner {
         height: @input-height-l;
         line-height: @input-height-l;
@@ -105,6 +117,7 @@
     }
   }
   & when not (@size = l) {
+
     &.@{prefix}-size-@{size} {
       width: @@width-size;
       @width-size: "input-width-@{size}";
@@ -113,6 +126,7 @@
 }
 
 .addon-item(@position) {
+
   .@{prefix}-addon__@{position} {
     background-color: @input-append-color;
     color: @input-text-color-default;

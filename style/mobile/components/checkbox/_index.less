@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 .@{prefix}-checkbox {
   display: flex;
   align-items: center;
@@ -13,6 +15,7 @@
     align-items: center;
     flex-shrink: 0;
     position: relative;
+
     &.@{prefix}-is-checked {
       font-size: @checkbox-icon-checked;
       justify-content: center;
@@ -23,6 +26,7 @@
       border: 1px solid #ccc;
       border-radius: 50%;
     }
+
     &.@{prefix}-is-disabled {
       opacity: .4;
       background-color: #f9f9f9;
@@ -32,6 +36,7 @@
   &__content-title {
     font-size: @checkbox-title-font-size;
     color: @checkbox-title-font-color;
+
     &.@{prefix}-is-disabled {
       color: @checkbox-content-color;
     }

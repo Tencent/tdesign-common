@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../mixins/_index.less";
 
 .@{prefix}-input {
@@ -7,7 +9,6 @@
   .@{prefix}-cell__label {
     width: @input-label-width;
     flex: none;
-
     margin-right: @spacer-4;
   }
 
@@ -106,8 +107,8 @@
       color: @input-label-text-color;
 
       &::after {
-        .hairline-bottom();
         left: @input-horizontal-padding;
+        .hairline-bottom();
       }
     }
   }
@@ -125,7 +126,6 @@
   align-items: flex-start;
 
   .@{prefix}-input {
-
     &--control {
       color: @input-error-text-color;
 

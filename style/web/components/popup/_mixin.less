@@ -1,79 +1,95 @@
 .arrow-placment-top {
-  .@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-popup__arrow {
     bottom: calc(-@popup-arrow-width / 2);
 
     &::before {
       box-shadow: @popup-top-arrow-shadow;
     }
   }
-  .@{prefix}-popup[data-popper-placement='top-start'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="top-start"] .@{prefix}-popup__arrow {
     left: @popup-arrow-width;
   }
-  .@{prefix}-popup[data-popper-placement='top'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="top"] .@{prefix}-popup__arrow {
     left: 50%;
     margin-left: calc(-@popup-arrow-width / 2);
   }
-  .@{prefix}-popup[data-popper-placement='top-end'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="top-end"] .@{prefix}-popup__arrow {
     left: calc(100% - @popup-arrow-width * 2);
   }
 }
 
 .arrow-placment-bottom {
-  .@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement^="bottom"] .@{prefix}-popup__arrow {
     top: calc(-@popup-arrow-width / 2);
 
     &::before {
       box-shadow: @popup-bottom-arrow-shadow;
     }
   }
-  .@{prefix}-popup[data-popper-placement='bottom-start'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="bottom-start"] .@{prefix}-popup__arrow {
     left: @popup-arrow-width;
   }
-  .@{prefix}-popup[data-popper-placement='bottom'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="bottom"] .@{prefix}-popup__arrow {
     left: 50%;
     margin-left: calc(-@popup-arrow-width / 2);
   }
-  .@{prefix}-popup[data-popper-placement='bottom-end'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="bottom-end"] .@{prefix}-popup__arrow {
     left: calc(100% - @popup-arrow-width * 2);
   }
 }
 
 .arrow-placment-left {
-  .@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement^="left"] .@{prefix}-popup__arrow {
     right: calc(-@popup-arrow-width / 2);
 
     &::before {
       box-shadow: @popup-left-arrow-shadow;
     }
   }
-  .@{prefix}-popup[data-popper-placement='left-start'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="left-start"] .@{prefix}-popup__arrow {
     top: @popup-arrow-width;
   }
-  .@{prefix}-popup[data-popper-placement='left'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="left"] .@{prefix}-popup__arrow {
     top: 50%;
     margin-top: calc(-@popup-arrow-width / 2);
   }
-  .@{prefix}-popup[data-popper-placement='left-end'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="left-end"] .@{prefix}-popup__arrow {
     top: calc(100% - @popup-arrow-width * 2);
   }
 }
 
 .arrow-placment-right {
-  .@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement^="right"] .@{prefix}-popup__arrow {
     left: calc(-@popup-arrow-width / 2);
 
     &::before {
       box-shadow: @popup-right-arrow-shadow;
     }
   }
-  .@{prefix}-popup[data-popper-placement='right-start'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="right-start"] .@{prefix}-popup__arrow {
     top: @popup-arrow-width;
   }
-  .@{prefix}-popup[data-popper-placement='right'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="right"] .@{prefix}-popup__arrow {
     top: 50%;
     margin-top: calc(-@popup-arrow-width / 2);
   }
-  .@{prefix}-popup[data-popper-placement='right-end'] .@{prefix}-popup__arrow {
+
+  .@{prefix}-popup[data-popper-placement="right-end"] .@{prefix}-popup__arrow {
     top: calc(100% - @popup-arrow-width * 2);
   }
 }

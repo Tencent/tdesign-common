@@ -1,6 +1,9 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
+
 @import "../../mixins/_layout.less";
 
 .@{prefix}-pagination {
@@ -30,6 +33,7 @@
     height: @pagination-height-default;
     font-size: @font-size-base;
     color: @pagination-text-color;
+
     .@{prefix}-select {
       line-height: (@pagination-height-default - 2);
     }
@@ -135,6 +139,7 @@
       padding: 0;
 
       &.more-quickprev {
+
         .@{prefix}-icon-double-arrow-right {
           transform: rotate(-180deg);
         }
@@ -181,8 +186,8 @@
 
   // 迷你尺寸
   &.@{prefix}-size-s {
-    .@{prefix}-pagination {
 
+    .@{prefix}-pagination {
       &__total {
         font-size: @pagination-font-s;
       }
@@ -216,6 +221,7 @@
         }
 
         &.@{prefix}-is-current {
+
           &.@{prefix}-is-disabled {
             .pagination-number--color(
               @pagination-bg-color-current-disabled;
@@ -237,6 +243,7 @@
   //diabled
   &.@{prefix}-is-disabled {
     background-color: @bg-color-component-disabled;
+
     .@{prefix}-pagination__jump {
       color: @pagination-text-color-disabled;
     }

@@ -16,7 +16,7 @@ import {
 } from './types';
 
 function parseNodeData(
-  tree: TreeStore,
+  tree: any,
   para: TreeNodeValue | TreeNode | TypeTreeNodeData,
   item: TypeTreeNodeData | TypeTreeNodeData[] | TreeNode,
 ) {

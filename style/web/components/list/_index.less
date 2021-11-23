@@ -1,14 +1,17 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
+
 @import "../../mixins/_layout.less";
 
 .@{prefix}-list {
   overflow: auto;
   color: @list-font-color;
-  
+
   &-items {
     .list-style-none();
   }
@@ -109,14 +112,15 @@
   }
 
   &--split {
+
     .@{prefix}-list-item::after {
       background: @list-item-split-color;
     }
   }
 
   &--stripe {
-    .@{prefix}-list-item {
 
+    .@{prefix}-list-item {
       &:nth-child(even) {
         background: @list-bg-color-strip;
       }
@@ -124,18 +128,21 @@
   }
 
   &--vertical-action {
+
     .@{prefix}-list-item {
       flex-direction: column;
     }
   }
 
   &.t-size-s {
+
     .@{prefix}-list-item {
       padding: @list-item-spacer-small;
     }
   }
 
   &.t-size-l {
+
     .@{prefix}-list-item {
       padding: @list-item-spacer-large;
     }
@@ -160,11 +167,11 @@
     &.@{prefix}-list__load--loading {
       color: @list-text-color-loading;
 
-      .@{prefix}-icon,.@{prefix}-loading {
+      .@{prefix}-icon,
+      .@{prefix}-loading {
         color: @list-icon-color-loading;
         font-size: @list-icon-size;
         margin-right: @list-load-icon-margin;
-
       }
     }
 

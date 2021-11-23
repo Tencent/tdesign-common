@@ -50,7 +50,7 @@
     position: relative;
     display: flex;
 
-    &:before {
+    &::before {
       content: " ";
       .hairline-top(@dialog-btn-border-color);
     }
@@ -66,24 +66,22 @@
     color: @dialog-btn-default-color;
     font-weight: 700;
     text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0%);
 
     &--active,
     &:active {
       background-color: @dialog-btn-bg-color-active;
     }
 
-    &:before {
+    &::before {
       content: " ";
       .hairline-left(@dialog-btn-border-color);
     }
 
     &:first-child {
-
-      &:after {
+      &::after {
         display: none;
       }
-
     }
 
     &--primary {
