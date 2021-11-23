@@ -1,4 +1,5 @@
 @import "../../base.less";
+
 @import "./_var.less";
 
 .@{prefix}-stepper {
@@ -8,8 +9,7 @@
   justify-content: flex-end;
 
   &__plus {
-
-    &:after {
+    &::after {
       content: "";
       display: block;
       position: absolute;
@@ -30,7 +30,7 @@
     height: @stepper-button-height;
     position: relative;
 
-    &:before {
+    &::before {
       content: "";
       display: block;
       position: absolute;
@@ -43,9 +43,8 @@
     }
 
     &.@{prefix}-is-disabled {
-
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         background-color: @stepper-icon-color-disabled;
       }
     }
@@ -66,23 +65,25 @@
       color: @stepper-color-disabled;
     }
   }
+
   .@{prefix}-stepper__label {
     white-space: nowrap;
   }
 
   &.@{prefix}-is-disabled {
+
     .@{prefix}-stepper__label {
       color: @stepper-color-disabled;
     }
 
     .@{prefix}-stepper__minus,
     .@{prefix}-stepper__plus {
-
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         background-color: @stepper-icon-color-disabled;
       }
     }
+
     .@{prefix}-stepper__input {
       color: @stepper-color-disabled;
     }

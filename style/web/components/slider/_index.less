@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-slider-contianer {
@@ -14,8 +16,8 @@
     height: 100%;
     flex-direction: column;
   }
-
 }
+
 .@{prefix}-slider-input-container {
   display: flex;
   align-items: center;
@@ -23,23 +25,22 @@
 
   &.is-vertical {
     padding-top: 16px;
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   .center-line {
     width: 8px;
     height: 1px;
-    background: rgba(0, 0, 0, .9);
+    background: rgba(0, 0, 0, 90%);
     margin: 0 8px;
   }
 
   .t-input-number {
-    width: 80px
+    width: 80px;
   }
 }
 
 .@{prefix}-slider-input {
-
   &.is-range {
     margin-left: 12px;
   }
@@ -199,6 +200,7 @@
 
 .@{prefix}-is-disabled {
   cursor: not-allowed;
+
   .@{prefix}-slider__track {
     background-color: @slider-background-current-disabled;
   }

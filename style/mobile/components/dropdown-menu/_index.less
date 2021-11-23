@@ -1,10 +1,11 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../mixins/_index.less";
 
 /** dropdwon-menu */
 .@{prefix}-dropdown-menu {
-
   &__bar {
     position: relative;
     display: flex;
@@ -22,6 +23,7 @@
     align-items: center;
     justify-content: center;
     min-width: 0;
+
     &.@{prefix}-is-active .@{prefix}-dropdown-menu__title {
       color: @dropdown-menu-primary-color;
 
@@ -30,6 +32,7 @@
         transform: translate(10px, -3px) rotate(180deg);
       }
     }
+
     &.@{prefix}-is-disabled .@{prefix}-dropdown-menu__title {
       color: @dropdown-menu-disabled-color;
 
@@ -104,6 +107,7 @@
 
   &__content.@{prefix}-is-single &__cell::after {
     .hairline-bottom(@cell-border-color);
+
     left: @cell-horizontal-padding;
   }
 
@@ -125,6 +129,7 @@
       z-index: 1;
       .hairline-top();
     }
+
     .@{prefix}-button {
       flex: 1;
       height: 100%;
@@ -140,6 +145,7 @@
       }
     }
   }
+
   .@{prefix}-mask {
     position: absolute;
   }
@@ -170,16 +176,18 @@
       flex: 1;
       justify-content: space-between;
     }
+
     .@{prefix}-radio__content-title {
       flex: 1;
       overflow: hidden;
       text-overflow: ellipsis;
     }
   }
-  .@{prefix}-checkbox {
 
+  .@{prefix}-checkbox {
     &__icon-left {
       margin-right: 0;
+
       &.@{prefix}-is-checked
       + .@{prefix}-checkbox__content-wrap
       .@{prefix}-checkbox__content-title {
@@ -196,9 +204,11 @@
   .@{prefix}-dropdown-item__tree-group {
     flex: 1;
   }
+
   .@{prefix}-radio__content-wrap {
     margin-left: 0;
   }
+
   .@{prefix}-radio__content-inner {
     margin-top: 0;
   }
@@ -206,6 +216,7 @@
   /** 树形结构 */
   .@{prefix}-is-tree {
     max-height: @dropdown-item-height;
+
     .@{prefix}-dropdown-item__bd {
       display: flex;
       align-items: flex-start;
@@ -215,11 +226,13 @@
         margin: 0;
       }
     }
+
     .@{prefix}-check-group {
       .@{prefix}-dropdown-item__cell:not(:last-child)::after {
         display: none;
       }
     }
+
     .@{prefix}-checkbox__content-wrap {
       overflow: hidden;
     }
@@ -269,6 +282,7 @@
 
   /** multi 多选多列情况 */
   .@{prefix}-is-multi {
+
     .@{prefix}-dropdown-item__bd {
       padding-top: @spacer;
       padding-bottom: @spacer;
@@ -281,15 +295,9 @@
       &:not(:last-child)::after {
         display: none;
       }
-
-      // &-group-container {
-      //   &::after {
-      //     display: none;
-      //   }
-      // }
     }
-    .@{prefix}-checkbox {
 
+    .@{prefix}-checkbox {
       &__icon-left {
         display: none;
       }
@@ -309,10 +317,12 @@
         justify-content: center;
         align-items: center;
       }
+
       .@{prefix}-is-checked + .@{prefix}-checkbox__content-wrap {
         background-color: @dropdown-menu-primary-color-1;
       }
     }
+
     .@{prefix}-check-group {
       display: flex;
       flex-wrap: wrap;
@@ -349,19 +359,21 @@
 
   /** dropRadio */
   &__radio {
+
     .@{prefix}-radio__default-shape {
       display: none;
     }
 
     &.@{prefix}-is-tick {
+
       .@{prefix}-icon-check {
         color: @dropdown-menu-primary-color;
       }
     }
 
     &.@{prefix}-is-checked {
-      .@{prefix}-radio {
 
+      .@{prefix}-radio {
         &__content-title {
           color: @dropdown-menu-primary-color;
         }

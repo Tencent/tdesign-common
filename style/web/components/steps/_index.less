@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-steps {
@@ -14,6 +16,7 @@
 
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
+
       .@{prefix}-steps-item-content {
         margin-top: @steps-item-content-margin-top;
       }
@@ -24,14 +27,13 @@
       }
 
       .@{prefix}-steps-item-icon {
-
         &__number {
           width: steps-circle-width;
           height: @steps-circle-height;
           margin-top: @steps-item-icon-number-margin-top;
         }
 
-        &>.t-icon {
+        & > .t-icon {
           font-size: @steps-item-t-icon-font-size;
         }
       }
@@ -42,6 +44,7 @@
 
     // 点状锚点
     &.@{prefix}-steps--dot-anchor {
+
       .@{prefix}-steps-item {
         overflow: visible;
 
@@ -81,6 +84,7 @@
 
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
+
       .@{prefix}-steps-item-content {
         margin-top: @steps-item-content-margin-top-vertical;
         margin-left: @steps-item-content-margin-left-vertical;
@@ -89,7 +93,6 @@
       .@{prefix}-steps-item-title {
         margin-bottom: @steps-item-title-margin-bottom;
       }
-
     }
 
     // 点状锚点

@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-switch {
@@ -51,16 +53,20 @@
   }
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
+
     .@{prefix}-switch__handle::before {
       left: 0;
       right: -6px;
     }
+
     &.@{prefix}-is-checked {
+
       .@{prefix}-switch__handle::before {
         right: 0;
         left: -6px;
       }
     }
+
     .@{prefix}-switch__content {
       opacity: 0;
     }
@@ -70,11 +76,13 @@
     display: inline-flex;
     align-items: center;
     color: @switch-content-color-unchecked;
-    padding: 0 @switch-content-margin-right-default 0
+    padding:
+      0 @switch-content-margin-right-default 0
       @switch-content-margin-left-default;
     font-size: @switch-content-font-size-default;
     min-width: @switch-min-width-default;
     transition: @switch-content-transition;
+
     .@{prefix}-icon {
       font-size: @switch-content-font-size-l;
     }
@@ -87,8 +95,10 @@
       left: calc(100% - @switch-width-border-default);
       transform: translate(-100%, 0);
     }
+
     .@{prefix}-switch__content {
-      padding: 0 @switch-content-margin-left-default 0
+      padding:
+        0 @switch-content-margin-left-default 0
         @switch-content-margin-right-default;
       color: @switch-content-color-checked;
     }
@@ -103,6 +113,7 @@
     }
 
     .@{prefix}-switch__handle {
+
       .@{prefix}-icon {
         color: @switch-unchecked-bg-color-loading;
       }
@@ -112,6 +123,7 @@
       background-color: @switch-checked-bg-color-loading;
 
       .@{prefix}-switch__handle {
+
         .@{prefix}-icon {
           color: @switch-checked-bg-color-loading;
         }
@@ -127,6 +139,7 @@
       background-color: @switch-checked-bg-color-disabled;
 
       .@{prefix}-switch__handle {
+
         .@{prefix}-icon {
           color: @switch-checked-bg-color-disabled;
         }
@@ -142,11 +155,14 @@
   border-radius: (@switch-height-l / 2);
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
+
     .@{prefix}-switch__handle::before {
       left: 0;
       right: -8px;
     }
+
     &.@{prefix}-is-checked {
+
       .@{prefix}-switch__handle::before {
         right: 0;
         left: -8px;
@@ -159,6 +175,7 @@
     left: @switch-width-border-l;
     width: (@switch-height-l - 2px * @switch-width-border-l);
     height: (@switch-height-l - 2px * @switch-width-border-l);
+
     .@{prefix}-icon {
       font-size: (@switch-height-l - 4px);
     }
@@ -175,9 +192,11 @@
   }
 
   &.@{prefix}-is-checked {
+
     .@{prefix}-switch__handle {
       left: calc(100% - @switch-width-border-l);
     }
+
     .@{prefix}-switch__content {
       padding: 0 @switch-content-margin-left-l 0 @switch-content-margin-right-l;
     }
@@ -191,11 +210,14 @@
   border-radius: (@switch-height-s / 2);
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
+
     .@{prefix}-switch__handle::before {
       left: 0;
       right: -4px;
     }
+
     &.@{prefix}-is-checked {
+
       .@{prefix}-switch__handle::before {
         right: 0;
         left: -4px;
@@ -225,9 +247,11 @@
   }
 
   &.@{prefix}-is-checked {
+
     .@{prefix}-switch__handle {
       left: calc(100% - @switch-width-border-s);
     }
+
     .@{prefix}-switch__content {
       padding: 0 @switch-content-margin-left-s 0 @switch-content-margin-right-s;
     }

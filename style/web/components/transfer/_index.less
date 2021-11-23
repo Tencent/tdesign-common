@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../_variables.less";
 
 .@{prefix}-transfer {
@@ -93,7 +95,6 @@
 
         .@{prefix}-checkbox {
           margin-right: @transfer-list-margin-horizontal;
-          --ripple-color: @gray-color-3;
 
           & + .@{prefix}-checkbox {
             margin-left: @transfer-list-margin-horizontal;
@@ -106,6 +107,8 @@
               margin-left: @transfer-list-item-text-margin-left;
             }
           }
+
+          --ripple-color: @gray-color-3;
         }
       }
     }
@@ -121,13 +124,13 @@
       &:first-child {
         margin-top: 0;
       }
-
     }
 
     &__item:hover {
       background: @transfer-bg-hover;
       transition: background-color @anim-duration-base @anim-time-fn-easing;
     }
+
     &__item.@{prefix}-is-checked {
       background: @transfer-bg-checked;
     }
@@ -200,6 +203,7 @@
 
 // 只有search时候的高度
 .@{prefix}-transfer-search {
+
   .@{prefix}-transfer-list {
     height: @transfer-with-search-height;
   }
@@ -207,6 +211,7 @@
 
 // 与Tree组件结合使用时的高度
 .@{prefix}-transfer-with-tree {
+
   .@{prefix}-transfer-list {
     height: auto;
   }
@@ -214,6 +219,7 @@
 
 // 只有翻页时候的高度
 .@{prefix}-transfer-pagination {
+
   .@{prefix}-transfer-list {
     height: @transfer-with-pagination-height;
     padding-bottom: @transfer-with-pagination-padding-bottom;
@@ -222,6 +228,7 @@
 
 // 只有footer时候的高度
 .@{prefix}-transfer-footer {
+
   .@{prefix}-transfer-list {
     height: @transfer-with-footer-height;
     padding-bottom: @transfer-with-footer-padding-bottom;
@@ -230,6 +237,7 @@
 
 // 同时有翻页和footer时候的高度
 .@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
+
   .@{prefix}-transfer-list {
     height: @transfer-with-footer-both-height;
     padding-bottom: @transfer-with-pagination-footer-padding-bottom;
@@ -238,6 +246,7 @@
 
 // 同时有search和footer时候的高度
 .@{prefix}-transfer-search.@{prefix}-transfer-footer {
+
   .@{prefix}-transfer-list {
     height: @transfer-with-footer-both-height;
     padding-bottom: @transfer-with-search-footer-padding-bottom;
@@ -246,6 +255,7 @@
 
 // 同时有search和pagination时候的高度
 .@{prefix}-transfer-search.@{prefix}-transfer-pagination {
+
   .@{prefix}-transfer-list {
     height: @transfer-with-both-height;
     padding-bottom: @transfer-with-search-pagination-padding-bottom;
@@ -254,6 +264,7 @@
 
 // 同时有search和pagination和footer
 .@{prefix}-transfer-search.@{prefix}-transfer-footer.@{prefix}-transfer-pagination {
+
   .@{prefix}-transfer-list {
     height: @transfer-with-all-height;
     padding-bottom: @transfer-with-all-padding-bottom;
@@ -261,6 +272,7 @@
 }
 
 .@{prefix}-transfer-wrapper {
+
   .@{prefix}-transfer-list {
     height: @transfer-wrap-height;
     width: @transfer-wrap-width;

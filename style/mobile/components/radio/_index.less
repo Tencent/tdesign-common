@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 .@{prefix}-radio {
   display: flex;
   align-items: center;
@@ -23,6 +25,7 @@
     top: 50%;
     transform: translateY(-50%);
     left: -28px;
+
     .@{prefix}-is-checked {
       display: inline-block;
       position: absolute;
@@ -34,6 +37,7 @@
       transform: translate(-50%, -50%);
       background-color: @radio-selected-color;
     }
+
     &.@{prefix}-is-disabled {
       background-color: #f9f9f9;
       opacity: .4;
@@ -44,6 +48,7 @@
     font-size: @radio-title-font-size;
     color: @radio-title-font-color;
     position: relative;
+
     &.@{prefix}-is-disabled {
       color: @radio-content-color;
     }

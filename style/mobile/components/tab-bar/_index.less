@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../mixins/_index.less";
 
 @tab-bar-cls: ~"@{prefix}-tab-bar";
@@ -19,8 +21,8 @@
   &::before {
     .hairline-top(@color: @tab-bar-border-color);
   }
-  .@{tab-bar-cls}-item:first-child {
 
+  .@{tab-bar-cls}-item:first-child {
     &::before {
       border: unset;
     }
@@ -40,10 +42,6 @@
     border: unset;
   }
 
-  // &:hover {
-  //   background-color: @tab-bar-hover-bg-color;
-  // }
-
   &::before {
     .hairline-left(@color: @tab-bar-border-color);
   }
@@ -57,16 +55,19 @@
     justify-content: center;
 
     &.@{prefix}-is-checked {
+
       .@{tab-bar-cls}-item__text,
       .@{tab-bar-cls}-item__icon {
         color: @tab-bar-active-color;
       }
+
       .@{tab-bar-cls}-item__icon-menu {
         background-color: @tab-bar-active-color;
       }
     }
 
     &.t-size-s {
+
       .@{tab-bar-cls}-item__text {
         font-size: 12px;
         line-height: 1;
@@ -79,7 +80,7 @@
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: rgba(0, 0, 0, .6);
+    color: rgba(0, 0, 0, 60%);
   }
 
   &__icon-menu {

@@ -1,6 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
+
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-tag {
@@ -121,14 +124,16 @@
   }
 
   &--primary {
+
     &.@{prefix}-tag--light {
       color: @tag-primary-color;
       background-color: @tag-primary-color-light;
-  
+
       &.@{prefix}-tag--plain {
         color: @tag-primary-color;
       }
     }
+
     .@{prefix}-icon-close {
       fill: @brand-color;
 
@@ -139,14 +144,16 @@
   }
 
   &--success {
+
     &.@{prefix}-tag--light {
       color: @tag-success-color;
       background-color: @tag-success-color-light;
-  
+
       &.@{prefix}-tag--plain {
         color: @tag-success-color;
       }
     }
+
     .@{prefix}-icon-close {
       fill: @success-color;
 
@@ -157,14 +164,16 @@
   }
 
   &--warning {
+
     &.@{prefix}-tag--light {
       color: @tag-warning-color;
       background-color: @tag-warning-color-light;
-  
+
       &.@{prefix}-tag--plain {
         color: @tag-warning-color;
       }
     }
+
     .@{prefix}-icon-close {
       fill: @warning-color;
 
@@ -175,14 +184,16 @@
   }
 
   &--danger {
+
     &.@{prefix}-tag--light {
       color: @tag-danger-color;
       background-color: @tag-error-color-light;
-  
+
       &.@{prefix}-tag--plain {
         color: @tag-danger-color;
       }
     }
+
     .@{prefix}-icon-close {
       fill: @error-color;
 
@@ -193,9 +204,10 @@
   }
 
   &--dark&:not(.@{prefix}-tag--default) {
+
     .@{prefix}-icon-close {
       fill: @tag-close-icon-color--dark;
-      
+
       &:hover {
         fill: @tag-close-icon-hover-color--dark;
       }
@@ -233,13 +245,11 @@
   }
 
   &.@{prefix}-tag--mark {
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: @tag-border-radius-round;
-    border-top-right-radius: @tag-border-radius-round;
+    border-radius: 0 @tag-border-radius-round @tag-border-radius-round 0;
   }
 
   &.@{prefix}-tag--ellipsis {
+
     .@{prefix}-tag--text {
       display: inline-block;
       .text-ellipsis();
@@ -248,6 +258,7 @@
 }
 
 a {
+
   .@{prefix}-tag {
     cursor: pointer;
     transition: all @anim-duration-base linear;

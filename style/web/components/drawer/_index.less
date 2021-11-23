@@ -6,6 +6,7 @@
 @import "./_mixin.less";
 
 @componentName: drawer;
+
 .@{prefix}-@{componentName} {
   position: fixed;
   z-index: 1500;
@@ -67,8 +68,7 @@
     box-shadow: @dialog-box-shadow;
     overflow: hidden;
     pointer-events: auto;
-    transition: transform @drawer-slow-duration @drawer-default-timing-function,
-      visibility @drawer-slow-duration @drawer-default-timing-function;
+    transition: transform @drawer-slow-duration @drawer-default-timing-function, visibility @drawer-slow-duration @drawer-default-timing-function;
     position: relative;
   }
 
@@ -160,7 +160,7 @@
     &:hover {
       background-color: @dialog-close-btn-bg-hover;
     }
-    
+
     &:active {
       background-color: @dialog-close-btn-bg-active;
     }

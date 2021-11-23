@@ -1,6 +1,7 @@
 @import "../../base.less";
 
 @import "./_var.less";
+
 .@{prefix}-picker {
   position: relative;
   background-color: @picker--background-color;
@@ -18,7 +19,6 @@
   button {
     font-size: @picker--font-size;
     height: 100%;
-    
     /* stylelint-disable-next-line */
     padding: 0 @picker-button--padding !important;
 
@@ -32,7 +32,6 @@
   color: @text-level-1-color;
   font-weight: @picker--font-weight;
 }
-
 
 .@{prefix}-picker__cancel {
   color: @text-level-2-color;
@@ -52,11 +51,11 @@
   height: @picker-group--height;
   overflow: hidden;
   display: flex;
-} 
+}
 
 .@{prefix}-picker-column {
   flex: 1;
-} 
+}
 
 .@{prefix}-picker__mask {
   position: absolute;
@@ -69,8 +68,7 @@
 
   /* stylelint-disable-next-line */
   background-image: -webkit-linear-gradient(top,@picker-mask--color-top,@picker-mask--color-bottom),-webkit-linear-gradient(bottom,@picker-mask--color-top,@picker-mask--color-bottom);
-  background-image: linear-gradient(180deg,@picker-mask--color-top,@picker-mask--color-bottom),linear-gradient(0deg,@picker-mask--color-top,@picker-mask--color-bottom);
-  background-position: top,bottom;
+  background-image: linear-gradient(180deg, @picker-mask--color-top, @picker-mask--color-bottom), linear-gradient(0deg, @picker-mask--color-top, @picker-mask--color-bottom);
   background-size: 100% @picker-column--height * 2;
   background-repeat: no-repeat;
   background-position: top, bottom;

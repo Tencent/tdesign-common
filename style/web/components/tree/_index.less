@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 // <name> 替换为组件名
@@ -14,14 +16,18 @@
   // 禁用态颜色处理
   &.@{prefix}-is-disabled {
     color: @tree-disabled-color;
+
     .@{prefix}-icon {
       color: @tree-disabled-color;
     }
+
     .@{prefix}-tree__item {
+
       &.@{prefix}-is-active {
         background-color: @tree-node-bg-color-hover;
         color: @tree-disabled-color;
       }
+
       .@{prefix}-icon {
         color: @tree-icon-color-disabled;
       }
@@ -33,7 +39,6 @@
   }
 
   &__item {
-    --level: 0;
     position: relative;
     display: flex;
     align-items: center;
@@ -50,7 +55,8 @@
       margin-top: @tree-node-item-spacer;
     }
 
-    .@{prefix}-icon,.@{prefix}-loading {
+    .@{prefix}-icon,
+    .@{prefix}-loading {
       display: inline-block;
       position: relative;
       z-index: 2;
@@ -61,24 +67,26 @@
       color: @tree-node-icon-color;
     }
 
-
     .@{prefix}-checkbox {
       font-size: 0;
     }
 
     .@{prefix}-tree__icon--default {
+
       .@{prefix}-icon {
-        transition: color,transform @anim-time-fn-easing @anim-duration-base;
+        transition: color, transform @anim-time-fn-easing @anim-duration-base;
         transform: rotate(0);
       }
     }
 
     &--open {
+
       .@{prefix}-icon {
         color: @tree-node-icon-color-active;
       }
 
       .@{prefix}-tree__icon--default {
+
         .@{prefix}-icon {
           transform: rotate(90deg);
         }
@@ -88,6 +96,8 @@
     &--clickable {
       cursor: pointer;
     }
+
+    --level: 0;
   }
 
   &--block-node &__label {
@@ -99,16 +109,17 @@
   }
 
   &__line {
-    --level: 0;
-    --color: @tree-node-icon-line-color;
-    --space: @tree-node-padding-basic;
-    --iconSize: @icon-default;
     position: absolute;
     left: @tree-line-position-left;
     bottom: @tree-line-position-bottom;
     width: @tree-line-width;
     height: 40px;
     pointer-events: none;
+
+    --level: 0;
+    --color: @tree-node-icon-line-color;
+    --space: @tree-node-padding-basic;
+    --iconSize: @icon-default;
   }
 
   &__line::before {
@@ -132,8 +143,9 @@
   }
 
   &--fx {
+
     .@{prefix}-icon-chevron-right {
-      transition: color,transform @tree-node-animation-time;
+      transition: color, transform @tree-node-animation-time;
     }
   }
 
@@ -147,7 +159,7 @@
     user-select: none;
     cursor: pointer;
     border-radius: @border-radius;
-    transition: color,transform @anim-duration-moderate @anim-time-fn-easing;
+    transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
 
     &:not(:empty):hover {
       background-color: @tree-node-bg-color-hover;
@@ -170,7 +182,6 @@
     padding: 0 4px;
     border-radius: @border-radius;
     cursor: pointer;
-    --ripple-color: @bg-color-container-active;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
     &.@{prefix}-is-checked,
@@ -187,6 +198,8 @@
     &--strictly {
       flex: none;
     }
+
+    --ripple-color: @bg-color-container-active;
   }
 
   &__space {
@@ -209,6 +222,7 @@
   &__item.t-is-disabled {
     color: @tree-disabled-color;
     cursor: default;
+
     .@{prefix}-checkbox {
       cursor: default;
     }
@@ -216,16 +230,17 @@
 }
 
 .@{prefix}-tree--fx {
+
   .@{prefix}-tree-toggle-enter-active {
     animation: t-tree-toggle @tree-node-animation-time linear;
   }
+
   .@{prefix}-tree-toggle-leave-active {
     animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
   }
 }
 
 @keyframes t-tree-toggle {
-
   0% {
     opacity: 0;
     height: 0;

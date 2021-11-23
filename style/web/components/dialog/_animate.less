@@ -13,11 +13,9 @@
       opacity: 1;
       transform: scale(.01);
     }
-
   }
 
   @keyframes tDialogZoomOut {
-
     to {
       opacity: 0;
       transform: scale(.01);
@@ -25,14 +23,12 @@
   }
 
   @keyframes tDialogMaskIn {
-
     from {
       opacity: 1;
     }
   }
 
   @keyframes tDialogMaskOut {
-
     to {
       opacity: 0;
     }
@@ -63,7 +59,7 @@
   }
 
   &-exit {
-    .animation-exit
+    .animation-exit;
   }
 
   &-enter-active,
@@ -78,12 +74,11 @@
   }
 
   &__vue {
-
     &-enter-active {
 
       .@{prefix}-dialog {
         animation-name: tDialogZoomIn;
-        .animation-enter
+        .animation-enter;
       }
 
       .@{prefix}-dialog-mask {
@@ -96,30 +91,28 @@
 
       .@{prefix}-dialog {
         animation-name: tDialogZoomOut;
-        .animation-exit
+        .animation-exit;
       }
 
       .@{prefix}-dialog-mask {
         animation-name: tDialogMaskOut;
         .animation-active;
       }
-
     }
 
     &-enter-to {
+
       .@{prefix}-dialog {
         .animation-active;
       }
-
     }
 
     &-leave-to {
+
       .@{prefix}-dialog {
         .animation-active;
       }
-
     }
-
   }
 }
 
@@ -151,7 +144,6 @@
 }
 
 @keyframes tDialogFadeIn {
-
   0% {
     opacity: 0;
   }
@@ -162,7 +154,6 @@
 }
 
 @keyframes tDialogFadeOut {
-
   0% {
     opacity: 1;
   }

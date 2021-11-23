@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-input {
@@ -56,6 +58,7 @@
 
   // 输入框大小
   &.@{prefix}-size-l {
+
     & > .@{prefix}-input__inner {
       height: @input-height-l;
       line-height: @input-height-l;
@@ -64,6 +67,7 @@
   }
 
   &.@{prefix}-size-s {
+
     & > .@{prefix}-input__inner {
       height: @input-height-s;
       line-height: @input-height-s;
@@ -73,18 +77,21 @@
 
   .@{prefix}-input__prefix,
   .@{prefix}-input__suffix {
+
     .@{prefix}-icon {
       font-size: @input-inner-icon-font-size;
     }
   }
 
   .@{prefix}-input__prefix {
+
     .@{prefix}-icon {
       color: @input-inner-prefix-icon-color;
     }
   }
 
   .@{prefix}-input__suffix {
+
     .@{prefix}-icon {
       color: @input-inner-suffix-icon-color;
     }
@@ -92,6 +99,7 @@
 
   // 输入框被聚焦
   &.@{prefix}-is-focused {
+
     .@{prefix}-input__prefix,
     .@{prefix}-input__suffix:not(.@{prefix}-input__clear) {
       // 除了clear icon其他都在focus时变色
@@ -108,17 +116,20 @@
   align-items: stretch;
 
   .@{prefix}-input {
+
     .@{prefix}-input__inner {
       border-radius: 0;
     }
 
     &:first-child {
+
       .@{prefix}-input__inner {
         border-radius: @input-border-radius 0 0 @input-border-radius;
       }
     }
 
     &:last-child {
+
       .@{prefix}-input__inner {
         border-radius: 0 @border-radius @border-radius 0;
       }
@@ -137,7 +148,6 @@
 
   .@{prefix}-button,
   .@{prefix}-select {
-
     &:first-child {
       border-radius: @input-border-radius 0 0 @input-border-radius;
     }
@@ -148,9 +158,11 @@
   }
 
   &--separate {
+
     .@{prefix}-input + .@{prefix}-input {
       margin-left: @input-margin-distance-default;
     }
+
     .@{prefix}-button,
     .@{prefix}-select {
       border-radius: @input-border-radius;
@@ -163,18 +175,22 @@
         border-radius: 0 @input-border-radius @input-border-radius 0;
       }
     }
+
     .@{prefix}-input {
+
       .@{prefix}-input__inner {
         border-radius: @input-border-radius;
       }
 
       &:first-child {
+
         .@{prefix}-input__inner {
           border-radius: @input-border-radius;
         }
       }
 
       &:last-child {
+
         .@{prefix}-input__inner {
           border-radius: @input-border-radius;
         }
@@ -213,7 +229,9 @@
   }
 
   &--prepend {
+
     & > .@{prefix}-input {
+
       .@{prefix}-input__inner {
         border-radius: 0 @input-border-radius @input-border-radius 0;
       }
@@ -221,7 +239,9 @@
   }
 
   &--append {
+
     & > .@{prefix}-input {
+
       .@{prefix}-input__inner {
         border-radius: @input-border-radius 0 0 @input-border-radius;
       }
@@ -229,7 +249,9 @@
   }
 
   &--prepend&--append {
+
     & > .@{prefix}-input {
+
       .@{prefix}-input__inner {
         border-radius: 0;
       }

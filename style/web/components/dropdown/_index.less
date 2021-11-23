@@ -1,7 +1,9 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-dropdown {
@@ -24,6 +26,7 @@
         border-left: @dropdown-border;
       }
     }
+
     .@{prefix}-divider {
       margin: @dropdown-item-divider-margin;
     }
@@ -38,7 +41,6 @@
     color: @dropdown-text-color;
     padding: @dropdown-item-padding;
     margin: @dropdown-item-margin;
-    --ripple-color: @bg-color-container-active;
 
     &:first-child,
     &:last-child {
@@ -73,7 +75,6 @@
     }
 
     &.has-suffix {
-      
       .children-suffix {
         color: currentColor;
         font-size: @dropdown-text-icon-size;
@@ -81,11 +82,14 @@
       }
 
       .@{prefix}-dropdown__item__content {
-        max-width: calc(
-          100% - @dropdown-text-icon-size - @dropdown-item-icon-margin-left
-        );
+        max-width:
+          calc(
+            100% - @dropdown-text-icon-size - @dropdown-item-icon-margin-left
+          );
       }
     }
+
+    --ripple-color: @bg-color-container-active;
   }
 
   &__split {

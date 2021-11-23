@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "./_mixin.less";
 
 .@{prefix}-calendar {
@@ -8,7 +10,7 @@
 
   &--full {
     min-width: @calendar-full-min-width;
-    
+
     .@{prefix}-calendar__control {
       padding: @calendar-control-padding;
     }
@@ -37,7 +39,6 @@
     }
 
     .@{prefix}-calendar__table {
-
       &-head-cell,
       &-body-cell {
         margin-right: @calendar-table-margin-right;
@@ -55,7 +56,7 @@
         margin-left: @calendar-body-cell-margin-left;
         transition-timing-function: @anim-time-fn-ease-in;
         transition-duration: @anim-duration-base;
-        transition-property: border-top , background;
+        transition-property: border-top, background;
 
         &-content {
           min-height: @calendar-body-cell-content-min-height;
@@ -64,7 +65,7 @@
 
         &.@{prefix}-is-checked {
           background-color: @calendar-body-cell-check-bg-color;
-    
+
           &:hover {
             background-color: @calendar-body-cell-check-bg-color;
           }
@@ -79,6 +80,7 @@
     }
 
     .@{prefix}-is-disabled {
+
       .@{prefix}-calendar__table-body-cell-value {
         color: @calendar-body-cell-value-disabled-color;
       }
@@ -102,10 +104,12 @@
     }
 
     .@{prefix}-calendar__panel {
+
       &.@{prefix}-calendar__panel--month {
         height: @calendar-card-calendar-panel-height-month;
         padding: @calendar-card-calendar-panel-padding-month;
       }
+
       &.@{prefix}-calendar__panel--year {
         height: @calendar-card-calendar-panel-height-year;
         padding: @calendar-card-calendar-panel-padding-year;
@@ -122,7 +126,6 @@
 
       &-head,
       &-body {
-
         &-row {
           flex: @calendar-body-row-flex;
           background: @calendar-card-head-row-bg;
@@ -168,7 +171,7 @@
             transition-property: color, background;
 
             &:hover {
-              box-shadow: inset 0px 0px 0px 1px @calendar-highlight-color;
+              box-shadow: inset 0 0 0 1px @calendar-highlight-color;
               transition: box-shadow @anim-duration-base @anim-time-fn-ease-in;
               border-radius: 100%;
             }
@@ -176,7 +179,6 @@
         }
       }
     }
-    
 
     .@{prefix}-is-now {
 
@@ -312,7 +314,6 @@
     }
 
     &-body {
-
       &-cell {
         cursor: pointer;
 
@@ -328,6 +329,5 @@
         }
       }
     }
-
   }
 }
