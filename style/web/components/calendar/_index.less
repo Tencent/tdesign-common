@@ -54,9 +54,9 @@
         flex-direction: column;
         align-items: flex-end;
         margin-left: @calendar-body-cell-margin-left;
-        transition-timing-function: @anim-time-fn-ease-in;
-        transition-duration: @anim-duration-base;
-        transition-property: border-top, background;
+        transition-duration: @calendar-transition-duration;
+        transition-property: @calendar-transition-property;
+        transition-timing-function: @calendar-transition-timing-function;
 
         &-content {
           min-height: @calendar-body-cell-content-min-height;
@@ -166,13 +166,13 @@
             font-size: @calendar-card-body-cell-value-font-size;
             text-align: center;
             border-radius: @calendar-card-body-cell-value-border-radius;
-            transition-timing-function: @anim-time-fn-ease-in;
-            transition-duration: @anim-duration-base;
-            transition-property: color, background;
+            transition-duration: @calendar-transition-duration;
+            transition-property: @calendar-transition-property;
+            transition-timing-function: @calendar-transition-timing-function;
 
             &:hover {
               box-shadow: inset 0 0 0 1px @calendar-highlight-color;
-              transition: box-shadow @anim-duration-base @anim-time-fn-ease-in;
+              transition: box-shadow @calendar-transition-duration @calendar-transition-timing-function;
               border-radius: 100%;
             }
           }
@@ -319,7 +319,7 @@
 
         &:hover {
           background-color: @calendar-body-cell-hover-bg-color;
-          transition: background-color @anim-duration-base @anim-time-fn-ease-in;
+          transition: background-color @calendar-transition-duration @calendar-transition-timing-function;
         }
 
         &-value {

@@ -12,14 +12,14 @@
   // 水平方向
   &--horizontal {
     // 内容最大宽度
-    .@{prefix}-steps-item-content {
+    .@{prefix}-step-content {
       max-width: 80px;
       margin-top: @spacer;
     }
 
     .connector-default(horizontal);
 
-    .@{prefix}-steps-item {
+    .@{prefix}-step {
       &--default {
         .default-number-status(default);
       }
@@ -35,7 +35,7 @@
       &--error {
         .default-number-status(error);
 
-        .@{prefix}-steps-item-title {
+        .@{prefix}-step-title {
           color: @step-error-title-color;
         }
       }
@@ -43,7 +43,7 @@
 
     &.@{prefix}-steps--icon-anchor {
 
-      .@{prefix}-steps-item {
+      .@{prefix}-step {
         &-icon {
           &__number {
             display: flex;
@@ -57,9 +57,9 @@
         }
       }
 
-      .@{prefix}-steps-item:not(:last-child) {
+      .@{prefix}-step:not(:last-child) {
 
-        .@{prefix}-steps-item__inner:after {
+        .@{prefix}-step__inner:after {
           content: "";
           display: block;
           height: 1px;
@@ -78,7 +78,7 @@
     flex-direction: column;
     align-items: flex-start;
 
-    .@{prefix}-steps-item {
+    .@{prefix}-step {
       position: relative;
 
       &__inner {
@@ -108,7 +108,7 @@
 
     &.@{prefix}-steps--default-anchor {
 
-      .@{prefix}-steps-item {
+      .@{prefix}-step {
         &--default {
           .default-number-status(default);
         }
@@ -124,7 +124,7 @@
         &--error {
           .default-number-status(error);
 
-          .@{prefix}-steps-item-title {
+          .@{prefix}-step-title {
             color: @error-color;
           }
         }
@@ -135,7 +135,7 @@
 
     &.@{prefix}-steps--dot-anchor {
 
-      .@{prefix}-steps-item {
+      .@{prefix}-step {
         &-icon {
           &__dot {
             display: block;
@@ -153,9 +153,9 @@
         }
       }
 
-      .@{prefix}-steps-item:not(:last-child) {
+      .@{prefix}-step:not(:last-child) {
 
-        .@{prefix}-steps-item__inner:after {
+        .@{prefix}-step__inner:after {
           content: "";
           display: block;
           height: calc(100% - @dot-steps-anchor-width);

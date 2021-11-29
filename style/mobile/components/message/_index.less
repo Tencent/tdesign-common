@@ -11,10 +11,12 @@
   justify-content: @message-align;
   align-items: center;
   z-index: @message-z-index;
-  color: @message-text-color;
   font-size: @message-text-font-size;
   padding: @message-padding-top @message-padding-right @message-padding-bottom @message-padding-left;
   border-radius: @message-border-radius;
+  color: @message-color;
+  background-color: #fff;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 20%);
 
   &&-align--center {
     justify-content: center;
@@ -28,27 +30,26 @@
     overflow: hidden;
   }
 
-  &--info {
-    background-color: @primary-color;
-  }
-
-  &--success {
-    background-color: @success-color;
-  }
-
-  &--warning {
-    background-color: @warning-color;
-  }
-
-  &--error {
-    background-color: @error-color;
-  }
-
   .@{prefix}-icon {
     flex-shrink: 0;
     font-size: @message-icon-size;
     margin-right: @message-icon-margin-right;
-    color: @message-icon-color;
+  }
+
+  &--info {
+    color: @primary-color;
+  }
+
+  &--success {
+    color: @success-color;
+  }
+
+  &--warning {
+    color: @warning-color;
+  }
+
+  &--error {
+    color: @error-color;
   }
 }
 

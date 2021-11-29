@@ -1,6 +1,6 @@
 .step-item-basic {
 
-  .@{prefix}-steps-item {
+  .@{prefix}-step {
     flex: 1;
     vertical-align: top;
     position: relative;
@@ -59,9 +59,9 @@
 .connector-default(@direction; @isReverse:false) {
   & when (@direction = horizontal) {
 
-    .@{prefix}-steps-item:not(:last-child) {
+    .@{prefix}-step:not(:last-child) {
 
-      .@{prefix}-steps-item__inner:after {
+      .@{prefix}-step__inner:after {
         content: "";
         display: block;
         height: 1px;
@@ -73,19 +73,19 @@
       }
     }
 
-    .@{prefix}-steps-item--finish:not(:last-child),
-    .@{prefix}-steps-item--default:not(:last-child) {
+    .@{prefix}-step--finish:not(:last-child),
+    .@{prefix}-step--default:not(:last-child) {
 
-      .@{prefix}-steps-item__inner:after {
+      .@{prefix}-step__inner:after {
         background: @primary-color;
       }
     }
   }
   & when(@direction = vertical) {
 
-    .@{prefix}-steps-item:not(:last-child) {
+    .@{prefix}-step:not(:last-child) {
 
-      .@{prefix}-steps-item__inner:after {
+      .@{prefix}-step__inner:after {
         content: "";
         display: block;
         height: calc(100% - @connector-default-icon-width);
@@ -97,10 +97,10 @@
       }
     }
 
-    .@{prefix}-steps-item--finish:not(:last-child),
-    .@{prefix}-steps-item--default:not(:last-child) {
+    .@{prefix}-step--finish:not(:last-child),
+    .@{prefix}-step--default:not(:last-child) {
 
-      .@{prefix}-steps-item__inner:after {
+      .@{prefix}-step__inner:after {
         background: @primary-color;
       }
     }
@@ -110,21 +110,21 @@
 .default-number-status(@anchor-status) {
   & when(@anchor-status = default) {
 
-    .@{prefix}-steps-item-icon__number {
+    .@{prefix}-step-icon__number {
       border-color: @primary-color;
       color: @primary-color;
     }
   };
   & when(@anchor-status = finish) {
 
-    .@{prefix}-steps-item-icon__number {
+    .@{prefix}-step-icon__number {
       border-color: @primary-color;
       color: @primary-color;
     }
   };
   & when(@anchor-status = process) {
 
-    .@{prefix}-steps-item-icon__number {
+    .@{prefix}-step-icon__number {
       background: @primary-color;
       color: #fff;
       border-color: @primary-color;
@@ -132,7 +132,7 @@
   };
   & when(@anchor-status = error) {
 
-    .@{prefix}-steps-item-icon__number {
+    .@{prefix}-step-icon__number {
       background: @error-color-6;
       color: @text-anti-primary-color;
       border-color: @error-color-6;

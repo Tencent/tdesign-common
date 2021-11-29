@@ -21,44 +21,44 @@
 .@{prefix}-slider-input-container {
   display: flex;
   align-items: center;
-  margin-left: 24px;
+  margin-left: @slider-input-margin-left;
 
   &.is-vertical {
-    padding-top: 16px;
-    margin-left: 0;
+    padding-top: @slider-input-vertical-padding-top;
+    margin-left: @slider-input-vertical-margin-left;
   }
 
   .center-line {
-    width: 8px;
-    height: 1px;
-    background: rgba(0, 0, 0, 90%);
-    margin: 0 8px;
+    width: @slider-center-line-width;
+    height: @slider-center-line-height;
+    background: @slider-center-line-background;
+    margin: @slider-center-line-margin;
   }
 
   .t-input-number {
-    width: 80px;
+    width: @slider-input-width;
   }
 }
 
 .@{prefix}-slider-input {
   &.is-range {
-    margin-left: 12px;
+    margin-left: @slider-input-range-margin-left;
   }
 }
 
 .@{prefix}-slider {
-  height: 18px;
+  height: @slider-height;
   width: 100%;
   position: relative;
-  padding: 7px 0;
+  padding: @slider-padding;
 
   &__rail {
     position: absolute;
     width: 100%;
-    height: 4px;
+    height: @slider-rail-track-step-size;
     background-color: @slider-background;
     transition: background-color .3s;
-    border-radius: 4px;
+    border-radius: @slider-border-radius;
 
     &:hover {
       background-color: @slider-background-hover;
@@ -67,22 +67,22 @@
 
   &__track {
     position: absolute;
-    height: 4px;
+    height: @slider-rail-track-step-size;
     background-color: @slider-background-current;
     right: auto;
-    border-radius: 4px;
+    border-radius: @slider-border-radius;
   }
 
   &__step {
     position: absolute;
     width: 100%;
-    height: 4px;
+    height: @slider-rail-track-step-size;
     cursor: pointer;
   }
 
   &__button {
-    width: 16px;
-    height: 16px;
+    width: @slider-controlbar-size;
+    height: @slider-controlbar-size;
     border: 2px solid @slider-controlbar-border;
     background-color: @slider-controlbar-background;
     border-radius: 50%;
@@ -113,8 +113,8 @@
 
   &__stop {
     position: absolute;
-    width: 1px;
-    height: 6px;
+    width: @slider-stop-width;
+    height: @slider-stop-height;
     background-color: @slider-background;
     top: 4px;
   }
@@ -129,12 +129,12 @@
   &__mark-text {
     position: absolute;
     display: inline-block;
-    font-size: 12px;
+    font-size: @slider-text-font-size;
     color: @slider-text;
-    top: 13px;
-    line-height: 20px;
+    top: @slider-text-top;
+    line-height: @slider-text-line-height;
     // transform: translateX(-50%);
-    margin-top: 4px;
+    margin-top: @slider-border-radius;
     cursor: pointer;
 
     &:last-child {
@@ -144,29 +144,29 @@
 }
 
 .@{prefix}-slider-vertical {
-  height: 100%;
-  padding: 0;
+  height: @slider-vertical-height;
+  padding: @slider-vertical-padding;
   display: flex;
   justify-content: center;
 
   .@{prefix}-slider__rail {
-    width: 4px;
+    width: @slider-rail-track-step-size;
     height: 100%;
   }
 
   .@{prefix}-slider__track {
-    width: 4px;
+    width: @slider-rail-track-step-size;
     top: auto;
   }
 
   .@{prefix}-slider__step {
-    width: 4px;
+    width: @slider-rail-track-step-size;
     height: 100%;
   }
 
   .@{prefix}-slider__handle {
-    margin-top: -6px;
-    margin-left: -5px;
+    margin-top: @slider-vertical-handle-margin-top;
+    margin-left: @slider-vertical-handle-margin-left;
     top: auto;
     transform: translateY(50%);
   }
@@ -174,26 +174,26 @@
   .@{prefix}-slider__mark {
     top: 0;
     left: 12px;
-    width: 18px;
+    width: @slider-vertical-mark-width;
     height: 100%;
   }
 
   .@{prefix}-slider__stop {
-    width: 6px;
-    height: 1px;
+    width: @slider-stop-height;
+    height: @slider-stop-width;
     left: 4px;
     background-color: @slider-background;
   }
 
   .@{prefix}-slider__mark-text {
     transform: translateY(-50%);
-    margin-top: 0;
-    margin-left: 2px;
+    margin-top: @slider-vertical-text-margin-top;
+    margin-left: @slider-vertical-text-margin-left;
   }
 
   .@{prefix}-slider__button-wrapper {
     top: auto;
-    left: -14px;
+    left: @slider-vertical-controlbar-left;
     transform: translate(50%, 50%);
   }
 }

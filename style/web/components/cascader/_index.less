@@ -357,20 +357,3 @@
 .@{prefix}-cascader-panel.@{prefix}-cascader--tip {
   height: @cascader-panel-height-tips;
 }
-
-.@{prefix}-cascader-close-icon-fade {
-  &-enter,
-  &-leave,
-  &-enter-from,
-  &-leave-to {
-    opacity: 0;
-  }
-
-  &-enter-active {
-    transition: opacity @anim-duration-base @anim-time-fn-ease-in;
-  }
-
-  &-leave-active {
-    transition: opacity 0s;
-  }
-}

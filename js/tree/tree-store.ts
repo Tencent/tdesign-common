@@ -15,32 +15,6 @@ import {
   TypeTreeEventState,
 } from './types';
 
-function parseNodeData(
-  tree: any,
-  para: TreeNodeValue | TreeNode | TypeTreeNodeData,
-  item: TypeTreeNodeData | TypeTreeNodeData[] | TreeNode,
-) {
-  let value: TreeNodeValue = '';
-  let node = null;
-  let data = null;
-
-  if (typeof para === 'string' || typeof para === 'number') {
-    value = para;
-    data = item;
-    node = tree.getNode(value);
-  } else if (para instanceof TreeNode) {
-    node = para;
-    data = item;
-  } else {
-    data = para;
-  }
-  const spec = {
-    node,
-    data,
-  };
-  return spec;
-}
-
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
 // 任何一次数据写入，会触发相应节点的状态更新
@@ -257,6 +231,32 @@ export class TreeStore {
     this.append(list);
   }
 
+  // 解析节点数据，适配多种节点类型
+  public parseNodeData(
+    para: TreeNodeValue | TreeNode | TypeTreeNodeData,
+    item: TypeTreeNodeData | TypeTreeNodeData[] | TreeNode,
+  ) {
+    let value: TreeNodeValue = '';
+    let node = null;
+    let data = null;
+
+    if (typeof para === 'string' || typeof para === 'number') {
+      value = para;
+      data = item;
+      node = this.getNode(value);
+    } else if (para instanceof TreeNode) {
+      node = para;
+      data = item;
+    } else {
+      data = para;
+    }
+    const spec = {
+      node,
+      data,
+    };
+    return spec;
+  }
+
   /**
    * 向指定节点追加节点或者数据
    * 支持下列使用方式
@@ -272,7 +272,7 @@ export class TreeStore {
     para?: TypeTargetNode | TypeTreeNodeData,
     item?: TypeTreeNodeData | TreeNode,
   ): void {
-    const spec = parseNodeData(this, para, item);
+    const spec = this.parseNodeData(para, item);
     if (spec.data) {
       if (!spec.node) {
         // 在根节点插入
