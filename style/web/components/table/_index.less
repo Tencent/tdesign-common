@@ -133,7 +133,9 @@
 
   // 边框线表格
   &--bordered {
-
+    .@{prefix}-table-content {
+      border-left: 1px solid @table-border-color;
+    }
     .@{prefix}-table--empty {
       border-left: 1px  solid  @table-border-color;
       border-right: 1px  solid  @table-border-color;
@@ -142,7 +144,6 @@
     .@{prefix}-table-content {
       border: 1px solid @table-border-color;
       border-bottom: 0;
-      border-left: 0;
       border-radius: @border-radius;
 
       th {
@@ -182,7 +183,7 @@
         }
 
         &:first-child {
-          border-left: 1px solid @table-border-color;
+          border-left: none;
 
           &::before {
             border-left: 0;
@@ -341,6 +342,16 @@
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
           background-color: @bg-color-secondarycontainer;
+
+          &:last-child::after {
+            content: "";
+            position: absolute;
+            right: -6px;
+            width: 6px;
+            height: 100%;
+            top: 0;
+            background-color: @bg-color-secondarycontainer;
+          }
         }
       }
 
