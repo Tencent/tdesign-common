@@ -1,9 +1,8 @@
 # 组件概览
 
-TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰富组件库，持续赋能产业互联网，除提供官方基础组件外，TDesign 也提供各垂直领域的行业组件，满足全场景的生态能力建设。
+TDesign 基于海量业务沉淀，为 Web、Mobile、小程序等平台提供丰富组件库，持续赋能产业互联网，除提供官方基础组件外，TDesign 也提供各垂直领域的行业组件，满足全场景的生态能力建设。
 
-##### 
-
+#####
 
 <h3>基础<em class="tag">3</em></h3>
 <section class="image-group">
@@ -29,7 +28,6 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
   </div>
 </section>
 
-
 <h3>布局<em class="tag">2</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
@@ -47,9 +45,14 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
   </div>
 </section>
 
-
-<h3>导航<em class="tag">6</em></h3>
+<h3>导航<em class="tag">8</em></h3>
 <section class="image-group">
+  <div class="image-wrapper">
+    <a class="item" href="./affix">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-affix.png" />
+      <p class="name">Affix 固钉</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./anchor">
       <img src="https://tdesign.gtimg.com/site/doc/doc-anchor.png" />
@@ -58,11 +61,16 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
   </div>
   <div class="image-wrapper">
     <a class="item" href="./breadcrumb">
-      <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/doc-breadcrumb.png" />
+      <img src="https://tdesign.gtimg.com/site/doc/doc-breadcrumb.png" />
       <p class="name">Breadcumb 面包屑</p>
     </a>
   </div>
-
+  <div class="image-wrapper">
+    <a class="item" href="./dropdown">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-dropdown.png" />
+      <p class="name">Dropdown 下拉菜单</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./menu">
       <img src="https://tdesign.gtimg.com/site/doc/doc-menu.png" />
@@ -90,14 +98,24 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
     </a>
   </div>
 </section>
-
-
-<h3>表单<em class="tag">13</em></h3>
+<h3>输入<em class="tag">15</em></h3>
 <section class="image-group">
+  <div class="image-wrapper">
+    <a class="item" href="./cascader">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-cascader.png" />
+      <p class="name">Cascader 级联选择器</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./checkbox">
       <img src="https://tdesign.gtimg.com/site/doc/doc-checkbox.png" />
       <p class="name">Checkbox 多选框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./date-picker">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-datepicker.png" />
+      <p class="name">DatePicker 日期选择器</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -126,15 +144,15 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="./dropdown">
-      <img src="https://tdesign.gtimg.com/site/doc/doc-dropdown.png" />
-      <p class="name">Dropdown 下拉菜单</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
     <a class="item" href="./select">
       <img src="https://tdesign.gtimg.com/site/doc/doc-select.png" />
       <p class="name">Select 选择器</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./slider">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-slider.png" />
+      <p class="name">Slider 滑块</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -143,17 +161,10 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
       <p class="name">Switch 开关</p>
     </a>
   </div>
-
   <div class="image-wrapper">
-    <a class="item" href="./time-picker">
-      <img src="https://tdesign.gtimg.com/site/doc/doc-timepicker.png" />
-      <p class="name">TimePicker 时间选择器</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
-    <a class="item" href="./date-picker">
-      <img src="https://tdesign.gtimg.com/site/doc/doc-datepicker.png" />
-      <p class="name">DatePicker 日期选择器</p>
+    <a class="item" href="./textarea">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-textarea.png" />
+      <p class="name">Textarea 多行文本框</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -163,23 +174,33 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="./upload">
-      <img src="https://tdesign.gtimg.com/site/doc/doc-upload.png" />
-      <p class="name">Upload 上传</p>
+    <a class="item" href="./time-picker">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-timepicker.png" />
+      <p class="name">TimePicker 时间选择器</p>
     </a>
   </div>
-
   <div class="image-wrapper">
     <a class="item" href="./tree-select">
       <img src="https://tdesign.gtimg.com/site/doc/doc-treeselect.png" />
       <p class="name">TreeSelect 树选择</p>
     </a>
   </div>
+  <div class="image-wrapper">
+    <a class="item" href="./upload">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-upload.png" />
+      <p class="name">Upload 上传</p>
+    </a>
+  </div>
 </section>
 
-
-<h3>数据展示<em class="tag">8</em></h3>
+<h3>数据展示<em class="tag">10</em></h3>
 <section class="image-group">
+  <div class="image-wrapper">
+    <a class="item" href="./avatar">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-avatar.png" />
+      <p class="name">Avatar 头像</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./badge">
       <img src="https://tdesign.gtimg.com/site/doc/doc-badge.png" />
@@ -190,6 +211,12 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
     <a class="item" href="./calendar">
       <img src="https://tdesign.gtimg.com/site/doc/doc-calendar.png" />
       <p class="name">Calendar 日历</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./comment">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-comment.png" />
+      <p class="name">Comment 评论</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -231,7 +258,7 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
   </div>
 </section>
 
-<h3>消息提醒<em class="tag">8</em></h3>
+<h3>消息提醒<em class="tag">9</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./alert">
@@ -280,6 +307,12 @@ TDesign 基于海量业务沉淀，为Web、Mobile、小程序等平台提供丰
     <a class="item" href="./popup">
       <img src="https://tdesign.gtimg.com/site/doc/doc-popup.png" />
       <p class="name">Popup 弹出层</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./swiper">
+      <img src="https://tdesign.gtimg.com/site/doc/doc-swiper.png" />
+      <p class="name">Swiper 轮播框</p>
     </a>
   </div>
 </section>

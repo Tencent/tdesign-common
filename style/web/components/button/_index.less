@@ -326,6 +326,10 @@
   }
 }
 
+.@{prefix}-button--ghost {
+  --ripple-color: @gray-color-10; // 幽灵按钮相当于按钮暗色模式，因此固定为暗色模式 token
+}
+
 .@{prefix}-button:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-white-bg-active;
 }
