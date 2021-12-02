@@ -240,6 +240,14 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu__popup {
       background: @menu-theme-dark;
     }
+
+    .@{prefix}-menu-group-title {  
+      color: @menu-menu-group-title-color--dark;     
+    }
+
+    &.@{prefix}-is-collapsed .@{prefix}-menu-group-title:after {
+      background-color: @menu-group-title-bg--collapse--dark;
+    }
   }
 
   &.@{prefix}-is-collapsed {
