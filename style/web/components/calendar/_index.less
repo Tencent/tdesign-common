@@ -8,6 +8,20 @@
   border: 1px solid @calendar-border-color;
   background-color: @calendar-bg;
 
+  .@{prefix}-is-disabled {
+
+    .@{prefix}-calendar__table-body-cell-value {
+      color: @calendar-body-cell-value-disabled-color;
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
+    &:hover {
+      background-color: @calendar-bg;
+    }
+  }
+
   &--full {
     min-width: @calendar-full-min-width;
 
@@ -77,13 +91,6 @@
       height: @calendar-footer-height;
       padding: @calendar-footer-padding;
       border-top: 1px solid @calendar-border-color;
-    }
-
-    .@{prefix}-is-disabled {
-
-      .@{prefix}-calendar__table-body-cell-value {
-        color: @calendar-body-cell-value-disabled-color;
-      }
     }
 
     .@{prefix}-is-now {
