@@ -2,7 +2,7 @@ name: MAIN_PULL_REQUEST
 
 on:
   pull_request:
-    branches: [develop, master, main]
+    branches: [develop, main]
 
 jobs:
   MAIN_PULL_REQUEST:
@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
       - name: Install dependencies
         run: npm install
         shell: bash
