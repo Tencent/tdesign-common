@@ -41,11 +41,11 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="配图.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/111.png" />
     <em>图示：评论通栏布局</em>
   </div>
   <div class="item">
-    <img src="配图.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/222.png" />
     <em>图示：评论非通栏布局</em>
   </div>
 
@@ -63,7 +63,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="配图.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/333.png" />
     <em></em>
   </div>
 
@@ -79,11 +79,11 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="配图.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/444.png" />
     <em>图示：基础评论与加载搭配</em>
   </div>
     <div class="item">
-    <img src="配图.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/555.png" />
     <em>图示：带回复的评论与加载搭配</em>
   </div>
 
