@@ -33,13 +33,15 @@ export default function xhr({
 
   xhr.onerror = (event: ProgressEvent) => onError({ event, file });
 
-  xhr.onprogress = function (event: ProgressEvent) {
-    let percent = 0;
-    if (event.total > 0) {
-      percent = Math.round((event.loaded / event.total) * 100);
-    }
-    onProgress({ event, percent, file });
-  };
+  if (xhr.upload) {
+    xhr.upload.onprogress = function (event: ProgressEvent) {
+      let percent = 0;
+      if (event.total > 0) {
+        percent = Math.round((event.loaded / event.total) * 100);
+      }
+      onProgress({ event, percent, file });
+    };
+  }
 
   xhr.onload = function (event: ProgressEvent) {
     let response;
