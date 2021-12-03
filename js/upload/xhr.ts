@@ -11,6 +11,7 @@ export default function xhr({
   onProgress,
   onSuccess,
 }: XhrOptions) {
+  // eslint-disable-next-line no-shadow
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
     xhr.withCredentials = true;
@@ -43,6 +44,7 @@ export default function xhr({
     };
   }
 
+  // eslint-disable-next-line consistent-return
   xhr.onload = function (event: ProgressEvent) {
     let response;
     const isFail = xhr.status < 200 || xhr.status >= 300;
