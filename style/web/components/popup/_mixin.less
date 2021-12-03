@@ -2,8 +2,9 @@
 
   .@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-popup__arrow {
     bottom: calc(-@popup-arrow-width / 2);
-
+    
     &::before {
+      border-top-left-radius: 100%;
       box-shadow: @popup-top-arrow-shadow;
     }
   }
@@ -26,8 +27,9 @@
 
   .@{prefix}-popup[data-popper-placement^="bottom"] .@{prefix}-popup__arrow {
     top: calc(-@popup-arrow-width / 2);
-
+    
     &::before {
+      border-bottom-right-radius: 100%;
       box-shadow: @popup-bottom-arrow-shadow;
     }
   }
