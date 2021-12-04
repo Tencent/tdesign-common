@@ -26,6 +26,7 @@
   .@{prefix}-icon {
     position: relative;
     z-index: 1;
+    line-height: @btn-line-height-default;
   }
 
   .@{prefix}-icon {
@@ -256,17 +257,20 @@
 
   &.@{prefix}-size-s {
     .button-size(@btn-height-s, @btn-font-default , @btn-padding-horizontal-s);
+    line-height: @btn-line-height-s
   }
 
   &.@{prefix}-size-l {
     width: 100%;
     .button-size(@btn-height-l , @btn-font-default , @btn-padding-horizontal-l);
+    line-height: @btn-line-height-l
   }
 
   &.@{prefix}-size-full-width {
     display: block;
     width: 100%;
     height: @btn-height-block;
+    line-height: @btn-line-height-l
   }
 
   &--icon-only:not(&--shape-round) {
