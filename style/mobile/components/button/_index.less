@@ -12,6 +12,7 @@
   &.@{prefix}-is-disabled {
     @{attr}: e(@attr-prepend) @@theme-disabled;
   }
+
   @theme-default: e("btn-color-@{theme}");
   @theme-active: e("btn-color-@{theme}-active");
   @theme-disabled: e("btn-color-@{theme}-disabled");
@@ -37,11 +38,11 @@
     font-size: @btn-loading-size;
   }
 
-  .@{prefix}-icon  + .@{prefix}-button__text {
+  .@{prefix}-icon+.@{prefix}-button__text {
     margin-left: @spacer;
   }
 
-  .@{prefix}-loading + .@{prefix}-button__text {
+  .@{prefix}-loading+.@{prefix}-button__text {
     margin-left: @spacer;
   }
 
@@ -256,21 +257,21 @@
   }
 
   &.@{prefix}-size-s {
+    line-height: @btn-line-height-s;
     .button-size(@btn-height-s, @btn-font-default , @btn-padding-horizontal-s);
-    line-height: @btn-line-height-s
   }
 
   &.@{prefix}-size-l {
     width: 100%;
+    line-height: @btn-line-height-l;
     .button-size(@btn-height-l , @btn-font-default , @btn-padding-horizontal-l);
-    line-height: @btn-line-height-l
   }
 
   &.@{prefix}-size-full-width {
     display: block;
     width: 100%;
     height: @btn-height-block;
-    line-height: @btn-line-height-l
+    line-height: @btn-line-height-l;
   }
 
   &--icon-only:not(&--shape-round) {
