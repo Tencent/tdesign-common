@@ -7,10 +7,10 @@
 --td-error-color: red;
 --td-success-color: green;
 ```
-完整的 token 列表见 [](./style/web/theme/_light.less)。
+完整的 token 列表见 [_light.less](https://github.com/Tencent/tdesign-common/style/web/theme/_light.less)。
 
 ## 使用 less 变量
-如果你的项目也使用 less 技术栈，且对组件有更精细的定制需求，我们也抽离了大部分组件实现过程中用到的变量，以 less 变量的方式提供出来：
+如果你的项目也使用 less 技术栈，且对组件有更精细的定制需求，我们也抽离了大部分组件实现过程中用到的变量，以 less 变量的方式提供出来，
 ``` less
 // 以 Button 为例
 // 尺寸
@@ -42,7 +42,19 @@
 @btn-padding-horizontal-l: (@spacer * 3);
 ```
 
-你可以在自己的项目自行修改这些变量的值，比如使用 modifyVars ：
+要修改这些 less 变量，需要改为从 npm ESM 产物中引入组件库：
+
+```js
+// tdesign-npm-name 替换为当前在使用的包名称
+import TDesign from 'tdesign-npm-name/esm';
+// 引入组件库全局样式资源
+import 'tdesign-vue/esm/style/index.js';
+
+```
+关于各类构建产物的差别可以参考 [构建产物规范](https://github.com/TDesignOteam/tdesign-common/develop-install.md)。
+
+
+之后，你可以在自己的项目自行修改这些变量的值，比如使用 modifyVars ：
 ``` json
 {
     loaderOptions: {
