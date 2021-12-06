@@ -23,7 +23,7 @@ export default function xhr({
   Object.keys(sendData).forEach((key) => {
     formData.append(key, data[key]);
   });
-  formData.append(name, file);
+  formData.append(name, file.raw);
 
   xhr.open('post', action, true);
 
