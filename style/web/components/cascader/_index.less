@@ -25,7 +25,7 @@
   transition: border-color @anim-duration-base @anim-time-fn-ease-in;
 
   &:hover:not(.@{prefix}-is-disabled) {
-    //cursor: pointer;
+    cursor: pointer;
     border-color: @cascader-active-border-color;
 
     & > .@{prefix}-icon {
@@ -129,6 +129,21 @@
     display: flex;
     height: 100%;
 
+    .@{prefix}-cascader-panel__is-empty {
+      width: 100%;
+      height: @cascader-item-height-default;
+      line-height: @cascader-item-height-default;
+      color: @cascader-color-empty;
+      margin: @cascader-menu-padding;
+      text-align: center;
+      padding-left: 0;
+
+      &:hover {
+        background: none;
+        cursor: default;
+      }
+    }
+
     & .@{prefix}-cascader-menu {
       width: (@cascader-width-s - 2px);
       overflow: auto;
@@ -194,17 +209,6 @@
 
           .@{prefix}-cascader-item__label--filter {
             color: @cascader-highlight-color;
-          }
-        }
-
-        &.@{prefix}-cascader-item__is-empty {
-          color: @cascader-light-color;
-          text-align: center;
-          padding-left: 0;
-
-          &:hover {
-            background: none;
-            cursor: default;
           }
         }
 
@@ -290,11 +294,6 @@
     & .@{prefix}-cascader-menu__seperator {
       border-right: .5px solid @cascader-menu-seperator-color;
     }
-
-    & .@{prefix}-cascader-menu__filter {
-      width: @cascader-input-width;
-      box-sizing: border-box;
-    }
   }
 }
 
@@ -316,6 +315,7 @@
 
 .@{prefix}-cascader-icon {
   color: @cascader-icon-color;
+  display: flex;
   .icon-position();
 }
 
@@ -340,6 +340,9 @@
   background-color: @cascader-tag-background-color-disabled;
   color: @cascader-tag-color-disabled;
   border-color: @cascader-border-color-disabled;
+  .@{prefix}-cascader-content {
+    color: @cascader-color-empty;
+  }
 }
 
 .@{prefix}-cascader.@{prefix}-is-popup {
