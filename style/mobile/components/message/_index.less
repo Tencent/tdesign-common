@@ -23,6 +23,7 @@
   }
 
   &--txt {
+    flex: 1;
     display: -webkit-box; // stylelint-disable-line
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
@@ -34,6 +35,10 @@
     flex-shrink: 0;
     font-size: @message-icon-size;
     margin-right: @message-icon-margin-right;
+  }
+
+  .@{prefix}-icon-close {
+    margin-right: 0;
   }
 
   &--info {
