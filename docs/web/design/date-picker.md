@@ -43,7 +43,7 @@
 
 ##### 与选择器搭配使用，对选择的颗粒度（年、月、日）进行切换，常用于日期选择器类型的选择。
 
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker5.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker5.png" />
 
 
 ### 常见用法
