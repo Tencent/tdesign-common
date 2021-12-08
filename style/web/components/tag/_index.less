@@ -45,7 +45,7 @@
 
     .@{prefix}-tag__icon-close {
       color: @tag-close-icon-color;
-  
+
       &:hover {
         color: @tag-close-icon-hover-color;
       }
@@ -85,11 +85,8 @@
       }
 
       .@{prefix}-icon {
-        fill: @tag-disabled-color;
-        cursor: not-allowed;
-
         &:hover {
-          fill: @tag-disabled-color;
+          cursor: pointer;
         }
       }
     }
@@ -101,7 +98,6 @@
     &.@{prefix}-tag--plain {
       color: @tag-primary-color;
     }
-    
   }
 
   &--success {
@@ -139,24 +135,13 @@
       }
     }
 
-    .@{prefix}-tag__icon-close {
-      fill: @brand-color;
-
-      &:hover {
-        fill: @brand-color-hover;
-      }
-    }
-
     &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
       .@{prefix}-tag__icon-close {
-        color: @brand-color;
-    
         &:hover {
           color: @brand-color-hover;
         }
       }
     }
-    
   }
 
   &--success {
@@ -172,8 +157,6 @@
 
     &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
       .@{prefix}-tag__icon-close {
-        color: @success-color;
-    
         &:hover {
           color: @success-color-hover;
         }
@@ -194,8 +177,6 @@
 
     &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
       .@{prefix}-tag__icon-close {
-        color: @warning-color;
-    
         &:hover {
           color: @warning-color-hover;
         }
@@ -224,8 +205,6 @@
 
     &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
       .@{prefix}-tag__icon-close {
-        color: @error-color;
-    
         &:hover {
           color: @error-color-hover;
         }
