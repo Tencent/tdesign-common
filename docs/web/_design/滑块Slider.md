@@ -70,7 +70,7 @@ demo
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/4.png?444?" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/4.png?444" />
     <em>图示：与带按钮的数字输入框搭配</em>
   </div>
 </div>

@@ -24,7 +24,7 @@
 </div>
 
 ### 画布与辅助线
-T-Design 图标的设计上实际画布应控制在栅格中心15*15px的区域，周围留有1px的出血。
+T-Design 图标的设计上实际画布应控制在栅格中心14*14px的区域，周围留有1px的出血。
 在一些特殊情况下如 icon 过长或者有突出的边角等，允许内容适当延展，以确保图标视觉重量上的统一
 
 ![202111116](https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/202111116.png)
