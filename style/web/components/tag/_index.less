@@ -30,14 +30,9 @@
   .@{prefix}-tag__icon-close {
     margin-right: 0;
     margin-left: 4px;
-    fill: @tag-close-icon-color;
     font-size: @tag-large-font-size;
     cursor: pointer;
-    transition: fill @anim-duration-base @anim-time-fn-easing;
-
-    &:hover {
-      fill: @tag-close-icon-hover-color;
-    }
+    transition: color @anim-duration-base @anim-time-fn-easing;
   }
 
   ::selection {
@@ -47,6 +42,14 @@
   &--default {
     color: @tag-default-text-color;
     background-color: @tag-default-background-color;
+
+    .@{prefix}-tag__icon-close {
+      color: @tag-close-icon-color;
+  
+      &:hover {
+        color: @tag-close-icon-hover-color;
+      }
+    }
 
     &.@{prefix}-tag--checked {
       color: @tag-checked-color;
@@ -98,6 +101,7 @@
     &.@{prefix}-tag--plain {
       color: @tag-primary-color;
     }
+    
   }
 
   &--success {
@@ -142,6 +146,17 @@
         fill: @brand-color-hover;
       }
     }
+
+    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+      .@{prefix}-tag__icon-close {
+        color: @brand-color;
+    
+        &:hover {
+          color: @brand-color-hover;
+        }
+      }
+    }
+    
   }
 
   &--success {
@@ -155,11 +170,13 @@
       }
     }
 
-    .@{prefix}-tag__icon-close {
-      fill: @success-color;
-
-      &:hover {
-        fill: @success-color-hover;
+    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+      .@{prefix}-tag__icon-close {
+        color: @success-color;
+    
+        &:hover {
+          color: @success-color-hover;
+        }
       }
     }
   }
@@ -175,11 +192,13 @@
       }
     }
 
-    .@{prefix}-tag__icon-close {
-      fill: @warning-color;
-
-      &:hover {
-        fill: @warning-color-hover;
+    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+      .@{prefix}-tag__icon-close {
+        color: @warning-color;
+    
+        &:hover {
+          color: @warning-color-hover;
+        }
       }
     }
   }
@@ -200,6 +219,16 @@
 
       &:hover {
         fill: @error-color-hover;
+      }
+    }
+
+    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+      .@{prefix}-tag__icon-close {
+        color: @error-color;
+    
+        &:hover {
+          color: @error-color-hover;
+        }
       }
     }
   }
