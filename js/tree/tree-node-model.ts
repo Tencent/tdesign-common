@@ -126,6 +126,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
     remove(value?: TreeNodeValue) {
       if (!value) {
         node.remove();
+        return;
       }
 
       const { tree } = node;
