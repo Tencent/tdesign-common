@@ -11,7 +11,7 @@
   background-color: @tab-default-bg;
 
   .@{prefix}-icon {
-    font-size: 16px;
+    font-size: @tab-icon-size;
   }
 
   &__header {
@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    border-bottom: 1px solid @tab-card-stroke;
+    border-bottom: @tab-bar-operations-border;
 
     &--left {
       left: 0;
@@ -46,7 +46,7 @@
 
       .@{prefix}-tabs__btn {
         &:first-child {
-          box-shadow: -10px 0 20px 5px rgba(0, 0, 0, 5%);
+          box-shadow: @tab-bar-operations-btn-box-shadow;
         }
       }
     }
@@ -59,11 +59,11 @@
     align-items: center;
     justify-content: center;
     background-color: @tab-card-bg;
-    border-left: 1px solid @tab-card-stroke;
+    border-left: @tab-btn-border;
     cursor: pointer;
     color: @tab-default-text;
-    font-size: @font-size-l;
-    transition: all @anim-duration-moderate @anim-time-fn-easing;
+    font-size: @tab-nav-item-font-size;
+    transition: @tab-bar-transtion;
     z-index: 1;
     opacity: 1;
 
@@ -82,13 +82,13 @@
     }
 
     &--left {
-      border-right: 1px solid @tab-card-stroke;
-      box-shadow: 10px 0 20px 5px rgba(0, 0, 0, 5%);
+      border-right: @tab-btn-border;
+      box-shadow: @tab-btn-box-shadow;
 
       &.fade-enter,
       &.fade-enter-from,
       &.fade-leave-to {
-        transform: translateX(-50px);
+        transform: @tab-btn-fade-transform-left;
       }
     }
 
@@ -96,7 +96,7 @@
       &.fade-enter,
       &.fade-enter-from,
       &.fade-leave-to {
-        transform: translateX(50px);
+        transform: @tab-btn-fade-transform-right;
       }
     }
   }
@@ -142,10 +142,10 @@
     display: block;
     background-color: @tab-card-bg;
     text-align: center;
-    border-bottom: 1px solid @tab-default-stroke;
+    border-bottom: @tab-bar-operations-border;
     cursor: pointer;
     color: @tab-card-text;
-    font-size: @font-size-l;
+    font-size: @tab-nav-item-font-size;
 
     &.@{prefix}-size-m {
       height: @tab-height-middle;
@@ -166,7 +166,7 @@
     align-self: stretch;
     overflow: hidden;
     white-space: nowrap;
-    transform: translate(0);
+    transform: @tab-nav-scroll-transform;
   }
 
   &__nav-wrap {
@@ -175,7 +175,7 @@
     font-size: 0;
 
     &.@{prefix}-is-smooth {
-      transition: transform @anim-duration-moderate @anim-time-fn-easing;
+      transition: @tab-nav-warp-is-smooth-transform;
     }
 
     &.@{prefix}-is-vertical {
@@ -185,9 +185,9 @@
 
   &__bar {
     position: absolute;
-    background-color: @tab-default-stroke-select;
+    background-color: @tab-default-bar-bg-color;
     z-index: 1;
-    transition: all @anim-duration-moderate @anim-time-fn-easing;
+    transition: @tab-bar-transtion;
 
     &.@{prefix}-is-top {
       bottom: 0;
@@ -224,25 +224,24 @@
     z-index: 0;
     cursor: pointer;
     flex-shrink: 0;
-    transition: background-color @anim-time-fn-easing @anim-duration-base;
+    transition: @tab-nav-item-transition;
 
     &-wrapper {
       display: block;
-      padding: 5px 8px;
-      margin-left: 8px;
-      margin-right: 8px;
-      line-height: 22px;
+      padding: @tab-nav-item-wrapper-padding;
+      margin-left: @tab-nav-item-margin-left;
+      margin-right: @tab-nav-item-margin-right;
+      line-height: @tab-nav-item-line-height;
       border-radius: @border-radius;
-      transition: background-color @anim-time-fn-easing @anim-duration-base;
-
+      transition: @tab-nav-item-transition;
       --ripple-color: @bg-color-container-active;
     }
 
     &.@{prefix}-size-l {
-      font-size: @font-size-l;
+      font-size: @tab-nav-item-font-size;
 
       .@{prefix}-tabs__nav-item-wrapper {
-        padding: 9px 12px;
+        padding: @tab-nav-item-wrapper-padding-large;
       }
     }
 
@@ -278,7 +277,7 @@
     &.@{prefix}-is-active {
       color: @tab-default-text-select;
       // font-weight: 500;
-      text-shadow: 0 0 .3px currentColor; // 由于在wins上字体变粗时会扩大width的宽度，导致有抖动的问题；因此采用text-shadow来代替
+      text-shadow: @tab-btn-text-shadow-active; // 由于在wins上字体变粗时会扩大width的宽度，导致有抖动的问题；因此采用text-shadow来代替
     }
 
     &.@{prefix}-is-disabled {
@@ -287,8 +286,8 @@
     }
 
     & > .remove-btn {
-      margin-left: 8px;
-      transition: all .3s cubic-bezier(.645, .045, .355, 1);
+      margin-left: @tab-btn-remove-btn-margin-left;
+      transition: @tab-btn-remove-btn-transition;
     }
 
     --ripple-color: @bg-color-container-active;
@@ -298,9 +297,9 @@
     background-color: @tab-card-bg;
 
     &.@{prefix}-tabs__nav-item {
-      padding-left: 16px;
-      padding-right: 16px;
-      border-bottom: 1px solid @tab-card-stroke;
+      padding-right: @tab-nav-card-nav-item-padding-right;
+      padding-left: @tab-nav-card-nav-item-padding-left;
+      border-bottom: @tab-btn-border;
 
       &::after {
         display: none;
@@ -313,11 +312,11 @@
       }
 
       &:not(:first-of-type) {
-        border-left: 1px solid @tab-card-stroke;
+        border-left: @tab-btn-border;
       }
 
       &:last-of-type {
-        border-right: 1px solid @tab-card-stroke;
+        border-right: @tab-btn-border;
       }
 
       &.@{prefix}-is-active {
@@ -327,14 +326,14 @@
       }
 
       &.@{prefix}-size-l {
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: @tab-nav-card-nav-item-padding-left-large;
+        padding-right: @tab-nav-card-nav-item-padding-right-large;
       }
     }
 
     .@{prefix}-icon-close {
       color: @tab-card-icon;
-      transition: color @anim-time-fn-easing @anim-duration-base;
+      transition: @tab-btn-icon-close-transition;
 
       &:hover {
         color: @tab-card-icon-select;
