@@ -62,14 +62,15 @@
   </div>
 </div>
 
+#### 响应式布局
 为了更好地适配各种尺寸的显示设备可以使用响应式布局，通过设置断点实现布局的切换。当浏览器宽度小于配置的断点值时，侧边区域的导航自动从展开态变为收起态。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_5.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_5.png?5555" />
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_666.png？111111" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_666.png?111111" />
   </div>
 </div>
 
@@ -105,5 +106,6 @@
   </div>
 </div>
 
+</hr>
 
 更多布局设计可参考： [全局样式-Layout布局](/design/layout)
