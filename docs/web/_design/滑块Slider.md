@@ -65,12 +65,12 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="hhttps://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/3.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Slider_3.png" />
     <em>图示：与无按钮的数字输入框搭配</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/4.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Slider_4.png" />
     <em>图示：与带按钮的数字输入框搭配</em>
   </div>
 </div>
