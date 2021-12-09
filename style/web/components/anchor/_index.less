@@ -10,19 +10,14 @@
   width: @anchor-width-default;
   color: @anchor-text-color-default;
   font-size: @anchor-font-size;
+
   //锚点 item 被选中
   .@{prefix}-is-active > a {
     color: @anchor-text-color-current;
   }
 
-  &.@{prefix}--affix {
-    position: fixed;
-    top: @anchor-affix-top;
-    z-index: 11;
-  }
-
   //锚点组件左侧线条
-  &_line {
+  &__line {
     position: absolute;
     top: 0;
     left: 0;
@@ -30,24 +25,24 @@
     height: 100%;
     background-color: @anchor-border-color;
     cursor: pointer;
-  }
 
-  .cursor-wrapper {
-    position: absolute;
-    display: block;
-    height: 0;
-    opacity: 0;
-    transition: @anchor-point-transition;
+    &-cursor-wrapper {
+      position: absolute;
+      display: block;
+      height: 0;
+      opacity: 0;
+      transition: @anchor-point-transition;
 
-    .cursor {
-      width: @anchor-point-width;
-      height: 100%;
-      background-color: @anchor-text-color-current;
+      .@{prefix}-anchor__line-cursor {
+        width: @anchor-point-width;
+        height: 100%;
+        background-color: @anchor-text-color-current;
+      }
     }
   }
 
   //锚点item
-  &-item {
+  &__item {
     padding: @anchor-item-padding;
     display: flex;
     flex-direction: column;
@@ -61,7 +56,7 @@
     }
   }
 
-  &-item_link {
+  &__item-link {
     display: inline-block;
     position: relative;
     line-height: @anchor-item-line-height;
@@ -98,7 +93,7 @@
   }
 }
 
-.@{prefix}-anchor-target {
+.@{prefix}-anchor__target {
   cursor: pointer;
   font-size: @anchor-font-size;
   line-height: @anchor-item-height;
