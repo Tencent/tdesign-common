@@ -108,12 +108,13 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
   loading: boolean;
 }
 
-export interface TreeNodeModel<DataOption extends TreeOptionData = TreeOptionData>
-extends TreeNodeModelProps {
+export interface TreeNodeModel<
+  T extends TreeOptionData = TreeOptionData
+> extends TreeNodeModelProps {
   /**
    * 追加子节点数据
    */
-  appendData: (data: DataOption | Array<DataOption>) => void;
+  appendData: (data: T | Array<T>) => void;
   /**
    * 获取节点在父节点的子节点列表中的位置，如果没有父节点，则获取节点在根节点列表的位置
    */
@@ -149,11 +150,11 @@ extends TreeNodeModelProps {
   /**
    * 在当前节点前插入新节点
    */
-  insertAfter: (newData: DataOption) => void;
+  insertAfter: (newData: T) => void;
   /**
    * 在当前节点前插入新节点
    */
-  insertBefore: (newData: DataOption) => void;
+  insertBefore: (newData: T) => void;
   /**
    * 是否为兄弟节点中的第一个节点
    */
@@ -166,6 +167,14 @@ extends TreeNodeModelProps {
    * 是否为叶子节点
    */
   isLeaf: () => boolean;
+  /**
+   * 移除当前节点或当前节点的子节点，值为空则移除当前节点，值存在则移除当前节点的子节点
+   */
+  remove: (value?: TreeNodeValue) => void;
+   /**
+    * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
+    */
+  setData: (data: T) => void;
 }
 
 // ------ 自动规范类型 end -------
