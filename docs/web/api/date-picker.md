@@ -63,3 +63,9 @@
 可以通过 `firstDayOfWeek` 属性指定一周从星期几开始，仅在日期选择时(`mode = date`) 时有效，默认为 1 即从周一开始，如下可以设置为周日开始。
 
 {{ first-day-of-week }}
+
+### 自定义图标的选择器
+
+支持通过 `prefixIcon` 和 `suffixIcon` 自定义设置前缀和后缀图标。
+
+{{ custom-icon }}
