@@ -132,15 +132,15 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       const { tree } = node;
       const targetNode = tree.getNode(value);
       if (!targetNode) {
+        // eslint-disable-next-line no-console
         console.warn(`TDesign Tree Warn: \`${value}\` is not exist`);
         return;
       }
 
       const parents = targetNode.getParents();
-      const parentValues = parents.map(node => {
-        return node.value;
-      });
+      const parentValues = parents.map((pnode) => (pnode.value));
       if (parentValues.indexOf(node.value) < 0) {
+        // eslint-disable-next-line no-console
         console.warn(`TDesign Tree Warn: \`${value}\` is not a childNode of current node`);
         return;
       }
@@ -150,7 +150,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
     // 设置本节点携带的元数据
     setData(data: OptionData) {
       Object.assign(node.data, data);
-    }
+    },
   };
 
   return model;
