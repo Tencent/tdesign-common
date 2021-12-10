@@ -17,10 +17,7 @@
     <em></em>
   </div>
 
-  <div class="item">
-    <img src="" />
-    <em></em>
-  </div>
+  <div class="item"></div>
 </div>
 
 
@@ -33,10 +30,7 @@
     <em></em>
   </div>
 
-  <div class="item">
-    <img src="" />
-    <em></em>
-  </div>
+  <div class="item"></div>
 </div>
 
 
@@ -50,10 +44,7 @@
     <em></em>
   </div>
 
-  <div class="item">
-    <img src="" />
-    <em></em>
-  </div>
+
 </div>
 
 ### 常见用法
@@ -66,10 +57,7 @@
     <em></em>
   </div>
 
-  <div class="item">
-    <img src="" />
-    <em></em>
-  </div>
+  <div class="item"></div>
 </div>
 
 <hr />
@@ -82,13 +70,11 @@
     <em></em>
   </div>
 
-  <div class="item">
-    <img src="" />
-    <em></em>
-  </div>
+ 
 </div>
 
-### 推荐/慎用
+### 推荐/慎用示例
+
 ##### 级联选择器的层级不宜超过4层，层级过多时应调整数据结构或改用其他交互方式。
 
 <div class="legend">
