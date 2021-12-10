@@ -80,10 +80,7 @@
     <em></em>
   </div>
 
-  <div class="item">
-    <img src="" />
-    <em></em>
-  </div>
+  <div class="item"></div>
 </div>
 
 <hr />
