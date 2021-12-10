@@ -116,7 +116,6 @@
         "CHANGELOG.md"
     ],                                  // 指定上传到 NPM 上的文件
     "sideEffects": [
-        "*.vue",
         "dist/*",
         "site/*",
         "examples/*",
