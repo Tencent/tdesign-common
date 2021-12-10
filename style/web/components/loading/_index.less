@@ -7,72 +7,9 @@
 @import "../../utilities/_animation.less";
 
 .@{prefix}-loading {
-  vertical-align: middle;
   position: relative;
   color: @loading-color;
   font-size: @loading-icon-size;
-  display: inline-flex;
-  align-items: center;
-
-  &--inherit-color {
-    color: inherit;
-  }
-
-  &__wrapper {
-    text-align: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 3500;
-
-    .@{prefix}-icon-loading {
-      position: absolute;
-      top: 50%;
-      margin-top: @loading-wrapper-icon-margin-top;
-    }
-  }
-
-  &-parent__relative {
-    position: relative;
-    height: 100%;
-  }
-
-  &-mask {
-    background-color: @loading-mask-color;
-
-    &-text {
-      position: relative;
-      top: 50%;
-      margin-top: @loading-wrapper-icon-margin-top;
-
-      .@{prefix}-icon-loading {
-        position: unset;
-      }
-
-      .@{prefix}-loading-text {
-        margin-top: @loading-wrapper-icon-margin-top;
-      }
-    }
-  }
-
-  &-fullscreen {
-    position: fixed;
-
-    .@{prefix}-loading {
-      top: 50%;
-
-      .@{prefix}-icon-loading {
-        font-size: @loading-fullscreen-icon-size;
-      }
-    }
-
-    &.@{prefix}-loading-mask {
-      background-color: @loading-fullscreen-mask-bg-color;
-    }
-  }
 
   &-lock {
     overflow: hidden;
@@ -85,31 +22,66 @@
   &.@{prefix}-size-l {
     font-size: @loading-icon-size-large;
   }
-
-  &-text {
-    font-size: @loading-text-size;
-    line-height: @loading-text-line-height;
-    width: auto;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: @loading-text-margin-left;
-  }
-
-  &--blur {
-    opacity: .6;
-    user-select: none;
-    pointer-events: none;
-  }
 }
 
-.@{prefix}-icon-loading {
-  animation: t-spin 1s linear infinite;
+.@{prefix}-loading__fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: @z-index-loading;
+}
+
+.@{prefix}-loading--center {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
 }
 
 .@{prefix}-loading__content {
   position: absolute;
   left: 48%;
   top: 20%;
+}
+
+.@{prefix}-loading--inherit-color {
+  color: inherit;
+}
+
+.@{prefix}-loading__parent {
+  position: relative;
+}
+
+.@{prefix}-loading__overlay {
+  background-color: @loading-mask-color;
+}
+
+/** 仅用于作为包裹元素时 */
+.@{prefix}-loading--full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.@{prefix}-loading--hidden {
+  visibility: hidden;
+}
+
+.@{prefix}-loading--visible {
+  visibility: visible;
+}
+
+.@{prefix}-loading__text {
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: @loading-text-size;
+  line-height: @loading-text-line-height;
+  margin-left: @loading-text-margin-left;
 }
 
 .@{prefix}-loading__gradient {

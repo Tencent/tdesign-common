@@ -19,8 +19,6 @@
   </div>
 
   <div class="item">
-    <img src="" />
-    <em></em>
   </div>
 </div>
 

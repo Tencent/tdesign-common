@@ -7,19 +7,15 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  width: 100%;
+  padding: @stepper-padding;
+  background: @stepper-background-color;
+  font-size: @stepper-font-size;
+  line-height: @stepper-line-height;
 
-  &__plus {
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: @stepper-icon-height;
-      height: @stepper-icon-width;
-      background: @stepper-icon-color;
-      transform: translate(-50%, -50%);
-    }
+  &__label {
+    flex: 1;
+    color: @text-level-1-color;
   }
 
   &__minus,
@@ -36,7 +32,7 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: @stepper-icon-width;
+      width: @stepper-minus-icon-width;
       height: @stepper-icon-height;
       background: @stepper-icon-color;
       transform: translate(-50%, -50%);
@@ -47,6 +43,24 @@
       &::after {
         background-color: @stepper-icon-color-disabled;
       }
+    }
+  }
+
+  &__plus {
+    &::before {
+      width: @stepper-plus-icon-width;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: @stepper-icon-height;
+      height: @stepper-plus-icon-width;
+      background: @stepper-icon-color;
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -66,16 +80,35 @@
     }
   }
 
+  &__pure {
+    width: auto;
+    display: inline-flex;
+    .@{prefix}-stepper__minus,
+    .@{prefix}-stepper__plus,
+    .@{prefix}-stepper__input {
+      background-color: @stepper-pure-background-color;
+      border: @stepper-pure-border;
+    }
+    .@{prefix}-stepper__input {
+      width: @stepper-pure-input-width;
+      margin: @stepper-pure-input-margin;
+      font-size: @stepper-pure-input-font-size;
+    }
+    .@{prefix}-stepper__minus,
+    .@{prefix}-stepper__plus {
+      &::before {
+        width: @stepper-pure-icon-width;
+      }
+    }
+    .@{prefix}-stepper__plus::after {
+      height: @stepper-pure-icon-width;
+    }
+  }
   .@{prefix}-stepper__label {
     white-space: nowrap;
   }
 
   &.@{prefix}-is-disabled {
-
-    .@{prefix}-stepper__label {
-      color: @stepper-color-disabled;
-    }
-
     .@{prefix}-stepper__minus,
     .@{prefix}-stepper__plus {
       &::before,

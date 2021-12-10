@@ -18,7 +18,7 @@
 // 阴影
 @popup-shadow: @shadow-2-inset;
 @popup-top-arrow-shadow: @shadow-inset-left, @shadow-inset-bottom;
-@popup-left-arrow-shadow: @shadow-inset-left,@shadow-inset-top;
+@popup-left-arrow-shadow: @shadow-inset-left, @shadow-inset-top;
 @popup-bottom-arrow-shadow: @shadow-inset-top, @shadow-inset-right;
 @popup-right-arrow-shadow: @shadow-inset-right, @shadow-inset-bottom;
 
@@ -26,4 +26,6 @@
 @popup-flow: t-popup_animation;
 @popup-flow-duration: @anim-duration-base;
 @popup-flow-fn: @anim-time-fn-ease-in;
-@popup-flow-transition: opacity @popup-flow-duration @popup-flow-fn, visibility @popup-flow-duration @popup-flow-fn;
+@popup-flow-transition: opacity @popup-flow-duration @popup-flow-fn,
+  visibility @popup-flow-duration @popup-flow-fn,
+  max-height @popup-flow-duration @anim-time-fn-easing;

@@ -148,43 +148,33 @@
     }
   }
 
-  &__load {
-    background: @list-bg-color-default;
-    text-align: center;
-    font-size: @list-load-font-size;
-    line-height: @list-load-line-height;
-
-    > div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &:not(:empty) {
-      padding: @list-load-not-empty-padding; // 如果不是空子元素才设置padding
-    }
-
-    &.@{prefix}-list__load--loading {
-      color: @list-text-color-loading;
-
-      .@{prefix}-icon,
-      .@{prefix}-loading {
-        color: @list-icon-color-loading;
-        font-size: @list-icon-size;
-        margin-right: @list-load-icon-margin;
-      }
-    }
-
-    &.@{prefix}-list__load--load-more {
-      color: @list-text-color-load-more;
-      cursor: pointer;
-      font-size: @list-load-more-font-size;
-    }
-  }
-
   &__header,
   &__footer {
     background: @list-bg-color-default;
     padding: @list-padding;
+  }
+}
+
+.@{prefix}-list__load {
+  background: @list-bg-color-default;
+  text-align: center;
+  line-height: @list-load-line-height;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:not(:empty) {
+    padding: @list-load-not-empty-padding; // 如果不是空子元素才设置padding
+  }
+
+  .@{prefix}-loading {
+    font-size: @list-load-font-size;
+  }
+
+  .@{prefix}-loading.@{prefix}-is-load-more {
+    cursor: pointer;
   }
 }

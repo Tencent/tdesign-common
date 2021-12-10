@@ -43,7 +43,7 @@
 
 ##### 与选择器搭配使用，对选择的颗粒度（年、月、日）进行切换，常用于日期选择器类型的选择。
 
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker5.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker5.png" />
 
 
 ### 常见用法
@@ -56,7 +56,8 @@
   </div>
 </div>
 
-### 建议/慎用示例
+### 推荐/慎用示例
+
 
 ##### 带快捷标签选择器中标签内容尽可能简洁明了；如：使用“近7天”而非“最近7天数据”。
 

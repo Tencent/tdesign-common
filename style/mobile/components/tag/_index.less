@@ -73,13 +73,12 @@
   }
 
   .@{prefix}-icon-close {
-    font-size: @tag-small-font-size;
     border-radius: @border-radius-50;
     cursor: pointer;
     position: relative;
     top: -1px;
     float: none;
-    margin-left: @spacer-2;
+    margin-left: @spacer-1;
   }
 
   &.@{prefix}-tag--size {
@@ -94,7 +93,7 @@
       }
 
       .@{prefix}-icon-close {
-        margin-left: @spacer-1;
+        font-size: 16px;
       }
     }
 
@@ -108,6 +107,10 @@
         font-size: 12px;
         line-height: 22px;
       }
+
+      .@{prefix}-icon-close {
+        font-size: 16px;
+      }
     }
 
     &-large {
@@ -118,6 +121,10 @@
 
       .@{prefix}-icon {
         font-size: 14px;
+      }
+
+      .@{prefix}-icon-close {
+        font-size: 20px;
       }
     }
   }
