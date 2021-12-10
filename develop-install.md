@@ -4,8 +4,8 @@
 
 为了满足各种安装场景，我们规定了组件的构建输出规范，你可以依照下面的组件输出目录结构选择需要的安装方式。
 
-```
-├─ dist                        // umd
+```bash
+├─ dist                        ## umd
 │   ├─ tdesign.js
 │   ├─ tdesign.js.map
 │   ├─ tdesign.min.js
@@ -13,14 +13,10 @@
 │   ├─ tdesign.css
 │   ├─ tdesign.css.map
 │   └─ tdesign.min.css
-│
-├─ es                            // esm
+├─ esm                                ## esm
 │   ├─ button
 │        ├─ style
-│                ├─ css.js
-│                ├─ index.css
-│                ├─ index.js
-│                └─ index.less
+│             └─  index.js
 │        ├─ button.js
 │        ├─ button.d.ts
 │        ├─ index.js
@@ -28,13 +24,21 @@
 │   ├─ index.js
 │   └─ index.d.ts
 │
-├─ lib                            // cjs
+├─ es                                ## es
 │   ├─ button
 │        ├─ style
-│                ├─ css.js
-│                ├─ index.css
-│                ├─ index.js
-│                └─ index.less
+│             ├─ css.js
+│             ├─ index.css
+│             └─ index.js
+│        ├─ button.js
+│        ├─ button.d.ts
+│        ├─ index.js
+│        └─ index.d.ts
+│   ├─ index.js
+│   └─ index.d.ts
+│
+├─ lib                            ## cjs
+│   ├─ button
 │        ├─ button.js
 │        ├─ button.d.ts
 │        ├─ index.js
@@ -56,11 +60,10 @@
 - 兼容现代浏览器，支持服务端渲染
 - js 文件采用 UMD 模块标准 构建
 - js / css 文件支持浏览器 script / link 标签 与 主流构建工具(webpack，rollup 等)引入使用
-- js 文件必须生成对应 .min 和 .map 文件，以便线上资源加载和 debug
-- dist/tdesgin.css
+- js 文件必须生成对应 `.min` 和 `.map` 文件，以便线上资源加载和 debug
 - 以 common/style/(web|mobile)/index.less 为入口构建
-- 在 dist 下生成一份未压缩的 tdesgin.css 和 tdesign.css.map
-- 压缩 tdesgin.css 生成 tdesgin.min.css
+- 在 dist 下生成一份未压缩的 `tdesgin.css` 和 `tdesign.css.map`
+- 压缩 `tdesgin.css` 生成 `tdesgin.min.css`
 
 ### es
 
@@ -68,7 +71,7 @@
 - 兼容现代浏览器，支持服务端渲染
 - 组件导入/导出方式采用 ES Modules 标准，支持 tree-shaking，es/index.js 中单独导出每个组件，内容同 src/index.ts
 - 组件文件夹下生成 style 目录，存放编译后的 css 样式文件
-- 组件文件夹下必须包含类型声明文件 \*.d.ts
+- 组件文件夹下必须包含类型声明文件 `\*.d.ts`
 - 组件编译后代码用到的 babel runtime helpers 注入到每个组件
 - 只编译组件代码，不用编译测试文件和文档文件等
 
@@ -77,8 +80,8 @@
 - 分别编译每个组件的 TS 代码，生成对应的 JS 文件和类型声明文件
 - 兼容现代浏览器，支持服务端渲染
 - 组件导入/导出方式采用 ES Modules 标准，支持 tree-shaking，esm/index.js 中单独导出每个组件，内容同 src/index.ts
-- 组件文件夹下生成 style/index.js，链接未编译的 less 样式文件
-- 组件文件夹下必须包含类型声明文件 \*.d.ts
+- 组件文件夹下生成 `style/index.js`，链接未编译的 `less` 样式文件
+- 组件文件夹下必须包含类型声明文件 `\*.d.ts`
 - 组件编译后代码用到的 babel runtime helpers 注入到每个组件
 - 只编译组件代码，不用编译测试文件和文档文件等
 
@@ -86,21 +89,21 @@
 
 - 分别编译每个组件的 TS 代码，生成对应的 JS 文件和类型声明文件
 - 兼容现代浏览器，支持服务端渲染
-- 组件导入/导出方式采用 CommonJs Modules 标准，lib/index.js 中单独导出每个组件，内容同 src/index.ts
-- 组件文件夹下必须包含类型声明文件 \*.d.ts
+- 组件导入/导出方式采用 CommonJs Modules 标准，`lib/index.js` 中单独导出每个组件，内容同 `src/index.ts`
+- 组件文件夹下必须包含类型声明文件 `\*.d.ts`
 - 组件编译后代码用到的 babel runtime helpers 注入到每个组件
 - 只编译组件代码，不用编译测试文件和文档文件等
 
 ### (es|lib)/componentName/style
 
 - 遍历 common/style/(web|mobile)/componentName/index.less 入口构建每个组件的样式
-- 每个组件生成一份 index.less 和 index.css 放置到 lib/componentName/style/ 下
+- 每个组件生成一份 `index.less` 和 `index.css` 放置到 lib/componentName/style/ 下
 - component-name/style/ 下生成 index.js，写入 import './index.less';
 - component-name/style/ 下生成 css.js，写入 import './index.css';
 
 ### package.json
 
-```
+```javascript
 {
     ...
     "files": [
