@@ -1,6 +1,8 @@
-# Progress 进度条
-
-展示操作的当前进度。
+---
+title: Progress 进度条
+description: 展示操作的当前进度。
+isComponent: true
+---
 
 ### 线形进度条
 

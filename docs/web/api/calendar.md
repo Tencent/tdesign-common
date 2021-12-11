@@ -1,6 +1,8 @@
-# Calendar 日历
-
-按照日历形式展示数据或日期的容器。
+---
+title: Calendar 日历
+description: 按照日历形式展示数据或日期的容器。
+isComponent: true
+---
 
 ### 事项日历面板
 

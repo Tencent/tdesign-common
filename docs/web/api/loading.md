@@ -1,6 +1,8 @@
-# Loading 加载中
-
-用于告知用户页面和区块的加载中状态。
+---
+title: Loading 加载中
+description: 用于告知用户页面和区块的加载中状态。
+isComponent: true
+---
 
 ### 图标加载
 

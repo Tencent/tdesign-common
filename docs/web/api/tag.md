@@ -1,6 +1,8 @@
-# Tag 标签
-
-定义：标签常用于标记、分类和选择。
+---
+title: Tag 标签
+description: 定义：标签常用于标记、分类和选择。
+isComponent: true
+---
 
 ### 基础标签
 

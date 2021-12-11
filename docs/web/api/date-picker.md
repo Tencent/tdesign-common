@@ -1,6 +1,8 @@
-# DatePicker 日期选择器
-
-用于选择某一具体日期或某一段日期区间。
+---
+title: DatePicker 日期选择器
+description: 用于选择某一具体日期或某一段日期区间。
+isComponent: true
+---
 
 ### 年份选择器
 

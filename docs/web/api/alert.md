@@ -1,6 +1,8 @@
-# Alert 警告
-
-警告条用于承载需要用户注意的信息。
+---
+title: Alert 警告
+description: 警告条用于承载需要用户注意的信息。
+isComponent: true
+---
 
 ### 基础警告
 

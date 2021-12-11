@@ -1,6 +1,8 @@
-# Affix 固钉
-
-在指定的范围内，将元素固定不动
+---
+title: Affix 固钉
+description: 在指定的范围内，将元素固定不动
+isComponent: true
+---
 
 ### 基础固钉
 

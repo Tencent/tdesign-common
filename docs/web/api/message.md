@@ -1,6 +1,8 @@
-# Message 全局提示
-
-对用户的操作作出轻量的全局反馈。
+---
+title: Message 全局提示
+description: 对用户的操作作出轻量的全局反馈。
+isComponent: true
+---
 
 ### 普通全局提示
 

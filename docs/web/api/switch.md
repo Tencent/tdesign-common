@@ -1,6 +1,8 @@
-# Switch 开关
-
-用于两个互斥选项，用来打开或关闭选项的选择控件。
+---
+title: Switch 开关
+description: 用于两个互斥选项，用来打开或关闭选项的选择控件。
+isComponent: true
+---
 
 ### 基础开关
 
