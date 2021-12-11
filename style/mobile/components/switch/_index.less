@@ -5,7 +5,14 @@
 @import "../../mixins/_index.less";
 
 .@{prefix}-switch {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
   font-size: @switch-font-size;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: 0;
 
   &__text {
     text-align: right;
@@ -50,7 +57,7 @@
     }
 
     &--checked {
-      border-color: @switch-checked-background-color;
+      // border-color: @switch-checked-background-color;
       background-color: @switch-checked-background-color;
 
       &::after {
