@@ -2,6 +2,7 @@
 title: Badge 徽标
 description: 出现在图标或文字右上角的徽标标识。
 isComponent: true
+spline: data
 ---
 
 ### 红点样式的徽标

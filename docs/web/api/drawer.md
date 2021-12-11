@@ -2,6 +2,7 @@
 title: Drawer 抽屉
 description: 抽屉常通过单击临近的按钮控件打开，从屏幕边缘滑入的浮层面板，又称半屏弹窗。
 isComponent: true
+spline: message
 ---
 
 ### 可查看的抽屉

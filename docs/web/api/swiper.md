@@ -2,6 +2,7 @@
 title: Swiper 轮播框
 description: 轮播视图容器。其中只可放置 t-swiper-item 组件，否则会导致未定义的行为。
 isComponent: true
+spline: message
 ---
 
 

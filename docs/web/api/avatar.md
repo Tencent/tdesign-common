@@ -2,6 +2,7 @@
 title: Avatar 头像
 description: 用图标、图片、字符的形式展示用户或事物信息
 isComponent: true
+spline: data
 ---
 
 ##### 在TDesign中，支持单个头像或组合头像的使用。
