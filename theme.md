@@ -1,4 +1,4 @@
-# 主题配置
+# 自定义主题
 ## 使用 CSS 变量
 组件库通用的 Design Token 均使用 css variables 声明，你可以在自己的项目中声明同名变量来覆盖他们的值：
 ``` css
@@ -7,7 +7,7 @@
 --td-error-color: red;
 --td-success-color: green;
 ```
-完整的 token 列表见 [_light.less](https://github.com/Tencent/tdesign-common/style/web/theme/_light.less)。
+完整的 token 列表见 [_light.less](https://github.com/TDesignOteam/tdesign-common/blob/develop/style/web/theme/_light.less)。
 
 ## 使用 less 变量
 如果你的项目也使用 less 技术栈，且对组件有更精细的定制需求，我们也抽离了大部分组件实现过程中用到的变量，以 less 变量的方式提供出来，
@@ -48,10 +48,10 @@
 // tdesign-npm-name 替换为当前在使用的包名称
 import TDesign from 'tdesign-npm-name/esm';
 // 引入组件库全局样式资源
-import 'tdesign-vue/esm/style/index.js';
+import 'tdesign-npm-name/esm/style/index.js';
 
 ```
-关于各类构建产物的差别可以参考 [构建产物规范](https://github.com/TDesignOteam/tdesign-common/develop-install.md)。
+关于各类构建产物的差别可以参考 [构建产物规范](https://github.com/TDesignOteam/tdesign-common/blob/develop/develop-install.md)。
 
 
 之后，你可以在自己的项目自行修改这些变量的值，比如使用 modifyVars ：
