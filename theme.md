@@ -1,7 +1,11 @@
-# 主题配置
+---
+title: 主题配置
+spline: explain
+---
+
 ## 使用 CSS 变量
 组件库通用的 Design Token 均使用 css variables 声明，你可以在自己的项目中声明同名变量来覆盖他们的值：
-``` css
+```css
 --td-brand-color: orange;
 --td-warning-color: yellow;
 --td-error-color: red;
@@ -11,7 +15,7 @@
 
 ## 使用 less 变量
 如果你的项目也使用 less 技术栈，且对组件有更精细的定制需求，我们也抽离了大部分组件实现过程中用到的变量，以 less 变量的方式提供出来，
-``` less
+```less
 // 以 Button 为例
 // 尺寸
 @btn-height-s: 24px;
@@ -55,7 +59,7 @@ import 'tdesign-vue/esm/style/index.js';
 
 
 之后，你可以在自己的项目自行修改这些变量的值，比如使用 modifyVars ：
-``` json
+```js
 {
     loaderOptions: {
         less: {
