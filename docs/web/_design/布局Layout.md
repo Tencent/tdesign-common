@@ -107,6 +107,6 @@
   </div>
 </div>
 
-</hr>
+<hr />
 
 更多布局设计可参考： [全局样式-Layout布局](/design/layout)
