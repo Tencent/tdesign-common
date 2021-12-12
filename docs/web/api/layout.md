@@ -1,6 +1,9 @@
-# Layout 布局
-
-用于组织网页的框架结构。
+---
+title: Layout 布局
+description: 用于组织网页的框架结构。
+isComponent: true
+spline: layout
+---
 
 ### 基础用法
 

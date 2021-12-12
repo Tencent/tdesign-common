@@ -1,6 +1,9 @@
-# Radio 单选框
-
-单选框代表从一组互斥的选项中仅选择一个选项。
+---
+title: Radio 单选框
+description: 单选框代表从一组互斥的选项中仅选择一个选项。
+isComponent: true
+spline: form
+---
 
 ### 基础单选框
 

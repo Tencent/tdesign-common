@@ -1,6 +1,9 @@
-# Upload 上传
-
-上传组件允许用户传输文件或提交自己的内容。
+---
+title: Upload 上传
+description: 上传组件允许用户传输文件或提交自己的内容。
+isComponent: true
+spline: form
+---
 
 ### 基础上传
 

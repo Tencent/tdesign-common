@@ -1,6 +1,9 @@
-# Pagination 分页
-
-用于模块内切换内容的控件。
+---
+title: Pagination 分页
+description: 用于模块内切换内容的控件。
+isComponent: true
+spline: navigation
+---
 
 ### 基础分页
 

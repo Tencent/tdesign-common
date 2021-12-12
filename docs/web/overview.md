@@ -1,8 +1,8 @@
-# 组件概览
+---
+title: 组件概览
+description: 将根据业务实践持续新增组件类型，敬请留意组件库更新日志。
+---
 
-TDesign 将根据业务实践持续新增组件类型，敬请留意组件库更新日志。
-
-#####
 
 <h3>基础<em class="tag">3</em></h3>
 <section class="image-group">
