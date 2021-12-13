@@ -3,7 +3,7 @@ title: 主题配置
 spline: explain
 ---
 
-## 使用 CSS 变量
+### 使用 CSS 变量
 组件库通用的 Design Token 均使用 css variables 声明，你可以在自己的项目中声明同名变量来覆盖他们的值：
 ```css
 --td-brand-color: orange;
@@ -13,7 +13,7 @@ spline: explain
 ```
 完整的 token 列表见 [_light.less](https://github.com/TDesignOteam/tdesign-common/blob/develop/style/web/theme/_light.less)。
 
-## 使用 less 变量
+### 使用 less 变量
 如果你的项目也使用 less 技术栈，且对组件有更精细的定制需求，我们也抽离了大部分组件实现过程中用到的变量，以 less 变量的方式提供出来，
 ```less
 // 以 Button 为例
