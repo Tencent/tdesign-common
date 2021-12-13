@@ -43,13 +43,13 @@
 
     .@{radio-cls}-group-filled-bg-block {
       position: absolute;
-      left: 2px;
-      top: 2px;
+      left: @radio-group-filled-bg-block-left;
+      top: @radio-group-filled-bg-block-top;
       width: 0;
       height: calc(100% - 4px);
       background-color: @radio-button-background-color-default-filled-checked;
-      transition: all @anim-duration-base @anim-time-fn-easing;
-      border-radius: 2px;
+      transition: @radio-group-transition;
+      border-radius: @radio-button-border-radius;
     }
 
     .@{radio-button--cls} {
@@ -64,10 +64,10 @@
       &::before {
         content: "";
         position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1px;
+        left: @radio-button-before-left;
+        top: @radio-button-before-top;
+        transform: @radio-button-before-transition;
+        width: @radio-button-before-width;
         height: calc(100% - 16px);
         background-color: @component-border;
         transition: opacity @anim-duration-base @anim-time-fn-ease-out;
@@ -75,7 +75,7 @@
 
       &:first-child {
         &::before {
-          opacity: 0;
+          opacity: @radio-opacity-transparent;
         }
       }
 
@@ -87,12 +87,12 @@
         transition: color @anim-duration-base linear;
 
         &::before {
-          opacity: 0;
+          opacity: @radio-opacity-transparent;
         }
 
         & + label {
           &::before {
-            opacity: 0;
+            opacity: @radio-opacity-transparent;
           }
         }
       }
@@ -182,8 +182,8 @@
     border: @radio-button-border;
     border-color: @radio-button-border-color-default;
     border-right: 0;
-    line-height: 22px;
-    transition: color @anim-duration-base @anim-time-fn-ease-out;
+    line-height: @radio-button-line-height-default;
+    transition: @radio-button-transition;
     color: @radio-label-color;
     white-space: nowrap;
 
@@ -198,7 +198,7 @@
     }
 
     &__former {
-      opacity: 0;
+      opacity: @radio-opacity-transparent;
       height: 0;
       width: 0;
     }
@@ -247,7 +247,7 @@
   cursor: pointer;
 
   &__former {
-    opacity: 0;
+    opacity: @radio-opacity-transparent;
     position: absolute;
   }
 
@@ -258,16 +258,16 @@
     height: @radio-size;
     vertical-align: middle;
     border-radius: @border-radius-50;
-    border: 1px solid @radio-border-color;
+    border: @radio-input-border;
     background-color: @radio-input-color;
-    transition: border @anim-duration-base @anim-time-fn-ease-out;
+    transition: @radio-input-transition;
 
     &::after {
       content: "";
       position: absolute;
       top: ((@radio-size - @radio-dot-size) / 2 - 1px);
       left: ((@radio-size - @radio-dot-size) / 2 - 1px);
-      opacity: 0;
+      opacity: @radio-opacity-transparent;
       width: @radio-dot-size;
       height: @radio-dot-size;
       border-radius: @border-radius-50;
