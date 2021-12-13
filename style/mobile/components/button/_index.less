@@ -152,61 +152,6 @@
     }
   }
 
-  // 虚线按钮
-  &--variant-dashed {
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, @btn-border-width);
-    .button-attr-color("text", color);
-    .button-attr-color("primary", border, "1px dashed");
-    .button-attr-color("white-bg", background-color);
-    .button-attr-color("border-gray", border, "1px dashed");
-
-    &.@{prefix}-button--theme-primary {
-      .button-attr-color("primary", color);
-      .button-attr-color("primary", border, "1px dashed");
-    }
-
-    &.@{prefix}-button--theme-success {
-      .button-attr-color("success", color);
-      .button-attr-color("success", border, "1px dashed");
-    }
-
-    &.@{prefix}-button--theme-warning {
-      .button-attr-color("warning", color);
-      .button-attr-color("warning", border, "1px dashed");
-    }
-
-    &.@{prefix}-button--theme-danger {
-      .button-attr-color("danger", color);
-      .button-attr-color("danger", border, "1px dashed");
-    }
-
-    &.@{prefix}-button--ghost {
-      .button-attr-color("none", background-color, "", true);
-      .button-attr-color("white-ghost", color, "", true);
-      .button-attr-color("white-ghost", border, "1px dashed", true);
-
-      &.@{prefix}-button--theme-primary {
-        .button-attr-color("primary", color, "", true);
-        .button-attr-color("primary", border, "1px dashed", true);
-      }
-
-      &.@{prefix}-button--theme-success {
-        .button-attr-color("success", color, "", true);
-        .button-attr-color("success", border, "1px dashed", true);
-      }
-
-      &.@{prefix}-button--theme-warning {
-        .button-attr-color("warning", color, "", true);
-        .button-attr-color("warning", border, "1px dashed", true);
-      }
-
-      &.@{prefix}-button--theme-danger {
-        .button-attr-color("danger", color, "", true);
-        .button-attr-color("danger", border, "1px dashed", true);
-      }
-    }
-  }
-
   // 文字按钮
   &--variant-text {
     border: 0;

@@ -1,7 +1,9 @@
-# Tooltip 文字提示
-
-用于文字提示的气泡框。
-
+---
+title: Tooltip 文字提示
+description: 用于文字提示的气泡框。
+isComponent: true
+spline: data
+---
 
 ### 基础用法
 

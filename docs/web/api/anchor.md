@@ -1,6 +1,9 @@
-# Anchor 锚点
-
-页面内的超级链接，用于跳转到页面内指定位置
+---
+title: Anchor 锚点
+description: 页面内的超级链接，用于跳转到页面内指定位置
+isComponent: true
+spline: navigation
+---
 
 ### 基础锚点
 锚点间不存在层级关系。适用于锚点间为同级关系时，属于页面结构简单的场景。
