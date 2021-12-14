@@ -229,14 +229,56 @@
   }
 }
 
-.@{prefix}-tree--fx {
+.@{prefix}-tree {
+  &__item--visible {
+    opacity: 1;
+    height: @tree-node-item-height;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
 
-  .@{prefix}-tree-toggle-enter-active {
+  &__item + &__item--hidden {
+    margin-top: 0;
+  }
+
+  &__item--hidden {
+    opacity: 0;
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.@{prefix}-tree--transition {
+  // 节点插入动画
+  .@{prefix}-tree__item--enter-active {
     animation: t-tree-toggle @tree-node-animation-time linear;
   }
 
-  .@{prefix}-tree-toggle-leave-active {
+  // 节点移除动画
+  .@{prefix}-tree__item--leave-active {
     animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
+  }
+
+  // 节点展示动画
+  .@{prefix}-tree__item--visible {
+    transition:
+      opacity @tree-node-transition-time linear @tree-node-transition-time,
+      height @tree-node-transition-time linear 0s,
+      padding-top @tree-node-transition-time linear 0s,
+      padding-bottom @tree-node-transition-time linear 0s,
+      margin-top @tree-node-transition-time linear 0s;
+  }
+
+  // 节点隐藏动画
+  .@{prefix}-tree__item--hidden {
+    animation: none;
+    transition:
+      opacity @tree-node-transition-time linear 0s,
+      height @tree-node-transition-time linear @tree-node-transition-time,
+      padding-top @tree-node-transition-time linear @tree-node-transition-time,
+      padding-bottom @tree-node-transition-time linear @tree-node-transition-time,
+      margin-top @tree-node-transition-time linear @tree-node-transition-time;
   }
 }
 

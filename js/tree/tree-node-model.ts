@@ -1,6 +1,8 @@
 import pick from 'lodash/pick';
 import { TreeNode } from './tree-node';
+import { OptionData } from '../common';
 import {
+  TreeNodeValue,
   TypeTreeNodeModel,
   TypeTreeNodeData,
   TypeTreeItem,
@@ -119,7 +121,38 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       }
       return childrenModel;
     },
+
+    // 删除本节点，或者 value 指定的子节点
+    remove(value?: TreeNodeValue) {
+      if (!value) {
+        node.remove();
+        return;
+      }
+
+      const { tree } = node;
+      const targetNode = tree.getNode(value);
+      if (!targetNode) {
+        // eslint-disable-next-line no-console
+        console.warn(`TDesign Tree Warn: \`${value}\` is not exist`);
+        return;
+      }
+
+      const parents = targetNode.getParents();
+      const parentValues = parents.map((pnode) => (pnode.value));
+      if (parentValues.indexOf(node.value) < 0) {
+        // eslint-disable-next-line no-console
+        console.warn(`TDesign Tree Warn: \`${value}\` is not a childNode of current node`);
+        return;
+      }
+      targetNode.remove();
+    },
+
+    // 设置本节点携带的元数据
+    setData(data: OptionData) {
+      Object.assign(node.data, data);
+    },
   };
+
   return model;
 }
 
