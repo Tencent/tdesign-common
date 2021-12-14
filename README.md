@@ -8,8 +8,7 @@
 |-- style // 组件库 UI 开发
   |-- web // web UI 开发
   |-- mobile // mobile UI 开发
-  |-- miniprogram // miniprogram UI 开发
-|-- utils // 组件库公用函数
+|-- js // 组件库公用函数
 ```
 
 ### UI 开发指南
