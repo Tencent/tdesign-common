@@ -6,7 +6,7 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-slider-contianer {
+.@{prefix}-slider-container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -18,7 +18,13 @@
   }
 }
 
-.@{prefix}-slider-input-container {
+.@{prefix}-slider-input {
+  &.is-range {
+    margin-left: @slider-input-range-margin-left;
+  }
+}
+
+.@{prefix}-slider__input-container {
   display: flex;
   align-items: center;
   margin-left: @slider-input-margin-left;
@@ -28,21 +34,15 @@
     margin-left: @slider-input-vertical-margin-left;
   }
 
-  .center-line {
+  .@{prefix}-slider__center-line {
     width: @slider-center-line-width;
     height: @slider-center-line-height;
     background: @slider-center-line-background;
     margin: @slider-center-line-margin;
   }
 
-  .t-input-number {
+  .@{prefix}-input-number {
     width: @slider-input-width;
-  }
-}
-
-.@{prefix}-slider-input {
-  &.is-range {
-    margin-left: @slider-input-range-margin-left;
   }
 }
 
@@ -81,10 +81,10 @@
   }
 
   &__button {
-    width: @slider-controlbar-size;
-    height: @slider-controlbar-size;
-    border: 2px solid @slider-controlbar-border;
-    background-color: @slider-controlbar-background;
+    width: @slider-control-bar-size;
+    height: @slider-control-bar-size;
+    border: 2px solid @slider-control-bar-border;
+    background-color: @slider-control-bar-background;
     border-radius: 50%;
     transition: .2s;
     user-select: none;
@@ -94,7 +94,7 @@
     }
 
     &:hover {
-      background-color: @slider-controlbar-background-hover;
+      background-color: @slider-control-bar-background-hover;
     }
   }
 
@@ -143,7 +143,7 @@
   }
 }
 
-.@{prefix}-slider-vertical {
+.@{prefix}-slide--vertical {
   height: @slider-vertical-height;
   padding: @slider-vertical-padding;
   display: flex;
@@ -193,7 +193,7 @@
 
   .@{prefix}-slider__button-wrapper {
     top: auto;
-    left: @slider-vertical-controlbar-left;
+    left: @slider-vertical-control-bar-left;
     transform: translate(50%, 50%);
   }
 }
@@ -214,7 +214,7 @@
   }
 
   .@{prefix}-slider__button {
-    border-color: @slider-controlbar-border-disabled;
+    border-color: @slider-control-bar-border-disabled;
     outline: none;
   }
 
