@@ -10,6 +10,12 @@
 
   .@{prefix}-is-disabled {
 
+    &.@{prefix}-calendar__table-body-cell {
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+
     .@{prefix}-calendar__table-body-cell-display {
       color: @calendar-body-cell-display-disabled-color;
 

@@ -33,15 +33,217 @@
     }
   }
 
-  & .@{prefix}-cascader-placeholder {
+  &__placeholder {
     color: @cascader-light-color;
     margin-left: @cascader-content-margin-left;
   }
 
-  & .@{prefix}-cascader-content {
+  &__content {
     margin-left: @cascader-content-margin-left;
     color: @cascader-dark-color;
     .text-ellipsis();
+  }
+
+  &__dropdown {
+    margin: @cascader-dropdown-margin;
+    box-shadow: @shadow-2;
+    border-radius: @border-radius;
+    cursor: default;
+    padding: 0;
+  }
+
+  &__panel {
+    display: flex;
+    height: 100%;
+
+    &.@{prefix}-cascader--normal {
+      height: @cascader-panel-height-normal;
+    }
+
+    &.@{prefix}-cascader--multiple {
+      height: @cascader-panel-height-multiple;
+    }
+
+    &.@{prefix}-cascader--tip {
+      height: @cascader-panel-height-tips;
+    }
+
+    &--empty {
+      width: 100%;
+      height: @cascader-item-height-default;
+      line-height: @cascader-item-height-default;
+      color: @cascader-color-empty;
+      margin: @cascader-menu-padding;
+      text-align: center;
+      padding-left: 0;
+
+      &:hover {
+        background: none;
+        cursor: default;
+      }
+    }
+  }
+
+  &__menu {
+    width: (@cascader-width-s - 2px);
+    overflow: auto;
+    box-sizing: content-box;
+    padding: @cascader-menu-padding;
+    background: @bg-color-container;
+
+    &--segment {
+      border-right: .5px solid @cascader-menu-segment-color;
+    }
+  }
+
+  &__item {
+    position: relative;
+    height: @cascader-item-height-default;
+    line-height: @cascader-item-height-default;
+    color: @cascader-dark-color;
+    padding: @cascader-item-padding;
+    border-radius: @cascader-item-border-radius;
+    margin-top: @cascader-item-margin-top;
+    transition: background-color @anim-duration-base @anim-time-fn-ease-in;
+
+    &.@{prefix}-is-disabled {
+      color: @cascader-item-color-disabled;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+    &.@{prefix}-is-disabled {
+      color: @cascader-item-color-disabled;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+
+    &.@{prefix}-is-expanded {
+      background: @cascader-item-background-color-expanded;
+      color: @cascader-highlight-color;
+
+      .@{prefix}-icon-chevron-right {
+        color: @cascader-highlight-color;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &-icon {
+      color: @cascader-item-icon-color;
+      .icon-position();
+
+      &.@{prefix}-loading {
+        position: absolute;
+      }
+    }
+
+    & .@{prefix}-checkbox {
+      max-width: 100%;
+
+      .@{prefix}-checkbox__input {
+        flex-shrink: 0;
+      }
+
+      & .@{prefix}-checkbox__label {
+        display: block;
+        .text-ellipsis();
+
+        .@{prefix}-cascader__item__label--filter {
+          color: @cascader-highlight-color;
+        }
+      }
+    }
+
+    &--with-icon {
+      padding: @cascader-item-padding-with-icon;
+    }
+
+    &--leaf {
+
+      .@{prefix}-checkbox {
+        width: 100%;
+      }
+    }
+
+    &-label {
+      display: block;
+      position: relative;
+      .text-ellipsis();
+
+      &--ellipsis {
+        width: 100%;
+        height: 24px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        opacity: 0;
+        overflow: hidden;
+        transform: translateY(-50%);
+
+        .@{prefix}-popup-reference {
+          width: 100%;
+          height: 100%;
+
+          .t-trigger {
+            width: 100%;
+            height: 100%;
+            display: block;
+          }
+        }
+      }
+
+      &--filter {
+        color: @cascader-highlight-color;
+      }
+    }
+
+    &:hover {
+      background: @cascader-item-color-hover;
+      cursor: pointer;
+    }
+
+    &.@{prefix}-is-selected {
+      color: @cascader-item-color-selected;
+
+      & .@{prefix}-checkbox__label {
+        color: @cascader-item-color-selected;
+      }
+    }
+
+    --ripple-color: @bg-color-container-active;
+  }
+
+  &__search-input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+  }
+
+  &__icon {
+    color: @cascader-icon-color;
+    display: flex;
+    .icon-position();
+
+    &.@{prefix}-is-expanded,
+    &.@{prefix}-is-selected,
+    &.@{prefix}-is-loading {
+      background: transparent;
+      color: @cascader-highlight-color;
+    }
+  }
+
+  &--multiple {
+    padding: @cascader-input-padding-is-multiple;
+
+    &.@{prefix}-size-s {
+      padding: @cascader-input-padding-is-multiple-s;
+    }
   }
 
   .@{prefix}-input__inner {
@@ -57,17 +259,17 @@
   }
 
   & .@{prefix}-tag {
-    cursor: pointer;
     margin: @cascader-tag-margin;
   }
 
-  & .@{prefix}-is-disabled {
+  &.@{prefix}-is-disabled {
     cursor: not-allowed;
     background-color: @cascader-tag-background-color-disabled;
     color: @cascader-item-color-disabled;
+    border-color: @cascader-border-color-disabled;
 
-    .@{prefix}-cascader-content {
-      color: @cascader-item-color-disabled;
+    .@{prefix}-cascader__content {
+      color: @cascader-color-empty;
     }
   }
 
@@ -82,7 +284,15 @@
   }
 
   &.@{prefix}-size-l {
+    height: @cascader-item-height-l;
+    line-height: @cascader-item-height-l;
+    font-size: @cascader-font-size-l;
+    padding: @cascader-item-padding-l;
     min-height: @cascader-height-l;
+
+    &.@{prefix}-cascader-item--with-icon {
+      padding: @cascader-item-padding-with-icon-l;
+    }
   }
 
   &.@{prefix}-size-m {
@@ -96,8 +306,10 @@
   }
 
   &.@{prefix}-size-s {
-    min-height: @cascader-height-s;
+    height: @cascader-item-height-s;
+    line-height: @cascader-item-height-s;
     font-size: @cascader-font-size-s;
+    min-height: @cascader-height-s;
 
     .@{prefix}-input__inner {
       height: calc(@cascader-height-s - 2px);
@@ -109,254 +321,7 @@
     }
   }
 
-  &.@{prefix}-cascader-is-multiple {
-    padding: @cascader-input-padding-is-multiple;
-
-    &.@{prefix}-size-s {
-      padding: @cascader-input-padding-is-multiple-s;
-    }
+  .@{prefix}-is-popup {
+    border: 1px solid @cascader-highlight-color;
   }
-}
-
-.@{prefix}-cascader-dropdown {
-  margin: @cascader-dropdown-margin;
-  box-shadow: @shadow-2;
-  border-radius: @border-radius;
-  cursor: default;
-  padding: 0;
-
-  & .@{prefix}-cascader-panel {
-    display: flex;
-    height: 100%;
-
-    .@{prefix}-cascader-panel__is-empty {
-      width: 100%;
-      height: @cascader-item-height-default;
-      line-height: @cascader-item-height-default;
-      color: @cascader-color-empty;
-      margin: @cascader-menu-padding;
-      text-align: center;
-      padding-left: 0;
-
-      &:hover {
-        background: none;
-        cursor: default;
-      }
-    }
-
-    & .@{prefix}-cascader-menu {
-      width: (@cascader-width-s - 2px);
-      overflow: auto;
-      box-sizing: content-box;
-      padding: @cascader-menu-padding;
-      background: @bg-color-container;
-
-      & .@{prefix}-cascader-item {
-        position: relative;
-        height: @cascader-item-height-default;
-        line-height: @cascader-item-height-default;
-        color: @cascader-dark-color;
-        padding: @cascader-item-padding;
-        border-radius: @cascader-item-border-radius;
-        margin-top: @cascader-item-margin-top;
-        transition: background-color @anim-duration-base @anim-time-fn-ease-in;
-
-        &:first-child {
-          margin-top: 0;
-        }
-
-        & .@{prefix}-cascader-item--highlight {
-          color: @cascader-highlight-color;
-        }
-
-        &.@{prefix}-cascader-item-have-icon {
-          padding: @cascader-item-padding-have-icon;
-        }
-
-        &.@{prefix}-cascader-item-is-leaf {
-
-          .@{prefix}-checkbox {
-            width: 100%;
-          }
-        }
-
-        .@{prefix}-cascader-item__label {
-          display: block;
-          position: relative;
-          .text-ellipsis();
-
-          .@{prefix}-cascader-item__label--ellipsis {
-            width: 100%;
-            height: 24px;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            opacity: 0;
-            overflow: hidden;
-            transform: translateY(-50%);
-
-            .@{prefix}-popup-reference {
-              width: 100%;
-              height: 100%;
-
-              .t-trigger {
-                width: 100%;
-                height: 100%;
-                display: block;
-              }
-            }
-          }
-
-          .@{prefix}-cascader-item__label--filter {
-            color: @cascader-highlight-color;
-          }
-        }
-
-        &:hover {
-          background: @cascader-item-color-hover;
-          cursor: pointer;
-        }
-
-        --ripple-color: @bg-color-container-active;
-      }
-
-      .@{prefix}-cascader-item.@{prefix}-size-s {
-        height: @cascader-item-height-s;
-        line-height: @cascader-item-height-s;
-        font-size: @cascader-font-size-s;
-      }
-
-      .@{prefix}-cascader-item.@{prefix}-size-l {
-        height: @cascader-item-height-l;
-        line-height: @cascader-item-height-l;
-        font-size: @cascader-font-size-l;
-        padding: @cascader-item-padding-l;
-
-        &.@{prefix}-cascader-item-have-icon {
-          padding: @cascader-item-padding-have-icon-l;
-        }
-      }
-
-      .@{prefix}-cascader-item.@{prefix}-is-selected {
-        color: @cascader-item-color-selected;
-
-        & .@{prefix}-checkbox__label {
-          color: @cascader-item-color-selected;
-        }
-      }
-
-      & .@{prefix}-checkbox {
-        max-width: 100%;
-
-        .@{prefix}-checkbox__input {
-          flex-shrink: 0;
-        }
-
-        & .@{prefix}-checkbox__label {
-          display: block;
-          .text-ellipsis();
-
-          .@{prefix}-cascader-item__label--filter {
-            color: @cascader-highlight-color;
-          }
-        }
-      }
-
-      .@{prefix}-cascader-item.@{prefix}-is-disabled {
-        color: @cascader-item-color-disabled;
-        background-color: transparent;
-        cursor: not-allowed;
-      }
-
-      .@{prefix}-cascader-item.@{prefix}-is-expanded {
-        background: @cascader-item-background-color-expanded;
-        color: @cascader-highlight-color;
-
-        .@{prefix}-icon-chevron-right {
-          color: @cascader-highlight-color;
-        }
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-
-    & .@{prefix}-cascader-menu.@{prefix}-is-search {
-      width: @cascader-input-width;
-      overflow-y: auto;
-    }
-
-    & .@{prefix}-cascader-menu.@{prefix}-width-l {
-      width: (@cascader-width-l - 2px);
-    }
-
-    & .@{prefix}-cascader-menu__seperator {
-      border-right: .5px solid @cascader-menu-seperator-color;
-    }
-  }
-}
-
-.@{prefix}-cascader-search-input {
-  width: 100%;
-  border: 0;
-  background: transparent;
-}
-
-.icon-position() {
-  position: absolute;
-  height: 100%;
-  right: 0;
-  top: 0;
-  background: transparent;
-  margin: @cascader-icon-margin;
-  font-size: @cascader-icon-size;
-}
-
-.@{prefix}-cascader-icon {
-  color: @cascader-icon-color;
-  display: flex;
-  .icon-position();
-}
-
-.@{prefix}-cascader-item-icon {
-  color: @cascader-item-icon-color;
-  .icon-position();
-
-  &.@{prefix}-loading {
-    position: absolute;
-  }
-}
-
-.@{prefix}-cascader-icon.@{prefix}-is-expanded,
-.@{prefix}-cascader-icon.@{prefix}-is-selected,
-.@{prefix}-cascader-icon.@{prefix}-is-loading {
-  background: transparent;
-  color: @cascader-highlight-color;
-}
-
-.@{prefix}-cascader.@{prefix}-is-disabled {
-  cursor: not-allowed;
-  background-color: @cascader-tag-background-color-disabled;
-  color: @cascader-tag-color-disabled;
-  border-color: @cascader-border-color-disabled;
-  .@{prefix}-cascader-content {
-    color: @cascader-color-empty;
-  }
-}
-
-.@{prefix}-cascader.@{prefix}-is-popup {
-  border: 1px solid @cascader-highlight-color;
-}
-
-.@{prefix}-cascader-panel.@{prefix}-cascader--normal {
-  height: @cascader-panel-height-normal;
-}
-
-.@{prefix}-cascader-panel.@{prefix}-cascader--multiple {
-  height: @cascader-panel-height-multiple;
-}
-
-.@{prefix}-cascader-panel.@{prefix}-cascader--tip {
-  height: @cascader-panel-height-tips;
 }
