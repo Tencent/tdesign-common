@@ -41,7 +41,7 @@ spline: base
 
 ### Block 按钮
 
-Block 按钮在宽度上充满其所在的父容器（无padding和margin值）。该按钮常见于移动端和一些表单场景中。
+Block 按钮在宽度上充满其所在的父容器（无 padding 和 margin 值）。该按钮常见于移动端和一些表单场景中。
 
 {{ block }}
 

@@ -29,7 +29,6 @@ spline: form
 
 {{ size }}
 
-
 ### 可过滤的级联选择器
 
 输入过滤已选项。在有特定诉求的业务场景时使用。默认过滤文本。
@@ -78,9 +77,9 @@ spline: form
 
 {{ max }}
 
-### 定制数据的keys
+### 定制数据字段别名
 
-定制数据keys，options数据key不为label或value时使用。
+使用 `options` 配置下拉选项时，如果数据字段不是 `label` 和 `value`，可以使用 `keys` 定义别名。
 
 {{ keys }}
 

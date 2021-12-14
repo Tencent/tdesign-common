@@ -19,7 +19,7 @@ spline: form
   
 ### 小数输入框
 
-可以通过 decimal-places 来设置小数保留精度，通过 step 来设置步进。
+可以通过 `decimalPlaces` 来设置小数保留精度，通过 `step` 来设置步进。
 
 {{ step }}
 

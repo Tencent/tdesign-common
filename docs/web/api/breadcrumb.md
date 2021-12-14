@@ -26,7 +26,7 @@ spline: navigation
 
 {{ dropdown }} -->
 
-### option 选项面包屑
+### 使用 option 配置面包屑
 
 使用 `options` 属性配置面包屑内容。
 
