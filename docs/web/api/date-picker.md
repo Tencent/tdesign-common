@@ -1,6 +1,9 @@
-# DatePicker 日期选择器
-
-用于选择某一具体日期或某一段日期区间。
+---
+title: DatePicker 日期选择器
+description: 用于选择某一具体日期或某一段日期区间。
+isComponent: true
+spline: form
+---
 
 ### 年份选择器
 
@@ -63,3 +66,9 @@
 可以通过 `firstDayOfWeek` 属性指定一周从星期几开始，仅在日期选择时(`mode = date`) 时有效，默认为 1 即从周一开始，如下可以设置为周日开始。
 
 {{ first-day-of-week }}
+
+### 自定义图标的选择器
+
+支持通过 `prefixIcon` 和 `suffixIcon` 自定义设置前缀和后缀图标。
+
+{{ custom-icon }}

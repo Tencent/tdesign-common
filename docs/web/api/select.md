@@ -1,6 +1,9 @@
-# Select 选择器
-
-用于收纳大量选项的信息录入类组件。
+---
+title: Select 选择器
+description: 用于收纳大量选项的信息录入类组件。
+isComponent: true
+spline: form
+---
 
 ### 单选选择器
 

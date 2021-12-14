@@ -56,6 +56,7 @@
 @radio-height-small: 24px;
 @radio-height-medium: 32px;
 @radio-height-large: 40px;
+@radio-button-before-width: 1px;
 
 // 字号
 @radio-font: @font-size-base;
@@ -71,12 +72,27 @@
 @radio-button-line-height-small: @text-line-height-s;
 @radio-button-line-height-medium: @text-line-height-base;
 @radio-button-line-height-large: @text-line-height-l;
-
+@radio-button-line-height-default: @text-line-height-base;
 // padding
 @radio-input-label-spacer: @spacer;
 @radio-button-padding-small: 0px 8px;
 @radio-button-padding-medium: 4px 16px;
 @radio-button-padding-large: 8px 24px;
-
+@radio-button-before-left: 0px;
+@radio-button-before-top: 50%;
 @radio-button-border: 1px solid;
+
 @radio-group-padding: 2px;
+@radio-group-filled-bg-block-left: 2px;
+@radio-group-filled-bg-block-top: 2px;
+
+// 动画&过度
+@radio-group-transition: all @anim-duration-base @anim-time-fn-easing;
+@radio-button-before-transition: translateY(-50%);
+@radio-button-transition: color @anim-duration-base @anim-time-fn-ease-out;
+@radio-input-transition: border @anim-duration-base @anim-time-fn-ease-out;
+// 透明度
+@radio-opacity-transparent: 0; // 全透明
+
+// 边框
+@radio-input-border: 1px solid @radio-border-color;

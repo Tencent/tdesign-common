@@ -1,6 +1,3 @@
-
-
-
 ### 何时使用
 
 布局用于页面区域划分，稳定地呈现相对应的内容。
@@ -10,11 +7,11 @@
 
 #### 画板尺寸
 
-为了减少布局设定时的沟通与拆分计算成本，基于主流屏幕尺寸，通常将标准画板宽度定为1440px。
+为了减少布局设定时的沟通与拆分计算成本，基于主流屏幕尺寸，通常将标准画板宽度定为 1440px。
 
 #### 布局的规律
 
-为了页面布局的一致性，在不同区域中放置内容元素时，应当保持间距的规律性。在TDesign中使用一组具有韵律的间距值，在遵循 8 倍数原则的基础上，增加了 4、12 两档小间距，以灵活满足不同的应用场景。
+为了页面布局的一致性，在不同区域中放置内容元素时，应当保持间距的规律性。在 TDesign 中使用一组具有韵律的间距值，在遵循 8 倍数原则的基础上，增加了 4、12 两档小间距，以灵活满足不同的应用场景。
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/11.png?111" />
 
@@ -26,61 +23,62 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/22.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_2.png" />
     <em>图示：顶部固定</em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/33.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_3.png" />
     <em>图示：底部固定</em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/44.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_4.png" />
     <em>图示：侧边固定</em>
   </div>
 </div>
+
+#### 响应式布局
 
 为了更好地适配各种尺寸的显示设备可以使用响应式布局，通过设置断点实现布局的切换。当浏览器宽度小于配置的断点值时，侧边区域的导航自动从展开态变为收起态。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/55.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_5.png?5555" />
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/66.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_666.png?111111" />
   </div>
 </div>
 
-### 建议/慎用示例
+### 推荐/慎用示例
 
-##### 为了保证内容区域不被过度拉伸，应注意限定其最大宽度，取值可根据实际情况决定。TDesign中 建议的内容区域最大宽度为 1688px。
+##### 为了保证内容区域不被过度拉伸，应注意限定其最大宽度，取值可根据实际情况决定。TDesign 中 建议的内容区域最大宽度为 1688px。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/77.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_7.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/88.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_8.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
-
-
 
 ##### 当需要兼顾带鱼屏等超宽屏幕时，对于包含左侧导航的网页，可以考虑采用内容区域左对齐的方式，以避免左侧导航与内容区域间的距离过大，提升切换效率。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/99.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_9.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/1010.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Layout_10.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
+<hr />
 
-更多布局设计可参考： [全局样式-Layout布局](/design/layout)
+更多布局设计可参考： [全局样式-Layout 布局](/design/layout)

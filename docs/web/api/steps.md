@@ -1,6 +1,9 @@
-# Steps 步骤条
-
-提示用户进度以及当前的步骤，用于引导用户按照步骤完成任务的导航条。
+---
+title: Steps 步骤条
+description: 提示用户进度以及当前的步骤，用于引导用户按照步骤完成任务的导航条。
+isComponent: true
+spline: navigation
+---
 
 ### 水平步骤条
 以水平方向引导用户使用的步骤条。

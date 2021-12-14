@@ -12,23 +12,23 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/select-1@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/selecter_1.png"/>
     <em>图示：不同页面位置展开方式-左上角</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/select-2@2x.png"/>
-    <em>图示：不同页面位置展开方式-右下角</em>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/selecter_2.png"/>
+    <em>图示：不同页面位置展开方式-右上角</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/select-3@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/selecter_3.png"/>
     <em>图示：不同页面位置展开方式-左下角</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/select-4@2x.png"/>
-    <em>图示：不同页面位置展开方式-右上角</em>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/selecter_4.png"/>
+    <em>图示：不同页面位置展开方式-右下角</em>
   </div>
 </div>
 
