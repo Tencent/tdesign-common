@@ -6,24 +6,6 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-slider-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &.is-vertical {
-    height: 100%;
-    flex-direction: column;
-  }
-}
-
-.@{prefix}-slider-input {
-  &.is-range {
-    margin-left: @slider-input-range-margin-left;
-  }
-}
-
 .@{prefix}-slider__input-container {
   display: flex;
   align-items: center;
@@ -51,6 +33,24 @@
   width: 100%;
   position: relative;
   padding: @slider-padding;
+
+  &__input {
+    &.is-range {
+      margin-left: @slider-input-range-margin-left;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.is-vertical {
+      height: 100%;
+      flex-direction: column;
+    }
+  }
 
   &__rail {
     position: absolute;
@@ -143,7 +143,7 @@
   }
 }
 
-.@{prefix}-slide--vertical {
+.@{prefix}-slider--vertical {
   height: @slider-vertical-height;
   padding: @slider-vertical-padding;
   display: flex;
