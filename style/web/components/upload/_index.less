@@ -14,6 +14,16 @@
 
 .@{prefix}-upload {
 
+  .@{prefix}-size-s {
+    display: block;
+    color: @upload-small-color;
+    font-size: @upload-small-font-size;
+    line-height: @upload-small-line-height;
+  }
+  .@{prefix}-is-bordered {
+    border: @upload-card-content-border;
+  }
+  
   .@{prefix}-icon {
     font-size: @upload-icon-size;
     flex-shrink: 0;
@@ -154,7 +164,7 @@
           margin-bottom: @upload-card-item-error-icon-warning-margin-bottom;
         }
 
-        & .@{prefix}-upload-card__status {
+        & .@{prefix}-upload__card-status {
           color: @upload-card-item-status-color;
         }
       }
@@ -227,9 +237,6 @@
       }
     }
 
-    &-content-border {
-      border: @upload-card-content-border;
-    }
 
     &-image {
       max-width: 100%;
@@ -258,7 +265,7 @@
         height: @upload-card-mask-divider-height;
       }
 
-      > .t-icon {
+      > .@{prefix}-icon {
         cursor: pointer;
         font-size: @upload-icon-size;
       }
@@ -266,7 +273,7 @@
   }
 
   &__dialog {
-    .t__dialog {
+    .@{prefix}-dialog {
       max-width: 80%;
 
       &--default {
@@ -351,12 +358,6 @@
   margin-top: @upload-tips-margin-top;
 }
 
-.@{prefix}-size-s {
-  display: block;
-  color: @upload-small-color;
-  font-size: @upload-small-font-size;
-  line-height: @upload-small-line-height;
-}
 
 .@{prefix}-upload__placeholder {
   color: @upload-placeholder-color;
