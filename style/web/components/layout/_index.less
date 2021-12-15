@@ -17,29 +17,29 @@
   background: @layout-bg-color;
   flex: auto;
 
-  &-has-sider {
+  &--with-sider {
     flex-direction: row;
   }
 }
 
-.@{prefix}-layout--header {
-  height: @layout-hearder-height;
-  line-height: @layout-hearder-height;
+.@{prefix}-layout__header {
+  height: @layout-header-height;
+  line-height: @layout-header-height;
   background-color: @layout-header-bg-color;
 }
 
-.@{prefix}-layout--content {
+.@{prefix}-layout__content {
   flex: auto;
 }
 
-.@{prefix}-layout--sider {
+.@{prefix}-layout__sider {
   position: relative;
   transition: all @layout-sider-anim-duration;
   background: @layout-sider-bg-color;
   width: @layout-sider-width;
 }
 
-.@{prefix}-layout--footer {
+.@{prefix}-layout__footer {
   color: @layout-footer-color;
   padding: 24px;
 }
