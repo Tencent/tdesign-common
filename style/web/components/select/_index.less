@@ -21,6 +21,7 @@
   border-radius: @select-border-radius;
   padding: @select-padding;
   transition: border-color @anim-duration-base @anim-time-fn-easing;
+  flex-wrap: wrap;
 
   &:hover,
   :active {
@@ -39,6 +40,9 @@
 
   .@{prefix}-select-placeholder {
     margin-left: @select-placeholder-margin;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &:not(.@{prefix}-is-disabled) .@{prefix}-select-placeholder {
