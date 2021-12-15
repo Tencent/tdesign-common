@@ -1,6 +1,6 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式 --
 
-@import "../../base.less";
+// @import "../../base.less";
 
 @import "./_var.less";
 
@@ -39,12 +39,12 @@
     color: @upload-icon-add-color;
   }
 
-  .@{prefix}-upload-icon-delete {
+  .@{prefix}-upload__icon-delete {
     color: @upload-single-display-text-color;
     cursor: pointer;
   }
 
-  &-list__file {
+  &__list-file {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +59,7 @@
     }
   }
 
-  &-list__item {
+  &__list-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,17 +73,17 @@
 
     &.@{prefix}-is--error {
 
-      .@{prefix}-upload-list__name {
+      .@{prefix}-upload__list-name {
         color: @upload-list-item-error-color;
       }
 
-      .@{prefix}-upload-list__file .@{prefix}-icon {
+      .@{prefix}-upload__list-file .@{prefix}-icon {
         color: @upload-list-item-error-color;
       }
     }
   }
 
-  &-list__content {
+  &__list-content {
     display: flex;
     align-items: center;
   }
@@ -96,19 +96,19 @@
     }
   }
 
-  &-list__img {
+  &__list-img {
     object-fit: cover;
     max-width: 100%;
     max-height: 100%;
     cursor: pointer;
   }
 
-  &-list__name {
+  &__list-name {
     max-width: @upload-list-name-max-width;
     .text-ellipsis();
   }
 
-  &__highlight {
+  &--highlight {
     color: @upload-highlight-color;
   }
 
@@ -119,7 +119,7 @@
 
 // 照片墙
 .@{prefix}-upload {
-  &-card {
+  &__card {
     font-size: @upload-card-font-size;
     line-height: @upload-card-line-height;
     overflow: hidden;
@@ -131,7 +131,7 @@
       }
     }
 
-    &__item {
+    &-item {
       margin: @upload-card-item-margin;
       float: left;
       cursor: pointer;
@@ -142,7 +142,7 @@
         display: block;
       }
 
-      &:hover .@{prefix}-upload-card__mask {
+      &:hover .@{prefix}-upload__card-mask {
         opacity: 1;
         .hover-transition(opacity);
       }
@@ -172,14 +172,14 @@
       margin-bottom: @upload-card-icon-loading-margin-bottom;
     }
 
-    &__name {
+    &-name {
       max-width: 100%;
       margin-top: @upload-card-name-margin-top;
       color: @upload-card-name-color;
       .text-ellipsis();
     }
 
-    &__content {
+    &-content {
       position: relative;
       width: @upload-img-size;
       height: @upload-img-size;
@@ -214,7 +214,7 @@
       }
     }
 
-    &__status-wrap {
+    &-status-wrap {
       text-align: center;
 
       > svg {
@@ -227,21 +227,21 @@
       }
     }
 
-    &__content-border {
+    &-content-border {
       border: @upload-card-content-border;
     }
 
-    &__image {
+    &-image {
       max-width: 100%;
       max-height: 100%;
     }
 
-    &__status {
+    &-status {
       color: @upload-card-status-color;
       font-size: @upload-card-status-font-size;
     }
 
-    &__mask {
+    &-mask {
       background-color: @upload-card-mask-bg-color;
       color: @upload-card-mask-color;
       transition: opacity .5s ease-in-out;
@@ -251,12 +251,7 @@
       .fill-with-position-absolute();
     }
 
-    &__mask--disabled {
-      opacity: @upload-card-mask-opacity-disabled;
-      cursor: default;
-    }
-
-    &__mask__item {
+    &-mask-item {
       &-divider {
         margin: @upload-card-mask-divider-margin;
         border-left: 1px @upload-card-mask-color solid;
@@ -270,8 +265,8 @@
     }
   }
 
-  &-dialog {
-    .t-dialog {
+  &__dialog {
+    .t__dialog {
       max-width: 80%;
 
       &--default {
@@ -356,7 +351,7 @@
   margin-top: @upload-tips-margin-top;
 }
 
-.@{prefix}-upload__small {
+.@{prefix}-size-s {
   display: block;
   color: @upload-small-color;
   font-size: @upload-small-font-size;
@@ -367,7 +362,7 @@
   color: @upload-placeholder-color;
 }
 
-.@{prefix}-display-text--margin {
+.@{prefix}-upload__display-text--margin {
   margin-top: @upload-display-text-margin-top;
 }
 
