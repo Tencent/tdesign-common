@@ -17,7 +17,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
     <a class="item" href="./divider">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-divider.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-divider-dark.png" />
-      <p class="name">Divider 按分割线</p>
+      <p class="name">Divider 分割线</p>
     </a>
   </div>
 
