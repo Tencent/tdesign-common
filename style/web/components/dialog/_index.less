@@ -126,11 +126,11 @@
 }
 
 // t-dialog 组件本身
-.@{prefix}-dialog-ctx {
+.@{prefix}-dialog__ctx {
   pointer-events: none;
   outline: none;
 
-  &.@{prefix}-dialog-ctx--fixed {
+  &.@{prefix}-dialog__ctx--fixed {
     position: fixed;
     top: 0;
     left: 0;
@@ -143,7 +143,7 @@
     visibility: visible;
   }
 
-  &.t-not-visable {
+  &.t-is-hidden {
     visibility: hidden;
   }
 
@@ -155,7 +155,7 @@
     display: none;
   }
 
-  .@{prefix}-dialog-mask {
+  .@{prefix}-dialog__mask {
     position: absolute;
     top: 0;
     left: 0;
@@ -164,10 +164,10 @@
     z-index: 1;
     background: @dialog-mask-bg-color;
     pointer-events: auto;
+  }
 
-    &--hidden {
-      background: none;
-    }
+  .t-is-hidden {
+    background: none;
   }
 
   .@{prefix}-dialog {
