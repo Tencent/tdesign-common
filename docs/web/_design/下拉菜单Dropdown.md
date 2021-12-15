@@ -59,24 +59,24 @@ demo
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_1.png" />
-    <em>图示：不同页面位置展开方式-左上角。</em>
+    <em>图示：在左上角，向右下角展开</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_2.png" />
-    <em>图示：不同页面位置展开方式-右上角。</em>
+    <em>图示：在右上角，向左下角展开</em>
   </div>
 </div>
 
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_3.png" />
-    <em>图示：不同页面位置展开方式-左下角。</em>
+    <em>图示：在左下角，向右上角展开</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_4.png" />
-    <em>图示：不同页面位置展开方式-右下角。</em>
+    <em>图示：在右下角，向左上角展开。</em>
   </div>
 </div>
 
