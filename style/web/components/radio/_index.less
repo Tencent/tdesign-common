@@ -15,7 +15,7 @@
     margin-right: @radio-margin-right;
   }
 
-  &.@{radio-cls}-group-outline {
+  &.@{radio-cls}-group__outline {
 
     .@{radio-button--cls} {
 
@@ -34,14 +34,14 @@
     }
   }
 
-  &.@{radio-cls}-group-filled {
+  &.@{radio-cls}-group--filled {
     border-color: @radio-button-group-background-color-filled;
     padding: @radio-group-padding;
     border-radius: @radio-button-border-radius;
     background-color: @radio-button-group-background-color-filled;
     position: relative;
 
-    .@{radio-cls}-group-filled-bg-block {
+    .@{radio-cls}-group__bg-block {
       position: absolute;
       left: @radio-group-filled-bg-block-left;
       top: @radio-group-filled-bg-block-top;
@@ -104,16 +104,16 @@
           color: @radio-button-color-default-filled-disabled-checked;
         }
 
-        &.@{prefix}-is-checked ~ .@{radio-cls}-group-filled-bg-block {
+        &.@{prefix}-is-checked ~ .@{radio-cls}-group__bg-block {
           background-color: @radio-button-background-color-default-filled-disabled-checked;
         }
       }
     }
   }
 
-  &.@{radio-cls}-group-primary-filled {
+  &.@{radio-cls}-group--primary-filled {
 
-    .@{radio-cls}-group-filled-bg-block {
+    .@{radio-cls}-group__bg-block {
       background-color: @radio-button-background-color-primary-filled-checked;
     }
 
@@ -129,7 +129,7 @@
           color: @radio-button-color-primary-filled-disabled-checked;
         }
 
-        &.@{prefix}-is-checked ~ .@{radio-cls}-group-filled-bg-block {
+        &.@{prefix}-is-checked ~ .@{radio-cls}-group__bg-block {
           background-color: @radio-button-background-color-primary-filled-disabled-checked;
         }
       }
