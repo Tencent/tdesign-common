@@ -1,7 +1,7 @@
 {
   "name": "tdesign-common",
   "version": "1.0.0",
-  "homepage": "https://github.com/TDesignOteam",
+  "homepage": "https://github.com/Tencent",
   "description": "TDesign UI 样式库以及组件库公共函数（js）",
   "main": "",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TDesignOteam/tdesign-common.git"
+    "url": "https://github.com/Tencent/tdesign-common.git"
   },
   "keywords": [
     "tdesign",
