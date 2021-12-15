@@ -51,11 +51,11 @@
       cursor: not-allowed;
     }
 
-    &--prev {
+    &-prev {
       margin-right: @pagination-btn-margin;
     }
 
-    &--next {
+    &-next {
       margin-left: @pagination-btn-margin;
     }
 
@@ -84,7 +84,8 @@
     border-radius: @pagination-border-radius-base;
     cursor: pointer;
     background-color: @pagination-bg-color-default;
-    transition: border @anim-duration-base linear, background-color @anim-duration-base linear;
+    transition: border @anim-duration-base linear,
+      background-color @anim-duration-base linear;
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
@@ -134,13 +135,6 @@
       border: 0 none;
       padding: 0;
 
-      &.more-quickprev {
-
-        .@{prefix}-icon-double-arrow-right {
-          transform: rotate(-180deg);
-        }
-      }
-
       &:hover {
         color: @pagination-text-color-btn;
         background-color: @pagination-bg-color-btn-hover;
@@ -182,7 +176,6 @@
 
   // 迷你尺寸
   &.@{prefix}-size-s {
-
     .@{prefix}-pagination {
       &__total {
         font-size: @pagination-font-s;
@@ -217,7 +210,6 @@
         }
 
         &.@{prefix}-is-current {
-
           &.@{prefix}-is-disabled {
             .pagination-number--color(
               @pagination-bg-color-current-disabled;
