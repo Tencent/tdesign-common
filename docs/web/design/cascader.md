@@ -17,7 +17,7 @@
     <em></em>
   </div>
 
-  <div class="item"></div>
+
 </div>
 
 
@@ -30,7 +30,6 @@
     <em></em>
   </div>
 
-  <div class="item"></div>
 </div>
 
 
