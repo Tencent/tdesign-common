@@ -14,33 +14,33 @@
   height: 100%;
   pointer-events: none;
 
-  &-attach {
+  &--attach {
     position: absolute;
   }
 
-  &-left,
-  &-right {
+  &--left,
+  &--right {
     top: 0;
   }
 
-  &-left {
+  &--left {
     left: 0;
   }
 
-  &-right {
+  &--right {
     right: 0;
   }
 
-  &-top,
-  &-bottom {
+  &--top,
+  &--bottom {
     left: 0;
   }
 
-  &-top {
+  &--top {
     top: 0;
   }
 
-  &-bottom {
+  &--bottom {
     bottom: 0;
   }
 
@@ -68,7 +68,8 @@
     box-shadow: @dialog-box-shadow;
     overflow: hidden;
     pointer-events: auto;
-    transition: transform @drawer-slow-duration @drawer-default-timing-function, visibility @drawer-slow-duration @drawer-default-timing-function;
+    transition: transform @drawer-slow-duration @drawer-default-timing-function,
+      visibility @drawer-slow-duration @drawer-default-timing-function;
     position: relative;
   }
 
@@ -78,23 +79,23 @@
     height: 100%;
     visibility: hidden;
 
-    &-left,
-    &-right {
+    &--left,
+    &--right {
       top: 0;
     }
 
-    &-left {
+    &--left {
       left: 0;
       transform: translateX(-100%);
     }
 
-    &-right {
+    &--right {
       right: 0;
       transform: translateX(100%);
     }
 
-    &-top,
-    &-bottom {
+    &--top,
+    &--bottom {
       left: 0;
     }
 
@@ -103,7 +104,7 @@
       transform: translateY(-100%);
     }
 
-    &-bottom {
+    &--bottom {
       bottom: 0;
       transform: translateY(100%);
     }
@@ -172,7 +173,7 @@
   }
 }
 
-.@{prefix}-@{componentName}-open {
+.@{prefix}-@{componentName}--open {
   width: 100%;
   height: 100%;
   pointer-events: auto;
@@ -188,11 +189,11 @@
   }
 }
 
-// 需要在 t-drawer-open 后面，优先级才比 open 高
-.@{prefix}-@{componentName}-no-mask {
+// 需要在 t-drawer--open 后面，优先级才比 open 高
+.@{prefix}-@{componentName}--without-mask {
   pointer-events: none;
 }
 
 [tabindex="-1"]:focus {
-  outline: none !important;/* stylelint-disable-line */
+  outline: none !important; /* stylelint-disable-line */
 }
