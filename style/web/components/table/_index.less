@@ -75,10 +75,6 @@
 
   td,
   th {
-    > a {
-      text-decoration: none;
-      color: @table-link-text-color;
-    }
 
     &.align-left {
       text-align: left;
@@ -489,11 +485,6 @@
   // 数据行禁用
   .@{prefix}-table__row--disabled {
     color: @table-row-disabled-color;
-
-    a {
-      color: @table-row-disabled-color;
-      cursor: not-allowed;
-    }
   }
 
   // 复杂表头容器
