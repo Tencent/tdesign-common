@@ -9,18 +9,14 @@
 .@{prefix}-date-picker {
   padding: 0;
 
-  .@{prefix}-date-picker-popup-reference {
+  .@{prefix}-date-picker__popup-reference {
     width: 100%;
   }
 
-  &--container {
+  &__container {
     border-radius: @datepicker-panel-border-radius;
     background-color: @datepicker-dropdown-background;
     overflow: auto;
-  }
-
-  &--multiple .@{prefix}-form-controls {
-    min-width: 640px;
   }
 
   .@{prefix}-is-active {
@@ -31,7 +27,7 @@
   }
 }
 
-.@{prefix}-date-picker--panels {
+.@{prefix}-date-picker__panels {
   display: flex;
   min-width: 320px;
   max-width: 100%;
@@ -63,20 +59,20 @@
   }
 }
 
-.@{prefix}-date-picker-header {
+.@{prefix}-date-picker__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid @border-level-1-color;
 
-  .@{prefix}-date-picker-header-title,
-  .@{prefix}-date-header__btn {
+  .@{prefix}-date-picker__header-title,
+  .@{prefix}-date__header-btn {
     font-size: @datepicker-font-size-l;
     font-weight: @datepicker-font-weight-medium;
   }
 
-  .@{prefix}-date-picker-header-controller {
+  .@{prefix}-date-picker__header-controller {
     &__btn {
       color: @datepicker-button-text-color;
       padding: 4px;
@@ -97,12 +93,8 @@
   }
 }
 
-.@{prefix}-picker-datetime-range {
-  min-width: 408px;
-}
-
-.@{prefix}-date-cell {
-  &__wrapper {
+.@{prefix}-date-picker__cell {
+  &-wrapper {
     height: @datepicker-cell-width-default;
     margin-top: 4px;
     width: 100%;
@@ -132,7 +124,7 @@
 
   &--now {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       position: absolute;
       top: 0;
       color: @datepicker-now-color;
@@ -153,7 +145,7 @@
 
   &--highlight {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       background-color: @datepicker-highlight-color;
       border-color: @datepicker-highlight-color;
       transition: background @anim-duration-base, border @anim-duration-base;
@@ -166,7 +158,7 @@
 
   &--additional {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       color: @datepicker-disabled-color;
       background: @bg-color-container;
 
@@ -182,7 +174,7 @@
 
   &--active {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       & > span {
         color: @text-color-anti;
         background-color: @brand-color;
@@ -195,7 +187,7 @@
 
     &-start {
 
-      .@{prefix}-date-cell__wrapper {
+      .@{prefix}-date-picker__cell-wrapper {
         border-top-left-radius: 50%;
         border-bottom-left-radius: 50%;
       }
@@ -203,7 +195,7 @@
 
     &-end {
 
-      .@{prefix}-date-cell__wrapper {
+      .@{prefix}-date-picker__cell-wrapper {
         border-top-right-radius: 50%;
         border-bottom-right-radius: 50%;
       }
@@ -212,7 +204,7 @@
 
   &--last-day-of-month {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       border-top-right-radius: 50%;
       border-bottom-right-radius: 50%;
     }
@@ -220,7 +212,7 @@
 
   &--first-day-of-month {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       border-top-left-radius: 50%;
       border-bottom-left-radius: 50%;
     }
@@ -228,7 +220,7 @@
 
   &--disabled {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       cursor: not-allowed;
       border-radius: 50%;
       background-color: @datepicker-disabled-background;
@@ -247,7 +239,7 @@
   // disable 相邻需要半圆连接
   &--disabled + &--disabled {
 
-    .@{prefix}-date-cell__wrapper {
+    .@{prefix}-date-picker__cell-wrapper {
       &::before {
         content: "";
         width: 100%;
@@ -262,17 +254,17 @@
   }
 }
 
-.@{prefix}-date-picker-year {
+.@{prefix}-date-picker--year {
   padding-bottom: @datepicker-panel-padding;
 
   tbody {
     tr {
 
-      .@{prefix}-date-cell__wrapper {
+      .@{prefix}-date-picker__cell-wrapper {
         margin-top: 8px;
         height: @datepicker-cell-width-year;
 
-        .@{prefix}-date-cell__text {
+        .@{prefix}-date-picker__cell-text {
           height: @datepicker-cell-width-year;
           width: @datepicker-cell-width-year;
           line-height: @datepicker-cell-width-year;
@@ -286,13 +278,13 @@
 
       &:first-child {
 
-        .@{prefix}-date-cell__wrapper {
+        .@{prefix}-date-picker__cell-wrapper {
           margin-top: 16px;
         }
       }
 
       &:last-child {
-        .t-date-cell {
+        .@{prefix}-date-picker__cell {
           text-align: left;
         }
       }
@@ -300,11 +292,11 @@
   }
 }
 
-.@{prefix}-date-picker-month {
+.@{prefix}-date-picker--month {
   tbody {
     tr {
 
-      .@{prefix}-date-cell__wrapper {
+      .@{prefix}-date-picker__cell-wrapper {
         margin-top: 8px;
 
         &::after {
@@ -314,14 +306,14 @@
 
       &:first-child {
 
-        .@{prefix}-date-cell__wrapper {
+        .@{prefix}-date-picker__cell-wrapper {
           margin-top: 20px;
         }
       }
 
       &:last-child {
 
-        .@{prefix}-date-cell__wrapper {
+        .@{prefix}-date-picker__cell-wrapper {
           margin-bottom: 12px;
         }
       }
@@ -329,17 +321,18 @@
   }
 }
 
-.@{prefix}-date-picker-date {
+.@{prefix}-date-picker--date {
   padding: 0 16px 16px;
 }
 
-.@{prefix}-date {
+.@{prefix}-date-picker__panel {
   width: 320px;
 
   table {
     width: 100%;
     border-collapse: collapse;
     user-select: none;
+    padding: 0 16px 16px;
   }
 
   tbody {
@@ -362,14 +355,14 @@
 
     // 每列开头和结尾均为圆形边框
     &:first-child {
-      .t-date-cell__wrapper {
+      .@{prefix}-date-picker__cell-wrapper {
         border-top-left-radius: 50%;
         border-bottom-left-radius: 50%;
       }
     }
 
     &:last-child {
-      .t-date-cell__wrapper {
+      .@{prefix}-date-picker__cell-wrapper {
         border-top-right-radius: 50%;
         border-bottom-right-radius: 50%;
       }
@@ -383,7 +376,7 @@
   }
 }
 
-.@{prefix}-date-range {
+.@{prefix}-date-picker__panels {
   overflow: hidden;
   display: flex;
 }
@@ -394,14 +387,14 @@
   align-items: flex-start;
 }
 
-.@{prefix}-date-picker--ranges-show {
+.@{prefix}-date-picker--range {
 
   .@{prefix}-date-picker__footer {
     width: 640px;
   }
 }
 
-.@{prefix}-date-picker-presets {
+.@{prefix}-date-picker__presets {
   margin: @datepicker-btn-margin;
   min-width: 100px;
   justify-content: space-between;
