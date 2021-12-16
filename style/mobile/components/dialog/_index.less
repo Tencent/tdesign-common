@@ -56,6 +56,24 @@
     }
   }
 
+  &__vertical-footer {
+    flex-direction: column;
+  }
+
+  &__vertical-btn {
+    &::before {
+      content: " ";
+      .hairline-top(@dialog-btn-border-color);
+    }
+  }
+
+  &__horizontal-btn {
+    &::before {
+      content: " ";
+      .hairline-left(@dialog-btn-border-color);
+    }
+  }
+
   &__btn {
     position: relative;
     display: block;
@@ -71,11 +89,6 @@
     &--active,
     &:active {
       background-color: @dialog-btn-bg-color-active;
-    }
-
-    &::before {
-      content: " ";
-      .hairline-left(@dialog-btn-border-color);
     }
 
     &:first-child {
