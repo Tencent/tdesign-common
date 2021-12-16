@@ -137,9 +137,9 @@
     &-icon {
       color: @cascader-item-icon-color;
       .icon-position();
-
-      &.@{prefix}-loading {
-        position: absolute;
+      
+      .t-icon-loading {
+        color: @cascader-highlight-color;
       }
     }
 
@@ -285,9 +285,7 @@
 
   &.@{prefix}-size-l {
     height: @cascader-item-height-l;
-    line-height: @cascader-item-height-l;
     font-size: @cascader-font-size-l;
-    padding: @cascader-item-padding-l;
     min-height: @cascader-height-l;
 
     &.@{prefix}-cascader-item--with-icon {
