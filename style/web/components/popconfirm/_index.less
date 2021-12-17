@@ -9,10 +9,6 @@
 .@{popconfirm-cls} {
   border-radius: @popconfirm-border-radius;
 
-  &--position-hidden {
-    display: none;
-  }
-
   &__content {
     position: @popconfirm-position;
     padding: @popconfirm-padding + 4 @popconfirm-padding;
@@ -75,7 +71,7 @@
     border-width: @popconfirm-arrow-border-width;
   }
 
-  &--position-bottomRight .@{popconfirm-cls}__arrow,
+  &--position-bottom-right .@{popconfirm-cls}__arrow,
   &--position-bottom .@{popconfirm-cls}__arrow,
   &--position-bottom-left .@{popconfirm-cls}__arrow {
     top: @popconfirm-arrow-absolute-offset;
@@ -92,7 +88,7 @@
     right: @popconfirm-arrow-margin;
   }
 
-  &--position-bottomRight .@{popconfirm-cls}__arrow,
+  &--position-bottom-right .@{popconfirm-cls}__arrow,
   &--position-topRight .@{popconfirm-cls}__arrow {
     right: @popconfirm-arrow-margin;
   }
