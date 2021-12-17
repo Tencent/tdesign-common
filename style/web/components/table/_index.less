@@ -27,12 +27,12 @@
     pointer-events: none;
   }
 
-  &-content {
+  &__content {
     position: relative;
     .scrollbar();
   }
 
-  &-pagination {
+  &__pagination {
     padding: @table-padding-normal  @table-padding-horizontal;
     box-sizing: border-box;
   }
@@ -75,19 +75,19 @@
 
   td,
   th {
-    &.align-left {
+    &.@{prefix}-align-left {
       text-align: left;
     }
 
-    &.align-right {
+    &.@{prefix}-align-right {
       text-align: right;
     }
 
-    &.align-center {
+    &.@{prefix}-align-center {
       text-align: center;
     }
 
-    &.text-ellipsis {
+    &.@{prefix}-text-ellipsis {
       .text-ellipsis();
     }
   }
@@ -109,8 +109,8 @@
   }
 
   // 展开/收起列
-  .@{prefix}-table-expandable-icon-cell,
-  .@{prefix}-table-selection-cell {
+  .@{prefix}-table__expandable-icon-cell,
+  .@{prefix}-table__selection-cell {
     padding: 0;
   }
 
@@ -128,15 +128,15 @@
 
   // 边框线表格
   &--bordered {
-    .@{prefix}-table-content {
+    .@{prefix}-table__content {
       border-left: 1px solid @table-border-color;
     }
-    .@{prefix}-table--empty {
+    .@{prefix}-table__empty {
       border-left: 1px  solid  @table-border-color;
       border-right: 1px  solid  @table-border-color;
     }
     // 表格边框优化，适配固定列/固定表头场景
-    .@{prefix}-table-content {
+    .@{prefix}-table__content {
       border: 1px solid @table-border-color;
       border-bottom: 0;
       border-radius: @border-radius;
@@ -191,7 +191,7 @@
       border-bottom: 1px solid @table-border-color;
     }
 
-    .@{prefix}-table-pagination {
+    .@{prefix}-table__pagination {
       border: 1px solid @table-border-color;
       border-top: 0;
     }
@@ -199,7 +199,7 @@
     // 固定表头表格底部边框线显示优化
     &.@{prefix}-table__header--fixed {
 
-      .@{prefix}-table-content {
+      .@{prefix}-table__content {
         border-bottom: 1px solid @table-border-color;
 
         tr {
@@ -272,7 +272,7 @@
   }
 
   // 文本顶端对齐
-  &.@{prefix}-table-valign__top {
+  &.@{prefix}-table--align-top {
     tbody {
       td {
         vertical-align: top;
@@ -355,7 +355,7 @@
       }
     }
 
-    .@{prefix}-table-content {
+    .@{prefix}-table__content {
       overflow: auto hidden;
     }
 
@@ -450,14 +450,14 @@
 
     &.@{prefix}-table--has-fixed {
       // 可向左滚动时，左边显示固定列显示阴影，右边同理
-      .@{prefix}-table-content--scrollable-to-left {
+      .@{prefix}-table__content--scrollable-to-left {
 
         .@{prefix}-table__cell--fixed-left-last::after {
           box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
         }
       }
 
-      .@{prefix}-table-content--scrollable-to-right {
+      .@{prefix}-table__content--scrollable-to-right {
 
         .@{prefix}-table__cell--fixed-right-first::after {
           box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
@@ -557,7 +557,7 @@
   color: @text-color-disabled;
 }
 
-.@{prefix}-table-expanded-cell {
+.@{prefix}-table__expanded-cell {
   padding-left: 45px;
 }
 
@@ -570,7 +570,7 @@
 }
 
 // 默认空表格
-.@{prefix}-table--empty {
+.@{prefix}-table__empty {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -579,8 +579,8 @@
   border-bottom: 1px solid @table-border-color;
 }
 
-.@{prefix}-table-filter-icon,
-.@{prefix}-table-sort-icon {
+.@{prefix}-table__filter-icon,
+.@{prefix}-table__sort-icon {
   margin-left: 8px;
   background-color: transparent;
   display: inline-block;
@@ -591,16 +591,16 @@
   }
 }
 
-.@{prefix}-table-sort-icon {
+.@{prefix}-table__sort-icon {
   position: absolute;
 }
 
-.@{prefix}-table-filter-pop {
+.@{prefix}-table__filter-pop {
 
-  .@{prefix}-table-filter-pop-content {
+  .@{prefix}-table__filter-pop-content {
     margin: -8px;
 
-    .@{prefix}-table-filter-pop-content__inner {
+    .@{prefix}-table__filter-pop-content-inner {
       padding: 16px;
     }
 
@@ -615,7 +615,7 @@
       line-height: 34px;
     }
 
-    .@{prefix}-table-filter-pop-content__button {
+    .@{prefix}-table__filter-pop-content-button {
       border-top: 1px solid @table-border-color;
       padding: 16px;
 
@@ -626,17 +626,17 @@
   }
 }
 
-.@{prefix}-table-sort-icon-active {
+.@{prefix}-table__sort-icon--active {
   color: @table-icon-active-color;
 }
 
-.@{prefix}-table-double-icons {
+.@{prefix}-table__double-icons {
   display: inline-grid;
   vertical-align: middle;
   width: 14px;
 }
 
-.@{prefix}-table-expand-box {
+.@{prefix}-table__expand-box {
   padding: 10px 8px;
   display: inline-grid;
   vertical-align: middle;
