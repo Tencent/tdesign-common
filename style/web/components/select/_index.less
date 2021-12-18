@@ -5,7 +5,7 @@
 @import "../../mixins/_text.less";
 
 // select
-.@{prefix}-select-wrap {
+.@{prefix}-select__wrap {
   width: 100%;
 }
 
@@ -28,7 +28,7 @@
     cursor: pointer;
     border-color: @select-border-color-active;
 
-    & > .@{prefix}-select-right-icon:not(.@{prefix}-select-right-icon__clear) {
+    & > .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
       color: @select-right-icon-hover;
       opacity: 1;
     }
@@ -38,25 +38,25 @@
     line-height: @select-height-default;
   }
 
-  .@{prefix}-select-placeholder {
+  .@{prefix}-select__placeholder {
     margin-left: @select-placeholder-margin;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
 
-  &:not(.@{prefix}-is-disabled) .@{prefix}-select-placeholder {
+  &:not(.@{prefix}-is-disabled) .@{prefix}-select__placeholder {
     color: @select-placeholder-color;
   }
 
-  & .@{prefix}-select-selectedSingle {
+  & .@{prefix}-select__single {
     margin-left: @select-placeholder-margin;
     display: block;
     color: @select-input-color;
     .text-ellipsis();
   }
 
-  & .@{prefix}-select-right-icon {
+  & .@{prefix}-select__right-icon {
     position: absolute;
     height: 100%;
     margin: @select-icon-margin;
@@ -66,11 +66,11 @@
     transition: color @anim-duration-base @anim-time-fn-easing;
   }
 
-  .@{prefix}-select-active-icon {
+  .@{prefix}-select__active-icon {
     color: @select-border-color-active;
   }
 
-  .@{prefix}-select-right-icon.@{prefix}-is-visible {
+  .@{prefix}-select__right-icon.@{prefix}-is-visible {
     transform: scaleY(-1);
     transition: transform @anim-duration-base @anim-time-fn-easing;
 
@@ -78,7 +78,7 @@
     filter: flipv;
   }
 
-  & .@{prefix}-select-left-icon {
+  & .@{prefix}-select__left-icon {
     position: absolute;
     height: 100%;
     margin: @select-icon-margin;
@@ -90,7 +90,7 @@
     align-items: center;
   }
 
-  .@{prefix}-select-input {
+  .@{prefix}-select__input {
     margin-left: @select-placeholder-margin;
     flex: 1;
 
@@ -134,7 +134,7 @@
     box-shadow: @select-input-shadow; // 无边框选择器没有阴影
   }
 
-  .@{prefix}-select-right-icon:not(.@{prefix}-select-right-icon__clear) {
+  .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
     color: @select-border-color-active;
     opacity: 1;
   }
@@ -157,7 +157,7 @@
     background-color: @select-option-bg-color-active;
   }
 
-  > .@{prefix}-select-selectedSingle {
+  > .@{prefix}-select__single {
     margin-right: @select-no-border-margin-right;
   }
 }
@@ -166,7 +166,7 @@
   line-height: (@select-height-l - 2px);
   font-size: @select-font-size-l;
 
-  .@{prefix}-select-input {
+  .@{prefix}-select__input {
     line-height: (@select-height-l - 2px);
     height: (@select-height-l - 2px);
 
@@ -186,7 +186,7 @@
   line-height: (@select-height-s - 2px);
   font-size: @select-font-size-s;
 
-  .@{prefix}-select-input {
+  .@{prefix}-select__input {
     line-height: (@select-height-s - 2px);
     height: (@select-height-s - 2px);
 
@@ -208,24 +208,24 @@
   color: @select-placeholder-color-disabled;
   border-color: @select-border-color;
 
-  & > .@{prefix}-select-right-icon {
+  & > .@{prefix}-select__right-icon {
     color: @select-icon-color-disabled;
   }
 
-  & > .@{prefix}-select-left-icon {
+  & > .@{prefix}-select__left-icon {
     color: @select-icon-color-disabled;
   }
 
-  & > .@{prefix}-select-selectedSingle {
+  & > .@{prefix}-select__single {
     color: @select-color-disabled;
   }
 }
 
-.@{prefix}-select-popup-reference {
+.@{prefix}-select__popup-reference {
   width: 100%;
 }
 // dropdown
-.@{prefix}-select-dropdown {
+.@{prefix}-select__dropdown {
   margin: @select-dropdown-margin;
   padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
   max-height: @select-dropdown-max-height;
@@ -238,49 +238,50 @@
   }
 }
 
-.@{prefix}-select-dropdown.@{prefix}-popup {
+.@{prefix}-select__dropdown.@{prefix}-popup {
   padding: @select-dropdown-popup-padding;
 }
 // empty
-.@{prefix}-select-empty.@{prefix}-size-s {
+.@{prefix}-select__empty.@{prefix}-size-s {
   line-height: @select-height-s;
 }
 
-.@{prefix}-select-empty {
+.@{prefix}-select__empty {
   text-align: center;
   color: @select-color-empty;
   line-height: @select-height-default;
 }
 
-.@{prefix}-select-empty.@{prefix}-size-l {
+.@{prefix}-select__empty.@{prefix}-size-l {
   line-height: @select-height-l;
 }
 
 // loading tips
-.@{prefix}-select-loading-tips.@{prefix}-size-s {
+.@{prefix}-select__loading-tips.@{prefix}-size-s {
   line-height: @select-height-s;
 }
 
-.@{prefix}-select-loading-tips {
+.@{prefix}-select__loading-tips {
   text-align: center;
   line-height: @select-height-default;
+  color: @select-color-empty;
 }
 
-.@{prefix}-select-loading-tips.@{prefix}-size-l {
+.@{prefix}-select__loading-tips.@{prefix}-size-l {
   line-height: @select-height-l;
 }
 
 // option group
-.@{prefix}-option-group + .@{prefix}-option-group {
+.@{prefix}-select-option-group + .@{prefix}-select-option-group {
   padding-top: @select-optiongroup-border-padding;
   margin-top: @select-optiongroup-border-margin;
 }
 
-.@{prefix}-option-group__divider + .@{prefix}-option-group__divider {
+.@{prefix}-select-option-group__divider + .@{prefix}-select-option-group__divider {
   border-top: 1px @select-optiongroup-border-color solid;
 }
 
-.@{prefix}-option-group-header {
+.@{prefix}-select-option-group__header {
   ul&,
   & {
     color: @select-option-group-header-color;
@@ -292,12 +293,12 @@
   }
 }
 
-.@{prefix}-option-group-header.@{prefix}-size-l {
+.@{prefix}-select-option-group__header.@{prefix}-size-l {
   height: @select-option-height-l;
   padding: @select-option-padding-l;
 }
 
-.@{prefix}-option-group-header.@{prefix}-size-s {
+.@{prefix}-select-option-group__header.@{prefix}-size-s {
   height: @select-option-height-s;
   padding: @select-option-padding-s;
 }
@@ -377,6 +378,18 @@
 
   &:hover {
     background-color: @select-selected-bg-color-hover;
+  }
+}
+
+.@{prefix}-select-option.@{prefix}-select-option__hover {
+  &:not(.@{prefix}-is-disabled)&:not(.@{prefix}-is-selected) {
+    background-color: @select-option-bg-color-hover;
+    .@{prefix}-checkbox__input {
+      border-color: @select-option-checkbox-input-color-hover;
+    }
+  }
+  .@{prefix}-checkbox__label {
+    color: @select-option-checkbox-label-color-hover;
   }
 }
 
