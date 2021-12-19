@@ -48,6 +48,12 @@ spline: data
 
 ### 可展开和收起的表格
 
+- `expandedRowKeys` 用于存储展开行的值，支持非受控属性 `defaultExpandedRowKeys`。
+- `expandedRow` 用于定义展开行显示的具体内容，参数有 `{ row, rowIndex }`。
+- `expandIcon` 用于自定义展开图标，值为 true 显示默认图标，值为 false 不显示图标，值为函数则表示完全自定义图标。
+- `expandOnRowClick` 表示是否允许点击表格行时展开。
+- 展开行发生变化时会触发展开行变化事件。
+
 表格提供可收纳功能，展开后可以进一步查看详细内容。
 
 {{ expandable }}
@@ -60,11 +66,11 @@ spline: data
 
 单元格默认使用 `row[colKey]` 渲染数据内容，自定义单元格有以下 3 种方式：
 
-- 使用 `cell` 作为渲染函数，函数参数为：`cell(h, {col, colIndex, row, rowIndex})`。
+- 使用 `cell` 作为渲染函数，函数参数为：`{col, colIndex, row, rowIndex}`。
 
-- 插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。
 
-- 【不推荐使用】使用 `render` 渲染函数，函数参数为：`render(h, {col, colIndex, row, rowIndex, type})`，其中 `type` 的值为 `title`。
+- 【不推荐使用】使用 `render` 渲染函数，函数参数为：`{col, colIndex, row, rowIndex, type}`，其中 `type` 的值为 `title`。
 
 {{ custom-cell }}
 
@@ -74,9 +80,9 @@ spline: data
 
 - 使用 `title` 作为渲染函数，函数参数为：`title({ col, colIndex })`。
 
-- 插槽，使用 `title` 的值作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `title` 的值作为插槽名称。
 
-- 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({col, colIndex, row, rowIndex, type})`，其中 `type` 值为 `cell`。使用排序、过滤等功能时不能使用该方法。
+- 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({ col, colIndex, row, rowIndex, type })`，其中 `type` 值为 `cell`。使用排序、过滤等功能时不能使用该方法。
 
 {{ custom-header }}
 
@@ -125,6 +131,7 @@ spline: data
 #### 多选
 
 {{ select-multiple }}
+
 ### 可分页的表格
 
 #### 远程数据分页
