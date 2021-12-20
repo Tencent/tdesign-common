@@ -1,33 +1,37 @@
 @import "../../base.less";
 
 @import "./_var.less";
-
 .@{prefix}-checkbox {
   display: flex;
   align-items: center;
+
   &__label-wrap {
     border-bottom: 1px solid #f5f5f5;
     width: 100%;
     display: block;
     padding-bottom: 16px;
   }
+
   &__icon-right-wrap {
     position: absolute;
     right: 18px;
     top: 15px;
     display: flex;
   }
+
   &__content-wrap {
     display: flex;
     align-items: flex-start;
     padding-top: 16px;
-    background-color: #FFFFFF;
+    background-color: #fff;
     width: 100%;
     padding-left: 18px;
     position: relative;
     overflow: hidden;
   }
-  &__original-left, &__original-right {
+
+  &__original-left,
+  &__original-right {
     opacity: 0;
     position: absolute;
     left: 0;
@@ -35,6 +39,7 @@
     width: 100%;
     height: 100%;
   }
+
   &__icon-left {
     height: @checkbox-icon-height;
     width: @checkbox-icon-width;
@@ -85,11 +90,12 @@
   &__label-wrap-left {
     padding-right: 48px;
   }
+
   &__icon-disable-center {
     display: block;
     height: 15px;
     width: 15px;
-    background-color: #EEEEEE;
+    background-color: #eee;
     position: absolute;
     border-radius: 50%;
     left: 50%;
