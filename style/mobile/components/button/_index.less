@@ -102,7 +102,7 @@
     .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, @btn-border-width);
     .button-attr-color("text", color);
 
-    .button-attr-color("white-bg", background-color);
+    .button-attr-color("text-bg", background-color);
     .button-attr-color("border-gray", border, "1px solid");
 
     &.@{prefix}-button--primary {
@@ -176,7 +176,7 @@
     }
 
     &.@{prefix}-button--ghost {
-      background: none;
+      background: transparent;
       .button-attr-color("white-ghost", color, "", true);
 
       &.@{prefix}-button--primary {
