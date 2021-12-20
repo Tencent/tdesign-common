@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-weight: normal;
 
-  &-btn {
+  &__btn {
     display: inline-block;
     width: @page-btn-size;
     height: @page-btn-size;
@@ -32,18 +32,20 @@
       right: 10px;
     }
   }
+
   // 分页
-  &-pagination {
+  &__pagination {
     display: inline-block;
     position: absolute;
     bottom: 10px;
 
-    &--bullets {
+    &-dots-bar,
+    &-dots {
       left: 50%;
       transform: translateX(-50%);
     }
 
-    &--fraction {
+    &-fraction {
       height: @page-fraction-height;
       line-height: @page-fraction-height;
       bottom: 12px;
@@ -54,22 +56,27 @@
       border-radius: @page-fraction-radius;
       font-size: 12px;
     }
-    .@{prefix}-swiper-pagination-dot {
+
+    .@{prefix}-swiper-dot {
       display: inline-block;
       width: @page-dot-size;
       height: @page-dot-size;
-      background: @mask-disabled;
       border-radius: 3px;
+      background: @mask-disabled;
       margin: 0 4px;
 
-      &.active {
-        width: @page-dot-active-width;
+      &--active {
         background-color: @gray-color-1;
       }
     }
+
+    &-dots-bar .@{prefix}-swiper-dot--active {
+      width: @page-dot-active-width;
+    }
   }
+
   // 主要容器
-  &-container {
+  &__container {
     height: 100%;
     width: auto;
     position: relative;
