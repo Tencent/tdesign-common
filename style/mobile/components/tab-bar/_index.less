@@ -53,6 +53,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: @tab-bar-color;
 
     &.@{prefix}-is-checked {
 
@@ -66,21 +67,26 @@
       }
     }
 
-    &.t-size-s {
-
-      .@{tab-bar-cls}-item__text {
-        font-size: 12px;
-        line-height: 1;
-        margin-top: 2px;
+    .@{tab-bar-cls}-item__icon {
+      font-size: 24px;
+      line-height: 1;
+      .@{prefix}-badge {
+        display: block;
       }
     }
-  }
 
-  &__text {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 60%);
+    .@{tab-bar-cls}-item__text {
+      font-size: 10px;
+      line-height: 18px;
+    }
+
+    &.@{tab-bar-cls}-item--onlytext {
+      .@{tab-bar-cls}-item__text {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+      }
+    }
   }
 
   &__icon-menu {
@@ -137,10 +143,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      // &:hover {
-      //   background-color: @tab-bar-hover-bg-color;
-      // }
     }
   }
 }
