@@ -31,11 +31,9 @@
 
 ##### 多选树选择中父子项具有联动关系，当子项部分选中时，父项为半选中状态；点击半选中状态的多选框，执行全选操作；当子项全被选中时，父项为选中状态。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221142525.png" />
-  </div>
-</div>
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221142525.png" />
+
 
 ### 推荐/慎用示例
 
