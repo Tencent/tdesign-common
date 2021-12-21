@@ -100,7 +100,7 @@ spline: explain
     <a class="item" href="./steps">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-steps.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-steps-dark.png" />
-      <p class="name">Steps 步骤</p>
+      <p class="name">Steps 步骤条</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -221,7 +221,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">10</em></h3>
+<h3>数据展示<em class="tag">11</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./avatar">
@@ -265,7 +265,13 @@ spline: explain
       <p class="name">Progress 进度条</p>
     </a>
   </div>
-
+  <div class="image-wrapper">
+    <a class="item" href="./swiper">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-swiper.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-swiper-dark.png" />
+      <p class="name">Swiper 轮播框</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./table">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-table.png" />
@@ -296,7 +302,7 @@ spline: explain
   </div>
 </section>
 
-<h3>消息提醒<em class="tag">9</em></h3>
+<h3>消息提醒<em class="tag">8</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./alert">
@@ -353,13 +359,6 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-popup.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-popup-dark.png" />
       <p class="name">Popup 弹出层</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
-    <a class="item" href="./swiper">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-swiper.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-swiper-dark.png" />
-      <p class="name">Swiper 轮播框</p>
     </a>
   </div>
 </section>
