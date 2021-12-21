@@ -51,7 +51,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/steps-1@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221142854.png"/>
     <em>图示：位于页面上方</em>
   </div>
 
