@@ -16,7 +16,7 @@
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_1.png" />
 
 
-###### 与列表组合使用，可搭配多行文字，用于展示结构化的成员名称及信息，方便快速识别。
+##### 与列表组合使用，可搭配多行文字，用于展示结构化的成员名称及信息，方便快速识别。
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_2.png" />
 
@@ -38,19 +38,18 @@
 
 ### 常见用法
 
-##### 多个头像可组合展示构成头像组，叠加展示。当页面布局空间有限，超过可外显个数时候，可将重复性较高的头像信息做隐藏收起，需要时再
-让用户主动触发查看。
+##### 多个头像可组合展示构成头像组，叠加展示。当页面布局空间有限，超过可外显个数时候，可将重复性较高的头像信息做隐藏收起，需要时再让用户主动触发查看。
 
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_4.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221153426.png"/>
     <em>图示：多个头像组合</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_5.png"/>
-    <em>图示：当超过外显个数时，hover可使用popover浮窗展示完整的头像列表</em>
+    <em>图示：当超过外显个数时，可使用浮窗展示完整的头像列表</em>
   </div>
 
 
@@ -63,40 +62,39 @@
 
 ### 推荐/慎用示例
 
-##### 对于字符型头像，需要根据场景定义最大字符数，避免字符过多影响可读性，降低可识别度。。
+##### 对于字符型头像，需要根据场景定义最大字符数，避免字符过多影响可读性，降低可识别度。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_6.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221151707.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_7.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221151658.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
 <hr />
 
-##### 使用多个头像组合时，需根据场景和信息类型定义最长数量，避免数值过多影响可读性，降低使用效率。。
+##### 使用多个头像组合时，需根据场景和信息类型定义最长数量，避免数值过多影响可读性，降低使用效率。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_8.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221153409.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Avatar_9.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221153400.png"/>
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
 
 
-##### 当需要支持active点击操作时，如选择头像的场景，应调用行动按钮，且应放置在头像组合上，避免将行动按钮放置在组合下方造成点击不便，
-表意不明。
+##### 当需要点击头像进行操作时，应使用操作按钮，且放置在头像组合上，避免将行动按钮放置在组合下方造成点击不便，表意不明。
 
 
 <div class="legend">
