@@ -64,17 +64,17 @@ demo
 
 ### 与页面布局相关
 
-在页面中，日期选择器可放置于页面顶部/模块上方，与下方数据结果产生联动。
+在页面中，日期选择器可放置于页面顶部或内容模块上方，与下方数据结果产生联动。
 
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker1.png" />
-    <em>图示：位于页面/模块左上方</em>
+    <em>图示：位于页面或内容左上方</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/datepicker2.png" />
-    <em>图示：位于页面/模块右上方</em>
+    <em>图示：位于页面或内容右上方</em>
   </div>
 </div>
 
