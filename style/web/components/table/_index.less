@@ -60,6 +60,7 @@
     vertical-align: middle;
     font-weight: normal;
     overflow-wrap: break-word;
+    background-color: inherit;
 
     &:not([align]) {
       text-align: left;
@@ -92,6 +93,10 @@
     &.@{prefix}-text-ellipsis {
       .text-ellipsis();
     }
+  }
+
+  tr {
+    background-color: @table-bg;
   }
 
   // 紧凑型表格
@@ -305,6 +310,10 @@
       position: relative;
       z-index: 10;
       background-color: @bg-color-secondarycontainer;
+
+      tr {
+        background-color: @bg-color-secondarycontainer;
+      }
     }
 
     .@{prefix}-table__header {
@@ -338,8 +347,6 @@
 
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
-          background-color: @bg-color-secondarycontainer;
-
           &:last-child::after {
             content: "";
             position: absolute;
@@ -372,42 +379,9 @@
       position: relative;
     }
 
-    &.@{prefix}-table--striped {
-
-      &.@{prefix}-table__header--fixed {
-        tbody tr:nth-of-type(even) {
-
-          .@{prefix}-table__cell--fixed-left,
-          .@{prefix}-table__cell--fixed-right {
-            background-color: @table-highlight-bg-color;
-          }
-        }
-      }
-
-      &:not(.@{prefix}-table__header--fixed) {
-        tbody tr:nth-of-type(odd) {
-
-          .@{prefix}-table__cell--fixed-left,
-          .@{prefix}-table__cell--fixed-right {
-            background-color: @table-highlight-bg-color;
-          }
-        }
-      }
-    }
-
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
       z-index: 1;
-      background-color: @table-bg;
-      transition: background-color .3s ease-in;
-    }
-
-    &.@{prefix}-table--hoverable tbody tr:hover {
-
-      .@{prefix}-table__cell--fixed-left,
-      .@{prefix}-table__cell--fixed-right {
-        background-color: @table-highlight-dark-bg-color;
-      }
     }
 
     .@{prefix}-table__cell--fixed-left-last {
