@@ -96,7 +96,7 @@ demo
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_6.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211222183818.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
@@ -113,7 +113,7 @@ demo
   </div>
 
   <div class="item">
-    <img src="hhttps://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211222183640.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211222183640.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
@@ -124,6 +124,6 @@ demo
 
 | 组件名 | 何时使用                                                     |
 | :----- | :----------------------------------------------------------- |
-| [下拉菜单](./dropdown)   | 在不影响页面结构，但需要集成多种操作时；当功能模块入口较多，需收纳部分低频入口，减少对空间的占用时。 |
+| [下拉菜单](./dropdown)   | 当需要在不影响页面结构的情况下，集成多种操作时；当功能模块入口较多，需收纳部分低频入口，减少对空间的占用时。 |
 | [选择器](./select)   | 需要在有限的空间展示大量选项，用来进行数据处理时。                     |
 
