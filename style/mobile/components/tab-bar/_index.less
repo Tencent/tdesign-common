@@ -18,14 +18,26 @@
   align-items: center;
   position: relative;
 
-  &::before {
-    .hairline-top(@color: @tab-bar-border-color);
-  }
-
   .@{tab-bar-cls}-item:first-child {
     &::before {
       border: unset;
     }
+  }
+
+  &--bordered {
+    &::before {
+      .hairline-top(@color: @tab-bar-border-color);
+    }
+
+    &::after {
+      .hairline-bottom(@color: @tab-bar-border-color);
+    }
+  }
+
+  &--fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 }
 
