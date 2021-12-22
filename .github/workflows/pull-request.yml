@@ -21,4 +21,3 @@ jobs:
         run: npm install
         shell: bash
       - run: npm run lint
-      - run: npm run lint
