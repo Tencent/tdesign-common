@@ -15,7 +15,7 @@
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E9%80%89%E9%A1%B9%E5%8D%A1-2@2x.png"/>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Tabs%20a.png"/>
     <p>图示：居于下方</p>
   </div>
 
