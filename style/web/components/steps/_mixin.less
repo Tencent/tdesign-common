@@ -42,48 +42,18 @@
       &--number {
         color: @steps-item-icon-number-color-default;
         border: @step-stroke-width solid @steps-item-icon-border-color-default;
-        .@{prefix}-steps__default-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: @steps-circle-width;
-          height: @steps-circle-height;
-          text-align: center;
-          border-radius: 50%;
-          margin-top: @steps-item-default-icon-margin-top;
-          font-size: @steps-default-step-icon-font-size;
-        }
+        .default-step-icon;
       }
 
       &--finish {
         border: @step-stroke-width solid @steps-item-icon-border-color-finish;
-        .@{prefix}-steps__default-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: @steps-circle-width;
-          height: @steps-circle-height;
-          text-align: center;
-          border-radius: 50%;
-          margin-top: @steps-item-default-icon-margin-top;
-          font-size: @steps-default-step-icon-font-size;
-        }
+        .default-step-icon;
       }
 
       &--error {
         border: @step-stroke-width solid @steps-item-icon-border-color-error;
         color: @steps-item-icon-number-color-error;
-        .@{prefix}-steps__default-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: @steps-circle-width;
-          height: @steps-circle-height;
-          text-align: center;
-          border-radius: 50%;
-          margin-top: @steps-item-default-icon-margin-top;
-          font-size: @steps-default-step-icon-font-size;
-        }
+        .default-step-icon;
       }
 
       & > .t-icon {
@@ -106,6 +76,18 @@
       line-height: @steps-description-line-height;
     }
   }
+}
+
+.default-step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: @steps-circle-width;
+  height: @steps-circle-height;
+  text-align: center;
+  border-radius: 50%;
+  margin-top: @steps-item-default-icon-margin-top;
+  font-size: @steps-default-step-icon-font-size;
 }
 
 // anchor 状态
