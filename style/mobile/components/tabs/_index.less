@@ -6,16 +6,21 @@
 
 .@{prefix}-tabs {
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &__nav {
     position: relative;
     overflow: hidden;
     user-select: none;
+    white-space: nowrap;
     background-color: @tab-nav-bg-color;
 
     &-wrap {
       display: flex;
       position: relative;
+      min-width: 100%;
+      width: fit-content;
     }
 
     &-item {
@@ -28,7 +33,6 @@
       position: relative;
       padding: @tab-nav-item-padding;
       display: inline-block;
-
       &.@{prefix}-is-active {
         color: @tab-nav-active-color;
         font-family: @font-family-medium;
@@ -62,14 +66,14 @@
       transition: all .3s cubic-bezier(.645, .045, .355, 1);
     }
 
-    &--scroll {
+    &.@{prefix}-is-scrollable {
 
       .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
         margin-bottom: 10px;
       }
 
-      .@{prefix}-tabs__nav-wrap {
+      .@{prefix}-tabs__nav-container {
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
@@ -82,24 +86,15 @@
     }
   }
 
-  &--horizontal {
-    display: flex;
-
-    .@{prefix}-tabs__nav--scroll {
-
-      .@{prefix}-tabs__nav-wrap {
-        height: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        margin-right: -10px;
-      }
-
-      .@{prefix}-tabs__nav-item {
-        margin-right: 10px;
-        margin-bottom: 0;
-      }
+  &.@{prefix}-size-l &__nav {
+    .@{prefix}-is-active {
+      font-size: @tab-nav-large-font-size;
     }
+  }
 
+  &.@{prefix}-is-left,
+  &.@{prefix}-is-right {
+    flex-direction: row;
     .@{prefix}-tabs__content {
       flex: 1;
     }
@@ -134,6 +129,22 @@
           background-color: @tab-nav-bg-color;
         }
       }
+    }
+  }
+  &.@{prefix}-is-bottom {
+    flex-flow: column-reverse;
+    .@{prefix}-tabs__nav-line {
+      top: 0;
+    }
+    .@{prefix}-tabs__nav-item::after {
+      top: 0;
+    }
+  }
+  &.@{prefix}-is-right {
+    flex-flow: row-reverse;
+    .@{prefix}-tabs__nav-line {
+      left: auto;
+      right: 0;
     }
   }
 
