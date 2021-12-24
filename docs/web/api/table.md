@@ -105,7 +105,6 @@ spline: data
 - 设置表格属性 `multipleSort` 为 true。
 - 将需要排序的列属性 `sorter` 设置为 true，可以设置多个列，示例：`[{ colKey: 'date', title: '日期', sorter: true }, { colKey: 'cost', title: '花费', sorter: true }]`。
 - 设置表格排序属性 `sort` 的值为 `[{ sortBy: 'date', descending: true }, { sortBy: 'cost', descending: false }]`
-- 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
 
 {{ multiple-sort }}
 
