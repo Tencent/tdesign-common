@@ -13,7 +13,7 @@
   display: inline-block;
   z-index: 5500;
 
-  &-content {
+  &__content {
     position: relative;
     background: @popup-bg;
     box-shadow: @popup-shadow;
@@ -24,7 +24,7 @@
     transition: max-height @popup-flow-duration @anim-time-fn-easing;
   }
 
-  &-reference {
+  &__reference {
     display: inline-block;
   }
 }
@@ -48,7 +48,7 @@
 .@{prefix}-popup[data-popper-placement^="bottom"],
 .@{prefix}-popup[data-popper-placement^="top"] {
 
-  .@{prefix}-popup-content {
+  .@{prefix}-popup__content {
     margin: @popup-content-margin 0;
 
     &--arrow {
@@ -60,7 +60,7 @@
 .@{prefix}-popup[data-popper-placement^="left"],
 .@{prefix}-popup[data-popper-placement^="right"] {
 
-  .@{prefix}-popup-content {
+  .@{prefix}-popup__content {
     margin: 0 @popup-content-margin;
 
     &--arrow {

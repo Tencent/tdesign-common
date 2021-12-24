@@ -4,6 +4,7 @@
   description: "全局特性配置包含各个组件的文本语言配置及其他通用配置，可以减少重复的通用配置。",
   isComponent: true,
   tdDocTabs: [{ tab: 'demo', name: '示例' }, { tab: 'api', name: 'API' }],
+  spline: 'explain',
 }
 ---
 

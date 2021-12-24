@@ -39,6 +39,7 @@
     background-color: @search-field-input-background-color;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
     z-index: 2;
 
     &-text {
@@ -77,14 +78,22 @@
     position: absolute;
     top: 50%;
     transform: translateX(-100%) translateY(-50%);
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  &__label-icon-search {
+    font-size: 24px;
+    line-height: 24px;
   }
 
   &__icon-close {
     position: absolute;
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    font-size: 20px;
-    color: #c5c5c5;
+    right: 12px;
+    font-size: 24px;
+    line-height: 1;
   }
 
   &__cancel-button {

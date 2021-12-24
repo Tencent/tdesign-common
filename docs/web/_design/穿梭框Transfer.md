@@ -26,7 +26,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E7%A9%BF%E6%A2%AD%E6%A1%86----------1@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221145522.png" />
   </div>
 
   <div class="item"></div>
@@ -37,7 +37,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E7%A9%BF%E6%A2%AD%E6%A1%86----------2@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221145634.png" />
   </div>
 
   <div class="item"></div>
@@ -51,7 +51,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E7%A9%BF%E6%A2%AD%E6%A1%86----------3@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221145649.png" />
   </div>
 
   <div class="item"></div>
@@ -62,7 +62,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E7%A9%BF%E6%A2%AD%E6%A1%86----------4@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221145922.png" />
   </div>
 
   <div class="item"></div>
@@ -73,7 +73,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E7%A9%BF%E6%A2%AD%E6%A1%86----------5@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221150447.png" />
   </div>
 
   <div class="item"></div>
@@ -84,7 +84,7 @@ demo
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E7%A9%BF%E6%A2%AD%E6%A1%86----------6@2x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221150049.png" />
   </div>
 
   <div class="item"></div>
