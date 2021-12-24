@@ -186,7 +186,7 @@
 
   .@{prefix}-checkbox {
     &__icon-left {
-      margin-right: 0;
+      margin-right: 4px;
 
       &.@{prefix}-is-checked
       + .@{prefix}-checkbox__content-wrap
@@ -207,6 +207,7 @@
 
   .@{prefix}-radio__content-wrap {
     margin-left: 0;
+    align-items: center;
   }
 
   .@{prefix}-radio__content-inner {
@@ -235,6 +236,7 @@
 
     .@{prefix}-checkbox__content-wrap {
       overflow: hidden;
+      align-items: center;
     }
     .@{prefix}-dropdown-item__cell {
       background: none;
@@ -309,16 +311,29 @@
       &__content-wrap {
         background-color: @dropdown-menu-tree-col1-color;
         border-radius: @dropdown-item-border-radius;
-        padding-left: @spacer;
-        padding-right: @spacer;
+        // padding-left: @spacer;
+        // padding-right: @spacer;
         text-align: center;
-        height: 38px;
+        // height: 38px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      .@{prefix}-is-checked + .@{prefix}-checkbox__content-wrap {
+      .@{prefix}-checkbox__content-wrap {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .@{prefix}-checkbox__label-wrap {
+        box-sizing: border-box;
+        padding-left: @spacer;
+        padding-right: @spacer;
+        height: 38px;
+        line-height: 38px;
+      }
+
+      .@{prefix}-is-checked + .@{prefix}-checkbox__label-wrap {
         background-color: @dropdown-menu-primary-color-1;
       }
     }
