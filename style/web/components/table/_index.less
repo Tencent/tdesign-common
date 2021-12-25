@@ -19,6 +19,11 @@
   color: @table--text-color;
   background-color: @table-bg;
 
+  /** loading need to be top of fixed columns */
+  .@{prefix}-loading--full {
+    z-index: 1;
+  }
+
   .bordered {
     content: "";
     position: absolute;
