@@ -44,11 +44,16 @@
   .@{prefix}-icon {
     font-size: @font-size-l;
   }
+
   // table 标签基础样式
   table {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
+  }
+
+  .@{prefix}-text-ellipsis {
+    .text-ellipsis();
   }
 
   th,
@@ -88,10 +93,6 @@
 
     &.@{prefix}-align-center {
       text-align: center;
-    }
-
-    &.@{prefix}-text-ellipsis {
-      .text-ellipsis();
     }
   }
 
