@@ -17,6 +17,20 @@
     height: @input-height-default;
     line-height: @input-height-default;
     .input-inner-base();
+
+    &--focused {
+      border-color: @input-border-color-default-focus;
+      box-shadow: @input-box-shadow-focus;
+    }
+
+    > input {
+      flex: 1;
+      border: none;
+    }
+
+    :focus-visible {
+      outline: none;
+    }
   }
   // 底部的额外消息
   &__extra {
