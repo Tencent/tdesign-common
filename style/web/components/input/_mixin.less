@@ -88,10 +88,10 @@
   &.@{prefix}-input--@{position} {
     & > .@{prefix}-input__@{position}-icon {
       & when (@position = prefix) {
-        padding-left: @input-fix-padding;
+        padding-right: @spacer;
       }
       & when (@position = suffix) {
-        padding-right: @input-fix-padding;
+        padding-left: @spacer;
       }
     }
 
