@@ -27,6 +27,11 @@
       flex: 1;
       border: none;
       outline: none;
+      padding: 0;
+      max-width: 100%;
+      // 减去外面两个边框的宽度
+      height: @input-height-default - 2px;
+      line-height: @input-height-default - 2px;
     }
 
     :focus-visible {
