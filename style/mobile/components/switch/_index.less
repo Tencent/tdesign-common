@@ -21,10 +21,6 @@
     margin: @switch-text-margin;
     color: @switch-text-color;
     opacity: .3;
-
-    &.@{prefix}-is-disabled {
-      opacity: .16;
-    }
   }
 
   &__node {
@@ -55,8 +51,10 @@
       cursor: pointer;
       transition: left .3s ease-in-out, width .3s ease-in-out;
     }
+  }
 
-    &--checked {
+  &.@{prefix}-is-checked {
+    .@{prefix}-switch__node {
       // border-color: @switch-checked-background-color;
       background-color: @switch-checked-background-color;
 
@@ -64,14 +62,20 @@
         left: @switch-checked-translate-x;
       }
     }
+  }
 
-    &.@{prefix}-is-disabled {
+  &.@{prefix}-is-disabled {
+    .@{prefix}-switch__node {
       cursor: not-allowed;
       opacity: .6;
 
       &::after {
         cursor: not-allowed;
       }
+    }
+
+    .@{prefix}-switch__text {
+      opacity: .16;
     }
   }
 }
