@@ -9,10 +9,6 @@
 @padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
 
-.scrollbar {
-  .scrollbar();
-}
-
 .@{prefix}-table {
   width: 100%;
   font-size: @table-font-size;
@@ -38,7 +34,6 @@
 
   &__content {
     position: relative;
-    .scrollbar();
   }
 
   &__pagination {
@@ -322,15 +317,9 @@
       }
     }
 
-    .@{prefix}-table__header {
-      .scrollbar();
-    }
-
     .@{prefix}-table__body {
       overflow-y: auto;
       width: fit-content;
-
-      .scrollbar();
     }
   }
 
