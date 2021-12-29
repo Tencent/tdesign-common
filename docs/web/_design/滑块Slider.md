@@ -63,17 +63,13 @@ demo
 
 ##### 与数值输入框搭配使用时，能帮用户对数值进行精确输入、快速的调整。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Slider_3.png" />
-    <em>图示：与无按钮的数字输入框搭配</em>
-  </div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Slider_3.png" />
+<em>图示：与无按钮的数字输入框搭配</em>
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Slider_4.png" />
-    <em>图示：与带按钮的数字输入框搭配</em>
-  </div>
-</div>
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Slider_4.png" />
+<em>图示：与带按钮的数字输入框搭配</em>
+
 
 
 <hr />
@@ -81,13 +77,8 @@ demo
 
 ##### 与气泡搭配使用，能实时提示滑块所在位置的具体数值。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/5.png" />
-  </div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/5.png" />
 
-  <div class="item"></div>
-</div>
 
 
 
@@ -95,17 +86,14 @@ demo
 
 ##### 当滑动条可选的数值范围较大时，避免游标步长太短，造成视觉辨识和操作困难。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/6.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/7.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/6.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+
+    
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/7.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+
 
 <hr />
 
@@ -114,17 +102,14 @@ demo
 
 ##### 当有多个刻度区间时，避免区间数值不一致,造成滑块调整不准确。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/8.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/9.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/8.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/9.png" />
+<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+
 
 <hr />
 

@@ -17,6 +17,26 @@
     height: @input-height-default;
     line-height: @input-height-default;
     .input-inner-base();
+
+    &--focused {
+      border-color: @input-border-color-default-focus;
+      box-shadow: @input-box-shadow-focus;
+    }
+
+    > input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0;
+      max-width: 100%;
+      // 减去外面两个边框的宽度
+      height: @input-height-default - 2px;
+      line-height: @input-height-default - 2px;
+    }
+
+    :focus-visible {
+      outline: none;
+    }
   }
   // 底部的额外消息
   &__extra {
@@ -224,8 +244,6 @@
 
   & > .@{prefix}-input {
     width: 100%;
-    vertical-align: middle;
-    display: table-cell;
   }
 
   &--prepend {

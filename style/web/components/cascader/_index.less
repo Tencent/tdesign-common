@@ -138,8 +138,8 @@
       color: @cascader-item-icon-color;
       .icon-position();
 
-      &.@{prefix}-loading {
-        position: absolute;
+      .@{prefix}-icon-loading {
+        color: @cascader-highlight-color;
       }
     }
 
@@ -186,7 +186,7 @@
         overflow: hidden;
         transform: translateY(-50%);
 
-        .@{prefix}-popup-reference {
+        .@{prefix}-popup__reference {
           width: 100%;
           height: 100%;
 
@@ -285,9 +285,7 @@
 
   &.@{prefix}-size-l {
     height: @cascader-item-height-l;
-    line-height: @cascader-item-height-l;
     font-size: @cascader-font-size-l;
-    padding: @cascader-item-padding-l;
     min-height: @cascader-height-l;
 
     &.@{prefix}-cascader-item--with-icon {

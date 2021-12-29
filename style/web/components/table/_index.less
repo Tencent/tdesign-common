@@ -6,14 +6,23 @@
 
 @import "../../mixins/_scrollbar.less";
 
+@padding: @table-td-padding-vertical-top @table-td-padding-horizontal
+  @table-td-padding-vertical-bottom @table-td-padding-horizontal;
+
 .scrollbar {
   .scrollbar();
 }
 
 .@{prefix}-table {
+  width: 100%;
   font-size: @table-font-size;
   color: @table--text-color;
   background-color: @table-bg;
+
+  /** loading need to be top of fixed columns */
+  .@{prefix}-loading--full {
+    z-index: 1;
+  }
 
   .bordered {
     content: "";
@@ -27,12 +36,12 @@
     pointer-events: none;
   }
 
-  &-content {
+  &__content {
     position: relative;
     .scrollbar();
   }
 
-  &-pagination {
+  &__pagination {
     padding: @table-padding-normal  @table-padding-horizontal;
     box-sizing: border-box;
   }
@@ -40,6 +49,7 @@
   .@{prefix}-icon {
     font-size: @font-size-l;
   }
+
   // table 标签基础样式
   table {
     width: 100%;
@@ -47,17 +57,20 @@
     border-collapse: collapse;
   }
 
+  .@{prefix}-text-ellipsis {
+    .text-ellipsis();
+  }
+
   th,
   td {
     position: relative;
-    padding:
-      @table-td-padding-vertical-top @table-td-padding-horizontal
-      @table-td-padding-vertical-bottom @table-td-padding-horizontal;
+    padding: @padding;
     border-bottom: 1px solid @table-border-color;
     line-height: @table-line-height;
     vertical-align: middle;
     font-weight: normal;
     overflow-wrap: break-word;
+    background-color: inherit;
 
     &:not([align]) {
       text-align: left;
@@ -75,21 +88,21 @@
 
   td,
   th {
-    &.align-left {
+    &.@{prefix}-align-left {
       text-align: left;
     }
 
-    &.align-right {
+    &.@{prefix}-align-right {
       text-align: right;
     }
 
-    &.align-center {
+    &.@{prefix}-align-center {
       text-align: center;
     }
+  }
 
-    &.text-ellipsis {
-      .text-ellipsis();
-    }
+  tr {
+    background-color: @table-bg;
   }
 
   // 紧凑型表格
@@ -109,8 +122,8 @@
   }
 
   // 展开/收起列
-  .@{prefix}-table-expandable-icon-cell,
-  .@{prefix}-table-selection-cell {
+  .@{prefix}-table__expandable-icon-cell,
+  .@{prefix}-table__selection-cell {
     padding: 0;
   }
 
@@ -128,15 +141,15 @@
 
   // 边框线表格
   &--bordered {
-    .@{prefix}-table-content {
+    .@{prefix}-table__content {
       border-left: 1px solid @table-border-color;
     }
-    .@{prefix}-table--empty {
+    .@{prefix}-table__empty {
       border-left: 1px  solid  @table-border-color;
       border-right: 1px  solid  @table-border-color;
     }
     // 表格边框优化，适配固定列/固定表头场景
-    .@{prefix}-table-content {
+    .@{prefix}-table__content {
       border: 1px solid @table-border-color;
       border-bottom: 0;
       border-radius: @border-radius;
@@ -191,7 +204,7 @@
       border-bottom: 1px solid @table-border-color;
     }
 
-    .@{prefix}-table-pagination {
+    .@{prefix}-table__pagination {
       border: 1px solid @table-border-color;
       border-top: 0;
     }
@@ -199,7 +212,7 @@
     // 固定表头表格底部边框线显示优化
     &.@{prefix}-table__header--fixed {
 
-      .@{prefix}-table-content {
+      .@{prefix}-table__content {
         border-bottom: 1px solid @table-border-color;
 
         tr {
@@ -272,7 +285,7 @@
   }
 
   // 文本顶端对齐
-  &.@{prefix}-table-valign__top {
+  &.@{prefix}-table--align-top {
     tbody {
       td {
         vertical-align: top;
@@ -295,7 +308,6 @@
     th,
     td {
       overflow-wrap: break-word;
-      white-space: nowrap;
     }
 
     .@{prefix}-table__header {
@@ -303,6 +315,10 @@
       position: relative;
       z-index: 10;
       background-color: @bg-color-secondarycontainer;
+
+      tr {
+        background-color: @bg-color-secondarycontainer;
+      }
     }
 
     .@{prefix}-table__header {
@@ -336,8 +352,6 @@
 
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
-          background-color: @bg-color-secondarycontainer;
-
           &:last-child::after {
             content: "";
             position: absolute;
@@ -355,7 +369,7 @@
       }
     }
 
-    .@{prefix}-table-content {
+    .@{prefix}-table__content {
       overflow: auto hidden;
     }
 
@@ -370,42 +384,9 @@
       position: relative;
     }
 
-    &.@{prefix}-table--striped {
-
-      &.@{prefix}-table__header--fixed {
-        tbody tr:nth-of-type(even) {
-
-          .@{prefix}-table__cell--fixed-left,
-          .@{prefix}-table__cell--fixed-right {
-            background-color: @table-highlight-bg-color;
-          }
-        }
-      }
-
-      &:not(.@{prefix}-table__header--fixed) {
-        tbody tr:nth-of-type(odd) {
-
-          .@{prefix}-table__cell--fixed-left,
-          .@{prefix}-table__cell--fixed-right {
-            background-color: @table-highlight-bg-color;
-          }
-        }
-      }
-    }
-
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
       z-index: 1;
-      background-color: @table-bg;
-      transition: background-color .3s ease-in;
-    }
-
-    &.@{prefix}-table--hoverable tbody tr:hover {
-
-      .@{prefix}-table__cell--fixed-left,
-      .@{prefix}-table__cell--fixed-right {
-        background-color: @table-highlight-dark-bg-color;
-      }
     }
 
     .@{prefix}-table__cell--fixed-left-last {
@@ -450,14 +431,14 @@
 
     &.@{prefix}-table--has-fixed {
       // 可向左滚动时，左边显示固定列显示阴影，右边同理
-      .@{prefix}-table-content--scrollable-to-left {
+      .@{prefix}-table__content--scrollable-to-left {
 
         .@{prefix}-table__cell--fixed-left-last::after {
           box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
         }
       }
 
-      .@{prefix}-table-content--scrollable-to-right {
+      .@{prefix}-table__content--scrollable-to-right {
 
         .@{prefix}-table__cell--fixed-right-first::after {
           box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
@@ -557,7 +538,7 @@
   color: @text-color-disabled;
 }
 
-.@{prefix}-table-expanded-cell {
+.@{prefix}-table__expanded-cell {
   padding-left: 45px;
 }
 
@@ -570,7 +551,7 @@
 }
 
 // 默认空表格
-.@{prefix}-table--empty {
+.@{prefix}-table__empty {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -579,8 +560,8 @@
   border-bottom: 1px solid @table-border-color;
 }
 
-.@{prefix}-table-filter-icon,
-.@{prefix}-table-sort-icon {
+.@{prefix}-table__filter-icon,
+.@{prefix}-table__sort-icon {
   margin-left: 8px;
   background-color: transparent;
   display: inline-block;
@@ -591,16 +572,16 @@
   }
 }
 
-.@{prefix}-table-sort-icon {
+.@{prefix}-table__sort-icon {
   position: absolute;
 }
 
-.@{prefix}-table-filter-pop {
+.@{prefix}-table__filter-pop {
 
-  .@{prefix}-table-filter-pop-content {
+  .@{prefix}-table__filter-pop-content {
     margin: -8px;
 
-    .@{prefix}-table-filter-pop-content__inner {
+    .@{prefix}-table__filter-pop-content-inner {
       padding: 16px;
     }
 
@@ -615,7 +596,7 @@
       line-height: 34px;
     }
 
-    .@{prefix}-table-filter-pop-content__button {
+    .@{prefix}-table__filter-pop-content-button {
       border-top: 1px solid @table-border-color;
       padding: 16px;
 
@@ -626,17 +607,17 @@
   }
 }
 
-.@{prefix}-table-sort-icon-active {
+.@{prefix}-table__sort-icon--active {
   color: @table-icon-active-color;
 }
 
-.@{prefix}-table-double-icons {
+.@{prefix}-table__double-icons {
   display: inline-grid;
   vertical-align: middle;
   width: 14px;
 }
 
-.@{prefix}-table-expand-box {
+.@{prefix}-table__expand-box {
   padding: 10px 8px;
   display: inline-grid;
   vertical-align: middle;
@@ -658,6 +639,36 @@
   }
 }
 
-.t-table-expandable-icon-cell + .t-table__cell--selectable[key="row-select"] {
+.@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key="row-select"] {
   padding-left: 10px;
+}
+
+.@{prefix}-table__filter--bottom-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+  border-top: 1px solid @table-border-color;
+  > .@{prefix}-button + .@{prefix}-button {
+    margin-left: 8px;
+  }
+}
+
+.@{prefix}-table td.@{prefix}-table__row--full {
+  padding: 0;
+}
+
+.@{prefix}-table__row-filter-inner {
+  position: sticky;
+  left: 0;
+  padding: @padding;
+  text-align: center;
+}
+
+.@{prefix}-table__filter-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > .@{prefix}-button {
+    margin-left: 8px;
+  }
 }

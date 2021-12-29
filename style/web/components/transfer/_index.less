@@ -15,7 +15,7 @@
   color: @transfer-font-color;
   max-height: 100%;
 
-  &-list {
+  &__list {
     position: relative;
     display: inline-block;
     min-width: @transfer-common-width;
@@ -31,7 +31,7 @@
       border-radius: @transfer-border-radius;
     }
 
-    &__header {
+    &-header {
       position: absolute;
       display: flex;
       justify-content: space-between;
@@ -42,7 +42,7 @@
       padding: @transfer-list-header-padding;
       margin: @transfer-list-header-margin;
 
-      & + :not(.@{prefix}-transfer-list-with-search) {
+      & + :not(.@{prefix}-transfer__list--with-search) {
         border-top: @transfer-border;
       }
 
@@ -67,25 +67,18 @@
       }
     }
 
-    &__body {
+    &-body {
       position: relative;
       height: 100%;
       padding: @transfer-list-body-padding;
     }
 
-    &-with-search {
+    &--with-search {
       padding-top: @transfer-list-with-search-padding-top;
       border-top: @transfer-list-with-search-border;
     }
 
-    &-search-wrapper {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      padding: @transfer-list-search-wrapper-margin;
-    }
-
-    &__content {
+    &-content {
       height: 100%;
       width: 100%;
       overflow: auto;
@@ -113,7 +106,7 @@
       }
     }
 
-    &__item {
+    &-item {
       padding: @transfer-list-item-padding;
       display: flex;
       cursor: pointer;
@@ -132,16 +125,16 @@
       }
     }
 
-    &__item:hover {
+    &-item:hover {
       background: @transfer-bg-hover;
       transition: background-color @anim-duration-base @anim-time-fn-easing;
     }
 
-    &__item.@{prefix}-is-checked {
+    &-item.@{prefix}-is-checked {
       background: @transfer-bg-checked;
     }
 
-    &__wrapper {
+    &-wrapper {
       position: relative;
       height: 100%;
       width: 100%;
@@ -149,14 +142,14 @@
       padding: @transfer-list-wrapper-padding;
     }
 
-    &__pagination {
+    &-pagination {
       height: @transfer-list-pagination-height;
       vertical-align: middle;
       padding: @transfer-list-pagination-padding;
       line-height: @transfer-list-pagination-line-height;
     }
 
-    &__footer {
+    &-footer {
       position: absolute;
       left: 0;
       bottom: 0;
@@ -165,7 +158,7 @@
     }
   }
 
-  &-operations {
+  &__operations {
     display: inline-flex;
     flex-direction: column;
     margin: @transfer-operations-margin;
@@ -197,7 +190,7 @@
     }
   }
 
-  &-empty {
+  &__empty {
     text-align: center;
     position: absolute;
     color: @text-color-placeholder;
@@ -205,81 +198,88 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  &__search-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: @transfer-list-search-wrapper-margin;
+  }
 }
 
 // 只有search时候的高度
-.@{prefix}-transfer-search {
+.@{prefix}-transfer__search {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-with-search-height;
   }
 }
 
 // 与Tree组件结合使用时的高度
-.@{prefix}-transfer-with-tree {
+.@{prefix}-transfer--with-tree {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: auto;
   }
 }
 
 // 只有翻页时候的高度
-.@{prefix}-transfer-pagination {
+.@{prefix}-transfer__pagination {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-with-pagination-height;
     padding-bottom: @transfer-with-pagination-padding-bottom;
   }
 }
 
 // 只有footer时候的高度
-.@{prefix}-transfer-footer {
+.@{prefix}-transfer__footer {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-with-footer-height;
     padding-bottom: @transfer-with-footer-padding-bottom;
   }
 }
 
 // 同时有翻页和footer时候的高度
-.@{prefix}-transfer-pagination.@{prefix}-transfer-footer {
+.@{prefix}-transfer__pagination.@{prefix}-transfer__footer {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-with-footer-both-height;
     padding-bottom: @transfer-with-pagination-footer-padding-bottom;
   }
 }
 
 // 同时有search和footer时候的高度
-.@{prefix}-transfer-search.@{prefix}-transfer-footer {
+.@{prefix}-transfer__search.@{prefix}-transfer__footer {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-with-footer-both-height;
     padding-bottom: @transfer-with-search-footer-padding-bottom;
   }
 }
 
 // 同时有search和pagination时候的高度
-.@{prefix}-transfer-search.@{prefix}-transfer-pagination {
+.@{prefix}-transfer__search.@{prefix}-transfer__pagination {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-with-both-height;
     padding-bottom: @transfer-with-search-pagination-padding-bottom;
   }
 }
 
 // 同时有search和pagination和footer
-.@{prefix}-transfer-search.@{prefix}-transfer-footer.@{prefix}-transfer-pagination {
+.@{prefix}-transfer__search.@{prefix}-transfer__footer.@{prefix}-transfer__pagination {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-with-all-height;
     padding-bottom: @transfer-with-all-padding-bottom;
   }
 }
 
-.@{prefix}-transfer-wrapper {
+.@{prefix}-transfer__wrapper {
 
-  .@{prefix}-transfer-list {
+  .@{prefix}-transfer__list {
     height: @transfer-wrap-height;
     width: @transfer-wrap-width;
     overflow: scroll;

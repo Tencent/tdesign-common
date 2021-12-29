@@ -1,10 +1,11 @@
 ---
 title: 暗色模式
 description: 组件库提供了暗色模式，以适配在操作系统暗色模式下的展示体验，可以点击官网右上角开关切换整体浅色与暗色模式体验。
+spline: design-mode
 ---
 
 ### 如何使用
-给 `body` 增加 `theme-mode` 属性来控制浅色/暗色展示：
+给 `html` 增加 `theme-mode` 属性来控制浅色/暗色展示：
 
 ``` javascript
 // 设置暗色模式

@@ -5,14 +5,15 @@
 @import "../../mixins/_index.less";
 
 .@{prefix}-input {
-
+  background-color: #fff;
   .@{prefix}-cell__title {
     width: @input-label-width;
     flex: none;
     margin-right: @spacer-4;
+    display: flex;
   }
 
-  &-wrap {
+  &__wrap {
     display: flex;
     align-items: center;
     width: 100%;
@@ -43,7 +44,7 @@
     }
   }
 
-  &--control {
+  &__control {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -74,8 +75,12 @@
       cursor: default;
     }
 
-    &__right {
+    &--right {
       text-align: right;
+    }
+
+    &--center {
+      text-align: center;
     }
   }
 
@@ -125,8 +130,12 @@
 .@{prefix}-input__error {
   align-items: flex-start;
 
+  .@{prefix}-cell__note {
+    flex-direction: column;
+  }
+
   .@{prefix}-input {
-    &--control {
+    &__control {
       color: @input-error-text-color;
 
       &::placeholder {
@@ -139,6 +148,7 @@
       padding-top: @spacer-1;
       font-size: @input-error-msg-font-size;
       line-height: 20px;
+      width: 100%;
     }
   }
 }
