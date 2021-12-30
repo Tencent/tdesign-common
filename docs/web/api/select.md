@@ -41,6 +41,10 @@ spline: form
 
 {{ custom-options }}
 
+### 自定义面板的选择器
+
+{{ panel }}
+
 ### 自定义选中项的选择器
 
 {{ custom-selected }}
