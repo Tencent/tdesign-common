@@ -35,8 +35,7 @@ export default function xhr({
   xhr.onerror = (event: ProgressEvent) => onError({ event, file });
 
   if (xhr.upload) {
-    // eslint-disable-next-line func-names
-    xhr.upload.onprogress = function (event: ProgressEvent) {
+    xhr.upload.onprogress = (event: ProgressEvent) => {
       let percent = 0;
       if (event.total > 0) {
         percent = Math.round((event.loaded / event.total) * 100);
@@ -45,8 +44,8 @@ export default function xhr({
     };
   }
 
-  // eslint-disable-next-line consistent-return,func-names
-  xhr.onload = function (event: ProgressEvent) {
+  // eslint-disable-next-line consistent-return
+  xhr.onload = (event: ProgressEvent) => {
     let response;
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
