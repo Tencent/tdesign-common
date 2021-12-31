@@ -10,7 +10,6 @@
 
 .@{prefix}-cascader {
   position: relative;
-  width: @cascader-input-width;
   border: @cascader-border;
   border-radius: @border-radius;
   padding: @cascader-input-padding;
@@ -31,6 +30,10 @@
     & > .@{prefix}-icon {
       color: @cascader-icon-color;
     }
+  }
+
+  &__popup {
+    width: 100%;
   }
 
   &__placeholder {
