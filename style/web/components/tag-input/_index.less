@@ -14,4 +14,39 @@
   &.@{prefix}-input {
     overflow: hidden;
   }
+
+  .@{prefix}-icon-close-circle-filled {
+    display: none;
+  }
+}
+
+.@{prefix}-tag-input:hover {
+  .@{prefix}-icon-close-circle-filled {
+    display: inline-block;
+    cursor: pointer;
+  }
+}
+
+.@{prefix}-tag-input__prefix {
+  width: max-content;
+}
+
+/** 光标动画 */
+@keyframes t-tag-cursor-show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.@{prefix}-tag-input__cursor {
+  display: inline-block;
+  border-left: 1px solid black;
+  height: 17px;
+  margin-right: 4px;
+  opacity: 1;
+  animation: t-tag-cursor-show .8s ease infinite;
 }
