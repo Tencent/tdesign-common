@@ -109,6 +109,19 @@
     margin-top: @cascader-item-margin-top;
     transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
+    &.@{prefix}-size-s {
+      height: @cascader-item-height-s;
+      line-height: @cascader-item-height-s;
+      font-size: @cascader-font-size-s;
+    }
+
+    &.@{prefix}-size-l {
+      height: @cascader-item-height-l;
+      line-height: @cascader-item-height-l;
+      font-size: @cascader-font-size-l;
+      padding: @cascader-item-padding-l;
+    }
+
     &.@{prefix}-is-disabled {
       color: @cascader-item-color-disabled;
       background-color: transparent;
@@ -206,7 +219,7 @@
       }
     }
 
-    &:hover {
+    &:hover:not(.@{prefix}-is-expanded) {
       background: @cascader-item-color-hover;
       cursor: pointer;
     }
@@ -307,8 +320,8 @@
   }
 
   &.@{prefix}-size-s {
-    height: @cascader-item-height-s;
-    line-height: @cascader-item-height-s;
+    height: @cascader-height-s;
+    line-height: calc(@cascader-height-s - 2px);
     font-size: @cascader-font-size-s;
     min-height: @cascader-height-s;
 
