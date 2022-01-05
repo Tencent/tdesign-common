@@ -1,30 +1,29 @@
 @import "./_var.less";
 
 .avatar-group-offset-right(@offset) {
-    margin-right: @offset;
+  margin-right: @offset;
+}
+
+.avatar-group-offset-left(@offset) {
+  margin-left: @offset;
+}
+
+.generate-z-index(@n, @i: 1) when (@i =< @n) {
+
+  & .@{prefix}-avatar:nth-child(@{i}) {
+    z-index: (@avatar-group-init-zIndex - @i);
   }
-  
-  .avatar-group-offset-left(@offset) {
-    margin-left: @offset;
+  .generate-z-index(@n, (@i + 1));
+}
+
+.avatar-group-size--left() {
+  .avatar-group-offset-left(@avatar-group-offset-medium);
+
+  &.@{prefix}-size-s {
+    .avatar-group-offset-left(@avatar-group-offset-small);
   }
-  
-  .generate-z-index(@n, @i: 1) when (@i =< @n) {
-  
-    & .@{prefix}-avatar:nth-child(@{i}) {
-      z-index: (@avatar-group-init-zIndex - @i);
-    }
-    .generate-z-index(@n, (@i + 1));
+
+  &.@{prefix}-size-l {
+    .avatar-group-offset-left(@avatar-group-offset-large);
   }
-  
-  .avatar-group-size--left() {
-    .avatar-group-offset-left(@avatar-group-offset-medium);
-  
-    &.@{prefix}-size-s {
-      .avatar-group-offset-left(@avatar-group-offset-small);
-    }
-  
-    &.@{prefix}-size-l {
-      .avatar-group-offset-left(@avatar-group-offset-large);
-    }
-  }
-  
+}
