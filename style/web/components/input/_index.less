@@ -11,32 +11,28 @@
   width: 100%;
   position: relative;
   box-sizing: border-box;
+  height: @input-height-default;
+  line-height: @input-height-default;
+  .input-base();
+
+  &--focused {
+    border-color: @input-border-color-default-focus;
+    box-shadow: @input-box-shadow-focus;
+  }
+
+  :focus-visible {
+    outline: none;
+  }
 
   // 真正的输入框
   &__inner {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0;
+    max-width: 100%;
     height: @input-height-default;
     line-height: @input-height-default;
-    .input-inner-base();
-
-    &--focused {
-      border-color: @input-border-color-default-focus;
-      box-shadow: @input-box-shadow-focus;
-    }
-
-    > input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 0;
-      max-width: 100%;
-      // 减去外面两个边框的宽度
-      height: @input-height-default - 2px;
-      line-height: @input-height-default - 2px;
-    }
-
-    :focus-visible {
-      outline: none;
-    }
   }
   // 底部的额外消息
   &__extra {
@@ -78,20 +74,22 @@
 
   // 输入框大小
   &.@{prefix}-size-l {
+    height: @input-height-l;
+    line-height: @input-height-l;
+    font-size: @input-font-size-l;
 
-    & > .@{prefix}-input__inner {
+    &.@{prefix}-input__inner {
       height: @input-height-l;
-      line-height: @input-height-l;
-      font-size: @input-font-size-l;
     }
   }
 
   &.@{prefix}-size-s {
+    height: @input-height-s;
+    line-height: @input-height-s;
+    font-size: @input-font-size-s;
 
-    & > .@{prefix}-input__inner {
+    &.@{prefix}-input__inner {
       height: @input-height-s;
-      line-height: @input-height-s;
-      font-size: @input-font-size-s;
     }
   }
 
@@ -136,23 +134,14 @@
   align-items: stretch;
 
   .@{prefix}-input {
-
-    .@{prefix}-input__inner {
-      border-radius: 0;
-    }
+    border-radius: 0;
 
     &:first-child {
-
-      .@{prefix}-input__inner {
-        border-radius: @input-border-radius 0 0 @input-border-radius;
-      }
+      border-radius: @input-border-radius 0 0 @input-border-radius;
     }
 
     &:last-child {
-
-      .@{prefix}-input__inner {
-        border-radius: 0 @border-radius @border-radius 0;
-      }
+      border-radius: 0 @border-radius @border-radius 0;
     }
   }
 
@@ -197,23 +186,14 @@
     }
 
     .@{prefix}-input {
+      border-radius: @input-border-radius;
 
-      .@{prefix}-input__inner {
+      &:first-child {
         border-radius: @input-border-radius;
       }
 
-      &:first-child {
-
-        .@{prefix}-input__inner {
-          border-radius: @input-border-radius;
-        }
-      }
-
       &:last-child {
-
-        .@{prefix}-input__inner {
-          border-radius: @input-border-radius;
-        }
+        border-radius: @input-border-radius;
       }
     }
   }
@@ -249,20 +229,14 @@
   &--prepend {
 
     & > .@{prefix}-input {
-
-      .@{prefix}-input__inner {
-        border-radius: 0 @input-border-radius @input-border-radius 0;
-      }
+      border-radius: 0 @input-border-radius @input-border-radius 0;
     }
   }
 
   &--append {
 
     & > .@{prefix}-input {
-
-      .@{prefix}-input__inner {
-        border-radius: @input-border-radius 0 0 @input-border-radius;
-      }
+      border-radius: @input-border-radius 0 0 @input-border-radius;
     }
   }
 
