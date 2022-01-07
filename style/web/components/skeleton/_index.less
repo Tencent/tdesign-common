@@ -6,19 +6,18 @@
 @import "./_mixin.less";
 
 .@{prefix}-skeleton {
-  // width: 100%;
 
-  &-row {
+  &__row {
     display: flex;
     margin-bottom: 10px;
     align-items: center;
   }
 
-  &-row:only-child {
+  &__row:only-child {
     margin-bottom: 0;
   }
 
-  &-col {
+  &__col {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,29 +33,29 @@
     }
   }
 
-  &-type {
-    &__text {
+  &--type {
+    &-text {
       // flex-grow: 1;
       width: 100%;
       height: @skeleton-type-text-height;
       border-radius: @border-radius-square;
     }
 
-    &__rect {
+    &-rect {
       width: @rect-width-default;
       height: @rect-height-default;
       border-radius: @border-radius-square;
     }
 
-    &__circle {
+    &-circle {
       width: @base-height-default;
       height: @base-height-default;
       border-radius: @border-radius-circle;
     }
   }
 
-  &-animation {
-    &__gradient {
+  &--animation {
+    &-gradient {
       position: relative;
       overflow-x: hidden;
       &::after {
@@ -76,7 +75,7 @@
       }
     }
 
-    &__flashed {
+    &-flashed {
       animation: t-skeleton--flashed 2s linear 2s infinite;
     }
   }
