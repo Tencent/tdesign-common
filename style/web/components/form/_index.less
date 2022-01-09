@@ -82,69 +82,21 @@
     .@{prefix}-form__item {
       margin: 0 @form-item-margin-right-inline 0 0;
     }
-
-    // 输入框状态
-    .input-status(warning);
-    .input-status(error);
   }
 
   &__controls.@{prefix}-is-success {
-
-    .@{prefix}-form__status {
-
-      .@{prefix}-icon {
-        color: @form-color-success;
-      }
-    }
-
-    .@{prefix}-input__extra {
-      color: @form-color-success;
-    }
-  }
-
-  &__controls.@{prefix}-form--success-border {
-    // 输入框状态
+    .form-status(success);
     .input-status(success);
   }
 
   &__controls.@{prefix}-is-error {
-
-    .@{prefix}-input {
-      border-color: @@borderColor;
-      @borderColor: "form-color-error";
-    }
-
-    .@{prefix}-input__extra {
-      color: @@fontColor;
-      @fontColor: "form-color-error";
-    }
-
-    .@{prefix}-form__status {
-
-      .@{prefix}-icon {
-        color: @form-color-error;
-      }
-    }
+    .form-status(error);
+    .input-status(error);
   }
 
   &__controls.@{prefix}-is-warning {
-
-    .@{prefix}-input {
-      border-color: @@borderColor;
-      @borderColor: "form-color-warning";
-    }
-
-    .@{prefix}-input__extra {
-      color: @@fontColor;
-      @fontColor: "form-color-warning";
-    }
-
-    .@{prefix}-form__status {
-
-      .@{prefix}-icon {
-        color: @form-color-warning;
-      }
-    }
+    .form-status(warning);
+    .input-status(warning);
   }
 
   &__help {
