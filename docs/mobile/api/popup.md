@@ -10,31 +10,31 @@ toc: false
 
 使用场景：常用于轻提示场景
 
-{{ placementCenter }}
+{{ placement-center }}
 
 ### 底部弹出
 
 使用场景：常用于较重要的操作反馈提示场景或不打断主任务的临时操作
 
-{{ placementBottom }}
+{{ placement-bottom }}
 
 ### 顶部弹出
 
 使用场景：常用于及时反馈
 
-{{ placementTop }}
+{{ placement-top }}
 
 ### 左侧弹出
 
 使用场景：常用于页面导航场景
 
-{{ placementLeft }}
+{{ placement-left }}
 
 ### 右侧弹出
 
 使用场景：常用于页面导航场景
 
-{{ placementRight }}
+{{ placement-right }}
 
 ### 自定义动画
 

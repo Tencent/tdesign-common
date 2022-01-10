@@ -10,7 +10,7 @@ toc: false
 
 使用场景：在表单中需要用户输入数量时可以使用
 
-{{ index }}
+{{ base }}
 
 ### 禁止点击
 
@@ -18,7 +18,7 @@ toc: false
 
 ### 禁止输入
 
-{{ disableInput }}
+{{ disable-input }}
 
 ### 绑定事件
 
