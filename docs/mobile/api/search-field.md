@@ -10,8 +10,8 @@ toc: false
 
 使用场景：常用于全局内容搜索，位于搜索内容上方
 
-{{ index }}
+{{ base }}
 
 ### 自定义 Icon 颜色
 
-{{ iconColor }}
+{{ color }}

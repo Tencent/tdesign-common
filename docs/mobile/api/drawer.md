@@ -8,8 +8,8 @@ toc: false
 
 ### 基础用法
 
-{{ index }}
+{{ base }}
 
 ### 带图标抽屉
 
-{{ iconDrawer }}
+{{ icon }}

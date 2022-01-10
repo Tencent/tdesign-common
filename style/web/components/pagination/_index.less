@@ -84,8 +84,6 @@
     border-radius: @pagination-border-radius-base;
     cursor: pointer;
     background-color: @pagination-bg-color-default;
-    transition: border @anim-duration-base linear,
-      background-color @anim-duration-base linear;
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
@@ -173,7 +171,7 @@
     height: @pagination-height-default;
     width: @pagination-input-width;
 
-    .@{prefix}-input__inner {
+    .@{prefix}-input {
       width: calc(100% - @spacer);
     }
   }

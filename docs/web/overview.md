@@ -70,7 +70,7 @@ spline: explain
     <a class="item" href="./components/breadcrumb">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-breadcrumb.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-breadcrumb-dark.png" />
-      <p class="name">Breadcumb 面包屑</p>
+      <p class="name">Breadcrumb 面包屑</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -351,7 +351,7 @@ spline: explain
     <a class="item" href="./components/popconfirm">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-popconfirm.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-popconfirm-dark.png" />
-      <p class="name">Popconform 气泡提示框</p>
+      <p class="name">Popconfirm 气泡提示框</p>
     </a>
   </div>
   <div class="image-wrapper">

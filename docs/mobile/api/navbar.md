@@ -9,11 +9,11 @@ toc: false
 
 ### 基础导航栏
 
-{{ index }}
+{{ base }}
 
 ### 带图标导航栏
 
-{{ index-icon }}
+{{ icon }}
 
 ### 事件反馈
 
