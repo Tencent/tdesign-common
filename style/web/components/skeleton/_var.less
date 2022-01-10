@@ -17,8 +17,20 @@
 @rect-height-default: 88px;
 
 // 基础变量
-@border-radius-square: 4px;
+@border-radius-square: 3px;
 @border-radius-circle: 50%;
 
 // skeleton 变量
 @skeleton-type-text-height: @font-size-l;
+
+// skeleton 动画
+:root,
+:root[theme-mode="light"] {
+  --skeleton-animation-gradient: rgba(0, 0, 0, .04);
+}
+:root[theme-mode="dark"] {
+  --skeleton-animation-gradient: rgba(255, 255, 255, .06);
+}
+
+@skeleton-animation-gradient: var(--skeleton-animation-gradient);
+@skeleton-animation-flashed: rgba(90%, 90%, 90%, 0.3);
