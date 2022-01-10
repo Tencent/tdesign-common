@@ -10,9 +10,9 @@ toc: false
 
 使用场景：当选择项简单易理解时使用
 
-{{ index }}
+{{ base }}
 
-### 和checkboxGroup一起使用多选框
+### 和CheckboxGroup一起使用多选框
 
 使用场景：当选择项较为复杂难理解，或需提前告知用户选择后果时使用
 

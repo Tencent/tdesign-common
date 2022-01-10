@@ -10,7 +10,7 @@ toc: false
 
 使用场景：简单的星级评定，不涉及具体分数
 
-{{ index }}
+{{ base }}
 
 ### 带描述评分
 
@@ -20,7 +20,7 @@ toc: false
 
 ### 允许半选
 
-{{ allowHalf }}
+{{ allow-half }}
 
 ### 自定义数量
 
