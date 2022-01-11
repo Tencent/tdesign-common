@@ -27,11 +27,14 @@ spline: data
 
 ### 可折叠过多标签的标签输入框
 
-- `min-collapsed-num` 用于控制超出这个数量的标签折叠省略显示。
+- `mincollapsedNum` 用于控制超出这个数量的标签折叠省略显示。
 - `collapsedItems` 用于自定义折叠标签呈现方式。
 
 {{ collapsed }}
 
 ### 可自定义标签的标签输入框
+
+- `tag` 用于定义单个标签的内容
+- `valueDispaly` 用于完全自定义全量标签内容
 
 {{ custom-tag }}
