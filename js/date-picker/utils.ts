@@ -1,88 +1,5 @@
-import chunk from 'lodash/chunk';
-import { TdDatePickerProps } from '../../../date-picker';
-import { TdCSSProperties } from '../../../date-picker/interface';
-
-/**
- * next Month
- * @param { Date } date
- * @returns {Date}
- */
-export const nextMonth = (date: Date) => {
-  const isPassYear = date.getMonth() === 11;
-  const newMonth = isPassYear ? 0 : date.getMonth() + 1;
-  const year = isPassYear ? date.getFullYear() + 1 : date.getFullYear();
-  return new Date(year, newMonth, 1);
-};
-
-/**
- * prev Month
- * @param {Date} date
- * @returns {Date}
- */
-export const prevMonth = (date: Date) => {
-  const passYear = date.getMonth() === 0;
-  const newMonth = passYear ? 11 : date.getMonth() - 1;
-  const year = passYear ? date.getFullYear() - 1 : date.getFullYear();
-  return new Date(year, newMonth, 1);
-};
-
-/**
- * Empty value
- * @param mixedVar
- * @returns {Boolean}
- * @example
- * // example 1: empty(null)
- * // returns 1: true
- * // example 2: empty(undefined)
- * // returns 2: true
- * // example 3: empty([])
- * // returns 3: true
- * // example 4: empty({})
- * // returns 4: true
- * // example 5: empty({'fn' : function () {} })
- * // returns 5: false
- */
-export function empty(mixedVar: any): mixedVar is undefined | null | false | '' | {} {
-  let undef: undefined;
-  const emptyValues = [undef, null, false, ''];
-  for (let i = 0, len = emptyValues.length; i < len; i++) {
-    if (mixedVar === emptyValues[i]) {
-      return true;
-    }
-  }
-
-  if (typeof mixedVar === 'object') {
-    return Object.keys(mixedVar).length < 1;
-  }
-
-  return false;
-}
-
-/**
- * To Dashed from Camel Case
- * @param {String} strCamelCase
- * @returns {string}
- * @example
- * toDash('strCamelCase') === 'str-camel-case'
- */
-export function toDash(strCamelCase: string): string {
-  return String(strCamelCase)
-    .split(/(?=[A-Z])/)
-    .join('-')
-    .toLowerCase();
-}
-
-export function setStyles(el: HTMLElement | SVGElement, styles: TdCSSProperties) {
-  Object.entries(styles).forEach(([prop, val = null]) => {
-    if (empty(val)) {
-      el.style.removeProperty(prop);
-      return;
-    }
-    const [value, pri = ''] = String(val).split('!');
-
-    el.style.setProperty(toDash(prop), value, pri);
-  });
-}
+import chunk from "lodash/chunk";
+import { TdDatePickerProps } from "../../../date-picker";
 
 /**
  * 首字母大写
@@ -145,12 +62,20 @@ function isSameDate(date1: Date, date2: Date) {
  * @returns {Boolean}
  */
 function isBetween(
-  value: { getFullYear: () => number; getMonth: () => number; getDate: () => number },
-  { start, end }: { start: any; end: any },
+  value: {
+    getFullYear: () => number;
+    getMonth: () => number;
+    getDate: () => number;
+  },
+  { start, end }: { start: any; end: any }
 ): boolean {
   const date = new Date(value.getFullYear(), value.getMonth(), value.getDate());
 
-  const startTime = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const startTime = new Date(
+    start.getFullYear(),
+    start.getMonth(),
+    start.getDate()
+  );
   const endTime = new Date(end.getFullYear(), end.getMonth(), end.getDate());
 
   return startTime <= date && endTime >= date;
@@ -178,7 +103,7 @@ function compareAsc(date1: { getTime: () => any }, date2: Date): number {
  * @param {String} type 比较类型，默认比较到『日』 date|month|year
  * @returns {Boolean}
  */
-export function isSame(date1: Date, date2: Date, type = 'date'): boolean {
+export function isSame(date1: Date, date2: Date, type = "date"): boolean {
   const func = {
     isSameYear,
     isSameMonth,
@@ -188,7 +113,9 @@ export function isSame(date1: Date, date2: Date, type = 'date'): boolean {
 }
 
 export function outOfRanges(d: Date, min: any, max: any) {
-  return (min && compareAsc(d, min) === -1) || (max && compareAsc(d, max) === 1);
+  return (
+    (min && compareAsc(d, min) === -1) || (max && compareAsc(d, max) === 1)
+  );
 }
 
 /**
@@ -216,7 +143,7 @@ export function getDateObj(date: Date) {
     hours: tempDate.getHours(),
     minutes: tempDate.getMinutes(),
     seconds: tempDate.getSeconds(),
-    meridiem: tempDate.getHours() > 11 ? 'PM' : 'AM',
+    meridiem: tempDate.getHours() > 11 ? "PM" : "AM",
   };
 }
 
@@ -228,7 +155,12 @@ export function getDateObj(date: Date) {
  * @param {Number} sec 秒
  * @returns {Date} 一个新的date
  */
-export function setDateTime(d: Date, hour: number, min: number, sec: number): Date {
+export function setDateTime(
+  d: Date,
+  hour: number,
+  min: number,
+  sec: number
+): Date {
   // eslint-disable-next-line
   const { year, month, date } = getDateObj(d);
   return new Date(year, month, date, hour, min, sec, 0);
@@ -269,7 +201,7 @@ export function addMonth(date: Date, num: number): Date {
 
 export interface OptionsType {
   firstDayOfWeek: number;
-  disableDate: TdDatePickerProps['disableDate'];
+  disableDate: TdDatePickerProps["disableDate"];
   minDate: Date;
   maxDate: Date;
   monthLocal?: string[];
@@ -277,12 +209,7 @@ export interface OptionsType {
 
 export function getWeeks(
   { year, month }: { year: number; month: number },
-  {
-    firstDayOfWeek,
-    disableDate = () => false,
-    minDate,
-    maxDate,
-  }: OptionsType,
+  { firstDayOfWeek, disableDate = () => false, minDate, maxDate }: OptionsType
 ) {
   const prependDay = getFirstDayOfMonth({ year, month });
   const appendDay = getLastDayOfMonth({ year, month });
@@ -296,11 +223,13 @@ export function getWeeks(
       text: i,
       active: false,
       value: currentDay,
-      disabled: (typeof disableDate === 'function' && disableDate(currentDay)) || outOfRanges(currentDay, minDate, maxDate),
+      disabled:
+        (typeof disableDate === "function" && disableDate(currentDay)) ||
+        outOfRanges(currentDay, minDate, maxDate),
       now: isSame(today, currentDay),
       firstDayOfMonth: i === 1,
       lastDayOfMonth: i === maxDays,
-      type: 'current-month',
+      type: "current-month",
     });
   }
 
@@ -311,9 +240,11 @@ export function getWeeks(
         text: prependDay.getDate().toString(),
         active: false,
         value: new Date(prependDay),
-        disabled: (typeof disableDate === 'function' && disableDate(prependDay)) || outOfRanges(prependDay, minDate, maxDate),
+        disabled:
+          (typeof disableDate === "function" && disableDate(prependDay)) ||
+          outOfRanges(prependDay, minDate, maxDate),
         additional: true, // 非当前月
-        type: 'prev-month',
+        type: "prev-month",
       });
       prependDay.setDate(prependDay.getDate() - 1);
       if (prependDay.getDay() === Math.abs(firstDayOfWeek + 6) % 7) break;
@@ -327,9 +258,11 @@ export function getWeeks(
       text: appendDay.getDate(),
       active: false,
       value: new Date(appendDay),
-      disabled: (typeof disableDate === 'function' && disableDate(appendDay)) || outOfRanges(appendDay, minDate, maxDate),
+      disabled:
+        (typeof disableDate === "function" && disableDate(appendDay)) ||
+        outOfRanges(appendDay, minDate, maxDate),
       additional: true, // 非当前月
-      type: 'next-month',
+      type: "next-month",
     });
   }
 
@@ -338,11 +271,7 @@ export function getWeeks(
 
 export function getYears(
   year: number,
-  {
-    disableDate = () => false,
-    minDate,
-    maxDate,
-  }: OptionsType,
+  { disableDate = () => false, minDate, maxDate }: OptionsType
 ) {
   const startYear = parseInt((year / 10).toString(), 10) * 10;
   const endYear = startYear + 9;
@@ -359,13 +288,14 @@ export function getYears(
 
     for (let j = 0; j < 12; j++) {
       const d = new Date(i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledMonth += 1;
+      if (typeof disableDate === "function" && disableDate(d))
+        disabledMonth += 1;
       if (outOfRanges(d, minDate, maxDate)) outOfRangeMonth += 1;
     }
 
     yearArr.push({
       value: date,
-      now: isSame(date, today, 'year'),
+      now: isSame(date, today, "year"),
       disabled: disabledMonth === 12 || outOfRangeMonth === 12,
       active: false,
       text: `${date.getFullYear()}`,
@@ -376,9 +306,7 @@ export function getYears(
 }
 
 export function getMonths(year: number, params: OptionsType) {
-  const {
-    disableDate = () => false, minDate, maxDate, monthLocal,
-  } = params;
+  const { disableDate = () => false, minDate, maxDate, monthLocal } = params;
   const MonthArr = [];
   const today = getToday();
   for (let i = 0; i <= 11; i++) {
@@ -389,13 +317,13 @@ export function getMonths(year: number, params: OptionsType) {
 
     for (let j = 1; j <= daysInMonth; j++) {
       const d = new Date(year, i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledDay += 1;
+      if (typeof disableDate === "function" && disableDate(d)) disabledDay += 1;
       if (outOfRanges(d, minDate, maxDate)) outOfRangeDay += 1;
     }
 
     MonthArr.push({
       value: date,
-      now: isSame(date, today, 'month'),
+      now: isSame(date, today, "month"),
       disabled: disabledDay === daysInMonth || outOfRangeDay === daysInMonth,
       active: false,
       text: monthLocal[date.getMonth()], // `${date.getMonth() + 1} ${monthText || '月'}`,
@@ -414,27 +342,31 @@ interface DateTime {
 }
 
 export function flagActive(data: any[], { ...args }: any) {
-  const { start, end, type = 'date' } = args;
+  const { start, end, type = "date" } = args;
 
   if (!end) {
-    return data.map((row: any[]) => row.map((item: DateTime) => {
-      const _item = item;
-      _item.active = isSame(item.value, start, type);
-      return _item;
-    }));
+    return data.map((row: any[]) =>
+      row.map((item: DateTime) => {
+        const _item = item;
+        _item.active = isSame(item.value, start, type);
+        return _item;
+      })
+    );
   }
 
-  return data.map((row: any[]) => row.map((item: DateTime) => {
-    const _item = item;
-    const date = item.value;
-    const isStart = isSame(start, date, type);
-    const isEnd = isSame(end, date, type);
-    _item.active = isStart || isEnd;
-    _item.highlight = isBetween(date, { start, end });
-    _item.startOfRange = isStart;
-    _item.endOfRange = isEnd;
-    return _item;
-  }));
+  return data.map((row: any[]) =>
+    row.map((item: DateTime) => {
+      const _item = item;
+      const date = item.value;
+      const isStart = isSame(start, date, type);
+      const isEnd = isSame(end, date, type);
+      _item.active = isStart || isEnd;
+      _item.highlight = isBetween(date, { start, end });
+      _item.startOfRange = isStart;
+      _item.endOfRange = isEnd;
+      return _item;
+    })
+  );
 }
 
 // extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
