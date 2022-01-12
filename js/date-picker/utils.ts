@@ -1,6 +1,4 @@
 import chunk from 'lodash/chunk';
-import { TdDatePickerProps } from '../../../date-picker';
-import { TdCSSProperties } from '../../../date-picker/interface';
 
 /**
  * 首字母大写
@@ -147,7 +145,6 @@ export function getDateObj(date: Date) {
  * @returns {Date} 一个新的date
  */
 export function setDateTime(d: Date, hour: number, min: number, sec: number): Date {
-  // eslint-disable-next-line
   const { year, month, date } = getDateObj(d);
   return new Date(year, month, date, hour, min, sec, 0);
 }
@@ -163,7 +160,6 @@ export function subtractMonth(date: Date, num: any): Date {
   const newDate = new Date(date);
 
   let _num = num;
-  // eslint-disable-next-line no-plusplus
   while (_num--) {
     newDate.setDate(0);
   }
@@ -185,9 +181,14 @@ export function addMonth(date: Date, num: number): Date {
   return newDate;
 }
 
+
+export type DateValue = string | Date | Array<DateValue>;
+export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string };
+export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
+
 export interface OptionsType {
   firstDayOfWeek: number;
-  disableDate: TdDatePickerProps['disableDate'];
+  disableDate: DisableDate;
   minDate: Date;
   maxDate: Date;
   monthLocal?: string[];
