@@ -160,6 +160,7 @@ export function subtractMonth(date: Date, num: any): Date {
   const newDate = new Date(date);
 
   let _num = num;
+  // eslint-disable-next-line no-plusplus
   while (_num--) {
     newDate.setDate(0);
   }
@@ -181,9 +182,8 @@ export function addMonth(date: Date, num: number): Date {
   return newDate;
 }
 
-
 export type DateValue = string | Date | Array<DateValue>;
-export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string };
+export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string }
 export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
 
 export interface OptionsType {
