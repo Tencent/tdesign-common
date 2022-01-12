@@ -62,5 +62,6 @@ module.exports = {
         checkLoops: false,
       },
     ],
+    'comma-dangle': 0
   },
 };
