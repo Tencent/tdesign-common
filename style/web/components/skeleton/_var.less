@@ -26,11 +26,12 @@
 // skeleton 动画
 :root,
 :root[theme-mode="light"] {
-  --skeleton-animation-gradient: rgba(0, 0, 0, .04);
+  --skeleton-animation-gradient: rgba(0, 0, 0, 4%);
 }
+
 :root[theme-mode="dark"] {
-  --skeleton-animation-gradient: rgba(255, 255, 255, .06);
+  --skeleton-animation-gradient: rgba(255, 255, 255, 6%);
 }
 
 @skeleton-animation-gradient: var(--skeleton-animation-gradient);
-@skeleton-animation-flashed: rgba(90%, 90%, 90%, 0.3);
+@skeleton-animation-flashed: rgba(90%, 90%, 90%, .3);
