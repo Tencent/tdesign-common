@@ -1,88 +1,4 @@
 import chunk from 'lodash/chunk';
-import { TdDatePickerProps } from '../../../date-picker';
-import { TdCSSProperties } from '../../../date-picker/interface';
-
-/**
- * next Month
- * @param { Date } date
- * @returns {Date}
- */
-export const nextMonth = (date: Date) => {
-  const isPassYear = date.getMonth() === 11;
-  const newMonth = isPassYear ? 0 : date.getMonth() + 1;
-  const year = isPassYear ? date.getFullYear() + 1 : date.getFullYear();
-  return new Date(year, newMonth, 1);
-};
-
-/**
- * prev Month
- * @param {Date} date
- * @returns {Date}
- */
-export const prevMonth = (date: Date) => {
-  const passYear = date.getMonth() === 0;
-  const newMonth = passYear ? 11 : date.getMonth() - 1;
-  const year = passYear ? date.getFullYear() - 1 : date.getFullYear();
-  return new Date(year, newMonth, 1);
-};
-
-/**
- * Empty value
- * @param mixedVar
- * @returns {Boolean}
- * @example
- * // example 1: empty(null)
- * // returns 1: true
- * // example 2: empty(undefined)
- * // returns 2: true
- * // example 3: empty([])
- * // returns 3: true
- * // example 4: empty({})
- * // returns 4: true
- * // example 5: empty({'fn' : function () {} })
- * // returns 5: false
- */
-export function empty(mixedVar: any): mixedVar is undefined | null | false | '' | {} {
-  let undef: undefined;
-  const emptyValues = [undef, null, false, ''];
-  for (let i = 0, len = emptyValues.length; i < len; i++) {
-    if (mixedVar === emptyValues[i]) {
-      return true;
-    }
-  }
-
-  if (typeof mixedVar === 'object') {
-    return Object.keys(mixedVar).length < 1;
-  }
-
-  return false;
-}
-
-/**
- * To Dashed from Camel Case
- * @param {String} strCamelCase
- * @returns {string}
- * @example
- * toDash('strCamelCase') === 'str-camel-case'
- */
-export function toDash(strCamelCase: string): string {
-  return String(strCamelCase)
-    .split(/(?=[A-Z])/)
-    .join('-')
-    .toLowerCase();
-}
-
-export function setStyles(el: HTMLElement | SVGElement, styles: TdCSSProperties) {
-  Object.entries(styles).forEach(([prop, val = null]) => {
-    if (empty(val)) {
-      el.style.removeProperty(prop);
-      return;
-    }
-    const [value, pri = ''] = String(val).split('!');
-
-    el.style.setProperty(toDash(prop), value, pri);
-  });
-}
 
 /**
  * 首字母大写
@@ -229,7 +145,6 @@ export function getDateObj(date: Date) {
  * @returns {Date} 一个新的date
  */
 export function setDateTime(d: Date, hour: number, min: number, sec: number): Date {
-  // eslint-disable-next-line
   const { year, month, date } = getDateObj(d);
   return new Date(year, month, date, hour, min, sec, 0);
 }
@@ -267,9 +182,13 @@ export function addMonth(date: Date, num: number): Date {
   return newDate;
 }
 
+export type DateValue = string | Date | Array<DateValue>;
+export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string }
+export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
+
 export interface OptionsType {
   firstDayOfWeek: number;
-  disableDate: TdDatePickerProps['disableDate'];
+  disableDate: DisableDate;
   minDate: Date;
   maxDate: Date;
   monthLocal?: string[];
