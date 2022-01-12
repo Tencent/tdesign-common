@@ -6,14 +6,23 @@
 
 @import "../../mixins/_scrollbar.less";
 
+@padding: @table-td-padding-vertical-top @table-td-padding-horizontal
+  @table-td-padding-vertical-bottom @table-td-padding-horizontal;
+
 .scrollbar {
   .scrollbar();
 }
 
 .@{prefix}-table {
+  width: 100%;
   font-size: @table-font-size;
   color: @table--text-color;
   background-color: @table-bg;
+
+  /** loading need to be top of fixed columns */
+  .@{prefix}-loading--full {
+    z-index: 1;
+  }
 
   .bordered {
     content: "";
@@ -40,6 +49,7 @@
   .@{prefix}-icon {
     font-size: @font-size-l;
   }
+
   // table 标签基础样式
   table {
     width: 100%;
@@ -47,17 +57,20 @@
     border-collapse: collapse;
   }
 
+  .@{prefix}-text-ellipsis {
+    .text-ellipsis();
+  }
+
   th,
   td {
     position: relative;
-    padding:
-      @table-td-padding-vertical-top @table-td-padding-horizontal
-      @table-td-padding-vertical-bottom @table-td-padding-horizontal;
+    padding: @padding;
     border-bottom: 1px solid @table-border-color;
     line-height: @table-line-height;
     vertical-align: middle;
     font-weight: normal;
     overflow-wrap: break-word;
+    background-color: inherit;
 
     &:not([align]) {
       text-align: left;
@@ -86,10 +99,10 @@
     &.@{prefix}-align-center {
       text-align: center;
     }
+  }
 
-    &.@{prefix}-text-ellipsis {
-      .text-ellipsis();
-    }
+  tr {
+    background-color: @table-bg;
   }
 
   // 紧凑型表格
@@ -295,7 +308,6 @@
     th,
     td {
       overflow-wrap: break-word;
-      white-space: nowrap;
     }
 
     .@{prefix}-table__header {
@@ -303,6 +315,10 @@
       position: relative;
       z-index: 10;
       background-color: @bg-color-secondarycontainer;
+
+      tr {
+        background-color: @bg-color-secondarycontainer;
+      }
     }
 
     .@{prefix}-table__header {
@@ -336,8 +352,6 @@
 
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
-          background-color: @bg-color-secondarycontainer;
-
           &:last-child::after {
             content: "";
             position: absolute;
@@ -370,42 +384,9 @@
       position: relative;
     }
 
-    &.@{prefix}-table--striped {
-
-      &.@{prefix}-table__header--fixed {
-        tbody tr:nth-of-type(even) {
-
-          .@{prefix}-table__cell--fixed-left,
-          .@{prefix}-table__cell--fixed-right {
-            background-color: @table-highlight-bg-color;
-          }
-        }
-      }
-
-      &:not(.@{prefix}-table__header--fixed) {
-        tbody tr:nth-of-type(odd) {
-
-          .@{prefix}-table__cell--fixed-left,
-          .@{prefix}-table__cell--fixed-right {
-            background-color: @table-highlight-bg-color;
-          }
-        }
-      }
-    }
-
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
       z-index: 1;
-      background-color: @table-bg;
-      transition: background-color .3s ease-in;
-    }
-
-    &.@{prefix}-table--hoverable tbody tr:hover {
-
-      .@{prefix}-table__cell--fixed-left,
-      .@{prefix}-table__cell--fixed-right {
-        background-color: @table-highlight-dark-bg-color;
-      }
     }
 
     .@{prefix}-table__cell--fixed-left-last {
@@ -658,6 +639,36 @@
   }
 }
 
-.t-table-expandable-icon-cell + .t-table__cell--selectable[key="row-select"] {
+.@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key="row-select"] {
   padding-left: 10px;
+}
+
+.@{prefix}-table__filter--bottom-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+  border-top: 1px solid @table-border-color;
+  > .@{prefix}-button + .@{prefix}-button {
+    margin-left: 8px;
+  }
+}
+
+.@{prefix}-table td.@{prefix}-table__row--full {
+  padding: 0;
+}
+
+.@{prefix}-table__row-filter-inner {
+  position: sticky;
+  left: 0;
+  padding: @padding;
+  text-align: center;
+}
+
+.@{prefix}-table__filter-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > .@{prefix}-button {
+    margin-left: 8px;
+  }
 }

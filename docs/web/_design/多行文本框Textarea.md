@@ -107,7 +107,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Textarea_9.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221144002.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
@@ -123,5 +123,5 @@
 
 | 组件名 | 何时使用                                                     |
 | :----- | :----------------------------------------------------------- |
-| [多行文本](./textarea) 当需要输入的字段数量较多或换行次数较多时；当用户需要以复制粘贴方式输入大段字符串时。  |
-| [输入框](./input)   需要用户录入信息时；需要对用户录入的进行进行即时的反馈时。 |
+| [多行文本](./textarea) | 当需要输入的字段数量较多或换行次数较多时；当用户需要以复制粘贴方式输入大段字符串时。  |
+| [输入框](./input) |  需要用户录入信息时；需要对用户录入的进行进行即时的反馈时。 |

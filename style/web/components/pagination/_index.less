@@ -23,7 +23,7 @@
   }
 
   // 选择框
-  & .@{prefix}-select-wrap {
+  & .@{prefix}-select__wrap {
     width: auto;
   }
 
@@ -84,8 +84,6 @@
     border-radius: @pagination-border-radius-base;
     cursor: pointer;
     background-color: @pagination-bg-color-default;
-    transition: border @anim-duration-base linear,
-      background-color @anim-duration-base linear;
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
@@ -167,11 +165,15 @@
     font-size: @pagination-font-default;
   }
 
-  .@{prefix}-input {
+  .@{prefix}-input-number {
     margin-left: @pagination-input-margin;
     margin-right: @pagination-input-margin;
     height: @pagination-height-default;
     width: @pagination-input-width;
+
+    .@{prefix}-input {
+      width: calc(100% - @spacer);
+    }
   }
 
   // 迷你尺寸

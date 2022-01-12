@@ -13,33 +13,29 @@
   max-width: @tooltip-max-width;
   word-break: break-word;
 
-  &:not(.@{prefix}-tooltip-light) {
+  &:not(.@{prefix}-tooltip--light) {
     color: @tooltip-text-color;
   }
 
-  &-default {
+  &--default {
     background: @tooltip-bg;
     margin: @tooltip-default-margin;
   }
 
-  &-primary {
+  &--primary {
     background: @tooltip-bg-primary;
   }
 
-  &-success {
+  &--success {
     background: @tooltip-bg-success;
   }
 
-  &-danger {
+  &--danger {
     background: @tooltip-bg-danger;
   }
 
-  &-warning {
+  &--warning {
     background: @tooltip-bg-warning;
-  }
-
-  &-reference {
-    margin: @tooltip-reference-margin;
   }
 
   .@{prefix}-popup__arrow {

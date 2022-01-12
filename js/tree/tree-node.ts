@@ -854,7 +854,7 @@ export class TreeNode {
   public updateChecked(): void {
     const { tree } = this;
     this.vmCheckable = this.isCheckable();
-    if (this.vmCheckable) {
+    if (this.vmCheckable && !this.disabled) {
       this.checked = this.isChecked();
       if (this.checked) {
         tree.checkedMap.set(this.value, true);

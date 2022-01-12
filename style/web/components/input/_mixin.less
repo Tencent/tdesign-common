@@ -1,4 +1,4 @@
-.input-inner-base() {
+.input-base() {
   border-width: 1px;
   border-style: solid;
   border-radius: @input-border-radius;
@@ -11,6 +11,9 @@
   width: 100%;
   box-sizing: border-box;
   transition: @input-inner-transition;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 
   &::placeholder {
     color: @input-placeholder-color;
@@ -30,15 +33,15 @@
 .input-disabled {
 
   &.@{prefix}-input.@{prefix}-is-disabled {
+    color: @input-text-color-disabled;
+    background-color: @input-bg-color-disabled;
 
-    & > .@{prefix}-input__inner {
-      color: @input-text-color-disabled;
-      background-color: @input-bg-color-disabled;
+    &:hover {
+      border-color: @input-border-color-default;
+    }
+
+    .@{prefix}-input__inner {
       cursor: not-allowed;
-
-      &:hover {
-        border-color: @input-border-color-default;
-      }
     }
 
     & > .@{prefix}-input__prefix,
@@ -54,15 +57,17 @@
 .input-status(@status) {
 
   &.@{prefix}-is-@{status} {
+    border-color: @@borderColor;
+    @borderColor: "input-border-color-@{status}";
 
-    & > .@{prefix}-input__inner {
-      border-color: @@borderColor;
+    &:focus {
+      box-shadow: 0 0 0 2px @@boxShadowColor;
+      @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+    }
 
-      &:focus {
-        box-shadow: 0 0 0 2px @@boxShadowColor;
-        @boxShadowColor: "input-box-shadow-color-@{status}-focus";
-      }
-      @borderColor: "input-border-color-@{status}";
+    &.@{prefix}-input--focused {
+      box-shadow: 0 0 0 2px @@boxShadowColor;
+      @boxShadowColor: "input-box-shadow-color-@{status}-focus";
     }
 
     & > .@{prefix}-input__extra {
@@ -75,31 +80,26 @@
 .input-fix-position(@position) {
 
   &.@{prefix}-input--@{position} {
-
-    & > .@{prefix}-input__inner {
+    & > .@{prefix}-input__@{position}-icon {
       & when (@position = prefix) {
-        padding-left: @input-fix-padding;
+        padding-right: @spacer;
       }
       & when (@position = suffix) {
-        padding-right: @input-fix-padding;
+        padding-left: @spacer;
       }
     }
 
     & > .@{prefix}-input__@{position} {
-      position: absolute;
-      top: 0;
       z-index: 2;
       height: 100%;
       text-align: center;
       display: flex;
       align-items: center;
+      font-size: @font-size-base;
+    }
+
+    & > .@{prefix}-input__@{position}-icon {
       font-size: @font-size-l;
-      & when (@position = prefix) {
-        left: @input-fix-position;
-      }
-      & when (@position = suffix) {
-        right: @input-fix-position;
-      }
     }
   }
 }

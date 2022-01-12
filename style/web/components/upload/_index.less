@@ -23,6 +23,9 @@
   .@{prefix}-is-bordered {
     border: @upload-card-content-border;
   }
+  .@{prefix}-upload__trigger {
+    display: inline-block;
+  }
 
   .@{prefix}-icon {
     font-size: @upload-icon-size;
@@ -146,6 +149,7 @@
       float: left;
       cursor: pointer;
       box-sizing: border-box;
+      list-style: none;
 
       &::after {
         content: "";
@@ -531,25 +535,28 @@
     margin-top: @upload-flow-table-margin-top;
     border-collapse: collapse;
 
+    > thead > tr,
+    > tbody > tr,
+    > tfoot > tr,
     > tr {
       border-top: @upload-flow-table-tr-border-top;
-    }
 
-    > tr > th {
-      color: @upload-flow-table-th-color;
-      font-weight: @upload-flow-table-th-font-weight;
-      border: @upload-flow-table-th-border;
-      text-align: @upload-flow-table-th-text-align;
-      background-color: @upload-flow-table-th-bg-color;
-    }
+      > th {
+        color: @upload-flow-table-th-color;
+        font-weight: @upload-flow-table-th-font-weight;
+        border: @upload-flow-table-th-border;
+        text-align: @upload-flow-table-th-text-align;
+        background-color: @upload-flow-table-th-bg-color;
+      }
 
-    > tr > td {
-      color: @upload-flow-table-td-color;
-    }
+      > td {
+        color: @upload-flow-table-td-color;
+      }
 
-    > tr > td,
-    > tr > th {
-      padding: @upload-flow-table-td-th-padding;
+      > td,
+      > th {
+        padding: @upload-flow-table-td-th-padding;
+      }
     }
   }
 
