@@ -9,13 +9,9 @@
   align-items: center;
 
   .@{prefix}-avatar {
-    border: 2px solid @avatar-border-color;
-  }
-
-  .@{prefix}-avatar:last-child {
-    border: 2px solid rgba(255, 255, 255, 100%);
-    background-color: @gray-color-3;
-    color: rgba(0, 0, 0, 26%);
+    &__inner {
+      border: 2px solid @avatar-border-color;
+    }
   }
 
   &.@{prefix}-avatar--offset-right {

@@ -6,29 +6,41 @@
 
 .@{prefix}-avatar {
   position: relative;
-  display: inline-flex;
-  background: @avatar-bg-color;
-  color: @avatar-text-color;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: middle;
-  justify-content: center;
-  align-items: center;
-  box-sizing: content-box;
+  display: inline-block;
+
+  &__inner {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: @avatar-bg-color;
+    box-sizing: content-box;
+    color: @avatar-text-color;
+    white-space: nowrap;
+    overflow: hidden;
+  }
   .avatar-size(@avatar-size-medium,@avatar-font-medium,@avatar-icon-medium);
 
   &--circle {
-    border-radius: @avatar-border-radius-cicle;
+    .@{prefix}-avatar__inner {
+      border-radius: @avatar-border-radius-cicle;
+    }
   }
 
   &--round {
-    border-radius: @avatar-border-radius-round;
+    .@{prefix}-avatar__inner {
+      border-radius: @avatar-border-radius-round;
+    }
   }
 
   &__badge {
     position: absolute;
-    top: -30px;
-    right: -4px;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
   }
 
   &.@{prefix}-size-s {
