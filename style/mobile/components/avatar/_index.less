@@ -28,6 +28,25 @@
     .@{prefix}-avatar__inner {
       border-radius: @avatar-border-radius-cicle;
     }
+
+    .@{prefix}-avatar__badge {
+      top: @avatar-size-medium * 14.6%;
+      right: @avatar-size-medium * 14.6%;
+    }
+
+    &.@{prefix}-size-s {
+      .@{prefix}-avatar__badge {
+        top: @avatar-size-small * 14.6%;
+        right: @avatar-size-small * 14.6%;
+      }
+    }
+
+    &.@{prefix}-size-l {
+      .@{prefix}-avatar__badge {
+        top: @avatar-size-large * 14.6%;
+        right: @avatar-size-large * 14.6%;
+      }
+    }
   }
 
   &--round {
