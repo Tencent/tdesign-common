@@ -1,0 +1,41 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-avatar {
+  position: relative;
+  display: inline-flex;
+  background: @avatar-bg-color;
+  color: @avatar-text-color;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  .avatar-size(@avatar-size-medium,@avatar-font-medium,@avatar-icon-medium);
+
+  &--circle {
+    border-radius: @avatar-border-radius-cicle;
+  }
+
+  &--round {
+    border-radius: @avatar-border-radius-round;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -30px;
+    right: -4px;
+  }
+
+  &.@{prefix}-size-s {
+    .avatar-size(@avatar-size-small,@avatar-font-small,@avatar-icon-small);
+  }
+
+  &.@{prefix}-size-l {
+    .avatar-size(@avatar-size-large,@avatar-font-large,@avatar-icon-large);
+  }
+}

@@ -49,5 +49,19 @@ module.exports = {
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-named-as-default': 0,
+    'no-plusplus': [
+      'error',
+      {
+        allowForLoopAfterthoughts: true,
+      },
+    ],
+    'no-underscore-dangle': 0,
+    'no-constant-condition': [
+      'error',
+      {
+        checkLoops: false,
+      },
+    ],
+    'comma-dangle': 0
   },
 };

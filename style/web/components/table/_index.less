@@ -475,7 +475,7 @@
   // 表格行可以拖拽
   &.@{prefix}-table__row--draggable {
     tbody {
-      &.dragging {
+      &.@{prefix}-table__body--dragging {
         tr {
           transition: transform .2s;
           transform: translateY(0);
@@ -653,14 +653,9 @@
   }
 }
 
-.@{prefix}-table td.@{prefix}-table__row--full {
-  padding: 0;
-}
-
 .@{prefix}-table__row-filter-inner {
   position: sticky;
   left: 0;
-  padding: @padding;
   text-align: center;
 }
 

@@ -6,11 +6,13 @@ spline: navigation
 ---
 
 ### 基础面包屑
+
 适用于广泛的基础用法，系统拥有超过两级以上的层级结构，用于切换向上任意层级的内容。
 
 {{ base }}
 
 ### 带图标的面包屑
+
 可自定义每项内容，统一图标加文字，图标放在文字前面。
 
 {{ icon }}
@@ -26,8 +28,8 @@ spline: navigation
 
 {{ dropdown }} -->
 
-### 使用 option 配置面包屑
+### 使用 options 配置面包屑
 
 使用 `options` 属性配置面包屑内容。
 
-{{ option }}
+{{ options }}

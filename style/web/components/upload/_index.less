@@ -23,6 +23,9 @@
   .@{prefix}-is-bordered {
     border: @upload-card-content-border;
   }
+  .@{prefix}-upload__trigger {
+    display: inline-block;
+  }
 
   .@{prefix}-icon {
     font-size: @upload-icon-size;
@@ -425,7 +428,6 @@
   align-items: center;
 
   .@{prefix}-upload__trigger {
-    display: inline-block;
     margin-left: @upload-single-file-input-trigger-margin-left;
 
     .@{prefix}-button {
@@ -441,11 +443,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-}
-.@{prefix}-upload__single-file {
-  .@{prefix}-upload__trigger {
-    display: inline-block;
   }
 }
 
