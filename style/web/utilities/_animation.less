@@ -32,14 +32,24 @@
   }
   // 以下代码主要为了添加闭合标签
   @{anim} {
-
   }
   @keyf: ~"@keyframes @{name}  { from";
   @anim: ~" }  ";
 }
+
 .anim-g-attr-change-from (@name, @value) {
   @{name}: @value;
 }
 .anim-g-attr-change-to (@name, @value) {
   @{name}: @value;
+}
+
+@keyframes t-zoom-out {
+  from {
+    transform: scale(.2);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }

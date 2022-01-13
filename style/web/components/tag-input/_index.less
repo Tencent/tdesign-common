@@ -1,0 +1,79 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../utilities/_animation.less";
+
+.@{prefix}-tag-input {
+
+  .@{prefix}-tag {
+    margin-right: 4px;
+    animation: t-zoom-out .1s ease-in-out;
+  }
+
+  &.@{prefix}-input {
+    overflow: hidden;
+  }
+
+  .@{prefix}-input__inner {
+    min-width: 80px;
+    width: auto;
+  }
+}
+
+.@{prefix}-tag-input__suffix-clear {
+  cursor: pointer;
+}
+
+// 标签数量超出时，换行显示
+.@{prefix}-tag-input--break-line {
+
+  &.@{prefix}-input {
+    display: block;
+    height: auto;
+
+    &.t-input--prefix > .t-input__prefix {
+      display: inline-block;
+      text-align: left;
+    }
+
+    .@{prefix}-tag-input__suffix-clear {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+    }
+  }
+}
+
+// .@{prefix}-tag-input:hover {
+//   .@{prefix}-icon-close-circle-filled {
+//     display: inline-block;
+//     cursor: pointer;
+//   }
+// }
+
+.@{prefix}-tag-input__prefix {
+  width: max-content;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/** 光标动画 */
+@keyframes t-tag-cursor-show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.@{prefix}-tag-input__cursor {
+  display: inline-block;
+  border-left: 1px solid black;
+  height: 17px;
+  margin-right: 4px;
+  opacity: 1;
+  animation: t-tag-cursor-show .8s ease infinite;
+}

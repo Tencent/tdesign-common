@@ -99,21 +99,21 @@
   .@{prefix}-input__prefix,
   .@{prefix}-input__suffix {
 
-    .@{prefix}-icon {
+    > .@{prefix}-icon {
       font-size: @input-inner-icon-font-size;
     }
   }
 
   .@{prefix}-input__prefix {
 
-    .@{prefix}-icon {
+    > .@{prefix}-icon {
       color: @input-inner-prefix-icon-color;
     }
   }
 
   .@{prefix}-input__suffix {
 
-    .@{prefix}-icon {
+    > .@{prefix}-icon {
       color: @input-inner-suffix-icon-color;
     }
   }
@@ -124,7 +124,7 @@
     .@{prefix}-input__prefix,
     .@{prefix}-input__suffix:not(.@{prefix}-input__clear) {
       // 除了clear icon其他都在focus时变色
-      .@{prefix}-icon {
+      > .@{prefix}-icon {
         color: @input-border-color-default-focus;
       }
     }
@@ -252,4 +252,28 @@
       }
     }
   }
+}
+
+.@{prefix}-input__wrap {
+  width: 100%;
+}
+
+.@{prefix}-input__tips {
+  line-height: 24px;
+}
+
+.@{prefix}-input__tips--normal {
+  color: @input-text-color-tips;
+}
+
+.@{prefix}-input__tips--success {
+  color: @input-text-color-success;
+}
+
+.@{prefix}-input__tips--warning {
+  color: @input-text-color-warning;
+}
+
+.@{prefix}-input__tips--error {
+  color: @input-text-color-error;
 }
