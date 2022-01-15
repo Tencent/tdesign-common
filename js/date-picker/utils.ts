@@ -324,7 +324,7 @@ export function getMonths(year: number, params: OptionsType) {
   return chunk(MonthArr, 4);
 }
 
-interface DateTime {
+export interface DateTime {
   active: boolean;
   highlight: boolean;
   startOfRange: boolean;
