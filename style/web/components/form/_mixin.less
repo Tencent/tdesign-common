@@ -10,13 +10,12 @@
 .input-status(@status) {
   @formColor: "form-color-@{status}";
   .@{prefix}-input {
-    border-color:  if(not (@status = success), @@formColor, 'none');
+    border-color: if(not (@status = success), @@formColor, "none");
     &.@{prefix}-input--focused {
       box-shadow: 0 0 0 2px @@boxShadowColor;
     }
     @boxShadowColor: "input-box-shadow-color-@{status}-focus";
   }
-  
   .@{prefix}-input__extra {
     color: @@fontColor;
     @fontColor: "form-color-warning";
