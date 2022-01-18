@@ -11,7 +11,7 @@
   .@{prefix}-input {
     border-color: if(not (@status = success), @@formColor, "none");
     &.@{prefix}-input--focused {
-      box-shadow: 0 0 0 2px if(not (@status = success), @@boxShadowColor, "input-box-shadow-color-default-focus")
+      box-shadow: 0 0 0 2px if(not (@status = success), @@boxShadowColor, "input-box-shadow-color-default-focus");
     }
     @boxShadowColor: "input-box-shadow-color-@{status}-focus";
   }
