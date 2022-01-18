@@ -5,8 +5,12 @@ isComponent: true
 spline: data
 ---
 
-### 基础选择器输入框
+### 单选选择器输入框
 
 基于 TagInput、Input、Popup 等组件开发，支持这些组件的全部特性。将主要应用于 Select、Cascader、TreeSelect、DatePicker、TimePicker 等选择器组件。 
 
-{{ base }}
+{{ single }}
+
+### 多选选择器输入框
+
+{{ multiple }}
