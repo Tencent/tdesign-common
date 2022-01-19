@@ -259,7 +259,11 @@
 }
 
 .@{prefix}-input__tips {
-  line-height: 24px;
+  height: auto;
+  min-height: @input-tips-min-height;
+  line-height: @input-tips-line-height;
+  font-size: @input-tips-font-size;
+  display: inline-block;
 }
 
 .@{prefix}-input__tips--normal {
