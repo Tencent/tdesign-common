@@ -51,7 +51,9 @@ export function getBackgroundColor(color: string | string[] | LinearGradient): s
   } = color;
   let keys = Object.keys(rest);
   if (keys.length) {
-    keys = keys.sort((a, b) => parseFloat(a.substr(0, a.length - 1)) - parseFloat(b.substr(0, b.length - 1)));
+    keys = keys.sort((a, b) => {
+      return parseFloat(a.substr(0, a.length - 1)) - parseFloat(b.substr(0, b.length - 1))
+    });
     const tempArr = keys.map((key: any) => `${rest[key]} ${key}`);
     return `linear-gradient(${direction}, ${tempArr.join(',')})`;
   }
