@@ -12,6 +12,7 @@
     width: 100%;
 
     &__inner {
+      display: flex;
       width: 100%;
       height: @textarea-height;
       min-height: @textarea-height;
@@ -39,6 +40,10 @@
       &::placeholder {
         color: @textarea-placeholder-color;
       }
+
+      .textarea-status(success);
+      .textarea-status(warning);
+      .textarea-status(error);
     }
 
     &__limit {
@@ -63,4 +68,28 @@
       resize: none;
     }
   }
+}
+
+.@{prefix}-textarea__tips {
+  height: auto;
+  min-height: @textarea-tips-min-height;
+  line-height: @textarea-tips-line-height;
+  font-size: @textarea-tips-font-size;
+  display: inline-block;
+}
+
+.@{prefix}-textarea__tips--normal {
+  color: @textarea-text-color-tips;
+}
+
+.@{prefix}-textarea__tips--success {
+  color: @textarea-text-color-success;
+}
+
+.@{prefix}-textarea__tips--warning {
+  color: @textarea-text-color-warning;
+}
+
+.@{prefix}-textarea__tips--error {
+  color: @textarea-text-color-error;
 }
