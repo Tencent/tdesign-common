@@ -1,6 +1,6 @@
 ---
 title: TagInput 标签输入框
-description: 定义：用于输入文本标签。
+description: 用于输入文本标签。
 isComponent: true
 spline: data
 ---
