@@ -14,6 +14,10 @@
 
   &__header {
     padding: @dialog-header-padding;
+
+    &--has-content {
+      padding-bottom: 8px;
+    }
   }
 
   &__title {
@@ -39,7 +43,7 @@
       padding: @dialog-body-first-child-padding;
       margin-bottom: 0;
       font-weight: 700;
-      color: @dialog-title-text-color;
+      color: @dialog-body-text-color;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -82,7 +86,6 @@
     padding: @dialog-btn-padding;
     line-height: @dialog-btn-line-height;
     color: @dialog-btn-default-color;
-    font-weight: 700;
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0%);
 
@@ -99,18 +102,22 @@
 
     &--primary {
       color: @dialog-btn-primary-color;
+      font-weight: 700;
     }
 
     &--success {
       color: @dialog-btn-success-color;
+      font-weight: 700;
     }
 
     &--warning {
       color: @dialog-btn-warning-color;
+      font-weight: 700;
     }
 
     &--error {
       color: @dialog-btn-error-color;
+      font-weight: 700;
     }
   }
 
