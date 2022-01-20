@@ -2,18 +2,18 @@
 
 @import "./_var.less";
 
-.@{prefix}-search-field {
+.@{prefix}-search {
   display: flex;
-  padding: @search-field-vertical-padding @search-field-horizontal-padding;
-  background-color: @search-field-background-color;
+  padding: @search-vertical-padding @search-horizontal-padding;
+  background-color: @search-background-color;
   align-items: center;
   box-sizing: border-box;
 
   &__form {
     position: relative;
     flex: auto;
-    background-color: @search-field-input-background-color;
-    border-radius: @search-field-input-border-radius;
+    background-color: @search-input-background-color;
+    border-radius: @search-input-border-radius;
   }
 
   &__box {
@@ -35,8 +35,8 @@
     bottom: 0;
     left: 0;
     font-size: 0;
-    color: @search-field-placeholder-text-color;
-    background-color: @search-field-input-background-color;
+    color: @search-placeholder-text-color;
+    background-color: @search-input-background-color;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
@@ -44,26 +44,26 @@
 
     &-text {
       display: inline-block;
-      font-size: @search-field-placeholder-text-size;
-      color: @search-field-placeholder-text-color;
-      margin-left: @search-field-placeholder-text-margin-left;
+      font-size: @search-placeholder-text-size;
+      color: @search-placeholder-text-color;
+      margin-left: @search-placeholder-text-margin-left;
       vertical-align: middle;
     }
   }
 
   &__input {
-    font-size: @search-field-text-size;
-    color: @search-field-text-color;
+    font-size: @search-text-size;
+    color: @search-text-color;
     width: 100%;
-    height: @search-field-input-height;
-    background-color: @search-field-input-background-color;
-    padding: 0 @search-field-input-horizontal-padding;
+    height: @search-input-height;
+    background-color: @search-input-background-color;
+    padding: 0 @search-input-horizontal-padding;
     border: 0;
 
     /* stylelint-disable-next-line */
     &::-webkit-input-placeholder,
     &::placeholder {
-      color: @search-field-placeholder-text-color;
+      color: @search-placeholder-text-color;
     }
 
     &::-webkit-search-cancel-button { /* stylelint-disable-line */
@@ -80,6 +80,7 @@
     transform: translateX(-100%) translateY(-50%);
     font-size: 24px;
     line-height: 1;
+    color: @text-level-3-color;
   }
 
   &__label-icon-search {
@@ -94,20 +95,21 @@
     right: 12px;
     font-size: 24px;
     line-height: 1;
+    color: @text-level-3-color;
   }
 
   &__cancel-button {
     display: none;
-    font-size: @search-field-cancel-button-text-size;
-    color: @search-field-cancel-button-text-color;
-    padding: @search-field-cancel-button-padding;
-    margin-left: @search-field-cancel-button-margin-left;
-    margin-right: -@search-field-cancel-button-margin-left;
+    font-size: @search-cancel-button-text-size;
+    color: @search-cancel-button-text-color;
+    padding: @search-cancel-button-padding;
+    margin-left: @search-cancel-button-margin-left;
+    margin-right: -@search-cancel-button-margin-left;
   }
 
   &.@{prefix}-is-focused {
 
-    .@{prefix}-search-field {
+    .@{prefix}-search {
       &__cancel-button {
         display: block;
       }
