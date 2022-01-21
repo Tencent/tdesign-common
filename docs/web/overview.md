@@ -221,7 +221,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">11</em></h3>
+<h3>数据展示<em class="tag">12</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar">
@@ -272,13 +272,20 @@ spline: explain
       <p class="name">Progress 进度条</p>
     </a>
   </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/skeleton">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-skeleton.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-skeleton-dark.png" />
+      <p class="name">Skeleton 骨架屏</p>
+    </a>
+  </div>
   <!-- <div class="image-wrapper">
     <a class="item" href="./components/swiper">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-swiper.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-swiper-dark.png" />
       <p class="name">Swiper 轮播框</p>
     </a>
-  </div> -->
+  </div>  -->
   <div class="image-wrapper">
     <a class="item" href="./components/table">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-table.png" />
