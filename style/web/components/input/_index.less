@@ -121,10 +121,14 @@
   // 输入框被聚焦
   &.@{prefix}-is-focused {
 
-    .@{prefix}-input__prefix,
-    .@{prefix}-input__suffix:not(.@{prefix}-input__clear) {
-      // 除了clear icon其他都在focus时变色
+    .@{prefix}-input__prefix {
       > .@{prefix}-icon {
+        color: @input-border-color-default-focus;
+      }
+    }
+    .@{prefix}-input__suffix {
+      // 只有time-picker、date-picker特殊使用的suffix icon需要改变颜色 若后续有新增组件继续扩展这个枚举
+      > .@{prefix}-icon-time,.@{prefix}-icon-calendar {
         color: @input-border-color-default-focus;
       }
     }
