@@ -259,19 +259,26 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/loading">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-loading.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-loading-dark.png" />
+      <p class="name">Loading 加载</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/progress">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-progress-dark.png" />
       <p class="name">Progress 进度条</p>
     </a>
   </div>
-  <div class="image-wrapper">
+  <!-- <div class="image-wrapper">
     <a class="item" href="./components/swiper">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-swiper.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-swiper-dark.png" />
       <p class="name">Swiper 轮播框</p>
     </a>
-  </div>
+  </div> -->
   <div class="image-wrapper">
     <a class="item" href="./components/table">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-table.png" />
@@ -302,7 +309,7 @@ spline: explain
   </div>
 </section>
 
-<h3>消息提醒<em class="tag">8</em></h3>
+<h3>消息提醒<em class="tag">7</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/alert">
@@ -323,13 +330,6 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-drawer.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-drawer-dark.png" />
       <p class="name">Drawer 抽屉</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
-    <a class="item" href="./components/loading">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-loading.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-loading-dark.png" />
-      <p class="name">Loading 加载</p>
     </a>
   </div>
 
