@@ -1,4 +1,5 @@
 import setStyle from '../utils/set-style';
+import { getIEVersion } from '../utils/helper';
 
 export default function circleAdapter(circleElem: HTMLElement) {
   let basicStyle = {};
@@ -19,9 +20,10 @@ export default function circleAdapter(circleElem: HTMLElement) {
       transform: `scale(${parseInt(fontSize, 10) / 14})`,
     };
   }
-  if (color) {
+  // 添加：判断是否为IE浏览器
+  if (color && getIEVersion() > 11) {
     const matched = color.match(/[\d.]+/g);
-    const endColor = `rgba(${matched[0]}, ${matched[1]}, ${matched[2]}, 0)`;
+    const endColor = matched ? `rgba(${matched[0]}, ${matched[1]}, ${matched[2]}, 0)` : '';
     setStyle(circleElem, {
       ...basicStyle,
       background: `conic-gradient(from 90deg at 50% 50%,${endColor} 0deg, ${color} 360deg)`,

@@ -1,6 +1,6 @@
 ---
 title: TagInput 标签输入框
-description: 定义：用于输入文本标签。
+description: 用于输入文本标签。
 isComponent: true
 spline: data
 ---
@@ -21,6 +21,12 @@ spline: data
 使用 `max` 控制最大标签数量。
 
 {{ max }}
+
+### 不同尺寸的标签输入框
+
+提供大、中（默认）、小三种不同尺寸的的标签输入框。
+
+{{ size }}
 
 ### 可折叠过多标签的标签输入框
 

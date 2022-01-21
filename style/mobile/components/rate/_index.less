@@ -16,10 +16,16 @@
   }
 
   &--icon,
+  &--placeholder,
   &--icon-left,
   &--icon-right {
     color: @rate-bg-color-default;
     font-size: @rate-icon-size;
+    position: relative;
+  }
+
+  &--placeholder {
+    position: absolute;
   }
 
   .@{prefix}-icon {
@@ -31,6 +37,7 @@
     left: 0;
     width: 50%;
     overflow: hidden;
+    z-index: 1;
   }
 
   &-full &--icon,
