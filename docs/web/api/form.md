@@ -9,6 +9,10 @@ spline: form
 
 一个典型表单组件包含各种表单项，比如输入框、选择器、单选框、多选框、开关、文本输入等。
 
+- 如果表单内存在提交按钮 `<button type="submit">`，点击提交按钮时，会自动触发 `submit` 事件。
+- 如果表单内存在重置按钮 `<button type="reset">`，点击重置按钮时，会自动触发 `reset` 事件。
+- 如果表单内不存在提交或重置按钮，您希望点击任意按钮进行提交和重置操作，则可以使用组件实例方法 `submit` 和 `reset`，详情请查阅 API 文档。
+
 {{ base }}
 
 <!-- ### 注册表单
@@ -43,24 +47,33 @@ spline: form
 
 {{ layout }}
 
-### 表单校验
+### 不同重置功能的表单
 
-#### 验证规则
+表单重置分两类：全部数据重置为空和全部数据重置为初始值。
 
-表单内置的校验规则有：`date` / `url` / `email` / `required` / `boolean` / `max` / `min` / `len` / `number` / `enum` / `idcard` / `telnumber` / `pattern` 。
+可以使用 `reseType` 控制，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值。
 
-其中 `date` / `url` / `email` 等校验规则参数参看：[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)。
+{{ reset }}
 
-{{ validator }}
-
-#### 提示状态
+### 不同状态的表单项
 
 通过图标及提示文字的形式来提示用户对表单的填写。
 
+- 校验状态有：成功、失败、警告等状态，可使用 `successBorder` 控制是否显示校验成功后的绿色边框。
+- 使用 `statusIcon` 控制校验图标，`FormItem.statusIcon` 优先级大于 `Form.statusIcon`。值为 `true` 显示默认图标，默认图标有 成功、失败、警告 等，不同的状态图标不同。`statusIcon` 值为 `false`，不显示图标。`statusIcon` 值类型为渲染函数，则可以自定义右侧状态图标。
+
 {{ validator-status }}
 
-### 自定义校验的表单
+### 不同校验规则的表单
 
-支持自定义配置及异步校验。
+表单内置的校验规则有：`date` / `url` / `email` / `required` / `boolean` / `max` / `min` / `len` / `number` / `enum` / `idcard` / `telnumber` / `pattern` 。其中 `date` / `url` / `email` 等校验规则参数参看：[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)。各校验规则示例见 API 文档中的 `FormRule`。
+
+{{ validator }}
+
+### 自定义校验规则的表单
+
+支持自定义配置校验规则，也支持配置异步校验。同一个字段的同一个校验规则可以设定多种不同的校验结果。
+
+使用 `validator` 自定义校验函数，支持异步返回结果，支持不同条件返回不同的结果。
 
 {{ custom-validator }}
