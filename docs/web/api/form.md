@@ -70,10 +70,19 @@ spline: form
 
 {{ validator }}
 
-### 自定义校验规则的表单
+### 可自定义校验规则的表单
 
 支持自定义配置校验规则，也支持配置异步校验。同一个字段的同一个校验规则可以设定多种不同的校验结果。
 
-使用 `validator` 自定义校验函数，支持异步返回结果，支持不同条件返回不同的结果。
+使用 `validator` 自定义校验函数，支持异步返回结果 `Promise`，返回结果可以设置不同的校验结果、校验结果类型、校验结果信息。
+
+- 示例一：`validator: (val) => { result: !!val, message: '该项必填', type: 'error' }`。
+- 示例二：`validator: (val) => new Promise((resolve) => resolve({ result: false, message: '校验未通过', type: 'warning' }))`。如果是异步校验，必须返回所有情况的校验结果，不能只返回 `resolve(false)` 校验不通过的情况，还需要注意返回 `resolve(true)` 校验通过的情况。
 
 {{ custom-validator }}
+
+### 可清空校验结果的表单
+
+在一些复杂的业务场景中，会涉及到自主控制校验结果的显示与否，此时使用实例方法 `clearValidate` 来清空校验结果。可以清空全部字段的校验结果，也可以清除部分字段的校验结果。
+
+{{ clear-validate }}
