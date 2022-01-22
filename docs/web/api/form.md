@@ -101,6 +101,6 @@ spline: form
 
 ### 禁用态的表单
 
-可以使用 `disabled` 属性禁用整个表单项。
+可以使用 `disabled` 属性禁用整个表单项。对于自定义组件，可以使用 `formControlledComponents` 设置为允许 Form 代理禁用状态。
 
 {{ disabled }}
