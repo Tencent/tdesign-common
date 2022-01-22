@@ -89,7 +89,7 @@ spline: form
 
 ### 可统一配置校验信息的表单
 
-`FormRule` 中的每个规则支持默认校验信息，无需给每一个字段的每一个规则添加校验信息 `message`，同时支持全局配置各个规则的校验信息。
+`FormRule` 中的每个规则都要默认校验信息，支持通过 `Form.errorMessage` 覆盖默认校验信息，也支持全局配置（ConfigProvider）各个规则的校验信息。
 
 {{ validate-message }}
 
