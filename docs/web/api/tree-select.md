@@ -46,3 +46,9 @@ spline: form
 多选情况下，超出该数值的选中项折叠。
 
 {{ collapsed }}
+
+### 自定义选中项展示
+
+支持自定义选中项展示，常用于组合 label 和 value 展示。
+
+{{ valuedisplay }}
