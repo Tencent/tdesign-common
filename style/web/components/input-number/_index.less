@@ -29,7 +29,6 @@
   }
 
   .@{inputCls} {
-    margin: 0 (@spacer / 2);
     color: @input-number-inner-color;
   }
 
@@ -290,4 +289,20 @@
     top: 1px;
     border-top-right-radius: calc(@border-radius - 1px);
   }
+}
+
+.@{prefix}-align-left > .@{prefix}-input__inner {
+  text-align: left;
+}
+
+.@{prefix}-align-center > .@{prefix}-input__inner {
+  text-align: center;
+}
+
+.@{prefix}-align-right > .@{prefix}-input__inner {
+  text-align: right;
+}
+
+.@{prefix}-input-number__decrease + .@{prefix}-input {
+  margin-left: @spacer-s;
 }
