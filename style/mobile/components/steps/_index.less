@@ -30,6 +30,9 @@
 
       &--process {
         .default-number-status(process);
+        .@{prefix}-step-title {
+          color: @primary-color;
+        }
       }
 
       &--error {
@@ -63,7 +66,7 @@
           content: "";
           display: block;
           height: 1px;
-          background-color: @primary-color-8;
+          background-color: @primary-color-5;
           position: absolute;
           width: calc(100% - @step-horizontal-icon-width);
           left: calc(50% + @step-horizontal-icon-width / 2);
@@ -160,7 +163,7 @@
           display: block;
           height: calc(100% - @dot-steps-anchor-width);
           width: 1px;
-          background: @border-level-2-color;
+          background-color: @gray-color-5;
           position: absolute;
           left: calc(@dot-steps-anchor-width / 2 - .5px);
           top: calc(@dot-steps-anchor-width + .5px);
