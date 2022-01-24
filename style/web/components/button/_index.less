@@ -218,7 +218,6 @@
 
   // 文字按钮
   &--variant-text {
-    border: 0;
     .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default);
     .button-attr-color("text-gray", color);
     .button-attr-color("text-bg", background-color);
@@ -242,27 +241,23 @@
 
     &.@{prefix}-button--ghost {
       background: none;
+
       .button-attr-color("white-ghost", color, true);
-      .button-attr-color("white-ghost", border-color, true);
 
       &.@{prefix}-button--theme-primary {
         .button-attr-color("primary", color, true);
-        .button-attr-color("primary", border-color, true);
       }
 
       &.@{prefix}-button--theme-success {
         .button-attr-color("success", color, true);
-        .button-attr-color("success", border-color, true);
       }
 
       &.@{prefix}-button--theme-warning {
         .button-attr-color("warning", color, true);
-        .button-attr-color("warning", border-color, true);
       }
 
       &.@{prefix}-button--theme-danger {
         .button-attr-color("danger", color, true);
-        .button-attr-color("danger", border-color, true);
       }
     }
   }
