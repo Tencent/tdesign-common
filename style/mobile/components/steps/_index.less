@@ -95,7 +95,7 @@
 
       &-title {
         text-align: left;
-        margin-top: @title-content-margin-top;
+        margin-top: @step-title-content-margin-top;
         line-height: @font-size-base;
         margin-bottom: @spacer;
       }
@@ -142,8 +142,8 @@
         &-icon {
           &__dot {
             display: block;
-            width: @dot-steps-anchor-width;
-            height: @dot-steps-anchor-width;
+            width: @step-dot-anchor-width;
+            height: @step-dot-anchor-width;
             box-sizing: border-box;
             border: 1px solid @primary-color;
             border-radius: 50%;
@@ -161,12 +161,12 @@
         .@{prefix}-step__inner:after {
           content: "";
           display: block;
-          height: calc(100% - @dot-steps-anchor-width);
+          height: calc(100% - @step-dot-anchor-width);
           width: 1px;
           background-color: @gray-color-5;
           position: absolute;
-          left: calc(@dot-steps-anchor-width / 2 - .5px);
-          top: calc(@dot-steps-anchor-width + .5px);
+          left: calc(@step-dot-anchor-width / 2 - .5px);
+          top: calc(@step-dot-anchor-width + .5px);
         }
       }
     }
