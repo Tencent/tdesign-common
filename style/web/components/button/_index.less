@@ -4,17 +4,17 @@
 
 @import "./_mixin.less";
 
-.button-attr-color(@theme, @attr, @attr-prepend: "", @ghost: false) {
+.button-attr-color(@theme, @attr, @ghost: false) {
   &:hover {
-    @{attr}: e(@attr-prepend) @@theme-hover;
+    @{attr}: @@theme-hover;
   }
 
   &:active when (@ghost = true) {
-    @{attr}: e(@attr-prepend) @@theme-active;
+    @{attr}: @@theme-active;
   }
 
   &.@{prefix}-is-disabled {
-    @{attr}: e(@attr-prepend) @@theme-disabled;
+    @{attr}: @@theme-disabled;
   }
   @theme-default: e("btn-color-@{theme}");
   @theme-hover: e("btn-color-@{theme}-hover");
@@ -22,7 +22,7 @@
   @theme-disabled: e("btn-color-@{theme}-disabled");
   @theme-focus: e("btn-color-@{theme}-focus");
 
-  @{attr}: e(@attr-prepend) @@theme-default;
+  @{attr}: @@theme-default;
 }
 
 .@{prefix}-button {
@@ -53,160 +53,166 @@
   // 主要按钮
   &--variant-base {
     color: @btn-text-variant-base-color;
-    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default);
     .button-attr-color("gray-bg", background-color);
+    .button-attr-color("gray-bg", border-color);
     .button-attr-color("text-gray", color);
+
+    
 
     &.@{prefix}-button--theme-primary {
       color: @btn-text-variant-base-color;
       .button-attr-color("primary", background-color);
+      .button-attr-color("primary", border-color);
     }
 
     &.@{prefix}-button--theme-success {
       color: @btn-text-variant-base-color;
       .button-attr-color("success", background-color);
+      .button-attr-color("success", border-color);
     }
 
     &.@{prefix}-button--theme-warning {
       color: @btn-text-variant-base-color;
       .button-attr-color("warning", background-color);
+      .button-attr-color("warning", border-color);
     }
 
     &.@{prefix}-button--theme-danger {
       color: @btn-text-variant-base-color;
       .button-attr-color("danger", background-color);
+      .button-attr-color("danger", border-color);
     }
 
     &.@{prefix}-button--ghost {
       background-color: transparent;
 
       &.@{prefix}-button--theme-primary {
-        .button-attr-color("primary", border, "1px solid", true);
+        .button-attr-color("primary", border-color, true);
       }
 
       &.@{prefix}-button--theme-success {
-        .button-attr-color("success", color, "", true);
-        .button-attr-color("success", border, "1px solid", true);
+        .button-attr-color("success", color, true);
+        .button-attr-color("success", border-color, true);
       }
 
       &.@{prefix}-button--theme-warning {
-        .button-attr-color("warning", color, "", true);
-        .button-attr-color("warning", border, "1px solid", true);
+        .button-attr-color("warning", color, true);
+        .button-attr-color("warning", border-color, true);
       }
 
       &.@{prefix}-button--theme-danger {
-        .button-attr-color("danger", color, "", true);
-        .button-attr-color("danger", border, "1px solid", true);
+        .button-attr-color("danger", color, true);
+        .button-attr-color("danger", border-color, true);
       }
     }
   }
 
   // 次要按钮
   &--variant-outline {
-    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, @btn-border-width);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default);
     .button-attr-color("text", color);
 
     .button-attr-color("white-bg", background-color);
-    .button-attr-color("border-gray", border, "1px solid");
+    .button-attr-color("border-gray", border-color);
 
     &.@{prefix}-button--theme-primary {
       .button-attr-color("primary", color);
-      .button-attr-color("primary", border, "1px solid");
     }
 
     &.@{prefix}-button--theme-success {
       .button-attr-color("success", color);
-      .button-attr-color("success", border, "1px solid");
+      .button-attr-color("success", border-color);
     }
 
     &.@{prefix}-button--theme-warning {
       .button-attr-color("warning", color);
-      .button-attr-color("warning", border, "1px solid");
+      .button-attr-color("warning", border-color);
     }
 
     &.@{prefix}-button--theme-danger {
       .button-attr-color("danger", color);
-      .button-attr-color("danger", border, "1px solid");
+      .button-attr-color("danger", border-color);
     }
 
     &.@{prefix}-button--ghost {
-      .button-attr-color("none", background-color, "", true);
-      .button-attr-color("white-ghost", color, "", true);
-      .button-attr-color("white-ghost", border, "1px solid", true);
+      .button-attr-color("none", background-color, true);
+      .button-attr-color("white-ghost", color, true);
+      .button-attr-color("white-ghost", border-color, true);
 
       &.@{prefix}-button--theme-primary {
-        .button-attr-color("primary", color, "", true);
-        .button-attr-color("primary", border, "1px solid", true);
+        .button-attr-color("primary", color, true);
+        .button-attr-color("primary", border-color, true);
       }
 
       &.@{prefix}-button--theme-success {
-        .button-attr-color("success", color, "", true);
-        .button-attr-color("success", border, "1px solid", true);
+        .button-attr-color("success", color, true);
+        .button-attr-color("success", border-color, true);
       }
 
       &.@{prefix}-button--theme-warning {
-        .button-attr-color("warning", color, "", true);
-        .button-attr-color("warning", border, "1px solid", true);
+        .button-attr-color("warning", color, true);
+        .button-attr-color("warning", border-color, true);
       }
 
       &.@{prefix}-button--theme-danger {
-        .button-attr-color("danger", color, "", true);
-        .button-attr-color("danger", border, "1px solid", true);
+        .button-attr-color("danger", color, true);
+        .button-attr-color("danger", border-color, true);
       }
     }
   }
 
   // 虚线按钮
   &--variant-dashed {
-    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, @btn-border-width);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default);
     .button-attr-color("text", color);
-    .button-attr-color("primary", border, "1px dashed");
     .button-attr-color("white-bg", background-color);
-    .button-attr-color("border-gray", border, "1px dashed");
+    .button-attr-color("border-gray", border-color);
+    border-style: dashed;
 
     &.@{prefix}-button--theme-primary {
       .button-attr-color("primary", color);
-      .button-attr-color("primary", border, "1px dashed");
+      .button-attr-color("primary", border-color);
     }
 
     &.@{prefix}-button--theme-success {
       .button-attr-color("success", color);
-      .button-attr-color("success", border, "1px dashed");
+      .button-attr-color("success", border-color);
     }
 
     &.@{prefix}-button--theme-warning {
       .button-attr-color("warning", color);
-      .button-attr-color("warning", border, "1px dashed");
+      .button-attr-color("warning", border-color);
     }
 
     &.@{prefix}-button--theme-danger {
       .button-attr-color("danger", color);
-      .button-attr-color("danger", border, "1px dashed");
+      .button-attr-color("danger", border-color);
     }
 
     &.@{prefix}-button--ghost {
-      .button-attr-color("none", background-color, "", true);
-      .button-attr-color("white-ghost", color, "", true);
-      .button-attr-color("white-ghost", border, "1px dashed", true);
+      .button-attr-color("none", background-color, true);
+      .button-attr-color("white-ghost", color, true);
+      .button-attr-color("white-ghost", border-color, true);
 
       &.@{prefix}-button--theme-primary {
-        .button-attr-color("primary", color, "", true);
-        .button-attr-color("primary", border, "1px dashed", true);
+        .button-attr-color("primary", color, true);
+        .button-attr-color("primary", border-color, true);
       }
 
       &.@{prefix}-button--theme-success {
-        .button-attr-color("success", color, "", true);
-        .button-attr-color("success", border, "1px dashed", true);
+        .button-attr-color("success", color, true);
+        .button-attr-color("success", border-color, true);
       }
 
       &.@{prefix}-button--theme-warning {
-        .button-attr-color("warning", color, "", true);
-        .button-attr-color("warning", border, "1px dashed", true);
+        .button-attr-color("warning", color, true);
+        .button-attr-color("warning", border-color, true);
       }
 
       &.@{prefix}-button--theme-danger {
-        .button-attr-color("danger", color, "", true);
-        .button-attr-color("danger", border, "1px dashed", true);
+        .button-attr-color("danger", color, true);
+        .button-attr-color("danger", border-color, true);
       }
     }
   }
@@ -214,9 +220,10 @@
   // 文字按钮
   &--variant-text {
     border: 0;
-    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default, 0);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal-default);
     .button-attr-color("text-gray", color);
     .button-attr-color("text-bg", background-color);
+    .button-attr-color("text-bg", border-color);
 
     &.@{prefix}-button--theme-primary {
       .button-attr-color("primary", color);
@@ -236,22 +243,27 @@
 
     &.@{prefix}-button--ghost {
       background: none;
-      .button-attr-color("white-ghost", color, "", true);
+      .button-attr-color("white-ghost", color, true);
+      .button-attr-color("white-ghost", border-color, true);
 
       &.@{prefix}-button--theme-primary {
-        .button-attr-color("primary", color, "", true);
+        .button-attr-color("primary", color, true);
+        .button-attr-color("primary", border-color, true);
       }
 
       &.@{prefix}-button--theme-success {
-        .button-attr-color("success", color, "", true);
+        .button-attr-color("success", color, true);
+        .button-attr-color("success", border-color, true);
       }
 
       &.@{prefix}-button--theme-warning {
-        .button-attr-color("warning", color, "", true);
+        .button-attr-color("warning", color, true);
+        .button-attr-color("warning", border-color, true);
       }
 
       &.@{prefix}-button--theme-danger {
-        .button-attr-color("danger", color, "", true);
+        .button-attr-color("danger", color, true);
+        .button-attr-color("danger", border-color, true);
       }
     }
   }
