@@ -1,0 +1,169 @@
+.position-center(@direction) {
+  position: absolute;
+  & when(@direction = x) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  & when(@direction = y) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.opacity-gradient(@direction) {
+  background-image: linear-gradient(to @direction, rgba(255, 255, 255, 0%), rgba(255, 255, 255, 100%));
+}
+
+.swiper-arrow-default(@direction, @type:default) {
+  .@{prefix}-swiper__arrow__@{direction} {
+    & when(@type = default) {
+      .position-center(y);
+    }
+    & when(@type = text) {
+      position: absolute;
+      bottom: @swiper-navigation-item-margin * 3;
+    }
+    & when(@type = thumb) {
+      position: absolute;
+      bottom: @swiper-navigation-item-margin * 5;
+    }
+
+    display: flex;
+    width: @swiper-arrow-height;
+    height: @swiper-arrow-height;
+    justify-content: center;
+    align-items: center;
+    z-index: @swiper-navigation-zIndex-default;
+    background-color: transparent;
+    color: @swiper-navigation-text-color;
+    cursor: pointer;
+    & when(@direction = left) {
+      left: 11px;
+    }
+    & when(@direction = right) {
+      right: 11px;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: @swiper-navigation-item-bg;
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 35%);
+    }
+  }
+}
+
+.swiper-arrow-number(@direction) {
+  .@{prefix}-swiper__arrow__@{direction} {
+    display: flex;
+    width: @swiper-arrow-height;
+    height: @swiper-arrow-height;
+    justify-content: center;
+    align-items: center;
+    z-index: @swiper-navigation-zIndex-default;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 26%);
+    cursor: pointer;
+
+    &:hover {
+      color: #0052d9;
+    }
+
+    &:active {
+      color: #0034b5;
+    }
+  }
+}
+
+.swiper-arrow-bottom(@direction, @type) {
+  .swiper-arrow-default(@direction, @type);
+}
+
+.swiper-navigation-item(@type, @position: inside) {
+  & when(@position = inside) {
+    & when(@type = default) {
+      .@{prefix}-swiper__navigation__item {
+        margin-left: @swiper-navigation-item-margin;
+        margin-bottom: @swiper-navigation-item-margin * 3;
+        width: @swiper-navigation-item-width-default;
+        height: @swiper-navigation-item-height-default;
+        background: @swiper-navigation-item-bg;
+        cursor: pointer;
+      }
+
+      .@{prefix}-is-active {
+        width: @swiper-navigation-item-active-width-default;
+        background: #fff;
+      }
+    }
+    & when(@type = text) {
+      max-width: calc(100% - 70px);
+      overflow: hidden;
+      .@{prefix}-swiper__navigation__item {
+        margin-left: @spacer-4;
+        margin-bottom: @swiper-navigation-item-margin * 3;
+        line-height: @swiper-navigation-item-height;
+        font-size: @swiper-navigation-item-font-size;
+        color: @swiper-navigation-text-color;
+        word-break: keep-all;
+        cursor: pointer;
+      }
+
+      .@{prefix}-is-active {
+        font-size: @swiper-navigation-item-font-size-activity;
+        color: #fff;
+      }
+    }
+    & when(@type = thumb) {
+      max-width: calc(100% - 100px);
+      overflow: hidden;
+      .@{prefix}-swiper__navigation__item {
+        margin-left: @spacer-4;
+        margin-bottom: @swiper-navigation-item-margin * 4;
+        width: @swiper-navigation-item-width-thumb;
+        height: @swiper-navigation-item-height-thumb;
+        background-color: @swiper-navigation-item-bg;
+        border-radius: @border-radius;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .@{prefix}-is-active {
+        background-color: rgba(255, 255, 255, 90%);
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 5%), 0 8px 10px rgba(0, 0, 0, 6%), 0 5px 5px rgba(0, 0, 0, 10%);
+      }
+    }
+  }
+  & when(@position = outside) {
+    & when(@type = default) {
+      .@{prefix}-swiper__navigation__item {
+        background-color: rgba(0, 0, 0, 26%);
+        margin-bottom: 0;
+      }
+      .@{prefix}-is-active {
+        background-color: rgba(0, 0, 0, 40%);
+      }
+    }
+    & when(@type = text) {
+      .@{prefix}-swiper__navigation__item {
+        color: rgba(0, 0, 0, 40%);
+        margin-bottom: 0;
+      }
+      .@{prefix}-is-active {
+        color: rgba(0, 0, 0, 60%);
+      }
+    }
+    & when(@type = thumb) {
+      .@{prefix}-swiper__navigation__item {
+        background-color: @gray-color-3;
+        margin-bottom: 0;
+      }
+      .@{prefix}-is-active {
+        background-color: @gray-color-5;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 10%);
+      }
+    }
+  }
+}

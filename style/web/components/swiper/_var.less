@@ -12,17 +12,30 @@
 // 如：@button-line-height-s
 
 // 颜色
-@swiper-trigger-wrap-inactive: @text-color-disabled;
-@swiper-trigger-wrap-active: @text-color-secondary;
-@swiper-close-color: @text-color-placeholder;
-
+@swiper-navigation-item-bg: fade(#FFFFFF, 22%);
+@swiper-navigation-text-color: rgba(255, 255, 255, 0.55);
+// @swiper
 // 尺寸
-@swiper-trigger-wrap-font: @font-size-xl;
-@swiper-trigger-line-height: @text-line-height-s;
-@swiper-close-font: @font-size-base;
+@swiper-content-width-default: @spacer * 100; //800px
+@swiper-content-height-default: 280px;
+
+@swiper-navigation-item-width-default: 14px;
+@swiper-navigation-item-height-default: 3px;
+
+@swiper-navigation-item-active-width-default: @spacer-3;
+@swiper-navigation-item-height: @spacer-3;
+
+@swiper-navigation-item-width-thumb: 100px; // 36px
+@swiper-navigation-item-height-thumb: 36px; // 36px
+
+@swiper-arrow-height: @spacer-3;
+
+@swiper-navigation-item-font-size: @font-size-base;
+@swiper-navigation-item-font-size-activity: @font-size-l;
 
 // 间距
-@swiper-content-height: @spacer-6;
-@swiper-close-width: @spacer-4;
-@swiper-trigger-wrap-padding: @spacer-2 @spacer-1;
-@swiper-close-padding: @spacer-2 @spacer-3 @spacer-2 4px;
+@swiper-navigation-item-margin: 6px;
+
+// 位置
+@swiper-zIndex-default: 1;
+@swiper-navigation-zIndex-default: @swiper-zIndex-default + 1;
