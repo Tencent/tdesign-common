@@ -8,7 +8,7 @@ export default {
   },
   cascader: {
     empty: 'Empty Data',
-    loadingText: 'loading...',
+    loadingText: '',
     placeholder: '',
   },
   calendar: {
@@ -26,7 +26,7 @@ export default {
   transfer: {
     title: '{checked} / {total}',
     empty: 'Empty Data',
-    placeholder: 'type keyworkd to search',
+    placeholder: 'enter keyworkd to search',
   },
   timePicker: {
     now: 'Now',
@@ -61,6 +61,11 @@ export default {
   },
   table: {
     empty: 'Empty Data',
+    loadingText: 'loading...',
+    filterInputPlaceholder: '',
+    sortAscendingOperationText: 'click to sort ascending',
+    sortCancelOperationText: 'click to cancel sorting',
+    sortDescendingOperationText: 'click to sort descending',
   },
   select: {
     empty: 'Empty Data',
@@ -73,6 +78,7 @@ export default {
   treeSelect: {
     empty: 'Empty Data',
     loadingText: 'loading...',
+    placeholder: '',
   },
   datePicker: {
     placeholder: {
@@ -100,10 +106,34 @@ export default {
   upload: {
     sizeLimitMessage: 'File is too large to upload. {sizeLimit}',
     cancelUploadText: 'Cancel',
+    triggerUploadText: {
+      fileInput: 'Upload',
+      image: 'Click to upload',
+      normal: 'Upload',
+      reupload: 'Reupload',
+      delete: 'Delete',
+    },
+    dragger: {
+      dragDropText: 'Drop hear',
+      draggingText: 'Drag file to this area to upload',
+      clickAndDragText: 'Click "Upload" or Drag file to this area to upload',
+    },
+    file: {
+      fileNameText: 'filename',
+      fileSizeText: 'size',
+      fileStatusText: 'status',
+      fileOperationText: 'operation',
+      fileOperationDateText: 'date',
+    },
+    progress: {
+      uploadingText: 'Uploading',
+      waitingText: 'Waiting',
+      failText: 'Failed',
+      successText: 'Success',
+    },
   },
-  tag: {},
-  form: {},
-  input: {
-    placeholder: '',
+  list: {
+    loadingText: 'loading...',
+    loadingMoreText: 'loading more',
   },
 };
