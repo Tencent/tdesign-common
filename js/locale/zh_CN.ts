@@ -8,7 +8,7 @@ export default {
   },
   cascader: {
     empty: '暂无数据',
-    loadingText: '加载中',
+    loadingText: '',
     placeholder: '请选择',
   },
   calendar: {
@@ -33,45 +33,33 @@ export default {
     confirm: '确定',
     anteMeridiem: '上午',
     postMeridiem: '下午',
-    placeholder: '请选择时间',
+    placeholder: '选择时间',
   },
   dialog: {
     confirm: '确认',
     cancel: '取消',
-    confirmBtnTheme: {
-      default: 'primary',
-      info: 'primary',
-      warning: 'primary',
-      danger: 'primary',
-      success: 'primary',
-    },
   },
   drawer: {
     confirm: '确认',
     cancel: '取消',
   },
   popconfirm: {
-    confirm: {
-      content: '确定',
-      size: 'small',
-    },
-    cancel: {
-      content: '取消',
-      size: 'small',
-    },
-    confirmBtnTheme: {
-      default: 'primary',
-      warning: 'primary',
-      danger: 'primary',
-    },
+    confirm: '确定',
+    cancel: '取消',
   },
   table: {
     empty: '暂无数据',
+    loadingText: '正在加载中，请稍后',
+    loadingMoreText: '',
+    filterInputPlaceholder: '请输入内容（无默认值）',
+    sortAscendingOperationText: '点击升序',
+    sortCancelOperationText: '点击取消排序',
+    sortDescendingOperationText: '点击降序',
   },
   select: {
     empty: '暂无数据',
     loadingText: '加载中',
-    placeholder: '请选择',
+    placeholder: '-请选择-',
   },
   tree: {
     empty: '暂无数据',
@@ -79,6 +67,7 @@ export default {
   treeSelect: {
     empty: '暂无数据',
     loadingText: '加载中',
+    placeholder: '请选择',
   },
   datePicker: {
     placeholder: {
@@ -89,8 +78,12 @@ export default {
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
     months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     rangeSeparator: ' 至 ',
+    direction: 'ltr',
     format: 'YYYY-MM-DD',
+    dayAriaLabel: '日',
+    weekAbbreviation: '周',
     yearAriaLabel: '年',
+    monthAriaLabel: '月',
     confirm: '确定',
     selectTime: '选择时间',
     selectDate: '选择日期',
@@ -104,12 +97,36 @@ export default {
   },
   steps: {},
   upload: {
-    sizeLimitMessage: '文件大小不能超过 {sizeLimit}',
+    sizeLimitMessage: '图片大小不能超过 {sizeLimit}',
     cancelUploadText: '取消上传',
+    triggerUploadText: {
+      fileInput: '选择文件',
+      image: '点击上传图片',
+      normal: '点击上传',
+      reupload: '重新上传',
+      delete: '删除',
+    },
+    dragger: {
+      dragDropText: '释放鼠标',
+      draggingText: '拖拽到此区域',
+      clickAndDragText: '点击上方“选择文件”或将文件拖拽到此区域',
+    },
+    file: {
+      fileNameText: '文件名',
+      fileSizeText: '文件大小',
+      fileStatusText: '状态',
+      fileOperationText: '操作',
+      fileOperationDateText: '上传日期',
+    },
+    progress: {
+      uploadingText: '上传中',
+      waitingText: '待上传',
+      failText: '上传失败',
+      successText: '上传成功',
+    },
   },
-  tag: {},
-  form: {},
-  input: {
-    placeholder: '请输入',
+  list: {
+    loadingText: '正在加载中，请稍等',
+    loadingMoreText: '点击加载更多',
   },
 };
