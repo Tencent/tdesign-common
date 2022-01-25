@@ -9,97 +9,178 @@
 /* Swiper */
 .@{prefix}-swiper {
   position: relative;
-  display: flex;
-  opacity: 1;
-  transition: opacity .2s;
 
-  &.@{prefix}-is-hidden { /* 隐藏 */
-    display: none;
-  }
-
-  &--closing {
-    opacity: 0;
-  }
-
-  .@{prefix}-swiper__trigger-wrap {
-    color: @swiper-trigger-wrap-inactive;
-  }
-
-  .@{prefix}-swiper__trigger--active {
-    color: @swiper-trigger-wrap-active;
-  }
-}
-
-.@{prefix}-swiper__content {
-  flex: 1 1 auto;
-  z-index: 1;
-  overflow: hidden;
-  height: @swiper-content-height;
-}
-
-.@{prefix}-swiper__swiper-wrap {
-  position: relative;
-  display: flex;
-  left: 0;
-
-  > * {
-    flex: 1;
-  }
-
-  &--horizontal {
+  &__wrap {
+    display: inline-block;
     position: relative;
-    display: flex;
-    flex-direction: row;
-    left: 0;
-
-    > * {
-      flex: 1;
-    }
+    height: 100%;
   }
 
-  &--vertical {
+  &__content {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    z-index: @swiper-zIndex-default;
+    overflow: hidden;
+    width: @swiper-content-width-default;
+    height: @swiper-content-height-default;
+  }
+
+  &__container {
+    position: absolute;
     top: 0;
-
-    > * {
-      flex: 1;
-    }
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+    z-index: @swiper-zIndex-default;
   }
 }
 
-.@{prefix}-swiper__trigger-wrap {
+// 导航器
+.@{prefix}-swiper__navigation {
+  display: flex;
+  flex-direction: row;
   position: absolute;
-  right: @swiper-close-width;
-  z-index: 1;
-  flex: 0 0 auto;
-  padding: @swiper-trigger-wrap-padding;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
-  font-size: @swiper-trigger-wrap-font;
-  line-height: @swiper-trigger-line-height;
-  height: @swiper-content-height;
+  padding: 0;
+  z-index: @swiper-navigation-zIndex-default;
 
   > li {
-    display: inline-block;
+    flex: 1 0 auto;
     list-style-type: none;
-    cursor: pointer;
+    display: flex;
 
-    &::before {
-      content: "\2022";
+    &:nth-child(1) {
+      margin-left: 0;
     }
   }
 }
 
-.@{prefix}-swiper__close {
-  position: absolute;
-  right: 0;
-  z-index: 100;
-  width: @swiper-close-width;
-  height: @swiper-content-height;
-  padding: @swiper-close-padding;
-  font-size: @swiper-close-font;
-  color: @swiper-close-color;
-  cursor: pointer;
-  align-items: center;
+// 默认导航
+.@{prefix}-swiper__navigation-default {
+  .swiper-navigation-item(default);
+}
+
+// 标题文字导航
+.@{prefix}-swiper__navigation-text {
+  .swiper-navigation-item(text);
+}
+
+// 缩略图导航
+.@{prefix}-swiper__navigation-thumb {
+  .swiper-navigation-item(thumb);
+}
+
+.@{prefix}-swiper__arrow {
+  display: flex;
+
+  i.@{prefix}-icon {
+    width: 100%;
+    height: 100%;
+
+    &::before {
+      font-size: @icon-l;
+    }
+  }
+}
+
+// 默认箭头
+.@{prefix}-swiper__arrow-default {
+
+  .swiper-arrow-default(left);
+  .swiper-arrow-default(right);
+}
+
+// 数字切换箭头
+.@{prefix}-swiper__arrow-number {
+  .position-center(x);
+
+  bottom: -34px;
+  height: 24px;
+  line-height: @text-line-height-l;
+
+  .swiper-arrow-number(left);
+  .swiper-arrow-number(right);
+
+  .@{prefix}-swiper__arrow__text {
+    display: inline-block;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 40%);
+    margin: 0;
+  }
+}
+
+// 文字导航时箭头样式
+.@{prefix}-swiper__arrow-text {
+  .swiper-arrow-bottom(left,text);
+  .swiper-arrow-bottom(right,text);
+}
+
+// 缩略图导航时箭头样式
+.@{prefix}-swiper__arrow-thumb {
+  .swiper-arrow-bottom(left,thumb);
+  .swiper-arrow-bottom(right,thumb);
+}
+
+// 卡片模式
+.@{prefix}-swiper-card {
+  .@{prefix}-swiper__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .@{prefix}-is-active {
+      width: 332px;
+      height: 280px;
+    }
+  }
+  .@{prefix}-swiper__card__item {
+    flex: 1 0 auto;
+    margin-left: 24px;
+    width: 210px;
+    height: 178px;
+
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+  }
+}
+
+// outside模式
+.@{prefix}-swiper-outside {
+  .@{prefix}-swiper__navigation {
+    bottom: -40px;
+  }
+  // 默认导航
+  .@{prefix}-swiper__navigation-default {
+    bottom: -40px;
+    .swiper-navigation-item(default, outside);
+  }
+
+  // 标题文字导航
+  .@{prefix}-swiper__navigation-text {
+    .swiper-navigation-item(text, outside);
+  }
+
+  // 缩略图导航
+  .@{prefix}-swiper__navigation-thumb {
+    bottom: -52px;
+    .swiper-navigation-item(thumb, outside);
+  }
+}
+
+// inside模式
+.@{prefix}-swiper-inside {
+  .@{prefix}-swiper__navigation {
+    bottom: 0;
+  }
+}
+
+// inside模式
+.@{prefix}-swiper-vertical {
+  .@{prefix}-swiper__navigation {
+    bottom: 0;
+  }
 }
