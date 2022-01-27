@@ -2,9 +2,14 @@
 
 @import "./_var.less";
 
+@import "./_mixin.less";
+
 @import "../../mixins/_text.less";
 
 @import "../../mixins/_scrollbar.less";
+
+@border: 1px solid @table-border-color;
+@fixed-header-and-column-z-index: 100;
 
 @padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -32,7 +37,7 @@
     height: 100%;
     top: 0;
     right: 0;
-    border-left: 1px solid @table-border-color;
+    border-left: @border;
     pointer-events: none;
   }
 
@@ -54,7 +59,6 @@
   table {
     width: 100%;
     border-spacing: 0;
-    border-collapse: collapse;
   }
 
   .@{prefix}-text-ellipsis {
@@ -65,7 +69,7 @@
   td {
     position: relative;
     padding: @padding;
-    border-bottom: 1px solid @table-border-color;
+    border-bottom: @border;
     line-height: @table-line-height;
     vertical-align: middle;
     font-weight: normal;
@@ -142,7 +146,7 @@
   // 边框线表格
   &--bordered {
     .@{prefix}-table__content {
-      border-left: 1px solid @table-border-color;
+      border-left: @border;
     }
     .@{prefix}-table__empty {
       border-left: 1px  solid  @table-border-color;
@@ -150,34 +154,35 @@
     }
     // 表格边框优化，适配固定列/固定表头场景
     .@{prefix}-table__content {
-      border: 1px solid @table-border-color;
-      border-bottom: 0;
+      border: @border;
       border-radius: @border-radius;
 
+      // th {
+      //   border-left: @border;
+      //   border-bottom: @border;
+
+      //   &:first-child {
+      //     border-left: 0;
+
+      //     &::before {
+      //       border-left: 0;
+      //     }
+      //   }
+      // }
+
+      td,
       th {
-        border-left: 1px solid @table-border-color;
-        border-bottom: 1px solid @table-border-color;
-
-        &:first-child {
-          border-left: 0;
-
-          &::before {
-            border-left: 0;
-          }
-        }
-      }
-
-      td {
-        border-left: 1px solid @table-border-color;
-        border-bottom: 1px solid @table-border-color;
+        border-left: @border;
+        border-bottom: @border;
 
         &.@{prefix}-table__cell--fixed-left-last {
+          & + th,
           & + td {
             border-left-width: 0;
           }
 
           &::before {
-            border-right: 1px solid @table-border-color;
+            border-right: @border;
           }
         }
 
@@ -201,11 +206,11 @@
     }
 
     .@{prefix}-table--loading {
-      border-bottom: 1px solid @table-border-color;
+      border-bottom: @border;
     }
 
     .@{prefix}-table__pagination {
-      border: 1px solid @table-border-color;
+      border: @border;
       border-top: 0;
     }
 
@@ -213,7 +218,7 @@
     &.@{prefix}-table__header--fixed {
 
       .@{prefix}-table__content {
-        border-bottom: 1px solid @table-border-color;
+        border-bottom: @border;
 
         tr {
           &:last-child {
@@ -310,6 +315,7 @@
       overflow-wrap: break-word;
     }
 
+    &.@{prefix}-table__header,
     .@{prefix}-table__header {
       width: fit-content;
       position: relative;
@@ -376,7 +382,6 @@
     table {
       table-layout: fixed;
       min-width: 100%;
-      border-collapse: separate;
     }
 
     th,
@@ -386,65 +391,10 @@
 
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
-      z-index: 100;
+      z-index: @fixed-header-and-column-z-index;
     }
 
-    .@{prefix}-table__cell--fixed-left-last {
-      &::before {
-        z-index: -1;
-        background-color: inherit;
-      }
-
-      &::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        content: "";
-        width: @table-fixed-cell-box-shadow-width;
-        transition: box-shadow .3s;
-        pointer-events: none;
-        z-index: -2;
-        transform: translateX(100%);
-      }
-    }
-
-    .@{prefix}-table__cell--fixed-right-first {
-      &::before {
-        z-index: -1;
-        background-color: inherit;
-      }
-
-      &::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        content: "";
-        width: @table-fixed-cell-box-shadow-width;
-        transition: box-shadow .3s;
-        pointer-events: none;
-        z-index: -2;
-        transform: translateX(-100%);
-      }
-    }
-
-    &.@{prefix}-table--has-fixed {
-      // 可向左滚动时，左边显示固定列显示阴影，右边同理
-      .@{prefix}-table__content--scrollable-to-left {
-
-        .@{prefix}-table__cell--fixed-left-last::after {
-          box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
-        }
-      }
-
-      .@{prefix}-table__content--scrollable-to-right {
-
-        .@{prefix}-table__cell--fixed-right-first::after {
-          box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
-        }
-      }
-    }
+    .t-table-cell-fixed-before-after();
   }
 
   // 列宽调整表头单元格
@@ -557,7 +507,7 @@
   justify-content: center;
   height: 120px;
   color: @table-color-empty;
-  border-bottom: 1px solid @table-border-color;
+  border-bottom: @border;
 }
 
 .@{prefix}-table__filter-icon,
@@ -597,7 +547,7 @@
     }
 
     .@{prefix}-table__filter-pop-content-button {
-      border-top: 1px solid @table-border-color;
+      border-top: @border;
       padding: 16px;
 
       .t-button + .t-button {
@@ -647,7 +597,7 @@
   display: flex;
   justify-content: flex-end;
   padding: 16px;
-  border-top: 1px solid @table-border-color;
+  border-top: @border;
   > .@{prefix}-button + .@{prefix}-button {
     margin-left: 8px;
   }
@@ -681,8 +631,58 @@
   width: 100%;
 }
 
+.@{prefix}-table__content {
+  overflow: auto;
+}
+
 .@{prefix}-table-td--ellipsis {
   .@{prefix}-popup__reference {
     width: 100%;
   }
+}
+
+.@{prefix}-table--bordered {
+  .@{prefix}-table__content tr:last-child > td {
+    border-bottom: 0;
+  }
+}
+
+// 可向左滚动时，左边显示固定列显示阴影，右边同理
+.@{prefix}-table__content--scrollable-to-left {
+
+  .@{prefix}-table__cell--fixed-left-last::after {
+    box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
+  }
+}
+
+.@{prefix}-table__content--scrollable-to-right {
+
+  .@{prefix}-table__cell--fixed-right-first::after {
+    box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
+  }
+}
+
+.@{prefix}-table--bordered.@{prefix}-table--header-fixed {
+  .@{prefix}-table__content {
+    th:last-child,
+    td:last-child {
+      border-right: @border;
+    }
+  }
+}
+
+.@{prefix}-table__header.@{prefix}-table__header--fixed {
+  position: sticky;
+  top: 0;
+  z-index: @fixed-header-and-column-z-index;
+}
+
+.@{prefix}-table--column-fixed {
+  .@{prefix}-table__cell--fixed-left,
+  .@{prefix}-table__cell--fixed-right {
+    position: sticky;
+    z-index: @fixed-header-and-column-z-index;
+  }
+
+  .t-table-cell-fixed-before-after();
 }
