@@ -34,6 +34,14 @@
 
   .@{inputCls}__inner {
     text-align: center;
+
+    &.@{prefix}-is-disabled {
+      color: @input-number-inner-color-disabled;
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
+    }
   }
 
   &__decrease,
@@ -90,6 +98,10 @@
           color: @input-number-button-color-disabled;
         }
       }
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
     }
   }
 
@@ -118,6 +130,10 @@
         .@{inputCls} {
           border-color: @input-number-button-border-color;
         }
+      }
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
       }
 
       .@{inputCls}:focus {
@@ -276,6 +292,10 @@
         .@{prefix}-icon {
           color: @input-number-button-color-disabled;
         }
+      }
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
       }
     }
   }

@@ -36,6 +36,10 @@
     height: @input-height-default;
     line-height: @input-height-default;
     background-color: transparent;
+
+    &::placeholder {
+      color: @input-placeholder-color;
+    }
   }
   // 底部的额外消息
   &__extra {
@@ -248,9 +252,7 @@
   }
 
   &--prepend&--append {
-
     & > .@{prefix}-input {
-
       .@{prefix}-input__inner {
         border-radius: 0;
       }
