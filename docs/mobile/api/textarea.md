@@ -1,5 +1,5 @@
 ---
-title: Textare 多行文本框
+title: Textarea 多行文本框
 description: 用于多行文本信息输入。
 spline: base
 isComponent: true
