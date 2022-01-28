@@ -13,29 +13,71 @@
 
 // 颜色
 @swiper-navigation-item-bg: fade(#FFFFFF, 22%);
-@swiper-navigation-text-color: rgba(255, 255, 255, 0.55);
-// @swiper
+@swiper-navigation-item-bg-outside: fade(#000000, 26%);
+
+@swiper-navigation-item-bg-hover: fade(#FFFFFF, 55%);
+@swiper-navigation-item-bg-active: fade(#FFFFFF, 100%);
+
+@swiper-navigation-item-outside-bg-hover: @brand-color-8;
+@swiper-navigation-item-outside-bg-active: @brand-color-9;
+
+@swiper-navigation-arrow-color-fraction: fade(#000000, 26%);
+@swiper-navigation-text-color-fraction: fade(#000000, 40%);
+
+@swiper-arrow-active: fade(#FFFFFF, 35%);
+
+// 字体
+@swiper-navigation-font-size-fraction-medium: @font-size-l;
+@swiper-navigation-font-size-fraction-small: @font-size-base;
+@swiper-navigation-font-size-fraction-large:  @font-size-xl;
+@swiper-navigation-line-height-fraction-medium:  @text-line-height-l;
+@swiper-navigation-line-height-fraction-small:  @text-line-height-base;
+@swiper-navigation-line-height-fraction-large:  @text-line-height-xl;
+
+@swiper-arrow-icon-font-size-large:  @icon-l + 8;
+@swiper-arrow-icon-font-size-medium:  @icon-l;
+@swiper-arrow-icon-font-size-small:  @icon-l - 8;
+
 // 尺寸
 @swiper-content-width-default: @spacer * 100; //800px
 @swiper-content-height-default: 280px;
 
-@swiper-navigation-item-width-default: 14px;
-@swiper-navigation-item-height-default: 3px;
+@swiper-navigation-item-width-bars-medium: 14px;
+@swiper-navigation-item-height-bars-medium: 3px;
 
-@swiper-navigation-item-active-width-default: @spacer-3;
-@swiper-navigation-item-height: @spacer-3;
+@swiper-navigation-item-width-bars-large: 21px;
+@swiper-navigation-item-height-bars-large: 4px;
 
-@swiper-navigation-item-width-thumb: 100px; // 36px
-@swiper-navigation-item-height-thumb: 36px; // 36px
+@swiper-navigation-item-width-bars-small: 9px;
+@swiper-navigation-item-height-bars-small: 2px;
 
-@swiper-arrow-height: @spacer-3;
+@swiper-navigation-item-width-bars-medium-active: 24px; // 24px
+@swiper-navigation-item-width-bars-large-active: 36px; // 36px
+@swiper-navigation-item-width-bars-small-active: 15px;
 
-@swiper-navigation-item-font-size: @font-size-base;
-@swiper-navigation-item-font-size-activity: @font-size-l;
+@swiper-arrow-width-small: @spacer-2;
+@swiper-arrow-height-small: @spacer-2;
+@swiper-arrow-width-medium: @spacer-3;
+@swiper-arrow-height-medium: @spacer-3;
+@swiper-arrow-width-large: @spacer-4;
+@swiper-arrow-height-large: @spacer-4;
+
+@swiper-arrow-left-small: @spacer;
+@swiper-arrow-left-medium: @spacer-2;
+@swiper-arrow-left-large: @spacer-3;
+
+@swiper-card-transform-scale-active: scale(1);
+@swiper-card-transform-scale: scale(0.63);
 
 // 间距
-@swiper-navigation-item-margin: 6px;
+@swiper-navigation-item-margin-large: 9px;
+@swiper-navigation-item-margin-medium: 6px;
+@swiper-navigation-item-margin-small: 3px;
 
 // 位置
-@swiper-zIndex-default: 1;
-@swiper-navigation-zIndex-default: @swiper-zIndex-default + 1;
+@swiper-z-index-default: 1;
+@swiper-navigation-z-index-default: @swiper-z-index-default + 1;
+
+// 动画
+@swiper-animation-duration: .5s;
+@swiper-animation-time-fn: ease-in-out;

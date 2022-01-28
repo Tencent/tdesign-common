@@ -11,163 +11,137 @@
   position: relative;
 
   &__wrap {
-    display: inline-block;
+    display: block;
     position: relative;
     height: 100%;
   }
 
   &__content {
     position: relative;
-    z-index: @swiper-zIndex-default;
+    z-index: @swiper-z-index-default;
     overflow: hidden;
-    width: @swiper-content-width-default;
-    height: @swiper-content-height-default;
   }
 
   &__container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    overflow: hidden;
-    z-index: @swiper-zIndex-default;
-  }
-}
-
-// 导航器
-.@{prefix}-swiper__navigation {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  padding: 0;
-  z-index: @swiper-navigation-zIndex-default;
-
-  > li {
-    flex: 1 0 auto;
-    list-style-type: none;
+    position: relative;
     display: flex;
+    flex-direction: row;
+    height: 100%;
+    z-index: @swiper-z-index-default;
+    transition: transform @swiper-animation-duration @swiper-animation-time-fn;
 
-    &:nth-child(1) {
-      margin-left: 0;
+    &__item {
+      flex: 0 0 auto;
+      width: 100%;
+      height: 100%;
+      display: inline-block;
     }
   }
 }
 
-// 默认导航
-.@{prefix}-swiper__navigation-default {
-  .swiper-navigation-item(default);
-}
-
-// 标题文字导航
-.@{prefix}-swiper__navigation-text {
-  .swiper-navigation-item(text);
-}
-
-// 缩略图导航
-.@{prefix}-swiper__navigation-thumb {
-  .swiper-navigation-item(thumb);
-}
-
 .@{prefix}-swiper__arrow {
   display: flex;
-
+  align-items: center;
   i.@{prefix}-icon {
     width: 100%;
     height: 100%;
 
     &::before {
-      font-size: @icon-l;
+      font-size: @swiper-arrow-icon-font-size-medium;
     }
   }
 }
 
-// 默认箭头
 .@{prefix}-swiper__arrow-default {
-
-  .swiper-arrow-default(left);
-  .swiper-arrow-default(right);
-}
-
-// 数字切换箭头
-.@{prefix}-swiper__arrow-number {
-  .position-center(x);
-
-  bottom: -34px;
-  height: 24px;
-  line-height: @text-line-height-l;
-
-  .swiper-arrow-number(left);
-  .swiper-arrow-number(right);
-
-  .@{prefix}-swiper__arrow__text {
-    display: inline-block;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 40%);
-    margin: 0;
-  }
-}
-
-// 文字导航时箭头样式
-.@{prefix}-swiper__arrow-text {
-  .swiper-arrow-bottom(left,text);
-  .swiper-arrow-bottom(right,text);
-}
-
-// 缩略图导航时箭头样式
-.@{prefix}-swiper__arrow-thumb {
-  .swiper-arrow-bottom(left,thumb);
-  .swiper-arrow-bottom(right,thumb);
+  .swiper-arrow(left);
+  .swiper-arrow(right);
 }
 
 // 卡片模式
 .@{prefix}-swiper-card {
   .@{prefix}-swiper__container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: block;
     .@{prefix}-is-active {
-      width: 332px;
-      height: 280px;
+      transform: @swiper-card-transform-scale-active;
     }
   }
-  .@{prefix}-swiper__card__item {
-    flex: 1 0 auto;
-    margin-left: 24px;
-    width: 210px;
-    height: 178px;
+  .@{prefix}-swiper__card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 42%;
+    height: 100%;
+    transform: @swiper-card-transform-scale;
+    transition: transform @swiper-animation-duration @swiper-animation-time-fn;
+  }
+}
 
-    &:nth-child(1) {
-      margin-left: 0;
-    }
+// 导航器，horizontal默认
+.@{prefix}-swiper__navigation {
+  .position-center(x);
+
+  display: flex;
+  flex-direction: row;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  z-index: @swiper-navigation-z-index-default;
+
+  > li {
+    flex: 1 0 auto;
+    list-style-type: none;
+    display: flex;
+  }
+}
+
+// 条状
+.@{prefix}-swiper__navigation-bars {
+  .swiper-navigation-item(bars, inside, horizontal);
+}
+
+// 分式
+.@{prefix}-swiper__navigation-fraction {
+  .swiper-navigation-fraction(medium);
+}
+
+// vertical模式
+.@{prefix}-swiper-vertical {
+  .@{prefix}-swiper__container {
+    flex-direction: column;
+  }
+  .@{prefix}-swiper__navigation {
+    .position-center(y);
+
+    left: auto;
+    right: 0;
+    bottom: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .@{prefix}-swiper__navigation-bars {
+    .swiper-navigation-item(bars, inside, vertical);
   }
 }
 
 // outside模式
 .@{prefix}-swiper-outside {
+
   .@{prefix}-swiper__navigation {
-    bottom: -40px;
-  }
-  // 默认导航
-  .@{prefix}-swiper__navigation-default {
-    bottom: -40px;
-    .swiper-navigation-item(default, outside);
+    bottom: -@swiper-navigation-item-margin-medium * 3;
   }
 
-  // 标题文字导航
-  .@{prefix}-swiper__navigation-text {
-    .swiper-navigation-item(text, outside);
+  .@{prefix}-swiper__navigation-bars {
+    .swiper-navigation-item(bars, outside, horizontal);
   }
 
-  // 缩略图导航
-  .@{prefix}-swiper__navigation-thumb {
-    bottom: -52px;
-    .swiper-navigation-item(thumb, outside);
+  &.@{prefix}-swiper-vertical {
+    .@{prefix}-swiper__navigation {
+      bottom: auto;
+      right: -@swiper-navigation-item-margin-medium * 3;
+    }
+    .@{prefix}-swiper__navigation-bars {
+      .swiper-navigation-item(bars, outside, vertical);
+    }
   }
 }
 
@@ -178,9 +152,86 @@
   }
 }
 
-// inside模式
-.@{prefix}-swiper-vertical {
-  .@{prefix}-swiper__navigation {
-    bottom: 0;
+// large尺寸
+.@{prefix}-swiper-large {
+  .@{prefix}-swiper__arrow {
+    i.@{prefix}-icon {
+      &::before {
+        font-size: @swiper-arrow-icon-font-size-large;
+      }
+    }
+  }
+  .@{prefix}-swiper__arrow-default {
+    .swiper-arrow(left, large);
+    .swiper-arrow(right,large);
+  }
+  .@{prefix}-swiper__navigation-bars {
+    .swiper-navigation-item(bars, inside, horizontal,large);
+  }
+  .@{prefix}-swiper__navigation-fraction {
+    .swiper-navigation-fraction(large);
+  }
+  &.@{prefix}-swiper-outside {
+    .@{prefix}-swiper__navigation {
+      bottom: -@swiper-navigation-item-margin-large * 3;
+    }
+    .@{prefix}-swiper__navigation-bars {
+      .swiper-navigation-item(bars, outside, horizontal,large);
+    }
+  }
+  &.@{prefix}-swiper-vertical {
+    .@{prefix}-swiper__navigation-bars {
+      .swiper-navigation-item(bars, inside, vertical,large);
+    }
+    &.@{prefix}-swiper-outside {
+      .@{prefix}-swiper__navigation {
+        right: -@swiper-navigation-item-margin-large * 3;
+      }
+      .@{prefix}-swiper__navigation-bars {
+        .swiper-navigation-item(bars, outside, vertical,large);
+      }
+    }
+  }
+}
+
+// small尺寸
+.@{prefix}-swiper-small {
+  .@{prefix}-swiper__arrow {
+    i.@{prefix}-icon {
+      &::before {
+        font-size: @swiper-arrow-icon-font-size-small;
+      }
+    }
+  }
+  .@{prefix}-swiper__arrow-default {
+    .swiper-arrow(left, small);
+    .swiper-arrow(right,small);
+  }
+  .@{prefix}-swiper__navigation-bars {
+    .swiper-navigation-item(bars, inside, horizontal,small);
+  }
+  .@{prefix}-swiper__navigation-fraction {
+    .swiper-navigation-fraction(small);
+  }
+  &.@{prefix}-swiper-outside {
+    .@{prefix}-swiper__navigation {
+      bottom: -@swiper-navigation-item-margin-small * 3;
+    }
+    .@{prefix}-swiper__navigation-bars {
+      .swiper-navigation-item(bars, outside, horizontal,small);
+    }
+  }
+  &.@{prefix}-swiper-vertical {
+    .@{prefix}-swiper__navigation-bars {
+      .swiper-navigation-item(bars, inside, vertical,small);
+    }
+    &.@{prefix}-swiper-outside {
+      .@{prefix}-swiper__navigation {
+        right: -@swiper-navigation-item-margin-small * 3;
+      }
+      .@{prefix}-swiper__navigation-bars {
+        .swiper-navigation-item(bars, outside, vertical,small);
+      }
+    }
   }
 }
