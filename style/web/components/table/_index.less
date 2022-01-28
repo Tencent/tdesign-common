@@ -9,8 +9,10 @@
 @import "../../mixins/_scrollbar.less";
 
 @border: 1px solid @table-border-color;
+
+// 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
 @fixed-column-z-index: 10;
-@fixed-header-z-index: 10;
+@fixed-header-z-index: 11;
 
 @padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -72,13 +74,25 @@
     padding: @padding;
     border-bottom: @border;
     line-height: @table-line-height;
-    vertical-align: middle;
     font-weight: normal;
     overflow-wrap: break-word;
     background-color: inherit;
 
     &:not([align]) {
       text-align: left;
+    }
+  }
+
+  th,
+  td {
+    .@{prefix}-vertical-align-top {
+      vertical-align: top;
+    }
+    .@{prefix}-vertical-align-middle {
+      vertical-align: middle;
+    }
+    .@{prefix}-vertical-align-bottom {
+      vertical-align: bottom;
     }
   }
 
