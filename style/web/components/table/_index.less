@@ -583,7 +583,8 @@
 }
 
 .@{prefix}-table__expand-box {
-  padding: 10px 8px;
+  padding: @table-td-padding-vertical-top 0
+    @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   display: inline-grid;
   vertical-align: middle;
   color: @table-icon-default-color;
