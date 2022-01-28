@@ -9,7 +9,8 @@
 @import "../../mixins/_scrollbar.less";
 
 @border: 1px solid @table-border-color;
-@fixed-header-and-column-z-index: 100;
+@fixed-column-z-index: 10;
+@fixed-header-z-index: 10;
 
 @padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -391,7 +392,7 @@
 
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
-      z-index: @fixed-header-and-column-z-index;
+      z-index: @fixed-column-z-index;
     }
 
     .t-table-cell-fixed-before-after();
@@ -674,14 +675,14 @@
 .@{prefix}-table__header.@{prefix}-table__header--fixed {
   position: sticky;
   top: 0;
-  z-index: @fixed-header-and-column-z-index;
+  z-index: @fixed-header-z-index;
 }
 
 .@{prefix}-table--column-fixed {
   .@{prefix}-table__cell--fixed-left,
   .@{prefix}-table__cell--fixed-right {
     position: sticky;
-    z-index: @fixed-header-and-column-z-index;
+    z-index: @fixed-column-z-index;
   }
 
   .t-table-cell-fixed-before-after();
