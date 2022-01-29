@@ -687,10 +687,22 @@
   }
 }
 
+.@{prefix}-table__footer.@{prefix}-table__footer--fixed,
 .@{prefix}-table__header.@{prefix}-table__header--fixed {
   position: sticky;
-  top: 0;
   z-index: @fixed-header-z-index;
+
+  > tr {
+    background-color: @bg-color-secondarycontainer;
+  }
+}
+
+.@{prefix}-table__header.@{prefix}-table__header--fixed {
+  top: 0;
+}
+
+.@{prefix}-table__footer.@{prefix}-table__footer--fixed {
+  bottom: 0;
 }
 
 .@{prefix}-table--column-fixed {
