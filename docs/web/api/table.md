@@ -189,9 +189,21 @@ spline: data
 
 #### 普通加载
 
+普通加载，会在表格上面显示半透明加载层，表格内容不隐藏。
+
+- `loading=true` 显示默认加载状态；`loading=false` 不显示加载状态；`loading`值类型为函数，则表示自定义加载状态文本内容，对于支持插槽的框架还支持同名插槽（不包含加载图标）。
+- `loadingProps` 用于透传加载组件全部属性，可以使用该特性定制化更多个性加载状态。
+
 {{ loading }}
 
 #### 异步加载
+
+使用 `asyncLoading` 定义异步加载状态。
+
+- `asyncLoading=''` 表示非加载状态或加载完成状态；
+- `asyncLoading='load-more'` 表格底部显示“加载更多”；
+- `asyncLoading='loading'` 表格底部显示“正在加载中，请稍后”；
+- `asyncLoading` 值类型为函数，则表示完全自定义底部异步加载内容。
 
 {{ async-loading }}
 

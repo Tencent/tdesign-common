@@ -149,11 +149,12 @@
   }
 
   // @todo: 待优化
-  .@{prefix}-radio,
-  .@{prefix}-checkbox {
+  td > .@{prefix}-radio,
+  td > .@{prefix}-checkbox {
     line-height: 1;
     font-size: 0;
     vertical-align: middle;
+    display: inline-block;
   }
 
   .@{prefix}-loading {
@@ -725,11 +726,17 @@
 }
 
 .@{prefix}-table--column-fixed {
+  .t-table-cell-fixed-before-after();
   .@{prefix}-table__cell--fixed-left,
   .@{prefix}-table__cell--fixed-right {
     position: sticky;
     z-index: @fixed-column-z-index;
   }
+}
 
-  .t-table-cell-fixed-before-after();
+.@{prefix}-table__empty-row {
+  > td {
+    padding: 0;
+    border: 0;
+  }
 }
