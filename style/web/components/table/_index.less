@@ -146,6 +146,22 @@
   .@{prefix}-table__expandable-icon-cell,
   .@{prefix}-table__selection-cell {
     padding: 0;
+
+    + td,
+    + th {
+      padding-left: 0;
+    }
+  }
+
+  .@{prefix}-table__cell--selectable > .@{prefix}-checkbox {
+    vertical-align: middle;
+  }
+
+  .@{prefix}-table__cell--selectable {
+    + td,
+    + th {
+      padding-left: 0;
+    }
   }
 
   // @todo: 待优化
@@ -351,7 +367,8 @@
 
   &:not(&--bordered) &__cell {
     &--selectable {
-      & + td {
+      & + td,
+      & + th {
         padding-left: 0;
       }
     }
@@ -578,7 +595,7 @@
 }
 
 .@{prefix}-table__expand-box {
-  padding: @table-td-padding-vertical-top 0
+  padding: @table-td-padding-vertical-top @table-td-padding-horizontal
     @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   display: inline-grid;
   vertical-align: middle;
@@ -649,6 +666,7 @@
 .@{prefix}-table-td--ellipsis {
   .@{prefix}-popup__reference {
     width: 100%;
+    display: inline;
   }
 }
 
