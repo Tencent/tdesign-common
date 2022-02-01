@@ -163,6 +163,40 @@
 
   // 边框线表格
   &--bordered {
+    td,
+    th {
+      border-left: @border;
+      border-bottom: @border;
+
+      &:first-child {
+        border-left-width: 0;
+
+        &::before {
+          border-left: 0;
+        }
+      }
+
+      &.@{prefix}-table__cell--fixed-left-last {
+        & + th,
+        & + td {
+          border-left-width: 0;
+        }
+
+        &::before {
+          border-right: @border;
+        }
+      }
+
+      &.@{prefix}-table__cell--fixed-left,
+      &.@{prefix}-table__cell--fixed-right {
+        border-left: 0;
+
+        &::before {
+          .bordered();
+        }
+      }
+    }
+
     .@{prefix}-table__content {
       border-left: @border;
     }
@@ -187,44 +221,6 @@
       //     }
       //   }
       // }
-
-      td,
-      th {
-        border-left: @border;
-        border-bottom: @border;
-
-        &.@{prefix}-table__cell--fixed-left-last {
-          & + th,
-          & + td {
-            border-left-width: 0;
-          }
-
-          &::before {
-            border-right: @border;
-          }
-        }
-
-        &.@{prefix}-table__cell--fixed-left,
-        &.@{prefix}-table__cell--fixed-right {
-          border-left: 0;
-
-          &::before {
-            .bordered();
-          }
-        }
-
-        &:first-child {
-          border-left-width: 0;
-
-          &::before {
-            border-left: 0;
-          }
-        }
-      }
-
-      th.@{prefix}-table__header-th--bordered {
-        border-left-width: 1px;
-      }
     }
 
     .@{prefix}-table--loading {
@@ -742,5 +738,17 @@
   > td {
     padding: 0;
     border: 0;
+  }
+}
+
+.@{prefix}-table:not(.@{prefix}-table--bordered) .@{prefix}-table__header.@{prefix}-table--bordered {
+  > tr:first-child > th {
+    border-top: @border;
+  }
+}
+
+.@{prefix}-table__header.@{prefix}-table--bordered {
+  th.@{prefix}-table__header-th--bordered {
+    border-left-width: 1px;
   }
 }
