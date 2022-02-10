@@ -1,16 +1,13 @@
-/**
- * Thanks to https://github.com/ElemeFE/element/blob/dev/packages/input/src/calcTextareaHeight.js
- */
-type RowsType = number | null;
+import { calculateNodeSize } from './helper';
 
-type ResultType = {
+type CalculateStyleType = {
   height?: string,
   minHeight?: string
 };
 
-let hiddenTextarea: HTMLTextAreaElement;
+type LimitType = number | null;
 
-const HIDDEN_TEXTAREA_STYLE = `
+const TEXTAREA_STYLE = `
   min-height:0 !important;
   max-height:none !important;
   height:0 !important;
@@ -22,61 +19,13 @@ const HIDDEN_TEXTAREA_STYLE = `
   right:0 !important
 `;
 
-/**
- * 计算dom元素盒模型尺寸
- * @param targetElement 需要计算盒模型尺寸的元素
- * @returns 计算出各维度尺寸。
- */
-const DOM_STYLE_PROPS = [
-  'padding-top',
-  'padding-bottom',
-  'padding-left',
-  'padding-right',
-  'font-family',
-  'font-weight',
-  'font-size',
-  'font-variant',
-  'text-rendering',
-  'text-transform',
-  'width',
-  'text-indent',
-  'border-width',
-  'box-sizing',
-  'line-height',
-  'letter-spacing',
-];
-
-function calculateNodeSize(targetElement: HTMLElement) {
-  const style = window.getComputedStyle(targetElement);
-
-  const boxSizing = style.getPropertyValue('box-sizing')
-    || style.getPropertyValue('-moz-box-sizing')
-    || style.getPropertyValue('-webkit-box-sizing');
-
-  const paddingSize = (
-    parseFloat(style.getPropertyValue('padding-bottom'))
-    + parseFloat(style.getPropertyValue('padding-top'))
-  );
-
-  const borderSize = (
-    parseFloat(style.getPropertyValue('border-bottom-width'))
-    + parseFloat(style.getPropertyValue('border-top-width'))
-  );
-
-  const sizingStyle = DOM_STYLE_PROPS
-    .map((name) => `${name}:${style.getPropertyValue(name)}`)
-    .join(';');
-
-  return {
-    paddingSize, borderSize, boxSizing, sizingStyle,
-  };
-}
+let hiddenTextarea: HTMLTextAreaElement;
 
 function calcTextareaHeight(
   targetElement: HTMLTextAreaElement,
-  minRows: RowsType = 1,
-  maxRows: RowsType = null,
-): ResultType {
+  minRows: LimitType = 1,
+  maxRows: LimitType = null,
+): CalculateStyleType {
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement('textarea');
     document.body.appendChild(hiddenTextarea);
@@ -89,11 +38,11 @@ function calcTextareaHeight(
     sizingStyle,
   } = calculateNodeSize(targetElement);
 
-  hiddenTextarea.setAttribute('style', `${sizingStyle};${HIDDEN_TEXTAREA_STYLE}`);
+  hiddenTextarea.setAttribute('style', `${sizingStyle};${TEXTAREA_STYLE}`);
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
 
   let height = hiddenTextarea.scrollHeight;
-  const result: ResultType = {};
+  const result: CalculateStyleType = {};
   const isBorderbox = boxSizing === 'border-box';
   const isContentbox = boxSizing === 'content-box';
 
