@@ -6,14 +6,19 @@ on:
     types: [opened, synchronize, reopened]
     
 jobs:
-  MAIN_PULL_REQUEST:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: check_email
         run: |
-          log_emails=$(git log --pretty=format:"%ae" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo $log_emails && echo "邮箱校验非法" && exit 2;else echo "邮箱校验通过";fi
+          log_emails=$(git log --pretty=format:"%ae %ce" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo $log_emails && echo "邮箱校验非法" && exit 2;else echo "邮箱校验通过";fi
         shell: bash
+        
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 16
