@@ -1,6 +1,6 @@
 ---
 title: SwipeCell 滑动单元格
-description: 用来包裹dom元素，实现左滑、或右滑弹出隐藏的操作按钮。
+description: 用来承载列表中的更多操作，通过左右滑动来展示，按钮的宽度固定高度根据列表高度而变化。
 spline: base
 isComponent: true
 toc: false
@@ -16,11 +16,11 @@ toc: false
 
 ### 左侧菜单
 
-{{ leftMenu }}
+{{ left-menu }}
 
 ### 右侧菜单
 
-{{ rightMenu }}
+{{ right-menu }}
 
 ### 显示状态
 
