@@ -265,11 +265,12 @@
     &::after {
       content: "";
       position: absolute;
-      top: ((@radio-size - @radio-dot-size) / 2 - 1px);
-      left: ((@radio-size - @radio-dot-size) / 2 - 1px);
+      top: 0;
+      left: 0;
+      width: @radio-size - @radio-input-border-width * 2;
+      height: @radio-size - @radio-input-border-width * 2;
+      transform: scale(.6);
       opacity: @radio-opacity-transparent;
-      width: @radio-dot-size;
-      height: @radio-dot-size;
       border-radius: @border-radius-50;
       background-color: @radio-dot-color;
       transition: all @anim-duration-base @anim-time-fn-ease-out;
