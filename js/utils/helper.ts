@@ -136,3 +136,53 @@ export function getCharacterLength(str: string, maxCharacter?: number) {
 export function pxCompat(param: string | number) {
   return typeof param === 'number' ? `${param}px` : param;
 }
+
+/**
+ * 计算dom元素盒模型尺寸
+ * @param targetElement 需要计算盒模型尺寸的元素
+ * @returns 计算出各维度尺寸。
+ */
+const DOM_STYLE_PROPS = [
+  'padding-top',
+  'padding-bottom',
+  'padding-left',
+  'padding-right',
+  'font-family',
+  'font-weight',
+  'font-size',
+  'font-variant',
+  'text-rendering',
+  'text-transform',
+  'width',
+  'text-indent',
+  'border-width',
+  'box-sizing',
+  'line-height',
+  'letter-spacing',
+];
+
+export function calculateNodeSize(targetElement: HTMLElement) {
+  const style = window.getComputedStyle(targetElement);
+
+  const boxSizing = style.getPropertyValue('box-sizing')
+    || style.getPropertyValue('-moz-box-sizing')
+    || style.getPropertyValue('-webkit-box-sizing');
+
+  const paddingSize = (
+    parseFloat(style.getPropertyValue('padding-bottom'))
+    + parseFloat(style.getPropertyValue('padding-top'))
+  );
+
+  const borderSize = (
+    parseFloat(style.getPropertyValue('border-bottom-width'))
+    + parseFloat(style.getPropertyValue('border-top-width'))
+  );
+
+  const sizingStyle = DOM_STYLE_PROPS
+    .map((name) => `${name}:${style.getPropertyValue(name)}`)
+    .join(';');
+
+  return {
+    paddingSize, borderSize, boxSizing, sizingStyle,
+  };
+}
