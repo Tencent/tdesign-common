@@ -83,7 +83,10 @@
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
-      "npm run lint:css && npm run lint:js"
+      "stylelint"
+    ],
+    "**/*.{js,ts}": [
+      "eslint --max-warnings 0"
     ]
   }
 }
