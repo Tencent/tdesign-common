@@ -21,7 +21,6 @@
     padding: @popup-padding;
     font-size: @popup-content-font-size;
     line-height: @popup-content-line-height;
-    transition: max-height @popup-flow-duration @anim-time-fn-easing;
   }
 
   &__reference {
@@ -47,7 +46,6 @@
 
 .@{prefix}-popup[data-popper-placement^="bottom"],
 .@{prefix}-popup[data-popper-placement^="top"] {
-
   .@{prefix}-popup__content {
     margin: @popup-content-margin 0;
 
@@ -59,12 +57,15 @@
 
 .@{prefix}-popup[data-popper-placement^="left"],
 .@{prefix}-popup[data-popper-placement^="right"] {
-
   .@{prefix}-popup__content {
     margin: 0 @popup-content-margin;
 
     &--arrow {
       margin: 0 @popup-content-arrow-spacer;
+    }
+
+    &--text {
+      max-width: 480px;
     }
   }
 }
@@ -99,3 +100,7 @@
 .@{popup-flow}-leave-active {
   transition: @popup-flow-transition-leave;
 }
+
+.expand-animation(top, expand, ~"[data-popper-placement^=top]");
+.expand-animation(bottom, expand, ~"[data-popper-placement^=bottom]");
+// .expand-animation(right, expand-right);
