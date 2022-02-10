@@ -38,7 +38,7 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/experimental-utils": "^2.24.0",
+    "@typescript-eslint/experimental-utils": "^5.11.0",
     "@typescript-eslint/parser": "^4.29.0",
     "@typescript-eslint/typescript-estree": "^2.34.0",
     "babel-jest": "~27.4.2",
@@ -83,7 +83,10 @@
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
-      "npm run lint:css && npm run lint:js"
+      "stylelint"
+    ],
+    "**/*.{js,ts}": [
+      "eslint --max-warnings 0"
     ]
   }
 }
