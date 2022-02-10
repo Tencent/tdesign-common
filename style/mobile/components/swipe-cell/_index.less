@@ -2,8 +2,8 @@
 
 @import "./_var.less";
 .@{prefix}-swipe-cell {
-  background: @swipe-cell-background-color;
-  border-bottom: 1px solid @swipe-cell-border-color;
+  background: @bg-color-disabled;
+  border-bottom: 1px solid @gray-color-1;
   overflow: hidden;
 
   &__wrapper {
@@ -23,7 +23,7 @@
     z-index: 1;
     transform: translate3d(-100%, 0, 0);
     text-align: left;
-    background: @swipe-cell-right-menu-background-color;
+    background: @bg-color-disabled;
 
     & > div {
       height: 100%;
@@ -43,7 +43,7 @@
     z-index: 1;
     transform: translate3d(100%, 0, 0);
     text-align: right;
-    background: @swipe-cell-right-menu-background-color;
+    background: @bg-color-disabled;
 
     & > div {
       height: 100%;
