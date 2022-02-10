@@ -22,11 +22,16 @@ const HIDDEN_TEXTAREA_STYLE = `
   right:0 !important
 `;
 
-const SIZING_PROPS = [
-  'letter-spacing',
-  'line-height',
+/**
+ * 计算dom元素盒模型尺寸
+ * @param targetElement 需要计算盒模型尺寸的元素
+ * @returns 计算出各维度尺寸。
+ */
+const DOM_STYLE_PROPS = [
   'padding-top',
   'padding-bottom',
+  'padding-left',
+  'padding-right',
   'font-family',
   'font-weight',
   'font-size',
@@ -35,13 +40,13 @@ const SIZING_PROPS = [
   'text-transform',
   'width',
   'text-indent',
-  'padding-left',
-  'padding-right',
   'border-width',
   'box-sizing',
+  'line-height',
+  'letter-spacing',
 ];
 
-function calculateNodeStyling(targetElement: HTMLTextAreaElement) {
+function calculateNodeSize(targetElement: HTMLElement) {
   const style = window.getComputedStyle(targetElement);
 
   const boxSizing = style.getPropertyValue('box-sizing')
@@ -58,20 +63,20 @@ function calculateNodeStyling(targetElement: HTMLTextAreaElement) {
     + parseFloat(style.getPropertyValue('border-top-width'))
   );
 
-  const sizingStyle = SIZING_PROPS
+  const sizingStyle = DOM_STYLE_PROPS
     .map((name) => `${name}:${style.getPropertyValue(name)}`)
     .join(';');
 
   return {
-    sizingStyle, paddingSize, borderSize, boxSizing,
+    paddingSize, borderSize, boxSizing, sizingStyle,
   };
 }
 
-export default function calcTextareaHeight(
+function calcTextareaHeight(
   targetElement: HTMLTextAreaElement,
   minRows: RowsType = 1,
   maxRows: RowsType = null,
-) {
+): ResultType {
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement('textarea');
     document.body.appendChild(hiddenTextarea);
@@ -82,40 +87,45 @@ export default function calcTextareaHeight(
     borderSize,
     boxSizing,
     sizingStyle,
-  } = calculateNodeStyling(targetElement);
+  } = calculateNodeSize(targetElement);
 
   hiddenTextarea.setAttribute('style', `${sizingStyle};${HIDDEN_TEXTAREA_STYLE}`);
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
 
   let height = hiddenTextarea.scrollHeight;
   const result: ResultType = {};
+  const isBorderbox = boxSizing === 'border-box';
+  const isContentbox = boxSizing === 'content-box';
 
-  if (boxSizing === 'border-box') {
+  if (isBorderbox) {
     height += borderSize;
-  } else if (boxSizing === 'content-box') {
+  } else if (isContentbox) {
     height -= paddingSize;
   }
 
   hiddenTextarea.value = '';
   const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
+  hiddenTextarea?.parentNode?.removeChild(hiddenTextarea);
+  hiddenTextarea = null;
+
+  const calcHeight = (rows: number) => {
+    let rowsHeight = singleRowHeight * rows;
+    if (isBorderbox) {
+      rowsHeight = rowsHeight + paddingSize + borderSize;
+    }
+    return rowsHeight;
+  };
 
   if (minRows !== null) {
-    let minHeight = singleRowHeight * minRows;
-    if (boxSizing === 'border-box') {
-      minHeight = minHeight + paddingSize + borderSize;
-    }
+    const minHeight = calcHeight(minRows);
     height = Math.max(minHeight, height);
     result.minHeight = `${minHeight}px`;
   }
   if (maxRows !== null) {
-    let maxHeight = singleRowHeight * maxRows;
-    if (boxSizing === 'border-box') {
-      maxHeight = maxHeight + paddingSize + borderSize;
-    }
-    height = Math.min(maxHeight, height);
+    height = Math.min(calcHeight(maxRows), height);
   }
   result.height = `${height}px`;
-  hiddenTextarea.parentNode && hiddenTextarea.parentNode.removeChild(hiddenTextarea);
-  hiddenTextarea = null;
   return result;
 }
+
+export default calcTextareaHeight;
