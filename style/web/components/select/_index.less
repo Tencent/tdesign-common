@@ -232,9 +232,16 @@
   box-shadow: @select-dropdown-shadow;
   border-radius: @select-border-radius;
 
-  > div {
+  &-inner {
     padding: @select-dropdown-padding;
   }
+}
+
+// 抹平 ul li 自带样式
+.@{prefix}-select__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .@{prefix}-select__dropdown.@{prefix}-popup {

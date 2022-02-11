@@ -11,19 +11,34 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
+@import "../../_variables.less";
+
 // 颜色
 @textarea-placeholder-color: @text-color-placeholder;
 @textarea-text-color: inherit;
 @textarea-limit-color: @text-color-placeholder;
+@textarea-bg-color-default: @bg-color-specialcomponent;
 @textarea-bg-color-disabled: @bg-color-component-disabled;
 @textarea-color-text-disabled: @text-color-disabled;
+@textarea-border-color-success: @success-color;
+@textarea-border-color-warning: @warning-color;
+@textarea-border-color-error: @error-color;
+
+@textarea-text-color-success: @success-color;
+@textarea-text-color-warning: @warning-color;
+@textarea-text-color-error: @error-color;
+
+@textarea-text-color-tips: @text-color-placeholder;
 
 // 尺寸
 @textarea-height: 56px;
+@textarea-tips-min-height: @spacer-3;
+@textarea-tips-line-height: @text-line-height-s;
 
 // 字体
 @textarea-font-size: @font-size-base;
 @textarea-limit-font-size: @font-size;
+@textarea-tips-font-size: @font-size-s;
 
 // 间距
 @textarea-padding: 5px @spacer;
@@ -35,6 +50,9 @@
 @textarea-border-color-hover: @brand-color;
 @textarea-border-color-focus: @brand-color;
 @textarea-box-shadow-color-focus: @brand-color-focus;
+@textarea-box-shadow-color-success-focus: @success-color-focus;
+@textarea-box-shadow-color-warning-focus: @warning-color-focus;
+@textarea-box-shadow-color-error-focus: @error-color-focus;
 @textarea-border-radius: @border-radius;
 
 // 行高

@@ -8,7 +8,7 @@
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint **/*.{css,wxss,less} --allow-empty-input",
     "lint:js": "npx eslint . --max-warnings 0 && npx eslint ./js/**/*.* --max-warnings 0",
-    "lint:fix": "npm run lint:css --fix && npx eslint . --max-warnings 0 --fix",
+    "lint:fix": "stylelint **/*.{css,wxss,less} --allow-empty-input --fix && npx eslint . --max-warnings 0 --fix",
     "test": "npm run test:unit",
     "test:unit": "jest --config test/script/jest.unit.conf.js --coverage",
     "test:watch": "jest --config test/script/jest.unit.conf.js --watch",
@@ -83,7 +83,10 @@
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
-      "npm run lint:css && npm run lint:js"
+      "stylelint"
+    ],
+    "**/*.{js,ts}": [
+      "eslint --max-warnings 0"
     ]
   }
 }

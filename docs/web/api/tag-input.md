@@ -1,17 +1,19 @@
 ---
 title: TagInput 标签输入框
-description: 定义：用于输入文本标签。
+description: 用于输入文本标签。
 isComponent: true
 spline: data
 ---
 
 ### 基础标签输入框
 
-基于 Tag、Input 等组件开发，支持这些组件的全部特性。
-
-使用 `overTagsDisplayType` 控制标签超出时的呈现方式：横向滚动显示和换行显示，默认为横向滚动。
-
 {{ base }}
+
+### 标签数量超出的输入框
+
+使用 `excessTagsDisplayType` 控制标签超出时的呈现方式：横向滚动显示和换行显示，默认为横向滚动。
+
+{{ excess }}
 
 
 ### 有数量限制的标签输入框
@@ -19,6 +21,12 @@ spline: data
 使用 `max` 控制最大标签数量。
 
 {{ max }}
+
+### 不同尺寸的标签输入框
+
+提供大、中（默认）、小三种不同尺寸的的标签输入框。
+
+{{ size }}
 
 ### 可折叠过多标签的标签输入框
 

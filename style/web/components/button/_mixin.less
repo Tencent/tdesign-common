@@ -6,7 +6,9 @@
   overflow: hidden;
   font-size: @btn-font-default;
   outline: none;
-  border: 0;
+  border-width: @btn-border-width;
+  border-style: solid;
+  border-color: transparent;
   background-color: transparent;
   cursor: pointer;
   display: inline-flex;
@@ -20,11 +22,11 @@
   touch-action: manipulation;
 }
 
-.button-size(@btn-height, @btn-font-size, @btn-icon-size, @padding-horizontal, @border-width: @btn-border-width) {
+.button-size(@btn-height, @btn-font-size, @btn-icon-size, @padding-horizontal) {
   height: @btn-height;
   font-size: @btn-font-size;
-  padding-left: @padding-horizontal - @border-width;
-  padding-right: @padding-horizontal - @border-width;
+  padding-left: @padding-horizontal - @btn-border-width;
+  padding-right: @padding-horizontal - @btn-border-width;
 
   .@{prefix}-icon,
   .@{prefix}-loading {

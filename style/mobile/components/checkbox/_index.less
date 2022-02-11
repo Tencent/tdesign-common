@@ -6,26 +6,26 @@
   align-items: center;
 
   &__label-wrap {
-    // border-bottom: 1px solid #f5f5f5;
     width: 100%;
     display: block;
-    // padding-bottom: 16px;
   }
 
-  &__icon-right-wrap {
-    // position: absolute;
-    // right: 18px;
-    // top: 15px;
-    // display: flex;
+  &__uncheck-icon {
+    color: @icon-unchecked-color;
+  }
+
+  &__checked-icon {
+    color: @icon-checked-color;
+  }
+
+  &__checked__disable-icon {
+    color: @icon-unchecked-color;
   }
 
   &__content-wrap {
     display: flex;
     align-items: flex-start;
-    // padding-top: 16px;
-    // background-color: #fff;
     width: 100%;
-    // padding-left: 18px;
     position: relative;
     overflow: hidden;
   }
@@ -44,7 +44,7 @@
     height: @checkbox-icon-height;
     width: @checkbox-icon-width;
     text-align: center;
-    margin-right: 9px;
+    margin-right: @icon-right-margin;
     display: flex;
     align-items: center;
     flex-shrink: 0;
@@ -54,7 +54,7 @@
     &.@{prefix}-is-checked {
       font-size: @checkbox-icon-checked;
       justify-content: center;
-      color: #0052d9;
+      color: @icon-checked-color;
     }
 
     &.@{prefix}-is-disabled {
@@ -77,7 +77,7 @@
     display: block;
     font-size: @checkbox-content-font-size;
     color: @checkbox-content-color;
-    margin-top: 4px;
+    margin-top: @checkbox-content-inner-top-margin;
   }
 
   &__icon {
@@ -88,14 +88,14 @@
   }
 
   &__label-wrap-left {
-    padding-right: 48px;
+    padding-right: @label-wrap-left-padding;
   }
 
   &__icon-disable-center {
     display: block;
-    height: 15px;
-    width: 15px;
-    background-color: #eee;
+    height: @icon-disable-center-height;
+    width: @icon-disable-center-width;
+    background-color: @icon-disable-background-color;
     position: absolute;
     border-radius: 50%;
     left: 50%;

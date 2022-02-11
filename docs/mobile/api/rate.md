@@ -30,9 +30,9 @@ toc: false
 
 {{ size }}
 
-### 只读状态
+### 禁用状态
 
-{{ readonly }}
+{{ disabled }}
 
 ### 自定义颜色
 

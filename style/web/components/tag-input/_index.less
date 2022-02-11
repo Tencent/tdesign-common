@@ -7,17 +7,23 @@
 .@{prefix}-tag-input {
 
   .@{prefix}-tag {
-    margin-right: 4px;
+    margin-right: @spacer-s;
     animation: t-zoom-out .1s ease-in-out;
   }
 
   &.@{prefix}-input {
+    padding-left: @spacer-s;
     overflow: hidden;
   }
 
   .@{prefix}-input__inner {
     min-width: 80px;
     width: auto;
+  }
+
+  .@{prefix}-tag-input__prefix,
+  .@{prefix}-input__prefix:empty {
+    margin-left: @spacer-s;
   }
 }
 
@@ -33,14 +39,14 @@
     height: auto;
 
     &.t-input--prefix > .t-input__prefix {
-      display: inline-block;
+      display: inline;
       text-align: left;
     }
 
     .@{prefix}-tag-input__suffix-clear {
       position: absolute;
-      right: 8px;
-      bottom: 8px;
+      right: @spacer;
+      bottom: @spacer;
     }
   }
 }
@@ -55,7 +61,7 @@
 .@{prefix}-tag-input__prefix {
   width: max-content;
   display: inline-block;
-  margin-right: 8px;
+  margin-right: @spacer;
 }
 
 /** 光标动画 */
@@ -73,7 +79,7 @@
   display: inline-block;
   border-left: 1px solid black;
   height: 17px;
-  margin-right: 4px;
+  margin-right: @spacer-s;
   opacity: 1;
   animation: t-tag-cursor-show .8s ease infinite;
 }

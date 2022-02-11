@@ -6,7 +6,7 @@
 
 @themes: primary, success, warning, default, danger;
 
-.genVariant(@fontColorWeight; @borderColorWeight; @backgroundColorWeight; @hoverColorWeight) {
+.genVariant(@fontColorWeight; @borderColorWeight; @backgroundColorWeight;) {
 
   &.@{prefix}-tag-default {
     color: @tag-default-color;
@@ -51,15 +51,19 @@
   user-select: none;
 
   &-dark {
-    .genVariant(0, 100, 100, 100);
+    .genVariant(0, 100, 100);
   }
 
   &-light {
-    .genVariant(100, 10, 10, 10);
+    .genVariant(100, 10, 10);
   }
 
-  &-plain {
-    .genVariant(100, 50, 0, 5);
+  &-outline {
+    .genVariant(100, 50, 0);
+  }
+
+  &-light-outline {
+    .genVariant(100, 50, 10);
   }
 
   .@{prefix}-tag__content {

@@ -127,11 +127,6 @@
       background-color: transparent;
       cursor: not-allowed;
     }
-    &.@{prefix}-is-disabled {
-      color: @cascader-item-color-disabled;
-      background-color: transparent;
-      cursor: not-allowed;
-    }
 
     &.@{prefix}-is-expanded {
       background: @cascader-item-background-color-expanded;
@@ -262,7 +257,7 @@
     }
   }
 
-  .@{prefix}-input__inner {
+  .@{prefix}-input {
     border: 0;
     padding: 0;
     margin-left: @cascader-content-margin-left;
@@ -283,6 +278,9 @@
     background-color: @cascader-tag-background-color-disabled;
     color: @cascader-item-color-disabled;
     border-color: @cascader-border-color-disabled;
+    > .@{prefix}-cascader__placeholder, .@{prefix}-cascader__icon {
+      color: @cascader-item-color-disabled;
+    }
 
     .@{prefix}-cascader__content {
       color: @cascader-color-empty;
@@ -313,7 +311,7 @@
     min-height: @cascader-height-default;
     font-size: @cascader-font-size-default;
 
-    .@{prefix}-input__inner {
+    .@{prefix}-input {
       height: @cascader-input-inner-height;
       line-height: @cascader-input-inner-height;
     }
@@ -325,7 +323,7 @@
     font-size: @cascader-font-size-s;
     min-height: @cascader-height-s;
 
-    .@{prefix}-input__inner {
+    .@{prefix}-input {
       height: calc(@cascader-height-s - 2px);
       line-height: calc(@cascader-height-default - 4px);
     }
