@@ -18,13 +18,9 @@ toc: false
 
 {{ year-month }}
 
-### 选择月日
+### 选择时分
 
-{{ month-date }}
-
-### 选择时间
-
-{{ time }}
+{{ hour-minute }}
 
 ### 禁用日期
 
