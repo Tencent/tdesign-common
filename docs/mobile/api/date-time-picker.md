@@ -12,7 +12,7 @@ toc: false
 
 ### 选择年月日
 
-{{ year-month-day }}
+{{ year-month-date }}
 
 ### 选择年月
 
@@ -20,8 +20,12 @@ toc: false
 
 ### 选择月日
 
-{{ month-day }}
+{{ month-date }}
 
 ### 选择时间
 
 {{ time }}
+
+### 禁用日期
+
+{{ disable-date }}
