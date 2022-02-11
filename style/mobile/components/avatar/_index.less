@@ -7,6 +7,7 @@
 .@{prefix}-avatar {
   position: relative;
   display: inline-block;
+  .avatar-size(@avatar-size-medium,@avatar-font-medium,@avatar-icon-medium);
 
   &__inner {
     position: relative;
@@ -14,15 +15,14 @@
     vertical-align: middle;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    background: @avatar-bg-color;
     box-sizing: content-box;
-    color: @avatar-text-color;
     white-space: nowrap;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: @avatar-bg-color;
+    color: @avatar-text-color;
   }
-  .avatar-size(@avatar-size-medium,@avatar-font-medium,@avatar-icon-medium);
 
   &--circle {
     .@{prefix}-avatar__inner {

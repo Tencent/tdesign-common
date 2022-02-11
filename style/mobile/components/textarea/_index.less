@@ -1,0 +1,39 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../mixins/_index.less";
+
+&.@{prefix}-textarea {
+  position: relative;
+  background-color: @textarea-background-color;
+
+  textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: @textarea-height;
+    padding: @textarea-padding;
+    text-align: left;
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    resize: none;
+    outline: none;
+    font-size: @textarea-font-size;
+  }
+
+  textarea::placeholder {
+    color: @textarea-placeholder-text-color;
+  }
+
+  &--count {
+    position: absolute;
+    text-align: right;
+    color: @textarea-counter-color;
+    font-size: @textarea-counter-font-size;
+    line-height: @textarea-line-height;
+    right: @textarea-limit-position-right;
+    bottom: @textarea-limit-position-bottom;
+  }
+}

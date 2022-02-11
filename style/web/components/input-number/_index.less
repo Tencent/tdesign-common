@@ -29,12 +29,19 @@
   }
 
   .@{inputCls} {
-    margin: 0 (@spacer / 2);
     color: @input-number-inner-color;
   }
 
   .@{inputCls}__inner {
     text-align: center;
+
+    &.@{prefix}-is-disabled {
+      color: @input-number-inner-color-disabled;
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
+    }
   }
 
   &__decrease,
@@ -91,6 +98,10 @@
           color: @input-number-button-color-disabled;
         }
       }
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
     }
   }
 
@@ -119,6 +130,10 @@
         .@{inputCls} {
           border-color: @input-number-button-border-color;
         }
+      }
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
       }
 
       .@{inputCls}:focus {
@@ -278,6 +293,10 @@
           color: @input-number-button-color-disabled;
         }
       }
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
     }
   }
 
@@ -290,4 +309,20 @@
     top: 1px;
     border-top-right-radius: calc(@border-radius - 1px);
   }
+}
+
+.@{prefix}-align-left > .@{prefix}-input__inner {
+  text-align: left;
+}
+
+.@{prefix}-align-center > .@{prefix}-input__inner {
+  text-align: center;
+}
+
+.@{prefix}-align-right > .@{prefix}-input__inner {
+  text-align: right;
+}
+
+.@{prefix}-input-number__decrease + .@{prefix}-input {
+  margin-left: @spacer-s;
 }
