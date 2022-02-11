@@ -670,12 +670,6 @@
   }
 }
 
-.@{prefix}-table--bordered {
-  .@{prefix}-table__content {
-    border-bottom: 0;
-  }
-}
-
 // 可向左滚动时，左边显示固定列显示阴影，右边同理
 .@{prefix}-table__content--scrollable-to-left {
 
@@ -688,6 +682,17 @@
 
   .@{prefix}-table__cell--fixed-right-first::after {
     box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
+  }
+}
+
+.@{prefix}-table--bordered.@{prefix}-table--header-fixed:not(.@{prefix}-table--multiple-header) {
+  tfoot,
+  thead,
+  tbody {
+    th:last-child,
+    td:last-child {
+      border-right: @border;
+    }
   }
 }
 
@@ -714,6 +719,13 @@
 // 冻结表尾行时，最后一行非冻结行去除下边框
 .@{prefix}-table--bordered .@{prefix}-table__content {
   .@{prefix}-table__row--without-border-bottom > td {
+    border-bottom: 0;
+  }
+}
+
+.@{prefix}-table--bordered {
+  tbody > tr:last-child > td,
+  tfoot > tr:last-child > td {
     border-bottom: 0;
   }
 }
