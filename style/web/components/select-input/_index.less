@@ -1,7 +1,36 @@
 @import "../../base.less";
 
-// @import "./_var.less";
+@import "./_var.less";
 
 .@{prefix}-select-input {
   width: 100%;
+}
+
+.@{prefix}-select-input--borderless {
+  &.@{prefix}-select-input,
+  .@{prefix}-input {
+    border: 0;
+    box-shadow: none;
+    width: auto;
+    display: inline-flex;
+    transition: background-color .2s linear;
+
+    > input {
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: @select-input-focus-bg;
+    }
+  }
+
+  .@{prefix}-input--focused {
+    background-color: @select-input-focus-bg;
+  }
+}
+
+.@{prefix}-select-input.@{prefix}-select-input--multiple {
+  .@{prefix}-input > input {
+    width: 80px;
+  }
 }
