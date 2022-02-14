@@ -35,6 +35,7 @@
     display: flex;
     border-top: 0;
     white-space: nowrap;
+    align-items: center;
 
     .@{prefix}-divider__inner-text {
       padding: @divider-inner-text-padding;
@@ -44,11 +45,8 @@
     &::before,
     &::after {
       content: "";
-      position: relative;
-      top: 50%;
       width: 50%;
       border-top: @divider-border-width solid @divider-border-color;
-      transform: translateY(calc(50% - .5px));
     }
 
     &-left {
