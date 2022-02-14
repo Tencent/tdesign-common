@@ -12,16 +12,16 @@ toc: false
 
 ### 选择年月日
 
-{{ year-month-day }}
+{{ year-month-date }}
 
 ### 选择年月
 
 {{ year-month }}
 
-### 选择月日
+### 选择时分
 
-{{ month-day }}
+{{ hour-minute }}
 
-### 选择时间
+### 禁用日期
 
-{{ time }}
+{{ disable-date }}
