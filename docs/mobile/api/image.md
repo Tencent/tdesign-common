@@ -1,5 +1,5 @@
 ---
-title: Image 按钮
+title: Image 图片
 description: 增强版的img标签，提供多种图片填充方式，并且支持图片懒加载、加载中提示、加载失败提示。
 spline: base
 isComponent: true
