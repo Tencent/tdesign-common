@@ -1,0 +1,43 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+
+  &__status {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: @image-background-color;
+    color: @image-text-color;
+    font-size: @image-icon-size;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.@{prefix}-image--circle {
+  border-radius: @border-radius-50;
+}
+
+.@{prefix}-image--round {
+  border-radius: @border-radius;
+}
+
+.@{prefix}-image--square {
+  border-radius: 0;
+}
