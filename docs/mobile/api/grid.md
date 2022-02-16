@@ -14,3 +14,6 @@ toc: false
 
 {{ desc }}
 
+### 带徽标宫格
+
+{{ badge }}
