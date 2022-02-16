@@ -520,9 +520,13 @@ a.@{prefix}-menu__item {
 
 // menu
 .@{prefix}-menu {
-  color: @menu-theme-light;
+  color: @menu-color-light;
   font-size: @menu-fontsize;
   .list-style-none();
+
+  &--dark {
+    color: @menu-color-dark;
+  }
 
   &__logo {
     &:not(:empty) {
