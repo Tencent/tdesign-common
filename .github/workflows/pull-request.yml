@@ -22,7 +22,41 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - name: Install dependencies
-        run: npm install
-        shell: bash
+      - uses: actions/cache@v2
+        env:
+          cache-name: cache-nodemodules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - run: npm install
       - run: npm run lint
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 100
+      - uses: marceloprado/has-changed-path@v1
+        id: changed-web
+        with:
+          paths: style/web
+
+      - name: init web deploy
+        uses: actions/setup-node@v2
+        if: steps.changed-web.outputs.changed == 'true'
+        with:
+          node-version: 16
+    
+      - run: cd style/web && npm install && npm run build && rm -rf node_modules
+      - run: pwd 
+      - run: zip -r web.zip ./
+      - name: upload _site artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: web
+          path: web.zip
+          retention-days: 5
