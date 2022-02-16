@@ -34,4 +34,12 @@
   &--hover:active {
     background-color: @grid-item-hover-bg-color;
   }
+
+  &--bordered {
+    position: relative;
+
+    &::after {
+      .hairline-right(@cell-border-color);
+    }
+  }
 }
