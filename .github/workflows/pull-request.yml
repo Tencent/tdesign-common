@@ -48,7 +48,7 @@ jobs:
   build-web:
     runs-on: ubuntu-latest
     needs: modify
-    if: need.modify.outputs.web-changed === 'true'
+    if: needs.modify.outputs.web-changed === 'true'
     steps:
       - uses: actions/checkout@v2
         with:
