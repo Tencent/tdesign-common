@@ -57,7 +57,7 @@ spline: data
 
 {{ expandable }}
 
-### 自定义单元格/表头的表格
+### 自定义的表格
 
 为满足复杂的业务需求，单元格和表头均支持自定义。
 
@@ -84,6 +84,15 @@ spline: data
 - 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({ col, colIndex, row, rowIndex, type })`，其中 `type` 值为 `cell`。使用排序、过滤等功能时不能使用该方法。
 
 {{ custom-header }}
+
+#### 自定义列的表格
+
+自定义设置需要展示的列，可以通过 `columnController` 字段来设置，其中：
+- `columnController.fields` 来设置可以自定义的列，不传表示全部可自定义。
+- `columnController.displayType` 用来设置自定义列的内容展示的方式，有 `auto-width` 和 `fixed-width` 可选。
+
+
+{{ custom-col }}
 
 ### 可排序的表格
 
