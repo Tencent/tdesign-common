@@ -67,7 +67,8 @@ web
 
 #### 启动
 
-`style/web`目录下，启动项目，主要用于 less 编译。html 可通过本地服务的方式实现热更新（如 VS Code 的 Live Server）
+`style/web`目录下，启动项目，主要用于 less 编译。
+html 可通过本地服务的方式实现热更新（如 VS Code 的 Live Server）
 
 ```
 npm run start
