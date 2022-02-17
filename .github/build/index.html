@@ -407,7 +407,7 @@
     </div>
 </body>
 <script>
-window.componentsList = ${{ componentsList }};</script>
+window.componentsList = {{ componentsList }};</script>
 <script>
     document.getElementById('files').innerHTML = componentsList.map(com=>{
         return `<li><a href="/components/${com}" class="icon icon icon-html icon-text-html" title="${com}.html"><span class="name">${com}.html</span></a></li>`
