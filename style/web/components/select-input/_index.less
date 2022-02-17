@@ -6,6 +6,7 @@
   width: 100%;
 }
 
+/** 无边框模式 */
 .@{prefix}-select-input--borderless {
   &.@{prefix}-select-input,
   .@{prefix}-input {
@@ -21,16 +22,35 @@
 
     &:hover {
       background-color: @select-input-focus-bg;
+      border-radius: @select-input-border-radius;
     }
   }
 
   .@{prefix}-input--focused {
     background-color: @select-input-focus-bg;
   }
-}
 
-.@{prefix}-select-input.@{prefix}-select-input--multiple {
-  .@{prefix}-input > input {
-    width: 80px;
+  /** 无边框模式的多选 */
+  &.@{prefix}-select-input--multiple:not(.@{prefix}-select-input--empty) {
+    input {
+      display: none;
+    }
+
+    :hover {
+      input {
+        display: inline-block;
+        width: @select-input-default-filter-width;
+      }
+    }
+
+    &.@{prefix}-select-input--popup-visible {
+      input {
+        display: inline-block;
+        width: @select-input-default-filter-width;
+      }
+      .@{prefix}-input {
+        background-color: @select-input-focus-bg;
+      }
+    }
   }
 }
