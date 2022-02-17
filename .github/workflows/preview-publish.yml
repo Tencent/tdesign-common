@@ -28,6 +28,8 @@ jobs:
             echo "文件不存在" && exit 1
           fi
 
+      - run: ls
+
       - name: save PR id
         id: pr
         run: echo "::set-output name=id::$(<web/pr-id.txt)"

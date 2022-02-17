@@ -35,68 +35,42 @@ jobs:
       - run: npm install
       - run: npm run lint
 
+  modify:
+    runs-on: ubuntu-latest
+    outputs:
+      web-changed: ${{ steps.web-changed.outputs.changed }}
+    steps:
+      - uses: marceloprado/has-changed-path@v1
+        id: web-changed
+        with:
+          paths: style/web
+
   build-web:
     runs-on: ubuntu-latest
+    needs: modify
+    if: need.modify.outputs.web-changed == 'true'
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 100
-      - uses: marceloprado/has-changed-path@v1
-        id: changed-web
-        with:
-          paths: style/web
 
       - name: init web deploy
         uses: actions/setup-node@v2
-        if: steps.changed-web.outputs.changed == 'true'
         with:
           node-version: 16
     
       - run: cd style/web && npm install && npm run build && rm -rf node_modules
 
-      - run: export device=web && node .github/build
-
-      - run: cd style/web && zip -r web.zip ./
-
       - name: Save PR number
         run: echo ${{ github.event.number }} > ./style/web/pr-id.txt
+
+      - run: export device=web && node .github/build
+
+      - run: cd style && zip -r web.zip web
 
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: web
-          path: style/web/web.zip
-          retention-days: 5
-
-  build-mobile:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 100
-      - uses: marceloprado/has-changed-path@v1
-        id: changed-mobile
-        with:
-          paths: style/mobile
-
-      - name: init mobile deploy
-        uses: actions/setup-node@v2
-        if: steps.changed-mobile.outputs.changed == 'true'
-        with:
-          node-version: 16
-    
-      - run: cd style/mobile && npm install && npm run build && rm -rf node_modules
-
-      - run: export device=mobile && node .github/build
-
-      - run: cd style/mobile && zip -r mobile.zip ./
-
-      - name: Save PR number
-        run: echo ${{ github.event.number }} > ./style/mobile/pr-id.txt
-
-      - name: upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: mobile
-          path: style/mobile/mobile.zip
+          path: style/web.zip
           retention-days: 5
