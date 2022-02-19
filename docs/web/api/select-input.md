@@ -58,9 +58,13 @@ spline: data
 
 ### 可自定义选中项的筛选器输入框
 
+使用 `valueDisplay` 或者 `tag` 自定义选中项。
+
 {{ custom-tag }}
 
 ### 无边框模式的单选筛选器
+
+`borderless` 用于控制是否呈现为无边框模式。
 
 {{ borderless }}
 
