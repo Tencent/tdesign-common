@@ -20,9 +20,11 @@
     }
   }
 
-  .@{prefix}-input__inner {
-    min-width: 80px;
-    width: auto;
+  &:hover,
+  .@{prefix}-input--focused {
+    .@{prefix}-input__inner {
+      min-width: 60px;
+    }
   }
 
   .@{prefix}-tag-input__prefix,

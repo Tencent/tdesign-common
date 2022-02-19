@@ -50,3 +50,7 @@ spline: form
 ### 不同对齐方式的输入框
 
 {{ align }}
+
+### 自适应宽度的输入框
+
+{{ auto-width }}
