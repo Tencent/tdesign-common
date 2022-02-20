@@ -31,7 +31,7 @@ spline: data
 
 {{ autocomplete }}
 
-### 不通状态的筛选器输入框
+### 不同状态的筛选器输入框
 
 使用 `status` 和 `tips` 控制状态和提示文案。
 
