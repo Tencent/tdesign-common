@@ -11,8 +11,6 @@ spline: data
 
 基于 TagInput、Input、Popup 等组件开发，支持这些组件的全部特性。将主要应用于 Select、Cascader、TreeSelect、DatePicker、TimePicker 等筛选器组件。
 
-
-
 ### 单选筛选器输入框
 
 可使用 SelectInput 自由定制任何风格的单选选择器。
@@ -30,6 +28,15 @@ spline: data
 可使用 SelectInput 自由定制任何风格的自动填充筛选器。
 
 {{ autocomplete }}
+
+### 有前置或后置内容的输入框
+
+- 前置内容使用 `label` 自定义。
+- 后置内容使用 `suffix` 自定义。
+- 前置图标使用 `prefixIcon` 自定义。
+- 后置图标使用 `suffixIcon` 自定义。
+
+{{ label-suffix }}
 
 ### 不同状态的筛选器输入框
 
