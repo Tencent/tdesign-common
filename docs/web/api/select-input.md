@@ -9,7 +9,7 @@ spline: data
 
 统一筛选器逻辑包含：输入框、下拉框、无边框模式等，可以使用筛选器输入框定制复杂的筛选器。
 
-基于 TagInput、Input、Popup 等组件开发，支持这些组件的全部特性。将主要应用于 Select、Cascader、TreeSelect、DatePicker、TimePicker 等筛选器组件。
+基于 `TagInput` `Input` `Popup` 等组件开发，支持这些组件的全部特性。将主要应用于 `Select` `Cascader` `TreeSelect` `DatePicker` `TimePicker` 等筛选器组件。
 
 ### 单选筛选器输入框
 
