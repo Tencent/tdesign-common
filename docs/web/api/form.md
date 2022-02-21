@@ -1,6 +1,6 @@
 ---
 title: Form 表单
-description: 用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。 
+description: 用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。
 isComponent: true
 spline: form
 ---
@@ -51,7 +51,7 @@ spline: form
 
 表单重置分两类：全部数据重置为空和全部数据重置为初始值。
 
-可以使用 `reseType` 控制，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值。
+可以使用 `resetType` 控制，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值。
 
 {{ reset }}
 
