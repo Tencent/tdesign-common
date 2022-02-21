@@ -20,9 +20,11 @@
     }
   }
 
-  .@{prefix}-input__inner {
-    min-width: 80px;
-    width: auto;
+  &:hover,
+  .@{prefix}-input--focused {
+    .@{prefix}-input__inner {
+      min-width: 60px;
+    }
   }
 
   .@{prefix}-tag-input__prefix,
@@ -47,10 +49,10 @@
       text-align: left;
     }
 
-    .@{prefix}-tag-input__suffix-clear {
+    .@{prefix}-input__suffix-icon {
       position: absolute;
       right: @spacer;
-      bottom: @spacer;
+      bottom: 0;
     }
   }
 }

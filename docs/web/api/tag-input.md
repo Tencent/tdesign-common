@@ -54,3 +54,7 @@ spline: data
 使用 `tagProps` 控制标签的所有属性，如：颜色设置。
 
 {{ theme }}
+
+### 宽度自适应的标签输入框
+
+{{ auto-width }}
