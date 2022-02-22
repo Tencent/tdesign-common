@@ -55,6 +55,7 @@ function calcTextareaHeight(
   hiddenTextarea.value = '';
   const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
   hiddenTextarea?.parentNode?.removeChild(hiddenTextarea);
+  // @ts-ignore
   hiddenTextarea = null;
 
   const calcHeight = (rows: number) => {
