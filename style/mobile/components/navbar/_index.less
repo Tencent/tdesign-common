@@ -11,6 +11,10 @@
   justify-content: center;
   font-size: @navbar-font-size;
 
+  & .@{prefix}-icon {
+    font-size: @navbar-icon-font-size;
+  }
+
   &__back {
     cursor: pointer;
     position: absolute;
@@ -23,8 +27,6 @@
 
     &--arrow {
       margin-right: 8px;
-      width: @navbar-back-width;
-      height: @navbar-back-width;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -51,7 +53,6 @@
       margin-left: @navbar-horizontal-padding;
       font-style: normal;
       display: inline-block;
-      height: @navbar-back-width;
     }
   }
 }
