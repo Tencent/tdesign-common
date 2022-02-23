@@ -54,3 +54,11 @@ spline: form
 ### 自适应宽度的输入框
 
 {{ auto-width }}
+
+### 可格式化数据的输入框
+
+{{ format }}
+
+### 带长度限制的输入框
+
+{{ max-length-count }}
