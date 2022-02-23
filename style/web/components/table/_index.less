@@ -190,7 +190,7 @@
     td,
     th {
       border-left: @border;
-      border-bottom: @border;
+      // border-bottom: @border;
 
       &:first-child {
         border-left-width: 0;
@@ -201,17 +201,17 @@
       }
 
       &.@{prefix}-table__cell--fixed-left-last {
-        & + th,
-        & + td {
-          border-left-width: 0;
-        }
+        // & + th,
+        // & + td {
+        //   border-left-width: 0;
+        // }
 
         &::before {
           border-right: @border;
         }
       }
 
-      &.@{prefix}-table__cell--fixed-left:not(:first-child),
+      // &.@{prefix}-table__cell--fixed-left:not(:first-child),
       &.@{prefix}-table__cell--fixed-right {
         border-left: 0;
 
@@ -710,6 +710,10 @@
 // 可向左滚动时，左边显示固定列显示阴影，右边同理
 .@{prefix}-table__content--scrollable-to-left {
 
+  // .@{prefix}-table__cell--fixed-left-last {
+  //   border-right: @border;
+  // }
+
   .@{prefix}-table__cell--fixed-left-last::after {
     box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
   }
@@ -733,12 +737,19 @@
   }
 }
 
-.@{prefix}-table__footer.@{prefix}-table__footer--fixed,
+.@{prefix}-table__footer,
 .@{prefix}-table__header.@{prefix}-table__header--fixed {
   position: sticky;
   z-index: @fixed-header-z-index;
+}
 
+.@{prefix}-table__footer {
   > tr {
+    background-color: @bg-color-secondarycontainer;
+  }
+}
+.@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
+  > tr > th {
     background-color: @bg-color-secondarycontainer;
   }
 }
@@ -764,6 +775,10 @@
   tbody > tr:last-child > td,
   tfoot > tr:last-child > td {
     border-bottom: 0;
+  }
+
+  tfoot > tr:first-child > td {
+    border-top: @border;
   }
 }
 
@@ -797,9 +812,11 @@
   }
 }
 
-.@{prefix}-table__header.@{prefix}-table--bordered {
-  th.@{prefix}-table__header-th--bordered {
-    border-left-width: 1px;
+.@{prefix}-table--multiple-header {
+  .@{prefix}-table__header {
+    th.@{prefix}-table__header-th--bordered {
+      border-left-width: 1px;
+    }
   }
 }
 
