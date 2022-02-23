@@ -22,7 +22,7 @@ toc: false
 
 {{ right-menu }}
 
-### 显示状态
+### 左右两侧都有菜单
 
 {{ btns }}
 

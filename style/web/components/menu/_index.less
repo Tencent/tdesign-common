@@ -41,7 +41,6 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__logo:not(:empty) {
     height: 100%;
-    font-size: 0;
     margin-right: 32px;
   }
 
@@ -521,9 +520,13 @@ a.@{prefix}-menu__item {
 
 // menu
 .@{prefix}-menu {
-  color: @menu-theme-light;
+  color: @menu-color-light;
   font-size: @menu-fontsize;
   .list-style-none();
+
+  &--dark {
+    color: @menu-color-dark;
+  }
 
   &__logo {
     &:not(:empty) {

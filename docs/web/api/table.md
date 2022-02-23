@@ -65,7 +65,11 @@ spline: data
 
 {{ expandable }}
 
-### 自定义单元格的表格
+### 自定义的表格
+
+为满足复杂的业务需求，单元格和表头均支持自定义。
+
+#### 自定义单元格的表格
 
 单元格默认使用 `row[colKey]` 渲染数据内容，自定义单元格有以下 3 种方式：
 
@@ -96,7 +100,13 @@ spline: data
 - 默认输出 `foot` 字符串，如果 `foot` 类型为函数，则作为表尾渲染函数自定义表尾内容。
 - 对于有插槽特性的框架，支持插槽，使用 `foot` 的值作为插槽名称。
 
-{{ custom-footer }}
+#### 可进行列配置的表格
+
+自定义设置需要展示的列，可以通过 `columnController` 字段来设置，其中：
+- `columnController.fields` 来设置可以自定义的列，不传表示全部可自定义。
+- `columnController.displayType` 用来设置自定义列的内容展示的方式，有 `auto-width` 和 `fixed-width` 可选。
+
+{{ custom-col }}
 
 ### 可排序的表格
 

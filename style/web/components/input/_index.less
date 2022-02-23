@@ -17,6 +17,7 @@
   &--focused {
     border-color: @input-border-color-default-focus;
     box-shadow: @input-box-shadow-focus;
+    z-index: 1;
   }
 
   :focus-visible {
@@ -268,7 +269,6 @@
   min-height: @input-tips-min-height;
   line-height: @input-tips-line-height;
   font-size: @input-tips-font-size;
-  display: inline-block;
 }
 
 .@{prefix}-input__tips--normal {
@@ -293,4 +293,15 @@
 
 .@{prefix}-align-right > .@{prefix}-input__inner {
   text-align: right;
+}
+
+.@{prefix}-input__input-pre {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.@{prefix}-input--auto-width {
+  width: fit-content;
+  min-width: 60px;
 }
