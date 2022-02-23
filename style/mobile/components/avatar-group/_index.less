@@ -9,13 +9,10 @@
   align-items: center;
 
   .@{prefix}-avatar {
-    &__inner {
-      border: 2px solid @avatar-border-color;
-    }
+    .avatar-group-border--width();
   }
 
   &.@{prefix}-avatar--offset-right {
-
     & .@{prefix}-avatar {
       &:not(:last-child) {
         .avatar-group-offset-right(@avatar-group-offset-medium);
