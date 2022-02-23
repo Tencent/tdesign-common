@@ -11,8 +11,11 @@ toc: false
 
 {{ base }}
 
+### 下拉刷新
+
+{{ pull-refresh }}
+
 ### 错误提示
 
 {{ err-tip }}
-
 
