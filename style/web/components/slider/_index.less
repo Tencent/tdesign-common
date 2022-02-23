@@ -138,9 +138,13 @@
     color: @slider-text;
     top: @slider-text-top;
     line-height: @slider-text-line-height;
-    // transform: translateX(-50%);
+    transform: translateX(-50%);
     margin-top: @slider-border-radius;
     cursor: pointer;
+
+    &:first-child {
+      transform: translateX(0%);
+    }
 
     &:last-child {
       transform: translateX(-100%);
