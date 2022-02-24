@@ -1,16 +1,17 @@
 //颜色
 @loading-color: @primary-color-10;
 
-// 字号
-@loading-text-line-height: 22px;
+// 字体
+@loading-text-line-height: @text-line-height;
 
+@loading-text-size: @font-size-base;
+@loading-text-size-small: @font-size-s;
+@loading-text-size-large: @font-size-l;
+
+// icon
 @loading-icon-size: 22.75px;
 @loading-icon-size-small: 19.5px;
 @loading-icon-size-large: 26px;
-
-@loading-text-size: 14px;
-@loading-text-size-small: 12px;
-@loading-text-size-large: 16px;
 
 // 间距
 @loading-text-margin-left: 5px;
@@ -20,10 +21,10 @@
 @dot-height: 10px;
 @dot-radius: calc(@dotWidth / 2);
 
-@dot-color: #0052D9;
+@dot-color: @primary-color-8;
 @dot-bg-color: @dot-color;
-@dot-before-color: rgba(0, 82, 217, .15);
-@dot-after-color: rgba(0, 82, 217, .15);
+@dot-before-color: @primary-color-1;
+@dot-after-color: @primary-color-1;
 
 @dot-spacing: calc(@dotWidth / 2 + @dotWidth);
 
