@@ -12,6 +12,10 @@ toc: false
 
 {{ base }}
 
+页面进度条加载
+
+{{ bar }}
+
 图标加文字横向
 
 {{ horz }}
@@ -23,6 +27,10 @@ toc: false
 纯文字
 
 {{ pure-text }}
+
+延迟加载
+
+{{ delay }}
 
 ### 规格
 
