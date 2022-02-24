@@ -201,11 +201,6 @@
       }
 
       &.@{prefix}-table__cell--fixed-left-last {
-        // & + th,
-        // & + td {
-        //   border-left-width: 0;
-        // }
-
         &::before {
           border-right: @border;
         }
@@ -232,19 +227,6 @@
     .@{prefix}-table__content {
       border: @border;
       border-radius: @border-radius;
-
-      // th {
-      //   border-left: @border;
-      //   border-bottom: @border;
-
-      //   &:first-child {
-      //     border-left: 0;
-
-      //     &::before {
-      //       border-left: 0;
-      //     }
-      //   }
-      // }
     }
 
     .@{prefix}-table--loading {
@@ -266,6 +248,11 @@
 
     .@{prefix}-table__cell--sort-trigger {
       margin-left: auto;
+    }
+
+    // 合并单元格，隐藏最后一行的下边框，避免和外层边框重复
+    .@{prefix}-table__td-last-row {
+      border-bottom: none;
     }
   }
 
