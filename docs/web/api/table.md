@@ -47,23 +47,11 @@ spline: data
 
 #### 固定表头和列的表格
 
-支持同时固定表头和固定列。
+支持同时固定表头和固定列。`fixedRows` 用于设置冻结首行和尾行数量，示例：`[2, 2]`。
 
 表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。如果希望表格列宽自适应，设置 `table-layout: auto` 即可，这种模式下固定列必须指定表格内容的总宽度，即 `tableContentWidth`，内容宽度的值必须大于表格可见宽度。
 
 {{ fixed-header-col }}
-
-### 可展开和收起的表格
-
-表格提供可收纳功能，展开后可以进一步查看详细内容。
-
-- `expandedRowKeys` 用于存储展开行的值，支持非受控属性 `defaultExpandedRowKeys`。
-- `expandedRow` 用于定义展开行显示的具体内容，参数有 `{ row, rowIndex }`。
-- `expandIcon` 用于自定义展开图标，值为 true 显示默认图标，值为 false 不显示图标，值为函数则表示完全自定义图标。
-- `expandOnRowClick` 表示是否允许点击表格行时展开。
-- 展开行发生变化时会触发展开行变化事件。
-
-{{ expandable }}
 
 ### 自定义单元格的表格
 
@@ -98,11 +86,24 @@ spline: data
 
 {{ custom-footer }}
 
+### 可展开和收起的表格
+
+表格提供可收纳功能，展开后可以进一步查看详细内容。
+
+- `expandedRowKeys` 用于存储展开行的值，支持非受控属性 `defaultExpandedRowKeys`。
+- `expandedRow` 用于定义展开行显示的具体内容，参数有 `{ row, rowIndex }`。
+- `expandIcon` 用于自定义展开图标，值为 true 显示默认图标，值为 false 不显示图标，值为函数则表示完全自定义图标。
+- `expandOnRowClick` 表示是否允许点击表格行时展开。
+- 展开行发生变化时会触发展开行变化事件。
+
+{{ expandable }}
+
 ### 可进行列配置的表格
 
 自定义设置需要展示的列，可以通过 `columnController` 字段来设置，其中：
 - `columnController.fields` 来设置可以自定义的列，不传表示全部可自定义。
 - `columnController.displayType` 用来设置自定义列的内容展示的方式，有 `auto-width` 和 `fixed-width` 可选。
+- 支持透传 CheckboxGroup 和 Dialog 组件等全部属性。
 
 {{ custom-col }}
 
