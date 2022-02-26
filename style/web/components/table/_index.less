@@ -626,6 +626,8 @@
   vertical-align: middle;
   color: @table-icon-default-color;
   cursor: pointer;
+  transition: all .2s ease 0s;
+  align-items: center;
 
   &:hover {
     color: @table-icon-active-color;
@@ -685,7 +687,14 @@
 }
 
 .@{prefix}-table__content {
-  overflow: auto;
+  overflow: hidden;
+}
+
+.@{prefix}-table--header-fixed,
+.@{prefix}-table--column-fixed {
+  .@{prefix}-table__content {
+    overflow: auto;
+  }
 }
 
 .@{prefix}-table-td--ellipsis {
