@@ -246,10 +246,6 @@
       }
     }
 
-    .@{prefix}-table__cell--sort-trigger {
-      margin-left: auto;
-    }
-
     // 合并单元格，隐藏最后一行的下边框，避免和外层边框重复
     .@{prefix}-table__td-last-row {
       border-bottom: none;
@@ -492,14 +488,19 @@
   }
 }
 
+// 表头右侧图标设计规范：有边框时，排序图标靠近右侧边框；无边框时，排序图标紧跟标题内容
+.@{prefix}-table--bordered .@{prefix}-table__cell--sortable .@{prefix}-table__cell--title {
+  justify-content: space-between;
+}
+
 .@{prefix}-table__cell--sortable {
   position: relative;
 
   .@{prefix}-table__cell--title {
-    display: flex;
+    // display: flex;
 
     & > div:first-child {
-      flex: 1;
+      // flex: 1;
       text-align: inherit;
     }
 
@@ -512,6 +513,10 @@
   .@{prefix}-table__cell--sort-trigger {
     width: 20px;
     text-align: center;
+
+    svg {
+      vertical-align: initial;
+    }
   }
 }
 
@@ -574,10 +579,6 @@
   }
 }
 
-.@{prefix}-table__sort-icon {
-  position: absolute;
-}
-
 .@{prefix}-table__filter-pop {
 
   .@{prefix}-table__filter-pop-content {
@@ -613,10 +614,19 @@
   color: @table-icon-active-color;
 }
 
-.@{prefix}-table__double-icons {
+.@{prefix}-table__double-icons,
+.@{prefix}-table__double-icons > span {
   display: inline-grid;
-  vertical-align: middle;
-  width: 14px;
+  height: @table-line-height;
+  .@{prefix}-table__sort-icon {
+    height: @table-line-height-half;
+  }
+  .@{prefix}-table-sort-desc {
+    margin-top: -12px;
+  }
+  .@{prefix}-table-sort-asc {
+    margin-top: 4px;
+  }
 }
 
 .@{prefix}-table__expand-box {
