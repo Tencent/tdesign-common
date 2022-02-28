@@ -17,7 +17,7 @@
       vertical-align: top;
       font-size: @font-size-base;
       position: relative;
-      color: @border-level-2-color;
+      color: @text-level-4-color;
 
       &__number {
         display: block;
@@ -27,9 +27,16 @@
         width: @step-connector-default-icon-width;
         height: @step-connector-default-icon-width;
         text-align: center;
-        border: 1px solid @border-level-2-color;
+        border: 1px solid @text-level-4-color;
         border-radius: 50%;
-        color: @border-level-2-color;
+        color: @text-level-4-color;
+      }
+    }
+
+    &__inner__icon {
+      .@{prefix}-step-icon__number {
+        width: @step-horizontal-icon-width;
+        height: @step-horizontal-icon-width;
       }
     }
 
@@ -39,7 +46,7 @@
 
     &-title {
       position: relative;
-      color: @step-title-color;
+      color: @text-level-4-color;
       text-align: center;
       line-height: 22px;
       font-size: @font-size-base;
@@ -47,7 +54,7 @@
     }
 
     &-description {
-      color: @text-level-3-color;
+      color: @text-level-4-color;
       line-height: 20px;
       font-size: @font-size-s;
       margin-bottom: @spacer;
@@ -70,6 +77,11 @@
         width: calc(100% - @step-connector-default-icon-width);
         left: calc(50% + @step-connector-default-icon-width / 2);
         top: (@step-connector-default-icon-width / 2);
+      }
+      .@{prefix}-step__inner__icon:after {
+        width: calc(100% - @step-horizontal-icon-width);
+        left: calc(50% + @step-horizontal-icon-width / 2);
+        top: (@step-horizontal-icon-width / 2);
       }
     }
 
