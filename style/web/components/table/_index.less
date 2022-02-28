@@ -489,18 +489,20 @@
 }
 
 // 表头右侧图标设计规范：有边框时，排序图标靠近右侧边框；无边框时，排序图标紧跟标题内容
-.@{prefix}-table--bordered .@{prefix}-table__cell--sortable .@{prefix}-table__cell--title {
-  justify-content: space-between;
+.@{prefix}-table--bordered {
+  .@{prefix}-table__cell--sortable,
+  .@{prefix}-table__cell--filterable {
+    .@{prefix}-table__cell--title {
+      justify-content: space-between;
+    }
+  }
 }
 
 .@{prefix}-table__cell--sortable {
   position: relative;
 
   .@{prefix}-table__cell--title {
-    // display: flex;
-
     & > div:first-child {
-      // flex: 1;
       text-align: inherit;
     }
 

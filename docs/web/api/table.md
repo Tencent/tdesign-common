@@ -247,3 +247,11 @@ spline: data
 #### 树形结构行选中
 
 {{ tree-select }}
+
+### 懒加载的表格
+
+{{ lazy }}
+
+### 虚拟滚动的表格
+
+{{ virtual-scroll }}
