@@ -171,6 +171,7 @@ spline: data
 组件默认内置：复选框、单选按钮、输入框等类型的筛选器。同时，也可以自定义任何筛选器，如示例中的日期选择器。
 
 - 表格属性 `filterValue` 用于设置过滤功能默认值，示例：`{ firstName: '' }`。
+- 表格属性 `filterIcon` 用于设置自定义过滤图标。
 - 筛选器值发生变化时，会触发 `filterChange` 事件。
 - 列配置 `filter.type` 决定使用哪一种筛选器，可选值有：`single/multiple/input`，分别表示：单选按钮筛选器、复选框筛选器、输入框筛选器。
 - 列配置 `filter.list` 用于配置当前筛选器可选值有哪些，仅当 `filter.type` 等于 single 或 multiple 时有效。
