@@ -2,7 +2,7 @@
 
 @import "./_var.less";
 
-.@{prefix}-preview {
+.@{prefix}-image-viewer {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,19 +22,19 @@
     background: #0009;
   }
 
-  .preview-index {
+  .image-viewer-index {
     position: absolute;
-    bottom: @preview-index-bottom;
+    bottom: @image-viewer-index-bottom;
     left: 0;
     width: 100%;
     text-align: center;
     color: #fff;
-    font-size: @preview-index-fontsize;
-    text-shadow: @preview-index-text-shadow;
+    font-size: @image-viewer-index-fontsize;
+    text-shadow: @image-viewer-index-text-shadow;
     z-index: 101;
   }
 
-  .preview-container {
+  .image-viewer-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,13 +50,13 @@
     width: 100%;
   }
 
-  .preview-items {
+  .image-viewer-items {
     list-style: none;
     left: 0;
     .relative();
   }
 
-  .preview-item-wrap {
+  .image-viewer-item-wrap {
     height: auto;
     .relative();
 
