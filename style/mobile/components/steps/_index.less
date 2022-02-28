@@ -26,6 +26,12 @@
 
       &--finish {
         .default-number-status(finish);
+        .@{prefix}-step-title {
+          color: @text-level-1-color;
+        }
+        .@{prefix}-step-description {
+          color: @text-level-3-color;
+        }
       }
 
       &--process {
@@ -33,13 +39,18 @@
         .@{prefix}-step-title {
           color: @primary-color;
         }
+        .@{prefix}-step-description {
+          color: @text-level-3-color;
+        }
       }
 
       &--error {
         .default-number-status(error);
-
         .@{prefix}-step-title {
           color: @step-error-title-color;
+        }
+        .@{prefix}-step-description {
+          color: @text-level-3-color;
         }
       }
     }
