@@ -12,7 +12,7 @@ spline: data
 因此，表格组件有三个：`BaseTable`（基础表格）、`PrimaryTable`（主表格）、`EnhancedTable`（增强型表格），三种表格都会导出。默认导出 `PrimaryTable`。
 
 - `BaseTable`（基础表格）包含一些基础功能：固定表头、固定列、冻结行、加载态、分页、多级表头、合并单元格、自定义单元格、自定义表头、自定义表尾、文本省略、对齐方式、表格事件、尺寸、行类名、边框、斑马线、悬浮态、空数据等
-- `PrimaryTable`（主表格）包含一些更高级的功能：行展开/收起、过滤、排序、异步加载、拖拽排序等。`PrimaryTable` 包含 `BaseTable` 的所有功能
+- `PrimaryTable` 或 `Table`（主表格）包含一些更高级的功能：行展开/收起、过滤、排序、异步加载、拖拽排序等。`PrimaryTable` 和 `Table` 包含 `BaseTable` 的所有功能。`Table` 和 `PrimaryTable` 完全等价。
 - `EnhancedTable`（增强型表格）包含一些更复杂的功能：树形结构等。`EnhancedTable` 包含 `BaseTable` 和 `PrimaryTable` 的所有功能
 
 一般情况下，直接使用 `PrimaryTable` 即可满足 90% 的需求，即默认导出的表格。涉及到非常复杂的需求后，使用 `EnhancedTable`。
@@ -239,9 +239,14 @@ spline: data
 
 #### 树形结构显示
 
-如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。如果数据中的子节点字段不是 `children`，可以使用 `tree.childreKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
+如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。
 
-除了定义子节点别名，树形结构还支持定义缩进距离、第几列显示为树结点展开等。更多信息查看 API 文档的 `tree` 属性。
+- 如果数据中的子节点字段不是 `children`，可以使用 `tree.childreKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
+- `tree.indent` 用于设置树结点缩进距离。
+- `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
+- `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。
+
+更多信息查看 API 文档的 `tree` 属性。
 
 {{ tree }}
 

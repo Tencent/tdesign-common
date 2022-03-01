@@ -158,6 +158,7 @@
     + td,
     + th {
       padding-left: 0;
+      padding-right: 0;
     }
   }
 
@@ -827,4 +828,13 @@
 
 .@{prefix}-table__header.@{prefix}-table__header--multiple > tr {
   background-color: var(--td-bg-color-container);
+}
+
+.@{prefix}-table__tree-op-icon {
+  margin-right: @spacer-2;
+  cursor: pointer;
+
+  &:hover {
+    color: @table-icon-active-color;
+  }
 }
