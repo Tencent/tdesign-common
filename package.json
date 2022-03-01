@@ -37,11 +37,12 @@
     "@babel/preset-flow": "^7.12.1",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/experimental-utils": "^2.24.0",
     "@typescript-eslint/parser": "^4.29.0",
     "@typescript-eslint/typescript-estree": "^2.34.0",
-    "babel-jest": "~27.4.2",
+    "babel-jest": "~27.5.1",
     "commitizen": "^4.2.2",
     "commitlint": "^15.0.0",
     "conventional-changelog-cli": "^2.1.1",
@@ -50,16 +51,16 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "husky": "^7.0.4",
-    "jest": "^26.0.0",
+    "jest": "^27.5.1",
     "jest-html-reporter": "^3.1.3",
-    "jest-watch-typeahead": "^0.6.1",
+    "jest-watch-typeahead": "^1.0.0",
     "lint-staged": "~12.1.2",
     "min-indent": "^1.0.1",
     "postcss-less": "^5.0.0",
     "stylelint": "^14.1.0",
     "stylelint-config-standard": "^24.0.0",
-    "ts-jest": "^26.0.0",
-    "typescript": "^3.8.3"
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
   },
   "browserslist": [
     "> 3%",
@@ -83,7 +84,10 @@
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
-      "npm run lint:css && npm run lint:js"
+      "stylelint"
+    ],
+    "**/*.{js,ts}": [
+      "eslint --max-warnings 0"
     ]
   }
 }

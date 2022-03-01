@@ -6,6 +6,7 @@
 
 .@{prefix}-input {
   background-color: #fff;
+
   .@{prefix}-cell__title {
     width: @input-label-width;
     flex: none;
@@ -84,75 +85,29 @@
     }
   }
 
-  &--textarea {
-    padding: @input-vertical-padding @input-horizontal-padding;
+  &.@{prefix}-input__error {
+    align-items: flex-start;
 
-    textarea {
-      display: block;
-      box-sizing: border-box;
-      width: 100%;
-      min-width: 0;
-      margin: 0;
-      padding: 0;
-      text-align: left;
-      background-color: transparent;
-      border: 0;
-      resize: none;
-      font-size: @input-font-size;
+    .@{prefix}-cell__note {
+      flex-direction: column;
     }
 
-    textarea::placeholder {
-      color: @text-level-3-color;
-    }
-
-    &-label {
-      position: relative;
-      padding: @input-vertical-padding @input-horizontal-padding;
-      font-size: @input-font-size;
-      color: @input-label-text-color;
-
-      &::after {
-        left: @input-horizontal-padding;
-        .hairline-bottom();
-      }
-    }
-  }
-
-  &--count {
-    text-align: right;
-    height: 22px;
-    font-size: 14px;
-    color: @input-counter-color;
-    line-height: 22px;
-  }
-}
-
-.@{prefix}-input__error {
-  align-items: flex-start;
-
-  .@{prefix}-cell__note {
-    flex-direction: column;
-  }
-
-  .@{prefix}-input {
-    &__control {
-      color: @input-error-text-color;
-
-      &::placeholder {
+    .@{prefix}-input {
+      &__control {
         color: @input-error-text-color;
-      }
-    }
 
-    &__error-msg {
-      text-align: left;
-      padding-top: @spacer-1;
-      font-size: @input-error-msg-font-size;
-      line-height: 20px;
-      width: 100%;
+        &::placeholder {
+          color: @input-error-text-color;
+        }
+      }
+
+      &__error-msg {
+        text-align: left;
+        padding-top: @spacer-1;
+        font-size: @input-error-msg-font-size;
+        line-height: 20px;
+        width: 100%;
+      }
     }
   }
 }
-
-// .@{prefix}-input__disabled {
-//   color: @input-disabled-text-color;
-// }

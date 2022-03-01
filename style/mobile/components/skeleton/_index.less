@@ -1,0 +1,101 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-skeleton {
+  &__row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    color: @gray-color-2;
+    margin-right: 15px;
+
+    &:first-child:last-child,
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__paragraph {
+    flex: 1;
+  }
+
+  &--avatar-text {
+    display: flex;
+  }
+
+  &--type {
+    &-text {
+      width: 100%;
+      height: 16px;
+      border-radius: 3px;
+    }
+
+    &-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  }
+
+  &--animation {
+    &-gradient {
+      position: relative;
+      overflow-x: hidden;
+
+      &::after {
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0%),
+          @skeleton-animation-gradient,
+          rgba(255, 255, 255, 0%)
+        );
+        animation: t-skeleton--gradient 1.5s linear 2s infinite;
+      }
+    }
+
+    &-flashed {
+      animation: t-skeleton--flashed 2s linear 2s infinite;
+    }
+  }
+
+  @keyframes t-skeleton--gradient {
+    0% {
+      transform: translateX(-100%) skewX(-15deg);
+    }
+
+    100% {
+      transform: translateX(100%) skewX(-15deg);
+    }
+  }
+
+  @keyframes t-skeleton--flashed {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      background-color: @skeleton-animation-flashed;
+      opacity: .3;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}

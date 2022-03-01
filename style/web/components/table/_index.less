@@ -36,6 +36,14 @@
     pointer-events: none;
   }
 
+  &__top-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
   &__content {
     position: relative;
     .scrollbar();
@@ -486,6 +494,35 @@
         &.v-leave-active {
           display: none;
         }
+      }
+    }
+  }
+
+  &__column-controller {
+    &-desc {
+      margin-bottom: 24px;
+    }
+
+    &-block {
+      padding: 10px 24px;
+      border: 1px solid @gray-color-3;
+
+      & + & {
+        border-top: 0;
+        padding-top: 8px;
+        padding-bottom: 24px;
+      }
+
+      .@{prefix}-checkbox {
+        &-group .@{prefix}-checkbox {
+          margin-top: 16px;
+        }
+      }
+    }
+
+    &--fixed {
+      .@{prefix}-checkbox {
+        width: 108px;
       }
     }
   }
