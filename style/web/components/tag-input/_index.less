@@ -33,6 +33,18 @@
   }
 }
 
+// TODO 兼容vue2，透传到input的attrs表现与vue3不一致，兼容代码
+.@{prefix}-tag-input {
+  .@{prefix}-input {
+    padding-left: @spacer-s;
+    overflow: hidden;
+
+    &.@{prefix}-size-s {
+      padding-left: @spacer-s * .5;
+    }
+  }
+}
+
 .@{prefix}-tag-input__suffix-clear {
   cursor: pointer;
 }
