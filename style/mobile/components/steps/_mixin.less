@@ -46,7 +46,7 @@
 
     &-title {
       position: relative;
-      color: @text-level-4-color;
+      color: @text-level-1-color;
       text-align: center;
       line-height: 22px;
       font-size: @font-size-base;
@@ -54,7 +54,7 @@
     }
 
     &-description {
-      color: @text-level-4-color;
+      color: @text-level-3-color;
       line-height: 20px;
       font-size: @font-size-s;
       margin-bottom: @spacer;
@@ -72,7 +72,7 @@
         content: "";
         display: block;
         height: 1px;
-        background-color: @gray-color-5;
+        background-color: @text-level-4-color;
         position: absolute;
         width: calc(100% - @step-connector-default-icon-width);
         left: calc(50% + @step-connector-default-icon-width / 2);
@@ -135,19 +135,23 @@
     }
   };
   & when(@anchor-status = process) {
-
     .@{prefix}-step-icon__number {
       background-color: @primary-color;
       color: #fff;
       border-color: @primary-color;
     }
+    .@{prefix}-step-title {
+      color: @primary-color-8;
+    }
   };
   & when(@anchor-status = error) {
 
     .@{prefix}-step-icon__number {
-      background-color: @error-color;
-      color: @text-anti-primary-color;
-      border-color: @error-color;
+      color: @error-color-6;
+      border-color: @error-color-6;
+    }
+    .@{prefix}-step-title {
+      color: @error-color-6;
     }
   };
 }
