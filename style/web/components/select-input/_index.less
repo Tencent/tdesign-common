@@ -8,14 +8,14 @@
   display: inline-block;
 }
 
+// TODO borderless input 内置
+
 /** 无边框模式 */
 .@{prefix}-select-input--borderless {
   &.@{prefix}-select-input,
   .@{prefix}-input {
     border: 0;
     box-shadow: none;
-    width: auto;
-    display: inline-flex;
     transition: background-color @anim-duration-base linear;
 
     &:hover {
@@ -30,15 +30,6 @@
 
   /** 无边框模式的多选 */
   &.@{prefix}-select-input--multiple:not(.@{prefix}-select-input--empty) {
-    input {
-      display: none;
-    }
-
-    :hover {
-      input {
-        display: inline-block;
-      }
-    }
 
     &.@{prefix}-select-input--popup-visible {
       input {
