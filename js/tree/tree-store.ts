@@ -627,27 +627,22 @@ export class TreeStore {
   // 锁定过滤节点的路径节点
   // 使得路径节点展开，可见，且不可操作
   public lockFilterPathNodes() {
-    const {
-      config,
-      filterMap,
-    } = this;
+    const { config } = this;
+    const allNodes = this.getNodes();
 
-    // 之前没有设置过过滤器
-    // 当前也没有过滤器
+    // 如果之前有进行过滤，则先解锁所有节点
+    if (this.prevFilter) {
+      allNodes.forEach((node: TreeNode) => {
+        node.lock(false);
+      });
+    }
+
+    // 当前没有过滤器
     // 则无需处理锁定节点
-    if (!config.filter && !this.prevFilter) {
+    if (!config.filter) {
       return;
     }
     this.prevFilter = config.filter;
-
-    const allNodes = this.getNodes();
-    allNodes.forEach((node: TreeNode) => {
-      node.lock(false);
-    });
-    if (allNodes.length === filterMap.size) {
-      // 未经任何过滤，则无需处理锁定节点
-      return;
-    }
 
     // 构造路径节点map
     const map = new Map();
@@ -662,6 +657,7 @@ export class TreeStore {
       const parent = node.getParent();
       if (node.vmIsRest) {
         if (parent) {
+          // 被过滤节点的父节点固定为展开状态
           parent.expanded = true;
         }
         // 被过滤节点固定为展示状态
