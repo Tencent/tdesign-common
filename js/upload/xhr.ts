@@ -27,6 +27,8 @@ export default function xhr({
   Object.keys(sendData).forEach((key) => {
     formData.append(key, data[key]);
   });
+
+  // support one request upload multiple files
   innerFiles.forEach((f) => {
     formData.append(name, f.raw);
   });
@@ -38,7 +40,7 @@ export default function xhr({
     xhr.setRequestHeader(key, headers[key]);
   });
 
-  xhr.onerror = (event: ProgressEvent) => onError({ event, file, files });
+  xhr.onerror = (event: ProgressEvent) => onError({ event, file, files: innerFiles });
 
   if (xhr.upload) {
     xhr.upload.onprogress = (event: ProgressEvent) => {
