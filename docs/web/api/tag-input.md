@@ -58,3 +58,6 @@ spline: data
 ### 宽度自适应的标签输入框
 
 {{ auto-width }}
+
+### 可拖拽调整顺序的标签输入框
+{{ draggable }}
