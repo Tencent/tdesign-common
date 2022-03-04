@@ -13,19 +13,19 @@ spline: data
 
 ### 单选筛选器输入框
 
-可使用 SelectInput 自由定制任何风格的单选选择器。
+可使用 `SelectInput` 自由定制任何风格的单选选择器。
 
 {{ single }}
 
 ### 多选筛选器输入框
 
-可使用 SelectInput 自由定制任何风格的多选选择器。
+可使用 `SelectInput` 自由定制任何风格的多选选择器。
 
 {{ multiple }}
 
 ### 自动填充筛选器
 
-可使用 SelectInput 自由定制任何风格的自动填充筛选器。
+可使用 `SelectInput` 自由定制任何风格的自动填充筛选器。
 
 {{ autocomplete }}
 
@@ -78,3 +78,12 @@ spline: data
 ### 无边框模式的多选筛选器
 
 {{ borderless-multiple }}
+
+### 自动宽度的单选筛选器
+
+{{ autowidth }}
+
+
+### 自动宽度的多选筛选器
+
+{{ autowidth-multiple }}
