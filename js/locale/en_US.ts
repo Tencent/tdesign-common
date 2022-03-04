@@ -136,4 +136,8 @@ export default {
     loadingText: 'loading...',
     loadingMoreText: 'loading more',
   },
+  alert: {
+    expandText: 'expand',
+    collapseText: 'collapse',
+  },
 };
