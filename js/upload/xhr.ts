@@ -49,8 +49,8 @@ export default function xhr({
         percent = Math.round((event.loaded / event.total) * 100);
       }
 
-      innerFiles.forEach((f) => {
-        onProgress({ event, percent, file: f });
+      onProgress({
+        event, percent, file, files: innerFiles
       });
     };
   }

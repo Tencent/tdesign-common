@@ -63,6 +63,7 @@ export interface HTMLInputEvent extends Event {
 export interface InnerProgressContext {
   event?: ProgressEvent;
   file?: UploadFile;
+  files?: UploadFile[];
   percent: number;
   type?: ProgressContext['type'];
 }
