@@ -10,8 +10,10 @@
   padding: 0;
   width: @color-picker-panel-width;
   background: var(--td-bg-color-container);
-  box-shadow: var(--td-shadow-2), var(--td-shadow-inset-top),
-    var(--td-shadow-inset-right), var(--td-shadow-inset-bottom),
+  box-shadow: var(--td-shadow-2),
+    var(--td-shadow-inset-top),
+    var(--td-shadow-inset-right),
+    var(--td-shadow-inset-bottom),
     var(--td-shadow-inset-left);
   user-select: none;
   overflow: hidden;
@@ -25,7 +27,6 @@
 }
 
 .@{prefix}-color-picker {
-
   &__icon {
     width: 20px;
     height: 20px;
@@ -34,13 +35,15 @@
     justify-content: center;
     font-size: 16px;
     background: var(--td-bg-color-container);
-    transition: color 0.2s cubic-bezier(0.38, 0, 0.24, 1);
+    transition: color .2s cubic-bezier(.38, 0, .24, 1);
     color: var(--td-gray-color-9);
     cursor: pointer;
+
     &:hover {
       color: var(--td-brand-color);
       background: var(--td-bg-color-container-hover);
     }
+
     &.is-disabled {
       color: var(--td-gray-color-4);
       pointer-events: none;
@@ -69,14 +72,14 @@
     border-radius: 3px;
     background: var(--td-bg-color-container);
     color: var(--td-text-color-placeholder);
-    transition: color 0.2s cubic-bezier(0.38, 0, 0.24, 1);
+    transition: color .2s cubic-bezier(.38, 0, .24, 1);
+
     &:hover {
       color: var(--td-brand-color);
       background: var(--td-bg-color-container-hover);
     }
   }
 }
-
 
 .@{prefix}-color-picker__body {
   overflow: hidden;
@@ -86,21 +89,21 @@
 .@{prefix}-color-picker--bg-alpha {
   background-color: #fff;
   background-image: linear-gradient(
-      45deg,
-      #c5c5c5 25%,
-      transparent 0,
-      transparent 75%,
-      #c5c5c5 0,
-      #c5c5c5
-    ),
+    45deg,
+    #c5c5c5 25%,
+    transparent 0,
+    transparent 75%,
+    #c5c5c5 0,
+    #c5c5c5
+  ),
     linear-gradient(
-      45deg,
-      #c5c5c5 25%,
-      transparent 0,
-      transparent 75%,
-      #c5c5c5 0,
-      #c5c5c5
-    );
+    45deg,
+    #c5c5c5 25%,
+    transparent 0,
+    transparent 75%,
+    #c5c5c5 0,
+    #c5c5c5
+  );
   background-size: 6px 6px;
   background-position: 0 0, 3px 3px;
 }
@@ -109,19 +112,20 @@
   position: absolute;
   z-index: 1;
   outline: none;
-  border-color: currentColor;
+  border-color: currentcolor;
   width: @color-picker-slider-thumb-size;
   height: @color-picker-slider-thumb-size;
   border-radius: 50%;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 15%);
   background: white;
   color: var(--td-brand-color-8);
   padding: 4px;
+
   &::before {
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
-    background: currentColor;
+    background: currentcolor;
     border-radius: 50%;
     display: block;
   }
@@ -133,6 +137,7 @@
   position: relative;
   overflow: hidden;
   background: transparent;
+
   &::before,
   &::after {
     content: "";
@@ -184,7 +189,7 @@
 
 .@{prefix}-color-picker__hue,
 .@{prefix}-color-picker__alpha,
-.@{prefix}-color-picker__format{
+.@{prefix}-color-picker__format {
   margin: @color-picker-margin-top 0 0 0;
 }
 
@@ -203,7 +208,7 @@
 
 .@{prefix}-color-picker__alpha {
   .@{prefix}-color-picker__rail {
-    background: linear-gradient(to right, transparent, currentColor);
+    background: linear-gradient(to right, transparent, currentcolor);
   }
 }
 
@@ -212,11 +217,12 @@
   display: flex;
   align-items: center;
   margin-bottom: @color-picker-margin-top;
+
   &__slider {
     flex: 1;
   }
 
-  &__degree{
+  &__degree {
     position: relative;
     flex-shrink: 0;
     margin-left: 16px;
@@ -248,13 +254,16 @@
       transform: translate(-50%, -50%);
       z-index: 0;
       cursor: pointer;
+
       &::before {
         display: none;
       }
+
       &.is-active {
         z-index: 1;
         outline: 2px solid var(--td-brand-color-8);
       }
+
       &__inner {
         display: block;
         width: 100%;
@@ -263,12 +272,13 @@
         overflow: hidden;
         background-size: 4px 4px;
         background-position: 0 0, 2px 2px;
+
         &::before {
           content: "";
           width: 100%;
           height: 100%;
           display: block;
-          background-color: currentColor;
+          background-color: currentcolor;
         }
       }
     }
@@ -279,30 +289,38 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   &--item {
     &:first-child {
       width: 100px;
       flex-shrink: 0;
     }
+
     &:last-child {
       flex: 1;
       overflow: hidden;
     }
-    .t-size-l, .t-input.t-size-l {
+
+    .t-size-l,
+    .t-input.t-size-l {
       font-size: 14px;
     }
+
     .t-input-number .t-input {
       margin: 0;
     }
+
     .input-group {
       display: flex;
       align-items: center;
       justify-content: space-around;
+
       &__item {
         flex: 1;
         overflow: hidden;
         margin-left: 8px;
       }
+
       .t-input-number {
         width: 100%;
         padding: 0;
@@ -324,7 +342,7 @@
     &--title {
       font-size: 12px;
       font-weight: 400;
-      margin: 0 0 12px 0;
+      margin: 0 0 12px;
       padding: 0;
       color: black;
       display: flex;
@@ -336,14 +354,14 @@
       list-style: none;
       display: grid;
       grid-template-columns: repeat(@color-picker-swatch-columns, @color-picker-swatch-width);
-      grid-row-gap: @color-picker-swatch-row-gap;
-      grid-column-gap: @color-picker-swatch-column-gap;
+      gap: @color-picker-swatch-row-gap @color-picker-swatch-column-gap;
       max-height: @color-picker-swatch-rows-max-height;
       overflow-x: hidden;
       overflow-y: auto;
       margin: @color-picker-swatch-wrap-margin;
       padding: 0;
     }
+
     &--item {
       display: flex;
       width: @color-picker-swatch-width;
@@ -358,6 +376,7 @@
       position: relative;
       transform-origin: center;
       transition: all .2s ease-in-out;
+
       &__inner,
       &__color {
         width: 100%;
@@ -366,14 +385,17 @@
         border-radius: 50%;
         overflow: hidden;
       }
+
       &__inner {
         position: absolute;
         top: 0;
         left: 0;
       }
+
       &:not(.is-active):hover {
         padding: 0; // inner width + 4
       }
+
       &.is-active {
         border-color: @color-picker-swatch-border-active-color;
       }
@@ -396,11 +418,13 @@
       height: 30px;
       line-height: 30px;
     }
+
     &__color {
       width: 20px;
       height: 21px;
       border: 1px solid black;
       margin-right: 8px;
+
       .color-inner {
         display: block;
         width: 100%;
