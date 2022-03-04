@@ -63,6 +63,7 @@ export interface HTMLInputEvent extends Event {
 export interface InnerProgressContext {
   event?: ProgressEvent;
   file?: UploadFile;
+  files?: UploadFile[];
   percent: number;
   type?: ProgressContext['type'];
 }
@@ -70,12 +71,14 @@ export interface InnerProgressContext {
 export interface SuccessContext {
   event?: ProgressEvent;
   file?: UploadFile;
+  files?: UploadFile[];
   response: RequestMethodResponse['response'];
 }
 
 export interface UploadRemoveOptions {
   e: MouseEvent;
   file?: UploadFile;
+  files?: UploadFile[];
   index: number
 }
 
@@ -91,9 +94,12 @@ export interface XhrOptions {
   headers: { [key: string]: string };
   data: { [key: string]: any } | Function;
   file?: UploadFile;
+  files?: UploadFile[];
   name: string;
-  onError: ({ event, file, response }: {
-    event?: ProgressEvent; file?: UploadFile; response?: any
+  onError: ({
+    event, file, files, response
+  }: {
+    event?: ProgressEvent; file?: UploadFile; files?: UploadFile[]; response?: any
   }) => void;
   onSuccess: (context: SuccessContext) => void;
   onProgress: (context: InnerProgressContext) => void;
