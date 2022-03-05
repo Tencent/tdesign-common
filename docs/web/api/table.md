@@ -37,7 +37,9 @@ spline: data
 
 列的数量过多时，使用固定列方便表格数据内容呈现，支持固定左侧列和固定右侧列。可通过给列属性设置 `fixed: 'left'` 或 `fixed: right` 以达成固定列效果。
 
-表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。如果希望表格列宽自适应，设置 `table-layout: auto` 即可，这种模式下固定列必须指定表格内容的总宽度，即 `tableContentWidth`，内容宽度的值必须大于表格可见宽度。
+表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。如果希望表格列宽自适应，设置 `table-layout: auto` 即可，这种模式下固定列必须指定表格内容的总宽度 `tableContentWidth`，`tableContentWidth` 的值必须大于表格可见宽度。
+
+多级表头中的固定列，必须指定每一个固定列的 `colKey` 和 `fixed` 属性。
 
 {{ fixed-column }}
 
@@ -45,7 +47,9 @@ spline: data
 
 支持同时固定表头和固定列。`fixedRows` 用于设置冻结首行和尾行数量，示例：`[2, 2]`。
 
-表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。如果希望表格列宽自适应，设置 `table-layout: auto` 即可，这种模式下固定列必须指定表格内容的总宽度，即 `tableContentWidth`，内容宽度的值必须大于表格可见宽度。
+表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。如果希望表格列宽自适应，设置 `table-layout: auto` 即可，这种模式下固定列必须指定表格内容的总宽度 `tableContentWidth`，`tableContentWidth` 的值必须大于表格可见宽度。
+
+多级表头中的固定列，必须指定每一个固定列的 `colKey` 和 `fixed` 属性。
 
 {{ fixed-header-col }}
 
@@ -187,7 +191,7 @@ spline: data
 
 ### 多级表头的表格
 
-表头数据标签可采用多级呈现，表述信息层级包含关系。
+表头数据标签可采用多级呈现，表述信息层级包含关系。多级表头中的固定列，必须指定每一个固定列的 `colKey` 和 `fixed` 属性。
 
 {{ multi-header }}
 

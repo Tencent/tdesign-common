@@ -15,6 +15,7 @@
 @fixed-column-z-index: 30;
 @fixed-header-z-index: 50;
 @fixed-row-z-index: 70;
+@fixed-header-virtual-scroll-z-index: @fixed-header-z-index + 1;
 
 @padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -204,15 +205,6 @@
       &.@{prefix}-table__cell--fixed-left-last {
         &::before {
           border-right: @border;
-        }
-      }
-
-      // &.@{prefix}-table__cell--fixed-left:not(:first-child),
-      &.@{prefix}-table__cell--fixed-right {
-        border-left: 0;
-
-        &::before {
-          .bordered();
         }
       }
     }
@@ -829,5 +821,28 @@
 
   &:hover {
     color: @table-icon-active-color;
+  }
+}
+
+// 虚拟滚动游标
+.@{prefix}-table__virtual-scroll-cursor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  transition: transform .2s;
+}
+
+.@{prefix}-table__virtual-scroll-header {
+  position: absolute;
+  z-index: @fixed-header-virtual-scroll-z-index;
+  left: 0;
+  top: 0;
+}
+
+.@{prefix}-table__content--scrollable-to-right.@{prefix}-table--bordered {
+  .@{prefix}-table__cell--fixed-right-first {
+    &.@{prefix}-table__cell--fixed-right {
+      border-left: 0;
+    }
   }
 }
