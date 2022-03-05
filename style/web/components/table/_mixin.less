@@ -39,3 +39,12 @@
     }
   }
 }
+
+.t-table-align(@pos) {
+  &.@{prefix}-vertical-align-@{pos} {
+    th,
+    td {
+      vertical-align: @pos;
+    }
+  }
+}

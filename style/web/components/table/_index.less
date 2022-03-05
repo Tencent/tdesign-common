@@ -35,6 +35,10 @@
     z-index: 1;
   }
 
+  .t-table-align(top);
+  .t-table-align(middle);
+  .t-table-align(bottom);
+
   .bordered {
     content: "";
     position: absolute;
@@ -91,19 +95,6 @@
 
     &:not([align]) {
       text-align: left;
-    }
-  }
-
-  th,
-  td {
-    .@{prefix}-vertical-align-top {
-      vertical-align: top;
-    }
-    .@{prefix}-vertical-align-middle {
-      vertical-align: middle;
-    }
-    .@{prefix}-vertical-align-bottom {
-      vertical-align: bottom;
     }
   }
 
