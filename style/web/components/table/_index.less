@@ -608,6 +608,7 @@
 .@{prefix}-table__filter-icon-wrap {
   display: flex;
   align-items: center;
+  pointer-events: all;
 }
 
 // 有边框模式，排序图标和过滤图标同时存在时，排序图标紧挨标题，过滤图标靠右侧边框
@@ -861,10 +862,21 @@
   position: absolute;
   left: 0;
   overflow: hidden;
-  pointer-events: none;
   z-index: @fixed-header-virtual-scroll-z-index;
   transition: opacity .15s linear;
   opacity: 1;
+}
+
+// 为了滚动穿透，需要取消上层表头的全部事件
+.@{prefix}-table--column-fixed .@{prefix}-table__affixed-header-elm {
+  // 会导致排序图标、过滤图标等无法点击、也无法复制文本，因此需要在特定的位置，恢复点击
+  pointer-events: none;
+}
+
+// 恢复全部事件
+.@{prefix}-table__th-cell-inner {
+  display: inline-block;
+  pointer-events: all;
 }
 
 .@{prefix}-table--bordered .@{prefix}-table__affixed-header-elm {
