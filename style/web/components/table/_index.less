@@ -706,10 +706,6 @@
 // 可向左滚动时，左边显示固定列显示阴影，右边同理
 .@{prefix}-table__content--scrollable-to-left {
 
-  // .@{prefix}-table__cell--fixed-left-last {
-  //   border-right: @border;
-  // }
-
   .@{prefix}-table__cell--fixed-left-last::after {
     box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
   }
@@ -719,6 +715,15 @@
 
   .@{prefix}-table__cell--fixed-right-first::after {
     box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
+  }
+}
+
+.@{prefix}-table--affixed-header {
+  .@{prefix}-table__content {
+    th.@{prefix}-table__cell--fixed-left-last::after,
+    th.@{prefix}-table__cell--fixed-right-first::after {
+      box-shadow: none;
+    }
   }
 }
 
@@ -849,5 +854,23 @@
     &.@{prefix}-table__cell--fixed-right {
       border-left: 0;
     }
+  }
+}
+
+.@{prefix}-table__affixed-header-elm {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  z-index: @fixed-header-virtual-scroll-z-index;
+}
+
+.@{prefix}-table--bordered .@{prefix}-table__affixed-header-elm {
+  border: @border;
+  border-bottom: 0;
+}
+
+.@{prefix}-table--multiple-header.@{prefix}-table--bordered {
+  .@{prefix}-table__affixed-header-elm {
+    border-right: 0;
   }
 }
