@@ -863,6 +863,8 @@
   overflow: hidden;
   pointer-events: none;
   z-index: @fixed-header-virtual-scroll-z-index;
+  transition: opacity .15s linear;
+  opacity: 1;
 }
 
 .@{prefix}-table--bordered .@{prefix}-table__affixed-header-elm {
@@ -874,4 +876,8 @@
   .@{prefix}-table__affixed-header-elm {
     border-right: 0;
   }
+}
+
+.@{prefix}-is-hidden {
+  display: none;
 }
