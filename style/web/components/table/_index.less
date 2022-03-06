@@ -479,27 +479,18 @@
   }
 }
 
-.@{prefix}-table__cell--sortable {
-  position: relative;
+/**
+ * 有边框和无边框的图标排列不一样，需谨慎修改
+ * 无边框模式，图标依次紧跟标题
+ * 有边框模式，只有一个图标时，图标靠近边框右侧；有两个图标时，排序图标靠近标题，过滤图标靠近边框右侧
+ */
+.@{prefix}-table__cell--sort-trigger {
+  width: 20px;
+  text-align: center;
+  vertical-align: text-bottom;
 
-  .@{prefix}-table__cell--title {
-    & > div:first-child {
-      text-align: inherit;
-    }
-
-    .@{prefix}-table__cell--filter {
-      margin-left: 10px;
-      text-align: center;
-    }
-  }
-
-  .@{prefix}-table__cell--sort-trigger {
-    width: 20px;
-    text-align: center;
-
-    svg {
-      vertical-align: initial;
-    }
+  svg {
+    vertical-align: initial;
   }
 }
 
@@ -554,10 +545,16 @@
   background-color: transparent;
   display: inline-block;
   cursor: pointer;
+  vertical-align: text-bottom;
 
+  .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
   &:hover {
     color: @table-icon-active-color;
+  }
+
+  > svg {
+    margin-top: -4px;
   }
 }
 
@@ -599,15 +596,32 @@
 .@{prefix}-table__double-icons,
 .@{prefix}-table__double-icons > span {
   display: inline-grid;
-  height: @table-line-height;
+  height: 16px;
   .@{prefix}-table__sort-icon {
     height: @table-line-height-half;
   }
   .@{prefix}-table-sort-desc {
-    margin-top: -12px;
+    margin-top: -10px;
   }
-  .@{prefix}-table-sort-asc {
-    margin-top: 4px;
+}
+
+.@{prefix}-table__filter-icon-wrap {
+  display: flex;
+  align-items: center;
+}
+
+// 有边框模式，排序图标和过滤图标同时存在时，排序图标紧挨标题，过滤图标靠右侧边框
+.@{prefix}-table--bordered {
+  .@{prefix}-table__filter-icon-wrap {
+    justify-content: flex-end;
+  }
+  .@{prefix}-table__filter-icon-wrap {
+    flex: 1;
+  }
+  .@{prefix}-table__cell--sortable.@{prefix}-table__cell--filterable {
+    .@{prefix}-table__filter-icon-wrap {
+      justify-content: space-between;
+    }
   }
 }
 
