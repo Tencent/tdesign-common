@@ -193,6 +193,8 @@ spline: data
 
 表头数据标签可采用多级呈现，表述信息层级包含关系。多级表头中的固定列，必须指定每一个固定列的 `colKey` 和 `fixed` 属性。
 
+多级表头的配置只需要在列配置中添加 `children` 子列配置即可。
+
 {{ multi-header }}
 
 ### 加载状态的表格
@@ -256,8 +258,12 @@ spline: data
 
 ### 懒加载的表格
 
+懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'lazy' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+
 {{ lazy }}
 
 ### 虚拟滚动的表格
+
+懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
 
 {{ virtual-scroll }}
