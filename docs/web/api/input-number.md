@@ -35,6 +35,12 @@ spline: form
 
 {{ size }}
 
+## 不同状态的输入框
+
+除了禁用状态之外，提供 正常（默认）、成功 `success`、警告 `warning`、错误 `error` 4种状态的输入框设置。
+
+{{ status }}
+
 ### 默认值输入框
 
 通过 `defaultValue` 设置数字输入框的默认值。
