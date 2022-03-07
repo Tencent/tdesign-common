@@ -7,7 +7,14 @@
 
     > .@{prefix}-form__controls-content {
       // TODO: should consider all official-provided form components(select/checkbox/datepicker...)
-      > .@{prefix}-input {
+      > .@{prefix}-input,
+      > .@{prefix}-input-number .@{prefix}-input,
+      > .@{prefix}-date-picker .@{prefix}-input,
+      > .@{prefix}-time-picker .@{prefix}-input,
+      > .@{prefix}-select__wrap .@{prefix}-select,
+      > .@{prefix}-radio-group .@{prefix}-radio-button,
+      > .@{prefix}-radio-group .@{prefix}-radio-button:last-child,
+      > .@{prefix}-textarea .@{prefix}-textarea__inner {
         border-color: @@borderColor;
         @borderColor: "input-border-color-@{status}";
 
