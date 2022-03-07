@@ -129,4 +129,8 @@ export default {
     loadingText: '正在加载中，请稍等',
     loadingMoreText: '点击加载更多',
   },
+  alert: {
+    expandText: '展开更多',
+    collapseText: '收起',
+  },
 };
