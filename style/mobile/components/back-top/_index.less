@@ -1,5 +1,4 @@
 @import "../../base.less";
-
 @import "./_var.less";
 
 .@{prefix}-back-top {
@@ -12,20 +11,20 @@
   cursor: pointer;
   &--round {
     border-radius: @border-radius-50;
-    background-color: #ffffff;
-    color: #333;
+    background-color: @back-top-backgroud-color-white;
+    color: @back-top-text-color-black;
     border: 1px solid;
-    border-color: #ddd;
+    border-color: #dddddd;
     flex-direction: column;
   }
 
   &--half-round {
     width: @back-top-half-width;
     height: @back-top-half-height;
-    background-color: #ffffff;
-    color: #333;
+    background-color: @back-top-backgroud-color-white;
+    color: @back-top-text-color-black;
     border: 1px solid;
-    border-color: #ddd;
+    border-color: @back-top-border-color;
     flex-direction: row;
     justify-content: space-evenly;
     border-radius: 60px 0 0 60px;
@@ -36,8 +35,8 @@
   }
 
   &--round-dark {
-    background-color: #000;
-    color: #fff;
+    background-color: @back-top-backgroud-color-black;
+    color: @back-top-text-color-white;
     border-radius: @border-radius-50;
     flex-direction: column;
   }
@@ -48,8 +47,8 @@
     flex-direction: row;
     justify-content: space-evenly;
     border-radius: 40px 0 0 40px;
-    background-color: #000;
-    color: #fff;
+    background-color: @back-top-backgroud-color-black;
+    color: @back-top-text-color-white;
     .@{prefix}-back-top__text {
       width: 12px;
       line-height: 12px;
