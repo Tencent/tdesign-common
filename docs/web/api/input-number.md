@@ -37,7 +37,7 @@ spline: form
 
 ## 不同状态的输入框
 
-除了禁用状态之外，提供 正常（默认）、成功 `success`、警告 `warning`、错误 `error` 4种状态的输入框设置。
+除了禁用 `disabled` 和只读 `readonly` 状态之外，提供 正常（默认）、成功 `success`、警告 `warning`、错误 `error` 4种状态的输入框设置。
 
 {{ status }}
 
