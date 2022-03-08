@@ -1,13 +1,12 @@
-/* stylelint-disable no-missing-end-of-source-newline */
-/* stylelint-disable at-rule-empty-line-before */
-/* stylelint-disable font-family-no-missing-generic-family-keyword */
 @import "../../base.less";
+
 @import "./_var.less";
 
 .@{prefix}-countdown {
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
   font-family: "DIN Alternate";
   text-align: center;
 
@@ -21,17 +20,15 @@
     font-weight: @countdown-unit-font-weight;
   }
 
-  &__split-with-unit {
-    .@{prefix}-countdown-unit {
-      font-weight: @countdown-unit-font-weight-split-with-unit;
-    }
-  }
-
   &__square,
   &__round {
     .@{prefix}-countdown-digit {
       background-color: @countdown-primary-color;
       color: #fff;
+    }
+
+    .@{prefix}-countdown-unit {
+      color: @countdown-primary-color;
     }
   }
 
@@ -149,6 +146,13 @@
 
     .@{prefix}-countdown-unit {
       width: @countdown-unit-width-round-large;
+    }
+  }
+
+  &__split-with-unit {
+    .@{prefix}-countdown-unit {
+      font-weight: @countdown-unit-font-weight-split-with-unit;
+      color: inherit;
     }
   }
 
