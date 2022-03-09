@@ -1,0 +1,57 @@
+@import "../../base.less";
+
+//theme "default"
+.theme-default(@size, @digit-font-size, @unit-width) {
+  .@{prefix}-countdown--default.@{prefix}-countdown--@{size} {
+    .@{prefix}-countdown__digit {
+      font-size: @digit-font-size;
+    }
+
+    .@{prefix}-countdown__unit {
+      width: @unit-width;
+    }
+  }
+}
+
+//theme "square"
+.theme-square(@size, @digit-padding, @digit-border-radius, @digit-font-size, @digit-min-width, @unit-width) {
+  .@{prefix}-countdown--square.@{prefix}-countdown--@{size} {
+    .@{prefix}-countdown__digit {
+      padding: @digit-padding;
+      border-radius: @digit-border-radius;
+      font-size: @digit-font-size;
+      min-width: @digit-min-width;
+      line-height: @digit-min-width;
+    }
+
+    .@{prefix}-countdown__unit {
+      width: @unit-width;
+    }
+  }
+}
+
+// theme "round"
+.theme-round(@size, @digit-padding, @digit-font-size, @digit-min-width, @unit-width) {
+  .@{prefix}-countdown--round.@{prefix}-countdown--@{size} {
+    .@{prefix}-countdown__digit {
+      padding: @digit-padding;
+      font-size: @digit-font-size;
+      min-width: @digit-min-width;
+      line-height: @digit-min-width;
+    }
+
+    .@{prefix}-countdown__unit {
+      width: @unit-width;
+    }
+  }
+}
+
+//split-with-unit
+.split-with-unit(@size, @unit-width, @unit-font-size) {
+  .@{prefix}-countdown--split-with-unit.@{prefix}-countdown--@{size} {
+    .@{prefix}-countdown__unit {
+      width: @unit-width;
+      font-size: @unit-font-size;
+    }
+  }
+}

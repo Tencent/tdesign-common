@@ -9,6 +9,12 @@
   width: 100%;
 }
 
+.@{prefix}-select-polyfill {
+  border: 1px solid @select-border-color;
+  border-radius: @select-border-radius;
+  padding: @select-padding;
+}
+
 .@{prefix}-select {
   position: relative;
   display: inline-flex;
@@ -54,13 +60,17 @@
   }
 
   & .@{prefix}-select__right-icon {
+    transition: color @anim-duration-base @anim-time-fn-easing;
+  }
+
+  // TODO 基于select-input改造时需要移除，polyfill代码
+  & .@{prefix}-select__right-icon-polyfill {
     position: absolute;
     height: 100%;
     margin: @select-icon-margin;
     right: 0;
     top: 0;
     color: @select-icon-color;
-    transition: color @anim-duration-base @anim-time-fn-easing;
   }
 
   .@{prefix}-select__active-icon {
