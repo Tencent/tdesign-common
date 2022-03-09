@@ -728,15 +728,12 @@
   }
 }
 
-.@{prefix}-table--bordered.@{prefix}-table--header-fixed:not(.@{prefix}-table--multiple-header) {
-  tfoot,
-  thead,
-  tbody {
-    th:last-child,
-    td:last-child {
-      border-right: @border;
-    }
-  }
+.@{prefix}-table__scroll-bar-divider {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  border-right: @border;
 }
 
 .@{prefix}-table__footer,
@@ -850,14 +847,6 @@
   top: 0;
 }
 
-.@{prefix}-table__content--scrollable-to-right.@{prefix}-table--bordered {
-  .@{prefix}-table__cell--fixed-right-first {
-    &.@{prefix}-table__cell--fixed-right {
-      border-left: 0;
-    }
-  }
-}
-
 .@{prefix}-table__affixed-header-elm {
   position: absolute;
   left: 0;
@@ -868,7 +857,7 @@
 }
 
 // 为了滚动穿透，需要取消上层表头的全部事件
-.@{prefix}-table--column-fixed .@{prefix}-table__affixed-header-elm {
+.@{prefix}-table__affixed-header-elm {
   // 会导致排序图标、过滤图标等无法点击、也无法复制文本，因此需要在特定的位置，恢复点击
   pointer-events: none;
 }
@@ -882,6 +871,7 @@
 .@{prefix}-table--bordered .@{prefix}-table__affixed-header-elm {
   border: @border;
   border-bottom: 0;
+  border-right: 0;
 }
 
 .@{prefix}-table--multiple-header.@{prefix}-table--bordered {
