@@ -28,7 +28,6 @@
     flex-direction: row;
     height: 100%;
     z-index: @swiper-z-index-default;
-    transition: transform @swiper-animation-duration @swiper-animation-time-fn;
 
     &__item {
       flex: 0 0 auto;
@@ -62,17 +61,28 @@
   .@{prefix}-swiper__container {
     display: block;
     .@{prefix}-is-active {
-      transform: @swiper-card-transform-scale-active;
+      z-index: 2;
     }
   }
   .@{prefix}-swiper__card {
     position: absolute;
     top: 0;
     left: 0;
-    width: 42%;
+    width: 41.5%;
     height: 100%;
-    transform: @swiper-card-transform-scale;
-    transition: transform @swiper-animation-duration @swiper-animation-time-fn;
+    z-index: 0;
+  }
+}
+
+// fade模式
+.@{prefix}-swiper-fade {
+  .@{prefix}-swiper__container {
+    display: block;
+  }
+  .@{prefix}-swiper__fade {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
@@ -130,6 +140,10 @@
     bottom: -@swiper-navigation-item-margin-medium * 3;
   }
 
+  .@{prefix}-swiper__navigation-fraction {
+    .swiper-navigation-fraction();
+  }
+
   .@{prefix}-swiper__navigation-bars {
     .swiper-navigation-item(bars, outside, horizontal);
   }
@@ -139,6 +153,11 @@
       bottom: auto;
       right: -@swiper-navigation-item-margin-medium * 3;
     }
+
+    .@{prefix}-swiper__navigation-fraction {
+      .swiper-navigation-fraction();
+    }
+
     .@{prefix}-swiper__navigation-bars {
       .swiper-navigation-item(bars, outside, vertical);
     }
