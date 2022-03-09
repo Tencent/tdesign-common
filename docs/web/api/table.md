@@ -264,6 +264,7 @@ spline: data
 
 ### 虚拟滚动的表格
 
-懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+- 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+- 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
 
 {{ virtual-scroll }}
