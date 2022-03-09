@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@sizes: small, medium, large;
+
 .@{prefix}-countdown {
   display: inline-flex;
   align-items: center;
@@ -38,116 +40,63 @@
     }
   }
 
-  &--default&--small {
-    .@{prefix}-countdown__digit {
-      font-size: @countdown-digit-font-size-default-small;
-    }
+  //theme "default"
+  .theme-default(@size, @digit-font-size, @unit-width) {
+    &--default&--@{size} {
+      .@{prefix}-countdown__digit {
+        font-size: @digit-font-size;
+      }
 
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-default-small;
+      .@{prefix}-countdown__unit {
+        width: @unit-width;
+      }
     }
   }
 
-  &--default&--medium {
-    .@{prefix}-countdown__digit {
-      font-size: @countdown-digit-font-size-default-medium;
-    }
+  .theme-default(small, @countdown-digit-font-size-default-small, @countdown-unit-width-default-small);
+  .theme-default(medium, @countdown-digit-font-size-default-medium, @countdown-unit-width-default-medium);
+  .theme-default(large, @countdown-digit-font-size-default-large, @countdown-unit-width-default-large);
 
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-default-medium;
+  //theme "square"
+  .theme-square(@size, @digit-padding, @digit-border-radius, @digit-font-size, @digit-min-width, @unit-width) {
+    &--square&--@{size} {
+      .@{prefix}-countdown__digit {
+        padding: @digit-padding;
+        border-radius: @digit-border-radius;
+        font-size: @digit-font-size;
+        min-width: @digit-min-width;
+        line-height: @digit-min-width;
+      }
+
+      .@{prefix}-countdown__unit {
+        width: @unit-width;
+      }
     }
   }
 
-  &--default&--large {
-    .@{prefix}-countdown__digit {
-      font-size: @countdown-digit-font-size-default-large;
-    }
+  .theme-square(small, @countdown-digit-padding-square-small, @countdown-digit-border-radius-square-small, @countdown-digit-font-size-square-small, @countdown-digit-size-square-small, @countdown-unit-width-square-small);
+  .theme-square(medium, @countdown-digit-padding-square-medium, @countdown-digit-border-radius-square-medium, @countdown-digit-font-size-square-medium, @countdown-digit-size-square-medium, @countdown-unit-width-square-medium);
+  .theme-square(large, @countdown-digit-padding-square-large, @countdown-digit-border-radius-square-large, @countdown-digit-font-size-square-large, @countdown-digit-size-square-large, @countdown-unit-width-square-large);
 
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-default-large;
+  // theme "round"
+  .theme-round(@size, @digit-padding, @digit-font-size, @digit-min-width, @unit-width) {
+    &--round&--@{size} {
+      .@{prefix}-countdown__digit {
+        padding: @digit-padding;
+        font-size: @digit-font-size;
+        min-width: @digit-min-width;
+        line-height: @digit-min-width;
+      }
+
+      .@{prefix}-countdown__unit {
+        width: @unit-width;
+      }
     }
   }
 
-  &--square&--small {
-    .@{prefix}-countdown__digit {
-      padding: @countdown-digit-padding-square-small;
-      border-radius: @countdown-digit-border-radius-square-small;
-      font-size: @countdown-digit-font-size-square-small;
-      min-width: @countdown-digit-size-radius-square-small;
-      line-height: @countdown-digit-size-radius-square-small;
-    }
-
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-square-small;
-    }
-  }
-
-  &--round&--small {
-    .@{prefix}-countdown__digit {
-      padding: @countdown-digit-padding-round-small;
-      font-size: @countdown-digit-font-size-round-small;
-      min-width: @countdown-digit-size-radius-round-small;
-      line-height: @countdown-digit-size-radius-round-small;
-    }
-
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-round-small;
-    }
-  }
-
-  &--square&--medium {
-    .@{prefix}-countdown__digit {
-      padding: @countdown-digit-padding-square-medium;
-      border-radius: @countdown-digit-border-radius-square-medium;
-      font-size: @countdown-digit-font-size-square-medium;
-      min-width: @countdown-digit-size-radius-square-medium;
-      line-height: @countdown-digit-size-radius-square-medium;
-    }
-
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-square-medium;
-    }
-  }
-
-  &--round&--medium {
-    .@{prefix}-countdown__digit {
-      padding: @countdown-digit-padding-round-medium;
-      font-size: @countdown-digit-font-size-round-medium;
-      min-width: @countdown-digit-size-radius-round-medium;
-      line-height: @countdown-digit-size-radius-round-medium;
-    }
-
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-round-medium;
-    }
-  }
-
-  &--square&--large {
-    .@{prefix}-countdown__digit {
-      padding: @countdown-digit-padding-square-large;
-      border-radius: @countdown-digit-border-radius-square-large;
-      font-size: @countdown-digit-font-size-square-large;
-      min-width: @countdown-digit-size-radius-square-large;
-      line-height: @countdown-digit-size-radius-square-large;
-    }
-
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-square-large;
-    }
-  }
-
-  &--round&--large {
-    .@{prefix}-countdown__digit {
-      padding: @countdown-digit-padding-round-large;
-      font-size: @countdown-digit-font-size-round-large;
-      min-width: @countdown-digit-size-radius-round-large;
-      line-height: @countdown-digit-size-radius-round-large;
-    }
-
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-round-large;
-    }
-  }
+  .theme-round(small, @countdown-digit-padding-round-small, @countdown-digit-font-size-round-small, @countdown-digit-size-radius-round-small, @countdown-unit-width-round-small);
+  .theme-round(medium, @countdown-digit-padding-round-medium, @countdown-digit-font-size-round-medium, @countdown-digit-size-radius-round-medium, @countdown-unit-width-round-medium);
+  .theme-round(large, @countdown-digit-padding-round-large, @countdown-digit-font-size-round-large, @countdown-digit-size-radius-round-large, @countdown-unit-width-round-large);
 
   &--split-with-unit {
     .@{prefix}-countdown__unit {
@@ -162,24 +111,17 @@
     }
   }
 
-  &--split-with-unit&--small {
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-split-with-unit-small;
-      font-size: @countdown-unit-font-size-split-with-unit-small;
+  //split-with-unit
+  .split-with-unit(@size, @unit-width, @unit-font-size) {
+    &--split-with-unit&--@{size} {
+      .@{prefix}-countdown__unit {
+        width: @unit-width;
+        font-size: @unit-font-size;
+      }
     }
   }
 
-  &--split-with-unit&--medium {
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-split-with-unit-medium;
-      font-size: @countdown-unit-font-size-split-with-unit-medium;
-    }
-  }
-
-  &--split-with-unit&--large {
-    .@{prefix}-countdown__unit {
-      width: @countdown-unit-width-split-with-unit-large;
-      font-size: @countdown-unit-font-size-split-with-unit-large;
-    }
-  }
+  .split-with-unit(small, @countdown-unit-width-split-with-unit-small, @countdown-unit-font-size-split-with-unit-small);
+  .split-with-unit(medium, @countdown-unit-width-split-with-unit-medium, @countdown-unit-font-size-split-with-unit-medium);
+  .split-with-unit(large, @countdown-unit-width-split-with-unit-large, @countdown-unit-font-size-split-with-unit-large);
 }
