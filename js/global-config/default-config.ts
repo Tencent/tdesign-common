@@ -18,12 +18,6 @@ export default {
     },
   },
   popconfirm: {
-    confirm: {
-      size: 'small',
-    },
-    cancel: {
-      size: 'small',
-    },
     confirmBtnTheme: {
       default: 'primary',
       warning: 'primary',
