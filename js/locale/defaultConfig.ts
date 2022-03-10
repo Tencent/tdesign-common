@@ -1,4 +1,9 @@
 export default {
+  classPrefix: 't',
+  animation: {
+    include: ['ripple', 'expand', 'fade'],
+    exclude: []
+  },
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,
