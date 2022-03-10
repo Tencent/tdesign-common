@@ -9,12 +9,12 @@
 .@{prefix}-color-picker__panel {
   padding: 0;
   width: @color-picker-panel-width;
-  background: var(--td-bg-color-container);
-  box-shadow: var(--td-shadow-2),
-    var(--td-shadow-inset-top),
-    var(--td-shadow-inset-right),
-    var(--td-shadow-inset-bottom),
-    var(--td-shadow-inset-left);
+  background: @bg-color-container;
+  box-shadow: @shadow-2,
+    @shadow-inset-top,
+    @shadow-inset-right,
+    @shadow-inset-bottom,
+    @shadow-inset-left;
   user-select: none;
   overflow: hidden;
 }
@@ -34,18 +34,18 @@
     align-items: center;
     justify-content: center;
     font-size: @color-picker-icon-font-size;
-    background: var(--td-bg-color-container);
+    background: @bg-color-container;
     transition: color @anim-duration-base @anim-time-fn-easing;
-    color: var(--td-text-color-secondary);
+    color: @text-color-secondary;
     border-radius: @color-picker-icon-radius;
     cursor: pointer;
 
     &:hover {
-      color: var(--td-brand-color);
-      background: var(--td-bg-color-container-hover);
+      color: @brand-color;
+      background: @bg-color-container-hover;
     }
     &.@{prefix}-is-disabled {
-      color: var(--td-text-color-disabled);
+      color: @text-color-disabled;
       pointer-events: none;
     }
   }
@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: space-between;
   padding: @color-picker-panel-padding;
-  border-bottom: 1px solid var(--td-border-level-1-color);
+  border-bottom: 1px solid @border-level-1-color;
   position: relative;
   z-index: 2;
 
@@ -102,7 +102,7 @@
   border-radius: 50%;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 15%);
   background: white;
-  color: var(--td-text-color-brand);
+  color: @text-color-brand;
   padding: @color-picker-slider-thumb-padding;
 
   &::before {
@@ -245,7 +245,7 @@
       }
       &.@{prefix}-is-active {
         z-index: 1;
-        outline: 2px solid var(--td-text-color-brand);
+        outline: 2px solid @text-color-brand;
       }
 
       &-inner {
@@ -366,7 +366,7 @@
       font-weight: normal;
       margin: 0 0 12px;
       padding: 0;
-      color: var(--td-text-color-primary);
+      color: @text-color-primary;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -417,7 +417,7 @@
         padding: 0;
       }
       &.@{prefix}-is-active {
-        border-color: var(--td-text-color-brand);
+        border-color: @text-color-brand;
       }
     }
   }
@@ -440,7 +440,7 @@
       margin-right: 4px;
 
       .color-inner {
-        border: 1px solid var(--td-scrollbar-color);
+        border: 1px solid @scrollbar-color;
         display: block;
         width: 100%;
         height: 100%;
