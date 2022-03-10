@@ -38,30 +38,23 @@ export default {
   dialog: {
     confirm: 'Confirm',
     cancel: 'Cancel',
-    confirmBtnTheme: {
-      default: 'primary',
-      info: 'primary',
-      warning: 'primary',
-      danger: 'primary',
-      success: 'primary',
-    },
   },
   drawer: {
     confirm: 'Confirm',
     cancel: 'Cancel',
   },
   popconfirm: {
-    confirm: 'OK',
-    cancel: 'Cancel',
-    confirmBtnTheme: {
-      default: 'primary',
-      warning: 'primary',
-      danger: 'primary',
+    confirm: {
+      content: 'OK',
+    },
+    cancel: {
+      content: 'Cancel',
     },
   },
   table: {
     empty: 'Empty Data',
     loadingText: 'loading...',
+    loadingMoreText: 'loading more',
     filterInputPlaceholder: '',
     sortAscendingOperationText: 'click to sort ascending',
     sortCancelOperationText: 'click to cancel sorting',
@@ -89,8 +82,12 @@ export default {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     rangeSeparator: ' ~ ',
+    direction: 'ltr',
     format: 'YYYY-MM-DD',
-    yearAriaLabel: '',
+    dayAriaLabel: 'D',
+    yearAriaLabel: 'Y',
+    monthAriaLabel: 'M',
+    weekAbbreviation: 'W',
     confirm: 'Confirm',
     selectTime: 'Select Time',
     selectDate: 'Select Date',
@@ -102,7 +99,6 @@ export default {
     nextDecade: 'Next Decade',
     now: 'Now',
   },
-  steps: {},
   upload: {
     sizeLimitMessage: 'File is too large to upload. {sizeLimit}',
     cancelUploadText: 'Cancel',
@@ -132,6 +128,26 @@ export default {
       successText: 'Success',
     },
   },
+  form: {
+    errorMessage: {
+      date: '请输入正确的{name}',
+      url: '请输入正确的{name}',
+      required: '{name}必填',
+      max: '{name}字符长度不能超过 {validate} 个字符，一个中文等于两个字符',
+      min: '{name}字符长度不能少于 {validate} 个字符，一个中文等于两个字符',
+      len: '{name}字符长度必须是 {validate}',
+      enum: '{name}只能是{validate}等',
+      idcard: '请输入正确的{name}',
+      telnumber: '请输入正确的{name}',
+      pattern: '请输入正确的{name}',
+      validator: '{name}不符合要求',
+      boolean: '{name}数据类型必须是布尔类型',
+      number: '{name}必须是数字',
+    },
+  },
+  input: {
+    placeholder: '',
+  },
   list: {
     loadingText: 'loading...',
     loadingMoreText: 'loading more',
@@ -139,5 +155,9 @@ export default {
   alert: {
     expandText: 'expand',
     collapseText: 'collapse',
+  },
+  anchor: {
+    expandText: 'copy the link successfully',
+    collapseText: 'copy link',
   },
 };
