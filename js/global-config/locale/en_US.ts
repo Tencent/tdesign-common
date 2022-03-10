@@ -38,30 +38,23 @@ export default {
   dialog: {
     confirm: 'Confirm',
     cancel: 'Cancel',
-    confirmBtnTheme: {
-      default: 'primary',
-      info: 'primary',
-      warning: 'primary',
-      danger: 'primary',
-      success: 'primary',
-    },
   },
   drawer: {
     confirm: 'Confirm',
     cancel: 'Cancel',
   },
   popconfirm: {
-    confirm: 'OK',
-    cancel: 'Cancel',
-    confirmBtnTheme: {
-      default: 'primary',
-      warning: 'primary',
-      danger: 'primary',
+    confirm: {
+      content: 'OK',
+    },
+    cancel: {
+      content: 'Cancel',
     },
   },
   table: {
     empty: 'Empty Data',
     loadingText: 'loading...',
+    loadingMoreText: 'loading more',
     filterInputPlaceholder: '',
     sortAscendingOperationText: 'click to sort ascending',
     sortCancelOperationText: 'click to cancel sorting',
@@ -89,8 +82,12 @@ export default {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     rangeSeparator: ' ~ ',
+    direction: 'ltr',
     format: 'YYYY-MM-DD',
-    yearAriaLabel: '',
+    dayAriaLabel: 'D',
+    yearAriaLabel: 'Y',
+    monthAriaLabel: 'M',
+    weekAbbreviation: 'W',
     confirm: 'Confirm',
     selectTime: 'Select Time',
     selectDate: 'Select Date',
@@ -102,7 +99,6 @@ export default {
     nextDecade: 'Next Decade',
     now: 'Now',
   },
-  steps: {},
   upload: {
     sizeLimitMessage: 'File is too large to upload. {sizeLimit}',
     cancelUploadText: 'Cancel',
@@ -132,6 +128,26 @@ export default {
       successText: 'Success',
     },
   },
+  form: {
+    errorMessage: {
+      date: 'please enter the correct {name}',
+      url: 'please enter the correct {name}',
+      required: '{name} is required',
+      max: '{name} character length cannot be more than {validate}',
+      min: '{name} character length cannot be less than {validate}',
+      len: '{name} character length must be {validate}',
+      enum: '{name} must be {validate}',
+      idcard: 'please enter the correct {name}',
+      telnumber: 'please enter the correct {name}',
+      pattern: 'please enter the correct {name}',
+      validator: '{name} no match',
+      boolean: '{name} must be a boolean',
+      number: '{name} must be a number',
+    },
+  },
+  input: {
+    placeholder: 'please enter',
+  },
   list: {
     loadingText: 'loading...',
     loadingMoreText: 'loading more',
@@ -139,5 +155,9 @@ export default {
   alert: {
     expandText: 'expand',
     collapseText: 'collapse',
+  },
+  anchor: {
+    expandText: 'copy the link successfully',
+    collapseText: 'copy link',
   },
 };
