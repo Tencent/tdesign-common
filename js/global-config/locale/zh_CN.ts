@@ -44,8 +44,12 @@ export default {
     cancel: '取消',
   },
   popconfirm: {
-    confirm: '确定',
-    cancel: '取消',
+    confirm: {
+      content: '确定',
+    },
+    cancel: {
+      content: '取消',
+    },
   },
   table: {
     empty: '暂无数据',
