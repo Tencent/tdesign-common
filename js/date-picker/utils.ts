@@ -264,7 +264,7 @@ export function getYears(
   }: OptionsType,
 ) {
   const startYear = parseInt((year / 10).toString(), 10) * 10;
-  const endYear = startYear + 11;
+  const endYear = startYear + 9;
 
   const yearArr = [];
 
