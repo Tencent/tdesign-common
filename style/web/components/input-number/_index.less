@@ -323,8 +323,12 @@
   text-align: right;
 }
 
-.@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
-  margin-left: @spacer-s;
+.@{inputNumberCls} {
+  &:not(&--column) {
+    > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
+      margin-left: @spacer-s;
+    }
+  }
 }
 
 .@{prefix}-input-number__tips {
