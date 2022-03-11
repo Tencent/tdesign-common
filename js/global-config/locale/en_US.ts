@@ -44,8 +44,12 @@ export default {
     cancel: 'Cancel',
   },
   popconfirm: {
-    confirm: 'OK',
-    cancel: 'Cancel',
+    confirm: {
+      content: 'OK',
+    },
+    cancel: {
+      content: 'Cancel',
+    },
   },
   table: {
     empty: 'Empty Data',
