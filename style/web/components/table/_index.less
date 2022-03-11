@@ -11,11 +11,11 @@
 @border: 1px solid @table-border-color;
 
 // 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
-// 70 - 50 等于允许的冻结行数量
 @fixed-column-z-index: 30;
 @fixed-header-z-index: 50;
 @fixed-row-z-index: 70;
 @fixed-header-virtual-scroll-z-index: @fixed-header-z-index + 1;
+@table-right-scrollbar-divider: @fixed-row-z-index + 1;
 
 @padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -734,6 +734,7 @@
   right: 0;
   height: 100%;
   border-right: @border;
+  z-index: @table-right-scrollbar-divider;
 }
 
 .@{prefix}-table__footer,
@@ -756,6 +757,7 @@
 .@{prefix}-table__row--fixed-top,
 .@{prefix}-table__row--fixed-bottom {
   position: sticky;
+  z-index: @fixed-row-z-index;
 }
 
 // 表尾冻结的第一行
