@@ -41,11 +41,18 @@
 .@{prefix}-tag-input--break-line {
 
   &.@{prefix}-input {
+    display: block;
     height: auto;
 
     &.t-input--prefix > .t-input__prefix {
       display: inline;
       text-align: left;
+    }
+
+    .@{prefix}-input__suffix-icon {
+      position: absolute;
+      right: @spacer;
+      bottom: 0;
     }
   }
 }
