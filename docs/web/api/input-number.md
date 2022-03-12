@@ -57,3 +57,6 @@ spline: form
 
 {{ align }}
 
+### 自适应宽度的输入框
+
+{{ auto-width }}
