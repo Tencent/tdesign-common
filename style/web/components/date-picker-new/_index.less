@@ -10,7 +10,6 @@
   width: 240px;
 }
 
-
 .@{prefix}-date-picker__panel {
   &-container {
     width: 280px;
@@ -22,13 +21,13 @@
     border-collapse: collapse;
     user-select: none;
   }
-  
+
   th {
     width: 24px;
     color: @datepicker-th-font-color;
     font-weight: @datepicker-th-font-weight;
   }
-  
+
   td {
     min-width: 24px;
     position: relative;
@@ -66,7 +65,7 @@
   padding: @datepicker-panel-padding 0 0 0;
 
   &::after {
-    content: '';
+    content: "";
     width: calc(100% + @datepicker-panel-padding * 2);
     height: 1px;
     position: absolute;
@@ -119,7 +118,6 @@
     }
   }
 
-
   &-inner {
     margin: @spacer-s;
     text-align: center;
@@ -145,7 +143,6 @@
   }
 
   &--additional {
-
     &:hover {
       .@{prefix}-date-picker__cell-inner {
         box-shadow: none;
@@ -193,4 +190,3 @@
     }
   }
 }
-
