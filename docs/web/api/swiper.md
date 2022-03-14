@@ -10,7 +10,7 @@ spline: message
 
 swiper组件最基本的使用
 
-{{ base }} -->
+{{ base }}
 
 ### 垂直布局
 
