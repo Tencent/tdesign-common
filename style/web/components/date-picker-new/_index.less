@@ -33,6 +33,19 @@
     position: relative;
     font-weight: @datepicker-font-weight-medium;
   }
+
+  // 配合time-picker使用 需重置部分样式
+  .@{prefix}-time-picker__panel {
+    width: 256px;
+
+    &-section-body {
+      padding: 0;
+    }
+
+    &-body {
+      margin: 0;
+    }
+  }
 }
 
 .@{prefix}-date-picker__header {
