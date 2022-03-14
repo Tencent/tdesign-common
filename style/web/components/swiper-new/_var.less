@@ -12,19 +12,19 @@
 // 如：@button-line-height-s
 
 // 颜色
-@swiper-navigation-item-bg: fade(#FFFFFF, 22%);
-@swiper-navigation-item-bg-outside: fade(#000000, 26%);
+@swiper-navigation-item-bg: @font-white-4;
+@swiper-navigation-item-bg-outside: @font-gray-4;
 
-@swiper-navigation-item-bg-hover: fade(#FFFFFF, 55%);
-@swiper-navigation-item-bg-active: fade(#FFFFFF, 100%);
+@swiper-navigation-item-bg-hover: @font-white-2;
+@swiper-navigation-item-bg-active: @bg-color-container;
 
 @swiper-navigation-item-outside-bg-hover: @brand-color-8;
 @swiper-navigation-item-outside-bg-active: @brand-color-9;
 
-@swiper-navigation-arrow-color-fraction: fade(#000000, 26%);
-@swiper-navigation-text-color-fraction: fade(#000000, 40%);
+@swiper-navigation-arrow-color-fraction: @font-gray-4;
+@swiper-navigation-text-color-fraction: @font-gray-3;
 
-@swiper-arrow-active: fade(#FFFFFF, 35%);
+@swiper-arrow-active: @font-white-3;
 
 // 字体
 @swiper-navigation-font-size-fraction-medium: @font-size-l;
@@ -39,9 +39,6 @@
 @swiper-arrow-icon-font-size-small:  @icon-l - 8;
 
 // 尺寸
-@swiper-content-width-default: @spacer * 100; //800px
-@swiper-content-height-default: 280px;
-
 @swiper-navigation-item-width-bars-medium: 14px;
 @swiper-navigation-item-height-bars-medium: 3px;
 
@@ -55,16 +52,17 @@
 @swiper-navigation-item-width-bars-large-active: 36px; // 36px
 @swiper-navigation-item-width-bars-small-active: 15px;
 
-@swiper-arrow-width-small: @spacer-2;
-@swiper-arrow-height-small: @spacer-2;
-@swiper-arrow-width-medium: @spacer-3;
-@swiper-arrow-height-medium: @spacer-3;
-@swiper-arrow-width-large: @spacer-4;
-@swiper-arrow-height-large: @spacer-4;
+@swiper-arrow-size-base: 8px;
+@swiper-arrow-width-small: @swiper-arrow-size-base * 2;
+@swiper-arrow-height-small: @swiper-arrow-size-base * 2;
+@swiper-arrow-width-medium: @swiper-arrow-size-base * 3;
+@swiper-arrow-height-medium: @swiper-arrow-size-base * 3;
+@swiper-arrow-width-large: @swiper-arrow-size-base * 4;
+@swiper-arrow-height-large: @swiper-arrow-size-base * 4;
 
-@swiper-arrow-left-small: @spacer;
-@swiper-arrow-left-medium: @spacer-2;
-@swiper-arrow-left-large: @spacer-3;
+@swiper-arrow-left-small: @swiper-arrow-size-base;
+@swiper-arrow-left-medium: @swiper-arrow-size-base * 2;
+@swiper-arrow-left-large: @swiper-arrow-size-base * 3;
 
 @swiper-card-transform-scale-active: scale(1);
 @swiper-card-transform-scale: scale(.63);

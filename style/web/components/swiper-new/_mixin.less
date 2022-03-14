@@ -15,7 +15,7 @@
   @arrowHeight: "swiper-arrow-height-@{size}";
   @arrowPosition: "swiper-arrow-left-@{size}";
   & when(@size = medium) {
-    .@{prefix}-swiper__arrow__@{direction} {
+    .@{prefix}-swiper__arrow-@{direction} {
       .position-center(y);
 
       display: flex;
@@ -45,7 +45,7 @@
     }
   }
   & when(@size = large) {
-    .@{prefix}-swiper__arrow__@{direction} {
+    .@{prefix}-swiper__arrow-@{direction} {
       width: @@arrowWidth;
       height: @@arrowHeight;
       & when(@direction = left) {
@@ -57,7 +57,7 @@
     }
   }
   & when(@size = small) {
-    .@{prefix}-swiper__arrow__@{direction} {
+    .@{prefix}-swiper__arrow-@{direction} {
       width: @@arrowWidth;
       height: @@arrowHeight;
       & when(@direction = left) {
@@ -70,14 +70,16 @@
   }
 }
 
-.swiper-arrow-fraction(@direction) {
-  .@{prefix}-swiper__arrow__@{direction} {
+.swiper-arrow-fraction(@direction, @width) {
+  .@{prefix}-swiper__arrow-@{direction} {
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: @swiper-navigation-z-index-default;
     background-color: transparent;
     color: @swiper-navigation-arrow-color-fraction;
+    width: @@width;
+    height: @@width;
     cursor: pointer;
 
     &:hover {
@@ -101,10 +103,10 @@
   height: @@fractionLineHeight;
   line-height: @@fractionLineHeight;
 
-  .swiper-arrow-fraction(left);
-  .swiper-arrow-fraction(right);
+  .swiper-arrow-fraction(left, @fractionLineHeight);
+  .swiper-arrow-fraction(right, @fractionLineHeight);
 
-  .@{prefix}-swiper__navigation__text-fraction {
+  .@{prefix}-swiper__navigation-text-fraction {
     display: inline-block;
     font-size: @@fractionFontSize;
     color: @swiper-navigation-text-color-fraction;
@@ -115,41 +117,54 @@
 .swiper-navigation-item(@type, @position: inside, @direction: horizontal, @size: medium) {
   & when(@position = inside) {
     & when(@type = bars) {
-      .@{prefix}-swiper__navigation__item {
-
+      .@{prefix}-swiper__navigation-item {
         @itemWidth: "swiper-navigation-item-width-bars-@{size}";
         @itemHeight: "swiper-navigation-item-height-bars-@{size}";
         @itemWidthActive: "swiper-navigation-item-width-bars-@{size}-active";
         @itemMargin: "swiper-navigation-item-margin-@{size}";
 
+        cursor: pointer;
         & when(@direction = horizontal) {
-          margin: 0 0 @@itemMargin * 3  @@itemMargin;
+          margin: 0 0 0 @@itemMargin;
+          padding: @@itemMargin * 3 0;
           width: @@itemWidth;
-          height: @@itemHeight;
+          height: auto;
+
+          span {
+            width: 100%;
+            height: @@itemHeight;
+          }
 
           &:nth-child(1) {
             margin-left: 0;
           }
         }
         & when(@direction = vertical) {
-          margin: @@itemMargin @@itemMargin * 3 0 0;
-          width: @@itemHeight;
+          margin: @@itemMargin 0 0 0;
+          padding: 0 @@itemMargin * 3;
+          width: auto;
           height: @@itemWidth;
+
+          span {
+            width: @@itemHeight;
+            height: 100%;
+          }
 
           &:nth-child(1) {
             margin-top: 0;
           }
         }
 
-        background: @swiper-navigation-item-bg;
-        cursor: pointer;
+        span {
+          background: @swiper-navigation-item-bg;
 
-        &:hover {
-          background-color: @swiper-navigation-item-bg-hover;
-        }
+          &:hover {
+            background-color: @swiper-navigation-item-bg-hover;
+          }
 
-        &:active {
-          background-color: @swiper-navigation-item-bg-active;
+          &:active {
+            background-color: @swiper-navigation-item-bg-active;
+          }
         }
 
         &.@{prefix}-is-active {
@@ -160,7 +175,9 @@
             height: @@itemWidthActive;
           }
 
-          background-color: @swiper-navigation-item-bg-active;
+          span {
+            background-color: @swiper-navigation-item-bg-active;
+          }
         }
       }
     }
@@ -168,26 +185,23 @@
 
   & when(@position = outside) {
     & when(@type = bars) {
-      .@{prefix}-swiper__navigation__item {
-        background-color: @swiper-navigation-item-bg-outside;
+      .@{prefix}-swiper__navigation-item {
+        span {
+          background-color: @swiper-navigation-item-bg-outside;
 
-        & when(@direction = horizontal) {
-          margin-bottom: 0;
-        }
-        & when(@direction = vertical) {
-          margin-right: 0;
-        }
+          &:hover {
+            background-color: @swiper-navigation-item-outside-bg-hover;
+          }
 
-        &:hover {
-          background-color: @swiper-navigation-item-outside-bg-hover;
-        }
-
-        &:active {
-          background-color: @swiper-navigation-item-outside-bg-active;
+          &:active {
+            background-color: @swiper-navigation-item-outside-bg-active;
+          }
         }
       }
       .@{prefix}-is-active {
-        background-color: @swiper-navigation-item-outside-bg-active;
+        span {
+          background-color: @swiper-navigation-item-outside-bg-active;
+        }
       }
     }
   }

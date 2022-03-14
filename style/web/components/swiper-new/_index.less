@@ -51,7 +51,7 @@
   }
 }
 
-.@{prefix}-swiper__arrow-default {
+.@{prefix}-swiper__arrow--default {
   .swiper-arrow(left);
   .swiper-arrow(right);
 }
@@ -110,12 +110,12 @@
 }
 
 // 分式
-.@{prefix}-swiper__navigation-fraction {
+.@{prefix}-swiper__navigation--fraction {
   .swiper-navigation-fraction(medium);
 }
 
 // vertical模式
-.@{prefix}-swiper-vertical {
+.@{prefix}-swiper--vertical {
   .@{prefix}-swiper__container {
     flex-direction: column;
   }
@@ -134,13 +134,13 @@
 }
 
 // outside模式
-.@{prefix}-swiper-outside {
+.@{prefix}-swiper--outside {
 
   .@{prefix}-swiper__navigation {
     bottom: -@swiper-navigation-item-margin-medium * 3;
   }
 
-  .@{prefix}-swiper__navigation-fraction {
+  .@{prefix}-swiper__navigation--fraction {
     .swiper-navigation-fraction();
   }
 
@@ -148,13 +148,13 @@
     .swiper-navigation-item(bars, outside, horizontal);
   }
 
-  &.@{prefix}-swiper-vertical {
+  &.@{prefix}-swiper--vertical {
     .@{prefix}-swiper__navigation {
       bottom: auto;
       right: -@swiper-navigation-item-margin-medium * 3;
     }
 
-    .@{prefix}-swiper__navigation-fraction {
+    .@{prefix}-swiper__navigation--fraction {
       .swiper-navigation-fraction();
     }
 
@@ -165,17 +165,17 @@
 }
 
 // inside模式
-.@{prefix}-swiper-inside {
+.@{prefix}-swiper--inside {
   .@{prefix}-swiper__navigation {
     bottom: 0;
   }
-  .@{prefix}-swiper__navigation-fraction {
+  .@{prefix}-swiper__navigation--fraction {
     .swiper-navigation-fraction();
   }
 }
 
 // large尺寸
-.@{prefix}-swiper-large {
+.@{prefix}-swiper--large {
   .@{prefix}-swiper__arrow {
     i.@{prefix}-icon {
       &::before {
@@ -183,17 +183,17 @@
       }
     }
   }
-  .@{prefix}-swiper__arrow-default {
+  .@{prefix}-swiper__arrow--default {
     .swiper-arrow(left, large);
     .swiper-arrow(right,large);
   }
   .@{prefix}-swiper__navigation-bars {
     .swiper-navigation-item(bars, inside, horizontal,large);
   }
-  .@{prefix}-swiper__navigation-fraction {
+  .@{prefix}-swiper__navigation--fraction {
     .swiper-navigation-fraction(large);
   }
-  &.@{prefix}-swiper-outside {
+  &.@{prefix}-swiper--outside {
     .@{prefix}-swiper__navigation {
       bottom: -@swiper-navigation-item-margin-large * 3;
     }
@@ -201,11 +201,11 @@
       .swiper-navigation-item(bars, outside, horizontal,large);
     }
   }
-  &.@{prefix}-swiper-vertical {
+  &.@{prefix}-swiper--vertical {
     .@{prefix}-swiper__navigation-bars {
       .swiper-navigation-item(bars, inside, vertical,large);
     }
-    &.@{prefix}-swiper-outside {
+    &.@{prefix}-swiper--outside {
       .@{prefix}-swiper__navigation {
         right: -@swiper-navigation-item-margin-large * 3;
       }
@@ -217,7 +217,7 @@
 }
 
 // small尺寸
-.@{prefix}-swiper-small {
+.@{prefix}-swiper--small {
   .@{prefix}-swiper__arrow {
     i.@{prefix}-icon {
       &::before {
@@ -225,17 +225,17 @@
       }
     }
   }
-  .@{prefix}-swiper__arrow-default {
+  .@{prefix}-swiper__arrow--default {
     .swiper-arrow(left, small);
     .swiper-arrow(right,small);
   }
   .@{prefix}-swiper__navigation-bars {
     .swiper-navigation-item(bars, inside, horizontal,small);
   }
-  .@{prefix}-swiper__navigation-fraction {
+  .@{prefix}-swiper__navigation--fraction {
     .swiper-navigation-fraction(small);
   }
-  &.@{prefix}-swiper-outside {
+  &.@{prefix}-swiper--outside {
     .@{prefix}-swiper__navigation {
       bottom: -@swiper-navigation-item-margin-small * 3;
     }
@@ -243,11 +243,11 @@
       .swiper-navigation-item(bars, outside, horizontal,small);
     }
   }
-  &.@{prefix}-swiper-vertical {
+  &.@{prefix}-swiper--vertical {
     .@{prefix}-swiper__navigation-bars {
       .swiper-navigation-item(bars, inside, vertical,small);
     }
-    &.@{prefix}-swiper-outside {
+    &.@{prefix}-swiper--outside {
       .@{prefix}-swiper__navigation {
         right: -@swiper-navigation-item-margin-small * 3;
       }
