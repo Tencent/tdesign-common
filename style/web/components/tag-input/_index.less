@@ -23,13 +23,28 @@
   &:hover,
   .@{prefix}-input--focused {
     .@{prefix}-input__inner {
-      min-width: 60px;
+      min-width: 40px;
     }
   }
 
   .@{prefix}-tag-input__prefix,
   .@{prefix}-input__prefix:empty {
     margin-left: @spacer-s;
+  }
+
+  &.@{prefix}-input--auto-width {
+    padding-right: @spacer-s;
+    .@{prefix}-tag {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &:hover,.@{prefix}-is-focused {
+      .@{prefix}-input__prefix:not(:empty) + .@{prefix}-input__inner {
+        margin-left: @spacer-s;
+      }
+    }
   }
 }
 
@@ -43,6 +58,7 @@
   &.@{prefix}-input {
     display: block;
     height: auto;
+    padding-right: 24px;
 
     &.t-input--prefix > .t-input__prefix {
       display: inline;
