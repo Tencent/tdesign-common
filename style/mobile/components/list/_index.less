@@ -10,26 +10,3 @@
     margin: 10px 0 4px;
   }
 }
-
-.@{prefix}-pull-refresh {
-  overflow: hidden;
-
-  &__track {
-    position: relative;
-    height: 100%;
-    transition-property: transform;
-  }
-
-  &__head {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: @pull-refresh-text-height;
-    overflow: hidden;
-    color: @pull-refresh-text-color;
-    font-size: @pull-refresh-text-font-size;
-    line-height: @pull-refresh-text-line-height;
-    text-align: center;
-    transform: translateY(-100%);
-  }
-}
