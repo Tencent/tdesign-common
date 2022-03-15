@@ -51,11 +51,6 @@
   .@{prefix}-icon-add {
     color: @upload-icon-add-color;
   }
-
-  .@{prefix}-upload__icon-delete {
-    color: @upload-card-mask-bg-color;
-    cursor: pointer;
-  }
 }
 
 // 照片墙
@@ -66,6 +61,8 @@
     overflow: hidden;
     width: 100%;
     padding: @upload-card-padding;
+    display: flex;
+    flex-wrap: wrap;
 
     & .@{prefix}-is-disabled {
       & :hover {
@@ -74,21 +71,24 @@
     }
 
     &-item {
-      margin: @upload-card-item-margin;
+      // margin: @upload-card-item-margin;
+      padding: 0 8px 0 0;
+      margin: 0 0 8px 0;
       float: left;
       cursor: pointer;
       box-sizing: border-box;
       list-style: none;
+      display: flex;
 
       &::after {
         content: "";
         display: block;
       }
 
-      &:hover .@{prefix}-upload__card-mask {
-        opacity: 1;
-        .hover-transition(opacity);
-      }
+      // &:hover .@{prefix}-upload__card-mask {
+      //   opacity: 1;
+      //   .hover-transition(opacity);
+      // }
 
       &.@{prefix}-is--error {
 
@@ -117,8 +117,8 @@
 
     &-content {
       position: relative;
-      width: @upload-img-size;
-      height: @upload-img-size;
+      // width: @upload-img-size;
+      // height: @upload-img-size;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -175,9 +175,9 @@
     &-mask {
       background-color: @upload-card-mask-bg-color;
       color: @upload-card-mask-color;
-      transition: opacity .5s ease-in-out;
-      will-change: transform;
-      opacity: 0;
+      // transition: opacity .5s ease-in-out;
+      // will-change: transform;
+      // opacity: 0;
       .horizontal-vertical-center-with-flex();
       .fill-with-position-absolute();
     }
@@ -186,6 +186,19 @@
       right: 0;
       top: 0;
       bottom: 0;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      vertical-align: middle;
+      z-index: 1;
+      background-color: @upload-card-mask-bg-color;
+      width: @font-size-l;
+      height: @font-size-l;
+      .close-icon {
+        color: @bg-color-container;
+        width: @font-size-l;
+        height: @font-size-l;
+      }
     }
     &-mask-item {
       &-divider {
