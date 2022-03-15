@@ -22,7 +22,7 @@ toc: false
 
 通过loadingProps属性可以自定义loading图标的属性
 
-{{ loadingTexts }}
+{{ loading-texts }}
 
 ### 超时事件
 
