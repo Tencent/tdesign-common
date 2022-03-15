@@ -1,0 +1,34 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-pull-down-refresh {
+  overflow: hidden;
+
+  &__track {
+    position: relative;
+    height: 100%;
+    transition-property: transform;
+  }
+
+  &__tips {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    font-size: @font-size-base;
+    color: @pull-down-refresh-text-color;
+    text-align: center;
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__loading-icon {
+    .t-loading__text {
+      font-size: @font-size-base;
+      color: @pull-down-refresh-text-color;
+    }
+  }
+}
