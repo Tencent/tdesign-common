@@ -186,7 +186,7 @@ export function addMonth(date: Date, num: number): Date {
   return newDate;
 }
 
-export type DateValue = string | Date | Array<DateValue>;
+export type DateValue = string | Date | number;
 export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string }
 export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
 
