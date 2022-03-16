@@ -1,0 +1,104 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-image-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1001;
+  transform: translateZ(0);
+  overflow: hidden;
+
+  .@{prefix}-image-mask {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #0009;
+  }
+
+  .image-viewer-index {
+    position: absolute;
+    bottom: @image-viewer-index-bottom;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: @image-viewer-index-fontsize;
+    text-shadow: @image-viewer-index-text-shadow;
+    z-index: 101;
+  }
+
+  .image-viewer-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1501;
+  }
+
+  .relative {
+    position: relative;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .image-viewer-items {
+    list-style: none;
+    left: 0;
+    .relative();
+  }
+
+  .image-viewer-item-wrap {
+    height: auto;
+    .relative();
+
+    .item {
+      width: 100%;
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}
+
+.@{prefix}-swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &-box {
+    overflow: hidden;
+    will-change: tranform;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &-container {
+    height: 100%;
+    width: auto;
+    position: relative;
+    box-sizing: initial;
+    display: flex;
+  }
+
+  &-item {
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+  }
+}

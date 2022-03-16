@@ -1,0 +1,45 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-avatar-group {
+  display: inline-flex;
+  align-items: center;
+
+  .@{prefix}-avatar {
+    .avatar-group-border--width();
+  }
+
+  &.@{prefix}-avatar--offset-right {
+    & .@{prefix}-avatar {
+      &:not(:last-child) {
+        .avatar-group-offset-right(@avatar-group-offset-medium);
+
+        &.@{prefix}-size-s {
+          .avatar-group-offset-right(@avatar-group-offset-small);
+        }
+
+        &.@{prefix}-size-l {
+          .avatar-group-offset-right(@avatar-group-offset-large);
+        }
+      }
+    }
+  }
+
+  &.@{prefix}-avatar--offset-left {
+    .generate-z-index(@avatar-group-init-zIndex);
+
+    .@{prefix}-popup-reference .@{prefix}-avatar {
+      z-index: 0;
+      .avatar-group-size--left();
+    }
+
+    & .@{prefix}-avatar {
+      &:not(:first-child) {
+        .avatar-group-size--left();
+      }
+    }
+  }
+}

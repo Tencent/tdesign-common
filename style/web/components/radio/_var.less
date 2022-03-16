@@ -33,7 +33,7 @@
 @radio-button-color-outline-checked: @brand-color;
 @radio-button-background-color-disabled: @bg-color-component-disabled;
 @radio-button-color-disabled: @text-color-disabled;
-@radio-button-background-color-outline-disabled-checked: @bg-color-container;
+@radio-button-background-color-outline-disabled-checked: @bg-color-specialcomponent;
 @radio-button-color-disabled-checked: @text-color-disabled;
 
 @radio-button-group-background-color-filled: @bg-color-component;
@@ -41,11 +41,10 @@
 @radio-button-color-filled-hover: @text-color-primary;
 @radio-button-color-default-filled-checked: @text-color-primary;
 @radio-button-color-primary-filled-checked: @text-color-anti;
-@radio-button-color-default-filled-disabled-checked: @brand-color-disabled;
-@radio-button-color-primary-filled-disabled-checked: @text-color-disabled;
+@radio-button-color-default-filled-disabled-checked: @text-color-disabled;
 @radio-button-background-color-default-filled-checked: @bg-color-container-select;
 @radio-button-background-color-primary-filled-checked: @brand-color;
-@radio-button-background-color-default-filled-disabled-checked: @bg-color-container;
+@radio-button-background-color-default-filled-disabled-checked: @bg-color-component-disabled;
 @radio-button-background-color-primary-filled-disabled-checked: @brand-color-disabled;
 
 // 尺寸
@@ -75,9 +74,9 @@
 @radio-button-line-height-default: @text-line-height-base;
 // padding
 @radio-input-label-spacer: @spacer;
-@radio-button-padding-small: 0px 8px;
-@radio-button-padding-medium: 4px 16px;
-@radio-button-padding-large: 8px 24px;
+@radio-button-padding-small: 0px @spacer-s;
+@radio-button-padding-medium: @spacer-s @spacer-2;
+@radio-button-padding-large: @spacer @spacer-3;
 @radio-button-before-left: 0px;
 @radio-button-before-top: 50%;
 @radio-button-border: 1px solid;

@@ -14,7 +14,7 @@
 可绑定 onKeypressonKeydownonKeyuponFocusonBlur 等 DOM 原生事件。
 
 
-### 不同类型的多行文本框
+### 不同状态的多行文本框
 支持只读、禁用状态。
 
 

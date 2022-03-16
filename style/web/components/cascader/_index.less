@@ -10,7 +10,6 @@
 
 .@{prefix}-cascader {
   position: relative;
-  width: @cascader-input-width;
   border: @cascader-border;
   border-radius: @border-radius;
   padding: @cascader-input-padding;
@@ -31,6 +30,10 @@
     & > .@{prefix}-icon {
       color: @cascader-icon-color;
     }
+  }
+
+  &__popup {
+    width: 100%;
   }
 
   &__placeholder {
@@ -106,11 +109,19 @@
     margin-top: @cascader-item-margin-top;
     transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
-    &.@{prefix}-is-disabled {
-      color: @cascader-item-color-disabled;
-      background-color: transparent;
-      cursor: not-allowed;
+    &.@{prefix}-size-s {
+      height: @cascader-item-height-s;
+      line-height: @cascader-item-height-s;
+      font-size: @cascader-font-size-s;
     }
+
+    &.@{prefix}-size-l {
+      height: @cascader-item-height-l;
+      line-height: @cascader-item-height-l;
+      font-size: @cascader-font-size-l;
+      padding: @cascader-item-padding-l;
+    }
+
     &.@{prefix}-is-disabled {
       color: @cascader-item-color-disabled;
       background-color: transparent;
@@ -203,7 +214,7 @@
       }
     }
 
-    &:hover {
+    &:hover:not(.@{prefix}-is-expanded) {
       background: @cascader-item-color-hover;
       cursor: pointer;
     }
@@ -246,9 +257,10 @@
     }
   }
 
-  .@{prefix}-input__inner {
+  .@{prefix}-input {
     border: 0;
     padding: 0;
+    box-shadow: none;
     margin-left: @cascader-content-margin-left;
 
     &:hover,
@@ -267,6 +279,9 @@
     background-color: @cascader-tag-background-color-disabled;
     color: @cascader-item-color-disabled;
     border-color: @cascader-border-color-disabled;
+    > .@{prefix}-cascader__placeholder, .@{prefix}-cascader__icon {
+      color: @cascader-item-color-disabled;
+    }
 
     .@{prefix}-cascader__content {
       color: @cascader-color-empty;
@@ -297,19 +312,19 @@
     min-height: @cascader-height-default;
     font-size: @cascader-font-size-default;
 
-    .@{prefix}-input__inner {
+    .@{prefix}-input {
       height: @cascader-input-inner-height;
       line-height: @cascader-input-inner-height;
     }
   }
 
   &.@{prefix}-size-s {
-    height: @cascader-item-height-s;
-    line-height: @cascader-item-height-s;
+    height: @cascader-height-s;
+    line-height: calc(@cascader-height-s - 2px);
     font-size: @cascader-font-size-s;
     min-height: @cascader-height-s;
 
-    .@{prefix}-input__inner {
+    .@{prefix}-input {
       height: calc(@cascader-height-s - 2px);
       line-height: calc(@cascader-height-default - 4px);
     }

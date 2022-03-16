@@ -6,9 +6,9 @@
 
 @themes: primary, success, warning, default, danger;
 
-.genVariant(@fontColorWeight; @borderColorWeight; @backgroundColorWeight; @hoverColorWeight) {
+.genVariant(@fontColorWeight; @borderColorWeight; @backgroundColorWeight;) {
 
-  &.@{prefix}-tag--theme-default {
+  &.@{prefix}-tag-default {
     color: @tag-default-color;
     border-color: @tag-default-border-color;
     background-color: @tag-default-background-color;
@@ -16,7 +16,7 @@
 
   .for(@themes, @i: 1) when(@i =< length(@themes)) {
 
-    &.@{prefix}-tag--theme-@{theme} {
+    &.@{prefix}-tag-@{theme} {
       background-color: mix(@@theme-color, @color-white, @backgroundColorWeight);
       border-color: mix(@@theme-color, @color-white, @borderColorWeight);
       color: mix(@@theme-color, @color-white, @fontColorWeight);
@@ -50,18 +50,20 @@
   text-overflow: ellipsis;
   user-select: none;
 
-  &--variant {
-    &-dark {
-      .genVariant(0, 100, 100, 100);
-    }
+  &-dark {
+    .genVariant(0, 100, 100);
+  }
 
-    &-light {
-      .genVariant(100, 10, 10, 10);
-    }
+  &-light {
+    .genVariant(100, 10, 10);
+  }
 
-    &-plain {
-      .genVariant(100, 50, 0, 5);
-    }
+  &-outline {
+    .genVariant(100, 50, 0);
+  }
+
+  &-light-outline {
+    .genVariant(100, 50, 10);
   }
 
   .@{prefix}-tag__content {

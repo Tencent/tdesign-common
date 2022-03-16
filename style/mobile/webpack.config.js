@@ -12,19 +12,19 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'css-loader',
-        ],
-      }, {
+        use: ['css-loader'],
+      },
+      {
         test: /\.less$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'less-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'tdesign.css',
+    }),
+  ],
   devServer: {
     contentBase: './',
     compress: true,

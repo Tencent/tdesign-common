@@ -41,7 +41,6 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__logo:not(:empty) {
     height: 100%;
-    font-size: 0;
     margin-right: 32px;
   }
 
@@ -521,9 +520,14 @@ a.@{prefix}-menu__item {
 
 // menu
 .@{prefix}-menu {
-  color: @menu-theme-light;
+  color: @menu-color-light;
   font-size: @menu-fontsize;
+  overflow: scroll;
   .list-style-none();
+
+  &--dark {
+    color: @menu-color-dark;
+  }
 
   &__logo {
     &:not(:empty) {
@@ -563,8 +567,8 @@ a.@{prefix}-menu__item {
     position: relative;
     display: flex;
     align-items: center;
-    height: 64px;
-    line-height: 64px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     color: @menu-item-color--light;
     cursor: pointer;
@@ -574,6 +578,33 @@ a.@{prefix}-menu__item {
 
     ::selection {
       background: transparent;
+    }
+
+    &-spacer {
+      overflow: unset;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 1;
+      }
+
+      @horizontal-spacer: 16px;
+
+      &--right::before {
+        right: -@horizontal-spacer;
+        width: @horizontal-spacer;
+        top: 0;
+        bottom: 0;
+      }
+
+      &--bottom::before {
+        bottom: -20px;
+        left: 0;
+        right: 0;
+        height: 20px;
+      }
     }
 
     a {
@@ -738,6 +769,10 @@ a.@{prefix}-menu__item {
       height: 100%;
     }
 
+    .@{prefix}-fake-arrow {
+      margin-left: 8px;
+    }
+
     &.@{prefix}-is-vertical {
       max-height: unset;
       width: 0;
@@ -748,6 +783,23 @@ a.@{prefix}-menu__item {
 
       &.@{prefix}-is-opened {
         width: var(--popup-width, 216px);
+      }
+
+      @{prefix}-menu__item {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    &.@{prefix}-is-horizontal {
+      .@{prefix}-menu__item {
+        padding-left: 16px;
+        padding-right: 16px;
+        white-space: nowrap;
+      }
+
+      li + li {
+        margin-top: 4px;
       }
     }
 

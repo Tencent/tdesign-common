@@ -95,7 +95,7 @@
   &--primary {
     background-color: @tag-primary-color;
 
-    &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--outline {
       color: @tag-primary-color;
     }
   }
@@ -103,7 +103,7 @@
   &--success {
     background-color: @tag-success-color;
 
-    &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--outline {
       color: @tag-success-color;
     }
   }
@@ -111,7 +111,7 @@
   &--warning {
     background-color: @tag-warning-color;
 
-    &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--outline {
       color: @tag-warning-color;
     }
   }
@@ -119,7 +119,7 @@
   &--danger {
     background-color: @tag-danger-color;
 
-    &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--outline {
       color: @tag-danger-color;
     }
   }
@@ -130,12 +130,12 @@
       color: @tag-primary-color;
       background-color: @tag-primary-color-light;
 
-      &.@{prefix}-tag--plain {
+      &.@{prefix}-tag--outline {
         color: @tag-primary-color;
       }
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @brand-color-hover;
@@ -150,12 +150,12 @@
       color: @tag-success-color;
       background-color: @tag-success-color-light;
 
-      &.@{prefix}-tag--plain {
+      &.@{prefix}-tag--outline {
         color: @tag-success-color;
       }
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @success-color-hover;
@@ -170,12 +170,12 @@
       color: @tag-warning-color;
       background-color: @tag-warning-color-light;
 
-      &.@{prefix}-tag--plain {
+      &.@{prefix}-tag--outline {
         color: @tag-warning-color;
       }
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @warning-color-hover;
@@ -190,7 +190,7 @@
       color: @tag-danger-color;
       background-color: @tag-error-color-light;
 
-      &.@{prefix}-tag--plain {
+      &.@{prefix}-tag--outline {
         color: @tag-danger-color;
       }
     }
@@ -203,7 +203,7 @@
       }
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--plain {
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @error-color-hover;
@@ -223,8 +223,8 @@
     }
   }
 
-  &.@{prefix}-tag--plain {
-    background-color: @tag-plain-background-color;
+  &.@{prefix}-tag--outline {
+    background-color: @tag-outline-background-color;
   }
 
   &.@{prefix}-size-s {

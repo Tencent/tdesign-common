@@ -25,7 +25,6 @@ spline: data
 
 ### 固定表头和列的表格
 
-
 在浏览数据时，可以根据实际使用需要将表格表头、列固定，便于信息对照或操作。
 
 #### 固定表头的表格
@@ -58,7 +57,7 @@ spline: data
 
 {{ expandable }}
 
-### 自定义单元格/表头的表格
+### 自定义的表格
 
 为满足复杂的业务需求，单元格和表头均支持自定义。
 
@@ -86,6 +85,15 @@ spline: data
 
 {{ custom-header }}
 
+#### 自定义列的表格
+
+自定义设置需要展示的列，可以通过 `columnController` 字段来设置，其中：
+- `columnController.fields` 来设置可以自定义的列，不传表示全部可自定义。
+- `columnController.displayType` 用来设置自定义列的内容展示的方式，有 `auto-width` 和 `fixed-width` 可选。
+
+
+{{ custom-col }}
+
 ### 可排序的表格
 
 对先后顺序有要求的场景（如安全策略场景），提供表格排序能力，用户可以调整位置。
@@ -112,7 +120,7 @@ spline: data
 
 本地数据排序，表示组件内部会对参数 data 进行数据排序。如果 data 数据为 10 条，就仅对这 10 条数据进行排序。
 
-- 将需要排序的列属性 `sorter` 设置为排序函数，示例：`{ colKey: 'date', title: '日期', sorter: (a, b) => a.status - b.status  }`。
+- 将需要排序的列属性 `sorter` 设置为排序函数，示例：`{ colKey: 'date', title: '日期', sorter: (a, b) => a.status - b.status }`。
 - 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`。
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
 - 排序发生变化时，因为是本地数据排序，因此数据也会发生变化，需要监听 `onDatachange`，事件处理受控数据。
@@ -138,6 +146,7 @@ spline: data
 远程数据分页，表示组件内部不会对参数 `data` 进行分页。只输出分页信息，以供远程请求进行分页。
 
 {{ pagination-ajax }}
+
 #### 本地数据分页
 
 本地数据分页，表示组件内部会对参数 `data` 进行分页。
@@ -166,7 +175,6 @@ spline: data
 
 {{ merge-cells }}
 
-
 ### 多级表头的表格
 
 表头数据标签可采用多级呈现，表述信息层级包含关系。
@@ -191,12 +199,17 @@ spline: data
 
 ### 可拖拽排序的表格
 
+#### 行拖拽排序
+
 {{ drag-sort }}
+
+#### 列拖拽排序
+
+{{ drag-col-sort }}
 
 ### 树形结构的表格
 
 请使用 `EnhancedTable`，`Table/PrimaryTable/BaseTable` 等不支持树形结构。
-
 
 #### 树形结构显示
 

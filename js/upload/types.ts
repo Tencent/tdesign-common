@@ -1,15 +1,15 @@
 export type UploadProgressType = 'real' | 'mock';
 
-export interface UploadFile extends File {
+export interface UploadFile {
   /**
    * 上一次变更的时间
    */
-  lastModified: number;
+  lastModified?: number;
   /**
    * 文件名称
    * @default ''
    */
-  name: string;
+  name?: string;
   /**
    * 下载进度
    */
@@ -25,7 +25,7 @@ export interface UploadFile extends File {
   /**
    * 文件大小
    */
-  size: number;
+  size?: number;
   /**
    * 文件上传状态：上传成功，上传失败，上传中，等待上传
    * @default ''
@@ -35,7 +35,7 @@ export interface UploadFile extends File {
    * 文件类型
    * @default ''
    */
-  type: string;
+  type?: string;
   /**
    * 文件上传成功后的下载/访问地址
    * @default ''
@@ -51,7 +51,7 @@ export interface RequestMethodResponse {
 
 export interface ProgressContext {
   e?: ProgressEvent;
-  file: UploadFile;
+  file?: UploadFile;
   percent: number;
   type: UploadProgressType
 }
@@ -62,27 +62,30 @@ export interface HTMLInputEvent extends Event {
 
 export interface InnerProgressContext {
   event?: ProgressEvent;
-  file: UploadFile;
+  file?: UploadFile;
+  files?: UploadFile[];
   percent: number;
   type?: ProgressContext['type'];
 }
 
 export interface SuccessContext {
   event?: ProgressEvent;
-  file: UploadFile;
+  file?: UploadFile;
+  files?: UploadFile[];
   response: RequestMethodResponse['response'];
 }
 
 export interface UploadRemoveOptions {
   e: MouseEvent;
   file?: UploadFile;
+  files?: UploadFile[];
   index: number
 }
 
 export interface FlowRemoveContext {
   e: MouseEvent;
   index: number;
-  file: UploadFile;
+  file?: UploadFile;
 }
 
 export interface XhrOptions {
@@ -90,10 +93,13 @@ export interface XhrOptions {
   withCredentials: boolean;
   headers: { [key: string]: string };
   data: { [key: string]: any } | Function;
-  file: UploadFile;
+  file?: UploadFile;
+  files?: UploadFile[];
   name: string;
-  onError: ({ event, file, response }: {
-    event?: ProgressEvent; file?: UploadFile; response?: any
+  onError: ({
+    event, file, files, response
+  }: {
+    event?: ProgressEvent; file?: UploadFile; files?: UploadFile[]; response?: any
   }) => void;
   onSuccess: (context: SuccessContext) => void;
   onProgress: (context: InnerProgressContext) => void;

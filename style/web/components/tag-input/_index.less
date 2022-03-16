@@ -1,0 +1,80 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../utilities/_animation.less";
+
+.@{prefix}-tag-input {
+
+  .@{prefix}-tag {
+    margin-right: @spacer-s;
+    animation: t-fade-in .1s ease-in-out;
+  }
+
+  &.@{prefix}-input {
+    padding-left: @spacer-s;
+    overflow: hidden;
+
+    &.@{prefix}-size-s {
+      padding-left: @spacer-s * .5;
+    }
+  }
+
+  &:hover,
+  .@{prefix}-input--focused {
+    .@{prefix}-input__inner {
+      min-width: 40px;
+    }
+  }
+
+  .@{prefix}-tag-input__prefix,
+  .@{prefix}-input__prefix:empty {
+    margin-left: @spacer-s;
+  }
+
+  &.@{prefix}-input--auto-width {
+    padding-right: @spacer-s;
+    .@{prefix}-tag {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &:hover,.@{prefix}-is-focused {
+      .@{prefix}-input__prefix:not(:empty) + .@{prefix}-input__inner {
+        margin-left: @spacer-s;
+      }
+    }
+  }
+}
+
+.@{prefix}-tag-input__suffix-clear {
+  cursor: pointer;
+}
+
+// 标签数量超出时，换行显示
+.@{prefix}-tag-input--break-line {
+
+  &.@{prefix}-input {
+    display: block;
+    height: auto;
+    padding-right: 24px;
+
+    &.t-input--prefix > .t-input__prefix {
+      display: inline;
+      text-align: left;
+    }
+
+    .@{prefix}-input__suffix-icon {
+      position: absolute;
+      right: @spacer;
+      bottom: 0;
+    }
+  }
+}
+
+.@{prefix}-tag-input__prefix {
+  width: max-content;
+  display: inline-block;
+  margin-right: @spacer;
+}

@@ -1,4 +1,4 @@
-.input-inner-base() {
+.input-base() {
   border-width: 1px;
   border-style: solid;
   border-radius: @input-border-radius;
@@ -13,10 +13,7 @@
   transition: @input-inner-transition;
   display: flex;
   align-items: center;
-
-  &::placeholder {
-    color: @input-placeholder-color;
-  }
+  overflow: hidden;
 
   &:hover {
     border-color: @input-border-color-default-hover;
@@ -30,26 +27,25 @@
 }
 
 .input-disabled {
-
   &.@{prefix}-input.@{prefix}-is-disabled {
+    color: @input-text-color-disabled;
+    background-color: @input-bg-color-disabled;
 
-    &.@{prefix}-input__inner {
-      color: @input-text-color-disabled;
-      background-color: @input-bg-color-disabled;
+    &:hover {
+      border-color: @input-border-color-default;
+    }
+
+    .@{prefix}-input__inner {
       cursor: not-allowed;
+      color: @input-text-color-disabled;
 
-      > input {
-        background-color: @input-bg-color-disabled;
-      }
-
-      &:hover {
-        border-color: @input-border-color-default;
+      &::placeholder {
+        color: @input-text-color-disabled;
       }
     }
 
     & > .@{prefix}-input__prefix,
     & > .@{prefix}-input__suffix {
-
       .@{prefix}-icon {
         color: @input-text-color-disabled;
       }
@@ -58,22 +54,18 @@
 }
 
 .input-status(@status) {
-
   &.@{prefix}-is-@{status} {
+    border-color: @@borderColor;
+    @borderColor: "input-border-color-@{status}";
 
-    &.@{prefix}-input__inner {
-      border-color: @@borderColor;
+    &:focus {
+      box-shadow: 0 0 0 2px @@boxShadowColor;
+      @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+    }
 
-      &:focus {
-        box-shadow: 0 0 0 2px @@boxShadowColor;
-        @boxShadowColor: "input-box-shadow-color-@{status}-focus";
-      }
-
-      &--focused {
-        box-shadow: 0 0 0 2px @@boxShadowColor;
-        @boxShadowColor: "input-box-shadow-color-@{status}-focus";
-      }
-      @borderColor: "input-border-color-@{status}";
+    &.@{prefix}-input--focused {
+      box-shadow: 0 0 0 2px @@boxShadowColor;
+      @boxShadowColor: "input-box-shadow-color-@{status}-focus";
     }
 
     & > .@{prefix}-input__extra {
@@ -84,7 +76,6 @@
 }
 
 .input-fix-position(@position) {
-
   &.@{prefix}-input--@{position} {
     & > .@{prefix}-input__@{position}-icon {
       & when (@position = prefix) {
@@ -112,9 +103,7 @@
 
 .input-size(@size) {
   & when(@size = l) {
-
     &.@{prefix}-size-l {
-
       & > .@{prefix}-input__inner {
         height: @input-height-l;
         line-height: @input-height-l;
@@ -122,7 +111,6 @@
     }
   }
   & when not (@size = l) {
-
     &.@{prefix}-size-@{size} {
       width: @@width-size;
       @width-size: "input-width-@{size}";
@@ -131,7 +119,6 @@
 }
 
 .addon-item(@position) {
-
   .@{prefix}-addon__@{position} {
     background-color: @input-append-color;
     color: @input-text-color-default;

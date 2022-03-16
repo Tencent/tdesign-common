@@ -28,9 +28,7 @@
     appearance: textfield;
   }
 
-  .@{inputCls}__inner {
-    text-align: center;
-    margin: 0 (@spacer / 2);
+  .@{inputCls} {
     color: @input-number-inner-color;
   }
 
@@ -88,6 +86,10 @@
           color: @input-number-button-color-disabled;
         }
       }
+
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
     }
   }
 
@@ -103,22 +105,21 @@
     padding: 0;
     border-radius: @border-radius;
 
-    .@{inputCls}__inner {
-      text-align: left;
-    }
-
     &.@{prefix}-is-disabled {
       cursor: no-drop;
       color: @input-number-button-color-disabled;
 
       &:hover {
-
-        .@{inputCls}__inner {
+        .@{inputCls} {
           border-color: @input-number-button-border-color;
         }
       }
 
-      .@{inputCls}__inner:focus {
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
+
+      .@{inputCls}:focus {
         box-shadow: none;
       }
     }
@@ -126,8 +127,7 @@
 }
 
 .@{inputNumberCls}.@{prefix}-is-disabled {
-
-  .@{inputCls}__inner {
+  .@{inputCls} {
     cursor: no-drop;
     background-color: @input-number-bg-color-disabled;
     color: @input-number-inner-color-disabled;
@@ -155,7 +155,7 @@
   width: @input-number-width-s;
   padding: 0 @input-number-button-width-s;
 
-  .@{inputCls}__inner {
+  .@{inputCls} {
     height: @input-number-inner-height-s;
     line-height: @input-number-inner-height-s;
   }
@@ -172,7 +172,7 @@
   width: @input-number-width-l;
   padding: 0 @input-number-button-width-l;
 
-  .@{inputCls}__inner {
+  .@{inputCls} {
     height: @input-number-inner-height-l;
     line-height: @input-number-inner-height-l;
   }
@@ -185,12 +185,10 @@
   }
 
   &.@{prefix}-is-controls-right {
-
-    .@{inputCls}__inner {
+    .@{inputCls} {
       height: @input-number-inner-height-l;
       line-height: @input-number-inner-height-l;
-      padding-right:
-        @input-number-right-button-width-l +
+      padding-right: @input-number-right-button-width-l +
         @input-number-padding-horizontal-default;
     }
 
@@ -206,12 +204,7 @@
   width: @input-number-right-width;
   padding: 0;
 
-  &.@{prefix}-size-l {
-    width: @input-number-right-width-l;
-  }
-
   &:hover {
-
     .@{inputNumberCls}__decrease,
     .@{inputNumberCls}__increase {
       opacity: 1;
@@ -219,21 +212,24 @@
     }
   }
 
-  .@{inputCls}__inner {
+  .@{inputCls} {
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    padding-right:
-      (@input-number-right-button-width +
-      @input-number-padding-horizontal-default);
-    text-align: left;
+    padding-right: (
+      @input-number-right-button-width + @input-number-padding-horizontal-default
+    );
     border-radius: @border-radius;
+  }
+
+  .@{inputCls}__inner {
+    text-align: left;
   }
 
   .@{inputNumberCls}__decrease,
   .@{inputNumberCls}__increase {
     width: @input-number-right-button-width;
-    height: calc(50% - 2px);
+    height: @input-number-button-column-height;
     border: 0;
     left: initial;
     top: initial;
@@ -272,16 +268,53 @@
           color: @input-number-button-color-disabled;
         }
       }
-    }
-  }
 
-  .@{inputNumberCls}__decrease {
-    bottom: 1px;
-    border-bottom-right-radius: calc(@border-radius - 1px);
+      &::placeholder {
+        color: @input-number-inner-color-disabled;
+      }
+    }
   }
 
   .@{inputNumberCls}__increase {
     top: 1px;
     border-top-right-radius: calc(@border-radius - 1px);
+  }
+
+  .@{inputNumberCls}__decrease {
+    top: @input-number-button-column-height + 3px;
+    border-bottom-right-radius: calc(@border-radius - 1px);
+  }
+
+  &.@{prefix}-size-l {
+    .@{inputNumberCls}__increase,
+    .@{inputNumberCls}__decrease {
+      height: @input-number-button-column-height-l;
+    }
+    .@{inputNumberCls}__decrease {
+      top: @input-number-button-column-height-l + 3px;
+    }
+  }
+}
+
+.@{inputNumberCls} {
+  &:not(&--column) {
+    > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
+      margin-left: @spacer-s;
+    }
+  }
+}
+
+// autoWidth适配
+.@{inputNumberCls} {
+  &.@{inputNumberCls}--auto-width {
+    width: auto;
+
+    &.@{prefix}-is-controls-right {
+      min-width: 88px;
+    }
+
+    &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
+      right: -4px;
+    }
   }
 }

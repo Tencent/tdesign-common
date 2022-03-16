@@ -126,7 +126,7 @@
       &.@{prefix}-is-disabled {
 
         &.@{prefix}-is-checked {
-          color: @radio-button-color-primary-filled-disabled-checked;
+          color: @radio-button-color-primary-filled-checked;
         }
 
         &.@{prefix}-is-checked ~ .@{radio-cls}-group__bg-block {
@@ -265,11 +265,14 @@
     &::after {
       content: "";
       position: absolute;
-      top: ((@radio-size - @radio-dot-size) / 2 - 1px);
-      left: ((@radio-size - @radio-dot-size) / 2 - 1px);
+      top: 50%;
+      left: 50%;
+      width: @radio-size;
+      height: @radio-size;
+      margin-top: -@radio-dot-size;
+      margin-left: -@radio-dot-size;
+      transform: scale(.5);
       opacity: @radio-opacity-transparent;
-      width: @radio-dot-size;
-      height: @radio-dot-size;
       border-radius: @border-radius-50;
       background-color: @radio-dot-color;
       transition: all @anim-duration-base @anim-time-fn-ease-out;

@@ -92,7 +92,7 @@
     transition: .2s;
     user-select: none;
 
-    &.dragging {
+    &--dragging {
       box-shadow: @slider-input-shadow;
     }
 
@@ -104,14 +104,16 @@
   &__button-wrapper {
     position: absolute;
     z-index: 2;
-    top: -7px;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     background-color: transparent;
     text-align: center;
     user-select: none;
     line-height: normal;
     outline: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   &__stop {
@@ -136,9 +138,13 @@
     color: @slider-text;
     top: @slider-text-top;
     line-height: @slider-text-line-height;
-    // transform: translateX(-50%);
+    transform: translateX(-50%);
     margin-top: @slider-border-radius;
     cursor: pointer;
+
+    &:first-child {
+      transform: translateX(0%);
+    }
 
     &:last-child {
       transform: translateX(-100%);

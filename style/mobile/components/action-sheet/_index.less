@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@import "../../mixins/_index.less";
+
 @import "../popup/_index.less";
 
 .@{prefix}-action-sheet {
@@ -12,7 +14,7 @@
   }
 
   &__menu-wrapper {
-    background-color: #fbfbfb;
+    background-color: #fff;
   }
 
   &__menu-slider {
@@ -46,7 +48,7 @@
     margin-top: 8px;
     font-size: 14px;
     padding: 0;
-    color: rgba(0, 0, 0, 30%);
+    color: @action-sheet-grid-text-color;
   }
 
   &__panel-list &__cell::after {
@@ -103,6 +105,7 @@
     background-color: #fff;
     padding: @action-sheet-action-padding-y 0;
     font-size: @action-sheet-action-font-size;
+    border-top: 1px solid @gray-color-1;
 
     &:active {
       background-color: @action-sheet-cell-active-bg-color;

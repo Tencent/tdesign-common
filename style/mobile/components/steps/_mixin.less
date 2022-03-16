@@ -17,19 +17,26 @@
       vertical-align: top;
       font-size: @font-size-base;
       position: relative;
-      color: @border-level-2-color;
+      color: @text-level-4-color;
 
       &__number {
         display: block;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: @connector-default-icon-width;
-        height: @connector-default-icon-width;
+        width: @step-connector-default-icon-width;
+        height: @step-connector-default-icon-width;
         text-align: center;
-        border: 1px solid @border-level-2-color;
+        border: 1px solid @text-level-4-color;
         border-radius: 50%;
-        color: @border-level-2-color;
+        color: @text-level-4-color;
+      }
+    }
+
+    &__inner__icon {
+      .@{prefix}-step-icon__number {
+        width: @step-horizontal-icon-width;
+        height: @step-horizontal-icon-width;
       }
     }
 
@@ -39,7 +46,7 @@
 
     &-title {
       position: relative;
-      color: @title-color;
+      color: @text-level-1-color;
       text-align: center;
       line-height: 22px;
       font-size: @font-size-base;
@@ -65,11 +72,16 @@
         content: "";
         display: block;
         height: 1px;
-        background: @border-level-2-color;
+        background-color: @text-level-4-color;
         position: absolute;
-        width: calc(100% - @connector-default-icon-width);
-        left: calc(50% + @connector-default-icon-width / 2);
-        top: (@connector-default-icon-width / 2);
+        width: calc(100% - @step-connector-default-icon-width);
+        left: calc(50% + @step-connector-default-icon-width / 2);
+        top: (@step-connector-default-icon-width / 2);
+      }
+      .@{prefix}-step__inner__icon:after {
+        width: calc(100% - @step-horizontal-icon-width);
+        left: calc(50% + @step-horizontal-icon-width / 2);
+        top: (@step-horizontal-icon-width / 2);
       }
     }
 
@@ -77,7 +89,7 @@
     .@{prefix}-step--default:not(:last-child) {
 
       .@{prefix}-step__inner:after {
-        background: @primary-color;
+        background-color: @primary-color-5;
       }
     }
   }
@@ -88,12 +100,12 @@
       .@{prefix}-step__inner:after {
         content: "";
         display: block;
-        height: calc(100% - @connector-default-icon-width);
+        height: calc(100% - @step-connector-default-icon-width);
         width: 1px;
-        background: @border-level-2-color;
+        background-color: @gray-color-5;
         position: absolute;
-        left: (@connector-default-icon-width / 2);
-        top: @connector-default-icon-width;
+        left: (@step-connector-default-icon-width / 2);
+        top: @step-connector-default-icon-width;
       }
     }
 
@@ -101,7 +113,7 @@
     .@{prefix}-step--default:not(:last-child) {
 
       .@{prefix}-step__inner:after {
-        background: @primary-color;
+        background-color: @primary-color;
       }
     }
   }
@@ -123,19 +135,23 @@
     }
   };
   & when(@anchor-status = process) {
-
     .@{prefix}-step-icon__number {
-      background: @primary-color;
+      background-color: @primary-color;
       color: #fff;
       border-color: @primary-color;
+    }
+    .@{prefix}-step-title {
+      color: @primary-color-8;
     }
   };
   & when(@anchor-status = error) {
 
     .@{prefix}-step-icon__number {
-      background: @error-color-6;
-      color: @text-anti-primary-color;
+      color: @error-color-6;
       border-color: @error-color-6;
+    }
+    .@{prefix}-step-title {
+      color: @error-color-6;
     }
   };
 }

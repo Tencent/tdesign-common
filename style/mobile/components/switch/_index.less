@@ -20,7 +20,6 @@
     vertical-align: middle;
     margin: @switch-text-margin;
     color: @switch-text-color;
-    opacity: .3;
   }
 
   &__node {
@@ -55,7 +54,6 @@
 
   &.@{prefix}-is-checked {
     .@{prefix}-switch__node {
-      // border-color: @switch-checked-background-color;
       background-color: @switch-checked-background-color;
 
       &::after {
@@ -65,17 +63,23 @@
   }
 
   &.@{prefix}-is-disabled {
+    .@{prefix}-switch__text {
+      color: @switch-text-color-disabled;
+    }
+
     .@{prefix}-switch__node {
       cursor: not-allowed;
-      opacity: .6;
+      background-color: @switch-background-color-disbaled;
 
       &::after {
         cursor: not-allowed;
       }
     }
 
-    .@{prefix}-switch__text {
-      opacity: .16;
+    &.@{prefix}-is-checked {
+      .@{prefix}-switch__node {
+        background-color: @switch-checked-background-color-disabled;
+      }
     }
   }
 }

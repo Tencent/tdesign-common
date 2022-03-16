@@ -82,69 +82,16 @@
     .@{prefix}-form__item {
       margin: 0 @form-item-margin-right-inline 0 0;
     }
-
-    // 输入框状态
-    .input-status(warning);
-    .input-status(error);
   }
 
   &__controls.@{prefix}-is-success {
-
-    .@{prefix}-form__status {
-
-      .@{prefix}-icon {
-        color: @form-color-success;
-      }
-    }
-
-    .@{prefix}-input__extra {
-      color: @form-color-success;
-    }
+    .input-status-icon(success);
+    .input-status-extra(success);
   }
 
   &__controls.@{prefix}-form--success-border {
     // 输入框状态
     .input-status(success);
-  }
-
-  &__controls.@{prefix}-is-error {
-
-    .@{prefix}-input__inner {
-      border-color: @@borderColor;
-      @borderColor: "form-color-error";
-    }
-
-    .@{prefix}-input__extra {
-      color: @@fontColor;
-      @fontColor: "form-color-error";
-    }
-
-    .@{prefix}-form__status {
-
-      .@{prefix}-icon {
-        color: @form-color-error;
-      }
-    }
-  }
-
-  &__controls.@{prefix}-is-warning {
-
-    .@{prefix}-input__inner {
-      border-color: @@borderColor;
-      @borderColor: "form-color-warning";
-    }
-
-    .@{prefix}-input__extra {
-      color: @@fontColor;
-      @fontColor: "form-color-warning";
-    }
-
-    .@{prefix}-form__status {
-
-      .@{prefix}-icon {
-        color: @form-color-warning;
-      }
-    }
   }
 
   &__help {
@@ -160,6 +107,9 @@
   &__status {
     display: flex;
     margin-left: @form-status-margin-left;
+    > .@{prefix}-icon {
+      font-size: 20px;
+    }
 
     &-without-icon {
       width: 25px;
@@ -196,3 +146,7 @@
   font-size: @form-item-help-font-size;
   display: inline-block;
 }
+
+// 输入框状态
+.input-status(warning);
+.input-status(error);
