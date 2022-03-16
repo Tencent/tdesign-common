@@ -97,9 +97,14 @@
     align-items: center;
   }
 
-  .@{prefix}-select__input {
+  // input 层级调整
+  .@{prefix}-input__wrap {
     margin-left: @select-placeholder-margin;
     flex: 1;
+  }
+
+  // TODO: select_input 重构时可删除
+  .@{prefix}-select__input {
 
     &.@{prefix}-input {
       height: auto;
