@@ -1,0 +1,17 @@
+@import "./_var.less";
+
+.avatar-size(@size, @font-size, @avatar-icon-size) {
+  width: @size;
+  height: @size;
+  font-size: @font-size;
+
+  & .@{prefix}-avatar__icon {
+    display: flex;
+    font-size: @avatar-icon-size;
+  }
+
+  & img {
+    height: @size;
+    width: @size;
+  }
+}

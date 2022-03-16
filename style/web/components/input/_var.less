@@ -21,8 +21,13 @@
 @input-border-color-warning: @warning-color;
 @input-border-color-error: @error-color;
 
+@input-text-color-success: @success-color;
+@input-text-color-warning: @warning-color;
+@input-text-color-error: @error-color;
+
 @input-text-color-default: @text-color-primary;
 @input-text-color-disabled: @text-color-disabled;
+@input-text-color-tips: @text-color-placeholder;
 @input-placeholder-color: @text-color-placeholder;
 
 // input 输入框需要在浅色主题下有默认白色背景，而在暗色等其他主题下 transparent 适配背景色，因此不使用通用背景 token
@@ -54,6 +59,8 @@
 @input-height-default: (@spacer * 4);
 @input-height-l: (@spacer * 5);
 @input-inner-icon-font-size: inherit;
+@input-tips-min-height: @spacer-3;
+@input-tips-line-height: @text-line-height-s;
 
 // 图标
 @input-inner-prefix-icon-color: @text-color-placeholder;
@@ -63,7 +70,8 @@
 @input-font-size-l: @font-size-l;
 @input-font-size: @font-size-base;
 @input-font-size-s: @font-size-s;
-@input-extra-font-size: inherit;
+@input-extra-font-size: @font-size-s;
+@input-tips-font-size: @font-size-s;
 
 // 边框
 @input-border-radius: @border-radius;

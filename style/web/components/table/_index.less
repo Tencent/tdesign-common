@@ -36,6 +36,14 @@
     pointer-events: none;
   }
 
+  &__top-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
   &__content {
     position: relative;
     .scrollbar();
@@ -308,13 +316,12 @@
     th,
     td {
       overflow-wrap: break-word;
-      white-space: nowrap;
     }
 
     .@{prefix}-table__header {
       width: fit-content;
       position: relative;
-      z-index: 10;
+      z-index: 5;
       background-color: @bg-color-secondarycontainer;
 
       tr {
@@ -387,7 +394,7 @@
 
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
-      z-index: 1;
+      z-index: 100;
     }
 
     .@{prefix}-table__cell--fixed-left-last {
@@ -476,7 +483,7 @@
   // 表格行可以拖拽
   &.@{prefix}-table__row--draggable {
     tbody {
-      &.dragging {
+      &.@{prefix}-table__body--dragging {
         tr {
           transition: transform .2s;
           transform: translateY(0);
@@ -487,6 +494,35 @@
         &.v-leave-active {
           display: none;
         }
+      }
+    }
+  }
+
+  &__column-controller {
+    &-desc {
+      margin-bottom: 24px;
+    }
+
+    &-block {
+      padding: 10px 24px;
+      border: 1px solid @gray-color-3;
+
+      & + & {
+        border-top: 0;
+        padding-top: 8px;
+        padding-bottom: 24px;
+      }
+
+      .@{prefix}-checkbox {
+        &-group .@{prefix}-checkbox {
+          margin-top: 16px;
+        }
+      }
+    }
+
+    &--fixed {
+      .@{prefix}-checkbox {
+        width: 108px;
       }
     }
   }
@@ -654,14 +690,9 @@
   }
 }
 
-.@{prefix}-table td.@{prefix}-table__row--full {
-  padding: 0;
-}
-
 .@{prefix}-table__row-filter-inner {
   position: sticky;
   left: 0;
-  padding: @padding;
   text-align: center;
 }
 

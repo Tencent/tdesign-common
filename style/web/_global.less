@@ -1,5 +1,15 @@
 @import "./_variables.less";
 
+// 响应式断点 后面支持紧凑模式可以迁移过去
+:root {
+  --td-screen-xs: @screen-xs;
+  --td-screen-sm: @screen-sm;
+  --td-screen-md: @screen-md;
+  --td-screen-lg: @screen-lg;
+  --td-screen-xl: @screen-xl;
+  --td-screen-xxl: @screen-xxl;
+}
+
 // 统一的scrollbar
 .narrow-scrollbar {
   &::-webkit-scrollbar {
@@ -19,7 +29,7 @@
 .@{prefix}-fake-arrow {
   path {
     transition: d @anim-duration-base;
-    stroke: currentColor;
+    stroke: currentcolor;
   }
 
   &--active {

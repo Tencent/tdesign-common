@@ -9,6 +9,12 @@
   width: 100%;
 }
 
+.@{prefix}-select-polyfill {
+  border: 1px solid @select-border-color;
+  border-radius: @select-border-radius;
+  padding: @select-padding;
+}
+
 .@{prefix}-select {
   position: relative;
   display: inline-flex;
@@ -17,14 +23,11 @@
   vertical-align: middle;
   line-height: (@select-height-default - 2px);
   background: @select-bg-color;
-  border: 1px solid @select-border-color;
-  border-radius: @select-border-radius;
-  padding: @select-padding;
   transition: border-color @anim-duration-base @anim-time-fn-easing;
   flex-wrap: wrap;
 
-  &:hover,
-  :active {
+  &:hover:not(.@{prefix}-is-disabled),
+  :active:not(.@{prefix}-is-disabled) {
     cursor: pointer;
     border-color: @select-border-color-active;
 
@@ -57,13 +60,17 @@
   }
 
   & .@{prefix}-select__right-icon {
+    transition: color @anim-duration-base @anim-time-fn-easing;
+  }
+
+  // TODO 基于select-input改造时需要移除，polyfill代码
+  & .@{prefix}-select__right-icon-polyfill {
     position: absolute;
     height: 100%;
     margin: @select-icon-margin;
     right: 0;
     top: 0;
     color: @select-icon-color;
-    transition: color @anim-duration-base @anim-time-fn-easing;
   }
 
   .@{prefix}-select__active-icon {
@@ -94,7 +101,8 @@
     margin-left: @select-placeholder-margin;
     flex: 1;
 
-    &.@{prefix}-input__inner {
+    &.@{prefix}-input {
+      height: auto;
       border: 0;
       padding: 0;
 
@@ -232,9 +240,16 @@
   box-shadow: @select-dropdown-shadow;
   border-radius: @select-border-radius;
 
-  > div {
+  &-inner {
     padding: @select-dropdown-padding;
   }
+}
+
+// 抹平 ul li 自带样式
+.@{prefix}-select__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .@{prefix}-select__dropdown.@{prefix}-popup {
@@ -394,4 +409,34 @@
 
 .@{prefix}-select-option + .@{prefix}-select-option {
   margin-top: @select-options-margin;
+}
+
+.@{prefix}-select {
+
+  &.@{prefix}-select-input--borderless {
+    .@{prefix}-select__right-icon {
+      position: relative;
+      margin: 0;
+    }
+  }
+
+  .@{prefix}-fake-arrow {
+    color: @select-placeholder-color;
+
+    &--active {
+      color: @select-border-color-active;
+    }
+  }
+
+  .@{prefix}-input {
+    &:hover:not(.@{prefix}-is-disabled),
+    :active:not(.@{prefix}-is-disabled) {
+      cursor: pointer;
+      border-color: @select-border-color-active;
+
+      .@{prefix}-fake-arrow {
+        color: @select-border-color-active;
+      }
+    }
+  }
 }

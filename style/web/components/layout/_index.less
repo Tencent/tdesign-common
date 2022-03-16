@@ -11,15 +11,17 @@
   box-sizing: border-box;
 }
 
-.@{prefix}-layout {
+.@{prefix}-layout,
+.@{prefix}-layout__direction-vertical {
   display: flex;
   flex-direction: column;
   background: @layout-bg-color;
   flex: auto;
+}
 
-  &--with-sider {
-    flex-direction: row;
-  }
+.@{prefix}-layout--with-sider,
+.@{prefix}-layout__direction-horizontal {
+  flex-direction: row;
 }
 
 .@{prefix}-layout__header {

@@ -16,3 +16,7 @@ export type VerticalAlignEnum = 'top' | 'middle' | 'bottom';
 export type ClassName = { [className: string]: any } | ClassName[] | string;
 
 export type CSSSelector = string;
+
+export interface Styles {
+  [css: string]: string | number;
+}

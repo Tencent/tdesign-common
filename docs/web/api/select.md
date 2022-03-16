@@ -41,6 +41,12 @@ spline: form
 
 {{ custom-options }}
 
+### 自定义面板的选择器
+
+可以使用 `panelTopContent` 和 `panelBottomContent` 自定义下拉面板的顶部内容和底部内容。
+
+{{ panel }}
+
 ### 自定义选中项的选择器
 
 {{ custom-selected }}

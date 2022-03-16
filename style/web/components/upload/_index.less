@@ -1,12 +1,10 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式 --
 
-// @import "../../base.less";
+@import "../../base.less";
 
 @import "./_var.less";
 
 @import "./_mixin.less";
-
-@import "../input/_index.less";
 
 @import "../../mixins/_text.less";
 
@@ -22,6 +20,9 @@
   }
   .@{prefix}-is-bordered {
     border: @upload-card-content-border;
+  }
+  .@{prefix}-upload__trigger {
+    display: inline-block;
   }
 
   .@{prefix}-icon {
@@ -425,8 +426,11 @@
   align-items: center;
 
   .@{prefix}-upload__trigger {
-    display: inline-block;
     margin-left: @upload-single-file-input-trigger-margin-left;
+
+    .@{prefix}-button {
+      margin-left: @upload-single-file-input-trigger-button-margin-left;
+    }
   }
 
   .@{prefix}-upload__single-progress {
@@ -437,11 +441,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-}
-.@{prefix}-upload__single-file {
-  .@{prefix}-upload__trigger {
-    display: inline-block;
   }
 }
 
@@ -560,6 +559,10 @@
       > th {
         padding: @upload-flow-table-td-th-padding;
       }
+    }
+
+    &__batch-row {
+      border-left: 1px solid @component-border;
     }
   }
 

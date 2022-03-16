@@ -1,5 +1,15 @@
 @import "../_variables.less";
 
+@keyframes t-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes t-fade-out {
   from {
     opacity: 1;
@@ -32,14 +42,24 @@
   }
   // 以下代码主要为了添加闭合标签
   @{anim} {
-
   }
   @keyf: ~"@keyframes @{name}  { from";
   @anim: ~" }  ";
 }
+
 .anim-g-attr-change-from (@name, @value) {
   @{name}: @value;
 }
 .anim-g-attr-change-to (@name, @value) {
   @{name}: @value;
+}
+
+@keyframes t-zoom-out {
+  from {
+    transform: scale(.2);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }

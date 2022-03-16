@@ -8,6 +8,7 @@ import {
   TypeTreeItem,
   TreeNodeModelProps,
 } from './types';
+import log from '../log/log';
 
 // 获取节点需要暴露的属性
 function getExposedProps(node: TreeNode): TreeNodeModelProps {
@@ -132,16 +133,14 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       const { tree } = node;
       const targetNode = tree.getNode(value);
       if (!targetNode) {
-        // eslint-disable-next-line no-console
-        console.warn(`TDesign Tree Warn: \`${value}\` is not exist`);
+        log.warnOnce('Tree', `\`${value}\` is not exist`);
         return;
       }
 
       const parents = targetNode.getParents();
       const parentValues = parents.map((pnode) => (pnode.value));
       if (parentValues.indexOf(node.value) < 0) {
-        // eslint-disable-next-line no-console
-        console.warn(`TDesign Tree Warn: \`${value}\` is not a childNode of current node`);
+        log.warnOnce('Tree', `\`${value}\` is not a childNode of current node`);
         return;
       }
       targetNode.remove();

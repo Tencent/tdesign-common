@@ -6,11 +6,15 @@ export default function xhr({
   headers = {},
   data = {},
   file,
+  files,
   name = 'file',
   onError,
   onProgress,
   onSuccess,
 }: XhrOptions) {
+  // support files
+  const innerFiles = Array.isArray(files) ? files : [file];
+
   // eslint-disable-next-line no-shadow
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
@@ -23,7 +27,11 @@ export default function xhr({
   Object.keys(sendData).forEach((key) => {
     formData.append(key, data[key]);
   });
-  formData.append(name, file.raw);
+
+  // support one request upload multiple files
+  innerFiles.forEach((f) => {
+    formData.append(name, f.raw);
+  });
 
   xhr.open('post', action, true);
 
@@ -32,25 +40,29 @@ export default function xhr({
     xhr.setRequestHeader(key, headers[key]);
   });
 
-  xhr.onerror = (event: ProgressEvent) => onError({ event, file });
+  xhr.onerror = (event: ProgressEvent) => onError({ event, file, files: innerFiles });
 
   if (xhr.upload) {
-    // eslint-disable-next-line func-names
-    xhr.upload.onprogress = function (event: ProgressEvent) {
+    xhr.upload.onprogress = (event: ProgressEvent) => {
       let percent = 0;
       if (event.total > 0) {
         percent = Math.round((event.loaded / event.total) * 100);
       }
-      onProgress({ event, percent, file });
+
+      onProgress({
+        event, percent, file, files: innerFiles
+      });
     };
   }
 
-  // eslint-disable-next-line consistent-return,func-names
-  xhr.onload = function (event: ProgressEvent) {
+  // eslint-disable-next-line consistent-return
+  xhr.onload = (event: ProgressEvent) => {
     let response;
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
-      return onError({ event, file, response });
+      return onError({
+        event, file, files: innerFiles, response
+      });
     }
     const text = xhr.responseText || xhr.response;
     try {
@@ -58,7 +70,9 @@ export default function xhr({
     } catch (e) {
       response = text;
     }
-    onSuccess({ event, file, response });
+    onSuccess({
+      event, file, files: innerFiles, response
+    });
   };
 
   xhr.send(formData);
