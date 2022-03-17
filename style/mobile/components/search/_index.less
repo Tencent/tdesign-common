@@ -61,16 +61,16 @@
     border: 0;
 
     /* stylelint-disable-next-line */
-    &::-webkit-input-placeholder,
-    &::placeholder {
+    input::-webkit-input-placeholder,
+    input::placeholder {
       color: @search-placeholder-text-color;
     }
 
-    &::-webkit-search-cancel-button { /* stylelint-disable-line */
+    input::-webkit-search-decoration,
+    input::-webkit-search-cancel-button,
+    input::-webkit-search-results-button,
+    input::-webkit-search-results-decoration {
       display: none;
-
-      /* stylelint-disable-next-line */
-      -webkit-appearance: none;
     }
   }
 
