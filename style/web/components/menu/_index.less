@@ -522,7 +522,7 @@ a.@{prefix}-menu__item {
 .@{prefix}-menu {
   color: @menu-color-light;
   font-size: @menu-fontsize;
-  overflow: scroll hidden;
+  overflow: auto hidden;
   .list-style-none();
 
   &--dark {
@@ -560,6 +560,35 @@ a.@{prefix}-menu__item {
       & .@{prefix}-submenu-icon {
         transform: scaleY(-1);
       }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__spacer {
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 1;
+    }
+
+    @horizontal-spacer: 16px;
+
+    &--left::before {
+      left: -@horizontal-spacer;
+      width: @horizontal-spacer;
+      top: 0;
+      bottom: 0;
+    }
+
+    &--top::before {
+      top: -20px;
+      left: 0;
+      right: 0;
+      height: 20px;
     }
   }
 
@@ -785,9 +814,10 @@ a.@{prefix}-menu__item {
         width: var(--popup-width, 216px);
       }
 
-      @{prefix}-menu__item {
+      .@{prefix}-menu__item {
         padding-left: 16px;
         padding-right: 16px;
+        margin: 4px 0;
       }
     }
 
