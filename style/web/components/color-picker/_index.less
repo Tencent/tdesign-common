@@ -399,24 +399,26 @@
       transform-origin: center;
       transition: all @anim-duration-base @anim-time-fn-easing;
 
-      &__inner,
       &__color {
         width: 100%;
         height: 100%;
         position: relative;
-        border-radius: 50%;
         overflow: hidden;
+        border: 1px solid @component-border;
+        border-radius: 50%;
       }
 
       &__inner {
-        position: absolute;
-        top: 0;
-        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
       }
+
       &:not(.@{prefix}-is-active):hover {
         padding: 0;
       }
-      &.@{prefix}-is-active {
+
+      &.@{prefix}-is-active .@{prefix}-color-picker__swatches--item__color {
         border-color: @text-color-brand;
       }
     }
