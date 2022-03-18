@@ -291,7 +291,7 @@
       margin: 0;
     }
     .@{prefix}-select {
-      padding-right: 20px;
+      padding-right: 10px;
 
       &__single {
         margin-left: 4px;
@@ -313,7 +313,7 @@
         overflow: hidden;
         margin-left: -1px;
         .@{prefix}-input {
-          padding: 0 6px;
+          padding: 0 1px;
           font-size: @color-picker-font-size;
 
           &:focus,
@@ -468,5 +468,20 @@
   }
   .@{prefix}-color-picker__swatches--item:hover {
     padding: @color-picker-swatch-padding;
+  }
+}
+
+// 覆盖select-option 默认样式，使其更紧凑点
+.@{prefix}-color-picker__select-options {
+  .@{prefix}-select__dropdown-inner {
+    padding: 4px;
+  }
+  .@{prefix}-select-option {
+    height: 30px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    + .@{prefix}-select-option {
+      margin-top: 2px;
+    }
   }
 }
