@@ -48,6 +48,7 @@ a.@{prefix}-menu__item {
     flex: 1;
     display: flex;
     align-items: center;
+    overflow: auto hidden;
   }
 
   .@{prefix}-menu__operations {
@@ -375,7 +376,7 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu {
       padding: 16px 8px;
       position: relative;
-      // overflow-y: auto;
+      overflow: hidden auto;
       flex: 1;
 
       &--scroll {
@@ -522,7 +523,6 @@ a.@{prefix}-menu__item {
 .@{prefix}-menu {
   color: @menu-color-light;
   font-size: @menu-fontsize;
-  overflow: auto hidden;
   .list-style-none();
 
   &--dark {
