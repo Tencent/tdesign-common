@@ -3,8 +3,6 @@
 @import "../../base.less";
 
 @import "./_var.less";
-
-@import "./_mixin.less";
 .horizontal-vertical-center-with-flex() {
   display: flex;
   align-items: center;
@@ -19,14 +17,6 @@
   bottom: 0;
 }
 .@{prefix}-upload {
-
-  .@{prefix}-size-s {
-    display: block;
-    color: @upload-small-color;
-    font-size: @upload-small-font-size;
-    line-height: @upload-small-line-height;
-  }
-
   .@{prefix}-icon {
     font-size: @upload-icon-size;
     flex-shrink: 0;
@@ -42,10 +32,6 @@
 
   .@{prefix}-icon-loading {
     color: @upload-icon-loading-color;
-  }
-
-  .@{prefix}-icon-time-filled {
-    color: @upload-icon-time-filled-color;
   }
 
   .@{prefix}-icon-add {
@@ -64,16 +50,9 @@
     display: flex;
     flex-wrap: wrap;
 
-    & .@{prefix}-is-disabled {
-      & :hover {
-        cursor: not-allowed;
-      }
-    }
-
     &-item {
-      // margin: @upload-card-item-margin;
-      padding: 0 8px 0 0;
-      margin: 0 0 8px 0;
+      margin: @upload-card-item-margin;
+      padding: @upload-card-item-padding;
       float: left;
       cursor: pointer;
       box-sizing: border-box;
@@ -84,11 +63,6 @@
         content: "";
         display: block;
       }
-
-      // &:hover .@{prefix}-upload__card-mask {
-      //   opacity: 1;
-      //   .hover-transition(opacity);
-      // }
 
       &.@{prefix}-is--error {
 
@@ -101,14 +75,6 @@
           color: @upload-card-item-status-color;
         }
       }
-
-      &.@{prefix}-is--background {
-        .hover-transition(border-color);
-
-        &:hover {
-          border-color: @upload-card-item-bg-border-color-hover;
-        }
-      }
     }
 
     & .@{prefix}-icon-loading {
@@ -117,8 +83,8 @@
 
     &-content {
       position: relative;
-      // width: @upload-img-size;
-      // height: @upload-img-size;
+      width: @upload-img-size;
+      height: @upload-img-size;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -201,37 +167,9 @@
       }
     }
     &-mask-item {
-      &-divider {
-        margin: @upload-card-mask-divider-margin;
-        border-left: 1px @upload-card-mask-color solid;
-        height: @upload-card-mask-divider-height;
-      }
-
       > .@{prefix}-icon {
         cursor: pointer;
         font-size: @upload-icon-size;
-      }
-    }
-  }
-
-  &__dialog {
-    .@{prefix}-dialog {
-      max-width: 80%;
-
-      &--default {
-        padding: 32px;
-      }
-
-      &-body {
-        padding-bottom: 0;
-
-        &-img-box {
-          img {
-            display: block;
-            max-width: 100%;
-            max-height: 100%;
-          }
-        }
       }
     }
   }
