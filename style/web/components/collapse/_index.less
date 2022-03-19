@@ -1,0 +1,28 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{collapse-panel-cls} {
+  &__wrapper {
+    transition: height 200ms;
+    height: 0;
+    overflow: hidden;
+    .@{collapse-panel-cls}__header {
+      background: white;
+      padding-left: 16px;
+      height: @collapse-panel-header-height;
+      font-size: @collapse-panel-header-text-size;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .@{collapse-panel-cls}__body {
+      padding: 12px 16px 12px 40px;
+      overflow: hidden;
+    }
+  }
+}
