@@ -547,7 +547,7 @@
   cursor: pointer;
   vertical-align: text-bottom;
 
-  // 排序图标临时效果
+  // 排序图标临时效果，此处状态修改请慎重，需要背景色明确提醒用户点击区域（不建议将整个表头作为点击区域，还有过滤等其他图标）
   .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
   &:hover {
@@ -596,8 +596,7 @@
   color: @table-icon-active-color;
 }
 
-.@{prefix}-table__double-icons,
-.@{prefix}-table__double-icons > span {
+.@{prefix}-table__double-icons {
   display: inline-grid;
   height: @table-line-height;
 
