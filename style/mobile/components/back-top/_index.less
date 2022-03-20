@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: opacity .5s ease;
 
   &--round {
     border-radius: @border-radius-50;
@@ -66,4 +67,12 @@
     right: @back-top-content-right;
     bottom: @back-top-content-bottom;
   }
+}
+
+.back-top-hidden {
+  opacity: 0;
+}
+
+.back-top-show {
+  opacity: 1;
 }
