@@ -547,10 +547,13 @@
   cursor: pointer;
   vertical-align: text-bottom;
 
+  // 排序图标临时效果
   .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
   &:hover {
     color: @table-icon-active-color;
+    background-color: @table-icon-active-bg-color;
+    border-radius: 50%;
   }
 
   > svg {
@@ -596,12 +599,25 @@
 .@{prefix}-table__double-icons,
 .@{prefix}-table__double-icons > span {
   display: inline-grid;
-  height: 16px;
-  .@{prefix}-table__sort-icon {
+  height: @table-line-height;
+
+  // .@{prefix}-table__double-icons > .@{prefix}-popup__reference 是为了兼容 Popup 多余的包裹元素
+  .@{prefix}-table__sort-icon,
+  .@{prefix}-popup__reference {
     height: @table-line-height-half;
   }
+  .@{prefix}-table-sort-asc {
+    margin-top: -2px;
+  }
   .@{prefix}-table-sort-desc {
-    margin-top: -10px;
+    margin-top: -6px;
+  }
+}
+
+// .@{prefix}-table__double-icons > .@{prefix}-popup__reference 是为了兼容 Popup 多余的包裹元素
+.@{prefix}-popup__reference {
+  .@{prefix}-table__filter-icon, .@{prefix}-table__sort-icon {
+    vertical-align: initial;
   }
 }
 
@@ -616,12 +632,10 @@
   .@{prefix}-table__filter-icon-wrap {
     justify-content: flex-end;
   }
-  .@{prefix}-table__filter-icon-wrap {
-    flex: 1;
-  }
   .@{prefix}-table__cell--sortable.@{prefix}-table__cell--filterable {
     .@{prefix}-table__filter-icon-wrap {
       justify-content: space-between;
+      flex: 1;
     }
   }
 }
