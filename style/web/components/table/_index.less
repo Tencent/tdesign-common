@@ -547,6 +547,17 @@
   cursor: pointer;
   vertical-align: text-bottom;
 
+  > svg {
+    margin-top: -4px;
+  }
+}
+
+// 当 Popup 去除包裹元素后，便不再需要这个样式
+.@{prefix}-popup__reference.@{prefix}-table__filter-icon {
+  margin-top: -4px;
+}
+
+.@{prefix}-table__sort-icon {
   // 排序图标临时效果，此处状态修改请慎重，需要背景色明确提醒用户点击区域（不建议将整个表头作为点击区域，还有过滤等其他图标）
   .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
@@ -555,9 +566,13 @@
     background-color: @table-icon-active-bg-color;
     border-radius: 50%;
   }
+}
 
-  > svg {
-    margin-top: -4px;
+.@{prefix}-table__filter-icon {
+  .@{prefix}-is-focus,
+  &.@{prefix}-is-focus,
+  &:hover {
+    color: @table-icon-active-color;
   }
 }
 
