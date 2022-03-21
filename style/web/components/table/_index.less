@@ -16,6 +16,7 @@
 @fixed-row-z-index: 70;
 @fixed-header-virtual-scroll-z-index: @fixed-header-z-index + 1;
 @table-right-scrollbar-divider: @fixed-row-z-index + 1;
+@table-loading-z-index: @table-right-scrollbar-divider + 1;
 
 @padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -32,7 +33,7 @@
 
   /** loading need to be top of fixed columns */
   .@{prefix}-loading--full {
-    z-index: 1;
+    z-index: @table-loading-z-index;
   }
 
   .t-table-vertical-align(top);
