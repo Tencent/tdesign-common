@@ -10,15 +10,8 @@
 
 // <name> 替换为组件名
 .@{checkbox-cls}-group {
-  display: inline-block;
-
-  .@{checkbox-cls} {
-    margin-right: @checkbox-group-margin;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+  display: inline-flex;
+  gap: @checkbox-group-gap;
 }
 
 .@{checkbox-cls} {
