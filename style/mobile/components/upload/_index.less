@@ -147,6 +147,7 @@
       .horizontal-vertical-center-with-flex();
       .fill-with-position-absolute();
     }
+
     &-delete-item {
       position: absolute;
       right: 0;
@@ -160,12 +161,14 @@
       background-color: @upload-card-mask-bg-color;
       width: @font-size-l;
       height: @font-size-l;
+
       .close-icon {
         color: @bg-color-container;
         width: @font-size-l;
         height: @font-size-l;
       }
     }
+
     &-mask-item {
       > .@{prefix}-icon {
         cursor: pointer;
