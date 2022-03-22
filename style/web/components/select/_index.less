@@ -99,8 +99,11 @@
 
   // input 层级调整
   .@{prefix}-input__wrap {
-    margin-left: @select-placeholder-margin;
     flex: 1;
+  }
+
+  .@{prefix}-tag + .@{prefix}-input__wrap {
+    margin-left: @select-placeholder-margin;
   }
 
   // TODO: select_input 重构时可删除
