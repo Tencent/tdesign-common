@@ -2,111 +2,107 @@ const getDomWidth = (dom: HTMLElement): number => dom?.offsetWidth || 0;
 
 type navPlacement = 'left' | 'right' | 'top' | 'bottom';
 
-interface scrollDeps {
-  navsContainer: HTMLElement;
-  navsWrap: HTMLElement;
-  rightOperationsZone: HTMLElement;
+export interface allElementDeps {
+  activeTab?: HTMLElement;
+  navsContainer?: HTMLElement;
+  navsWrap?: HTMLElement;
+  leftOperations?: HTMLElement;
+  toLeftBtn?: HTMLElement;
+  rightOperations?: HTMLElement;
+  toRightBtn?: HTMLElement;
 }
 
-interface moveActiveTabDeps {
-  activeTab: HTMLElement;
-  navsContainer: HTMLElement;
-  navsWrap: HTMLElement;
-  leftOperations: HTMLElement;
-  toLeftBtn: HTMLElement;
-  rightOperations: HTMLElement;
-  toRightBtn: HTMLElement;
-}
-
-interface scrollToLeftDeps {
-  navsContainer: HTMLElement;
-  leftOperations: HTMLElement;
-  toLeftBtn: HTMLElement;
-}
-
-interface scrollToRightDeps {
-  navsContainer: HTMLElement;
-  navsWrap: HTMLElement;
-  rightOperations: HTMLElement;
-  toRightBtn: HTMLElement;
-}
-
-interface toLeftBtnDeps extends scrollToLeftDeps {
-  navsWrap: HTMLElement;
-}
-
-interface toRightBtnDeps extends scrollToRightDeps {
-  // empty
-}
-
-export default class BaseTab {
-
-  constructor() {
-  }
-
+export default {
   /**
-   * 计算滚动条的位置
-   * @returns boolean
+   * 计算滚动条的当前偏移值，用于 resize 时调整
+   * @returns number
    */
-  calcScrollLeft(elements: scrollDeps, scrollLeft: number): number {
+  calcScrollLeft(elements: allElementDeps, scrollLeft: number): number {
     const container = elements.navsContainer;
     const wrap = elements.navsWrap;
-    const rightOperations = elements.rightOperationsZone;
+    const { rightOperations } = elements;
     const rightOperationsZoneWidth = getDomWidth(rightOperations);
 
     if (!wrap || !container) return scrollLeft;
 
     const containerWidth = getDomWidth(container);
     const wrapWidth = getDomWidth(wrap);
-    
+
     if (wrapWidth <= containerWidth) { // 容器大于选项，则设置第一个 nav-item 和容器左边相连
       return 0;
     }
-    
+
     // 一般发生在 window.resize，容器变大，此时设置最后一个 nav-item 和容器右边相连
     if (scrollLeft + containerWidth - rightOperationsZoneWidth > wrapWidth) {
       return wrapWidth + rightOperationsZoneWidth - containerWidth;
     }
 
     return scrollLeft;
-  }
+  },
 
-  calculateCanToLeft(depElement: toLeftBtnDeps, scrollLeft: number, placement: navPlacement) {
+  /**
+   * 计算往左滚动按钮是否应该出现
+   * @param depElement 计算时依赖的元素
+   * @param scrollLeft 当前的 scrollLeft
+   * @param placement navs 的位置
+   * @returns boolean
+   */
+  calculateCanToLeft(depElement: allElementDeps, scrollLeft: number, placement: navPlacement) {
     if (['left', 'right'].includes(placement.toLowerCase())) {
       return false;
     }
-    const { navsContainer: container, navsWrap: wrap, leftOperations, toLeftBtn } = depElement;
+    const {
+      navsContainer: container, navsWrap: wrap, leftOperations, toLeftBtn
+    } = depElement;
     if (!wrap || !container) {
       return false;
     }
     const leftOperationsZoneWidth = getDomWidth(leftOperations);
     const leftIconWidth = getDomWidth(toLeftBtn);
-    
-    return scrollLeft + Math.round(leftOperationsZoneWidth - leftIconWidth) > 0
-  }
 
-  calculateCanToRight(depElement: toRightBtnDeps, scrollLeft: number, placement: navPlacement) {
+    return scrollLeft + Math.round(leftOperationsZoneWidth - leftIconWidth) > 0;
+  },
+
+  /**
+   * 计算往右滚动按钮是否应该出现
+   * @param depElement 计算时依赖的元素
+   * @param scrollLeft 当前的偏移值
+   * @param placement navs 的位置
+   * @returns boolean
+   */
+  calculateCanToRight(depElement: allElementDeps, scrollLeft: number, placement: navPlacement) {
     if (['left', 'right'].includes(placement.toLowerCase())) {
       return false;
     }
-    const { navsContainer: container, navsWrap: wrap, rightOperations, toRightBtn } = depElement;
+    const {
+      navsContainer: container, navsWrap: wrap, rightOperations, toRightBtn
+    } = depElement;
     if (!wrap || !container) {
       return false;
     }
     const rightOperationsZoneWidth = getDomWidth(rightOperations);
     const rightIconWidth = getDomWidth(toRightBtn);
-    return  scrollLeft
+    return scrollLeft
         + getDomWidth(container)
         - (rightOperationsZoneWidth - rightIconWidth)
         - getDomWidth(wrap)
         < -1; // 小数像素不精确，所以这里判断小于-1
-  }
+  },
 
-  moveActiveTabIntoView(depElement: moveActiveTabDeps, scrollLeft: number): number {
-    const { activeTab, navsContainer: container, navsWrap, leftOperations, toLeftBtn, rightOperations, toRightBtn } = depElement;
+  /**
+   * 计算将当前 tab 滚动到可视区域的偏移值
+   * @param depElement 计算时依赖的元素
+   * @param scrollLeft 当前的偏移值
+   * @returns number
+   */
+  moveActiveTabIntoView(depElement: allElementDeps, scrollLeft: number): number {
+    const {
+      activeTab, navsContainer: container, navsWrap,
+      leftOperations, toLeftBtn, rightOperations, toRightBtn
+    } = depElement;
     if (!activeTab) return scrollLeft;
     const totalWidthBeforeActiveTab = activeTab.offsetLeft;
-    if (!container) return;
+    if (!container) return scrollLeft;
     // 如果要当前tab左边对齐左操作栏的右边以展示完整的tab，需要获取左边操作栏的宽度
     const _getLeftCoverWidth = () => {
       const leftOperationsZoneWidth = getDomWidth(leftOperations);
@@ -127,7 +123,7 @@ export default class BaseTab {
 
     // move to right
     const activeTabWidth = activeTab.offsetWidth;
-    if (!container || !navsWrap) return;
+    if (!container || !navsWrap) return scrollLeft;
     const containerWidth = getDomWidth(container);
     // 如果要当前tab右边对齐右操作栏的左边以展示完整的tab，需要获取右边操作栏的宽度
     const _getRightCoverWidth = () => {
@@ -143,29 +139,40 @@ export default class BaseTab {
     };
     const rightCoverWidth = _getRightCoverWidth();
     // 判断当前tab是不是在右边被隐藏
-    const isCurrentTabHiddenInRightZone = scrollLeft + containerWidth - rightCoverWidth < totalWidthBeforeActiveTab + activeTabWidth;
-    if (isCurrentTabHiddenInRightZone) {
+    const isHiddenInRightZone = scrollLeft + containerWidth - rightCoverWidth
+        < totalWidthBeforeActiveTab + activeTabWidth;
+    if (isHiddenInRightZone) {
       return totalWidthBeforeActiveTab + activeTabWidth - containerWidth + rightCoverWidth;
     }
     return scrollLeft;
-  }
+  },
 
   /**
-   * 计算 scrollLeft 的值
-   * @returns Number
+   * 计算点击“往左按钮”时，需要的偏移值
+   * @param depElement 计算时依赖的元素
+   * @param scrollLeft 当前的偏移值
+   * @returns number
    */
-  scrollToLeft(depElement: scrollToLeftDeps, scrollLeft: number): number {
-    const { navsContainer:container, leftOperations, toLeftBtn } = depElement
+  scrollToLeft(depElement: allElementDeps, scrollLeft: number): number {
+    const { navsContainer: container, leftOperations, toLeftBtn } = depElement;
     if (!container) return 0;
     const leftOperationsZoneWidth = getDomWidth(leftOperations);
     const leftIconWidth = getDomWidth(toLeftBtn);
     const containerWidth = getDomWidth(container);
 
-    return Math.max(-(leftOperationsZoneWidth - leftIconWidth), scrollLeft - containerWidth)
-  }
+    return Math.max(-(leftOperationsZoneWidth - leftIconWidth), scrollLeft - containerWidth);
+  },
 
-  scrollToRight(depElement: scrollToRightDeps, scrollLeft: number) {
-    const { navsContainer:container, navsWrap: wrap, rightOperations, toRightBtn } = depElement
+  /**
+   * 计算点击“往右按钮”时，需要的偏移值
+   * @param depElement 计算时依赖的元素
+   * @param scrollLeft 当前的偏移值
+   * @returns number
+   */
+  scrollToRight(depElement: allElementDeps, scrollLeft: number): number {
+    const {
+      navsContainer: container, navsWrap: wrap, rightOperations, toRightBtn
+    } = depElement;
     const rightOperationsZoneWidth = getDomWidth(rightOperations);
     const rightIconWidth = getDomWidth(toRightBtn);
     const containerWidth = getDomWidth(container);
@@ -175,5 +182,5 @@ export default class BaseTab {
       scrollLeft + containerWidth,
       wrapWidth - containerWidth + rightOperationsZoneWidth - rightIconWidth,
     );
-  }
-}
+  },
+};
