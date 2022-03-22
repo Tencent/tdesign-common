@@ -102,7 +102,12 @@
     flex: 1;
   }
 
-  // TODO: select_input 重构时可删除
+  // TODO: select_input 重构后可删除
+  .@{prefix}-tag + .@{prefix}-input__wrap {
+    margin-left: @select-placeholder-margin;
+  }
+
+  // TODO: select_input 重构后可删除
   .@{prefix}-select__input {
 
     &.@{prefix}-input {
