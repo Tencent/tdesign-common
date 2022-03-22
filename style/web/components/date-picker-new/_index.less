@@ -11,27 +11,26 @@
 }
 
 .@{prefix}-date-picker__panel {
+
   &-container {
-    width: 280px;
-    padding: @datepicker-panel-padding;
+    padding: 0;
+    min-width: 280px;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    user-select: none;
+  &--top {
+    display: flex;
   }
 
-  th {
-    width: 24px;
-    color: @datepicker-th-font-color;
-    font-weight: @datepicker-th-font-weight;
+  &--date {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
   }
 
-  td {
-    min-width: 24px;
-    position: relative;
-    font-weight: @datepicker-font-weight-medium;
+  &--time {
+    padding: 16px 12px;
+    border-left: 1px solid #E7E7E7;
   }
 
   // 配合time-picker使用 需重置部分样式
@@ -52,46 +51,64 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 24px;
-  margin-bottom: 16px;
   gap: 12px;
+  width: 100%;
 
   &-controller {
     display: inline-flex;
     gap: 8px;
 
     &--month {
-      width: 88px;
+      width: 80px;
     }
     
     &--year {
-      width: 72px;
+      width: 78px;
     }
   }
 }
 
+.@{prefix}-date-picker__table {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    user-select: none;
+  }
+
+  th {
+    width: 24px;
+    color: @datepicker-th-font-color;
+    font-weight: @datepicker-th-font-weight;
+  }
+
+  td {
+    min-width: 24px;
+    position: relative;
+    font-weight: @datepicker-font-weight-medium;
+  }
+}
+
 .@{prefix}-date-picker__footer {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  position: relative;
-  margin: @spacer-2 0 0 0;
-  padding: @datepicker-panel-padding 0 0 0;
-
-  &::after {
-    content: "";
-    width: calc(100% + @datepicker-panel-padding * 2);
-    height: 1px;
-    position: absolute;
-    background-color: @datepicker-divider-color;
-    top: 0;
-    left: -@datepicker-panel-padding;
+  padding: 12px;
+  gap: 8px;
+  
+  &--bottom {
+    border-top: 1px solid #e7e7e7;
   }
 
   &--top {
-    margin: 0 0 @spacer-2 0;
-    padding: 0 0 @datepicker-panel-padding 0;
+    border-bottom: 1px solid #e7e7e7;
+  }
+
+  &--left {
+    border-right: 1px solid #e7e7e7;
+  }
+
+  &--right {
+    border-left: 1px solid #e7e7e7;
   }
 }
 
@@ -203,5 +220,12 @@
       cursor: not-allowed;
       color: @datepicker-disabled-color;
     }
+  }
+}
+
+// hover 日期淡化输入框
+.@{prefix}-date-picker__input--placeholder {
+  input {
+    color: @text-color-placeholder;
   }
 }
