@@ -11,14 +11,14 @@
 @border: 1px solid @table-border-color;
 
 // 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
-@fixed-column-z-index: 30;
-@fixed-header-z-index: 50;
-@fixed-row-z-index: 70;
-@fixed-header-virtual-scroll-z-index: @fixed-header-z-index + 1;
-@table-right-scrollbar-divider: @fixed-row-z-index + 1;
+@table-fixed-column-z-index: 30;
+@table-fixed-header-z-index: 50;
+@table-fixed-row-z-index: 70;
+@table-fixed-header-virtual-scroll-z-index: @table-fixed-header-z-index + 1;
+@table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
 @table-loading-z-index: @table-right-scrollbar-divider + 1;
 
-@padding: @table-td-padding-vertical-top @table-td-padding-horizontal
+@table-cell-padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
 
 .scrollbar {
@@ -87,7 +87,7 @@
   th,
   td {
     position: relative;
-    padding: @padding;
+    padding: @table-cell-padding;
     border-bottom: @border;
     line-height: @table-line-height;
     font-weight: normal;
@@ -391,7 +391,7 @@
 
     .@{prefix}-table__cell--fixed-left,
     .@{prefix}-table__cell--fixed-right {
-      z-index: @fixed-column-z-index;
+      z-index: @table-fixed-column-z-index;
     }
 
     .t-table-cell-fixed-before-after();
@@ -769,7 +769,7 @@
 .@{prefix}-table__footer,
 .@{prefix}-table__header.@{prefix}-table__header--fixed {
   position: sticky;
-  z-index: @fixed-header-z-index;
+  z-index: @table-fixed-header-z-index;
 }
 
 .@{prefix}-table__footer {
@@ -786,7 +786,7 @@
 .@{prefix}-table__row--fixed-top,
 .@{prefix}-table__row--fixed-bottom {
   position: sticky;
-  z-index: @fixed-row-z-index;
+  z-index: @table-fixed-row-z-index;
 }
 
 // 表尾冻结的第一行
@@ -825,7 +825,7 @@
   .@{prefix}-table__cell--fixed-left,
   .@{prefix}-table__cell--fixed-right {
     position: sticky;
-    z-index: @fixed-column-z-index;
+    z-index: @table-fixed-column-z-index;
   }
 }
 
@@ -851,7 +851,7 @@
 }
 
 .@{prefix}-table__header.@{prefix}-table__header--multiple > tr {
-  background-color: var(--td-bg-color-container);
+  background-color: @bg-color-container;
 }
 
 .@{prefix}-table__tree-op-icon {
@@ -873,7 +873,7 @@
 
 .@{prefix}-table__virtual-scroll-header {
   position: absolute;
-  z-index: @fixed-header-virtual-scroll-z-index;
+  z-index: @table-fixed-header-virtual-scroll-z-index;
   left: 0;
   top: 0;
 }
@@ -882,7 +882,7 @@
   position: absolute;
   left: 0;
   overflow: hidden;
-  z-index: @fixed-header-virtual-scroll-z-index;
+  z-index: @table-fixed-header-virtual-scroll-z-index;
   transition: opacity .15s linear;
   opacity: 1;
 }
@@ -929,7 +929,7 @@
 
 /** @{prefix}-table__row--full 和 @{prefix}-table__row-full-element 同时存在，是为了保证 固定列时，当前行不随内容进行横向滚动 */
 .@{prefix}-table__row-full-element {
-  padding: @padding;
+  padding: @table-cell-padding;
 }
 
 .@{prefix}-table__row-full-inner {
@@ -943,4 +943,8 @@
 
 .@{prefix}-table__tree-col--inline {
   display: inline;
+}
+
+.@{prefix}-table--full-height {
+  height: 100%;
 }
