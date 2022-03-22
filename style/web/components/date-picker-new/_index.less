@@ -54,16 +54,18 @@
   justify-content: space-between;
   height: 24px;
   margin-bottom: 16px;
+  gap: 12px;
 
-  &-jumper {
-    &__btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      padding: 4px;
-      color: @datepicker-button-text-color;
+  &-controller {
+    display: inline-flex;
+    gap: 8px;
+
+    &--month {
+      width: 88px;
+    }
+    
+    &--year {
+      width: 72px;
     }
   }
 }
