@@ -16,7 +16,6 @@
     @shadow-inset-bottom,
     @shadow-inset-left;
   user-select: none;
-  overflow: hidden;
 }
 
 .@{prefix}-popup__content {
@@ -66,7 +65,6 @@
 }
 
 .@{prefix}-color-picker__body {
-  overflow: hidden;
   padding: @color-picker-panel-padding;
 }
 
@@ -370,6 +368,23 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    &--remove {
+      position: relative;
+      // 不使用popconfirm 组件， 这里绝对定位到正上方
+      .@{prefix}-popup {
+        position: absolute;
+        inset: auto auto 0 0;
+        margin: 0;
+        bottom: 30px;
+        left: 10px;
+        transform: translateX(-50%);
+        cursor: default;
+      }
+      .@{prefix}-popconfirm__content {
+        width: 220px;
+      }
     }
 
     &--items {
