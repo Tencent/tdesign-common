@@ -8,6 +8,14 @@
   display: inline-block;
 }
 
+.@{prefix}-select-input--focused {
+  .@{prefix}-input {
+    border-color: @input-border-color-default-focus;
+    box-shadow: @input-box-shadow-focus;
+    z-index: 1;
+  }
+}
+
 // TODO borderless input 内置
 
 /** 无边框模式 */
