@@ -46,15 +46,15 @@ function getLastDayOfMonth({ year, month }: DateObj): Date {
   return new Date(year, month, getDaysInMonth({ year, month }));
 }
 
-function isSameYear(date1: Date, date2: Date) {
+function isSameYear(date1: Date, date2: Date): boolean {
   return date1.getFullYear() === date2.getFullYear();
 }
 
-function isSameMonth(date1: Date, date2: Date) {
+function isSameMonth(date1: Date, date2: Date): boolean {
   return isSameYear(date1, date2) && date1.getMonth() === date2.getMonth();
 }
 
-function isSameDate(date1: Date, date2: Date) {
+function isSameDate(date1: Date, date2: Date): boolean {
   return isSameMonth(date1, date2) && date1.getDate() === date2.getDate();
 }
 
@@ -65,8 +65,8 @@ function isSameDate(date1: Date, date2: Date) {
  * @returns {Boolean}
  */
 function isBetween(
-  value: { getFullYear: () => number; getMonth: () => number; getDate: () => number },
-  { start, end }: { start: any; end: any },
+  value: Date,
+  { start, end }: { start: Date; end: Date },
 ): boolean {
   const date = new Date(value.getFullYear(), value.getMonth(), value.getDate());
 
@@ -136,21 +136,32 @@ export function getDateObj(date: Date) {
     hours: tempDate.getHours(),
     minutes: tempDate.getMinutes(),
     seconds: tempDate.getSeconds(),
+    milliseconds: tempDate.getMilliseconds(),
     meridiem: tempDate.getHours() > 11 ? 'PM' : 'AM',
   };
 }
 
 /**
  * 设置日期对象的时间部分
- * @param {Date} d 日期
- * @param {Number} hour 小时
- * @param {Number} min 分钟
- * @param {Number} sec 秒
+ * @param {Date} date 日期
+ * @param {Number} hours 小时
+ * @param {Number} minutes 分钟
+ * @param {Number} seconds 秒
+ * @param {Number} milliseconds 毫秒
  * @returns {Date} 一个新的date
  */
-export function setDateTime(d: Date, hour: number, min: number, sec: number): Date {
-  const { year, month, date } = getDateObj(d);
-  return new Date(year, month, date, hour, min, sec, 0);
+export function setDateTime(date: Date, hours: number, minutes: number, seconds: number, milliseconds?: number): Date {
+  return dayjs(date).hour(hours).minute(minutes).second(seconds).millisecond(milliseconds).toDate();
+}
+
+/**
+ * 减少月份
+ * @param {Date} date 起始日期
+ * @param {Number} num 月份数
+ * @returns {Date}
+ */
+export function subtractMonth(date: Date, num: number): Date {
+  return dayjs(date).subtract(num, 'month').toDate();
 }
 
 /**
@@ -159,31 +170,8 @@ export function setDateTime(d: Date, hour: number, min: number, sec: number): Da
  * @param {Number} num 月份数
  * @returns {Date}
  */
-export function subtractMonth(date: Date, num: any): Date {
-  const day = date.getDate();
-  const newDate = new Date(date);
-
-  let _num = num;
-  // eslint-disable-next-line no-plusplus
-  while (_num--) {
-    newDate.setDate(0);
-  }
-  newDate.setDate(day);
-  return newDate;
-}
-
-/**
- * 减月份
- * @param {Date} date 起始日期
- * @param {Number} num 月份数
- * @returns {Date}
- */
 export function addMonth(date: Date, num: number): Date {
-  let _num = num;
-  if (num < 0) _num = 0;
-  const newDate = new Date(date);
-  newDate.setMonth(date.getMonth() + _num);
-  return newDate;
+  return dayjs(date).add(num, 'month').toDate();
 }
 
 export type DateValue = string | Date | number;
@@ -368,7 +356,7 @@ export function extractTimeFormat(dateFormat: string) {
 }
 
 /**
- * 禁用日期配置
+ * 日期是否可用
  * @param {Object} { value, disableDate, mode, format }
  * @returns {Boolean}
  */
@@ -393,23 +381,13 @@ export function isEnabledDate({
 
   // 禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。
   if (Array.isArray(disableDate)) {
-    let isIncludes = false;
     const formatedDisabledDate = disableDate.map((item: string) => dayjs(item, format));
-    formatedDisabledDate.forEach((item) => {
-      if (item.isSame(dayjs(value))) {
-        isIncludes = true;
-      }
-    });
+    const isIncludes = formatedDisabledDate.some(item => item.isSame(dayjs(value)));
     return !isIncludes;
   }
 
   // { from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。
-  const {
-    from,
-    to,
-    before,
-    after
-  } = disableDate;
+  const { from, to, before, after } = disableDate;
 
   if (from && to) {
     const compareMin = dayjs(new Date(from));

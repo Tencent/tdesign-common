@@ -21,18 +21,6 @@
     display: flex;
   }
 
-  &--date {
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    gap: 12px;
-  }
-
-  &--time {
-    padding: 16px 12px;
-    border-left: 1px solid #E7E7E7;
-  }
-
   // 配合time-picker使用 需重置部分样式
   .@{prefix}-time-picker__panel {
     width: 256px;
@@ -77,13 +65,14 @@
 
   th {
     width: 24px;
+    text-align: center;
     color: @datepicker-th-font-color;
     font-weight: @datepicker-th-font-weight;
   }
 
   td {
     min-width: 24px;
-    position: relative;
+    text-align: center;
     font-weight: @datepicker-font-weight-medium;
   }
 }
@@ -131,13 +120,26 @@
   }
 }
 
+.@{prefix}-date-picker__panel--time {
+  padding: 16px 12px;
+  border-left: 1px solid #E7E7E7;
+}
+
+.@{prefix}-date-picker__panel--year,
+.@{prefix}-date-picker__panel--month,
+.@{prefix}-date-picker__panel--date {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 12px;
+  gap: 12px;
+}
+
 .@{prefix}-date-picker__panel--year,
 .@{prefix}-date-picker__panel--month {
 
   .@{prefix}-date-picker__cell-inner {
-    width: 48px;
-    padding: 0 4px;
-    display: inline-block;
+    min-width: 48px;
   }
 }
 
@@ -151,10 +153,14 @@
   }
 
   &-inner {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 24px;
+    height: 24px;
     margin: @spacer-s;
-    text-align: center;
+    padding: 0 @spacer-s;
     border-radius: @datepicker-panel-border-radius;
-    line-height: @datepicker-line-height;
     transition: @datepicker-transition;
   }
 
