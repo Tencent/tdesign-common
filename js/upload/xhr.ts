@@ -1,6 +1,7 @@
 import { XhrOptions } from './types';
 
 export default function xhr({
+  method,
   action,
   withCredentials = false,
   headers = {},
