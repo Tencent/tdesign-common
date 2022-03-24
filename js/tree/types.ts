@@ -258,4 +258,6 @@ export interface TypeTreeStoreOptions {
   onReflow?: Function;
   // 节点信息变更后触发
   onUpdate?: Function;
+  // 是否允许在过滤时折叠节点
+  allowFoldNodeOnFilter?: Boolean;
 }
