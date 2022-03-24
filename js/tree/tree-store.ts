@@ -52,9 +52,6 @@ export class TreeStore {
   // 识别是否需要重排
   public shouldReflow: boolean;
 
-  // 是否允许在过滤时折叠节点
-  public allowFoldNodeOnFilter: boolean;
-
   // 树节点过滤器
   public prevFilter: TypeTreeFilter;
 
@@ -78,6 +75,7 @@ export class TreeStore {
       onLoad: null,
       onReflow: null,
       onUpdate: null,
+      allowFoldNodeOnFilter: false,
       ...options,
     };
     this.config = config;
@@ -94,7 +92,6 @@ export class TreeStore {
     this.updateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
-    this.allowFoldNodeOnFilter = false;
   }
 
   // 配置选项
@@ -364,7 +361,7 @@ export class TreeStore {
       // 检查节点是否有被过滤，锁定路径节点
       // 在此之前要遍历节点生成一个经过排序的节点数组
       // 以便于优化锁定检查算法
-      if (!this.allowFoldNodeOnFilter) this.lockFilterPathNodes();
+      if (!this.config?.allowFoldNodeOnFilter) this.lockFilterPathNodes();
 
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
