@@ -17,6 +17,7 @@
   &--focused {
     border-color: @input-border-color-default-focus;
     box-shadow: @input-box-shadow-focus;
+    z-index: 1;
   }
 
   :focus-visible {
@@ -143,7 +144,7 @@
   display: inline-flex;
   align-items: stretch;
 
-  .@{prefix}-input {
+  .@{prefix}-input__wrap {
     border-radius: 0;
 
     &:first-child {
@@ -155,13 +156,31 @@
     }
   }
 
-  .@{prefix}-input,
   .@{prefix}-button,
   .@{prefix}-select {
     border-radius: 0;
 
     &:not(:first-child) {
       margin-left: @input-group-first-child-margin-left;
+    }
+  }
+  .@{prefix}-input__wrap {
+    &:not(:first-child) {
+      .@{prefix}-input {
+        margin-left: @input-group-first-child-margin-left;
+      }
+    }
+
+    &:first-child {
+      .@{prefix}-input {
+        border-radius: @input-border-radius 0 0 @input-border-radius;
+      }
+    }
+
+    &:last-child {
+      .@{prefix}-input {
+        border-radius: 0 @input-border-radius @input-border-radius 0;
+      }
     }
   }
 
@@ -178,7 +197,7 @@
 
   &--separate {
 
-    .@{prefix}-input + .@{prefix}-input {
+    .@{prefix}-input__wrap + .@{prefix}-input__wrap {
       margin-left: @input-margin-distance-default;
     }
 
@@ -195,15 +214,17 @@
       }
     }
 
-    .@{prefix}-input {
-      border-radius: @input-border-radius;
-
-      &:first-child {
+    .@{prefix}-input__wrap {
+      .@{prefix}-input {
         border-radius: @input-border-radius;
-      }
 
-      &:last-child {
-        border-radius: @input-border-radius;
+        &:first-child {
+          border-radius: @input-border-radius;
+        }
+
+        &:last-child {
+          border-radius: @input-border-radius;
+        }
       }
     }
   }
@@ -232,29 +253,27 @@
   .addon-item(prepend);
   .addon-item(append);
 
-  & > .@{prefix}-input {
+  & > .@{prefix}-input__wrap {
     width: 100%;
   }
 
   &--prepend {
 
-    & > .@{prefix}-input {
+    & .@{prefix}-input {
       border-radius: 0 @input-border-radius @input-border-radius 0;
     }
   }
 
   &--append {
 
-    & > .@{prefix}-input {
+    & .@{prefix}-input {
       border-radius: @input-border-radius 0 0 @input-border-radius;
     }
   }
 
   &--prepend&--append {
-    & > .@{prefix}-input {
-      .@{prefix}-input__inner {
-        border-radius: 0;
-      }
+    & .@{prefix}-input {
+      border-radius: 0;
     }
   }
 }
@@ -268,7 +287,6 @@
   min-height: @input-tips-min-height;
   line-height: @input-tips-line-height;
   font-size: @input-tips-font-size;
-  display: inline-block;
 }
 
 .@{prefix}-input__tips--normal {
@@ -293,4 +311,15 @@
 
 .@{prefix}-align-right > .@{prefix}-input__inner {
   text-align: right;
+}
+
+.@{prefix}-input__input-pre {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.@{prefix}-input--auto-width {
+  width: fit-content;
+  min-width: 60px;
 }

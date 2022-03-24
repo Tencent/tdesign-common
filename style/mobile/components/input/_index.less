@@ -72,6 +72,10 @@
       -webkit-text-fill-color: currentcolor; // fix disabled color in iOS
     }
 
+    &:focus {
+      outline: none;
+    }
+
     &:read-only {
       cursor: default;
     }
@@ -85,7 +89,7 @@
     }
   }
 
-  .@{prefix}-input__error {
+  &.@{prefix}-input__error {
     align-items: flex-start;
 
     .@{prefix}-cell__note {

@@ -1,0 +1,201 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../mixins/_index.less";
+
+.@{prefix}-loading {
+  position: relative;
+  color: @loading-color;
+  font-size: @loading-text-size;
+  .@{prefix}-icon-loading {
+    font-size: @loading-icon-size;
+  }
+
+  &--inherit-color {
+    color: inherit;
+  }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .@{prefix}-loading__text {
+      margin-left: 0;
+      margin-top: 6px;
+    }
+  }
+
+  &__bar {
+    pointer-events: none;
+  }
+
+  &.@{prefix}-size-s {
+    font-size: @loading-text-size-small;
+    .@{prefix}-icon-loading {
+      font-size: @loading-icon-size-small;
+    }
+  }
+
+  &.@{prefix}-size-l {
+    font-size: @loading-text-size-large;
+    .@{prefix}-icon-loading {
+      font-size: @loading-icon-size-large;
+    }
+  }
+
+  &__text {
+    color: @loading-text-color;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: @loading-text-size;
+    line-height: @loading-text-line-height;
+    margin-left: @loading-text-margin-left;
+
+    &--error {
+      color: rgba(0, 0, 0, 40%);
+    }
+
+    &--only {
+      margin-left: 0;
+    }
+  }
+
+  &__gradient {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+
+    &-conic {
+      width: 100%;
+      height: 100%;
+      background: conic-gradient(from 90deg at 50% 50%, #fff 0deg, currentColor 360deg);
+      border-radius: 50%;
+      /* stylelint-disable-next-line */
+      mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
+
+      /* stylelint-disable-next-line */
+      -webkit-mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
+    }
+  }
+
+  &__spinner {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    max-width: 100%;
+    height: 20px;
+    max-height: 100%;
+    vertical-align: middle;
+    animation: t-rotate .8s linear
+      infinite;
+    animation-timing-function: steps(12);
+
+    &--line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      &::before {
+        display: block;
+        width: 2px;
+        height: 25%;
+        margin: 0 auto;
+        background-color: #0b0b0b;
+        border-radius: 40%;
+        content: " ";
+      }
+    }
+  }
+
+  &__dots {
+    background-color: @dot-bg-color;
+    border-radius: @dot-radius;
+    color: @dot-color;
+    height: @dot-height;
+    width: @dotWidth;
+    position: relative;
+    left: @dot-left-pos;
+    box-shadow:
+      @dot-x1 0 0 0 @dot-before-color,
+      @dot-x2 0 0 0 @dot-color,
+      @dot-x3 0 0 0 @dot-after-color;
+    animation: t-dot-typing 1.5s infinite linear;
+  }
+
+  &__bar {
+    background: #29d;
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transition: all 200ms ease 0s;
+  }
+
+  &__shadow {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+    opacity: 1;
+    transform: rotate(3deg) translate(0, -4px);
+  }
+}
+
+.generate-spinner(@n, @i: 1) when (@i =< @n) {
+  .@{prefix}-loading__spinner--line-@{i} {
+    transform: rotate(@i * 30deg);
+    opacity: 1 - (.75 / 12) * (@i - 1);
+  }
+  .generate-spinner(@n, (@i + 1));
+}
+.generate-spinner(12);
+
+@keyframes t-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes t-dot-typing {
+  0% {
+    box-shadow:
+      @dot-x1 0 0 0 @dot-color,
+      @dot-x2 0 0 0 @dot-before-color,
+      @dot-x3 0 0 0 @dot-after-color;
+  }
+
+  33.3333% {
+    box-shadow:
+      @dot-x1 0 0 0 @dot-before-color,
+      @dot-x2 0 0 0 @dot-color,
+      @dot-x3 0 0 0 @dot-after-color;
+  }
+
+  66.6667% {
+    box-shadow:
+      @dot-x1 0 0 0 @dot-before-color,
+      @dot-x2 0 0 0 @dot-after-color,
+      @dot-x3 0 0 0 @dot-color;
+  }
+
+  100% {
+    box-shadow:
+      @dot-x1 0 0 0 @dot-color,
+      @dot-x2 0 0 0 @dot-before-color,
+      @dot-x3 0 0 0 @dot-after-color;
+  }
+}

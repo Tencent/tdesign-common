@@ -171,6 +171,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/select-input">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-select-input.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-select-input-dark.png" />
+      <p class="name">SelectInput 筛选器输入框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/slider">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-slider.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-slider-dark.png" />
@@ -182,6 +189,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-switch.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-switch-dark.png" />
       <p class="name">Switch 开关</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/tag-input">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tag-input.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tag-input-dark.png" />
+      <p class="name">TagInput 标签输入框</p>
     </a>
   </div>
   <div class="image-wrapper">

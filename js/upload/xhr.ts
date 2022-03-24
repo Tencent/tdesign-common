@@ -6,12 +6,17 @@ export default function xhr({
   headers = {},
   data = {},
   file,
-  name = "file",
+  files,
+  name = 'file',
   method = "post",
   onError,
   onProgress,
   onSuccess,
 }: XhrOptions) {
+  // support files
+  const innerFiles = Array.isArray(files) ? files : [file];
+
+  // eslint-disable-next-line no-shadow
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
     xhr.withCredentials = true;
@@ -23,7 +28,11 @@ export default function xhr({
   Object.keys(sendData).forEach((key) => {
     formData.append(key, data[key]);
   });
-  formData.append(name, file.raw);
+
+  // support one request upload multiple files
+  innerFiles.forEach((f) => {
+    formData.append(name, f.raw);
+  });
 
   xhr.open(method, action, true);
 
@@ -32,7 +41,7 @@ export default function xhr({
     xhr.setRequestHeader(key, headers[key]);
   });
 
-  xhr.onerror = (event: ProgressEvent) => onError({ event, file });
+  xhr.onerror = (event: ProgressEvent) => onError({ event, file, files: innerFiles });
 
   if (xhr.upload) {
     xhr.upload.onprogress = (event: ProgressEvent) => {
@@ -40,7 +49,10 @@ export default function xhr({
       if (event.total > 0) {
         percent = Math.round((event.loaded / event.total) * 100);
       }
-      onProgress({ event, percent, file });
+
+      onProgress({
+        event, percent, file, files: innerFiles
+      });
     };
   }
 
@@ -49,7 +61,9 @@ export default function xhr({
     let response;
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
-      return onError({ event, file, response });
+      return onError({
+        event, file, files: innerFiles, response
+      });
     }
     const text = xhr.responseText || xhr.response;
     try {
@@ -57,7 +71,9 @@ export default function xhr({
     } catch (e) {
       response = text;
     }
-    onSuccess({ event, file, response });
+    onSuccess({
+      event, file, files: innerFiles, response
+    });
   };
 
   xhr.send(formData);
