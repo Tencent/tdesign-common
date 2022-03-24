@@ -1,4 +1,4 @@
-export type UploadProgressType = 'real' | 'mock';
+export type UploadProgressType = "real" | "mock";
 
 export interface UploadFile {
   /**
@@ -30,7 +30,7 @@ export interface UploadFile {
    * 文件上传状态：上传成功，上传失败，上传中，等待上传
    * @default ''
    */
-  status?: 'success' | 'fail' | 'progress' | 'waiting';
+  status?: "success" | "fail" | "progress" | "waiting";
   /**
    * 文件类型
    * @default ''
@@ -44,16 +44,16 @@ export interface UploadFile {
 }
 
 export interface RequestMethodResponse {
-  status: 'success' | 'fail';
+  status: "success" | "fail";
   error?: string;
-  response: { url?: string; [key: string]: any }
+  response: { url?: string; [key: string]: any };
 }
 
 export interface ProgressContext {
   e?: ProgressEvent;
   file?: UploadFile;
   percent: number;
-  type: UploadProgressType
+  type: UploadProgressType;
 }
 
 export interface HTMLInputEvent extends Event {
@@ -64,19 +64,19 @@ export interface InnerProgressContext {
   event?: ProgressEvent;
   file?: UploadFile;
   percent: number;
-  type?: ProgressContext['type'];
+  type?: ProgressContext["type"];
 }
 
 export interface SuccessContext {
   event?: ProgressEvent;
   file?: UploadFile;
-  response: RequestMethodResponse['response'];
+  response: RequestMethodResponse["response"];
 }
 
 export interface UploadRemoveOptions {
   e: MouseEvent;
   file?: UploadFile;
-  index: number
+  index: number;
 }
 
 export interface FlowRemoveContext {
@@ -85,6 +85,8 @@ export interface FlowRemoveContext {
   file?: UploadFile;
 }
 
+export type XhrMethod = "post" | "put" | "patch" | "POST" | "PUT" | "PATCH";
+
 export interface XhrOptions {
   action: string;
   withCredentials: boolean;
@@ -92,8 +94,15 @@ export interface XhrOptions {
   data: { [key: string]: any } | Function;
   file?: UploadFile;
   name: string;
-  onError: ({ event, file, response }: {
-    event?: ProgressEvent; file?: UploadFile; response?: any
+  method: XhrMethod;
+  onError: ({
+    event,
+    file,
+    response,
+  }: {
+    event?: ProgressEvent;
+    file?: UploadFile;
+    response?: any;
   }) => void;
   onSuccess: (context: SuccessContext) => void;
   onProgress: (context: InnerProgressContext) => void;

@@ -1,4 +1,4 @@
-import { XhrOptions } from './types';
+import { XhrOptions } from "./types";
 
 export default function xhr({
   action,
@@ -6,12 +6,12 @@ export default function xhr({
   headers = {},
   data = {},
   file,
-  name = 'file',
+  name = "file",
+  method = "post",
   onError,
   onProgress,
   onSuccess,
 }: XhrOptions) {
-  // eslint-disable-next-line no-shadow
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
     xhr.withCredentials = true;
@@ -19,13 +19,13 @@ export default function xhr({
 
   // set send data
   const formData = new FormData();
-  const sendData = typeof data === 'function' ? data(file) : data;
+  const sendData = typeof data === "function" ? data(file) : data;
   Object.keys(sendData).forEach((key) => {
     formData.append(key, data[key]);
   });
   formData.append(name, file.raw);
 
-  xhr.open('post', action, true);
+  xhr.open(method, action, true);
 
   // custom request headers
   Object.keys(headers).forEach((key) => {
