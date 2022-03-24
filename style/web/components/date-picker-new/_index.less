@@ -138,6 +138,31 @@
 .@{prefix}-date-picker__panel--year,
 .@{prefix}-date-picker__panel--month {
 
+  .@{prefix}-date-picker__table {
+    
+    table {
+      tbody {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+
+        tr {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .@{prefix}-date-picker__cell:nth-child(1) {
+    text-align: left;
+  }
+
+  .@{prefix}-date-picker__cell:nth-child(3) {
+    text-align: right;
+  }
+
   .@{prefix}-date-picker__cell-inner {
     min-width: 48px;
   }
@@ -201,18 +226,6 @@
       color: @text-color-anti;
       background-color: @brand-color;
     }
-
-    &-start {
-    }
-
-    &-end {
-    }
-  }
-
-  &--last-day-of-month {
-  }
-
-  &--first-day-of-month {
   }
 
   &--disabled {

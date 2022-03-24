@@ -283,7 +283,7 @@ export function getYears(
     });
   }
 
-  return chunk(yearArr, 4);
+  return chunk(yearArr, 3);
 }
 
 export function getMonths(year: number, params: OptionsType) {
@@ -313,7 +313,7 @@ export function getMonths(year: number, params: OptionsType) {
     });
   }
 
-  return chunk(MonthArr, 4);
+  return chunk(MonthArr, 3);
 }
 
 export interface DateTime {
