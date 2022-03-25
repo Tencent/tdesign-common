@@ -1,0 +1,98 @@
+@import "../../base.less";
+
+@import "./_mixin.less";
+
+@import "./_var.less";
+
+.@{prefix}-range-input {
+  position: relative;
+  height: @range-input-height-default;
+  .range-input-base();
+
+  // 输入框状态
+  .range-input-status(success);
+  .range-input-status(warning);
+  .range-input-status(error);
+  .range-input-disabled();
+
+  // 输入框的前置、后置图标
+  .range-input-fix-position(prefix);
+  .range-input-fix-position(suffix);
+
+  &.@{prefix}-is-focused {
+    z-index: 1;
+    border-color: @range-input-border-color-default-focus;
+    box-shadow: @range-input-box-shadow-focus;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: @spacer;
+
+    .@{prefix}-input {
+      height: 22px;
+      line-height: 22px;
+      border: 0;
+      box-shadow: none;
+
+      &__wrap {
+        width: auto;
+      }
+
+      &.@{prefix}-is-focused {
+        background-color: #e7e7e7;
+      }
+    }
+  }
+
+  // 底部的额外消息
+  &__extra {
+    font-size: @range-input-extra-font-size;
+    color: @range-input-extra-color-default;
+  }
+
+  // 输入框后面的状态图标
+  &__status {
+    position: absolute;
+    right: @range-input-status-position-right;
+    top: 0;
+  }
+
+  &.@{prefix}-range-input--suffix .@{prefix}-input__clear {
+    opacity: 0;
+    visibility: hidden;
+    transition: @range-input-inner-transition;
+  }
+
+  &.@{prefix}-range-input--suffix:hover .@{prefix}-input__clear {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .@{prefix}-range-input__suffix-clear {
+    cursor: pointer;
+  }
+}
+
+.@{prefix}-range-input__prefix,
+.@{prefix}-range-input__suffix {
+
+  .@{prefix}-icon {
+    font-size: @range-input-inner-icon-font-size;
+  }
+}
+
+.@{prefix}-range-input__prefix {
+
+  .@{prefix}-icon {
+    color: @range-input-inner-prefix-icon-color;
+  }
+}
+
+.@{prefix}-range-input__suffix {
+
+  > .@{prefix}-icon {
+    color: @range-input-inner-suffix-icon-color;
+  }
+}
