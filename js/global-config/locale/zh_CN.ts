@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 export default {
   pagination: {
@@ -130,19 +131,19 @@ export default {
   },
   form: {
     errorMessage: {
-      date: '请输入正确的{name}',
-      url: '请输入正确的{name}',
-      required: '{name}必填',
-      max: '{name}字符长度不能超过 {validate} 个字符，一个中文等于两个字符',
-      min: '{name}字符长度不能少于 {validate} 个字符，一个中文等于两个字符',
-      len: '{name}字符长度必须是 {validate}',
-      enum: '{name}只能是{validate}等',
-      idcard: '请输入正确的{name}',
-      telnumber: '请输入正确的{name}',
-      pattern: '请输入正确的{name}',
-      validator: '{name}不符合要求',
-      boolean: '{name}数据类型必须是布尔类型',
-      number: '{name}必须是数字',
+      date: '请输入正确的${name}',
+      url: '请输入正确的${name}',
+      required: '${name}必填',
+      max: '${name}字符长度不能超过 ${validate} 个字符，一个中文等于两个字符',
+      min: '${name}字符长度不能少于 ${validate} 个字符，一个中文等于两个字符',
+      len: '${name}字符长度必须是 ${validate}',
+      enum: '${name}只能是${validate}等',
+      idcard: '请输入正确的${name}',
+      telnumber: '请输入正确的${name}',
+      pattern: '请输入正确的${name}',
+      validator: '${name}不符合要求',
+      boolean: '${name}数据类型必须是布尔类型',
+      number: '${name}必须是数字',
     },
   },
   input: {
@@ -159,5 +160,10 @@ export default {
   anchor: {
     copySuccessText: '链接复制成功',
     copyText: '复制链接',
+  },
+  colorPicker: {
+    swatchColorTitle: '系统预设颜色',
+    recentColorTitle: '最近使用颜色',
+    clearConfirmText: '确定清空最近使用的颜色吗？',
   },
 };

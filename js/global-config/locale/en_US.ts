@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 export default {
   pagination: {
@@ -130,19 +131,19 @@ export default {
   },
   form: {
     errorMessage: {
-      date: 'please enter the correct {name}',
-      url: 'please enter the correct {name}',
-      required: '{name} is required',
-      max: '{name} character length cannot be more than {validate}',
-      min: '{name} character length cannot be less than {validate}',
-      len: '{name} character length must be {validate}',
-      enum: '{name} must be {validate}',
-      idcard: 'please enter the correct {name}',
-      telnumber: 'please enter the correct {name}',
-      pattern: 'please enter the correct {name}',
-      validator: '{name} no match',
-      boolean: '{name} must be a boolean',
-      number: '{name} must be a number',
+      date: '${name} is invalid',
+      url: '${name} is invalid',
+      required: '${name} is required',
+      max: '${name} must be at least ${validate} characters',
+      min: '${name} cannot be longer than ${validate} characters',
+      len: '${name} must be exactly ${validate} characters',
+      enum: '${name} must be one of ${validate}',
+      idcard: '${name} is invalid',
+      telnumber: '${name} is invalid',
+      pattern: '${name} is invalid',
+      validator: '${name} is invalid',
+      boolean: '${name} is not a boolean',
+      number: '${name} must be a number',
     },
   },
   input: {
@@ -159,5 +160,10 @@ export default {
   anchor: {
     expandText: 'copy the link successfully',
     collapseText: 'copy link',
+  },
+  colorPicker: {
+    swatchColorTitle: 'System Default',
+    recentColorTitle: 'Recently Used',
+    clearConfirmText: 'Clear recently used colors?',
   },
 };
