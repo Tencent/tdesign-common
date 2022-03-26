@@ -6,23 +6,84 @@
 
 @import "./_mixin.less";
 
+.@{collapse-cls} {
+  border: @collapse-border-size;
+  border-bottom: 0;
+  background: white;
+
+  &.@{prefix}--border-less {
+    border: none;
+
+    .@{collapse-panel-cls} {
+      &__header {
+        border-bottom: none;
+      }
+
+      &__body {
+        background: white;
+        border: none;
+      }
+    }
+  }
+}
+
 .@{collapse-panel-cls} {
+  &__icon {
+    cursor: pointer;
+
+    &--left {
+      margin-right: @spacer-1;
+    }
+
+    &--right {
+      margin-left: @spacer-1;
+    }
+  }
+
   &__wrapper {
     transition: height 200ms;
     height: 0;
     overflow: hidden;
+
     .@{collapse-panel-cls}__header {
-      background: white;
-      padding-left: 16px;
+      padding: 0 16px;
+      border-bottom: @collapse-border-size;
       height: @collapse-panel-header-height;
       font-size: @collapse-panel-header-text-size;
       display: flex;
       align-items: center;
-      cursor: pointer;
+
+      &--blank {
+        flex: 1;
+      }
+
+      &.@{prefix}-is-clickable {
+        cursor: pointer;
+      }
     }
+
     .@{collapse-panel-cls}__body {
+      box-sizing: content-box;
       padding: 12px 16px 12px 40px;
-      overflow: hidden;
+      border-bottom: @collapse-border-size;
+      background: #f3f3f3;
+      overflow: scroll;
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background: #eee;
+
+    .@{collapse-panel-cls}__header {
+      cursor: not-allowed;
+    }
+
+    .@{collapse-panel-cls}__icon {
+      cursor: not-allowed;
+    }
+
+    .@{collapse-panel-cls}__body {
+      background: #eee;
     }
   }
 }
