@@ -48,6 +48,7 @@ a.@{prefix}-menu__item {
     flex: 1;
     display: flex;
     align-items: center;
+    // overflow: auto hidden;
   }
 
   .@{prefix}-menu__operations {
@@ -375,7 +376,7 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu {
       padding: 16px 8px;
       position: relative;
-      // overflow-y: auto;
+      // overflow: hidden auto;
       flex: 1;
 
       &--scroll {
@@ -562,12 +563,41 @@ a.@{prefix}-menu__item {
     }
   }
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__spacer {
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 1;
+    }
+
+    @horizontal-spacer: 16px;
+
+    &--left::before {
+      left: -@horizontal-spacer;
+      width: @horizontal-spacer;
+      top: 0;
+      bottom: 0;
+    }
+
+    &--top::before {
+      top: -20px;
+      left: 0;
+      right: 0;
+      height: 20px;
+    }
+  }
+
   &__item {
     position: relative;
     display: flex;
     align-items: center;
-    height: 64px;
-    line-height: 64px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     color: @menu-item-color--light;
     cursor: pointer;
@@ -577,6 +607,33 @@ a.@{prefix}-menu__item {
 
     ::selection {
       background: transparent;
+    }
+
+    &-spacer {
+      overflow: unset;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 1;
+      }
+
+      @horizontal-spacer: 16px;
+
+      &--right::before {
+        right: -@horizontal-spacer;
+        width: @horizontal-spacer;
+        top: 0;
+        bottom: 0;
+      }
+
+      &--bottom::before {
+        bottom: -20px;
+        left: 0;
+        right: 0;
+        height: 20px;
+      }
     }
 
     a {
@@ -741,6 +798,10 @@ a.@{prefix}-menu__item {
       height: 100%;
     }
 
+    .@{prefix}-fake-arrow {
+      margin-left: 8px;
+    }
+
     &.@{prefix}-is-vertical {
       max-height: unset;
       width: 0;
@@ -751,6 +812,24 @@ a.@{prefix}-menu__item {
 
       &.@{prefix}-is-opened {
         width: var(--popup-width, 216px);
+      }
+
+      .@{prefix}-menu__item {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 4px 0;
+      }
+    }
+
+    &.@{prefix}-is-horizontal {
+      .@{prefix}-menu__item {
+        padding-left: 16px;
+        padding-right: 16px;
+        white-space: nowrap;
+      }
+
+      li + li {
+        margin-top: 4px;
       }
     }
 

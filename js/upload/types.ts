@@ -89,6 +89,7 @@ export interface FlowRemoveContext {
 }
 
 export interface XhrOptions {
+  method?: string;
   action: string;
   withCredentials: boolean;
   headers: { [key: string]: string };

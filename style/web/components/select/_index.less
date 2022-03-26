@@ -97,11 +97,21 @@
     align-items: center;
   }
 
-  .@{prefix}-select__input {
-    margin-left: @select-placeholder-margin;
+  // input 层级调整
+  .@{prefix}-input__wrap {
     flex: 1;
+  }
 
-    &.@{prefix}-input {
+  // TODO: select_input 重构后可删除
+  .@{prefix}-tag + .@{prefix}-input__wrap {
+    margin-left: @select-placeholder-margin;
+  }
+
+  // TODO: select_input 重构后可删除
+  .@{prefix}-select__input {
+
+    .@{prefix}-input {
+      height: auto;
       border: 0;
       padding: 0;
 
@@ -241,6 +251,14 @@
 
   &-inner {
     padding: @select-dropdown-padding;
+
+    &--size-s {
+      padding: @select-dropdown-padding-s;
+    }
+
+    &--size-l {
+      padding: @select-dropdown-padding-l;
+    }
   }
 }
 

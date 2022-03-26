@@ -11,7 +11,7 @@
     animation: t-fade-in .1s ease-in-out;
   }
 
-  &.@{prefix}-input {
+  .@{prefix}-input {
     padding-left: @spacer-s;
     overflow: hidden;
 
@@ -23,13 +23,28 @@
   &:hover,
   .@{prefix}-input--focused {
     .@{prefix}-input__inner {
-      min-width: 60px;
+      min-width: 40px;
     }
   }
 
   .@{prefix}-tag-input__prefix,
   .@{prefix}-input__prefix:empty {
     margin-left: @spacer-s;
+  }
+
+  .@{prefix}-input--auto-width {
+    padding-right: @spacer-s;
+    .@{prefix}-tag {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &:hover,.@{prefix}-is-focused {
+      .@{prefix}-input__prefix:not(:empty) + .@{prefix}-input__inner {
+        margin-left: @spacer-s;
+      }
+    }
   }
 }
 
@@ -40,9 +55,10 @@
 // 标签数量超出时，换行显示
 .@{prefix}-tag-input--break-line {
 
-  &.@{prefix}-input {
+  .@{prefix}-input {
     display: block;
     height: auto;
+    padding-right: 24px;
 
     &.t-input--prefix > .t-input__prefix {
       display: inline;
