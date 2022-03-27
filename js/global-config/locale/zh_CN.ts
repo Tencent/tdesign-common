@@ -108,6 +108,7 @@ export default {
       image: '点击上传图片',
       normal: '点击上传',
       reupload: '重新上传',
+      continueUpload: '继续上传',
       delete: '删除',
     },
     dragger: {
