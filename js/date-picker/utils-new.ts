@@ -355,6 +355,13 @@ export function extractTimeFormat(dateFormat: string) {
   return res[0];
 }
 
+// 提取时间部分 'pm 20:11:11:333' -> '20:11:11:333'
+export function extractTimeValue(dateFormat: string) {
+  const res = dateFormat.match(/\d{1,2}:\d{1,2}(:\d{1,2})?(:\d{1,3})?/);
+  if (!res) return '';
+  return res[0];
+}
+
 /**
  * 日期是否可用
  * @param {Object} { value, disableDate, mode, format }
