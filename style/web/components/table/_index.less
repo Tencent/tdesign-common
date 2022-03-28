@@ -30,6 +30,7 @@
   font-size: @table-font-size;
   color: @table--text-color;
   background-color: @table-bg;
+  overflow: hidden;
 
   /** loading need to be top of fixed columns */
   .@{prefix}-loading--full {
@@ -591,10 +592,13 @@
       height: auto;
     }
 
+    .@{prefix}-checkbox-group {
+      display: block;
+    }
     .@{prefix}-checkbox,
     .@{prefix}-radio {
       display: block;
-      line-height: 34px;
+      line-height: 28px;
     }
 
     .@{prefix}-table__filter-pop-content-button {
