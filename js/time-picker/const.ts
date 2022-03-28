@@ -1,16 +1,19 @@
-export const AM = 'AM';
-export const PM = 'PM';
+export const AM = 'am';
+export const PM = 'pm';
 export const MERIDIEM_LIST = [AM, PM];
 
 export const TIME_PICKER_EMPTY: Array<undefined> = [undefined, undefined];
 
+export const DEFAULT_STEPS = [1, 1, 1];
+export const DEFAULT_FORMAT = 'HH:mm:ss';
+
 export const EMPTY_VALUE = -1;
 
 export enum EPickerCols {
-  HOUR = 'hour',
-  MINUTE = 'minute',
-  SECOND = 'second',
-  MERIDIEM = 'meridiem',
+  hour = 'hour',
+  minute = 'minute',
+  second = 'second',
+  meridiem = 'meridiem',
 }
 
 // RegExp
