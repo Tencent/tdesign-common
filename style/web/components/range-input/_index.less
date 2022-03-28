@@ -5,6 +5,7 @@
 @import "./_var.less";
 
 .@{prefix}-range-input {
+  width: max-content;
   position: relative;
   height: @range-input-height-default;
   .range-input-base();
@@ -19,6 +20,19 @@
   .range-input-fix-position(prefix);
   .range-input-fix-position(suffix);
 
+  // 输入框大小
+  &.@{prefix}-size-l {
+    height: @range-input-height-l;
+    line-height: @range-input-height-l;
+    font-size: @range-input-font-size-l;
+  }
+
+  &.@{prefix}-size-s {
+    height: @range-input-height-s;
+    line-height: @range-input-height-s;
+    font-size: @range-input-font-size-s;
+  }
+
   &.@{prefix}-is-focused {
     z-index: 1;
     border-color: @range-input-border-color-default-focus;
@@ -26,19 +40,20 @@
   }
 
   &__inner {
+    height: 100%;
     display: flex;
     align-items: center;
     gap: @spacer;
 
+    .@{prefix}-input__wrap {
+      height: 100%;
+    }
+
     .@{prefix}-input {
-      height: 22px;
-      line-height: 22px;
+      height: 100%;
       border: 0;
       box-shadow: none;
-
-      &__wrap {
-        width: auto;
-      }
+      font-size: inherit;
 
       &.@{prefix}-is-focused {
         background-color: #e7e7e7;
