@@ -29,6 +29,8 @@ export default {
     expandIcon: undefined,
     // 排序图标（使用降序图标）
     sortIcon: undefined,
+    // 过滤图标
+    filterIcon: undefined,
   },
   select: {
     // 清除按钮
