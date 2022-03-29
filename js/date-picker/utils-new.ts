@@ -355,11 +355,25 @@ export function extractTimeFormat(dateFormat: string) {
   return res[0];
 }
 
-// 提取时间部分 'pm 20:11:11:333' -> '20:11:11:333'
-export function extractTimeValue(dateFormat: string) {
-  const res = dateFormat.match(/\d{1,2}:\d{1,2}(:\d{1,2})?(:\d{1,3})?/);
-  if (!res) return '';
-  return res[0];
+
+/**
+ * 返回时间对象的小时、分钟、秒、12小时制标识
+ * @param {String} timeFormat 'pm 20:11:11:333'
+ * @returns {Object}
+ */
+export function extractTimeObj(timeFormat: string) {
+  const matchedMeridiem = timeFormat.match(/[ap]m/i) || ['am'];
+  const timeReg = /\d{1,2}:\d{1,2}(:\d{1,2})?(:\d{1,3})?/;
+  const matchedTimeStr = timeFormat.match(timeReg) || ['0:0:0:0'];
+  const [hours = 0, minutes = 0, seconds = 0, milliseconds = 0] = matchedTimeStr[0].split(':')
+
+  return {
+    hours: +hours,
+    minutes: +minutes,
+    seconds: +seconds,
+    milliseconds: +milliseconds,
+    meridiem: matchedMeridiem[0],
+  }
 }
 
 /**

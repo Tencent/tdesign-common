@@ -7,31 +7,32 @@
 @import "./_mixin.less";
 
 .@{prefix}-date-picker {
-  width: 240px;
+  width: @datepicker-input-default-width;
 }
 
-.@{prefix}-date-picker__panel {
+.@{prefix}-date-picker__panel-container {
+  padding: 0;
+  min-width: @datepicker-panel-min-width;
 
-  &-container {
+  .@{prefix}-select__dropdown {
+    max-height: @datepicker-panel-select-max-width;
+  }
+}
+
+.@{prefix}-date-picker__panel--top {
+  display: flex;
+}
+
+// 配合time-picker使用 需重置部分样式
+.@{prefix}-time-picker__panel {
+  width: @timepicker-panel-width;
+
+  &-section-body {
     padding: 0;
-    min-width: 280px;
   }
 
-  &--top {
-    display: flex;
-  }
-
-  // 配合time-picker使用 需重置部分样式
-  .@{prefix}-time-picker__panel {
-    width: 256px;
-
-    &-section-body {
-      padding: 0;
-    }
-
-    &-body {
-      margin: 0;
-    }
+  &-body {
+    margin: 0;
   }
 }
 
@@ -64,14 +65,12 @@
   }
 
   th {
-    width: 24px;
     text-align: center;
     color: @datepicker-th-font-color;
     font-weight: @datepicker-th-font-weight;
   }
 
   td {
-    min-width: 24px;
     text-align: center;
     font-weight: @datepicker-font-weight-medium;
   }
@@ -181,8 +180,8 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-width: 24px;
-    height: 24px;
+    min-width: @datepicker-cell-min-width;
+    height: @datepicker-cell-height;
     margin: @spacer-s;
     padding: 0 @spacer-s;
     border-radius: @datepicker-panel-border-radius;
@@ -209,22 +208,22 @@
     &:hover {
       .@{prefix}-date-picker__cell-inner {
         box-shadow: none;
-        border-color: @bg-color-container-hover;
-        background-color: @bg-color-container-hover;
+        border-color: @datepicker-cell-hover-background;
+        background-color: @datepicker-cell-hover-background;
       }
     }
 
     .@{prefix}-date-picker__cell-inner {
-      color: @datepicker-disabled-color;
-      background: @bg-color-container;
+      color: @datepicker-cell-disabled-color;
+      background-color: @datepicker-background-color;
     }
   }
 
   &--active {
 
     .@{prefix}-date-picker__cell-inner {
-      color: @text-color-anti;
-      background-color: @brand-color;
+      color: @datepicker-cell-active-color;
+      background-color: @datepicker-cell-active-background;
     }
   }
 
@@ -237,8 +236,8 @@
 
     .@{prefix}-date-picker__cell-inner {
       cursor: not-allowed;
-      color: @datepicker-disabled-color;
-      border: 1px solid @datepicker-cell-disable-border;
+      color: @datepicker-cell-disabled-color;
+      border: 1px solid @datepicker-cell-disable-border-color;
       background-color: @datepicker-cell-disable-background-color;
     }
   }
