@@ -185,21 +185,18 @@
     td,
     th {
       border-left: @border;
-      // border-bottom: @border;
-
-      &:first-child {
-        border-left-width: 0;
-
-        &::before {
-          border-left: 0;
-        }
-      }
 
       &.@{prefix}-table__cell--fixed-left-last {
         &::before {
           border-right: @border;
         }
       }
+    }
+
+    // 合并单元格场景中，第一列不再是真正的第一列
+    th:first-child,
+    td.@{prefix}-table__td-first-col {
+      border-left-width: 0;
     }
 
     .@{prefix}-table__content {
