@@ -25,9 +25,14 @@
     height: @range-input-height-l;
     line-height: @range-input-height-l;
     font-size: @range-input-font-size-l;
+
+    .@{prefix}-input {
+      padding: 0 8px;
+    }
   }
 
   &.@{prefix}-size-s {
+    padding: 2px 4px;
     height: @range-input-height-s;
     line-height: @range-input-height-s;
     font-size: @range-input-font-size-s;
@@ -50,13 +55,19 @@
     }
 
     .@{prefix}-input {
+      padding: 0 4px;
       height: 100%;
       border: 0;
       box-shadow: none;
       font-size: inherit;
 
+      &:hover,
       &.@{prefix}-is-focused {
         background-color: #e7e7e7;
+      }
+
+      &__inner {
+        height: 100%;
       }
     }
   }
