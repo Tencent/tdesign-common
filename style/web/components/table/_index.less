@@ -193,10 +193,17 @@
       }
     }
 
-    // 合并单元格场景中，第一列不再是真正的第一列
+    // 合并单元格场景中，:first-child 不再是真正的第一列
     th:first-child,
     td.@{prefix}-table__td-first-col {
       border-left-width: 0;
+    }
+
+    // 只有非合并单元格场景才需要设置 first-child
+    &:not(.@{prefix}-table--rowspan-colspan) {
+      td:first-child {
+        border-left-width: 0;
+      }
     }
 
     .@{prefix}-table__content {
