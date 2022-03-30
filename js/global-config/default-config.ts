@@ -7,6 +7,7 @@ export default {
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,
+    controllerConfig: undefined,
   },
   dialog: {
     confirmBtnTheme: {
