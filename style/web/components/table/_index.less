@@ -185,20 +185,24 @@
     td,
     th {
       border-left: @border;
-      // border-bottom: @border;
-
-      &:first-child {
-        border-left-width: 0;
-
-        &::before {
-          border-left: 0;
-        }
-      }
 
       &.@{prefix}-table__cell--fixed-left-last {
         &::before {
           border-right: @border;
         }
+      }
+    }
+
+    // 合并单元格场景中，:first-child 不再是真正的第一列
+    th:first-child,
+    td.@{prefix}-table__td-first-col {
+      border-left-width: 0;
+    }
+
+    // 只有非合并单元格场景才需要设置 first-child
+    &:not(.@{prefix}-table--rowspan-colspan) {
+      td:first-child {
+        border-left-width: 0;
       }
     }
 
@@ -481,6 +485,10 @@
   }
 }
 
+.@{prefix}-table th.@{prefix}-align-right .@{prefix}-table__cell--title {
+  justify-content: flex-end;
+}
+
 /**
  * 有边框和无边框的图标排列不一样，需谨慎修改
  * 无边框模式，图标依次紧跟标题
@@ -651,10 +659,22 @@
   .@{prefix}-table__filter-icon-wrap {
     justify-content: flex-end;
   }
+  // 是否显示表格边框 和 对齐方式都决定着 排序图标 和 筛选图标的排列位置
   .@{prefix}-table__cell--sortable.@{prefix}-table__cell--filterable {
     .@{prefix}-table__filter-icon-wrap {
       justify-content: space-between;
       flex: 1;
+    }
+  }
+}
+
+// 是否显示表格边框 和 对齐方式都决定着 排序图标 和 筛选图标的排列位置
+.@{prefix}-table {
+  .@{prefix}-align-center {
+    .@{prefix}-table__cell--sortable,
+    .@{prefix}-table__cell--filterable {
+      display: flex;
+      justify-content: space-around;
     }
   }
 }
@@ -955,4 +975,8 @@
 
 .@{prefix}-loading__parent .@{prefix}-table__content {
   min-height: 200px;
+}
+
+.@{prefix}-table__handle-draggable:hover {
+  cursor: move;
 }
