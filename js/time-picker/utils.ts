@@ -9,3 +9,15 @@ export function validateInputValue(value: string, format: string) {
 export function formatInputValue(value: string, format: string) {
   return dayjs(value, format).format(format);
 }
+
+// 计算最接近的时间点
+export function closestLookup(
+  availableArr: Array<any>,
+  calcVal: number,
+  step: number
+) {
+  if (step <= 1) return calcVal;
+  return availableArr.sort(
+    (a, b) => Math.abs(calcVal + 1 - a) - Math.abs(calcVal + 1 - b)
+  )[0];
+}
