@@ -6,7 +6,6 @@ export const TIME_PICKER_EMPTY: Array<undefined> = [undefined, undefined];
 
 export const DEFAULT_STEPS = [1, 1, 1];
 export const DEFAULT_FORMAT = 'HH:mm:ss';
-
 export const EMPTY_VALUE = -1;
 
 export enum EPickerCols {
@@ -17,6 +16,7 @@ export enum EPickerCols {
 }
 
 // RegExp
+export const TIME_FORMAT = /(a\s+|A\s+)?(h+|H+)?:?(m+)?:?(s+)?(\s+a|\s+A)?/;
 // 上下午前置
 export const PRE_MERIDIEM_FORMAT = /^(a|A)\s+?[h]{1,2}(:[m]{1,2}(:[s]{1,2})?)?$/;
 // 上下午后置
