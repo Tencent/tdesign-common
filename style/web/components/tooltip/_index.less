@@ -6,57 +6,65 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-tooltip {
-  display: inline-block;
-  border: 0;
-  margin-bottom: 1px;
-  max-width: @tooltip-max-width;
-  word-break: break-word;
+.@{prefix}-popup {
+  .@{prefix}-tooltip {
+    display: inline-block;
+    border: 0;
+    margin-bottom: 1px;
+    max-width: @tooltip-max-width;
+    word-break: break-word;
 
-  &:not(.@{prefix}-tooltip--light) {
-    color: @tooltip-text-color;
-  }
+    &:not(.@{prefix}-tooltip--light) {
+      color: @tooltip-text-color;
+    }
 
-  &--default {
-    background: @tooltip-bg;
-    margin: @tooltip-default-margin;
-  }
+    &--default {
+      background: @tooltip-bg;
+      margin: @tooltip-default-margin;
+    }
 
-  &--primary {
-    background: @tooltip-bg-primary;
-  }
+    &--primary {
+      background: @tooltip-bg-primary;
+    }
 
-  &--success {
-    background: @tooltip-bg-success;
-  }
+    &--success {
+      background: @tooltip-bg-success;
+    }
 
-  &--danger {
-    background: @tooltip-bg-danger;
-  }
+    &--danger {
+      background: @tooltip-bg-danger;
+    }
 
-  &--warning {
-    background: @tooltip-bg-warning;
-  }
+    &--warning {
+      background: @tooltip-bg-warning;
+    }
 
-  .@{prefix}-popup__arrow {
-    background: inherit;
-    width: auto;
-    height: auto;
-
-    &::before {
+    .@{prefix}-popup__arrow {
       background: inherit;
+      width: auto;
+      height: auto;
+
+      &::before {
+        background: inherit;
+      }
     }
   }
 }
 
-.@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="top"]
+.@{prefix}-tooltip
+.@{prefix}-popup__arrow {
   bottom: @tooltip-arrow-position;
 }
 
-.@{prefix}-popup[data-popper-placement^="left"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="left"]
+.@{prefix}-tooltip
+.@{prefix}-popup__arrow {
   right: @tooltip-arrow-position;
 }
 
-.@{prefix}-popup[data-popper-placement^="right"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="right"]
+.@{prefix}-tooltip
+.@{prefix}-popup__arrow {
   left: -@tooltip-arrow-position;
 }
