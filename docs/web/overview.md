@@ -266,6 +266,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/card">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-card.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-card-dark.png" />
+      <p class="name">Card 卡片</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/list">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-list.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-list-dark.png" />
