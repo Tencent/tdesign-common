@@ -6,7 +6,6 @@ export const TIME_PICKER_EMPTY: Array<undefined> = [undefined, undefined];
 
 export const DEFAULT_STEPS = [1, 1, 1];
 export const DEFAULT_FORMAT = 'HH:mm:ss';
-
 export const EMPTY_VALUE = -1;
 
 export enum EPickerCols {
