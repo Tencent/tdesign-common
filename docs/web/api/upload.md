@@ -36,11 +36,18 @@ spline: form
 #### 批量上传图片
 
 {{ img-flow-list }}
+
 ### 合并上传文件
 
 使用 `uploadAllFilesInOneRequest` 与 `batchUpload` 实现多文件批量合并上传。
 
 {{ file-flow-list-batch-upload }}
+
+### 文件重复上传
+
+使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
+
+{{ file-flow-list-duplicate }}
 
 ### 自定义上传方法
 
