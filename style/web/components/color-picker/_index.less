@@ -347,6 +347,21 @@
       }
     }
   }
+
+  &-mode-select {
+    .t-select,
+    .t-input {
+      padding-right: 0;
+    }
+
+    .t-input--prefix > .t-input__suffix {
+      padding-left: 0;
+    }
+
+    .t-select__right-icon {
+      margin: 0 4px 0 0;
+    }
+  }
 }
 
 .@{prefix}-color-picker__swatches-wrap {
@@ -493,8 +508,8 @@
   }
   .@{prefix}-select-option {
     height: 30px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 5px 8px;
+    font-size: 12px;
     + .@{prefix}-select-option {
       margin-top: 2px;
     }
