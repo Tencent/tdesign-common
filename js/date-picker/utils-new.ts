@@ -349,7 +349,7 @@ export function flagActive(data: any[], { ...args }: any) {
 }
 
 // extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
-export function extractTimeFormat(dateFormat: string) {
+export function extractTimeFormat(dateFormat: string = '') {
   const res = dateFormat.match(/(a\s)?h{1,2}:m{1,2}(:s{1,2})?(\sa)?/i);
   if (!res) return null;
   return res[0];
@@ -361,7 +361,7 @@ export function extractTimeFormat(dateFormat: string) {
  * @param {String} timeFormat 'pm 20:11:11:333'
  * @returns {Object}
  */
-export function extractTimeObj(timeFormat: string) {
+export function extractTimeObj(timeFormat: string = '') {
   const matchedMeridiem = timeFormat.match(/[ap]m/i) || ['am'];
   const timeReg = /\d{1,2}:\d{1,2}(:\d{1,2})?(:\d{1,3})?/;
   const matchedTimeStr = timeFormat.match(timeReg) || ['0:0:0:0'];

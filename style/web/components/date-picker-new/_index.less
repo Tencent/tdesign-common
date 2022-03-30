@@ -10,22 +10,38 @@
   width: @datepicker-input-default-width;
 }
 
-.@{prefix}-date-picker__panel-container {
+.@{prefix}-date-picker__panel-container,
+.@{prefix}-date-range-picker__panel-container {
   padding: 0;
-  min-width: @datepicker-panel-min-width;
+  min-width: @datepicker-panel-container-min-width;
 
   .@{prefix}-select__dropdown {
     max-height: @datepicker-panel-select-max-width;
   }
 }
 
-.@{prefix}-date-picker__panel--top {
+.@{prefix}-date-picker__panel,
+.@{prefix}-date-range-picker__panel {
   display: flex;
+  flex-direction: column;
+  
+  &--direction-row {
+    flex-direction: row;
+  }
+}
+
+.@{prefix}-date-picker__panel--content,
+.@{prefix}-date-range-picker__panel--content,
+.@{prefix}-date-range-picker__panel--content-wrapper {
+  display: flex;
+}
+.@{prefix}-date-range-picker__panel--content-wrapper {
+  gap: 32px;
 }
 
 // 配合time-picker使用 需重置部分样式
 .@{prefix}-time-picker__panel {
-  width: @timepicker-panel-width;
+  width: @datepicker-time-panel-width;
 
   &-section-body {
     padding: 0;
@@ -80,29 +96,31 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 12px;
-  gap: 8px;
+  padding: @datepicker-presets-padding;
+  gap: @datepicker-presets-gap;
   
   &--bottom {
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid @datepicker-panel-divider-color;
   }
 
   &--top {
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid @datepicker-panel-divider-color;
   }
 
   &--left {
-    border-right: 1px solid #e7e7e7;
+    flex-direction: column;
+    border-right: 1px solid @datepicker-panel-divider-color;
   }
 
   &--right {
-    border-left: 1px solid #e7e7e7;
+    flex-direction: column;
+    border-left: 1px solid @datepicker-panel-divider-color;
   }
 }
 
 .@{prefix}-date-picker__presets {
   display: flex;
-  gap: 8px;
+  gap: @datepicker-presets-gap;
   white-space: nowrap;
   min-width: 100px;
 
@@ -119,9 +137,10 @@
   }
 }
 
-.@{prefix}-date-picker__panel--time {
-  padding: 16px 12px;
-  border-left: 1px solid #E7E7E7;
+.@{prefix}-date-picker__panel--time,
+.@{prefix}-date-range-picker__panel--time {
+  padding: @datepicker-time-panel-padding;
+  border-left: 1px solid @datepicker-panel-divider-color;
 }
 
 .@{prefix}-date-picker__panel--year,
@@ -130,8 +149,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 12px;
+  padding: @spacer-l;
   gap: 12px;
+  max-width: @datepicker-panel-max-width;
 }
 
 .@{prefix}-date-picker__panel--year,
