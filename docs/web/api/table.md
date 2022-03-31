@@ -103,7 +103,7 @@ spline: data
 自定义设置需要展示的列，可以通过 `columnController` 字段来设置，其中：
 - `displayColumns` 表示当前显示列，支持非受控属性 `defaultDisplayColumns`
 - `onDisplayColumnsChange` 会在当前显示列变化时触发
-- `columnController.fields` 来设置可以自定义的列，不传表示全部可自定义。
+- `columnController.fields` 用于设置哪些列被允许控制显示或隐藏，不传表示全部列可以进行显示或隐藏控制。
 - `columnController.displayType` 用来设置自定义列的内容展示的方式，有 `auto-width` 和 `fixed-width` 可选。
 - 支持透传 CheckboxGroup 和 Dialog 组件等全部属性。
 
