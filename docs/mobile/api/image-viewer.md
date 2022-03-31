@@ -1,6 +1,6 @@
 ---
-title: Preview 图片预览
-description: 相册读取或拉起拍照的图片上传功能。
+title: ImageViewer 图片预览
+description: 预览图片内容。
 spline: base
 isComponent: true
 toc: false

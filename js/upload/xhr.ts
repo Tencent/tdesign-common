@@ -1,16 +1,21 @@
 import { XhrOptions } from './types';
 
 export default function xhr({
+  method = 'POST',
   action,
   withCredentials = false,
   headers = {},
   data = {},
   file,
+  files,
   name = 'file',
   onError,
   onProgress,
   onSuccess,
 }: XhrOptions) {
+  // support files
+  const innerFiles = Array.isArray(files) ? files : [file];
+
   // eslint-disable-next-line no-shadow
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
@@ -23,16 +28,20 @@ export default function xhr({
   Object.keys(sendData).forEach((key) => {
     formData.append(key, data[key]);
   });
-  formData.append(name, file.raw);
 
-  xhr.open('post', action, true);
+  // support one request upload multiple files
+  innerFiles.forEach((f) => {
+    formData.append(name, f.raw);
+  });
+
+  xhr.open(method, action, true);
 
   // custom request headers
   Object.keys(headers).forEach((key) => {
     xhr.setRequestHeader(key, headers[key]);
   });
 
-  xhr.onerror = (event: ProgressEvent) => onError({ event, file });
+  xhr.onerror = (event: ProgressEvent) => onError({ event, file, files: innerFiles });
 
   if (xhr.upload) {
     xhr.upload.onprogress = (event: ProgressEvent) => {
@@ -40,7 +49,10 @@ export default function xhr({
       if (event.total > 0) {
         percent = Math.round((event.loaded / event.total) * 100);
       }
-      onProgress({ event, percent, file });
+
+      onProgress({
+        event, percent, file, files: innerFiles
+      });
     };
   }
 
@@ -49,7 +61,9 @@ export default function xhr({
     let response;
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
-      return onError({ event, file, response });
+      return onError({
+        event, file, files: innerFiles, response
+      });
     }
     const text = xhr.responseText || xhr.response;
     try {
@@ -57,7 +71,9 @@ export default function xhr({
     } catch (e) {
       response = text;
     }
-    onSuccess({ event, file, response });
+    onSuccess({
+      event, file, files: innerFiles, response
+    });
   };
 
   xhr.send(formData);

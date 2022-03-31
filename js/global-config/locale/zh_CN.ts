@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 export default {
   pagination: {
@@ -44,13 +45,17 @@ export default {
     cancel: '取消',
   },
   popconfirm: {
-    confirm: '确定',
-    cancel: '取消',
+    confirm: {
+      content: '确定',
+    },
+    cancel: {
+      content: '取消',
+    },
   },
   table: {
     empty: '暂无数据',
     loadingText: '正在加载中，请稍后',
-    loadingMoreText: '',
+    loadingMoreText: '点击加载更多',
     filterInputPlaceholder: '请输入内容（无默认值）',
     sortAscendingOperationText: '点击升序',
     sortCancelOperationText: '点击取消排序',
@@ -59,7 +64,7 @@ export default {
   select: {
     empty: '暂无数据',
     loadingText: '加载中',
-    placeholder: '-请选择-',
+    placeholder: '请选择',
   },
   tree: {
     empty: '暂无数据',
@@ -95,7 +100,6 @@ export default {
     nextDecade: '下个十年',
     now: '当前',
   },
-  steps: {},
   upload: {
     sizeLimitMessage: '图片大小不能超过 {sizeLimit}',
     cancelUploadText: '取消上传',
@@ -104,6 +108,7 @@ export default {
       image: '点击上传图片',
       normal: '点击上传',
       reupload: '重新上传',
+      continueUpload: '继续上传',
       delete: '删除',
     },
     dragger: {
@@ -125,8 +130,41 @@ export default {
       successText: '上传成功',
     },
   },
+  form: {
+    errorMessage: {
+      date: '请输入正确的${name}',
+      url: '请输入正确的${name}',
+      required: '${name}必填',
+      max: '${name}字符长度不能超过 ${validate} 个字符，一个中文等于两个字符',
+      min: '${name}字符长度不能少于 ${validate} 个字符，一个中文等于两个字符',
+      len: '${name}字符长度必须是 ${validate}',
+      enum: '${name}只能是${validate}等',
+      idcard: '请输入正确的${name}',
+      telnumber: '请输入正确的${name}',
+      pattern: '请输入正确的${name}',
+      validator: '${name}不符合要求',
+      boolean: '${name}数据类型必须是布尔类型',
+      number: '${name}必须是数字',
+    },
+  },
+  input: {
+    placeholder: '请输入',
+  },
   list: {
     loadingText: '正在加载中，请稍等',
     loadingMoreText: '点击加载更多',
+  },
+  alert: {
+    expandText: '展开更多',
+    collapseText: '收起',
+  },
+  anchor: {
+    copySuccessText: '链接复制成功',
+    copyText: '复制链接',
+  },
+  colorPicker: {
+    swatchColorTitle: '系统预设颜色',
+    recentColorTitle: '最近使用颜色',
+    clearConfirmText: '确定清空最近使用的颜色吗？',
   },
 };

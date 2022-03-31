@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@import "../../mixins/_index.less";
+
 .@{prefix}-grid-item {
   display: flex;
   box-sizing: border-box;
@@ -33,5 +35,13 @@
 
   &--hover:active {
     background-color: @grid-item-hover-bg-color;
+  }
+
+  &--bordered {
+    position: relative;
+
+    &::after {
+      .hairline-right(@grid-item-border-color);
+    }
   }
 }

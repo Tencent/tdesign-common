@@ -8,22 +8,43 @@
 
   .@{prefix}-tag {
     margin-right: @spacer-s;
-    animation: t-zoom-out .1s ease-in-out;
+    animation: t-fade-in .1s ease-in-out;
   }
 
-  &.@{prefix}-input {
+  .@{prefix}-input {
     padding-left: @spacer-s;
     overflow: hidden;
+
+    &.@{prefix}-size-s {
+      padding-left: @spacer-s * .5;
+    }
   }
 
-  .@{prefix}-input__inner {
-    min-width: 80px;
-    width: auto;
+  &:hover,
+  .@{prefix}-input--focused {
+    .@{prefix}-input__inner {
+      min-width: 40px;
+    }
   }
 
   .@{prefix}-tag-input__prefix,
   .@{prefix}-input__prefix:empty {
     margin-left: @spacer-s;
+  }
+
+  .@{prefix}-input--auto-width {
+    padding-right: @spacer-s;
+    .@{prefix}-tag {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &:hover,.@{prefix}-is-focused {
+      .@{prefix}-input__prefix:not(:empty) + .@{prefix}-input__inner {
+        margin-left: @spacer-s;
+      }
+    }
   }
 }
 
@@ -34,52 +55,26 @@
 // 标签数量超出时，换行显示
 .@{prefix}-tag-input--break-line {
 
-  &.@{prefix}-input {
+  .@{prefix}-input {
     display: block;
     height: auto;
+    padding-right: 24px;
 
     &.t-input--prefix > .t-input__prefix {
       display: inline;
       text-align: left;
     }
 
-    .@{prefix}-tag-input__suffix-clear {
+    .@{prefix}-input__suffix-icon {
       position: absolute;
       right: @spacer;
-      bottom: @spacer;
+      bottom: 0;
     }
   }
 }
-
-// .@{prefix}-tag-input:hover {
-//   .@{prefix}-icon-close-circle-filled {
-//     display: inline-block;
-//     cursor: pointer;
-//   }
-// }
 
 .@{prefix}-tag-input__prefix {
   width: max-content;
   display: inline-block;
   margin-right: @spacer;
-}
-
-/** 光标动画 */
-@keyframes t-tag-cursor-show {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.@{prefix}-tag-input__cursor {
-  display: inline-block;
-  border-left: 1px solid black;
-  height: 17px;
-  margin-right: @spacer-s;
-  opacity: 1;
-  animation: t-tag-cursor-show .8s ease infinite;
 }

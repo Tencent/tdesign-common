@@ -1,6 +1,6 @@
 ---
 title: Form 表单
-description: 用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。 
+description: 用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。
 isComponent: true
 spline: form
 ---
@@ -51,7 +51,7 @@ spline: form
 
 表单重置分两类：全部数据重置为空和全部数据重置为初始值。
 
-可以使用 `reseType` 控制，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值。
+可以使用 `resetType` 控制，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值。
 
 {{ reset }}
 
@@ -91,7 +91,7 @@ spline: form
 
 `FormRule` 中的每个规则都要默认校验信息，支持通过 `Form.errorMessage` 覆盖默认校验信息，也支持全局配置（ConfigProvider）各个规则的校验信息。
 
-{{ validate-message }}
+{{ error-message }}
 
 ### 可进行复杂数据校验的表单
 
@@ -104,3 +104,9 @@ spline: form
 可以使用 `disabled` 属性禁用整个表单项。对于自定义组件，可以使用 `formControlledComponents` 设置为允许 Form 代理禁用状态。
 
 {{ disabled }}
+
+### 可设置校验信息的表单
+
+使用 `validateMessage` 属性可以自定义表单校验信息提示，主要用于非组件内部的校验信息呈现，如：表单初次呈现的远程校验结果。如果要启动组件内部的校验功能，该值必须设置为空。
+
+{{ validate-message }}

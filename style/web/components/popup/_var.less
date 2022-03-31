@@ -26,9 +26,6 @@
 @popup-flow: t-popup--animation;
 @popup-flow-duration: @anim-duration-base;
 @popup-flow-fn: @anim-time-fn-ease-in;
-@popup-flow-transition-enter: opacity @popup-flow-duration linear,
-  visibility @popup-flow-duration @popup-flow-fn,
-  max-height @popup-flow-duration @anim-time-fn-easing;
+@popup-flow-transition-enter: opacity @popup-flow-duration linear;
 @popup-flow-transition-leave: opacity @popup-flow-duration @anim-time-fn-ease-out,
-  visibility @popup-flow-duration @popup-flow-fn,
-  max-height @popup-flow-duration @anim-time-fn-easing;
+  visibility @popup-flow-duration @popup-flow-fn;

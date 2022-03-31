@@ -1,5 +1,15 @@
 @import "../_variables.less";
 
+@keyframes t-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes t-fade-out {
   from {
     opacity: 1;
@@ -18,6 +28,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.@{prefix}-icon-loading {
+  animation: t-spin 1s linear infinite;
 }
 
 // 定义一个从A到B到动画

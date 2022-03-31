@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 export default {
   pagination: {
@@ -38,30 +39,23 @@ export default {
   dialog: {
     confirm: 'Confirm',
     cancel: 'Cancel',
-    confirmBtnTheme: {
-      default: 'primary',
-      info: 'primary',
-      warning: 'primary',
-      danger: 'primary',
-      success: 'primary',
-    },
   },
   drawer: {
     confirm: 'Confirm',
     cancel: 'Cancel',
   },
   popconfirm: {
-    confirm: 'OK',
-    cancel: 'Cancel',
-    confirmBtnTheme: {
-      default: 'primary',
-      warning: 'primary',
-      danger: 'primary',
+    confirm: {
+      content: 'OK',
+    },
+    cancel: {
+      content: 'Cancel',
     },
   },
   table: {
     empty: 'Empty Data',
     loadingText: 'loading...',
+    loadingMoreText: 'loading more',
     filterInputPlaceholder: '',
     sortAscendingOperationText: 'click to sort ascending',
     sortCancelOperationText: 'click to cancel sorting',
@@ -89,8 +83,12 @@ export default {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     rangeSeparator: ' ~ ',
+    direction: 'ltr',
     format: 'YYYY-MM-DD',
-    yearAriaLabel: '',
+    dayAriaLabel: 'D',
+    yearAriaLabel: 'Y',
+    monthAriaLabel: 'M',
+    weekAbbreviation: 'W',
     confirm: 'Confirm',
     selectTime: 'Select Time',
     selectDate: 'Select Date',
@@ -102,7 +100,6 @@ export default {
     nextDecade: 'Next Decade',
     now: 'Now',
   },
-  steps: {},
   upload: {
     sizeLimitMessage: 'File is too large to upload. {sizeLimit}',
     cancelUploadText: 'Cancel',
@@ -132,8 +129,41 @@ export default {
       successText: 'Success',
     },
   },
+  form: {
+    errorMessage: {
+      date: '${name} is invalid',
+      url: '${name} is invalid',
+      required: '${name} is required',
+      max: '${name} must be at least ${validate} characters',
+      min: '${name} cannot be longer than ${validate} characters',
+      len: '${name} must be exactly ${validate} characters',
+      enum: '${name} must be one of ${validate}',
+      idcard: '${name} is invalid',
+      telnumber: '${name} is invalid',
+      pattern: '${name} is invalid',
+      validator: '${name} is invalid',
+      boolean: '${name} is not a boolean',
+      number: '${name} must be a number',
+    },
+  },
+  input: {
+    placeholder: 'please enter',
+  },
   list: {
     loadingText: 'loading...',
     loadingMoreText: 'loading more',
+  },
+  alert: {
+    expandText: 'expand',
+    collapseText: 'collapse',
+  },
+  anchor: {
+    expandText: 'copy the link successfully',
+    collapseText: 'copy link',
+  },
+  colorPicker: {
+    swatchColorTitle: 'System Default',
+    recentColorTitle: 'Recently Used',
+    clearConfirmText: 'Clear recently used colors?',
   },
 };

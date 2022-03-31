@@ -34,15 +34,21 @@
 @input-number-button-color-disabled: @text-color-disabled; // 数字输入框操作按钮disabled图标颜色
 @input-number-button-bg-color-disabled: @bg-color-component-disabled; // 数字输入框操作按钮disabled背景颜色
 
+@input-number-text-color-tips: @text-color-placeholder;
+@input-number-text-color-success: @success-color;
+@input-number-text-color-warning: @warning-color;
+@input-number-text-color-error: @error-color;
+
 // 尺寸
 @input-number-width-s: 96px; // 数字输入组件宽度 小
-@input-number-width: 120px; // 数字输入组件宽度 中
+@input-number-width: 128px; // 数字输入组件宽度 中
 @input-number-width-l: 152px; // 数字输入组件宽度 大
-@input-number-right-width: 88px; // 右侧调整数字输入组件宽度（只有大、中两种尺寸）
+@input-number-right-width: 96px; // 右侧调整数字输入组件宽度（只有大、中两种尺寸）
 @input-number-right-width-l: 104px; // 右侧调整数字输入组件宽度（只有大、中两种尺寸）
 
 @input-number-button-width: 32px; // 数字输入框操作按钮的宽度
 @input-number-button-height: 32px; // 数字输入框操作按钮的高度
+@input-number-button-column-height: 14px; // column theme下的数字输入框操作按钮的高度
 @input-number-inner-height: 32px; // 数字输入框操作按钮的高度
 @input-number-right-button-width: 32px; // 右侧调整数字输入框操作按钮宽度
 
@@ -53,10 +59,13 @@
 
 @input-number-button-width-l: 40px; // 大尺寸数字输入框操作按钮宽度
 @input-number-button-height-l: 40px; // 大尺寸数字输入框操作按钮高度
+@input-number-button-column-height-l: 18px; // column theme下的数字输入框操作按钮的高度
 @input-number-inner-height-l: 40px; // 大尺寸数字输入框高度
 @input-number-right-button-width-l: 40px; // 大尺寸右侧调整数字输入框操作按钮宽度
 
 @input-number-padding-horizontal-default: @spacer;
+@input-number-tips-min-height: @spacer-3;
+@input-number-tips-line-height: @text-line-height-s;
 
 // 字号
 @input-number-font-size: @font-size-l; // 数字输入框操作按钮字号
@@ -64,3 +73,4 @@
 @input-number-font-size-l: (@font-size * 1.8); // 大尺寸数字输入框操作按钮字号
 @input-number-right-font-size: @font-size-s; // 右侧调整数字输入框操作按钮字号
 @input-number-right-font-size-l: @font-size-l; // 大尺寸右侧调整数字输入框操作按钮字号
+@input-number-tips-font-size: @font-size-s;

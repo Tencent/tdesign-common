@@ -20,6 +20,20 @@
     cursor: not-allowed;
   }
 
+  // TODO select-input 重构后可以删除后面两个focused
+  .@{prefix}-is-focused {
+    .t-input {
+      border-color: @brand-color;
+      box-shadow: 0 0 0 2px @brand-color-focus;
+    }
+  }
+  &.@{prefix}-is-focused {
+    .@{prefix}-input {
+      border-color: @brand-color;
+      box-shadow: 0 0 0 2px @brand-color-focus;
+    }
+  }
+
   & > *:focus,
   & > *:active {
     outline: 0;
