@@ -1,7 +1,7 @@
-import { XhrOptions } from './types';
+import { UploadFile, XhrOptions } from './types';
 
 export default function xhr({
-  method = 'POST',
+  method,
   action,
   withCredentials = false,
   headers = {},
@@ -14,7 +14,7 @@ export default function xhr({
   onSuccess,
 }: XhrOptions) {
   // support files
-  const innerFiles = Array.isArray(files) ? files : [file];
+  const innerFiles: UploadFile[] = files || [];
 
   // eslint-disable-next-line no-shadow
   const xhr = new XMLHttpRequest();
@@ -31,7 +31,7 @@ export default function xhr({
 
   // support one request upload multiple files
   innerFiles.forEach((f) => {
-    formData.append(name, f.raw);
+    formData.append(name, f && f.raw as any);
   });
 
   xhr.open(method, action, true);
