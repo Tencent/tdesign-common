@@ -22,7 +22,7 @@ export function compileUsage(options) {
   return {
     importStr: `import Usage from '${demoPath}';`,
     installStr: 'Usage,',
-    markdownStr: `### ${title}\n${description}\n<Usage />`,
+    markdownStr: `### ${title}\n${description}\n\n<Usage />`,
   };
 }
 
