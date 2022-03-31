@@ -1,7 +1,7 @@
 import { UploadFile, XhrOptions } from './types';
 
 export default function xhr({
-  method,
+  method = 'POST',
   action,
   withCredentials = false,
   headers = {},
