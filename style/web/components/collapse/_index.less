@@ -9,7 +9,7 @@
 .@{collapse-cls} {
   border: @collapse-border-size;
   border-bottom: 0;
-  background: white;
+  background: @bg-color-container;
 
   &.@{prefix}--border-less {
     border: none;
@@ -20,7 +20,7 @@
       }
 
       &__body {
-        background: white;
+        background: @bg-color-container;
         border: none;
       }
     }
@@ -61,9 +61,8 @@
     }
 
     .@{collapse-panel-cls}__body {
-      box-sizing: content-box;
       border-bottom: @collapse-border-size;
-      background: #f3f3f3;
+      background: @gray-color-1;
     }
     .@{collapse-panel-cls}__content {
       padding: 12px 16px 12px 40px;
@@ -71,7 +70,7 @@
   }
 
   &.@{prefix}-is-disabled {
-    background: #eee;
+    background: @gray-color-2;
 
     .@{collapse-panel-cls}__header {
       cursor: not-allowed;
@@ -82,12 +81,12 @@
     }
 
     .@{collapse-panel-cls}__body {
-      background: #eee;
+      background: @gray-color-2;
     }
   }
 }
 
 .@{prefix}-slide-down-enter-active,
 .@{prefix}-slide-down-leave-active {
-  transition: all .3s;
+  transition: height .3s, padding .3s;
 }
