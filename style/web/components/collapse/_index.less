@@ -1,0 +1,92 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{collapse-cls} {
+  border: @collapse-border-size;
+  border-bottom: 0;
+  background: @bg-color-container;
+
+  &.@{prefix}--border-less {
+    border: none;
+
+    .@{collapse-panel-cls} {
+      &__header {
+        border-bottom: none;
+      }
+
+      &__body {
+        background: @bg-color-container;
+        border: none;
+      }
+    }
+  }
+}
+
+.@{collapse-panel-cls} {
+  &__icon {
+    cursor: pointer;
+
+    &--left {
+      margin-right: @spacer-1;
+    }
+
+    &--right {
+      margin-left: @spacer-1;
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+
+    .@{collapse-panel-cls}__header {
+      padding: 0 16px;
+      border-bottom: @collapse-border-size;
+      height: @collapse-panel-header-height;
+      font-size: @collapse-panel-header-text-size;
+      display: flex;
+      align-items: center;
+
+      &--blank {
+        flex: 1;
+      }
+
+      &.@{prefix}-is-clickable {
+        cursor: pointer;
+      }
+    }
+
+    .@{collapse-panel-cls}__body {
+      border-bottom: @collapse-border-size;
+      background: @gray-color-1;
+    }
+    .@{collapse-panel-cls}__content {
+      padding: 12px 16px 12px 40px;
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background: @gray-color-2;
+
+    .@{collapse-panel-cls}__header {
+      cursor: not-allowed;
+    }
+
+    .@{collapse-panel-cls}__icon {
+      cursor: not-allowed;
+    }
+
+    .@{collapse-panel-cls}__body {
+      background: @gray-color-2;
+    }
+  }
+}
+
+.@{prefix}-slide-down-enter-active,
+.@{prefix}-slide-down-leave-active {
+  transition: height .3s, padding .3s;
+}
