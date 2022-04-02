@@ -52,3 +52,9 @@ spline: form
 禁止组件的使用。
 
 {{ disabled }}
+
+### 单独使用时间选择器面板部分
+
+如果只需要面板部分，可以通过使用`TimePickerPanel`或`TimeRangePickerPanel`来满足使用场景。
+
+{{ panel }}
