@@ -25,7 +25,8 @@
   .scrollbar();
 }
 
-.@{prefix}-table--overflow-visible {
+// 文本内容省略需要 overflow: hidden，防止滚动超出视野区域；而过滤功能数据较少时，需要 overflow: initial
+.@{prefix}-table.@{prefix}-table--overflow-visible {
   overflow: initial;
 }
 
@@ -429,24 +430,6 @@
   // 复杂表头容器
   .@{prefix}-table__cell--title {
     display: flex;
-  }
-
-  // 表格行可以拖拽
-  &.@{prefix}-table__row--draggable {
-    tbody {
-      &.@{prefix}-table__body--dragging {
-        tr {
-          transition: transform .2s;
-          transform: translateY(0);
-        }
-      }
-      // 比如分页数据变化时，不需要过渡
-      tr {
-        &.v-leave-active {
-          display: none;
-        }
-      }
-    }
   }
 
   &__column-controller {
