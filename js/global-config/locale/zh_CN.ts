@@ -62,6 +62,8 @@ export default {
     sortDescendingOperationText: '点击降序',
     clearFilterResultButtonText: '清空筛选',
     columnConfigButtonText: '列配置',
+    columnConfigTitleText: '表格列配置',
+    columnConfigDescriptionText: '请选择需要在表格中显示的数据列',
     confirmText: '确认',
     cancelText: '取消',
     resetText: '重置',

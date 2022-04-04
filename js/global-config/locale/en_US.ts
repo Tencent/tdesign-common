@@ -62,6 +62,8 @@ export default {
     sortDescendingOperationText: 'click to sort descending',
     clearFilterResultButtonText: 'Clear',
     columnConfigButtonText: 'Column Config',
+    columnConfigTitleText: 'Table Column Config',
+    columnConfigDescriptionText: 'Please select columns to show them in the table',
     confirmText: 'Confirm',
     cancelText: 'Cancel',
     resetText: 'Reset',
