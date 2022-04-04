@@ -399,11 +399,6 @@
       position: relative;
     }
 
-    .@{prefix}-table__cell--fixed-left,
-    .@{prefix}-table__cell--fixed-right {
-      z-index: @table-fixed-column-z-index;
-    }
-
     .t-table-cell-fixed-before-after();
   }
 
@@ -832,11 +827,19 @@
 }
 
 .@{prefix}-table--column-fixed {
+
   .t-table-cell-fixed-before-after();
   .@{prefix}-table__cell--fixed-left,
   .@{prefix}-table__cell--fixed-right {
     position: sticky;
+  }
+
+  .@{prefix}-table__cell--fixed-left {
     z-index: @table-fixed-column-z-index;
+  }
+  // 层级加 1 ，是为了多级表头中，固定左侧列和右侧列同时出现，且交叉显示的情况
+  .@{prefix}-table__cell--fixed-right {
+    z-index: @table-fixed-column-z-index + 1;
   }
 }
 
