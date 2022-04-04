@@ -60,6 +60,13 @@ export default {
     sortAscendingOperationText: 'click to sort ascending',
     sortCancelOperationText: 'click to cancel sorting',
     sortDescendingOperationText: 'click to sort descending',
+    clearFilterResultButtonText: 'Clear',
+    columnConfigButtonText: 'Column Config',
+    confirmText: 'Confirm',
+    cancelText: 'Cancel',
+    resetText: 'Reset',
+    selectAllText: 'Select All',
+    searchResultText: 'Search "{result}". Find {count} items.',
   },
   select: {
     empty: 'Empty Data',

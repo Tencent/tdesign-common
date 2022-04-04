@@ -60,6 +60,13 @@ export default {
     sortAscendingOperationText: '点击升序',
     sortCancelOperationText: '点击取消排序',
     sortDescendingOperationText: '点击降序',
+    clearFilterResultButtonText: '清空筛选',
+    columnConfigButtonText: '列配置',
+    confirmText: '确认',
+    cancelText: '取消',
+    resetText: '重置',
+    selectAllText: '全选',
+    searchResultText: '搜索“{result}”，找到 {count} 条结果',
   },
   select: {
     empty: '暂无数据',
