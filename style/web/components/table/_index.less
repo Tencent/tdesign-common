@@ -238,15 +238,10 @@
       padding: @table-padding-normal @table-padding-horizontal;
     }
 
-    // 列配置功能，有边框模式，列配置按钮如果放在表格和分页中间，则需要这个样式
-    // .@{prefix}-table__column-controller-trigger {
-    //   &.@{prefix}-align-bottom-left,
-    //   &.@{prefix}-align-bottom-right {
-    //     padding: @table-padding-normal @table-padding-horizontal 0 @table-padding-horizontal;
-    //     border-left: @border;
-    //     border-right: @border;
-    //   }
-    // }
+    .@{prefix}-table__bottom-content + .@{prefix}-table__pagination {
+      border: 0;
+      padding: 0;
+    }
 
     // 固定表头表格底部边框线显示优化
     &.@{prefix}-table__header--fixed {
