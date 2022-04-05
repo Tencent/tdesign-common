@@ -8,28 +8,7 @@ spline: 'explain'
 
 ### 全局配置
 
-```html
-<template>
-  <t-config-provider :global-config="globalConfig">
-    <App>业务组件入口</App>
-  </t-config-provider>
-</template>
-
-<script setup>
-import merge from 'lodash/merge';
-import enConfig from 'tdesign-vue/locale/en_US';
-// import enConfig from 'tdesign-vue-next/locale/en_US';
-// import enConfig from 'tdesign-react/locale/en_US';
-
-// 全局特性配置，可以引入英文默认配置 enConfig
-const globalConfig = merge(enConfig, {
-  // 可以在此处定义更多自定义配置，具体可配置内容，参看 API 文档
-  calendar: {},
-  table: {},
-  pagination: {},
-});
-</script>
-```
+{{ global }}
 
 ### Pagination 分页
 
