@@ -59,11 +59,18 @@
   }
 
   &__column-controller {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 16px 0;
+  }
+
+  &__column-controller-trigger {
+    &.@{prefix}-align-top-right,
+    &.@{prefix}-align-bottom-right {
+      text-align: right;
+    }
+  }
+
+  &__column-controller-trigger {
+    padding: 16px 0;
   }
 
   &__content {
@@ -72,7 +79,7 @@
   }
 
   &__pagination {
-    padding: @table-padding-normal  @table-padding-horizontal;
+    padding: @table-padding-normal 0;
     box-sizing: border-box;
   }
 
@@ -228,7 +235,18 @@
     .@{prefix}-table__pagination {
       border: @border;
       border-top: 0;
+      padding: @table-padding-normal @table-padding-horizontal;
     }
+
+    // 列配置功能，有边框模式，列配置按钮如果放在表格和分页中间，则需要这个样式
+    // .@{prefix}-table__column-controller-trigger {
+    //   &.@{prefix}-align-bottom-left,
+    //   &.@{prefix}-align-bottom-right {
+    //     padding: @table-padding-normal @table-padding-horizontal 0 @table-padding-horizontal;
+    //     border-left: @border;
+    //     border-right: @border;
+    //   }
+    // }
 
     // 固定表头表格底部边框线显示优化
     &.@{prefix}-table__header--fixed {
