@@ -8,7 +8,7 @@ export default function observe(
     callback();
     return null;
   }
-  let io = null;
+  let io: IntersectionObserver = null;
   try {
     io = new window.IntersectionObserver(
       (entries) => {
