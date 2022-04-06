@@ -15,3 +15,49 @@
     width: @size;
   }
 }
+
+.avatar-group-offset-right(@offset) {
+  margin-right: @offset;
+}
+
+.avatar-group-offset-left(@offset) {
+  margin-left: @offset;
+}
+
+.avatar-group-border-width(@width) {
+  .@{prefix}-avatar__inner {
+    border: @width solid @avatar-border-color;
+  }
+}
+
+.generate-z-index(@n, @i: 1) when (@i =< @n) {
+
+  & .@{prefix}-avatar:nth-child(@{i}) {
+    z-index: (@avatar-group-init-zIndex - @i);
+  }
+  .generate-z-index(@n, (@i + 1));
+}
+
+.avatar-group-size--left() {
+  .avatar-group-offset-left(@avatar-group-offset-medium);
+
+  &.@{prefix}-size-s {
+    .avatar-group-offset-left(@avatar-group-offset-small);
+  }
+
+  &.@{prefix}-size-l {
+    .avatar-group-offset-left(@avatar-group-offset-large);
+  }
+}
+
+.avatar-group-border--width() {
+  .avatar-group-border-width(@avatar-border-width-medium);
+
+  &.@{prefix}-size-s {
+    .avatar-group-border-width(@avatar-border-width-small);
+  }
+
+  &.@{prefix}-size-l {
+    .avatar-group-border-width(@avatar-border-width-large);
+  }
+}
