@@ -1,12 +1,15 @@
+export type AnimationType = 'ripple' | 'expand' | 'fade';
+
 export default {
   classPrefix: 't',
   animation: {
     include: ['ripple', 'expand', 'fade'],
     exclude: []
-  },
+  } as Record<'include'|'exclude', Array<AnimationType>>,
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,
+    controllerConfig: undefined,
   },
   dialog: {
     confirmBtnTheme: {
@@ -29,6 +32,8 @@ export default {
     expandIcon: undefined,
     // 排序图标（使用降序图标）
     sortIcon: undefined,
+    // 过滤图标
+    filterIcon: undefined,
   },
   select: {
     // 清除按钮

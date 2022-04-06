@@ -2,15 +2,32 @@
 
 @import "./_var.less";
 
+@import "./_mixin.less";
+
 @import "../../mixins/_text.less";
 
 @import "../../mixins/_scrollbar.less";
 
-@padding: @table-td-padding-vertical-top @table-td-padding-horizontal
+@border: 1px solid @table-border-color;
+
+// 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
+@table-fixed-column-z-index: 30;
+@table-fixed-header-z-index: 50;
+@table-fixed-row-z-index: 70;
+@table-fixed-header-virtual-scroll-z-index: @table-fixed-header-z-index + 1;
+@table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
+@table-loading-z-index: @table-right-scrollbar-divider + 1;
+
+@table-cell-padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
 
 .scrollbar {
   .scrollbar();
+}
+
+// 文本内容省略需要 overflow: hidden，防止滚动超出视野区域；而过滤功能数据较少时，需要 overflow: initial
+.@{prefix}-table.@{prefix}-table--overflow-visible {
+  overflow: initial;
 }
 
 .@{prefix}-table {
@@ -18,11 +35,16 @@
   font-size: @table-font-size;
   color: @table--text-color;
   background-color: @table-bg;
+  overflow: hidden;
 
   /** loading need to be top of fixed columns */
   .@{prefix}-loading--full {
-    z-index: 1;
+    z-index: @table-loading-z-index;
   }
+
+  .t-table-vertical-align(top);
+  .t-table-vertical-align(middle);
+  .t-table-vertical-align(bottom);
 
   .bordered {
     content: "";
@@ -32,16 +54,23 @@
     height: 100%;
     top: 0;
     right: 0;
-    border-left: 1px solid @table-border-color;
+    border-left: @border;
     pointer-events: none;
   }
 
-  &__top-content {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-top: 16px;
-    padding-bottom: 16px;
+  &__column-controller {
+    padding: 16px 0;
+  }
+
+  &__column-controller-trigger {
+    &.@{prefix}-align-top-right,
+    &.@{prefix}-align-bottom-right {
+      text-align: right;
+    }
+  }
+
+  &__column-controller-trigger {
+    padding: 16px 0;
   }
 
   &__content {
@@ -50,7 +79,7 @@
   }
 
   &__pagination {
-    padding: @table-padding-normal  @table-padding-horizontal;
+    padding: @table-padding-normal 0;
     box-sizing: border-box;
   }
 
@@ -62,7 +91,6 @@
   table {
     width: 100%;
     border-spacing: 0;
-    border-collapse: collapse;
   }
 
   .@{prefix}-text-ellipsis {
@@ -72,10 +100,9 @@
   th,
   td {
     position: relative;
-    padding: @padding;
-    border-bottom: 1px solid @table-border-color;
+    padding: @table-cell-padding;
+    border-bottom: @border;
     line-height: @table-line-height;
-    vertical-align: middle;
     font-weight: normal;
     overflow-wrap: break-word;
     background-color: inherit;
@@ -133,14 +160,32 @@
   .@{prefix}-table__expandable-icon-cell,
   .@{prefix}-table__selection-cell {
     padding: 0;
+
+    + td,
+    + th {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .@{prefix}-table__cell--selectable > .@{prefix}-checkbox {
+    vertical-align: middle;
+  }
+
+  .@{prefix}-table__cell--selectable {
+    + td,
+    + th {
+      padding-left: 0;
+    }
   }
 
   // @todo: 待优化
-  .@{prefix}-radio,
-  .@{prefix}-checkbox {
+  td > .@{prefix}-radio,
+  td > .@{prefix}-checkbox {
     line-height: 1;
     font-size: 0;
     vertical-align: middle;
+    display: inline-block;
   }
 
   .@{prefix}-loading {
@@ -149,92 +194,66 @@
 
   // 边框线表格
   &--bordered {
+    td,
+    th {
+      border-left: @border;
+
+      &.@{prefix}-table__cell--fixed-left-last {
+        &::before {
+          border-right: @border;
+        }
+      }
+    }
+
+    // 合并单元格场景中，:first-child 不再是真正的第一列
+    th:first-child,
+    td.@{prefix}-table__td-first-col {
+      border-left-width: 0;
+    }
+
+    // 只有非合并单元格场景才需要设置 first-child
+    &:not(.@{prefix}-table--rowspan-colspan) {
+      td:first-child {
+        border-left-width: 0;
+      }
+    }
+
     .@{prefix}-table__content {
-      border-left: 1px solid @table-border-color;
+      border-left: @border;
     }
-    .@{prefix}-table__empty {
-      border-left: 1px  solid  @table-border-color;
-      border-right: 1px  solid  @table-border-color;
-    }
+
     // 表格边框优化，适配固定列/固定表头场景
     .@{prefix}-table__content {
-      border: 1px solid @table-border-color;
-      border-bottom: 0;
+      border: @border;
       border-radius: @border-radius;
-
-      th {
-        border-left: 1px solid @table-border-color;
-        border-bottom: 1px solid @table-border-color;
-
-        &:first-child {
-          border-left: 0;
-
-          &::before {
-            border-left: 0;
-          }
-        }
-      }
-
-      td {
-        border-left: 1px solid @table-border-color;
-        border-bottom: 1px solid @table-border-color;
-
-        &.@{prefix}-table__cell--fixed-left-last {
-          & + td {
-            border-left-width: 0;
-          }
-
-          &::before {
-            border-right: 1px solid @table-border-color;
-          }
-        }
-
-        &.@{prefix}-table__cell--fixed-left,
-        &.@{prefix}-table__cell--fixed-right {
-          border-left: 0;
-
-          &::before {
-            .bordered();
-          }
-        }
-
-        &:first-child {
-          border-left-width: 0;
-
-          &::before {
-            border-left: 0;
-          }
-        }
-      }
     }
 
     .@{prefix}-table--loading {
-      border-bottom: 1px solid @table-border-color;
+      border-bottom: @border;
     }
 
     .@{prefix}-table__pagination {
-      border: 1px solid @table-border-color;
+      border: @border;
       border-top: 0;
+      padding: @table-padding-normal @table-padding-horizontal;
+    }
+
+    .@{prefix}-table__bottom-content + .@{prefix}-table__pagination {
+      border: 0;
+      padding: 0;
     }
 
     // 固定表头表格底部边框线显示优化
     &.@{prefix}-table__header--fixed {
 
       .@{prefix}-table__content {
-        border-bottom: 1px solid @table-border-color;
-
-        tr {
-          &:last-child {
-            td {
-              border-bottom: 0;
-            }
-          }
-        }
+        border-bottom: @border;
       }
     }
 
-    .@{prefix}-table__cell--sort-trigger {
-      margin-left: auto;
+    // 合并单元格，隐藏最后一行的下边框，避免和外层边框重复
+    .@{prefix}-table__td-last-row {
+      border-bottom: none;
     }
   }
 
@@ -318,15 +337,16 @@
       overflow-wrap: break-word;
     }
 
+    &.@{prefix}-table__header,
     .@{prefix}-table__header {
       width: fit-content;
       position: relative;
       z-index: 5;
-      background-color: @bg-color-secondarycontainer;
+      // background-color: @bg-color-secondarycontainer;
 
-      tr {
-        background-color: @bg-color-secondarycontainer;
-      }
+      // tr {
+      //   background-color: @bg-color-secondarycontainer;
+      // }
     }
 
     .@{prefix}-table__header {
@@ -343,7 +363,8 @@
 
   &:not(&--bordered) &__cell {
     &--selectable {
-      & + td {
+      & + td,
+      & + th {
         padding-left: 0;
       }
     }
@@ -384,7 +405,6 @@
     table {
       table-layout: fixed;
       min-width: 100%;
-      border-collapse: separate;
     }
 
     th,
@@ -392,67 +412,7 @@
       position: relative;
     }
 
-    .@{prefix}-table__cell--fixed-left,
-    .@{prefix}-table__cell--fixed-right {
-      z-index: 100;
-    }
-
-    .@{prefix}-table__cell--fixed-left-last {
-      &::before {
-        z-index: -1;
-        background-color: inherit;
-      }
-
-      &::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        content: "";
-        width: @table-fixed-cell-box-shadow-width;
-        transition: box-shadow .3s;
-        pointer-events: none;
-        z-index: -2;
-        transform: translateX(100%);
-      }
-    }
-
-    .@{prefix}-table__cell--fixed-right-first {
-      &::before {
-        z-index: -1;
-        background-color: inherit;
-      }
-
-      &::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        content: "";
-        width: @table-fixed-cell-box-shadow-width;
-        transition: box-shadow .3s;
-        pointer-events: none;
-        z-index: -2;
-        transform: translateX(-100%);
-      }
-    }
-
-    &.@{prefix}-table--has-fixed {
-      // 可向左滚动时，左边显示固定列显示阴影，右边同理
-      .@{prefix}-table__content--scrollable-to-left {
-
-        .@{prefix}-table__cell--fixed-left-last::after {
-          box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
-        }
-      }
-
-      .@{prefix}-table__content--scrollable-to-right {
-
-        .@{prefix}-table__cell--fixed-right-first::after {
-          box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
-        }
-      }
-    }
+    .t-table-cell-fixed-before-after();
   }
 
   // 列宽调整表头单元格
@@ -478,24 +438,6 @@
   // 复杂表头容器
   .@{prefix}-table__cell--title {
     display: flex;
-  }
-
-  // 表格行可以拖拽
-  &.@{prefix}-table__row--draggable {
-    tbody {
-      &.@{prefix}-table__body--dragging {
-        tr {
-          transition: transform .2s;
-          transform: translateY(0);
-        }
-      }
-      // 比如分页数据变化时，不需要过渡
-      tr {
-        &.v-leave-active {
-          display: none;
-        }
-      }
-    }
   }
 
   &__column-controller {
@@ -528,26 +470,32 @@
   }
 }
 
-.@{prefix}-table__cell--sortable {
-  position: relative;
-
-  .@{prefix}-table__cell--title {
-    display: flex;
-
-    & > div:first-child {
-      flex: 1;
-      text-align: inherit;
-    }
-
-    .@{prefix}-table__cell--filter {
-      margin-left: 10px;
-      text-align: center;
+// 表头右侧图标设计规范：有边框时，排序图标靠近右侧边框；无边框时，排序图标紧跟标题内容
+.@{prefix}-table--bordered {
+  .@{prefix}-table__cell--sortable,
+  .@{prefix}-table__cell--filterable {
+    .@{prefix}-table__cell--title {
+      justify-content: space-between;
     }
   }
+}
 
-  .@{prefix}-table__cell--sort-trigger {
-    width: 20px;
-    text-align: center;
+.@{prefix}-table th.@{prefix}-align-right .@{prefix}-table__cell--title {
+  justify-content: flex-end;
+}
+
+/**
+ * 有边框和无边框的图标排列不一样，需谨慎修改
+ * 无边框模式，图标依次紧跟标题
+ * 有边框模式，只有一个图标时，图标靠近边框右侧；有两个图标时，排序图标靠近标题，过滤图标靠近边框右侧
+ */
+.@{prefix}-table__cell--sort-trigger {
+  width: 20px;
+  text-align: center;
+  vertical-align: text-bottom;
+
+  svg {
+    vertical-align: initial;
   }
 }
 
@@ -594,7 +542,6 @@
   justify-content: center;
   height: 120px;
   color: @table-color-empty;
-  border-bottom: 1px solid @table-border-color;
 }
 
 .@{prefix}-table__filter-icon,
@@ -603,14 +550,35 @@
   background-color: transparent;
   display: inline-block;
   cursor: pointer;
+  vertical-align: text-bottom;
 
-  &:hover {
-    color: @table-icon-active-color;
+  > svg {
+    margin-top: -4px;
   }
 }
 
+// 当 Popup 去除包裹元素后，便不再需要这个样式
+.@{prefix}-popup__reference.@{prefix}-table__filter-icon {
+  margin-top: -4px;
+}
+
 .@{prefix}-table__sort-icon {
-  position: absolute;
+  // 排序图标临时效果，此处状态修改请慎重，需要背景色明确提醒用户点击区域（不建议将整个表头作为点击区域，还有过滤等其他图标）
+  .@{prefix}-is-focus,
+  &.@{prefix}-is-focus,
+  &:hover {
+    color: @table-icon-active-color;
+    background-color: @table-icon-active-bg-color;
+    border-radius: 50%;
+  }
+}
+
+.@{prefix}-table__filter-icon {
+  .@{prefix}-is-focus,
+  &.@{prefix}-is-focus,
+  &:hover {
+    color: @table-icon-active-color;
+  }
 }
 
 .@{prefix}-table__filter-pop {
@@ -627,14 +595,17 @@
       height: auto;
     }
 
+    .@{prefix}-checkbox-group {
+      display: block;
+    }
     .@{prefix}-checkbox,
     .@{prefix}-radio {
       display: block;
-      line-height: 34px;
+      line-height: 28px;
     }
 
     .@{prefix}-table__filter-pop-content-button {
-      border-top: 1px solid @table-border-color;
+      border-top: @border;
       padding: 16px;
 
       .t-button + .t-button {
@@ -650,16 +621,68 @@
 
 .@{prefix}-table__double-icons {
   display: inline-grid;
-  vertical-align: middle;
-  width: 14px;
+  height: @table-line-height;
+
+  // .@{prefix}-table__double-icons > .@{prefix}-popup__reference 是为了兼容 Popup 多余的包裹元素
+  .@{prefix}-table__sort-icon,
+  .@{prefix}-popup__reference {
+    height: @table-line-height-half;
+  }
+  .@{prefix}-table-sort-asc {
+    margin-top: -2px;
+  }
+  .@{prefix}-table-sort-desc {
+    margin-top: -6px;
+  }
+}
+
+// .@{prefix}-table__double-icons > .@{prefix}-popup__reference 是为了兼容 Popup 多余的包裹元素
+.@{prefix}-popup__reference {
+  .@{prefix}-table__filter-icon, .@{prefix}-table__sort-icon {
+    vertical-align: initial;
+  }
+}
+
+.@{prefix}-table__filter-icon-wrap {
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+}
+
+// 有边框模式，排序图标和过滤图标同时存在时，排序图标紧挨标题，过滤图标靠右侧边框
+.@{prefix}-table--bordered {
+  .@{prefix}-table__filter-icon-wrap {
+    justify-content: flex-end;
+  }
+  // 是否显示表格边框 和 对齐方式都决定着 排序图标 和 筛选图标的排列位置
+  .@{prefix}-table__cell--sortable.@{prefix}-table__cell--filterable {
+    .@{prefix}-table__filter-icon-wrap {
+      justify-content: space-between;
+      flex: 1;
+    }
+  }
+}
+
+// 是否显示表格边框 和 对齐方式都决定着 排序图标 和 筛选图标的排列位置
+.@{prefix}-table {
+  .@{prefix}-align-center {
+    .@{prefix}-table__cell--sortable,
+    .@{prefix}-table__cell--filterable {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
 }
 
 .@{prefix}-table__expand-box {
-  padding: 10px 8px;
+  padding: @table-td-padding-vertical-top @table-td-padding-horizontal
+    @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   display: inline-grid;
   vertical-align: middle;
   color: @table-icon-default-color;
   cursor: pointer;
+  transition: all .2s ease 0s;
+  align-items: center;
 
   &:hover {
     color: @table-icon-active-color;
@@ -684,7 +707,7 @@
   display: flex;
   justify-content: flex-end;
   padding: 16px;
-  border-top: 1px solid @table-border-color;
+  border-top: @border;
   > .@{prefix}-button + .@{prefix}-button {
     margin-left: 8px;
   }
@@ -703,4 +726,260 @@
   > .@{prefix}-button {
     margin-left: 8px;
   }
+}
+
+.@{prefix}-table--layout-fixed {
+  table-layout: fixed;
+}
+
+.@{prefix}-table--layout-auto {
+  table-layout: auto;
+}
+
+.@{prefix}-table__ellipsis {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.@{prefix}-table__content {
+  overflow: auto;
+}
+
+.@{prefix}-table-td--ellipsis {
+  .@{prefix}-popup__reference {
+    width: 100%;
+    display: inline;
+  }
+}
+
+// 可向左滚动时，左边显示固定列显示阴影，右边同理
+.@{prefix}-table__content--scrollable-to-left {
+
+  .@{prefix}-table__cell--fixed-left-last::after {
+    box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
+  }
+}
+
+.@{prefix}-table__content--scrollable-to-right {
+
+  .@{prefix}-table__cell--fixed-right-first::after {
+    box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
+  }
+}
+
+.@{prefix}-table--affixed-header {
+  .@{prefix}-table__content {
+    th.@{prefix}-table__cell--fixed-left-last::after,
+    th.@{prefix}-table__cell--fixed-right-first::after {
+      box-shadow: none;
+    }
+  }
+}
+
+.@{prefix}-table__scroll-bar-divider {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  border-right: @border;
+  z-index: @table-right-scrollbar-divider;
+}
+
+.@{prefix}-table__footer,
+.@{prefix}-table__header.@{prefix}-table__header--fixed {
+  position: sticky;
+  z-index: @table-fixed-header-z-index;
+}
+
+.@{prefix}-table__footer {
+  > tr {
+    background-color: @bg-color-secondarycontainer;
+  }
+}
+.@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
+  > tr > th {
+    background-color: @bg-color-secondarycontainer;
+  }
+}
+
+.@{prefix}-table__row--fixed-top,
+.@{prefix}-table__row--fixed-bottom {
+  position: sticky;
+  z-index: @table-fixed-row-z-index;
+}
+
+// 表尾冻结的第一行
+.@{prefix}-table__row--fixed-bottom-first > td {
+  border-top: @border;
+}
+
+// 冻结表尾行时，最后一行非冻结行去除下边框
+.@{prefix}-table--bordered .@{prefix}-table__content {
+  .@{prefix}-table__row--without-border-bottom > td {
+    border-bottom: 0;
+  }
+}
+
+.@{prefix}-table--bordered {
+  tbody > tr:last-child > td,
+  tfoot > tr:last-child > td {
+    border-bottom: 0;
+  }
+
+  tfoot > tr:first-child > td {
+    border-top: @border;
+  }
+}
+
+.@{prefix}-table__header.@{prefix}-table__header--fixed {
+  top: 0;
+}
+
+.@{prefix}-table__footer.@{prefix}-table__footer--fixed {
+  bottom: 0;
+}
+
+.@{prefix}-table--column-fixed {
+
+  .t-table-cell-fixed-before-after();
+  .@{prefix}-table__cell--fixed-left,
+  .@{prefix}-table__cell--fixed-right {
+    position: sticky;
+  }
+
+  .@{prefix}-table__cell--fixed-left {
+    z-index: @table-fixed-column-z-index;
+  }
+  // 层级加 1 ，是为了多级表头中，固定左侧列和右侧列同时出现，且交叉显示的情况
+  .@{prefix}-table__cell--fixed-right {
+    z-index: @table-fixed-column-z-index + 1;
+  }
+}
+
+.@{prefix}-table__empty-row {
+  > td {
+    padding: 0;
+    border: 0;
+  }
+}
+
+.@{prefix}-table:not(.@{prefix}-table--bordered) .@{prefix}-table__header.@{prefix}-table--bordered {
+  > tr:first-child > th {
+    border-top: @border;
+  }
+}
+
+.@{prefix}-table--multiple-header {
+  .@{prefix}-table__header {
+    th.@{prefix}-table__header-th--bordered {
+      border-left-width: 1px;
+    }
+  }
+}
+
+.@{prefix}-table__header.@{prefix}-table__header--multiple > tr {
+  background-color: @bg-color-container;
+}
+
+.@{prefix}-table__tree-op-icon {
+  margin-right: @spacer-2;
+  cursor: pointer;
+
+  &:hover {
+    color: @table-icon-active-color;
+  }
+}
+
+// 虚拟滚动游标
+.@{prefix}-table__virtual-scroll-cursor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  transition: transform .2s;
+}
+
+.@{prefix}-table__virtual-scroll-header {
+  position: absolute;
+  z-index: @table-fixed-header-virtual-scroll-z-index;
+  left: 0;
+  top: 0;
+}
+
+.@{prefix}-table__affixed-header-elm {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  z-index: @table-fixed-header-virtual-scroll-z-index;
+  transition: opacity .15s linear;
+  opacity: 1;
+}
+
+// 为了滚动穿透，需要取消上层表头的全部事件
+.@{prefix}-table__affixed-header-elm {
+  // 会导致排序图标、过滤图标等无法点击、也无法复制文本，因此需要在特定的位置，恢复点击
+  pointer-events: none;
+}
+
+// 恢复全部事件
+.@{prefix}-table__th-cell-inner {
+  pointer-events: all;
+}
+
+.@{prefix}-table--bordered .@{prefix}-table__affixed-header-elm {
+  border: @border;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.@{prefix}-table--multiple-header.@{prefix}-table--bordered {
+  .@{prefix}-table__affixed-header-elm {
+    border-right: 0;
+  }
+}
+
+.@{prefix}-is-hidden {
+  display: none;
+}
+
+.@{prefix}-positive-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.@{prefix}-negative-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.@{prefix}-table__expanded-row > td,
+.@{prefix}-table__row--full > td {
+  padding: 0;
+}
+
+/** @{prefix}-table__row--full 和 @{prefix}-table__row-full-element 同时存在，是为了保证 固定列时，当前行不随内容进行横向滚动 */
+.@{prefix}-table__row-full-element {
+  padding: @table-cell-padding;
+}
+
+.@{prefix}-table__row-full-inner {
+  position: sticky;
+  left: 0;
+}
+
+.@{prefix}-table__row-full-inner:not(.@{prefix}-table__empty) {
+  display: inline-block;
+}
+
+.@{prefix}-table__tree-col--inline {
+  display: inline;
+}
+
+.@{prefix}-table--full-height {
+  height: 100%;
+}
+
+.@{prefix}-loading__parent .@{prefix}-table__content {
+  min-height: 200px;
+}
+
+.@{prefix}-table__handle-draggable:hover {
+  cursor: move;
 }

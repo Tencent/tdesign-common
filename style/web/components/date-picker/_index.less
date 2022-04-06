@@ -20,7 +20,7 @@
   }
 
   .@{prefix}-is-active {
-    > .t-input {
+    .t-input {
       border-color: @datepicker-input-border-color-active;
       box-shadow: @datepicker-input-shadow;
     }
@@ -105,7 +105,7 @@
       display: block;
       width: @datepicker-cell-width-default;
       line-height: @datepicker-cell-width-default;
-      border-radius: 50%;
+      border-radius: @datepicker-cell-border-radius;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -134,7 +134,7 @@
         content: "";
         height: 6px;
         width: 6px;
-        border-radius: 50%;
+        border-radius: @datepicker-cell-border-radius;
         background-color: @datepicker-now-color;
         position: relative;
         z-index: 2;
@@ -189,16 +189,16 @@
     &-start {
 
       .@{prefix}-date-picker__cell-wrapper {
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
+        border-top-left-radius: @datepicker-cell-border-radius;
+        border-bottom-left-radius: @datepicker-cell-border-radius;
       }
     }
 
     &-end {
 
       .@{prefix}-date-picker__cell-wrapper {
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 50%;
+        border-top-right-radius: @datepicker-cell-border-radius;
+        border-bottom-right-radius: @datepicker-cell-border-radius;
       }
     }
   }
@@ -206,16 +206,16 @@
   &--last-day-of-month {
 
     .@{prefix}-date-picker__cell-wrapper {
-      border-top-right-radius: 50%;
-      border-bottom-right-radius: 50%;
+      border-top-right-radius: @datepicker-cell-border-radius;
+      border-bottom-right-radius: @datepicker-cell-border-radius;
     }
   }
 
   &--first-day-of-month {
 
     .@{prefix}-date-picker__cell-wrapper {
-      border-top-left-radius: 50%;
-      border-bottom-left-radius: 50%;
+      border-top-left-radius: @datepicker-cell-border-radius;
+      border-bottom-left-radius: @datepicker-cell-border-radius;
     }
   }
 
@@ -223,7 +223,7 @@
 
     .@{prefix}-date-picker__cell-wrapper {
       cursor: not-allowed;
-      border-radius: 50%;
+      border-radius: @datepicker-cell-border-radius;
       background-color: @datepicker-disabled-background;
       border-color: @datepicker-disabled-background;
 
@@ -351,15 +351,15 @@
     // 每列开头和结尾均为圆形边框
     &:first-child {
       .@{prefix}-date-picker__cell-wrapper {
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
+        border-top-left-radius: @datepicker-cell-border-radius;
+        border-bottom-left-radius: @datepicker-cell-border-radius;
       }
     }
 
     &:last-child {
       .@{prefix}-date-picker__cell-wrapper {
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 50%;
+        border-top-right-radius: @datepicker-cell-border-radius;
+        border-bottom-right-radius: @datepicker-cell-border-radius;
       }
     }
   }

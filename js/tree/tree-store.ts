@@ -75,6 +75,7 @@ export class TreeStore {
       onLoad: null,
       onReflow: null,
       onUpdate: null,
+      allowFoldNodeOnFilter: false,
       ...options,
     };
     this.config = config;
@@ -360,7 +361,7 @@ export class TreeStore {
       // 检查节点是否有被过滤，锁定路径节点
       // 在此之前要遍历节点生成一个经过排序的节点数组
       // 以便于优化锁定检查算法
-      this.lockFilterPathNodes();
+      if (!this.config?.allowFoldNodeOnFilter) this.lockFilterPathNodes();
 
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {

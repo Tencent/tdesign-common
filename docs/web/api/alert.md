@@ -2,6 +2,7 @@
 title: Alert 警告
 description: 警告条用于承载需要用户注意的信息。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: message
 ---
 
