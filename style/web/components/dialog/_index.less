@@ -141,6 +141,10 @@
     z-index: @z-index-dialog;
   }
 
+   &.@{prefix}-dialog__ctx--absolute {
+    position: absolute;
+  }
+
   &.t-is-visable {
     visibility: visible;
   }
@@ -180,6 +184,10 @@
     &.@{prefix}-dialog--fixed {
       position: fixed;
       z-index: @z-index-dialog;
+    }
+
+    &.@{prefix}-dialog--absolute {
+      position: absolute;
     }
 
     &--top {
