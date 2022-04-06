@@ -62,7 +62,7 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="./components/tab-bar">
+    <a class="item" href="./components/tabbar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-tabbar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-tabbar-dark.png" />
       <p class="name">TabBar 标签栏</p>
