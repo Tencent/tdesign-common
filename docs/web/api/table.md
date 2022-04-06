@@ -101,12 +101,25 @@ spline: data
 
 ### 可进行列配置的表格
 
-自定义设置需要展示的列，可以通过 `columnController` 字段来设置，其中：
-- `displayColumns` 表示当前显示列，支持非受控属性 `defaultDisplayColumns`
-- `onDisplayColumnsChange` 会在当前显示列变化时触发
+自定义设置需要展示的列，可以通过 `columnController` 字段来设置，更多细节可产看 API 文档中的 `TableColumnController` 描述。
+
+- `displayColumns` 表示当前显示列，支持非受控属性 `defaultDisplayColumns`。
+- `onDisplayColumnsChange` 会在列配置确认后触发。
+- `onColumnChange` 会在列配置选择时（确认之前）触发。
+- `columnController.placement` 用于调整列配置按钮基于表格的放置位置，共有 4 种位置：左上角、右上角、左下角、右下角。
 - `columnController.fields` 用于设置哪些列被允许控制显示或隐藏，不传表示全部列可以进行显示或隐藏控制。
-- `columnController.displayType` 用来设置自定义列的内容展示的方式，有 `auto-width` 和 `fixed-width` 可选。
-- 支持透传 CheckboxGroup 和 Dialog 组件等全部属性。
+- `columnController.displayType` 用来设置列配置弹窗中，列字段排列方式，定宽或自动宽度。可选值： `auto-width` 和 `fixed-width`。
+- 支持透传 `CheckboxGroup` 组件全部属性，`columnController.checkboxGroupProps` 用于控制弹框中的复现框相关功能。
+- 支持透传 `Dialog` 组件全部属性，`columnController.dialogProps` 用于调整列配置弹框相关功能，如：防止滚动穿透。
+- 支持透传 `Button` 组件全部属性，`columnController.buttonProps` 用于控制列配置按钮的全部特性，如：按钮颜色和文本。
+
+#### 示例一：包含配置按钮的列配置功能示例
+
+{{ custom-col-button }}
+
+#### 示例二：不包含配置按钮的列配置功能示例
+
+使用 `columnControllerVisible` 控制是否显示列配置弹框，`onColumnControllerVisibleChange` 用于监听相关变化。一般应用于需要完全自定义列配置按钮内容和位置的场景。
 
 {{ custom-col }}
 
@@ -232,11 +245,19 @@ spline: data
 
 ### 可拖拽排序的表格
 
+- `dragSort='row'` 用于设置表格为行拖拽排序。
+- `dragSort='col'` 用于设置表格为列拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `sortOnRowDraggable` 用于行拖拽排序。已废弃，请更为使用 `dragSort='row'`，兼容支持。
+
 #### 行拖拽排序
+
+设置参数 `dragSort='row'` 即可。
 
 {{ drag-sort }}
 
 #### 列拖拽排序
+
+设置参数 `dragSort='col'` 的同时，还需要添加手柄列：`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
 
 {{ drag-col-sort }}
 

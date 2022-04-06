@@ -6,6 +6,10 @@ tdDocTabs: [{ tab: 'demo', name: '示例' }, { tab: 'api', name: 'API' }]
 spline: 'explain'
 ---
 
+### 全局配置
+
+{{ global }}
+
 ### Pagination 分页
 
 {{ pagination }}
