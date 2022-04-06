@@ -219,6 +219,21 @@
     }
   }
 
+  &-preview {
+    flex-shrink: 0;
+    margin-left: 8px;
+    width: @color-picker-gradient-preview-width;
+    height: @color-picker-gradient-preview-height;
+    border-radius: @color-picker-gradient-preview-radius;
+    overflow: hidden;
+
+    .preview-inner {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   .gradient-thumbs {
     position: absolute;
     width: 100%;
@@ -383,6 +398,18 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    &--actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      font-size: 0;
+      .@{prefix}-color-picker__icon {
+        width: 16px;
+        height: 16px;
+        margin-left: @color-picker-margin;
+      }
     }
 
     &--remove {
