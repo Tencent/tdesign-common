@@ -11,7 +11,6 @@
   line-height: @tree-node-item-line-height;
   font-size: @tree-font-size;
   color: @tree-node-text-color;
-  will-change: height;
 
   // 禁用态颜色处理
   &.@{prefix}-is-disabled {
@@ -22,7 +21,6 @@
     }
 
     .@{prefix}-tree__item {
-
       &.@{prefix}-is-active {
         background-color: @tree-node-bg-color-hover;
         color: @tree-disabled-color;
@@ -41,21 +39,17 @@
   &__item {
     --level: 0;
 
+    will-change: opacity, height;
     position: relative;
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    padding: 4px 0 4px @tree-node-item-padding-left;
+    padding: 0 0 0 @tree-node-item-padding-left;
     height: @tree-node-item-height;
-    margin-bottom: @tree-node-item-margin-bottom;
     cursor: default;
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
-
-    & + .@{prefix}-tree__item {
-      margin-top: @tree-node-item-spacer;
-    }
 
     .@{prefix}-icon,
     .@{prefix}-loading {
@@ -110,7 +104,7 @@
     left: @tree-line-position-left;
     bottom: @tree-line-position-bottom;
     width: @tree-line-width;
-    height: 40px;
+    height: @tree-node-item-height;
     pointer-events: none;
 
     --level: 0;
@@ -125,7 +119,7 @@
     bottom: 0;
     left: 0;
     display: block;
-    height: 36px;
+    height: @tree-node-item-height;
     width: @tree-line-width-before;
     border-left: 1px solid var(--color);
     border-bottom: 1px solid var(--color);
@@ -136,7 +130,7 @@
   }
 
   &__line--leaf::before {
-    width: 14px;
+    width: @tree-line-width-leaf;
   }
 
   &--fx {
@@ -236,19 +230,11 @@
   &__item--visible {
     opacity: 1;
     height: @tree-node-item-height;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  &__item + &__item--hidden {
-    margin-top: 0;
   }
 
   &__item--hidden {
     opacity: 0;
     height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
     overflow: hidden;
   }
 }
@@ -268,10 +254,7 @@
   .@{prefix}-tree__item--visible {
     transition:
       opacity @tree-node-transition-time linear @tree-node-transition-time,
-      height @tree-node-transition-time linear 0s,
-      padding-top @tree-node-transition-time linear 0s,
-      padding-bottom @tree-node-transition-time linear 0s,
-      margin-top @tree-node-transition-time linear 0s;
+      height @tree-node-transition-time linear 0s;
   }
 
   // 节点隐藏动画
@@ -279,10 +262,7 @@
     animation: none;
     transition:
       opacity @tree-node-transition-time linear 0s,
-      height @tree-node-transition-time linear @tree-node-transition-time,
-      padding-top @tree-node-transition-time linear @tree-node-transition-time,
-      padding-bottom @tree-node-transition-time linear @tree-node-transition-time,
-      margin-top @tree-node-transition-time linear @tree-node-transition-time;
+      height @tree-node-transition-time linear @tree-node-transition-time;
   }
 }
 
