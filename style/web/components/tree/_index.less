@@ -39,6 +39,8 @@
   }
 
   &__item {
+    --level: 0;
+
     position: relative;
     display: flex;
     align-items: center;
@@ -72,7 +74,6 @@
     }
 
     .@{prefix}-tree__icon--default {
-
       .@{prefix}-icon {
         transition: color, transform @anim-time-fn-easing @anim-duration-base;
         transform: rotate(0);
@@ -80,13 +81,11 @@
     }
 
     &--open {
-
       .@{prefix}-icon {
         color: @tree-node-icon-color-active;
       }
 
       .@{prefix}-tree__icon--default {
-
         .@{prefix}-icon {
           transform: rotate(90deg);
         }
@@ -96,8 +95,6 @@
     &--clickable {
       cursor: pointer;
     }
-
-    --level: 0;
   }
 
   &--block-node &__label {
@@ -178,6 +175,7 @@
     flex: auto;
     line-height: @tree-node-item-label-height;
     flex-wrap: nowrap;
+    white-space: nowrap;
     margin-left: 4px;
     padding: 0 4px;
     border-radius: @border-radius;
