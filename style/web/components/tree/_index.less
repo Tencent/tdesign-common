@@ -100,17 +100,17 @@
   }
 
   &__line {
+    --level: 0;
+    --color: @tree-node-icon-line-color;
+    --space: @tree-node-padding-basic;
+    --iconSize: @icon-default;
+
     position: absolute;
     left: @tree-line-position-left;
     bottom: @tree-line-position-bottom;
     width: @tree-line-width;
     height: @tree-node-item-height;
     pointer-events: none;
-
-    --level: 0;
-    --color: @tree-node-icon-line-color;
-    --space: @tree-node-padding-basic;
-    --iconSize: @icon-default;
   }
 
   &__line::before {
@@ -131,13 +131,6 @@
 
   &__line--leaf::before {
     width: @tree-line-width-leaf;
-  }
-
-  &--fx {
-
-    .@{prefix}-icon-chevron-right {
-      transition: color, transform @tree-node-animation-time;
-    }
   }
 
   // 默认图标
@@ -166,6 +159,8 @@
   }
 
   &__label {
+    --ripple-color: @bg-color-container-active;
+
     flex: auto;
     line-height: @tree-node-item-label-height;
     flex-wrap: nowrap;
@@ -189,8 +184,6 @@
     &--strictly {
       flex: none;
     }
-
-    --ripple-color: @bg-color-container-active;
   }
 
   .@{prefix}-is-active &__label {
