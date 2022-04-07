@@ -182,8 +182,7 @@
     cursor: pointer;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
-    &.@{prefix}-is-checked,
-    &.@{prefix}-is-active {
+    &.@{prefix}-is-checked {
       font-weight: 500;
       color: @tree-node-text-color-active;
       background-color: @tree-node-bg-color-active;
@@ -198,6 +197,12 @@
     }
 
     --ripple-color: @bg-color-container-active;
+  }
+
+  .@{prefix}-is-active &__label {
+    font-weight: 500;
+    color: @tree-node-text-color-active;
+    background-color: @tree-node-bg-color-active;
   }
 
   &__space {
