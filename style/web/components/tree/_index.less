@@ -22,12 +22,12 @@
 
     .@{prefix}-tree__item {
       &.@{prefix}-is-active {
-        background-color: @tree-node-bg-color-hover;
+        background-color: @tree-node-bg-hover-color;
         color: @tree-disabled-color;
       }
 
       .@{prefix}-icon {
-        color: @tree-icon-color-disabled;
+        color: @tree-icon-disabled-color;
       }
     }
   }
@@ -76,7 +76,7 @@
 
     &--open {
       .@{prefix}-icon {
-        color: @tree-node-icon-color-active;
+        color: @tree-node-icon-active-color;
       }
 
       .@{prefix}-tree__icon--default {
@@ -96,7 +96,7 @@
   }
 
   &--hoverable &__label:not(.@{prefix}-is-active):not(.@{prefix}-is-checked):hover {
-    background-color: @tree-node-bg-color-hover;
+    background-color: @tree-node-bg-hover-color;
   }
 
   &__line {
@@ -120,17 +120,17 @@
     left: 0;
     display: block;
     height: @tree-node-item-height;
-    width: @tree-line-width-before;
+    width: @tree-line-before-width;
     border-left: 1px solid var(--color);
     border-bottom: 1px solid var(--color);
   }
 
   &__line--first::before {
-    height: @tree-line-height-first;
+    height: @tree-line-first-height;
   }
 
   &__line--leaf::before {
-    width: @tree-line-width-leaf;
+    width: @tree-line-leaf-width;
   }
 
   // 默认图标
@@ -146,11 +146,11 @@
     transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
 
     &:not(:empty):hover {
-      background-color: @tree-node-bg-color-hover;
+      background-color: @tree-node-bg-hover-color;
     }
 
     .t-icon-loading-blue {
-      color: @tree-node-icon-color-active;
+      color: @tree-node-icon-active-color;
     }
   }
 
@@ -173,8 +173,8 @@
 
     &.@{prefix}-is-checked {
       font-weight: 500;
-      color: @tree-node-text-color-active;
-      background-color: @tree-node-bg-color-active;
+      color: @tree-node-text-active-color;
+      background-color: @tree-node-bg-active-color;
     }
 
     &::selection {
@@ -188,8 +188,8 @@
 
   .@{prefix}-is-active &__label {
     font-weight: 500;
-    color: @tree-node-text-color-active;
-    background-color: @tree-node-bg-color-active;
+    color: @tree-node-text-active-color;
+    background-color: @tree-node-bg-active-color;
   }
 
   &__space {

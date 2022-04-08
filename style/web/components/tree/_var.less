@@ -14,27 +14,23 @@
 // 颜色
 @tree-node-text-color: @text-color-primary;
 @tree-node-empty-text-color: @text-color-disabled;
-@tree-node-bg-color-hover: @bg-color-container-hover;
-@tree-node-text-color-active: @text-color-primary;
-@tree-node-icon-color-active: @text-color-brand;
-@tree-node-bg-color-active: @brand-color-light;
+@tree-node-bg-hover-color: @bg-color-container-hover;
+@tree-node-text-active-color: @text-color-primary;
+@tree-node-icon-active-color: @text-color-brand;
+@tree-node-bg-active-color: @brand-color-light;
 @tree-node-icon-color: @text-color-secondary;
 @tree-node-icon-line-color: @border-level-1-color;
 @tree-disabled-color: @border-level-2-color;
-@tree-icon-color-disabled: @tree-node-icon-color;
+@tree-icon-disabled-color: @tree-node-icon-color;
 
 //字体
 @tree-font-size: @font-size-base;
 
 // 间距
 @tree-node-padding-basic: 24px;
-@tree-node-icon-margin-right: 4px;
-@tree-node-item-margin-bottom: 0;
 @tree-node-item-padding-left: calc(@tree-node-padding-basic * var(--level) + 8px);
 @tree-line-position-bottom: 21px;
 @tree-line-position-left: calc(@tree-node-padding-basic * var(--level) - 9px);
-@tree-node-item-checkbox-padding-top: 1px;
-@tree-node-item-click-color: @bg-color-container-active;
 
 //尺寸
 @tree-line-width: 1px;
@@ -42,10 +38,9 @@
 @tree-node-item-label-height: 28px;
 @tree-node-icon-size: @icon-default;
 @tree-node-item-line-height: 42px;
-@tree-line-width-before: 16px;
-@tree-line-width-leaf: 32px;
-@tree-line-height-first: 32px;
-@tree-line-height-leaf: 32px;
+@tree-line-before-width: 16px;
+@tree-line-leaf-width: 32px;
+@tree-line-first-height: 32px;
 
 // 动画
 @tree-node-animation-time: 300ms;
