@@ -2,6 +2,7 @@
 title: Button 按钮
 description: 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: base
 ---
 

@@ -2,6 +2,7 @@
 title: DatePicker 日期选择器
 description: 用于选择某一具体日期或某一段日期区间。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: form
 ---
 
