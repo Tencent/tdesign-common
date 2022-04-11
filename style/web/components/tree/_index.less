@@ -36,6 +36,15 @@
     color: @tree-node-empty-text-color;
   }
 
+  &__branch {
+    display: block;
+  }
+
+  &__children {
+    // 用于多行 label 计算高度
+    --hscale: 1;
+  }
+
   &__item {
     // 用于树结构缩进计算
     --level: 0;
@@ -272,6 +281,21 @@
 
   // 节点隐藏动画
   .@{prefix}-tree__item--hidden {
+    animation: none;
+    transition:
+      opacity @tree-node-transition-time linear 0s,
+      max-height @tree-node-transition-time linear @tree-node-transition-time;
+  }
+
+  // 子节点展示动画
+  .@{prefix}-tree__children--visible {
+    transition:
+      opacity @tree-node-transition-time linear @tree-node-transition-time,
+      max-height @tree-node-transition-time linear 0s;
+  }
+
+  // 子节点隐藏动画
+  .@{prefix}-tree__children--hidden {
     animation: none;
     transition:
       opacity @tree-node-transition-time linear 0s,
