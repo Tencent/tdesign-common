@@ -12,7 +12,7 @@
   border-radius: @card-border-radius;
   background-color: @card-background;
   color: @text-color-primary;
-  transition: box-shadow .1s ease-in-out;
+  transition: box-shadow @anim-duration-base ease-in-out;
 }
 
 .@{prefix}-card--bordered {
@@ -37,13 +37,14 @@
 .@{prefix}-card__body {
   display: flow-root;
   padding: @card-body-padding-vertical @card-body-padding-horizontal;
+  line-height: 22px;
 }
 
 .@{prefix}-card__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: @card-header-padding-vertical @card-header-padding-horizontal;
+  padding: @card-header-padding-vertical @card-header-padding-horizontal 0 @card-header-padding-horizontal;
 }
 
 .@{prefix}-card__footer {
@@ -57,7 +58,7 @@
   }
 
   .@{prefix}-card__header {
-    padding: @card-header-padding-vertical-s @card-header-padding-horizontal-s;
+    padding: @card-header-padding-vertical-s @card-header-padding-horizontal-s 0 @card-header-padding-horizontal-s;
   }
 
   .@{prefix}-card__footer {

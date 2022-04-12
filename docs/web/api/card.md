@@ -45,7 +45,6 @@ spline: data
 
 ### 4. 同时带 Header 和 Footer 的卡片
 
-
 #### 样式一
 
 {{ footer }}
@@ -66,16 +65,6 @@ spline: data
 
 ## 组件状态
 
-### 1. hover态
+### 1. hover 态
 
 {{ hover }}
-
-## 组件大小
-
-### 1. 尺寸：默认
-
-{{ base }}
-
-### 2. 尺寸：小
-
-{{ small }}
