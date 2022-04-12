@@ -19,7 +19,7 @@
   }
 
   &__item {
-    min-height: 56px;
+    min-height: @form-item-min-height;
     padding-bottom: @form-item-padding-bottom;
   }
 
@@ -90,16 +90,6 @@
     .input-status(success);
   }
 
-  &__help {
-    height: auto;
-    min-height: @form-item-help-line-height;
-    line-height: @form-item-help-line-height;
-    font-size: @form-item-help-font-size;
-    display: inline-block;
-    color: @@fontColor;
-    @fontColor: "form-color-help";
-  }
-
   &__status {
     display: flex;
     margin-left: @form-status-margin-left;
@@ -141,7 +131,7 @@
   min-height: @form-item-help-line-height;
   line-height: @form-item-help-line-height;
   font-size: @form-item-help-font-size;
-  color: @form-color-help;
+  color: @form-color-extra;
 }
 
 // 输入框状态
