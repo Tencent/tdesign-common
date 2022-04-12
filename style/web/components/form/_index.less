@@ -9,22 +9,32 @@
 .@{prefix}-form {
   font-size: @form-font-size;
 
+  &:not(.@{prefix}-form-inline) {
+
+    .@{prefix}-form__item {
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+  }
+
   &__item {
-    margin-bottom: @form-item-margin-bottom;
+    min-height: 56px;
+    padding-bottom: @form-item-padding-bottom;
   }
 
   &__label {
     float: left;
     padding-right: @form-label-padding-right;
     vertical-align: middle;
-    line-height: @form-item-height;
+    line-height: @form-item-control-height;
     color: @form-color-label;
     box-sizing: border-box;
     white-space: nowrap;
 
     &--top {
       float: none;
-      min-height: @form-item-height;
+      min-height: @form-item-control-height;
     }
 
     &--left {
@@ -55,13 +65,18 @@
   }
 
   &__controls {
-    min-height: @form-item-height;
+    min-height: @form-item-control-height;
     display: flow-root;
 
     &-content {
       display: flex;
       align-items: center;
-      min-height: @form-item-height;
+      min-height: @form-item-control-height;
+    }
+
+    // formItem 嵌套情况无间距
+    .@{prefix}-form__item {
+      margin-right: @form-item-margin-right-inline;
     }
   }
 
