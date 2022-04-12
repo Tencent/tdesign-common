@@ -22,11 +22,6 @@
     margin-bottom: @form-item-margin-bottom;
   }
 
-  &__item-with-help,
-  &__item-with-extra {
-    margin-bottom: 0;
-  }
-
   &__label {
     float: left;
     padding-right: @form-label-padding-right;
@@ -96,7 +91,7 @@
 
   &__help {
     height: auto;
-    min-height: @form-item-margin-bottom;
+    min-height: @form-item-help-line-height;
     line-height: @form-item-help-line-height;
     font-size: @form-item-help-font-size;
     display: inline-block;
@@ -141,7 +136,7 @@
 
 .@{prefix}-input__extra {
   height: auto;
-  min-height: @form-item-margin-bottom;
+  min-height: @form-item-help-line-height;
   line-height: @form-item-help-line-height;
   font-size: @form-item-help-font-size;
   display: inline-block;
