@@ -9,15 +9,6 @@
 .@{prefix}-form {
   font-size: @form-font-size;
 
-  &:not(.@{prefix}-form-inline) {
-
-    .@{prefix}-form__item {
-      &:last-of-type {
-        margin: 0;
-      }
-    }
-  }
-
   &__item {
     margin-bottom: @form-item-margin-bottom;
   }
@@ -71,11 +62,6 @@
       display: flex;
       align-items: center;
       min-height: @form-item-height;
-    }
-
-    // formItem 嵌套情况无间距
-    .@{prefix}-form__item {
-      margin: 0 @form-item-margin-right-inline 0 0;
     }
   }
 
@@ -140,6 +126,7 @@
   line-height: @form-item-help-line-height;
   font-size: @form-item-help-font-size;
   display: inline-block;
+  color: @form-color-help;
 }
 
 // 输入框状态
