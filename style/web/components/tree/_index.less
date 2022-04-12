@@ -43,6 +43,8 @@
   &__children {
     // 用于多行 label 计算高度
     --hscale: 1;
+
+    will-change: opacity, max-height;
   }
 
   &__item {
@@ -255,6 +257,17 @@
   }
 
   &__item--hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &__children--visible {
+    opacity: 1;
+    max-height: @tree-node-item-origin-height;
+  }
+
+  &__children--hidden {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
