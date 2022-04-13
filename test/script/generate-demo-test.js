@@ -26,8 +26,13 @@ const CONFIG = {
     targetPath: path.resolve(__dirname, resolveCwd('test/unit')),
     defaultTemplate: 'import { mount } from \'@vue/test-utils\';',
   },
-  'Vue(PC)': {
+  'tdesign-vue-next': {
     sourcePath: path.resolve(__dirname, resolveCwd('examples')),
+    targetPath: path.resolve(__dirname, resolveCwd('test/unit')),
+    defaultTemplate: 'import { mount } from \'@vue/test-utils\';',
+  },
+  'tdesign-react': {
+    sourcePath: path.resolve(__dirname, resolveCwd('src/examples')),
     targetPath: path.resolve(__dirname, resolveCwd('test/unit')),
     defaultTemplate: 'import { mount } from \'@vue/test-utils\';',
   },
