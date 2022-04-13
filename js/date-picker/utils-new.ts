@@ -330,9 +330,7 @@ export function flagActive(data: any[], { ...args }: any) {
   if (!end) {
     return data.map((row: any[]) => row.map((item: DateTime) => {
       const _item = item;
-      if (start) {
-        _item.active = isSame(item.value, start, type);
-      }
+      _item.active = start && isSame(item.value, start, type);
       return _item;
     }));
   }
@@ -340,10 +338,12 @@ export function flagActive(data: any[], { ...args }: any) {
   return data.map((row: any[]) => row.map((item: DateTime) => {
     const _item = item;
     const date = item.value;
+
+    const isStart = start && isSame(start, date, type);
+    const isEnd = end && isSame(end, date, type);
+    _item.active = isStart || isEnd;
+
     if (start && end) {
-      const isStart = isSame(start, date, type);
-      const isEnd = isSame(end, date, type);
-      _item.active = isStart || isEnd;
       _item.highlight = isBetween(date, { start, end });
       _item.startOfRange = isStart;
       _item.endOfRange = isEnd;

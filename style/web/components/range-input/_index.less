@@ -61,8 +61,7 @@
       box-shadow: none;
       font-size: inherit;
 
-      &:hover,
-      &.@{prefix}-is-focused {
+      &:hover {
         background-color: #e7e7e7;
       }
 
@@ -120,5 +119,19 @@
 
   > .@{prefix}-icon {
     color: @range-input-inner-suffix-icon-color;
+  }
+}
+
+.@{prefix}-range-input-popup {
+  &--visible {
+    .@{prefix}-range-input {
+      border-color: @range-input-border-color-default-hover;
+
+      .@{prefix}-input {
+        &.@{prefix}-is-focused {
+          background-color: #e7e7e7;
+        }
+      }
+    }
   }
 }

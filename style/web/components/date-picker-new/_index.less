@@ -56,19 +56,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: @spacer-l;
   width: 100%;
 
   &-controller {
     display: inline-flex;
-    gap: 8px;
+    gap: @spacer;
 
     &--month {
-      width: 80px;
+      width: @datepicker-month-controller-width;
     }
     
     &--year {
-      width: 78px;
+      width: @datepicker-year-controller-width;
     }
   }
 }
@@ -122,7 +122,7 @@
   display: flex;
   gap: @datepicker-presets-gap;
   white-space: nowrap;
-  min-width: 100px;
+  min-width: @datepicker-presets-min-width;
 
   .@{prefix}-button {
     cursor: pointer;
@@ -150,7 +150,7 @@
   flex-direction: column;
   width: 100%;
   padding: @spacer-l;
-  gap: 12px;
+  gap: @spacer-l;
   max-width: @datepicker-panel-max-width;
 }
 
@@ -163,7 +163,7 @@
       tbody {
         width: 100%;
         display: flex;
-        gap: 16px;
+        gap: @spacer-2;
         flex-direction: column;
 
         tr {
@@ -183,12 +183,26 @@
   }
 
   .@{prefix}-date-picker__cell-inner {
-    min-width: 48px;
+    min-width: @datepicker-cell-min-width-l;
   }
 }
 
 .@{prefix}-date-picker__cell {
   cursor: pointer;
+  position: relative;
+  padding: 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: @datepicker-cell-height;
+    transform: translateY(-50%);
+    transition: all .2s;
+  }
 
   &:hover {
     .@{prefix}-date-picker__cell-inner {
@@ -197,6 +211,8 @@
   }
 
   &-inner {
+    position: relative;
+    z-index: 5;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -218,6 +234,10 @@
 
   &--highlight {
 
+    &::before {
+      background-color: @datepicker-highlight-color;
+    }
+
     .@{prefix}-date-picker__cell-inner {
       background-color: @datepicker-highlight-color;
       border-color: @datepicker-highlight-color;
@@ -235,7 +255,6 @@
 
     .@{prefix}-date-picker__cell-inner {
       color: @datepicker-cell-disabled-color;
-      background-color: @datepicker-background-color;
     }
   }
 
@@ -244,6 +263,23 @@
     .@{prefix}-date-picker__cell-inner {
       color: @datepicker-cell-active-color;
       background-color: @datepicker-cell-active-background;
+    }
+
+    &-start {
+      &::before {
+        left: 6px;
+        border-top-left-radius: @border-radius;
+        border-bottom-left-radius: @border-radius;
+      }
+    }
+    
+    &-end {
+
+      &::before {
+        right: 6px;
+        border-top-right-radius: @border-radius;
+        border-bottom-right-radius: @border-radius;
+      }
     }
   }
 
