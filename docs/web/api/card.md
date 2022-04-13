@@ -37,14 +37,13 @@ spline: data
 
 #### 全部为展示内容的底部栏
 
-{{ footer-poster2 }}
+{{ footer-content }}
 
 #### 同时带展示内容与操作内容的底部栏
 
-{{ footer-action-poster2 }}
+{{ footer-content-actions }}
 
 ### 4. 同时带 Header 和 Footer 的卡片
-
 
 #### 样式一
 
@@ -64,18 +63,16 @@ spline: data
 
 {{ header-subtitle }}
 
+#### 带标题描述的卡片
+
+{{ header-description }}
+
+#### 同时带主副标题与标题描述的卡片
+
+{{ header-all-props }}
+
 ## 组件状态
 
-### 1. hover态
+### 1. hover 态
 
 {{ hover }}
-
-## 组件大小
-
-### 1. 尺寸：默认
-
-{{ base }}
-
-### 2. 尺寸：小
-
-{{ small }}
