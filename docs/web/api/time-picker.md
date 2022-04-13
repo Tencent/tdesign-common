@@ -2,6 +2,7 @@
 title: TimePicker 时间选择器
 description: 用于选择某一具体时间点或某一时间段。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: form
 ---
 

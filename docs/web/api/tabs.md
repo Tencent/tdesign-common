@@ -2,6 +2,7 @@
 title: Tabs 选项卡
 description: 用于承载同一层级下不同页面或类别的组件，方便用户在同一个页面框架下进行快速切换。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: navigation
 ---
 

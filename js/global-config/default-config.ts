@@ -1,9 +1,11 @@
+export type AnimationType = 'ripple' | 'expand' | 'fade';
+
 export default {
   classPrefix: 't',
   animation: {
     include: ['ripple', 'expand', 'fade'],
     exclude: []
-  },
+  } as Record<'include'|'exclude', Array<AnimationType>>,
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,

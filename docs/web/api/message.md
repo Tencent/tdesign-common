@@ -2,6 +2,7 @@
 title: Message 全局提示
 description: 对用户的操作作出轻量的全局反馈。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: message
 ---
 

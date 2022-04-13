@@ -19,26 +19,22 @@
   }
 
   &__item {
-    margin-bottom: @form-item-margin-bottom;
-  }
-
-  &__item-with-help,
-  &__item-with-extra {
-    margin-bottom: 0;
+    min-height: @form-item-min-height;
+    padding-bottom: @form-item-padding-bottom;
   }
 
   &__label {
     float: left;
     padding-right: @form-label-padding-right;
     vertical-align: middle;
-    line-height: @form-item-height;
+    line-height: @form-item-control-height;
     color: @form-color-label;
     box-sizing: border-box;
     white-space: nowrap;
 
     &--top {
       float: none;
-      min-height: @form-item-height;
+      min-height: @form-item-control-height;
     }
 
     &--left {
@@ -69,18 +65,18 @@
   }
 
   &__controls {
-    min-height: @form-item-height;
+    min-height: @form-item-control-height;
     display: flow-root;
 
     &-content {
       display: flex;
       align-items: center;
-      min-height: @form-item-height;
+      min-height: @form-item-control-height;
     }
 
     // formItem 嵌套情况无间距
     .@{prefix}-form__item {
-      margin: 0 @form-item-margin-right-inline 0 0;
+      margin-right: @form-item-margin-right-inline;
     }
   }
 
@@ -92,16 +88,6 @@
   &__controls.@{prefix}-form--success-border {
     // 输入框状态
     .input-status(success);
-  }
-
-  &__help {
-    height: auto;
-    min-height: @form-item-margin-bottom;
-    line-height: @form-item-help-line-height;
-    font-size: @form-item-help-font-size;
-    display: inline-block;
-    color: @@fontColor;
-    @fontColor: "form-color-help";
   }
 
   &__status {
@@ -140,11 +126,12 @@
 }
 
 .@{prefix}-input__extra {
+  width: 100%;
   height: auto;
-  min-height: @form-item-margin-bottom;
+  min-height: @form-item-help-line-height;
   line-height: @form-item-help-line-height;
   font-size: @form-item-help-font-size;
-  display: inline-block;
+  color: @form-color-extra;
 }
 
 // 输入框状态

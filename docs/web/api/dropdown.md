@@ -2,6 +2,7 @@
 title: Dropdown 下拉菜单
 description: 用于承载过多的操作集合，通过下拉拓展的形式，收纳更多的操作。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: navigation
 ---
 

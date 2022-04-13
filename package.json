@@ -80,8 +80,8 @@
     }
   },
   "dependencies": {
-    "dayjs": "^1.11.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "tinycolor2": "^1.4.2"
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
