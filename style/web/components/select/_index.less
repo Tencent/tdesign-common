@@ -105,6 +105,9 @@
   // TODO: select_input 重构后可删除
   .@{prefix}-tag + .@{prefix}-input__wrap {
     margin-left: @select-placeholder-margin;
+    .@{prefix}-input__inner {
+      width: 100%;
+    }
   }
 
   // TODO: select_input 重构后可删除
@@ -251,6 +254,14 @@
 
   &-inner {
     padding: @select-dropdown-padding;
+
+    &--size-s {
+      padding: @select-dropdown-padding-s;
+    }
+
+    &--size-l {
+      padding: @select-dropdown-padding-l;
+    }
   }
 }
 

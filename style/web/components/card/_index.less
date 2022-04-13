@@ -1,0 +1,92 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-card {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: @card-border-radius;
+  background-color: @card-background;
+  color: @text-color-primary;
+  transition: box-shadow .1s ease-in-out;
+}
+
+.@{prefix}-card--bordered {
+  border: 1px solid @card-border-color;
+}
+
+.@{prefix}-card__shadow-hover:hover,
+.@{prefix}-card__shadow {
+  box-shadow: @shadow-1;
+}
+
+.@{prefix}-card__cover {
+  display: flow-root;
+}
+
+.@{prefix}-card__cover img {
+  display: flow-root;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.@{prefix}-card__body {
+  display: flow-root;
+  padding: @card-body-padding-vertical @card-body-padding-horizontal;
+}
+
+.@{prefix}-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: @card-header-padding-vertical @card-header-padding-horizontal;
+}
+
+.@{prefix}-card__footer {
+  display: flow-root;
+  padding: @card-footer-padding-vertical @card-footer-padding-horizontal;
+}
+
+.@{prefix}-size-s {
+  .@{prefix}-card__body {
+    padding: @card-body-padding-vertical-s @card-body-padding-horizontal-s;
+  }
+
+  .@{prefix}-card__header {
+    padding: @card-header-padding-vertical-s @card-header-padding-horizontal-s;
+  }
+
+  .@{prefix}-card__footer {
+    padding: @card-footer-padding-vertical-s @card-footer-padding-horizontal-s;
+  }
+}
+
+.@{prefix}-card__title {
+  font-size: @font-size-l;
+  font-weight: 400;
+  color: @card-color;
+}
+
+.@{prefix}-card__subtitle {
+  font-size: @font-size-base;
+  font-weight: 400;
+  color: @card-subtitle-color;
+}
+
+.@{prefix}-card__actions {
+  color: @text-color-link;
+}
+
+.@{prefix}-card__title--bordered {
+  border-bottom: 1px solid @card-border-color;
+}
+
+.@{prefix}-card__subtitle {
+  font-size: @font-size-base;
+  font-weight: 400;
+  color: @card-subtitle-color;
+}

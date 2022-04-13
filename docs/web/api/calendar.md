@@ -2,6 +2,7 @@
 title: Calendar 日历
 description: 按照日历形式展示数据或日期的容器。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: data
 ---
 

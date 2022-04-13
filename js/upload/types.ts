@@ -1,5 +1,6 @@
 export type UploadProgressType = 'real' | 'mock';
 
+export type SizeUnit = 'B' | 'KB' | 'MB' | 'GB'
 export interface UploadFile {
   /**
    * 上一次变更的时间
@@ -89,7 +90,7 @@ export interface FlowRemoveContext {
 }
 
 export interface XhrOptions {
-  method: string;
+  method?: string;
   action: string;
   withCredentials: boolean;
   headers: { [key: string]: string };
@@ -104,4 +105,9 @@ export interface XhrOptions {
   }) => void;
   onSuccess: (context: SuccessContext) => void;
   onProgress: (context: InnerProgressContext) => void;
+}
+
+export interface TdUploadFile extends UploadFile {
+  uid?: string;
+  xhr?: XMLHttpRequest;
 }

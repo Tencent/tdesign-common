@@ -2,6 +2,7 @@
 title: Upload 上传
 description: 上传组件允许用户传输文件或提交自己的内容。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: form
 ---
 
@@ -36,11 +37,18 @@ spline: form
 #### 批量上传图片
 
 {{ img-flow-list }}
+
 ### 合并上传文件
 
 使用 `uploadAllFilesInOneRequest` 与 `batchUpload` 实现多文件批量合并上传。
 
 {{ file-flow-list-batch-upload }}
+
+### 文件重复上传
+
+使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
+
+{{ file-flow-list-duplicate }}
 
 ### 自定义上传方法
 

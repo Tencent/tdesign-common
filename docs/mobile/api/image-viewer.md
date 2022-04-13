@@ -8,7 +8,7 @@ toc: false
 
 ### 基础用法
 
-{{ index }}
+{{ base }}
 
 ### 图片列表
 

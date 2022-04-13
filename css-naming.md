@@ -154,7 +154,7 @@ prefix-block\_\_elementName--modifierName
 
 ## 组件命名
 
-参见[团队语言规范](./NAMING.md)
+参见[团队语言规范](./naming.md)
 
 #### 常见状态类名
 
