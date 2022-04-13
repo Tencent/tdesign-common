@@ -33,26 +33,13 @@
   }
 
   &__popup {
-    width: 100%;
-  }
-
-  &__placeholder {
-    color: @cascader-light-color;
-    margin-left: @cascader-content-margin-left;
+    padding: 0;
   }
 
   &__content {
     margin-left: @cascader-content-margin-left;
     color: @cascader-dark-color;
     .text-ellipsis();
-  }
-
-  &__dropdown {
-    margin: @cascader-dropdown-margin;
-    box-shadow: @shadow-2;
-    border-radius: @border-radius;
-    cursor: default;
-    padding: 0;
   }
 
   &__panel {
@@ -230,50 +217,6 @@
     --ripple-color: @bg-color-container-active;
   }
 
-  &__search-input {
-    width: 100%;
-    border: 0;
-    background: transparent;
-  }
-
-  &__icon {
-    color: @cascader-icon-color;
-    display: flex;
-    .icon-position();
-
-    &.@{prefix}-is-expanded,
-    &.@{prefix}-is-selected,
-    &.@{prefix}-is-loading {
-      background: transparent;
-      color: @cascader-highlight-color;
-    }
-  }
-
-  &--multiple {
-    padding: @cascader-input-padding-is-multiple;
-
-    &.@{prefix}-size-s {
-      padding: @cascader-input-padding-is-multiple-s;
-    }
-  }
-
-  .@{prefix}-input {
-    border: 0;
-    padding: 0;
-    box-shadow: none;
-    margin-left: @cascader-content-margin-left;
-
-    &:hover,
-    &:focus {
-      box-shadow: none;
-      border-color: transparent;
-    }
-  }
-
-  & .@{prefix}-tag {
-    margin: @cascader-tag-margin;
-  }
-
   &.@{prefix}-is-disabled {
     cursor: not-allowed;
     background-color: @cascader-tag-background-color-disabled;
@@ -296,45 +239,5 @@
     .@{prefix}-fake-arrow {
       color: @cascader-highlight-color;
     }
-  }
-
-  &.@{prefix}-size-l {
-    height: @cascader-item-height-l;
-    font-size: @cascader-font-size-l;
-    min-height: @cascader-height-l;
-
-    &.@{prefix}-cascader-item--with-icon {
-      padding: @cascader-item-padding-with-icon-l;
-    }
-  }
-
-  &.@{prefix}-size-m {
-    min-height: @cascader-height-default;
-    font-size: @cascader-font-size-default;
-
-    .@{prefix}-input {
-      height: @cascader-input-inner-height;
-      line-height: @cascader-input-inner-height;
-    }
-  }
-
-  &.@{prefix}-size-s {
-    height: @cascader-height-s;
-    line-height: calc(@cascader-height-s - 2px);
-    font-size: @cascader-font-size-s;
-    min-height: @cascader-height-s;
-
-    .@{prefix}-input {
-      height: calc(@cascader-height-s - 2px);
-      line-height: calc(@cascader-height-default - 4px);
-    }
-
-    & .@{prefix}-tag {
-      margin: @cascader-tag-margin-s;
-    }
-  }
-
-  .@{prefix}-is-popup {
-    border: 1px solid @cascader-highlight-color;
   }
 }
