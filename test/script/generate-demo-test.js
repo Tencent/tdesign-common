@@ -40,28 +40,6 @@ const CONFIG = {
 
 const { sourcePath, targetPath, defaultTemplate } = CONFIG[framework];
 
-function main() {
-  fs.readdir(sourcePath, (err, files) => {
-    if (err) {
-      console.log('Error', err);
-    } else {
-      files.forEach((componentFolder) => {
-        const demoPath = `${sourcePath}/${componentFolder}/demos`;
-        fs.readdir(demoPath, (err1, demoFiles) => {
-          if (err1) {
-            console.log('Error', err1);
-          } else {
-            if (['icon', 'local-provider'].includes(componentFolder)) return;
-            outputOneComponentTestFile(componentFolder, demoFiles);
-          }
-        });
-      });
-    }
-  });
-}
-
-main();
-
 const data = `/**
  * 该文件为由脚本 \`npm run test:demo\` 自动生成，如需修改，执行脚本命令即可。请勿手写直接修改，否则会被覆盖
  */
@@ -109,11 +87,33 @@ function outputOneComponentTestFile(component, demoFiles) {
       console.error(err);
       return;
     }
-    fs.writeFile(`${outputPath}/demo.test.js`, testFileData, (err) => {
-      if (err) {
-        return console.error(err);
+    fs.writeFile(`${outputPath}/demo.test.js`, testFileData, (writeErr) => {
+      if (writeErr) {
+        return console.error(writeErr);
       }
-      console.log(`test file: ${outputPath} has been created.`);
+      return console.log(`test file: ${outputPath} has been created.`);
     });
   });
 }
+
+function main() {
+  fs.readdir(sourcePath, (err, files) => {
+    if (err) {
+      console.log('Error', err);
+    } else {
+      files.forEach((componentFolder) => {
+        const demoPath = `${sourcePath}/${componentFolder}/demos`;
+        fs.readdir(demoPath, (err1, demoFiles) => {
+          if (err1) {
+            console.log('Error', err1);
+          } else {
+            if (['icon', 'local-provider'].includes(componentFolder)) return;
+            outputOneComponentTestFile(componentFolder, demoFiles);
+          }
+        });
+      });
+    }
+  });
+}
+
+main();
