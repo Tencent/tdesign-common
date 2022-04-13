@@ -37,11 +37,11 @@ spline: data
 
 #### 全部为展示内容的底部栏
 
-{{ footer-poster2 }}
+{{ footer-content }}
 
 #### 同时带展示内容与操作内容的底部栏
 
-{{ footer-action-poster2 }}
+{{ footer-content-actions }}
 
 ### 4. 同时带 Header 和 Footer 的卡片
 
@@ -62,6 +62,14 @@ spline: data
 #### 带主副标题的卡片
 
 {{ header-subtitle }}
+
+#### 带标题描述的卡片
+
+{{ header-description }}
+
+#### 同时带主副标题与标题描述的卡片
+
+{{ header-all-props }}
 
 ## 组件状态
 
