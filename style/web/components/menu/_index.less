@@ -673,7 +673,7 @@ a.@{prefix}-menu__item {
     white-space: nowrap;
   }
 
-  .@{prefix}-icon + &__content {
+  .@{prefix}-icon + &__content, .@{prefix}-icon + &__item-link {
     margin-left: 8px;
   }
 
@@ -796,6 +796,8 @@ a.@{prefix}-menu__item {
     &-wrapper {
       padding: 8px;
       height: 100%;
+      list-style: none;
+      margin: 0;
     }
 
     .@{prefix}-fake-arrow {

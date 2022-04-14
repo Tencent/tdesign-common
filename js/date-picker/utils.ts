@@ -150,7 +150,7 @@ export function setDateTime(d: Date, hour: number, min: number, sec: number): Da
 }
 
 /**
- * 增加月份
+ * 减月份
  * @param {Date} date 起始日期
  * @param {Number} num 月份数
  * @returns {Date}
@@ -169,7 +169,7 @@ export function subtractMonth(date: Date, num: any): Date {
 }
 
 /**
- * 减月份
+ * 增加月份
  * @param {Date} date 起始日期
  * @param {Number} num 月份数
  * @returns {Date}
@@ -178,7 +178,12 @@ export function addMonth(date: Date, num: number): Date {
   let _num = num;
   if (num < 0) _num = 0;
   const newDate = new Date(date);
-  newDate.setMonth(date.getMonth() + _num);
+  const year = date.getFullYear();
+  const month = date.getMonth() + _num;
+  const day = newDate.getDate();
+  newDate.setDate(1);
+  newDate.setMonth(month);
+  newDate.setDate(Math.min(day, getDaysInMonth({ year, month })));
   return newDate;
 }
 
