@@ -39,19 +39,6 @@
   gap: 6px;
 }
 
-// 配合time-picker使用 需重置部分样式
-.@{prefix}-time-picker__panel {
-  width: @datepicker-time-panel-width;
-
-  &-section-body {
-    padding: 0;
-  }
-
-  &-body {
-    margin: 0;
-  }
-}
-
 .@{prefix}-date-picker__header {
   display: flex;
   align-items: center;
@@ -77,7 +64,6 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    user-select: none;
   }
 
   th {
@@ -89,6 +75,13 @@
   td {
     text-align: center;
     font-weight: @datepicker-font-weight-medium;
+  }
+
+  tbody:before {
+    content: "-";
+    display: block;
+    height: @spacer;
+    color: transparent;
   }
 }
 
@@ -139,8 +132,33 @@
 
 .@{prefix}-date-picker__panel--time,
 .@{prefix}-date-range-picker__panel--time {
+  display: flex;
+  flex-direction: column;
+  gap: @spacer-l;
   padding: @datepicker-time-panel-padding;
   border-left: 1px solid @datepicker-panel-divider-color;
+
+  &-viewer {
+    display: flex;
+    height: 32px;
+    line-height: 22px;
+    align-items: center;
+    justify-content: center;
+    color: @text-color-primary;
+  }
+}
+
+// 配合time-picker使用 需重置部分样式
+.@{prefix}-time-picker__panel {
+  width: @datepicker-time-panel-width;
+
+  &-section-body {
+    padding: 0;
+  }
+
+  &-body {
+    margin: 0;
+  }
 }
 
 .@{prefix}-date-picker__panel--year,
@@ -156,6 +174,10 @@
 
 .@{prefix}-date-picker__panel--year,
 .@{prefix}-date-picker__panel--month {
+
+  .@{prefix}-date-picker__header-controller--year {
+    width: 120px;
+  }
 
   .@{prefix}-date-picker__table {
     
@@ -183,7 +205,7 @@
   }
 
   .@{prefix}-date-picker__cell-inner {
-    min-width: @datepicker-cell-min-width-l;
+    width: @datepicker-cell-min-width-l;
   }
 }
 
@@ -216,10 +238,9 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-width: @datepicker-cell-min-width;
+    width: @datepicker-cell-min-width;
     height: @datepicker-cell-height;
     margin: @spacer-s;
-    padding: 0 @spacer-s;
     border-radius: @datepicker-panel-border-radius;
     transition: @datepicker-transition;
   }
@@ -287,13 +308,21 @@
     &:hover {
       .@{prefix}-date-picker__cell-inner {
         box-shadow: none;
+        background-color: @datepicker-cell-disable-background-color;
       }
     }
 
     .@{prefix}-date-picker__cell-inner {
       cursor: not-allowed;
       color: @datepicker-cell-disabled-color;
-      border: 1px solid @datepicker-cell-disable-border-color;
+      background-color: @datepicker-cell-disable-background-color;
+    }
+  }
+
+  &--disabled + &--disabled {
+    &::before {
+      left: -@spacer-2;
+      right: @spacer-l;
       background-color: @datepicker-cell-disable-background-color;
     }
   }

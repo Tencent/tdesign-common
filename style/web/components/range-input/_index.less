@@ -62,11 +62,15 @@
       font-size: inherit;
 
       &:hover {
-        background-color: #e7e7e7;
+        background-color: var(--td-bg-color-container-hover);
       }
 
       &__inner {
         height: 100%;
+      }
+
+      &.@{prefix}-is-focused {
+        background-color: var(--td-bg-color-component);
       }
     }
   }
@@ -129,7 +133,7 @@
 
       .@{prefix}-input {
         &.@{prefix}-is-focused {
-          background-color: #e7e7e7;
+          background-color: var(--td-bg-color-component);
         }
       }
     }
