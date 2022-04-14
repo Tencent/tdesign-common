@@ -9,11 +9,11 @@ spline: data
 
 #### 有边框
 
-{{ borderd }}
+{{ bordered }}
 
 #### 无边框
 
-{{ borderd-none }}
+{{ bordered-none }}
 
 ### 2. 带 Header 的卡片
 
