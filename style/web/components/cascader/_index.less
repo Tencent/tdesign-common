@@ -4,42 +4,21 @@
 
 @import "./_var.less";
 
-@import "./_mixin.less";
-
 @import "../../mixins/_text.less";
 
-.@{prefix}-cascader {
-  position: relative;
-  border: @cascader-border;
-  border-radius: @border-radius;
-  padding: @cascader-input-padding;
-  background-color: transparent;
-  vertical-align: middle;
-  cursor: default;
-  color: @cascader-color-default;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  flex-wrap: wrap;
-  transition: border-color @anim-duration-base @anim-time-fn-ease-in;
+.@{prefix}-select-input {
+  .@{prefix}-fake-arrow {
+    color: @cascader-icon-color;
 
-  &:hover:not(.@{prefix}-is-disabled) {
-    cursor: pointer;
-    border-color: @cascader-active-border-color;
-
-    & > .@{prefix}-icon {
-      color: @cascader-icon-color;
+    &--active {
+      color: @cascader-icon-color-select;
     }
   }
+}
 
+.@{prefix}-cascader {
   &__popup {
     padding: 0;
-  }
-
-  &__content {
-    margin-left: @cascader-content-margin-left;
-    color: @cascader-dark-color;
-    .text-ellipsis();
   }
 
   &__panel {
@@ -132,15 +111,6 @@
       margin-top: 0;
     }
 
-    &-icon {
-      color: @cascader-item-icon-color;
-      .icon-position();
-
-      .@{prefix}-icon-loading {
-        color: @cascader-highlight-color;
-      }
-    }
-
     & .@{prefix}-checkbox {
       max-width: 100%;
 
@@ -150,6 +120,7 @@
 
       & .@{prefix}-checkbox__label {
         display: block;
+        white-space: nowrap;
         .text-ellipsis();
 
         .@{prefix}-cascader__item__label--filter {
@@ -169,31 +140,17 @@
       }
     }
 
+    .@{prefix}-popup__reference {
+      width: 100%;
+    }
+
     &-label {
       display: block;
       position: relative;
-      .text-ellipsis();
+      white-space: nowrap;
 
       &--ellipsis {
-        width: 100%;
-        height: 24px;
-        position: absolute;
-        left: 0;
-        top: 50%;
-        opacity: 0;
-        overflow: hidden;
-        transform: translateY(-50%);
-
-        .@{prefix}-popup__reference {
-          width: 100%;
-          height: 100%;
-
-          .t-trigger {
-            width: 100%;
-            height: 100%;
-            display: block;
-          }
-        }
+        .text-ellipsis();
       }
 
       &--filter {
@@ -215,29 +172,5 @@
     }
 
     --ripple-color: @bg-color-container-active;
-  }
-
-  &.@{prefix}-is-disabled {
-    cursor: not-allowed;
-    background-color: @cascader-tag-background-color-disabled;
-    color: @cascader-item-color-disabled;
-    border-color: @cascader-border-color-disabled;
-    > .@{prefix}-cascader__placeholder, .@{prefix}-cascader__icon {
-      color: @cascader-item-color-disabled;
-    }
-
-    .@{prefix}-cascader__content {
-      color: @cascader-color-empty;
-    }
-  }
-
-  &.@{prefix}-is-active {
-    border-color: @cascader-active-border-color;
-    box-shadow: @cascader-input-shadow;
-    transition: box-shadow @anim-duration-base @anim-time-fn-ease-in;
-
-    .@{prefix}-fake-arrow {
-      color: @cascader-highlight-color;
-    }
   }
 }
