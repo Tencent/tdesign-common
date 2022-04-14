@@ -2,6 +2,7 @@
 title: Progress 进度条
 description: 展示操作的当前进度。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: data
 ---
 

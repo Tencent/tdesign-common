@@ -2,6 +2,7 @@
 title: Transfer 穿梭框
 description: 以直观的方式在两栏中移动选项元素，是对选项进行单个或批量移动从而完成挑选的数据容器。左栏是“源”，右边是“目标”。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: form
 ---
 

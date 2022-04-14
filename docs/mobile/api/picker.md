@@ -8,4 +8,12 @@ toc: false
 
 ### 基础类型
 
-{{ mobile }}
+{{ base }}
+
+### 多级联动
+
+{{ cascade }}
+
+### 对象选择
+
+{{ object }}

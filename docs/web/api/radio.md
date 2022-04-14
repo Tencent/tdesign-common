@@ -2,6 +2,7 @@
 title: Radio 单选框
 description: 单选框代表从一组互斥的选项中仅选择一个选项。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: form
 ---
 

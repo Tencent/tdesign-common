@@ -2,6 +2,7 @@
 title: Tooltip 文字提示
 description: 用于文字提示的气泡框。
 isComponent: true
+usage: { title: 'Live Demo', description: '' }
 spline: data
 ---
 
