@@ -1,11 +1,13 @@
 ---
 title: Card 卡片
-description: Card卡片将信息聚合在卡片容器中展示。
+description: 最基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。
 isComponent: true
 spline: data
 ---
 
-### 1. 极简卡片
+### 极简卡片
+
+仅有内容的卡片形式。
 
 #### 有边框
 
@@ -15,7 +17,9 @@ spline: data
 
 {{ bordered-none }}
 
-### 2. 带 Header 的卡片
+### 带 header 的卡片
+
+由极简卡片上方的标题栏组成，标题栏中可包含标题、图片、操作区、状态等内容。顶部栏可以定义所有的内容，以用户的自定义元素为准。
 
 #### 不带分割线
 
@@ -25,9 +29,9 @@ spline: data
 
 {{ header-bordered }}
 
-### 3. 带 Footer 的卡片（带底部栏）
+### 带 footer 的卡片
 
-#### 示例
+由极简卡片下方的底部栏组成，可包含标题、图片、操作区、状态等内容。
 
 {{ footer }}
 
@@ -43,21 +47,19 @@ spline: data
 
 {{ footer-content-actions }}
 
-### 4. 同时带 Header 和 Footer 的卡片
+### 同时带 header 和 footer 的卡片
 
-#### 样式一
+由顶部栏、底部栏和极简卡片组成的复杂卡片，三个区域内容可根据需要对内容进行配置。
 
 {{ footer }}
 
-#### 样式二
-
 {{ header-subtitle-footer-actions }}
-
-#### 样式三
 
 {{ header-footer-actions }}
 
-### 5. 不同标题内容的卡片
+### 不同标题内容的卡片
+
+带有主标题、副标题、或标题描述的卡片。
 
 #### 带主副标题的卡片
 
@@ -70,9 +72,3 @@ spline: data
 #### 同时带主副标题与标题描述的卡片
 
 {{ header-all-props }}
-
-## 组件状态
-
-### 1. hover 态
-
-{{ hover }}
