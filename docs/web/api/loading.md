@@ -2,7 +2,7 @@
 title: Loading 加载中
 description: 在网络较慢或数据较多时，表示数据正在加载的状态。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: message
 ---
 

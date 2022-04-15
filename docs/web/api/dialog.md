@@ -2,7 +2,7 @@
 title: Dialog 对话框
 description: 对话框是一种临时窗口，通常在不想中断整体任务流程，但又需要为用户展示信息或获得用户响应时，在页面中打开一个对话框承载相应的信息及操作。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: message
 ---
 

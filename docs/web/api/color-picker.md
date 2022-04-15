@@ -2,7 +2,7 @@
 title: ColorPicker 颜色选择器
 description: 用于颜色选择，支持多种格式。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: form
 ---
 ### 面板颜色选择器
