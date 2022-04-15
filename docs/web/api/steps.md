@@ -2,7 +2,7 @@
 title: Steps 步骤条
 description: 提示用户进度以及当前的步骤，用于引导用户按照步骤完成任务的导航条。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: navigation
 ---
 

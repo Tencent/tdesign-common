@@ -2,7 +2,7 @@
 title: Upload 上传
 description: 上传组件允许用户传输文件或提交自己的内容。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: form
 ---
 

@@ -2,7 +2,7 @@
 title: Notification 消息通知
 description: 轻量级的全局消息提示和确认机制，出现和消失时需要有缓动动画。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: message
 ---
 
