@@ -245,17 +245,20 @@ spline: data
 
 ### 可拖拽排序的表格
 
+通过拖拽表格行调整顺序，拖拽表头表头调整列顺序。
+
 - `dragSort='row'` 用于设置表格为行拖拽排序。
-- `dragSort='col'` 用于设置表格为列拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='col'` 用于设置表格为列拖拽排序。
 - `sortOnRowDraggable` 用于行拖拽排序。已废弃，请更为使用 `dragSort='row'`，兼容支持。
 
-#### 示例一：行拖拽排序
+#### 示例一：无手柄列的行拖拽排序
 
 设置参数 `dragSort='row'` 即可。
 
 {{ drag-sort }}
 
-#### 示例二：使用手柄列行拖拽排序
+#### 示例二：有手柄列的行拖拽排序
 
 设置参数 `dragSort='row-handler'` 的同时，还需要添加手柄列：`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
 
