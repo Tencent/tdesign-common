@@ -266,7 +266,7 @@ spline: data
 
 #### 列拖拽排序
 
-【开发中】调整列顺序。设置参数 `dragSort='col'` 即可。
+【开发中】调整列顺序。设置参数 `dragSort='col'` 即可。列拖拽排序场景中，必须指定列唯一标识 `colKey`。
 
 {{ drag-col-sort }}
 
