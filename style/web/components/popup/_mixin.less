@@ -1,3 +1,59 @@
+.content-placement-top {
+  .@{prefix}-popup[data-popper-placement^="top"] {
+    .@{prefix}-popup__content {
+      margin-bottom: @popup-content-margin;
+
+      &--arrow {
+        margin-bottom: @popup-content-arrow-spacer;
+      }
+    }
+  }
+}
+
+.content-placement-bottom {
+  .@{prefix}-popup[data-popper-placement^="bottom"] {
+    .@{prefix}-popup__content {
+      margin-top: @popup-content-margin;
+
+      &--arrow {
+        margin-top: @popup-content-arrow-spacer;
+      }
+    }
+  }
+}
+
+.content-placement-left {
+  .@{prefix}-popup[data-popper-placement^="left"] {
+    .@{prefix}-popup__content {
+      margin-right: @popup-content-margin;
+
+      &--arrow {
+        margin-right: @popup-content-arrow-spacer;
+      }
+
+      &--text {
+        max-width: 480px;
+      }
+    }
+  }
+}
+
+.content-placement-right {
+  .@{prefix}-popup[data-popper-placement^="right"] {
+    .@{prefix}-popup__content {
+      margin-left: @popup-content-margin;
+
+      &--arrow {
+        margin-left: @popup-content-arrow-spacer;
+      }
+
+      &--text {
+        max-width: 480px;
+      }
+    }
+  }
+}
+
 .arrow-placement-top() {
   .@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-popup__arrow {
     bottom: calc(-@popup-arrow-width / 2);
