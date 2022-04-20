@@ -77,10 +77,10 @@
     font-weight: @datepicker-font-weight-medium;
   }
 
-  tbody:before {
+  thead:after {
     content: "-";
     display: block;
-    height: @spacer;
+    line-height: @spacer-s - 1px;
     color: transparent;
   }
 }
@@ -214,7 +214,8 @@
   position: relative;
   padding: 0;
   
-  &::before {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -240,7 +241,7 @@
     align-items: center;
     width: @datepicker-cell-min-width;
     height: @datepicker-cell-height;
-    margin: @spacer-s;
+    margin: @spacer-s - 1px;
     border-radius: @datepicker-panel-border-radius;
     transition: @datepicker-transition;
   }
@@ -253,16 +254,24 @@
     }
   }
 
+  &--hover-highlight {
+    &::after {
+      background-color: @datepicker-highlight-color;
+    }
+  }
+  
   &--highlight {
-
+    
     &::before {
       background-color: @datepicker-highlight-color;
     }
 
-    .@{prefix}-date-picker__cell-inner {
-      background-color: @datepicker-highlight-color;
-      border-color: @datepicker-highlight-color;
+    &.@{prefix}-date-picker__cell--hover-highlight {
+      &::after {
+        background-color: @datepicker-hover-highlight-color;
+      }
     }
+
   }
 
   &--additional {

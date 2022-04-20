@@ -317,20 +317,24 @@ export function getMonths(year: number, params: OptionsType) {
 }
 
 export interface DateTime {
+  additional: boolean;
   active: boolean;
   highlight: boolean;
+  hoverHighlight: boolean;
   startOfRange: boolean;
   endOfRange: boolean;
+  hoverStartOfRange: boolean;
+  hoverEndOfRange: boolean;
   value: Date;
 }
 
 export function flagActive(data: any[], { ...args }: any) {
-  const { start, end, type = 'date' } = args;
+  const { start, end, hoverStart, hoverEnd, type = 'date', isRange = false } = args;
 
-  if (!end) {
+  if (!isRange) {
     return data.map((row: any[]) => row.map((item: DateTime) => {
       const _item = item;
-      _item.active = start && isSame(item.value, start, type);
+      _item.active = start && isSame(item.value, start, type) && !_item.additional;
       return _item;
     }));
   }
@@ -340,13 +344,21 @@ export function flagActive(data: any[], { ...args }: any) {
     const date = item.value;
 
     const isStart = start && isSame(start, date, type);
+    const isHoverStart = hoverStart && isSame(hoverStart, date, type);
     const isEnd = end && isSame(end, date, type);
-    _item.active = isStart || isEnd;
+    const isHoverEnd = hoverEnd && isSame(hoverEnd, date, type);
+    _item.active = (isStart || isEnd) && !_item.additional;
 
     if (start && end) {
-      _item.highlight = isBetween(date, { start, end });
+      _item.highlight = isBetween(date, { start, end }) && !_item.additional;
       _item.startOfRange = isStart;
       _item.endOfRange = isEnd;
+    }
+
+    if (hoverStart && hoverEnd) {
+      _item.hoverHighlight = isBetween(date, { start: hoverStart, end: hoverEnd }) && !_item.additional;
+      _item.hoverStartOfRange = isHoverStart;
+      _item.hoverEndOfRange = isHoverEnd;
     }
     return _item;
   }));
