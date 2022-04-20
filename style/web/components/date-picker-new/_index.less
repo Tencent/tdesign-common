@@ -24,7 +24,7 @@
 .@{prefix}-date-range-picker__panel {
   display: flex;
   flex-direction: column;
-  
+
   &--direction-row {
     flex-direction: row;
   }
@@ -53,7 +53,7 @@
     &--month {
       width: @datepicker-month-controller-width;
     }
-    
+
     &--year {
       width: @datepicker-year-controller-width;
     }
@@ -91,7 +91,7 @@
   align-items: flex-start;
   padding: @datepicker-presets-padding;
   gap: @datepicker-presets-gap;
-  
+
   &--bottom {
     border-top: 1px solid @datepicker-panel-divider-color;
   }
@@ -149,15 +149,17 @@
 }
 
 // 配合time-picker使用 需重置部分样式
-.@{prefix}-time-picker__panel {
-  width: @datepicker-time-panel-width;
+.@{prefix}-date-picker {
+  .@{prefix}-time-picker__panel {
+    width: @datepicker-time-panel-width;
 
-  &-section-body {
-    padding: 0;
-  }
+    &-section-body {
+      padding: 0;
+    }
 
-  &-body {
-    margin: 0;
+    &-body {
+      margin: 0;
+    }
   }
 }
 
@@ -174,13 +176,11 @@
 
 .@{prefix}-date-picker__panel--year,
 .@{prefix}-date-picker__panel--month {
-
   .@{prefix}-date-picker__header-controller--year {
     width: 130px;
   }
 
   .@{prefix}-date-picker__table {
-    
     table {
       tbody {
         width: 100%;
@@ -213,10 +213,10 @@
   cursor: pointer;
   position: relative;
   padding: 0;
-  
+
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     right: 0;
@@ -224,7 +224,7 @@
     z-index: 1;
     height: @datepicker-cell-height;
     transform: translateY(-50%);
-    transition: all .2s;
+    transition: all 0.2s;
   }
 
   &:hover {
@@ -247,7 +247,6 @@
   }
 
   &--now {
-
     .@{prefix}-date-picker__cell-inner {
       color: @datepicker-now-text-color;
       background: @datepicker-now-background-color;
@@ -259,9 +258,8 @@
       background-color: @datepicker-highlight-color;
     }
   }
-  
+
   &--highlight {
-    
     &::before {
       background-color: @datepicker-highlight-color;
     }
@@ -271,7 +269,6 @@
         background-color: @datepicker-hover-highlight-color;
       }
     }
-
   }
 
   &--additional {
@@ -289,7 +286,6 @@
   }
 
   &--active {
-
     .@{prefix}-date-picker__cell-inner {
       color: @datepicker-cell-active-color;
       background-color: @datepicker-cell-active-background;
@@ -302,9 +298,8 @@
         border-bottom-left-radius: @border-radius;
       }
     }
-    
-    &-end {
 
+    &-end {
       &::before {
         right: 6px;
         border-top-right-radius: @border-radius;

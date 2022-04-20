@@ -122,13 +122,8 @@
   }
 }
 
-.@{prefix}-time-picker__panel-container {
-  margin: @time-picker-panel-container-margin;
-  padding: 0;
-}
-
 .@{prefix}-time-picker__panel {
-  width: @time-picker-width;
+  width: @time-picker-panel-width;
   background: @time-picker-background-color-common;
   border-radius: @border-radius;
   display: inline-block;
@@ -222,19 +217,6 @@
 }
 
 .@{prefix}-time-picker__panel-section {
-  width: @time-picker-range-panel-width;
-  background-color: @time-picker-background-color-common;
-
-  &-body {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: @time-picker-panel-body-padding;
-
-    > *:nth-child(2) {
-      margin-left: @time-picker-panel-section-second-body-margin-left;
-    }
-  }
 
   &-footer {
     width: 100%;
