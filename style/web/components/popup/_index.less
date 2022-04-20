@@ -43,32 +43,10 @@
     background: @arrow-bg;
   }
 }
-
-.@{prefix}-popup[data-popper-placement^="bottom"],
-.@{prefix}-popup[data-popper-placement^="top"] {
-  .@{prefix}-popup__content {
-    margin: @popup-content-margin 0;
-
-    &--arrow {
-      margin: @popup-content-arrow-spacer 0;
-    }
-  }
-}
-
-.@{prefix}-popup[data-popper-placement^="left"],
-.@{prefix}-popup[data-popper-placement^="right"] {
-  .@{prefix}-popup__content {
-    margin: 0 @popup-content-margin;
-
-    &--arrow {
-      margin: 0 @popup-content-arrow-spacer;
-    }
-
-    &--text {
-      max-width: 480px;
-    }
-  }
-}
+.content-placement-top();
+.content-placement-bottom();
+.content-placement-left();
+.content-placement-right();
 
 .arrow-placement-top();
 .arrow-placement-bottom();
