@@ -935,7 +935,7 @@
 }
 
 // 为了滚动穿透，需要取消上层表头的全部事件
-.@{prefix}-table__affixed-header-elm, .@{prefix}-table__affixed-footer-elm {
+.@{prefix}-table__affixed-header-elm {
   // 会导致排序图标、过滤图标等无法点击、也无法复制文本，因此需要在特定的位置，恢复点击
   pointer-events: none;
 }
