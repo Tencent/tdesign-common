@@ -11,7 +11,7 @@
   position: relative;
   box-sizing: border-box;
   height: @input-height-default;
-  line-height: @input-height-default;
+  line-height: @input-height-default - 2;
   .input-base();
 
   &--focused {
@@ -81,13 +81,13 @@
   // 输入框大小
   &.@{prefix}-size-l {
     height: @input-height-l;
-    line-height: @input-height-l;
+    line-height: @input-height-l - 2;
     font-size: @input-font-size-l;
   }
 
   &.@{prefix}-size-s {
     height: @input-height-s;
-    line-height: @input-height-s;
+    line-height: @input-height-s - 2;
     font-size: @input-font-size-s;
   }
 
