@@ -2,7 +2,7 @@
 title: Swiper 轮播框
 description: 轮播视图容器。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: message
 ---
 

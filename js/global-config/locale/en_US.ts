@@ -116,7 +116,8 @@ export default {
       fileInput: 'Upload',
       image: 'Click to upload',
       normal: 'Upload',
-      reupload: 'Reupload',
+      reupload: 'ReUpload',
+      continueUpload: 'Continue Upload',
       delete: 'Delete',
     },
     dragger: {

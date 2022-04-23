@@ -36,8 +36,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.config.js'],
+      files: ['*.config.js', 'test/script/*'],
       rules: {
+        'no-console': 0,
         // node 环境下支持 require
         '@typescript-eslint/no-require-imports': 'off',
         'import/no-dynamic-require': 0,

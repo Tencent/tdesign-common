@@ -286,12 +286,26 @@
   }
 
   &.@{prefix}-size-l {
+    width: @input-number-right-width-l;
+
     .@{inputNumberCls}__increase,
     .@{inputNumberCls}__decrease {
       height: @input-number-button-column-height-l;
     }
     .@{inputNumberCls}__decrease {
       top: @input-number-button-column-height-l + 3px;
+    }
+  }
+
+  &.@{prefix}-size-s {
+    width: @input-number-right-width-s;
+
+    .@{inputNumberCls}__increase,
+    .@{inputNumberCls}__decrease {
+      height: @input-number-button-column-height-s;
+    }
+    .@{inputNumberCls}__decrease {
+      top: @input-number-button-column-height-s + 3px;
     }
   }
 }

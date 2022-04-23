@@ -2,7 +2,7 @@
 title: Anchor 锚点
 description: 页面内的超级链接，用于跳转到页面内指定位置
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: navigation
 ---
 

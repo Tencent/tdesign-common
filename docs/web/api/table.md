@@ -2,7 +2,7 @@
 title: Table 表格
 description: 表格常用于展示同类结构下的多种数据，易于组织、对比和分析等，并可对数据进行搜索、筛选、排序等操作。一般包括表头、数据行和表尾三部分。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -112,6 +112,8 @@ spline: data
 - 支持透传 `CheckboxGroup` 组件全部属性，`columnController.checkboxGroupProps` 用于控制弹框中的复现框相关功能。
 - 支持透传 `Dialog` 组件全部属性，`columnController.dialogProps` 用于调整列配置弹框相关功能，如：防止滚动穿透。
 - 支持透传 `Button` 组件全部属性，`columnController.buttonProps` 用于控制列配置按钮的全部特性，如：按钮颜色和文本。
+- `columnControllerVisible` 自由控制是否显示列配置框，一般用于希望完全自定义列配置按钮的场景。
+- `onColumnControllerVisibleChange` 列配置框显示或隐藏时触发。
 
 #### 示例一：包含配置按钮的列配置功能示例
 
@@ -245,19 +247,28 @@ spline: data
 
 ### 可拖拽排序的表格
 
+通过拖拽表格行调整顺序，拖拽表头表头调整列顺序。
+
 - `dragSort='row'` 用于设置表格为行拖拽排序。
-- `dragSort='col'` 用于设置表格为列拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='col'` 用于设置表格为列拖拽排序。
 - `sortOnRowDraggable` 用于行拖拽排序。已废弃，请更为使用 `dragSort='row'`，兼容支持。
 
-#### 行拖拽排序
+#### 示例一：无手柄列的行拖拽排序
 
 设置参数 `dragSort='row'` 即可。
 
 {{ drag-sort }}
 
+#### 示例二：有手柄列的行拖拽排序
+
+设置参数 `dragSort='row-handler'` 的同时，还需要添加手柄列：`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+
+{{ drag-sort-handler }}
+
 #### 列拖拽排序
 
-设置参数 `dragSort='col'` 的同时，还需要添加手柄列：`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+【持续完善中】调整列顺序。设置参数 `dragSort='col'` 即可。列拖拽排序场景中，必须指定列唯一标识 `colKey`。
 
 {{ drag-col-sort }}
 
@@ -269,7 +280,7 @@ spline: data
 
 如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。
 
-- 如果数据中的子节点字段不是 `children`，可以使用 `tree.childreKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
+- 如果数据中的子节点字段不是 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
 - `tree.indent` 用于设置树结点缩进距离。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
 - `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。

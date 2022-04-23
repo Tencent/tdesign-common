@@ -13,8 +13,10 @@
 // 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
 @table-fixed-column-z-index: 30;
 @table-fixed-header-z-index: 50;
+@table-fixed-footer-z-index: 50;
 @table-fixed-row-z-index: 70;
 @table-fixed-header-virtual-scroll-z-index: @table-fixed-header-z-index + 1;
+@table-fixed-footer-virtual-scroll-z-index: @table-fixed-footer-z-index + 1;
 @table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
 @table-loading-z-index: @table-right-scrollbar-divider + 1;
 
@@ -699,6 +701,13 @@
   }
 }
 
+.@{prefix}-table__th-row-select {
+  .t-table__th-cell-inner {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key="row-select"] {
   padding-left: 10px;
 }
@@ -768,6 +777,15 @@
 }
 
 .@{prefix}-table--affixed-header {
+  .@{prefix}-table__content {
+    th.@{prefix}-table__cell--fixed-left-last::after,
+    th.@{prefix}-table__cell--fixed-right-first::after {
+      box-shadow: none;
+    }
+  }
+}
+
+.@{prefix}-table--affixed-footer {
   .@{prefix}-table__content {
     th.@{prefix}-table__cell--fixed-left-last::after,
     th.@{prefix}-table__cell--fixed-right-first::after {
@@ -914,6 +932,15 @@
   opacity: 1;
 }
 
+.@{prefix}-table__affixed-footer-elm {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  z-index: @table-fixed-header-virtual-scroll-z-index;
+  transition: opacity .15s linear;
+  opacity: 1;
+}
+
 // 为了滚动穿透，需要取消上层表头的全部事件
 .@{prefix}-table__affixed-header-elm {
   // 会导致排序图标、过滤图标等无法点击、也无法复制文本，因此需要在特定的位置，恢复点击
@@ -931,8 +958,20 @@
   border-right: 0;
 }
 
+.@{prefix}-table--bordered .@{prefix}-table__affixed-footer-elm {
+  border: @border;
+  border-top: 0;
+  border-right: 0;
+}
+
 .@{prefix}-table--multiple-header.@{prefix}-table--bordered {
   .@{prefix}-table__affixed-header-elm {
+    border-right: 0;
+  }
+}
+
+.@{prefix}-table--multiple-header.@{prefix}-table--bordered {
+  .@{prefix}-table__affixed-footer-elm {
     border-right: 0;
   }
 }
@@ -980,6 +1019,8 @@
   min-height: 200px;
 }
 
-.@{prefix}-table__handle-draggable:hover {
+.@{prefix}-table__handle-draggable:hover,
+.@{prefix}-table--row-draggable tr,
+.@{prefix}-table--col-draggable .@{prefix}-table__th-cell-inner {
   cursor: move;
 }
