@@ -6,6 +6,6 @@ isComponent: true
 toc: false
 ---
 
-### 基础型
+### 基础索引
 
-{{ base }}
+{{ base-indexes }}
