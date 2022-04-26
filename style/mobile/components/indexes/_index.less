@@ -1,5 +1,7 @@
 @import "../../base.less";
+
 @import "../../mixins/_index.less";
+
 @import "./_var.less";
 
 .@{prefix}-indexes {
@@ -37,15 +39,15 @@
     position: absolute;
     right: 50px;
     top: 50%;
-
     width: 40px;
     height: 40px;
-    border-radius: 20px 20px 0 20px;
+    border-radius: 20px 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     transform: translateY(-50%) rotate(-45deg);
     background-color: @indexes-active-color;
+
     &-text {
       transform: rotate(45deg);
       color: white;
@@ -57,9 +59,8 @@
   &__anchor {
     line-height: 32px;
     box-sizing: border-box;
-
     color: @indexes-anchor-color;
-    font-size: 16px;
+    font-size: @indexes-anchor-font-size;
     padding-left: 16px;
   }
 

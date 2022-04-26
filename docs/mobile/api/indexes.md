@@ -8,4 +8,4 @@ toc: false
 
 ### 基础索引
 
-{{ base-indexes }}
+{{ base }}
