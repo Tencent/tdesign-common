@@ -19,6 +19,7 @@
 @table-fixed-footer-virtual-scroll-z-index: @table-fixed-footer-z-index + 1;
 @table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
 @table-loading-z-index: @table-right-scrollbar-divider + 1;
+@table-resize-line-z-index: @table-right-scrollbar-divider + 1;
 
 @table-cell-padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -58,6 +59,17 @@
     right: 0;
     border-left: @border;
     pointer-events: none;
+  }
+
+  .@{prefix}-table__resize-line {
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: @border;
+    z-index: @table-resize-line-z-index;
   }
 
   &__column-controller {
