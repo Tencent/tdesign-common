@@ -2,6 +2,7 @@
 title: Collapse 折叠面板
 description: 可以将较多或较复杂的内容进行分组，分组内容区可以折叠展开或隐藏。
 isComponent: true
+usage: { title: '', description: '' }
 spline: data
 ---
 
