@@ -28,6 +28,20 @@
   .scrollbar();
 }
 
+// 底部内容吸底，不能设置滚动条颜色为透明，否则纵向滚动的时候会有表格内容文本穿透滚动条显示
+.scrollbar.@{prefix}-table__affixed-footer-elm {
+  &::-webkit-scrollbar-track {
+    background: @scroll-track-color;
+  }
+}
+
+// 表尾吸底，且横向滚动条和纵向滚动条同时存在时，为避免双层底部内容重叠造成的视觉颜色加深，特此去除一层的颜色
+.@{prefix}-table__affixed-footer-wrap > .scrollbar.@{prefix}-table__affixed-footer-elm {
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+}
+
 // 文本内容省略需要 overflow: hidden，防止滚动超出视野区域；而过滤功能数据较少时，需要 overflow: initial
 .@{prefix}-table.@{prefix}-table--overflow-visible {
   overflow: initial;
@@ -945,12 +959,8 @@
 }
 
 .@{prefix}-table__affixed-footer-elm {
-  position: absolute;
-  left: 0;
-  overflow: hidden;
-  z-index: @table-fixed-header-virtual-scroll-z-index;
-  transition: opacity .15s linear;
-  opacity: 1;
+  overflow: auto;
+  z-index: @table-fixed-header-virtual-scroll-z-index - 1;
 }
 
 // 为了滚动穿透，需要取消上层表头的全部事件
@@ -971,19 +981,12 @@
 }
 
 .@{prefix}-table--bordered .@{prefix}-table__affixed-footer-elm {
-  border: @border;
-  border-top: 0;
-  border-right: 0;
+  border-left: @border;
+  border-bottom: @border;
 }
 
 .@{prefix}-table--multiple-header.@{prefix}-table--bordered {
   .@{prefix}-table__affixed-header-elm {
-    border-right: 0;
-  }
-}
-
-.@{prefix}-table--multiple-header.@{prefix}-table--bordered {
-  .@{prefix}-table__affixed-footer-elm {
     border-right: 0;
   }
 }
