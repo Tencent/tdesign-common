@@ -19,6 +19,12 @@
   user-select: none;
   width: @input-number-width;
 
+  &:not(&--column) {
+    > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
+      margin-left: @spacer-s;
+    }
+  }
+
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     appearance: none;
@@ -30,6 +36,19 @@
 
   .@{inputCls} {
     color: @input-number-inner-color;
+  }
+
+  // autoWidth适配
+  &.@{inputNumberCls}--auto-width {
+    width: auto;
+
+    &.@{prefix}-is-controls-right {
+      min-width: 88px;
+    }
+
+    &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
+      right: -4px;
+    }
   }
 
   &__decrease,
@@ -100,30 +119,6 @@
   &__increase {
     right: -8px;
   }
-
-  &--normal {
-    padding: 0;
-    border-radius: @border-radius;
-
-    &.@{prefix}-is-disabled {
-      cursor: no-drop;
-      color: @input-number-button-color-disabled;
-
-      &:hover {
-        .@{inputCls} {
-          border-color: @input-number-button-border-color;
-        }
-      }
-
-      &::placeholder {
-        color: @input-number-inner-color-disabled;
-      }
-
-      .@{inputCls}:focus {
-        box-shadow: none;
-      }
-    }
-  }
 }
 
 .@{inputNumberCls}.@{prefix}-is-disabled {
@@ -156,6 +151,7 @@
   padding: 0 @input-number-button-width-s;
 
   .@{inputCls} {
+    font-size: @font-size-s;
     height: @input-number-inner-height-s;
     line-height: @input-number-inner-height-s;
   }
@@ -196,6 +192,30 @@
     .@{inputNumberCls}__increase {
       width: @input-number-right-button-width-l;
       font-size: @input-number-right-font-size-l;
+    }
+  }
+}
+
+.@{inputNumberCls}.@{inputNumberCls}--normal {
+  padding: 0;
+  border-radius: @border-radius;
+
+  &.@{prefix}-is-disabled {
+    cursor: no-drop;
+    color: @input-number-button-color-disabled;
+
+    &:hover {
+      .@{inputCls} {
+        border-color: @input-number-button-border-color;
+      }
+    }
+
+    &::placeholder {
+      color: @input-number-inner-color-disabled;
+    }
+
+    .@{inputCls}:focus {
+      box-shadow: none;
     }
   }
 }
@@ -306,29 +326,6 @@
     }
     .@{inputNumberCls}__decrease {
       top: @input-number-button-column-height-s + 3px;
-    }
-  }
-}
-
-.@{inputNumberCls} {
-  &:not(&--column) {
-    > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
-      margin-left: @spacer-s;
-    }
-  }
-}
-
-// autoWidth适配
-.@{inputNumberCls} {
-  &.@{inputNumberCls}--auto-width {
-    width: auto;
-
-    &.@{prefix}-is-controls-right {
-      min-width: 88px;
-    }
-
-    &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
-      right: -4px;
     }
   }
 }
