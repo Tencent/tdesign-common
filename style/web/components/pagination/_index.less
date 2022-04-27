@@ -7,6 +7,7 @@
 @import "../../mixins/_layout.less";
 
 .@{prefix}-pagination {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -23,7 +24,7 @@
   }
 
   // 选择框
-  & .@{prefix}-select__wrap {
+  .@{prefix}-select__wrap {
     width: auto;
   }
 
@@ -168,12 +169,7 @@
   .@{prefix}-input-number {
     margin-left: @pagination-input-margin;
     margin-right: @pagination-input-margin;
-    height: @pagination-height-default;
     width: @pagination-input-width;
-
-    .@{prefix}-input {
-      width: calc(100% - @spacer);
-    }
   }
 
   // 迷你尺寸
