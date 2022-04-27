@@ -14,6 +14,10 @@
   white-space: nowrap;
   color: @pagination-text-color;
 
+  &.@{prefix}-is-disabled {
+    color: @pagination-text-color-disabled;
+  }
+
   // 数据统计
   &__total {
     font-size: @pagination-font-default;
@@ -223,15 +227,6 @@
 
         .pagination-btn(@pagination-height-s);
       }
-    }
-  }
-
-  //diabled
-  &.@{prefix}-is-disabled {
-    background-color: @bg-color-component-disabled;
-
-    .@{prefix}-pagination__jump {
-      color: @pagination-text-color-disabled;
     }
   }
 }
