@@ -288,13 +288,13 @@
   // 斑马线表格
   &--striped {
 
-    &.@{prefix}-table__header--fixed {
+    &.@{prefix}-table--header-fixed {
       tbody tr:nth-of-type(even) {
         background-color: @table-highlight-bg-color;
       }
     }
 
-    &:not(.@{prefix}-table__header--fixed) {
+    &:not(.@{prefix}-table--header-fixed) {
       tbody tr:nth-of-type(odd) {
         background-color: @table-highlight-bg-color;
       }
@@ -835,9 +835,12 @@
   z-index: @table-fixed-header-z-index;
 }
 
-.@{prefix}-table__footer {
-  > tr {
-    background-color: @bg-color-secondarycontainer;
+// 斑马纹的底部颜色，由业务掌控
+.@{prefix}-table:not(.@{prefix}-table--striped) {
+  .@{prefix}-table__footer {
+    > tr {
+      background-color: @bg-color-secondarycontainer;
+    }
   }
 }
 .@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
