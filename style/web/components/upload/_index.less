@@ -135,6 +135,8 @@
     line-height: @upload-card-line-height;
     overflow: hidden;
     width: 100%;
+    margin: 0;
+    padding: 0;
 
     & .@{prefix}-is-disabled {
       & :hover {
@@ -357,6 +359,10 @@
 
 .@{prefix}-upload__tips {
   margin-top: @upload-tips-margin-top;
+
+  &.@{prefix}-upload__tips-error {
+    color: @upload-tips-error-color;
+  }
 }
 
 .@{prefix}-upload__placeholder {
@@ -593,8 +599,4 @@
     margin-top: @upload-flow-card-area-margin-top;
     width: 100%;
   }
-}
-
-small.@{prefix}-upload__tips-error {
-  color: @upload-tips-error-color;
 }
