@@ -28,6 +28,19 @@
   &--direction-row {
     flex-direction: row;
   }
+
+  // 配合time-picker使用 需重置部分样式
+  .@{prefix}-time-picker__panel {
+    width: @datepicker-time-panel-width;
+
+    &-section-body {
+      padding: 0;
+    }
+
+    &-body {
+      margin: 0;
+    }
+  }
 }
 
 .@{prefix}-date-picker__panel--content,
@@ -149,21 +162,6 @@
 
   .@{prefix}-time-picker__panel-body {
     margin: 0;
-  }
-}
-
-// 配合time-picker使用 需重置部分样式
-.@{prefix}-date-picker {
-  .@{prefix}-time-picker__panel {
-    width: @datepicker-time-panel-width;
-
-    &-section-body {
-      padding: 0;
-    }
-
-    &-body {
-      margin: 0;
-    }
   }
 }
 
