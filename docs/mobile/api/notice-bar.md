@@ -33,3 +33,7 @@ toc: false
 ### 多行文字公告栏
 
 {{ multi-line }}
+
+### 事件
+
+{{ event }}
