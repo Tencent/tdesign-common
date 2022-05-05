@@ -787,6 +787,16 @@
   }
 }
 
+// 兼容 React 表头超出省略
+.@{prefix}-table__th-cell-inner,
+.@{prefix}-table__cell--title {
+  > .@{prefix}-popup__reference {
+    width: 100%;
+    display: inline;
+    .text-ellipsis();
+  }
+}
+
 // 可向左滚动时，左边显示固定列显示阴影，右边同理
 .@{prefix}-table__content--scrollable-to-left {
 
@@ -1033,7 +1043,7 @@
   height: 100%;
 }
 
-.@{prefix}-loading__parent .@{prefix}-table__content {
+.@{prefix}-table--loading .@{prefix}-table__content {
   min-height: 200px;
 }
 
