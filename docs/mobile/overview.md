@@ -40,13 +40,13 @@ spline: explain
       <p class="name">DropdownMenu 下拉菜单</p>
     </a>
   </div>
-	<div class="image-wrapper">
+	<!-- <div class="image-wrapper">
     <a class="item" href="./components/indexes">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes-dark.png" />
       <p class="name">Indexes 索引</p>
     </a>
-  </div>
+  </div> -->
   <div class="image-wrapper">
     <a class="item" href="./components/navbar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-navbar.png" />
