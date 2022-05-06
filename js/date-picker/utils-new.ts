@@ -150,8 +150,19 @@ export function getDateObj(date: Date) {
  * @param {Number} milliseconds 毫秒
  * @returns {Date} 一个新的date
  */
-export function setDateTime(date: Date, hours: number, minutes: number, seconds: number, milliseconds?: number): Date {
-  return dayjs(date).hour(hours).minute(minutes).second(seconds).millisecond(milliseconds).toDate();
+export function setDateTime(
+  date: Date,
+  hours: number,
+  minutes: number,
+  seconds: number,
+  milliseconds?: number
+): Date {
+  return dayjs(date)
+    .hour(hours)
+    .minute(minutes)
+    .second(seconds)
+    .millisecond(milliseconds)
+    .toDate();
 }
 
 /**
@@ -356,6 +367,7 @@ export function flagActive(data: any[], { ...args }: any) {
     }
 
     if (hoverStart && hoverEnd) {
+      // eslint-disable-next-line
       _item.hoverHighlight = isBetween(date, { start: hoverStart, end: hoverEnd }) && !_item.additional;
       _item.hoverStartOfRange = isHoverStart;
       _item.hoverEndOfRange = isHoverEnd;
@@ -371,7 +383,6 @@ export function extractTimeFormat(dateFormat: string = '') {
   return res[0];
 }
 
-
 /**
  * 返回时间对象的小时、分钟、秒、12小时制标识
  * @param {String} timeFormat 'pm 20:11:11:333'
@@ -381,7 +392,7 @@ export function extractTimeObj(timeFormat: string = '') {
   const matchedMeridiem = timeFormat.match(/[ap]m/i) || [''];
   const timeReg = /\d{1,2}:\d{1,2}(:\d{1,2})?(:\d{1,3})?/;
   const matchedTimeStr = timeFormat.match(timeReg) || ['0:0:0:0'];
-  const [hours = 0, minutes = 0, seconds = 0, milliseconds = 0] = matchedTimeStr[0].split(':')
+  const [hours = 0, minutes = 0, seconds = 0, milliseconds = 0] = matchedTimeStr[0].split(':');
 
   return {
     hours: +hours,
@@ -389,7 +400,7 @@ export function extractTimeObj(timeFormat: string = '') {
     seconds: +seconds,
     milliseconds: +milliseconds,
     meridiem: matchedMeridiem[0],
-  }
+  };
 }
 
 /**
@@ -418,12 +429,14 @@ export function isEnabledDate({
 
   // 禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。
   if (Array.isArray(disableDate)) {
-    const formatedDisabledDate = disableDate.map((item: string) => dayjs(item, format));
-    const isIncludes = formatedDisabledDate.some(item => item.isSame(dayjs(value)));
+    const formattedDisabledDate = disableDate.map((item: string) => dayjs(item, format));
+    // eslint-disable-next-line
+    const isIncludes = formattedDisabledDate.some(item => item.isSame(dayjs(value)));
     return !isIncludes;
   }
 
   // { from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。
+  // eslint-disable-next-line
   const { from, to, before, after } = disableDate;
 
   if (from && to) {

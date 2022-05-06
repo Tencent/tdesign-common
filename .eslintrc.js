@@ -50,6 +50,7 @@ module.exports = {
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-named-as-default': 0,
+    'import/no-extraneous-dependencies': 0,
     'no-plusplus': [
       'error',
       {
@@ -64,6 +65,7 @@ module.exports = {
       },
     ],
     'comma-dangle': 0,
-    'no-shadow': 0
+    'no-shadow': 0,
+    'object-curly-newline': 0,
   },
 };
