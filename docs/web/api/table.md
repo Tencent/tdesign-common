@@ -87,6 +87,13 @@ spline: data
 
 {{ custom-footer }}
 
+### 可表头吸顶/表尾吸顶的表格
+
+- 表头吸顶，设置 `headerAffixedTop=true` 即可。如果需要调整吸顶位置及更多配置，使用 `headerAffixProps`
+- 表尾吸底，设置 `footAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `footAffixProps`
+
+{{ affix }}
+
 ### 可展开和收起的表格
 
 表格提供可收纳功能，展开后可以进一步查看详细内容。

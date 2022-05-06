@@ -62,7 +62,11 @@
 
     .@{collapse-panel-cls}__body {
       border-bottom: @collapse-border-size;
-      background: @gray-color-1;
+      background: @bg-color-secondarycontainer;
+      // 处理react收起时重复border问题
+      &--collapsed {
+        border: none;
+      }
     }
     .@{collapse-panel-cls}__content {
       padding: 12px 16px 12px 40px;
@@ -70,7 +74,7 @@
   }
 
   &.@{prefix}-is-disabled {
-    background: @gray-color-2;
+    background: @bg-color-component-disabled;
 
     .@{collapse-panel-cls}__header {
       cursor: not-allowed;
@@ -81,7 +85,7 @@
     }
 
     .@{collapse-panel-cls}__body {
-      background: @gray-color-2;
+      background: @bg-color-component-disabled;
     }
   }
 }

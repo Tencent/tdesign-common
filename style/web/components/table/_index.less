@@ -19,12 +19,27 @@
 @table-fixed-footer-virtual-scroll-z-index: @table-fixed-footer-z-index + 1;
 @table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
 @table-loading-z-index: @table-right-scrollbar-divider + 1;
+@table-resize-line-z-index: @table-right-scrollbar-divider + 1;
 
 @table-cell-padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
 
 .scrollbar {
   .scrollbar();
+}
+
+// 底部内容吸底，不能设置滚动条颜色为透明，否则纵向滚动的时候会有表格内容文本穿透滚动条显示
+.scrollbar.@{prefix}-table__affixed-footer-elm {
+  &::-webkit-scrollbar-track {
+    background: @scroll-track-color;
+  }
+}
+
+// 表尾吸底，且横向滚动条和纵向滚动条同时存在时，为避免双层底部内容重叠造成的视觉颜色加深，特此去除一层的颜色
+.@{prefix}-table__affixed-footer-wrap > .scrollbar.@{prefix}-table__affixed-footer-elm {
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
 }
 
 // 文本内容省略需要 overflow: hidden，防止滚动超出视野区域；而过滤功能数据较少时，需要 overflow: initial
@@ -58,6 +73,17 @@
     right: 0;
     border-left: @border;
     pointer-events: none;
+  }
+
+  .@{prefix}-table__resize-line {
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: @border;
+    z-index: @table-resize-line-z-index;
   }
 
   &__column-controller {
@@ -262,13 +288,13 @@
   // 斑马线表格
   &--striped {
 
-    &.@{prefix}-table__header--fixed {
+    &.@{prefix}-table--header-fixed {
       tbody tr:nth-of-type(even) {
         background-color: @table-highlight-bg-color;
       }
     }
 
-    &:not(.@{prefix}-table__header--fixed) {
+    &:not(.@{prefix}-table--header-fixed) {
       tbody tr:nth-of-type(odd) {
         background-color: @table-highlight-bg-color;
       }
@@ -761,6 +787,16 @@
   }
 }
 
+// 兼容 React 表头超出省略
+.@{prefix}-table__th-cell-inner,
+.@{prefix}-table__cell--title {
+  > .@{prefix}-popup__reference {
+    width: 100%;
+    display: inline;
+    .text-ellipsis();
+  }
+}
+
 // 可向左滚动时，左边显示固定列显示阴影，右边同理
 .@{prefix}-table__content--scrollable-to-left {
 
@@ -809,9 +845,12 @@
   z-index: @table-fixed-header-z-index;
 }
 
-.@{prefix}-table__footer {
-  > tr {
-    background-color: @bg-color-secondarycontainer;
+// 斑马纹的底部颜色，由业务掌控
+.@{prefix}-table:not(.@{prefix}-table--striped) {
+  .@{prefix}-table__footer {
+    > tr {
+      background-color: @bg-color-secondarycontainer;
+    }
   }
 }
 .@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
@@ -933,12 +972,8 @@
 }
 
 .@{prefix}-table__affixed-footer-elm {
-  position: absolute;
-  left: 0;
-  overflow: hidden;
-  z-index: @table-fixed-header-virtual-scroll-z-index;
-  transition: opacity .15s linear;
-  opacity: 1;
+  overflow: auto;
+  z-index: @table-fixed-header-virtual-scroll-z-index - 1;
 }
 
 // 为了滚动穿透，需要取消上层表头的全部事件
@@ -959,19 +994,12 @@
 }
 
 .@{prefix}-table--bordered .@{prefix}-table__affixed-footer-elm {
-  border: @border;
-  border-top: 0;
-  border-right: 0;
+  border-left: @border;
+  border-bottom: @border;
 }
 
 .@{prefix}-table--multiple-header.@{prefix}-table--bordered {
   .@{prefix}-table__affixed-header-elm {
-    border-right: 0;
-  }
-}
-
-.@{prefix}-table--multiple-header.@{prefix}-table--bordered {
-  .@{prefix}-table__affixed-footer-elm {
     border-right: 0;
   }
 }
@@ -1015,7 +1043,7 @@
   height: 100%;
 }
 
-.@{prefix}-loading__parent .@{prefix}-table__content {
+.@{prefix}-table--loading .@{prefix}-table__content {
   min-height: 200px;
 }
 
