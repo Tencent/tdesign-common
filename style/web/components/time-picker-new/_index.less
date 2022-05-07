@@ -189,12 +189,13 @@
         border-radius: @time-picker-panel-item-border-radius;
         text-align: center;
         cursor: pointer;
+        transition: background-color @anim-duration-base;
 
-        &:not(&.@{prefix}-is-current):hover {
+        &:not(&.@{prefix}-is-current):not(&.@{prefix}-is-disabled):hover {
           color: @time-picker-panel-item-color-hover;
         }
 
-        &:not(&.@{prefix}-is-current):active {
+        &:not(&.@{prefix}-is-current):not(&.@{prefix}-is-disabled):active {
           background-color: @time-picker-panel-item-background-color-active;
         }
 
