@@ -226,7 +226,7 @@
     z-index: 1;
     height: @datepicker-cell-height;
     transform: translateY(-50%);
-    transition: all .2s;
+    transition: all .2s @anim-time-fn-easing;
   }
 
   &:hover {
@@ -258,6 +258,18 @@
   &--hover-highlight {
     &::after {
       background-color: @datepicker-highlight-color;
+    }
+  }
+
+  &--hover-highlight + &--hover-highlight {
+    &::after {
+      left: -28px;
+    }
+  }
+
+  &--highlight + &--highlight {
+    &::before {
+      left: -28px;
     }
   }
 
@@ -327,7 +339,7 @@
 
   &--disabled + &--disabled {
     &::before {
-      left: -@spacer-2;
+      left: -@spacer-4;
       right: @spacer-l;
       background-color: @datepicker-cell-disable-background-color;
     }

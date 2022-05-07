@@ -59,24 +59,6 @@ function isSameDate(date1: Date, date2: Date): boolean {
 }
 
 /**
- * 是否是某法范围内的日期，精确到日
- * @param {Date} value 目标日期
- * @param {Object} { start, end } 范围
- * @returns {Boolean}
- */
-function isBetween(
-  value: Date,
-  { start, end }: { start: Date; end: Date },
-): boolean {
-  const date = new Date(value.getFullYear(), value.getMonth(), value.getDate());
-
-  const startTime = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  const endTime = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-
-  return startTime <= date && endTime >= date;
-}
-
-/**
  * 比较两个日期对象的时间戳
  * @param {Date} date1 日期1
  * @param {Date} date2 日期2
@@ -361,14 +343,14 @@ export function flagActive(data: any[], { ...args }: any) {
     _item.active = (isStart || isEnd) && !_item.additional;
 
     if (start && end) {
-      _item.highlight = isBetween(date, { start, end }) && !_item.additional;
+      _item.highlight = dayjs(date).isBetween(start, end, type, '[]') && !_item.additional;
       _item.startOfRange = isStart;
       _item.endOfRange = isEnd;
     }
 
     if (hoverStart && hoverEnd) {
       // eslint-disable-next-line
-      _item.hoverHighlight = isBetween(date, { start: hoverStart, end: hoverEnd }) && !_item.additional;
+      _item.hoverHighlight = dayjs(date).isBetween(hoverStart, hoverEnd, type, '[]') && !_item.additional;
       _item.hoverStartOfRange = isHoverStart;
       _item.hoverEndOfRange = isHoverEnd;
     }
