@@ -220,36 +220,7 @@
     }
   }
 
-  // transition 暂兼容composition API版本
-  &-list__show-transition--top-left {
+  &-list__show {
     position: fixed;
-    top: 0;
-    left: 0;
-    .notification-slide-fade(-100%);
-  }
-
-  &-list__show-transition--top-right {
-    position: fixed;
-    top: 0;
-    right: 0;
-    .notification-slide-fade(100%);
-  }
-
-  &-list__show-transition--bottom-left {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column-reverse;
-    .notification-slide-fade(-100%);
-  }
-
-  &-list__show-transition--bottom-right {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column-reverse;
-    .notification-slide-fade(100%);
   }
 }
