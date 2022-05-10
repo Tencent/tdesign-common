@@ -15,7 +15,7 @@ export default function generateBase64Url({
   height: number,
   gapX:number,
   gapY: number,
-  offset:number,
+  offset:Array<number>,
   rotate:number,
   alpha:number,
   watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
