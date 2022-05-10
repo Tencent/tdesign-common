@@ -34,6 +34,10 @@ export default {
     sortIcon: undefined,
     // 过滤图标
     filterIcon: undefined,
+    // 树形结构展开图标
+    treeExpandAndFoldIcon: undefined,
+    // 是否隐藏排序图标的文本提示
+    hideSortTips: false,
   },
   select: {
     // 清除按钮
