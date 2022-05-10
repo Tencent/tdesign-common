@@ -13,13 +13,16 @@
 
   // 水平步骤条
   &--horizontal {
+    
+    // 自定义分隔符
+    &.@{prefix}-steps--custom-separator {
+      .@{prefix}-steps-item__inner {
+        width: 100%;
+      }
+    }
 
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
-
-      .@{prefix}-steps-item__content {
-        margin-top: @steps-item-content-margin-top;
-      }
 
       .@{prefix}-steps-item__title {
         width: fit-content;
@@ -40,6 +43,10 @@
 
       // 默认锚点的连接线，以 title 为起点
       .connector-default(horizontal);
+
+      &.@{prefix}-steps--reverse {
+        .connector-default(horizontal, true);
+      }
     }
 
     // 点状锚点
@@ -48,7 +55,11 @@
       .@{prefix}-steps-item {
         overflow: visible;
 
-        .@{prefix}-steps-item__title {
+        &__inner {
+          position: unset;
+        }
+
+        &__title {
           padding-right: 0;
           margin-bottom: @steps-item-title-margin-bottom;
         }
@@ -75,17 +86,21 @@
       .dot-icon(horizontal);
       // 点状锚点连接线，以整个 item 为起点
       .connector-dot(horizontal);
+
+      // 倒序
+      &.@{prefix}-steps--reverse {
+        .connector-dot(horizontal, true);
+      }
     }
   }
 
   // 垂直步骤条
   &--vertical {
+    width: fit-content;
     flex-direction: column;
 
     // 默认步骤条连接线，以 item 为起点
-    &.@{prefix}-steps--positive {
-      .connector-default(vertical);
-    }
+    .connector-default(vertical);
 
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
@@ -129,7 +144,6 @@
 
     // 倒序
     &.@{prefix}-steps--reverse {
-      flex-direction: column-reverse;
       .connector-default(vertical, true);
 
       &.@{prefix}-steps--dot-anchor {
