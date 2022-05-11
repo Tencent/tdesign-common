@@ -20,14 +20,14 @@ export default function generateBase64Url({
   alpha:number,
   watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
   lineSpace:number
-}): string {
-  let base64Url = '';
+}, onFinish: (url: string) => void): string {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   if (!ctx) {
     // eslint-disable-next-line no-console
     console.warn('当前环境不支持Canvas, 无法绘制水印');
-    return base64Url;
+    onFinish('');
+    return;
   }
   const ratio = window.devicePixelRatio || 1;
   const canvasWidth = (gapX + width) * ratio;
@@ -76,7 +76,7 @@ export default function generateBase64Url({
           }
           ctx.putImageData(imgData, 0, 0);
         }
-        base64Url = canvas.toDataURL();
+        onFinish(canvas.toDataURL());
       };
     } else if (item.text) {
       const {
@@ -96,6 +96,5 @@ export default function generateBase64Url({
       ctx.fillText(text, 0, item.top * ratio);
     }
   });
-  base64Url = canvas.toDataURL();
-  return base64Url;
+  onFinish(canvas.toDataURL());
 }
