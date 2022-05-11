@@ -5,7 +5,8 @@ export default function generateBase64Url({
   height,
   gapX,
   gapY,
-  offset,
+  offsetLeft,
+  offsetTop,
   rotate,
   alpha,
   watermarkContent,
@@ -15,32 +16,31 @@ export default function generateBase64Url({
   height: number,
   gapX:number,
   gapY: number,
-  offset:Array<number>,
+  offsetLeft:number,
+  offsetTop:number,
   rotate:number,
   alpha:number,
   watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
   lineSpace:number
-}): string {
-  let base64Url = '';
+}, onFinish: (url: string) => void): string {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   if (!ctx) {
     // eslint-disable-next-line no-console
     console.warn('当前环境不支持Canvas, 无法绘制水印');
-    return base64Url;
+    onFinish('');
+    return;
   }
   const ratio = window.devicePixelRatio || 1;
   const canvasWidth = (gapX + width) * ratio;
   const canvasHeight = (gapY + height) * ratio;
-  const canvasOffsetLeft = offset[0] || gapX / 2;
-  const canvasOffsetTop = offset[1] || gapY / 2;
 
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
   canvas.style.width = `${gapX + width}px`;
   canvas.style.height = `${gapY + height}px`;
 
-  ctx.translate(canvasOffsetLeft * ratio, canvasOffsetTop * ratio);
+  ctx.translate(offsetLeft * ratio, offsetTop * ratio);
   ctx.rotate((Math.PI / 180) * Number(rotate));
   ctx.globalAlpha = alpha;
 
@@ -76,7 +76,7 @@ export default function generateBase64Url({
           }
           ctx.putImageData(imgData, 0, 0);
         }
-        base64Url = canvas.toDataURL();
+        onFinish(canvas.toDataURL());
       };
     } else if (item.text) {
       const {
@@ -96,6 +96,5 @@ export default function generateBase64Url({
       ctx.fillText(text, 0, item.top * ratio);
     }
   });
-  base64Url = canvas.toDataURL();
-  return base64Url;
+  onFinish(canvas.toDataURL());
 }

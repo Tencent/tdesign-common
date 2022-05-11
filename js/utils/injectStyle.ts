@@ -1,4 +1,4 @@
-const injectStyle = (style) => {
+const injectStyle = (style: string) => {
   const styleElement = document.createElement('style');
   let styleSheet = null;
   document.head.appendChild(styleElement);
