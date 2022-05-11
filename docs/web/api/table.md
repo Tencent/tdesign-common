@@ -287,6 +287,7 @@ spline: data
 
 如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。
 
+- `treeExpandAndFoldIcon` 用于设置树形结构折叠/展开图标，支持全局配置。
 - 如果数据中的子节点字段不是 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
 - `tree.indent` 用于设置树结点缩进距离。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
