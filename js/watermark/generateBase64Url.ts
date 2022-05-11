@@ -5,7 +5,8 @@ export default function generateBase64Url({
   height,
   gapX,
   gapY,
-  offset,
+  offsetLeft,
+  offsetTop,
   rotate,
   alpha,
   watermarkContent,
@@ -15,7 +16,8 @@ export default function generateBase64Url({
   height: number,
   gapX:number,
   gapY: number,
-  offset:Array<number>,
+  offsetLeft:number,
+  offsetTop:number,
   rotate:number,
   alpha:number,
   watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
@@ -32,15 +34,13 @@ export default function generateBase64Url({
   const ratio = window.devicePixelRatio || 1;
   const canvasWidth = (gapX + width) * ratio;
   const canvasHeight = (gapY + height) * ratio;
-  const canvasOffsetLeft = offset[0] || gapX / 2;
-  const canvasOffsetTop = offset[1] || gapY / 2;
 
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
   canvas.style.width = `${gapX + width}px`;
   canvas.style.height = `${gapY + height}px`;
 
-  ctx.translate(canvasOffsetLeft * ratio, canvasOffsetTop * ratio);
+  ctx.translate(offsetLeft * ratio, offsetTop * ratio);
   ctx.rotate((Math.PI / 180) * Number(rotate));
   ctx.globalAlpha = alpha;
 
