@@ -252,8 +252,8 @@
 
     .@{prefix}-steps-item--finish:not(:last-child) {
       .@{prefix}-steps-item__title:after {
-        border-width: @steps-line-height;
-        border-color: @steps-line-bg-color-horizontal-finish;
+        border-bottom-width: @steps-line-height;
+        border-bottom-color: @steps-line-bg-color-horizontal-finish;
         color: @steps-line-bg-color-horizontal-finish;
       }
     }
@@ -262,8 +262,8 @@
       .@{prefix}-steps-item--process:not(:last-child),
       .@{prefix}-steps-item--finish:not(:last-child) {
         .@{prefix}-steps-item__title:after {
-          border-width: @steps-line-height;
-          border-color: @steps-line-bg-color-horizontal-finish;
+          border-bottom-width: @steps-line-height;
+          border-bottom-color: @steps-line-bg-color-horizontal-finish;
           color: @steps-line-bg-color-horizontal-finish;
         }
       }
@@ -322,8 +322,8 @@
 
         &--finish {
           &:not(:last-child)::before {
-            border-width: @steps-line-width;
-            border-color: @steps-line-bg-color-vertical-finish;
+            border-left-width: @steps-line-width;
+            border-left-color: @steps-line-bg-color-vertical-finish;
             color: @steps-line-bg-color-vertical-finish;
           }
         }
@@ -343,8 +343,8 @@
         &--process,
         &--finish {
           &:not(:last-child)::before {
-            border-width: @steps-line-width;
-            border-color: @steps-line-bg-color-vertical-process;
+            border-left-width: @steps-line-width;
+            border-left-color: @steps-line-bg-color-vertical-process;
             color: @steps-line-bg-color-vertical-process;
           }
         }
@@ -401,8 +401,8 @@
     .@{prefix}-steps-item--finish:not(:last-child) {
       &::after {
         color: @steps-line-dot-bg-color-vertical-finish;
-        border-color: @steps-line-dot-bg-color-vertical-finish;
-        border-width: @steps-line-height;
+        border-bottom-color: @steps-line-dot-bg-color-vertical-finish;
+        border-bottom-width: @steps-line-height;
       }
     }
 
@@ -411,8 +411,8 @@
       .@{prefix}-steps-item--finish:not(:last-child) {
         &::after {
           color: @steps-line-dot-bg-color-vertical-finish;
-          border-color: @steps-line-dot-bg-color-vertical-finish;
-          border-width: @steps-line-height;
+          border-bottom-color: @steps-line-dot-bg-color-vertical-finish;
+          border-bottom-width: @steps-line-height;
         }
       }
     }
@@ -461,8 +461,8 @@
         &--finish {
           &:not(:last-child)::before {
             color: @steps-line-dot-bg-color-vertical-finish;
-            border-color: @steps-line-dot-bg-color-vertical-finish;
-            border-width: @steps-line-width;
+            border-left-color: @steps-line-dot-bg-color-vertical-finish;
+            border-left-width: @steps-line-width;
           }
         }
       }
@@ -487,8 +487,8 @@
         &--process,
         &--finish {
           &:not(:last-child)::before {
-            border-width: @steps-line-width;
-            border-color: @steps-line-dot-bg-color-vertical-process;
+            border-left-width: @steps-line-width;
+            border-left-color: @steps-line-dot-bg-color-vertical-process;
             color: @steps-line-dot-bg-color-vertical-process;
           }
         }
