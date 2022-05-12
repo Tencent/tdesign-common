@@ -210,8 +210,10 @@
         content: "";
         display: block;
         width: 9999px;
-        border-bottom: @step-stroke-width
-          @steps-line-bg-color-horizontal-default;
+        border-left: 0;
+        border-top: 0;
+        border-bottom-width: @step-stroke-width;
+        border-bottom-color: @steps-line-bg-color-horizontal-default;
         position: absolute;
         left: 100%;
         top: 50%;
@@ -313,8 +315,10 @@
           content: "";
           display: block;
           height: 100%;
-          border-left: @steps-item-icon-number-line-width
-            @steps-line-bg-color-vertical-default;
+          border-left: 0;
+          border-top: 0;
+          border-right-width: @steps-item-icon-number-line-width;
+          border-right-color: @steps-line-bg-color-vertical-default;
           position: absolute;
           top: @steps-item-icon-number-line-top;
           left: @steps-item-icon-number-line-left;
@@ -322,8 +326,8 @@
 
         &--finish {
           &:not(:last-child)::before {
-            border-left-width: @steps-line-width;
-            border-left-color: @steps-line-bg-color-vertical-finish;
+            border-right-width: @steps-line-width;
+            border-right-color: @steps-line-bg-color-vertical-finish;
             color: @steps-line-bg-color-vertical-finish;
           }
         }
@@ -333,8 +337,10 @@
           content: "";
           display: block;
           height: 100%;
-          border-left: @steps-item-icon-number-line-width
-            @steps-line-bg-color-vertical-default;
+          border-left: 0;
+          border-bottom: 0;
+          border-right-width: @steps-item-icon-number-line-width;
+          border-right-color: @steps-line-bg-color-vertical-default;
           position: absolute;
           top: @steps-item-icon-number-line-top;
           left: @steps-item-icon-number-line-left;
@@ -343,8 +349,8 @@
         &--process,
         &--finish {
           &:not(:last-child)::before {
-            border-left-width: @steps-line-width;
-            border-left-color: @steps-line-bg-color-vertical-process;
+            border-right-width: @steps-line-width;
+            border-right-color: @steps-line-bg-color-vertical-process;
             color: @steps-line-bg-color-vertical-process;
           }
         }
@@ -390,8 +396,10 @@
         content: "";
         display: block;
         width: @steps-item-connector-line-width;
-        border-bottom: @steps-item-icon-number-line-height
-          @steps-line-dot-bg-color-vertical-default;
+        border-left: 0;
+        border-top: 0;
+        border-bottom-width: @steps-item-icon-number-line-height;
+        border-bottom-color: @steps-line-dot-bg-color-vertical-default;
         position: absolute;
         left: @steps-dot-connector-position-left-horizontal;
         top: @steps-dot-connector-position-top-horizontal;
@@ -451,8 +459,10 @@
           content: "";
           display: block;
           height: 100%;
-          border-left: @steps-item-icon-number-line-height
-            @steps-line-dot-bg-color-vertical-default;
+          border-bottom: 0;
+          border-left: 0;
+          border-right-width: @steps-item-icon-number-line-height;
+          border-right-color: @steps-line-dot-bg-color-vertical-default;
           position: absolute;
           left: @steps-dot-connector-position-left-vertical;
           top: @steps-dot-connector-position-top-vertical;
@@ -461,8 +471,8 @@
         &--finish {
           &:not(:last-child)::before {
             color: @steps-line-dot-bg-color-vertical-finish;
-            border-left-color: @steps-line-dot-bg-color-vertical-finish;
-            border-left-width: @steps-line-width;
+            border-right-color: @steps-line-dot-bg-color-vertical-finish;
+            border-right-width: @steps-line-width;
           }
         }
       }
@@ -473,8 +483,10 @@
           content: "";
           display: block;
           height: 100%;
-          border-left: @steps-item-icon-number-line-height
-            @steps-line-dot-bg-color-vertical-default;
+          border-bottom: 0;
+          border-left: 0;
+          border-right-width: @steps-item-icon-number-line-height;
+          border-right-color: @steps-line-dot-bg-color-vertical-default;
           position: absolute;
           left: @steps-dot-connector-position-left-vertical-reverse;
           top: @steps-dot-connector-position-top-vertical;
@@ -487,8 +499,8 @@
         &--process,
         &--finish {
           &:not(:last-child)::before {
-            border-left-width: @steps-line-width;
-            border-left-color: @steps-line-dot-bg-color-vertical-process;
+            border-right-width: @steps-line-width;
+            border-right-color: @steps-line-dot-bg-color-vertical-process;
             color: @steps-line-dot-bg-color-vertical-process;
           }
         }
