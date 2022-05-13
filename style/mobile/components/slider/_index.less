@@ -1,4 +1,5 @@
 @import "../../base.less";
+
 @import "./_var.less";
 
 @slider: ~"@{prefix}-slider";
@@ -62,7 +63,7 @@
       transform: translateX(-50%);
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 2px;
         height: 8px;
@@ -118,15 +119,15 @@
         cursor: not-allowed;
 
         .@{slider}__handle {
-          border-color: #BBD3FB;
+          border-color: @slider-disabled-color;
         }
 
         .@{slider}__track {
-          background-color: #BBD3FB;
+          background-color: @slider-disabled-color;
         }
 
         .@{slider}__mark-text.@{prefix}-is-active:after {
-          background-color: #BBD3FB;
+          background-color: @slider-disabled-color;
         }
       }
     }
