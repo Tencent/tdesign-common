@@ -61,6 +61,10 @@
     &--segment {
       border-right: .5px solid @cascader-menu-segment-color;
     }
+
+    &--filter {
+      width: auto;
+    }
   }
 
   &__item {
@@ -167,7 +171,7 @@
       }
     }
 
-    &:hover:not(.@{prefix}-is-expanded) {
+    &:hover:not(.@{prefix}-is-expanded):not(.@{prefix}-is-disabled) {
       background: @cascader-item-color-hover;
       cursor: pointer;
     }
