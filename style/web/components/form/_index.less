@@ -19,8 +19,17 @@
   }
 
   &__item {
-    min-height: @form-item-min-height;
-    padding-bottom: @form-item-padding-bottom;
+    margin-bottom: @form-item-margin-bottom;
+
+    // 文档流撑开内容补足剩余的 4px
+    &.@{prefix}-form__item-with-help {
+      margin-bottom: @form-item-with-help-margin-bottom;
+    }
+
+    // 绝对定位布局需要重设底部间距
+    &.@{prefix}-form__item-with-extra {
+      margin-bottom: @form-item-margin-bottom;
+    }
   }
 
   &__label {
@@ -67,6 +76,7 @@
   &__controls {
     min-height: @form-item-control-height;
     display: flow-root;
+    position: relative;
 
     &-content {
       display: flex;
@@ -134,6 +144,15 @@
   line-height: @form-item-help-line-height;
   font-size: @form-item-help-font-size;
   color: @form-color-extra;
+}
+
+.@{prefix}-input__extra {
+  position: absolute;
+  bottom: -@form-item-help-line-height;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // 输入框状态
