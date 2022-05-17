@@ -22,7 +22,7 @@ spline: navigation
 
 ### 指定容器锚点
 
-指定响应滚动的容器进行锚点定位，以及 click 事件的应用。
+指定响应滚动的容器进行锚点定位，以及 click 事件的应用，阻止锚点添加到 uri 上。
 
 {{ container }}
 
