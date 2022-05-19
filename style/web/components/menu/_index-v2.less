@@ -852,22 +852,23 @@ a.@{prefix}-menu__item {
 
     &--dark {
       background: @menu-theme-dark;
-  
+
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
         border-radius: @border-radius;
+
         --ripple-color: @menu-item-animation-bg--dark;
-  
+
         &.@{prefix}-is-active {
           color: @menu-item-active-color--dark;
           background-color: @menu-item-active-bg--dark;
         }
-  
+
         &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
           color: @menu-item-hover-color--dark;
           background-color: @menu-item-hover-bg--dark;
         }
-  
+
         &:hover:not(.@{prefix}-is-active) {
           color: @menu-item-hover-color--dark;
           background-color: @menu-item-hover-bg--dark;
