@@ -238,10 +238,6 @@ a.@{prefix}-menu__item {
       }
     }
 
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
-    }
-
     .@{prefix}-menu-group__title {
       color: @menu-menu-group-title-color--dark;
     }
@@ -682,11 +678,7 @@ a.@{prefix}-menu__item {
   &--dark {
 
     &.@{prefix}-head-menu {
-      background-color: @head-menu-bg--dark;
-
-      .@{prefix}-menu__popup {
-        background-color: @head-menu-bg--dark;
-      }
+      background-color: @menu-theme-dark;
     }
 
     .@{prefix}-menu__item {
@@ -715,25 +707,6 @@ a.@{prefix}-menu__item {
       }
 
       --ripple-color: @menu-item-animation-bg--dark;
-    }
-
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
-
-      .@{prefix}-menu__item {
-        color: @menu-item-color--dark;
-        border-radius: @border-radius;
-
-        &.@{prefix}-is-active {
-          color: @menu-item-active-color--dark;
-          background-color: @menu-item-active-bg--dark;
-        }
-
-        &:hover:not(.@{prefix}-is-active) {
-          color: @menu-item-hover-color--dark;
-          background-color: @menu-item-hover-bg--dark;
-        }
-      }
     }
 
     .@{prefix}-head-menu__submenu {
@@ -874,6 +847,32 @@ a.@{prefix}-menu__item {
 
       &:hover:not(.@{prefix}-is-active) {
         background-color: @menu-popup-item-hover-bg;
+      }
+    }
+
+    &--dark {
+      background: @menu-theme-dark;
+
+      .@{prefix}-menu__item {
+        color: @menu-item-color--dark;
+        border-radius: @border-radius;
+
+        --ripple-color: @menu-item-animation-bg--dark;
+
+        &.@{prefix}-is-active {
+          color: @menu-item-active-color--dark;
+          background-color: @menu-item-active-bg--dark;
+        }
+
+        &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
+          color: @menu-item-hover-color--dark;
+          background-color: @menu-item-hover-bg--dark;
+        }
+
+        &:hover:not(.@{prefix}-is-active) {
+          color: @menu-item-hover-color--dark;
+          background-color: @menu-item-hover-bg--dark;
+        }
       }
     }
   }
