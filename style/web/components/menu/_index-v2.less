@@ -97,6 +97,7 @@ a.@{prefix}-menu__item {
   }
 
   &__submenu {
+    padding-left: 0;
     border-top: 1px solid @head-menu-submenu-border-color;
 
     // menu 双层导航使用了 Tabs 实现，需要 tab 样式保持跟 menu theme 一致，不跟随整体亮色/暗色模式切换
@@ -235,10 +236,6 @@ a.@{prefix}-menu__item {
           background-color: @default-menu-active-color;
         }
       }
-    }
-
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
     }
 
     .@{prefix}-menu-group__title {
@@ -682,10 +679,6 @@ a.@{prefix}-menu__item {
 
     &.@{prefix}-head-menu {
       background-color: @menu-theme-dark;
-
-      .@{prefix}-menu__popup {
-        background-color: @menu-theme-dark;
-      }
     }
 
     .@{prefix}-menu__item {
@@ -714,25 +707,6 @@ a.@{prefix}-menu__item {
       }
 
       --ripple-color: @menu-item-animation-bg--dark;
-    }
-
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
-
-      .@{prefix}-menu__item {
-        color: @menu-item-color--dark;
-        border-radius: @border-radius;
-
-        &.@{prefix}-is-active {
-          color: @menu-item-active-color--dark;
-          background-color: @menu-item-active-bg--dark;
-        }
-
-        &:hover:not(.@{prefix}-is-active) {
-          color: @menu-item-hover-color--dark;
-          background-color: @menu-item-hover-bg--dark;
-        }
-      }
     }
 
     .@{prefix}-head-menu__submenu {
@@ -846,15 +820,15 @@ a.@{prefix}-menu__item {
         top: 0;
         left: calc(100% + @horizontal-spacer);
 
-        &::before {
-          content: "";
-          display: block;
-          position: absolute;
-          left: -@horizontal-spacer;
-          width: @horizontal-spacer;
-          top: 0;
-          bottom: 0;
-        }
+        // &::before {
+        //   content: "";
+        //   display: block;
+        //   position: absolute;
+        //   left: -@horizontal-spacer;
+        //   width: @horizontal-spacer;
+        //   top: 0;
+        //   bottom: 0;
+        // }
         @horizontal-spacer: 16px;
       }
     }
@@ -873,6 +847,32 @@ a.@{prefix}-menu__item {
 
       &:hover:not(.@{prefix}-is-active) {
         background-color: @menu-popup-item-hover-bg;
+      }
+    }
+
+    &--dark {
+      background: @menu-theme-dark;
+
+      .@{prefix}-menu__item {
+        color: @menu-item-color--dark;
+        border-radius: @border-radius;
+
+        --ripple-color: @menu-item-animation-bg--dark;
+
+        &.@{prefix}-is-active {
+          color: @menu-item-active-color--dark;
+          background-color: @menu-item-active-bg--dark;
+        }
+
+        &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
+          color: @menu-item-hover-color--dark;
+          background-color: @menu-item-hover-bg--dark;
+        }
+
+        &:hover:not(.@{prefix}-is-active) {
+          color: @menu-item-hover-color--dark;
+          background-color: @menu-item-hover-bg--dark;
+        }
       }
     }
   }
