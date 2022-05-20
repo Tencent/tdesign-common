@@ -22,10 +22,6 @@ toc: false
 
 {{ controller }}
 
-### 自定义样式
-
-{{ custom-color }}
-
 ### 状态
 
 {{ theme }}
