@@ -1,0 +1,61 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{rate-cls} {
+
+  display: flex;
+
+  &__wrapper {
+    position: relative;
+    & svg:hover{
+      transform: @rate-hover-transition
+    }
+
+    &--popup {
+      visibility: hidden;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, calc(-100% - @rate-popup-bottom-margin));
+      position: absolute;
+      padding: @rate-popup-padding;
+      font-size: @rate-popup-text-font;
+      font-weight: @rate-popup-text-font-weight;
+      color: @rate-popup-text-color;
+      background: @rate-popup-background-color;
+      border-radius: @rate-popup-radius;
+      white-space: nowrap;
+      box-shadow: @rate-popup-box-shadow;
+    }
+
+    &--popup::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: @rate-popup-arrow-shift;
+      border-width: @rate-popup-arrow-border-width;
+      border-color: @rate-popup-arrow-border-color;
+      border-style: solid;
+    }
+
+    &:hover &--popup{
+      visibility: visible;
+    }
+  }
+
+  &__text {
+      width: 100%;
+      margin-left: @rate-text-before;
+      height: @rate-text-height;
+      color: @rate-text-color;
+      font-size: @rate-text-font;
+      font-weight: @rate-text-font-weight;
+      text-align: left;
+      line-height: @rate-text-line-height;  
+  }
+}
