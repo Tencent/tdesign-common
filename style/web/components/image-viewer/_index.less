@@ -1,0 +1,151 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+// <name> 替换为组件名
+.@{prefix}-image-viewer-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.@{prefix}-image-viewer-preview-image {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  overflow: hidden;
+
+  .@{prefix}-image-viewer-modal-index {
+    text-align: center;
+    font-size: 20px;
+    color: @image-viewer-text-color-default;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .@{prefix}-image-viewer-modal-mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(55, 55, 55, 0.6);
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s ease;
+    opacity: 1;
+  }
+
+  .@{prefix}-image-viewer-modal__pic {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+    .@{prefix}-image-viewer-modal__box {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .@{prefix}-image-viewer-modal__image {
+        display: block;
+        max-width: 1000px;
+        max-height: 800px;
+        transition: all 0.3s ease;
+        transform: rotate(0deg);
+        object-fit: contain;
+      }
+    }
+  }
+
+  .@{prefix}-image-viewer-modal-footer {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
+    .@{prefix}-image-viewer-footer__option {
+      width: 450px;
+      height: 100%;
+      line-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .@{prefix}-image-viewer-modal__icon {
+    cursor: pointer;
+    color: @image-viewer-text-color-default;
+
+    &.__disabled {
+      color: @image-viewer-text-color-disabled
+    }
+
+    &.closeBtn {
+      top: 50px;
+      right: 40px;
+    }
+    &.nextBtn,
+    &.prevBtn {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &.prevBtn {
+      left: 40px;
+    }
+    &.nextBtn {
+      right: 40px;
+    }
+
+    &.closeBtn,&.prevBtn,&.nextBtn {
+      position: fixed;
+      z-index: 10;
+    }
+
+    .@{prefix}-image-viewer-modal__icon-label {
+      margin-left: 2px;
+    }
+  }
+
+  .@{prefix}-image-viewer-modal__separate {
+    position: relative;
+    width: 1px;
+    height: 20px;
+    background: #CCCCCC;
+    margin: 0 12px;
+  }
+}
+
+.@{prefix}-image-viewer-mask {
+  width: 100vh;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  position: fixed;
+  background-color: transparent;
+}
+
+.@{prefix}-image-viewer-error {
+  display: inline-block;
+}
