@@ -313,3 +313,21 @@ spline: data
 - 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
 
 {{ virtual-scroll }}
+
+### 可编辑的表格
+
+可编辑的表格分为单元格编辑表格和行编辑表格两种。
+
+#### 可编辑单元格的表格
+
+只需对 `column.edit` 进行配置，详细配置如下，
+
+- `column.edit.component` 表示进行编辑的组件，示例：Input、Select、DatePicker。
+- `column.edit.props` 表示传给编辑组件 `column.edit.component` 的参数。
+- `column.edit.abortOnEvent` 表示什么事件结束后，退出编辑态。如：输出框的失去焦点事件。
+
+{{ editable-cell }}
+
+#### 可编辑行的表格
+
+{{ editable-row }}
