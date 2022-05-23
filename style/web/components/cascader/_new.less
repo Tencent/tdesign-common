@@ -97,14 +97,16 @@
     }
 
     &-icon {
-      position: absolute;
-      height: 100%;
-      right: 0;
-      top: 0;
-      background: transparent;
-      margin: 0 8px;
-      font-size: 16px;
-      color: @cascader-icon-color;
+      &.@{prefix}-icon {
+        position: absolute;
+        height: 100%;
+        right: 0;
+        top: 0;
+        background: transparent;
+        margin: 0 8px;
+        font-size: 16px;
+        color: @cascader-icon-color;
+      }
 
       &.@{prefix}-loading {
         color: @cascader-highlight-color;
