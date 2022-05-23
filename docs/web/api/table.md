@@ -279,6 +279,40 @@ spline: data
 
 {{ drag-col-sort }}
 
+### 懒加载的表格
+
+懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'lazy' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+
+{{ lazy }}
+
+### 虚拟滚动的表格
+
+- 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+- 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
+
+{{ virtual-scroll }}
+
+### 可编辑的表格
+
+可编辑的表格分为单元格编辑表格和行编辑表格两种。
+
+#### 可编辑单元格的表格
+
+只需对 `column.edit` 进行配置，详细配置如下，
+
+- `column.edit.component` 表示进行编辑的组件，示例：Input、Select、DatePicker。需保证组件包含 `value` 和 `onChange` 两个属性。如果还需要支持校验规则，则组件还需实现 `tips` 和 `status` 两个 API，实现规则可参考 `Input` 组件。
+- `column.edit.props` 表示传给编辑组件 `column.edit.component` 的参数。
+- `column.edit.onEdited` 表示编辑完成后，退出编辑模式时触发。
+- `column.edit.rules` 指校验规则，和表单的校验规则配置一样 `FormRule`。
+- `column.edit.abortEditOnEvent` 表示除了点击非自身元素退出编辑态之外，还有哪些事件退出编辑态。如：单选框值变化事件 `onChange`，一般情况无需配置。
+
+{{ editable-cell }}
+
+#### 可编辑行的表格
+
+{{ editable-row }}
+
+
 ### 树形结构的表格
 
 请使用 `EnhancedTable`，`Table/PrimaryTable/BaseTable` 等不支持树形结构。
@@ -300,16 +334,3 @@ spline: data
 #### 树形结构行选中
 
 {{ tree-select }}
-
-### 懒加载的表格
-
-懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'lazy' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
-
-{{ lazy }}
-
-### 虚拟滚动的表格
-
-- 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
-- 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
-
-{{ virtual-scroll }}
