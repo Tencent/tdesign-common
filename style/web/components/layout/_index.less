@@ -26,8 +26,11 @@
 
 .@{prefix}-layout__header {
   height: @layout-header-height;
-  line-height: @layout-header-height;
   background-color: @layout-header-bg-color;
+
+  .title {
+    line-height: @layout-header-height;
+  }
 }
 
 .@{prefix}-layout__content {
