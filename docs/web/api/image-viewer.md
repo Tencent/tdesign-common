@@ -1,6 +1,6 @@
 ---
 title: ImageViewer 图片
-description: 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
+description: 当需要展示图片，并要进行部分操作时。
 isComponent: true
 usage: { title: '', description: '' }
 spline: base
@@ -50,4 +50,4 @@ spline: base
 
 描述文字。
 
-{{ status }}
+{{ albumIcons }}
