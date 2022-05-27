@@ -56,7 +56,6 @@
     will-change: opacity, max-height;
     position: relative;
     display: flex;
-    align-items: center;
     flex-wrap: nowrap;
     padding: 0 0 0 @tree-node-item-padding-left;
     cursor: default;
@@ -77,7 +76,12 @@
     }
 
     .@{prefix}-checkbox {
+      align-items: unset;
       font-size: 0;
+
+      &__input {
+        margin-top: @tree-node-item-label-margin;
+      }
     }
 
     .@{prefix}-tree__icon--default {
@@ -196,7 +200,7 @@
     line-height: @tree-node-item-label-height;
     flex-wrap: nowrap;
     flex: 0 0 auto;
-    margin-left: 4px;
+    margin: @tree-node-item-label-margin 0 @tree-node-item-label-margin 4px;
     padding: 0 4px;
     border-radius: @border-radius;
     cursor: pointer;
@@ -263,7 +267,6 @@
 .@{prefix}-tree--transition {
   .@{prefix}-tree__item--visible {
     opacity: 1;
-    max-height: @tree-node-item-origin-height;
   }
 
   .@{prefix}-tree__item--hidden {
@@ -275,7 +278,6 @@
 
   .@{prefix}-tree__children--visible {
     opacity: 1;
-    max-height: @tree-node-item-origin-height;
   }
 
   .@{prefix}-tree__children--hidden {
