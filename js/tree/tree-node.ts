@@ -733,7 +733,15 @@ export class TreeNode {
         map.set(node.value, true);
       });
     } else {
-      map.delete(this.value);
+      // 配置了expandParent时需要处理相关节点
+      if (get(tree, 'config.expandParent')) {
+        const shouldNotExpandNodes = this.walk();
+        shouldNotExpandNodes.forEach((node) => {
+          map.delete(node.value);
+        });
+      } else {
+        map.delete(this.value);
+      }
     }
 
     if (options.directly) {
