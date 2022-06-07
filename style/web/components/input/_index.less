@@ -234,41 +234,6 @@
   }
 }
 
-.@{prefix}-addon {
-  line-height: normal;
-  display: inline-table;
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-
-  .addon-item(prepend);
-  .addon-item(append);
-
-  & > .@{prefix}-input__wrap {
-    width: 100%;
-  }
-
-  &--prepend {
-
-    & .@{prefix}-input {
-      border-radius: 0 @input-border-radius @input-border-radius 0;
-    }
-  }
-
-  &--append {
-
-    & .@{prefix}-input {
-      border-radius: @input-border-radius 0 0 @input-border-radius;
-    }
-  }
-
-  &--prepend&--append {
-    & .@{prefix}-input {
-      border-radius: 0;
-    }
-  }
-}
-
 .@{prefix}-input__wrap {
   width: 100%;
 }
