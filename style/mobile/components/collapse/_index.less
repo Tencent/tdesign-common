@@ -2,17 +2,8 @@
 
 @import "./_var.less";
 
-.@{prefix}-collapse {
-  &__title {
-    font-size: @collapse-content-font-size;
-    padding: @collapse-content-padding;
-    padding-top: @collapse-content-padding * 2;
-    color: #999;
-  }
-}
-
 .@{prefix}-collapse-panel {
-  height: @collapse-header-height;
+  // height: @collapse-header-height;
   overflow: hidden;
   transition: height 200ms ease-in-out;
   box-shadow: @collapse-shadow-bottom;
@@ -36,7 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: @collapse-horizontal-padding;
+    padding: 0 @collapse-horizontal-padding;
     height: @collapse-header-height;
     box-shadow: @collapse-shadow-bottom;
     color: @collapse-header-text-color;
@@ -48,24 +39,19 @@
     height: 100%;
   }
 
-  // &__header-extra {
-  // }
+  &__header-extra:not(:empty) {
+    padding-right: 4px;
+  }
 
   &__header-icon {
     // 增大热区
     height: 100%;
-    padding-left: 8px;
-    width: 44px;
-    padding-right: 8px;
+    width: 24px;
     color: rgba(0, 0, 0, 40%);
   }
 
   &__title {
     font-size: @collapse-title-font-size;
-  }
-
-  &__extra {
-    font-size: @collapse-extra-font-size;
   }
 
   &__body {
@@ -75,45 +61,7 @@
   &__content {
     color: @collapse-content-text-color;
     font-size: @collapse-content-font-size;
-    padding: @collapse-content-padding 0;
+    padding: @collapse-content-padding;
     line-height: @collapse-content-line-height;
-  }
-
-  &__content:not(&-list__item) {
-    box-shadow: @collapse-shadow-bottom;
-  }
-
-  &-list__item:not(:last-child) {
-    padding-bottom: 0;
-  }
-
-  &-list__label {
-    display: inline-block;
-    color: @collapse-content-text-color;
-    font-size: @collapse-content-font-size;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: middle;
-  }
-
-  &-list__label + &-list__content {
-    display: inline;
-    margin-left: 12px;
-    vertical-align: middle;
-  }
-
-  &-list__content {
-    color: @collapse-list-content-text-color;
-    font-size: @collapse-content-font-size;
-  }
-
-  &__body {
-    padding: 0 @collapse-horizontal-padding;
-  }
-
-  &__body-slot {
-    padding-top: @collapse-content-padding;
-    padding-bottom: @collapse-content-padding;
   }
 }
