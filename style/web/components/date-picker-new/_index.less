@@ -14,10 +14,6 @@
 .@{prefix}-date-range-picker__panel-container {
   padding: 0;
   min-width: @datepicker-panel-container-min-width;
-
-  .@{prefix}-select__dropdown {
-    max-height: @datepicker-panel-select-max-width;
-  }
 }
 
 .@{prefix}-date-picker__panel,
@@ -27,6 +23,10 @@
 
   &--direction-row {
     flex-direction: row;
+  }
+
+  .@{prefix}-select__dropdown {
+    max-height: @datepicker-panel-select-max-width;
   }
 
   // 配合time-picker使用 需重置部分样式
