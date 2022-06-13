@@ -129,6 +129,11 @@
   pointer-events: auto;
   outline: none;
 
+  // modeless 点击穿透 即可以操作背景后的元素
+  &.@{prefix}-dialog__ctx--modeless {
+    pointer-events: none;
+  }
+
   &.@{prefix}-dialog__ctx--fixed {
     position: fixed;
     top: 0;
@@ -140,6 +145,13 @@
 
   &.@{prefix}-dialog__ctx--absolute {
     position: absolute;
+    // 用于挂载元素 修改定位方式
+    .@{prefix}-dialog__mask {
+      position: absolute;
+    }
+    .@{prefix}-dialog__wrap {
+      position: absolute;
+    }
   }
 
   &.t-is-visable {
