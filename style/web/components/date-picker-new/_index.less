@@ -198,6 +198,11 @@
     }
   }
 
+  .@{prefix}-date-picker__cell--disabled
+    + .@{prefix}-date-picker__cell--disabled:before {
+    left: -@spacer-7;
+  }
+
   .@{prefix}-date-picker__cell:nth-child(1) {
     text-align: left;
   }
@@ -226,7 +231,7 @@
     z-index: 1;
     height: @datepicker-cell-height;
     transform: translateY(-50%);
-    transition: all .2s @anim-time-fn-easing;
+    transition: all 0.2s @anim-time-fn-easing;
   }
 
   &:hover {
