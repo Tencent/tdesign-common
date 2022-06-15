@@ -29,14 +29,17 @@
 }
 
 // 底部内容吸底，不能设置滚动条颜色为透明，否则纵向滚动的时候会有表格内容文本穿透滚动条显示
-.scrollbar.@{prefix}-table__affixed-footer-elm {
+.scrollbar.@{prefix}-table__affixed-footer-elm,
+.scrollbar.@{prefix}-table__scrollbar--obvious {
   &::-webkit-scrollbar-track {
     background: @scroll-track-color;
   }
 }
 
 // 表尾吸底，且横向滚动条和纵向滚动条同时存在时，为避免双层底部内容重叠造成的视觉颜色加深，特此去除一层的颜色
-.@{prefix}-table__affixed-footer-wrap > .scrollbar.@{prefix}-table__affixed-footer-elm {
+.@{prefix}-table__affixed-footer-wrap > .scrollbar.@{prefix}-table__affixed-footer-elm,
+.@{prefix}-table--width-overflow.@{prefix}-table--footer-affixed .@{prefix}-table__content,
+.@{prefix}-table--width-overflow.@{prefix}-table--horizontal-bar-affixed .@{prefix}-table__content {
   &::-webkit-scrollbar-thumb {
     background: transparent;
   }
