@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 /* Alert */
 .@{prefix}-alert {
+  .reset;
+
   display: flex;
   padding: @alert-padding;
   opacity: 1;

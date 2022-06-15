@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-tag {
+  .reset;
+
   display: inline-flex;
   align-items: center;
   flex-direction: row;
@@ -15,7 +19,6 @@
   font-size: @tag-medium-font-size;
   line-height: @tag-line-height-medium;
   color: @tag-text-color;
-  box-sizing: border-box;
   border-radius: @tag-border-radius-square;
   border: @tag-default-border-width solid @tag-default-border-color;
   white-space: nowrap;

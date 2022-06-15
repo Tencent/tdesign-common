@@ -6,7 +6,11 @@
 
 @import "../../utilities/_animation.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-loading {
+  .reset;
+
   position: relative;
   color: @loading-color;
   font-size: @loading-icon-size;

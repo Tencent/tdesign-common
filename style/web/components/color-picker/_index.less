@@ -6,6 +6,8 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-color-picker__panel {
   padding: 0;
   width: @color-picker-panel-width;
@@ -26,6 +28,8 @@
 }
 
 .@{prefix}-color-picker {
+  .reset;
+
   &__icon {
     width: @color-picker-icon-size;
     height: @color-picker-icon-size;

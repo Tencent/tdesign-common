@@ -2,9 +2,11 @@
 
 @import "./_var.less";
 
-@import "../../_variables.less";
+@import "../../mixins/_reset.less";
 
 .@{prefix}-transfer {
+  .reset;
+
   font-size: @transfer-font-size;
   line-height: @transfer-line-height;
   position: relative;

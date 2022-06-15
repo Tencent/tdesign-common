@@ -4,8 +4,10 @@
 
 @import "../../utilities/_animation.less";
 
-.@{prefix}-tag-input {
+@import "../../mixins/_reset.less";
 
+.@{prefix}-tag-input {
+  .reset;
   .@{prefix}-tag {
     margin-right: @spacer-s;
     animation: t-fade-in .1s ease-in-out;

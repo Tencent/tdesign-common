@@ -8,8 +8,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{prefix}-dialog {
+  .reset;
+
   width: @dialog-width;
   background-color: @dialog-bg-color;
   position: relative;

@@ -6,6 +6,8 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-slider__input-container {
   display: flex;
   align-items: center;
@@ -25,6 +27,8 @@
 }
 
 .@{prefix}-slider {
+  .reset;
+
   height: @slider-height;
   width: 100%;
   position: relative;

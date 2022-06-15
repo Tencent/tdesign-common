@@ -8,6 +8,8 @@
 
 @import "../../mixins/_scrollbar.less";
 
+@import "../../mixins/_reset.less";
+
 @border: 1px solid @table-border-color;
 
 // 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
@@ -48,6 +50,8 @@
 }
 
 .@{prefix}-table {
+  .reset;
+
   width: 100%;
   font-size: @table-font-size;
   color: @table--text-color;

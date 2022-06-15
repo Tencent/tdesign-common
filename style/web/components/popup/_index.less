@@ -8,7 +8,11 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-popup {
+  .reset;
+
   color: @popup-text-color;
   display: inline-block;
   z-index: 5500;

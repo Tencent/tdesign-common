@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{radio-cls}-group {
+  .reset;
+
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -244,6 +248,8 @@
 }
 
 .@{radio-cls} {
+  .reset;
+
   position: relative;
   cursor: pointer;
 

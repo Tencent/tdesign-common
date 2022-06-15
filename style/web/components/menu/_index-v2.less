@@ -8,6 +8,8 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 a.@{prefix}-menu__item {
   text-decoration: none;
   color: unset;
@@ -20,6 +22,8 @@ a.@{prefix}-menu__item {
 
 // head-menu
 .@{prefix}-head-menu {
+  .reset;
+
   position: relative;
   width: 100%;
   background-color: @menu-theme-light;
@@ -190,6 +194,8 @@ a.@{prefix}-menu__item {
 
 // default-menu
 .@{prefix}-default-menu {
+  .reset;
+
   position: relative;
   width: @default-menu-width;
   display: inline-block;

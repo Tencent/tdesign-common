@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-steps {
+  .reset;
+
   display: flex;
   width: 100%;
   .step-item-basic();

@@ -5,9 +5,13 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 @componentName: drawer;
 
 .@{prefix}-@{componentName} {
+  .reset;
+
   position: fixed;
   z-index: 1500;
   width: 100%;

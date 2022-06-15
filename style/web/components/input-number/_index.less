@@ -8,10 +8,14 @@
 
 @import "../../utilities/_animation.less";
 
+@import "../../mixins/_reset.less";
+
 @inputCls: ~"@{prefix}-input";
 @inputNumberCls: ~"@{prefix}-input-number";
 
 .@{inputNumberCls} {
+  .reset;
+
   display: inline-block;
   position: relative;
   box-sizing: border-box;

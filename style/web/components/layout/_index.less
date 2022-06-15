@@ -6,9 +6,10 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-layout,
-.@{prefix}-layout * {
-  box-sizing: border-box;
+@import "../../mixins/_reset.less";
+
+.@{prefix}-layout {
+  .reset;
 }
 
 .@{prefix}-layout,

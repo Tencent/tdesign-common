@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{collapse-cls} {
+  .reset;
+
   border: @collapse-border-size;
   border-bottom: 0;
   background: @bg-color-container;

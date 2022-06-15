@@ -8,7 +8,11 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-time-picker,.@{prefix}-time-range-picker {
+  .reset;
+
   width: @time-picker-width;
   background: @time-picker-background-color-common;
   display: inline-block;

@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{popconfirm-cls} {
+  .reset;
+
   border-radius: @popconfirm-border-radius;
 
   &__content {

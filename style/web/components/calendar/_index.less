@@ -4,7 +4,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-calendar {
+  .reset;
+
   border: 1px solid @calendar-border-color;
   background-color: @calendar-bg;
 

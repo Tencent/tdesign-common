@@ -4,7 +4,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-avatar {
+  .reset;
+
   position: relative;
   display: inline-flex;
   background: @avatar-bg-color;
