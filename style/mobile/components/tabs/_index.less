@@ -12,7 +12,7 @@
   &__nav {
     width: 100vw;
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
     user-select: none;
     white-space: nowrap;
     background-color: @tab-nav-bg-color;
@@ -34,9 +34,11 @@
       position: relative;
       padding: @tab-nav-item-padding;
       display: inline-block;
+
       &.@{prefix}-is-active {
         color: @tab-nav-active-color;
         font-family: @font-family-medium;
+        font-weight: 700;
       }
 
       &.@{prefix}-is-disabled {
@@ -87,10 +89,8 @@
     }
   }
 
-  &.@{prefix}-size-l &__nav {
-    .@{prefix}-is-active {
-      font-size: @tab-nav-large-font-size;
-    }
+  &.@{prefix}-size-l &__nav-item {
+    font-size: @tab-nav-large-font-size;
   }
 
   &.@{prefix}-is-left,
