@@ -18,10 +18,14 @@
     &--has-content {
       padding-bottom: 8px;
     }
+
+    & + .@{prefix}-dialog__body {
+      margin-top: 8px;
+    }
   }
 
   &__title {
-    font-weight: 700;
+    font-weight: 600;
     font-size: @dialog-title-font-size;
     line-height: @dialog-title-line-height;
     color: @dialog-title-text-color;
@@ -32,7 +36,6 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: @dialog-body-padding;
-    margin-bottom: @dialog-body-margin-bottom;
     font-size: @dialog-body-font-size;
     line-height: @dialog-body-line-height;
     color: @dialog-body-text-color;
@@ -53,6 +56,7 @@
   &__footer {
     position: relative;
     display: flex;
+    margin-top: @dialog-footer-margin-top;
 
     &::before {
       content: " ";
@@ -81,7 +85,6 @@
   &__btn {
     position: relative;
     display: block;
-    flex: 1;
     font-size: @dialog-btn-font-size;
     padding: @dialog-btn-padding;
     line-height: @dialog-btn-line-height;
@@ -89,35 +92,8 @@
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0%);
 
-    &--active,
-    &:active {
-      background-color: @dialog-btn-bg-color-active;
-    }
-
-    &:first-child {
-      &::after {
-        display: none;
-      }
-    }
-
-    &--primary {
-      color: @dialog-btn-primary-color;
-      font-weight: 700;
-    }
-
-    &--success {
-      color: @dialog-btn-success-color;
-      font-weight: 700;
-    }
-
-    &--warning {
-      color: @dialog-btn-warning-color;
-      font-weight: 700;
-    }
-
-    &--error {
-      color: @dialog-btn-error-color;
-      font-weight: 700;
+    &.@{prefix}-size-full-width {
+      height: @dialog-btn-height;
     }
   }
 
