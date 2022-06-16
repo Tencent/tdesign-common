@@ -45,11 +45,13 @@
     border: 1px solid @checkbox-border-color;
     border-radius: @checkbox-border-radius;
     background-color: @checkbox-input-color;
+    box-sizing: border-box;
 
     &::after {
       content: "";
       position: absolute;
       opacity: 0;
+      box-sizing: border-box;
     }
   }
 

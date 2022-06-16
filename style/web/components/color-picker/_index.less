@@ -106,6 +106,7 @@
   background: white;
   color: @text-color-brand;
   padding: @color-picker-slider-thumb-padding;
+  box-sizing: border-box;
 
   &::before {
     content: "";
@@ -459,6 +460,7 @@
       position: relative;
       transform-origin: center;
       transition: all @anim-duration-base @anim-time-fn-easing;
+      box-sizing: border-box;
 
       // 暂时先不删，待react同步后再删除
       &__color {
@@ -495,6 +497,7 @@
       overflow: hidden;
       border: 1px solid @component-border;
       border-radius: 50%;
+      box-sizing: border-box;
     }
 
     &--inner {

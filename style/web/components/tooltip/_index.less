@@ -6,17 +6,14 @@
 
 @import "./_mixin.less";
 
-@import "../../mixins/_reset.less";
-
 .@{prefix}-popup {
   .@{prefix}-tooltip {
-    .reset;
-
     display: inline-block;
     border: 0;
     margin-bottom: 1px;
     max-width: @tooltip-max-width;
     word-break: break-word;
+    box-sizing: border-box;
 
     &:not(.@{prefix}-tooltip--light) {
       color: @tooltip-text-color;
