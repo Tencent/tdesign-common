@@ -1,4 +1,5 @@
 import uniqueId from 'lodash/uniqueId';
+import isNil from 'lodash/isNil';
 import get from 'lodash/get';
 import { TreeStore } from './tree-store';
 import {
@@ -139,7 +140,7 @@ export class TreeNode {
 
     this.set(spec);
     this.label = spec[propLabel] || '';
-    this.value = spec[propValue] || uniqueId(prefix);
+    this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
     this.tree.nodeMap.set(this.value, this);
 
     if (parent && parent instanceof TreeNode) {
