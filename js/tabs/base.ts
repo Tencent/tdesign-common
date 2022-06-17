@@ -28,7 +28,8 @@ export default {
     const containerWidth = getDomWidth(container);
     const wrapWidth = getDomWidth(wrap);
 
-    if (wrapWidth <= containerWidth) { // 容器大于选项，则设置第一个 nav-item 和容器左边相连
+    if (wrapWidth <= containerWidth) {
+      // 容器大于选项，则设置第一个 nav-item 和容器左边相连
       return 0;
     }
 
@@ -51,9 +52,7 @@ export default {
     if (['left', 'right'].includes(placement.toLowerCase())) {
       return false;
     }
-    const {
-      navsContainer: container, navsWrap: wrap, leftOperations, toLeftBtn
-    } = depElement;
+    const { navsContainer: container, navsWrap: wrap, leftOperations, toLeftBtn } = depElement;
     if (!wrap || !container) {
       return false;
     }
@@ -74,19 +73,16 @@ export default {
     if (['left', 'right'].includes(placement.toLowerCase())) {
       return false;
     }
-    const {
-      navsContainer: container, navsWrap: wrap, rightOperations, toRightBtn
-    } = depElement;
+    const { navsContainer: container, navsWrap: wrap, rightOperations, toRightBtn } = depElement;
     if (!wrap || !container) {
       return false;
     }
     const rightOperationsZoneWidth = getDomWidth(rightOperations);
     const rightIconWidth = getDomWidth(toRightBtn);
-    return scrollLeft
-        + getDomWidth(container)
-        - (rightOperationsZoneWidth - rightIconWidth)
-        - getDomWidth(wrap)
-        < -1; // 小数像素不精确，所以这里判断小于-1
+    return (
+      scrollLeft + getDomWidth(container) - (rightOperationsZoneWidth - rightIconWidth)
+      - getDomWidth(wrap) < -1
+    ); // 小数像素不精确，所以这里判断小于-1
   },
 
   /**
@@ -97,8 +93,13 @@ export default {
    */
   moveActiveTabIntoView(depElement: allElementDeps, scrollLeft: number): number {
     const {
-      activeTab, navsContainer: container, navsWrap,
-      leftOperations, toLeftBtn, rightOperations, toRightBtn
+      activeTab,
+      navsContainer: container,
+      navsWrap,
+      leftOperations,
+      toLeftBtn,
+      rightOperations,
+      toRightBtn,
     } = depElement;
     if (!activeTab) return scrollLeft;
     const totalWidthBeforeActiveTab = activeTab.offsetLeft;
@@ -140,7 +141,7 @@ export default {
     const rightCoverWidth = _getRightCoverWidth();
     // 判断当前tab是不是在右边被隐藏
     const isHiddenInRightZone = scrollLeft + containerWidth - rightCoverWidth
-        < totalWidthBeforeActiveTab + activeTabWidth;
+      < totalWidthBeforeActiveTab + activeTabWidth;
     if (isHiddenInRightZone) {
       return totalWidthBeforeActiveTab + activeTabWidth - containerWidth + rightCoverWidth;
     }
@@ -170,16 +171,14 @@ export default {
    * @returns number
    */
   scrollToRight(depElement: allElementDeps, scrollLeft: number): number {
-    const {
-      navsContainer: container, navsWrap: wrap, rightOperations, toRightBtn
-    } = depElement;
+    const { navsContainer: container, navsWrap: wrap, rightOperations, toRightBtn } = depElement;
     const rightOperationsZoneWidth = getDomWidth(rightOperations);
     const rightIconWidth = getDomWidth(toRightBtn);
     const containerWidth = getDomWidth(container);
     const wrapWidth = getDomWidth(wrap);
 
     return Math.min(
-      scrollLeft + containerWidth,
+      scrollLeft + containerWidth - rightOperationsZoneWidth - rightIconWidth,
       wrapWidth - containerWidth + rightOperationsZoneWidth - rightIconWidth,
     );
   },
