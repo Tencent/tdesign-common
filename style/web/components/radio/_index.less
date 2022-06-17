@@ -24,15 +24,45 @@
   }
 
   &.@{radio-cls}-group__outline {
+    flex-wrap: wrap;
 
     .@{radio-button--cls} {
+      &:not(:first-child) {
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: -1px;
+          display: block;
+          box-sizing: content-box;
+          width: 1px;
+          height: 100%;
+          padding: 1px 0;
+          background-color: @radio-button-group-background-color-filled;
+        }
+
+        &::before {
+          z-index: -1;
+          left: -1px;
+        }
+
+        &::after {
+          right: -1px;
+        }
+
+        &.@{prefix}-is-checked {
+          &::before,
+          &::after {
+            background-color: @radio-button-border-color-checked;
+          }
+        }
+      }
 
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
 
       &.@{prefix}-is-disabled {
-
         &.@{prefix}-is-checked {
           color: @brand-color-disabled;
           border-color: @brand-color-disabled;
@@ -120,19 +150,16 @@
   }
 
   &.@{radio-cls}-group--primary-filled {
-
     .@{radio-cls}-group__bg-block {
       background-color: @radio-button-background-color-primary-filled-checked;
     }
 
     .@{radio-button--cls} {
-
       &.@{prefix}-is-checked {
         color: @radio-button-color-primary-filled-checked;
       }
 
       &.@{prefix}-is-disabled {
-
         &.@{prefix}-is-checked {
           color: @radio-button-color-primary-filled-checked;
         }
@@ -277,7 +304,7 @@
       height: @radio-size;
       margin-top: -@radio-dot-size;
       margin-left: -@radio-dot-size;
-      transform: scale(.5);
+      transform: scale(0.5);
       opacity: @radio-opacity-transparent;
       border-radius: @border-radius-50;
       background-color: @radio-dot-color;
@@ -295,14 +322,12 @@
   }
 
   &:hover {
-
     .@{radio-cls}__input {
       border-color: @radio-dot-color;
     }
   }
 
   &.@{prefix}-is-checked {
-
     .@{radio-cls}__input {
       border-color: @radio-dot-color;
 
@@ -324,14 +349,12 @@
     }
 
     &:hover {
-
       .@{radio-cls}__input {
         border-color: @radio-border-color;
       }
     }
 
     &.@{prefix}-is-checked {
-
       .@{radio-cls}__input {
         border-color: @radio-border-color;
 
