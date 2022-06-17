@@ -6,11 +6,18 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_scrollbar.less";
+
 // <name> 替换为组件名
 .@{radio-cls}-group {
   display: inline-flex;
   align-items: center;
   width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .scrollbar(4px);
 
   .@{radio-cls} {
     margin-right: @radio-margin-right;
@@ -138,9 +145,8 @@
   }
 
   &.@{prefix}-size-s {
-    height: @radio-height-small;
-
     .@{radio-button--cls} {
+      height: @radio-height-small;
       padding: @radio-button-padding-small;
       font-size: @radio-button-font-size-small;
       line-height: @radio-button-line-height-small;
@@ -152,9 +158,8 @@
   }
 
   &.@{prefix}-size-m {
-    height: @radio-height-medium;
-
     .@{radio-button--cls} {
+      height: @radio-height-medium;
       padding: @radio-button-padding-medium;
       font-size: @radio-button-font-size-medium;
 
@@ -165,9 +170,8 @@
   }
 
   &.@{prefix}-size-l {
-    height: @radio-height-large;
-
     .@{radio-button--cls} {
+      height: @radio-height-large;
       padding: @radio-button-padding-large;
       font-size: @radio-button-font-size-large;
 
@@ -183,7 +187,8 @@
     border: @radio-button-border;
     border-color: @radio-button-border-color-default;
     border-right: 0;
-    line-height: @radio-button-line-height-default;
+    display: inline-flex;
+    align-items: center;
     transition: @radio-button-transition;
     color: @radio-label-color;
     white-space: nowrap;
