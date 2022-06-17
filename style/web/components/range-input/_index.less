@@ -9,7 +9,7 @@
 .@{prefix}-range-input {
   .reset;
 
-  width: max-content;
+  width: 100%;
   position: relative;
   height: @range-input-height-default;
   .range-input-base();
@@ -70,6 +70,7 @@
       }
 
       &__inner {
+        width: 100%;
         height: 100%;
       }
 
@@ -119,6 +120,8 @@
 }
 
 .@{prefix}-range-input-popup {
+  width: 100%;
+
   &--visible {
     .@{prefix}-range-input {
       border-color: @range-input-border-color-default-hover;

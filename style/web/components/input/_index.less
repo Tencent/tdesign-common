@@ -42,8 +42,16 @@
     box-sizing: border-box;
     height: 100%;
 
+    &:read-only {
+      cursor: pointer;
+    }
+
     &::placeholder {
       color: @input-placeholder-color;
+    }
+
+    &:placeholder-shown {
+      text-overflow: ellipsis;
     }
   }
   // 底部的额外消息

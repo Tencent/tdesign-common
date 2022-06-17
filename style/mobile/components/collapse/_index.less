@@ -38,8 +38,17 @@
     align-items: center;
     padding-left: @collapse-horizontal-padding;
     height: @collapse-header-height;
-    box-shadow: @collapse-shadow-bottom;
     color: @collapse-header-text-color;
+  }
+
+  &__header::before {
+    content: "";
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 0;
+    background: @gray-color-3;
   }
 
   &__header-right {
@@ -55,7 +64,7 @@
     // 增大热区
     height: 100%;
     padding-left: 8px;
-    width: 44px;
+    width: 25px;
     padding-right: 8px;
     color: rgba(0, 0, 0, 40%);
   }
