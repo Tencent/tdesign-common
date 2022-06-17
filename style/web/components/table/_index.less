@@ -29,14 +29,17 @@
 }
 
 // 底部内容吸底，不能设置滚动条颜色为透明，否则纵向滚动的时候会有表格内容文本穿透滚动条显示
-.scrollbar.@{prefix}-table__affixed-footer-elm {
+.scrollbar.@{prefix}-table__affixed-footer-elm,
+.scrollbar.@{prefix}-table__scrollbar--obvious {
   &::-webkit-scrollbar-track {
     background: @scroll-track-color;
   }
 }
 
 // 表尾吸底，且横向滚动条和纵向滚动条同时存在时，为避免双层底部内容重叠造成的视觉颜色加深，特此去除一层的颜色
-.@{prefix}-table__affixed-footer-wrap > .scrollbar.@{prefix}-table__affixed-footer-elm {
+.@{prefix}-table__affixed-footer-wrap > .scrollbar.@{prefix}-table__affixed-footer-elm,
+.@{prefix}-table--width-overflow.@{prefix}-table--footer-affixed .@{prefix}-table__content,
+.@{prefix}-table--width-overflow.@{prefix}-table--horizontal-bar-affixed .@{prefix}-table__content {
   &::-webkit-scrollbar-thumb {
     background: transparent;
   }
@@ -815,23 +818,23 @@
   }
 }
 
-.@{prefix}-table--affixed-header {
-  .@{prefix}-table__content {
-    th.@{prefix}-table__cell--fixed-left-last::after,
-    th.@{prefix}-table__cell--fixed-right-first::after {
-      box-shadow: none;
-    }
-  }
-}
+// .@{prefix}-table--affixed-header {
+//   .@{prefix}-table__content {
+//     th.@{prefix}-table__cell--fixed-left-last::after,
+//     th.@{prefix}-table__cell--fixed-right-first::after {
+//       box-shadow: none;
+//     }
+//   }
+// }
 
-.@{prefix}-table--affixed-footer {
-  .@{prefix}-table__content {
-    th.@{prefix}-table__cell--fixed-left-last::after,
-    th.@{prefix}-table__cell--fixed-right-first::after {
-      box-shadow: none;
-    }
-  }
-}
+// .@{prefix}-table--affixed-footer {
+//   .@{prefix}-table__content {
+//     th.@{prefix}-table__cell--fixed-left-last::after,
+//     th.@{prefix}-table__cell--fixed-right-first::after {
+//       box-shadow: none;
+//     }
+//   }
+// }
 
 .@{prefix}-table__scroll-bar-divider {
   position: absolute;
@@ -1060,4 +1063,13 @@
 
 .@{prefix}-table__cell--editable {
   cursor: pointer;
+}
+
+/** 吸底的分页器，需要背景色，避免表格文本内容显示穿透 */
+.@{prefix}-affix .@{prefix}-table__pagination {
+  background-color: white;
+}
+
+.@{prefix}-table--bordered .@{prefix}-affix .@{prefix}-table__pagination {
+  border-top: @border;
 }

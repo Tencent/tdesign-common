@@ -89,8 +89,10 @@ spline: data
 
 ### 可表头吸顶/表尾吸顶的表格
 
-- 表头吸顶，设置 `headerAffixedTop=true` 即可。如果需要调整吸顶位置及更多配置，使用 `headerAffixProps`
-- 表尾吸底，设置 `footAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `footAffixProps`
+- 表头吸顶，设置 `headerAffixedTop=true` 即可。如果需要调整吸顶位置及更多配置，使用 `headerAffixedTop: { offsetTop: 80 }`。
+- 表尾吸底，设置 `footAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `footAffixedBottom: { offsetBottom: 60 }`。
+- 滚动条吸底，设置 `horizontalScrollAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `horizontalScrollAffixedBottom: { offsetBottom: 60 }`。
+- 滚动条吸底，设置 `paginationAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `paginationAffixedBottom: { offsetBottom: 60 }`。
 
 {{ affix }}
 
@@ -286,6 +288,8 @@ spline: data
 {{ lazy }}
 
 ### 虚拟滚动的表格
+
+虚拟滚动场景下，支持表格的几乎全部功能，如：固定列、固定表头、固定表尾、表头吸顶、表尾吸底等。实验场地请参看「多级表头的表格」示例。
 
 - 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
 - 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
