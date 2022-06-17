@@ -92,7 +92,7 @@ spline: data
 - 表头吸顶，设置 `headerAffixedTop=true` 即可。如果需要调整吸顶位置及更多配置，使用 `headerAffixedTop: { offsetTop: 80 }`。
 - 表尾吸底，设置 `footAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `footAffixedBottom: { offsetBottom: 60 }`。
 - 滚动条吸底，设置 `horizontalScrollAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `horizontalScrollAffixedBottom: { offsetBottom: 60 }`。
-- 滚动条吸底，设置 `paginationAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `paginationAffixedBottom: { offsetBottom: 60 }`。
+- 分页器吸底，设置 `paginationAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `paginationAffixedBottom: { offsetBottom: 60 }`。
 
 {{ affix }}
 
