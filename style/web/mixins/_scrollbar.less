@@ -21,3 +21,18 @@
     background-color: @scrollbar-hover-color;
   }
 }
+
+.hideScrollbar() {
+  /* firefox */
+  scrollbar-width: none;
+  overflow: -moz-scrollbars-none;
+
+  /* IE 10+ */
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    /* Chrome Safari */
+    display: none;
+    width: 0 !important;
+  }
+}
