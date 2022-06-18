@@ -10,7 +10,6 @@
 
 @border: 1px solid @table-border-color;
 
-// 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
 @table-fixed-column-z-index: 30;
 @table-fixed-header-z-index: 50;
 @table-fixed-footer-z-index: 50;
@@ -19,7 +18,9 @@
 @table-fixed-footer-virtual-scroll-z-index: @table-fixed-footer-z-index + 1;
 @table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
 @table-loading-z-index: @table-right-scrollbar-divider + 1;
-@table-resize-line-z-index: @table-right-scrollbar-divider + 1;
+
+/** 吸顶表头 Affix 组件，zIndex: 1000。宽度拖拽辅助线层级需高于表头 */
+@table-resize-line-z-index: 1001;
 
 @table-cell-padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
@@ -70,8 +71,6 @@
     display: none;
     position: absolute;
     left: 10px;
-    top: 0;
-    bottom: 0;
     width: 0;
     border-left: @border;
     z-index: @table-resize-line-z-index;
