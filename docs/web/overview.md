@@ -128,6 +128,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/color-picker">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-color-picker.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-color-picker-dark.png" />
+      <p class="name">ColorPicker 颜色选择器</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/date-picker">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-datepicker.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-datepicker-dark.png" />
@@ -266,6 +273,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/collapse">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-collapse.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-collapse-dark.png" />
+      <p class="name">Collapse 折叠面板</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/comment">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-comment.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-comment-dark.png" />
@@ -333,6 +347,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tree.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tree-dark.png" />
       <p class="name">Tree 树</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/watermark">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-watermark.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-watermark-dark.png" />
+      <p class="name">Watermark 水印</p>
     </a>
   </div>
 </section>

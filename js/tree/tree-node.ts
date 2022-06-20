@@ -1,4 +1,5 @@
 import uniqueId from 'lodash/uniqueId';
+import isNil from 'lodash/isNil';
 import get from 'lodash/get';
 import { TreeStore } from './tree-store';
 import {
@@ -139,7 +140,7 @@ export class TreeNode {
 
     this.set(spec);
     this.label = spec[propLabel] || '';
-    this.value = spec[propValue] || uniqueId(prefix);
+    this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
     this.tree.nodeMap.set(this.value, this);
 
     if (parent && parent instanceof TreeNode) {
@@ -851,10 +852,10 @@ export class TreeNode {
   }
 
   // 更新选中态属性值
-  public updateChecked(): void {
+  public updateChecked(isFromValueChange?: boolean): void {
     const { tree } = this;
     this.vmCheckable = this.isCheckable();
-    if (this.vmCheckable && !this.disabled) {
+    if (this.vmCheckable && (!this.disabled || isFromValueChange)) {
       this.checked = this.isChecked();
       if (this.checked) {
         tree.checkedMap.set(this.value, true);

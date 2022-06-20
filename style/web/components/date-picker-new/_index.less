@@ -6,18 +6,15 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-date-picker {
-  width: @datepicker-input-default-width;
+.@{prefix}-date-picker,
+.@{prefix}-date-range-picker {
+  display: inline-flex;
 }
 
 .@{prefix}-date-picker__panel-container,
 .@{prefix}-date-range-picker__panel-container {
   padding: 0;
   min-width: @datepicker-panel-container-min-width;
-
-  .@{prefix}-select__dropdown {
-    max-height: @datepicker-panel-select-max-width;
-  }
 }
 
 .@{prefix}-date-picker__panel,
@@ -27,6 +24,10 @@
 
   &--direction-row {
     flex-direction: row;
+  }
+
+  .@{prefix}-select__dropdown {
+    max-height: @datepicker-panel-select-max-width;
   }
 
   // 配合time-picker使用 需重置部分样式
@@ -63,11 +64,11 @@
     display: inline-flex;
     gap: @spacer;
 
-    &--month {
+    .@{prefix}-date-picker__header-controller--month {
       width: @datepicker-month-controller-width;
     }
 
-    &--year {
+    .@{prefix}-date-picker__header-controller--year {
       width: @datepicker-year-controller-width;
     }
   }
@@ -196,6 +197,10 @@
         }
       }
     }
+  }
+
+  .@{prefix}-date-picker__cell--disabled + .@{prefix}-date-picker__cell--disabled:before {
+    left: -@spacer-7;
   }
 
   .@{prefix}-date-picker__cell:nth-child(1) {

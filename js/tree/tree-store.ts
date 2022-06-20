@@ -519,11 +519,11 @@ export class TreeStore {
   // 替换选中态列表
   public replaceChecked(list: TreeNodeValue[]): void {
     this.resetChecked();
-    this.setChecked(list);
+    this.setChecked(list, true);
   }
 
   // 批量设置选中态
-  public setChecked(list: TreeNodeValue[]): void {
+  public setChecked(list: TreeNodeValue[], isFromValueChange?: boolean): void {
     const { valueMode, checkStrictly, checkable } = this.config;
     if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
@@ -536,7 +536,7 @@ export class TreeStore {
           });
         } else {
           this.checkedMap.set(val, true);
-          node.updateChecked();
+          node.updateChecked(isFromValueChange);
         }
       }
     });
