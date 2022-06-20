@@ -61,7 +61,8 @@
 // 位置
 @dialog-close-position-top: @spacer-3;
 @dialog-close-position-right: @spacer-3;
-@dialog-top-position-top: 20%;
+// 此处不能使用20% 因为定位是paddingTop 所以20% 会根据屏幕宽度
+@dialog-top-position-top: 20vh;
 
 // 动画
 @dialog-anim-duration: @anim-duration-base;
