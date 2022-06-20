@@ -21,7 +21,11 @@ export default function getScrollbarWidth() {
   const scrollDiv = document.createElement('div');
   scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
   document.body.appendChild(scrollDiv);
-  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
   document.body.removeChild(scrollDiv);
+  // 火狐浏览器需要再减去 4
+  if (/Firefox/.test(navigator.userAgent)) {
+    scrollbarWidth -= 4;
+  }
   return scrollbarWidth;
 }
