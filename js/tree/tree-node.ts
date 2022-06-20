@@ -852,10 +852,10 @@ export class TreeNode {
   }
 
   // 更新选中态属性值
-  public updateChecked(): void {
+  public updateChecked(isFromValueChange?: boolean): void {
     const { tree } = this;
     this.vmCheckable = this.isCheckable();
-    if (this.vmCheckable && !this.disabled) {
+    if (this.vmCheckable && (!this.disabled || isFromValueChange)) {
       this.checked = this.isChecked();
       if (this.checked) {
         tree.checkedMap.set(this.value, true);
