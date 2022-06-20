@@ -25,17 +25,22 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+
+    &--disabled {
+      color: @gray-color-4;
+    }
   }
 
   &.@{prefix}-is-checked, &.@{prefix}-is-indeterminate {
     color: @checkbox-icon-checked-color;
     &.@{prefix}-is-disabled {
-      color: @checkbox-icon-checked-color-disabled;
+      color: @checkbox-icon-unchecked-color;
     }
   }
 
   &.@{prefix}-is-disabled {
-    color: @checkbox-icon-unchecked-color-disabled;
+    color: @checkbox-icon-unchecked-color;
+
     .@{prefix}-checkbox_label {
       color: @checkbox-title-color-disabled;
     }

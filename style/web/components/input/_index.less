@@ -36,8 +36,16 @@
     line-height: inherit;
     background-color: transparent;
 
+    &:read-only {
+      cursor: pointer;
+    }
+
     &::placeholder {
       color: @input-placeholder-color;
+    }
+
+    &:placeholder-shown {
+      text-overflow: ellipsis;
     }
   }
   // 底部的额外消息

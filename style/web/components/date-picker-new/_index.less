@@ -6,8 +6,9 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-date-picker {
-  width: @datepicker-input-default-width;
+.@{prefix}-date-picker,
+.@{prefix}-date-range-picker {
+  display: inline-flex;
 }
 
 .@{prefix}-date-picker__panel-container,
@@ -63,11 +64,11 @@
     display: inline-flex;
     gap: @spacer;
 
-    &--month {
+    .@{prefix}-date-picker__header-controller--month {
       width: @datepicker-month-controller-width;
     }
 
-    &--year {
+    .@{prefix}-date-picker__header-controller--year {
       width: @datepicker-year-controller-width;
     }
   }
@@ -196,6 +197,10 @@
         }
       }
     }
+  }
+
+  .@{prefix}-date-picker__cell--disabled + .@{prefix}-date-picker__cell--disabled:before {
+    left: -@spacer-7;
   }
 
   .@{prefix}-date-picker__cell:nth-child(1) {
