@@ -15,14 +15,6 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="./components/divider">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-divider.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-divider-dark.png" />
-      <p class="name">Divider 分割线</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
     <a class="item" href="./components/icon">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-icon.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-icon-dark.png" />
@@ -46,6 +38,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-layout.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-layout-dark.png" />
       <p class="name">Layout 布局</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="./components/divider">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-divider.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-divider-dark.png" />
+      <p class="name">Divider 分割线</p>
     </a>
   </div>
 </section>
