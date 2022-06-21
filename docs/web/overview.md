@@ -23,7 +23,7 @@ spline: explain
   </div>
 </section>
 
-<h3>布局<em class="tag">2</em></h3>
+<h3>布局<em class="tag">3</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/grid">
