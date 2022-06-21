@@ -223,6 +223,7 @@
     transition: @radio-button-transition;
     color: @radio-label-color;
     white-space: nowrap;
+    box-sizing: border-box;
 
     &:first-child {
       border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;
@@ -238,6 +239,7 @@
       opacity: @radio-opacity-transparent;
       height: 0;
       width: 0;
+      .reset;
     }
 
     &:hover {
