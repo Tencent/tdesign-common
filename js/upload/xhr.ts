@@ -26,7 +26,7 @@ export default function xhr({
   const formData = new FormData();
   const sendData = typeof data === 'function' ? data(file) : data;
   Object.keys(sendData).forEach((key) => {
-    formData.append(key, data[key]);
+    formData.append(key, sendData[key]);
   });
 
   // support one request upload multiple files
