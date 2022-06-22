@@ -5,6 +5,8 @@
 .@{prefix}-checkbox {
   display: flex;
   align-items: center;
+  padding: 16px;
+  position: relative;
   color: @checkbox-icon-unchecked-color;
 
   &__label {
@@ -13,6 +15,7 @@
     margin-left: @checkbox-icon-margin;
     font-size: @checkbox-title-font-size;
     color: @checkbox-title-color;
+    line-height: 24px;
 
     &-left {
       margin-right: @spacer-2;
@@ -29,6 +32,13 @@
     &--disabled {
       color: @gray-color-4;
     }
+  }
+
+  &__description:not(:empty) {
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 40%);
+    margin-top: 8px;
   }
 
   &.@{prefix}-is-checked, &.@{prefix}-is-indeterminate {
@@ -73,5 +83,22 @@
     flex-shrink: 0;
     position: relative;
     justify-content: center;
+  }
+
+  &__border {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid @gray-color-3;
+    width: 100%;
+
+    &--left {
+      right: 0;
+      width: calc(100% - 40px);
+    }
+
+    &--right {
+      left: 0;
+      width: calc(100% - 40px);
+    }
   }
 }
