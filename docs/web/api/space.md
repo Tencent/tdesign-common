@@ -3,7 +3,7 @@ title: Space 间距
 description: 控制组件之间的间距。
 isComponent: true
 usage: { title: '', description: '' }
-spline: base
+spline: layout
 ---
 
 ### 基本用法
