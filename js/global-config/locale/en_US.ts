@@ -89,7 +89,7 @@ export default {
       month: 'select month',
       year: 'select year',
     },
-    weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     rangeSeparator: ' ~ ',
     direction: 'ltr',
@@ -116,7 +116,8 @@ export default {
       fileInput: 'Upload',
       image: 'Click to upload',
       normal: 'Upload',
-      reupload: 'Reupload',
+      reupload: 'ReUpload',
+      continueUpload: 'Continue Upload',
       delete: 'Delete',
     },
     dragger: {

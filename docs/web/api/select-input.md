@@ -2,7 +2,7 @@
 title: SelectInput 筛选器输入框
 description: 定义：筛选器通用输入框，
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: data
 ---
 

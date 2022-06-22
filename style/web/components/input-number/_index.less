@@ -19,6 +19,12 @@
   user-select: none;
   width: @input-number-width;
 
+  &:not(&--column) {
+    > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
+      margin-left: @spacer-s;
+    }
+  }
+
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     appearance: none;
@@ -32,8 +38,21 @@
     color: @input-number-inner-color;
   }
 
-  &__decrease,
-  &__increase {
+  // autoWidth适配
+  &.@{inputNumberCls}--auto-width {
+    width: auto;
+
+    &.@{prefix}-is-controls-right {
+      min-width: 88px;
+    }
+
+    &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
+      right: -4px;
+    }
+  }
+
+  & &__decrease,
+  & &__increase {
     width: @input-number-button-width;
     height: @input-number-button-height;
     position: absolute;
@@ -93,36 +112,12 @@
     }
   }
 
-  &__decrease {
+  & &__decrease {
     left: 0;
   }
 
-  &__increase {
+  & &__increase {
     right: -8px;
-  }
-
-  &--normal {
-    padding: 0;
-    border-radius: @border-radius;
-
-    &.@{prefix}-is-disabled {
-      cursor: no-drop;
-      color: @input-number-button-color-disabled;
-
-      &:hover {
-        .@{inputCls} {
-          border-color: @input-number-button-border-color;
-        }
-      }
-
-      &::placeholder {
-        color: @input-number-inner-color-disabled;
-      }
-
-      .@{inputCls}:focus {
-        box-shadow: none;
-      }
-    }
   }
 }
 
@@ -156,6 +151,7 @@
   padding: 0 @input-number-button-width-s;
 
   .@{inputCls} {
+    font-size: @font-size-s;
     height: @input-number-inner-height-s;
     line-height: @input-number-inner-height-s;
   }
@@ -200,6 +196,30 @@
   }
 }
 
+.@{inputNumberCls}.@{inputNumberCls}--normal {
+  padding: 0;
+  border-radius: @border-radius;
+
+  &.@{prefix}-is-disabled {
+    cursor: no-drop;
+    color: @input-number-button-color-disabled;
+
+    &:hover {
+      .@{inputCls} {
+        border-color: @input-number-button-border-color;
+      }
+    }
+
+    &::placeholder {
+      color: @input-number-inner-color-disabled;
+    }
+
+    .@{inputCls}:focus {
+      box-shadow: none;
+    }
+  }
+}
+
 .@{inputNumberCls}.@{prefix}-is-controls-right {
   width: @input-number-right-width;
   padding: 0;
@@ -220,10 +240,6 @@
       @input-number-right-button-width + @input-number-padding-horizontal-default
     );
     border-radius: @border-radius;
-  }
-
-  .@{inputCls}__inner {
-    text-align: left;
   }
 
   .@{inputNumberCls}__decrease,
@@ -286,6 +302,8 @@
   }
 
   &.@{prefix}-size-l {
+    width: @input-number-right-width-l;
+
     .@{inputNumberCls}__increase,
     .@{inputNumberCls}__decrease {
       height: @input-number-button-column-height-l;
@@ -294,27 +312,16 @@
       top: @input-number-button-column-height-l + 3px;
     }
   }
-}
 
-.@{inputNumberCls} {
-  &:not(&--column) {
-    > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
-      margin-left: @spacer-s;
+  &.@{prefix}-size-s {
+    width: @input-number-right-width-s;
+
+    .@{inputNumberCls}__increase,
+    .@{inputNumberCls}__decrease {
+      height: @input-number-button-column-height-s;
     }
-  }
-}
-
-// autoWidth适配
-.@{inputNumberCls} {
-  &.@{inputNumberCls}--auto-width {
-    width: auto;
-
-    &.@{prefix}-is-controls-right {
-      min-width: 88px;
-    }
-
-    &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
-      right: -4px;
+    .@{inputNumberCls}__decrease {
+      top: @input-number-button-column-height-s + 3px;
     }
   }
 }

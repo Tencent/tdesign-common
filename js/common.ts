@@ -20,3 +20,10 @@ export type CSSSelector = string;
 export interface Styles {
   [css: string]: string | number;
 }
+
+export enum EKeyboardDirection {
+  left = 37,
+  up = 38,
+  right = 39,
+  down = 40,
+}

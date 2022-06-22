@@ -7,11 +7,16 @@
 @import "../../mixins/_layout.less";
 
 .@{prefix}-pagination {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   white-space: nowrap;
   color: @pagination-text-color;
+
+  &.@{prefix}-is-disabled {
+    color: @pagination-text-color-disabled;
+  }
 
   // 数据统计
   &__total {
@@ -23,7 +28,7 @@
   }
 
   // 选择框
-  & .@{prefix}-select__wrap {
+  .@{prefix}-select__wrap {
     width: auto;
   }
 
@@ -168,12 +173,7 @@
   .@{prefix}-input-number {
     margin-left: @pagination-input-margin;
     margin-right: @pagination-input-margin;
-    height: @pagination-height-default;
     width: @pagination-input-width;
-
-    .@{prefix}-input {
-      width: calc(100% - @spacer);
-    }
   }
 
   // 迷你尺寸
@@ -227,15 +227,6 @@
 
         .pagination-btn(@pagination-height-s);
       }
-    }
-  }
-
-  //diabled
-  &.@{prefix}-is-disabled {
-    background-color: @bg-color-component-disabled;
-
-    .@{prefix}-pagination__jump {
-      color: @pagination-text-color-disabled;
     }
   }
 }

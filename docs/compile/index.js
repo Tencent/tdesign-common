@@ -11,7 +11,7 @@ import fs from 'fs';
 export function compileUsage(options) {
   const { usage, demoPath, componentName } = options || {};
 
-  const { title = 'Live Demo', description = '' } = usage || {};
+  const { title = '', description = '' } = usage || {};
 
   if (!fs.existsSync(demoPath)) {
     // eslint-disable-next-line no-console
@@ -22,7 +22,7 @@ export function compileUsage(options) {
   return {
     importStr: `import Usage from '${demoPath}';`,
     installStr: 'Usage,',
-    markdownStr: `### ${title}\n${description}\n\n<Usage />`,
+    markdownStr: `${title ? `### ${title}` : ''}\n${description}\n\n<Usage />`,
   };
 }
 

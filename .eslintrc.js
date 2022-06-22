@@ -36,8 +36,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.config.js'],
+      files: ['*.config.js', 'test/script/*'],
       rules: {
+        'no-console': 0,
         // node 环境下支持 require
         '@typescript-eslint/no-require-imports': 'off',
         'import/no-dynamic-require': 0,
@@ -49,6 +50,7 @@ module.exports = {
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-named-as-default': 0,
+    'import/no-extraneous-dependencies': 0,
     'no-plusplus': [
       'error',
       {
@@ -62,6 +64,8 @@ module.exports = {
         checkLoops: false,
       },
     ],
-    'comma-dangle': 0
+    'comma-dangle': 0,
+    'no-shadow': 0,
+    'object-curly-newline': 0,
   },
 };

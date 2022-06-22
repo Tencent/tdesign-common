@@ -1,0 +1,127 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-card {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: @card-border-radius;
+  background-color: @card-background;
+  color: @text-color-primary;
+  transition: box-shadow @anim-duration-base ease-in-out;
+}
+
+.@{prefix}-card--bordered {
+  border: 1px solid @card-border-color;
+}
+
+.@{prefix}-card--shadow-hover:hover,
+.@{prefix}-card--shadow {
+  box-shadow: @shadow-1;
+}
+
+.@{prefix}-card__cover {
+  display: flow-root;
+}
+
+.@{prefix}-card__cover img {
+  display: flow-root;
+  width: 100%;
+  max-height: 100%;
+  border-radius: @border-radius @border-radius 0 0;
+}
+
+.@{prefix}-card__body {
+  display: flow-root;
+  padding: @card-body-padding;
+  line-height: 1.5;
+}
+
+.@{prefix}-card__header {
+  display: flex;
+  justify-content: space-between;
+  padding: @card-header-padding;
+  position: relative;
+  line-height: 1.5;
+
+  &-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  + .@{prefix}-card__body {
+    padding-top: 0;
+  }
+
+  + .@{prefix}-card__cover img {
+    border-radius: 0;
+  }
+}
+
+.@{prefix}-card__footer {
+  display: flex;
+  justify-content: space-between;
+  padding: @card-footer-padding;
+
+  &-wrapper {
+    flex: 1;
+  }
+}
+
+.@{prefix}-size-s {
+  .@{prefix}-card__body {
+    padding: @card-body-padding-s;
+  }
+
+  .@{prefix}-card__header {
+    padding: @card-header-padding-s;
+  }
+
+  .@{prefix}-card__footer {
+    padding: @card-footer-padding-s;
+  }
+}
+
+.@{prefix}-card__avatar {
+  margin-right: @spacer;
+}
+
+.@{prefix}-card__title {
+  font-size: @font-size-l;
+  font-family: @font-family-medium;
+  color: @card-color;
+  margin-right: @spacer;
+  word-break: break-all;
+}
+
+.@{prefix}-card__subtitle {
+  font-size: @font-size-base;
+  color: @card-subtitle-color;
+  word-break: break-all;
+}
+
+.@{prefix}-card__description {
+  font-size: @font-size-base;
+  color: @card-subtitle-color;
+  margin-top: (@spacer / 2);
+  word-break: break-all;
+}
+
+.@{prefix}-card__actions {
+  color: @text-color-link;
+  float: right;
+}
+
+.@{prefix}-card__title--bordered {
+  border-bottom: 1px solid @card-border-color;
+  padding-bottom: @spacer-2;
+
+  + .@{prefix}-card__body {
+    padding-top: @spacer-2;
+  }
+}

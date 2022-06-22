@@ -2,7 +2,7 @@
 title: TimePicker 时间选择器
 description: 用于选择某一具体时间点或某一时间段。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: form
 ---
 
@@ -53,3 +53,9 @@ spline: form
 禁止组件的使用。
 
 {{ disabled }}
+
+### 单独使用时间选择器面板部分
+
+如果只需要面板部分，可以通过使用`TimePickerPanel`来满足使用场景。
+
+{{ panel }}

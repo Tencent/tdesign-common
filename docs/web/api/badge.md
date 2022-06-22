@@ -2,7 +2,7 @@
 title: Badge 徽标
 description: 出现在图标或文字右上角的徽标标识。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: data
 ---
 

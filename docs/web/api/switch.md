@@ -2,7 +2,7 @@
 title: Switch 开关
 description: 用于两个互斥选项，用来打开或关闭选项的选择控件。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: form
 ---
 

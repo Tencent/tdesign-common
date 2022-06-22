@@ -289,7 +289,6 @@
 
   &--item {
     &:first-child {
-      width: @color-picker-input-format-width;
       flex-shrink: 0;
     }
 
@@ -304,14 +303,8 @@
       margin: 0;
     }
     .@{prefix}-select {
-      padding-right: 10px;
-
       &__single {
         margin-left: 4px;
-      }
-
-      &__right-icon {
-        margin: 0 4px;
       }
     }
 
@@ -456,6 +449,7 @@
       transform-origin: center;
       transition: all @anim-duration-base @anim-time-fn-easing;
 
+      // 暂时先不删，待react同步后再删除
       &__color {
         width: 100%;
         height: 100%;
@@ -465,6 +459,7 @@
         border-radius: 50%;
       }
 
+      // 暂时先不删，待react同步后再删除
       &__inner {
         width: 100%;
         height: 100%;
@@ -475,9 +470,26 @@
         padding: 0;
       }
 
-      &.@{prefix}-is-active .@{prefix}-color-picker__swatches--item__color {
+      // 暂时先不删，待react同步后再删除
+      &.@{prefix}-is-active .@{prefix}-color-picker__swatches--item__color,
+      &.@{prefix}-is-active .@{prefix}-color-picker__swatches--color {
         border-color: @text-color-brand;
       }
+    }
+
+    &--color {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid @component-border;
+      border-radius: 50%;
+    }
+
+    &--inner {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
   }
 }

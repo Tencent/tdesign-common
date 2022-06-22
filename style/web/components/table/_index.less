@@ -10,19 +10,40 @@
 
 @border: 1px solid @table-border-color;
 
-// 为了支持同时固定表头和固定列的效果，header 的层级必须比固定列高
 @table-fixed-column-z-index: 30;
 @table-fixed-header-z-index: 50;
+@table-fixed-footer-z-index: 50;
 @table-fixed-row-z-index: 70;
 @table-fixed-header-virtual-scroll-z-index: @table-fixed-header-z-index + 1;
+@table-fixed-footer-virtual-scroll-z-index: @table-fixed-footer-z-index + 1;
 @table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
 @table-loading-z-index: @table-right-scrollbar-divider + 1;
+
+/** 吸顶表头 Affix 组件，zIndex: 1000。宽度拖拽辅助线层级需高于表头 */
+@table-resize-line-z-index: 1001;
 
 @table-cell-padding: @table-td-padding-vertical-top @table-td-padding-horizontal
   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
 
 .scrollbar {
   .scrollbar();
+}
+
+// 底部内容吸底，不能设置滚动条颜色为透明，否则纵向滚动的时候会有表格内容文本穿透滚动条显示
+.scrollbar.@{prefix}-table__affixed-footer-elm,
+.scrollbar.@{prefix}-table__scrollbar--obvious {
+  &::-webkit-scrollbar-track {
+    background: @scroll-track-color;
+  }
+}
+
+// 表尾吸底，且横向滚动条和纵向滚动条同时存在时，为避免双层底部内容重叠造成的视觉颜色加深，特此去除一层的颜色
+.@{prefix}-table__affixed-footer-wrap > .scrollbar.@{prefix}-table__affixed-footer-elm,
+.@{prefix}-table--width-overflow.@{prefix}-table--footer-affixed .@{prefix}-table__content,
+.@{prefix}-table--width-overflow.@{prefix}-table--horizontal-bar-affixed .@{prefix}-table__content {
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
 }
 
 // 文本内容省略需要 overflow: hidden，防止滚动超出视野区域；而过滤功能数据较少时，需要 overflow: initial
@@ -46,16 +67,13 @@
   .t-table-vertical-align(middle);
   .t-table-vertical-align(bottom);
 
-  .bordered {
-    content: "";
+  .@{prefix}-table__resize-line {
+    display: none;
     position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
+    left: 10px;
+    width: 0;
     border-left: @border;
-    pointer-events: none;
+    z-index: @table-resize-line-z-index;
   }
 
   &__column-controller {
@@ -188,10 +206,6 @@
     display: inline-block;
   }
 
-  .@{prefix}-loading {
-    font-size: @table-loading-size;
-  }
-
   // 边框线表格
   &--bordered {
     td,
@@ -260,13 +274,13 @@
   // 斑马线表格
   &--striped {
 
-    &.@{prefix}-table__header--fixed {
+    &.@{prefix}-table--header-fixed {
       tbody tr:nth-of-type(even) {
         background-color: @table-highlight-bg-color;
       }
     }
 
-    &:not(.@{prefix}-table__header--fixed) {
+    &:not(.@{prefix}-table--header-fixed) {
       tbody tr:nth-of-type(odd) {
         background-color: @table-highlight-bg-color;
       }
@@ -615,6 +629,13 @@
   }
 }
 
+.@{prefix}-table__filter-pop-content-inner {
+  padding: 16px;
+  .@{prefix}-input__wrap {
+    width: 200px;
+  }
+}
+
 .@{prefix}-table__sort-icon--active {
   color: @table-icon-active-color;
 }
@@ -699,6 +720,13 @@
   }
 }
 
+.@{prefix}-table__th-row-select {
+  .t-table__th-cell-inner {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 .@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key="row-select"] {
   padding-left: 10px;
 }
@@ -752,6 +780,16 @@
   }
 }
 
+// 兼容 React 表头超出省略
+.@{prefix}-table__th-cell-inner,
+.@{prefix}-table__cell--title {
+  > .@{prefix}-popup__reference {
+    width: 100%;
+    display: inline;
+    .text-ellipsis();
+  }
+}
+
 // 可向左滚动时，左边显示固定列显示阴影，右边同理
 .@{prefix}-table__content--scrollable-to-left {
 
@@ -767,14 +805,23 @@
   }
 }
 
-.@{prefix}-table--affixed-header {
-  .@{prefix}-table__content {
-    th.@{prefix}-table__cell--fixed-left-last::after,
-    th.@{prefix}-table__cell--fixed-right-first::after {
-      box-shadow: none;
-    }
-  }
-}
+// .@{prefix}-table--affixed-header {
+//   .@{prefix}-table__content {
+//     th.@{prefix}-table__cell--fixed-left-last::after,
+//     th.@{prefix}-table__cell--fixed-right-first::after {
+//       box-shadow: none;
+//     }
+//   }
+// }
+
+// .@{prefix}-table--affixed-footer {
+//   .@{prefix}-table__content {
+//     th.@{prefix}-table__cell--fixed-left-last::after,
+//     th.@{prefix}-table__cell--fixed-right-first::after {
+//       box-shadow: none;
+//     }
+//   }
+// }
 
 .@{prefix}-table__scroll-bar-divider {
   position: absolute;
@@ -791,9 +838,12 @@
   z-index: @table-fixed-header-z-index;
 }
 
-.@{prefix}-table__footer {
-  > tr {
-    background-color: @bg-color-secondarycontainer;
+// 斑马纹的底部颜色，由业务掌控
+.@{prefix}-table:not(.@{prefix}-table--striped) {
+  .@{prefix}-table__footer {
+    > tr {
+      background-color: @bg-color-secondarycontainer;
+    }
   }
 }
 .@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
@@ -884,6 +934,8 @@
 .@{prefix}-table__tree-op-icon {
   margin-right: @spacer-2;
   cursor: pointer;
+  display: inline-flex;
+  vertical-align: text-bottom;
 
   &:hover {
     color: @table-icon-active-color;
@@ -902,33 +954,42 @@
   position: absolute;
   z-index: @table-fixed-header-virtual-scroll-z-index;
   left: 0;
-  top: 0;
 }
 
+/** 用于隐藏表头滚动条 */
+.@{prefix}-table__affixed-header-elm-wrap {
+  overflow: hidden;
+}
+
+.@{prefix}-table__affixed-header-elm-wrap,
 .@{prefix}-table__affixed-header-elm {
   position: absolute;
   left: 0;
-  overflow: hidden;
   z-index: @table-fixed-header-virtual-scroll-z-index;
+}
+
+.@{prefix}-table__affixed-header-elm {
+  overflow: auto;
   transition: opacity .15s linear;
   opacity: 1;
+  // 隐藏表头滚动条：为了 IE10以下的浏览器，暂时不能使用这种方式
+  // .hideScrollbar();
 }
 
-// 为了滚动穿透，需要取消上层表头的全部事件
-.@{prefix}-table__affixed-header-elm {
-  // 会导致排序图标、过滤图标等无法点击、也无法复制文本，因此需要在特定的位置，恢复点击
-  pointer-events: none;
-}
-
-// 恢复全部事件
-.@{prefix}-table__th-cell-inner {
-  pointer-events: all;
+.@{prefix}-table__affixed-footer-elm {
+  overflow: auto;
+  z-index: @table-fixed-header-virtual-scroll-z-index - 1;
 }
 
 .@{prefix}-table--bordered .@{prefix}-table__affixed-header-elm {
   border: @border;
   border-bottom: 0;
   border-right: 0;
+}
+
+.@{prefix}-table--bordered .@{prefix}-table__affixed-footer-elm {
+  border-left: @border;
+  border-bottom: @border;
 }
 
 .@{prefix}-table--multiple-header.@{prefix}-table--bordered {
@@ -976,10 +1037,25 @@
   height: 100%;
 }
 
-.@{prefix}-loading__parent .@{prefix}-table__content {
+.@{prefix}-table--loading .@{prefix}-table__content {
   min-height: 200px;
 }
 
-.@{prefix}-table__handle-draggable:hover {
+.@{prefix}-table__handle-draggable:hover,
+.@{prefix}-table--row-draggable tr,
+.@{prefix}-table--col-draggable .@{prefix}-table__th-cell-inner {
   cursor: move;
+}
+
+.@{prefix}-table__cell--editable {
+  cursor: pointer;
+}
+
+/** 吸底的分页器，需要背景色，避免表格文本内容显示穿透 */
+.@{prefix}-affix .@{prefix}-table__pagination {
+  background-color: white;
+}
+
+.@{prefix}-table--bordered .@{prefix}-affix .@{prefix}-table__pagination {
+  border-top: @border;
 }

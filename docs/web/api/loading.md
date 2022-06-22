@@ -2,7 +2,7 @@
 title: Loading 加载中
 description: 在网络较慢或数据较多时，表示数据正在加载的状态。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: message
 ---
 
@@ -35,7 +35,7 @@ Loading 组件可以作为容器包裹需要显示加载状态的内容。
 {{ wrap }}
 
 ### 有延时的加载
-设置最短延迟响应时间，低于响应时间的操作不现实加载状态。
+设置最短延迟响应时间，低于响应时间的操作不显示加载状态。
 
 {{ delay }}
 

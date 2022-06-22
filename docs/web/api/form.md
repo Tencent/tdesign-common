@@ -2,7 +2,7 @@
 title: Form 表单
 description: 用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: form
 ---
 
@@ -50,9 +50,10 @@ spline: form
 
 ### 不同重置功能的表单
 
-表单重置分两类：全部数据重置为空和全部数据重置为初始值。
+表单重置分三类：全部数据重置为空、全部数据重置为初始值、重置任意数据为任意值。
 
-可以使用 `resetType` 控制，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值。
+- 第一种方式：使用 `resetType` 控制，值为 `empty` 表示重置表单为空，值为 `initial` 表示重置表单数据为初始值。示例：`<Form resetType="initial" />`。
+- 第二种方式：使用组件实例方法 `reset` 进行数据重置，具体参数参考 API 文档。示例一：`reset({ type: 'initial' })`，示例二：`reset({ fields: ['name'] })`。
 
 {{ reset }}
 

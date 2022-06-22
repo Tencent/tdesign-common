@@ -2,7 +2,7 @@
 title: Table 表格
 description: 表格常用于展示同类结构下的多种数据，易于组织、对比和分析等，并可对数据进行搜索、筛选、排序等操作。一般包括表头、数据行和表尾三部分。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -87,6 +87,15 @@ spline: data
 
 {{ custom-footer }}
 
+### 可表头吸顶/表尾吸顶的表格
+
+- 表头吸顶，设置 `headerAffixedTop=true` 即可。如果需要调整吸顶位置及更多配置，使用 `headerAffixedTop: { offsetTop: 80 }`。
+- 表尾吸底，设置 `footAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `footAffixedBottom: { offsetBottom: 60 }`。
+- 滚动条吸底，设置 `horizontalScrollAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `horizontalScrollAffixedBottom: { offsetBottom: 60 }`。
+- 分页器吸底，设置 `paginationAffixedBottom=true` 即可。如果需要调整吸底位置及更多配置，使用 `paginationAffixedBottom: { offsetBottom: 60 }`。
+
+{{ affix }}
+
 ### 可展开和收起的表格
 
 表格提供可收纳功能，展开后可以进一步查看详细内容。
@@ -112,6 +121,8 @@ spline: data
 - 支持透传 `CheckboxGroup` 组件全部属性，`columnController.checkboxGroupProps` 用于控制弹框中的复现框相关功能。
 - 支持透传 `Dialog` 组件全部属性，`columnController.dialogProps` 用于调整列配置弹框相关功能，如：防止滚动穿透。
 - 支持透传 `Button` 组件全部属性，`columnController.buttonProps` 用于控制列配置按钮的全部特性，如：按钮颜色和文本。
+- `columnControllerVisible` 自由控制是否显示列配置框，一般用于希望完全自定义列配置按钮的场景。
+- `onColumnControllerVisibleChange` 列配置框显示或隐藏时触发。
 
 #### 示例一：包含配置按钮的列配置功能示例
 
@@ -245,21 +256,66 @@ spline: data
 
 ### 可拖拽排序的表格
 
+通过拖拽表格行调整顺序，拖拽表头表头调整列顺序。
+
 - `dragSort='row'` 用于设置表格为行拖拽排序。
-- `dragSort='col'` 用于设置表格为列拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='col'` 用于设置表格为列拖拽排序。
 - `sortOnRowDraggable` 用于行拖拽排序。已废弃，请更为使用 `dragSort='row'`，兼容支持。
 
-#### 行拖拽排序
+#### 示例一：无手柄列的行拖拽排序
 
 设置参数 `dragSort='row'` 即可。
 
 {{ drag-sort }}
 
+#### 示例二：有手柄列的行拖拽排序
+
+设置参数 `dragSort='row-handler'` 的同时，还需要添加手柄列：`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+
+{{ drag-sort-handler }}
+
 #### 列拖拽排序
 
-设置参数 `dragSort='col'` 的同时，还需要添加手柄列：`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+【持续完善中】调整列顺序。设置参数 `dragSort='col'` 即可。列拖拽排序场景中，必须指定列唯一标识 `colKey`。
 
 {{ drag-col-sort }}
+
+### 懒加载的表格
+
+懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'lazy' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+
+{{ lazy }}
+
+### 虚拟滚动的表格
+
+虚拟滚动场景下，支持表格的几乎全部功能，如：固定列、固定表头、固定表尾、表头吸顶、表尾吸底等。实验场地请参看「多级表头的表格」示例。
+
+- 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+- 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
+
+{{ virtual-scroll }}
+
+### 可编辑的表格
+
+可编辑的表格分为单元格编辑表格和行编辑表格两种。
+
+#### 可编辑单元格的表格
+
+只需对 `column.edit` 进行配置，详细配置如下，
+
+- `column.edit.component` 表示进行编辑的组件，示例：Input、Select、DatePicker。需保证组件包含 `value` 和 `onChange` 两个属性。如果还需要支持校验规则，则组件还需实现 `tips` 和 `status` 两个 API，实现规则可参考 `Input` 组件。
+- `column.edit.props` 表示传给编辑组件 `column.edit.component` 的参数。
+- `column.edit.onEdited` 表示编辑完成后，退出编辑模式时触发。
+- `column.edit.rules` 指校验规则，和表单的校验规则配置一样 `FormRule`。
+- `column.edit.abortEditOnEvent` 表示除了点击非自身元素退出编辑态之外，还有哪些事件退出编辑态。如：单选框值变化事件 `onChange`，一般情况无需配置。
+
+{{ editable-cell }}
+
+#### 可编辑行的表格
+
+{{ editable-row }}
+
 
 ### 树形结构的表格
 
@@ -269,7 +325,8 @@ spline: data
 
 如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。
 
-- 如果数据中的子节点字段不是 `children`，可以使用 `tree.childreKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
+- `treeExpandAndFoldIcon` 用于设置树形结构折叠/展开图标，支持全局配置。
+- 如果数据中的子节点字段不是 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
 - `tree.indent` 用于设置树结点缩进距离。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
 - `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。
@@ -281,16 +338,3 @@ spline: data
 #### 树形结构行选中
 
 {{ tree-select }}
-
-### 懒加载的表格
-
-懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'lazy' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
-
-{{ lazy }}
-
-### 虚拟滚动的表格
-
-- 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
-- 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
-
-{{ virtual-scroll }}

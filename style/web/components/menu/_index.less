@@ -257,6 +257,7 @@ a.@{prefix}-menu__item {
 
       .@{prefix}-menu__item {
         padding: 0 14px;
+        justify-content: center;
       }
     }
 
@@ -673,17 +674,17 @@ a.@{prefix}-menu__item {
     white-space: nowrap;
   }
 
-  .@{prefix}-icon + &__content {
+  .@{prefix}-icon + &__content, .@{prefix}-icon + &__item-link {
     margin-left: 8px;
   }
 
   &--dark {
 
     &.@{prefix}-head-menu {
-      background-color: @head-menu-bg--dark;
+      background-color: @menu-theme-dark;
 
       .@{prefix}-menu__popup {
-        background-color: @head-menu-bg--dark;
+        background-color: @menu-theme-dark;
       }
     }
 
@@ -796,6 +797,8 @@ a.@{prefix}-menu__item {
     &-wrapper {
       padding: 8px;
       height: 100%;
+      list-style: none;
+      margin: 0;
     }
 
     .@{prefix}-fake-arrow {
