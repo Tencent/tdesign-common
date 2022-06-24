@@ -40,6 +40,7 @@
     .@{prefix}-image-viewer-ui-image-title {
       flex: 1;
     }
+
     .@{prefix}-image-viewer-ui-image-icons .@{prefix}-icon {
       margin: 2px;
       cursor: pointer;
@@ -75,7 +76,7 @@
     background-color: @image-viewer-modal-mask-color;
     height: 100%;
     width: 100%;
-    transition: all 0.4s ease;
+    transition: all .4s ease;
     opacity: 1;
   }
 
@@ -90,6 +91,7 @@
       0% {
         transform: scale(0);
       }
+
       to {
         transform: scale(1);
       }
@@ -107,10 +109,9 @@
         display: block;
         max-width: 1000px;
         max-height: 800px;
-        transition: all 0.3s ease;
+        transition: all .3s ease;
         transform: rotate(0deg);
         object-fit: contain;
-
       }
     }
   }
@@ -119,7 +120,7 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 60%);
     z-index: 1;
     height: auto;
 
@@ -134,6 +135,7 @@
         0% {
           transform: rotateZ(0);
         }
+
         to {
           transform: rotateZ(-180deg);
         }
@@ -144,15 +146,15 @@
       }
 
       .is-range {
-        animation: 0.2s ease-out 0s 1 normal forwards running preview-icon-range;
+        animation: .2s ease-out 0s 1 normal forwards running preview-icon-range;
       }
     }
-
 
     @keyframes preview-image-show {
       0% {
         height: 0;
       }
+
       to {
         height: 100px;
       }
@@ -162,7 +164,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: 0.2s ease-out 0s 1 normal forwards running preview-image-show;
+      animation: .2s ease-out 0s 1 normal forwards running preview-image-show;
       overflow: auto hidden;
 
       .@{prefix}-image-viewer-footer__img {
@@ -183,26 +185,29 @@
     color: @image-viewer-text-color-default;
 
     &.@{prefix}-is-disabled {
-      color: @image-viewer-text-color-disabled
+      color: @image-viewer-text-color-disabled;
     }
 
     &.@{prefix}-image-viewer-modal-close-bt {
       top: 50px;
       right: 40px;
     }
+
     &.@{prefix}-image-viewer-modal-next-bt,
     &.@{prefix}-image-viewer-modal-prev-bt {
       top: 50%;
       transform: translateY(-50%);
     }
+
     &.@{prefix}-image-viewer-modal-prev-bt {
       left: 40px;
     }
+
     &.@{prefix}-image-viewer-modal-next-bt {
       right: 40px;
     }
 
-    &.@{prefix}-image-viewer-modal-close-bt,&.@{prefix}-image-viewer-modal-prev-bt,&.@{prefix}-image-viewer-modal-next-bt {
+    &.@{prefix}-image-viewer-modal-close-bt, &.@{prefix}-image-viewer-modal-prev-bt, &.@{prefix}-image-viewer-modal-next-bt {
       position: fixed;
       z-index: 10;
     }
@@ -216,7 +221,7 @@
     position: relative;
     width: 1px;
     height: 20px;
-    background: #CCCCCC;
+    background: #ccc;
     margin: 0 12px;
   }
 }
