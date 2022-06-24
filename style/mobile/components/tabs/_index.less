@@ -73,24 +73,22 @@
 
       .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
-        margin-bottom: 10px;
       }
 
       .@{prefix}-tabs__nav-container {
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
-        margin-bottom: -10px;
-      }
-
-      .@{prefix}-tabs__nav-line {
-        bottom: 10px;
       }
     }
   }
 
   &.@{prefix}-size-l &__nav-item {
-    font-size: @tab-nav-large-font-size;
+    transition: font-size .24s ease;
+
+    &.@{prefix}-is-active {
+      font-size: @tab-nav-large-font-size;
+    }
   }
 
   &.@{prefix}-is-left,
