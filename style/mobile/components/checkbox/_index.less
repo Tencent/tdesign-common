@@ -7,6 +7,7 @@
   align-items: center;
   padding: 16px;
   position: relative;
+  overflow: hidden;
   color: @checkbox-icon-unchecked-color;
 
   &__label {
@@ -92,13 +93,11 @@
     width: 100%;
 
     &--left {
-      right: 0;
-      width: calc(100% - 40px);
+      left: 48px;
     }
 
     &--right {
-      left: 0;
-      width: calc(100% - 40px);
+      right: 48px;
     }
   }
 }
