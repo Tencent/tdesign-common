@@ -6,26 +6,63 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_scrollbar.less";
+
 // <name> 替换为组件名
 .@{radio-cls}-group {
   display: inline-flex;
   align-items: center;
   width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .scrollbar(4px);
 
   .@{radio-cls} {
     margin-right: @radio-margin-right;
   }
 
   &.@{radio-cls}-group__outline {
+    flex-wrap: wrap;
 
     .@{radio-button--cls} {
+      &:not(:first-child) {
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: -1px;
+          display: block;
+          box-sizing: content-box;
+          width: 1px;
+          height: 100%;
+          padding: 1px 0;
+          background-color: @radio-button-group-background-color-filled;
+        }
+
+        &::before {
+          z-index: -1;
+          left: -1px;
+        }
+
+        &::after {
+          right: -1px;
+        }
+
+        &.@{prefix}-is-checked {
+          &::before,
+          &::after {
+            background-color: @radio-button-border-color-checked;
+          }
+        }
+      }
 
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
 
       &.@{prefix}-is-disabled {
-
         &.@{prefix}-is-checked {
           color: @brand-color-disabled;
           border-color: @brand-color-disabled;
@@ -113,19 +150,16 @@
   }
 
   &.@{radio-cls}-group--primary-filled {
-
     .@{radio-cls}-group__bg-block {
       background-color: @radio-button-background-color-primary-filled-checked;
     }
 
     .@{radio-button--cls} {
-
       &.@{prefix}-is-checked {
         color: @radio-button-color-primary-filled-checked;
       }
 
       &.@{prefix}-is-disabled {
-
         &.@{prefix}-is-checked {
           color: @radio-button-color-primary-filled-checked;
         }
@@ -138,9 +172,8 @@
   }
 
   &.@{prefix}-size-s {
-    height: @radio-height-small;
-
     .@{radio-button--cls} {
+      height: @radio-height-small;
       padding: @radio-button-padding-small;
       font-size: @radio-button-font-size-small;
       line-height: @radio-button-line-height-small;
@@ -152,9 +185,8 @@
   }
 
   &.@{prefix}-size-m {
-    height: @radio-height-medium;
-
     .@{radio-button--cls} {
+      height: @radio-height-medium;
       padding: @radio-button-padding-medium;
       font-size: @radio-button-font-size-medium;
 
@@ -165,9 +197,8 @@
   }
 
   &.@{prefix}-size-l {
-    height: @radio-height-large;
-
     .@{radio-button--cls} {
+      height: @radio-height-large;
       padding: @radio-button-padding-large;
       font-size: @radio-button-font-size-large;
 
@@ -183,7 +214,8 @@
     border: @radio-button-border;
     border-color: @radio-button-border-color-default;
     border-right: 0;
-    line-height: @radio-button-line-height-default;
+    display: inline-flex;
+    align-items: center;
     transition: @radio-button-transition;
     color: @radio-label-color;
     white-space: nowrap;
@@ -290,14 +322,12 @@
   }
 
   &:hover {
-
     .@{radio-cls}__input {
       border-color: @radio-dot-color;
     }
   }
 
   &.@{prefix}-is-checked {
-
     .@{radio-cls}__input {
       border-color: @radio-dot-color;
 
@@ -319,14 +349,12 @@
     }
 
     &:hover {
-
       .@{radio-cls}__input {
         border-color: @radio-border-color;
       }
     }
 
     &.@{prefix}-is-checked {
-
       .@{radio-cls}__input {
         border-color: @radio-border-color;
 

@@ -27,7 +27,7 @@
 }
 
 .input-disabled {
-  &.@{prefix}-input.@{prefix}-is-disabled {
+  &.@{prefix}-is-disabled {
     color: @input-text-color-disabled;
     background-color: @input-bg-color-disabled;
 
@@ -114,28 +114,6 @@
     &.@{prefix}-size-@{size} {
       width: @@width-size;
       @width-size: "input-width-@{size}";
-    }
-  }
-}
-
-.addon-item(@position) {
-  .@{prefix}-addon__@{position} {
-    background-color: @input-append-color;
-    color: @input-text-color-default;
-    vertical-align: middle;
-    display: table-cell;
-    position: relative;
-    border: 1px solid @input-border-color-default;
-    padding: @input-addon-item-padding;
-    width: 1px;
-    white-space: nowrap;
-    & when (@position = append) {
-      border-left: 0;
-      border-radius: 0 @input-border-radius @input-border-radius 0;
-    }
-    & when (@position = prepend) {
-      border-right: 0;
-      border-radius: @input-border-radius 0 0 @input-border-radius;
     }
   }
 }

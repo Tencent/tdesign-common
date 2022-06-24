@@ -4,21 +4,13 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">3</em></h3>
+<h3>基础<em class="tag">2</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/button">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-button.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-button-dark.png" />
       <p class="name">Button 按钮</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
-    <a class="item" href="./components/divider">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-divider.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-divider-dark.png" />
-      <p class="name">Divider 分割线</p>
     </a>
   </div>
 
@@ -31,7 +23,7 @@ spline: explain
   </div>
 </section>
 
-<h3>布局<em class="tag">2</em></h3>
+<h3>布局<em class="tag">3</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/grid">
@@ -46,6 +38,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-layout.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-layout-dark.png" />
       <p class="name">Layout 布局</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="./components/divider">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-divider.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-divider-dark.png" />
+      <p class="name">Divider 分割线</p>
     </a>
   </div>
 </section>
@@ -111,7 +111,7 @@ spline: explain
     </a>
   </div>
 </section>
-<h3>输入<em class="tag">15</em></h3>
+<h3>输入<em class="tag">18</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/cascader">
@@ -125,6 +125,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-checkbox.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-checkbox-dark.png" />
       <p class="name">Checkbox 多选框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/color-picker">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-color-picker.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-color-picker-dark.png" />
+      <p class="name">ColorPicker 颜色选择器</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -235,7 +242,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">12</em></h3>
+<h3>数据展示<em class="tag">16</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar">
@@ -263,6 +270,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-calendar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-calendar-dark.png" />
       <p class="name">Calendar 日历</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/collapse">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-collapse.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-collapse-dark.png" />
+      <p class="name">Collapse 折叠面板</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -333,6 +347,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tree.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tree-dark.png" />
       <p class="name">Tree 树</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/watermark">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-watermark.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-watermark-dark.png" />
+      <p class="name">Watermark 水印</p>
     </a>
   </div>
 </section>

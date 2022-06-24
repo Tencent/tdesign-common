@@ -20,7 +20,7 @@
       color: @text-level-4-color;
 
       &__number {
-        display: block;
+        box-sizing: border-box;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -37,6 +37,7 @@
       .@{prefix}-step-icon__number {
         width: @step-horizontal-icon-width;
         height: @step-horizontal-icon-width;
+        font-size: @step-connector-default-icon-width;
       }
     }
 
@@ -51,6 +52,7 @@
       line-height: 22px;
       font-size: @font-size-base;
       margin-bottom: 4px;
+      font-weight: bold;
     }
 
     &-description {

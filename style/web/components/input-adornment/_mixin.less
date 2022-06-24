@@ -1,0 +1,37 @@
+.input-adornment-item(@position) {
+  .@{prefix}-input-adornment__@{position} {
+    background-color: @input-append-color;
+    color: @input-text-color-default;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid @input-border-color-default;
+    padding: @input-adornment-item-padding;
+
+    & when (@position = append) {
+      border-left: 0;
+      border-radius: 0 @input-border-radius @input-border-radius 0;
+    }
+    & when (@position = prepend) {
+      border-right: 0;
+      border-radius: @input-border-radius 0 0 @input-border-radius;
+    }
+
+    .@{prefix}-input__wrap,
+    .@{prefix}-select__wrap {
+      height: 100%;
+    }
+
+    .@{prefix}-select__wrap {
+      width: auto;
+      margin: 0 -12px;
+    }
+
+    .@{prefix}-input,
+    .@{prefix}-select {
+      height: 100%;
+      line-height: 100%;
+      background-color: transparent;
+    }
+  }
+}
