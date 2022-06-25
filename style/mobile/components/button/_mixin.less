@@ -16,21 +16,21 @@
   height: @btn-height-default;
   background-color: transparent;
   outline: none;
-  padding-left: @btn-padding-horizontal-default;
-  padding-right: @btn-padding-horizontal-default;
+  // padding-left: @btn-padding-horizontal;
+  // padding-right: @btn-padding-horizontal;
   border: 0;
-  border-radius: @btn-border-radius;
+  // border-radius: @btn-border-radius;
   overflow: hidden;
 }
 
-.button-size(@height, @font-size, @padding-horizontal, @border-width: @btn-border-width) {
+.button-size(@height, @font-size, @icon-zise, @padding-horizontal, @border-width: @btn-border-width) {
   height: @height;
   font-size: @font-size;
   padding-left: @padding-horizontal - @border-width;
   padding-right: @padding-horizontal - @border-width;
 
   .@{prefix}-icon {
-    font-size: @btn-icon-size;
+    font-size: @icon-zise;
   }
 
   .@{prefix}-loading {
