@@ -21,6 +21,7 @@
 }
 
 .@{prefix}-button {
+  border-radius: 4px;
   .button();
 
   .@{prefix}-button__text,
@@ -30,26 +31,15 @@
     line-height: @btn-line-height-default;
   }
 
-  .@{prefix}-icon {
-    font-size: @btn-icon-size;
-  }
-
-  .@{prefix}-loading {
-    font-size: @btn-loading-size;
-  }
-
-  .@{prefix}-icon+.@{prefix}-button__text {
-    margin-left: @spacer;
-  }
-
-  .@{prefix}-loading+.@{prefix}-button__text {
+  .@{prefix}-icon + .@{prefix}-button__text:not(:empty),
+  .@{prefix}-loading + .@{prefix}-button__text:not(:empty) {
     margin-left: @spacer;
   }
 
   // 主要按钮
   &--base {
     color: @btn-text-variant-base-color;
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, 0);
+    .button-size(@btn-height-default, @btn-font-default, @btn-icon-size-default, @btn-padding-horizontal, 0);
     .button-attr-color("gray-bg", background-color);
     .button-attr-color("text-gray", color);
 
@@ -99,7 +89,7 @@
 
   // 次要按钮
   &--outline {
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, @btn-border-width);
+    // .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal, @btn-border-width);
     .button-attr-color("text-gray", color);
 
     .button-attr-color("text-bg", background-color);
@@ -155,7 +145,7 @@
   // 文字按钮
   &--text {
     border: 0;
-    .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal-default, 0);
+    // .button-size(@btn-height-default, @btn-font-default, @btn-padding-horizontal, 0);
     .button-attr-color("text-gray", color);
     .button-attr-color("text-bg", background-color);
 
@@ -197,27 +187,26 @@
     }
   }
 
-  &.@{prefix}-is-disabled {
-    cursor: not-allowed;
+  &.@{prefix}-is {
+    &-block {
+      display: block;
+      width: 100%;
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+    }
   }
 
   &.@{prefix}-size-s {
     line-height: @btn-line-height-s;
-    .button-size(@btn-height-s, @btn-font-default , @btn-padding-horizontal-s);
+    .button-size(@btn-height-s, @btn-font-small, @btn-icon-size-small, @btn-padding-horizontal, 0);
   }
 
   &.@{prefix}-size-l {
-    width: 100%;
+    // width: 100%;
     line-height: @btn-line-height-l;
-    .button-size(@btn-height-l , @btn-font-default , @btn-padding-horizontal-l);
-  }
-
-  &.@{prefix}-size-full-width {
-    display: block;
-    width: 100%;
-    height: @btn-height-block;
-    line-height: @btn-line-height-l;
-    border-radius: 0;
+    .button-size(@btn-height-l , @btn-font-large, @btn-icon-size-large, @btn-padding-horizontal, 0);
   }
 
   &--icon-only:not(&--round) {
@@ -233,15 +222,48 @@
     }
   }
 
-  &--round {
-    border-radius: @btn-shape-border-radius-default;
-
-    &.@{prefix}-size-s {
-      border-radius: @btn-shape-border-radius-s;
+  &--shape {
+    // 正方形
+    &-square {
+      padding: 0;
+      width: @btn-height-default;
+      &.@{prefix}-size-s {
+        padding: 0;
+        width: @btn-height-s;
+      }
+      &.@{prefix}-size-l {
+        padding: 0;
+        width: @btn-height-l;
+      }
     }
 
-    &.@{prefix}-size-l {
-      border-radius: @btn-shape-border-radius-l;
+    // 圆角长方形
+    &-round {
+      border-radius: @btn-shape-border-radius-default;
+
+      &.@{prefix}-size-s {
+        border-radius: @btn-shape-border-radius-s;
+      }
+
+      &.@{prefix}-size-l {
+        border-radius: @btn-shape-border-radius-l;
+      }
+    }
+
+    // 圆形
+    &-circle {
+      border-radius: 50%;
+      padding: 0;
+      width: @btn-height-default;
+
+      &.@{prefix}-size-s {
+        padding: 0;
+        width: @btn-height-s;
+      }
+      &.@{prefix}-size-l {
+        padding: 0;
+        width: @btn-height-l;
+      }
     }
   }
 }

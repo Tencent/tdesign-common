@@ -11,7 +11,12 @@ export default {
     fillWithZero: true,
     controllerConfig: undefined,
   },
+  input: {
+    autocomplete: '',
+  },
   dialog: {
+    closeOnEscKeydown: true,
+    closeOnOverlayClick: true,
     confirmBtnTheme: {
       default: 'primary',
       info: 'primary',
@@ -42,6 +47,12 @@ export default {
   select: {
     // 清除按钮
     clearIcon: undefined,
+    filterable: false,
+  },
+  drawer: {
+    closeOnEscKeydown: true,
+    closeOnOverlayClick: true,
+    size: 'small',
   },
   tree: {
     // 目录层级图标

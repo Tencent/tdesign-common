@@ -92,6 +92,14 @@
       background: @bg-color-component-disabled;
     }
   }
+
+  .@{prefix}-fake-arrow {
+    transform: rotate(-90deg);
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
 }
 
 .@{prefix}-slide-down-enter-active,
