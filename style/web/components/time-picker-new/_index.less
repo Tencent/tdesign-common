@@ -10,15 +10,15 @@
 
 @import "../../mixins/_reset.less";
 
-.@{prefix}-time-picker,
-.@{prefix}-time-range-picker {
+.@{prefix}-time-picker,.@{prefix}-time-range-picker {
+  .reset;
+
   width: @time-picker-width;
   background: @time-picker-background-color-common;
   display: inline-block;
   position: relative;
   font-size: @time-picker-font-size;
   color: @time-picker-input-text-color;
-  .reset;
 
   &.@{prefix}-is-disabled {
     cursor: not-allowed;

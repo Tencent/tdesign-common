@@ -5,8 +5,13 @@
 @import "./_var.less";
 
 @import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
 // 进度条基本样式
 .@{prefix}-progress {
+  .reset;
+
   &__inner {
     position: relative;
     height: 100%;

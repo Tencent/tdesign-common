@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // Grid system
 .@{prefix}-row {
+  .reset;
+
   display: flex;
   flex-flow: row wrap;
 }

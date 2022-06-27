@@ -6,8 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{prefix}-message {
+  .reset;
   .message;
 
   @{msg-icon-selector} {

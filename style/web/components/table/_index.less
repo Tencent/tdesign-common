@@ -8,6 +8,8 @@
 
 @import "../../mixins/_scrollbar.less";
 
+@import "../../mixins/_reset.less";
+
 @border: 1px solid @table-border-color;
 
 @table-fixed-column-z-index: 30;
@@ -52,6 +54,8 @@
 }
 
 .@{prefix}-table {
+  .reset;
+
   width: 100%;
   font-size: @table-font-size;
   color: @table--text-color;
@@ -124,6 +128,7 @@
     font-weight: normal;
     overflow-wrap: break-word;
     background-color: inherit;
+    box-sizing: border-box;
 
     &:not([align]) {
       text-align: left;

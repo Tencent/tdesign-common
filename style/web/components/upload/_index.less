@@ -10,7 +10,10 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-upload {
+  .reset;
 
   .@{prefix}-size-s {
     display: block;
@@ -216,6 +219,7 @@
       flex-direction: column;
       background-color: @upload-card-container-bg-color;
       border: @upload-card-contariner-border;
+      box-sizing: border-box;
 
       > .@{prefix}-icon,
       .@{prefix}-loading {
@@ -225,6 +229,7 @@
 
       > p {
         color: @text-color-placeholder;
+        margin: 0;
       }
     }
 

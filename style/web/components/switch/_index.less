@@ -4,7 +4,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-switch {
+  .reset;
+
   position: relative;
   display: inline-flex;
   vertical-align: middle;
@@ -73,6 +77,7 @@
   }
 
   &__content {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     color: @switch-content-color-unchecked;

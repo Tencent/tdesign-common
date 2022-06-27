@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-input {
+  .reset;
+
   width: 100%;
   position: relative;
   box-sizing: border-box;
@@ -35,6 +39,8 @@
     color: @input-text-color-default;
     line-height: inherit;
     background-color: transparent;
+    box-sizing: border-box;
+    height: 100%;
 
     &:read-only {
       cursor: pointer;

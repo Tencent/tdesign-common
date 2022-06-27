@@ -6,7 +6,11 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-pagination {
+  .reset;
+
   width: 100%;
   display: flex;
   align-items: center;
@@ -89,6 +93,7 @@
     border-radius: @pagination-border-radius-base;
     cursor: pointer;
     background-color: @pagination-bg-color-default;
+    box-sizing: border-box;
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;

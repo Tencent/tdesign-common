@@ -4,6 +4,8 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .button-attr-color(@theme, @attr, @ghost: false) {
   &:hover {
     @{attr}: @@theme-hover;
@@ -26,6 +28,7 @@
 }
 
 .@{prefix}-button {
+  .reset;
   .button;
 
   .@{prefix}-button__text,

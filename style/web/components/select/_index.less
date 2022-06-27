@@ -4,6 +4,8 @@
 
 @import "../../mixins/_text.less";
 
+@import "../../mixins/_reset.less";
+
 // select
 .@{prefix}-select__wrap {
   width: 100%;
@@ -16,10 +18,11 @@
 }
 
 .@{prefix}-select {
+  .reset;
+
   position: relative;
   display: inline-flex;
   width: 100%;
-  box-sizing: border-box;
   vertical-align: middle;
   line-height: (@select-height-default - 2px);
   background: @select-bg-color;
@@ -323,6 +326,7 @@
     height: @select-option-height-default;
     line-height: @select-option-line-height;
     padding: @select-option-padding-default;
+    box-sizing: border-box;
     .text-ellipsis();
   }
 }
@@ -347,6 +351,7 @@
   padding: @select-option-padding-default;
   color: @select-option-color;
   transition: background-color @anim-duration-base @anim-time-fn-easing;
+  box-sizing: border-box;
   .text-ellipsis();
 
   span {

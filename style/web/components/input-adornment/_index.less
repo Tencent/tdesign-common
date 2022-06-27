@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-input-adornment {
+  .reset;
+
   display: flex;
 
   .input-adornment-item(prepend);

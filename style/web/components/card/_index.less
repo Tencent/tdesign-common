@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-card {
+  .reset;
+
   position: relative;
   box-sizing: border-box;
   border-radius: @card-border-radius;

@@ -8,8 +8,12 @@
 
 @import "../../mixins/_scrollbar.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{radio-cls}-group {
+  .reset;
+
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -219,6 +223,7 @@
     transition: @radio-button-transition;
     color: @radio-label-color;
     white-space: nowrap;
+    box-sizing: border-box;
 
     &:first-child {
       border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;
@@ -234,6 +239,7 @@
       opacity: @radio-opacity-transparent;
       height: 0;
       width: 0;
+      .reset;
     }
 
     &:hover {
@@ -276,10 +282,14 @@
 }
 
 .@{radio-cls} {
+  .reset;
+
   position: relative;
   cursor: pointer;
 
   &__former {
+    .reset;
+
     opacity: @radio-opacity-transparent;
     position: absolute;
   }

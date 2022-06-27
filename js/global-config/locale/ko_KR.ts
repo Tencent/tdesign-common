@@ -23,7 +23,7 @@ export default {
     thisMonth: '이번 달',
     week: '하나,둘,셋,넷,다섯,여섯,하루',
     cellMonth: '1월,2월,3월,4월,5월,6월,7월,8월,9월,10월,11월,12월',
- },
+  },
   transfer: {
     title: '{checked} / {total} 안건',
     empty: '데이터 없음',

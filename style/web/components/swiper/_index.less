@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 /* Swiper */
 .@{prefix}-swiper {
+  .reset;
+
   position: relative;
 
   &__wrap {

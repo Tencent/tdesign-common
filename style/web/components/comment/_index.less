@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-comment {
+  .reset;
+
   width: 100%;
   color: @comment-text-color-default;
 
@@ -70,6 +74,8 @@
     margin-top: @comment-actions-margin-top;
     display: flex;
     justify-content: flex-end;
+    list-style: none;
+    padding: 0;
 
     & > li {
       color: @comment-text-color-secondary;

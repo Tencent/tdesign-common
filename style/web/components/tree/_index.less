@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{prefix}-tree {
+  .reset;
+
   line-height: @tree-node-item-line-height;
   font-size: @tree-font-size;
   color: @tree-node-text-color;

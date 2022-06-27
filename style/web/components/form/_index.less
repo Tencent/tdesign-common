@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-form {
+  .reset;
+
   font-size: @form-font-size;
 
   &:not(.@{prefix}-form-inline) {
