@@ -7,7 +7,6 @@
   align-items: center;
   padding: 16px;
   position: relative;
-  overflow: hidden;
   color: @checkbox-icon-unchecked-color;
 
   &__label {
@@ -90,13 +89,14 @@
     position: absolute;
     bottom: 0;
     border-top: 1px solid @gray-color-3;
-    width: 100%;
 
     &--left {
       left: 48px;
+      right: 0;
     }
 
     &--right {
+      left: 0;
       right: 48px;
     }
   }
