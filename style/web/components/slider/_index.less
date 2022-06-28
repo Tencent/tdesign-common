@@ -155,6 +155,7 @@
   padding: @slider-vertical-padding;
   display: flex;
   justify-content: center;
+  position: relative;
 
   .@{prefix}-slider__rail {
     width: @slider-rail-track-step-size;
@@ -200,8 +201,18 @@
 
   .@{prefix}-slider__button-wrapper {
     top: auto;
-    left: @slider-vertical-control-bar-left;
-    transform: translate(50%, 50%);
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: transparent;
+    text-align: center;
+    user-select: none;
+    line-height: normal;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 }
 
