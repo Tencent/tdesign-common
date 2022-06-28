@@ -6,15 +6,17 @@ usage: { title: '', description: '' }
 spline: navigation
 ---
 
-### 基础用法
-
-{{ base }}
-
 ### 切换箭头方向
 
 使用 `layout='vertical'` 切换成上下箭头模式。
 
 {{ layout }}
+
+### 不同的尺寸
+
+默认提供大、中（默认）、小三种不同的尺寸。
+
+{{ size }}
 
 ### 配置提示文本
 
