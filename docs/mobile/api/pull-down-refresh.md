@@ -8,7 +8,7 @@ toc: false
 
 ### 基础用法
 
-下拉刷新会触发refresh事件，操作完成后需要将v-model的值设为false，表示加载完成
+下拉刷新会触发refresh事件
 
 {{ base }}
 
