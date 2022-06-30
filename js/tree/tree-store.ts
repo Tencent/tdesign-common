@@ -68,6 +68,7 @@ export class TreeStore {
       checkable: false,
       checkStrictly: false,
       disabled: false,
+      draggable: false,
       load: null,
       lazy: false,
       valueMode: 'onlyLeaf',
