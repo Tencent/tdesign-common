@@ -42,7 +42,7 @@
     "@typescript-eslint/experimental-utils": "^2.24.0",
     "@typescript-eslint/parser": "^4.29.0",
     "@typescript-eslint/typescript-estree": "^2.34.0",
-    "babel-jest": "^27.5.1",
+    "babel-jest": "^28.1.2",
     "commitizen": "^4.2.2",
     "commitlint": "^15.0.0",
     "conventional-changelog-cli": "^2.1.1",
