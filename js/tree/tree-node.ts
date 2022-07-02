@@ -325,7 +325,7 @@ export class TreeNode {
       }
     });
 
-    const updateNodes = parentNode?.walk() || tree.children.map(item => item.walk()).flat();
+    const updateNodes = parentNode?.walk() || tree.children.map((item) => item.walk()).flat();
     updateNodes.forEach((node) => {
       node.update();
       node.updateChecked();
