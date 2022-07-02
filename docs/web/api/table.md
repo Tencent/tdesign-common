@@ -200,13 +200,13 @@ spline: data
 - 表格属性 `filterValue` 用于设置过滤功能默认值，示例：`{ firstName: '' }`。
 - 表格属性 `filterIcon` 用于设置自定义过滤图标。
 - 筛选器值发生变化时，会触发 `filterChange` 事件。
-- 列配置 `filter.type` 决定使用哪一种筛选器，可选值有：`single/multiple/input`，分别表示：单选按钮筛选器、复选框筛选器、输入框筛选器。
+- 列配置 `filter.type` 决定使用哪一种筛选器，可选值有：`single/multiple/input`，分别表示：单选按钮筛选器、复选框筛选器、输入框筛选器。也可以使用 `filter.component` 自定义筛选组件。
 - 列配置 `filter.list` 用于配置当前筛选器可选值有哪些，仅当 `filter.type` 等于 single 或 multiple 时有效。
 - 列配置 `filter.props` 用于透传筛选器属性，可以对筛选器进行任何原组件支持的属性配置.
 - 列配置 `filter.component` 用于自定义筛选器，只要保证自定义筛选器包含 `value` 属性 和 `change` 事件，即可像内置筛选器一样正常使用。
 - 列配置 `filter.showConfirmAndReset` 用于控制是否显示“确认”“重置”按钮.
 - 列配置 `filter.resetValue` 用于设置点击“重置”按钮时的重置值，并非每个场景都会重置为 `''` 或 `[]` `null`，默认重置为 `''`。
-- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容
+- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容，设置 `filterRow={() => null}` 隐藏过滤行。
 
 {{ filter-controlled }}
 
