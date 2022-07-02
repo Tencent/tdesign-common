@@ -81,24 +81,31 @@
   table {
     width: 100%;
     border-collapse: collapse;
-  }
 
-  th {
-    text-align: center;
-    color: @datepicker-th-font-color;
-    font-weight: @datepicker-th-font-weight;
-  }
+    th {
+      text-align: center;
+      color: @datepicker-th-font-color;
+      font-weight: @datepicker-th-font-weight;
+    }
 
-  td {
-    text-align: center;
-    font-weight: @datepicker-font-weight-medium;
-  }
+    td.@{prefix}-date-picker__cell {
+      text-align: center;
+      font-weight: @datepicker-font-weight-medium;
+    }
 
-  thead::after {
-    content: "-";
-    display: block;
-    line-height: @spacer-s - 1px;
-    color: transparent;
+    th,
+    td.@{prefix}-date-picker__cell {
+      padding: 0;
+      border: 0;
+      line-height: initial;
+    }
+
+    thead::after {
+      content: "-";
+      display: block;
+      line-height: @spacer-s - 1px;
+      color: transparent;
+    }
   }
 }
 
