@@ -34,10 +34,6 @@
       height: @cascader-panel-height-multiple;
     }
 
-    &.@{prefix}-cascader--tip {
-      height: @cascader-panel-height-tips;
-    }
-
     &--empty {
       width: 100%;
       height: @cascader-item-height-default;
@@ -113,6 +109,7 @@
       }
 
       &.@{prefix}-loading {
+        display: flex;
         color: @cascader-highlight-color;
       }
     }
