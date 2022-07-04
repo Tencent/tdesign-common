@@ -91,7 +91,7 @@ export default {
     },
     weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    rangeSeparator: ' ~ ',
+    rangeSeparator: ' - ',
     direction: 'ltr',
     format: 'YYYY-MM-DD',
     dayAriaLabel: 'D',
