@@ -272,22 +272,21 @@ export class TreeNode {
     index?: number,
   ): void {
     const parentNode = parent;
-    if (!parentNode) return;
 
-    const targetParents = parentNode.getParents();
+    const targetParents = parentNode?.getParents() || [];
     const includeCurrent = targetParents.some((node) => node.value === this.value);
     if (includeCurrent) {
       // 不能将父节点插入到子节点
       return;
     }
 
-    if (Array.isArray(parentNode.children)) {
+    if (Array.isArray(parentNode?.children)) {
       let targetIndex = 0;
       if (typeof index === 'number') {
         targetIndex = index;
       }
-      const targetPosNode = parentNode.children[targetIndex];
-      if (targetPosNode.value === this.value) {
+      const targetPosNode = parentNode?.children[targetIndex];
+      if (targetPosNode?.value === this.value) {
         // 无需将节点插入到原位置
         return;
       }
@@ -298,7 +297,7 @@ export class TreeNode {
 
     let siblings = null;
     if (parentNode instanceof TreeNode) {
-      if (!Array.isArray(parentNode.children)) {
+      if (!Array.isArray(parentNode?.children)) {
         parentNode.children = [];
       }
       siblings = parent.children;
@@ -325,7 +324,7 @@ export class TreeNode {
       }
     });
 
-    const updateNodes = parentNode.walk();
+    const updateNodes = parentNode?.walk() || tree.children.map((item) => item.walk()).flat();
     updateNodes.forEach((node) => {
       node.update();
       node.updateChecked();
@@ -559,6 +558,11 @@ export class TreeNode {
     if (this.vmIsLocked) return true;
     const treeDisabled = get(this, 'tree.config.disabled');
     return !!(treeDisabled || this.disabled);
+  }
+
+  // 判断节点是否能拖拽
+  public isDraggable() {
+    return !!(get(this, 'tree.config.draggable') || this.draggable);
   }
 
   // 判断节点是否支持互斥展开
