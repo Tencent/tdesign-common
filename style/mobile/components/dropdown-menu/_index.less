@@ -168,29 +168,11 @@
   //   }
   // }
 
-  // 重写 radio 和 checkbox 样式
-  .@{prefix}-radio,
-  .@{prefix}-checkbox {
-    flex-direction: row-reverse;
-    white-space: nowrap;
-    padding-left: 0;
-
-    &__content-wrap {
-      width: 100%;
-      display: flex;
-      flex: 1;
-      justify-content: space-between;
-    }
-
-    .@{prefix}-radio__label {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
 
   // 重写 checkbox 样式
   .@{prefix}-checkbox {
+    padding: 8px;
+
     &__icon-left {
       margin-right: 4px;
     }
@@ -204,10 +186,25 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    &-group {
+      padding: 0 8px;
+      display: grid;
+    }
   }
 
   .@{prefix}-dropdown-item__tree-group {
     flex: 1;
+
+    .@{prefix}-checkbox {
+      padding: 16px;
+    }
+
+    .@{prefix}-radio {
+      &.@{prefix}-is-checked .@{prefix}-radio__content-title {
+        color: @primary-color;
+      }
+    }
   }
 
   // 重写 radio 样式
@@ -342,33 +339,13 @@
     }
 
     // 两列样式
-    &.@{prefix}-is-col2 {
-      .@{prefix}-dropdown-item__cell {
-        width: 50%;
-        display: inline-block;
-        padding-left: @spacer;
-        padding-right: @spacer;
-
-        &-group {
-          padding-left: @spacer;
-          padding-right: @spacer;
-        }
-      }
+    &.@{prefix}-is-col2 .@{prefix}-checkbox-group {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     // 三列样式
-    &.@{prefix}-is-col3 {
-      .@{prefix}-dropdown-item__cell {
-        width: 33.33%;
-        display: inline-block;
-        padding-left: @spacer;
-        padding-right: @spacer;
-
-        &-group {
-          padding-left: @spacer;
-          padding-right: @spacer;
-        }
-      }
+    &.@{prefix}-is-col3 .@{prefix}-checkbox-group {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -378,13 +355,6 @@
     // 未知样式？
     .@{prefix}-radio__default-shape {
       display: none;
-    }
-
-    // 勾选图标样式重置
-    &.@{prefix}-is-tick {
-      .@{prefix}-icon-check {
-        color: @dropdown-menu-primary-color;
-      }
     }
 
     // 单选的选中态效果重写
