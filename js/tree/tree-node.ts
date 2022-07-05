@@ -272,7 +272,6 @@ export class TreeNode {
     index?: number,
   ): void {
     const parentNode = parent;
-    // if (!parentNode) return;
 
     const targetParents = parentNode?.getParents() || [];
     const includeCurrent = targetParents.some((node) => node.value === this.value);
