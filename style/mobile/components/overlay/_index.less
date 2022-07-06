@@ -14,6 +14,21 @@
   height: 100%;
   background-color: @mask-bg-color;
 
+  &--transparent {
+    background-color: transparent;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    background-color: transparent;
+  }
+
+  &-enter-active,
+  &-leave-active {
+    transition-property: background-color;
+    transition-timing-function: ease;
+  }
+
   &-aria-button {
     position: absolute;
     top: 0;
