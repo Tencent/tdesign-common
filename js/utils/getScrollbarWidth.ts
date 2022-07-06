@@ -14,6 +14,8 @@
  *  "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2;
  *  .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)"
  */
+import { getIEVersion } from './helper';
+
 export default function getScrollbarWidth() {
   const defaultScrollbarWidth = 6;
   if (!navigator) return defaultScrollbarWidth;
@@ -26,6 +28,9 @@ export default function getScrollbarWidth() {
   // 火狐浏览器需要再减去 4
   if (/Firefox/.test(navigator.userAgent)) {
     scrollbarWidth -= 4;
+  }
+  if (getIEVersion() <= 11) {
+    scrollbarWidth = 12;
   }
   return scrollbarWidth;
 }
