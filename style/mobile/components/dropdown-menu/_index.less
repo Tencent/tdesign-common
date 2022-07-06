@@ -23,6 +23,7 @@
     align-items: center;
     justify-content: center;
     min-width: 0;
+    cursor: pointer;
 
     &.@{prefix}-is-active .@{prefix}-dropdown-menu__title {
       color: @dropdown-menu-primary-color;
@@ -79,6 +80,10 @@
     transform: translate(0, 0);
   }
 
+  &__mask {
+    position: absolute;
+  }
+
   &__content {
     position: absolute;
     max-height: @dropdown-item-height;
@@ -95,15 +100,13 @@
 
   &__cell {
     position: relative;
+    box-sizing: border-box;
     width: 100%;
     padding: @cell-vertical-padding @cell-horizontal-padding;
     line-height: 24px;
     font-size: 16px;
     text-align: left;
-
-    .@{prefix}-icon {
-      float: left;
-    }
+    cursor: pointer;
   }
 
   &__content.@{prefix}-is-single &__cell::after {
@@ -136,6 +139,8 @@
       height: 100%;
       border-radius: 0;
       border: 0 none;
+      padding-left: @spacer;
+      padding-right: @spacer;
 
       &::after {
         display: none;
@@ -147,83 +152,93 @@
     }
   }
 
-  .@{prefix}-mask {
-    position: absolute;
-  }
-
-  // .@{prefix}-cell {
-  //   &-group {
-  //     margin: 0;
-
-  //     &-container {
-  //       &::before,
-  //       &::after {
-  //         display: none;
-  //       }
-  //     }
-  //   }
-
-  //   &__value {
-  //     overflow: hidden;
-  //   }
-  // }
-
-  // 重写 radio 和 checkbox 样式
-  .@{prefix}-radio,
-  .@{prefix}-checkbox {
-    flex-direction: row-reverse;
-    white-space: nowrap;
-    padding-left: 0;
-
-    &__content-wrap {
-      width: 100%;
+  // 内嵌 radio 样式
+  .@{prefix}-dropdown-item__radio {
+    &-content-wrap {
       display: flex;
-      flex: 1;
-      justify-content: space-between;
+      align-items: center;
+      line-height: 24px;
+    }
+    &-label {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    &-icon {
+      vertical-align: initial;
+    }
+    &-icon-wrap {
+      display: block;
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    .@{prefix}-dropdown-item__radio-icon-wrap {
+      color: @dropdown-menu-default-color;
     }
 
-    .@{prefix}-radio__label {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    &.@{prefix}-is-checked {
+      .@{prefix}-dropdown-item__radio-icon-wrap {
+        color: @dropdown-menu-primary-color;
+      }
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
+      &, .@{prefix}-dropdown-item__radio-content-wrap {
+        color: @dropdown-menu-disabled-color;
+      }
+      &.@{prefix}-is-checked {
+        &, .@{prefix}-dropdown-item__radio-icon-wrap {
+          color: @dropdown-menu-default-color;
+        }
+        .@{prefix}-dropdown-item__radio-content-wrap {
+          color: @dropdown-menu-disabled-color;
+        }
+      }
     }
   }
 
-  // 重写 checkbox 样式
-  .@{prefix}-checkbox {
-    &__icon-left {
-      margin-right: 4px;
-    }
-
-    &.@{prefix}-is-checked .@{prefix}-checkbox__label {
-      color: @dropdown-menu-primary-color;
-    }
-
-    &__label {
-      white-space: nowrap;
+  // 内嵌 checkbox 样式
+  .@{prefix}-dropdown-item__checkbox {
+    &-label {
+      font-size: 14px;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .@{prefix}-dropdown-item__checkbox-content-wrap {
+      background-color: @dropdown-menu-tree-col1-color;
+      border-radius: @dropdown-item-border-radius;
+      padding: 0 @spacer;
+      box-sizing: border-box;
+      height: 38px;
+      line-height: 38px;
+      text-align: center;
+    }
+
+    &.@{prefix}-is-checked {
+      .@{prefix}-dropdown-item__checkbox-content-wrap {
+        color: @dropdown-menu-primary-color;
+        background-color: @dropdown-menu-primary-color-1;
+      }
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
+      .@{prefix}-dropdown-item__checkbox-content-wrap {
+        color: @dropdown-menu-disabled-color;
+      }
     }
   }
 
   .@{prefix}-dropdown-item__tree-group {
     flex: 1;
+    height: 100%;
+    overflow-y: auto;
   }
-
-  // 重写 radio 样式
-  .@{prefix}-radio__content-wrap {
-    margin-left: 0;
-    align-items: center;
-  }
-
-  .@{prefix}-radio__content-inner {
-    margin-top: 0;
-  }
-
-  .@{prefix}-radio__icon-wrap {
-    flex-shrink: 0;
-  }
-
   /** 树形结构 */
   .@{prefix}-is-tree {
     max-height: @dropdown-item-height;
@@ -237,17 +252,6 @@
         flex: 1;
         margin: 0;
       }
-    }
-
-    .@{prefix}-checkbox-group {
-      .@{prefix}-dropdown-item__cell:not(:last-child)::after {
-        display: none;
-      }
-    }
-
-    .@{prefix}-checkbox__content-wrap {
-      overflow: hidden;
-      align-items: center;
     }
 
     .@{prefix}-dropdown-item__cell {
@@ -265,11 +269,6 @@
 
       &:nth-child(1) {
         background: @dropdown-menu-tree-col1-color;
-
-        .@{prefix}-checkbox__icon-left,
-        .@{prefix}-radio__default-shape {
-          display: none;
-        }
       }
     }
 
@@ -279,9 +278,30 @@
 
       &:nth-child(2) {
         background: @dropdown-menu-tree-col2-color;
+      }
+    }
 
-        .@{prefix}-checkbox__icon-left {
-          display: none;
+    // 内嵌 radio 样式
+    .@{prefix}-dropdown-item__radio {
+      &.@{prefix}-is-checked {
+        .@{prefix}-dropdown-item__radio-icon-wrap,
+        .@{prefix}-dropdown-item__radio-content-wrap {
+          color: @dropdown-menu-primary-color;
+        }
+      }
+
+      &.@{prefix}-is-disabled {
+        cursor: not-allowed;
+        &, .@{prefix}-dropdown-item__radio-content-wrap {
+          color: @dropdown-menu-disabled-color;
+        }
+        &.@{prefix}-is-checked {
+          &, .@{prefix}-dropdown-item__radio-icon-wrap {
+            color: @dropdown-menu-default-color;
+          }
+          .@{prefix}-dropdown-item__radio-content-wrap {
+            color: @dropdown-menu-disabled-color;
+          }
         }
       }
     }
@@ -303,42 +323,6 @@
       &:not(:last-child)::after {
         display: none;
       }
-    }
-
-    // 复选框样式重写
-    .@{prefix}-checkbox {
-      .@{prefix}-checkbox__icon-left {
-        display: none;
-      }
-
-      .@{prefix}-checkbox__label {
-        font-size: @font-size-base;
-      }
-
-      .@{prefix}-checkbox__content-wrap {
-        background-color: @dropdown-menu-tree-col1-color;
-        border-radius: @dropdown-item-border-radius;
-        // padding-left: @spacer;
-        // padding-right: @spacer;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 @spacer;
-        box-sizing: border-box;
-        height: 38px;
-        line-height: 38px;
-      }
-
-      // 重置选中态背景色
-      &.@{prefix}-is-checked .@{prefix}-checkbox__content-wrap {
-        background-color: @dropdown-menu-primary-color-1;
-      }
-    }
-
-    .@{prefix}-check-group {
-      display: flex;
-      flex-wrap: wrap;
     }
 
     // 两列样式
