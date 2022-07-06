@@ -110,6 +110,45 @@
     &--clickable {
       cursor: pointer;
     }
+
+    &--draggable {
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        top: -@tree-node-drag-tip-height;
+        right: 0;
+        left: 0;
+        display: block;
+        height: @tree-node-drag-tip-height;
+        border-radius: (@tree-node-drag-tip-height / 2);
+        content: "";
+        padding: inherit;
+        background-clip: content-box;
+      }
+
+      &:hover {
+        background-color: @tree-node-bg-hover-color;
+        background-clip: content-box;
+      }
+    }
+
+    &--tip {
+      &-top::before {
+        background-color: @tree-node-drag-tip-bg;
+      }
+
+      &-bottom::before {
+        top: unset;
+        bottom: -@tree-node-drag-tip-height;
+        background-color: @tree-node-drag-tip-bg;
+      }
+
+      &-highlight {
+        background-color: @tree-node-drag-bg-highlight;
+        background-clip: content-box;
+      }
+    }
   }
 
   &--block-node &__label {

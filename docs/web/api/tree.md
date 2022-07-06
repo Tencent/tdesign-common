@@ -23,6 +23,12 @@ spline: data
 
 {{ activable }}
 
+### 可拖拽的树
+
+树中的节点可自由的拖拽
+
+{{ draggable }}
+
 ### 可过滤的树
 
 {{ filter }}
