@@ -12,7 +12,7 @@
   padding: 0;
   width: @color-picker-panel-width;
   background: @bg-color-container;
-  box-shadow: @shadow-2,
+  box-shadow: @shadow-1,
     @shadow-inset-top,
     @shadow-inset-right,
     @shadow-inset-bottom,
@@ -30,6 +30,15 @@
 
 .@{prefix}-color-picker {
   .reset;
+
+  &.t-popup__content {
+    border-radius: @color-picker-border-radius;
+    box-shadow: @shadow-1,
+      @shadow-inset-top,
+      @shadow-inset-right,
+      @shadow-inset-bottom,
+      @shadow-inset-left;
+  }
 
   &__icon {
     width: @color-picker-icon-size;
@@ -60,39 +69,21 @@
   align-items: center;
   justify-content: space-between;
   padding: @color-picker-panel-padding;
-  border-bottom: 1px solid @border-level-1-color;
   position: relative;
   z-index: 2;
 
   .@{prefix}-color-picker__close {
     flex-shrink: 0;
   }
+
+  & + .@{prefix}-color-picker__body {
+    padding-top: 0;
+  }
 }
 
 .@{prefix}-color-picker__body {
   padding: @color-picker-panel-padding;
-}
-
-.@{prefix}-color-picker--bg-alpha {
-  background-color: #fff;
-  background-image: linear-gradient(
-    45deg,
-    #c5c5c5 25%,
-    transparent 0,
-    transparent 75%,
-    #c5c5c5 0,
-    #c5c5c5
-  ),
-    linear-gradient(
-    45deg,
-    #c5c5c5 25%,
-    transparent 0,
-    transparent 75%,
-    #c5c5c5 0,
-    #c5c5c5
-  );
-  background-size: 6px 6px;
-  background-position: 0 0, 3px 3px;
+  padding-bottom: 8px;
 }
 
 .@{prefix}-color-picker__thumb {
@@ -152,6 +143,36 @@
   }
 }
 
+.transparentBgImage () {
+  background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
+  background-size: 6px 6px;
+  background-position: 0 0, 3px 3px;
+}
+
+.@{prefix}-color-picker__slider-wrapper {
+  border-radius: @color-picker-slider-height;
+  padding: 0 9px;
+  position: relative;
+
+  &--hue-type {
+    background: red;
+  }
+
+  &--alpha-type {
+    background: #fff;
+    .transparentBgImage();
+  }
+}
+
+.@{prefix}-color-picker__slider-padding {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: @color-picker-slider-height;
+  border-radius: @color-picker-slider-height;
+}
+
 .@{prefix}-color-picker__slider {
   height: @color-picker-slider-height;
   position: relative;
@@ -159,6 +180,8 @@
   cursor: pointer;
   color: transparent;
   outline: none;
+  z-index: 1;
+
   .@{prefix}-color-picker__thumb {
     transform: translate(@color-picker-slider-thumb-transform-x, -50%);
     top: 50%;
@@ -175,7 +198,6 @@
   }
 }
 
-.@{prefix}-color-picker__hue,
 .@{prefix}-color-picker__alpha,
 .@{prefix}-color-picker__format {
   margin: @color-picker-margin 0 0 0;
@@ -197,6 +219,32 @@
 .@{prefix}-color-picker__alpha {
   .@{prefix}-color-picker__rail {
     background: linear-gradient(to right, transparent, currentcolor);
+  }
+}
+
+.@{prefix}-color-picker__sliders-wrapper {
+  display: flex;
+  align-items: center;
+  margin: @color-picker-margin 0;
+}
+
+.@{prefix}-color-picker__sliders {
+  width: 186px;
+}
+
+.@{prefix}-color-picker__sliders-preview {
+  flex-shrink: 0;
+  margin-left: @color-picker-margin;
+  width: @color-picker-gradient-preview-width;
+  height: @color-picker-gradient-preview-height;
+  border-radius: @color-picker-gradient-preview-radius;
+  overflow: hidden;
+  .transparentBgImage();
+
+  &-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -222,21 +270,6 @@
     .@{prefix}-input-number {
       width: 100%;
       padding: 0;
-    }
-  }
-
-  &-preview {
-    flex-shrink: 0;
-    margin-left: 8px;
-    width: @color-picker-gradient-preview-width;
-    height: @color-picker-gradient-preview-height;
-    border-radius: @color-picker-gradient-preview-radius;
-    overflow: hidden;
-
-    .preview-inner {
-      display: block;
-      width: 100%;
-      height: 100%;
     }
   }
 
@@ -318,7 +351,7 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
-      margin-left: 9px;
+      margin-left: 8px;
 
       &__item {
         flex: 1;
@@ -363,6 +396,8 @@
   }
 
   &-mode-select {
+    width: 70px;
+
     .t-select,
     .t-input {
       padding-right: 0;
@@ -391,7 +426,8 @@
     &--title {
       font-size: @color-picker-font-size;
       font-weight: normal;
-      margin: 0 0 12px;
+      line-height: 20px;
+      margin: 0;
       padding: 0;
       color: @text-color-primary;
       display: flex;
@@ -429,6 +465,7 @@
     }
 
     &--items {
+      width: 100%;
       list-style: none;
       display: grid;
       grid-template-columns: repeat(@color-picker-swatch-columns, @color-picker-swatch-width);
@@ -437,7 +474,9 @@
       overflow-x: hidden;
       overflow-y: auto;
       margin: @color-picker-swatch-wrap-margin;
-      padding: 0;
+      padding: 4px 10px 4px 4px;
+      position: relative;
+      left: -4px;
     }
 
     &--item {
@@ -455,6 +494,11 @@
       transform-origin: center;
       transition: all @anim-duration-base @anim-time-fn-easing;
       box-sizing: border-box;
+
+      &:hover {
+        transform: scale(1.25);
+        transform-origin: center;
+      }
 
       // 暂时先不删，待react同步后再删除
       &__color {
@@ -511,24 +555,31 @@
       width: fit-content;
     }
     .@{prefix}-input {
-      padding: 0 8px 0 6px;
+      padding: 0 4px;
     }
 
     &__color {
       width: 24px;
       height: 24px;
       margin-right: 4px;
+      box-sizing: border-box;
 
       .color-inner {
         border: 1px solid @scrollbar-color;
         display: block;
-        width: 100%;
-        height: 100%;
+        width: 22px;
+        height: 22px;
         color: transparent;
         position: relative;
+        border-radius: @border-radius-default;
       }
     }
   }
+}
+
+.@{prefix}-color-picker__gradient-slider {
+  padding: 0 9px;
+  border-radius: @color-picker-slider-height;
 }
 
 .@{prefix}-color-picker__panel.@{prefix}-is-disabled {
@@ -551,6 +602,13 @@
 
 // 覆盖select-option 默认样式，使其更紧凑点
 .@{prefix}-color-picker__select-options {
+  border-radius: @color-picker-border-radius;
+  box-shadow: @shadow-1,
+    @shadow-inset-top,
+    @shadow-inset-right,
+    @shadow-inset-bottom,
+    @shadow-inset-left;
+
   .@{prefix}-select__dropdown-inner {
     padding: 4px;
   }
