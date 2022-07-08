@@ -190,8 +190,8 @@
 
 // Spacer
 @spacer: 8px;
-@spacer-s: @spacer * .5; // 间距-4
-@spacer-m: @spacer * .75; // 间距-6
+@spacer-s: @spacer * 0.5; // 间距-4
+@spacer-m: @spacer * 0.75; // 间距-6
 @spacer-l: @spacer * 1.5; // 间距-12
 @spacer-1: @spacer; // 间距-8
 @spacer-2: @spacer * 2; // 间距-16
@@ -206,19 +206,19 @@
 
 // Font
 @font-size: 10px;
-@font-size-s: @font-size * 1.2; // 字号-五级字号
-@font-size-base: @font-size * 1.4; // 字号-四级字号
-@font-size-l: @font-size * 1.6; // 字号-三级字号
-@font-size-xl: @font-size * 2; // 字号-二级字号
-@font-size-xxl: @font-size * 3.6; // 字号-一级字号
+@font-size-s: var(--td-font-size-body-small); // 字号-五级字号
+@font-size-base: var(--td-font-size-body-medium); // 字号-四级字号
+@font-size-l: var(--td-font-size-body-large); // 字号-三级字号
+@font-size-xl: var(--td-font-size-title-large); // 字号-二级字号
+@font-size-xxl: var(--td-font-size-headline-large); // 字号-一级字号
 
 // Line Height
 @text-line-height: 1.5; // 行高-常规
-@text-line-height-s: 20px; // 行高-对应五级文字
-@text-line-height-base: 22px; // 行高-对应四级文字
-@text-line-height-l: 24px; // 行高-对应三级文字
-@text-line-height-xl: 28px; // 行高-对应二级文字
-@text-line-height-xxl: 44px; //行高-对应一级文字
+@text-line-height-s: var(--td-line-height-small); // 行高-对应五级文字
+@text-line-height-base: var(--td-line-height-medium); // 行高-对应四级文字
+@text-line-height-l: var(--td-line-height-large); // 行高-对应三级文字
+@text-line-height-xl: var(--td-line-height-x-large); // 行高-对应二级文字
+@text-line-height-xxl: var(--td-line-height-xx-large); //行高-对应一级文字
 
 @font-family: PingFang SC, Microsoft YaHei, Arial Regular; // 字体-磅数-常规
 @font-family-medium: PingFang SC, Microsoft YaHei, Arial Medium; // 字体-磅数-粗体
@@ -264,12 +264,12 @@
 @screen-xxl-min: @screen-xxl;
 
 // 动画
-@anim-time-fn-easing: cubic-bezier(.38, 0, .24, 1);
-@anim-time-fn-ease-out: cubic-bezier(0, 0, .15, 1);
-@anim-time-fn-ease-in: cubic-bezier(.82, 0, 1, .9);
-@anim-duration-base: .2s;
-@anim-duration-moderate: .24s;
-@anim-duration-slow: .28s;
+@anim-time-fn-easing: cubic-bezier(0.38, 0, 0.24, 1);
+@anim-time-fn-ease-out: cubic-bezier(0, 0, 0.15, 1);
+@anim-time-fn-ease-in: cubic-bezier(0.82, 0, 1, 0.9);
+@anim-duration-base: 0.2s;
+@anim-duration-moderate: 0.24s;
+@anim-duration-slow: 0.28s;
 
 // 统一管理各组件层级关系
 @z-index-affix: 500;
