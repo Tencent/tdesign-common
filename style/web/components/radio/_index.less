@@ -51,12 +51,18 @@
         }
 
         &::after {
+          z-index: 1;
           right: -1px;
+        }
+
+        &:last-child::after {
+          width: 0;
         }
 
         &.@{prefix}-is-checked {
           &::before,
           &::after {
+            z-index: 2;
             background-color: @radio-button-border-color-checked;
           }
         }
