@@ -29,45 +29,9 @@
 
   &.@{radio-cls}-group__outline {
     flex-wrap: wrap;
+    row-gap: @spacer-s;
 
     .@{radio-button--cls} {
-      &:not(:first-child) {
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          top: -1px;
-          display: block;
-          box-sizing: content-box;
-          width: 1px;
-          height: 100%;
-          padding: 1px 0;
-          background-color: @radio-button-group-background-color-filled;
-        }
-
-        &::before {
-          z-index: -1;
-          left: -1px;
-        }
-
-        &::after {
-          z-index: 1;
-          right: -1px;
-        }
-
-        &:last-child::after {
-          width: 0;
-        }
-
-        &.@{prefix}-is-checked {
-          &::before,
-          &::after {
-            z-index: 2;
-            background-color: @radio-button-border-color-checked;
-          }
-        }
-      }
-
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
@@ -320,7 +284,7 @@
       height: @radio-size;
       margin-top: -@radio-dot-size;
       margin-left: -@radio-dot-size;
-      transform: scale(.5);
+      transform: scale(0.5);
       opacity: @radio-opacity-transparent;
       border-radius: @border-radius-50;
       background-color: @radio-dot-color;
