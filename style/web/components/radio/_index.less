@@ -29,39 +29,9 @@
 
   &.@{radio-cls}-group__outline {
     flex-wrap: wrap;
+    row-gap: @spacer-s;
 
     .@{radio-button--cls} {
-      &:not(:first-child) {
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          top: -1px;
-          display: block;
-          box-sizing: content-box;
-          width: 1px;
-          height: 100%;
-          padding: 1px 0;
-          background-color: @radio-button-group-background-color-filled;
-        }
-
-        &::before {
-          z-index: -1;
-          left: -1px;
-        }
-
-        &::after {
-          right: -1px;
-        }
-
-        &.@{prefix}-is-checked {
-          &::before,
-          &::after {
-            background-color: @radio-button-border-color-checked;
-          }
-        }
-      }
-
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
