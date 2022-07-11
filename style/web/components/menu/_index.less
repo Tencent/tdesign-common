@@ -494,6 +494,7 @@ a.@{prefix}-menu__item {
     transition:
       background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
+    box-sizing: border-box;
 
     &:first-child {
       margin-top: 0;
@@ -819,10 +820,6 @@ a.@{prefix}-menu__item {
     &.@{prefix}-is-vertical {
       max-height: unset;
       width: 0;
-
-      .@{prefix}-menu__popup-wrapper {
-        min-width: 216px;
-      }
 
       &.@{prefix}-is-opened {
         width: var(--popup-width, 216px);
