@@ -55,6 +55,9 @@ export class TreeStore {
   // 树节点过滤器
   public prevFilter: TypeTreeFilter;
 
+  // 一个空节点
+  public nullNode: TreeNode;
+
   public constructor(options: TypeTreeStoreOptions) {
     const config: TypeTreeStoreOptions = {
       prefix: 't',
@@ -93,6 +96,8 @@ export class TreeStore {
     this.updateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
+    // 空节点，用于判定当前的 filterText 是否为空，如果 filter(nullNode) 为 true, 那么可以判定 filterText 为空
+    this.nullNode = new TreeNode(this, { value: '', label: '', children: [] });
   }
 
   // 配置选项
@@ -639,13 +644,15 @@ export class TreeStore {
       });
     }
 
+    const currentFilter = config.filter;
     // 当前没有过滤器
     // 则无需处理锁定节点
-    if (!config.filter) {
-      return;
-    }
-    this.prevFilter = config.filter;
+    if (!currentFilter || typeof currentFilter !== 'function') return;
 
+    const node = this.nullNode.getModel();
+    if (currentFilter(node)) return;
+
+    this.prevFilter = config.filter;
     // 构造路径节点map
     const map = new Map();
 
