@@ -314,6 +314,13 @@ spline: data
 
 #### 可编辑行的表格
 
+可对表格进行整行编辑和保存等操作。
+
+- `onRowEdit` 会在行编辑时触发。
+- `onRowValidate` 在行编辑校验完成后触发。
+- `editableRowKeys` 用于控制处于编辑状态的行。
+- 实例方法 `validateRowDate` 用于进行表格行数据校验。
+
 {{ editable-row }}
 
 

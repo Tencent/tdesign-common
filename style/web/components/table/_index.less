@@ -1053,8 +1053,10 @@
   cursor: move;
 }
 
-.@{prefix}-table__cell--editable {
-  cursor: pointer;
+.@{prefix}-table:not(.@{prefix}-table--row-edit) {
+  .@{prefix}-table__cell--editable {
+    cursor: pointer;
+  }
 }
 
 /** 吸底的分页器，需要背景色，避免表格文本内容显示穿透 */
