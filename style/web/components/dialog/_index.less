@@ -49,7 +49,7 @@
     word-break: break-word;
     padding-right: 10px;
 
-    >h5 {
+    > h5 {
       padding: 0;
       margin: 0;
       font-weight: normal;
@@ -84,7 +84,7 @@
     // remove space between inline-block elements.
     word-spacing: @dialog-word-spacing;
 
-    .t-button + .t-button {
+    .@{prefix}-button + .@{prefix}-button {
       margin-left: @dialog-footer-button-margin-left;
     }
   }
@@ -158,19 +158,19 @@
     }
   }
 
-  &.t-is-visable {
+  &.@{prefix}-is-visable {
     visibility: visible;
   }
 
-  &.t-is-hidden {
+  &.@{prefix}-is-hidden {
     visibility: hidden;
   }
 
-  &.t-is-display {
+  &.@{prefix}-is-display {
     display: block;
   }
 
-  &.t-not-display {
+  &.@{prefix}-not-display {
     display: none;
   }
   // 遮罩层
@@ -218,7 +218,7 @@
     }
   }
 
-  .t-is-hidden {
+  .@{prefix}-is-hidden {
     background: none;
   }
 
