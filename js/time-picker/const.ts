@@ -12,11 +12,12 @@ export enum EPickerCols {
   hour = 'hour',
   minute = 'minute',
   second = 'second',
+  milliSecond = 'millisecond',
   meridiem = 'meridiem',
 }
 
 // RegExp
-export const TIME_FORMAT = /(a\s+|A\s+)?(h+|H+)?:?(m+)?:?(s+)?(\s+a|\s+A)?/;
+export const TIME_FORMAT = /(a\s+|A\s+)?(h+|H+)?:?(m+)?:?(s+)?:?(S+)?(\s+a|\s+A)?/;
 // 上下午前置
 export const PRE_MERIDIEM_FORMAT = /^(a|A)\s+?[h]{1,2}(:[m]{1,2}(:[s]{1,2})?)?$/;
 // 上下午后置
