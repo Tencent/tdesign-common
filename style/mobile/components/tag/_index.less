@@ -6,146 +6,141 @@
 
 @themes: primary, success, warning, default, danger;
 
-.genVariant(@fontColorWeight; @borderColorWeight; @backgroundColorWeight;) {
-
-  &.@{prefix}-tag-default {
-    color: @tag-default-color;
-    border-color: @tag-default-border-color;
-    background-color: @tag-default-background-color;
-  }
-
+.genVariant(@fontColorWeight; @borderColorWeight; @backgroundColorWeight) {
   .for(@themes, @i: 1) when(@i =< length(@themes)) {
+    @theme: extract(@themes, @i);
+    @theme-color: "tag-@{theme}-color";
+    @theme-font-color: "tag-@{theme}-font-color";
 
-    &.@{prefix}-tag-@{theme} {
-      background-color: mix(@@theme-color, @color-white, @backgroundColorWeight);
-      border-color: mix(@@theme-color, @color-white, @borderColorWeight);
-      color: mix(@@theme-color, @color-white, @fontColorWeight);
+    &.@{prefix}-tag--theme-@{theme} {
+      background-color: mix(@@theme-color, @@theme-font-color, @backgroundColorWeight);
+      border-color: mix(@@theme-color, @@theme-font-color, @borderColorWeight);
+      color: mix(@@theme-color, @@theme-font-color, @fontColorWeight);
     }
 
     .for(@themes, (@i + 1));
-
-    @theme: extract(@themes, @i);
-
-    @theme-color: "tag-@{theme}-color";
   }
 
   .for(@themes);
 }
 
 .@{prefix}-tag {
-  display: inline-block;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
   box-sizing: border-box;
   border-radius: @border-radius-square;
-  white-space: nowrap;
-  font-size: 12px;
-  height: 22px;
-  line-height: 20px;
-  padding: 0 12px;
-  max-width: 120px;
-  word-wrap: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: @tag-medium-font-size;
   user-select: none;
 
-  &-dark {
-    .genVariant(0, 100, 100);
+  &__text {
+    word-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: @tag-medium-height;
+    line-height: @tag-medium-height;
   }
 
-  &-light {
-    .genVariant(100, 10, 10);
+  &__icon,
+  &__icon-close {
+    display: flex;
+    align-items: center;
   }
 
-  &-outline {
-    .genVariant(100, 100, 0);
-  }
-
-  &-light-outline {
-    .genVariant(100, 100, 10);
-  }
-
-  .@{prefix}-tag__content {
-    width: 100%;
-  }
-
-  .@{prefix}-icon {
-    font-size: @tag-medium-font-size;
-  }
-
-  .@{prefix}-icon-close {
-    border-radius: @border-radius-50;
-    cursor: pointer;
-    position: relative;
-    top: -1px;
-    float: none;
-    margin-left: @spacer-1;
+  &__icon:not(:empty) + &__text:not(:empty),
+  &__text:not(:empty) + &__icon-close:not(:empty) {
+    margin-left: (@spacer / 2);
   }
 
   &.@{prefix}-tag--size {
     &-small {
-      height: 20px;
-      line-height: 18px;
-      padding: 0 8px;
-      font-size: 10px;
+      height: @tag-small-height;
+      line-height: @tag-small-height - 2px;
+      padding: 0 @tag-small-padding;
+      font-size: @tag-small-font-size;
 
-      .@{prefix}-icon {
-        font-size: 10px;
-      }
-
+      .@{prefix}-icon,
       .@{prefix}-icon-close {
-        font-size: 16px;
+        font-size: @tag-small-icon-size;
       }
     }
 
     &-medium {
-      height: 24px;
-      line-height: 22px;
-      padding: 0 11px;
-      font-size: 12px;
+      height: @tag-medium-height;
+      line-height: @tag-medium-height - 2px;
+      padding: 0 @tag-medium-padding;
+      font-size: @tag-medium-font-size;
 
-      .@{prefix}-icon {
-        font-size: 12px;
-        line-height: 22px;
-      }
-
+      .@{prefix}-icon,
       .@{prefix}-icon-close {
-        font-size: 16px;
+        font-size: @tag-medium-icon-size;
       }
     }
 
     &-large {
-      height: 30px;
-      line-height: 28px;
-      padding: 0 15px;
-      font-size: 14px;
+      height: @tag-large-height;
+      line-height: @tag-large-height - 2px;
+      padding: 0 @tag-large-padding;
+      font-size: @tag-large-font-size;
 
-      .@{prefix}-icon {
-        font-size: 14px;
-      }
-
+      .@{prefix}-icon,
       .@{prefix}-icon-close {
-        font-size: 20px;
+        font-size: @tag-large-icon-size;
       }
     }
   }
 
-  &.@{prefix}-tag--square {
-    border-radius: @border-radius-square;
+  &.@{prefix}-tag--shape {
+    &-square {
+      border-radius: @border-radius-square;
+    }
+
+    &-round {
+      border-radius: @border-radius-round;
+    }
+
+    &-mark {
+      border-radius: 0 @border-radius-mark @border-radius-mark 0;
+    }
   }
 
-  &.@{prefix}-tag--round {
-    border-radius: @border-radius-round;
-  }
+  &--variant {
+    &-dark {
+      .genVariant(0, 100, 100);
+    }
 
-  &.@{prefix}-tag--mark {
-    border-radius: 0 @border-radius-round @border-radius-round 0;
+    &-light {
+      .genVariant(100, 10, 10);
+      &.@{prefix}-tag--theme-default {
+        color: @tag-default-font-color;
+        border-color: rgba(243, 243, 243, 100%);
+        background-color: rgba(243, 243, 243, 100%);
+      }
+    }
+
+    &-outline {
+      .genVariant(100, 100, 0);
+      &.@{prefix}-tag--theme-default {
+        color: @tag-default-font-color;
+        border-color: rgba(220, 220, 220, 100%);
+        background-color: #fff;
+      }
+    }
+
+    &-light-outline {
+      .genVariant(100, 100, 10);
+      &.@{prefix}-tag--theme-default {
+        color: @tag-default-font-color;
+        border-color: rgba(220, 220, 220, 100%);
+        background-color: rgba(243, 243, 243, 100%);
+      }
+    }
   }
 
   &.@{prefix}-tag--checkable {
     cursor: pointer;
-    color: @tag-default-color;
+    color: @tag-default-font-color;
     background-color: @tag-default-background-color;
     border-color: @tag-default-border-color;
 
@@ -153,6 +148,11 @@
       color: @color-white;
       background-color: @tag-primary-color;
       border-color: @tag-primary-color;
+    }
+
+    &.@{prefix}-tag--checked.@{prefix}-tag--disabled {
+      color: @color-white;
+      background-color: @primary-color-disabled;
     }
 
     &.@{prefix}-tag--disabled {
@@ -164,13 +164,6 @@
   }
 
   &.@{prefix}-tag--closable {
-    padding-left: 8px;
-    padding-right: 8px;
-
-    &.@{prefix}-tag--size-large {
-      padding-left: 12px;
-    }
-
     &.@{prefix}-tag--disabled {
       cursor: not-allowed;
       color: @tag-disabled-color;
