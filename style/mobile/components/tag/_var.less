@@ -10,33 +10,50 @@
 
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
-
+@spacer: 8px;
 @color-white: #fff;
 
-@tag-default-background-color: @gray-color-3;
-@tag-default-border-color: #f5f5f5;
+@tag-default-background-color: #e7e7e7;
+@tag-default-border-color: #e7e7e7;
 
-@tag-default-color: @text-primary-color;
+@primary-color-disabled: #bbd3fb;
+
+@tag-default-color: rgba(231, 231, 231, 1);
 @tag-primary-color: @primary-color;
 @tag-success-color: @success-color;
 @tag-warning-color: @warning-color;
 @tag-danger-color: @error-color;
 
-@tag-disabled-color: @text-color-disabled;
-@tag-disabled-background-color: #f5f5f5;
-@tag-disabled-border-color: #f5f5f5;
+@tag-default-font-color: rgba(0, 0, 0, .9);
+@tag-primary-font-color: @color-white;
+@tag-success-font-color: @color-white;
+@tag-warning-font-color: @color-white;
+@tag-danger-font-color: @color-white;
+
+@tag-disabled-color: rgba(0, 0, 0, 26%);
+@tag-disabled-background-color: rgba(231, 231, 231, 1);
+@tag-disabled-border-color: rgba(231, 231, 231, 1);
 
 @tag-checked-color: @primary-color;
 @tag-checked-border-color: @primary-color;
 @tag-checked-background-color: @primary-color;
 
-@tag-small-padding: 3px;
-@tag-medium-padding: 3px;
-@tag-large-padding: 3px;
+@tag-small-padding: @spacer * .75 - 1px;
+@tag-medium-padding: @spacer - 1px;
+@tag-large-padding: @spacer-1 - 1px;
 
-@tag-small-font-size: 10px;
-@tag-medium-font-size: 12px;
-@tag-large-font-size: 14px;
+@tag-small-font-size: @font-size;
+@tag-medium-font-size: @font-size-s;
+@tag-large-font-size: @font-size-base;
 
-@border-radius-square: 2px;
+@tag-small-icon-size: @font-size * 1.2;
+@tag-medium-icon-size: @font-size * 1.4;
+@tag-large-icon-size: @font-size * 1.8;
+
+@tag-small-height: 22px;
+@tag-medium-height: 24px;
+@tag-large-height: 30px;
+
+@border-radius-square: 4px;
 @border-radius-round: 999px;
+@border-radius-mark: @border-radius-round;
