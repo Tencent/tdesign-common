@@ -58,8 +58,7 @@
         .@{prefix}-step__inner:after {
           content: "";
           display: block;
-          height: 1px;
-          background-color: @primary-color-5;
+          border-bottom: 1px solid @primary-color-5;
           position: absolute;
           width: calc(100% - @step-horizontal-icon-width);
           left: calc(50% + @step-horizontal-icon-width / 2);
@@ -155,8 +154,7 @@
           content: "";
           display: block;
           height: calc(100% - @step-dot-anchor-width);
-          width: 1px;
-          background-color: @gray-color-5;
+          border-left: 1px solid @gray-color-5;
           position: absolute;
           left: calc(@step-dot-anchor-width / 2 - .5px);
           top: calc(@step-dot-anchor-width + .5px);
