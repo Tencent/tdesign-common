@@ -11,11 +11,13 @@
 .@{popconfirm-cls} {
   .reset;
 
+  min-width: 160px;
   border-radius: @popconfirm-border-radius;
 
   &__content {
     position: @popconfirm-position;
-    padding: @popconfirm-padding + 4 @popconfirm-padding;
+    padding: @popconfirm-padding;
+    border-radius: @popconfirm-border-radius;
   }
 
   &__body {
