@@ -58,7 +58,7 @@
   }
   // 底部的额外消息
   &__extra {
-    font-size: @input-extra-font-size;
+    font: @input-extra-font-size;
     color: @input-extra-color-default;
   }
 
@@ -98,14 +98,16 @@
   // 输入框大小
   &.@{prefix}-size-l {
     height: @input-height-l;
-    line-height: @input-height-l;
-    font-size: @input-font-size-l;
+    font: @input-font-size-l;
+    padding-top: @spacer;
+    padding-bottom: @spacer;
   }
 
   &.@{prefix}-size-s {
     height: @input-height-s;
-    line-height: @input-height-s;
-    font-size: @input-font-size-s;
+    font: @input-font-size-s;
+    padding-top: (@spacer / 4);
+    padding-bottom: (@spacer / 4);
   }
 
   .@{prefix}-input__prefix,
@@ -258,8 +260,7 @@
 .@{prefix}-input__tips {
   height: auto;
   min-height: @input-tips-min-height;
-  line-height: @input-tips-line-height;
-  font-size: @input-tips-font-size;
+  font: @input-tips-font-size;
 }
 
 .@{prefix}-input__tips--normal {
