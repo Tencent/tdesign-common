@@ -226,7 +226,7 @@
 @font-family: PingFang SC, Microsoft YaHei, Arial Regular; // 字体-磅数-常规
 @font-family-medium: PingFang SC, Microsoft YaHei, Arial Medium; // 字体-磅数-粗体
 
-.font-calc(@fontSize,@fontWeight: normal) {
+.font-calc(@fontSize, @fontWeight: 400) {
   @var: @fontWeight @fontSize /
     calc(
       (@fontSize + @text-line-height) * @text-line-height-relation +
@@ -238,23 +238,25 @@
 @font-size-link-small: .font-calc(var(--td-font-size-link-small)) [ @var];
 @font-size-link-medium: .font-calc(var(--td-font-size-link-medium)) [ @var];
 @font-size-link-large: .font-calc(var(--td-font-size-link-large)) [ @var];
-@font-size-mark-small: .font-calc(var(--td-font-size-mark-small)) [ @var];
-@font-size-mark-medium: .font-calc(var(--td-font-size-mark-medium)) [ @var];
+@font-size-mark-small: .font-calc(var(--td-font-size-mark-small), 600) [ @var];
+@font-size-mark-medium: .font-calc(var(--td-font-size-mark-medium), 600) [ @var];
 @font-size-body-small: .font-calc(var(--td-font-size-body-small)) [ @var];
 @font-size-body-medium: .font-calc(var(--td-font-size-body-medium)) [ @var];
 @font-size-body-large: .font-calc(var(--td-font-size-body-large)) [ @var];
-@font-size-title-small: .font-calc(var(--td-font-size-title-small)) [ @var];
-@font-size-title-medium: .font-calc(var(--td-font-size-title-medium)) [ @var];
-@font-size-title-large: .font-calc(var(--td-font-size-title-large)) [ @var];
-@font-size-headline-small: .font-calc(var(--td-font-size-headline-small)) [
+@font-size-title-small: .font-calc(var(--td-font-size-title-small), 600) [ @var];
+@font-size-title-medium: .font-calc(var(--td-font-size-title-medium), 600) [
   @var];
-@font-size-headline-medium: .font-calc(var(--td-font-size-headline-medium)) [
+@font-size-title-large: .font-calc(var(--td-font-size-title-large), 600) [ @var];
+@font-size-headline-small: .font-calc(var(--td-font-size-headline-small), 600) [
   @var];
-@font-size-headline-large: .font-calc(var(--td-font-size-headline-large)) [
+@font-size-headline-medium: .font-calc(var(--td-font-size-headline-medium), 600)
+  [ @var];
+@font-size-headline-large: .font-calc(var(--td-font-size-headline-large), 600) [
   @var];
-@font-size-display-medium: .font-calc(var(--td-font-size-display-medium)) [
+@font-size-display-medium: .font-calc(var(--td-font-size-display-medium), 600) [
   @var];
-@font-size-display-large: .font-calc(var(--td-font-size-display-large)) [ @var];
+@font-size-display-large: .font-calc(var(--td-font-size-display-large), 600) [
+  @var];
 
 // Border Radius
 @border-radius-small: var(--td-radius-small); // 圆角-2
