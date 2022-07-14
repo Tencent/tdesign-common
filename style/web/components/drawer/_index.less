@@ -71,8 +71,8 @@
     background: @drawer-bg-color;
     // 这里之所以设置了宽度为 300，高度为 300 是为了在 UI 静态展示的时候有一个默认值，
     // 实际上如果是纵向的，宽度是 js 代码设置，高度是 100%，如果是横向的，高度是 js 代码设置，宽度是 100%
-    width: @drawer-header-font-size;
-    height: @drawer-header-font-size;
+    width: 16px;
+    height: 16px;
     font-size: @drawer-body-text-font-size;
     color: @drawer-body-text-color;
     box-shadow: @dialog-box-shadow;
@@ -123,9 +123,7 @@
   &__header {
     min-height: @drawer-header-height;
     padding: @drawer-header-padding;
-    font-size: @drawer-header-font-size;
-    font-weight: @drawer-header-font-weight;
-    line-height: @drawer-header-line-height;
+    font: @drawer-header-font-size;
     color: @drawer-header-text-color;
     border-bottom: 1px solid @drawer-border-color;
     border-radius: @drawer-header-border-radius;

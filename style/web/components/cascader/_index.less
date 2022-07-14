@@ -73,7 +73,7 @@
     position: relative;
     display: flex;
     height: @cascader-item-height-default;
-    line-height: @cascader-item-height-default;
+    font: @cascader-font-size;
     color: @cascader-dark-color;
     padding: @cascader-item-padding;
     border-radius: @cascader-item-border-radius;
@@ -83,15 +83,22 @@
 
     &.@{prefix}-size-s {
       height: @cascader-item-height-s;
-      line-height: @cascader-item-height-s;
-      font-size: @cascader-font-size-s;
+      font: @cascader-font-size-s;
+      padding: @cascader-item-padding-s;
+
+      .@{prefix}-cascader__item-label {
+        padding: 6px 0;
+      } 
     }
 
     &.@{prefix}-size-l {
       height: @cascader-item-height-l;
-      line-height: @cascader-item-height-l;
-      font-size: @cascader-font-size-l;
+      font: @cascader-font-size-l;
       padding: @cascader-item-padding-l;
+
+      .@{prefix}-cascader__item-label {
+        padding: 8px 0;
+      } 
     }
 
     &.@{prefix}-is-disabled {
@@ -172,6 +179,7 @@
       display: block;
       position: relative;
       white-space: nowrap;
+      padding: 9px 0;
 
       &--ellipsis {
         .text-ellipsis();

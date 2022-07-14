@@ -28,9 +28,6 @@
       }
     }
 
-    // &:hover {
-    //   background-color: @calendar-bg;
-    // }
   }
 
   &--full {
@@ -50,8 +47,9 @@
       position: relative;
 
       &-title {
-        font-size: @calendar-head-title-font-size;
-        line-height: @calendar-title-line-height;
+        font: @calendar-head-title-font-size;
+        padding-top: 1px;
+        padding-bottom: 1px;
         color: @calendar-title-color;
         position: absolute;
         top: @calendar-title-position-top;
@@ -149,8 +147,7 @@
           height: @calendar-card-cell-size;
           margin: @calendar-card-body-cell-margin;
           justify-content: center;
-          font-size: @calendar-card-body-cell-font-size;
-          line-height: @calendar-card-body-cell-line-height;
+          font: @calendar-card-body-cell-font-size;
           box-sizing: border-box;
 
           &-display {
@@ -176,7 +173,9 @@
           }
 
           &-display {
-            font-size: @calendar-card-body-cell-display-font-size;
+            font: @calendar-card-body-cell-display-font-size;
+            padding-top: @calendar-card-body-cell-display-padding;
+            padding-bottom: @calendar-card-body-cell-display-padding;
             text-align: center;
             border-radius: @calendar-card-body-cell-display-border-radius;
             transition-duration: @calendar-transition-duration;
@@ -302,8 +301,7 @@
         flex: 1;
         display: flex;
         justify-content: flex-end;
-        font-size: @calendar-table-cell-font-size;
-        line-height: @calendar-table-line-height;
+        font: @calendar-table-cell-font-size;
         color: @calendar-cell-font-color;
         cursor: default;
         padding: @calendar-table-cell-padding;
@@ -326,8 +324,7 @@
       &-cell {
         height: @calendar-head-cell-height;
         padding: @calendar-head-padding;
-        font-size: @calendar-head-cell-font-size;
-        line-height: @calendar-head-cell-line-height;
+        font: @calendar-head-cell-font-size;
         color: @calendar-head-cell-color;
       }
     }
@@ -342,8 +339,7 @@
         }
 
         &-display {
-          font-size: @calendar-body-cell-display-font-size;
-          font-weight: @calendar-body-cell-font-weight;
+          font: @calendar-body-cell-display-font-size;
           color: @calendar-title-color;
         }
       }

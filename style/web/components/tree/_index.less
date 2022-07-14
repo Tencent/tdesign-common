@@ -12,7 +12,9 @@
 .@{prefix}-tree {
   .reset;
 
-  font-size: @tree-font-size;
+  font: @tree-font-size;
+  padding-top: @tree-padding-vertical;
+  padding-bottom: @tree-padding-vertical;
   color: @tree-node-text-color;
 
   // 禁用态颜色处理
@@ -236,8 +238,8 @@
 
     flex-wrap: nowrap;
     flex: 0 0 auto;
-    padding: 2px 4px;
-    margin-left: 4px;
+    margin: @tree-node-item-label-margin 0 @tree-node-item-label-margin 4px;
+    padding: 3px 4px;
     border-radius: @border-radius-default;
     cursor: pointer;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;

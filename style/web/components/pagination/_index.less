@@ -24,7 +24,7 @@
 
   // 数据统计
   &__total {
-    font-size: @pagination-font-default;
+    font: @pagination-font-default;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,7 +53,7 @@
     cursor: pointer;
     color: @pagination-text-color;
     border-radius: @pagination-border-radius-base;
-    font-size: @pagination-btn-font-size;
+    font: @pagination-btn-font-size;
     .pagination-btn(@pagination-height-default);
 
     &.@{prefix}-is-disabled {
@@ -185,7 +185,7 @@
   &.@{prefix}-size-s {
     .@{prefix}-pagination {
       &__total {
-        font-size: @pagination-font-s;
+        font: @pagination-font-s;
       }
 
       &__select {
