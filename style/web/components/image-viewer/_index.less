@@ -148,7 +148,7 @@
       }
     }
 
-    .@{prefix}-image-viewer-header-pre__bt {
+    .@{prefix}-image-viewer__header--pre__bt {
       position: absolute;
       left: 50%;
       bottom: 0;
@@ -180,32 +180,67 @@
     }
 
     &.@{prefix}-is-show {
-      .@{prefix}-image-viewer-header__prev {
+      .@{prefix}-image-viewer__header--prev {
         animation: .2s ease-out 0s 1 normal forwards running preview-image-show;
       }
 
-      .@{prefix}-image-viewer-header-pre__bt {
+      .@{prefix}-image-viewer__header--pre__bt {
         animation: .2s ease-out 0s 1 normal forwards running preview-icon-range;
       }
     }
 
-    .@{prefix}-image-viewer-header__prev {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .@{prefix}-image-viewer__header--prev {
+      width: 560px;
       animation: .2s ease-out 0s 1 normal forwards running preview-image-hide;
       overflow: auto hidden;
+      display: flex;
+      position: relative;
 
-      .@{prefix}-image-viewer-header__img {
-        max-height: 50px;
-        max-width: 50px;
-        margin: 10px;
+      .@{prefix}-image-viewer__bokeh--left, .@{prefix}-image-viewer__bokeh--right {
+        position: absolute;
+        height: 100%;
+        z-index: 1;
+        width: 240px;
+        pointer-events: none;
+      }
+
+      .@{prefix}-image-viewer__bokeh--left {
+        left: 0;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 60%), rgba(255, 255, 255, 0%));
+      }
+
+      .@{prefix}-image-viewer__bokeh--right {
+        right: 0;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0%), rgba(255, 255, 255, 60%));
+      }
+
+      .@{prefix}-image-viewer__header--trans {
+        height: 100%;
         transition: transform .2s;
-        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 240px;
 
-        &:hover, &.@{prefix}-is-active {
-          transform: scale(1.1);
-          border: 1px solid @image-viewer-image-pre-color;
+        .@{prefix}-image-viewer__header--box {
+          height: 50px;
+          width: 60px;
+          margin: 10px;
+          transition: transform .2s;
+          border-radius: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .@{prefix}-image-viewer__header--img {
+            max-height: 48px;
+            max-width: 48px;
+          }
+
+          &:hover, &.@{prefix}-is-active {
+            transform: scale(1.1);
+            border: 1px solid @image-viewer-image-pre-color;
+          }
         }
       }
     }
@@ -349,7 +384,7 @@
   max-height: 800px;
   max-width: 1000px;
 
-  .@{prefix}-image-viewer-modal__pic {
+  .@{prefix}-image-viewer__modal--pic {
 
     @keyframes modal-image-show {
       0% {
@@ -361,7 +396,7 @@
       }
     }
 
-    .@{prefix}-image-viewer-modal__box {
+    .@{prefix}-image-viewer__modal--box {
       width: 100%;
       height: 100%;
       display: flex;
@@ -369,7 +404,7 @@
       align-items: center;
       animation: .1s ease-out modal-image-show;
 
-      .@{prefix}-image-viewer-modal__image {
+      .@{prefix}-image-viewer__modal--image {
         display: block;
         max-width: 1000px;
         max-height: 800px;
