@@ -190,8 +190,8 @@
 
 // Spacer
 @spacer: 8px;
-@spacer-s: @spacer * 0.5; // 间距-4
-@spacer-m: @spacer * 0.75; // 间距-6
+@spacer-s: @spacer * .5; // 间距-4
+@spacer-m: @spacer * .75; // 间距-6
 @spacer-l: @spacer * 1.5; // 间距-12
 @spacer-1: @spacer; // 间距-8
 @spacer-2: @spacer * 2; // 间距-16
@@ -230,7 +230,7 @@
   @var: @fontWeight @fontSize /
     calc(
       (@fontSize + @text-line-height) * @text-line-height-relation +
-        (@fontSize + @text-line-height) * (1 - @text-line-height-relation)
+      (@fontSize + @text-line-height) * (1 - @text-line-height-relation)
     )
     @font-family;
 }
@@ -299,12 +299,12 @@
 @screen-xxl-min: @screen-xxl;
 
 // 动画
-@anim-time-fn-easing: cubic-bezier(0.38, 0, 0.24, 1);
-@anim-time-fn-ease-out: cubic-bezier(0, 0, 0.15, 1);
-@anim-time-fn-ease-in: cubic-bezier(0.82, 0, 1, 0.9);
-@anim-duration-base: 0.2s;
-@anim-duration-moderate: 0.24s;
-@anim-duration-slow: 0.28s;
+@anim-time-fn-easing: cubic-bezier(.38, 0, .24, 1);
+@anim-time-fn-ease-out: cubic-bezier(0, 0, .15, 1);
+@anim-time-fn-ease-in: cubic-bezier(.82, 0, 1, .9);
+@anim-duration-base: .2s;
+@anim-duration-moderate: .24s;
+@anim-duration-slow: .28s;
 
 // 统一管理各组件层级关系
 @z-index-affix: 500;
