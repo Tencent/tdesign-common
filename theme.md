@@ -34,7 +34,7 @@ spline: explain
 @btn-height-l: 40px;
 
 // 圆角
-@btn-border-radius: @border-radius;
+@btn-border-radius: @border-radius-default;
 @btn-shape-border-radius-s: (@btn-height-s / 2);
 @btn-shape-border-radius-default: (@btn-height-default / 2);
 @btn-shape-border-radius-l: (@btn-height-l / 2);
