@@ -12,7 +12,7 @@
   justify-content: center;
   min-width: 104px;
   max-width: 188px;
-  border-radius: @border-radius-default;
+  border-radius: @border-radius;
   color: @toast-text-color;
   background: rgba(0, 0, 0, 60%);
   text-align: center;
@@ -20,7 +20,7 @@
   z-index: @toast-z-index;
 
   &:not(&--text)&--column {
-    border-radius: @border-radius-default * 2;
+    border-radius: @border-radius * 2;
   }
 
   .@{prefix}-icon {
