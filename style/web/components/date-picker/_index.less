@@ -47,12 +47,12 @@
   }
 }
 
-.@{prefix}-date-picker__panel--content,
-.@{prefix}-date-range-picker__panel--content,
-.@{prefix}-date-range-picker__panel--content-wrapper {
+.@{prefix}-date-picker__panel-content,
+.@{prefix}-date-range-picker__panel-content,
+.@{prefix}-date-range-picker__panel-content-wrapper {
   display: flex;
 }
-.@{prefix}-date-range-picker__panel--content-wrapper {
+.@{prefix}-date-range-picker__panel-content-wrapper {
   gap: 6px;
 }
 
@@ -67,11 +67,11 @@
     display: inline-flex;
     gap: @spacer;
 
-    .@{prefix}-date-picker__header-controller--month {
+    .@{prefix}-date-picker__header-controller-month {
       width: @datepicker-month-controller-width;
     }
 
-    .@{prefix}-date-picker__header-controller--year {
+    .@{prefix}-date-picker__header-controller-year {
       width: @datepicker-year-controller-width;
     }
   }
@@ -116,20 +116,20 @@
   padding: @datepicker-presets-padding;
   gap: @datepicker-presets-gap;
 
-  &--bottom {
+  &-bottom {
     border-top: 1px solid @datepicker-panel-divider-color;
   }
 
-  &--top {
+  &-top {
     border-bottom: 1px solid @datepicker-panel-divider-color;
   }
 
-  &--left {
+  &-left {
     flex-direction: column;
     border-right: 1px solid @datepicker-panel-divider-color;
   }
 
-  &--right {
+  &-right {
     flex-direction: column;
     border-left: 1px solid @datepicker-panel-divider-color;
   }
@@ -154,8 +154,8 @@
   }
 }
 
-.@{prefix}-date-picker__panel--time,
-.@{prefix}-date-range-picker__panel--time {
+.@{prefix}-date-picker__panel-time,
+.@{prefix}-date-range-picker__panel-time {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -176,9 +176,9 @@
   }
 }
 
-.@{prefix}-date-picker__panel--year,
-.@{prefix}-date-picker__panel--month,
-.@{prefix}-date-picker__panel--date {
+.@{prefix}-date-picker__panel-year,
+.@{prefix}-date-picker__panel-month,
+.@{prefix}-date-picker__panel-date {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -187,9 +187,9 @@
   max-width: @datepicker-panel-max-width;
 }
 
-.@{prefix}-date-picker__panel--year,
-.@{prefix}-date-picker__panel--month {
-  .@{prefix}-date-picker__header-controller--year {
+.@{prefix}-date-picker__panel-year,
+.@{prefix}-date-picker__panel-month {
+  .@{prefix}-date-picker__header-controller-year {
     width: 130px;
   }
 
