@@ -1066,3 +1066,17 @@
 .@{prefix}-table--bordered .@{prefix}-affix .@{prefix}-table__pagination {
   border-top: @border;
 }
+
+.@{prefix}-table--column-resizable:not(.@{prefix}-table--bordered) {
+  th {
+    border-top: 1px solid transparent;
+  }
+  thead.@{prefix}-table__header:hover {
+    th:not(:last-child) {
+      border-right: @border;
+    }
+    th {
+      border-top: @border;
+    }
+  }  
+}
