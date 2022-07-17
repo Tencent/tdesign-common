@@ -202,15 +202,6 @@
     }
   }
 
-  // @todo: 待优化
-  td > .@{prefix}-radio,
-  td > .@{prefix}-checkbox {
-    line-height: 1;
-    font-size: 0;
-    vertical-align: middle;
-    display: inline-block;
-  }
-
   // 边框线表格
   &--bordered {
     td,
@@ -1079,6 +1070,33 @@
 
     th {
       border-top: @border;
+    }
+  }
+}
+
+/** 可选中行的场景下，将 Checkbox 和 Radio 铺满整个单元格，增大点击范围，方便用户选中 */
+.@{prefix}-table {
+  td.@{prefix}-table__cell-check,
+  th.@{prefix}-table__cell-check {
+    padding: 0;
+
+    /** HTML 特性: th/td 必须设置为 0，他们的子元素才能设置为 100% */
+    height: 0;
+
+    .@{prefix}-radio__label,
+    .@{prefix}-checkbox__label {
+      display: none;
+    }
+  }
+
+  .@{prefix}-table__cell-check {
+    .@{prefix}-radio,
+    .@{prefix}-checkbox,
+    .@{prefix}-table__th-cell-inner {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      display: flex;
     }
   }
 }
