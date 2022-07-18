@@ -148,9 +148,8 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
 
     // 设置本节点携带的元数据
     setData(data: OptionData) {
-      const _data = pick(data, ['label', 'value']);
-      Object.assign(node.data, _data);
-      Object.assign(node, _data);
+      Object.assign(node.data, data);
+      Object.assign(node, data);
     },
   };
 
