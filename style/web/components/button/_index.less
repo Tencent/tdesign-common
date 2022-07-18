@@ -45,11 +45,15 @@
     font-size: @btn-loading-size;
   }
 
-  .@{prefix}-icon  + .@{prefix}-button__text {
+  .@{prefix}-icon  + .@{prefix}-button__text:not(:empty) {
     margin-left: @btn-icon-text-margin-left;
   }
 
-  .@{prefix}-loading + .@{prefix}-button__text {
+  .@{prefix}-loading + .@{prefix}-button__text:not(:empty) {
+    margin-left: @btn-icon-text-margin-left;
+  }
+
+  .@{prefix}-button__suffix:not(:empty) {
     margin-left: @btn-icon-text-margin-left;
   }
 
