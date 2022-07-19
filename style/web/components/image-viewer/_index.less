@@ -62,9 +62,13 @@
     font-size: 20px;
     color: @image-viewer-text-color-default;
     position: absolute;
-    top: 2rem;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
+    background: rgba(0, 0, 0, 40%);
+    border-radius: 3px;
+    padding: 4px 8px;
+    z-index: 1;
   }
 
   .@{prefix}-image-viewer__modal--mask {
@@ -226,11 +230,12 @@
           height: 50px;
           width: 60px;
           margin: 10px;
-          transition: transform .2s;
+          transition: .2s;
           border-radius: 3px;
           display: flex;
           align-items: center;
           justify-content: center;
+          border: 1px solid transparent;
 
           .@{prefix}-image-viewer__header--img {
             max-height: 48px;
@@ -238,7 +243,6 @@
           }
 
           &:hover, &.@{prefix}-is-active {
-            transform: scale(1.1);
             border: 1px solid @image-viewer-image-pre-color;
           }
         }
@@ -255,7 +259,7 @@
     }
 
     &.@{prefix}-image-viewer-modal-close-bt {
-      top: 50px;
+      top: 100px;
       right: 40px;
     }
 
@@ -279,6 +283,11 @@
       color: @image-viewer-text-color-default;
       background-color: rgba(0, 0, 0, 40%);
       border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .@{prefix}-image-viewer-modal__icon-label {
@@ -317,8 +326,11 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    align-content: center;
+    font-size: 14px;
   }
 }
 
@@ -406,8 +418,8 @@
 
       .@{prefix}-image-viewer__modal--image {
         display: block;
-        max-width: 1000px;
-        max-height: 800px;
+        max-width: 800px;
+        max-height: 600px;
         transition: all .3s ease;
         transform: rotate(0deg);
         object-fit: contain;
