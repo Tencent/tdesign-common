@@ -6,44 +6,29 @@
 
 @import "./_mixin.less";
 
-// <name> 替换为组件名
-.@{prefix}-image-viewer-ui-image {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  display: inline-flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
+.@{prefix}-image-viewer__img-error {
+  height: 440px;
+  width: 440px;
+  background-color: @image-viewer__image--background-color__error;
+  border-radius: 4px;
+  color: @image-viewer__image-text--error;
+  cursor: inherit;
+  position: absolute;
 
-  .@{prefix}-image-viewer-ui-image-img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    cursor: pointer;
+  .@{prefix}-image-viewer__img-error--content {
     position: absolute;
-  }
-
-  .@{prefix}-image-viewer-ui-image-footer {
-    padding: 0 10px;
-    height: 30px;
+    height: 100%;
     width: 100%;
-    line-height: 30px;
-    position: absolute;
-    bottom: 0;
-    color: @image-viewer-footer-text-color;
-    background-color: @image-viewer-footer-background-color;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 14px;
 
-    .@{prefix}-image-viewer-ui-image-title {
-      flex: 1;
-    }
-
-    .@{prefix}-image-viewer-ui-image-icons .@{prefix}-icon {
-      margin: 2px;
-      cursor: pointer;
+    .@{prefix}-image-viewer__img-error--text {
+      margin-top: 10px;
     }
   }
 }
@@ -60,7 +45,7 @@
   .@{prefix}-image-viewer__modal--index {
     text-align: center;
     font-size: 20px;
-    color: @image-viewer-text-color-default;
+    color: @image-viewer__text-color--default;
     position: absolute;
     top: 100px;
     left: 50%;
@@ -77,10 +62,10 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: @image-viewer-modal-mask-color;
+    background-color: @image-viewer__modal-mask--color;
     height: 100%;
     width: 100%;
-    transition: all .4s ease;
+    transition: all @image-viewer--duration ease;
     opacity: 1;
   }
 
@@ -120,7 +105,7 @@
     }
   }
 
-  .@{prefix}-image-viewer-modal-header {
+  .@{prefix}-image-viewer__modal-header {
     width: 100%;
     position: absolute;
     top: 0;
@@ -130,7 +115,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    padding-bottom: .75rem;
+    padding-bottom: 16px;
 
     @keyframes preview-icon-range {
       0% {
@@ -153,14 +138,20 @@
     }
 
     .@{prefix}-image-viewer__header--pre__bt {
+      width: auto;
+      height: auto;
       position: absolute;
       left: 50%;
       bottom: 0;
       transform: translate(-50%, 50%);
       background-color: white;
       border-radius: 50%;
-      border: .5px solid #dcdcdc;
+      border: .5px solid @image-viewer__icon-border;
       animation: .2s ease-out 0s 1 normal forwards running preview-icon-unrange;
+
+      &:hover {
+        background-color: inherit;
+      }
     }
 
     @keyframes preview-image-show {
@@ -243,7 +234,7 @@
           }
 
           &:hover, &.@{prefix}-is-active {
-            border: 1px solid @image-viewer-image-pre-color;
+            border: 1px solid @image-viewer__image-pre--color;
           }
         }
       }
@@ -252,11 +243,13 @@
 
   .@{prefix}-image-viewer-modal__icon {
     cursor: pointer;
-    color: @image-viewer-icon-color-default;
-
-    &.@{prefix}-is-disabled {
-      color: @image-viewer-icon-color-disabled;
-    }
+    color: @image-viewer__icon-color--default;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: @image-viewer__icon--radius;
 
     &.@{prefix}-image-viewer-modal-close-bt {
       top: 100px;
@@ -280,7 +273,7 @@
     &.@{prefix}-image-viewer-modal-close-bt, &.@{prefix}-image-viewer-modal-prev-bt, &.@{prefix}-image-viewer-modal-next-bt {
       position: fixed;
       z-index: 10;
-      color: @image-viewer-text-color-default;
+      color: @image-viewer__text-color--default;
       background-color: rgba(0, 0, 0, 40%);
       border-radius: 50%;
       width: 40px;
@@ -292,6 +285,18 @@
 
     .@{prefix}-image-viewer-modal__icon-label {
       margin-left: 2px;
+    }
+
+    &.@{prefix}-is-disabled {
+      color: @image-viewer__icon-color--disabled;
+    }
+
+    &.@{prefix}-is-disabled:hover {
+      background-color: rgba(0, 0, 0, 40%);
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 20%);
     }
   }
 
@@ -314,26 +319,6 @@
   background-color: transparent;
 }
 
-.@{prefix}-image-viewer-error {
-  background-color: @image-viewer-image-background-color-error;
-  border-radius: 4px;
-  color: @image-viewer-image-text-error;
-  cursor: inherit;
-
-  .@{prefix}-image-viewer-error-content {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    font-size: 14px;
-  }
-}
-
 .@{prefix}-image-viewer-utils {
   width: 100%;
   position: absolute;
@@ -343,7 +328,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: @image-viewer-icon-color-default;
+  color: @image-viewer__icon-color--default;
 
   .@{prefix}-image-viewer-utils__content {
     display: inline-flex;
@@ -355,13 +340,22 @@
     border-radius: 6px;
     padding: 0 5px;
 
+    .@{prefix}-image-viewer-modal__icon {
+      margin: 0 4px;
+
+      &:hover {
+        background-color: #f3f3f3;
+      }
+    }
+
     .@{prefix}-image-viewer__utils--scale {
       width: 40px;
       text-align: center;
-    }
+      cursor: inherit;
 
-    .@{prefix}-image-viewer-modal__icon {
-      margin: 0 10px;
+      &:hover {
+        background-color: #fff;
+      }
     }
   }
 }
@@ -370,7 +364,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: @image-viewer-mini-header-background-color;
+  background-color: @image-viewer__mini--header__background-color;
   height: 40px;
   width: 100%;
 
@@ -381,7 +375,7 @@
 
     &:hover .@{prefix}-icon {
       border-radius: 50%;
-      background-color: @image-viewer-mini-close-hover;
+      background-color: @image-viewer__mini--close__hover;
     }
   }
 }
@@ -420,7 +414,7 @@
         display: block;
         max-width: 800px;
         max-height: 600px;
-        transition: all .3s ease;
+        transition: all @image-viewer--duration ease;
         transform: rotate(0deg);
         object-fit: contain;
       }
