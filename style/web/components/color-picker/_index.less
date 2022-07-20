@@ -101,7 +101,7 @@
   border-color: currentcolor;
   width: @color-picker-slider-thumb-size;
   height: @color-picker-slider-thumb-size;
-  border-radius: 50%;
+  border-radius: @border-radius-50;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 15%);
   background: white;
   color: @text-color-brand;
@@ -113,7 +113,7 @@
     width: 100%;
     height: 100%;
     background: currentcolor;
-    border-radius: 50%;
+    border-radius: @border-radius-50;
     display: block;
   }
 }
@@ -146,7 +146,7 @@
   .@{prefix}-color-picker__thumb {
     width: @color-picker-saturation-thumb-size;
     height: @color-picker-saturation-thumb-size;
-    border-radius: 50%;
+    border-radius: @border-radius-50;
     transform: translate(-50%, -50%);
   }
 }
@@ -270,7 +270,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        border-radius: 50%;
+        border-radius: @border-radius-50;
         overflow: hidden;
         background-size: 4px 4px;
         background-position: 0 0, 2px 2px;
@@ -443,7 +443,7 @@
       display: flex;
       width: @color-picker-swatch-width;
       height: @color-picker-swatch-height;
-      border-radius: 50%;
+      border-radius: @border-radius-50;
       padding: @color-picker-swatch-padding;
       border: @color-picker-swatch-border-size solid transparent;
       overflow: hidden;
@@ -462,7 +462,7 @@
         position: relative;
         overflow: hidden;
         border: 1px solid @component-border;
-        border-radius: 50%;
+        border-radius: @border-radius-50;
         flex-shrink: 0;
       }
 
@@ -490,7 +490,7 @@
       position: relative;
       overflow: hidden;
       border: 1px solid @component-border;
-      border-radius: 50%;
+      border-radius: @border-radius-50;
       box-sizing: border-box;
     }
 
