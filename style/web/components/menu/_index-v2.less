@@ -487,7 +487,7 @@ a.@{prefix}-menu__item {
     line-height: @default-menu-item-height;
     border-bottom: 0;
     text-align: left;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
     transition:
       background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
@@ -613,7 +613,7 @@ a.@{prefix}-menu__item {
     cursor: pointer;
     // overflow: hidden;
     text-overflow: ellipsis;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
 
     ::selection {
       background: transparent;
@@ -776,7 +776,7 @@ a.@{prefix}-menu__item {
     position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
     opacity: 0;
     .list-style-none();
 
@@ -863,7 +863,7 @@ a.@{prefix}-menu__item {
 
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
-        border-radius: @border-radius;
+        border-radius: @border-radius-default;
 
         --ripple-color: @menu-item-animation-bg--dark;
 
@@ -888,7 +888,7 @@ a.@{prefix}-menu__item {
   &__operations {
     &-icon {
       margin-right: 16px;
-      border-radius: @border-radius;
+      border-radius: @border-radius-default;
       color: @menu-item-color--light;
       transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
