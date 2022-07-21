@@ -241,7 +241,7 @@
     }
   }
 
-  .@{prefix}-image-viewer-modal__icon {
+  .@{prefix}-image-viewer__modal--icon {
     cursor: pointer;
     color: @image-viewer__icon-color--default;
     width: 32px;
@@ -251,26 +251,26 @@
     align-items: center;
     border-radius: @image-viewer__icon--radius;
 
-    &.@{prefix}-image-viewer-modal-close-bt {
+    &.@{prefix}-image-viewer__modal--close-bt {
       top: 100px;
       right: 40px;
     }
 
-    &.@{prefix}-image-viewer-modal-next-bt,
-    &.@{prefix}-image-viewer-modal-prev-bt {
+    &.@{prefix}-image-viewer__modal--next-bt,
+    &.@{prefix}-image-viewer__modal--prev-bt {
       top: 50%;
       transform: translateY(-50%);
     }
 
-    &.@{prefix}-image-viewer-modal-prev-bt {
+    &.@{prefix}-image-viewer__modal--prev-bt {
       left: 40px;
     }
 
-    &.@{prefix}-image-viewer-modal-next-bt {
+    &.@{prefix}-image-viewer__modal--next-bt {
       right: 40px;
     }
 
-    &.@{prefix}-image-viewer-modal-close-bt, &.@{prefix}-image-viewer-modal-prev-bt, &.@{prefix}-image-viewer-modal-next-bt {
+    &.@{prefix}-image-viewer__modal--close-bt , &.@{prefix}-image-viewer__modal--prev-bt, &.@{prefix}-image-viewer__modal--next-bt {
       position: fixed;
       z-index: 10;
       color: @image-viewer__text-color--default;
@@ -283,7 +283,7 @@
       align-items: center;
     }
 
-    .@{prefix}-image-viewer-modal__icon-label {
+    .@{prefix}-image-viewer__modal--icon-label {
       margin-left: 2px;
     }
 
@@ -309,7 +309,7 @@
   }
 }
 
-.@{prefix}-image-viewer-mask {
+.@{prefix}-image-viewer__mask {
   width: 100vh;
   height: 100vh;
   left: 0;
@@ -319,7 +319,7 @@
   background-color: transparent;
 }
 
-.@{prefix}-image-viewer-utils {
+.@{prefix}-image-viewer__utils {
   width: 100%;
   position: absolute;
   bottom: 32px;
@@ -330,7 +330,7 @@
   justify-content: center;
   color: @image-viewer__icon-color--default;
 
-  .@{prefix}-image-viewer-utils__content {
+  .@{prefix}-image-viewer__utils--content {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -340,7 +340,7 @@
     border-radius: 6px;
     padding: 0 5px;
 
-    .@{prefix}-image-viewer-modal__icon {
+    .@{prefix}-image-viewer__modal--icon {
       margin: 0 4px;
 
       &:hover {
@@ -360,7 +360,7 @@
   }
 }
 
-.@{prefix}-image-viewer-mini__header {
+.@{prefix}-image-viewer__mini--header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -368,7 +368,7 @@
   height: 40px;
   width: 100%;
 
-  .@{prefix}-image-viewer-mini__close {
+  .@{prefix}-image-viewer__mini--close {
     position: absolute;
     right: 5px;
     cursor: pointer;
@@ -381,7 +381,7 @@
 }
 
 .@{prefix}-image-viewer-mini__footer {
-  .@{prefix}-image-viewer-utils {
+  .@{prefix}-image-viewer__utils {
     position: inherit;
   }
 }
