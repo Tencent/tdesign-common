@@ -259,7 +259,7 @@ export function getWeeks(
   const dataList = chunk(daysArr, 7);
   // 显示周数
   if (showWeekOfYear) {
-    dataList.forEach(d => {
+    dataList.forEach((d) => {
       d.unshift({
         active: false,
         weekOfYear: true,
