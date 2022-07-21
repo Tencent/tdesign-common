@@ -135,9 +135,15 @@
       transition: @datepicker-transition;
       pointer-events: none;
     }
+    
+    &:hover {
+      .@{prefix}-date-picker__cell:first-child .@{prefix}-date-picker__cell-inner {
+        color: @brand-color;
+      }
 
-    &:hover::after {
-      box-shadow: inset 0 0 0 1px @brand-color;
+      &::after {
+        box-shadow: inset 0 0 0 1px @brand-color;
+      }
     }
 
     // 高亮
