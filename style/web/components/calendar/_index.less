@@ -11,7 +11,7 @@
 
   border: 1px solid @calendar-border-color;
   background-color: @calendar-bg;
-
+  border-radius: @border-radius-large;
   .@{prefix}-is-disabled {
 
     &.@{prefix}-calendar__table-body-cell {
@@ -48,7 +48,6 @@
     .@{prefix}-calendar__panel {
       padding: @calendar-panel-padding;
       position: relative;
-
       &-title {
         font-size: @calendar-head-title-font-size;
         line-height: @calendar-title-line-height;
@@ -110,7 +109,7 @@
 
   &--card {
     width: @calendar-card-width;
-
+    border-radius: @border-radius-medium;
     .@{prefix}-calendar__control {
       padding: @calendar-card-calendar-control-padding;
       border-bottom: 1px solid @calendar-border-color;
