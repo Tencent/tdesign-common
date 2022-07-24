@@ -92,7 +92,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      animation: .1s ease-out modal-image-show;
+      animation: @image-viewer--duration ease-out modal-image-show;
 
       .@{prefix}-image-viewer__modal--image {
         display: block;
@@ -115,7 +115,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    padding-bottom: 16px;
+    padding-bottom: 6px;
 
     @keyframes preview-icon-range {
       0% {
@@ -160,13 +160,13 @@
       }
 
       to {
-        height: 60px;
+        height: 58px;
       }
     }
 
     @keyframes preview-image-hide {
       0% {
-        height: 60px;
+        height: 58px;
       }
 
       to {
@@ -218,9 +218,9 @@
         margin-left: 240px;
 
         .@{prefix}-image-viewer__header--box {
-          height: 50px;
-          width: 60px;
-          margin: 10px;
+          width: 54px;
+          height: 32px;
+          margin: 16px 10px 10px;
           transition: .2s;
           border-radius: 3px;
           display: flex;
@@ -229,8 +229,8 @@
           border: 1px solid transparent;
 
           .@{prefix}-image-viewer__header--img {
-            max-height: 48px;
-            max-width: 48px;
+            max-height: 30px;
+            max-width: 52px;
           }
 
           &:hover, &.@{prefix}-is-active {
@@ -244,11 +244,6 @@
   .@{prefix}-image-viewer__modal--icon {
     cursor: pointer;
     color: @image-viewer__icon-color--default;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: @image-viewer__icon--radius;
 
     &.@{prefix}-image-viewer__modal--close-bt {
@@ -342,6 +337,12 @@
 
     .@{prefix}-image-viewer__modal--icon {
       margin: 0 4px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: @image-viewer__icon--radius;
 
       &:hover {
         background-color: #f3f3f3;
@@ -425,5 +426,9 @@
 .@{prefix}-image-viewer__dialog {
   .@{prefix}-dialog__header {
     padding-right: 0;
+  }
+
+  .@{prefix}-dialog {
+    border-color: @image-viewer__mini--border__color;
   }
 }
