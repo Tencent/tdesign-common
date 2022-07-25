@@ -66,7 +66,7 @@
     border-left: @tab-btn-border;
     cursor: pointer;
     color: @tab-default-text;
-    font-size: @tab-nav-item-font-size;
+    font: @tab-nav-item-font-size;
     transition: @tab-bar-transtion;
     z-index: 1;
     opacity: 1;
@@ -149,7 +149,7 @@
     border-bottom: @tab-bar-operations-border;
     cursor: pointer;
     color: @tab-card-text;
-    font-size: @tab-nav-item-font-size;
+    font: @tab-nav-item-font-size;
 
     &.@{prefix}-size-m {
       height: @tab-height-middle;
@@ -221,7 +221,7 @@
   &__nav-item {
     display: inline-flex;
     align-items: center;
-    font-size: @font-size-base;
+    font: @font-size-body-medium;
     color: @tab-default-text;
     position: relative;
     overflow: hidden;
@@ -243,7 +243,7 @@
     }
 
     &.@{prefix}-size-l {
-      font-size: @tab-nav-item-font-size;
+      font: @tab-nav-item-font-size;
 
       .@{prefix}-tabs__nav-item-wrapper {
         padding: @tab-nav-item-wrapper-padding-large;

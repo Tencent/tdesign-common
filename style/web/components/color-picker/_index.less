@@ -216,7 +216,7 @@
     width: @color-picker-degree-width;
     .@{prefix}-input {
       margin: 0;
-      font-size: @color-picker-font-size;
+      font: @color-picker-font-size;
     }
     .@{prefix}-input-number {
       width: 100%;
@@ -302,7 +302,7 @@
       overflow: hidden;
     }
     .@{prefix}-size-m, .@{prefix}-input.@{prefix}-size-m {
-      font-size: @color-picker-font-size;
+      font: @color-picker-font-size;
     }
     .@{prefix}-input-number .@{prefix}-input {
       margin: 0;
@@ -325,7 +325,7 @@
         margin-left: -1px;
         .@{prefix}-input {
           padding: 0 1px;
-          font-size: @color-picker-font-size;
+          font: @color-picker-font-size;
 
           &:focus,
           &:focus-within,
@@ -388,8 +388,7 @@
     }
 
     &--title {
-      font-size: @color-picker-font-size;
-      font-weight: normal;
+      font: @color-picker-font-size;
       margin: 0 0 12px;
       padding: 0;
       color: @text-color-primary;

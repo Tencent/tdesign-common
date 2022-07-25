@@ -42,21 +42,11 @@
 
   &__header {
     color: @dialog-header-text-color;
-    font-size: @dialog-header-font-size;
-    font-weight: @dialog-header-font-weight;
+    font: @dialog-header-font-size;
     display: flex;
     align-items: center;
     word-break: break-word;
     padding-right: 10px;
-
-    > h5 {
-      padding: 0;
-      margin: 0;
-      font-weight: normal;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: @dialog-header-line-height;
-    }
 
     .@{prefix}-icon {
       font-size: @dialog-icon-size;
@@ -67,8 +57,7 @@
 
   &__body {
     color: @dialog-body-text-color;
-    font-size: @dialog-body-text-font-size;
-    line-height: @dialog-body-line-height;
+    font: @dialog-body-text-font-size;
     overflow: auto;
     padding: @dialog-body-padding;
     word-break: break-word;

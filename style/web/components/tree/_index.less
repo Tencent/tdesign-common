@@ -12,8 +12,9 @@
 .@{prefix}-tree {
   .reset;
 
-  line-height: @tree-node-item-line-height;
-  font-size: @tree-font-size;
+  font: @tree-font-size;
+  padding-top: @tree-padding-vertical;
+  padding-bottom: @tree-padding-vertical;
   color: @tree-node-text-color;
 
   // 禁用态颜色处理
@@ -240,11 +241,10 @@
   &__label {
     --ripple-color: @bg-color-container-active;
 
-    line-height: @tree-node-item-label-height;
     flex-wrap: nowrap;
     flex: 0 0 auto;
     margin: @tree-node-item-label-margin 0 @tree-node-item-label-margin 4px;
-    padding: 0 4px;
+    padding: 3px 4px;
     border-radius: @border-radius-default;
     cursor: pointer;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;

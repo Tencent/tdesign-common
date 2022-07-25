@@ -23,12 +23,10 @@
     border-radius: @textarea-border-radius;
     padding: @textarea-padding;
     background-color: @textarea-bg-color-default;
-    font-family: PingFangSC-Regular;
-    font-size: @textarea-font-size;
+    font: @textarea-font-size;
     color: @textarea-text-color;
     resize: vertical;
     outline: none;
-    line-height: @textarea-line-height;
     transition: all @anim-time-fn-easing @anim-duration-base, height 0s;
     box-sizing: border-box;
 
@@ -81,8 +79,7 @@
 .@{prefix}-textarea__tips {
   height: auto;
   min-height: @textarea-tips-min-height;
-  line-height: @textarea-tips-line-height;
-  font-size: @textarea-tips-font-size;
+  font: @textarea-tips-font-size;
   display: inline-block;
 }
 

@@ -24,14 +24,15 @@
 @tree-icon-disabled-color: @tree-node-icon-color;
 
 //字体
-@tree-font-size: @font-size-base;
+@tree-font-size: @font-size-body-medium;
 
 // 间距
-@tree-node-padding-basic: 24px;
+@tree-node-padding-basic: @spacer-3;
 @tree-node-item-padding-left: calc(@tree-node-padding-basic * var(--level) + 8px);
-@tree-line-position-bottom: 21px;
+@tree-line-position-bottom: @spacer-3 - 3px;
 @tree-line-position-left: calc(@tree-node-padding-basic * var(--level) - 9px);
 @tree-node-item-label-margin: calc((@tree-node-item-line-height - @tree-node-item-label-height) / 2);
+@tree-padding-vertical: @spacer + 2px;
 
 //尺寸
 @tree-line-width: 1px;
