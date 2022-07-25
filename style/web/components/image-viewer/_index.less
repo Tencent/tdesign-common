@@ -33,6 +33,46 @@
   }
 }
 
+@keyframes modal-image-show {
+  0% {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-image-hide {
+  0% {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes modal-mask-show {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-mask-hide {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 .@{prefix}-image-viewer-preview-image {
   position: fixed;
   top: 0;
@@ -41,6 +81,15 @@
   right: 0;
   z-index: 2000;
   overflow: hidden;
+  animation: @image-viewer--duration @anim-time-fn-ease-in modal-mask-show;
+
+  &.@{prefix}-is-hide {
+    animation: @image-viewer--duration @anim-time-fn-ease-out modal-mask-hide;
+
+    .@{prefix}-image-viewer__modal--pic .@{prefix}-image-viewer__modal--box {
+      animation: @image-viewer--duration @anim-time-fn-ease-out modal-image-hide;
+    }
+  }
 
   .@{prefix}-image-viewer__modal--index {
     text-align: center;
@@ -76,23 +125,13 @@
     top: 50%;
     left: 50%;
 
-    @keyframes modal-image-show {
-      0% {
-        transform: scale(0);
-      }
-
-      to {
-        transform: scale(1);
-      }
-    }
-
     .@{prefix}-image-viewer__modal--box {
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      animation: @image-viewer--duration ease-out modal-image-show;
+      animation: @image-viewer--duration @anim-time-fn-easing modal-image-show;
 
       .@{prefix}-image-viewer__modal--image {
         display: block;
@@ -114,7 +153,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: @image-viewer__header--bg-color;
     padding-bottom: 6px;
 
     @keyframes preview-icon-range {
@@ -144,7 +183,8 @@
       left: 50%;
       bottom: 0;
       transform: translate(-50%, 50%);
-      background-color: white;
+      background-color: @image-viewer__header--bg-color;
+      color: @image-viewer__icon-color--default;
       border-radius: 50%;
       border: .5px solid @image-viewer__icon-border;
       animation: .2s ease-out 0s 1 normal forwards running preview-icon-unrange;
@@ -201,12 +241,12 @@
 
       .@{prefix}-image-viewer__bokeh--left {
         left: 0;
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 60%), rgba(255, 255, 255, 0%));
+        background-image: linear-gradient(to right, @image-viewer__header--bg-color, rgba(255, 255, 255, 0%));
       }
 
       .@{prefix}-image-viewer__bokeh--right {
         right: 0;
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0%), rgba(255, 255, 255, 60%));
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0%), @image-viewer__header--bg-color);
       }
 
       .@{prefix}-image-viewer__header--trans {
@@ -331,7 +371,7 @@
     justify-content: center;
     height: 50px;
     line-height: 100%;
-    background: #fff;
+    background: @image-viewer__header--bg-color;
     border-radius: 6px;
     padding: 0 5px;
 
@@ -345,7 +385,7 @@
       border-radius: @image-viewer__icon--radius;
 
       &:hover {
-        background-color: #f3f3f3;
+        background-color: @image-viewer__utils--icon__hover-color;
       }
     }
 
@@ -355,7 +395,7 @@
       cursor: inherit;
 
       &:hover {
-        background-color: #fff;
+        background-color: @image-viewer__header--bg-color;
       }
     }
   }
@@ -409,7 +449,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      animation: .1s ease-out modal-image-show;
 
       .@{prefix}-image-viewer__modal--image {
         display: block;
