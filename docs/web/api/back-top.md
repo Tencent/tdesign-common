@@ -14,16 +14,12 @@ toc: false
 
 ### 返回按钮形状
 
-通过theme属性可以设置按钮形状，可选项有round/half-round/round-dark/half-round-dark
+回到顶部组件可自定义按钮样式 。
 
-通过icon属性可以自定义按钮icon
-
-通过span属性可以自定义按钮文案
-
-{{ theme }}
+{{ custom }}
 
 #### 返回位置
 
-通过target属性可以自定义页面滚动到某个元素
+通过target属性可以自定义页面滚动到某个元素。
 
 {{ target }}
