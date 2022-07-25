@@ -1,0 +1,73 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../mixins/_layout.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-search {
+  & .t-textarea__inner {
+    resize: none;
+  }
+
+  &-textarea {
+    background: @search-suffix-textarea-background;
+
+    &-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: @search-suffix-textarea-margin-top;
+    }
+  }
+
+  &-tag-input {
+    position: relative;
+
+    &-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+  }
+
+  &-suffix-icon {
+    margin-right: @search-suffix-icon-margin-right;
+    position: relative;
+    top: 1px;
+  }
+
+  & .t-input__suffix {
+    order: 2;
+    cursor: default;
+  }
+
+  & .t-input__suffix-icon {
+    order: 1;
+    margin-right: @search-suffix-icon-margin-right;
+  }
+
+  &-suggestion {
+    box-sizing: border-box;
+    overflow: auto;
+    padding: @search-suggestion-padding 0;
+    min-height: @search-suggestion-min-height;
+
+    &-item {
+      padding: 0 @search-suggestion-item-padding;
+      line-height: @search-suggestion-item-line-height;
+      font-size: @search-suggestion-item-font-size;
+      color: @search-suggestion-item-color;
+      opacity: @search-suggestion-item-opacity;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &:hover {
+        background: @search-suggestion-item-hover-background;
+      }
+    }
+  }
+}
