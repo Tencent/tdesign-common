@@ -24,7 +24,7 @@
 @color-picker-slider-thumb-transform-x: @color-picker-slider-thumb-size * -.5;
 @color-picker-slider-thumb-padding: 2px;
 @color-picker-input-format-width: 64px;
-@color-picker-font-size: @font-size-body-small;
+@color-picker-font-size: @font-body-small;
 @color-picker-icon-size: 20px;
 @color-picker-icon-radius: 3px;
 @color-picker-icon-font-size: 16px;
@@ -42,9 +42,12 @@
 @color-picker-swatch-column-gap: 5.7px;
 @color-picker-swatch-wrap-margin-left: (@color-picker-swatch-padding + @color-picker-swatch-border-size) * -1;
 // 右边往外伸出一点，让滚动条居外侧
-@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left - 10px;
-@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0 @color-picker-swatch-wrap-margin-left;
+@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left -
+  10px;
+@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0
+  @color-picker-swatch-wrap-margin-left;
 @color-picker-swatch-max-rows: 4; // 最大显示行数
 
 // 最大高度 = 行数 * (itemHeight + itemMarginTop)m;
-@color-picker-swatch-rows-max-height: @color-picker-swatch-max-rows * (@color-picker-swatch-height + @color-picker-swatch-row-gap);
+@color-picker-swatch-rows-max-height: @color-picker-swatch-max-rows *
+  (@color-picker-swatch-height + @color-picker-swatch-row-gap);

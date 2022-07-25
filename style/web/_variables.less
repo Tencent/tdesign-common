@@ -1,3 +1,5 @@
+@import "./mixins/_font.less";
+
 // 公共前缀
 @prefix: t;
 
@@ -213,9 +215,6 @@
 @font-size-xxl: var(--td-font-size-headline-large); // 字号-一级字号
 
 // Line Height
-@text-line-height: var(--td-line-height); // 行高-常规
-@text-line-height-relation: var(--td-line-height-relation); // 行高和字体关系
-
 @text-line-height-s: 20px; // 行高-对应五级文字
 @text-line-height-base: 22px; // 行高-对应四级文字
 @text-line-height-l: 24px; // 行高-对应三级文字
@@ -223,40 +222,26 @@
 @text-line-height-xxl: 44px; //行高-对应一级文字
 
 // 字体
-@font-family: PingFang SC, Microsoft YaHei, Arial Regular; // 字体-磅数-常规
-@font-family-medium: PingFang SC, Microsoft YaHei, Arial Medium; // 字体-磅数-粗体
+@font-family: var(--td-font-family); // 字体-磅数-常规
+@font-family-medium: var(--td-font-family-medium); // 字体-磅数-粗体
 
-.font-calc(@fontSize, @fontWeight: 400) {
-  @var: @fontWeight @fontSize /
-    calc(
-      (@fontSize + @text-line-height) * @text-line-height-relation +
-      (@fontSize + @text-line-height) * (1 - @text-line-height-relation)
-    )
-    @font-family;
-}
-
-@font-size-link-small: .font-calc(var(--td-font-size-link-small)) [ @var];
-@font-size-link-medium: .font-calc(var(--td-font-size-link-medium)) [ @var];
-@font-size-link-large: .font-calc(var(--td-font-size-link-large)) [ @var];
-@font-size-mark-small: .font-calc(var(--td-font-size-mark-small), 600) [ @var];
-@font-size-mark-medium: .font-calc(var(--td-font-size-mark-medium), 600) [ @var];
-@font-size-body-small: .font-calc(var(--td-font-size-body-small)) [ @var];
-@font-size-body-medium: .font-calc(var(--td-font-size-body-medium)) [ @var];
-@font-size-body-large: .font-calc(var(--td-font-size-body-large)) [ @var];
-@font-size-title-small: .font-calc(var(--td-font-size-title-small), 600) [ @var];
-@font-size-title-medium: .font-calc(var(--td-font-size-title-medium), 600) [
-  @var];
-@font-size-title-large: .font-calc(var(--td-font-size-title-large), 600) [ @var];
-@font-size-headline-small: .font-calc(var(--td-font-size-headline-small), 600) [
-  @var];
-@font-size-headline-medium: .font-calc(var(--td-font-size-headline-medium), 600)
-  [ @var];
-@font-size-headline-large: .font-calc(var(--td-font-size-headline-large), 600) [
-  @var];
-@font-size-display-medium: .font-calc(var(--td-font-size-display-medium), 600) [
-  @var];
-@font-size-display-large: .font-calc(var(--td-font-size-display-large), 600) [
-  @var];
+@font-link-small: var(--td-font-link-small);
+@font-link-medium: var(--td-font-link-medium);
+@font-link-large: var(--td-font-link-large);
+@font-size-mark-small: var(--td-font-mark-small);
+@font-size-mark-medium: var(--td-font-mark-medium);
+@font-body-small: var(--td-font-body-small);
+@font-body-medium: var(--td-font-body-medium);
+@font-body-medium: var(--td-font-body-medium);
+@font-body-large: var(--td-font-body-large);
+@font-title-small: var(--td-font-title-small);
+@font-title-medium: var(--td-font-title-medium);
+@font-title-large: var(--td-font-title-large);
+@font-headline-small: var(--td-font-headline-small);
+@font-headline-medium: var(--td-font-headline-medium);
+@font-headline-large: var(--td-font-headline-large);
+@font-display-medium: var(--td-font-display-medium);
+@font-display-large: var(--td-font-display-large);
 
 // Border Radius
 @border-radius-small: var(--td-radius-small); // 圆角-2

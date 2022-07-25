@@ -53,8 +53,12 @@
 @transfer-wrap-height: 320px;
 @transfer-wrap-width: 206px;
 @transfer-list-header-height: 48px;
-@transfer-list-header-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
-@transfer-list-search-wrapper-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
+@transfer-list-header-width: (
+  @transfer-common-width - @transfer-list-margin-horizontal * 2
+);
+@transfer-list-search-wrapper-width: (
+  @transfer-common-width - @transfer-list-margin-horizontal * 2
+);
 @transfer-list-pagination-height: 24px;
 @transfer-list-pagination-line-height: 16px;
 @transfer-operations-button-height: 24px;
@@ -63,7 +67,7 @@
 @transfer-operations-icon-size: 16px;
 
 // 字体
-@transfer-font-size: @font-size-body-medium;
+@transfer-font-size: @font-body-medium;
 
 // 边框
 @transfer-border: 1px solid @transfer-border-color;
