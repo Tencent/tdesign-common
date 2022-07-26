@@ -8,7 +8,7 @@
 @select-option-bg-color-hover: @bg-color-container-hover;
 @select-option-bg-color-active: @bg-color-container-active;
 @select-option-checkbox-color: @bg-color-container-hover;
-@select-option-group-header-color: @text-color-placeholder;
+@select-option-group-header-color: @text-color-disabled;
 @select-option-color: @text-color-primary;
 @select-bg-color-disabled: @bg-color-component-disabled;
 @select-placeholder-color: @text-color-placeholder; // 如果需要改变文字颜色的透明度请通过这里修改
@@ -35,6 +35,7 @@
 @select-tag-height-default: 22px;
 @select-tag-height-l: 30px;
 @select-tag-height-s: 18px;
+@select-line-height: 30px;
 
 // font-size
 @select-font-size-s: @font-size-s;
@@ -53,7 +54,7 @@
 // padding
 @select-option-padding-s: 0 8px;
 @select-option-padding-default: 3px 8px;
-@select-option-padding-l: 7px 12px;
+@select-option-padding-l: 6px 12px;
 @select-padding: 0 26px 0 4px;
 @select-optiongroup-border-padding: 7px;
 @select-padding-prefix: 26px;
@@ -69,3 +70,5 @@
 @select-dropdown-margin: 8px 0;
 @select-options-margin: 2px;
 @select-no-border-margin-right: @spacer;
+// border
+@select-dropdown-border: .5px solid @gray-color-4;
