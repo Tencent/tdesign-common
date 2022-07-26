@@ -224,16 +224,7 @@
 
   .@{prefix}-dialog {
     pointer-events: auto;
-    z-index: 5;
+    z-index: @z-index-dialog;
     border: @dialog-border;
-
-    &.@{prefix}-dialog--fixed {
-      position: fixed;
-      z-index: @z-index-dialog;
-    }
-
-    &.@{prefix}-dialog--absolute {
-      position: absolute;
-    }
   }
 }
