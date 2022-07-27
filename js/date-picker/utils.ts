@@ -193,7 +193,7 @@ export interface OptionsType {
   disableDate: DisableDate;
   minDate: Date;
   maxDate: Date;
-  showWeekOfYear: Boolean;
+  showWeekOfYear?: Boolean;
   monthLocal?: string[];
 }
 
@@ -261,8 +261,8 @@ export function getWeeks(
   if (showWeekOfYear) {
     dataList.forEach((d) => {
       d.unshift({
+        ...d[0],
         active: false,
-        weekOfYear: true,
         value: d[0].value,
         text: dayjs(d[0].value).week(),
       });
