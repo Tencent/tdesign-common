@@ -252,6 +252,7 @@
   padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
   max-height: @select-dropdown-max-height;
   overflow-y: auto;
+  border: @select-dropdown-border;
   box-shadow: @select-dropdown-shadow;
   border-radius: @select-border-radius;
 
@@ -315,7 +316,17 @@
 }
 
 .@{prefix}-select-option-group__divider + .@{prefix}-select-option-group__divider {
-  border-top: 1px @select-optiongroup-border-color solid;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 28px;
+    top: 0;
+    height: 1px;
+    background-color: @select-optiongroup-border-color;
+  }
 }
 
 .@{prefix}-select-option-group__header {
@@ -343,7 +354,8 @@
 
 // option
 .@{prefix}-select-option {
-  display: block;
+  display: flex;
+  align-items: center;
   border-radius: @select-option-border-radius;
   height: @select-option-height-default;
   line-height: @select-option-line-height;
@@ -461,6 +473,33 @@
 
       .@{prefix}-fake-arrow {
         color: @select-border-color-active;
+      }
+    }
+  }
+}
+
+// 覆盖input中的padding
+.@{prefix}-select {
+
+  .@{prefix}-input {
+    line-height: @select-line-height;
+
+    .@{prefix}-input__inner {
+      font-size: @font-size-base;
+    }
+
+    &.@{prefix}-size-l {
+      padding: @spacer @spacer-l;
+
+      .@{prefix}-input__inner {
+        font-size: @font-size-l;
+      }
+    }
+
+    &.@{prefix}-size-s {
+
+      .@{prefix}-input__inner {
+        font-size: @font-size-s;
       }
     }
   }
