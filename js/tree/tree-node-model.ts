@@ -1,4 +1,5 @@
 import pick from 'lodash/pick';
+import omit from 'lodash/omit';
 import { TreeNode } from './tree-node';
 import { OptionData } from '../common';
 import {
@@ -148,8 +149,10 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
 
     // 设置本节点携带的元数据
     setData(data: OptionData) {
-      Object.assign(node.data, data);
-      Object.assign(node, data);
+      // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
+      const _data = omit(data, ['children']);
+      Object.assign(node.data, _data);
+      Object.assign(node, _data);
     },
   };
 
