@@ -3,6 +3,7 @@ import dayJsIsBetween from 'dayjs/plugin/isBetween';
 import weekYear from 'dayjs/plugin/weekYear';
 import localeData from 'dayjs/plugin/localeData';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
+import quarterOfYear from 'dayjs/plugin/quarterOfYear';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -12,6 +13,7 @@ dayjs.extend(isoWeek);
 dayjs.extend(weekYear);
 dayjs.extend(localeData);
 dayjs.extend(weekOfYear);
+dayjs.extend(quarterOfYear);
 dayjs.extend(advancedFormat);
 dayjs.extend(customParseFormat);
 dayjs.extend(dayJsIsBetween);
@@ -62,6 +64,10 @@ function isSameYear(date1: Date, date2: Date): boolean {
   return date1.getFullYear() === date2.getFullYear();
 }
 
+function isSameQuarter(date1: Date, date2: Date): boolean {
+  return isSameYear(date1, date2) && dayjs(date1).quarter() === dayjs(date2).quarter();
+}
+
 function isSameMonth(date1: Date, date2: Date): boolean {
   return isSameYear(date1, date2) && date1.getMonth() === date2.getMonth();
 }
@@ -99,6 +105,7 @@ function compareAsc(date1: { getTime: () => any }, date2: Date): number {
 export function isSame(date1: Date, date2: Date, type = 'date'): boolean {
   const func = {
     isSameYear,
+    isSameQuarter,
     isSameMonth,
     isSameWeek,
     isSameDate,
@@ -270,6 +277,32 @@ export function getWeeks(
   }
 
   return dataList;
+}
+
+export function getQuarters(
+  year: number,
+  {
+    disableDate = () => false,
+    minDate,
+    maxDate,
+  }: OptionsType,
+) {
+  const quarterArr = [];
+  const today = getToday();
+
+  for (let i = 1; i <= 4; i++) {
+    const date = dayjs(new Date(year, 0)).quarter(i).toDate();
+
+    quarterArr.push({
+      value: date,
+      now: isSame(date, today, 'quarter'),
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
+      active: false,
+      text: `Q${i}`,
+    });
+  }
+
+  return chunk(quarterArr, 4);
 }
 
 export function getYears(
