@@ -1,11 +1,12 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../mixins/_layout.less";
+
 @import "../../mixins/_reset.less";
 
-
 .@{prefix}-back-top {
-
   &-fade-enter-from,
   &-fade-leave-to {
     opacity: 0;
@@ -23,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 6px rgb(0 0 0 / 12%);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 12%);
   cursor: pointer;
   z-index: @back-top-z-index;
 }
