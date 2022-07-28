@@ -38,6 +38,11 @@
     appearance: textfield;
   }
 
+  // 输入框和右置内容之间需要间距
+  input + .@{prefix}-input__suffix {
+    margin-left: @input-number-padding-horizontal-default;
+  }
+
   .@{inputCls} {
     color: @input-number-inner-color;
   }
