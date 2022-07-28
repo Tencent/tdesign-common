@@ -1,9 +1,10 @@
 @import "../../base.less";
+
 @import "./_var.less";
+
 @import "../../mixins/_layout.less";
+
 @import "../../mixins/_reset.less";
-
-
 .@{prefix}-timeline {
   display: flex;
   flex-direction: column;
@@ -24,8 +25,8 @@
     cursor: not-allowed;
 
     .@{prefix}-timeline-item-dot {
-      border-color: #c5c5c5 !important;
-      color: #c5c5c5 !important;
+      border-color: @timeline-disable-dot-color !important;
+      color: @timeline-disable-dot-color !important;
     }
   }
 
@@ -99,10 +100,10 @@
       top: 24px;
       left: 5px;
       height: calc(100% - 30px);
-      border-left: 2px solid #0052D9;
+      border-left: 2px solid @timeline-border-color;
 
       &-dashed {
-        border-left: 2px dashed #0052D9 !important;
+        border-left: 2px dashed @timeline-border-color !important;
       }
     }
 
@@ -110,10 +111,10 @@
       top: 6px;
       left: 20px;
       width: calc(100% - 30px);
-      border-top: 2px solid #0052D9;
+      border-top: 2px solid @timeline-border-color;
 
       &-dashed {
-        border-top: 2px dashed #0052D9 !important;
+        border-top: 2px dashed @timeline-border-color !important;
       }
     }
   }
