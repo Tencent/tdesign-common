@@ -52,6 +52,13 @@
     &:placeholder-shown {
       text-overflow: ellipsis;
     }
+
+    &[type="search"]::-webkit-search-decoration,
+    &[type="search"]::-webkit-search-cancel-button,
+    &[type="search"]::-webkit-search-results-button,
+    &[type="search"]::-webkit-search-results-decoration {
+      -webkit-appearance:none;
+    }
   }
   // 底部的额外消息
   &__extra {
