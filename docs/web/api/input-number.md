@@ -61,3 +61,7 @@ spline: form
 ### 自适应宽度的输入框
 
 {{ auto-width }}
+
+### 支持大数的输入框
+
+{{ large-number }}
