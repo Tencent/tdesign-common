@@ -1,0 +1,30 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../mixins/_layout.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-back-top {
+  &-fade-enter-from,
+  &-fade-leave-to {
+    opacity: 0;
+  }
+
+  &-fade-enter-active,
+  &-fade-leave-active {
+    transition: opacity .3s linear;
+  }
+
+  width: @back-top-width;
+  height: @back-top-height;
+  border-radius: 50%;
+  color: @back-top-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 12%);
+  cursor: pointer;
+  z-index: @back-top-z-index;
+}
