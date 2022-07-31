@@ -17,7 +17,7 @@
   width: @dialog-width;
   background-color: @dialog-bg-color;
   position: relative;
-  border-radius: @dialog-border-radius;
+  border-radius: @border-radius-large;
 
   // icon theme
   .@{prefix}-icon.t-is-info {
@@ -112,7 +112,7 @@
     height: @dialog-close-icon-size;
     align-items: center;
     justify-content: center;
-    border-radius: @dialog-close-border-radius;
+    border-radius: @border-radius-default;
     background: @dialog-bg-color;
     transition: all @anim-duration-base linear;
 
@@ -224,16 +224,7 @@
 
   .@{prefix}-dialog {
     pointer-events: auto;
-    z-index: 5;
+    z-index: @z-index-dialog;
     border: @dialog-border;
-
-    &.@{prefix}-dialog--fixed {
-      position: fixed;
-      z-index: @z-index-dialog;
-    }
-
-    &.@{prefix}-dialog--absolute {
-      position: absolute;
-    }
   }
 }

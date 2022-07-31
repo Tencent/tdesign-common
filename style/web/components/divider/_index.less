@@ -41,7 +41,7 @@
     white-space: nowrap;
     align-items: center;
 
-    .@{prefix}-divider__inner-text {
+    .@{prefix}-divider__inner-text:not(:empty) {
       padding: @divider-inner-text-padding;
       display: inline-block;
     }

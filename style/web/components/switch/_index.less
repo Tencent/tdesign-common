@@ -35,7 +35,7 @@
     left: @switch-width-border-default;
     width: (@switch-height-default - 2px * @switch-width-border-default);
     height: (@switch-height-default - 2px * @switch-width-border-default);
-    border-radius: 12px;
+    border-radius: @border-radius-extraLarge;
     transition: @switch-handle-transition;
 
     .@{prefix}-icon {
@@ -50,7 +50,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 12px;
+      border-radius: @border-radius-extraLarge;
       background-color: @switch-handle-bg-color;
       transition: @switch-handle-transition;
     }

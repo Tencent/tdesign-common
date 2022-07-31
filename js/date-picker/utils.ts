@@ -1,7 +1,21 @@
 import dayjs from 'dayjs';
 import dayJsIsBetween from 'dayjs/plugin/isBetween';
+import weekYear from 'dayjs/plugin/weekYear';
+import localeData from 'dayjs/plugin/localeData';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
+import quarterOfYear from 'dayjs/plugin/quarterOfYear';
+import isoWeek from 'dayjs/plugin/isoWeek';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import chunk from 'lodash/chunk';
 
+dayjs.extend(isoWeek);
+dayjs.extend(weekYear);
+dayjs.extend(localeData);
+dayjs.extend(weekOfYear);
+dayjs.extend(quarterOfYear);
+dayjs.extend(advancedFormat);
+dayjs.extend(customParseFormat);
 dayjs.extend(dayJsIsBetween);
 
 /**
@@ -50,8 +64,16 @@ function isSameYear(date1: Date, date2: Date): boolean {
   return date1.getFullYear() === date2.getFullYear();
 }
 
+function isSameQuarter(date1: Date, date2: Date): boolean {
+  return isSameYear(date1, date2) && dayjs(date1).quarter() === dayjs(date2).quarter();
+}
+
 function isSameMonth(date1: Date, date2: Date): boolean {
   return isSameYear(date1, date2) && date1.getMonth() === date2.getMonth();
+}
+
+function isSameWeek(date1: Date, date2: Date): boolean {
+  return isSameMonth(date1, date2) && dayjs(date1).week() === dayjs(date2).week();
 }
 
 function isSameDate(date1: Date, date2: Date): boolean {
@@ -83,7 +105,9 @@ function compareAsc(date1: { getTime: () => any }, date2: Date): number {
 export function isSame(date1: Date, date2: Date, type = 'date'): boolean {
   const func = {
     isSameYear,
+    isSameQuarter,
     isSameMonth,
+    isSameWeek,
     isSameDate,
   };
   return func[`isSame${firstUpperCase(type)}`](date1, date2);
@@ -176,6 +200,7 @@ export interface OptionsType {
   disableDate: DisableDate;
   minDate: Date;
   maxDate: Date;
+  showWeekOfYear?: Boolean;
   monthLocal?: string[];
 }
 
@@ -183,6 +208,7 @@ export function getWeeks(
   { year, month }: { year: number; month: number },
   {
     firstDayOfWeek,
+    showWeekOfYear = false,
     disableDate = () => false,
     minDate,
     maxDate,
@@ -237,7 +263,46 @@ export function getWeeks(
     });
   }
 
-  return chunk(daysArr, 7);
+  const dataList = chunk(daysArr, 7);
+  // 显示周数
+  if (showWeekOfYear) {
+    dataList.forEach((d) => {
+      d.unshift({
+        ...d[0],
+        active: false,
+        value: d[0].value,
+        text: dayjs(d[0].value).week(),
+      });
+    });
+  }
+
+  return dataList;
+}
+
+export function getQuarters(
+  year: number,
+  {
+    disableDate = () => false,
+    minDate,
+    maxDate,
+  }: OptionsType,
+) {
+  const quarterArr = [];
+  const today = getToday();
+
+  for (let i = 1; i <= 4; i++) {
+    const date = dayjs(new Date(year, 0)).quarter(i).toDate();
+
+    quarterArr.push({
+      value: date,
+      now: isSame(date, today, 'quarter'),
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
+      active: false,
+      text: `Q${i}`,
+    });
+  }
+
+  return chunk(quarterArr, 4);
 }
 
 export function getYears(
@@ -324,6 +389,9 @@ export interface DateTime {
 export function flagActive(data: any[], { ...args }: any) {
   const { start, end, hoverStart, hoverEnd, type = 'date', isRange = false } = args;
 
+  // 周选择器不更改 cell 样式
+  if (type === 'week') return data;
+
   if (!isRange) {
     return data.map((row: any[]) => row.map((item: DateTime) => {
       const _item = item;
@@ -349,7 +417,6 @@ export function flagActive(data: any[], { ...args }: any) {
     }
 
     if (hoverStart && hoverEnd) {
-      // eslint-disable-next-line
       _item.hoverHighlight = dayjs(date).isBetween(hoverStart, hoverEnd, type, '[]') && !_item.additional;
       _item.hoverStartOfRange = isHoverStart;
       _item.hoverEndOfRange = isHoverEnd;
