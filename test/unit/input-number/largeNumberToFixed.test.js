@@ -1,4 +1,4 @@
-import { largeNumberToFixed } from '../../../js/input-number/index';
+import { largeNumberToFixed } from '../../../js/input-number/large-number';
 
 /**
  * 仅支持正整数
@@ -10,6 +10,10 @@ describe('largeNumberToFixed', () => {
 
   it('0.5', () => {
     expect(largeNumberToFixed('0.5')).toBe('1');
+  });
+
+  it('0.555', () => {
+    expect(largeNumberToFixed('0.555', 2)).toBe('0.56');
   });
 
   it('0.999', () => {

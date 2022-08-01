@@ -1,12 +1,46 @@
 /**
+ * 大数，是否是一个数字，数字字符包括 - . e [0-9]
+ */
+export function isInputNumber(num: number | string): boolean {
+  if (!num) return true;
+  if (typeof num === 'number') return Number.isNaN(num);
+  const r = /^[0-9|e|E|-]+\.*[0-9|e|E|-]*$/.test(num);
+  if (!r) return false;
+  // only allow one [.e] and two [-]
+  let eCount = 0;
+  let negativeCount = 0;
+  let dotCount = 0;
+  for (let i = 0, len = num.length; i < len; i++) {
+    if (num[i] === '.') {
+      dotCount += 1;
+      if (dotCount > 1) return false;
+    }
+    if (/(e|E)+/.test(num[i])) {
+      eCount += 1;
+      if (eCount > 1) return false;
+    }
+    if (num[i] === '-') {
+      negativeCount += 1;
+      if (negativeCount > 2) return false;
+    }
+  }
+  return true;
+}
+
+// 整数，去除前面的无效 0；小数去除末尾的无效 0
+export function removeInvalidZero(num: string, decimal = false) {
+  if (!num || num === '0') return '0';
+  return (decimal ? num.replace(/0+$/, '') : num.replace(/^0+/, '')) || '0';
+}
+
+/**
  * 大数加法，仅支持正整数（没有精度问题）
  * @param num1 被加数
  * @param num2 加数
  */
 export function largeIntNumberAdd(num1: string, num2: string, decimal = false): string {
-  // 去除数字最前面的无效数 0
-  const number1 = num1 && num1 !== '0' ? num1.replace(/^0+/, '') : '0';
-  const number2 = num2 && num2 !== '0' ? num2.replace(/^0+/, '') : '0';
+  const number1 = removeInvalidZero(num1, decimal);
+  const number2 = removeInvalidZero(num2, decimal);
   const isFirstLarger = number1.length > number2.length;
   const maxNumber = isFirstLarger ? number1 : number2;
   const minNumber = isFirstLarger ? number2 : number1;
@@ -38,17 +72,19 @@ export function largeIntNumberAdd(num1: string, num2: string, decimal = false): 
  * @param num1 被加数
  * @param num2 加数
  */
-export function largeNumberAdd(num1: string, num2: string): string {
-  const [intNumber1, decimalNumber1 = '0'] = num1.split('.');
-  const [intNumber2, decimalNumber2 = '0'] = num2.split('.');
+export function largePositiveNumberAdd(num1: string, num2: string): string {
+  const [intNumber1 = '0', decimalNumber1 = '0'] = num1.split('.');
+  const [intNumber2 = '0', decimalNumber2 = '0'] = num2.split('.');
   const integerSum = largeIntNumberAdd(intNumber1, intNumber2);
   // 如果不存在小数，则直接返回整数相加结果
   if (decimalNumber1 === '0' && decimalNumber2 === '0') return integerSum;
+  const newDecimalNumber1 = removeInvalidZero(decimalNumber1, true);
+  const newDecimalNumber2 = removeInvalidZero(decimalNumber2, true);
   // 小数点相加
-  const decimalNumberSum = largeIntNumberAdd(decimalNumber1, decimalNumber2, true);
+  const decimalNumberSum = largeIntNumberAdd(newDecimalNumber1, newDecimalNumber2, true);
   // 组合整数部分和小数部分
   const decimalLength = decimalNumberSum.length;
-  if (decimalLength > decimalNumber1.length && decimalLength > decimalNumber2.length) {
+  if (decimalLength > newDecimalNumber1.length && decimalLength > newDecimalNumber2.length) {
     return [largeIntNumberAdd(integerSum, '1'), decimalNumberSum.slice(1).replace(/0+$/, '')].join('.');
   }
   return [integerSum, decimalNumberSum].join('.');
@@ -57,9 +93,9 @@ export function largeNumberAdd(num1: string, num2: string): string {
 /**
  * 比较两个大数的大小，仅正整数有效
  */
-function compareLargeIntegerNumber(num1, num2, decimal = false): 1 | -1 | 0 {
-  const number1 = num1 && num1 !== '0' ? num1.replace(/^0+/, '') : '0';
-  const number2 = num2 && num2 !== '0' ? num2.replace(/^0+/, '') : '0';
+function compareLargeIntegerNumber(num1: string, num2: string): 1 | -1 | 0 {
+  const number1 = removeInvalidZero(num1);
+  const number2 = removeInvalidZero(num2);
   if (number1.length === number2.length) {
     for (let i = 0, len = number1.length; i < len; i++) {
       if (number1[i] > number2[i]) return 1;
@@ -70,7 +106,7 @@ function compareLargeIntegerNumber(num1, num2, decimal = false): 1 | -1 | 0 {
   return number1.length > number2.length ? 1 : -1;
 }
 
-function compareLargeDecimalNumber(num1, num2) {
+function compareLargeDecimalNumber(num1: string, num2: string) {
   const number1 = num1 && num1 !== '0' ? num1.replace(/0+$/, '') : '0';
   const number2 = num2 && num2 !== '0' ? num2.replace(/0+$/, '') : '0';
   const maxLength = Math.max(number1.length, number2.length);
@@ -84,10 +120,22 @@ function compareLargeDecimalNumber(num1, num2) {
 /**
  * 比较两个大数的大小
  */
-export function compareLargeNumber(num1: string, num2: string): 1 | -1 | 0 {
+export function compareLargeNumber(num1: string | number, num2: string | number): 1 | -1 | 0 {
+  if (typeof num1 === 'number' || typeof num2 === 'number') {
+    if (num1 === num2) return 0;
+    return num1 > num2 ? 1 : -1;
+  }
   const [integer1, decimal1] = num1.split('.');
   const [integer2, decimal2] = num2.split('.');
-  const result = compareLargeIntegerNumber(integer1, integer2);
+  const result = compareLargeIntegerNumber(integer1.replace('-', ''), integer2.replace('-', ''));
+  const integer1IsNegative = integer1.includes('-');
+  const integer2IsNegative = integer2.includes('-');
+  if (integer1IsNegative && !integer2IsNegative) return -1;
+  if (!integer1IsNegative && integer2IsNegative) return 1;
+  if (integer1IsNegative && integer2IsNegative) {
+    if (result === 0) return 0;
+    return result > 0 ? -1 : 1;
+  }
   if (result === 0) {
     return compareLargeDecimalNumber(decimal1, decimal2);
   }
@@ -105,9 +153,8 @@ export function largeIntegerNumberSubtract(
 ): string {
   if (num1 === num2) return '0';
   const { decimal, stayZero } = p || {};
-  // 去除数字最前面的无效数 0
-  const number1 = num1 && num1 !== '0' ? num1.replace(/^0+/, '') : '0';
-  const number2 = num2 && num2 !== '0' ? num2.replace(/^0+/, '') : '0';
+  const number1 = removeInvalidZero(num1);
+  const number2 = removeInvalidZero(num2);
   const isFirstLarger = compareLargeIntegerNumber(number1, number2) > 0;
   const maxNumber = isFirstLarger ? number1 : number2;
   const minNumber = isFirstLarger ? number2 : number1;
@@ -142,7 +189,7 @@ export function largeIntegerNumberSubtract(
  * @param num2 减数
  * @param decimal 是否为小数位相减
  */
-export function largeNumberSubtract(num1: string, num2: string): string {
+export function largePositiveNumberSubtract(num1: string, num2: string): string {
   if (num1 === num2) return '0';
   const isFirstLarger = compareLargeNumber(num1, num2) > 0;
   const maxNumber = isFirstLarger ? num1 : num2;
@@ -161,10 +208,10 @@ export function largeNumberSubtract(num1: string, num2: string): string {
   if (decimalNumber1.length < decimalNumber2.length) {
     addOneNumber = `${decimalNumber1}${new Array(decimalNumber2.length - decimalNumber1.length).fill(0).join('')}`;
   }
-  if (compareLargeDecimalNumber(decimalNumber1, decimalNumber2) >= 0) {
+  if (compareLargeDecimalNumber(addOneNumber, decimalNumber2) >= 0) {
     decimalNumber = largeIntegerNumberSubtract(addOneNumber, decimalNumber2, { decimal: true });
   } else {
-    if (decimalNumber1.length < decimalNumber2.length) {
+    if (decimalNumber1.length < decimalNumber2.length || decimalNumber1 === '0') {
       decimalNumber = largeIntegerNumberSubtract(`1${addOneNumber}`, decimalNumber2, { stayZero: true }).slice(1);
     } else {
       decimalNumber = largeIntegerNumberSubtract(decimalNumber1, decimalNumber2, { decimal: true });
@@ -176,11 +223,56 @@ export function largeNumberSubtract(num1: string, num2: string): string {
 }
 
 /**
+ * -0.6 - 0.8        =>  -(0.6 + 0.8)
+ * -0.6 - (-0.8)     =>  0.8 - 0.6
+ * 0.6 - (-0.8)      => 0.6 + 0.8
+ * 0.6 - 0.8         => 0.6 - 0.8
+ */
+export function largeNumberSubtract(num1: string, num2: string): string {
+  const isFirstNegative = num1[0] === '-';
+  const isSecondNegative = num2[0] === '-';
+  if (isFirstNegative && !isSecondNegative) {
+    const r = largePositiveNumberAdd(num1.slice(1), num2);
+    return `-${r}`;
+  }
+  if (isFirstNegative && isSecondNegative) {
+    return largePositiveNumberSubtract(num2.slice(1), num1.slice(1));
+  }
+  if (!isFirstNegative && isSecondNegative) {
+    return largePositiveNumberAdd(num1, num2.slice(1));
+  }
+  return largePositiveNumberSubtract(num1, num2);
+}
+
+/**
+ * -0.6 + 0.8        =>  0.8 - 0.6
+ * -0.6 + (-0.8)     =>  -(0.6 + 0.8)
+ * 0.6 + (-0.8)      => 0.6 - 0.8
+ * 0.6 + 0.8         => 0.6 + 0.8
+ */
+export function largeNumberAdd(num1: string, num2: string): string {
+  const isFirstNegative = num1[0] === '-';
+  const isSecondNegative = num2[0] === '-';
+  if (isFirstNegative && !isSecondNegative) {
+    return largePositiveNumberSubtract(num2, num1.slice(1));
+  }
+  if (isFirstNegative && isSecondNegative) {
+    const r = largePositiveNumberAdd(num2.slice(1), num1.slice(1));
+    return `-${r}`;
+  }
+  if (!isFirstNegative && isSecondNegative) {
+    return largePositiveNumberSubtract(num1, num2.slice(1));
+  }
+  return largePositiveNumberAdd(num1, num2);
+}
+
+/**
  * 大数保留 N 位小数（没有精度问题）
  * @param {String} number 大数（只能使用字符串表示）
  * @param {Number} decimalPlaces 保留的小数位数
  */
-export function largeNumberToFixed(number: string, decimalPlaces: number = 0): string {
+export function largeNumberToFixed(number: string | number, decimalPlaces: number = 0): string {
+  if (typeof number === 'number') return number.toFixed(decimalPlaces);
   if (typeof number !== 'string') return number;
   const [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
@@ -189,16 +281,34 @@ export function largeNumberToFixed(number: string, decimalPlaces: number = 0): s
   }
   // 存在小数点，保留 0 位小数，四舍五入
   if (decimalPlaces === 0) {
-    return Number(num2[0]) >= 5 ? largeNumberAdd(num1, '1') : num1;
+    return Number(num2[0]) >= 5 ? largePositiveNumberAdd(num1, '1') : num1;
   }
   // 存在小数点，保留 > 0 位小数，四舍五入（此时，整数位不会发生任何变化，只需关注小数位数）
   let decimalNumber = num2.slice(0, decimalPlaces);
   if (num2.length < decimalPlaces) {
     decimalNumber += (new Array(decimalPlaces - num2.length).fill(0).join(''));
   } else {
-    decimalNumber = Number(num2[decimalPlaces]) > 5
-      ? largeNumberAdd(decimalNumber, '1')
+    decimalNumber = Number(num2[decimalPlaces]) >= 5
+      ? largePositiveNumberAdd(decimalNumber, '1')
       : decimalNumber;
   }
   return [num1, decimalNumber].join('.');
+}
+
+/**
+ * 2e3 => 2000
+ * 0.2e3 => 200
+ */
+export function formatENumber(num: string): string {
+  const [num1, num2] = num.split('e');
+  const [integer, initDecimal = ''] = num.split('.');
+  const zeroCount = Number(num2);
+  const [decimal] = initDecimal.split('e');
+  if (zeroCount > decimal.length) {
+    const multipleZero = new Array(zeroCount - decimal.length).fill(0).join('');
+    return num1.replace(/(^0+|\.)/g, '') + multipleZero;
+  }
+  const n1 = integer.replace(/^0+/, '') + decimal.slice(0, zeroCount);
+  const d2 = decimal.slice(zeroCount);
+  return d2 ? [n1, d2].join('.') : n1;
 }

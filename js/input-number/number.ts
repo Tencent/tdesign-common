@@ -1,0 +1,182 @@
+/** 普通数相关方法 */
+import isString from 'lodash/isString';
+import isNumber from 'lodash/isNumber';
+import {
+  compareLargeNumber,
+  formatENumber,
+  largeNumberToFixed,
+  isInputNumber,
+  largeNumberAdd,
+  largeNumberSubtract,
+} from './large-number';
+import log from '../log';
+
+export type NumberType = number | string;
+
+// 小于最大值，才允许继续添加
+export function canAddNumber(num: NumberType, max: NumberType, largeNumber = false): boolean {
+  if (largeNumber && isString(num)) {
+    return compareLargeNumber(num, max) < 0;
+  }
+  return num < max;
+}
+
+// 大于最小值，才允许继续减少
+export function canReduceNumber(num: NumberType, min: NumberType, largeNumber = false): boolean {
+  if (largeNumber && isString(num)) {
+    return compareLargeNumber(num, min) > 0;
+  }
+  return num > min;
+}
+
+/**
+ * 格式化数字，如：2e3 转换为 2000
+ * 如果不是数字，则不允许输入
+ * decimalPlaces 小数点处理
+ * format 自定义格式化函数
+ */
+export function formatToNumber(
+  num: string,
+  extra?: {
+    decimalPlaces?: number,
+    largeNumber?: boolean,
+    format?: (value: NumberType, context: { fixedNumber: NumberType }) => NumberType,
+  }
+): string | number {
+  if (num === '-') return 0;
+  if (num[num.length - 1] === '.') return num.slice(0, -1);
+  const isLargeNumber = extra?.largeNumber && isString(num);
+  let newNumber: string | number = num;
+  if ((isString(num) && num.includes('e')) || isNumber(num)) {
+    newNumber = isLargeNumber ? formatENumber(num) : Number(num);
+  }
+  const storeNumber = newNumber;
+  if (extra?.decimalPlaces) {
+    newNumber = largeNumberToFixed(newNumber, extra.decimalPlaces);
+  }
+  if (extra.format) {
+    newNumber = extra.format(storeNumber, { fixedNumber: newNumber });
+  }
+  return isLargeNumber ? newNumber : Number(newNumber);
+}
+
+export function putInRangeNumber(
+  val: NumberType,
+  params: {
+    max?: NumberType,
+    min?: NumberType,
+    lastValue?: NumberType,
+    largeNumber?: boolean,
+  },
+): NumberType {
+  if (val === '') return undefined;
+  const { max, min, lastValue, largeNumber } = params;
+  if (!isInputNumber(val)) return lastValue;
+  if (largeNumber
+    && (isString(max) || max === Infinity)
+    && (isString(min) || min === -Infinity)
+  ) {
+    if (compareLargeNumber(max, val) < 0) return max;
+    if (compareLargeNumber(min, val) > 0) return min;
+    return val;
+  }
+  return Math.max(Number(min), Math.min(Number(max), Number(val)));
+}
+
+/**
+ * 小数加法精度处理，小数部分和整数部分分开处理
+ */
+export function add(num1: number, num2: number): number {
+  if (!num1 || !num2) return (num1 || 0) + (num2 || 0);
+  const r1 = num1.toString().split('.')[1]?.length || 0;
+  const r2 = num2.toString().split('.')[1]?.length || 0;
+  // 整数不存在精度问题，直接返回
+  if (!r1 || !r2) return num1 + num2;
+  let newNumber1 = num1;
+  let newNumber2 = num2;
+  const diff = Math.abs(r1 - r2);
+  const digit = 10 ** Math.max(r1, r2);
+  if (diff > 0) {
+    const cm = 10 ** diff;
+    if (r1 > r2) {
+      newNumber1 = Number(num1.toString().replace('.', ''));
+      newNumber2 = Number(num2.toString().replace('.', '')) * cm;
+    } else {
+      newNumber1 = Number(num1.toString().replace('.', '')) * cm;
+      newNumber2 = Number(num2.toString().replace('.', ''));
+    }
+  } else {
+    newNumber1 = Number(num1.toString().replace('.', ''));
+    newNumber2 = Number(num2.toString().replace('.', ''));
+  }
+  return (newNumber1 + newNumber2) / digit;
+}
+
+/**
+ * 小数减法精度处理，小数部分和整数部分分开处理
+ */
+export function subtract(num1: number, num2: number): number {
+  if (!num1 || !num2) return (num1 || 0) - (num2 || 0);
+  const r1 = num1.toString().split('.')[1]?.length || 0;
+  const r2 = num2.toString().split('.')[1]?.length || 0;
+  const digit = 10 ** Math.max(r1, r2);
+  const n = (r1 >= r2) ? r1 : r2;
+  return Number(((num1 * digit - num2 * digit) / digit).toFixed(n));
+}
+
+export function getStepValue(p: {
+  op: 'add' | 'reduce',
+  step: NumberType,
+  max?: NumberType,
+  min?: NumberType,
+  lastValue?: NumberType,
+  largeNumber?: boolean,
+  decimalPlaces?: number,
+}) {
+  const { op, step, lastValue, max, min, largeNumber, decimalPlaces } = p;
+  if (step <= 0) {
+    log.error('InputNumber', 'step must be larger than 0.');
+    return lastValue;
+  }
+  const tStep = isNumber(step) ? String(step) : step;
+  let newVal: string | number;
+  if (op === 'add') {
+    if (largeNumber && isString(lastValue)) {
+      newVal = largeNumberAdd(lastValue, tStep);
+    } else {
+      newVal = add(Number(lastValue || 0), Number(step));
+    }
+  } else if (op === 'reduce') {
+    if (largeNumber && isString(lastValue)) {
+      newVal = largeNumberSubtract(lastValue, tStep);
+    } else {
+      newVal = subtract(Number(lastValue || 0), Number(step));
+    }
+  }
+  if (lastValue === undefined) {
+    newVal = putInRangeNumber(newVal, { max, min, lastValue, largeNumber });
+  }
+  const r = decimalPlaces ? largeNumberToFixed(newVal, decimalPlaces) : newVal;
+  return largeNumber ? r : Number(r);
+}
+
+export function getMaxOrMinValidateResult(p: {
+  largeNumber: boolean,
+  number: NumberType,
+  max: NumberType,
+  min: NumberType,
+}): 'exceed-maximum' | 'below-minimum' | undefined {
+  const { largeNumber, number, max, min } = p;
+  if (largeNumber && isNumber(number)) {
+    log.warn('InputNumber', 'largeNumber value must be a string.');
+  }
+  let error;
+  if (compareLargeNumber(number, max) > 0) {
+    error = 'exceed-maximum';
+  } else if (compareLargeNumber(number, min) < 0) {
+    error = 'below-minimum';
+  } else {
+    error = undefined;
+  }
+  return error;
+}

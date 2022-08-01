@@ -1,4 +1,4 @@
-import { largeIntNumberAdd } from '../../../js/input-number/index';
+import { largeIntNumberAdd } from '../../../js/input-number/large-number';
 
 /**
  * 仅支持正整数

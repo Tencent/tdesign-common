@@ -1,4 +1,4 @@
-import { compareLargeNumber } from '../../../js/input-number/index';
+import { compareLargeNumber, isInputNumber, formatENumber } from '../../../js/input-number/large-number';
 
 /**
  * 仅支持正整数
@@ -48,7 +48,67 @@ describe('compareLargeNumber', () => {
     expect(compareLargeNumber('2.134', '88.8')).toBe(-1);
   });
 
+  it('-2, -1', () => {
+    expect(compareLargeNumber('-2', '-1')).toBe(-1);
+  });
+
+  it('-1, -2', () => {
+    expect(compareLargeNumber('-1', '-2')).toBe(1);
+  });
+
+  it('-2, -2', () => {
+    expect(compareLargeNumber('-2', '-2')).toBe(0);
+  });
+
   it('4241234, 41234534', () => {
     expect(compareLargeNumber('4241234', '41234534')).toBe(-1);
+  });
+});
+
+describe('isInputNumber', () => {
+  it('0', () => {
+    expect(isInputNumber('0')).toBe(true);
+  });
+
+  it('4241234', () => {
+    expect(isInputNumber('4241234')).toBe(true);
+  });
+
+  it('2e3 is equal 15', () => {
+    expect(isInputNumber('2e3')).toBe(true);
+  });
+
+  it('-100', () => {
+    expect(isInputNumber('-100')).toBe(true);
+  });
+
+  it('-100.41234', () => {
+    expect(isInputNumber('-100.41234')).toBe(true);
+  });
+
+  it('-100.41dweqd234', () => {
+    expect(isInputNumber('-100.412dqwed34')).toBe(false);
+  });
+});
+
+describe('formatENumber', () => {
+  it('2e3', () => {
+    expect(formatENumber('2e3')).toBe('2000');
+  });
+
+  it('999992e3', () => {
+    expect(formatENumber('999992e3')).toBe('999992000');
+  });
+
+  it('0.2e3', () => {
+    expect(formatENumber('0.2e3')).toBe('200');
+  });
+
+  it('0.1234e1', () => {
+    expect(formatENumber('0.1234e1')).toBe('1.234');
+  });
+
+  it('0.123e3', () => {
+    expect(formatENumber('0.123e3')).toBe('123');
   });
 });

@@ -1,11 +1,15 @@
-import { largeNumberAdd } from '../../../js/input-number/index';
+import { largeNumberAdd } from '../../../js/input-number/large-number';
 
 /**
- * 支持任意两个正数相加，支持小数
+ * 支持任意两个数相加，支持小数
  */
 describe('largeNumberAdd', () => {
   it('0.1 + 0.2', () => {
     expect(largeNumberAdd('0.1', '0.2')).toBe(String((0.1 + 0.2).toFixed(1)));
+  });
+
+  it('5.0383412673418000000 + 0.1', () => {
+    expect(largeNumberAdd('5.0383412673418000000', '0.1')).toBe(String((5.0383412673418000000 + 0.1)));
   });
 
   it('0.0 + 0.0', () => {
@@ -70,5 +74,21 @@ describe('largeNumberAdd', () => {
 
   it('100000000 + 99999', () => {
     expect(largeNumberAdd('100000000', '99999')).toBe(String(100000000 + 99999));
+  });
+
+  it('-41241234.111 + 56252345.999', () => {
+    expect(largeNumberAdd('-41241234.111', '56252345.999')).toBe(String(15011111.888));
+  });
+
+  it('-41241234.111 + (-56252345.999)', () => {
+    expect(largeNumberAdd('-41241234.111', '-56252345.999')).toBe(String(-97493580.11));
+  });
+
+  it('41241234.111 + 56252345.999', () => {
+    expect(largeNumberAdd('41241234.111', '56252345.999')).toBe(String(97493580.11));
+  });
+
+  it('41241234.111 + (-56252345.999)', () => {
+    expect(largeNumberAdd('41241234.111', '-56252345.999')).toBe(String(-15011111.888));
   });
 });
