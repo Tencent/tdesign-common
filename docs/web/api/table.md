@@ -319,7 +319,7 @@ spline: data
 - `onRowEdit` 会在行编辑时触发。
 - `onRowValidate` 在行编辑校验完成后触发。
 - `editableRowKeys` 用于控制处于编辑状态的行。
-- 实例方法 `validateRowDate` 用于进行表格行数据校验。
+- 实例方法 `validateRowData` 用于进行表格行数据校验。
 
 {{ editable-row }}
 
