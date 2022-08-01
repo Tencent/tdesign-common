@@ -128,9 +128,8 @@ export function getStepValue(p: {
   min?: NumberType,
   lastValue?: NumberType,
   largeNumber?: boolean,
-  decimalPlaces?: number,
 }) {
-  const { op, step, lastValue, max, min, largeNumber, decimalPlaces } = p;
+  const { op, step, lastValue, max, min, largeNumber } = p;
   if (step <= 0) {
     log.error('InputNumber', 'step must be larger than 0.');
     return lastValue;
@@ -153,8 +152,7 @@ export function getStepValue(p: {
   if (lastValue === undefined) {
     newVal = putInRangeNumber(newVal, { max, min, lastValue, largeNumber });
   }
-  const r = decimalPlaces ? largeNumberToFixed(newVal, decimalPlaces) : newVal;
-  return largeNumber ? r : Number(r);
+  return largeNumber ? newVal : Number(newVal);
 }
 
 export type InputNumberErrorType = 'exceed-maximum' | 'below-minimum' | undefined;

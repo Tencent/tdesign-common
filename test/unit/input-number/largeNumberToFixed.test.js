@@ -51,4 +51,8 @@ describe('largeNumberToFixed', () => {
   it('12.1567', () => {
     expect(largeNumberToFixed('12.1567', 2)).toBe('12.16');
   });
+
+  it('20000000000000001.0', () => {
+    expect(largeNumberToFixed('20000000000000001.0', 2, true)).toBe('20000000000000001.00');
+  });
 });

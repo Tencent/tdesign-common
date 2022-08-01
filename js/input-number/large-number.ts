@@ -87,7 +87,7 @@ export function largePositiveNumberAdd(num1: string, num2: string): string {
   if (decimalLength > newDecimalNumber1.length && decimalLength > newDecimalNumber2.length) {
     return [largeIntNumberAdd(integerSum, '1'), decimalNumberSum.slice(1).replace(/0+$/, '')].join('.');
   }
-  return [integerSum, decimalNumberSum].join('.');
+  return removeInvalidZero([integerSum, decimalNumberSum].join('.'));
 }
 
 /**
@@ -180,7 +180,7 @@ export function largeIntegerNumberSubtract(
   if (!stayZero) {
     finalNumber = finalNumber.replace(/^0+/, '');
   }
-  return isFirstLarger ? finalNumber : `-${finalNumber}`;
+  return removeInvalidZero(isFirstLarger ? finalNumber : `-${finalNumber}`);
 }
 
 /**
@@ -270,9 +270,10 @@ export function largeNumberAdd(num1: string, num2: string): string {
  * 大数保留 N 位小数（没有精度问题）
  * @param {String} number 大数（只能使用字符串表示）
  * @param {Number} decimalPlaces 保留的小数位数
+ * @param {Boolean} largeNumber 是否为大数
  */
 export function largeNumberToFixed(
-  number: string | number, decimalPlaces: number = 0, largeNumber = false,
+  number: string | number, decimalPlaces: number = 0, largeNumber = true,
 ): string {
   if (!largeNumber) return Number(number).toFixed(decimalPlaces);
   if (typeof number !== 'string') return String(number);
