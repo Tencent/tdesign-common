@@ -44,7 +44,7 @@ export function largeIntNumberAdd(num1: string, num2: string, decimal = false): 
   const isFirstLarger = number1.length > number2.length;
   const maxNumber = isFirstLarger ? number1 : number2;
   const minNumber = isFirstLarger ? number2 : number1;
-  const newNumber = [];
+  const newNumber: string[] = [];
   const step = [];
   const diff = decimal ? 0 : maxNumber.length - minNumber.length;
   const len = decimal ? minNumber.length : maxNumber.length;
@@ -55,11 +55,11 @@ export function largeIntNumberAdd(num1: string, num2: string, decimal = false): 
     if (count >= 10) {
       step[i - 1] = 1;
     }
-    newNumber.unshift(count % 10);
+    newNumber.unshift(String(count % 10));
   }
   // 999 + 1 = 1000，之类的进位
   if (step[-1]) {
-    newNumber.unshift(1);
+    newNumber.unshift('1');
   }
   if (decimal) {
     return newNumber.concat(maxNumber.slice(len, maxNumber.length)).join('');
@@ -158,7 +158,7 @@ export function largeIntegerNumberSubtract(
   const isFirstLarger = compareLargeIntegerNumber(number1, number2) > 0;
   const maxNumber = isFirstLarger ? number1 : number2;
   const minNumber = isFirstLarger ? number2 : number1;
-  const newNumber = [];
+  const newNumber: string[] = [];
   // step 存储借位信息
   const step = [];
   const diff = decimal ? 0 : maxNumber.length - minNumber.length;
@@ -171,7 +171,7 @@ export function largeIntegerNumberSubtract(
       step[i - 1] = 1;
       count += 10;
     }
-    newNumber.unshift(count);
+    newNumber.unshift(String(count));
   }
   if (decimal) {
     return newNumber.concat(maxNumber.slice(len, maxNumber.length)).join('');

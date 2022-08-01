@@ -157,6 +157,8 @@ export function getStepValue(p: {
   return largeNumber ? r : Number(r);
 }
 
+export type InputNumberErrorType = 'exceed-maximum' | 'below-minimum' | undefined;
+
 /**
  * 最大值和最小值校验
  */
@@ -165,13 +167,13 @@ export function getMaxOrMinValidateResult(p: {
   value: NumberType,
   max: NumberType,
   min: NumberType,
-}): 'exceed-maximum' | 'below-minimum' | undefined {
+}): InputNumberErrorType {
   const { largeNumber, value, max, min } = p;
   if (largeNumber === undefined) return undefined;
   if (largeNumber && isNumber(value)) {
     log.warn('InputNumber', 'largeNumber value must be a string.');
   }
-  let error;
+  let error: InputNumberErrorType;
   if (compareLargeNumber(value, max) > 0) {
     error = 'exceed-maximum';
   } else if (compareLargeNumber(value, min) < 0) {
