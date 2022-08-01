@@ -56,6 +56,6 @@ spline: form
 
 {{ auto-width }}
 
-### 支持大数的输入框
+### 大数字输入框
 
 {{ large-number }}

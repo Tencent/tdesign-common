@@ -1,8 +1,5 @@
 import { compareLargeNumber, isInputNumber, formatENumber } from '../../../js/input-number/large-number';
 
-/**
- * 仅支持正整数
- */
 describe('compareLargeNumber', () => {
   it('0.1, 0.2', () => {
     expect(compareLargeNumber('0.1', '0.2')).toBe(-1);

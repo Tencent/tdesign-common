@@ -1,8 +1,5 @@
 import { largeIntNumberAdd } from '../../../js/input-number/large-number';
 
-/**
- * 仅支持正整数
- */
 describe('largeIntNumberAdd', () => {
   it('0 + 0', () => {
     expect(largeIntNumberAdd('0', '0')).toBe(String(0 + 0));

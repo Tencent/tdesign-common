@@ -11,6 +11,8 @@ import {
 } from './large-number';
 import log from '../log';
 
+export * from './large-number';
+
 export type NumberType = number | string;
 
 // 小于最大值，才允许继续添加
@@ -33,16 +35,15 @@ export function canReduceNumber(num: NumberType, min: NumberType, largeNumber = 
  * 格式化数字，如：2e3 转换为 2000
  * 如果不是数字，则不允许输入
  * decimalPlaces 小数点处理
- * format 自定义格式化函数
  */
 export function formatToNumber(
   num: string,
   extra?: {
     decimalPlaces?: number,
     largeNumber?: boolean,
-    format?: (value: NumberType, context: { fixedNumber: NumberType }) => NumberType,
   }
 ): string | number {
+  if (num === undefined || num === null || num === '') return num;
   if (num === '-') return 0;
   if (num[num.length - 1] === '.') return num.slice(0, -1);
   const isLargeNumber = extra?.largeNumber && isString(num);
@@ -50,12 +51,8 @@ export function formatToNumber(
   if ((isString(num) && num.includes('e')) || isNumber(num)) {
     newNumber = isLargeNumber ? formatENumber(num) : Number(num);
   }
-  const storeNumber = newNumber;
   if (extra?.decimalPlaces) {
     newNumber = largeNumberToFixed(newNumber, extra.decimalPlaces);
-  }
-  if (extra.format) {
-    newNumber = extra.format(storeNumber, { fixedNumber: newNumber });
   }
   return isLargeNumber ? newNumber : Number(newNumber);
 }
@@ -160,23 +157,40 @@ export function getStepValue(p: {
   return largeNumber ? r : Number(r);
 }
 
+/**
+ * 最大值和最小值校验
+ */
 export function getMaxOrMinValidateResult(p: {
   largeNumber: boolean,
-  number: NumberType,
+  value: NumberType,
   max: NumberType,
   min: NumberType,
 }): 'exceed-maximum' | 'below-minimum' | undefined {
-  const { largeNumber, number, max, min } = p;
-  if (largeNumber && isNumber(number)) {
+  const { largeNumber, value, max, min } = p;
+  if (largeNumber === undefined) return undefined;
+  if (largeNumber && isNumber(value)) {
     log.warn('InputNumber', 'largeNumber value must be a string.');
   }
   let error;
-  if (compareLargeNumber(number, max) > 0) {
+  if (compareLargeNumber(value, max) > 0) {
     error = 'exceed-maximum';
-  } else if (compareLargeNumber(number, min) < 0) {
+  } else if (compareLargeNumber(value, min) < 0) {
     error = 'below-minimum';
   } else {
     error = undefined;
   }
   return error;
+}
+
+/**
+ * 是否允许输入当前字符，输入字符校验
+ */
+export function canInputNumber(
+  number: string,
+  largeNumber: boolean,
+) {
+  if (!number && typeof number === 'string') return true;
+  const isNumber = (largeNumber && isInputNumber(number)) || !Number.isNaN(Number(number));
+  if (!isNumber && !['-', '.', 'e', 'E'].includes(number.slice(-1))) return false;
+  return true;
 }
