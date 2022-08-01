@@ -271,9 +271,11 @@ export function largeNumberAdd(num1: string, num2: string): string {
  * @param {String} number 大数（只能使用字符串表示）
  * @param {Number} decimalPlaces 保留的小数位数
  */
-export function largeNumberToFixed(number: string | number, decimalPlaces: number = 0): string {
-  if (typeof number === 'number') return number.toFixed(decimalPlaces);
-  if (typeof number !== 'string') return number;
+export function largeNumberToFixed(
+  number: string | number, decimalPlaces: number = 0, largeNumber = false,
+): string {
+  if (!largeNumber) return Number(number).toFixed(decimalPlaces);
+  if (typeof number !== 'string') return String(number);
   const [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {

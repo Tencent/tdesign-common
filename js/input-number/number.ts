@@ -52,9 +52,9 @@ export function formatToNumber(
     newNumber = isLargeNumber ? formatENumber(num) : Number(num);
   }
   if (extra?.decimalPlaces) {
-    newNumber = largeNumberToFixed(newNumber, extra.decimalPlaces);
+    newNumber = largeNumberToFixed(newNumber, extra.decimalPlaces, extra.largeNumber);
   }
-  return isLargeNumber ? newNumber : Number(newNumber);
+  return isLargeNumber || extra.decimalPlaces ? newNumber : Number(newNumber);
 }
 
 export function putInRangeNumber(
