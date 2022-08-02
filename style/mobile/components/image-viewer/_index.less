@@ -34,6 +34,30 @@
     z-index: 101;
   }
 
+  .image-viewer-bar {
+    width: 100%;
+    padding: 0px 15px;
+    box-sizing: border-box;
+    position: absolute;
+    top: @image-viewer-index-top;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1601;
+
+    .image-viewer-page {
+      color: #fff;
+      font-size: @image-viewer-page-fontsize;
+      text-shadow: @image-viewer-index-text-shadow;
+    }
+
+    .image-viewer-icon {
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+
   .image-viewer-container {
     position: fixed;
     top: 0;
@@ -41,6 +65,8 @@
     bottom: 0;
     right: 0;
     z-index: 1501;
+    -ms-touch-action: pan-x;
+    touch-action: pan-x;
   }
 
   .relative {
@@ -70,6 +96,7 @@
       img {
         width: 100%;
         display: block;
+        margin: 0 auto;
       }
     }
   }
