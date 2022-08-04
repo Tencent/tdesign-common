@@ -41,10 +41,6 @@
     background-color: transparent;
     box-sizing: border-box;
 
-    &:read-only {
-      cursor: pointer;
-    }
-
     &::placeholder {
       color: @input-placeholder-color;
     }
@@ -73,13 +69,13 @@
     top: 0;
   }
 
-  &.t-input--suffix > span.t-input__clear {
+  &.@{prefix}-input--suffix > span.@{prefix}-input__clear {
     opacity: 0;
     visibility: hidden;
     transition: @input-inner-transition;
   }
 
-  &.t-input--suffix:hover > span.t-input__clear {
+  &.@{prefix}-input--suffix:hover > span.@{prefix}-input__clear {
     opacity: 1;
     visibility: visible;
   }
@@ -88,6 +84,7 @@
   .input-status(success);
   .input-status(warning);
   .input-status(error);
+  .input-readonly();
   .input-disabled();
 
   // 输入框的前置、后置图标
