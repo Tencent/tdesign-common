@@ -1,0 +1,233 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-dropdown {
+  .reset;
+  background-color: @dropdown-bg-color;
+  position: relative;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.05), 0px 4px 5px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  &-menu {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 6px;
+    gap: 2px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    // width: 160px;
+    .@{prefix}-divider {
+      margin: @dropdown-item-divider-margin;
+      z-index: 1100;
+      color: @dropdown-active-bg-color;
+      width: 82.5%;
+    }
+  }
+  &-submenu {
+    width: 160px;
+    background-color: @dropdown-bg-color;
+    // box-shadow: 0px 12px 32px rgba(26, 26, 26, 0.2);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.05),
+      0px 4px 5px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    z-index: 1100;
+    position: absolute;
+    padding: 6px;
+    display: none;
+    // top: -6px;
+    // left: 99%;
+    left: calc(100% -6px);
+    ul {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      gap: 2px;
+      // margin-top: 12px;
+      // margin-bottom: 12px;
+    }
+    &-disabled {
+      visibility: hidden;
+    }
+    &-left {
+      top: -6px;
+      right: calc(100% -6px);
+    }
+  }
+
+  &-item {
+    width: 132px;
+    border-radius: 3px;
+    // position: relative;
+    line-height: 1.4;
+    // padding: 8px 12px;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    transition: all 160ms ease-out;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: @dropdown-item-padding;
+    // margin: @dropdown-item-margin;
+    // color: @dropdown-text-color;
+    &-icon {
+      display: flex;
+      margin-right: 7%;
+    }
+    &:hover > div {
+      //！
+      display: flex;
+      // flex-direction: column;
+    }
+
+    &-disabled {
+      color: @dropdown-disable-color !important;
+      cursor: not-allowed;
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color !important;
+      }
+    }
+    &-content {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      max-width: 100%;
+      min-width: 84px;
+    }
+    &-text {
+      // width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    &.@{prefix}-dropdown-item-suffix {
+      // .t-dropdown-item-content {
+      //   max-width: calc(100% - @dropdown-text-icon-size - @dropdown-item-icon-margin-left);
+      // }
+      .@{prefix}-dropdown-item-subicon {
+        color: currentcolor;
+        font-size: @dropdown-text-icon-size;
+        margin-left: @dropdown-item-icon-margin-left;
+        // margin-left: 20px;
+      }
+    }
+    //默认主题
+    &-theme-default {
+      color: @dropdown-text-color; //默认 黑+白
+      &:hover {
+        //默认+hover 黑+灰1
+        background-color: @dropdown-container-hover-bg-color;
+      }
+      &:active {
+        //默认+点击 黑+灰2
+        background-color: @dropdown-container-active-bg-color;
+      }
+      &.@{prefix}-dropdown-item-active {
+        //默认+高亮 蓝+蓝
+        color: @dropdown-active-color;
+        background-color: @dropdown-active-bg-color;
+        &:hover {
+          //高亮+hover 蓝+灰1
+          background-color: @dropdown-container-hover-bg-color;
+        }
+        &:active {
+          //高亮+点击 蓝+灰2
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+      &.@{prefix}-dropdown-item-suffix {
+        //有下级 蓝+蓝
+        &:hover {
+          //有下级+hover 蓝+蓝
+          background-color: @dropdown-active-bg-color;
+          color: @dropdown-active-color;
+        }
+      }
+    }
+    //成功主题
+    &-theme-success {
+      color: @dropdown-theme-success-color; //默认 绿+白
+      &:hover {
+        //默认+hover 绿+灰1
+        background-color: @dropdown-container-hover-bg-color;
+      }
+      &:active {
+        //默认+点击 绿+灰2
+        background-color: @dropdown-container-active-bg-color;
+      }
+      &.t-dropdown-item-active {
+        //默认+高亮 绿+蓝
+        background-color: @dropdown-theme-success-bg-color;
+        &:hover {
+          //高亮+hover 绿+灰1
+          background-color: @dropdown-container-hover-bg-color;
+        }
+        &:active {
+          //高亮+点击 绿+灰2
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+      &.@{prefix}-dropdown-item-suffix {
+        //有下级 绿+蓝
+        &:hover {
+          //有下级+hover 绿+蓝
+          background-color: @dropdown-theme-success-bg-color;
+        }
+      }
+    }
+    //危险主题
+    &-theme-danger {
+      color: @dropdown-theme-danger-color;
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color;
+      }
+      &:active {
+        background-color: @dropdown-container-active-bg-color;
+      }
+      &.t-dropdown-item-active {
+        background-color: @dropdown-theme-danger-bg-color;
+        &:hover {
+          background-color: @dropdown-container-hover-bg-color;
+        }
+        &:active {
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+      &.@{prefix}-dropdown-item-suffix {
+        &:hover {
+          background-color: @dropdown-theme-danger-bg-color;
+        }
+      }
+    }
+    //告警主题
+    &-theme-warning {
+      color: @dropdown-theme-warning-color;
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color;
+      }
+      &:active {
+        background-color: @dropdown-container-active-bg-color;
+      }
+      &.@{prefix}-dropdown-item-active {
+        background-color: @dropdown-theme-warning-bg-color;
+        &:hover {
+          background-color: @dropdown-container-hover-bg-color;
+        }
+        &:active {
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+      &.@{prefix}-dropdown-item-suffix {
+        &:hover {
+          background-color: @dropdown-theme-warning-bg-color;
+        }
+      }
+    }
+  }
+}
