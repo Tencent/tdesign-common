@@ -54,7 +54,6 @@
     cursor: pointer;
 
     &:hover {
-      color: @brand-color;
       background: @bg-color-container-hover;
     }
     &.@{prefix}-is-disabled {
@@ -333,7 +332,6 @@
 
     &:last-child {
       flex: 1;
-      overflow: hidden;
     }
     .@{prefix}-size-m, .@{prefix}-input.@{prefix}-size-m {
       font-size: @color-picker-font-size;
@@ -355,7 +353,7 @@
 
       &__item {
         flex: 1;
-        overflow: hidden;
+        width: 0;
         margin-left: -1px;
         .@{prefix}-input {
           padding: 0 1px;
@@ -580,6 +578,10 @@
 .@{prefix}-color-picker__gradient-slider {
   padding: 0 9px;
   border-radius: @color-picker-slider-height;
+
+  .@{prefix}-color-picker--bg-alpha {
+    .transparentBgImage();
+  }
 }
 
 .@{prefix}-color-picker__panel.@{prefix}-is-disabled {
@@ -608,16 +610,4 @@
     @shadow-inset-right,
     @shadow-inset-bottom,
     @shadow-inset-left;
-
-  .@{prefix}-select__dropdown-inner {
-    padding: 4px;
-  }
-  .@{prefix}-select-option {
-    height: 30px;
-    padding: 5px 8px;
-    font-size: 12px;
-    + .@{prefix}-select-option {
-      margin-top: 2px;
-    }
-  }
 }
