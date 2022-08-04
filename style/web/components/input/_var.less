@@ -26,12 +26,14 @@
 @input-text-color-error: @error-color;
 
 @input-text-color-default: @text-color-primary;
+@input-text-color-readonly: inherit;
 @input-text-color-disabled: @text-color-disabled;
 @input-text-color-tips: @text-color-placeholder;
 @input-placeholder-color: @text-color-placeholder;
 
 // input 输入框需要在浅色主题下有默认白色背景，而在暗色等其他主题下 transparent 适配背景色，因此不使用通用背景 token
 @input-bg-color-default: @bg-color-specialcomponent;
+@input-bg-color-readonly: inherit;
 @input-bg-color-disabled: @bg-color-component-disabled;
 
 @input-extra-color-default: @text-color-placeholder;
