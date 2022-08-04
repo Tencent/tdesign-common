@@ -32,7 +32,6 @@
   &-submenu {
     width: 160px;
     background-color: @dropdown-bg-color;
-    // box-shadow: 0px 12px 32px rgba(26, 26, 26, 0.2);
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.05),
       0px 4px 5px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.12);
     border-radius: 6px;
@@ -41,15 +40,12 @@
     padding: 6px;
     display: none;
     // top: -6px;
-    // left: 99%;
     left: calc(100% -6px);
     ul {
       list-style: none;
       padding-left: 0;
       display: grid;
       gap: 2px;
-      // margin-top: 12px;
-      // margin-bottom: 12px;
     }
     &-disabled {
       visibility: hidden;
@@ -65,7 +61,6 @@
     border-radius: 3px;
     // position: relative;
     line-height: 1.4;
-    // padding: 8px 12px;
     cursor: pointer;
     user-select: none;
     outline: none;
@@ -74,16 +69,12 @@
     display: flex;
     align-items: center;
     padding: @dropdown-item-padding;
-    // margin: @dropdown-item-margin;
-    // color: @dropdown-text-color;
     &-icon {
       display: flex;
       margin-right: 7%;
     }
     &:hover > div {
-      //！
       display: flex;
-      // flex-direction: column;
     }
 
     &-disabled {
@@ -101,20 +92,15 @@
       min-width: 84px;
     }
     &-text {
-      // width: 100px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     &.@{prefix}-dropdown-item-suffix {
-      // .t-dropdown-item-content {
-      //   max-width: calc(100% - @dropdown-text-icon-size - @dropdown-item-icon-margin-left);
-      // }
       .@{prefix}-dropdown-item-subicon {
         color: currentcolor;
         font-size: @dropdown-text-icon-size;
         margin-left: @dropdown-item-icon-margin-left;
-        // margin-left: 20px;
       }
     }
     //默认主题
