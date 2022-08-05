@@ -1,0 +1,107 @@
+.cc-calendar {
+  z-index: 9999;
+  background: #fff;
+  overflow-x: hidden;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #fff;
+    color: #303133;
+    width: 100%;
+    height: 44px;
+  }
+
+  &-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    &-current {
+      margin: 0 8px;
+      color: #303133;
+      font-weight: 700;
+    }
+
+    &-year,
+    &-month {
+      margin: 0 8px;
+    }
+
+    &-year {
+      color: #909399;
+    }
+
+    &-month {
+      color: #606266;
+    }
+  }
+
+  &-days {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+
+    &-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+  }
+
+  &-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0;
+    color: #909399;
+    font-size: 14px;
+  }
+
+  &-content {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      &-text {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        border-radius: 8px;
+
+        &-nocurrent {
+          color: #c8c9cc !important;
+        }
+
+        &-value {
+          padding: 6px 8px;
+        }
+
+        &-today {
+          background: #0053db;
+          color: #fff;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  &-btn {
+    padding: 0 8px;
+  }
+}
