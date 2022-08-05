@@ -13,8 +13,6 @@
   .reset;
 
   font: @tree-font-size;
-  padding-top: @tree-padding-vertical;
-  padding-bottom: @tree-padding-vertical;
   color: @tree-node-text-color;
 
   // 禁用态颜色处理
@@ -238,8 +236,8 @@
 
     flex-wrap: nowrap;
     flex: 0 0 auto;
-    margin: @tree-node-item-label-margin 0 @tree-node-item-label-margin 4px;
-    padding: 3px 4px;
+    padding: 2px 4px;
+    margin-left: 4px;
     border-radius: @border-radius-default;
     cursor: pointer;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;
@@ -337,31 +335,29 @@
 
   // 节点展示动画
   .@{prefix}-tree__item--visible {
-    transition:
-      opacity @tree-node-transition-time linear @tree-node-transition-time,
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
       max-height @tree-node-transition-time linear 0s;
   }
 
   // 节点隐藏动画
   .@{prefix}-tree__item--hidden {
     animation: none;
-    transition:
-      opacity @tree-node-transition-time linear 0s,
+    transition: opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 
   // 子节点展示动画
   .@{prefix}-tree__children--visible {
-    transition:
-      opacity @tree-node-transition-time linear @tree-node-transition-time,
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
       max-height @tree-node-transition-time linear 0s;
   }
 
   // 子节点隐藏动画
   .@{prefix}-tree__children--hidden {
     animation: none;
-    transition:
-      opacity @tree-node-transition-time linear 0s,
+    transition: opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 }
