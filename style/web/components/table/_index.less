@@ -1058,6 +1058,13 @@
   border-top: @border;
 }
 
+.@{prefix}-table__bottom-content + .@{prefix}-table__pagination-wrap {
+  .@{prefix}-table__pagination {
+    border: 0;
+    padding: 0;
+  }
+}
+
 .@{prefix}-table--column-resizable:not(.@{prefix}-table--bordered) {
   th {
     border-top: 1px solid transparent;
