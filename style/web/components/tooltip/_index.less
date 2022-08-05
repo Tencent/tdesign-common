@@ -15,28 +15,31 @@
     word-break: break-word;
     box-sizing: border-box;
     border-radius: @border-radius-medium;
-    &:not(.@{prefix}-tooltip--light) {
-      color: @tooltip-text-color;
-    }
+    color: @tooltip-light-text-color;
 
     &--default {
+      color: @tooltip-text-color;
       background: @tooltip-bg;
       margin: @tooltip-default-margin;
     }
 
     &--primary {
+      color: @tooltip-color-primary;
       background: @tooltip-bg-primary;
     }
 
     &--success {
+      color: @tooltip-color-success;
       background: @tooltip-bg-success;
     }
 
     &--danger {
+      color: @tooltip-color-danger;
       background: @tooltip-bg-danger;
     }
 
     &--warning {
+      color: @tooltip-color-warning;
       background: @tooltip-bg-warning;
     }
 
