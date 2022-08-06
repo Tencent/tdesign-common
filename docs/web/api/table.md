@@ -316,10 +316,10 @@ spline: data
 
 可对表格进行整行编辑和保存等操作。
 
-- `onRowEdit` 会在行编辑时触发。
-- `onRowValidate` 在行编辑校验完成后触发。
 - `editableRowKeys` 用于控制处于编辑状态的行。
-- 实例方法 `validateRowData` 用于进行表格行数据校验。
+- `onRowEdit` 会在行编辑时触发。
+- 实例方法 `validateRowData` 用于进行表格行数据校验，`onRowValidate` 在行编辑校验完成时触发。
+- 实例方法 `validateTableData` 用于进行表格全部数据校验，`onValidate` 在全部数据校验完成时触发。
 
 {{ editable-row }}
 
