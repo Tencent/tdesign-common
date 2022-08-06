@@ -230,6 +230,11 @@
 
     .@{prefix}-table__content {
       border-left: @border;
+
+      // 覆盖深色模式下，水平和垂直滚动条交汇处的默认白色背景
+      &::-webkit-scrollbar-corner {
+        background-color: transparent;
+      }
     }
 
     // 表格边框优化，适配固定列/固定表头场景
