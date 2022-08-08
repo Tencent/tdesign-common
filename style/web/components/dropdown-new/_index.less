@@ -1,0 +1,244 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-dropdown {
+  .reset;
+
+  background-color: @dropdown-bg-color;
+  position: relative;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 5%),
+    0 4px 5px rgba(0, 0, 0, 8%),
+    0 2px 4px -1px rgba(0, 0, 0, 12%);
+  border-radius: 6px;
+
+  &-menu {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 6px;
+    gap: 2px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .@{prefix}-divider {
+      margin: @dropdown-item-divider-margin;
+      z-index: 1100;
+      color: @dropdown-active-bg-color;
+      width: 82.5%;
+    }
+  }
+
+  &-submenu {
+    width: 160px;
+    background-color: @dropdown-bg-color;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 5%),
+      0 4px 5px rgba(0, 0, 0, 8%),
+      0 2px 4px -1px rgba(0, 0, 0, 12%);
+    border-radius: 6px;
+    z-index: 1100;
+    position: absolute;
+    padding: 6px;
+    display: none;
+    left: calc(100% - 6px);
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      gap: 2px;
+    }
+
+    &-disabled {
+      visibility: hidden;
+    }
+
+    &-left {
+      // top: -6px;
+      right: calc(100% - 6px);
+    }
+  }
+
+  &-item {
+    width: 132px;
+    border-radius: 3px;
+    // position: relative;
+    line-height: 1.4;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    transition: all 160ms ease-out;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: @dropdown-item-padding;
+
+    &-icon {
+      display: flex;
+      margin-right: 7%;
+    }
+
+    &:hover > div {
+      //！
+      display: flex;
+      // flex-direction: column;
+    }
+
+    &-disabled {
+      color: @dropdown-disable-color !important;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color !important;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      width: 0;
+    }
+
+    &-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &.@{prefix}-dropdown-item-suffix {
+      .@{prefix}-dropdown-item-subicon {
+        color: currentcolor;
+        font-size: @dropdown-text-icon-size;
+        flex-shrink: 0;
+      }
+    }
+    //默认主题
+    &-theme-default {
+      color: @dropdown-text-color;
+
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color;
+      }
+
+      &:active {
+        background-color: @dropdown-container-active-bg-color;
+      }
+
+      &.@{prefix}-dropdown-item-active {
+        color: @dropdown-active-color;
+        background-color: @dropdown-active-bg-color;
+
+        &:hover {
+          background-color: @dropdown-container-hover-bg-color;
+        }
+
+        &:active {
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+
+      &.@{prefix}-dropdown-item-suffix {
+        &:hover {
+          background-color: @dropdown-active-bg-color;
+          color: @dropdown-active-color;
+        }
+      }
+    }
+    //成功主题
+    &-theme-success {
+      color: @dropdown-theme-success-color;
+
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color;
+      }
+
+      &:active {
+        background-color: @dropdown-container-active-bg-color;
+      }
+
+      &.t-dropdown-item-active {
+        background-color: @dropdown-theme-success-bg-color;
+
+        &:hover {
+          background-color: @dropdown-container-hover-bg-color;
+        }
+
+        &:active {
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+
+      &.@{prefix}-dropdown-item-suffix {
+        &:hover {
+          background-color: @dropdown-theme-success-bg-color;
+        }
+      }
+    }
+    //危险主题
+    &-theme-danger {
+      color: @dropdown-theme-danger-color;
+
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color;
+      }
+
+      &:active {
+        background-color: @dropdown-container-active-bg-color;
+      }
+
+      &.t-dropdown-item-active {
+        background-color: @dropdown-theme-danger-bg-color;
+
+        &:hover {
+          background-color: @dropdown-container-hover-bg-color;
+        }
+
+        &:active {
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+      &.@{prefix}-dropdown-item-suffix {
+        &:hover {
+          background-color: @dropdown-theme-danger-bg-color;
+        }
+      }
+    }
+    //告警主题
+    &-theme-warning {
+      color: @dropdown-theme-warning-color;
+
+      &:hover {
+        background-color: @dropdown-container-hover-bg-color;
+      }
+
+      &:active {
+        background-color: @dropdown-container-active-bg-color;
+      }
+
+      &.@{prefix}-dropdown-item-active {
+        background-color: @dropdown-theme-warning-bg-color;
+
+        &:hover {
+          background-color: @dropdown-container-hover-bg-color;
+        }
+
+        &:active {
+          background-color: @dropdown-container-active-bg-color;
+        }
+      }
+
+      &.@{prefix}-dropdown-item-suffix {
+        &:hover {
+          background-color: @dropdown-theme-warning-bg-color;
+        }
+      }
+    }
+  }
+}
