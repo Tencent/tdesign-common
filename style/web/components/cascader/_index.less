@@ -9,7 +9,6 @@
 @import "../../mixins/_reset.less";
 
 .@{prefix}-cascader {
-
   .@{prefix}-fake-arrow {
     color: @cascader-icon-color;
 
@@ -73,7 +72,7 @@
     position: relative;
     display: flex;
     height: @cascader-item-height-default;
-    font: @cascader-font-size;
+    font: @cascader-font;
     color: @cascader-dark-color;
     padding: @cascader-item-padding;
     border-radius: @cascader-item-border-radius;
@@ -83,7 +82,7 @@
 
     &.@{prefix}-size-s {
       height: @cascader-item-height-s;
-      font: @cascader-font-size-s;
+      font: @cascader-font-s;
       padding: @cascader-item-padding-s;
 
       .@{prefix}-cascader__item-label {
@@ -93,7 +92,7 @@
 
     &.@{prefix}-size-l {
       height: @cascader-item-height-l;
-      font: @cascader-font-size-l;
+      font: @cascader-font-l;
       padding: @cascader-item-padding-l;
 
       .@{prefix}-cascader__item-label {
@@ -165,7 +164,6 @@
     }
 
     &--leaf {
-
       .@{prefix}-checkbox {
         width: 100%;
       }

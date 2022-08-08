@@ -11,7 +11,7 @@
 
   width: 100%;
   position: relative;
-  font: @range-input-font-size;
+  font: @range-input-font;
   height: @range-input-height-default;
   .range-input-base();
 
@@ -28,7 +28,7 @@
   // 输入框大小
   &.@{prefix}-size-l {
     height: @range-input-height-l;
-    font: @range-input-font-size-l;
+    font: @range-input-font-l;
     padding-top: @spacer;
     padding-bottom: @spacer;
 
@@ -40,7 +40,7 @@
   &.@{prefix}-size-s {
     padding: 2px 4px;
     height: @range-input-height-s;
-    font: @range-input-font-size-s;
+    font: @range-input-font-s;
   }
 
   &.@{prefix}-is-focused {
@@ -84,7 +84,7 @@
 
   // 底部的额外消息
   &__extra {
-    font: @range-input-extra-font-size;
+    font: @range-input-extra-font;
     color: @range-input-extra-color-default;
   }
 
