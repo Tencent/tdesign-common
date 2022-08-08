@@ -23,12 +23,10 @@
     border-radius: @textarea-border-radius;
     padding: @textarea-padding;
     background-color: @textarea-bg-color-default;
-    font-family: PingFangSC-Regular;
-    font-size: @textarea-font-size;
+    font: @textarea-font;
     color: @textarea-text-color;
     resize: vertical;
     outline: none;
-    line-height: @textarea-line-height;
     transition: all @anim-time-fn-easing @anim-duration-base, height 0s;
     box-sizing: border-box;
 
@@ -54,7 +52,7 @@
     position: absolute;
     bottom: @textarea-limit-position-bottom;
     right: @textarea-limit-position-right;
-    font-size: @textarea-font-size;
+    font: @textarea-font;
     color: @textarea-limit-color;
     background: @textarea-bg-color-default;
   }
@@ -81,8 +79,7 @@
 .@{prefix}-textarea__tips {
   height: auto;
   min-height: @textarea-tips-min-height;
-  line-height: @textarea-tips-line-height;
-  font-size: @textarea-tips-font-size;
+  font: @textarea-tips-font;
   display: inline-block;
 }
 
