@@ -21,7 +21,6 @@
   .reset;
 
   position: relative;
-  display: inline-flex;
   width: 100%;
   vertical-align: middle;
   line-height: (@select-height-default - 2px);
@@ -185,8 +184,7 @@
 }
 
 .@{prefix}-select.@{prefix}-size-l {
-  line-height: (@select-height-l - 2px);
-  font-size: @select-font-size-l;
+  font: @select-font-l;
 
   .@{prefix}-select__input {
     line-height: (@select-height-l - 2px);
@@ -205,8 +203,7 @@
 }
 
 .@{prefix}-select.@{prefix}-size-s {
-  line-height: (@select-height-s - 2px);
-  font-size: @select-font-size-s;
+  font: @select-font-s;
 
   .@{prefix}-select__input {
     line-height: (@select-height-s - 2px);
@@ -396,13 +393,13 @@
 .@{prefix}-select-option.@{prefix}-size-l {
   height: @select-option-height-l;
   padding: @select-option-padding-l;
-  font-size: @select-font-size-l;
+  font: @select-font-l;
 }
 
 .@{prefix}-select-option.@{prefix}-size-s {
   height: @select-option-height-s;
   padding: @select-option-padding-s;
-  font-size: @select-font-size-s;
+  font: @select-font-s;
 }
 
 .@{prefix}-select-option.@{prefix}-is-selected {

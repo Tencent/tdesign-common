@@ -51,7 +51,7 @@
 
 @submenu-item-color: @font-gray-2;
 @submenu-item-active-color: @brand-color;
-@submenu-dark-item-active-color: #4582E6;
+@submenu-dark-item-active-color: #4582e6;
 
 @menu-border-color: @component-stroke;
 @menu-border-color--dark: @gray-color-10;
@@ -60,7 +60,7 @@
 @menu-popup-item-color: @font-gray-1;
 @menu-popup-item-hover-bg: @gray-color-1;
 @menu-popup-item-active-color: @brand-color;
-@menu-popup-item-active-bg: #ECF2FE;
+@menu-popup-item-active-bg: #ecf2fe;
 @head-menu-popup-item-color: @font-gray-2;
 @head-menu-popup-item-active-color: @font-gray-1;
 @head-menu-popup-item-active-bg: @gray-color-2;
@@ -90,21 +90,24 @@
 @textarea-limited-padding: (@spacer * 4);
 
 // 高度
-@menu-height-default: (@spacer * 4); // low
-@menu-height-high: (@spacer * 5);
+@menu-height-default: 32px; // low
+@menu-height-high: 40px;
 
 // z-index
 @menu-outer-zindex: 1000;
 
 // 字号
-@menu-fontsize: @font-size-base;
-@menu-extra-fontsize: @font-size-s;
+@menu-font-size: @font-body-medium;
+@menu-extra-font-size: @font-body-small;
 
 // box-shadow
-@menu-head-shadow: 0 8px 10px -5px rgba(0, 0, 0, .08), 0 16px 24px 2px rgba(0, 0, 0, .04), 0 6px 30px 5px rgba(0, 0, 0, .05);
+@menu-head-shadow: 0 8px 10px -5px rgba(0, 0, 0, .08),
+  0 16px 24px 2px rgba(0, 0, 0, .04), 0 6px 30px 5px rgba(0, 0, 0, .05);
 @menu-head-submenu-shadow: inset 0 -1px 0 0 #eee;
-@menu-default-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
+@menu-default-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),
+  0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
 
 // transition
 @fade-linear-transition: opacity 200ms linear;
-@md-fade-transition: transform 300ms cubic-bezier(.23, 1, .32, 1), opacity 300ms cubic-bezier(.23, 1, .32, 1);
+@md-fade-transition: transform 300ms cubic-bezier(.23, 1, .32, 1),
+  opacity 300ms cubic-bezier(.23, 1, .32, 1);
