@@ -3,7 +3,7 @@
   background: #fff;
   overflow-x: hidden;
 
-  &-title {
+  &__title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@
     height: 44px;
   }
 
-  &-text {
+  &__text {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,32 +23,32 @@
     margin-top: 10px;
     margin-bottom: 15px;
 
-    &-current {
+    &--current {
       margin: 0 8px;
       color: #303133;
       font-weight: 700;
     }
 
-    &-year,
-    &-month {
+    &--year,
+    &--month {
       margin: 0 8px;
     }
 
-    &-year {
+    &--year {
       color: #909399;
     }
 
-    &-month {
+    &--month {
       color: #606266;
     }
   }
 
-  &-days {
+  &__days {
     display: flex;
     align-items: center;
     padding: 6px 0;
 
-    &-item {
+    &--item {
       flex: 1;
       display: flex;
       align-items: center;
@@ -57,7 +57,7 @@
     }
   }
 
-  &-value {
+  &__value {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,17 +66,17 @@
     font-size: 14px;
   }
 
-  &-content {
+  &__content {
     min-height: 200px;
     display: flex;
     flex-direction: column;
 
-    &-item {
+    &--item {
       flex: 1;
       display: flex;
       align-items: center;
 
-      &-text {
+      &--text {
         flex: 1;
         display: flex;
         align-items: center;
@@ -84,15 +84,15 @@
         font-size: 14px;
         border-radius: 8px;
 
-        &-nocurrent {
-          color: #c8c9cc !important;
+        &--nocurrent {
+          color: #c8c9cc;
         }
 
-        &-value {
+        &--value {
           padding: 6px 8px;
         }
 
-        &-today {
+        &--today {
           background: #0053db;
           color: #fff;
           border-radius: 4px;
@@ -101,7 +101,7 @@
     }
   }
 
-  &-btn {
+  &__btn {
     padding: 0 8px;
   }
 }
