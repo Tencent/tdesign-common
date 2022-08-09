@@ -590,7 +590,6 @@ export class TreeNode {
   // 检查节点是否已展开
   public isExpanded(map?: Map<string, boolean>): boolean {
     const { tree, value, vmIsLocked } = this;
-    if (tree?.config?.expandAll) return true;
     if (vmIsLocked) return true;
     const expandedMap = map || tree.expandedMap;
     return !!(tree.nodeMap.get(value) && expandedMap.get(value));
