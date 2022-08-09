@@ -819,7 +819,8 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-      max-height: var(--popup-max-height, 364px);
+      // max-height: var(--popup-max-height, 364px);
+      max-height: unset;
       opacity: 1;
       box-shadow: @menu-default-shadow;
       overflow: visible;
