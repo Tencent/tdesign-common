@@ -18,8 +18,10 @@
   }
 
   &__popup {
-    padding: 0;
-    box-shadow: @shadow-2;
+    .@{prefix}-popup__content {
+      padding: 0;
+      box-shadow: @shadow-2;
+    }
   }
 
   &__panel {
@@ -59,7 +61,7 @@
     border-radius: @border-radius-medium;
 
     &--segment {
-      border-right: .5px solid @cascader-menu-segment-color;
+      border-right: 0.5px solid @cascader-menu-segment-color;
     }
 
     &--filter {
