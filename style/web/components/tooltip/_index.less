@@ -6,8 +6,8 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-popup {
-  .@{prefix}-tooltip {
+.@{prefix}-tooltip {
+  .@{prefix}-popup__content {
     display: inline-block;
     border: 0;
     margin-bottom: 1px;
@@ -16,53 +16,54 @@
     box-sizing: border-box;
     border-radius: @border-radius-medium;
     color: @tooltip-light-text-color;
+    padding: @spacer-s @spacer;
 
-    &--default {
+    .@{prefix}-tooltip--default {
       color: @tooltip-text-color;
       background: @tooltip-bg;
       margin: @tooltip-default-margin;
     }
 
-    &--primary {
+    .@{prefix}-tooltip--primary {
       color: @tooltip-color-primary;
       background: @tooltip-bg-primary;
     }
 
-    &--success {
+    .@{prefix}-tooltip--success {
       color: @tooltip-color-success;
       background: @tooltip-bg-success;
     }
 
-    &--danger {
+    .@{prefix}-tooltip--danger {
       color: @tooltip-color-danger;
       background: @tooltip-bg-danger;
     }
 
-    &--warning {
+    .@{prefix}-tooltip--warning {
       color: @tooltip-color-warning;
       background: @tooltip-bg-warning;
     }
+  }
 
-    .@{prefix}-popup__arrow {
+  .@{prefix}-popup__arrow {
+    background: inherit;
+    width: auto;
+    height: auto;
+
+    &::before {
       background: inherit;
-      width: auto;
-      height: auto;
-
-      &::before {
-        background: inherit;
-      }
     }
   }
 }
 
-.@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="top"].@{prefix}-tooltip .@{prefix}-popup__arrow {
   bottom: @tooltip-arrow-position;
 }
 
-.@{prefix}-popup[data-popper-placement^="left"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="left"].@{prefix}-tooltip .@{prefix}-popup__arrow {
   right: @tooltip-arrow-position;
 }
 
-.@{prefix}-popup[data-popper-placement^="right"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="right"].@{prefix}-tooltip .@{prefix}-popup__arrow {
   left: -@tooltip-arrow-position;
 }
