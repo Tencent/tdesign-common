@@ -91,6 +91,7 @@ export default {
     },
     weekdays: ['하나', '둘', '삼', '4', '다섯', '여섯', '낮'],
     months: ['1 월', '2 월', '3 월', '4 월', '5 월', '6 월', '7 월', '8 월', '9 월', '10 월', '11 월', '12 월'],
+    quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
     format: 'YYYY-MM-DD',
