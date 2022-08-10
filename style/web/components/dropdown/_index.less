@@ -11,9 +11,11 @@
 .@{prefix}-dropdown {
   .reset;
 
-  background-color: @dropdown-bg-color;
-  position: relative;
-  padding: 0;
+  .@{prefix}-popup__content {
+    background-color: @dropdown-bg-color;
+    position: relative;
+    padding: 0;
+  }
 
   &__menu {
     display: flex;
