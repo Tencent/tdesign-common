@@ -202,6 +202,7 @@ export interface OptionsType {
   maxDate: Date;
   showWeekOfYear?: Boolean;
   monthLocal?: string[];
+  quarterLocal?: string[];
 }
 
 export function getWeeks(
@@ -285,6 +286,7 @@ export function getQuarters(
     disableDate = () => false,
     minDate,
     maxDate,
+    quarterLocal
   }: OptionsType,
 ) {
   const quarterArr = [];
@@ -298,7 +300,7 @@ export function getQuarters(
       now: isSame(date, today, 'quarter'),
       disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
-      text: `Q${i}`,
+      text: quarterLocal[i - 1],
     });
   }
 
