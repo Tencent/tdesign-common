@@ -1,0 +1,121 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+.link-attr-color(@theme) {
+  // 下划线样式
+  &.@{prefix}-is-underline:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    bottom: 0;
+    border-bottom: 1px solid @@theme-default;
+  }
+  // hover - underline
+  &.@{prefix}-link--hover-underline {
+    &:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: 1px solid @@theme-default;
+    }
+  }
+  // hover - color
+  &.@{prefix}-link--hover-color {
+    &:hover {
+      color: @@theme-hover;
+    }
+
+    &:hover::after {
+      border-bottom: 1px solid @@theme-hover;
+    }
+
+    &:active {
+      color: @@theme-active;
+    }
+  }
+  &.@{prefix}-is-underline:active:after {
+    border-bottom: 1px solid @@theme-active;
+  }
+  // 禁用样式 优先级最高 所以放在最后
+  &.@{prefix}-is-disabled {
+    cursor: not-allowed;
+    color: @@theme-disabled;
+
+    &:hover,
+    &:active {
+      color: @@theme-disabled;
+    }
+    &.@{prefix}-is-underline:after {
+      border-bottom: 1px solid @@theme-disabled;
+    }
+  }
+
+  // 状态 - 主题 颜色
+  @theme-default: e("link-color-@{theme}");
+  @theme-hover: e("link-color-@{theme}-hover");
+  @theme-active: e("link-color-@{theme}-active");
+  @theme-disabled: e("link-color-@{theme}-disabled");
+  @theme-focus: e("link-color-@{theme}-focus");
+
+  color: @@theme-default;
+  // active 相关样式
+  &:active {
+    color: @@theme-active;
+  }
+  // size 相关样式
+  &.@{prefix}-size-s {
+    font-size: @link-font-s;
+  }
+  &.@{prefix}-size-l {
+    font-size: @link-font-l;
+  }
+}
+
+.@{prefix}-link {
+  display: inline-flex;
+  cursor: pointer;
+  font-size: @link-font-default;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  padding: 0;
+
+  .@{prefix}-icon {
+    font-size: @link-icon-size-default;
+  }
+
+  &__text-prefix {
+    margin-left: @link-icon-text-margin-left;
+  }
+
+  &__text-suffix {
+    margin-right: @link-icon-text-margin-right;
+  }
+
+  &--theme-default {
+    .link-attr-color("default");
+  }
+
+  &--theme-primary {
+    .link-attr-color("primary");
+  }
+
+  &--theme-success {
+    .link-attr-color("success");
+  }
+
+  &--theme-danger {
+    .link-attr-color("danger");
+  }
+
+  &--theme-warning {
+    .link-attr-color("warning");
+  }
+}
