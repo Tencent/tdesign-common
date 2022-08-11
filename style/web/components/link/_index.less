@@ -3,59 +3,6 @@
 @import "./_var.less";
 
 .link-attr-color(@theme) {
-  // 下划线样式
-  &.@{prefix}-is-underline:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 0;
-    bottom: 0;
-    border-bottom: 1px solid @@theme-default;
-  }
-  // hover - underline
-  &.@{prefix}-link--hover-underline {
-    &:hover::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 0;
-      bottom: 0;
-      border-bottom: 1px solid @@theme-default;
-    }
-  }
-  // hover - color
-  &.@{prefix}-link--hover-color {
-    &:hover {
-      color: @@theme-hover;
-    }
-
-    &:hover::after {
-      border-bottom: 1px solid @@theme-hover;
-    }
-
-    &:active {
-      color: @@theme-active;
-    }
-  }
-  &.@{prefix}-is-underline:active:after {
-    border-bottom: 1px solid @@theme-active;
-  }
-  // 禁用样式 优先级最高 所以放在最后
-  &.@{prefix}-is-disabled {
-    cursor: not-allowed;
-    color: @@theme-disabled;
-
-    &:hover,
-    &:active {
-      color: @@theme-disabled;
-    }
-    &.@{prefix}-is-underline:after {
-      border-bottom: 1px solid @@theme-disabled;
-    }
-  }
-
   // 状态 - 主题 颜色
   @theme-default: e("link-color-@{theme}");
   @theme-hover: e("link-color-@{theme}-hover");
@@ -68,35 +15,107 @@
   &:active {
     color: @@theme-active;
   }
-  // size 相关样式
-  &.@{prefix}-size-s {
-    font-size: @link-font-s;
+  // hover - underline
+  &.@{prefix}-link--hover-underline {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: 1px solid @@theme-default;
+      // 下划线动画
+      opacity: 0;
+      transition: all @anim-duration-base linear;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:active::after {
+      opacity: 1;
+      border-color: @@theme-active;
+    }
   }
-  &.@{prefix}-size-l {
-    font-size: @link-font-l;
+  // hover - color
+  &.@{prefix}-link--hover-color {
+    &:hover {
+      color: @@theme-hover;
+    }
+    // 下划线场景 hover active时 需要改动颜色
+    &.@{prefix}-is-underline:hover::after {
+      border-color: @@theme-hover;
+    }
+    &.@{prefix}-is-underline:active::after {
+      border-color: @@theme-active;
+    }
+
+    &:active {
+      color: @@theme-active;
+    }
+  }
+  // 下划线样式 优先级高于 t-link--hover-underline 需要放在后面 否则opacity 被覆盖 无法显示下划线
+  &.@{prefix}-is-underline {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      opacity: 1;
+      border-bottom: 1px solid @@theme-default;
+      transition: all @anim-duration-base linear;
+    }
+  }
+  // 禁用样式 优先级最高 所以放在最后
+  &.@{prefix}-is-disabled {
+    cursor: not-allowed;
+    color: @@theme-disabled;
+
+    &:hover,
+    &:active {
+      color: @@theme-disabled;
+    }
+    &.@{prefix}-is-underline::after {
+      border-color: @@theme-disabled;
+    }
   }
 }
+// size 相关样式
+.link-attr-size(@size) {
+  @font-size: e("link-font-@{size}");
+  @icon-margin-size: e("link-icon-margin-@{size}");
 
+  font: @@font-size;
+
+  .t-link__prefix-icon {
+    margin-right: @@icon-margin-size;
+  }
+
+  .t-link__suffix-icon {
+    margin-left: @@icon-margin-size;
+  }
+}
 .@{prefix}-link {
   display: inline-flex;
   cursor: pointer;
-  font-size: @link-font-default;
   align-items: center;
   position: relative;
   text-decoration: none;
   outline: none;
   padding: 0;
+  transition: all @anim-duration-base linear;
 
-  .@{prefix}-icon {
-    font-size: @link-icon-size-default;
+  // size 相关样式
+  .link-attr-size("default");
+  &.@{prefix}-size-s {
+    .link-attr-size("s");
   }
-
-  &__text-prefix {
-    margin-left: @link-icon-text-margin-left;
-  }
-
-  &__text-suffix {
-    margin-right: @link-icon-text-margin-right;
+  &.@{prefix}-size-l {
+    .link-attr-size("l");
   }
 
   &--theme-default {
