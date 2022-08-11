@@ -14,9 +14,16 @@
   .reset;
 }
 
+.@{prefix}-date-picker__header-controller-month-popup,
+.@{prefix}-date-picker__header-controller-year-popup {
+  .@{prefix}-popup__content {
+    max-height: @datepicker-panel-select-max-width;;
+  }
+}
+
 .@{prefix}-date-picker__panel-container,
 .@{prefix}-date-range-picker__panel-container {
-
+  
   .@{prefix}-popup__content {
     padding: 0;
     min-width: @datepicker-panel-container-min-width;
@@ -30,10 +37,6 @@
 
   &--direction-row {
     flex-direction: row;
-  }
-
-  .@{prefix}-select__dropdown {
-    max-height: @datepicker-panel-select-max-width;
   }
 
   // 配合time-picker使用 需重置部分样式
