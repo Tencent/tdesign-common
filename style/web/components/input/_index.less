@@ -15,8 +15,9 @@
   position: relative;
   box-sizing: border-box;
   height: @input-height-default;
-  line-height: @input-height-default;
   .input-base();
+
+  line-height: @input-height-default; // TODO: 需要调整目前用line height撑开的方式
 
   &--focused {
     border-color: @input-border-color-default-focus;
@@ -262,6 +263,7 @@
   height: auto;
   min-height: @input-tips-min-height;
   font: @input-tips-font;
+  position: absolute;
 }
 
 .@{prefix}-input__tips--normal {
