@@ -6,6 +6,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 // select
 .@{prefix}-select__wrap {
   width: 100%;
@@ -248,6 +250,8 @@
 .@{prefix}-select__dropdown {
 
   .@{prefix}-popup__content {
+    .scrollbar();
+
     margin: @select-dropdown-margin;
     padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
     max-height: @select-dropdown-max-height;
