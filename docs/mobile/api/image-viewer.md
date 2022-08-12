@@ -10,14 +10,10 @@ toc: false
 
 {{ base }}
 
-### 图片列表
+### 不展示关闭按钮
 
-{{ imageList }}
+{{ closeBtn }}
 
-### 默认展示
+### 监听关闭事件
 
-{{ initialIndex }}
-
-### 遮罩颜色
-
-{{ background }}
+{{ closeEvent }}
