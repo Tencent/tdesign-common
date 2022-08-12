@@ -1,5 +1,5 @@
 ---
-title: ImageViewer 图片
+title: ImageViewer 图片预览
 description: 当需要展示图片，并要进行部分操作时。
 isComponent: true
 usage: { title: '', description: '' }
