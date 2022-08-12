@@ -16,7 +16,11 @@ export * from './large-number';
 export type NumberType = number | string;
 
 // 小于最大值，才允许继续添加
-export function canAddNumber(num: NumberType, max: NumberType, largeNumber = false): boolean {
+export function canAddNumber(
+  num: NumberType,
+  max: NumberType,
+  largeNumber = false
+): boolean {
   if (!num) return true;
   if (largeNumber && isString(num)) {
     return compareLargeNumber(num, max) < 0;
@@ -25,7 +29,11 @@ export function canAddNumber(num: NumberType, max: NumberType, largeNumber = fal
 }
 
 // 大于最小值，才允许继续减少
-export function canReduceNumber(num: NumberType, min: NumberType, largeNumber = false): boolean {
+export function canReduceNumber(
+  num: NumberType,
+  min: NumberType,
+  largeNumber = false
+): boolean {
   if (!num) return true;
   if (largeNumber && isString(num)) {
     return compareLargeNumber(num, min) > 0;
@@ -41,8 +49,8 @@ export function canReduceNumber(num: NumberType, min: NumberType, largeNumber = 
 export function formatToNumber(
   num: string,
   extra?: {
-    decimalPlaces?: number,
-    largeNumber?: boolean,
+    decimalPlaces?: number;
+    largeNumber?: boolean;
   }
 ): string | number {
   if (num === undefined || num === null || num === '') return num;
@@ -53,28 +61,31 @@ export function formatToNumber(
   if ((isString(num) && num.includes('e')) || isNumber(num)) {
     newNumber = isLargeNumber ? formatENumber(num) : Number(num);
   }
-  if (extra?.decimalPlaces) {
-    newNumber = largeNumberToFixed(newNumber, extra.decimalPlaces, extra.largeNumber);
+  if (extra?.decimalPlaces !== undefined) {
+    newNumber = largeNumberToFixed(
+      newNumber,
+      extra.decimalPlaces,
+      extra.largeNumber
+    );
   }
-  return isLargeNumber || extra.decimalPlaces ? newNumber : Number(newNumber);
+  return isLargeNumber || extra?.decimalPlaces !== undefined
+    ? newNumber
+    : Number(newNumber);
 }
 
 export function putInRangeNumber(
   val: NumberType,
   params: {
-    max?: NumberType,
-    min?: NumberType,
-    lastValue?: NumberType,
-    largeNumber?: boolean,
-  },
+    max?: NumberType;
+    min?: NumberType;
+    lastValue?: NumberType;
+    largeNumber?: boolean;
+  }
 ): NumberType {
   if (val === '') return undefined;
   const { max, min, lastValue, largeNumber } = params;
   if (!isInputNumber(val)) return lastValue;
-  if (largeNumber
-    && (isString(max) || max === Infinity)
-    && (isString(min) || min === -Infinity)
-  ) {
+  if (largeNumber && (isString(max) || max === Infinity) && (isString(min) || min === -Infinity)) {
     if (compareLargeNumber(max, val) < 0) return max;
     if (compareLargeNumber(min, val) > 0) return min;
     return val;
@@ -119,17 +130,17 @@ export function subtract(num1: number, num2: number): number {
   const r1 = num1.toString().split('.')[1]?.length || 0;
   const r2 = num2.toString().split('.')[1]?.length || 0;
   const digit = 10 ** Math.max(r1, r2);
-  const n = (r1 >= r2) ? r1 : r2;
+  const n = r1 >= r2 ? r1 : r2;
   return Number(((num1 * digit - num2 * digit) / digit).toFixed(n));
 }
 
 export function getStepValue(p: {
-  op: 'add' | 'reduce',
-  step: NumberType,
-  max?: NumberType,
-  min?: NumberType,
-  lastValue?: NumberType,
-  largeNumber?: boolean,
+  op: 'add' | 'reduce';
+  step: NumberType;
+  max?: NumberType;
+  min?: NumberType;
+  lastValue?: NumberType;
+  largeNumber?: boolean;
 }) {
   const { op, step, lastValue = 0, max, min, largeNumber } = p;
   if (step <= 0) {
@@ -140,13 +151,13 @@ export function getStepValue(p: {
   let newVal: string | number;
   if (op === 'add') {
     if (largeNumber && isString(lastValue)) {
-      newVal = largeNumberAdd(lastValue, tStep);
+      newVal = largeNumberAdd(String(lastValue), String(tStep));
     } else {
       newVal = add(Number(lastValue || 0), Number(step));
     }
   } else if (op === 'reduce') {
     if (largeNumber && isString(lastValue)) {
-      newVal = largeNumberSubtract(lastValue, tStep);
+      newVal = largeNumberSubtract(String(lastValue), String(tStep));
     } else {
       newVal = subtract(Number(lastValue || 0), Number(step));
     }
@@ -157,16 +168,19 @@ export function getStepValue(p: {
   return largeNumber ? newVal : Number(newVal);
 }
 
-export type InputNumberErrorType = 'exceed-maximum' | 'below-minimum' | undefined;
+export type InputNumberErrorType =
+  | 'exceed-maximum'
+  | 'below-minimum'
+  | undefined;
 
 /**
  * 最大值和最小值校验
  */
 export function getMaxOrMinValidateResult(p: {
-  largeNumber: boolean,
-  value: NumberType,
-  max: NumberType,
-  min: NumberType,
+  largeNumber: boolean;
+  value: NumberType;
+  max: NumberType;
+  min: NumberType;
 }): InputNumberErrorType {
   const { largeNumber, value, max, min } = p;
   if (largeNumber === undefined) return undefined;
@@ -187,10 +201,7 @@ export function getMaxOrMinValidateResult(p: {
 /**
  * 是否允许输入当前字符，输入字符校验
  */
-export function canInputNumber(
-  number: string,
-  largeNumber: boolean,
-) {
+export function canInputNumber(number: string, largeNumber: boolean) {
   if (!number && typeof number === 'string') return true;
   const isNumber = (largeNumber && isInputNumber(number)) || !Number.isNaN(Number(number));
   if (!isNumber && !['-', '.', 'e', 'E'].includes(number.slice(-1))) return false;
