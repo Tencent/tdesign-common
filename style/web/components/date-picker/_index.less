@@ -16,8 +16,11 @@
 
 .@{prefix}-date-picker__panel-container,
 .@{prefix}-date-range-picker__panel-container {
-  padding: 0;
-  min-width: @datepicker-panel-container-min-width;
+
+  .@{prefix}-popup__content {
+    padding: 0;
+    min-width: @datepicker-panel-container-min-width;
+  }
 }
 
 .@{prefix}-date-picker__panel,
