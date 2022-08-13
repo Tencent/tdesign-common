@@ -81,7 +81,7 @@ export function putInRangeNumber(
     lastValue?: NumberType;
     largeNumber?: boolean;
   }
-): NumberType {
+) {
   if (val === '') return undefined;
   const { max, min, lastValue, largeNumber } = params;
   if (!isInputNumber(val)) return lastValue;
@@ -148,7 +148,7 @@ export function getStepValue(p: {
     return lastValue;
   }
   const tStep = isNumber(step) ? String(step) : step;
-  let newVal: string | number;
+  let newVal;
   if (op === 'add') {
     if (largeNumber && isString(lastValue)) {
       newVal = largeNumberAdd(String(lastValue), String(tStep));
