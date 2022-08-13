@@ -16,8 +16,8 @@ export * from './large-number';
 export type NumberType = number | string;
 
 // 小于最大值，才允许继续添加
-export function canAddNumber(
-  num: NumberType,
+export function canAddNumber<T = NumberType>(
+  num: T,
   max: NumberType,
   largeNumber = false
 ): boolean {
@@ -29,8 +29,8 @@ export function canAddNumber(
 }
 
 // 大于最小值，才允许继续减少
-export function canReduceNumber(
-  num: NumberType,
+export function canReduceNumber<T = NumberType>(
+  num: T,
   min: NumberType,
   largeNumber = false
 ): boolean {
@@ -134,18 +134,18 @@ export function subtract(num1: number, num2: number): number {
   return Number(((num1 * digit - num2 * digit) / digit).toFixed(n));
 }
 
-export function getStepValue(p: {
+export function getStepValue<T = NumberType>(p: {
   op: 'add' | 'reduce';
   step: NumberType;
   max?: NumberType;
   min?: NumberType;
-  lastValue?: NumberType;
+  lastValue?: T;
   largeNumber?: boolean;
 }) {
   const { op, step, lastValue = 0, max, min, largeNumber } = p;
   if (step <= 0) {
     log.error('InputNumber', 'step must be larger than 0.');
-    return lastValue;
+    return Number(lastValue);
   }
   const tStep = isNumber(step) ? String(step) : step;
   let newVal: string | number;
@@ -176,9 +176,9 @@ export type InputNumberErrorType =
 /**
  * 最大值和最小值校验
  */
-export function getMaxOrMinValidateResult(p: {
+export function getMaxOrMinValidateResult<T = NumberType>(p: {
   largeNumber: boolean;
-  value: NumberType;
+  value: T;
   max: NumberType;
   min: NumberType;
 }): InputNumberErrorType {
