@@ -5,7 +5,11 @@ import { largeNumberAdd } from '../../../js/input-number/large-number';
  */
 describe('largeNumberAdd', () => {
   it('0.1 + 0.2', () => {
-    expect(largeNumberAdd('0.1', '0.2')).toBe(String((0.1 + 0.2).toFixed(1)));
+    expect(largeNumberAdd('0.1', '0.2')).toBe('0.3');
+  });
+
+  it('0.9 + 0.1', () => {
+    expect(largeNumberAdd('0.9', '0.1')).toBe('1');
   });
 
   it('5.0383412673418000000 + 0.1', () => {
