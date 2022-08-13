@@ -73,12 +73,12 @@ export function formatToNumber(
     : Number(newNumber);
 }
 
-export function putInRangeNumber<T = NumberType>(
+export function putInRangeNumber(
   val: NumberType,
   params: {
     max?: NumberType;
     min?: NumberType;
-    lastValue?: T;
+    lastValue?: NumberType;
     largeNumber?: boolean;
   }
 ) {
