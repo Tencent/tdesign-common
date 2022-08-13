@@ -73,15 +73,15 @@ export function formatToNumber(
     : Number(newNumber);
 }
 
-export function putInRangeNumber(
+export function putInRangeNumber<T = NumberType>(
   val: NumberType,
   params: {
     max?: NumberType;
     min?: NumberType;
-    lastValue?: NumberType;
+    lastValue?: T;
     largeNumber?: boolean;
   }
-): NumberType {
+) {
   if (val === '') return undefined;
   const { max, min, lastValue, largeNumber } = params;
   if (!isInputNumber(val)) return lastValue;
@@ -134,21 +134,21 @@ export function subtract(num1: number, num2: number): number {
   return Number(((num1 * digit - num2 * digit) / digit).toFixed(n));
 }
 
-export function getStepValue<T = NumberType>(p: {
+export function getStepValue(p: {
   op: 'add' | 'reduce';
   step: NumberType;
   max?: NumberType;
   min?: NumberType;
-  lastValue?: T;
+  lastValue?: NumberType;
   largeNumber?: boolean;
 }) {
   const { op, step, lastValue = 0, max, min, largeNumber } = p;
   if (step <= 0) {
     log.error('InputNumber', 'step must be larger than 0.');
-    return Number(lastValue);
+    return lastValue;
   }
   const tStep = isNumber(step) ? String(step) : step;
-  let newVal: string | number;
+  let newVal;
   if (op === 'add') {
     if (largeNumber && isString(lastValue)) {
       newVal = largeNumberAdd(String(lastValue), String(tStep));
@@ -176,9 +176,9 @@ export type InputNumberErrorType =
 /**
  * 最大值和最小值校验
  */
-export function getMaxOrMinValidateResult<T = NumberType>(p: {
+export function getMaxOrMinValidateResult(p: {
   largeNumber: boolean;
-  value: T;
+  value: NumberType;
   max: NumberType;
   min: NumberType;
 }): InputNumberErrorType {
