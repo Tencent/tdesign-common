@@ -16,8 +16,8 @@ export * from './large-number';
 export type NumberType = number | string;
 
 // 小于最大值，才允许继续添加
-export function canAddNumber<T = NumberType>(
-  num: T,
+export function canAddNumber(
+  num: NumberType,
   max: NumberType,
   largeNumber = false
 ): boolean {
@@ -29,8 +29,8 @@ export function canAddNumber<T = NumberType>(
 }
 
 // 大于最小值，才允许继续减少
-export function canReduceNumber<T = NumberType>(
-  num: T,
+export function canReduceNumber(
+  num: NumberType,
   min: NumberType,
   largeNumber = false
 ): boolean {
