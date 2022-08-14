@@ -25,6 +25,14 @@ describe('largeNumberSubtract', () => {
     expect(largeNumberSubtract('1000', '2')).toBe(String(1000 - 2));
   });
 
+  it('0 - 0.2345678', () => {
+    expect(largeNumberSubtract('0', '0.2345678')).toBe('-0.2345678');
+  });
+
+  it('0.2345678 - 0', () => {
+    expect(largeNumberSubtract('0.2345678', '0')).toBe('0.2345678');
+  });
+
   it('100000000 - 1', () => {
     expect(largeNumberSubtract('100000000', '1')).toBe(String(100000000 - 1));
   });
