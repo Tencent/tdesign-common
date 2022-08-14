@@ -73,6 +73,9 @@ export function formatToNumber(
     : Number(newNumber);
 }
 
+/**
+ * 将数字控制在 max 和 min 之间
+ */
 export function putInRangeNumber(
   val: NumberType,
   params: {
@@ -94,9 +97,9 @@ export function putInRangeNumber(
 }
 
 /**
- * 小数加法精度处理，小数部分和整数部分分开处理
+ * 仅支持正数，小数加法精度处理，小数部分和整数部分分开处理
  */
-export function add(num1: number, num2: number): number {
+export function positiveAdd(num1: number, num2: number): number {
   if (!num1 || !num2) return (num1 || 0) + (num2 || 0);
   const r1 = num1.toString().split('.')[1]?.length || 0;
   const r2 = num2.toString().split('.')[1]?.length || 0;
@@ -123,15 +126,43 @@ export function add(num1: number, num2: number): number {
 }
 
 /**
- * 小数减法精度处理，小数部分和整数部分分开处理
+ * 正数，小数减法精度处理，小数部分和整数部分分开处理
  */
-export function subtract(num1: number, num2: number): number {
+export function positiveSubtract(num1: number, num2: number): number {
   if (!num1 || !num2) return (num1 || 0) - (num2 || 0);
   const r1 = num1.toString().split('.')[1]?.length || 0;
   const r2 = num2.toString().split('.')[1]?.length || 0;
   const digit = 10 ** Math.max(r1, r2);
   const n = r1 >= r2 ? r1 : r2;
   return Number(((num1 * digit - num2 * digit) / digit).toFixed(n));
+}
+
+/**
+ * 支持正数、负数、小数等全部数字的加法
+ * -0.766 + 1       =>   1 - 0.766
+ * -1 + (-0.766)    =>   - (1 + 0.766)
+ * 1 + (-0.766)     =>   1 - 0.766
+ * 1 + 0.766        =>   1 + 0.766
+ */
+export function add(num1: number, num2: number): number {
+  if (num1 < 0 && num2 > 0) return positiveSubtract(num2, Math.abs(num1));
+  if (num1 < 0 && num2 < 0) return positiveAdd(Math.abs(num1), Math.abs(num2)) * -1;
+  if (num1 > 0 && num2 < 0) return positiveSubtract(num1, Math.abs(num2));
+  return positiveAdd(num1, num2);
+}
+
+/**
+ * 支持正数、负数、小数等全部数字的减法
+ * -0.766 - 1       =>   - (1 + 0.766)
+ * -1 - (-0.766)    =>   0.766 - 1
+ * 1 - (-0.766)     =>   1 + 0.766
+ * 1 - 0.766        =>   1 - 0.766
+ */
+export function subtract(num1: number, num2: number): number {
+  if (num1 < 0 && num2 > 0) return positiveAdd(Math.abs(num1), num2) * -1;
+  if (num1 < 0 && num2 < 0) return positiveSubtract(Math.abs(num2), Math.abs(num1));
+  if (num1 > 0 && num2 < 0) return positiveAdd(num1, Math.abs(num2));
+  return positiveSubtract(num1, num2);
 }
 
 export function getStepValue(p: {
