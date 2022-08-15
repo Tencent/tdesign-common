@@ -22,6 +22,21 @@
   }
 }
 
+.scrollbar(@size: 6px) when (@size=8px) {
+  &::-webkit-scrollbar {
+    width: @size;
+    height: @size;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: @border-radius-medium;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: @scrollbar-color;
+  }
+}
+
 .hideScrollbar() {
   /* firefox */
   scrollbar-width: none;
