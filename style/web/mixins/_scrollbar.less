@@ -1,6 +1,6 @@
 @import "../_variables.less";
 
-.scrollbar(@size: 6px) {
+.scrollbar(@size: 6px, @borderSize: 0px) {
   // Firefox 等浏览器标准支持的滚动条样式设置
   scrollbar-color: @scrollbar-color;
   scrollbar-width: thin;
@@ -11,7 +11,9 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: @scrollbar-color;
+    border: @borderSize solid transparent;
+    background-clip: content-box;
+    background-color: @scrollbar-color;
     border-radius: @size * 2 - 1px;
   }
 

@@ -15,8 +15,9 @@
   position: relative;
   box-sizing: border-box;
   height: @input-height-default;
-  line-height: @input-height-default;
   .input-base();
+
+  line-height: @input-height-default; // TODO: 需要调整目前用line height撑开的方式
 
   &--focused {
     border-color: @input-border-color-default-focus;
@@ -37,13 +38,9 @@
     max-width: 100%;
     min-width: 0;
     color: @input-text-color-default;
-    line-height: inherit;
+    font: inherit;
     background-color: transparent;
     box-sizing: border-box;
-
-    &:read-only {
-      cursor: pointer;
-    }
 
     &::placeholder {
       color: @input-placeholder-color;
@@ -52,10 +49,17 @@
     &:placeholder-shown {
       text-overflow: ellipsis;
     }
+
+    &[type="search"]::-webkit-search-decoration,
+    &[type="search"]::-webkit-search-cancel-button,
+    &[type="search"]::-webkit-search-results-button,
+    &[type="search"]::-webkit-search-results-decoration {
+      appearance: none;
+    }
   }
   // 底部的额外消息
   &__extra {
-    font-size: @input-extra-font-size;
+    font: @input-extra-font;
     color: @input-extra-color-default;
   }
 
@@ -66,13 +70,13 @@
     top: 0;
   }
 
-  &.t-input--suffix > span.t-input__clear {
+  &.@{prefix}-input--suffix > span.@{prefix}-input__clear {
     opacity: 0;
     visibility: hidden;
     transition: @input-inner-transition;
   }
 
-  &.t-input--suffix:hover > span.t-input__clear {
+  &.@{prefix}-input--suffix:hover > span.@{prefix}-input__clear {
     opacity: 1;
     visibility: visible;
   }
@@ -81,6 +85,7 @@
   .input-status(success);
   .input-status(warning);
   .input-status(error);
+  .input-readonly();
   .input-disabled();
 
   // 输入框的前置、后置图标
@@ -94,33 +99,32 @@
   // 输入框大小
   &.@{prefix}-size-l {
     height: @input-height-l;
-    line-height: @input-height-l;
-    font-size: @input-font-size-l;
+    font: @input-font-l;
+    padding-top: @spacer;
+    padding-bottom: @spacer;
   }
 
   &.@{prefix}-size-s {
     height: @input-height-s;
-    line-height: @input-height-s;
-    font-size: @input-font-size-s;
+    font: @input-font-s;
+    padding-top: (@spacer / 4);
+    padding-bottom: (@spacer / 4);
   }
 
   .@{prefix}-input__prefix,
   .@{prefix}-input__suffix {
-
     > .@{prefix}-icon {
       font-size: @input-inner-icon-font-size;
     }
   }
 
   .@{prefix}-input__prefix {
-
     > .@{prefix}-icon {
       color: @input-inner-prefix-icon-color;
     }
   }
 
   .@{prefix}-input__suffix {
-
     > .@{prefix}-icon {
       color: @input-inner-suffix-icon-color;
     }
@@ -128,7 +132,6 @@
 
   // 输入框被聚焦
   &.@{prefix}-is-focused {
-
     .@{prefix}-input__prefix {
       > .@{prefix}-icon {
         color: @input-border-color-default-focus;
@@ -136,7 +139,8 @@
     }
     .@{prefix}-input__suffix {
       // 只有time-picker、date-picker特殊使用的suffix icon需要改变颜色 若后续有新增组件继续扩展这个枚举
-      > .@{prefix}-icon-time,.@{prefix}-icon-calendar {
+      > .@{prefix}-icon-time,
+      .@{prefix}-icon-calendar {
         color: @input-border-color-default-focus;
       }
     }
@@ -200,7 +204,6 @@
   }
 
   &--separate {
-
     .@{prefix}-input__wrap + .@{prefix}-input__wrap {
       margin-left: @input-margin-distance-default;
     }
@@ -254,8 +257,8 @@
 .@{prefix}-input__tips {
   height: auto;
   min-height: @input-tips-min-height;
-  line-height: @input-tips-line-height;
-  font-size: @input-tips-font-size;
+  font: @input-tips-font;
+  position: absolute;
 }
 
 .@{prefix}-input__tips--normal {
@@ -291,4 +294,11 @@
 .@{prefix}-input--auto-width {
   width: fit-content;
   min-width: 60px;
+}
+
+// 字数限制数字
+.@{prefix}-input__limit-number {
+  font: @input-font;
+  color: @input-limit-color;
+  background: @input-bg-color-default;
 }

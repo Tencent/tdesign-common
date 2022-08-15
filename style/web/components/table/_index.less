@@ -57,7 +57,7 @@
   .reset;
 
   width: 100%;
-  font-size: @table-font-size;
+  font: @table-font;
   color: @table--text-color;
   background-color: @table-bg;
   overflow: hidden;
@@ -230,6 +230,11 @@
 
     .@{prefix}-table__content {
       border-left: @border;
+
+      // 覆盖深色模式下，水平和垂直滚动条交汇处的默认白色背景
+      &::-webkit-scrollbar-corner {
+        background-color: transparent;
+      }
     }
 
     // 表格边框优化，适配固定列/固定表头场景
@@ -579,7 +584,7 @@
   &:hover {
     color: @table-icon-active-color;
     background-color: @table-highlight-bg-color--hover;
-    border-radius: 50%;
+    border-radius: @border-radius-circle;
   }
 }
 
@@ -1056,6 +1061,13 @@
 
 .@{prefix}-table--bordered .@{prefix}-affix .@{prefix}-table__pagination {
   border-top: @border;
+}
+
+.@{prefix}-table__bottom-content + .@{prefix}-table__pagination-wrap {
+  .@{prefix}-table__pagination {
+    border: 0;
+    padding: 0;
+  }
 }
 
 .@{prefix}-table--column-resizable:not(.@{prefix}-table--bordered) {

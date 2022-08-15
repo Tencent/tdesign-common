@@ -11,10 +11,11 @@
 .@{prefix}-dropdown {
   .reset;
 
-  background-color: @dropdown-bg-color;
-  position: relative;
-  border-radius: @border-radius-default;
-  padding: 0;
+  .@{prefix}-popup__content {
+    background-color: @dropdown-bg-color;
+    position: relative;
+    padding: 0;
+  }
 
   &__menu {
     display: flex;
@@ -74,6 +75,7 @@
     }
 
     &-text {
+      font: @dropdown-item-text-font;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

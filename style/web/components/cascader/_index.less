@@ -9,7 +9,6 @@
 @import "../../mixins/_reset.less";
 
 .@{prefix}-cascader {
-
   .@{prefix}-fake-arrow {
     color: @cascader-icon-color;
 
@@ -19,7 +18,10 @@
   }
 
   &__popup {
-    padding: 0;
+    .@{prefix}-popup__content {
+      padding: 0;
+      box-shadow: @shadow-2;
+    }
   }
 
   &__panel {
@@ -56,6 +58,7 @@
     box-sizing: content-box;
     padding: @cascader-menu-padding;
     background: @bg-color-container;
+    border-radius: @border-radius-medium;
 
     &--segment {
       border-right: .5px solid @cascader-menu-segment-color;
@@ -71,7 +74,7 @@
     position: relative;
     display: flex;
     height: @cascader-item-height-default;
-    line-height: @cascader-item-height-default;
+    font: @cascader-font;
     color: @cascader-dark-color;
     padding: @cascader-item-padding;
     border-radius: @cascader-item-border-radius;
@@ -81,15 +84,22 @@
 
     &.@{prefix}-size-s {
       height: @cascader-item-height-s;
-      line-height: @cascader-item-height-s;
-      font-size: @cascader-font-size-s;
+      font: @cascader-font-s;
+      padding: @cascader-item-padding-s;
+
+      .@{prefix}-cascader__item-label {
+        padding: 6px 0;
+      }
     }
 
     &.@{prefix}-size-l {
       height: @cascader-item-height-l;
-      line-height: @cascader-item-height-l;
-      font-size: @cascader-font-size-l;
+      font: @cascader-font-l;
       padding: @cascader-item-padding-l;
+
+      .@{prefix}-cascader__item-label {
+        padding: 8px 0;
+      }
     }
 
     &.@{prefix}-is-disabled {
@@ -156,7 +166,6 @@
     }
 
     &--leaf {
-
       .@{prefix}-checkbox {
         width: 100%;
       }
@@ -170,6 +179,7 @@
       display: block;
       position: relative;
       white-space: nowrap;
+      padding: 9px 0;
 
       &--ellipsis {
         .text-ellipsis();

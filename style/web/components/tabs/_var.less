@@ -57,13 +57,16 @@
 @tab-nav-card-nav-item-padding-left: 16px;
 @tab-nav-card-nav-item-padding-right-large: 24px;
 @tab-nav-card-nav-item-padding-left-large: 24px;
+
 // 尺寸
 @tab-icon-size: @font-size-l; // icon尺寸
-@tab-nav-item-font-size: @font-size-l; // tab文本字体大小
+@tab-nav-item-font: @font-body-large; // tab文本字体大小
 @tab-nav-item-line-height: 22px; // tab文字行高
+
 // 圆角&边框
 @tab-btn-border: 1px solid @tab-card-stroke; // 按钮边框
 @tab-bar-operations-border: 1px solid @tab-card-stroke; // 卡片边框
+
 // 动画&过度
 @tab-nav-scroll-transform: translate(0); // 滚动栏滚动过度
 @tab-btn-fade-transform-left: translateX(-50px); // 按钮过渡动画
@@ -74,8 +77,9 @@
   @anim-duration-base;
 @tab-btn-remove-btn-transition: all .3s cubic-bezier(.645, .045, .355, 1); // 删除按钮动画过渡
 @tab-btn-icon-close-transition: color @anim-time-fn-easing @anim-duration-base; // 关闭按钮过渡动画
+
 // 阴影
 @tab-bar-operations-btn-box-shadow: -10px 0 20px 5px rgba(0, 0, 0, 5%); // 按钮阴影
-@tab-bar-transtion: all @anim-duration-moderate @anim-time-fn-easing; // 选项卡过渡动画
+@tab-bar-transition: all @anim-duration-moderate @anim-time-fn-easing; // 选项卡过渡动画
 @tab-btn-box-shadow: 10px 0px 20px 5px rgba(0, 0, 0, .05); // 按钮阴影
 @tab-btn-text-shadow-active: 0 0 .3px currentcolor; // 按钮选中颜色 win系统兼容

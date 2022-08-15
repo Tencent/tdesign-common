@@ -14,11 +14,12 @@
 .narrow-scrollbar {
   &::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
     background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 6px;
+    border-radius: @border-radius-medium;
     border: 2px solid transparent;
     background-clip: content-box;
     background-color: @scrollbar-color;

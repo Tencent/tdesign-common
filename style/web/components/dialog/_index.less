@@ -17,7 +17,7 @@
   width: @dialog-width;
   background-color: @dialog-bg-color;
   position: relative;
-  border-radius: @dialog-border-radius;
+  border-radius: @border-radius-large;
 
   // icon theme
   .@{prefix}-icon.t-is-info {
@@ -42,21 +42,11 @@
 
   &__header {
     color: @dialog-header-text-color;
-    font-size: @dialog-header-font-size;
-    font-weight: @dialog-header-font-weight;
+    font: @dialog-header-font;
     display: flex;
     align-items: center;
     word-break: break-word;
     padding-right: 10px;
-
-    > h5 {
-      padding: 0;
-      margin: 0;
-      font-weight: normal;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: @dialog-header-line-height;
-    }
 
     .@{prefix}-icon {
       font-size: @dialog-icon-size;
@@ -67,8 +57,7 @@
 
   &__body {
     color: @dialog-body-text-color;
-    font-size: @dialog-body-text-font-size;
-    line-height: @dialog-body-line-height;
+    font: @dialog-body-text-font;
     overflow: auto;
     padding: @dialog-body-padding;
     word-break: break-word;
@@ -81,6 +70,7 @@
   &__footer {
     width: 100%;
     text-align: right;
+    padding: @dialog-footer-padding;
     // remove space between inline-block elements.
     word-spacing: @dialog-word-spacing;
 
@@ -112,7 +102,7 @@
     height: @dialog-close-icon-size;
     align-items: center;
     justify-content: center;
-    border-radius: @dialog-close-border-radius;
+    border-radius: @border-radius-default;
     background: @dialog-bg-color;
     transition: all @anim-duration-base linear;
 
@@ -224,16 +214,7 @@
 
   .@{prefix}-dialog {
     pointer-events: auto;
-    z-index: 5;
+    z-index: @z-index-dialog;
     border: @dialog-border;
-
-    &.@{prefix}-dialog--fixed {
-      position: fixed;
-      z-index: @z-index-dialog;
-    }
-
-    &.@{prefix}-dialog--absolute {
-      position: absolute;
-    }
   }
 }

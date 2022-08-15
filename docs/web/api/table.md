@@ -80,10 +80,12 @@ spline: data
 
 ### 自定义表尾的表格
 
-表格提供自定义表尾功能，可用于表尾数据统计等场景。使用 `foot` 定义表尾内容。
+表格提供自定义表尾功能，可用于表尾数据统计等场景。使用 `column.foot` 定义每一列的表尾内容。
 
-- 默认输出 `foot` 字符串，如果 `foot` 类型为函数，则作为表尾渲染函数自定义表尾内容。
-- 对于有插槽特性的框架，支持插槽，使用 `foot` 的值作为插槽名称。
+- 默认输出 `column.foot` 字符串，如果 `foot` 类型为函数，则作为表尾渲染函数自定义表尾内容。
+- 对于有插槽特性的框架，支持插槽，使用 `foot` 值作为插槽名称。
+- 如果想定义通栏表尾，请使用 `footerSummary`
+- 如果想自定义表尾合并单元格信息，请使用 `rowspanAndColspanInFooter`，类似表格内容的合并单元格方法 `rowspanAndColspan`。
 
 {{ custom-footer }}
 
@@ -316,10 +318,10 @@ spline: data
 
 可对表格进行整行编辑和保存等操作。
 
-- `onRowEdit` 会在行编辑时触发。
-- `onRowValidate` 在行编辑校验完成后触发。
 - `editableRowKeys` 用于控制处于编辑状态的行。
-- 实例方法 `validateRowDate` 用于进行表格行数据校验。
+- `onRowEdit` 会在行编辑时触发。
+- 实例方法 `validateRowData` 用于进行表格行数据校验，`onRowValidate` 在行编辑校验完成时触发。
+- 实例方法 `validateTableData` 用于进行表格全部数据校验，`onValidate` 在全部数据校验完成时触发。
 
 {{ editable-row }}
 

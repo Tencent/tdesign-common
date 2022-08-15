@@ -7,7 +7,7 @@
   background-color: @input-bg-color-default;
   outline: none;
   color: @input-text-color-default;
-  font-size: @input-font-size;
+  font: @input-font;
   width: 100%;
   box-sizing: border-box;
   transition: @input-inner-transition;
@@ -23,6 +23,17 @@
     z-index: 1;
     border-color: @input-border-color-default-focus;
     box-shadow: @input-box-shadow-focus;
+  }
+}
+
+.input-readonly {
+  &.@{prefix}-is-readonly {
+    color: @input-text-color-readonly;
+    background-color: @input-bg-color-readonly;
+
+    .@{prefix}-input__inner {
+      cursor: @input-cursor-readonly;
+    }
   }
 }
 
