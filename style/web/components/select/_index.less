@@ -251,11 +251,27 @@
   .@{prefix}-popup__content {
     .scrollbar(8px, 2px);
 
+    position: relative;
     margin: @select-dropdown-margin;
     padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
     max-height: @select-dropdown-max-height;
     overflow-y: auto;
     box-shadow: @select-dropdown-shadow;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+      transform: scale(.5);
+      box-sizing: border-box;
+      pointer-events: none;
+      border: @select-dropdown-border;
+      border-radius: @border-radius-extraLarge;
+    }
   }
 
   &-inner {
