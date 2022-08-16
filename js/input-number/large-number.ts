@@ -1,3 +1,9 @@
+import log from '../log/log';
+
+export function fillZero(length: number) {
+  return new Array(length).fill(0).join('');
+}
+
 /**
  * 大数，是否是一个数字，数字字符包括 - . e [0-9]
  */
@@ -27,9 +33,14 @@ export function isInputNumber(num: number | string): boolean {
   return true;
 }
 
-// 整数，去除前面的无效 0；小数去除末尾的无效 0
+// 整数，去除前面的无效 0（本身是 0 除外）；小数去除末尾的无效 0
 export function removeInvalidZero(num: string, decimal = false) {
-  if (!num || num === '0') return '0';
+  if (num.indexOf('.') !== -1) {
+    log.error('InputNumber', 'num is not a integer number.');
+    return num;
+  }
+  if (!num || (num === '0' && decimal)) return '';
+  if (num === '0') return num;
   return (decimal ? num.replace(/0+$/, '') : num.replace(/^0+/, '')) || '0';
 }
 
@@ -84,10 +95,17 @@ export function largePositiveNumberAdd(num1: string, num2: string): string {
   const decimalNumberSum = largeIntNumberAdd(newDecimalNumber1, newDecimalNumber2, true);
   // 组合整数部分和小数部分
   const decimalLength = decimalNumberSum.length;
+  // 如果小数相加进位
   if (decimalLength > newDecimalNumber1.length && decimalLength > newDecimalNumber2.length) {
-    return [largeIntNumberAdd(integerSum, '1'), decimalNumberSum.slice(1).replace(/0+$/, '')].join('.');
+    return [
+      removeInvalidZero(largeIntNumberAdd(integerSum, '1')),
+      removeInvalidZero(decimalNumberSum.slice(1), true),
+    ].filter((v: string) => v).join('.');
   }
-  return removeInvalidZero([integerSum, decimalNumberSum].join('.'));
+  return [
+    removeInvalidZero(integerSum),
+    removeInvalidZero(decimalNumberSum, true)
+  ].filter((v: string) => v).join('.');
 }
 
 /**
@@ -205,14 +223,17 @@ export function largePositiveNumberSubtract(num1: string, num2: string): string 
   // 小数点相减
   let decimalNumber = '';
   let addOneNumber = decimalNumber1;
+  // 第一个数字的小数位数比第二个少，需补足 0
   if (decimalNumber1.length < decimalNumber2.length) {
-    addOneNumber = `${decimalNumber1}${new Array(decimalNumber2.length - decimalNumber1.length).fill(0).join('')}`;
+    addOneNumber = `${decimalNumber1}${fillZero(decimalNumber2.length - decimalNumber1.length)}`;
   }
+  // 第一个小数位更小，是否需要借位
   if (compareLargeDecimalNumber(addOneNumber, decimalNumber2) >= 0) {
     decimalNumber = largeIntegerNumberSubtract(addOneNumber, decimalNumber2, { decimal: true });
   } else {
     if (decimalNumber1.length < decimalNumber2.length || decimalNumber1 === '0') {
-      decimalNumber = largeIntegerNumberSubtract(`1${addOneNumber}`, decimalNumber2, { stayZero: true }).slice(1);
+      decimalNumber = largeIntegerNumberSubtract(`1${addOneNumber}`, decimalNumber2, { stayZero: true });
+      decimalNumber = fillZero(decimalNumber2.length - decimalNumber.length) + decimalNumber;
     } else {
       decimalNumber = largeIntegerNumberSubtract(decimalNumber1, decimalNumber2, { decimal: true });
     }
@@ -280,7 +301,7 @@ export function largeNumberToFixed(
   const [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {
-    return decimalPlaces ? [number, (new Array(decimalPlaces).fill(0).join(''))].join('.') : number;
+    return decimalPlaces ? [number, (fillZero(decimalPlaces))].join('.') : number;
   }
   // 存在小数点，保留 0 位小数，四舍五入
   if (decimalPlaces === 0) {
@@ -289,7 +310,7 @@ export function largeNumberToFixed(
   // 存在小数点，保留 > 0 位小数，四舍五入（此时，整数位不会发生任何变化，只需关注小数位数）
   let decimalNumber = num2.slice(0, decimalPlaces);
   if (num2.length < decimalPlaces) {
-    decimalNumber += (new Array(decimalPlaces - num2.length).fill(0).join(''));
+    decimalNumber += (fillZero(decimalPlaces - num2.length));
   } else {
     decimalNumber = Number(num2[decimalPlaces]) >= 5
       ? largePositiveNumberAdd(decimalNumber, '1')
@@ -308,7 +329,7 @@ export function formatENumber(num: string): string {
   const zeroCount = Number(num2);
   const [decimal] = initDecimal.split('e');
   if (zeroCount > decimal.length) {
-    const multipleZero = new Array(zeroCount - decimal.length).fill(0).join('');
+    const multipleZero = fillZero(zeroCount - decimal.length);
     return num1.replace(/(^0+|\.)/g, '') + multipleZero;
   }
   const n1 = integer.replace(/^0+/, '') + decimal.slice(0, zeroCount);

@@ -3,9 +3,15 @@
 @import "./_var.less";
 
 .@{prefix}-swiper {
+  position: relative;
   box-sizing: border-box;
   font-weight: normal;
   border-radius: @swiper-border-radius;
+
+  &-item {
+    width: 100%;
+    flex-shrink: 0;
+  }
 
   &__btn {
     display: inline-block;
@@ -37,21 +43,11 @@
   // 分页
   &__pagination {
     display: inline-block;
-    position: absolute;
-    bottom: 8px;
     font-size: 0;
-
-    &-dots-bar,
-    &-dots {
-      left: 50%;
-      transform: translateX(-50%);
-    }
 
     &-fraction {
       height: @swiper-page-fraction-height;
       line-height: @swiper-page-fraction-height;
-      bottom: 12px;
-      right: 12px;
       background-color: @text-level-3-color;
       color: @gray-color-1;
       padding: 0 12px;
@@ -74,6 +70,74 @@
 
     &-dots-bar .@{prefix}-swiper-dot--active {
       width: @swiper-page-dot-active-width;
+    }
+
+    &-left.@{prefix}-swiper__pagination-dots,
+    &-left.@{prefix}-swiper__pagination-dots-bar,
+    &-left.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &-right.@{prefix}-swiper__pagination-dots,
+    &-right.@{prefix}-swiper__pagination-dots-bar,
+    &-right.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &-top-left.@{prefix}-swiper__pagination-dots,
+    &-top-left.@{prefix}-swiper__pagination-dots-bar,
+    &-top-left.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+    }
+
+    &-top.@{prefix}-swiper__pagination-dots,
+    &-top.@{prefix}-swiper__pagination-dots-bar,
+    &-top.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      left: 50%;
+      top: 12px;
+      transform: translateX(-50%);
+    }
+
+    &-top-right.@{prefix}-swiper__pagination-dots,
+    &-top-right.@{prefix}-swiper__pagination-dots-bar,
+    &-top-right.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+    }
+
+    &-bottom-left.@{prefix}-swiper__pagination-dots,
+    &-bottom-left.@{prefix}-swiper__pagination-dots-bar,
+    &-bottom-left.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+    }
+
+    &-bottom.@{prefix}-swiper__pagination-dots,
+    &-bottom.@{prefix}-swiper__pagination-dots-bar,
+    &-bottom.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+    }
+
+    &-bottom-right.@{prefix}-swiper__pagination-dots,
+    &-bottom-right.@{prefix}-swiper__pagination-dots-bar,
+    &-bottom-right.@{prefix}-swiper__pagination-fraction {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
     }
   }
 

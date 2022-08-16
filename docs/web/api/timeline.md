@@ -10,10 +10,28 @@ spline: data
 
 {{ base }}
 
+### 控制排序的时间轴
+
+{{ reverse }}
+
 ### 自定义节点
 
 {{ customDot }}
 
-### 水平时间轴
 
-{{ horizontal }}
+### 自定义内容
+
+{{ customContent }}
+
+### 布局方式
+
+{{ layout }}
+
+
+### 加载状态
+
+{{ loading }}
+
+### 主题色
+
+{{ theme }}
