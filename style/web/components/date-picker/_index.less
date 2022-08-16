@@ -117,7 +117,7 @@
   // 周选择器交互
   &-week-row {
     cursor: pointer;
-    position: relative;
+    position: sticky;
 
     .@{prefix}-date-picker__cell:first-child .@{prefix}-date-picker__cell-inner {
       color: @datepicker-cell-disabled-color;
@@ -133,10 +133,9 @@
       position: absolute;
       left: 33px;
       right: 0;
-      top: 50%;
+      top: 3px;
       z-index: 10;
-      transform: translateY(-50%);
-      height: calc(100% - 6px);
+      height: 24px;
       border-radius: 3px;
       transition: @datepicker-transition;
       pointer-events: none;
@@ -430,7 +429,6 @@
   &--disabled + &--disabled {
     &::before {
       left: -@spacer-4;
-      right: @spacer-l;
       background-color: @datepicker-cell-disable-background-color;
     }
   }
