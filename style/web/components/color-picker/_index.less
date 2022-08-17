@@ -602,10 +602,8 @@
 
 // 覆盖select-option 默认样式，使其更紧凑点
 .@{prefix}-color-picker__select-options {
-  border-radius: @color-picker-border-radius;
-  box-shadow: @shadow-1,
-    @shadow-inset-top,
-    @shadow-inset-right,
-    @shadow-inset-bottom,
-    @shadow-inset-left;
+  > .@{prefix}-popup__content {
+    border-radius: @color-picker-border-radius;
+    box-shadow: @shadow-1, @shadow-inset-top, @shadow-inset-right, @shadow-inset-bottom, @shadow-inset-left;
+  }
 }
