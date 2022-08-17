@@ -260,14 +260,20 @@
   }
 
   &-inner {
-    padding: @select-dropdown-padding;
+    .@{prefix}-select__list {
+      padding: @select-dropdown-padding;
+    }
 
     &--size-s {
-      padding: @select-dropdown-padding-s;
+      .@{prefix}-select__list {
+        padding: @select-dropdown-padding-s;
+      }
     }
 
     &--size-l {
-      padding: @select-dropdown-padding-l;
+      .@{prefix}-select__list {
+        padding: @select-dropdown-padding-l;
+      }
     }
   }
 }
