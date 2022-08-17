@@ -16,29 +16,39 @@
     box-sizing: border-box;
     border-radius: @border-radius-medium;
     color: @tooltip-light-text-color;
+  }
 
-    .@{prefix}-tooltip--default {
+  &--default {
+    .@{prefix}-popup__content {
       color: @tooltip-text-color;
       background: @tooltip-bg;
       margin: @tooltip-default-margin;
     }
+  }
 
-    .@{prefix}-tooltip--primary {
+  &--primary {
+    .@{prefix}-popup__content {
       color: @tooltip-color-primary;
       background: @tooltip-bg-primary;
     }
+  }
 
-    .@{prefix}-tooltip--success {
+  &--success {
+    .@{prefix}-popup__content {
       color: @tooltip-color-success;
       background: @tooltip-bg-success;
     }
+  }
 
-    .@{prefix}-tooltip--danger {
+  &--danger {
+    .@{prefix}-popup__content {
       color: @tooltip-color-danger;
       background: @tooltip-bg-danger;
     }
+  }
 
-    .@{prefix}-tooltip--warning {
+  &--warning {
+    .@{prefix}-popup__content {
       color: @tooltip-color-warning;
       background: @tooltip-bg-warning;
     }
