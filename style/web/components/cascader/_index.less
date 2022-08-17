@@ -21,6 +21,9 @@
     .@{prefix}-popup__content {
       padding: 0;
       box-shadow: @shadow-2;
+      border-radius: @cascader-popup-border-radius;
+      border: @cascader-popup-border;
+      overflow: hidden;
     }
   }
 
@@ -88,7 +91,7 @@
       padding: @cascader-item-padding-s;
 
       .@{prefix}-cascader__item-label {
-        padding: 6px 0;
+        padding: 1px 0;
       }
     }
 
@@ -98,7 +101,7 @@
       padding: @cascader-item-padding-l;
 
       .@{prefix}-cascader__item-label {
-        padding: 8px 0;
+        padding: 6px 0;
       }
     }
 
@@ -179,7 +182,7 @@
       display: block;
       position: relative;
       white-space: nowrap;
-      padding: 9px 0;
+      padding: 3px 0;
 
       &--ellipsis {
         .text-ellipsis();
