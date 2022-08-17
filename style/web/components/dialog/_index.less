@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 // <name> 替换为组件名
 .@{prefix}-dialog {
   .reset;
@@ -183,6 +185,7 @@
     height: 100%;
     z-index: 1;
     overflow: auto;
+    .scrollbar(8px, 2px);
   }
   // 定位层 用于实现居中 或者距离顶部 定位
   .@{prefix}-dialog__position {
