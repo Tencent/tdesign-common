@@ -42,6 +42,12 @@
     &--right {
       margin-left: @spacer-1;
     }
+
+    &:hover {
+      background-color: @gray-color-1;
+      border-radius: @border-radius-small;
+      transition: background-color .3s;
+    }
   }
 
   &__wrapper {
@@ -74,14 +80,14 @@
     }
     .@{collapse-panel-cls}__content {
       padding: 12px 16px 12px 40px;
+      color: @collapse-panel-content-text-color;
     }
   }
 
   &.@{prefix}-is-disabled {
-    background: @bg-color-component-disabled;
-
     .@{collapse-panel-cls}__header {
       cursor: not-allowed;
+      color: @text-color-disabled;
     }
 
     .@{collapse-panel-cls}__icon {
@@ -90,6 +96,10 @@
 
     .@{collapse-panel-cls}__body {
       background: @bg-color-component-disabled;
+    }
+
+    .@{collapse-panel-cls}__content {
+      color: @text-color-disabled;
     }
   }
 
