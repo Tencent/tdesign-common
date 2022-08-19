@@ -136,7 +136,7 @@ export function getCharacterLength(str: string, maxCharacter?: number) {
  * @returns {number}
  */
 export function getUnicodeLength(str?: string): number {
-  return [...(str ?? '')].length
+  return [...(str ?? '')].length;
 }
 
 /**
@@ -147,10 +147,12 @@ export function getUnicodeLength(str?: string): number {
  * @param maxLength
  * @returns {string}
  */
-export function limitUnicodeMaxLength(str?: string, maxLength?: number): string {
+export function limitUnicodeMaxLength(
+  str?: string,
+  maxLength?: number
+): string {
   return [...(str ?? '')].slice(0, maxLength).join('');
 }
-
 
 /**
  * 兼容样式中支持number/string类型的传值 得出最后的结果。
