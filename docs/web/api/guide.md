@@ -8,5 +8,7 @@ spline: layout
 
 ### 基本使用
 
-{{ base }}
+<!-- {{ base }} -->
+
+{{ guide }}
 
