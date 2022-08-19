@@ -383,6 +383,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="./components/guide">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-button.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-button-dark.png" />
+      <p class="name">Guide</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="./components/message">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-message.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-message-dark.png" />
