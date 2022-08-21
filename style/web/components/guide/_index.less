@@ -23,8 +23,16 @@
   &__highlight {
     position: absolute;
     z-index: @guide-highlight-z-index;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 60%), rgba(0, 0, 0, 60%) 0 0 0 5000px;
     transition: .3s ease-out;
+
+    &--mask {
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 60%), rgba(0, 0, 0, 60%) 0 0 0 5000px;
+    }
+
+    &--nomask {
+      border-radius: 6px;
+      border: 1px solid rgba(0, 82, 217, 100%);
+    }
   }
 
   &__reference {
