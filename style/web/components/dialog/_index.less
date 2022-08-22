@@ -117,6 +117,18 @@
       background: @dialog-close-icon-active;
     }
   }
+  &.@{prefix}-dialog--draggable {
+    &:hover {
+      cursor: move;
+    }
+    .@{prefix}-dialog__header,
+    .@{prefix}-dialog__body,
+    .@{prefix}-dialog__footer {
+      &:hover {
+        cursor: auto;
+      }
+    }
+  }
 }
 
 // t-dialog 组件本身
