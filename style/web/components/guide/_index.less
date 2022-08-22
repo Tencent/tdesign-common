@@ -11,6 +11,10 @@
 .@{prefix}-@{componentName} {
   .reset;
 
+  &--lock {
+    overflow: hidden;
+  }
+
   &__overlay {
     position: fixed;
     top: 0;
@@ -24,6 +28,7 @@
     position: absolute;
     z-index: @guide-highlight-z-index;
     transition: .3s ease-out;
+    border-radius: 3px;
 
     &--mask {
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 60%), rgba(0, 0, 0, 60%) 0 0 0 5000px;
@@ -37,6 +42,38 @@
 
   &__reference {
     position: absolute;
+    z-index: @guide-reference-z-index;
+
+    &--dialog {
+      min-width: 320px;
+      max-width: 500px;
+      margin-top: 20%;
+      padding: 24px 32px;
+      border-radius: 3px;
+      border: 1px solid rgba(151, 151, 151, 100%);
+      background: #fff;
+
+      .@{prefix}-@{componentName}__title {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .@{prefix}-@{componentName}__desc {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  &__dialog {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
     z-index: @guide-reference-z-index;
   }
 
