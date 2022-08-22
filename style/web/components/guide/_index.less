@@ -37,36 +37,16 @@
     &--nomask {
       border-radius: 6px;
       border: 1px solid rgba(0, 82, 217, 100%);
+      box-sizing: border-box;
     }
   }
 
   &__reference {
     position: absolute;
     z-index: @guide-reference-z-index;
-
-    &--dialog {
-      min-width: 320px;
-      max-width: 500px;
-      margin-top: 20%;
-      padding: 24px 32px;
-      border-radius: 3px;
-      border: 1px solid rgba(151, 151, 151, 100%);
-      background: #fff;
-
-      .@{prefix}-@{componentName}__title {
-        font-size: 16px;
-        line-height: 24px;
-      }
-
-      .@{prefix}-@{componentName}__desc {
-        margin-top: 12px;
-        font-size: 14px;
-        line-height: 22px;
-      }
-    }
   }
 
-  &__dialog {
+  &__wrapper {
     position: fixed;
     left: 0;
     right: 0;
@@ -75,6 +55,32 @@
     display: flex;
     justify-content: center;
     z-index: @guide-reference-z-index;
+    padding-top: 20vh;
+
+    &--center {
+      padding-top: 0;
+      align-items: center;
+    }
+  }
+
+  &__dialog {
+    min-width: 320px;
+    max-width: 500px;
+    padding: 24px 32px;
+    border-radius: 3px;
+    border: 1px solid rgba(151, 151, 151, 100%);
+    background: #fff;
+
+    .@{prefix}-@{componentName}__title {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .@{prefix}-@{componentName}__desc {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 
   &__tooltip {
