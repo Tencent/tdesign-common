@@ -68,8 +68,13 @@
     max-width: 500px;
     padding: 24px 32px;
     border-radius: 3px;
-    border: 1px solid rgba(151, 151, 151, 100%);
     background: #fff;
+    animation: tGuideDialogFadeIn .3s ease-out;
+    box-sizing: border-box;
+
+    &--nomask {
+      border: 1px solid var(--td-border-level-1-color);
+    }
 
     .@{prefix}-@{componentName}__title {
       font-size: 16px;
@@ -164,5 +169,15 @@
         }
       }
     }
+  }
+}
+
+@keyframes tGuideDialogFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
