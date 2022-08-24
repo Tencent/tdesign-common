@@ -165,6 +165,8 @@
 
   // 紧凑型表格
   &.@{prefix}-size-s {
+    font: @table-font-small;
+
     th,
     td {
       padding: @table-padding-small;
@@ -463,11 +465,13 @@
     &-block {
       padding: 10px 24px;
       border: 1px solid @gray-color-3;
+      border-bottom: 1px solid @table-border-color;
 
       & + & {
         border-top: 0;
         padding-top: 8px;
         padding-bottom: 24px;
+        border-bottom: 1px solid @gray-color-3;
       }
 
       .@{prefix}-checkbox {
@@ -535,7 +539,7 @@
   align-items: center;
   justify-content: center;
   min-height: 120px;
-  color: @text-color-disabled;
+  color: @text-color-placeholder;
 }
 
 .@{prefix}-table__expanded-cell {
@@ -583,7 +587,6 @@
   &.@{prefix}-is-focus,
   &:hover {
     color: @table-icon-active-color;
-    background-color: @table-highlight-bg-color--hover;
     border-radius: @border-radius-circle;
   }
 }
@@ -1030,6 +1033,11 @@
   display: inline-block;
 }
 
+.@{prefix}-table__tree-col {
+  display: flex;
+  align-items: center;
+}
+
 .@{prefix}-table__tree-col--inline {
   display: inline;
 }
@@ -1048,9 +1056,17 @@
   cursor: move;
 }
 
+.@{prefix}-table__ele--draggable-chosen {
+  box-shadow: @shadow-1;
+}
+
 .@{prefix}-table:not(.@{prefix}-table--row-edit) {
   .@{prefix}-table__cell--editable {
     cursor: pointer;
+
+    .t-icon {
+      margin-left: @table-td-editalbe-icon-margin;
+    }
   }
 }
 
