@@ -113,6 +113,16 @@
   .swiper-navigation-item(bars, inside, horizontal);
 }
 
+// 点条式
+.@{prefix}-swiper__navigation-dots-bar {
+  .swiper-navigation-item(dots-bar, inside, horizontal);
+}
+
+// 点式
+.@{prefix}-swiper__navigation-dots {
+  .swiper-navigation-item(dots, inside, horizontal);
+}
+
 // 分式
 .@{prefix}-swiper__navigation--fraction {
   .swiper-navigation-fraction(medium);
@@ -131,9 +141,18 @@
     bottom: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   .@{prefix}-swiper__navigation-bars {
     .swiper-navigation-item(bars, inside, vertical);
+  }
+  // 点条式
+  .@{prefix}-swiper__navigation-dots-bar {
+    .swiper-navigation-item(dots-bar, inside, vertical);
+  }
+  // 点式
+  .@{prefix}-swiper__navigation-dots {
+    .swiper-navigation-item(dots, inside, vertical);
   }
 }
 
