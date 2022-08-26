@@ -116,7 +116,7 @@
 
 .swiper-navigation-item(@type, @position: inside, @direction: horizontal, @size: medium) {
   & when(@position = inside) {
-    & when(@type = bars) {
+    & when(@type = bars), (@type = dots-bar) {
       .@{prefix}-swiper__navigation-item {
         @itemWidth: "swiper-navigation-item-width-bars-@{size}";
         @itemHeight: "swiper-navigation-item-height-bars-@{size}";
@@ -124,6 +124,11 @@
         @itemMargin: "swiper-navigation-item-margin-@{size}";
 
         cursor: pointer;
+        & when(@type = dots-bar) {
+          span {
+            border-radius: calc(@@itemHeight / 2);
+          }
+        }
         & when(@direction = horizontal) {
           margin: 0 0 0 @@itemMargin;
           padding: @@itemMargin * 3 0;
@@ -175,6 +180,68 @@
             height: @@itemWidthActive;
           }
 
+          span {
+            background-color: @swiper-navigation-item-bg-active;
+          }
+        }
+      }
+    }
+    & when(@type = dots) {
+      .@{prefix}-swiper__navigation-item {
+        @itemWidth: "swiper-navigation-item-dot-size";
+        @itemHeight: "swiper-navigation-item-dot-size";
+        @itemWidthActive: "swiper-navigation-item-width-bars-@{size}-active";
+        @itemMargin: "swiper-navigation-item-margin-@{size}";
+
+        cursor: pointer;
+
+        span {
+          border-radius: 50%;
+        }
+        & when(@direction = horizontal) {
+          margin: 0 0 0 @@itemMargin;
+          padding: @@itemMargin * 3 0;
+          width: @@itemWidth;
+          height: auto;
+
+          span {
+            width: 100%;
+            height: @@itemHeight;
+          }
+
+          &:nth-child(1) {
+            margin-left: 0;
+          }
+        }
+        & when(@direction = vertical) {
+          margin: @@itemMargin 0 0 0;
+          padding: 0 @@itemMargin * 3;
+          width: auto;
+          max-height: @@itemWidth;
+
+          span {
+            width: @@itemHeight;
+            height: 100%;
+          }
+
+          &:nth-child(1) {
+            margin-top: 0;
+          }
+        }
+
+        span {
+          background: @swiper-navigation-item-bg;
+
+          &:hover {
+            background-color: @swiper-navigation-item-bg-hover;
+          }
+
+          &:active {
+            background-color: @swiper-navigation-item-bg-active;
+          }
+        }
+
+        &.@{prefix}-is-active {
           span {
             background-color: @swiper-navigation-item-bg-active;
           }
