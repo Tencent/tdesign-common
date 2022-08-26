@@ -1,6 +1,9 @@
 import { SizeUnit, TdUploadFile } from './types';
+import log from '../log/log';
 
 /**
+ * 各个单位和 KB 的关系
+ *
  * [*] 表示方法采用这种方式
  * [x] 表示方法不采用这种方式
  *
@@ -87,20 +90,15 @@ export function isOverSizeLimit(
 ) {
   // 以 KB 为单位进行比较
   const units = ['B', 'KB', 'MB', 'GB'];
-  // 各个单位和 KB 的关系
-
   const KBIndex = 1;
   let index = units.indexOf(unit);
   if (index === -1) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `TDesign Upload Warn: \`sizeLimit.unit\` can only be one of ${units.join()}`
-    );
+    log.warn('Upload', `\`sizeLimit.unit\` can only be one of ${units.join()}`);
     index = KBIndex;
   }
   const num = SIZE_MAP[unit];
   const limit = index < KBIndex ? sizeLimit / num : sizeLimit * num;
-  return fileSize <= limit;
+  return fileSize > limit;
 }
 
 export const urlCreator = () => window.webkitURL || window.URL;
