@@ -62,7 +62,7 @@ describe('compareLargeNumber', () => {
   });
 
   it('number 2, string 2', () => {
-    expect(compareLargeNumber('2', 2)).toBe(-1);
+    expect(compareLargeNumber('2', 2)).toBe(0);
   });
 });
 
