@@ -1,4 +1,25 @@
-import { compareLargeNumber, isInputNumber, formatENumber } from '../../../js/input-number/large-number';
+import { compareNumber, compareLargeNumber, isInputNumber, formatENumber } from '../../../js/input-number/large-number';
+
+describe('compareNumber', () => {
+  it('number 2, string 2', () => {
+    expect(compareNumber('2', 2)).toBe(0);
+  });
+  it('string 1234567891234567890, string 1234567891234567891', () => {
+    expect(compareNumber('1234567891234567890', '1234567891234567891')).toBe(-1);
+  });
+
+  it('string 1234567891234567890, number 1234567891234567891', () => {
+    expect(compareNumber('1234567891234567890', 1234567891234567891)).toBe(-1);
+  });
+
+  it('number 1234567891234567891, string 1234567891234567890', () => {
+    expect(compareNumber(1234567891234567891, '1234567891234567890')).toBe(1);
+  });
+
+  it('number 1234567891234567891, string 1234567891234567890', () => {
+    expect(compareNumber(1234567891234567891, '1234567891234567890')).toBe(1);
+  });
+});
 
 describe('compareLargeNumber', () => {
   it('0.1, 0.2', () => {
@@ -59,10 +80,6 @@ describe('compareLargeNumber', () => {
 
   it('4241234, 41234534', () => {
     expect(compareLargeNumber('4241234', '41234534')).toBe(-1);
-  });
-
-  it('number 2, string 2', () => {
-    expect(compareLargeNumber('2', 2)).toBe(0);
   });
 });
 
