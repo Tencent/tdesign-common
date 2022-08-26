@@ -469,15 +469,8 @@
 
       & + & {
         border-top: 0;
-        padding-top: 8px;
-        padding-bottom: 24px;
+        padding: 24px;
         border-bottom: 1px solid @gray-color-3;
-      }
-
-      .@{prefix}-checkbox {
-        &-group .@{prefix}-checkbox {
-          margin-top: 16px;
-        }
       }
     }
 
@@ -798,14 +791,14 @@
 .@{prefix}-table__content--scrollable-to-left {
 
   .@{prefix}-table__cell--fixed-left-last::after {
-    box-shadow: inset 8px 0 8px -4px var(--td-table-shadow-color);
+    border-right: @table-fixed-cell-border-width solid @table-fixed-cell-border-color;
   }
 }
 
 .@{prefix}-table__content--scrollable-to-right {
 
   .@{prefix}-table__cell--fixed-right-first::after {
-    box-shadow: inset -8px 0 8px -4px var(--td-table-shadow-color);
+    border-left: @table-fixed-cell-border-width solid @table-fixed-cell-border-color;
   }
 }
 
