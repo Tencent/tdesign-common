@@ -602,6 +602,13 @@ a.@{prefix}-menu__item {
     }
   }
 
+  &__popup-wrapper {
+    box-sizing: border-box;
+    max-height: var(--popup-max-height, 364px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
   &__item {
     position: relative;
     display: flex;
