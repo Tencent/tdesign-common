@@ -66,7 +66,7 @@ export interface InnerProgressContext {
   file?: UploadFile;
   files?: UploadFile[];
   percent: number;
-  type?: ProgressContext['type'];
+  type: ProgressContext['type'];
 }
 
 export interface SuccessContext {
@@ -97,6 +97,7 @@ export interface XhrOptions {
   data: { [key: string]: any } | Function;
   file?: UploadFile;
   files?: UploadFile[];
+  useMockProgress?: boolean;
   name: string;
   onError: ({
     event, file, files, response
@@ -174,6 +175,9 @@ export interface HandleUploadParams {
   action?: string;
   /** 文件上传时的名称 */
   name?: string;
+  /** 是否需要真实进度之前的模拟进度 */
+  useMockProgress?: boolean;
+  multiple?: boolean;
   headers?: {[key: string]: string};
   withCredentials?: boolean;
   /** HTTP 请求类型。可选项：POST/GET/PUT/OPTION/PATCH/post/get/put/option/patch */
@@ -190,4 +194,15 @@ export interface HandleUploadParams {
 export type handleSuccessParams = SuccessContext & {
   formatResponse?: HandleUploadParams['formatResponse']
   // uploadInOneRequest?: boolean;
+}
+
+/** 语言配置，上传功能触发文案 */
+export interface UploadTriggerUploadText {
+  image?: string;
+  normal?: string;
+  fileInput?: string;
+  reupload?: string;
+  continueUpload: string;
+  delete?: string;
+  uploading?: string;
 }

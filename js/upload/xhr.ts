@@ -9,17 +9,42 @@ export default function xhr({
   file,
   files,
   name = 'file',
+  useMockProgress = true,
   onError,
   onProgress,
   onSuccess,
 }: XhrOptions) {
   // support files
   const innerFiles: UploadFile[] = files || [];
+  let percent = 0;
 
   // eslint-disable-next-line no-shadow
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
     xhr.withCredentials = true;
+  }
+
+  let timer1;
+  let timer2;
+  if (useMockProgress && files[0].status === 'progress') {
+    // 超过 500 毫秒再开启虚拟进度
+    const timer2 = setTimeout(() => {
+      // 只有真实进度一直不存在时才需要模拟进度
+      timer1 = setInterval(() => {
+        if (!percent && percent < 100) {
+          percent += 10;
+          onProgress({
+            percent,
+            file,
+            files: innerFiles.map((file) => ({ ...file, percent })),
+            type: 'mock',
+          });
+        } else {
+          clearInterval(timer1);
+        }
+      }, 300);
+      clearTimeout(timer2);
+    }, 500);
   }
 
   // set send data
@@ -41,17 +66,25 @@ export default function xhr({
     xhr.setRequestHeader(key, headers[key]);
   });
 
-  xhr.onerror = (event: ProgressEvent) => onError({ event, file, files: innerFiles });
+  xhr.onerror = (event: ProgressEvent) => {
+    onError({ event, file, files: innerFiles });
+    clearInterval(timer1);
+    clearTimeout(timer2);
+  };
 
   if (xhr.upload) {
     xhr.upload.onprogress = (event: ProgressEvent) => {
-      let percent = 0;
+      let realPercent = 0;
       if (event.total > 0) {
-        percent = Math.round((event.loaded / event.total) * 100);
+        realPercent = Math.round((event.loaded / event.total) * 100);
       }
-
+      percent = Math.max(realPercent, percent);
       onProgress({
-        event, percent, file, files: innerFiles
+        event,
+        percent,
+        file,
+        files: innerFiles.map((file) => ({ ...file, percent })),
+        type: 'real',
       });
     };
   }
@@ -71,6 +104,8 @@ export default function xhr({
     } catch (e) {
       response = text;
     }
+    clearInterval(timer1);
+    clearTimeout(timer2);
     onSuccess({
       event, file, files: innerFiles, response
     });

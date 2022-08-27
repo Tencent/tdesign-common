@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { UploadFile, SizeLimitObj, FileChangeParams, FileChangeReturn, RequestMethodResponse, HandleUploadReturn, HandleUploadParams, FormatResponseContext, SuccessContext, handleSuccessParams } from './types';
+import { UploadFile, SizeLimitObj, FileChangeParams, FileChangeReturn, RequestMethodResponse, HandleUploadReturn, HandleUploadParams, FormatResponseContext, SuccessContext, handleSuccessParams, UploadTriggerUploadText } from './types';
 import { isOverSizeLimit } from './utils';
 import xhr from './xhr';
 import log from '../log/log';
@@ -74,7 +74,7 @@ export function handleSuccess(params: handleSuccessParams) {
   }
   files.forEach((file) => {
     file.status = 'success';
-    delete file.response.error;
+    delete file.response?.error;
   });
   const res = response;
   files[0].url = res.url || files[0].url;
@@ -83,7 +83,10 @@ export function handleSuccess(params: handleSuccessParams) {
 
 export type UploadRequestReturn = {
   status?: 'fail' | 'success';
+  /** 上传失败的文件，需等待继续上传 */
+  failedFiles?: UploadFile[];
   data?: SuccessContext;
+  /** 批量文件上传，一个文件一个请求的场景下，响应结果的列表 */
   list?: UploadRequestReturn[];
 }
 
@@ -152,6 +155,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
       const xhrReq = xhr({
         action: params.action,
         files: params.toUploadFiles,
+        useMockProgress: params.useMockProgress,
         onError: (p: OnErrorParams) => {
           const r = handleError({ ...p, formatResponse: params.formatResponse });
           params.onResponseError?.(r);
@@ -201,12 +205,15 @@ Promise<UploadRequestReturn> {
   ));
   return new Promise((resolve) => {
     // 所有文件一次性上传
-    if (uploadAllFilesInOneRequest) {
+    if (uploadAllFilesInOneRequest || !params.multiple) {
       uploadOneRequest(params).then((r) => {
         if (r.status === 'success') {
-          r.data.files = isBatchUpload ? thisUploadFiles : uploadedFiles.concat(thisUploadFiles);
+          r.data.files = isBatchUpload || !params.multiple
+            ? thisUploadFiles
+            : uploadedFiles.concat(thisUploadFiles);
         }
-        resolve(r);
+        const failedFiles = r.status === 'fail' ? thisUploadFiles : [];
+        resolve({ ...r, failedFiles });
       });
       return;
     }
@@ -216,18 +223,23 @@ Promise<UploadRequestReturn> {
     ));
     Promise.all(list).then((arr) => {
       const files: UploadFile[] = [];
+      const failedFiles: UploadFile[] = [];
       arr.forEach((one) => {
         if (one.status === 'success') {
           files.push(one.data.files[0]);
+        } else if (one.status === 'fail') {
+          failedFiles.push(one.data.files[0]);
         }
       });
-      const newFiles = isBatchUpload ? files : uploadedFiles.concat(files);
+      const newFiles = isBatchUpload || !params.multiple ? files : uploadedFiles.concat(files);
       resolve({
         // 有一个请求成功，就算成功
         status: files.length ? 'success' : 'fail',
         data: {
           files: newFiles,
         },
+        // 上传失败的文件，需等待继续上传
+        failedFiles,
         list: arr,
       });
     });
@@ -284,18 +296,19 @@ export function validateFile(
     }
 
     // 单文件合法性校验，一个文件校验不通过其他文件可继续上传
-    const promiseList = formattedFiles.map((file: UploadFile) => handleBeforeUpload(
-      file,
-      { beforeUpload: params.beforeUpload, sizeLimit: params.sizeLimit },
-    ).then(([sizeResult, customResult]) => {
-      if (sizeResult) {
-        resolve({ validateResult: { type: 'FILE_OVER_SIZE_LIMIT', extra: sizeResult } });
-      } else if (!customResult) {
-        resolve({ validateResult: { type: 'CUSTOME_BEFORE_UPLOAD' } });
-      }
-      resolve({ file });
+    const promiseList = formattedFiles.map((file: UploadFile) => new Promise((resolve) => {
+      handleBeforeUpload(
+        file,
+        { beforeUpload: params.beforeUpload, sizeLimit: params.sizeLimit },
+      ).then(([sizeResult, customResult]) => {
+        if (sizeResult) {
+          resolve({ validateResult: { type: 'FILE_OVER_SIZE_LIMIT', extra: sizeResult } });
+        } else if (customResult === false) {
+          resolve({ validateResult: { type: 'CUSTOME_BEFORE_UPLOAD' } });
+        }
+        resolve({ file });
+      });
     }));
-
     Promise.all([allFileValidatePromise].concat(promiseList)).then((results) => {
       const [allFilesResult, ...others] = results;
       if (allFilesResult === false) {
@@ -324,4 +337,17 @@ export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError
   });
 
   return { errors, toFiles, firstError: errors[0] };
+}
+
+/**
+ * 获取文件上传触发元素文本 在全局配置中的字段
+ */
+export function getTriggerTextField(p: {
+  status: 'success' | 'fail' | 'progress' | 'waiting',
+  multiple: boolean,
+}): keyof UploadTriggerUploadText {
+  if (p.status === 'fail') return 'reupload';
+  if (p.status === 'progress') return 'uploading';
+  if (p.status === 'success') return p.multiple ? 'continueUpload' : 'reupload';
+  return 'fileInput';
 }

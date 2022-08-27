@@ -6,9 +6,17 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
-### 基础上传
+### 基础文件上传
 
-`action` 用于定义上传接口地址。`format` 用于格式化上传参数。`formatResponse` 用于格式化返回值，如果返回值中的 `error` 为真，则表示上传失败。
+基础文件上传风格，设置 `theme=file` 即可。
+
+- `action` 表示上传接口地址。
+- `format` 用于格式化上传参数，可以新增或修改参数。
+- `formatResponse` 用于格式化接口响应值，如果响应值中的 `error` 字段存在，则会判定本次上传失败。
+- `sizeLimit` 用于设置文件大小限制，如果超出限制不会触发上传请求。
+- `onSelectChange` 会在文件选择之后，上传请求发起之前触发。
+- `onSuccess` 会在上传成功后触发。
+- `onFail` 会在上传失败后出发。
 
 {{ base }}
 

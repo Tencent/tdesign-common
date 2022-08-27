@@ -52,11 +52,6 @@
     color: @upload-icon-add-color;
   }
 
-  .@{prefix}-upload__icon-delete {
-    color: @upload-single-display-text-color;
-    cursor: pointer;
-  }
-
   &__list-file {
     display: flex;
     align-items: center;
@@ -599,4 +594,13 @@
     margin-top: @upload-flow-card-area-margin-top;
     width: 100%;
   }
+}
+
+.@{prefix}-upload__icon-delete {
+  color: @upload-icon-color;
+  cursor: pointer;
+}
+
+.@{prefix}-upload__icon-delete:hover {
+  color: @upload-icon-color-hover;
 }
