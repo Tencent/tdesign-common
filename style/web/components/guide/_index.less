@@ -15,6 +15,14 @@
     overflow: hidden;
   }
 
+  &--absolute {
+    position: absolute;
+  }
+
+  &--fixed {
+    position: fixed;
+  }
+
   &__overlay {
     position: fixed;
     top: 0;
@@ -25,7 +33,6 @@
   }
 
   &__highlight {
-    position: absolute;
     z-index: @guide-highlight-z-index;
     transition: .3s ease-out;
     border-radius: 3px;
@@ -46,7 +53,6 @@
   }
 
   &__reference {
-    position: absolute;
     z-index: @guide-reference-z-index;
   }
 

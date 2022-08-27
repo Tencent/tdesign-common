@@ -6,9 +6,18 @@ usage: { title: '', description: '' }
 spline: layout
 ---
 
-### 基本使用
+### 基本引导
 
-<!-- {{ base }} -->
+{{ base }}
 
-{{ guide }}
+### 不带遮罩的引导
 
+{{ no-mask }}
+
+### 弹窗形式的引导
+
+{{ dialog }}
+
+### 气泡与弹窗混合的引导
+
+{{ popup-dialog }}
