@@ -30,13 +30,17 @@
     transition: .3s ease-out;
     border-radius: 3px;
 
+    &--dialog {
+      border-radius: 9px;
+    }
+
     &--mask {
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 60%), rgba(0, 0, 0, 60%) 0 0 0 5000px;
     }
 
     &--nomask {
       border-radius: 6px;
-      border: 1px solid rgba(0, 82, 217, 100%);
+      border: 2px solid rgba(0, 82, 217, 100%);
       box-sizing: border-box;
     }
   }
@@ -66,8 +70,8 @@
   &__dialog {
     min-width: 320px;
     max-width: 500px;
-    padding: 24px 32px;
-    border-radius: 3px;
+    padding: 24px 32px 32px;
+    border-radius: 9px;
     background: #fff;
     animation: tGuideDialogFadeIn .3s ease-out;
     box-sizing: border-box;
@@ -125,50 +129,32 @@
   }
 
   &__footer {
-    &--popup {
-      display: flex;
-      margin-top: 16px;
+    display: flex;
+    align-items: center;
 
-      .@{prefix}-@{componentName}__counter {
-        flex: 1;
-      }
+    &--popup {
+      margin-top: 16px;
     }
 
     &--dialog {
+      margin-top: 24px;
+
       .@{prefix}-@{componentName} {
-        &__counter {
-          display: flex;
-          justify-content: center;
-          margin: 16px auto;
-
-          span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 8px;
-          }
-
-          &--default {
-            background: @guide-dialog-counter-default-bg-color;
-          }
-
-          &--default:last-child {
-            margin-right: 0;
-          }
-
-          &--active {
-            background: @guide-dialog-counter-active-bg-color;
-          }
-        }
-
         &__action {
           display: flex;
           justify-content: center;
         }
       }
     }
+  }
+
+  &__counter {
+    color: rgba(0, 0, 0, 40%);
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    line-height: 20px;
+    flex: 1;
   }
 }
 
