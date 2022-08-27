@@ -22,7 +22,7 @@ export interface UploadFile {
   /**
    * 上传接口返回的数据
    */
-  response?: object;
+  response?: { [key: string]: any };
   /**
    * 文件大小
    */
@@ -154,6 +154,7 @@ export interface FileChangeReturn {
 
 export interface OnResponseErrorContext {
   response: any;
+  error?: string;
   event?: ProgressEvent<EventTarget>;
   files: UploadFile[];
 }
@@ -187,6 +188,6 @@ export interface HandleUploadParams {
 }
 
 export type handleSuccessParams = SuccessContext & {
-  formatResponse: HandleUploadParams['formatResponse']
+  formatResponse?: HandleUploadParams['formatResponse']
   // uploadInOneRequest?: boolean;
 }

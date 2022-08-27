@@ -50,7 +50,7 @@ export function handleBeforeUpload(
 
 export interface OnErrorParams {
   event?: ProgressEvent;
-  files: UploadFile[];
+  files?: UploadFile[];
   response?: any;
   formatResponse?: HandleUploadParams['formatResponse'];
 }
@@ -68,21 +68,16 @@ export function handleError(options: OnErrorParams) {
 }
 
 export function handleSuccess(params: handleSuccessParams) {
-  const { event, files, response, formatResponse } = params;
+  const { event, files, response } = params;
   if (files?.length <= 0) {
     log.error('Upload', 'Empty File in Success Callback');
   }
   files.forEach((file) => {
     file.status = 'success';
+    delete file.response.error;
   });
-  let res = response;
+  const res = response;
   files[0].url = res.url || files[0].url;
-  if (typeof formatResponse === 'function') {
-    res = formatResponse(response, {
-      file: files[0],
-      currentFiles: files,
-    });
-  }
   return { response: res, event, files };
 }
 
@@ -90,6 +85,25 @@ export type UploadRequestReturn = {
   status?: 'fail' | 'success';
   data?: SuccessContext;
   list?: UploadRequestReturn[];
+}
+
+export function handleRequestMethodResponse(res: RequestMethodResponse) {
+  if (!res) {
+    log.error('Upload', '`requestMethodResponse` is required.');
+    return false;
+  }
+  if (!res.status) {
+    log.error('Upload', '`requestMethodResponse.status` is missing, which value only can be `success` or `fail`');
+    return false;
+  }
+  if (!['success', 'fail'].includes(res.status)) {
+    log.error('Upload', '`requestMethodResponse.status` must be `success` or `fail`, examples `{ status: \'success\', response: { url: \'\' } }`');
+    return false;
+  }
+  if (res.status === 'success' && (!res.response || !res.response.url)) {
+    log.warn('Upload', '`requestMethodResponse.response.url` is required as `status` is `success`');
+  }
+  return true;
 }
 
 /**
@@ -111,21 +125,27 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
     toUploadFiles.forEach((file) => {
       file.status = 'progress';
     });
+    // 自定义上传方法
     if (requestMethod) {
       requestMethod(toUploadFiles).then((res) => {
-        const r = {
-          response: res.response,
-          file: toUploadFiles[0],
-          files: toUploadFiles,
-        };
+        if (!handleRequestMethodResponse(res)) {
+          resolve({});
+          return;
+        }
+        const { response } = res;
+        if (res.error) {
+          response.error = res.error || response.error;
+        }
+        const files = toUploadFiles.map((file) => ({ ...file, status: res.status }));
+        const result = { response, file: files[0], files };
         if (res.status === 'success') {
-          params.onResponseSuccess?.(r);
+          params.onResponseSuccess?.(result);
         } else if (res.status === 'fail') {
-          params.onResponseError?.(r);
+          params.onResponseError?.(result);
         }
         resolve({
           status: res.status,
-          data: r,
+          data: result,
         });
       });
     } else {
@@ -139,9 +159,23 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         },
         onProgress: params.onResponseProgress,
         onSuccess: (p: SuccessContext) => {
-          const r = handleSuccess({ ...p, formatResponse: params.formatResponse });
-          params.onResponseSuccess?.(r);
-          resolve({ status: 'success', data: r });
+          const { formatResponse } = params;
+          let res = p.response;
+          if (typeof formatResponse === 'function') {
+            res = formatResponse(p.response, {
+              file: p.file,
+              currentFiles: p.files,
+            });
+          }
+          if (res.error) {
+            const r = handleError({ ...p, response: res });
+            params.onResponseError?.(r);
+            resolve({ status: 'fail', data: r });
+          } else {
+            const r = handleSuccess({ ...p, response: res });
+            params.onResponseSuccess?.(r);
+            resolve({ status: 'success', data: r });
+          }
         },
         data: params.data,
         name: params.name,
@@ -161,19 +195,23 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
 export function upload(params: HandleUploadParams):
 Promise<UploadRequestReturn> {
   const { uploadAllFilesInOneRequest, toUploadFiles, uploadedFiles, isBatchUpload } = params;
+  // 一批文件上传，部分文件失败，重新上传失败的文件
+  const thisUploadFiles = toUploadFiles.filter((t) => (
+    !t.response || (t.response && !t.response.error)
+  ));
   return new Promise((resolve) => {
     // 所有文件一次性上传
     if (uploadAllFilesInOneRequest) {
       uploadOneRequest(params).then((r) => {
         if (r.status === 'success') {
-          r.data.files = isBatchUpload ? toUploadFiles : uploadedFiles.concat(toUploadFiles);
+          r.data.files = isBatchUpload ? thisUploadFiles : uploadedFiles.concat(thisUploadFiles);
         }
         resolve(r);
       });
       return;
     }
     // 一个文件一个文件上传
-    const list = toUploadFiles.map((file) => (
+    const list = thisUploadFiles.map((file) => (
       uploadOneRequest({ ...params, toUploadFiles: [file] })
     ));
     Promise.all(list).then((arr) => {
@@ -271,13 +309,15 @@ export function validateFile(
   });
 }
 
-export function getFilesAndErrors(fileValidateList: FileChangeReturn[]) {
+export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError) {
   const errors: FileChangeReturn['validateResult'][] = [];
   const toFiles: UploadFile[] = [];
   fileValidateList.forEach((oneFile) => {
     if (oneFile.validateResult?.type === 'CUSTOME_BEFORE_UPLOAD') return;
     if (oneFile.validateResult?.type === 'FILE_OVER_SIZE_LIMIT') {
       errors.push(oneFile.validateResult);
+      oneFile.file.response.error = oneFile.file.response.error
+        || getError(oneFile.validateResult.extra?.sizeLimitObj);
       return;
     }
     toFiles.push(oneFile.file);
