@@ -1,8 +1,18 @@
 /* eslint-disable no-param-reassign */
-import { UploadFile, SizeLimitObj, FileChangeParams, FileChangeReturn, RequestMethodResponse, HandleUploadReturn, HandleUploadParams, FormatResponseContext, SuccessContext, handleSuccessParams, UploadTriggerUploadText } from './types';
 import { isOverSizeLimit } from './utils';
 import xhr from './xhr';
 import log from '../log/log';
+import {
+  UploadFile,
+  SizeLimitObj,
+  FileChangeParams,
+  FileChangeReturn,
+  RequestMethodResponse,
+  HandleUploadParams,
+  SuccessContext,
+  handleSuccessParams,
+  UploadTriggerUploadText,
+} from './types';
 
 export interface BeforeUploadExtra {
   /** 图片文件大小限制 */
