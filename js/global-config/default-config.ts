@@ -11,6 +11,7 @@ export default {
     fillWithZero: true,
     controllerConfig: undefined,
   },
+  icon: {},
   input: {
     autocomplete: '',
   },

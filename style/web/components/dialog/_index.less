@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 // <name> 替换为组件名
 .@{prefix}-dialog {
   .reset;
@@ -70,6 +72,7 @@
   &__footer {
     width: 100%;
     text-align: right;
+    padding: @dialog-footer-padding;
     // remove space between inline-block elements.
     word-spacing: @dialog-word-spacing;
 
@@ -112,6 +115,18 @@
 
     &:active {
       background: @dialog-close-icon-active;
+    }
+  }
+  &.@{prefix}-dialog--draggable {
+    &:hover {
+      cursor: move;
+    }
+    .@{prefix}-dialog__header,
+    .@{prefix}-dialog__body,
+    .@{prefix}-dialog__footer {
+      &:hover {
+        cursor: auto;
+      }
     }
   }
 }
@@ -182,6 +197,7 @@
     height: 100%;
     z-index: 1;
     overflow: auto;
+    .scrollbar(8px, 2px);
   }
   // 定位层 用于实现居中 或者距离顶部 定位
   .@{prefix}-dialog__position {

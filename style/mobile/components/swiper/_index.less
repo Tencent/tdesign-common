@@ -3,9 +3,15 @@
 @import "./_var.less";
 
 .@{prefix}-swiper {
+  position: relative;
   box-sizing: border-box;
   font-weight: normal;
   border-radius: @swiper-border-radius;
+
+  &-item {
+    width: 100%;
+    flex-shrink: 0;
+  }
 
   &__btn {
     display: inline-block;
