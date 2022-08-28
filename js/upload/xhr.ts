@@ -10,6 +10,7 @@ export default function xhr({
   files,
   name = 'file',
   useMockProgress = true,
+  formatRequest,
   onError,
   onProgress,
   onSuccess,
@@ -47,16 +48,25 @@ export default function xhr({
     }, 500);
   }
 
-  // set send data
-  const formData = new FormData();
-  const sendData = typeof data === 'function' ? data(file) : data;
-  Object.keys(sendData).forEach((key) => {
-    formData.append(key, sendData[key]);
+  let requestData: { [key: string]: any } = {};
+  if (data) {
+    const extraData = typeof data === 'function' ? data(file) : data;
+    Object.assign(requestData, extraData);
+  }
+  innerFiles.forEach((file, index) => {
+    const fileField = innerFiles.length > 1 ? `${name}[${index}]` : name;
+    requestData[fileField] = file.raw;
+    requestData[name] = file.raw;
   });
 
-  // support one request upload multiple files
-  innerFiles.forEach((f) => {
-    formData.append(name, f && f.raw as any);
+  if (formatRequest) {
+    requestData = formatRequest(requestData);
+  }
+
+  // set send data
+  const formData = new FormData();
+  Object.keys(requestData).forEach((key) => {
+    formData.append(key, requestData[key]);
   });
 
   xhr.open(method, action, true);

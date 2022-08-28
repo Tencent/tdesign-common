@@ -99,6 +99,8 @@ export interface XhrOptions {
   files?: UploadFile[];
   useMockProgress?: boolean;
   name: string;
+  /** 可与 data 共存 */
+  formatRequest?: (requestData: { [key: string]: any }) => { [key: string]: any };
   onError: ({
     event, file, files, response
   }: {
@@ -141,6 +143,7 @@ export interface FileChangeParams {
 
 export interface FileChangeReturn {
   file?: UploadFile;
+  files?: UploadFile[];
   fileValidateList?: FileChangeReturn[];
   /** 上传文件数量超出提醒 */
   lengthOverLimit?: boolean;
@@ -159,6 +162,8 @@ export interface OnResponseErrorContext {
   event?: ProgressEvent<EventTarget>;
   files: UploadFile[];
 }
+
+export type ResponseType = { error?: string; url?: string } & Record<string, any>;
 
 export interface HandleUploadParams {
   /** 已经上传过的文件 */
@@ -182,13 +187,14 @@ export interface HandleUploadParams {
   withCredentials?: boolean;
   /** HTTP 请求类型。可选项：POST/GET/PUT/OPTION/PATCH/post/get/put/option/patch */
   method?: 'POST' | 'GET' | 'PUT' | 'OPTION' | 'PATCH' | 'post' | 'get' | 'put' | 'option' | 'patch';
+  formatRequest?: (requestData: { [key: string]: any }) => { [key: string]: any };
+  formatResponse?: (response: any, context: FormatResponseContext) => ResponseType;
   /** 自定义上传方法 */
   requestMethod?: (files: UploadFile | UploadFile[]) => Promise<RequestMethodResponse>;
   setXhrObject?: (xhr: XMLHttpRequest) => void;
   onResponseError?: (context: OnResponseErrorContext) => void;
   onResponseProgress?: (context: InnerProgressContext) => void;
   onResponseSuccess?: (context: SuccessContext) => void;
-  formatResponse?: (response: any, context: FormatResponseContext) => any;
 }
 
 export type handleSuccessParams = SuccessContext & {

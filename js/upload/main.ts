@@ -24,7 +24,7 @@ export function handleBeforeUpload(
       const sizeLimitObj: SizeLimitObj = typeof sizeLimit === 'number'
         ? { size: sizeLimit, unit: 'KB' }
         : sizeLimit;
-      const limit = isOverSizeLimit(file.size / 1024, sizeLimitObj.size, sizeLimitObj.unit);
+      const limit = isOverSizeLimit(file.size, sizeLimitObj.size, sizeLimitObj.unit);
       if (limit) {
         result = sizeLimitObj;
       }
@@ -181,6 +181,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
             resolve({ status: 'success', data: r });
           }
         },
+        formatRequest: params.formatRequest,
         data: params.data,
         name: params.name,
         headers: params.headers,
@@ -302,9 +303,9 @@ export function validateFile(
         { beforeUpload: params.beforeUpload, sizeLimit: params.sizeLimit },
       ).then(([sizeResult, customResult]) => {
         if (sizeResult) {
-          resolve({ validateResult: { type: 'FILE_OVER_SIZE_LIMIT', extra: sizeResult } });
+          resolve({ file, validateResult: { type: 'FILE_OVER_SIZE_LIMIT', extra: sizeResult } });
         } else if (customResult === false) {
-          resolve({ validateResult: { type: 'CUSTOME_BEFORE_UPLOAD' } });
+          resolve({ file, validateResult: { type: 'CUSTOME_BEFORE_UPLOAD' } });
         }
         resolve({ file });
       });
@@ -312,31 +313,40 @@ export function validateFile(
     Promise.all([allFileValidatePromise].concat(promiseList)).then((results) => {
       const [allFilesResult, ...others] = results;
       if (allFilesResult === false) {
-        resolve({ lengthOverLimit, validateResult: { type: 'BEFORE_ALL_FILES_UPLOAD' } });
+        resolve({
+          lengthOverLimit,
+          validateResult: { type: 'BEFORE_ALL_FILES_UPLOAD' },
+          files: formattedFiles,
+        });
+      } else {
+        resolve({
+          lengthOverLimit,
+          fileValidateList: others,
+          files: formattedFiles,
+        });
       }
-      resolve({
-        lengthOverLimit,
-        fileValidateList: others,
-      });
     });
   });
 }
 
 export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError) {
-  const errors: FileChangeReturn['validateResult'][] = [];
+  const sizeLimitErrors: FileChangeReturn[] = [];
   const toFiles: UploadFile[] = [];
   fileValidateList.forEach((oneFile) => {
     if (oneFile.validateResult?.type === 'CUSTOME_BEFORE_UPLOAD') return;
     if (oneFile.validateResult?.type === 'FILE_OVER_SIZE_LIMIT') {
-      errors.push(oneFile.validateResult);
+      if (!oneFile.file.response) {
+        oneFile.file.response = {};
+      }
       oneFile.file.response.error = oneFile.file.response.error
-        || getError(oneFile.validateResult.extra?.sizeLimitObj);
+      || getError(oneFile.validateResult.extra);
+      sizeLimitErrors.push(oneFile);
       return;
     }
     toFiles.push(oneFile.file);
   });
 
-  return { errors, toFiles, firstError: errors[0] };
+  return { sizeLimitErrors, toFiles };
 }
 
 /**

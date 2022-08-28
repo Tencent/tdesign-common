@@ -20,8 +20,8 @@ import log from '../log/log';
  * [x] Gigabyte 吉字节(十进制)   GB    1000 Megabytes
  */
 export const SIZE_MAP = {
-  B: 1024,
-  KB: 1,
+  B: 1,
+  KB: 1024,
   MB: 1048576, // 1024 * 1024
   GB: 1073741824, // 1024 * 1024 * 1024
 };
@@ -80,7 +80,7 @@ export function abridgeName(
 
 /**
  * 大小比较
- * @param size 文件大小
+ * @param size 文件大小，单位：B
  * @param unit 计算机计量单位
  */
 export function isOverSizeLimit(
@@ -88,7 +88,6 @@ export function isOverSizeLimit(
   sizeLimit: number,
   unit: SizeUnit
 ) {
-  // 以 KB 为单位进行比较
   const units = ['B', 'KB', 'MB', 'GB'];
   const KBIndex = 1;
   let index = units.indexOf(unit);
@@ -97,8 +96,7 @@ export function isOverSizeLimit(
     index = KBIndex;
   }
   const num = SIZE_MAP[unit];
-  const limit = index < KBIndex ? sizeLimit / num : sizeLimit * num;
-  return fileSize > limit;
+  return fileSize > sizeLimit * num;
 }
 
 export const urlCreator = () => window.webkitURL || window.URL;
