@@ -371,3 +371,19 @@ export function getTriggerTextField(p: {
   if (p.status === 'success') return p.multiple ? 'continueUpload' : 'reupload';
   return 'fileInput';
 }
+
+/**
+ * 获取文件列表显示
+ */
+export function getDisplayFiles(params: {
+  multiple: boolean;
+  uploadValue: UploadFile[];
+  toUploadFiles: UploadFile[];
+}) {
+  const { multiple, uploadValue, toUploadFiles } = params;
+  const waitingUploadFiles = toUploadFiles.filter((file) => file.status !== 'fail');
+  if (multiple) {
+    return (waitingUploadFiles.length ? uploadValue.concat(waitingUploadFiles) : uploadValue) || [];
+  }
+  return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];
+}
