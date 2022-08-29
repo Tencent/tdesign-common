@@ -6,6 +6,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 .@{prefix}-dropdown {
   .reset;
 
@@ -18,6 +20,8 @@
   border-radius: @border-radius-medium;
 
   &__menu {
+    .scrollbar(8px, 2px);
+
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -53,12 +57,11 @@
       gap: @dropdown-menu-gap;
     }
 
-    &-disabled {
+    &--disabled {
       visibility: hidden;
     }
 
-    &-left {
-      // top: -6px;
+    &--left {
       right: calc(100% - 6px);
     }
   }
@@ -66,7 +69,6 @@
   &__item {
     width: 132px;
     border-radius: @border-radius-default;
-    // position: relative;
     line-height: 1.4;
     cursor: pointer;
     user-select: none;
@@ -79,8 +81,8 @@
 
     &-icon {
       display: flex;
-      margin-right: @spacer;
       color: currentcolor;
+      margin-right: @spacer;
       font-size: @dropdown-text-icon-size;
     }
 
@@ -104,15 +106,17 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      flex: 1;
     }
 
     &.@{prefix}-dropdown__item--suffix {
-      .@{prefix}-dropdown__item-subicon {
+      .@{prefix}-dropdown__item-sub-icon {
         color: currentcolor;
         font-size: @dropdown-text-icon-size;
         flex-shrink: 0;
       }
     }
+
     //默认主题
     &--theme-default {
       color: @dropdown-text-color;
@@ -138,7 +142,7 @@
         }
       }
 
-      &.@{prefix}-dropdown__item-disabled {
+      &.@{prefix}-dropdown__item--disabled {
         color: @dropdown-disable-color;
 
         &:hover {
@@ -267,5 +271,6 @@
         }
       }
     }
+    --ripple-color: @bg-color-container-active;
   }
 }
