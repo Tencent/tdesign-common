@@ -1,14 +1,14 @@
 import isNumber from 'lodash/isNumber';
 import { BaseTableCol } from './types';
 
-export const recalculateColumnWidth = <T extends BaseTableCol<T>>(
+export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
   columns: T[],
   thWidthList: { [colKey: string]: number },
   tableLayout: string,
   tableElmWidth: number,
   notCalculateWidthCols: string[],
   callback: (widthMap: { [colKey: string]: number }) => void
-): void => {
+): void {
   let actualWidth = 0;
   const missingWidthCols: T[] = [];
   const thMap: { [colKey: string]: number } = {};

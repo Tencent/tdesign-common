@@ -18,7 +18,7 @@ const findAllChildren = <T extends BaseTableCol<T>>(col: T): T[] => {
   return result;
 };
 
-export const setThWidthListByColumnDrag = <T extends BaseTableCol<T>>(
+export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
   dragCol: T,
   dragWidth: number,
   effectCol: T,
@@ -27,7 +27,7 @@ export const setThWidthListByColumnDrag = <T extends BaseTableCol<T>>(
     DEFAULT_MIN_WIDTH: number
   },
   callback: (widthMap: { [colKey: string]: number }, colKeys: string[]) => void
-) => {
+): void {
   const { getThWidthList, DEFAULT_MIN_WIDTH } = options;
   const thWidthList = getThWidthList();
 
@@ -54,14 +54,15 @@ export const setThWidthListByColumnDrag = <T extends BaseTableCol<T>>(
 
     // 根据多级表头的叶节点计算实际宽度（拖动列）
     dragChildrenCols.forEach((child) => {
-      oldWidth += thWidthList[child.colKey] || (isNumber(child.width) ? child.width : parseFloat(child.width));
+      const defaultWidth = isNumber(child.width) ? child.width : parseFloat(child.width)
+      oldWidth += thWidthList[child.colKey] || defaultWidth;
       notCalculateCols.push(child.colKey);
     });
 
     // 根据多级表头的叶节点计算实际宽度（受影响的列）
     effectChildrenCols.forEach((child) => {
-      oldEffectWidth
-        += thWidthList[child.colKey] || (isNumber(child.width) ? child.width : parseFloat(child.width));
+      const defaultWidth = isNumber(child.width) ? child.width : parseFloat(child.width);
+      oldEffectWidth += thWidthList[child.colKey] || defaultWidth;
       notCalculateCols.push(child.colKey);
       effectColsMinWidth += child.resize?.minWidth || DEFAULT_MIN_WIDTH;
     });
@@ -85,12 +86,12 @@ export const setThWidthListByColumnDrag = <T extends BaseTableCol<T>>(
     });
 
     // 更新各列宽度
-    callback(updateMap, notCalculateCols)
+    callback(updateMap, notCalculateCols);
   } else {
-    const propColWidth = isNumber(dragCol.width) ? dragCol.width : parseFloat(dragCol.width);
-    const propEffectColWidth = isNumber(effectCol.width) ? effectCol.width : parseFloat(effectCol.width);
-    const oldWidth = thWidthList[dragCol.colKey] || propColWidth;
-    const oldEffectWidth = thWidthList[effectCol.colKey] || propEffectColWidth;
+    const colWidth = isNumber(dragCol.width) ? dragCol.width : parseFloat(dragCol.width);
+    const effectWidth = isNumber(effectCol.width) ? effectCol.width : parseFloat(effectCol.width);
+    const oldWidth = thWidthList[dragCol.colKey] || colWidth;
+    const oldEffectWidth = thWidthList[effectCol.colKey] || effectWidth;
 
     callback({
       [dragCol.colKey]: dragWidth,
@@ -98,6 +99,6 @@ export const setThWidthListByColumnDrag = <T extends BaseTableCol<T>>(
         effectCol.resize?.minWidth || DEFAULT_MIN_WIDTH,
         oldWidth + oldEffectWidth - dragWidth,
       ),
-    }, [dragCol.colKey, effectCol.colKey])
+    }, [dragCol.colKey, effectCol.colKey]);
   }
 };
