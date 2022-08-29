@@ -21,3 +21,7 @@ spline: layout
 ### 气泡与弹窗混合的引导
 
 {{ popup-dialog }}
+
+### 自定义气泡
+
+{{ custom-popup }}
