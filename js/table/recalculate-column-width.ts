@@ -108,4 +108,4 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
 
   // 回调处理
   callback(thMap);
-};
+}

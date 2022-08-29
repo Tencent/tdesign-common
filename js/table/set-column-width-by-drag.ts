@@ -54,7 +54,7 @@ export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
 
     // 根据多级表头的叶节点计算实际宽度（拖动列）
     dragChildrenCols.forEach((child) => {
-      const defaultWidth = isNumber(child.width) ? child.width : parseFloat(child.width)
+      const defaultWidth = isNumber(child.width) ? child.width : parseFloat(child.width);
       oldWidth += thWidthList[child.colKey] || defaultWidth;
       notCalculateCols.push(child.colKey);
     });
@@ -101,4 +101,4 @@ export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
       ),
     }, [dragCol.colKey, effectCol.colKey]);
   }
-};
+}
