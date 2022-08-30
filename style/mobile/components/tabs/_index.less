@@ -10,9 +10,9 @@
   flex-direction: column;
 
   &__nav {
-    width: 100vw;
+    width: 100%;
     position: relative;
-    overflow: scroll;
+    overflow: auto;
     user-select: none;
     white-space: nowrap;
     background-color: @tab-nav-bg-color;
@@ -99,6 +99,7 @@
     }
 
     .@{prefix}-tabs__nav {
+      width: initial;
       background-color: @tab-nav-horizontal-bg-color;
 
       &-wrap {

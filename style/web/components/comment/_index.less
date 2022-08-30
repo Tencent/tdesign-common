@@ -39,6 +39,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    align-items: baseline;
     margin-bottom: @comment-author-margin-bottom;
 
     & > span {
@@ -47,6 +48,8 @@
   }
 
   &__name {
+    display: inline-flex;
+    align-items: center;
     font: @comment-author-text-size;
     cursor: pointer;
   }
@@ -67,6 +70,13 @@
     margin-top: @comment-quote-margin-top;
     border-left: 4px solid @comment-border-color-default;
     padding-left: 16px;
+
+    & .@{prefix}-comment {
+      &__name,
+      &__detail {
+        color: @text-color-secondary;
+      }
+    }
   }
 
   &__actions {

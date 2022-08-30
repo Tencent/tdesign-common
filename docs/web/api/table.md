@@ -32,6 +32,8 @@ spline: data
 
 表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。如果希望表格列宽自适应，设置 `table-layout: auto` 即可。
 
+刷新表格 DOM 元素请使用组件实例方法 `refreshTable`。
+
 {{ fixed-header }}
 
 ### 固定列的表格
@@ -304,13 +306,13 @@ spline: data
 
 #### 可编辑单元格的表格
 
-只需对 `column.edit` 进行配置，详细配置如下，
-
 - `column.edit.component` 表示进行编辑的组件，示例：Input、Select、DatePicker。需保证组件包含 `value` 和 `onChange` 两个属性。如果还需要支持校验规则，则组件还需实现 `tips` 和 `status` 两个 API，实现规则可参考 `Input` 组件。
 - `column.edit.props` 表示传给编辑组件 `column.edit.component` 的参数。
 - `column.edit.onEdited` 表示编辑完成后，退出编辑模式时触发。
 - `column.edit.rules` 指校验规则，和表单的校验规则配置一样 `FormRule`。
 - `column.edit.abortEditOnEvent` 表示除了点击非自身元素退出编辑态之外，还有哪些事件退出编辑态。如：单选框值变化事件 `onChange`，一般情况无需配置。
+- `column.edit.defaultEditable` 默认状态是否为编辑态。
+- `editableCellState` 表格全局属性，用于控制单元格是否允许编辑。返回值为 `true` 则表示可编辑；返回值为 `false` 则表示不可编辑，只读状态
 
 {{ editable-cell }}
 
@@ -339,6 +341,7 @@ spline: data
 - `tree.indent` 用于设置树结点缩进距离。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
 - `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。
+- 刷新表格数据请使用组件实例方法 `resetData`。
 
 更多信息查看 API 文档的 `tree` 属性。
 

@@ -282,7 +282,7 @@
     }
 
     &:not(.@{prefix}-table--header-fixed) {
-      tbody tr:nth-of-type(odd) {
+      tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
         background-color: @table-highlight-bg-color;
       }
     }

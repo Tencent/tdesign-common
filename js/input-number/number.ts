@@ -2,7 +2,7 @@
 import isString from 'lodash/isString';
 import isNumber from 'lodash/isNumber';
 import {
-  compareLargeNumber,
+  compareNumber,
   formatENumber,
   largeNumberToFixed,
   isInputNumber,
@@ -23,7 +23,7 @@ export function canAddNumber(
 ): boolean {
   if (!num) return true;
   if (largeNumber && isString(num)) {
-    return compareLargeNumber(num, max) < 0;
+    return compareNumber(num, max, largeNumber) < 0;
   }
   return num < max;
 }
@@ -36,7 +36,7 @@ export function canReduceNumber(
 ): boolean {
   if (!num) return true;
   if (largeNumber && isString(num)) {
-    return compareLargeNumber(num, min) > 0;
+    return compareNumber(num, min, largeNumber) > 0;
   }
   return num > min;
 }
@@ -89,8 +89,8 @@ export function putInRangeNumber(
   const { max, min, lastValue, largeNumber } = params;
   if (!isInputNumber(val)) return lastValue;
   if (largeNumber && (isString(max) || max === Infinity) && (isString(min) || min === -Infinity)) {
-    if (compareLargeNumber(max, val) < 0) return max;
-    if (compareLargeNumber(min, val) > 0) return min;
+    if (compareNumber(max, val, largeNumber) < 0) return max;
+    if (compareNumber(min, val, largeNumber) > 0) return min;
     return val;
   }
   return Math.max(Number(min), Math.min(Number(max), Number(val)));
@@ -219,9 +219,9 @@ export function getMaxOrMinValidateResult(p: {
     log.warn('InputNumber', 'largeNumber value must be a string.');
   }
   let error: InputNumberErrorType;
-  if (compareLargeNumber(value, max) > 0) {
+  if (compareNumber(value, max, largeNumber) > 0) {
     error = 'exceed-maximum';
-  } else if (compareLargeNumber(value, min) < 0) {
+  } else if (compareNumber(value, min, largeNumber) < 0) {
     error = 'below-minimum';
   } else {
     error = undefined;

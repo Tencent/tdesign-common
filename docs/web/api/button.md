@@ -69,3 +69,9 @@ Block 按钮在宽度上充满其所在的父容器（无 padding 和 margin 值
 提供长方形、正方形、圆角长方形、圆形四种形状。
 
 {{ shape }}
+
+### 自定义渲染元素
+
+支持自定义渲染元素，支持 `div/a/button`
+
+{{ custom-element }}

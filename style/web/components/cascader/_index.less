@@ -63,6 +63,14 @@
     background: @bg-color-container;
     border-radius: @border-radius-medium;
 
+    &.@{prefix}-size-l {
+      padding: @cascader-menu-padding-l;
+    }
+
+    &.@{prefix}-size-s {
+      padding: @cascader-menu-padding-s;
+    }
+
     &--segment {
       border-right: .5px solid @cascader-menu-segment-color;
     }
@@ -76,6 +84,7 @@
   &__item {
     position: relative;
     display: flex;
+    align-items: center;
     height: @cascader-item-height-default;
     font: @cascader-font;
     color: @cascader-dark-color;
