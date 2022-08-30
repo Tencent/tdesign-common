@@ -138,11 +138,10 @@ function compareLargeDecimalNumber(num1: string, num2: string) {
 /**
  * 比较两个大数的大小
  */
-export function compareLargeNumber(num1: string | number, num2: string | number): 1 | -1 | 0 {
-  if (typeof num1 === 'number' || typeof num2 === 'number') {
-    if (num1 === num2) return 0;
-    return num1 > num2 ? 1 : -1;
-  }
+export function compareLargeNumber(
+  num1: string,
+  num2: string,
+): 1 | -1 | 0 {
   const [integer1, decimal1] = num1.split('.');
   const [integer2, decimal2] = num2.split('.');
   const result = compareLargeIntegerNumber(integer1.replace('-', ''), integer2.replace('-', ''));
@@ -158,6 +157,28 @@ export function compareLargeNumber(num1: string | number, num2: string | number)
     return compareLargeDecimalNumber(decimal1, decimal2);
   }
   return result;
+}
+
+// 确认是否是大数
+export function isSafeNumber(num: string | number) {
+  return Number(num) < Number.MAX_SAFE_INTEGER && Number(num) > Number.MIN_SAFE_INTEGER;
+}
+
+/**
+ * 比较两个数的大小
+ */
+export function compareNumber(
+  num1: string | number,
+  num2: string | number,
+  largeNumber?: boolean,
+) {
+  if (isSafeNumber(num1) && isSafeNumber(num2) && !largeNumber) {
+    // 比较两个非大数的大小
+    if (Number(num1) === Number(num2)) return 0;
+    return Number(num1) > Number(num2) ? 1 : -1;
+  }
+  // 比较两个大数的大小
+  return compareLargeNumber(String(num1), String(num2));
 }
 
 /**
@@ -209,7 +230,7 @@ export function largeIntegerNumberSubtract(
  */
 export function largePositiveNumberSubtract(num1: string, num2: string): string {
   if (num1 === num2) return '0';
-  const isFirstLarger = compareLargeNumber(num1, num2) > 0;
+  const isFirstLarger = compareNumber(num1, num2, true) > 0;
   const maxNumber = isFirstLarger ? num1 : num2;
   const minNumber = isFirstLarger ? num2 : num1;
   // 整数部分和小数部分分开处理
