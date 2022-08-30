@@ -161,7 +161,7 @@ export function compareLargeNumber(
 
 // 确认是否为无限大/小
 export function isInfinity(num: number| string) {
-  return [-Infinity,Infinity].includes(Number(num))
+  return [-Infinity, Infinity].includes(Number(num));
 }
 
 // 确认是否是大数
@@ -176,7 +176,7 @@ export function compareNumber(
   num1: string | number,
   num2: string | number,
   largeNumber?: boolean,
-) { 
+) {
   const isSafeNumberCompare = isSafeNumber(num1) && isSafeNumber(num2) && !largeNumber;
   const isInfinityCompare = isInfinity(num1) || isInfinity(num2);
   if (isSafeNumberCompare || isInfinityCompare) {

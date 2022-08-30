@@ -19,6 +19,18 @@ describe('compareNumber', () => {
   it('number 1234567891234567891, string 1234567891234567890', () => {
     expect(compareNumber(1234567891234567891, '1234567891234567890')).toBe(1);
   });
+
+  it('Infinity, 1234567891234567890', () => {
+    expect(compareNumber(Infinity, '1234567891234567890')).toBe(1);
+  });
+
+  it('Infinity, Infinity', () => {
+    expect(compareNumber(Infinity, Infinity)).toBe(0);
+  });
+
+  it('-Infinity, -1234567891234567890', () => {
+    expect(compareNumber(-Infinity, -1234567891234567890)).toBe(-1);
+  });
 });
 
 describe('compareLargeNumber', () => {
