@@ -159,6 +159,11 @@ export function compareLargeNumber(
   return result;
 }
 
+// 确认是否为无限大/小
+export function isInfinity(num: number| string) {
+  return [-Infinity, Infinity].includes(Number(num));
+}
+
 // 确认是否是大数
 export function isSafeNumber(num: string | number) {
   return Number(num) < Number.MAX_SAFE_INTEGER && Number(num) > Number.MIN_SAFE_INTEGER;
@@ -172,8 +177,10 @@ export function compareNumber(
   num2: string | number,
   largeNumber?: boolean,
 ) {
-  if (isSafeNumber(num1) && isSafeNumber(num2) && !largeNumber) {
-    // 比较两个非大数的大小
+  const isSafeNumberCompare = isSafeNumber(num1) && isSafeNumber(num2) && !largeNumber;
+  const isInfinityCompare = isInfinity(num1) || isInfinity(num2);
+  if (isSafeNumberCompare || isInfinityCompare) {
+    // 比较两个非大数或涉及无穷的大小
     if (Number(num1) === Number(num2)) return 0;
     return Number(num1) > Number(num2) ? 1 : -1;
   }
