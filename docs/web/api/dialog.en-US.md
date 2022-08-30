@@ -26,7 +26,7 @@ Buttons with load identities, operations require asynchronous completion of the 
 
 ### Customize  dialog 
 
-可自定义对话框内容和底部按钮。
+You can customize the dialog box content and bottom buttons.
 
 {{ custom }}
 
