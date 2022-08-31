@@ -16,15 +16,14 @@
 
 .@{prefix}-date-picker__header-controller-month-popup,
 .@{prefix}-date-picker__header-controller-year-popup {
-  .@{prefix}-popup__content {
+  > .@{prefix}-popup__content {
     max-height: @datepicker-panel-select-max-width;;
   }
 }
 
 .@{prefix}-date-picker__panel-container,
 .@{prefix}-date-range-picker__panel-container {
-
-  .@{prefix}-popup__content {
+  > .@{prefix}-popup__content {
     padding: 0;
     min-width: @datepicker-panel-container-min-width;
   }
@@ -198,11 +197,19 @@
   &--left {
     flex-direction: column;
     border-right: 1px solid @datepicker-panel-divider-color;
+
+    .@{prefix}-date-picker__presets {
+      flex-direction: column;
+    }
   }
 
   &--right {
     flex-direction: column;
     border-left: 1px solid @datepicker-panel-divider-color;
+
+    .@{prefix}-date-picker__presets {
+      flex-direction: column;
+    }
   }
 }
 
