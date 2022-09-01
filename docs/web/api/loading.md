@@ -44,6 +44,10 @@ Loading 组件可以作为容器包裹需要显示加载状态的内容。
 
 {{ fullscreen }}
 
+### 指令方式调用
+支持 `v-loading` 指令调用 `Loading`，只需要绑定 `boolean` 值即可，支持 `fullscreen` 和 `inheritColor` 修饰符，分别对应其属性。
+{{ directive }}
+
 ### 函数方式调用
 
 {{ service }}
