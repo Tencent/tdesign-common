@@ -6,17 +6,78 @@ type DateValue = string | number | Date;
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
+// 统一解析日期格式字符串成 Dayjs 对象
+export function parseToDayjs(
+  value: string | Date | number,
+  format: string,
+  timeOfDay?: string
+) {
+  if (value === '') return dayjs();
+
+  let dateText = value;
+  // format week
+  if (/[w|W]/g.test(format)) {
+    if (typeof dateText !== 'string') {
+      dateText = dayjs(dateText).format(format) as string;
+    }
+
+    const yearStr = dateText.split(/[-/.]/)[0];
+    const weekStr = dateText.split(/[-/.]/)[1];
+    const weekFormatStr = format.split(/[-/.]/)[1];
+    const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
+    for (let i = 0; i <= 52; i += 1) {
+      let nextWeek = firstWeek.add(i, 'week');
+      // 重置为周的第一天
+      if (timeOfDay === 'start') nextWeek = nextWeek.subtract(5, 'day');
+      if (nextWeek.format(weekFormatStr) === weekStr) {
+        return nextWeek;
+      }
+    }
+  }
+
+  // format quarter
+  if (/Q/g.test(format)) {
+    if (typeof dateText !== 'string') {
+      dateText = dayjs(dateText).format(format) as string;
+    }
+
+    const yearStr = dateText.split(/[-/.]/)[0];
+    const quarterStr = dateText.split(/[-/.]/)[1];
+    const quarterFormatStr = format.split(/[-/.]/)[1];
+    const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
+    for (let i = 0; i <= 52; i += 1) {
+      const nextQuarter = firstWeek.add(i, 'quarter');
+      if (nextQuarter.format(quarterFormatStr) === quarterStr) {
+        return nextQuarter;
+      }
+    }
+  }
+
+  // 兼容数据格式不标准场景 YYYY-MM-D
+  return dayjs(dateText, format).isValid()
+    ? dayjs(dateText, format)
+    : dayjs(dateText);
+}
+
 // 格式化 range
-function formatRange({ newDate, format, targetFormat }: { newDate: any; format: string; targetFormat: string }) {
+function formatRange({
+  newDate,
+  format,
+  targetFormat,
+}: {
+  newDate: any;
+  format: string;
+  targetFormat: string;
+}) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
   let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format));
 
   // 保证后面的时间大于前面的时间
   if (
-    dayjsDateList[0] &&
-    dayjsDateList[1] &&
-    dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
+    dayjsDateList[0]
+    && dayjsDateList[1]
+    && dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
   ) {
     // 数据兼容规则
     dayjsDateList = [dayjsDateList[1], dayjsDateList[0]];
@@ -26,7 +87,7 @@ function formatRange({ newDate, format, targetFormat }: { newDate: any; format: 
   if (dayjsDateList.some((r) => r && !r.isValid())) {
     log.error(
       'DatePicker',
-      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`,
+      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`
     );
     return [];
   }
@@ -40,7 +101,15 @@ function formatRange({ newDate, format, targetFormat }: { newDate: any; format: 
 }
 
 // 格式化单选
-function formatSingle({ newDate, format, targetFormat }: { newDate: any; format: string; targetFormat: string }) {
+function formatSingle({
+  newDate,
+  format,
+  targetFormat,
+}: {
+  newDate: any;
+  format: string;
+  targetFormat: string;
+}) {
   if (!newDate) return '';
 
   const dayJsDate = parseToDayjs(newDate, format);
@@ -49,7 +118,7 @@ function formatSingle({ newDate, format, targetFormat }: { newDate: any; format:
   if (!dayJsDate.isValid()) {
     log.error(
       'DatePicker',
-      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`,
+      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`
     );
     return '';
   }
@@ -74,7 +143,7 @@ export function isValidDate(value: DateValue | DateValue[], format: string) {
 // 日期格式化
 export function formatDate(
   newDate: DateValue | DateValue[],
-  { format, targetFormat }: { format: string; targetFormat: string },
+  { format, targetFormat }: { format: string; targetFormat: string }
 ) {
   let result;
 
@@ -98,53 +167,6 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string) {
   }
 
   return result;
-}
-
-// 统一解析日期格式字符串成 Dayjs 对象
-export function parseToDayjs(value: string | Date | number, format: string, timeOfDay?: string) {
-  if (value === '') return dayjs();
-
-  let dateText = value;
-  // format week
-  if (/[w|W]/g.test(format)) {
-    if (typeof dateText !== 'string') {
-      dateText = dayjs(dateText).format(format);
-    }
-
-    const yearStr = dateText.split(/[-/.]/)[0];
-    const weekStr = dateText.split(/[-/.]/)[1];
-    const weekFormatStr = format.split(/[-/.]/)[1];
-    const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
-    for (let i = 0; i <= 52; i += 1) {
-      let nextWeek = firstWeek.add(i, 'week');
-      // 重置为周的第一天
-      if (timeOfDay === 'start') nextWeek = nextWeek.subtract(5, 'day');
-      if (nextWeek.format(weekFormatStr) === weekStr) {
-        return nextWeek;
-      }
-    }
-  }
-
-  // format quarter
-  if (/Q/g.test(format)) {
-    if (typeof dateText !== 'string') {
-      dateText = dayjs(dateText).format(format);
-    }
-
-    const yearStr = dateText.split(/[-/.]/)[0];
-    const quarterStr = dateText.split(/[-/.]/)[1];
-    const quarterFormatStr = format.split(/[-/.]/)[1];
-    const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
-    for (let i = 0; i <= 52; i += 1) {
-      const nextQuarter = firstWeek.add(i, 'quarter');
-      if (nextQuarter.format(quarterFormatStr) === quarterStr) {
-        return nextQuarter;
-      }
-    }
-  }
-
-  // 兼容数据格式不标准场景 YYYY-MM-D
-  return dayjs(dateText, format).isValid() ? dayjs(dateText, format) : dayjs(dateText);
 }
 
 // 根据不同 mode 给出格式化默认值
@@ -194,4 +216,6 @@ export function getDefaultFormat({
       timeFormat: extractTimeFormat(format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
     };
   }
+  log.error('DatePicker', `Invalid mode: ${mode}`);
+  return {};
 }
