@@ -150,7 +150,13 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
     // 设置本节点携带的元数据
     setData(data: OptionData) {
       // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
-      const _data = omit(data, ['children']);
+      const _data = omit(data, ['children', 'value', 'label']);
+      const { keys } = node.tree.config;
+      const dataValue = data[keys?.value || 'value'];
+      const dataLabel = data[keys?.label || 'label'];
+      if (dataValue !== undefined) _data.value = dataValue;
+      if (dataLabel !== undefined) _data.label = dataLabel;
+
       Object.assign(node.data, _data);
       Object.assign(node, _data);
     },
