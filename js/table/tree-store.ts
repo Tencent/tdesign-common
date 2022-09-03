@@ -532,7 +532,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    * @returns 展开的树形节点
    */
   getTreeExpandedRow(dataSource: T[], keys: KeysType, type: 'unique' | 'data' | 'all' = 'data') {
-    const arr = [];
+    const arr: (T | any)[] = [];
     dataSource.forEach((item) => {
       const rowValue = get(item, keys.rowKey);
       const rowState = this.treeDataMap.get(rowValue);
