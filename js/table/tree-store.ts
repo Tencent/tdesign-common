@@ -737,3 +737,5 @@ export function updateRowIndex<T>(
     state.rowIndex = rowIndex + (extra?.count || 1) - 1;
   }
 }
+
+export type TreeDataMapType = InstanceType<typeof TableTreeStore>['treeDataMap'];
