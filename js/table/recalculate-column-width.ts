@@ -15,13 +15,15 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
 
   // 获取列 width 属性
   const getColWidth = (col: T) => {
-    return isNumber(col.width) ? col.width : parseFloat(col.width);
-  }
+    const { width } = col;
+    return isNumber(width) ? width : parseFloat(width);
+  };
 
   // 获取列 minWidth 属性
   const getColMinWidth = (col: T) => {
-    return isNumber(col.minWidth) ? col.minWidth : parseFloat(col.minWidth);
-  }
+    const { minWidth } = col;
+    return isNumber(minWidth) ? minWidth : parseFloat(minWidth);
+  };
 
   // 计算现有列的列宽总和
   columns.forEach((col) => {
@@ -64,7 +66,7 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
           // 如果存在未设置minWidth的列，这些列均分剩余宽度
           if (remainCols.length) {
             const avgWidth = widthDiff / remainCols.length;
-            remainCols.forEach(col => {
+            remainCols.forEach((col) => {
               thMap[col.colKey] = avgWidth;
             });
           } else {
@@ -72,11 +74,11 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
             const avgWidth = widthDiff / missingWidthCols.length;
             missingWidthCols.forEach((col) => {
               thMap[col.colKey] += avgWidth;
-            })
+            });
           }
         } else {
           // 剩余宽度 <= 0, 所有剩余列默认填充100px
-          remainCols.forEach(col => {
+          remainCols.forEach((col) => {
             thMap[col.colKey] = 100;
           });
         }
@@ -89,9 +91,9 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
       } else {
         // 当前列表总宽度大于等于表宽，且当前排版模式为auto，默认填充minWidth || 100px，然后按比例重新分配各列宽度
         let extraWidth = 0;
-        missingWidthCols.forEach(col => {
+        missingWidthCols.forEach((col) => {
           extraWidth += getColMinWidth(col) || 100;
-        })
+        });
         const totalWidth = extraWidth + actualWidth;
         columns.forEach((col) => {
           if (!thMap[col.colKey]) {

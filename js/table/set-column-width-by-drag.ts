@@ -37,13 +37,15 @@ export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
 
   // 获取列 width 属性
   const getColWidth = (col: T) => {
-    return isNumber(col.width) ? col.width : parseFloat(col.width);
-  }
+    const { width } = col;
+    return isNumber(width) ? width : parseFloat(width);
+  };
 
   // 获取列 minWidth 属性
   const getColMinWidth = (col: T) => {
-    return isNumber(col.minWidth) ? col.minWidth : parseFloat(col.minWidth);
-  }
+    const { minWidth } = col;
+    return isNumber(minWidth) ? minWidth : parseFloat(minWidth);
+  };
 
   // 若有
   if (dragChildrenCols.length || effectChildrenCols.length) {
@@ -72,7 +74,10 @@ export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
     effectChildrenCols.forEach((child) => {
       oldEffectWidth += thWidthList[child.colKey] || getColWidth(child);
       notCalculateCols.push(child.colKey);
-      effectColsMinWidth += Math.max(child.resize?.minWidth || DEFAULT_MIN_WIDTH, getColMinWidth(child) || DEFAULT_MIN_WIDTH);
+      effectColsMinWidth += Math.max(
+        child.resize?.minWidth || DEFAULT_MIN_WIDTH,
+        getColMinWidth(child) || DEFAULT_MIN_WIDTH
+      );
     });
 
     // 按比例划分新宽度（拖动列）
@@ -84,7 +89,10 @@ export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
     const remainWidth = Math.max(
       effectColsMinWidth,
       oldWidth + oldEffectWidth - dragWidth,
-      Math.max(getColMinWidth(effectCol) || DEFAULT_MIN_WIDTH, effectCol.resize?.minWidth || DEFAULT_MIN_WIDTH),
+      Math.max(
+        getColMinWidth(effectCol) || DEFAULT_MIN_WIDTH,
+        effectCol.resize?.minWidth || DEFAULT_MIN_WIDTH
+      ),
     );
     effectChildrenCols.forEach((child) => {
       updateMap[child.colKey] = Math.max(
