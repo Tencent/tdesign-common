@@ -13,10 +13,20 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
   const missingWidthCols: T[] = [];
   const thMap: { [colKey: string]: number } = {};
 
+  // 获取列 width 属性
+  const getColWidth = (col: T) => {
+    return isNumber(col.width) ? col.width : parseFloat(col.width);
+  }
+
+  // 获取列 minWidth 属性
+  const getColMinWidth = (col: T) => {
+    return isNumber(col.minWidth) ? col.minWidth : parseFloat(col.minWidth);
+  }
+
   // 计算现有列的列宽总和
   columns.forEach((col) => {
     if (!thWidthList[col.colKey]) {
-      thMap[col.colKey] = isNumber(col.width) ? col.width : parseFloat(col.width);
+      thMap[col.colKey] = getColWidth(col);
     } else {
       thMap[col.colKey] = thWidthList[col.colKey];
     }
@@ -36,24 +46,56 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
     if (missingWidthCols.length) {
       // 当前列宽总宽度小于表宽，将剩余宽度平均分配给未指定宽度的列
       if (actualWidth < tableWidth) {
-        const widthDiff = tableWidth - actualWidth;
-        const avgWidth = widthDiff / missingWidthCols.length;
+        let widthDiff = tableWidth - actualWidth;
+        const remainCols = [];
+        // 优先保证设置了minWidth的列满足最小宽度
         missingWidthCols.forEach((col) => {
-          thMap[col.colKey] = avgWidth;
+          const minWidth = getColMinWidth(col);
+          if (minWidth) {
+            thMap[col.colKey] = minWidth;
+            widthDiff -= minWidth;
+          } else {
+            remainCols.push(col);
+          }
         });
+
+        // 如果剩余宽度 > 0
+        if (widthDiff > 0) {
+          // 如果存在未设置minWidth的列，这些列均分剩余宽度
+          if (remainCols.length) {
+            const avgWidth = widthDiff / remainCols.length;
+            remainCols.forEach(col => {
+              thMap[col.colKey] = avgWidth;
+            });
+          } else {
+            // 否则所有列均分剩余宽度
+            const avgWidth = widthDiff / missingWidthCols.length;
+            missingWidthCols.forEach((col) => {
+              thMap[col.colKey] += avgWidth;
+            })
+          }
+        } else {
+          // 剩余宽度 <= 0, 所有剩余列默认填充100px
+          remainCols.forEach(col => {
+            thMap[col.colKey] = 100;
+          });
+        }
       } else if (tableLayout === 'fixed') {
-        // 当前列表总宽度大于等于表宽，且当前排版模式为fixed，默认填充100px
+        // 当前列表总宽度大于等于表宽，且当前排版模式为fixed，默认填充minWidth || 100px
         missingWidthCols.forEach((col) => {
-          const originWidth = thMap[col.colKey] || 100;
+          const originWidth = getColMinWidth(col) || 100;
           thMap[col.colKey] = isNumber(originWidth) ? originWidth : parseFloat(originWidth);
         });
       } else {
-        // 当前列表总宽度大于等于表宽，且当前排版模式为auto，默认填充100px，然后按比例重新分配各列宽度
-        const extraWidth = missingWidthCols.length * 100;
+        // 当前列表总宽度大于等于表宽，且当前排版模式为auto，默认填充minWidth || 100px，然后按比例重新分配各列宽度
+        let extraWidth = 0;
+        missingWidthCols.forEach(col => {
+          extraWidth += getColMinWidth(col) || 100;
+        })
         const totalWidth = extraWidth + actualWidth;
         columns.forEach((col) => {
           if (!thMap[col.colKey]) {
-            thMap[col.colKey] = (100 / totalWidth) * tableWidth;
+            thMap[col.colKey] = ((getColMinWidth(col) || 100) / totalWidth) * tableWidth;
           } else {
             thMap[col.colKey] = (thMap[col.colKey] / totalWidth) * tableWidth;
           }
