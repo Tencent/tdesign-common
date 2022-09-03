@@ -525,8 +525,28 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
   }
 
   /**
-   * 获取
+   * 获取展开的树形节点
+   * @param dataSource 平铺的树形结构数据
+   * @param keys 行唯一标识和子节点的字段名
+   * @param type 'unique' 标识获取展开节点的行唯一标识值，'data' 表示获取展开节点的数据，'all' 表示获取行节点包含展开状态的全部数据
+   * @returns 展开的树形节点
    */
+  getTreeExpandedRow(dataSource: T[], keys: KeysType, type: 'unique' | 'data' | 'all' = 'data') {
+    const arr = [];
+    dataSource.forEach((item) => {
+      const rowValue = get(item, keys.rowKey);
+      const rowState = this.treeDataMap.get(rowValue);
+      if (!rowState.expanded) return;
+      if (type === 'unique') {
+        arr.push(rowValue);
+      } else if (type === 'data') {
+        arr.push(item)
+      } else {
+        arr.push(rowState);
+      }
+    });
+    return arr;
+  }
 
   /**
    * 初始化树形结构 Map
