@@ -49,7 +49,7 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
       // 当前列宽总宽度小于表宽，将剩余宽度平均分配给未指定宽度的列
       if (actualWidth < tableWidth) {
         let widthDiff = tableWidth - actualWidth;
-        const remainCols = [];
+        const remainCols: T[] = [];
         // 优先保证设置了minWidth的列满足最小宽度
         missingWidthCols.forEach((col) => {
           const minWidth = getColMinWidth(col);
