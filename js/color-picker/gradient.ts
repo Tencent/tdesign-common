@@ -52,7 +52,8 @@ const generateRegExp = (): RegExpLib => {
   // Note any variables with "Capture" in name include capturing bracket set(s).
   const searchFlags = 'gi'; // ignore case for angles, "rgb" etc
   const rAngle = /(?:[+-]?\d*\.?\d+)(?:deg|grad|rad|turn)/; // Angle +ive, -ive and angle types
-  const rSideCornerCapture = /to\s+((?:(?:left|right|top|bottom)(?:\s+(?:top|bottom|left|right))?))/; // optional 2nd part
+  // optional 2nd part
+  const rSideCornerCapture = /to\s+((?:(?:left|right|top|bottom)(?:\s+(?:top|bottom|left|right))?))/;
   const rComma = /\s*,\s*/; // Allow space around comma.
   const rColorHex = /#(?:[a-f0-9]{6}|[a-f0-9]{3})/; // 3 or 6 character form
   const rDigits3 = /\(\s*(?:\d{1,3}\s*,\s*){2}\d{1,3}\s*\)/;
