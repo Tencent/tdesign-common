@@ -184,6 +184,14 @@
         content: "";
       }
 
+      &::before {
+        height: calc(50% - var(--timePickerPanelOffsetTop, 0) * 1px);
+      }
+
+      &::after {
+       height: calc(50% - var(--timePickerPanelOffsetBottom, 0) * 1px);
+      }
+
       &:last-child {
         border-right: 0;
       }
