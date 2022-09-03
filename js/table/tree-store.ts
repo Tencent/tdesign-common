@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
 import get from 'lodash/get';
 import { isRowSelectedDisabled } from './utils';
 import { PrimaryTableCol, TableRowState, TableRowValue, TableRowData } from './types';
@@ -94,14 +95,15 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     return this.updateExpandRow(r, dataSource, keys);
   }
 
-  updateExpandRow(changeRow: TableRowState, dataSource: T[], keys: KeysType) {
+  updateExpandRow(changeRow: TableRowState, dataSource: T[], keys: KeysType): T[] {
     const { row, rowIndex, expanded } = changeRow;
     const { treeDataMap } = this;
     const childrenNodes = get(row, keys.childrenKey);
-    if (!row || !childrenNodes) return;
+    if (!row || !childrenNodes) return dataSource;
     if (expanded) {
       updateChildrenRowState(treeDataMap, changeRow, expanded, keys);
       updateRowExpandLength(treeDataMap, row, childrenNodes.length, 'expand', keys);
+      // eslint-disable-next-line
       dataSource.splice.apply(dataSource, [rowIndex + 1, 0].concat(childrenNodes));
     } else {
       updateChildrenRowState<T>(treeDataMap, changeRow, expanded, keys);
@@ -141,7 +143,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
         rowKey: keys.rowKey,
         childrenKey: keys.childrenKey,
       });
-      return;
+      return -1;
     }
 
     // 懒加载处理：children 为 true，则需清空子元素在 map 中的值，而后方便重新加载
@@ -151,7 +153,9 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
         for (let i = 0, len = oldChildren.length; i < len; i++) {
           const rowValue = get(oldChildren[i], keys.rowKey);
           const state = this.treeDataMap.get(rowValue);
-          state && this.treeDataMap.delete(rowValue);
+          if (state) {
+            this.treeDataMap.delete(rowValue);
+          }
         }
       }
     }
@@ -203,7 +207,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
         type: 'remove',
       });
     } else {
-      console.warn('TDesign Table Warn: Do not remove this node, which is not appeared.');
+      log.warn('EnhancedTable', 'Do not remove this node, which is not appeared.');
     }
     return dataSource;
   }
@@ -540,7 +544,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       if (type === 'unique') {
         arr.push(rowValue);
       } else if (type === 'data') {
-        arr.push(item)
+        arr.push(item);
       } else {
         arr.push(rowState);
       }
@@ -616,7 +620,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    */
   validateDataExist(state: TableRowState, rowValue: string | number) {
     if (!state) {
-      console.warn(`TDesign Table Warn: ${rowValue} does not exist.`);
+      log.warn('EnhancedTable', `${rowValue} does not exist.`);
       return false;
     }
     return true;
@@ -627,7 +631,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    */
   validateDataDoubleExist(state: TableRowState, rowValue: string | number) {
     if (state) {
-      console.warn(`TDesign Table Warn: Duplicated Key. ${rowValue} already exists.`);
+      log.warn('EnhancedTable', `Duplicated Key. ${rowValue} already exists.`);
       return false;
     }
     return true;
