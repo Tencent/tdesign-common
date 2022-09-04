@@ -149,7 +149,7 @@ export interface FileChangeReturn {
   lengthOverLimit?: boolean;
   /** 校验不通过数据 */
   validateResult?: {
-    type: 'BEFORE_ALL_FILES_UPLOAD' | 'FILE_OVER_SIZE_LIMIT' | 'CUSTOME_BEFORE_UPLOAD';
+    type: 'BEFORE_ALL_FILES_UPLOAD' | 'FILE_OVER_SIZE_LIMIT' | 'CUSTOME_BEFORE_UPLOAD' | 'FILTER_FILE_SAME_NAME';
     extra?: {
       [key: string]: any;
     };

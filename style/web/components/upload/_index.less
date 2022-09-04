@@ -596,11 +596,26 @@
   }
 }
 
-.@{prefix}-upload__icon-delete {
+.@{prefix}-upload__icon-delete,
+.@{prefix}-upload__single-input-clear {
   color: @upload-icon-color;
   cursor: pointer;
 }
 
-.@{prefix}-upload__icon-delete:hover {
+.@{prefix}-upload__icon-delete:hover,
+.@{prefix}-upload__single-input-clear:hover {
   color: @upload-icon-color-hover;
+}
+
+.@{prefix}-upload__single-input-clear {
+  display: none;
+}
+
+.@{prefix}-upload__single-input-preview:hover {
+  .@{prefix}-upload__single-input-clear {
+    display: initial;
+  }
+  .@{prefix}-upload__status-icon {
+    display: none;
+  }
 }

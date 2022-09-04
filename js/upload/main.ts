@@ -287,9 +287,16 @@ export function validateFile(
       const sameNameFile = uploadValue.find((t) => t.name === file.name);
       return allowUploadDuplicateFile || !sameNameFile;
     });
+
+    if (tmpFiles.length < files.length) {
+      const tFiles = formatToUploadFile(files, params.format);
+      resolve({ file: tFiles?.[0], files: tFiles, validateResult: { type: 'FILTER_FILE_SAME_NAME' } });
+      return;
+    }
+
     // 上传文件数量限制
     let lengthOverLimit = false;
-    if (max) {
+    if (max && tmpFiles.length) {
       tmpFiles = tmpFiles.slice(0, max - uploadValue.length);
       if (tmpFiles.length !== files.length) {
         lengthOverLimit = true;
