@@ -1,5 +1,5 @@
 import { BaseTableCol, ThMap } from './types';
-import getColWidthAttr from './utils';
+import { getColWidthAttr } from './utils';
 
 /**
  * 填充未设置width属性的列

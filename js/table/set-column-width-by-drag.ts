@@ -1,5 +1,5 @@
 import { BaseTableCol, ThMap } from './types';
-import getColWidthAttr from './utils';
+import { getColWidthAttr } from './utils';
 
 /**
  * 获取某一列的所有子列
