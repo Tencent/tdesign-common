@@ -9,7 +9,7 @@ export default {
   },
   cascader: {
     empty: '데이터 없음',
-    loadingText: '',
+    loadingText: '로딩 중',
     placeholder: '선택해주세요',
   },
   calendar: {
