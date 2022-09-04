@@ -140,3 +140,17 @@ export function formatFiles(
     return uploadFile;
   });
 }
+
+export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
+  return new Promise((resolve) => {
+    if (!fileRaw) {
+      resolve('');
+      return;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(fileRaw);
+    reader.onload = (event: ProgressEvent<FileReader>) => {
+      resolve(event.target.result as string);
+    };
+  });
+}
