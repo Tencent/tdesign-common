@@ -61,6 +61,7 @@ export function abridgeName(
   const name = inputName;
   let leftLength = 0;
   let rightLength = 0;
+  if (!name) return '';
   for (let i = 0; i < name.length; i++) {
     const w = name[i];
     const isCn = escape(w).indexOf('%u') === 0;
@@ -76,6 +77,19 @@ export function abridgeName(
     new RegExp(`^(.{${leftLength}})(.+)(.{${rightLength}})$`),
     '$1…$3'
   );
+}
+
+export function getFileSizeText(number: number) {
+  if (number < 1024) {
+    return `${number} Bytes`;
+  }
+  if (number >= 1024 && number < 1048576) {
+    return `${(number / 1024).toFixed(1)} KB`;
+  }
+  if (number >= 1048576) {
+    return `${(number / 1048576).toFixed(1)} MB`;
+  }
+  return '';
 }
 
 /**

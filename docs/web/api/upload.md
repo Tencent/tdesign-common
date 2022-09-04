@@ -6,7 +6,7 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
-### 基础文件上传
+### 基础上传
 
 基础文件上传风格，设置 `theme=file` 即可。
 
@@ -25,9 +25,9 @@ spline: form
 
 {{ single-input }}
 
-### 拖拽上传
+### 单文件拖拽上传
 
-支持拖拽文件到指定区域触发上传。
+支持拖拽文件到指定区域触发上传。组件内的所有文本均可通过 `locale` 统一配置，也支持全局配置。
 
 {{ draggable }}
 
@@ -49,19 +49,10 @@ spline: form
 
 #### 批量上传图片
 
+- 使用 `uploadAllFilesInOneRequest` 与 `batchUpload` 实现多文件批量合并上传。
+- 使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
+
 {{ img-flow-list }}
-
-### 合并上传文件
-
-使用 `uploadAllFilesInOneRequest` 与 `batchUpload` 实现多文件批量合并上传。
-
-{{ file-flow-list-batch-upload }}
-
-### 文件重复上传
-
-使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
-
-{{ file-flow-list-duplicate }}
 
 ### 自定义上传方法
 

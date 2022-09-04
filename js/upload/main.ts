@@ -12,6 +12,7 @@ import {
   SuccessContext,
   handleSuccessParams,
   UploadTriggerUploadText,
+  UploadRemoveContext,
 } from './types';
 
 export interface BeforeUploadExtra {
@@ -296,7 +297,7 @@ export function validateFile(
 
     // 上传文件数量限制
     let lengthOverLimit = false;
-    if (max && tmpFiles.length) {
+    if (max && tmpFiles.length && !params.isBatchUpload) {
       tmpFiles = tmpFiles.slice(0, max - uploadValue.length);
       if (tmpFiles.length !== files.length) {
         lengthOverLimit = true;
@@ -379,18 +380,50 @@ export function getTriggerTextField(p: {
   return 'fileInput';
 }
 
+export interface GetDisplayFilesParams {
+  multiple: boolean;
+  autoUpload: boolean;
+  isBatchUpload: boolean;
+  uploadValue: UploadFile[];
+  toUploadFiles: UploadFile[];
+}
+
 /**
  * 获取文件列表显示
  */
-export function getDisplayFiles(params: {
-  multiple: boolean;
-  uploadValue: UploadFile[];
-  toUploadFiles: UploadFile[];
-}) {
+export function getDisplayFiles(params: GetDisplayFilesParams) {
   const { multiple, uploadValue, toUploadFiles } = params;
-  const waitingUploadFiles = toUploadFiles.filter((file) => file.status !== 'fail');
-  if (multiple) {
+  const waitingUploadFiles = toUploadFiles.filter((file) => file.status !== 'success');
+  if (multiple && !params.isBatchUpload) {
+    if (!params.autoUpload) return uploadValue;
     return (waitingUploadFiles.length ? uploadValue.concat(waitingUploadFiles) : uploadValue) || [];
   }
   return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];
+}
+
+/**
+ * 移除文件
+ */
+export function removeFiles(
+  uploadValue: UploadFile[],
+  toUploadFiles: UploadFile[],
+  context: UploadRemoveContext,
+) {
+  const { file } = context;
+  const newFiles: UploadFile[] = [...uploadValue];
+  const index1 = uploadValue.findIndex((t) => t.raw === file.raw);
+  if (index1 !== -1) {
+    newFiles.splice(index1, 1);
+  }
+  const newToUploadFiles: UploadFile[] = [...toUploadFiles];
+  const index2 = uploadValue.findIndex((t) => t.raw === file.raw);
+  let fileExist = false;
+  if (index2 !== -1) {
+    newToUploadFiles.splice(index2, 1);
+    fileExist = true;
+  }
+  return {
+    newFiles,
+    newToUploadFiles,
+  };
 }
