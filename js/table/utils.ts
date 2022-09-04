@@ -1,4 +1,6 @@
 import isFunction from 'lodash/isFunction';
+import isNumber from 'lodash/isNumber';
+import { BaseTableCol } from './types';
 
 export function isRowSelectedDisabled(
   selectColumn: { [key: string]: any },
@@ -14,4 +16,10 @@ export function isRowSelectedDisabled(
     }
   }
   return !!disabled;
+}
+
+// 获取列属性
+export function getColWidthAttr<T extends BaseTableCol<T>>(col: T, attrKey: 'width' | 'minWidth') {
+  const attr = col[attrKey];
+  return isNumber(attr) ? attr : parseFloat(attr);
 }
