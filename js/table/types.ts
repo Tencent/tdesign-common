@@ -5,3 +5,7 @@ export interface BaseTableCol<T> {
   width?: number | string,
   minWidth?: number | string,
 }
+
+export interface ThMap {
+  [colKey: string]: number
+}
