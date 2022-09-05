@@ -227,7 +227,8 @@ export function getWeeks(
       text: i,
       active: false,
       value: currentDay,
-      disabled: (typeof disableDate === 'function' && disableDate(currentDay)) || outOfRanges(currentDay, minDate, maxDate),
+      disabled: (typeof disableDate === 'function' && disableDate(currentDay))
+        || outOfRanges(currentDay, minDate, maxDate),
       now: isSame(today, currentDay),
       firstDayOfMonth: i === 1,
       lastDayOfMonth: i === maxDays,
