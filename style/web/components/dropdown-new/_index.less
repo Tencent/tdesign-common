@@ -36,6 +36,16 @@
       z-index: 1100;
       color: @dropdown-active-bg-color;
     }
+
+    &--left {
+      .@{prefix}-dropdown__item {
+        justify-content: right;
+      }
+
+      .@{prefix}-dropdown__item-text {
+        text-align: right;
+      }
+    }
   }
 
   &__submenu {
@@ -48,12 +58,11 @@
     position: absolute;
     padding: @dropdown-menu-padding;
     display: none;
-    left: calc(100% - 6px);
 
     ul {
       list-style: none;
-      padding-left: 0;
       display: grid;
+      padding-left: 0;
       gap: @dropdown-menu-gap;
     }
 
@@ -61,8 +70,20 @@
       visibility: hidden;
     }
 
+    &--right {
+      left: calc(100% - 6px);
+    }
+
     &--left {
       right: calc(100% - 6px);
+
+      .@{prefix}-dropdown__item {
+        justify-content: right;
+      }
+
+      .@{prefix}-dropdown__item-text {
+        text-align: right;
+      }
     }
   }
 
@@ -90,7 +111,7 @@
       display: flex;
     }
 
-    &-disabled {
+    &--disabled {
       cursor: not-allowed;
     }
 
@@ -196,8 +217,8 @@
       }
     }
     //危险主题
-    &--theme-danger {
-      color: @dropdown-theme-danger-color;
+    &--theme-error {
+      color: @dropdown-theme-error-color;
 
       &:hover {
         background-color: @dropdown-container-hover-bg-color;
@@ -208,7 +229,7 @@
       }
 
       &.@{prefix}-dropdown__item--active {
-        background-color: @dropdown-theme-danger-bg-color;
+        background-color: @dropdown-theme-error-bg-color;
 
         &:hover {
           background-color: @dropdown-container-hover-bg-color;
@@ -219,7 +240,7 @@
         }
       }
 
-      &.@{prefix}-dropdown__item-disabled {
+      &.@{prefix}-dropdown__item--disabled {
         color: @dropdown-disable-color;
 
         &:hover {
@@ -229,10 +250,11 @@
 
       &.@{prefix}-dropdown__item--suffix {
         &:hover {
-          background-color: @dropdown-theme-danger-bg-color;
+          background-color: @dropdown-theme-error-bg-color;
         }
       }
     }
+
     //告警主题
     &--theme-warning {
       color: @dropdown-theme-warning-color;
@@ -257,7 +279,7 @@
         }
       }
 
-      &.@{prefix}-dropdown__item-disabled {
+      &.@{prefix}-dropdown__item--disabled {
         color: @dropdown-disable-color;
 
         &:hover {
@@ -271,6 +293,7 @@
         }
       }
     }
+
     --ripple-color: @bg-color-container-active;
   }
 }
