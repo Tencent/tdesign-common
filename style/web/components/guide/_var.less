@@ -1,20 +1,4 @@
 // 层级变量
-@guide-overlay-z-index: 999997;
-@guide-highlight-z-index: 999998;
-@guide-reference-z-index: 999999;
-
-// 字体颜色
-@guide-title-font-color: rgba(0, 0, 0, 90%);
-@guide-desc-font-color: rgba(0, 0, 0, 60%);
-
-// 字体大小
-@guide-title-font-size: 14px;
-@guide-desc-font-size: 14px;
-
-// 字体粗细
-@guide-title-font-weight: 700;
-@guide-desc-font-weight: 400;
-
-// 背景颜色
-@guide-dialog-counter-default-bg-color: rgba(0, 0, 0, 26%);
-@guide-dialog-counter-active-bg-color: rgba(0, 0, 0, 60%);
+@guide-overlay-z-index: @z-index-guide - 2;
+@guide-highlight-z-index: @z-index-guide - 1;
+@guide-reference-z-index: @z-index-guide;

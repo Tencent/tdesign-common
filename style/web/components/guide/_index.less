@@ -35,10 +35,10 @@
   &__highlight {
     z-index: @guide-highlight-z-index;
     transition: .3s ease-out;
-    border-radius: 3px;
+    border-radius: @border-radius-default;
 
     &--dialog {
-      border-radius: 9px;
+      border-radius: @border-radius-large;
     }
 
     &--mask {
@@ -46,7 +46,7 @@
     }
 
     &--nomask {
-      border-radius: 6px;
+      border-radius: @border-radius-medium;
       border: 2px solid rgba(0, 82, 217, 100%);
       box-sizing: border-box;
     }
@@ -77,7 +77,7 @@
     min-width: 320px;
     max-width: 500px;
     padding: 24px 32px 32px;
-    border-radius: 9px;
+    border-radius: @border-radius-large;
     background: #fff;
     animation: tGuideDialogFadeIn .3s ease-out;
     box-sizing: border-box;
@@ -87,14 +87,12 @@
     }
 
     .@{prefix}-@{componentName}__title {
-      font-size: 16px;
-      line-height: 24px;
+      font: @font-title-medium;
     }
 
     .@{prefix}-@{componentName}__desc {
       margin-top: 12px;
-      font-size: 14px;
-      line-height: 22px;
+      font: @font-body-medium;
     }
   }
 
@@ -106,19 +104,15 @@
   }
 
   &__title {
-    color: @guide-title-font-color;
-    font-size: @guide-title-font-size;
-    font-weight: @guide-title-font-weight;
     text-align: left;
-    line-height: 22px;
+    color: @font-gray-1;
+    font: @font-title-small;
   }
 
   &__desc {
-    color: @guide-desc-font-color;
-    font-size: @guide-desc-font-color;
-    font-weight: @guide-desc-font-color;
     text-align: left;
-    line-height: 22px;
+    color: @font-gray-2;
+    font: @font-title-small;
   }
 
   &__action {
@@ -155,11 +149,9 @@
   }
 
   &__counter {
-    color: rgba(0, 0, 0, 40%);
-    font-size: 12px;
-    font-weight: 400;
+    color: @font-gray-3;
     text-align: left;
-    line-height: 20px;
+    font: @font-body-small;
     flex: 1;
   }
 
