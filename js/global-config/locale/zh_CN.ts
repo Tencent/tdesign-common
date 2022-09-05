@@ -9,7 +9,7 @@ export default {
   },
   cascader: {
     empty: '暂无数据',
-    loadingText: '',
+    loadingText: '加载中',
     placeholder: '请选择',
   },
   calendar: {

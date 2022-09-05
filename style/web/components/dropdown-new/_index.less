@@ -6,6 +6,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 .@{prefix}-dropdown {
   .reset;
 
@@ -18,6 +20,8 @@
   border-radius: @border-radius-medium;
 
   &__menu {
+    .scrollbar(8px, 2px);
+
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -32,10 +36,19 @@
       z-index: 1100;
       color: @dropdown-active-bg-color;
     }
+
+    &--left {
+      .@{prefix}-dropdown__item {
+        justify-content: right;
+      }
+
+      .@{prefix}-dropdown__item-text {
+        text-align: right;
+      }
+    }
   }
 
   &__submenu {
-    width: 160px;
     background-color: @dropdown-bg-color;
     box-shadow: @shadow-1;
     border-radius: @border-radius-medium;
@@ -44,29 +57,37 @@
     position: absolute;
     padding: @dropdown-menu-padding;
     display: none;
-    left: calc(100% - 6px);
 
     ul {
       list-style: none;
-      padding-left: 0;
       display: grid;
+      padding-left: 0;
       gap: @dropdown-menu-gap;
     }
 
-    &-disabled {
+    &--disabled {
       visibility: hidden;
     }
 
-    &-left {
-      // top: -6px;
+    &--right {
+      left: calc(100% - 6px);
+    }
+
+    &--left {
       right: calc(100% - 6px);
+
+      .@{prefix}-dropdown__item {
+        justify-content: right;
+      }
+
+      .@{prefix}-dropdown__item-text {
+        text-align: right;
+      }
     }
   }
 
   &__item {
-    width: 132px;
     border-radius: @border-radius-default;
-    // position: relative;
     line-height: 1.4;
     cursor: pointer;
     user-select: none;
@@ -79,8 +100,8 @@
 
     &-icon {
       display: flex;
-      margin-right: @spacer;
       color: currentcolor;
+      margin-right: @spacer;
       font-size: @dropdown-text-icon-size;
     }
 
@@ -88,7 +109,7 @@
       display: flex;
     }
 
-    &-disabled {
+    &--disabled {
       cursor: not-allowed;
     }
 
@@ -97,22 +118,24 @@
       flex: 1;
       align-items: center;
       justify-content: space-between;
-      width: 0;
+      max-width: 100%;
     }
 
     &-text {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      flex: 1;
     }
 
     &.@{prefix}-dropdown__item--suffix {
-      .@{prefix}-dropdown__item-subicon {
+      .@{prefix}-dropdown__item-sub-icon {
         color: currentcolor;
         font-size: @dropdown-text-icon-size;
         flex-shrink: 0;
       }
     }
+
     //默认主题
     &--theme-default {
       color: @dropdown-text-color;
@@ -138,7 +161,7 @@
         }
       }
 
-      &.@{prefix}-dropdown__item-disabled {
+      &.@{prefix}-dropdown__item--disabled {
         color: @dropdown-disable-color;
 
         &:hover {
@@ -192,8 +215,8 @@
       }
     }
     //危险主题
-    &--theme-danger {
-      color: @dropdown-theme-danger-color;
+    &--theme-error {
+      color: @dropdown-theme-error-color;
 
       &:hover {
         background-color: @dropdown-container-hover-bg-color;
@@ -204,7 +227,7 @@
       }
 
       &.@{prefix}-dropdown__item--active {
-        background-color: @dropdown-theme-danger-bg-color;
+        background-color: @dropdown-theme-error-bg-color;
 
         &:hover {
           background-color: @dropdown-container-hover-bg-color;
@@ -215,7 +238,7 @@
         }
       }
 
-      &.@{prefix}-dropdown__item-disabled {
+      &.@{prefix}-dropdown__item--disabled {
         color: @dropdown-disable-color;
 
         &:hover {
@@ -225,10 +248,11 @@
 
       &.@{prefix}-dropdown__item--suffix {
         &:hover {
-          background-color: @dropdown-theme-danger-bg-color;
+          background-color: @dropdown-theme-error-bg-color;
         }
       }
     }
+
     //告警主题
     &--theme-warning {
       color: @dropdown-theme-warning-color;
@@ -253,7 +277,7 @@
         }
       }
 
-      &.@{prefix}-dropdown__item-disabled {
+      &.@{prefix}-dropdown__item--disabled {
         color: @dropdown-disable-color;
 
         &:hover {
@@ -267,5 +291,7 @@
         }
       }
     }
+
+    --ripple-color: @bg-color-container-active;
   }
 }
