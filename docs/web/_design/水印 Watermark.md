@@ -3,7 +3,7 @@
 上传组件允许用户传输文件或提交自己的内容。
 ### 基础上传
 
-![基础控件](https://tdesign.gtimg.com/site/design/images/基础控件-1848714.jpg)
+![基础控件](https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/guide/%E6%88%AA%E5%B1%8F2022-07-22%20%E4%B8%8A%E5%8D%8811.09.35.png)
 
 ![带有文字说明](https://tdesign.gtimg.com/site/design/images/带有文字说明-1848722.jpg)
 
