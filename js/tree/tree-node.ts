@@ -14,7 +14,7 @@ import {
   createNodeModel,
   updateNodeModel,
 } from './tree-node-model';
-import { getPositionValue } from "./utils";
+import { getPositionValue } from './utils';
 
 const { hasOwnProperty } = Object.prototype;
 

@@ -1,4 +1,4 @@
-import TreeNode from "./tree-node";
+import TreeNode from './tree-node';
 
 export function getPositionValue(parent?: TreeNode, index?: number) {
   // 顶级节点
@@ -6,7 +6,6 @@ export function getPositionValue(parent?: TreeNode, index?: number) {
     return `${index}`;
   }
 
-  const pos =
-    typeof parent.children === "boolean" ? 0 : parent.children?.length;
+  const pos = typeof parent.children === 'boolean' ? 0 : parent.children?.length;
   return `${parent.value}.${index ?? pos}`;
 }
