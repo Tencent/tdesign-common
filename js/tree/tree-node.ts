@@ -115,7 +115,6 @@ export class TreeNode {
     this.tree = tree;
 
     const config = tree.config || {};
-    const prefix = config.prefix || 't';
     const keys = get(tree, 'config.keys') || {};
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
