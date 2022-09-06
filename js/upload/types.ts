@@ -192,7 +192,7 @@ export interface HandleUploadParams {
   formatResponse?: (response: any, context: FormatResponseContext) => ResponseType;
   /** 自定义上传方法 */
   requestMethod?: (files: UploadFile | UploadFile[]) => Promise<RequestMethodResponse>;
-  setXhrObject?: (xhr: XMLHttpRequest) => void;
+  setXhrObject?: (context: { files: UploadFile[], xhrReq: XMLHttpRequest }) => void;
   onResponseError?: (context: OnResponseErrorContext) => void;
   onResponseProgress?: (context: InnerProgressContext) => void;
   onResponseSuccess?: (context: SuccessContext) => void;

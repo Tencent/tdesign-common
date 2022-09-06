@@ -199,7 +199,10 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         withCredentials: params.withCredentials,
         method: params.method,
       });
-      params.setXhrObject?.(xhrReq);
+      params.setXhrObject?.({
+        files: params.toUploadFiles,
+        xhrReq,
+      });
     }
   });
 }
@@ -373,10 +376,14 @@ export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError
 export function getTriggerTextField(p: {
   status: 'success' | 'fail' | 'progress' | 'waiting',
   multiple: boolean,
+  theme: 'custom' | 'file' | 'file-input' | 'file-flow' | 'image' | 'image-flow',
+  autoUpload: boolean;
 }): keyof UploadTriggerUploadText {
   if (p.status === 'fail') return 'reupload';
   if (p.status === 'progress') return 'uploading';
-  if (p.status === 'success') return p.multiple ? 'continueUpload' : 'reupload';
+  if (p.status === 'success' || (!p.autoUpload && p.status === 'waiting')) {
+    return p.multiple ? 'continueUpload' : 'reupload';
+  }
   return 'fileInput';
 }
 
