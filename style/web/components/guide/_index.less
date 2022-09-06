@@ -42,12 +42,12 @@
     }
 
     &--mask {
-      box-shadow: 0 0 0 0 rgba(0, 0, 0, 60%), rgba(0, 0, 0, 60%) 0 0 0 5000px;
+      box-shadow: 0 0 0 0 @mask-active, @mask-active 0 0 0 5000px;
     }
 
     &--nomask {
       border-radius: @border-radius-medium;
-      border: 2px solid rgba(0, 82, 217, 100%);
+      border: 2px solid @brand-color;
       box-sizing: border-box;
     }
   }
@@ -76,14 +76,14 @@
   &__dialog {
     min-width: 320px;
     max-width: 500px;
-    padding: 24px 32px 32px;
+    padding: @spacer-3 @spacer-4 @spacer-4;
     border-radius: @border-radius-large;
-    background: #fff;
+    background: @bg-color-container;
     animation: tGuideDialogFadeIn .3s ease-out;
     box-sizing: border-box;
 
     &--nomask {
-      border: 1px solid @border-level-1-color;
+      border: 1px solid @component-border;
     }
 
     .@{prefix}-@{componentName}__title {
@@ -92,13 +92,13 @@
     }
 
     .@{prefix}-@{componentName}__desc {
-      margin-top: 12px;
+      margin-top: @spacer-l;
       font: @font-body-medium;
     }
   }
 
   &__tooltip {
-    padding: 12px 8px;
+    padding: @spacer-l @spacer;
     min-width: 240px;
     max-width: 600px;
     max-height: 300px;
@@ -106,17 +106,16 @@
 
   &__title {
     text-align: left;
-    color: @font-gray-1;
+    color: @text-color-primary;
     font: @font-title-small;
     font-weight: 700;
   }
 
   &__desc {
-    margin-top: 8px;
+    margin-top: @spacer;
     text-align: left;
-    color: @font-gray-2;
+    color: @text-color-secondary;
     font: @font-body-small;
-    font-weight: 400;
   }
 
   &__action {
@@ -124,7 +123,7 @@
     align-items: center;
 
     button {
-      margin-right: 8px;
+      margin-right: @spacer;
     }
 
     button:last-child {
@@ -137,11 +136,11 @@
     align-items: center;
 
     &--popup {
-      margin-top: 16px;
+      margin-top: @spacer-2;
     }
 
     &--dialog {
-      margin-top: 24px;
+      margin-top: @spacer-3;
 
       .@{prefix}-@{componentName} {
         &__action {
