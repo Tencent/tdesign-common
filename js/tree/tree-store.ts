@@ -231,8 +231,8 @@ export class TreeStore {
 
   // 给树添加节点数据
   public append(list: TypeTreeNodeData[]): void {
-    list.forEach((item) => {
-      const node = new TreeNode(this, item);
+    list.forEach((item, index) => {
+      const node = new TreeNode(this, item, undefined, index);
       this.children.push(node);
     });
     this.reflow();

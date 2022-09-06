@@ -15,6 +15,7 @@ import {
   createNodeModel,
   updateNodeModel,
 } from './tree-node-model';
+import { getPositionValue } from "./utils";
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -109,6 +110,7 @@ export class TreeNode {
     tree: TreeStore,
     data?: TypeTreeNodeData,
     parent?: TreeNode,
+    index?: number
   ) {
     this.data = data;
     this.tree = tree;
@@ -140,7 +142,9 @@ export class TreeNode {
 
     this.set(spec);
     this.label = spec[propLabel] || '';
-    this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
+    this.value = isNil(spec[propValue])
+      ? getPositionValue(parent, index)
+      : spec[propValue];
     this.tree.nodeMap.set(this.value, this);
 
     if (parent && parent instanceof TreeNode) {
@@ -251,13 +255,13 @@ export class TreeNode {
       this.children = [];
     }
     const { children, tree } = this;
-    list.forEach((item) => {
+    list.forEach((item, index) => {
       let node = null;
       if (item instanceof TreeNode) {
         node = item;
         node.appendTo(this.tree, this);
       } else {
-        node = new TreeNode(this.tree, item, this);
+        node = new TreeNode(this.tree, item, this, index);
         children.push(node);
       }
     });
