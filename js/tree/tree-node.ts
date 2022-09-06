@@ -143,6 +143,7 @@ export class TreeNode {
     this.set(spec);
     this.label = spec[propLabel] || '';
     this.value = isNil(spec[propValue])
+      // 如果没有传 value，尝试使用节点的位置信息作为 value
       ? getPositionValue(parent, index)
       : spec[propValue];
     this.tree.nodeMap.set(this.value, this);
