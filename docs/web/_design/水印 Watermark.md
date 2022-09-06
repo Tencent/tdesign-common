@@ -1,69 +1,63 @@
-# 水印 Upload
-
-上传组件允许用户传输文件或提交自己的内容。
-### 基础上传
-
-![基础控件]（https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/guide/water.png）
-
-![带有文字说明](https://tdesign.gtimg.com/site/design/images/带有文字说明-1848722.jpg)
-
-### 拖拽上传
-支持拖拽文件到指定区域触发上传。
-
-![拖拽上传](https://tdesign.gtimg.com/site/design/images/拖拽上传-1848736.jpg)
-
-### 图片上传
-
-![图片上传](https://tdesign.gtimg.com/site/design/images/图片上传-1848750.jpg)
-
-### 批量上传
-批量上传通常作为一个单独的功能出现，上传的内容用表格来承载。由于批量上传需要的时间较长，某些场景下会出现先选择文件，确认后再统一上传的场景。
-
-#### 批量上传文件
-![批量上传](https://tdesign.gtimg.com/site/design/images/批量上传-1848761.jpg)
-
-![批量上传中](https://tdesign.gtimg.com/site/design/images/批量上传中-1848782.jpg)
-
-#### 批量上传图片
-
-![批量上传图片](https://tdesign.gtimg.com/site/design/images/批量上传图片-1848803.jpg)
-
-![批量上传图片中](https://tdesign.gtimg.com/site/design/images/批量上传图片中-1848814.jpg)
-
-## 组件设计指南
+# 水印 Watermark
 
 
 ### 何时使用
 
-需要对文件进行导入或上传时。
+当需要对文本、图片或页面等进行版权说明、所属权标识或防盗用时使用。
 
-### 常见用法
 
-##### 上传组件需要呈现清晰的使用状态，包含初始状态、拖拽状态、上传过程、上传成功和上传失败等。
+
+### 与布局相关
+
+##### 在布局时，水印以元素在页面中的空间分层为参照。需要遮挡内容时，位于元素顶层；需要全部展示内容时，位于元素底层。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A01@2x.png"/>
-     <em>图示：初始状态</em>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_1.png" />
+    <em>图示：位于内容上方</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-2@2x.png"/>
-    <em>图示：拖拽状态</em>
-  </div>
-
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-3@2x.png"/>
-    <em>图示：上传过程</em>
-  </div>
-
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E4%B8%8A%E4%BC%A0-4@2x.png"/>
-    <em>图示：上传成功</em>
-  </div>
-
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/upload-5@2x.png"/>
-    <em>图示：上传失败</em>
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_2.png" />
+    <em>图示：位于内容下方</em>
   </div>
 </div>
+
+
+<hr />
+
+### 常见用法
+##### 静态水印，一般多个组合平铺使用。常用在整个页面元素均较为重要、不希望被局部截取的场景，如文章、证件、会话窗口等。
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_1.png" />
+    <em></em>
+  </div>
+</div>
+
+##### 动态水印可在页面游走移动，一般独立使用。常用在不便过多干扰、但需要进行标识的场景，如图片、视频等。
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_1.png" />
+    <em></em>
+  </div>
+</div>
+
+### 推荐/慎用示例
+
+
+##### 水印会对页面内容有一定干扰，为保持页面的规范性和可读性，应避免在同一区域使用多种不同的水印样式。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Dropdown_5.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211222183818.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
+
+<hr />
