@@ -1,4 +1,3 @@
-import uniqueId from 'lodash/uniqueId';
 import isNil from 'lodash/isNil';
 import get from 'lodash/get';
 import { TreeStore } from './tree-store';
