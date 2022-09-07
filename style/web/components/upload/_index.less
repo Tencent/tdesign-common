@@ -376,6 +376,9 @@
   font: @upload-single-display-text-font;
   display: flex;
   align-items: center;
+  .@{prefix}-upload__flow-status .@{prefix}-icon {
+    font: @upload-icon-size-mini;
+  }
 }
 
 .@{prefix}-icon-clear-circle-filled {
@@ -618,5 +621,11 @@
   }
   .@{prefix}-upload__status-icon {
     display: none;
+  }
+}
+
+.@{prefix}-upload {
+  .@{prefix}-upload__single-name {
+    color: @upload-file-name-color;
   }
 }

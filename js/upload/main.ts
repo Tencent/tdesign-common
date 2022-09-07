@@ -408,6 +408,23 @@ export function getDisplayFiles(params: GetDisplayFilesParams) {
   return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];
 }
 
+function getNewRemovedFiles(files: UploadFile[], context: UploadRemoveContext) {
+  const { file, index } = context;
+  const newFiles: UploadFile[] = [...files];
+  const func = (t) => ((t.raw && t.raw === file.raw) || (t.name && t.name === file.name));
+  const list = files.filter(func);
+  // 1. 不存在相同的文件；2. 存在一个相同的文件 3. 存在多个相同名称的文件
+  if (!list.length) return files;
+  if (list.length === 1) {
+    const idx = files.findIndex(func);
+    newFiles.splice(idx, 1);
+  } else {
+    // TODO：全部是重复的文件名
+    newFiles.splice(index, 1);
+  }
+  return newFiles;
+}
+
 /**
  * 移除文件
  */
@@ -416,21 +433,8 @@ export function removeFiles(
   toUploadFiles: UploadFile[],
   context: UploadRemoveContext,
 ) {
-  const { file } = context;
-  const newFiles: UploadFile[] = [...uploadValue];
-  const index1 = uploadValue.findIndex((t) => t.raw === file.raw);
-  if (index1 !== -1) {
-    newFiles.splice(index1, 1);
-  }
-  const newToUploadFiles: UploadFile[] = [...toUploadFiles];
-  const index2 = uploadValue.findIndex((t) => t.raw === file.raw);
-  let fileExist = false;
-  if (index2 !== -1) {
-    newToUploadFiles.splice(index2, 1);
-    fileExist = true;
-  }
   return {
-    newFiles,
-    newToUploadFiles,
+    newFiles: getNewRemovedFiles(uploadValue, context),
+    newToUploadFiles: getNewRemovedFiles(toUploadFiles, context),
   };
 }
