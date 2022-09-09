@@ -148,6 +148,8 @@ export interface FileChangeReturn {
   fileValidateList?: FileChangeReturn[];
   /** 上传文件数量超出提醒 */
   lengthOverLimit?: boolean;
+  /** 是否存在相同文件名的文件 */
+  hasSameNameFile?: boolean;
   /** 校验不通过数据 */
   validateResult?: {
     type: 'BEFORE_ALL_FILES_UPLOAD' | 'FILE_OVER_SIZE_LIMIT' | 'CUSTOME_BEFORE_UPLOAD' | 'FILTER_FILE_SAME_NAME';

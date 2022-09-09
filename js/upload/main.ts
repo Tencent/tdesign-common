@@ -292,9 +292,13 @@ export function validateFile(
       return allowUploadDuplicateFile || !sameNameFile;
     });
 
+    let hasSameNameFile = false;
     if (tmpFiles.length < files.length) {
+      hasSameNameFile = true;
+    }
+    if (!tmpFiles.length) {
       const tFiles = formatToUploadFile(files, params.format);
-      resolve({ file: tFiles?.[0], files: tFiles, validateResult: { type: 'FILTER_FILE_SAME_NAME' } });
+      resolve({ hasSameNameFile, file: tFiles?.[0], files: tFiles, validateResult: { type: 'FILTER_FILE_SAME_NAME' } });
       return;
     }
 
@@ -336,12 +340,14 @@ export function validateFile(
       if (allFilesResult === false) {
         resolve({
           lengthOverLimit,
+          hasSameNameFile,
           validateResult: { type: 'BEFORE_ALL_FILES_UPLOAD' },
           files: formattedFiles,
         });
       } else {
         resolve({
           lengthOverLimit,
+          hasSameNameFile,
           fileValidateList: others,
           files: formattedFiles,
         });
@@ -406,35 +412,4 @@ export function getDisplayFiles(params: GetDisplayFilesParams) {
     return (waitingUploadFiles.length ? uploadValue.concat(waitingUploadFiles) : uploadValue) || [];
   }
   return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];
-}
-
-function getNewRemovedFiles(files: UploadFile[], context: UploadRemoveContext) {
-  const { file, index } = context;
-  const newFiles: UploadFile[] = [...files];
-  const func = (t) => ((t.raw && t.raw === file.raw) || (t.name && t.name === file.name));
-  const list = files.filter(func);
-  // 1. 不存在相同的文件；2. 存在一个相同的文件 3. 存在多个相同名称的文件
-  if (!list.length) return files;
-  if (list.length === 1) {
-    const idx = files.findIndex(func);
-    newFiles.splice(idx, 1);
-  } else {
-    // TODO：全部是重复的文件名
-    newFiles.splice(index, 1);
-  }
-  return newFiles;
-}
-
-/**
- * 移除文件
- */
-export function removeFiles(
-  uploadValue: UploadFile[],
-  toUploadFiles: UploadFile[],
-  context: UploadRemoveContext,
-) {
-  return {
-    newFiles: getNewRemovedFiles(uploadValue, context),
-    newToUploadFiles: getNewRemovedFiles(toUploadFiles, context),
-  };
 }
