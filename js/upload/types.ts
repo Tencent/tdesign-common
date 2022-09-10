@@ -135,6 +135,7 @@ export interface FileChangeParams {
   /** 图片文件大小限制 */
   sizeLimit?: number | SizeLimitObj;
   isBatchUpload?: boolean;
+  autoUpload?: boolean;
   /** 格式化上传参数 */
   format?: (file: File) => UploadFile;
   /** 上传文件之前的钩子，参数为上传的文件，返回值决定是否上传 */

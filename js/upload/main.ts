@@ -12,7 +12,6 @@ import {
   SuccessContext,
   handleSuccessParams,
   UploadTriggerUploadText,
-  UploadRemoveContext,
 } from './types';
 
 export interface BeforeUploadExtra {
@@ -146,12 +145,15 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resolve({});
           return;
         }
-        const { response } = res;
-        if (res.error) {
-          response.error = res.error || response.error;
+        toUploadFiles.forEach((file) => {
+          file.status = res.status;
+        });
+        let { response } = res;
+        if (res.status === 'fail') {
+          response = response || {};
+          response.error = res.error || response.error; 
         }
-        const files = toUploadFiles.map((file) => ({ ...file, status: res.status }));
-        const result = { response, file: files[0], files };
+        const result = { response, file: toUploadFiles[0], files: toUploadFiles };
         if (res.status === 'success') {
           params.onResponseSuccess?.(result);
         } else if (res.status === 'fail') {
@@ -224,10 +226,10 @@ Promise<UploadRequestReturn> {
       uploadOneRequest(params).then((r) => {
         if (r.status === 'success') {
           r.data.files = isBatchUpload || !params.multiple
-            ? thisUploadFiles
-            : uploadedFiles.concat(thisUploadFiles);
+            ? r.data.files
+            : uploadedFiles.concat(r.data.files);
         }
-        const failedFiles = r.status === 'fail' ? thisUploadFiles : [];
+        const failedFiles = r.status === 'fail' ? r.data.files : [];
         resolve({ ...r, failedFiles });
       });
       return;
@@ -261,7 +263,11 @@ Promise<UploadRequestReturn> {
   });
 }
 
-export function formatToUploadFile(tmpFiles: File[], format: FileChangeParams['format']) {
+export function formatToUploadFile(
+  tmpFiles: File[],
+  format: FileChangeParams['format'],
+  autoUpload: boolean,
+) {
   return tmpFiles.map((fileRaw: File) => {
     let file: UploadFile = fileRaw;
     if (typeof format === 'function') {
@@ -274,7 +280,7 @@ export function formatToUploadFile(tmpFiles: File[], format: FileChangeParams['f
       size: fileRaw.size,
       type: fileRaw.type,
       percent: 0,
-      status: 'waiting',
+      status: autoUpload ? 'progress' : 'waiting',
       ...file,
     };
     return uploadFile;
@@ -297,7 +303,7 @@ export function validateFile(
       hasSameNameFile = true;
     }
     if (!tmpFiles.length) {
-      const tFiles = formatToUploadFile(files, params.format);
+      const tFiles = formatToUploadFile(files, params.format, params.autoUpload);
       resolve({ hasSameNameFile, file: tFiles?.[0], files: tFiles, validateResult: { type: 'FILTER_FILE_SAME_NAME' } });
       return;
     }
@@ -312,7 +318,7 @@ export function validateFile(
     }
 
     // 格式化文件对象
-    const formattedFiles = formatToUploadFile(tmpFiles, params.format);
+    const formattedFiles = formatToUploadFile(tmpFiles, params.format, params.autoUpload);
 
     // 全量文件，一波校验，整体上传 或 终止上传
     let allFileValidatePromise;

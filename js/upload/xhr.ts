@@ -45,7 +45,7 @@ export default function xhr({
         }
       }, 300);
       clearTimeout(timer2);
-    }, 500);
+    }, 300);
   }
 
   let requestData: { [key: string]: any } = {};
