@@ -6,19 +6,21 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
-### 上传功能分类
+### 上传功能速查表
 
-文件上传功能速查表，共 7 种风格，不在表格中的属性组合均不支持。
+文件上传功能速查表，共 9 种风格，仅支持下方表格中列出的属性组合，可根据实际需求查找对应的 API 组合。
 
-| 图片/文件 | 是否批量 | 允许拖拽 | API |
-| -- | -- | -- | -- |
-| 文件 | 单文件 | 不允许拖拽 | theme=file, multiple=false |
-| 文件 | 批量文件 | 不允许拖拽 | theme=file, multiple=true |
-| 文件 | 单文件 | 不允许拖拽，输入框风格 | theme=single-input, multiple=false |
-| 文件 | 批量文件 | 允许拖拽 | theme=file-flow, multiple=true, draggable=true |
-| 图片 | 单图片 | 不允许拖拽 | theme=image, multiple=false |
-| 图片 | 批量图片 | 不允许拖拽 | theme=image, multiple=true |
-| 图片 | 批量图片 | 允许拖拽 | theme=image-flow, multiple=true, draggable=true |
+| 图片/文件 | 是否批量 | 拖拽上传 | API | 示例代码位置 |
+| -- | -- | -- | -- | -- |
+| 文件 | 单文件 | 不允许拖拽上传 | theme=single-input, multiple=false | 输入框单文件上传 |
+| 文件 | 单文件 | 不允许拖拽上传 | theme=file, multiple=false | 基础文件上传 |
+| 文件 | 批量文件 | 不允许拖拽上传 | theme=file, multiple=true | 基础文件上传 |
+| 文件 | 单文件 | 允许拖拽上传 | theme=file, draggable=true | 单文件/图片拖拽上传 |
+| 文件 | 批量文件 | 允许拖拽上传 | theme=file-flow, multiple=true, draggable=true | 批量上传文件 |
+| 图片 | 单图片 | 不允许拖拽上传 | theme=image, multiple=false | 基础图片上传 |
+| 图片 | 单图片 | 不允许拖拽上传 | theme=image, draggable=true | 单文件/图片拖拽上传 |
+| 图片 | 批量图片 | 不允许拖拽上传 | theme=image, multiple=true | 基础图片上传 |
+| 图片 | 批量图片 | 允许拖拽上传 | theme=image-flow, multiple=true, draggable=true | 批量上传图片 |
 
 ### 基础文件上传
 
@@ -45,17 +47,17 @@ spline: form
 
 图片上传成功后，显示预览图片；图片上传失败后，不显示预览图片。
 
-设置属性 `theme="image"` 即可，这种风格不支持拖拽上传，文档下方有拖拽上传和批量上传示例。
-
-图片预览地址，默认会读取上传接口返回的 `url` 字段。如果想要自定义图片预览地址，可以通过 `formatResponse` 设置。如果接口和`formatResponse` 没有返回 `url` 字段，组件会默认填充一个 base64 的预览地址，以便查阅图片。
+- 设置属性 `theme="image"` 即可，这种风格不支持拖拽上传，如果需要拖拽上传请移步文档下方有拖拽上传的示例。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
+- 图片预览地址，默认会读取上传接口返回的 `url` 字段。如果接口没有返回 `url` 字段，可以使用 `formatResponse` 格式化返回值，在返回值中增加 `url` 字段。
 
 {{ image }}
 
-### 单文件拖拽上传
+### 单文件/图片拖拽上传
 
 支持拖拽文件到指定区域触发上传，支持图片和文件两种类型。
 
-- 组件内的所有文本均可通过 `locale` 统一配置，也支持全局配置。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
 - 如果拖拽上传单个文件，设置 `theme="file"` 和 `draggable=true`。
 - 如果拖拽上传单张图片，设置 `theme="image"` 和 `draggable=true`。
 
@@ -66,14 +68,16 @@ spline: form
 批量上传通常作为一个单独的功能出现，上传的内容用表格来承载。由于批量上传需要的时间较长，某些场景下会出现先选择文件，确认后再统一上传的场景。
 
 - 批量文件上传，请设置属性 `theme="file-flow"` 和 `multiple=true`。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，同时也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
+- 使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
+- 使用 `uploadAllFilesInOneRequest` 与 `batchUpload` 实现多文件批量合并上传，多文件整体上传，整体替换，不允许追加文件。
 
 {{ file-flow-list }}
 
 ### 批量上传图片
 
 - 批量图片上传，请设置属性 `theme="image-flow"` 和 `multiple=true`。
-- 使用 `uploadAllFilesInOneRequest` 与 `batchUpload` 实现多文件批量合并上传。
-- 使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，同时也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
 
 {{ img-flow-list }}
 

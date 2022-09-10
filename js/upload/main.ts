@@ -382,9 +382,10 @@ export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError
 export function getTriggerTextField(p: {
   status: 'success' | 'fail' | 'progress' | 'waiting',
   multiple: boolean,
-  theme: 'custom' | 'file' | 'file-input' | 'file-flow' | 'image' | 'image-flow',
   autoUpload: boolean;
+  isBatchUpload: boolean;
 }): keyof UploadTriggerUploadText {
+  if (p.isBatchUpload && p.status) return 'reupload';
   if (p.status === 'fail') return 'reupload';
   if (p.status === 'progress') return 'uploading';
   if (p.status === 'success' || (!p.autoUpload && p.status === 'waiting')) {
