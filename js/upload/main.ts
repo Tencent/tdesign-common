@@ -151,7 +151,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         let { response } = res;
         if (res.status === 'fail') {
           response = response || {};
-          response.error = res.error || response.error; 
+          response.error = res.error || response.error;
         }
         const result = { response, file: toUploadFiles[0], files: toUploadFiles };
         if (res.status === 'success') {
