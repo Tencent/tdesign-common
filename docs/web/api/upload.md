@@ -83,14 +83,18 @@ spline: form
 
 ### 自定义上传方法
 
-可以使用 `requestMethod` 自定义上传方法，返回 Promise 对象，resolve 参数中的 `status` 控制上传成功或失败。
+可以使用 `requestMethod` 自定义上传方法，返回 Promise 对象，resolve 参数中的 `status` 控制上传成功或失败，`error` 表示上传失败的原因。
 
 {{ request-method }}
 
 ### 自定义风格上传
 
+- 使用 `trigger` 自定义上传的触发元素，文件列表在上传组件外部自定义。
+
 {{ single-custom }}
 
 ### 自定义拖拽上传
+
+- 使用 `dragContent` 自定义拖拽区域的元素内容，如果需要额外的上传触发元素可以在上传组件外部自定义。
 
 {{ custom-drag }}
