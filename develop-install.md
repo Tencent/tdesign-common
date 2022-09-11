@@ -37,7 +37,16 @@
 │   ├─ index.js
 │   └─ index.d.ts
 │
-├─ lib                            ## cjs
+├─ lib                            ## es
+│   ├─ button
+│        ├─ button.js
+│        ├─ button.d.ts
+│        ├─ index.js
+│        └─ index.d.ts
+│   ├─ index.js
+│   └─ index.d.ts
+|
+├─ ejs                            ## cjs
 │   ├─ button
 │        ├─ button.js
 │        ├─ button.d.ts
@@ -69,7 +78,7 @@
 
 - 分别编译每个组件的 TS 代码，生成对应的 JS 文件和类型声明文件
 - 兼容现代浏览器，支持服务端渲染
-- 组件导入/导出方式采用 ES Modules 标准，支持 tree-shaking，es/index.js 中单独导出每个组件，内容同 src/index.ts
+- 组件导入/导出方式采用 ES Modules 标准，支持 tree-shaking，es/index.js 中单独导出每个组件，内容同 `src/index.ts`
 - 组件文件夹下生成 style 目录，存放编译后的 CSS 样式文件
 - 组件文件夹下必须包含类型声明文件 `\*.d.ts`
 - 组件编译后代码用到的 babel runtime helpers 注入到每个组件
@@ -79,13 +88,23 @@
 
 - 分别编译每个组件的 TS 代码，生成对应的 JS 文件和类型声明文件
 - 兼容现代浏览器，支持服务端渲染
-- 组件导入/导出方式采用 ES Modules 标准，支持 tree-shaking，esm/index.js 中单独导出每个组件，内容同 src/index.ts
+- 组件导入/导出方式采用 ES Modules 标准，支持 tree-shaking，esm/index.js 中单独导出每个组件，内容同 `src/index.ts`
 - 组件文件夹下生成 `style/index.js`，链接未编译的 `less` 样式文件
 - 组件文件夹下必须包含类型声明文件 `\*.d.ts`
 - 组件编译后代码用到的 babel runtime helpers 注入到每个组件
 - 只编译组件代码，不用编译测试文件和文档文件等
 
 ### lib
+
+- 分别编译每个组件的 TS 代码，生成对应的 JS 文件和类型声明文件
+- 兼容现代浏览器，支持服务端渲染
+- 组件导入/导出方式采用 ES Modules 标准，支持 tree-shaking，lib/index.js 中单独导出每个组件，内容同 `src/index.ts`
+- 组件文件夹下不包含任何样式代码，可以结合 dist 目录下 `tdesgin.min.css` 搭配使用
+- 组件文件夹下必须包含类型声明文件 `\*.d.ts`
+- 组件编译后代码用到的 babel runtime helpers 注入到每个组件
+- 只编译组件代码，不用编译测试文件和文档文件等
+
+### ejs
 
 - 分别编译每个组件的 TS 代码，生成对应的 JS 文件和类型声明文件
 - 兼容现代浏览器，支持服务端渲染
