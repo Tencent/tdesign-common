@@ -1,0 +1,178 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
+@componentName: guide;
+
+.@{prefix}-@{componentName} {
+  .reset;
+
+  &--lock {
+    overflow: hidden;
+  }
+
+  &--absolute {
+    position: absolute;
+  }
+
+  &--fixed {
+    position: fixed;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: @guide-overlay-z-index;
+  }
+
+  &__highlight {
+    z-index: @guide-highlight-z-index;
+    transition: .3s ease-out;
+    border-radius: @border-radius-default;
+
+    &--dialog {
+      border-radius: @border-radius-large;
+    }
+
+    &--mask {
+      box-shadow: 0 0 0 0 @mask-active, @mask-active 0 0 0 5000px;
+    }
+
+    &--nomask {
+      border-radius: @border-radius-medium;
+      border: 2px solid @brand-color;
+      box-sizing: border-box;
+    }
+  }
+
+  &__reference {
+    z-index: @guide-reference-z-index;
+  }
+
+  &__wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    z-index: @guide-reference-z-index;
+    padding-top: 20vh;
+
+    &--center {
+      padding-top: 0;
+      align-items: center;
+    }
+  }
+
+  &__dialog {
+    min-width: 320px;
+    max-width: 500px;
+    padding: @spacer-3 @spacer-4 @spacer-4;
+    border-radius: @border-radius-large;
+    background: @bg-color-container;
+    animation: tGuideDialogFadeIn .3s ease-out;
+    box-sizing: border-box;
+
+    &--nomask {
+      border: 1px solid @component-border;
+    }
+
+    .@{prefix}-@{componentName}__title {
+      font: @font-title-medium;
+      font-weight: 700;
+    }
+
+    .@{prefix}-@{componentName}__desc {
+      margin-top: @spacer-l;
+      font: @font-body-medium;
+    }
+  }
+
+  &__tooltip {
+    padding: @spacer-l @spacer;
+    min-width: 240px;
+    max-width: 600px;
+    max-height: 300px;
+  }
+
+  &__title {
+    text-align: left;
+    color: @text-color-primary;
+    font: @font-title-small;
+    font-weight: 700;
+  }
+
+  &__desc {
+    margin-top: @spacer;
+    text-align: left;
+    color: @text-color-secondary;
+    font: @font-body-small;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+
+    button {
+      margin-right: @spacer;
+    }
+
+    button:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+
+    &--popup {
+      margin-top: @spacer-2;
+    }
+
+    &--dialog {
+      margin-top: @spacer-3;
+
+      .@{prefix}-@{componentName} {
+        &__action {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  &__counter {
+    color: @font-gray-3;
+    text-align: left;
+    font: @font-body-small;
+    flex: 1;
+  }
+
+  &__popup {
+    &--content {
+      background: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+  }
+}
+
+@keyframes tGuideDialogFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

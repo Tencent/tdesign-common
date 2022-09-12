@@ -332,18 +332,18 @@ spline: data
 
 请使用 `EnhancedTable`，`Table/PrimaryTable/BaseTable` 等不支持树形结构。
 
-#### 树形结构显示
-
-如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。
+⚠️ 树形结构的表格，支持添加节点、删除节点、交换同级节点、查询节点、展开/收起节点等丰富特性。为减少每次计算的递归查询，也为以后虚表做准备，故而内部数据为平铺结构，所有数据变化均通过组件实例方法控制，具体实例方法请查看 API 文档 `EnhancedTableInstanceFunctions`。树形结构细节配置请查看 `tree: TableTreeConfig`。
 
 - `treeExpandAndFoldIcon` 用于设置树形结构折叠/展开图标，支持全局配置。
-- 如果数据中的子节点字段不是 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
+- 子节点字段默认为 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
 - `tree.indent` 用于设置树结点缩进距离。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
 - `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。
+- `tree.defaultExpandAll=true` 表示默认展开全部节点，后续可通过 `expandAll` 和 `foldAll` 控制全部展开或全部收起。使用 `toggleExpandData` 控制单个节点的展开和收起。
 - 刷新表格数据请使用组件实例方法 `resetData`。
+- 获取树形结构数据可使用组件实例方法 `getTreeNode`。
 
-更多信息查看 API 文档的 `tree` 属性。
+#### 树形结构显示
 
 {{ tree }}
 

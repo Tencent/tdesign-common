@@ -9,7 +9,7 @@ export default {
   },
   cascader: {
     empty: 'データなし',
-    loadingText: '',
+    loadingText: 'ローディング',
     placeholder: '選択してください',
   },
   calendar: {
@@ -72,8 +72,8 @@ export default {
   },
   select: {
     empty: 'データなし',
-    loadingText: '加载中',
-    placeholder: '请选择',
+    loadingText: 'ローディング',
+    placeholder: '選択してください',
   },
   tree: {
     empty: 'データなし',
