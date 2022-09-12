@@ -145,14 +145,15 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resolve({});
           return;
         }
-        toUploadFiles.forEach((file) => {
-          file.status = res.status;
-        });
         let { response } = res;
         if (res.status === 'fail') {
           response = response || {};
           response.error = res.error || response.error;
         }
+        toUploadFiles.forEach((file) => {
+          file.status = res.status;
+          file.response = response;
+        });
         const result = { response, file: toUploadFiles[0], files: toUploadFiles };
         if (res.status === 'success') {
           params.onResponseSuccess?.(result);
