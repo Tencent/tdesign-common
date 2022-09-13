@@ -272,29 +272,27 @@ export class TreeNode {
     index?: number,
   ): void {
     const parentNode = parent;
+    let targetIndex = -1;
+    if (typeof index === 'number') {
+      targetIndex = index;
+    }
 
     const targetParents = parentNode?.getParents() || [];
-    const includeCurrent = targetParents.some((node) => node.value === this.value);
+    const includeCurrent = targetParents.some((pnode) => pnode === this);
     if (includeCurrent) {
-      // 不能将父节点插入到子节点
-      return;
+      throw new Error('无法将父节点插入到子节点');
     }
 
     if (Array.isArray(parentNode?.children)) {
-      let targetIndex = 0;
-      if (typeof index === 'number') {
-        targetIndex = index;
-      }
       const targetPosNode = parentNode?.children[targetIndex];
-      if (targetPosNode?.value === this.value) {
+      if (targetPosNode && targetPosNode === this) {
         // 无需将节点插入到原位置
         return;
       }
     }
 
-    this.remove();
-    this.parent = parentNode;
-
+    // 先要取得 siblings
+    // 因为要应对节点在同一个 siblings 中变换位置的情况
     let siblings = null;
     if (parentNode instanceof TreeNode) {
       if (!Array.isArray(parentNode?.children)) {
@@ -304,13 +302,36 @@ export class TreeNode {
     } else {
       siblings = tree.children;
     }
-    if (Array.isArray(siblings)) {
-      if (typeof index === 'number') {
-        siblings.splice(index, 0, this);
-      } else {
-        siblings.push(this);
-      }
+
+    if (!Array.isArray(siblings)) {
+      throw new Error('无法插入到目标位置，可插入的节点列表不存在');
     }
+
+    const prevLength = siblings.length;
+    const prevIndex = this.getIndex();
+
+    this.remove();
+
+    if (typeof index === 'number') {
+      let targetIndex = index;
+      if (parentNode === this.parent) {
+        // 前置节点被拔出后再插入到同一个 siblings 时，会引起目标 index 的变化
+        // 因此要相应的变更插入位置
+        // 后置节点被拔出时，目标 index 是不变的
+        const curLength = siblings.length;
+        if (
+          curLength < prevLength
+          && prevIndex <= targetIndex
+        ) {
+          targetIndex -= 1;
+        }
+      }
+      siblings.splice(targetIndex, 0, this);
+    } else {
+      siblings.push(this);
+    }
+
+    this.parent = parentNode;
 
     // 插入节点应当继承展开状态
     // 但建议不要继承选中状态和高亮状态
