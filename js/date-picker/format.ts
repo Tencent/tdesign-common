@@ -161,13 +161,9 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string) {
   let result;
 
   if (Array.isArray(value)) {
-    result = value.map((v) =>
-      dayjs(v || new Date(new Date().setHours(0, 0, 0, 0))).format(timeFormat)
-    );
+    result = value.map((v) => dayjs(v || new Date(new Date().setHours(0, 0, 0, 0))).format(timeFormat));
   } else {
-    result = dayjs(
-      (value || new Date(new Date().setHours(0, 0, 0, 0))) as DateValue
-    ).format(timeFormat);
+    result = dayjs((value || new Date(new Date().setHours(0, 0, 0, 0)))).format(timeFormat);
   }
 
   return result;
