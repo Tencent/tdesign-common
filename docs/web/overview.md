@@ -4,7 +4,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">2</em></h3>
+<h3>基础<em class="tag">3</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/button">
@@ -21,9 +21,16 @@ spline: explain
       <p class="name">Icon 图标</p>
     </a>
   </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/link">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-link.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-link-dark.png" />
+      <p class="name">Link 链接</p>
+    </a>
+  </div>
 </section>
 
-<h3>布局<em class="tag">3</em></h3>
+<h3>布局<em class="tag">4</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/grid">
@@ -48,9 +55,16 @@ spline: explain
       <p class="name">Divider 分割线</p>
     </a>
   </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/space">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-space.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-space-dark.png" />
+      <p class="name">Space 间距</p>
+    </a>
+  </div>
 </section>
 
-<h3>导航<em class="tag">8</em></h3>
+<h3>导航<em class="tag">9</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/affix">
@@ -78,6 +92,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-dropdown.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-dropdown-dark.png" />
       <p class="name">Dropdown 下拉菜单</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/jump">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-jump.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-jump-dark.png" />
+      <p class="name">Jumper 跳转</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -111,7 +132,7 @@ spline: explain
     </a>
   </div>
 </section>
-<h3>输入<em class="tag">18</em></h3>
+<h3>输入<em class="tag">20</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/cascader">
@@ -156,6 +177,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/input-adornment">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-adornment.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-adornment-dark.png" />
+      <p class="name">InputAdornment 输入装饰器</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/input-number">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-inputnumber.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-inputnumber-dark.png" />
@@ -168,6 +196,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-radio.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-radio-dark.png" />
       <p class="name">Radio 单选框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/range-input">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-rangeinput.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-rangeinput-dark.png" />
+      <p class="name">RangeInput 范围输入框</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -242,7 +277,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">16</em></h3>
+<h3>数据展示<em class="tag">20</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar">
@@ -287,6 +322,20 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/image">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-image.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-image-dark.png" />
+      <p class="name">Image 图片</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/image-viewer">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-imageviewer.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-imageviewer-dark.png" />
+      <p class="name">ImageViewer 图片预览</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/list">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-list.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-list-dark.png" />
@@ -305,6 +354,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-progress-dark.png" />
       <p class="name">Progress 进度条</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/rate">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-rate.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-rate-dark.png" />
+      <p class="name">Rate 评分</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -340,6 +396,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tooltip.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tooltip-dark.png" />
       <p class="name">Tooltip 文字提示</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/timeline">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-timeline.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-timeline-dark.png" />
+      <p class="name">Timeline 时间轴</p>
     </a>
   </div>
   <div class="image-wrapper">
