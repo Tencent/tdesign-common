@@ -10,17 +10,17 @@
 
 ### 与布局相关
 
-##### 在布局时，水印以元素在页面中的空间分层为参照。需要遮挡内容时，位于元素顶层；需要全部展示内容时，位于元素底层。
+##### 在布局时，水印以页面内容在页面中的空间分层为参照。需要遮挡内容时，位于内容顶层；需要全部展示内容时，位于内容底层。
 
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/w1.png" />
-    <em>图示：位于内容上方</em>
+    <em>图示：位于内容顶层</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/w2.png" />
-    <em>图示：位于内容下方</em>
+    <em>图示：位于内容底层</em>
   </div>
 </div>
 
