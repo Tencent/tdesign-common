@@ -4,7 +4,10 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-breadcrumb {
+  .reset;
   .breadcrumb;
 
   &__separator {
@@ -83,7 +86,7 @@
   }
 
   &__inner {
-    font-size: @breadcrumb-font-base;
+    font: @breadcrumb-font-base;
     word-break: break-all;
     .v-inlineblock;
 
@@ -125,8 +128,7 @@
 
     &-item {
       padding: @spacer;
-      font-size: @breadcrumb-font-base;
-      line-height: @breadcrumb-line-height;
+      font: @breadcrumb-font-base;
       color: @breadcrumb-text-color-current;
       .t-overflow;
 
@@ -151,7 +153,7 @@
     padding: @spacer;
     color: @breadcrumb-text-color-current;
     background: @bg-color-container;
-    border-radius: @border-radius * .5;
+    border-radius: calc(@border-radius-default * .5);
     box-shadow: @breadcrumb-option-box-shadow;
     z-index: 20;
 

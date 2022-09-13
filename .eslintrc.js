@@ -46,10 +46,14 @@ module.exports = {
     },
   ],
   rules: {
+    'no-continue': 0,
+    'max-len': ['error', { code: 160, tabWidth: 2 }],
     'no-unused-vars': 0,
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-named-as-default': 0,
+    'import/prefer-default-export': 0,
+    'import/no-extraneous-dependencies': 0,
     'no-plusplus': [
       'error',
       {
@@ -63,6 +67,8 @@ module.exports = {
         checkLoops: false,
       },
     ],
-    'comma-dangle': 0
+    'comma-dangle': 0,
+    'no-shadow': 0,
+    'object-curly-newline': 0,
   },
 };

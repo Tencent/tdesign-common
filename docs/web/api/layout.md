@@ -2,7 +2,7 @@
 title: Layout 布局
 description: 用于组织网页的框架结构。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: layout
 ---
 

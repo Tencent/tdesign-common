@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // Badge
 .@{prefix}-badge {
+  .reset;
+
   position: relative;
   display: inline-block;
 
@@ -19,8 +23,7 @@
     right: 0;
     color: @badge-text-color;
     text-align: center;
-    font-weight: @badge-font-weight;
-    font-size: @badge-font-size;
+    font: @badge-font;
     transform: translate(50%, -50%);
     transform-origin: 100% 0;
   }
@@ -36,7 +39,7 @@
     margin-top: 1px;
     width: @badge-dot-size;
     height: @badge-dot-size;
-    border-radius: @border-radius-50;
+    border-radius: @border-radius-circle;
     background-color: @badge-color;
   }
 
@@ -44,7 +47,7 @@
   &--round {
     padding-right: @badge-padding;
     padding-left: @badge-padding;
-    min-width: @badge-height;
+    min-width: @badge-min-width;
     height: @badge-height;
     border-radius: (@badge-height / 2);
     background-color: @badge-color;
@@ -60,6 +63,6 @@
   }
 
   &--round {
-    border-radius: @border-radius;
+    border-radius: @border-radius-round;
   }
 }

@@ -3,102 +3,48 @@
 @import "./_var.less";
 
 .@{prefix}-image-viewer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1001;
-  transform: translateZ(0);
-  overflow: hidden;
-
-  .@{prefix}-image-mask {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #0009;
-  }
-
-  .image-viewer-index {
+  &__close-icon {
     position: absolute;
-    bottom: @image-viewer-index-bottom;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: @image-viewer-index-fontsize;
-    text-shadow: @image-viewer-index-text-shadow;
-    z-index: 101;
+    top: @image-viewer-close-icon-top;
+    right: @image-viewer-close-icon-right;
+    z-index: 2001;
+    color: @image-viewer-close-icon-color;
+    font-size: @image-viewer-close-icon-font-size;
   }
 
-  .image-viewer-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 1501;
-  }
-
-  .relative {
-    position: relative;
-    top: 0;
+  &__swipe {
     height: 100%;
-    width: 100%;
   }
 
-  .image-viewer-items {
-    list-style: none;
-    left: 0;
-    .relative();
-  }
-
-  .image-viewer-item-wrap {
-    height: auto;
-    .relative();
-
-    .item {
-      width: 100%;
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-
-      img {
-        width: 100%;
-        display: block;
-      }
-    }
-  }
-}
-
-.@{prefix}-swiper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-
-  &-box {
-    overflow: hidden;
-    will-change: tranform;
-    width: 100%;
-    height: 100%;
+  &__swipe-item {
     position: relative;
-  }
+    flex-shrink: 0;
+    width: 100%;
+    // height: 100%;
 
-  &-container {
-    height: 100%;
-    width: auto;
-    position: relative;
-    box-sizing: initial;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 
-  &-item {
+  &__image {
+    width: 100%;
+  }
+
+  .t-swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .t-swiper-item {
     position: relative;
     width: 100%;
     flex-shrink: 0;
+  }
+
+  .t-swiper__pagination {
+    bottom: @image-viewer-pagination-bottom;
   }
 }

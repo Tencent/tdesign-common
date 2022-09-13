@@ -2,7 +2,7 @@
 title: TimePicker 时间选择器
 description: 用于选择某一具体时间点或某一时间段。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: form
 ---
 
@@ -12,9 +12,9 @@ spline: form
 
 {{ hms }}
 
-### 时分选择器
+### 自定义时间格式的选择器
 
-由时、分两部分组成的选择界面。用户需要输入精度到分钟的时间时使用。
+如果场景需要自定义格式，可以通过`format`更改时间格式，面板和输入框会跟随格式变化。
 
 {{ hm }}
 
@@ -53,3 +53,9 @@ spline: form
 禁止组件的使用。
 
 {{ disabled }}
+
+### 单独使用时间选择器面板部分
+
+如果只需要面板部分，可以通过使用`TimePickerPanel`来满足使用场景。
+
+{{ panel }}

@@ -2,7 +2,7 @@
 title: Avatar 头像
 description: 用图标、图片、字符的形式展示用户或事物信息
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: data
 ---
 

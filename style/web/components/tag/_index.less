@@ -6,16 +6,18 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-tag {
+  .reset;
+
   display: inline-flex;
   align-items: center;
   flex-direction: row;
   padding: @tag-medium-padding;
   height: @tag-height-medium;
-  font-size: @tag-medium-font-size;
-  line-height: @tag-line-height-medium;
+  font: @tag-medium-font;
   color: @tag-text-color;
-  box-sizing: border-box;
   border-radius: @tag-border-radius-square;
   border: @tag-default-border-width solid @tag-default-border-color;
   white-space: nowrap;
@@ -30,7 +32,7 @@
   .@{prefix}-tag__icon-close {
     margin-right: 0;
     margin-left: 4px;
-    font-size: @tag-large-font-size;
+    font: @tag-large-font;
     cursor: pointer;
     transition: color @anim-duration-base @anim-time-fn-easing;
   }
@@ -230,22 +232,20 @@
   &.@{prefix}-size-s {
     padding: @tag-small-padding;
     height: @tag-height-small;
-    font-size: @tag-small-font-size;
-    line-height: @tag-line-height-small;
+    font: @tag-small-font;
 
     .@{prefix}-icon {
-      font-size: @tag-small-font-size;
+      font-size: @tag-small-font;
     }
   }
 
   &.@{prefix}-size-l {
     padding: @tag-large-padding;
     height: @tag-height-large;
-    font-size: @tag-large-font-size;
-    line-height: @tag-line-height-large;
+    font: @tag-large-font;
 
     .@{prefix}-icon {
-      font-size: @tag-large-font-size;
+      font: @tag-large-font;
     }
   }
 

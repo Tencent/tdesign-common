@@ -1,11 +1,11 @@
 .step-item-basic() {
-
   .@{prefix}-steps-item {
     flex: 1;
     overflow: hidden;
     vertical-align: top;
     margin-right: @steps-item-margin-right;
     position: relative;
+    display: flex;
 
     &:last-child {
       flex: none;
@@ -56,7 +56,7 @@
         .default-step-icon;
       }
 
-      & > .t-icon {
+      & > .@{prefix}-icon {
         font-size: @steps-item-t-icon-font-size-default;
       }
     }
@@ -85,7 +85,7 @@
   width: @steps-circle-width;
   height: @steps-circle-height;
   text-align: center;
-  border-radius: 50%;
+  border-radius: @border-radius-circle;
   margin-top: @steps-item-default-icon-margin-top;
   font-size: @steps-default-step-icon-font-size;
 }
@@ -94,9 +94,8 @@
 @anchor-status: wait;
 .default-anchor-status(@anchor-status) {
   & when(@anchor-status = finish) {
-
     .@{prefix}-steps-item__icon {
-      .t-icon {
+      .@{prefix}-icon {
         color: @steps-item-icon-anchor-color;
       }
 
@@ -113,11 +112,10 @@
     .@{prefix}-steps-item__description {
       color: @steps-description-color-finish;
     }
-  };
+  }
   & when(@anchor-status = process) {
-
     .@{prefix}-steps-item__icon {
-      .t-icon {
+      .@{prefix}-icon {
         color: @steps-item-icon-anchor-color;
       }
 
@@ -137,11 +135,10 @@
     .@{prefix}-steps-item__description {
       color: @steps-description-color-process;
     }
-  };
+  }
   & when(@anchor-status = error) {
-
     .@{prefix}-steps-item__icon {
-      .t-icon {
+      .@{prefix}-icon {
         color: @steps-item-icon-anchor-color-error;
       }
 
@@ -158,44 +155,42 @@
     .@{prefix}-steps-item__description {
       color: @steps-description-color-error;
     }
-  };
-};
+  }
+}
 
 .dot-anchor-status(@anchor-status) {
   & when(@anchor-status = finish) {
-
     .@{prefix}-steps-item__icon {
       border-color: @steps-item-icon-dot-border-color-finish;
     }
-  };
+  }
   & when(@anchor-status = process) {
-
     .@{prefix}-steps-item__icon {
       background: @steps-item-icon-dot-bg-color-process;
       border-color: @steps-item-icon-dot-border-color-process;
     }
-  };
+  }
   & when(@anchor-status = error) {
-
     .@{prefix}-steps-item__icon {
       background: @steps-item-icon-dot-bg-color-error;
       border-color: @steps-item-icon-dot-border-color-error;
     }
-  };
+  }
 }
 
 // icon 和 内容
 @item-direction: horizontal;
 .dot-icon(@item-direction) {
-
   .@{prefix}-steps-item__icon {
     display: block;
     width: @steps-dot-item-icon-width;
     height: @steps-dot-item-icon-height;
     border: 2px solid @steps-item-icon-dot-border-color-default;
-    border-radius: 50%;
+    border-radius: @border-radius-circle;
     margin-bottom: @steps-dot-item-icon-margin-bottom;
     position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
     & when(@item-direction = vertical) {
       top: @steps-dot-anchor-position-top;
     }
@@ -212,15 +207,15 @@
 // 连接线
 .connector-default(@direction; @isReverse:false) {
   & when (@direction = horizontal) {
-
     .@{prefix}-steps-item:not(:last-child) {
-
       .@{prefix}-steps-item__title:after {
         content: "";
         display: block;
         width: 9999px;
-        height: @step-stroke-width;
-        background: @steps-line-bg-color-horizontal-default;
+        border-left: 0;
+        border-top: 0;
+        border-bottom-width: @step-stroke-width;
+        border-bottom-color: @steps-line-bg-color-horizontal-default;
         position: absolute;
         left: 100%;
         top: 50%;
@@ -228,16 +223,90 @@
       }
     }
 
-    .@{prefix}-steps-item--finish:not(:last-child) {
+    // arrow分隔符
+    &.@{prefix}-steps--arrow-separator {
+      .@{prefix}-steps-item:not(:last-child):after {
+        flex: 1;
+        height: 24px;
+        content: "^";
+        transform: rotateZ(90deg);
+        display: inline-flex;
+        justify-content: center;
+        align-items: flex-end;
+        border: 0;
+        font-size: @spacer-2;
+        color: @steps-line-bg-color-horizontal-default;
+      }
 
+      .@{prefix}-steps-item--finish:not(:last-child)::after {
+        color: @steps-line-bg-color-horizontal-finish;
+      }
+
+      & when(@isReverse = true) {
+        .@{prefix}-steps-item:not(:last-child):after {
+          transform: rotateZ(-90deg);
+        }
+
+        .@{prefix}-steps-item--process:not(:last-child)::after,
+        .@{prefix}-steps-item--finish:not(:last-child)::after {
+          color: @steps-line-bg-color-horizontal-finish;
+        }
+      }
+    }
+
+    .@{prefix}-steps-item--finish:not(:last-child) {
       .@{prefix}-steps-item__title:after {
-        background: @steps-line-bg-color-horizontal-finish;
-        height: @steps-line-height;
+        border-bottom-width: @steps-line-height;
+        border-bottom-color: @steps-line-bg-color-horizontal-finish;
+        color: @steps-line-bg-color-horizontal-finish;
+      }
+    }
+
+    & when(@isReverse = true) {
+      .@{prefix}-steps-item--process:not(:last-child),
+      .@{prefix}-steps-item--finish:not(:last-child) {
+        .@{prefix}-steps-item__title:after {
+          border-bottom-width: @steps-line-height;
+          border-bottom-color: @steps-line-bg-color-horizontal-finish;
+          color: @steps-line-bg-color-horizontal-finish;
+        }
       }
     }
   }
 
   & when (@direction = vertical) {
+    // arrow分隔符
+    &.@{prefix}-steps--arrow-separator {
+      .@{prefix}-steps-item:not(:last-child)::before {
+        content: "^";
+        border: 0;
+        height: calc(100% - @spacer-3);
+        position: absolute;
+        top: @spacer-3;
+        left: @spacer-m;
+        display: flex;
+        align-items: center;
+        font-size: @spacer-2;
+        transform: rotateZ(180deg);
+        color: @steps-line-bg-color-vertical-default;
+      }
+
+      .@{prefix}-steps-item--finish:not(:last-child)::before {
+        color: @steps-line-bg-color-vertical-finish;
+      }
+
+      & when(@isReverse = true) {
+        .@{prefix}-steps-item:not(:last-child)::before {
+          transform: rotateZ(0);
+          margin-top: @spacer-s;
+        }
+
+        .@{prefix}-steps-item--process:not(:last-child)::before,
+        .@{prefix}-steps-item--finish:not(:last-child)::before {
+          color: @steps-line-bg-color-vertical-finish;
+        }
+      }
+    }
 
     .@{prefix}-steps-item {
       padding-bottom: @steps-item-padding-bottom-vertical;
@@ -248,8 +317,10 @@
           content: "";
           display: block;
           height: 100%;
-          width: @steps-item-icon-number-line-width;
-          background: @steps-line-bg-color-vertical-default;
+          border-left: 0;
+          border-top: 0;
+          border-right-width: @steps-item-icon-number-line-width;
+          border-right-color: @steps-line-bg-color-vertical-default;
           position: absolute;
           top: @steps-item-icon-number-line-top;
           left: @steps-item-icon-number-line-left;
@@ -257,18 +328,21 @@
 
         &--finish {
           &:not(:last-child)::before {
-            background: @steps-line-bg-color-vertical-finish;
-            width: @steps-line-width;
+            border-right-width: @steps-line-width;
+            border-right-color: @steps-line-bg-color-vertical-finish;
+            color: @steps-line-bg-color-vertical-finish;
           }
         }
       }
       & when(@isReverse = true) {
-        &:not(:first-child)::before {
+        &:not(:last-child)::before {
           content: "";
           display: block;
           height: 100%;
-          width: @steps-item-icon-number-line-width;
-          background: @steps-line-bg-color-vertical-default;
+          border-left: 0;
+          border-bottom: 0;
+          border-right-width: @steps-item-icon-number-line-width;
+          border-right-color: @steps-line-bg-color-vertical-default;
           position: absolute;
           top: @steps-item-icon-number-line-top;
           left: @steps-item-icon-number-line-left;
@@ -276,9 +350,10 @@
 
         &--process,
         &--finish {
-          &:not(:first-child)::before {
-            width: @steps-line-width;
-            background: @steps-line-bg-color-vertical-process;
+          &:not(:last-child)::before {
+            border-right-width: @steps-line-width;
+            border-right-color: @steps-line-bg-color-vertical-process;
+            color: @steps-line-bg-color-vertical-process;
           }
         }
       }
@@ -288,14 +363,45 @@
 
 .connector-dot(@direction; @isReverse:false) {
   & when(@direction = horizontal) {
+    // arrow分隔符
+    &.@{prefix}-steps--arrow-separator {
+      .@{prefix}-steps-item:not(:last-child)::after {
+        flex: 1;
+        content: "^";
+        display: inline-flex;
+        justify-content: center;
+        align-items: flex-start;
+        border: 0;
+        font-size: @spacer-2;
+        transform: rotateZ(90deg);
+        color: @steps-line-bg-color-horizontal-default;
+      }
+
+      .@{prefix}-steps-item--finish:not(:last-child)::after {
+        color: @steps-line-dot-bg-color-vertical-finish;
+      }
+
+      & when(@isReverse = true) {
+        .@{prefix}-steps-item:not(:last-child)::after {
+          transform: rotateZ(-90deg);
+        }
+
+        .@{prefix}-steps-item--process:not(:last-child)::after,
+        .@{prefix}-steps-item--finish:not(:last-child)::after {
+          color: @steps-line-dot-bg-color-vertical-finish;
+        }
+      }
+    }
 
     .@{prefix}-steps-item:not(:last-child) {
       &::after {
         content: "";
         display: block;
         width: @steps-item-connector-line-width;
-        height: @steps-item-icon-number-line-height;
-        background: @steps-line-dot-bg-color-vertical-default;
+        border-left: 0;
+        border-top: 0;
+        border-bottom-width: @steps-item-icon-number-line-height;
+        border-bottom-color: @steps-line-dot-bg-color-vertical-default;
         position: absolute;
         left: @steps-dot-connector-position-left-horizontal;
         top: @steps-dot-connector-position-top-horizontal;
@@ -304,22 +410,61 @@
 
     .@{prefix}-steps-item--finish:not(:last-child) {
       &::after {
-        background: @steps-line-dot-bg-color-vertical-finish;
-        height: @steps-line-height;
+        color: @steps-line-dot-bg-color-vertical-finish;
+        border-bottom-color: @steps-line-dot-bg-color-vertical-finish;
+        border-bottom-width: @steps-line-height;
+      }
+    }
+
+    & when(@isReverse = true) {
+      .@{prefix}-steps-item--process:not(:last-child),
+      .@{prefix}-steps-item--finish:not(:last-child) {
+        &::after {
+          color: @steps-line-dot-bg-color-vertical-finish;
+          border-bottom-color: @steps-line-dot-bg-color-vertical-finish;
+          border-bottom-width: @steps-line-height;
+        }
       }
     }
   }
   & when(@direction = vertical) {
+    // arrow分隔符
+    &.@{prefix}-steps--arrow-separator {
+      .@{prefix}-steps-item:not(:last-child)::before {
+        content: "^";
+        border: 0;
+        height: calc(100% - @spacer-s);
+        position: absolute;
+        top: @spacer;
+        left: 0;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: @steps-line-bg-color-vertical-default;
+      }
+
+      .@{prefix}-steps-item--finish:not(:last-child)::before {
+        color: @steps-line-dot-bg-color-vertical-finish;
+      }
+
+      & when(@isReverse = true) {
+        .@{prefix}-steps-item--process:not(:last-child)::before,
+        .@{prefix}-steps-item--finish:not(:last-child)::before {
+          color: @steps-line-dot-bg-color-vertical-finish;
+        }
+      }
+    }
 
     .@{prefix}-steps-item {
-
       & when(@isReverse = false) {
         &:not(:last-child)::before {
           content: "";
           display: block;
           height: 100%;
-          width: @steps-item-icon-number-line-height;
-          background: @steps-line-dot-bg-color-vertical-default;
+          border-bottom: 0;
+          border-left: 0;
+          border-right-width: @steps-item-icon-number-line-height;
+          border-right-color: @steps-line-dot-bg-color-vertical-default;
           position: absolute;
           left: @steps-dot-connector-position-left-vertical;
           top: @steps-dot-connector-position-top-vertical;
@@ -327,34 +472,38 @@
 
         &--finish {
           &:not(:last-child)::before {
-            background: @steps-line-dot-bg-color-vertical-finish;
-            width: @steps-line-width;
+            color: @steps-line-dot-bg-color-vertical-finish;
+            border-right-color: @steps-line-dot-bg-color-vertical-finish;
+            border-right-width: @steps-line-width;
           }
         }
       }
       & when(@isReverse = true) {
         margin-bottom: 0;
 
-        &:not(:first-child)::before {
+        &:not(:last-child)::before {
           content: "";
           display: block;
           height: 100%;
-          width: @steps-item-icon-number-line-height;
-          background: @steps-line-dot-bg-color-vertical-default;
+          border-bottom: 0;
+          border-left: 0;
+          border-right-width: @steps-item-icon-number-line-height;
+          border-right-color: @steps-line-dot-bg-color-vertical-default;
           position: absolute;
           left: @steps-dot-connector-position-left-vertical-reverse;
           top: @steps-dot-connector-position-top-vertical;
         }
 
-        &:first-child::before {
+        &:last-child::before {
           display: none;
         }
 
         &--process,
         &--finish {
-          &:not(:first-child)::before {
-            width: @steps-line-width;
-            background: @steps-line-dot-bg-color-vertical-process;
+          &:not(:last-child)::before {
+            border-right-width: @steps-line-width;
+            border-right-color: @steps-line-dot-bg-color-vertical-process;
+            color: @steps-line-dot-bg-color-vertical-process;
           }
         }
       }

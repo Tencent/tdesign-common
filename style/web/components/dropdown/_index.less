@@ -6,11 +6,16 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-dropdown {
-  background-color: @dropdown-bg-color;
-  position: relative;
-  border-radius: @border-radius;
-  padding: 0;
+  .reset;
+
+  .@{prefix}-popup__content {
+    background-color: @dropdown-bg-color;
+    position: relative;
+    padding: 0;
+  }
 
   &__menu {
     display: flex;
@@ -37,7 +42,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
     color: @dropdown-text-color;
     padding: @dropdown-item-padding;
     margin: @dropdown-item-margin;
@@ -70,6 +75,7 @@
     }
 
     &-text {
+      font: @dropdown-item-text-font;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

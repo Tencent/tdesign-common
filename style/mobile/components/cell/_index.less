@@ -16,7 +16,7 @@
   line-height: @cell-line-height;
 
   &__title {
-    flex: 1;
+    flex: 1 1 auto;
     color: @text-level-1-color;
   }
 
@@ -37,8 +37,15 @@
     align-items: center;
   }
 
+  &__image {
+    display: block;
+    height: 56px;
+    width: 56px;
+  }
+
   &__left-icon {
-    color: @text-level-3-color;
+    flex-shrink: 0;
+    color: @text-level-1-color;
     line-height: 24px;
     margin-right: @spacer-2;
     font-size: 24px;

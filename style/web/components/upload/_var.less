@@ -58,18 +58,20 @@
 // 背景
 @upload-card-mask-opacity-disabled: .3;
 
-// 字体
+// 图标
 @upload-list-file-icon-font-size: 40px;
-@upload-list-item-font-size: @font-size-base;
-@upload-card-font-size: @font-size-s;
 @upload-card-item-icon-add-font-size: 30px;
-@upload-card-status-font-size: @font-size-s;
-@upload-dragger-font-size: @font-size-base;
-@upload-dragger-text-font-size: @font-size-base;
-@upload-dragger-progress-icon-font-size: @font-size-l;
-@upload-small-font-size: @font-size-s;
-@upload-single-display-text-font-size: @font-size-s;
-@upload-single-input-delete-font-size: @font-size-base;
+@upload-dragger-progress-icon-font-size: 16px;
+
+// 字体
+@upload-list-item-font-size: @font-body-medium;
+@upload-card-font: @font-body-small;
+@upload-card-status-font: @font-body-small;
+@upload-dragger-font: @font-body-medium;
+@upload-dragger-text-font: @font-body-medium;
+@upload-small-font: @font-body-small;
+@upload-single-display-text-font: @font-body-small;
+@upload-single-input-delete-font: @font-body-medium;
 @upload-flow-table-th-font-weight: normal;
 
 // 尺寸
@@ -80,8 +82,6 @@
 @upload-list-item-height: 124px;
 @upload-list-name-max-width: 200px;
 @upload-card-mask-divider-height: @font-size-l;
-// @upload-card-mask-item-width: 30px;
-// @upload-card-mask-item-height: 30px;
 @upload-single-file-input-single-progress-width: 60px;
 @upload-dragger-width: 336px;
 @upload-dragger-height: 144px;
@@ -98,12 +98,12 @@
 // 边框
 @upload-card-item-bg-border: 1px dashed @component-border;
 @upload-list-item-border: 1px solid @component-border;
-@upload-list-item-border-radius: @border-radius;
+@upload-list-item-border-radius: @border-radius-default;
 @upload-card-box-border: 1px dashed @component-border;
-@upload-card-box-border-radius: @border-radius;
+@upload-card-box-border-radius: @border-radius-default;
 @upload-card-content-border: 1px solid @component-border;
 @upload-dragger-border: 1px dashed @component-border;
-@upload-dragger-border-radius: 2px;
+@upload-dragger-border-radius: @border-radius-small;
 @upload-flow-table-border: 1px dashed @component-border;
 @upload-flow-table-tr-border-top: 1px solid @component-border;
 @upload-flow-table-th-border: 1px solid @component-border;
@@ -120,13 +120,10 @@
 @upload-list-item-margin-top: 12px;
 @upload-single-name-margin-right: @spacer;
 @upload-single-name-margin-bottom: @spacer;
-@upload-single-display-text-line-height: 20px;
 @upload-single-percent-margin-left: @spacer;
 @upload-single-input-delete-margin-left: @spacer-2;
-@upload-single-input-delete-line-height: 22px;
 @upload-single-file-input-trigger-margin-left: @spacer-2;
 @upload-single-file-input-trigger-button-margin-left: @spacer-1;
-@upload-card-line-height: @text-line-height-s;
 @upload-card-item-margin: 0 @spacer 0 0;
 @upload-card-item-error-icon-warning-margin-bottom: 10px;
 @upload-card-icon-loading-margin-bottom: 10px;
@@ -135,7 +132,6 @@
 @upload-card-content-padding: @spacer;
 @upload-card-status-wrap-svg-margin-bottom: 6px;
 @upload-dragger-padding: @spacer-2;
-@upload-dragger-text-line-height: 22px;
 @upload-dragger-img-wrap-margin-right: @spacer-2;
 @upload-dragger-progress-info-single-display-text-margin-bottom: @spacer;
 @upload-dragger-progress-cancel-padding: 0;
@@ -147,7 +143,6 @@
 @upload-flow-table-td-th-padding: 10px @spacer-3;
 @upload-flow-card-area-padding: 12px;
 @upload-flow-card-area-margin-top: @spacer-3;
-@upload-small-line-height: 20px;
 @upload-display-text-margin-top: 10px;
 @upload-icon-clear-circle-filled-margin-top: 2px;
 @upload-tips-margin-top: @spacer;

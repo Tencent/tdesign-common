@@ -9,8 +9,8 @@ export default {
   },
   cascader: {
     empty: 'Empty Data',
-    loadingText: '',
-    placeholder: '',
+    loadingText: 'loading...',
+    placeholder: 'please select',
   },
   calendar: {
     yearSelection: '{year}',
@@ -34,7 +34,7 @@ export default {
     confirm: 'Confirm',
     anteMeridiem: 'AM',
     postMeridiem: 'PM',
-    placeholder: '',
+    placeholder: 'please select',
   },
   dialog: {
     confirm: 'Confirm',
@@ -73,7 +73,7 @@ export default {
   select: {
     empty: 'Empty Data',
     loadingText: 'loading...',
-    placeholder: '',
+    placeholder: 'please select',
   },
   tree: {
     empty: 'Empty Data',
@@ -81,7 +81,7 @@ export default {
   treeSelect: {
     empty: 'Empty Data',
     loadingText: 'loading...',
-    placeholder: '',
+    placeholder: 'please select',
   },
   datePicker: {
     placeholder: {
@@ -89,9 +89,10 @@ export default {
       month: 'select month',
       year: 'select year',
     },
-    weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    rangeSeparator: ' ~ ',
+    quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
+    rangeSeparator: ' - ',
     direction: 'ltr',
     format: 'YYYY-MM-DD',
     dayAriaLabel: 'D',
@@ -116,7 +117,8 @@ export default {
       fileInput: 'Upload',
       image: 'Click to upload',
       normal: 'Upload',
-      reupload: 'Reupload',
+      reupload: 'ReUpload',
+      continueUpload: 'Continue Upload',
       delete: 'Delete',
     },
     dragger: {

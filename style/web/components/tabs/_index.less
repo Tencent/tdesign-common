@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-tabs {
+  .reset;
+
   overflow: hidden;
   background-color: @tab-default-bg;
 
@@ -15,7 +19,6 @@
   }
 
   &__header {
-
     &.@{prefix}-is-left {
       float: left;
     }
@@ -62,8 +65,8 @@
     border-left: @tab-btn-border;
     cursor: pointer;
     color: @tab-default-text;
-    font-size: @tab-nav-item-font-size;
-    transition: @tab-bar-transtion;
+    font: @tab-nav-item-font;
+    transition: @tab-bar-transition;
     z-index: 1;
     opacity: 1;
 
@@ -145,7 +148,7 @@
     border-bottom: @tab-bar-operations-border;
     cursor: pointer;
     color: @tab-card-text;
-    font-size: @tab-nav-item-font-size;
+    font: @tab-nav-item-font;
 
     &.@{prefix}-size-m {
       height: @tab-height-middle;
@@ -187,7 +190,7 @@
     position: absolute;
     background-color: @tab-default-bar-bg-color;
     z-index: 1;
-    transition: @tab-bar-transtion;
+    transition: @tab-bar-transition;
 
     &.@{prefix}-is-top {
       bottom: 0;
@@ -217,7 +220,7 @@
   &__nav-item {
     display: inline-flex;
     align-items: center;
-    font-size: @font-size-base;
+    font: @font-body-medium;
     color: @tab-default-text;
     position: relative;
     overflow: hidden;
@@ -232,14 +235,14 @@
       margin-left: @tab-nav-item-margin-left;
       margin-right: @tab-nav-item-margin-right;
       line-height: @tab-nav-item-line-height;
-      border-radius: @border-radius;
+      border-radius: @border-radius-default;
       transition: @tab-nav-item-transition;
 
       --ripple-color: @bg-color-container-active;
     }
 
     &.@{prefix}-size-l {
-      font-size: @tab-nav-item-font-size;
+      font: @tab-nav-item-font;
 
       .@{prefix}-tabs__nav-item-wrapper {
         padding: @tab-nav-item-wrapper-padding-large;
@@ -253,7 +256,6 @@
     }
 
     &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
-
       .@{prefix}-tabs__nav-item-wrapper {
         background-color: @bg-color-container-hover;
       }

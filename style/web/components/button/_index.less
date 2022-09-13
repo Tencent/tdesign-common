@@ -4,6 +4,8 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .button-attr-color(@theme, @attr, @ghost: false) {
   &:hover {
     @{attr}: @@theme-hover;
@@ -13,9 +15,20 @@
     @{attr}: @@theme-active;
   }
 
-  &.@{prefix}-is-disabled {
+  &.@{prefix}-is-loading {
+    @{attr}: @@theme-default;
+  }
+
+  // ghost disabled 强制统一色
+  &.@{prefix}-is-disabled when (@ghost = true) {
+    @{attr}: @btn-color-ghost-disabled;
+    background-color: transparent;
+  }
+
+  &.@{prefix}-is-disabled when (@ghost = false) {
     @{attr}: @@theme-disabled;
   }
+
   @theme-default: e("btn-color-@{theme}");
   @theme-hover: e("btn-color-@{theme}-hover");
   @theme-active: e("btn-color-@{theme}-active");
@@ -26,7 +39,10 @@
 }
 
 .@{prefix}-button {
+  .reset;
   .button;
+
+  text-decoration: none;
 
   .@{prefix}-button__text,
   .@{prefix}-icon {
@@ -42,11 +58,16 @@
     font-size: @btn-loading-size;
   }
 
-  .@{prefix}-icon  + .@{prefix}-button__text {
+  .@{prefix}-icon + .@{prefix}-button__text:not(:empty) {
     margin-left: @btn-icon-text-margin-left;
   }
 
-  .@{prefix}-loading + .@{prefix}-button__text {
+  .@{prefix}-loading + .@{prefix}-button__text:not(:empty) {
+    margin-left: @btn-icon-text-margin-left;
+  }
+
+  .@{prefix}-button__suffix:not(:empty) {
+    display: inline-flex;
     margin-left: @btn-icon-text-margin-left;
   }
 
@@ -83,9 +104,12 @@
     }
 
     &.@{prefix}-button--ghost {
-      background-color: transparent;
+      .button-attr-color("none", background-color, true);
+      .button-attr-color("white-ghost", color, true);
+      .button-attr-color("white-ghost", border-color, true);
 
       &.@{prefix}-button--theme-primary {
+        .button-attr-color("primary", color, true);
         .button-attr-color("primary", border-color, true);
       }
 
@@ -263,6 +287,7 @@
     }
   }
 
+  &.@{prefix}-is-loading,
   &.@{prefix}-is-disabled {
     cursor: not-allowed;
   }
@@ -296,7 +321,7 @@
   }
 
   &--shape-round {
-    border-radius: @btn-shape-border-radius-default;
+    border-radius: @border-radius-round;
 
     &.@{prefix}-size-s {
       border-radius: @btn-shape-border-radius-s;
@@ -328,6 +353,7 @@
 
     &.@{prefix}-size-l {
       width: @btn-height-l;
+      padding: 0;
       border-radius: @btn-shape-border-radius-l;
     }
   }

@@ -5,13 +5,19 @@
 @import "./_var.less";
 
 @import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
 // 进度条基本样式
 .@{prefix}-progress {
+  .reset;
+
   &__inner {
     position: relative;
     height: 100%;
     background: @progress-inner-color;
-    border-radius: @progress-inner-border-radius;
+    border-radius: @border-radius-round;
+    transition: @progress-inner-transition;
   }
 
   &__info {
@@ -30,7 +36,7 @@
   height: 6px;
   overflow: hidden;
   background: @progress-track-color;
-  border-radius: 3px;
+  border-radius: @border-radius-round;
 }
 
 //标准进度条
@@ -96,6 +102,7 @@
 
   .@{prefix}-progress__circle-inner {
     stroke: @progress-inner-color;
+    transition: @progress-inner-transition;
   }
 
   .@{prefix}-progress__icon {

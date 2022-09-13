@@ -10,18 +10,14 @@ toc: false
 
 {{ base }}
 
-### 选择年月日
-
-{{ year-month-date }}
-
-### 选择年月
-
-{{ year-month }}
-
 ### 选择时分
 
 {{ hour-minute }}
 
-### 禁用日期
+### 设置时间范围
 
-{{ disable-date }}
+{{ start-end-date }}
+
+### 自定义label
+
+{{ render-label-date }}

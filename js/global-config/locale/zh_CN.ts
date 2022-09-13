@@ -9,7 +9,7 @@ export default {
   },
   cascader: {
     empty: '暂无数据',
-    loadingText: '',
+    loadingText: '加载中',
     placeholder: '请选择',
   },
   calendar: {
@@ -91,7 +91,8 @@ export default {
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
     months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
-    rangeSeparator: ' 至 ',
+    quarters: ['一季度', '二季度', '三季度', '四季度'],
+    rangeSeparator: ' - ',
     direction: 'ltr',
     format: 'YYYY-MM-DD',
     dayAriaLabel: '日',

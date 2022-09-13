@@ -2,7 +2,7 @@
 title: Anchor 锚点
 description: 页面内的超级链接，用于跳转到页面内指定位置
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: navigation
 ---
 
@@ -22,7 +22,7 @@ spline: navigation
 
 ### 指定容器锚点
 
-指定响应滚动的容器进行锚点定位。
+指定响应滚动的容器进行锚点定位，以及 click 事件的应用，阻止锚点添加到 uri 上。
 
 {{ container }}
 

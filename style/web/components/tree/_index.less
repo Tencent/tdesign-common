@@ -6,10 +6,13 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{prefix}-tree {
-  line-height: @tree-node-item-line-height;
-  font-size: @tree-font-size;
+  .reset;
+
+  font: @tree-font;
   color: @tree-node-text-color;
 
   // 禁用态颜色处理
@@ -56,13 +59,13 @@
     will-change: opacity, max-height;
     position: relative;
     display: flex;
-    align-items: center;
     flex-wrap: nowrap;
-    padding: 0 0 0 @tree-node-item-padding-left;
+    padding: 4px 0 4px @tree-node-item-padding-left;
     cursor: default;
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
+    line-height: @tree-node-item-line-height;
 
     .@{prefix}-icon,
     .@{prefix}-loading {
@@ -77,6 +80,7 @@
     }
 
     .@{prefix}-checkbox {
+      align-items: center;
       font-size: 0;
     }
 
@@ -101,6 +105,45 @@
 
     &--clickable {
       cursor: pointer;
+    }
+
+    &--draggable {
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        top: -@tree-node-drag-tip-height;
+        right: 0;
+        left: 0;
+        display: block;
+        height: @tree-node-drag-tip-height;
+        border-radius: (@tree-node-drag-tip-height / 2);
+        content: "";
+        padding: inherit;
+        background-clip: content-box;
+      }
+
+      &:hover {
+        background-color: @tree-node-bg-hover-color;
+        background-clip: content-box;
+      }
+    }
+
+    &--tip {
+      &-top::before {
+        background-color: @tree-node-drag-tip-bg;
+      }
+
+      &-bottom::before {
+        top: unset;
+        bottom: -@tree-node-drag-tip-height;
+        background-color: @tree-node-drag-tip-bg;
+      }
+
+      &-highlight {
+        background-color: @tree-node-drag-bg-highlight;
+        background-clip: content-box;
+      }
     }
   }
 
@@ -150,20 +193,18 @@
   &__icon {
     position: relative;
     flex: none;
-    // 结合负边距，增大点击控制区域
-    margin: 7px -6px;
-    width: @tree-node-icon-size;
-    height: @tree-node-icon-size;
+    display: inline-flex;
+    align-items: center;
     // 图标居中
     text-align: center;
-    line-height: @tree-node-icon-size;
+    width: 16px;
     // 当子元素只有一个且为image类型时，会有隐藏占位，因此将font-size设0
     font-size: 0;
     user-select: none;
     cursor: pointer;
     transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
 
-    .t-icon-loading-blue {
+    .@{prefix}-icon-loading-blue {
       color: @tree-node-icon-active-color;
     }
   }
@@ -173,11 +214,11 @@
     content: "";
     display: block;
     position: absolute;
-    left: 6px;
-    top: 6px;
+    left: 0;
+    top: 5px;
     width: @tree-node-icon-svg-size;
     height: @tree-node-icon-svg-size;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
   }
 
   // 仅在有图标时呈现背景
@@ -193,12 +234,11 @@
   &__label {
     --ripple-color: @bg-color-container-active;
 
-    line-height: @tree-node-item-label-height;
     flex-wrap: nowrap;
     flex: 0 0 auto;
+    padding: 2px 4px;
     margin-left: 4px;
-    padding: 0 4px;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
     cursor: pointer;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
@@ -236,7 +276,7 @@
     cursor: pointer;
   }
 
-  &__item.t-is-disabled {
+  &__item.@{prefix}-is-disabled {
     color: @tree-disabled-color;
     cursor: default;
 
@@ -263,7 +303,6 @@
 .@{prefix}-tree--transition {
   .@{prefix}-tree__item--visible {
     opacity: 1;
-    max-height: @tree-node-item-origin-height;
   }
 
   .@{prefix}-tree__item--hidden {
@@ -275,7 +314,6 @@
 
   .@{prefix}-tree__children--visible {
     opacity: 1;
-    max-height: @tree-node-item-origin-height;
   }
 
   .@{prefix}-tree__children--hidden {
@@ -297,31 +335,29 @@
 
   // 节点展示动画
   .@{prefix}-tree__item--visible {
-    transition:
-      opacity @tree-node-transition-time linear @tree-node-transition-time,
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
       max-height @tree-node-transition-time linear 0s;
   }
 
   // 节点隐藏动画
   .@{prefix}-tree__item--hidden {
     animation: none;
-    transition:
-      opacity @tree-node-transition-time linear 0s,
+    transition: opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 
   // 子节点展示动画
   .@{prefix}-tree__children--visible {
-    transition:
-      opacity @tree-node-transition-time linear @tree-node-transition-time,
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
       max-height @tree-node-transition-time linear 0s;
   }
 
   // 子节点隐藏动画
   .@{prefix}-tree__children--hidden {
     animation: none;
-    transition:
-      opacity @tree-node-transition-time linear 0s,
+    transition: opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 }
@@ -340,5 +376,15 @@
   100% {
     opacity: 1;
     max-height: @tree-node-item-origin-height;
+  }
+}
+
+.@{prefix}-tree-select {
+  &.@{prefix}-single-suffix {
+    padding-right: 20px;
+  }
+
+  &.@{prefix}-tag-prefix {
+    padding-left: 4px;
   }
 }

@@ -11,38 +11,43 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-@color-picker-panel-width: 280px;
-@color-picker-panel-padding: 16px;
-@color-picker-saturation-height: 140px;
+@color-picker-border-radius: 6px;
+@color-picker-panel-width: 254px;
+@color-picker-panel-padding: 12px;
+@color-picker-panel-radius: 6px;
+@color-picker-saturation-height: 168px;
 @color-picker-saturation-radius: 4px;
-@color-picker-saturation-thumb-size: 14px;
-@color-picker-margin: 16px;
+@color-picker-saturation-thumb-size: 18px;
+@color-picker-margin: 12px;
 @color-picker-slider-height: 8px;
-@color-picker-slider-thumb-size: 14px;
+@color-picker-slider-thumb-size: 18px;
 @color-picker-slider-thumb-transform-x: @color-picker-slider-thumb-size * -.5;
-@color-picker-slider-thumb-padding: 4px;
+@color-picker-slider-thumb-padding: 2px;
 @color-picker-input-format-width: 64px;
-@color-picker-font-size:12px;
+@color-picker-font: @font-body-small;
 @color-picker-icon-size: 20px;
 @color-picker-icon-radius: 3px;
 @color-picker-icon-font-size: 16px;
 @color-picker-degree-width: 42px;
-@color-picker-gradient-preview-width: 42px;
+@color-picker-gradient-preview-width: 32px;
 @color-picker-gradient-preview-height: 32px;
-@color-picker-gradient-preview-radius: @border-radius;
-@color-picker-swatch-width: 23px;
-@color-picker-swatch-height: 23px;
+@color-picker-gradient-preview-radius: @border-radius-default;
+@color-picker-swatch-width: 18px;
+@color-picker-swatch-height: 18px;
 @color-picker-swatch-radius: 50%;
-@color-picker-swatch-padding: 2px;
+@color-picker-swatch-padding: 0;
 @color-picker-swatch-border-size: 1px;
 @color-picker-swatch-columns: 10;
-@color-picker-swatch-row-gap: 2px;
-@color-picker-swatch-column-gap: 2px;
+@color-picker-swatch-row-gap: 5.7px;
+@color-picker-swatch-column-gap: 5.7px;
 @color-picker-swatch-wrap-margin-left: (@color-picker-swatch-padding + @color-picker-swatch-border-size) * -1;
 // 右边往外伸出一点，让滚动条居外侧
-@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left - 10px;
-@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0 @color-picker-swatch-wrap-margin-left;
+@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left -
+  10px;
+@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0
+  @color-picker-swatch-wrap-margin-left;
 @color-picker-swatch-max-rows: 4; // 最大显示行数
 
 // 最大高度 = 行数 * (itemHeight + itemMarginTop)m;
-@color-picker-swatch-rows-max-height: @color-picker-swatch-max-rows * (@color-picker-swatch-height + @color-picker-swatch-row-gap);
+@color-picker-swatch-rows-max-height: @color-picker-swatch-max-rows *
+  (@color-picker-swatch-height + @color-picker-swatch-row-gap);

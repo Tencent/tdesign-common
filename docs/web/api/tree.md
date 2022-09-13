@@ -2,7 +2,7 @@
 title: Tree 树
 description: 用于承载有父子关系的结构化内容，提供内容层级的展示。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -22,6 +22,12 @@ spline: data
 #### 可高亮
 
 {{ activable }}
+
+### 可拖拽的树
+
+树中的节点可自由的拖拽
+
+{{ draggable }}
 
 ### 可过滤的树
 

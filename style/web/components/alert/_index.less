@@ -6,15 +6,20 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 /* Alert */
 .@{prefix}-alert {
+  .reset;
+
   display: flex;
   padding: @alert-padding;
   opacity: 1;
   transition: opacity .2s;
-  border-radius: @border-radius;
+  border-radius: @border-radius-medium;
 
-  &.@{prefix}-is-hidden { /* 隐藏 */
+  &.@{prefix}-is-hidden {
+    /* 隐藏 */
     display: none;
   }
 
@@ -106,8 +111,7 @@
 
 .@{prefix}-alert__content {
   flex: 1 1 0;
-  font-size: @font-size-base;
-  line-height: @text-line-height-s;
+  font: @font-body-medium;
   overflow: hidden;
 }
 
@@ -162,111 +166,4 @@
   font-size: @font-size-base;
   color: @alert-close-color;
   cursor: pointer;
-}
-
-/* Alert Swiper */
-// can be removed when web-angular migrate swiper to a single component.
-.@{prefix}-alert-swiper {
-  display: flex;
-  opacity: 1;
-  transition: opacity .2s;
-
-  &.@{prefix}-is-hidden { /* 隐藏 */
-    display: none;
-  }
-
-  &--closing {
-    opacity: 0;
-  }
-
-  &--info {
-    background-color: @alert-info-bg-color;
-
-    .@{prefix}-alert-swiper__trigger-wrap {
-      color: @alert-info-trigger-color;
-    }
-
-    .@{prefix}-alert-swiper__trigger--active {
-      color: @alert-info-trigger-active-color;
-    }
-  }
-
-  &--success {
-    background-color: @alert-success-bg-color;
-
-    .@{prefix}-alert-swiper__trigger-wrap {
-      color: @alert-success-trigger-color;
-    }
-
-    .@{prefix}-alert-swiper__trigger--active {
-      color: @alert-success-trigger-active-color;
-    }
-  }
-
-  &--warning {
-    background-color: @alert-warning-bg-color;
-
-    .@{prefix}-alert-swiper__trigger-wrap {
-      color: @alert-warning-trigger-color;
-    }
-
-    .@{prefix}-alert-swiper__trigger--active {
-      color: @alert-warning-trigger-active-color;
-    }
-  }
-
-  &--error {
-    background-color: @alert-error-bg-color;
-
-    .@{prefix}-alert-swiper__trigger-wrap {
-      color: @alert-error-trigger-color;
-    }
-
-    .@{prefix}-alert-swiper__trigger--active {
-      color: @alert-error-trigger-active-color;
-    }
-  }
-}
-
-.@{prefix}-alert-swiper__content {
-  flex: 1 1 auto;
-  overflow: hidden;
-}
-
-.@{prefix}-alert-swiper__swiper-wrap {
-  position: relative;
-  display: flex;
-  left: 0;
-  transition: left 1s, transform 2s;
-
-  > * {
-    flex: 1;
-  }
-}
-
-.@{prefix}-alert-swiper__trigger-wrap {
-  padding: 14px 8px;
-  flex: 0 0 auto;
-  font-size: 20px;
-  line-height: 20px;
-
-  > li {
-    display: inline-block;
-    list-style-type: none;
-    cursor: pointer;
-
-    &::before {
-      content: "\2022";
-    }
-  }
-}
-
-.@{prefix}-alert-swiper__close {
-  padding: 14px 20px 14px 4px;
-  flex: 0 0 auto;
-  font-size: 14px;
-  color: @text-color-placeholder;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
 }

@@ -2,7 +2,7 @@
 title: Skeleton 骨架屏
 description: 当网络较慢时，在页面真实数据加载之前，给用户展示出页面的大致结构。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -17,6 +17,12 @@ spline: data
 提供渐变和闪烁两种动画效果。
 
 {{ animation }}
+
+### 带延迟效果的骨架屏
+
+设置最短延迟响应时间，低于响应时间的操作不显示加载状态。
+
+{{ delay }}
 
 ### 不同主题的骨架屏
 

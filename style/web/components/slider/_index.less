@@ -6,6 +6,8 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-slider__input-container {
   display: flex;
   align-items: center;
@@ -25,6 +27,8 @@
 }
 
 .@{prefix}-slider {
+  .reset;
+
   height: @slider-height;
   width: 100%;
   position: relative;
@@ -81,9 +85,10 @@
     height: @slider-control-bar-size;
     border: 2px solid @slider-control-bar-border;
     background-color: @slider-control-bar-background;
-    border-radius: 50%;
+    border-radius: @border-radius-circle;
     transition: .2s;
     user-select: none;
+    box-sizing: border-box;
 
     &--dragging {
       box-shadow: @slider-input-shadow;
@@ -127,12 +132,10 @@
   &__mark-text {
     position: absolute;
     display: inline-block;
-    font-size: @slider-text-font-size;
+    font: @slider-text-font;
     color: @slider-text;
     top: @slider-text-top;
-    line-height: @slider-text-line-height;
     transform: translateX(-50%);
-    margin-top: @slider-border-radius;
     cursor: pointer;
 
     &:first-child {
@@ -150,6 +153,7 @@
   padding: @slider-vertical-padding;
   display: flex;
   justify-content: center;
+  position: relative;
 
   .@{prefix}-slider__rail {
     width: @slider-rail-track-step-size;
@@ -195,8 +199,18 @@
 
   .@{prefix}-slider__button-wrapper {
     top: auto;
-    left: @slider-vertical-control-bar-left;
-    transform: translate(50%, 50%);
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: transparent;
+    text-align: center;
+    user-select: none;
+    line-height: normal;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 }
 

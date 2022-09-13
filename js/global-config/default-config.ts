@@ -11,7 +11,13 @@ export default {
     fillWithZero: true,
     controllerConfig: undefined,
   },
+  icon: {},
+  input: {
+    autocomplete: '',
+  },
   dialog: {
+    closeOnEscKeydown: true,
+    closeOnOverlayClick: true,
     confirmBtnTheme: {
       default: 'primary',
       info: 'primary',
@@ -34,10 +40,20 @@ export default {
     sortIcon: undefined,
     // 过滤图标
     filterIcon: undefined,
+    // 树形结构展开图标
+    treeExpandAndFoldIcon: undefined,
+    // 是否隐藏排序图标的文本提示
+    hideSortTips: false,
   },
   select: {
     // 清除按钮
     clearIcon: undefined,
+    filterable: false,
+  },
+  drawer: {
+    closeOnEscKeydown: true,
+    closeOnOverlayClick: true,
+    size: 'small',
   },
   tree: {
     // 目录层级图标

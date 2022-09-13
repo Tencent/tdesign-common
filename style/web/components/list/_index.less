@@ -8,7 +8,11 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-list {
+  .reset;
+
   overflow: auto;
   color: @list-font-color;
 
@@ -17,13 +21,12 @@
   }
 
   &-item {
-    font-size: @list-item-font-size;
+    font: @list-item-font;
     padding: @list-item-spacer-default;
     background: @list-bg-color-default;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    line-height: @list-item-line-height;
     position: relative;
 
     &::after {
@@ -65,8 +68,7 @@
 
       &-title {
         padding: 0;
-        font-size: @list-meta-title-font-size;
-        font-weight: bold;
+        font: @list-meta-title-font;
         margin: @list-meta-title-margin;
         color: @list-meta-title-color;
       }

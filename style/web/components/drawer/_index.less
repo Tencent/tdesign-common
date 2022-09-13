@@ -5,15 +5,20 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 @componentName: drawer;
 
 .@{prefix}-@{componentName} {
+  .reset;
+
   position: fixed;
   z-index: 1500;
   width: 100%;
   height: 100%;
   pointer-events: none;
   overflow: hidden;
+  outline: none;
 
   &--lock {
     overflow: hidden;
@@ -66,8 +71,8 @@
     background: @drawer-bg-color;
     // 这里之所以设置了宽度为 300，高度为 300 是为了在 UI 静态展示的时候有一个默认值，
     // 实际上如果是纵向的，宽度是 js 代码设置，高度是 100%，如果是横向的，高度是 js 代码设置，宽度是 100%
-    width: @drawer-header-font-size;
-    height: @drawer-header-font-size;
+    width: 16px;
+    height: 16px;
     font-size: @drawer-body-text-font-size;
     color: @drawer-body-text-color;
     box-shadow: @dialog-box-shadow;
@@ -118,12 +123,11 @@
   &__header {
     min-height: @drawer-header-height;
     padding: @drawer-header-padding;
-    font-size: @drawer-header-font-size;
-    font-weight: @drawer-header-font-weight;
-    line-height: @drawer-header-line-height;
+    font: @drawer-header-font-size;
     color: @drawer-header-text-color;
     border-bottom: 1px solid @drawer-border-color;
     border-radius: @drawer-header-border-radius;
+    box-sizing: border-box;
   }
 
   &__body {
@@ -139,6 +143,7 @@
     text-align: @drawer-footer-text-align;
     border-top: 1px solid @drawer-border-color;
     background-color: @drawer-bg-color;
+    box-sizing: border-box;
 
     .@{prefix}-button {
       margin-left: @drawer-footer-btn-margin-left;
@@ -160,6 +165,7 @@
     right: @drawer-close-btn-position-right;
     color: @drawer-close-btn-color;
     background-color: @drawer-close-btn-bg-color;
+    border-radius: @border-radius-default;
     cursor: pointer;
     transition: background-color @anim-duration-base;
 
@@ -187,7 +193,7 @@
     visibility: visible;
   }
 
-  .@{prefix}-@{componentName}__mask {
+  > .@{prefix}-@{componentName}__mask {
     opacity: 1;
     width: 100%;
     height: 100%;

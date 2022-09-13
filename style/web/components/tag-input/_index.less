@@ -4,8 +4,10 @@
 
 @import "../../utilities/_animation.less";
 
-.@{prefix}-tag-input {
+@import "../../mixins/_reset.less";
 
+.@{prefix}-tag-input {
+  .reset;
   .@{prefix}-tag {
     margin-right: @spacer-s;
     animation: t-fade-in .1s ease-in-out;
@@ -23,7 +25,7 @@
   &:hover,
   .@{prefix}-input--focused {
     .@{prefix}-input__inner {
-      min-width: 40px;
+      min-width: 20px;
     }
   }
 
@@ -34,17 +36,6 @@
 
   .@{prefix}-input--auto-width {
     padding-right: @spacer-s;
-    .@{prefix}-tag {
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-
-    &:hover,.@{prefix}-is-focused {
-      .@{prefix}-input__prefix:not(:empty) + .@{prefix}-input__inner {
-        margin-left: @spacer-s;
-      }
-    }
   }
 }
 
@@ -58,7 +49,7 @@
   .@{prefix}-input {
     display: block;
     height: auto;
-    padding-right: 24px;
+    padding-right: @spacer-3;
 
     &.t-input--prefix > .t-input__prefix {
       display: inline;

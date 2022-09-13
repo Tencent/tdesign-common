@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{collapse-cls} {
+  .reset;
+
   border: @collapse-border-size;
   border-bottom: 0;
   background: @bg-color-container;
@@ -38,6 +42,12 @@
     &--right {
       margin-left: @spacer-1;
     }
+
+    &:hover {
+      background-color: @bg-color-container-hover;
+      border-radius: @border-radius-small;
+      transition: background-color @anim-duration-base;
+    }
   }
 
   &__wrapper {
@@ -47,7 +57,7 @@
       padding: 0 16px;
       border-bottom: @collapse-border-size;
       height: @collapse-panel-header-height;
-      font-size: @collapse-panel-header-text-size;
+      font: @collapse-panel-header-text;
       display: flex;
       align-items: center;
 
@@ -62,18 +72,22 @@
 
     .@{collapse-panel-cls}__body {
       border-bottom: @collapse-border-size;
-      background: @gray-color-1;
+      background: @bg-color-secondarycontainer;
+      // 处理react收起时重复border问题
+      &--collapsed {
+        border: none;
+      }
     }
     .@{collapse-panel-cls}__content {
       padding: 12px 16px 12px 40px;
+      color: @collapse-panel-content-text-color;
     }
   }
 
   &.@{prefix}-is-disabled {
-    background: @gray-color-2;
-
     .@{collapse-panel-cls}__header {
       cursor: not-allowed;
+      color: @text-color-disabled;
     }
 
     .@{collapse-panel-cls}__icon {
@@ -81,7 +95,19 @@
     }
 
     .@{collapse-panel-cls}__body {
-      background: @gray-color-2;
+      background: @bg-color-component-disabled;
+    }
+
+    .@{collapse-panel-cls}__content {
+      color: @text-color-disabled;
+    }
+  }
+
+  .@{prefix}-fake-arrow {
+    transform: rotate(-90deg);
+
+    &--active {
+      transform: rotate(180deg);
     }
   }
 }

@@ -2,7 +2,7 @@
 title: Cascader 级联选择器
 description: 级联选择器适用于有清晰层级结构的数据集合，用户可以通过逐级查看并选择。一般而言，级联选择器包括：选择器和级联。
 isComponent: true
-usage: { title: 'Live Demo', description: '' }
+usage: { title: '', description: '' }
 spline: form
 ---
 
@@ -74,7 +74,7 @@ spline: form
 
 ### 文本过长时的展示
 
-数据文本展示过长时，使用 `tooltip` 展示过长文案。
+数据文本展示过长时，使用浏览器 `title` 展示过长文案。
 
 {{ ellipsis }}
 
@@ -95,3 +95,9 @@ spline: form
 可根据需求定制选择器内容。在有复杂逻辑或有特定诉求的业务场景时使用。
 
 {{ load }}
+
+### 级联面板
+
+单独使用级联面板，用于与其他触发器结合
+
+{{ panel }}
