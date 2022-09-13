@@ -52,11 +52,6 @@
     color: @upload-icon-add-color;
   }
 
-  .@{prefix}-upload__icon-delete {
-    color: @upload-single-display-text-color;
-    cursor: pointer;
-  }
-
   &__list-file {
     display: flex;
     align-items: center;
@@ -174,7 +169,7 @@
         }
       }
 
-      &.@{prefix}-is--background {
+      &.@{prefix}-is-background {
         .hover-transition(border-color);
 
         &:hover {
@@ -315,6 +310,7 @@
     padding: @upload-dragger-padding;
     position: relative;
     overflow: auto;
+    box-sizing: border-box;
     .hover-transition(border-color);
 
     &.@{prefix}-is--active {
@@ -380,6 +376,9 @@
   font: @upload-single-display-text-font;
   display: flex;
   align-items: center;
+  .@{prefix}-upload__flow-status .@{prefix}-icon {
+    font: @upload-icon-size-mini;
+  }
 }
 
 .@{prefix}-icon-clear-circle-filled {
@@ -498,6 +497,15 @@
 
 .@{prefix}-upload__dragger-progress-cancel {
   padding: @upload-dragger-progress-cancel-padding;
+
+  &:hover {
+    border-color: transparent;
+  }
+}
+
+.@{prefix}-upload__dragger-delete-btn:hover,
+.@{prefix}-upload__dragger-upload-btn:hover {
+  border-color: transparent;
 }
 
 .@{prefix}-upload__flow-image-flow {
@@ -598,5 +606,35 @@
     padding: @upload-flow-card-area-padding;
     margin-top: @upload-flow-card-area-margin-top;
     width: 100%;
+  }
+}
+
+.@{prefix}-upload__icon-delete,
+.@{prefix}-upload__single-input-clear {
+  color: @upload-icon-color;
+  cursor: pointer;
+}
+
+.@{prefix}-upload__icon-delete:hover,
+.@{prefix}-upload__single-input-clear:hover {
+  color: @upload-icon-color-hover;
+}
+
+.@{prefix}-upload__single-input-clear {
+  display: none;
+}
+
+.@{prefix}-upload__single-input-preview:hover {
+  .@{prefix}-upload__single-input-clear {
+    display: initial;
+  }
+  .@{prefix}-upload__status-icon {
+    display: none;
+  }
+}
+
+.@{prefix}-upload {
+  .@{prefix}-upload__single-name {
+    color: @upload-file-name-color;
   }
 }

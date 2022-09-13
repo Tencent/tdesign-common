@@ -111,15 +111,17 @@ export default {
     now: '当前',
   },
   upload: {
-    sizeLimitMessage: '图片大小不能超过 {sizeLimit}',
+    sizeLimitMessage: '文件大小不能超过 {sizeLimit}',
     cancelUploadText: '取消上传',
     triggerUploadText: {
       fileInput: '选择文件',
       image: '点击上传图片',
       normal: '点击上传',
-      reupload: '重新上传',
-      continueUpload: '继续上传',
+      // 选择文件和上传文件是 2 个步骤，文本需明确步骤
+      reupload: '重新选择',
+      continueUpload: '继续选择',
       delete: '删除',
+      uploading: '上传中',
     },
     dragger: {
       dragDropText: '释放鼠标',
