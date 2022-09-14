@@ -22,6 +22,7 @@ module.exports = {
     getCurrentPages: true,
     Component: true,
     getRegExp: true,
+    NodeJS: true,
   },
   settings: {
     'import/resolver': {
