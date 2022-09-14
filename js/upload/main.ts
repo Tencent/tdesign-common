@@ -140,7 +140,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
     });
     // 自定义上传方法
     if (requestMethod) {
-      requestMethod(toUploadFiles).then((res) => {
+      requestMethod(params.multiple ? toUploadFiles : toUploadFiles[0]).then((res) => {
         if (!handleRequestMethodResponse(res)) {
           resolve({});
           return;
