@@ -63,11 +63,9 @@ export function parseToDayjs(
 function formatRange({
   newDate,
   format,
-  targetFormat,
 }: {
   newDate: any;
   format: string;
-  targetFormat: string;
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
@@ -87,28 +85,21 @@ function formatRange({
   if (dayjsDateList.some((r) => r && !r.isValid())) {
     log.error(
       'DatePicker',
-      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`
+      `请检查 format、value 格式是否有效.\nformat: '${format}' value: '${newDate}'`
     );
     return [];
   }
 
-  // valueType = 'time-stamp' 返回时间戳
-  if (targetFormat === 'time-stamp') {
-    return dayjsDateList.map((da) => da && da.toDate().getTime());
-  }
-
-  return dayjsDateList.map((da) => da && da.format(targetFormat));
+  return dayjsDateList.map((da) => da && da.format(format));
 }
 
 // 格式化单选
 function formatSingle({
   newDate,
   format,
-  targetFormat,
 }: {
   newDate: any;
   format: string;
-  targetFormat: string;
 }) {
   if (!newDate) return '';
 
@@ -118,15 +109,12 @@ function formatSingle({
   if (!dayJsDate.isValid()) {
     log.error(
       'DatePicker',
-      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`
+      `请检查 format、value 格式是否有效.\nformat: '${format}' value: '${newDate}'`
     );
     return '';
   }
 
-  // valueType = 'time-stamp' 返回时间戳
-  if (targetFormat === 'time-stamp') return dayJsDate.toDate().getTime();
-
-  return dayJsDate.format(targetFormat);
+  return dayJsDate.format(format);
 }
 
 // 检测日期是否合法
@@ -143,14 +131,14 @@ export function isValidDate(value: DateValue | DateValue[], format: string) {
 // 日期格式化
 export function formatDate(
   newDate: DateValue | DateValue[],
-  { format, targetFormat }: { format: string; targetFormat: string }
+  { format }: { format: string; }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({ newDate, format, targetFormat });
+    result = formatRange({ newDate, format });
   } else {
-    result = formatSingle({ newDate, format, targetFormat });
+    result = formatSingle({ newDate, format });
   }
 
   return result;
@@ -173,46 +161,39 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string) {
 export function getDefaultFormat({
   mode = 'date',
   format,
-  valueType,
   enableTimePicker,
 }: {
   mode?: string;
   format?: string;
-  valueType?: string;
   enableTimePicker?: boolean;
 }) {
   if (mode === 'year') {
     return {
       format: format || 'YYYY',
-      valueType: valueType || format || 'YYYY',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'month') {
     return {
       format: format || 'YYYY-MM',
-      valueType: valueType || format || 'YYYY-MM',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'quarter') {
     return {
       format: format || 'YYYY-[Q]Q',
-      valueType: valueType || format || 'YYYY-[Q]Q',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'week') {
     return {
       format: format || 'YYYY-wo',
-      valueType: valueType || format || 'YYYY-wo',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'date') {
     return {
       format: format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
-      valueType: valueType || format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
       timeFormat: extractTimeFormat(format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
     };
   }
