@@ -434,4 +434,5 @@ export function updateProgress(currentFiles: UploadFile[], multiple: boolean, ne
   } else {
     currentFiles[0] = newFiles[0];
   }
+  return currentFiles;
 }
