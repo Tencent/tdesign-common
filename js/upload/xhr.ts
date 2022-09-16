@@ -32,14 +32,17 @@ export default function xhr({
     const timer2 = setTimeout(() => {
       // 只有真实进度一直不存在时才需要模拟进度
       timer1 = setInterval(() => {
-        if (!percent && percent < 100) {
-          percent += 10;
-          onProgress({
-            percent,
-            file,
-            files: innerFiles.map((file) => ({ ...file, percent })),
-            type: 'mock',
-          });
+        if (percent + 10 < 100) {
+          percent = Math.max(percent + 10, percent);
+          if (percent !== files[0].percent) {
+            files[0].percent = percent;
+            onProgress({
+              percent,
+              file: file || innerFiles[0],
+              files: innerFiles.map((file) => ({ ...file, percent })),
+              type: 'mock',
+            });
+          }
         } else {
           clearInterval(timer1);
         }
@@ -89,13 +92,15 @@ export default function xhr({
         realPercent = Math.round((event.loaded / event.total) * 100);
       }
       percent = Math.max(realPercent, percent);
-      onProgress({
-        event,
-        percent,
-        file,
-        files: innerFiles.map((file) => ({ ...file, percent })),
-        type: 'real',
-      });
+      if (percent !== realPercent) {
+        onProgress({
+          event,
+          percent,
+          file: file || innerFiles[0],
+          files: innerFiles.map((file) => ({ ...file, percent })),
+          type: 'real',
+        });
+      }
     };
   }
 

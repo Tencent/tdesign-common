@@ -421,3 +421,17 @@ export function getDisplayFiles(params: GetDisplayFilesParams) {
   }
   return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];
 }
+
+export function updateProgress(currentFiles: UploadFile[], multiple: boolean, newFiles: UploadFile[]) {
+  if (!currentFiles.length) return;
+  if (multiple) {
+    newFiles.forEach((file) => {
+      const idx = currentFiles.findIndex(t => t.name === file?.name);
+      if (idx !== -1) {
+        currentFiles[idx] = file;
+      }
+    })
+  } else {
+    currentFiles[0] = newFiles[0];
+  }
+}
