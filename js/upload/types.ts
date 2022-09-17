@@ -178,6 +178,7 @@ export interface HandleUploadParams {
   data?: Record<string, any> | ((file: File) => Record<string, any>);
   /** 文件是否作为一个独立文件包，整体替换，整体删除。不允许追加文件，只允许替换文件 */
   isBatchUpload?: boolean;
+  autoUpload?: boolean;
   /** 是否在同一个请求中上传多个文件 */
   uploadAllFilesInOneRequest?: boolean;
   /** 上传接口地址 */

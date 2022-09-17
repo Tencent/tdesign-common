@@ -249,7 +249,9 @@ Promise<UploadRequestReturn> {
           failedFiles.push(one.data.files[0]);
         }
       });
-      const newFiles = isBatchUpload || !params.multiple ? files : uploadedFiles.concat(files);
+      const newFiles = isBatchUpload || !params.multiple || !params.autoUpload
+        ? files
+        : uploadedFiles.concat(files);
       resolve({
         // 有一个请求成功，就算成功
         status: files.length ? 'success' : 'fail',
@@ -423,7 +425,7 @@ export function getDisplayFiles(params: GetDisplayFilesParams) {
 }
 
 export function updateProgress(currentFiles: UploadFile[], multiple: boolean, newFiles: UploadFile[]) {
-  if (!currentFiles.length) return;
+  if (!currentFiles.length) return [];
   if (multiple) {
     newFiles.forEach((file) => {
       const idx = currentFiles.findIndex(t => t.name === file?.name);
