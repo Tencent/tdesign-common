@@ -34,7 +34,7 @@ export default function xhr({
       timer1 = setInterval(() => {
         if (percent + 10 < 100) {
           percent = Math.max(percent + 10, percent);
-          if (percent !== files[0].percent) {
+          if (files[0] && percent !== files[0].percent) {
             files[0].percent = percent;
             onProgress({
               percent,
