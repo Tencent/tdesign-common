@@ -83,6 +83,7 @@ export function handleSuccess(params: handleSuccessParams) {
     log.error('Upload', 'Empty File in Success Callback');
   }
   files.forEach((file) => {
+    file.percent = 100;
     file.status = 'success';
     delete file.response?.error;
   });
@@ -249,13 +250,15 @@ Promise<UploadRequestReturn> {
           failedFiles.push(one.data.files[0]);
         }
       });
-      const newFiles = isBatchUpload || !params.multiple || !params.autoUpload
-        ? files
-        : uploadedFiles.concat(files);
+      const tFiles = params.autoUpload
+        ? uploadedFiles.concat(files)
+        : uploadedFiles.filter(file => file.status === 'success').concat(files);
+      const newFiles = isBatchUpload || !params.multiple ? files : tFiles;
       resolve({
         // 有一个请求成功，就算成功
         status: files.length ? 'success' : 'fail',
         data: {
+          // 非自动上传时，全部文件已经存在于 uploadedFiles 中
           files: newFiles,
         },
         // 上传失败的文件，需等待继续上传

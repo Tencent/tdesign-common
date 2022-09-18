@@ -93,11 +93,12 @@ export default function xhr({
       }
       percent = Math.max(realPercent, percent);
       if (percent !== realPercent) {
+        const progressFiles = innerFiles.map((item) => ({ ...item, percent }));
         onProgress({
           event,
           percent,
-          file: file || innerFiles[0],
-          files: innerFiles.map((file) => ({ ...file, percent })),
+          file: file || progressFiles[0],
+          files: progressFiles,
           type: 'real',
         });
       }
@@ -121,8 +122,12 @@ export default function xhr({
     }
     clearInterval(timer1);
     clearTimeout(timer2);
+    const successFiles = innerFiles.map((item) => ({ ...item, percent: 100 }));
     onSuccess({
-      event, file, files: innerFiles, response
+      event,
+      file: file || successFiles[0],
+      files: successFiles,
+      response,
     });
   };
 
