@@ -48,7 +48,12 @@
     display: flex;
     align-items: center;
     word-break: break-word;
-    padding-right: 10px;
+    position: relative;
+
+    &-content {
+      width: calc(100% - 40px);
+      min-height: 10px;
+    }
 
     .@{prefix}-icon {
       font-size: @dialog-icon-size;
@@ -72,6 +77,7 @@
   &__footer {
     width: 100%;
     text-align: right;
+    box-sizing: border-box;
     padding: @dialog-footer-padding;
     // remove space between inline-block elements.
     word-spacing: @dialog-word-spacing;
@@ -83,14 +89,6 @@
 
   &--default {
     padding: @dialog-default-spacer;
-  }
-
-  &--primary {
-    padding: @dialog-primary-spacer;
-
-    .@{prefix}-dialog__body {
-      padding: @dialog-parimary-body-spacer;
-    }
   }
 
   &__close {

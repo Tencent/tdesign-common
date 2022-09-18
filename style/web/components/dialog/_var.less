@@ -37,15 +37,13 @@
 
 // 间距
 @dialog-spacer: @spacer-4;
-@dialog-default-spacer: 28px @spacer-4 @spacer-4 @spacer-4;
-@dialog-primary-spacer: @dialog-spacer;
-@dialog-parimary-body-spacer: @dialog-spacer 28px @dialog-spacer 28px;
+@dialog-default-spacer: 28px 0 @spacer-4 @spacer-4;
 @dialog-default-padding: @dialog-spacer;
 @dialog-header-icon-margin-right: @spacer;
-@dialog-body-padding: @spacer-2 0 0;
+@dialog-body-padding: @spacer-2 @spacer-4 0 0;
 @dialog-body-icon-padding: @spacer-2 0 @spacer-3 @spacer-4;
 @dialog-footer-button-margin-left: @spacer;
-@dialog-footer-padding: @spacer-2 0 0;
+@dialog-footer-padding: @spacer-2 @spacer-4 0 0;
 @dialog-word-spacing: -6px;
 
 // 边框
@@ -54,7 +52,7 @@
 @dialog-close-border-radius: @border-radius-medium;
 
 // 位置
-@dialog-close-position-top: @spacer-3;
+@dialog-close-position-top: 0;
 @dialog-close-position-right: @spacer-3;
 // 此处不能使用20% 因为定位是paddingTop 所以20% 会根据屏幕宽度
 @dialog-top-position-top: 20vh;
