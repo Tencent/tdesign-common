@@ -213,6 +213,7 @@
       background-color: @upload-card-container-bg-color;
       border: @upload-card-contariner-border;
       box-sizing: border-box;
+      position: relative;
 
       > .@{prefix}-icon,
       .@{prefix}-loading {
@@ -641,4 +642,8 @@
   .@{prefix}-upload__single-name {
     color: @upload-file-name-color;
   }
+}
+
+.@{prefix}-upload__card-name {
+  margin-top: @spacer;
 }
