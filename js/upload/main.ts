@@ -252,7 +252,7 @@ Promise<UploadRequestReturn> {
       });
       const tFiles = params.autoUpload
         ? uploadedFiles.concat(files)
-        : uploadedFiles.filter(file => file.status === 'success').concat(files);
+        : uploadedFiles;
       const newFiles = isBatchUpload || !params.multiple ? files : tFiles;
       resolve({
         // 有一个请求成功，就算成功
@@ -418,10 +418,12 @@ export interface GetDisplayFilesParams {
  * 获取文件列表显示
  */
 export function getDisplayFiles(params: GetDisplayFilesParams) {
-  const { multiple, uploadValue, toUploadFiles } = params;
-  const waitingUploadFiles = toUploadFiles.filter((file) => file.status !== 'success');
+  const { multiple, uploadValue, toUploadFiles, autoUpload } = params;
+  const waitingUploadFiles = autoUpload
+    ? toUploadFiles
+    : toUploadFiles.filter((file) => file.status !== 'success');
   if (multiple && !params.isBatchUpload) {
-    if (!params.autoUpload) return uploadValue;
+    if (!autoUpload) return uploadValue;
     return (waitingUploadFiles.length ? uploadValue.concat(waitingUploadFiles) : uploadValue) || [];
   }
   return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];
@@ -431,9 +433,19 @@ export function updateProgress(currentFiles: UploadFile[], multiple: boolean, ne
   if (!currentFiles.length) return [];
   if (multiple) {
     newFiles.forEach((file) => {
-      const idx = currentFiles.findIndex(t => t.name === file?.name);
+      let idx = currentFiles.findIndex(t => t.name ? t.name === file.name : false);
+      if (idx === -1 && file.raw) {
+        idx = currentFiles.findIndex(t => t.raw ? t.raw === file.raw : false);
+      }
+      if (idx === -1 && file.url) {
+        idx = currentFiles.findIndex(t => t.url ? t.url === file.url : false);
+      }
       if (idx !== -1) {
-        currentFiles[idx] = file;
+        currentFiles[idx] = {
+          ...currentFiles[idx],
+          status: file.status,
+          percent: file.percent,
+        };
       }
     })
   } else {

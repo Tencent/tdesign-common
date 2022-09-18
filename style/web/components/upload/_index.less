@@ -15,11 +15,6 @@
 .@{prefix}-upload {
   .reset;
 
-  .@{prefix}-size-s {
-    display: block;
-    color: @upload-small-color;
-    font: @upload-small-font;
-  }
   .@{prefix}-is-bordered {
     border: @upload-card-content-border;
   }
@@ -357,6 +352,8 @@
 }
 
 .@{prefix}-upload__tips {
+  display: block;
+  color: @upload-small-color;
   margin-top: @upload-tips-margin-top;
 
   &.@{prefix}-upload__tips-error {
