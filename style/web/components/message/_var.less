@@ -27,7 +27,6 @@
 @msg-icon-position-right: @spacer-4;
 
 // 尺寸
-@msg-min-width: 400px;
 @msg-icon-size: @font-size-xl;
 @msg-border-width: 1px;
 
@@ -45,8 +44,8 @@
 @msg-padding-horizontal-default: @spacer-2;
 @msg-padding-vertical-default: 13px;
 @msg-icon-margin-right: @spacer;
-@msg-inner-margin-right: @spacer-3;
+@msg-close-icon-margin-left: @spacer-3;
 @msg-list-margin-bottom: @spacer-1;
 
 // Angular Icon 组件会多一层容器，这层容器用 [data-t-icon] 命中
-@msg-icon-selector: ~"> .@{prefix}-icon, > [data-@{prefix}-icon] > .@{prefix}-icon, .@{prefix}-loading";
+@msg-icon-selector: ~"> .t-icon, > [data-@{prefix}-icon] > .t-icon, .@{prefix}-loading";
