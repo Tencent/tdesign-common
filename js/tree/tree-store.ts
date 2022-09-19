@@ -10,6 +10,7 @@ import {
   TypeTimer,
   TypeTargetNode,
   TypeTreeNodeData,
+  TypeTreeItem,
   TypeTreeStoreOptions,
   TypeTreeFilter,
   TypeTreeFilterOptions,
@@ -321,7 +322,7 @@ export class TreeStore {
   }
 
   // 在目标节点之前插入节点
-  public insertBefore(value: TypeTargetNode, item: TypeTreeNodeData): void {
+  public insertBefore(value: TypeTargetNode, item: TypeTreeItem): void {
     const node = this.getNode(value);
     if (node) {
       node.insertBefore(item);
@@ -329,7 +330,7 @@ export class TreeStore {
   }
 
   // 在目标节点之后插入节点
-  public insertAfter(value: TypeTargetNode, item: TypeTreeNodeData): void {
+  public insertAfter(value: TypeTargetNode, item: TypeTreeItem): void {
     const node = this.getNode(value);
     if (node) {
       node.insertAfter(item);
