@@ -19,7 +19,7 @@
         }
 
         // 处理组件内icon颜色
-        .@{prefix}-icon,
+        .t-icon,
         .@{prefix}-fake-arrow {
           color: @@borderColor;
           @borderColor: "input-border-color-@{status}";
@@ -64,7 +64,7 @@
 
 .input-status-icon(@status) {
   .@{prefix}-form__status {
-    .@{prefix}-icon {
+    .t-icon {
       color: @@iconColor;
       @iconColor: "form-color-@{status}";
     }
