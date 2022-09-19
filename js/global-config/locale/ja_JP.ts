@@ -120,6 +120,7 @@ export default {
       reupload: '再アップロード',
       continueUpload: 'アップロードを継続する',
       delete: '削除',
+      uploading: 'アップロード中',
     },
     dragger: {
       dragDropText: 'マウスを離す',

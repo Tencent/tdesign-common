@@ -120,6 +120,7 @@ export default {
       reupload: 'ReUpload',
       continueUpload: 'Continue Upload',
       delete: 'Delete',
+      uploading: 'Uploading',
     },
     dragger: {
       dragDropText: 'Drop hear',
@@ -169,8 +170,8 @@ export default {
     collapseText: 'collapse',
   },
   anchor: {
-    expandText: 'copy the link successfully',
-    collapseText: 'copy link',
+    copySuccessText: 'copy the link successfully',
+    copyText: 'copy link',
   },
   colorPicker: {
     swatchColorTitle: 'System Default',
