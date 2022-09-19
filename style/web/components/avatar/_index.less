@@ -66,11 +66,6 @@
   &.@{prefix}-avatar--offset-left {
     .generate-z-index(@avatar-group-init-zIndex);
 
-    .@{prefix}-popup__reference .@{prefix}-avatar {
-      z-index: 0;
-      .avatar-group-size--left();
-    }
-
     & .@{prefix}-avatar {
       &:not(:first-child) {
         .avatar-group-size--left();
