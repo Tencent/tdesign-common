@@ -83,14 +83,13 @@ jobs:
           cd target-repo/
           npm install
           npm run site:preview
+          zip -r web.zip _site
       - name: Save PR number
         run: echo ${{ github.event.number }} > ./style/web/pr-id.txt
-
-      - run: cd style && zip -r web.zip _site
 
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: web
-          path: style/web.zip
+          path: target-repo/web.zip
           retention-days: 5
