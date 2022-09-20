@@ -80,7 +80,9 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm install
-      - run: npm run site:preview
+      - run: |
+        cd target-repo/
+        npm run site:preview
       - name: Save PR number
         run: echo ${{ github.event.number }} > ./style/web/pr-id.txt
 
