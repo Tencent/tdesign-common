@@ -59,13 +59,16 @@ jobs:
         with:
           repository: Tencent/tdesign-vue
           submodules: recursive
-          # token: ${{ secrets.PERSONAL_TOKEN }}
           path: target-repo
 
       - name: init web deploy
         uses: actions/setup-node@v2
         with:
           node-version: 16
+      - run: |
+          cp -rf style/web/* target-repo/src/_common/
+          cd target-repo/
+          git status
       - uses: actions/cache@v2
         env:
           cache-name: cache-nodemodules
@@ -77,12 +80,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm install
-      - run: |
-          cp -rf style/web/* target-repo/src/_common/
-          cd target-repo/
-          ls
-          npm run site:preview
-
+      - run: npm run site:preview
       - name: Save PR number
         run: echo ${{ github.event.number }} > ./style/web/pr-id.txt
 
