@@ -55,20 +55,28 @@ jobs:
     if: needs.modify.outputs.web-changed == 'true'
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: Tencent/tdesign-vue
+          submodules: recursive
+          # token: ${{ secrets.PERSONAL_TOKEN }}
+          path: target-repo
 
       - name: init web deploy
         uses: actions/setup-node@v2
         with:
           node-version: 16
     
-      - run: cd style/web && npm install && npm run build && rm -rf node_modules
+      - run: |
+          cp -rf style/web/* target-repo/src/_common/
+          cd target-repo/
+          ls
+          npm run site:preview
 
       - name: Save PR number
         run: echo ${{ github.event.number }} > ./style/web/pr-id.txt
 
-      - run: export device=web && node .github/build
-
-      - run: cd style && zip -r web.zip web
+      - run: cd style && zip -r web.zip _site
 
       - name: upload artifact
         uses: actions/upload-artifact@v2
