@@ -84,9 +84,8 @@ jobs:
           npm install
           npm run site:preview
           zip -r web.zip _site
-      - run: |
-          cd target-repo/
-          zip -r web.zip _site
+          ls
+          pwd
       - name: Save PR number
         run: echo ${{ github.event.number }} > ./style/web/pr-id.txt
 
