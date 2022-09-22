@@ -366,7 +366,7 @@ export function validateFile(
   });
 }
 
-export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError) {
+export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError: (p: {[key: string]: any }) => string) {
   const sizeLimitErrors: FileChangeReturn[] = [];
   const toFiles: UploadFile[] = [];
   fileValidateList.forEach((oneFile) => {
