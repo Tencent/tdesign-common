@@ -18,12 +18,12 @@ jobs:
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
-          name: web
+          name: _site
 
       - shell: bash
         run: |
-          if [ -f "web.zip" ];then
-            unzip web.zip
+          if [ -f "_site.zip" ];then
+            unzip _site.zip
           else
             echo "文件不存在" && exit 1
           fi
@@ -32,7 +32,7 @@ jobs:
 
       - name: save PR id
         id: pr
-        run: echo "::set-output name=id::$(<web/pr-id.txt)"
+        run: echo "::set-output name=id::$(<_site/pr-id.txt)"
 
       - name: Upload surge service and generate preview URL
         id: deploy
