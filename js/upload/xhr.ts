@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { UploadFile, XhrOptions } from './types';
 
 export default function xhr({
