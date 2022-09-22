@@ -93,6 +93,6 @@ jobs:
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: web
+          name: _site
           path: target-repo/_site.zip
           retention-days: 5
