@@ -65,7 +65,7 @@ jobs:
           submodules: recursive
           path: target-repo
 
-      - name: init web deploy
+      - name: init site deploy
         uses: actions/setup-node@v2
         with:
           node-version: 16
@@ -88,11 +88,11 @@ jobs:
           npm install
           npm run site:preview
           echo ${{ github.event.number }} > ./_site/pr-id.txt
-          zip -r web.zip _site
+          zip -r _site.zip _site
 
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: web
-          path: target-repo/web.zip
+          path: target-repo/_site.zip
           retention-days: 5
