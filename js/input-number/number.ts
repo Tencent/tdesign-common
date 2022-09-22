@@ -21,7 +21,7 @@ export function canAddNumber(
   max: NumberType,
   largeNumber = false
 ): boolean {
-  if (!num) return true;
+  if (!num && num !== 0) return true;
   if (largeNumber && isString(num)) {
     return compareNumber(num, max, largeNumber) < 0;
   }
@@ -34,7 +34,7 @@ export function canReduceNumber(
   min: NumberType,
   largeNumber = false
 ): boolean {
-  if (!num) return true;
+  if (!num && num !== 0) return true;
   if (largeNumber && isString(num)) {
     return compareNumber(num, min, largeNumber) > 0;
   }
