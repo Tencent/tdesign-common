@@ -48,6 +48,10 @@ jobs:
         id: web-changed
         with:
           paths: style/web
+      - uses: marceloprado/has-changed-path@v1
+        id: mobile-changed
+        with:
+          paths: style/mobile
 
   build-web:
     runs-on: ubuntu-latest
@@ -83,11 +87,8 @@ jobs:
           cd target-repo/
           npm install
           npm run site:preview
+          echo ${{ github.event.number }} > ./_site/pr-id.txt
           zip -r web.zip _site
-          ls
-          pwd
-      - name: Save PR number
-        run: echo ${{ github.event.number }} > ./style/web/pr-id.txt
 
       - name: upload artifact
         uses: actions/upload-artifact@v2
