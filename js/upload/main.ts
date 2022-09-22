@@ -428,28 +428,3 @@ export function getDisplayFiles(params: GetDisplayFilesParams) {
   }
   return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];
 }
-
-export function updateProgress(currentFiles: UploadFile[], multiple: boolean, newFiles: UploadFile[]) {
-  if (!currentFiles.length) return [];
-  if (multiple) {
-    newFiles.forEach((file) => {
-      let idx = currentFiles.findIndex(t => t.name ? t.name === file.name : false);
-      if (idx === -1 && file.raw) {
-        idx = currentFiles.findIndex(t => t.raw ? t.raw === file.raw : false);
-      }
-      if (idx === -1 && file.url) {
-        idx = currentFiles.findIndex(t => t.url ? t.url === file.url : false);
-      }
-      if (idx !== -1) {
-        currentFiles[idx] = {
-          ...currentFiles[idx],
-          status: file.status,
-          percent: file.percent,
-        };
-      }
-    })
-  } else {
-    currentFiles[0] = newFiles[0];
-  }
-  return currentFiles;
-}
