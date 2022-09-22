@@ -24,7 +24,6 @@ jobs:
         run: |
           if [ -f "web.zip" ];then
             unzip web.zip
-            mv _site web
           else
             echo "文件不存在" && exit 1
           fi
@@ -41,7 +40,7 @@ jobs:
           repository=${{github.repository}}
           project_name=${repository#*/}
           export DEPLOY_DOMAIN=https://preview-pr${{ steps.pr.outputs.id }}-$project_name.surge.sh
-          npx surge --project ./web --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          npx surge --project ./_site --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
           echo the preview URL is $DEPLOY_DOMAIN
           echo "::set-output name=url::$DEPLOY_DOMAIN"
 
