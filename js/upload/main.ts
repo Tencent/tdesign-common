@@ -340,7 +340,7 @@ export function validateFile(
         if (sizeResult) {
           resolve({ file, validateResult: { type: 'FILE_OVER_SIZE_LIMIT', extra: sizeResult } });
         } else if (customResult === false) {
-          resolve({ file, validateResult: { type: 'CUSTOME_BEFORE_UPLOAD' } });
+          resolve({ file, validateResult: { type: 'CUSTOM_BEFORE_UPLOAD' } });
         }
         resolve({ file });
       });
@@ -370,7 +370,7 @@ export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError
   const sizeLimitErrors: FileChangeReturn[] = [];
   const toFiles: UploadFile[] = [];
   fileValidateList.forEach((oneFile) => {
-    if (oneFile.validateResult?.type === 'CUSTOME_BEFORE_UPLOAD') return;
+    if (oneFile.validateResult?.type === 'CUSTOM_BEFORE_UPLOAD') return;
     if (oneFile.validateResult?.type === 'FILE_OVER_SIZE_LIMIT') {
       if (!oneFile.file.response) {
         oneFile.file.response = {};
