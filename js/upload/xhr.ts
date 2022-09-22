@@ -92,7 +92,7 @@ export default function xhr({
         realPercent = Math.round((event.loaded / event.total) * 100);
       }
       percent = Math.max(realPercent, percent);
-      if (percent !== realPercent) {
+      if (percent !== realPercent && innerFiles[0]?.percent !== percent) {
         const progressFiles = innerFiles.map((item) => ({ ...item, percent }));
         onProgress({
           event,
