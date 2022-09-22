@@ -19,7 +19,10 @@
   padding: @select-padding;
   display: inline-flex;
 }
-
+.@{prefix}-icon.@{prefix}-icon-browse{
+    height: @select-prefix-icon-height;
+    width: @select-prefix-icon-width;
+}
 .@{prefix}-select {
   .reset;
 
@@ -408,7 +411,9 @@
   padding: @select-option-padding-l;
   font: @select-font-l;
 }
-
+.@{prefix}-select-option.@{prefix}-size-m {
+    line-height: @select-option-line-height-m;
+  }
 .@{prefix}-select-option.@{prefix}-size-s {
   height: @select-option-height-s;
   padding: @select-option-padding-s;
@@ -473,4 +478,7 @@
       }
     }
   }
+}
+.@{prefix}-textarea{
+    padding: @select-textarea-padding !important;
 }
