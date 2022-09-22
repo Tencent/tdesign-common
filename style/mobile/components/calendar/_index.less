@@ -3,6 +3,9 @@
 @title-font-size: 18px;
 @title-color: @text-level-1-color;
 @days-item-color: @text-level-2-color;
+@dates-item-suffix-color: @text-level-3-color;
+@calendar-disabled-color: @text-level-4-color;
+@calendar-centre-color: @primary-color-1;
 
 .@{prefix}-calendar {
   position: relative;
@@ -34,9 +37,12 @@
     justify-content: space-around;
     align-items: center;
     padding: 0 16px;
+    text-align: center;
+    line-height: 46px;
 
     &-item {
-      padding: 16px;
+      width: 44px;
+      height: 46px;
       font-size: 14px;
       color: @days-item-color;
     }
@@ -61,7 +67,7 @@
     font-size: 14px;
     color: @title-color;
     font-weight: 600;
-    padding: 16px 0 8px;
+    padding: 16px 0 0;
 
     &s {
       max-height: 456px;
@@ -78,29 +84,72 @@
     overflow: scroll;
 
     &-item {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
       border-radius: 8px;
       width: 49px;
-      height: 56px;
+      height: 60px;
       line-height: 24px;
       font-weight: 600;
       cursor: pointer;
+      margin-top: 8px;
 
-      &--nocurrent {
-        color: #c8c9cc;
+      &-prefix,
+      &-suffix {
+        position: absolute;
+        font-size: 10px;
+        line-height: 16px;
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
       }
 
-      &--value {
-        padding: 6px 8px;
+      &-prefix {
+        top: 4px;
       }
 
-      &--active {
+      &-suffix {
+        bottom: 4px;
+        color: @dates-item-suffix-color;
+
+        &--selected,
+        &--start,
+        &--end {
+          color: #fff;
+        }
+
+        &--disabled {
+          color: @calendar-disabled-color;
+        }
+      }
+
+      &--selected,
+      &--start,
+      &--end {
         background: #0053db;
         color: #fff;
         border-radius: 4px;
+      }
+
+      &--start {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &--end {
+        border-radius: 0 4px 4px 0;
+      }
+
+      &--centre {
+        border-radius: 0;
+        background-color: @calendar-centre-color;
+      }
+
+      &--disabled {
+        color: @calendar-disabled-color;
+        cursor: default;
       }
     }
   }
