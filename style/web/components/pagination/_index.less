@@ -104,6 +104,7 @@
     &:hover {
       color: @pagination-bg-color-hover;
       border-color: @pagination-bg-color-hover;
+      transition: @pagination-hover-transition;
     }
 
     &:active {
@@ -147,6 +148,7 @@
       &:hover {
         color: @pagination-text-color-btn;
         background-color: @pagination-bg-color-btn-hover;
+        transition: @pagination-hover-transition;
       }
 
       &:active {
@@ -160,7 +162,7 @@
         background: none;
       }
 
-      .@{prefix}-icon-more {
+      .t-icon-more {
         transform: rotate(90deg);
         color: @pagination-icon-color-disabled;
       }
@@ -199,6 +201,7 @@
         &:hover:not(&.@{prefix}-is-current) {
           color: @pagination-text-color-btn;
           background-color: @pagination-bg-color-btn-hover;
+          transition: @pagination-hover-transition;
         }
 
         &:active:not(&.@{prefix}-is-current) {

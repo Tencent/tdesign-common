@@ -135,8 +135,8 @@
 
       .@{prefix}-image-viewer__modal--image {
         display: block;
-        max-width: 1000px;
-        max-height: 800px;
+        max-width: min(90vw, 1000px);
+        max-height: min(90vh, 800px);
         transition: all @anim-duration-base @anim-time-fn-easing;
         transform: rotate(0deg);
         object-fit: contain;
@@ -363,6 +363,7 @@
   align-items: center;
   justify-content: center;
   color: @text-color-primary;
+  user-select: none;
 
   .@{prefix}-image-viewer__utils--content {
     display: inline-flex;
@@ -416,7 +417,7 @@
     cursor: pointer;
     transition: @anim-duration-base;
 
-    &:hover .@{prefix}-icon {
+    &:hover .t-icon {
       border-radius: 50%;
       background-color: @bg-color-secondarycontainer-hover;
     }
@@ -430,8 +431,8 @@
 }
 
 .@{prefix}-image-viewer-mini__content {
-  max-height: 800px;
-  max-width: 1000px;
+  max-width: min(90vw, 1000px);
+  max-height: min(90vh, 800px);
 
   .@{prefix}-image-viewer__modal--pic {
 
@@ -454,8 +455,8 @@
 
       .@{prefix}-image-viewer__modal--image {
         display: block;
-        max-width: 800px;
-        max-height: 600px;
+        max-width: min(80vw, 800px);
+        max-height: min(80vh, 600px);
         transition: all @anim-duration-base ease;
         transform: rotate(0deg);
         object-fit: contain;

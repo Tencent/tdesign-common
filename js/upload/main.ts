@@ -141,7 +141,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
     });
     // 自定义上传方法
     if (requestMethod) {
-      requestMethod(toUploadFiles).then((res) => {
+      requestMethod(params.multiple ? toUploadFiles : toUploadFiles[0]).then((res) => {
         if (!handleRequestMethodResponse(res)) {
           resolve({});
           return;
@@ -255,10 +255,8 @@ Promise<UploadRequestReturn> {
         : uploadedFiles;
       const newFiles = isBatchUpload || !params.multiple ? files : tFiles;
       resolve({
-        // 有一个请求成功，就算成功
         status: files.length ? 'success' : 'fail',
         data: {
-          // 非自动上传时，全部文件已经存在于 uploadedFiles 中
           files: newFiles,
         },
         // 上传失败的文件，需等待继续上传

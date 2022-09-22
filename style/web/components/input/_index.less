@@ -48,6 +48,7 @@
 
     &:placeholder-shown {
       text-overflow: ellipsis;
+      width: 100%;
     }
 
     &[type="search"]::-webkit-search-decoration,
@@ -113,19 +114,19 @@
 
   .@{prefix}-input__prefix,
   .@{prefix}-input__suffix {
-    > .@{prefix}-icon {
+    > .t-icon {
       font-size: @input-inner-icon-font-size;
     }
   }
 
   .@{prefix}-input__prefix {
-    > .@{prefix}-icon {
+    > .t-icon {
       color: @input-inner-prefix-icon-color;
     }
   }
 
   .@{prefix}-input__suffix {
-    > .@{prefix}-icon {
+    > .t-icon {
       color: @input-inner-suffix-icon-color;
     }
   }
@@ -133,14 +134,14 @@
   // 输入框被聚焦
   &.@{prefix}-is-focused {
     .@{prefix}-input__prefix {
-      > .@{prefix}-icon {
+      > .t-icon {
         color: @input-border-color-default-focus;
       }
     }
     .@{prefix}-input__suffix {
       // 只有time-picker、date-picker特殊使用的suffix icon需要改变颜色 若后续有新增组件继续扩展这个枚举
-      > .@{prefix}-icon-time,
-      .@{prefix}-icon-calendar {
+      > .t-icon-time,
+      .t-icon-calendar {
         color: @input-border-color-default-focus;
       }
     }
@@ -261,7 +262,7 @@
   position: absolute;
 }
 
-.@{prefix}-input__tips--normal {
+.@{prefix}-input__tips--default {
   color: @input-text-color-tips;
 }
 
@@ -288,7 +289,8 @@
 .@{prefix}-input__input-pre {
   position: absolute;
   visibility: hidden;
-  white-space: nowrap;
+  white-space: pre;
+  display: block;
 }
 
 .@{prefix}-input--auto-width {

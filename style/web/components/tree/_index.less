@@ -19,7 +19,7 @@
   &.@{prefix}-is-disabled {
     color: @tree-disabled-color;
 
-    .@{prefix}-icon {
+    .t-icon {
       color: @tree-disabled-color;
     }
 
@@ -29,7 +29,7 @@
         color: @tree-disabled-color;
       }
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @tree-icon-disabled-color;
       }
     }
@@ -67,7 +67,7 @@
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     line-height: @tree-node-item-line-height;
 
-    .@{prefix}-icon,
+    .t-icon,
     .@{prefix}-loading {
       display: inline-block;
       position: relative;
@@ -75,7 +75,7 @@
       font-size: @font-size-l;
     }
 
-    .@{prefix}-icon {
+    .t-icon {
       color: @tree-node-icon-color;
     }
 
@@ -85,19 +85,19 @@
     }
 
     .@{prefix}-tree__icon--default {
-      .@{prefix}-icon {
+      .t-icon {
         transition: color, transform @anim-time-fn-easing @anim-duration-base;
         transform: rotate(0);
       }
     }
 
     &--open {
-      .@{prefix}-icon {
+      .t-icon {
         color: @tree-node-icon-active-color;
       }
 
       .@{prefix}-tree__icon--default {
-        .@{prefix}-icon {
+        .t-icon {
           transform: rotate(90deg);
         }
       }
@@ -203,10 +203,6 @@
     user-select: none;
     cursor: pointer;
     transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
-
-    .@{prefix}-icon-loading-blue {
-      color: @tree-node-icon-active-color;
-    }
   }
 
   // svg 动画与 icon 背景进行隔离
@@ -272,7 +268,7 @@
     margin-left: auto;
   }
 
-  &__operations .@{prefix}-icon {
+  &__operations .t-icon {
     cursor: pointer;
   }
 

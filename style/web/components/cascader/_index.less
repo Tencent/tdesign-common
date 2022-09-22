@@ -18,7 +18,7 @@
   }
 
   &__popup {
-    &.@{prefix}-popup__content {
+    .@{prefix}-popup__content {
       padding: 0;
       box-shadow: @shadow-2;
       border-radius: @cascader-popup-border-radius;
@@ -61,7 +61,6 @@
     box-sizing: content-box;
     padding: @cascader-menu-padding;
     background: @bg-color-container;
-    border-radius: @border-radius-medium;
 
     &.@{prefix}-size-l {
       padding: @cascader-menu-padding-l;
@@ -72,7 +71,7 @@
     }
 
     &--segment {
-      border-right: .5px solid @cascader-menu-segment-color;
+      border-right: 1px solid @cascader-menu-segment-color;
     }
 
     &--filter {
@@ -121,7 +120,7 @@
     }
 
     &-icon {
-      &.@{prefix}-icon {
+      &.t-icon {
         position: absolute;
         height: 100%;
         right: 0;
@@ -142,7 +141,7 @@
       background: @cascader-item-background-color-expanded;
       color: @cascader-highlight-color;
 
-      .@{prefix}-icon-chevron-right {
+      .t-icon-chevron-right {
         color: @cascader-highlight-color;
       }
 
@@ -181,10 +180,6 @@
       .@{prefix}-checkbox {
         width: 100%;
       }
-    }
-
-    .@{prefix}-popup__reference {
-      width: 100%;
     }
 
     &-label {
