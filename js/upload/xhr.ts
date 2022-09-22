@@ -122,11 +122,14 @@ export default function xhr({
     }
     clearInterval(timer1);
     clearTimeout(timer2);
-    const successFiles = innerFiles.map((item) => ({ ...item, percent: 100 }));
+    innerFiles.forEach((file) => {
+      file.percent = 100;
+      file.status = 'success';
+    });
     onSuccess({
       event,
-      file: file || successFiles[0],
-      files: successFiles,
+      file: file || innerFiles[0],
+      files: [...innerFiles],
       response,
     });
   };
