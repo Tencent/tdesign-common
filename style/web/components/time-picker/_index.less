@@ -32,14 +32,6 @@
   &__group {
     position: relative;
 
-    &.@{prefix}-is-focused {
-      .@{prefix}-input__suffix {
-        .@{prefix}-icon:not(.@{prefix}-input__suffix-clear) {
-          color: @time-picker-input-color-focused;
-        }
-      }
-    }
-
     &.active {
       border: @time-picker-input-border-active;
       box-shadow: @time-picker-input-shadow-active;
@@ -205,7 +197,7 @@
         border-radius: @time-picker-panel-item-border-radius;
         text-align: center;
         cursor: pointer;
-        transition: background-color @anim-duration-base;
+        transition: @anim-duration-base linear;
 
         &:not(&.@{prefix}-is-current):not(&.@{prefix}-is-disabled):hover {
           color: @time-picker-panel-item-color-hover;
@@ -234,6 +226,10 @@
 }
 
 .@{prefix}-time-picker__panel-section {
+  &-body {
+    padding: @time-picker-panel-section-padding;
+  }
+
   &-footer {
     width: 100%;
     height: @time-picker-panel-footer-height;
@@ -245,5 +241,6 @@
     position: relative;
     border-top: 1px solid @border-level-1-color;
     box-sizing: border-box;
+    padding: @time-picker-panel-section-padding;
   }
 }

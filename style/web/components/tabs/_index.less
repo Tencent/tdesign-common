@@ -14,7 +14,7 @@
   overflow: hidden;
   background-color: @tab-default-bg;
 
-  .@{prefix}-icon {
+  .t-icon {
     font-size: @tab-icon-size;
   }
 
@@ -191,6 +191,7 @@
     background-color: @tab-default-bar-bg-color;
     z-index: 1;
     transition: @tab-bar-transition;
+    border-radius: @border-radius-small;
 
     &.@{prefix}-is-top {
       bottom: 0;
@@ -334,7 +335,7 @@
       }
     }
 
-    .@{prefix}-icon-close {
+    .t-icon-close {
       color: @tab-card-icon;
       transition: @tab-btn-icon-close-transition;
 
