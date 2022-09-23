@@ -47,7 +47,7 @@
   }
 
   .@{prefix}-select__placeholder {
-    margin-left: @select-placeholder-margin;
+    margin-left: 8px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -243,9 +243,6 @@
   }
 }
 
-.@{prefix}-select__popup-reference {
-  width: 100%;
-}
 // dropdown
 .@{prefix}-select__dropdown {
 
@@ -256,22 +253,26 @@
     padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
     max-height: @select-dropdown-max-height;
     overflow-y: auto;
+    overscroll-behavior: contain;
     box-shadow: @select-dropdown-shadow;
   }
 
   &-inner {
-    .@{prefix}-select__list {
+    .@{prefix}-select__list,
+    .@{prefix}-tree {
       padding: @select-dropdown-padding;
     }
 
     &--size-s {
-      .@{prefix}-select__list {
+      .@{prefix}-select__list,
+      .@{prefix}-tree {
         padding: @select-dropdown-padding-s;
       }
     }
 
     &--size-l {
-      .@{prefix}-select__list {
+      .@{prefix}-select__list,
+      .@{prefix}-tree {
         padding: @select-dropdown-padding-l;
       }
     }

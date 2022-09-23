@@ -80,10 +80,6 @@
     z-index: @table-resize-line-z-index;
   }
 
-  &__column-controller {
-    padding: 16px 0;
-  }
-
   &__column-controller-trigger {
     &.@{prefix}-align-top-right,
     &.@{prefix}-align-bottom-right {
@@ -105,7 +101,7 @@
     box-sizing: border-box;
   }
 
-  .@{prefix}-icon {
+  .t-icon {
     font-size: @font-size-l;
   }
 
@@ -569,11 +565,6 @@
   }
 }
 
-// 当 Popup 去除包裹元素后，便不再需要这个样式
-.@{prefix}-popup__reference.@{prefix}-table__filter-icon {
-  margin-top: -4px;
-}
-
 .@{prefix}-table__sort-icon {
   // 排序图标临时效果，此处状态修改请慎重，需要背景色明确提醒用户点击区域（不建议将整个表头作为点击区域，还有过滤等其他图标）
   .@{prefix}-is-focus,
@@ -641,9 +632,7 @@
   display: inline-grid;
   height: @table-line-height;
 
-  // .@{prefix}-table__double-icons > .@{prefix}-popup__reference 是为了兼容 Popup 多余的包裹元素
-  .@{prefix}-table__sort-icon,
-  .@{prefix}-popup__reference {
+  .@{prefix}-table__sort-icon {
     height: @table-line-height-half;
   }
   .@{prefix}-table-sort-asc {
@@ -651,13 +640,6 @@
   }
   .@{prefix}-table-sort-desc {
     margin-top: -6px;
-  }
-}
-
-// .@{prefix}-table__double-icons > .@{prefix}-popup__reference 是为了兼容 Popup 多余的包裹元素
-.@{prefix}-popup__reference {
-  .@{prefix}-table__filter-icon, .@{prefix}-table__sort-icon {
-    vertical-align: initial;
   }
 }
 
@@ -768,23 +750,6 @@
 
 .@{prefix}-table__content {
   overflow: auto;
-}
-
-.@{prefix}-table-td--ellipsis {
-  .@{prefix}-popup__reference {
-    width: 100%;
-    display: inline;
-  }
-}
-
-// 兼容 React 表头超出省略
-.@{prefix}-table__th-cell-inner,
-.@{prefix}-table__cell--title {
-  > .@{prefix}-popup__reference {
-    width: 100%;
-    display: inline;
-    .text-ellipsis();
-  }
 }
 
 // 可向左滚动时，左边显示固定列显示阴影，右边同理

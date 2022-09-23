@@ -95,7 +95,7 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="./components/jump">
+    <a class="item" href="./components/jumper">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-jump.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-jump-dark.png" />
       <p class="name">Jumper 跳转</p>
@@ -449,7 +449,7 @@ spline: explain
     <a class="item" href="./components/guide">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-button.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-button-dark.png" />
-      <p class="name">Guide</p>
+      <p class="name">Guide 引导</p>
     </a>
   </div>
 

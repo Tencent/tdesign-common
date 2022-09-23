@@ -54,9 +54,12 @@ export function parseToDayjs(
   }
 
   // 兼容数据格式不标准场景 YYYY-MM-D
-  return dayjs(dateText, format).isValid()
+  const result = dayjs(dateText, format).isValid()
     ? dayjs(dateText, format)
     : dayjs(dateText);
+
+  // 兼容数据异常情况
+  return result.isValid() ? result : dayjs();
 }
 
 // 格式化 range

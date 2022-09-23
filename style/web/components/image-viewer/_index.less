@@ -363,6 +363,7 @@
   align-items: center;
   justify-content: center;
   color: @text-color-primary;
+  user-select: none;
 
   .@{prefix}-image-viewer__utils--content {
     display: inline-flex;
@@ -416,7 +417,7 @@
     cursor: pointer;
     transition: @anim-duration-base;
 
-    &:hover .@{prefix}-icon {
+    &:hover .t-icon {
       border-radius: 50%;
       background-color: @bg-color-secondarycontainer-hover;
     }
