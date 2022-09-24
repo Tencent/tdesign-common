@@ -20,11 +20,6 @@
   display: inline-flex;
 }
 
-.t-icon.t-icon-browse {
-  height: @select-prefix-icon-height;
-  width: @select-prefix-icon-width;
-}
-
 .@{prefix}-select {
   .reset;
 
@@ -142,6 +137,10 @@
     input {
       height: @select-input-height;
       line-height: @select-input-height;
+    }
+
+    .@{prefix}-input.@{prefix}-input--prefix > .@{prefix}-input__prefix {
+      font-size: @select-prefix-font-size;
     }
   }
 
@@ -450,10 +449,6 @@
 
 .@{prefix}-select-option + .@{prefix}-select-option {
   margin-top: @select-options-margin;
-}
-
-.@{prefix}-textarea {
-  padding: @select-textarea-padding !important;
 }
 
 .@{prefix}-select {
