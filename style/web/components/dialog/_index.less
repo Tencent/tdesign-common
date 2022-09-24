@@ -45,15 +45,32 @@
   &__header {
     color: @dialog-header-text-color;
     font: @dialog-header-font;
+    font-weight: @dialog-header-weight;
     display: flex;
     align-items: center;
     word-break: break-word;
     padding-right: 10px;
 
-    .t-icon {
+    .t-icon:not(.t-icon-close) {
       font-size: @dialog-icon-size;
       margin-right: @dialog-header-icon-margin-right;
       flex-shrink: 0;
+    }
+
+    &.header-fullscreen {
+      background-color: @dialog-header-bg-color-fullscreen;
+      min-height: @dialog-header-height-fullscreen;
+      padding-right: 0;
+      justify-content: center;
+      position: relative;
+
+      .@{prefix}-dialog__header-content {
+        box-sizing: border-box;
+        padding: @dialog-header-content-padding-fullscreen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 
@@ -66,6 +83,20 @@
 
     &__icon {
       padding: @dialog-body-icon-padding;
+
+      &.body-fullscreen {
+        box-sizing: border-box;
+        padding: @dalog-body-padding-fullscreen;
+        height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
+        overflow: auto;
+      }
+    }
+
+    &.body-fullscreen {
+      box-sizing: border-box;
+      padding: @dalog-body-padding-fullscreen;
+      height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
+      overflow: auto;
     }
   }
 
@@ -78,6 +109,12 @@
 
     .@{prefix}-button + .@{prefix}-button {
       margin-left: @dialog-footer-button-margin-left;
+    }
+
+    &.footer-fullscreen {
+      min-height: @dialog-footer-height-fullscreen;
+      padding: @dialog-footer-padding-fullscreen;
+      box-sizing: border-box;
     }
   }
 
@@ -116,6 +153,21 @@
     &:active {
       background: @dialog-close-icon-active;
     }
+
+    &.close-fullscreen {
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+
+      &:hover {
+        cursor: pointer;
+        background: #eee;
+      }
+
+      &:active {
+        background: #dcdcdc;
+      }
+    }
   }
   &.@{prefix}-dialog--draggable {
     &:hover {
@@ -130,8 +182,9 @@
     }
   }
 
-  &__full-screen {
+  &__fullscreen {
     width: calc(100% - 80px);
+    border-radius: 0;
   }
 }
 
@@ -227,7 +280,7 @@
     }
   }
 
-  .@{prefix}-dialog__position_full-screen {
+  .@{prefix}-dialog__position_fullscreen {
     // 因为内容会超出 使用flex布局
     display: flex;
     justify-content: center;
