@@ -38,6 +38,10 @@ export interface UploadFile {
    */
   type?: string;
   /**
+   * 上传时间
+   */
+  uploadTime?: string;
+  /**
    * 文件上传成功后的下载/访问地址
    * @default ''
    */

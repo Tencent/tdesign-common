@@ -39,11 +39,14 @@ export function returnFileSize(number: number) {
   return '';
 }
 
-export function getCurrentDate() {
+export function getCurrentDate(needTime = false) {
   const d = new Date();
   let month: string | number = d.getMonth() + 1;
   month = month < 10 ? `0${month}` : month;
-  return `${d.getFullYear()}-${month}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+  const date = `${d.getFullYear()}-${month}-${d.getDate()}`;
+  const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+  if (needTime) return [date, time].join(' ');
+  return date;
 }
 
 /**

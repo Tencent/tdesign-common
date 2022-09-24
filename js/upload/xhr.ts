@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { UploadFile, XhrOptions } from './types';
+import { getCurrentDate } from './utils';
 
 export default function xhr({
   method = 'POST',
@@ -126,6 +127,8 @@ export default function xhr({
     innerFiles.forEach((file) => {
       file.percent = 100;
       file.status = 'success';
+      // 如果上传请求返回结果没有上传日期，则使用电脑当前日期显示
+      file.uploadTime = response?.uploadTime || getCurrentDate();
     });
     onSuccess({
       event,
