@@ -109,7 +109,7 @@ export default function xhr({
 
   // eslint-disable-next-line consistent-return
   xhr.onload = (event: ProgressEvent) => {
-    let response;
+    let response: { [key: string]: any };
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
       return onError({
