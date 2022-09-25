@@ -22,7 +22,9 @@ spline: data
 
 简单表格，使用分页切换数据。使用边框线、斑马纹等清晰呈现各数据单元格边界线，辅助信息区隔。
 
-表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。
+- 表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。
+- 使用表格属性 `rowClassName` 设置行类名。
+- 使用列属性 `className` 设置列类名，或具体的某一个或某一些单元格类名。
 
 {{ base }}
 
@@ -147,6 +149,7 @@ spline: data
 - 将需要排序的列属性 `sorter` 设置为 `true`，示例：`{ colKey: 'date', title: '日期', sorter: true }`。
 - 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`，其中 `descending` 表示是否为降序排序，值为 `true` 表示降序，值为 `false` 表示升序。
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
+- 使用 `showSortColumnBgColor` 控制是否显示排序列背景色，用于更加显示地提醒用户具体的排序列。
 
 提供列属性 `sortType`，用于自定义支持排序方式。可选值有 `desc`/`asc`/`all`，分别表示只能降序徘、只能升序徘、降序和升序。
 
