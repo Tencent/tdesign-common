@@ -339,7 +339,7 @@ spline: data
 
 - `treeExpandAndFoldIcon` 用于设置树形结构折叠/展开图标，支持全局配置。
 - 子节点字段默认为 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
-- `tree.indent` 用于设置树结点缩进距离。
+- `tree.indent` 用于设置树结点缩进距离，叶子结点的距离可以通过类名 `t-table__tree-leaf-node` 单独设置。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
 - `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。
 - `tree.defaultExpandAll=true` 表示默认展开全部节点，后续可通过 `expandAll` 和 `foldAll` 控制全部展开或全部收起。使用 `toggleExpandData` 控制单个节点的展开和收起。
