@@ -9,7 +9,7 @@ export default function xhr({
   headers = {},
   data = {},
   file,
-  files,
+  files = [],
   name = 'file',
   useMockProgress = true,
   formatRequest,

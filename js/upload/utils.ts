@@ -116,6 +116,30 @@ export function isOverSizeLimit(
   return fileSize > sizeLimit * num;
 }
 
+// vue2临时使用的 sizeLimit 计算
+export function isOverSizeLimit1(
+  fileSize: number,
+  sizeLimit: number,
+  unit: SizeUnit
+) {
+  // 以 KB 为单位进行比较
+  const units = ['B', 'KB', 'MB', 'GB'];
+  // 各个单位和 KB 的关系
+
+  const KBIndex = 1;
+  let index = units.indexOf(unit);
+  if (index === -1) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `TDesign Upload Warn: \`sizeLimit.unit\` can only be one of ${units.join()}`
+    );
+    index = KBIndex;
+  }
+  const num = SIZE_MAP[unit];
+  const limit = index < KBIndex ? sizeLimit / num : sizeLimit * num;
+  return fileSize <= limit;
+}
+
 export const urlCreator = () => window.webkitURL || window.URL;
 
 /**
