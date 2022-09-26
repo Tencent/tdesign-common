@@ -83,6 +83,7 @@ export function handleSuccess(params: handleSuccessParams) {
     log.error('Upload', 'Empty File in Success Callback');
   }
   files.forEach((file) => {
+    file.percent = 100;
     file.status = 'success';
     delete file.response?.error;
   });
@@ -249,9 +250,11 @@ Promise<UploadRequestReturn> {
           failedFiles.push(one.data.files[0]);
         }
       });
-      const newFiles = isBatchUpload || !params.multiple ? files : uploadedFiles.concat(files);
+      const tFiles = params.autoUpload
+        ? uploadedFiles.concat(files)
+        : uploadedFiles;
+      const newFiles = isBatchUpload || !params.multiple ? files : tFiles;
       resolve({
-        // 有一个请求成功，就算成功
         status: files.length ? 'success' : 'fail',
         data: {
           files: newFiles,
@@ -337,7 +340,7 @@ export function validateFile(
         if (sizeResult) {
           resolve({ file, validateResult: { type: 'FILE_OVER_SIZE_LIMIT', extra: sizeResult } });
         } else if (customResult === false) {
-          resolve({ file, validateResult: { type: 'CUSTOME_BEFORE_UPLOAD' } });
+          resolve({ file, validateResult: { type: 'CUSTOM_BEFORE_UPLOAD' } });
         }
         resolve({ file });
       });
@@ -363,11 +366,11 @@ export function validateFile(
   });
 }
 
-export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError) {
+export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError: (p: {[key: string]: any }) => string) {
   const sizeLimitErrors: FileChangeReturn[] = [];
   const toFiles: UploadFile[] = [];
   fileValidateList.forEach((oneFile) => {
-    if (oneFile.validateResult?.type === 'CUSTOME_BEFORE_UPLOAD') return;
+    if (oneFile.validateResult?.type === 'CUSTOM_BEFORE_UPLOAD') return;
     if (oneFile.validateResult?.type === 'FILE_OVER_SIZE_LIMIT') {
       if (!oneFile.file.response) {
         oneFile.file.response = {};
@@ -413,10 +416,12 @@ export interface GetDisplayFilesParams {
  * 获取文件列表显示
  */
 export function getDisplayFiles(params: GetDisplayFilesParams) {
-  const { multiple, uploadValue, toUploadFiles } = params;
-  const waitingUploadFiles = toUploadFiles.filter((file) => file.status !== 'success');
+  const { multiple, uploadValue, toUploadFiles, autoUpload } = params;
+  const waitingUploadFiles = autoUpload
+    ? toUploadFiles
+    : toUploadFiles.filter((file) => file.status !== 'success');
   if (multiple && !params.isBatchUpload) {
-    if (!params.autoUpload) return uploadValue;
+    if (!autoUpload) return uploadValue;
     return (waitingUploadFiles.length ? uploadValue.concat(waitingUploadFiles) : uploadValue) || [];
   }
   return (waitingUploadFiles.length ? waitingUploadFiles : uploadValue) || [];

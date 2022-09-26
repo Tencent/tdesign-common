@@ -5,3 +5,4 @@ dist
 static
 site
 !.github
+**/*/*.test.js
