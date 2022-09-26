@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-form {
-  font-size: @form-font-size;
+  .reset;
+
+  font: @form-font;
 
   &:not(.@{prefix}-form-inline) {
 
@@ -86,6 +90,7 @@
 
     // formItem 嵌套情况无间距
     .@{prefix}-form__item {
+      margin-bottom: 0;
       margin-right: @form-item-margin-right-inline;
     }
   }
@@ -103,7 +108,8 @@
   &__status {
     display: flex;
     margin-left: @form-status-margin-left;
-    > .@{prefix}-icon {
+
+    > .t-icon {
       font-size: 20px;
     }
 
@@ -141,8 +147,7 @@
   width: 100%;
   height: auto;
   min-height: @form-item-help-line-height;
-  line-height: @form-item-help-line-height;
-  font-size: @form-item-help-font-size;
+  font: @form-item-help-font;
   color: @form-color-extra;
 }
 

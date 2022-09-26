@@ -32,9 +32,9 @@
 @tag-outline-background-color: @bg-color-component;
 
 // font size
-@tag-small-font-size: @font-size-s;
-@tag-medium-font-size: @font-size-base;
-@tag-large-font-size: @font-size-l;
+@tag-small-font: @font-body-small;
+@tag-medium-font: @font-body-medium;
+@tag-large-font: @font-body-large;
 
 // padding
 @tag-small-padding: 0px @spacer;
@@ -46,25 +46,20 @@
 @tag-default-text-color: @text-color-primary;
 
 // shape
-@tag-border-radius-square: @border-radius;
-@tag-border-radius-round: 12px;
+@tag-border-radius-square: @border-radius-default;
+@tag-border-radius-round: @border-radius-extraLarge;
 
 // width
 @tag-default-border-width: 1px;
 
 // height
-@tag-height-small: 20px;
+@tag-height-small: 22px;
 @tag-height-medium: 24px;
 @tag-height-large: 32px;
 
-// line-height
-@tag-line-height-small: (@tag-height-small - 2 * @tag-default-border-width);
-@tag-line-height-medium: (@tag-height-medium - 2 * @tag-default-border-width);
-@tag-line-height-large: (@tag-height-large - 2 * @tag-default-border-width);
-
 // icon
 @tag-icon-size: 16px;
-@tag-close-icon-color:  @text-color-placeholder;
+@tag-close-icon-color: @text-color-placeholder;
 @tag-close-icon-hover-color: @text-color-primary;
 @tag-close-icon-color--dark: @font-white-1;
 @tag-close-icon-hover-color--dark: @font-white-2;

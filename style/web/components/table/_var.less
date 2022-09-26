@@ -11,25 +11,27 @@
 @table-row-disabled-color: @text-color-disabled;
 @table-icon-default-color: @text-color-placeholder;
 @table-icon-active-color: @brand-color;
-@table-icon-active-bg-color: @gray-color-2;
 @table-filter-icon-default-color: @text-color-primary;
 @table-color-empty: @text-color-disabled;
+@table-fixed-cell-border-color: @bg-color-component;
 
 // Size
 @table-line-height: 22px;
 @table-line-height-half: 16px;
-@table-font-size: 14px;
+@table-font: @font-body-medium;
+@table-font-small: @font-body-small;
 @table-loading-size: 16px;
-@table-padding-horizontal: 24px;
-@table-padding-normal: (@table-font-size * 1);
-@table-padding-small: (@table-font-size * .5);
-@table-padding-large: (@table-font-size * 1.5);
+@table-padding-horizontal: @spacer-3;
+@table-padding-normal: @spacer-2;
+@table-padding-small: @spacer;
+@table-padding-large: @spacer-3;
 @table-td-padding-vertical-top: 13px;
-@table-td-padding-vertical-bottom: 12px;
-@table-td-padding-horizontal: 24px;
+@table-td-padding-vertical-bottom: 11px;
+@table-td-padding-horizontal: @spacer-3;
+@table-td-editalbe-icon-margin: @spacer;
 
 // Safari 13-14 有 bug: box-shadow 第三个值 spread-radius 为负值，且相对于容器宽度占比较大时，会显示为黑块
 // https://bugs.webkit.org/show_bug.cgi?id=209930
 // https://medium.com/@andrea.verlicchi/inset-box-shadow-rendering-bug-on-safari-ios-13-4-6bf4256a1ee0
 @table-fixed-cell-box-shadow-spread-radius: -10px;
-@table-fixed-cell-box-shadow-width: 24px;
+@table-fixed-cell-border-width: 4px;

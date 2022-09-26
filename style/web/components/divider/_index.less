@@ -6,9 +6,13 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-divider {
+  .reset;
+
+  font: @divider-font;
   margin: @divider-horizontal-margin;
-  font-size: @divider-font-size;
   border-top: @divider-border-width solid  @divider-border-color;
   color: @divider-color;
   box-sizing: border-box;
@@ -37,7 +41,7 @@
     white-space: nowrap;
     align-items: center;
 
-    .@{prefix}-divider__inner-text {
+    .@{prefix}-divider__inner-text:not(:empty) {
       padding: @divider-inner-text-padding;
       display: inline-block;
     }

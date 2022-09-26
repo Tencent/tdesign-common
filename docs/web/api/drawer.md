@@ -60,3 +60,9 @@ spline: message
 通过`destroyOnClose`，可以在关闭抽屉时将抽屉从页面节点上销毁。
 
 {{ destroy }}
+
+### 可拖拽的抽屉
+
+通过`sizeDraggable`，可以拖拽抽屉的边缘自由改变抽屉的大小。
+
+{{ size-draggable }}

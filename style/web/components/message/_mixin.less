@@ -1,18 +1,17 @@
 .message() {
   width: fit-content;
   outline: 0;
-  border-radius: @border-radius;
+  border-radius: @border-radius-medium;
   background-color: @msg-color-block;
   box-shadow: @msg-shadow;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   color: @msg-color-text;
-  line-height: @msg-content-line-height;
-  .message-size(@msg-font-size-default, @msg-padding-vertical-default, @msg-padding-horizontal-default);
+  .message-size(@msg-font-default, @msg-padding-vertical-default, @msg-padding-horizontal-default);
 }
 
 .message-size(@font-size, @padding-vertical, @padding-horizontal) {
-  font-size: @font-size;
+  font: @font-size;
   padding: @padding-vertical @padding-horizontal;
 }

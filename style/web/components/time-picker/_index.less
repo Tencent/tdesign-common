@@ -8,30 +8,20 @@
 
 @import "../../mixins/_layout.less";
 
-.@{prefix}-time-picker {
-  width: @time-picker-width-common;
+@import "../../mixins/_reset.less";
+
+.@{prefix}-time-picker,
+.@{prefix}-time-range-picker {
+  width: @time-picker-width;
   background: @time-picker-background-color-common;
   display: inline-block;
   position: relative;
-  font-size: @time-picker-font-size;
+  font: @time-picker-font;
   color: @time-picker-input-text-color;
+  .reset;
 
   &.@{prefix}-is-disabled {
     cursor: not-allowed;
-  }
-
-  // TODO select-input 重构后可以删除后面两个focused
-  .@{prefix}-is-focused {
-    .t-input {
-      border-color: @brand-color;
-      box-shadow: 0 0 0 2px @brand-color-focus;
-    }
-  }
-  &.@{prefix}-is-focused {
-    .@{prefix}-input {
-      border-color: @brand-color;
-      box-shadow: 0 0 0 2px @brand-color-focus;
-    }
   }
 
   & > *:focus,
@@ -41,18 +31,6 @@
 
   &__group {
     position: relative;
-
-    &.@{prefix}-is-focused {
-      .@{prefix}-input {
-        border-color: @time-picker-input-color-focused;
-      }
-
-      .@{prefix}-input__suffix:not(.@{prefix}-input__clear) {
-        .@{prefix}-icon {
-          color: @time-picker-input-color-focused;
-        }
-      }
-    }
 
     &.active {
       border: @time-picker-input-border-active;
@@ -78,9 +56,9 @@
     height: 100%;
     padding: @time-picker-input-padding;
     z-index: 1;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
     transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
-    font-size: @time-picker-font-size;
+    font: @time-picker-font;
     .flex-center;
 
     &:hover {
@@ -140,18 +118,17 @@
   }
 }
 
-.@{prefix}-time-picker__panel-container {
-  margin: @time-picker-panel-container-margin;
-  padding: 0;
+.@{prefix}-time-range-picker {
+  width: auto;
 }
 
 .@{prefix}-time-picker__panel {
-  width: @time-picker-width-common;
+  width: @time-picker-panel-width;
   background: @time-picker-background-color-common;
-  border-radius: @border-radius;
+  border-radius: @border-radius-default;
   display: inline-block;
   position: relative;
-  font-size: @time-picker-font-size;
+  font: @time-picker-font;
 
   &-body {
     width: 100%;
@@ -170,7 +147,7 @@
       > div {
         flex: 1;
         transform: translateY(
-          -((@time-picker-panel-item-height + @time-picker-panel-item-margin) /2)
+          -((@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) /2)
         );
         height: @time-picker-panel-item-height;
         background-color: @time-picker-panel-item-background-color-current;
@@ -199,25 +176,34 @@
         content: "";
       }
 
+      &::before {
+        height: calc(50% - var(--timePickerPanelOffsetTop, 0) * 1px);
+      }
+
+      &::after {
+        height: calc(50% - var(--timePickerPanelOffsetBottom, 0) * 1px);
+      }
+
       &:last-child {
         border-right: 0;
       }
 
       &-item {
         height: @time-picker-panel-item-height;
-        font-size: @time-picker-font-size;
+        font: @time-picker-font;
         line-height: @time-picker-panel-item-height;
         color: @time-picker-panel-item-color;
         margin: @time-picker-panel-item-margin;
         border-radius: @time-picker-panel-item-border-radius;
         text-align: center;
         cursor: pointer;
+        transition: @anim-duration-base linear;
 
-        &:not(&.@{prefix}-is-current):hover {
-          background-color: @time-picker-panel-item-background-color-hover;
+        &:not(&.@{prefix}-is-current):not(&.@{prefix}-is-disabled):hover {
+          color: @time-picker-panel-item-color-hover;
         }
 
-        &:not(&.@{prefix}-is-current):active {
+        &:not(&.@{prefix}-is-current):not(&.@{prefix}-is-disabled):active {
           background-color: @time-picker-panel-item-background-color-active;
         }
 
@@ -239,20 +225,9 @@
   }
 }
 
-// TODO: 结构比较复杂且不清晰 有时间优化DOM结构
 .@{prefix}-time-picker__panel-section {
-  width: @time-picker-panel-section-width;
-  background-color: @time-picker-background-color-common;
-
   &-body {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: @time-picker-panel-body-padding;
-
-    > *:nth-child(2) {
-      margin-left: @time-picker-panel-section-second-body-margin-left;
-    }
+    padding: @time-picker-panel-section-padding;
   }
 
   &-footer {
@@ -265,6 +240,7 @@
     background-color: @time-picker-background-color-common;
     position: relative;
     border-top: 1px solid @border-level-1-color;
-    padding: @time-picker-panel-footer-padding;
+    box-sizing: border-box;
+    padding: @time-picker-panel-section-padding;
   }
 }

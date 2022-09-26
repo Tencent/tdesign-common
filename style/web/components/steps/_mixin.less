@@ -85,7 +85,7 @@
   width: @steps-circle-width;
   height: @steps-circle-height;
   text-align: center;
-  border-radius: 50%;
+  border-radius: @border-radius-circle;
   margin-top: @steps-item-default-icon-margin-top;
   font-size: @steps-default-step-icon-font-size;
 }
@@ -186,9 +186,11 @@
     width: @steps-dot-item-icon-width;
     height: @steps-dot-item-icon-height;
     border: 2px solid @steps-item-icon-dot-border-color-default;
-    border-radius: 50%;
+    border-radius: @border-radius-circle;
     margin-bottom: @steps-dot-item-icon-margin-bottom;
     position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
     & when(@item-direction = vertical) {
       top: @steps-dot-anchor-position-top;
     }

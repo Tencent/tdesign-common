@@ -37,7 +37,6 @@
 // 尺寸
 @transfer-common-width: 196px;
 @transfer-common-height: 200px;
-@transfer-line-height: 22px;
 // 有search的高度
 @transfer-with-search-height: 240px;
 // 有翻页时候transfer的高度
@@ -54,8 +53,12 @@
 @transfer-wrap-height: 320px;
 @transfer-wrap-width: 206px;
 @transfer-list-header-height: 48px;
-@transfer-list-header-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
-@transfer-list-search-wrapper-width: (@transfer-common-width - @transfer-list-margin-horizontal * 2);
+@transfer-list-header-width: (
+  @transfer-common-width - @transfer-list-margin-horizontal * 2
+);
+@transfer-list-search-wrapper-width: (
+  @transfer-common-width - @transfer-list-margin-horizontal * 2
+);
 @transfer-list-pagination-height: 24px;
 @transfer-list-pagination-line-height: 16px;
 @transfer-operations-button-height: 24px;
@@ -64,13 +67,13 @@
 @transfer-operations-icon-size: 16px;
 
 // 字体
-@transfer-font-size: @font-size-base;
+@transfer-font: @font-body-medium;
 
 // 边框
 @transfer-border: 1px solid @transfer-border-color;
 @transfer-list-border: 0;
 @transfer-list-with-search-border: 0;
-@transfer-border-radius: @border-radius;
+@transfer-border-radius: @border-radius-medium;
 
 // 阴影
 @transfer-box-shadow: @shadow-1;

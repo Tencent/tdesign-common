@@ -23,45 +23,38 @@
     align-items: center;
     justify-content: center;
     min-width: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: @dropdown-menu-level-1-color;
 
-    &.@{prefix}-is-active .@{prefix}-dropdown-menu__title {
+    &.@{prefix}-is-active {
       color: @dropdown-menu-primary-color;
 
-      &::after {
-        border-top-color: @dropdown-menu-primary-color;
-        transform: translate(10px, -3px) rotate(180deg);
+      .@{prefix}-dropdown-menu__arrow {
+        transform: rotate(180deg);
       }
     }
 
-    &.@{prefix}-is-disabled .@{prefix}-dropdown-menu__title {
+    &.@{prefix}-is-disabled {
       color: @dropdown-menu-disabled-color;
-
-      &::after {
-        border-top-color: @dropdown-menu-disabled-color;
-      }
     }
   }
 
   &__title {
-    position: relative;
     box-sizing: border-box;
-    max-width: 100%;
-    padding: 0 @spacer;
-    color: @dropdown-menu-level-1-color;
     font-size: @font-size-l;
+    flex-shrink: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: -5px;
-      margin-top: -5px;
-      border-width: 6px 5px;
-      border-style: solid;
-      border-color: @dropdown-menu-level-2-color transparent transparent;
-      transition: transform 300ms ease;
-      transform: translate(10px, 3px) rotate(0deg);
-    }
+  &__arrow {
+    margin-left: 4px;
+    flex-shrink: 0;
+    transition: transform 220ms ease;
   }
 }
 
@@ -151,46 +144,10 @@
     position: absolute;
   }
 
-  // .@{prefix}-cell {
-  //   &-group {
-  //     margin: 0;
-
-  //     &-container {
-  //       &::before,
-  //       &::after {
-  //         display: none;
-  //       }
-  //     }
-  //   }
-
-  //   &__value {
-  //     overflow: hidden;
-  //   }
-  // }
-
-  // 重写 radio 和 checkbox 样式
-  .@{prefix}-radio,
-  .@{prefix}-checkbox {
-    flex-direction: row-reverse;
-    white-space: nowrap;
-    padding-left: 0;
-
-    &__content-wrap {
-      width: 100%;
-      display: flex;
-      flex: 1;
-      justify-content: space-between;
-    }
-
-    .@{prefix}-radio__label {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
   // 重写 checkbox 样式
   .@{prefix}-checkbox {
+    padding: 8px;
+
     &__icon-left {
       margin-right: 4px;
     }
@@ -204,10 +161,27 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    &-group {
+      padding: 0 8px;
+      display: grid;
+    }
   }
 
   .@{prefix}-dropdown-item__tree-group {
+    height: 100%;
+    overflow-y: scroll;
     flex: 1;
+
+    .@{prefix}-checkbox {
+      padding: 16px;
+    }
+
+    .@{prefix}-radio {
+      &.@{prefix}-is-checked .@{prefix}-radio__content-title {
+        color: @primary-color;
+      }
+    }
   }
 
   // 重写 radio 样式
@@ -342,33 +316,13 @@
     }
 
     // 两列样式
-    &.@{prefix}-is-col2 {
-      .@{prefix}-dropdown-item__cell {
-        width: 50%;
-        display: inline-block;
-        padding-left: @spacer;
-        padding-right: @spacer;
-
-        &-group {
-          padding-left: @spacer;
-          padding-right: @spacer;
-        }
-      }
+    &.@{prefix}-is-col2 .@{prefix}-checkbox-group {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     // 三列样式
-    &.@{prefix}-is-col3 {
-      .@{prefix}-dropdown-item__cell {
-        width: 33.33%;
-        display: inline-block;
-        padding-left: @spacer;
-        padding-right: @spacer;
-
-        &-group {
-          padding-left: @spacer;
-          padding-right: @spacer;
-        }
-      }
+    &.@{prefix}-is-col3 .@{prefix}-checkbox-group {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -378,13 +332,6 @@
     // 未知样式？
     .@{prefix}-radio__default-shape {
       display: none;
-    }
-
-    // 勾选图标样式重置
-    &.@{prefix}-is-tick {
-      .@{prefix}-icon-check {
-        color: @dropdown-menu-primary-color;
-      }
     }
 
     // 单选的选中态效果重写

@@ -26,7 +26,8 @@
     "declaration-colon-newline-after": null,
     "no-descending-specificity": null,
     "selector-type-no-unknown": null,
-    "color-function-notation": "legacy"
+    "color-function-notation": "legacy",
+    "value-keyword-case": null
   },
   "overrides": [{ "files": ["**/*.less"], "customSyntax": "postcss-less" }]
 }

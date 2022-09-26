@@ -14,6 +14,10 @@ spline: 'explain'
 
 {{ pagination }}
 
+### Input 密码框
+
+{{ input }}
+
 ### DatePicker 日期选择器
 
 {{ date-picker }}

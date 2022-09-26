@@ -14,48 +14,19 @@
 
   &__minus,
   &__plus {
-    display: inline-block;
-    vertical-align: top;
     width: @stepper-button-width;
     height: @stepper-button-height;
     position: relative;
-
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: @stepper-minus-icon-width;
-      height: @stepper-icon-height;
-      background: @stepper-icon-color;
-      transform: translate(-50%, -50%);
-    }
+    font-size: 24px;
+    color: @stepper-icon-color;
 
     &.@{prefix}-is-disabled {
-      &::before,
-      &::after {
-        background-color: @stepper-icon-color-disabled;
-      }
+      color: @stepper-icon-color-disabled;
     }
   }
 
-  &__plus {
-    &::before {
-      width: @stepper-plus-icon-width;
-    }
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: @stepper-icon-height;
-      height: @stepper-plus-icon-width;
-      background: @stepper-icon-color;
-      transform: translate(-50%, -50%);
-    }
+  &__icon {
+    display: block;
   }
 
   &__input {
@@ -68,6 +39,9 @@
     border: 0;
     vertical-align: top;
     background: 0;
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
 
     &:disabled {
       color: @stepper-color-disabled;
@@ -80,8 +54,8 @@
     .@{prefix}-stepper__minus,
     .@{prefix}-stepper__plus,
     .@{prefix}-stepper__input {
+      border-radius: @stepper-pure-border;
       background-color: @stepper-pure-background-color;
-      border: @stepper-pure-border;
     }
     .@{prefix}-stepper__input {
       width: @stepper-pure-input-width;
@@ -90,12 +64,10 @@
     }
     .@{prefix}-stepper__minus,
     .@{prefix}-stepper__plus {
-      &::before {
-        width: @stepper-pure-icon-width;
-      }
-    }
-    .@{prefix}-stepper__plus::after {
-      height: @stepper-pure-icon-width;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
     }
   }
   .@{prefix}-stepper__label {
@@ -105,10 +77,7 @@
   &.@{prefix}-is-disabled {
     .@{prefix}-stepper__minus,
     .@{prefix}-stepper__plus {
-      &::before,
-      &::after {
-        background-color: @stepper-icon-color-disabled;
-      }
+      color: @stepper-icon-color-disabled;
     }
 
     .@{prefix}-stepper__input {

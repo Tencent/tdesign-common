@@ -10,14 +10,11 @@
 
 @import "../../mixins/_layout.less";
 
-.@{prefix}-upload {
+@import "../../mixins/_reset.less";
 
-  .@{prefix}-size-s {
-    display: block;
-    color: @upload-small-color;
-    font-size: @upload-small-font-size;
-    line-height: @upload-small-line-height;
-  }
+.@{prefix}-upload {
+  .reset;
+
   .@{prefix}-is-bordered {
     border: @upload-card-content-border;
   }
@@ -25,16 +22,16 @@
     display: inline-block;
   }
 
-  .@{prefix}-icon {
+  .t-icon {
     font-size: @upload-icon-size;
     flex-shrink: 0;
   }
 
-  .@{prefix}-icon-check-circle-filled {
+  .t-icon-check-circle-filled {
     color: @upload-icon-check-circle-filled-color;
   }
 
-  .@{prefix}-icon-error-circle-filled {
+  .t-icon-error-circle-filled {
     color: @upload-icon-error-circle-filled-color;
   }
 
@@ -42,17 +39,12 @@
     color: @upload-icon-loading-color;
   }
 
-  .@{prefix}-icon-time-filled {
+  .t-icon-time-filled {
     color: @upload-icon-time-filled-color;
   }
 
-  .@{prefix}-icon-add {
+  .t-icon-add {
     color: @upload-icon-add-color;
-  }
-
-  .@{prefix}-upload__icon-delete {
-    color: @upload-single-display-text-color;
-    cursor: pointer;
   }
 
   &__list-file {
@@ -64,7 +56,7 @@
     margin-right: @upload-list-file-margin-right;
     overflow: hidden;
 
-    & .@{prefix}-icon {
+    & .t-icon {
       font-size: @upload-list-file-icon-font-size;
       color: @upload-list-file-icon-color;
     }
@@ -80,7 +72,7 @@
     padding: @upload-list-item-padding;
     border: @upload-list-item-border;
     border-radius: @upload-list-item-border-radius;
-    font-size: @upload-list-item-font-size;
+    font: @upload-list-item-font-size;
 
     &.@{prefix}-is--error {
 
@@ -88,7 +80,7 @@
         color: @upload-list-item-error-color;
       }
 
-      .@{prefix}-upload__list-file .@{prefix}-icon {
+      .@{prefix}-upload__list-file .t-icon {
         color: @upload-list-item-error-color;
       }
     }
@@ -131,8 +123,7 @@
 // 照片墙
 .@{prefix}-upload {
   &__card {
-    font-size: @upload-card-font-size;
-    line-height: @upload-card-line-height;
+    font: @upload-card-font;
     overflow: hidden;
     width: 100%;
     margin: 0;
@@ -173,7 +164,7 @@
         }
       }
 
-      &.@{prefix}-is--background {
+      &.@{prefix}-is-background {
         .hover-transition(border-color);
 
         &:hover {
@@ -216,8 +207,10 @@
       flex-direction: column;
       background-color: @upload-card-container-bg-color;
       border: @upload-card-contariner-border;
+      box-sizing: border-box;
+      position: relative;
 
-      > .@{prefix}-icon,
+      > .t-icon,
       .@{prefix}-loading {
         font-size: @upload-icon-size-large;
         margin-bottom: @upload-card-container-icon-add-margin-bottom;
@@ -225,6 +218,7 @@
 
       > p {
         color: @text-color-placeholder;
+        margin: 0;
       }
     }
 
@@ -235,7 +229,7 @@
         margin-bottom: @upload-card-status-wrap-svg-margin-bottom;
       }
 
-      .@{prefix}-icon,
+      .t-icon,
       .@{prefix}-loading {
         font-size: @upload-icon-size-middle;
       }
@@ -248,7 +242,7 @@
 
     &-status {
       color: @upload-card-status-color;
-      font-size: @upload-card-status-font-size;
+      font: @upload-card-status-font;
     }
 
     &-mask {
@@ -268,7 +262,7 @@
         height: @upload-card-mask-divider-height;
       }
 
-      > .@{prefix}-icon {
+      > .t-icon {
         cursor: pointer;
         font-size: @upload-icon-size;
       }
@@ -306,12 +300,13 @@
     height: @upload-dragger-height;
     border: @upload-dragger-border;
     border-radius: @upload-dragger-border-radius;
-    font-size: @upload-dragger-font-size;
+    font: @upload-dragger-font;
     color: @upload-dragger-color;
     cursor: pointer;
     padding: @upload-dragger-padding;
     position: relative;
     overflow: auto;
+    box-sizing: border-box;
     .hover-transition(border-color);
 
     &.@{prefix}-is--active {
@@ -326,6 +321,10 @@
     &-btns {
       position: absolute;
       bottom: @upload-dragger-btns-bottom;
+    }
+
+    .@{prefix}-size-s {
+      display: block;
     }
   }
 
@@ -345,8 +344,7 @@
   &__dragger-text {
     display: flex;
     align-items: center;
-    font-size: @upload-dragger-text-font-size;
-    line-height: @upload-dragger-text-line-height;
+    font: @upload-dragger-text-font;
     color: @upload-dragger-text-color;
     margin-bottom: @upload-single-name-margin-bottom;
     .dragger-inner-max-width(@upload-dragger-width, @upload-dragger-padding, 0);
@@ -358,10 +356,16 @@
 }
 
 .@{prefix}-upload__tips {
+  display: block;
+  color: @upload-small-color;
   margin-top: @upload-tips-margin-top;
 
   &.@{prefix}-upload__tips-error {
     color: @upload-tips-error-color;
+  }
+
+  &.@{prefix}-upload__tips-warn {
+    color: @upload-tips-warn-color;
   }
 }
 
@@ -375,13 +379,15 @@
 
 .@{prefix}-upload__single-display-text {
   color: @upload-single-display-text-color;
-  font-size: @upload-single-display-text-font-size;
-  line-height: @upload-single-display-text-line-height;
+  font: @upload-single-display-text-font;
   display: flex;
   align-items: center;
+  .@{prefix}-upload__flow-status .t-icon {
+    font: @upload-icon-size-mini;
+  }
 }
 
-.@{prefix}-icon-clear-circle-filled {
+.t-icon-clear-circle-filled {
   color: @upload-icon-color;
   margin-top: @upload-icon-clear-circle-filled-margin-top;
   .hover-transition(color);
@@ -409,9 +415,8 @@
 
 .@{prefix}-upload__single-input-delete {
   margin-left: @upload-single-input-delete-margin-left;
-  font-size: @upload-single-input-delete-font-size;
+  font: @upload-single-input-delete-font;
   color: @upload-single-input-delete-color;
-  line-height: @upload-single-input-delete-line-height;
   cursor: pointer;
 }
 
@@ -454,7 +459,7 @@
   width: 100%;
   display: flex;
 
-  .@{prefix}-icon,
+  .t-icon,
   .@{prefix}-loading {
     font-size: @upload-icon-size;
     flex-shrink: 0;
@@ -498,6 +503,15 @@
 
 .@{prefix}-upload__dragger-progress-cancel {
   padding: @upload-dragger-progress-cancel-padding;
+
+  &:hover {
+    border-color: transparent;
+  }
+}
+
+.@{prefix}-upload__dragger-delete-btn:hover,
+.@{prefix}-upload__dragger-upload-btn:hover {
+  border-color: transparent;
 }
 
 .@{prefix}-upload__flow-image-flow {
@@ -586,7 +600,7 @@
     display: flex;
     align-items: center;
 
-    .@{prefix}-icon,
+    .t-icon,
     .@{prefix}-loading {
       margin-right: @upload-flow-status-icon-margin-right;
       font-size: @upload-icon-size;
@@ -599,4 +613,38 @@
     margin-top: @upload-flow-card-area-margin-top;
     width: 100%;
   }
+}
+
+.@{prefix}-upload__icon-delete,
+.@{prefix}-upload__single-input-clear {
+  color: @upload-icon-color;
+  cursor: pointer;
+}
+
+.@{prefix}-upload__icon-delete:hover,
+.@{prefix}-upload__single-input-clear:hover {
+  color: @upload-icon-color-hover;
+}
+
+.@{prefix}-upload__single-input-clear {
+  display: none;
+}
+
+.@{prefix}-upload__single-input-preview:hover {
+  .@{prefix}-upload__single-input-clear {
+    display: initial;
+  }
+  .@{prefix}-upload__status-icon {
+    display: none;
+  }
+}
+
+.@{prefix}-upload {
+  .@{prefix}-upload__single-name {
+    color: @upload-file-name-color;
+  }
+}
+
+.@{prefix}-upload__card-name {
+  margin-top: @spacer;
 }

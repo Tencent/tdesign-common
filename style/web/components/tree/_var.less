@@ -24,27 +24,30 @@
 @tree-icon-disabled-color: @tree-node-icon-color;
 
 //字体
-@tree-font-size: @font-size-base;
+@tree-font: @font-body-medium;
 
 // 间距
-@tree-node-padding-basic: 24px;
+@tree-node-padding-basic: @spacer-3;
 @tree-node-item-padding-left: calc(@tree-node-padding-basic * var(--level) + 8px);
-@tree-line-position-bottom: 21px;
-@tree-line-position-left: calc(@tree-node-padding-basic * var(--level) - 9px);
-@tree-node-item-label-margin: calc((@tree-node-item-line-height - @tree-node-item-label-height) / 2);
+@tree-line-position-bottom: 17px;
+@tree-line-position-left: calc(@tree-node-padding-basic * var(--level) - 8px);
 
 //尺寸
 @tree-line-width: 1px;
-@tree-node-item-height: 42px;
-@tree-node-item-label-height: 28px;
+@tree-node-item-height: 34px;
 @tree-node-icon-size: 28px;
 @tree-node-icon-svg-size: @icon-default;
-@tree-node-item-line-height: 42px;
-@tree-line-before-width: 16px;
-@tree-line-leaf-width: 32px;
-@tree-line-first-height: 32px;
+@tree-node-item-line-height: 22px;
+@tree-line-before-width: 12px;
+@tree-line-leaf-width: 12px;
+@tree-line-first-height: 22px;
 @tree-node-item-origin-height: calc(@tree-node-item-height * var(--hscale) + 0px);
 
 // 动画
 @tree-node-animation-time: 300ms;
 @tree-node-transition-time: 150ms;
+
+// 拖拽
+@tree-node-drag-tip-height: 2px;
+@tree-node-drag-tip-bg: var(--td-brand-color-6);
+@tree-node-drag-bg-highlight: var(--td-brand-color-light);

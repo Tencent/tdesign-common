@@ -8,10 +8,14 @@
 
 @import "../../utilities/_animation.less";
 
+@import "../../mixins/_reset.less";
+
 @inputCls: ~"@{prefix}-input";
 @inputNumberCls: ~"@{prefix}-input-number";
 
 .@{inputNumberCls} {
+  .reset;
+
   display: inline-block;
   position: relative;
   box-sizing: border-box;
@@ -34,6 +38,20 @@
     appearance: textfield;
   }
 
+  > .@{prefix}-input__tips {
+    position: absolute;
+    left: 0;
+  }
+
+  // 输入框和右置内容之间需要间距
+  input + .@{prefix}-input__suffix {
+    margin-left: @input-number-padding-horizontal-default;
+  }
+
+  .@{prefix}-input__prefix {
+    margin-right: @input-number-padding-horizontal-default;
+  }
+
   .@{inputCls} {
     color: @input-number-inner-color;
   }
@@ -51,15 +69,15 @@
     }
   }
 
-  &__decrease,
-  &__increase {
+  & &__decrease,
+  & &__increase {
     width: @input-number-button-width;
     height: @input-number-button-height;
     position: absolute;
     top: 0;
     border: 1px solid @input-number-button-border-color;
     box-sizing: border-box;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
     background-color: @input-number-button-bg-color;
     display: flex;
     justify-content: center;
@@ -72,7 +90,7 @@
       color: @input-number-button-color-hover;
       border-color: @input-number-button-color-hover;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @input-number-button-color-hover;
       }
     }
@@ -82,7 +100,7 @@
       background-color: @bg-color-container-hover;
     }
 
-    .@{prefix}-icon {
+    .t-icon {
       position: relative;
       z-index: 1;
       font-size: @input-number-font-size;
@@ -94,14 +112,14 @@
       cursor: no-drop;
       background-color: @input-number-button-bg-color-disabled;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @input-number-button-color-disabled;
       }
 
       &:hover {
         border-color: @input-number-button-border-color;
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @input-number-button-color-disabled;
         }
       }
@@ -112,11 +130,11 @@
     }
   }
 
-  &__decrease {
+  & &__decrease {
     left: 0;
   }
 
-  &__increase {
+  & &__increase {
     right: -8px;
   }
 }
@@ -140,7 +158,7 @@
     cursor: no-drop;
     background-color: @input-number-button-bg-color-disabled;
 
-    .@{prefix}-icon {
+    .t-icon {
       color: @text-color-secondary;
     }
   }
@@ -198,7 +216,7 @@
 
 .@{inputNumberCls}.@{inputNumberCls}--normal {
   padding: 0;
-  border-radius: @border-radius;
+  border-radius: @border-radius-default;
 
   &.@{prefix}-is-disabled {
     cursor: no-drop;
@@ -239,11 +257,7 @@
     padding-right: (
       @input-number-right-button-width + @input-number-padding-horizontal-default
     );
-    border-radius: @border-radius;
-  }
-
-  .@{inputCls}__inner {
-    text-align: left;
+    border-radius: @border-radius-default;
   }
 
   .@{inputNumberCls}__decrease,
@@ -260,14 +274,14 @@
     visibility: hidden;
     z-index: 2;
 
-    .@{prefix}-icon {
+    .t-icon {
       font-size: @input-number-right-font-size;
     }
 
     &:hover {
       background: @input-number-right-button-hover-bg-color;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @text-color-primary;
       }
     }
@@ -277,14 +291,14 @@
       cursor: no-drop;
       background-color: @input-number-button-bg-color-disabled;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @input-number-button-color-disabled;
       }
 
       &:hover {
         border-color: @input-number-button-border-color;
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @input-number-button-color-disabled;
         }
       }
@@ -297,12 +311,12 @@
 
   .@{inputNumberCls}__increase {
     top: 1px;
-    border-top-right-radius: calc(@border-radius - 1px);
+    border-top-right-radius: calc(@border-radius-default - 1px);
   }
 
   .@{inputNumberCls}__decrease {
     top: @input-number-button-column-height + 3px;
-    border-bottom-right-radius: calc(@border-radius - 1px);
+    border-bottom-right-radius: calc(@border-radius-default - 1px);
   }
 
   &.@{prefix}-size-l {

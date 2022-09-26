@@ -1,5 +1,5 @@
 ---
-title: Dialog 弹框
+title: Dialog 对话框
 description: 一种打断当前操作的模态视图，用于显示重要提示或请求用户进行重要操作
 spline: base
 isComponent: true

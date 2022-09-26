@@ -6,15 +6,18 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-color-picker__panel {
   padding: 0;
   width: @color-picker-panel-width;
   background: @bg-color-container;
-  box-shadow: @shadow-2,
+  box-shadow: @shadow-1,
     @shadow-inset-top,
     @shadow-inset-right,
     @shadow-inset-bottom,
     @shadow-inset-left;
+  border-radius: @border-radius-medium;
   user-select: none;
 }
 
@@ -26,6 +29,17 @@
 }
 
 .@{prefix}-color-picker {
+  .reset;
+
+  &.t-popup__content {
+    border-radius: @color-picker-border-radius;
+    box-shadow: @shadow-1,
+      @shadow-inset-top,
+      @shadow-inset-right,
+      @shadow-inset-bottom,
+      @shadow-inset-left;
+  }
+
   &__icon {
     width: @color-picker-icon-size;
     height: @color-picker-icon-size;
@@ -40,7 +54,6 @@
     cursor: pointer;
 
     &:hover {
-      color: @brand-color;
       background: @bg-color-container-hover;
     }
     &.@{prefix}-is-disabled {
@@ -55,39 +68,21 @@
   align-items: center;
   justify-content: space-between;
   padding: @color-picker-panel-padding;
-  border-bottom: 1px solid @border-level-1-color;
   position: relative;
   z-index: 2;
 
   .@{prefix}-color-picker__close {
     flex-shrink: 0;
   }
+
+  & + .@{prefix}-color-picker__body {
+    padding-top: 0;
+  }
 }
 
 .@{prefix}-color-picker__body {
   padding: @color-picker-panel-padding;
-}
-
-.@{prefix}-color-picker--bg-alpha {
-  background-color: #fff;
-  background-image: linear-gradient(
-    45deg,
-    #c5c5c5 25%,
-    transparent 0,
-    transparent 75%,
-    #c5c5c5 0,
-    #c5c5c5
-  ),
-    linear-gradient(
-    45deg,
-    #c5c5c5 25%,
-    transparent 0,
-    transparent 75%,
-    #c5c5c5 0,
-    #c5c5c5
-  );
-  background-size: 6px 6px;
-  background-position: 0 0, 3px 3px;
+  padding-bottom: 8px;
 }
 
 .@{prefix}-color-picker__thumb {
@@ -97,18 +92,19 @@
   border-color: currentcolor;
   width: @color-picker-slider-thumb-size;
   height: @color-picker-slider-thumb-size;
-  border-radius: 50%;
+  border-radius: @border-radius-circle;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 15%);
   background: white;
   color: @text-color-brand;
   padding: @color-picker-slider-thumb-padding;
+  box-sizing: border-box;
 
   &::before {
     content: "";
     width: 100%;
     height: 100%;
     background: currentcolor;
-    border-radius: 50%;
+    border-radius: @border-radius-circle;
     display: block;
   }
 }
@@ -141,9 +137,39 @@
   .@{prefix}-color-picker__thumb {
     width: @color-picker-saturation-thumb-size;
     height: @color-picker-saturation-thumb-size;
-    border-radius: 50%;
+    border-radius: @border-radius-circle;
     transform: translate(-50%, -50%);
   }
+}
+
+.transparentBgImage () {
+  background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
+  background-size: 6px 6px;
+  background-position: 0 0, 3px 3px;
+}
+
+.@{prefix}-color-picker__slider-wrapper {
+  border-radius: @color-picker-slider-height;
+  padding: 0 9px;
+  position: relative;
+
+  &--hue-type {
+    background: red;
+  }
+
+  &--alpha-type {
+    background: #fff;
+    .transparentBgImage();
+  }
+}
+
+.@{prefix}-color-picker__slider-padding {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: @color-picker-slider-height;
+  border-radius: @color-picker-slider-height;
 }
 
 .@{prefix}-color-picker__slider {
@@ -153,6 +179,8 @@
   cursor: pointer;
   color: transparent;
   outline: none;
+  z-index: 1;
+
   .@{prefix}-color-picker__thumb {
     transform: translate(@color-picker-slider-thumb-transform-x, -50%);
     top: 50%;
@@ -169,7 +197,6 @@
   }
 }
 
-.@{prefix}-color-picker__hue,
 .@{prefix}-color-picker__alpha,
 .@{prefix}-color-picker__format {
   margin: @color-picker-margin 0 0 0;
@@ -194,6 +221,32 @@
   }
 }
 
+.@{prefix}-color-picker__sliders-wrapper {
+  display: flex;
+  align-items: center;
+  margin: @color-picker-margin 0;
+}
+
+.@{prefix}-color-picker__sliders {
+  width: 186px;
+}
+
+.@{prefix}-color-picker__sliders-preview {
+  flex-shrink: 0;
+  margin-left: @color-picker-margin;
+  width: @color-picker-gradient-preview-width;
+  height: @color-picker-gradient-preview-height;
+  border-radius: @color-picker-gradient-preview-radius;
+  overflow: hidden;
+  .transparentBgImage();
+
+  &-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .@{prefix}-color-picker__gradient {
   padding: 0;
   display: flex;
@@ -211,26 +264,11 @@
     width: @color-picker-degree-width;
     .@{prefix}-input {
       margin: 0;
-      font-size: @color-picker-font-size;
+      font: @color-picker-font;
     }
     .@{prefix}-input-number {
       width: 100%;
       padding: 0;
-    }
-  }
-
-  &-preview {
-    flex-shrink: 0;
-    margin-left: 8px;
-    width: @color-picker-gradient-preview-width;
-    height: @color-picker-gradient-preview-height;
-    border-radius: @color-picker-gradient-preview-radius;
-    overflow: hidden;
-
-    .preview-inner {
-      display: block;
-      width: 100%;
-      height: 100%;
     }
   }
 
@@ -265,7 +303,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        border-radius: 50%;
+        border-radius: @border-radius-circle;
         overflow: hidden;
         background-size: 4px 4px;
         background-position: 0 0, 2px 2px;
@@ -289,29 +327,21 @@
 
   &--item {
     &:first-child {
-      width: @color-picker-input-format-width;
       flex-shrink: 0;
     }
 
     &:last-child {
       flex: 1;
-      overflow: hidden;
     }
     .@{prefix}-size-m, .@{prefix}-input.@{prefix}-size-m {
-      font-size: @color-picker-font-size;
+      font: @color-picker-font;
     }
     .@{prefix}-input-number .@{prefix}-input {
       margin: 0;
     }
     .@{prefix}-select {
-      padding-right: 10px;
-
       &__single {
         margin-left: 4px;
-      }
-
-      &__right-icon {
-        margin: 0 4px;
       }
     }
 
@@ -319,15 +349,15 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
-      margin-left: 9px;
+      margin-left: 8px;
 
       &__item {
         flex: 1;
-        overflow: hidden;
+        width: 0;
         margin-left: -1px;
         .@{prefix}-input {
           padding: 0 1px;
-          font-size: @color-picker-font-size;
+          font: @color-picker-font;
 
           &:focus,
           &:focus-within,
@@ -364,6 +394,8 @@
   }
 
   &-mode-select {
+    width: 70px;
+
     .t-select,
     .t-input {
       padding-right: 0;
@@ -390,8 +422,7 @@
     }
 
     &--title {
-      font-size: @color-picker-font-size;
-      font-weight: normal;
+      font: @color-picker-font;
       margin: 0 0 12px;
       padding: 0;
       color: @text-color-primary;
@@ -430,6 +461,7 @@
     }
 
     &--items {
+      width: 100%;
       list-style: none;
       display: grid;
       grid-template-columns: repeat(@color-picker-swatch-columns, @color-picker-swatch-width);
@@ -438,14 +470,16 @@
       overflow-x: hidden;
       overflow-y: auto;
       margin: @color-picker-swatch-wrap-margin;
-      padding: 0;
+      padding: 4px 10px 4px 4px;
+      position: relative;
+      left: -4px;
     }
 
     &--item {
       display: flex;
       width: @color-picker-swatch-width;
       height: @color-picker-swatch-height;
-      border-radius: 50%;
+      border-radius: @border-radius-circle;
       padding: @color-picker-swatch-padding;
       border: @color-picker-swatch-border-size solid transparent;
       overflow: hidden;
@@ -455,6 +489,12 @@
       position: relative;
       transform-origin: center;
       transition: all @anim-duration-base @anim-time-fn-easing;
+      box-sizing: border-box;
+
+      &:hover {
+        transform: scale(1.25);
+        transform-origin: center;
+      }
 
       // 暂时先不删，待react同步后再删除
       &__color {
@@ -463,7 +503,8 @@
         position: relative;
         overflow: hidden;
         border: 1px solid @component-border;
-        border-radius: 50%;
+        border-radius: @border-radius-circle;
+        flex-shrink: 0;
       }
 
       // 暂时先不删，待react同步后再删除
@@ -490,7 +531,8 @@
       position: relative;
       overflow: hidden;
       border: 1px solid @component-border;
-      border-radius: 50%;
+      border-radius: @border-radius-circle;
+      box-sizing: border-box;
     }
 
     &--inner {
@@ -509,23 +551,34 @@
       width: fit-content;
     }
     .@{prefix}-input {
-      padding: 0 8px 0 6px;
+      padding: 0 4px;
     }
 
     &__color {
       width: 24px;
       height: 24px;
       margin-right: 4px;
+      box-sizing: border-box;
 
       .color-inner {
         border: 1px solid @scrollbar-color;
         display: block;
-        width: 100%;
-        height: 100%;
+        width: 22px;
+        height: 22px;
         color: transparent;
         position: relative;
+        border-radius: @border-radius-default;
       }
     }
+  }
+}
+
+.@{prefix}-color-picker__gradient-slider {
+  padding: 0 9px;
+  border-radius: @color-picker-slider-height;
+
+  .@{prefix}-color-picker--bg-alpha {
+    .transparentBgImage();
   }
 }
 
@@ -549,15 +602,8 @@
 
 // 覆盖select-option 默认样式，使其更紧凑点
 .@{prefix}-color-picker__select-options {
-  .@{prefix}-select__dropdown-inner {
-    padding: 4px;
-  }
-  .@{prefix}-select-option {
-    height: 30px;
-    padding: 5px 8px;
-    font-size: 12px;
-    + .@{prefix}-select-option {
-      margin-top: 2px;
-    }
+  > .@{prefix}-popup__content {
+    border-radius: @color-picker-border-radius;
+    box-shadow: @shadow-1, @shadow-inset-top, @shadow-inset-right, @shadow-inset-bottom, @shadow-inset-left;
   }
 }

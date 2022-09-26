@@ -5,7 +5,10 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-notification {
+  .reset;
   .notification;
 
   &__icon {
@@ -13,25 +16,25 @@
     text-align: center;
     margin-right: @notification-icon-margin-right;
 
-    .@{prefix}-icon {
+    .t-icon {
       font-size: @notification-icon-font-size;
     }
   }
 
   // icon theme
-  .@{prefix}-icon.t-is-info {
+  .t-icon.@{prefix}-is-info {
     color: @notification-icon-info-color;
   }
 
-  .@{prefix}-icon.t-is-success {
+  .t-icon.@{prefix}-is-success {
     color: @notification-icon-success-color;
   }
 
-  .@{prefix}-icon.t-is-warning {
+  .t-icon.@{prefix}-is-warning {
     color: @notification-icon-warning-color;
   }
 
-  .@{prefix}-icon.t-is-error {
+  .t-icon.@{prefix}-is-error {
     color: @notification-icon-error-color;
   }
 
@@ -45,16 +48,14 @@
   }
 
   &__title {
-    font-family: PingFangSC-Medium;
-    font-size: @notification-title-font-size;
+    font: @notification-title-font;
     color: @notification-title-color;
-    line-height: @notification-title-line-height;
   }
 
-  .@{prefix}-icon-close {
+  .t-icon-close {
     cursor: pointer;
     font-size: @notification-icon-close-font-size;
-    border-radius: @notification-close-border-radius;
+    border-radius: @border-radius-default;
     color: @notification-close-icon-color;
 
     &:hover {
@@ -67,10 +68,8 @@
   }
 
   &__content {
-    font-family: PingFangSC-Regular;
-    font-size: @notification-content-font-size;
+    font: @notification-content-font;
     color: @notification-content-color;
-    line-height: @notification-content-text-height;
     margin-top: @notification-content-margin-top;
     max-height: @notification-content-max-height;
     overflow: hidden;
@@ -91,10 +90,7 @@
   &__detail {
     margin-top: @notification-detail-margin-top;
     text-align: right;
-    height: @notification-content-text-height;
-    font-family: PingFangSC-Regular;
-    font-size: @notification-detail-font-size;
-    line-height: @notification-content-text-height;
+    font: @notification-detail-font;
   }
 
   &__detail-item {

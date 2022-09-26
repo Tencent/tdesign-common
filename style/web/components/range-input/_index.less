@@ -4,9 +4,14 @@
 
 @import "./_var.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-range-input {
-  width: max-content;
+  .reset;
+
+  width: 100%;
   position: relative;
+  font: @range-input-font;
   height: @range-input-height-default;
   .range-input-base();
 
@@ -23,8 +28,9 @@
   // 输入框大小
   &.@{prefix}-size-l {
     height: @range-input-height-l;
-    line-height: @range-input-height-l;
-    font-size: @range-input-font-size-l;
+    font: @range-input-font-l;
+    padding-top: @spacer-s;
+    padding-bottom: @spacer-s;
 
     .@{prefix}-input {
       padding: 0 8px;
@@ -34,8 +40,7 @@
   &.@{prefix}-size-s {
     padding: 2px 4px;
     height: @range-input-height-s;
-    line-height: @range-input-height-s;
-    font-size: @range-input-font-size-s;
+    font: @range-input-font-s;
   }
 
   &.@{prefix}-is-focused {
@@ -52,6 +57,7 @@
 
     .@{prefix}-input__wrap {
       height: 100%;
+      border-radius: @border-radius-small;
     }
 
     .@{prefix}-input {
@@ -66,7 +72,9 @@
       }
 
       &__inner {
+        width: 100%;
         height: 100%;
+        line-height: 1;
       }
 
       &.@{prefix}-is-focused {
@@ -77,7 +85,7 @@
 
   // 底部的额外消息
   &__extra {
-    font-size: @range-input-extra-font-size;
+    font: @range-input-extra-font;
     color: @range-input-extra-color-default;
   }
 
@@ -104,24 +112,27 @@
   }
 }
 
-.@{prefix}-range-input__prefix,
-.@{prefix}-range-input__suffix {
-
-  .@{prefix}-icon {
+.@{prefix}-range-input--prefix,
+.@{prefix}-range-input--suffix {
+  .t-icon {
     transition: color .2s linear;
     font-size: @range-input-inner-icon-font-size;
     color: @text-color-placeholder;
+    flex-shrink: 0;
   }
 }
 
 .@{prefix}-range-input-popup {
+  width: 100%;
+
   &--visible {
     .@{prefix}-range-input {
       border-color: @range-input-border-color-default-hover;
       box-shadow: @range-input-box-shadow-focus;
 
       // 只有time-picker、date-picker特殊使用的suffix icon需要改变颜色 若后续有新增组件继续扩展这个枚举
-      .@{prefix}-icon-time,.@{prefix}-icon-calendar {
+      .t-icon-time,
+      .t-icon-calendar {
         color: @range-input-border-color-default-focus;
       }
 

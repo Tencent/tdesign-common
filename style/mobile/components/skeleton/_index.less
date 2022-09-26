@@ -3,20 +3,26 @@
 @import "./_var.less";
 
 .@{prefix}-skeleton {
+  box-sizing: border-box;
+
   &__row {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: @row-margin-bottom;
     align-items: center;
     justify-content: space-between;
   }
 
+  &__row:only-child,
+  &__row:last-child {
+    margin-bottom: 0;
+  }
+
   &__col {
+    background-color: @skeleton-background-color;
+    border-radius: @border-radius-text;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eee;
-    color: @gray-color-2;
-    margin-right: 15px;
 
     &:first-child:last-child,
     &:last-child {
@@ -24,25 +30,23 @@
     }
   }
 
-  &__paragraph {
-    flex: 1;
-  }
-
-  &--avatar-text {
-    display: flex;
-  }
-
   &--type {
     &-text {
       width: 100%;
-      height: 16px;
-      border-radius: 3px;
+      height: @text-height-default;
+      border-radius: @border-radius-text;
+    }
+
+    &-rect {
+      width: 100%;
+      height: @rect-height-default;
+      border-radius: @border-radius-rect;
     }
 
     &-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+      width: @circle-height-default;
+      height: @circle-height-default;
+      border-radius: @border-radius-circle;
       flex-shrink: 0;
     }
   }

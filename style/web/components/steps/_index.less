@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-steps {
+  .reset;
+
   display: flex;
   width: 100%;
   .step-item-basic();
@@ -50,7 +54,7 @@
         }
 
         & > .t-icon {
-          font-size: @steps-item-t-icon-font-size;
+          font-size: @steps-item-t-icon-font-size-default;
         }
       }
 

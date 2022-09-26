@@ -6,34 +6,71 @@
 @import "./_mixin.less";
 
 .@{prefix}-notice-bar {
-  background-color: @noticebar-bg-color-1;
+  background-color: @noticebar-bg-color-info;
+  color: @noticebar-text-color-info;
 
   &--info {
-    background-color: @noticebar-bg-color-1;
+    background-color: @noticebar-bg-color-info;
   }
 
   &&--info .@{prefix}-icon {
-    color: @noticebar-icon-color-1;
+    color: @noticebar-icon-color-info;
   }
 
   &&--info &__text {
-    color: @noticebar-text-color-1;
+    color: @noticebar-text-color-info;
+  }
+
+  &&--info &__text-detail {
+    color: @noticebar-text-color-info;
+  }
+
+  &--success {
+    background-color: @noticebar-bg-color-success;
+  }
+
+  &&--success .@{prefix}-icon {
+    color: @noticebar-icon-color-success;
+  }
+
+  &&--success &__text {
+    color: @noticebar-text-color-success;
+  }
+
+  &&--success &__text-detail {
+    color: @noticebar-text-color-success;
+  }
+
+  &--warning {
+    background-color: @noticebar-bg-color-warning;
+  }
+
+  &&--warning .@{prefix}-icon {
+    color: @noticebar-icon-color-warning;
+  }
+
+  &&--warning &__text {
+    color: @noticebar-text-color-warning;
+  }
+
+  &&--warning &__text-detail {
+    color: @noticebar-text-color-warning;
   }
 
   &--error {
-    background-color: @noticebar-bg-color-2;
+    background-color: @noticebar-bg-color-error;
   }
 
   &&--error .@{prefix}-icon {
-    color: @noticebar-icon-color-2;
+    color: @noticebar-icon-color-error;
   }
 
   &&--error &__text {
-    color: @noticebar-text-color-2;
+    color: @noticebar-text-color-error;
   }
 
   &&--error &__text-detail {
-    color: @noticebar-text-color-2;
+    color: @noticebar-text-color-error;
   }
 
   &__inner {
@@ -74,7 +111,7 @@
   &__text {
     font-size: @noticebar-text-font-size;
     line-height: @noticebar-min-height;
-    color: @noticebar-text-color-1;
+    color: @noticebar-text-color-info;
 
     display: -webkit-box; // stylelint-disable-line
     text-overflow: ellipsis;
@@ -103,7 +140,7 @@
   .@{prefix}-icon,
   &__inner .@{prefix}-icon {
     display: block;
-    color: @noticebar-icon-color-1;
+    color: @noticebar-icon-color-info;
     font-size: @noticebar-icon-size;
   }
 

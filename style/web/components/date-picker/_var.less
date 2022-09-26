@@ -11,40 +11,45 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-@datepicker-font-size: @font-size-base;
-@datepicker-line-height: 22px;
-@datepicker-font-size-s: @font-size-s;
-@datepicker-font-size-l: @font-size-l;
-@datepicker-font-weight-medium: 500;
-@datepicker-th-font-weight: 400;
-@datepicker-panel-width: 320px;
-@datepicker-input-shadow: 0 0 0 2px @brand-color-focus;
-@datepicker-panel-border-radius: @border-radius;
-
-// 间距
-@datepicker-panel-padding: 24px;
-@datepicker-apply-btn-margin: @spacer;
-@datepicker-btn-margin: 0 @spacer-2 @spacer-2 @spacer-2;
-
-// Colors
-@datepicker-now-color: @brand-color;
-@datepicker-input-border-color-active: @brand-color;
-@datepicker-presets-text-color: @brand-color;
-@datepicker-presets-text-color-hover: @brand-color-hover;
 @datepicker-th-font-color: @text-color-secondary;
-@datepicker-th-color: @text-color-secondary;
-@datepicker-cell-hover-color: @brand-color;
-@datepicker-background: @bg-color-container;
-@datepicker-border-color: transparent;
-@datepicker-button-text-color: @text-color-secondary;
-@datepicker-button-text-now-color: @text-color-primary;
-@datepicker-highlight-color: @brand-color-light;
-@datepicker-disabled-color: @text-color-disabled;
-@datepicker-disabled-background: @bg-color-component-disabled;
-@day-disabled-border-color: @datepicker-border-color;
-@datepicker-dropdown-background: @bg-color-container;
+
+@datepicker-panel-max-width: 280px;
+@datepicker-panel-container-min-width: 280px;
+@datepicker-panel-select-max-width: 160px;
+@datepicker-panel-divider-color: @component-stroke;
+@datepicker-time-panel-width: 216px;
+@datepicker-time-panel-padding: @spacer-l;
+
+@datepicker-year-controller-width: 78px;
+@datepicker-month-controller-width: 80px;
+
+@datepicker-cell-min-width: 24px;
+@datepicker-cell-height: 24px;
+@datepicker-cell-min-width-l: 48px;
+
+@datepicker-th-font-weight: 400;
+@datepicker-font-weight-medium: 500;
+@datepicker-panel-border-radius: @border-radius-default;
+
+@datepicker-presets-padding: @spacer-l;
+@datepicker-presets-gap: @spacer;
 
 // cell
-@datepicker-cell-border-radius: 40px;
-@datepicker-cell-width-default: 40px;
-@datepicker-cell-width-year: 48px;
+@datepicker-cell-hover-background: @bg-color-container-hover;
+@datepicker-cell-active-color: @text-color-anti;
+@datepicker-cell-active-background: @brand-color;
+
+@datepicker-cell-disabled-color: @text-color-disabled;
+@datepicker-cell-disable-background-color: @bg-color-component-disabled;
+
+@datepicker-now-text-color: @brand-color;
+@datepicker-now-background-color: @brand-color-light;
+
+@datepicker-highlight-color: @brand-color-light;
+@datepicker-hover-highlight-color: rgba(0, 0, 0, .04); // 此处亮色暗色通用，无token
+@datepicker-presets-min-width: 40px;
+@datepicker-presets-text-color: @brand-color;
+@datepicker-presets-text-color-hover: @brand-color-hover;
+
+// ani
+@datepicker-transition: box-shadow @anim-duration-base @anim-time-fn-easing, background-color @anim-duration-base linear, border-color @anim-duration-base linear, color @anim-duration-base linear;

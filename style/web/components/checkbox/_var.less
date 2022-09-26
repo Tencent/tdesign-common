@@ -34,12 +34,14 @@
 
 // 尺寸
 @checkbox-size: 16px;
-@checkbox-border-radius: @border-radius;
+@checkbox-border-radius: @border-radius-default;
 @checkbox-margin-right: @spacer;
 
 @checkbox-check-width: 5px;
 @checkbox-check-height: 9px;
-@checkbox-check-size: ((@checkbox-check-width + @checkbox-check-height) / sqrt(2));
+@checkbox-check-size: (
+  (@checkbox-check-width + @checkbox-check-height) / sqrt(2)
+);
 @checkbox-check-left: 3px;
 
 @checkbox-indeterminate-width: 16px;
@@ -47,7 +49,7 @@
 @checkbox-indeterminate-color: @font-white-1;
 
 // 字号
-@checkbox-font: @font-size-base;
+@checkbox-font: @font-body-medium;
 
 // padding
 @checkbox-input-label-spacer: @spacer;
