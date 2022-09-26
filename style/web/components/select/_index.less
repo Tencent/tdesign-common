@@ -138,6 +138,10 @@
       height: @select-input-height;
       line-height: @select-input-height;
     }
+
+    .@{prefix}-input.@{prefix}-input--prefix > .@{prefix}-input__prefix {
+      font: @select-font-l;
+    }
   }
 
   .@{prefix}-tag,
@@ -411,7 +415,9 @@
   padding: @select-option-padding-l;
   font: @select-font-l;
 }
-
+.@{prefix}-select-option.@{prefix}-size-m {
+  line-height: @select-option-line-height-m;
+}
 .@{prefix}-select-option.@{prefix}-size-s {
   height: @select-option-height-s;
   padding: @select-option-padding-s;
