@@ -59,21 +59,11 @@
   }
 
   &__header--fullscreen {
-    color: @dialog-header-text-color;
-    font: @dialog-header-font;
-    font-weight: @dialog-header-weight;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: @dialog-header-bg-color-fullscreen;
     min-height: @dialog-header-height-fullscreen;
+    padding-right: 0;
+    justify-content: center;
     position: relative;
-
-    .t-icon:not(.t-icon-close) {
-      font-size: @dialog-icon-size;
-      margin-right: @dialog-header-icon-margin-right;
-      flex-shrink: 0;
-    }
 
     .@{prefix}-dialog__header-content {
       box-sizing: border-box;
@@ -93,21 +83,14 @@
 
     &__icon {
       padding: @dialog-body-icon-padding;
-
-      &.body-fullscreen {
-        box-sizing: border-box;
-        padding: @dalog-body-padding-fullscreen;
-        height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
-        overflow: auto;
-      }
     }
+  }
 
-    &.body-fullscreen {
-      box-sizing: border-box;
-      padding: @dalog-body-padding-fullscreen;
-      height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
-      overflow: auto;
-    }
+  &__body--fullscreen {
+    box-sizing: border-box;
+    padding: @dalog-body-padding-fullscreen;
+    height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
+    overflow: auto;
   }
 
   &__footer {
@@ -123,16 +106,9 @@
   }
 
   &__footer--fullscreen {
-    width: 100%;
-    text-align: right;
-    padding: @dialog-footer-padding-fullscreen;
-    word-spacing: @dialog-word-spacing;
-    box-sizing: border-box;
     min-height: @dialog-footer-height-fullscreen;
-
-    .@{prefix}-button + .@{prefix}-button {
-      margin-left: @dialog-footer-button-margin-left;
-    }
+    padding: @dialog-footer-padding-fullscreen;
+    box-sizing: border-box;
   }
 
   &--default {
@@ -173,20 +149,9 @@
   }
 
   &__close--fullscreen {
-    position: absolute;
     top: 50%;
-    right: @dialog-close-position-right;
     transform: translateY(-50%);
-    font-size: @dialog-close-icon-size;
-    color: @dialog-close-color;
     background: transparent;
-    width: @dialog-close-icon-size;
-    height: @dialog-close-icon-size;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: @border-radius-default;
-    transition: all @anim-duration-base linear;
 
     &:hover {
       cursor: pointer;
@@ -212,7 +177,7 @@
   }
 
   &__fullscreen {
-    width: calc(100% - 80px);
+    width: 100%;
     border-radius: 0;
   }
 }
@@ -317,8 +282,6 @@
     width: 100%;
     // 通过修改position为absolute进行拖拽定位
     position: relative;
-    // 设置最小距离顶部底部距离
-    padding: 40px 0;
     box-sizing: border-box;
   }
 
