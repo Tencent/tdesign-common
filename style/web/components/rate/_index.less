@@ -17,7 +17,6 @@
     top: 0;
     overflow: hidden;
     transition: @rate-transition;
-    z-index: 2;
   }
   .@{rate-cls}__star-top,
   .@{rate-cls}__star-bottom {
@@ -37,9 +36,7 @@
     transition: @rate-transition;
 
     &:hover {
-      .@{rate-cls}__star-top, .@{rate-cls}__star-bottom {
-        transform: @rate-hover-transform;
-      }
+      transform: @rate-hover-transform;
     }
 
     &--half {
