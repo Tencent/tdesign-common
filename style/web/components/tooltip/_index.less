@@ -10,6 +10,7 @@
   .@{prefix}-popup__content {
     display: inline-block;
     border: 0;
+    z-index: @z-index-Tooltip;
     margin-bottom: 1px;
     max-width: @tooltip-max-width;
     word-break: break-word;
@@ -22,7 +23,6 @@
     .@{prefix}-popup__content {
       color: @tooltip-text-color;
       background: @tooltip-bg;
-      margin: @tooltip-default-margin;
     }
   }
 
@@ -63,6 +63,13 @@
       background: inherit;
     }
   }
+
+  &--noshadow {
+    .@{prefix}-popup__content,
+    &[data-popper-placement] .@{prefix}-popup__arrow:before {
+      box-shadow: none;
+    }
+  }
 }
 
 .@{prefix}-popup[data-popper-placement^="top"].@{prefix}-tooltip .@{prefix}-popup__arrow {
@@ -75,37 +82,4 @@
 
 .@{prefix}-popup[data-popper-placement^="right"].@{prefix}-tooltip .@{prefix}-popup__arrow {
   left: -@tooltip-arrow-position;
-}
-
-.@{prefix}-tooltiplite {
-  display: inline-block;
-  position: relative;
-
-  &-popup {
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    position: absolute;
-    transition: visibility 0s, opacity @anim-duration-base linear;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: none;
-
-    &--open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    &[data-popper-placement^="top"] {
-      bottom: 100%;
-    }
-
-    &[data-popper-placement^="bottom"] {
-      top: 100%;
-    }
-    .@{prefix}-popup__content,
-    &[data-popper-placement] .@{prefix}-popup__arrow:before {
-      box-shadow: none;
-    }
-  }
 }
