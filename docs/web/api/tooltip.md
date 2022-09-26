@@ -32,8 +32,8 @@ spline: data
 
 {{ trigger }}
 
-### 简化版tooltip
+### 轻量文字提示
 
-hover元素出现文字提示，不依赖popup，独立api
+悬浮元素出现文字提示，不依赖 Popup，具体 API 请参考 `TooltipLite Props`
 
 {{ lite }}
