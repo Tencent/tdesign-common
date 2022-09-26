@@ -31,3 +31,9 @@ spline: data
 支持常见元素事件触发文字提示。
 
 {{ trigger }}
+
+### 简化版tooltip
+
+hover元素出现文字提示，不依赖popup，独立api
+
+{{ lite }}
