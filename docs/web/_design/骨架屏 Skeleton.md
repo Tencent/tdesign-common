@@ -12,7 +12,7 @@
 ##### 在设计骨架屏时，常对信息进行整合归纳处理、或省略部分元素，使界面样式简洁、结构清晰。
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton1.png"/>
-<em>图示：省略副标题、icon与文字整合</em>
+<em>图示：省略副标题、图标与文字整合</em>
 
 
 ### 推荐/慎用示例
