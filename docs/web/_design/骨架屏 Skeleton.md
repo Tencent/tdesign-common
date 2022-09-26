@@ -4,7 +4,7 @@
 
 ### 何时使用
 
-当页面加载时间较长，需先呈现页面大致结构，用以安抚用户的等待焦虑时。
+##### 当页面加载时间较长，需先呈现页面大致结构，用以安抚用户的等待焦虑时。
 
 
 
@@ -39,7 +39,7 @@
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton4.png" />
 <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton5.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton6.png" />
 <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 
 
