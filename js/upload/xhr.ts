@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 import { UploadFile, XhrOptions } from './types';
+import { getCurrentDate } from './utils';
 
 export default function xhr({
   method = 'POST',
@@ -32,14 +34,17 @@ export default function xhr({
     const timer2 = setTimeout(() => {
       // 只有真实进度一直不存在时才需要模拟进度
       timer1 = setInterval(() => {
-        if (!percent && percent < 100) {
-          percent += 10;
-          onProgress({
-            percent,
-            file,
-            files: innerFiles.map((file) => ({ ...file, percent })),
-            type: 'mock',
-          });
+        if (percent + 10 < 100) {
+          percent = Math.max(percent + 10, percent);
+          if (files[0] && percent !== files[0].percent) {
+            files[0].percent = percent;
+            onProgress({
+              percent,
+              file: file || innerFiles[0],
+              files: innerFiles.map((file) => ({ ...file, percent })),
+              type: 'mock',
+            });
+          }
         } else {
           clearInterval(timer1);
         }
@@ -89,19 +94,22 @@ export default function xhr({
         realPercent = Math.round((event.loaded / event.total) * 100);
       }
       percent = Math.max(realPercent, percent);
-      onProgress({
-        event,
-        percent,
-        file,
-        files: innerFiles.map((file) => ({ ...file, percent })),
-        type: 'real',
-      });
+      if (percent !== realPercent && innerFiles[0]?.percent !== percent) {
+        const progressFiles = innerFiles.map((item) => ({ ...item, percent }));
+        onProgress({
+          event,
+          percent,
+          file: file || progressFiles[0],
+          files: progressFiles,
+          type: 'real',
+        });
+      }
     };
   }
 
   // eslint-disable-next-line consistent-return
   xhr.onload = (event: ProgressEvent) => {
-    let response;
+    let response: { [key: string]: any };
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
       return onError({
@@ -116,8 +124,17 @@ export default function xhr({
     }
     clearInterval(timer1);
     clearTimeout(timer2);
+    innerFiles.forEach((file) => {
+      file.percent = 100;
+      file.status = 'success';
+      // 如果上传请求返回结果没有上传日期，则使用电脑当前日期显示
+      file.uploadTime = response?.uploadTime || getCurrentDate();
+    });
     onSuccess({
-      event, file, files: innerFiles, response
+      event,
+      file: file || innerFiles[0],
+      files: [...innerFiles],
+      response,
     });
   };
 

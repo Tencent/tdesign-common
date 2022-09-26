@@ -894,14 +894,19 @@
 }
 
 .@{prefix}-table__tree-op-icon {
-  margin-right: @spacer-2;
+  margin-right: @spacer;
   cursor: pointer;
   display: inline-flex;
-  vertical-align: text-bottom;
+  vertical-align: -3px;
 
   &:hover {
     color: @table-icon-active-color;
   }
+}
+
+.@{prefix}-table__tree-leaf-node .@{prefix}-table__tree-op-icon {
+  min-width: 0;
+  margin-right: 2px;
 }
 
 // 虚拟滚动游标
@@ -1092,4 +1097,8 @@
   td .@{prefix}-input__tips {
     position: initial;
   }
+}
+
+.t-table .@{prefix}-table__sort-column {
+  background-color: @table-sort-bg-color;
 }
