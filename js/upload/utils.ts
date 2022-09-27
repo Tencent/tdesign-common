@@ -177,7 +177,7 @@ export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
     const reader = new FileReader();
     reader.readAsDataURL(fileRaw);
     reader.onload = (event: ProgressEvent<FileReader>) => {
-      resolve(event.target.result as string);
+      resolve(event.target?.result as string);
     };
   });
 }
