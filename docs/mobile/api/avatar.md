@@ -14,13 +14,13 @@ toc: false
 
 ### 头像形状
 
-头像默认支持两种形状：shape、circle，用户也可自定义设置头像形状
+头像默认支持两种形状：`circle`、`round`，用户也可自定义设置头像形状
 
 {{ shape }}
 
 ### 头像大小
 
-头像默认支持三种大小：small、medium、large，用户可自定义设置大小
+头像默认支持三种大小：`small`、`medium`、`large`，用户可自定义设置大小
 
 {{ size }}
 
