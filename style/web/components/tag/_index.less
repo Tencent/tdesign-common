@@ -92,6 +92,19 @@
         }
       }
     }
+
+    // 自定义颜色
+    &.@{prefix}-tag--custom-color {
+      color: @tag-custom-text-color;
+
+      .@{prefix}-tag__icon-close {
+        color: @tag-custom-icon-color;
+
+        &:hover {
+          // TODO: 需设计定义，close-icon 颜色为白色时没有 hover 效果
+        }
+      }
+    }
   }
 
   &--primary {
