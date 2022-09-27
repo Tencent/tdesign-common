@@ -14,6 +14,7 @@
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton8.png"/>
 <em>图示：省略副标题、图标与文字整合</em>
 
+<hr />
 
 ### 推荐/慎用示例
 
