@@ -111,16 +111,17 @@ export default function xhr({
   xhr.onload = (event: ProgressEvent) => {
     let response: { [key: string]: any };
     const isFail = xhr.status < 200 || xhr.status >= 300;
-    if (isFail) {
-      return onError({
-        event, file, files: innerFiles, response
-      });
-    }
     const text = xhr.responseText || xhr.response;
+
     try {
       response = JSON.parse(text);
     } catch (e) {
       response = text;
+    }
+    if (isFail) {
+      return onError({
+        event, file, files: innerFiles, response
+      });
     }
     clearInterval(timer1);
     clearTimeout(timer2);
