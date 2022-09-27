@@ -36,7 +36,7 @@
 ##### 骨架屏的布局应与实际页面结构一致，达到预览页面结构的作用，不建议不同页面复用同一结构的骨架屏。
 
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton4.png" />
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton7.png " />
 <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/skeleton6.png" />
