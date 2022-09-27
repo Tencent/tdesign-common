@@ -29,7 +29,7 @@ export default function xhr({
 
   let timer1: NodeJS.Timeout;
   let timer2: NodeJS.Timeout;
-  if (useMockProgress && files[0].status === 'progress') {
+  if (useMockProgress && files[0]?.status === 'progress') {
     // 超过 500 毫秒再开启虚拟进度
     const timer2 = setTimeout(() => {
       // 只有真实进度一直不存在时才需要模拟进度
