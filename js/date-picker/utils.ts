@@ -326,19 +326,10 @@ export function getYears(
   for (let i = startYear; i <= endYear; i++) {
     const date = new Date(i, 1);
 
-    let disabledMonth = 0;
-    let outOfRangeMonth = 0;
-
-    for (let j = 0; j < 12; j++) {
-      const d = new Date(i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledMonth += 1;
-      if (outOfRanges(d, minDate, maxDate)) outOfRangeMonth += 1;
-    }
-
     yearArr.push({
       value: date,
       now: isSame(date, today, 'year'),
-      disabled: disabledMonth === 12 || outOfRangeMonth === 12,
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
       text: `${date.getFullYear()}`,
     });
@@ -353,22 +344,14 @@ export function getMonths(year: number, params: OptionsType) {
   } = params;
   const MonthArr = [];
   const today = getToday();
+
   for (let i = 0; i <= 11; i++) {
     const date = new Date(year, i);
-    let disabledDay = 0;
-    let outOfRangeDay = 0;
-    const daysInMonth = getDaysInMonth({ year, month: i });
-
-    for (let j = 1; j <= daysInMonth; j++) {
-      const d = new Date(year, i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledDay += 1;
-      if (outOfRanges(d, minDate, maxDate)) outOfRangeDay += 1;
-    }
 
     MonthArr.push({
       value: date,
       now: isSame(date, today, 'month'),
-      disabled: disabledDay === daysInMonth || outOfRangeDay === daysInMonth,
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
       text: monthLocal[date.getMonth()], // `${date.getMonth() + 1} ${monthText || '月'}`,
     });
