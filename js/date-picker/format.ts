@@ -60,7 +60,7 @@ export function parseToDayjs(
 
   // 兼容数据异常情况
   if (!result.isValid()) {
-    log.error('DatePicker', `请检查 value、format 格式是否有效.\n value: '${value}', format: '${format}'`);
+    log.error('DatePicker', `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
     return dayjs();
   }
 
@@ -95,7 +95,7 @@ function formatRange({
   if (dayjsDateList.some((r) => r && !r.isValid())) {
     log.error(
       'DatePicker',
-      `请检查 format、value、valueType 格式是否有效.\nformat: '${format}' value: '${newDate}' valueType: '${targetFormat}'`
+      `Check whether the value、format、valueType format is valid.\nformat: '${format}' value: '${newDate}' valueType: '${targetFormat}'`
     );
     return [];
   }
@@ -126,7 +126,7 @@ function formatSingle({
   if (!dayJsDate.isValid()) {
     log.error(
       'DatePicker',
-      `请检查 format、value 格式是否有效.\nformat: '${format}' value: '${newDate}'`
+      `Check whether the format、value format is valid.\nformat: '${format}' value: '${newDate}'`
     );
     return '';
   }
