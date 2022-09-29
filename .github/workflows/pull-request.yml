@@ -79,9 +79,9 @@ jobs:
         with:
           node-version: 16
       - run: |
-          cp -rf style/web/* target-repo/src/_common/
-          cd target-repo/
-          git status
+          cp -rf style/web/* target-repo/src/_common/style/web
+          cd target-repo/src/_common/
+          git diff
       - uses: actions/cache@v2
         env:
           cache-name: cache-nodemodules
@@ -123,7 +123,7 @@ jobs:
         with:
           node-version: 16
       - run: |
-          cp -rf style/mobile/* target-repo/src/_common/
+          cp -rf style/mobile/* target-repo/src/_common/style/mobile
           cd target-repo/
           git status
       - uses: actions/cache@v2
