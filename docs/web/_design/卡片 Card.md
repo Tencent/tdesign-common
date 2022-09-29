@@ -16,11 +16,11 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Comment_4.png" />
-    <em>图示：基础评论与加载搭配</em>
+    <em>图示：同样大小的卡片在栅格系统中</em>
   </div>
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/Comment_5.png" />
-    <em>图示：带回复的评论与加载搭配</em>
+    <em>图示：不同大小的卡片在栅格系统中</em>
   </div>
 </div>
 
