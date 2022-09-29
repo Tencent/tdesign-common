@@ -27,11 +27,11 @@ export const SIZE_MAP = {
 };
 
 export function returnFileSize(number: number) {
-  if (number < SIZE_MAP.B) {
+  if (number < SIZE_MAP.KB) {
     return `${number} Bytes`;
   }
-  if (number >= SIZE_MAP.B && number < SIZE_MAP.MB) {
-    return `${(number / SIZE_MAP.B).toFixed(1)} KB`;
+  if (number >= SIZE_MAP.KB && number < SIZE_MAP.MB) {
+    return `${(number / SIZE_MAP.KB).toFixed(1)} KB`;
   }
   if (number >= SIZE_MAP.MB) {
     return `${(number / SIZE_MAP.MB).toFixed(1)} MB`;
