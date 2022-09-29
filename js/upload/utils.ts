@@ -33,8 +33,12 @@ export function returnFileSize(number: number) {
   if (number >= SIZE_MAP.KB && number < SIZE_MAP.MB) {
     return `${(number / SIZE_MAP.KB).toFixed(1)} KB`;
   }
-  if (number >= SIZE_MAP.MB) {
+  if (number >= SIZE_MAP.MB && number < SIZE_MAP.GB) {
     return `${(number / SIZE_MAP.MB).toFixed(1)} MB`;
+  }
+
+  if (number >= SIZE_MAP.GB) {
+    return `${(number / SIZE_MAP.GB).toFixed(1)} GB`;
   }
   return '';
 }
