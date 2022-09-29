@@ -357,15 +357,15 @@
     }
   }
 
-  &--hover-highlight + &--hover-highlight {
+  &--highlight {
     &::after {
-      left: -28px;
+      left: 36px;
     }
   }
 
-  &--highlight + &--highlight {
-    &::before {
-      left: -28px;
+  &--hover-highlight {
+    &::after {
+      left: 0px;
     }
   }
 
@@ -407,6 +407,15 @@
         border-top-left-radius: @border-radius-default;
         border-bottom-left-radius: @border-radius-default;
       }
+
+      &.@{prefix}-date-picker__cell--hover-highlight {
+        &::before {
+          left: 0;
+          right: 0;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
     }
 
     &-end {
@@ -414,6 +423,15 @@
         right: 6px;
         border-top-right-radius: @border-radius-default;
         border-bottom-right-radius: @border-radius-default;
+      }
+
+      &.@{prefix}-date-picker__cell--hover-highlight {
+        &::before {
+          left: 0;
+          right: 0;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
       }
     }
   }
