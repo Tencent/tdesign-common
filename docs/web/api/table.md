@@ -221,6 +221,10 @@ spline: data
 
 根据数据结构，可以将表格中的行列进行合并。
 
+- 使用表格属性 `rowspanAndColspan` 设置表格内容合并元格。
+- 使用表格属性 `rowspanAndColspanInFooter` 设置表尾合并单元格。
+- 使用列属性 `colspan` 设置表头合并。如果是多行表头，请参考下方「多级表头」示例。
+
 {{ merge-cells }}
 
 ### 多级表头的表格
