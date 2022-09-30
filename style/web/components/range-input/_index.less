@@ -68,7 +68,7 @@
       font-size: inherit;
 
       &:hover {
-        background-color: var(--td-bg-color-container-hover);
+        background-color: @bg-color-container-hover;
       }
 
       &__inner {
@@ -78,7 +78,7 @@
       }
 
       &.@{prefix}-is-focused {
-        background-color: var(--td-bg-color-component);
+        background-color: @bg-color-component;
       }
     }
   }
@@ -112,10 +112,10 @@
   }
 }
 
-.@{prefix}-range-input--prefix,
-.@{prefix}-range-input--suffix {
-  .t-icon {
-    transition: color .2s linear;
+.@{prefix}-range-input__prefix,
+.@{prefix}-range-input__suffix {
+  > .t-icon {
+    transition: color @anim-duration-base linear;
     font-size: @range-input-inner-icon-font-size;
     color: @text-color-placeholder;
     flex-shrink: 0;
@@ -138,7 +138,7 @@
 
       .@{prefix}-input {
         &.@{prefix}-is-focused {
-          background-color: var(--td-bg-color-component);
+          background-color: @bg-color-component;
         }
       }
     }
