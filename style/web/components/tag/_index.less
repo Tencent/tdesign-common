@@ -31,7 +31,7 @@
 
   .@{prefix}-tag__icon-close {
     margin-right: 0;
-    margin-left: 4px;
+    margin-left: 8px;
     font: @tag-large-font;
     cursor: pointer;
     transition: color @anim-duration-base @anim-time-fn-easing;
@@ -92,12 +92,24 @@
         }
       }
     }
+    &.@{prefix}-tag--outline {
+      border: 1px solid @tag-outline-default-color;
+    }
+    &.@{prefix}-tag--light {
+      background-color: @tag-default-color-light;
+    }
   }
 
   &--primary {
     background-color: @tag-primary-color;
 
     &.@{prefix}-tag--outline {
+      border: 1px solid @tag-primary-color;
+      color: @tag-primary-color;
+    }
+    &.@{prefix}-tag--light-outline {
+      border: 1px solid @tag-primary-color;
+      background-color: @tag-primary-color-light;
       color: @tag-primary-color;
     }
   }
@@ -106,6 +118,12 @@
     background-color: @tag-success-color;
 
     &.@{prefix}-tag--outline {
+      border: 1px solid @tag-success-color;
+      color: @tag-success-color;
+    }
+    &.@{prefix}-tag--light-outline {
+      border: 1px solid @tag-success-color;
+      background-color: @tag-success-color-light;
       color: @tag-success-color;
     }
   }
@@ -114,6 +132,12 @@
     background-color: @tag-warning-color;
 
     &.@{prefix}-tag--outline {
+      border: 1px solid @tag-warning-color;
+      color: @tag-warning-color;
+    }
+    &.@{prefix}-tag--light-outline {
+      border: 1px solid @tag-warning-color;
+      background-color: @tag-warning-color-light;
       color: @tag-warning-color;
     }
   }
@@ -122,6 +146,12 @@
     background-color: @tag-danger-color;
 
     &.@{prefix}-tag--outline {
+      border: 1px solid @tag-danger-color;
+      color: @tag-danger-color;
+    }
+    &.@{prefix}-tag--light-outline {
+      border: 1px solid @tag-danger-color;
+      background-color: @tag-error-color-light;
       color: @tag-danger-color;
     }
   }
@@ -215,7 +245,7 @@
   }
 
   &--dark&:not(.@{prefix}-tag--default) {
-
+    color: @tag-dark-font-color;
     .@{prefix}-tag__icon-close {
       fill: @tag-close-icon-color--dark;
 
