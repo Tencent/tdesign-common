@@ -267,6 +267,32 @@
   max-width: @datepicker-panel-max-width;
 }
 
+// year month picker highlight
+.@{prefix}-date-picker__panel-year,
+.@{prefix}-date-picker__panel-month {
+  .@{prefix}-date-picker__cell--hover-highlight +
+  .@{prefix}-date-picker__cell--hover-highlight {
+    &::before,
+    &::after {
+      left: -28px;
+    }
+  }
+
+  .@{prefix}-date-picker__cell--hover-highlight +
+  .@{prefix}-date-picker__cell--active {
+    &::after {
+      left: 0;
+    }
+  }
+
+  .@{prefix}-date-picker__cell--highlight +
+  .@{prefix}-date-picker__cell--highlight {
+    &::before {
+      left: -28px;
+    }
+  }
+}
+
 .@{prefix}-date-picker__panel-year,
 .@{prefix}-date-picker__panel-month,
 .@{prefix}-date-picker__panel-quarter {
@@ -354,18 +380,6 @@
   &--hover-highlight {
     &::after {
       background-color: @datepicker-highlight-color;
-    }
-  }
-
-  &--hover-highlight + &--hover-highlight {
-    &::after {
-      left: -28px;
-    }
-  }
-
-  &--highlight + &--highlight {
-    &::before {
-      left: -28px;
     }
   }
 
