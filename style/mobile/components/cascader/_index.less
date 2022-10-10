@@ -1,31 +1,28 @@
 @import "../../base.less";
-
 @import "./_var.less";
 
 .@{prefix}-cascader {
   &__wrapper {
-    padding: 12px 16px;
     border-radius: 8px 8px 0 0;
-    border: 1px solid transparent;
     min-height: @wrapper-min-height;
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    color: #303133;
+    color: @cascader-title-color;
   }
 
-  &__close_icon {
-    right: 0;
-    top: 1px;
+  &__close-btn {
+    right: 16px;
+    top: 12px;
     position: absolute;
   }
 
   &__title {
     position: relative;
-    font-weight: 500;
-    background-color: #fff;
-    color: #303133;
+    font-weight: 700;
     text-align: center;
+    line-height: 48px;
+    font-size: 16px;
   }
 
   &__content {
@@ -37,16 +34,18 @@
   }
 
   &__options {
-    &_title {
-      color: rgba(0, 0, 0, 30%);
+    &-title {
+      color: @cascader-options-title-color;
       font-size: 14px;
-      margin-bottom: 8px;
+      line-height: 40px;
+      padding-left: 16px;
     }
 
-    &_content {
+    &-content {
       flex: 1;
       height: 100%;
       overflow: auto;
+      padding-left: 16px;
     }
   }
 
@@ -54,6 +53,11 @@
     display: flex;
     align-items: center;
     height: @cascader-step-height;
+
+    &s {
+      padding: 0 16px;
+      border-bottom: 1px solid @cascader-border-color;
+    }
 
     &-dot {
       position: relative;
@@ -93,7 +97,6 @@
 }
 
 .@{prefix}-cascader-item {
-  color: @text-color;
   font-size: 16px;
   font-weight: 400;
   text-align: left;
