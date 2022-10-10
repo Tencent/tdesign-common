@@ -191,6 +191,8 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
             params.onResponseError?.(r);
             resolve({ status: 'fail', data: r });
           } else {
+            p.file.response = res;
+            p.files[0].response = res;
             const r = handleSuccess({ ...p, response: res });
             params.onResponseSuccess?.(r);
             resolve({ status: 'success', data: r });
