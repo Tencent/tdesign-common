@@ -68,5 +68,7 @@ export default {
   tag: {
     closeIcon: undefined,
   },
-  form: {},
+  form: {
+    requiredMark: undefined,
+  },
 };
