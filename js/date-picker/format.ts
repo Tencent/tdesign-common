@@ -85,10 +85,10 @@ function formatRange({
 
   // 保证后面的时间大于前面的时间
   if (
-    autoSwap &&
-    dayjsDateList[0] &&
-    dayjsDateList[1] &&
-    dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
+    autoSwap
+    && dayjsDateList[0]
+    && dayjsDateList[1]
+    && dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
   ) {
     // 数据兼容规则
     dayjsDateList = [dayjsDateList[1], dayjsDateList[0]];
