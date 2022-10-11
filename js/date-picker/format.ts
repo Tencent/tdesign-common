@@ -72,10 +72,12 @@ function formatRange({
   newDate,
   format,
   targetFormat,
+  autoSwap,
 }: {
   newDate: any;
   format: string;
   targetFormat?: string;
+  autoSwap?: boolean;
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
@@ -83,7 +85,8 @@ function formatRange({
 
   // 保证后面的时间大于前面的时间
   if (
-    dayjsDateList[0]
+    autoSwap
+    && dayjsDateList[0]
     && dayjsDateList[1]
     && dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
   ) {
@@ -151,12 +154,16 @@ export function isValidDate(value: DateValue | DateValue[], format: string) {
 // 日期格式化
 export function formatDate(
   newDate: DateValue | DateValue[],
-  { format, targetFormat }: { format: string; targetFormat?: string; }
+  {
+    format,
+    targetFormat,
+    autoSwap,
+  }: { format: string; targetFormat?: string; autoSwap?: boolean }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({ newDate, format, targetFormat });
+    result = formatRange({ newDate, format, targetFormat, autoSwap });
   } else {
     result = formatSingle({ newDate, format, targetFormat });
   }
