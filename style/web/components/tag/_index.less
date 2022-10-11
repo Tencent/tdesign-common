@@ -92,6 +92,10 @@
         }
       }
     }
+
+    &.@{prefix}-tag--outline {
+      border-color: @tag-outline-default-border-color;
+    }
   }
 
   &--primary {
@@ -99,6 +103,7 @@
 
     &.@{prefix}-tag--outline {
       color: @tag-primary-color;
+      border-color: @tag-outline-primary-border-color;
     }
   }
 
@@ -107,6 +112,7 @@
 
     &.@{prefix}-tag--outline {
       color: @tag-success-color;
+      border-color: @tag-outline-success-border-color;
     }
   }
 
@@ -115,6 +121,7 @@
 
     &.@{prefix}-tag--outline {
       color: @tag-warning-color;
+      border-color: @tag-outline-warning-border-color;
     }
   }
 
@@ -123,6 +130,13 @@
 
     &.@{prefix}-tag--outline {
       color: @tag-danger-color;
+      border-color: @tag-outline-danger-border-color;
+    }
+  }
+
+  &--default {
+    &.@{prefix}-tag--light {
+      background-color: @tag-default-color-light;
     }
   }
 
@@ -131,10 +145,6 @@
     &.@{prefix}-tag--light {
       color: @tag-primary-color;
       background-color: @tag-primary-color-light;
-
-      &.@{prefix}-tag--outline {
-        color: @tag-primary-color;
-      }
     }
 
     &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
@@ -151,10 +161,6 @@
     &.@{prefix}-tag--light {
       color: @tag-success-color;
       background-color: @tag-success-color-light;
-
-      &.@{prefix}-tag--outline {
-        color: @tag-success-color;
-      }
     }
 
     &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
@@ -171,10 +177,6 @@
     &.@{prefix}-tag--light {
       color: @tag-warning-color;
       background-color: @tag-warning-color-light;
-
-      &.@{prefix}-tag--outline {
-        color: @tag-warning-color;
-      }
     }
 
     &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
@@ -191,10 +193,6 @@
     &.@{prefix}-tag--light {
       color: @tag-danger-color;
       background-color: @tag-error-color-light;
-
-      &.@{prefix}-tag--outline {
-        color: @tag-danger-color;
-      }
     }
 
     .@{prefix}-tag__icon-close {
@@ -226,7 +224,7 @@
   }
 
   &.@{prefix}-tag--outline {
-    background-color: @tag-outline-background-color;
+    background: transparent;
   }
 
   &.@{prefix}-size-s {
