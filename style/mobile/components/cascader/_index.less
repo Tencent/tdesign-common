@@ -4,28 +4,26 @@
 
 .@{prefix}-cascader {
   &__wrapper {
-    padding: 12px 16px;
     border-radius: 8px 8px 0 0;
-    border: 1px solid transparent;
     min-height: @wrapper-min-height;
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    color: #303133;
+    color: @cascader-title-color;
   }
 
-  &__close_icon {
-    right: 0;
-    top: 1px;
+  &__close-btn {
+    right: 16px;
+    top: 12px;
     position: absolute;
   }
 
   &__title {
     position: relative;
-    font-weight: 500;
-    background-color: #fff;
-    color: #303133;
+    font-weight: 700;
     text-align: center;
+    line-height: 48px;
+    font-size: 16px;
   }
 
   &__content {
@@ -36,36 +34,73 @@
     flex-direction: column;
   }
 
-  &__steps {
-    &.t-steps--vertical {
-      .t-step-content {
-        margin-left: 12px;
-        cursor: pointer;
-      }
-    }
-  }
-
   &__options {
-    &_title {
-      color: rgba(0, 0, 0, 30%);
+    &-title {
+      color: @cascader-options-title-color;
       font-size: 14px;
-      margin-bottom: 8px;
+      line-height: 40px;
+      padding-left: 16px;
     }
 
-    &_content {
+    &-content {
       flex: 1;
       height: 100%;
       overflow: auto;
+      padding-left: 16px;
+    }
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    height: @cascader-step-height;
+
+    &s {
+      padding: 0 16px;
+      border-bottom: 1px solid @cascader-border-color;
+    }
+
+    &-dot {
+      position: relative;
+      width: @cascader-step-dot-size;
+      height: @cascader-step-dot-size;
+      border-radius: 50%;
+      border: 1px solid @cascader-step-dot-color;
+      box-sizing: border-box;
+
+      &:not(.t-cascader__step-dot--last)::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: @cascader-step-dot-size;
+        height: calc(@cascader-step-height - @cascader-step-dot-size);
+        width: 0;
+        border-left: 1px dashed @cascader-step-line-color;
+        transform: translateX(-50%);
+      }
+
+      &--active {
+        background: @cascader-step-active-color;
+        border-color: @cascader-step-active-color;
+      }
+    }
+
+    &-label {
+      padding-left: 16px;
+      font-size: 16px;
+
+      &--active {
+        color: @cascader-step-active-color;
+      }
     }
   }
 }
 
 .@{prefix}-cascader-item {
-  color: @text-color;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   text-align: left;
-  padding: 8px 0;
   cursor: pointer;
   display: flex;
   flex-wrap: nowrap;
@@ -73,13 +108,13 @@
   align-items: center;
   width: 100%;
   justify-content: space-between;
+  line-height: 48px;
 
   &-content {
     flex-grow: 1;
   }
 
   &.active {
-    font-weight: 500;
     color: @cascader-active-color;
   }
 
