@@ -16,7 +16,9 @@ export default function circleAdapter(circleElem: HTMLElement) {
   const isSafari = /Safari/.test(ua) && !/Chrome/.test(ua);
   // 判断是否为 iOS 下的微信和企业微信
   const isIosWechat = /(?=.*iPhone)[?=.*MicroMessenger]/.test(ua) && !/Chrome/.test(ua);
-  if (isSafari || isIosWechat) {
+  // 判断是否为 Mobile
+  const isMobile = /Mobile/.test(ua);
+  if ((isSafari || isIosWechat) && !isMobile) {
     basicStyle = {
       transformOrigin: '-1px -1px',
       transform: `scale(${parseInt(fontSize, 10) / 14})`,
