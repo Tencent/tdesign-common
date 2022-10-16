@@ -188,11 +188,11 @@ export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
   options: {
     getThWidthList: () => ThMap,
     DEFAULT_MIN_WIDTH: number,
-    columnResizeType: 'resize-sibling-column' | 'resize-table'
+    columnResizeType?: 'resize-sibling-column' | 'resize-table'
   },
   callback: (widthMap: ThMap, colKeys: string[]) => void
 ): void {
-  const { columnResizeType, ...opt } = options;
+  const { columnResizeType = 'resize-sibling-column', ...opt } = options;
   if (columnResizeType === 'resize-sibling-column') {
     setThWidthListByColumnDragWithSiblingColumns(dragCol, dragWidth, effectCol, opt, callback);
   } else {

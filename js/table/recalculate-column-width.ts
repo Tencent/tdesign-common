@@ -132,8 +132,8 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
   tableLayout: string,
   tableElmWidth: number,
   notCalculateWidthCols: string[],
-  columnResizeType: 'resize-sibling-column' | 'resize-table',
-  callback: (widthMap: { [colKey: string]: number }) => void
+  callback: (widthMap: { [colKey: string]: number }) => void,
+  columnResizeType: 'resize-sibling-column' | 'resize-table' = 'resize-sibling-column',
 ): void {
   let actualWidth = 0;
   const missingWidthCols: T[] = [];
