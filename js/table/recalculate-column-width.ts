@@ -132,6 +132,7 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
   tableLayout: string,
   tableElmWidth: number,
   notCalculateWidthCols: string[],
+  columnResizeType: 'resize-sibling-column' | 'resize-table',
   callback: (widthMap: { [colKey: string]: number }) => void
 ): void {
   let actualWidth = 0;
@@ -181,13 +182,16 @@ export default function recalculateColumnWidth<T extends BaseTableCol<T>>(
       }
       // 重新计算其他列的宽度，按表格剩余宽度进行按比例分配
       if (actualWidth !== tableWidth || notCalculateWidthCols.length) {
-        setNormalColumnWidth(
-          columns,
-          thMap,
-          actualWidth,
-          tableWidth,
-          notCalculateWidthCols
-        );
+        // 如果是关联更新模式，需要按比例重新计算各列宽度，否则不重新计算
+        if (columnResizeType === 'resize-sibling-column') {
+          setNormalColumnWidth(
+            columns,
+            thMap,
+            actualWidth,
+            tableWidth,
+            notCalculateWidthCols
+          );
+        }
         needUpdate = true;
       }
     }

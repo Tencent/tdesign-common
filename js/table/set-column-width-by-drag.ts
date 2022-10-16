@@ -24,23 +24,23 @@ const findAllChildren = <T extends BaseTableCol<T>>(col: T): T[] => {
 };
 
 /**
- * 更新拖动后的列宽记录
+ * 关联相邻列更新
  * @param dragCol 被拖动的列
  * @param dragWidth 拖动大小
  * @param effectCol 受影响的列
  * @param options 配置参数
  * @param callback 回调函数
  */
-export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
+const setThWidthListByColumnDragWithSiblingColumns = <T extends BaseTableCol<T>>(
   dragCol: T,
   dragWidth: number,
   effectCol: T,
   options: {
     getThWidthList: () => ThMap,
-    DEFAULT_MIN_WIDTH: number
+    DEFAULT_MIN_WIDTH: number,
   },
   callback: (widthMap: ThMap, colKeys: string[]) => void
-): void {
+): void => {
   const { getThWidthList, DEFAULT_MIN_WIDTH } = options;
   const thWidthList = getThWidthList();
 
@@ -117,5 +117,85 @@ export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
         oldWidth + oldEffectWidth - dragWidth,
       ),
     }, [dragCol.colKey, effectCol.colKey]);
+  }
+};
+
+/**
+ * 仅更新自己
+ * @param dragCol 被拖动的列
+ * @param dragWidth 拖动大小
+ * @param options 配置参数
+ * @param callback 回调函数
+ */
+const setThWidthListByColumnDragOnlySelf = <T extends BaseTableCol<T>>(
+  dragCol: T,
+  dragWidth: number,
+  options: {
+    getThWidthList: () => ThMap,
+    DEFAULT_MIN_WIDTH: number,
+  },
+  callback: (widthMap: ThMap, colKeys: string[]) => void
+): void => {
+  const { getThWidthList, DEFAULT_MIN_WIDTH } = options;
+  const thWidthList = getThWidthList();
+
+  // 检测是否有多级表头
+  const dragChildrenCols = findAllChildren(dragCol);
+
+  // 若有
+  if (dragChildrenCols.length) {
+    let oldWidth = 0;
+    const notCalculateCols: string[] = [];
+    const updateMap: { [key: string]: number } = {};
+
+    // 将没有多级表头的列添加到列表中方便后续计算
+    if (!dragChildrenCols.length) {
+      dragChildrenCols.push(dragCol);
+    }
+
+    // 根据多级表头的叶节点计算实际宽度（拖动列）
+    dragChildrenCols.forEach((child) => {
+      oldWidth += thWidthList[child.colKey] || getColWidthAttr(child, 'width');
+      notCalculateCols.push(child.colKey);
+    });
+
+    // 按比例划分新宽度（拖动列）
+    dragChildrenCols.forEach((child) => {
+      updateMap[child.colKey] = (thWidthList[child.colKey] / oldWidth) * dragWidth;
+    });
+
+    // 更新各列宽度
+    callback(updateMap, notCalculateCols);
+  } else {
+    callback({
+      [dragCol.colKey]: dragWidth,
+    }, [dragCol.colKey]);
+  }
+};
+
+/**
+ * 更新拖动后的列宽记录
+ * @param dragCol 被拖动的列
+ * @param dragWidth 拖动大小
+ * @param effectCol 受影响的列
+ * @param options 配置参数
+ * @param callback 回调函数
+ */
+export default function setThWidthListByColumnDrag<T extends BaseTableCol<T>>(
+  dragCol: T,
+  dragWidth: number,
+  effectCol: T,
+  options: {
+    getThWidthList: () => ThMap,
+    DEFAULT_MIN_WIDTH: number,
+    columnResizeType: 'resize-sibling-column' | 'resize-table'
+  },
+  callback: (widthMap: ThMap, colKeys: string[]) => void
+): void {
+  const { columnResizeType, ...opt } = options;
+  if (columnResizeType === 'resize-sibling-column') {
+    setThWidthListByColumnDragWithSiblingColumns(dragCol, dragWidth, effectCol, opt, callback);
+  } else {
+    setThWidthListByColumnDragOnlySelf(dragCol, dragWidth, opt, callback);
   }
 }
