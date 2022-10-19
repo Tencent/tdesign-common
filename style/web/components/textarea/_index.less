@@ -17,8 +17,6 @@
   &__inner {
     display: flex;
     width: 100%;
-    height: @textarea-height;
-    min-height: @textarea-height;
     border: 1px solid @textarea-border-color;
     border-radius: @textarea-border-radius;
     padding: @textarea-padding;
@@ -49,9 +47,7 @@
   }
 
   &__limit {
-    position: absolute;
-    bottom: @textarea-limit-position-bottom;
-    right: @textarea-limit-position-right;
+    float: right;
     font: @textarea-font;
     color: @textarea-limit-color;
     background: @textarea-bg-color-default;
