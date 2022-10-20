@@ -1,4 +1,22 @@
+import dayjs from 'dayjs';
+import dayJsIsBetween from 'dayjs/plugin/isBetween';
+import weekYear from 'dayjs/plugin/weekYear';
+import localeData from 'dayjs/plugin/localeData';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
+import quarterOfYear from 'dayjs/plugin/quarterOfYear';
+import isoWeek from 'dayjs/plugin/isoWeek';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import chunk from 'lodash/chunk';
+
+dayjs.extend(isoWeek);
+dayjs.extend(weekYear);
+dayjs.extend(localeData);
+dayjs.extend(weekOfYear);
+dayjs.extend(quarterOfYear);
+dayjs.extend(advancedFormat);
+dayjs.extend(customParseFormat);
+dayjs.extend(dayJsIsBetween);
 
 /**
  * 首字母大写
@@ -42,34 +60,24 @@ function getLastDayOfMonth({ year, month }: DateObj): Date {
   return new Date(year, month, getDaysInMonth({ year, month }));
 }
 
-function isSameYear(date1: Date, date2: Date) {
+function isSameYear(date1: Date, date2: Date): boolean {
   return date1.getFullYear() === date2.getFullYear();
 }
 
-function isSameMonth(date1: Date, date2: Date) {
+function isSameQuarter(date1: Date, date2: Date): boolean {
+  return isSameYear(date1, date2) && dayjs(date1).quarter() === dayjs(date2).quarter();
+}
+
+function isSameMonth(date1: Date, date2: Date): boolean {
   return isSameYear(date1, date2) && date1.getMonth() === date2.getMonth();
 }
 
-function isSameDate(date1: Date, date2: Date) {
-  return isSameMonth(date1, date2) && date1.getDate() === date2.getDate();
+function isSameWeek(date1: Date, date2: Date): boolean {
+  return isSameMonth(date1, date2) && dayjs(date1).week() === dayjs(date2).week();
 }
 
-/**
- * 是否是某法范围内的日期，精确到日
- * @param {Date} value 目标日期
- * @param {Object} { start, end } 范围
- * @returns {Boolean}
- */
-function isBetween(
-  value: { getFullYear: () => number; getMonth: () => number; getDate: () => number },
-  { start, end }: { start: any; end: any },
-): boolean {
-  const date = new Date(value.getFullYear(), value.getMonth(), value.getDate());
-
-  const startTime = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  const endTime = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-
-  return startTime <= date && endTime >= date;
+function isSameDate(date1: Date, date2: Date): boolean {
+  return isSameMonth(date1, date2) && date1.getDate() === date2.getDate();
 }
 
 /**
@@ -97,7 +105,9 @@ function compareAsc(date1: { getTime: () => any }, date2: Date): number {
 export function isSame(date1: Date, date2: Date, type = 'date'): boolean {
   const func = {
     isSameYear,
+    isSameQuarter,
     isSameMonth,
+    isSameWeek,
     isSameDate,
   };
   return func[`isSame${firstUpperCase(type)}`](date1, date2);
@@ -132,21 +142,43 @@ export function getDateObj(date: Date) {
     hours: tempDate.getHours(),
     minutes: tempDate.getMinutes(),
     seconds: tempDate.getSeconds(),
+    milliseconds: tempDate.getMilliseconds(),
     meridiem: tempDate.getHours() > 11 ? 'PM' : 'AM',
   };
 }
 
 /**
  * 设置日期对象的时间部分
- * @param {Date} d 日期
- * @param {Number} hour 小时
- * @param {Number} min 分钟
- * @param {Number} sec 秒
+ * @param {Date} date 日期
+ * @param {Number} hours 小时
+ * @param {Number} minutes 分钟
+ * @param {Number} seconds 秒
+ * @param {Number} milliseconds 毫秒
  * @returns {Date} 一个新的date
  */
-export function setDateTime(d: Date, hour: number, min: number, sec: number): Date {
-  const { year, month, date } = getDateObj(d);
-  return new Date(year, month, date, hour, min, sec, 0);
+export function setDateTime(
+  date: Date,
+  hours: number,
+  minutes: number,
+  seconds: number,
+  milliseconds?: number
+): Date {
+  return dayjs(date)
+    .hour(hours)
+    .minute(minutes)
+    .second(seconds)
+    .millisecond(milliseconds)
+    .toDate();
+}
+
+/**
+ * 减少月份
+ * @param {Date} date 起始日期
+ * @param {Number} num 月份数
+ * @returns {Date}
+ */
+export function subtractMonth(date: Date, num: number): Date {
+  return dayjs(date).subtract(num, 'month').toDate();
 }
 
 /**
@@ -155,34 +187,11 @@ export function setDateTime(d: Date, hour: number, min: number, sec: number): Da
  * @param {Number} num 月份数
  * @returns {Date}
  */
-export function subtractMonth(date: Date, num: any): Date {
-  const day = date.getDate();
-  const newDate = new Date(date);
-
-  let _num = num;
-  // eslint-disable-next-line no-plusplus
-  while (_num--) {
-    newDate.setDate(0);
-  }
-  newDate.setDate(day);
-  return newDate;
-}
-
-/**
- * 减月份
- * @param {Date} date 起始日期
- * @param {Number} num 月份数
- * @returns {Date}
- */
 export function addMonth(date: Date, num: number): Date {
-  let _num = num;
-  if (num < 0) _num = 0;
-  const newDate = new Date(date);
-  newDate.setMonth(date.getMonth() + _num);
-  return newDate;
+  return dayjs(date).add(num, 'month').toDate();
 }
 
-export type DateValue = string | Date | Array<DateValue>;
+export type DateValue = string | Date | number;
 export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string }
 export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
 
@@ -191,13 +200,16 @@ export interface OptionsType {
   disableDate: DisableDate;
   minDate: Date;
   maxDate: Date;
+  showWeekOfYear?: Boolean;
   monthLocal?: string[];
+  quarterLocal?: string[];
 }
 
 export function getWeeks(
   { year, month }: { year: number; month: number },
   {
     firstDayOfWeek,
+    showWeekOfYear = false,
     disableDate = () => false,
     minDate,
     maxDate,
@@ -215,7 +227,8 @@ export function getWeeks(
       text: i,
       active: false,
       value: currentDay,
-      disabled: (typeof disableDate === 'function' && disableDate(currentDay)) || outOfRanges(currentDay, minDate, maxDate),
+      disabled: (typeof disableDate === 'function' && disableDate(currentDay))
+        || outOfRanges(currentDay, minDate, maxDate),
       now: isSame(today, currentDay),
       firstDayOfMonth: i === 1,
       lastDayOfMonth: i === maxDays,
@@ -252,7 +265,47 @@ export function getWeeks(
     });
   }
 
-  return chunk(daysArr, 7);
+  const dataList = chunk(daysArr, 7);
+  // 显示周数
+  if (showWeekOfYear) {
+    dataList.forEach((d) => {
+      d.unshift({
+        ...d[0],
+        active: false,
+        value: d[0].value,
+        text: dayjs(d[0].value).week(),
+      });
+    });
+  }
+
+  return dataList;
+}
+
+export function getQuarters(
+  year: number,
+  {
+    disableDate = () => false,
+    minDate,
+    maxDate,
+    quarterLocal
+  }: OptionsType,
+) {
+  const quarterArr = [];
+  const today = getToday();
+
+  for (let i = 1; i <= 4; i++) {
+    const date = dayjs(new Date(year, 0)).quarter(i).toDate();
+
+    quarterArr.push({
+      value: date,
+      now: isSame(date, today, 'quarter'),
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
+      active: false,
+      text: quarterLocal[i - 1],
+    });
+  }
+
+  return chunk(quarterArr, 4);
 }
 
 export function getYears(
@@ -273,25 +326,16 @@ export function getYears(
   for (let i = startYear; i <= endYear; i++) {
     const date = new Date(i, 1);
 
-    let disabledMonth = 0;
-    let outOfRangeMonth = 0;
-
-    for (let j = 0; j < 12; j++) {
-      const d = new Date(i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledMonth += 1;
-      if (outOfRanges(d, minDate, maxDate)) outOfRangeMonth += 1;
-    }
-
     yearArr.push({
       value: date,
       now: isSame(date, today, 'year'),
-      disabled: disabledMonth === 12 || outOfRangeMonth === 12,
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
       text: `${date.getFullYear()}`,
     });
   }
 
-  return chunk(yearArr, 4);
+  return chunk(yearArr, 3);
 }
 
 export function getMonths(year: number, params: OptionsType) {
@@ -300,45 +344,44 @@ export function getMonths(year: number, params: OptionsType) {
   } = params;
   const MonthArr = [];
   const today = getToday();
+
   for (let i = 0; i <= 11; i++) {
     const date = new Date(year, i);
-    let disabledDay = 0;
-    let outOfRangeDay = 0;
-    const daysInMonth = getDaysInMonth({ year, month: i });
-
-    for (let j = 1; j <= daysInMonth; j++) {
-      const d = new Date(year, i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledDay += 1;
-      if (outOfRanges(d, minDate, maxDate)) outOfRangeDay += 1;
-    }
 
     MonthArr.push({
       value: date,
       now: isSame(date, today, 'month'),
-      disabled: disabledDay === daysInMonth || outOfRangeDay === daysInMonth,
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
       text: monthLocal[date.getMonth()], // `${date.getMonth() + 1} ${monthText || '月'}`,
     });
   }
 
-  return chunk(MonthArr, 4);
+  return chunk(MonthArr, 3);
 }
 
 export interface DateTime {
+  additional: boolean;
   active: boolean;
   highlight: boolean;
+  hoverHighlight: boolean;
   startOfRange: boolean;
   endOfRange: boolean;
+  hoverStartOfRange: boolean;
+  hoverEndOfRange: boolean;
   value: Date;
 }
 
 export function flagActive(data: any[], { ...args }: any) {
-  const { start, end, type = 'date' } = args;
+  const { start, end, hoverStart, hoverEnd, type = 'date', isRange = false } = args;
 
-  if (!end) {
+  // 周选择器不更改 cell 样式
+  if (type === 'week') return data;
+
+  if (!isRange) {
     return data.map((row: any[]) => row.map((item: DateTime) => {
       const _item = item;
-      _item.active = isSame(item.value, start, type);
+      _item.active = start && isSame(item.value, start, type) && !_item.additional;
       return _item;
     }));
   }
@@ -346,19 +389,113 @@ export function flagActive(data: any[], { ...args }: any) {
   return data.map((row: any[]) => row.map((item: DateTime) => {
     const _item = item;
     const date = item.value;
-    const isStart = isSame(start, date, type);
-    const isEnd = isSame(end, date, type);
-    _item.active = isStart || isEnd;
-    _item.highlight = isBetween(date, { start, end });
-    _item.startOfRange = isStart;
-    _item.endOfRange = isEnd;
+
+    const isStart = start && isSame(start, date, type);
+    const isHoverStart = hoverStart && isSame(hoverStart, date, type);
+    const isEnd = end && isSame(end, date, type);
+    const isHoverEnd = hoverEnd && isSame(hoverEnd, date, type);
+    _item.active = (isStart || isEnd) && !_item.additional;
+
+    if (start && end) {
+      _item.highlight = dayjs(date).isBetween(start, end, type, '[]') && !_item.additional;
+      _item.startOfRange = isStart;
+      _item.endOfRange = isEnd;
+    }
+
+    if (hoverStart && hoverEnd) {
+      _item.hoverHighlight = dayjs(date).isBetween(hoverStart, hoverEnd, type, '[]') && !_item.additional;
+      _item.hoverStartOfRange = isHoverStart;
+      _item.hoverEndOfRange = isHoverEnd;
+    }
     return _item;
   }));
 }
 
 // extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
-export function extractTimeFormat(dateFormat: string) {
+export function extractTimeFormat(dateFormat: string = '') {
   const res = dateFormat.match(/(a\s)?h{1,2}:m{1,2}(:s{1,2})?(\sa)?/i);
   if (!res) return null;
   return res[0];
+}
+
+/**
+ * 返回时间对象的小时、分钟、秒、12小时制标识
+ * @param {String} timeFormat 'pm 20:11:11:333'
+ * @returns {Object}
+ */
+export function extractTimeObj(timeFormat: string = '') {
+  const matchedMeridiem = timeFormat.match(/[ap]m/i) || [''];
+  const timeReg = /\d{1,2}:\d{1,2}(:\d{1,2})?(:\d{1,3})?/;
+  const matchedTimeStr = timeFormat.match(timeReg) || ['0:0:0:0'];
+  const [hours = 0, minutes = 0, seconds = 0, milliseconds = 0] = matchedTimeStr[0].split(':');
+
+  return {
+    hours: +hours,
+    minutes: +minutes,
+    seconds: +seconds,
+    milliseconds: +milliseconds,
+    meridiem: matchedMeridiem[0],
+  };
+}
+
+/**
+ * 日期是否可用
+ * @param {Object} { value, disableDate, mode, format }
+ * @returns {Boolean}
+ */
+export function isEnabledDate({
+  value,
+  disableDate,
+  mode,
+  format,
+}: {
+  value: Date;
+  mode: 'year' | 'month' | 'date';
+  format: string;
+  disableDate: DisableDate;
+}): boolean {
+  if (!disableDate) return true;
+
+  let isEnabled = true;
+  // 值类型为 Function 则表示返回值为 true 的日期会被禁用
+  if (typeof disableDate === 'function') {
+    return !disableDate(value);
+  }
+
+  // 禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。
+  if (Array.isArray(disableDate)) {
+    const formattedDisabledDate = disableDate.map((item: string) => dayjs(item, format));
+    // eslint-disable-next-line
+    const isIncludes = formattedDisabledDate.some(item => item.isSame(dayjs(value)));
+    return !isIncludes;
+  }
+
+  // { from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。
+  // eslint-disable-next-line
+  const { from, to, before, after } = disableDate;
+
+  if (from && to) {
+    const compareMin = dayjs(new Date(from));
+    const compareMax = dayjs(new Date(to));
+
+    return !dayjs(value).isBetween(compareMin, compareMax, mode, '[]');
+  }
+
+  const min = before ? new Date(before) : null;
+  const max = after ? new Date(after) : null;
+
+  // { before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。
+  if (max && min) {
+    const compareMin = dayjs(new Date(min));
+    const compareMax = dayjs(new Date(max));
+
+    isEnabled = dayjs(value).isBetween(compareMin, compareMax, mode, '[]');
+  } else if (min) {
+    const compareMin = dayjs(new Date(min));
+    isEnabled = !dayjs(value).isBefore(compareMin, mode);
+  } else if (max) {
+    const compareMax = dayjs(new Date(max));
+    isEnabled = !dayjs(value).isAfter(compareMax, mode);
+  }
+  return isEnabled;
 }

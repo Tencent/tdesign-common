@@ -2,6 +2,7 @@
 title: Button 按钮
 description: 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
 isComponent: true
+usage: { title: '', description: '' }
 spline: base
 ---
 
@@ -68,3 +69,9 @@ Block 按钮在宽度上充满其所在的父容器（无 padding 和 margin 值
 提供长方形、正方形、圆角长方形、圆形四种形状。
 
 {{ shape }}
+
+### 自定义渲染元素
+
+支持自定义渲染元素，支持 `div/a/button`
+
+{{ custom-element }}

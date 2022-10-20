@@ -2,6 +2,7 @@
 title: SelectInput 筛选器输入框
 description: 定义：筛选器通用输入框，
 isComponent: true
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -52,7 +53,7 @@ spline: data
 
 ### 选中项数量超出的输入框
 
-使用 `excessTagsDisplayType` 控制标签超出时的呈现方式：横向滚动显示和换行显示，默认为横向滚动。
+使用 `excessTagsDisplayType` 控制标签超出时的呈现方式：横向滚动显示和换行显示，默认为换行显示。
 
 {{ excess-tags-display-type }}
 

@@ -21,11 +21,11 @@
     border-radius: inherit;
   }
 
-  &__text {
+  .@{prefix}-icon + &__text:not(:empty) {
     margin-left: @fab-text-margin-left;
   }
 
-  &--icononly {
+  &--icon-only {
     padding: 0;
     border-radius: @border-radius-50;
   }

@@ -8,14 +8,20 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{checkbox-cls}-group {
+  .reset;
+
   display: inline-flex;
   flex-wrap: wrap;
   gap: @checkbox-group-gap;
 }
 
 .@{checkbox-cls} {
+  .reset;
+
   display: inline-flex;
   align-items: center;
   position: relative;
@@ -39,20 +45,21 @@
     border: 1px solid @checkbox-border-color;
     border-radius: @checkbox-border-radius;
     background-color: @checkbox-input-color;
+    box-sizing: border-box;
 
     &::after {
       content: "";
       position: absolute;
       opacity: 0;
+      box-sizing: border-box;
     }
   }
 
   &__label {
     display: inline-block;
     margin-left: @checkbox-input-label-spacer;
-    margin-right: @checkbox-input-label-spacer;
     vertical-align: middle;
-    font-size: @checkbox-font;
+    font: @checkbox-font;
   }
 
   &:hover {

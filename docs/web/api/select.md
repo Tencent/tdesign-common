@@ -2,6 +2,7 @@
 title: Select 选择器
 description: 用于收纳大量选项的信息录入类组件。
 isComponent: true
+usage: { title: '', description: '' }
 spline: form
 ---
 
@@ -109,6 +110,13 @@ spline: form
 
 自定义下拉样式的选择器，在需要自定义下拉样式时使用。
 
-下拉框宽度默认和输入框宽度同宽，如果内容宽度超出会自动变宽。可使用 `popupProps.overlayStyle` 自由控制宽度。
+下拉框宽度默认和输入框宽度同宽，如果内容宽度超出会自动变宽。可使用 `popupProps.overlayInnerStyle` 自由控制宽度。
 
 {{ popup-props }}
+
+### 开启虚拟滚动的选择器
+
+- 虚拟滚动一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启虚拟滚动模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+- 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
+
+{{ virtual-scroll }}

@@ -2,6 +2,7 @@
 title: Pagination 分页
 description: 用于模块内切换内容的控件。
 isComponent: true
+usage: { title: '', description: '' }
 spline: navigation
 ---
 

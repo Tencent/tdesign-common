@@ -26,12 +26,14 @@
 @input-text-color-error: @error-color;
 
 @input-text-color-default: @text-color-primary;
+@input-text-color-readonly: @text-color-primary;
 @input-text-color-disabled: @text-color-disabled;
 @input-text-color-tips: @text-color-placeholder;
 @input-placeholder-color: @text-color-placeholder;
 
 // input 输入框需要在浅色主题下有默认白色背景，而在暗色等其他主题下 transparent 适配背景色，因此不使用通用背景 token
 @input-bg-color-default: @bg-color-specialcomponent;
+@input-bg-color-readonly: @bg-color-specialcomponent;
 @input-bg-color-disabled: @bg-color-component-disabled;
 
 @input-extra-color-default: @text-color-placeholder;
@@ -41,6 +43,8 @@
 
 @input-append-color: @bg-color-secondarycontainer-hover;
 
+@input-limit-color: @text-color-placeholder;
+
 // 位置
 @input-fix-position: @spacer;
 
@@ -48,33 +52,31 @@
 @input-padding-horizontal-default: @spacer;
 @input-margin-distance-default: @spacer;
 @input-status-position-right: -@spacer-3;
-@input-addon-item-padding: 0 (@spacer-3 / 2);
 @input-fix-padding: @spacer-4;
 @input-group-first-child-margin-left: -1px;
 
 @textarea-limited-padding: (@spacer * 4);
 
 // 尺寸
-@input-height-s: (@spacer * 3);
-@input-height-default: (@spacer * 4);
-@input-height-l: (@spacer * 5);
+@input-height-s: 24px;
+@input-height-default: 32px;
+@input-height-l: 40px;
 @input-inner-icon-font-size: inherit;
-@input-tips-min-height: @spacer-3;
-@input-tips-line-height: @text-line-height-s;
+@input-tips-min-height: @text-line-height-s;
 
 // 图标
 @input-inner-prefix-icon-color: @text-color-placeholder;
 @input-inner-suffix-icon-color: @text-color-placeholder;
 
 // 字号
-@input-font-size-l: @font-size-l;
-@input-font-size: @font-size-base;
-@input-font-size-s: @font-size-s;
-@input-extra-font-size: @font-size-s;
-@input-tips-font-size: @font-size-s;
+@input-font-l: @font-body-large;
+@input-font: @font-body-medium;
+@input-font-s: @font-body-small;
+@input-extra-font: @font-body-small;
+@input-tips-font: @font-body-small;
 
 // 边框
-@input-border-radius: @border-radius;
+@input-border-radius: @border-radius-default;
 
 // box
 @input-box-shadow-color-default-focus: @brand-color-focus;
@@ -85,3 +87,6 @@
 
 // 动画
 @input-inner-transition: all @anim-time-fn-easing @anim-duration-base;
+
+// 交互
+@input-cursor-readonly: pointer;

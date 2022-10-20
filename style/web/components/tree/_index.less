@@ -6,30 +6,31 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{prefix}-tree {
-  line-height: @tree-node-item-line-height;
-  font-size: @tree-font-size;
+  .reset;
+
+  font: @tree-font;
   color: @tree-node-text-color;
-  will-change: height;
 
   // 禁用态颜色处理
   &.@{prefix}-is-disabled {
     color: @tree-disabled-color;
 
-    .@{prefix}-icon {
+    .t-icon {
       color: @tree-disabled-color;
     }
 
     .@{prefix}-tree__item {
-
       &.@{prefix}-is-active {
-        background-color: @tree-node-bg-color-hover;
+        background-color: @tree-node-bg-hover-color;
         color: @tree-disabled-color;
       }
 
-      .@{prefix}-icon {
-        color: @tree-icon-color-disabled;
+      .t-icon {
+        color: @tree-icon-disabled-color;
       }
     }
   }
@@ -38,24 +39,35 @@
     color: @tree-node-empty-text-color;
   }
 
+  &__branch {
+    display: block;
+  }
+
+  &__children {
+    // 用于多行 label 计算高度
+    --hscale: 1;
+
+    will-change: opacity, max-height;
+  }
+
   &__item {
+    // 用于树结构缩进计算
+    --level: 0;
+    // 用于多行 label 计算高度
+    --hscale: 1;
+
+    will-change: opacity, max-height;
     position: relative;
     display: flex;
-    align-items: center;
     flex-wrap: nowrap;
     padding: 4px 0 4px @tree-node-item-padding-left;
-    height: @tree-node-item-height;
-    margin-bottom: @tree-node-item-margin-bottom;
     cursor: default;
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
+    line-height: @tree-node-item-line-height;
 
-    & + .@{prefix}-tree__item {
-      margin-top: @tree-node-item-spacer;
-    }
-
-    .@{prefix}-icon,
+    .t-icon,
     .@{prefix}-loading {
       display: inline-block;
       position: relative;
@@ -63,31 +75,29 @@
       font-size: @font-size-l;
     }
 
-    .@{prefix}-icon {
+    .t-icon {
       color: @tree-node-icon-color;
     }
 
     .@{prefix}-checkbox {
+      align-items: center;
       font-size: 0;
     }
 
     .@{prefix}-tree__icon--default {
-
-      .@{prefix}-icon {
+      .t-icon {
         transition: color, transform @anim-time-fn-easing @anim-duration-base;
         transform: rotate(0);
       }
     }
 
     &--open {
-
-      .@{prefix}-icon {
-        color: @tree-node-icon-color-active;
+      .t-icon {
+        color: @tree-node-icon-active-color;
       }
 
       .@{prefix}-tree__icon--default {
-
-        .@{prefix}-icon {
+        .t-icon {
           transform: rotate(90deg);
         }
       }
@@ -97,7 +107,44 @@
       cursor: pointer;
     }
 
-    --level: 0;
+    &--draggable {
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        top: -@tree-node-drag-tip-height;
+        right: 0;
+        left: 0;
+        display: block;
+        height: @tree-node-drag-tip-height;
+        border-radius: (@tree-node-drag-tip-height / 2);
+        content: "";
+        padding: inherit;
+        background-clip: content-box;
+      }
+
+      &:hover {
+        background-color: @tree-node-bg-hover-color;
+        background-clip: content-box;
+      }
+    }
+
+    &--tip {
+      &-top::before {
+        background-color: @tree-node-drag-tip-bg;
+      }
+
+      &-bottom::before {
+        top: unset;
+        bottom: -@tree-node-drag-tip-height;
+        background-color: @tree-node-drag-tip-bg;
+      }
+
+      &-highlight {
+        background-color: @tree-node-drag-bg-highlight;
+        background-clip: content-box;
+      }
+    }
   }
 
   &--block-node &__label {
@@ -105,21 +152,21 @@
   }
 
   &--hoverable &__label:not(.@{prefix}-is-active):not(.@{prefix}-is-checked):hover {
-    background-color: @tree-node-bg-color-hover;
+    background-color: @tree-node-bg-hover-color;
   }
 
   &__line {
-    position: absolute;
-    left: @tree-line-position-left;
-    bottom: @tree-line-position-bottom;
-    width: @tree-line-width;
-    height: 40px;
-    pointer-events: none;
-
     --level: 0;
     --color: @tree-node-icon-line-color;
     --space: @tree-node-padding-basic;
     --iconSize: @icon-default;
+
+    position: absolute;
+    left: @tree-line-position-left;
+    bottom: @tree-line-position-bottom;
+    width: @tree-line-width;
+    height: @tree-node-item-height;
+    pointer-events: none;
   }
 
   &__line::before {
@@ -128,78 +175,84 @@
     bottom: 0;
     left: 0;
     display: block;
-    height: 36px;
-    width: @tree-line-width-before;
+    height: @tree-node-item-height;
+    width: @tree-line-before-width;
     border-left: 1px solid var(--color);
     border-bottom: 1px solid var(--color);
   }
 
   &__line--first::before {
-    height: @tree-line-height-first;
+    height: @tree-line-first-height;
   }
 
   &__line--leaf::before {
-    width: 14px;
-  }
-
-  &--fx {
-
-    .@{prefix}-icon-chevron-right {
-      transition: color, transform @tree-node-animation-time;
-    }
+    width: @tree-line-leaf-width;
   }
 
   // 默认图标
   &__icon {
-    width: @tree-node-icon-size;
-    height: @tree-node-icon-size;
-    line-height: @tree-node-icon-size;
-    font-size: 0; // 当子元素只有一个且为image类型时，会有隐藏占位，因此将font-size设0
     position: relative;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    // 图标居中
+    text-align: center;
+    width: 16px;
+    // 当子元素只有一个且为image类型时，会有隐藏占位，因此将font-size设0
+    font-size: 0;
     user-select: none;
     cursor: pointer;
-    border-radius: @border-radius;
     transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
-
-    &:not(:empty):hover {
-      background-color: @tree-node-bg-color-hover;
-    }
-
-    .t-icon-loading-blue {
-      color: @tree-node-icon-color-active;
-    }
   }
 
+  // svg 动画与 icon 背景进行隔离
+  &__icon::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: @tree-node-icon-svg-size;
+    height: @tree-node-icon-svg-size;
+    border-radius: @border-radius-default;
+  }
+
+  // 仅在有图标时呈现背景
+  &__icon:not(:empty):hover::after {
+    background-color: @tree-node-bg-hover-color;
+  }
+
+  // 没有图标是不呈现指针
   &__icon:empty {
     cursor: initial;
   }
 
   &__label {
-    flex: auto;
-    line-height: @tree-node-item-label-height;
+    --ripple-color: @bg-color-container-active;
+
     flex-wrap: nowrap;
+    flex: 0 0 auto;
+    padding: 2px 4px;
     margin-left: 4px;
-    padding: 0 4px;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
     cursor: pointer;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 
-    &.@{prefix}-is-checked,
-    &.@{prefix}-is-active {
+    &.@{prefix}-is-checked {
       font-weight: 500;
-      color: @tree-node-text-color-active;
-      background-color: @tree-node-bg-color-active;
+      color: @tree-node-text-active-color;
+      background-color: @tree-node-bg-active-color;
     }
 
     &::selection {
       background-color: transparent;
     }
+  }
 
-    &--strictly {
-      flex: none;
-    }
-
-    --ripple-color: @bg-color-container-active;
+  .@{prefix}-is-active &__label {
+    font-weight: 500;
+    color: @tree-node-text-active-color;
+    background-color: @tree-node-bg-active-color;
   }
 
   &__space {
@@ -215,11 +268,11 @@
     margin-left: auto;
   }
 
-  &__operations .@{prefix}-icon {
+  &__operations .t-icon {
     cursor: pointer;
   }
 
-  &__item.t-is-disabled {
+  &__item.@{prefix}-is-disabled {
     color: @tree-disabled-color;
     cursor: default;
 
@@ -229,28 +282,43 @@
   }
 }
 
+.@{prefix}-tree--vscroll {
+  overflow-y: auto;
+}
+
 .@{prefix}-tree {
-  &__item--visible {
-    opacity: 1;
-    height: @tree-node-item-height;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  &__item + &__item--hidden {
-    margin-top: 0;
-  }
-
   &__item--hidden {
-    opacity: 0;
-    height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    overflow: hidden;
+    display: none;
+  }
+
+  &__children--hidden {
+    display: none;
   }
 }
 
 .@{prefix}-tree--transition {
+  .@{prefix}-tree__item--visible {
+    opacity: 1;
+  }
+
+  .@{prefix}-tree__item--hidden {
+    display: flex;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .@{prefix}-tree__children--visible {
+    opacity: 1;
+  }
+
+  .@{prefix}-tree__children--hidden {
+    display: block;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
   // 节点插入动画
   .@{prefix}-tree__item--enter-active {
     animation: t-tree-toggle @tree-node-animation-time linear;
@@ -263,39 +331,56 @@
 
   // 节点展示动画
   .@{prefix}-tree__item--visible {
-    transition:
-      opacity @tree-node-transition-time linear @tree-node-transition-time,
-      height @tree-node-transition-time linear 0s,
-      padding-top @tree-node-transition-time linear 0s,
-      padding-bottom @tree-node-transition-time linear 0s,
-      margin-top @tree-node-transition-time linear 0s;
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
+      max-height @tree-node-transition-time linear 0s;
   }
 
   // 节点隐藏动画
   .@{prefix}-tree__item--hidden {
     animation: none;
-    transition:
-      opacity @tree-node-transition-time linear 0s,
-      height @tree-node-transition-time linear @tree-node-transition-time,
-      padding-top @tree-node-transition-time linear @tree-node-transition-time,
-      padding-bottom @tree-node-transition-time linear @tree-node-transition-time,
-      margin-top @tree-node-transition-time linear @tree-node-transition-time;
+    transition: opacity @tree-node-transition-time linear 0s,
+      max-height @tree-node-transition-time linear @tree-node-transition-time;
+  }
+
+  // 子节点展示动画
+  .@{prefix}-tree__children--visible {
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
+      max-height @tree-node-transition-time linear 0s;
+  }
+
+  // 子节点隐藏动画
+  .@{prefix}-tree__children--hidden {
+    animation: none;
+    transition: opacity @tree-node-transition-time linear 0s,
+      max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 }
 
 @keyframes t-tree-toggle {
   0% {
     opacity: 0;
-    height: 0;
+    max-height: 0;
   }
 
   50% {
     opacity: 0;
-    height: @tree-node-item-height;
+    max-height: @tree-node-item-origin-height;
   }
 
   100% {
     opacity: 1;
-    height: @tree-node-item-height;
+    max-height: @tree-node-item-origin-height;
+  }
+}
+
+.@{prefix}-tree-select {
+  &.@{prefix}-single-suffix {
+    padding-right: 20px;
+  }
+
+  &.@{prefix}-tag-prefix {
+    padding-left: 4px;
   }
 }

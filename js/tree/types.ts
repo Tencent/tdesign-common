@@ -33,6 +33,11 @@ export interface TreeNodeState {
    */
   disabled?: boolean;
   /**
+   * 节点是否可拖拽
+   * @default false
+   */
+  draggable?: boolean;
+  /**
    * 节点是否可视
    * @default false
    */
@@ -243,6 +248,8 @@ export interface TypeTreeStoreOptions {
   checkStrictly?: boolean;
   // 禁用整个树
   disabled?: boolean;
+  // 节点是否可拖动
+  draggable?: boolean,
   // 节点加载函数
   load?: Function;
   // 是否延迟加载

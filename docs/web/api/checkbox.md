@@ -2,6 +2,7 @@
 title: Checkbox 多选框
 description: 多选框是一个选择控件，允许用户通过单击在选中和未选中之间切换。
 isComponent: true
+usage: { title: '', description: '' }
 spline: form
 ---
 

@@ -2,6 +2,7 @@
 title: Tabs 选项卡
 description: 用于承载同一层级下不同页面或类别的组件，方便用户在同一个页面框架下进行快速切换。
 isComponent: true
+usage: { title: '', description: '' }
 spline: navigation
 ---
 
@@ -60,3 +61,9 @@ spline: navigation
 提供了选项卡的禁用状态。
 
 {{ ban }}
+
+### 可拖拽的选项卡
+
+提供了可拖拽的选项卡。
+
+{{ drag-sort }}

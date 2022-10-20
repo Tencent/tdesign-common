@@ -2,6 +2,7 @@
 title: Menu 导航菜单
 description: 用于承载网站的架构，并提供跳转的菜单列表。
 isComponent: true
+usage: { title: '', description: '' }
 spline: navigation
 ---
 

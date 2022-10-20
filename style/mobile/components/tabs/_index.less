@@ -10,8 +10,9 @@
   flex-direction: column;
 
   &__nav {
+    width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
     user-select: none;
     white-space: nowrap;
     background-color: @tab-nav-bg-color;
@@ -33,9 +34,11 @@
       position: relative;
       padding: @tab-nav-item-padding;
       display: inline-block;
+
       &.@{prefix}-is-active {
         color: @tab-nav-active-color;
         font-family: @font-family-medium;
+        font-weight: 700;
       }
 
       &.@{prefix}-is-disabled {
@@ -70,24 +73,20 @@
 
       .@{prefix}-tabs__nav-item {
         flex: 1 0 auto;
-        margin-bottom: 10px;
       }
 
       .@{prefix}-tabs__nav-container {
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
-        margin-bottom: -10px;
-      }
-
-      .@{prefix}-tabs__nav-line {
-        bottom: 10px;
       }
     }
   }
 
-  &.@{prefix}-size-l &__nav {
-    .@{prefix}-is-active {
+  &.@{prefix}-size-l &__nav-item {
+    transition: font-size .24s ease;
+
+    &.@{prefix}-is-active {
       font-size: @tab-nav-large-font-size;
     }
   }
@@ -100,6 +99,7 @@
     }
 
     .@{prefix}-tabs__nav {
+      width: initial;
       background-color: @tab-nav-horizontal-bg-color;
 
       &-wrap {

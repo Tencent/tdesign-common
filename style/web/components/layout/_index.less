@@ -6,9 +6,10 @@
 
 @import "./_mixin.less";
 
-.@{prefix}-layout,
-.@{prefix}-layout * {
-  box-sizing: border-box;
+@import "../../mixins/_reset.less";
+
+.@{prefix}-layout {
+  .reset;
 }
 
 .@{prefix}-layout,
@@ -26,7 +27,6 @@
 
 .@{prefix}-layout__header {
   height: @layout-header-height;
-  line-height: @layout-header-height;
   background-color: @layout-header-bg-color;
 }
 

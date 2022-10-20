@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-form {
-  font-size: @form-font-size;
+  .reset;
+
+  font: @form-font;
 
   &:not(.@{prefix}-form-inline) {
 
@@ -20,25 +24,30 @@
 
   &__item {
     margin-bottom: @form-item-margin-bottom;
-  }
 
-  &__item-with-help,
-  &__item-with-extra {
-    margin-bottom: 0;
+    // 文档流撑开内容补足剩余的 4px
+    &.@{prefix}-form__item-with-help {
+      margin-bottom: @form-item-with-help-margin-bottom;
+    }
+
+    // 绝对定位布局需要重设底部间距
+    &.@{prefix}-form__item-with-extra {
+      margin-bottom: @form-item-margin-bottom;
+    }
   }
 
   &__label {
     float: left;
     padding-right: @form-label-padding-right;
     vertical-align: middle;
-    line-height: @form-item-height;
+    line-height: @form-item-control-height;
     color: @form-color-label;
     box-sizing: border-box;
     white-space: nowrap;
 
     &--top {
       float: none;
-      min-height: @form-item-height;
+      min-height: @form-item-control-height;
     }
 
     &--left {
@@ -69,18 +78,20 @@
   }
 
   &__controls {
-    min-height: @form-item-height;
+    min-height: @form-item-control-height;
     display: flow-root;
+    position: relative;
 
     &-content {
       display: flex;
       align-items: center;
-      min-height: @form-item-height;
+      min-height: @form-item-control-height;
     }
 
     // formItem 嵌套情况无间距
     .@{prefix}-form__item {
-      margin: 0 @form-item-margin-right-inline 0 0;
+      margin-bottom: 0;
+      margin-right: @form-item-margin-right-inline;
     }
   }
 
@@ -94,20 +105,11 @@
     .input-status(success);
   }
 
-  &__help {
-    height: auto;
-    min-height: @form-item-margin-bottom;
-    line-height: @form-item-help-line-height;
-    font-size: @form-item-help-font-size;
-    display: inline-block;
-    color: @@fontColor;
-    @fontColor: "form-color-help";
-  }
-
   &__status {
     display: flex;
     margin-left: @form-status-margin-left;
-    > .@{prefix}-icon {
+
+    > .t-icon {
       font-size: 20px;
     }
 
@@ -139,12 +141,23 @@
   }
 }
 
-.@{prefix}-input__extra {
+.@{prefix}-input__extra,
+.@{prefix}-input__help {
+  margin: 0;
+  width: 100%;
   height: auto;
-  min-height: @form-item-margin-bottom;
-  line-height: @form-item-help-line-height;
-  font-size: @form-item-help-font-size;
-  display: inline-block;
+  min-height: @form-item-help-line-height;
+  font: @form-item-help-font;
+  color: @form-color-extra;
+}
+
+.@{prefix}-input__extra {
+  position: absolute;
+  bottom: -@form-item-help-line-height;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // 输入框状态

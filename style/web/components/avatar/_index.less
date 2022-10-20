@@ -4,7 +4,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-avatar {
+  .reset;
+
   position: relative;
   display: inline-flex;
   background: @avatar-bg-color;
@@ -61,11 +65,6 @@
 
   &.@{prefix}-avatar--offset-left {
     .generate-z-index(@avatar-group-init-zIndex);
-
-    .@{prefix}-popup__reference .@{prefix}-avatar {
-      z-index: 0;
-      .avatar-group-size--left();
-    }
 
     & .@{prefix}-avatar {
       &:not(:first-child) {

@@ -5,7 +5,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-skeleton {
+  .reset;
+
   &__row {
     display: flex;
     margin-bottom: 10px;
@@ -35,19 +39,19 @@
     &-text {
       width: 100%;
       height: @skeleton-type-text-height;
-      border-radius: @border-radius-square;
+      border-radius: @skeleton-border-radius-square;
     }
 
     &-rect {
-      width: @rect-width-default;
-      height: @rect-height-default;
-      border-radius: @border-radius-square;
+      width: @skeleton-rect-width-default;
+      height: @skeleton-rect-height-default;
+      border-radius: @skeleton-border-radius-square;
     }
 
     &-circle {
-      width: @base-height-default;
-      height: @base-height-default;
-      border-radius: @border-radius-circle;
+      width: @skeleton-base-height-default;
+      height: @skeleton-base-height-default;
+      border-radius: @skeleton-border-radius-circle;
       flex-shrink: 0;
     }
   }

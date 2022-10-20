@@ -8,6 +8,8 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 a.@{prefix}-menu__item {
   text-decoration: none;
   color: unset;
@@ -20,6 +22,8 @@ a.@{prefix}-menu__item {
 
 // head-menu
 .@{prefix}-head-menu {
+  .reset;
+
   position: relative;
   width: 100%;
   background-color: @menu-theme-light;
@@ -68,11 +72,11 @@ a.@{prefix}-menu__item {
       height: 40px;
       padding: 8px;
       line-height: 40px;
+      box-sizing: border-box;
     }
   }
 
   .@{prefix}-submenu {
-
     > .@{prefix}-menu__item {
       overflow: unset;
 
@@ -115,7 +119,6 @@ a.@{prefix}-menu__item {
         }
 
         &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
-
           .@{prefix}-tabs__nav-item-wrapper {
             background-color: @menu-light-hover-bg;
           }
@@ -150,6 +153,7 @@ a.@{prefix}-menu__item {
       min-width: 100%;
       margin-left: 0;
       color: @head-menu-popup-item-color;
+      box-sizing: border-box;
     }
 
     li + li {
@@ -158,7 +162,8 @@ a.@{prefix}-menu__item {
     }
   }
 
-  .@{prefix}-submenu-icon { // to remove
+  .@{prefix}-submenu-icon {
+    // to remove
     margin-left: 8px;
   }
 
@@ -168,7 +173,6 @@ a.@{prefix}-menu__item {
 
   // 多层情况
   .@{prefix}-menu__popup-inner {
-
     .@{prefix}-menu__popup {
       top: -8px;
       left: calc(100% + 16px);
@@ -189,6 +193,8 @@ a.@{prefix}-menu__item {
 
 // default-menu
 .@{prefix}-default-menu {
+  .reset;
+
   position: relative;
   width: @default-menu-width;
   display: inline-block;
@@ -208,7 +214,6 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu__item {
-
       &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-disabled) {
         background-color: @menu-border-color--dark;
       }
@@ -230,7 +235,6 @@ a.@{prefix}-menu__item {
       background: @menu-theme-dark;
 
       .@{prefix}-menu__item {
-
         &.@{prefix}-is-active {
           background-color: @default-menu-active-color;
         }
@@ -254,9 +258,9 @@ a.@{prefix}-menu__item {
     width: @default-menu-collapse-width;
 
     .@{prefix}-menu {
-
       .@{prefix}-menu__item {
         padding: 0 14px;
+        justify-content: center;
       }
     }
 
@@ -271,7 +275,7 @@ a.@{prefix}-menu__item {
         color: @menu-theme-light;
         background-color: @default-menu-active-color;
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @menu-theme-light;
         }
       }
@@ -284,13 +288,12 @@ a.@{prefix}-menu__item {
         display: none;
       }
 
-      .@{prefix}-icon {
+      .t-icon {
         margin-right: initial;
       }
     }
 
     .@{prefix}-menu__popup {
-
       .@{prefix}-menu__item {
         padding-left: @popup-item-padding-left;
         justify-content: flex-start;
@@ -315,7 +318,6 @@ a.@{prefix}-menu__item {
       }
 
       .@{prefix}-menu__popup {
-
         .@{prefix}-submenu-icon {
           display: initial;
         }
@@ -389,9 +391,9 @@ a.@{prefix}-menu__item {
         position: relative;
         padding: 20px 16px 8px;
         height: 48px;
-        line-height: 20px;
         color: @menu-menu-group-title-color;
-        font-size: @menu-extra-fontsize;
+        font: @menu-extra-font-size;
+        box-sizing: border-box;
       }
     }
   }
@@ -410,6 +412,7 @@ a.@{prefix}-menu__item {
       left: 0;
       text-align: left;
       border-top: solid 1px @menu-border-color;
+      box-sizing: border-box;
     }
 
     &-icon {
@@ -418,17 +421,17 @@ a.@{prefix}-menu__item {
       padding: 8px;
       cursor: pointer;
       color: @menu-operations-color;
+      box-sizing: border-box;
     }
   }
 
   .@{prefix}-menu__item {
-
     &.@{prefix}-is-opened {
       margin: 4px 0;
       color: @menu-light-active-color;
       background-color: unset;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @menu-light-active-color;
       }
     }
@@ -438,7 +441,8 @@ a.@{prefix}-menu__item {
     // display: none;
     // position: static;
     overflow: hidden;
-    transition: max-height @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+    transition: max-height @anim-duration-slow
+      cubic-bezier(.645, .045, .355, 1);
     // height: 0;
 
     .@{prefix}-menu__item {
@@ -478,10 +482,10 @@ a.@{prefix}-menu__item {
     line-height: @default-menu-item-height;
     border-bottom: 0;
     text-align: left;
-    border-radius: @border-radius;
-    transition:
-      background-color @anim-duration-slow @anim-time-fn-easing,
+    border-radius: @border-radius-default;
+    transition: background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
+    box-sizing: border-box;
 
     &:first-child {
       margin-top: 0;
@@ -491,7 +495,7 @@ a.@{prefix}-menu__item {
       margin-bottom: 0;
     }
 
-    .@{prefix}-icon {
+    .t-icon {
       width: 20px;
       height: 20px;
     }
@@ -504,7 +508,7 @@ a.@{prefix}-menu__item {
       color: @menu-theme-light;
       background-color: @default-menu-active-color;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @menu-theme-light;
       }
     }
@@ -522,7 +526,7 @@ a.@{prefix}-menu__item {
 // menu
 .@{prefix}-menu {
   color: @menu-color-light;
-  font-size: @menu-fontsize;
+  font: @menu-font-size;
   .list-style-none();
 
   &--dark {
@@ -540,11 +544,10 @@ a.@{prefix}-menu__item {
     position: relative;
 
     &.@{prefix}-is-active {
-
       > .@{prefix}-menu__item {
         color: @menu-theme-dark;
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @menu-theme-dark;
         }
       }
@@ -556,7 +559,6 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-
       & .@{prefix}-submenu-icon {
         transform: scaleY(-1);
       }
@@ -603,7 +605,7 @@ a.@{prefix}-menu__item {
     cursor: pointer;
     // overflow: hidden;
     text-overflow: ellipsis;
-    border-radius: @border-radius;
+    border-radius: @border-radius-default;
 
     ::selection {
       background: transparent;
@@ -673,17 +675,17 @@ a.@{prefix}-menu__item {
     white-space: nowrap;
   }
 
-  .@{prefix}-icon + &__content {
+  .t-icon + &__content,
+  .t-icon + &__item-link {
     margin-left: 8px;
   }
 
   &--dark {
-
     &.@{prefix}-head-menu {
-      background-color: @head-menu-bg--dark;
+      background-color: @menu-theme-dark;
 
       .@{prefix}-menu__popup {
-        background-color: @head-menu-bg--dark;
+        background-color: @menu-theme-dark;
       }
     }
 
@@ -698,7 +700,7 @@ a.@{prefix}-menu__item {
       &.@{prefix}-is-opened {
         color: @menu-item-active-color--dark;
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @menu-item-active-color--dark;
         }
       }
@@ -720,7 +722,7 @@ a.@{prefix}-menu__item {
 
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
-        border-radius: @border-radius;
+        border-radius: @border-radius-default;
 
         &.@{prefix}-is-active {
           color: @menu-item-active-color--dark;
@@ -760,7 +762,6 @@ a.@{prefix}-menu__item {
         }
 
         &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
-
           .@{prefix}-tabs__nav-item-wrapper {
             background-color: @menu-dark-hover-bg;
           }
@@ -782,20 +783,21 @@ a.@{prefix}-menu__item {
   &__popup {
     max-height: 0;
     overflow: hidden;
-    transition:
-      max-height @anim-duration-moderate @anim-time-fn-easing,
+    transition: max-height @anim-duration-moderate @anim-time-fn-easing,
       width @anim-duration-moderate @anim-time-fn-easing,
       opacity @anim-duration-base linear;
     position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
-    border-radius: @border-radius;
+    border-radius: @border-radius-medium;
     opacity: 0;
     .list-style-none();
 
     &-wrapper {
       padding: 8px;
       height: 100%;
+      list-style: none;
+      margin: 0;
     }
 
     .@{prefix}-fake-arrow {
@@ -805,10 +807,6 @@ a.@{prefix}-menu__item {
     &.@{prefix}-is-vertical {
       max-height: unset;
       width: 0;
-
-      .@{prefix}-menu__popup-wrapper {
-        min-width: 216px;
-      }
 
       &.@{prefix}-is-opened {
         width: var(--popup-width, 216px);
@@ -877,7 +875,7 @@ a.@{prefix}-menu__item {
   &__operations {
     &-icon {
       margin-right: 16px;
-      border-radius: @border-radius;
+      border-radius: @border-radius-default;
       color: @menu-item-color--light;
       transition: background-color @anim-duration-moderate @anim-time-fn-easing;
 

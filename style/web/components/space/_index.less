@@ -1,0 +1,35 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-space {
+  display: inline-flex;
+
+  .@{prefix}-space-item {
+    width: inherit;
+  }
+
+  &-align-start {
+    align-items: flex-start;
+  }
+
+  &-align-end {
+    align-items: flex-end;
+  }
+
+  &-align-baseline {
+    align-items: baseline;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+
+  &-vertical {
+    flex-direction: column;
+
+    .@{prefix}-space-item-separator {
+      width: 100%;
+    }
+  }
+}

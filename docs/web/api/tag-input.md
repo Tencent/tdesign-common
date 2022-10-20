@@ -2,6 +2,7 @@
 title: TagInput 标签输入框
 description: 用于输入文本标签。
 isComponent: true
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -11,7 +12,7 @@ spline: data
 
 ### 标签数量超出的输入框
 
-使用 `excessTagsDisplayType` 控制标签超出时的呈现方式：横向滚动显示和换行显示，默认为横向滚动。
+使用 `excessTagsDisplayType` 控制标签超出时的呈现方式：横向滚动显示和换行显示，默认为换行显示。
 
 {{ excess }}
 

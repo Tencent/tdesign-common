@@ -18,17 +18,16 @@
   white-space: nowrap;
   border-radius: @btn-border-radius;
   transition: all @anim-duration-base linear;
-  user-select: none;
   touch-action: manipulation;
 }
 
 .button-size(@btn-height, @btn-font-size, @btn-icon-size, @padding-horizontal) {
   height: @btn-height;
-  font-size: @btn-font-size;
+  font: @btn-font-size;
   padding-left: @padding-horizontal - @btn-border-width;
   padding-right: @padding-horizontal - @btn-border-width;
 
-  .@{prefix}-icon,
+  .t-icon,
   .@{prefix}-loading {
     font-size: @btn-icon-size;
   }

@@ -2,11 +2,12 @@
 
 @import "./_var.less";
 
-@import "../../_variables.less";
+@import "../../mixins/_reset.less";
 
 .@{prefix}-transfer {
-  font-size: @transfer-font-size;
-  line-height: @transfer-line-height;
+  .reset;
+
+  font: @transfer-font;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -41,6 +42,7 @@
       width: @transfer-list-header-width;
       padding: @transfer-list-header-padding;
       margin: @transfer-list-header-margin;
+      box-sizing: border-box;
 
       & + :not(.@{prefix}-transfer__list--with-search) {
         border-top: @transfer-border;
@@ -71,6 +73,7 @@
       position: relative;
       height: 100%;
       padding: @transfer-list-body-padding;
+      box-sizing: border-box;
     }
 
     &--with-search {
@@ -113,7 +116,7 @@
       display: flex;
       cursor: pointer;
       margin: @transfer-list-item-margin;
-      border-radius: @transfer-border-radius;
+      border-radius: @border-radius-default;
       transition: background-color @anim-duration-base @anim-time-fn-easing;
 
       &:first-child {
@@ -206,6 +209,7 @@
     top: 0;
     width: 100%;
     padding: @transfer-list-search-wrapper-margin;
+    box-sizing: border-box;
   }
 }
 

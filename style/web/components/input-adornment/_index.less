@@ -1,0 +1,41 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-input-adornment {
+  .reset;
+
+  display: flex;
+
+  .input-adornment-item(prepend);
+  .input-adornment-item(append);
+
+  &--prepend {
+
+    & .@{prefix}-input,
+    & .@{prefix}-textarea__inner {
+      border-radius: 0 @input-border-radius @input-border-radius 0;
+    }
+  }
+
+  &--append {
+
+    & .@{prefix}-input,
+    & .@{prefix}-textarea__inner {
+      border-radius: @input-border-radius 0 0 @input-border-radius;
+    }
+  }
+
+  &--prepend&--append {
+    & .@{prefix}-input,
+    & .@{prefix}-textarea__inner {
+      border-radius: 0;
+    }
+  }
+}

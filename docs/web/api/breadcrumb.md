@@ -2,6 +2,7 @@
 title: Breadcrumb 面包屑
 description: 显示当前页面在系统层级结构的位置，并能返回之前任意层级的页面。
 isComponent: true
+usage: { title: '', description: '' }
 spline: navigation
 ---
 

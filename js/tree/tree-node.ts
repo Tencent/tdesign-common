@@ -1,4 +1,5 @@
 import uniqueId from 'lodash/uniqueId';
+import isNil from 'lodash/isNil';
 import get from 'lodash/get';
 import { TreeStore } from './tree-store';
 import {
@@ -139,7 +140,7 @@ export class TreeNode {
 
     this.set(spec);
     this.label = spec[propLabel] || '';
-    this.value = spec[propValue] || uniqueId(prefix);
+    this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
     this.tree.nodeMap.set(this.value, this);
 
     if (parent && parent instanceof TreeNode) {
@@ -271,46 +272,66 @@ export class TreeNode {
     index?: number,
   ): void {
     const parentNode = parent;
-    if (!parentNode) return;
-
-    const targetParents = parentNode.getParents();
-    const includeCurrent = targetParents.some((node) => node.value === this.value);
-    if (includeCurrent) {
-      // 不能将父节点插入到子节点
-      return;
+    let targetIndex = -1;
+    if (typeof index === 'number') {
+      targetIndex = index;
     }
 
-    if (Array.isArray(parentNode.children)) {
-      let targetIndex = 0;
-      if (typeof index === 'number') {
-        targetIndex = index;
-      }
-      const targetPosNode = parentNode.children[targetIndex];
-      if (targetPosNode.value === this.value) {
+    const targetParents = parentNode?.getParents() || [];
+    const includeCurrent = targetParents.some((pnode) => pnode === this);
+    if (includeCurrent) {
+      throw new Error('无法将父节点插入到子节点');
+    }
+
+    if (Array.isArray(parentNode?.children)) {
+      const targetPosNode = parentNode?.children[targetIndex];
+      if (targetPosNode && targetPosNode === this) {
         // 无需将节点插入到原位置
         return;
       }
     }
 
-    this.remove();
-    this.parent = parentNode;
-
+    // 先要取得 siblings
+    // 因为要应对节点在同一个 siblings 中变换位置的情况
     let siblings = null;
     if (parentNode instanceof TreeNode) {
-      if (!Array.isArray(parentNode.children)) {
+      if (!Array.isArray(parentNode?.children)) {
         parentNode.children = [];
       }
       siblings = parent.children;
     } else {
       siblings = tree.children;
     }
-    if (Array.isArray(siblings)) {
-      if (typeof index === 'number') {
-        siblings.splice(index, 0, this);
-      } else {
-        siblings.push(this);
-      }
+
+    if (!Array.isArray(siblings)) {
+      throw new Error('无法插入到目标位置，可插入的节点列表不存在');
     }
+
+    const prevLength = siblings.length;
+    const prevIndex = this.getIndex();
+
+    this.remove();
+
+    if (typeof index === 'number') {
+      let targetIndex = index;
+      if (parentNode === this.parent) {
+        // 前置节点被拔出后再插入到同一个 siblings 时，会引起目标 index 的变化
+        // 因此要相应的变更插入位置
+        // 后置节点被拔出时，目标 index 是不变的
+        const curLength = siblings.length;
+        if (
+          curLength < prevLength
+          && prevIndex <= targetIndex
+        ) {
+          targetIndex -= 1;
+        }
+      }
+      siblings.splice(targetIndex, 0, this);
+    } else {
+      siblings.push(this);
+    }
+
+    this.parent = parentNode;
 
     // 插入节点应当继承展开状态
     // 但建议不要继承选中状态和高亮状态
@@ -324,7 +345,7 @@ export class TreeNode {
       }
     });
 
-    const updateNodes = parentNode.walk();
+    const updateNodes = parentNode?.walk() || tree.children.map((item) => item.walk()).flat();
     updateNodes.forEach((node) => {
       node.update();
       node.updateChecked();
@@ -558,6 +579,11 @@ export class TreeNode {
     if (this.vmIsLocked) return true;
     const treeDisabled = get(this, 'tree.config.disabled');
     return !!(treeDisabled || this.disabled);
+  }
+
+  // 判断节点是否能拖拽
+  public isDraggable() {
+    return !!(get(this, 'tree.config.draggable') || this.draggable);
   }
 
   // 判断节点是否支持互斥展开
@@ -851,10 +877,10 @@ export class TreeNode {
   }
 
   // 更新选中态属性值
-  public updateChecked(): void {
+  public updateChecked(isFromValueChange?: boolean): void {
     const { tree } = this;
     this.vmCheckable = this.isCheckable();
-    if (this.vmCheckable && !this.disabled) {
+    if (this.vmCheckable && (!this.disabled || isFromValueChange)) {
       this.checked = this.isChecked();
       if (this.checked) {
         tree.checkedMap.set(this.value, true);

@@ -4,7 +4,10 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-breadcrumb {
+  .reset;
   .breadcrumb;
 
   &__separator {
@@ -22,7 +25,7 @@
     &.@{prefix}-is-current {
       color: @breadcrumb-text-color-current;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @breadcrumb-icon-color-current;
       }
     }
@@ -35,7 +38,7 @@
       }
     }
 
-    .@{prefix}-icon {
+    .t-icon {
       font-size: @breadcrumb-icon-size;
     }
 
@@ -83,11 +86,11 @@
   }
 
   &__inner {
-    font-size: @breadcrumb-font-base;
+    font: @breadcrumb-font-base;
     word-break: break-all;
     .v-inlineblock;
 
-    .@{prefix}-icon {
+    .t-icon {
       margin: 0 @breadcrumb-spacer-half;
     }
   }
@@ -125,8 +128,7 @@
 
     &-item {
       padding: @spacer;
-      font-size: @breadcrumb-font-base;
-      line-height: @breadcrumb-line-height;
+      font: @breadcrumb-font-base;
       color: @breadcrumb-text-color-current;
       .t-overflow;
 
@@ -151,7 +153,7 @@
     padding: @spacer;
     color: @breadcrumb-text-color-current;
     background: @bg-color-container;
-    border-radius: @border-radius * .5;
+    border-radius: calc(@border-radius-default * .5);
     box-shadow: @breadcrumb-option-box-shadow;
     z-index: 20;
 
@@ -184,9 +186,10 @@
 
     .@{prefix}-breadcrumb__inner {
       max-width: @breadcrumb-inner-max-width-default;
-      display: inline-block;
+      display: flex;
+      align-items: center;
 
-      .@{prefix}-icon {
+      .t-icon {
         vertical-align: text-bottom;
       }
       .t-overflow;

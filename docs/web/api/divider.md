@@ -2,7 +2,8 @@
 title: Divider 分割线
 description: 分割线是一个呈线状的轻量化组件，起到分割、组织、细化的作用，用于有逻辑的组织元素内容和页面结构。
 isComponent: true
-spline: base
+usage: { title: '', description: '' }
+spline: layout
 ---
 
 ### 基础分割线

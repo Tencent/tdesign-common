@@ -2,6 +2,7 @@
 title: TreeSelect 树选择
 description: 类似 Select 的信息录入控件，适用于选择树形的数据结构。
 isComponent: true
+usage: { title: '', description: '' }
 spline: form
 ---
 

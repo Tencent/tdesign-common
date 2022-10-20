@@ -6,8 +6,12 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // Grid system
 .@{prefix}-row {
+  .reset;
+
   display: flex;
   flex-flow: row wrap;
 }
@@ -52,10 +56,37 @@
   align-items: flex-end;
 }
 
+// 顶部对齐
+.@{prefix}-row--align-top,
+.@{prefix}-row--align-start {
+  align-items: flex-start;
+}
+
+// 居中对齐
+.@{prefix}-row--align-middle,
+.@{prefix}-row--align-center {
+  align-items: center;
+}
+
+// 底部对齐
+.@{prefix}-row--align-bottom,
+.@{prefix}-row--align-end {
+  align-items: flex-end;
+}
+
+.@{prefix}-row--align-stretch {
+  align-items: stretch;
+}
+
+.@{prefix}-row--align-baseline {
+  align-items: baseline;
+}
+
 .@{prefix}-col {
   position: relative;
   max-width: 100%;
   min-height: 1px;
+  box-sizing: border-box;
 }
 
 .gen-grid();

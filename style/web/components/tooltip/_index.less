@@ -7,35 +7,51 @@
 @import "./_mixin.less";
 
 .@{prefix}-tooltip {
-  display: inline-block;
-  border: 0;
-  margin-bottom: 1px;
-  max-width: @tooltip-max-width;
-  word-break: break-word;
-
-  &:not(.@{prefix}-tooltip--light) {
-    color: @tooltip-text-color;
+  .@{prefix}-popup__content {
+    display: inline-block;
+    border: 0;
+    z-index: @z-index-Tooltip;
+    margin-bottom: 1px;
+    max-width: @tooltip-max-width;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: @border-radius-medium;
+    color: @tooltip-light-text-color;
   }
 
   &--default {
-    background: @tooltip-bg;
-    margin: @tooltip-default-margin;
+    .@{prefix}-popup__content {
+      color: @tooltip-text-color;
+      background: @tooltip-bg;
+    }
   }
 
   &--primary {
-    background: @tooltip-bg-primary;
+    .@{prefix}-popup__content {
+      color: @tooltip-color-primary;
+      background: @tooltip-bg-primary;
+    }
   }
 
   &--success {
-    background: @tooltip-bg-success;
+    .@{prefix}-popup__content {
+      color: @tooltip-color-success;
+      background: @tooltip-bg-success;
+    }
   }
 
   &--danger {
-    background: @tooltip-bg-danger;
+    .@{prefix}-popup__content {
+      color: @tooltip-color-danger;
+      background: @tooltip-bg-danger;
+    }
   }
 
   &--warning {
-    background: @tooltip-bg-warning;
+    .@{prefix}-popup__content {
+      color: @tooltip-color-warning;
+      background: @tooltip-bg-warning;
+    }
   }
 
   .@{prefix}-popup__arrow {
@@ -47,16 +63,23 @@
       background: inherit;
     }
   }
+
+  &--noshadow {
+    .@{prefix}-popup__content,
+    &[data-popper-placement] .@{prefix}-popup__arrow:before {
+      box-shadow: none;
+    }
+  }
 }
 
-.@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="top"].@{prefix}-tooltip .@{prefix}-popup__arrow {
   bottom: @tooltip-arrow-position;
 }
 
-.@{prefix}-popup[data-popper-placement^="left"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="left"].@{prefix}-tooltip .@{prefix}-popup__arrow {
   right: @tooltip-arrow-position;
 }
 
-.@{prefix}-popup[data-popper-placement^="right"] .@{prefix}-tooltip .@{prefix}-popup__arrow {
+.@{prefix}-popup[data-popper-placement^="right"].@{prefix}-tooltip .@{prefix}-popup__arrow {
   left: -@tooltip-arrow-position;
 }

@@ -6,16 +6,26 @@
 
 @import "../../mixins/_layout.less";
 
+@import "../../mixins/_reset.less";
+
 .@{prefix}-pagination {
+  .reset;
+
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   white-space: nowrap;
   color: @pagination-text-color;
+  user-select: none;
+
+  &.@{prefix}-is-disabled {
+    color: @pagination-text-color-disabled;
+  }
 
   // 数据统计
   &__total {
-    font-size: @pagination-font-default;
+    font: @pagination-font-default;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -23,7 +33,7 @@
   }
 
   // 选择框
-  & .@{prefix}-select__wrap {
+  .@{prefix}-select__wrap {
     width: auto;
   }
 
@@ -44,7 +54,7 @@
     cursor: pointer;
     color: @pagination-text-color;
     border-radius: @pagination-border-radius-base;
-    font-size: @pagination-btn-font-size;
+    font: @pagination-btn-font-size;
     .pagination-btn(@pagination-height-default);
 
     &.@{prefix}-is-disabled {
@@ -84,6 +94,7 @@
     border-radius: @pagination-border-radius-base;
     cursor: pointer;
     background-color: @pagination-bg-color-default;
+    box-sizing: border-box;
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
@@ -93,6 +104,7 @@
     &:hover {
       color: @pagination-bg-color-hover;
       border-color: @pagination-bg-color-hover;
+      transition: @pagination-hover-transition;
     }
 
     &:active {
@@ -136,6 +148,7 @@
       &:hover {
         color: @pagination-text-color-btn;
         background-color: @pagination-bg-color-btn-hover;
+        transition: @pagination-hover-transition;
       }
 
       &:active {
@@ -149,7 +162,7 @@
         background: none;
       }
 
-      .@{prefix}-icon-more {
+      .t-icon-more {
         transform: rotate(90deg);
         color: @pagination-icon-color-disabled;
       }
@@ -163,24 +176,18 @@
     flex-shrink: 0;
     margin-left: @pagination-jump-margin;
     font-size: @pagination-font-default;
+    gap: @spacer-s;
   }
 
   .@{prefix}-input-number {
-    margin-left: @pagination-input-margin;
-    margin-right: @pagination-input-margin;
-    height: @pagination-height-default;
     width: @pagination-input-width;
-
-    .@{prefix}-input {
-      width: calc(100% - @spacer);
-    }
   }
 
   // 迷你尺寸
   &.@{prefix}-size-s {
     .@{prefix}-pagination {
       &__total {
-        font-size: @pagination-font-s;
+        font: @pagination-font-s;
       }
 
       &__select {
@@ -194,6 +201,7 @@
         &:hover:not(&.@{prefix}-is-current) {
           color: @pagination-text-color-btn;
           background-color: @pagination-bg-color-btn-hover;
+          transition: @pagination-hover-transition;
         }
 
         &:active:not(&.@{prefix}-is-current) {
@@ -227,15 +235,6 @@
 
         .pagination-btn(@pagination-height-s);
       }
-    }
-  }
-
-  //diabled
-  &.@{prefix}-is-disabled {
-    background-color: @bg-color-component-disabled;
-
-    .@{prefix}-pagination__jump {
-      color: @pagination-text-color-disabled;
     }
   }
 }

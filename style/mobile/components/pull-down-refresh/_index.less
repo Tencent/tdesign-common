@@ -11,15 +11,22 @@
     transition-property: transform;
   }
 
-  &__tips {
+  &__max {
     position: absolute;
     left: 0;
     width: 100%;
     overflow: hidden;
+    transform: translateY(-100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__loading {
+    width: 100%;
     font-size: @font-size-base;
     color: @pull-down-refresh-text-color;
     text-align: center;
-    transform: translateY(-100%);
     display: flex;
     align-items: center;
     justify-content: center;

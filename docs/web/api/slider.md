@@ -2,6 +2,7 @@
 title: Slider 滑块
 description: 滑块（滑动型输入器），是帮助用户在连续或间断的区间内，通过滑动来选择合适数值（一个数值或范围数值）的控件。
 isComponent: true
+usage: { title: '', description: '' }
 spline: form
 ---
 

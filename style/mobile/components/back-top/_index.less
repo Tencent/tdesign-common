@@ -2,7 +2,9 @@
 
 @import "./_var.less";
 
-.@{prefix}-back-top {
+@backTop: ~"@{prefix}-back-top";
+
+.@{backTop} {
   width: @back-top-round-width;
   height: @back-top-round-height;
   display: flex;
@@ -31,6 +33,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     border-radius: 60px 0 0 60px;
+
     .@{prefix}-back-top__text {
       width: 12px;
       line-height: 12px;
@@ -52,6 +55,7 @@
     border-radius: 40px 0 0 40px;
     background-color: @back-top-backgroud-color-black;
     color: @back-top-text-color-white;
+
     .@{prefix}-back-top__text {
       width: 12px;
       line-height: 12px;
@@ -66,6 +70,10 @@
     position: fixed;
     right: @back-top-content-right;
     bottom: @back-top-content-bottom;
+
+    &.@{backTop}--half-round, &.@{backTop}--half-round-dark {
+      right: 0;
+    }
   }
 }
 

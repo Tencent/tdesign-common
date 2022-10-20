@@ -4,8 +4,8 @@
 // checked [false - default; true - primary]
 @tag-default-background-color: @bg-color-component;
 @tag-default-border-color: transparent;
-@tag-default-hover-color: @brand-color-8;
-@tag-default-click-color: @brand-color-9;
+@tag-default-hover-color: @brand-color;
+@tag-default-click-color: @brand-color-active;
 @tag-checked-color: @text-color-anti;
 @tag-checked-background-color: @brand-color;
 @tag-check-hover-bg: @bg-color-component-hover;
@@ -23,21 +23,26 @@
 @tag-danger-color: @error-color;
 
 // light color
+@tag-default-color-light: @gray-color-1;
 @tag-primary-color-light: @brand-color-light;
 @tag-success-color-light: @success-color-1;
 @tag-warning-color-light: @warning-color-1;
 @tag-error-color-light: @error-color-1;
 
-// outline
-@tag-outline-background-color: @bg-color-component;
+// border
+@tag-outline-default-border-color: @border-level-2-color;
+@tag-outline-primary-border-color: @tag-primary-color;
+@tag-outline-success-border-color: @tag-success-color;
+@tag-outline-warning-border-color: @tag-warning-color;
+@tag-outline-danger-border-color: @tag-danger-color;
 
 // font size
-@tag-small-font-size: @font-size-s;
-@tag-medium-font-size: @font-size-base;
-@tag-large-font-size: @font-size-l;
+@tag-small-font: @font-body-small;
+@tag-medium-font: @font-body-small;
+@tag-large-font: @font-body-medium;
 
 // padding
-@tag-small-padding: 0px @spacer;
+@tag-small-padding: 0px @spacer-s;
 @tag-medium-padding: 0px @spacer;
 @tag-large-padding: 0px 12px;
 
@@ -46,31 +51,26 @@
 @tag-default-text-color: @text-color-primary;
 
 // shape
-@tag-border-radius-square: @border-radius;
-@tag-border-radius-round: 12px;
+@tag-border-radius-square: @border-radius-default;
+@tag-border-radius-round: @border-radius-extraLarge;
 
 // width
 @tag-default-border-width: 1px;
 
 // height
-@tag-height-small: 20px;
+@tag-height-small: 22px;
 @tag-height-medium: 24px;
 @tag-height-large: 32px;
 
-// line-height
-@tag-line-height-small: (@tag-height-small - 2 * @tag-default-border-width);
-@tag-line-height-medium: (@tag-height-medium - 2 * @tag-default-border-width);
-@tag-line-height-large: (@tag-height-large - 2 * @tag-default-border-width);
-
 // icon
 @tag-icon-size: 16px;
-@tag-close-icon-color:  @text-color-placeholder;
+@tag-close-icon-color: @text-color-placeholder;
 @tag-close-icon-hover-color: @text-color-primary;
 @tag-close-icon-color--dark: @font-white-1;
 @tag-close-icon-hover-color--dark: @font-white-2;
 
 // link
 @link-tag-hover-bg: @bg-color-component-hover;
-@link-tag-hover-color: @brand-color-8;
+@link-tag-hover-color: @brand-color;
 @link-tag-active-bg: @bg-color-component-active;
-@link-tag-active-color: @brand-color-9;
+@link-tag-active-color: @brand-color-active;

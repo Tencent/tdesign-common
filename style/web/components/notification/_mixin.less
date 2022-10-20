@@ -1,25 +1,12 @@
 .notification() {
-  font-size: @notification-font-size;
+  font: @notification-font;
   outline: 0;
   border: 0;
   background-color: @notification-color-block;
   display: flex;
   box-shadow: @notification-shadow;
   box-sizing: border-box;
-  border-radius: @border-radius;
+  border-radius: @border-radius-medium;
   width: @notification-width-default;
   padding: @notification-padding-default;
-}
-
-.notification-slide-fade(@translateX) {
-  .notification-slide-fade-enter-active,
-  .notification-slide-fade-leave-active {
-    transition: all .3s;
-  }
-
-  .notification-slide-fade-enter-from,
-  .notification-slide-fade-leave-to {
-    transform: translate3d(@translateX, 0, 0);
-    opacity: 0;
-  }
 }

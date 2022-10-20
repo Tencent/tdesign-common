@@ -4,6 +4,10 @@
 
 @import "../../mixins/_text.less";
 
+@import "../../mixins/_reset.less";
+
+@import "../../mixins/_scrollbar.less";
+
 // select
 .@{prefix}-select__wrap {
   width: 100%;
@@ -13,13 +17,14 @@
   border: 1px solid @select-border-color;
   border-radius: @select-border-radius;
   padding: @select-padding;
+  display: inline-flex;
 }
 
 .@{prefix}-select {
+  .reset;
+
   position: relative;
-  display: inline-flex;
   width: 100%;
-  box-sizing: border-box;
   vertical-align: middle;
   line-height: (@select-height-default - 2px);
   background: @select-bg-color;
@@ -42,7 +47,7 @@
   }
 
   .@{prefix}-select__placeholder {
-    margin-left: @select-placeholder-margin;
+    margin-left: 8px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -105,6 +110,9 @@
   // TODO: select_input 重构后可删除
   .@{prefix}-tag + .@{prefix}-input__wrap {
     margin-left: @select-placeholder-margin;
+    .@{prefix}-input__inner {
+      width: 100%;
+    }
   }
 
   // TODO: select_input 重构后可删除
@@ -129,6 +137,10 @@
     input {
       height: @select-input-height;
       line-height: @select-input-height;
+    }
+
+    .@{prefix}-input.@{prefix}-input--prefix > .@{prefix}-input__prefix {
+      font: @select-font-l;
     }
   }
 
@@ -179,8 +191,7 @@
 }
 
 .@{prefix}-select.@{prefix}-size-l {
-  line-height: (@select-height-l - 2px);
-  font-size: @select-font-size-l;
+  font: @select-font-l;
 
   .@{prefix}-select__input {
     line-height: (@select-height-l - 2px);
@@ -199,8 +210,7 @@
 }
 
 .@{prefix}-select.@{prefix}-size-s {
-  line-height: (@select-height-s - 2px);
-  font-size: @select-font-size-s;
+  font: @select-font-s;
 
   .@{prefix}-select__input {
     line-height: (@select-height-s - 2px);
@@ -237,27 +247,38 @@
   }
 }
 
-.@{prefix}-select__popup-reference {
-  width: 100%;
-}
 // dropdown
 .@{prefix}-select__dropdown {
-  margin: @select-dropdown-margin;
-  padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
-  max-height: @select-dropdown-max-height;
-  overflow-y: auto;
-  box-shadow: @select-dropdown-shadow;
-  border-radius: @select-border-radius;
+
+  .@{prefix}-popup__content {
+    .scrollbar(8px, 2px);
+
+    margin: @select-dropdown-margin;
+    padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
+    max-height: @select-dropdown-max-height;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: @select-dropdown-shadow;
+  }
 
   &-inner {
-    padding: @select-dropdown-padding;
+    .@{prefix}-select__list,
+    .@{prefix}-tree {
+      padding: @select-dropdown-padding;
+    }
 
     &--size-s {
-      padding: @select-dropdown-padding-s;
+      .@{prefix}-select__list,
+      .@{prefix}-tree {
+        padding: @select-dropdown-padding-s;
+      }
     }
 
     &--size-l {
-      padding: @select-dropdown-padding-l;
+      .@{prefix}-select__list,
+      .@{prefix}-tree {
+        padding: @select-dropdown-padding-l;
+      }
     }
   }
 }
@@ -281,6 +302,7 @@
   text-align: center;
   color: @select-color-empty;
   line-height: @select-height-default;
+  padding: @select-empty-padding;
 }
 
 .@{prefix}-select__empty.@{prefix}-size-l {
@@ -320,6 +342,7 @@
     height: @select-option-height-default;
     line-height: @select-option-line-height;
     padding: @select-option-padding-default;
+    box-sizing: border-box;
     .text-ellipsis();
   }
 }
@@ -344,6 +367,7 @@
   padding: @select-option-padding-default;
   color: @select-option-color;
   transition: background-color @anim-duration-base @anim-time-fn-easing;
+  box-sizing: border-box;
   .text-ellipsis();
 
   span {
@@ -389,13 +413,15 @@
 .@{prefix}-select-option.@{prefix}-size-l {
   height: @select-option-height-l;
   padding: @select-option-padding-l;
-  font-size: @select-font-size-l;
+  font: @select-font-l;
 }
-
+.@{prefix}-select-option.@{prefix}-size-m {
+  line-height: @select-option-line-height-m;
+}
 .@{prefix}-select-option.@{prefix}-size-s {
   height: @select-option-height-s;
   padding: @select-option-padding-s;
-  font-size: @select-font-size-s;
+  font: @select-font-s;
 }
 
 .@{prefix}-select-option.@{prefix}-is-selected {
