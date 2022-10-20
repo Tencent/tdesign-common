@@ -90,9 +90,9 @@
 
         &--now {
           border-top: 1px solid @calendar-highlight-color;
-
+          background-color: @calendar-body-cell-check-bg-color;
           .@{prefix}-calendar__table-body-cell-display {
-            color: @calendar-highlight-color;
+            color: @calendar-body-cell-display-now-color;
           }
         }
       }
@@ -110,7 +110,18 @@
     border-radius: @border-radius-medium;
     .@{prefix}-calendar__control {
       padding: @calendar-card-calendar-control-padding;
-      border-bottom: 1px solid @calendar-border-color;
+
+      &-section {
+        width: 100%;
+        justify-content: flex-start;
+
+        &-cell {
+          &:last-child {
+            flex: 1;
+            text-align: right;
+          }
+        }
+      }
     }
 
     .@{prefix}-calendar__panel {
@@ -123,6 +134,15 @@
       &.@{prefix}-calendar__panel--year {
         height: @calendar-card-calendar-panel-height-year;
         padding: @calendar-card-calendar-panel-padding-year;
+        .@{prefix}-calendar__table {
+          &-body {
+            &-cell {
+              &-display {
+                min-width: @calendar-card-cell-value-size-year;
+              }
+            }
+          }
+        }
       }
     }
 
@@ -184,28 +204,14 @@
             &:hover {
               box-shadow: inset 0 0 0 1px @calendar-highlight-color;
               transition: box-shadow @calendar-transition-duration @calendar-transition-timing-function;
-              border-radius: 100%;
             }
           }
 
           &--now {
-
             .@{prefix}-calendar__table-body-cell-display {
               color: @calendar-highlight-color;
-              font-weight: bold;
+              background-color: @calendar-body-cell-check-bg-color;
               position: relative;
-
-              &::before {
-                content: "";
-                position: absolute;
-                bottom: 1px;
-                left: 50%;
-                transform: translate(-50%);
-                width: @calendar-card-checked-pointer-width;
-                height: @calendar-card-checked-pointer-width;
-                background: @calendar-highlight-color;
-                border-radius: @calendar-card-checked-pointer-border-radius;
-              }
             }
           }
         }
@@ -213,12 +219,10 @@
     }
 
     .@{prefix}-is-checked {
-
       .@{prefix}-calendar__table-body-cell-display {
-        background: @calendar-highlight-color;
-        border-radius: 100%;
-        color: white;
-        font-weight: bold;
+        background: @calendar-card-cell-value-check-bg;
+        border-radius: @calendar-card-body-cell-display-border-radius;
+        color: @calendar-card-cell-value-check-color;
       }
     }
 
