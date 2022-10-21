@@ -22,10 +22,11 @@
 @calendar-head-bg-color: @bg-color-container;
 @calendar-body-cell-border-color: @border-level-1-color;
 @calendar-body-cell-display-disabled-color: @text-color-disabled;
+@calendar-body-cell-display-now-color: @text-color-primary;
 @calendar-body-cell-display-check-color: @text-color-secondary;
 @calendar-body-cell-check-bg-color: @brand-color-light;
 @calendar-body-cell-border-check-color: @brand-color;
-@calendar-card-body-cell-bg-hover: transparent;
+@calendar-card-body-cell-bg-hover: @bg-color-secondarycontainer-hover;
 @calendar-scrollbar-thumb-bg: #e5e5e5;
 @calendar-bg: @bg-color-container;
 @calendar-card-cell-value-check-color: @text-color-anti;
@@ -35,30 +36,29 @@
 @calendar-body-cell-display-disabled-opacity: .16;
 
 // 文字
-@calendar-head-cell-font: @font-body-medium;
+@calendar-head-cell-font: @font-title-small;
 @calendar-card-body-cell-font: @font-body-small;
-@calendar-table-cell-font: @font-body-medium;
-@calendar-body-cell-display-font: @font-body-medium;
+@calendar-table-cell-font: @font-title-small;
+@calendar-body-cell-display-font: @font-title-small;
 @calendar-card-body-cell-display-font: @font-body-small;
 @calendar-head-title-font: @font-title-large;
 
 // 间距行高
-@calendar-control-padding: 46px 36px 20px;
-@calendar-panel-padding: 10px 36px 35px;
+@calendar-control-padding: 32px 36px;
+@calendar-panel-padding: 0px 36px 36px;
 @calendar-head-padding: 0px;
 @calendar-head-margin-bottom: 8px;
 @calendar-body-cell-padding: 0px;
 @calendar-body-cell-margin-left: 0px;
-@calendar-table-margin-right: 12px;
+@calendar-table-margin-right: 8px;
 @calendar-footer-padding: 46px 36px 20px;
 @calendar-table-cell-padding: 0px;
-@calendar-card-calendar-control-padding: 16px 13px 15px;
+@calendar-card-calendar-control-padding: 12px 12px 0;
 @calendar-control-tag-height: 32px;
 @calendar-control-tag-padding: 0 16px;
 @calendar-card-calendar-panel-padding: 20px 14px;
-@calendar-card-calendar-panel-padding-month: 16px 24px 24px;
-@calendar-card-calendar-panel-padding-year: 16px 32px 32px;
-@calendar-card-body-cell-display-padding: 3px 6px;
+@calendar-card-calendar-panel-padding-month: 12px;
+@calendar-card-calendar-panel-padding-year: 12px;
 @calendar-card-footer-padding: @spacer-2;
 @calendar-control-section-margin-right: 16px;
 @calendar-control-section-cell-margin-right: 8px;
@@ -68,7 +68,7 @@
 @calendar-body-line-height: 22px;
 @calendar-card-body-cell-margin: 0px;
 @calendar-header-row-padding: 0px;
-@calendar-card-body-cell-display-padding: @spacer + 2px;
+@calendar-card-body-cell-display-padding:2px;
 
 // 尺寸
 @calendar-full-min-width: 560px;
@@ -89,7 +89,8 @@
 @calendar-section-height: 100%;
 @calendar-card-cell-size: 100%;
 @calendar-card-table-size: 100%;
-@calendar-card-cell-value-size: 40px;
+@calendar-card-cell-value-size: 24px;
+@calendar-card-cell-value-size-year: 48px;
 @calendar-border-size: 1px;
 @calendar-card-checked-pointer-width: 6px;
 // 定位
@@ -97,7 +98,7 @@
 @calendar-body-row-flex: 1;
 
 // 边框弧度
-@calendar-card-body-cell-display-border-radius: @border-radius-circle;
+@calendar-card-body-cell-display-border-radius: @border-radius-default;
 @calendar-scrollbar-thumb-border-radius: @border-radius-default;
 @calendar-card-checked-pointer-border-radius: @border-radius-medium;
 
