@@ -75,7 +75,6 @@ export default function xhr({
   });
 
   xhr.open(method, action, true);
-
   // custom request headers
   Object.keys(headers).forEach((key) => {
     xhr.setRequestHeader(key, headers[key]);
