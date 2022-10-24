@@ -60,7 +60,6 @@
   font: @table-font;
   color: @table--text-color;
   background-color: @table-bg;
-  overflow: hidden;
 
   /** loading need to be top of fixed columns */
   .@{prefix}-loading--full {
@@ -78,10 +77,6 @@
     width: 0;
     border-left: @border;
     z-index: @table-resize-line-z-index;
-  }
-
-  &__column-controller {
-    padding: 16px 0;
   }
 
   &__column-controller-trigger {
@@ -898,14 +893,19 @@
 }
 
 .@{prefix}-table__tree-op-icon {
-  margin-right: @spacer-2;
+  margin-right: @spacer;
   cursor: pointer;
   display: inline-flex;
-  vertical-align: text-bottom;
+  vertical-align: -3px;
 
   &:hover {
     color: @table-icon-active-color;
   }
+}
+
+.@{prefix}-table__tree-leaf-node .@{prefix}-table__tree-op-icon {
+  min-width: 0;
+  margin-right: 2px;
 }
 
 // 虚拟滚动游标
@@ -1096,4 +1096,13 @@
   td .@{prefix}-input__tips {
     position: initial;
   }
+}
+
+.t-table .@{prefix}-table__sort-column {
+  background-color: @table-sort-bg-color;
+}
+
+// 超出省略的文本，也需要跟着尺寸变化
+.@{prefix}-table__ellipsis-content.@{prefix}-size-s .@{prefix}-popup__content {
+  font: @table-font-small;
 }

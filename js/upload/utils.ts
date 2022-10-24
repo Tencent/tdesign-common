@@ -27,23 +27,30 @@ export const SIZE_MAP = {
 };
 
 export function returnFileSize(number: number) {
-  if (number < SIZE_MAP.B) {
+  if (number < SIZE_MAP.KB) {
     return `${number} Bytes`;
   }
-  if (number >= SIZE_MAP.B && number < SIZE_MAP.MB) {
-    return `${(number / SIZE_MAP.B).toFixed(1)} KB`;
+  if (number >= SIZE_MAP.KB && number < SIZE_MAP.MB) {
+    return `${(number / SIZE_MAP.KB).toFixed(1)} KB`;
   }
-  if (number >= SIZE_MAP.MB) {
+  if (number >= SIZE_MAP.MB && number < SIZE_MAP.GB) {
     return `${(number / SIZE_MAP.MB).toFixed(1)} MB`;
+  }
+
+  if (number >= SIZE_MAP.GB) {
+    return `${(number / SIZE_MAP.GB).toFixed(1)} GB`;
   }
   return '';
 }
 
-export function getCurrentDate() {
+export function getCurrentDate(needTime = false) {
   const d = new Date();
   let month: string | number = d.getMonth() + 1;
   month = month < 10 ? `0${month}` : month;
-  return `${d.getFullYear()}-${month}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+  const date = `${d.getFullYear()}-${month}-${d.getDate()}`;
+  const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+  if (needTime) return [date, time].join(' ');
+  return date;
 }
 
 /**
@@ -113,6 +120,30 @@ export function isOverSizeLimit(
   return fileSize > sizeLimit * num;
 }
 
+// vue2临时使用的 sizeLimit 计算
+export function isOverSizeLimit1(
+  fileSize: number,
+  sizeLimit: number,
+  unit: SizeUnit
+) {
+  // 以 KB 为单位进行比较
+  const units = ['B', 'KB', 'MB', 'GB'];
+  // 各个单位和 KB 的关系
+
+  const KBIndex = 1;
+  let index = units.indexOf(unit);
+  if (index === -1) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `TDesign Upload Warn: \`sizeLimit.unit\` can only be one of ${units.join()}`
+    );
+    index = KBIndex;
+  }
+  const num = SIZE_MAP[unit];
+  const limit = index < KBIndex ? sizeLimit / num : sizeLimit * num;
+  return fileSize <= limit;
+}
+
 export const urlCreator = () => window.webkitURL || window.URL;
 
 /**
@@ -150,7 +181,7 @@ export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
     const reader = new FileReader();
     reader.readAsDataURL(fileRaw);
     reader.onload = (event: ProgressEvent<FileReader>) => {
-      resolve(event.target.result as string);
+      resolve(event.target?.result as string);
     };
   });
 }

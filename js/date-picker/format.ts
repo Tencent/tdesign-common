@@ -59,16 +59,25 @@ export function parseToDayjs(
     : dayjs(dateText);
 
   // 兼容数据异常情况
-  return result.isValid() ? result : dayjs();
+  if (!result.isValid()) {
+    log.error('DatePicker', `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
+    return dayjs();
+  }
+
+  return result;
 }
 
 // 格式化 range
 function formatRange({
   newDate,
   format,
+  targetFormat,
+  autoSwap,
 }: {
   newDate: any;
   format: string;
+  targetFormat?: string;
+  autoSwap?: boolean;
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
@@ -76,7 +85,8 @@ function formatRange({
 
   // 保证后面的时间大于前面的时间
   if (
-    dayjsDateList[0]
+    autoSwap
+    && dayjsDateList[0]
     && dayjsDateList[1]
     && dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
   ) {
@@ -88,21 +98,28 @@ function formatRange({
   if (dayjsDateList.some((r) => r && !r.isValid())) {
     log.error(
       'DatePicker',
-      `请检查 format、value 格式是否有效.\nformat: '${format}' value: '${newDate}'`
+      `Check whether the value、format、valueType format is valid.\nformat: '${format}' value: '${newDate}' valueType: '${targetFormat}'`
     );
     return [];
   }
 
-  return dayjsDateList.map((da) => da && da.format(format));
+  // valueType = 'time-stamp' 返回时间戳
+  if (targetFormat === 'time-stamp') return dayjsDateList.map((da) => da && da.toDate().getTime());
+  // valueType = 'Date' 返回时间对象
+  if (targetFormat === 'Date') return dayjsDateList.map((da) => da && da.toDate());
+
+  return dayjsDateList.map((da) => da && da.format(targetFormat || format));
 }
 
 // 格式化单选
 function formatSingle({
   newDate,
   format,
+  targetFormat,
 }: {
   newDate: any;
   format: string;
+  targetFormat?: string;
 }) {
   if (!newDate) return '';
 
@@ -112,36 +129,43 @@ function formatSingle({
   if (!dayJsDate.isValid()) {
     log.error(
       'DatePicker',
-      `请检查 format、value 格式是否有效.\nformat: '${format}' value: '${newDate}'`
+      `Check whether the format、value format is valid.\nformat: '${format}' value: '${newDate}'`
     );
     return '';
   }
 
-  return dayJsDate.format(format);
+  // valueType = 'time-stamp' 返回时间戳
+  if (targetFormat === 'time-stamp') return dayJsDate.toDate().getTime();
+  // valueType = 'Date' 返回时间对象
+  if (targetFormat === 'Date') return dayJsDate.toDate();
+
+  return dayJsDate.format(targetFormat || format);
 }
 
 // 检测日期是否合法
 export function isValidDate(value: DateValue | DateValue[], format: string) {
   if (Array.isArray(value)) {
-    if (format === 'time-stamp') return value.every((v) => dayjs(v).isValid());
     return value.every((v) => dayjs(v, format).isValid() || dayjs(v).isValid());
   }
 
-  if (format === 'time-stamp') return dayjs(value).isValid();
   return dayjs(value, format).isValid() || dayjs(value).isValid();
 }
 
 // 日期格式化
 export function formatDate(
   newDate: DateValue | DateValue[],
-  { format }: { format: string; }
+  {
+    format,
+    targetFormat,
+    autoSwap,
+  }: { format: string; targetFormat?: string; autoSwap?: boolean }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({ newDate, format });
+    result = formatRange({ newDate, format, targetFormat, autoSwap });
   } else {
-    result = formatSingle({ newDate, format });
+    result = formatSingle({ newDate, format, targetFormat });
   }
 
   return result;
@@ -164,39 +188,46 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string) {
 export function getDefaultFormat({
   mode = 'date',
   format,
+  valueType,
   enableTimePicker,
 }: {
   mode?: string;
   format?: string;
+  valueType?: string;
   enableTimePicker?: boolean;
 }) {
   if (mode === 'year') {
     return {
       format: format || 'YYYY',
+      valueType: valueType || format || 'YYYY',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'month') {
     return {
       format: format || 'YYYY-MM',
+      valueType: valueType || format || 'YYYY-MM',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'quarter') {
     return {
       format: format || 'YYYY-[Q]Q',
+      valueType: valueType || format || 'YYYY-[Q]Q',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'week') {
     return {
       format: format || 'YYYY-wo',
+      valueType: valueType || format || 'YYYY-wo',
       timeFormat: TIME_FORMAT,
     };
   }
   if (mode === 'date') {
     return {
       format: format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
+      valueType: valueType || format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
       timeFormat: extractTimeFormat(format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
     };
   }

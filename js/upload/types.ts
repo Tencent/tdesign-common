@@ -38,6 +38,10 @@ export interface UploadFile {
    */
   type?: string;
   /**
+   * 上传时间
+   */
+  uploadTime?: string;
+  /**
    * 文件上传成功后的下载/访问地址
    * @default ''
    */
@@ -153,7 +157,7 @@ export interface FileChangeReturn {
   hasSameNameFile?: boolean;
   /** 校验不通过数据 */
   validateResult?: {
-    type: 'BEFORE_ALL_FILES_UPLOAD' | 'FILE_OVER_SIZE_LIMIT' | 'CUSTOME_BEFORE_UPLOAD' | 'FILTER_FILE_SAME_NAME';
+    type: 'BEFORE_ALL_FILES_UPLOAD' | 'FILE_OVER_SIZE_LIMIT' | 'CUSTOM_BEFORE_UPLOAD' | 'FILTER_FILE_SAME_NAME';
     extra?: {
       [key: string]: any;
     };
@@ -178,6 +182,7 @@ export interface HandleUploadParams {
   data?: Record<string, any> | ((file: File) => Record<string, any>);
   /** 文件是否作为一个独立文件包，整体替换，整体删除。不允许追加文件，只允许替换文件 */
   isBatchUpload?: boolean;
+  autoUpload?: boolean;
   /** 是否在同一个请求中上传多个文件 */
   uploadAllFilesInOneRequest?: boolean;
   /** 上传接口地址 */
