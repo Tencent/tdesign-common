@@ -6,26 +6,14 @@ isComponent: true
 toc: false
 ---
 
-### 小红点
+### 普通徽标
 
-{{ dist }}
+{{ normal }}
 
-### 数字型
+### 按钮徽标
 
-{{ max-count }}
+{{ button }}
 
-### 文字型
+### 单行徽标
 
-{{ text }}
-
-### 角标
-
-{{ shape }}
-
-### 颜色
-
-{{ color }}
-
-### 偏移用法
-
-{{ offset }}
+{{ single-line }}
