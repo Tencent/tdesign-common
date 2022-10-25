@@ -27,14 +27,18 @@ export const SIZE_MAP = {
 };
 
 export function returnFileSize(number: number) {
-  if (number < SIZE_MAP.B) {
+  if (number < SIZE_MAP.KB) {
     return `${number} Bytes`;
   }
-  if (number >= SIZE_MAP.B && number < SIZE_MAP.MB) {
-    return `${(number / SIZE_MAP.B).toFixed(1)} KB`;
+  if (number >= SIZE_MAP.KB && number < SIZE_MAP.MB) {
+    return `${(number / SIZE_MAP.KB).toFixed(1)} KB`;
   }
-  if (number >= SIZE_MAP.MB) {
+  if (number >= SIZE_MAP.MB && number < SIZE_MAP.GB) {
     return `${(number / SIZE_MAP.MB).toFixed(1)} MB`;
+  }
+
+  if (number >= SIZE_MAP.GB) {
+    return `${(number / SIZE_MAP.GB).toFixed(1)} GB`;
   }
   return '';
 }
@@ -177,7 +181,7 @@ export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
     const reader = new FileReader();
     reader.readAsDataURL(fileRaw);
     reader.onload = (event: ProgressEvent<FileReader>) => {
-      resolve(event.target.result as string);
+      resolve(event.target?.result as string);
     };
   });
 }

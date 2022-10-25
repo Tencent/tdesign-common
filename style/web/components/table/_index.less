@@ -60,7 +60,6 @@
   font: @table-font;
   color: @table--text-color;
   background-color: @table-bg;
-  overflow: hidden;
 
   /** loading need to be top of fixed columns */
   .@{prefix}-loading--full {
@@ -1101,4 +1100,9 @@
 
 .t-table .@{prefix}-table__sort-column {
   background-color: @table-sort-bg-color;
+}
+
+// 超出省略的文本，也需要跟着尺寸变化
+.@{prefix}-table__ellipsis-content.@{prefix}-size-s .@{prefix}-popup__content {
+  font: @table-font-small;
 }

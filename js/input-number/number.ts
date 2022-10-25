@@ -68,9 +68,11 @@ export function formatToNumber(
       extra.largeNumber
     );
   }
-  return isLargeNumber || extra?.decimalPlaces !== undefined
+  const val = isLargeNumber || extra?.decimalPlaces !== undefined
     ? newNumber
     : Number(newNumber);
+  if (String(val) === 'NaN') return undefined;
+  return val;
 }
 
 /**

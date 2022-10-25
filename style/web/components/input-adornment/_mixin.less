@@ -1,12 +1,13 @@
 .input-adornment-item(@position) {
   .@{prefix}-input-adornment__@{position} {
-    background-color: @input-append-color;
+    background-color: @bg-color-secondarycontainer;
     color: @input-text-color-default;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 1px solid @input-border-color-default;
     padding: @input-adornment-item-padding;
+    word-break: keep-all;
 
     & when (@position = append) {
       border-left: 0;

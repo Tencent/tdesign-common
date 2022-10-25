@@ -166,10 +166,6 @@
 
       &.@{prefix}-is-background {
         .hover-transition(border-color);
-
-        &:hover {
-          border-color: @upload-card-item-bg-border-color-hover;
-        }
       }
     }
 
@@ -196,11 +192,15 @@
       background-color: @upload-card-container-bg-color;
       border: @upload-card-contariner-border;
       padding: @upload-card-content-padding;
+
+      &:hover {
+        border-color: @upload-card-item-bg-border-color-hover;
+      }
     }
 
     &-container {
-      width: (@upload-img-size - 2);
-      height: (@upload-img-size - 2);
+      width: @upload-img-size;
+      height: @upload-img-size;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -210,6 +210,9 @@
       box-sizing: border-box;
       position: relative;
 
+      &:hover {
+        border-color: @upload-card-item-bg-border-color-hover;
+      }
       > .t-icon,
       .@{prefix}-loading {
         font-size: @upload-icon-size-large;
@@ -438,10 +441,6 @@
 
   .@{prefix}-upload__trigger {
     margin-left: @upload-single-file-input-trigger-margin-left;
-
-    .@{prefix}-button {
-      margin-left: @upload-single-file-input-trigger-button-margin-left;
-    }
   }
 
   .@{prefix}-upload__single-progress {
@@ -611,7 +610,10 @@
     border: @upload-flow-card-area-border;
     padding: @upload-flow-card-area-padding;
     margin-top: @upload-flow-card-area-margin-top;
-    width: 100%;
+
+    &:hover {
+      border-color: @upload-card-item-bg-border-color-hover;
+    }
   }
 }
 

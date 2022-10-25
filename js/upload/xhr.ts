@@ -29,7 +29,7 @@ export default function xhr({
 
   let timer1: NodeJS.Timeout;
   let timer2: NodeJS.Timeout;
-  if (useMockProgress && files[0].status === 'progress') {
+  if (useMockProgress && files[0]?.status === 'progress') {
     // 超过 500 毫秒再开启虚拟进度
     const timer2 = setTimeout(() => {
       // 只有真实进度一直不存在时才需要模拟进度
@@ -75,7 +75,6 @@ export default function xhr({
   });
 
   xhr.open(method, action, true);
-
   // custom request headers
   Object.keys(headers).forEach((key) => {
     xhr.setRequestHeader(key, headers[key]);
@@ -109,7 +108,7 @@ export default function xhr({
 
   // eslint-disable-next-line consistent-return
   xhr.onload = (event: ProgressEvent) => {
-    let response: { [key: string]: any };
+    let response: { [key: string]: any } = {};
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
       return onError({

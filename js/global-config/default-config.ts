@@ -69,6 +69,6 @@ export default {
     closeIcon: undefined,
   },
   form: {
-    requiredMark: true,
+    requiredMark: undefined,
   },
 };

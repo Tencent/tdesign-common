@@ -154,6 +154,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         toUploadFiles.forEach((file) => {
           file.status = res.status;
           file.response = response;
+          file.url = response.url;
         });
         const result = { response, file: toUploadFiles[0], files: toUploadFiles };
         if (res.status === 'success') {
@@ -191,6 +192,8 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
             params.onResponseError?.(r);
             resolve({ status: 'fail', data: r });
           } else {
+            p.file.response = res;
+            p.files[0].response = res;
             const r = handleSuccess({ ...p, response: res });
             params.onResponseSuccess?.(r);
             resolve({ status: 'success', data: r });
