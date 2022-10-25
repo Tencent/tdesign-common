@@ -145,12 +145,16 @@ export function getUnicodeLength(str?: string): number {
  * limitUnicodeMaxLength('👨👨👨', 2) === '👨👨'
  * @param str
  * @param maxLength
+ * @param oldStr
  * @returns {string}
  */
 export function limitUnicodeMaxLength(
   str?: string,
-  maxLength?: number
+  maxLength?: number,
+  oldStr?: string
 ): string {
+  // 旧字符满足字数要求则返回
+  if ([...(oldStr ?? '')].slice(0, maxLength).length === maxLength) return oldStr;
   return [...(str ?? '')].slice(0, maxLength).join('');
 }
 
