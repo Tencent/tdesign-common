@@ -359,7 +359,8 @@
 
 // option
 .@{prefix}-select-option {
-  display: block;
+  display: flex;
+  align-items: center;
   border-radius: @select-option-border-radius;
   height: @select-option-height-default;
   line-height: @select-option-line-height;
@@ -374,7 +375,7 @@
     position: relative;
   }
 
-  &:not(.@{prefix}-is-disabled):hover {
+  &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-selected):hover {
     background-color: @select-option-bg-color-hover;
 
     .@{prefix}-checkbox__label {
