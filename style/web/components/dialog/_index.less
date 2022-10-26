@@ -81,14 +81,15 @@
     padding: @dialog-body-padding;
     word-break: break-word;
 
-    &__icon {
+    &__icon,
+    &--icon {
       padding: @dialog-body-icon-padding;
     }
   }
 
   &__body--fullscreen {
     box-sizing: border-box;
-    padding: @dalog-body-padding-fullscreen;
+    padding: @dialog-body-padding-fullscreen;
     height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
     overflow: auto;
   }
