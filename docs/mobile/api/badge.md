@@ -8,7 +8,7 @@ toc: false
 
 ### 普通徽标
 
-{{ normal }}
+{{ base }}
 
 ### 按钮徽标
 
@@ -16,4 +16,4 @@ toc: false
 
 ### 单行徽标
 
-{{ single-line }}
+{{ cell }}
