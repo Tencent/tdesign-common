@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@import "./_polyfill.less";
+
 @import "../../mixins/_text.less";
 
 @import "../../mixins/_reset.less";
@@ -15,7 +17,6 @@
 
 // dropdown
 .@{prefix}-select__dropdown {
-
   .@{prefix}-popup__content {
     .scrollbar(8px, 2px);
 
@@ -222,7 +223,6 @@
 }
 
 .@{prefix}-select {
-
   &.@{prefix}-select-input--borderless {
     .@{prefix}-select__right-icon {
       position: relative;
