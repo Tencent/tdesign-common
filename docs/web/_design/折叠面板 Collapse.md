@@ -14,12 +14,12 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/w1.png" />
-    <em>图示：上下结构时，布局在内容区</em>
+    <em>图示：上下结构时，布局在下方内容区</em>
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/w2.png" />
-    <em>图示：左右结构时，布局在内容区</em>
+    <em>图示：左右结构时，布局在右侧内容区</em>
   </div>
 </div>
 
@@ -34,6 +34,8 @@
     <em></em>
   </div>
 </div>
+
+### 常见用法
 
 ##### 折叠面板展开时吸顶显示，当展开内容过多时，便于用户实时了解内容主题或类型。
 <div class="legend">
