@@ -44,13 +44,13 @@ spline: form
 
 ### 不同尺寸的输入框
 
-有大中小三种不同高度、宽度的输入框，以适应不同尺寸布局。设置 `size = small | medium | large` 实现不同的尺寸。
+有大中小三种不同高度、宽度的输入框，以适应不同尺寸布局。设置 `size = large | medium | small` 实现不同的尺寸。
 
 {{ size }}
 
 ### 不同对齐方式的输入框
 
-输入框共有三种对齐方式：左对齐、右对齐和局中对齐。设置 `align = left | center | right` 实现不同的对齐方式。
+输入框共有三种对齐方式：左对齐、局中对齐和右对齐。设置 `align = left | center | right` 实现不同的对齐方式。
 
 {{ align }}
 
