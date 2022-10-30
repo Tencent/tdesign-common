@@ -96,7 +96,7 @@
     font-size: @font-size-base;
     color: @text-color-anti;
     position: absolute;
-    top: 100px;
+    top: 92px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 40%);
@@ -154,7 +154,7 @@
     align-items: center;
     justify-content: center;
     background-color: @bg-color-container;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
 
     @keyframes preview-icon-range {
       0% {
@@ -224,8 +224,8 @@
       }
     }
 
-    @header-box-width: 66px;
-    @header-box-margin: 8px;
+    @header-box-width: 52px;
+    @header-box-margin: 4px;
     @header-box-border-width: 1px;
     @header-box-all-width: @header-box-width + @header-box-margin * 2 + @header-box-border-width * 2;
 
@@ -264,7 +264,7 @@
 
         .@{prefix}-image-viewer__header-box {
           width: @header-box-width;
-          height: 38px;
+          height: 32px;
           margin: 16px @header-box-margin 10px;
           transition: @anim-duration-base;
           overflow: hidden;
@@ -474,5 +474,6 @@
     border-color: @component-border;
     overflow: hidden;
     padding: 0;
+    box-shadow: @shadow-3;
   }
 }
