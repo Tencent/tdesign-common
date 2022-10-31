@@ -33,7 +33,15 @@
 
 .@{collapse-panel-cls} {
   &__icon {
+    transition: transform .25s;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--default {
+      transform: rotate(-90deg);
+    }
 
     &--left {
       margin-right: @spacer-1;
@@ -41,6 +49,10 @@
 
     &--right {
       margin-left: @spacer-1;
+    }
+
+    &--active {
+      transform: rotate(90deg);
     }
 
     &:hover {
@@ -99,6 +111,7 @@
 
     .@{collapse-panel-cls}__icon {
       cursor: not-allowed;
+      pointer-events: none;
     }
 
     .@{collapse-panel-cls}__body {
@@ -107,14 +120,6 @@
 
     .@{collapse-panel-cls}__content {
       color: @text-color-disabled;
-    }
-  }
-
-  .@{prefix}-fake-arrow {
-    transform: rotate(-90deg);
-
-    &--active {
-      transform: rotate(180deg);
     }
   }
 }
