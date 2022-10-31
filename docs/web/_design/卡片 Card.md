@@ -15,11 +15,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card_1%402x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card1%402x.png" />
     <em>图示：同样大小的卡片在栅格系统中</em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card_2%402x.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card2%402x.png" />
     <em>图示：不同大小的卡片在栅格系统中</em>
   </div>
 </div>
