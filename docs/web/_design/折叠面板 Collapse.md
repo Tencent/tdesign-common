@@ -18,7 +18,7 @@
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Collapse2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Collapse%E4%BA%8C%402x.png" />
     <em>图示：左右结构时，布局在右侧内容区</em>
   </div>
 </div>
