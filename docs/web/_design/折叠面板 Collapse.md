@@ -30,7 +30,7 @@
 ##### 与表单搭配使用，在展开的面板中进行信息的添加或编辑，可以给用户扁平沉浸的编辑状态，避免弹出层或进入二级界面带来的任务打断。
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Collapse_3.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/collapse-3.png" />
     <em></em>
   </div>
 </div>
