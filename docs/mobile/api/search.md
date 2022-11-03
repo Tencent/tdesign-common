@@ -12,6 +12,6 @@ toc: false
 
 {{ base }}
 
-### 自定义 Icon 颜色
+### 不同输入状态
 
-{{ color }}
+{{ status }}
