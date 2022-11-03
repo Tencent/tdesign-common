@@ -326,19 +326,10 @@ export function getYears(
   for (let i = startYear; i <= endYear; i++) {
     const date = new Date(i, 1);
 
-    let disabledMonth = 0;
-    let outOfRangeMonth = 0;
-
-    for (let j = 0; j < 12; j++) {
-      const d = new Date(i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledMonth += 1;
-      if (outOfRanges(d, minDate, maxDate)) outOfRangeMonth += 1;
-    }
-
     yearArr.push({
       value: date,
       now: isSame(date, today, 'year'),
-      disabled: disabledMonth === 12 || outOfRangeMonth === 12,
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
       text: `${date.getFullYear()}`,
     });
@@ -353,22 +344,14 @@ export function getMonths(year: number, params: OptionsType) {
   } = params;
   const MonthArr = [];
   const today = getToday();
+
   for (let i = 0; i <= 11; i++) {
     const date = new Date(year, i);
-    let disabledDay = 0;
-    let outOfRangeDay = 0;
-    const daysInMonth = getDaysInMonth({ year, month: i });
-
-    for (let j = 1; j <= daysInMonth; j++) {
-      const d = new Date(year, i, j);
-      if (typeof disableDate === 'function' && disableDate(d)) disabledDay += 1;
-      if (outOfRanges(d, minDate, maxDate)) outOfRangeDay += 1;
-    }
 
     MonthArr.push({
       value: date,
       now: isSame(date, today, 'month'),
-      disabled: disabledDay === daysInMonth || outOfRangeDay === daysInMonth,
+      disabled: (typeof disableDate === 'function' && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
       text: monthLocal[date.getMonth()], // `${date.getMonth() + 1} ${monthText || '月'}`,
     });
@@ -430,7 +413,7 @@ export function flagActive(data: any[], { ...args }: any) {
 
 // extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
 export function extractTimeFormat(dateFormat: string = '') {
-  const res = dateFormat.match(/(a\s)?h{1,2}:m{1,2}(:s{1,2})?(\sa)?/i);
+  const res = dateFormat.match(/(a\s)?h{1,2}(:m{1,2})?(:s{1,2})?(\sa)?/i);
   if (!res) return null;
   return res[0];
 }
@@ -442,7 +425,7 @@ export function extractTimeFormat(dateFormat: string = '') {
  */
 export function extractTimeObj(timeFormat: string = '') {
   const matchedMeridiem = timeFormat.match(/[ap]m/i) || [''];
-  const timeReg = /\d{1,2}:\d{1,2}(:\d{1,2})?(:\d{1,3})?/;
+  const timeReg = /\d{1,2}(:\d{1,2})?(:\d{1,2})?(:\d{1,3})?/;
   const matchedTimeStr = timeFormat.match(timeReg) || ['0:0:0:0'];
   const [hours = 0, minutes = 0, seconds = 0, milliseconds = 0] = matchedTimeStr[0].split(':');
 

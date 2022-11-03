@@ -22,7 +22,7 @@ export default {
     today: '今日',
     thisMonth: '今月は',
     week: '月,火,水,木,金,土,日',
-    cellMonth: '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月',
+    cellMonth: '1 月,2 月,3 月,4 月,5 月,6 月,7 月,8 月,9 月,10 月,11 月,12 月',
   },
   transfer: {
     title: '{checked} / {total} 項目',
@@ -120,6 +120,7 @@ export default {
       reupload: '再アップロード',
       continueUpload: 'アップロードを継続する',
       delete: '削除',
+      uploading: 'アップロード中',
     },
     dragger: {
       dragDropText: 'マウスを離す',

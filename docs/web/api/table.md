@@ -22,9 +22,26 @@ spline: data
 
 简单表格，使用分页切换数据。使用边框线、斑马纹等清晰呈现各数据单元格边界线，辅助信息区隔。
 
-表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。
+- 表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。
 
 {{ base }}
+
+### 可自定义样式的表格
+
+- 使用表格属性 `rowClassName` 设置行类名。
+- 使用列属性 `className` 设置列类名，或具体的某一个或某一些单元格类名。
+- 使用列属性 `attr: { style: {} }` 设置列内联样式，或具体的某一个或某一些单元格内联样式。
+
+{{ style }}
+
+### 单元格超出省略的表格
+
+支持单元格文本超出省略、单独控制标题超出省略，单独控制超出省略的浮层内容和背景色等特性，一般用于需要悬浮显示单元格详情信息的场景。
+
+- 使用 `ellipsis` 设置列文本超出省略显示，默认会同时控制表头的超出省略显示；只要 `ellipsis` 为真，无论是何种数据类型都会出现超出省略。
+- 使用 `ellipsisTitle` 单独设置表头超出省略显示，优先级高于 `ellipsis`。
+
+{{ ellipsis }}
 
 ### 固定表头/固定行的表格
 
@@ -147,6 +164,7 @@ spline: data
 - 将需要排序的列属性 `sorter` 设置为 `true`，示例：`{ colKey: 'date', title: '日期', sorter: true }`。
 - 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`，其中 `descending` 表示是否为降序排序，值为 `true` 表示降序，值为 `false` 表示升序。
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
+- 使用 `showSortColumnBgColor` 控制是否显示排序列背景色，用于更加显示地提醒用户具体的排序列。
 
 提供列属性 `sortType`，用于自定义支持排序方式。可选值有 `desc`/`asc`/`all`，分别表示只能降序徘、只能升序徘、降序和升序。
 
@@ -217,6 +235,10 @@ spline: data
 ### 带合并单元格的表格
 
 根据数据结构，可以将表格中的行列进行合并。
+
+- 使用表格属性 `rowspanAndColspan` 设置表格内容合并元格。
+- 使用表格属性 `rowspanAndColspanInFooter` 设置表尾合并单元格。
+- 使用列属性 `colspan` 设置表头合并。如果是多行表头，请参考下方「多级表头」示例。
 
 {{ merge-cells }}
 
@@ -336,7 +358,7 @@ spline: data
 
 - `treeExpandAndFoldIcon` 用于设置树形结构折叠/展开图标，支持全局配置。
 - 子节点字段默认为 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
-- `tree.indent` 用于设置树结点缩进距离。
+- `tree.indent` 用于设置树结点缩进距离，叶子结点的距离可以通过类名 `t-table__tree-leaf-node` 单独设置。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
 - `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。
 - `tree.defaultExpandAll=true` 表示默认展开全部节点，后续可通过 `expandAll` 和 `foldAll` 控制全部展开或全部收起。使用 `toggleExpandData` 控制单个节点的展开和收起。

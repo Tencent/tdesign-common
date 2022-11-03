@@ -30,7 +30,7 @@
   }
 
   .@{prefix}-tag-input__prefix,
-  .@{prefix}-input__prefix:empty {
+  .@{prefix}-input__prefix:not(:empty) {
     margin-left: @spacer-s;
   }
 
@@ -51,7 +51,7 @@
     height: auto;
     padding-right: @spacer-3;
 
-    &.t-input--prefix > .t-input__prefix {
+    &.@{prefix}-input--prefix > .@{prefix}-input__prefix {
       display: inline;
       text-align: left;
     }

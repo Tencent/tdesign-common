@@ -8,27 +8,27 @@ toc: false
 
 ### 基础用法
 
-基础用法和原生img标签一样，可以设置src、alt、class等原生属性
+基础用法和原生 img 标签一样，可以设置 `src`、`alt`、`class` 等原生属性
 
 {{ base }}
 
 ### 图片形状
 
-通过shape属性可以设置图片形状，可选项有circle|round|square，分别代表圆形、圆角方形、方形
+通过 `shape` 属性可以设置图片形状，可选项有 `circle` | `round` | `square`，分别代表圆形、圆角方形、方形
 
-当图片长宽不相等时，无法使用circle展示一个完整圆形
+当图片长宽不相等时，无法使用 `circle` 展示一个完整圆形
 
 {{ shape }}
 
 #### 填充模式
 
-通过fit属性可以设置图片填充模式，可选项有contain|cover|fill|none|scale-down，效果与原生的object-fit属性一致
+通过 `fit` 属性可以设置图片填充模式，可选项有 `contain` | `cover` | `fill` | `none` | `scale-down`，效果与原生的 `object-fit` 属性一致
 
 {{ fit }}
 
 #### 图片位置
 
-通过position属性可以设置图片位置，效果与原生的object-position属性一致
+通过 `position` 属性可以设置图片位置，效果与原生的 `object-position` 属性一致
 
 {{ position }}
 
@@ -40,12 +40,12 @@ toc: false
 
 ### 加载中提示
 
-Image组件提供了默认的加载中提示，也支持通过loading插槽自定义提示内容
+Image 组件提供了默认的加载中提示，也支持通过 `loading` 插槽自定义提示内容
 
 {{ loading }}
 
 ### 加载失败提示
 
-Image组件提供了默认的加载失败提示，也支持通过error插槽自定义提示内容
+Image 组件提供了默认的加载失败提示，也支持通过 `error` 插槽自定义提示内容
 
 {{ error }}

@@ -7,17 +7,6 @@
 
 ### 组件搭配使用
 
-##### 与关闭按钮搭配，可点击关闭对应的文字提示。
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/tooltip-1.png"/>
-  </div>
-
-  <div class="item">
-  </div>
-</div>
-
-<hr />
 
 ##### 与超链接搭配，可点击超链接从文字提示跳转到对应链接的页面。
 <div class="legend">

@@ -54,9 +54,17 @@ export function parseToDayjs(
   }
 
   // 兼容数据格式不标准场景 YYYY-MM-D
-  return dayjs(dateText, format).isValid()
+  const result = dayjs(dateText, format).isValid()
     ? dayjs(dateText, format)
     : dayjs(dateText);
+
+  // 兼容数据异常情况
+  if (!result.isValid()) {
+    log.error('DatePicker', `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
+    return dayjs();
+  }
+
+  return result;
 }
 
 // 格式化 range
@@ -64,10 +72,12 @@ function formatRange({
   newDate,
   format,
   targetFormat,
+  autoSwap,
 }: {
   newDate: any;
   format: string;
-  targetFormat: string;
+  targetFormat?: string;
+  autoSwap?: boolean;
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
@@ -75,7 +85,8 @@ function formatRange({
 
   // 保证后面的时间大于前面的时间
   if (
-    dayjsDateList[0]
+    autoSwap
+    && dayjsDateList[0]
     && dayjsDateList[1]
     && dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
   ) {
@@ -87,17 +98,17 @@ function formatRange({
   if (dayjsDateList.some((r) => r && !r.isValid())) {
     log.error(
       'DatePicker',
-      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`
+      `Check whether the value、format、valueType format is valid.\nformat: '${format}' value: '${newDate}' valueType: '${targetFormat}'`
     );
     return [];
   }
 
   // valueType = 'time-stamp' 返回时间戳
-  if (targetFormat === 'time-stamp') {
-    return dayjsDateList.map((da) => da && da.toDate().getTime());
-  }
+  if (targetFormat === 'time-stamp') return dayjsDateList.map((da) => da && da.toDate().getTime());
+  // valueType = 'Date' 返回时间对象
+  if (targetFormat === 'Date') return dayjsDateList.map((da) => da && da.toDate());
 
-  return dayjsDateList.map((da) => da && da.format(targetFormat));
+  return dayjsDateList.map((da) => da && da.format(targetFormat || format));
 }
 
 // 格式化单选
@@ -108,7 +119,7 @@ function formatSingle({
 }: {
   newDate: any;
   format: string;
-  targetFormat: string;
+  targetFormat?: string;
 }) {
   if (!newDate) return '';
 
@@ -118,37 +129,41 @@ function formatSingle({
   if (!dayJsDate.isValid()) {
     log.error(
       'DatePicker',
-      `请检查 format、valueType、value 格式是否有效.\nformat: '${format}' valueType: '${targetFormat}' value: '${newDate}'`
+      `Check whether the format、value format is valid.\nformat: '${format}' value: '${newDate}'`
     );
     return '';
   }
 
   // valueType = 'time-stamp' 返回时间戳
   if (targetFormat === 'time-stamp') return dayJsDate.toDate().getTime();
+  // valueType = 'Date' 返回时间对象
+  if (targetFormat === 'Date') return dayJsDate.toDate();
 
-  return dayJsDate.format(targetFormat);
+  return dayJsDate.format(targetFormat || format);
 }
 
 // 检测日期是否合法
 export function isValidDate(value: DateValue | DateValue[], format: string) {
   if (Array.isArray(value)) {
-    if (format === 'time-stamp') return value.every((v) => dayjs(v).isValid());
     return value.every((v) => dayjs(v, format).isValid() || dayjs(v).isValid());
   }
 
-  if (format === 'time-stamp') return dayjs(value).isValid();
   return dayjs(value, format).isValid() || dayjs(value).isValid();
 }
 
 // 日期格式化
 export function formatDate(
   newDate: DateValue | DateValue[],
-  { format, targetFormat }: { format: string; targetFormat: string }
+  {
+    format,
+    targetFormat,
+    autoSwap,
+  }: { format: string; targetFormat?: string; autoSwap?: boolean }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({ newDate, format, targetFormat });
+    result = formatRange({ newDate, format, targetFormat, autoSwap });
   } else {
     result = formatSingle({ newDate, format, targetFormat });
   }
@@ -161,9 +176,9 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string) {
   let result;
 
   if (Array.isArray(value)) {
-    result = value.map((v) => dayjs(v).format(timeFormat));
+    result = value.map((v) => dayjs(v || new Date(new Date().setHours(0, 0, 0, 0))).format(timeFormat));
   } else {
-    result = dayjs((value || new Date()) as DateValue).format(timeFormat);
+    result = dayjs((value || new Date(new Date().setHours(0, 0, 0, 0)))).format(timeFormat);
   }
 
   return result;

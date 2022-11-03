@@ -15,13 +15,13 @@ mobile
 │   │   ├── _index.less         // 组件的主样式文件，内含 base.less、自己变量/函数 及 相关依赖
 |   |   ├── _mixin.less         // 组件的 mixin 文件
 |   |   ├── _var.less           // 组件的变量文件
-│   │   └── index.html          // 组件的html结构
+│   │   └── index.html          // 组件的 html 结构
 │   ├── ...
 │   └── index.less              // 统一引入各个组件样式的出口文件
 ├── assets                      // icon/图片素材
 │   ├── image
 │   │   ├── name.svg            // 各类图标
-│   │   └── ...                 // 组件的html结构
+│   │   └── ...                 // 组件的 html 结构
 ├── mixins                      // 可复用
 │   ├── _clearfix.less          // 清除浮动
 │   ├── ...
@@ -29,13 +29,13 @@ mobile
 ├── utilities                   // 定义可复用的代码片段,且可单独使用
 │   ├── _float.less
 │   └── index.less              // utilities 统一入口
-├── theme                       // UI主题风格样式
+├── theme                       // UI 主题风格样式
 │   ├── ...
 │   └── index.less              // 覆盖默认主题
 ├── _reset.less                 // 重置标签默认样式
 ├── _variables.less             // 全局变量
 ├── base.less                   // 基础样式（内含 _reset.less 和 _variable.less）
-├── index.less                  // 统一引入UI库所有样式的出口文件
+├── index.less                  // 统一引入 UI 库所有样式的出口文件
 └── index.js                    // webpack 入口文件，含各组件的主样式
 ```
 
@@ -43,7 +43,7 @@ mobile
 
 #### 初始化
 
-`name`为组件名（[命名规则参考](../../naming.md)）
+`name` 为组件名（[命名规则参考](../../naming.md)）
 
 ##### 手动拷贝
 
@@ -51,19 +51,17 @@ mobile
 几个关键点：
 
 - `components` 下创建组件文件夹
-- 修改 `index.html` 开发者信息及 `title`信息(可在该组件文件夹下搜索`<name>`替换)。
+- 修改 `index.html` 开发者信息及 `title` 信息(可在该组件文件夹下搜索 `<name>` 替换)。
 - `components` 下的 `_index.less` 增加组件主样式 （注意依赖顺序关系）
 - `index.js` 增加组件样式入口
-- 如果有示例样式，添加到 `/docs/<name>.css`，并在`docs.css`里引入
+- 如果有示例样式，添加到 `/docs/<name>.css`，并在 `docs.css` 里引入
 
 #### 启动
 
-`style/mobile`目录下，启动项目，主要用于 less 编译。html 可通过本地服务的方式实现热更新（如 VS Code 的 Live Server）
+`style/mobile` 目录下，启动项目，主要用于 less 编译。html 可通过本地服务的方式实现热更新（如 VS Code 的 Live Server）
 
 ```
-
 npm run start
-
 ```
 
 ### 相关资料
@@ -72,7 +70,3 @@ npm run start
 [移动端端设计稿](https://www.figma.com/file/LdU7CICwcTjldWJtzRXWI3/TDesign-for-Mobile?node-id=750%3A23479)
 [组件各个模块负责人](https://docs.qq.com/sheet/DWmViVlNvU3p2VHZs?tab=l52925&c=A1B0A0)
 [UI 开发排期](https://docs.qq.com/sheet/DWmViVlNvU3p2VHZs?tab=bvypmx&c=E8A0A0)
-
-```
-
-```

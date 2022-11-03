@@ -45,9 +45,10 @@
 .@{prefix}-swiper__arrow {
   display: flex;
   align-items: center;
-  svg.@{prefix}-icon {
-    width: 100%;
-    height: 100%;
+
+  svg.t-icon {
+    width: @swiper-arrow-size-base * 2.5;
+    height: @swiper-arrow-size-base * 2.5;
 
     &::before {
       font-size: @swiper-arrow-icon-font-size-medium;
@@ -105,6 +106,12 @@
     flex: 1 0 auto;
     list-style-type: none;
     display: flex;
+  }
+  .@{prefix}-swiper__arrow {
+    svg.@{prefix}-icon {
+      width: @swiper-arrow-width-small;
+      height: @swiper-arrow-width-small;
+    }
   }
 }
 
@@ -200,7 +207,7 @@
 // large尺寸
 .@{prefix}-swiper--large {
   .@{prefix}-swiper__arrow {
-    i.@{prefix}-icon {
+    i.t-icon {
       &::before {
         font-size: @swiper-arrow-icon-font-size-large;
       }
@@ -242,7 +249,7 @@
 // small尺寸
 .@{prefix}-swiper--small {
   .@{prefix}-swiper__arrow {
-    i.@{prefix}-icon {
+    i.t-icon {
       &::before {
         font-size: @swiper-arrow-icon-font-size-small;
       }

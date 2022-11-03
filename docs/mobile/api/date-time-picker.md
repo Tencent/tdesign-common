@@ -10,14 +10,14 @@ toc: false
 
 {{ base }}
 
+### 选择年月
+
+{{ year-month }}
+
 ### 选择时分
 
-{{ hour-minute }}
+{{ time }}
 
-### 设置时间范围
+### 自定义选择范围
 
-{{ start-end-date }}
-
-### 自定义label
-
-{{ render-label-date }}
+{{ custom-range }}

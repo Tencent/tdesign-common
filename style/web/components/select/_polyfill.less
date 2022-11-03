@@ -1,0 +1,233 @@
+// vue2 tree-select未重构需兼容
+.@{prefix}-select-polyfill {
+  border: 1px solid @select-border-color;
+  border-radius: @select-border-radius;
+  padding: @select-padding;
+  display: inline-flex;
+}
+
+.@{prefix}-select {
+  .reset;
+
+  position: relative;
+  width: 100%;
+  vertical-align: middle;
+  line-height: (@select-height-default - 2px);
+  background: @select-bg-color;
+  transition: border-color @anim-duration-base @anim-time-fn-easing;
+  flex-wrap: wrap;
+
+  &:hover:not(.@{prefix}-is-disabled),
+  :active:not(.@{prefix}-is-disabled) {
+    cursor: pointer;
+    border-color: @select-border-color-active;
+
+    & > .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
+      color: @select-right-icon-hover;
+      opacity: 1;
+    }
+  }
+
+  &.@{prefix}-no-border {
+    line-height: @select-height-default;
+  }
+
+  .@{prefix}-select__placeholder {
+    margin-left: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &:not(.@{prefix}-is-disabled) .@{prefix}-select__placeholder {
+    color: @select-placeholder-color;
+  }
+
+  & .@{prefix}-select__single {
+    margin-left: @select-placeholder-margin;
+    display: block;
+    color: @select-input-color;
+    .text-ellipsis();
+  }
+
+  & .@{prefix}-select__right-icon {
+    transition: color @anim-duration-base @anim-time-fn-easing;
+  }
+
+  // TODO 基于select-input改造时需要移除，polyfill代码
+  & .@{prefix}-select__right-icon-polyfill {
+    position: absolute;
+    height: 100%;
+    margin: @select-icon-margin;
+    right: 0;
+    top: 0;
+    color: @select-icon-color;
+  }
+
+  .@{prefix}-select__active-icon {
+    color: @select-border-color-active;
+  }
+
+  .@{prefix}-select__right-icon.@{prefix}-is-visible {
+    transform: scaleY(-1);
+    transition: transform @anim-duration-base @anim-time-fn-easing;
+
+    /* IE */
+    filter: flipv;
+  }
+
+  & .@{prefix}-select__left-icon {
+    position: absolute;
+    height: 100%;
+    margin: @select-icon-margin;
+    left: 0;
+    top: 0;
+    color: @select-icon-color;
+    transition: color @anim-duration-base @anim-time-fn-easing;
+    display: flex;
+    align-items: center;
+  }
+
+  // input 层级调整
+  .@{prefix}-input__wrap {
+    flex: 1;
+  }
+
+  // TODO: select_input 重构后可删除
+  .@{prefix}-tag + .@{prefix}-input__wrap {
+    margin-left: @select-placeholder-margin;
+    .@{prefix}-input__inner {
+      width: 100%;
+    }
+  }
+
+  // TODO: select_input 重构后可删除
+  .@{prefix}-select__input {
+    .@{prefix}-input {
+      height: auto;
+      border: 0;
+      padding: 0;
+
+      &--focused {
+        box-shadow: none;
+        border-color: transparent;
+      }
+    }
+
+    &:focus,
+    :hover {
+      border: 0;
+    }
+
+    input {
+      height: @select-input-height;
+      line-height: @select-input-height;
+    }
+
+    .@{prefix}-input.@{prefix}-input--prefix > .@{prefix}-input__prefix {
+      font: @select-font-l;
+    }
+  }
+
+  .@{prefix}-tag,
+  + .@{prefix}-tag {
+    margin: @select-tag-margin;
+  }
+
+  .@{prefix}-tag {
+    height: @select-tag-height-default;
+    line-height: (@select-tag-height-default - 2px);
+  }
+}
+
+.@{prefix}-select.@{prefix}-is-active:not(.@{prefix}-is-disabled) {
+  border-color: @select-border-color-active;
+
+  &:not(.@{prefix}-no-border) {
+    box-shadow: @select-input-shadow; // 无边框选择器没有阴影
+  }
+
+  .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
+    color: @select-border-color-active;
+    opacity: 1;
+  }
+}
+
+.@{prefix}-select.@{prefix}-has-prefix {
+  padding-left: @select-padding-prefix;
+}
+
+.@{prefix}-select.@{prefix}-no-border {
+  border: 0;
+  width: auto;
+  transition: background-color @anim-duration-base linear;
+
+  &:hover {
+    background-color: @select-option-bg-color-hover;
+  }
+
+  &:active {
+    background-color: @select-option-bg-color-active;
+  }
+
+  > .@{prefix}-select__single {
+    margin-right: @select-no-border-margin-right;
+  }
+}
+
+.@{prefix}-select.@{prefix}-size-l {
+  font: @select-font-l;
+
+  .@{prefix}-select__input {
+    line-height: (@select-height-l - 2px);
+    height: (@select-height-l - 2px);
+
+    .@{prefix}-input__inner {
+      height: (@select-height-l - 2px);
+      line-height: (@select-height-l - 2px);
+    }
+  }
+
+  .@{prefix}-tag.@{prefix}-size-l {
+    height: @select-tag-height-l;
+    line-height: (@select-tag-height-l - 2px);
+  }
+}
+
+.@{prefix}-select.@{prefix}-size-s {
+  font: @select-font-s;
+
+  .@{prefix}-select__input {
+    line-height: (@select-height-s - 2px);
+    height: (@select-height-s - 2px);
+
+    .@{prefix}-input__inner {
+      height: (@select-height-s - 2px);
+      line-height: (@select-height-s - 2px);
+    }
+  }
+
+  .@{prefix}-tag.@{prefix}-size-s {
+    height: @select-tag-height-s;
+    line-height: (@select-tag-height-s - 2px);
+  }
+}
+
+.@{prefix}-select.@{prefix}-is-disabled {
+  cursor: not-allowed;
+  background-color: @select-bg-color-disabled;
+  color: @select-placeholder-color-disabled;
+  border-color: @select-border-color;
+
+  & > .@{prefix}-select__right-icon {
+    color: @select-icon-color-disabled;
+  }
+
+  & > .@{prefix}-select__left-icon {
+    color: @select-icon-color-disabled;
+  }
+
+  & > .@{prefix}-select__single {
+    color: @select-color-disabled;
+  }
+}

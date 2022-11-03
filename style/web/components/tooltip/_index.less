@@ -10,6 +10,7 @@
   .@{prefix}-popup__content {
     display: inline-block;
     border: 0;
+    z-index: @z-index-Tooltip;
     margin-bottom: 1px;
     max-width: @tooltip-max-width;
     word-break: break-word;
@@ -22,7 +23,6 @@
     .@{prefix}-popup__content {
       color: @tooltip-text-color;
       background: @tooltip-bg;
-      margin: @tooltip-default-margin;
     }
   }
 
@@ -61,6 +61,13 @@
 
     &::before {
       background: inherit;
+    }
+  }
+
+  &--noshadow {
+    .@{prefix}-popup__content,
+    &[data-popper-placement] .@{prefix}-popup__arrow:before {
+      box-shadow: none;
     }
   }
 }

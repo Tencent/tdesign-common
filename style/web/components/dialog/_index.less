@@ -22,19 +22,19 @@
   border-radius: @border-radius-large;
 
   // icon theme
-  .@{prefix}-icon.t-is-info {
+  .t-icon.@{prefix}-is-info {
     color: @dialog-info-icon-color;
   }
 
-  .@{prefix}-icon.t-is-success {
+  .t-icon.@{prefix}-is-success {
     color: @dialog-success-icon-color;
   }
 
-  .@{prefix}-icon.t-is-warning {
+  .t-icon.@{prefix}-is-warning {
     color: @dialog-warning-icon-color;
   }
 
-  .@{prefix}-icon.t-is-error {
+  .t-icon.@{prefix}-is-error {
     color: @dialog-error-icon-color;
   }
 
@@ -45,15 +45,32 @@
   &__header {
     color: @dialog-header-text-color;
     font: @dialog-header-font;
+    font-weight: @dialog-header-weight;
     display: flex;
     align-items: center;
     word-break: break-word;
     padding-right: 10px;
 
-    .@{prefix}-icon {
+    .t-icon:not(.t-icon-close) {
       font-size: @dialog-icon-size;
       margin-right: @dialog-header-icon-margin-right;
       flex-shrink: 0;
+    }
+  }
+
+  &__header--fullscreen {
+    background-color: @dialog-header-bg-color-fullscreen;
+    min-height: @dialog-header-height-fullscreen;
+    padding-right: 0;
+    justify-content: center;
+    position: relative;
+
+    .@{prefix}-dialog__header-content {
+      box-sizing: border-box;
+      padding: @dialog-header-content-padding-fullscreen;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -64,9 +81,17 @@
     padding: @dialog-body-padding;
     word-break: break-word;
 
-    &__icon {
+    &__icon,
+    &--icon {
       padding: @dialog-body-icon-padding;
     }
+  }
+
+  &__body--fullscreen {
+    box-sizing: border-box;
+    padding: @dialog-body-padding-fullscreen;
+    height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
+    overflow: auto;
   }
 
   &__footer {
@@ -79,6 +104,12 @@
     .@{prefix}-button + .@{prefix}-button {
       margin-left: @dialog-footer-button-margin-left;
     }
+  }
+
+  &__footer--fullscreen {
+    min-height: @dialog-footer-height-fullscreen;
+    padding: @dialog-footer-padding-fullscreen;
+    box-sizing: border-box;
   }
 
   &--default {
@@ -117,6 +148,22 @@
       background: @dialog-close-icon-active;
     }
   }
+
+  &__close--fullscreen {
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background: #eee;
+    }
+
+    &:active {
+      background: #dcdcdc;
+    }
+  }
+
   &.@{prefix}-dialog--draggable {
     &:hover {
       cursor: move;
@@ -128,6 +175,11 @@
         cursor: auto;
       }
     }
+  }
+
+  &__fullscreen {
+    width: 100%;
+    border-radius: 0;
   }
 }
 
@@ -221,6 +273,17 @@
     &.@{prefix}-dialog--center {
       align-items: center;
     }
+  }
+
+  .@{prefix}-dialog__position_fullscreen {
+    // 因为内容会超出 使用flex布局
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    width: 100%;
+    // 通过修改position为absolute进行拖拽定位
+    position: relative;
+    box-sizing: border-box;
   }
 
   .@{prefix}-is-hidden {

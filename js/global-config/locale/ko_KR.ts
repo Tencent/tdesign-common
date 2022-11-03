@@ -120,6 +120,7 @@ export default {
       reupload: '재업로드',
       continueUpload: '계속 업로드',
       delete: '삭제',
+      uploading: '업로드'
     },
     dragger: {
       dragDropText: '마우스를 놓으십시오',
@@ -134,8 +135,8 @@ export default {
       fileOperationDateText: '업로드 날짜',
     },
     progress: {
-      uploadingText: '上传中',
-      waitingText: '업로드',
+      uploadingText: '업로드',
+      waitingText: '업로드 보류 중',
       failText: '업로드 실패',
       successText: '성공적으로 업로드됨',
     },

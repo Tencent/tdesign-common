@@ -110,7 +110,7 @@ spline: form
 
 自定义下拉样式的选择器，在需要自定义下拉样式时使用。
 
-下拉框宽度默认和输入框宽度同宽，如果内容宽度超出会自动变宽。可使用 `popupProps.overlayStyle` 自由控制宽度。
+下拉框宽度默认和输入框宽度同宽，如果内容宽度超出会自动变宽。可使用 `popupProps.overlayInnerStyle` 自由控制宽度。
 
 {{ popup-props }}
 

@@ -15,7 +15,7 @@
   cursor: inherit;
   position: absolute;
 
-  .@{prefix}-image-viewer__img-error--content {
+  .@{prefix}-image-viewer__img-error-content {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -27,7 +27,7 @@
     align-content: center;
     font-size: 14px;
 
-    .@{prefix}-image-viewer__img-error--text {
+    .@{prefix}-image-viewer__img-error-text {
       margin-top: 10px;
     }
   }
@@ -86,17 +86,17 @@
   &.@{prefix}-is-hide {
     animation: @anim-duration-base @anim-time-fn-ease-out modal-mask-hide;
 
-    .@{prefix}-image-viewer__modal--pic .@{prefix}-image-viewer__modal--box {
+    .@{prefix}-image-viewer__modal-pic .@{prefix}-image-viewer__modal-box {
       animation: @anim-duration-base @anim-time-fn-ease-out modal-image-hide;
     }
   }
 
-  .@{prefix}-image-viewer__modal--index {
+  .@{prefix}-image-viewer__modal-index {
     text-align: center;
     font-size: @font-size-base;
     color: @text-color-anti;
     position: absolute;
-    top: 100px;
+    top: 92px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 40%);
@@ -105,7 +105,7 @@
     z-index: 1;
   }
 
-  .@{prefix}-image-viewer__modal--mask {
+  .@{prefix}-image-viewer__modal-mask {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -118,14 +118,14 @@
     opacity: 1;
   }
 
-  .@{prefix}-image-viewer__modal--pic {
+  .@{prefix}-image-viewer__modal-pic {
     height: 0;
     width: 0;
     position: absolute;
     top: 50%;
     left: 50%;
 
-    .@{prefix}-image-viewer__modal--box {
+    .@{prefix}-image-viewer__modal-box {
       width: 100%;
       height: 100%;
       display: flex;
@@ -133,10 +133,10 @@
       align-items: center;
       animation: @anim-duration-base @anim-time-fn-easing modal-image-show;
 
-      .@{prefix}-image-viewer__modal--image {
+      .@{prefix}-image-viewer__modal-image {
         display: block;
-        max-width: 1000px;
-        max-height: 800px;
+        max-width: min(90vw, 1000px);
+        max-height: min(90vh, 800px);
         transition: all @anim-duration-base @anim-time-fn-easing;
         transform: rotate(0deg);
         object-fit: contain;
@@ -154,7 +154,7 @@
     align-items: center;
     justify-content: center;
     background-color: @bg-color-container;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
 
     @keyframes preview-icon-range {
       0% {
@@ -176,7 +176,7 @@
       }
     }
 
-    .@{prefix}-image-viewer__header--pre__bt {
+    .@{prefix}-image-viewer__header-pre-bt {
       width: auto;
       height: auto;
       position: absolute;
@@ -215,28 +215,28 @@
     }
 
     &.@{prefix}-is-show {
-      .@{prefix}-image-viewer__header--prev {
+      .@{prefix}-image-viewer__header-prev {
         animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-image-show;
       }
 
-      .@{prefix}-image-viewer__header--pre__bt {
+      .@{prefix}-image-viewer__header-pre-bt {
         animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-icon-range;
       }
     }
 
-    @header-box-width: 66px;
-    @header-box-margin: 8px;
+    @header-box-width: 52px;
+    @header-box-margin: 4px;
     @header-box-border-width: 1px;
     @header-box-all-width: @header-box-width + @header-box-margin * 2 + @header-box-border-width * 2;
 
-    .@{prefix}-image-viewer__header--prev {
+    .@{prefix}-image-viewer__header-prev {
       width: @header-box-all-width * 7;
       animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-image-hide;
       overflow: auto hidden;
       display: flex;
       position: relative;
 
-      .@{prefix}-image-viewer__bokeh--left, .@{prefix}-image-viewer__bokeh--right {
+      .@{prefix}-image-viewer__bokeh-left, .@{prefix}-image-viewer__bokeh-right {
         position: absolute;
         height: 100%;
         z-index: 1;
@@ -244,17 +244,17 @@
         pointer-events: none;
       }
 
-      .@{prefix}-image-viewer__bokeh--left {
+      .@{prefix}-image-viewer__bokeh-left {
         left: 0;
         background-image: linear-gradient(to right, @bg-color-container, rgba(255, 255, 255, 0%));
       }
 
-      .@{prefix}-image-viewer__bokeh--right {
+      .@{prefix}-image-viewer__bokeh-right {
         right: 0;
         background-image: linear-gradient(to right, rgba(255, 255, 255, 0%), @bg-color-container);
       }
 
-      .@{prefix}-image-viewer__header--trans {
+      .@{prefix}-image-viewer__header-trans {
         height: 100%;
         transition: transform @anim-duration-base;
         display: flex;
@@ -262,9 +262,9 @@
         justify-content: center;
         margin-left: @header-box-all-width * 3;
 
-        .@{prefix}-image-viewer__header--box {
+        .@{prefix}-image-viewer__header-box {
           width: @header-box-width;
-          height: 38px;
+          height: 32px;
           margin: 16px @header-box-margin 10px;
           transition: @anim-duration-base;
           overflow: hidden;
@@ -275,7 +275,7 @@
           border: @header-box-border-width solid transparent;
           background-color: @bg-color-secondarycontainer;
 
-          .@{prefix}-image-viewer__header--img {
+          .@{prefix}-image-viewer__header-img {
             max-height: 100%;
           }
 
@@ -287,32 +287,32 @@
     }
   }
 
-  .@{prefix}-image-viewer__modal--icon {
+  .@{prefix}-image-viewer__modal-icon {
     cursor: pointer;
     color: @text-color-primary;
     border-radius: @border-radius-default;
     transition: @anim-duration-base;
 
-    &.@{prefix}-image-viewer__modal--close-bt {
+    &.@{prefix}-image-viewer__modal-close-bt {
       top: 100px;
       right: 40px;
     }
 
-    &.@{prefix}-image-viewer__modal--next-bt,
-    &.@{prefix}-image-viewer__modal--prev-bt {
+    &.@{prefix}-image-viewer__modal-next-bt,
+    &.@{prefix}-image-viewer__modal-prev-bt {
       top: 50%;
       transform: translateY(-50%);
     }
 
-    &.@{prefix}-image-viewer__modal--prev-bt {
+    &.@{prefix}-image-viewer__modal-prev-bt {
       left: 40px;
     }
 
-    &.@{prefix}-image-viewer__modal--next-bt {
+    &.@{prefix}-image-viewer__modal-next-bt {
       right: 40px;
     }
 
-    &.@{prefix}-image-viewer__modal--close-bt , &.@{prefix}-image-viewer__modal--prev-bt, &.@{prefix}-image-viewer__modal--next-bt {
+    &.@{prefix}-image-viewer__modal-close-bt , &.@{prefix}-image-viewer__modal-prev-bt, &.@{prefix}-image-viewer__modal-next-bt {
       position: fixed;
       z-index: 10;
       color: @text-color-anti;
@@ -325,7 +325,7 @@
       align-items: center;
     }
 
-    .@{prefix}-image-viewer__modal--icon-label {
+    .@{prefix}-image-viewer__modal-icon-label {
       margin-left: 2px;
     }
 
@@ -363,8 +363,9 @@
   align-items: center;
   justify-content: center;
   color: @text-color-primary;
+  user-select: none;
 
-  .@{prefix}-image-viewer__utils--content {
+  .@{prefix}-image-viewer__utils-content {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -374,7 +375,7 @@
     border-radius: 6px;
     padding: 0 5px;
 
-    .@{prefix}-image-viewer__modal--icon {
+    .@{prefix}-image-viewer__modal-icon {
       margin: 0 4px;
       width: 32px;
       height: 32px;
@@ -389,7 +390,7 @@
       }
     }
 
-    .@{prefix}-image-viewer__utils--scale {
+    .@{prefix}-image-viewer__utils-scale {
       width: 40px;
       text-align: center;
       cursor: inherit;
@@ -401,7 +402,7 @@
   }
 }
 
-.@{prefix}-image-viewer__mini--header {
+.@{prefix}-image-viewer__mini-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -410,13 +411,13 @@
   width: 100%;
   font-size: @font-size-base;
 
-  .@{prefix}-image-viewer__mini--close {
+  .@{prefix}-image-viewer__mini-close {
     position: absolute;
     right: 5px;
     cursor: pointer;
     transition: @anim-duration-base;
 
-    &:hover .@{prefix}-icon {
+    &:hover .t-icon {
       border-radius: 50%;
       background-color: @bg-color-secondarycontainer-hover;
     }
@@ -430,10 +431,10 @@
 }
 
 .@{prefix}-image-viewer-mini__content {
-  max-height: 800px;
-  max-width: 1000px;
+  max-width: min(90vw, 1000px);
+  max-height: min(90vh, 800px);
 
-  .@{prefix}-image-viewer__modal--pic {
+  .@{prefix}-image-viewer__modal-pic {
 
     @keyframes modal-image-show {
       0% {
@@ -445,17 +446,17 @@
       }
     }
 
-    .@{prefix}-image-viewer__modal--box {
+    .@{prefix}-image-viewer__modal-box {
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      .@{prefix}-image-viewer__modal--image {
+      .@{prefix}-image-viewer__modal-image {
         display: block;
-        max-width: 800px;
-        max-height: 600px;
+        max-width: min(80vw, 800px);
+        max-height: min(80vh, 600px);
         transition: all @anim-duration-base ease;
         transform: rotate(0deg);
         object-fit: contain;
@@ -473,5 +474,6 @@
     border-color: @component-border;
     overflow: hidden;
     padding: 0;
+    box-shadow: @shadow-3;
   }
 }
