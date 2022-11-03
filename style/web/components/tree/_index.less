@@ -226,7 +226,7 @@
     display: block;
     position: absolute;
     left: 0;
-    top: 5px;
+    top: 0;
     width: @tree-node-icon-svg-size;
     height: @tree-node-icon-svg-size;
     border-radius: @border-radius-default;
@@ -311,9 +311,10 @@
   }
 }
 
+// 节点收缩隐藏动画
 .@{prefix}-tree--transition {
   // max-height 用于高度缩放动画
-  // 节点展示动画
+  // 用户使用时可以覆盖这个 max-height 来解决节点高度变更问题
   .@{prefix}-tree__item--visible,
   .@{prefix}-tree__children--visible {
     display: flex;
