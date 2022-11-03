@@ -30,6 +30,10 @@ toc: false
 
 {{ range }}
 
+### 滑动选择器禁用状态
+
+{{ disable }}
+
 ### 有标题滑动选择器
 
 {{ title }}
