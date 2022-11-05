@@ -175,7 +175,7 @@ export function getStepValue(p: {
   lastValue?: NumberType;
   largeNumber?: boolean;
 }) {
-  const { op, step, lastValue = 0, max, min, largeNumber } = p;
+  const { op, step, lastValue, max, min, largeNumber } = p;
   if (step <= 0) {
     log.error('InputNumber', 'step must be larger than 0.');
     return lastValue;
