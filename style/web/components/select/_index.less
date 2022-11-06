@@ -206,7 +206,9 @@
   }
 }
 
-.@{prefix}-select-option.@{prefix}-select-option__hover {
+/** 规范 CSS 类名为 --hover */
+.@{prefix}-select-option.@{prefix}-select-option__hover,
+.@{prefix}-select-option.@{prefix}-select-option--hover {
   &:not(.@{prefix}-is-disabled)&:not(.@{prefix}-is-selected) {
     background-color: @select-option-bg-color-hover;
     .@{prefix}-checkbox__input {
