@@ -136,10 +136,10 @@
   color: @select-option-color;
   transition: background-color @anim-duration-base @anim-time-fn-easing;
   box-sizing: border-box;
-  .text-ellipsis();
 
   span {
     position: relative;
+    .text-ellipsis();
   }
 
   &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-selected):hover {

@@ -154,7 +154,7 @@ export function limitUnicodeMaxLength(
   oldStr?: string
 ): string {
   // 旧字符满足字数要求则返回
-  if ([...(oldStr ?? '')].slice().length === maxLength) return oldStr;
+  if ([...(oldStr ?? '')].slice().length === maxLength) return oldStr || '';
   return [...(str ?? '')].slice(0, maxLength).join('');
 }
 
