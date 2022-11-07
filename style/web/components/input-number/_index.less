@@ -61,7 +61,12 @@
     width: auto;
 
     &.@{prefix}-is-controls-right {
-      min-width: 88px;
+      min-width: auto;
+      width: auto;
+    }
+
+    .@{prefix}-input__inner {
+      min-width: 42px;
     }
 
     &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
