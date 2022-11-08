@@ -64,6 +64,32 @@
   }
 }
 
+// 标签数量超出时，横向滚动显示
+.@{prefix}-tag-input--scroll {
+
+  .@{prefix}-input {
+    display: flex;
+    padding-right: @spacer-3;
+
+    &.@{prefix}-input--prefix > .@{prefix}-input__prefix {
+      display: inline-flex;
+      text-align: left;
+      overflow-x: scroll;
+      width: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .@{prefix}-input__suffix-icon {
+      position: absolute;
+      right: @spacer;
+      bottom: 0;
+    }
+  }
+}
+
 .@{prefix}-tag-input__prefix {
   width: max-content;
   display: inline-block;
