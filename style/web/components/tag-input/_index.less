@@ -80,6 +80,13 @@
       &::-webkit-scrollbar {
         display: none;
       }
+
+      /* firefox */
+      scrollbar-width: none;
+      overflow: -moz-scrollbars-none;
+
+      /* IE 10+ */
+      -ms-overflow-style: none;
     }
 
     .@{prefix}-input__suffix-icon {
