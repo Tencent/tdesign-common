@@ -94,9 +94,6 @@ describe('compareLargeNumber', () => {
     expect(compareLargeNumber('4241234', '41234534')).toBe(-1);
   });
 
-  it('number 2, string 2', () => {
-    expect(compareLargeNumber('2', 2)).toBe(-1);
-  });
 });
 
 describe('isInputNumber', () => {
