@@ -37,7 +37,15 @@
 @alert-error-trigger-active-color: @error-color;
 
 // 间距
-@alert-padding: 14px 24px;
+@alert-padding: @comp-paddingTB-l @comp-paddingLR-xl;
+@alert-operation-padding: 0 @comp-paddingLR-s;
+@alert-margin-left: @comp-margin-s;
+@alert-close-margin-left: @comp-margin-s;
 
 // size
-@alert-icon-size: 20px;
+@alert-font-size: @font-body-medium;
+@alert-icon-size: calc(@font-size-base + 6px);
+@alert-close-size: calc(@font-size-base + 2px);
+@alert-icon-padding: calc((22px - @alert-icon-size) / 2 ) 0;
+@alert-close-padding: calc((22px - @alert-close-size) / 2 ) 0;
+@alert-description-margin-top: @comp-margin-s;
