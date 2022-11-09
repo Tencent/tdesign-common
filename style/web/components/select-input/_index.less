@@ -17,18 +17,21 @@
 /** 无边框模式 */
 .@{prefix}-select-input--borderless {
   .@{prefix}-input {
-    border: 0;
     box-shadow: none;
-    transition: background-color @anim-duration-base linear;
+    border: 1px solid transparent;
+    transition: all @anim-duration-base linear;
 
-    &:hover {
+    &:hover:not(.@{prefix}-input--focused) {
+      border-color: @component-border;
       background-color: @select-input-focus-bg;
       border-radius: @select-input-border-radius;
     }
   }
 
   .@{prefix}-input--focused {
-    background-color: @select-input-focus-bg;
+    border-color: @brand-color;
+    box-shadow: @select-input-shadow;
+    background-color: @bg-color-specialcomponent;
   }
 
   /** 无边框模式的多选 */
