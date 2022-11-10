@@ -19,12 +19,13 @@
   }
 
   .@{prefix}-input {
-    padding-left: @spacer-s;
     overflow: hidden;
     min-height: @tag-input-height-default;
+    padding: @spacer-s;
+    height: fit-content;
 
     &.@{prefix}-size-s {
-      padding-left: @spacer-s * .5;
+      padding: @spacer-s * .5;
       min-height: @tag-input-height-s;
     }
 
@@ -58,11 +59,11 @@
 .@{prefix}-tag-input--break-line {
 
   .@{prefix}-input {
-    flex-wrap: nowrap;
+    display: block;
     padding-right: @spacer-3;
 
     &.@{prefix}-input--prefix > .@{prefix}-input__prefix {
-      display: inline-flex;
+      display: inline;
       text-align: left;
     }
 
