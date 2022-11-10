@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-
-### 基础导航栏
+### 类型
+#### 基础导航栏
 
 {{ base }}
 
-### 带图标导航栏
+#### 左侧双操作导航栏
 
-{{ icon }}
+{{ left-icon }}
 
-### 事件反馈
+#### 右侧双操作导航栏
 
-{{ event }}
+{{ right-icon }}
