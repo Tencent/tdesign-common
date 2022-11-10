@@ -11,7 +11,7 @@
   .breadcrumb;
 
   &__separator {
-    margin: 0 @breadcrumb-spacer-half;
+    margin: @breadcrumb-separator-margin;
     display: flex;
     align-items: center;
   }
@@ -70,7 +70,7 @@
 
     //箭头型
     &--arrow {
-      margin: 0 @breadcrumb-spacer-half;
+      margin: @breadcrumb-separator-margin;
       line-height: 0;
       color: @breadcrumb-icon-arrow-color-default;
       .v-inlineblock;
@@ -78,7 +78,7 @@
 
     //斜杠型
     &--slash {
-      margin: 0 @breadcrumb-spacer-half;
+      margin: @breadcrumb-separator-margin;
       line-height: 0;
       color: @breadcrumb-icon-slash-color-default;
       .v-inlineblock;
@@ -91,7 +91,7 @@
     .v-inlineblock;
 
     .t-icon {
-      margin: 0 @breadcrumb-spacer-half;
+      margin: @breadcrumb-separator-margin;
     }
   }
 
