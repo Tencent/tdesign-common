@@ -21,16 +21,19 @@
   .@{prefix}-input {
     overflow: hidden;
     min-height: @tag-input-height-default;
-    padding: @spacer-s;
+    line-height: @tag-input-line-height-default;
+    padding: 0 @spacer-s;
     height: fit-content;
 
     &.@{prefix}-size-s {
       padding: @spacer-s * .5;
       min-height: @tag-input-height-s;
+      line-height: @tag-input-line-height-s;
     }
 
     &.@{prefix}-size-l {
       min-height: @tag-input-height-l;
+      line-height: @tag-input-line-height-l;
     }
   }
 
