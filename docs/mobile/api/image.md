@@ -10,16 +10,26 @@ toc: false
 
 图片样式可为圆形、圆角方形、方形
 
-{{ base }}
+#### 裁切样式
+
+{{ crop }}
+
+#### 圆角样式
+
+{{ rounded }}
 
 ### 状态
 
+#### 加载中提示
 
-{{ status }}
+{{ loading-tip }}
+
+#### 加载失败提醒
+
+{{ loading-error }}
 
 ### 规格
 
-通过lazy属性来开启图片懒加载
 
 {{ size }}
 
