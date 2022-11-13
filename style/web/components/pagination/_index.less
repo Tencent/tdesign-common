@@ -98,7 +98,7 @@
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
-      @pagination-padding-horizontal-default; @pagination-height-default - 2;
+      @pagination-padding-horizontal-default; calc(@pagination-height-default - 2px);
     );
 
     &:hover {
@@ -236,5 +236,13 @@
         .pagination-btn(@pagination-height-s);
       }
     }
+  }
+}
+
+/** IE 兼容 **/
+.@{prefix}-pagination-ie {
+  /** 在 IE11 以下浏览器，input autoWidth 计算无法依赖 observer，因而加上最小宽度，避免分页信息出现 0 的情况 */
+  .@{prefix}-select .@{prefix}-input__inner {
+    min-width: 54px;
   }
 }

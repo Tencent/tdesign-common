@@ -6,6 +6,14 @@ isComponent: true
 toc: false
 ---
 
-### 基础级联选择器
+### 基础
+
+#### 基本用法
 
 {{ base }}
+
+### 状态
+
+#### 禁用可选项
+
+{{ status }}

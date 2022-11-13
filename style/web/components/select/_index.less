@@ -29,6 +29,11 @@
   }
 
   &-inner {
+    // 嵌套无需 padding
+    .@{prefix}-select__list .@{prefix}-select__list {
+      padding: 0;
+    }
+
     .@{prefix}-select__list,
     .@{prefix}-tree {
       padding: @select-dropdown-padding;
@@ -98,7 +103,20 @@
 }
 
 .@{prefix}-select-option-group__divider + .@{prefix}-select-option-group__divider {
-  border-top: 1px @select-optiongroup-border-color solid;
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    padding: @select-option-padding-default;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    background-color: @select-optiongroup-border-color;
+    background-clip: content-box;
+  }
 }
 
 .@{prefix}-select-option-group__header {
@@ -107,7 +125,7 @@
     color: @select-option-group-header-color;
     display: block;
     height: @select-option-height-default;
-    line-height: @select-option-line-height;
+    line-height: @select-option-height-default;
     padding: @select-option-padding-default;
     box-sizing: border-box;
     .text-ellipsis();
@@ -116,11 +134,13 @@
 
 .@{prefix}-select-option-group__header.@{prefix}-size-l {
   height: @select-option-height-l;
+  line-height: @select-option-height-l;
   padding: @select-option-padding-l;
 }
 
 .@{prefix}-select-option-group__header.@{prefix}-size-s {
   height: @select-option-height-s;
+  line-height: @select-option-height-s;
   padding: @select-option-padding-s;
 }
 
@@ -136,10 +156,10 @@
   color: @select-option-color;
   transition: background-color @anim-duration-base @anim-time-fn-easing;
   box-sizing: border-box;
-  .text-ellipsis();
 
   span {
     position: relative;
+    .text-ellipsis();
   }
 
   &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-selected):hover {

@@ -31,7 +31,33 @@
     flex-wrap: wrap;
     row-gap: @spacer-s;
 
+    &.@{prefix}-size-s {
+      .@{radio-button--cls} {
+        height: @radio-outline-height-small;
+      }
+    }
+
+    &.@{prefix}-size-m {
+      .@{radio-button--cls} {
+        height: @radio-outline-height-medium;
+      }
+    }
+
+    &.@{prefix}-size-l {
+      .@{radio-button--cls} {
+        height: @radio-outline-height-large;
+      }
+    }
+
     .@{radio-button--cls} {
+      &:first-child {
+        border-radius: @border-radius-default 0 0 @border-radius-default;
+      }
+
+      &:last-child {
+        border-radius: 0 @border-radius-default @border-radius-default 0;
+      }
+
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
