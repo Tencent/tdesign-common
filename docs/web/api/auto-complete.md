@@ -19,7 +19,9 @@ spline: form
 
 ### 可自定义联想词的自动填充
 
-{{ custom-option }}
+- 使用 `option` 自定义联想词
+
+{{ option }}
 
 ### 可自定义触发元素的自动填充
 
