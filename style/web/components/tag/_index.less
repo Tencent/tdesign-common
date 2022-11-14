@@ -23,7 +23,7 @@
   white-space: nowrap;
 
   .t-icon {
-    margin-right: 4px;
+    margin-right: @tag-icon-margin-right;
     width: @tag-icon-size;
     height: @tag-icon-size;
     flex-shrink: 0;
@@ -31,7 +31,7 @@
 
   .@{prefix}-tag__icon-close {
     margin-right: 0;
-    margin-left: 8px;
+    margin-left: @tag-close-icon-margin-right;
     font: @tag-large-font;
     cursor: pointer;
     transition: color @anim-duration-base @anim-time-fn-easing;
@@ -226,10 +226,10 @@
   &--dark&:not(.@{prefix}-tag--default) {
 
     .@{prefix}-tag__icon-close {
-      fill: @tag-close-icon-color--dark;
+      color: @tag-close-icon-color--dark;
 
       &:hover {
-        fill: @tag-close-icon-hover-color--dark;
+        color: @tag-close-icon-hover-color--dark;
       }
     }
   }
