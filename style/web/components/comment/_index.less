@@ -25,8 +25,8 @@
   }
 
   &__avatar-image {
-    width: 56px;
-    height: 56px;
+    width: @comment-avatar-size;
+    height: @comment-avatar-size;
     border-radius: @border-radius-circle;
   }
 
@@ -41,23 +41,19 @@
     justify-content: flex-start;
     align-items: baseline;
     margin-bottom: @comment-author-margin-bottom;
-
-    & > span {
-      padding-right: @comment-padding-s;
-    }
   }
 
   &__name {
     display: inline-flex;
     align-items: center;
     font: @comment-author-text-size;
+    padding-right: @comment-author-name-padding-right;
     cursor: pointer;
   }
 
   &__time {
     font: @comment-secondary-text-size;
-    padding-top: (@spacer-1 / 4);
-    padding-bottom: (@spacer-1 / 4);
+    padding-right: @comment-author-time-padding-right;
     color: @comment-text-color-secondary;
   }
 
@@ -69,7 +65,7 @@
   &__quote {
     margin-top: @comment-quote-margin-top;
     border-left: 4px solid @comment-border-color-default;
-    padding-left: 16px;
+    padding-left: @comment-quote-padding-left;
 
     & .@{prefix}-comment {
       &__name,
@@ -85,13 +81,13 @@
     justify-content: flex-end;
     list-style: none;
     padding: 0;
-    gap: @spacer;
+    gap: @comment-actions-gap;
 
     .@{prefix}-button--variant-text {
       color: @text-color-placeholder;
 
       .@{prefix}-button__text {
-        gap: @spacer-s;
+        gap: @comment-actions-gap;
       }
     }
   }
@@ -102,5 +98,17 @@
     background-color: @comment-bg-color-secondary;
     border-radius: @border-radius-medium;
     padding: @comment-reply-padding;
+
+    .@{prefix}-button--variant-text {
+      color: @text-color-placeholder;
+
+      &:hover {
+        background-color: @bg-color-secondarycontainer-hover;
+      }
+
+      .@{prefix}-button__text {
+        gap: @comment-actions-gap;
+      }
+    }
   }
 }
