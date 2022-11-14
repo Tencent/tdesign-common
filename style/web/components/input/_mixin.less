@@ -102,19 +102,3 @@
     }
   }
 }
-
-.input-size(@size) {
-  & when(@size = l) {
-    &.@{prefix}-size-l {
-      & > .@{prefix}-input__inner {
-        height: @input-height-l;
-      }
-    }
-  }
-  & when not (@size = l) {
-    &.@{prefix}-size-@{size} {
-      width: @@width-size;
-      @width-size: "input-width-@{size}";
-    }
-  }
-}
