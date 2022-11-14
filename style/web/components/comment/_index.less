@@ -85,16 +85,13 @@
     justify-content: flex-end;
     list-style: none;
     padding: 0;
+    gap: @spacer;
 
-    & > li {
-      color: @comment-text-color-secondary;
-      margin-left: @comment-action-margin-left;
-      font: @comment-secondary-text-size;
-      cursor: pointer;
-      user-select: none;
+    .@{prefix}-button--variant-text {
+      color: @text-color-placeholder;
 
-      &:hover {
-        color: @comment-text-color-hover;
+      .@{prefix}-button__text {
+        gap: @spacer-s;
       }
     }
   }
