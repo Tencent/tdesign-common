@@ -19,7 +19,7 @@
 @list-item-split-color: @border-level-1-color;
 @list-avatar-bg-color: @bg-color-page;
 @list-text-color-loading: @text-color-placeholder;
-@list-icon-color-loading: @brand-color-5;
+// @list-icon-color-loading: @brand-color-5;
 @list-text-color-load-more: @text-color-placeholder;
 @list-meta-title-color: @text-color-primary;
 @list-meta-description-color: @text-color-primary;
@@ -29,29 +29,28 @@
 @list-font-color: @text-color-primary;
 
 // 间距
-@list-padding: @spacer-2 @spacer-3;
-@list-item-spacer-small: @spacer @spacer-2;
-@list-item-spacer-default: @spacer-l @spacer-3;
-@list-item-spacer-large: @spacer-2 @spacer-4;
-@list-meta-padding: @spacer-s 0;
-@list-avatar-margin-right: @spacer-2;
-@list-meta-title-margin: 0 0 @spacer;
-@list-meta-description-margin-right: @spacer-3;
-@list-action-margin-right: @spacer-3;
-@list-extra-margin: @spacer 0 @spacer @spacer-2;
-@list-load-not-empty-padding: @spacer-4;
-@list-load-icon-margin: @spacer;
+@list-padding: @comp-paddingTB-m @comp-paddingLR-l;
+@list-item-spacer-small: @comp-paddingTB-s @comp-paddingLR-m;
+@list-item-spacer-default: @comp-paddingTB-m @comp-paddingLR-l;
+@list-item-spacer-large: @comp-paddingTB-l @comp-paddingLR-xl;
+// @list-meta-padding: @spacer-s 0;
+@list-avatar-margin-right: @comp-margin-l;
+@list-meta-title-margin: 0 0 @comp-margin-s;
+@list-meta-description-margin-right: @comp-margin-xxl;
+@list-action-margin-right: @comp-margin-l;
+@list-load-not-empty-padding: @comp-paddingTB-m @comp-paddingLR-l;
+@list-load-icon-margin: @comp-margin-s;
 
 // 尺寸
-@list-item-line-height: 22px;
-@list-avatar-size: 56px;
-@list-icon-size: @font-size-l;
+@list-item-line-height: @text-line-height-base;
+@list-avatar-size: @comp-size-xxxl;
+@list-icon-size: @comp-size-xxxs;
 
 // 字体
 @list-item-font: @font-body-medium;
 @list-meta-title-font: @font-title-medium;
-@list-load-font-size: @font-size-l;
-@list-load-more-font-size: @font-size-l;
+@list-load-font-size: @comp-size-xxxs;
+@list-load-more-font-size: @comp-size-xxxs;
 
 // 行号
-@list-load-line-height: @text-line-height-s;
+@list-load-line-height: @text-line-height-base;

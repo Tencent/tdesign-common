@@ -25,10 +25,10 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    font-size: 14px;
+    font: @image-viewer-error-font;
 
     .@{prefix}-image-viewer__img-error-text {
-      margin-top: 10px;
+      margin-top: @comp-margin-s;
     }
   }
 }
@@ -100,8 +100,8 @@
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 40%);
-    border-radius: 3px;
-    padding: 4px 8px;
+    border-radius: @border-radius-default;
+    padding: @image-viewer-modal-padding;
     z-index: 1;
   }
 
@@ -154,7 +154,7 @@
     align-items: center;
     justify-content: center;
     background-color: @bg-color-container;
-    padding-bottom: 8px;
+    padding-bottom: @image-viewer-modal-header-padding-bottom;
 
     @keyframes preview-icon-range {
       0% {
@@ -179,6 +179,7 @@
     .@{prefix}-image-viewer__header-pre-bt {
       width: auto;
       height: auto;
+      padding: @image-viewer-modal-header-pre-bt-padding;
       position: absolute;
       left: 50%;
       bottom: 0;
@@ -186,8 +187,12 @@
       background-color: @bg-color-container;
       color: @text-color-primary;
       border-radius: 50%;
-      border: .5px solid @bg-color-secondarycontainer;
-      animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-icon-unrange;
+      box-shadow: @shadow-inset;
+      animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-icon-unrange;
+
+      > .t-icon {
+        font-size: @font-size-l;
+      }
 
       &:hover {
         background-color: inherit;
@@ -200,13 +205,13 @@
       }
 
       to {
-        height: 54px;
+        height: @image-viewer-modal-header-size;
       }
     }
 
     @keyframes preview-image-hide {
       0% {
-        height: 54px;
+        height: @image-viewer-modal-header-size;
       }
 
       to {
@@ -216,11 +221,11 @@
 
     &.@{prefix}-is-show {
       .@{prefix}-image-viewer__header-prev {
-        animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-image-show;
+        animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-image-show;
       }
 
       .@{prefix}-image-viewer__header-pre-bt {
-        animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-icon-range;
+        animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-icon-range;
       }
     }
 
@@ -231,7 +236,7 @@
 
     .@{prefix}-image-viewer__header-prev {
       width: @header-box-all-width * 7;
-      animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-image-hide;
+      animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-image-hide;
       overflow: auto hidden;
       display: flex;
       position: relative;
@@ -263,12 +268,12 @@
         margin-left: @header-box-all-width * 3;
 
         .@{prefix}-image-viewer__header-box {
-          width: @header-box-width;
-          height: 32px;
-          margin: 16px @header-box-margin 10px;
+          width: 100%;
+          height: @image-viewer-modal-header-image-box-size;
+          margin: @image-viewer-modal-header-image-box-margin;
           transition: @anim-duration-base;
           overflow: hidden;
-          border-radius: 3px;
+          border-radius: @border-radius-default;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -318,8 +323,8 @@
       color: @text-color-anti;
       background-color: rgba(0, 0, 0, 40%);
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: @image-viewer-modal-button-size;
+      height: @image-viewer-modal-button-size;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -372,13 +377,13 @@
     height: 50px;
     line-height: 100%;
     background: @bg-color-container;
-    border-radius: 6px;
-    padding: 0 5px;
+    border-radius: @border-radius-medium;
+    padding: @image-viewer-utils-content-padding;
 
     .@{prefix}-image-viewer__modal-icon {
-      margin: 0 4px;
-      width: 32px;
-      height: 32px;
+      margin: @image-viewer-utils-modal-icon-margin;
+      width: @image-viewer-utils-modal-icon-size;
+      height: @image-viewer-utils-modal-icon-size;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -391,7 +396,7 @@
     }
 
     .@{prefix}-image-viewer__utils-scale {
-      width: 40px;
+      width: @image-viewer-utils-modal-utils-scale-width;
       text-align: center;
       cursor: inherit;
 
