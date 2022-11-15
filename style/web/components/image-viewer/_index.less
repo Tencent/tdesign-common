@@ -238,14 +238,13 @@
     .@{prefix}-image-viewer__header-prev {
       width: @image-viewer-header-all-box-width;
       animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-image-hide;
-      overflow: auto hidden;
       display: flex;
       position: relative;
       overflow: hidden;
 
       &::before,
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         height: 100%;
         z-index: 1;
@@ -341,7 +340,7 @@
     }
 
     &.@{prefix}-is-disabled {
-      color: rgba(255, 255, 255, .22);
+      color: rgba(255, 255, 255, 22%);
     }
 
     &.@{prefix}-is-disabled:hover {
@@ -464,7 +463,7 @@
     overflow: hidden;
     padding: 0;
     box-shadow: @shadow-3;
-    
+
     &__header {
       height: 40px;
       width: 100%;
