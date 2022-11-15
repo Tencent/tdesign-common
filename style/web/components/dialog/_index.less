@@ -47,13 +47,14 @@
     font: @dialog-header-font;
     font-weight: @dialog-header-weight;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     word-break: break-word;
+    gap: @dialog-header-content-margin-right;
+    box-sizing: border-box;
 
     .@{prefix}-dialog__header-content {
       display: flex;
       align-items: flex-start;
-      margin-right: @dialog-header-content-margin-right;
       width: 100%;
     }
 
@@ -131,7 +132,6 @@
     height: @dialog-close-icon-size;
     align-items: center;
     border-radius: @border-radius-default;
-    background: @dialog-bg-color;
     transition: all @anim-duration-base linear;
     padding: @dialog-closebtn-padding;
 
