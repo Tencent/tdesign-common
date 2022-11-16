@@ -9,7 +9,7 @@ export function fillZero(length: number) {
  */
 export function isInputNumber(num: number | string): boolean {
   if (!num) return true;
-  if (typeof num === 'number') return Number.isNaN(num);
+  if (typeof num === 'number') return !Number.isNaN(num);
   const r = /^[0-9|e|E|-]+\.*[0-9|e|E|-]*$/.test(num);
   if (!r) return false;
   // only allow one [.e] and two [-]

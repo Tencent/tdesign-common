@@ -66,14 +66,13 @@
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
     perspective: 1000; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
-    line-height: @tree-node-item-line-height;
 
     .t-icon,
     .@{prefix}-loading {
       display: inline-block;
       position: relative;
       z-index: 2;
-      font-size: @font-size-l;
+      font-size: @tree-node-icon-size;
     }
 
     .t-icon {
@@ -208,7 +207,7 @@
     align-items: center;
     // 图标居中
     text-align: center;
-    width: 16px;
+    width: @tree-node-icon-size;
     // 当子元素只有一个且为image类型时，会有隐藏占位，因此将font-size设0
     font-size: 0;
     user-select: none;
@@ -226,11 +225,13 @@
     width: @tree-node-icon-svg-size;
     height: @tree-node-icon-svg-size;
     border-radius: @border-radius-default;
+    transition: @anim-duration-base linear;
   }
 
   // 仅在有图标时呈现背景
   &__icon:not(:empty):hover::after {
     background-color: @tree-node-bg-hover-color;
+    transition: @anim-duration-base linear;
   }
 
   // 没有图标是不呈现指针
@@ -243,8 +244,8 @@
 
     flex-wrap: nowrap;
     flex: 0 0 auto;
-    padding: 2px 4px;
-    margin-left: 4px;
+    padding: @tree-label-padding;
+    margin-left: @tree-label-margin-left;
     border-radius: @border-radius-default;
     cursor: pointer;
     transition: background-color @anim-duration-moderate @anim-time-fn-easing;

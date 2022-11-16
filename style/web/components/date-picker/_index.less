@@ -65,12 +65,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: @spacer-l;
+  gap: @comp-margin-m;
   width: 100%;
 
   &-controller {
     display: inline-flex;
-    gap: @spacer;
+    gap: @comp-margin-s;
 
     .@{prefix}-date-picker__header-controller-month {
       width: @datepicker-month-controller-width;
@@ -135,7 +135,7 @@
       top: 3px;
       z-index: 10;
       height: 24px;
-      border-radius: 3px;
+      border-radius: @border-radius-default;
       transition: @datepicker-transition;
       pointer-events: none;
     }
@@ -236,14 +236,14 @@
 .@{prefix}-date-range-picker__panel-time {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: @comp-margin-xxs;
   padding: @datepicker-time-panel-padding;
   border-left: 1px solid @datepicker-panel-divider-color;
 
   &-viewer {
     display: flex;
-    height: 32px;
-    line-height: 22px;
+    height: @comp-size-m;
+    line-height: @text-line-height-base;
     align-items: center;
     justify-content: center;
     color: @text-color-primary;
@@ -262,8 +262,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: @spacer-l;
-  gap: @spacer-l;
+  padding: @comp-paddingTB-m @comp-paddingLR-m;
+  gap: @comp-margin-m;
   max-width: @datepicker-panel-max-width;
 }
 
@@ -305,7 +305,7 @@
       tbody {
         width: 100%;
         display: flex;
-        gap: @spacer-2;
+        gap: @comp-margin-l;
         flex-direction: column;
 
         tr {
@@ -348,7 +348,7 @@
     z-index: 1;
     height: @datepicker-cell-height;
     transform: translateY(-50%);
-    transition: all .2s @anim-time-fn-easing;
+    transition: all @anim-duration-base @anim-time-fn-easing;
   }
 
   &:hover {
@@ -449,7 +449,7 @@
 
   &--disabled + &--disabled {
     &::before {
-      left: -@spacer-4;
+      left: calc(0px - calc(@datepicker-cell-min-width + @comp-margin-s));
       background-color: @datepicker-cell-disable-background-color;
     }
   }
