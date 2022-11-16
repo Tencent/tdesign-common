@@ -2,8 +2,6 @@
 
 @import "./_var.less";
 
-@import "./_polyfill.less";
-
 @import "../../mixins/_text.less";
 
 @import "../../mixins/_reset.less";
@@ -150,7 +148,7 @@
   align-items: center;
   border-radius: @select-option-border-radius;
   height: @select-option-height-default;
-  line-height: @select-option-line-height;
+  font: @font-body-medium;
   cursor: pointer;
   padding: @select-option-padding-default;
   color: @select-option-color;
@@ -204,7 +202,7 @@
   font: @select-font-l;
 }
 .@{prefix}-select-option.@{prefix}-size-m {
-  line-height: @select-option-line-height-m;
+  font: @select-font-m;
 }
 .@{prefix}-select-option.@{prefix}-size-s {
   height: @select-option-height-s;
@@ -241,7 +239,7 @@
 }
 
 .@{prefix}-select-option + .@{prefix}-select-option {
-  margin-top: @select-options-margin;
+  margin-top: @select-options-margin-top;
 }
 
 .@{prefix}-select {
