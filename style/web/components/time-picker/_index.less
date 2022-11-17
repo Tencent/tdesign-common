@@ -49,73 +49,6 @@
       cursor: pointer;
     }
   }
-
-  &__input {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    padding: @time-picker-input-padding;
-    z-index: 1;
-    border-radius: @border-radius-default;
-    transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
-    font: @time-picker-font;
-    .flex-center;
-
-    &:hover {
-      border-color: @time-picker-input-border-color-hover;
-    }
-
-    &-placeholder {
-      margin-left: @time-picker-input-placeholder-margin-left;
-      color: @time-picker-panel-input-placeholder-color;
-    }
-
-    &-item {
-      height: 22px;
-
-      &-disabled {
-        color: @time-picker-input-color-disabled;
-      }
-
-      &-input {
-        margin: @time-picker-input-item-input-margin;
-        color: inherit;
-        background: none;
-        cursor: pointer;
-        height: inherit;
-        outline: none;
-        width: @time-picker-input-item-input-width;
-        text-align: center;
-        border-radius: @time-picker-input-item-input-radius;
-        border: 0;
-        line-height: 22px;
-
-        &-meridiem {
-          width: @time-picker-input-item-input-meridiem-width;
-        }
-
-        &:focus {
-          border-color: @bg-color-page;
-          background-color: @bg-color-container-hover;
-        }
-      }
-    }
-  }
-
-  &__input-disabled {
-    border: @time-picker-input-border-disabled;
-    background-color: @bg-color-container-hover;
-
-    &-placeholder {
-      color: @text-color-disabled;
-    }
-
-    &-item {
-      &-input {
-        pointer-events: none;
-      }
-    }
-  }
 }
 
 .@{prefix}-time-range-picker {
@@ -235,7 +168,6 @@
 
   &-footer {
     width: 100%;
-    // height: @time-picker-panel-footer-height;
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse; // 确定按钮一定有 此刻按钮不一定有
