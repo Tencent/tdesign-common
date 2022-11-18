@@ -19,7 +19,7 @@
   margin: 0;
   height: @switch-height-default;
   line-height: @switch-height-default;
-  border-radius: (@switch-height-default / 2);
+  border-radius: calc(@switch-height-default / 2);
   min-width: @switch-min-width-default;
   transition: @switch-transition;
   background-color: @switch-unchecked-bg-color;
@@ -33,13 +33,13 @@
     justify-content: center;
     top: @switch-width-border-default;
     left: @switch-width-border-default;
-    width: (@switch-height-default - 2px * @switch-width-border-default);
-    height: (@switch-height-default - 2px * @switch-width-border-default);
+    width: calc(@switch-height-default - 2 * @switch-width-border-default);
+    height: calc(@switch-height-default - 2 * @switch-width-border-default);
     border-radius: @border-radius-extraLarge;
     transition: @switch-handle-transition;
 
     .t-icon {
-      font-size: (@switch-height-default - 4px);
+      font-size: calc(@switch-height-default - 4px);
       color: transparent;
     }
 
@@ -154,7 +154,7 @@
   min-width: @switch-min-width-l;
   height: @switch-height-l;
   line-height: @switch-height-l;
-  border-radius: (@switch-height-l / 2);
+  border-radius: calc(@switch-height-l / 2);
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
 
@@ -175,11 +175,11 @@
   .@{prefix}-switch__handle {
     top: @switch-width-border-l;
     left: @switch-width-border-l;
-    width: (@switch-height-l - 2px * @switch-width-border-l);
-    height: (@switch-height-l - 2px * @switch-width-border-l);
+    width: calc(@switch-height-l - 2 * @switch-width-border-l);
+    height: calc(@switch-height-l - 2 * @switch-width-border-l);
 
     .t-icon {
-      font-size: (@switch-height-l - 4px);
+      font-size: calc(@switch-height-l - 4px);
     }
   }
 
@@ -209,7 +209,7 @@
   min-width: @switch-min-width-s;
   height: @switch-height-s;
   line-height: @switch-height-s;
-  border-radius: (@switch-height-s / 2);
+  border-radius: calc(@switch-height-s / 2);
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
 
@@ -230,11 +230,11 @@
   .@{prefix}-switch__handle {
     top: @switch-width-border-s;
     left: @switch-width-border-s;
-    width: (@switch-height-s - 2 * @switch-width-border-s);
-    height: (@switch-height-s - 2 * @switch-width-border-s);
+    width: calc(@switch-height-s - 2 * @switch-width-border-s);
+    height: calc(@switch-height-s - 2 * @switch-width-border-s);
 
     .t-icon {
-      font-size: (@switch-height-s - 4px);
+      font-size: calc(@switch-height-s - 4px);
     }
   }
 

@@ -6,19 +6,19 @@
 @transfer-font-color: @text-color-primary;
 
 // 间距
-@transfer-list-margin-horizontal: @spacer;
-@transfer-list-header-padding: 0 @spacer * 1.5;
+@transfer-list-margin-horizontal: @comp-margin-s;
+@transfer-list-header-padding: 0 @comp-paddingLR-s;
 @transfer-list-header-margin: 0 @transfer-list-margin-horizontal;
-@transfer-list-header-text-margin-left: @spacer;
-@transfer-list-body-padding: @spacer 0 @spacer 0;
-@transfer-list-item-padding: 5px @spacer;
+@transfer-list-header-text-margin-left: @comp-margin-s;
+@transfer-list-body-padding: @comp-paddingTB-s 0;
+@transfer-list-item-padding: 5px @comp-paddingLR-s;
 @transfer-list-item-margin: 0 @transfer-list-margin-horizontal;
-@transfer-list-item-text-margin-left: @spacer;
+@transfer-list-item-text-margin-left: @comp-margin-s;
 @transfer-list-search-wrapper-margin: 0 @transfer-list-margin-horizontal;
 @transfer-list-with-search-padding-top: 40px;
-@transfer-list-wrapper-padding: @spacer * 1.5;
-@transfer-list-pagination-padding: 0 @spacer 0 @spacer * .5;
-@transfer-operations-margin: auto @spacer;
+@transfer-list-wrapper-padding: @comp-paddingTB-m @comp-paddingLR-m;
+@transfer-list-pagination-padding: 0 @comp-paddingLR-s 0 @comp-paddingLR-xs;
+@transfer-operations-margin: auto @comp-margin-s;
 @transfer-operations-button-padding: 0 3px;
 // 有翻页时候transfer的下内边距
 @transfer-with-pagination-padding-bottom: 32px;
@@ -51,18 +51,18 @@
 // 包裹树组件时候transfer的高度
 @transfer-wrap-height: 320px;
 @transfer-wrap-width: 206px;
-@transfer-list-header-height: 48px;
-@transfer-list-header-width: (
+@transfer-list-header-height: @comp-size-xxl;
+@transfer-list-header-width: calc(
   @transfer-common-width - @transfer-list-margin-horizontal * 2
 );
-@transfer-list-search-wrapper-width: (
+@transfer-list-search-wrapper-width: calc(
   @transfer-common-width - @transfer-list-margin-horizontal * 2
 );
-@transfer-list-pagination-height: 24px;
+@transfer-list-pagination-height: @comp-size-xs;
 @transfer-list-pagination-line-height: 16px;
-@transfer-operations-button-height: 24px;
+@transfer-operations-button-height: @comp-size-xs;
 @transfer-operations-button-line-height: 14px;
-@transfer-operations-button-icon-width: 24px;
+@transfer-operations-button-icon-width: @comp-size-xs;
 @transfer-operations-icon-size: 16px;
 
 // 字体
