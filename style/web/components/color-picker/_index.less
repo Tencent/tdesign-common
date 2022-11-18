@@ -328,11 +328,6 @@
     .@{prefix}-input-number .@{prefix}-input {
       margin: 0;
     }
-    .@{prefix}-select {
-      &__single {
-        margin-left: 4px; //待确认
-      }
-    }
 
     .input-group {
       display: flex;
@@ -346,7 +341,6 @@
         margin-left: -1px;
         .@{prefix}-input {
           padding: 0 1px;
-          // font: @color-picker-font;
 
           &:focus,
           &:focus-within,
@@ -432,23 +426,6 @@
       }
     }
 
-    &--remove {
-      position: relative;
-      // 不使用popconfirm 组件， 这里绝对定位到正上方
-      .@{prefix}-popup {
-        position: absolute;
-        inset: auto auto 0 0;
-        margin: 0;
-        bottom: 30px;
-        left: 10px; //待确认
-        transform: translateX(-50%);
-        cursor: default;
-      }
-      .@{prefix}-popconfirm__content {
-        width: 220px;
-      }
-    }
-
     &--items {
       width: 100%;
       list-style: none;
@@ -458,7 +435,6 @@
       max-height: @color-picker-swatch-rows-max-height;
       overflow-x: hidden;
       overflow-y: auto;
-      // margin: @color-picker-swatch-wrap-margin;
       padding: @color-picker-swatch-item-padding;
       position: relative;
       left: @color-picker-swatch-item-left-negative-padding;
@@ -594,7 +570,6 @@
 // 覆盖select-option 默认样式，使其更紧凑点
 .@{prefix}-color-picker__select-options {
   > .@{prefix}-popup__content {
-    // border-radius: @color-picker-border-radius;
     box-shadow: @shadow-1, @shadow-inset-top, @shadow-inset-right, @shadow-inset-bottom, @shadow-inset-left;
   }
 }
