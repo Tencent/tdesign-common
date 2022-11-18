@@ -25,9 +25,9 @@
 @switch-content-color-unchecked: @text-color-anti;
 
 // 尺寸
-@switch-height-l: 24px;
-@switch-height-default: 20px;
-@switch-height-s: 16px;
+@switch-height-l: @comp-size-xs;
+@switch-height-default: @comp-size-xxs;
+@switch-height-s: @comp-size-xxxs;
 
 @switch-min-width-l: 44px;
 @switch-min-width-default: 36px;
@@ -44,7 +44,7 @@
 
 // 间距
 @switch-content-margin-left-l: (@switch-min-width-l / 2 + 2px);
-@switch-content-margin-right-l: 8px;
+@switch-content-margin-right-l: @comp-paddingLR-s;
 
 @switch-content-margin-left-default: (@switch-min-width-default / 2 + 2px);
 @switch-content-margin-right-default: 6px;
@@ -55,4 +55,5 @@
 // 动画
 @switch-transition: all @anim-duration-base @anim-time-fn-ease-out;
 @switch-handle-transition: all @anim-duration-base @anim-time-fn-easing;
-@switch-content-transition: padding @anim-duration-base @anim-time-fn-easing, opacity @anim-duration-base linear;
+@switch-content-transition: padding @anim-duration-base @anim-time-fn-easing,
+  opacity @anim-duration-base linear;

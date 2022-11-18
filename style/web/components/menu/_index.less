@@ -30,7 +30,7 @@ a.@{prefix}-menu__item {
 
   &__inner {
     display: flex;
-    height: 64px;
+    height: @comp-size-xxxl;
 
     li + li {
       margin-left: @comp-margin-xs;
@@ -60,7 +60,7 @@ a.@{prefix}-menu__item {
       position: relative;
       display: flex;
       align-items: center;
-      height: 64px;
+      height: var(--td-comp-size-xxxl);
       line-height: 64px;
       text-align: right;
       margin-right: @comp-margin-s;
@@ -371,7 +371,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__logo:not(:empty) {
       width: 100%;
-      height: 64px;
+      height: var(--td-comp-size-xxxl);
       border-bottom: 1px solid @menu-border-color;
     }
 
