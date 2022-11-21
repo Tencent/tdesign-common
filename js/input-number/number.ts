@@ -55,7 +55,9 @@ export function formatToNumber(
 ): string | number {
   if (num === undefined || num === null || num === '') return num;
   if (num === '-') return 0;
-  if (num[num.length - 1] === '.') return num.slice(0, -1);
+  if (num[num.length - 1] === '.') {
+    return extra?.largeNumber ? num.slice(0, -1) : Number(num.slice(0, -1));
+  }
   const isLargeNumber = extra?.largeNumber && isString(num);
   let newNumber: string | number = num;
   if ((isString(num) && num.includes('e')) || isNumber(num)) {
