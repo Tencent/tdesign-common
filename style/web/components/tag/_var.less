@@ -23,14 +23,14 @@
 @tag-danger-color: @error-color;
 
 // light color
-@tag-default-color-light: @gray-color-1;
+@tag-default-color-light: @bg-color-secondarycontainer;
 @tag-primary-color-light: @brand-color-light;
-@tag-success-color-light: @success-color-1;
-@tag-warning-color-light: @warning-color-1;
-@tag-error-color-light: @error-color-1;
+@tag-success-color-light: @success-color-light;
+@tag-warning-color-light: @warning-color-light;
+@tag-error-color-light: @error-color-light;
 
 // border
-@tag-outline-default-border-color: @border-level-2-color;
+@tag-outline-default-border-color: @component-border;
 @tag-outline-primary-border-color: @tag-primary-color;
 @tag-outline-success-border-color: @tag-success-color;
 @tag-outline-warning-border-color: @tag-warning-color;
@@ -42,9 +42,9 @@
 @tag-large-font: @font-body-medium;
 
 // padding
-@tag-small-padding: 0px @spacer-s;
-@tag-medium-padding: 0px @spacer;
-@tag-large-padding: 0px 12px;
+@tag-small-padding: 0px @comp-paddingLR-xs;
+@tag-medium-padding: 0px @comp-paddingLR-s;
+@tag-large-padding: 0px @comp-paddingLR-m;
 
 // text color
 @tag-text-color: @text-color-anti;
@@ -58,19 +58,23 @@
 @tag-default-border-width: 1px;
 
 // height
-@tag-height-small: 22px;
-@tag-height-medium: 24px;
-@tag-height-large: 32px;
+@tag-height-small: @comp-size-xxs;
+@tag-height-medium: @comp-size-xs;
+@tag-height-large: @comp-size-m;
 
 // icon
-@tag-icon-size: 16px;
+@tag-icon-size: calc(@font-size-base + 2px);
 @tag-close-icon-color: @text-color-placeholder;
 @tag-close-icon-hover-color: @text-color-primary;
-@tag-close-icon-color--dark: @font-white-1;
-@tag-close-icon-hover-color--dark: @font-white-2;
+@tag-close-icon-color--dark: @font-white-2;
+@tag-close-icon-hover-color--dark: @font-white-1;
 
 // link
 @link-tag-hover-bg: @bg-color-component-hover;
 @link-tag-hover-color: @brand-color;
 @link-tag-active-bg: @bg-color-component-active;
 @link-tag-active-color: @brand-color-active;
+
+// margin
+@tag-icon-margin-right: @comp-margin-xs;
+@tag-close-icon-margin-right: @comp-margin-s;

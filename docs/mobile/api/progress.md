@@ -16,12 +16,18 @@ toc: false
 
 相比基础进度条更轻量，一般用于任务提示较短的场景
 
-{{ text }}
-
-### 颜色
-
-{{ color }}
+{{ noText }}
 
 ### 自定义样式
 
-{{ type }}
+{{ custom }}
+
+### 自定义线宽
+
+{{ strokeWidth }}
+
+### 状态
+
+{{ status }}
+
+

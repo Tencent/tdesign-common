@@ -9,16 +9,31 @@
 .@{prefix}-tag-input {
   .reset;
   .@{prefix}-tag {
-    margin-right: @spacer-s;
-    animation: t-fade-in .1s ease-in-out;
+    animation: t-fade-in @anim-duration-base ease-in-out;
+  }
+  .@{prefix}-tag + .@{prefix}-tag {
+    margin-left: @comp-margin-xs;
+  }
+  .@{prefix}-tag-input__drag_wrapper + .@{prefix}-tag-input__drag_wrapper {
+    margin-left: @comp-margin-xs;
   }
 
   .@{prefix}-input {
-    padding-left: @spacer-s;
     overflow: hidden;
+    min-height: @tag-input-height-default;
+    line-height: @tag-input-line-height-default;
+    padding: 0 @comp-paddingLR-xs;
+    height: fit-content;
 
     &.@{prefix}-size-s {
-      padding-left: @spacer-s * .5;
+      padding: @comp-paddingTB-xxs @comp-paddingLR-xxs;
+      min-height: @tag-input-height-s;
+      line-height: @tag-input-line-height-s;
+    }
+
+    &.@{prefix}-size-l {
+      min-height: @tag-input-height-l;
+      line-height: @tag-input-line-height-l;
     }
   }
 
@@ -29,13 +44,13 @@
     }
   }
 
-  .@{prefix}-tag-input__prefix:not(:empty),
-  .@{prefix}-input__prefix:not(:empty) {
-    margin-left: @spacer-s;
+  .@{prefix}-tag-input__prefix,
+  .@{prefix}-input__prefix:empty + input {
+    margin-left: @comp-margin-xs;
   }
 
   .@{prefix}-input--auto-width {
-    padding-right: @spacer-s;
+    padding-right: @comp-paddingLR-xs;
   }
 }
 
@@ -48,8 +63,7 @@
 
   .@{prefix}-input {
     display: block;
-    height: auto;
-    padding-right: @spacer-3;
+    padding-right: @comp-paddingLR-xl;
 
     &.@{prefix}-input--prefix > .@{prefix}-input__prefix {
       display: inline;
@@ -58,7 +72,7 @@
 
     .@{prefix}-input__suffix-icon {
       position: absolute;
-      right: @spacer;
+      right: @comp-margin-s;
       bottom: 0;
     }
   }
@@ -67,5 +81,5 @@
 .@{prefix}-tag-input__prefix {
   width: max-content;
   display: inline-block;
-  margin-right: @spacer;
+  margin-right: @comp-margin-s;
 }

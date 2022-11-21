@@ -18,7 +18,7 @@ spline: form
 | 文件 | 单文件 | 允许拖拽上传 | theme=file, draggable=true | 单文件/图片拖拽上传 |
 | 文件 | 批量文件 | 允许拖拽上传 | theme=file-flow, multiple=true, draggable=true | 批量上传文件 |
 | 图片 | 单图片 | 不允许拖拽上传 | theme=image, multiple=false | 基础图片上传 |
-| 图片 | 单图片 | 不允许拖拽上传 | theme=image, draggable=true | 单文件/图片拖拽上传 |
+| 图片 | 单图片 | 允许拖拽上传 | theme=image, draggable=true | 单文件/图片拖拽上传 |
 | 图片 | 批量图片 | 不允许拖拽上传 | theme=image, multiple=true | 基础图片上传 |
 | 图片 | 批量图片 | 允许拖拽上传 | theme=image-flow, multiple=true, draggable=true | 批量上传图片 |
 

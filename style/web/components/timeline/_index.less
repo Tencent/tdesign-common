@@ -77,6 +77,7 @@
           transform: translateX(-50%);
           padding-bottom: 8px;
           border-color: @timeline-default-color;
+          box-sizing: border-box;
 
           &--theme {
             &-dot {
@@ -88,9 +89,15 @@
       }
     }
 
+    &__label {
+      color: @timeline-label-font-color;
+      font-size: @timeline-label-font;
+    }
+
     &__content {
       flex: 1;
       padding-left: 16px;
+      font-size: @timeline-content-font;
     }
 
     &--last {

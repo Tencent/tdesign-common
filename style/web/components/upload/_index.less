@@ -136,7 +136,6 @@
     }
 
     &-item {
-      margin: @upload-card-item-margin;
       float: left;
       cursor: pointer;
       box-sizing: border-box;
@@ -166,10 +165,6 @@
 
       &.@{prefix}-is-background {
         .hover-transition(border-color);
-
-        &:hover {
-          border-color: @upload-card-item-bg-border-color-hover;
-        }
       }
     }
 
@@ -196,11 +191,12 @@
       background-color: @upload-card-container-bg-color;
       border: @upload-card-contariner-border;
       padding: @upload-card-content-padding;
+      border-radius: @upload-card-img-wrap-border-radius;
     }
 
     &-container {
-      width: (@upload-img-size - 2);
-      height: (@upload-img-size - 2);
+      width: @upload-img-size;
+      height: @upload-img-size;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -209,7 +205,13 @@
       border: @upload-card-contariner-border;
       box-sizing: border-box;
       position: relative;
+      border-radius: @upload-card-img-wrap-border-radius;
+      .hover-transition(border);
 
+      &:hover {
+        border-color: @upload-card-item-bg-border-color-hover;
+        .hover-transition(border-color);
+      }
       > .t-icon,
       .@{prefix}-loading {
         font-size: @upload-icon-size-large;
@@ -231,7 +233,7 @@
 
       .t-icon,
       .@{prefix}-loading {
-        font-size: @upload-icon-size-middle;
+        font-size: @upload-icon-size-large;
       }
     }
 
@@ -247,10 +249,10 @@
 
     &-mask {
       background-color: @upload-card-mask-bg-color;
-      color: @upload-card-mask-color;
-      transition: opacity .5s ease-in-out;
+      color: @upload-card-mask-text-color;
       will-change: transform;
       opacity: 0;
+      .hover-transition(opacity);
       .horizontal-vertical-center-with-flex();
       .fill-with-position-absolute();
     }
@@ -258,7 +260,7 @@
     &-mask-item {
       &-divider {
         margin: @upload-card-mask-divider-margin;
-        border-left: 1px @upload-card-mask-color solid;
+        border-left: 1px @upload-card-mask-text-color solid;
         height: @upload-card-mask-divider-height;
       }
 
@@ -359,6 +361,7 @@
   display: block;
   color: @upload-small-color;
   margin-top: @upload-tips-margin-top;
+  font: @font-body-small;
 
   &.@{prefix}-upload__tips-error {
     color: @upload-tips-error-color;
@@ -383,7 +386,7 @@
   display: flex;
   align-items: center;
   .@{prefix}-upload__flow-status .t-icon {
-    font: @upload-icon-size-mini;
+    font-size: @upload-icon-size-mini;
   }
 }
 
@@ -395,6 +398,7 @@
   &:hover {
     color: @upload-icon-color-hover;
     cursor: pointer;
+    .hover-transition(color);
   }
 }
 
@@ -438,10 +442,6 @@
 
   .@{prefix}-upload__trigger {
     margin-left: @upload-single-file-input-trigger-margin-left;
-
-    .@{prefix}-button {
-      margin-left: @upload-single-file-input-trigger-button-margin-left;
-    }
   }
 
   .@{prefix}-upload__single-progress {
@@ -470,6 +470,7 @@
   width: @upload-dragger-img-wrap-width;
   height: @upload-dragger-img-wrap-height;
   background-color: @upload-dragger-img-wrap-bg-color;
+  border-radius: @upload-dragger-img-wrap-border-radius;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -485,7 +486,7 @@
   &-img-wrap + &-progress-info {
     margin-left: @upload-dragger-img-wrap-margin-right;
     .dragger-inner-max-width(@upload-dragger-width,
-    @upload-dragger-padding, (@upload-dragger-img-wrap-width + @upload-dragger-img-wrap-margin-right));
+    @upload-dragger-padding, calc(@upload-dragger-img-wrap-width + @upload-dragger-img-wrap-margin-right));
   }
 }
 
@@ -502,7 +503,7 @@
 }
 
 .@{prefix}-upload__dragger-progress-cancel {
-  padding: @upload-dragger-progress-cancel-padding;
+  margin-right: @upload-dragger-progress-cancel-margin;
 
   &:hover {
     border-color: transparent;
@@ -611,7 +612,16 @@
     border: @upload-flow-card-area-border;
     padding: @upload-flow-card-area-padding;
     margin-top: @upload-flow-card-area-margin-top;
-    width: 100%;
+    .hover-transition(border);
+
+    &:hover {
+      border-color: @upload-card-item-bg-border-color-hover;
+      .hover-transition(border-color);
+    }
+
+    .@{prefix}-upload__card-item {
+      margin: @upload-card-item-margin;
+    }
   }
 }
 
@@ -619,11 +629,13 @@
 .@{prefix}-upload__single-input-clear {
   color: @upload-icon-color;
   cursor: pointer;
+  .hover-transition(color);
 }
 
 .@{prefix}-upload__icon-delete:hover,
 .@{prefix}-upload__single-input-clear:hover {
   color: @upload-icon-color-hover;
+  .hover-transition(color);
 }
 
 .@{prefix}-upload__single-input-clear {

@@ -30,22 +30,22 @@ a.@{prefix}-menu__item {
 
   &__inner {
     display: flex;
-    height: 64px;
+    height: @comp-size-xxxl;
 
     li + li {
-      margin-left: 4px;
+      margin-left: @comp-margin-xs;
     }
 
     .@{prefix}-menu {
       &:first-child {
-        margin-left: 24px;
+        margin-left: @comp-margin-xxl;
       }
     }
   }
 
   .@{prefix}-menu__logo:not(:empty) {
     height: 100%;
-    margin-right: 32px;
+    margin-right: @comp-margin-xxxl;
   }
 
   .@{prefix}-menu {
@@ -60,17 +60,17 @@ a.@{prefix}-menu__item {
       position: relative;
       display: flex;
       align-items: center;
-      height: 64px;
+      height: var(--td-comp-size-xxxl);
       line-height: 64px;
       text-align: right;
-      margin-right: 8px;
+      margin-right: @comp-margin-s;
       overflow: hidden;
     }
 
     &-icon {
       width: 40px;
       height: 40px;
-      padding: 8px;
+      padding: @comp-paddingTB-s @comp-paddingLR-s;
       line-height: 40px;
     }
   }
@@ -150,8 +150,8 @@ a.@{prefix}-menu__item {
       align-items: center;
       justify-content: flex-start;
       white-space: nowrap;
-      padding-left: 16px;
-      padding-right: 16px;
+      padding-left: @comp-paddingLR-l;
+      padding-right: @comp-paddingLR-l;
       min-width: 100%;
       margin-left: 0;
       color: @head-menu-popup-item-color;
@@ -159,17 +159,17 @@ a.@{prefix}-menu__item {
     }
 
     li + li {
-      margin-top: 4px;
+      margin-top: @comp-margin-xs;
       margin-left: 0;
     }
   }
 
   .@{prefix}-submenu-icon { // to remove
-    margin-left: 8px;
+    margin-left: @comp-margin-s;
   }
 
   .@{prefix}-fake-arrow {
-    margin-left: 8px;
+    margin-left: @comp-margin-s;
   }
 
   // 多层情况
@@ -183,7 +183,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__item {
       text-align: left;
-      padding: 0 16px;
+      padding: 0 @comp-paddingLR-l;
       justify-content: space-between;
     }
 
@@ -375,12 +375,12 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__logo:not(:empty) {
       width: 100%;
-      height: 64px;
+      height: var(--td-comp-size-xxxl);
       border-bottom: 1px solid @menu-border-color;
     }
 
     .@{prefix}-menu {
-      padding: 16px 8px;
+      padding: @comp-paddingTB-l @comp-paddingLR-s;
       position: relative;
       // overflow: hidden auto;
       flex: 1;
@@ -404,7 +404,7 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-submenu {
-    margin-bottom: 4px;
+    margin-bottom: @comp-margin-xs;
     position: relative;
   }
 
@@ -412,7 +412,7 @@ a.@{prefix}-menu__item {
     &:not(:empty) {
       width: 100%;
       position: relative;
-      padding: 8px 16px;
+      padding: @comp-paddingTB-s @comp-paddingLR-l;
       top: 0;
       left: 0;
       text-align: left;
@@ -423,7 +423,7 @@ a.@{prefix}-menu__item {
     &-icon {
       width: 32px;
       height: 32px;
-      padding: 8px;
+      padding: @comp-paddingTB-s @comp-paddingLR-s;
       cursor: pointer;
       color: @menu-operations-color;
       box-sizing: border-box;
@@ -433,7 +433,7 @@ a.@{prefix}-menu__item {
   .@{prefix}-menu__item {
 
     &.@{prefix}-is-opened {
-      margin: 4px 0;
+      margin: @comp-margin-xs 0;
       color: @menu-light-active-color;
       background-color: unset;
 
@@ -481,7 +481,7 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__item {
     position: relative;
-    margin: 4px 0;
+    margin: @comp-margin-xs 0;
     padding: 0 10px 0 16px;
     height: @default-menu-item-height;
     line-height: @default-menu-item-height;
@@ -523,7 +523,7 @@ a.@{prefix}-menu__item {
       background: @menu-light-active-bg;
 
       & + .@{prefix}-menu__item {
-        margin-top: 4px;
+        margin-top: @comp-margin-xs;
       }
     }
   }
@@ -692,7 +692,7 @@ a.@{prefix}-menu__item {
 
   .t-icon + &__content,
   .t-icon + &__item-link {
-    margin-left: 8px;
+    margin-left: @comp-margin-s;
   }
 
   &--dark {
@@ -789,14 +789,14 @@ a.@{prefix}-menu__item {
     .list-style-none();
 
     &-wrapper {
-      padding: 8px;
+      padding: @comp-paddingTB-s @comp-paddingLR-s;
       height: 100%;
       list-style: none;
       margin: 0;
     }
 
     .@{prefix}-fake-arrow {
-      margin-left: 8px;
+      margin-left: @comp-margin-s;
     }
 
     &.@{prefix}-is-vertical {
@@ -808,16 +808,16 @@ a.@{prefix}-menu__item {
       }
 
       .@{prefix}-menu__item {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: @comp-paddingLR-l;
+        padding-right: @comp-paddingLR-l;
         margin: 4px 0;
       }
     }
 
     &.@{prefix}-is-horizontal {
       .@{prefix}-menu__item {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: @comp-paddingLR-l;
+        padding-right: @comp-paddingLR-l;
         white-space: nowrap;
       }
 
@@ -896,7 +896,7 @@ a.@{prefix}-menu__item {
 
   &__operations {
     &-icon {
-      margin-right: 16px;
+      margin-right: @comp-margin-l;
       border-radius: @border-radius-default;
       color: @menu-item-color--light;
       transition: background-color @anim-duration-moderate @anim-time-fn-easing;

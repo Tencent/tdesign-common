@@ -7,6 +7,7 @@
     justify-content: center;
     border: 1px solid @input-border-color-default;
     padding: @input-adornment-item-padding;
+    word-break: keep-all;
 
     & when (@position = append) {
       border-left: 0;
@@ -24,7 +25,7 @@
 
     .@{prefix}-select__wrap {
       width: auto;
-      margin: 0 -12px;
+      margin: 0 calc(0px - @comp-margin-m);
     }
 
     .@{prefix}-input,

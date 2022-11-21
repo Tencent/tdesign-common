@@ -35,7 +35,7 @@ spline: message
 浮层样式可以使用 overlayClassName、 overlayStyle、 overlayInnerStyle 控制。
 
 - `overlayClassName` 用于定义浮层样式类名。
-- `overlayStyle` 用于定义浮层样式，比如浮层宽度。浮层宽度默认根据内容宽度呈现，可自由设置宽度和最大宽度。值为类型为函数时，可以实现浮层宽度和触发元素同宽。
+- `overlayStyle` 用于定义浮层样式，比如浮层宽度。浮层宽度默认根据内容宽度呈现，可自由设置宽度和最大宽度。
 - `overlayInnerStyle` 用于定义浮层内容部分样式，比如内容最大高度以及是否出滚动条。值为类型为函数时，可以实现浮层内容宽度和触发元素同宽。
 
 {{ style }}
