@@ -21,9 +21,9 @@ export function parseToDayjs(
       dateText = dayjs(dateText).format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.]/)[0];
-    const weekStr = dateText.split(/[-/.]/)[1];
-    const weekFormatStr = format.split(/[-/.]/)[1];
+    const yearStr = dateText.split(/[-/.\s]/)[0];
+    const weekStr = dateText.split(/[-/.\s]/)[1];
+    const weekFormatStr = format.split(/[-/.\s]/)[1];
     const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
     for (let i = 0; i <= 52; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
@@ -41,12 +41,12 @@ export function parseToDayjs(
       dateText = dayjs(dateText).format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.]/)[0];
-    const quarterStr = dateText.split(/[-/.]/)[1];
-    const quarterFormatStr = format.split(/[-/.]/)[1];
-    const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
-    for (let i = 0; i <= 52; i += 1) {
-      const nextQuarter = firstWeek.add(i, 'quarter');
+    const yearStr = dateText.split(/[-/.\s]/)[0];
+    const quarterStr = dateText.split(/[-/.\s]/)[1];
+    const quarterFormatStr = format.split(/[-/.\s]/)[1];
+    const firstQuarter = dayjs(yearStr, 'YYYY').startOf('year');
+    for (let i = 0; i < 4; i += 1) {
+      const nextQuarter = firstQuarter.add(i, 'quarter');
       if (nextQuarter.format(quarterFormatStr) === quarterStr) {
         return nextQuarter;
       }
