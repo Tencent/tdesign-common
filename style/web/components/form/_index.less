@@ -107,10 +107,10 @@
 
   &__status {
     display: flex;
-    margin-left: @form-status-margin-left;
+    margin: @form-status-margin;
 
     > .t-icon {
-      font-size: 20px;
+      font-size: @form-status-icon-size;
     }
 
     &-without-icon {
@@ -123,7 +123,7 @@
     }
 
     button + button {
-      margin-left: @form-status-margin-left;
+      margin-left: @form-status-button-margin;
     }
   }
 }

@@ -128,6 +128,12 @@
   .@{prefix}-input__suffix {
     > .t-icon {
       color: @input-inner-suffix-icon-color;
+      transition: all @anim-duration-base linear;
+
+      &:hover {
+        color: @input-inner-suffix-icon-color-hover;
+        transition: all @anim-duration-base linear;
+      }
     }
 
     &:not(:empty) {

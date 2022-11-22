@@ -176,15 +176,27 @@
     flex-shrink: 0;
     margin-left: @pagination-jump-margin;
     font-size: @pagination-font-default;
-    gap: @spacer-s;
+    gap: @comp-margin-s;
   }
 
   .@{prefix}-input-number {
     width: @pagination-input-width;
+
+    .@{prefix}-input__inner {
+      text-align: center;
+    }
   }
 
   // 迷你尺寸
   &.@{prefix}-size-s {
+
+    .@{prefix}-input-adornment__append {
+      font: @pagination-font-s;
+    }
+    .@{prefix}-input-number {
+      width: 56px;
+    }
+
     .@{prefix}-pagination {
       &__total {
         font: @pagination-font-s;
