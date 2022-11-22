@@ -110,9 +110,14 @@
     &--draggable {
       cursor: pointer;
 
-      &::before {
+      &:hover {
+        background-color: @tree-node-bg-hover-color;
+        background-clip: content-box;
+      }
+
+      &::after {
         position: absolute;
-        top: -@tree-node-drag-tip-height;
+        top: -(@tree-node-drag-tip-height / 2);
         right: 0;
         left: 0;
         display: block;
@@ -122,21 +127,16 @@
         padding: inherit;
         background-clip: content-box;
       }
-
-      &:hover {
-        background-color: @tree-node-bg-hover-color;
-        background-clip: content-box;
-      }
     }
 
     &--tip {
-      &-top::before {
+      &-top::after {
         background-color: @tree-node-drag-tip-bg;
       }
 
-      &-bottom::before {
+      &-bottom::after {
         top: unset;
-        bottom: -@tree-node-drag-tip-height;
+        bottom: -(@tree-node-drag-tip-height / 2);
         background-color: @tree-node-drag-tip-bg;
       }
 

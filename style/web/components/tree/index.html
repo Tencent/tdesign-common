@@ -384,110 +384,59 @@
         </div>
       </div>
 
-      <!-- 嵌套布局 -->
+      <!-- 可拖动 -->
       <div class="tdesign-demo-item">
-        <h2 class="tdesign-demo-item__title">嵌套布局</h2>
+        <h2 class="tdesign-demo-item__title">可拖动</h2>
+
+        <!-- 灰底区域 可多个 -->
         <div class="tdesign-demo-item__body">
           <!-- 内容区 Start-->
-          <div class="t-tree t-tree--nested">
-            <!-- level 0 -->
-            <div class="t-tree__branch">
-              <div class="t-tree__item" style="--level: 0;">
-                <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
-                <span class="t-tree__label">1</span>
-              </div>
-              <div class="t-tree__children t-tree__children--hidden">
-                <!-- level 1 -->
-                <div class="t-tree__branch">
-                  <div class="t-tree__item" style="--level: 1;">
-                    <span class="t-tree__line t-tree__line--first t-tree__line--leaf" style="--level: 1;"></span>
-                    <span class="t-tree__icon"></span>
-                    <span class="t-tree__label">1.1</span>
-                  </div>
-                </div>
-              </div>
+          <div class="t-tree t-tree--draggable">
+            <!-- 第0层 -->
+            <div class="t-tree__item t-tree__item--draggable t-tree__item--dragging" style="--level: 0;">
+              <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
+              <span class="t-tree__label">1 dragging</span>
             </div>
-            <!-- level 0 -->
-            <div class="t-tree__branch">
-              <div class="t-tree__item t-tree__item--open" style="--level: 0;">
-                <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
-                <span class="t-tree__label">2</span>
-              </div>
-              <div class="t-tree__children">
-                <!-- level 1 -->
-                <div class="t-tree__branch">
-                  <div class="t-tree__item t-tree__item--open" style="--level: 1;">
-                    <span class="t-tree__line t-tree__line--first" style="--level: 1;"></span>
-                    <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
-                    <span class="t-tree__label">2.1</span>
-                  </div>
-                  <div class="t-tree__children">
-                    <!-- level 2 -->
-                    <div class="t-tree__branch">
-                      <div class="t-tree__item t-tree__item--open" style="--level: 2;">
-                        <span class="t-tree__line t-tree__line--first" style="--level: 2; box-shadow: calc(-1 * var(--space)) 0 var(--color);"></span>
-                        <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
-                        <span class="t-tree__label">2.1.1</span>
-                      </div>
-                      <div class="t-tree__children">
-                        <!-- level 3 -->
-                        <div class="t-tree__branch">
-                          <div class="t-tree__item t-tree__item--open" style="--level: 3;">
-                            <span class="t-tree__line t-tree__line--first" style="--level: 3; box-shadow: calc(-1 * var(--space)) 0 var(--color),calc(-2 * var(--space)) 0 var(--color);"></span>
-                            <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
-                            <span class="t-tree__label">2.1.1.1</span>
-                          </div>
-                          <div class="t-tree__children">
-                            <!-- level 4 -->
-                            <div class="t-tree__branch">
-                              <div class="t-tree__item" style="--level: 4;">
-                                <span class="t-tree__line t-tree__line--leaf t-tree__line--first" style="--level: 4; box-shadow: calc(-2 * var(--space)) 0 var(--color),calc(-3 * var(--space)) 0 var(--color);"></span>
-                                <span class="t-tree__icon"></span>
-                                <span class="t-tree__label">2.1.1.1.1</span>
-                              </div>
-                            </div>
-                            <!-- level 4 -->
-                            <div class="t-tree__branch">
-                              <div class="t-tree__item" style="--level: 4;">
-                                <span class="t-tree__line t-tree__line--leaf" style="--level: 4; box-shadow: calc(-2 * var(--space)) 0 var(--color),calc(-3 * var(--space)) 0 var(--color);"></span>
-                                <span class="t-tree__icon"></span>
-                                <span class="t-tree__label">2.1.1.1.2</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- level 3 -->
-                        <div class="t-tree__branch">
-                          <div class="t-tree__item t-tree__item--open" style="--level: 2;">
-                            <span class="t-tree__line t-tree__line--leaf" style="--level: 2; box-shadow: calc(-1 * var(--space)) 0 var(--color);"></span>
-                            <span class="t-tree__icon"></span>
-                            <span class="t-tree__label">2.1.2</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- level 1 -->
-                <div class="t-tree__branch">
-                  <div class="t-tree__item" style="--level: 1;">
-                    <span class="t-tree__line t-tree__line--leaf" style="--level: 1;"></span>
-                    <span class="t-tree__icon"></span>
-                    <span class="t-tree__label">2.2</span>
-                  </div>
-                </div>
-              </div>
+            <!-- 第0层 -->
+            <div class="t-tree__item t-tree__item--open t-tree__item--draggable t-tree__item--tip-top" style="--level: 0;">
+              <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
+              <span class="t-tree__label">2 tip-top</span>
             </div>
-            <!-- level 0 -->
-            <div class="t-tree__branch">
-              <div class="t-tree__item" style="--level: 0;">
-                <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
-                <span class="t-tree__label">4</span>
-              </div>
+            <!-- 第1层 -->
+            <div class="t-tree__item t-tree__item--open t-tree__item--draggable t-tree__item--tip-bottom" style="--level: 1;">
+              <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
+              <span class="t-tree__label">2.1 tip-bottom</span>
+            </div>
+            <!-- 第2层 -->
+            <div class="t-tree__item t-tree__item--open t-tree__item--draggable" style="--level: 2;">
+              <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
+              <span class="t-tree__label">2.1.1 节点二点一点一</span>
+            </div>
+            <!-- 第3层 -->
+            <div class="t-tree__item t-tree__item--draggable" style="--level: 3;">
+              <span class="t-tree__icon"></span>
+              <span class="t-tree__label">2.1.1.1 节点二点一点一点一</span>
+            </div>
+            <!-- 第3层 -->
+            <div class="t-tree__item t-tree__item--draggable" style="--level: 3;">
+              <span class="t-tree__icon"></span>
+              <span class="t-tree__label">2.1.1.2 节点二点一点一点二 这是多文字的展示 这是多文字的展示 这是多文字的展示 这是多文字的展示 这是多文字的展示</span>
+            </div>
+            <!-- 第2层 -->
+            <div class="t-tree__item t-tree__item--draggable" style="--level: 2;">
+              <span class="t-tree__icon">
+                <svg class="t-icon t-icon-loading t-icon-loading" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M1.5,8 C1.5,4.410375 4.410375,1.5 8,1.5 C11.589625,1.5 14.5,4.410375 14.5,8 L12.875,8 L12.875,8 C12.875,5.30761184 10.6923882,3.125 8,3.125 C5.30761184,3.125 3.125,5.30761184 3.125,8 C3.125,10.6923882 5.30761184,12.875 8,12.875 L8,14.5 C4.410375,14.5 1.5,11.589625 1.5,8 Z"/></svg>
+              </span>
+              <span class="t-tree__label">2.1.2 节点二点一点二</span>
+            </div>
+            <!-- 第0层 -->
+            <div class="t-tree__item t-tree__item--draggable t-tree__item--tip-highlight" style="--level: 0;">
+              <span class="t-tree__icon t-tree__icon--default"><svg fill="none" viewBox="0 0 16 16" width="1em" height="1em" class="t-icon t-icon-caret-right-small"><path fill="currentColor" d="M6 5v6l4.5-3L6 5z" fill-opacity="0.9"></path></svg></span>
+              <span class="t-tree__label">3 tip-highlight</span>
             </div>
           </div>
           <!-- 内容区 End-->
-        </ul>
+        </div>
       </div>
     </div>
   </body>
