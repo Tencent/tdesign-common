@@ -39,7 +39,7 @@
 @textarea-tips-font: @font-body-small;
 
 // 间距
-@textarea-padding: 5px @comp-paddingLR-s;
+@textarea-padding: calc(calc(@comp-size-m - @text-line-height-base) / 2) @comp-paddingLR-s;
 @textarea-limit-position-right: calc(@comp-paddingLR-s * 2);
 @textarea-limit-position-bottom: @comp-paddingTB-s;
 
