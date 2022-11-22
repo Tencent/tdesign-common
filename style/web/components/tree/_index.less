@@ -43,13 +43,6 @@
     display: block;
   }
 
-  &__children {
-    // 用于多行 label 计算高度
-    --hscale: 1;
-
-    will-change: opacity, max-height;
-  }
-
   &__item {
     // 用于树结构缩进计算
     --level: 0;
@@ -302,36 +295,10 @@
   &__item--hidden {
     display: none;
   }
-
-  &__children--hidden {
-    display: none;
-  }
 }
 
 // 节点收缩隐藏动画
 .@{prefix}-tree--transition {
-  // max-height 用于高度缩放动画
-  // 用户使用时可以覆盖这个 max-height 来解决节点高度变更问题
-  .@{prefix}-tree__item--visible,
-  .@{prefix}-tree__children--visible {
-    display: flex;
-    max-height: @tree-node-item-origin-height;
-    opacity: 1;
-    transition: opacity @tree-node-transition-time linear @tree-node-transition-time,
-      max-height @tree-node-transition-time linear 0s;
-  }
-
-  // 节点隐藏动画
-  .@{prefix}-tree__item--hidden,
-  .@{prefix}-tree__children--hidden {
-    display: flex;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity @tree-node-transition-time linear 0s,
-      max-height @tree-node-transition-time linear @tree-node-transition-time;
-  }
-
   // 节点插入动画
   .@{prefix}-tree__item--enter-active {
     animation: t-tree-toggle @tree-node-animation-time linear;
