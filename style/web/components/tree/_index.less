@@ -46,8 +46,12 @@
   &__item {
     // 用于树结构缩进计算
     --level: 0;
+
     // 用于多行 label 计算高度
-    --hscale: 1;
+    // 如果使用了多行 label 或者 label 内容高于 34px
+    // 业务方可以增大这个值来让高度动画完全伸展
+    // 值预期为 Math.max(实际最大高度 / 34, 1)
+    --hscale: 2;
 
     will-change: opacity, max-height;
     position: relative;
@@ -317,6 +321,9 @@
     display: flex;
     max-height: 0;
     opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
     animation: none;
     transition: opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
