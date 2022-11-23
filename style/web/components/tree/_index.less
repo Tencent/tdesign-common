@@ -209,6 +209,7 @@
   }
 
   // svg 动画与 icon 背景进行隔离
+  // :after 仅用于增大点击范围
   &__icon::after {
     content: "";
     display: block;
@@ -222,12 +223,14 @@
   }
 
   // 仅在有图标时呈现背景
-  &__icon:not(:empty):hover::after {
+  // 注意这里背景样式不要加给 ::after
+  // ::after 仅用于增大点击范围
+  &__icon:not(:empty):hover {
     background-color: @tree-node-bg-hover-color;
     transition: @anim-duration-base linear;
   }
 
-  // 没有图标是不呈现指针
+  // 没有图标时不呈现指针
   &__icon:empty {
     cursor: initial;
   }
