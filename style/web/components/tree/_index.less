@@ -213,10 +213,10 @@
     content: "";
     display: block;
     position: absolute;
-    left: 0;
-    top: 0;
-    width: @tree-node-icon-svg-size;
-    height: @tree-node-icon-svg-size;
+    left: -2px;
+    top: -2px;
+    width: calc(@tree-node-icon-size + 4px);
+    height: calc(@tree-node-icon-size + 4px);
     border-radius: @border-radius-default;
     transition: @anim-duration-base linear;
   }
@@ -299,6 +299,26 @@
 
 // 节点收缩隐藏动画
 .@{prefix}-tree--transition {
+  // 节点展示动画
+  .@{prefix}-tree__item--visible {
+    display: flex;
+    max-height: @tree-node-item-origin-height;
+    opacity: 1;
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
+      max-height @tree-node-transition-time linear 0s;
+  }
+
+  // 节点隐藏动画
+  .@{prefix}-tree__item--hidden {
+    display: flex;
+    max-height: 0;
+    opacity: 0;
+    animation: none;
+    transition: opacity @tree-node-transition-time linear 0s,
+      max-height @tree-node-transition-time linear @tree-node-transition-time;
+  }
+
   // 节点插入动画
   .@{prefix}-tree__item--enter-active {
     animation: t-tree-toggle @tree-node-animation-time linear;
