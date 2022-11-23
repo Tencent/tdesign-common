@@ -48,11 +48,15 @@ a.@{prefix}-menu__item {
     margin-right: @comp-margin-xxxl;
   }
 
-  .@{prefix}-menu {
+  .@{prefix}-menu__container {
     flex: 1;
     display: flex;
     align-items: center;
-    // overflow: auto hidden;
+    overflow: hidden;
+  }
+
+  .@{prefix}-menu {
+    display: flex;
   }
 
   .@{prefix}-menu__operations {
