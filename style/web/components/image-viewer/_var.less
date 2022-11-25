@@ -13,6 +13,27 @@
 
 @import "../../_variables.less";
 
-@image-viewer__icon-color--disabled: rgba(255, 255, 255, 22%);
-@image-viewer__image--background-color__error: #E7E7E7;
+@image-viewer__icon-color--disabled: @text-color-disabled;
+@image-viewer__image--background-color__error: @bg-color-component-disabled;
 @image-viewer__image-text--error: #000000;
+
+@image-viewer-error-font: @font-body-medium;
+
+@image-viewer-modal-padding: @comp-paddingTB-xs @comp-paddingLR-s;
+@image-viewer-modal-header-pre-bt-padding: @comp-paddingTB-xxs @comp-paddingLR-xxs;
+@image-viewer-modal-header-padding-bottom: @comp-margin-s;
+@image-viewer-modal-header-size: @comp-size-xxxl;
+@image-viewer-modal-header-image-box-size: @comp-size-xl;
+@image-viewer-modal-header-image-box-margin: @comp-margin-l @comp-margin-xs @comp-margin-s;
+@image-viewer-modal-button-size: @comp-size-xl;
+@image-viewer-utils-content-padding: 0 @comp-paddingLR-xs;
+@image-viewer-utils-modal-icon-margin: 0 @comp-margin-xs;
+@image-viewer-utils-modal-icon-size: @comp-size-m;
+@image-viewer-utils-modal-utils-scale-width: @comp-size-xl;
+
+@image-viewer-header-hide-padding: 0 0 12px 0;
+@image-viewer-header-padding: 12px 0;
+@image-viewer-header-box-height: 40px;
+@image-viewer-header-box-width: calc(40px / 9 * 16);
+@image-viewer-header-box-width-margin-left: calc(40px / 9 * 16 * 3 + 4px * 3);
+@image-viewer-header-all-box-width: calc(40px / 9 * 16 * 7 + 4px * 6);

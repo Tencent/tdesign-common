@@ -391,18 +391,18 @@ spline: explain
       <p class="name">Tag 标签</p>
     </a>
   </div>
+   <div class="image-wrapper">
+    <a class="item" href="./components/timeline">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-timeline.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-timeline-dark.png" />
+      <p class="name">Timeline 时间轴</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/tooltip">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tooltip.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tooltip-dark.png" />
       <p class="name">Tooltip 文字提示</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
-    <a class="item" href="./components/timeline">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-timeline.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-timeline-dark.png" />
-      <p class="name">Timeline 时间轴</p>
     </a>
   </div>
   <div class="image-wrapper">

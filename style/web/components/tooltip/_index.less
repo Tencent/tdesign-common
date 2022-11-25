@@ -23,6 +23,23 @@
     .@{prefix}-popup__content {
       color: @tooltip-text-color;
       background: @tooltip-bg;
+      box-shadow: inset 0 .5px 0 #5e5e5e, inset .5px 0 0 #5e5e5e, inset 0 -.5px 0 #5e5e5e, inset -.5px 0 0 #5e5e5e;
+    }
+
+    &[data-popper-placement^="left"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset -.5px 0 0 #5e5e5e, inset 0 .5px 0 #5e5e5e;
+    }
+
+    &[data-popper-placement^="right"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset .5px 0 0 #5e5e5e, inset 0 -.5px 0 #5e5e5e;
+    }
+
+    &[data-popper-placement^="top"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset 0 -.5px 0 #5e5e5e, inset -.5px 0 0 #5e5e5e;
+    }
+
+    &[data-popper-placement^="bottom"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset .5px 0 0 #5e5e5e, inset 0 .5px 0 #5e5e5e;
     }
   }
 
@@ -81,5 +98,5 @@
 }
 
 .@{prefix}-popup[data-popper-placement^="right"].@{prefix}-tooltip .@{prefix}-popup__arrow {
-  left: -@tooltip-arrow-position;
+  left: calc(0px - @tooltip-arrow-position);
 }

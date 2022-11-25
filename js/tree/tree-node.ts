@@ -15,6 +15,7 @@ import {
   createNodeModel,
   updateNodeModel,
 } from './tree-node-model';
+import log from '../log';
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -141,7 +142,12 @@ export class TreeNode {
     this.set(spec);
     this.label = spec[propLabel] || '';
     this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
-    this.tree.nodeMap.set(this.value, this);
+
+    const { nodeMap } = tree;
+    if (nodeMap.get(this.value)) {
+      log.warn('Tree', `Dulplicate value: ${this.value}`);
+    }
+    nodeMap.set(this.value, this);
 
     if (parent && parent instanceof TreeNode) {
       this.parent = parent;

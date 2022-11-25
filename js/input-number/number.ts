@@ -55,7 +55,9 @@ export function formatToNumber(
 ): string | number {
   if (num === undefined || num === null || num === '') return num;
   if (num === '-') return 0;
-  if (num[num.length - 1] === '.') return num.slice(0, -1);
+  if (num[num.length - 1] === '.') {
+    return extra?.largeNumber ? num.slice(0, -1) : Number(num.slice(0, -1));
+  }
   const isLargeNumber = extra?.largeNumber && isString(num);
   let newNumber: string | number = num;
   if ((isString(num) && num.includes('e')) || isNumber(num)) {
@@ -175,7 +177,7 @@ export function getStepValue(p: {
   lastValue?: NumberType;
   largeNumber?: boolean;
 }) {
-  const { op, step, lastValue = 0, max, min, largeNumber } = p;
+  const { op, step, lastValue, max, min, largeNumber } = p;
   if (step <= 0) {
     log.error('InputNumber', 'step must be larger than 0.');
     return lastValue;
