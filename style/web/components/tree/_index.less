@@ -43,24 +43,22 @@
     display: block;
   }
 
-  &__children {
-    // 用于多行 label 计算高度
-    --hscale: 1;
-
-    will-change: opacity, max-height;
-  }
-
   &__item {
     // 用于树结构缩进计算
     --level: 0;
+
     // 用于多行 label 计算高度
-    --hscale: 1;
+    // 如果使用了多行 label 或者 label 内容高于 34px
+    // 业务方可以增大这个值来让高度动画完全伸展
+    // 值预期为 Math.max(实际最大高度 / 34, 1)
+    --hscale: 2;
 
     will-change: opacity, max-height;
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    padding: @tree-node-item-padding;
+    align-items: center;
+    padding: 0 0 0 @tree-node-item-padding-left;
     cursor: default;
     transform: translateZ(0); // 开启硬件加速
     backface-visibility: hidden; // 防止Chrome、Safari中，使用 transforms/animations，可能造成的页面闪烁
@@ -109,9 +107,14 @@
     &--draggable {
       cursor: pointer;
 
-      &::before {
+      &:hover {
+        background-color: @tree-node-bg-hover-color;
+        background-clip: content-box;
+      }
+
+      &::after {
         position: absolute;
-        top: -@tree-node-drag-tip-height;
+        top: -(@tree-node-drag-tip-height / 2);
         right: 0;
         left: 0;
         display: block;
@@ -121,21 +124,16 @@
         padding: inherit;
         background-clip: content-box;
       }
-
-      &:hover {
-        background-color: @tree-node-bg-hover-color;
-        background-clip: content-box;
-      }
     }
 
     &--tip {
-      &-top::before {
+      &-top::after {
         background-color: @tree-node-drag-tip-bg;
       }
 
-      &-bottom::before {
+      &-bottom::after {
         top: unset;
-        bottom: -@tree-node-drag-tip-height;
+        bottom: -(@tree-node-drag-tip-height / 2);
         background-color: @tree-node-drag-tip-bg;
       }
 
@@ -144,6 +142,16 @@
         background-clip: content-box;
       }
     }
+  }
+
+  // 用于撑开节点高度
+  // 比起使用 padding , 更有利于动画展现
+  &__item::before {
+    content: "";
+    display: block;
+    width: 0;
+    flex: 0 0 auto;
+    height: @tree-node-item-height;
   }
 
   &--block-node &__label {
@@ -205,24 +213,28 @@
   }
 
   // svg 动画与 icon 背景进行隔离
+  // :after 仅用于增大点击范围
   &__icon::after {
     content: "";
     display: block;
     position: absolute;
-    left: calc((@tree-node-icon-size - @tree-node-icon-svg-size) / 2);
-    width: @tree-node-icon-svg-size;
-    height: @tree-node-icon-svg-size;
+    left: -2px;
+    top: -2px;
+    width: calc(@tree-node-icon-size + 4px);
+    height: calc(@tree-node-icon-size + 4px);
     border-radius: @border-radius-default;
     transition: @anim-duration-base linear;
   }
 
   // 仅在有图标时呈现背景
-  &__icon:not(:empty):hover::after {
+  // 注意这里背景样式不要加给 ::after
+  // ::after 仅用于增大点击范围
+  &__icon:not(:empty):hover {
     background-color: @tree-node-bg-hover-color;
     transition: @anim-duration-base linear;
   }
 
-  // 没有图标是不呈现指针
+  // 没有图标时不呈现指针
   &__icon:empty {
     cursor: initial;
   }
@@ -290,33 +302,31 @@
   &__item--hidden {
     display: none;
   }
-
-  &__children--hidden {
-    display: none;
-  }
 }
 
+// 节点收缩隐藏动画
 .@{prefix}-tree--transition {
+  // 节点展示动画
   .@{prefix}-tree__item--visible {
+    display: flex;
+    max-height: @tree-node-item-origin-height;
     opacity: 1;
+    transition: opacity @tree-node-transition-time linear
+      @tree-node-transition-time,
+      max-height @tree-node-transition-time linear 0s;
   }
 
+  // 节点隐藏动画
   .@{prefix}-tree__item--hidden {
     display: flex;
-    opacity: 0;
     max-height: 0;
-    overflow: hidden;
-  }
-
-  .@{prefix}-tree__children--visible {
-    opacity: 1;
-  }
-
-  .@{prefix}-tree__children--hidden {
-    display: block;
     opacity: 0;
-    max-height: 0;
     overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    animation: none;
+    transition: opacity @tree-node-transition-time linear 0s,
+      max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 
   // 节点插入动画
@@ -327,34 +337,6 @@
   // 节点移除动画
   .@{prefix}-tree__item--leave-active {
     animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
-  }
-
-  // 节点展示动画
-  .@{prefix}-tree__item--visible {
-    transition: opacity @tree-node-transition-time linear
-      @tree-node-transition-time,
-      max-height @tree-node-transition-time linear 0s;
-  }
-
-  // 节点隐藏动画
-  .@{prefix}-tree__item--hidden {
-    animation: none;
-    transition: opacity @tree-node-transition-time linear 0s,
-      max-height @tree-node-transition-time linear @tree-node-transition-time;
-  }
-
-  // 子节点展示动画
-  .@{prefix}-tree__children--visible {
-    transition: opacity @tree-node-transition-time linear
-      @tree-node-transition-time,
-      max-height @tree-node-transition-time linear 0s;
-  }
-
-  // 子节点隐藏动画
-  .@{prefix}-tree__children--hidden {
-    animation: none;
-    transition: opacity @tree-node-transition-time linear 0s,
-      max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 }
 
@@ -372,15 +354,5 @@
   100% {
     opacity: 1;
     max-height: @tree-node-item-origin-height;
-  }
-}
-
-.@{prefix}-tree-select {
-  &.@{prefix}-single-suffix {
-    padding-right: 20px;
-  }
-
-  &.@{prefix}-tag-prefix {
-    padding-left: 4px;
   }
 }

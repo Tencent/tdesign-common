@@ -6,7 +6,7 @@ module.exports = {
     mocha: true,
     jest: true,
   },
-  extends: ['eslint-config-airbnb-base'],
+  extends: ['airbnb-base'],
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',
