@@ -195,9 +195,18 @@ spline: data
 
 #### 单选
 
+- `selectedRowKeys` 表示当前选中行的唯一标识数组，支持非受控属性 `defaultSelectedRowKeys`
+- `onSelectChange` 会在选中行发生变化时触发
+- 设置 `columns: [{ colKey: 'row-select', type: 'single' }]` 可以将任意列定义为行选中操作列。
+
 {{ select-single }}
 
 #### 多选
+
+- `selectedRowKeys` 表示当前选中行的唯一标识数组，支持非受控属性 `defaultSelectedRowKeys`
+- `onSelectChange` 会在选中行发生变化时触发
+- 设置 `columns: [{ colKey: 'row-select', type: 'multiple' }]` 可以将任意列定义为行选中操作列。
+- 分页场景下的行选中，默认允许跨分页选中，即翻页时，上一页选中结果依然保存。如果希望每一页单独控制选中，互不影响，可设置 `reserveSelectedRowOnPaginate=false`
 
 {{ select-multiple }}
 
@@ -211,7 +220,8 @@ spline: data
 
 #### 本地数据分页
 
-本地数据分页，表示组件内部会对参数 `data` 进行分页。
+当 `data.length` 长度超过 `pageSize`，单页已无法完整地显示数据，此时会自动开启本地数据分页，组件内部会对 `data` 进行分页。
+如果希望禁用组件内部分页，可以设置 `disableDataPage=true`。
 
 {{ pagination }}
 
