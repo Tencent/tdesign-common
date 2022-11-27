@@ -79,7 +79,7 @@ spline: data
 
 - 使用 `cell` 作为渲染函数，函数参数为：`{col, colIndex, row, rowIndex}`。
 
-- 对于有插槽特性的框架，支持插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 
 - 【不推荐使用】使用 `render` 渲染函数，函数参数为：`{col, colIndex, row, rowIndex, type}`，其中 `type` 的值为 `cell`。
 
@@ -91,7 +91,7 @@ spline: data
 
 - 使用 `title` 作为渲染函数，函数参数为：`title({ col, colIndex })`。
 
-- 对于有插槽特性的框架，支持插槽，使用 `title` 的值作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `title` 的值作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 
 - 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({ col, colIndex, row, rowIndex, type })`，其中 `type` 值为 `title`。使用排序、过滤等功能时不能使用该方法。
 
@@ -102,7 +102,7 @@ spline: data
 表格提供自定义表尾功能，可用于表尾数据统计等场景。使用 `column.foot` 定义每一列的表尾内容。
 
 - 默认输出 `column.foot` 字符串，如果 `foot` 类型为函数，则作为表尾渲染函数自定义表尾内容。
-- 对于有插槽特性的框架，支持插槽，使用 `foot` 值作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `foot` 值作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 - 如果想定义通栏表尾，请使用 `footerSummary`
 - 如果想自定义表尾合并单元格信息，请使用 `rowspanAndColspanInFooter`，类似表格内容的合并单元格方法 `rowspanAndColspan`。
 
