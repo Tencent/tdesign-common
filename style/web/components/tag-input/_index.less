@@ -8,12 +8,11 @@
 
 .@{prefix}-tag-input {
   .reset;
+
   .@{prefix}-tag {
     animation: t-fade-in @anim-duration-base ease-in-out;
   }
-  .@{prefix}-tag + .@{prefix}-tag {
-    margin-left: @comp-margin-xs;
-  }
+
   .@{prefix}-tag-input__drag_wrapper + .@{prefix}-tag-input__drag_wrapper {
     margin-left: @comp-margin-xs;
   }
@@ -21,19 +20,18 @@
   .@{prefix}-input {
     overflow: hidden;
     min-height: @tag-input-height-default;
-    line-height: @tag-input-line-height-default;
-    padding: 0 @comp-paddingLR-xs;
+    padding: @comp-margin-xxs @comp-paddingLR-xs 0 @comp-paddingLR-xs;
     height: fit-content;
+    .t-input-margin-size(@comp-margin-xs, @comp-margin-xxs);
 
     &.@{prefix}-size-s {
-      padding: calc(@comp-paddingTB-xxs - 1px) @comp-paddingLR-xs;
+      padding: 1px @comp-paddingLR-xxs 0 @comp-margin-xs;
       min-height: @tag-input-height-s;
-      line-height: @tag-input-line-height-s;
+      .t-input-margin-size(@comp-margin-xxs, 1px);
     }
 
     &.@{prefix}-size-l {
       min-height: @tag-input-height-l;
-      line-height: @tag-input-line-height-l;
     }
   }
 
@@ -63,7 +61,6 @@
 
   .@{prefix}-input {
     display: block;
-    padding-right: @comp-paddingLR-xl;
 
     &.@{prefix}-input--prefix > .@{prefix}-input__prefix {
       display: inline;
@@ -72,8 +69,11 @@
 
     .@{prefix}-input__suffix-icon {
       position: absolute;
-      right: @comp-margin-s;
       bottom: 0;
+    }
+
+    &.@{prefix}-size-s {
+      padding-top: 0;
     }
   }
 }

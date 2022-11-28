@@ -5,3 +5,17 @@
 @tag-input-line-height-s: calc(@tag-input-height-s - 4px);
 @tag-input-line-height-default: calc(@tag-input-height-default - 4px);
 @tag-input-line-height-l: calc(@tag-input-height-l - 4px);
+
+.t-input-margin-size(@distance-x, @distance-y) {
+  .@{prefix}-tag {
+    margin-bottom: @distance-y;
+  }
+
+  .@{prefix}-tag:not(:last-child) {
+    margin-right: @distance-x;
+  }
+
+  .@{prefix}-input__suffix-icon {
+    right: @distance-x;
+  }
+}
