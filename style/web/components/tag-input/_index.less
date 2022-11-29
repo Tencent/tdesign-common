@@ -28,6 +28,9 @@
     &.@{prefix}-size-s {
       padding: 0 @comp-paddingLR-xxs 0 @comp-margin-xs;
       min-height: @tag-input-height-s;
+      .@{prefix}-tag {
+        margin: 1px @comp-margin-xs 1px 0;
+      }
     }
 
     &.@{prefix}-size-l {
@@ -54,10 +57,6 @@
 
     .@{prefix}-input__inner {
       margin-top: calc(@comp-margin-xs - 1px);
-    }
-
-    .@{prefix}-size-s .@{prefix}-tag {
-      margin: 1px @comp-margin-xs 1px 0;
     }
 
     .@{prefix}-input__inner {
