@@ -6,16 +6,19 @@
     // 解决弹窗中带有动效的Icon不展示（如loading），初始scale为1可以展示正常
     0% {
       opacity: 0;
-      transform: scale(1);
+      transform: scale(.01);
     }
 
-    1% {
+    100% {
       opacity: 1;
-      transform: scale(.01);
     }
   }
 
   @keyframes tDialogZoomOut {
+    from {
+      opacity: 1;
+    }
+
     to {
       opacity: 0;
       transform: scale(.01);
@@ -24,11 +27,19 @@
 
   @keyframes tDialogMaskIn {
     from {
+      opacity: 0;
+    }
+
+    to {
       opacity: 1;
     }
   }
 
   @keyframes tDialogMaskOut {
+    from {
+      opacity: 1;
+    }
+
     to {
       opacity: 0;
     }
@@ -37,7 +48,7 @@
   .animation-enter {
     animation-duration: @dialog-anim-duration;
     animation-fill-mode: both;
-    animation-timing-function: @dialog-anim-time-fn-enter;
+    animation-timing-function: @anim-time-fn-ease-out;
     animation-play-state: paused;
   }
 
@@ -84,6 +95,8 @@
 
       .@{prefix}-dialog__mask {
         animation-name: tDialogMaskIn;
+        animation-duration: @dialog-anim-duration;
+        animation-timing-function: linear;
         .animation-active;
       }
     }
@@ -97,6 +110,8 @@
 
       .@{prefix}-dialog__mask {
         animation-name: tDialogMaskOut;
+        animation-duration: @dialog-anim-duration;
+        animation-timing-function: linear;
         .animation-active;
       }
     }
@@ -122,14 +137,14 @@
   opacity: 0;
   animation-duration: @dialog-anim-duration;
   animation-fill-mode: both;
-  animation-timing-function: @dialog-anim-time-fn-fade;
+  animation-timing-function: @anim-time-fn-ease-out;
   animation-play-state: paused;
 }
 
 .@{prefix}-dialog-fade-exit {
   animation-duration: @dialog-anim-duration;
   animation-fill-mode: both;
-  animation-timing-function: @dialog-anim-time-fn-fade;
+  animation-timing-function: @anim-time-fn-ease-out;
   animation-play-state: paused;
 }
 
