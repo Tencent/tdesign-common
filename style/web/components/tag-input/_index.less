@@ -11,6 +11,7 @@
 
   .@{prefix}-tag {
     animation: t-fade-in @anim-duration-base ease-in-out;
+    margin: @comp-margin-xxs @comp-margin-xs @comp-margin-xxs 0;
   }
 
   .@{prefix}-tag-input__drag_wrapper + .@{prefix}-tag-input__drag_wrapper {
@@ -20,18 +21,42 @@
   .@{prefix}-input {
     overflow: hidden;
     min-height: @tag-input-height-default;
-    padding: @comp-margin-xxs @comp-paddingLR-xs 0 @comp-paddingLR-xs;
     height: fit-content;
-    .t-input-margin-size(@comp-margin-xs, @comp-margin-xxs);
+    padding: 1px @comp-paddingLR-s 1px @comp-margin-xs;
+    .t-input-suffix-icon(@comp-margin-s);
 
     &.@{prefix}-size-s {
-      padding: 1px @comp-paddingLR-xxs 0 @comp-margin-xs;
+      padding: 0 @comp-paddingLR-xxs 0 @comp-margin-xs;
       min-height: @tag-input-height-s;
-      .t-input-margin-size(@comp-margin-xxs, 1px);
     }
 
     &.@{prefix}-size-l {
       min-height: @tag-input-height-l;
+      padding-right: @comp-paddingLR-m;
+      .t-input-suffix-icon(@comp-margin-m);
+    }
+  }
+
+  /** 设计稿：未填充标签场景，边距和已填充不同 */
+  &.@{prefix}-is-empty {
+    .@{prefix}-input {
+      padding-top: @comp-margin-xs;
+
+      &.@{prefix}-size-s {
+        padding-top: 1px;
+
+        .@{prefix}-tag {
+          margin: 1px @comp-margin-xs 1px 0;
+        }
+      }
+
+      &.@{prefix}-size-l {
+        padding-top: calc(@comp-margin-s - 1px);
+      }
+    }
+
+    .@{prefix}-input__inner {
+      margin-left: @comp-margin-xs;
     }
   }
 
@@ -42,9 +67,12 @@
     }
   }
 
-  .@{prefix}-tag-input__prefix,
-  .@{prefix}-input__prefix:empty + input {
+  .@{prefix}-tag-input__prefix {
     margin-left: @comp-margin-xs;
+  }
+
+  .@{prefix}-input .@{prefix}-input__prefix:not(:empty) {
+    margin-right: 0;
   }
 
   .@{prefix}-input--auto-width {
@@ -71,10 +99,6 @@
       position: absolute;
       bottom: 0;
     }
-
-    &.@{prefix}-size-s {
-      padding-top: 0;
-    }
   }
 }
 
@@ -82,4 +106,25 @@
   width: max-content;
   display: inline-block;
   margin-right: @comp-margin-s;
+}
+
+/** 避免标签和右侧图标重合，需保留图标宽度 22px 和左侧距离标签间距 8px */
+.@{prefix}-tag-input {
+  &.@{prefix}-tag-input--with-tag {
+    .@{prefix}-input__prefix {
+      padding-right: @tag-input-clear-icon-padding-m;
+    }
+    .@{prefix}-input__inner {
+      margin-left: calc(-1 * @tag-input-clear-icon-padding-m);
+    }
+
+    .@{prefix}-size-l {
+      .@{prefix}-input__prefix {
+        padding-right: @tag-input-clear-icon-padding-l;
+      }
+      .@{prefix}-input__inner {
+        margin-left: calc(-1 * @tag-input-clear-icon-padding-l);
+      }
+    }
+  }  
 }
