@@ -75,8 +75,10 @@
     margin-right: 0;
   }
 
-  .@{prefix}-input--auto-width {
-    padding-right: @comp-paddingLR-xs;
+  &.@{prefix}-input--auto-width {
+    .@{prefix}-input__prefix {
+      white-space: nowrap;
+    }
   }
 }
 
