@@ -39,20 +39,25 @@
 
   /** 设计稿：未填充标签场景，边距和已填充不同 */
   &.@{prefix}-is-empty {
-    .@{prefix}-input {
-      padding-top: @comp-margin-xs;
 
-      &.@{prefix}-size-s {
-        padding-top: 1px;
-
-        .@{prefix}-tag {
-          margin: 1px @comp-margin-xs 1px 0;
-        }
+    .@{prefix}-size-s {
+      .@{prefix}-input__inner {
+        margin-top: 0;
       }
+    }
 
-      &.@{prefix}-size-l {
-        padding-top: calc(@comp-margin-s - 1px);
+    .@{prefix}-size-l {
+      .@{prefix}-input__inner {
+        margin-top: calc(@comp-margin-s - 1px);
       }
+    }
+
+    .@{prefix}-input__inner {
+      margin-top: calc(@comp-margin-xs - 1px);
+    }
+
+    .@{prefix}-size-s .@{prefix}-tag {
+      margin: 1px @comp-margin-xs 1px 0;
     }
 
     .@{prefix}-input__inner {
@@ -76,6 +81,11 @@
   }
 
   &.@{prefix}-input--auto-width {
+
+    .@{prefix}-input.@{prefix}-input--focused {
+      padding-right: @tag-input-clear-icon-padding-m;
+    }
+
     .@{prefix}-input__prefix {
       white-space: nowrap;
     }
