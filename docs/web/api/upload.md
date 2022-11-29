@@ -30,7 +30,7 @@ spline: form
 - `formatRequest` 用于格式化上传接口请求参数，可以新增或修改参数。
 - `formatResponse` 用于格式化接口响应值，如果响应值中的 `error` 字段存在，则会判定本次上传失败。
 - `sizeLimit` 用于设置文件大小限制，如果超出限制不会触发上传请求。
-- `allowUploadDuplicateFile` 是否允许上产相同文件名的文件。
+- `allowUploadDuplicateFile` 是否允许上传相同文件名的文件。
 - `onSelectChange` 会在文件选择之后，上传请求发起之前触发。
 - `onSuccess` 会在上传成功后触发。
 - `onFail` 会在上传失败后出发。
