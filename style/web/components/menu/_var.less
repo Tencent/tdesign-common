@@ -21,10 +21,10 @@
 @menu-color-dark: @font-white-2;
 
 @menu-item-color--light: @font-gray-2;
-@menu-item-color--dark: rgba(255, 255, 255, .55);
-@menu-item-active-bg--light: @gray-color-2;
-@menu-item-active-bg--dark: @gray-color-9;
-@menu-item-active-color--light: @font-gray-1;
+@menu-item-color--dark: @text-color-anti;
+@menu-item-active-bg--light: @brand-color-light;
+@menu-item-active-bg--dark: @brand-color-active;
+@menu-item-active-color--light: @brand-color-active;
 @menu-item-active-color--dark: @text-color-anti;
 @menu-item-hover-color--light: @font-gray-2;
 @menu-item-hover-color--dark: rgba(255, 255, 255, .55);
@@ -71,21 +71,21 @@
 
 // head menu
 @head-menu-item-width: 104px;
-@head-menu-item-height: 40px;
+@head-menu-item-height: @comp-size-m;
 @head-menu-submenu-border-color: @gray-color-3;
 
 // default menu
 @default-menu-width: 232px;
 @default-menu-collapse-width: 64px;
 @default-menu-active-color: @brand-color;
-@default-menu-item-height: 36px;
+@default-menu-item-height: @comp-size-l;
 
 // popup
 @popup-item-padding-left: @comp-paddingTB-l @comp-paddingLR-l;
 
 // 高度
 @menu-height-default: 32px; // low
-@menu-height-high: 40px;
+@menu-height-hight: @comp-size-l;
 
 // z-index
 @menu-outer-zindex: 1000;
