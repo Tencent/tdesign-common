@@ -43,22 +43,6 @@
   /** 设计稿：未填充标签场景，边距和已填充不同 */
   &.@{prefix}-is-empty {
 
-    .@{prefix}-size-s {
-      .@{prefix}-input__inner {
-        margin-top: 0;
-      }
-    }
-
-    .@{prefix}-size-l {
-      .@{prefix}-input__inner {
-        margin-top: calc(@comp-margin-s - 1px);
-      }
-    }
-
-    .@{prefix}-input__inner {
-      margin-top: calc(@comp-margin-xs - 1px);
-    }
-
     .@{prefix}-input__inner {
       margin-left: @comp-margin-xs;
     }
@@ -96,7 +80,7 @@
 }
 
 // 标签数量超出时，换行显示
-.@{prefix}-tag-input--break-line {
+.@{prefix}-tag-input--break-line:not(.@{prefix}-is-empty) {
 
   .@{prefix}-input {
     display: block;
@@ -111,6 +95,10 @@
       bottom: 0;
     }
   }
+
+  .@{prefix}-tag-input__prefix {
+    vertical-align: text-top;
+  }
 }
 
 .@{prefix}-tag-input__prefix {
@@ -122,19 +110,13 @@
 /** 避免标签和右侧图标重合，需保留图标宽度 22px 和左侧距离标签间距 8px */
 .@{prefix}-tag-input {
   &.@{prefix}-tag-input--with-tag {
-    .@{prefix}-input__prefix {
+    .@{prefix}-input {
       padding-right: @tag-input-clear-icon-padding-m;
-    }
-    .@{prefix}-input__inner {
-      margin-left: calc(-1 * @tag-input-clear-icon-padding-m);
     }
 
     .@{prefix}-size-l {
-      .@{prefix}-input__prefix {
+      .@{prefix}-input {
         padding-right: @tag-input-clear-icon-padding-l;
-      }
-      .@{prefix}-input__inner {
-        margin-left: calc(-1 * @tag-input-clear-icon-padding-l);
       }
     }
   }
