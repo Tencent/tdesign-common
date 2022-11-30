@@ -184,12 +184,6 @@
   .@{prefix}-table__selection-cell {
     padding: 0;
     height: 0;
-
-    + td,
-    + th {
-      padding-left: 0;
-      padding-right: 0;
-    }
   }
 
   td.@{prefix}-table__handle-draggable {
@@ -279,6 +273,13 @@
 
   // 斑马线表格
   &--striped {
+
+    &:not(.@{prefix}-table--bordered) {
+      th,
+      td {
+        border-bottom: none;
+      }
+    }
 
     &.@{prefix}-table--header-fixed {
       tbody tr:nth-of-type(even) {
