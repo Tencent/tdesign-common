@@ -39,8 +39,9 @@
     align-items: center;
     justify-content: center;
 
-    &--default {
+    > .t-fake-arrow {
       transform: rotate(-90deg);
+      transition: all @anim-duration-base @anim-time-fn-easing;
     }
 
     &--left {
@@ -51,14 +52,13 @@
       margin-left: @collapse-panel-header-icon-margin;
     }
 
-    &--active {
-      transform: rotate(90deg);
+    &--active > .t-fake-arrow {
+      transform: rotate(0);
     }
 
     &:hover {
       background-color: @bg-color-container-hover;
       border-radius: @border-radius-small;
-      transition: background-color @anim-duration-base @anim-time-fn-easing;
     }
   }
 
