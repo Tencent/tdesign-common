@@ -33,7 +33,7 @@ a.@{prefix}-menu__item {
     height: @comp-size-xxxl;
 
     li + li {
-      margin-left: @comp-margin-xs;
+      margin-left: @comp-margin-s;
     }
 
     .@{prefix}-menu {
@@ -68,10 +68,10 @@ a.@{prefix}-menu__item {
     }
 
     &-icon {
-      width: 40px;
-      height: 40px;
+      width: @head-menu-item-height;
+      height: @head-menu-item-height;
       padding: @comp-paddingTB-s @comp-paddingLR-s;
-      line-height: 40px;
+      line-height: @head-menu-item-height;
       box-sizing: border-box;
     }
   }
@@ -93,63 +93,32 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-menu__item {
-    min-width: @head-menu-item-width;
     height: @head-menu-item-height;
     line-height: @head-menu-item-height;
+    padding: 0 @comp-paddingLR-l;
     justify-content: center;
     transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
   }
 
   &__submenu {
     border-top: 1px solid @head-menu-submenu-border-color;
-
-    // menu 双层导航使用了 Tabs 实现，需要 tab 样式保持跟 menu theme 一致，不跟随整体亮色/暗色模式切换
-    .@{prefix}-tabs {
-      background: #fff;
-
-      &__bar {
-        background-color: @submenu-dark-item-active-color;
-      }
-
-      &__nav-item {
-        color: @font-gray-2;
-
-        &-wrapper {
-          --ripple-color: @menu-item-animation-bg--light;
-        }
-
-        &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
-          .@{prefix}-tabs__nav-item-wrapper {
-            background-color: @menu-light-hover-bg;
-          }
-        }
-
-        &.@{prefix}-is-active {
-          color: @submenu-item-active-color;
-        }
-
-        &.@{prefix}-is-disabled {
-          color: @menu-item-disabled-color;
-        }
-
-        --ripple-color: @menu-item-animation-bg--light;
-      }
-    }
+    padding-left: 0;
   }
 
   .@{prefix}-menu__popup {
-    top: 60px;
+    top: calc(@head-menu-item-height + 12px);
     min-width: 100%;
     box-sizing: content-box;
     transform-origin: center top;
+    border: solid .5px @menu-border-color;
 
     .@{prefix}-menu__item {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       white-space: nowrap;
-      padding-left: @comp-paddingLR-l;
-      padding-right: @comp-paddingLR-l;
+      padding-left: @comp-paddingLR-s;
+      padding-right: @comp-paddingLR-s;
       min-width: 100%;
       margin-left: 0;
       color: @head-menu-popup-item-color;
@@ -162,13 +131,8 @@ a.@{prefix}-menu__item {
     }
   }
 
-  .@{prefix}-submenu-icon {
-    // to remove
-    margin-left: @comp-margin-s;
-  }
-
   .@{prefix}-fake-arrow {
-    margin-left: @comp-margin-s;
+    margin-left: @comp-margin-m;
   }
 
   // 多层情况
@@ -295,7 +259,8 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__popup {
       .@{prefix}-menu__item {
-        padding-left: @popup-item-padding-left;
+        padding-left: @comp-paddingLR-s;
+        padding-right: @comp-paddingLR-s;
         justify-content: flex-start;
 
         span {
@@ -371,7 +336,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__logo:not(:empty) {
       width: 100%;
-      height: var(--td-comp-size-xxxl);
+      height: calc(@menu-logo-hight - 1px);
       border-bottom: 1px solid @menu-border-color;
     }
 
@@ -471,7 +436,7 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__popup {
     top: 0;
-    left: calc(100% + 16px);
+    left: calc(100% + @comp-paddingLR-s);
   }
 
   .@{prefix}-menu__item {
@@ -654,7 +619,6 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-      font-weight: 500;
       color: @menu-item-active-color--light;
     }
 
@@ -687,6 +651,7 @@ a.@{prefix}-menu__item {
 
       .@{prefix}-menu__popup {
         background-color: @menu-theme-dark;
+        border: solid .5px @menu-border-color--dark;
       }
     }
 
@@ -750,35 +715,6 @@ a.@{prefix}-menu__item {
         }
       }
     }
-
-    // menu 双层导航使用了 Tabs 实现，需要 tab 样式保持跟 menu theme 一致，不跟随整体亮色/暗色模式切换
-    .@{prefix}-tabs {
-      background: @gray-color-11;
-
-      &__nav-item {
-        color: #fff;
-
-        &-wrapper {
-          --ripple-color: @gray-color-9;
-        }
-
-        &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
-          .@{prefix}-tabs__nav-item-wrapper {
-            background-color: @menu-dark-hover-bg;
-          }
-        }
-
-        &.@{prefix}-is-active {
-          color: @submenu-dark-item-active-color;
-        }
-
-        &.@{prefix}-is-disabled {
-          color: @menu-item-disabled-color-dark;
-        }
-
-        --ripple-color: @gray-color-9;
-      }
-    }
   }
 
   &__popup {
@@ -795,7 +731,7 @@ a.@{prefix}-menu__item {
     .list-style-none();
 
     &-wrapper {
-      padding: @comp-paddingLR-s;
+      padding: @pop-padding-m;
       height: 100%;
       list-style: none;
       margin: 0;
@@ -810,13 +746,12 @@ a.@{prefix}-menu__item {
       width: 0;
 
       &.@{prefix}-is-opened {
-        width: var(--popup-width, 216px);
+        width: var(--popup-width, 160px);
       }
 
       .@{prefix}-menu__item {
         padding-left: @comp-paddingLR-l;
         padding-right: @comp-paddingLR-l;
-        margin: 4px 0;
       }
     }
 
@@ -840,7 +775,7 @@ a.@{prefix}-menu__item {
 
       .@{prefix}-menu__popup {
         top: 0;
-        left: calc(100% + @horizontal-spacer);
+        left: calc(100% - 6px);
 
         &::before {
           content: "";
@@ -857,14 +792,11 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__item {
       color: @menu-popup-item-color;
+      height: @comp-size-s;
+      line-height: @comp-size-s;
 
       + .@{prefix}-menu__item {
         margin-left: 0;
-      }
-
-      &.@{prefix}-is-active {
-        color: @menu-popup-item-active-color;
-        background-color: @menu-popup-item-active-bg;
       }
 
       &:hover:not(.@{prefix}-is-active) {
