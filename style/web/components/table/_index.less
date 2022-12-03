@@ -555,7 +555,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
+  min-height: 120px;
   color: @table-color-empty;
 }
 
@@ -1030,8 +1030,9 @@
   height: 100%;
 }
 
+/** 默认最小高度限制为 Empty 高度加表头高度 */
 .@{prefix}-table--loading .@{prefix}-table__content {
-  min-height: 160px;
+  min-height: 168px;
 }
 
 .@{prefix}-table__handle-draggable:hover,
