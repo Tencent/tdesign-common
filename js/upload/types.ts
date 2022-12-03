@@ -71,6 +71,7 @@ export interface InnerProgressContext {
   files?: UploadFile[];
   percent: number;
   type: ProgressContext['type'];
+  XMLHttpRequest?: XMLHttpRequest;
 }
 
 export interface SuccessContext {
