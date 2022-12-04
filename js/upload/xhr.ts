@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import log from '../log/log';
 import { UploadFile, XhrOptions } from './types';
 import { getCurrentDate } from './utils';
 
@@ -43,6 +44,7 @@ export default function xhr({
               file: file || innerFiles[0],
               files: innerFiles.map((file) => ({ ...file, percent })),
               type: 'mock',
+              XMLHttpRequest: xhr,
             });
           }
         } else {
@@ -101,6 +103,7 @@ export default function xhr({
           file: file || progressFiles[0],
           files: progressFiles,
           type: 'real',
+          XMLHttpRequest: xhr,
         });
       }
     };
@@ -109,6 +112,7 @@ export default function xhr({
   // eslint-disable-next-line consistent-return
   xhr.onload = (event: ProgressEvent) => {
     let response: { [key: string]: any } = {};
+    response.XMLHttpRequest = xhr;
     const isFail = xhr.status < 200 || xhr.status >= 300;
     if (isFail) {
       return onError({
@@ -120,6 +124,7 @@ export default function xhr({
       response = JSON.parse(text);
     } catch (e) {
       response = text;
+      log.error('Upload', 'response does not a valid json');
     }
     clearInterval(timer1);
     clearTimeout(timer2);
@@ -129,6 +134,9 @@ export default function xhr({
       // 如果上传请求返回结果没有上传日期，则使用电脑当前日期显示
       file.uploadTime = response?.uploadTime || getCurrentDate();
     });
+    if (typeof response === 'object') {
+      response.XMLHttpRequest = xhr;
+    }
     onSuccess({
       event,
       file: file || innerFiles[0],
