@@ -233,6 +233,8 @@ export function getMaxOrMinValidateResult(p: {
   return error;
 }
 
+export const specialCode = ['-', '.', 'e', 'E'];
+
 /**
  * 是否允许输入当前字符，输入字符校验
  */
@@ -240,5 +242,8 @@ export function canInputNumber(number: string, largeNumber: boolean) {
   if (!number && typeof number === 'string') return true;
   const isNumber = (largeNumber && isInputNumber(number)) || !Number.isNaN(Number(number));
   if (!isNumber && !['-', '.', 'e', 'E'].includes(number.slice(-1))) return false;
+  // 只能出现一个点（.） 和 一个负号（-）
+  if (String(number).match(/\./g)?.length > 1) return false;
+  if (String(number).match(/-/g)?.length > 1) return false;
   return true;
 }
