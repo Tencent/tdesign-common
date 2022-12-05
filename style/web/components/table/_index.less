@@ -118,13 +118,13 @@
     position: relative;
     padding: @table-cell-padding;
     border-bottom: @border;
-    line-height: @table-line-height;
+    line-height: 1;
     font-weight: normal;
     overflow-wrap: break-word;
     background-color: inherit;
     box-sizing: border-box;
 
-    &:not([align]) {
+    &:not(.@{prefix}-date-picker__table th) {
       text-align: left;
     }
   }
