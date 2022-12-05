@@ -179,10 +179,26 @@
     margin-left: @pagination-jump-margin;
     font-size: @pagination-font-default;
     gap: @comp-margin-s;
+    background-color: @bg-color-secondarycontainer;
+    height: @pagination-jump-height;
+    padding-left: @pagination-jump-padding-left;
+    border-radius: @border-radius-default;
+  }
+
+  .@{prefix}-input-adornment__append {
+    border: none;
+    height: @pagination-jump-inner-height;
+    color: @text-color-secondary;
+    background-color: transparent;
   }
 
   .@{prefix}-input-number {
     width: @pagination-input-width;
+
+    .@{prefix}-input {
+      height: @pagination-jump-inner-height;
+      border-radius: @border-radius-default;
+    }
 
     .@{prefix}-input__inner {
       text-align: center;
@@ -191,12 +207,23 @@
 
   // 迷你尺寸
   &.@{prefix}-size-s {
+    font: @pagination-font-s;
+
+    .@{prefix}-pagination__jump {
+      height: @pagination-jump-height-small;
+    }
 
     .@{prefix}-input-adornment__append {
+      height: @pagination-jump-inner-height-small;
       font: @pagination-font-s;
     }
+
     .@{prefix}-input-number {
-      width: 56px;
+      width: 48px;
+
+      .@{prefix}-input {
+        height: @pagination-jump-inner-height-small;
+      }
     }
 
     .@{prefix}-pagination {
