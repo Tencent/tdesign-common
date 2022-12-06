@@ -124,11 +124,7 @@
     overflow-wrap: break-word;
     background-color: inherit;
     box-sizing: border-box;
-
-    &:not(.@{prefix}-date-range-picker__panel th),
-    &:not(.@{prefix}-date-range-picker__panel td) {
-      text-align: center;
-    }
+    text-align: left;
 
     // set line-height to 1 to avoid the height of the cell is not equal to the height of the content, childNode should set line-height self
     &:has(> *) {
@@ -1056,6 +1052,7 @@
 .@{prefix}-table:not(.@{prefix}-table--row-edit) {
   .@{prefix}-table__cell--editable {
     min-height: 22px;
+    line-height: @table-line-height;
     cursor: pointer;
 
     .t-icon {
