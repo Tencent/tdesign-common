@@ -110,6 +110,7 @@
   }
 
   .@{prefix}-text-ellipsis {
+    line-height: @table-line-height;
     .text-ellipsis();
   }
 
@@ -118,14 +119,20 @@
     position: relative;
     padding: @table-cell-padding;
     border-bottom: @border;
-    line-height: 1;
+    line-height: @table-line-height;
     font-weight: normal;
     overflow-wrap: break-word;
     background-color: inherit;
     box-sizing: border-box;
 
-    &:not(.@{prefix}-date-picker__table th) {
-      text-align: left;
+    &:not(.@{prefix}-date-range-picker__panel th),
+    &:not(.@{prefix}-date-range-picker__panel td) {
+      text-align: center;
+    }
+
+    // set line-height to 1 to avoid the height of the cell is not equal to the height of the content, childNode should set line-height self
+    &:has(> *) {
+      line-height: 1;
     }
   }
 
