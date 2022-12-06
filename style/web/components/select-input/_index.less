@@ -4,15 +4,24 @@
 
 @import "../../mixins/_reset.less";
 
-.@{prefix}-select-input,
-.@{prefix}-select-input__wrap {
+.@{prefix}-select-input {
   .reset;
 
   width: 100%;
   display: inline-block;
 }
 
-// TODO borderless input 内置
+/** 宽度自适应场景，多选，预留图标的位置 */
+.@{prefix}-select-input--multiple {
+  .@{prefix}-input--auto-width.@{prefix}-tag-input__with-suffix-icon {
+    .@{prefix}-input {
+      padding-right: @comp-paddingLR-xl;
+    }
+    .@{prefix}-input.@{prefix}-size-l {
+      padding-right: calc(@comp-paddingLR-xl + @comp-paddingLR-s);
+    }
+  }
+}
 
 /** 无边框模式 */
 .@{prefix}-select-input--borderless {
