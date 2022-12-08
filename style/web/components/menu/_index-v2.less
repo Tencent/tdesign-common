@@ -862,6 +862,10 @@ a.@{prefix}-menu__item {
         margin-left: 0;
       }
 
+      &.@{prefix}-is-disabled {
+        color: @menu-item-disabled-color;
+      }
+
       &.@{prefix}-is-active {
         color: @menu-popup-item-active-color;
         background-color: @menu-popup-item-active-bg;
@@ -880,6 +884,10 @@ a.@{prefix}-menu__item {
         border-radius: @border-radius-default;
 
         --ripple-color: @menu-item-animation-bg--dark;
+
+        &.@{prefix}-is-disabled {
+          color: @menu-item-disabled-color-dark;
+        }
 
         &.@{prefix}-is-active {
           color: @menu-item-active-color--dark;
