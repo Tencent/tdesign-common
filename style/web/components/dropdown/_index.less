@@ -56,6 +56,19 @@
         margin: 0 @comp-margin-s 0 0;
       }
     }
+
+    &--overflow {
+      // 处理菜单超过最大高度时无法选择二级菜单的问题
+      .@{prefix}-dropdown__submenu {
+        &--right {
+          left: calc(100% - 14px);
+        }
+
+        &--left {
+          right: calc(100% - 14px);
+        }
+      }
+    }
   }
 
   &__submenu {
