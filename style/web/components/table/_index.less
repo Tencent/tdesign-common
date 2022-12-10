@@ -125,11 +125,6 @@
     background-color: inherit;
     box-sizing: border-box;
     text-align: left;
-
-    // set line-height to 1 to avoid the height of the cell is not equal to the height of the content, childNode should set line-height self
-    &:has(> *) {
-      line-height: 1;
-    }
   }
 
   th.@{prefix}-table__th-drag {
@@ -1141,4 +1136,11 @@
 // 超出省略的文本，也需要跟着尺寸变化
 .@{prefix}-table__ellipsis-content.@{prefix}-size-s .@{prefix}-popup__content {
   font: @table-font;
+}
+
+/** Chrome 兼容问题处理 */
+.@{prefix}-table--chrome.@{prefix}-table--multiple-header {
+  .@{prefix}-table__affixed-header-elm {
+    margin-top: 1px;
+  }
 }
