@@ -44,6 +44,8 @@
 
   // 调整首位元素修改圆角
   > :first-child {
+    border-radius: @border-radius-default 0 0 @border-radius-default;
+
     .@{prefix}-input,
     .@{prefix}-input-adornment__text,
     .@{prefix}-textarea__inner {
@@ -53,6 +55,8 @@
 
   // // 调整末尾元素修改圆角
   > :last-child {
+    border-radius: 0 @border-radius-default @border-radius-default 0;
+
     .@{prefix}-input,
     .@{prefix}-input-adornment__text,
     .@{prefix}-textarea__inner {
