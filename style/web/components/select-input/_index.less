@@ -12,14 +12,24 @@
   vertical-align: middle;
 }
 
-/** 宽度自适应场景，多选，预留图标的位置 */
+/** 宽度自适应场景，多选，预留图标的位置。带标签和不带标签的布局不同，故而间距不同 */
 .@{prefix}-select-input--multiple {
   .@{prefix}-input--auto-width.@{prefix}-tag-input__with-suffix-icon {
-    .@{prefix}-input {
-      padding-right: @comp-paddingLR-xl;
+    &.@{prefix}-tag-input--with-tag {
+      .@{prefix}-input {
+        padding-right: @comp-paddingLR-xl;
+      }
+      .@{prefix}-input.@{prefix}-size-l {
+        padding-right: calc(@comp-paddingLR-xl + @comp-paddingLR-s);
+      }
     }
-    .@{prefix}-input.@{prefix}-size-l {
-      padding-right: calc(@comp-paddingLR-xl + @comp-paddingLR-s);
+    &.@{prefix}-is-empty {
+      .@{prefix}-input {
+        padding-right: @comp-paddingLR-s;
+      }
+      .@{prefix}-input.@{prefix}-size-l {
+        padding-right: @comp-paddingLR-m;
+      }
     }
   }
 }
