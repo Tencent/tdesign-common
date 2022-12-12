@@ -178,4 +178,22 @@ export default {
     recentColorTitle: '最近使用した色',
     clearConfirmText: '最近使用した色をクリアにするのは確実ですか？',
   },
+  guide: {
+    finishButtonProps: {
+      content: '終了',
+      theme: 'primary,'
+    },
+    nextButtonProps: {
+      content: '次のステップ',
+      theme: 'primary,'
+    },
+    skipButtonProps: {
+      content: 'スキップ',
+      theme: 'default,'
+    },
+    prevButtonProps: {
+      content: '前へ',
+      theme: 'default,'
+    },
+  },
 };
