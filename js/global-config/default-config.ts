@@ -26,6 +26,7 @@ export default {
       success: 'primary',
     },
   },
+  message: {},
   popconfirm: {
     confirmBtnTheme: {
       default: 'primary',
