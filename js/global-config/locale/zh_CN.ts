@@ -182,19 +182,19 @@ export default {
   guide: {
     finishButtonProps: {
       content: '完成',
-      theme: 'primary,'
+      theme: 'primary'
     },
     nextButtonProps: {
       content: '下一步',
-      theme: 'primary,'
+      theme: 'primary'
     },
     skipButtonProps: {
       content: '跳过',
-      theme: 'default,'
+      theme: 'default'
     },
     prevButtonProps: {
       content: '上一步',
-      theme: 'default,'
+      theme: 'default'
     },
   },
 };

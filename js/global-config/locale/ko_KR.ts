@@ -181,19 +181,19 @@ export default {
   guide: {
     finishButtonProps: {
       content: '완료',
-      theme: 'primary,'
+      theme: 'primary'
     },
     nextButtonProps: {
       content: '다음 단계',
-      theme: 'primary,'
+      theme: 'primary'
     },
     skipButtonProps: {
       content: '건너뛰기',
-      theme: 'default,'
+      theme: 'default'
     },
     prevButtonProps: {
       content: '마지막 단계',
-      theme: 'default,'
+      theme: 'default'
     },
   },
 };
