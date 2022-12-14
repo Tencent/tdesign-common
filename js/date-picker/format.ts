@@ -145,9 +145,13 @@ function formatSingle({
 // 检测日期是否合法
 export function isValidDate(value: DateValue | DateValue[], format: string) {
   if (Array.isArray(value)) {
-    return value.every((v) => dayjs(v, format).isValid() || dayjs(v).isValid());
+    return value.every((v) => {
+      if (v === '') return true;
+      return dayjs(v, format).isValid() || dayjs(v).isValid();
+    });
   }
 
+  if (value === '') return true;
   return dayjs(value, format).isValid() || dayjs(value).isValid();
 }
 
