@@ -11,7 +11,7 @@
   transition: @range-input-inner-transition;
   display: inline-flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: @spacer-s;
 
   &:hover {
     border-color: @range-input-border-color-default-hover;
@@ -62,6 +62,12 @@
 
     & > .@{prefix}-range-input__extra {
       color: @@fontColor;
+      @fontColor: "range-input-extra-color-@{status}";
+    }
+
+    & > .@{prefix}-range-input__tips {
+      color: @@fontColor;
+      font-size: @font-size-s;
       @fontColor: "range-input-extra-color-@{status}";
     }
   }
