@@ -72,4 +72,4 @@ export default {
   form: {
     requiredMark: undefined,
   },
-};
+} as const;

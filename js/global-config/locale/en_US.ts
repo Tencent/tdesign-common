@@ -196,4 +196,4 @@ export default {
       theme: 'default'
     },
   },
-};
+} as const;
