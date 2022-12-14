@@ -181,19 +181,19 @@ export default {
   guide: {
     finishButtonProps: {
       content: 'Finish',
-      theme: 'primary,'
+      theme: 'primary'
     },
     nextButtonProps: {
       content: 'Next Step',
-      theme: 'primary,'
+      theme: 'primary'
     },
     skipButtonProps: {
       content: 'Skip',
-      theme: 'default,'
+      theme: 'default'
     },
     prevButtonProps: {
       content: 'Last Step',
-      theme: 'default,'
+      theme: 'default'
     },
   },
-};
+} as const;
