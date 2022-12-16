@@ -316,7 +316,7 @@ a.@{prefix}-menu__item {
         position: relative;
         padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs @comp-paddingLR-l;
         color: @menu-menu-group-title-color;
-        font: @menu-extra-font-size;
+        font-size: @menu-extra-font-size;
         box-sizing: border-box;
       }
     }
@@ -575,6 +575,14 @@ a.@{prefix}-menu__item {
       right: 0;
       height: 20px;
     }
+  }
+
+  // vue next use
+  &__popup-wrapper {
+    box-sizing: border-box;
+    max-height: var(--popup-max-height, 364px);
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   &__item {
