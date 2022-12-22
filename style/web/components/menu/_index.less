@@ -107,6 +107,7 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__popup {
     top: calc(@head-menu-item-height + 12px);
+    left: 0;
     min-width: 100%;
     box-sizing: content-box;
     transform-origin: center top;
@@ -577,14 +578,6 @@ a.@{prefix}-menu__item {
     }
   }
 
-  // vue next use
-  &__popup-wrapper {
-    box-sizing: border-box;
-    max-height: var(--popup-max-height, 364px);
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-
   &__item {
     position: relative;
     display: flex;
@@ -857,4 +850,17 @@ a.@{prefix}-menu__item {
 .@{prefix}-submenu__icon-arrow {
   transition: @anim-duration-base;
   opacity: 0;
+}
+
+.@{prefix}-menu__popup {
+  top: 0;
+  left: calc(100% - @pop-padding-m);
+
+  .@{prefix}-menu__item, .@{prefix}-submenu {
+    margin: @comp-margin-xxs 0 0 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
