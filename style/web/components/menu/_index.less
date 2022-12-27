@@ -296,8 +296,9 @@ a.@{prefix}-menu__item {
     height: 100%;
 
     .@{prefix}-menu__logo:not(:empty) {
+      box-sizing: border-box;
       width: 100%;
-      height: calc(@menu-logo-height - 1px);
+      height: @menu-logo-height;
       border-bottom: 1px solid @menu-border-color;
     }
 
