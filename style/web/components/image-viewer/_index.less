@@ -462,7 +462,9 @@
     padding: 0 @comp-paddingLR-s;
     // 兼容dialog表头限制无法拖拽
     pointer-events: none;
-    user-select: none;
+    .@{prefix}-image-viewer__dialog-title {
+      pointer-events: all;
+    }
 
     .@{prefix}-dialog__close {
       pointer-events: auto;
