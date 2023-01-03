@@ -13,6 +13,7 @@ export default function xhr({
   files = [],
   name = 'file',
   useMockProgress = true,
+  mockProgressDuration = 300,
   formatRequest,
   onError,
   onProgress,
@@ -50,9 +51,9 @@ export default function xhr({
         } else {
           clearInterval(timer1);
         }
-      }, 300);
+      }, mockProgressDuration);
       clearTimeout(timer2);
-    }, 300);
+    }, mockProgressDuration);
   }
 
   let requestData: { [key: string]: any } = {};

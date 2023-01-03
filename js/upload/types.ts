@@ -103,6 +103,8 @@ export interface XhrOptions {
   file?: UploadFile;
   files?: UploadFile[];
   useMockProgress?: boolean;
+  // 模拟进度间隔时间，默认：300
+  mockProgressDuration?: number;
   name: string;
   /** 可与 data 共存 */
   formatRequest?: (requestData: { [key: string]: any }) => { [key: string]: any };
