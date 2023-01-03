@@ -7,3 +7,15 @@
     color: @auto-complete-option-highlight-color;
   }
 }
+
+.@{prefix}-auto-complete {
+  .@{prefix}-input__suffix-clear {
+    display: none;
+  }
+
+  &:hover {
+    .@{prefix}-input__suffix-clear {
+      display: inline-block;
+    }
+  }
+}
