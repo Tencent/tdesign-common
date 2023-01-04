@@ -298,7 +298,7 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu__logo:not(:empty) {
       box-sizing: border-box;
       width: 100%;
-      height: @menu-logo-height;
+      height: @menu-height-default;
       border-bottom: 1px solid @menu-border-color;
     }
 
@@ -370,7 +370,7 @@ a.@{prefix}-menu__item {
     transition: max-height @anim-duration-base @anim-time-fn-easing;
 
     &.@{prefix}-is-opened {
-      max-height: 1000px;
+      max-height: calc(100vh - @menu-height-default * 2);
     }
 
     .@{prefix}-menu__item {
@@ -790,7 +790,7 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-      max-height: var(--popup-max-height, 364px);
+      max-height: calc(100vh - @menu-height-default * 2);
       opacity: 1;
       box-shadow: @menu-default-shadow;
       overflow: visible;
