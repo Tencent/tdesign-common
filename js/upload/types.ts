@@ -194,6 +194,8 @@ export interface HandleUploadParams {
   name?: string;
   /** 是否需要真实进度之前的模拟进度 */
   useMockProgress?: boolean;
+  // 模拟进度间隔时间
+  mockProgressDuration?: number;
   multiple?: boolean;
   headers?: {[key: string]: string};
   withCredentials?: boolean;
