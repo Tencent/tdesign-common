@@ -450,11 +450,13 @@ export function isEnabledDate({
   format,
 }: {
   value: Date;
-  mode: 'year' | 'month' | 'date';
+  mode: 'year' | 'month' | 'date' | 'quarter' | 'week';
   format: string;
-  disableDate: DisableDate;
+  disableDate: any;
 }): boolean {
   if (!disableDate) return true;
+
+  const availableMode = mode === 'quarter' ? 'date' : mode;
 
   let isEnabled = true;
   // 值类型为 Function 则表示返回值为 true 的日期会被禁用
@@ -478,7 +480,7 @@ export function isEnabledDate({
     const compareMin = dayjs(new Date(from));
     const compareMax = dayjs(new Date(to));
 
-    return !dayjs(value).isBetween(compareMin, compareMax, mode, '[]');
+    return !dayjs(value).isBetween(compareMin, compareMax, availableMode, '[]');
   }
 
   const min = before ? new Date(before) : null;
@@ -489,13 +491,13 @@ export function isEnabledDate({
     const compareMin = dayjs(new Date(min));
     const compareMax = dayjs(new Date(max));
 
-    isEnabled = dayjs(value).isBetween(compareMin, compareMax, mode, '[]');
+    isEnabled = dayjs(value).isBetween(compareMin, compareMax, availableMode, '[]');
   } else if (min) {
     const compareMin = dayjs(new Date(min));
-    isEnabled = !dayjs(value).isBefore(compareMin, mode);
+    isEnabled = !dayjs(value).isBefore(compareMin, availableMode);
   } else if (max) {
     const compareMax = dayjs(new Date(max));
-    isEnabled = !dayjs(value).isAfter(compareMax, mode);
+    isEnabled = !dayjs(value).isAfter(compareMax, availableMode);
   }
   return isEnabled;
 }
