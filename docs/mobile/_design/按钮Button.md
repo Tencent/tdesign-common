@@ -10,30 +10,28 @@
 
 ##### 图标按钮与[输入框](./input)组合使用，放置于输入单元格最右侧，用于触发拉起一个新的支流任务，辅助用户填入正确内容。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/image1.png" />
-    <em></em>
-  </div>
-  
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/image2.png" />
-    <em></em>
-  </div>
+<div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
+   <em></em>
 </div>
+
 
 ##### 不同类型的主次按钮与文字按钮组合使用，可以表达不同强调级别。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/image1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-1.png" />
     <em></em>
   </div>
   
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/image2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-2.png" />
     <em></em>
   </div>
+</div>
+<div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-3.png" />
+    <em></em>
 </div>
 
 
@@ -44,7 +42,11 @@
 ##### 当在填写场景，按钮通常作为当前流程的结束操作，在表单过长时通常需要吸顶或吸底处理。
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/image3.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button3-1.png" />
+    <em></em>
+  </div>
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button3-2.png" />
     <em></em>
   </div>
 </div>
@@ -56,12 +58,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/image5.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/image6.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
