@@ -184,4 +184,4 @@ export default {
     recentColorTitle: 'مستخدم حديثا',
     clearConfirmText: 'هل تريد مسح الألوان المستخدمة مؤخرًا؟',
   },
-};
+} as const;
