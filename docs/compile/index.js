@@ -34,18 +34,19 @@ export function compileUsage(options) {
  */
 export function getGitTimestamp(file) {
   return new Promise((resolve, reject) => {
-    const child = spawn('git', ['log', '-1', '--pretty="%ci"', file])
-    let output = ''
-    child.stdout.on('data', (d) => (output += String(d)))
+    const child = spawn('git', ['log', '-1', '--pretty="%ci"', file]);
+    let output = '';
+    child.stdout.on('data', (d) => {
+      output += String(d);
+    });
     child.on('close', () => {
-      resolve(+new Date(output))
-    })
-    child.on('error', reject)
-  })
+      resolve(+new Date(output));
+    });
+    child.on('error', reject);
+  });
 }
-
 
 export default {
   compileUsage,
-  getGitTimestamp,
+  getGitTimestamp
 };
