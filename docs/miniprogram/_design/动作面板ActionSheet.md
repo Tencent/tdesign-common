@@ -11,7 +11,7 @@
 ##### 动作面板与[按钮](./button)组合使用，通过按钮点击唤起动作面板。
 
 <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet%201.png" />
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet1.png" />
    <em></em>
 </div>
 
@@ -23,7 +23,7 @@
 ##### 当用户完成一个事件可以通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet%202.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet2.png" />
     <em></em>
 </div>
 
