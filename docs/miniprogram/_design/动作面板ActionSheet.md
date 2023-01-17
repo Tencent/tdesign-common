@@ -19,14 +19,12 @@
 <hr />
 
 ### 常见用法
-
 ##### 当用户完成一个事件可以通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
 <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet2.png" />
     <em></em>
 </div>
-
 
 ##### 当页面中有一组操作因低频/空间不足不希望外露时，但却必要存在，可以用动作面板来承载，通过“更多”按钮触发
 
@@ -35,6 +33,8 @@
     <em></em>
 </div>
 
+
+<hr />
 
 ### 推荐/慎用示例
 
@@ -52,8 +52,6 @@
   </div>
 </div>
 
-<hr />
-
 ##### 动作面板中的操作项不建议用icon完成替代文字。
 
 <div class="legend">
@@ -62,13 +60,13 @@
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
+  
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet%205-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
-<hr />
 
 
 
