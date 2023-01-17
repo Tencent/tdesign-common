@@ -9,12 +9,13 @@
 ### 与页面布局相关
 
 ##### 为了避免遮挡页面中重要内容，通常将悬浮按钮放置于页面右下角，当页面中没有底部标签栏时，也可以考虑放置于中下位置。
-
-<div class="item">
+<div class="legend">
+ <div class="item">
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-1.png" />
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-2.png" />
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-3.png" />
    <em></em>
+ </div>
 </div>
 
 
@@ -28,7 +29,7 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%202.png" />
     <em></em>
 </div>
-
+<hr />
 
 ### 推荐/慎用示例
 
@@ -46,7 +47,7 @@
   </div>
 </div>
 
-<hr />
+
 
 ##### 图标加文字悬浮按钮上的字数建议精简，控制在2-4个字左右，避免遮挡过多页面内容。
 
@@ -62,7 +63,7 @@
   </div>
 </div>
 
-<hr />
+
 
 
 
