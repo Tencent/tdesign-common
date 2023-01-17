@@ -20,12 +20,13 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-2.png" />
     <em></em>
   </div>  
-  
-  <div class="item">
+</div>
+
+<div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-3.png" />
     <em></em>
-  </div>  
-</div>
+</div>  
+
 
 
 <hr />
@@ -73,7 +74,7 @@
 </div>
 
 
-
+<hr />
 
 
 ### 相似组件
