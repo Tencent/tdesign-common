@@ -9,13 +9,22 @@
 ### 与页面布局相关
 
 ##### 为了避免遮挡页面中重要内容，通常将悬浮按钮放置于页面右下角，当页面中没有底部标签栏时，也可以考虑放置于中下位置。
+
 <div class="legend">
- <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-1.png" />
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-2.png" />
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-3.png" />
-   <em></em>
- </div>
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-1.png" />
+    <em></em>
+  </div>
+  
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-2.png" />
+    <em></em>
+  </div>  
+  
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-3.png" />
+    <em></em>
+  </div>  
 </div>
 
 
