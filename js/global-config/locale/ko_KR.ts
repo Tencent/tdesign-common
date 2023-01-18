@@ -178,4 +178,22 @@ export default {
     recentColorTitle: '최근 사용한 색상',
     clearConfirmText: '최근에 사용한 색상을 지우시겠습니까?',
   },
-};
+  guide: {
+    finishButtonProps: {
+      content: '완료',
+      theme: 'primary'
+    },
+    nextButtonProps: {
+      content: '다음 단계',
+      theme: 'primary'
+    },
+    skipButtonProps: {
+      content: '건너뛰기',
+      theme: 'default'
+    },
+    prevButtonProps: {
+      content: '마지막 단계',
+      theme: 'default'
+    },
+  },
+} as const;

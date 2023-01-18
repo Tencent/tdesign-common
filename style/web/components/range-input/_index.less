@@ -53,7 +53,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    gap: @spacer;
+    gap: @range-input-inner-gap;
 
     .@{prefix}-input__wrap {
       height: 100%;
@@ -61,11 +61,12 @@
     }
 
     .@{prefix}-input {
-      padding: 0 4px;
+      padding: @range-input-inner-padding;
       height: 100%;
       border: 0;
       box-shadow: none;
       font-size: inherit;
+      border-radius: @border-radius-small;
 
       &:hover {
         background-color: @bg-color-container-hover;

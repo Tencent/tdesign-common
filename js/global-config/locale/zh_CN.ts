@@ -179,4 +179,22 @@ export default {
     recentColorTitle: '最近使用颜色',
     clearConfirmText: '确定清空最近使用的颜色吗？',
   },
-};
+  guide: {
+    finishButtonProps: {
+      content: '完成',
+      theme: 'primary'
+    },
+    nextButtonProps: {
+      content: '下一步',
+      theme: 'primary'
+    },
+    skipButtonProps: {
+      content: '跳过',
+      theme: 'default'
+    },
+    prevButtonProps: {
+      content: '上一步',
+      theme: 'default'
+    },
+  },
+} as const;

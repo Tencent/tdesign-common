@@ -4,15 +4,35 @@
 
 @import "../../mixins/_reset.less";
 
-.@{prefix}-select-input,
-.@{prefix}-select-input__wrap {
+.@{prefix}-select-input {
   .reset;
 
   width: 100%;
   display: inline-block;
+  vertical-align: middle;
 }
 
-// TODO borderless input 内置
+/** 宽度自适应场景，多选，预留图标的位置。带标签和不带标签的布局不同，故而间距不同 */
+.@{prefix}-select-input--multiple {
+  .@{prefix}-input--auto-width.@{prefix}-tag-input__with-suffix-icon {
+    &.@{prefix}-tag-input--with-tag {
+      .@{prefix}-input {
+        padding-right: @comp-paddingLR-xl;
+      }
+      .@{prefix}-input.@{prefix}-size-l {
+        padding-right: calc(@comp-paddingLR-xl + @comp-paddingLR-s);
+      }
+    }
+    &.@{prefix}-is-empty {
+      .@{prefix}-input {
+        padding-right: @comp-paddingLR-s;
+      }
+      .@{prefix}-input.@{prefix}-size-l {
+        padding-right: @comp-paddingLR-m;
+      }
+    }
+  }
+}
 
 /** 无边框模式 */
 .@{prefix}-select-input--borderless {

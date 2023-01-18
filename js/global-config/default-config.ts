@@ -26,6 +26,7 @@ export default {
       success: 'primary',
     },
   },
+  message: {},
   popconfirm: {
     confirmBtnTheme: {
       default: 'primary',
@@ -71,4 +72,4 @@ export default {
   form: {
     requiredMark: undefined,
   },
-};
+} as const;

@@ -178,4 +178,22 @@ export default {
     recentColorTitle: 'Recently Used',
     clearConfirmText: 'Clear recently used colors?',
   },
-};
+  guide: {
+    finishButtonProps: {
+      content: 'Finish',
+      theme: 'primary'
+    },
+    nextButtonProps: {
+      content: 'Next Step',
+      theme: 'primary'
+    },
+    skipButtonProps: {
+      content: 'Skip',
+      theme: 'default'
+    },
+    prevButtonProps: {
+      content: 'Last Step',
+      theme: 'default'
+    },
+  },
+} as const;

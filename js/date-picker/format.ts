@@ -145,9 +145,13 @@ function formatSingle({
 // 检测日期是否合法
 export function isValidDate(value: DateValue | DateValue[], format: string) {
   if (Array.isArray(value)) {
-    return value.every((v) => dayjs(v, format).isValid() || dayjs(v).isValid());
+    return value.every((v) => {
+      if (v === '') return true;
+      return dayjs(v, format).isValid() || dayjs(v).isValid();
+    });
   }
 
+  if (value === '') return true;
   return dayjs(value, format).isValid() || dayjs(value).isValid();
 }
 
@@ -233,4 +237,48 @@ export function getDefaultFormat({
   }
   log.error('DatePicker', `Invalid mode: ${mode}`);
   return {};
+}
+
+// 初始化面板年份月份
+export function initYearMonthTime({
+  value,
+  mode = 'date',
+  format,
+  timeFormat = 'HH:mm:ss',
+  enableTimePicker,
+}: {
+  value: Array<any>;
+  mode: string;
+  format: string;
+  timeFormat?: string;
+  enableTimePicker?: boolean;
+}) {
+  const defaultYearMonthTime = {
+    year: [dayjs().year(), dayjs().year()],
+    month: [dayjs().month(), dayjs().month()],
+    time: [dayjs().format(timeFormat), dayjs().format(timeFormat)],
+  };
+  if (mode === 'year') {
+    defaultYearMonthTime.year[1] += 10;
+  } else if (mode === 'month' || mode === 'quarter') {
+    defaultYearMonthTime.year[1] += 1;
+  } else if ((mode === 'date' || mode === 'week') && !enableTimePicker) {
+    // 切换至下一年
+    if (defaultYearMonthTime.month[0] === 11) {
+      defaultYearMonthTime.year[1] += 1;
+      defaultYearMonthTime.month[1] = 0;
+    } else {
+      defaultYearMonthTime.month[1] += 1;
+    }
+  }
+
+  if (!value || !Array.isArray(value) || !value.length) {
+    return defaultYearMonthTime;
+  }
+
+  return {
+    year: value.map((v) => parseToDayjs(v, format).year()),
+    month: value.map((v) => parseToDayjs(v, format).month()),
+    time: value.map((v) => parseToDayjs(v, format).format(timeFormat)),
+  };
 }

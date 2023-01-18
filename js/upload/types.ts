@@ -71,6 +71,7 @@ export interface InnerProgressContext {
   files?: UploadFile[];
   percent: number;
   type: ProgressContext['type'];
+  XMLHttpRequest?: XMLHttpRequest;
 }
 
 export interface SuccessContext {
@@ -102,6 +103,8 @@ export interface XhrOptions {
   file?: UploadFile;
   files?: UploadFile[];
   useMockProgress?: boolean;
+  // 模拟进度间隔时间，默认：300
+  mockProgressDuration?: number;
   name: string;
   /** 可与 data 共存 */
   formatRequest?: (requestData: { [key: string]: any }) => { [key: string]: any };
@@ -191,6 +194,8 @@ export interface HandleUploadParams {
   name?: string;
   /** 是否需要真实进度之前的模拟进度 */
   useMockProgress?: boolean;
+  // 模拟进度间隔时间
+  mockProgressDuration?: number;
   multiple?: boolean;
   headers?: {[key: string]: string};
   withCredentials?: boolean;

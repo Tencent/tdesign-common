@@ -172,6 +172,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         action: params.action,
         files: params.toUploadFiles,
         useMockProgress: params.useMockProgress,
+        mockProgressDuration: params.mockProgressDuration,
         onError: (p: OnErrorParams) => {
           const r = handleError({ ...p, formatResponse: params.formatResponse });
           params.onResponseError?.(r);
