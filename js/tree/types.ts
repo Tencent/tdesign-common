@@ -55,7 +55,7 @@ export interface TreeNodeState {
    * 节点标签文案
    * @default ''
    */
-  label?: string;
+  label?: any;
   /**
    * 节点是否已展开
    * @default false
