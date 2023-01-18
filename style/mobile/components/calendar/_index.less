@@ -73,10 +73,6 @@
       max-height: 456px;
       overflow-y: scroll;
       padding: 0 16px 16px;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
     }
   }
 
@@ -85,6 +81,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    overflow: scroll;
 
     &-item {
       position: relative;
