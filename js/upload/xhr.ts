@@ -85,7 +85,7 @@ export default function xhr({
   Object.keys(headers).forEach((key) => {
     xhr.setRequestHeader(key, headers[key]);
   });
-  
+
   xhr.onerror = (event: ProgressEvent) => {
     onError({ event, file, files: innerFiles, XMLHttpRequest: xhr, });
     clearInterval(timer1);
@@ -161,6 +161,8 @@ export default function xhr({
   xhr.send(formData);
   // @ts-ignore
   xhr.upload.requestParams = requestData;
+  // @ts-ignore
+  xhr.upload.requestHeaders = headers;
 
   return xhr;
 }
