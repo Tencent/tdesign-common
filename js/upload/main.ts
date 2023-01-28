@@ -224,7 +224,7 @@ Promise<UploadRequestReturn> {
   const thisUploadFiles = toUploadFiles.filter((t) => (
     !t.response || (t.response && !t.response.error)
   ));
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     // 所有文件一次性上传
     if (uploadAllFilesInOneRequest || !params.multiple) {
       uploadOneRequest(params).then((r) => {
@@ -235,7 +235,7 @@ Promise<UploadRequestReturn> {
         }
         const failedFiles = r.status === 'fail' ? r.data.files : [];
         resolve({ ...r, failedFiles });
-      }, reject);
+      });
       return;
     }
     // 一个文件一个文件上传
