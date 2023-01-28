@@ -60,6 +60,7 @@ spline: form
 - 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
 - 如果拖拽上传单个文件，设置 `theme="file"` 和 `draggable=true`。
 - 如果拖拽上传单张图片，设置 `theme="image"` 和 `draggable=true`。
+- 可以使用 `fileListDisplay` 自定义文件信息呈现内容。
 
 {{ draggable }}
 
