@@ -12,6 +12,7 @@ import {
   SuccessContext,
   handleSuccessParams,
   UploadTriggerUploadText,
+  ErrorContext,
 } from './types';
 
 export interface BeforeUploadExtra {
@@ -58,15 +59,12 @@ export function handleBeforeUpload(
   });
 }
 
-export interface OnErrorParams {
-  event?: ProgressEvent;
-  files?: UploadFile[];
-  response?: any;
+export interface OnErrorParams extends ErrorContext {
   formatResponse?: HandleUploadParams['formatResponse'];
 }
 
 export function handleError(options: OnErrorParams) {
-  const { event, files, response, formatResponse } = options;
+  const { event, files, response, XMLHttpRequest, formatResponse } = options;
   files.forEach((file) => {
     file.status = 'fail';
   });
@@ -74,11 +72,11 @@ export function handleError(options: OnErrorParams) {
   if (typeof formatResponse === 'function') {
     res = formatResponse(response, { file: files[0], currentFiles: files });
   }
-  return { response: res, event, files };
+  return { response: res, event, files, XMLHttpRequest };
 }
 
 export function handleSuccess(params: handleSuccessParams) {
-  const { event, files, response } = params;
+  const { event, files, response, XMLHttpRequest } = params;
   if (files?.length <= 0) {
     log.error('Upload', 'Empty File in Success Callback');
   }
@@ -89,7 +87,7 @@ export function handleSuccess(params: handleSuccessParams) {
   });
   const res = response;
   files[0].url = res.url || files[0].url;
-  return { response: res, event, files };
+  return { response: res, event, files, XMLHttpRequest };
 }
 
 export type UploadRequestReturn = {
@@ -173,7 +171,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         files: params.toUploadFiles,
         useMockProgress: params.useMockProgress,
         mockProgressDuration: params.mockProgressDuration,
-        onError: (p: OnErrorParams) => {
+        onError: (p: ErrorContext) => {
           const r = handleError({ ...p, formatResponse: params.formatResponse });
           params.onResponseError?.(r);
           resolve({ status: 'fail', data: r });
@@ -272,11 +270,12 @@ Promise<UploadRequestReturn> {
 }
 
 export function formatToUploadFile(
-  tmpFiles: File[],
+  files: File[],
   format: FileChangeParams['format'],
-  autoUpload: boolean,
+  status,
+  percent = 0,
 ) {
-  return tmpFiles.map((fileRaw: File) => {
+  return files.map((fileRaw: File) => {
     let file: UploadFile = fileRaw;
     if (typeof format === 'function') {
       file = format(fileRaw);
@@ -287,8 +286,8 @@ export function formatToUploadFile(
       name: fileRaw.name,
       size: fileRaw.size,
       type: fileRaw.type,
-      percent: 0,
-      status: autoUpload ? 'progress' : 'waiting',
+      percent,
+      status,
       ...file,
     };
     return uploadFile;
@@ -311,11 +310,10 @@ export function validateFile(
       hasSameNameFile = true;
     }
     if (!tmpFiles.length) {
-      const tFiles = formatToUploadFile(files, params.format, params.autoUpload);
+      const tFiles = formatToUploadFile(files, params.format, params.autoUpload ? 'progress' : 'waiting');
       resolve({ hasSameNameFile, file: tFiles?.[0], files: tFiles, validateResult: { type: 'FILTER_FILE_SAME_NAME' } });
       return;
     }
-
     // 上传文件数量限制
     let lengthOverLimit = false;
     if (max && tmpFiles.length && !params.isBatchUpload) {
@@ -326,7 +324,7 @@ export function validateFile(
     }
 
     // 格式化文件对象
-    const formattedFiles = formatToUploadFile(tmpFiles, params.format, params.autoUpload);
+    const formattedFiles = formatToUploadFile(tmpFiles, params.format, params.autoUpload ? 'progress' : 'waiting');
 
     // 全量文件，一波校验，整体上传 或 终止上传
     let allFileValidatePromise;
@@ -351,6 +349,7 @@ export function validateFile(
     }));
     Promise.all([allFileValidatePromise].concat(promiseList)).then((results) => {
       const [allFilesResult, ...others] = results;
+      // 如果 beforeAllFilesUpload 校验未通过
       if (allFilesResult === false) {
         resolve({
           lengthOverLimit,
@@ -372,9 +371,13 @@ export function validateFile(
 
 export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError: (p: {[key: string]: any }) => string) {
   const sizeLimitErrors: FileChangeReturn[] = [];
+  const beforeUploadErrorFiles: UploadFile[] = [];
   const toFiles: UploadFile[] = [];
   fileValidateList.forEach((oneFile) => {
-    if (oneFile.validateResult?.type === 'CUSTOM_BEFORE_UPLOAD') return;
+    if (oneFile.validateResult?.type === 'CUSTOM_BEFORE_UPLOAD') {
+      beforeUploadErrorFiles.push(oneFile.file);
+      return;
+    }
     if (oneFile.validateResult?.type === 'FILE_OVER_SIZE_LIMIT') {
       if (!oneFile.file.response) {
         oneFile.file.response = {};
@@ -387,7 +390,7 @@ export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError
     toFiles.push(oneFile.file);
   });
 
-  return { sizeLimitErrors, toFiles };
+  return { sizeLimitErrors, beforeUploadErrorFiles, toFiles };
 }
 
 /**
