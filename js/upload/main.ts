@@ -272,7 +272,7 @@ Promise<UploadRequestReturn> {
 export function formatToUploadFile(
   files: File[],
   format: FileChangeParams['format'],
-  status,
+  status = undefined,
   percent = 0,
 ) {
   return files.map((fileRaw: File) => {
