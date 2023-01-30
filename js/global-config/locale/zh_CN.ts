@@ -221,6 +221,6 @@ export default {
     errorText: "图片加载失败，可尝试重新加载",
     mirrorTipText: "镜像",
     rotateTipText: "旋转",
-    originsizeTipText: "原始大小",
+    originalSizeTipText: "原始大小",
   },
 } as const;

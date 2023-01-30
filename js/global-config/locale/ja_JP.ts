@@ -221,6 +221,6 @@ export default {
     errorText: "画像の読み込みに失敗しました。再読み込みしてみてください",
     mirrorTipText: "鏡像",
     rotateTipText: "回転する",
-    originsizeTipText: "オリジナルサイズ",
+    originalSizeTipText: "オリジナルサイズ",
   },
 } as const;
