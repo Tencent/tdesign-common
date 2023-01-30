@@ -1,5 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/en';
 export default {
   pagination: {
     itemsPerPage: "{size} / page",
@@ -31,6 +32,7 @@ export default {
     placeholder: "enter keyworkd to search",
   },
   timePicker: {
+    dayjsLocale: 'en',
     now: "Now",
     confirm: "Confirm",
     anteMeridiem: "AM",
@@ -86,6 +88,7 @@ export default {
     placeholder: "please select",
   },
   datePicker: {
+    dayjsLocale: 'en',
     placeholder: {
       date: "select date",
       month: "select month",

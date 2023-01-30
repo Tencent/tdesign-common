@@ -1,5 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/zh-cn';
 export default {
   pagination: {
     itemsPerPage: "{size} 条/页",
@@ -30,6 +31,7 @@ export default {
     placeholder: "请输入关键词搜索",
   },
   timePicker: {
+    dayjsLocale: 'zh-cn',
     now: "此刻",
     confirm: "确定",
     anteMeridiem: "上午",
@@ -84,6 +86,7 @@ export default {
     placeholder: "请选择",
   },
   datePicker: {
+    dayjsLocale: 'zh-cn',
     placeholder: {
       date: "请选择日期",
       month: "请选择月份",

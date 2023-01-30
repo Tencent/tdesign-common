@@ -1,5 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/ja';
 export default {
   pagination: {
     itemsPerPage: "{size} /ページ",
@@ -30,6 +31,7 @@ export default {
     placeholder: "検索するキーワードを入力してください",
   },
   timePicker: {
+    dayjsLocale: 'ja',
     now: "このとき",
     confirm: "決定事項",
     anteMeridiem: "モーニング",
@@ -84,6 +86,7 @@ export default {
     placeholder: "選択してください",
   },
   datePicker: {
+    dayjsLocale: 'ja',
     placeholder: {
       date: "日付を選択してください",
       month: "月を選択してください",
