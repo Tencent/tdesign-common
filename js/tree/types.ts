@@ -86,7 +86,7 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
   /**
    * 当前节点标签文本
    */
-  label: string;
+  label: any;
   /**
    * 当前节点是否处于高亮激活态
    */
@@ -208,7 +208,7 @@ export interface TypeTreeFilterOptions {
 
 export interface TypeTreeNodeData extends TreeNodeState {
   children?: TypeTreeNodeData[];
-  [key: string]: unknown;
+  [key: string]: any;
 }
 
 export type TypeTreeItem = TypeTreeNodeData | TreeNode;
