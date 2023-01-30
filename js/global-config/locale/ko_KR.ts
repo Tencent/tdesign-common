@@ -221,6 +221,6 @@ export default {
     errorText: "이미지를 로드하지 못했습니다. 새로고침해 보세요.",
     mirrorTipText: "미러 이미지",
     rotateTipText: "회전하다",
-    originsizeTipText: "원본 크기",
+    originalSizeTipText: "원본 크기",
   },
 } as const;

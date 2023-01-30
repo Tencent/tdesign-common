@@ -218,6 +218,6 @@ export default {
     errorText: "غير قادر على التحميل",
     mirrorTipText: "مرآة",
     rotateTipText: "استدارة",
-    originsizeTipText: "أصلي",
+    originalSizeTipText: "أصلي",
   },
 } as const;

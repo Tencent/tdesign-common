@@ -221,7 +221,7 @@ export default {
       errorText: "unable to load",
       mirrorTipText: "mirror",
       rotateTipText: "rotate",
-      originsizeTipText: "original",
+      originalSizeTipText: "original",
     },
   },
 } as const;
