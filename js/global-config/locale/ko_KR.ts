@@ -1,5 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/ko';
 export default {
   pagination: {
     itemsPerPage: "{size} /페이지",
@@ -30,6 +31,7 @@ export default {
     placeholder: "검색할 키워드를 입력하세요",
   },
   timePicker: {
+    dayjsLocale: 'ko',
     now: "지금",
     confirm: "확신하는",
     anteMeridiem: "아침",
@@ -84,6 +86,7 @@ export default {
     placeholder: "선택해주세요",
   },
   datePicker: {
+    dayjsLocale: 'ko',
     placeholder: {
       date: "날짜를 선택하세요Z",
       month: "월을 선택하세요",

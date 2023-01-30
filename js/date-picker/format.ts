@@ -10,7 +10,8 @@ export const TIME_FORMAT = 'HH:mm:ss';
 export function parseToDayjs(
   value: string | Date | number,
   format: string,
-  timeOfDay?: string
+  timeOfDay?: string,
+  dayjsLocale?: string,
 ) {
   if (value === '') return dayjs();
 
@@ -18,13 +19,13 @@ export function parseToDayjs(
   // format week
   if (/[w|W]/g.test(format)) {
     if (typeof dateText !== 'string') {
-      dateText = dayjs(dateText).format(format) as string;
+      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
-    const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
+    const firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
     for (let i = 0; i <= 52; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
@@ -38,7 +39,7 @@ export function parseToDayjs(
   // format quarter
   if (/Q/g.test(format)) {
     if (typeof dateText !== 'string') {
-      dateText = dayjs(dateText).format(format) as string;
+      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
@@ -71,17 +72,19 @@ export function parseToDayjs(
 function formatRange({
   newDate,
   format,
+  dayjsLocale,
   targetFormat,
   autoSwap,
 }: {
   newDate: any;
   format: string;
+  dayjsLocale?: string;
   targetFormat?: string;
   autoSwap?: boolean;
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
-  let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format));
+  let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format).locale(dayjsLocale));
 
   // 保证后面的时间大于前面的时间
   if (
@@ -116,14 +119,16 @@ function formatSingle({
   newDate,
   format,
   targetFormat,
+  dayjsLocale,
 }: {
   newDate: any;
   format: string;
   targetFormat?: string;
+  dayjsLocale?: string;
 }) {
   if (!newDate) return '';
 
-  const dayJsDate = parseToDayjs(newDate, format);
+  const dayJsDate = parseToDayjs(newDate, format).locale(dayjsLocale);
 
   // 格式化失败提示
   if (!dayJsDate.isValid()) {
@@ -161,15 +166,16 @@ export function formatDate(
   {
     format,
     targetFormat,
+    dayjsLocale = 'zh-cn',
     autoSwap,
-  }: { format: string; targetFormat?: string; autoSwap?: boolean }
+  }: { format: string; dayjsLocale?: string, targetFormat?: string; autoSwap?: boolean }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({ newDate, format, targetFormat, autoSwap });
+    result = formatRange({ newDate, format, dayjsLocale, targetFormat, autoSwap });
   } else {
-    result = formatSingle({ newDate, format, targetFormat });
+    result = formatSingle({ newDate, format, dayjsLocale, targetFormat });
   }
 
   return result;

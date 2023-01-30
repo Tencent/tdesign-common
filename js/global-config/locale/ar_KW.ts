@@ -1,5 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/ar';
 export default {
   pagination: {
     itemsPerPage: "{size} / الصفحة",
@@ -31,6 +32,7 @@ export default {
     placeholder: "أدخل الكلمة للبحث",
   },
   timePicker: {
+    dayjsLocale: 'ar',
     now: "الآن",
     confirm: "نعم",
     anteMeridiem: "صباحا",
@@ -85,6 +87,7 @@ export default {
   },
 
   datePicker: {
+    dayjsLocale: 'ar',
     placeholder: {
       date: "حدد تاريخ",
       month: "اختر الشهر",
