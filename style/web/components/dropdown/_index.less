@@ -60,11 +60,11 @@
     &--overflow {
       // 处理菜单超过最大高度时无法选择二级菜单的问题
       .@{prefix}-dropdown__submenu {
-        &--right {
+        &-wrapper--right {
           left: calc(100% - 14px);
         }
 
-        &--left {
+        &-wrapper--left {
           right: calc(100% - 14px);
         }
       }
@@ -72,6 +72,8 @@
   }
 
   &__submenu {
+    .scrollbar(8px, 2px);
+
     background-color: @dropdown-bg-color;
     box-shadow: @shadow-2;
     border-radius: @border-radius-medium;
@@ -80,6 +82,8 @@
     position: absolute;
     padding: @dropdown-menu-padding;
     display: none;
+    overflow-y: auto;
+    overflow-x: visible;
 
     ul {
       list-style: none;
@@ -92,7 +96,7 @@
       visibility: hidden;
     }
 
-    &--right {
+    &-wrapper--right {
       left: calc(100% - 6px);
 
       .@{prefix}-dropdown__item-direction {
@@ -100,7 +104,7 @@
       }
     }
 
-    &--left {
+    &-wrapper--left {
       right: calc(100% - 6px);
 
       .@{prefix}-dropdown__item {
@@ -136,7 +140,7 @@
       font-size: @dropdown-text-icon-size;
     }
 
-    &:hover > div {
+    &:hover > div > div {
       display: flex;
     }
 
