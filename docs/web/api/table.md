@@ -79,7 +79,7 @@ spline: data
 
 - 使用 `cell` 作为渲染函数，函数参数为：`{col, colIndex, row, rowIndex}`。
 
-- 对于有插槽特性的框架，支持插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 
 - 【不推荐使用】使用 `render` 渲染函数，函数参数为：`{col, colIndex, row, rowIndex, type}`，其中 `type` 的值为 `cell`。
 
@@ -91,7 +91,7 @@ spline: data
 
 - 使用 `title` 作为渲染函数，函数参数为：`title({ col, colIndex })`。
 
-- 对于有插槽特性的框架，支持插槽，使用 `title` 的值作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `title` 的值作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 
 - 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({ col, colIndex, row, rowIndex, type })`，其中 `type` 值为 `title`。使用排序、过滤等功能时不能使用该方法。
 
@@ -102,7 +102,7 @@ spline: data
 表格提供自定义表尾功能，可用于表尾数据统计等场景。使用 `column.foot` 定义每一列的表尾内容。
 
 - 默认输出 `column.foot` 字符串，如果 `foot` 类型为函数，则作为表尾渲染函数自定义表尾内容。
-- 对于有插槽特性的框架，支持插槽，使用 `foot` 值作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `foot` 值作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 - 如果想定义通栏表尾，请使用 `footerSummary`
 - 如果想自定义表尾合并单元格信息，请使用 `rowspanAndColspanInFooter`，类似表格内容的合并单元格方法 `rowspanAndColspan`。
 
@@ -195,9 +195,18 @@ spline: data
 
 #### 单选
 
+- `selectedRowKeys` 表示当前选中行的唯一标识数组，支持非受控属性 `defaultSelectedRowKeys`
+- `onSelectChange` 会在选中行发生变化时触发
+- 设置 `columns: [{ colKey: 'row-select', type: 'single' }]` 可以将任意列定义为行选中操作列。
+
 {{ select-single }}
 
 #### 多选
+
+- `selectedRowKeys` 表示当前选中行的唯一标识数组，支持非受控属性 `defaultSelectedRowKeys`
+- `onSelectChange` 会在选中行发生变化时触发
+- 设置 `columns: [{ colKey: 'row-select', type: 'multiple' }]` 可以将任意列定义为行选中操作列。
+- 分页场景下的行选中，默认允许跨分页选中，即翻页时，上一页选中结果依然保存。如果希望每一页单独控制选中，互不影响，可设置 `reserveSelectedRowOnPaginate=false`
 
 {{ select-multiple }}
 
@@ -211,7 +220,8 @@ spline: data
 
 #### 本地数据分页
 
-本地数据分页，表示组件内部会对参数 `data` 进行分页。
+当 `data.length` 长度超过 `pageSize`，单页已无法完整地显示数据，此时会自动开启本地数据分页，组件内部会对 `data` 进行分页。
+如果希望禁用组件内部分页，可以设置 `disableDataPage=true`。
 
 {{ pagination }}
 
@@ -317,7 +327,7 @@ spline: data
 
 虚拟滚动场景下，支持表格的几乎全部功能，如：固定列、固定表头、固定表尾、表头吸顶、表尾吸底等。实验场地请参看「多级表头的表格」示例。
 
-- 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+- 虚拟滚动一般用于超大数据渲染的场景，以提供更优的前端性能表现，设置 `scroll={ type: 'virtual' }` 即可开启虚拟滚动模式。
 - 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
 
 {{ virtual-scroll }}

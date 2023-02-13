@@ -36,6 +36,12 @@
   &.@{prefix}-size-l {
     .avatar-size(@avatar-size-large,@avatar-font-large,@avatar-icon-large);
   }
+
+  // 保证 Image 不会超出 Avatar
+  > .@{prefix}-image__wrapper {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 .@{prefix}-avatar-group {

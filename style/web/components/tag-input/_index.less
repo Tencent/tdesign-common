@@ -8,12 +8,12 @@
 
 .@{prefix}-tag-input {
   .reset;
+
   .@{prefix}-tag {
     animation: t-fade-in @anim-duration-base ease-in-out;
+    margin: @comp-margin-xxs @comp-margin-xs @comp-margin-xxs 0;
   }
-  .@{prefix}-tag + .@{prefix}-tag {
-    margin-left: @comp-margin-xs;
-  }
+
   .@{prefix}-tag-input__drag_wrapper + .@{prefix}-tag-input__drag_wrapper {
     margin-left: @comp-margin-xs;
   }
@@ -21,19 +21,30 @@
   .@{prefix}-input {
     overflow: hidden;
     min-height: @tag-input-height-default;
-    line-height: @tag-input-line-height-default;
-    padding: 0 @comp-paddingLR-xs;
     height: fit-content;
+    padding: 1px @comp-paddingLR-s 1px @comp-margin-xs;
+    .t-input-suffix-icon(@comp-margin-s);
 
     &.@{prefix}-size-s {
-      padding: calc(@comp-paddingTB-xxs - 1px) @comp-paddingLR-xs;
+      padding: 0 @comp-paddingLR-xxs 0 @comp-margin-xs;
       min-height: @tag-input-height-s;
-      line-height: @tag-input-line-height-s;
+      .@{prefix}-tag {
+        margin: 1px @comp-margin-xs 1px 0;
+      }
     }
 
     &.@{prefix}-size-l {
       min-height: @tag-input-height-l;
-      line-height: @tag-input-line-height-l;
+      padding-right: @comp-paddingLR-m;
+      .t-input-suffix-icon(@comp-margin-m);
+    }
+  }
+
+  /** 设计稿：未填充标签场景，边距和已填充不同 */
+  &.@{prefix}-is-empty {
+
+    .@{prefix}-input__inner {
+      margin-left: @comp-margin-xs;
     }
   }
 
@@ -44,13 +55,23 @@
     }
   }
 
-  .@{prefix}-tag-input__prefix,
-  .@{prefix}-input__prefix:empty + input {
+  .@{prefix}-tag-input__prefix {
     margin-left: @comp-margin-xs;
   }
 
-  .@{prefix}-input--auto-width {
-    padding-right: @comp-paddingLR-xs;
+  .@{prefix}-input .@{prefix}-input__prefix:not(:empty) {
+    margin-right: 0;
+  }
+
+  &.@{prefix}-input--auto-width {
+
+    .@{prefix}-input.@{prefix}-input--focused {
+      padding-right: @tag-input-clear-icon-padding-m;
+    }
+
+    .@{prefix}-input__prefix {
+      white-space: nowrap;
+    }
   }
 }
 
@@ -59,11 +80,10 @@
 }
 
 // 标签数量超出时，换行显示
-.@{prefix}-tag-input--break-line {
+.@{prefix}-tag-input--break-line:not(.@{prefix}-is-empty) {
 
   .@{prefix}-input {
     display: block;
-    padding-right: @comp-paddingLR-xl;
 
     &.@{prefix}-input--prefix > .@{prefix}-input__prefix {
       display: inline;
@@ -72,9 +92,12 @@
 
     .@{prefix}-input__suffix-icon {
       position: absolute;
-      right: @comp-margin-s;
       bottom: 0;
     }
+  }
+
+  .@{prefix}-tag-input__prefix {
+    vertical-align: text-top;
   }
 }
 
@@ -82,4 +105,25 @@
   width: max-content;
   display: inline-block;
   margin-right: @comp-margin-s;
+}
+
+/** 换行模式避免标签和右侧图标重合，需保留图标宽度 22px 和左侧距离标签间距 8px */
+.@{prefix}-tag-input--break-line.@{prefix}-tag-input--with-tag:not(.@{prefix}-input--auto-width),
+.@{prefix}-tag-input.@{prefix}-input--auto-width:hover {
+  .@{prefix}-input {
+    padding-right: @tag-input-clear-icon-padding-m;
+  }
+
+  .@{prefix}-size-l {
+    .@{prefix}-input {
+      padding-right: @tag-input-clear-icon-padding-l;
+    }
+  }
+}
+
+/** auto-width 模式，左右边距相同 */
+.@{prefix}-tag-input.@{prefix}-input--auto-width {
+  .@{prefix}-input {
+    padding-right: 0;
+  }
 }

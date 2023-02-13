@@ -110,6 +110,7 @@
   }
 
   .@{prefix}-text-ellipsis {
+    line-height: @table-line-height;
     .text-ellipsis();
   }
 
@@ -123,10 +124,7 @@
     overflow-wrap: break-word;
     background-color: inherit;
     box-sizing: border-box;
-
-    &:not([align]) {
-      text-align: left;
-    }
+    text-align: left;
   }
 
   th.@{prefix}-table__th-drag {
@@ -184,12 +182,6 @@
   .@{prefix}-table__selection-cell {
     padding: 0;
     height: 0;
-
-    + td,
-    + th {
-      padding-left: 0;
-      padding-right: 0;
-    }
   }
 
   td.@{prefix}-table__handle-draggable {
@@ -279,6 +271,13 @@
 
   // 斑马线表格
   &--striped {
+
+    &:not(.@{prefix}-table--bordered) {
+      th,
+      td {
+        border-bottom: none;
+      }
+    }
 
     &.@{prefix}-table--header-fixed {
       tbody tr:nth-of-type(even) {
@@ -555,7 +554,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
+  min-height: 120px;
   color: @table-color-empty;
 }
 
@@ -1030,8 +1029,9 @@
   height: 100%;
 }
 
+/** 默认最小高度限制为 Empty 高度加表头高度 */
 .@{prefix}-table--loading .@{prefix}-table__content {
-  min-height: 200px;
+  min-height: 168px;
 }
 
 .@{prefix}-table__handle-draggable:hover,
@@ -1047,6 +1047,7 @@
 .@{prefix}-table:not(.@{prefix}-table--row-edit) {
   .@{prefix}-table__cell--editable {
     min-height: 22px;
+    line-height: @table-line-height;
     cursor: pointer;
 
     .t-icon {
@@ -1103,8 +1104,8 @@
     /** HTML 特性: th/td 必须设置为 0，他们的子元素才能设置为 100% */
     height: 0;
 
-    .@{prefix}-radio__label,
-    .@{prefix}-checkbox__label {
+    .@{prefix}-radio__label:empty,
+    .@{prefix}-checkbox__label:empty {
       display: none;
     }
   }
@@ -1135,4 +1136,11 @@
 // 超出省略的文本，也需要跟着尺寸变化
 .@{prefix}-table__ellipsis-content.@{prefix}-size-s .@{prefix}-popup__content {
   font: @table-font;
+}
+
+/** Chrome 兼容问题处理 */
+.@{prefix}-table--chrome.@{prefix}-table--multiple-header {
+  .@{prefix}-table__affixed-header-elm {
+    margin-top: 1px;
+  }
 }

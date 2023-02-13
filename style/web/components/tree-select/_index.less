@@ -2,6 +2,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 .@{prefix}-tree-select {
   .reset;
 
@@ -43,6 +45,10 @@
 // 浮层样式
 .@{prefix}-tree-select-popup {
   .@{prefix}-popup__content {
+    .scrollbar(8px, 2px);
+
     padding: @pop-padding-m;
+    max-height: 300px;
+    overflow-y: auto;
   }
 }

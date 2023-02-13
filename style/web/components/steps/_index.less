@@ -116,7 +116,6 @@
     &.@{prefix}-steps--default-anchor {
 
       .@{prefix}-steps-item__content {
-        margin-top: @steps-item-content-margin-top-vertical;
         margin-left: @steps-item-content-margin-left-vertical;
       }
 
@@ -135,6 +134,10 @@
 
       .@{prefix}-steps-item {
         margin-bottom: 0;
+
+        .@{prefix}-steps-item__title {
+          margin-bottom: @steps-item-title-margin-bottom;
+        }
 
         &--finish {
           .dot-anchor-status(finish);

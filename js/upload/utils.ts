@@ -1,4 +1,4 @@
-import { SizeUnit, TdUploadFile } from './types';
+import { SizeUnit } from './types';
 import log from '../log/log';
 
 /**
@@ -145,32 +145,6 @@ export function isOverSizeLimit1(
 }
 
 export const urlCreator = () => window.webkitURL || window.URL;
-
-/**
- *
- * @param files 待处理文件
- * @param format 格式化规则
- */
-export function formatFiles(
-  files: File[] = [],
-  format?: (file: File) => TdUploadFile
-) {
-  return files.map((fileRaw) => {
-    const file = typeof format === 'function' ? format(fileRaw) : fileRaw;
-    const uploadFile: TdUploadFile = {
-      raw: fileRaw,
-      lastModified: fileRaw.lastModified,
-      name: fileRaw.name,
-      size: fileRaw.size,
-      type: fileRaw.type,
-      percent: 0,
-      status: 'waiting',
-      ...file,
-    };
-    uploadFile.url = urlCreator()?.createObjectURL(fileRaw);
-    return uploadFile;
-  });
-}
 
 export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
   return new Promise((resolve) => {

@@ -79,7 +79,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2000;
+  z-index: @z-index-image-viewer;
   overflow: hidden;
   animation: @anim-duration-base @anim-time-fn-ease-in modal-mask-show;
 
@@ -454,8 +454,21 @@
 }
 
 .@{prefix}-image-viewer__dialog {
+  &.@{prefix}-dialog__ctx--fixed {
+    z-index: @z-index-image-viewer;
+  }
+
   .@{prefix}-dialog__header {
     padding: 0 @comp-paddingLR-s;
+    // 兼容dialog表头限制无法拖拽
+    pointer-events: none;
+    .@{prefix}-image-viewer__dialog-title {
+      pointer-events: all;
+    }
+
+    .@{prefix}-dialog__close {
+      pointer-events: auto;
+    }
   }
 
   .@{prefix}-dialog {

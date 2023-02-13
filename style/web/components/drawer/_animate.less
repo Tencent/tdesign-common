@@ -17,13 +17,18 @@
 }
 
 .@{prefix}-drawer-fade-enter.@{prefix}-drawer-fade-enter-active,
-.@{prefix}-drawer-fade-appear.@{prefix}-drawer-fade-appear-active {
+.@{prefix}-drawer-fade-enter.@{prefix}-drawer-fade-enter-active.@{prefix}-drawer-fade-enter-to,
+.@{prefix}-drawer-fade-appear.@{prefix}-drawer-fade-appear-active,
+.@{prefix}-drawer-fade-appear.@{prefix}-drawer-fade-appear-active.@{prefix}-drawer-fade-appear-to {
   animation-name: tDrawerFadeIn;
+  animation-duration: @anim-duration-base;
   animation-play-state: running;
 }
 
-.@{prefix}-drawer-fade-exit.@{prefix}-drawer-fade-exit-active {
+.@{prefix}-drawer-fade-exit.@{prefix}-drawer-fade-exit-active,
+.@{prefix}-drawer-fade-leave-active.@{prefix}-drawer-fade-leave-to {
   animation-name: tDrawerFadeOut;
+  animation-duration: @anim-duration-base;
   animation-play-state: running;
 }
 

@@ -33,7 +33,7 @@ a.@{prefix}-menu__item {
     height: @comp-size-xxxl;
 
     li + li {
-      margin-left: @comp-margin-xs;
+      margin-left: @comp-margin-s;
     }
 
     .@{prefix}-menu {
@@ -68,10 +68,10 @@ a.@{prefix}-menu__item {
     }
 
     &-icon {
-      width: 40px;
-      height: 40px;
+      width: @head-menu-item-height;
+      height: @head-menu-item-height;
       padding: @comp-paddingTB-s @comp-paddingLR-s;
-      line-height: 40px;
+      line-height: @head-menu-item-height;
       box-sizing: border-box;
     }
   }
@@ -93,82 +93,55 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-menu__item {
-    min-width: @head-menu-item-width;
     height: @head-menu-item-height;
     line-height: @head-menu-item-height;
+    padding: 0 @comp-paddingLR-l;
     justify-content: center;
     transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
   }
 
   &__submenu {
     border-top: 1px solid @head-menu-submenu-border-color;
-
-    // menu 双层导航使用了 Tabs 实现，需要 tab 样式保持跟 menu theme 一致，不跟随整体亮色/暗色模式切换
-    .@{prefix}-tabs {
-      background: #fff;
-
-      &__bar {
-        background-color: @submenu-dark-item-active-color;
-      }
-
-      &__nav-item {
-        color: @font-gray-2;
-
-        &-wrapper {
-          --ripple-color: @menu-item-animation-bg--light;
-        }
-
-        &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
-          .@{prefix}-tabs__nav-item-wrapper {
-            background-color: @menu-light-hover-bg;
-          }
-        }
-
-        &.@{prefix}-is-active {
-          color: @submenu-item-active-color;
-        }
-
-        &.@{prefix}-is-disabled {
-          color: @menu-item-disabled-color;
-        }
-
-        --ripple-color: @menu-item-animation-bg--light;
-      }
-    }
+    padding-left: 0;
   }
 
   .@{prefix}-menu__popup {
-    top: 60px;
+    top: calc(@head-menu-item-height + 12px);
+    left: 0;
     min-width: 100%;
     box-sizing: content-box;
     transform-origin: center top;
+    border: solid .5px @menu-border-color;
 
     .@{prefix}-menu__item {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       white-space: nowrap;
-      padding-left: @comp-paddingLR-l;
-      padding-right: @comp-paddingLR-l;
+      padding-left: @comp-paddingLR-s;
+      padding-right: @comp-paddingLR-s;
       min-width: 100%;
       margin-left: 0;
       color: @head-menu-popup-item-color;
       box-sizing: border-box;
+
+      &.@{prefix}-is-active {
+        color: @menu-light-active-color;
+
+        .t-icon {
+          color: @menu-light-active-color;
+        }
+      }
     }
 
     li + li {
-      margin-top: 4px;
+      margin-top: @comp-margin-xxs;
       margin-left: 0;
     }
   }
 
-  .@{prefix}-submenu-icon {
-    // to remove
-    margin-left: @comp-margin-s;
-  }
-
   .@{prefix}-fake-arrow {
-    margin-left: @comp-margin-s;
+    margin-left: @comp-margin-m;
   }
 
   // 多层情况
@@ -202,56 +175,8 @@ a.@{prefix}-menu__item {
   transition: width @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
   white-space: nowrap;
 
-  &.@{prefix}-menu--dark {
-    background: @menu-theme-dark;
-
-    .@{prefix}-menu__logo:not(:empty) {
-      border-bottom-color: @menu-border-color--dark;
-    }
-
-    .@{prefix}-menu__operations:not(:empty) {
-      border-top-color: @menu-border-color--dark;
-    }
-
-    .@{prefix}-menu__item {
-      &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-disabled) {
-        background-color: @menu-border-color--dark;
-      }
-
-      &.@{prefix}-is-active:not(.@{prefix}-is-opened) {
-        background-color: @default-menu-active-color;
-      }
-
-      &.@{prefix}-is-opened {
-        color: @menu-theme-light;
-      }
-
-      &.@{prefix}-is-opened.@{prefix}-is-active {
-        background-color: transparent;
-      }
-    }
-
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
-
-      .@{prefix}-menu__item {
-        &.@{prefix}-is-active {
-          background-color: @default-menu-active-color;
-        }
-      }
-    }
-
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
-    }
-
-    .@{prefix}-menu-group__title {
-      color: @menu-menu-group-title-color--dark;
-    }
-
-    &.@{prefix}-is-collapsed .@{prefix}-menu-group__title:after {
-      background-color: @menu-group-title-bg--collapse--dark;
-    }
+  .@{prefix}-menu__item {
+    color: @default-menu-item-color--light;
   }
 
   &.@{prefix}-is-collapsed {
@@ -272,11 +197,11 @@ a.@{prefix}-menu__item {
       text-overflow: initial;
 
       &.@{prefix}-is-active.@{prefix}-is-opened {
-        color: @menu-theme-light;
-        background-color: @default-menu-active-color;
+        color: @default-menu-active-color;
+        background-color: @menu-item-active-bg--light;
 
         .t-icon {
-          color: @menu-theme-light;
+          color: @default-menu-active-color;
         }
       }
 
@@ -295,7 +220,8 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__popup {
       .@{prefix}-menu__item {
-        padding-left: @popup-item-padding-left;
+        padding-left: @comp-paddingLR-s;
+        padding-right: @comp-paddingLR-s;
         justify-content: flex-start;
 
         span {
@@ -370,8 +296,9 @@ a.@{prefix}-menu__item {
     height: 100%;
 
     .@{prefix}-menu__logo:not(:empty) {
+      box-sizing: border-box;
       width: 100%;
-      height: var(--td-comp-size-xxxl);
+      height: @menu-height-default;
       border-bottom: 1px solid @menu-border-color;
     }
 
@@ -389,10 +316,9 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu-group {
       &__title {
         position: relative;
-        padding: 20px 16px 8px;
-        height: 48px;
+        padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs @comp-paddingLR-l;
         color: @menu-menu-group-title-color;
-        font: @menu-extra-font-size;
+        font-size: @menu-extra-font-size;
         box-sizing: border-box;
       }
     }
@@ -428,29 +354,12 @@ a.@{prefix}-menu__item {
   .@{prefix}-menu__item {
     &.@{prefix}-is-opened {
       margin: @comp-margin-xs 0;
-      color: @menu-light-active-color;
+      color: @menu-color-light;
       background-color: unset;
 
       .t-icon {
-        color: @menu-light-active-color;
+        color: @menu-color-light;
       }
-    }
-  }
-
-  .@{prefix}-menu__dropdown {
-    // display: none;
-    // position: static;
-    overflow: hidden;
-    transition: max-height @anim-duration-slow
-      cubic-bezier(.645, .045, .355, 1);
-    // height: 0;
-
-    .@{prefix}-menu__item {
-      padding-left: 64px;
-    }
-
-    &--show {
-      display: block;
     }
   }
 
@@ -461,17 +370,12 @@ a.@{prefix}-menu__item {
     transition: max-height @anim-duration-base @anim-time-fn-easing;
 
     &.@{prefix}-is-opened {
-      max-height: 1000px;
+      max-height: calc(100vh - @menu-height-default * 2);
     }
 
     .@{prefix}-menu__item {
       padding-left: var(--padding-left, 32px);
     }
-  }
-
-  .@{prefix}-menu__popup {
-    top: 0;
-    left: calc(100% + 16px);
   }
 
   .@{prefix}-menu__item {
@@ -506,19 +410,99 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-active:not(.@{prefix}-is-opened) {
-      color: @menu-theme-light;
-      background-color: @default-menu-active-color;
+      color: @default-menu-active-color;
+      background-color: @menu-item-active-bg--light;
 
       .t-icon {
-        color: @menu-theme-light;
+        color: @default-menu-active-color;
       }
     }
 
     &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-disabled) {
       background: @menu-light-active-bg;
+    }
+  }
 
-      & + .@{prefix}-menu__item {
-        margin-top: @comp-margin-xs;
+  .@{prefix}-menu__popup {
+    top: 0;
+    left: calc(100% + @pop-padding-m);
+
+    .@{prefix}-menu__item, .@{prefix}-submenu {
+      margin: @comp-margin-xxs 0 0 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &.@{prefix}-menu--dark {
+    background: @menu-theme-dark;
+
+    .@{prefix}-menu__item {
+      color: @default-menu-item-color--dark;
+    }
+
+    .@{prefix}-menu__logo:not(:empty) {
+      border-bottom-color: @menu-border-color--dark;
+    }
+
+    .@{prefix}-menu__operations:not(:empty) {
+      border-top-color: @menu-border-color--dark;
+    }
+
+    .@{prefix}-menu__item {
+      &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-disabled) {
+        background-color: @menu-border-color--dark;
+      }
+
+      &.@{prefix}-is-active:not(.@{prefix}-is-opened) {
+        color: @menu-item-active-color--dark;
+        background-color: @default-menu-active-color--dark;
+
+        .t-icon {
+          color: @menu-item-active-color--dark;
+        }
+      }
+
+      &.@{prefix}-is-opened.@{prefix}-is-active {
+        background-color: transparent;
+      }
+    }
+
+    .@{prefix}-menu__popup {
+      background: @menu-theme-dark;
+
+      .@{prefix}-menu__item {
+        &.@{prefix}-is-active {
+          background-color: @default-menu-active-color--dark;
+        }
+      }
+    }
+
+    .@{prefix}-menu__popup {
+      background: @menu-theme-dark;
+    }
+
+    .@{prefix}-menu-group__title {
+      color: @menu-menu-group-title-color--dark;
+    }
+
+    &.@{prefix}-is-collapsed {
+      .@{prefix}-menu-group__title:after {
+        background-color: @menu-group-title-bg--collapse--dark;
+      }
+
+      .@{prefix}-menu__item {
+
+        &.@{prefix}-is-active.@{prefix}-is-opened {
+          background-color: @default-menu-active-color--dark;
+          color: @menu-item-active-color--dark;
+
+          .t-icon {
+            color: @menu-item-active-color--dark;
+          }
+        }
       }
     }
   }
@@ -654,7 +638,6 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-      font-weight: 500;
       color: @menu-item-active-color--light;
     }
 
@@ -687,6 +670,7 @@ a.@{prefix}-menu__item {
 
       .@{prefix}-menu__popup {
         background-color: @menu-theme-dark;
+        border: solid .5px @menu-border-color--dark;
       }
     }
 
@@ -711,7 +695,6 @@ a.@{prefix}-menu__item {
       }
 
       &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
-        color: @menu-item-hover-color--dark;
         background-color: @menu-item-hover-bg--dark;
       }
 
@@ -731,7 +714,6 @@ a.@{prefix}-menu__item {
         }
 
         &:hover:not(.@{prefix}-is-active) {
-          color: @menu-item-hover-color--dark;
           background-color: @menu-item-hover-bg--dark;
         }
       }
@@ -750,35 +732,6 @@ a.@{prefix}-menu__item {
         }
       }
     }
-
-    // menu 双层导航使用了 Tabs 实现，需要 tab 样式保持跟 menu theme 一致，不跟随整体亮色/暗色模式切换
-    .@{prefix}-tabs {
-      background: @gray-color-11;
-
-      &__nav-item {
-        color: #fff;
-
-        &-wrapper {
-          --ripple-color: @gray-color-9;
-        }
-
-        &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-active):hover {
-          .@{prefix}-tabs__nav-item-wrapper {
-            background-color: @menu-dark-hover-bg;
-          }
-        }
-
-        &.@{prefix}-is-active {
-          color: @submenu-dark-item-active-color;
-        }
-
-        &.@{prefix}-is-disabled {
-          color: @menu-item-disabled-color-dark;
-        }
-
-        --ripple-color: @gray-color-9;
-      }
-    }
   }
 
   &__popup {
@@ -794,8 +747,13 @@ a.@{prefix}-menu__item {
     opacity: 0;
     .list-style-none();
 
+    // 超过 2 级的弹出菜单，不需要动画
+    .@{prefix}-menu__popup {
+      transition: none;
+    }
+
     &-wrapper {
-      padding: @comp-paddingLR-s;
+      padding: @pop-padding-m;
       height: 100%;
       list-style: none;
       margin: 0;
@@ -810,13 +768,12 @@ a.@{prefix}-menu__item {
       width: 0;
 
       &.@{prefix}-is-opened {
-        width: var(--popup-width, 216px);
+        width: var(--popup-width, 160px);
       }
 
       .@{prefix}-menu__item {
         padding-left: @comp-paddingLR-l;
         padding-right: @comp-paddingLR-l;
-        margin: 4px 0;
       }
     }
 
@@ -833,14 +790,16 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-      max-height: var(--popup-max-height, 364px);
+      max-height: calc(100vh - @menu-height-default * 2);
       opacity: 1;
       box-shadow: @menu-default-shadow;
       overflow: visible;
 
       .@{prefix}-menu__popup {
-        top: 0;
-        left: calc(100% + @horizontal-spacer);
+        top: calc(0px - @pop-padding-m);
+        left: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
 
         &::before {
           content: "";
@@ -857,14 +816,11 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__item {
       color: @menu-popup-item-color;
+      height: @comp-size-s;
+      line-height: @comp-size-s;
 
       + .@{prefix}-menu__item {
         margin-left: 0;
-      }
-
-      &.@{prefix}-is-active {
-        color: @menu-popup-item-active-color;
-        background-color: @menu-popup-item-active-bg;
       }
 
       &:hover:not(.@{prefix}-is-active) {
@@ -897,4 +853,17 @@ a.@{prefix}-menu__item {
 .@{prefix}-submenu__icon-arrow {
   transition: @anim-duration-base;
   opacity: 0;
+}
+
+.@{prefix}-menu__popup {
+  top: 0;
+  left: calc(100% - @pop-padding-m);
+
+  .@{prefix}-menu__item, .@{prefix}-submenu {
+    margin: @comp-margin-xxs 0 0 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }

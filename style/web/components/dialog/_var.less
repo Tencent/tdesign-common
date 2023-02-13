@@ -69,6 +69,5 @@
 
 // 动画
 @dialog-anim-duration: @anim-duration-base;
-@dialog-anim-time-fn-enter: cubic-bezier(.08, .82, .17, 1);
-@dialog-anim-time-fn-exit: cubic-bezier(.6, .04, .98, .34);
-@dialog-anim-time-fn-fade: cubic-bezier(.55, 0, .55, .2);
+@dialog-anim-time-fn-enter: @anim-time-fn-easing;
+@dialog-anim-time-fn-exit: @anim-time-fn-easing;

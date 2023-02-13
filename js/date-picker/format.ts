@@ -10,7 +10,8 @@ export const TIME_FORMAT = 'HH:mm:ss';
 export function parseToDayjs(
   value: string | Date | number,
   format: string,
-  timeOfDay?: string
+  timeOfDay?: string,
+  dayjsLocale?: string,
 ) {
   if (value === '') return dayjs();
 
@@ -18,13 +19,13 @@ export function parseToDayjs(
   // format week
   if (/[w|W]/g.test(format)) {
     if (typeof dateText !== 'string') {
-      dateText = dayjs(dateText).format(format) as string;
+      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
-    const firstWeek = dayjs(yearStr, 'YYYY').startOf('year');
+    const firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
     for (let i = 0; i <= 52; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
@@ -38,7 +39,7 @@ export function parseToDayjs(
   // format quarter
   if (/Q/g.test(format)) {
     if (typeof dateText !== 'string') {
-      dateText = dayjs(dateText).format(format) as string;
+      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
@@ -71,17 +72,19 @@ export function parseToDayjs(
 function formatRange({
   newDate,
   format,
+  dayjsLocale,
   targetFormat,
   autoSwap,
 }: {
   newDate: any;
   format: string;
+  dayjsLocale?: string;
   targetFormat?: string;
   autoSwap?: boolean;
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
-  let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format));
+  let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format).locale(dayjsLocale));
 
   // 保证后面的时间大于前面的时间
   if (
@@ -116,14 +119,16 @@ function formatSingle({
   newDate,
   format,
   targetFormat,
+  dayjsLocale,
 }: {
   newDate: any;
   format: string;
   targetFormat?: string;
+  dayjsLocale?: string;
 }) {
   if (!newDate) return '';
 
-  const dayJsDate = parseToDayjs(newDate, format);
+  const dayJsDate = parseToDayjs(newDate, format).locale(dayjsLocale);
 
   // 格式化失败提示
   if (!dayJsDate.isValid()) {
@@ -145,9 +150,13 @@ function formatSingle({
 // 检测日期是否合法
 export function isValidDate(value: DateValue | DateValue[], format: string) {
   if (Array.isArray(value)) {
-    return value.every((v) => dayjs(v, format).isValid() || dayjs(v).isValid());
+    return value.every((v) => {
+      if (v === '') return true;
+      return dayjs(v, format).isValid() || dayjs(v).isValid();
+    });
   }
 
+  if (value === '') return true;
   return dayjs(value, format).isValid() || dayjs(value).isValid();
 }
 
@@ -157,15 +166,16 @@ export function formatDate(
   {
     format,
     targetFormat,
+    dayjsLocale = 'zh-cn',
     autoSwap,
-  }: { format: string; targetFormat?: string; autoSwap?: boolean }
+  }: { format: string; dayjsLocale?: string, targetFormat?: string; autoSwap?: boolean }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({ newDate, format, targetFormat, autoSwap });
+    result = formatRange({ newDate, format, dayjsLocale, targetFormat, autoSwap });
   } else {
-    result = formatSingle({ newDate, format, targetFormat });
+    result = formatSingle({ newDate, format, dayjsLocale, targetFormat });
   }
 
   return result;
@@ -233,4 +243,48 @@ export function getDefaultFormat({
   }
   log.error('DatePicker', `Invalid mode: ${mode}`);
   return {};
+}
+
+// 初始化面板年份月份
+export function initYearMonthTime({
+  value,
+  mode = 'date',
+  format,
+  timeFormat = 'HH:mm:ss',
+  enableTimePicker,
+}: {
+  value: Array<any>;
+  mode: string;
+  format: string;
+  timeFormat?: string;
+  enableTimePicker?: boolean;
+}) {
+  const defaultYearMonthTime = {
+    year: [dayjs().year(), dayjs().year()],
+    month: [dayjs().month(), dayjs().month()],
+    time: [dayjs().format(timeFormat), dayjs().format(timeFormat)],
+  };
+  if (mode === 'year') {
+    defaultYearMonthTime.year[1] += 10;
+  } else if (mode === 'month' || mode === 'quarter') {
+    defaultYearMonthTime.year[1] += 1;
+  } else if ((mode === 'date' || mode === 'week') && !enableTimePicker) {
+    // 切换至下一年
+    if (defaultYearMonthTime.month[0] === 11) {
+      defaultYearMonthTime.year[1] += 1;
+      defaultYearMonthTime.month[1] = 0;
+    } else {
+      defaultYearMonthTime.month[1] += 1;
+    }
+  }
+
+  if (!value || !Array.isArray(value) || !value.length) {
+    return defaultYearMonthTime;
+  }
+
+  return {
+    year: value.map((v) => parseToDayjs(v, format).year()),
+    month: value.map((v) => parseToDayjs(v, format).month()),
+    time: value.map((v) => parseToDayjs(v, format).format(timeFormat)),
+  };
 }

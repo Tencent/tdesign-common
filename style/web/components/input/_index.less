@@ -6,6 +6,8 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_text.less";
+
 @import "../../mixins/_reset.less";
 
 .@{prefix}-input {
@@ -39,6 +41,7 @@
     font: inherit;
     background-color: transparent;
     box-sizing: border-box;
+    .text-ellipsis();
 
     &::placeholder {
       color: @input-placeholder-color;
