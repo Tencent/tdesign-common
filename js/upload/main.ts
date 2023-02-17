@@ -47,7 +47,7 @@ export function handleBeforeUpload(
 
   // 自定义校验
   const promiseList: BeforeUploadPromiseList = [sizePromise, undefined];
-  if (isFunction(beforeUpload )) {
+  if (isFunction(beforeUpload)) {
     const r = beforeUpload(file);
     const p = r instanceof Promise ? r : (new Promise<boolean>((resolve) => resolve(r)));
     promiseList[1] = p;
@@ -71,7 +71,7 @@ export function handleError(options: OnErrorParams) {
     file.status = 'fail';
   });
   let res = response;
-  if (isFunction(formatResponse ) ) {
+  if (isFunction(formatResponse)) {
     res = formatResponse(response, { file: files[0], currentFiles: files });
   }
   return { response: res, event, files, XMLHttpRequest };
@@ -182,7 +182,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         onSuccess: (p: SuccessContext) => {
           const { formatResponse } = params;
           let res = p.response;
-          if (isFunction(formatResponse ) ) {
+          if (isFunction(formatResponse)) {
             res = formatResponse(p.response, {
               file: p.file,
               currentFiles: p.files,
@@ -332,7 +332,7 @@ export function validateFile(
     let allFileValidatePromise;
     if (params.beforeAllFilesUpload) {
       const r = params.beforeAllFilesUpload?.(formattedFiles);
-      allFileValidatePromise = r instanceof Promise  ? r : new Promise((resolve) => resolve(r));
+      allFileValidatePromise = r instanceof Promise ? r : new Promise((resolve) => resolve(r));
     }
 
     // 单文件合法性校验，一个文件校验不通过其他文件可继续上传

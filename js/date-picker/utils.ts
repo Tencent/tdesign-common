@@ -228,7 +228,7 @@ export function getWeeks(
       text: i,
       active: false,
       value: currentDay,
-      disabled: (isFunction(disableDate)   && disableDate(currentDay))
+      disabled: (isFunction(disableDate) && disableDate(currentDay))
         || outOfRanges(currentDay, minDate, maxDate),
       now: isSame(today, currentDay),
       firstDayOfMonth: i === 1,
@@ -305,7 +305,7 @@ export function getQuarters(
     quarterArr.push({
       value: date,
       now: isSame(date, today, 'quarter'),
-      disabled: (isFunction(disableDate)  && disableDate(date)) || outOfRanges(date, minDate, maxDate),
+      disabled: (isFunction(disableDate) && disableDate(date)) || outOfRanges(date, minDate, maxDate),
       active: false,
       text: quarterLocal[i - 1],
       dayjsObj: dayjs(date).locale(dayjsLocale),
@@ -470,7 +470,7 @@ export function isEnabledDate({
 
   let isEnabled = true;
   // 值类型为 Function 则表示返回值为 true 的日期会被禁用
-  if (isFunction(disableDate) ) {
+  if (isFunction(disableDate)) {
     return !disableDate(value);
   }
 

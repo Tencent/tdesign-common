@@ -59,7 +59,7 @@ export default function xhr({
 
   let requestData: { [key: string]: any } = {};
   if (data) {
-    const extraData = isFunction(data)  ? data(innerFiles) : data;
+    const extraData = isFunction(data) ? data(innerFiles) : data;
     Object.assign(requestData, extraData);
   }
   innerFiles.forEach((file, index) => {

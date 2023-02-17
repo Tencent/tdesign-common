@@ -109,7 +109,7 @@ const parseGradient = (regExpLib: RegExpLib, input: string) => {
   regExpLib.gradientSearch.lastIndex = 0;
 
   const matchGradient = regExpLib.gradientSearch.exec(input);
-  if (!isNull(matchGradient) ) {
+  if (!isNull(matchGradient)) {
     result = {
       original: matchGradient[0],
       colorStopList: [],

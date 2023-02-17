@@ -2,7 +2,7 @@ import isString from 'lodash/isString';
 import isNull from 'lodash/isNull';
 import isUndefined from 'lodash/isUndefined';
 import isNumber from 'lodash/isNumber';
-import isArray from 'lodash/isArray'
+import isArray from 'lodash/isArray';
 
 export function omit(obj: object, fields: string[]): object {
   const shallowCopy = {
@@ -19,7 +19,7 @@ export function removeEmptyAttrs<T>(obj: T): Partial<T> {
   const newObj = {};
 
   Object.keys(obj).forEach((key) => {
-    if (!isUndefined( obj[key]) || isNull(obj[key])) {
+    if (!isUndefined(obj[key]) || isNull(obj[key])) {
       newObj[key] = obj[key];
     }
   });
@@ -101,7 +101,7 @@ export function getIEVersion() {
  * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
  */
 export function getCharacterLength(str: string, maxCharacter?: number) {
-  const hasMaxCharacter = isNumber( maxCharacter);
+  const hasMaxCharacter = isNumber(maxCharacter);
   if (!str || str.length === 0) {
     if (hasMaxCharacter) {
       return {

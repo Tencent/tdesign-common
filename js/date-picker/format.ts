@@ -19,7 +19,7 @@ export function parseToDayjs(
   let dateText = value;
   // format week
   if (/[w|W]/g.test(format)) {
-    if (!isString(dateText )) {
+    if (!isString(dateText)) {
       dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 

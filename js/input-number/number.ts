@@ -55,7 +55,7 @@ export function formatToNumber(
     largeNumber?: boolean;
   }
 ): string | number {
-  if (isNil(num)|| num === '') return num;
+  if (isNil(num) || num === '') return num;
   if (num === '-') return 0;
   if (num[num.length - 1] === '.') {
     return extra?.largeNumber ? num.slice(0, -1) : Number(num.slice(0, -1));
