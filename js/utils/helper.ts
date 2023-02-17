@@ -194,6 +194,15 @@ const DOM_STYLE_PROPS = [
 ];
 
 export function calculateNodeSize(targetElement: HTMLElement) {
+  if (typeof window === 'undefined') {
+    return {
+      paddingSize: 0,
+      borderSize: 0,
+      boxSizing: 0,
+      sizingStyle: '',
+    };
+  }
+
   const style = window.getComputedStyle(targetElement);
 
   const boxSizing = style.getPropertyValue('box-sizing')
