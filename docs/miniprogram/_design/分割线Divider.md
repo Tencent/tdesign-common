@@ -10,25 +10,31 @@
 
 ##### 通栏分割线：横向贯穿整个页面，一般为了区分更加独立性的内容信息，让信息分隔的更明显，更加独立性。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Divider%201.png" />
-   <em></em>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Divider%201.png" />
+    <em></em>
+  </div>
 </div>
 
 
 ##### 内嵌分割线：一般会在左侧或者右侧预留缺口，目的来区分统一模块下的相关内容，目的是为了让用户浏览大量相关内容时，更加高效。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Divider%202.png" />
     <em></em>
   </div>
+</div>
   
 ##### 组合分割线：通栏分割线与内嵌分割线组合布局。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Divider%203.png" />
     <em></em>
   </div>
+</div>
   
 <hr />
 
