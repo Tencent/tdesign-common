@@ -22,10 +22,12 @@
   </div>  
 </div>
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-3.png" />
     <em></em>
-</div>  
+  </div>  
+</div>
 
 
 
@@ -35,9 +37,11 @@
 
 ##### 悬浮按钮与[动作面板](./actionsheet)组合使用，当触发悬浮按钮涉及的任务通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%202.png" />
     <em></em>
+  </div>
 </div>
 <hr />
 
