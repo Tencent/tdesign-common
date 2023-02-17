@@ -66,7 +66,7 @@ export function getBackgroundColor(color: string | string[] | LinearGradient): s
  * @returns 获取 ie 浏览器版本
  */
 export function getIEVersion() {
-  if (!navigator) return Number.MAX_SAFE_INTEGER;
+  if (typeof navigator === 'undefined' || !navigator) return Number.MAX_SAFE_INTEGER;
 
   const { userAgent } = navigator;
   // 判断是否IE<11浏览器
