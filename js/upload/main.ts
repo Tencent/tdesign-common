@@ -16,7 +16,6 @@ import {
   UploadTriggerUploadText,
   ErrorContext,
 } from './types';
-import { isPromise } from 'util/types';
 
 export interface BeforeUploadExtra {
   /** 图片文件大小限制 */
@@ -50,7 +49,7 @@ export function handleBeforeUpload(
   const promiseList: BeforeUploadPromiseList = [sizePromise, undefined];
   if (isFunction(beforeUpload )) {
     const r = beforeUpload(file);
-    const p = isPromise(r) ? r : (new Promise<boolean>((resolve) => resolve(r)));
+    const p = r instanceof Promise ? r : (new Promise<boolean>((resolve) => resolve(r)));
     promiseList[1] = p;
   }
 
@@ -333,7 +332,7 @@ export function validateFile(
     let allFileValidatePromise;
     if (params.beforeAllFilesUpload) {
       const r = params.beforeAllFilesUpload?.(formattedFiles);
-      allFileValidatePromise = isPromise(r)  ? r : new Promise((resolve) => resolve(r));
+      allFileValidatePromise = r instanceof Promise  ? r : new Promise((resolve) => resolve(r));
     }
 
     // 单文件合法性校验，一个文件校验不通过其他文件可继续上传
