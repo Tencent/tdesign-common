@@ -6,9 +6,9 @@
   "main": "",
   "scripts": {
     "lint": "npm run lint:css && npm run lint:js",
-    "lint:css": "stylelint **/*.{css,wxss,less} --allow-empty-input",
-    "lint:js": "npx eslint . --max-warnings 0 && npx eslint ./js/**/*.* --max-warnings 0",
-    "lint:fix": "stylelint **/*.{css,wxss,less} --allow-empty-input --fix && npx eslint . --max-warnings 0 --fix",
+    "lint:css": "stylelint **/*.{css,wxss,less} --allow-empty-input --cache",
+    "lint:js": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --max-warnings 0 --cache",
+    "lint:fix": "npm run lint:css --fix && npm run lint:js --fix",
     "test": "npm run test:unit",
     "test:unit": "jest --config test/script/jest.unit.conf.js --coverage",
     "test:watch": "jest --config test/script/jest.unit.conf.js --watch",
