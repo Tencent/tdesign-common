@@ -1,3 +1,9 @@
+import isString from 'lodash/isString';
+import isNull from 'lodash/isNull';
+import isUndefined from 'lodash/isUndefined';
+import isNumber from 'lodash/isNumber';
+import isArray from 'lodash/isArray'
+
 export function omit(obj: object, fields: string[]): object {
   const shallowCopy = {
     ...obj,
@@ -13,7 +19,7 @@ export function removeEmptyAttrs<T>(obj: T): Partial<T> {
   const newObj = {};
 
   Object.keys(obj).forEach((key) => {
-    if (typeof obj[key] !== 'undefined' || obj[key] === null) {
+    if (!isUndefined( obj[key]) || isNull(obj[key])) {
       newObj[key] = obj[key];
     }
   });
@@ -37,10 +43,10 @@ export type Gradients = { [percent: string]: string };
 export type FromTo = { from: string; to: string };
 export type LinearGradient = { direction?: string } & (Gradients | FromTo);
 export function getBackgroundColor(color: string | string[] | LinearGradient): string {
-  if (typeof color === 'string') {
+  if (isString(color)) {
     return color;
   }
-  if (Array.isArray(color)) {
+  if (isArray(color)) {
     if (color[0] && color[0][0] === '#') {
       color.unshift('90deg');
     }
@@ -95,7 +101,7 @@ export function getIEVersion() {
  * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
  */
 export function getCharacterLength(str: string, maxCharacter?: number) {
-  const hasMaxCharacter = typeof maxCharacter === 'number';
+  const hasMaxCharacter = isNumber( maxCharacter);
   if (!str || str.length === 0) {
     if (hasMaxCharacter) {
       return {
@@ -166,7 +172,7 @@ export function limitUnicodeMaxLength(
  * @returns 可使用的样式值。
  */
 export function pxCompat(param: string | number) {
-  return typeof param === 'number' ? `${param}px` : param;
+  return isNumber(param) ? `${param}px` : param;
 }
 
 /**

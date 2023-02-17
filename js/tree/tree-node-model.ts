@@ -1,3 +1,5 @@
+import isUndefined from 'lodash/isUndefined';
+import isBoolean from 'lodash/isBoolean';
 import pick from 'lodash/pick';
 import omit from 'lodash/omit';
 import { TreeNode } from './tree-node';
@@ -118,7 +120,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
         } else {
           childrenModel = false;
         }
-      } else if (typeof children === 'boolean') {
+      } else if (isBoolean(children)) {
         childrenModel = children;
       }
       return childrenModel;
@@ -154,8 +156,8 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       const { keys } = node.tree.config;
       const dataValue = data[keys?.value || 'value'];
       const dataLabel = data[keys?.label || 'label'];
-      if (dataValue !== undefined) _data.value = dataValue;
-      if (dataLabel !== undefined) _data.label = dataLabel;
+      if (!isUndefined(dataValue)) _data.value = dataValue;
+      if (!isUndefined(dataLabel)) _data.label = dataLabel;
 
       Object.assign(node.data, _data);
       Object.assign(node, _data);

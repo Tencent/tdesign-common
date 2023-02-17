@@ -1,3 +1,4 @@
+import isString from 'lodash/isString';
 import dayjs from 'dayjs';
 import { extractTimeFormat } from './utils';
 import log from '../log';
@@ -18,7 +19,7 @@ export function parseToDayjs(
   let dateText = value;
   // format week
   if (/[w|W]/g.test(format)) {
-    if (typeof dateText !== 'string') {
+    if (!isString(dateText )) {
       dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
@@ -38,7 +39,7 @@ export function parseToDayjs(
 
   // format quarter
   if (/Q/g.test(format)) {
-    if (typeof dateText !== 'string') {
+    if (!isString(dateText)) {
       dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
