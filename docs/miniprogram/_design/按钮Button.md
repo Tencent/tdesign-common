@@ -29,9 +29,11 @@
     <em></em>
   </div>
 </div>
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-3.png" />
     <em></em>
+  </div>
 </div>
 
 
