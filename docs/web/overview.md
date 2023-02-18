@@ -124,6 +124,13 @@ spline: explain
       <p class="name">Tabs 选项卡</p>
     </a>
   </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/backtop">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tabs.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tabs-dark.png" />
+      <p class="name">Backtop 返回顶部</p>
+    </a>
+  </div>
 </section>
 <h3>输入<em class="tag">20</em></h3>
 <section class="image-group">
@@ -369,7 +376,7 @@ spline: explain
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-swiper-dark.png" />
       <p class="name">Swiper 轮播框</p>
     </a>
-  </div> 
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/table">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-table.png" />

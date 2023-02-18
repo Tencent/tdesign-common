@@ -1,0 +1,49 @@
+@import "./_var.less";
+
+@backTop: ~"@{prefix}-back-top";
+
+.@{backTop} {
+  width: @back-top-width;
+  min-height: @back-top-min-height;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity .5s ease;
+  background-color: @back-top-background-color;
+  color: @back-top-text-color;
+  border: 1px solid;
+  border-color: @back-top-border-color;
+
+  &--circle {
+    border-radius: @back-top-border-radius-circle;
+    flex-direction: column;
+  }
+
+  &--square {
+    flex-direction: column;
+    align-items: center;
+    border-radius: @back-top-border-radius-square;
+
+    .@{prefix}-back-top__text {
+      font-size: 12px;
+      word-break: break-word;
+      text-align: center;
+    }
+  }
+
+  &__text {
+    font-size: @back-top-text-size;
+  }
+
+  &.@{prefix}-is-fixed {
+    position: fixed;
+    right: @back-top-content-right;
+    bottom: @back-top-content-bottom;
+  }
+}
+
+.@{backTop}:hover {
+  background-color: @back-top-background-color-hover;
+}
