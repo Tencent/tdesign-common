@@ -19,7 +19,7 @@ import log from '../log';
 
 const { hasOwnProperty } = Object.prototype;
 
-const defaultStatus = {
+export const defaultStatus = {
   expandMutex: false,
   activable: false,
   checkable: false,
@@ -27,6 +27,8 @@ const defaultStatus = {
   draggable: false,
   loading: false,
 };
+
+export const privateKey = '__tdesign_id__';
 
 // vm 开头为视图属性，不可以外部设置
 // 用于触发视图更新
@@ -129,6 +131,9 @@ export class TreeNode {
     this.vmIsLast = false;
     this.vmIsRest = true;
     this.vmIsLocked = false;
+    // 为节点设置 唯一 id
+    // 数据替换时，value 相同有可能导致渲染冲突，用这个 唯一 id 来解决
+    this[privateKey] = uniqueId(privateKey);
 
     const spec = {
       ...defaultStatus,
