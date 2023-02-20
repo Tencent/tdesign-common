@@ -148,11 +148,12 @@ export class TreeNode {
     this.label = spec[propLabel] || '';
     this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
 
-    const { nodeMap } = tree;
+    const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
     }
     nodeMap.set(this.value, this);
+    privateMap.set(this[privateKey], this);
 
     if (parent && parent instanceof TreeNode) {
       this.parent = parent;
@@ -351,6 +352,7 @@ export class TreeNode {
       const node = item;
       node.tree = tree;
       tree.nodeMap.set(node.value, node);
+      tree.privateMap.set(node[privateKey], node);
       if (node.expanded) {
         tree.expandedMap.set(node.value, true);
       }
@@ -432,6 +434,7 @@ export class TreeNode {
     tree.checkedMap.delete(value);
     tree.expandedMap.delete(value);
     tree.nodeMap.delete(value);
+    tree.privateMap.delete(this[privateKey]);
   }
 
   // 异步加载子节点数据

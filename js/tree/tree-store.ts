@@ -3,7 +3,7 @@ import camelCase from 'lodash/camelCase';
 import isPlainObject from 'lodash/isPlainObject';
 import mitt from 'mitt';
 
-import { TreeNode } from './tree-node';
+import { TreeNode, privateKey } from './tree-node';
 import {
   TreeNodeValue,
   TypeIdMap,
@@ -31,6 +31,9 @@ export class TreeStore {
 
   // 所有节点映射
   public nodeMap: Map<TreeNodeValue, TreeNode>;
+
+  // 节点 私有 ID 映射
+  public privateMap: Map<string, TreeNode>;
 
   // 配置选项
   public config: TypeTreeStoreOptions;
@@ -93,6 +96,7 @@ export class TreeStore {
     this.nodes = [];
     this.children = [];
     this.nodeMap = new Map();
+    this.privateMap = new Map();
     this.activedMap = new Map();
     this.expandedMap = new Map();
     this.checkedMap = new Map();
