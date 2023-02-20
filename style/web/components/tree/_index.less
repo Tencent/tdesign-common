@@ -297,19 +297,6 @@
   }
 }
 
-// 虚拟滚动样式
-.@{prefix}-tree--vscroll {
-  overflow-y: auto;
-}
-
-// 虚拟滚动游标
-.@{prefix}-tree__vscroll-cursor {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  transition: transform @anim-duration-base;
-}
-
 .@{prefix}-tree {
   &__item--hidden {
     display: none;
@@ -349,6 +336,35 @@
   // 节点移除动画
   .@{prefix}-tree__item--leave-active {
     animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
+  }
+}
+
+// 虚拟滚动样式
+.@{prefix}-tree--vscroll {
+  overflow-y: auto;
+  position: relative;
+}
+
+// 虚拟滚动游标
+.@{prefix}-tree__vscroll-cursor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  transition: transform @anim-duration-base;
+}
+
+.@{prefix}-tree--scrolling {
+  .@{prefix}-tree__item--visible {
+    transition: none;
+  }
+  .@{prefix}-tree__item--hidden {
+    transition: none;
+  }
+  .@{prefix}-tree__item--enter-active {
+    animation: none;
+  }
+  .@{prefix}-tree__item--leave-active {
+    animation: none;
   }
 }
 
