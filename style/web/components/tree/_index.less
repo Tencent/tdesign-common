@@ -374,20 +374,25 @@
 }
 
 .@{prefix}-tree--scrolling {
+  .@{prefix}-tree__item--visible,
+  .@{prefix}-tree__item--hidden,
+  .@{prefix}-tree__item--enter-active,
+  .@{prefix}-tree__item--enter-to,
+  .@{prefix}-tree__item--leave-active
+  .@{prefix}-tree__item--leave-to {
+    animation: none;
+    transition: none;
+  }
   .@{prefix}-tree__item--visible {
     max-height: initial;
-    transition: initial;
   }
-  .@{prefix}-tree__item--hidden {
-    transition: initial;
-  }
+  .@{prefix}-tree__item--enter-to,
   .@{prefix}-tree__item--enter-active {
     max-height: initial;
-    animation: initial;
   }
+  .@{prefix}-tree__item--leave-to,
   .@{prefix}-tree__item--leave-active {
     max-height: 0;
-    animation: initial;
   }
 }
 
