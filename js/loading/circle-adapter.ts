@@ -4,7 +4,7 @@ import { getIEVersion } from '../utils/helper';
 export default function circleAdapter(circleElem: HTMLElement) {
   let basicStyle = {};
 
-  if (!circleElem) {
+  if (!circleElem || typeof window === 'undefined') {
     return;
   }
 

@@ -18,7 +18,7 @@ import { getIEVersion } from './helper';
 
 export function getScrollbarWidthWithCSS() {
   const defaultScrollbarWidth = 6;
-  if (!navigator) return defaultScrollbarWidth;
+  if (typeof navigator === 'undefined' || !navigator) return defaultScrollbarWidth;
   if (/(Chrome|Safari)/i.test(navigator.userAgent)) return defaultScrollbarWidth;
   const scrollDiv = document.createElement('div');
   scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';

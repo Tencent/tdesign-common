@@ -72,7 +72,7 @@ export function getBackgroundColor(color: string | string[] | LinearGradient): s
  * @returns 获取 ie 浏览器版本
  */
 export function getIEVersion() {
-  if (!navigator) return Number.MAX_SAFE_INTEGER;
+  if (typeof navigator === 'undefined' || !navigator) return Number.MAX_SAFE_INTEGER;
 
   const { userAgent } = navigator;
   // 判断是否IE<11浏览器
@@ -200,6 +200,15 @@ const DOM_STYLE_PROPS = [
 ];
 
 export function calculateNodeSize(targetElement: HTMLElement) {
+  if (typeof window === 'undefined') {
+    return {
+      paddingSize: 0,
+      borderSize: 0,
+      boxSizing: 0,
+      sizingStyle: '',
+    };
+  }
+
   const style = window.getComputedStyle(targetElement);
 
   const boxSizing = style.getPropertyValue('box-sizing')
