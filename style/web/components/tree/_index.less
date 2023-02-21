@@ -85,7 +85,6 @@
 
     .@{prefix}-tree__icon--default {
       .t-icon {
-        transition: color, transform @anim-time-fn-easing @anim-duration-base;
         transform: rotate(0);
       }
     }
@@ -211,7 +210,6 @@
     font-size: 0;
     user-select: none;
     cursor: pointer;
-    transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
   }
 
   // svg 动画与 icon 背景进行隔离
@@ -225,7 +223,6 @@
     width: calc(@tree-node-icon-size + 4px);
     height: calc(@tree-node-icon-size + 4px);
     border-radius: @border-radius-default;
-    transition: @anim-duration-base linear;
   }
 
   // 仅在有图标时呈现背景
@@ -233,7 +230,6 @@
   // ::after 仅用于增大点击范围
   &__icon:not(:empty):hover {
     background-color: @tree-node-bg-hover-color;
-    transition: @anim-duration-base linear;
   }
 
   // 没有图标时不呈现指针
@@ -250,7 +246,6 @@
     margin-left: @tree-label-margin-left;
     border-radius: @border-radius-default;
     cursor: pointer;
-    transition: background-color @anim-duration-moderate @anim-time-fn-easing;
     .text-ellipsis();
 
     &.@{prefix}-is-checked {
@@ -303,8 +298,33 @@
   }
 }
 
-// 节点收缩隐藏动画
+// 节点动画
 .@{prefix}-tree--transition {
+  // 标签动画
+  .@{prefix}-tree__label {
+    transition: background-color @anim-duration-moderate @anim-time-fn-easing;
+  }
+
+  // 默认图标
+  .@{prefix}-tree__icon {
+    transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
+  }
+
+  .@{prefix}-tree__icon::after {
+    transition: @anim-duration-base linear;
+  }
+
+  .@{prefix}-tree__icon:not(:empty):hover {
+    transition: @anim-duration-base linear;
+  }
+
+  // 图标动画
+  .@{prefix}-tree__icon--default {
+    .t-icon {
+      transition: color, transform @anim-time-fn-easing @anim-duration-base;
+    }
+  }
+
   // 节点展示动画
   .@{prefix}-tree__item--visible {
     display: flex;
