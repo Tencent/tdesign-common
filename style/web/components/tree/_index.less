@@ -375,10 +375,17 @@
 }
 
 .@{prefix}-tree--scrolling {
+  .@{prefix}-tree__item {
+    will-change: initial;
+  }
+  .v-enter,
+  .v-leave,
   .@{prefix}-tree__item--visible,
   .@{prefix}-tree__item--hidden,
+  .@{prefix}-tree__item--enter,
   .@{prefix}-tree__item--enter-active,
   .@{prefix}-tree__item--enter-to,
+  .@{prefix}-tree__item--leave,
   .@{prefix}-tree__item--leave-active
   .@{prefix}-tree__item--leave-to {
     animation: none;
