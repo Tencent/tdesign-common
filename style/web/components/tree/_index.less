@@ -16,6 +16,8 @@
 
   font: @tree-font;
   color: @tree-node-text-color;
+  overflow-y: auto;
+  position: relative;
 
   // 禁用态颜色处理
   &.@{prefix}-is-disabled {
@@ -360,9 +362,8 @@
 }
 
 // 虚拟滚动样式
-.@{prefix}-tree--vscroll {
+.@{prefix}-tree__vscroll {
   overflow-y: auto;
-  position: relative;
 }
 
 // 虚拟滚动游标
