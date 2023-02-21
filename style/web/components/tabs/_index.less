@@ -14,10 +14,6 @@
   overflow: hidden;
   background-color: @tab-default-bg;
 
-  .t-icon {
-    font-size: @tab-icon-size;
-  }
-
   &__header {
     &.@{prefix}-is-left {
       float: left;
@@ -25,6 +21,10 @@
 
     &.@{prefix}-is-right {
       float: right;
+    }
+
+    .t-icon {
+      font-size: @tab-icon-size;
     }
   }
 
