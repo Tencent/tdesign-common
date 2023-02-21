@@ -323,7 +323,7 @@
     overflow: hidden;
     pointer-events: none;
     user-select: none;
-    animation: none;
+    animation: initial;
     transition: opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
@@ -355,18 +355,19 @@
 
 .@{prefix}-tree--scrolling {
   .@{prefix}-tree__item--visible {
-    transition: none;
+    max-height: initial;
+    transition: initial;
   }
   .@{prefix}-tree__item--hidden {
-    transition: none;
+    transition: initial;
   }
   .@{prefix}-tree__item--enter-active {
     max-height: initial;
-    animation: none;
+    animation: initial;
   }
   .@{prefix}-tree__item--leave-active {
     max-height: 0;
-    animation: none;
+    animation: initial;
   }
 }
 
