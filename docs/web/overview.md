@@ -125,10 +125,10 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="./components/backtop">
+    <a class="item" href="./components/back-top">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tabs.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tabs-dark.png" />
-      <p class="name">Backtop 返回顶部</p>
+      <p class="name">BackTop 返回顶部</p>
     </a>
   </div>
 </section>
