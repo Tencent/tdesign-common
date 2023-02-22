@@ -13,7 +13,7 @@
 <div class="legend">
   <div class="item">
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%201.png" />
-   <em></em>
+  </div>
 </div>
 
 
@@ -26,7 +26,7 @@
 <div class="legend">  
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%202.png" />
-    <em></em>
+  </div>
 </div>
 
 ##### 用于难以量化的对立数据，以此表示程度。
@@ -34,7 +34,7 @@
 <div class="legend">   
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%203.png" />
-    <em></em>
+  </div>
 </div>
 
 <hr />
