@@ -32,7 +32,6 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Divider%203.png" />
-    <em></em>
   </div>
 </div>
   
