@@ -20,6 +20,8 @@
   </div>
 </div>
 
+<hr />
+
 ##### 图片与[下拉刷新](./pulldownrefresh)组合使用，用于图片瀑布流时的内容更新。
 
 <div class="legend">
