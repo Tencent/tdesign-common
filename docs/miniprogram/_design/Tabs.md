@@ -28,7 +28,7 @@
 <div class="legend">  
   <div class="item">
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs2.png" />
-   <em></em>
+  </div>
 </div>
 
 
@@ -39,19 +39,14 @@
 
 ##### 较常使用于以信息瀑布流为场景的应用，使用选项卡承载类目或状态，便于用户区分和切换。
 
-<div class="legend">
-  <div class="item">
+ <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs3-1.png" />
   </div>
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs3-2.png" />
-  </div>
-</div>
 
 <div class="legend">  
   <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs3-3.png" />
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs3-2.png" />
   </div>
 </div>
 
@@ -77,8 +72,7 @@
 
 ##### 建议文本简明扼要，不建议将文本进行截断或换行；若需要使用较长文本，建议使用等距选项卡。
 
-<div class="legend">
-  <div class="item">
+<div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs5-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
@@ -87,7 +81,6 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs5-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
-</div>
 
 <hr />
 
