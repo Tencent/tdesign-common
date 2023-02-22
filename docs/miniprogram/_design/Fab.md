@@ -37,12 +37,10 @@
 
 ##### 悬浮按钮与[动作面板](./actionsheet)组合使用，当触发悬浮按钮涉及的任务通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
-<div class="legend">
-  <div class="item">
+<div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%202.png" />
     <em></em>
   </div>
-</div>
 <hr />
 
 ### 推荐/慎用示例
@@ -61,7 +59,7 @@
   </div>
 </div>
 
-
+<hr />
 
 ##### 图标加文字悬浮按钮上的字数建议精简，控制在2-4个字左右，避免遮挡过多页面内容。
 
