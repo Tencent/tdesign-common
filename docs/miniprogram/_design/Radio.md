@@ -28,8 +28,7 @@
 
 ##### 带有详情信息的选项，建议就近展开相关内容，不太建议用单选框触发一个弹窗。
 
-<div class="legend">
-  <div class="item">
+ <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Radio%202-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
@@ -38,7 +37,6 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Radio%202-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
-</div>
 
 <hr />
 
