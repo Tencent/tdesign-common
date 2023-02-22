@@ -12,7 +12,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/mobile-guide/Image%201-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Image%201-1.png" />
   </div>
 
   <div class="item">
