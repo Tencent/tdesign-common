@@ -10,16 +10,22 @@
 
 ##### 可使用[宫格](./grid)、[单元格](./cell)承载图片，作为某种功能、某类信息的入口。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
-   <em></em>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/mobile-guide/Image%201-1.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/mobile-guide/Image%201-2.png" />
+  </div>
 </div>
 
 ##### 图片与[下拉刷新](./pulldownrefresh)组合使用，用于图片瀑布流时的内容更新。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
-   <em></em>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/mobile-guide/Image%202.png" />
+  </div>
 </div>
 
 
@@ -32,28 +38,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/mobile-guide/Image%203-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
-
-<hr />
-
-##### 动作面板中的操作项不建议用icon完成替代文字。
-
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
-  </div>
-
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/design/mobile-guide/Image%203-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
