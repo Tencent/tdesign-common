@@ -49,12 +49,11 @@
   </div>
 </div>
 
-
 <div class="legend">  
   <div class="item">
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs3-3.png" />
+  </div>
 </div>
-
 
 <hr />
 
