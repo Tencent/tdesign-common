@@ -10,17 +10,17 @@
 
 ##### 图片预览与[图片](./image)组合使用，通过图片作为缩略图，点击后进行图片预览。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
-   <em></em>
+<div class="legend">
+  <div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ImageViewer%201.png" />
 </div>
 
 
 ##### 当使用带删除操作的图片预览组件时，可与[动作面板](./actionsheet)组合使用，对删除操作进行二次确认。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
-   <em></em>
+<div class="legend">
+  <div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ImageViewer%202.png" />
 </div>
 
 
@@ -32,10 +32,10 @@
 
 ##### 在可点击进入详情的卡片入口中，不建议针对图片添加图片预览能力。
 
-
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-1.png" />
-   <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+<div class="legend">
+  <div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ImageViewer%203.png" />
+   <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 
 <hr />
