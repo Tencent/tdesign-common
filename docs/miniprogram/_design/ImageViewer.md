@@ -30,7 +30,7 @@
 ##### 在可点击进入详情的卡片入口中，不建议针对图片添加图片预览能力。
 
 <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ImageViewer%204.png" />
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/imageviewer4.png" />
    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 
