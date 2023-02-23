@@ -48,6 +48,19 @@
     .textarea-status(error);
   }
   
+  &__tips_wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__limit {
+    float: right;
+    margin-left: @textarea-limit-margin-left;
+    font: @textarea-tips-font;
+    color: @textarea-limit-color;
+    background: @textarea-bg-color-default;
+  }
+
   .@{prefix}-is-disabled {
     color: @textarea-color-text-disabled;
     background-color: @textarea-bg-color-disabled;
