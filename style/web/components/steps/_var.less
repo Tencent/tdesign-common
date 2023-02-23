@@ -12,37 +12,35 @@
 // 如：@button-line-height-s
 
 // 点状步骤条相关
-@steps-circle-height: 24px;
-@steps-circle-width: 24px;
-@steps-item-title-margin-bottom: 4px;
-@steps-item-description-margin: 4px;
-@steps-item-content-margin-top: 4px;
-@steps-item-content-margin-top-vertical: 2px;
-@steps-item-margin-right: @spacer;
-@steps-item-icon-margin-right: @spacer;
-@steps-item-default-icon-margin-top: 3px;
-@steps-title-padding-right: @spacer;
-@steps-dot-item-icon-margin-bottom: 4px;
+@steps-circle-height: 22px;
+@steps-circle-width: 22px;
+@steps-item-title-margin-bottom: @comp-margin-xs;
+@steps-item-description-margin: @comp-margin-xs;
+@steps-item-content-margin-top: @comp-margin-xs;
+@steps-item-content-margin-top-vertical: @comp-margin-xxs;
+@steps-item-margin-right: @comp-margin-s;
+@steps-item-icon-margin-right: @comp-margin-s;
+@steps-title-padding-right: @comp-margin-s;
+@steps-dot-item-icon-margin-bottom: @comp-margin-xs;
 @steps-item-content-margin-left-vertical: 0px;
-@steps-item-padding-bottom-vertical: @spacer-3;
+@steps-item-padding-bottom-vertical: @comp-margin-xxl;
 @steps-item-margin-bottom-vertical: 5px;
 @steps-item-icon-number-line-height: 1px;
 @steps-item-icon-number-line-width: 1px;
 @steps-item-icon-number-line-top: 35px;
-@steps-item-connector-line-width: calc(100% - @spacer-2);
+@steps-item-connector-line-width: calc(100% - 16px);
 @steps-title-line-height: 24px;
 @steps-description-line-height: 22px;
 @steps-dot-item-icon-height: 8px;
 @steps-dot-item-icon-width: 8px;
 @steps-item-icon-number-line-left: 11px;
-@steps-dot-anchor-position-top: 5px;
+@steps-dot-anchor-position-top: 8px;
 @steps-dot-content-width: 140px;
 @steps-dot-connector-position-top-horizontal: 2.5px;
 @steps-dot-connector-position-left-horizontal: calc(@steps-dot-content-width / 2 + @spacer);
 @steps-dot-connector-position-top-vertical: 17px;
 @steps-dot-connector-position-left-vertical: 3.5px;
 @steps-dot-connector-position-left-vertical-reverse: 3.5px;
-@steps-item-icon-number-margin-top: 4px;
 
 // 描边宽度
 @step-stroke-width: 1px;
@@ -52,9 +50,8 @@
 @steps-title-font-weight: normal; //add
 
 //字体
-@steps-item-t-icon-font-size: 35px;
 @steps-item-icon-font-size: @font-size-base;
-@steps-item-t-icon-font-size-default: 24px;
+@steps-item-t-icon-font-size-default: calc(@font-size-base + 10px);
 @steps-title-font-size-anchor: @font-size-l;
 @steps-description-font-size: @font-size-base;
 @steps-default-step-icon-font-size: @font-size-l;
@@ -79,7 +76,7 @@
 @steps-item-icon-color: @text-color-placeholder;
 @steps-item-icon-border-color-default: @text-color-placeholder;
 @steps-item-icon-border-color-finish: @brand-color;
-@steps-item-icon-border-color-error: @error-color-6;
+@steps-item-icon-border-color-error: @error-color;
 
 // item-icon anchor 状态
 @steps-item-icon-anchor-number-color-error: @error-color;

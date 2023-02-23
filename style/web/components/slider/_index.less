@@ -34,12 +34,6 @@
   position: relative;
   padding: @slider-padding;
 
-  &__input {
-    &.is-range {
-      margin-left: @slider-input-range-margin-left;
-    }
-  }
-
   &__container {
     width: 100%;
     display: flex;
@@ -57,7 +51,7 @@
     width: 100%;
     height: @slider-rail-track-step-size;
     background-color: @slider-background;
-    transition: background-color .3s;
+    transition: @anim-duration-base linear;
     border-radius: @slider-border-radius;
 
     &:hover {

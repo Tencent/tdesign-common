@@ -26,6 +26,7 @@
       z-index: @swiper-navigation-z-index-default;
       background-color: transparent;
       color: @swiper-navigation-item-bg-hover;
+      transition: @anim-duration-base linear;
       cursor: pointer;
       & when(@direction = left) {
         left: @@arrowPosition;
@@ -37,10 +38,13 @@
       &:hover {
         color: @swiper-navigation-item-bg-active;
         background-color: @swiper-navigation-item-bg;
+        border-radius: @border-radius-default;
+        transition: @anim-duration-base linear;
       }
 
       &:active {
         background-color: @swiper-arrow-active;
+        transition: @anim-duration-base linear;
       }
     }
   }
@@ -99,7 +103,7 @@
 
   top: auto;
   right: auto;
-  bottom: -@@fractionLineHeight - 12;
+  bottom: calc(0px - calc(@@fractionLineHeight + 12px));
   height: @@fractionLineHeight;
   line-height: @@fractionLineHeight;
 

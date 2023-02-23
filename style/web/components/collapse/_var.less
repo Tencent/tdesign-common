@@ -14,7 +14,7 @@
 @collapse-cls: ~"@{prefix}-collapse";
 @collapse-panel-cls: ~"@{collapse-cls}-panel";
 // 高度
-@collapse-panel-header-height: 46px;
+// @collapse-panel-header-height: 46px;
 
 // 颜色
 @collapse-border-size: solid 1px @component-border;
@@ -24,3 +24,8 @@
 
 // 字体颜色
 @collapse-panel-content-text-color: @text-color-secondary;
+
+// 间距
+@collapse-panel-header-padding: @comp-paddingTB-m @comp-paddingLR-l;
+@collapse-panel-header-icon-margin: @comp-margin-s;
+@collapse-panel-content-padding: @comp-paddingTB-m @comp-paddingLR-l @comp-paddingTB-m calc(@comp-paddingLR-l + @comp-margin-xxl) ;

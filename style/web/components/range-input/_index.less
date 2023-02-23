@@ -29,16 +29,16 @@
   &.@{prefix}-size-l {
     height: @range-input-height-l;
     font: @range-input-font-l;
-    padding-top: @spacer-s;
-    padding-bottom: @spacer-s;
+    padding-top: @comp-paddingTB-xs;
+    padding-bottom: @comp-paddingTB-xs;
 
     .@{prefix}-input {
-      padding: 0 8px;
+      padding: 0 @comp-margin-s;
     }
   }
 
   &.@{prefix}-size-s {
-    padding: 2px 4px;
+    padding: @comp-paddingTB-xxs @comp-margin-xs;
     height: @range-input-height-s;
     font: @range-input-font-s;
   }
@@ -53,7 +53,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    gap: @spacer;
+    gap: @range-input-inner-gap;
 
     .@{prefix}-input__wrap {
       height: 100%;
@@ -61,11 +61,12 @@
     }
 
     .@{prefix}-input {
-      padding: 0 4px;
+      padding: @range-input-inner-padding;
       height: 100%;
       border: 0;
       box-shadow: none;
       font-size: inherit;
+      border-radius: @border-radius-small;
 
       &:hover {
         background-color: @bg-color-container-hover;

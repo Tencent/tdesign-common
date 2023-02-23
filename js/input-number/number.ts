@@ -1,3 +1,5 @@
+import isUndefined from 'lodash/isUndefined';
+import isNil from 'lodash/isNil';
 /** 普通数相关方法 */
 import isString from 'lodash/isString';
 import isNumber from 'lodash/isNumber';
@@ -53,22 +55,24 @@ export function formatToNumber(
     largeNumber?: boolean;
   }
 ): string | number {
-  if (num === undefined || num === null || num === '') return num;
+  if (isNil(num) || num === '') return num;
   if (num === '-') return 0;
-  if (num[num.length - 1] === '.') return num.slice(0, -1);
+  if (num[num.length - 1] === '.') {
+    return extra?.largeNumber ? num.slice(0, -1) : Number(num.slice(0, -1));
+  }
   const isLargeNumber = extra?.largeNumber && isString(num);
   let newNumber: string | number = num;
   if ((isString(num) && num.includes('e')) || isNumber(num)) {
     newNumber = isLargeNumber ? formatENumber(num) : Number(num);
   }
-  if (extra?.decimalPlaces !== undefined) {
+  if (!isUndefined(extra?.decimalPlaces)) {
     newNumber = largeNumberToFixed(
       newNumber,
       extra.decimalPlaces,
       extra.largeNumber
     );
   }
-  const val = isLargeNumber || extra?.decimalPlaces !== undefined
+  const val = isLargeNumber || !isUndefined(extra?.decimalPlaces)
     ? newNumber
     : Number(newNumber);
   if (String(val) === 'NaN') return undefined;
@@ -175,7 +179,7 @@ export function getStepValue(p: {
   lastValue?: NumberType;
   largeNumber?: boolean;
 }) {
-  const { op, step, lastValue = 0, max, min, largeNumber } = p;
+  const { op, step, lastValue, max, min, largeNumber } = p;
   if (step <= 0) {
     log.error('InputNumber', 'step must be larger than 0.');
     return lastValue;
@@ -195,7 +199,7 @@ export function getStepValue(p: {
       newVal = subtract(Number(lastValue || 0), Number(step));
     }
   }
-  if (lastValue === undefined) {
+  if (isUndefined(lastValue)) {
     newVal = putInRangeNumber(newVal, { max, min, lastValue, largeNumber });
   }
   return largeNumber ? newVal : Number(newVal);
@@ -216,7 +220,7 @@ export function getMaxOrMinValidateResult(p: {
   min: NumberType;
 }): InputNumberErrorType {
   const { largeNumber, value, max, min } = p;
-  if (largeNumber === undefined) return undefined;
+  if (isUndefined(largeNumber)) return undefined;
   if (largeNumber && isNumber(value)) {
     log.warn('InputNumber', 'largeNumber value must be a string.');
   }
@@ -231,12 +235,17 @@ export function getMaxOrMinValidateResult(p: {
   return error;
 }
 
+export const specialCode = ['-', '.', 'e', 'E'];
+
 /**
  * 是否允许输入当前字符，输入字符校验
  */
 export function canInputNumber(number: string, largeNumber: boolean) {
-  if (!number && typeof number === 'string') return true;
+  if (!number && isString(number)) return true;
   const isNumber = (largeNumber && isInputNumber(number)) || !Number.isNaN(Number(number));
   if (!isNumber && !['-', '.', 'e', 'E'].includes(number.slice(-1))) return false;
+  // 只能出现一个点（.） 和 一个负号（-）
+  if (String(number).match(/\./g)?.length > 1) return false;
+  if (String(number).match(/-/g)?.length > 1) return false;
   return true;
 }

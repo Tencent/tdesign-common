@@ -14,10 +14,6 @@
   overflow: hidden;
   background-color: @tab-default-bg;
 
-  .t-icon {
-    font-size: @tab-icon-size;
-  }
-
   &__header {
     &.@{prefix}-is-left {
       float: left;
@@ -25,6 +21,10 @@
 
     &.@{prefix}-is-right {
       float: right;
+    }
+
+    .t-icon {
+      font-size: @tab-icon-size;
     }
   }
 
@@ -231,11 +231,12 @@
     transition: @tab-nav-item-transition;
 
     &-wrapper {
-      display: block;
+      display: flex;
+      align-items: center;
+      height: @tab-nav-item-wrapper-height;
       padding: @tab-nav-item-wrapper-padding;
       margin-left: @tab-nav-item-margin-left;
       margin-right: @tab-nav-item-margin-right;
-      line-height: @tab-nav-item-line-height;
       border-radius: @border-radius-default;
       transition: @tab-nav-item-transition;
 
@@ -246,6 +247,7 @@
       font: @tab-nav-item-font;
 
       .@{prefix}-tabs__nav-item-wrapper {
+        height: @tab-nav-item-wrapper-height-large;
         padding: @tab-nav-item-wrapper-padding-large;
       }
     }

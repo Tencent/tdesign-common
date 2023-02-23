@@ -1,3 +1,5 @@
+import isString from 'lodash/isString';
+import isNumber from 'lodash/isNumber';
 import log from '../log/log';
 
 export function fillZero(length: number) {
@@ -9,7 +11,7 @@ export function fillZero(length: number) {
  */
 export function isInputNumber(num: number | string): boolean {
   if (!num) return true;
-  if (typeof num === 'number') return Number.isNaN(num);
+  if (isNumber(num)) return !Number.isNaN(num);
   const r = /^[0-9|e|E|-]+\.*[0-9|e|E|-]*$/.test(num);
   if (!r) return false;
   // only allow one [.e] and two [-]
@@ -325,7 +327,7 @@ export function largeNumberToFixed(
   number: string | number, decimalPlaces: number = 0, largeNumber = true,
 ): string {
   if (!largeNumber) return Number(number).toFixed(decimalPlaces);
-  if (typeof number !== 'string') return String(number);
+  if (!isString(number)) return String(number);
   const [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {

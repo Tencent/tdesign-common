@@ -1,6 +1,12 @@
+import isArray from 'lodash/isArray';
+import isFunction from 'lodash/isFunction';
+import isNumber from 'lodash/isNumber';
+import isString from 'lodash/isString';
 import difference from 'lodash/difference';
 import camelCase from 'lodash/camelCase';
 import isPlainObject from 'lodash/isPlainObject';
+import mitt from 'mitt';
+
 import { TreeNode } from './tree-node';
 import {
   TreeNodeValue,
@@ -8,6 +14,7 @@ import {
   TypeTimer,
   TypeTargetNode,
   TypeTreeNodeData,
+  TypeTreeItem,
   TypeTreeStoreOptions,
   TypeTreeFilter,
   TypeTreeFilterOptions,
@@ -59,6 +66,9 @@ export class TreeStore {
   // 一个空节点 model
   public nullNodeModel: TypeTreeNodeModel;
 
+  // 事件派发器
+  public emitter: ReturnType<typeof mitt>;
+
   public constructor(options: TypeTreeStoreOptions) {
     const config: TypeTreeStoreOptions = {
       prefix: 't',
@@ -97,6 +107,7 @@ export class TreeStore {
     this.updateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
+    this.emitter = mitt();
     this.initNullNodeModel();
   }
 
@@ -137,7 +148,7 @@ export class TreeStore {
   // 获取节点对象
   public getNode(item: TypeTargetNode): TreeNode {
     let node = null;
-    if (typeof item === 'string' || typeof item === 'number') {
+    if (isString(item) || isNumber(item)) {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
@@ -187,7 +198,7 @@ export class TreeStore {
   ): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
-    if (typeof item === 'string' || typeof item === 'number') {
+    if (isString(item) || isNumber(item)) {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
@@ -207,10 +218,10 @@ export class TreeStore {
         level: Infinity,
         ...options,
       };
-      if (typeof conf.level === 'number' && conf.level !== Infinity) {
+      if (isNumber(conf.level) && conf.level !== Infinity) {
         nodes = nodes.filter((node) => node.level <= conf.level);
       }
-      if (typeof conf.filter === 'function') {
+      if (isFunction(conf.filter)) {
         nodes = nodes.filter((node) => {
           const nodeModel = node.getModel();
           return conf.filter(nodeModel);
@@ -257,7 +268,7 @@ export class TreeStore {
     let node = null;
     let data = null;
 
-    if (typeof para === 'string' || typeof para === 'number') {
+    if (isString(para) || isNumber(para)) {
       value = para;
       data = item;
       node = this.getNode(value);
@@ -304,7 +315,7 @@ export class TreeStore {
         // 插入到目标节点之下
         if (spec.data instanceof TreeNode) {
           spec.data.appendTo(this, spec.node);
-        } else if (Array.isArray(spec.data)) {
+        } else if (isArray(spec.data)) {
           spec.node.append(spec.data);
         } else {
           spec.node.append([spec.data]);
@@ -315,7 +326,7 @@ export class TreeStore {
   }
 
   // 在目标节点之前插入节点
-  public insertBefore(value: TypeTargetNode, item: TypeTreeNodeData): void {
+  public insertBefore(value: TypeTargetNode, item: TypeTreeItem): void {
     const node = this.getNode(value);
     if (node) {
       node.insertBefore(item);
@@ -323,7 +334,7 @@ export class TreeStore {
   }
 
   // 在目标节点之后插入节点
-  public insertAfter(value: TypeTargetNode, item: TypeTreeNodeData): void {
+  public insertAfter(value: TypeTargetNode, item: TypeTreeItem): void {
     const node = this.getNode(value);
     if (node) {
       node.insertAfter(item);
@@ -633,12 +644,13 @@ export class TreeStore {
 
   // 触发绑定的事件
   public emit(name: string, state?: TypeTreeEventState): void {
-    const config = this.config || {};
+    const { config, emitter } = this;
     const methodName = camelCase(`on-${name}`);
     const method = config[methodName];
-    if (typeof method === 'function') {
+    if (isFunction(method)) {
       method(state);
     }
+    emitter.emit(name, state);
   }
 
   // 锁定过滤节点的路径节点
@@ -657,7 +669,7 @@ export class TreeStore {
     const currentFilter = config.filter;
     // 当前没有过滤器
     // 则无需处理锁定节点
-    if (!currentFilter || typeof currentFilter !== 'function') return;
+    if (!currentFilter || !isFunction(currentFilter)) return;
 
     if (currentFilter(this.nullNodeModel)) return;
 

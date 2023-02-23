@@ -13,29 +13,43 @@
 
 // 颜色
 @switch-checked-bg-color: @brand-color;
+@switch-checked-bg-color-hover: @brand-color-hover;
 @switch-checked-bg-color-loading: @brand-color-focus;
 @switch-checked-bg-color-disabled: @brand-color-disabled;
 
-@switch-unchecked-bg-color: @gray-color-5;
-@switch-unchecked-bg-color-loading: @bg-color-page;
+@switch-unchecked-bg-color: @bg-color-secondarycomponent;
+@switch-unchecked-bg-color-hover: @bg-color-secondarycomponent-hover;
+@switch-unchecked-bg-color-loading: @bg-color-component-disabled;
 @switch-unchecked-bg-color-disabled: @bg-color-component-disabled;
 
-@switch-handle-bg-color: @text-color-anti;
+@switch-handle-bg-color: #fff;
 @switch-content-color-checked: @text-color-anti;
 @switch-content-color-unchecked: @text-color-anti;
 
 // 尺寸
-@switch-height-l: 24px;
-@switch-height-default: 20px;
-@switch-height-s: 16px;
+@switch-height-l: @comp-size-xs;
+@switch-height-default: @comp-size-xxs;
+@switch-height-s: @comp-size-xxxs;
 
-@switch-min-width-l: 44px;
-@switch-min-width-default: 36px;
-@switch-min-width-s: 28px;
+@switch-min-width-l: calc(@switch-height-l / .618);
+@switch-min-width-default: calc(@switch-height-default / .618);
+@switch-min-width-s: calc(@switch-height-s / .618);
 
-@switch-width-border-l: 2px;
-@switch-width-border-default: 2px;
-@switch-width-border-s: 2px;
+//change uncheck handle size
+@switch-width-border-base: 5px;
+@switch-width-border-value: 1px; //公差值
+
+@switch-width-border-l: @switch-width-border-base;
+@switch-width-border-default: (@switch-width-border-base - @switch-width-border-value * 1);
+@switch-width-border-s: (@switch-width-border-base - @switch-width-border-value * 2);
+
+//change check handle size
+@switch-width-border-check-base: 3px;
+@switch-width-border-check-value: .5px; //公差值
+
+@switch-width-border-check-l: @switch-width-border-check-base;
+@switch-width-border-check-default: (@switch-width-border-check-base - @switch-width-border-check-value * 1);
+@switch-width-border-check-s: (@switch-width-border-check-base - @switch-width-border-check-value * 2);
 
 // 字体
 @switch-content-font-size-l: @font-size-l;
@@ -43,16 +57,17 @@
 @switch-content-font-size-s: 9px;
 
 // 间距
-@switch-content-margin-left-l: (@switch-min-width-l / 2 + 2px);
-@switch-content-margin-right-l: 8px;
+@switch-content-margin-left-l: calc(@switch-min-width-l / 2 + 4px);
+@switch-content-margin-right-l: @comp-margin-s;
 
-@switch-content-margin-left-default: (@switch-min-width-default / 2 + 2px);
-@switch-content-margin-right-default: 6px;
+@switch-content-margin-left-default: calc(@switch-min-width-default / 2 + 2px);
+@switch-content-margin-right-default: @comp-margin-xs;
 
-@switch-content-margin-left-s: (@switch-min-width-s / 2 + 2px);
-@switch-content-margin-right-s: 5px;
+@switch-content-margin-left-s: calc(@switch-min-width-s / 2 + 2px);
+@switch-content-margin-right-s: @comp-margin-xxs;
 
 // 动画
-@switch-transition: all @anim-duration-base @anim-time-fn-ease-out;
+@switch-transition: all @anim-duration-base @anim-time-fn-easing;
 @switch-handle-transition: all @anim-duration-base @anim-time-fn-easing;
-@switch-content-transition: padding @anim-duration-base @anim-time-fn-easing, opacity @anim-duration-base linear;
+@switch-content-transition: padding @anim-duration-base @anim-time-fn-easing,
+  opacity @anim-duration-base linear;

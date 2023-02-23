@@ -51,6 +51,9 @@ export interface UploadFile {
 export interface RequestMethodResponse {
   status: 'success' | 'fail';
   error?: string;
+  /**
+   * response.XMLHttpRequest is going to be deprecated
+   */
   response: { url?: string; [key: string]: any }
 }
 
@@ -71,12 +74,22 @@ export interface InnerProgressContext {
   files?: UploadFile[];
   percent: number;
   type: ProgressContext['type'];
+  XMLHttpRequest?: XMLHttpRequest;
+}
+
+export interface ErrorContext {
+  event?: ProgressEvent;
+  file?: UploadFile;
+  files?: UploadFile[];
+  response?: any;
+  XMLHttpRequest?: XMLHttpRequest;
 }
 
 export interface SuccessContext {
   event?: ProgressEvent;
   file?: UploadFile;
   files?: UploadFile[];
+  XMLHttpRequest?: XMLHttpRequest;
   response?: RequestMethodResponse['response'];
 }
 
@@ -102,14 +115,12 @@ export interface XhrOptions {
   file?: UploadFile;
   files?: UploadFile[];
   useMockProgress?: boolean;
+  // 模拟进度间隔时间，默认：300
+  mockProgressDuration?: number;
   name: string;
   /** 可与 data 共存 */
   formatRequest?: (requestData: { [key: string]: any }) => { [key: string]: any };
-  onError: ({
-    event, file, files, response
-  }: {
-    event?: ProgressEvent; file?: UploadFile; files?: UploadFile[]; response?: any
-  }) => void;
+  onError: (context: ErrorContext) => void;
   onSuccess: (context: SuccessContext) => void;
   onProgress: (context: InnerProgressContext) => void;
 }
@@ -191,6 +202,8 @@ export interface HandleUploadParams {
   name?: string;
   /** 是否需要真实进度之前的模拟进度 */
   useMockProgress?: boolean;
+  // 模拟进度间隔时间
+  mockProgressDuration?: number;
   multiple?: boolean;
   headers?: {[key: string]: string};
   withCredentials?: boolean;

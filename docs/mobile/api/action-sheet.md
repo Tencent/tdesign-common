@@ -1,6 +1,6 @@
 ---
 title: ActionSheet 动作面板
-description: 从底部弹出的模态框，提供和当前场景相关的操作动作，也支持提供信息输入和描述。
+description: 由用户操作后触发的一种特定的模态弹出框 ，呈现一组与当前情境相关的两个或多个选项。
 spline: base
 isComponent: true
 toc: false
@@ -22,3 +22,7 @@ toc: false
 菜单项的数量超过 8 个时，可作翻页处理。
 
 {{ grid }}
+
+### 宫格型-多页
+
+{{ grid-multiple }}

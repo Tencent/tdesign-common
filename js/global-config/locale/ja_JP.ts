@@ -1,5 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/ja';
+
 export default {
   pagination: {
     itemsPerPage: '{size} /ページ',
@@ -22,7 +24,7 @@ export default {
     today: '今日',
     thisMonth: '今月は',
     week: '月,火,水,木,金,土,日',
-    cellMonth: '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月',
+    cellMonth: '1 月,2 月,3 月,4 月,5 月,6 月,7 月,8 月,9 月,10 月,11 月,12 月',
   },
   transfer: {
     title: '{checked} / {total} 項目',
@@ -30,6 +32,7 @@ export default {
     placeholder: '検索するキーワードを入力してください',
   },
   timePicker: {
+    dayjsLocale: 'ja',
     now: 'このとき',
     confirm: '決定事項',
     anteMeridiem: 'モーニング',
@@ -84,13 +87,27 @@ export default {
     placeholder: '選択してください',
   },
   datePicker: {
+    dayjsLocale: 'ja',
     placeholder: {
       date: '日付を選択してください',
       month: '月を選択してください',
       year: '年度を選択してください',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
-    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
+    months: [
+      '1 月',
+      '2 月',
+      '3 月',
+      '4 月',
+      '5 月',
+      '6 月',
+      '7 月',
+      '8 月',
+      '9 月',
+      '10 月',
+      '11 月',
+      '12 月',
+    ],
     quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -125,7 +142,8 @@ export default {
     dragger: {
       dragDropText: 'マウスを離す',
       draggingText: 'この領域にドラッグ＆ドロップする',
-      clickAndDragText: '上の「ファイルを選択」をクリックするか、このエリアにファイルをドラッグ＆ドロップしてください',
+      clickAndDragText:
+        '上の「ファイルを選択」をクリックするか、このエリアにファイルをドラッグ＆ドロップしてください',
     },
     file: {
       fileNameText: 'ファイル名',
@@ -178,4 +196,32 @@ export default {
     recentColorTitle: '最近使用した色',
     clearConfirmText: '最近使用した色をクリアにするのは確実ですか？',
   },
-};
+  guide: {
+    finishButtonProps: {
+      content: '終了',
+      theme: 'primary',
+    },
+    nextButtonProps: {
+      content: '次のステップ',
+      theme: 'primary',
+    },
+    skipButtonProps: {
+      content: 'スキップ',
+      theme: 'default',
+    },
+    prevButtonProps: {
+      content: '前へ',
+      theme: 'default',
+    },
+  },
+  image: {
+    errorText: '画像を表示できません',
+    loadingText: '画像の読み込み',
+  },
+  imageViewer: {
+    errorText: '画像の読み込みに失敗しました。再読み込みしてみてください',
+    mirrorTipText: '鏡像',
+    rotateTipText: '回転する',
+    originalSizeTipText: 'オリジナルサイズ',
+  },
+} as const;

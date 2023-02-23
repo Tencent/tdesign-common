@@ -25,10 +25,10 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    font-size: 14px;
+    font: @image-viewer-error-font;
 
     .@{prefix}-image-viewer__img-error-text {
-      margin-top: 10px;
+      margin-top: @comp-margin-s;
     }
   }
 }
@@ -79,7 +79,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2000;
+  z-index: @z-index-image-viewer;
   overflow: hidden;
   animation: @anim-duration-base @anim-time-fn-ease-in modal-mask-show;
 
@@ -96,12 +96,12 @@
     font-size: @font-size-base;
     color: @text-color-anti;
     position: absolute;
-    top: 100px;
+    top: 92px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 40%);
-    border-radius: 3px;
-    padding: 4px 8px;
+    border-radius: @border-radius-default;
+    padding: @image-viewer-modal-padding;
     z-index: 1;
   }
 
@@ -154,7 +154,11 @@
     align-items: center;
     justify-content: center;
     background-color: @bg-color-container;
-    padding-bottom: 6px;
+    padding: @image-viewer-header-hide-padding;
+
+    &.@{prefix}-is-show {
+      padding: @image-viewer-header-padding;
+    }
 
     @keyframes preview-icon-range {
       0% {
@@ -177,8 +181,11 @@
     }
 
     .@{prefix}-image-viewer__header-pre-bt {
-      width: auto;
-      height: auto;
+      width: @comp-size-xxs;
+      height: @comp-size-xxs;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       left: 50%;
       bottom: 0;
@@ -186,8 +193,12 @@
       background-color: @bg-color-container;
       color: @text-color-primary;
       border-radius: 50%;
-      border: .5px solid @bg-color-secondarycontainer;
-      animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-icon-unrange;
+      box-shadow: @shadow-inset;
+      animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-icon-unrange;
+
+      .t-icon {
+        font-size: @font-size-l;
+      }
 
       &:hover {
         background-color: inherit;
@@ -200,13 +211,13 @@
       }
 
       to {
-        height: 54px;
+        height: @image-viewer-header-box-height;
       }
     }
 
     @keyframes preview-image-hide {
       0% {
-        height: 54px;
+        height: @image-viewer-header-box-height;
       }
 
       to {
@@ -216,40 +227,37 @@
 
     &.@{prefix}-is-show {
       .@{prefix}-image-viewer__header-prev {
-        animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-image-show;
+        animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-image-show;
       }
 
       .@{prefix}-image-viewer__header-pre-bt {
-        animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-icon-range;
+        animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-icon-range;
       }
     }
 
-    @header-box-width: 66px;
-    @header-box-margin: 8px;
-    @header-box-border-width: 1px;
-    @header-box-all-width: @header-box-width + @header-box-margin * 2 + @header-box-border-width * 2;
-
     .@{prefix}-image-viewer__header-prev {
-      width: @header-box-all-width * 7;
-      animation: @anim-duration-base ease-out 0s 1 normal forwards running preview-image-hide;
-      overflow: auto hidden;
+      width: @image-viewer-header-all-box-width;
+      animation: @anim-duration-base @anim-time-fn-easing 0s 1 normal forwards running preview-image-hide;
       display: flex;
       position: relative;
+      overflow: hidden;
 
-      .@{prefix}-image-viewer__bokeh-left, .@{prefix}-image-viewer__bokeh-right {
+      &::before,
+      &::after {
+        content: "";
         position: absolute;
         height: 100%;
         z-index: 1;
-        width: @header-box-all-width * 3;
+        width: @image-viewer-header-box-width;
         pointer-events: none;
       }
 
-      .@{prefix}-image-viewer__bokeh-left {
+      &::before {
         left: 0;
         background-image: linear-gradient(to right, @bg-color-container, rgba(255, 255, 255, 0%));
       }
 
-      .@{prefix}-image-viewer__bokeh-right {
+      &::after {
         right: 0;
         background-image: linear-gradient(to right, rgba(255, 255, 255, 0%), @bg-color-container);
       }
@@ -260,27 +268,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: @header-box-all-width * 3;
+        gap: @spacer-s;
+        margin-left: @image-viewer-header-box-width-margin-left;
 
         .@{prefix}-image-viewer__header-box {
-          width: @header-box-width;
-          height: 38px;
-          margin: 16px @header-box-margin 10px;
+          box-sizing: border-box;
+          width: @image-viewer-header-box-width;
+          height: @image-viewer-header-box-height;
           transition: @anim-duration-base;
           overflow: hidden;
-          border-radius: 3px;
+          border-radius: @border-radius-default;
           display: flex;
           align-items: center;
           justify-content: center;
-          border: @header-box-border-width solid transparent;
+          border: 1px solid transparent;
           background-color: @bg-color-secondarycontainer;
 
           .@{prefix}-image-viewer__header-img {
-            max-height: 100%;
+            width: auto;
+            height: 100%;
           }
 
           &:hover, &.@{prefix}-is-active {
-            border: 1px solid @brand-color;
+            border-color: @brand-color;
           }
         }
       }
@@ -318,8 +328,8 @@
       color: @text-color-anti;
       background-color: rgba(0, 0, 0, 40%);
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: @image-viewer-modal-button-size;
+      height: @image-viewer-modal-button-size;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -330,7 +340,7 @@
     }
 
     &.@{prefix}-is-disabled {
-      color: @image-viewer__icon-color--disabled;
+      color: rgba(255, 255, 255, 22%);
     }
 
     &.@{prefix}-is-disabled:hover {
@@ -372,13 +382,13 @@
     height: 50px;
     line-height: 100%;
     background: @bg-color-container;
-    border-radius: 6px;
-    padding: 0 5px;
+    border-radius: @border-radius-medium;
+    padding: @image-viewer-utils-content-padding;
 
     .@{prefix}-image-viewer__modal-icon {
-      margin: 0 4px;
-      width: 32px;
-      height: 32px;
+      margin: @image-viewer-utils-modal-icon-margin;
+      width: @image-viewer-utils-modal-icon-size;
+      height: @image-viewer-utils-modal-icon-size;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -391,35 +401,13 @@
     }
 
     .@{prefix}-image-viewer__utils-scale {
-      width: 40px;
+      width: @image-viewer-utils-modal-utils-scale-width;
       text-align: center;
       cursor: inherit;
 
       &:hover {
         background-color: @bg-color-container;
       }
-    }
-  }
-}
-
-.@{prefix}-image-viewer__mini-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: @bg-color-secondarycontainer;
-  height: 40px;
-  width: 100%;
-  font-size: @font-size-base;
-
-  .@{prefix}-image-viewer__mini-close {
-    position: absolute;
-    right: 5px;
-    cursor: pointer;
-    transition: @anim-duration-base;
-
-    &:hover .t-icon {
-      border-radius: 50%;
-      background-color: @bg-color-secondarycontainer-hover;
     }
   }
 }
@@ -466,13 +454,43 @@
 }
 
 .@{prefix}-image-viewer__dialog {
+  &.@{prefix}-dialog__ctx--fixed {
+    z-index: @z-index-image-viewer;
+  }
+
   .@{prefix}-dialog__header {
-    padding-right: 0;
+    padding: 0 @comp-paddingLR-s;
+    // 兼容dialog表头限制无法拖拽
+    pointer-events: none;
+    .@{prefix}-image-viewer__dialog-title {
+      pointer-events: all;
+    }
+
+    .@{prefix}-dialog__close {
+      pointer-events: auto;
+    }
   }
 
   .@{prefix}-dialog {
     border-color: @component-border;
     overflow: hidden;
     padding: 0;
+    box-shadow: @shadow-3;
+
+    &__header {
+      height: 40px;
+      width: 100%;
+      font-size: @font-size-base;
+      background-color: @bg-color-secondarycontainer;
+
+      &-content {
+        margin-left: @spacer-4;
+        justify-content: center;
+      }
+    }
+
+    &__close:hover {
+      background-color: @bg-color-secondarycontainer-hover;
+    }
   }
 }

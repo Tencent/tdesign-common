@@ -6,36 +6,38 @@
 @transfer-font-color: @text-color-primary;
 
 // 间距
-@transfer-list-margin-horizontal: @spacer;
-@transfer-list-header-padding: 0 @spacer * 1.5;
+@transfer-list-margin-horizontal: @comp-margin-s;
+@transfer-list-header-padding: 0 @comp-paddingLR-s;
 @transfer-list-header-margin: 0 @transfer-list-margin-horizontal;
-@transfer-list-header-text-margin-left: @spacer;
-@transfer-list-body-padding: @spacer 0 @spacer 0;
-@transfer-list-item-padding: 5px @spacer * 1.5;
+@transfer-list-header-text-margin-left: @comp-margin-s;
+@transfer-list-checkbox-group-gap: @comp-margin-xs;
+@transfer-list-checkbox-group-margin: @comp-margin-s 0;
+@transfer-list-item-padding: @comp-paddingLR-xs @comp-paddingLR-s;
 @transfer-list-item-margin: 0 @transfer-list-margin-horizontal;
-@transfer-list-item-text-margin-left: @spacer;
+@transfer-list-item-text-margin-left: @comp-margin-s;
 @transfer-list-search-wrapper-margin: 0 @transfer-list-margin-horizontal;
-@transfer-list-with-search-padding-top: 40px;
-@transfer-list-wrapper-padding: @spacer * 1.5;
-@transfer-list-pagination-padding: 0 @spacer 0 @spacer * .5;
-@transfer-operations-margin: auto @spacer;
-@transfer-operations-button-padding: 0 3px 1px;
-@transfer-operations-button-first-margin-bottom: 14px;
+@transfer-list-with-search-padding-top: @comp-size-m;
+@transfer-list-wrapper-padding: @comp-paddingTB-m @comp-paddingLR-m;
+@transfer-list-with-tree-padding: 0 @comp-paddingLR-m;
+@transfer-list-with-tree-margin: @comp-margin-s 0;
+@transfer-list-pagination-padding: @comp-paddingTB-m;
+@transfer-operations-margin: auto @comp-margin-s;
+@transfer-operations-gap: @comp-margin-l;
 // 有翻页时候transfer的下内边距
-@transfer-with-pagination-padding-bottom: 32px;
+@transfer-with-pagination-padding-bottom: calc(@transfer-list-pagination-height + @transfer-list-pagination-padding * 2);
 // 有footer时候transfer的下内边距
 @transfer-with-footer-padding-bottom: 48px;
 // 有翻页和footer时候transfer的下内边距
-@transfer-with-pagination-footer-padding-bottom: 88px;
+@transfer-with-pagination-footer-padding-bottom: calc(@transfer-with-pagination-padding-bottom + @transfer-with-footer-padding-bottom);
 // search&footer
 @transfer-with-search-footer-padding-bottom: 48px;
 // pagination&search
-@transfer-with-search-pagination-padding-bottom: 40px;
+@transfer-with-search-pagination-padding-bottom: 48px;
 //pagination&footer&search
 @transfer-with-all-padding-bottom: 88px;
 
 // 尺寸
-@transfer-common-width: 196px;
+@transfer-common-width: 200px;
 @transfer-common-height: 200px;
 // 有search的高度
 @transfer-with-search-height: 240px;
@@ -52,19 +54,16 @@
 // 包裹树组件时候transfer的高度
 @transfer-wrap-height: 320px;
 @transfer-wrap-width: 206px;
-@transfer-list-header-height: 48px;
-@transfer-list-header-width: (
+@transfer-list-header-height: @comp-size-xxl;
+@transfer-list-header-width: calc(
   @transfer-common-width - @transfer-list-margin-horizontal * 2
 );
-@transfer-list-search-wrapper-width: (
+@transfer-list-search-wrapper-width: calc(
   @transfer-common-width - @transfer-list-margin-horizontal * 2
 );
-@transfer-list-pagination-height: 24px;
-@transfer-list-pagination-line-height: 16px;
-@transfer-operations-button-height: 24px;
-@transfer-operations-button-line-height: 14px;
-@transfer-operations-button-icon-width: 24px;
-@transfer-operations-icon-size: 16px;
+@transfer-list-pagination-height: @comp-size-xs;
+@transfer-operations-button-height: @comp-size-xs;
+@transfer-operations-icon-size: @comp-size-xxxs;
 
 // 字体
 @transfer-font: @font-body-medium;

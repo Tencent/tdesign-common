@@ -1,5 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/en';
+
 export default {
   pagination: {
     itemsPerPage: '{size} / page',
@@ -22,7 +24,8 @@ export default {
     today: 'Today',
     thisMonth: 'This Month',
     week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Staturday,Sunday',
-    cellMonth: 'January,February,March,April,May,June,July,August,September,October,November,December',
+    cellMonth:
+      'January,February,March,April,May,June,July,August,September,October,November,December',
   },
   transfer: {
     title: '{checked} / {total}',
@@ -30,6 +33,7 @@ export default {
     placeholder: 'enter keyworkd to search',
   },
   timePicker: {
+    dayjsLocale: 'en',
     now: 'Now',
     confirm: 'Confirm',
     anteMeridiem: 'AM',
@@ -63,7 +67,8 @@ export default {
     clearFilterResultButtonText: 'Clear',
     columnConfigButtonText: 'Column Config',
     columnConfigTitleText: 'Table Column Config',
-    columnConfigDescriptionText: 'Please select columns to show them in the table',
+    columnConfigDescriptionText:
+      'Please select columns to show them in the table',
     confirmText: 'Confirm',
     cancelText: 'Cancel',
     resetText: 'Reset',
@@ -84,13 +89,27 @@ export default {
     placeholder: 'please select',
   },
   datePicker: {
+    dayjsLocale: 'en',
     placeholder: {
       date: 'select date',
       month: 'select month',
       year: 'select year',
     },
     weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    months: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ],
     quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -178,4 +197,32 @@ export default {
     recentColorTitle: 'Recently Used',
     clearConfirmText: 'Clear recently used colors?',
   },
-};
+  guide: {
+    finishButtonProps: {
+      content: 'Finish',
+      theme: 'primary',
+    },
+    nextButtonProps: {
+      content: 'Next Step',
+      theme: 'primary',
+    },
+    skipButtonProps: {
+      content: 'Skip',
+      theme: 'default',
+    },
+    prevButtonProps: {
+      content: 'Last Step',
+      theme: 'default',
+    },
+    image: {
+      errorText: 'unable to load',
+      loadingText: 'loading',
+    },
+    imageViewer: {
+      errorText: 'unable to load',
+      mirrorTipText: 'mirror',
+      rotateTipText: 'rotate',
+      originalSizeTipText: 'original',
+    },
+  },
+} as const;

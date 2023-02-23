@@ -1,13 +1,13 @@
 // 尺寸
-@btn-height-s: 24px;
-@btn-height-default: 32px;
-@btn-height-l: 40px;
+@btn-height-s: @comp-size-xs;
+@btn-height-default: @comp-size-m;
+@btn-height-l: @comp-size-xl;
 
 // 圆角
 @btn-border-radius: @border-radius-default;
-@btn-shape-border-radius-s: (@btn-height-s / 2);
-@btn-shape-border-radius-default: (@btn-height-default / 2);
-@btn-shape-border-radius-l: (@btn-height-l / 2);
+@btn-shape-border-radius-s: calc(@btn-height-s / 2);
+@btn-shape-border-radius-default: calc(@btn-height-default / 2);
+@btn-shape-border-radius-l: calc(@btn-height-l / 2);
 
 //字号
 @btn-font-s: @font-body-small;
@@ -24,9 +24,9 @@
 @btn-icon-text-margin-left: @spacer;
 
 // padding
-@btn-padding-horizontal-s: @spacer;
-@btn-padding-horizontal-default: (@spacer * 2);
-@btn-padding-horizontal-l: (@spacer * 3);
+@btn-padding-horizontal-s: @comp-paddingLR-s;
+@btn-padding-horizontal-default: @comp-paddingLR-l;
+@btn-padding-horizontal-l: @comp-paddingLR-xl;
 
 @btn-border-width: 1px;
 

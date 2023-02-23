@@ -6,6 +6,8 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_text.less";
+
 @import "../../mixins/_reset.less";
 
 .@{prefix}-input {
@@ -16,8 +18,6 @@
   box-sizing: border-box;
   height: @input-height-default;
   .input-base();
-
-  line-height: @input-height-default; // TODO: 需要调整目前用line height撑开的方式
 
   &--focused {
     border-color: @input-border-color-default-focus;
@@ -41,6 +41,7 @@
     font: inherit;
     background-color: transparent;
     box-sizing: border-box;
+    .text-ellipsis();
 
     &::placeholder {
       color: @input-placeholder-color;
@@ -101,15 +102,12 @@
   &.@{prefix}-size-l {
     height: @input-height-l;
     font: @input-font-l;
-    padding-top: @spacer;
-    padding-bottom: @spacer;
+    padding: @input-padding-l;
   }
 
   &.@{prefix}-size-s {
     height: @input-height-s;
     font: @input-font-s;
-    padding-top: (@spacer / 4);
-    padding-bottom: (@spacer / 4);
   }
 
   .@{prefix}-input__prefix,
@@ -121,13 +119,28 @@
 
   .@{prefix}-input__prefix {
     > .t-icon {
+      font-size: @icon-default;
       color: @input-inner-prefix-icon-color;
+    }
+
+    &:not(:empty) {
+      margin-right: @comp-margin-s;
     }
   }
 
   .@{prefix}-input__suffix {
     > .t-icon {
       color: @input-inner-suffix-icon-color;
+      transition: all @anim-duration-base linear;
+
+      &:hover {
+        color: @input-inner-suffix-icon-color-hover;
+        transition: all @anim-duration-base linear;
+      }
+    }
+
+    &:not(:empty) {
+      margin-left: @comp-margin-s;
     }
   }
 

@@ -38,9 +38,7 @@ web
 ├── _reset.less                 // 重置标签默认样式
 ├── _variables.less             // 全局变量
 ├── base.less                   // 基础样式（内含 _reset.less 和 _variable.less）
-├── docs.less                   // 示例的公共样式
-├── index.less                  // 统一引入 UI 库所有样式的出口文件
-└── index.js                    // webpack 入口文件，含各组件的主样式
+└── docs.less                   // 示例的公共样式
 ```
 
 ### 开发
@@ -60,32 +58,8 @@ web
 几个关键点：
 
 - `components` 下创建组件文件夹
-- 修改 `index.html` 开发者信息及 `title` 信息(可在该组件文件夹下搜索 `<name>` 替换)。
-- `components` 下的 `_index.less` 增加组件主样式 （注意依赖顺序关系）
-- `index.js` 增加组件样式入口
 - 如果有示例样式，添加到 `/docs/<name>.css`，并在 `docs.css` 里引入
 
-#### 启动
-
-`style/web` 目录下，启动项目，主要用于 less 编译。
-html 可通过本地服务的方式实现热更新（如 VS Code 的 Live Server）
-
-```
-npm run start
-```
-
-### 如何使用 icon
-
-首先，在组件 index.html 中引入图标样式表，`<link rel="stylesheet" href="https://tdesign.gtimg.com/icon/0.0.3/fonts/index.css">` 。可参考 button/index.html。(如果使用初始化脚本，该样式表会自动插入 index.html)
-
-而后，便可按照如下方式使用图标：
-
-```html
-<!-- i 标签 -->
-<i class="t-icon t-icon-prompt_fill"></i>
-<!-- 或者 span 标签 -->
-<span class="t-icon t-icon-prompt_fill"></span>
-```
 
 ### 相关资料
 

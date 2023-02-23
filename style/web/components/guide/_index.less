@@ -34,7 +34,7 @@
 
   &__highlight {
     z-index: @guide-highlight-z-index;
-    transition: .3s ease-out;
+    transition: @anim-duration-base @anim-time-fn-ease-out;
     border-radius: @border-radius-default;
 
     &--dialog {
@@ -76,7 +76,7 @@
   &__dialog {
     min-width: 320px;
     max-width: 500px;
-    padding: @spacer-3 @spacer-4 @spacer-4;
+    padding: @guide-dialog-padding;
     border-radius: @border-radius-large;
     background: @bg-color-container;
     animation: tGuideDialogFadeIn .3s ease-out;
@@ -92,13 +92,13 @@
     }
 
     .@{prefix}-@{componentName}__desc {
-      margin-top: @spacer-l;
+      margin-top: @guide-dialog-desc-margin-top;
       font: @font-body-medium;
     }
   }
 
   &__tooltip {
-    padding: @spacer-l @spacer;
+    padding: @guide-tooltip-padding;
     min-width: 240px;
     max-width: 600px;
     max-height: 300px;
@@ -112,7 +112,7 @@
   }
 
   &__desc {
-    margin-top: @spacer;
+    margin-top: @guide-tooltip-desc-margin-top;
     text-align: left;
     color: @text-color-secondary;
     font: @font-body-small;
@@ -123,7 +123,7 @@
     align-items: center;
 
     button {
-      margin-right: @spacer;
+      margin-right: @guide-action-margin-right;
     }
 
     button:last-child {
@@ -136,7 +136,7 @@
     align-items: center;
 
     &--popup {
-      margin-top: @spacer-2;
+      margin-top: @guide-footer-popup-margin-top;
     }
 
     &--dialog {
@@ -152,17 +152,17 @@
   }
 
   &__counter {
-    color: @font-gray-3;
+    color: @text-color-placeholder;
     text-align: left;
     font: @font-body-small;
     flex: 1;
   }
 
   &__popup {
-    &--content {
-      background: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
+    & &--content {
+      background: none;
+      box-shadow: none;
+      padding: 0;
     }
   }
 }

@@ -24,8 +24,7 @@
 /** 吸顶表头 Affix 组件，zIndex: 1000。宽度拖拽辅助线层级需高于表头 */
 @table-resize-line-z-index: 1001;
 
-@table-cell-padding: @table-td-padding-vertical-top @table-td-padding-horizontal
-  @table-td-padding-vertical-bottom @table-td-padding-horizontal;
+@table-cell-padding: @table-td-padding-vertical @table-td-padding-horizontal;
 
 .scrollbar {
   .scrollbar();
@@ -87,7 +86,7 @@
   }
 
   &__column-controller-trigger {
-    padding: 16px 0;
+    padding: @table-controller-trigger-padding;
   }
 
   &__content {
@@ -96,12 +95,12 @@
   }
 
   &__pagination {
-    padding: @table-padding-normal 0;
+    padding: @table-default-pagination-padding;
     box-sizing: border-box;
   }
 
   .t-icon {
-    font-size: @font-size-l;
+    font-size: @table-icon-size;
   }
 
   // table 标签基础样式
@@ -111,6 +110,7 @@
   }
 
   .@{prefix}-text-ellipsis {
+    line-height: @table-line-height;
     .text-ellipsis();
   }
 
@@ -124,10 +124,13 @@
     overflow-wrap: break-word;
     background-color: inherit;
     box-sizing: border-box;
+    text-align: left;
+  }
 
-    &:not([align]) {
-      text-align: left;
-    }
+  th.@{prefix}-table__th-drag {
+    padding: 0;
+    height: 0;
+    text-align: center;
   }
 
   thead td,
@@ -160,8 +163,6 @@
 
   // 紧凑型表格
   &.@{prefix}-size-s {
-    font: @table-font-small;
-
     th,
     td {
       padding: @table-padding-small;
@@ -180,12 +181,13 @@
   .@{prefix}-table__expandable-icon-cell,
   .@{prefix}-table__selection-cell {
     padding: 0;
+    height: 0;
+  }
 
-    + td,
-    + th {
-      padding-left: 0;
-      padding-right: 0;
-    }
+  td.@{prefix}-table__handle-draggable {
+    text-align: center;
+    height: 0;
+    padding: 0;
   }
 
   .@{prefix}-table__cell--selectable > .@{prefix}-checkbox {
@@ -245,13 +247,11 @@
     }
 
     .@{prefix}-table__pagination {
-      border: @border;
-      border-top: 0;
-      padding: @table-padding-normal @table-padding-horizontal;
+      // border-top: 0;
+      padding: @table-default-pagination-padding;
     }
 
     .@{prefix}-table__bottom-content + .@{prefix}-table__pagination {
-      border: 0;
       padding: 0;
     }
 
@@ -271,6 +271,13 @@
 
   // 斑马线表格
   &--striped {
+
+    &:not(.@{prefix}-table--bordered) {
+      th,
+      td {
+        border-bottom: none;
+      }
+    }
 
     &.@{prefix}-table--header-fixed {
       tbody tr:nth-of-type(even) {
@@ -300,7 +307,7 @@
 
       tbody {
         tr {
-          transition: background-color .3s ease-in;
+          transition: background-color @anim-duration-base linear;
 
           &:hover {
             background-color: @table-highlight-dark-bg-color;
@@ -314,7 +321,7 @@
   &--hoverable {
     tbody {
       tr {
-        transition: background-color .3s ease-in;
+        transition: background-color @anim-duration-base linear;
 
         &:hover {
           background-color: @table-highlight-dark-bg-color;
@@ -450,22 +457,23 @@
   // 复杂表头容器
   .@{prefix}-table__cell--title {
     display: flex;
+    align-items: center;
   }
 
   &__column-controller {
     &-desc {
-      margin-bottom: 24px;
+      margin-bottom: @comp-margin-xxl;
     }
 
     &-block {
-      padding: 10px 24px;
-      border: 1px solid @gray-color-3;
+      padding: @comp-paddingTB-m @comp-paddingLR-l;
+      border: 1px solid @table-border-color;
       border-bottom: 1px solid @table-border-color;
 
       & + & {
         border-top: 0;
-        padding: 24px;
-        border-bottom: 1px solid @gray-color-3;
+        padding: @comp-paddingTB-l @comp-paddingLR-l;
+        border-bottom: 1px solid @table-border-color;
       }
     }
 
@@ -497,7 +505,6 @@
  * 有边框模式，只有一个图标时，图标靠近边框右侧；有两个图标时，排序图标靠近标题，过滤图标靠近边框右侧
  */
 .@{prefix}-table__cell--sort-trigger {
-  width: 20px;
   text-align: center;
   vertical-align: text-bottom;
 
@@ -547,20 +554,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
+  min-height: 120px;
   color: @table-color-empty;
 }
 
 .@{prefix}-table__filter-icon,
 .@{prefix}-table__sort-icon {
-  margin-left: 8px;
+  align-items: center;
   background-color: transparent;
-  display: inline-block;
+  display: inline-flex;
   cursor: pointer;
   vertical-align: text-bottom;
+  transition: @anim-duration-base linear;
 
   > svg {
-    margin-top: -4px;
+    margin-top: 0;
   }
 }
 
@@ -571,6 +579,7 @@
   &:hover {
     color: @table-icon-active-color;
     border-radius: @border-radius-circle;
+    transition: @anim-duration-base linear;
   }
 }
 
@@ -579,18 +588,19 @@
   &.@{prefix}-is-focus,
   &:hover {
     color: @table-icon-active-color;
+    transition: @anim-duration-base linear;
   }
 }
 
 .@{prefix}-table__filter-pop {
+  .@{prefix}-popup__content {
+    padding: 0;
+  }
 
   .@{prefix}-table__filter-pop-content {
-    margin: -8px;
-
     .@{prefix}-table__filter-pop-content-inner {
-      padding: 16px;
+      padding: @comp-paddingTB-l @comp-paddingLR-l;
     }
-
     .@{prefix}-radio-group {
       display: block;
       height: auto;
@@ -602,43 +612,51 @@
     .@{prefix}-checkbox,
     .@{prefix}-radio {
       display: block;
-      line-height: 28px;
+      // line-height: 28px;
+      margin: @comp-margin-xs 0;
     }
 
     .@{prefix}-table__filter-pop-content-button {
       border-top: @border;
-      padding: 16px;
+      padding: @comp-paddingTB-l @comp-paddingLR-l;
 
       .t-button + .t-button {
-        margin-left: @spacer-2;
+        margin-left: @comp-margin-l;
       }
     }
   }
 }
 
 .@{prefix}-table__filter-pop-content-inner {
-  padding: 16px;
   > .@{prefix}-input__wrap {
     width: 200px;
   }
 }
 
+.@{prefix}-table__filter-pop-content-inner {
+  > .@{prefix}-date-range-picker__panel {
+    margin: calc(0px - @comp-margin-l);
+  }
+}
+
 .@{prefix}-table__sort-icon--active {
   color: @table-icon-active-color;
+  transition: @anim-duration-base linear;
 }
 
 .@{prefix}-table__double-icons {
-  display: inline-grid;
-  height: @table-line-height;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   .@{prefix}-table__sort-icon {
-    height: @table-line-height-half;
+    position: relative;;
   }
   .@{prefix}-table-sort-asc {
-    margin-top: -2px;
+    top: @table-double-sort-icon-space;
   }
   .@{prefix}-table-sort-desc {
-    margin-top: -6px;
+    bottom: @table-double-sort-icon-space;
   }
 }
 
@@ -646,6 +664,9 @@
   display: flex;
   align-items: center;
   pointer-events: all;
+  height: @table-icon-size;
+  width: @table-icon-size;
+  margin-left: @table-filter-icon-margin-left;
 }
 
 // 有边框模式，排序图标和过滤图标同时存在时，排序图标紧挨标题，过滤图标靠右侧边框
@@ -674,17 +695,22 @@
 }
 
 .@{prefix}-table__expand-box {
-  padding: @table-td-padding-vertical-top @table-td-padding-horizontal
-    @table-td-padding-vertical-bottom @table-td-padding-horizontal;
-  display: inline-grid;
-  vertical-align: middle;
+  // padding: @table-td-padding-vertical-top @table-td-padding-horizontal
+  //   @table-td-padding-vertical-bottom @table-td-padding-horizontal;
+  // display: inline-grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  // vertical-align: middle;
   color: @table-icon-default-color;
   cursor: pointer;
-  transition: all .2s ease 0s;
-  align-items: center;
+  transition: all @anim-duration-base @anim-time-fn-easing 0s;
 
   &:hover {
     color: @table-icon-active-color;
+    transition: @anim-duration-base linear;
   }
 }
 
@@ -706,16 +732,16 @@
 }
 
 .@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key="row-select"] {
-  padding-left: 10px;
+  padding-left: @comp-margin-s;
 }
 
 .@{prefix}-table__filter--bottom-buttons {
   display: flex;
   justify-content: flex-end;
-  padding: 16px;
+  padding: @comp-paddingTB-l @comp-paddingLR-l;
   border-top: @border;
   > .@{prefix}-button + .@{prefix}-button {
-    margin-left: 8px;
+    margin-left: @comp-margin-s;
   }
 }
 
@@ -730,7 +756,7 @@
   align-items: center;
   justify-content: center;
   > .@{prefix}-button {
-    margin-left: 8px;
+    margin-left: @comp-margin-s;
   }
 }
 
@@ -751,38 +777,32 @@
   overflow: auto;
 }
 
-// 可向左滚动时，左边显示固定列显示阴影，右边同理
 .@{prefix}-table__content--scrollable-to-left {
-
   .@{prefix}-table__cell--fixed-left-last::after {
-    border-right: @table-fixed-cell-border-width solid @table-fixed-cell-border-color;
+    border-right: @table-fixed-cell-border-light;
   }
 }
 
 .@{prefix}-table__content--scrollable-to-right {
-
   .@{prefix}-table__cell--fixed-right-first::after {
-    border-left: @table-fixed-cell-border-width solid @table-fixed-cell-border-color;
+    border-left: @table-fixed-cell-border-light;
   }
 }
 
-// .@{prefix}-table--affixed-header {
-//   .@{prefix}-table__content {
-//     th.@{prefix}-table__cell--fixed-left-last::after,
-//     th.@{prefix}-table__cell--fixed-right-first::after {
-//       box-shadow: none;
-//     }
-//   }
-// }
+// 可向左滚动时，左边显示固定列显示阴影，右边同理
+.@{prefix}-table--bordered {
+  &.@{prefix}-table__content--scrollable-to-left {
+    .@{prefix}-table__cell--fixed-left-last::after {
+      border-right: @table-fixed-cell-border;
+    }
+  }
 
-// .@{prefix}-table--affixed-footer {
-//   .@{prefix}-table__content {
-//     th.@{prefix}-table__cell--fixed-left-last::after,
-//     th.@{prefix}-table__cell--fixed-right-first::after {
-//       box-shadow: none;
-//     }
-//   }
-// }
+  &.@{prefix}-table__content--scrollable-to-right {
+    .@{prefix}-table__cell--fixed-right-first::after {
+      border-left: @table-fixed-cell-border;
+    }
+  }
+}
 
 .@{prefix}-table__scroll-bar-divider {
   position: absolute;
@@ -893,19 +913,20 @@
 }
 
 .@{prefix}-table__tree-op-icon {
-  margin-right: @spacer;
+  margin-right: @comp-margin-s;
   cursor: pointer;
   display: inline-flex;
   vertical-align: -3px;
 
   &:hover {
     color: @table-icon-active-color;
+    transition: @anim-duration-base linear;
   }
 }
 
 .@{prefix}-table__tree-leaf-node .@{prefix}-table__tree-op-icon {
   min-width: 0;
-  margin-right: 2px;
+  margin-right: @comp-margin-xxs;
 }
 
 // 虚拟滚动游标
@@ -913,7 +934,7 @@
   position: absolute;
   width: 1px;
   height: 1px;
-  transition: transform .2s;
+  transition: transform @anim-duration-base;
 }
 
 .@{prefix}-table__virtual-scroll-header {
@@ -936,7 +957,7 @@
 
 .@{prefix}-table__affixed-header-elm {
   overflow: auto;
-  transition: opacity .15s linear;
+  transition: opacity @anim-duration-base linear;
   opacity: 1;
   // 隐藏表头滚动条：为了 IE10以下的浏览器，暂时不能使用这种方式
   // .hideScrollbar();
@@ -1008,8 +1029,9 @@
   height: 100%;
 }
 
+/** 默认最小高度限制为 Empty 高度加表头高度 */
 .@{prefix}-table--loading .@{prefix}-table__content {
-  min-height: 200px;
+  min-height: 168px;
 }
 
 .@{prefix}-table__handle-draggable:hover,
@@ -1024,10 +1046,19 @@
 
 .@{prefix}-table:not(.@{prefix}-table--row-edit) {
   .@{prefix}-table__cell--editable {
+    min-height: 22px;
+    line-height: @table-line-height;
     cursor: pointer;
 
     .t-icon {
       margin-left: @table-td-editalbe-icon-margin;
+      font-size: @table-icon-size;
+      transition: @anim-duration-base linear;
+    }
+
+    &:hover {
+      // color: @table-icon-active-color;
+      transition: @anim-duration-base linear;
     }
   }
 }
@@ -1073,8 +1104,8 @@
     /** HTML 特性: th/td 必须设置为 0，他们的子元素才能设置为 100% */
     height: 0;
 
-    .@{prefix}-radio__label,
-    .@{prefix}-checkbox__label {
+    .@{prefix}-radio__label:empty,
+    .@{prefix}-checkbox__label:empty {
       display: none;
     }
   }
@@ -1104,5 +1135,12 @@
 
 // 超出省略的文本，也需要跟着尺寸变化
 .@{prefix}-table__ellipsis-content.@{prefix}-size-s .@{prefix}-popup__content {
-  font: @table-font-small;
+  font: @table-font;
+}
+
+/** Chrome 兼容问题处理 */
+.@{prefix}-table--chrome.@{prefix}-table--multiple-header {
+  .@{prefix}-table__affixed-header-elm {
+    margin-top: 1px;
+  }
 }

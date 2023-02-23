@@ -1,3 +1,5 @@
+import isFunction from 'lodash/isFunction';
+import isNumber from 'lodash/isNumber';
 /* eslint-disable no-param-reassign */
 import { isOverSizeLimit } from './utils';
 import xhr from './xhr';
@@ -12,6 +14,7 @@ import {
   SuccessContext,
   handleSuccessParams,
   UploadTriggerUploadText,
+  ErrorContext,
 } from './types';
 
 export interface BeforeUploadExtra {
@@ -31,7 +34,7 @@ export function handleBeforeUpload(
   const sizePromise = new Promise<SizeLimitObj>((resolve) => {
     let result: SizeLimitObj = null;
     if (sizeLimit) {
-      const sizeLimitObj: SizeLimitObj = typeof sizeLimit === 'number'
+      const sizeLimitObj: SizeLimitObj = isNumber(sizeLimit)
         ? { size: sizeLimit, unit: 'KB' }
         : sizeLimit;
       const limit = isOverSizeLimit(file.size, sizeLimitObj.size, sizeLimitObj.unit);
@@ -44,7 +47,7 @@ export function handleBeforeUpload(
 
   // 自定义校验
   const promiseList: BeforeUploadPromiseList = [sizePromise, undefined];
-  if (typeof beforeUpload === 'function') {
+  if (isFunction(beforeUpload)) {
     const r = beforeUpload(file);
     const p = r instanceof Promise ? r : (new Promise<boolean>((resolve) => resolve(r)));
     promiseList[1] = p;
@@ -58,27 +61,24 @@ export function handleBeforeUpload(
   });
 }
 
-export interface OnErrorParams {
-  event?: ProgressEvent;
-  files?: UploadFile[];
-  response?: any;
+export interface OnErrorParams extends ErrorContext {
   formatResponse?: HandleUploadParams['formatResponse'];
 }
 
 export function handleError(options: OnErrorParams) {
-  const { event, files, response, formatResponse } = options;
+  const { event, files, response, XMLHttpRequest, formatResponse } = options;
   files.forEach((file) => {
     file.status = 'fail';
   });
   let res = response;
-  if (typeof formatResponse === 'function') {
+  if (isFunction(formatResponse)) {
     res = formatResponse(response, { file: files[0], currentFiles: files });
   }
-  return { response: res, event, files };
+  return { response: res, event, files, XMLHttpRequest };
 }
 
 export function handleSuccess(params: handleSuccessParams) {
-  const { event, files, response } = params;
+  const { event, files, response, XMLHttpRequest } = params;
   if (files?.length <= 0) {
     log.error('Upload', 'Empty File in Success Callback');
   }
@@ -89,7 +89,7 @@ export function handleSuccess(params: handleSuccessParams) {
   });
   const res = response;
   files[0].url = res.url || files[0].url;
-  return { response: res, event, files };
+  return { response: res, event, files, XMLHttpRequest };
 }
 
 export type UploadRequestReturn = {
@@ -154,6 +154,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         toUploadFiles.forEach((file) => {
           file.status = res.status;
           file.response = response;
+          file.url = response.url;
         });
         const result = { response, file: toUploadFiles[0], files: toUploadFiles };
         if (res.status === 'success') {
@@ -171,7 +172,8 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         action: params.action,
         files: params.toUploadFiles,
         useMockProgress: params.useMockProgress,
-        onError: (p: OnErrorParams) => {
+        mockProgressDuration: params.mockProgressDuration,
+        onError: (p: ErrorContext) => {
           const r = handleError({ ...p, formatResponse: params.formatResponse });
           params.onResponseError?.(r);
           resolve({ status: 'fail', data: r });
@@ -180,7 +182,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         onSuccess: (p: SuccessContext) => {
           const { formatResponse } = params;
           let res = p.response;
-          if (typeof formatResponse === 'function') {
+          if (isFunction(formatResponse)) {
             res = formatResponse(p.response, {
               file: p.file,
               currentFiles: p.files,
@@ -270,13 +272,14 @@ Promise<UploadRequestReturn> {
 }
 
 export function formatToUploadFile(
-  tmpFiles: File[],
+  files: File[],
   format: FileChangeParams['format'],
-  autoUpload: boolean,
+  status: UploadFile['status'] = undefined,
+  percent = 0,
 ) {
-  return tmpFiles.map((fileRaw: File) => {
+  return files.map((fileRaw: File) => {
     let file: UploadFile = fileRaw;
-    if (typeof format === 'function') {
+    if (isFunction(format)) {
       file = format(fileRaw);
     }
     const uploadFile: UploadFile = {
@@ -285,8 +288,8 @@ export function formatToUploadFile(
       name: fileRaw.name,
       size: fileRaw.size,
       type: fileRaw.type,
-      percent: 0,
-      status: autoUpload ? 'progress' : 'waiting',
+      percent,
+      status,
       ...file,
     };
     return uploadFile;
@@ -309,11 +312,10 @@ export function validateFile(
       hasSameNameFile = true;
     }
     if (!tmpFiles.length) {
-      const tFiles = formatToUploadFile(files, params.format, params.autoUpload);
+      const tFiles = formatToUploadFile(files, params.format, params.autoUpload ? 'progress' : 'waiting');
       resolve({ hasSameNameFile, file: tFiles?.[0], files: tFiles, validateResult: { type: 'FILTER_FILE_SAME_NAME' } });
       return;
     }
-
     // 上传文件数量限制
     let lengthOverLimit = false;
     if (max && tmpFiles.length && !params.isBatchUpload) {
@@ -324,7 +326,7 @@ export function validateFile(
     }
 
     // 格式化文件对象
-    const formattedFiles = formatToUploadFile(tmpFiles, params.format, params.autoUpload);
+    const formattedFiles = formatToUploadFile(tmpFiles, params.format, params.autoUpload ? 'progress' : 'waiting');
 
     // 全量文件，一波校验，整体上传 或 终止上传
     let allFileValidatePromise;
@@ -349,6 +351,7 @@ export function validateFile(
     }));
     Promise.all([allFileValidatePromise].concat(promiseList)).then((results) => {
       const [allFilesResult, ...others] = results;
+      // 如果 beforeAllFilesUpload 校验未通过
       if (allFilesResult === false) {
         resolve({
           lengthOverLimit,
@@ -370,9 +373,13 @@ export function validateFile(
 
 export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError: (p: {[key: string]: any }) => string) {
   const sizeLimitErrors: FileChangeReturn[] = [];
+  const beforeUploadErrorFiles: UploadFile[] = [];
   const toFiles: UploadFile[] = [];
   fileValidateList.forEach((oneFile) => {
-    if (oneFile.validateResult?.type === 'CUSTOM_BEFORE_UPLOAD') return;
+    if (oneFile.validateResult?.type === 'CUSTOM_BEFORE_UPLOAD') {
+      beforeUploadErrorFiles.push(oneFile.file);
+      return;
+    }
     if (oneFile.validateResult?.type === 'FILE_OVER_SIZE_LIMIT') {
       if (!oneFile.file.response) {
         oneFile.file.response = {};
@@ -385,7 +392,7 @@ export function getFilesAndErrors(fileValidateList: FileChangeReturn[], getError
     toFiles.push(oneFile.file);
   });
 
-  return { sizeLimitErrors, toFiles };
+  return { sizeLimitErrors, beforeUploadErrorFiles, toFiles };
 }
 
 /**

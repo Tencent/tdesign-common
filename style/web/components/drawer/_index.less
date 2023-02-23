@@ -5,6 +5,8 @@
 
 @import "./_mixin.less";
 
+@import "./_animate.less";
+
 @import "../../mixins/_reset.less";
 
 @componentName: drawer;
@@ -121,6 +123,8 @@
   }
 
   &__header {
+    display: flex;
+    align-items: center;
     min-height: @drawer-header-height;
     padding: @drawer-header-padding;
     font: @drawer-header-font-size;
@@ -138,7 +142,6 @@
 
   &__footer {
     width: 100%;
-    min-height: @drawer-footer-height;
     padding: @drawer-footer-padding;
     text-align: @drawer-footer-text-align;
     border-top: 1px solid @drawer-border-color;
@@ -161,7 +164,7 @@
     align-items: center;
     width: @drawer-close-btn-size;
     height: @drawer-close-btn-size;
-    top: @drawer-close-btn-position-top;
+    top: calc((@drawer-header-height - @drawer-close-btn-size) / 2);
     right: @drawer-close-btn-position-right;
     color: @drawer-close-btn-color;
     background-color: @drawer-close-btn-bg-color;

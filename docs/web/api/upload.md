@@ -18,7 +18,7 @@ spline: form
 | 文件 | 单文件 | 允许拖拽上传 | theme=file, draggable=true | 单文件/图片拖拽上传 |
 | 文件 | 批量文件 | 允许拖拽上传 | theme=file-flow, multiple=true, draggable=true | 批量上传文件 |
 | 图片 | 单图片 | 不允许拖拽上传 | theme=image, multiple=false | 基础图片上传 |
-| 图片 | 单图片 | 不允许拖拽上传 | theme=image, draggable=true | 单文件/图片拖拽上传 |
+| 图片 | 单图片 | 允许拖拽上传 | theme=image, draggable=true | 单文件/图片拖拽上传 |
 | 图片 | 批量图片 | 不允许拖拽上传 | theme=image, multiple=true | 基础图片上传 |
 | 图片 | 批量图片 | 允许拖拽上传 | theme=image-flow, multiple=true, draggable=true | 批量上传图片 |
 
@@ -30,7 +30,7 @@ spline: form
 - `formatRequest` 用于格式化上传接口请求参数，可以新增或修改参数。
 - `formatResponse` 用于格式化接口响应值，如果响应值中的 `error` 字段存在，则会判定本次上传失败。
 - `sizeLimit` 用于设置文件大小限制，如果超出限制不会触发上传请求。
-- `allowUploadDuplicateFile` 是否允许上产相同文件名的文件。
+- `allowUploadDuplicateFile` 是否允许上传相同文件名的文件。
 - `onSelectChange` 会在文件选择之后，上传请求发起之前触发。
 - `onSuccess` 会在上传成功后触发。
 - `onFail` 会在上传失败后出发。
@@ -60,6 +60,7 @@ spline: form
 - 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
 - 如果拖拽上传单个文件，设置 `theme="file"` 和 `draggable=true`。
 - 如果拖拽上传单张图片，设置 `theme="image"` 和 `draggable=true`。
+- 可以使用 `fileListDisplay` 自定义文件信息呈现内容。
 
 {{ draggable }}
 

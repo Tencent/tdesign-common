@@ -1,3 +1,6 @@
+import isNull from 'lodash/isNull';
+import isFunction from 'lodash/isFunction';
+import isNumber from 'lodash/isNumber';
 import uniqueId from 'lodash/uniqueId';
 import isNil from 'lodash/isNil';
 import get from 'lodash/get';
@@ -15,6 +18,7 @@ import {
   createNodeModel,
   updateNodeModel,
 } from './tree-node-model';
+import log from '../log';
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -141,7 +145,12 @@ export class TreeNode {
     this.set(spec);
     this.label = spec[propLabel] || '';
     this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
-    this.tree.nodeMap.set(this.value, this);
+
+    const { nodeMap } = tree;
+    if (nodeMap.get(this.value)) {
+      log.warn('Tree', `Dulplicate value: ${this.value}`);
+    }
+    nodeMap.set(this.value, this);
 
     if (parent && parent instanceof TreeNode) {
       this.parent = parent;
@@ -206,7 +215,7 @@ export class TreeNode {
     let { expanded } = this;
     const { config } = tree;
     if (
-      typeof config.expandLevel === 'number'
+      isNumber(config.expandLevel)
       && this.getLevel() < config.expandLevel
     ) {
       tree.expandedMap.set(this.value, true);
@@ -273,7 +282,7 @@ export class TreeNode {
   ): void {
     const parentNode = parent;
     let targetIndex = -1;
-    if (typeof index === 'number') {
+    if (isNumber(index)) {
       targetIndex = index;
     }
 
@@ -312,7 +321,7 @@ export class TreeNode {
 
     this.remove();
 
-    if (typeof index === 'number') {
+    if (isNumber(index)) {
       let targetIndex = index;
       if (parentNode === this.parent) {
         // 前置节点被拔出后再插入到同一个 siblings 时，会引起目标 index 的变化
@@ -367,7 +376,7 @@ export class TreeNode {
       node.appendTo(tree, parent, index);
     } else if (item) {
       node = new TreeNode(tree, item, parent);
-      if (typeof index === 'number') {
+      if (isNumber(index)) {
         siblings.splice(index, 0, node);
       }
       siblings.forEach((sibling) => {
@@ -427,7 +436,7 @@ export class TreeNode {
   public async loadChildren(): Promise<void> {
     const config = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
-      if (typeof config.load === 'function') {
+      if (isFunction(config.load)) {
         this.loading = true;
         this.update();
         let list = [];
@@ -527,7 +536,7 @@ export class TreeNode {
     } = this.tree;
 
     let rest = true;
-    if (typeof config.filter === 'function') {
+    if (isFunction(config.filter)) {
       const nodeModel = this.getModel();
       rest = config.filter(nodeModel);
     }
@@ -663,7 +672,7 @@ export class TreeNode {
           // 子节点有任意一个半选，则其为半选状态
           return true;
         }
-        if (childChecked === null) {
+        if (isNull(childChecked)) {
           childChecked = node.isChecked();
         }
         if (childChecked !== node.isChecked()) {

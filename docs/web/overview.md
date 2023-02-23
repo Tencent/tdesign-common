@@ -64,7 +64,7 @@ spline: explain
   </div>
 </section>
 
-<h3>导航<em class="tag">9</em></h3>
+<h3>导航<em class="tag">8</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/affix">
@@ -92,13 +92,6 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-dropdown.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-dropdown-dark.png" />
       <p class="name">Dropdown 下拉菜单</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
-    <a class="item" href="./components/jumper">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-jump.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-jump-dark.png" />
-      <p class="name">Jumper 跳转</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -391,18 +384,18 @@ spline: explain
       <p class="name">Tag 标签</p>
     </a>
   </div>
+   <div class="image-wrapper">
+    <a class="item" href="./components/timeline">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-timeline.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-timeline-dark.png" />
+      <p class="name">Timeline 时间轴</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/tooltip">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tooltip.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tooltip-dark.png" />
       <p class="name">Tooltip 文字提示</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
-    <a class="item" href="./components/timeline">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-timeline.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-timeline-dark.png" />
-      <p class="name">Timeline 时间轴</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -421,7 +414,7 @@ spline: explain
   </div>
 </section>
 
-<h3>消息提醒<em class="tag">7</em></h3>
+<h3>消息提醒<em class="tag">8</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/alert">

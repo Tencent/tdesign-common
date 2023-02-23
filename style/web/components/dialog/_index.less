@@ -19,6 +19,7 @@
   width: @dialog-width;
   background-color: @dialog-bg-color;
   position: relative;
+  border: @dialog-border;
   border-radius: @border-radius-large;
 
   // icon theme
@@ -49,10 +50,19 @@
     display: flex;
     align-items: center;
     word-break: break-word;
-    padding-right: 10px;
+    gap: @dialog-header-content-margin-right;
+    box-sizing: border-box;
+
+    .@{prefix}-dialog__header-content {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+    }
 
     .t-icon:not(.t-icon-close) {
       font-size: @dialog-icon-size;
+      display: inline-flex;
+      align-items: center;
       margin-right: @dialog-header-icon-margin-right;
       flex-shrink: 0;
     }
@@ -61,13 +71,14 @@
   &__header--fullscreen {
     background-color: @dialog-header-bg-color-fullscreen;
     min-height: @dialog-header-height-fullscreen;
-    padding-right: 0;
-    justify-content: center;
-    position: relative;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: @dialog-header-padding-fullscreen;
 
     .@{prefix}-dialog__header-content {
       box-sizing: border-box;
-      padding: @dialog-header-content-padding-fullscreen;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -81,14 +92,15 @@
     padding: @dialog-body-padding;
     word-break: break-word;
 
-    &__icon {
+    &__icon,
+    &--icon {
       padding: @dialog-body-icon-padding;
     }
   }
 
   &__body--fullscreen {
     box-sizing: border-box;
-    padding: @dalog-body-padding-fullscreen;
+    padding: @dialog-body-padding-fullscreen;
     height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
     overflow: auto;
   }
@@ -97,8 +109,6 @@
     width: 100%;
     text-align: right;
     padding: @dialog-footer-padding;
-    // remove space between inline-block elements.
-    word-spacing: @dialog-word-spacing;
 
     .@{prefix}-button + .@{prefix}-button {
       margin-left: @dialog-footer-button-margin-left;
@@ -115,28 +125,16 @@
     padding: @dialog-default-spacer;
   }
 
-  &--primary {
-    padding: @dialog-primary-spacer;
-
-    .@{prefix}-dialog__body {
-      padding: @dialog-parimary-body-spacer;
-    }
-  }
-
   &__close {
-    position: absolute;
-    top: @dialog-close-position-top;
-    right: @dialog-close-position-right;
     font-size: @dialog-close-icon-size;
     color: @dialog-close-color;
     display: flex;
     width: @dialog-close-icon-size;
     height: @dialog-close-icon-size;
     align-items: center;
-    justify-content: center;
     border-radius: @border-radius-default;
-    background: @dialog-bg-color;
     transition: all @anim-duration-base linear;
+    padding: @dialog-closebtn-padding;
 
     &:hover {
       cursor: pointer;
@@ -149,17 +147,16 @@
   }
 
   &__close--fullscreen {
-    top: 50%;
-    transform: translateY(-50%);
+    display: flex;
     background: transparent;
 
     &:hover {
       cursor: pointer;
-      background: #eee;
+      background: @dialog-close-icon-fullscreen-hover;
     }
 
     &:active {
-      background: #dcdcdc;
+      background: @dialog-close-icon-fullscreen-active;
     }
   }
 
@@ -187,6 +184,10 @@
   // dialog内容溢出需要考虑滚动
   pointer-events: auto;
   outline: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   // modeless 点击穿透 即可以操作背景后的元素
   &.@{prefix}-dialog__ctx--modeless {
@@ -195,10 +196,6 @@
 
   &.@{prefix}-dialog__ctx--fixed {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     z-index: @z-index-dialog;
   }
 
@@ -255,7 +252,6 @@
     // 因为内容会超出 使用flex布局
     display: flex;
     justify-content: center;
-    min-height: 100%;
     width: 100%;
     // 通过修改position为absolute进行拖拽定位
     position: relative;
@@ -292,6 +288,5 @@
   .@{prefix}-dialog {
     pointer-events: auto;
     z-index: @z-index-dialog;
-    border: @dialog-border;
   }
 }

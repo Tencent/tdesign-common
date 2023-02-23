@@ -6,9 +6,9 @@
   "main": "",
   "scripts": {
     "lint": "npm run lint:css && npm run lint:js",
-    "lint:css": "stylelint **/*.{css,wxss,less} --allow-empty-input",
-    "lint:js": "npx eslint . --max-warnings 0 && npx eslint ./js/**/*.* --max-warnings 0",
-    "lint:fix": "stylelint **/*.{css,wxss,less} --allow-empty-input --fix && npx eslint . --max-warnings 0 --fix",
+    "lint:css": "stylelint **/*.{css,wxss,less} --allow-empty-input --cache",
+    "lint:js": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --max-warnings 0 --cache",
+    "lint:fix": "npm run lint:css -- --fix && npm run lint:js -- --fix",
     "test": "npm run test:unit",
     "test:unit": "jest --config test/script/jest.unit.conf.js --coverage",
     "test:watch": "jest --config test/script/jest.unit.conf.js --watch",
@@ -38,7 +38,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.0.3",
     "@types/jest": "^27.4.1",
-    "@types/lodash": "^4.14.185",
+    "@types/lodash": "4.14.185",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/experimental-utils": "^2.24.0",
     "@typescript-eslint/parser": "^4.29.0",
@@ -56,10 +56,10 @@
     "jest": "^27.5.1",
     "jest-html-reporter": "^3.1.3",
     "jest-watch-typeahead": "^2.2.0",
-    "lint-staged": "~13.0.3",
+    "lint-staged": "~13.1.0",
     "min-indent": "^1.0.1",
     "postcss-less": "^5.0.0",
-    "stylelint": "~14.13.0",
+    "stylelint": "~14.16.1",
     "stylelint-config-standard": "^24.0.0",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
@@ -83,6 +83,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
+    "mitt": "^3.0.0",
     "tinycolor2": "^1.4.2"
   },
   "lint-staged": {
@@ -90,7 +91,7 @@
       "stylelint"
     ],
     "**/*.{js,ts}": [
-      "eslint --max-warnings 0"
+      "eslint --max-warnings 0 --no-ignore"
     ]
   }
 }
