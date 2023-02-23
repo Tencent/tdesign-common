@@ -9,6 +9,7 @@
 @import "../../mixins/_reset.less";
 
 .@{prefix}-textarea {
+  
   .reset;
 
   position: relative;
@@ -48,11 +49,15 @@
     .textarea-status(error);
   }
 
+  &__tips_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__limit {
-    position: absolute;
-    bottom: @textarea-limit-position-bottom;
-    right: @textarea-limit-position-right;
-    font: @textarea-font;
+    float: right;
+    margin-left: @textarea-limit-margin-left;
+    font: @textarea-tips-font;
     color: @textarea-limit-color;
     background: @textarea-bg-color-default;
   }
