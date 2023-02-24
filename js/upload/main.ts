@@ -1,3 +1,5 @@
+import isFunction from 'lodash/isFunction';
+import isNumber from 'lodash/isNumber';
 /* eslint-disable no-param-reassign */
 import { isOverSizeLimit } from './utils';
 import xhr from './xhr';
@@ -32,7 +34,7 @@ export function handleBeforeUpload(
   const sizePromise = new Promise<SizeLimitObj>((resolve) => {
     let result: SizeLimitObj = null;
     if (sizeLimit) {
-      const sizeLimitObj: SizeLimitObj = typeof sizeLimit === 'number'
+      const sizeLimitObj: SizeLimitObj = isNumber(sizeLimit)
         ? { size: sizeLimit, unit: 'KB' }
         : sizeLimit;
       const limit = isOverSizeLimit(file.size, sizeLimitObj.size, sizeLimitObj.unit);
@@ -45,7 +47,7 @@ export function handleBeforeUpload(
 
   // 自定义校验
   const promiseList: BeforeUploadPromiseList = [sizePromise, undefined];
-  if (typeof beforeUpload === 'function') {
+  if (isFunction(beforeUpload)) {
     const r = beforeUpload(file);
     const p = r instanceof Promise ? r : (new Promise<boolean>((resolve) => resolve(r)));
     promiseList[1] = p;
@@ -69,7 +71,7 @@ export function handleError(options: OnErrorParams) {
     file.status = 'fail';
   });
   let res = response;
-  if (typeof formatResponse === 'function') {
+  if (isFunction(formatResponse)) {
     res = formatResponse(response, { file: files[0], currentFiles: files });
   }
   return { response: res, event, files, XMLHttpRequest };
@@ -180,7 +182,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         onSuccess: (p: SuccessContext) => {
           const { formatResponse } = params;
           let res = p.response;
-          if (typeof formatResponse === 'function') {
+          if (isFunction(formatResponse)) {
             res = formatResponse(p.response, {
               file: p.file,
               currentFiles: p.files,
@@ -277,7 +279,7 @@ export function formatToUploadFile(
 ) {
   return files.map((fileRaw: File) => {
     let file: UploadFile = fileRaw;
-    if (typeof format === 'function') {
+    if (isFunction(format)) {
       file = format(fileRaw);
     }
     const uploadFile: UploadFile = {

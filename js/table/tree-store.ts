@@ -1,3 +1,4 @@
+import isUndefined from 'lodash/isUndefined';
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
@@ -81,7 +82,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       return dataSource;
     }
     const rowValue = get(p.row, keys.rowKey);
-    if (rowValue === undefined) {
+    if (isUndefined(rowValue)) {
       log.error('EnhancedTable', '`rowKey` could be wrong, can not get rowValue from `data` by `rowKey`.');
       return [];
     }
@@ -573,7 +574,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     for (let i = 0, len = dataSource.length; i < len; i++) {
       const item = dataSource[i];
       const rowValue = get(item, keys.rowKey);
-      if (rowValue === undefined) {
+      if (isUndefined(rowValue)) {
         log.error('EnhancedTable', '`rowKey` could be wrong, can not get rowValue from `data` by `rowKey`.');
         return;
       }
@@ -601,7 +602,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     for (let i = 0, len = dataSource.length; i < len; i++) {
       const item = dataSource[i];
       const rowValue = get(item, keys.rowKey);
-      if (rowValue === undefined) {
+      if (isUndefined(rowValue)) {
         log.error('EnhancedTable', '`rowKey` could be wrong, can not get rowValue from `data` by `rowKey`.');
         return;
       }

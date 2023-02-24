@@ -1,3 +1,4 @@
+import isFunction from 'lodash/isFunction';
 /* eslint-disable no-param-reassign */
 import log from '../log/log';
 import { UploadFile, XhrOptions } from './types';
@@ -58,7 +59,7 @@ export default function xhr({
 
   let requestData: { [key: string]: any } = {};
   if (data) {
-    const extraData = typeof data === 'function' ? data(innerFiles) : data;
+    const extraData = isFunction(data) ? data(innerFiles) : data;
     Object.assign(requestData, extraData);
   }
   innerFiles.forEach((file, index) => {
