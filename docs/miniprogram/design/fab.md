@@ -20,10 +20,12 @@
   </div>  
 </div>
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-3.png" />
     <em></em>
-</div>  
+  </div>  
+</div>
 
 
 
@@ -36,7 +38,7 @@
 <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%202.png" />
     <em></em>
-</div>
+  </div>
 <hr />
 
 ### 推荐/慎用示例
@@ -55,7 +57,7 @@
   </div>
 </div>
 
-
+<hr />
 
 ##### 图标加文字悬浮按钮上的字数建议精简，控制在2-4个字左右，避免遮挡过多页面内容。
 

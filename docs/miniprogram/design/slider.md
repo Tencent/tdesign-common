@@ -8,9 +8,10 @@
 
 ##### 滑动选择器与[单元格](./cell)组合使用，单元格作为承载滑动选择器的容器。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
-   <em></em>
+<div class="legend">
+  <div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%201.png" />
+  </div>
 </div>
 
 
@@ -20,16 +21,18 @@
 
 ##### 用于可量化的数值选择，需要精确到具体某个数值/区间。
 
-<div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button3-1.png" />
-    <em></em>
+<div class="legend">  
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%202.png" />
+  </div>
 </div>
 
 ##### 用于难以量化的对立数据，以此表示程度。
 
-<div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button3-1.png" />
-    <em></em>
+<div class="legend">   
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%203.png" />
+  </div>
 </div>
 
 <hr />
@@ -41,12 +44,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%204-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%204-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
@@ -55,7 +58,3 @@
 
 
 
-### 相似组件
-
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |

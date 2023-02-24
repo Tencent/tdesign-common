@@ -8,11 +8,14 @@
 
 ##### 图标按钮与[输入框](./input)组合使用，放置于输入单元格最右侧，用于触发拉起一个新的支流任务，辅助用户填入正确内容。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
-   <em></em>
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
+    <em></em>
+  </div>
 </div>
 
+<hr />
 
 ##### 不同类型的主次按钮与文字按钮组合使用，可以表达不同强调级别。
 
@@ -27,9 +30,11 @@
     <em></em>
   </div>
 </div>
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-3.png" />
     <em></em>
+  </div>
 </div>
 
 
@@ -53,7 +58,7 @@
 
 ### 推荐/慎用示例
 
-##### 用户在使用主、次按钮时，需要表达主次关系，突出强调的最主要操作，其他操作使用次按钮，禁止同时使用多个主按钮。
+##### 用户在使用主、次按钮时，需要表达主次关系，突出强调的最主要操作，其他操作使用次按钮，不建议同时使用多个主按钮。
 
 <div class="legend">
   <div class="item">
