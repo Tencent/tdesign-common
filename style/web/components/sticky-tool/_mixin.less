@@ -1,0 +1,31 @@
+.sticky-item-basic() {
+    .@{prefix}-sticky-item {
+        margin: @sticky-item-margin;
+        opacity: 1;
+
+        &--normal {
+            width: @sticky-item-size-normal;
+            height: @sticky-item-size-normal;
+        }
+
+        &--compact {
+            width: @sticky-item-size-compact;
+            height: @sticky-item-size-compact;
+        }
+
+        &--square {
+            border-radius: @sticky-item-border-radius-square;
+        }
+
+        &--round {
+            border-radius: @sticky-item-border-radius-round;
+        }
+
+        .@{prefix}-sticky-item__label {
+            width: 100%;
+            height: @sticky-item-label-height;
+            line-height: @sticky-item-label-height;
+            text-align: center;
+        }
+    }
+}

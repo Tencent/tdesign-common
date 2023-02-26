@@ -1,0 +1,26 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-sticky-tool {
+    position: fixed;
+    opacity: 1;
+    box-sizing: border-box;
+    background-color: @sticky-tool-background;
+    border: @sticky-tool-border;
+    box-shadow: @sticky-tool-shadow;
+
+    .sticky-item-basic();
+
+    &--square {
+        border-radius: @sticky-tool-border-radius-square;
+    }
+
+    &--round {
+        border-radius: @sticky-tool-border-radius-round;
+    }
+}
