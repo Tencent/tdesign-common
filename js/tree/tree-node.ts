@@ -134,9 +134,10 @@ export class TreeNode {
     this.vmIsLast = false;
     this.vmIsRest = true;
     this.vmIsLocked = false;
-    // 为节点设置 唯一 id
-    // 数据替换时，value 相同有可能导致渲染冲突，用这个 唯一 id 来解决
-    this[privateKey] = uniqueId(privateKey);
+    // 为节点设置唯一 id
+    // tree 数据替换时，value 相同有可能导致节点状态渲染冲突
+    // 用这个 唯一 id 来解决，用于类似 vue 组件的唯一 key 指定场景
+    this[privateKey] = uniqueId(prefix);
 
     const spec = {
       ...defaultStatus,
@@ -149,7 +150,8 @@ export class TreeNode {
 
     this.set(spec);
     this.label = spec[propLabel] || '';
-    this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
+    // 没有 value 的时候，value 默认使用自动生成的 唯一 id
+    this.value = isNil(spec[propValue]) ? this[privateKey] : spec[propValue];
 
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
