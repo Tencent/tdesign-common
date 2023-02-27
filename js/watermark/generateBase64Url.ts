@@ -89,7 +89,7 @@ export default function generateBase64Url({
       item.top = top;
       top += lineSpace;
       const markSize = Number(fontSize) * ratio;
-      // TODO 后续完善font 渲染控制 目前font-family 暂时为 undefiend
+      // TODO 后续完善font 渲染控制 目前font-family 暂时为 undefined
       ctx.font = `normal normal ${fontWeight} ${markSize}px/${markHeight}px undefined`;
       ctx.textAlign = 'start';
       ctx.textBaseline = 'top';
