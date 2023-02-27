@@ -381,7 +381,7 @@ export class TreeStore {
       this.updatedMap.set(node.value, true);
     }
     if (this.updateTimer) return;
-    this.updateTimer = +setTimeout(() => {
+    this.updateTimer = setTimeout(() => {
       clearTimeout(this.updateTimer);
       this.updateTimer = null;
 
