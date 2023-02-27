@@ -1,16 +1,22 @@
 .sticky-item-basic() {
     .@{prefix}-sticky-item {
-        margin: @sticky-item-margin;
         opacity: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
 
         &--normal {
             width: @sticky-item-size-normal;
-            height: @sticky-item-size-normal;
+            height: 0;
+            padding-bottom: @sticky-item-size-normal;
+            margin-left: @sticky-item-margin-normal;
         }
 
         &--compact {
             width: @sticky-item-size-compact;
-            height: @sticky-item-size-compact;
+            height: 0;
+            padding-bottom: @sticky-item-size-compact;
+            margin-left: @sticky-item-margin-compact;
         }
 
         &--square {
@@ -21,10 +27,23 @@
             border-radius: @sticky-item-border-radius-round;
         }
 
+        .@{prefix}-sticky-item__icon {
+            width: 100%;
+            height: 0;
+            padding-bottom: 60.72%;
+
+            .t-icon {
+                width: 42.86%;
+                height: 24px;
+            }
+        }
         .@{prefix}-sticky-item__label {
             width: 100%;
-            height: @sticky-item-label-height;
-            line-height: @sticky-item-label-height;
+            height: 0;
+            padding-bottom: 35.71%;
+            margin-bottom: 3.57%;
+            // height: @sticky-item-label-height;
+            // line-height: @sticky-item-label-height;
             text-align: center;
         }
     }
