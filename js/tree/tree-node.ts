@@ -22,7 +22,7 @@ import log from '../log';
 
 const { hasOwnProperty } = Object.prototype;
 
-const defaultStatus = {
+export const defaultStatus = {
   expandMutex: false,
   activable: false,
   checkable: false,
@@ -30,6 +30,8 @@ const defaultStatus = {
   draggable: false,
   loading: false,
 };
+
+export const privateKey = '__tdesign_id__';
 
 // vm 开头为视图属性，不可以外部设置
 // 用于触发视图更新
@@ -124,33 +126,40 @@ export class TreeNode {
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
 
+    // 初始化状态
     this.model = null;
     this.children = null;
     this.vmCheckable = false;
     this.vmIsLeaf = false;
     this.vmIsFirst = false;
     this.vmIsLast = false;
-    this.vmIsRest = true;
+    this.vmIsRest = false;
     this.vmIsLocked = false;
+    this.level = 0;
+    this.visible = true;
+
+    // 为节点设置唯一 id
+    // tree 数据替换时，value 相同有可能导致节点状态渲染冲突
+    // 用这个 唯一 id 来解决，用于类似 vue 组件的唯一 key 指定场景
+    this[privateKey] = uniqueId(prefix);
 
     const spec = {
       ...defaultStatus,
-      actived: false,
-      expanded: false,
-      checked: false,
       ...data,
     };
     const children = spec[propChildren];
 
     this.set(spec);
     this.label = spec[propLabel] || '';
-    this.value = isNil(spec[propValue]) ? uniqueId(prefix) : spec[propValue];
+    // 没有 value 的时候，value 默认使用自动生成的 唯一 id
+    this.value = isNil(spec[propValue]) ? this[privateKey] : spec[propValue];
 
-    const { nodeMap } = tree;
+    const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
     }
     nodeMap.set(this.value, this);
+    privateMap.set(this[privateKey], this);
 
     if (parent && parent instanceof TreeNode) {
       this.parent = parent;
@@ -164,17 +173,22 @@ export class TreeNode {
       this.children = children;
     }
 
-    // 初始化状态计算
-    this.level = 0;
-    this.visible = true;
-
-    this.actived = spec.actived;
+    this.actived = false;
+    if (typeof spec.actived !== 'undefined') {
+      this.actived = spec.actived;
+    }
     this.initActived();
 
-    this.expanded = spec.expanded;
+    this.expanded = config.expandAll;
+    if (typeof spec.expanded !== 'undefined') {
+      this.expanded = spec.expanded;
+    }
     this.initExpanded();
 
-    this.checked = spec.checked;
+    this.checked = false;
+    if (typeof spec.checked !== 'undefined') {
+      this.checked = spec.checked;
+    }
     this.initChecked();
 
     this.update();
@@ -219,9 +233,6 @@ export class TreeNode {
       && this.getLevel() < config.expandLevel
     ) {
       tree.expandedMap.set(this.value, true);
-      expanded = true;
-    }
-    if (config.expandAll) {
       expanded = true;
     }
     if (this.children === true && config.lazy) {
@@ -349,6 +360,7 @@ export class TreeNode {
       const node = item;
       node.tree = tree;
       tree.nodeMap.set(node.value, node);
+      tree.privateMap.set(node[privateKey], node);
       if (node.expanded) {
         tree.expandedMap.set(node.value, true);
       }
@@ -430,6 +442,7 @@ export class TreeNode {
     tree.checkedMap.delete(value);
     tree.expandedMap.delete(value);
     tree.nodeMap.delete(value);
+    tree.privateMap.delete(this[privateKey]);
   }
 
   // 异步加载子节点数据
@@ -533,10 +546,12 @@ export class TreeNode {
     const {
       config,
       filterMap,
+      hasFilter,
     } = this.tree;
 
-    let rest = true;
-    if (isFunction(config.filter)) {
+    let rest = false;
+    if (hasFilter) {
+      // 仅在存在过滤条件时，过滤命中才有效
       const nodeModel = this.getModel();
       rest = config.filter(nodeModel);
     }
@@ -554,40 +569,47 @@ export class TreeNode {
   public isVisible(): boolean {
     const {
       nodeMap,
+      hasFilter,
+      config,
     } = this.tree;
+    const { allowFoldNodeOnFilter } = config;
 
     let visible = true;
 
-    // 锁定状态，直接呈现
-    if (this.vmIsLocked) {
-      return true;
+    if (!nodeMap.get(this.value)) {
+      // 节点不在当前树上，所以不可见
+      return false;
     }
 
-    // 在当前树上，未被移除
-    if (nodeMap.get(this.value)) {
-      // 节点未被过滤
-      const filterVisible = this.isRest();
+    if (hasFilter && !allowFoldNodeOnFilter) {
+      // 如果存在过滤条件
+      // 锁定状态和过滤命中状态，直接呈现
+      visible = (this.vmIsLocked || this.vmIsRest);
+      return visible;
+    }
 
-      // 所有父节点展开
-      let expandVisible = true;
-      const parents = this.getParents();
-      if (parents.length > 0) {
-        expandVisible = parents.every((node: TreeNode) => node.isExpanded());
-      }
+    // 标志所有父节点展开导致的可见状态
+    let expandVisible = true;
+    const parents = this.getParents();
+    if (parents.length > 0) {
+      expandVisible = parents.every((node: TreeNode) => node.expanded);
+    }
 
-      // 节点为未被过滤节点的父节点
-      visible = expandVisible && filterVisible;
+    if (hasFilter) {
+      visible = expandVisible && (this.vmIsRest || this.vmIsLocked);
     } else {
-      visible = false;
+      visible = expandVisible;
     }
     return visible;
   }
 
   // 判断节点是否被禁用
   public isDisabled() {
-    if (this.vmIsLocked) return true;
-    const treeDisabled = get(this, 'tree.config.disabled');
-    return !!(treeDisabled || this.disabled);
+    const { tree } = this;
+    const { hasFilter, config } = tree;
+    const { disabled, allowFoldNodeOnFilter } = config;
+    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) return true;
+    return !!(disabled || this.disabled);
   }
 
   // 判断节点是否能拖拽
@@ -620,7 +642,9 @@ export class TreeNode {
   // 检查节点是否已展开
   public isExpanded(map?: Map<string, boolean>): boolean {
     const { tree, value, vmIsLocked } = this;
-    if (vmIsLocked) return true;
+    const { hasFilter, config } = tree;
+    const { allowFoldNodeOnFilter } = config;
+    if (hasFilter && !allowFoldNodeOnFilter && vmIsLocked) return true;
     const expandedMap = map || tree.expandedMap;
     return !!(tree.nodeMap.get(value) && expandedMap.get(value));
   }
@@ -733,6 +757,7 @@ export class TreeNode {
   // 设置节点展开状态
   public setExpanded(expanded: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
+    const { config } = tree;
     const options = {
       directly: false,
       ...opts,
@@ -745,27 +770,37 @@ export class TreeNode {
 
     // 手风琴效果，先折叠同级节点
     if (expanded) {
+      // 列举需要展开的节点
       const shouldExpandNodes = [];
+      // 自己一定在展开列表中
       shouldExpandNodes.push(this);
-      if (get(tree, 'config.expandParent')) {
+      if (config.expandParent) {
+        // expandParent 为 true，则父节点都要展开
         this.getParents().forEach((node) => {
           shouldExpandNodes.push(node);
         });
       }
       shouldExpandNodes.forEach((node) => {
         let isExpandMutex = false;
+        // 对于每一个节点，都需要判断是否启用手风琴效果
         if (node.parent) {
           isExpandMutex = node.parent.isExpandMutex();
         } else {
           isExpandMutex = tree?.config?.expandMutex;
         }
         if (isExpandMutex) {
+          // 折叠列表中，先移除同级节点
           const siblings = node.getSiblings();
           siblings.forEach((snode) => {
             map.delete(snode.value);
+            // 同级节点相关状态更新
+            snode.update();
+            snode.updateChildren();
           });
         }
+        // 最后设置自己的折叠状态
         map.set(node.value, true);
+        node.update();
       });
     } else {
       map.delete(this.value);
@@ -874,14 +909,14 @@ export class TreeNode {
   // 更新节点状态
   public update(): void {
     this.level = this.getLevel();
-    this.actived = this.isActived();
-    this.expanded = this.isExpanded();
-    this.vmCheckable = this.isCheckable();
-    this.visible = this.isVisible();
-    this.vmIsRest = this.isRest();
     this.vmIsFirst = this.isFirst();
     this.vmIsLast = this.isLast();
     this.vmIsLeaf = this.isLeaf();
+    this.vmCheckable = this.isCheckable();
+    this.vmIsRest = this.isRest();
+    this.actived = this.isActived();
+    this.expanded = this.isExpanded();
+    this.visible = this.isVisible();
     this.tree.updated(this);
   }
 
