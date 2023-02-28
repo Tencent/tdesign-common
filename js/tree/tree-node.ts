@@ -126,14 +126,18 @@ export class TreeNode {
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
 
+    // 初始化状态
     this.model = null;
     this.children = null;
     this.vmCheckable = false;
     this.vmIsLeaf = false;
     this.vmIsFirst = false;
     this.vmIsLast = false;
-    this.vmIsRest = true;
+    this.vmIsRest = false;
     this.vmIsLocked = false;
+    this.level = 0;
+    this.visible = true;
+
     // 为节点设置唯一 id
     // tree 数据替换时，value 相同有可能导致节点状态渲染冲突
     // 用这个 唯一 id 来解决，用于类似 vue 组件的唯一 key 指定场景
@@ -141,9 +145,6 @@ export class TreeNode {
 
     const spec = {
       ...defaultStatus,
-      actived: false,
-      expanded: false,
-      checked: false,
       ...data,
     };
     const children = spec[propChildren];
@@ -172,17 +173,22 @@ export class TreeNode {
       this.children = children;
     }
 
-    // 初始化状态计算
-    this.level = 0;
-    this.visible = true;
-
-    this.actived = spec.actived;
+    this.actived = false;
+    if (typeof spec.actived !== 'undefined') {
+      this.actived = spec.actived;
+    }
     this.initActived();
 
-    this.expanded = spec.expanded;
+    this.expanded = config.expandAll;
+    if (typeof spec.expanded !== 'undefined') {
+      this.expanded = spec.expanded;
+    }
     this.initExpanded();
 
-    this.checked = spec.checked;
+    this.checked = false;
+    if (typeof spec.checked !== 'undefined') {
+      this.checked = spec.checked;
+    }
     this.initChecked();
 
     this.update();
@@ -227,9 +233,6 @@ export class TreeNode {
       && this.getLevel() < config.expandLevel
     ) {
       tree.expandedMap.set(this.value, true);
-      expanded = true;
-    }
-    if (config.expandAll) {
       expanded = true;
     }
     if (this.children === true && config.lazy) {
@@ -543,10 +546,12 @@ export class TreeNode {
     const {
       config,
       filterMap,
+      hasFilter,
     } = this.tree;
 
-    let rest = true;
-    if (isFunction(config.filter)) {
+    let rest = false;
+    if (hasFilter) {
+      // 仅在存在过滤条件时，过滤命中才有效
       const nodeModel = this.getModel();
       rest = config.filter(nodeModel);
     }
@@ -564,40 +569,47 @@ export class TreeNode {
   public isVisible(): boolean {
     const {
       nodeMap,
+      hasFilter,
+      config,
     } = this.tree;
+    const { allowFoldNodeOnFilter } = config;
 
     let visible = true;
 
-    // 锁定状态，直接呈现
-    if (this.vmIsLocked) {
-      return true;
+    if (!nodeMap.get(this.value)) {
+      // 节点不在当前树上，所以不可见
+      return false;
     }
 
-    // 在当前树上，未被移除
-    if (nodeMap.get(this.value)) {
-      // 节点未被过滤
-      const filterVisible = this.isRest();
+    if (hasFilter && !allowFoldNodeOnFilter) {
+      // 如果存在过滤条件
+      // 锁定状态和过滤命中状态，直接呈现
+      visible = (this.vmIsLocked || this.vmIsRest);
+      return visible;
+    }
 
-      // 所有父节点展开
-      let expandVisible = true;
-      const parents = this.getParents();
-      if (parents.length > 0) {
-        expandVisible = parents.every((node: TreeNode) => node.isExpanded());
-      }
+    // 标志所有父节点展开导致的可见状态
+    let expandVisible = true;
+    const parents = this.getParents();
+    if (parents.length > 0) {
+      expandVisible = parents.every((node: TreeNode) => node.expanded);
+    }
 
-      // 节点为未被过滤节点的父节点
-      visible = expandVisible && filterVisible;
+    if (hasFilter) {
+      visible = expandVisible && (this.vmIsRest || this.vmIsLocked);
     } else {
-      visible = false;
+      visible = expandVisible;
     }
     return visible;
   }
 
   // 判断节点是否被禁用
   public isDisabled() {
-    if (this.vmIsLocked) return true;
-    const treeDisabled = get(this, 'tree.config.disabled');
-    return !!(treeDisabled || this.disabled);
+    const { tree } = this;
+    const { hasFilter, config } = tree;
+    const { disabled, allowFoldNodeOnFilter } = config;
+    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) return true;
+    return !!(disabled || this.disabled);
   }
 
   // 判断节点是否能拖拽
@@ -630,7 +642,9 @@ export class TreeNode {
   // 检查节点是否已展开
   public isExpanded(map?: Map<string, boolean>): boolean {
     const { tree, value, vmIsLocked } = this;
-    if (vmIsLocked) return true;
+    const { hasFilter, config } = tree;
+    const { allowFoldNodeOnFilter } = config;
+    if (hasFilter && !allowFoldNodeOnFilter && vmIsLocked) return true;
     const expandedMap = map || tree.expandedMap;
     return !!(tree.nodeMap.get(value) && expandedMap.get(value));
   }
@@ -884,14 +898,14 @@ export class TreeNode {
   // 更新节点状态
   public update(): void {
     this.level = this.getLevel();
-    this.actived = this.isActived();
-    this.expanded = this.isExpanded();
-    this.vmCheckable = this.isCheckable();
-    this.visible = this.isVisible();
-    this.vmIsRest = this.isRest();
     this.vmIsFirst = this.isFirst();
     this.vmIsLast = this.isLast();
     this.vmIsLeaf = this.isLeaf();
+    this.vmCheckable = this.isCheckable();
+    this.vmIsRest = this.isRest();
+    this.actived = this.isActived();
+    this.expanded = this.isExpanded();
+    this.visible = this.isVisible();
     this.tree.updated(this);
   }
 
