@@ -757,6 +757,7 @@ export class TreeNode {
   // 设置节点展开状态
   public setExpanded(expanded: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
+    const { config } = tree;
     const options = {
       directly: false,
       ...opts,
@@ -769,26 +770,35 @@ export class TreeNode {
 
     // 手风琴效果，先折叠同级节点
     if (expanded) {
+      // 列举需要展开的节点
       const shouldExpandNodes = [];
+      // 自己一定在展开列表中
       shouldExpandNodes.push(this);
-      if (get(tree, 'config.expandParent')) {
+      if (config.expandParent) {
+        // expandParent 为 true，则父节点都要展开
         this.getParents().forEach((node) => {
           shouldExpandNodes.push(node);
         });
       }
       shouldExpandNodes.forEach((node) => {
         let isExpandMutex = false;
+        // 对于每一个节点，都需要判断是否启用手风琴效果
         if (node.parent) {
           isExpandMutex = node.parent.isExpandMutex();
         } else {
           isExpandMutex = tree?.config?.expandMutex;
         }
         if (isExpandMutex) {
+          // 折叠列表中，先移除同级节点
           const siblings = node.getSiblings();
           siblings.forEach((snode) => {
             map.delete(snode.value);
+            // 同级节点相关状态更新
+            snode.update();
+            snode.updateChildren();
           });
         }
+        // 最后设置自己的折叠状态
         map.set(node.value, true);
       });
     } else {
