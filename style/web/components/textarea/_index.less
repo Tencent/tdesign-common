@@ -50,14 +50,16 @@
   }
 
   &__info_wrapper {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-column-gap: @textarea-tips-gap;
+    display: flex;
+    column-gap: @textarea-tips-gap;
     justify-content: space-between;
   }
 
+  &__info_wrapper_align {
+    justify-content: end;
+  }
+
   &__limit {
-    float: right;
     font: @textarea-tips-font;
     color: @textarea-limit-color;
     background: @textarea-bg-color-default;
