@@ -17,7 +17,7 @@
 // theme="default" && splitWidthUnit={true}
 @countdown-digit-font-size-default-split-with-unit-small: @font-size-l;
 @countdown-digit-font-size-default-split-with-unit-medium: @font-size-xl;
-@countdown-digit-font-size-default-split-with-unit-large: @font-size * 2;
+@countdown-digit-font-size-default-split-with-unit-large: calc(@font-size * 2);
 // theme="square"
 @countdown-digit-font-size-square-small: @font-size-s;
 @countdown-digit-font-size-square-medium: @font-size-base;
@@ -39,11 +39,11 @@
 
 // digit border-radius
 // theme="square"
-@countdown-digit-border-radius-square-small: @border-radius;
-@countdown-digit-border-radius-square-medium: @border-radius;
-@countdown-digit-border-radius-square-large: @border-radius + 2px;
+@countdown-digit-border-radius-square-small: @radius-small;
+@countdown-digit-border-radius-square-medium: @radius-small;
+@countdown-digit-border-radius-square-large: calc(@radius-small + 2px);
 // theme="round"
-@countdown-digit-border-radius-round: @border-radius-50;
+@countdown-digit-border-radius-round: @radius-circle;
 // digit size
 // theme="square"
 @countdown-digit-size-square-small: 20px;

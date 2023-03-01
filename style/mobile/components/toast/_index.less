@@ -12,15 +12,15 @@
   justify-content: center;
   min-width: 104px;
   max-width: 188px;
-  border-radius: @border-radius;
+  border-radius: @radius-small;
   color: @toast-text-color;
   background: rgba(0, 0, 0, 60%);
   text-align: center;
-  padding: @spacer-5;
+  padding: calc(@spacer * 2.5);
   z-index: @toast-z-index;
 
   &:not(&--text)&--column {
-    border-radius: @border-radius * 2;
+    border-radius: calc(@radius-small * 2);
   }
 
   .@{prefix}-icon {
@@ -33,7 +33,7 @@
     white-space: pre-wrap;
     word-break: break-word;
     line-height: 22px;
-    margin-top: @spacer-3;
+    margin-top: @spacer-1;
     min-width: 82px;
   }
 
@@ -50,8 +50,8 @@
 
   /** 有无icon判断 */
   &--icononly {
-    padding-top: @spacer-3;
-    padding-bottom: @spacer-3;
+    padding-top: @spacer-1;
+    padding-bottom: @spacer-1;
     min-width: 88px;
     min-height: 88px !important; // stylelint-disable-line
     flex-direction: initial;
@@ -65,13 +65,13 @@
 
   &--top {
     left: 50%;
-    top: @spacer-3;
+    top: @spacer-1;
     transform: translateX(-50%);
   }
 
   &--bottom {
     left: 50%;
-    bottom: @spacer-3;
+    bottom: @spacer-1;
     transform: translateX(-50%);
   }
 
@@ -86,7 +86,7 @@
 
     .@{prefix}-toast__text {
       margin-top: 0;
-      margin-left: @spacer-2;
+      margin-left: @spacer;
       min-width: auto;
       line-height: 24px;
     }
