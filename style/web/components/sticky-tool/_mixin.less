@@ -3,10 +3,18 @@
         opacity: 1;
         position: relative;
         margin: @sticky-item-margin;
-        
+        text-align: center;
+        font-size: @sticky-item-font-size;
+
+        &:hover {
+            cursor: pointer;
+            background-color: @sticky-item-bgcolor-hover;
+        }
+
         &--normal {
             width: @sticky-item-size-normal;
             height: @sticky-item-size-normal;
+
             .t-icon {
                 width: @sticky-item-icon-size-normal;
                 height: @sticky-item-icon-size-normal;
@@ -17,6 +25,7 @@
         &--compact {
             width: @sticky-item-size-compact;
             height: @sticky-item-size-compact;
+
             .t-icon {
                 width: @sticky-item-icon-size-compact;
                 height: @sticky-item-icon-size-compact;

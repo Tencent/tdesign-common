@@ -15,20 +15,17 @@
     box-shadow: @sticky-tool-shadow;
     
     .sticky-item-basic();
-    
-    &--normal {
-        // width: @sticky-tool-size-normal;
-    }
-
-    &--compact {
-        // width: @sticky-tool-size-compact;
-    }
 
     &--square {
         border-radius: @sticky-tool-border-radius-square;
     }
 
     &--round {
-        border-radius: @sticky-tool-border-radius-round;
+        &--normal {
+            border-radius: @sticky-tool-border-radius-round-normal;
+        }
+        &--compact {
+            border-radius: @sticky-tool-border-radius-round-compact;
+        }
     }
 }
