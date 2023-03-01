@@ -20,18 +20,18 @@ export default {
     closeOnOverlayClick: true,
     confirmBtnTheme: {
       default: 'primary',
-      info: 'info',
-      warning: 'warning',
-      danger: 'danger',
-      success: 'success',
+      info: 'primary',
+      warning: 'primary',
+      danger: 'primary',
+      success: 'primary',
     },
   },
   message: {},
   popconfirm: {
     confirmBtnTheme: {
       default: 'primary',
-      warning: 'warning',
-      danger: 'danger',
+      warning: 'primary',
+      danger: 'primary',
     },
   },
   table: {
