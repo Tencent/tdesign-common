@@ -162,7 +162,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resultFiles = toUploadFiles;
         } else if (response.files) {
           // 一个请求上传并返回多个文件
-          resultFiles = response.files.map((file) => {
+          resultFiles = response.files.map((file: UploadFile) => {
             const fileInfo = toUploadFiles.find((toFile) => (
               (file.name && toFile.name === file.name) || (file.raw && toFile.raw === file.raw)
             ));
