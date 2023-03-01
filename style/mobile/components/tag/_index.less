@@ -9,8 +9,8 @@
 .genVariant(@variant) {
   @themes: default, primary, success, warning, danger;
   each(@themes, {
-    @theme-color: 'tag-@{value}-color';
-    @theme-light-color: 'tag-@{value}-light-color';
+    @theme-color: "tag-@{value}-color";
+    @theme-light-color: "tag-@{value}-light-color";
 
     &.@{prefix}-tag--@{value} {
       color: if(@variant = dark, @font-white-1, @@theme-color);
