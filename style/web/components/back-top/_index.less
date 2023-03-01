@@ -14,13 +14,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: opacity .5s ease;
+  transition: opacity @anim-duration-base ease;
   flex-direction: column;
+  background: @back-top-bg-default;
+  border: @back-top-border-default;
 
   &--medium {
     width: @back-top-round-width;
     height: @back-top-round-height;
-    border-radius: 6px;
+    border-radius: @border-radius-medium;
 
     &.@{backTop}--circle {
       border-radius: (@back-top-round-width/2);
@@ -30,7 +32,7 @@
   &--small {
     width: @back-top-round-width-small;
     height: @back-top-round-height-small;
-    border-radius: 3px;
+    border-radius: @border-radius-default;
 
     &.@{backTop}--circle {
       border-radius: (@back-top-round-width-small/2);
