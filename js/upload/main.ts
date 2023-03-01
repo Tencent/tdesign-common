@@ -146,14 +146,13 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resolve({});
           return;
         }
-        let { response } = res;
+        let { response = {} } = res;
+        if (res.status === 'fail') {
+          response.error = res.error || response.error;
+        }
         let resultFiles: UploadFile[] = [];
         // 一个请求上传并返回一个文件
-        if (response.url && !response.files) {
-          if (res.status === 'fail') {
-            response = response || {};
-            response.error = res.error || response.error;
-          }
+        if (response.url && !response.files || res.status === 'fail') {
           toUploadFiles.forEach((file) => {
             file.status = res.status;
             file.response = response;
@@ -166,13 +165,18 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
             const fileInfo = toUploadFiles.find((toFile) => (
               (file.name && toFile.name === file.name) || (file.raw && toFile.raw === file.raw)
             ));
-            return { ...fileInfo, ...file };
+            return {
+              ...fileInfo,
+              ...file,
+              status: res.status,
+              response,
+            };
           });
         }
         const result = {
           response,
           file: resultFiles[0],
-          files: resultFiles
+          files: resultFiles,
         };
         if (res.status === 'success') {
           params.onResponseSuccess?.(result);
