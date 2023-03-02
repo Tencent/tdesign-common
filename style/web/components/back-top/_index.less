@@ -1,0 +1,69 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+.@{prefix-block} {
+  position: fixed;
+  z-index: @z-index-back-top;
+  overflow: hidden;
+  outline: none;
+  border-style: solid;
+  border-color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-width: 0.5px;
+  border-style: solid;
+  transition: all @anim-duration-base linear;
+  touch-action: manipulation;
+  box-shadow: @back-top-box-shadow;
+  visibility: hidden;
+  &__text {
+    line-height: @text-line-height-s;
+    height: $line-height;
+    font-size: @font-size-s;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 2px;
+  }
+  &__icon {
+    font-size: var(--td-font-size-headline-small);
+  }
+}
+
+.@{prefix-block}--show {
+  visibility: visible;
+}
+
+@themes: light, primary, dark;
+each(@themes, {
+  .@{prefix-block}--theme-@{value} {
+    .back-top-theme("@{value}");
+  }
+})
+
+@s: small;
+@m: medium;
+@sizes: s, m;
+each(@sizes, {
+  .@{prefix}-size-@{value} {
+    .back-top-size(@@value)
+  }
+})
+
+@shapes: circle, square;
+each(@shapes, {
+  .@{prefix-block}--@{value} {
+    .back-top-shape("@{value}")
+  }
+})
+
