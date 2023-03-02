@@ -11,7 +11,6 @@
   z-index: @z-index-back-top;
   overflow: hidden;
   outline: none;
-  border-style: solid;
   border-color: transparent;
   background-color: transparent;
   cursor: pointer;
@@ -21,12 +20,13 @@
   justify-content: center;
   vertical-align: middle;
   white-space: nowrap;
-  border-width: 0.5px;
+  border-width: .5px;
   border-style: solid;
   transition: all @anim-duration-base linear;
   touch-action: manipulation;
   box-shadow: @back-top-box-shadow;
   visibility: hidden;
+
   &__text {
     line-height: @text-line-height-s;
     height: $line-height;
@@ -35,6 +35,7 @@
     text-align: center;
     margin-top: 2px;
   }
+
   &__icon {
     font-size: var(--td-font-size-headline-small);
   }
@@ -45,25 +46,27 @@
 }
 
 @themes: light, primary, dark;
+
 each(@themes, {
   .@{prefix-block}--theme-@{value} {
     .back-top-theme("@{value}");
   }
-})
+});
 
-@s: small;
 @m: medium;
+@s: small;
 @sizes: s, m;
+
 each(@sizes, {
   .@{prefix}-size-@{value} {
     .back-top-size(@@value)
   }
-})
+});
 
 @shapes: circle, square;
+
 each(@shapes, {
   .@{prefix-block}--@{value} {
     .back-top-shape("@{value}")
   }
 })
-
