@@ -22,27 +22,31 @@
   white-space: nowrap;
   border-width: .5px;
   border-style: solid;
-  transition: all @anim-duration-base linear;
+  transition:
+    background @anim-duration-base linear,
+    border @anim-duration-base linear,
+    color @anim-duration-base linear,
+    opacity @anim-duration-base linear,
+    visibility @anim-duration-base linear;
   touch-action: manipulation;
   box-shadow: @back-top-box-shadow;
   visibility: hidden;
+  opacity: 0;
 
   &__text {
-    line-height: @text-line-height-s;
-    height: $line-height;
-    font-size: @font-size-s;
-    font-weight: 400;
+    font: @font-body-small;
     text-align: center;
-    margin-top: 2px;
+    margin-top: @comp-margin-xxs;
   }
 
   &__icon {
-    font-size: var(--td-font-size-headline-small);
+    font-size: @font-headline-small;
   }
 }
 
 .@{prefix-block}--show {
   visibility: visible;
+  opacity: 1;
 }
 
 @themes: light, primary, dark;
