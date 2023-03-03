@@ -16,7 +16,6 @@
 
   font: @tree-font;
   color: @tree-node-text-color;
-  overflow-y: auto;
   position: relative;
 
   // 禁用态颜色处理
@@ -103,9 +102,20 @@
       }
     }
 
+    // 允许点击
     &--clickable {
       cursor: pointer;
     }
+
+    // 过滤时被命中为路径节点
+    // &--locked {
+
+    // }
+
+    // 过滤时被命中
+    // &--matched {
+
+    // }
 
     &--draggable {
       cursor: pointer;
@@ -363,6 +373,11 @@
 
 // 虚拟滚动样式
 .@{prefix}-tree__vscroll {
+  overflow-y: auto;
+}
+
+// 虚拟滚动延迟加载模式
+.@{prefix}-tree__lazyload {
   overflow-y: auto;
 }
 
