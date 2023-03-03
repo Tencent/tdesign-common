@@ -114,8 +114,8 @@ export function handleRequestMethodResponse(res: RequestMethodResponse) {
     log.error('Upload', '`requestMethodResponse.status` must be `success` or `fail`, examples `{ status: \'success\', response: { url: \'\' } }`');
     return false;
   }
-  if (res.status === 'success' && (!res.response || !res.response.url)) {
-    log.warn('Upload', '`requestMethodResponse.response.url` is required as `status` is `success`');
+  if (res.status === 'success' && (!res.response || (!res.response.url && !res.response.files))) {
+    log.warn('Upload', '`requestMethodResponse.response.url` or `requestMethodResponse.response.files` is required if `status` is `success`');
   }
   return true;
 }
@@ -146,17 +146,38 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resolve({});
           return;
         }
-        let { response } = res;
+        const { response = {} } = res;
         if (res.status === 'fail') {
-          response = response || {};
           response.error = res.error || response.error;
         }
-        toUploadFiles.forEach((file) => {
-          file.status = res.status;
-          file.response = response;
-          file.url = response.url;
-        });
-        const result = { response, file: toUploadFiles[0], files: toUploadFiles };
+        let resultFiles: UploadFile[] = [];
+        // 一个请求上传并返回一个文件
+        if ((response.url && !response.files) || res.status === 'fail') {
+          toUploadFiles.forEach((file) => {
+            file.status = res.status;
+            file.response = response;
+            file.url = response.url;
+          });
+          resultFiles = toUploadFiles;
+        } else if (response.files) {
+          // 一个请求上传并返回多个文件
+          resultFiles = response.files.map((file: UploadFile) => {
+            const fileInfo = toUploadFiles.find((toFile) => (
+              (file.name && toFile.name === file.name) || (file.raw && toFile.raw === file.raw)
+            ));
+            return {
+              ...fileInfo,
+              ...file,
+              status: res.status,
+              response,
+            };
+          });
+        }
+        const result = {
+          response,
+          file: resultFiles[0],
+          files: resultFiles,
+        };
         if (res.status === 'success') {
           params.onResponseSuccess?.(result);
         } else if (res.status === 'fail') {
