@@ -1,23 +1,23 @@
 // color
 @dialog-bg-color: #fff;
-@dialog-title-text-color: @text-primary-color;
-@dialog-body-text-color: @text-level-2-color;
+@dialog-title-text-color: @text-color-primary;
+@dialog-body-text-color: @text-color-secondary;
 @dialog-btn-border-color: #eee;
 @dialog-btn-bg-color-active: rgba(0, 0, 0, .05);
-@dialog-btn-default-color: @text-level-1-color;
-@dialog-btn-primary-color: @primary-color;
+@dialog-btn-default-color: @text-color-primary;
+@dialog-btn-primary-color: @brand-color;
 @dialog-btn-success-color: @success-color;
 @dialog-btn-warning-color: @warning-color;
 @dialog-btn-error-color: @error-color;
 @dialog-input-bg-color: #f0f0f0;
-@dialog-input-color: @text-level-1-color;
-@dialog-input-placeholder-color: @text-level-4-color;
+@dialog-input-color: @text-color-primary;
+@dialog-input-placeholder-color: @text-color-disabled;
 
 // font-size
-@dialog-title-font-size: @font-size * 1.6;
-@dialog-body-font-size: @font-size * 1.6;
-@dialog-btn-font-size: @font-size * 1.6;
-@dialog-input-font-size: @font-size * 1.6;
+@dialog-title-font-size: calc(@font-size * 1.6);
+@dialog-body-font-size: calc(@font-size * 1.6);
+@dialog-btn-font-size: calc(@font-size * 1.6);
+@dialog-input-font-size: calc(@font-size * 1.6);
 
 // size
 @dialog-btn-height: 56px;
@@ -34,17 +34,17 @@
 @dialog-body-max-height: 288px;
 
 // padding
-@dialog-header-padding: 32px @spacer-5 0;
-@dialog-body-padding: 0 @spacer-5;
+@dialog-header-padding: 32px calc(@spacer * 2.5) 0;
+@dialog-body-padding: 0 calc(@spacer * 2.5);
 
-@dialog-body-first-child-padding: 32px @spacer-5;
-@dialog-btn-padding: 0 @spacer-3;
-@dialog-input-padding:  @spacer * 1.5;
+@dialog-body-first-child-padding: 32px calc(@spacer * 2.5);
+@dialog-btn-padding: 0 @spacer-1;
+@dialog-input-padding:  calc(@spacer * .75);
 
 // margin
 @dialog-footer-margin-top: 32px;
-@dialog-input-margin-top: @spacer * 1.5;
+@dialog-input-margin-top: calc(@spacer * .75);
 
 // border-radius
-@dialog-border-radius: @border-radius;
-@dialog-input-radius: @border-radius / 2;
+@dialog-border-radius: @radius-small;
+@dialog-input-radius: calc(@radius-small / 2);
