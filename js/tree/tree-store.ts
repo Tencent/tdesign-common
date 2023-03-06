@@ -20,7 +20,6 @@ import {
   TypeTreeFilterOptions,
   TypeRelatedNodesOptions,
   TypeTreeEventState,
-  TypeTreeNodeModel,
 } from './types';
 
 // 构建一个树的数据模型
@@ -35,6 +34,9 @@ export class TreeStore {
 
   // 所有节点映射
   public nodeMap: Map<TreeNodeValue, TreeNode>;
+
+  // 节点 私有 ID 映射
+  public privateMap: Map<string, TreeNode>;
 
   // 配置选项
   public config: TypeTreeStoreOptions;
@@ -60,11 +62,11 @@ export class TreeStore {
   // 识别是否需要重排
   public shouldReflow: boolean;
 
+  // 存在过滤器标志
+  public hasFilter: boolean;
+
   // 树节点过滤器
   public prevFilter: TypeTreeFilter;
-
-  // 一个空节点 model
-  public nullNodeModel: TypeTreeNodeModel;
 
   // 事件派发器
   public emitter: ReturnType<typeof mitt>;
@@ -90,6 +92,9 @@ export class TreeStore {
       onLoad: null,
       onReflow: null,
       onUpdate: null,
+      // 每次搜索条件变更，重置展开状态，路径节点展开，显示命中节点
+      // allowFoldNodeOnFilter 为 true 时，搜索条件不变的情况下，允许折叠路径节点
+      // 默认状态，allowFoldNodeOnFilter 为 false 时，路径节点无法折叠
       allowFoldNodeOnFilter: false,
       ...options,
     };
@@ -97,6 +102,7 @@ export class TreeStore {
     this.nodes = [];
     this.children = [];
     this.nodeMap = new Map();
+    this.privateMap = new Map();
     this.activedMap = new Map();
     this.expandedMap = new Map();
     this.checkedMap = new Map();
@@ -107,30 +113,23 @@ export class TreeStore {
     this.updateTimer = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
+    // 这个标志会被大量用到
+    this.hasFilter = isFunction(config.filter);
     this.emitter = mitt();
-    this.initNullNodeModel();
-  }
-
-  // 初始化空节点 model
-  public initNullNodeModel() {
-    // 空节点，用于判定当前的 filterText 是否为空，如果 filter(nullNode) 为 true, 那么可以判定 filterText 为空
-    // 这里初始化空节点的方式似乎不是很完美
-    const nullNode = new TreeNode(this, { value: '', label: '', children: [] });
-    this.nullNodeModel = nullNode.getModel();
-    // 需要将节点从树中移除
-    nullNode.remove();
   }
 
   // 配置选项
   public setConfig(options: TypeTreeStoreOptions) {
+    const { config } = this;
     let hasChanged = false;
     Object.keys(options).forEach((key) => {
       const val = options[key];
-      if (val !== this.config[key]) {
+      if (val !== config[key]) {
         hasChanged = true;
-        this.config[key] = val;
+        config[key] = val;
       }
     });
+    this.hasFilter = isFunction(config.filter);
     if (hasChanged) {
       // 在 td-tree 的 render 方法中调用 setConfig
       // 这样减少了 watch 属性
@@ -375,7 +374,7 @@ export class TreeStore {
       this.updatedMap.set(node.value, true);
     }
     if (this.updateTimer) return;
-    this.updateTimer = +setTimeout(() => {
+    this.updateTimer = setTimeout(() => {
       clearTimeout(this.updateTimer);
       this.updateTimer = null;
 
@@ -388,7 +387,7 @@ export class TreeStore {
       // 检查节点是否有被过滤，锁定路径节点
       // 在此之前要遍历节点生成一个经过排序的节点数组
       // 以便于优化锁定检查算法
-      if (!this.config?.allowFoldNodeOnFilter) this.lockFilterPathNodes();
+      this.lockFilterPathNodes();
 
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
@@ -654,15 +653,23 @@ export class TreeStore {
   }
 
   // 锁定过滤节点的路径节点
-  // 使得路径节点展开，可见，且不可操作
+  // 使得路径节点展开，可见
   public lockFilterPathNodes() {
     const { config } = this;
     const allNodes = this.getNodes();
 
-    // 如果之前有进行过滤，则先解锁所有节点
     if (this.prevFilter) {
+      // 过滤条件清空时，也需要清理锁定节点
+      // 所在判断过滤条件是否存在之前，就要调用这里的清理逻辑
+      // 不想在每次渲染时都做这个清空判断
+      // 所以判断一下之前是否有进行过滤
       allNodes.forEach((node: TreeNode) => {
-        node.lock(false);
+        // 先清空所有锁定状态
+        if (node.vmIsLocked) {
+          // lock 方法内部有状态计算
+          // 所以要减少 lock 方法调用次数
+          node.lock(false);
+        }
       });
     }
 
@@ -670,42 +677,25 @@ export class TreeStore {
     // 当前没有过滤器
     // 则无需处理锁定节点
     if (!currentFilter || !isFunction(currentFilter)) return;
-
-    if (currentFilter(this.nullNodeModel)) return;
-
     this.prevFilter = config.filter;
-    // 构造路径节点map
-    const map = new Map();
 
-    // 全部节点要经过排序，才能使用这个算法
+    // 全部节点要经过排序，才能使用这个遍历
     // 比起每个过滤节点调用 getParents 方法检查父节点状态
-    // 算法复杂度 O(N*log(N)) => O(N)
-    allNodes.reverse().forEach((item: TreeNode) => {
-      const node = item;
-
-      // 被过滤节点父节点固定为展开状态
+    // 复杂度 O(N*log(N)) => O(N)
+    allNodes.reverse().forEach((node: TreeNode) => {
+      // 数组颠倒后，等于是从每个节点的子节点开始判断
+      // 想象为从展开树的最底部向上遍历
       const parent = node.getParent();
-      if (node.vmIsRest) {
-        if (parent) {
-          // 被过滤节点的父节点固定为展开状态
-          parent.expanded = true;
+      if (!parent) return;
+      if (node.vmIsRest || node.vmIsLocked) {
+        // 当前节点被过滤条件命中
+        // 或者当前节点被锁定
+        // 则需要判定父节点状态
+        if (!parent.vmIsLocked) {
+          // 父节点已被锁定，则忽略动作
+          // lock 方法有内置状态判断
+          parent.lock(true);
         }
-        // 被过滤节点固定为展示状态
-        node.visible = true;
-      }
-      if (node.vmIsRest || map.get(node.value)) {
-        if (parent && !parent.vmIsRest) {
-          map.set(parent.value, true);
-        }
-      }
-    });
-
-    // 锁定路径节点展示样式
-    const filterPathValues = Array.from(map.keys());
-    filterPathValues.forEach((value: TreeNodeValue) => {
-      const node = this.getNode(value);
-      if (node) {
-        node.lock(true);
       }
     });
   }

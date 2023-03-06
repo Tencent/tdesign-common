@@ -190,7 +190,7 @@ export type TypeIdMap = Map<TreeNodeValue, boolean>;
 
 export type TypeValueMode = 'all' | 'parentFirst' | 'onlyLeaf';
 
-export type TypeTimer = number;
+export type TypeTimer = ReturnType<typeof setTimeout>;
 
 export interface TypeSettingOptions {
   directly?: boolean;

@@ -16,6 +16,7 @@
 
   font: @tree-font;
   color: @tree-node-text-color;
+  position: relative;
 
   // 禁用态颜色处理
   &.@{prefix}-is-disabled {
@@ -85,7 +86,6 @@
 
     .@{prefix}-tree__icon--default {
       .t-icon {
-        transition: color, transform @anim-time-fn-easing @anim-duration-base;
         transform: rotate(0);
       }
     }
@@ -102,8 +102,19 @@
       }
     }
 
+    // 允许点击
     &--clickable {
       cursor: pointer;
+    }
+
+    // 过滤时被命中为路径节点
+    &--locked {
+      color: @tree-disabled-color;
+    }
+
+    // 过滤时被命中
+    &--matched {
+      color: inherit;
     }
 
     &--draggable {
@@ -211,7 +222,6 @@
     font-size: 0;
     user-select: none;
     cursor: pointer;
-    transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
   }
 
   // svg 动画与 icon 背景进行隔离
@@ -225,7 +235,6 @@
     width: calc(@tree-node-icon-size + 4px);
     height: calc(@tree-node-icon-size + 4px);
     border-radius: @border-radius-default;
-    transition: @anim-duration-base linear;
   }
 
   // 仅在有图标时呈现背景
@@ -233,7 +242,6 @@
   // ::after 仅用于增大点击范围
   &__icon:not(:empty):hover {
     background-color: @tree-node-bg-hover-color;
-    transition: @anim-duration-base linear;
   }
 
   // 没有图标时不呈现指针
@@ -250,7 +258,6 @@
     margin-left: @tree-label-margin-left;
     border-radius: @border-radius-default;
     cursor: pointer;
-    transition: background-color @anim-duration-moderate @anim-time-fn-easing;
     .text-ellipsis();
 
     &.@{prefix}-is-checked {
@@ -297,18 +304,39 @@
   }
 }
 
-.@{prefix}-tree--vscroll {
-  overflow-y: auto;
-}
-
 .@{prefix}-tree {
   &__item--hidden {
     display: none;
   }
 }
 
-// 节点收缩隐藏动画
+// 节点动画
 .@{prefix}-tree--transition {
+  // 标签动画
+  .@{prefix}-tree__label {
+    transition: background-color @anim-duration-moderate @anim-time-fn-easing;
+  }
+
+  // 默认图标
+  .@{prefix}-tree__icon {
+    transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
+  }
+
+  .@{prefix}-tree__icon::after {
+    transition: @anim-duration-base linear;
+  }
+
+  .@{prefix}-tree__icon:not(:empty):hover {
+    transition: @anim-duration-base linear;
+  }
+
+  // 图标动画
+  .@{prefix}-tree__icon--default {
+    .t-icon {
+      transition: color, transform @anim-time-fn-easing @anim-duration-base;
+    }
+  }
+
   // 节点展示动画
   .@{prefix}-tree__item--visible {
     display: flex;
@@ -327,7 +355,7 @@
     overflow: hidden;
     pointer-events: none;
     user-select: none;
-    animation: none;
+    animation: initial;
     transition: opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
@@ -340,6 +368,54 @@
   // 节点移除动画
   .@{prefix}-tree__item--leave-active {
     animation: t-tree-toggle @tree-node-animation-time reverse linear forwards;
+  }
+}
+
+// 虚拟滚动样式
+.@{prefix}-tree__vscroll {
+  overflow-y: auto;
+}
+
+// 虚拟滚动延迟加载模式
+.@{prefix}-tree__lazyload {
+  overflow-y: auto;
+}
+
+// 虚拟滚动游标
+.@{prefix}-tree__vscroll-cursor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  transition: transform @anim-duration-base;
+}
+
+.@{prefix}-tree--scrolling {
+  .@{prefix}-tree__item {
+    will-change: initial;
+  }
+  .v-enter,
+  .v-leave,
+  .@{prefix}-tree__item--visible,
+  .@{prefix}-tree__item--hidden,
+  .@{prefix}-tree__item--enter,
+  .@{prefix}-tree__item--enter-active,
+  .@{prefix}-tree__item--enter-to,
+  .@{prefix}-tree__item--leave,
+  .@{prefix}-tree__item--leave-active
+  .@{prefix}-tree__item--leave-to {
+    animation: none;
+    transition: none;
+  }
+  .@{prefix}-tree__item--visible {
+    max-height: initial;
+  }
+  .@{prefix}-tree__item--enter-to,
+  .@{prefix}-tree__item--enter-active {
+    max-height: initial;
+  }
+  .@{prefix}-tree__item--leave-to,
+  .@{prefix}-tree__item--leave-active {
+    max-height: 0;
   }
 }
 
