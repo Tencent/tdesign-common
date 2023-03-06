@@ -834,17 +834,20 @@ export class TreeNode {
     }
     if (this.isActivable()) {
       if (actived) {
+        const prevKeys = Array.from(map.keys());
         if (!config.activeMultiple) {
           map.clear();
         }
+        prevKeys.forEach((value) => {
+          const node = tree.getNode(value);
+          node.update();
+        });
         map.set(this.value, true);
       } else {
         map.delete(this.value);
       }
     }
-    if (options.directly) {
-      this.update();
-    }
+    this.update();
     return tree.getActived(map);
   }
 
