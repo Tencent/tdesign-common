@@ -303,6 +303,10 @@ export class TreeNode {
       throw new Error('无法将父节点插入到子节点');
     }
 
+    if (parentNode === this) {
+      throw new Error('无法将节点插入到本节点');
+    }
+
     if (Array.isArray(parentNode?.children)) {
       const targetPosNode = parentNode?.children[targetIndex];
       if (targetPosNode && targetPosNode === this) {
