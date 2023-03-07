@@ -187,7 +187,7 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string, d
   let result;
 
   if (Array.isArray(value)) {
-    result = value.map((v, i) => v ? dayjs(v).format(timeFormat) : defaultTime[i]);
+    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : defaultTime[i]));
     result = result.length ? result : defaultTime;
   } else {
     result = value ? dayjs(value).format(timeFormat) : defaultTime;
