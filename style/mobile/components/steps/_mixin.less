@@ -17,7 +17,7 @@
       vertical-align: top;
       font-size: @font-size-base;
       position: relative;
-      color: @text-level-4-color;
+      color: @text-color-disabled;
 
       &__number {
         box-sizing: border-box;
@@ -27,9 +27,9 @@
         width: @step-connector-default-icon-width;
         height: @step-connector-default-icon-width;
         text-align: center;
-        border: 1px solid @text-level-4-color;
+        border: 1px solid @text-color-disabled;
         border-radius: 50%;
-        color: @text-level-4-color;
+        color: @text-color-disabled;
       }
     }
 
@@ -47,7 +47,7 @@
 
     &-title {
       position: relative;
-      color: @text-level-1-color;
+      color: @text-color-primary;
       text-align: center;
       line-height: 22px;
       font-size: @font-size-base;
@@ -56,7 +56,7 @@
     }
 
     &-description {
-      color: @text-level-3-color;
+      color: @text-color-placeholder;
       line-height: 20px;
       font-size: @font-size-s;
       margin-bottom: @spacer;
@@ -74,7 +74,7 @@
         content: "";
         display: block;
         height: 1px;
-        background-color: @text-level-4-color;
+        background-color: @text-color-disabled;
         position: absolute;
         width: calc(100% - @step-connector-default-icon-width);
         left: calc(50% + @step-connector-default-icon-width / 2);
@@ -91,7 +91,7 @@
     .@{prefix}-step--default:not(:last-child) {
 
       .@{prefix}-step__inner:after {
-        background-color: @primary-color-5;
+        background-color: @brand-color-5;
       }
     }
   }
@@ -115,7 +115,7 @@
     .@{prefix}-step--default:not(:last-child) {
 
       .@{prefix}-step__inner:after {
-        background-color: @primary-color;
+        background-color: @brand-color;
       }
     }
   }
@@ -125,25 +125,25 @@
   & when(@anchor-status = default) {
 
     .@{prefix}-step-icon__number {
-      border-color: @primary-color;
-      color: @primary-color;
+      border-color: @brand-color;
+      color: @brand-color;
     }
   };
   & when(@anchor-status = finish) {
 
     .@{prefix}-step-icon__number {
-      border-color: @primary-color;
-      color: @primary-color;
+      border-color: @brand-color;
+      color: @brand-color;
     }
   };
   & when(@anchor-status = process) {
     .@{prefix}-step-icon__number {
-      background-color: @primary-color;
+      background-color: @brand-color;
       color: #fff;
-      border-color: @primary-color;
+      border-color: @brand-color;
     }
     .@{prefix}-step-title {
-      color: @primary-color-8;
+      color: @brand-color-8;
     }
   };
   & when(@anchor-status = error) {

@@ -183,13 +183,14 @@ export function formatDate(
 }
 
 // 格式化时间
-export function formatTime(value: DateValue | DateValue[], timeFormat: string) {
+export function formatTime(value: DateValue | DateValue[], timeFormat: string, defaultTime: string | string[]) {
   let result;
 
   if (Array.isArray(value)) {
-    result = value.map((v) => dayjs(v || new Date(new Date().setHours(0, 0, 0, 0))).format(timeFormat));
+    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : defaultTime[i]));
+    result = result.length ? result : defaultTime;
   } else {
-    result = dayjs((value || new Date(new Date().setHours(0, 0, 0, 0)))).format(timeFormat);
+    result = value ? dayjs(value).format(timeFormat) : defaultTime;
   }
 
   return result;

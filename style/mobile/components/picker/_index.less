@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   height: @picker-toolbar--height;
-  box-shadow: inset 0 -.5px 0 0 @border-level-1-color;
+  box-shadow: inset 0 -.5px 0 0 @component-stroke;
   overflow: hidden;
 
   button {
@@ -29,16 +29,16 @@
 }
 
 .@{prefix}-picker__title {
-  color: @text-level-1-color;
+  color: @text-color-primary;
   font-weight: @picker--font-weight;
 }
 
 .@{prefix}-picker__cancel {
-  color: @text-level-2-color;
+  color: @text-color-secondary;
 }
 
 .@{prefix}-picker__confirm {
-  color: @primary-color;
+  color: @brand-color;
 }
 
 .@{prefix}-picker__main {
@@ -93,8 +93,8 @@
     top: 0;
     right: 0;
     height: 1px;
-    border-top: 1px solid @border-level-1-color;
-    color: @border-level-1-color;
+    border-top: 1px solid @component-stroke;
+    color: @component-stroke;
     transform-origin: 0 0;
     transform: scaleY(.5);
   }
@@ -106,8 +106,8 @@
     bottom: 0;
     right: 0;
     height: 1px;
-    border-bottom: 1px solid @border-level-1-color;
-    color: @border-level-1-color;
+    border-bottom: 1px solid @component-stroke;
+    color: @component-stroke;
     transform-origin: 0 100%;
     transform: scaleY(.5);
   }
@@ -119,5 +119,5 @@
   justify-content: center;
   height: @picker-item--height;
   line-height: @picker-item--line-height;
-  color: @text-level-1-color;
+  color: @text-color-primary;
 }
