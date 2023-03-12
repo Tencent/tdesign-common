@@ -102,8 +102,19 @@
       }
     }
 
+    // 允许点击
     &--clickable {
       cursor: pointer;
+    }
+
+    // 过滤时被命中为路径节点
+    &--locked {
+      color: @tree-disabled-color;
+    }
+
+    // 过滤时被命中
+    &--matched {
+      color: inherit;
     }
 
     &--draggable {
@@ -362,6 +373,11 @@
 
 // 虚拟滚动样式
 .@{prefix}-tree__vscroll {
+  overflow-y: auto;
+}
+
+// 虚拟滚动延迟加载模式
+.@{prefix}-tree__lazyload {
   overflow-y: auto;
 }
 
