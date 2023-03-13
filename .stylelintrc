@@ -29,5 +29,14 @@
     "color-function-notation": "legacy",
     "value-keyword-case": null
   },
-  "overrides": [{ "files": ["**/*.less"], "customSyntax": "postcss-less" }]
+  "overrides": [
+    { "files": ["**/*.less"], "customSyntax": "postcss-less" },
+    {
+      "files": ["style/web/components/**/*.less"],
+      "ignoreFiles": ["**/_docs.less"],
+      "rules": {
+        "color-no-hex": true
+      }
+    }
+  ]
 }
