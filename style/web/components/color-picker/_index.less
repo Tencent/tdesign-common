@@ -117,10 +117,12 @@
   }
 
   &::before {
+    /* stylelint-disable-next-line color-no-hex */
     background: linear-gradient(90deg, #fff, transparent);
   }
 
   &::after {
+    /* stylelint-disable-next-line color-no-hex */
     background: linear-gradient(0deg, #000, transparent);
   }
 
@@ -133,6 +135,7 @@
 }
 
 .transparentBgImage () {
+  /* stylelint-disable-next-line color-no-hex */
   background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
   background-size: 6px 6px;
   background-position: 0 0, 3px 3px;
@@ -148,7 +151,7 @@
   }
 
   &--alpha-type {
-    background: #fff;
+    background: @text-color-anti;
     .transparentBgImage();
   }
 }
@@ -193,6 +196,7 @@
 }
 
 .@{prefix}-color-picker__hue {
+  /* stylelint-disable color-no-hex */
   background: linear-gradient(
     90deg,
     red,
@@ -228,7 +232,7 @@
   height: @color-picker-gradient-preview-height;
   border-radius: @color-picker-gradient-preview-radius;
   overflow: hidden;
-  background: #fff;
+  background: @text-color-anti;
   .transparentBgImage();
 
   &-inner {
@@ -544,7 +548,7 @@
   border-radius: @color-picker-slider-wrapper-radius;
 
   .@{prefix}-color-picker--bg-alpha {
-    background: #fff;
+    background: @text-color-anti;
     .transparentBgImage();
   }
 }
