@@ -7,25 +7,26 @@
 @import "./_mixin.less";
 
 .@{prefix}-sticky-tool {
-    position: fixed;
-    opacity: 1;
-    box-sizing: border-box;
-    background-color: @sticky-tool-background;
-    border: @sticky-tool-border;
-    box-shadow: @sticky-tool-shadow;
-    
-    .sticky-item-basic();
+  position: fixed;
+  opacity: 1;
+  box-sizing: border-box;
+  background-color: @sticky-tool-background;
+  border: @sticky-tool-border;
+  box-shadow: @sticky-tool-shadow;
 
-    &--square {
-        border-radius: @sticky-tool-border-radius-square;
+  .sticky-item-basic();
+
+  &--square {
+    border-radius: @sticky-tool-border-radius-square;
+  }
+
+  &--round {
+    &--normal {
+      border-radius: @sticky-tool-border-radius-round-normal;
     }
 
-    &--round {
-        &--normal {
-            border-radius: @sticky-tool-border-radius-round-normal;
-        }
-        &--compact {
-            border-radius: @sticky-tool-border-radius-round-compact;
-        }
+    &--compact {
+      border-radius: @sticky-tool-border-radius-round-compact;
     }
+  }
 }
