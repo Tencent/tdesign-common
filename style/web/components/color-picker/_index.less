@@ -84,7 +84,7 @@
   height: @color-picker-slider-thumb-size;
   border-radius: @border-radius-circle;
   box-shadow: @color-picker-thumbs-shadow;
-  background: white;
+  background: @text-color-anti;
   color: @text-color-brand;
   padding: @color-picker-slider-thumb-padding;
   box-sizing: border-box;
@@ -147,6 +147,7 @@
   position: relative;
 
   &--hue-type {
+    /* stylelint-disable-next-line color-named */
     background: red;
   }
 
@@ -196,7 +197,7 @@
 }
 
 .@{prefix}-color-picker__hue {
-  /* stylelint-disable color-no-hex */
+  /* stylelint-disable color-no-hex, color-named */
   background: linear-gradient(
     90deg,
     red,
