@@ -187,13 +187,24 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string, d
   let result;
 
   if (Array.isArray(value)) {
-    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : defaultTime[i]));
-    result = result.length ? result : defaultTime;
+    if (!Array.isArray(defaultTime)) defaultTime = [defaultTime, defaultTime];
+    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : calcFormatTime(defaultTime[i], timeFormat)));
+    result = result.length ? result : defaultTime.map(t => calcFormatTime(t, timeFormat));
   } else {
-    result = value ? dayjs(value).format(timeFormat) : defaultTime;
+    result = value ? dayjs(value).format(timeFormat) : calcFormatTime(defaultTime, defaultTime);
   }
 
   return result;
+}
+
+// 对齐格式化时间
+export function calcFormatTime(time, timeFormat) {
+  if (time && timeFormat) {
+    const timeArr = time.split(':');
+    const timeFormatArr = timeFormat.split(':');
+    return timeArr.slice(0, timeFormatArr.length).join(':');
+  }
+  return time;
 }
 
 // 根据不同 mode 给出格式化默认值
