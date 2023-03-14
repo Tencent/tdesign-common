@@ -182,15 +182,27 @@ export function formatDate(
   return result;
 }
 
+// 对齐格式化时间
+export function calcFormatTime(time, timeFormat) {
+  if (time && timeFormat) {
+    const timeArr = time.split(':');
+    const timeFormatArr = timeFormat.split(':');
+    return timeArr.slice(0, timeFormatArr.length).join(':');
+  }
+  return time;
+}
+
 // 格式化时间
 export function formatTime(value: DateValue | DateValue[], timeFormat: string, defaultTime: string | string[]) {
   let result;
 
   if (Array.isArray(value)) {
-    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : defaultTime[i]));
-    result = result.length ? result : defaultTime;
+    // eslint-disable-next-line no-param-reassign
+    if (!Array.isArray(defaultTime)) defaultTime = [defaultTime, defaultTime];
+    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : calcFormatTime(defaultTime[i], timeFormat)));
+    result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
   } else {
-    result = value ? dayjs(value).format(timeFormat) : defaultTime;
+    result = value ? dayjs(value).format(timeFormat) : calcFormatTime(defaultTime, timeFormat);
   }
 
   return result;
