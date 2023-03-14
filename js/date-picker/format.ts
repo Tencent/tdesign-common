@@ -183,7 +183,7 @@ export function formatDate(
 }
 
 // 对齐格式化时间
-export function calcFormatTime(time, timeFormat) {
+export function calcFormatTime(time: string, timeFormat: string) {
   if (time && timeFormat) {
     const timeArr = time.split(':');
     const timeFormatArr = timeFormat.split(':');
