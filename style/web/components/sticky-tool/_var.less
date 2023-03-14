@@ -15,31 +15,27 @@
 @sticky-tool-background: @bg-color-container;
 @sticky-tool-border: @component-border;
 @sticky-tool-shadow:  @shadow-3;
-@sticky-tool-size-normal: 64px;
-@sticky-tool-size-compact: 48px;
 
 // sticky-tool shape=square
-@sticky-tool-border-radius-square: 6px;
-@sticky-item-border-radius-square: 3px;
+@sticky-tool-border-radius-square: @border-radius-medium;
+@sticky-item-border-radius-square: @border-radius-default;
 
 // sticky-tool shape=round
-@sticky-tool-border-radius-round-normal: 32px;
-@sticky-tool-border-radius-round-compact: 24px;
+@sticky-tool-border-radius-round-normal: @size-10;
+@sticky-tool-border-radius-round-compact: @size-8;
 @sticky-item-border-radius-round: 50%;
 
 // sticky-item组件整体样式
-@sticky-item-margin: 4px;
+@sticky-item-margin: @size-2;
 @sticky-item-bgcolor-hover: @bg-color-container-hover;
-@sticky-item-label-height: 20px;
 @sticky-item-label-height: 35.71%;
 @sticky-item-label-margin-top: 3.57%;
-@sticky-item-font-size: 12px;
+@sticky-item-font-size: @font-size-s;
 // sticky-tool type=normal
-@sticky-item-size-normal: 56px;
+@sticky-item-size-normal: @size-14;
 @sticky-item-icon-size-normal: 42.86%;
 @sticky-item-icon-margin-normal: 14.29% 28.57% 0 28.57%;
 // sticky-tool type=compact
-@sticky-item-size-compact: 40px;
+@sticky-item-size-compact: @size-12;
 @sticky-item-icon-size-compact: 60%;
 @sticky-item-icon-margin-compact: 20%;
-
