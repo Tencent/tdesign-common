@@ -1093,6 +1093,16 @@
       border-top: @border;
     }
   }
+
+  /** 表格左边有冻结列滚动时，去掉hover表头时多出的一个像素，避免出现表头的冻结列跟表内容的冻结列没有对齐的问题 */
+  &.@{prefix}-table__content--scrollable-to-left.@{prefix}-table__content--scrollable-to-right,
+  &.@{prefix}-table__content--scrollable-to-left {
+    thead.@{prefix}-table__header:hover {
+      .@{prefix}-table__cell--fixed-left-last:not(:last-child){
+        border-right: 0;
+      }
+    }
+  }
 }
 
 /** 可选中行的场景下，将 Checkbox 和 Radio 铺满整个单元格，增大点击范围，方便用户选中 */
