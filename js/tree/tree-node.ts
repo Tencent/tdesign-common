@@ -303,6 +303,10 @@ export class TreeNode {
       throw new Error('无法将父节点插入到子节点');
     }
 
+    if (parentNode === this) {
+      throw new Error('无法将节点插入到本节点');
+    }
+
     if (Array.isArray(parentNode?.children)) {
       const targetPosNode = parentNode?.children[targetIndex];
       if (targetPosNode && targetPosNode === this) {
@@ -834,17 +838,20 @@ export class TreeNode {
     }
     if (this.isActivable()) {
       if (actived) {
+        const prevKeys = Array.from(map.keys());
         if (!config.activeMultiple) {
           map.clear();
         }
+        prevKeys.forEach((value) => {
+          const node = tree.getNode(value);
+          node.update();
+        });
         map.set(this.value, true);
       } else {
         map.delete(this.value);
       }
     }
-    if (options.directly) {
-      this.update();
-    }
+    this.update();
     return tree.getActived(map);
   }
 

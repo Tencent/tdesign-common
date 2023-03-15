@@ -75,11 +75,11 @@
 
   &__inner {
     display: flex;
-    padding: @spacer-3 @spacer-4;
+    padding: @spacer-1 @spacer-2;
   }
 
   &__hd {
-    margin-right: @spacer-2;
+    margin-right: @spacer;
   }
 
   &__bd {
@@ -125,7 +125,7 @@
     padding-left: @spacer-2;
     line-height: 1.5;
     font-size: @noticebar-text-font-size;
-    color: @primary-color;
+    color: @brand-color;
     text-decoration: underline;
   }
 
@@ -134,7 +134,7 @@
   }
 
   &__ft {
-    margin-left: @spacer * 5;
+    margin-left: calc(@spacer * 2.5);
   }
 
   .@{prefix}-icon,
@@ -145,6 +145,6 @@
   }
 
   & + & {
-    margin-top: @spacer * 5;
+    margin-top: calc(@spacer * 2.5);
   }
 }
