@@ -1,0 +1,21 @@
+@import "../../../base.less";
+
+@import "./_var.less";
+
+.@{overlay} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background-color: @overlay-bg-color;
+  transition: opacity @overlay-transition-duration ease;
+}
+
+.t-fade-enter {
+  opacity: 0;
+}
+
+.t-fade-leave-to {
+  opacity: 0;
+}
