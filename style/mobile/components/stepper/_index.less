@@ -2,133 +2,86 @@
 
 @import "./_var.less";
 
-@stepper: ~"@{prefix}-stepper";
-
-.@{stepper} {
+.@{prefix}-stepper {
+  overflow: hidden;
   display: flex;
   align-items: center;
-  color: @stepper-input-color;
+  justify-content: flex-end;
+  width: 100%;
+  padding: @stepper-padding;
+  font-size: @stepper-font-size;
+  line-height: @stepper-line-height;
 
   &__minus,
   &__plus {
-    padding: 4px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: @stepper-button-width;
+    height: @stepper-button-height;
+    position: relative;
+    font-size: 24px;
+    color: @stepper-icon-color;
+
+    &.@{prefix}-is-disabled {
+      color: @stepper-icon-color-disabled;
+    }
   }
 
-  &__input,
-  &__minus-icon,
-  &__plus-icon {
-    color: inherit;
-  }
-
-  &__input--normal,
-  &__input--filled,
-  &__input--outline {
-    height: inherit;
-    box-sizing: border-box;
-  }
-
-  &--small {
-    height: @stepper-small-height;
-    font-size: @stepper-small-font-size;
-  }
-
-  &--medium {
-    height: @stepper-medium-height;
-    font-size: @stepper-medium-font-size;
-  }
-
-  &--large {
-    height: @stepper-large-height;
-    font-size: @stepper-large-font-size;
+  &__icon {
+    display: block;
   }
 
   &__input {
+    display: inline-block;
+    width: @stepper-input-width;
+    height: @stepper-input-height;
+    font-size: @stepper-input-font-size;
+    color: @stepper-input-color;
     text-align: center;
     border: 0;
     vertical-align: top;
     background: 0;
-    height: inherit;
-    min-height: inherit;
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:disabled {
+      color: @stepper-color-disabled;
+    }
   }
 
-  &__input--normal,
-  &__input--filled {
-    margin: 0 4px;
+  &__pure {
+    width: auto;
+    display: inline-flex;
+    .@{prefix}-stepper__minus,
+    .@{prefix}-stepper__plus,
+    .@{prefix}-stepper__input {
+      border-radius: @stepper-pure-border;
+      background-color: @stepper-pure-background-color;
+    }
+    .@{prefix}-stepper__input {
+      width: @stepper-pure-input-width;
+      margin: @stepper-pure-input-margin;
+      font-size: @stepper-pure-input-font-size;
+    }
+    .@{prefix}-stepper__minus,
+    .@{prefix}-stepper__plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+  }
+  .@{prefix}-stepper__label {
+    white-space: nowrap;
   }
 
-  &__input--small {
-    width: @stepper-small-input-width;
-  }
+  &.@{prefix}-is-disabled {
+    .@{prefix}-stepper__minus,
+    .@{prefix}-stepper__plus {
+      color: @stepper-icon-color-disabled;
+    }
 
-  &__input--medium {
-    height: @stepper-medium-height;
-    width: @stepper-medium-input-width;
-  }
-
-  &__input--large {
-    width: @stepper-large-input-width;
-  }
-
-  &__icon--small {
-    width: @stepper-small-height;
-    height: @stepper-small-height;
-    font-size: @stepper-small-icon-size;
-  }
-
-  &__icon--medium {
-    width: @stepper-medium-height;
-    height: @stepper-medium-height;
-    font-size: @stepper-medium-icon-size;
-  }
-
-  &__icon--large {
-    width: @stepper-large-height;
-    height: @stepper-large-height;
-    font-size: @stepper-large-icon-size;
-  }
-
-  &__minus--outline,
-  &__plus--outline {
-    border: @stepper-border-width solid @stepper-border-color;
-  }
-
-  &__input--outline {
-    padding: 0 4px;
-    border: none;
-    border-top: @stepper-border-width solid @stepper-border-color;
-    border-bottom: @stepper-border-width solid @stepper-border-color;
-  }
-
-  &__minus--outline,
-  &__minus--filled {
-    border-radius: @stepper-border-radius 0 0 @stepper-border-radius;
-  }
-
-  &__plus--outline,
-  &__plus--filled {
-    border-radius: 0 @stepper-border-radius @stepper-border-radius 0;
-  }
-
-  &__minus--filled,
-  &__plus--filled {
-    background-color: @bg-color-secondarycontainer;
-  }
-
-  &__input--filled {
-    background-color: @bg-color-secondarycontainer;
-  }
-
-  &--normal-disabled {
-    color: @stepper-input-disabled-color;
-  }
-
-  &--filled-disabled,
-  &--outline-disabled {
-    color: @stepper-input-disabled-color;
-    background-color: @stepper-input-disabled-bg;
+    .@{prefix}-stepper__input {
+      color: @stepper-color-disabled;
+    }
   }
 }
