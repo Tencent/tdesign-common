@@ -1,0 +1,16 @@
+@import "../../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-side-bar {
+  display: flex;
+  flex-direction: column;
+  width: @side-bar-width;
+  height: @side-bar-height;
+  overflow-y: auto;
+
+  &__padding {
+    flex: 1;
+    background-color: @side-bar-bg-color;
+  }
+}
