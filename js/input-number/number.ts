@@ -249,3 +249,12 @@ export function canInputNumber(number: string, largeNumber: boolean) {
   if (String(number).match(/-/g)?.length > 1) return false;
   return true;
 }
+
+/**
+ * 对千分位进行处理 111,111,222 -> 111111222
+ */
+export function formatThousandths(number: string) {
+  const thousandthsRegExp = /^[-+]?\d{1,3}(,\d{3})*(\.(\d*))?$/;
+  if (thousandthsRegExp.test(number)) return number.replace(/,/g, '');
+  return number;
+}

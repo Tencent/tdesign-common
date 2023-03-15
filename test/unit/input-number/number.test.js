@@ -1,4 +1,4 @@
-import { add, subtract } from '../../../js/input-number/number';
+import { add, subtract, formatThousandths } from '../../../js/input-number/number';
 
 describe('add', () => {
   it('0.1 + 0.2', () => {
@@ -81,5 +81,15 @@ describe('subtract', () => {
 
   it('-1 - (-0.766)', () => {
     expect(subtract(-1, -0.766)).toBe(-0.234);
+  });
+});
+
+describe('formatThousandths', () => {
+  it('111,222,000', () => {
+    expect(formatThousandths('111,222,000')).toBe('111222000');
+  });
+
+  it('111.,000.1', () => {
+    expect(formatThousandths('111.,000.1')).toBe('111.,000.1');
   });
 });
