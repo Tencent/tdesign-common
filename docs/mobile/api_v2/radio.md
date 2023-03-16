@@ -6,12 +6,30 @@ isComponent: true
 toc: false
 ---
 
-### 基础单选框
-
-使用场景：基本文本框
+### 纵向单选框
 
 {{ base }}
 
-### 单选项组
+### 横向单选框
 
-{{ group }}
+{{ horizontal }}
+
+### 单选框状态
+
+{{ status }}
+
+### 勾选样式
+
+{{ icon }}
+
+### 勾选显示位置
+
+{{ placement }}
+
+### 非通栏单选框
+
+{{ card }}
+
+### 特殊样式
+
+{{ custom }}
