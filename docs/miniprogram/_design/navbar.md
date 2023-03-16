@@ -27,7 +27,7 @@
   
 <hr />
 
-##### 在应用场景，通常用来承载搜索、扫码等功能性操作。
+##### 在应用内，通常用来承载搜索、扫码等功能性高频操作。
 
    <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Checkbox%201-1.png" />
@@ -35,7 +35,7 @@
   
 <hr />
 
-##### 在和地点相关的应用场景，通常结合当前定位进行展示。
+##### 在需要定位的场景，通常结合当前定位进行、所在城市等进行展示并提供切换的能力。
 
    <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Checkbox%201-1.png" />
