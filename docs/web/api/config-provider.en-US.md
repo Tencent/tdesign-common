@@ -6,7 +6,20 @@ tdDocTabs: [{ tab: 'demo', name: '示例' }, { tab: 'api', name: 'API' }]
 spline: 'explain'
 ---
 
-### global
+### Internationalization
+
+The supported language TDesign provided:
+
+Language | File
+-- | --
+Chinese (Simplified) | `zh_CN`
+Chinese (Traditional) | `zh_TW`
+English | `en_US`
+Korean | `ko_KR`
+Japanese | `ja_JP`
+Russian | `ru_RU`
+Italian | `it_IT`
+Arabic | `ar_KW`
 
 {{ global }}
 
