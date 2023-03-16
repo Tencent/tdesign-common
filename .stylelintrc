@@ -28,7 +28,7 @@
     "selector-type-no-unknown": null,
     "color-function-notation": "legacy",
     "value-keyword-case": null,
-    "property-no-unknown": [{ "checkPrefixed": true }]
+    "property-no-unknown": [true, { "checkPrefixed": true }]
   },
   "overrides": [
     { "files": ["**/*.less"], "customSyntax": "postcss-less" },
