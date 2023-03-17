@@ -5,7 +5,38 @@
 .@{prefix}-switch {
   display: flex;
   align-items: center;
+  vertical-align: middle;
+  width: @switch-width;
+  height: @switch-height;
+  border-radius: @switch-radius;
+  background-color: @switch-unchecked-color;
+  position: relative;
+  transition: all .3s ease;
   overflow: hidden;
+
+  &--checked {
+    background-color: @switch-checked-color;
+  }
+
+  &--disabled {
+    background-color: @switch-unchecked-disabled-color;
+  }
+
+  &--checked&--disabled {
+    background-color: @switch-checked-disabled-color;
+  }
+
+  &--large {
+    width: @switch-large-width;
+    height: @switch-large-height;
+    border-radius: @switch-large-radius;
+  }
+
+  &--small {
+    width: @switch-small-width;
+    height: @switch-small-height;
+    border-radius: @switch-small-radius;
+  }
 
   &__label {
     position: absolute;
@@ -60,41 +91,6 @@
 
   &__loading {
     color: @switch-label-checked-color;
-  }
-
-  &__body {
-    vertical-align: middle;
-    width: @switch-width;
-    height: @switch-height;
-    border-radius: @switch-radius;
-    background-color: @switch-unchecked-color;
-    position: relative;
-    transition: all .3s ease;
-    overflow: hidden;
-
-    &--checked {
-      background-color: @switch-checked-color;
-    }
-
-    &--disabled {
-      background-color: @switch-unchecked-disabled-color;
-    }
-
-    &--checked&--disabled {
-      background-color: @switch-checked-disabled-color;
-    }
-
-    &--large {
-      width: @switch-large-width;
-      height: @switch-large-height;
-      border-radius: @switch-large-radius;
-    }
-
-    &--small {
-      width: @switch-small-width;
-      height: @switch-small-height;
-      border-radius: @switch-small-radius;
-    }
   }
 
   &__dot {
