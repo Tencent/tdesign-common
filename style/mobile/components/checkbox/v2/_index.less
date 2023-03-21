@@ -23,7 +23,7 @@
   }
 
   .limit-title-row {
-    display: box;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -32,6 +32,10 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  &__icon-wrapper {
+    display: block;
   }
 
   &__icon-left {
