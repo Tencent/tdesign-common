@@ -42,6 +42,12 @@
   &__icon {
     font-size: @font-headline-small;
   }
+
+  &.t-size-m {
+    .@{prefix-block}__icon {
+      margin-top: 2px;
+    }
+  }
 }
 
 .@{prefix-block}--show {
@@ -62,7 +68,7 @@ each(@themes, {
 @sizes: s, m;
 
 each(@sizes, {
-  .@{prefix}-size-@{value} {
+  .@{prefix-block}.@{prefix}-size-@{value} {
     .back-top-size(@@value)
   }
 });
