@@ -844,7 +844,7 @@ export class TreeNode {
         }
         prevKeys.forEach((value) => {
           const node = tree.getNode(value);
-          node.update();
+          node?.update();
         });
         map.set(this.value, true);
       } else {
