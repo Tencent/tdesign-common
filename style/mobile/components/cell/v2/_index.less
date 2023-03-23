@@ -111,8 +111,6 @@
   }
 }
 
-
-
 .@{prefix}-cell-group {
   position: relative;
 
@@ -129,11 +127,13 @@
   &--bordered {
     &::before {
       .hairline-top(@cell-group-border-color);
+
       z-index: 1;
     }
 
     &::after {
       .hairline-bottom(@cell-group-border-color);
+
       z-index: 1;
     }
   }
