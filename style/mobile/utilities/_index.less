@@ -1,6 +1,6 @@
-@import './_float.less';
-@import './_animation.less';
-@import '../_variables.less';
+@import "./_float.less";
+@import "./_animation.less";
+@import "../_variables.less";
 
 .hotspot-expanded {
   &.relative {
@@ -8,7 +8,7 @@
   }
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     left: 0;
@@ -23,7 +23,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: if(@position = top, 0, unset);
@@ -39,7 +39,7 @@
     height: 1px;
     left: 0;
     right: 0;
-    transform: scaleY(0.5);
+    transform: scaleY(.5);
   }
 }
 
@@ -48,6 +48,6 @@
     width: 1px;
     top: 0;
     bottom: 0;
-    transform: scaleX(0.5);
+    transform: scaleX(.5);
   }
 }
