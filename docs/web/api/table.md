@@ -239,8 +239,8 @@ spline: data
 - 列配置 `filter.component` 用于自定义筛选器，只要保证自定义筛选器包含 `value` 属性 和 `change` 事件，即可像内置筛选器一样正常使用。
 - 列配置 `filter.showConfirmAndReset` 用于控制是否显示“确认”“重置”按钮.
 - 列配置 `filter.resetValue` 用于设置点击“重置”按钮时的重置值，并非每个场景都会重置为 `''` 或 `[]` `null`，默认重置为 `''`。
-- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容，设置 `filterRow={() => null}` 隐藏过滤行。
-- 更多接口请查看 API 文档中的 `TableColumnFilter`
+- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容，设置 `filterRow=null` 隐藏过滤行。
+- 更多功能属性请查看 API 文档中的 `TableColumnFilter`
 
 {{ filter-controlled }}
 
