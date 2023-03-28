@@ -6,7 +6,7 @@ usage: { title: '', description: '' }
 spline: navigation
 ---
 
-### 基础侧边栏（默认距离页面右侧24px，距离backtop组件顶部16px，没有backtop组件则距离页面底部80px）
+### 基础侧边栏
 
 {{ base }}
 
