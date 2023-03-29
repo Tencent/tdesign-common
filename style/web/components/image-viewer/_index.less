@@ -135,8 +135,8 @@
 
       .@{prefix}-image-viewer__modal-image {
         display: block;
-        max-width: min(90vw, 1000px);
-        max-height: min(90vh, 800px);
+        max-width: ~"min(90vw, 1000px)";
+        max-height: ~"min(90vh, 800px)";
         transition: all @anim-duration-base @anim-time-fn-easing;
         transform: rotate(0deg);
         object-fit: contain;
@@ -419,8 +419,8 @@
 }
 
 .@{prefix}-image-viewer-mini__content {
-  max-width: min(90vw, 1000px);
-  max-height: min(90vh, 800px);
+  max-width: ~"min(90vw, 1000px)";
+  max-height: ~"min(90vh, 800px)";
 
   .@{prefix}-image-viewer__modal-pic {
 
@@ -443,8 +443,8 @@
 
       .@{prefix}-image-viewer__modal-image {
         display: block;
-        max-width: min(80vw, 800px);
-        max-height: min(80vh, 600px);
+        max-width: ~"min(80vw, 800px)";
+        max-height: ~"min(80vh, 600px)";
         transition: all @anim-duration-base ease;
         transform: rotate(0deg);
         object-fit: contain;
