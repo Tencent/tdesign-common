@@ -44,6 +44,8 @@
       color: @search-text-color;
       font-size: @search-font-size;
       padding-left: 5px;
+      border: 0;
+      background: 0;
     }
 
     .@{prefix}-icon {
@@ -70,5 +72,19 @@
     &--center {
       text-align: center;
     }
+  }
+
+  // mobile vue
+  /* stylelint-disable-next-line */
+  input::-webkit-input-placeholder,
+  input::placeholder {
+    color: @search-placeholder-color;
+  }
+
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-results-button,
+  input::-webkit-search-results-decoration {
+    display: none;
   }
 }
