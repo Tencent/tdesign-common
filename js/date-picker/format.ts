@@ -193,7 +193,7 @@ export function calcFormatTime(time: string, timeFormat: string) {
 }
 
 // 格式化时间
-export function formatTime(value: DateValue | DateValue[], timeFormat: string, defaultTime: string | string[]) {
+export function formatTime(value: DateValue | DateValue[], format:string, timeFormat: string, defaultTime: string | string[]) {
   let result;
 
   if (Array.isArray(value)) {
@@ -202,9 +202,8 @@ export function formatTime(value: DateValue | DateValue[], timeFormat: string, d
     result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : calcFormatTime(defaultTime[i], timeFormat)));
     result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
   } else {
-    result = value ? dayjs(value).format(timeFormat) : calcFormatTime(defaultTime as string, timeFormat);
+    result = value ? dayjs(value, format).format(timeFormat) : calcFormatTime(defaultTime as string, timeFormat);
   }
-
   return result;
 }
 
