@@ -199,7 +199,7 @@ export function formatTime(value: DateValue | DateValue[], format:string, timeFo
   if (Array.isArray(value)) {
     // eslint-disable-next-line no-param-reassign
     if (!Array.isArray(defaultTime)) defaultTime = [defaultTime, defaultTime];
-    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : calcFormatTime(defaultTime[i], timeFormat)));
+    result = value.map((v, i) => (v ? dayjs(v, format).format(timeFormat) : calcFormatTime(defaultTime[i], timeFormat)));
     result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
   } else {
     result = value ? dayjs(value, format).format(timeFormat) : calcFormatTime(defaultTime as string, timeFormat);
