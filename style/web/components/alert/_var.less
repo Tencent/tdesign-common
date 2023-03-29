@@ -25,6 +25,7 @@
 @alert-error-icon-color: @error-color;
 
 @alert-close-color: @text-color-secondary;
+@alert-close-color-hover: @text-color-primary;
 
 @alert-success-trigger-color: @success-color-focus;
 @alert-info-trigger-color: @brand-color;
@@ -37,16 +38,16 @@
 @alert-error-trigger-active-color: @error-color;
 
 // size
-@alert-font-size: @font-body-medium;
-@alert-icon-size: calc(@font-size-base + 6px);
-@alert-close-size: calc(@font-size-base + 2px);
+@alert-font-size: @font-size-base;
+@alert-line-height: @text-line-height-base;
+@alert-icon-size: @alert-line-height;
+@alert-close-size: calc(@alert-line-height - 2px);
 
 // 间距
 @alert-padding: @comp-paddingTB-l @comp-paddingLR-xl;
 @alert-operation-padding: 0 @comp-paddingLR-s;
 @alert-margin-left: @comp-margin-s;
 @alert-close-margin-left: @comp-margin-l;
-@alert-icon-padding: calc((@text-line-height-base - @alert-icon-size) / 2 ) 0;
-@alert-close-padding: calc((@text-line-height-base - @alert-close-size) / 2 ) 0;
+@alert-close-padding: calc((@alert-line-height - @alert-close-size) / 2 ) 0;
 @alert-description-margin-top: @comp-margin-s;
 @alert-collapse-margin-top: @comp-margin-s;
