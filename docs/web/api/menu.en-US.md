@@ -1,5 +1,5 @@
 ---
-title: Menu Navigation Menu
+title: Menu
 description:Used to host the architecture of the site and provide a menu list to jump to.
 isComponent: true
 usage: { title: '', description: '' }
