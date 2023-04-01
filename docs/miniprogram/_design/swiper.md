@@ -12,7 +12,7 @@
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-2.png"" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-2.png" />
   </div>
 </div>
 <hr />
@@ -20,7 +20,7 @@
  ##### 在图文详情页场景，用于当图片数量大于1时的折叠展示。
                                                                                                                          
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-3.png"" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-3.png" />
 </div>
   
 <hr />
