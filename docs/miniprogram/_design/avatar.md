@@ -6,39 +6,39 @@
 
 ##### 头像与[动作面板](./actionSheet ) 组合使用，在分享场景中利用动作面板承载用户头像，用于分享对象的选择。
 
-<div class="legend">
-  <div class="item">
+<div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/avatar%201-1.png" />
-  </div>
 </div>
+
 <hr />
 
 ##### 头像与[单元格](./cell) 组合使用，用于展示结构化的成员名称及信息，方便快速识别。
 
-<div class="legend">
-  <div class="item">
+<div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/avatar%201-2.png" />
-  </div>
 </div>
+
 <hr />
 
 ##### 头像与[徽标](./badge) 组合使用，可作为消息提示或人员数量提示等。
 
-<div class="legend">
-  <div class="item">
+
+<div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/avatar%201-3.png" />
-  </div>
 </div>
+
 <hr />
 
 ### 常见用法
 
 ##### 多个头像可组合展示构成头像组；当页面布局空间有限，超过可外显个数时候，可将重复性较高的头像信息做隐藏收起，需要时再让用户主动触发查看。
 
+<div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/avatar%202.png" />
   </div>
-
+</div>
+  
 <hr />
 
 
@@ -46,15 +46,17 @@
 
 ##### 对于字符型头像，需要根据场景定义最大字符数，避免字符过多影响可读性，降低可识别度。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/avatar%203-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
-<div class="item">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/avatar%203-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
+</div>
 
 
 <hr />
