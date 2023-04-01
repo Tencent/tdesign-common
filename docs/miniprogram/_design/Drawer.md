@@ -10,8 +10,10 @@
 
 ##### 抽屉与[按钮](./button)组合使用，通过按钮点击唤起抽屉。
 
-<div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+  </div>
 </div>
 
 <hr />
@@ -20,16 +22,20 @@
 
 ##### 在网站场景，通常用来收折展示整个网站的菜单导航。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%202.png" />
-</div>
+  </div>
+</div> 
 
 <hr />
 
 ##### 在应用场景，通常用来承载某类相关性较强的或较为低频的，如个人中心、设置等场景。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
+  </div>
 </div>
 
 <hr />
