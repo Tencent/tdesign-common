@@ -21,7 +21,7 @@
 ##### 在网站场景，通常用来收折展示整个网站的菜单导航。
 
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%202.png" />
 </div>
 
 <hr />
