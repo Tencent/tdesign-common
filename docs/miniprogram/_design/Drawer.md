@@ -11,7 +11,7 @@
 ##### 抽屉与[按钮](./button)组合使用，通过按钮点击唤起抽屉。
 
 <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/" />
 </div>
 
 <hr />
