@@ -6,12 +6,10 @@
 
 ##### 索引与[单选框](./Radio)、[多选框](./Checkbox)组合使用，在选择数据的场景配合索引有利于用户快速找到目标选项。
 
-<div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/indexes%201.png" />
   </div>
 
-</div>
 <hr />
 
 
@@ -19,25 +17,28 @@
 
 ##### 索引项需要跟数据项小标题保持一致。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/indexes%202-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
-<div class="item">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/indexes%202-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
-
+</div>
 
 <hr />
                                                                                                           
 ##### 索引项排序应具备一定的逻辑相关性。
 
-<div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/indexes%202-3.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
+</div>
 
 <hr />
 
