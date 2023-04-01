@@ -6,25 +6,30 @@
 
 ##### 带图标的导航栏与[抽屉](./Drawer)、[动作面板](./ActionSheet)组合使用，用于唤起一组操作或功能。
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-1.png" />
+  <div class="legend">
+    <div class="item">
+      <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-1.png" />
+    </div>
   </div>
   
-   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-2.png" />
+  <div class="legend">
+    <div class="item">
+      <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-2.png" />
+    </div>
   </div>
   
 <hr />
-
 
 ### 常见用法
 
 ##### 通常用来承载页面标题和返回操作，点击跳转回到上一个打开的页面。
 
-   <div class="item">
+<div class="legend">
+  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-1.png" />
   </div>
-  
+</div>
+
 <hr />
 
 ##### 在应用内，通常用来承载搜索、扫码等功能性高频操作。
