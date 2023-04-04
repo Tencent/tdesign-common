@@ -30,10 +30,10 @@ a.@{prefix}-menu__item {
 
   &__inner {
     display: flex;
-    height: @comp-size-xxxl;
+    height: @comp-size-xxl;
 
     li + li {
-      margin-left: @comp-margin-s;
+      margin-left: 0;
     }
 
     .@{prefix}-menu {
@@ -45,7 +45,7 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__logo:not(:empty) {
     height: 100%;
-    margin-right: @comp-margin-xxxl;
+    margin-right: @comp-margin-xxl;
   }
 
   .@{prefix}-menu {
@@ -60,10 +60,10 @@ a.@{prefix}-menu__item {
       position: relative;
       display: flex;
       align-items: center;
-      height: var(--td-comp-size-xxxl);
-      line-height: 64px;
+      height: var(--td-comp-size-xxl);
+      line-height: 48px;
       text-align: right;
-      margin-right: @comp-margin-s;
+      margin-right: @comp-margin-xl;
       overflow: hidden;
     }
 
@@ -135,7 +135,7 @@ a.@{prefix}-menu__item {
     }
 
     li + li {
-      margin-top: @comp-margin-xxs;
+      margin-top: 0;
       margin-left: 0;
     }
   }
@@ -306,7 +306,7 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu {
-      padding: @comp-paddingTB-l @comp-paddingLR-s;
+      padding: @comp-paddingTB-l 0;
       position: relative;
       // overflow: hidden auto;
       flex: 1;
@@ -328,7 +328,7 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-submenu {
-    margin-bottom: @comp-margin-xs;
+    margin-bottom: 0;
     position: relative;
   }
 
@@ -383,8 +383,8 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__item {
     position: relative;
-    margin: @comp-margin-xs 0;
-    padding: 0 10px 0 16px;
+    margin: 0;
+    padding: 0 10px 0 @comp-paddingLR-l;
     height: @default-menu-item-height;
     line-height: @default-menu-item-height;
     border-bottom: 0;
@@ -403,8 +403,8 @@ a.@{prefix}-menu__item {
     }
 
     .t-icon {
-      width: 20px;
-      height: 20px;
+      width: @comp-size-xxxs;
+      height: @comp-size-xxxs;
     }
 
     .@{prefix}-fake-arrow {
@@ -547,6 +547,7 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
+      background-color: @bg-color-secondarycontainer;
       & .@{prefix}-submenu-icon {
         transform: scaleY(-1);
       }
@@ -643,6 +644,7 @@ a.@{prefix}-menu__item {
 
     &.@{prefix}-is-opened {
       color: @menu-item-active-color--light;
+      background-color: @bg-color-container-hover;
     }
 
     &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
@@ -757,7 +759,7 @@ a.@{prefix}-menu__item {
     }
 
     &-wrapper {
-      padding: @pop-padding-m;
+      padding: @comp-paddingTB-l 0;
       height: 100%;
       list-style: none;
       margin: 0;
@@ -789,7 +791,7 @@ a.@{prefix}-menu__item {
       }
 
       li + li {
-        margin-top: @comp-margin-xs;
+        margin-top: 0;
       }
     }
 
@@ -820,8 +822,8 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__item {
       color: @menu-popup-item-color;
-      height: @comp-size-s;
-      line-height: @comp-size-s;
+      height: @comp-size-l;
+      line-height: @comp-size-l;
 
       + .@{prefix}-menu__item {
         margin-left: 0;
@@ -864,7 +866,7 @@ a.@{prefix}-menu__item {
   left: calc(100% - @pop-padding-m);
 
   .@{prefix}-menu__item, .@{prefix}-submenu {
-    margin: @comp-margin-xxs 0 0 0;
+    margin: 0;
 
     &:first-child {
       margin-top: 0;
