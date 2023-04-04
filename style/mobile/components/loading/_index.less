@@ -90,8 +90,8 @@
   }
 
   &__dot {
-    width: @loading-dot-size;
-    height: @loading-dot-size;
+    width: 20%;
+    height: 20%;
     border-radius: 50%;
     background-color: currentColor;
     animation-duration: 1.8s;
@@ -105,9 +105,9 @@
     }
 
     &s {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       animation: none;
     }
   }
