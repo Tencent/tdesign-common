@@ -12,6 +12,8 @@
     justify-content: center;
     background-color: @image-loading-bg-color;
     color: @image-loading-color;
+    width: 100%;
+    height: 100%;
   }
 
   &--loading-text {
@@ -24,20 +26,18 @@
     height: 100%;
   }
 
-  &--shape {
-    &-circle {
-      border-radius: 50%;
-      overflow: hidden;
-    }
+  &--circle {
+    border-radius: 50%;
+    overflow: hidden;
+  }
 
-    &-round {
-      border-radius: @image-round-radius;
-      overflow: hidden;
-    }
+  &--round {
+    border-radius: @image-round-radius;
+    overflow: hidden;
+  }
 
-    &-square {
-      border-radius: 0;
-      overflow: hidden;
-    }
+  &--square {
+    border-radius: 0;
+    overflow: hidden;
   }
 }
