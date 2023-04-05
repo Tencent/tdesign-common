@@ -16,6 +16,7 @@
     font-size: @dialog-title-font-size;
     line-height: @dialog-title-line-height;
     color: @dialog-title-color;
+
     &--has-content {
       padding-bottom: @dialog-header-content-bottom-padding;
     }
@@ -39,15 +40,15 @@
       width: @dialog-body-scroll-thumb-width;
       height: @dialog-body-scroll-thumb-height;
       border-radius: @radius-small;
-      opacity: 0.5;
+      opacity: .5;
       background: @gray-color-4;
     }
-
   }
 
   &__footer {
     position: relative;
     display: flex;
+
     &--column {
       flex-flow: column-reverse;
     }
@@ -69,13 +70,12 @@
       background: @brand-color-2;
     }
 
-
     &--primary {
       color: @brand-color-1;
       background: @brand-color-7;
     }
 
-    &--default +  &--primary {
+    &--default + &--primary {
       margin-left: 12px;
     }
 
