@@ -8,9 +8,9 @@
   border-radius: @radius-default;
   background-color: @bg-color-container;
   max-height: @dialog-max-height;
-  padding: @dialog-top-padding @dialog-bottom-padding;
 
   &__header {
+    padding: @dialog-top-bottom-padding  @dialog-left-right-padding 0 @dialog-left-right-padding;
     text-align: center;
     font-weight: bold;
     font-size: @dialog-title-font-size;
@@ -23,6 +23,7 @@
   }
 
   &__body {
+    padding: 0  @dialog-left-right-padding;
     text-align: center;
     -webkit-overflow-scrolling: touch;
     font-size: @dialog-content-font-size;
@@ -48,6 +49,7 @@
   &__footer {
     position: relative;
     display: flex;
+    padding: 0 @dialog-left-right-padding @dialog-top-bottom-padding @dialog-left-right-padding;
 
     &--column {
       flex-flow: column-reverse;
