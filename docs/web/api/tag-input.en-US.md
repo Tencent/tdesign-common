@@ -1,6 +1,6 @@
 ---
-title: TagInput tag input box
-description:Used to enter a text label.
+title: TagInput
+description: Used to enter a text label.
 isComponent: true
 usage: { title: '', description: '' }
 spline: data

@@ -1,5 +1,6 @@
 ---
-title: TimePicker description:Used to select a specific point in time or a time period.
+title: TimePicker
+description: Used to select a specific point in time or a time period.
 isComponent: true
 usage: { title: '', description: '' }
 spline: form

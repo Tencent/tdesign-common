@@ -1,6 +1,6 @@
 ---
-title: Textarea Multiline text box
-description:This component is used to carry the user's multi-line information entry. It is often used in scenarios that require a fairly long text, such as describing information and feedback opinions in a form. You can set the maximum copy length.
+title: Textarea
+description: This component is used to carry the user's multi-line information entry. It is often used in scenarios that require a fairly long text, such as describing information and feedback opinions in a form. You can set the maximum copy length.
 isComponent: true
 usage: { title: '', description: '' }
 spline: form

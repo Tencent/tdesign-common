@@ -1,5 +1,5 @@
 ---
-title: Cascader Cascader selector
+title: Cascader
 description: Cascading selectors are useful for data sets that have a clear hierarchical structure that the user can view and select through. in general, a cascade selector include:Selectors and cascades.
 isComponent: true
 usage: { title: '', description: '' }

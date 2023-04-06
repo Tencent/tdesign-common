@@ -1,5 +1,5 @@
 ---
-title: Form Form
+title: Form
 description: Used to collect, verify and submit data, generally composed of input box, radio box, check box, selector and other controls.
 isComponent: true
 usage: { title: "", description: "" }

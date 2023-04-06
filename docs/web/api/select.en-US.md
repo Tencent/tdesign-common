@@ -1,6 +1,6 @@
 ---
-title: Select selector
-description:An information entry class component for accommodating a large number of options.
+title: Select
+description: An information entry class component for accommodating a large number of options.
 isComponent: true
 usage: { title: "", description: "" }
 spline: form

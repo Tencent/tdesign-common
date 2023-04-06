@@ -1,6 +1,6 @@
 ---
 title: Menu
-description:Used to host the architecture of the site and provide a menu list to jump to.
+description: Used to host the architecture of the site and provide a menu list to jump to.
 isComponent: true
 usage: { title: '', description: '' }
 spline: navigation

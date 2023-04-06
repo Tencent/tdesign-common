@@ -1,6 +1,6 @@
 ---
-title: Upload Upload
-description:The upload component allows users to transfer files or submit their own content.
+title: Upload
+description: The upload component allows users to transfer files or submit their own content.
 isComponent: true
 usage: { title: '', description: '' }
 spline: form
