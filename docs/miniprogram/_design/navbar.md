@@ -50,5 +50,3 @@
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-4.png" />
  </div>
 </div>
-
-<hr />
