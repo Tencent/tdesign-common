@@ -2,91 +2,118 @@
 
 @import "./_var.less";
 
-.@{prefix}-dialog {
+.@{dialog} {
   overflow: hidden;
   width: @dialog-width;
   border-radius: @radius-default;
   background-color: @bg-color-container;
-  max-height: @dialog-max-height;
+
+  &__close-btn {
+    position: absolute;
+    top: 16rpx;
+    right: 16rpx;
+    color: @dialog-close-color;
+  }
+
+  &__content {
+    padding: @spacer-4 @spacer-3 0;
+    max-height: @dialog-body-max-height;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: @font-size-m;
+  }
 
   &__header {
-    padding: @dialog-top-bottom-padding  @dialog-left-right-padding 0 @dialog-left-right-padding;
     text-align: center;
     font-weight: bold;
     font-size: @dialog-title-font-size;
     line-height: @dialog-title-line-height;
     color: @dialog-title-color;
+  }
 
-    &--has-content {
-      padding-bottom: @dialog-header-content-bottom-padding;
-    }
+  &__header + &__body {
+    margin-top: 16rpx;
   }
 
   &__body {
-    padding: 0  @dialog-left-right-padding;
+    overflow-y: scroll;
     text-align: center;
     -webkit-overflow-scrolling: touch;
     font-size: @dialog-content-font-size;
     color: @dialog-content-color;
     line-height: @dialog-content-line-height;
-    padding-bottom: @dialog-body-bottom-padding;
-    overflow-y: auto;
-    max-height: @dialog-body-max-height;
 
     &-text {
       word-wrap: break-word;
     }
 
-    &::-webkit-scrollbar-thumb {
-      width: @dialog-body-scroll-thumb-width;
-      height: @dialog-body-scroll-thumb-height;
-      border-radius: @radius-small;
-      opacity: .5;
-      background: @gray-color-4;
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
     }
   }
 
   &__footer {
-    position: relative;
     display: flex;
-    padding: 0 @dialog-left-right-padding @dialog-top-bottom-padding @dialog-left-right-padding;
+    padding: 48rpx;
 
     &--column {
       flex-flow: column-reverse;
+
+      .@{dialog}__button {
+        width: 100%;
+      }
+    }
+
+    &--full {
+      padding: 64rpx 0 0;
     }
   }
 
-  &__btn {
+  &__button {
     position: relative;
-    display: block;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: @radius-default;
-    height: @dialog-btn-height;
-    line-height: @dialog-btn-height;
 
-    &--default {
-      color: @brand-color-7;
-      background: @brand-color-2;
-    }
-
-    &--primary {
-      color: @brand-color-1;
-      background: @brand-color-7;
-    }
-
-    &--default + &--primary {
+    &--horizontal + &--horizontal {
+      // margin-left: 24rpx;
       margin-left: 12px;
     }
 
-    // &--horizontal + &--horizontal {
-    //   margin-left: 24rpx;
-    // }
+    &--vertical + &--vertical {
+      // margin-bottom: 24rpx;
+      margin-bottom: 12px;
+    }
 
-    // &--vertical + &--vertical {
-    //   margin-bottom: 24rpx;
-    // }
+    &--text {
+      flex: 1;
+
+      --td-button-border-radius: 0;
+      --td-button-medium-height: 112rpx;
+
+      border-radius: 0;
+
+      &::before {
+        content: " ";
+        position: absolute;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        border-top: 1px solid @border-color;
+        border-left: 1px solid @border-color;
+        transform: scale(.5);
+        transform-origin: 0 0;
+        width: 200%;
+        height: 200%;
+        border-radius: 0;
+      }
+    }
   }
 }
