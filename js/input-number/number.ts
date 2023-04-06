@@ -110,7 +110,7 @@ export function positiveAdd(num1: number, num2: number): number {
   const r1 = num1.toString().split('.')[1]?.length || 0;
   const r2 = num2.toString().split('.')[1]?.length || 0;
   // 整数不存在精度问题，直接返回
-  if (!r1 || !r2) return num1 + num2;
+  if (!r1 && !r2) return num1 + num2;
   let newNumber1 = num1;
   let newNumber2 = num2;
   const diff = Math.abs(r1 - r2);
