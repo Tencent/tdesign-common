@@ -1,5 +1,6 @@
 ---
-title: Message global prompt description:Provide lightweight global feedback on user actions.
+title: Message
+description: Provide lightweight global feedback on user actions.
 isComponent: true
 usage: { title: '', description: '' }
 spline: message

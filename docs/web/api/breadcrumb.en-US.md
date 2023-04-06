@@ -1,6 +1,6 @@
 ---
 title: Breadcrumb
-description:Displays the position of the current page in the system hierarchy, and can return to any previous page level.
+description: Displays the position of the current page in the system hierarchy, and can return to any previous page level.
 isComponent: true
 usage: { title: '', description: '' }
 spline: navigation
