@@ -1,6 +1,6 @@
 ---
 title: Pagination
-description:Controls for switching content within a module.
+description: Controls for switching content within a module.
 isComponent: true
 usage: { title: '', description: '' }
 spline: navigation
