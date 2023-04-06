@@ -1,5 +1,6 @@
 ---
-title: Popconfirm Bubble confirmation box description:The bubble confirmation box is usually used for secondary confirmation scenarios that do not cause serious consequences. It will pop up a floating layer on the clicked element to prompt confirmation. The bubble confirmation box has no mask. Click the area outside the confirmation box to close it.
+title: Popconfirm
+description: The bubble confirmation box is usually used for secondary confirmation scenarios that do not cause serious consequences. It will pop up a floating layer on the clicked element to prompt confirmation. The bubble confirmation box has no mask. Click the area outside the confirmation box to close it.
 isComponent: true
 usage: { title: '', description: '' }
 spline: message

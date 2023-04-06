@@ -1,5 +1,6 @@
 ---
-title: Popup description:The pop-up layer component is the basis for the implementation of other pop-up window components such as the bubble confirmation box. When the capabilities provided by these components cannot meet the customization requirements, they can be encapsulated on the basis of the pop-up layer component.
+title: Popup
+description: The pop-up layer component is the basis for the implementation of other pop-up window components such as the bubble confirmation box. When the capabilities provided by these components cannot meet the customization requirements, they can be encapsulated on the basis of the pop-up layer component.
 isComponent: true
 usage: { title: '', description: '' }
 spline: message
