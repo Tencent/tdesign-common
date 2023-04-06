@@ -1,5 +1,5 @@
 ---
-title: Notification Message Notification
+title: Notification
 description: A lightweight global message prompt and confirmation mechanism that requires slow animation when appearing and disappearing.
 isComponent: true
 usage: { title: '', description: '' }

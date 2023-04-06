@@ -1,7 +1,7 @@
 ---
 
 title: Drawer
-description:Drawers are often opened by clicking on adjacent button controls, floating panels that slide in from the edge of the screen, also known as half-screen pop-ups.
+description: Drawers are often opened by clicking on adjacent button controls, floating panels that slide in from the edge of the screen, also known as half-screen pop-ups.
 isComponent: true
 usage: { title: '', description: '' }
 spline: message

@@ -1,5 +1,5 @@
 ---
-title: Message global prompt
+title: Message
 description: Provide lightweight global feedback on user actions.
 isComponent: true
 usage: { title: '', description: '' }
