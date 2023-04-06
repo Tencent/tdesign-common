@@ -1,0 +1,69 @@
+# 徽标 Badge
+
+## 组件设计指南
+
+### 何时使用
+
+当需要展示特定对象的状态变化或承载运营性质提示时使用。
+
+### 组件搭配使用
+
+##### 徽标与选项卡、底部标签栏组合使用，置于文字段的右上方，用于展示状态信息或营销信息。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+  </div>
+</div>
+
+<hr />
+
+##### 徽标与头像组合使用，可作为消息提示或数量提示。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+  </div>
+</div>
+
+<hr />
+
+### 常见用法
+
+##### 当用户只需要关注是否有消息，而无需关注消息数量时，可使用红点型徽标；当提示的信息需要精确显示数量时，应使用带数字的徽标。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+  </div>
+  
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+  </div>
+</div>
+
+<hr />
+
+### 推荐/慎用示例
+
+##### 建议根据场景和信息类型定义最长字数，不宜出现过长的情况。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-1.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  </div>
+</div>
+
+<hr />
+
+### 相似组件
+
+| 组件名 | 何时使用                             |
+| :----- | :----------------------------------- |
+| [标签](./tag) |  |
