@@ -14,8 +14,6 @@
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
  </div>
 
-<hr />
-
 ### 常见用法
 
 ##### 当需要输入时间区间时，通常使用两个时间选择器分别选择起、止时间。
@@ -23,13 +21,10 @@
  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%202.png" />
  </div>
- 
+ <hr />
  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%202.png" />
  </div> 
-
-<hr />
- 
 
 ### 推荐/慎用示例
 
@@ -42,10 +37,8 @@
   </div>
 </div>
 
-<hr />
-
 
 
 | 组件名 | 何时使用                             |
 | :----- | :----------------------------------- |
-| [日历](./calendar) |  |
+| [日历](./Calendar) |  |
