@@ -9,13 +9,12 @@
 
 ### 组件搭配使用
 
-##### 级联选择器与[索引](./Indexes)组合使用，当每个层级选项较多时，配合索引有利于用户快速找到目标选项。
+##### 级联选择器与[索引](./indexes)组合使用，当每个层级选项较多时，配合索引有利于用户快速找到目标选项。
 
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/cascader%201.png" />
 </div>
 
-<hr />
 
 ### 常见用法
 
@@ -25,7 +24,7 @@
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/cascader%202.png" />
  </div>
 </div>
-<hr />
+
 
 ### 推荐/慎用示例
 
@@ -37,6 +36,7 @@
   <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
  </div>
 </div>
+
 <hr />
 
 ##### 在多层级中，各层级选项的归属关系应具备逻辑相关性，数据层级由大到小，避免归属关系混乱。
@@ -53,7 +53,6 @@
   </div>
 </div>
 
-<hr />
 
 ### 相似组件
 
