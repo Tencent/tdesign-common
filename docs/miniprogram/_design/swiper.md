@@ -19,6 +19,7 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-2.png" />
   </div>
 </div>
+
 <hr />
 
  ##### 在图文详情页场景，用于当图片数量大于1时的折叠展示。
@@ -27,8 +28,6 @@
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-3.png" />
  </div>
 </div>
-
-<hr />
 
 
 ### 推荐/慎用示例
@@ -42,4 +41,3 @@
  </div>
 </div>
 
-<hr />
