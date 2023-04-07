@@ -33,11 +33,11 @@
 @pagination-jump-margin: @comp-margin-s;
 @pagination-select-margin: @comp-margin-l;
 @pagination-pager-margin: @comp-margin-s;
-@pagination-jump-height: @comp-size-m;
+@pagination-jump-height: calc(@comp-size-m - 2px);
 @pagination-jump-padding-left: @comp-margin-s;
 @pagination-jump-inner-height: calc(@comp-size-m - 4px);
-@pagination-jump-height-small: @comp-size-xs;
-@pagination-jump-inner-height-small: calc(@comp-size-xs - 4px);
+@pagination-jump-height-small: calc(@comp-size-xs - 2px);
+@pagination-jump-inner-height-small: @comp-size-xs;
 
 // 过渡
 @pagination-hover-transition: all @anim-duration-base @anim-time-fn-ease-in;

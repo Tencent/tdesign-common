@@ -85,7 +85,7 @@
     .list-style-none();
 
     li:not(:last-child) {
-      margin-right: @pagination-pager-margin;
+      margin-right: -1px;
     }
   }
 
@@ -97,6 +97,7 @@
     cursor: pointer;
     background-color: @pagination-bg-color-default;
     box-sizing: border-box;
+    z-index: 2;
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
@@ -107,6 +108,7 @@
       color: @pagination-bg-color-hover;
       border-color: @pagination-bg-color-hover;
       transition: @pagination-hover-transition;
+      z-index: 3;
     }
 
     &:active {
@@ -116,6 +118,7 @@
     }
 
     &.@{prefix}-is-current {
+      z-index: 3;
       .pagination-number--color(
         @pagination-bg-color-current; @pagination-text-color-active
       );
@@ -146,6 +149,7 @@
     &--more {
       border: 0 none;
       padding: 0;
+      z-index: 1;
 
       &:hover {
         color: @pagination-text-color-btn;
@@ -183,11 +187,10 @@
     height: @pagination-jump-height;
     padding-left: @pagination-jump-padding-left;
     border-radius: @border-radius-default;
+    border: 1px solid @component-border;
   }
 
   .@{prefix}-input-adornment__append {
-    border: none;
-    height: @pagination-jump-inner-height;
     color: @text-color-secondary;
     background-color: transparent;
 
@@ -200,7 +203,6 @@
     width: @pagination-input-width;
 
     .@{prefix}-input {
-      height: @pagination-jump-inner-height;
       border-radius: @border-radius-default;
     }
 
