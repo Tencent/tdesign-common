@@ -20,7 +20,6 @@
   </div>
 </div>
 
-<hr />
 
 ### 常见用法
 
@@ -40,12 +39,10 @@
 
 ##### 通常左滑后展示删除按钮，若删除操作重要且无法撤回，可在滑动操作中对删除进行二次确认。
 
-
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
 </div>
   
-<hr />
 
 ### 推荐/慎用示例
 
@@ -72,7 +69,6 @@
   <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
 </div>
 
-<hr />
 
 ### 相似组件
 
