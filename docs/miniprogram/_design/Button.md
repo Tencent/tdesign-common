@@ -32,6 +32,7 @@
     <em></em>
   </div>
 </div>
+
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-3.png" />
@@ -39,8 +40,6 @@
   </div>
 </div>
 
-
-<hr />
 
 ### 常见用法
 
@@ -56,7 +55,6 @@
   </div>
 </div>
 
-<hr />
 
 ### 推荐/慎用示例
 
@@ -73,7 +71,6 @@
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 
 
