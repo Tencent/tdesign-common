@@ -21,7 +21,7 @@
  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DateTimePicker%202-1.png" />
  </div>
- <hr />
+
  <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DateTimePicker%202-2.png" />
  </div> 
@@ -38,7 +38,7 @@
 </div>
 
 
-
+### 何时使用
 | 组件名 | 何时使用                             |
 | :----- | :----------------------------------- |
 | [日历](./Calendar) |  |
