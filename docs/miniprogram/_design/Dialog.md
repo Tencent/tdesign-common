@@ -22,8 +22,6 @@
   
 </div>
 
-<hr />
-
 
 ### 常见用法
 
@@ -34,6 +32,8 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%202.png" />
   </div>
 </div>
+
+<hr />
 
 ##### 用于较为重要的信息提示，且需要用户决定。
 
@@ -48,7 +48,6 @@
   </div>
 </div>
 
-<hr />
 
 ### 推荐/慎用示例
 
