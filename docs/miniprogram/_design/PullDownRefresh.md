@@ -22,16 +22,12 @@
   
 </div>
 
-
 <div class="legend">
   
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%201-3.png" />
   </div>
 </div>
-
-<hr />
-
 
 ### 常见用法
 
@@ -42,6 +38,8 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%202.png" />
   </div>
 </div>
+
+<hr />
 
 ##### 在按时间排布型信息流页面使用下拉刷新，对未展示出来的最新内容进行加载。
 
@@ -55,5 +53,3 @@
     <em></em>
   </div>
 </div>
-
-<hr />
