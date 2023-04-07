@@ -17,8 +17,6 @@
 </div>
 
 
-<hr />
-
 ### 常见用法
 
 ##### 用于可量化的数值选择，需要精确到具体某个数值/区间。
@@ -29,6 +27,8 @@
   </div>
 </div>
 
+<hr />
+
 ##### 用于难以量化的对立数据，以此表示程度。
 
 <div class="legend">   
@@ -36,8 +36,6 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%203.png" />
   </div>
 </div>
-
-<hr />
 
 
 ### 推荐/慎用示例
@@ -55,8 +53,5 @@
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
-
-<hr />
-
 
 
