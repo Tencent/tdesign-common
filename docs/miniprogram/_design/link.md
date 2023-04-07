@@ -8,7 +8,7 @@
 
 ### 组件搭配使用
 
-##### 链接与[消息通知](./message)、[公告栏](./notiesbar)组合使用，在进行消息通知与提示的同时，提供解决方案或详情的跳转入口。
+##### 链接与[消息通知](./message)、[公告栏](./notice-bar)组合使用，在进行消息通知与提示的同时，提供解决方案或详情的跳转入口。
 
 <div class="legend">
   <div class="item">
@@ -19,7 +19,6 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/link%201-2.png" />
   </div>
 </div>
-<hr />
 
 
 ### 推荐/慎用示例
@@ -37,8 +36,6 @@
    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
  </div>
 </div>
-
-<hr />
 
 
 
