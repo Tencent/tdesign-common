@@ -1,4 +1,4 @@
-# 日历 Calender
+# 日历 Calendar
 
 ## 组件设计指南
 
