@@ -14,8 +14,6 @@
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
  </div>
 
-<hr />
-
 ### 常见用法
 
 ##### 在网站场景，通常用来收折展示整个网站的菜单导航。
@@ -33,8 +31,6 @@
  </div>
 
 
-<hr />
-
 ### 推荐/慎用示例
 
 ##### 若抽屉内的菜单项较多，且菜单项之间的关联性存在差异时，建议对菜单项进行分组。
@@ -50,10 +46,6 @@
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
-
-<hr />
-
-
 
 ### 相似组件
 
