@@ -22,7 +22,7 @@
 
 ### 组件搭配使用
 
-##### 空状态与步骤条组合使用，通过步骤展示提示用户如何新建/添加。
+##### 空状态与[步骤条](./steps)组合使用，通过步骤展示提示用户如何新建/添加。
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Empty%202.png" />
@@ -31,7 +31,7 @@
 
 <hr />
 
-##### 空状态与按钮组合使用，引导用户直接新建/添加。
+##### 空状态与[按钮](./button)组合使用，引导用户直接新建/添加。
 
 <div class="legend">
   <div class="item">
