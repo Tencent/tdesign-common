@@ -20,7 +20,6 @@
   </div>
 </div>
 
-<hr />
 
 ### 常见用法
 
@@ -34,34 +33,21 @@
 
 ##### 在可搜索内容类型较丰富的场景下，通过模态承载搜索态，并在新页面中按分类呈现搜索结果。
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
-  </div>
-  
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
-  </div>
+<div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
 </div>
 
 <hr />
 
 ##### 在用户触发搜索后，对用户即将搜索的内容进行预判和推荐，并需要满足营销的诉求。
-
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
-  </div>
-  
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
-  </div>
+ 
+<div class="item">
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
 </div>
 
-<hr />
 
 ### 相似组件
 
 | 组件名 | 何时使用                             |
 | :----- | :----------------------------------- |
-| [输入框](./input) |  |
+| [输入框](./Input) |  |
