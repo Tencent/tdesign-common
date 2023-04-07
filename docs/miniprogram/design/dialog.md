@@ -15,7 +15,7 @@
   </div>
   
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%201-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%2001-2.png" />
   </div> 
   
 </div>
