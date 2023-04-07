@@ -10,13 +10,9 @@
 
 ##### 通常和单元格搭配使用，点击后唤起日历。        
 
-<div class="legend">
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
-  </div>
+<div class="item">
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
 </div>
-
-<hr />
 
 ### 推荐/慎用
 
