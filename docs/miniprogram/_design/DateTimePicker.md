@@ -8,7 +8,7 @@
 
 ### 组件搭配使用
 
-##### 通常和单元格搭配使用，点击后唤起时间选择器。
+##### 通常和[单元格](./Cell)搭配使用，点击后唤起时间选择器。
 
  <div class="item">
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DateTimePicker%201.png" />
