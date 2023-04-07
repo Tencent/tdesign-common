@@ -10,11 +10,11 @@
 
 ##### 侧边栏与徽标组合使用，用于展示品类的状态信息或营销情况。
 
-  <div class="legend">
-    <div class="item">
-      <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-2.png" />
-    </div>
-  </div>
+<div class="legend">
+ <div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-2.png" />
+ </div>
+</div>
   
 <hr />
 
@@ -25,21 +25,24 @@
 <div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-1.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-1.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
 <hr />
 
 ##### 不建议仅用图标、emoji作为品类选项，避免表意不清晰。
-
+<div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-3.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
-  
+</div>  
 <hr />
 
 
