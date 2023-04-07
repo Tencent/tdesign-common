@@ -8,7 +8,7 @@
 
 ### 组件搭配使用
 
-##### 通常和单元格搭配使用，点击后唤起日历。        
+##### 通常和[单元格](./cell) 搭配使用，点击后唤起日历。        
 
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Calender%201.png" />
