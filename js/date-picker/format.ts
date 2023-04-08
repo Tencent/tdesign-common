@@ -35,6 +35,7 @@ export function parseToDayjs(
     let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
     // 第一周ISO定义: 本年度第一个星期四所在的星期
     // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
+    // 否则本周即为第一周
     if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
 
     // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
