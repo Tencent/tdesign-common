@@ -8,10 +8,10 @@
 
 ### 组件搭配使用
 
-##### 通常用于图片上传，点击上传按钮可唤起[动作面板](./actionsheet)，供用户选择不同渠道进行新的上传。
+##### 通常用于图片上传，点击上传按钮可唤起[动作面板](./action-sheet)，供用户选择不同渠道进行新的上传。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%201.png" />
 </div>
 
 <hr />
@@ -19,17 +19,17 @@
 ##### 点击已经上传的图片可跳转[图片预览](./imageview)，让用户对已上传的图片进行快速查看。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%202.png" />
 </div>
 
-<hr />
+
 
 ### 推荐/慎用示例
 
 ##### 若上传的文件有尺寸、格式、数量限制，推荐在文案中进行明确标识。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-1.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%203.png" />
   <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
 </div>
 
@@ -39,11 +39,9 @@
 
 <div class="legend">  
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%204.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
-
-<hr />
 
 
