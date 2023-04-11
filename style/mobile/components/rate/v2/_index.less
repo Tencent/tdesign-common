@@ -85,47 +85,4 @@
       line-height: 20px;
     }
   }
-
-  &--popover {
-    position: absolute;
-    z-index: 2;
-    border-radius: 6px;
-    padding: 4px;
-    background: @rate-popover-item-bg-color;
-    box-shadow: @rate-popover-shadow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translate(-50%, -100%);
-
-    &-item {
-      width: 32px;
-      height: 44px;
-      border-radius: 3px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-
-      & + &--popover-item {
-        margin-left: 4px;
-      }
-
-      &-is-active {
-        background: @rate-popover-item-active-bg-color;
-      }
-
-      &-content {
-        position: relative;
-      }
-
-      &-text {
-        color: @rate-popover-item-text-color;
-        font-weight: @rate-popover-item-font-weight;
-        text-align: center;
-        font-size: 12px;
-        line-height: 20px;
-      }
-    }
-  }
 }
