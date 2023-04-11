@@ -65,9 +65,11 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Steps%205.png" />
   </div>
 </div>
-  
+
+
 ### 相似组件
 
 | 组件名 | 何时使用                             |
-| [进度条](.progress) |  |
+| :----- | :----------------------------------- |
+| [进度条](./progress) |  |
 | [选项卡](./tabs) |  |
