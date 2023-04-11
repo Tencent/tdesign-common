@@ -6,14 +6,14 @@ isComponent: true
 toc: false
 ---
 
-### 普通徽标
+### 组件类型
 
 {{ base }}
 
-### 按钮徽标
+### 组件样式
 
-{{ button }}
+{{ theme }}
 
-### 单行徽标
+### 组件尺寸
 
-{{ cell }}
+{{ size }}
