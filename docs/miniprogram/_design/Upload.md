@@ -16,7 +16,7 @@
 
 <hr />
 
-##### 点击已经上传的图片可跳转[图片预览](./imageview)，让用户对已上传的图片进行快速查看。
+##### 点击已经上传的图片可跳转[图片预览](./image-viewer)，让用户对已上传的图片进行快速查看。
 
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%202.png" />
