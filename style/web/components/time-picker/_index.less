@@ -82,9 +82,7 @@
 
       > div {
         flex: 1;
-        transform: translateY(
-          calc(0px - (calc(@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) /2))
-        );
+        transform: translateY(calc(0px - calc(@time-picker-panel-item-height / 2)));
         height: @time-picker-panel-item-height;
         background-color: @time-picker-panel-item-background-color-current;
         margin: @time-picker-panel-item-margin;
@@ -164,6 +162,7 @@
 .@{prefix}-time-picker__panel-section {
   &-body {
     padding: @time-picker-panel-section-padding;
+    margin: 0 calc(0px - @comp-margin-xs);
   }
 
   &-footer {

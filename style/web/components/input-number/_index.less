@@ -25,7 +25,24 @@
 
   &:not(&--column) {
     > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
-      margin-left: @comp-margin-xs;
+      margin-left: -1px;
+
+      :hover {
+        z-index: 2;
+      }
+
+      .t-is-focused {
+        z-index: 2;
+      }
+      .t-is-error {
+        z-index: 2;
+      }
+      .t-is-warning {
+        z-index: 2;
+      }
+      .t-is-success {
+        z-index: 2;
+      }
     }
   }
 
@@ -108,7 +125,7 @@
     .t-icon {
       position: relative;
       z-index: 1;
-      font-size: @input-number-font-size;
+      font-size: @comp-size-xxxs;
       color: @text-color-secondary;
     }
 
@@ -349,7 +366,7 @@
 .@{inputNumberCls}--row {
   .@{prefix}-input__wrap {
     width: initial;
-    margin-right: @comp-margin-xs;
+    margin-right: -1px;
   }
   .@{prefix}-input-number__increase {
     right: 0;

@@ -32,19 +32,19 @@
 @tree-node-padding-basic: @comp-margin-xxl;
 @tree-node-item-padding-left: calc(@tree-node-padding-basic * var(--level));
 @tree-node-item-padding: @comp-paddingTB-xs 0 @comp-paddingTB-xs @tree-node-item-padding-left;
-@tree-line-position-bottom: @comp-margin-l;
+@tree-line-position-bottom: calc(@tree-node-item-height / 2);
 @tree-line-position-left: calc(@tree-node-padding-basic * var(--level) - @comp-margin-l);
 @tree-label-margin-left: @comp-margin-xs;
 @tree-label-padding: @comp-paddingTB-xxs @comp-paddingLR-xs;
 
 //尺寸
 @tree-line-width: 1px;
-@tree-node-item-height: 34px;
-@tree-line-before-width: @comp-margin-m;
+@tree-node-item-height: 26px;
+@tree-line-before-width: calc(@tree-node-icon-size / 2);
 @tree-line-leaf-width: @comp-margin-m;
 @tree-line-first-height: @tree-font-line-height;
 @tree-node-item-origin-height: calc(@tree-node-item-height * var(--hscale) + 0px);
-@tree-node-icon-size: calc(@tree-font-size + 2px);
+@tree-node-icon-size: calc(@tree-font-size + 4px);
 
 // 动画
 @tree-node-animation-time: 300ms;

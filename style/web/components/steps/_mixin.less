@@ -95,11 +95,12 @@
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item__icon {
       .t-icon {
-        color: @steps-item-icon-anchor-color;
+        color: @text-color-anti;
       }
 
       &--number {
         border-color: @brand-color;
+        background: @brand-color;
       }
     }
 

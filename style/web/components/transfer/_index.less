@@ -89,7 +89,7 @@
         width: 100%;
         flex-direction: column;
         gap: @transfer-list-checkbox-group-gap;
-        margin: @transfer-list-checkbox-group-margin;
+        // margin: @transfer-list-checkbox-group-margin;
 
         .@{prefix}-checkbox {
           margin-right: @transfer-list-margin-horizontal;
@@ -193,7 +193,8 @@
   &__search-wrapper {
     position: absolute;
     top: 0;
-    width: 100%;
+    width: calc(100% + 2px);
+    left: -1px;
     padding: @transfer-list-search-wrapper-margin;
     box-sizing: border-box;
   }
