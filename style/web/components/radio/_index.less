@@ -215,7 +215,7 @@
     border-right: 0;
     display: inline-flex;
     align-items: center;
-    transition: @radio-button-transition;
+    transition: background-color .2s linear,color .2s linear,border-color .2s linear;
     color: @radio-label-color;
     white-space: nowrap;
     box-sizing: border-box;
@@ -238,13 +238,16 @@
     }
 
     &:hover {
-      color: @radio-button-color-outline-checked;
+      background: @bg-color-container-hover;
     }
 
     &.@{prefix}-is-checked {
       border-right: @radio-button-border;
       border-color: @radio-button-border-color-checked;
       transition: border-color @anim-duration-base @anim-time-fn-ease-out;
+      &:hover {
+        background: transparent;
+      }
 
       + .@{radio-button--cls} {
         border-left: 0;
