@@ -5,15 +5,18 @@
 .@{prefix}-grid {
   position: relative;
   overflow: hidden;
-  background-color: @grid-bg-color;
-
-  &__content {
-    width: auto;
-  }
+  display: grid;
+  box-sizing: border-box;
 
   &--card {
     margin: 0 16px;
     border-radius: @grid-card-radius;
     overflow: hidden;
+  }
+
+  &--auto-size {
+    overflow: scroll;
+    flex-wrap: nowrap;
+    display: flex;
   }
 }
