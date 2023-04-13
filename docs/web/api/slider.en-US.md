@@ -1,6 +1,6 @@
 ---
 title: Slider Slider
-description:A slider (slide type input device) is a control that allows the user to select the appropriate value (a value or range of values) by sliding in a continuous or intermittent interval.
+description: A slider (slide type input device) is a control that allows the user to select the appropriate value (a value or range of values) by sliding in a continuous or intermittent interval.
 isComponent: true
 usage: { title: '', description: '' }
 spline: form

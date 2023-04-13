@@ -1,6 +1,6 @@
 ---
 title: Switch
-description:A selection control used for two mutually exclusive options to turn the option on or off.
+description: A selection control used for two mutually exclusive options to turn the option on or off.
 isComponent: true
 usage: { title: '', description: '' }
 spline: form
