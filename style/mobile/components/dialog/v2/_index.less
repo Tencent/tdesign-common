@@ -8,11 +8,9 @@
   border-radius: @radius-default;
   background-color: @bg-color-container;
 
-  &__close--btn {
+  &__close-btn {
     position: absolute;
-    // top: 16rpx;
     top: 8px;
-    // right: 16rpx;
     right: 8px;
     color: @dialog-close-color;
   }
@@ -36,7 +34,7 @@
   }
 
   &__header + &__body {
-    margin-top: 16rpx;
+    margin-top: 8px;
   }
 
   &__body {
@@ -62,7 +60,6 @@
 
   &__footer {
     display: flex;
-    // padding: 48rpx;
     padding: 24px;
 
     &--column {
@@ -74,7 +71,6 @@
     }
 
     &--full {
-      // padding: 64rpx 0 0;
       padding: 32px 0 0;
     }
   }
@@ -87,12 +83,10 @@
     white-space: nowrap;
 
     &--horizontal + &--horizontal {
-      // margin-left: 24rpx;
       margin-left: 12px;
     }
 
     &--vertical + &--vertical {
-      // margin-bottom: 24rpx;
       margin-bottom: 12px;
     }
 
@@ -100,7 +94,6 @@
       flex: 1;
 
       --td-button-border-radius: 0;
-      // --td-button-medium-height: 112rpx;
       --td-button-medium-height: 56px;
 
       border-radius: 0;
