@@ -1,7 +1,8 @@
 ---
 title: Transfer
 description: Moving option elements in two columns in an intuitive manner is a data container for single or batch movement of options to complete the selection. The left column is Source and the right is Destination.
-isComponent: true usage: { title: '', description: '' }
+isComponent: true
+usage: { title: '', description: '' }
 spline: form
 ---
 

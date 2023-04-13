@@ -1,7 +1,8 @@
 ---
 title: TreeSelect
 description: Information entry control similar to Select, suitable for selecting a tree data structure.
-isComponent: true usage: { title: '', description: '' }
+isComponent: true
+usage: { title: '', description: '' }
 spline: form
 ---
 
