@@ -24,9 +24,14 @@ a.@{prefix}-menu__item {
 .@{prefix}-head-menu {
   .reset;
 
+  font: @head-menu-font-size;
   position: relative;
   width: 100%;
   background-color: @menu-theme-light;
+
+  .@{prefix}-tabs {
+    font: @head-menu-font-size;
+  }
 
   &__inner {
     display: flex;
@@ -168,6 +173,7 @@ a.@{prefix}-menu__item {
 .@{prefix}-default-menu {
   .reset;
 
+  font: @menu-font-size;
   position: relative;
   width: @default-menu-width;
   display: inline-block;
@@ -306,7 +312,7 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu {
-      padding: @comp-paddingTB-l 0;
+      padding: 0;
       position: relative;
       // overflow: hidden auto;
       flex: 1;
@@ -491,6 +497,12 @@ a.@{prefix}-menu__item {
       color: @menu-menu-group-title-color--dark;
     }
 
+    .@{prefix}-submenu {
+      &.@{prefix}-is-opened {
+        background-color: @menu-dark-opened-bg;
+      }
+    }
+
     &.@{prefix}-is-collapsed {
       .@{prefix}-menu-group__title:after {
         background-color: @menu-group-title-bg--collapse--dark;
@@ -514,7 +526,6 @@ a.@{prefix}-menu__item {
 // menu
 .@{prefix}-menu {
   color: @menu-color-light;
-  font: @menu-font-size;
   .list-style-none();
 
   &--dark {
@@ -547,7 +558,6 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-      background-color: @bg-color-secondarycontainer;
       & .@{prefix}-submenu-icon {
         transform: scaleY(-1);
       }
@@ -640,11 +650,6 @@ a.@{prefix}-menu__item {
     &.@{prefix}-is-active {
       color: @menu-item-active-color--light;
       background-color: @menu-item-active-bg--light;
-    }
-
-    &.@{prefix}-is-opened {
-      color: @menu-item-active-color--light;
-      background-color: @bg-color-container-hover;
     }
 
     &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
@@ -759,7 +764,7 @@ a.@{prefix}-menu__item {
     }
 
     &-wrapper {
-      padding: @comp-paddingTB-l 0;
+      padding: 0;
       height: 100%;
       list-style: none;
       margin: 0;
