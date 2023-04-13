@@ -13,8 +13,9 @@
   flex-shrink: 0;
 
   &--bordered {
-    position: relative;
     .border(top, @grid-item-border-color);
+    position: relative;
+    
     &::before {
       .hairline-left(@grid-item-border-color);
     }
