@@ -6,7 +6,7 @@
 
 ### 组件搭配使用
 
-##### 标签栏与[徽标](./adge)组合使用，用于告知用户该模块/视图的状态变化。
+##### 标签栏与[徽标](./badge)组合使用，用于告知用户该模块/视图的状态变化。
 
 <div class="legend">
   <div class="item">
@@ -18,9 +18,6 @@
   </div>
 </div>
   
-<hr />
-
-
 ### 推荐/慎用示例
 
 ##### 建议标签栏数量在2-5个之间；若多与5个，建议重新审视应用的信息架构，对信息架构进行优化。
@@ -64,18 +61,17 @@
   </div>
 </div>
 
-  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/TabBar4-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-  </div>
-</div>
-
 <hr />
 
+<div class="item">
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/TabBar4-2.png" />
+   <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+</div>
 
 
 ### 相似组件
 
 | 组件名 | 何时使用                             |
 | :----- | :----------------------------------- |
-| [选项卡](./tabs) | 当内容/数据需要一定的分类纬度进行区分，便于用户快速作出选择并切换时可以使用。 |
+| [选项卡](./tabs) |当内容/数据需要一定的分类纬度进行区分，便于用户快速作出选择并切换时可以使用。|
+| [侧边栏](./side-bar) |当内容项数量较多，需要用户根据品类快速选择到目标内容项时使用。|

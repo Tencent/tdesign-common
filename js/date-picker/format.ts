@@ -1,9 +1,14 @@
 import isString from 'lodash/isString';
 import dayjs from 'dayjs';
+import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
+import isLeapYear from 'dayjs/plugin/isLeapYear';
 import { extractTimeFormat } from './utils';
 import log from '../log';
 
 type DateValue = string | number | Date;
+
+dayjs.extend(isoWeeksInYear);
+dayjs.extend(isLeapYear);
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
@@ -26,8 +31,16 @@ export function parseToDayjs(
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
-    const firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
-    for (let i = 0; i <= 52; i += 1) {
+
+    let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
+    // 第一周ISO定义: 本年度第一个星期四所在的星期
+    // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
+    // 否则本周即为第一周
+    if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
+
+    // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
+    const weekCounts = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').isoWeeksInYear();
+    for (let i = 0; i <= weekCounts; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
       if (timeOfDay === 'start') nextWeek = nextWeek.subtract(5, 'day');

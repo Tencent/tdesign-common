@@ -3,46 +3,32 @@
 @import "./_var.less";
 
 .@{prefix}-upload {
-  &__grid {
-    &-content {
-      padding: 0;
-    }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 8px;
+  padding: 16px;
 
-    &-file {
-      position: relative;
+  &__item {
+    position: relative;
+    width: 100%;
+
+    &--add {
+      padding-top: 100%;
+      font-size: @upload-add-icon-font-size;
+      background-color: @upload-add-bg-color;
+      color: @upload-add-color;
+      border-radius: @upload-radius;
     }
   }
 
   &__add-icon {
-    width: 100%;
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: @upload-add-icon-font-size;
-    background-color: @upload-add-bg-color;
-    color: @upload-add-color;
-    border-radius: @upload-radius;
-
-    &:only-child {
-      display: flex;
-    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
   }
 
-  &__thumbnail {
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    overflow: hidden;
-  }
-
-  &__wrapper {
-    position: relative;
-    border-radius: @upload-radius;
-    overflow: hidden;
-  }
-
-  &__close-btn {
+  &__delete-btn {
     position: absolute;
     top: 0;
     right: 0;
@@ -51,6 +37,7 @@
     justify-content: center;
     width: 20px;
     height: 20px;
+    color: @upload-delete-icon-color;
     border-top-right-radius: @upload-radius;
     border-bottom-left-radius: @upload-radius;
     background-color: @font-gray-3;
@@ -61,8 +48,8 @@
       position: absolute;
       left: 0;
       top: 0;
+      bottom: 0;
       width: 100%;
-      height: 100%;
       background-color: @font-gray-3;
       display: flex;
       flex-direction: column;

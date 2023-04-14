@@ -73,7 +73,6 @@
 
   .@{prefix}-popup__arrow {
     background: inherit;
-    width: auto;
     height: auto;
 
     &::before {
@@ -87,16 +86,4 @@
       box-shadow: none;
     }
   }
-}
-
-.@{prefix}-popup[data-popper-placement^="top"].@{prefix}-tooltip .@{prefix}-popup__arrow {
-  bottom: @tooltip-arrow-position;
-}
-
-.@{prefix}-popup[data-popper-placement^="left"].@{prefix}-tooltip .@{prefix}-popup__arrow {
-  right: @tooltip-arrow-position;
-}
-
-.@{prefix}-popup[data-popper-placement^="right"].@{prefix}-tooltip .@{prefix}-popup__arrow {
-  left: calc(0px - @tooltip-arrow-position);
 }
