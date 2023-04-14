@@ -13,3 +13,7 @@ toc: false
 ### 多选上传图片
 
 {{ multiple }}
+
+### 组件状态
+
+{{ status }}
