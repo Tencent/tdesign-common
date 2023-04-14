@@ -14,7 +14,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Loading%201-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Loading%201-2.png" />
   </div>
@@ -29,7 +29,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Loading%202-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Loading%202-2.png" />
   </div>
@@ -54,7 +54,7 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [进度条](./progress) |当有一项系统任务正在进行，需要向用户展示该任务的当前进度时使用。  |
-| [下拉刷新](./pull-down-refresh) | 当需要对页面信息进行整体刷新或加载更多同类信息时使用。 |
+| 组件名                          | 何时使用                                                         |
+| :------------------------------ | :--------------------------------------------------------------- |
+| [进度条](./progress)            | 当有一项系统任务正在进行，需要向用户展示该任务的当前进度时使用。 |
+| [下拉刷新](./pull-down-refresh) | 当需要对页面信息进行整体刷新或加载更多同类信息时使用。           |

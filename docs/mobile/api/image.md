@@ -6,46 +6,30 @@ isComponent: true
 toc: false
 ---
 
-### 基础用法
+### 基础类型
 
-基础用法和原生 img 标签一样，可以设置 `src`、`alt`、`class` 等原生属性
+图片样式可为圆形、圆角方形、方形
 
-{{ base }}
+#### 裁切样式
 
-### 图片形状
+{{ crop }}
 
-通过 `shape` 属性可以设置图片形状，可选项有 `circle` | `round` | `square`，分别代表圆形、圆角方形、方形
+#### 圆角样式
 
-当图片长宽不相等时，无法使用 `circle` 展示一个完整圆形
+{{ rounded }}
 
-{{ shape }}
+### 状态
 
-#### 填充模式
+#### 加载中提示
 
-通过 `fit` 属性可以设置图片填充模式，可选项有 `contain` | `cover` | `fill` | `none` | `scale-down`，效果与原生的 `object-fit` 属性一致
+{{ loading-tip }}
 
-{{ fit }}
+#### 加载失败提醒
 
-#### 图片位置
+{{ loading-error }}
 
-通过 `position` 属性可以设置图片位置，效果与原生的 `object-position` 属性一致
+### 规格
 
-{{ position }}
 
-#### 图片懒加载
+{{ size }}
 
-通过lazy属性来开启图片懒加载
-
-{{ lazy }}
-
-### 加载中提示
-
-Image 组件提供了默认的加载中提示，也支持通过 `loading` 插槽自定义提示内容
-
-{{ loading }}
-
-### 加载失败提示
-
-Image 组件提供了默认的加载失败提示，也支持通过 `error` 插槽自定义提示内容
-
-{{ error }}

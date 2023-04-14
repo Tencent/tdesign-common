@@ -33,7 +33,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%203-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%203-2.png" />
   </div>
@@ -58,7 +58,7 @@
 <hr />
 
 ##### 当需要输入较长的复杂内容时，建议使用多行文本框输入。
-<div class="legend">  
+<div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%205.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
@@ -68,7 +68,7 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [多行文本框](./text-area) | 需要进行文字输入，且需填写的字数较多时使用。 |
-| [搜索框](./search) | 当需要从海量信息中准确提取准确的内容时使用。 |
+| 组件名                   | 何时使用                                     |
+| :----------------------- | :------------------------------------------- |
+| [多行文本框](./textarea) | 需要进行文字输入，且需填写的字数较多时使用。 |
+| [搜索框](./search)       | 当需要从海量信息中准确提取准确的内容时使用。 |

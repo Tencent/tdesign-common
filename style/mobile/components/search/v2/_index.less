@@ -12,6 +12,10 @@
     color: @search-label-color;
   }
 
+  &--center {
+    text-align: center;
+  }
+
   &__input-box {
     flex: 1;
     box-sizing: border-box;
@@ -34,16 +38,14 @@
       border-radius: @search-square-radius;
     }
 
-    &--center {
-      text-align: center;
-    }
-
     .@{prefix}-input__keyword {
       display: inline-block;
       flex: 1;
       color: @search-text-color;
       font-size: @search-font-size;
       padding-left: 5px;
+      border: 0;
+      background: 0;
     }
 
     .@{prefix}-icon {
@@ -66,9 +68,19 @@
 
   &__placeholder {
     color: @search-placeholder-color;
+  }
 
-    &--center {
-      text-align: center;
-    }
+  // mobile vue
+  /* stylelint-disable-next-line */
+  input::-webkit-input-placeholder,
+  input::placeholder {
+    color: @search-placeholder-color;
+  }
+
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-results-button,
+  input::-webkit-search-results-decoration {
+    display: none;
   }
 }

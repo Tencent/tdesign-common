@@ -6,14 +6,26 @@ isComponent: true
 toc: false
 ---
 
-### 基础
+## 代码演示
 
-#### 基本用法
+### 基础用法
 
 {{ base }}
 
-### 状态
+### 选项卡风格
 
-#### 禁用可选项
+{{ theme-tab }}
 
-{{ status }}
+### 进阶
+
+#### 带初始值
+
+{{ with-value }}
+
+#### 自定义 keys
+
+{{ keys }}
+
+#### 使用次级标题
+
+{{ with-title }}

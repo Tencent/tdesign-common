@@ -15,7 +15,7 @@
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/SideBar%201.png" />
  </div>
 </div>
-  
+
 
 ### 正确/慎用示例
 
@@ -41,12 +41,12 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/SideBar%203-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
-</div>  
+</div>
 
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [标签栏](./tab-bar) | 目标模块/视图需要从应用的任何地方直接进行访问时使用  |
-| [选项卡](./tabs) | 当内容/数据需要一定的分类纬度进行区分，便于用户快速作出选择并切换时可以使用。 |
+| 组件名              | 何时使用                                                                      |
+| :------------------ | :---------------------------------------------------------------------------- |
+| [标签栏](./tab-bar) | 目标模块/视图需要从应用的任何地方直接进行访问时使用                           |
+| [选项卡](./tabs)    | 当内容/数据需要一定的分类纬度进行区分，便于用户快速作出选择并切换时可以使用。 |

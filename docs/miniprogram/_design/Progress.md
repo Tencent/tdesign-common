@@ -14,7 +14,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%201-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%201-2.png" />
   </div>
@@ -38,7 +38,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%203-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%203-2.png" />
   </div>
@@ -59,6 +59,6 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [加载](./loading) |当打开新页面或操作完成后，等待加载时使用。|
+| 组件名            | 何时使用                                   |
+| :---------------- | :----------------------------------------- |
+| [加载](./loading) | 当打开新页面或操作完成后，等待加载时使用。 |

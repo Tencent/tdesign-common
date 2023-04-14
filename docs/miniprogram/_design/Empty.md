@@ -14,7 +14,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Empty%201-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Empty%201-2.png" />
   </div>
@@ -41,6 +41,6 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
+| 组件名           | 何时使用                                 |
+| :--------------- | :--------------------------------------- |
 | [结果](./result) | 当需要向用户展示操作后的结果反馈时使用。 |

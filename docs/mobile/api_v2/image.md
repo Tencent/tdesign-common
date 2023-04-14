@@ -20,32 +20,6 @@ toc: false
 
 {{ shape }}
 
-#### 填充模式
+### 组件状态
 
-通过 `fit` 属性可以设置图片填充模式，可选项有 `contain` | `cover` | `fill` | `none` | `scale-down`，效果与原生的 `object-fit` 属性一致
-
-{{ fit }}
-
-#### 图片位置
-
-通过 `position` 属性可以设置图片位置，效果与原生的 `object-position` 属性一致
-
-{{ position }}
-
-#### 图片懒加载
-
-通过lazy属性来开启图片懒加载
-
-{{ lazy }}
-
-### 加载中提示
-
-Image 组件提供了默认的加载中提示，也支持通过 `loading` 插槽自定义提示内容
-
-{{ loading }}
-
-### 加载失败提示
-
-Image 组件提供了默认的加载失败提示，也支持通过 `error` 插槽自定义提示内容
-
-{{ error }}
+{{ status }}

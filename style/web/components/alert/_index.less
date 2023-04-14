@@ -94,7 +94,6 @@
 }
 
 .@{prefix}-alert__icon {
-  padding: @alert-icon-padding;
   font-size: @alert-icon-size;
   display: inherit;
 }
@@ -107,7 +106,8 @@
 
 .@{prefix}-alert__content {
   flex: 1 1 0;
-  font: @alert-font-size;
+  font-size: @alert-font-size;
+  line-height: @alert-line-height;
   overflow: hidden;
 }
 
@@ -162,8 +162,16 @@
   display: inline-flex;
   align-items: center;
   margin-left: @alert-close-margin-left;
-  font-size: @alert-close-size;
   color: @alert-close-color;
-  padding: @alert-close-padding;
   cursor: pointer;
+  transition: color @anim-duration-base;
+
+  &:hover {
+    color: @alert-close-color-hover;
+  }
+
+  > .t-icon {
+    font-size: @alert-close-size;
+    padding: @alert-close-padding;
+  }
 }
