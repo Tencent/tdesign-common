@@ -12,11 +12,10 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Toast%201.png" />
   </div>
 </div>
 
-<hr />
 
 ### 组件搭配使用
 
@@ -24,11 +23,10 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Toast%202.png" />
   </div>
 </div>
 
-<hr />
 
 ### 推荐/慎用示例
 
@@ -36,22 +34,20 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Toast%203-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Toast%203-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
-<hr />
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [轻提示](./toast) | 当需要对用户进行轻量反馈或提示，且不需要用户进行更多交互时使用，轻提示会在一段时间后自动消失 |
-| [消息通知](./message) | 当需要对用户进行较轻量的反馈或提示，且不需要、或只需要少量用户交互时使用，可以自动消失或通过点击关闭 |
-| [公告栏](./noticeBar) | 当需要对用户进行较明显的反馈或提示，需要用户关注时使用，一段时间后不会自动消失 |
+| 组件名                 | 何时使用                                                                                               |
+| :--------------------- | :----------------------------------------------------------------------------------------------------- |
+| [消息通知](./message)  | 当需要对用户进行较轻量的反馈或提示，且不需要、或只需要少量用户交互时使用，可以自动消失或通过点击关闭。 |
+| [公告栏](./notice-bar) | 当需要对用户进行较明显的反馈或提示，需要用户关注时使用，一段时间后不会自动消失。                       |

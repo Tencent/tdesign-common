@@ -28,18 +28,15 @@
 </div>
 
 
-
-<hr />
-
 ### 组件搭配使用
 
-##### 悬浮按钮与[动作面板](./actionsheet)组合使用，当触发悬浮按钮涉及的任务通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
+##### 悬浮按钮与[动作面板](./action-sheet)组合使用，当触发悬浮按钮涉及的任务通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%202.png" />
-    <em></em>
-  </div>
-<hr />
+   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%202.png" />
+   <em></em>
+</div>
+
 
 ### 推荐/慎用示例
 
@@ -74,13 +71,10 @@
 </div>
 
 
-<hr />
-
-
 ### 相似组件
 
 | 组件名 | 何时使用                             |
 | :----- | :----------------------------------- |
 | [按钮](./button) | 当前流程的结束或新流程的开启需要用户点击触发时使用。 |
-| [返回顶部](./backtop ) | 当页面内容过长，用户有快速返回到页面顶部的诉求时使用。 |
+| [返回顶部](./back-top ) | 当页面内容过长，用户有快速返回到页面顶部的诉求时使用。 |
 

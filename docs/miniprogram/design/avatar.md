@@ -6,7 +6,7 @@
 
 ### 组件搭配使用
 
-##### 头像与[动作面板](./actionSheet ) 组合使用，在分享场景中利用动作面板承载用户头像，用于分享对象的选择。
+##### 头像与[动作面板](./action-sheet ) 组合使用，在分享场景中利用动作面板承载用户头像，用于分享对象的选择。
 
 <div class="legend">
  <div class="item">
@@ -33,7 +33,6 @@
  </div>
 </div>
 
-<hr />
 
 ### 常见用法
 
@@ -42,8 +41,7 @@
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/avatar%202.png" />
 </div>
-  
-<hr />
+
 
 
 ### 推荐/慎用示例
@@ -63,5 +61,4 @@
 </div>
 
 
-<hr />
 
