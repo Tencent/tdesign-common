@@ -8,25 +8,28 @@
 
 ### 组件搭配使用
 
-##### 徽标与选项卡、底部标签栏组合使用，置于文字段的右上方，用于展示状态信息或营销信息。
+##### 徽标与[选项卡](./tabs)、[底部标签栏](./tab-bar)组合使用，置于文字段的右上方，用于展示状态信息或营销信息。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Badge%201-1.png" />
+  </div>
+
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Badge%201-2.png" />
   </div>
 </div>
 
 <hr />
 
-##### 徽标与头像组合使用，可作为消息提示或数量提示。
+##### 徽标与[头像](./avatar)组合使用，可作为消息提示或数量提示。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Badge%202.png" />
   </div>
 </div>
 
-<hr />
 
 ### 常见用法
 
@@ -34,15 +37,14 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Badge%203-1.png" />
   </div>
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Badge%203-2.png" />
   </div>
 </div>
 
-<hr />
 
 ### 推荐/慎用示例
 
@@ -50,20 +52,19 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Badge%204-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Badge%204-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
-<hr />
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [标签](./tag) |  |
+| 组件名        | 何时使用                                                                                                             |
+| :------------ | :------------------------------------------------------------------------------------------------------------------- |
+| [标签](./tag) | 当需要展示内容本身的属性、状态、类别、营销情况时作为纯展示使用；或者当大量的内容数据需要根据类型进行选择筛选时使用。 |

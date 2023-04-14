@@ -12,18 +12,17 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%201.png" />
   </div>
 </div>
 
-<hr />
 
 ### 常见用法
 
 ##### 通常使用在表单中进行文字填写，填写状态下可在右侧显示清空输入的按钮，供用户快速清空已输入的内容。
 
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%202.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%202.png" />
 </div>
 
 <hr />
@@ -32,15 +31,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%203-1.png" />
   </div>
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%203-2.png" />
   </div>
 </div>
-
-<hr />
 
 ### 推荐/慎用示例
 
@@ -48,12 +45,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%204-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%204-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
@@ -61,18 +58,17 @@
 <hr />
 
 ##### 当需要输入较长的复杂内容时，建议使用多行文本框输入。
-<div class="legend">  
+<div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Input%205.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
-<hr />
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [多行文本框](./textarea) |  |
-| [搜索框](./search) |  |
+| 组件名                   | 何时使用                                     |
+| :----------------------- | :------------------------------------------- |
+| [多行文本框](./textarea) | 需要进行文字输入，且需填写的字数较多时使用。 |
+| [搜索框](./search)       | 当需要从海量信息中准确提取准确的内容时使用。 |

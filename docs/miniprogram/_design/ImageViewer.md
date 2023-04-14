@@ -16,13 +16,12 @@
 
 <hr />
 
-##### 当使用带删除操作的图片预览组件时，可与[动作面板](./actionsheet)组合使用，对删除操作进行二次确认。
+##### 当使用带删除操作的图片预览组件时，可与[动作面板](./action-sheet)组合使用，对删除操作进行二次确认。
 
 <div class="item">
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ImageViewer%202.png" />
 </div>
 
-<hr />
 
 
 ### 推荐/慎用示例
@@ -33,8 +32,6 @@
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/imageviewer4.png" />
    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
-
-<hr />
 
 
 

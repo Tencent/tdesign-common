@@ -12,7 +12,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/picker%201.png" />
+    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -22,22 +23,20 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/picker%202-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/picker%202-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
 
-<hr />
-
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [时间选择器](./DateTimePicker ) |  |
-| [级联选择器](./cascader) |  |
+| 组件名                            | 何时使用                                                                 |
+| :-------------------------------- | :----------------------------------------------------------------------- |
+| [时间选择器](./date-time-picker ) | 在表单中需要输入单个日期或时间时使用。                                   |
+| [级联选择器](./Cascader)          | 当一组选项由递进层级构成，且每个层级有大量的选项需要用户逐级选择时使用。 |

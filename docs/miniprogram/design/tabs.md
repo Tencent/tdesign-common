@@ -17,7 +17,6 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs1-2.png" />
   </div>
 </div>
-<hr />
 
 ### 组件搭配使用
 
@@ -28,9 +27,6 @@
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs2.png" />
   </div>
 </div>
-
-
-<hr />
 
 
 ### 常见用法
@@ -53,7 +49,6 @@
   </div>
 </div>
 
-<hr />
 
 ### 推荐/慎用示例
 
@@ -101,12 +96,11 @@
   </div>
 </div>
 
-<hr />
-
 
 
 ### 相似组件
 
 | 组件名 | 何时使用                             |
 | :----- | :----------------------------------- |
-| [底部标签栏](./tabbar) | 目标模块/视图需要从应用的任何地方直接进行访问时使用 。 |
+| [标签栏](./tab-bar) | 当目标模块/视图需要从应用的任何地方直接进行访问时使用。|
+| [侧边栏](./side-bar) |当内容项数量较多，需要用户根据品类快速选择到目标内容项时使用。|

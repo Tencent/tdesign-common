@@ -15,14 +15,14 @@
   </div>
 
 
-<hr />
-
 ### 常见用法
 ##### 当用户完成一个事件可以通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet2.png" />
   </div>
+
+<hr />
 
 ##### 当页面中有一组操作因低频/空间不足不希望外露时，但却必要存在，可以用动作面板来承载，通过“更多”按钮触发
 
@@ -31,7 +31,6 @@
   </div>
 
 
-<hr />
 
 ### 推荐/慎用示例
 
@@ -49,6 +48,8 @@
   </div>
 </div>
 
+<hr />
+
 ##### 动作面板中的操作项不建议用icon完成替代文字。
 
 <div class="legend">
@@ -56,14 +57,11 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet%205-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
-
-  
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/ActionSheet%205-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 
 
@@ -73,3 +71,5 @@
 | :----- | :----------------------------------- |
 | [抽屉](./drawer) | 需要收折展示一组数量较多的菜单时使用。 |
 | [对话框](./dialog) | 需要用户做一些决定，或这提供完成某个任务是需要的一些额外信息时使用。 |
+| [下拉菜单](./dropdown-menu) | 当内容较多时，需要通过筛选快速定位某一类内容时使用。 |
+| [选择器](./dropdown-menu) | 当需要在有限的空间展示大量选项供用户选择，或者一组选项由递进层级构成需要用户逐级选择时使用。 |

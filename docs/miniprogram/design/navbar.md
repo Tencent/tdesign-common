@@ -6,17 +6,18 @@
 
 ### 组件搭配使用
 
-##### 带图标的导航栏与[抽屉](./Drawer)、[动作面板](./ActionSheet)组合使用，用于唤起一组操作或功能。
+##### 带图标的导航栏与[抽屉](./drawer)、[动作面板](./action-sheet)组合使用，用于唤起一组操作或功能。
 
 <div class="item">
    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-1.png" />
 </div>
-  
+
+<hr />
+
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-2.png" />
 </div>
-  
-<hr />
+
 
 ### 常见用法
 
@@ -34,12 +35,12 @@
    <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-2.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-3.png" />
   </div>
 </div>
-  
+
 <hr />
 
 ##### 在需要定位的场景，通常结合当前定位进行、所在城市等进行展示并提供切换的能力。

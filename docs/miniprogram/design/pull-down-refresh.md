@@ -11,25 +11,21 @@
 <div class="legend">
   
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh001-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%201-1.png" />
   </div>
   
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh001-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%201-2.png" />
   </div> 
   
 </div>
 
-
 <div class="legend">
   
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh001-3.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%201-3.png" />
   </div>
 </div>
-
-<hr />
-
 
 ### 常见用法
 
@@ -37,21 +33,29 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh002.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%202.png" />
   </div>
 </div>
+
+<hr />
 
 ##### 在按时间排布型信息流页面使用下拉刷新，对未展示出来的最新内容进行加载。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh003-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%203-1.png" />
     <em></em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh003-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%203-2.png" />
     <em></em>
   </div>
 </div>
 
-<hr />
+
+### 相似组件
+
+| 组件名 | 何时使用                             |
+| :----- | :----------------------------------- |
+| [加载](./loading) |当打开新页面或操作完成后，等待加载时使用。|
+
