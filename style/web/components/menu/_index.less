@@ -30,7 +30,10 @@ a.@{prefix}-menu__item {
   background-color: @menu-theme-light;
 
   .@{prefix}-tabs {
-    font: @head-menu-font-size;
+    padding-top: @comp-margin-xs;
+    .@{prefix}-tabs__nav-item {
+      font-size: @head-meun-tab-font-size;
+    }
   }
 
   &__inner {
@@ -336,13 +339,17 @@ a.@{prefix}-menu__item {
   .@{prefix}-submenu {
     margin-bottom: 0;
     position: relative;
+
+      &.@{prefix}-is-opened {
+        background-color: @menu-light-opened-bg;
+      }
   }
 
   .@{prefix}-menu__operations {
     &:not(:empty) {
       width: 100%;
       position: relative;
-      padding: @comp-paddingTB-s @comp-paddingLR-l;
+      padding: @comp-paddingTB-s @comp-paddingLR-m;
       top: 0;
       left: 0;
       text-align: left;
@@ -380,6 +387,7 @@ a.@{prefix}-menu__item {
 
     &.@{prefix}-is-opened {
       max-height: calc(100vh - @menu-height-default * 2);
+      // background: @bg-color-secondarycontainer;
     }
 
     .@{prefix}-menu__item {
@@ -688,17 +696,18 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu__item {
       color: @menu-item-color--dark;
 
-      &.@{prefix}-is-active {
-        color: @menu-item-active-color--dark;
-        background-color: @menu-item-active-bg--dark;
-      }
-
       &.@{prefix}-is-opened {
         color: @menu-item-active-color--dark;
+        // background-color: @gray-color-12;
 
         .t-icon {
           color: @menu-item-active-color--dark;
         }
+      }
+
+      &.@{prefix}-is-active {
+        color: @menu-item-active-color--dark;
+        background-color: @menu-item-active-bg--dark;
       }
 
       &.@{prefix}-is-disabled {
@@ -709,7 +718,7 @@ a.@{prefix}-menu__item {
         background-color: @menu-item-hover-bg--dark;
       }
 
-      --ripple-color: @menu-item-animation-bg--dark;
+      --ripple-color: @menu-item-animation-bg--dark;  //不生效
     }
 
     .@{prefix}-menu__popup {
@@ -826,7 +835,6 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-menu__item {
-      color: @menu-popup-item-color;
       height: @comp-size-l;
       line-height: @comp-size-l;
 
