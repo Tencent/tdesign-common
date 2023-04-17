@@ -16,12 +16,6 @@
     .@{link}__suffix-icon {
       font-size: @@iconSize;
     }
-    .@{link}__prefix-icon {
-      margin-left: @link-icon-margin;
-    }
-    .@{link}__suffix-icon {
-      margin-right: @link-icon-margin;
-    }
   }
 }
 
@@ -83,9 +77,11 @@
 
   &__prefix-icon:not(:empty) + &__content:not(:empty) {
     padding-left: 4px;
+    display: inherit;
   }
 
   &__content:not(:empty) + &__suffix-icon:not(:empty) {
     padding-left: 4px;
+    display: inherit;
   }
 }
