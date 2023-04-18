@@ -8,15 +8,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: @overlay-z-index;
-  display: block;
+  bottom: 0;
   width: 100%;
-  height: 100%;
-  background-color: @mask-bg-color;
-
-  &--transparent {
-    background-color: transparent;
-  }
+  z-index: @overlay-zindex;
+  background-color: @overlay-bg-color;
+  transition-duration: @overlay-transition-duration;
 
   &-enter-from,
   &-leave-to {
@@ -27,19 +23,5 @@
   &-leave-active {
     transition-property: background-color;
     transition-timing-function: ease;
-  }
-
-  &-aria-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  &-content {
-    z-index: 1;
   }
 }
