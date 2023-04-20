@@ -11,7 +11,7 @@
 ##### 页脚通常位于网站每个页面底部或主体内容下方的区域。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs1-1.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Footer%201.png" />
 </div>
 
 ### 常见用法
@@ -19,7 +19,7 @@
 ##### 用于承载版权、隐私政策和使用条款等信息，它们是法律保护所需的。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs2.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Footer%202.png" />
 </div>
 
 <hr />
@@ -27,7 +27,7 @@
 ##### 用于承载网站、产品的联系方式，便于用户在页脚查找联系信息或查找获得客户支持的方式。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs2.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Footer%203.png" />
 </div>
 
 <hr />
@@ -35,7 +35,7 @@
 ##### 用于承载网站导航。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs2.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Footer%204.png " />
 </div>
 
 <hr />
@@ -44,11 +44,11 @@
 
 <div class="legend">  
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs7-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Footer%205-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs7-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Footer%205-2.png" />
   </div>
 </div>
 
