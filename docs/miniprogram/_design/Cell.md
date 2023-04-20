@@ -8,11 +8,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs1-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Footer%205-2.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs1-2.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%201-2.png" />
   </div>
 </div>
 
@@ -21,7 +21,7 @@
 ##### 常用作同类型同格式信息项平铺陈列。
 
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs1-1.png" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%202.png" />
   </div>
 
 
@@ -30,14 +30,14 @@
 ##### 作为入口时，不建议承载过多过复杂的内容。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs4-1.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%203.png" />
 </div>
 
 <hr />
 
 ##### 作为入口时，不建议在一个单元格内承载其他操作。
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs4-1.png" />
+  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%204.png" />
 </div>
 
 
