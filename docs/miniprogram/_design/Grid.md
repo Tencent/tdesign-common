@@ -10,16 +10,20 @@
 
 ##### 可与徽标组合使用，可作为消息提示、或其它相关的数量提示。
 
-<div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Grid%201.png" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Grid%201.png" />
+  </div>
 </div>
 
 ### 常见用法
 
 ##### 通常用于金刚区、或底部标签栏等，在页面中较为醒目的位置承载主要的功能入口。
 
-<div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Grid%202.png" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Grid%202.png" />
+  </div>
 </div>
 
 <hr />
@@ -40,8 +44,10 @@
 
 ##### 通常用于动作面板，和头像、图标按钮相结合，承载分享、保存到本地等操作。
 
-<div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Grid%204.png" />
+<div class="legend">
+  <div class="item">
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Grid%204.png" />
+  </div>
 </div>
 
 
