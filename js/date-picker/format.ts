@@ -207,30 +207,17 @@ export function calcFormatTime(time: string, timeFormat: string) {
 
 // 格式化时间
 export function formatTime(value: DateValue | DateValue[], format: string, timeFormat: string, defaultTime: string | string[]) {
-  let result;
-
-  if (Array.isArray(value)) {
-    // eslint-disable-next-line no-param-reassign
-    if (!Array.isArray(defaultTime)) defaultTime = [defaultTime, defaultTime];
-    result = value.map((v, i) => {
-      if (v) {
-        // 处理一般字符串格式
-        if (typeof (v) === 'string') return dayjs(v, format).format(timeFormat);
-        // 处理时间戳 & Date格式
-        return dayjs(v).format(timeFormat);
-      }
-      return calcFormatTime(defaultTime[i], timeFormat);
-    });
-    result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
-  } else {
-    if (value) {
-      // 处理一般字符串格式
-      if (typeof (value) === 'string') result = dayjs(value, format).format(timeFormat);
-      // 处理时间戳 & Date格式
-      else result = dayjs(value).format(timeFormat);
-    } result = calcFormatTime(defaultTime as string, timeFormat);
-  }
-  return result;
+  // 无论参数是不是数组，统一转成数组处理
+  let result = Array.isArray(value) ? value : [value];
+  // eslint-disable-next-line no-param-reassign
+  defaultTime = Array.isArray(defaultTime) ? defaultTime : [defaultTime, defaultTime];
+  result = result.map((v, i) => {
+    // string格式需要用format去解析，其他诸如Date、time-stamp格式则直接dayjs
+    if (v) return dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
+    return calcFormatTime(defaultTime[i], timeFormat);
+  });
+  // value是数组就输出数组，不是数组就输出第一个即可
+  return Array.isArray(value) ? result : result?.[0];
 }
 
 // 根据不同 mode 给出格式化默认值
