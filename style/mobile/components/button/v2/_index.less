@@ -93,7 +93,18 @@
   -webkit-appearance: none;
 
   &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    transform: scale(.5);
+    transform-origin: 0 0;
     border-radius: calc(@button-border-radius * 2);
+    border-style: solid;
+    box-sizing: border-box;
   }
 
   &--text {
@@ -328,14 +339,14 @@
     }
   }
 
-  &__loading + &__content:not(:empty),
-  &__icon + &__content:not(:empty) {
-    margin-left: 8rpx;
+  .@{prefix}-loading + &__content:not(:empty),
+  .@{prefix}-icon + &__content:not(:empty) {
+    margin-left: 4px;
   }
 
-  &__icon {
-    border-radius: @button-icon-border-radius;
-  }
+  // &__icon {
+  //   border-radius: @button-icon-border-radius;
+  // }
 
   // 圆角长方形
   &--round {
