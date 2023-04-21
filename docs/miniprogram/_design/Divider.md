@@ -17,6 +17,7 @@
   </div>
 </div>
 
+<hr />
 
 ##### 内嵌分割线：一般会在左侧或者右侧预留缺口，目的来区分统一模块下的相关内容，目的是为了让用户浏览大量相关内容时，更加高效。
 
@@ -26,7 +27,8 @@
     <em></em>
   </div>
 </div>
-  
+<hr />
+
 ##### 组合分割线：通栏分割线与内嵌分割线组合布局。
 
 <div class="legend">
@@ -34,8 +36,6 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Divider%203.png" />
   </div>
 </div>
-  
-<hr />
 
 
 ### 推荐/慎用示例

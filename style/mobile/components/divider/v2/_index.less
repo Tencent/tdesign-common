@@ -6,7 +6,7 @@
   display: flex;
   color: @divider-color;
   border-color: @divider-color;
-  border-style: solid;
+  border-style: @divider-content-line-style;
   border-width: 0;
 
   &::before,
@@ -22,8 +22,8 @@
 
   &--horizontal {
     align-items: center;
-    margin-top: 20rpx;
-    margin-bottom: 20rpx;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     &::before,
     &::after {
@@ -32,14 +32,14 @@
     }
 
     .@{prefix}-divider__content:not(:empty) {
-      margin: 0 24rpx;
+      margin: 0 12px;
     }
   }
 
   &--vertical {
     flex-direction: column;
     height: 1em;
-    margin: 0 16rpx;
+    margin: 0 8px;
 
     &::before,
     &::after {
@@ -65,6 +65,6 @@
 
   &--left::before,
   &--right::after {
-    max-width: 60rpx;
+    max-width: 30px;
   }
 }
