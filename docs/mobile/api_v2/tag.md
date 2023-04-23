@@ -16,7 +16,7 @@ toc: false
 
 可关闭的标签
 
-{{ closable }}
+{{ Closable }}
 
 可点击的标签
 
