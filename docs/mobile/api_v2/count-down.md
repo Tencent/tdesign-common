@@ -6,10 +6,12 @@ isComponent: true
 toc: false
 ---
 
-### 类型
+## 代码演示
+
+### 基础倒计时
 
 {{ base }}
 
-### 规格
+### 调整尺寸
 
-{{ specs }}
+{{ size }}
