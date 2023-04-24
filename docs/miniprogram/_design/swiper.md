@@ -23,7 +23,7 @@
 <hr />
 
  ##### 在图文详情页场景，用于当图片数量大于1时的折叠展示。
-<div class="legend">                                                                                                                         
+<div class="legend">
  <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-3.png" />
  </div>
@@ -40,4 +40,3 @@
    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
  </div>
 </div>
-

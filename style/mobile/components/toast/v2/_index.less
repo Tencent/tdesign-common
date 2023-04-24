@@ -4,7 +4,6 @@
 
 .@{prefix}-toast {
   position: fixed;
-  right: -50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12001;
@@ -12,7 +11,7 @@
   transition: opacity 300ms ease;
   background-color: @toast-bg-color;
   border-radius: @toast-radius;
-  font-size: 24px;
+  font-size: 14px;
   color: @toast-color;
   max-width: @toast-max-width;
   width: fit-content;
@@ -68,7 +67,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
-    display: box;
+    /* stylelint-disable-next-line */
+    display: -webkit-box;
     -webkit-box-orient: vertical;
     white-space: pre-line;
 

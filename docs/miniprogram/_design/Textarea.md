@@ -14,7 +14,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Textarea%201-1.png" />
   </div>
- 
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Textarea%201-2.png" />
   </div>
@@ -55,7 +55,7 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [输入框](./input) |需要进行文字输入，且需填写的字数较少时使用。|
+| 组件名            | 何时使用                                     |
+| :---------------- | :------------------------------------------- |
+| [输入框](./input) | 需要进行文字输入，且需填写的字数较少时使用。 |
 

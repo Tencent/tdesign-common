@@ -37,6 +37,11 @@
     white-space: nowrap;
   }
 
+  &__close-wrap {
+    display: flex;
+    align-items: center;
+  }
+
   &--info {
     color: @message-info-color;
   }
@@ -70,5 +75,33 @@
   &__link {
     flex: 0 0 auto;
     margin-left: @spacer;
+  }
+}
+
+.message-enter-active {
+  animation: messageEnter .5s;
+}
+
+.message-leave-active {
+  animation: messageOut .2s;
+}
+
+@keyframes messageEnter {
+  from {
+    transform: translate3d(0, -@message-height, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes messageOut {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -@message-height, 0);
   }
 }

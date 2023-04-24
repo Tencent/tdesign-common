@@ -37,11 +37,9 @@
 
 ##### 上传特定证件图片，特别是涉及到证件正反面时，推荐结合图示进行上传指引，更加直观。
 
-<div class="legend">  
+<div class="legend">
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%204.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 </div>
-
-

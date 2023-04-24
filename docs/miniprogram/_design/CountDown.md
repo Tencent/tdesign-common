@@ -36,7 +36,7 @@
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/CountDown%203-1.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
-  
+
    <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/CountDown%203-2.png" />
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
@@ -46,7 +46,7 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [标签](./tag) | 当需要展示内容本身的属性、状态、类别、营销情况时作为纯展示使用；或者当大量的内容数据需要根据类型进行选择筛选时使用。 |
-| [徽标](./badge) | 当需要展示特定对象的状态变化或承载运营性质提示时使用。 |
+| 组件名          | 何时使用                                                                                                             |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------- |
+| [标签](./tag)   | 当需要展示内容本身的属性、状态、类别、营销情况时作为纯展示使用；或者当大量的内容数据需要根据类型进行选择筛选时使用。 |
+| [徽标](./badge) | 当需要展示特定对象的状态变化或承载运营性质提示时使用。                                                               |

@@ -19,7 +19,7 @@
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-2.png" />
 </div>
-  
+
 
 ### 常见用法
 
@@ -37,12 +37,12 @@
    <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-2.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-3.png" />
   </div>
 </div>
-  
+
 <hr />
 
 ##### 在需要定位的场景，通常结合当前定位进行、所在城市等进行展示并提供切换的能力。

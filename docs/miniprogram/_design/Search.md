@@ -14,7 +14,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/search%201-1.png" />
   </div>
- 
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/search%201-2.png" />
   </div>
@@ -40,7 +40,7 @@
 <hr />
 
 ##### 在用户触发搜索后，对用户即将搜索的内容进行预判和推荐，并需要满足营销的诉求。
- 
+
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/search%204.png" />
 </div>
@@ -48,6 +48,6 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [输入框](./Input) |需要进行文字输入，且需填写的字数较少时使用。|
+| 组件名            | 何时使用                                     |
+| :---------------- | :------------------------------------------- |
+| [输入框](./Input) | 需要进行文字输入，且需填写的字数较少时使用。 |

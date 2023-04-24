@@ -6,34 +6,40 @@ isComponent: true
 toc: false
 ---
 
-### 实心评分
+### 组件类型
 
-{{ filled }}
+实心评分
 
-### 空心评分
+{{ base }}
 
-{{ outline }}
+自定义评分
 
-### 自定义数量评分
+{{ custom }}
+
+自定义评分数量
 
 {{ count }}
 
-### 半星评分
+带描述评分
 
-{{ allow-half }}
+{{ show-text }}
 
-### 带描述评分
+### 组件状态
 
-{{ text }}
+{{ action }}
 
-### 禁用评分
+### 组件样式
 
-{{ disabled }}
+评分大小
 
-### 设置评分颜色
+{{ size }}
+
+设置评分颜色
 
 {{ color }}
 
-### 评价规格
+### 特殊样式
 
-{{ size }}
+竖向带描述评分
+
+{{ special }}

@@ -14,7 +14,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%201-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%201-2.png" />
   </div>
@@ -29,7 +29,7 @@
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%202-1.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%202-2.png" />
   </div>
@@ -42,11 +42,11 @@
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%203.png" />
 </div>
-  
+
 
 ### 推荐/慎用示例
 
-##### 左右滑动操作通常承载低频的辅助功能，不建议承载高频或过于复杂的功能。 
+##### 左右滑动操作通常承载低频的辅助功能，不建议承载高频或过于复杂的功能。
 
 <div class="item">
   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%204.png" />
@@ -72,6 +72,6 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [按钮](./button) |当前流程的结束或新流程的开启需要用户点击触发时使用。|
+| 组件名           | 何时使用                                             |
+| :--------------- | :--------------------------------------------------- |
+| [按钮](./button) | 当前流程的结束或新流程的开启需要用户点击触发时使用。 |
