@@ -47,6 +47,7 @@
         left: 16px;
       }
     }
+
     &--grid {
       line-height: 34px;
       
@@ -61,13 +62,13 @@
       .flex-center();
       border: none;
       .border(bottom, @action-sheet-border-color);
-
       height: @action-sheet-list-item-height;
       padding: 0 16px;
 
       &--left {
         justify-content: start;
         text-align: left;
+
         &::after {
           left: 16px;
         }
@@ -92,6 +93,7 @@
     margin-top: 8px;
     padding-bottom: 24px;
     position: relative;
+    
     .@{prefix}-swiper__pagination {
       .@{prefix}-swiper-dot {
         background-color: @action-sheet-dot-color;
@@ -119,7 +121,6 @@
 
   &__cancel {
     .flex-center();
-    
     border: none;
     height: @action-sheet-cancel-height;
   }
