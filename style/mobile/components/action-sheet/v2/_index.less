@@ -36,10 +36,8 @@
     line-height: 46px;
     font-size: 14px;
     text-align: @action-sheet-text-align;
-    padding: 0px 16px;
-    &:focus, &:active {
-      outline: 0;
-    }
+    padding: 0 16px;
+
     .border(bottom, @action-sheet-border-color);
 
     &--left {
@@ -51,6 +49,7 @@
     }
     &--grid {
       line-height: 34px;
+      
       &::after {
         display: none;
       }
@@ -96,6 +95,7 @@
     .@{prefix}-swiper__pagination {
       .@{prefix}-swiper-dot {
         background-color: @action-sheet-dot-color;
+
         &--active {
           background-color: @action-sheet-dot-active-color;
         }
@@ -119,6 +119,7 @@
 
   &__cancel {
     .flex-center();
+    
     border: none;
     height: @action-sheet-cancel-height;
   }
