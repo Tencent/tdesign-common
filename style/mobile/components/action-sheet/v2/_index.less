@@ -50,7 +50,7 @@
 
     &--grid {
       line-height: 34px;
-      
+
       &::after {
         display: none;
       }
@@ -59,10 +59,10 @@
 
   &__list {
     &-item {
-      .flex-center();
       border: none;
-      .border(bottom, @action-sheet-border-color);
       height: @action-sheet-list-item-height;
+      .flex-center();
+      .border(bottom, @action-sheet-border-color);
       padding: 0 16px;
 
       &--left {
@@ -93,7 +93,7 @@
     margin-top: 8px;
     padding-bottom: 24px;
     position: relative;
-    
+
     .@{prefix}-swiper__pagination {
       .@{prefix}-swiper-dot {
         background-color: @action-sheet-dot-color;
@@ -120,9 +120,9 @@
   }
 
   &__cancel {
-    .flex-center();
-    border: none;
     height: @action-sheet-cancel-height;
+    border: none;
+    .flex-center();
   }
 
   &__dots {
