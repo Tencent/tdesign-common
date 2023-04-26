@@ -18,6 +18,23 @@
     line-height: 1em;
     width: 1em;
     transition: transform .3s ease;
+    position: relative;
+
+    &-left {
+      position: absolute;
+      width: 50%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+
+      &--selected {
+        color: @rate-selected-color;
+      }
+
+      &--unselected {
+        color: @rate-unselected-color;
+      }
+    }
 
     &--current {
       transform: scale(@rate-icon-scale);
