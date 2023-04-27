@@ -24,8 +24,11 @@
     width: @back-top-round-width;
     height: @back-top-round-width;
     border-radius: @back-top-round-border-radius;
+
     &::after {
+
       .hairline(@back-top-round-border-color);
+
       border-radius: @back-top-round-border-radius;
     }
   }
@@ -49,8 +52,11 @@
     border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
     flex-direction: row;
     right: 0;
+
     &::after {
+
       .hairline(@back-top-round-border-color);
+
       border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
     }
   }
