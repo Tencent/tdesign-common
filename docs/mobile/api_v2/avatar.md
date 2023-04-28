@@ -8,21 +8,36 @@ toc: false
 
 ### 头像类型
 
-头像样式可为默认头像、微信头像圆形、方形、自定义文字
+图片头像
 
-{{ shape }}
+{{ image-avatar }}
 
-### 纯展示 从上往下
+字符头像
+
+{{ character-avatar }}
+
+图标头像
+
+{{ icon-avatar }}
+
+徽标头像
+
+{{ badge-avatar }}
+
+
+### 组合头像
+
+纯展示
 
 {{ exhibition }}
 
-### 带操作 从下往上
+带操作
 
 {{ action }}
 
-### 头像大小尺寸
+### 头像尺寸
 
-头像默认支持三种大小：`small`、`medium`、`large`，用户可自定义设置大小
+头像 large/medium/small 尺寸
 
 {{ size }}
 
