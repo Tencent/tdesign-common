@@ -136,6 +136,7 @@ export class TreeNode {
       expanded: false,
       checked: false,
       ...data,
+      draggable: data.draggable !== undefined ? data.draggable : get(this, 'tree.config.draggable')
     };
     const children = spec[propChildren];
 
@@ -589,7 +590,7 @@ export class TreeNode {
 
   // 判断节点是否能拖拽
   public isDraggable() {
-    return !!(get(this, 'tree.config.draggable') || this.draggable);
+    return !!(get(this, 'tree.config.draggable') && this.draggable);
   }
 
   // 判断节点是否支持互斥展开
