@@ -11,40 +11,42 @@
 
   &-title {
     font-size: @statistic-title-font-size;
+    font-weight: @statistic-title-font-weight;
     margin-bottom: @statistic-title-margin-bottom;
-    color: @statistic-title-text-color;
   }
 
   &-content {
-    .@{statistic-cls}-value {
-      white-space: nowrap;
-      font-size: @statistic-integer-font-size;
-      font-weight: @statistic-value-font-weight;
-      color: @statistic-value-text-color;
+    display: inline-block;
+    line-height: 36px;
+    font-weight: @statistic-value-font-weight;
+    color: @statistic-value-text-color;
+    font-family: "TCloud Number";
+    text-align: left;
+    white-space: nowrap;
 
-      &-integer {
-        white-space: nowrap;
-      }
+    &-value {
+      font-size: @statistic-value-font-size;
+    }
+    &-unit { 
+      font-size: @statistic-unit-font-size;
+      margin-left: @statistic-unit-margin-left;
+    }
+    &-suffix {
+      display: inline-flex;
+      align-items: center;
+      font-size: @statistic-suffix-font-size;
+      margin-left: @statistic-suffix-margin-left;
+    }
 
-      &-decimal {
-        font-size: @statistic-decimal-font-size;
-        display: inline-block;
-      }
-
-      &-suffix {
-        font-size: @statistic-suffix-font-size;
-        margin-left: @statistic-suffix-margin-left;
-      }
-
-      &-prefix {
-        font-size: @statistic-value-icon-size;
-        margin-right: @statistic-prefix-margin-right;
-      }
+    &-prefix {
+      display: inline-flex;
+      align-items: center;
+      font-size: @statistic-prefix-font-size;
+      margin-right: @statistic-prefix-margin-right;
     }
   }
 
   &-extra {
     margin-top: @statistic-extra-margin-top;
-    color: @statistic-extra-text-color;
   }
 }
