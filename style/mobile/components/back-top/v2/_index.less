@@ -24,12 +24,18 @@
     width: @back-top-round-width;
     height: @back-top-round-width;
     border-radius: @back-top-round-border-radius;
+
+    &::after {
+
+      .hairline(@back-top-round-border-color);
+
+      border-radius: @back-top-round-border-radius;
+    }
   }
 
   &--round,
   &--half-round {
     color: @back-top-round-color;
-    border: 1rpx solid @back-top-round-border-color;
     background-color: @back-top-round-bg-color;
   }
 
@@ -46,6 +52,13 @@
     border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
     flex-direction: row;
     right: 0;
+
+    &::after {
+
+      .hairline(@back-top-round-border-color);
+
+      border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
+    }
   }
 
   &__text--round,
@@ -63,7 +76,7 @@
 
   &__icon:not(:empty) + &__text--half-round,
   &__icon:not(:empty) + &__text--half-round-dark {
-    margin-left: 8rpx;
+    margin-left: 2px;
   }
 
   &__icon {

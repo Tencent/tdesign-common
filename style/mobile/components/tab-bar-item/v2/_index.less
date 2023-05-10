@@ -59,9 +59,16 @@
     // }
   }
 
-  .@{prefix}-badge-class {
-    transform: translate(50%, -10%) !important; // stylelint-disable-line
+  &__icon {
+    .@{prefix}-icon {
+      vertical-align: top;
+    }
   }
+
+  //.@{prefix}-badge--count {
+  //// 缩放0.83是因为设计稿字体10px，而chrome最小12px
+  //  transform: translate(50%, -10%) scale(0.83) !important; // stylelint-disable-line
+  //}
 
   &__text {
     display: flex;
@@ -111,7 +118,8 @@
       position: relative;
       flex-direction: column;
 
-      &--active {
+      &--active,
+      &:active {
         background-color: @tab-bar-hover-bg-color;
       }
 

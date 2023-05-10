@@ -1,6 +1,6 @@
 ---
 title: Tag 
-description: Definition: Tags are commonly used for marking, categorizing and selecting.
+description: Tags are commonly used for marking, categorizing and selecting.
 isComponent: true
 usage: { title: '', description: '' }
 spline: data
