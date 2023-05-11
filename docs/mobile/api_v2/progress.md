@@ -1,33 +1,38 @@
 ---
 title: Progress 进度条
-description: 用于需要准确告知某个任务的当前进度
+description: 用于展示任务当前的进度。
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础进度条
+## 代码演示
 
-一般用于操作任务周期较长时，表示当前任务所处的阶段
+### 01 组件类型
+
+基础进度条
 
 {{ base }}
 
-### 隐藏数值进度条
+过渡样式
 
-相比基础进度条更轻量，一般用于任务提示较短的场景
+{{ transition }}
 
-{{ noText }}
-
-### 自定义样式
+自定义颜色/圆角
 
 {{ custom }}
 
-### 自定义线宽
+### 02 组件状态
 
-{{ strokeWidth }}
+线性进度条
 
-### 状态
+{{ line }}
 
-{{ status }}
+百分比内显进度条
 
+{{ plump }}
+
+环形进度条
+
+{{ circle }}
 
