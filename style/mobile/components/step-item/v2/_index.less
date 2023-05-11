@@ -149,13 +149,12 @@
   }
 
   &__line {
-    background-color: @step-item-line-color;
     content: "";
     display: block;
+    border: 1px solid @step-item-line-color;
     position: absolute;
 
     &--horizontal {
-      height: 1px;
       transform: translateY(-50%);
       width: calc(100% - 16px - @step-item-circle-size);
       top: calc(@step-item-circle-size / 2 + 1px);
@@ -167,12 +166,45 @@
     }
 
     &--finish {
-      background-color: @step-item-finish-line-color;
+      border: 1px solid @step-item-finish-line-color;
     }
 
     &--vertical {
       height: calc(100% - 16px - @step-item-circle-size);
-      width: 1px;
+      transform: translateX(-50%);
+      left: calc(@step-item-circle-size / 2);
+      top: calc(@step-item-circle-size + 8px);
+    }
+
+    &--vertical&--dot {
+      top: @step-item-circle-size;
+      height: calc(100% - @step-item-circle-size);
+    }
+  }
+
+  &__dashed {
+    content: "";
+    display: block;
+    border: 1px dashed @step-item-line-color;
+    position: absolute;
+
+    &--horizontal {
+      transform: translateY(-50%);
+      width: calc(100% - 16px - @step-item-circle-size);
+      top: calc(@step-item-circle-size / 2 + 1px);
+      left: calc(50% + @step-item-circle-size / 2 + 8px);
+    }
+
+    &--horizontal&--dot {
+      top: calc(@step-item-dot-size / 2);
+    }
+
+    &--finish {
+      border: 1px dashed @step-item-finish-line-color;
+    }
+
+    &--vertical {
+      height: calc(100% - 16px - @step-item-circle-size);
       transform: translateX(-50%);
       left: calc(@step-item-circle-size / 2);
       top: calc(@step-item-circle-size + 8px);
