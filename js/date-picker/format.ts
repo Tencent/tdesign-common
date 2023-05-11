@@ -217,6 +217,7 @@ export function formatTime(value: any, format: string, timeFormat: string, defau
     if (v) return dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
     return calcFormatTime(defaultTime[i], timeFormat);
   });
+  result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
   // value是数组就输出数组，不是数组就输出第一个即可
   return Array.isArray(value) ? result : result?.[0];
 }
