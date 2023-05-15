@@ -112,6 +112,38 @@
   }
 }
 
+// 环形 for mobile
+.@{prefix}-progress--circle {
+  position: relative;
+
+  .@{prefix}-progress__info {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    margin: 0;
+    font-size: @progress-circle-label-font-size;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  .@{prefix}-progress__circle-outer {
+    stroke: @progress-track-bg-color;
+  }
+
+  .@{prefix}-progress__circle-inner {
+    stroke: @progress-inner-bg-color;
+    transition: @progress-inner-transition;
+  }
+
+  .@{prefix}-progress__icon {
+    font-size: @progress-circle-icon-font-size;
+  }
+}
+
 //进度条状态
 .@{progress}--status--active {
   .@{progress}__inner {
@@ -135,6 +167,10 @@
     background: @progress-inner-bg-color-success;
   }
 
+  .@{prefix}-progress__circle-inner {
+    stroke: @success-color;
+  }
+
   .@{progress}__icon {
     color: @success-color;
   }
@@ -143,6 +179,10 @@
 .@{progress}--status--warning {
   .@{progress}__inner {
     background: @progress-inner-bg-color-warning;
+  }
+
+  .@{prefix}-progress__circle-inner {
+    stroke: @warning-color;
   }
 
   .@{progress}__icon {
@@ -155,6 +195,9 @@
     background: @progress-inner-bg-color-error;
   }
 
+  .@{prefix}-progress__circle-inner {
+    stroke: @error-color;
+  }
   .@{progress}__icon {
     color: @error-color;
   }
