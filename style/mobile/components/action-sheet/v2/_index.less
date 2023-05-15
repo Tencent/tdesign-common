@@ -31,8 +31,9 @@
     text-overflow: ellipsis;
   }
 
-   &__grid {
+  &__grid {
     padding-bottom: 8px;
+
     &--swiper {
       padding-bottom: 0;
     }
@@ -121,7 +122,7 @@
   }
 
   &__gap-grid {
-    height: 0.5px;
+    height: .5px;
     background-color: @action-sheet-border-color;
   }
 
@@ -130,8 +131,8 @@
     border: none;
     border-radius: 0;
     .flex-center();
-    
-    &:after {
+
+    &::after {
       border-radius: 0;
     }
   }
