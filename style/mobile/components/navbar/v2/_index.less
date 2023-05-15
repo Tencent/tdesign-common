@@ -43,7 +43,7 @@
     height: @navbar-height;
     width: calc(100% - @navbar-right);
     padding-right: @navbar-right;
-    padding-top: @navbar-padding-top;
+    // padding-top: @navbar-padding-top;
     color: @navbar-color;
     background-color: @navbar-bg-color;
     display: flex;
@@ -64,6 +64,7 @@
   }
 
   &__capsule {
+    position: relative;
     box-sizing: border-box;
     width: @navbar-capsule-width;
     height: @navbar-capsule-height;
@@ -114,5 +115,15 @@
       overflow: hidden;
       font-weight: @navbar-title-font-weight;
     }
+  }
+
+  &__right {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    // width: @navbar-right;
+    display: flex;
+    align-items: center;
+    margin-right: @spacer-1;
   }
 }
