@@ -297,7 +297,7 @@ spline: data
 通过拖拽表格行调整顺序，拖拽表头表头调整列顺序。
 
 - `dragSort='row'` 用于设置表格为行拖拽排序。
-- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'drag', cell: () => <MoveIcon /> }`。
 - `dragSort='col'` 用于设置表格为列拖拽排序。
 - `sortOnRowDraggable` 用于行拖拽排序。已废弃，请更为使用 `dragSort='row'`，兼容支持。
 
