@@ -1,5 +1,5 @@
 import TreeStore from '../../../js/tree/tree-store';
-import { wait } from './kit';
+import { delay } from './kit';
 
 describe('tree', () => {
   describe('tree:append', () => {
@@ -10,7 +10,7 @@ describe('tree', () => {
       }, {
         value: 't6'
       }]);
-      await wait(1);
+      await delay(1);
       const nodes = tree.getNodes();
       // 内部生成的唯一 key 不应当绑定测试状态
       // 生成的唯一 key 与节点顺序无关，只需确保唯一

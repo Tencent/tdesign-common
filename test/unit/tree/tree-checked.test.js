@@ -1,5 +1,5 @@
 import TreeStore from '../../../js/tree/tree-store';
-import { wait } from './kit';
+import { delay } from './kit';
 
 describe('tree', () => {
   describe('tree:checked', () => {
@@ -16,7 +16,7 @@ describe('tree', () => {
       tree.setChecked(['t1']);
 
       // 总体选中状态是延时更新的
-      await wait(1);
+      await delay(1);
       const node1 = tree.getNode('t1');
       const checked = tree.getChecked();
       expect(node1.isChecked()).toBe(true);
@@ -39,10 +39,10 @@ describe('tree', () => {
       }]);
 
       tree.setActived(['t1']);
-      await wait(1);
+      await delay(1);
 
       tree.setChecked(['t1']);
-      await wait(1);
+      await delay(1);
 
       const node1 = tree.getNode('t1');
       const checked = tree.getChecked();
