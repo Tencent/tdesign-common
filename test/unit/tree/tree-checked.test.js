@@ -3,6 +3,25 @@ import { delay } from './kit';
 
 describe('tree', () => {
   describe('tree:checked', () => {
+    it('checkable 属性为 false 时, 无法设置选中项', async () => {
+      const tree = new TreeStore({
+        checkable: false,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
+      }]);
+      tree.setChecked(['t1.1']);
+
+      // 总体选中状态是延时更新的
+      await delay(1);
+      expect(tree.getChecked().length).toBe(0);
+      const node1 = tree.getNode('t1.1');
+      expect(node1.checked).toBe(false);
+    });
+
     it('setChecked 方法可以修改选中属性', async () => {
       const tree = new TreeStore({
         checkable: true,

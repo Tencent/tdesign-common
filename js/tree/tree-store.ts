@@ -269,11 +269,15 @@ export class TreeStore {
 
     if (isString(para) || isNumber(para)) {
       value = para;
-      data = item;
       node = this.getNode(value);
-    } else if (para instanceof TreeNode) {
-      node = para;
       data = item;
+    } else if (para instanceof TreeNode) {
+      if (item) {
+        node = para;
+        data = item;
+      } else {
+        data = para;
+      }
     } else {
       data = para;
     }

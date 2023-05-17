@@ -19,4 +19,85 @@ describe('tree', () => {
       expect(nodes.length).toBe(2);
     });
   });
+
+  describe('tree:appendNodes', () => {
+    it('appendNodes 方法添加节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree.appendNodes({
+        value: 't3'
+      });
+      await delay(1);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(3);
+      expect(nodes[2].value).toBe('t3');
+    });
+
+    it('appendNodes 从一个树插入到另一个树', async () => {
+      const tree1 = new TreeStore();
+      const tree2 = new TreeStore();
+      tree1.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree2.append([{
+        value: 't3'
+      }, {
+        value: 't4'
+      }]);
+      const targetNode = tree2.getNode('t4');
+      tree1.appendNodes(targetNode);
+      await delay(1);
+      const nodes = tree1.getNodes();
+      expect(nodes.length).toBe(3);
+      expect(nodes[2].value).toBe('t4');
+    });
+
+    it('appendNodes 方法添加节点数据到另一个节点 children', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree.appendNodes('t1', {
+        value: 't1.1'
+      });
+      tree.appendNodes(tree.getNode('t2'), {
+        value: 't2.1'
+      });
+      await delay(1);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree.getNode('t1.1').getParent().value).toBe('t1');
+      expect(tree.getNode('t2.1').getParent().value).toBe('t2');
+    });
+
+    it('appendNodes 方法添加节点到另一个节点 children', async () => {
+      const tree1 = new TreeStore();
+      tree1.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      const tree2 = new TreeStore();
+      tree2.append([{
+        value: 't3'
+      }, {
+        value: 't4'
+      }]);
+      tree1.appendNodes('t1', tree2.getNode('t3'));
+      tree1.appendNodes(tree1.getNode('t2'), tree2.getNode('t4'));
+      await delay(1);
+      const nodes = tree1.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree1.getNode('t3').getParent().value).toBe('t1');
+      expect(tree1.getNode('t4').getParent().value).toBe('t2');
+    });
+  });
 });
