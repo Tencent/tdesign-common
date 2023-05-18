@@ -9,7 +9,7 @@
 
   &__wrapper {
     display: flex;
-    overflow: hidden;
+    //overflow: hidden;
     background: @tab-nav-bg-color;
 
     &--card {
@@ -39,6 +39,7 @@
 
     &--disabled {
       color: @tab-item-disabled-color;
+      cursor: not-allowed;
     }
 
     &--evenly {
@@ -56,7 +57,7 @@
       justify-content: center;
 
       &--tag {
-        width: 100%;
+        //width: 100%;
         text-align: center;
         padding: 0 16px;
         line-height: @tab-item-tag-height;
@@ -174,6 +175,16 @@
   }
 
   &__scroll {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &--card {
+      background: @bg-color-secondarycontainer;
+
+      --td-tab-border-color: transparent;
+    }
+
     &--top,
     &--bottom {
       height: @tab-item-height;
@@ -210,4 +221,12 @@
   &--bottom {
     flex-direction: column-reverse;
   }
+}
+
+&.@{prefix}-size-m {
+  font-size: @tab-font-medium;
+}
+
+&.@{prefix}-size-l {
+  font-size: @tab-font-large;
 }
