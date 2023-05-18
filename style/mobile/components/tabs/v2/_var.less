@@ -1,47 +1,31 @@
-@tab-nav-bg-color: @bg-color-container;
+@tabs: ~"@{prefix}-tabs";
+@item: ~"@{tabs}__item";
 
-@tab-nav-text-color: @text-color-secondary;
+//字号
+@tab-font-size: var(--tab-font-size, 14px);
+@tab-font-medium: @font-size-m;
+@tab-font-large: @font-size-l;
 
-@tab-nav-disabled-color: rgba(0, 0, 0, .25);
+@tab-nav-bg-color: var(--td-tab-nav-bg-color, @bg-color-container);
 
-@tab-nav-font-size: @font-size-base;
+@tab-item-height: var(--td-tab-item-height, 48px);
+@tab-item-vertical-height: var(--td-tab-item-vertical-height, 54px);
+@tab-item-vertical-width: var(--td-tab-item-vertical-width, 104px);
 
-@tab-nav-large-font-size: @font-size-l;
+@tab-item-color: var(--td-tab-item-color, @font-gray-1);
+@tab-item-active-color: var(--td-tab-item-active-color, @brand-color);
+@tab-item-disabled-color: var(--td-tab-item-disabled-color, @font-gray-4);
+@tab-border-color: var(--td-tab-border-color, @component-stroke);
 
-@tab-nav-height: 48px;
+// track
+@tab-track-color: var(--td-tab-track-color, @brand-color);
+@tab-track-thickness: var(--td-tab-track-thickness, 3px);
+@tab-track-width: var(--td-tab-track-width, 16px);
+@tab-track-radius: var(--td-tab-track-radius, 4px);
 
-@tab-nav-active-color: #0052d9;
+// theme = tag
+@tab-item-tag-height: var(--td-tab-item-tag-height, 32px);
+@tab-item-tag-bg: var(--td-tab-item-tag-bg, @bg-color-secondarycontainer);
+@tab-item-tag-active-bg: var(--td-tab-item-tag-active-bg, @brand-color-light);
 
-@tab-nav-active-bg-color: #ECF2FE;
-
-@tab-nav-inactive-bg-color: #F3F3F3;
-
-@tab-line-active-color: #0052d9;
-
-@tab-line-color: @component-stroke;
-
-@tab-line-height: 3px;
-
-@tab-line-width: 16px;
-
-@tab-nav-item-padding: 0 16px;
-
-@tab-nav-item-tag-padding: 5px 25px;
-
-@tab-nav-item-tag-margin: 8px;
-
-@tab-nav-item-line-height: 22px;
-
-@tab-nav-item-tag-border-radius: 26px;
-
-@tab-nav-item-card-border-radius: 9px;
-
-@tab-nav-horizontal-bg-color: #f5f5f5;
-
-@tab-nav-horizontal-item-width: 102px;
-
-@tab-nav-horizontal-item-height: 54px;
-
-@tab-nav-horizontal-item-padding: 0 0 0 2px;
-
-@tab-panel-bg-color: @bg-color-container;
+@tab-icon-size: var(--td-tab-icon-size, 16px);
