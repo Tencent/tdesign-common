@@ -8,6 +8,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../popup/_var.less";
+
 .@{popconfirm-cls} {
   .reset;
 
@@ -16,6 +18,10 @@
 
   .@{prefix}-popup__content {
     padding: 0;
+  }
+
+  &.@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-popup__arrow {
+    bottom: calc(-@popup-arrow-width / 2);
   }
 
   &__content {
