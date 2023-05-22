@@ -10,14 +10,15 @@
 
   &__item {
     position: relative;
-    width: 100%;
+    width: @upload-width;
+    height: @upload-height;
+    border-radius: @upload-radius;
+    overflow: hidden;
 
     &--add {
-      padding-top: 100%;
       font-size: @upload-add-icon-font-size;
-      background-color: @upload-add-bg-color;
+      background: @upload-background;
       color: @upload-add-color;
-      border-radius: @upload-radius;
     }
   }
 
