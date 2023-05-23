@@ -17,3 +17,7 @@ toc: false
 ### 组件状态
 
 {{ status }}
+
+### 样式自定义
+
+{{ custom }}
