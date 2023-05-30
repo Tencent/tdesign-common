@@ -244,7 +244,7 @@ export function formatUnCompleteNumber(
   const { decimalPlaces, largeNumber } = extra;
   let newNumber = number.replace(/[.|+|\-|e]$/, '');
   if (largeNumber) {
-    newNumber = formatENumber(number);
+    newNumber = formatENumber(newNumber);
   }
   if (decimalPlaces !== undefined) {
     newNumber = largeNumberToFixed(newNumber, decimalPlaces, largeNumber);
