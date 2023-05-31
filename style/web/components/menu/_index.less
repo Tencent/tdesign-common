@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 a.@{prefix}-menu__item {
   text-decoration: none;
   color: unset;
@@ -761,6 +763,7 @@ a.@{prefix}-menu__item {
       height: 100%;
       list-style: none;
       margin: 0;
+      .scrollbar(8px, 2px);
     }
 
     .@{prefix}-fake-arrow {
