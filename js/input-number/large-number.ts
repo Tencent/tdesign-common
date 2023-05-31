@@ -355,6 +355,7 @@ export function largeNumberToFixed(
  */
 export function formatENumber(num: string): string {
   const [num1, num2] = num.split('e');
+  if (!num2) return num;
   const [integer, initDecimal = ''] = num.split('.');
   const zeroCount = Number(num2);
   const [decimal] = initDecimal.split('e');

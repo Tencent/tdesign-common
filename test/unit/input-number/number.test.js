@@ -169,4 +169,9 @@ describe('formatUnCompleteNumber', () => {
     expect(formatUnCompleteNumber('2.1231234')).toBe(2.1231234);
     expect(formatUnCompleteNumber('2.1231234', { decimalPlaces: 2 })).toBe(2.12);
   });
+
+  it('formatUnCompleteNumber: decimalPlaces, isToFixed', () => {
+    expect(formatUnCompleteNumber('2.000', { decimalPlaces: 2 })).toBe(2);
+    expect(formatUnCompleteNumber('2.000', { decimalPlaces: 2, isToFixed: true })).toBe('2.00');
+  });
 });

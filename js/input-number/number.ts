@@ -238,18 +238,20 @@ export function formatUnCompleteNumber(
   extra: {
     decimalPlaces?: number;
     largeNumber?: boolean;
+    isToFixed?: boolean;
   } = {}
 ): number | string {
   if (['', null, undefined].includes(number) || !/\d+/.test(number)) return undefined;
-  const { decimalPlaces, largeNumber } = extra;
+  const { decimalPlaces, largeNumber, isToFixed } = extra;
   let newNumber = number.replace(/[.|+|\-|e]$/, '');
   if (largeNumber) {
-    newNumber = formatENumber(number);
+    newNumber = formatENumber(newNumber);
   }
   if (decimalPlaces !== undefined) {
     newNumber = largeNumberToFixed(newNumber, decimalPlaces, largeNumber);
   }
-  return largeNumber ? newNumber : parseFloat(newNumber);
+  if (largeNumber) return newNumber;
+  return isToFixed ? newNumber : parseFloat(newNumber);
 }
 
 /**
