@@ -21,6 +21,8 @@ TDesign 支持国际化/多语言配置，目前支持的语言包括:
 意大利语 | `it_IT`
 阿拉伯语 | `ar_KW`
 
+如果你想贡献更多语言包，欢迎参考 [如何新增语言包](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) 发起 PR。
+
 {{ global }}
 
 ### Pagination 分页
