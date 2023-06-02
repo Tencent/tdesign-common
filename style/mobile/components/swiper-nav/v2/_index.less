@@ -14,7 +14,7 @@
       background: @swiper-nav-dot-color;
       border-radius: 50%;
       margin: 0 5px;
-      transition: all 0.4s ease-in;
+      transition: all .4s ease-in;
 
       &--vertical {
         margin: 5px 0;
@@ -32,6 +32,7 @@
         width: @swiper-nav-dot-size;
         height: @swiper-nav-dots-bar-active-width;
       }
+
       &--active {
         width: @swiper-nav-dots-bar-active-width;
         border-radius: calc(@swiper-nav-dot-size / 2);
@@ -118,11 +119,11 @@
       background: @swiper-nav-btn-bg-color;
 
       &::after {
+        content: "";
+        display: block;
         position: absolute;
         left: 50%;
         top: 50%;
-        display: block;
-        content: '';
         width: 6px;
         height: 6px;
         border-color: @swiper-nav-btn-color;
