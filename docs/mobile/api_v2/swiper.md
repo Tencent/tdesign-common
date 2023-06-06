@@ -6,18 +6,30 @@ isComponent: true
 toc: false
 ---
 
-### 基础用法
+## 代码演示
+
+### 01组件类型
+
+点状（dots)
 
 {{ base }}
 
-### 指定分页器类型
+条状（dots-bar)
 
-{{ pagination-type }}
+{{ custom }}
 
-### 垂直方向
+分式（fraction)
 
-{{ direction }}
+{{ fraction }}
 
-### 受控方式
+
+control
 
 {{ control }}
+
+### 02 组件样式
+
+垂直模式
+
+{{ vertical }}
+
