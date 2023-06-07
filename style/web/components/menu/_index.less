@@ -671,13 +671,8 @@ a.@{prefix}-menu__item {
   }
 
   &--dark {
-    &.@{prefix}-head-menu, &.@{prefix}-is-head {
+    &.@{prefix}-head-menu {
       background-color: @menu-theme-dark;
-
-      .@{prefix}-menu__popup {
-        background-color: @menu-theme-dark;
-        border: solid .5px @menu-border-color--dark;
-      }
     }
 
     .@{prefix}-menu__item {
@@ -709,6 +704,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__popup {
       background: @menu-theme-dark;
+      border: solid .5px @menu-border-color--dark;
 
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
