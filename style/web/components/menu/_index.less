@@ -107,62 +107,8 @@ a.@{prefix}-menu__item {
     padding-left: 0;
   }
 
-  .@{prefix}-menu__popup {
-    top: calc(@head-menu-item-height + 12px);
-    left: 0;
-    min-width: 100%;
-    box-sizing: content-box;
-    transform-origin: center top;
-    border: solid .5px @menu-border-color;
-
-    .@{prefix}-menu__item {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      white-space: nowrap;
-      padding-left: @comp-paddingLR-s;
-      padding-right: @comp-paddingLR-s;
-      min-width: 100%;
-      margin-left: 0;
-      color: @head-menu-popup-item-color;
-      box-sizing: border-box;
-
-      &.@{prefix}-is-active {
-        color: @menu-light-active-color;
-
-        .t-icon {
-          color: @menu-light-active-color;
-        }
-      }
-    }
-
-    li + li {
-      margin-top: @comp-margin-xxs;
-      margin-left: 0;
-    }
-  }
-
   .@{prefix}-fake-arrow {
     margin-left: @comp-margin-m;
-  }
-
-  // 多层情况
-  .@{prefix}-menu__popup-inner {
-    .@{prefix}-menu__popup {
-      top: -8px;
-      left: calc(100% + 16px);
-      transform-origin: left top;
-    }
-
-    .@{prefix}-menu__item {
-      text-align: left;
-      padding: 0 16px;
-      justify-content: space-between;
-    }
-
-    .@{prefix}-submenu-icon {
-      transform: rotate(270deg);
-    }
   }
 }
 
@@ -223,35 +169,9 @@ a.@{prefix}-menu__item {
       }
     }
 
-    .@{prefix}-menu__popup {
-      .@{prefix}-menu__item {
-        padding-left: @comp-paddingLR-s;
-        padding-right: @comp-paddingLR-s;
-        justify-content: flex-start;
-
-        span {
-          display: inline;
-        }
-
-        &.@{prefix}-menu__item--plain::after {
-          content: "";
-        }
-      }
-
-      .@{prefix}-fake-arrow {
-        display: block;
-      }
-    }
-
     .@{prefix}-submenu {
       &-icon {
         display: none;
-      }
-
-      .@{prefix}-menu__popup {
-        .@{prefix}-submenu-icon {
-          display: initial;
-        }
       }
 
       > .@{prefix}-menu__item {
@@ -428,19 +348,6 @@ a.@{prefix}-menu__item {
     }
   }
 
-  .@{prefix}-menu__popup {
-    top: 0;
-    left: calc(100% + @pop-padding-m);
-
-    .@{prefix}-menu__item, .@{prefix}-submenu {
-      margin: @comp-margin-xxs 0 0 0;
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-
   &.@{prefix}-menu--dark {
     background: @menu-theme-dark;
 
@@ -473,20 +380,6 @@ a.@{prefix}-menu__item {
       &.@{prefix}-is-opened.@{prefix}-is-active {
         background-color: transparent;
       }
-    }
-
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
-
-      .@{prefix}-menu__item {
-        &.@{prefix}-is-active {
-          background-color: @default-menu-active-color--dark;
-        }
-      }
-    }
-
-    .@{prefix}-menu__popup {
-      background: @menu-theme-dark;
     }
 
     .@{prefix}-menu-group__title {
@@ -671,13 +564,8 @@ a.@{prefix}-menu__item {
   }
 
   &--dark {
-    &.@{prefix}-head-menu, &.@{prefix}-is-head {
+    &.@{prefix}-head-menu {
       background-color: @menu-theme-dark;
-
-      .@{prefix}-menu__popup {
-        background-color: @menu-theme-dark;
-        border: solid .5px @menu-border-color--dark;
-      }
     }
 
     .@{prefix}-menu__item {
@@ -709,6 +597,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__popup {
       background: @menu-theme-dark;
+      border: solid .5px @menu-border-color--dark;
 
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
@@ -741,22 +630,13 @@ a.@{prefix}-menu__item {
   }
 
   &__popup {
-    max-height: 0;
     overflow: hidden;
-    transition: max-height @anim-duration-moderate @anim-time-fn-easing,
-      width @anim-duration-moderate @anim-time-fn-easing,
-      opacity @anim-duration-base linear;
     position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
     border-radius: @border-radius-medium;
     opacity: 0;
     .list-style-none();
-
-    // 超过 2 级的弹出菜单，不需要动画
-    .@{prefix}-menu__popup {
-      transition: none;
-    }
 
     &-wrapper {
       padding: @pop-padding-m;
@@ -770,24 +650,17 @@ a.@{prefix}-menu__item {
       margin-left: @comp-margin-s;
     }
 
+    .@{prefix}-menu__item {
+      padding-left: @comp-paddingLR-l;
+      padding-right: @comp-paddingLR-l;
+    }
+
     &.@{prefix}-is-vertical {
-      max-height: unset;
-      width: 0;
-
-      &.@{prefix}-is-opened {
-        width: var(--popup-width, 160px);
-      }
-
-      .@{prefix}-menu__item {
-        padding-left: @comp-paddingLR-l;
-        padding-right: @comp-paddingLR-l;
-      }
+      min-width: var(--popup-width, 160px);
     }
 
     &.@{prefix}-is-horizontal {
       .@{prefix}-menu__item {
-        padding-left: @comp-paddingLR-l;
-        padding-right: @comp-paddingLR-l;
         white-space: nowrap;
       }
 
@@ -797,28 +670,9 @@ a.@{prefix}-menu__item {
     }
 
     &.@{prefix}-is-opened {
-      max-height: calc(100vh - @menu-height-default * 2);
       opacity: 1;
       box-shadow: @menu-default-shadow;
       overflow: visible;
-
-      .@{prefix}-menu__popup {
-        top: calc(0px - @pop-padding-m);
-        left: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-
-        &::before {
-          content: "";
-          display: block;
-          position: absolute;
-          left: -@horizontal-spacer;
-          width: @horizontal-spacer;
-          top: 0;
-          bottom: 0;
-        }
-        @horizontal-spacer: 16px;
-      }
     }
 
     .@{prefix}-menu__item {
@@ -876,5 +730,17 @@ a.@{prefix}-menu__item {
     &:first-child {
       margin-top: 0;
     }
+  }
+}
+
+.@{prefix}-is-head-menu {
+  .@{prefix}-menu__popup {
+    margin-top: calc((@menu-height-default - @head-menu-item-height) / 2) !important;
+  }
+}
+
+.@{prefix}-menu-is-nested {
+  .@{prefix}-menu__popup {
+    margin-top: calc(0px - @pop-padding-m) !important;
   }
 }
