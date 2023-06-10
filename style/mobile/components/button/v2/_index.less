@@ -80,7 +80,6 @@
   border: none;
   background-image: none;
   transition: all .3s;
-  touch-action: manipulation;
   border-radius: @button-border-radius;
   outline: none;
   /* stylelint-disable-next-line */
@@ -89,6 +88,10 @@
   vertical-align: top;
 
   .cursor-pointer();
+
+  /* stylelint-disable-next-line */
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 
   /* stylelint-disable-next-line */
   -webkit-appearance: none;
