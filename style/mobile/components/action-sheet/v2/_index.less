@@ -82,7 +82,8 @@
       }
 
       &--disabled {
-        color: @action-sheet-list-item-disabled-color;
+        --td-button-default-disabled-bg: none;
+        --td-button-default-disabled-color: @action-sheet-list-item-disabled-color;
       }
 
       &-text {
@@ -140,24 +141,8 @@
   }
 
   &__dots {
-    position: absolute;
-    left: 50%;
-    bottom: 16px;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: row;
-
-    &-item {
-      width: 8px;
-      height: 8px;
-      background-color: #dcdcdc;
-      border-radius: 50%;
-      margin: 0 8px;
-      transition: all .4s ease-in;
-
-      &.@{prefix}-is-active {
-        background-color: #0052d9;
-      }
-    }
+    --td-swiper-nav-dot-color: @action-sheet-dot-color;
+    --td-swiper-nav-dot-size: @action-sheet-dot-size;
+    --td-swiper-nav-dot-active-color: @action-sheet-dot-active-color;
   }
 }
