@@ -43,17 +43,22 @@
   }
 
   &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: @grid-item-image-bg-color;
+    border-radius: @grid-item-image-border-radius;
     width: @grid-item-image-width;
     height: @grid-item-image-width;
 
     &--small {
-      width: 32px;
-      height: 32px;
+      width: @grid-item-image-small-width;
+      height: @grid-item-image-small-width;
     }
 
     &--middle {
-      width: 40px;
-      height: 40px;
+      width: @grid-item-image-middle-width;
+      height: @grid-item-image-middle-width;
     }
   }
 
