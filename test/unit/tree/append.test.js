@@ -143,6 +143,7 @@ describe('tree', () => {
       expect(tree.getNode('t1.1').getIndex()).toBe(0);
       expect(tree.getNode('t1.3').getIndex()).toBe(1);
       expect(tree.getNode('t1.2').getIndex()).toBe(2);
+      expect(tree.getNode('t1.3').getParent().value).toBe('t1');
     });
 
     it('insertBefore 方法插入节点到不存在位置', async () => {
@@ -208,6 +209,7 @@ describe('tree', () => {
       expect(tree.getNode('t1.1').getIndex()).toBe(0);
       expect(tree.getNode('t1.2').getIndex()).toBe(1);
       expect(tree.getNode('t1.3').getIndex()).toBe(2);
+      expect(tree.getNode('t1.3').getParent().value).toBe('t1');
     });
 
     it('insertAfter 方法插入节点到不存在位置', async () => {
