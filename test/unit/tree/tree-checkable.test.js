@@ -2,7 +2,7 @@ import TreeStore from '../../../js/tree/tree-store';
 import { delay } from './kit';
 
 describe('tree', () => {
-  describe('tree:checked', () => {
+  describe('tree:checkable', () => {
     it('checkable 属性为 false 时, 无法设置选中项', async () => {
       const tree = new TreeStore({
         checkable: false,
