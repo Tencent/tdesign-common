@@ -6,7 +6,7 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: 16px 0 8px;
+  padding: @grid-item-verticla-padding;
   flex-direction: column;
   background: @grid-item-bg-color;
   flex-basis: 84px;
@@ -22,6 +22,7 @@
   }
 
   &--horizontal {
+    padding: @grid-item-horizontal-padding;
     flex-direction: row;
     justify-content: center;
   }
