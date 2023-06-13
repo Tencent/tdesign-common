@@ -106,6 +106,10 @@ a.@{prefix}-menu__item {
     border-top: 1px solid @head-menu-submenu-border-color;
     padding-left: 0;
   }
+
+  .@{prefix}-fake-arrow {
+    margin-left: @comp-margin-m;
+  }
 }
 
 // default-menu
@@ -324,6 +328,11 @@ a.@{prefix}-menu__item {
     .t-icon {
       width: 20px;
       height: 20px;
+    }
+
+    .@{prefix}-fake-arrow {
+      margin-left: auto;
+      min-width: 16px;
     }
 
     &.@{prefix}-is-active:not(.@{prefix}-is-opened) {
