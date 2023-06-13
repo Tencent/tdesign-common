@@ -566,14 +566,13 @@ export class TreeStore {
           const childrenNodes = node.walk();
           childrenNodes.forEach((childNode) => {
             this.checkedMap.set(childNode.value, true);
-            childNode.updateChecked();
           });
         }
       }
     });
     if (!checkStrictly) {
-      const checked = this.getChecked();
-      const relatedNodes = this.getRelatedNodes(checked);
+      const checkedValues = this.getChecked();
+      const relatedNodes = this.getRelatedNodes(checkedValues);
       relatedNodes.forEach((node) => {
         node.updateChecked();
       });
