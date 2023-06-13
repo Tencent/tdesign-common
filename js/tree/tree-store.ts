@@ -549,24 +549,25 @@ export class TreeStore {
   // 替换选中态列表
   public replaceChecked(list: TreeNodeValue[]): void {
     this.resetChecked();
-    this.setChecked(list, true);
+    this.setChecked(list);
   }
 
   // 批量设置选中态
-  public setChecked(list: TreeNodeValue[], isFromValueChange?: boolean): void {
-    const { valueMode, checkStrictly, checkable } = this.config;
+  public setChecked(list: TreeNodeValue[]): void {
+    const { checkStrictly, checkable } = this.config;
     if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
       const node = this.getNode(val);
       if (node) {
-        if (valueMode === 'parentFirst' && !checkStrictly) {
+        if (checkStrictly) {
+          this.checkedMap.set(val, true);
+          node.updateChecked();
+        } else {
           const childrenNodes = node.walk();
           childrenNodes.forEach((childNode) => {
             this.checkedMap.set(childNode.value, true);
+            childNode.updateChecked();
           });
-        } else {
-          this.checkedMap.set(val, true);
-          node.updateChecked(isFromValueChange);
         }
       }
     });

@@ -22,14 +22,20 @@ import log from '../log';
 
 const { hasOwnProperty } = Object.prototype;
 
-export const defaultStatus = {
-  expandMutex: false,
-  activable: false,
-  checkable: false,
-  disabled: false,
-  draggable: false,
+// 这里的属性为 data 中属性可以同步到 treeNode 实例属性的白名单
+// 仅 label 属性和在列表中的属性可以通过 set 方法配置到 treeNode 实例上
+export const setableStatus = {
+  expandMutex: null,
+  activable: null,
+  checkable: null,
+  disabled: null,
+  draggable: null,
   loading: false,
 };
+
+export const setableProps = Object.keys(setableStatus);
+
+export const syncableProps = [...setableProps, 'actived', 'expanded', 'checked'];
 
 export const privateKey = '__tdesign_id__';
 
@@ -76,16 +82,16 @@ export class TreeNode {
   public expanded: boolean;
 
   // 展开时是否收起同级节点，对子节点生效
-  public expandMutex: boolean;
+  public expandMutex: null | boolean;
 
   // 节点在视图上实际的激活状态
   public actived: boolean;
 
   // 是否可激活
-  public activable: boolean;
+  public activable: null | boolean;
 
   // 是否可选中
-  public checkable: boolean;
+  public checkable: null | boolean;
 
   // 是否可选中的视图呈现
   public vmCheckable: boolean;
@@ -97,10 +103,10 @@ export class TreeNode {
   public indeterminate: boolean;
 
   // 节点是否已禁用
-  public disabled: boolean;
+  public disabled: null | boolean;
 
   // 节点是否可拖动
-  public draggable: boolean;
+  public draggable: null | boolean;
 
   // 节点是否可视
   public visible: boolean;
@@ -121,7 +127,7 @@ export class TreeNode {
 
     const config = tree.config || {};
     const prefix = config.prefix || 't';
-    const keys = get(tree, 'config.keys') || {};
+    const keys = config.keys || {};
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
@@ -137,24 +143,25 @@ export class TreeNode {
     this.vmIsLocked = false;
     this.level = 0;
     this.visible = true;
+    this.actived = false;
+    this.expanded = config.expandAll;
+    this.checked = false;
+    this.indeterminate = false;
+    this.activable = null;
+    this.checkable = null;
+    this.disabled = null;
+    this.expandMutex = null;
+    this.draggable = null;
+    this.loading = false;
 
     // 为节点设置唯一 id
     // tree 数据替换时，value 相同有可能导致节点状态渲染冲突
     // 用这个 唯一 id 来解决，用于类似 vue 组件的唯一 key 指定场景
     this[privateKey] = uniqueId(prefix);
 
-    const spec = {
-      ...defaultStatus,
-      ...data,
-      draggable: data.draggable !== undefined ? data.draggable : get(this, 'tree.config.draggable')
-    };
-    const children = spec[propChildren];
-
-    this.set(spec);
-    this.label = spec[propLabel] || '';
+    // 设置 value
     // 没有 value 的时候，value 默认使用自动生成的 唯一 id
-    this.value = isNil(spec[propValue]) ? this[privateKey] : spec[propValue];
-
+    this.value = isNil(data[propValue]) ? this[privateKey] : data[propValue];
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
@@ -162,41 +169,39 @@ export class TreeNode {
     nodeMap.set(this.value, this);
     privateMap.set(this[privateKey], this);
 
-    if (parent && parent instanceof TreeNode) {
-      this.parent = parent;
-    } else {
-      this.parent = null;
-    }
+    // 设置标签
+    this.label = data[propLabel] || '';
 
+    // 设置子节点
+    const children = data[propChildren];
     // 子节点为 true 的状态逻辑需要放到状态计算之前
     // 初始化加载逻辑需要依据这个来进行
     if (children === true) {
       this.children = children;
     }
 
-    this.actived = false;
-    if (typeof spec.actived !== 'undefined') {
-      this.actived = spec.actived;
+    // 设置父节点
+    if (parent && parent instanceof TreeNode) {
+      this.parent = parent;
+    } else {
+      this.parent = null;
     }
+
+    // 同步数据属性到节点属性
+    // 仅 syncableStatus 列举的属性被同步到 treeNode 实例属性
+    syncableProps.forEach((prop) => {
+      if (typeof data[prop] !== 'undefined') {
+        this[prop] = data[prop];
+      }
+    });
+
+    // 初始化节点状态
     this.initActived();
-
-    this.expanded = config.expandAll;
-    if (typeof spec.expanded !== 'undefined') {
-      this.expanded = spec.expanded;
-    }
     this.initExpanded();
-
-    this.checked = false;
-    if (typeof spec.checked !== 'undefined') {
-      this.checked = spec.checked;
-    }
     this.initChecked();
 
-    this.update();
-    tree.reflow(this);
-
-    // 这里的子节点加载逻辑不能放到状态计算之前
-    // 因为子节点状态计算依赖父节点状态
+    // 这里的子节点加载逻辑不能放到状态初始化之前
+    // 因为子节点状态计算依赖父节点初始化状态
     if (Array.isArray(children)) {
       this.append(children);
     } else if (children === true && !config.lazy) {
@@ -204,10 +209,13 @@ export class TreeNode {
     }
 
     // checked 状态依赖于子节点状态
-    // 因此初始化状态放到子节点插入之后
-    this.checked = false;
-    this.indeterminate = false;
+    // 因此子节点插入之后需要再次更新状态
     this.updateChecked();
+
+    // 标记节点更新
+    this.update();
+    // 创建节点需要回流操作
+    tree.reflow(this);
   }
 
   /* ------ 状态初始化 ------ */
@@ -216,12 +224,13 @@ export class TreeNode {
   public initChecked() {
     const { tree, value, parent } = this;
     const { checkStrictly } = tree.config;
-    let { checked } = this;
-    checked = parent?.isChecked();
-    if (checked && !checkStrictly) {
+    if (this.checked) {
       tree.checkedMap.set(value, true);
     }
-    this.checked = checked;
+    if (!checkStrictly && parent?.isChecked()) {
+      tree.checkedMap.set(value, true);
+    }
+    this.updateChecked();
   }
 
   // 初始化节点展开状态
@@ -475,11 +484,13 @@ export class TreeNode {
   }
 
   // 设置状态
+  // 为节点设置独立于配置的 disabled 状态: set({ disabled: true })
+  // 清除独立于配置的 disabled 状态: set({ disabled: null })
   public set(item: TreeNodeState): void {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (hasOwnProperty.call(defaultStatus, key) || key === 'label') {
+      if (hasOwnProperty.call(setableStatus, key) || key === 'label') {
         this[key] = item[key];
       }
     });
@@ -614,27 +625,47 @@ export class TreeNode {
     const { hasFilter, config } = tree;
     const { disabled, allowFoldNodeOnFilter } = config;
     if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) return true;
-    return !!(disabled || this.disabled);
+    let state = disabled;
+    if (typeof this.disabled === 'boolean') {
+      state = this.disabled;
+    }
+    return state;
   }
 
   // 判断节点是否能拖拽
   public isDraggable() {
-    return !!(get(this, 'tree.config.draggable') && this.draggable);
+    let state = !!get(this, 'tree.config.draggable');
+    if (typeof this.draggable === 'boolean') {
+      state = this.draggable;
+    }
+    return state;
   }
 
   // 判断节点是否支持互斥展开
   public isExpandMutex() {
-    return !!(get(this, 'tree.config.expandMutex') || this.expandMutex);
+    let state = !!get(this, 'tree.config.expandMutex');
+    if (typeof this.expandMutex === 'boolean') {
+      state = this.expandMutex;
+    }
+    return state;
   }
 
   // 节点可高亮
   public isActivable() {
-    return !!(get(this, 'tree.config.activable') || this.activable);
+    let state = !!get(this, 'tree.config.activable');
+    if (typeof this.activable === 'boolean') {
+      state = this.activable;
+    }
+    return state;
   }
 
   // 是否可选
   public isCheckable() {
-    return !!(get(this, 'tree.config.checkable') || this.checkable);
+    let state = !!get(this, 'tree.config.checkable');
+    if (typeof this.checkable === 'boolean') {
+      state = this.checkable;
+    }
+    return state;
   }
 
   // 检查节点是否被激活
@@ -929,10 +960,10 @@ export class TreeNode {
   }
 
   // 更新选中态属性值
-  public updateChecked(isFromValueChange?: boolean): void {
+  public updateChecked(): void {
     const { tree } = this;
     this.vmCheckable = this.isCheckable();
-    if (this.vmCheckable && (!this.disabled || isFromValueChange)) {
+    if (this.vmCheckable && !this.isDisabled()) {
       this.checked = this.isChecked();
       if (this.checked) {
         tree.checkedMap.set(this.value, true);
