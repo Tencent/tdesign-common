@@ -30,6 +30,29 @@ import {
  * tree 数据模型
  * @class TreeStore
  * @param {object} options tree 组件选项
+ * @param {string} [options.prefix="t"] tree 组件内部属性前缀
+ * @param {object} options.keys 取值映射对象，部分属性按照其 key/value 来取 treeNode 属性值
+ * @param {string} [options.keys.label="label"] 从 data 种取 label 值时读取的属性名称
+ * @param {string} [options.keys.value="value"] 从 data 种取 value 值时读取的属性名称
+ * @param {string} [options.keys.children="children"] 从 data 种取 children 值时读取的属性名称
+ * @param {boolean} [options.expandAll=false] 初始化节点时，是否自动展开
+ * @param {number} [options.expandLevel=0] 初始化节点时，自动展开的级别
+ * @param {boolean} [options.expandMutex=false] 展开时，是否使用手风琴模式
+ * @param {boolean} [options.expandParent=false] 展开节点时，是否自动展开父节点
+ * @param {boolean} [options.activable=false] 是否可以激活节点
+ * @param {boolean} [options.activeMultiple=false] 激活节点是否使用多选模式
+ * @param {boolean} [options.checkable=false] 节点是否可选中
+ * @param {boolean} [options.checkStrictly=false] 节点选中是否使用严格模式
+ * @param {boolean} [options.disabled=false] 节点是否禁用
+ * @param {boolean} [options.draggable=false] 节点是否可拖动
+ * @param {function} [options.load=null] 节点延迟加载函数
+ * @param {boolean} [options.lazy=false] 节点是否使用延迟加载模式
+ * @param {string} [options.valueMode="onlyLeaf"] 节点选中取值模式
+ * @param {function} [options.filter=null] 节点过滤函数
+ * @param {function} [options.onLoad=null] 节点延迟加载完成时的回调函数
+ * @param {function} [options.onReflow=null] 节点触发回流后的回调
+ * @param {function} [options.onUpdate=null] 节点触发更新后的后调
+ * @param {boolean} [options.allowFoldNodeOnFilter=false] 过滤时，是否允许折叠节点
  * @returns void
  */
 export class TreeStore {
@@ -150,12 +173,19 @@ export class TreeStore {
     }
   }
 
-  // 获取根孩子节点列表
-  public getChildren() {
+  /**
+   * 获取根节点列表
+   * @returns TreeNode[] 根节点对象数组
+   */
+  public getChildren(): TreeNode[] {
     return this.children;
   }
 
-  // 获取节点对象
+  /**
+   * 获取指定节点对象
+   * @param {string|number|TreeNode} item 获取节点对象的条件，可以是节点 value，也可以是节点本身
+   * @returns TreeNode 节点对象，如果判断树中没有符合条件的节点，返回 undefined
+   */
   public getNode(item: TypeTargetNode): TreeNode {
     let node = null;
     if (isString(item) || isNumber(item)) {
@@ -166,12 +196,20 @@ export class TreeStore {
     return node;
   }
 
-  // 获取节点在总节点列表中的位置
+  /**
+   * 获取节点在总节点列表中的位置
+   * @param {TreeNode} node 节点对象
+   * @returns number 节点在总节点列表中的位置序号
+   */
   public getIndex(node: TreeNode): number {
     return this.nodes.indexOf(node);
   }
 
-  // 获取指定节点的父节点
+  /**
+   * 获取指定节点的父节点
+   * @param {string} value 节点值
+   * @returns TreeNode 节点对象
+   */
   public getParent(value: TypeTargetNode): TreeNode {
     let parent = null;
     const node = this.getNode(value);
@@ -181,7 +219,11 @@ export class TreeStore {
     return parent;
   }
 
-  // 获取指定节点的所有父节点
+  /**
+   * 获取指定节点的所有父节点
+   * @param {string} value 节点值
+   * @returns TreeNode[] 父节点数组
+   */
   public getParents(value: TypeTargetNode): TreeNode[] {
     const node = this.getNode(value);
     let parents: TreeNode[] = [];
@@ -191,7 +233,11 @@ export class TreeStore {
     return parents;
   }
 
-  // 获取指定节点在其所在 children 中的位置
+  /**
+   * 获取指定节点在其所在 children 中的位置
+   * @param {string} value 节点值
+   * @returns number 节点在 children 中的位置序号
+   */
   public getNodeIndex(value: TypeTargetNode): number {
     const node = this.getNode(value);
     let index = -1;
@@ -201,7 +247,27 @@ export class TreeStore {
     return index;
   }
 
-  // 获取所有符合条件的节点
+  /**
+   * 获取所有符合条件的节点
+   * 以这些字段作为示例:
+   * - value: 节点值(ID)
+   * - TreeNode: 节点实例
+   * - level: 节点层级
+   * - filter: 节点过滤函数
+   * 支持下列使用方式
+   * - getNodes() 获取所有节点
+   * - getNodes(value) 获取节点值对应的目标节点下，包含自己在内的所有子节点
+   * - getNodes(TreeNode) 获取目标节点下，包含自己在内的所有子节点
+   * - getNodes(value, { level: 2 }) 获取目标节点下，层级在 2 以内的子节点
+   * - getNodes(value, { filter: node => (!node.checked) }) 获取目标节点下，未选中的节点
+   * - getNodes(value, { props: { actived: true } }) 获取目标节点下，已激活的节点
+   * @param {string | TreeNode} item 节点值，节点对象
+   * @param {object} options 节点过滤条件，可传递节点属性，过滤出属性一致的节点
+   * @param {number} options.level 节点层级
+   * @param {function} options.filter 节点过滤条件函数
+   * @param {object} options.props 节点属性对象，作为过滤条件
+   * @returns TreeNode[] 符合条件的节点数组
+   */
   public getNodes(
     item?: TypeTargetNode,
     options?: TypeTreeFilterOptions,
@@ -250,7 +316,11 @@ export class TreeStore {
     return nodes;
   }
 
-  // 给树添加节点数据
+  /**
+   * 添加新节点数据
+   * @param {object[]} list 节点数据对象数组
+   * @returns void
+   */
   public append(list: TypeTreeNodeData[]): void {
     list.forEach((item) => {
       const node = new TreeNode(this, item);
@@ -259,7 +329,11 @@ export class TreeStore {
     this.reflow();
   }
 
-  // 重新加载数据
+  /**
+   * 清空当前树的数据，重新加载数据
+   * @param {object[]} list 节点数据对象数组
+   * @returns void
+   */
   public reload(list: TypeTreeNodeData[]): void {
     this.expandedMap.clear();
     this.checkedMap.clear();
@@ -269,10 +343,17 @@ export class TreeStore {
     this.append(list);
   }
 
-  // 解析节点数据，适配多种节点类型
+  /**
+   * 解析节点数据，适配多种节点类型
+   * @param {string | TreeNode | object} para 树节点值，或者树节点，或者节点构造数据
+   * @param {object | TreeNode} item 节点构造数据, 或者节点构造数据数组，或者树节点
+   * @returns spec 解析完成的数据结构
+   * - {TreeNode} spec.node 目标树节点
+   * - {object} spec.data 节点构造数据
+   */
   public parseNodeData(
     para: TreeNodeValue | TreeNode | TypeTreeNodeData,
-    item: TypeTreeNodeData | TypeTreeNodeData[] | TreeNode,
+    item: TypeTreeNodeData | TreeNode,
   ) {
     let value: TreeNodeValue = '';
     let node = null;
@@ -301,14 +382,17 @@ export class TreeStore {
 
   /**
    * 向指定节点追加节点或者数据
+   * 以这些字段作为示例: item: 节点数据, TreeNode: 节点实例, value: 节点值(ID)
    * 支持下列使用方式
-   * item: 节点数据, TreeNode: 节点实例, value: 节点值(ID)
-   * appendNodes(item)
-   * appendNodes(TreeNode)
-   * appendNodes(value, item)
-   * appendNodes(value, TreeNode)
-   * appendNodes(TreeNode, item)
-   * appendNodes(TreeNode, TreeNode)
+   * - appendNodes(item) 直接传递节点构造数据，新增节点
+   * - appendNodes(TreeNode) 传递别的树的树节点，新增节点
+   * - appendNodes(value, item) 以节点值查找指定节点，并新增节点构造数据
+   * - appendNodes(value, TreeNode) 以节点值查找指定节点，并新增树节点
+   * - appendNodes(TreeNode, item) 向指定节点新增节点构造数据
+   * - appendNodes(TreeNode, TreeNode) 向指定节点新增树节点
+   * @param {string | TreeNode | object} para 树节点值，或者树节点，或者节点构造数据
+   * @param {object | TreeNode} item 节点构造数据, 或者节点构造数据数组，或者树节点
+   * @returns void
    */
   public appendNodes(
     para?: TypeTargetNode | TypeTreeNodeData,
@@ -339,7 +423,12 @@ export class TreeStore {
     }
   }
 
-  // 在目标节点之前插入节点
+  /**
+   * 在目标节点之前插入节点
+   * @param {string | TreeNode} value 节点值，或者树节点
+   * @param {object | TreeNode} item 节点构造数据, 或者树节点
+   * @returns void
+   */
   public insertBefore(value: TypeTargetNode, item: TypeTreeItem): void {
     const node = this.getNode(value);
     if (node) {
@@ -347,7 +436,12 @@ export class TreeStore {
     }
   }
 
-  // 在目标节点之后插入节点
+  /**
+   * 在目标节点之后插入节点
+   * @param {string | TreeNode} value 节点值，或者树节点
+   * @param {object | TreeNode} item 节点构造数据, 或者树节点
+   * @returns void
+   */
   public insertAfter(value: TypeTargetNode, item: TypeTreeItem): void {
     const node = this.getNode(value);
     if (node) {
@@ -355,8 +449,12 @@ export class TreeStore {
     }
   }
 
-  // 更新树结构
-  // 清空 nodes 数组，然后遍历所有根节点重新插入 node
+  /**
+   * 更新树结构
+   * - 清空 nodes 数组，然后遍历所有根节点重新插入 node
+   * - 这个操作将会为树结构数据提供一个一纬数组索引
+   * @returns void
+   */
   public refreshNodes(): void {
     const { children, nodes } = this;
     nodes.length = 0;
@@ -366,7 +464,10 @@ export class TreeStore {
     });
   }
 
-  // 更新所有树节点状态
+  /**
+   * 更新所有树节点状态
+   * @returns void
+   */
   public refreshState(): void {
     const { nodes } = this;
     nodes.forEach((node) => {
@@ -375,15 +476,26 @@ export class TreeStore {
     });
   }
 
-  // 节点重排
-  // 应该仅在树节点增删改查时调用
+  /**
+   * 标记节点重排
+   * - 应该仅在树节点增删改查时调用
+   * - 节点重排会在延时后触发 refreshNodes 方法的调用
+   * @param {TreeNode} node 触发重排的树节点
+   * @returns void
+   */
   public reflow(node?: TreeNode): void {
     this.shouldReflow = true;
     this.updated(node);
   }
 
-  // 触发更新事件
-  // 节点属性变更时调用
+  /**
+   * 触发更新事件
+   * - 节点属性变更时调用
+   * - 统一延时后，处理需要在其他节点状态更新后再处理的逻辑，减少这类逻辑的重复调用开销
+   * - 统一延时后，派发事件，通知树已更新完毕，以及回流完毕，触发 vue 视图渲染操作
+   * @param {TreeNode} node 触发更新的树节点
+   * @returns void
+   */
   public updated(node?: TreeNode): void {
     if (node?.value) {
       this.updatedMap.set(node.value, true);
@@ -427,13 +539,22 @@ export class TreeStore {
     });
   }
 
-  // 获取激活节点集合
+  /**
+   * 获取激活节点集合
+   * @param {Map} map 预设激活节点 map, 用于受控操作时预先获取结果而不直接操作节点状态
+   * @returns string[] 激活节点值数组
+   */
   public getActived(map?: TypeIdMap): TreeNodeValue[] {
     const activedMap = map || this.activedMap;
     return Array.from(activedMap.keys());
   }
 
-  // 获取指定范围的高亮节点
+  /**
+   * 获取指定范围的激活节点
+   * - 目标节点
+   * @param {string | TreeNode} 目标节点值，或者目标节点本身
+   * @returns TreeNode[] 激活节点数组
+   */
   public getActivedNodes(item?: TypeTargetNode): TreeNode[] {
     let nodes = this.getNodes(item);
     nodes = nodes.filter((node) => node.isActived());
