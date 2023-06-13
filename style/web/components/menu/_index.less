@@ -106,10 +106,6 @@ a.@{prefix}-menu__item {
     border-top: 1px solid @head-menu-submenu-border-color;
     padding-left: 0;
   }
-
-  .@{prefix}-fake-arrow {
-    margin-left: @comp-margin-m;
-  }
 }
 
 // default-menu
@@ -330,11 +326,6 @@ a.@{prefix}-menu__item {
       height: 20px;
     }
 
-    .@{prefix}-fake-arrow {
-      margin-left: auto;
-      min-width: 16px;
-    }
-
     &.@{prefix}-is-active:not(.@{prefix}-is-opened) {
       color: @default-menu-active-color;
       background-color: @menu-item-active-bg--light;
@@ -489,7 +480,10 @@ a.@{prefix}-menu__item {
     cursor: pointer;
     text-overflow: ellipsis;
     border-radius: @border-radius-default;
-    justify-content: space-between;
+
+    > .@{prefix}-fake-arrow {
+      margin-left: @comp-margin-m;
+    }
 
     ::selection {
       background: transparent;
@@ -648,7 +642,7 @@ a.@{prefix}-menu__item {
     }
 
     .@{prefix}-fake-arrow {
-      margin-left: @comp-margin-s;
+      margin-left: auto;
     }
 
     .@{prefix}-menu__item {
