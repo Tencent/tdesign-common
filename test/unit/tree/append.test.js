@@ -10,7 +10,7 @@ describe('tree', () => {
       }, {
         value: 't6'
       }]);
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       // 内部生成的唯一 key 不应当绑定测试状态
       // 生成的唯一 key 与节点顺序无关，只需确保唯一
@@ -31,7 +31,7 @@ describe('tree', () => {
       tree.appendNodes({
         value: 't3'
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(3);
       expect(nodes[2].value).toBe('t3');
@@ -52,7 +52,7 @@ describe('tree', () => {
       }]);
       const targetNode = tree2.getNode('t4');
       tree1.appendNodes(targetNode);
-      await delay(1);
+      await delay(0);
       const nodes = tree1.getNodes();
       expect(nodes.length).toBe(3);
       expect(nodes[2].value).toBe('t4');
@@ -71,7 +71,7 @@ describe('tree', () => {
       tree.appendNodes(tree.getNode('t2'), {
         value: 't2.1'
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(4);
       expect(tree.getNode('t1.1').getParent().value).toBe('t1');
@@ -93,7 +93,7 @@ describe('tree', () => {
       }]);
       tree1.appendNodes('t1', tree2.getNode('t3'));
       tree1.appendNodes(tree1.getNode('t2'), tree2.getNode('t4'));
-      await delay(1);
+      await delay(0);
       const nodes = tree1.getNodes();
       expect(nodes.length).toBe(4);
       expect(tree1.getNode('t3').getParent().value).toBe('t1');
@@ -115,7 +115,7 @@ describe('tree', () => {
       tree.insertBefore('t1', {
         value: 't4',
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(4);
       expect(nodes[0].value).toBe('t4');
@@ -137,7 +137,7 @@ describe('tree', () => {
       tree.insertBefore('t1.2', {
         value: 't1.3',
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(4);
       expect(tree.getNode('t1.1').getIndex()).toBe(0);
@@ -159,7 +159,7 @@ describe('tree', () => {
       tree.insertBefore('t1.3', {
         value: 't1.4',
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(3);
       expect(tree.getNode('t1.1').getIndex()).toBe(0);
@@ -181,7 +181,7 @@ describe('tree', () => {
       tree.insertAfter('t1', {
         value: 't4',
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(4);
       expect(nodes[0].value).toBe('t1');
@@ -203,7 +203,7 @@ describe('tree', () => {
       tree.insertAfter('t1.2', {
         value: 't1.3',
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(4);
       expect(tree.getNode('t1.1').getIndex()).toBe(0);
@@ -225,7 +225,7 @@ describe('tree', () => {
       tree.insertAfter('t1.3', {
         value: 't1.4',
       });
-      await delay(1);
+      await delay(0);
       const nodes = tree.getNodes();
       expect(nodes.length).toBe(3);
       expect(tree.getNode('t1.1').getIndex()).toBe(0);

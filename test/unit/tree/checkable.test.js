@@ -15,11 +15,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1.1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       expect(tree.getChecked().length).toBe(0);
       const t1d1 = tree.getNode('t1.1');
       expect(t1d1.checked).toBe(false);
@@ -37,11 +37,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       const t1 = tree.getNode('t1');
       const checked = tree.getChecked();
       expect(t1.isChecked()).toBe(true);
@@ -64,13 +64,13 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
 
       tree.setActived(['t1']);
-      await delay(1);
+      await delay(0);
 
       tree.setChecked(['t1']);
-      await delay(1);
+      await delay(0);
 
       const t1 = tree.getNode('t1');
       const checked = tree.getChecked();
@@ -101,11 +101,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1']);
 
       // 选中状态是延时更新的
-      await delay(1);
+      await delay(0);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -140,11 +140,11 @@ describe('tree', () => {
         }],
       }]);
 
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1.1']);
 
       // 选中状态是延时更新的
-      await delay(1);
+      await delay(0);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -165,6 +165,173 @@ describe('tree', () => {
       expect(t1d2.isIndeterminate()).toBe(false);
       expect(t1d2.indeterminate).toBe(false);
     });
+
+    it('选中态补足', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      t1d1.setChecked(true, {
+        directly: true,
+      });
+      await delay(0);
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.indeterminate).toBe(false);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d2.indeterminate).toBe(false);
+
+      t1d2.setChecked(true, {
+        directly: true,
+      });
+      await delay(0);
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.indeterminate).toBe(false);
+      expect(t1d2.checked).toBe(true);
+      expect(t1d2.indeterminate).toBe(false);
+    });
+
+    it('选中态转换半选', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      t1.setChecked(true, {
+        directly: true,
+      });
+      await delay(0);
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.indeterminate).toBe(false);
+      expect(t1d2.checked).toBe(true);
+      expect(t1d2.indeterminate).toBe(false);
+
+      t1d2.setChecked(false, {
+        directly: true,
+      });
+      await delay(0);
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.indeterminate).toBe(false);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d2.indeterminate).toBe(false);
+    });
+
+    it('选中态清空', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      t1.setChecked(true, {
+        directly: true,
+      });
+      await delay(0);
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.indeterminate).toBe(false);
+      expect(t1d2.checked).toBe(true);
+      expect(t1d2.indeterminate).toBe(false);
+
+      t1d1.setChecked(false, {
+        directly: true,
+      });
+      t1d2.setChecked(false, {
+        directly: true,
+      });
+      await delay(0);
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(false);
+      expect(t1d1.indeterminate).toBe(false);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d2.indeterminate).toBe(false);
+    });
+
+    it('深层节点关联', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+            children: [{
+              value: 't1.1.1.1',
+              children: [{
+                value: 't1.1.1.1.1',
+              }]
+            }]
+          }]
+        }],
+      }]);
+
+      await delay(0);
+      tree.setChecked(['t1.1.1']);
+
+      await delay(0);
+      expect(tree.getNode('t1').checked).toBe(true);
+      expect(tree.getNode('t1.1').checked).toBe(true);
+      expect(tree.getNode('t1.1.1').checked).toBe(true);
+      expect(tree.getNode('t1.1.1.1').checked).toBe(true);
+      expect(tree.getNode('t1.1.1.1.1').checked).toBe(true);
+
+      tree.getNode('t1.1.1').setChecked(false, {
+        directly: true,
+      });
+      await delay(0);
+      expect(tree.getNode('t1').checked).toBe(false);
+      expect(tree.getNode('t1.1').checked).toBe(false);
+      expect(tree.getNode('t1.1.1').checked).toBe(false);
+      expect(tree.getNode('t1.1.1.1').checked).toBe(false);
+      expect(tree.getNode('t1.1.1.1.1').checked).toBe(false);
+    });
   });
 
   describe('tree:valueMode', () => {
@@ -182,11 +349,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       const checked = tree.getChecked();
       expect(checked.length).toBe(2);
       expect(checked[0]).toBe('t1.1');
@@ -206,11 +373,11 @@ describe('tree', () => {
         }],
       }]);
 
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1.1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       const checked = tree.getChecked();
       expect(checked.length).toBe(1);
       expect(checked[0]).toBe('t1.1');
@@ -231,11 +398,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       const checked = tree.getChecked();
       expect(checked.length).toBe(1);
       expect(checked[0]).toBe('t1');
@@ -266,11 +433,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1.1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       const checked = tree.getChecked();
       expect(checked.length).toBe(1);
       expect(checked[0]).toBe('t1.1');
@@ -334,11 +501,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       const checked = tree.getChecked();
       expect(checked.length).toBe(3);
       expect(checked[0]).toBe('t1');
@@ -371,11 +538,11 @@ describe('tree', () => {
       }]);
 
       // 节点创建后，结构创建与回流是延时的
-      await delay(1);
+      await delay(0);
       tree.setChecked(['t1.1']);
 
       // 总体选中状态是延时更新的
-      await delay(1);
+      await delay(0);
       const checked = tree.getChecked();
       expect(checked.length).toBe(3);
       expect(checked[0]).toBe('t1.1');
@@ -424,6 +591,207 @@ describe('tree', () => {
       expect(t1d2d2.checked).toBe(false);
       expect(t1d2d2.isIndeterminate()).toBe(false);
       expect(t1d2d2.indeterminate).toBe(false);
+    });
+  });
+
+  describe('tree:checkStrictly', () => {
+    it('checkStrictly 为 true, valueMode 为 onlyLeaf', async () => {
+      const tree = new TreeStore({
+        checkStrictly: true,
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      tree.setChecked(['t1']);
+
+      // 总体选中状态是延时更新的
+      await delay(0);
+      const checked = tree.getChecked();
+      expect(checked.length).toBe(1);
+      expect(checked[0]).toBe('t1');
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      expect(t1.isChecked()).toBe(true);
+      expect(t1.checked).toBe(true);
+      expect(t1.isIndeterminate()).toBe(false);
+      expect(t1.indeterminate).toBe(false);
+
+      expect(t1d1.isChecked()).toBe(false);
+      expect(t1d1.checked).toBe(false);
+      expect(t1d1.isIndeterminate()).toBe(false);
+      expect(t1d1.indeterminate).toBe(false);
+
+      expect(t1d2.isChecked()).toBe(false);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d2.isIndeterminate()).toBe(false);
+      expect(t1d2.indeterminate).toBe(false);
+    });
+
+    it('checkStrictly 为 true, valueMode 为 parentFirst', async () => {
+      const tree = new TreeStore({
+        checkStrictly: true,
+        checkable: true,
+        valueMode: 'parentFirst',
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      tree.setChecked(['t1', 't1.1']);
+
+      // 总体选中状态是延时更新的
+      await delay(0);
+      const checked = tree.getChecked();
+      expect(checked.length).toBe(2);
+      expect(checked[0]).toBe('t1');
+      expect(checked[1]).toBe('t1.1');
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      expect(t1.isChecked()).toBe(true);
+      expect(t1.checked).toBe(true);
+      expect(t1.isIndeterminate()).toBe(false);
+      expect(t1.indeterminate).toBe(false);
+
+      expect(t1d1.isChecked()).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.isIndeterminate()).toBe(false);
+      expect(t1d1.indeterminate).toBe(false);
+
+      expect(t1d2.isChecked()).toBe(false);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d2.isIndeterminate()).toBe(false);
+      expect(t1d2.indeterminate).toBe(false);
+    });
+
+    it('checkStrictly 为 true, valueMode 为 all', async () => {
+      const tree = new TreeStore({
+        checkStrictly: true,
+        checkable: true,
+        valueMode: 'all',
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      tree.setChecked(['t1', 't1.1']);
+
+      // 总体选中状态是延时更新的
+      await delay(0);
+      const checked = tree.getChecked();
+      expect(checked.length).toBe(2);
+      expect(checked[0]).toBe('t1');
+      expect(checked[1]).toBe('t1.1');
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      expect(t1.isChecked()).toBe(true);
+      expect(t1.checked).toBe(true);
+      expect(t1.isIndeterminate()).toBe(false);
+      expect(t1.indeterminate).toBe(false);
+
+      expect(t1d1.isChecked()).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.isIndeterminate()).toBe(false);
+      expect(t1d1.indeterminate).toBe(false);
+
+      expect(t1d2.isChecked()).toBe(false);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d2.isIndeterminate()).toBe(false);
+      expect(t1d2.indeterminate).toBe(false);
+    });
+  });
+
+  describe('tree:initChecked', () => {
+    it('父节点选中，插入子节点均为选中', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      // 节点创建后，结构创建与回流是延时的
+      await delay(0);
+      tree.setChecked(['t1']);
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      // 总体选中状态是延时更新的
+      await delay(0);
+      expect(t1.checked).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(true);
+
+      tree.appendNodes('t1', {
+        value: 't1.3'
+      });
+      await delay(0);
+      expect(tree.getNode('t1.3').checked).toBe(true);
+
+      tree.appendNodes('t1.1', {
+        value: 't1.1.1'
+      });
+      await delay(0);
+      expect(tree.getNode('t1.1.1').checked).toBe(true);
+
+      tree.insertBefore('t1.1', {
+        value: 't1.0',
+      });
+      await delay(0);
+      expect(tree.getNode('t1.0').checked).toBe(true);
+
+      tree.insertAfter('t1.3', {
+        value: 't1.4',
+      });
+      await delay(0);
+      expect(tree.getNode('t1.4').checked).toBe(true);
+
+      tree.appendNodes({
+        value: 't2'
+      });
+      await delay(0);
+      expect(tree.getNode('t2').checked).toBe(false);
+
+      tree.appendNodes('t2', {
+        value: 't2.1'
+      });
+      await delay(0);
+      expect(tree.getNode('t2.1').checked).toBe(false);
     });
   });
 });

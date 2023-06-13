@@ -25,6 +25,13 @@ import {
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
 // 任何一次数据写入，会触发相应节点的状态更新
+
+/**
+ * tree 数据模型
+ * @class TreeStore
+ * @param {object} options tree 组件选项
+ * @returns void
+ */
 export class TreeStore {
   // 根节点集合
   public children: TreeNode[];
@@ -118,7 +125,11 @@ export class TreeStore {
     this.emitter = mitt();
   }
 
-  // 配置选项
+  /**
+   * 配置选项
+   * @param {object} options tree 组件选项
+   * @returns void
+   */
   public setConfig(options: TypeTreeStoreOptions) {
     const { config } = this;
     let hasChanged = false;
