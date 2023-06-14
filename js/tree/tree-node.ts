@@ -220,8 +220,11 @@ export class TreeNode {
 
   /* ------ 状态初始化 ------ */
 
-  // 初始化选中态
-  public initChecked() {
+  /**
+   * 初始化选中态
+   * @return void
+   */
+  public initChecked(): void {
     const { tree, value, parent } = this;
     const { checkStrictly } = tree.config;
     if (this.checked) {
@@ -233,7 +236,10 @@ export class TreeNode {
     this.updateChecked();
   }
 
-  // 初始化节点展开状态
+  /**
+   * 初始化节点展开状态
+   * @return void
+   */
   public initExpanded(): void {
     const { tree } = this;
     let { expanded } = this;
@@ -256,7 +262,10 @@ export class TreeNode {
     this.expanded = expanded;
   }
 
-  // 初始化高亮状态
+  /**
+   * 初始化节点激活状态
+   * @return void
+   */
   public initActived(): void {
     const { tree, actived } = this;
     if (actived) {
@@ -266,7 +275,11 @@ export class TreeNode {
 
   /* ------ 节点操作 ------ */
 
-  // 追加数据
+  /**
+   * 追加节点数据
+   * @param {object | object[]} data 节点数据
+   * @return void
+   */
   public append(data: TypeTreeNodeData | TypeTreeNodeData[]): void {
     const list = [];
     if (!Array.isArray(data)) {
@@ -295,7 +308,13 @@ export class TreeNode {
     this.updateRelated();
   }
 
-  // 将当前节点追加到某个父节点的子节点列表中
+  /**
+   * 将当前节点追加到某个父节点的子节点列表中
+   * @param {TreeStore} tree 目标树
+   * @param {TreeNode} [parent] 目标父节点
+   * @param {number} [index] 预期在子节点列表中的位置
+   * @return void
+   */
   public appendTo(
     tree: TreeStore,
     parent?: TreeNode,
@@ -389,7 +408,12 @@ export class TreeNode {
     tree.reflow();
   }
 
-  // 插入一个同级节点数据
+  /**
+   * 插入一个节点或者数据到到同级节点的目标位置
+   * @param {TreeNode | object} item 要插入的节点或者数据
+   * @param {number} [index] 预期在子节点列表中的位置
+   * @return void
+   */
   public insert(
     item: TypeTreeItem,
     index?: number,
@@ -412,19 +436,30 @@ export class TreeNode {
     tree.reflow();
   }
 
-  // 在当前节点之前插入节点
+  /**
+   * 在当前节点之前插入节点
+   * @param {TreeNode | object} newData 要插入的节点或者数据
+   * @return void
+   */
   public insertBefore(newData: TypeTreeItem): void {
     const index = this.getIndex();
     this.insert(newData, index);
   }
 
-  // 在当前节点之后插入节点
+  /**
+   * 在当前节点之后插入节点
+   * @param {TreeNode | object} newData 要插入的节点或者数据
+   * @return void
+   */
   public insertAfter(newData: TypeTreeItem): void {
     const index = this.getIndex();
     this.insert(newData, index + 1);
   }
 
-  // 从一个树移除本节点
+  /**
+   * 从当前树中移除本节点
+   * @return void
+   */
   public remove(): void {
     const { tree } = this;
 
@@ -449,17 +484,24 @@ export class TreeNode {
     tree.reflow();
   }
 
-  // 清除本节点与一个树的关系
+  /**
+   * 清除本节点与当前树的关系
+   * @return void
+   */
   public clean(): void {
     const { tree, value } = this;
     tree.activedMap.delete(value);
     tree.checkedMap.delete(value);
     tree.expandedMap.delete(value);
     tree.nodeMap.delete(value);
+    tree.filterMap.delete(value);
     tree.privateMap.delete(this[privateKey]);
   }
 
-  // 异步加载子节点数据
+  /**
+   * 异步加载子节点
+   * @return Promise<void>
+   */
   public async loadChildren(): Promise<void> {
     const config = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
@@ -483,9 +525,13 @@ export class TreeNode {
     }
   }
 
-  // 设置状态
-  // 为节点设置独立于配置的 disabled 状态: set({ disabled: true })
-  // 清除独立于配置的 disabled 状态: set({ disabled: null })
+  /**
+   * 设置节点状态
+   * - 为节点设置独立于配置的 disabled 状态: set({ disabled: true })
+   * - 清除独立于配置的 disabled 状态: set({ disabled: null })
+   * @param {object} item 节点状态对象
+   * @return void
+   */
   public set(item: TreeNodeState): void {
     const { tree } = this;
     const keys = Object.keys(item);
@@ -499,12 +545,19 @@ export class TreeNode {
 
   /* ------ 节点获取 ------- */
 
-  // 获取单个父节点
+  /**
+   * 获取本节点的父节点
+   * @return TreeNode 父节点
+   */
   public getParent(): TreeNode {
     return this.parent;
   }
 
-  // 获取所有父节点
+  /**
+   * 获取所有父级节点
+   * - 顺序为从当前到根
+   * @return TreeNode[] 父级节点数组
+   */
   public getParents(): TreeNode[] {
     const parents = [];
     let node = this.parent;
@@ -515,7 +568,10 @@ export class TreeNode {
     return parents;
   }
 
-  // 获取兄弟节点，包含自己在内
+  /**
+   * 获取所有兄弟节点，包含自己在内
+   * @return TreeNode[] 兄弟节点数组
+   */
   public getSiblings(): TreeNode[] {
     const { parent, tree } = this;
     let list: TreeNode[] = [];
@@ -529,27 +585,41 @@ export class TreeNode {
     return list;
   }
 
-  // 获取根节点
+  /**
+   * 获取本节点的根节点
+   * @return TreeNode 根节点
+   */
   public getRoot(): TreeNode {
     const parents = this.getParents();
     return parents[parents.length - 1] || null;
   }
 
-  // 获取节点在父节点的子节点列表中的位置
-  // 如果没有父节点，则获取节点在根节点列表的位置
+  /**
+   * 获取节点在父节点的子节点列表中的位置
+   * - 如果没有父节点，则获取节点在根节点列表的位置
+   * @return number 节点位置序号
+   */
   public getIndex(): number {
     const list = this.getSiblings();
     return list.indexOf(this);
   }
 
-  // 返回路径节点
+  /**
+   * 返回路径节点
+   * - 路径节点包含自己在内
+   * - 节点顺序与父级节点顺序相反，从根到当前
+   * @return TreeNode[] 路径节点数组
+   */
   public getPath(): TreeNode[] {
     const nodes = this.getParents();
     nodes.unshift(this);
     return nodes.reverse();
   }
 
-  // 获取节点所在层级
+  /**
+   * 获取节点所在层级
+   * @return number 层级序号
+   */
   public getLevel(): number {
     const parents = this.getParents();
     return parents.length;
@@ -557,7 +627,10 @@ export class TreeNode {
 
   /* ------ 节点状态判断 ------ */
 
-  // 判断节点是否被过滤
+  /**
+   * 判断节点是否被过滤
+   * @return boolean 是否被过滤方法命中
+   */
   public isRest(): boolean {
     const {
       config,
@@ -581,7 +654,10 @@ export class TreeNode {
     return rest;
   }
 
-  // 判断节点是否可视
+  /**
+   * 判断节点是否可见
+   * @return boolean 是否可见
+   */
   public isVisible(): boolean {
     const {
       nodeMap,
@@ -619,8 +695,11 @@ export class TreeNode {
     return visible;
   }
 
-  // 判断节点是否被禁用
-  public isDisabled() {
+  /**
+   * 判断节点是否被禁用
+   * @return boolean 是否被禁用
+   */
+  public isDisabled(): boolean {
     const { tree } = this;
     const { hasFilter, config } = tree;
     const { disabled, allowFoldNodeOnFilter } = config;
@@ -632,8 +711,11 @@ export class TreeNode {
     return state;
   }
 
-  // 判断节点是否能拖拽
-  public isDraggable() {
+  /**
+   * 判断节点是否能拖拽
+   * @return boolean 是否能拖拽
+   */
+  public isDraggable(): boolean {
     let state = !!get(this, 'tree.config.draggable');
     if (typeof this.draggable === 'boolean') {
       state = this.draggable;
@@ -641,8 +723,11 @@ export class TreeNode {
     return state;
   }
 
-  // 判断节点是否支持互斥展开
-  public isExpandMutex() {
+  /**
+   * 判断子节点是否互斥展开
+   * @return boolean 子节点是否互斥展开
+   */
+  public isExpandMutex(): boolean {
     let state = !!get(this, 'tree.config.expandMutex');
     if (typeof this.expandMutex === 'boolean') {
       state = this.expandMutex;
@@ -650,7 +735,10 @@ export class TreeNode {
     return state;
   }
 
-  // 节点可高亮
+  /**
+   * 节点是否可被激活
+   * @return boolean 是否可被激活
+   */
   public isActivable() {
     let state = !!get(this, 'tree.config.activable');
     if (typeof this.activable === 'boolean') {
@@ -659,7 +747,10 @@ export class TreeNode {
     return state;
   }
 
-  // 是否可选
+  /**
+   * 节点是否可选
+   * @return boolean 是否可选
+   */
   public isCheckable() {
     let state = !!get(this, 'tree.config.checkable');
     if (typeof this.checkable === 'boolean') {
@@ -668,14 +759,22 @@ export class TreeNode {
     return state;
   }
 
-  // 检查节点是否被激活
+  /**
+   * 节点是否被激活
+   * @param {Map} [map] 预设激活节点 map, 用于计算节点在预期环境中的激活状态
+   * @return boolean 是否被激活
+   */
   public isActived(map?: Map<string, boolean>): boolean {
     const { tree, value } = this;
     const activedMap = map || tree.activedMap;
     return !!(tree.nodeMap.get(value) && activedMap.get(value));
   }
 
-  // 检查节点是否已展开
+  /**
+   * 节点是否已展开
+   * @param {Map} [map] 预设展开节点 map, 用于计算节点在预期环境中的展开状态
+   * @return boolean 是否已展开
+   */
   public isExpanded(map?: Map<string, boolean>): boolean {
     const { tree, value, vmIsLocked } = this;
     const { hasFilter, config } = tree;
@@ -685,8 +784,11 @@ export class TreeNode {
     return !!(tree.nodeMap.get(value) && expandedMap.get(value));
   }
 
-  // 计算属性，判断节点是否被选中
-  // map: 预期选中项map，用于计算节点在预期环境中的选中态
+  /**
+   * 节点是否被选中
+   * @param {Map} [map] 预设选中节点 map, 用于计算节点在预期环境中的选中态
+   * @return boolean 是否被选中
+   */
   public isChecked(map?: TypeIdMap): boolean {
     const { children, tree } = this;
     const { checkStrictly } = tree.config;
@@ -716,7 +818,10 @@ export class TreeNode {
     return !!checked;
   }
 
-  // 是否为半选状态
+  /**
+   * 是否为半选状态
+   * @return boolean 是否为半选状态
+   */
   public isIndeterminate(): boolean {
     const { children, tree } = this;
     const { checkStrictly } = tree.config;
@@ -745,17 +850,28 @@ export class TreeNode {
     return indeterminate;
   }
 
+  /**
+   * 是否为兄弟节点中的第一个节点
+   * @return boolean 是否为第一个节点
+   */
   public isFirst(): boolean {
     const siblings = this.getSiblings();
     return siblings[0] === this;
   }
 
+  /**
+   * 是否为兄弟节点中的最后一个节点
+   * @return boolean 是否为最后一个节点
+   */
   public isLast(): boolean {
     const siblings = this.getSiblings();
     return siblings[siblings.length - 1] === this;
   }
 
-  // 是叶节点
+  /**
+   * 是否为叶子节点，叶子节点没有子节点
+   * @return boolean 是否为叶子节点
+   */
   public isLeaf(): boolean {
     let isLeaf = false;
     if (Array.isArray(this.children)) {
@@ -768,29 +884,48 @@ export class TreeNode {
 
   /* ------ 节点状态切换 ------ */
 
-  // 锁定节点
-  // 搜索过滤节点时，路径节点需要固定呈现，视其为锁定态
+  /**
+   * 锁定节点，解锁节点
+   * - 搜索过滤节点时，路径节点需要固定呈现，视其为锁定态
+   * @param {boolean} lockState 锁定状态
+   * @return void
+   */
   public lock(lockState: boolean): void {
     this.vmIsLocked = lockState;
     this.expanded = this.isExpanded();
     this.visible = this.isVisible();
   }
 
-  // 节点展开关闭后需要调用的状态检查函数
+  /**
+   * 节点展开关闭后需要调用的状态检查函数
+   * @return void
+   */
   public afterExpanded(): void {
     this.update();
     // 节点展开时检查延迟加载的数据
     if (this.expanded && this.children === true) {
       this.loadChildren();
     }
+    this.updateChildren();
   }
 
-  // 展开或者关闭节点
+  /**
+   * 切换节点展开状态
+   * - 用于受控逻辑处理
+   * - 仅返回预期状态值数组，不直接操作状态
+   * @return string[] 当前树展开的节点值数组
+   */
   public toggleExpanded(): TreeNodeValue[] {
     return this.setExpanded(!this.isExpanded());
   }
 
-  // 设置节点展开状态
+  /**
+   * 设置节点展开状态
+   * @param {boolean} expanded 节点展开状态
+   * @param {object} [opts] 操作选项
+   * @param {boolean} [opts.directly=false] 是否直接操作节点状态
+   * @return string[] 当前树展开的节点值数组
+   */
   public setExpanded(expanded: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const { config } = tree;
@@ -844,19 +979,28 @@ export class TreeNode {
 
     if (options.directly) {
       this.afterExpanded();
-      this.update();
-      this.updateChildren();
     }
 
     return tree.getExpanded(map);
   }
 
-  // 切换节点激活态
+  /**
+   * 切换节点激活状态
+   * - 用于受控逻辑处理
+   * - 仅返回预期状态值数组，不直接操作状态
+   * @return string[] 当前树激活的节点值数组
+   */
   public toggleActived(): TreeNodeValue[] {
     return this.setActived(!this.isActived());
   }
 
-  // 设置节点激活态
+  /**
+   * 设置节点激活状态
+   * @param {boolean} expanded 节点激活状态
+   * @param {object} [opts] 操作选项
+   * @param {boolean} [opts.directly=false] 是否直接操作节点状态
+   * @return string[] 当前树激活的节点值数组
+   */
   public setActived(actived: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const options = {
@@ -887,13 +1031,23 @@ export class TreeNode {
     return tree.getActived(map);
   }
 
-  // 切换选中态
+  /**
+   * 切换节点选中状态
+   * - 用于受控逻辑处理
+   * - 仅返回预期状态值数组，不直接操作状态
+   * @return string[] 当前树选中的节点值数组
+   */
   public toggleChecked(): TreeNodeValue[] {
     return this.setChecked(!this.isChecked());
   }
 
-  // 更新单个节点的选中态
-  // 返回树选中列表
+  /**
+   * 设置节点选中状态
+   * @param {boolean} expanded 节点选中状态
+   * @param {object} [opts] 操作选项
+   * @param {boolean} [opts.directly=false] 是否直接操作节点状态
+   * @return string[] 当前树选中的节点值数组
+   */
   public setChecked(checked: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const config = tree.config || {};
@@ -945,7 +1099,10 @@ export class TreeNode {
 
   /* ------ 节点状态更新 ------ */
 
-  // 更新节点状态
+  /**
+   * 更新节点当前状态，将节点放到延时更新检查队列
+   * @return void
+   */
   public update(): void {
     this.level = this.getLevel();
     this.vmIsFirst = this.isFirst();
@@ -959,7 +1116,10 @@ export class TreeNode {
     this.tree.updated(this);
   }
 
-  // 更新选中态属性值
+  /**
+   * 更新节点选中态
+   * @return void
+   */
   public updateChecked(): void {
     const { tree } = this;
     this.vmCheckable = this.isCheckable();
@@ -973,8 +1133,11 @@ export class TreeNode {
     }
   }
 
-  // 更新所有子节点状态
-  // 注意:不包含自己
+  /**
+   * 更新所有子节点状态
+   * - 不包含自己
+   * @return void
+   */
   public updateChildren(): void {
     const { children } = this;
     if (Array.isArray(children)) {
@@ -986,8 +1149,11 @@ export class TreeNode {
     }
   }
 
-  // 父节点状态更新
-  // 注意:不包含自己
+  /**
+   * 更新所有父级节点状态
+   * - 不包含自己
+   * @return void
+   */
   public updateParents(): void {
     const { parent } = this;
     if (parent) {
@@ -997,20 +1163,27 @@ export class TreeNode {
     }
   }
 
-  // 更新上下游相关节点
-  public updateRelated() {
+  /**
+   * 更新上下游相关节点状态
+   * - 包含自己
+   * @return void
+   */
+  public updateRelated(): void {
     const { tree } = this;
     const relatedNodes = tree.getRelatedNodes([this.value]);
     relatedNodes.forEach((node) => {
       node.update();
       node.updateChecked();
     });
-    tree.reflow();
   }
 
   /* ------ 节点遍历 ------ */
 
-  // 获取包含自己在内所有的子节点
+  /**
+   * 获取包含自己在内所有的子节点
+   * - 包含自己
+   * @return TreeNode[] 遍历结果节点数组
+   */
   public walk(): TreeNode[] {
     const { children } = this;
     let list: TreeNode[] = [];
@@ -1023,9 +1196,13 @@ export class TreeNode {
     return list;
   }
 
-  // TreeNode 对象 => TypeTreeNodeModel 对象
-  // 用于 treeNode 对外暴露的 api
-  // 经过封装的对象，减少了对外暴露的 api，利于代码重构
+  /**
+   * 获取节点封装对象
+   * - TreeNode 对象 => TypeTreeNodeModel 对象
+   * - TypeTreeNodeModel 用于封装 treeNode 对外暴露的 api
+   * - 用户仅可操作经过封装的对象，减少了对外暴露的 api，利于代码重构
+   * @return TypeTreeNodeModel 节点封装对象
+   */
   public getModel(): TypeTreeNodeModel {
     let { model } = this;
     if (!model) {
