@@ -1,6 +1,7 @@
 import TreeStore from '../../../js/tree/tree-store';
 import { delay } from './kit';
 
+// 树数据重置
 describe('tree:reload', () => {
   describe('treeStore:reload', () => {
     it('reload 方法重设 tree 数据为空', async () => {

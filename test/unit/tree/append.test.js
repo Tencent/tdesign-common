@@ -1,6 +1,7 @@
 import TreeStore from '../../../js/tree/tree-store';
 import { delay } from './kit';
 
+// 节点添加与插入
 describe('tree:append', () => {
   describe('treeStore:append', () => {
     it('append 方法添加多个节点', async () => {
@@ -20,7 +21,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('tree:appendNodes', () => {
+  describe('treeStore:appendNodes', () => {
     it('appendNodes 方法添加节点', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -101,7 +102,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('tree:insertBefore', () => {
+  describe('treeStore:insertBefore', () => {
     it('insertBefore 方法插入节点到前面', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -122,28 +123,6 @@ describe('tree:append', () => {
       expect(nodes[1].value).toBe('t1');
       expect(nodes[2].value).toBe('t3');
       expect(nodes[3].value).toBe('t2');
-    });
-
-    it('insertBefore 方法插入节点到子节点', async () => {
-      const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }]
-      }]);
-      tree.insertBefore('t1.2', {
-        value: 't1.3',
-      });
-      await delay(0);
-      const nodes = tree.getNodes();
-      expect(nodes.length).toBe(4);
-      expect(tree.getNode('t1.1').getIndex()).toBe(0);
-      expect(tree.getNode('t1.3').getIndex()).toBe(1);
-      expect(tree.getNode('t1.2').getIndex()).toBe(2);
-      expect(tree.getNode('t1.3').getParent().value).toBe('t1');
     });
 
     it('insertBefore 方法插入节点到不存在位置', async () => {
@@ -167,7 +146,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('tree:insertAfter', () => {
+  describe('treeStore:insertAfter', () => {
     it('insertAfter 方法插入节点到后面', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -190,28 +169,6 @@ describe('tree:append', () => {
       expect(nodes[3].value).toBe('t3');
     });
 
-    it('insertAfter 方法插入节点到子节点', async () => {
-      const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }]
-      }]);
-      tree.insertAfter('t1.2', {
-        value: 't1.3',
-      });
-      await delay(0);
-      const nodes = tree.getNodes();
-      expect(nodes.length).toBe(4);
-      expect(tree.getNode('t1.1').getIndex()).toBe(0);
-      expect(tree.getNode('t1.2').getIndex()).toBe(1);
-      expect(tree.getNode('t1.3').getIndex()).toBe(2);
-      expect(tree.getNode('t1.3').getParent().value).toBe('t1');
-    });
-
     it('insertAfter 方法插入节点到不存在位置', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -230,6 +187,179 @@ describe('tree:append', () => {
       expect(nodes.length).toBe(3);
       expect(tree.getNode('t1.1').getIndex()).toBe(0);
       expect(tree.getNode('t1.2').getIndex()).toBe(1);
+    });
+  });
+
+  describe('treeNode:insertBefore', () => {
+    it('insertBefore 方法插入节点到前面', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree.getNode('t2').insertBefore({
+        value: 't3',
+      });
+      tree.getNode('t1').insertBefore({
+        value: 't4',
+      });
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(nodes[0].value).toBe('t4');
+      expect(nodes[1].value).toBe('t1');
+      expect(nodes[2].value).toBe('t3');
+      expect(nodes[3].value).toBe('t2');
+    });
+
+    it('insertBefore 方法插入节点到子节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }]
+      }]);
+      tree.getNode('t1.2').insertBefore({
+        value: 't1.3',
+      });
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree.getNode('t1.1').getIndex()).toBe(0);
+      expect(tree.getNode('t1.3').getIndex()).toBe(1);
+      expect(tree.getNode('t1.2').getIndex()).toBe(2);
+      expect(tree.getNode('t1.3').getParent().value).toBe('t1');
+    });
+  });
+
+  describe('treeNode:insertAfter', () => {
+    it('insertAfter 方法插入节点到后面', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree.getNode('t2').insertAfter({
+        value: 't3',
+      });
+      tree.getNode('t1').insertAfter({
+        value: 't4',
+      });
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(nodes[0].value).toBe('t1');
+      expect(nodes[1].value).toBe('t4');
+      expect(nodes[2].value).toBe('t2');
+      expect(nodes[3].value).toBe('t3');
+    });
+
+    it('insertAfter 方法插入节点到子节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }]
+      }]);
+      tree.getNode('t1.2').insertAfter({
+        value: 't1.3',
+      });
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree.getNode('t1.1').getIndex()).toBe(0);
+      expect(tree.getNode('t1.2').getIndex()).toBe(1);
+      expect(tree.getNode('t1.3').getIndex()).toBe(2);
+      expect(tree.getNode('t1.3').getParent().value).toBe('t1');
+    });
+  });
+
+  describe('treeNode:append', () => {
+    it('append 方法添加节点数据到另一个节点 children', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree.getNode('t1').append({
+        value: 't1.1'
+      });
+      tree.getNode('t2').append({
+        value: 't2.1'
+      });
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree.getNode('t1.1').getParent().value).toBe('t1');
+      expect(tree.getNode('t2.1').getParent().value).toBe('t2');
+    });
+
+    it('append 方法可以添加多个数据', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree.getNode('t1').append([
+        { value: 't1.1' },
+        { value: 't1.2' },
+      ]);
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree.getNode('t1.1').getParent().value).toBe('t1');
+      expect(tree.getNode('t1.2').getParent().value).toBe('t1');
+    });
+
+    it('append 方法添加节点到另一个节点 children', async () => {
+      const tree1 = new TreeStore();
+      tree1.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      const tree2 = new TreeStore();
+      tree2.append([{
+        value: 't3'
+      }, {
+        value: 't4'
+      }]);
+      tree1.getNode('t1').append(tree2.getNode('t3'));
+      tree1.getNode('t2').append(tree2.getNode('t4'));
+      await delay(0);
+      const nodes = tree1.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree1.getNode('t3').getParent().value).toBe('t1');
+      expect(tree1.getNode('t4').getParent().value).toBe('t2');
+    });
+  });
+
+  describe('treeNode:appendTo', () => {
+    it('appendTo 方法把节点插入到另一个节点 children', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't2'
+      }]);
+      tree.getNode('t2').appendTo(tree, tree.getNode('t1'));
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(2);
+      expect(tree.getNode('t2').getParent().value).toBe('t1');
+      expect(tree.getNode('t2').isLeaf()).toBe(true);
+      expect(tree.getNode('t2').getLevel()).toBe(1);
+      expect(tree.children.length).toBe(1);
     });
   });
 });

@@ -1,6 +1,7 @@
 import TreeStore from '../../../js/tree/tree-store';
 import TreeNode from '../../../js/tree/tree-node';
 
+// 树组件初始化
 describe('tree:init', () => {
   describe('treeStore:init', () => {
     it('TreeStore 初始化空数据', () => {

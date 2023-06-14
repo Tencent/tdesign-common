@@ -1,6 +1,7 @@
 import TreeStore from '../../../js/tree/tree-store';
 import { delay } from './kit';
 
+// 节点选中态
 describe('tree:checkable', () => {
   describe('treeStore:checkable', () => {
     it('checkable 属性为 false 时, 无法设置选中项', async () => {
