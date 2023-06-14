@@ -35,76 +35,126 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
   const model: TypeTreeNodeModel = {
     ...props,
 
-    // 获取节点所处层级
+    /**
+     * 获取节点所处层级
+     * @return number 节点层级序号
+     */
     getLevel() {
       return node.getLevel();
     },
 
-    // 获取节点在 children 中的位置
+    /**
+     * 获取节点在父节点的子节点列表中的位置
+     * - 如果没有父节点，则获取节点在根节点列表的位置
+     * @return number 节点位置序号
+     */
     getIndex() {
       return node.getIndex();
     },
 
-    // 判断节点是否为 children 中的第一个节点
+    /**
+     * 是否为兄弟节点中的第一个节点
+     * @return boolean 是否为第一个节点
+     */
     isFirst() {
       return node.isFirst();
     },
 
-    // 判断节点是否为 children 中的最后一个节点
+    /**
+     * 是否为兄弟节点中的最后一个节点
+     * @return boolean 是否为最后一个节点
+     */
     isLast() {
       return node.isLast();
     },
 
-    // 判断节点是否为叶节点
+    /**
+     * 是否为叶子节点，叶子节点没有子节点
+     * @return boolean 是否为叶子节点
+     */
     isLeaf() {
       return node.isLeaf();
     },
 
-    // 插入数据到节点之前
+    /**
+     * 在当前节点之前插入节点
+     * @param {object} newData 要插入的节点或者数据
+     * @return void
+     */
     insertBefore(newData: TypeTreeItem) {
       return node.insertBefore(newData);
     },
 
-    // 插入数据到节点之后
+    /**
+     * 在当前节点之后插入节点
+     * @param {object} newData 要插入的节点或者数据
+     * @return void
+     */
     insertAfter(newData: TypeTreeItem) {
       return node.insertAfter(newData);
     },
 
-    // 给当前节点添加子节点数据
+    /**
+     * 追加节点数据
+     * @param {object | object[]} data 节点数据
+     * @return void
+     */
     appendData(data: TypeTreeNodeData | TypeTreeNodeData[]) {
       return node.append(data);
     },
 
-    // 返回路径节点数据集合
+    /**
+     * 返回路径节点
+     * - 路径节点包含自己在内
+     * - 节点顺序与父级节点顺序相反，从根到当前
+     * @return TreeNodeModel[] 路径节点数组
+     */
     getPath(): TypeTreeNodeModel[] {
       const nodes = node.getPath();
       return nodes.map((item: TreeNode) => item.getModel());
     },
 
-    // 获取单个父节点数据
+    /**
+     * 获取本节点的父节点
+     * @return TreeNodeModel 父节点
+     */
     getParent(): TypeTreeNodeModel {
       return node.parent?.getModel();
     },
 
-    // 获取所有父节点数据
+    /**
+     * 获取所有父级节点
+     * - 顺序为从当前到根
+     * @return TreeNodeModel[] 父级节点数组
+     */
     getParents(): TypeTreeNodeModel[] {
       const nodes = node.getParents();
       return nodes.map((item: TreeNode) => item.getModel());
     },
 
-    // 获取根节点
+    /**
+     * 获取本节点的根节点
+     * @return TreeNodeModel 根节点
+     */
     getRoot(): TypeTreeNodeModel {
       const root = node.getRoot();
       return root?.getModel();
     },
 
-    // 获取兄弟节点，包含自己在内
+    /**
+     * 获取所有兄弟节点，包含自己在内
+     * @return TreeNodeModel[] 兄弟节点数组
+     */
     getSiblings(): TypeTreeNodeModel[] {
       const nodes = node.getSiblings();
       return nodes.map((item: TreeNode) => item.getModel());
     },
 
-    // 返回当前节点的第一层子节点数据集合
+    /**
+     * 获取当前节点的子节点
+     * @param {boolean} deep 是否获取所有深层子节点
+     * @return TreeNodeModel[] 子节点数组
+     */
     getChildren(deep?: boolean): boolean | TypeTreeNodeModel[] {
       let childrenModel: boolean | TypeTreeNodeModel[] = false;
       const { children } = node;
@@ -126,7 +176,13 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       return childrenModel;
     },
 
-    // 删除本节点，或者 value 指定的子节点
+    /**
+     * 移除节点
+     * - 提供 value 参数，移除本节点子节点中的节点
+     * - 不提供 value 参数，移除自己
+     * @param {string} value 目标节点值
+     * @return void
+     */
     remove(value?: TreeNodeValue) {
       if (!value) {
         node.remove();
@@ -149,7 +205,11 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       targetNode.remove();
     },
 
-    // 设置本节点携带的元数据
+    /**
+     * 设置本节点携带的元数据
+     * @param {object} data 节点数据
+     * @return void
+     */
     setData(data: OptionData) {
       // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
       const _data = omit(data, ['children', 'value', 'label']);
@@ -167,7 +227,12 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
   return model;
 }
 
-// 更新封装对象
+/**
+ * 同步节点属性到封装对象
+ * @param {TreeNodeModel} 节点封装对象
+ * @param {object} data 节点数据
+ * @return void
+ */
 export function updateNodeModel(model: TypeTreeNodeModel, node: TreeNode) {
   // 同步节点属性
   const props = getExposedProps(node);
