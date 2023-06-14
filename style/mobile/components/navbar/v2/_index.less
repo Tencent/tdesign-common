@@ -41,19 +41,21 @@
     position: relative;
     z-index: 1;
     height: @navbar-height;
-    width: calc(100% - @navbar-right);
-    padding-right: @navbar-right;
     padding-top: @navbar-padding-top;
     color: @navbar-color;
     background-color: @navbar-bg-color;
-    display: flex;
-    align-items: center;
+  }
+
+  &__left,
+  &__right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
   }
 
   &__left {
-    position: relative;
-    box-sizing: border-box;
-    // width: @navbar-right;
+    left: 0;
     display: flex;
     align-items: center;
     margin-left: @spacer-1;
@@ -93,9 +95,6 @@
   &__center {
     font-size: 18px;
     text-align: center;
-    position: absolute;
-    left: @navbar-right;
-    width: calc(100% - @navbar-right * 2);
     height: @navbar-height;
     line-height: @navbar-height;
     flex: 1;
@@ -103,10 +102,6 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-
-    &:empty {
-      display: none;
-    }
 
     &-title {
       font-size: @navbar-title-font-size;
