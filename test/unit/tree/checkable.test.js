@@ -794,4 +794,109 @@ describe('tree', () => {
       expect(tree.getNode('t2.1').checked).toBe(false);
     });
   });
+
+  describe('tree:getCheckedNodes', () => {
+    it('获取所有选中节点', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }, {
+            value: 't1.1.2',
+          }],
+        }, {
+          value: 't1.2',
+          children: [{
+            value: 't1.2.1',
+          }, {
+            value: 't1.2.2',
+          }],
+        }],
+      }]);
+
+      // 节点创建后，结构创建与回流是延时的
+      await delay(0);
+      tree.setChecked(['t1.1', 't1.2.1']);
+      await delay(0);
+
+      const checkedNodes = tree.getCheckedNodes();
+      expect(checkedNodes.length).toBe(4);
+      expect(checkedNodes[0].value).toBe('t1.1');
+      expect(checkedNodes[1].value).toBe('t1.1.1');
+      expect(checkedNodes[2].value).toBe('t1.1.2');
+      expect(checkedNodes[3].value).toBe('t1.2.1');
+    });
+
+    it('获取目标节点下的选中节点', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }, {
+            value: 't1.1.2',
+          }],
+        }, {
+          value: 't1.2',
+          children: [{
+            value: 't1.2.1',
+          }, {
+            value: 't1.2.2',
+          }],
+        }],
+      }]);
+
+      // 节点创建后，结构创建与回流是延时的
+      await delay(0);
+      tree.setChecked(['t1.1', 't1.2.1']);
+      await delay(0);
+
+      const checkedNodes = tree.getCheckedNodes('t1.1');
+      expect(checkedNodes.length).toBe(3);
+      expect(checkedNodes[0].value).toBe('t1.1');
+      expect(checkedNodes[1].value).toBe('t1.1.1');
+      expect(checkedNodes[2].value).toBe('t1.1.2');
+    });
+
+    it('目标节点不存在，则无法取得选中节点', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }, {
+            value: 't1.1.2',
+          }],
+        }, {
+          value: 't1.2',
+          children: [{
+            value: 't1.2.1',
+          }, {
+            value: 't1.2.2',
+          }],
+        }],
+      }]);
+
+      // 节点创建后，结构创建与回流是延时的
+      await delay(0);
+      tree.setChecked(['t1.1', 't1.2.1']);
+      await delay(0);
+
+      const checkedNodes = tree.getCheckedNodes('t1.3');
+      expect(checkedNodes.length).toBe(0);
+    });
+  });
 });
