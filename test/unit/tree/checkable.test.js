@@ -1005,4 +1005,203 @@ describe('tree:checkable', () => {
       expect(tree.getNode('t1.1.1.1.1').checked).toBe(false);
     });
   });
+
+  describe('treeNode:setChecked', () => {
+    it('不使用选项的时候，仅获取预期状态，不更改节点状态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      const checked = t1.setChecked(true);
+      expect(checked.length).toBe(2);
+      expect(checked[0]).toBe('t1.1');
+      expect(checked[1]).toBe('t1.2');
+
+      await delay(0);
+      const allChecked = tree.getChecked();
+      expect(allChecked.length).toBe(0);
+
+      expect(t1.checked).toBe(false);
+      expect(t1.isChecked()).toBe(false);
+      expect(t1d1.checked).toBe(false);
+      expect(t1d1.isChecked()).toBe(false);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d2.isChecked()).toBe(false);
+    });
+
+    it('使用选项 directly 为 true 时，会修改节点状态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      const checked = t1.setChecked(true, {
+        directly: true,
+      });
+      expect(checked.length).toBe(2);
+      expect(checked[0]).toBe('t1.1');
+      expect(checked[1]).toBe('t1.2');
+
+      await delay(0);
+      const allChecked = tree.getChecked();
+      expect(allChecked.length).toBe(2);
+      expect(allChecked[0]).toBe('t1.1');
+      expect(allChecked[1]).toBe('t1.2');
+
+      expect(t1.checked).toBe(true);
+      expect(t1.isChecked()).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d1.isChecked()).toBe(true);
+      expect(t1d2.checked).toBe(true);
+      expect(t1d2.isChecked()).toBe(true);
+    });
+
+    it('设置节点状态为未选中，取得返回结果但不更改状态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }],
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d1d1 = tree.getNode('t1.1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      tree.setChecked(['t1']);
+      await delay(0);
+
+      const checked = t1d1.setChecked(false);
+      expect(checked.length).toBe(1);
+      expect(checked[0]).toBe('t1.2');
+
+      await delay(0);
+      expect(t1.isChecked()).toBe(true);
+      expect(t1d1.isChecked()).toBe(true);
+      expect(t1d1d1.isChecked()).toBe(true);
+      expect(t1d2.isChecked()).toBe(true);
+    });
+
+    it('设置节点状态为未选中，更改状态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }],
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d1d1 = tree.getNode('t1.1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      tree.setChecked(['t1']);
+      await delay(0);
+
+      const checked = t1d1.setChecked(false, {
+        directly: true,
+      });
+      expect(checked.length).toBe(1);
+      expect(checked[0]).toBe('t1.2');
+
+      await delay(0);
+      expect(t1.isChecked()).toBe(false);
+      expect(t1.isIndeterminate()).toBe(true);
+      expect(t1d1.isChecked()).toBe(false);
+      expect(t1d1d1.isChecked()).toBe(false);
+      expect(t1d2.isChecked()).toBe(true);
+    });
+  });
+
+  describe('treeNode:toggleChecked', () => {
+    it('获取节点切换结果，不会更改节点状态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      tree.setChecked(['t1.1']);
+      await delay(0);
+      expect(t1.isChecked()).toBe(false);
+      expect(t1.isIndeterminate()).toBe(true);
+      expect(t1d1.isChecked()).toBe(true);
+      expect(t1d2.isChecked()).toBe(false);
+
+      let checked = t1.toggleChecked();
+      await delay(0);
+      expect(checked.length).toBe(2);
+      expect(checked[0]).toBe('t1.1');
+      expect(checked[1]).toBe('t1.2');
+
+      expect(t1.isChecked()).toBe(false);
+      expect(t1.isIndeterminate()).toBe(true);
+      expect(t1d1.isChecked()).toBe(true);
+      expect(t1d2.isChecked()).toBe(false);
+
+      checked = t1d1.toggleChecked();
+      await delay(0);
+      expect(checked.length).toBe(0);
+
+      expect(t1.isChecked()).toBe(false);
+      expect(t1.isIndeterminate()).toBe(true);
+      expect(t1d1.isChecked()).toBe(true);
+      expect(t1d2.isChecked()).toBe(false);
+    });
+  });
 });
