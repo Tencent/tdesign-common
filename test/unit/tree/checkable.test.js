@@ -1,8 +1,8 @@
 import TreeStore from '../../../js/tree/tree-store';
 import { delay } from './kit';
 
-describe('tree', () => {
-  describe('tree:checkable', () => {
+describe('tree:checkable', () => {
+  describe('treeStore:checkable', () => {
     it('checkable 属性为 false 时, 无法设置选中项', async () => {
       const tree = new TreeStore({
         checkable: false,
@@ -86,7 +86,7 @@ describe('tree', () => {
     });
   });
 
-  describe('tree:checked', () => {
+  describe('treeNode:checked', () => {
     it('关联选中态', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -334,7 +334,7 @@ describe('tree', () => {
     });
   });
 
-  describe('tree:valueMode', () => {
+  describe('treeStore:valueMode', () => {
     it('valueMode 默认配置为 onlyLeaf', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -594,7 +594,7 @@ describe('tree', () => {
     });
   });
 
-  describe('tree:checkStrictly', () => {
+  describe('treeStore:checkStrictly', () => {
     it('checkStrictly 为 true, valueMode 为 onlyLeaf', async () => {
       const tree = new TreeStore({
         checkStrictly: true,
@@ -729,7 +729,7 @@ describe('tree', () => {
     });
   });
 
-  describe('tree:initChecked', () => {
+  describe('treeNode:initChecked', () => {
     it('父节点选中，插入子节点均为选中', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -795,7 +795,7 @@ describe('tree', () => {
     });
   });
 
-  describe('tree:getCheckedNodes', () => {
+  describe('treeStore:getCheckedNodes', () => {
     it('获取所有选中节点', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -897,6 +897,84 @@ describe('tree', () => {
 
       const checkedNodes = tree.getCheckedNodes('t1.3');
       expect(checkedNodes.length).toBe(0);
+    });
+  });
+
+  describe('treeStore:setChecked', () => {
+    it('setChecked 可新增选中节点', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }, {
+            value: 't1.1.2',
+          }],
+        }, {
+          value: 't1.2',
+          children: [{
+            value: 't1.2.1',
+          }, {
+            value: 't1.2.2',
+          }],
+        }],
+      }]);
+
+      await delay(0);
+      tree.setChecked(['t1.2.1']);
+      tree.setChecked(['t1.1']);
+      await delay(0);
+      const checked = tree.getChecked();
+      expect(checked.length).toBe(3);
+      expect(checked[0]).toBe('t1.1.1');
+      expect(checked[1]).toBe('t1.1.2');
+      expect(checked[2]).toBe('t1.2.1');
+    });
+  });
+
+  describe('treeStore:replaceChecked', () => {
+    it('replaceChecked 可重设选中节点', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }, {
+            value: 't1.1.2',
+          }],
+        }, {
+          value: 't1.2',
+          children: [{
+            value: 't1.2.1',
+          }, {
+            value: 't1.2.2',
+          }],
+        }],
+      }]);
+
+      // 节点创建后，结构创建与回流是延时的
+      await delay(0);
+      tree.setChecked(['t1.1', 't1.2.1']);
+      await delay(0);
+      let checked = tree.getChecked();
+      expect(checked.length).toBe(3);
+      expect(checked[0]).toBe('t1.1.1');
+      expect(checked[1]).toBe('t1.1.2');
+      expect(checked[2]).toBe('t1.2.1');
+
+      tree.replaceChecked(['t1.2.2']);
+      await delay(0);
+      checked = tree.getChecked();
+      expect(checked.length).toBe(1);
+      expect(checked[0]).toBe('t1.2.2');
     });
   });
 });

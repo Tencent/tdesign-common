@@ -996,7 +996,7 @@ export class TreeNode {
 
   /**
    * 设置节点激活状态
-   * @param {boolean} expanded 节点激活状态
+   * @param {boolean} actived 节点激活状态
    * @param {object} [opts] 操作选项
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树激活的节点值数组
@@ -1043,7 +1043,7 @@ export class TreeNode {
 
   /**
    * 设置节点选中状态
-   * @param {boolean} expanded 节点选中状态
+   * @param {boolean} checked 节点选中状态
    * @param {object} [opts] 操作选项
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树选中的节点值数组

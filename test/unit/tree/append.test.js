@@ -1,8 +1,8 @@
 import TreeStore from '../../../js/tree/tree-store';
 import { delay } from './kit';
 
-describe('tree', () => {
-  describe('tree:append', () => {
+describe('tree:append', () => {
+  describe('treeStore:append', () => {
     it('append 方法添加多个节点', async () => {
       const tree = new TreeStore();
       tree.append([{
