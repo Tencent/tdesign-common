@@ -40,7 +40,7 @@
   .reset;
 
   width: 100%;
-  font: @table-font;
+  font-size: @table-font;
   color: @table--text-color;
   background-color: @table-bg;
 
@@ -102,13 +102,14 @@
   td {
     position: relative;
     padding: @table-cell-padding;
-    border-bottom: @border;
     line-height: @table-line-height;
     font-weight: normal;
     overflow-wrap: break-word;
     background-color: inherit;
     box-sizing: border-box;
     text-align: left;
+
+    .border(bottom, @table-border-color);
   }
 
   th.@{prefix}-table__th-drag {
@@ -188,9 +189,18 @@
 
   // 边框线表格
   &--bordered {
-    td,
-    th {
-      border-left: @border;
+    td:not(:first-child),
+    th:not(:first-child) {
+      &::before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transform: scaleX(.5);
+        background-color: @table-border-color;
+      }
 
       &.@{prefix}-table__cell--fixed-left-last {
         &::before {
@@ -213,8 +223,6 @@
     }
 
     .@{prefix}-table__content {
-      border-left: @border;
-
       // 覆盖深色模式下，水平和垂直滚动条交汇处的默认白色背景
       &::-webkit-scrollbar-corner {
         background-color: transparent;
@@ -223,7 +231,6 @@
 
     // 表格边框优化，适配固定列/固定表头场景
     .@{prefix}-table__content {
-      border: @border;
       border-radius: @border-radius-default;
     }
 
@@ -1124,7 +1131,7 @@
 
 // 超出省略的文本，也需要跟着尺寸变化
 .@{prefix}-table__ellipsis-content.@{prefix}-size-s .@{prefix}-popup__content {
-  font: @table-font;
+  font-size: @table-font;
 }
 
 /** Chrome 兼容问题处理 */
