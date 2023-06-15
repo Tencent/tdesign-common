@@ -630,6 +630,7 @@ export class TreeStore {
 
   /**
    * 批量设置展开节点
+   * - 注意这个状态设置操作会忽略互斥属性
    * @param {string[]} list 目标节点值数组
    * @return void
    */
@@ -640,6 +641,7 @@ export class TreeStore {
 
   /**
    * 直接设置节点展开状态
+   * - 注意这个状态设置操作会忽略互斥属性
    * @param {string[]} list 目标节点值数组
    * @param {boolean} [expanded=true] 展开状态
    * @return void
@@ -648,12 +650,12 @@ export class TreeStore {
     list.forEach((val) => {
       if (expanded) {
         this.expandedMap.set(val, true);
-        const node = this.getNode(val);
-        if (node) {
-          node.afterExpanded();
-        }
       } else {
         this.expandedMap.delete(val);
+      }
+      const node = this.getNode(val);
+      if (node) {
+        node.afterExpanded();
       }
     });
   }

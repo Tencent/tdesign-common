@@ -422,7 +422,7 @@ describe('tree:checkable', () => {
     });
   });
 
-  describe('treeStore:getCheckedNodes', () => {
+  describe('treeStore:getCheckedNodes()', () => {
     it('获取所有选中节点', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -527,7 +527,7 @@ describe('tree:checkable', () => {
     });
   });
 
-  describe('treeStore:setChecked', () => {
+  describe('treeStore:setChecked()', () => {
     it('setChecked 方法可以修改选中属性', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -623,7 +623,7 @@ describe('tree:checkable', () => {
     });
   });
 
-  describe('treeStore:replaceChecked', () => {
+  describe('treeStore:replaceChecked()', () => {
     it('replaceChecked 可重设选中节点', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -665,7 +665,7 @@ describe('tree:checkable', () => {
     });
   });
 
-  describe('treeStore:resetChecked', () => {
+  describe('treeStore:resetChecked()', () => {
     it('resetChecked 可清空选中节点', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -693,7 +693,7 @@ describe('tree:checkable', () => {
     });
   });
 
-  describe('treeNode:initChecked', () => {
+  describe('treeNode:initChecked()', () => {
     it('父节点选中，插入子节点均为选中', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -1007,7 +1007,7 @@ describe('tree:checkable', () => {
     });
   });
 
-  describe('treeNode:setChecked', () => {
+  describe('treeNode:setChecked()', () => {
     it('不使用选项的时候，仅获取预期状态，不更改节点状态', async () => {
       const tree = new TreeStore({
         checkable: true,
@@ -1158,7 +1158,7 @@ describe('tree:checkable', () => {
     });
   });
 
-  describe('treeNode:toggleChecked', () => {
+  describe('treeNode:toggleChecked()', () => {
     it('获取节点切换结果，不会更改节点状态', async () => {
       const tree = new TreeStore({
         checkable: true,

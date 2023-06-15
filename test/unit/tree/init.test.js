@@ -3,7 +3,7 @@ import TreeNode from '../../../js/tree/tree-node';
 
 // 树组件初始化
 describe('tree:init', () => {
-  describe('treeStore:init', () => {
+  describe('treeStore:init()', () => {
     it('TreeStore 初始化空数据', () => {
       const tree = new TreeStore();
       expect(typeof tree).toBe('object');

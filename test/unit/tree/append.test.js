@@ -3,7 +3,7 @@ import { delay } from './kit';
 
 // 节点添加与插入
 describe('tree:append', () => {
-  describe('treeStore:append', () => {
+  describe('treeStore:append()', () => {
     it('append 方法添加多个节点', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -21,7 +21,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeStore:appendNodes', () => {
+  describe('treeStore:appendNodes()', () => {
     it('appendNodes 方法添加节点', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -102,7 +102,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeStore:insertBefore', () => {
+  describe('treeStore:insertBefore()', () => {
     it('insertBefore 方法插入节点到前面', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -146,7 +146,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeStore:insertAfter', () => {
+  describe('treeStore:insertAfter()', () => {
     it('insertAfter 方法插入节点到后面', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -190,7 +190,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeNode:insertBefore', () => {
+  describe('treeNode:insertBefore()', () => {
     it('insertBefore 方法插入节点到前面', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -236,7 +236,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeNode:insertAfter', () => {
+  describe('treeNode:insertAfter()', () => {
     it('insertAfter 方法插入节点到后面', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -282,7 +282,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeNode:append', () => {
+  describe('treeNode:append()', () => {
     it('append 方法添加节点数据到另一个节点 children', async () => {
       const tree = new TreeStore();
       tree.append([{
@@ -344,7 +344,7 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeNode:appendTo', () => {
+  describe('treeNode:appendTo()', () => {
     it('appendTo 方法把节点插入到另一个节点 children', async () => {
       const tree = new TreeStore();
       tree.append([{
