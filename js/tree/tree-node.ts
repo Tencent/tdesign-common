@@ -972,6 +972,7 @@ export class TreeNode {
         // 最后设置自己的折叠状态
         map.set(node.value, true);
         node.update();
+        node.updateChildren();
       });
     } else {
       map.delete(this.value);
