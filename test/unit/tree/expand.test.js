@@ -542,46 +542,185 @@ describe('tree:expand', () => {
   });
 
   describe('treeStore:resetExpanded()', () => {
-    it('append 方法添加多个节点', async () => {
+    it('resetExpanded 方法清空展开状态', async () => {
       const tree = new TreeStore();
       tree.append([{
-        value: 't5'
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }],
+        }, {
+          value: 't1.2',
+          children: [{
+            value: 't1.2.1',
+          }],
+        }],
       }, {
-        value: 't6'
+        value: 't2',
+        children: [{
+          value: 't2.1',
+        }],
       }]);
+
+      tree.setExpanded(['t1', 't1.2']);
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t1.1').expanded).toBe(false);
+      expect(tree.getNode('t1.1.1').visible).toBe(false);
+      expect(tree.getNode('t1.2').expanded).toBe(true);
+      expect(tree.getNode('t1.2.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      tree.resetExpanded();
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(false);
+      expect(tree.getNode('t1.1').visible).toBe(false);
+      expect(tree.getNode('t1.1').expanded).toBe(false);
+      expect(tree.getNode('t1.1.1').visible).toBe(false);
+      expect(tree.getNode('t1.2').expanded).toBe(false);
+      expect(tree.getNode('t1.2.1').visible).toBe(false);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      const expanded = tree.getExpanded();
+      expect(expanded.length).toBe(0);
     });
   });
 
   describe('treeNode:initExpanded()', () => {
-    it('append 方法添加多个节点', async () => {
+    it('可以在数据中初始化 expanded 状态', async () => {
       const tree = new TreeStore();
       tree.append([{
-        value: 't5'
+        value: 't1',
+        expanded: true,
+        children: [{
+          value: 't1.1',
+        }],
       }, {
-        value: 't6'
+        value: 't2',
+        children: [{
+          value: 't2.1',
+        }],
       }]);
+
+      await delay(0);
+      expect(tree.getNode('t1').isExpanded()).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t2').isExpanded()).toBe(false);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
     });
   });
 
   describe('treeNode:setExpanded()', () => {
-    it('append 方法添加多个节点', async () => {
+    it('treeNode.setExpanded 方法默认不更新状态', async () => {
       const tree = new TreeStore();
       tree.append([{
-        value: 't5'
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
       }, {
-        value: 't6'
+        value: 't2',
+        children: [{
+          value: 't2.1',
+        }],
       }]);
+
+      tree.setExpanded(['t1']);
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      const expanded = tree.getNode('t2').setExpanded(true);
+      expect(expanded.length).toBe(2);
+      expect(expanded).toContain('t1');
+      expect(expanded).toContain('t2');
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+    });
+
+    it('treeNode.setExpanded 传递选项来更新状态', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
+      }, {
+        value: 't2',
+        children: [{
+          value: 't2.1',
+        }],
+      }]);
+
+      tree.setExpanded(['t1']);
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      const expanded = tree.getNode('t2').setExpanded(true, {
+        directly: true,
+      });
+      expect(expanded.length).toBe(2);
+      expect(expanded).toContain('t1');
+      expect(expanded).toContain('t2');
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(true);
+      expect(tree.getNode('t2.1').visible).toBe(true);
     });
   });
 
   describe('treeNode:toggleExpanded()', () => {
-    it('append 方法添加多个节点', async () => {
+    it('treeNode.toggleExpanded 方法默认不更新状态', async () => {
       const tree = new TreeStore();
       tree.append([{
-        value: 't5'
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
       }, {
-        value: 't6'
+        value: 't2',
+        children: [{
+          value: 't2.1',
+        }],
       }]);
+
+      tree.setExpanded(['t1']);
+      let expanded = tree.getExpanded();
+      expect(expanded.length).toBe(1);
+      expect(expanded).toContain('t1');
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      expanded = tree.getNode('t2').toggleExpanded();
+      expect(expanded.length).toBe(2);
+      expect(expanded).toContain('t1');
+      expect(expanded).toContain('t2');
+      await delay(0);
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      expanded = tree.getNode('t1').toggleExpanded();
+      expect(expanded.length).toBe(0);
     });
   });
 });
