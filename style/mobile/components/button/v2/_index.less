@@ -173,12 +173,24 @@
       border-color: @button-ghost-border-color;
     }
 
-    &.@{button}--hover::after {
-      background: none;
+    &.@{button}--hover {
+      color: @button-ghost-hover-color;
+
+      &::after {
+        background: none;
+      }
     }
 
     &.@{button}--primary {
       color: @button-ghost-primary-color;
+
+      &.@{button}--hover {
+        color: @button-ghost-primary-hover-color;
+
+        &::after {
+          border-color: @button-ghost-primary-hover-color;
+        }
+      }
 
       &::after {
         border-color: @button-ghost-primary-border-color;
@@ -187,6 +199,14 @@
 
     &.@{button}--danger {
       color: @button-ghost-danger-color;
+
+      &.@{button}--hover {
+        color: @button-ghost-danger-hover-color;
+
+        &::after {
+          border-color: @button-ghost-danger-hover-color;
+        }
+      }
 
       &::after {
         border-color: @button-ghost-danger-border-color;
@@ -344,7 +364,8 @@
   }
 
   .@{prefix}-loading + &__content:not(:empty),
-  .@{prefix}-icon + &__content:not(:empty) {
+  .@{prefix}-icon + &__content:not(:empty),
+  &__content:not(:empty) + .@{prefix}-icon {
     margin-left: 4px;
   }
 
