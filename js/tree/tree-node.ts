@@ -41,6 +41,16 @@ export const privateKey = '__tdesign_id__';
 
 // vm 开头为视图属性，不可以外部设置
 // 用于触发视图更新
+// public 方法，在 tdesign-vue 中有使用，会保障其输入输出实现
+// private 方法，可能会改动其输入输出
+
+/**
+ * tree 节点数据模型
+ * @class TreeNode
+ * @param {TreeStore} tree TreeStore 实例
+ * @param {object} [data] 节点数据
+ * @param {TreeNode} parent 指定的当前 TreeStore 实例中的父节点
+ */
 export class TreeNode {
   // 节点隶属的树实例
   public tree: TreeStore;

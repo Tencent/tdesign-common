@@ -25,6 +25,8 @@ import {
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
 // 任何一次数据写入，会触发相应节点的状态更新
+// public 方法，在 tdesign-vue 中有使用，会保障其输入输出实现
+// private 方法，可能会改动其输入输出
 
 /**
  * tree 数据模型
@@ -53,7 +55,6 @@ import {
  * @param {function} [options.onReflow=null] 节点触发回流后的回调
  * @param {function} [options.onUpdate=null] 节点触发更新后的后调
  * @param {boolean} [options.allowFoldNodeOnFilter=false] 过滤时，是否允许折叠节点
- * @return void
  */
 export class TreeStore {
   // 根节点集合
@@ -119,13 +120,13 @@ export class TreeStore {
       lazy: false,
       valueMode: 'onlyLeaf',
       filter: null,
-      onLoad: null,
-      onReflow: null,
-      onUpdate: null,
       // 每次搜索条件变更，重置展开状态，路径节点展开，显示命中节点
       // allowFoldNodeOnFilter 为 true 时，搜索条件不变的情况下，允许折叠路径节点
       // 默认状态，allowFoldNodeOnFilter 为 false 时，路径节点无法折叠
       allowFoldNodeOnFilter: false,
+      onLoad: null,
+      onReflow: null,
+      onUpdate: null,
       ...options,
     };
     this.config = config;

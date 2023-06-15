@@ -1,5 +1,6 @@
 import TreeStore from '../../../js/tree/tree-store';
 import TreeNode from '../../../js/tree/tree-node';
+import { delay } from './kit';
 
 // 树组件初始化
 describe('tree:init', () => {
@@ -29,6 +30,12 @@ describe('tree:init', () => {
       expect(node.value).toBe('1');
       expect(Array.isArray(node.children)).toBe(true);
       expect(node.children[0].value).toBe('1.1');
+    });
+  });
+
+  describe('treeStore:keys', () => {
+    it('todo', async () => {
+      await delay(0);
     });
   });
 });
