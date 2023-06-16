@@ -45,8 +45,18 @@
   background-color: @table-bg;
 
   /** loading need to be top of fixed columns */
-  .@{prefix}-loading--full {
+  &__loading--full {
     z-index: @table-loading-z-index;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 60%);
   }
 
   .t-table-vertical-align(top);
@@ -1017,7 +1027,7 @@
 
 /** 默认最小高度限制为 Empty 高度加表头高度 */
 .@{prefix}-table--loading .@{prefix}-table__content {
-  min-height: 168px;
+  min-height: 158px;
 }
 
 .@{prefix}-table__handle-draggable:hover,
