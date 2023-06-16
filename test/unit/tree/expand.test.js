@@ -1,5 +1,4 @@
 import TreeStore from '../../../js/tree/tree-store';
-import { delay } from './kit';
 
 // 节点展开状态
 describe('tree:expand', () => {
@@ -20,7 +19,6 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
       expect(tree.getNode('t1').isExpanded()).toBe(true);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
@@ -31,7 +29,6 @@ describe('tree:expand', () => {
       tree.appendNodes('t1.1', {
         value: 't1.1.1',
       });
-      await delay(0);
       expect(tree.getNode('t1.1').expanded).toBe(true);
       expect(tree.getNode('t1.1.1').visible).toBe(true);
     });
@@ -52,7 +49,6 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
       expect(tree.getNode('t1').visible).toBe(true);
       expect(tree.getNode('t1').isExpanded()).toBe(false);
       expect(tree.getNode('t1').expanded).toBe(false);
@@ -65,7 +61,6 @@ describe('tree:expand', () => {
       tree.appendNodes('t1.1', {
         value: 't1.1.1',
       });
-      await delay(0);
       expect(tree.getNode('t1.1').expanded).toBe(false);
       expect(tree.getNode('t1.1.1').visible).toBe(false);
     });
@@ -94,7 +89,6 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -115,7 +109,6 @@ describe('tree:expand', () => {
           }],
         }],
       }]);
-      await delay(0);
       expect(tree.getNode('t3').expanded).toBe(true);
       expect(tree.getNode('t3.1').visible).toBe(true);
       expect(tree.getNode('t3.1').expanded).toBe(false);
@@ -139,7 +132,6 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(false);
       expect(tree.getNode('t1.1').visible).toBe(false);
       expect(tree.getNode('t2').expanded).toBe(false);
@@ -148,7 +140,6 @@ describe('tree:expand', () => {
       tree.getNode('t1').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(false);
@@ -157,7 +148,6 @@ describe('tree:expand', () => {
       tree.getNode('t2').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(true);
@@ -188,7 +178,6 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(false);
       expect(tree.getNode('t1.1').visible).toBe(false);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -202,7 +191,6 @@ describe('tree:expand', () => {
       tree.getNode('t2').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(false);
       expect(tree.getNode('t1.1').visible).toBe(false);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -216,7 +204,6 @@ describe('tree:expand', () => {
       tree.getNode('t1').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -230,7 +217,6 @@ describe('tree:expand', () => {
       tree.getNode('t1.1').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(true);
@@ -244,7 +230,6 @@ describe('tree:expand', () => {
       tree.getNode('t1.2').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -280,12 +265,9 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
-
       tree.getNode('t1.2').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(false);
       expect(tree.getNode('t1.1').visible).toBe(false);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -321,12 +303,9 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
-
       tree.getNode('t1.2').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -364,13 +343,9 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
-
       tree.getNode('t1.2').setExpanded(true, {
         directly: true,
       });
-      await delay(0);
-
       const expanded = tree.getExpanded();
       expect(expanded.length).toBe(2);
       expect(expanded.indexOf('t1') >= 0).toBe(true);
@@ -402,7 +377,6 @@ describe('tree:expand', () => {
       }]);
 
       tree.setExpanded(['t1', 't1.2']);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -413,7 +387,6 @@ describe('tree:expand', () => {
       expect(tree.getNode('t2.1').visible).toBe(false);
 
       tree.replaceExpanded(['t1.1', 't2']);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(false);
       expect(tree.getNode('t1.1').visible).toBe(false);
       expect(tree.getNode('t1.1').expanded).toBe(true);
@@ -442,11 +415,8 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
-
       tree.setExpanded(['t1']);
       tree.setExpanded(['t2']);
-      await delay(0);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2.1').visible).toBe(true);
     });
@@ -475,10 +445,7 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
-
       tree.setExpanded(['t1', 't2', 't1.2']);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -515,10 +482,7 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
-
       tree.setExpandedDirectly(['t1', 't2', 't1.2'], true);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -529,7 +493,6 @@ describe('tree:expand', () => {
       expect(tree.getNode('t2.1').visible).toBe(true);
 
       tree.setExpandedDirectly(['t1', 't2'], false);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(false);
       expect(tree.getNode('t1.1').visible).toBe(false);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -565,7 +528,6 @@ describe('tree:expand', () => {
       }]);
 
       tree.setExpanded(['t1', 't1.2']);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -576,7 +538,6 @@ describe('tree:expand', () => {
       expect(tree.getNode('t2.1').visible).toBe(false);
 
       tree.resetExpanded();
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(false);
       expect(tree.getNode('t1.1').visible).toBe(false);
       expect(tree.getNode('t1.1').expanded).toBe(false);
@@ -607,7 +568,6 @@ describe('tree:expand', () => {
         }],
       }]);
 
-      await delay(0);
       expect(tree.getNode('t1').isExpanded()).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').isExpanded()).toBe(false);
@@ -632,7 +592,6 @@ describe('tree:expand', () => {
       }]);
 
       tree.setExpanded(['t1']);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(false);
@@ -642,7 +601,7 @@ describe('tree:expand', () => {
       expect(expanded.length).toBe(2);
       expect(expanded).toContain('t1');
       expect(expanded).toContain('t2');
-      await delay(0);
+
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(false);
@@ -664,7 +623,6 @@ describe('tree:expand', () => {
       }]);
 
       tree.setExpanded(['t1']);
-      await delay(0);
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(false);
@@ -676,7 +634,7 @@ describe('tree:expand', () => {
       expect(expanded.length).toBe(2);
       expect(expanded).toContain('t1');
       expect(expanded).toContain('t2');
-      await delay(0);
+
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(true);
@@ -703,7 +661,7 @@ describe('tree:expand', () => {
       let expanded = tree.getExpanded();
       expect(expanded.length).toBe(1);
       expect(expanded).toContain('t1');
-      await delay(0);
+
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(false);
@@ -713,7 +671,7 @@ describe('tree:expand', () => {
       expect(expanded.length).toBe(2);
       expect(expanded).toContain('t1');
       expect(expanded).toContain('t2');
-      await delay(0);
+
       expect(tree.getNode('t1').expanded).toBe(true);
       expect(tree.getNode('t1.1').visible).toBe(true);
       expect(tree.getNode('t2').expanded).toBe(false);

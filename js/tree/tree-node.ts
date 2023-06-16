@@ -278,7 +278,7 @@ export class TreeNode {
    */
   public initActived(): void {
     const { tree, actived } = this;
-    if (actived) {
+    if (actived && this.isActivable()) {
       tree.activedMap.set(this.value, true);
     }
   }
