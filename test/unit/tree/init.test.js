@@ -33,9 +33,58 @@ describe('tree:init', () => {
     });
   });
 
+  describe('treeStore:draggable', () => {
+    it('可在整个 tree 配置 draggable', async () => {
+      const tree = new TreeStore({
+        draggable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
+      }]);
+      expect(tree.getNode('t1.1').isDraggable()).toBe(true);
+    });
+
+    it('单个节点可独立配置 draggable 属性', async () => {
+      const tree = new TreeStore({
+        draggable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          draggable: false,
+        }],
+      }]);
+      expect(tree.getNode('t1').isDraggable()).toBe(true);
+      expect(tree.getNode('t1.1').isDraggable()).toBe(false);
+    });
+  });
+
   describe('treeStore:keys', () => {
-    it('todo', async () => {
+    it('可配置节点属性读取位置', async () => {
+      const tree = new TreeStore({
+        keys: {
+          label: 'name',
+          value: 'key',
+          children: 'list',
+        },
+      });
+      tree.append([{
+        name: 't1root',
+        key: 't1',
+        list: [{
+          name: 't1d1',
+          key: 't1.1',
+        }],
+      }]);
       await delay(0);
+
+      expect(tree.getNode('t1').label).toBe('t1root');
+      expect(tree.getNode('t1.1').label).toBe('t1d1');
+      expect(tree.getNodes().length).toBe(2);
     });
   });
 });
