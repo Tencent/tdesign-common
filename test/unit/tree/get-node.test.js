@@ -255,4 +255,45 @@ describe('tree:getNode', () => {
       expect(index).toBe(0);
     });
   });
+
+  describe('treeNode:getRoot()', () => {
+    it('getRoot 方法取节点的根节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }],
+        }],
+      }]);
+      await delay(0);
+
+      const root = tree.getNode('t1.1.1').getRoot();
+      expect(root.value).toBe('t1');
+    });
+  });
+
+  describe('treeNode:getPath()', () => {
+    it('getPath 方法获取路径节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }],
+        }],
+      }]);
+      await delay(0);
+
+      const pathNodes = tree.getNode('t1.1.1').getPath();
+      expect(pathNodes.length).toBe(3);
+      expect(pathNodes[0].value).toBe('t1');
+      expect(pathNodes[1].value).toBe('t1.1');
+      expect(pathNodes[2].value).toBe('t1.1.1');
+    });
+  });
 });

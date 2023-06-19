@@ -331,6 +331,30 @@ describe('tree:append', () => {
       expect(tree.getNode('t1.2').getIndex()).toBe(2);
       expect(tree.getNode('t1.3').getParent().value).toBe('t1');
     });
+
+    it('insertBefore 方法插入其他树的节点到子节点', async () => {
+      const tree1 = new TreeStore();
+      tree1.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }]
+      }]);
+      const tree2 = new TreeStore();
+      tree2.append([{
+        value: 't1.3',
+      }]);
+      tree1.getNode('t1.2').insertBefore(tree2.getNode('t1.3'));
+      await delay(0);
+      const nodes = tree1.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree1.getNode('t1.1').getIndex()).toBe(0);
+      expect(tree1.getNode('t1.3').getIndex()).toBe(1);
+      expect(tree1.getNode('t1.2').getIndex()).toBe(2);
+      expect(tree1.getNode('t1.3').getParent().value).toBe('t1');
+    });
   });
 
   describe('treeNode:insertAfter()', () => {
@@ -376,6 +400,24 @@ describe('tree:append', () => {
       expect(tree.getNode('t1.2').getIndex()).toBe(1);
       expect(tree.getNode('t1.3').getIndex()).toBe(2);
       expect(tree.getNode('t1.3').getParent().value).toBe('t1');
+    });
+
+    it('insertAfter 方法同级插入后变更顺序', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }]
+      }]);
+      tree.getNode('t1.2').insertAfter(tree.getNode('t1.1'));
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(3);
+      expect(tree.getNode('t1.1').getIndex()).toBe(1);
+      expect(tree.getNode('t1.2').getIndex()).toBe(0);
     });
   });
 
@@ -457,6 +499,44 @@ describe('tree:append', () => {
       expect(tree.getNode('t2').isLeaf()).toBe(true);
       expect(tree.getNode('t2').getLevel()).toBe(1);
       expect(tree.children.length).toBe(1);
+    });
+
+    it('无法将父节点插入到子节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }]
+      }]);
+      let error = null;
+      try {
+        tree.getNode('t1').appendTo(tree, tree.getNode('t1.1'));
+      } catch (err) {
+        error = err;
+      }
+
+      expect(error instanceof Error).toBe(true);
+      expect(error.message).toBe('无法将父节点插入到子节点');
+    });
+
+    it('无法将节点插入到本节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }]
+      }]);
+      let error = null;
+      try {
+        tree.getNode('t1.1').appendTo(tree, tree.getNode('t1.1'));
+      } catch (err) {
+        error = err;
+      }
+
+      expect(error instanceof Error).toBe(true);
+      expect(error.message).toBe('无法将节点插入到本节点');
     });
   });
 

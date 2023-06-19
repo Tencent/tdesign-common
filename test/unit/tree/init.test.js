@@ -87,4 +87,23 @@ describe('tree:init', () => {
       expect(tree.getNodes().length).toBe(2);
     });
   });
+
+  describe('treeNode:set()', () => {
+    it('用 set 方法控制节点属性', async () => {
+      const tree = new TreeStore({
+        draggable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
+      }]);
+      tree.getNode('t1.1').set({
+        draggable: false,
+      });
+      expect(tree.getNode('t1').isDraggable()).toBe(true);
+      expect(tree.getNode('t1.1').isDraggable()).toBe(false);
+    });
+  });
 });
