@@ -59,3 +59,9 @@ The menu items of the drop-down menu support custom themes, which are used accor
 The drop-down menu supports expansion to the left.
 
 {{ left }}
+
+### Drop-down menu with icon
+
+The drop-down menu supports adding an icon in front of the content.
+
+{{ icon }}
