@@ -19,6 +19,29 @@ describe('tree:append', () => {
       expect(nodes[1].value).toBe('t6');
       expect(nodes.length).toBe(2);
     });
+
+    it('append 方法添加树结构数据', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(3);
+      expect(nodes[0].value).toBe('t1');
+      expect(nodes[1].value).toBe('t1.1');
+      expect(nodes[2].value).toBe('t1.2');
+
+      // 取根节点列表
+      const children = tree.getChildren();
+      expect(children.length).toBe(1);
+      expect(children[0].value).toBe('t1');
+    });
   });
 
   describe('treeStore:appendNodes()', () => {
@@ -77,6 +100,26 @@ describe('tree:append', () => {
       expect(nodes.length).toBe(4);
       expect(tree.getNode('t1.1').getParent().value).toBe('t1');
       expect(tree.getNode('t2.1').getParent().value).toBe('t2');
+    });
+
+    it('appendNodes 方法添加多个节点数据到另一个节点 children', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+      }, {
+        value: 't2',
+      }]);
+      tree.appendNodes('t1', [{
+        value: 't1.1',
+      }, {
+        value: 't1.2',
+      }]);
+
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(4);
+      expect(tree.getNode('t1.1').getParent().value).toBe('t1');
+      expect(tree.getNode('t1.2').getParent().value).toBe('t1');
     });
 
     it('appendNodes 方法添加节点到另一个节点 children', async () => {
@@ -187,6 +230,60 @@ describe('tree:append', () => {
       expect(nodes.length).toBe(3);
       expect(tree.getNode('t1.1').getIndex()).toBe(0);
       expect(tree.getNode('t1.2').getIndex()).toBe(1);
+    });
+  });
+
+  describe('treeStore:reload()', () => {
+    it('reload 方法重设 tree 数据为空', async () => {
+      const tree = new TreeStore({
+        activable: true,
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+      tree.setExpanded(['t1']);
+      tree.setActived(['t1.1']);
+      tree.setChecked(['t1.2']);
+      await delay(0);
+      expect(tree.getExpanded().length).toBe(1);
+      expect(tree.getChecked().length).toBe(1);
+      expect(tree.getActived().length).toBe(1);
+
+      tree.reload([]);
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(0);
+      expect(tree.getExpanded().length).toBe(0);
+      expect(tree.getChecked().length).toBe(0);
+      expect(tree.getActived().length).toBe(0);
+    });
+  });
+
+  describe('treeStore:remove()', () => {
+    it('remove 方法移除指定节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
+      }, {
+        value: 't2'
+      }]);
+      await delay(0);
+      tree.remove('t1.1');
+      await delay(0);
+
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(2);
+      expect(nodes[0].value).toBe('t1');
+      expect(nodes[1].value).toBe('t2');
     });
   });
 
@@ -363,34 +460,26 @@ describe('tree:append', () => {
     });
   });
 
-  describe('treeStore:reload()', () => {
-    it('reload 方法重设 tree 数据为空', async () => {
-      const tree = new TreeStore({
-        activable: true,
-        checkable: true,
-      });
+  describe('treeNode:remove()', () => {
+    it('remove 方法移除节点', async () => {
+      const tree = new TreeStore();
       tree.append([{
         value: 't1',
         children: [{
           value: 't1.1',
-        }, {
-          value: 't1.2',
         }],
+      }, {
+        value: 't2'
       }]);
-      tree.setExpanded(['t1']);
-      tree.setActived(['t1.1']);
-      tree.setChecked(['t1.2']);
       await delay(0);
-      expect(tree.getExpanded().length).toBe(1);
-      expect(tree.getChecked().length).toBe(1);
-      expect(tree.getActived().length).toBe(1);
-      tree.reload([]);
+      const t1d1 = tree.getNode('t1.1');
+      t1d1.remove();
       await delay(0);
+
       const nodes = tree.getNodes();
-      expect(nodes.length).toBe(0);
-      expect(tree.getExpanded().length).toBe(0);
-      expect(tree.getChecked().length).toBe(0);
-      expect(tree.getActived().length).toBe(0);
+      expect(nodes.length).toBe(2);
+      expect(nodes[0].value).toBe('t1');
+      expect(nodes[1].value).toBe('t2');
     });
   });
 });

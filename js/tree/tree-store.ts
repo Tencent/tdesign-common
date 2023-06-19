@@ -185,7 +185,7 @@ export class TreeStore {
   /**
    * 获取指定节点对象
    * @param {string|number|TreeNode} item 获取节点对象的条件，可以是节点 value，也可以是节点本身
-   * @return TreeNode 节点对象，如果判断树中没有符合条件的节点，返回 undefined
+   * @return TreeNode 节点对象，如果判断树中没有符合条件的节点，返回 null
    */
   public getNode(item: TypeTargetNode): TreeNode {
     let node = null;
@@ -194,6 +194,7 @@ export class TreeStore {
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
     }
+    if (!node) node = null;
     return node;
   }
 
@@ -786,9 +787,9 @@ export class TreeStore {
    * @return void
    */
   public updateAll(): void {
-    const nodes = this.getNodes();
-    nodes.forEach((node) => {
+    this.nodeMap.forEach((node) => {
       node.update();
+      node.updateChecked();
     });
   }
 

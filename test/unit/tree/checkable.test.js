@@ -693,6 +693,29 @@ describe('tree:checkable', () => {
     });
   });
 
+  describe('treeStore:updateAll()', () => {
+    it('updateAll 方法更新所有节点的状态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
+      }]);
+      await delay(0);
+      expect(tree.getNode('t1').checked).toBe(false);
+      expect(tree.getNode('t1.1').checked).toBe(false);
+
+      tree.checkedMap.set('t1.1', true);
+      tree.updateAll();
+      await delay(0);
+      expect(tree.getNode('t1').checked).toBe(true);
+      expect(tree.getNode('t1.1').checked).toBe(true);
+    });
+  });
+
   describe('treeNode:initChecked()', () => {
     it('父节点选中，插入子节点均为选中', async () => {
       const tree = new TreeStore({
