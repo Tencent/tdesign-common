@@ -470,8 +470,10 @@ export class TreeStore {
    * @return void
    */
   public refreshState(): void {
-    const { nodes } = this;
-    nodes.forEach((node) => {
+    const { nodeMap } = this;
+    // 树在初始化未回流时，nodes 数组为空
+    // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
+    nodeMap.forEach((node) => {
       node.update();
       node.updateChecked();
     });
