@@ -312,6 +312,20 @@ describe('tree:activable', () => {
       expect(tree.getNode('t1').actived).toBe(true);
       expect(tree.getNode('t1.1').actived).toBe(false);
     });
+
+    it('数据初始化节点激活状态', async () => {
+      const tree = new TreeStore({
+        activable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          actived: true,
+        }],
+      }]);
+      expect(tree.getNode('t1.1').isActived()).toBe(true);
+    });
   });
 
   describe('treeNode:setActived()', () => {

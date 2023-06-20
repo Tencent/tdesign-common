@@ -42,6 +42,32 @@ describe('tree:append', () => {
       expect(children.length).toBe(1);
       expect(children[0].value).toBe('t1');
     });
+
+    it('append 方法添加重复节点', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }, {
+        value: 't1'
+      }]);
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes[0].value).toBe('t1');
+      expect(nodes[1].value).toBe('t1');
+      expect(nodes.length).toBe(2);
+    });
+
+    it('append 方法添加空数组', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }]);
+      tree.append([]);
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(1);
+      expect(nodes[0].value).toBe('t1');
+    });
   });
 
   describe('treeStore:appendNodes()', () => {
@@ -537,6 +563,44 @@ describe('tree:append', () => {
 
       expect(error instanceof Error).toBe(true);
       expect(error.message).toBe('无法将节点插入到本节点');
+    });
+
+    it('节点插入到原本的位置', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }]
+      }]);
+      tree.getNode('t1.1').appendTo(tree, tree.getNode('t1'));
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      expect(t1d1.parent.value).toBe('t1');
+      expect(t1.getIndex()).toBe(0);
+    });
+
+    it('节点插入到原本的位置', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }]
+      }, {
+        value: 't2',
+      }]);
+      let error = null;
+      try {
+        // 实际使用中不可能这么做，仅用于极限错误兜底
+        tree.children = null;
+        tree.getNode('t1.1').appendTo(tree, null);
+      } catch (err) {
+        error = err;
+      }
+      expect(error instanceof Error).toBe(true);
+      expect(error.message).toBe('无法插入到目标位置，可插入的节点列表不存在');
     });
   });
 
