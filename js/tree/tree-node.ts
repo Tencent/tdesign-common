@@ -366,6 +366,8 @@ export class TreeNode {
       siblings = tree.children;
     }
 
+    // 上面的逻辑其实已经覆盖了所有业务情况
+    // 这里的逻辑报错仅用于极限兜底，防止 treeStore 被误使用
     if (!Array.isArray(siblings)) {
       throw new Error('无法插入到目标位置，可插入的节点列表不存在');
     }
@@ -397,7 +399,7 @@ export class TreeNode {
     this.parent = parentNode;
 
     // 插入节点应当继承展开状态
-    // 但建议不要继承选中状态和高亮状态
+    // 但不要继承选中状态和高亮状态
     const nodes = this.walk();
     nodes.forEach((item) => {
       const node = item;

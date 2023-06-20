@@ -531,6 +531,8 @@ export class TreeStore {
       } else if (this.shouldReflow) {
         // 单纯的回流不需要更新节点状态
         // 但需要触发更新事件
+        // 实际业务中，这个逻辑几乎无法触发，节点操作必然引发 update
+        // 这里代码仅仅用于边界兜底
         this.emit('update', {
           nodes: [],
           map: this.updatedMap,

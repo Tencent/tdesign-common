@@ -240,6 +240,83 @@ describe('tree:expand', () => {
       expect(tree.getNode('t2').expanded).toBe(false);
       expect(tree.getNode('t2.1').visible).toBe(false);
     });
+
+    it('expandMutex 可以在数据中配置', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        expandMutex: true,
+        children: [{
+          value: 't1.1',
+          children: [{
+            value: 't1.1.1',
+          }],
+        }, {
+          value: 't1.2',
+          children: [{
+            value: 't1.2.1',
+          }],
+        }],
+      }, {
+        value: 't2',
+        children: [{
+          value: 't2.1',
+        }],
+      }]);
+
+      tree.getNode('t2').setExpanded(true, {
+        directly: true,
+      });
+      expect(tree.getNode('t1').isExpandMutex()).toBe(true);
+      expect(tree.getNode('t1').expanded).toBe(false);
+      expect(tree.getNode('t1.1').visible).toBe(false);
+      expect(tree.getNode('t1.1').expanded).toBe(false);
+      expect(tree.getNode('t1.1.1').visible).toBe(false);
+      expect(tree.getNode('t1.2').visible).toBe(false);
+      expect(tree.getNode('t1.2').expanded).toBe(false);
+      expect(tree.getNode('t1.2.1').visible).toBe(false);
+      expect(tree.getNode('t2').expanded).toBe(true);
+      expect(tree.getNode('t2.1').visible).toBe(true);
+
+      tree.getNode('t1').setExpanded(true, {
+        directly: true,
+      });
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t1.1').expanded).toBe(false);
+      expect(tree.getNode('t1.1.1').visible).toBe(false);
+      expect(tree.getNode('t1.2').visible).toBe(true);
+      expect(tree.getNode('t1.2').expanded).toBe(false);
+      expect(tree.getNode('t1.2.1').visible).toBe(false);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      tree.getNode('t1.1').setExpanded(true, {
+        directly: true,
+      });
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t1.1').expanded).toBe(true);
+      expect(tree.getNode('t1.1.1').visible).toBe(true);
+      expect(tree.getNode('t1.2').visible).toBe(true);
+      expect(tree.getNode('t1.2').expanded).toBe(false);
+      expect(tree.getNode('t1.2.1').visible).toBe(false);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+
+      tree.getNode('t1.2').setExpanded(true, {
+        directly: true,
+      });
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t1.1').expanded).toBe(true);
+      expect(tree.getNode('t1.1.1').visible).toBe(true);
+      expect(tree.getNode('t1.2').visible).toBe(true);
+      expect(tree.getNode('t1.2').expanded).toBe(true);
+      expect(tree.getNode('t1.2.1').visible).toBe(true);
+      expect(tree.getNode('t2').expanded).toBe(false);
+      expect(tree.getNode('t2.1').visible).toBe(false);
+    });
   });
 
   describe('treeStore:expandParent', () => {

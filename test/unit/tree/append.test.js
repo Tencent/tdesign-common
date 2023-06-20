@@ -62,6 +62,7 @@ describe('tree:append', () => {
       tree.append([{
         value: 't1'
       }]);
+      await delay(0);
       tree.append([]);
       await delay(0);
       const nodes = tree.getNodes();
@@ -507,6 +508,19 @@ describe('tree:append', () => {
       expect(tree1.getNode('t3').getParent().value).toBe('t1');
       expect(tree1.getNode('t4').getParent().value).toBe('t2');
     });
+
+    it('append 方法空数据', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1'
+      }]);
+      await delay(0);
+      tree.getNode('t1').append([]);
+      await delay(0);
+      const nodes = tree.getNodes();
+      expect(nodes.length).toBe(1);
+      expect(nodes[0].value).toBe('t1');
+    });
   });
 
   describe('treeNode:appendTo()', () => {
@@ -573,7 +587,7 @@ describe('tree:append', () => {
           value: 't1.1',
         }]
       }]);
-      tree.getNode('t1.1').appendTo(tree, tree.getNode('t1'));
+      tree.getNode('t1.1').appendTo(tree, tree.getNode('t1'), 0);
       await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -581,7 +595,7 @@ describe('tree:append', () => {
       expect(t1.getIndex()).toBe(0);
     });
 
-    it('节点插入到原本的位置', async () => {
+    it('节点插入到错误位置', async () => {
       const tree = new TreeStore();
       tree.append([{
         value: 't1',
@@ -593,14 +607,40 @@ describe('tree:append', () => {
       }]);
       let error = null;
       try {
-        // 实际使用中不可能这么做，仅用于极限错误兜底
+        // 实际使用中不能这么做，仅用于边界错误兜底验证
         tree.children = null;
         tree.getNode('t1.1').appendTo(tree, null);
       } catch (err) {
         error = err;
+        // 奇怪的是, tree.children = null 影响到了后面的测试代码
+        // 这里可能存在一个代码编译层面的 bug，后续有空深入调查
+        // 现在先用下面的代码补回 children 对象，以保证后续测试代码不报错
+        tree.children = [];
       }
       expect(error instanceof Error).toBe(true);
       expect(error.message).toBe('无法插入到目标位置，可插入的节点列表不存在');
+    });
+
+    it('被展开的节点，插入其他已展开节点时保留展开状态', async () => {
+      const tree = new TreeStore();
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }]
+      }, {
+        value: 't2',
+      }]);
+      await delay(0);
+      tree.setExpanded(['t1', 't2']);
+      tree.getNode('t1').appendTo(tree, tree.getNode('t2'));
+      await delay(0);
+
+      expect(tree.getNode('t1').expanded).toBe(true);
+      expect(tree.getNode('t1.1').isVisible()).toBe(true);
+      expect(tree.getNode('t1.1').visible).toBe(true);
+      expect(tree.getNode('t1').getParent().value).toBe('t2');
+      expect(tree.getChildren().length).toBe(1);
     });
   });
 
