@@ -106,7 +106,7 @@ describe('tree:disabled', () => {
   });
 
   describe('treeNode:setChecked()', () => {
-    it('整个树为禁用状态，默认无法切换选中态', async () => {
+    it('整个树为禁用状态, UI check 无法切换选中态', async () => {
       const tree = new TreeStore({
         checkable: true,
         disabled: true,
@@ -129,5 +129,59 @@ describe('tree:disabled', () => {
       expect(t1.checked).toBe(false);
       expect(t1d1.checked).toBe(false);
     });
+
+    it('整个树为禁用状态, 直接设值可以切换选中态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+        disabled: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }],
+      }]);
+
+      await delay(0);
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+
+      tree.getNode('t1.1').setChecked(true, {
+        isAction: false,
+        directly: true,
+      });
+      await delay(0);
+      expect(t1.checked).toBe(true);
+      expect(t1d1.checked).toBe(true);
+    });
+
+    // it('UI check 向下扩散被 disalbed 阻塞', async () => {
+    //   const tree = new TreeStore({
+    //     checkable: true,
+    //   });
+    //   tree.append([{
+    //     value: 't1',
+    //     children: [{
+    //       value: 't1.1',
+    //       disabled: true,
+    //     }, {
+    //       value: 't1.2',
+    //       disabled: true,
+    //     }],
+    //   }]);
+
+    //   await delay(0);
+    //   const t1 = tree.getNode('t1');
+    //   const t1d1 = tree.getNode('t1.1');
+    //   const t1d2 = tree.getNode('t1.2');
+
+    //   tree.getNode('t1').setChecked(true, {
+    //     directly: true,
+    //   });
+    //   await delay(0);
+    //   expect(t1.checked).toBe(false);
+    //   expect(t1d1.checked).toBe(false);
+    //   expect(t1d2.checked).toBe(false);
+    // });
   });
 });

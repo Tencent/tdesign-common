@@ -25,7 +25,7 @@ import {
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
 // 任何一次数据写入，会触发相应节点的状态更新
-// public 方法，在 tdesign-vue 中有使用，会保障其输入输出实现
+// public 方法，在 ui 组件中有可能在使用，会保障其输入输出实现
 // private 方法，可能会改动其输入输出
 
 /**
@@ -353,7 +353,7 @@ export class TreeStore {
    * - {TreeNode} spec.node 目标树节点
    * - {object} spec.data 节点构造数据
    */
-  public parseNodeData(
+  private parseNodeData(
     para: TreeNodeValue | TreeNode | TypeTreeNodeData,
     item: TypeTreeNodeData | TreeNode,
   ) {
@@ -702,18 +702,24 @@ export class TreeStore {
     const list: TreeNodeValue[] = [];
     const checkedMap = map || this.checkedMap;
     nodes.forEach((node) => {
-      if (node.isChecked(checkedMap)) {
-        if (valueMode === 'parentFirst' && !checkStrictly) {
-          if (!node.parent || !node.parent.isChecked(checkedMap)) {
-            list.push(node.value);
-          }
-        } else if (valueMode === 'onlyLeaf' && !checkStrictly) {
-          if (node.isLeaf()) {
-            list.push(node.value);
-          }
-        } else {
+      // 判断未选中，直接忽略
+      if (!node.isChecked(checkedMap)) return;
+      if (valueMode === 'parentFirst' && !checkStrictly) {
+        // valueMode 为 parentFirst
+        // 仅取值父节点
+        if (!node.parent || !node.parent.isChecked(checkedMap)) {
           list.push(node.value);
         }
+      } else if (valueMode === 'onlyLeaf' && !checkStrictly) {
+        // valueMode 为 onlyLeaf
+        // 仅取值叶子节点
+        if (node.isLeaf()) {
+          list.push(node.value);
+        }
+      } else {
+        // valueMode 为 all
+        // 取值所有选中节点
+        list.push(node.value);
       }
     });
     return list;
@@ -884,7 +890,7 @@ export class TreeStore {
    * - 使得路径节点自动展开
    * @return void
    */
-  public lockFilterPathNodes(): void {
+  private lockFilterPathNodes(): void {
     const { config } = this;
     const allNodes = this.getNodes();
 

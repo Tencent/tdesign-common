@@ -41,7 +41,7 @@ export const privateKey = '__tdesign_id__';
 
 // vm 开头为视图属性，不可以外部设置
 // 用于触发视图更新
-// public 方法，在 tdesign-vue 中有使用，会保障其输入输出实现
+// public 方法，在 ui 组件中有可能在使用，会保障其输入输出实现
 // private 方法，可能会改动其输入输出
 
 /**
@@ -166,6 +166,7 @@ export class TreeNode {
     // 下面几个属性，节点初始化的时候，可以设置与 treeStore.config 不同的值
     // 初始化默认值为 null, 则在方法判断时，默认以 treeStore.config 为准
     // 传递或者设置属性为 boolean 类型的值，则以节点属性值为准
+    // 这种处理方式主要是解决 treeStore.setConfig 方法配置全局属性导致的状态切换与保留的问题
     this.activable = null;
     this.checkable = null;
     this.disabled = null;
@@ -242,7 +243,7 @@ export class TreeNode {
    * 初始化选中态
    * @return void
    */
-  public initChecked(): void {
+  private initChecked(): void {
     const { tree, value, parent } = this;
     const { checkedMap } = tree;
     const { checkStrictly } = tree.config;
@@ -259,7 +260,7 @@ export class TreeNode {
    * 初始化节点展开状态
    * @return void
    */
-  public initExpanded(): void {
+  private initExpanded(): void {
     const { tree } = this;
     let { expanded } = this;
     const { config } = tree;
@@ -285,7 +286,7 @@ export class TreeNode {
    * 初始化节点激活状态
    * @return void
    */
-  public initActived(): void {
+  private initActived(): void {
     const { tree, actived } = this;
     if (actived && this.isActivable()) {
       tree.activedMap.set(this.value, true);
@@ -435,7 +436,7 @@ export class TreeNode {
    * @param {number} [index] 预期在子节点列表中的位置
    * @return void
    */
-  public insert(
+  private insert(
     item: TypeTreeItem,
     index?: number,
   ): void {
@@ -509,7 +510,7 @@ export class TreeNode {
    * 清除本节点与当前树的关系
    * @return void
    */
-  public clean(): void {
+  private clean(): void {
     const { tree, value } = this;
     tree.activedMap.delete(value);
     tree.checkedMap.delete(value);
@@ -523,7 +524,7 @@ export class TreeNode {
    * 异步加载子节点
    * @return Promise<void>
    */
-  public async loadChildren(): Promise<void> {
+  private async loadChildren(): Promise<void> {
     const config = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
       if (isFunction(config.load)) {
@@ -819,7 +820,7 @@ export class TreeNode {
     if (!this.isCheckable()) return false;
     const checkedMap = map || tree.checkedMap;
     let checked = false;
-    // 如果在 checked 节点列表中，则直接为 true
+    // 如果在 checkedMap 中，则直接为 true
     if (checkedMap.get(value)) return true;
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) return checked;
@@ -1118,6 +1119,8 @@ export class TreeNode {
     } else {
       // 非严格模式下，选中态要扩散
       const children = this.walk();
+      // 移除自身，仅操作子节点
+      // children.shift();
       // 子节点的预期选中态与当前节点同步
       children.forEach((node) => {
         // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
@@ -1128,6 +1131,11 @@ export class TreeNode {
           map.delete(node.value);
         }
       });
+      // if (children.length > 0) {
+      //   // 有子节点则消除自身的预期选中态
+      //   // 本节点的预期选中态将通过计算得出
+      //   map.delete(this.value);
+      // }
       // 消除全部父节点的预期选中态
       // 父节点的预期选中态将通过计算得出
       const parents = this.getParents();
@@ -1144,6 +1152,7 @@ export class TreeNode {
         this.updateChecked();
       } else {
         // 非严格模式，状态扩散时，更新所有相关节点
+        this.updateChecked();
         const relatedNodes = tree.getRelatedNodes([this.value]);
         relatedNodes.forEach((node) => {
           node.updateChecked();
