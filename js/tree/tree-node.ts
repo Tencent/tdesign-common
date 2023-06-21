@@ -142,27 +142,35 @@ export class TreeNode {
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
 
-    // 初始化状态
+    // 节点自身初始化数据
     this.model = null;
     this.children = null;
+    this.level = 0;
+
+    // vm 开头为视图属性，不可以外部设置
     this.vmCheckable = false;
     this.vmIsLeaf = false;
     this.vmIsFirst = false;
     this.vmIsLast = false;
     this.vmIsRest = false;
     this.vmIsLocked = false;
-    this.level = 0;
-    this.visible = true;
+
+    // 初始化节点基本状态
+    this.visible = false;
     this.actived = false;
-    this.expanded = config.expandAll;
     this.checked = false;
     this.indeterminate = false;
+    this.loading = false;
+    this.expanded = config.expandAll;
+
+    // 下面几个属性，节点初始化的时候，可以设置与 treeStore.config 不同的值
+    // 初始化默认值为 null, 则在方法判断时，默认以 treeStore.config 为准
+    // 传递或者设置属性为 boolean 类型的值，则以节点属性值为准
     this.activable = null;
     this.checkable = null;
     this.disabled = null;
     this.expandMutex = null;
     this.draggable = null;
-    this.loading = false;
 
     // 为节点设置唯一 id
     // tree 数据替换时，value 相同有可能导致节点状态渲染冲突
@@ -1063,15 +1071,23 @@ export class TreeNode {
 
   /**
    * 设置节点选中状态
+   * - 节点 UI 操作时调用这个方法
+   * - 节点设置自身状态时调用这个方法
    * @param {boolean} checked 节点选中状态
    * @param {object} [opts] 操作选项
+   * @param {boolean} [opts.isAction=true] 是否为 UI 动作
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树选中的节点值数组
    */
   public setChecked(checked: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const config = tree.config || {};
-    const options = {
+    const options: TypeSettingOptions = {
+      // 为 true, 为 UI 操作，状态扩散受 disabled 影响
+      // 为 false, 为值操作, 状态扩散不受 disabled 影响
+      isAction: true,
+      // 为 true, 直接操作节点状态
+      // 为 false, 返回预期状态
       directly: false,
       ...opts,
     };
@@ -1079,35 +1095,55 @@ export class TreeNode {
     if (!options.directly) {
       map = new Map(tree.checkedMap);
     }
-    if (this.isCheckable() && checked !== this.isChecked()) {
-      if (config.checkStrictly) {
-        if (checked) {
-          map.set(this.value, true);
-        } else {
-          map.delete(this.value);
-        }
-      } else {
-        const children = this.walk();
-        // 子节点的预期选中态与当前节点同步
-        children.forEach((node) => {
-          if (checked) {
-            map.set(node.value, true);
-          } else {
-            map.delete(node.value);
-          }
-        });
-        // 消除全部父节点的预期选中态
-        // 父节点的预期选中态将通过计算得出
-        const parents = this.getParents();
-        parents.forEach((node) => {
-          map.delete(node.value);
-        });
-      }
+    if (!this.isCheckable()) {
+      // 当前节点非选项，则不可设置选中态
+      return tree.getChecked(map);
     }
+    if (options.isAction && this.isDisabled()) {
+      // 对于 UI 动作，禁用时不可切换选中态
+      return tree.getChecked(map);
+    }
+    if (checked === this.isChecked()) {
+      // 值没有变更，则选中态无变化
+      return tree.getChecked(map);
+    }
+
+    if (config.checkStrictly) {
+      // 严格模式下，选中态不扩散，仅操作节点自身
+      if (checked) {
+        map.set(this.value, true);
+      } else {
+        map.delete(this.value);
+      }
+    } else {
+      // 非严格模式下，选中态要扩散
+      const children = this.walk();
+      // 子节点的预期选中态与当前节点同步
+      children.forEach((node) => {
+        // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
+        if (options.isAction && this.isDisabled()) return;
+        if (checked) {
+          map.set(node.value, true);
+        } else {
+          map.delete(node.value);
+        }
+      });
+      // 消除全部父节点的预期选中态
+      // 父节点的预期选中态将通过计算得出
+      const parents = this.getParents();
+      parents.forEach((node) => {
+        // 对于 UI 动作，状态向上扩散时，禁用状态不影响状态切换
+        map.delete(node.value);
+      });
+    }
+
     if (options.directly) {
+      // 如果是直接操作节点状态，则需要立即更新节点状态
       if (config.checkStrictly) {
+        // 严格模式值更新节点自身
         this.updateChecked();
       } else {
+        // 非严格模式，状态扩散时，更新所有相关节点
         const relatedNodes = tree.getRelatedNodes([this.value]);
         relatedNodes.forEach((node) => {
           node.updateChecked();
