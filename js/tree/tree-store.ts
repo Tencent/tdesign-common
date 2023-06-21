@@ -750,16 +750,15 @@ export class TreeStore {
     if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
       const node = this.getNode(val);
-      if (node) {
-        if (checkStrictly) {
-          this.checkedMap.set(val, true);
-          node.updateChecked();
-        } else {
-          const childrenNodes = node.walk();
-          childrenNodes.forEach((childNode) => {
-            this.checkedMap.set(childNode.value, true);
-          });
-        }
+      if (!node) return;
+      if (checkStrictly) {
+        this.checkedMap.set(val, true);
+        node.updateChecked();
+      } else {
+        const childrenNodes = node.walk();
+        childrenNodes.forEach((childNode) => {
+          this.checkedMap.set(childNode.value, true);
+        });
       }
     });
     if (!checkStrictly) {
@@ -840,13 +839,16 @@ export class TreeStore {
       const node = this.getNode(value);
       if (node) {
         const parents = node.getParents();
-        const children = node.walk();
+        // 关联节点倒序排列
+        // 这样在状态更新时，优先处理底层节点
+        const children = node.walk().reverse();
         let related = [];
         if (conf.withParents) {
-          related = parents.concat(children);
+          related = children.concat(parents);
         } else {
           related = children;
         }
+        // 用 map 实现节点去重
         related.forEach((relatedNode) => {
           map.set(relatedNode.value, relatedNode);
         });

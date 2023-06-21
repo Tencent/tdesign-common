@@ -67,10 +67,10 @@ describe('tree:checkable', () => {
       }]);
 
       await delay(0);
+      const t1 = tree.getNode('t1');
       tree.setChecked(['t1.1']);
-
-      // 总体选中状态是延时更新的
       await delay(0);
+      expect(t1.isIndeterminate()).toBe(true);
       const checked = tree.getChecked();
       expect(checked.length).toBe(1);
       expect(checked[0]).toBe('t1.1');

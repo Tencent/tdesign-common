@@ -236,12 +236,13 @@ export class TreeNode {
    */
   public initChecked(): void {
     const { tree, value, parent } = this;
+    const { checkedMap } = tree;
     const { checkStrictly } = tree.config;
     if (this.checked) {
-      tree.checkedMap.set(value, true);
+      checkedMap.set(value, true);
     }
     if (!checkStrictly && parent?.isChecked()) {
-      tree.checkedMap.set(value, true);
+      checkedMap.set(value, true);
     }
     this.updateChecked();
   }
@@ -802,32 +803,35 @@ export class TreeNode {
    * @return boolean 是否被选中
    */
   public isChecked(map?: TypeIdMap): boolean {
-    const { children, tree } = this;
+    const { children, tree, value } = this;
     const { checkStrictly } = tree.config;
-    let checked = false;
+    // 节点不在当前树上，视为未选中
+    if (!tree.nodeMap.get(value)) return false;
+    // 节点不可选，视为未选中
+    if (!this.isCheckable()) return false;
     const checkedMap = map || tree.checkedMap;
-    if (tree.nodeMap.get(this.value)) {
-      if (checkedMap.get(this.value)) {
-        // 如果在 checked 节点列表中，则直接为 true
-        checked = true;
-      } else if (
-        Array.isArray(children)
-        && children.length > 0
-        && !checkStrictly
-      ) {
-        // 如果是父节点，需检查所有子节点状态
-        checked = children.every((node) => {
-          const childIsChecked = node.isChecked(checkedMap);
-          return childIsChecked;
-        });
-      } else if (!checkStrictly) {
-        // 从父节点状态推断子节点状态
-        // 这里再调用 isChecked 会导致死循环
-        const parents = this.getParents();
-        checked = parents.some((node) => checkedMap.get(node.value));
-      }
+    let checked = false;
+    // 如果在 checked 节点列表中，则直接为 true
+    if (checkedMap.get(value)) return true;
+    // 严格模式，则已经可以判定选中状态
+    if (checkStrictly) return checked;
+    // 允许关联状态的情况下，需要进一步判断
+    if (
+      Array.isArray(children)
+      && children.length > 0
+    ) {
+      // 子节点全部选中，则当前节点选中
+      checked = children.every((node) => {
+        const childIsChecked = node.isChecked(checkedMap);
+        return childIsChecked;
+      });
+    } else {
+      // 从父节点状态推断子节点状态
+      // 这里再调用 isChecked 会导致死循环
+      const parents = this.getParents();
+      checked = parents.some((node) => checkedMap.get(node.value));
     }
-    return !!checked;
+    return checked;
   }
 
   /**
@@ -835,30 +839,33 @@ export class TreeNode {
    * @return boolean 是否为半选状态
    */
   public isIndeterminate(): boolean {
-    const { children, tree } = this;
+    const { children, tree, value } = this;
     const { checkStrictly } = tree.config;
-    if (checkStrictly) {
+    // 节点不在当前树上，视为未选中
+    if (!tree.nodeMap.get(value)) return false;
+    // 节点不可选，视为未选中
+    if (!this.isCheckable()) return false;
+    // 严格模式没有半选状态
+    if (checkStrictly) return false;
+    // 叶节点不存在半选状态
+    if (!Array.isArray(children)) return false;
+
+    let childChecked: null | boolean = null;
+    const indeterminate = children.some((node: TreeNode) => {
+      if (node.isIndeterminate()) {
+        // 子节点有任意一个半选，则其为半选状态
+        return true;
+      }
+      if (isNull(childChecked)) {
+        childChecked = node.isChecked();
+      }
+      if (childChecked !== node.isChecked()) {
+        // 子节点选中状态不一致，则其为半选状态
+        return true;
+      }
       return false;
-    }
-    let indeterminate = false;
-    if (Array.isArray(children)) {
-      // 叶节点不存在半选状态
-      let childChecked: null | boolean = null;
-      indeterminate = children.some((node: TreeNode) => {
-        if (node.isIndeterminate()) {
-          // 子节点有任意一个半选，则其为半选状态
-          return true;
-        }
-        if (isNull(childChecked)) {
-          childChecked = node.isChecked();
-        }
-        if (childChecked !== node.isChecked()) {
-          // 子节点选中状态不一致，则其为半选状态
-          return true;
-        }
-        return false;
-      });
-    }
+    });
+
     return indeterminate;
   }
 
@@ -1134,16 +1141,14 @@ export class TreeNode {
    * @return void
    */
   public updateChecked(): void {
-    const { tree } = this;
-    this.vmCheckable = this.isCheckable();
-    if (this.vmCheckable && !this.isDisabled()) {
-      this.checked = this.isChecked();
-      if (this.checked) {
-        tree.checkedMap.set(this.value, true);
-      }
-      this.indeterminate = this.isIndeterminate();
-      tree.updated(this);
+    const { tree, value } = this;
+    const { checkedMap } = tree;
+    this.checked = this.isChecked();
+    this.indeterminate = this.isIndeterminate();
+    if (this.checked) {
+      checkedMap.set(value, true);
     }
+    tree.updated(this);
   }
 
   /**
