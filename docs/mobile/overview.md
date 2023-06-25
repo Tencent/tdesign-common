@@ -47,7 +47,7 @@ spline: explain
   </div>
 </section>
 
-<h3>导航<em class="tag">7</em></h3>
+<h3>导航<em class="tag">8</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/back-top">
@@ -78,6 +78,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/side-bar">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-sidebar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-sidebar-dark.png" />
+      <p class="name">SideBar 侧边导航栏</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/steps">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-steps.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-steps-dark.png" />
@@ -101,13 +108,6 @@ spline: explain
 </section>
 <h3>输入<em class="tag">15</em></h3>
 <section class="image-group">
-  <div class="image-wrapper">
-    <a class="item" href="./components/form">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-form.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-form-dark.png" />
-      <p class="name">Form 表单</p>
-    </a>
-  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/calendar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-calendar.png" />
@@ -134,6 +134,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker-dark.png" />
       <p class="name">DateTimePicker 日期选择器</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/form">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-form.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-form-dark.png" />
+      <p class="name">Form 表单</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -210,13 +217,6 @@ spline: explain
 
 <h3>数据展示<em class="tag">17</em></h3>
 <section class="image-group">
-  <div class="image-wrapper">
-    <a class="item" href="./components/table">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-table.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-table-dark.png" />
-      <p class="name">Table 表格</p>
-    </a>
-  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/avatar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar.png" />
@@ -320,6 +320,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-swiper.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-swiper-dark.png" />
       <p class="name">Swiper 轮播图</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/table">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-table.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-table-dark.png" />
+      <p class="name">Table 表格</p>
     </a>
   </div>
   <div class="image-wrapper">
