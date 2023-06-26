@@ -828,6 +828,7 @@ export class TreeStore {
    * - 用于实现最小遍历集合
    * @param {string[]} list 目标节点值数组
    * @param {object} [options] 操作选项
+   * @oaran {boolean} [options.reverse=false] 倒序排列遍历节点
    * @param {boolean} [options.withParents=true] 包含所有父节点
    * @return TreeNode[] 关联节点数组
    */
@@ -836,6 +837,9 @@ export class TreeStore {
     options?: TypeRelatedNodesOptions,
   ): TreeNode[] {
     const conf = {
+      // 默认倒序排列，从底层节点开始遍历
+      reverse: false,
+      // 默认遍历父节点
       withParents: true,
       ...options,
     };
@@ -844,13 +848,11 @@ export class TreeStore {
       if (map.get(value)) return;
       const node = this.getNode(value);
       if (node) {
-        const parents = node.getParents();
-        // 关联节点倒序排列
-        // 这样在状态更新时，优先处理底层节点
-        const children = node.walk().reverse();
+        const parents = node.getParents().reverse();
+        const children = node.walk();
         let related = [];
         if (conf.withParents) {
-          related = children.concat(parents);
+          related = parents.concat(children);
         } else {
           related = children;
         }
@@ -860,7 +862,10 @@ export class TreeStore {
         });
       }
     });
-    const relatedNodes = Array.from(map.values());
+    let relatedNodes = Array.from(map.values());
+    if (conf.reverse) {
+      relatedNodes = relatedNodes.reverse();
+    }
     return relatedNodes;
   }
 

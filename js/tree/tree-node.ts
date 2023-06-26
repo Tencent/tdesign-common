@@ -821,7 +821,9 @@ export class TreeNode {
     const checkedMap = map || tree.checkedMap;
     let checked = false;
     // 如果在 checkedMap 中，则直接为 true
-    if (checkedMap.get(value)) return true;
+    if (checkedMap.get(value)) {
+      return true;
+    }
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) return checked;
     // 允许关联状态的情况下，需要进一步判断
@@ -1097,7 +1099,7 @@ export class TreeNode {
       map = new Map(tree.checkedMap);
     }
     if (!this.isCheckable()) {
-      // 当前节点非选项，则不可设置选中态
+      // 当前节点非可选节点，则不可设置选中态
       return tree.getChecked(map);
     }
     if (options.isAction && this.isDisabled()) {
@@ -1109,57 +1111,85 @@ export class TreeNode {
       return tree.getChecked(map);
     }
 
-    if (config.checkStrictly) {
-      // 严格模式下，选中态不扩散，仅操作节点自身
-      if (checked) {
-        map.set(this.value, true);
-      } else {
-        map.delete(this.value);
-      }
+    if (checked) {
+      map.set(this.value, true);
     } else {
-      // 非严格模式下，选中态要扩散
-      const children = this.walk();
-      // 移除自身，仅操作子节点
-      // children.shift();
-      // 子节点的预期选中态与当前节点同步
-      children.forEach((node) => {
-        // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
-        if (options.isAction && this.isDisabled()) return;
-        if (checked) {
-          map.set(node.value, true);
-        } else {
-          map.delete(node.value);
-        }
-      });
-      // if (children.length > 0) {
-      //   // 有子节点则消除自身的预期选中态
-      //   // 本节点的预期选中态将通过计算得出
-      //   map.delete(this.value);
-      // }
-      // 消除全部父节点的预期选中态
-      // 父节点的预期选中态将通过计算得出
-      const parents = this.getParents();
-      parents.forEach((node) => {
-        // 对于 UI 动作，状态向上扩散时，禁用状态不影响状态切换
-        map.delete(node.value);
-      });
+      map.delete(this.value);
     }
 
-    if (options.directly) {
-      // 如果是直接操作节点状态，则需要立即更新节点状态
-      if (config.checkStrictly) {
+    if (config.checkStrictly) {
+      // 严格模式下，选中态不扩散，仅操作节点自身
+      if (options.directly) {
         // 严格模式值更新节点自身
         this.updateChecked();
-      } else {
-        // 非严格模式，状态扩散时，更新所有相关节点
-        this.updateChecked();
-        const relatedNodes = tree.getRelatedNodes([this.value]);
+      }
+    } else {
+      // 先向下游扩散选中态
+      this.spreadChildrenChecked(checked, map, options);
+      // 再计算上游选中态
+      this.spreadParentChecked(checked, map, options);
+      // 状态更新务必放到扩散动作之后
+      // 过早的状态更新会导致后续计算出错
+      if (options.directly) {
+        const relatedNodes = tree.getRelatedNodes([this.value], {
+          reverse: true,
+        });
         relatedNodes.forEach((node) => {
           node.updateChecked();
         });
       }
     }
+
     return tree.getChecked(map);
+  }
+
+  // 选中态向上游扩散
+  private spreadParentChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
+    const options: TypeSettingOptions = {
+      isAction: true,
+      directly: false,
+      ...opts,
+    };
+
+    // 碰到不可选节点，中断扩散
+    if (!this.isCheckable()) return;
+
+    const { children } = this;
+    if (Array.isArray(children) && children.length > 0) {
+      // 有子节点，则选中态由子节点选中态集合来决定
+      map.delete(this.value);
+    }
+
+    const { parent } = this;
+    if (!parent) return;
+    parent.spreadParentChecked(checked, map, options);
+  }
+
+  // 选中态向下游扩散
+  private spreadChildrenChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
+    const options: TypeSettingOptions = {
+      isAction: true,
+      directly: false,
+      ...opts,
+    };
+
+    // 碰到不可选节点，中断扩散
+    if (!this.isCheckable()) return;
+    // 对于 UI 动作操作，节点禁用，中断扩散
+    if (options.isAction && this.isDisabled()) return;
+
+    const { children } = this;
+    if (!Array.isArray(children)) return;
+    children.forEach((node) => {
+      // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
+      if (options.isAction && node.isDisabled()) return;
+      if (checked) {
+        map.set(node.value, true);
+      } else {
+        map.delete(node.value);
+      }
+      node.spreadChildrenChecked(checked, map, options);
+    });
   }
 
   /* ------ 节点状态更新 ------ */

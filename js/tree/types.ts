@@ -198,6 +198,7 @@ export interface TypeSettingOptions {
 }
 
 export interface TypeRelatedNodesOptions {
+  reverse?: boolean;
   withParents?: boolean;
 }
 
