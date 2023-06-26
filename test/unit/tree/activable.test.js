@@ -19,7 +19,6 @@ describe('tree:activable', () => {
           value: 't2.1',
         }],
       }]);
-      await delay(0);
 
       tree.getNode('t1.1').setActived(true, {
         directly: true,
@@ -134,7 +133,6 @@ describe('tree:activable', () => {
           value: 't2.1',
         }],
       }]);
-
       await delay(0);
 
       tree.setActived(['t1', 't1.1', 't2', 't2.1']);
@@ -158,8 +156,6 @@ describe('tree:activable', () => {
           value: 't2.1',
         }],
       }]);
-
-      await delay(0);
 
       tree.setActived(['t1', 't1.1', 't2', 't2.1']);
       const activedNodes = tree.getActivedNodes('t1');
