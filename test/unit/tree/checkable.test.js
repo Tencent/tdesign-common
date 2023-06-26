@@ -1131,6 +1131,79 @@ describe('tree:checkable', () => {
       expect(t1d1d1.isChecked()).toBe(false);
       expect(t1d2.isChecked()).toBe(true);
     });
+
+    it('个别节点非可选节点时，视为特殊禁用状态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          checkable: false,
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      const checked = t1.setChecked(true);
+      expect(checked.length).toBe(1);
+      expect(checked[0]).toBe('t1.2');
+
+      t1d1.setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(false);
+      expect(t1d2.checked).toBe(false);
+
+      t1.setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(false);
+      expect(t1d2.checked).toBe(true);
+    });
+
+    it('值与选中态一致，不变更选中态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      t1.setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(true);
+
+      t1d1.setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(true);
+    });
   });
 
   describe('treeNode:toggleChecked()', () => {
