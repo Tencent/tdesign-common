@@ -1,5 +1,4 @@
 import TreeStore from '../../../js/tree/tree-store';
-import { delay } from './kit';
 
 // 禁用状态
 // 原则:
@@ -20,10 +19,7 @@ describe('tree:disabled', () => {
         }],
       }]);
 
-      await delay(0);
       tree.setChecked(['t1.1']);
-
-      await delay(0);
       expect(tree.getChecked().length).toBe(1);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -56,12 +52,10 @@ describe('tree:disabled', () => {
         }],
       }]);
 
-      await delay(0);
       expect(tree.getNode('t1').checked).toBe(true);
       expect(tree.getNode('t2').checked).toBe(false);
 
       tree.replaceChecked(['t2.1', 't2.2']);
-      await delay(0);
       expect(tree.getNode('t1').checked).toBe(false);
       expect(tree.getNode('t2').checked).toBe(true);
       const checked = tree.getChecked();
@@ -95,7 +89,6 @@ describe('tree:disabled', () => {
         }],
       }]);
 
-      await delay(0);
       const checked = tree.getChecked();
       expect(checked.length).toBe(2);
       expect(checked[0]).toBe('t1.1');
@@ -118,14 +111,12 @@ describe('tree:disabled', () => {
         }],
       }]);
 
-      await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
 
       tree.getNode('t1.1').setChecked(true, {
         directly: true,
       });
-      await delay(0);
       expect(t1.checked).toBe(false);
       expect(t1d1.checked).toBe(false);
     });
@@ -142,7 +133,6 @@ describe('tree:disabled', () => {
         }],
       }]);
 
-      await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
 
@@ -150,12 +140,11 @@ describe('tree:disabled', () => {
         isAction: false,
         directly: true,
       });
-      await delay(0);
       expect(t1.checked).toBe(true);
       expect(t1d1.checked).toBe(true);
     });
 
-    it('UI check 向下扩散被 disalbed 阻塞', async () => {
+    it('UI check 向下扩散被 disabled 阻塞', async () => {
       const tree = new TreeStore({
         checkable: true,
       });
@@ -170,7 +159,6 @@ describe('tree:disabled', () => {
         }],
       }]);
 
-      await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
       const t1d2 = tree.getNode('t1.2');
@@ -178,10 +166,79 @@ describe('tree:disabled', () => {
       tree.getNode('t1').setChecked(true, {
         directly: true,
       });
-      await delay(0);
       expect(t1.checked).toBe(false);
       expect(t1d1.checked).toBe(false);
       expect(t1d2.checked).toBe(false);
+    });
+
+    it('UI check 向下扩散被 disabled 阻塞产生半选', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          disabled: true,
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      tree.getNode('t1').setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(false);
+      expect(t1d2.checked).toBe(true);
+    });
+
+    it('UI check 向上扩散不被 disabled 阻塞', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        disabled: true,
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+
+      tree.getNode('t1').setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(false);
+      expect(t1d2.checked).toBe(false);
+
+      tree.getNode('t1.1').setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(false);
+
+      tree.getNode('t1.2').setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(true);
     });
   });
 });

@@ -250,7 +250,7 @@ export class TreeStore {
   }
 
   /**
-   * 获取所有符合条件的节点
+   * 获取所有符合条件的节点，按回流排序后的顺序给出
    * 以这些字段作为示例:
    * - value: 节点值(ID)
    * - TreeNode: 节点实例
@@ -697,11 +697,11 @@ export class TreeStore {
    * @return string[] 选中态节点 value 数组
    */
   public getChecked(map?: TypeIdMap): TreeNodeValue[] {
-    const { nodes, config } = this;
+    const { nodeMap, config } = this;
     const { valueMode, checkStrictly } = config;
     const list: TreeNodeValue[] = [];
     const checkedMap = map || this.checkedMap;
-    nodes.forEach((node) => {
+    nodeMap.forEach((node) => {
       // 判断未选中，直接忽略
       if (!node.isChecked(checkedMap)) return;
       if (valueMode === 'parentFirst' && !checkStrictly) {
