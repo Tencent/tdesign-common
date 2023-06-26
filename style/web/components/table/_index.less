@@ -280,13 +280,13 @@
     }
 
     &.@{prefix}-table--header-fixed {
-      tbody tr:nth-of-type(even) {
+      > .t-table__content > table > tbody tr:nth-of-type(even) {
         background-color: @table-highlight-bg-color;
       }
     }
 
     &:not(.@{prefix}-table--header-fixed) {
-      tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
+      > .t-table__content > table > tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
         background-color: @table-highlight-bg-color;
       }
     }
@@ -300,12 +300,12 @@
       }
 
       &:not(.@{prefix}-table__header--fixed) {
-        tbody tr:nth-of-type(odd):hover {
+        > .t-table__content > table > tbody tr:nth-of-type(odd):hover {
           background-color: @table-highlight-bg-color--hover;
         }
       }
 
-      tbody {
+      > .t-table__content > table > tbody {
         tr {
           transition: background-color @anim-duration-base linear;
 

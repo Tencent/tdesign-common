@@ -4,20 +4,30 @@
 
 .@{prefix}-textarea {
   display: flex;
-  flex-direction: column;
   box-sizing: border-box;
-  padding: @textarea-vertical-padding @textarea-horizontal-padding;
+  padding: @textarea-padding;
   background-color: @textarea-background-color;
 
+  &--layout-vertical {
+    flex-direction: column;
+  }
+
   &__label:not(:empty) {
-    font-size: @textarea-label-font-size;
+    font-size: @font-size-m;
     color: @textarea-label-color;
     flex-shrink: 0;
-    line-height: @textarea-label-line-height;
-    padding-bottom: @textarea-label-padding-bottom;
+    line-height: 24px;
+    margin-right: @spacer-2;
+    width: @textarea-label-width;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    .@{prefix}-textarea--layout-vertical & {
+      line-height: 22px;
+      font-size: @font-size-base;
+      padding-bottom: @spacer;
+    }
   }
 
   &__wrapper {
@@ -39,6 +49,7 @@
       text-align: left;
       background-color: transparent;
       border: 0;
+      outline: none;
       resize: none;
       font-size: @textarea-text-font-size;
       color: @textarea-text-color;

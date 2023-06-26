@@ -26,9 +26,6 @@
     border-radius: @back-top-round-border-radius;
 
     &::after {
-
-      .hairline(@back-top-round-border-color);
-
       border-radius: @back-top-round-border-radius;
     }
   }
@@ -54,10 +51,21 @@
     right: 0;
 
     &::after {
-
-      .hairline(@back-top-round-border-color);
-
       border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
+    }
+  }
+
+  &--round,
+  &--half-round {
+    &::after {
+      .hairline(@back-top-round-border-color);
+    }
+  }
+
+  &--round-dark,
+  &--half-round-dark {
+    &::after {
+      .hairline(@back-top-round-dark-border-color);
     }
   }
 

@@ -141,4 +141,8 @@ describe('formatENumber', () => {
   it('0.123e3', () => {
     expect(formatENumber('0.123e3')).toBe('123');
   });
+
+  it('0.8975527383412673418', () => {
+    expect(formatENumber('0.8975527383412673418')).toBe('0.8975527383412673418');
+  });
 });

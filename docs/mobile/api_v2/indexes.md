@@ -6,6 +6,12 @@ isComponent: true
 toc: false
 ---
 
+## 代码演示
+
 ### 基础索引
 
 {{ base }}
+
+### 自定义索引
+
+{{ custom }}

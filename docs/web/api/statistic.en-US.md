@@ -2,7 +2,7 @@
 title: Statistic
 description: Highlight and display a set of numeric or descriptive statistical data.
 isComponent: true
-usage: { title: '', description: '' }
+usage: { title: "", description: "" }
 spline: data
 ---
 
@@ -23,6 +23,7 @@ Set the trend state of the component through trend and control the trend display
 The color style provides five default TDesign style color values, which can also be customized.
 
 {{ color }}
+
 ### 前缀后缀/自定义
 
 Customize through the prefix and suffix slots.
@@ -44,4 +45,3 @@ Control the loading state of the numeric value through loading.
 ### 组合使用
 
 {{ combination }}
-

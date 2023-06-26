@@ -317,7 +317,7 @@ Set the parameter `dragSort='row'`.
 
 #### Example 2: Row drag sorting with handle column
 
-When setting the parameter `dragSort='row-handler'`, you also need to add a handle column: `{ colKey: 'sort', cell: () => <MoveIcon /> }`.
+When setting the parameter `dragSort='row-handler'`, you also need to add a handle column: `{ colKey: 'drag', cell: () => <MoveIcon /> }`.
 
 {{ drag-sort-handler }}
 

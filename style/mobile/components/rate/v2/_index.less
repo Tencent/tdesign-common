@@ -13,9 +13,40 @@
     display: inline-flex;
   }
 
+  &--disabled {
+    .@{prefix}-rate__icon {
+      &-left {
+        &--selected {
+          color: @rate-disabled-selected-color;
+        }
+
+        &--unselected {
+          color: @rate-disabled-unselected-color;
+        }
+      }
+
+      &--selected {
+        color: @rate-disabled-selected-color;
+
+        &-half {
+          background: linear-gradient(
+            to right,
+            @rate-disabled-selected-color 0%,
+            @rate-disabled-selected-color 50%,
+            @rate-disabled-unselected-color 51%,
+            @rate-disabled-unselected-color 100%
+          );
+        }
+      }
+
+      &--unselected {
+        color: @rate-disabled-unselected-color;
+      }
+    }
+  }
+
   &__icon {
     display: block;
-    line-height: 1em;
     width: 1em;
     transition: transform .3s ease;
     position: relative;

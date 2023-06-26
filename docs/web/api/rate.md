@@ -2,7 +2,7 @@
 title: Rate 评分
 description: 用于收纳大量选项的信息录入类组件。
 isComponent: true
-usage: { title: '', description: '' }
+usage: { title: "", description: "" }
 spline: form
 ---
 

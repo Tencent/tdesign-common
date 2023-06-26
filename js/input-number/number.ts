@@ -1,5 +1,4 @@
 import isUndefined from 'lodash/isUndefined';
-import isNil from 'lodash/isNil';
 /** 普通数相关方法 */
 import isString from 'lodash/isString';
 import isNumber from 'lodash/isNumber';
@@ -41,42 +40,6 @@ export function canReduceNumber(
     return compareNumber(num, min, largeNumber) > 0;
   }
   return num > min;
-}
-
-/**
- * 格式化数字，如：2e3 转换为 2000
- * 如果不是数字，则不允许输入
- * decimalPlaces 小数点处理
- */
-export function formatToNumber(
-  num: string,
-  extra?: {
-    decimalPlaces?: number;
-    largeNumber?: boolean;
-  }
-): string | number {
-  if (isNil(num) || num === '') return num;
-  if (num === '-') return 0;
-  if (num[num.length - 1] === '.') {
-    return extra?.largeNumber ? num.slice(0, -1) : Number(num.slice(0, -1));
-  }
-  const isLargeNumber = extra?.largeNumber && isString(num);
-  let newNumber: string | number = num;
-  if ((isString(num) && num.includes('e')) || isNumber(num)) {
-    newNumber = isLargeNumber ? formatENumber(num) : Number(num);
-  }
-  if (!isUndefined(extra?.decimalPlaces)) {
-    newNumber = largeNumberToFixed(
-      newNumber,
-      extra.decimalPlaces,
-      extra.largeNumber
-    );
-  }
-  const val = isLargeNumber || !isUndefined(extra?.decimalPlaces)
-    ? newNumber
-    : Number(newNumber);
-  if (String(val) === 'NaN') return undefined;
-  return val;
 }
 
 /**
@@ -235,19 +198,60 @@ export function getMaxOrMinValidateResult(p: {
   return error;
 }
 
-export const specialCode = ['-', '.', 'e', 'E'];
+export const specialCode = ['-', '.', 'e', 'E', '+'];
 
 /**
  * 是否允许输入当前字符，输入字符校验
+ * 1.23E+08 就表示 1.23 乘 10 的 8 次方
+ * 2e3 表示 2 乘 10 的 3 次方
  */
 export function canInputNumber(number: string, largeNumber: boolean) {
-  if (!number && isString(number)) return true;
+  if (['', null, undefined].includes(number)) return true;
+  // 数字最前方不允许出现连续的两个 0
+  if (number.slice(0, 2) === '00') return false;
+  // 只能出现一个点（.）
+  if (number.match(/\./g)?.length > 1) return false;
+  // 只能出现一个负号（-），并且在第一个位置
+  const minusSignCount = number.match(/-/g)?.length || 0;
+  if (minusSignCount > 1 || (minusSignCount === 1 && number[0] !== '-')) return false;
+  // 允许输入数字字符
   const isNumber = (largeNumber && isInputNumber(number)) || !Number.isNaN(Number(number));
-  if (!isNumber && !['-', '.', 'e', 'E'].includes(number.slice(-1))) return false;
-  // 只能出现一个点（.） 和 一个负号（-）
-  if (String(number).match(/\./g)?.length > 1) return false;
-  if (String(number).match(/-/g)?.length > 1) return false;
+  if (!isNumber && !specialCode.includes(number.slice(-1))) return false;
+  if (/e/i.test(number) && !/\de/i.test(number)) return false;
   return true;
+}
+
+/**
+ * 是否允许设置组件新值，触发 onChange 事件
+ */
+export function canSetValue(number: string, lastNumber: number) {
+  return parseFloat(number) !== lastNumber && !Number.isNaN(Number(number));
+}
+
+/**
+ * 1. 格式化未输入完成的数字，如：如：2e/2+/2.等
+ * 2. 处理小数点 decimalPlaces
+ * 3. 格式化大数字 formatENumber
+ */
+export function formatUnCompleteNumber(
+  number: string,
+  extra: {
+    decimalPlaces?: number;
+    largeNumber?: boolean;
+    isToFixed?: boolean;
+  } = {}
+): number | string {
+  if (['', null, undefined].includes(number) || !/\d+/.test(number)) return undefined;
+  const { decimalPlaces, largeNumber, isToFixed } = extra;
+  let newNumber = number.replace(/[.|+|\-|e]$/, '');
+  if (largeNumber) {
+    newNumber = formatENumber(newNumber);
+  }
+  if (decimalPlaces !== undefined) {
+    newNumber = largeNumberToFixed(newNumber, decimalPlaces, largeNumber);
+  }
+  if (largeNumber) return newNumber;
+  return isToFixed ? newNumber : parseFloat(newNumber);
 }
 
 /**
