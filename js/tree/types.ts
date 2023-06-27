@@ -194,9 +194,11 @@ export type TypeTimer = ReturnType<typeof setTimeout>;
 
 export interface TypeSettingOptions {
   directly?: boolean;
+  isAction?: boolean;
 }
 
 export interface TypeRelatedNodesOptions {
+  reverse?: boolean;
   withParents?: boolean;
 }
 
