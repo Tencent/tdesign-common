@@ -7,7 +7,7 @@ spline: explain
 
 TDesign's universal Design Tokens are declared using CSS Variables. We recommend using the method of replacing CSS Variables to customize the theme.
 
-TDesign Provides 5 kinds of Design Token, including `colro`、`font`、`圆角`、`shadow` and `size`, which can be covered in the project by declaring the CSS Variables
+TDesign Provides 5 kinds of Design Token, including `colro`、`font`、`border-radius`、`box-shadow` and `size`, which can be covered in the project by declaring the CSS Variables
 
 ```CSS
 --td-brand-color: orange;
