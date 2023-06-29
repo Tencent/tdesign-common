@@ -24,7 +24,7 @@ const { hasOwnProperty } = Object.prototype;
 
 // 这里的属性为 data 中属性可以同步到 treeNode 实例属性的白名单
 // 仅 label 属性和在列表中的属性可以通过 set 方法配置到 treeNode 实例上
-export const setableStatus = {
+export const setableStatus: Record<string, boolean | null> = {
   expandMutex: null,
   activable: null,
   checkable: null,
