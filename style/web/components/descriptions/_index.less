@@ -1,0 +1,108 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+//  占位符文字图标色彩@text-color-placeholder
+//  1.默认边框@component-border 
+//  2.次要容器背景click@bg-color-secondarycontainer-active
+//  3.组件背景hover/主要容器之上组件背景hover@bg-color-component-hover
+
+
+
+.@{prefix}-descriptions {
+
+
+  // layout
+  .@{prefix}-descriptions-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  // bordered
+  .@{prefix}-descriptions-border {
+
+    table,
+    th,
+    td {
+      border: 1px solid @component-border;
+    }
+  }
+
+  .@{prefix}-descriptions-item {
+    flex-wrap: wrap;
+    display: flex;
+
+    // label-align
+    .@{prefix}-descriptions-item-label {
+      background-color: @descriptions-item-label-bg;
+      position: relative;
+      color: @text-color-placeholder;
+
+      table,
+      tbody,
+      tr,
+      td {
+        border-collapse: collapse;
+      }
+
+      &:hover {
+        background-color: @bg-color-component-hover;
+      }
+    }
+
+    .@{prefix}-descriptions-item-label-left {
+      text-align: left;
+    }
+
+    .@{prefix}-descriptions-item-label-right {
+      text-align: right;
+    }
+
+    .@{prefix}-descriptions-item-label-top {
+      flex-direction: column;
+
+      &.@{prefix}-descriptions-item-label {
+        text-align: left;
+      }
+    }
+
+    // colon
+    .@{prefix}-descriptions-item-label-colon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+
+    // size
+    .@{prefix}-size-s {
+      padding: @descriptions-item-padding-s;
+    }
+
+    .@{prefix}-size-m {
+      padding: @descriptions-item-padding-m;
+    }
+
+    .@{prefix}-size-l {
+      padding: @descriptions-item-padding-l;
+    }
+
+    .@{prefix}-descriptions-item-content {
+      color: @text-color-primary;
+
+      &:hover {
+        background-color: @bg-color-component-hover ;
+      }
+
+      &:active {
+        background-color: @bg-color-secondarycontainer-active;
+      }
+    }
+
+    // content-align
+    .@{prefix}-descriptions-item-content-align-center {
+      text-align: center;
+    }
+  }
+
+}
