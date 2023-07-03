@@ -1,19 +1,19 @@
 ---
-title: Fab 悬浮按钮
-description: 用于承载用户快速执行某个重要/高频的操作
+title: Fab
+description: Used to carry users to quickly perform an important or high-frequency operation.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 纯图标悬浮按钮
+### Icon fab button
 
-使用场景：当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布
+Usage Scenario: When the function can be expressed clearly by using an icon, a pure icon fab button can be used, such as: add, publish.
 
 {{ base }}
 
-### 图标加文字悬浮按钮
+### Icon + text fab button
 
-使用场景：当功能使用图标无法表意清楚需要文字辅助描述时，可使用图标加文字悬浮按钮
+Usage Scenario: When the function icon cannot be clearly expressed and text auxiliary description is needed, the icon + text fab button can be used.
 
 {{ advance }}
