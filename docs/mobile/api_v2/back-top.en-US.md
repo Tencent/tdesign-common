@@ -1,23 +1,23 @@
 ---
-title: BackTop 返回顶部
-description: 当页面过长往下滑动是会出现返回顶部的便捷操作，帮助用户快速回到页面顶部。
+title: BackTop
+description: when page is to long to slide down, Backtop is button used to help user quickly return to the top of the page.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 圆型返回顶部
+### Round of BackTop
 
-基础用法默认为白底圆形，固定在页面右下角，点击后返回页面顶部
+The basic usage is a circle with a white background, which is fixed in bottom-right of the page, and clicking scroll to the top of the page.
 
-通过 theme 属性可以设置按钮形状，可选项有 `round` / `half-round` / `round-dark` / `half-round-dark`
+we can be use set the theme attribute to change button shape, and the options is: `round` / `half-round` / `round-dark` / `half-round-dark`
 
-通过 `text` 属性可以自定义按钮文案
+use `text` Attributes can customize button text.
 
-通过 `icon` 属性可以自定义按钮 icon
+use `icon` Attributes can customize button icon.
 
 {{ base }}
 
-### 半圆型返回顶部
+### Half-round of BackTop
 
 {{ half-round }}
