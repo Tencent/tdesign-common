@@ -1,43 +1,41 @@
 ---
-title: Avatar 头像
-description: 用图标、图片、字符的形式展示用户或事物信息
+title: Avatar
+description: Displays user or thing information in the form of icons, pictures, and characters
 spline: data
 isComponent: true
 toc: false
 ---
 
-### 头像类型
+### Avatar types
 
-图片头像
+picture avatars
 
 {{ image-avatar }}
 
-字符头像
+character avatars
 
 {{ character-avatar }}
 
-图标头像
+icon avatars
 
 {{ icon-avatar }}
 
-徽标头像
+badge avatars
 
 {{ badge-avatar }}
 
+### Combine avatar
 
-### 组合头像
-
-纯展示
+For display
 
 {{ exhibition }}
 
-带操作
+Width operation
 
 {{ action }}
 
-### 头像尺寸
+### Avatars size
 
-头像 large/medium/small 尺寸
+Support size: `large`/ `medium`/ `small`
 
 {{ size }}
-
