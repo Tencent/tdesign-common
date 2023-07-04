@@ -18,14 +18,14 @@ toc: false
 
 ### Advanced
 
-#### 带初始值
+#### Default value
 
 {{ with-value }}
 
-#### 自定义 keys
+#### Customizing Data Field Aliases
 
 {{ keys }}
 
-#### 使用次级标题
+#### Use Sub Title
 
 {{ with-title }}
