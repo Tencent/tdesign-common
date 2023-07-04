@@ -19,7 +19,7 @@ export function parseToDayjs(
   timeOfDay?: string,
   dayjsLocale?: string,
 ) {
-  if (value === '') return dayjs();
+  if (value === '' || value === null) return dayjs();
 
   let dateText = value;
   // format week
