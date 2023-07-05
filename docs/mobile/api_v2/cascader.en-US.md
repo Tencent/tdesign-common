@@ -1,6 +1,6 @@
 ---
 title: Cascader
-description: Cascader are used for multi-level data selection, mainly in a tree structure, which can display more data.
+description: Cascader is used for multi-level data selection, mainly in a tree structure, which can display more data.
 spline: base
 isComponent: true
 toc: false
