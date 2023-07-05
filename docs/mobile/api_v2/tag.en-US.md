@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Examples
 
-### Component types
+### Types
 
 {{ type }}
 
@@ -20,12 +20,12 @@ clickable tag
 
 {{ checkable }}
 
-### Component status
+### Status
 
 display tag
 
 {{ theme }}
 
-### Component size
+### Size
 
 {{ size }}
