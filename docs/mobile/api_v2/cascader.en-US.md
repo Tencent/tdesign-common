@@ -1,6 +1,6 @@
 ---
 title: Cascader
-description: Cascading selectors are used for multi-level data selection, mainly in a tree structure, which can display more data.
+description: Cascader are used for multi-level data selection, mainly in a tree structure, which can display more data.
 spline: base
 isComponent: true
 toc: false
