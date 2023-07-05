@@ -1,31 +1,31 @@
 ---
-title: Calendar 日历
-description: 按照日历形式展示数据或日期的容器。
+title: Calendar
+description: Container for displaying data or dates in a calendar format.
 isComponent: true
 usage: { title: '', description: '' }
 spline: data
 ---
 
-### 单个选择日期
+### Select Single Date
 
 {{ base }}
 
-### 多个选择日期
+### Select Multiple Date
 
 {{ multiple }}
 
-### 区间选择日期
+### Select Date Range
 
 {{ range }}
 
-### 自定义文案
+### Custom Text
 
 {{ custom-text }}
 
-### 自定义按钮
+### Custom Button
 
 {{ custom-button }}
 
-### 自定义日期区间
+### Custom Date Range
 
 {{ custom-range }}

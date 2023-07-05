@@ -1,19 +1,19 @@
 ---
-title: Badge 徽标
-description: 用于告知用户，该区域的状态变化或者待处理任务的数量。
+title: Badge
+description: The Badge is used to notify the user of a state change in the area or the number of pending tasks.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Badge Type
 
 {{ base }}
 
-### 组件样式
+### Badge Style
 
 {{ theme }}
 
-### 组件尺寸
+### Badge Size
 
 {{ size }}

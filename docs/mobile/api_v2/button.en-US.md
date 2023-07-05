@@ -42,7 +42,7 @@ The ghost button reverses the color of the button's content and makes the backgr
 
 #### Banner Button
 
-通栏按钮在宽度上充满其所在的父容器（无 padding 和 margin 值）。该按钮常见于移动端和一些表单场景中。
+The Block button fills its parent container in width (no padding and margin values). This button is commonly used in mobile and some form scenarios.
 
 {{ block }}
 
