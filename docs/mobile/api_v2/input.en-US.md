@@ -1,63 +1,63 @@
 ---
 title: Input 输入框
-description: 用于文本信息输入。
+description: Used for text information input.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 01 组件类型
+### 01 Component Types
 
-基础输入框
+Basic Input
 
 {{ base }}
 
-带字数限制输入框
+Input with Character Limit
 
 {{ maxlength }}
 
-带操作输入框
+Input with Operation
 
 {{ suffix }}
 
-带图标输入框
+Input with Icon
 
 {{ prefix }}
 
-特定类型输入框
+Specific Type Input
 
 {{ special }}
 
-### 02 组件状态
+### 02 Component States
 
-输入框状态
+Input States
 
 {{ status }}
 
-信息超长状态
+Information Exceeds Limit State
 
 {{ label }}
 
-### 03 组件样式
+### 03 Component Styles
 
-内容位置
+Content Position
 
 {{ align }}
 
-竖排样式
+Vertical Style
 
 {{ layout }}
 
-非通栏样式
+Non-Full Width Style
 
 {{ banner }}
 
-标签外置样式
+External Label Style
 
 {{ bordered }}
 
-自定义样式文本框
+Custom Style Text Box
 
 {{ custom }}
