@@ -151,15 +151,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           response.error = res.error || response.error;
         }
         let resultFiles: UploadFile[] = [];
-        // 一个请求上传并返回一个文件
-        if ((response.url && !response.files) || res.status === 'fail') {
-          toUploadFiles.forEach((file) => {
-            file.status = res.status;
-            file.response = response;
-            file.url = response.url;
-          });
-          resultFiles = toUploadFiles;
-        } else if (response.files) {
+        if (res.status === 'success' && response.files) {
           // 一个请求上传并返回多个文件
           resultFiles = response.files.map((file: UploadFile) => {
             const fileInfo = toUploadFiles.find((toFile) => (
@@ -172,6 +164,15 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
               response,
             };
           });
+        } else {
+          // 一个请求上传并返回一个文件
+          toUploadFiles.forEach((file) => {
+            file.status = res.status;
+            file.response = response;
+            file.url = response.url;
+            file.percent = res.status === 'success' ? 100 : 0;
+          });
+          resultFiles = toUploadFiles;
         }
         const result = {
           response,
