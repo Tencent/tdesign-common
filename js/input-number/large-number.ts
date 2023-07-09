@@ -141,7 +141,7 @@ function compareLargeDecimalNumber(num1: string, num2: string) {
  * 2e3 => 2000
  * 0.2e3 => 200
  */
- export function formatENumber(num: string): string {
+export function formatENumber(num: string): string {
   const [num1, num2] = num.split('e');
   if (!num2) return num;
   const [integer, initDecimal = ''] = num.split('.');
