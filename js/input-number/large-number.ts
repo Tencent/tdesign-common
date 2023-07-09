@@ -144,8 +144,9 @@ export function compareLargeNumber(
   num1: string,
   num2: string,
 ): 1 | -1 | 0 {
-  const [integer1, decimal1] = num1.split('.');
-  const [integer2, decimal2] = num2.split('.');
+
+  const [integer1, decimal1] = formatENumber(num1).split('.');
+  const [integer2, decimal2] = formatENumber(num2).split('.');
   const result = compareLargeIntegerNumber(integer1.replace('-', ''), integer2.replace('-', ''));
   const integer1IsNegative = integer1.includes('-');
   const integer2IsNegative = integer2.includes('-');
