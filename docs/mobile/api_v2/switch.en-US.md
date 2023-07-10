@@ -12,16 +12,16 @@ Usage scenario: Basic switch can be used when there is no need to emphasize the 
 
 {{ base }}
 
-### Switch with description
+### Switch With Description
 
 Usage scenario: When you need to explain and prompt the result through description, you can use the switch with description
 
 {{ label }}
 
-### Switch status
+### Switch Status
 
 {{ status }}
 
-### Switch size
+### Switch Size
 
 {{ size }}
