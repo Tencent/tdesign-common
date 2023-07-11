@@ -48,11 +48,6 @@
       outline: none;
       resize: none;
       background: 0;
-
-      &[type="search"] {
-        /* stylelint-disable-next-line */
-        -webkit-appearance: none;
-      }
     }
 
     .@{prefix}-icon {
@@ -82,6 +77,11 @@
   input::-webkit-input-placeholder,
   input::placeholder {
     color: @search-placeholder-color;
+  }
+
+  input[type="search"] {
+    /* stylelint-disable-next-line */
+    -webkit-appearance: none;
   }
 
   input::-webkit-search-decoration,
