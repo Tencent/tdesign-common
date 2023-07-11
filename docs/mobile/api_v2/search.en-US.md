@@ -1,31 +1,31 @@
 ---
-title: Search 搜索框
-description: 用于用户输入搜索信息，并进行页面内容搜索。
+title: Search
+description: Search box is used for users to input the search message and perform content search on the page.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 01 组件类型
+### 01 Component Type
 
-基础搜索框
+Basic Search Box
 
 {{ base }}
 
-获取焦点后显示取消按钮
+Display the cancel button after obtaining focus
 
 {{ action }}
 
-### 02 组件样式
+### 02 Component Style
 
-搜索框形状
+The shape of Search Box
 
 {{ shape }}
 
-### 03 组件状态
+### 03 Component State
 
-默认状态其他对齐方式
+Default state alignment methods
 
 {{ other }}
