@@ -163,9 +163,11 @@ export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
 export function getFileList(files: FileList, accept?: string) {
   const fileList: File[] = [];
   for (let i = 0; i < files.length; i++) {
-    const regExp = new RegExp(accept);
-    if (regExp.test(files[i].type)) {
-      fileList.push(files[i]);
+    if (accept) {
+      const regExp = new RegExp(accept);
+      if (regExp.test(files[i].type)) {
+        fileList.push(files[i]);
+      }
     }
   }
   return fileList;
