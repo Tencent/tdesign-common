@@ -1,6 +1,6 @@
 ---
 title: Link 
-description: Link are used to start a new task or jump to a new page.
+description: Links are used to start a new task or jump to a new page.
 spline: base
 isComponent: true
 toc: false
