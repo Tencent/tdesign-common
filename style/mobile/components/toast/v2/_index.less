@@ -2,7 +2,7 @@
 
 @import "./_var.less";
 
-.@{prefix}-toast {
+.@{toast} {
   position: fixed;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -85,13 +85,13 @@
   &.@{prefix}-fade-leave-to {
     opacity: 0;
   }
-}
 
-.@{prefix}-overflow-hidden {
-  overflow: hidden;
-  cursor: not-allowed;
+  &-overflow-hidden {
+    overflow: hidden;
+    cursor: not-allowed;
 
-  * {
-    pointer-events: none;
+    * {
+      pointer-events: none;
+    }
   }
 }
