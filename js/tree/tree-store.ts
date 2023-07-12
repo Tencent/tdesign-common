@@ -22,6 +22,12 @@ import {
   TypeTreeEventState,
 } from './types';
 
+function nextTick(fn: () => void): Promise<void> {
+  const pm = Promise.resolve();
+  pm.then(fn);
+  return pm;
+}
+
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
 // 任何一次数据写入，会触发相应节点的状态更新
@@ -87,20 +93,20 @@ export class TreeStore {
   // 符合过滤条件的节点的集合
   public filterMap: TypeIdMap;
 
-  // 数据更新计时器
-  public updateTimer: TypeTimer;
-
-  // 识别是否需要重排
-  public shouldReflow: boolean;
-
   // 存在过滤器标志
   public hasFilter: boolean;
 
-  // 树节点过滤器
-  public prevFilter: TypeTreeFilter;
-
   // 事件派发器
   public emitter: ReturnType<typeof mitt>;
+
+  // 数据更新计时器
+  private updateTick: Promise<void>;
+
+  // 识别是否需要重排
+  private shouldReflow: boolean;
+
+  // 树节点过滤器
+  private prevFilter: TypeTreeFilter;
 
   public constructor(options: TypeTreeStoreOptions) {
     const config: TypeTreeStoreOptions = {
@@ -141,7 +147,7 @@ export class TreeStore {
     this.filterMap = new Map();
     this.prevFilter = null;
     // 这个计时器确保频繁的 update 事件被归纳为1次完整数据更新后的触发
-    this.updateTimer = null;
+    this.updateTick = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
     // 这个标志会被大量用到
@@ -504,10 +510,9 @@ export class TreeStore {
     if (node?.value) {
       this.updatedMap.set(node.value, true);
     }
-    if (this.updateTimer) return;
-    this.updateTimer = setTimeout(() => {
-      clearTimeout(this.updateTimer);
-      this.updateTimer = null;
+    if (this.updateTick) return;
+    this.updateTick = nextTick(() => {
+      this.updateTick = null;
 
       // 检查节点是否需要回流，重排数组
       if (this.shouldReflow) {
