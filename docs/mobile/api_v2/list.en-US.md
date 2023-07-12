@@ -1,21 +1,20 @@
 ---
-title: List 列表
-description: 瀑布流滚动加载，用于展示长列表，当列表即将滚动到底部时，会触发事件并加载更多列表项。
+title: List
+description: Waterfall stream scrolling load, used to display a long list. When the list is about to scroll to the bottom, an event is triggered and more list items are loaded.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础列表
+### Base list
 
 
 {{ base }}
 
-### 下拉刷新
+### Pull down to refresh
 
 {{ pull-refresh }}
 
-### 错误提示
+### Error message
 
 {{ err-tip }}
-

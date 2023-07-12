@@ -1,27 +1,27 @@
 ---
-title: Switch 开关
-description: 用于控制某个功能的开启和关闭。
+title: Switch
+description: Enables or disables a function.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础开关
+### Base switch
 
-使用场景：不需要通过文案强调开关状态时，可用基础开关
+Usage scenario: Basic switches can be used when you do not need to emphasize the switch status through copywriting
 
 {{ base }}
 
-### 带描述开关
+### with description switch
 
-使用场景：需要通过描述解释、提示结果时，可用带描述开关
+Usage scenario: The description switch can be used to explain or prompt results through description
 
 {{ label }}
 
-### 组件状态
+### component status
 
 {{ status }}
 
-### 开关尺寸
+### Switch size
 
 {{ size }}

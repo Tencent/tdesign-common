@@ -1,24 +1,24 @@
 ---
-title: Swiper 轮播
-description: 用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。
+title: Swiper
+description: Used to rotate a group of pictures or content, you can also slide to switch, the rotation effect time can be set.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demo
 
-### 01组件类型
+### 01 Component type
 
-点状（dots)
+dots
 
 {{ base }}
 
-条状（dots-bar)
+dot-bar
 
 {{ custom }}
 
-分式（fraction)
+fraction
 
 {{ fraction }}
 
@@ -27,9 +27,8 @@ control
 
 {{ control }}
 
-### 02 组件样式
+### 02 Component style
 
-垂直模式
+Vertical mode
 
 {{ vertical }}
-

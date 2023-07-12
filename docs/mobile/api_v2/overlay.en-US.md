@@ -1,11 +1,11 @@
 ---
-title: Overlay 遮罩层
-description: 通过遮罩层，可以强调部分内容
+title: Overlay
+description: Through the mask layer, you can highlight some content
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础类型
+### Base type
 
 {{ base }}

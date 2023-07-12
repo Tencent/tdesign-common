@@ -1,19 +1,19 @@
 ---
-title: Footer 页脚
-description: 用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。
+title: Footer
+description: Used for basic list display, can be attached to text, brand logo, operation, common business details, personal center, setting and other pages.
 spline: data
 isComponent: true
 toc: false
 ---
 
-### 基础页脚
+### Base footer
 
 {{ base }}
 
-### 基础加链接页脚
+### Basic plus link footer
 
 {{ link }}
 
-### 品牌页脚
+### Brand footer
 
 {{ logo }}

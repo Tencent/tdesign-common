@@ -1,23 +1,23 @@
 ---
-title: DateTimePicker 时间选择器
-description: 用于选择一个时间点或者一个时间段。
+title: DateTimePicker
+description: Indicates a time point or time range.
 spline: data
 isComponent: true
 toc: false
 ---
 
-### 基础时间选择器
+### Base time selector
 
 {{ base }}
 
-### 选择年月
+### Choose the year
 
 {{ year-month }}
 
-### 选择时分
+### Choose the time
 
 {{ time }}
 
-### 自定义选择范围
+### Customize the selection range
 
 {{ custom-range }}

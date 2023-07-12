@@ -1,19 +1,19 @@
 ---
-title: Picker 选择器
-description: 用于一组预设数据中的选择。
+title: Picker
+description: Used to select from a set of default data.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础类型
+### Base type
 
 {{ base }}
 
-### 多级联动
+### Multi-level linkage
 
 {{ cascade }}
 
-### 对象选择
+### Object selection
 
 {{ object }}

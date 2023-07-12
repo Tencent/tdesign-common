@@ -1,21 +1,21 @@
 ---
-title: Table 表格
-description: 表格常用于展示同类结构下的多种数据，易于组织、对比和分析等，并可对数据进行搜索、筛选、排序等操作。一般包括表头、数据行和表尾三部分。
+title: Table
+description: Table is often used to show a variety of data in the same structure, easy to organize, compare and analyze, and can search, filter, sort and other operations on the data. Generally, it includes three parts: table header, data row and table tail.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 组件类型
+## Component type
 
-### 基础表格
+### Base form
 {{ base }}
 
-### 横向平铺可滚动表格
+### Horizontally tiled scrollable table
 {{ scroll }}
 
-### 带斑马纹表格样式
+### Table style with zebra print
 {{ stripe }}
 
-### 带边框表格样式
+### Table style with border
 {{ bordered }}

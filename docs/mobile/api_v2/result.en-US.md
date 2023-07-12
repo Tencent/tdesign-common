@@ -1,17 +1,17 @@
 ---
-title: Result 结果
-description: 反馈结果
+title: Result
+description: Feedback result
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 不同结果状态
+### Different result states
 
-表示当前任务的结果
+Indicates the result of the current task
 
 {{ theme }}
 
-### 自定义样式
+### Custom style
 
 {{ custom }}

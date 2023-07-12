@@ -1,23 +1,23 @@
 ---
-title: Cell 单元格
-description: 用于各个类别行的信息展示。
+title: Cell
+description: Used to display information for each category row.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Component type
 
-#### 单行单元格
+#### Single-row cells
 
 {{ single }}
 
-#### 多行单元格
+#### Multiple rows of cells
 
 {{ multiple }}
 
-### 样式
+### Pattern
 
-#### 卡片单元格
+#### Card cell
 
 {{ group }}

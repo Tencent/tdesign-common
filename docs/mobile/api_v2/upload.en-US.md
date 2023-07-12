@@ -1,23 +1,23 @@
 ---
-title: Upload 上传
-description: 用于相册读取或拉起拍照的图片上传功能。
+title: Upload
+description: Image upload function for reading albums or pulling up to take pictures.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 单选上传图片
+### Radio upload picture
 
 {{ base }}
 
-### 多选上传图片
+### Multi-select upload pictures
 
 {{ multiple }}
 
-### 组件状态
+### component status
 
 {{ status }}
 
-### 样式自定义
+### Style custom
 
 {{ custom }}

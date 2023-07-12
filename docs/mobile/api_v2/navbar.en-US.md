@@ -1,32 +1,32 @@
 ---
-title: Navbar 导航栏
-description: 用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。
+title: Navbar
+description: Used to switch between different pages or jump, located above the content area, below the system status bar.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 类型
-#### 基础导航栏
+### type
+#### Basic navigation bar
 
 {{ base }}
 
-#### 带搜索导航栏
+#### has a search navigation bar
 
 {{ search }}
 
-#### 带图片导航栏
+#### with picture navigation bar
 
 {{ img }}
 
-#### 标题对齐
+#### Title alignment
 
 {{ left-title }}
 
-#### 标题尺寸
+#### Title size
 
 {{ size }}
 
-#### 自定义颜色
+#### Customize the colors
 
 {{ custom-color }}

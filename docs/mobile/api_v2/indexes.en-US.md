@@ -1,17 +1,17 @@
 ---
-title: Indexes 索引
-description: 用于页面中信息快速检索，可以根据目录中的页码快速找到所需的内容。
+title: Indexes
+description: Used for quick search of information in the page. You can quickly find the required content based on the page number in the directory.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demo
 
-### 基础索引
+### Base index
 
 {{ base }}
 
-### 自定义索引
+### Custom index
 
 {{ custom }}

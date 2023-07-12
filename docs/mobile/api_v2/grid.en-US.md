@@ -1,35 +1,35 @@
 ---
-title: Grid 宫格
-description: 用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。
+title: Grid
+description: It is used for the layout of function entrances. It divides the page or specific area into several equal blocks to form several function entrances.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础宫格
+### Basic grid
 
 {{ base }}
 
-### 带描述宫格
+### With description grid
 
 {{ desc }}
 
-### 带边框宫格
+### Grid with border
 
 {{ bordered }}
 
-### 带徽标宫格
+### with logo lattice
 
 {{ badge }}
 
-### 可滑动宫格
+### Sliding grid
 
 {{ scroll }}
 
-### 可传图标宫格
+### Transferable icon grid
 
 {{ icon }}
 
-### 卡片宫格
+### card grid
 
 {{ card }}

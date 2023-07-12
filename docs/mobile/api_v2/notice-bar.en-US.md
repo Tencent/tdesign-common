@@ -1,48 +1,47 @@
 ---
-title: Noticebar 公告栏
-description: 在导航栏下方，用于给用户显示提示消息。
+title: Noticebar
+description: Displays a prompt message to the user at the bottom of the navigation bar.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demo
 
-### 01 组件类型
+### 01 Component type
 
-纯文字的公告栏
+A text-only bulletin board
 
 {{ base }}
 
-带图标的公告栏
+Bulletin board with ICONS
 
 {{ iconDemo }}
 
-带关闭的公告栏
+Bulletin board with closed
 
 {{ suffixIcon }}
 
-带入口的公告栏
+Bring the port to the bulletin board
 
 {{ event }}
 
-自定样式的公告栏
+Custom style bulletin board
 
 {{ custom }}
 
-自定义内容的公告栏
+A bulletin board for custom content
 
 {{ customization }}
 
-### 02 组件状态
+### 02 Component status
 
-公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
+The types of bulletin boards include info, warning, success, and error.
 
 {{ theme }}
 
-### 03 可滚动的公告栏
+### 03 Scrollable bulletin board
 
-可滚动公告栏有水平 (horizontal) 和垂直 (vertical)
+Scrollable bulletin boards available in horizontal and vertical
 
 {{ scrolling }}
-

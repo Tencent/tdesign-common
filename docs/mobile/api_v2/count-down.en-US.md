@@ -1,17 +1,17 @@
 ---
-title: CountDown 倒计时
-description: 用于实时展示倒计时数值。
+title: CountDown
+description: Used to display the countdown value in real time.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demonstration
 
-### 基础倒计时
+### Base countdown
 
 {{ base }}
 
-### 调整尺寸
+### Adjust the size
 
 {{ size }}

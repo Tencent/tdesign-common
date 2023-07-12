@@ -1,25 +1,25 @@
 ---
-title: SideBar 侧边栏
-description: 用于内容分类后的展示切换。
+title: SideBar
+description: Used to change the display after content classification.
 spline: navigation
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demo
 
-### 锚点用法
+### anchor point usage
 
 {{ base }}
 
-### 切页用法
+### Page cutting usage
 
 {{ switch }}
 
-### 带图标侧边导航
+### Side navigation with ICONS
 
 {{ with-icon }}
 
-### 自定义样式
+### Custom style
 
 {{ custom }}

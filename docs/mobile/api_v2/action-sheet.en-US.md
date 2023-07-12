@@ -1,36 +1,36 @@
 ---
-title: ActionSheet 动作面板
-description: 由用户操作后触发的一种特定的模态弹出框 ，呈现一组与当前情境相关的两个或多个选项。
+title: ActionSheet
+description: A specific modal pop-up triggered by a user action that presents a set of two or more options related to the current situation.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 列表型
+### Column phenotype
 
-列表选项为左右两端的列表；
-选项为纯文字；
-对于警示操作（如不可逆的破坏性操作），建议将更改操作放在最后并用红色标识。
-列表型根据选择项内容的差异，可以有以下不同的样式
+The list option is a list of the left and right ends.
+The option is plain text.
+For alert actions (such as irreversible destructive actions), it is recommended that the change action be placed last and marked in red.
+Column phenotypes can have the following different styles depending on the content of the selection.
 
 {{ list }}
 
-### 宫格型
+### Uterine pattern
 
-面板左右贯通，根据操作数量使用 3 列或 4 列的宫格结构，尽量使菜单内容饱满。
-菜单选项使用图标加文字的形式呈现。
-菜单项的数量超过 8 个时，可作翻页处理。
+The panel is connected to the left and right, and the grid structure of 3 or 4 columns is used according to the number of operations to make the menu content as full as possible.
+Menu options are presented using icons plus text.
+When the number of menu items exceeds 8, you can turn the page.
 
 {{ grid }}
 
-### 宫格型-多页
+### Grid type - multiple pages
 
 {{ grid-multiple }}
 
-### 组件状态
+### Component state
 
 {{ status }}
 
-### 组件样式
+### Component style
 
 {{ align }}

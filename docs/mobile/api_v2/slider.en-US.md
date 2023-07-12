@@ -1,39 +1,39 @@
 ---
-title: Slider 滑动选择器
-description: 用于选择横轴上的数值、区间、档位。
+title: Slider
+description: Used to select the value, range, and gear on the horizontal axis.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demo
 
-### 组件类型
+### Component type
 
-单游标滑块
+Single cursor slider
 
 {{ base }}
 
-双游标滑块
+Double cursor slider
 
 {{ range }}
 
-带数值滑动选择器
+Slide selector with numerical value
 
 {{ label }}
 
-带刻度滑动选择器
+Slide selector with scale
 
 {{ step }}
 
-### 组件状态
+### component status
 
-滑块禁用状态
+The slider is disabled
 
 {{ disabled }}
 
-#### 特殊样式
+#### Special style
 
-胶囊型滑块
+Capsule type slider
 
 {{ capsule }}

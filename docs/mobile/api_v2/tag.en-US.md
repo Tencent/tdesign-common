@@ -1,31 +1,31 @@
 ---
-title: Tag 标签
-description: 用于表明主体的类目，属性或状态。
+title: Tag
+description: Indicates the category, attribute, or state of the subject.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demo
 
-### 组件类型
+### Component type
 
 {{ type }}
 
-可关闭的标签
+Tabs that can be closed
 
 {{ closable }}
 
-可点击的标签
+Clickable tabs
 
 {{ checkable }}
 
-### 组件状态
+### component status
 
-展示型标签
+Display label
 
 {{ theme }}
 
-### 组件尺寸
+### Component size
 
 {{ size }}

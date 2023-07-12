@@ -1,38 +1,37 @@
 ---
-title: Progress 进度条
-description: 用于展示任务当前的进度。
+title: Progress
+description: Displays the current progress of the task.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code demo
 
-### 01 组件类型
+### 01 Component type
 
-基础进度条
+Base progress bar
 
 {{ base }}
 
-过渡样式
+Transition style
 
 {{ transition }}
 
-自定义颜色/圆角
+Custom colors/rounded corners
 
 {{ custom }}
 
-### 02 组件状态
+### 02 Component status
 
-线性进度条
+Linear progress bar
 
 {{ line }}
 
-百分比内显进度条
+A progress bar is displayed in the percentage
 
 {{ plump }}
 
-环形进度条
+Circular progress bar
 
 {{ circle }}
-

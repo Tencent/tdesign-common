@@ -1,6 +1,6 @@
 ---
-title: Icon 图标
-description: Icon 作为UI构成中重要的元素，一定程度上影响UI界面整体呈现出的风格。
+title: Icon
+description: Icon, as an important element in the composition of UI, affects the overall style of UI interface to a certain extent.
 isComponent: true
 usage: { title: '', description: '' }
 spline: base
