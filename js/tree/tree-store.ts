@@ -11,7 +11,6 @@ import { TreeNode } from './tree-node';
 import {
   TreeNodeValue,
   TypeIdMap,
-  TypeTimer,
   TypeTargetNode,
   TypeTreeNodeData,
   TypeTreeItem,
