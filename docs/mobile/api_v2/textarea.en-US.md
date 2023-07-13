@@ -1,5 +1,5 @@
 ---
-title: Textarea
+title: TextArea
 description: Used to enter multiple lines of text information.
 spline: form
 isComponent: true
