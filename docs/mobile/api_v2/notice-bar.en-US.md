@@ -1,5 +1,5 @@
 ---
-title: Noticebar
+title: NoticeBar
 description: Displays a prompt message to the user at the bottom of the navigation bar.
 spline: base
 isComponent: true
