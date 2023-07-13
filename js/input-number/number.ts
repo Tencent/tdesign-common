@@ -54,7 +54,7 @@ export function putInRangeNumber(
     largeNumber?: boolean;
   }
 ) {
-  if (val === '') return undefined;
+  if (val === '') return null;
   const { max, min, lastValue, largeNumber } = params;
   if (!isInputNumber(val)) return lastValue;
   if (largeNumber && (isString(max) || max === Infinity) && (isString(min) || min === -Infinity)) {
@@ -241,7 +241,7 @@ export function formatUnCompleteNumber(
     isToFixed?: boolean;
   } = {}
 ): number | string {
-  if (['', null, undefined].includes(number) || !/\d+/.test(number)) return undefined;
+  if (['', null, undefined].includes(number) || !/\d+/.test(number)) return null;
   const { decimalPlaces, largeNumber, isToFixed } = extra;
   let newNumber = number.replace(/[.|+|\-|e]$/, '');
   if (largeNumber) {
