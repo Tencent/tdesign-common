@@ -13,7 +13,7 @@
 
 
   // layout
-  .@{prefix}-descriptions-horizontal {
+  .@{prefix}-descriptions--horizontal {
     display: flex;
     flex-wrap: wrap;
   }
@@ -28,12 +28,12 @@
     }
   }
 
-  .@{prefix}-descriptions-item {
+  .@{prefix}-descriptions__item {
     flex-wrap: wrap;
     display: flex;
 
     // label-align
-    .@{prefix}-descriptions-item-label {
+    &-label {
       background-color: @descriptions-item-label-bg;
       position: relative;
       color: @text-color-placeholder;
@@ -50,24 +50,24 @@
       }
     }
 
-    .@{prefix}-descriptions-item-label-left {
+    &-label--left {
       text-align: left;
     }
 
-    .@{prefix}-descriptions-item-label-right {
+    &-label--right {
       text-align: right;
     }
 
-    .@{prefix}-descriptions-item-label-top {
+    &-label--top {
       flex-direction: column;
 
-      &.@{prefix}-descriptions-item-label {
+      &-label {
         text-align: left;
       }
     }
 
     // colon
-    .@{prefix}-descriptions-item-label-colon {
+    &-label--colon {
       position: absolute;
       right: 0;
       top: 50%;
@@ -87,20 +87,16 @@
       padding: @descriptions-item-padding-l;
     }
 
-    .@{prefix}-descriptions-item-content {
+    &-content {
       color: @text-color-primary;
 
       &:hover {
         background-color: @bg-color-component-hover ;
       }
-
-      &:active {
-        background-color: @bg-color-secondarycontainer-active;
-      }
     }
 
     // content-align
-    .@{prefix}-descriptions-item-content-align-center {
+    &-content-align--center {
       text-align: center;
     }
   }
