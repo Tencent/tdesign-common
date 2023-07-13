@@ -1,5 +1,5 @@
 ---
-title: Input 输入框
+title: Input
 description: Used for text information input.
 spline: base
 isComponent: true
