@@ -1,5 +1,5 @@
 ---
-title: Navbar
+title: NavBar
 description: Used to switch between different pages or jump, located above the content area, below the system status bar.
 spline: base
 isComponent: true
