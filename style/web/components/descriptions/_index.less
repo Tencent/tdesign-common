@@ -2,13 +2,6 @@
 
 @import "./_var.less";
 
-//  占位符文字图标色彩@text-color-placeholder
-//  1.默认边框@component-border 
-//  2.次要容器背景click@bg-color-secondarycontainer-active
-//  3.组件背景hover/主要容器之上组件背景hover@bg-color-component-hover
-
-
-
 .@{prefix}-descriptions {
 
 
@@ -34,7 +27,7 @@
 
     // label-align
     &-label {
-      background-color: @descriptions-item-label-bg;
+      background-color: @bg-color-secondarycontainer;
       position: relative;
       color: @text-color-placeholder;
 
@@ -91,7 +84,7 @@
       color: @text-color-primary;
 
       &:hover {
-        background-color: @bg-color-component-hover ;
+        background-color: @bg-color-component-hover;
       }
     }
 
