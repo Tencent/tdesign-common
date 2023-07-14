@@ -1,6 +1,6 @@
 ---
 title: Input
-description: Used for text input.
+description: Used for text information input.
 spline: base
 isComponent: true
 toc: false
