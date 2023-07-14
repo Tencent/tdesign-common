@@ -6,10 +6,10 @@ isComponent: true
 toc: false
 ---
 
-### Basic image preview
+### Basic ImageViewer
 
 {{ base }}
 
-### with operation picture preview
+### Operation ImageViewer
 
 {{ operation }}
