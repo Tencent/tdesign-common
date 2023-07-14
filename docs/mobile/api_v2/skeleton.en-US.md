@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### Skeleton screen type
+### Skeleton Type
 
 Foundation frame screen
 
@@ -27,6 +27,6 @@ Graphic combination skeleton screen
 
 {{ image-group }}
 
-### component dynamic effect
+### Component Dynamic Effect
 
 {{ animation }}
