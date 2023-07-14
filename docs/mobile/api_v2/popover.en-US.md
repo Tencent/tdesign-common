@@ -14,6 +14,6 @@ toc: false
 
 {{ theme }}
 
-### Bubble Direction
+### Bubble Pop Direction
 
 {{ placement }}
