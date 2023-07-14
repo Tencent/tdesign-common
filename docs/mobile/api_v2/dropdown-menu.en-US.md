@@ -12,7 +12,7 @@ This parameter is used to select scenarios where an option is required
 
 {{ single }}
 
-### Multi-select DropdownMenu
+### Multi-Select DropdownMenu
 
 This parameter is used when multiple options can be selected
 The label does not change the name after selection, and the title displays a maximum of 4 characters beyond "..." handle
@@ -20,10 +20,10 @@ The multiple selection drop-down menu can have the following styles depending on
 
 {{ multiple }}
 
-### Disable menu/options
+### Disable Menu/Options
 
 {{ disabled }}
 
-### Slot style
+### Slot Style
 
 {{ customized }}
