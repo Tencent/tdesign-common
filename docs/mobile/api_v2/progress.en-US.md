@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### 01 Component type
+### 01 Component Type
 
 Base progress bar
 
@@ -22,7 +22,7 @@ Custom colors/rounded corners
 
 {{ custom }}
 
-### 02 Component status
+### 02 Component Status
 
 Linear progress bar
 
