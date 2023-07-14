@@ -1,6 +1,6 @@
 ---
 title: Form
-description: The button is used to open a closed loop operation task, such as "delete" object, "buy" product, and so on.
+description: Form consists of input, radio, select, checkbox and so on. With form, you can collect, verify and submit data.
 spline: base
 isComponent: true
 toc: false
