@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### Basic message notifications
+### Basic Message
 
 Used for lightweight feedback or prompts without interrupting user action.
 
@@ -14,8 +14,8 @@ Used for lightweight feedback or prompts without interrupting user action.
 {{ base }}
 
 
-### Message notification of different status
+### Message of different status
 
-Message notification types are info, warning, success, error, and call the feedback class dialog box with the API 'Message.info' method
+Message types are info, warning, success, error, and call the feedback class dialog box with the API 'Message.info' method
 
 {{ theme }}
