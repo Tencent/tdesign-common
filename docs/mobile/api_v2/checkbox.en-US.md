@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### Component type
+### Component Type
 
 Vertical multiple boxes
 
@@ -20,13 +20,13 @@ Multiple checkboxes with select all
 
 {{ all }}
 
-### Component state
+### Component Status
 
 Check box status
 
 {{ status }}
 
-### Component style
+### Component Style
 
 Check style
 
@@ -40,7 +40,7 @@ Non-full-width multiple selection style
 
 {{ card }}
 
-### Component specification
+### Component Specification
 
 Multiple box size specifications
 
