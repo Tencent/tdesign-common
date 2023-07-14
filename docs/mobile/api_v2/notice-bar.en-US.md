@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### 01 Component type
+### 01 Component Type
 
 A text-only bulletin board
 
 {{ base }}
 
-Bulletin board with ICONS
+Bulletin board with icon
 
 {{ iconDemo }}
 
@@ -34,14 +34,14 @@ A bulletin board for custom content
 
 {{ customization }}
 
-### 02 Component status
+### 02 Component Status
 
 The types of bulletin boards include info, warning, success, and error.
 
 {{ theme }}
 
-### 03 Scrollable bulletin board
+### 03 Scrolling Bulletin Board
 
-Scrollable bulletin boards available in horizontal and vertical
+Scrolling bulletin boards available in horizontal and vertical
 
 {{ scrolling }}
