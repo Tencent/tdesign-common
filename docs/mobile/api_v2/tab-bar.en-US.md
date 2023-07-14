@@ -6,31 +6,31 @@ isComponent: true
 toc: false
 ---
 
-### Component type
+### Component Type
 
-Plain text TAB bar
+Plain text TabBar
 
 {{ text }}
 
-Icon plus text TAB bar
+Icon plus text TabBar
 
 {{ base }}
 
-Pure icon TAB bar
+Pure icon TabBar
 
 {{ pure-icon }}
 
-Double level plain text label field
+Double level plain text TabBar
 
 {{ text-spread }}
 
-### Component style
+### Component Style
 
-Weakly select the label bar
+Weakly select TabBar
 
 {{ badge-props }}
 
-Suspension capsule label bar
+Suspension capsule TabBar
 
 {{ round }}
 
