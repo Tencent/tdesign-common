@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### 01 Component type
+### 01 Component Type
 
 Base form
 
