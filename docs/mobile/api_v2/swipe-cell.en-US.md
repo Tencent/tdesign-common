@@ -6,27 +6,27 @@ isComponent: true
 toc: false
 ---
 
-### Left slide operation
+### Left Swipe Operation
 
 {{ left }}
 
-### Right swipe operation
+### Right Swipe Operation
 
 {{ right }}
 
-### Left and right slide operation
+### Left and right Swipe Operation
 
 {{ double }}
 
-### Sliding operation with ICONS
+### Swipe Operation with Icon
 
 {{ icon }}
 
-### Operation with double confirmation
+### Operation With Double Confirmation
 
 {{ event }}
 
-### css style
+### CSS Style
 
 - The content in slot needs to define its own style
 - When using the slot Insert button, the height:100% is set for the first layer wrap component of the slot, but the second layer content is not set, in order to achieve the vertical overlay effect, you need to manually set the style="height:100%"
