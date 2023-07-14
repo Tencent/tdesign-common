@@ -29,7 +29,7 @@ Supports three types: serial number, icon, and abbreviated
 
 #### Tab Status
 
-Four states are supported: default, finish, process and error.
+Four status are supported: default, finish, process and error.
 
 {{ status }}
 
