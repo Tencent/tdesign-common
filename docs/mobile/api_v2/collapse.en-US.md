@@ -1,6 +1,6 @@
 ---
 title: Collapse
-description: Collapse is used to group and hide complex areas. Collapse is often used to display order information.
+description: Collapse is used to group and hide complex areas, and is often used to display order information.
 spline: base
 isComponent: true
 toc: false
@@ -8,9 +8,9 @@ toc: false
 
 ### Component Type
 
-#### Base Folding panel
+#### Base Collapse
 
-Base Folding panel is mainly used to group and hide complex areas. Base Folding panel is often used to display order information.
+Collapse is used to group and hide complex areas, and is often used to display order information.
 
 {{ base }}
 
@@ -31,6 +31,6 @@ Display and hide information in groups, displaying only one group of information
 
 ### Component Style
 
-#### Card Folding Panel
+#### Card Collapse
 
 {{ card }}
