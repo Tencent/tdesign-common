@@ -27,7 +27,7 @@ When the number of menu items exceeds 8, you can turn the page.
 
 {{ grid-multiple }}
 
-### Component State
+### Component Status
 
 {{ status }}
 
