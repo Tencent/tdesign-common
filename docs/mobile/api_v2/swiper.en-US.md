@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### 01 Component type
+### 01 Component Type
 
 dots
 
 {{ base }}
 
-dot-bar
+dots-bar
 
 {{ custom }}
 
@@ -27,7 +27,7 @@ control
 
 {{ control }}
 
-### 02 Component style
+### 02 Component Style
 
 Vertical mode
 
