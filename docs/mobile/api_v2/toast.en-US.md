@@ -6,20 +6,20 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### Basic demo
+### Basic Demo
 
 {{ base }}
 
-### component status
+### Component Status
 
 {{ theme }}
 
-### Show mask
+### Show Cover
 
 {{ cover }}
 
-### Manually close
+### Manually Close
 
 {{ close }}
