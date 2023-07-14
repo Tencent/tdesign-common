@@ -6,18 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### Radio upload picture
+### Radio Upload Image
 
 {{ base }}
 
-### Multi-select upload pictures
+### Multi-Select Upload Images
 
 {{ multiple }}
 
-### component status
+### Component Status
 
 {{ status }}
 
-### Style custom
+### Style Custom
 
 {{ custom }}
