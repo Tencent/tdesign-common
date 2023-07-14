@@ -14,7 +14,7 @@ Used for lightweight feedback or prompts without interrupting user action.
 {{ base }}
 
 
-### Message of different status
+### Message Of Different Status
 
 Message types are info, warning, success, error, and call the feedback class dialog box with the API 'Message.info' method
 
