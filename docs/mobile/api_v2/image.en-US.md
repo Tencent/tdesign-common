@@ -14,13 +14,13 @@ Five fill types are available: fill, contain, cover, none, and scale-down.
 
 ### Image With Different Fill Positions
 
-When the picture is too large, provide different positions to display the partial left or right alignment of the picture.
+When the image is too large, provide different positions to display the partial left or right alignment of the picture.
 
 {{ position }}
 
 ### Image Of Different Shapes
 
-Available in three shapes: square, round corner and round corner. You cannot use circle to show a perfect circle when the picture is not equal in length and width.
+Available in three shapes: square, round corner and round corner. You cannot use circle to show a perfect circle when the image is not equal in length and width.
 
 {{ shape }}
 
