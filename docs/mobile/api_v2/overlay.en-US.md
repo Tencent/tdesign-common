@@ -1,11 +1,11 @@
 ---
 title: Overlay
-description: Through the mask layer, you can highlight some content
+description: Through the overlay, you can highlight some content
 spline: base
 isComponent: true
 toc: false
 ---
 
-### Base type
+### Base Type
 
 {{ base }}
