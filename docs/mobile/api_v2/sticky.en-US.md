@@ -6,19 +6,19 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
 Wrap the content in the 'Sticky' component
 
-### Base cap
+### Base Sticky
 
 {{ base }}
 
 
-### Ceiling distance
+### Sticky Distance
 
 {{ offset }}
 
-### Specify the container
+### Specify Container
 
 {{ container }}
