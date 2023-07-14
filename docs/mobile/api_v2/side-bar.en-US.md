@@ -6,20 +6,20 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### anchor point usage
+### Anchor Point Usage
 
 {{ base }}
 
-### Page cutting usage
+### Page Cutting Usage
 
 {{ switch }}
 
-### Side navigation with ICONS
+### SideBar With Icon
 
 {{ with-icon }}
 
-### Custom style
+### Custom Style
 
 {{ custom }}
