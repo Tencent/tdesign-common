@@ -6,27 +6,27 @@ isComponent: true
 toc: false
 ---
 
-### type
-#### Basic navigation bar
+### Type
+#### Basic Navbar
 
 {{ base }}
 
-#### has a search navigation bar
+#### Search Navbar
 
 {{ search }}
 
-#### with picture navigation bar
+#### With Image Navbar
 
 {{ img }}
 
-#### Title alignment
+#### Title Alignment
 
 {{ left-title }}
 
-#### Title size
+#### Title Size
 
 {{ size }}
 
-#### Customize the colors
+#### Customize Color
 
 {{ custom-color }}
