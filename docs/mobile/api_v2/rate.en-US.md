@@ -6,40 +6,40 @@ isComponent: true
 toc: false
 ---
 
-### Component type
+### Component Type
 
-Solid score
+Solid Rate
 
 {{ base }}
 
-Custom score
+Custom Rate
 
 {{ custom }}
 
-Customize the number of ratings
+Customize the number of rate
 
 {{ count }}
 
-Descriptive scoring
+Descriptive rate
 
 {{ show-text }}
 
-### component status
+### Component Status
 
 {{ action }}
 
-### Component style
+### Component Style
 
-Score size
+rate size
 
 {{ size }}
 
-Set score color
+Set rate color
 
 {{ color }}
 
 ### Special style
 
-Vertical tape description score
+Vertical tape description rate
 
 {{ special }}
