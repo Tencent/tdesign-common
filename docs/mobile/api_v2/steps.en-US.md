@@ -6,35 +6,35 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
 Step bar, the direction can be horizontal and vertical, you can customize the step bar display content and whether it is writable
 
-### Component type
+### Component Type
 
-#### Horizontal step bar
+#### Horizontal Steps Bar
 
 Supports three types: serial number, icon, and abbreviated
 
 {{ horizontal }}
 
 
-#### Vertical step bar
+#### Vertical Steps Bar
 
 Supports three types: serial number, icon, and abbreviated
 
 {{ vertical }}
 
-### component status
+### Component Status
 
-#### TAB status
+#### Tab Status
 
 Four states are supported: default, finish, process and error.
 
 {{ status }}
 
 
-#### Special types
+#### Special Types
 
 Through the existing characteristics, two common types are modified:
 
