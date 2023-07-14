@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### type
+### Type
 
-Icon empty state
+Icon empty status
 
 {{ base }}
 
-Custom picture empty state
+Custom picture empty status
 
 {{ imageEmpty }}
 
