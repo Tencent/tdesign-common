@@ -26,6 +26,6 @@ Search box shape
 
 ### 03 Component Status
 
-Default state Other alignment
+Default status Other alignment
 
 {{ other }}
