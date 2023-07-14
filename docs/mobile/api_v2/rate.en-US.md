@@ -38,7 +38,7 @@ Set rate color
 
 {{ color }}
 
-### Special style
+### Special Style
 
 Vertical tape description rate
 
