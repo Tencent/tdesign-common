@@ -6,13 +6,13 @@ isComponent: true
 toc: false
 ---
 
-### Radio drop-down menu
+### Radio DropdownMenu
 
 This parameter is used to select scenarios where an option is required
 
 {{ single }}
 
-### Multi-select drop-down menu
+### Multi-select DropdownMenu
 
 This parameter is used when multiple options can be selected
 The label does not change the name after selection, and the title displays a maximum of 4 characters beyond "..." handle
