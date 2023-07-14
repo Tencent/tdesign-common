@@ -10,11 +10,11 @@ toc: false
 
 {{ base }}
 
-### Choose The Year
+### Choose Year
 
 {{ year-month }}
 
-### Choose The Time
+### Choose Time
 
 {{ time }}
 
