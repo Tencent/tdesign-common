@@ -10,7 +10,7 @@ toc: false
 
 #### Base Folding panel
 
-It is mainly used to group and hide complex areas. It is often used to display order information.
+Base Folding panel is mainly used to group and hide complex areas. Base Folding panel is often used to display order information.
 
 {{ base }}
 
