@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### Component type
+### Component Type
 
 Single cursor slider
 
@@ -26,13 +26,13 @@ Slide selector with scale
 
 {{ step }}
 
-### component status
+### Component Status
 
 The slider is disabled
 
 {{ disabled }}
 
-#### Special style
+#### Special Style
 
 Capsule type slider
 
