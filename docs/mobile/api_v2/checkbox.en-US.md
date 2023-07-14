@@ -8,21 +8,21 @@ toc: false
 
 ### Component Type
 
-Vertical multiple boxes
+Vertical checkbox
 
 {{ base }}
 
-Horizontal multiple checkboxes
+Horizontal checkbox
 
 {{ horizontal }}
 
-Multiple checkboxes with select all
+checkbox with select all
 
 {{ all }}
 
 ### Component Status
 
-Check box status
+checkbox status
 
 {{ status }}
 
@@ -42,6 +42,6 @@ Non-full-width multiple selection style
 
 ### Component Specification
 
-Multiple box size specifications
+checkbox size specifications
 
 {{ special }}
