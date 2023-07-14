@@ -17,5 +17,5 @@ toc: false
 ### Table Style With Stripe
 {{ stripe }}
 
-### Table Style with border
+### Table Style With Border
 {{ bordered }}
