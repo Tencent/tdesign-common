@@ -6,12 +6,12 @@ isComponent: true
 toc: false
 ---
 
-### Different result states
+### Different Result Status
 
 Indicates the result of the current task
 
 {{ theme }}
 
-### Custom style
+### Custom Style
 
 {{ custom }}
