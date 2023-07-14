@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### Base Time Selector
+### Base DateTimePicker
 
 {{ base }}
 
