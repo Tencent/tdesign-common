@@ -16,11 +16,11 @@ Basic stepper
 
 ### Component Status
 
-Max-min state
+Max-min status
 
 {{ min-max }}
 
-Disabled state
+Disabled status
 
 {{ status }}
 
