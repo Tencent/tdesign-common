@@ -7,9 +7,9 @@ toc: false
 ---
 
 
-## Examples
+## Code Demo
 
-### Types
+### Component Type
 
 {{ type }}
 
@@ -21,12 +21,12 @@ clickable tag
 
 {{ checkable }}
 
-### Status
+### Component Status
 
 display tag
 
 {{ theme }}
 
-### Size
+### Component Size
 
 {{ size }}
