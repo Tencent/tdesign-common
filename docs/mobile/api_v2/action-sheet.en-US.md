@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### Column phenotype
+### Column Phenotype
 
 The list option is a list of the left and right ends.
 The option is plain text.
@@ -15,7 +15,7 @@ Column phenotypes can have the following different styles depending on the conte
 
 {{ list }}
 
-### Uterine pattern
+### Uterine Pattern
 
 The panel is connected to the left and right, and the grid structure of 3 or 4 columns is used according to the number of operations to make the menu content as full as possible.
 Menu options are presented using icons plus text.
@@ -23,14 +23,14 @@ When the number of menu items exceeds 8, you can turn the page.
 
 {{ grid }}
 
-### Grid type - multiple pages
+### Grid Type - Multiple Pages
 
 {{ grid-multiple }}
 
-### Component state
+### Component State
 
 {{ status }}
 
-### Component style
+### Component Style
 
 {{ align }}
