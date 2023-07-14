@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### 01 Component type
+### 01 Component Type
 
 Basic search box
 
@@ -18,13 +18,13 @@ The cancel button appears after the focus is obtained
 
 {{ action }}
 
-### 02 Component style
+### 02 Component Style
 
 Search box shape
 
 {{ shape }}
 
-### 03 Component status
+### 03 Component Status
 
 Default state Other alignment
 
