@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demonstration
+## Code Demo
 
 ### Base Countdown
 
