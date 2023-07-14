@@ -6,27 +6,27 @@ isComponent: true
 toc: false
 ---
 
-### Split TAB
+### Split Tabs
 
 {{ evenly }}
 
-### Isometric TAB
+### Isometric Tabs
 
 {{ isometric }}
 
-### Tabs with ICONS
+### Tabs With Icon
 
 {{ icon }}
 
-### With logo TAB
+### With Badge Tabs
 
 {{ badge }}
 
-### With content area TAB
+### With Content Area Tabs
 
 {{ content }}
 
-### TAB status
+### Tabs status
 
 {{ status }}
 
