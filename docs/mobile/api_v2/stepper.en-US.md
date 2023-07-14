@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### Component type
+### Component Type
 
 Basic stepper
 
 {{ base }}
 
-### component status
+### Component Status
 
 Max-min state
 
@@ -24,7 +24,7 @@ Disabled state
 
 {{ status }}
 
-### Component style
+### Component Style
 
 Stepper style
 
