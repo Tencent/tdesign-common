@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### Top drop down to refresh
+### Top PullDownRefresh
 
 Since page scrolling cannot be monitored within the component, the page needs to get the component instance and pass the page scrolling event to the component.
 
