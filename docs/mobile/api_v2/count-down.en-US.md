@@ -6,12 +6,12 @@ isComponent: true
 toc: false
 ---
 
-## Code demonstration
+## Code Demonstration
 
-### Base countdown
+### Base Countdown
 
 {{ base }}
 
-### Adjust the size
+### Adjust Size
 
 {{ size }}
