@@ -6,19 +6,19 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
+## Code Demo
 
-### Component type
+### Component Type
 
-Basic multi-line text box
+Basic textarea
 
 {{ base }}
 
-Multiline text box with title
+textarea with title
 
 {{ label }}
 
-Automatically raises multiline text boxes
+Automatically raises textarea
 
 {{ autosize }}
 
@@ -30,13 +30,13 @@ Set the maximum number of characters. One Chinese character means two characters
 
 {{ maxcharacter }}
 
-### component status
+### Component Status
 
-Disable multiline text boxes
+Disable textarea
 
 {{ disabled }}
 
-### Customize component styles
+### Customize Component Style
 
 Label external input box
 
