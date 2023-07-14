@@ -6,10 +6,10 @@ isComponent: true
 toc: false
 ---
 
-### Basic usage
+### Basic Usage
 
 {{ base }}
 
-### Drawer with ICONS
+### Drawer With Icon
 
 {{ icon }}
