@@ -1,15 +1,17 @@
 ---
-title: Link
-description: When the function can be clearly expressed by ICONS, pure ICONS can be used to float buttons, such as: Add, publish.
+title: Link 
+description: Links are used to start a new task or jump to a new page.
+
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 01 Component type
+
+### 01 Component Type
 
 {{ base }}
 
-### 02 Component status
+### 02 Component Status
 
 {{ status }}

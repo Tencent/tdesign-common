@@ -1,19 +1,20 @@
 ---
 title: Footer
-description: Used for basic list display, can be attached to text, brand logo, operation, common business details, personal center, setting and other pages.
+description: Footer is used to display information such as copyright notices, contact information, links to important pages and other relevant content of the website.
 spline: data
 isComponent: true
 toc: false
 ---
 
-### Base footer
+
+### Base Footer 
 
 {{ base }}
 
-### Basic plus link footer
+### Link Footer
 
 {{ link }}
 
-### Brand footer
+### Brand Footer
 
 {{ logo }}

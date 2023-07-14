@@ -1,31 +1,32 @@
 ---
 title: Tag
-description: Indicates the category, attribute, or state of the subject.
+description: Used to indicate the category, attributes, or status of the subject.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## Code demo
 
-### Component type
+## Examples
+
+### Types
 
 {{ type }}
 
-Tabs that can be closed
+closable tag
 
 {{ closable }}
 
-Clickable tabs
+clickable tag
 
 {{ checkable }}
 
-### component status
+### Status
 
-Display label
+display tag
 
 {{ theme }}
 
-### Component size
+### Size
 
 {{ size }}

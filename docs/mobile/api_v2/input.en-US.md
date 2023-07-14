@@ -6,58 +6,59 @@ isComponent: true
 toc: false
 ---
 
-## Code demo
 
-### 01 Component type
+## Code Demo
 
-Base input field
+### 01 Component Types
+
+Basic Input
 
 {{ base }}
 
-Input box with word limit
+Input with Character Limit
 
 {{ maxlength }}
 
-With action input box
+Input with Operation
 
 {{ suffix }}
 
-With icon input box
+Input with Icon
 
 {{ prefix }}
 
-Type specific input box
+Specific Type Input
 
 {{ special }}
 
-### 02 Component status
+### 02 Component States
 
-Input field status
+Input States
 
 {{ status }}
 
-Information overload status
+Information Exceeds Limit State
 
 {{ label }}
 
-### 03 Component style
+### 03 Component Styles
 
-Content location
+Content Position
 
 {{ align }}
 
-Vertical style
+Vertical Style
 
 {{ layout }}
 
-Non-column style
+Non-Full Width Style
 
 {{ banner }}
 
-Label external style
+External Label Style
 
 {{ bordered }}
 
-Custom style text box
+Custom Style Text Box
 
 {{ custom }}
