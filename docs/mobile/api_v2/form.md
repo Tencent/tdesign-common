@@ -1,6 +1,6 @@
 ---
 title: Form 表单
-description: 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
+description: 用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。
 spline: base
 isComponent: true
 toc: false
