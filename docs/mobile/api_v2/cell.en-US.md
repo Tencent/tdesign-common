@@ -8,15 +8,15 @@ toc: false
 
 ### Component Type
 
-#### Single-Row Cells
+#### Single-Row Cell
 
 {{ single }}
 
-#### Multiple Rows Of Cells
+#### Multiple Rows Of Cell
 
 {{ multiple }}
 
-### Pattern
+### Style
 
 #### Card Cell
 
