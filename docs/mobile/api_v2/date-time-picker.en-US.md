@@ -6,18 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### Base time selector
+### Base Time Selector
 
 {{ base }}
 
-### Choose the year
+### Choose The Year
 
 {{ year-month }}
 
-### Choose the time
+### Choose The Time
 
 {{ time }}
 
-### Customize the selection range
+### Customize Selection Range
 
 {{ custom-range }}
