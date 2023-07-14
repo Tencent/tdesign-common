@@ -6,18 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### Component type
+### Component Type
 
-#### Single-row cells
+#### Single-Row Cells
 
 {{ single }}
 
-#### Multiple rows of cells
+#### Multiple Rows Of Cells
 
 {{ multiple }}
 
 ### Pattern
 
-#### Card cell
+#### Card Cell
 
 {{ group }}
