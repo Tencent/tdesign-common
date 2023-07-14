@@ -6,18 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### Base type
+### Base Type
 
-#### Basic pop-up layer
+#### Basic Popup
 
 {{ base }}
 
-### Component example
+### Component Example
 
-#### with title and action
+#### With Title And Action
 
 {{ with-title }}
 
-#### with a custom close button
+#### Custom Close Button
 
 {{ custom-close }}
