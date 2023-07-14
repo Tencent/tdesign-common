@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-### Base list
+### Base List
 
 
 {{ base }}
 
-### Pull down to refresh
+### Pull Down To Refresh
 
 {{ pull-refresh }}
 
-### Error message
+### Error Tip
 
 {{ err-tip }}
