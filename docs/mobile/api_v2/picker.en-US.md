@@ -6,14 +6,14 @@ isComponent: true
 toc: false
 ---
 
-### Base type
+### Base Type
 
 {{ base }}
 
-### Multi-level linkage
+### Multi-Level Linkage
 
 {{ cascade }}
 
-### Object selection
+### Object Selection
 
 {{ object }}
