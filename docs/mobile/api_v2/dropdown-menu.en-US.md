@@ -16,7 +16,7 @@ This parameter is used to select scenarios where an option is required
 
 This parameter is used when multiple options can be selected
 The label does not change the name after selection, and the title displays a maximum of 4 characters beyond "..." handle
-The multiple selection drop-down menu can have the following styles depending on the content of the selection
+The multiple selection dropdownMenu can have the following styles depending on the content of the selection
 
 {{ multiple }}
 
