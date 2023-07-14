@@ -6,16 +6,16 @@ isComponent: true
 toc: false
 ---
 
-## Component type
+## Component Type
 
-### Base form
+### Base Table
 {{ base }}
 
-### Horizontally tiled scrollable table
+### Horizontally Tiled Scrollable Table
 {{ scroll }}
 
-### Table style with zebra print
+### Table Style With Stripe
 {{ stripe }}
 
-### Table style with border
+### Table Style with border
 {{ bordered }}
