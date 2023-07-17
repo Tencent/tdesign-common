@@ -1,21 +1,21 @@
 ---
-title: Message 消息通知
-description: 用于轻量级反馈或提示，不会打断用户操作。
+title: Message
+description: Used for lightweight feedback or prompts without interrupting user action.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础消息通知
+### Basic Message
 
-用于轻量级反馈或提示，不会打断用户操作。
+Used for lightweight feedback or prompts without interrupting user action.
 
 
 {{ base }}
 
 
-### 不同状态的消息通知
+### Message Of Different Status
 
-消息通知类型为普通（info）、警示（warning）、成功（success）、错误（error），用 API `Message.info` 方法调用反馈类对话框
+Message types are info, warning, success, error, and call the feedback class dialog box with the API 'Message.info' method
 
 {{ theme }}

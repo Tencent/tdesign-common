@@ -1,35 +1,35 @@
 ---
-title: Stepper 步进器
-description: 用户通过调整“+”按钮、“-”按钮、数字输入框来调整具体需要的数值，可设置最大值和最小值
+title: Stepper
+description: The user can adjust the value by adjusting the + button, the - button, and the number input box. The maximum and minimum values can be set
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 组件类型
+### Component Type
 
-基础步进器
+Basic stepper
 
 {{ base }}
 
-### 组件状态
+### Component Status
 
-最大最小状态
+Max-min status
 
 {{ min-max }}
 
-禁用状态
+Disabled status
 
 {{ status }}
 
-### 组件样式
+### Component Style
 
-步进器样式
+Stepper style
 
 {{ theme }}
 
-步进器尺寸
+Stepper size
 
 {{ size }}
