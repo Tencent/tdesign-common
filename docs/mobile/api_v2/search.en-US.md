@@ -1,6 +1,6 @@
 ---
 title: Search
-description: Used for users to enter search information and search for page content.
+description: Search is used for users to input the search message and perform content search on the page.
 spline: base
 isComponent: true
 toc: false
@@ -10,22 +10,22 @@ toc: false
 
 ### 01 Component Type
 
-Basic search box
+Basic Search
 
 {{ base }}
 
-The cancel button appears after the focus is obtained
+Display the cancel button after obtaining focus
 
 {{ action }}
 
 ### 02 Component Style
 
-Search box shape
+The shape of Search
 
 {{ shape }}
 
-### 03 Component Status
+### 03 Component State
 
-Default status Other alignment
+Default state alignment methods
 
 {{ other }}

@@ -1,6 +1,6 @@
 ---
 title: Grid
-description: Grid is used for the layout of function entrances. Grid divides the page or specific area into several equal blocks to form several function entrances.
+description: Used for functional entrance layout, cut pages or specific areas into large blocks such as several other blocks, forming several functional entrances.
 spline: base
 isComponent: true
 toc: false
@@ -10,26 +10,26 @@ toc: false
 
 {{ base }}
 
-### Grid With Description 
+### Description
 
 {{ desc }}
 
-### Grid With Border
+### Bordered
 
 {{ bordered }}
 
-### Grid With Badge
+### Badge
 
 {{ badge }}
 
-### Scrolling Grid
+### Scrollable
 
 {{ scroll }}
 
-### Transferable Icon Grid
+### Icon
 
 {{ icon }}
 
-### Card Grid
+### Card
 
 {{ card }}

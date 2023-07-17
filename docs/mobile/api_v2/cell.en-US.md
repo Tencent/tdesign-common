@@ -1,23 +1,23 @@
 ---
 title: Cell
-description: Used to display information for each category row.
+description: Information display for each category row.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### Component Type
+### Component type
 
-#### Single-Row Cell
+#### Single
 
 {{ single }}
 
-#### Multiple Rows Of Cell
+#### Multiple
 
 {{ multiple }}
 
 ### Style
 
-#### Card Cell
+#### Card
 
 {{ group }}

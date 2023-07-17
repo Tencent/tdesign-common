@@ -145,11 +145,11 @@ describe('canSetValue', () => {
 
 describe('formatUnCompleteNumber', () => {
   it('formatUnCompleteNumber: empty number', () => {
-    expect(formatUnCompleteNumber('-')).toBe(undefined);
-    expect(formatUnCompleteNumber('e')).toBe(undefined);
-    expect(formatUnCompleteNumber('')).toBe(undefined);
-    expect(formatUnCompleteNumber(undefined)).toBe(undefined);
-    expect(formatUnCompleteNumber(null)).toBe(undefined);
+    expect(formatUnCompleteNumber('-')).toBe(null);
+    expect(formatUnCompleteNumber('e')).toBe(null);
+    expect(formatUnCompleteNumber('')).toBe(null);
+    expect(formatUnCompleteNumber(undefined)).toBe(null);
+    expect(formatUnCompleteNumber(null)).toBe(null);
   });
 
   it('formatUnCompleteNumber: last unValid num', () => {
