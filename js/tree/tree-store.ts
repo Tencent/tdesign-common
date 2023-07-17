@@ -472,20 +472,6 @@ export class TreeStore {
   }
 
   /**
-   * 更新所有树节点状态
-   * @return void
-   */
-  public refreshState(): void {
-    const { nodeMap } = this;
-    // 树在初始化未回流时，nodes 数组为空
-    // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
-    nodeMap.forEach((node) => {
-      node.update();
-      node.updateChecked();
-    });
-  }
-
-  /**
    * 标记节点重排
    * - 应该仅在树节点增删改查时调用
    * - 节点重排会在延时后触发 refreshNodes 方法的调用
@@ -794,11 +780,26 @@ export class TreeStore {
   }
 
   /**
+   * 更新所有树节点状态，但不更新选中态
+   * 用于不影响选中态时候的更新，减少递归循环造成的时间消耗
+   * @return void
+   */
+  public refreshState(): void {
+    const { nodeMap } = this;
+    // 树在初始化未回流时，nodes 数组为空
+    // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
+    nodeMap.forEach((node) => {
+      node.update();
+    });
+  }
+
+  /**
    * 更新全部节点状态
    * @return void
    */
   public updateAll(): void {
-    this.nodeMap.forEach((node) => {
+    const { nodeMap } = this;
+    nodeMap.forEach((node) => {
       node.update();
       node.updateChecked();
     });
