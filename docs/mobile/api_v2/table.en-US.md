@@ -1,6 +1,6 @@
 ---
 title: Table
-description: Table is often used to show a variety of data in the same structure, easy to organize, compare and analyze, and can search, filter, sort and other operations on the data. Generally, it includes three parts: table header, data row and table tail.
+description: Tables are commonly used to display multiple data under the same structure, making it easy to organize, compare, and analyze. They can also be used to search, filter, and sort data. Generally includes three parts:header, data rows, and footer.
 spline: base
 isComponent: true
 toc: false
