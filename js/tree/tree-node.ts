@@ -16,7 +16,6 @@ import {
 } from './types';
 import {
   createNodeModel,
-  updateNodeModel,
 } from './tree-node-model';
 import log from '../log';
 
@@ -1302,7 +1301,6 @@ export class TreeNode {
       model = createNodeModel(this);
       this.model = model;
     }
-    updateNodeModel(model, this);
     return model;
   }
 }
