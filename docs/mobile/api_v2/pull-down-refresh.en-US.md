@@ -1,15 +1,15 @@
 ---
-title: PullDownRefresh 下拉刷新
-description: 用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。
+title: PullDownRefresh
+description: Used to quickly refresh the page information. The refresh can be the whole page or part of the page.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 顶部下拉刷新
+### Top PullDownRefresh
 
-由于组件内无法监听页面滚动，需要由页面获取组件实例，并将页面滚动事件传递到组件。
+Since page scrolling cannot be monitored within the component, the page needs to get the component instance and pass the page scrolling event to the component.
 
 {{ base }}

@@ -37,6 +37,11 @@
   &__options {
     width: 100vw;
     height: @cascader-options-height;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     &-title {
       margin-top: 20px;
@@ -56,7 +61,6 @@
     &-container {
       display: flex;
       transition: all ease .3s;
-      overflow-y: scroll;
     }
   }
 

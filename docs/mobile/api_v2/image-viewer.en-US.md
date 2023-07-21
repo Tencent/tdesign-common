@@ -1,16 +1,15 @@
 ---
-title: ImageViewer 图片预览
-description: 预览图片内容。
+title: ImageViewer
+description: Preview the image content.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础图片预览
+### Basic ImageViewer
 
 {{ base }}
 
-### 带操作图片预览
+### Operation ImageViewer
 
 {{ operation }}
-

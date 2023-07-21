@@ -1,25 +1,25 @@
 ---
-title: Toast 轻提示
-description: 用于轻量级反馈或提示，不会打断用户操作。
+title: Toast
+description: Used for lightweight feedback or prompts without interrupting user action.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 基础演示
+### Basic Demo
 
 {{ base }}
 
-### 组件状态
+### Component Status
 
 {{ theme }}
 
-### 显示遮罩
+### Show Cover
 
 {{ cover }}
 
-### 手动关闭
+### Manually Close
 
 {{ close }}

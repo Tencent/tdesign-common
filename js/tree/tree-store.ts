@@ -11,7 +11,6 @@ import { TreeNode } from './tree-node';
 import {
   TreeNodeValue,
   TypeIdMap,
-  TypeTimer,
   TypeTargetNode,
   TypeTreeNodeData,
   TypeTreeItem,
@@ -21,6 +20,12 @@ import {
   TypeRelatedNodesOptions,
   TypeTreeEventState,
 } from './types';
+
+function nextTick(fn: () => void): Promise<void> {
+  const pm = Promise.resolve();
+  pm.then(fn);
+  return pm;
+}
 
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
@@ -87,20 +92,20 @@ export class TreeStore {
   // 符合过滤条件的节点的集合
   public filterMap: TypeIdMap;
 
-  // 数据更新计时器
-  public updateTimer: TypeTimer;
-
-  // 识别是否需要重排
-  public shouldReflow: boolean;
-
   // 存在过滤器标志
   public hasFilter: boolean;
 
-  // 树节点过滤器
-  public prevFilter: TypeTreeFilter;
-
   // 事件派发器
   public emitter: ReturnType<typeof mitt>;
+
+  // 数据更新计时器
+  private updateTick: Promise<void>;
+
+  // 识别是否需要重排
+  private shouldReflow: boolean;
+
+  // 树节点过滤器
+  private prevFilter: TypeTreeFilter;
 
   public constructor(options: TypeTreeStoreOptions) {
     const config: TypeTreeStoreOptions = {
@@ -141,7 +146,7 @@ export class TreeStore {
     this.filterMap = new Map();
     this.prevFilter = null;
     // 这个计时器确保频繁的 update 事件被归纳为1次完整数据更新后的触发
-    this.updateTimer = null;
+    this.updateTick = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
     // 这个标志会被大量用到
@@ -467,20 +472,6 @@ export class TreeStore {
   }
 
   /**
-   * 更新所有树节点状态
-   * @return void
-   */
-  public refreshState(): void {
-    const { nodeMap } = this;
-    // 树在初始化未回流时，nodes 数组为空
-    // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
-    nodeMap.forEach((node) => {
-      node.update();
-      node.updateChecked();
-    });
-  }
-
-  /**
    * 标记节点重排
    * - 应该仅在树节点增删改查时调用
    * - 节点重排会在延时后触发 refreshNodes 方法的调用
@@ -504,10 +495,9 @@ export class TreeStore {
     if (node?.value) {
       this.updatedMap.set(node.value, true);
     }
-    if (this.updateTimer) return;
-    this.updateTimer = setTimeout(() => {
-      clearTimeout(this.updateTimer);
-      this.updateTimer = null;
+    if (this.updateTick) return;
+    this.updateTick = nextTick(() => {
+      this.updateTick = null;
 
       // 检查节点是否需要回流，重排数组
       if (this.shouldReflow) {
@@ -790,11 +780,26 @@ export class TreeStore {
   }
 
   /**
+   * 更新所有树节点状态，但不更新选中态
+   * 用于不影响选中态时候的更新，减少递归循环造成的时间消耗
+   * @return void
+   */
+  public refreshState(): void {
+    const { nodeMap } = this;
+    // 树在初始化未回流时，nodes 数组为空
+    // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
+    nodeMap.forEach((node) => {
+      node.update();
+    });
+  }
+
+  /**
    * 更新全部节点状态
    * @return void
    */
   public updateAll(): void {
-    this.nodeMap.forEach((node) => {
+    const { nodeMap } = this;
+    nodeMap.forEach((node) => {
       node.update();
       node.updateChecked();
     });

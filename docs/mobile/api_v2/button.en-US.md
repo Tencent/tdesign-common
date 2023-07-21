@@ -1,66 +1,66 @@
 ---
-title: Button 按钮
-description: 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
+title: Button
+description: Buttons are used to open a closed-loop task, such as "delete" an object, "buy" an item, etc.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Component Type
 
-#### 基础按钮
+#### Basic Buttons
 
-##### 次按钮
+##### Second Button
 
-使用场景：在用户进行的操作为流程中的辅助操作，或者进行不那么重要的交互行为时，选择用次按钮；次要按钮通常和主要按钮一起出现
+Usage scenario: When the operation performed by the user is an auxiliary operation in the process, or when the interaction is not so important, choose to use the secondary button; the secondary button usually appears together with the primary button.
 
-##### 主按钮
+##### Main Button
 
-使用场景：大部分场景都可以使用，例如反馈页、表单页、对话框，一个页面建议最多只出现一个主按钮；
+Usage scenarios: Most scenarios can be used, such as feedback pages, form pages, and dialog boxes. It is recommended that only one main button appear on a page.
 
-##### 文字按钮
+##### Text Button
 
-使用场景：它的操作通常和其旁边内容相关，通常出现在标题旁、字段旁、列表最下方
+Usage scenario: its operation is usually related to the content next to it, usually appearing next to the title, next to the field, and at the bottom of the list.
 
 {{ base }}
 
-#### 图标按钮
+#### Icon Button
 
-图标按钮由图标+文字或图标构成。通过图标可增强识别性，以便直观理解。
+Iconic buttons consist of icons + text or icons. Icons enhance recognition for visual understanding.
 
 {{ icon }}
 
-#### 幽灵按钮
+#### Ghost Button
 
-幽灵按钮将按钮的内容反色，背景变为透明，一般是底色透明。常用于有色背景上，例如 banner 图等。
+The ghost button reverses the color of the button's content and makes the background of the button transparent, usually with a transparent base color. It is often used on colored backgrounds, such as banner images.
 
 {{ ghost }}
 
-#### 组合按钮
+#### Combination Button
 
 {{ group }}
 
-#### 通栏按钮
+#### Banner Button
 
-通栏按钮在宽度上充满其所在的父容器（无 padding 和 margin 值）。该按钮常见于移动端和一些表单场景中。
+The Block button fills its parent container in width (no padding and margin values). This button is commonly used in mobile and some form scenarios.
 
 {{ block }}
 
-### 组件状态
+### Component State
 
-#### 按钮禁用态
+#### Buttons for different states
 
 {{ status }}
 
-### 组件样式
-#### 按钮尺寸
+### Component Style
+#### Different sizes of buttons
 
 {{ size }}
 
-#### 按钮形状
+#### Different shaped buttons
 
 {{ shape }}
 
-#### 按钮主题
+#### Different color theme buttons
 
 {{ theme }}

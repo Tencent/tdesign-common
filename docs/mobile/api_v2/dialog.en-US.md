@@ -1,49 +1,49 @@
 ---
-title: Dialog 对话框
-description: 一种打断当前操作的模态视图，用于显示重要提示或请求用户进行重要操作
+title: Dialog
+description: A modal view that interrupts the current action to display an important prompt or request an important action from the user
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-按钮的样式，默认使用 `variant = text`，如果任意按钮改变了 `variant`，那么全部按钮都改变成这个。
+The default button style is' variant = text ', if any button changes' variant ', then all buttons change to this.
 
-### 组件类型
+### Component Type
 
-#### 反馈类对话框
+#### Feedback Class Dialog
 
-用于用户进行了一个操作，需传达重要信息，告知用户当前状况的情况。
+Used when a user performs an operation that communicates important information and informs the user of the current situation.
 
 {{ feedback }}
 
-#### 确认类对话框
+#### Confirm Class Dialog
 
-用于用户进行了一个操作，后果比较严重，需要用户二次确认的情况。 例如 退出、删除、清空等操作
+It is used when the user performs an operation that has serious consequences and requires the user to confirm twice. For example, exit, delete, and clear
 
 {{ confirm }}
 
-#### 输入对话框
+#### Enter Dialog
 
-用于用户进行了一个操作，需输入下一步操作的必要信息。 例如 输入密码
+After an operation is performed, the user needs to enter the necessary information for the next operation. Such as entering a password
 
 {{ input }}
 
-#### 带图片对话框
+#### Dialog With Picture
 
-对话框中可以插入图片元素，并且自定义位置。
+Image elements can be inserted into the dialog box and the position can be customized.
 
 {{ image-dialog }}
 
-### 组件状态
+### Component Status
 
-文字按钮、水平基础按钮、垂直基础按钮、多按钮、附带关闭按钮
+Text button, horizontal base button, vertical base button, multi-button, with close button
 
 {{ multi-state }}
 
-### 组件用法
+### Component Usage
 
-命令行调用
+Command line call
 
 {{ plugin }}

@@ -1,36 +1,36 @@
 ---
-title: Collapse 折叠面板
-description: 用于对复杂区域进行分组和隐藏 常用于订单信息展示等
+title: Collapse
+description: Collapse is used to group and hide complex areas, and is often used to display order information.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Component Type
 
-#### 基础折叠面板
+#### Base Collapse
 
-主要用于对复杂区域进行分组和隐藏 常用于订单信息展示等
+Collapse is used to group and hide complex areas, and is often used to display order information.
 
 {{ base }}
 
-#### 向上展开
+#### Expansion Up
 
 {{ placement }}
 
-#### 带操作说明
+#### Tape Operation Instruction
 
 {{ action }}
 
-#### 手风琴式
+#### Accordion Style
 
-对信息进行分组展示和隐藏，每次只展示一组信息
+Display and hide information in groups, displaying only one group of information at a time.
 
 {{ accordion }}
 
 
-### 组件样式
+### Component Style
 
-#### 卡片折叠面板
+#### Card Collapse
 
 {{ card }}

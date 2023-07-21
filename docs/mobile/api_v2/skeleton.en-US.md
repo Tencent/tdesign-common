@@ -1,32 +1,32 @@
 ---
-title: Skeleton 骨架屏
-description: 当网络较慢时，在页面真实数据加载之前，给用户展示出页面的大致结构。
+title: Skeleton
+description: When the network is slow, show the user the general structure of the page before the actual page data loads.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 骨架屏类型
+### Skeleton Type
 
-基础骨架屏
+Foundation frame screen
 
 {{ theme }}
 
-单元格骨架屏
+Cell skeleton screen
 
 {{ cell-group }}
 
 
-宫格骨架屏
+Grid frame screen
 
 {{ grid }}
 
-图文组合骨架屏
+Graphic combination skeleton screen
 
 {{ image-group }}
 
-### 组件动效
+### Component Dynamic Effect
 
 {{ animation }}
