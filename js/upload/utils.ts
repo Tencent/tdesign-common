@@ -1,6 +1,13 @@
 import { SizeUnit } from './types';
 import log from '../log/log';
 
+export const IMAGE_REGEXP = /(.png|.jpg|.jpeg|.webp|.avif|.svg|.gif|.bmp)/i;
+export const FILE_PDF_REGEXP = /(.pdf)/i;
+export const FILE_EXCEL_REGEXP = /(.xlsx|.xls|.csv)/i;
+export const FILE_WORD_REGEXP = /(.dox|docx|.document)/i;
+export const FILE_PPT_REGEXP = /(.ppt|.pptx|.key)/i;
+export const VIDEO_REGEXP = /(.avi|.mp3|.mp4|.wmv|.mpg|.mpeg|.mov|.rm|.ram|.swf|.flv|.rmvb|.flash|.mid|.3gp)/i;
+
 /**
  * 各个单位和 KB 的关系
  *
