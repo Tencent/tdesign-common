@@ -39,7 +39,7 @@ export const formatLabel = (label: object | string, val: number) => {
       const rule = /\${value}%/g;
       const enableToReplace = rule.test(label);
       if (enableToReplace) {
-        text = label.replace(rule, String(val));
+        text = label.replace(/\${value}/g, String(val));
       } else {
         text = label;
         throw new Error();
