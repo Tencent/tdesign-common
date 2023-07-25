@@ -237,6 +237,20 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
   });
 }
 
+function updateUploadedFiles(uploadFiles: UploadFile[], resultFiles: UploadFile[]) {
+  const existFiles = uploadFiles.filter((t) => t.url);
+  const newFiles = existFiles;
+  for (let i = 0, len = resultFiles.length; i < len; i++) {
+    const file = resultFiles[i];
+    const index = uploadFiles.findIndex((item) => (
+      (item.raw && item.raw === file.raw) || (item.name && item.name === file.name)
+    ));
+    const tmpFile = index >= 0 ? { ...uploadFiles[index], ...file } : file;
+    newFiles.push(tmpFile);
+  }
+  return newFiles;
+}
+
 /**
  * 可能单个文件上传，也可能批量文件一次性上传
  * 返回上传成功或上传失败的文件列表
@@ -255,7 +269,7 @@ Promise<UploadRequestReturn> {
         if (r.status === 'success') {
           r.data.files = isBatchUpload || !params.multiple
             ? r.data.files
-            : uploadedFiles.concat(r.data.files);
+            : updateUploadedFiles(uploadedFiles, r.data.files);
         }
         const failedFiles = r.status === 'fail' ? r.data.files : [];
         resolve({ ...r, failedFiles });
