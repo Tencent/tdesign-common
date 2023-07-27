@@ -1,3 +1,8 @@
+@tips-text-default: @text-color-placeholder;
+@tips-text-error: @error-color;
+@tips-text-warning: @warning-color;
+@tips-text-success: @success-color;
+
 .text-ellipsis() {
   white-space: nowrap;
   word-wrap: normal;
@@ -14,4 +19,11 @@
 
   /* stylelint-disable-next-line */
   -webkit-box-orient: vertical;
+}
+
+.tips-text-status(@status) {
+  .@{prefix}-tips.@{prefix}-is-@{status} {
+    color: @@tipsColor;
+    @tipsColor: "tips-text-@{status}";
+  }
 }
