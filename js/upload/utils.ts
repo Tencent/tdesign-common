@@ -1,12 +1,21 @@
 import { SizeUnit } from './types';
 import log from '../log/log';
 
-export const IMAGE_REGEXP = /(.png|.jpg|.jpeg|.webp|.avif|.svg|.gif|.bmp)/i;
+export const IMAGE_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp)/i;
+export const IMAGE_ALL_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp|.dwg|.dxf|.svf|.tif|.tiff|.arw)/i;
 export const FILE_PDF_REGEXP = /(.pdf)/i;
-export const FILE_EXCEL_REGEXP = /(.xlsx|.xls|.csv)/i;
-export const FILE_WORD_REGEXP = /(.dox|docx|.document)/i;
+export const FILE_EXCEL_REGEXP = /(.xlsx|.xls|.csv|.xlc|.xlm|.xlt|.xlw)/i;
+export const FILE_WORD_REGEXP = /(.dox|docx|.document|.wps|.wdb|.msword)/i;
 export const FILE_PPT_REGEXP = /(.ppt|.pptx|.key)/i;
-export const VIDEO_REGEXP = /(.avi|.mp3|.mp4|.wmv|.mpg|.mpeg|.mov|.rm|.ram|.swf|.flv|.rmvb|.flash|.mid|.3gp)/i;
+export const VIDEO_REGEXP = /(.avi|.mp4|.wmv|.mpg|.mpeg|.mov|.rm|.ram|.swf|.flv|.rmvb|.flash|.mid|.3gp)/i;
+export const AUDIO_REGEXP = /(.mp2|.mp3|.mp4|.ogg|.3gpp|.ac3|.au)/i;
+
+const INPUT_FILE_MAP = {
+  'audio/*': AUDIO_REGEXP,
+  'video/*': VIDEO_REGEXP,
+  'image/*': IMAGE_ALL_REGEXP,
+  '.doc': /(.doc|.msword)/,
+};
 
 /**
  * 各个单位和 KB 的关系
@@ -167,11 +176,27 @@ export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
   });
 }
 
+export function validateFileType(accept: string, fileType: string, fileName?: string) {
+  const tmpFileType = fileType || fileName;
+  if (!accept) return true;
+  const acceptList = accept.split(',').map((v) => v.trim());
+  for (let i = 0, len = acceptList.length; i < len; i++) {
+    const oneRule = acceptList[i];
+    if (INPUT_FILE_MAP[oneRule] && INPUT_FILE_MAP[oneRule].test(tmpFileType)) {
+      return true;
+    }
+    const regExp = new RegExp(oneRule, 'i');
+    if (regExp.test(tmpFileType)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export function getFileList(files: FileList, accept: string = '') {
   const fileList: File[] = [];
   for (let i = 0; i < files.length; i++) {
-    const regExp = new RegExp(accept);
-    if (regExp.test(files[i].type)) {
+    if (validateFileType(accept, files[i].type, files[i].name)) {
       fileList.push(files[i]);
     }
   }
