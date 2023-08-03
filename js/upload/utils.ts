@@ -179,6 +179,9 @@ export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
 export function validateFileType(accept: string, fileType: string, fileName?: string) {
   const tmpFileType = fileType || fileName;
   if (!accept) return true;
+
+  if (!tmpFileType) return false;
+
   const acceptList = accept.split(',').map((v) => v.trim());
   for (let i = 0, len = acceptList.length; i < len; i++) {
     const oneRule = acceptList[i];
