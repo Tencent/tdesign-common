@@ -27,7 +27,6 @@ export const setableStatus: Record<string, boolean | null> = {
   expandMutex: null,
   activable: null,
   checkable: null,
-  disabled: null,
   draggable: null,
   loading: false,
 };
@@ -140,6 +139,7 @@ export class TreeNode {
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
+    const propsDisabled = keys.disabled || 'disabled';
 
     // 节点自身初始化数据
     this.model = null;
@@ -168,7 +168,6 @@ export class TreeNode {
     // 这种处理方式主要是解决 treeStore.setConfig 方法配置全局属性导致的状态切换与保留的问题
     this.activable = null;
     this.checkable = null;
-    this.disabled = null;
     this.expandMutex = null;
     this.draggable = null;
 
@@ -189,6 +188,8 @@ export class TreeNode {
 
     // 设置标签
     this.label = data[propLabel] || '';
+    // 设置是否禁用
+    this.disabled = data[propsDisabled];
 
     // 设置子节点
     const children = data[propChildren];
@@ -557,7 +558,7 @@ export class TreeNode {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (hasOwnProperty.call(setableStatus, key) || key === 'label') {
+      if (hasOwnProperty.call(setableStatus, key) || key === 'label' || key === 'disabled') {
         this[key] = item[key];
       }
     });
