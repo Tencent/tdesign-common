@@ -178,6 +178,11 @@
     width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     &--card {
       background: @bg-color-secondarycontainer;
