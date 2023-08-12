@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_focus.less";
+
 // <name> 替换为组件名
 .@{radio-cls}-group {
   .reset;
@@ -282,6 +284,7 @@
 
   position: relative;
   cursor: pointer;
+  display: inline-block;
 
   &__former {
     .reset;
@@ -370,4 +373,8 @@
       }
     }
   }
+}
+
+.@{prefix}-radio:focus-visible {
+  .tab-focus-style-rect();
 }
