@@ -172,7 +172,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
             file.url = response.url;
             file.percent = res.status === 'success' ? 100 : 0;
             // 如果上传请求返回结果没有上传日期，则使用电脑当前日期显示
-            // file.uploadTime = response?.uploadTime || getCurrentDate();
+            file.uploadTime = response?.uploadTime || getCurrentDate();
           });
           resultFiles = toUploadFiles;
         }
