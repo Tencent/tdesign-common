@@ -178,7 +178,7 @@ export class TreeNode {
 
     // 设置 value
     // 没有 value 的时候，value 默认使用自动生成的 唯一 id
-    this.value = isNil(data[propValue]) ? this[privateKey] : data[propValue];
+    this.value = isNil(get(data, propValue)) ? this[privateKey] : get(data, propValue);
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
@@ -187,9 +187,9 @@ export class TreeNode {
     privateMap.set(this[privateKey], this);
 
     // 设置标签
-    this.label = data[propLabel] || '';
+    this.label = get(data, propLabel) || '';
     // 设置是否禁用
-    this.disabled = data[propsDisabled];
+    this.disabled = get(data, propsDisabled);
 
     // 设置子节点
     const children = data[propChildren];
