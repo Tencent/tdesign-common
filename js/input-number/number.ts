@@ -211,8 +211,9 @@ export function canInputNumber(number: string, largeNumber: boolean) {
   if (number.slice(0, 2) === '00') return false;
   // 只能出现一个点（.）
   if (number.match(/\./g)?.length > 1) return false;
-  // 只能出现一个负号（-）或 一个正号（+），并且在第一个位置
-  if (/(\+|-)/.test(number.slice(1))) return false;
+  // 只能出现一个负号（-）或 一个正号（+），并且在第一个位置；但允许 3e+10 这种形式
+  const tmpNumber = number.slice(1);
+  if (/(\+|-)/.test(tmpNumber) && !/e+/i.test(tmpNumber)) return false;
   // 允许输入数字字符
   const isNumber = (largeNumber && isInputNumber(number)) || !Number.isNaN(Number(number));
   if (!isNumber && !specialCode.includes(number.slice(-1))) return false;

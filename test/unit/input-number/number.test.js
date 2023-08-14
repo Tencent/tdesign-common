@@ -121,6 +121,7 @@ describe('canInputNumber', () => {
   it('normal number: number letters are allowed', () => {
     expect(canInputNumber('-')).toBe(true);
     expect(canInputNumber('1.3e')).toBe(true);
+    expect(canInputNumber('+1.22+++')).toBe(false);
     expect(canInputNumber('1.23E')).toBe(true);
     expect(canInputNumber('1.23E+')).toBe(true);
     expect(canInputNumber('1.23E+08')).toBe(true);
