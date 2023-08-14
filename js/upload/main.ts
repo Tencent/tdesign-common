@@ -1,7 +1,7 @@
 import isFunction from 'lodash/isFunction';
 import isNumber from 'lodash/isNumber';
 /* eslint-disable no-param-reassign */
-import { isOverSizeLimit } from './utils';
+import { getCurrentDate, isOverSizeLimit } from './utils';
 import xhr from './xhr';
 import log from '../log/log';
 import {
@@ -171,6 +171,8 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
             file.response = response;
             file.url = response.url;
             file.percent = res.status === 'success' ? 100 : 0;
+            // 如果上传请求返回结果没有上传日期，则使用电脑当前日期显示
+            // file.uploadTime = response?.uploadTime || getCurrentDate();
           });
           resultFiles = toUploadFiles;
         }
