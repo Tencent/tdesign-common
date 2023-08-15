@@ -9,6 +9,7 @@ export interface KeysType {
   value?: string;
   label?: string;
   children?: string;
+  disabled?: string;
 }
 
 export interface TreeNodeState {
