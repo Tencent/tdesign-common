@@ -22,7 +22,6 @@
   &__item {
     position: relative;
     display: flex;
-    flex: none;
     align-items: center;
     justify-content: center;
     font-weight: 400;
@@ -31,6 +30,7 @@
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
+    flex: 1 0 auto;
 
     &--active {
       font-weight: 600;
@@ -40,10 +40,6 @@
     &--disabled {
       color: @tab-item-disabled-color;
       cursor: not-allowed;
-    }
-
-    &--evenly {
-      flex: 1;
     }
 
     &--top,
@@ -70,7 +66,7 @@
       }
     }
 
-    &--tag:not(&--evenly) {
+    &--tag {
       padding: 0 4px;
 
       &:first-child {
