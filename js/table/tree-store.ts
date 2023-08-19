@@ -31,6 +31,18 @@ export const TABLE_TREE_ERROR_CODE_NOT_SAME_LEVEL = {
 };
 
 /**
+ * 获取行唯一标识
+ * @param row 行数据
+ * @param colKey 列字段
+ * @param rowIndex 行下标
+ * @param level 层级
+ */
+export function getUniqueRowValue(row: TableRowData, colKey: string, rowIndex: number = 0, level: number = 0) {
+  const rowValue = get(row, colKey);
+  return rowIndex || level ? `${rowValue}_${rowIndex || 0}_${level || 0}}` : rowValue;
+}
+
+/**
  * 表格树形结构处理器
  * Vue 和 React 可以通用
  * 关键函数有以下几个
@@ -67,7 +79,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
   getAllUniqueKeys(data: T[], keys: KeysType, arr: T[] = []) {
     for (let i = 0, len = data.length; i < len; i++) {
       const item = data[i];
-      arr.push(get(item, keys.rowKey));
+      arr.push(getUniqueRowValue(item, keys.rowKey));
       const children = get(item, keys.childrenKey);
       if (children?.length) {
         this.getAllUniqueKeys(children, keys, arr);
@@ -76,9 +88,40 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     return arr;
   }
 
-  toggleExpandData(p: { rowIndex: number; row: T }, dataSource: T[], keys: KeysType) {
+  getExpandedChildrenKeys(data: T[], keys: KeysType, arr: (string | number)[] = []) {
+    for (let i = 0, len = data.length; i < len; i++) {
+      const item = data[i];
+      const rowValue = getUniqueRowValue(item, keys.rowKey);
+      const rowState = this.treeDataMap.get(rowValue);
+      rowState.expanded && arr.push(rowValue);
+      const children = get(item, keys.childrenKey);
+      if (children?.length) {
+        this.getExpandedChildrenKeys(children, keys, arr);
+      }
+    }
+    return arr;
+  }
+
+  expandTreeNode(rowList: (string | number)[], dataSource: T[], keys: KeysType) {
+    if (!rowList.length) return dataSource;
+    rowList.forEach((rowValue) => {
+      const rowState = this.treeDataMap.get(rowValue);
+      this.toggleExpandData({ row: rowState.row as T, rowIndex: rowState.rowIndex }, dataSource, keys, 'expand');
+    });
+    return dataSource;
+  }
+
+  foldTreeNode(rowList: (string | number)[], dataSource: T[], keys: KeysType) {
+    if (!rowList.length) return dataSource;
+    rowList.forEach((rowValue) => {
+      const rowState = this.treeDataMap.get(rowValue);
+      this.toggleExpandData({ row: rowState.row as T, rowIndex: rowState.rowIndex }, dataSource, keys, 'fold');
+    });
+  }
+
+  toggleExpandData(p: { rowIndex: number; row: T }, dataSource: T[], keys: KeysType, type?: 'expand' | 'fold') {
     if (!p) {
-      log.error('EnhancedTable', 'the node you want to toggleExpand doest not exist in `data`');
+      log.error('EnhancedTable', 'the node toggleExpanded doest not exist in `data`');
       return dataSource;
     }
     const rowValue = get(p.row, keys.rowKey);
@@ -90,7 +133,9 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     // childrenNodes = true，表示懒加载，直接返回，暂时不做展开处理
     if (childrenNodes === true) return dataSource;
     const r = this.treeDataMap.get(rowValue);
-    r.rowIndex = p.rowIndex;
+    if (type === 'expand' && r.expanded) return dataSource;
+    if (type === 'fold' && !r.expanded) return dataSource;
+    r.rowIndex = r.rowIndex ?? p.rowIndex;
     r.expanded = !r.expanded;
     this.treeDataMap.set(rowValue, r);
     return this.updateExpandRow(r, dataSource, keys);
@@ -136,7 +181,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    * @returns {number} rowIndex 设置的行下标
    */
   updateData(rowValue: TableRowValue, newRowData: T, dataSource: T[], keys: KeysType): number {
-    const newRowValue = get(newRowData, keys.rowKey);
+    const newRowValue = getUniqueRowValue(newRowData, keys.rowKey);
     const rowState = this.treeDataMap.get(rowValue);
     // Map 没有查询到，或者查询到的 rowIndex 值为 -1，均表示当前数据不在 dataSource 列表中，未显示在页面中
     if (!rowState || rowState.rowIndex === -1) {
@@ -152,7 +197,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       const oldChildren = get(rowState.row, keys.childrenKey);
       if (oldChildren?.length) {
         for (let i = 0, len = oldChildren.length; i < len; i++) {
-          const rowValue = get(oldChildren[i], keys.rowKey);
+          const rowValue = getUniqueRowValue(oldChildren[i], keys.rowKey);
           const state = this.treeDataMap.get(rowValue);
           if (state) {
             this.treeDataMap.delete(rowValue);
@@ -169,7 +214,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     if (rowState.parent) {
       // 更新直接子元素数组
       const siblings = get(rowState.parent.row, keys.childrenKey);
-      const index = siblings.findIndex((item: T) => get(item, keys.rowKey) === rowValue);
+      const index = siblings.findIndex((item: T) => getUniqueRowValue(item, keys.rowKey) === rowValue);
       siblings[index] = newRowData;
     }
 
@@ -573,7 +618,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
   ) {
     for (let i = 0, len = dataSource.length; i < len; i++) {
       const item = dataSource[i];
-      const rowValue = get(item, keys.rowKey);
+      const rowValue = getUniqueRowValue(item, keys.rowKey);
       if (isUndefined(rowValue)) {
         log.error('EnhancedTable', '`rowKey` could be wrong, can not get rowValue from `data` by `rowKey`.');
         return;
@@ -765,6 +810,36 @@ export function updateRowIndex<T>(
     }
     state.rowIndex = rowIndex + (extra?.count || 1) - 1;
   }
+}
+
+export function diffExpandedTreeNode(
+  newExpandedNode: (number | string)[] = [],
+  oldExpandedNode: (number | string)[] = [],
+) {
+  const removedList: (number | string)[] = [];
+  const addedList: (number | string)[] = [];
+  const newExpandedNodeMap: Map<any, boolean> = new Map();
+  const oldExpandedNodeMap: Map<any, boolean> = new Map();
+  for (let i = 0, len = newExpandedNode.length; i < len; i++) {
+    newExpandedNodeMap.set(newExpandedNode[i], true);
+  }
+  for (let i = 0, len = oldExpandedNode.length; i < len; i++) {
+    oldExpandedNodeMap.set(oldExpandedNode[i], true);
+  }
+  for (let i = 0, len = newExpandedNode.length; i < len; i++) {
+    if (!oldExpandedNodeMap.get(newExpandedNode[i])) {
+      addedList.push(newExpandedNode[i]);
+    }
+  }
+  for (let i = 0, len = oldExpandedNode.length; i < len; i++) {
+    if (!newExpandedNodeMap.get(oldExpandedNode[i])) {
+      removedList.push(oldExpandedNode[i]);
+    }
+  }
+  return {
+    removedList,
+    addedList,
+  };
 }
 
 export type TreeDataMapType = InstanceType<typeof TableTreeStore>['treeDataMap'];
