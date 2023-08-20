@@ -276,7 +276,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     let firstNewChildrenIndex = -1;
     for (let i = 0, len = tmpData.length; i < len; i++) {
       const oneData = tmpData[i];
-      const newRowValue = get(oneData, keys.rowKey);
+      const newRowValue = getUniqueRowValue(oneData, keys.rowKey);
       const mapState = this.treeDataMap.get(newRowValue);
       if (!this.validateDataDoubleExist(mapState, newRowValue)) {
         log.warn('Table', `Duplicated Data \`${newRowValue}\` has been removed.`);
@@ -495,11 +495,10 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    */
   expandAll(dataSource: T[], keys: KeysType) {
     this.expandAllRowIndex = 0;
+    let newData: T[] = [];
     const expandLoop = (
       dataSource: T[],
       keys: KeysType,
-      newData: T[] = [],
-      parentExpanded = false,
       parent: TableRowState = null,
     ) => {
       for (let i = 0, len = dataSource.length; i < len; i++) {
@@ -507,18 +506,16 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
         const rowValue = get(item, keys.rowKey);
         const state = this.treeDataMap.get(rowValue);
         const children = get(item, keys.childrenKey);
-        const originalExpanded = state.expanded;
         state.rowIndex = this.expandAllRowIndex;
+        // children = true is async load
         if (children !== true && children?.length) {
           state.expanded = true;
         }
         state.expandChildrenLength = children?.length || 0;
         this.expandAllRowIndex += 1;
-        if (!parentExpanded) {
-          newData.push(item);
-        }
+        newData.push(item);
         this.treeDataMap.set(rowValue, state);
-        if (children?.length && !originalExpanded) {
+        if (children?.length) {
           // 同步更新父元素的展开数量
           let tmpParent = parent;
           while (tmpParent?.row) {
@@ -527,12 +524,12 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
             tmpParent = tmpParent.parent;
           }
           // 继续子元素
-          expandLoop(children, keys, newData, originalExpanded, state);
+          expandLoop(children, keys, state);
         }
       }
-      return newData;
     };
-    return expandLoop(dataSource, keys);
+    expandLoop(dataSource, keys);
+    return newData;
   }
 
   /**
