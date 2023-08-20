@@ -3,6 +3,7 @@ import isUndefined from 'lodash/isUndefined';
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
 import get from 'lodash/get';
+import set from 'lodash/set';
 import { isRowSelectedDisabled } from './utils';
 import { PrimaryTableCol, TableRowState, TableRowValue, TableRowData } from './types';
 import log from '../log';
@@ -255,8 +256,39 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
         type: 'remove',
       });
     } else {
-      log.warn('EnhancedTable', 'Do not remove this node, which is not appeared.');
+      log.warn('EnhancedTable', 'Can not remove this node, which is not appeared.');
     }
+    return dataSource;
+  }
+
+  /**
+   * 清除子节点
+   * @param key 
+   * @param dataSource 
+   * @param keys 
+   */
+  removeChildren(key: TableRowValue, dataSource: T[], keys: KeysType): T[] {
+    const r = this.treeDataMap.get(key);
+    if (r && r.rowIndex >= 0) {
+      const removeNumber = (r.expandChildrenLength || 0);
+      removeNumber && dataSource.splice(r.rowIndex + 1, removeNumber);
+      if (r.parent) {
+        updateRowExpandLength(this.treeDataMap, r.parent.row, -1 * removeNumber, 'delete', keys);
+      }
+      r.expandChildrenLength = 0;
+      r.expanded = false;
+      set(r.row, keys.childrenKey, undefined);
+      this.treeDataMap.set(key, r);
+      // 更新 rowIndex 之后的下标
+      removeNumber && updateRowIndex(this.treeDataMap, dataSource, {
+        minRowIndex: r.rowIndex + 1,
+        rowKey: keys.rowKey,
+        type: 'remove',
+      });
+    } else {
+      log.warn('EnhancedTable', 'Can not remove this node\'s children, which is not appeared.');
+    }
+    console.log('~~~~~', this.treeDataMap);
     return dataSource;
   }
 
