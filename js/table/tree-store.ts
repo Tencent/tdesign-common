@@ -94,7 +94,9 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       const item = data[i];
       const rowValue = getUniqueRowValue(item, keys.rowKey);
       const rowState = this.treeDataMap.get(rowValue);
-      rowState.expanded && arr.push(rowValue);
+      if (rowState.expanded) {
+        arr.push(rowValue);
+      }
       const children = get(item, keys.childrenKey);
       if (children?.length) {
         this.getExpandedChildrenKeys(children, keys, arr);
@@ -120,6 +122,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       if (!rowState) return;
       this.toggleExpandData({ row: rowState.row as T, rowIndex: rowState.rowIndex }, dataSource, keys, 'fold');
     });
+    return dataSource;
   }
 
   toggleExpandData(p: { rowIndex: number; row: T }, dataSource: T[], keys: KeysType, type?: 'expand' | 'fold') {
@@ -263,15 +266,17 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
 
   /**
    * 清除子节点
-   * @param key 
-   * @param dataSource 
-   * @param keys 
+   * @param key
+   * @param dataSource
+   * @param keys
    */
   removeChildren(key: TableRowValue, dataSource: T[], keys: KeysType): T[] {
     const r = this.treeDataMap.get(key);
     if (r && r.rowIndex >= 0) {
-      const removeNumber = (r.expandChildrenLength || 0);
-      removeNumber && dataSource.splice(r.rowIndex + 1, removeNumber);
+      const removeNumber = r.expandChildrenLength || 0;
+      if (removeNumber) {
+        dataSource.splice(r.rowIndex + 1, removeNumber);
+      }
       if (r.parent) {
         updateRowExpandLength(this.treeDataMap, r.parent.row, -1 * removeNumber, 'delete', keys);
       }
@@ -280,15 +285,16 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       set(r.row, keys.childrenKey, undefined);
       this.treeDataMap.set(key, r);
       // 更新 rowIndex 之后的下标
-      removeNumber && updateRowIndex(this.treeDataMap, dataSource, {
-        minRowIndex: r.rowIndex + 1,
-        rowKey: keys.rowKey,
-        type: 'remove',
-      });
+      if (removeNumber) {
+        updateRowIndex(this.treeDataMap, dataSource, {
+          minRowIndex: r.rowIndex + 1,
+          rowKey: keys.rowKey,
+          type: 'remove',
+        });
+      }
     } else {
       log.warn('EnhancedTable', 'Can not remove this node\'s children, which is not appeared.');
     }
-    console.log('~~~~~', this.treeDataMap);
     return dataSource;
   }
 
@@ -529,7 +535,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    */
   expandAll(dataSource: T[], keys: KeysType) {
     this.expandAllRowIndex = 0;
-    let newData: T[] = [];
+    const newData: T[] = [];
     const expandLoop = (
       dataSource: T[],
       keys: KeysType,
