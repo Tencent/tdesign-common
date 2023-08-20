@@ -106,6 +106,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     if (!rowList.length) return dataSource;
     rowList.forEach((rowValue) => {
       const rowState = this.treeDataMap.get(rowValue);
+      if (!rowState) return;
       this.toggleExpandData({ row: rowState.row as T, rowIndex: rowState.rowIndex }, dataSource, keys, 'expand');
     });
     return dataSource;
@@ -115,6 +116,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     if (!rowList.length) return dataSource;
     rowList.forEach((rowValue) => {
       const rowState = this.treeDataMap.get(rowValue);
+      if (!rowState) return;
       this.toggleExpandData({ row: rowState.row as T, rowIndex: rowState.rowIndex }, dataSource, keys, 'fold');
     });
   }
