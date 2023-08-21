@@ -1,6 +1,7 @@
 import isUndefined from 'lodash/isUndefined';
 import isBoolean from 'lodash/isBoolean';
 import omit from 'lodash/omit';
+import get from 'lodash/get';
 import { TreeNode } from './tree-node';
 import { OptionData } from '../common';
 import {
@@ -253,12 +254,14 @@ export class TreeNodeModel {
   public setData(data: OptionData) {
     const node = this[nodeKey];
     // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
-    const _data = omit(data, ['children', 'value', 'label']);
+    const _data = omit(data, ['children', 'value', 'label', 'disabled']);
     const { keys } = node.tree.config;
-    const dataValue = data[keys?.value || 'value'];
-    const dataLabel = data[keys?.label || 'label'];
+    const dataValue = get(data, keys?.value || 'value');
+    const dataLabel = get(data, keys?.label || 'label');
+    const dataDisabled = get(data, keys?.disabled || 'disabled');
     if (!isUndefined(dataValue)) _data.value = dataValue;
     if (!isUndefined(dataLabel)) _data.label = dataLabel;
+    if (!isUndefined(dataDisabled)) _data.disable = dataDisabled;
 
     Object.assign(node.data, _data);
     Object.assign(node, _data);
