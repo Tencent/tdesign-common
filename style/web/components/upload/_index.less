@@ -173,7 +173,6 @@
     &-name {
       max-width: 100%;
       margin-top: @upload-card-name-margin-top;
-      color: @upload-card-name-color;
       .text-ellipsis();
     }
 
@@ -250,6 +249,7 @@
       color: @upload-card-mask-text-color;
       will-change: transform;
       opacity: 0;
+      z-index: @upload-z-index;
       .hover-transition(opacity);
       .horizontal-vertical-center-with-flex();
       .fill-with-position-absolute();
@@ -650,6 +650,21 @@
   .@{prefix}-upload__single-name {
     color: @upload-file-name-color;
   }
+
+  .@{prefix}-upload__file-thumbnail {
+    margin-right: @upload-list-item-inner-padding;
+    width: @upload-list-file-thumbnail-size;
+    height: @upload-list-file-thumbnail-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    > svg {
+      font-size: @upload-list-file-thumbnail-icon;
+      color: @upload-icon-color;
+    }
+  }
 }
 
 .@{prefix}-upload__card-name {
@@ -662,4 +677,9 @@
 
 .@{prefix}-upload__dragger-btns > .@{prefix}-button {
   padding: 0;
+}
+
+.@{prefix}-upload__file-info {
+  display: flex;
+  align-items: center;
 }

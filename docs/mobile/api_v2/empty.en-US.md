@@ -1,23 +1,23 @@
 ---
-title: Empty 空状态
-description: 用于空状态时的占位提示。
+title: Empty
+description: Placeholder hint for empty status.
 spline: data
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 类型
+### Type
 
-图标空状态
+Icon empty status
 
 {{ base }}
 
-自定义图片空状态
+Custom picture empty status
 
 {{ imageEmpty }}
 
-带操作空状态
+Tape operation empty status
 
 {{ buttonEmpty }}

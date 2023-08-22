@@ -1,33 +1,33 @@
 ---
-title: Loading 加载中
-description: 用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。
+title: Loading
+description: Used to indicate the loading status of a page or operation, providing user feedback while reducing the anxiety of waiting, composed of one or a set of feedback animations.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Component Types
 
-#### 纯图标
+#### Pure Icon
 
 {{ base }}
 
-#### 图标加文字横向
+#### Icon with Horizontal Text
 
 {{ horz }}
 
-#### 图标加文字竖向
+#### Icon with Vertical Text
 
 {{ vert }}
 
-#### 纯文字
+#### Pure Text
 
 {{ pure-text }}
 
-### 组件尺寸
+### Component Size
 
 {{ size }}
 
-### 加载速度
+### Loading Speed
 
 {{ speed }}

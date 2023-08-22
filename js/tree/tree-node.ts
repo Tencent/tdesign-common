@@ -16,7 +16,6 @@ import {
 } from './types';
 import {
   createNodeModel,
-  updateNodeModel,
 } from './tree-node-model';
 import log from '../log';
 
@@ -28,7 +27,6 @@ export const setableStatus: Record<string, boolean | null> = {
   expandMutex: null,
   activable: null,
   checkable: null,
-  disabled: null,
   draggable: null,
   loading: false,
 };
@@ -141,6 +139,7 @@ export class TreeNode {
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
+    const propsDisabled = keys.disabled || 'disabled';
 
     // 节点自身初始化数据
     this.model = null;
@@ -169,7 +168,6 @@ export class TreeNode {
     // 这种处理方式主要是解决 treeStore.setConfig 方法配置全局属性导致的状态切换与保留的问题
     this.activable = null;
     this.checkable = null;
-    this.disabled = null;
     this.expandMutex = null;
     this.draggable = null;
 
@@ -180,7 +178,7 @@ export class TreeNode {
 
     // 设置 value
     // 没有 value 的时候，value 默认使用自动生成的 唯一 id
-    this.value = isNil(data[propValue]) ? this[privateKey] : data[propValue];
+    this.value = isNil(get(data, propValue)) ? this[privateKey] : get(data, propValue);
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
@@ -189,7 +187,9 @@ export class TreeNode {
     privateMap.set(this[privateKey], this);
 
     // 设置标签
-    this.label = data[propLabel] || '';
+    this.label = get(data, propLabel) || '';
+    // 设置是否禁用
+    this.disabled = get(data, propsDisabled);
 
     // 设置子节点
     const children = data[propChildren];
@@ -558,7 +558,7 @@ export class TreeNode {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (hasOwnProperty.call(setableStatus, key) || key === 'label') {
+      if (hasOwnProperty.call(setableStatus, key) || key === 'label' || key === 'disabled') {
         this[key] = item[key];
       }
     });
@@ -1302,7 +1302,6 @@ export class TreeNode {
       model = createNodeModel(this);
       this.model = model;
     }
-    updateNodeModel(model, this);
     return model;
   }
 }

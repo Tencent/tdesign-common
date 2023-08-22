@@ -1,24 +1,24 @@
 ---
-title: Sticky 吸顶容器
-description: 用于常驻页面顶部的信息、操作展示。
+title: Sticky
+description: Displays information and operations that reside at the top of the page.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-将内容包裹在 `Sticky` 组件内
+Wrap the content in the 'Sticky' component
 
-### 基础吸顶
+### Base Sticky
 
 {{ base }}
 
 
-### 吸顶距离
+### Sticky Distance
 
 {{ offset }}
 
-### 指定容器
+### Specify Container
 
 {{ container }}

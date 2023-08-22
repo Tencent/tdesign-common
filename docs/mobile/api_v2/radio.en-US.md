@@ -1,35 +1,35 @@
 ---
-title: Radio 单选框
-description: 用于在预设的一组选项中执行单项选择，并呈现选择结果。
+title: Radio
+description: Used to perform a single selection in a preset set of options and render the result of the selection.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 纵向单选框
+### Portrait Radio
 
 {{ base }}
 
-### 横向单选框
+### Horizontal Radio
 
 {{ horizontal }}
 
-### 单选框状态
+### Radio Status
 
 {{ status }}
 
-### 勾选样式
+### Check Style
 
 {{ icon }}
 
-### 勾选显示位置
+### Check The Display Location
 
 {{ placement }}
 
-### 非通栏单选框
+### Non-Field Radio
 
 {{ card }}
 
-### 特殊样式
+### Special Style
 
 {{ custom }}

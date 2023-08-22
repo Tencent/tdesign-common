@@ -1,39 +1,39 @@
 ---
-title: Tabs 选项卡
-description: 用于内容分类后的展示切换。
+title: Tabs
+description: Used to change the display after content classification.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 均分选项卡
+### Split Tabs
 
 {{ evenly }}
 
-### 等距选项卡
+### Isometric Tabs
 
 {{ isometric }}
 
-### 带图标选项卡
+### Tabs With Icon
 
 {{ icon }}
 
-### 带徽标选项卡
+### With Badge Tabs
 
 {{ badge }}
 
-### 带内容区选项卡
+### With Content Area Tabs
 
 {{ content }}
 
-### 选项卡状态
+### Tabs status
 
 {{ status }}
 
-### 选项卡尺寸
+### TAB size
 
 {{ size }}
 
-### 选项卡样式
+### TAB style
 
 {{ theme }}

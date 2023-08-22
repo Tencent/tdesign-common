@@ -1,45 +1,45 @@
 ---
-title: Rate 评分
-description: 用于对某行为/事物进行打分。
+title: Rate
+description: Used to rate an action/thing.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Component Type
 
-实心评分
+Solid Rate
 
 {{ base }}
 
-自定义评分
+Custom Rate
 
 {{ custom }}
 
-自定义评分数量
+Customize the number of rate
 
 {{ count }}
 
-带描述评分
+Descriptive rate
 
 {{ show-text }}
 
-### 组件状态
+### Component Status
 
 {{ action }}
 
-### 组件样式
+### Component Style
 
-评分大小
+rate size
 
 {{ size }}
 
-设置评分颜色
+Set rate color
 
 {{ color }}
 
-### 特殊样式
+### Special Style
 
-竖向带描述评分
+Vertical tape description rate
 
 {{ special }}

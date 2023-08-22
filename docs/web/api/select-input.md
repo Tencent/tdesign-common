@@ -47,7 +47,7 @@ spline: data
 
 ### 可调整下拉框宽度的筛选器输入框
 
-下拉框宽度规则：下拉框宽度默认和触发元素宽度保持同宽，如果下拉框宽度超出输入框组件会自动撑开下拉框宽度，但最大宽度不超过 `1000px`。也可以通过 `popupProps.overlayStyle.width` 自由设置下拉框宽度。`popupProps.overlayStyle` 类型为函数时，可以更灵活地动态控制下拉框宽度。
+下拉框宽度规则：下拉框宽度默认和触发元素宽度保持同宽，如果下拉框宽度超出输入框组件会自动撑开下拉框宽度，但最大宽度不超过 `1000px`。也可以通过 `popupProps.overlayInnerStyle.width` 自由设置下拉框宽度。`popupProps.overlayInnerStyle` 类型为函数时，可以更灵活地动态控制下拉框宽度。
 
 {{ width }}
 

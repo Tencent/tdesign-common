@@ -1,41 +1,41 @@
 ---
-title: TabBar 标签栏
-description: 用于在不同功能模块之间进行快速切换，位于页面底部。
+title: TabBar
+description: Used to quickly switch between different functional modules, located at the bottom of the page.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Component Type
 
-纯文本标签栏
+Plain text TabBar
 
 {{ text }}
 
-图标加文字标签栏
+Icon plus text TabBar
 
 {{ base }}
 
-纯图标标签栏
+Pure icon TabBar
 
 {{ pure-icon }}
 
-双层级纯文本标签栏
+Double level plain text TabBar
 
 {{ text-spread }}
 
-### 组件样式
+### Component Style
 
-弱选中标签栏
+Weakly select TabBar
 
 {{ badge-props }}
 
-悬浮胶囊标签栏
+Suspension capsule TabBar
 
 {{ round }}
 
-### 自定义
+### Custom
 
-自定义样式
+Custom style
 
 {{ custom }}

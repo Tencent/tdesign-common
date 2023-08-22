@@ -1,31 +1,31 @@
 ---
-title: Cascader 级联选择器
-description: 用于多层级数据选择，主要为树形结构，可展示更多的数据。
+title: Cascader
+description: Cascader is used for multi-level data selection, mainly in a tree structure, which can display more data.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Examples
 
-### 基础用法
+### Basic
 
 {{ base }}
 
-### 选项卡风格
+### Tab Style
 
 {{ theme-tab }}
 
-### 进阶
+### Advanced
 
-#### 带初始值
+#### Default value
 
 {{ with-value }}
 
-#### 自定义 keys
+#### Customizing Data Field Aliases
 
 {{ keys }}
 
-#### 使用次级标题
+#### Use Sub Title
 
 {{ with-title }}

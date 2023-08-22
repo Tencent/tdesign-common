@@ -135,7 +135,13 @@ a.@{prefix}-menu__item {
         padding: 0 14px;
         justify-content: center;
         .@{prefix}-menu__item-link {
-          display: none;
+          opacity: 0;
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
         }
       }
     }
@@ -293,16 +299,16 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__sub {
     padding: 0;
-    max-height: 0;
     overflow: hidden;
-    transition: max-height @anim-duration-base @anim-time-fn-easing;
-
-    &.@{prefix}-is-opened {
-      max-height: calc(100vh - @menu-height-default * 2);
-    }
 
     .@{prefix}-menu__item {
       padding-left: var(--padding-left, 32px);
+    }
+  }
+
+  .@{prefix}-slide-down-enter-active {
+    .@{prefix}-menu__sub {
+      height: 100%;
     }
   }
 
@@ -529,7 +535,15 @@ a.@{prefix}-menu__item {
 
       &.@{prefix}-menu__item-link {
         color: unset;
-        flex: 1;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
       }
     }
 

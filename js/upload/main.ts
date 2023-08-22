@@ -1,7 +1,7 @@
 import isFunction from 'lodash/isFunction';
 import isNumber from 'lodash/isNumber';
 /* eslint-disable no-param-reassign */
-import { isOverSizeLimit } from './utils';
+import { getCurrentDate, isOverSizeLimit } from './utils';
 import xhr from './xhr';
 import log from '../log/log';
 import {
@@ -151,15 +151,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           response.error = res.error || response.error;
         }
         let resultFiles: UploadFile[] = [];
-        // 一个请求上传并返回一个文件
-        if ((response.url && !response.files) || res.status === 'fail') {
-          toUploadFiles.forEach((file) => {
-            file.status = res.status;
-            file.response = response;
-            file.url = response.url;
-          });
-          resultFiles = toUploadFiles;
-        } else if (response.files) {
+        if (res.status === 'success' && response.files) {
           // 一个请求上传并返回多个文件
           resultFiles = response.files.map((file: UploadFile) => {
             const fileInfo = toUploadFiles.find((toFile) => (
@@ -172,6 +164,17 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
               response,
             };
           });
+        } else {
+          // 一个请求上传并返回一个文件
+          toUploadFiles.forEach((file) => {
+            file.status = res.status;
+            file.response = response;
+            file.url = response.url;
+            file.percent = res.status === 'success' ? 100 : 0;
+            // 如果上传请求返回结果没有上传日期，则使用电脑当前日期显示
+            file.uploadTime = response?.uploadTime || getCurrentDate();
+          });
+          resultFiles = toUploadFiles;
         }
         const result = {
           response,
@@ -236,6 +239,20 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
   });
 }
 
+function updateUploadedFiles(uploadFiles: UploadFile[], resultFiles: UploadFile[]) {
+  const existFiles = uploadFiles.filter((t) => t.url);
+  const newFiles = existFiles;
+  for (let i = 0, len = resultFiles.length; i < len; i++) {
+    const file = resultFiles[i];
+    const index = uploadFiles.findIndex((item) => (
+      (item.raw && item.raw === file.raw) || (item.name && item.name === file.name)
+    ));
+    const tmpFile = index >= 0 ? { ...uploadFiles[index], ...file } : file;
+    newFiles.push(tmpFile);
+  }
+  return newFiles;
+}
+
 /**
  * 可能单个文件上传，也可能批量文件一次性上传
  * 返回上传成功或上传失败的文件列表
@@ -254,7 +271,7 @@ Promise<UploadRequestReturn> {
         if (r.status === 'success') {
           r.data.files = isBatchUpload || !params.multiple
             ? r.data.files
-            : uploadedFiles.concat(r.data.files);
+            : updateUploadedFiles(uploadedFiles, r.data.files);
         }
         const failedFiles = r.status === 'fail' ? r.data.files : [];
         resolve({ ...r, failedFiles });

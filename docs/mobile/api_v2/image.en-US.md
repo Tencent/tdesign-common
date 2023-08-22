@@ -1,29 +1,29 @@
 ---
-title: Image 图片
-description: 增强版的img标签，提供多种图片填充方式，并且支持图片懒加载、加载中提示、加载失败提示。
+title: Image
+description: Enhanced version of img tag, provides a variety of image filling methods, and supports image lazy loading, loading prompt, loading failure prompt.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 不同填充模式的图片
+### Image With Different Fill Modes
 
-提供 fill、contain、cover、none、scale-down 5 种填充类型。
+Five fill types are available: fill, contain, cover, none, and scale-down.
 
 {{ base }}
 
-### 不同填充位置的图片
+### Image With Different Fill Positions
 
-当图片过大时，提供显示图片的局部左侧对齐、或右侧对齐的不同位置。
+When the image is too large, provide different positions to display the partial left or right alignment of the picture.
 
 {{ position }}
 
-### 不同形状的图片
+### Image Of Different Shapes
 
-提供方形、圆角方形、圆角 3 种形状。 当图片长宽不相等时，无法使用 circle 展示一个正圆。
+Available in three shapes: square, round corner and round corner. You cannot use circle to show a perfect circle when the image is not equal in length and width.
 
 {{ shape }}
 
-### 组件状态
+### Component Status
 
 {{ status }}
