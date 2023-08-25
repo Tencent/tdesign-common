@@ -1,0 +1,22 @@
+@import "../../../base.less";
+
+@import "./_var.less";
+
+.@{prefix}-grid {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  box-sizing: border-box;
+
+  &--card {
+    margin: 0 16px;
+    border-radius: @grid-card-radius;
+    overflow: hidden;
+  }
+
+  &--auto-size {
+    overflow: scroll;
+    flex-wrap: nowrap;
+    display: flex;
+  }
+}

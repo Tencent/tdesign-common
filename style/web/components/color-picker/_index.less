@@ -84,7 +84,7 @@
   height: @color-picker-slider-thumb-size;
   border-radius: @border-radius-circle;
   box-shadow: @color-picker-thumbs-shadow;
-  background: white;
+  background: @text-color-anti;
   color: @text-color-brand;
   padding: @color-picker-slider-thumb-padding;
   box-sizing: border-box;
@@ -117,10 +117,12 @@
   }
 
   &::before {
+    /* stylelint-disable-next-line color-no-hex */
     background: linear-gradient(90deg, #fff, transparent);
   }
 
   &::after {
+    /* stylelint-disable-next-line color-no-hex */
     background: linear-gradient(0deg, #000, transparent);
   }
 
@@ -133,6 +135,7 @@
 }
 
 .transparentBgImage () {
+  /* stylelint-disable-next-line color-no-hex */
   background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
   background-size: 6px 6px;
   background-position: 0 0, 3px 3px;
@@ -144,11 +147,12 @@
   position: relative;
 
   &--hue-type {
+    /* stylelint-disable-next-line color-named */
     background: red;
   }
 
   &--alpha-type {
-    background: #fff;
+    background: @text-color-anti;
     .transparentBgImage();
   }
 }
@@ -193,6 +197,7 @@
 }
 
 .@{prefix}-color-picker__hue {
+  /* stylelint-disable color-no-hex, color-named */
   background: linear-gradient(
     90deg,
     red,
@@ -228,7 +233,7 @@
   height: @color-picker-gradient-preview-height;
   border-radius: @color-picker-gradient-preview-radius;
   overflow: hidden;
-  background: #fff;
+  background: @text-color-anti;
   .transparentBgImage();
 
   &-inner {
@@ -534,6 +539,16 @@
         color: transparent;
         position: relative;
         border-radius: @border-radius-small;
+
+        &.@{prefix}-size-s {
+          width: @color-picker-trigger-input-color-inner-size-s;
+          height: @color-picker-trigger-input-color-inner-size-s;
+        }
+
+        &.@{prefix}-size-l {
+          width: @color-picker-trigger-input-color-inner-size-l;
+          height: @color-picker-trigger-input-color-inner-size-l;
+        }
       }
     }
   }
@@ -544,7 +559,7 @@
   border-radius: @color-picker-slider-wrapper-radius;
 
   .@{prefix}-color-picker--bg-alpha {
-    background: #fff;
+    background: @text-color-anti;
     .transparentBgImage();
   }
 }

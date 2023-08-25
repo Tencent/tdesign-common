@@ -1,0 +1,55 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+.@{statistic-cls} {
+  display: inline-block;
+  line-height: @text-line-height-xl;
+  color: @statistic-text-color;
+
+  &-title {
+    font-size: @statistic-title-font-size;
+    font-weight: @statistic-title-font-weight;
+    margin-bottom: @statistic-title-margin-bottom;
+  }
+
+  &-content {
+    display: inline-block;
+    line-height: 36px;
+    font-weight: @statistic-value-font-weight;
+    color: @statistic-value-text-color;
+    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+    font-family: "TCloud Number";
+    text-align: left;
+    white-space: nowrap;
+
+    &-value {
+      font-size: @statistic-value-font-size;
+    }
+
+    &-unit {
+      font-size: @statistic-unit-font-size;
+      margin-left: @statistic-unit-margin-left;
+    }
+
+    &-suffix {
+      display: inline-flex;
+      align-items: center;
+      font-size: @statistic-suffix-font-size;
+      margin-left: @statistic-suffix-margin-left;
+    }
+
+    &-prefix {
+      display: inline-flex;
+      align-items: center;
+      font-size: @statistic-prefix-font-size;
+      margin-right: @statistic-prefix-margin-right;
+    }
+  }
+
+  &-extra {
+    margin-top: @statistic-extra-margin-top;
+  }
+}

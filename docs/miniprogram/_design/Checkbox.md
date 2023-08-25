@@ -8,7 +8,7 @@
 
 ### 组件搭配使用
 
-##### 多选框与[索引](./indexes)、[搜索](./search)组合使用，便于用户从大量的选项中，快速地找到目标选项。
+##### 多选框与[索引](./indexes)、[搜索框](./search)组合使用，便于用户从大量的选项中，快速地找到目标选项。
 
 <div class="legend">
   <div class="item">
@@ -16,11 +16,10 @@
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Checkbox%201-2.png"" />
+    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Checkbox%201-2.png" />
   </div>
 </div>
-<hr />
-
+                                                                                                                          
 
 ### 推荐/慎用示例
 
@@ -36,7 +35,6 @@
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 
-
 <hr />
 
 ##### 在选项较多的场景下执行多选时，建议展示用户已选数量。
@@ -47,8 +45,6 @@
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
   </div>
 </div>
-
-<hr />
 
 
 

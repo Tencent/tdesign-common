@@ -86,6 +86,8 @@
   }
 
   &__body {
+    .scrollbar();
+
     color: @dialog-body-text-color;
     font: @dialog-body-text-font;
     overflow: auto;
@@ -99,9 +101,18 @@
   }
 
   &__body--fullscreen {
+    .scrollbar();
+
     box-sizing: border-box;
     padding: @dialog-body-padding-fullscreen;
     height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
+    overflow: auto;
+  }
+
+  &__body--fullscreen--without-footer {
+    box-sizing: border-box;
+    padding: @dialog-body-padding-fullscreen;
+    height: calc(100% - @dialog-header-height-fullscreen);
     overflow: auto;
   }
 

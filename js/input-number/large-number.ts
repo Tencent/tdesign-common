@@ -138,14 +138,33 @@ function compareLargeDecimalNumber(num1: string, num2: string) {
 }
 
 /**
+ * 2e3 => 2000
+ * 0.2e3 => 200
+ */
+export function formatENumber(num: string): string {
+  const [num1, num2] = num.split('e');
+  if (!num2) return num;
+  const [integer, initDecimal = ''] = num.split('.');
+  const zeroCount = Number(num2);
+  const [decimal] = initDecimal.split('e');
+  if (zeroCount > decimal.length) {
+    const multipleZero = fillZero(zeroCount - decimal.length);
+    return num1.replace(/(^0+|\.)/g, '') + multipleZero;
+  }
+  const n1 = integer.replace(/^0+/, '') + decimal.slice(0, zeroCount);
+  const d2 = decimal.slice(zeroCount);
+  return d2 ? [n1, d2].join('.') : n1;
+}
+
+/**
  * 比较两个大数的大小
  */
 export function compareLargeNumber(
   num1: string,
   num2: string,
 ): 1 | -1 | 0 {
-  const [integer1, decimal1] = num1.split('.');
-  const [integer2, decimal2] = num2.split('.');
+  const [integer1, decimal1] = formatENumber(num1).split('.');
+  const [integer2, decimal2] = formatENumber(num2).split('.');
   const result = compareLargeIntegerNumber(integer1.replace('-', ''), integer2.replace('-', ''));
   const integer1IsNegative = integer1.includes('-');
   const integer2IsNegative = integer2.includes('-');
@@ -347,22 +366,4 @@ export function largeNumberToFixed(
       : decimalNumber;
   }
   return [num1, decimalNumber].join('.');
-}
-
-/**
- * 2e3 => 2000
- * 0.2e3 => 200
- */
-export function formatENumber(num: string): string {
-  const [num1, num2] = num.split('e');
-  const [integer, initDecimal = ''] = num.split('.');
-  const zeroCount = Number(num2);
-  const [decimal] = initDecimal.split('e');
-  if (zeroCount > decimal.length) {
-    const multipleZero = fillZero(zeroCount - decimal.length);
-    return num1.replace(/(^0+|\.)/g, '') + multipleZero;
-  }
-  const n1 = integer.replace(/^0+/, '') + decimal.slice(0, zeroCount);
-  const d2 = decimal.slice(zeroCount);
-  return d2 ? [n1, d2].join('.') : n1;
 }

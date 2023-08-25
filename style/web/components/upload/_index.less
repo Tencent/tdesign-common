@@ -35,10 +35,6 @@
     color: @upload-icon-error-circle-filled-color;
   }
 
-  .@{prefix}-icon-loading {
-    color: @upload-icon-loading-color;
-  }
-
   .t-icon-time-filled {
     color: @upload-icon-time-filled-color;
   }
@@ -128,6 +124,9 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: @upload-card-item-space;
 
     & .@{prefix}-is-disabled {
       & :hover {
@@ -136,7 +135,6 @@
     }
 
     &-item {
-      float: left;
       cursor: pointer;
       box-sizing: border-box;
       list-style: none;
@@ -175,7 +173,6 @@
     &-name {
       max-width: 100%;
       margin-top: @upload-card-name-margin-top;
-      color: @upload-card-name-color;
       .text-ellipsis();
     }
 
@@ -252,6 +249,7 @@
       color: @upload-card-mask-text-color;
       will-change: transform;
       opacity: 0;
+      z-index: @upload-z-index;
       .hover-transition(opacity);
       .horizontal-vertical-center-with-flex();
       .fill-with-position-absolute();
@@ -619,10 +617,6 @@
       border-color: @upload-card-item-bg-border-color-hover;
       .hover-transition(border-color);
     }
-
-    .@{prefix}-upload__card-item {
-      margin: @upload-card-item-margin;
-    }
   }
 }
 
@@ -656,6 +650,21 @@
   .@{prefix}-upload__single-name {
     color: @upload-file-name-color;
   }
+
+  .@{prefix}-upload__file-thumbnail {
+    margin-right: @upload-list-item-inner-padding;
+    width: @upload-list-file-thumbnail-size;
+    height: @upload-list-file-thumbnail-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    > svg {
+      font-size: @upload-list-file-thumbnail-icon;
+      color: @upload-icon-color;
+    }
+  }
 }
 
 .@{prefix}-upload__card-name {
@@ -668,4 +677,9 @@
 
 .@{prefix}-upload__dragger-btns > .@{prefix}-button {
   padding: 0;
+}
+
+.@{prefix}-upload__file-info {
+  display: flex;
+  align-items: center;
 }

@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../utilities/_tips.less";
+
 .@{prefix}-input {
   .reset;
 
@@ -52,11 +54,20 @@
       width: 100%;
     }
 
+    // 隐藏Edge浏览器默认的密码框样式
+    &[type="password"]::-ms-reveal {
+      display: none;
+    }
+
     &[type="search"]::-webkit-search-decoration,
     &[type="search"]::-webkit-search-cancel-button,
     &[type="search"]::-webkit-search-results-button,
     &[type="search"]::-webkit-search-results-decoration {
       appearance: none;
+    }
+
+    &.@{prefix}-input--soft-hidden {
+      width: 0;
     }
   }
   // 底部的额外消息
@@ -316,4 +327,8 @@
   font: @input-font;
   color: @input-limit-color;
   background: @input-bg-color-default;
+
+  &.@{prefix}-is-disabled {
+    background: @input-bg-color-disabled;
+  }
 }

@@ -32,6 +32,7 @@
   box-shadow: @back-top-box-shadow;
   visibility: hidden;
   opacity: 0;
+  color: @back-top-text-color;
 
   &__text {
     font: @font-body-small;
@@ -41,6 +42,12 @@
 
   &__icon {
     font-size: @font-headline-small;
+  }
+
+  &.t-size-m {
+    .@{prefix-block}__icon {
+      margin-top: 2px;
+    }
   }
 }
 
@@ -62,7 +69,7 @@ each(@themes, {
 @sizes: s, m;
 
 each(@sizes, {
-  .@{prefix}-size-@{value} {
+  .@{prefix-block}.@{prefix}-size-@{value} {
     .back-top-size(@@value)
   }
 });

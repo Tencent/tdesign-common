@@ -68,10 +68,6 @@
     .@{prefix}-input__inner {
       min-width: 42px;
     }
-
-    &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
-      right: -4px;
-    }
   }
 
   & &__decrease,
@@ -216,6 +212,11 @@
       font-size: @input-number-right-font-size-l;
     }
   }
+
+  .@{prefix}-input--prefix {
+    font: @font-body-large;
+    padding: 0 @comp-paddingLR-m;
+  }
 }
 
 .@{inputNumberCls}.@{inputNumberCls}--normal {
@@ -241,7 +242,6 @@
     }
   }
 }
-
 .@{inputNumberCls}.@{prefix}-is-controls-right {
   width: @input-number-right-width;
   padding: 0;

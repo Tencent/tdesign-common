@@ -9,6 +9,7 @@ export interface KeysType {
   value?: string;
   label?: string;
   children?: string;
+  disabled?: string;
 }
 
 export interface TreeNodeState {
@@ -194,9 +195,11 @@ export type TypeTimer = ReturnType<typeof setTimeout>;
 
 export interface TypeSettingOptions {
   directly?: boolean;
+  isAction?: boolean;
 }
 
 export interface TypeRelatedNodesOptions {
+  reverse?: boolean;
   withParents?: boolean;
 }
 

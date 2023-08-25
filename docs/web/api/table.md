@@ -13,7 +13,7 @@ spline: data
 因此，表格组件有三个：`BaseTable`（基础表格）、`PrimaryTable`（主表格）、`EnhancedTable`（增强型表格），三种表格都会导出。默认导出 `PrimaryTable`。
 
 - `BaseTable`（基础表格）包含一些基础功能：固定表头、固定列、冻结行、加载态、分页、多级表头、合并单元格、自定义单元格、自定义表头、自定义表尾、文本省略、对齐方式、表格事件、尺寸、行类名、边框、斑马线、悬浮态、空数据等
-- `PrimaryTable` 或 `Table`（主表格）包含一些更高级的功能：行展开/收起、过滤、排序、异步加载、拖拽排序等。`PrimaryTable` 和 `Table` 包含 `BaseTable` 的所有功能。`Table` 和 `PrimaryTable` 完全等价。
+- `PrimaryTable` 或 `Table`（主表格）包含一些更高级的功能：行选中、行展开/收起、过滤、排序、异步加载、拖拽排序等。`PrimaryTable` 和 `Table` 包含 `BaseTable` 的所有功能。`Table` 和 `PrimaryTable` 完全等价。
 - `EnhancedTable`（增强型表格）包含一些更复杂的功能：树形结构等。`EnhancedTable` 包含 `BaseTable` 和 `PrimaryTable` 的所有功能
 
 一般情况下，直接使用 `PrimaryTable` 即可满足 90% 的需求，即默认导出的表格。涉及到非常复杂的需求后，使用 `EnhancedTable`。
@@ -207,6 +207,7 @@ spline: data
 - `onSelectChange` 会在选中行发生变化时触发
 - 设置 `columns: [{ colKey: 'row-select', type: 'multiple' }]` 可以将任意列定义为行选中操作列。
 - 分页场景下的行选中，默认允许跨分页选中，即翻页时，上一页选中结果依然保存。如果希望每一页单独控制选中，互不影响，可设置 `reserveSelectedRowOnPaginate=false`
+- 注意：如果发现点击某一行便选中了全部，说明 `rowKey` 设置不正确，或者没有设置，请确保 `rowKey` 的值为 `data` 中的字段。
 
 {{ select-multiple }}
 
@@ -238,7 +239,8 @@ spline: data
 - 列配置 `filter.component` 用于自定义筛选器，只要保证自定义筛选器包含 `value` 属性 和 `change` 事件，即可像内置筛选器一样正常使用。
 - 列配置 `filter.showConfirmAndReset` 用于控制是否显示“确认”“重置”按钮.
 - 列配置 `filter.resetValue` 用于设置点击“重置”按钮时的重置值，并非每个场景都会重置为 `''` 或 `[]` `null`，默认重置为 `''`。
-- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容，设置 `filterRow={() => null}` 隐藏过滤行。
+- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容，设置 `filterRow=null` 隐藏过滤行。
+- 更多功能属性请查看 API 文档中的 `TableColumnFilter`
 
 {{ filter-controlled }}
 
@@ -295,7 +297,7 @@ spline: data
 通过拖拽表格行调整顺序，拖拽表头表头调整列顺序。
 
 - `dragSort='row'` 用于设置表格为行拖拽排序。
-- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'drag', cell: () => <MoveIcon /> }`。
 - `dragSort='col'` 用于设置表格为列拖拽排序。
 - `sortOnRowDraggable` 用于行拖拽排序。已废弃，请更为使用 `dragSort='row'`，兼容支持。
 
@@ -334,7 +336,7 @@ spline: data
 
 ### 可编辑的表格
 
-可编辑的表格分为单元格编辑表格和行编辑表格两种。
+可编辑的表格分为单元格编辑表格和行编辑表格两种。详细完整的接口请查看 API 文档中的 `TableEditableCellConfig`。
 
 #### 可编辑单元格的表格
 

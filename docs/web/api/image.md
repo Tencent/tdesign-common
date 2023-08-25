@@ -72,9 +72,6 @@ placeholder 在图像加载时占位显示。
 
 ### 支持 `avif` 和 `webp` 格式的图片
 
-支持使用 `srcset` 设置特殊格式的图片渲染，如 `.avif` 和 `.webp`。
-
-- [查看 AVIF 压缩](https://cloud.tencent.com/document/product/436/60455)
-- [查看 WebP 压缩](https://cloud.tencent.com/document/product/436/60453)
+支持使用 `srcset` 设置特殊格式的图片渲染，如 `.avif` 和 `.webp`。图片转码为 AVIF/WEBP 推荐使用腾讯云数据万象<a href="https://cloud.tencent.com/document/product/436/60455">图片压缩服务</a>。
 
 {{ avif }}

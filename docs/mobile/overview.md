@@ -4,54 +4,84 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">3</em></h3>
+<h3>基础<em class="tag">5</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/button">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-button.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-button-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-button.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-button-dark.png" />
       <p class="name">Button 按钮</p>
     </a>
   </div>
 
   <div class="image-wrapper">
     <a class="item" href="./components/divider">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-divider.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-divider-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-divider.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-divider-dark.png" />
       <p class="name">Divider 分割线</p>
     </a>
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="./components/fab">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-fab.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-fab-dark.png" />
+      <p class="name">Fab 悬浮按钮</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="./components/icon">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-icon.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-icon-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-icon.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-icon-dark.png" />
       <p class="name">Icon 图标</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="./components/link">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-link.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-link-dark.png" />
+      <p class="name">Link 链接</p>
     </a>
   </div>
 </section>
 
-<h3>导航<em class="tag">6</em></h3>
+<h3>导航<em class="tag">8</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
-    <a class="item" href="./components/dropdown-menu">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-dropdown.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-dropdown-dark.png" />
-      <p class="name">DropdownMenu 下拉菜单</p>
+    <a class="item" href="./components/back-top">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-backtop.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-backtop-dark.png" />
+      <p class="name">BackTop 返回顶部</p>
     </a>
   </div>
-	<!-- <div class="image-wrapper">
+  <div class="image-wrapper">
+    <a class="item" href="./components/drawer">
+      <img  class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer.png" />
+      <img  class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer-dark.png" />
+      <p class="name">Drawer 抽屉</p>
+    </a>
+  </div>
+	<div class="image-wrapper">
     <a class="item" href="./components/indexes">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes-dark.png" />
       <p class="name">Indexes 索引</p>
     </a>
-  </div> -->
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/navbar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-navbar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-navbar-dark.png" />
       <p class="name">Navbar 导航条</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/side-bar">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-sidebar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-sidebar-dark.png" />
+      <p class="name">SideBar 侧边导航栏</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -76,8 +106,22 @@ spline: explain
     </a>
   </div>
 </section>
-<h3>输入<em class="tag">12</em></h3>
+<h3>输入<em class="tag">15</em></h3>
 <section class="image-group">
+  <div class="image-wrapper">
+    <a class="item" href="./components/calendar">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-calendar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-calendar-dark.png" />
+      <p class="name">Calendar 日历</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/cascader">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-cascader.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-cascader-dark.png" />
+      <p class="name">Cascader 级联选择器</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/checkbox">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-checkbox.png" />
@@ -90,6 +134,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker-dark.png" />
       <p class="name">DateTimePicker 日期选择器</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/form">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-form.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-form-dark.png" />
+      <p class="name">Form 表单</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -164,7 +215,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">10</em></h3>
+<h3>数据展示<em class="tag">18</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar">
@@ -188,10 +239,31 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/collapse">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-collapse.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-collapse-dark.png" />
+      <p class="name">Collapse 折叠面板</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/count-down">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-countdown.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-countdown-dark.png" />
       <p class="name">CountDown 倒计时</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/empty">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-empty.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-empty-dark.png" />
+      <p class="name">Empty 空状态</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/footer">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-footer.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-footer-dark.png" />
+      <p class="name">Footer 页脚</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -206,6 +278,34 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-image.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-image-dark.png" />
       <p class="name">Image 图片</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/image-viewer">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-imageviewer.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-imageviewer-dark.png" />
+      <p class="name">ImageViewer 图片预览</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/list">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-list.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-list-dark.png" />
+      <p class="name">List 列表</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/progress">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-progress.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-progress-dark.png" />
+      <p class="name">Progress 进度条</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/result">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-result.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-result-dark.png" />
+      <p class="name">Result 结果</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -230,6 +330,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/table">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-table.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-table-dark.png" />
+      <p class="name">Table 表格</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/tag">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-tag.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-tag-dark.png" />
@@ -238,13 +345,13 @@ spline: explain
   </div>
 </section>
 
-<h3>消息提醒<em class="tag">7</em></h3>
+<h3>反馈<em class="tag">12</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
-    <a class="item" href="./components/back-top">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-backtop.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-backtop-dark.png" />
-      <p class="name">BackTop 返回顶部</p>
+    <a class="item" href="./components/action-sheet">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-actionsheet.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-actionsheet-dark.png" />
+      <p class="name">ActionSheet 动作面板</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -252,6 +359,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dialog.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dialog-dark.png" />
       <p class="name">Dialog 对话框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/dropdown-menu">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu-dark.png" />
+      <p class="name">DropdownMenu 下拉菜单</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -269,10 +383,38 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/notice-bar">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-noticebar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-noticebar-dark.png" />
+      <p class="name">NoticeBar 消息提醒</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/overlay">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-overlay.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-overlay-dark.png" />
+      <p class="name">Overlay 遮罩层</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/popover">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-popover.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-popover-dark.png" />
+      <p class="name">Popover 弹出气泡</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/popup">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-popup.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-popup-dark.png" />
       <p class="name">Popup 弹出层</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/pull-down-refresh">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-pulldownrefresh.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-pulldownrefresh-dark.png" />
+      <p class="name">PullDownRefresh 下拉刷新</p>
     </a>
   </div>
   <div class="image-wrapper">

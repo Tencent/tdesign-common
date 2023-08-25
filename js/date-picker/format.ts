@@ -1,9 +1,14 @@
 import isString from 'lodash/isString';
 import dayjs from 'dayjs';
+import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
+import isLeapYear from 'dayjs/plugin/isLeapYear';
 import { extractTimeFormat } from './utils';
 import log from '../log';
 
 type DateValue = string | number | Date;
+
+dayjs.extend(isoWeeksInYear);
+dayjs.extend(isLeapYear);
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
@@ -14,7 +19,7 @@ export function parseToDayjs(
   timeOfDay?: string,
   dayjsLocale?: string,
 ) {
-  if (value === '') return dayjs();
+  if (value === '' || value === null) return dayjs();
 
   let dateText = value;
   // format week
@@ -26,8 +31,16 @@ export function parseToDayjs(
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
-    const firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
-    for (let i = 0; i <= 52; i += 1) {
+
+    let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
+    // 第一周ISO定义: 本年度第一个星期四所在的星期
+    // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
+    // 否则本周即为第一周
+    if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
+
+    // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
+    const weekCounts = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').isoWeeksInYear();
+    for (let i = 0; i <= weekCounts; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
       if (timeOfDay === 'start') nextWeek = nextWeek.subtract(5, 'day');
@@ -182,18 +195,31 @@ export function formatDate(
   return result;
 }
 
-// 格式化时间
-export function formatTime(value: DateValue | DateValue[], timeFormat: string, defaultTime: string | string[]) {
-  let result;
-
-  if (Array.isArray(value)) {
-    result = value.map((v, i) => (v ? dayjs(v).format(timeFormat) : defaultTime[i]));
-    result = result.length ? result : defaultTime;
-  } else {
-    result = value ? dayjs(value).format(timeFormat) : defaultTime;
+// 对齐格式化时间
+export function calcFormatTime(time: string, timeFormat: string) {
+  if (time && timeFormat) {
+    const timeArr = time.split(':');
+    const timeFormatArr = timeFormat.split(':');
+    return timeArr.slice(0, timeFormatArr.length).join(':');
   }
+  return time;
+}
 
-  return result;
+// TODO 细化 value 类型
+// 格式化时间
+export function formatTime(value: any, format: string, timeFormat: string, defaultTime: string | string[]) {
+  // 无论参数是不是数组，统一转成数组处理
+  let result = Array.isArray(value) ? value : [value];
+  // eslint-disable-next-line no-param-reassign
+  defaultTime = Array.isArray(defaultTime) ? defaultTime : [defaultTime, defaultTime];
+  result = result.map((v, i) => {
+    // string格式需要用format去解析，其他诸如Date、time-stamp格式则直接dayjs
+    if (v) return dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
+    return calcFormatTime(defaultTime[i], timeFormat);
+  });
+  result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
+  // value是数组就输出数组，不是数组就输出第一个即可
+  return Array.isArray(value) ? result : result?.[0];
 }
 
 // 根据不同 mode 给出格式化默认值

@@ -280,13 +280,13 @@
     }
 
     &.@{prefix}-table--header-fixed {
-      tbody tr:nth-of-type(even) {
+      > .t-table__content > table > tbody tr:nth-of-type(even) {
         background-color: @table-highlight-bg-color;
       }
     }
 
     &:not(.@{prefix}-table--header-fixed) {
-      tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
+      > .t-table__content > table > tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
         background-color: @table-highlight-bg-color;
       }
     }
@@ -300,12 +300,12 @@
       }
 
       &:not(.@{prefix}-table__header--fixed) {
-        tbody tr:nth-of-type(odd):hover {
+        > .t-table__content > table > tbody tr:nth-of-type(odd):hover {
           background-color: @table-highlight-bg-color--hover;
         }
       }
 
-      tbody {
+      > .t-table__content > table > tbody {
         tr {
           transition: background-color @anim-duration-base linear;
 
@@ -1036,7 +1036,7 @@
 
 .@{prefix}-table__handle-draggable:hover,
 .@{prefix}-table--row-draggable tr,
-.@{prefix}-table--col-draggable .@{prefix}-table__th-cell-inner {
+.@{prefix}-table__th--drag-sort {
   cursor: move;
 }
 
@@ -1054,6 +1054,11 @@
       margin-left: @table-td-editalbe-icon-margin;
       font-size: @table-icon-size;
       transition: @anim-duration-base linear;
+      color: @table-icon-default-color;
+
+      &:hover {
+        color: @table-icon-active-color;
+      }
     }
 
     &:hover {
@@ -1091,6 +1096,16 @@
 
     th {
       border-top: @border;
+    }
+  }
+
+  /** 表格左边有冻结列滚动时，去掉hover表头时多出的一个像素，避免出现表头的冻结列跟表内容的冻结列没有对齐的问题 */
+  &.@{prefix}-table__content--scrollable-to-left.@{prefix}-table__content--scrollable-to-right,
+  &.@{prefix}-table__content--scrollable-to-left {
+    thead.@{prefix}-table__header:hover {
+      .@{prefix}-table__cell--fixed-left-last:not(:last-child) {
+        border-right: 0;
+      }
     }
   }
 }

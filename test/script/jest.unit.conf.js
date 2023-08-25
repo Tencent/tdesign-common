@@ -1,6 +1,8 @@
 const baseConfig = require('./jest.base.conf');
 
-const reportDefault = process.env.JEST_REPORT === 'default';
+const {
+  JEST_REPORT
+} = process.env;
 
 const config = {
   ...baseConfig,
@@ -16,7 +18,16 @@ const config = {
   ],
 };
 
-if (!reportDefault) {
+if (JEST_REPORT === 'default') {
+  delete config.coverageReporters;
+} else if (JEST_REPORT === 'simple') {
+  delete config.coverageDirectory;
+  delete config.collectCoverageFrom;
+} else if (JEST_REPORT === 'none') {
+  config.collectCoverage = false;
+  delete config.coverageDirectory;
+  delete config.collectCoverageFrom;
+} else {
   config.coverageReporters = ['html', 'text-summary'];
 }
 
