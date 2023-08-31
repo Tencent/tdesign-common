@@ -2,6 +2,7 @@ import isNull from 'lodash/isNull';
 import isFunction from 'lodash/isFunction';
 import isNumber from 'lodash/isNumber';
 import uniqueId from 'lodash/uniqueId';
+import isBoolean from 'lodash/isBoolean';
 import isNil from 'lodash/isNil';
 import get from 'lodash/get';
 import { TreeStore } from './tree-store';
@@ -178,7 +179,9 @@ export class TreeNode {
 
     // 设置 value
     // 没有 value 的时候，value 默认使用自动生成的 唯一 id
-    this.value = isNil(get(data, propValue)) ? this[privateKey] : get(data, propValue);
+    this.value = isNil(get(data, propValue))
+      ? this[privateKey]
+      : get(data, propValue);
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
@@ -264,10 +267,7 @@ export class TreeNode {
     const { tree } = this;
     let { expanded } = this;
     const { config } = tree;
-    if (
-      isNumber(config.expandLevel)
-      && this.getLevel() < config.expandLevel
-    ) {
+    if (isNumber(config.expandLevel) && this.getLevel() < config.expandLevel) {
       tree.expandedMap.set(this.value, true);
       expanded = true;
     }
@@ -335,11 +335,7 @@ export class TreeNode {
    * @param {number} [index] 预期在子节点列表中的位置
    * @return void
    */
-  public appendTo(
-    tree: TreeStore,
-    parent?: TreeNode,
-    index?: number,
-  ): void {
+  public appendTo(tree: TreeStore, parent?: TreeNode, index?: number): void {
     const parentNode = parent;
     let targetIndex = -1;
     if (isNumber(index)) {
@@ -394,10 +390,7 @@ export class TreeNode {
         // 因此要相应的变更插入位置
         // 后置节点被拔出时，目标 index 是不变的
         const curLength = siblings.length;
-        if (
-          curLength < prevLength
-          && prevIndex <= targetIndex
-        ) {
+        if (curLength < prevLength && prevIndex <= targetIndex) {
           targetIndex -= 1;
         }
       }
@@ -436,10 +429,7 @@ export class TreeNode {
    * @param {number} [index] 预期在子节点列表中的位置
    * @return void
    */
-  private insert(
-    item: TypeTreeItem,
-    index?: number,
-  ): void {
+  private insert(item: TypeTreeItem, index?: number): void {
     const { tree, parent } = this;
     const siblings = this.getSiblings();
     let node = null;
@@ -608,6 +598,32 @@ export class TreeNode {
   }
 
   /**
+   * 获取当前节点的子节点
+   * @param {boolean} deep 是否获取所有深层子节点
+   * @return TreeNodeModel[] 子节点数组
+   */
+  public getChildren(deep?: boolean): boolean | TypeTreeNodeModel[] {
+    let childrenModel: boolean | TypeTreeNodeModel[] = false;
+    const { children } = this;
+    if (Array.isArray(children)) {
+      if (children.length > 0) {
+        if (deep) {
+          const nodes = this.walk();
+          nodes.shift();
+          childrenModel = nodes.map((item) => item.getModel());
+        } else {
+          childrenModel = children.map((item) => item.getModel());
+        }
+      } else {
+        childrenModel = false;
+      }
+    } else if (isBoolean(children)) {
+      childrenModel = children;
+    }
+    return childrenModel;
+  }
+
+  /**
    * 获取本节点的根节点
    * @return TreeNode 根节点
    */
@@ -654,11 +670,7 @@ export class TreeNode {
    * @return boolean 是否被过滤方法命中
    */
   public isRest(): boolean {
-    const {
-      config,
-      filterMap,
-      hasFilter,
-    } = this.tree;
+    const { config, filterMap, hasFilter } = this.tree;
 
     let rest = false;
     if (hasFilter) {
@@ -681,11 +693,7 @@ export class TreeNode {
    * @return boolean 是否可见
    */
   public isVisible(): boolean {
-    const {
-      nodeMap,
-      hasFilter,
-      config,
-    } = this.tree;
+    const { nodeMap, hasFilter, config } = this.tree;
     const { allowFoldNodeOnFilter } = config;
 
     let visible = true;
@@ -698,7 +706,7 @@ export class TreeNode {
     if (hasFilter && !allowFoldNodeOnFilter) {
       // 如果存在过滤条件
       // 锁定状态和过滤命中状态，直接呈现
-      visible = (this.vmIsLocked || this.vmIsRest);
+      visible = this.vmIsLocked || this.vmIsRest;
       return visible;
     }
 
@@ -725,7 +733,9 @@ export class TreeNode {
     const { tree } = this;
     const { hasFilter, config } = tree;
     const { disabled, allowFoldNodeOnFilter } = config;
-    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) return true;
+    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) {
+      return true;
+    }
     let state = disabled;
     if (typeof this.disabled === 'boolean') {
       state = this.disabled;
@@ -827,10 +837,7 @@ export class TreeNode {
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) return checked;
     // 允许关联状态的情况下，需要进一步判断
-    if (
-      Array.isArray(children)
-      && children.length > 0
-    ) {
+    if (Array.isArray(children) && children.length > 0) {
       // 子节点全部选中，则当前节点选中
       checked = children.every((node) => {
         const childIsChecked = node.isChecked(checkedMap);
@@ -956,7 +963,10 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树展开的节点值数组
    */
-  public setExpanded(expanded: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
+  public setExpanded(
+    expanded: boolean,
+    opts?: TypeSettingOptions
+  ): TreeNodeValue[] {
     const { tree } = this;
     const { config } = tree;
     const options = {
@@ -1032,7 +1042,10 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树激活的节点值数组
    */
-  public setActived(actived: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
+  public setActived(
+    actived: boolean,
+    opts?: TypeSettingOptions
+  ): TreeNodeValue[] {
     const { tree } = this;
     const options = {
       directly: false,
@@ -1082,7 +1095,10 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树选中的节点值数组
    */
-  public setChecked(checked: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
+  public setChecked(
+    checked: boolean,
+    opts?: TypeSettingOptions
+  ): TreeNodeValue[] {
     const { tree } = this;
     const config = tree.config || {};
     const options: TypeSettingOptions = {
@@ -1144,7 +1160,11 @@ export class TreeNode {
   }
 
   // 选中态向上游扩散
-  private spreadParentChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
+  private spreadParentChecked(
+    checked: boolean,
+    map?: TypeIdMap,
+    opts?: TypeSettingOptions
+  ) {
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,
@@ -1166,7 +1186,11 @@ export class TreeNode {
   }
 
   // 选中态向下游扩散
-  private spreadChildrenChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
+  private spreadChildrenChecked(
+    checked: boolean,
+    map?: TypeIdMap,
+    opts?: TypeSettingOptions
+  ) {
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,
