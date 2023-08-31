@@ -5,6 +5,7 @@ isComponent: true
 usage: { title: '', description: '' }
 spline: navigation
 ---
+
 ### 基础锚点
 
 锚点间不存在层级关系。适用于锚点间为同级关系时，属于页面结构简单的场景。
