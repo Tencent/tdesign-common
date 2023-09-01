@@ -64,6 +64,7 @@ export default {
     firstDayOfWeek: 1,
   },
   steps: {
+    checkIcon: undefined,
     errorIcon: undefined,
   },
   tag: {
