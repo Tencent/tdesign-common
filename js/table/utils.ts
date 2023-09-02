@@ -91,9 +91,10 @@ export function getColumnIndexByKey(columns: any[], colKey: string): number {
 }
 
 export function getColumnsResetValue(columns: any[], resetValue: { [key: string]: any } = {}) {
-  for(let i = 0, len = columns.length; i < len; i++) {
+  for (let i = 0, len = columns.length; i < len; i++) {
     const col = columns[i];
     if (col.filter && 'resetValue' in col.filter) {
+      // eslint-disable-next-line no-param-reassign
       resetValue[col.colKey] = col.filter.resetValue;
     }
     if (col.children?.length) {
