@@ -369,22 +369,71 @@
   --ripple-color: @btn-color-white-bg-active;
 }
 
-.@{prefix}-button--variant-base:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base:not(.@{prefix}-is-disabled):not(
+    .@{prefix}-button--ghost
+  ) {
   --ripple-color: @btn-color-gray-bg-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(
+    .@{prefix}-is-disabled
+  ):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-primary-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-success:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-success:not(
+    .@{prefix}-is-disabled
+  ):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-success-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-warning:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-warning:not(
+    .@{prefix}-is-disabled
+  ):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-warning-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-danger:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-danger:not(
+    .@{prefix}-is-disabled
+  ):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-danger-active;
+}
+
+.@{prefix}-button-group {
+  display: inline-flex;
+  align-items: center;
+  .@{prefix}-button {
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right-color: @btn-group-border-color;
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left-color: @btn-group-border-color;
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+      border-left-color: @btn-group-border-color;
+      border-right-color: @btn-group-border-color;
+    }
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+    &:first-child:last-child {
+      border-top-right-radius: @border-radius-default;
+      border-bottom-right-radius: @border-radius-default;
+      border-top-left-radius: @border-radius-default;
+      border-bottom-left-radius: @border-radius-default;
+
+      &.is-round {
+        border-radius: @border-radius-round;
+      }
+
+      &.is-circle {
+        border-radius: 50%;
+      }
+    }
+  }
 }
