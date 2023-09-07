@@ -48,6 +48,8 @@
   //锚点item
   &__item {
     padding: @anchor-item-padding;
+    --level: 1;
+    padding-left: calc(var(--level) * var(--td-anchor-space-base));
     display: flex;
     flex-direction: column;
 
@@ -55,9 +57,9 @@
       font-weight: 500;
     }
 
-    .@{prefix}-anchor__item {
-      padding: @anchor-sub-item-padding;
-    }
+    // .@{prefix}-anchor__item {
+    //   padding: @anchor-sub-item-padding;
+    // }
   }
 
   &__item-link {
