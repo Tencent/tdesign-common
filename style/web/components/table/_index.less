@@ -323,7 +323,8 @@
       tr {
         transition: background-color @anim-duration-base linear;
 
-        &:hover {
+        &:hover,
+        &.@{prefix}-table__row--hover:not(&.@{prefix}-table__row--active) {
           background-color: @table-highlight-dark-bg-color;
         }
       }
@@ -454,6 +455,11 @@
     color: @table-row-disabled-color;
   }
 
+  /** 表格行点击高亮 */
+  .@{prefix}-table__row--active {
+    background-color: @brand-color-light;
+  }
+
   // 复杂表头容器
   .@{prefix}-table__cell--title {
     display: flex;
@@ -481,6 +487,21 @@
       .@{prefix}-checkbox {
         width: 108px;
       }
+    }
+  }
+}
+
+/** 表格行点击高亮悬浮态 */
+.@{prefix}-table.@{prefix}-table--hoverable {
+  .@{prefix}-table__row--active {
+    &:hover {
+      background-color: @brand-color-light-hover;
+    }
+  }
+
+  &.@{prefix}-table__row--active-multiple {
+    .@{prefix}-table__row--active.@{prefix}-table__row--hover {
+      background-color: @brand-color-light-hover;
     }
   }
 }
