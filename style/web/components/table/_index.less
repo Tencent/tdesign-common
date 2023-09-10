@@ -324,8 +324,7 @@
       tr {
         transition: background-color @anim-duration-base linear;
 
-        &:hover,
-        &.@{prefix}-table__row--hover:not(&.@{prefix}-table__row--active) {
+        &:hover {
           background-color: @table-highlight-dark-bg-color;
         }
       }
@@ -503,6 +502,14 @@
   &.@{prefix}-table__row--active-multiple {
     .@{prefix}-table__row--active.@{prefix}-table__row--hover {
       background-color: @brand-color-light-hover;
+    }
+  }
+}
+
+.@{prefix}-table.@{prefix}-table__row--active-multiple {
+  tbody > tr {
+    &.@{prefix}-table__row--hover:not(&.@{prefix}-table__row--active) {
+      background-color: @table-highlight-dark-bg-color;
     }
   }
 }
