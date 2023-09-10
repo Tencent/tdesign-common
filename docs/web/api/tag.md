@@ -2,7 +2,7 @@
 title: Tag 标签
 description: 定义：标签常用于标记、分类和选择。
 isComponent: true
-usage: { title: '', description: '' }
+usage: { title: "", description: "" }
 spline: data
 ---
 
@@ -17,6 +17,12 @@ spline: data
 在标签内嵌入图标。适用于用图标来辅助标签分类，或表达标签的属性。
 
 {{ icon }}
+
+### 自定义标签颜色
+
+可根据不同场景自定义标签颜色。
+
+{{ color }}
 
 ### 可删除和添加标签
 

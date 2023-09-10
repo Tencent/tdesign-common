@@ -53,3 +53,9 @@ spline: form
 支持自定义选中项展示，常用于组合 label 和 value 展示。
 
 {{ valuedisplay }}
+
+### 自定义前后缀
+
+支持自定义选择器的前缀、后缀，也可以使用suffixIcon自定义翻转箭头图标。
+
+{{ prefixsuffix }}
