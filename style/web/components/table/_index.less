@@ -510,10 +510,15 @@
   }
 }
 
-.@{prefix}-table.@{prefix}-table__row--active-multiple {
-  tbody > tr {
-    &.@{prefix}-table__row--hover:not(&.@{prefix}-table__row--active) {
-      background-color: @table-highlight-dark-bg-color;
+/** 键盘操作悬浮表格行 */
+.@{prefix}-table {
+  &.@{prefix}-table--row-expandable
+  &.@{prefix}-table--row-select,
+  &.@{prefix}-table__row--active-multiple {
+    tbody > tr {
+      &.@{prefix}-table__row--hover:not(&.@{prefix}-table__row--active) {
+        background-color: @table-highlight-dark-bg-color;
+      }
     }
   }
 }

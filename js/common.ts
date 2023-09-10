@@ -41,3 +41,5 @@ export const ARROW_UP_REG = /ArrowUp/i;
 export const ESCAPE_REG = /Escape/i;
 export const SPACE_REG = /Space/i;
 export const SHIFT_REG = /Shift/i;
+export const CLEAR_REG = /KeyC/i;
+export const ALL_REG = /(KeyA|KeyL)/i;
