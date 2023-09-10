@@ -28,6 +28,13 @@ Simple table with data switched using pagination. Use border lines and zebra str
 
 {{ base }}
 
+### Highlight Row Table
+
+set table property `activeRowType` to allow table row highlight.
+You try it with different keyboards, for example: ArrowUp/ArrowDown/Space/Shift/ESC.
+
+{{ highlight }}
+
 ### Customizable Style Table
 
 - Use the table property `rowClassName` to set the row class name.
