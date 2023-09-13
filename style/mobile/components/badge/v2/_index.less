@@ -89,6 +89,10 @@
     border-radius: calc(@badge-large-height / 2);
   }
 
+  &__content {
+    color: @badge-content-text-color;
+  }
+
   &__content:not(:empty) + .t-has-count {
     transform: translate(50%, -50%);
     position: absolute;
@@ -99,5 +103,6 @@
   &__content-text {
     display: block;
     line-height: 24px;
+    color: @badge-content-text-color;
   }
 }
