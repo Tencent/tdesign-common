@@ -14,10 +14,16 @@
 
   &--bordered {
     position: relative;
-    .border(top, @grid-item-border-color);
+    .border(bottom, @grid-item-border-color);
 
     &::before {
-      .hairline-left(@grid-item-border-color);
+      .hairline-right(@grid-item-border-color);
+    }
+  }
+
+  &--surround {
+    &::before {
+      .hairline(@grid-item-border-color);
     }
   }
 
