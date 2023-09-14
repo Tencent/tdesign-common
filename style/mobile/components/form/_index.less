@@ -3,7 +3,7 @@
 @import "./_var.less";
 
 .@{prefix}-form {
-  background-color: #fff;
+  background-color: @bg-color-container;
 
   .@{prefix}-form__item {
     display: flex;
@@ -30,7 +30,7 @@
     }
 
     &-help {
-      color: @font-gray-4;
+      color: @text-color-disabled;
     }
 
     &--error {
@@ -60,7 +60,7 @@
     padding-right: 16px;
     vertical-align: middle;
     line-height: 24px;
-    color: @font-gray-1;
+    color: @text-color-primary;
     box-sizing: border-box;
     word-break: break-all;
 
