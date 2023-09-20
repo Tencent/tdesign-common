@@ -220,10 +220,12 @@ export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>
 
 export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
 
+export type TypeUpdatedMap = Map<TreeNodeValue, string>;
+
 export interface TypeTreeEventState {
   node?: TreeNode;
   nodes?: TreeNode[];
-  map?: TypeIdMap;
+  map?: TypeUpdatedMap;
   data?: TypeTreeNodeData[];
 }
 

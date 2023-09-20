@@ -7,7 +7,7 @@ import camelCase from 'lodash/camelCase';
 import isPlainObject from 'lodash/isPlainObject';
 import mitt from 'mitt';
 
-import { TreeNode } from './tree-node';
+import { TreeNode, privateKey } from './tree-node';
 import {
   TreeNodeValue,
   TypeIdMap,
@@ -19,6 +19,7 @@ import {
   TypeTreeFilterOptions,
   TypeRelatedNodesOptions,
   TypeTreeEventState,
+  TypeUpdatedMap,
 } from './types';
 
 function nextTick(fn: () => void): Promise<void> {
@@ -72,7 +73,7 @@ export class TreeStore {
   public nodeMap: Map<TreeNodeValue, TreeNode>;
 
   // 节点 私有 ID 映射
-  public privateMap: Map<string, TreeNode>;
+  public privateMap: Map<TreeNodeValue, TreeNode>;
 
   // 配置选项
   public config: TypeTreeStoreOptions;
@@ -81,7 +82,7 @@ export class TreeStore {
   public activedMap: TypeIdMap;
 
   // 数据被更新的节点集合
-  public updatedMap: TypeIdMap;
+  public updatedMap: TypeUpdatedMap;
 
   // 选中节点集合
   public checkedMap: TypeIdMap;
@@ -492,9 +493,17 @@ export class TreeStore {
    * @return void
    */
   public updated(node?: TreeNode): void {
-    if (node?.value) {
-      this.updatedMap.set(node.value, true);
+    const { updatedMap } = this;
+    if (node) {
+      // 传入节点，则为指定节点的更新
+      updatedMap.set(node[privateKey], 'changed');
+    } else {
+      // reflow 流程不传入节点，需要更新所有节点
+      this.getNodes().forEach((itemNode) => {
+        updatedMap.set(itemNode[privateKey], 'changed');
+      });
     }
+
     if (this.updateTick) return;
     this.updateTick = nextTick(() => {
       this.updateTick = null;
@@ -510,28 +519,23 @@ export class TreeStore {
       // 以便于优化锁定检查算法
       this.lockFilterPathNodes();
 
-      const updatedList = Array.from(this.updatedMap.keys());
-      if (updatedList.length > 0) {
-        // 统计需要更新状态的节点，派发更新事件
-        const updatedNodes = updatedList.map((value) => this.getNode(value));
-        this.emit('update', {
-          nodes: updatedNodes,
-          map: this.updatedMap,
-        });
-      } else if (this.shouldReflow) {
-        // 单纯的回流不需要更新节点状态
-        // 但需要触发更新事件
-        // 实际业务中，这个逻辑几乎无法触发，节点操作必然引发 update
-        // 这里代码仅仅用于边界兜底
-        this.emit('update', {
-          nodes: [],
-          map: this.updatedMap,
-        });
-      }
+      // stateId 用于单个节点状态监控
+      const stateId = `t${new Date().getTime()}`;
+      const updatedList = Array.from(updatedMap.keys());
+      const updatedNodes = updatedList.map((nodePrivateKey) => {
+        updatedMap.set(nodePrivateKey, stateId);
+        return this.privateMap.get(nodePrivateKey);
+      });
+
+      // 统计需要更新状态的节点，派发更新事件
+      this.emit('update', {
+        nodes: updatedNodes,
+        map: updatedMap,
+      });
 
       // 每次回流检查完毕，还原检查状态
       this.shouldReflow = false;
-      this.updatedMap.clear();
+      updatedMap.clear();
     });
   }
 
