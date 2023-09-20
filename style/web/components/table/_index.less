@@ -59,6 +59,11 @@
   font: @table-font;
   color: @table--text-color;
   background-color: @table-bg;
+  position: relative;
+
+  &:focus-visible {
+    outline: none;
+  }
 
   /** loading need to be top of fixed columns */
   .@{prefix}-loading--full {
@@ -87,6 +92,10 @@
 
   &__column-controller-trigger {
     padding: @table-controller-trigger-padding;
+  }
+
+  &__column-controller-item:not(:last-child) {
+    margin-bottom: @table-controller-item-margin;
   }
 
   &__content {
@@ -454,6 +463,11 @@
     color: @table-row-disabled-color;
   }
 
+  /** 表格行点击高亮 */
+  .@{prefix}-table__row--active {
+    background-color: @brand-color-light;
+  }
+
   // 复杂表头容器
   .@{prefix}-table__cell--title {
     display: flex;
@@ -480,6 +494,34 @@
     &--fixed {
       .@{prefix}-checkbox {
         width: 108px;
+      }
+    }
+  }
+}
+
+/** 表格行点击高亮悬浮态 */
+.@{prefix}-table.@{prefix}-table--hoverable {
+  .@{prefix}-table__row--active {
+    &:hover {
+      background-color: @brand-color-light-hover;
+    }
+  }
+
+  &.@{prefix}-table__row--active-multiple {
+    .@{prefix}-table__row--active.@{prefix}-table__row--hover {
+      background-color: @brand-color-light-hover;
+    }
+  }
+}
+
+/** 键盘操作悬浮表格行 */
+.@{prefix}-table {
+  &.@{prefix}-table--row-expandable,
+  &.@{prefix}-table--row-select,
+  &.@{prefix}-table__row--active-multiple {
+    tbody > tr {
+      &.@{prefix}-table__row--hover:not(&.@{prefix}-table__row--active) {
+        background-color: @table-highlight-dark-bg-color;
       }
     }
   }

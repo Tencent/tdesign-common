@@ -34,6 +34,13 @@
         }
       }
 
+      .@{prefix}-radio-button {
+        &:last-child {
+          border-right-color: @@borderColor;
+          @borderColor: "input-border-color-@{status}";
+        }
+      }
+
       .@{prefix}-textarea__inner {
         &.@{prefix}-is-focused {
           box-shadow: 0 0 0 2px @@boxShadowColor;
