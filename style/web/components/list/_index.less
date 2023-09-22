@@ -10,11 +10,15 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 .@{prefix}-list {
   .reset;
+  .scrollbar();
 
   overflow: auto;
   color: @list-font-color;
+  background: @list-bg-color-default;
 
   &__inner {
     .list-style-none();
@@ -23,7 +27,6 @@
   &-item {
     font: @list-item-font;
     padding: @list-item-spacer-default;
-    background: @list-bg-color-default;
     display: flex;
     justify-content: space-between;
     align-items: center;
