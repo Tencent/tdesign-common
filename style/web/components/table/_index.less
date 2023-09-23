@@ -463,11 +463,6 @@
     color: @table-row-disabled-color;
   }
 
-  /** 表格行点击高亮 */
-  .@{prefix}-table__row--active {
-    background-color: @brand-color-light;
-  }
-
   // 复杂表头容器
   .@{prefix}-table__cell--title {
     display: flex;
@@ -500,17 +495,18 @@
 }
 
 /** 表格行点击高亮悬浮态 */
-.@{prefix}-table.@{prefix}-table--hoverable {
-  .@{prefix}-table__row--active {
+.@{prefix}-table.@{prefix}-table__row--active-single,
+.@{prefix}-table.@{prefix}-table__row--active-multiple {
+  tbody > tr.@{prefix}-table__row--active {
+    background-color: @brand-color-light;
+
     &:hover {
       background-color: @brand-color-light-hover;
     }
   }
 
-  &.@{prefix}-table__row--active-multiple {
-    .@{prefix}-table__row--active.@{prefix}-table__row--hover {
-      background-color: @brand-color-light-hover;
-    }
+  tbody > tr.@{prefix}-table__row--active.@{prefix}-table__row--hover {
+    background-color: @brand-color-light-hover;
   }
 }
 
@@ -520,7 +516,7 @@
   &.@{prefix}-table--row-select,
   &.@{prefix}-table__row--active-multiple {
     tbody > tr {
-      &.@{prefix}-table__row--hover:not(&.@{prefix}-table__row--active) {
+      &.@{prefix}-table__row--hover {
         background-color: @table-highlight-dark-bg-color;
       }
     }
