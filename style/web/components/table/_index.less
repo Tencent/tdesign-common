@@ -499,14 +499,18 @@
 .@{prefix}-table.@{prefix}-table__row--active-multiple {
   tbody > tr.@{prefix}-table__row--active {
     background-color: @brand-color-light;
-
-    &:hover {
-      background-color: @brand-color-light-hover;
-    }
   }
 
   tbody > tr.@{prefix}-table__row--active.@{prefix}-table__row--hover {
     background-color: @brand-color-light-hover;
+  }
+}
+
+.@{prefix}-table.@{prefix}-table--hoverable {
+  tbody > tr.@{prefix}-table__row--active {
+    &:hover {
+      background-color: @brand-color-light-hover;
+    }
   }
 }
 
