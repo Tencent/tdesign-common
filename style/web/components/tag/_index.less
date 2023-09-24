@@ -252,30 +252,30 @@
   }
 }
 
-.@{prefix}-tag.@{prefix}-check-tag:not(.@{prefix}-tag--disabled) {
+.@{prefix}-tag.@{prefix}-tag--check:not(.@{prefix}-tag--disabled) {
   transition: background-color @anim-duration-base @anim-time-fn-easing;
   cursor: pointer;
 
-  &.@{prefix}-tag--default.@{prefix}-check-tag--unchecked:not(.@{prefix}-tag--outline) {
+  &.@{prefix}-tag--default.@{prefix}-tag--light.@{prefix}-tag--unchecked {
     &:hover {
       background-color: @tag-grey-hover-color;
     }
   }
 
-  &.@{prefix}-tag--primary.@{prefix}-check-tag--checked:not(.@{prefix}-tag--outline) {
+  &.@{prefix}-tag--primary.@{prefix}-tag--dark.@{prefix}-tag--checked {
     &:hover {
       background-color: @tag-default-hover-color;
     }
   }
 
-  &.@{prefix}-tag--outline.@{prefix}-check-tag--unchecked {
+  &.@{prefix}-tag--default.@{prefix}-tag--outline.@{prefix}-tag--unchecked {
     &:hover {
       color: @tag-grey-outline-hover-color;
     }
   }
 }
 
-.@{prefix}-check-tag.@{prefix}-check-tag--disabled.@{prefix}-tag--primary {
+.@{prefix}-tag--check.@{prefix}-tag--disabled.@{prefix}-tag--primary {
   &.@{prefix}-tag--dark {
     background-color: @tag-default-disabled-color;
     cursor: not-allowed;
