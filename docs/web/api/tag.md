@@ -32,7 +32,7 @@ spline: data
 
 ### 可选择标签组
 
-{{ tag-group }}
+{{ check-tag-group }}
 
 ### 超长省略文本标签
 

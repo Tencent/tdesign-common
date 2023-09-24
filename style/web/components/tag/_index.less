@@ -256,7 +256,7 @@
   transition: background-color @anim-duration-base @anim-time-fn-easing;
   cursor: pointer;
 
-  &.@{prefix}-tag--default.@{prefix}-tag--light.@{prefix}-tag--unchecked {
+  &.@{prefix}-tag--default.@{prefix}-tag--dark:not(.@{prefix}-tag--checked) {
     &:hover {
       background-color: @tag-grey-hover-color;
     }
@@ -268,7 +268,7 @@
     }
   }
 
-  &.@{prefix}-tag--default.@{prefix}-tag--outline.@{prefix}-tag--unchecked {
+  &.@{prefix}-tag--default.@{prefix}-tag--outline:not(.@{prefix}-tag--checked) {
     &:hover {
       color: @tag-grey-outline-hover-color;
     }
@@ -286,6 +286,12 @@
     background-color: @tag-grey-outline-disabled-color;
     border-color: @tag-disabled-color;
     cursor: not-allowed;
+  }
+}
+
+.@{prefix}-check-tag-group {
+  .@{prefix}-tag:not(:last-child) {
+    margin-right: @check-tag-margin-left;
   }
 }
 
