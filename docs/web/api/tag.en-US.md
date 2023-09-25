@@ -32,21 +32,21 @@ Tags have two states: selected and unselected. You can switch by clicking on the
 
 ### Selectable TagGroup
 
-{{ tag-group }}
+{{ check-tag-group }}
 
-### 超长省略文本标签
+### Overflow Text Tag
 
 You can set max width of tag with `maxWidth`, overflow text would be ellipsis.
 
 {{ long-text }}
 
-### 不同尺寸的标签
+### Different Sizes of Tags
 
 Available in large, medium (default) and small sizes.
 
 {{ size }}
 
-### 不同形状的标签
+### Different Shapes of Tags
 
 Available in square, round and mark shapes.
 
