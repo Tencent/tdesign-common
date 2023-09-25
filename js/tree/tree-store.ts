@@ -343,10 +343,6 @@ export class TreeStore {
    * @return void
    */
   public reload(list: TypeTreeNodeData[]): void {
-    this.expandedMap.clear();
-    this.checkedMap.clear();
-    this.activedMap.clear();
-    this.filterMap.clear();
     this.removeAll();
     this.append(list);
   }
@@ -826,10 +822,16 @@ export class TreeStore {
    * @return void
    */
   public removeAll(): void {
-    const nodes = this.getNodes();
-    nodes.forEach((node) => {
-      node.remove();
-    });
+    this.expandedMap.clear();
+    this.checkedMap.clear();
+    this.activedMap.clear();
+    this.filterMap.clear();
+    this.nodeMap.clear();
+    this.privateMap.clear();
+    this.updatedMap.clear();
+    this.nodes = [];
+    this.children = [];
+    this.reflow();
   }
 
   /**
