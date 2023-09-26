@@ -10,7 +10,7 @@ jobs:
   preview-success:
     runs-on: ubuntu-latest
     if: >
-      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.event == 'pull_request_target' &&
       github.event.workflow_run.conclusion == 'success'
     steps:
       - name: download _site artifact
@@ -73,7 +73,7 @@ jobs:
   preview-failed:
     runs-on: ubuntu-latest
     if: >
-      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.event == 'pull_request_target' &&
       github.event.workflow_run.conclusion == 'failure'
     steps:
       - name: The job failed
