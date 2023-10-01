@@ -46,7 +46,7 @@
     "babel-jest": "^27.5.1",
     "commitizen": "^4.2.2",
     "commitlint": "^17.0.3",
-    "conventional-changelog-cli": "^2.1.1",
+    "conventional-changelog-cli": "^4.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "dayjs": "^1.11.4",
     "eslint": "^7.4.0",
