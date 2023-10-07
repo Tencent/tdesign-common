@@ -26,6 +26,28 @@ Deletable or addable tags. Adding tags can be combined with input box components
 
 ### Selectable Tags
 
-Tags have two states: selected and unselected. You can switch by clicking on the tag. Similar to the effect of a checkbox.
+Tags have two states: selected and unselected. You can switch by clicking on the tag. Similar to the effect of a checkbox. you can set any theme style checked tag with `checkedProps` and unchecked tag with `uncheckedProps`.
 
 {{ selectable }}
+
+### Selectable TagGroup
+
+{{ check-tag-group }}
+
+### Overflow Text Tag
+
+You can set max width of tag with `maxWidth`, overflow text would be ellipsis.
+
+{{ long-text }}
+
+### Different Sizes of Tags
+
+Available in large, medium (default) and small sizes.
+
+{{ size }}
+
+### Different Shapes of Tags
+
+Available in square, round and mark shapes.
+
+{{ shape }}
