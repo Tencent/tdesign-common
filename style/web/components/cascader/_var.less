@@ -17,6 +17,7 @@
 // 弹出面板不同状态的高度
 @cascader-panel-height-normal: 200px;
 @cascader-panel-height-multiple: 280px;
+@cascader-icon-inner-width: 14px;
 
 // menu面板
 @cascader-menu-segment-color: @component-stroke;
@@ -36,7 +37,7 @@
 @cascader-item-height-l: @comp-size-m;
 @cascader-item-margin-top: @comp-margin-xxs;
 @cascader-item-border-radius: @border-radius-default;
-@cascader-item-padding-with-icon: 0 @comp-paddingLR-s;
+@cascader-item-padding-with-icon: 0 calc(@comp-paddingLR-s + @cascader-icon-inner-width) 0 @comp-paddingLR-s;
 @cascader-item-padding: 0 @comp-paddingLR-s;
 @cascader-item-padding-s: 0px @comp-paddingLR-s;
 @cascader-item-padding-l: 0 @comp-paddingLR-m;
