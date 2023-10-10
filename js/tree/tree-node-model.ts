@@ -262,9 +262,9 @@ export class TreeNodeModel {
     if (!isUndefined(dataValue)) _data.value = dataValue;
     if (!isUndefined(dataLabel)) _data.label = dataLabel;
     if (!isUndefined(dataDisabled)) _data.disable = dataDisabled;
-
     Object.assign(node.data, _data);
     Object.assign(node, _data);
+    node.update();
   }
 }
 

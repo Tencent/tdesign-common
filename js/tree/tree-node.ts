@@ -54,6 +54,9 @@ export class TreeNode {
   // 节点隶属的树实例
   public tree: TreeStore;
 
+  // 节点私有 id，不接受外部传入，确保唯一性
+  public [privateKey]: string;
+
   // 节点 id ，唯一标志
   public value: string;
 
