@@ -9,6 +9,8 @@
 .@{prefix}-anchor {
   .reset;
 
+  --td-anchor-space-base: var(--td-size-6);
+
   position: relative;
   background: @anchor-bg-color;
   width: @anchor-width-default;
@@ -48,15 +50,15 @@
   //锚点item
   &__item {
     padding: @anchor-item-padding;
+
+    --level: 1;
+
+    padding-left: calc(var(--level) * var(--td-anchor-space-base));
     display: flex;
     flex-direction: column;
 
     &.@{prefix}-is-active {
       font-weight: 500;
-    }
-
-    .@{prefix}-anchor__item {
-      padding: @anchor-sub-item-padding;
     }
   }
 
