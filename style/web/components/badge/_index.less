@@ -50,7 +50,6 @@
     padding-left: @badge-padding;
     min-width: @badge-min-width;
     height: @badge-height;
-    border-radius: calc(@badge-height / 2);
     background-color: @badge-color;
     line-height: @badge-height;
 
@@ -63,7 +62,11 @@
     }
   }
 
+  &--circle {
+    border-radius: @badge-shape-circle;
+  }
+
   &--round {
-    border-radius: @border-radius-round;
+    border-radius: @badge-shape-round;
   }
 }
