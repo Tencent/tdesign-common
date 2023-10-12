@@ -67,3 +67,9 @@ spline: navigation
 提供了可拖拽的选项卡。
 
 {{ drag-sort }}
+
+### 懒加载
+
+通过设置 lazy-load，可以激活时渲染
+
+{{ lazy-load }}

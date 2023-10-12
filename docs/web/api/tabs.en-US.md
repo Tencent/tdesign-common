@@ -67,3 +67,9 @@ The disabled status of the TAB is provided.
 Drag-and-drop tabs are provided.
 
 {{ drag-sort }}
+
+### 懒加载
+
+By setting lazy load, rendering can be activated
+
+{{ lazy-load }}
