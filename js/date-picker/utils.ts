@@ -8,6 +8,7 @@ import quarterOfYear from 'dayjs/plugin/quarterOfYear';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import chunk from 'lodash/chunk';
+import { parseToDayjs } from './format';
 
 dayjs.extend(weekOfYear);
 dayjs.extend(weekYear);
@@ -476,7 +477,7 @@ export function isEnabledDate({
 
   // 禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。
   if (Array.isArray(disableDate)) {
-    const formattedDisabledDate = disableDate.map((item: string) => dayjs(item, format));
+    const formattedDisabledDate = disableDate.map((item: string) => parseToDayjs(item, format));
     // eslint-disable-next-line
     const isIncludes = formattedDisabledDate.some(item => item.isSame(dayjs(value)));
     return !isIncludes;
