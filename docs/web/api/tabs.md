@@ -70,6 +70,6 @@ spline: navigation
 
 ### 懒加载
 
-通过设置 lazy-load，可以激活时渲染
+通过设置 lazy-load，可以实现懒加载，只在选中tab时才进行渲染。
 
 {{ lazy-load }}
