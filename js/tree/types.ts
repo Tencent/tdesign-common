@@ -177,9 +177,9 @@ export interface TreeNodeModel<
    * 移除当前节点或当前节点的子节点，值为空则移除当前节点，值存在则移除当前节点的子节点
    */
   remove: (value?: TreeNodeValue) => void;
-  /**
-   * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
-   */
+   /**
+    * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
+    */
   setData: (data: T) => void;
 }
 
@@ -210,7 +210,7 @@ export interface TypeTreeFilterOptions {
 }
 
 export interface TypeTreeNodeData extends TreeNodeState {
-  children?: TypeTreeNodeData[] | boolean;
+  children?: TypeTreeNodeData[];
   [key: string]: any;
 }
 
@@ -220,12 +220,10 @@ export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>
 
 export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
 
-export type TypeUpdatedMap = Map<TreeNodeValue, string>;
-
 export interface TypeTreeEventState {
   node?: TreeNode;
   nodes?: TreeNode[];
-  map?: TypeUpdatedMap;
+  map?: TypeIdMap;
   data?: TypeTreeNodeData[];
 }
 

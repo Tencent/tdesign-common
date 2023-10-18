@@ -17,6 +17,7 @@ import {
 } from './types';
 import {
   createNodeModel,
+  updateNodeModel,
 } from './tree-node-model';
 import log from '../log';
 
@@ -53,9 +54,6 @@ export const privateKey = '__tdesign_id__';
 export class TreeNode {
   // 节点隶属的树实例
   public tree: TreeStore;
-
-  // 节点私有 id，不接受外部传入，确保唯一性
-  public [privateKey]: string;
 
   // 节点 id ，唯一标志
   public value: string;
@@ -1329,6 +1327,7 @@ export class TreeNode {
       model = createNodeModel(this);
       this.model = model;
     }
+    updateNodeModel(model, this);
     return model;
   }
 }
