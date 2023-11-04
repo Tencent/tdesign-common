@@ -106,7 +106,7 @@ export function getFlexGapPolyFill() {
   if (typeof navigator === 'undefined' || !navigator) return false;
   const ua = navigator.userAgent;
   const chromeMatch = ua.match(/AppleWebKit.+Chrome\/(.+) Safari\/.+/i);
-  if (Number(chromeMatch?.[1]?.split('.')[0]) < 180) return true;
+  if (Number(chromeMatch?.[1]?.split('.')[0]) < 100) return true;
   const safariMatch = ua.match(/AppleWebKit.+Version\/(.+) Safari\/.+/i);
   if (Number(safariMatch?.[1]?.split('.')[0]) < 12) return true;
   const ieVersion = getIEVersion();
