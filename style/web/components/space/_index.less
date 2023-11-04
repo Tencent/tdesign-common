@@ -33,3 +33,20 @@
     }
   }
 }
+
+.@{prefix}-space.@{prefix}-space--break-line {
+  flex-wrap: wrap;
+}
+
+.@{prefix}-space {
+  &.@{prefix}-space--polyfill {
+    display: flex;
+    margin-left: calc(-1 * var(--column-gap, 0));
+    margin-top: calc(-1 * var(--row-gap, 0));
+  }
+
+  &.@{prefix}-space--polyfill > * {
+    margin-left: var(--column-gap);
+    margin-top: var(--row-gap);
+  }
+}

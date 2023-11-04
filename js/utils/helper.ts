@@ -95,6 +95,28 @@ export function getIEVersion() {
 }
 
 /**
+ * Safari Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15
+ * FireFox Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/114.0
+ * Chrome Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
+ * Chrome 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.3
+ * 搜狗 Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36 SE 2.X MetaSr 1.
+ * 360 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.9 Safari/537.36 QIHU 360EE
+ */
+export function getFlexGapPolyFill() {
+  if (typeof navigator === 'undefined' || !navigator) return false;
+  const ua = navigator.userAgent;
+  const chromeMatch = ua.match(/AppleWebKit.+Chrome\/(.+) Safari\/.+/i);
+  if (Number(chromeMatch?.[1]?.split('.')[0]) < 180) return true;
+  const safariMatch = ua.match(/AppleWebKit.+Version\/(.+) Safari\/.+/i);
+  if (Number(safariMatch?.[1]?.split('.')[0]) < 12) return true;
+  const ieVersion = getIEVersion();
+  if (ieVersion <= 11) return true;
+  const fireFoxMatch = ua.match(/Firefox\/(.+)/i);
+  if (Number(fireFoxMatch?.[1]?.split('.')[0]) < 100) return true;
+  return false;
+}
+
+/**
  * 计算字符串字符的长度并可以截取字符串。
  * @param str 传入字符串
  * @param maxCharacter 规定最大字符串长度
