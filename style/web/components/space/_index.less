@@ -41,12 +41,25 @@
 .@{prefix}-space {
   &.@{prefix}-space--polyfill {
     display: flex;
-    margin-left: calc(-1 * var(--column-gap, 0));
-    margin-top: calc(-1 * var(--row-gap, 0));
+
+    &.@{prefix}-space-horizontal,
+    &.@{prefix}-space--break-line {
+      margin-left: calc(-1 * var(--column-gap, 0));
+    }
+
+    &.@{prefix}-space-vertical,
+    &.@{prefix}-space--break-line {
+      margin-top: calc(-1 * var(--row-gap, 0));
+    }
   }
 
-  &.@{prefix}-space--polyfill > * {
+  &.@{prefix}-space--polyfill.@{prefix}-space-horizontal > *,
+  &.@{prefix}-space--polyfill.@{prefix}-space--break-line > * {
     margin-left: var(--column-gap);
+  }
+
+  &.@{prefix}-space--polyfill.@{prefix}-space-vertical > *,
+  &.@{prefix}-space--polyfill.@{prefix}-space--break-line > * {
     margin-top: var(--row-gap);
   }
 }
