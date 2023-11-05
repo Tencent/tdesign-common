@@ -76,7 +76,6 @@ export function handleError(options: OnErrorParams) {
     file.status = 'fail';
     file.response = res;
   });
-  
   return { response: res, event, files, XMLHttpRequest };
 }
 
@@ -149,7 +148,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resolve({});
           return;
         }
-        let response = res.response as ResponseType;
+        let response = (res.response || {}) as ResponseType;
         if (isFunction(params.formatResponse)) {
           response = params.formatResponse(response, { file: toUploadFiles[0], currentFiles: toUploadFiles });
           if (response.status === 'success' && !response.files) {
