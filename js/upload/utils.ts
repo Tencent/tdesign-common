@@ -10,11 +10,34 @@ export const FILE_PPT_REGEXP = /(.ppt|.pptx|.key)/i;
 export const VIDEO_REGEXP = /(.avi|.mp4|.wmv|.mpg|.mpeg|.mov|.rm|.ram|.swf|.flv|.rmvb|.flash|.mid|.3gp)/i;
 export const AUDIO_REGEXP = /(.mp2|.mp3|.mp4|.ogg|.3gpp|.ac3|.au)/i;
 
+/**
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+ */
 const INPUT_FILE_MAP = {
   'audio/*': AUDIO_REGEXP,
   'video/*': VIDEO_REGEXP,
   'image/*': IMAGE_ALL_REGEXP,
-  '.doc': /(.doc|.msword)/,
+  '.ico': /image\/vnd.microsoft.icon/i,
+  '.doc': /application\/msword/i,
+  '.docx': /application\/vnd.openxmlformats-officedocument.wordprocessingml.document/i,
+  '.xls': /application\/vnd.ms-excel/i,
+  '.xlsx': /application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet/i,
+  '.ppt': /application\/vnd.ms-powerpoint/i,
+  '.pptx': /application\/vnd.openxmlformats-officedocument.presentationml.presentation/i,
+  '.vsd': /application\/vnd.visio/i,
+  '.txt': /text\/plain/i,
+  '.abw': /application\/x-abiword/i,
+  '.avi': /video\/x-msvideo/i,
+  '.azw': /application\/vnd.amazon.ebook/i,
+  '.bin': /application\/octet-stream/i,
+  '.cda': /application\/x-cdf/i,
+  '.mpkg': /application\/vnd.apple.installer+xml/i,
+  '.odp': /application\/vnd.oasis.opendocument.presentation/i,
+  '.ods': /application\/vnd.oasis.opendocument.spreadsheet/i,
+  '.odt': /application\/vnd.oasis.opendocument.text/i,
+  '.oga': /audio\/ogg/i,
+  '.ogv':/video\/ogg/i,
+  '.ogx':/application\/ogg/i,
 };
 
 /**
