@@ -69,8 +69,8 @@ export function parseToDayjs(
   }
 
   // 兼容数据格式不标准场景 YYYY-MM-D
-  const result = dayjs(dateText, format).isValid()
-    ? dayjs(dateText, format)
+  const result = dayjs(dateText, format, dayjsLocale ?? 'zh-cn').isValid()
+    ? dayjs(dateText, format, dayjsLocale ?? 'zh-cn')
     : dayjs(dateText);
 
   // 兼容数据异常情况
