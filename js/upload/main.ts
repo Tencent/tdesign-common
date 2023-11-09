@@ -151,11 +151,6 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         let response = (res.response || {}) as ResponseType;
         if (isFunction(params.formatResponse)) {
           response = params.formatResponse(response, { file: toUploadFiles[0], currentFiles: toUploadFiles });
-          if (response.status === 'success' && !response.files) {
-            log.error('Upload', 'formatResponse:: upload success `files` are missing');
-          } else if (!response.status) {
-            log.error('Upload', 'formatResponse: return value of `status` is missing');
-          }
         }
         if (res.status === 'fail') {
           response.error = res.error || response.error;
