@@ -6,27 +6,24 @@
 
 .@{statistic-cls} {
   display: inline-block;
-  line-height: @text-line-height-xl;
+  font-size: @font-size-base;
+  line-height: @text-line-height-base;
   color: @statistic-text-color;
 
   &-title {
     font-size: @statistic-title-font-size;
-    font-weight: @statistic-title-font-weight;
     margin-bottom: @statistic-title-margin-bottom;
   }
 
   &-content {
     display: inline-block;
-    line-height: 36px;
-    font-weight: @statistic-value-font-weight;
     color: @statistic-value-text-color;
-    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-    font-family: "TCloud Number";
     text-align: left;
     white-space: nowrap;
 
     &-value {
       font-size: @statistic-value-font-size;
+      line-height: @statistic-value-line-height;
     }
 
     &-unit {
@@ -46,6 +43,9 @@
       align-items: center;
       font-size: @statistic-prefix-font-size;
       margin-right: @statistic-prefix-margin-right;
+      .@{prefix}-icon {
+        font-size: @statistic-prefix-font-size;
+      }
     }
   }
 
