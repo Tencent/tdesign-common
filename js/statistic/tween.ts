@@ -1,6 +1,10 @@
 /**
  * Inspired by https://github.com/PengJiyuan/b-tween
+ * requestAnimationFrame https://caniuse.com/requestanimationframe
+ * TDesign vue 2 need to ensure compatibility with users who are using IE and Vue2, 
+ * it is necessary to use setInterval instead of requestAnimationFrame when the IE browser version is < 10
  */
+import { getIEVersion } from "../utils/helper";
 
 interface TweenSettings {
   from: Record<string, number>;
@@ -11,6 +15,7 @@ interface TweenSettings {
   onUpdate?: (keys: Record<string, number>) => void;
   onFinish?: (keys: Record<string, number>) => void;
 }
+
 const quartOut = (t: number) => 1 - Math.abs((t - 1) ** 4);
 
 export default class Tween {
@@ -19,8 +24,6 @@ export default class Tween {
   private to: Record<string, number>;
 
   private duration: number;
-
-  private delay: number;
 
   private onStart?: (keys: Record<string, number>) => void;
 
@@ -34,21 +37,25 @@ export default class Tween {
 
   private finished: boolean;
 
-  private timer: number | null;
+  private timer: number | NodeJS.Timer | null;
 
   private keys: Record<string, number>;
 
   constructor({
-    from, to, duration = 500, delay = 0, onStart, onUpdate = () => {}, onFinish,
+    from,
+    to,
+    duration = 200,
+    onStart,
+    onUpdate = () => {},
+    onFinish,
   }: TweenSettings) {
     this.from = from;
     this.to = to;
     this.duration = duration;
-    this.delay = delay;
     this.onStart = onStart;
     this.onUpdate = onUpdate;
     this.onFinish = onFinish;
-    this.startTime = Date.now() + delay;
+    this.startTime = Date.now();
     this.started = false;
     this.finished = false;
     this.timer = null;
@@ -74,14 +81,14 @@ export default class Tween {
     this.time = Date.now();
     if (this.time < this.startTime || this.finished) return;
 
-    if (this.elapsed === this.duration) {
+    if (this.elapsed >= this.duration) {
       this.finished = true;
       this.onFinish?.(this.keys);
       return;
     }
-
-    this.elapsed = Math.min(this.time - this.startTime, this.duration);
-    const progress = quartOut(this.elapsed / this.duration);
+    const elapsed = Math.min(this.time - this.startTime, this.duration);
+    this.elapsed = elapsed;
+    const progress = quartOut(elapsed / this.duration);
 
     Object.keys(this.to).forEach((key) => {
       const delta = this.to[key] - this.from[key];
@@ -96,11 +103,23 @@ export default class Tween {
     this.onUpdate(this.keys);
   }
 
-  public start() {
-    this.startTime = Date.now() + this.delay;
+  private polyfillStart() {
+    const elapsed = Date.now() - this.startTime;
+    const interval = quartOut(elapsed / this.duration);
+
+    this.timer = setInterval(() => {
+      this.update();
+      if (this.finished) {
+        clearInterval(this.timer);
+      }
+    }, interval);
+  }
+
+  private normalStart() {
     const tick = () => {
       this.update();
       this.timer = requestAnimationFrame(tick);
+
       if (this.finished) {
         cancelAnimationFrame(this.timer);
         this.timer = null;
@@ -109,8 +128,17 @@ export default class Tween {
     tick();
   }
 
+  public start() {
+    this.startTime = Date.now();
+    // IE < 10
+    if (getIEVersion() > 10) this.polyfillStart();
+    else this.normalStart();
+  }
+
   public stop() {
-    cancelAnimationFrame(this.timer);
+    // IE < 10
+    if (getIEVersion() > 10) clearInterval(this.timer);
+    else cancelAnimationFrame(this.timer as number);
     this.timer = null;
   }
 }
