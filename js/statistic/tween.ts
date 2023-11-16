@@ -1,12 +1,12 @@
 /**
  * Inspired by https://github.com/PengJiyuan/b-tween
  * requestAnimationFrame https://caniuse.com/requestanimationframe
- * TDesign vue 2 need to ensure compatibility with users who are using IE and Vue2, 
- * it is necessary to use setInterval instead of requestAnimationFrame when the IE browser version is < 10
+ * TDesign vue 2 need to ensure compatibility with users who are using IE and Vue2,
+ * it is necessary to use setInterval instead of requestAnimationFrame when the browser version is less than 9
  */
-import { getIEVersion } from "../utils/helper";
+import { getIEVersion } from '../utils/helper';
 
-interface TweenSettings {
+export interface TweenSettings {
   from: Record<string, number>;
   to: Record<string, number>;
   duration?: number;
@@ -110,7 +110,7 @@ export default class Tween {
     this.timer = setInterval(() => {
       this.update();
       if (this.finished) {
-        clearInterval(this.timer);
+        clearInterval(this.timer as number);
       }
     }, interval);
   }
@@ -137,7 +137,7 @@ export default class Tween {
 
   public stop() {
     // IE < 10
-    if (getIEVersion() > 10) clearInterval(this.timer);
+    if (getIEVersion() > 10) clearInterval(this.timer as number);
     else cancelAnimationFrame(this.timer as number);
     this.timer = null;
   }
