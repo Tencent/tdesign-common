@@ -131,13 +131,13 @@ export default class Tween {
   public start() {
     this.startTime = Date.now();
     // IE < 10
-    if (getIEVersion() > 10) this.polyfillStart();
+    if (getIEVersion() < 10) this.polyfillStart();
     else this.normalStart();
   }
 
   public stop() {
     // IE < 10
-    if (getIEVersion() > 10) clearInterval(this.timer as number);
+    if (getIEVersion() < 10) clearInterval(this.timer as number);
     else cancelAnimationFrame(this.timer as number);
     this.timer = null;
   }
