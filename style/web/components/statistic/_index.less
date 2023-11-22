@@ -24,11 +24,13 @@
     &-value {
       font-size: @statistic-value-font-size;
       line-height: @statistic-value-line-height;
+      font-family: @statistic-font-family;
     }
 
     &-unit {
       font-size: @statistic-unit-font-size;
       margin-left: @statistic-unit-margin-left;
+      font-family: @statistic-font-family;
     }
 
     &-suffix {
@@ -51,5 +53,8 @@
 
   &-extra {
     margin-top: @statistic-extra-margin-top;
+    .@{prefix}-space .@{prefix}-space-item {
+      display: flex;
+    }
   }
 }
