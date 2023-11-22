@@ -6,7 +6,8 @@ usage: { title: "", description: "" }
 spline: data
 ---
 
-Statistic 组件用于突出展示某个或某组数字、带描述的统计类数据，如果需要与站点演示一直的数字字体效果，推荐您到 <a href="https://tdesign.tencent.com/design/fonts">数字字体章节</a>，将 TCloudNumber 字体下载并将包含的 TCloudNumberVF.ttf 做为 TCloudNumber 字体资源引入到具体项目中使用。
+Statistic 组件用于突出展示某个或某组数字、带描述的统计类数据。
+如果需要与站点演示一致的数字字体效果，推荐您到 <a href="https://tdesign.tencent.com/design/fonts">数字字体章节</a>，将 TCloudNumber 字体下载并将包含的 TCloudNumberVF.ttf 做为 TCloudNumber 字体资源引入到具体项目中使用。
 
 ### 基础用法
 
