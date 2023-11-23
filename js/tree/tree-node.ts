@@ -1051,6 +1051,11 @@ export class TreeNode {
   ): TreeNodeValue[] {
     const { tree } = this;
     const options = {
+      // 为 true, 为 UI 操作，状态变更受 disabled 影响
+      // 为 false, 为值操作, 状态变更不受 disabled 影响
+      isAction: true,
+      // 为 true, 直接操作节点状态
+      // 为 false, 返回预期状态
       directly: false,
       ...opts,
     };
@@ -1058,6 +1063,10 @@ export class TreeNode {
     let map = tree.activedMap;
     if (!options.directly) {
       map = new Map(tree.activedMap);
+    }
+    if (options.isAction && this.isDisabled()) {
+      // 对于 UI 动作，禁用时不可切换激活状态
+      return tree.getActived(map);
     }
     if (this.isActivable()) {
       if (actived) {
@@ -1105,8 +1114,8 @@ export class TreeNode {
     const { tree } = this;
     const config = tree.config || {};
     const options: TypeSettingOptions = {
-      // 为 true, 为 UI 操作，状态扩散受 disabled 影响
-      // 为 false, 为值操作, 状态扩散不受 disabled 影响
+      // 为 true, 为 UI 操作，状态变更受 disabled 影响
+      // 为 false, 为值操作, 状态变更不受 disabled 影响
       isAction: true,
       // 为 true, 直接操作节点状态
       // 为 false, 返回预期状态

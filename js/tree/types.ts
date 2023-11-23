@@ -112,6 +112,10 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
    * 当前节点是否处于加载中状态
    */
   loading: boolean;
+  /**
+   * 当前节点是否被禁用
+   */
+  disabled: boolean;
 }
 
 export interface TreeNodeModel<
