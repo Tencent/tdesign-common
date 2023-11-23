@@ -143,7 +143,7 @@ export class TreeNode {
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
-    const propsDisabled = keys.disabled || 'disabled';
+    const propDisabled = keys.disabled || 'disabled';
 
     // 节点自身初始化数据
     this.model = null;
@@ -195,7 +195,7 @@ export class TreeNode {
     // 设置标签
     this.label = get(data, propLabel) || '';
     // 设置是否禁用
-    this.disabled = get(data, propsDisabled);
+    this.disabled = get(data, propDisabled) || false;
 
     // 设置子节点
     const children = data[propChildren];
@@ -551,7 +551,12 @@ export class TreeNode {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (hasOwnProperty.call(setableStatus, key) || key === 'label' || key === 'disabled') {
+      // key, disabled 字段可被 tree.config.keys 定义
+      if (
+        hasOwnProperty.call(setableStatus, key)
+        || key === 'label'
+        || key === 'disabled'
+      ) {
         this[key] = item[key];
       }
     });
@@ -729,21 +734,39 @@ export class TreeNode {
   }
 
   /**
+   * 判断节点为逻辑禁用状态
+   * @return boolean 是否被禁用
+   */
+  public isDisabledState(): boolean {
+    const { tree, parent } = this;
+    const { config } = tree;
+    const { disabled } = config;
+    let state = disabled || false;
+    if (this.disabled) {
+      // 整个树被禁用，则节点为禁用状态
+      state = true;
+    }
+    if (parent?.isDisabledState()) {
+      // 父节点被禁用，则子节点也为禁用状态
+      state = true;
+    }
+    return state;
+  }
+
+  /**
    * 判断节点是否被禁用
    * @return boolean 是否被禁用
    */
   public isDisabled(): boolean {
     const { tree } = this;
     const { hasFilter, config } = tree;
-    const { disabled, allowFoldNodeOnFilter } = config;
+    const { allowFoldNodeOnFilter } = config;
     if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) {
+      // 当前树存在过滤条件，允许节点过滤后被折叠，当前节点为锁定节点，并且不是筛选后剩下的节点
+      // 则该节点应当呈现禁用状态
       return true;
     }
-    let state = disabled;
-    if (typeof this.disabled === 'boolean') {
-      state = this.disabled;
-    }
-    return state;
+    return this.isDisabledState();
   }
 
   /**

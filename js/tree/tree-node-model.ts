@@ -258,6 +258,8 @@ export class TreeNodeModel {
    */
   public setData(data: OptionData) {
     const node = this[nodeKey];
+    // syncAttrs 列举的属性，key 名称可被 tree.config.keys 定义
+    // 因此同步状态时需要读取被定义的 key 名称
     // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
     const syncAttrs = [
       'value',
@@ -267,8 +269,8 @@ export class TreeNodeModel {
     const cleanData = omit(data, ['children', ...syncAttrs]);
     const { keys } = node.tree.config;
     syncAttrs.forEach((attr: string) => {
-      const dataAttr = get(data, keys?.[attr] || attr);
-      if (!isUndefined(dataAttr)) cleanData[attr] = dataAttr;
+      const dataAttrValue = get(data, keys?.[attr] || attr);
+      if (!isUndefined(dataAttrValue)) cleanData[attr] = dataAttrValue;
     });
     Object.assign(node.data, cleanData);
     Object.assign(node, cleanData);
