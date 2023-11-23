@@ -6,6 +6,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 .@{prefix}-tag-input {
   .reset;
 
@@ -80,7 +82,10 @@
     }
   }
   .@{prefix}-input__prefix--scrollable {
-    overflow: scroll;
+    .scrollbar();
+
+    overflow-y: hidden;
+    overflow-x: auto;
   }
 }
 
