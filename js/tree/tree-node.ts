@@ -740,21 +740,25 @@ export class TreeNode {
   public isDisabledState(): boolean {
     const { tree, parent } = this;
     const { config } = tree;
-    const { disabled, disableCheck } = config;
+    const { disabled, disableCheck, checkStrictly } = config;
     let state = disabled || false;
     if (this.disabled) {
       // 整个树被禁用，则节点为禁用状态
       state = true;
     }
-    if (parent?.isDisabledState()) {
+    if (!checkStrictly && parent?.isDisabledState()) {
+      // 如果 checkStrictly 为 false
       // 父节点被禁用，则子节点也为禁用状态
       state = true;
     }
-    if (typeof disableCheck === 'boolean' && disableCheck) {
-      state = true;
-    }
-    if (typeof disableCheck === 'function' && disableCheck(this.getModel())) {
-      state = true;
+    if (typeof disableCheck === 'boolean') {
+      if (disableCheck) {
+        state = true;
+      }
+    } else if (typeof disableCheck === 'function') {
+      if (disableCheck(this.getModel())) {
+        state = true;
+      }
     }
     return state;
   }
