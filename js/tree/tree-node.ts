@@ -740,7 +740,7 @@ export class TreeNode {
   public isDisabledState(): boolean {
     const { tree, parent } = this;
     const { config } = tree;
-    const { disabled } = config;
+    const { disabled, disableCheck } = config;
     let state = disabled || false;
     if (this.disabled) {
       // 整个树被禁用，则节点为禁用状态
@@ -748,6 +748,12 @@ export class TreeNode {
     }
     if (parent?.isDisabledState()) {
       // 父节点被禁用，则子节点也为禁用状态
+      state = true;
+    }
+    if (typeof disableCheck === 'boolean' && disableCheck) {
+      state = true;
+    }
+    if (typeof disableCheck === 'function' && disableCheck(this.getModel())) {
       state = true;
     }
     return state;
@@ -861,7 +867,9 @@ export class TreeNode {
       return true;
     }
     // 严格模式，则已经可以判定选中状态
-    if (checkStrictly) return checked;
+    if (checkStrictly) {
+      return checkedMap.get(value);
+    }
     // 允许关联状态的情况下，需要进一步判断
     if (Array.isArray(children) && children.length > 0) {
       // 子节点全部选中，则当前节点选中
@@ -1087,7 +1095,7 @@ export class TreeNode {
     if (!options.directly) {
       map = new Map(tree.activedMap);
     }
-    if (options.isAction && this.isDisabled()) {
+    if (options.isAction && this.isDisabledState()) {
       // 对于 UI 动作，禁用时不可切换激活状态
       return tree.getActived(map);
     }
@@ -1153,7 +1161,7 @@ export class TreeNode {
       // 当前节点非可选节点，则不可设置选中态
       return tree.getChecked(map);
     }
-    if (options.isAction && this.isDisabled()) {
+    if (options.isAction && this.isDisabledState()) {
       // 对于 UI 动作，禁用时不可切换选中态
       return tree.getChecked(map);
     }
@@ -1235,13 +1243,16 @@ export class TreeNode {
     // 碰到不可选节点，中断扩散
     if (!this.isCheckable()) return;
     // 对于 UI 动作操作，节点禁用，中断扩散
-    if (options.isAction && this.isDisabled()) return;
+    if (options.isAction && this.isDisabledState()) return;
 
     const { children } = this;
     if (!Array.isArray(children)) return;
+    if (children.length <= 0) return;
+    // 有子节点，则选中态由子节点选中态集合来决定
+    map.delete(this.value);
     children.forEach((node) => {
       // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
-      if (options.isAction && node.isDisabled()) return;
+      if (options.isAction && node.isDisabledState()) return;
       if (checked) {
         map.set(node.value, true);
       } else {
