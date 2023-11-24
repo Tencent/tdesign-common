@@ -36,12 +36,12 @@ export enum EKeyboardDirection {
   down = 40,
 }
 
-export const ARROW_DOWN_REG = /ArrowDown/i;
-export const ARROW_UP_REG = /ArrowUp/i;
-export const ESCAPE_REG = /Escape/i;
-export const SPACE_REG = /Space/i;
-export const ENTER_REG = /Enter/i;
-export const SHIFT_REG = /Shift/i;
-export const CLEAR_REG = /KeyC/i;
-export const ALL_REG = /(KeyA|KeyL)/i;
+export const ARROW_DOWN_REG = /^ArrowDown$/i;
+export const ARROW_UP_REG = /^ArrowUp$/i;
+export const ESCAPE_REG = /^Escape$/i;
+export const SPACE_REG = /^Space$/i;
+export const ENTER_REG = /^Enter$/i;
+export const SHIFT_REG = /^Shift$/i;
+export const CLEAR_REG = /^KeyC$/i;
+export const ALL_REG = /^(KeyA|KeyL)$/i;
 export const CHECKED_CODE_REG = /^(Enter|Space)$/i;
