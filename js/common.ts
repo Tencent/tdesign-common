@@ -44,3 +44,4 @@ export const ENTER_REG = /^Enter$/i;
 export const SHIFT_REG = /^Shift$/i;
 export const CLEAR_REG = /^KeyC$/i;
 export const ALL_REG = /^(KeyA|KeyL)$/i;
+export const CHECKED_CODE_REG = /^(Enter|Space)$/i;
