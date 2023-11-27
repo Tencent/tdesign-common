@@ -734,7 +734,7 @@ export class TreeNode {
   }
 
   /**
-   * 判断节点为逻辑禁用状态
+   * 判断节点为逻辑禁用状态，不包含过滤锁定状态
    * @return boolean 是否被禁用
    */
   public isDisabledState(): boolean {
@@ -756,6 +756,7 @@ export class TreeNode {
         state = true;
       }
     } else if (typeof disableCheck === 'function') {
+      // disableCheck 视为禁用节点的过滤函数
       if (disableCheck(this.getModel())) {
         state = true;
       }
@@ -764,7 +765,7 @@ export class TreeNode {
   }
 
   /**
-   * 判断节点是否被禁用
+   * 判断节点是否呈现为禁用态，包含过滤锁定状态
    * @return boolean 是否被禁用
    */
   public isDisabled(): boolean {
@@ -1123,12 +1124,52 @@ export class TreeNode {
   }
 
   /**
+   * 是否存在未选中的未禁用子节点
+   * @return boolean 未选中的未禁用子节点存在与否
+   */
+  public hasEnableUnCheckedChild(): boolean {
+    const { children } = this;
+    if (!Array.isArray(children) || children.length <= 0) {
+      // 没有子节点
+      return false;
+    }
+    let state = false;
+    children.some((child) => {
+      // 不理会禁用节点
+      if (child.isDisabledState()) return false;
+      // 不理会选中节点
+      if (child.isChecked()) return false;
+      if (child.isIndeterminate()) {
+        // 为半选节点则进行递归检查
+        if (child.hasEnableUnCheckedChild()) {
+          state = true;
+          return true;
+        }
+        // 都尽可能选中了，则检查之后的节点
+        return false;
+      }
+      // 子节点为未选中状态，且非半选状态
+      // 则直接返回 true
+      state = true;
+      return true;
+    });
+    return state;
+  }
+
+  /**
    * 切换节点选中状态
    * - 用于受控逻辑处理
    * - 仅返回预期状态值数组，不直接操作状态
    * @return string[] 当前树选中的节点值数组
    */
   public toggleChecked(): TreeNodeValue[] {
+    if (this.isIndeterminate()) {
+      // 当前节点为半选情况下需要判断子节点是否尽可能全部选中
+      // 存在可操作的未选中的子节点，则应当尽可能选中子节点
+      // 不存在可操作的未选中的子节点，则应取消选中子节点
+      const expectState = this.hasEnableUnCheckedChild();
+      return this.setChecked(expectState);
+    }
     return this.setChecked(!this.isChecked());
   }
 
@@ -1169,9 +1210,13 @@ export class TreeNode {
       // 对于 UI 动作，禁用时不可切换选中态
       return tree.getChecked(map);
     }
+
     if (checked === this.isChecked()) {
-      // 值没有变更，则选中态无变化
-      return tree.getChecked(map);
+      const shouldSet = this.isIndeterminate() && !this.hasEnableUnCheckedChild();
+      if (!shouldSet) {
+        // 值没有变更, 则选中态无变化
+        return tree.getChecked(map);
+      }
     }
 
     if (checked) {
