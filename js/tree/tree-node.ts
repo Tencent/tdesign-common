@@ -1315,7 +1315,7 @@ export class TreeNode {
    * 设置节点禁用状态
    * @return void
    */
-  private setDisabled(disabled: boolean) {
+  public setDisabled(disabled: boolean) {
     this.disabled = disabled;
     this.update();
     this.updateChildren();
