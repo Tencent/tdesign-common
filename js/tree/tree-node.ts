@@ -14,6 +14,7 @@ import {
   TypeSettingOptions,
   TypeTreeNodeModel,
   TypeTreeNodeData,
+  TypeFnOperation,
 } from './types';
 import {
   createNodeModel,
@@ -552,12 +553,11 @@ export class TreeNode {
     const keys = Object.keys(item);
     keys.forEach((key) => {
       // key, disabled 字段可被 tree.config.keys 定义
-      if (
-        hasOwnProperty.call(setableStatus, key)
-        || key === 'label'
-        || key === 'disabled'
-      ) {
+      if (hasOwnProperty.call(setableStatus, key) || key === 'label') {
         this[key] = item[key];
+      }
+      if (key === 'disabled') {
+        this.setDisabled(item[key]);
       }
     });
     tree.updated(this);
@@ -873,7 +873,7 @@ export class TreeNode {
     }
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) {
-      return checkedMap.get(value);
+      return !!checkedMap.get(value);
     }
     // 允许关联状态的情况下，需要进一步判断
     if (Array.isArray(children) && children.length > 0) {
@@ -1311,6 +1311,16 @@ export class TreeNode {
     });
   }
 
+  /**
+   * 设置节点禁用状态
+   * @return void
+   */
+  private setDisabled(disabled: boolean) {
+    this.disabled = disabled;
+    this.update();
+    this.updateChildren();
+  }
+
   /* ------ 节点状态更新 ------ */
 
   /**
@@ -1351,14 +1361,11 @@ export class TreeNode {
    * @return void
    */
   public updateChildren(): void {
-    const { children } = this;
-    if (Array.isArray(children)) {
-      children.forEach((node) => {
-        node.update();
-        node.updateChecked();
-        node.updateChildren();
-      });
-    }
+    this.spreadChildren((node) => {
+      if (node === this) return;
+      node.update();
+      node.updateChecked();
+    });
   }
 
   /**
@@ -1367,12 +1374,11 @@ export class TreeNode {
    * @return void
    */
   public updateParents(): void {
-    const { parent } = this;
-    if (parent) {
-      parent.update();
-      parent.updateChecked();
-      parent.updateParents();
-    }
+    this.spreadParents((node: TreeNode) => {
+      if (node === this) return;
+      node.update();
+      node.updateChecked();
+    });
   }
 
   /**
@@ -1397,15 +1403,38 @@ export class TreeNode {
    * @return TreeNode[] 遍历结果节点数组
    */
   public walk(): TreeNode[] {
+    const list: TreeNode[] = [];
+    this.spreadChildren((node: TreeNode) => {
+      list.push(node);
+    });
+    return list;
+  }
+
+  /**
+   * 向下遍历操作
+   * - 包含自己
+   * @return void
+   */
+  private spreadChildren(fn: TypeFnOperation) {
+    fn(this);
     const { children } = this;
-    let list: TreeNode[] = [];
-    list.push(this);
     if (Array.isArray(children) && children.length > 0) {
       children.forEach((node) => {
-        list = list.concat(node.walk());
+        node?.spreadChildren(fn);
       });
     }
-    return list;
+  }
+
+  /**
+   * 向上遍历操作
+   * - 包含自己
+   * @return void
+   */
+  private spreadParents(fn: TypeFnOperation) {
+    fn(this);
+    const { parent } = this;
+    if (!parent) return;
+    parent?.spreadParents(fn);
   }
 
   /**

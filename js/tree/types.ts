@@ -226,6 +226,8 @@ export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
 
 export type TypeUpdatedMap = Map<TreeNodeValue, string>;
 
+export type TypeFnOperation = (node: TreeNode) => void;
+
 export interface TypeTreeEventState {
   node?: TreeNode;
   nodes?: TreeNode[];
