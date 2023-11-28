@@ -379,5 +379,72 @@ describe('tree:disabled', () => {
       expect(t1d2.checked).toBe(false);
       expect(t1d3.checked).toBe(false);
     });
+
+    it('被禁用子节点选中态不一致，父节点操作时，子节点选中态也可以得到变更', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }, {
+          value: 't1.3',
+        }, {
+          value: 't1.4',
+        }],
+      }]);
+
+      const t1 = tree.getNode('t1');
+      const t1d1 = tree.getNode('t1.1');
+      const t1d2 = tree.getNode('t1.2');
+      const t1d3 = tree.getNode('t1.3');
+      const t1d4 = tree.getNode('t1.4');
+
+      t1d1.setChecked(true, {
+        directly: true,
+      });
+      t1d1.setDisabled(true);
+      t1d2.setDisabled(true);
+      expect(t1.isDisabled()).toBe(false);
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.isDisabled()).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.isDisabled()).toBe(true);
+      expect(t1d2.checked).toBe(false);
+
+      t1d3.setChecked(true, {
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d3.checked).toBe(true);
+      expect(t1d4.checked).toBe(false);
+
+      t1.toggleChecked({
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d3.checked).toBe(true);
+      expect(t1d4.checked).toBe(true);
+
+      t1.toggleChecked({
+        directly: true,
+      });
+      expect(t1.checked).toBe(false);
+      expect(t1.indeterminate).toBe(true);
+      expect(t1d1.checked).toBe(true);
+      expect(t1d2.checked).toBe(false);
+      expect(t1d3.checked).toBe(false);
+      expect(t1d4.checked).toBe(false);
+    });
   });
 });
