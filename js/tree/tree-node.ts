@@ -991,8 +991,8 @@ export class TreeNode {
    * - 仅返回预期状态值数组，不直接操作状态
    * @return string[] 当前树展开的节点值数组
    */
-  public toggleExpanded(): TreeNodeValue[] {
-    return this.setExpanded(!this.isExpanded());
+  public toggleExpanded(opts?: TypeSettingOptions): TreeNodeValue[] {
+    return this.setExpanded(!this.isExpanded(), opts);
   }
 
   /**
@@ -1070,8 +1070,8 @@ export class TreeNode {
    * - 仅返回预期状态值数组，不直接操作状态
    * @return string[] 当前树激活的节点值数组
    */
-  public toggleActived(): TreeNodeValue[] {
-    return this.setActived(!this.isActived());
+  public toggleActived(opts?: TypeSettingOptions): TreeNodeValue[] {
+    return this.setActived(!this.isActived(), opts);
   }
 
   /**
@@ -1162,15 +1162,15 @@ export class TreeNode {
    * - 仅返回预期状态值数组，不直接操作状态
    * @return string[] 当前树选中的节点值数组
    */
-  public toggleChecked(): TreeNodeValue[] {
+  public toggleChecked(opts?: TypeSettingOptions): TreeNodeValue[] {
     if (this.isIndeterminate()) {
       // 当前节点为半选情况下需要判断子节点是否尽可能全部选中
       // 存在可操作的未选中的子节点，则应当尽可能选中子节点
       // 不存在可操作的未选中的子节点，则应取消选中子节点
       const expectState = this.hasEnableUnCheckedChild();
-      return this.setChecked(expectState);
+      return this.setChecked(expectState, opts);
     }
-    return this.setChecked(!this.isChecked());
+    return this.setChecked(!this.isChecked(), opts);
   }
 
   /**
