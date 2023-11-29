@@ -14,6 +14,7 @@ import {
   TypeSettingOptions,
   TypeTreeNodeModel,
   TypeTreeNodeData,
+  TypeTreeStoreOptions,
 } from './types';
 import {
   createNodeModel,
@@ -518,7 +519,7 @@ export class TreeNode {
    * @return Promise<void>
    */
   private async loadChildren(): Promise<void> {
-    const config = get(this, 'tree.config') || {};
+    const config: TypeTreeStoreOptions = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
       if (isFunction(config.load)) {
         this.loading = true;
