@@ -61,6 +61,11 @@ export class TreeNodeModel {
     return node.loading;
   }
 
+  public get disabled() {
+    const node = this[nodeKey];
+    return node.isDisabled();
+  }
+
   /**
    * 获取节点所处层级
    * @return number 节点层级序号
@@ -253,17 +258,22 @@ export class TreeNodeModel {
    */
   public setData(data: OptionData) {
     const node = this[nodeKey];
+    // syncAttrs 列举的属性，key 名称可被 tree.config.keys 定义
+    // 因此同步状态时需要读取被定义的 key 名称
     // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
-    const _data = omit(data, ['children', 'value', 'label', 'disabled']);
+    const syncAttrs = [
+      'value',
+      'label',
+      'disabled',
+    ];
+    const cleanData = omit(data, ['children', ...syncAttrs]);
     const { keys } = node.tree.config;
-    const dataValue = get(data, keys?.value || 'value');
-    const dataLabel = get(data, keys?.label || 'label');
-    const dataDisabled = get(data, keys?.disabled || 'disabled');
-    if (!isUndefined(dataValue)) _data.value = dataValue;
-    if (!isUndefined(dataLabel)) _data.label = dataLabel;
-    if (!isUndefined(dataDisabled)) _data.disable = dataDisabled;
-    Object.assign(node.data, _data);
-    Object.assign(node, _data);
+    syncAttrs.forEach((attr: string) => {
+      const dataAttrValue = get(data, keys?.[attr] || attr);
+      if (!isUndefined(dataAttrValue)) cleanData[attr] = dataAttrValue;
+    });
+    Object.assign(node.data, cleanData);
+    Object.assign(node, cleanData);
     node.update();
   }
 }

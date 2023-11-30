@@ -52,6 +52,7 @@ function nextTick(fn: () => void): Promise<void> {
  * @param {boolean} [options.checkable=false] 节点是否可选中
  * @param {boolean} [options.checkStrictly=false] 节点选中是否使用严格模式
  * @param {boolean} [options.disabled=false] 节点是否禁用
+ * @param {boolean|function} [options.disableCheck=false] 节点被禁用的条件
  * @param {boolean} [options.draggable=false] 节点是否可拖动
  * @param {function} [options.load=null] 节点延迟加载函数
  * @param {boolean} [options.lazy=false] 节点是否使用延迟加载模式
@@ -121,6 +122,7 @@ export class TreeStore {
       checkable: false,
       checkStrictly: false,
       disabled: false,
+      disableCheck: false,
       draggable: false,
       load: null,
       lazy: false,

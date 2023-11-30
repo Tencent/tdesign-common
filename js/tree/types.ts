@@ -112,6 +112,10 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
    * 当前节点是否处于加载中状态
    */
   loading: boolean;
+  /**
+   * 当前节点是否被禁用
+   */
+  disabled: boolean;
 }
 
 export interface TreeNodeModel<
@@ -222,6 +226,8 @@ export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
 
 export type TypeUpdatedMap = Map<TreeNodeValue, string>;
 
+export type TypeFnOperation = (node: TreeNode) => void;
+
 export interface TypeTreeEventState {
   node?: TreeNode;
   nodes?: TreeNode[];
@@ -253,6 +259,8 @@ export interface TypeTreeStoreOptions {
   checkStrictly?: boolean;
   // 禁用整个树
   disabled?: boolean;
+  // 指定节点禁用条件
+  disableCheck?: boolean | TypeTreeFilter;
   // 节点是否可拖动
   draggable?: boolean,
   // 节点加载函数
@@ -263,7 +271,7 @@ export interface TypeTreeStoreOptions {
   valueMode?: TypeValueMode;
   // 节点过滤函数
   // filter?: (node: TreeNode) => boolean;
-  filter?: (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
+  filter?: TypeTreeFilter;
   // load函数运行后触发
   onLoad?: Function;
   // 节点增删改查后触发
