@@ -253,7 +253,18 @@ function updateUploadedFiles(uploadFiles: UploadFile[], resultFiles: UploadFile[
       (item.raw && item.raw === file.raw) || (item.name && item.name === file.name)
     ));
     const tmpFile = index >= 0 ? { ...uploadFiles[index], ...file } : file;
+    if (uploadFiles[index]) {
+      uploadFiles[index].status = tmpFile.status;
+      uploadFiles[index].percent = tmpFile.percent;
+    } else {
+      log.error('Upload', 'some files upload failed');
+    }
     newFiles.push(tmpFile);
+  }
+  for (let i = 0, len = uploadFiles.length; i < len; i++) {
+    if (uploadFiles[i].status !== 'success') {
+      uploadFiles[i].status = 'fail';
+    }
   }
   return newFiles;
 }
@@ -273,12 +284,13 @@ Promise<UploadRequestReturn> {
     // 所有文件一次性上传
     if (uploadAllFilesInOneRequest || !params.multiple) {
       uploadOneRequest(params).then((r) => {
+        let files = r.data?.files || r.data?.response?.files || [];
         if (r.status === 'success') {
-          r.data.files = isBatchUpload || !params.multiple
-            ? r.data.files
-            : updateUploadedFiles(uploadedFiles, r.data.files);
+          files = isBatchUpload || !params.multiple
+            ? files
+            : updateUploadedFiles(uploadedFiles, files);
         }
-        const failedFiles = r.status === 'fail' ? r.data.files : [];
+        const failedFiles = r.status === 'fail' ? files : [];
         resolve({ ...r, failedFiles });
       });
       return;
