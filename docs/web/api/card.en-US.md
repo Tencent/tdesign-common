@@ -73,3 +73,7 @@ A card with a main title, subtitle, or title description.
 #### A card with both a main subtitle and a title description
 
 {{ header-all-props }}
+
+#### A custom loadingProps card
+
+{{ custom-loading-props }}
