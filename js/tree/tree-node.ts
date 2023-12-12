@@ -222,10 +222,10 @@ export class TreeNode {
       }
     });
 
-    // 初始化节点状态
+    // 初始化节点激活状态
     this.initActived();
+    // 展开状态影响了子节点的显示状态，所以要在子节点插入之前初始化展开状态
     this.initExpanded();
-    this.initChecked();
 
     // 这里的子节点加载逻辑不能放到状态初始化之前
     // 因为子节点状态计算依赖父节点初始化状态
@@ -235,8 +235,9 @@ export class TreeNode {
       this.loadChildren();
     }
 
-    // checked 状态依赖于子节点状态
-    // 因此子节点插入之后需要再次更新状态
+    // 节点的选中状态同时依赖于子节点状态与父节点状态
+    // 因此在子节点插入之后再更新选中状态
+    this.initChecked();
     this.updateChecked();
 
     // 标记节点更新
@@ -258,10 +259,12 @@ export class TreeNode {
     if (this.checked) {
       checkedMap.set(value, true);
     }
-    if (!checkStrictly && parent?.isChecked()) {
+    // 这里不可以使用 parent.isChecked 方法
+    // 因为当前节点创建时尚未插入父节点的 children 数组，可能父节点选中态仅受到之前子节点状态的影响
+    // 这会导致父节点状态计算错误，进而引发子节点变更了选中状态
+    if (!checkStrictly && parent?.checked) {
       checkedMap.set(value, true);
     }
-    this.updateChecked();
   }
 
   /**
