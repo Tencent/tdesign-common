@@ -80,7 +80,7 @@ You can use `DatePickerPanel` and `DateRangePickerPanel` separately. You can ass
 
 ### An unbounded date range selector。
 
-{{ disable-range-limit }}
+{{ cancel-range-limit }}
 
 ## FAQ
 
