@@ -204,7 +204,7 @@ export interface OptionsType {
   dayjsLocale?: string;
   monthLocal?: string[];
   quarterLocal?: string[];
-  disableDateSelectLimit?: boolean;
+  cancelRangeSelectLimit?: boolean;
 }
 
 export function getWeeks(
@@ -216,7 +216,7 @@ export function getWeeks(
     minDate,
     maxDate,
     dayjsLocale = 'zh-cn',
-    disableDateSelectLimit = false,
+    cancelRangeSelectLimit = false,
   }: OptionsType,
 ) {
   const prependDay = getFirstDayOfMonth({ year, month });
@@ -232,7 +232,7 @@ export function getWeeks(
       active: false,
       value: currentDay,
       disabled: (isFunction(disableDate) && disableDate(currentDay))
-        || (!disableDateSelectLimit && outOfRanges(currentDay, minDate, maxDate)),
+        || (!cancelRangeSelectLimit && outOfRanges(currentDay, minDate, maxDate)),
       now: isSame(today, currentDay),
       firstDayOfMonth: i === 1,
       lastDayOfMonth: i === maxDays,
@@ -248,7 +248,7 @@ export function getWeeks(
         text: prependDay.getDate().toString(),
         active: false,
         value: new Date(prependDay),
-        disabled: (isFunction(disableDate) && disableDate(prependDay)) || (!disableDateSelectLimit && outOfRanges(prependDay, minDate, maxDate)),
+        disabled: (isFunction(disableDate) && disableDate(prependDay)) || (!cancelRangeSelectLimit && outOfRanges(prependDay, minDate, maxDate)),
         additional: true, // 非当前月
         type: 'prev-month',
         dayjsObj: dayjs(prependDay).locale(dayjsLocale),
@@ -265,7 +265,7 @@ export function getWeeks(
       text: appendDay.getDate(),
       active: false,
       value: new Date(appendDay),
-      disabled: (isFunction(disableDate) && disableDate(appendDay)) || (!disableDateSelectLimit && outOfRanges(appendDay, minDate, maxDate)),
+      disabled: (isFunction(disableDate) && disableDate(appendDay)) || (!cancelRangeSelectLimit && outOfRanges(appendDay, minDate, maxDate)),
       additional: true, // 非当前月
       type: 'next-month',
       dayjsObj: dayjs(appendDay).locale(dayjsLocale),
@@ -297,7 +297,7 @@ export function getQuarters(
     maxDate,
     quarterLocal,
     dayjsLocale = 'zh-cn',
-    disableDateSelectLimit = false,
+    cancelRangeSelectLimit = false,
   }: OptionsType,
 ) {
   const quarterArr = [];
@@ -309,7 +309,7 @@ export function getQuarters(
     quarterArr.push({
       value: date,
       now: isSame(date, today, 'quarter'),
-      disabled: (isFunction(disableDate) && disableDate(date)) || (!disableDateSelectLimit && outOfRanges(date, minDate, maxDate)),
+      disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: quarterLocal[i - 1],
       dayjsObj: dayjs(date).locale(dayjsLocale),
@@ -326,7 +326,7 @@ export function getYears(
     minDate,
     maxDate,
     dayjsLocale = 'zh-cn',
-    disableDateSelectLimit = false,
+    cancelRangeSelectLimit = false,
   }: OptionsType,
 ) {
   const startYear = parseInt((year / 10).toString(), 10) * 10;
@@ -342,7 +342,7 @@ export function getYears(
     yearArr.push({
       value: date,
       now: isSame(date, today, 'year'),
-      disabled: (isFunction(disableDate) && disableDate(date)) || (!disableDateSelectLimit && outOfRanges(date, minDate, maxDate)),
+      disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: `${date.getFullYear()}`,
       dayjsObj: dayjs(date).locale(dayjsLocale),
@@ -354,7 +354,7 @@ export function getYears(
 
 export function getMonths(year: number, params: OptionsType) {
   const {
-    disableDate = () => false, minDate, maxDate, monthLocal, dayjsLocale = 'zh-cn', disableDateSelectLimit = false,
+    disableDate = () => false, minDate, maxDate, monthLocal, dayjsLocale = 'zh-cn', cancelRangeSelectLimit = false,
   } = params;
   const MonthArr = [];
   const today = getToday();
@@ -365,7 +365,7 @@ export function getMonths(year: number, params: OptionsType) {
     MonthArr.push({
       value: date,
       now: isSame(date, today, 'month'),
-      disabled: (isFunction(disableDate) && disableDate(date)) || (!disableDateSelectLimit && outOfRanges(date, minDate, maxDate)),
+      disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: monthLocal[date.getMonth()], // `${date.getMonth() + 1} ${monthText || '月'}`,
       dayjsObj: dayjs(date).locale(dayjsLocale),

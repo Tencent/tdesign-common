@@ -76,6 +76,10 @@ spline: form
 
 {{ panel }}
 
+### 不限制日期区间选择范围的选择器。
+
+{{ disable-range-limit }}
+
 ## FAQ
 
 ### 后端数据格式要求比较特殊，如何快捷格式化日期？

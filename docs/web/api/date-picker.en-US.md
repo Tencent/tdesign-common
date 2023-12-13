@@ -78,6 +78,10 @@ You can use `DatePickerPanel` and `DateRangePickerPanel` separately. You can ass
 
 {{ panel }}
 
+### An unbounded date range selector。
+
+{{ disable-range-limit }}
+
 ## FAQ
 
 ### The backend data format is special. How can I format the date quickly?
