@@ -278,6 +278,7 @@ export class Color {
       HSV: this.hsv,
       HSVA: this.hsva,
       CSS: this.css,
+      HEX8: this.hex8,
     };
   }
 

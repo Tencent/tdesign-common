@@ -15,6 +15,7 @@ import {
   handleSuccessParams,
   UploadTriggerUploadText,
   ErrorContext,
+  ResponseType,
 } from './types';
 
 export interface BeforeUploadExtra {
@@ -67,13 +68,14 @@ export interface OnErrorParams extends ErrorContext {
 
 export function handleError(options: OnErrorParams) {
   const { event, files, response, XMLHttpRequest, formatResponse } = options;
-  files.forEach((file) => {
-    file.status = 'fail';
-  });
   let res = response;
   if (isFunction(formatResponse)) {
     res = formatResponse(response, { file: files[0], currentFiles: files });
   }
+  files.forEach((file) => {
+    file.status = 'fail';
+    file.response = res;
+  });
   return { response: res, event, files, XMLHttpRequest };
 }
 
@@ -146,7 +148,10 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resolve({});
           return;
         }
-        const { response = {} } = res;
+        let response = (res.response || {}) as ResponseType;
+        if (isFunction(params.formatResponse)) {
+          response = params.formatResponse(response, { file: toUploadFiles[0], currentFiles: toUploadFiles });
+        }
         if (res.status === 'fail') {
           response.error = res.error || response.error;
         }

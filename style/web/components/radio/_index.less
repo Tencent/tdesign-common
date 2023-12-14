@@ -59,6 +59,10 @@
         border-radius: 0 @border-radius-default @border-radius-default 0;
       }
 
+      &:only-child {
+        border-radius: @border-radius-default;
+      }
+
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
