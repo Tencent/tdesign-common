@@ -68,7 +68,7 @@ Drag-and-drop tabs are provided.
 
 {{ drag-sort }}
 
-### 懒加载
+### LazyLoad
 
 By setting lazy, lazy loading can be achieved, and rendering can only be performed when tab is selected.
 
