@@ -71,6 +71,8 @@ There are two table width modes: `fixed` and `auto`, [detailed explanation on MD
 
 In a multi-level header with fixed columns, the `colKey` and `fixed` properties must be specified for each fixed column.
 
+⚠️ Windows operating system horizontal scrolling: Press and hold the Shift key while using the mouse wheel to scroll. Vertical scrolling: Use the mouse wheel to scroll directly.
+
 {{ fixed-column }}
 
 ### Table with Fixed Header and Columns
