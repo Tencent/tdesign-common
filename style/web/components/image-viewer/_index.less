@@ -261,39 +261,40 @@
         right: 0;
         background-image: linear-gradient(to right, rgba(255, 255, 255, 0%), @bg-color-container);
       }
+    }
+  }
 
-      .@{prefix}-image-viewer__header-trans {
-        height: 100%;
-        transition: transform @anim-duration-base;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: @spacer-s;
-        margin-left: @image-viewer-header-box-width-margin-left;
+  .@{prefix}-image-viewer__header-trans {
+    height: 100%;
+    transition: transform @anim-duration-base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: @spacer-s;
+    margin-left: @image-viewer-header-box-width-margin-left;
+  }
 
-        .@{prefix}-image-viewer__header-box {
-          box-sizing: border-box;
-          width: @image-viewer-header-box-width;
-          height: @image-viewer-header-box-height;
-          transition: @anim-duration-base;
-          overflow: hidden;
-          border-radius: @border-radius-default;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid transparent;
-          background-color: @bg-color-secondarycontainer;
+  .@{prefix}-image-viewer__header-box {
+    box-sizing: border-box;
+    width: @image-viewer-header-box-width;
+    height: @image-viewer-header-box-height;
+    position: relative;
+    transition: @anim-duration-base;
+    overflow: hidden;
+    border-radius: @border-radius-default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    background-color: @bg-color-secondarycontainer;
 
-          .@{prefix}-image-viewer__header-img {
-            width: auto;
-            height: 100%;
-          }
+    .@{prefix}-image-viewer__header-img {
+      width: auto;
+      height: 100%;
+    }
 
-          &:hover, &.@{prefix}-is-active {
-            border-color: @brand-color;
-          }
-        }
-      }
+    &:hover, &.@{prefix}-is-active {
+      border-color: @brand-color;
     }
   }
 
