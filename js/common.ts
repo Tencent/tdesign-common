@@ -45,3 +45,5 @@ export const SHIFT_REG = /^(Shift|ShiftLeft|ShiftRight)$/i;
 export const CLEAR_REG = /^KeyC$/i;
 export const ALL_REG = /^(KeyA|KeyL)$/i;
 export const CHECKED_CODE_REG = /^(Enter|Space)$/i;
+
+export const FileType = typeof window === 'undefined'? Object : File;
