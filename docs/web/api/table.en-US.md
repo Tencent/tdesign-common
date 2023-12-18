@@ -208,7 +208,7 @@ In scenarios involving form selection or batch operations, you can directly sele
 
 In scenarios involving form selection or batch operations, you can directly select or deselect operation objects in front of data rows.
 
-#### Single selection
+#### ExampleA: Single selection
 
 - `selectedRowKeys` represents an array of unique identifiers for the currently selected rows and supports the non-controlled attribute `defaultSelectedRowKeys`.
 - `onSelectChange` is triggered when the selected row changes.
@@ -216,7 +216,7 @@ In scenarios involving form selection or batch operations, you can directly sele
 
 {{ select-single }}
 
-#### Multiple selection
+#### ExampleB: Multiple selection
 
 - `selectedRowKeys` represents an array of unique identifiers for the currently selected rows and supports the non-controlled attribute `defaultSelectedRowKeys`.
 - `onSelectChange` is triggered when the selected row changes.
@@ -225,6 +225,12 @@ In scenarios involving form selection or batch operations, you can directly sele
 - Note: If you find that clicking on a row selects all of them, it means that the `rowKey` setting is incorrect or not set. Please make sure that the value of `rowKey` is a field in `data`.
 
 {{ select-multiple }}
+
+#### ExampleC: Row Selection Without Handler
+
+A table with row selection without an action column is generally used in some brief selection scenarios, where selection is made directly by clicking on the row. you can use `rowSelectionType: 'single' | 'multiple'` to set row selection type.
+
+{{ select-without-handler }}
 
 ### Paginated table
 
