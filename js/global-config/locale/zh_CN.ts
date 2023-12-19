@@ -7,7 +7,7 @@ export default {
     itemsPerPage: '{size} 条/页',
     jumpTo: '跳至',
     page: '页',
-    total: '共 {total} 项数据',
+    total: '共 {total} 条数据',
   },
   cascader: {
     empty: '暂无数据',
