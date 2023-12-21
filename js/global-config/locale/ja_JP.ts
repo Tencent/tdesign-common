@@ -170,6 +170,7 @@ export default {
       enum: '${name}でしかありえません${validate}等',
       idcard: '正しく入力してください${name}',
       telnumber: '正しく入力してください${name}',
+      ip: '正しく入力してください${name}',
       pattern: '正しく入力してください${name}',
       validator: '${name}要件を満たしていない',
       boolean: '${name}データ型は Boolean 型であること',

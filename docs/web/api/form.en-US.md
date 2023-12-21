@@ -51,7 +51,7 @@ The user is prompted to fill in the form through icons and prompt text.
 
 ### Forms with Different Verification Rules
 
-The built-in verification rules of the form are: `date` / `url` / `email` / `required` / `boolean` / `max` / `min` / `len` / `number` / `enum` / `idcard` / `telnumber` / `pattern`. For verification rule parameters such as `date` / `url` / `email`, see:[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)。 See `FormRule` in the API documentation for examples of verification rules.
+The built-in verification rules of the form are: `date` / `url` / `email` / `required` / `boolean` / `max` / `min` / `len` / `number` / `enum` / `idcard` / `telnumber` / `pattern` / `ip`. For verification rule parameters such as `date` / `url` / `email`, see:[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)。 See `FormRule` in the API documentation for examples of verification rules.
 
 {{ validator }}
 

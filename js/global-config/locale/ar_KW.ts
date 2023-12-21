@@ -182,6 +182,7 @@ export default {
       enum: '${name} يجب أن يكون واحدًا من ${validate} ',
       idcard: 'الرجاء إدخال ${name} الصحيح',
       telnumber: 'الرجاء إدخال ${name} الصحيح',
+      ip: 'الرجاء إدخال ${name} الصحيح',
       pattern: 'الرجاء إدخال ${name} الصحيح',
       validator: '${name} غير صالح',
       boolean: '${name} ليس منطقيًا',

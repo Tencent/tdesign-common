@@ -170,6 +170,7 @@ export default {
       enum: '${name}只能是${validate}等',
       idcard: '請輸入正確的${name}',
       telnumber: '請輸入正確的${name}',
+      ip: '請輸入正確的${name}',
       pattern: '請輸入正確的${name}',
       validator: '${name}不符合要求',
       boolean: '${name}數據類型必須是布林類型',

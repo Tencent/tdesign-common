@@ -169,6 +169,7 @@ export default {
       enum: '${name} может быть только ${validate} и т.д.',
       idcard: 'Введите правильный ${name}',
       telnumber: 'Введите правильный ${name}',
+      ip: 'Введите правильный ${name}',
       pattern: 'Введите правильный ${name}',
       validator: '${name} не соответствует требованиям',
       boolean: 'Тип данных ${name} должен быть булевым',

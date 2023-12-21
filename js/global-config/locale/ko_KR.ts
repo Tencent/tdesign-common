@@ -170,6 +170,7 @@ export default {
       enum: '${name}만 될 수 있습니다${validate}그리고 더',
       idcard: '정확한 내용을 입력해주세요${name}',
       telnumber: '정확한 내용을 입력해주세요${name}',
+      ip: '정확한 내용을 입력해주세요${name}',
       pattern: '정확한 내용을 입력해주세요${name}',
       validator: '${name}비준수',
       boolean: '${name}데이터 유형은 부울이어야 합니다',

@@ -170,6 +170,7 @@ export default {
       enum: '${name} può essere solo ${validate}, ecc.',
       idcard: 'Inserisci la ${name} corretta',
       telnumber: 'Inserisci la ${name} corretta',
+      ip: 'Inserisci la ${name} corretta',
       pattern: 'Inserisci la ${name} corretta',
       validator: '${name} non conforme ai requisiti',
       boolean: 'Il tipo di dati di ${name} deve essere booleano',

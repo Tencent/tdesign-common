@@ -171,6 +171,7 @@ export default {
       enum: '${name} must be one of ${validate}',
       idcard: '${name} is invalid',
       telnumber: '${name} is invalid',
+      ip: '${name} is invalid',
       pattern: '${name} is invalid',
       validator: '${name} is invalid',
       boolean: '${name} is not a boolean',

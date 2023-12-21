@@ -53,7 +53,7 @@ spline: form
 
 ### 不同校验规则的表单
 
-表单内置的校验规则有：`date` / `url` / `email` / `required` / `boolean` / `max` / `min` / `len` / `number` / `enum` / `idcard` / `telnumber` / `pattern` 。其中 `date` / `url` / `email` 等校验规则参数参看：[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)。各校验规则示例见 API 文档中的 `FormRule`。
+表单内置的校验规则有：`date` / `url` / `email` / `required` / `boolean` / `max` / `min` / `len` / `number` / `enum` / `idcard` / `telnumber` / `pattern` / `ip` 。其中 `date` / `url` / `email` 等校验规则参数参看：[https://github.com/validatorjs/validator.js](https://github.com/validatorjs/validator.js)。各校验规则示例见 API 文档中的 `FormRule`。
 
 {{ validator }}
 
