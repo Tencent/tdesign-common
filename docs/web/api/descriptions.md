@@ -9,3 +9,8 @@ spline: layout
 ### 基本引导
 
 {{ base }}
+
+{{ column }}
+
+
+{{ bordered	 }}

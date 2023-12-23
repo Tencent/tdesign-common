@@ -1,0 +1,23 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
+@componentName: descriptions;
+
+.@{prefix}-@{componentName} {
+  .reset;
+
+  &__body {
+    border-collapse: collapse;
+
+    &--border {
+      td {
+        border: 1px solid @component-border;
+      }
+    }
+  }
+}
