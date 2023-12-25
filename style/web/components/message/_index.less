@@ -65,6 +65,57 @@
       }
     }
   }
+
+  // Message动画
+  @keyframes tMessageAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+  .animation-enter {
+    animation-duration: @message-anim-duration;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-play-state: paused;
+  }
+
+  .animation-exit {
+    animation-duration: @message-anim-duration;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-play-state: paused;
+    animation-direction: reverse;
+  }
+
+  .animation-active {
+    animation-play-state: running;
+    animation-fill-mode: both;
+  }
+  &-enter,
+  &-enter-from,
+  &-appear {
+    .animation-enter;
+  }
+
+  &-exit {
+    .animation-exit;
+  }
+
+  &-enter-active,
+  &-appear-active {
+    animation-name: tMessageIn;
+    .animation-active;
+  }
+
+  &-exit-active {
+    animation-name: tMessageIn;
+    .animation-active;
+  }
 }
 
 .@{prefix}-message__list {
