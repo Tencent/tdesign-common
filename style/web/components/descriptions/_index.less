@@ -13,6 +13,7 @@
 
   &__body {
     border-collapse: collapse;
+    font-size: @font-body-medium;
 
     &.@{prefix}-size-l {
       td {
@@ -33,8 +34,35 @@
     }
 
     & .@{prefix}-@{componentName}__label {
-      font-size: @font-body-medium;
       color: @text-color-placeholder;
+
+      &--left {
+        text-align: left;
+        // 这个最好也使用全局的，就像 size-s -l 那样，暂时没找到，先自己写
+      }
+
+      &--center {
+        text-align: center;
+      }
+
+      &--right {
+        text-align: right;
+      }
+    }
+
+    & .@{prefix}-@{componentName}__content {
+      &--left {
+        text-align: left;
+        // 这个最好也使用全局的，就像 size-s -l 那样，暂时没找到，先自己写
+      }
+
+      &--center {
+        text-align: center;
+      }
+
+      &--right {
+        text-align: right;
+      }
     }
 
     &--border {
