@@ -14,6 +14,24 @@
   &__body {
     border-collapse: collapse;
 
+    &.@{prefix}-size-l {
+      td {
+        padding: @descriptions-padding-l;
+      }
+    }
+
+    &.@{prefix}-size-m {
+      td {
+        padding: @descriptions-padding-m;
+      }
+    }
+
+    &.@{prefix}-size-s {
+      td {
+        padding: @descriptions-padding-s;
+      }
+    }
+
     &--border {
       td {
         border: 1px solid @component-border;
