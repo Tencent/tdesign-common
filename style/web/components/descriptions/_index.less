@@ -32,9 +32,22 @@
       }
     }
 
+    & .@{prefix}-@{componentName}__label {
+      font-size: @font-body-medium;
+      color: @text-color-placeholder;
+    }
+
     &--border {
       td {
         border: 1px solid @component-border;
+      }
+
+      .@{prefix}-@{componentName}__label {
+        background-color: @bg-color-secondarycontainer;
+
+        &:hover {
+          background-color: @bg-color-container-hover;
+        }
       }
     }
   }
