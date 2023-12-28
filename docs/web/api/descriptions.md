@@ -1,6 +1,6 @@
 ---
-title: Descriptions 引导
-description: 逐步骤进行指引或解释说明的组件，常用于用户不熟悉的或需进行特别强调的页面。
+title: Descriptions 描述
+description: 一般用于详情页的信息展示。
 isComponent: true
 usage: { title: '', description: '' }
 spline: layout
@@ -10,7 +10,22 @@ spline: layout
 
 {{ base }}
 
+### 基础
+
+{{ base }}
+
+### 边框
+
+{{ bordered	}}
+
+### 标签引号
+
+{{ colon }}
+
+### 布局方式
+
+{{ direction }}
+
+### 自定义列数量
+
 {{ column }}
-
-
-{{ bordered	 }}
