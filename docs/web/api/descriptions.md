@@ -6,10 +6,6 @@ usage: { title: '', description: '' }
 spline: layout
 ---
 
-### 基本引导
-
-{{ base }}
-
 ### 基础
 
 {{ base }}
@@ -29,3 +25,7 @@ spline: layout
 ### 自定义列数量
 
 {{ column }}
+
+### 自定义样式
+
+{{ custom-style }}
