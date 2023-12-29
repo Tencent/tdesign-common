@@ -1,27 +1,31 @@
 ---
-title: Guide
-description: Guide is used to step-by-step guide or explanatory components, which is commonly used on pages where users are unfamiliar with or need special emphasis.
+title: Descriptions
+description: Descriptions are typically used to display information on detail pages.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: layout
 ---
 
-### Base guide
+### Basics
 
 {{ base }}
 
-### No-Mask guide
+### Bordered
 
-{{ no-mask }}
+{{ bordered }}
 
-### Dialog guide
+### Colon
 
-{{ dialog }}
+{{ colon }}
 
-### Guide mixes dialog and popup
+### Layout Direction
 
-{{ popup-dialog }}
+{{ direction }}
 
-### Guide with custom popup
+### Custom Column Number
 
-{{ custom-popup }}
+{{ column }}
+
+### Custom Style
+
+{{ custom-style }}
