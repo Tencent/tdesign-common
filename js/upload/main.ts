@@ -362,8 +362,9 @@ export function validateFile(
     // 上传文件数量限制
     let lengthOverLimit = false;
     if (max && tmpFiles.length && !params.isBatchUpload) {
+      const tmpFilesLenToBeAdded = tmpFiles.length;
       tmpFiles = tmpFiles.slice(0, max - uploadValue.length);
-      if (tmpFiles.length !== files.length) {
+      if (tmpFilesLenToBeAdded + uploadValue.length > max) {
         lengthOverLimit = true;
       }
     }
