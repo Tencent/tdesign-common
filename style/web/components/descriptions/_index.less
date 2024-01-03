@@ -15,13 +15,12 @@
     color: @text-color-primary;
     font: @font-title-medium;
     margin-bottom: @descriptions-header-margin;
-    //!todo 这个有 token 吗？
     font-weight: 600;
   }
 
   &__body {
     border-collapse: collapse;
-    font-size: @font-body-medium;
+    font: @font-body-medium;
 
     &.@{prefix}-size-l {
       td {
@@ -47,7 +46,7 @@
 
     &--border {
       td {
-        border: 1px solid @component-border;
+        border: @descriptions-td-border;
       }
 
       .@{prefix}-@{componentName}__label {
