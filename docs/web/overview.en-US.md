@@ -363,6 +363,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/statistic">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-statistic.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-statistic-dark.png" />
+      <p class="name">Statistic</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/swiper">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-swiper.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-swiper-dark.png" />
