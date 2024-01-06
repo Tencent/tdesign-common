@@ -253,7 +253,8 @@
     --ripple-color: @bg-color-container-active;
 
     flex-wrap: nowrap;
-    flex: 0 0 auto;
+    // resoved style issues of tree component does not handle content exceedance
+    flex: 1;
     padding: @tree-label-padding;
     margin-left: @tree-label-margin-left;
     border-radius: @border-radius-default;
