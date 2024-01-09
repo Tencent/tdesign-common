@@ -71,7 +71,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    */
   initialTreeStore(dataSource: T[], columns: PrimaryTableCol[], keys: KeysType) {
     this.treeDataMap?.clear();
-    this.initialTreeDataMap(this.treeDataMap, dataSource, columns[0], keys);
+    this.initialTreeDataMap(this.treeDataMap, dataSource, columns.find((col) => col.colKey === 'row-select'), keys);
   }
 
   /**

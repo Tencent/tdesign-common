@@ -20,7 +20,7 @@ spline: layout
 
 ### Layout Direction
 
-{{ direction }}
+{{ layout }}
 
 ### Custom Column Number
 
