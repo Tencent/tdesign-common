@@ -20,7 +20,7 @@ spline: layout
 
 ### 布局方式
 
-{{ direction }}
+{{ layout }}
 
 ### 自定义列数量
 
