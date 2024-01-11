@@ -5,7 +5,7 @@ import 'dayjs/locale/en';
 export default {
   pagination: {
     itemsPerPage: '{size} / page',
-    jumpTo: 'jump to',
+    jumpTo: 'Jump to',
     page: '',
     total: '{total} items',
   },
