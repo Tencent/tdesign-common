@@ -10,6 +10,11 @@ export interface WatermarkText {
    */
   fontSize?: number;
   /**
+   * 水印文本文字样式
+   * @default undefined
+   */
+  fontFamily?: string | undefined;
+  /**
    * 水印文本文字粗细
    * @default normal
    */

@@ -8,6 +8,7 @@
   width: @side-bar-width;
   height: @side-bar-height;
   overflow-y: auto;
+  background-color: @side-bar-bg-color;
 
   &-item {
     display: flex;
@@ -44,7 +45,7 @@
       right: 0;
       width: calc(@side-bar-border-radius * 2);
       height: calc(@side-bar-border-radius * 2);
-      background: #fff;
+      background: @side-bar-prefix-bg-color;
 
       &::after {
         content: "";

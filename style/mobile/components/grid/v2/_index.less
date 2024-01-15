@@ -8,6 +8,12 @@
   display: grid;
   box-sizing: border-box;
 
+  &--bordered {
+    &::after {
+      .hairline-top(@grid-item-border-color);
+    }
+  }
+
   &--card {
     margin: 0 16px;
     border-radius: @grid-card-radius;

@@ -20,6 +20,7 @@
     right: @cell-border-right-space;
   }
 
+  &:last-child::after,
   &--borderless::after {
     display: none;
   }
@@ -40,6 +41,10 @@
     justify-content: flex-end;
     color: @cell-note-color;
     font-size: @cell-note-font-size;
+  }
+
+  &__title {
+    color: @cell-title-color;
   }
 
   &__title,

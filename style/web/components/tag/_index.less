@@ -49,37 +49,19 @@
       }
     }
 
-    &.@{prefix}-tag--checked {
-      color: @tag-checked-color;
-      background-color: @tag-checked-background-color;
-
-      &:hover {
-        background-color: @tag-checked-hover-bg;
-      }
-    }
-
     &:active {
       cursor: default;
-    }
-
-    &.@{prefix}-tag--check {
-      transition: background-color @anim-duration-base @anim-time-fn-easing;
-      cursor: pointer;
-
-      &:hover:not(.@{prefix}-tag--checked):not(.@{prefix}-tag--disabled) {
-        background-color: @tag-check-hover-bg;
-      }
     }
 
     // 失效标签
     &.@{prefix}-tag--disabled {
       color: @tag-disabled-color;
       background-color: @tag-disabled-bg;
+      border-color: @component-border;
       cursor: not-allowed;
 
       &:hover {
-        color: @tag-disabled-color;
-        background-color: @tag-disabled-bg;
+        cursor: not-allowed;
       }
 
       .t-icon {
@@ -271,8 +253,50 @@
   }
 }
 
-a {
+.@{prefix}-tag.@{prefix}-tag--check:not(.@{prefix}-tag--disabled) {
+  transition: background-color @anim-duration-base @anim-time-fn-easing;
+  cursor: pointer;
 
+  &.@{prefix}-tag--default.@{prefix}-tag--dark:not(.@{prefix}-tag--checked) {
+    &:hover {
+      background-color: @tag-grey-hover-color;
+    }
+  }
+
+  &.@{prefix}-tag--primary.@{prefix}-tag--dark.@{prefix}-tag--checked {
+    &:hover {
+      background-color: @tag-default-hover-color;
+    }
+  }
+
+  &.@{prefix}-tag--default.@{prefix}-tag--outline:not(.@{prefix}-tag--checked) {
+    &:hover {
+      color: @tag-grey-outline-hover-color;
+    }
+  }
+}
+
+.@{prefix}-tag--check.@{prefix}-tag--disabled.@{prefix}-tag--primary {
+  &.@{prefix}-tag--dark {
+    background-color: @tag-default-disabled-color;
+    cursor: not-allowed;
+  }
+
+  &.@{prefix}-tag--outline {
+    color: @tag-disabled-color;
+    background-color: @tag-grey-outline-disabled-color;
+    border-color: @tag-disabled-color;
+    cursor: not-allowed;
+  }
+}
+
+.@{prefix}-check-tag-group {
+  .@{prefix}-tag:not(:last-child) {
+    margin-right: @check-tag-margin-left;
+  }
+}
+
+a {
   .@{prefix}-tag {
     cursor: pointer;
     transition: all @anim-duration-base linear;

@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_focus.less";
+
 // <name> 替换为组件名
 .@{radio-cls}-group {
   .reset;
@@ -18,8 +20,6 @@
   align-items: center;
   width: fit-content;
   max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
   border-radius: @border-radius-default;
   flex-wrap: wrap;
   .scrollbar(4px);
@@ -57,6 +57,10 @@
 
       &:last-child {
         border-radius: 0 @border-radius-default @border-radius-default 0;
+      }
+
+      &:only-child {
+        border-radius: @border-radius-default;
       }
 
       &.@{prefix}-is-checked {
@@ -282,6 +286,7 @@
 
   position: relative;
   cursor: pointer;
+  display: inline-block;
 
   &__former {
     .reset;
@@ -370,4 +375,8 @@
       }
     }
   }
+}
+
+.@{prefix}-radio:focus-visible {
+  .tab-focus-style-rect();
 }

@@ -270,7 +270,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">20</em></h3>
+<h3>数据展示<em class="tag">22</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar">
@@ -312,6 +312,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-comment.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-comment-dark.png" />
       <p class="name">Comment 评论</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/descriptions">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-descriptions.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-descriptions-dark.png" />
+      <p class="name">Descriptions 描述</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -361,6 +368,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-skeleton.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-skeleton-dark.png" />
       <p class="name">Skeleton 骨架屏</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/statistic">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-statistic.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-statistic-dark.png" />
+      <p class="name">Statistic 统计数值</p>
     </a>
   </div>
   <div class="image-wrapper">

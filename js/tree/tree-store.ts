@@ -7,11 +7,10 @@ import camelCase from 'lodash/camelCase';
 import isPlainObject from 'lodash/isPlainObject';
 import mitt from 'mitt';
 
-import { TreeNode } from './tree-node';
+import { TreeNode, privateKey } from './tree-node';
 import {
   TreeNodeValue,
   TypeIdMap,
-  TypeTimer,
   TypeTargetNode,
   TypeTreeNodeData,
   TypeTreeItem,
@@ -20,7 +19,14 @@ import {
   TypeTreeFilterOptions,
   TypeRelatedNodesOptions,
   TypeTreeEventState,
+  TypeUpdatedMap,
 } from './types';
+
+function nextTick(fn: () => void): Promise<void> {
+  const pm = Promise.resolve();
+  pm.then(fn);
+  return pm;
+}
 
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
@@ -46,6 +52,7 @@ import {
  * @param {boolean} [options.checkable=false] 节点是否可选中
  * @param {boolean} [options.checkStrictly=false] 节点选中是否使用严格模式
  * @param {boolean} [options.disabled=false] 节点是否禁用
+ * @param {boolean|function} [options.disableCheck=false] 节点被禁用的条件
  * @param {boolean} [options.draggable=false] 节点是否可拖动
  * @param {function} [options.load=null] 节点延迟加载函数
  * @param {boolean} [options.lazy=false] 节点是否使用延迟加载模式
@@ -67,7 +74,7 @@ export class TreeStore {
   public nodeMap: Map<TreeNodeValue, TreeNode>;
 
   // 节点 私有 ID 映射
-  public privateMap: Map<string, TreeNode>;
+  public privateMap: Map<TreeNodeValue, TreeNode>;
 
   // 配置选项
   public config: TypeTreeStoreOptions;
@@ -76,7 +83,7 @@ export class TreeStore {
   public activedMap: TypeIdMap;
 
   // 数据被更新的节点集合
-  public updatedMap: TypeIdMap;
+  public updatedMap: TypeUpdatedMap;
 
   // 选中节点集合
   public checkedMap: TypeIdMap;
@@ -87,20 +94,20 @@ export class TreeStore {
   // 符合过滤条件的节点的集合
   public filterMap: TypeIdMap;
 
-  // 数据更新计时器
-  public updateTimer: TypeTimer;
-
-  // 识别是否需要重排
-  public shouldReflow: boolean;
-
   // 存在过滤器标志
   public hasFilter: boolean;
 
-  // 树节点过滤器
-  public prevFilter: TypeTreeFilter;
-
   // 事件派发器
   public emitter: ReturnType<typeof mitt>;
+
+  // 数据更新计时器
+  private updateTick: Promise<void>;
+
+  // 识别是否需要重排
+  private shouldReflow: boolean;
+
+  // 树节点过滤器
+  private prevFilter: TypeTreeFilter;
 
   public constructor(options: TypeTreeStoreOptions) {
     const config: TypeTreeStoreOptions = {
@@ -115,6 +122,7 @@ export class TreeStore {
       checkable: false,
       checkStrictly: false,
       disabled: false,
+      disableCheck: false,
       draggable: false,
       load: null,
       lazy: false,
@@ -141,7 +149,7 @@ export class TreeStore {
     this.filterMap = new Map();
     this.prevFilter = null;
     // 这个计时器确保频繁的 update 事件被归纳为1次完整数据更新后的触发
-    this.updateTimer = null;
+    this.updateTick = null;
     // 在子节点增删改查时，将此属性设置为 true，来触发视图更新
     this.shouldReflow = false;
     // 这个标志会被大量用到
@@ -337,10 +345,6 @@ export class TreeStore {
    * @return void
    */
   public reload(list: TypeTreeNodeData[]): void {
-    this.expandedMap.clear();
-    this.checkedMap.clear();
-    this.activedMap.clear();
-    this.filterMap.clear();
     this.removeAll();
     this.append(list);
   }
@@ -467,20 +471,6 @@ export class TreeStore {
   }
 
   /**
-   * 更新所有树节点状态
-   * @return void
-   */
-  public refreshState(): void {
-    const { nodeMap } = this;
-    // 树在初始化未回流时，nodes 数组为空
-    // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
-    nodeMap.forEach((node) => {
-      node.update();
-      node.updateChecked();
-    });
-  }
-
-  /**
    * 标记节点重排
    * - 应该仅在树节点增删改查时调用
    * - 节点重排会在延时后触发 refreshNodes 方法的调用
@@ -501,13 +491,20 @@ export class TreeStore {
    * @return void
    */
   public updated(node?: TreeNode): void {
-    if (node?.value) {
-      this.updatedMap.set(node.value, true);
+    const { updatedMap } = this;
+    if (node) {
+      // 传入节点，则为指定节点的更新
+      updatedMap.set(node[privateKey], 'changed');
+    } else {
+      // reflow 流程不传入节点，需要更新所有节点
+      this.getNodes().forEach((itemNode) => {
+        updatedMap.set(itemNode[privateKey], 'changed');
+      });
     }
-    if (this.updateTimer) return;
-    this.updateTimer = setTimeout(() => {
-      clearTimeout(this.updateTimer);
-      this.updateTimer = null;
+
+    if (this.updateTick) return;
+    this.updateTick = nextTick(() => {
+      this.updateTick = null;
 
       // 检查节点是否需要回流，重排数组
       if (this.shouldReflow) {
@@ -520,28 +517,23 @@ export class TreeStore {
       // 以便于优化锁定检查算法
       this.lockFilterPathNodes();
 
-      const updatedList = Array.from(this.updatedMap.keys());
-      if (updatedList.length > 0) {
-        // 统计需要更新状态的节点，派发更新事件
-        const updatedNodes = updatedList.map((value) => this.getNode(value));
-        this.emit('update', {
-          nodes: updatedNodes,
-          map: this.updatedMap,
-        });
-      } else if (this.shouldReflow) {
-        // 单纯的回流不需要更新节点状态
-        // 但需要触发更新事件
-        // 实际业务中，这个逻辑几乎无法触发，节点操作必然引发 update
-        // 这里代码仅仅用于边界兜底
-        this.emit('update', {
-          nodes: [],
-          map: this.updatedMap,
-        });
-      }
+      // stateId 用于单个节点状态监控
+      const stateId = `t${new Date().getTime()}`;
+      const updatedList = Array.from(updatedMap.keys());
+      const updatedNodes = updatedList.map((nodePrivateKey) => {
+        updatedMap.set(nodePrivateKey, stateId);
+        return this.privateMap.get(nodePrivateKey);
+      });
+
+      // 统计需要更新状态的节点，派发更新事件
+      this.emit('update', {
+        nodes: updatedNodes,
+        map: updatedMap,
+      });
 
       // 每次回流检查完毕，还原检查状态
       this.shouldReflow = false;
-      this.updatedMap.clear();
+      updatedMap.clear();
     });
   }
 
@@ -790,11 +782,26 @@ export class TreeStore {
   }
 
   /**
+   * 更新所有树节点状态，但不更新选中态
+   * 用于不影响选中态时候的更新，减少递归循环造成的时间消耗
+   * @return void
+   */
+  public refreshState(): void {
+    const { nodeMap } = this;
+    // 树在初始化未回流时，nodes 数组为空
+    // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
+    nodeMap.forEach((node) => {
+      node.update();
+    });
+  }
+
+  /**
    * 更新全部节点状态
    * @return void
    */
   public updateAll(): void {
-    this.nodeMap.forEach((node) => {
+    const { nodeMap } = this;
+    nodeMap.forEach((node) => {
       node.update();
       node.updateChecked();
     });
@@ -817,10 +824,16 @@ export class TreeStore {
    * @return void
    */
   public removeAll(): void {
-    const nodes = this.getNodes();
-    nodes.forEach((node) => {
-      node.remove();
-    });
+    this.expandedMap.clear();
+    this.checkedMap.clear();
+    this.activedMap.clear();
+    this.filterMap.clear();
+    this.nodeMap.clear();
+    this.privateMap.clear();
+    this.updatedMap.clear();
+    this.nodes = [];
+    this.children = [];
+    this.reflow();
   }
 
   /**

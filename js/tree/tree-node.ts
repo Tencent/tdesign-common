@@ -2,6 +2,7 @@ import isNull from 'lodash/isNull';
 import isFunction from 'lodash/isFunction';
 import isNumber from 'lodash/isNumber';
 import uniqueId from 'lodash/uniqueId';
+import isBoolean from 'lodash/isBoolean';
 import isNil from 'lodash/isNil';
 import get from 'lodash/get';
 import { TreeStore } from './tree-store';
@@ -13,10 +14,11 @@ import {
   TypeSettingOptions,
   TypeTreeNodeModel,
   TypeTreeNodeData,
+  TypeTreeStoreOptions,
+  TypeFnOperation,
 } from './types';
 import {
   createNodeModel,
-  updateNodeModel,
 } from './tree-node-model';
 import log from '../log';
 
@@ -28,7 +30,6 @@ export const setableStatus: Record<string, boolean | null> = {
   expandMutex: null,
   activable: null,
   checkable: null,
-  disabled: null,
   draggable: null,
   loading: false,
 };
@@ -54,6 +55,9 @@ export const privateKey = '__tdesign_id__';
 export class TreeNode {
   // 节点隶属的树实例
   public tree: TreeStore;
+
+  // 节点私有 id，不接受外部传入，确保唯一性
+  public [privateKey]: string;
 
   // 节点 id ，唯一标志
   public value: string;
@@ -141,6 +145,7 @@ export class TreeNode {
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
+    const propDisabled = keys.disabled || 'disabled';
 
     // 节点自身初始化数据
     this.model = null;
@@ -169,7 +174,6 @@ export class TreeNode {
     // 这种处理方式主要是解决 treeStore.setConfig 方法配置全局属性导致的状态切换与保留的问题
     this.activable = null;
     this.checkable = null;
-    this.disabled = null;
     this.expandMutex = null;
     this.draggable = null;
 
@@ -180,7 +184,9 @@ export class TreeNode {
 
     // 设置 value
     // 没有 value 的时候，value 默认使用自动生成的 唯一 id
-    this.value = isNil(data[propValue]) ? this[privateKey] : data[propValue];
+    this.value = isNil(get(data, propValue))
+      ? this[privateKey]
+      : get(data, propValue);
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
@@ -189,7 +195,9 @@ export class TreeNode {
     privateMap.set(this[privateKey], this);
 
     // 设置标签
-    this.label = data[propLabel] || '';
+    this.label = get(data, propLabel) || '';
+    // 设置是否禁用
+    this.disabled = get(data, propDisabled) || false;
 
     // 设置子节点
     const children = data[propChildren];
@@ -214,10 +222,10 @@ export class TreeNode {
       }
     });
 
-    // 初始化节点状态
+    // 初始化节点激活状态
     this.initActived();
+    // 展开状态影响了子节点的显示状态，所以要在子节点插入之前初始化展开状态
     this.initExpanded();
-    this.initChecked();
 
     // 这里的子节点加载逻辑不能放到状态初始化之前
     // 因为子节点状态计算依赖父节点初始化状态
@@ -227,8 +235,9 @@ export class TreeNode {
       this.loadChildren();
     }
 
-    // checked 状态依赖于子节点状态
-    // 因此子节点插入之后需要再次更新状态
+    // 节点的选中状态同时依赖于子节点状态与父节点状态
+    // 因此在子节点插入之后再更新选中状态
+    this.initChecked();
     this.updateChecked();
 
     // 标记节点更新
@@ -250,10 +259,12 @@ export class TreeNode {
     if (this.checked) {
       checkedMap.set(value, true);
     }
-    if (!checkStrictly && parent?.isChecked()) {
+    // 这里不可以使用 parent.isChecked 方法
+    // 因为当前节点创建时尚未插入父节点的 children 数组，可能父节点选中态仅受到之前子节点状态的影响
+    // 这会导致父节点状态计算错误，进而引发子节点变更了选中状态
+    if (!checkStrictly && parent?.checked) {
       checkedMap.set(value, true);
     }
-    this.updateChecked();
   }
 
   /**
@@ -264,10 +275,7 @@ export class TreeNode {
     const { tree } = this;
     let { expanded } = this;
     const { config } = tree;
-    if (
-      isNumber(config.expandLevel)
-      && this.getLevel() < config.expandLevel
-    ) {
+    if (isNumber(config.expandLevel) && this.getLevel() < config.expandLevel) {
       tree.expandedMap.set(this.value, true);
       expanded = true;
     }
@@ -335,11 +343,7 @@ export class TreeNode {
    * @param {number} [index] 预期在子节点列表中的位置
    * @return void
    */
-  public appendTo(
-    tree: TreeStore,
-    parent?: TreeNode,
-    index?: number,
-  ): void {
+  public appendTo(tree: TreeStore, parent?: TreeNode, index?: number): void {
     const parentNode = parent;
     let targetIndex = -1;
     if (isNumber(index)) {
@@ -394,10 +398,7 @@ export class TreeNode {
         // 因此要相应的变更插入位置
         // 后置节点被拔出时，目标 index 是不变的
         const curLength = siblings.length;
-        if (
-          curLength < prevLength
-          && prevIndex <= targetIndex
-        ) {
+        if (curLength < prevLength && prevIndex <= targetIndex) {
           targetIndex -= 1;
         }
       }
@@ -436,10 +437,7 @@ export class TreeNode {
    * @param {number} [index] 预期在子节点列表中的位置
    * @return void
    */
-  private insert(
-    item: TypeTreeItem,
-    index?: number,
-  ): void {
+  private insert(item: TypeTreeItem, index?: number): void {
     const { tree, parent } = this;
     const siblings = this.getSiblings();
     let node = null;
@@ -525,7 +523,7 @@ export class TreeNode {
    * @return Promise<void>
    */
   private async loadChildren(): Promise<void> {
-    const config = get(this, 'tree.config') || {};
+    const config: TypeTreeStoreOptions = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
       if (isFunction(config.load)) {
         this.loading = true;
@@ -558,8 +556,12 @@ export class TreeNode {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
+      // key, disabled 字段可被 tree.config.keys 定义
       if (hasOwnProperty.call(setableStatus, key) || key === 'label') {
         this[key] = item[key];
+      }
+      if (key === 'disabled') {
+        this.setDisabled(item[key]);
       }
     });
     tree.updated(this);
@@ -605,6 +607,32 @@ export class TreeNode {
       list = tree.children;
     }
     return list;
+  }
+
+  /**
+   * 获取当前节点的子节点
+   * @param {boolean} deep 是否获取所有深层子节点
+   * @return TreeNodeModel[] 子节点数组
+   */
+  public getChildren(deep?: boolean): boolean | TypeTreeNodeModel[] {
+    let childrenModel: boolean | TypeTreeNodeModel[] = false;
+    const { children } = this;
+    if (Array.isArray(children)) {
+      if (children.length > 0) {
+        if (deep) {
+          const nodes = this.walk();
+          nodes.shift();
+          childrenModel = nodes.map((item) => item.getModel());
+        } else {
+          childrenModel = children.map((item) => item.getModel());
+        }
+      } else {
+        childrenModel = false;
+      }
+    } else if (isBoolean(children)) {
+      childrenModel = children;
+    }
+    return childrenModel;
   }
 
   /**
@@ -654,11 +682,7 @@ export class TreeNode {
    * @return boolean 是否被过滤方法命中
    */
   public isRest(): boolean {
-    const {
-      config,
-      filterMap,
-      hasFilter,
-    } = this.tree;
+    const { config, filterMap, hasFilter } = this.tree;
 
     let rest = false;
     if (hasFilter) {
@@ -681,11 +705,7 @@ export class TreeNode {
    * @return boolean 是否可见
    */
   public isVisible(): boolean {
-    const {
-      nodeMap,
-      hasFilter,
-      config,
-    } = this.tree;
+    const { nodeMap, hasFilter, config } = this.tree;
     const { allowFoldNodeOnFilter } = config;
 
     let visible = true;
@@ -698,7 +718,7 @@ export class TreeNode {
     if (hasFilter && !allowFoldNodeOnFilter) {
       // 如果存在过滤条件
       // 锁定状态和过滤命中状态，直接呈现
-      visible = (this.vmIsLocked || this.vmIsRest);
+      visible = this.vmIsLocked || this.vmIsRest;
       return visible;
     }
 
@@ -718,19 +738,50 @@ export class TreeNode {
   }
 
   /**
-   * 判断节点是否被禁用
+   * 判断节点为逻辑禁用状态，不包含过滤锁定状态
+   * @return boolean 是否被禁用
+   */
+  public isDisabledState(): boolean {
+    const { tree, parent } = this;
+    const { config } = tree;
+    const { disabled, disableCheck, checkStrictly } = config;
+    let state = disabled || false;
+    if (this.disabled) {
+      // 整个树被禁用，则节点为禁用状态
+      state = true;
+    }
+    if (!checkStrictly && parent?.isDisabledState()) {
+      // 如果 checkStrictly 为 false
+      // 父节点被禁用，则子节点也为禁用状态
+      state = true;
+    }
+    if (typeof disableCheck === 'boolean') {
+      if (disableCheck) {
+        state = true;
+      }
+    } else if (typeof disableCheck === 'function') {
+      // disableCheck 视为禁用节点的过滤函数
+      if (disableCheck(this.getModel())) {
+        state = true;
+      }
+    }
+    return state;
+  }
+
+  /**
+   * 判断节点是否呈现为禁用态，包含过滤锁定状态
    * @return boolean 是否被禁用
    */
   public isDisabled(): boolean {
     const { tree } = this;
     const { hasFilter, config } = tree;
-    const { disabled, allowFoldNodeOnFilter } = config;
-    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) return true;
-    let state = disabled;
-    if (typeof this.disabled === 'boolean') {
-      state = this.disabled;
+    const { allowFoldNodeOnFilter } = config;
+    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) {
+      // 当前树存在过滤条件，允许节点过滤后被折叠，当前节点为锁定节点，并且不是筛选后剩下的节点
+      // 则该节点应当呈现禁用状态
+      return true;
     }
-    return state;
+    return this.isDisabledState();
   }
 
   /**
@@ -825,12 +876,11 @@ export class TreeNode {
       return true;
     }
     // 严格模式，则已经可以判定选中状态
-    if (checkStrictly) return checked;
+    if (checkStrictly) {
+      return !!checkedMap.get(value);
+    }
     // 允许关联状态的情况下，需要进一步判断
-    if (
-      Array.isArray(children)
-      && children.length > 0
-    ) {
+    if (Array.isArray(children) && children.length > 0) {
       // 子节点全部选中，则当前节点选中
       checked = children.every((node) => {
         const childIsChecked = node.isChecked(checkedMap);
@@ -945,8 +995,8 @@ export class TreeNode {
    * - 仅返回预期状态值数组，不直接操作状态
    * @return string[] 当前树展开的节点值数组
    */
-  public toggleExpanded(): TreeNodeValue[] {
-    return this.setExpanded(!this.isExpanded());
+  public toggleExpanded(opts?: TypeSettingOptions): TreeNodeValue[] {
+    return this.setExpanded(!this.isExpanded(), opts);
   }
 
   /**
@@ -956,7 +1006,10 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树展开的节点值数组
    */
-  public setExpanded(expanded: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
+  public setExpanded(
+    expanded: boolean,
+    opts?: TypeSettingOptions
+  ): TreeNodeValue[] {
     const { tree } = this;
     const { config } = tree;
     const options = {
@@ -1021,8 +1074,8 @@ export class TreeNode {
    * - 仅返回预期状态值数组，不直接操作状态
    * @return string[] 当前树激活的节点值数组
    */
-  public toggleActived(): TreeNodeValue[] {
-    return this.setActived(!this.isActived());
+  public toggleActived(opts?: TypeSettingOptions): TreeNodeValue[] {
+    return this.setActived(!this.isActived(), opts);
   }
 
   /**
@@ -1032,9 +1085,17 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树激活的节点值数组
    */
-  public setActived(actived: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
+  public setActived(
+    actived: boolean,
+    opts?: TypeSettingOptions
+  ): TreeNodeValue[] {
     const { tree } = this;
     const options = {
+      // 为 true, 为 UI 操作，状态变更受 disabled 影响
+      // 为 false, 为值操作, 状态变更不受 disabled 影响
+      isAction: true,
+      // 为 true, 直接操作节点状态
+      // 为 false, 返回预期状态
       directly: false,
       ...opts,
     };
@@ -1042,6 +1103,10 @@ export class TreeNode {
     let map = tree.activedMap;
     if (!options.directly) {
       map = new Map(tree.activedMap);
+    }
+    if (options.isAction && this.isDisabledState()) {
+      // 对于 UI 动作，禁用时不可切换激活状态
+      return tree.getActived(map);
     }
     if (this.isActivable()) {
       if (actived) {
@@ -1063,13 +1128,53 @@ export class TreeNode {
   }
 
   /**
+   * 是否存在未选中的未禁用子节点
+   * @return boolean 未选中的未禁用子节点存在与否
+   */
+  public hasEnableUnCheckedChild(): boolean {
+    const { children } = this;
+    if (!Array.isArray(children) || children.length <= 0) {
+      // 没有子节点
+      return false;
+    }
+    let state = false;
+    children.some((child) => {
+      // 不理会禁用节点
+      if (child.isDisabledState()) return false;
+      // 不理会选中节点
+      if (child.isChecked()) return false;
+      if (child.isIndeterminate()) {
+        // 为半选节点则进行递归检查
+        if (child.hasEnableUnCheckedChild()) {
+          state = true;
+          return true;
+        }
+        // 都尽可能选中了，则检查之后的节点
+        return false;
+      }
+      // 子节点为未选中状态，且非半选状态
+      // 则直接返回 true
+      state = true;
+      return true;
+    });
+    return state;
+  }
+
+  /**
    * 切换节点选中状态
    * - 用于受控逻辑处理
    * - 仅返回预期状态值数组，不直接操作状态
    * @return string[] 当前树选中的节点值数组
    */
-  public toggleChecked(): TreeNodeValue[] {
-    return this.setChecked(!this.isChecked());
+  public toggleChecked(opts?: TypeSettingOptions): TreeNodeValue[] {
+    if (this.isIndeterminate()) {
+      // 当前节点为半选情况下需要判断子节点是否尽可能全部选中
+      // 存在可操作的未选中的子节点，则应当尽可能选中子节点
+      // 不存在可操作的未选中的子节点，则应取消选中子节点
+      const expectState = this.hasEnableUnCheckedChild();
+      return this.setChecked(expectState, opts);
+    }
+    return this.setChecked(!this.isChecked(), opts);
   }
 
   /**
@@ -1082,12 +1187,15 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树选中的节点值数组
    */
-  public setChecked(checked: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
+  public setChecked(
+    checked: boolean,
+    opts?: TypeSettingOptions
+  ): TreeNodeValue[] {
     const { tree } = this;
     const config = tree.config || {};
     const options: TypeSettingOptions = {
-      // 为 true, 为 UI 操作，状态扩散受 disabled 影响
-      // 为 false, 为值操作, 状态扩散不受 disabled 影响
+      // 为 true, 为 UI 操作，状态变更受 disabled 影响
+      // 为 false, 为值操作, 状态变更不受 disabled 影响
       isAction: true,
       // 为 true, 直接操作节点状态
       // 为 false, 返回预期状态
@@ -1102,13 +1210,17 @@ export class TreeNode {
       // 当前节点非可选节点，则不可设置选中态
       return tree.getChecked(map);
     }
-    if (options.isAction && this.isDisabled()) {
+    if (options.isAction && this.isDisabledState()) {
       // 对于 UI 动作，禁用时不可切换选中态
       return tree.getChecked(map);
     }
+
     if (checked === this.isChecked()) {
-      // 值没有变更，则选中态无变化
-      return tree.getChecked(map);
+      const shouldSet = this.isIndeterminate() && !this.hasEnableUnCheckedChild();
+      if (!shouldSet) {
+        // 值没有变更, 则选中态无变化
+        return tree.getChecked(map);
+      }
     }
 
     if (checked) {
@@ -1144,7 +1256,11 @@ export class TreeNode {
   }
 
   // 选中态向上游扩散
-  private spreadParentChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
+  private spreadParentChecked(
+    checked: boolean,
+    map?: TypeIdMap,
+    opts?: TypeSettingOptions
+  ) {
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,
@@ -1166,7 +1282,11 @@ export class TreeNode {
   }
 
   // 选中态向下游扩散
-  private spreadChildrenChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
+  private spreadChildrenChecked(
+    checked: boolean,
+    map?: TypeIdMap,
+    opts?: TypeSettingOptions
+  ) {
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,
@@ -1176,13 +1296,16 @@ export class TreeNode {
     // 碰到不可选节点，中断扩散
     if (!this.isCheckable()) return;
     // 对于 UI 动作操作，节点禁用，中断扩散
-    if (options.isAction && this.isDisabled()) return;
+    if (options.isAction && this.isDisabledState()) return;
 
     const { children } = this;
     if (!Array.isArray(children)) return;
+    if (children.length <= 0) return;
+    // 有子节点，则选中态由子节点选中态集合来决定
+    map.delete(this.value);
     children.forEach((node) => {
       // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
-      if (options.isAction && node.isDisabled()) return;
+      if (options.isAction && node.isDisabledState()) return;
       if (checked) {
         map.set(node.value, true);
       } else {
@@ -1190,6 +1313,16 @@ export class TreeNode {
       }
       node.spreadChildrenChecked(checked, map, options);
     });
+  }
+
+  /**
+   * 设置节点禁用状态
+   * @return void
+   */
+  public setDisabled(disabled: boolean) {
+    this.disabled = disabled;
+    this.update();
+    this.updateChildren();
   }
 
   /* ------ 节点状态更新 ------ */
@@ -1232,14 +1365,11 @@ export class TreeNode {
    * @return void
    */
   public updateChildren(): void {
-    const { children } = this;
-    if (Array.isArray(children)) {
-      children.forEach((node) => {
-        node.update();
-        node.updateChecked();
-        node.updateChildren();
-      });
-    }
+    this.spreadChildren((node) => {
+      if (node === this) return;
+      node.update();
+      node.updateChecked();
+    });
   }
 
   /**
@@ -1248,12 +1378,11 @@ export class TreeNode {
    * @return void
    */
   public updateParents(): void {
-    const { parent } = this;
-    if (parent) {
-      parent.update();
-      parent.updateChecked();
-      parent.updateParents();
-    }
+    this.spreadParents((node: TreeNode) => {
+      if (node === this) return;
+      node.update();
+      node.updateChecked();
+    });
   }
 
   /**
@@ -1278,15 +1407,38 @@ export class TreeNode {
    * @return TreeNode[] 遍历结果节点数组
    */
   public walk(): TreeNode[] {
+    const list: TreeNode[] = [];
+    this.spreadChildren((node: TreeNode) => {
+      list.push(node);
+    });
+    return list;
+  }
+
+  /**
+   * 向下遍历操作
+   * - 包含自己
+   * @return void
+   */
+  private spreadChildren(fn: TypeFnOperation) {
+    fn(this);
     const { children } = this;
-    let list: TreeNode[] = [];
-    list.push(this);
     if (Array.isArray(children) && children.length > 0) {
       children.forEach((node) => {
-        list = list.concat(node.walk());
+        node?.spreadChildren(fn);
       });
     }
-    return list;
+  }
+
+  /**
+   * 向上遍历操作
+   * - 包含自己
+   * @return void
+   */
+  private spreadParents(fn: TypeFnOperation) {
+    fn(this);
+    const { parent } = this;
+    if (!parent) return;
+    parent?.spreadParents(fn);
   }
 
   /**
@@ -1302,7 +1454,6 @@ export class TreeNode {
       model = createNodeModel(this);
       this.model = model;
     }
-    updateNodeModel(model, this);
     return model;
   }
 }

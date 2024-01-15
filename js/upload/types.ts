@@ -182,7 +182,7 @@ export interface OnResponseErrorContext {
   files: UploadFile[];
 }
 
-export type ResponseType = { error?: string; url?: string } & Record<string, any>;
+export type ResponseType = { error?: string; url?: string; status?: 'fail' | 'success'; files?: UploadFile[] } & Record<string, any>
 
 export interface HandleUploadParams {
   /** 已经上传过的文件 */

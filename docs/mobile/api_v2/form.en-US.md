@@ -1,14 +1,14 @@
 ---
-title: Form 表单
-description: 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
+title: Form
+description: Form consists of input, radio, select, checkbox and so on. With form, you can collect, verify and submit data.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 01 组件类型
+### 01 Component Type
 
-基础表单
+Base form
 
 {{ horizontal }}
 

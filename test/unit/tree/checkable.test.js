@@ -1249,4 +1249,90 @@ describe('tree:checkable', () => {
       expect(t1d2.isChecked()).toBe(false);
     });
   });
+
+  describe('treeNode:initChecked', () => {
+    it('单一子节点选中，父节点为选中态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          checked: true,
+        }],
+      }]);
+
+      expect(tree.getChecked().length).toBe(1);
+      expect(tree.getChecked()[0]).toBe('t1.1');
+      expect(tree.getNode('t1').checked).toBe(true);
+      expect(tree.getNode('t1.1').checked).toBe(true);
+    });
+
+    it('父节点为选中态，子节点也为选中态', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        checked: true,
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      expect(tree.getChecked().length).toBe(2);
+      expect(tree.getChecked()[0]).toBe('t1.1');
+      expect(tree.getChecked()[1]).toBe('t1.2');
+      expect(tree.getNode('t1').checked).toBe(true);
+      expect(tree.getNode('t1.1').checked).toBe(true);
+      expect(tree.getNode('t1.2').checked).toBe(true);
+    });
+
+    it('第一个子节点为选中态，父节点为半选', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+          checked: true,
+        }, {
+          value: 't1.2',
+        }],
+      }]);
+
+      expect(tree.getChecked().length).toBe(1);
+      expect(tree.getChecked()[0]).toBe('t1.1');
+      expect(tree.getNode('t1').checked).toBe(false);
+      expect(tree.getNode('t1').isIndeterminate()).toBe(true);
+      expect(tree.getNode('t1.1').checked).toBe(true);
+      expect(tree.getNode('t1.2').checked).toBe(false);
+    });
+
+    it('末尾子节点为选中态，父节点为半选', async () => {
+      const tree = new TreeStore({
+        checkable: true,
+      });
+      tree.append([{
+        value: 't1',
+        children: [{
+          value: 't1.1',
+        }, {
+          value: 't1.2',
+          checked: true,
+        }],
+      }]);
+
+      expect(tree.getChecked().length).toBe(1);
+      expect(tree.getChecked()[0]).toBe('t1.2');
+      expect(tree.getNode('t1').checked).toBe(false);
+      expect(tree.getNode('t1').isIndeterminate()).toBe(true);
+      expect(tree.getNode('t1.1').checked).toBe(false);
+      expect(tree.getNode('t1.2').checked).toBe(true);
+    });
+  });
 });

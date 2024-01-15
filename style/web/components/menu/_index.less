@@ -22,6 +22,12 @@ a.@{prefix}-menu__item {
   }
 }
 
+.@{prefix}-menu__logo {
+  & > * {
+    margin-left: @comp-margin-xxl;
+  }
+}
+
 // head-menu
 .@{prefix}-head-menu {
   .reset;
@@ -54,7 +60,6 @@ a.@{prefix}-menu__item {
     flex: 1;
     display: flex;
     align-items: center;
-    // overflow: auto hidden;
   }
 
   .@{prefix}-menu__operations {
@@ -130,10 +135,17 @@ a.@{prefix}-menu__item {
   &.@{prefix}-is-collapsed {
     width: @default-menu-collapse-width;
 
+    .@{prefix}-menu__logo {
+      & > * {
+        margin-left: @comp-margin-l;
+      }
+    }
+
     .@{prefix}-menu {
       .@{prefix}-menu__item {
         padding: 0 14px;
         justify-content: center;
+
         .@{prefix}-menu__item-link {
           opacity: 0;
           content: "";
@@ -195,6 +207,18 @@ a.@{prefix}-menu__item {
       }
     }
 
+    .@{prefix}-menu-group {
+      &:first-child {
+        .@{prefix}-menu-group__title {
+          display: none;
+
+          & + * {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
     .@{prefix}-menu-group__title {
       padding: 0;
       font-size: 0;
@@ -219,6 +243,12 @@ a.@{prefix}-menu__item {
         display: block;
       }
     }
+
+    .@{prefix}-menu__log {
+      & > * {
+        margin: 0 auto;
+      }
+    }
   }
 
   &__inner {
@@ -236,7 +266,6 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu {
       padding: @comp-paddingTB-l @comp-paddingLR-s;
       position: relative;
-      // overflow: hidden auto;
       flex: 1;
 
       &--scroll {
@@ -245,12 +274,27 @@ a.@{prefix}-menu__item {
         overflow-y: auto;
         overflow-x: hidden;
       }
+
+      & > *:not(.@{prefix}-menu-group) {
+        &:not(:first-child) {
+          margin-top: @comp-margin-xs;
+        }
+      }
+
+      .@{prefix}-menu-group,
+      .@{prefix}-menu__sub,
+      .@{prefix}-submenu {
+        & > *:not(:first-child) {
+          margin-top: @comp-margin-xs;
+        }
+      }
     }
 
     .@{prefix}-menu-group {
       &__title {
         position: relative;
-        padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs @comp-paddingLR-l;
+        padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs
+          @comp-paddingLR-l;
         color: @menu-menu-group-title-color;
         font-size: @menu-extra-font-size;
         box-sizing: border-box;
@@ -259,7 +303,6 @@ a.@{prefix}-menu__item {
   }
 
   .@{prefix}-submenu {
-    margin-bottom: @comp-margin-xs;
     position: relative;
   }
 
@@ -287,7 +330,6 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__item {
     &.@{prefix}-is-opened {
-      margin: @comp-margin-xs 0;
       color: @menu-color-light;
       background-color: unset;
 
@@ -299,22 +341,21 @@ a.@{prefix}-menu__item {
 
   .@{prefix}-menu__sub {
     padding: 0;
-    max-height: 0;
     overflow: hidden;
-    transition: max-height @anim-duration-base @anim-time-fn-easing;
-
-    &.@{prefix}-is-opened {
-      max-height: calc(100vh - @menu-height-default * 2);
-    }
 
     .@{prefix}-menu__item {
       padding-left: var(--padding-left, 32px);
     }
   }
 
+  .@{prefix}-slide-down-enter-active {
+    .@{prefix}-menu__sub {
+      height: 100%;
+    }
+  }
+
   .@{prefix}-menu__item {
     position: relative;
-    margin: @comp-margin-xs 0;
     padding: 0 10px 0 16px;
     height: @default-menu-item-height;
     line-height: @default-menu-item-height;
@@ -324,14 +365,6 @@ a.@{prefix}-menu__item {
     transition: background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
     box-sizing: border-box;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
 
     .t-icon {
       width: 20px;
@@ -401,7 +434,6 @@ a.@{prefix}-menu__item {
       }
 
       .@{prefix}-menu__item {
-
         &.@{prefix}-is-active.@{prefix}-is-opened {
           background-color: @default-menu-active-color--dark;
           color: @menu-item-active-color--dark;
@@ -556,7 +588,9 @@ a.@{prefix}-menu__item {
       color: @menu-item-active-color--light;
     }
 
-    &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
+    &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(
+    .@{prefix}-is-disabled
+  ) {
       background-color: @menu-item-hover-bg--light;
     }
 
@@ -604,7 +638,9 @@ a.@{prefix}-menu__item {
         color: @menu-item-disabled-color-dark;
       }
 
-      &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
+      &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(
+      .@{prefix}-is-disabled
+    ) {
         background-color: @menu-item-hover-bg--dark;
       }
 
@@ -740,18 +776,19 @@ a.@{prefix}-menu__item {
   top: 0;
   left: calc(100% - @pop-padding-m);
 
-  .@{prefix}-menu__item, .@{prefix}-submenu {
-    margin: @comp-margin-xxs 0 0 0;
-
-    &:first-child {
-      margin-top: 0;
+  .@{prefix}-menu__item,
+  .@{prefix}-submenu {
+    &:not(:first-child) {
+      margin-top: @comp-margin-xxs;
     }
   }
 }
 
 .@{prefix}-is-head-menu {
   .@{prefix}-menu__popup {
-    margin-top: calc((@menu-height-default - @head-menu-item-height) / 2) !important;
+    margin-top: calc(
+      (@menu-height-default - @head-menu-item-height) / 2
+    ) !important;
   }
 }
 

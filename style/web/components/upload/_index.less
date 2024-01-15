@@ -205,17 +205,23 @@
       border-radius: @upload-card-img-wrap-border-radius;
       .hover-transition(border);
 
-      &:hover {
+      &:hover:not(.@{prefix}-is-disabled) {
         border-color: @upload-card-item-bg-border-color-hover;
         .hover-transition(border-color);
       }
+
+      > .t-icon {
+        color: @upload-icon-color;
+      }
+
       > .t-icon,
       .@{prefix}-loading {
         font-size: @upload-icon-size-large;
         margin-bottom: @upload-card-container-icon-add-margin-bottom;
       }
 
-      > p {
+      > p,
+      .@{prefix}-upload__add-text {
         color: @text-color-placeholder;
         margin: 0;
       }
@@ -249,6 +255,7 @@
       color: @upload-card-mask-text-color;
       will-change: transform;
       opacity: 0;
+      z-index: @upload-z-index;
       .hover-transition(opacity);
       .horizontal-vertical-center-with-flex();
       .fill-with-position-absolute();
@@ -425,7 +432,6 @@
   display: flex;
   justify-content: space-between;
   flex: 1;
-  max-width: calc(100% - 162px);
 }
 
 .@{prefix}-upload__single-input-text {
@@ -632,7 +638,7 @@
   .hover-transition(color);
 }
 
-.@{prefix}-upload__single-input-clear {
+.t-icon.@{prefix}-upload__single-input-clear {
   display: none;
 }
 
@@ -649,6 +655,21 @@
   .@{prefix}-upload__single-name {
     color: @upload-file-name-color;
   }
+
+  .@{prefix}-upload__file-thumbnail {
+    margin-right: @upload-list-item-inner-padding;
+    width: @upload-list-file-thumbnail-size;
+    height: @upload-list-file-thumbnail-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    > svg {
+      font-size: @upload-list-file-thumbnail-icon;
+      color: @upload-icon-color;
+    }
+  }
 }
 
 .@{prefix}-upload__card-name {
@@ -661,4 +682,21 @@
 
 .@{prefix}-upload__dragger-btns > .@{prefix}-button {
   padding: 0;
+}
+
+.@{prefix}-upload__file-info {
+  display: flex;
+  align-items: center;
+}
+
+.@{prefix}-upload__card-container.@{prefix}-is-disabled {
+  cursor: not-allowed;
+
+  .@{prefix}-upload__add-text {
+    color: @upload-text-disabled-color;
+  }
+
+  .t-icon {
+    color: @upload-icon-disabled-color;
+  }
 }

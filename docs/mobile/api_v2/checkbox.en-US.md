@@ -1,47 +1,47 @@
 ---
-title: Checkbox 多选框
-description: 用于预设的一组选项中执行多项选择，并呈现选择结果。
+title: Checkbox
+description: Performs multiple selections in a preset set of options and renders the selection results.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+### Component Type
 
-纵向多选框
+Vertical checkbox
 
 {{ base }}
 
-横向多选框
+Horizontal checkbox
 
 {{ horizontal }}
 
-带全选多选框
+checkbox with select all
 
 {{ all }}
 
-### 组件状态
+### Component Status
 
-多选框状态
+checkbox status
 
 {{ status }}
 
-### 组件样式
+### Component Style
 
-勾选样式
+Check style
 
 {{ type }}
 
-勾选显示位置
+Check show location
 
 {{ right }}
 
-非通栏多选样式
+Non-full-width multiple selection style
 
 {{ card }}
 
-### 组件规格
+### Component Specification
 
-多选框尺寸规格
+checkbox size specifications
 
 {{ special }}

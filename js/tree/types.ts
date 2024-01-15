@@ -9,6 +9,7 @@ export interface KeysType {
   value?: string;
   label?: string;
   children?: string;
+  disabled?: string;
 }
 
 export interface TreeNodeState {
@@ -111,6 +112,10 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
    * 当前节点是否处于加载中状态
    */
   loading: boolean;
+  /**
+   * 当前节点是否被禁用
+   */
+  disabled: boolean;
 }
 
 export interface TreeNodeModel<
@@ -176,9 +181,9 @@ export interface TreeNodeModel<
    * 移除当前节点或当前节点的子节点，值为空则移除当前节点，值存在则移除当前节点的子节点
    */
   remove: (value?: TreeNodeValue) => void;
-   /**
-    * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
-    */
+  /**
+   * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
+   */
   setData: (data: T) => void;
 }
 
@@ -209,7 +214,7 @@ export interface TypeTreeFilterOptions {
 }
 
 export interface TypeTreeNodeData extends TreeNodeState {
-  children?: TypeTreeNodeData[];
+  children?: TypeTreeNodeData[] | boolean;
   [key: string]: any;
 }
 
@@ -219,10 +224,14 @@ export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>
 
 export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
 
+export type TypeUpdatedMap = Map<TreeNodeValue, string>;
+
+export type TypeFnOperation = (node: TreeNode) => void;
+
 export interface TypeTreeEventState {
   node?: TreeNode;
   nodes?: TreeNode[];
-  map?: TypeIdMap;
+  map?: TypeUpdatedMap;
   data?: TypeTreeNodeData[];
 }
 
@@ -250,6 +259,8 @@ export interface TypeTreeStoreOptions {
   checkStrictly?: boolean;
   // 禁用整个树
   disabled?: boolean;
+  // 指定节点禁用条件
+  disableCheck?: boolean | TypeTreeFilter;
   // 节点是否可拖动
   draggable?: boolean,
   // 节点加载函数
@@ -260,7 +271,7 @@ export interface TypeTreeStoreOptions {
   valueMode?: TypeValueMode;
   // 节点过滤函数
   // filter?: (node: TreeNode) => boolean;
-  filter?: (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
+  filter?: TypeTreeFilter;
   // load函数运行后触发
   onLoad?: Function;
   // 节点增删改查后触发

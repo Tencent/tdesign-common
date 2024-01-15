@@ -2,7 +2,7 @@
 
 @import "./_var.less";
 
-.@{prefix}-toast {
+.@{toast} {
   position: fixed;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -49,6 +49,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
     }
   }
 
@@ -74,6 +75,7 @@
 
     &--column:not(:empty):not(:only-child) {
       margin-top: 8px;
+      min-width: 64px;
     }
 
     &--row:not(:empty):not(:only-child) {
@@ -85,13 +87,13 @@
   &.@{prefix}-fade-leave-to {
     opacity: 0;
   }
-}
 
-.@{prefix}-overflow-hidden {
-  overflow: hidden;
-  cursor: not-allowed;
+  &-overflow-hidden {
+    overflow: hidden;
+    cursor: not-allowed;
 
-  * {
-    pointer-events: none;
+    * {
+      pointer-events: none;
+    }
   }
 }

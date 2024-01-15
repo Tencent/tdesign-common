@@ -5,7 +5,7 @@ import 'dayjs/locale/en';
 export default {
   pagination: {
     itemsPerPage: '{size} / page',
-    jumpTo: 'jump to',
+    jumpTo: 'Jump to',
     page: '',
     total: '{total} items',
   },
@@ -142,7 +142,7 @@ export default {
       uploading: 'Uploading',
     },
     dragger: {
-      dragDropText: 'Drop hear',
+      dragDropText: 'Drop here',
       draggingText: 'Drag file to this area to upload',
       clickAndDragText: 'Click "Upload" or Drag file to this area to upload',
     },

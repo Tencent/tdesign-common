@@ -1,43 +1,43 @@
 ---
-title: Textarea 多行文本框
-description: 用于多行文本信息输入。
+title: Textarea
+description: Used to enter multiple lines of text information.
 spline: form
 isComponent: true
 toc: false
 ---
 
-## 代码演示
+## Code Demo
 
-### 组件类型
+### Component Type
 
-基础多行文本框
+Basic textarea
 
 {{ base }}
 
-带标题多行文本框
+textarea with title
 
 {{ label }}
 
-自动增高多行文本框
+Automatically raises textarea
 
 {{ autosize }}
 
-设置最大字符个数
+Set the maximum number of characters
 
 {{ maxlength }}
 
-设置最大字符个数，一个汉字表示两个字符
+Set the maximum number of characters. One Chinese character means two characters
 
 {{ maxcharacter }}
 
-### 组件状态
+### Component Status
 
-禁用多行文本框
+Disable textarea
 
 {{ disabled }}
 
-### 自定义组件样式
+### Customize Component Style
 
-标签外置输入框
+Label external input box
 
 {{ custom }}

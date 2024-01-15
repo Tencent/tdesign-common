@@ -19,7 +19,7 @@
   margin: 0;
   height: @switch-height-default;
   line-height: @switch-height-default;
-  border-radius: @border-radius-extraLarge;
+  border-radius: @border-radius-round;
   min-width: @switch-min-width-default;
   transition: @switch-transition;
   background-color: @switch-unchecked-bg-color;
@@ -39,7 +39,7 @@
     left: @switch-width-border-default;
     width: calc(@switch-height-default - 2 * @switch-width-border-default);
     height: calc(@switch-height-default - 2 * @switch-width-border-default);
-    border-radius: @border-radius-extraLarge;
+    border-radius: @border-radius-round;
     transition: @switch-handle-transition;
     box-shadow: @shadow-1;
 
@@ -55,7 +55,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: @border-radius-extraLarge;
+      border-radius: @border-radius-round;
       background-color: @switch-handle-bg-color;
       transition: @switch-handle-transition;
     }
@@ -172,7 +172,7 @@
   min-width: @switch-min-width-l;
   height: @switch-height-l;
   line-height: @switch-height-l;
-  border-radius: @border-radius-extraLarge;
+  border-radius: @border-radius-round;
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
 
@@ -230,7 +230,7 @@
   min-width: @switch-min-width-s;
   height: @switch-height-s;
   line-height: @switch-height-s;
-  border-radius: @border-radius-extraLarge;
+  border-radius: @border-radius-round;
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
 

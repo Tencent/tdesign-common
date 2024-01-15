@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_focus.less";
+
 // <name> 替换为组件名
 .@{checkbox-cls}-group {
   .reset;
@@ -154,4 +156,8 @@
       }
     }
   }
+}
+
+.@{prefix}-checkbox:focus-visible {
+  .tab-focus-style-rect();
 }

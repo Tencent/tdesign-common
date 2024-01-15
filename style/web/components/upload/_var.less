@@ -11,7 +11,11 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
+// higher than image
+@upload-z-index: 2;
+
 // 颜色
+@upload-text-disabled-color: @text-color-disabled;
 @upload-icon-check-circle-filled-color: @success-color;
 @upload-icon-error-circle-filled-color: @error-color;
 @upload-icon-loading-color: @brand-color;
@@ -22,6 +26,7 @@
 @upload-small-color: @text-color-placeholder;
 @upload-placeholder-color: @text-color-placeholder;
 @upload-icon-color: @text-color-placeholder;
+@upload-icon-disabled-color: @text-color-disabled;
 @upload-icon-color-hover: @text-color-secondary;
 @upload-list-file-icon-color: @brand-color;
 @upload-list-item-error-color: @error-color;
@@ -62,6 +67,7 @@
 @upload-card-mask-opacity-disabled: .3;
 
 // 图标
+@upload-list-file-thumbnail-icon: @comp-size-s;
 @upload-list-file-icon-font-size: @comp-size-xl;
 @upload-card-item-icon-add-font-size: @comp-size-m;
 @upload-dragger-progress-icon-font-size: @comp-size-xxxs;
@@ -96,6 +102,7 @@
 @upload-icon-size-mini: calc(@font-size-base + 2px);
 @upload-icon-size: calc(@font-size-base + 2px);
 @upload-icon-size-large: @comp-size-xs;
+@upload-list-file-thumbnail-size: @comp-size-xxl;
 
 // 边框
 @upload-card-item-bg-border: 1px dashed @component-border;
@@ -119,6 +126,7 @@
 // 间距
 @upload-list-file-margin-right: @comp-margin-m;  //待删除
 @upload-list-item-padding: @comp-paddingTB-m @comp-paddingLR-m;  //?
+@upload-list-item-inner-padding: @comp-paddingLR-s;
 @upload-list-item-margin-top: @comp-margin-m; //?
 @upload-single-name-margin-right: @comp-margin-s;
 @upload-single-name-margin-bottom: @comp-margin-s;

@@ -9,13 +9,13 @@
   right: 0;
   display: flex;
   justify-content: @message-align;
-  height: @message-height;
+  min-height: @message-height;
   align-items: center;
   z-index: @message-z-index;
-  padding: 0 @message-horizontal-padding;
+  padding: @message-verticle-padding @message-horizontal-padding;
   box-sizing: border-box;
   border-radius: @message-border-radius;
-  line-height: 1;
+  line-height: 1em;
   background-color: @message-bg-color;
   box-shadow: @message-box-shadow;
 

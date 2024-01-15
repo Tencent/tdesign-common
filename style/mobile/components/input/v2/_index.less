@@ -35,14 +35,18 @@
   }
 
   &__label:not(:empty) {
-    min-width: 2em;
-    max-width: 5em;
     font-size: @font-size-m;
     line-height: 24px;
     color: @input-label-text-color;
     margin-right: @spacer-2;
 
+    .@{prefix}-input--layout-horizontal & {
+      min-width: 2em;
+      max-width: var(--td-input-label-width, 5em);
+    }
+
     .@{prefix}-input--layout-vertical & {
+      width: var(--td-input-label-width, 100%);
       font-size: @font-size-base;
       padding-bottom: 8px;
     }

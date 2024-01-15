@@ -6,7 +6,7 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: @grid-item-verticla-padding;
+  padding: @grid-item-vertical-padding;
   flex-direction: column;
   background: @grid-item-bg-color;
   flex-basis: 84px;
@@ -14,10 +14,16 @@
 
   &--bordered {
     position: relative;
-    .border(top, @grid-item-border-color);
+    .border(bottom, @grid-item-border-color);
 
     &::before {
-      .hairline-left(@grid-item-border-color);
+      .hairline-right(@grid-item-border-color);
+    }
+  }
+
+  &--surround {
+    &::before {
+      .hairline(@grid-item-border-color);
     }
   }
 

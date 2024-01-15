@@ -28,6 +28,13 @@ Simple table with data switched using pagination. Use border lines and zebra str
 
 {{ base }}
 
+### Highlight Row Table
+
+set table property `activeRowType` to allow table row highlight.
+You try it with different keyboards, for example: ArrowUp/ArrowDown/Space/Shift/ESC.
+
+{{ highlight }}
+
 ### Customizable Style Table
 
 - Use the table property `rowClassName` to set the row class name.
@@ -63,6 +70,8 @@ When there are too many columns, using fixed columns is convenient for presentin
 There are two table width modes: `fixed` and `auto`, [detailed explanation on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout), the component defaults to `fixed`. If you want the table columns to be self-adaptive in width, set `table-layout: auto`. In this mode, the total width of the table content `tableContentWidth` must be specified for fixed columns. The value of `tableContentWidth` must be greater than the visible width of the table.
 
 In a multi-level header with fixed columns, the `colKey` and `fixed` properties must be specified for each fixed column.
+
+⚠️ Windows operating system horizontal scrolling: Press and hold the Shift key while using the mouse wheel to scroll. Vertical scrolling: Use the mouse wheel to scroll directly.
 
 {{ fixed-column }}
 
@@ -201,7 +210,7 @@ In scenarios involving form selection or batch operations, you can directly sele
 
 In scenarios involving form selection or batch operations, you can directly select or deselect operation objects in front of data rows.
 
-#### Single selection
+#### ExampleA: Single selection
 
 - `selectedRowKeys` represents an array of unique identifiers for the currently selected rows and supports the non-controlled attribute `defaultSelectedRowKeys`.
 - `onSelectChange` is triggered when the selected row changes.
@@ -209,7 +218,7 @@ In scenarios involving form selection or batch operations, you can directly sele
 
 {{ select-single }}
 
-#### Multiple selection
+#### ExampleB: Multiple selection
 
 - `selectedRowKeys` represents an array of unique identifiers for the currently selected rows and supports the non-controlled attribute `defaultSelectedRowKeys`.
 - `onSelectChange` is triggered when the selected row changes.
@@ -218,6 +227,12 @@ In scenarios involving form selection or batch operations, you can directly sele
 - Note: If you find that clicking on a row selects all of them, it means that the `rowKey` setting is incorrect or not set. Please make sure that the value of `rowKey` is a field in `data`.
 
 {{ select-multiple }}
+
+#### ExampleC: Row Selection Without Handler
+
+A table with row selection without an action column is generally used in some brief selection scenarios, where selection is made directly by clicking on the row. you can use `rowSelectionType: 'single' | 'multiple'` to set row selection type.
+
+{{ select-without-handler }}
 
 ### Paginated table
 

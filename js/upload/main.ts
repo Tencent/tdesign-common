@@ -1,7 +1,7 @@
 import isFunction from 'lodash/isFunction';
 import isNumber from 'lodash/isNumber';
 /* eslint-disable no-param-reassign */
-import { isOverSizeLimit } from './utils';
+import { getCurrentDate, isOverSizeLimit } from './utils';
 import xhr from './xhr';
 import log from '../log/log';
 import {
@@ -15,6 +15,7 @@ import {
   handleSuccessParams,
   UploadTriggerUploadText,
   ErrorContext,
+  ResponseType,
 } from './types';
 
 export interface BeforeUploadExtra {
@@ -67,13 +68,14 @@ export interface OnErrorParams extends ErrorContext {
 
 export function handleError(options: OnErrorParams) {
   const { event, files, response, XMLHttpRequest, formatResponse } = options;
-  files.forEach((file) => {
-    file.status = 'fail';
-  });
   let res = response;
   if (isFunction(formatResponse)) {
     res = formatResponse(response, { file: files[0], currentFiles: files });
   }
+  files.forEach((file) => {
+    file.status = 'fail';
+    file.response = res;
+  });
   return { response: res, event, files, XMLHttpRequest };
 }
 
@@ -146,7 +148,10 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           resolve({});
           return;
         }
-        const { response = {} } = res;
+        let response = (res.response || {}) as ResponseType;
+        if (isFunction(params.formatResponse)) {
+          response = params.formatResponse(response, { file: toUploadFiles[0], currentFiles: toUploadFiles });
+        }
         if (res.status === 'fail') {
           response.error = res.error || response.error;
         }
@@ -171,6 +176,8 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
             file.response = response;
             file.url = response.url;
             file.percent = res.status === 'success' ? 100 : 0;
+            // 如果上传请求返回结果没有上传日期，则使用电脑当前日期显示
+            file.uploadTime = response?.uploadTime || getCurrentDate();
           });
           resultFiles = toUploadFiles;
         }
@@ -237,6 +244,20 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
   });
 }
 
+function updateUploadedFiles(uploadFiles: UploadFile[], resultFiles: UploadFile[]) {
+  const existFiles = uploadFiles.filter((t) => t.url);
+  const newFiles = existFiles;
+  for (let i = 0, len = resultFiles.length; i < len; i++) {
+    const file = resultFiles[i];
+    const index = uploadFiles.findIndex((item) => (
+      (item.raw && item.raw === file.raw) || (item.name && item.name === file.name)
+    ));
+    const tmpFile = index >= 0 ? { ...uploadFiles[index], ...file } : file;
+    newFiles.push(tmpFile);
+  }
+  return newFiles;
+}
+
 /**
  * 可能单个文件上传，也可能批量文件一次性上传
  * 返回上传成功或上传失败的文件列表
@@ -255,7 +276,7 @@ Promise<UploadRequestReturn> {
         if (r.status === 'success') {
           r.data.files = isBatchUpload || !params.multiple
             ? r.data.files
-            : uploadedFiles.concat(r.data.files);
+            : updateUploadedFiles(uploadedFiles, r.data.files);
         }
         const failedFiles = r.status === 'fail' ? r.data.files : [];
         resolve({ ...r, failedFiles });
@@ -341,8 +362,9 @@ export function validateFile(
     // 上传文件数量限制
     let lengthOverLimit = false;
     if (max && tmpFiles.length && !params.isBatchUpload) {
+      const tmpFilesLenToBeAdded = tmpFiles.length;
       tmpFiles = tmpFiles.slice(0, max - uploadValue.length);
-      if (tmpFiles.length !== files.length) {
+      if (tmpFilesLenToBeAdded + uploadValue.length > max) {
         lengthOverLimit = true;
       }
     }

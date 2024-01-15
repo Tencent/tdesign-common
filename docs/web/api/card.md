@@ -71,3 +71,8 @@ spline: data
 #### 同时带主副标题与标题描述的卡片
 
 {{ header-all-props }}
+
+
+#### 自定义loadingProps的卡片
+
+{{ custom-loading-props }}

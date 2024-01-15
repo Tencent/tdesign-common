@@ -1,6 +1,45 @@
 import { SizeUnit } from './types';
 import log from '../log/log';
 
+export const IMAGE_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp)/i;
+export const IMAGE_ALL_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp|.dwg|.dxf|.svf|.tif|.tiff|.arw)/i;
+export const FILE_PDF_REGEXP = /(.pdf)/i;
+export const FILE_EXCEL_REGEXP = /(.xlsx|.xls|.csv|.xlc|.xlm|.xlt|.xlw)/i;
+export const FILE_WORD_REGEXP = /(.dox|docx|.document|.wps|.wdb|.msword)/i;
+export const FILE_PPT_REGEXP = /(.ppt|.pptx|.key)/i;
+export const VIDEO_REGEXP = /(.avi|.mp4|.wmv|.mpg|.mpeg|.mov|.rm|.ram|.swf|.flv|.rmvb|.flash|.mid|.3gp)/i;
+export const AUDIO_REGEXP = /(.mp2|.mp3|.mp4|.ogg|.3gpp|.ac3|.au)/i;
+
+/**
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+ */
+const INPUT_FILE_MAP = {
+  'audio/*': AUDIO_REGEXP,
+  'video/*': VIDEO_REGEXP,
+  'image/*': IMAGE_ALL_REGEXP,
+  '.ico': /image\/vnd.microsoft.icon/i,
+  '.doc': /application\/msword/i,
+  '.docx': /application\/vnd.openxmlformats-officedocument.wordprocessingml.document/i,
+  '.xls': /application\/vnd.ms-excel/i,
+  '.xlsx': /application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet/i,
+  '.ppt': /application\/vnd.ms-powerpoint/i,
+  '.pptx': /application\/vnd.openxmlformats-officedocument.presentationml.presentation/i,
+  '.vsd': /application\/vnd.visio/i,
+  '.txt': /text\/plain/i,
+  '.abw': /application\/x-abiword/i,
+  '.avi': /video\/x-msvideo/i,
+  '.azw': /application\/vnd.amazon.ebook/i,
+  '.bin': /application\/octet-stream/i,
+  '.cda': /application\/x-cdf/i,
+  '.mpkg': /application\/vnd.apple.installer+xml/i,
+  '.odp': /application\/vnd.oasis.opendocument.presentation/i,
+  '.ods': /application\/vnd.oasis.opendocument.spreadsheet/i,
+  '.odt': /application\/vnd.oasis.opendocument.text/i,
+  '.oga': /audio\/ogg/i,
+  '.ogv': /video\/ogg/i,
+  '.ogx': /application\/ogg/i,
+};
+
 /**
  * 各个单位和 KB 的关系
  *
@@ -160,11 +199,30 @@ export function getFileUrlByFileRaw(fileRaw: File): Promise<string> {
   });
 }
 
-export function getFileList(files: FileList, accept?: string) {
+export function validateFileType(accept: string, fileType: string, fileName?: string) {
+  const tmpFileType = fileType || fileName;
+  if (!accept) return true;
+
+  if (!tmpFileType) return false;
+
+  const acceptList = accept.split(',').map((v) => v.trim());
+  for (let i = 0, len = acceptList.length; i < len; i++) {
+    const oneRule = acceptList[i];
+    if (INPUT_FILE_MAP[oneRule] && INPUT_FILE_MAP[oneRule].test(tmpFileType)) {
+      return true;
+    }
+    const regExp = new RegExp(oneRule, 'i');
+    if (regExp.test(tmpFileType)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export function getFileList(files: FileList, accept: string = '') {
   const fileList: File[] = [];
   for (let i = 0; i < files.length; i++) {
-    const regExp = new RegExp(accept);
-    if (regExp.test(files[i].type)) {
+    if (validateFileType(accept, files[i].type, files[i].name)) {
       fileList.push(files[i]);
     }
   }

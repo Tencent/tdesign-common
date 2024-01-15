@@ -59,3 +59,9 @@ Use of the component is prohibited.
 If you only need the panel, you can use `TimePickerPanel` to meet the usage scenario.
 
 {{ panel }}
+
+### Time Picker with shortcut label
+
+you can use `presets`to set.
+
+{{ presets }}
