@@ -12,11 +12,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/progress/progress-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/progress/progress-2.png" />
   </div>
 </div>
 
@@ -26,7 +26,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/progress/progress-3.png" />
   </div>
 </div>
 
@@ -36,11 +36,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%203-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/progress/progress-4.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%203-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/progress/progress-5.png" />
   </div>
 </div>
 
@@ -51,8 +51,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/progress%204.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/progress/progress-6.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
 

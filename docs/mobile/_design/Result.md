@@ -12,7 +12,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Result%201.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/result/result-1.png" />
   </div>
 </div>
 
@@ -22,7 +22,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Result%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/result/result-2.png" />
   </div>
 </div>
 
@@ -32,7 +32,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Result%203.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/result/result-3.png" />
   </div>
 </div>
 
@@ -43,7 +43,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Result%204.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/result/result-4.png" />
   </div>
 </div>
 
