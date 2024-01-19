@@ -97,7 +97,7 @@
   </div>
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/tag/tag-11@2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/tag/tag-11@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
