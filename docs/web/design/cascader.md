@@ -69,12 +69,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/designguide/cascader/cascader-6@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-6@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/7@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-7@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
