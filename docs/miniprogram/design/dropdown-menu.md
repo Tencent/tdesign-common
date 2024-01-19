@@ -10,11 +10,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DropdownMenu%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DropdownMenu%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-2.png" />
   </div>
 </div>
 
@@ -25,8 +25,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DropdownMenu%202.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-3.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
 
@@ -35,14 +35,14 @@
 ##### 当筛选维度为多选时，建议提供重置按钮，便于用户恢复到未筛选状态。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DropdownMenu%203.png" />
-  <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-4.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 </div>
 
 
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [选择器](./Cascader) | 当需要在有限的空间展示大量选项供用户选择时，或一组选项由递进层级构成，需要用户逐级选择使用时。|
+| 组件名               | 何时使用                                                                                       |
+| :------------------- | :--------------------------------------------------------------------------------------------- |
+| [选择器](./Cascader) | 当需要在有限的空间展示大量选项供用户选择时，或一组选项由递进层级构成，需要用户逐级选择使用时。 |

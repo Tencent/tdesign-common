@@ -11,7 +11,7 @@
 ##### 经常用于信息种类较多的页面，将相对次要的信息收纳起来，让用户能够关注到页面中的主要信息或流程。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Collapse%201.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/collapse/collapse-1.png" />
 </div>
 
 <hr />
@@ -20,7 +20,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Collapse%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/collapse/collapse-2.png" />
   </div>
 </div>
 
@@ -29,7 +29,7 @@
 ##### 在网站中，经常使用折叠面板作为分类导航，将页面进行归类、收纳在折叠面板中，展开后可点击跳转。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Collapse%203.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/collapse/collapse-3.png" />
 </div>
 
 
@@ -40,8 +40,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Collapse%204.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/collapse/collapse-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -51,8 +51,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Collapse%205.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/collapse/collapse-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -60,6 +60,6 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [下拉菜单](./dropdown-menu) |当内容较多时，需要通过筛选快速定位某一类内容时使用。|
+| 组件名                      | 何时使用                                             |
+| :-------------------------- | :--------------------------------------------------- |
+| [下拉菜单](./dropdown-menu) | 当内容较多时，需要通过筛选快速定位某一类内容时使用。 |

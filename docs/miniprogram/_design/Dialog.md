@@ -11,15 +11,15 @@
 ##### 与输入类组合使用，用于帮助用户完成一些快捷的输入或选择；但不建议一个对话框内有多种不同的输入类组件。
 
 <div class="legend">
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dialog/dialog-1.png" />
   </div>
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%201-2.png" />
-  </div> 
-  
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dialog/dialog-2.png" />
+  </div>
+
 </div>
 
 
@@ -29,7 +29,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dialog/dialog-3.png" />
   </div>
 </div>
 
@@ -39,11 +39,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%203-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dialog/dialog-4.png" />
     <em></em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%203-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dialog/dialog-5.png" />
     <em></em>
   </div>
 </div>
@@ -55,20 +55,20 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%204-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dialog/dialog-6.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/dialog%204-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dialog/dialog-7.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 
 ### 何时使用
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [轻提示](./toast) |当需要对用户进行轻量反馈或提示，且不需要用户进行操作时使用，轻提示会在一段时间后自动消失。|
-| [消息通知](./message) |当需要对用户进行较轻量的反馈或提示，可以自动消失或通过点击关闭，通常由用户触发。|
+| 组件名                | 何时使用                                                                                   |
+| :-------------------- | :----------------------------------------------------------------------------------------- |
+| [轻提示](./toast)     | 当需要对用户进行轻量反馈或提示，且不需要用户进行操作时使用，轻提示会在一段时间后自动消失。 |
+| [消息通知](./message) | 当需要对用户进行较轻量的反馈或提示，可以自动消失或通过点击关闭，通常由用户触发。           |
 

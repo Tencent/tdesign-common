@@ -12,11 +12,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-2.png" />
   </div>
 </div>
 
@@ -27,11 +27,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%202-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-3.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%202-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-4.png" />
   </div>
 </div>
 
@@ -40,7 +40,7 @@
 ##### 通常左滑后展示删除按钮，若删除操作重要且无法撤回，可在滑动操作中对删除进行二次确认。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%203.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-5.png" />
 </div>
 
 
@@ -49,24 +49,24 @@
 ##### 左右滑动操作通常承载低频的辅助功能，不建议承载高频或过于复杂的功能。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%204.png" />
-  <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-6.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
 
 <hr />
 
 ##### 按钮的顺序、颜色使用需要符合用户预期。
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%205.png" />
-  <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-7.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
 
 <hr />
 
 ##### 左滑的操作数不建议超过4个，右滑不建议超过1个，操作过多时应改用其它交互方式。
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Swipecell%206.png" />
-  <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-8.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
 
 

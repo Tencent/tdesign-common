@@ -12,7 +12,7 @@
 
 <div class="legend">
   <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%201.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-1.png" />
   </div>
 </div>
 
@@ -21,9 +21,9 @@
 
 ##### 用于可量化的数值选择，需要精确到具体某个数值/区间。
 
-<div class="legend">  
+<div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-2.png" />
   </div>
 </div>
 
@@ -31,9 +31,9 @@
 
 ##### 用于难以量化的对立数据，以此表示程度。
 
-<div class="legend">   
+<div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%203.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-3.png" />
   </div>
 </div>
 
@@ -44,18 +44,18 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%204-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Slider%204-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [步进器](./stepper) |需要进行数量选择时使用。|
+| 组件名              | 何时使用                 |
+| :------------------ | :----------------------- |
+| [步进器](./stepper) | 需要进行数量选择时使用。 |
