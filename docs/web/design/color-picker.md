@@ -1,9 +1,6 @@
-
-
 ### 何时使用
 
 当用户需要对形状、字体或可修改的元素自定义更改颜色时。
-
 
 ### 与页面布局相关
 
@@ -11,11 +8,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/colorpicker7.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/color-picker/color-picker-1@2x.png" />
     <em>图示：置于左侧编辑栏</em>
   </div>
    <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/colorpicker8.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/color-picker/color-picker-2@2x.png" />
     <em>图示：置于右侧编辑栏</em>
   </div>
 </div>
@@ -25,9 +22,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/colorpicker9.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/color-picker/color-picker-3@2x.png" />
     <em></em>
   </div>
 </div>
-
-
