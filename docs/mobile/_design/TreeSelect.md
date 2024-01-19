@@ -2,6 +2,7 @@
 
 ## 组件设计指南
 
+
 ### 何时使用
 
 当一组选项由2-3个层级构成，且每个层级有大量的选项需要用户逐级选择时使用。
@@ -13,8 +14,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/TreeSelect%201.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tree-select/tree-select-1.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -22,7 +23,7 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [选择器](./picker) | 当需要在有限的空间展示大量选项供用户选择时，或一组选项由递进层级构成，需要用户逐级选择使用时。|
-| [级联选择器](./cascader) |当一组选项由递进层级构成，且有每个层级有大量的选项需要用户逐级选择使用时。|
+| 组件名                   | 何时使用                                                                                       |
+| :----------------------- | :--------------------------------------------------------------------------------------------- |
+| [选择器](./picker)       | 当需要在有限的空间展示大量选项供用户选择时，或一组选项由递进层级构成，需要用户逐级选择使用时。 |
+| [级联选择器](./cascader) | 当一组选项由递进层级构成，且有每个层级有大量的选项需要用户逐级选择使用时。                     |

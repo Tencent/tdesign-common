@@ -8,11 +8,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cell/cell-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cell/cell-2.png" />
   </div>
 </div>
 
@@ -22,7 +22,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cell/cell-3.png" />
   </div>
 </div>
 
@@ -32,8 +32,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%203.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cell/cell-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -43,8 +43,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cell%204.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cell/cell-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -52,6 +52,6 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [宫格](./grid) | 当需要展示多个功能或信息入口，且这些入口没有明显的优先级时使用。|
+| 组件名         | 何时使用                                                         |
+| :------------- | :--------------------------------------------------------------- |
+| [宫格](./grid) | 当需要展示多个功能或信息入口，且这些入口没有明显的优先级时使用。 |

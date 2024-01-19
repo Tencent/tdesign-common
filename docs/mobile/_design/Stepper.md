@@ -12,7 +12,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Stepper%201.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/stepper/stepper-1.png" />
   </div>
 </div>
 
@@ -22,7 +22,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Stepper%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/stepper/stepper-2.png" />
   </div>
 </div>
 
@@ -33,20 +33,20 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Stepper%203-1.gif" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/stepper/stepper-3.gif" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Stepper%203-2.gif" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/stepper/stepper-4.gif" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [滑动选择器](./slider) |当用户需要快捷地进行数值/程度选择时使用。|
-| [输入框](./input) |需要进行文字输入，且需填写的字数较少时使用。|
+| 组件名                 | 何时使用                                     |
+| :--------------------- | :------------------------------------------- |
+| [滑动选择器](./slider) | 当用户需要快捷地进行数值/程度选择时使用。    |
+| [输入框](./input)      | 需要进行文字输入，且需填写的字数较少时使用。 |

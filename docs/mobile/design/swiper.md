@@ -10,11 +10,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swiper/swiper-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swiper/swiper-2.png" />
   </div>
 </div>
 
@@ -23,7 +23,7 @@
  ##### 在图文详情页场景，用于当图片数量大于1时的折叠展示。
 <div class="legend">
  <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%201-3.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swiper/swiper-3.png" />
  </div>
 </div>
 
@@ -34,7 +34,7 @@
 
 <div class="legend">
  <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/swiper%202.png" />
-   <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swiper/swiper-4.png" />
+   <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
  </div>
 </div>

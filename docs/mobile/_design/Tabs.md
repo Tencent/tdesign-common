@@ -12,11 +12,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs1-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs1-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-2.png" />
   </div>
 </div>
 
@@ -24,9 +24,9 @@
 
 ##### 选项卡与[徽标](./badge)组合使用，用于展示户该分类的状态变化或营销信息。
 
-<div class="legend">  
+<div class="legend">
   <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs2.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-3.png" />
   </div>
 </div>
 
@@ -35,19 +35,19 @@
 
 ##### 较常使用于以信息瀑布流为场景的应用，使用选项卡承载类目或状态，便于用户区分和切换。
 
-<div class="legend">  
+<div class="legend">
  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs7-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-4.png" />
   </div>
 
  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs7-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-5.png" />
   </div>
 </div>
 
-<div class="legend">  
+<div class="legend">
   <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs3-2.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-6.png" />
   </div>
 </div>
 
@@ -58,13 +58,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs4-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-7.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs4-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-8.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -73,13 +73,13 @@
 ##### 建议文本简明扼要，不建议将文本进行截断或换行；若需要使用较长文本，建议使用等距选项卡。
 
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs5-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-9.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs5-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-10.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 
 <hr />
@@ -88,13 +88,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs6-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-11.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tabs6-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-12.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -102,7 +102,7 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [标签栏](./tab-bar) | 当目标模块/视图需要从应用的任何地方直接进行访问时使用。|
-| [侧边栏](./side-bar) |当内容项数量较多，需要用户根据品类快速选择到目标内容项时使用。|
+| 组件名               | 何时使用                                                       |
+| :------------------- | :------------------------------------------------------------- |
+| [标签栏](./tab-bar)  | 当目标模块/视图需要从应用的任何地方直接进行访问时使用。        |
+| [侧边栏](./side-bar) | 当内容项数量较多，需要用户根据品类快速选择到目标内容项时使用。 |

@@ -11,7 +11,7 @@
 ##### 通常和[单元格](./Cell)搭配使用，点击后唤起时间选择器。
 
  <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DateTimePicker%201.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/date-time-picker/date-time-picker-1.png" />
  </div>
 
 ### 常见用法
@@ -19,11 +19,11 @@
 ##### 当需要输入时间区间时，通常使用两个时间选择器分别选择起、止时间。
 
  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DateTimePicker%202-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/date-time-picker/date-time-picker-2.png" />
  </div>
 
  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DateTimePicker%202-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/date-time-picker/date-time-picker-3.png" />
  </div>
 
 ### 推荐/慎用示例
@@ -32,8 +32,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/DateTimePicker%203.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/date-time-picker/date-time-picker-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
 

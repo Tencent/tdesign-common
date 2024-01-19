@@ -10,7 +10,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-1.png" />
     <em></em>
   </div>
 </div>
@@ -21,19 +21,19 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-2.png" />
     <em></em>
   </div>
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-3.png" />
     <em></em>
   </div>
 </div>
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button2-3.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-4.png" />
     <em></em>
   </div>
 </div>
@@ -44,11 +44,11 @@
 ##### 当在填写场景，按钮通常作为当前流程的结束操作，在表单过长时通常需要吸顶或吸底处理。
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button3-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-5.png" />
     <em></em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button3-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-6.png" />
     <em></em>
   </div>
 </div>
@@ -60,13 +60,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-7.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Button4-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-8.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -74,8 +74,8 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [链接](./link) | 当需要外链跳转或页面底部footer链接跳转时使用。 |
-| [悬浮按钮](./fab) | 当某个操作为全局操作，且为用户高频/业务强推的操作时可使用。 |
-| [返回顶部](./back-top) | 当页面内容过长，用户有快速返回到页面顶部的诉求时使用。 |
+| 组件名                 | 何时使用                                                    |
+| :--------------------- | :---------------------------------------------------------- |
+| [链接](./link)         | 当需要外链跳转或页面底部footer链接跳转时使用。              |
+| [悬浮按钮](./fab)      | 当某个操作为全局操作，且为用户高频/业务强推的操作时可使用。 |
+| [返回顶部](./back-top) | 当页面内容过长，用户有快速返回到页面顶部的诉求时使用。      |

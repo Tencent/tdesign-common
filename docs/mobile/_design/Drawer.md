@@ -11,7 +11,7 @@
 ##### 抽屉与[按钮](./button)组合使用，通过按钮点击唤起抽屉。
 
  <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%201.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/drawer/drawer-1.png" />
  </div>
 
 ### 常见用法
@@ -19,7 +19,7 @@
 ##### 在网站场景，通常用来收折展示整个网站的菜单导航。
 
  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/drawer/drawer-2.png" />
  </div>
 
 <hr />
@@ -27,7 +27,7 @@
 ##### 在应用场景，通常用来承载某类相关性较强的或较为低频的，如个人中心、设置等场景。
 
  <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer%203.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/drawer/drawer-3.png" />
  </div>
 
 
@@ -37,13 +37,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/drawer/drawer-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Drawer4-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/drawer/drawer-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
