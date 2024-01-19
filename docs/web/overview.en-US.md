@@ -269,7 +269,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">20</em></h3>
+<h3>Data Display<em class="tag">22</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar-en">

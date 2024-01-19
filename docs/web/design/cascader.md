@@ -10,7 +10,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-1@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-1@2x.png" />
     <em></em>
   </div>
 
@@ -20,7 +20,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-2@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-2@2x.png" />
     <em></em>
   </div>
 
@@ -32,7 +32,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-3@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-3@2x.png" />
     <em></em>
   </div>
 
@@ -44,7 +44,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-4@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-4@2x.png" />
     <em></em>
   </div>
 
@@ -57,7 +57,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-5@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-5@2x.png" />
     <em></em>
   </div>
 
@@ -69,12 +69,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/designguide/casacader/casacader-6@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/designguide/cascader/cascader-6@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/7@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/7@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
@@ -85,12 +85,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-8@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-8@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-9@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-9@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
@@ -101,12 +101,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-10@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-10@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/casacader/casacader-11@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/cascader/cascader-11@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
