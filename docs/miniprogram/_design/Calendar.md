@@ -11,7 +11,7 @@
 ##### 通常和[单元格](./cell)搭配使用，点击后唤起日历。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Calender%201.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/calendar/calendar-1.png" />
 </div>
 
 ### 推荐/慎用
@@ -20,13 +20,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Calender%202-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/calendar/calendar-2.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Calender%202-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/calendar/calendar-3.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -36,13 +36,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Calender%202-3.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/calendar/calendar-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Calender%202-4.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/calendar/calendar-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 

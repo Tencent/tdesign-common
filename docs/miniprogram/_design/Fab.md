@@ -12,21 +12,21 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-1.png" />
     <em></em>
   </div>
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-2.png" />
     <em></em>
-  </div>  
+  </div>
 </div>
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%201-3.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-3.png" />
     <em></em>
-  </div>  
+  </div>
 </div>
 
 
@@ -35,7 +35,7 @@
 ##### 悬浮按钮与[动作面板](./action-sheet)组合使用，当触发悬浮按钮涉及的任务通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
 <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%202.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-4.png" />
    <em></em>
 </div>
 
@@ -46,13 +46,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%203-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%203-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-6.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -62,21 +62,21 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%204-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-7.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Fab%204-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/fab/fab-8.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [按钮](./button) | 当前流程的结束或新流程的开启需要用户点击触发时使用。 |
+| 组件名                  | 何时使用                                               |
+| :---------------------- | :----------------------------------------------------- |
+| [按钮](./button)        | 当前流程的结束或新流程的开启需要用户点击触发时使用。   |
 | [返回顶部](./back-top ) | 当页面内容过长，用户有快速返回到页面顶部的诉求时使用。 |
 

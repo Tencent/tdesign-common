@@ -12,11 +12,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-2.png" />
   </div>
 </div>
 
@@ -24,9 +24,9 @@
 
 ##### 与[下拉菜单](./dropdown-menu)组合使用，作为菜单面板下拉后的选项，供用户进行选择。
 
-<div class="legend">  
+<div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-3.png" />
   </div>
 </div>
 
@@ -34,13 +34,13 @@
 
 ##### 常用于展示对象本身的属性、状态、类别、营销情况等信息，且仅作为展示使用。
 
-<div class="legend">  
+<div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%203-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-4.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%203-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-5.png" />
   </div>
 </div>
 
@@ -48,13 +48,13 @@
 
 ##### 常用于内容数据基于某个维度或某些维度的检索、筛选。
 
-<div class="legend">  
+<div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%204-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-6.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%204-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-7.png" />
   </div>
 </div>
 
@@ -65,8 +65,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%205.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-8.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -75,14 +75,14 @@
 ##### 标签文案需要经过概括和提炼，不建议过长。
 
 <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Tag%206.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-9.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
 
 
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [徽标](./badge) | 当需要展示特定对象的状态变化或承载运营性质提示时使用。|
+| 组件名          | 何时使用                                               |
+| :-------------- | :----------------------------------------------------- |
+| [徽标](./badge) | 当需要展示特定对象的状态变化或承载运营性质提示时使用。 |

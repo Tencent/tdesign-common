@@ -11,7 +11,7 @@
 ##### 通常用于图片上传，点击上传按钮可唤起[动作面板](./action-sheet)，供用户选择不同渠道进行新的上传。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%201.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/upload/upload-1.png" />
 </div>
 
 <hr />
@@ -19,7 +19,7 @@
 ##### 点击已经上传的图片可跳转[图片预览](./image-viewer)，让用户对已上传的图片进行快速查看。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%202.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/upload/upload-2.png" />
 </div>
 
 
@@ -29,8 +29,8 @@
 ##### 若上传的文件有尺寸、格式、数量限制，推荐在文案中进行明确标识。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%203.png" />
-  <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/upload/upload-3.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 </div>
 
 <hr />
@@ -39,7 +39,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Upload%204.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/upload/upload-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
