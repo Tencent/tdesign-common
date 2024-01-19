@@ -1,6 +1,3 @@
-
-
-
 ### 何时使用
 
 需要将不同类型的数据，组成集合在同一区域展示时；
@@ -15,26 +12,24 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/card/card-1@2x.png" />
     <em>图示：同样大小的卡片在栅格系统中</em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/card/card-2@2x.png" />
     <em>图示：不同大小的卡片在栅格系统中</em>
   </div>
 </div>
 
 <hr />
 
-
 ### 组件搭配使用
-
 
 ##### 卡片与搜索框搭配使用，当卡片数量较多时，用户可精确检索快速找到对应卡片。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card3.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/card/card-3@2x.png" />
     <em></em>
   </div>
 
@@ -46,12 +41,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card4.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/card/card-4@2x.png" />
     <em></em>
   </div>
 
 </div>
-
 
 <hr />
 
@@ -59,12 +53,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card5.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/card/card-5@2x.png" />
     <em></em>
   </div>
 
 </div>
-
 
 <hr />
 
@@ -74,12 +67,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card6.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/card/card-6@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card7.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/card/card-7@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -87,12 +80,8 @@
 
 ##### 数据格式一致、信息类型较简时，建议使用列表呈现而非卡片，避免增加页面的复杂性。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card8.png" />
-<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+<img src="https://tdesign.gtimg.com/site/design/guide/card/card-8@2x.png" />
+<img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 
-
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/guide/Card9.png" />
-<img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
-
-
-
+<img src="https://tdesign.gtimg.com/site/design/guide/card/card-9@2x.png" />
+<img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
