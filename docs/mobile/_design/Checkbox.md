@@ -26,14 +26,14 @@
 ##### 带有详情信息的选项，建议就近展开相关内容，不建议在触发一个弹窗。
 
 <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/check-box/check-box-3.png" />
-    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
-  </div>
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/check-box/check-box-3.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
+</div>
 
 <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/check-box/check-box-4.png" />
-    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
-  </div>
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/check-box/check-box-4.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
+</div>
 
 <hr />
 
@@ -41,12 +41,9 @@
 
 
 <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/check-box/check-box-5.png" />
-    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
-  </div>
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/check-box/check-box-5.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 </div>
-
-
 
 ### 相似组件
 
