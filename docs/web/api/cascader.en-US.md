@@ -58,6 +58,9 @@ When enabled, you can select any level of options.
 
 The default input/output value type is the value of the leaf node. The full path value is used when `value-type="full"`
 
+- In the case of single selection, `value` is a one-dimensional array after selection, such as: `['1','1.1']`
+- In the case of multiple selection, `value` is a two-dimensional array after selection, such as: `[['1','1.1'],['1','1.2']]`
+
 {{ value-type }}
 
 ### Customize Selected Value Mode
