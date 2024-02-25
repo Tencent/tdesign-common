@@ -583,7 +583,6 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       const rowValue = get(item, keys.rowKey);
       const state = this.treeDataMap.get(rowValue);
       state.rowIndex = state.level === 0 ? index : -1;
-      console.log(state.rowIndex);
       state.expanded = false;
       state.expandChildrenLength = 0;
       if (state.level === 0) {
