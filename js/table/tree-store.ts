@@ -577,15 +577,18 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
    */
   foldAll(dataSource: T[], keys: KeysType) {
     const newData: T[] = [];
+    let index = 0;
     for (let i = 0, len = dataSource.length; i < len; i++) {
       const item = dataSource[i];
       const rowValue = get(item, keys.rowKey);
       const state = this.treeDataMap.get(rowValue);
-      state.rowIndex = state.level === 0 ? i : -1;
+      state.rowIndex = state.level === 0 ? index : -1;
+      console.log(state.rowIndex);
       state.expanded = false;
       state.expandChildrenLength = 0;
       if (state.level === 0) {
         newData.push(item);
+        index += 1;
       }
       const children = get(item, keys.childrenKey);
       if (children?.length) {
