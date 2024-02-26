@@ -22,18 +22,6 @@
     border-collapse: collapse;
     font: @font-body-medium;
 
-    .generate-padding(@size, @padding) {
-      &.@{prefix}-size-@{size} {
-        > tbody {
-          > tr {
-            > td {
-              padding: @padding;
-            }
-          }
-        }
-      }
-    }
-
     .generate-padding(l, @descriptions-padding-l);
     .generate-padding(m, @descriptions-padding-m);
     .generate-padding(s, @descriptions-padding-s);
