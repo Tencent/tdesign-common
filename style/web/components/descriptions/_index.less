@@ -22,31 +22,21 @@
     border-collapse: collapse;
     font: @font-body-medium;
 
-    &.@{prefix}-size-l {
-      td {
-        padding: @descriptions-padding-l;
-      }
-    }
-
-    &.@{prefix}-size-m {
-      td {
-        padding: @descriptions-padding-m;
-      }
-    }
-
-    &.@{prefix}-size-s {
-      td {
-        padding: @descriptions-padding-s;
-      }
-    }
+    .generate-padding(l, @descriptions-padding-l);
+    .generate-padding(m, @descriptions-padding-m);
+    .generate-padding(s, @descriptions-padding-s);
 
     & .@{prefix}-@{componentName}__label {
       color: @text-color-placeholder;
     }
 
     &--border {
-      td {
-        border: @descriptions-td-border;
+      > tbody {
+        > tr {
+          > td {
+            border: @descriptions-td-border;
+          }
+        }
       }
 
       .@{prefix}-@{componentName}__label {
