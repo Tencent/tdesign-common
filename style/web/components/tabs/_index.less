@@ -42,11 +42,12 @@
 
     &--left {
       left: 0;
+      z-index: 2;
     }
 
     &--right {
       right: 0;
-      z-index: 1;
+      z-index: 2;
 
       .@{prefix}-tabs__btn {
         &:first-child {
@@ -171,6 +172,7 @@
     overflow: hidden;
     white-space: nowrap;
     transform: @tab-nav-scroll-transform;
+    z-index: 1;
   }
 
   &__nav-wrap {
