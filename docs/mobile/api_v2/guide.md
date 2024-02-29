@@ -7,3 +7,16 @@ toc: false
 ---
 
 ### 基础引导
+{{ base }}
+
+### 不带遮罩的引导
+{{ no-mask }}
+
+### 弹窗形式的引导
+{{ dialog }}
+
+### 气泡与弹窗混合的引导
+{{ popover-dialog }}
+
+### 自定义气泡
+{{ custom-popover }}
