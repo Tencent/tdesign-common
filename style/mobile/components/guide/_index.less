@@ -12,7 +12,7 @@
   &--fixed {
     position: fixed;
   }
-      
+
   &__overlay {
     position: fixed;
     top: 0;
@@ -26,10 +26,11 @@
     z-index: @guide-highlight-z-index;
     transition: @anim-duration-base @anim-time-fn-ease-out;
     border-radius: @border-radius-small;
-    
+
     &--mask {
       box-shadow: 0 0 0 0 @mask-active, @mask-active 0 0 0 5000px;
     }
+
     &--dialog {
       box-shadow: none;
     }
@@ -40,9 +41,11 @@
       box-sizing: border-box;
     }
   }
+
   &__reference {
     z-index: @guide-reference-z-index;
   }
+
   &__wrapper {
     .@{prefix}-popover {
       &__content {
@@ -52,6 +55,7 @@
     .@{prefix}-popover[data-popper-placement^="bottom"] .@{prefix}-popover__content {
       margin-top: @guide-popover-margin-top;
     }
+
     &--content {
       .@{prefix}-popover__content {
         background: none;
@@ -61,10 +65,12 @@
       }
     }
   }
+
   &__content {
     &--popover {
       padding: @guide-popover-content-padding;
     }
+
     &--dialog {
       padding: @guide-dialog-content-padding;
       min-width: var(--td-guide-dialog-width, 311px);
@@ -73,26 +79,31 @@
       }
     }
   }
+
   &__content--popover &__tooltip {
     min-width: var(--td-guide-tooltip-min-width, 240px);
     max-width: var(--td-guide-tooltip-max-width, 270px);
   }
+
   &__title {
     text-align: left;
     color: @text-color-primary;
     font: @font-title-small;
     font-weight: 700;
   }
+
   &__desc {
     margin-top: @guide-tooltip-desc-margin-top;
     text-align: left;
     color: @text-color-secondary;
     font-size: @font-body-small;
   }
+
   &__footer {
     display: flex;
     align-items: center;
     margin-top: @guide-footer-popover-margin-top;
+
     button {
       margin-right: @guide-action-margin-right;
     }
@@ -100,6 +111,7 @@
     button:last-child {
       margin-right: 0;
     }
+
     &--popover {
       justify-content: flex-end;
     }
@@ -107,6 +119,7 @@
     &--dialog {
       margin-top: @spacer-3;
       padding: @guide-dialog-footer-padding;
+
       button:last-child {
         flex-grow: 1;
       }
