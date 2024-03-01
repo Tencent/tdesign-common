@@ -2,9 +2,9 @@
 
 @import "./_var.less";
 
-@componentName: guide;
+@guide: ~"@{prefix}-guide";
 
-.@{prefix}-@{componentName} {
+.@{guide} {
   &--absolute {
     position: absolute;
   }
@@ -25,7 +25,7 @@
   &__highlight {
     z-index: @guide-highlight-z-index;
     transition: @anim-duration-base @anim-time-fn-ease-out;
-    border-radius: @border-radius-small;
+    border-radius: @guide-highlight-border-radius;
 
     &--mask {
       box-shadow: 0 0 0 0 @mask-active, @mask-active 0 0 0 5000px;
@@ -36,7 +36,7 @@
     }
 
     &--nomask {
-      border-radius: @border-radius-small;
+      border-radius: @guide-highlight-border-radius;
       border: 2px solid @brand-color;
       box-sizing: border-box;
     }
@@ -74,7 +74,7 @@
     &--dialog {
       padding: @guide-dialog-content-padding;
       min-width: var(--td-guide-dialog-width, 311px);
-      .@{prefix}-@{componentName}__title, .@{prefix}-@{componentName}__desc {
+      .@{guide}__title, .@{guide}__desc {
         text-align: center;
       }
     }
@@ -88,7 +88,7 @@
   &__title {
     text-align: left;
     color: @text-color-primary;
-    font: @font-title-small;
+    font: @guide-title-font-size;
     font-weight: 700;
   }
 
@@ -96,7 +96,7 @@
     margin-top: @guide-tooltip-desc-margin-top;
     text-align: left;
     color: @text-color-secondary;
-    font-size: @font-body-small;
+    font-size: @guide-body-font-size;
   }
 
   &__footer {
@@ -124,7 +124,7 @@
         flex-grow: 1;
       }
 
-      .@{prefix}-@{componentName} {
+      .@{guide} {
         &__action {
           display: flex;
           justify-content: center;

@@ -1,8 +1,8 @@
 // 层级变量
-@z-index-guide: 999999;
-@guide-overlay-z-index: @z-index-guide - 2;
-@guide-highlight-z-index: @z-index-guide - 1;
-@guide-reference-z-index: @z-index-guide;
+@guide-z-index: 999999;
+@guide-overlay-z-index: @guide-z-index - 2;
+@guide-highlight-z-index: @guide-z-index - 1;
+@guide-reference-z-index: @guide-z-index;
 
 // margin 间距相关
 @comp-margin-xxl: 24px;
@@ -23,8 +23,7 @@
 @guide-dialog-footer-padding: 0 @comp-padding-xxl;
 
 // border 相关
-@border-radius-small: @radius-small; // 3px
-@border-radius-dialog: 4.5px;
+@guide-highlight-border-radius: @radius-small; // 3px
 
 // color 相关
 @guide-popover-border-color: @gray-color-4;
@@ -32,3 +31,5 @@
 // font 相关
 @font-title-small: 16px;
 @font-body-small: 14px;
+@guide-title-font-size: @font-title-small;
+@guide-body-font-size: @font-body-small;
