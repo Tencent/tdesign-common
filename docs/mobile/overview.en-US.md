@@ -362,6 +362,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/guide-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-guide.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-guide-dark.png" />
+      <p class="name">Guide</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/dropdown-menu-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu-dark.png" />
