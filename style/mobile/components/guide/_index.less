@@ -50,6 +50,7 @@
     .@{prefix}-popover {
       &__content {
         border: 1px solid @guide-popover-border-color;
+        border-radius: @guide-popover-border-radius;
       }
     }
     .@{prefix}-popover[data-popper-placement^="bottom"] .@{prefix}-popover__content {
@@ -66,6 +67,10 @@
     }
   }
 
+  &__dialog {
+    border-radius: @guide-dialog-border-radius;
+  }
+
   &__content {
     &--popover {
       padding: @guide-popover-content-padding;
@@ -73,9 +78,17 @@
 
     &--dialog {
       padding: @guide-dialog-content-padding;
-      min-width: var(--td-guide-dialog-width, 311px);
-      .@{guide}__title, .@{guide}__desc {
+      width: var(--td-guide-dialog-width, 311px);
+      .@{guide}__title {
         text-align: center;
+        font-size: @guide-dialog-title-font-size;
+        line-height: @guide-dialog-title-line-height;
+      }
+      .@{guide}__desc {
+        margin-top: @guide-dialog-desc-margin-top;
+        text-align: center;
+        font-size: @guide-dialog-desc-font-size;
+        line-height: @guide-dialog-desc-line-height;
       }
     }
   }
@@ -88,15 +101,18 @@
   &__title {
     text-align: left;
     color: @text-color-primary;
-    font: @guide-title-font-size;
-    font-weight: 700;
+    font-size: @guide-popover-title-font-size;
+    font-weight: 600;
+    line-height: @guide-popover-title-line-height;
   }
 
   &__desc {
     margin-top: @guide-tooltip-desc-margin-top;
     text-align: left;
     color: @text-color-secondary;
-    font-size: @guide-body-font-size;
+    font-size: @guide-popover-desc-font-size;
+    font-weight: 400;
+    line-height: @guide-popover-desc-line-height;
   }
 
   &__footer {
