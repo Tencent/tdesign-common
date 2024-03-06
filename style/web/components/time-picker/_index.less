@@ -79,12 +79,10 @@
       height: @time-picker-panel-item-height;
       width: 100%;
       display: flex;
+      transform: translateY(calc(-50% - @time-picker-panel-item-margin-vertical / 2));
 
       > div {
         flex: 1;
-        transform: translateY(
-          calc(0px - (calc(@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) /2))
-        );
         height: @time-picker-panel-item-height;
         background-color: @time-picker-panel-item-background-color-current;
         margin: @time-picker-panel-item-margin;
