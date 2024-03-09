@@ -516,3 +516,12 @@ export function isEnabledDate({
   }
   return isEnabled;
 }
+
+/**
+ * formatDate 方法需要date作为入参，部分场景需要将timestamp或格式化后的时间string转换为date进行使用
+ */
+export function covertToDate(value: string, valueType: string) {
+  return valueType === 'time-stamp'
+    ? new Date(value)
+    : dayjs(value, valueType).toDate();
+}
