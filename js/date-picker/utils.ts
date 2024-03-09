@@ -525,4 +525,3 @@ export function covertToDate(value: string, valueType: string) {
     ? new Date(value)
     : dayjs(value, valueType).toDate();
 }
-
