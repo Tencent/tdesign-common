@@ -51,3 +51,9 @@ Available in large, medium (default) and small sizes.
 Available in square, round and mark shapes.
 
 {{ shape }}
+
+### Self-defined Color of Tags
+
+customize the colors through `color` attribute when `theme` attribute doesn't meet requirements.
+
+{{ custom-color }}
