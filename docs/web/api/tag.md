@@ -52,9 +52,8 @@ spline: data
 
 {{ shape }}
 
-
 ### 自定义标签颜色
 
 `theme`提供的颜色不满足业务需求的时候，可以通过`color` 属性自定义颜色
 
-{{ shape }}
+{{ custom-color }}
