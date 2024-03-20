@@ -224,4 +224,8 @@ export default {
     rotateTipText: '旋轉',
     originalSizeTipText: '原始大小',
   },
+  typography: {
+    expand: '展開',
+    copied: '復製成功'
+  }
 } as const;

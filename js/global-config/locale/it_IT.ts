@@ -224,4 +224,8 @@ export default {
     rotateTipText: 'Ruota',
     originalSizeTipText: 'Dimensione originale',
   },
+  typography: {
+    expand: 'Espandere',
+    copied: 'Copia completata'
+  }
 } as const;
