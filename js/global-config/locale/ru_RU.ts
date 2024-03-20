@@ -223,4 +223,8 @@ export default {
     rotateTipText: 'Поворот',
     originalSizeTipText: 'Оригинальный размер',
   },
+  typography: {
+    expand: 'раскрывать',
+    copied: 'Скопировано успешно'
+  }
 } as const;

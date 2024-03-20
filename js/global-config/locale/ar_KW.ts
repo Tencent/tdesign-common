@@ -221,4 +221,8 @@ export default {
     rotateTipText: 'استدارة',
     originalSizeTipText: 'أصلي',
   },
+  typography: {
+    expand: 'توسيع',
+    copied: 'النسخ اكتمل'
+  }
 } as const;

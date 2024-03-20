@@ -214,15 +214,19 @@ export default {
       content: 'Last Step',
       theme: 'default',
     },
-    image: {
-      errorText: 'unable to load',
-      loadingText: 'loading',
-    },
-    imageViewer: {
-      errorText: 'unable to load',
-      mirrorTipText: 'mirror',
-      rotateTipText: 'rotate',
-      originalSizeTipText: 'original',
-    },
   },
+  image: {
+    errorText: 'unable to load',
+    loadingText: 'loading',
+  },
+  imageViewer: {
+    errorText: 'unable to load',
+    mirrorTipText: 'mirror',
+    rotateTipText: 'rotate',
+    originalSizeTipText: 'original',
+  },
+  typography: {
+    expand: 'more',
+    copied: 'copied'
+  }
 } as const;

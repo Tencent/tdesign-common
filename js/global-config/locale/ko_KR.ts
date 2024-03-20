@@ -224,4 +224,8 @@ export default {
     rotateTipText: '회전하다',
     originalSizeTipText: '원본 크기',
   },
+  typography: {
+    expand: '펼치다',
+    copied: '복사 성공'
+  }
 } as const;
