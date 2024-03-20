@@ -227,6 +227,7 @@ export default {
   },
   typography: {
     expand: 'more',
+    collapse: 'collapse',
     copied: 'copied'
   }
 } as const;

@@ -223,6 +223,7 @@ export default {
   },
   typography: {
     expand: 'توسيع',
+    collpase: 'طي',
     copied: 'النسخ اكتمل'
   }
 } as const;

@@ -226,6 +226,7 @@ export default {
   },
   typography: {
     expand: 'もっと拡大する',
+    collapse: '畳む',
     copied: 'コピー成功'
   }
 } as const;

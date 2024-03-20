@@ -226,6 +226,7 @@ export default {
   },
   typography: {
     expand: '펼치다',
+    collapse: '접다',
     copied: '복사 성공'
   }
 } as const;
