@@ -226,6 +226,7 @@ export default {
   },
   typography: {
     expand: '展開',
+    collapse: '收起',
     copied: '復製成功'
   }
 } as const;

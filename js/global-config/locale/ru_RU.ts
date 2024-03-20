@@ -225,6 +225,7 @@ export default {
   },
   typography: {
     expand: 'раскрывать',
+    collapse: 'убрать',
     copied: 'Скопировано успешно'
   }
 } as const;
