@@ -92,6 +92,8 @@ export default {
       date: 'Seleziona la data',
       month: 'Seleziona il mese',
       year: "Seleziona l'anno",
+      quarter: 'Seleziona il trimestre',
+      week: 'Seleziona una settimana'
     },
     weekdays: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
     months: [

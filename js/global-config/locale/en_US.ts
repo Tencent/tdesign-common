@@ -94,6 +94,8 @@ export default {
       date: 'select date',
       month: 'select month',
       year: 'select year',
+      quarter: 'select quarter',
+      week: 'select week',
     },
     weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     months: [

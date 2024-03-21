@@ -92,6 +92,8 @@ export default {
       date: '請選擇日期',
       month: '請選擇月份',
       year: '請選擇年份',
+      quarter: '請選擇季度',
+      week: '請選擇周',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
     months: [
