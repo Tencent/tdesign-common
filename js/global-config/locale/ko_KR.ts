@@ -92,6 +92,8 @@ export default {
       date: '날짜를 선택하세요Z',
       month: '월을 선택하세요',
       year: '연도를 선택하세요',
+      quarter: '분기별 선택',
+      week: '요일 선택'
     },
     weekdays: ['월', '화', '수', '목', '금', '토', '일'],
     months: [
