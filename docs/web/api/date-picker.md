@@ -76,7 +76,7 @@ spline: form
 
 {{ panel }}
 
-### 不限制日期区间选择范围的选择器。
+### 不限制日期区间选择范围的选择器
 
 {{ cancel-range-limit }}
 
