@@ -1,0 +1,170 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "./_doc.less";
+
+@import "../../mixins/_reset.less";
+
+@user-background-color: rgba(0, 197, 108, 0.3);
+
+.@{prefix}-chat {
+  .reset;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  color: @comment-text-color-default;
+  // 聊天列表
+  &__list {
+    flex: 1;
+    overflow: auto;
+    &--reverse {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .place-holder {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+  // 输入框插槽
+  &__footer {
+    position: relative;
+  }
+  &__inner {
+    display: flex;
+    margin-bottom: @comment-author-margin-bottom;
+  }
+  // chat布局
+  &--normal {
+    .@{prefix}-chat__inner.user {
+      flex-direction: row-reverse;
+      .@{prefix}-chat__avatar {
+        margin-right: 0;
+        margin-left: @comment-avatar-margin-right;
+      }
+      .@{prefix}-chat__content {
+        align-items: flex-end;
+        .@{prefix}-chat__base {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+  ::v-deep &--normal .user {
+    flex-direction: row-reverse;
+  }
+  ::v-deep &--normal .user {
+    justify-content: flex-end;
+  }
+  &__avatar {
+    flex-shrink: 0;
+    margin-right: @comment-avatar-margin-right;
+    cursor: pointer;
+    display: flex;
+  }
+
+  &__avatar-image {
+    width: @comment-avatar-size;
+    height: @comment-avatar-size;
+    border-radius: @border-radius-circle;
+  }
+
+  &__content {
+    font: @comment-content-text-size;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+  }
+  &__name {
+    display: inline-flex;
+    align-items: center;
+    font: @comment-author-text-size;
+    padding-right: @comment-author-name-padding-right;
+    cursor: pointer;
+  }
+
+  &__time {
+    font: @comment-secondary-text-size;
+    padding-right: @comment-author-time-padding-right;
+    color: @comment-text-color-secondary;
+  }
+// 消息样式
+  &__detail {
+    word-break: break-all;
+    font: @comment-content-text-size;
+    background: var(--bg-color-code);
+    padding: 16px;
+    border-radius: 6px;
+    .content {
+      &.error {
+        color: #d91010;
+      }
+      ol {
+        padding-inline-start: 20px;
+
+        li {
+          list-style: decimal;
+        }
+      }
+      :deep(img) {
+        max-width: 100%;
+        margin: 4px 0;
+        border-radius: 4px;
+      }
+
+      .waiting {
+        width: 6px;
+        height: 20px;
+        background-color: rgb(0 0 0 / 84%);
+        animation: flash 0.8s infinite;
+      }
+    }
+
+    .user pre {
+      margin: 0;
+      line-height: 24px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    :where(code):not(:where(pre *)) {
+      color: #ff502c !important;
+    }
+
+    .text-loading {
+      position: absolute;
+      top: 6px;
+      left: 8px;
+    }
+  }
+  .user &__detail{
+    background: @user-background-color;
+  }
+  &__actions {
+    margin-top: @comment-actions-margin-top;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: @comment-actions-gap;
+
+    .@{prefix}-button--variant-text {
+      color: @text-color-placeholder;
+
+      .@{prefix}-button__text {
+        gap: @comment-actions-gap;
+      }
+    }
+  }
+}
