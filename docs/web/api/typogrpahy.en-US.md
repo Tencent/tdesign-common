@@ -10,18 +10,18 @@ spline: base
 
 {{ base }}
 
-#### Title
+### Title
 
 {{ title }}
 
-#### Text
+### Text
 
 {{ text }}
 
-#### Copyable
+### Copyable
 
 {{ copyable }}
 
-#### Ellipsis
+### Ellipsis
 
 {{ ellipsis }}
