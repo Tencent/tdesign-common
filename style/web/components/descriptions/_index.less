@@ -6,10 +6,10 @@
 
 @import "../../mixins/_reset.less";
 
-@componentName: descriptions;
-
-.@{prefix}-@{componentName} {
+.@{prefix}-descriptions {
   .reset;
+
+  @root: .@{prefix}-descriptions;
 
   &__header {
     color: @text-color-primary;
@@ -27,7 +27,7 @@
     .generate-padding(m, @descriptions-padding-m);
     .generate-padding(s, @descriptions-padding-s);
 
-    & .@{prefix}-@{componentName}__label {
+    & @{root}__label {
       color: @text-color-placeholder;
     }
 
@@ -40,7 +40,7 @@
         }
       }
 
-      .@{prefix}-@{componentName}__label {
+      @{root}__label {
         background-color: @bg-color-secondarycontainer;
 
         &:hover {
