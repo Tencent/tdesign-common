@@ -37,7 +37,7 @@
     "@babel/preset-flow": "^7.12.1",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.0.3",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^29.5.12",
     "@types/lodash": "4.14.185",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/experimental-utils": "^2.24.0",
