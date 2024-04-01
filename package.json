@@ -45,7 +45,7 @@
     "@typescript-eslint/typescript-estree": "^6.17.0",
     "babel-jest": "^27.5.1",
     "commitizen": "^4.2.2",
-    "commitlint": "^17.0.3",
+    "commitlint": "^19.2.1",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "dayjs": "^1.11.4",
