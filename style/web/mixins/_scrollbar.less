@@ -2,6 +2,7 @@
 
 .scrollbar(@size: 6px, @borderSize: 0px) {
   // Firefox 等浏览器标准支持的滚动条样式设置
+  // Chrome support after v121 https://developer.chrome.com/docs/css-ui/scrollbar-styling
   @supports not selector(::-webkit-scrollbar) {
     scrollbar-color: @scrollbar-color transparent;
     scrollbar-width: thin;
