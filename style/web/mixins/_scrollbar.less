@@ -30,6 +30,7 @@
 
 .hideScrollbar() {
   /* firefox */
+  // Chrome support after v121 https://developer.chrome.com/docs/css-ui/scrollbar-styling
   @supports not selector(::-webkit-scrollbar) {
     scrollbar-width: none;
     overflow: -moz-scrollbars-none;
