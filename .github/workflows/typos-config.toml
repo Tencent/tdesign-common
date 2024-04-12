@@ -4,3 +4,6 @@ check-filename = true
 [default.extend-words]
 actived = "actived"
 colum = "colum"
+#./js/global-config/locale/it_IT.ts
+successivo="successivo"
+Vai="Vai"
