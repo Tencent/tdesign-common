@@ -1,10 +1,6 @@
 default.check-filename = true
 
 default.extend-ignore-re   = [
-    "@slider-hander-.*",
-    "@message-verticle-.*",
-    "@back-top-backgroud-.*",
-    "@switch-background-color-disbaled",
     "Vai a",
     "(\\w+\\s)?(S|s)uccessivo"
 ]
