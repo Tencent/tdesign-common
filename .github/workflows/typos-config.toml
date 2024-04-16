@@ -1,0 +1,10 @@
+default.check-filename = true
+
+default.extend-ignore-re   = [
+    "Vai a",
+    "(\\w+\\s)?(S|s)uccessivo"
+]
+
+[default.extend-words]
+actived = "actived"
+colum = "colum"

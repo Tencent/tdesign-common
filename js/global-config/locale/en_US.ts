@@ -23,14 +23,14 @@ export default {
     showWeekend: 'Show Week',
     today: 'Today',
     thisMonth: 'This Month',
-    week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Staturday,Sunday',
+    week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Saturday,Sunday',
     cellMonth:
       'January,February,March,April,May,June,July,August,September,October,November,December',
   },
   transfer: {
     title: '{checked} / {total}',
     empty: 'Empty Data',
-    placeholder: 'enter keyworkd to search',
+    placeholder: 'enter keyword to search',
   },
   timePicker: {
     dayjsLocale: 'en',
