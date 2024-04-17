@@ -150,13 +150,52 @@
       border-color: @component-border;
     }
   }
+}
 
-  &.@{prefix}-tag--closable {
-    &.@{prefix}-tag--disabled {
-      cursor: not-allowed;
-      color: @tag-disabled-color;
-      background-color: @tag-disabled-background-color;
-      border-color: @tag-disabled-border-color;
-    }
+.@{prefix}-tag--disabled.@{prefix}-tag--default {
+  cursor: not-allowed;
+
+  &.@{prefix}-tag--dark,
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    color: @tag-disabled-color;
+  }
+
+  &.@{prefix}-tag--dark,
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline {
+    background-color: @tag-disabled-background-color;
+  }
+
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    border-color: @tag-disabled-border-color;
+  }
+}
+
+.@{prefix}-tag--checked.@{prefix}-tag--disabled.@{prefix}-tag--primary {
+  cursor: not-allowed;
+
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    color: @tag-checked-disabled-color;
+  }
+
+  &.@{prefix}-tag--dark {
+    color: @tag-checked-dark-disabled-color;
+    background-color: @tag-checked-disabled-background-color;
+  }
+
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline {
+    background-color: @tag-checked-light-disabled-background-color;
+  }
+
+  &.@{prefix}-tag--dark,
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    border-color: @tag-checked-disabled-border-color;
   }
 }
