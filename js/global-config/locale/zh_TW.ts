@@ -118,7 +118,7 @@ export default {
     weekAbbreviation: '週',
     yearAriaLabel: '年',
     monthAriaLabel: '月',
-    comfirm: '確認',
+    confirm: '確認',
     selectTime: '選擇時間',
     selectDate: '選擇日期',
     nextYear: '下一年',
