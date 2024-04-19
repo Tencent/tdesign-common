@@ -25,7 +25,7 @@ TDesign 支持国际化/多语言配置，目前支持的语言包括:
 
 {{ global }}
 
-> 注意！当你使用 esm 引入的时候 `ConfigProvider` 也需要为对应的 esm 版本，否则会出现语言包不生效的问题。
+> 注意！当你使用 esm 引入了其他组件的时候 `ConfigProvider` 也需要为对应的 esm 版本的引入，否则会出现语言包不生效的问题。
 
 ### Pagination 分页
 
