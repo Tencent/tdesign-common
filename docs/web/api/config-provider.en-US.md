@@ -25,6 +25,8 @@ If you want to contribute more language packs, please refer to [How to add a lan
 
 {{ global }}
 
+> Attention! When you use esm to import other components, make sure to import ConfigProvider with the corresponding esm version as well. Otherwise, there may be an issue with the language pack not taking effect.
+
 ### Pagination 
 
 {{ pagination }}
