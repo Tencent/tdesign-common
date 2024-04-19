@@ -35,10 +35,67 @@
   // 输入框插槽
   &__footer {
     position: relative;
+    .inputContent {
+      width: 100%;
+      position: relative;
+      padding-right: 48px;
+      display: flex;
+      margin-top: 20px;
+      .textAreaBox {
+        flex-grow: 1;
+      }
+      .t-textarea {
+        width: 100%;
+        max-height: 300px;
+        overflow-y: scroll;
+        :deep(.t-textarea__inner) {
+          min-height: 48px !important;
+          background: #f8f9fa;
+          border: 0;
+          padding: 8px;
+          resize: none;
+        }
+      }
+      .sendBtn {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        color: #1976d2;
+        font-size: 20px;
+        text-align: center;
+        line-height: 32px;
+        cursor: pointer;
+      }
+    }
+    .inputContent.innerType {
+      padding-right: 0px;
+      .sendBtn {
+        right: 8px;
+        // transform: rotate(-30deg);
+        &.stop-btn {
+          // 取消rotate
+          transform: none;
+        }
+      }
+      :deep(.t-textarea__inner) {
+        padding-right: 36px;
+      }
+    }
   }
   &__inner {
     display: flex;
     margin-bottom: @comment-author-margin-bottom;
+    .@{prefix}-chat__avatar {
+      flex: 0 0 auto;
+    }
+    .@{prefix}-chat__content {
+      flex: 1 1 auto;
+      width: 100px;
+    }
+    .@{prefix}-chat__detail {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
   }
   // chat布局
   &--normal {
@@ -104,7 +161,7 @@
   &__detail {
     word-break: break-all;
     font: @comment-content-text-size;
-    background: var(--bg-color-code);
+    background: #f3f3f3;
     padding: 16px;
     border-radius: 6px;
     .content {
