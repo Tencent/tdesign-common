@@ -21,6 +21,23 @@
   height: @input-height-default;
   .input-base();
 
+  // borderless mode
+  &--borderless:not(&--focused) {
+    border-color: transparent;
+    transition: @input-inner-transition;
+
+    &:hover {
+      border-color: @component-border;
+      background-color: @bg-color-container-hover;
+      cursor: pointer;
+    }
+
+    &.@{prefix}-is-disabled {
+      border: none;
+      background-color: @input-bg-color-disabled;
+    }
+  }
+
   &--focused {
     border-color: @input-border-color-default-focus;
     box-shadow: @input-box-shadow-focus;
