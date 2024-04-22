@@ -192,6 +192,7 @@
       max-width: @breadcrumb-inner-max-width-default;
       display: flex;
       align-items: center;
+      transition: color @anim-duration-base linear;
 
       &-text {
         .t-overflow;
@@ -199,7 +200,6 @@
 
       &:hover {
         color: @breadcrumb-text-color-hover;
-        transition: color @anim-duration-base linear;
         cursor: pointer;
       }
 
