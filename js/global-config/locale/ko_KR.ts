@@ -227,8 +227,8 @@ export default {
     originalSizeTipText: '원본 크기',
   },
   typography: {
-    expand: '펼치다',
-    collapse: '접다',
-    copied: '복사 성공'
+    expandText: '펼치다',
+    collapseText: '접다',
+    copiedText: '복사 성공'
   }
 } as const;

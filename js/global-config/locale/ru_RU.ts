@@ -226,8 +226,8 @@ export default {
     originalSizeTipText: 'Оригинальный размер',
   },
   typography: {
-    expand: 'раскрывать',
-    collapse: 'убрать',
-    copied: 'Скопировано успешно'
+    expandText: 'раскрывать',
+    collapseText: 'убрать',
+    copiedText: 'Скопировано успешно'
   }
 } as const;

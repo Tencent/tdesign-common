@@ -224,8 +224,8 @@ export default {
     originalSizeTipText: 'أصلي',
   },
   typography: {
-    expand: 'توسيع',
-    collapse: 'طي',
-    copied: 'النسخ اكتمل'
+    expandText: 'توسيع',
+    collapseText: 'طي',
+    copiedText: 'النسخ اكتمل'
   }
 } as const;
