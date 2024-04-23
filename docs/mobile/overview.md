@@ -78,7 +78,7 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/side-bar">
+    <a class="item" href="./components/side-bar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-sidebar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-sidebar-dark.png" />
       <p class="name">SideBar 侧边导航栏</p>
