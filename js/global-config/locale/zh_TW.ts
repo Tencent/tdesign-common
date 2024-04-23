@@ -228,7 +228,7 @@ export default {
   },
   typography: {
     expandText: '展開',
-    collapse: '收起',
-    copied: '復製成功'
+    collapseText: '收起',
+    copiedText: '復製成功'
   }
 } as const;
