@@ -227,8 +227,8 @@ export default {
     originalSizeTipText: '原始大小',
   },
   typography: {
-    expand: '展开',
-    collapse: '收起',
-    copied: '复制成功'
+    expandText: '展开',
+    collapseText: '收起',
+    copiedText: '复制成功'
   }
 } as const;

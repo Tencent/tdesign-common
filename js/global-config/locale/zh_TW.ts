@@ -227,7 +227,7 @@ export default {
     originalSizeTipText: '原始大小',
   },
   typography: {
-    expand: '展開',
+    expandText: '展開',
     collapse: '收起',
     copied: '復製成功'
   }

@@ -228,8 +228,8 @@ export default {
     originalSizeTipText: 'original',
   },
   typography: {
-    expand: 'more',
-    collapse: 'collapse',
-    copied: 'copied'
+    expandText: 'more',
+    collapseText: 'collapse',
+    copiedText: 'copied'
   }
 } as const;
