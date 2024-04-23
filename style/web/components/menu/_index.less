@@ -147,6 +147,7 @@ a.@{prefix}-menu__item {
         justify-content: center;
 
         .@{prefix}-menu__item-link {
+          margin-left: 0;
           opacity: 0;
           content: "";
           position: absolute;
@@ -369,6 +370,7 @@ a.@{prefix}-menu__item {
     .t-icon {
       width: 20px;
       height: 20px;
+      flex-shrink: 0;
     }
 
     .@{prefix}-fake-arrow {
@@ -567,6 +569,9 @@ a.@{prefix}-menu__item {
 
       &.@{prefix}-menu__item-link {
         color: unset;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
 
         &::before {
           content: "";
