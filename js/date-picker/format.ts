@@ -1,23 +1,30 @@
 import isString from 'lodash/isString';
 import dayjs from 'dayjs';
-import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 import { extractTimeFormat } from './utils';
 import log from '../log';
 
 type DateValue = string | number | Date;
 
-dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
-// 统一解析日期格式字符串成 Dayjs 对象
+/**
+ * 统一解析日期格式字符串成 Dayjs 对象
+ * @param value 目标转换值
+ * @param format 目标转换格式
+ * @param timeOfDay 在涉及以周为格式解析字符串时，是否选择为周的第一天
+ * @param dayjsLocale 按照目标当地时间所在的区域代码，默认是'zh-cn'
+ * @param firstDayOfWeek 设置哪一天为周的第一天，0-6对应日-六
+ * @returns Dayjs对象
+ */
 export function parseToDayjs(
   value: string | Date | number,
   format: string,
   timeOfDay?: string,
   dayjsLocale?: string,
+  firstDayOfWeek?: number
 ) {
   if (value === '' || value === null) return dayjs();
 
@@ -32,22 +39,14 @@ export function parseToDayjs(
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
 
-    let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
-    // 第一周ISO定义: 本年度第一个星期四所在的星期
-    // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
-    // 否则本周即为第一周
-    if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
-
-    // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
-    const weekCounts = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').isoWeeksInYear();
-    for (let i = 0; i <= weekCounts; i += 1) {
-      let nextWeek = firstWeek.add(i, 'week');
-      // 重置为周的第一天
-      if (timeOfDay === 'start') nextWeek = nextWeek.subtract(5, 'day');
-      if (nextWeek.format(weekFormatStr) === weekStr) {
-        return nextWeek;
-      }
-    }
+    // 设置第一周
+    const firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
+    // 跳转目标对应的周
+    let targetWeek = firstWeek.add(Number(/[0-9]+/.exec(weekStr)[0]) - 1, 'week');
+    // 设置每周第一天，按照目前UI来看，第一天默认是周一
+    if (timeOfDay === 'start') targetWeek = targetWeek.day(firstDayOfWeek ?? 1);
+    // 校验
+    if (targetWeek.format(weekFormatStr) === weekStr) return targetWeek;
   }
 
   // format quarter
