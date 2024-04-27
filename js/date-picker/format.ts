@@ -44,6 +44,7 @@ export function parseToDayjs(
     // 跳转目标对应的周
     let targetWeek = firstWeek.add(Number(/[0-9]+/.exec(weekStr)[0]) - 1, 'week');
     // 设置每周第一天，按照目前UI来看，第一天默认是周一
+    // Dayjs的取值范围是0-6(日-六)，而firstDayOfWeek是1-7(一-日)
     if (timeOfDay === 'start') targetWeek = targetWeek.day(firstDayOfWeek ?? 1);
     // 校验
     if (targetWeek.format(weekFormatStr) === weekStr) return targetWeek;
