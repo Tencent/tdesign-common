@@ -151,4 +151,19 @@
       }
     }
   }
+
+  &--outside {
+    bottom: 0px;
+    .@{prefix}-swiper-nav {
+      &__dots,
+      &__dots-bar {
+        &-item {
+          background: @swiper-nav-dot-color-outside;
+          &--active {
+            background-color: @swiper-nav-dot-active-color-outside;
+          }
+        }
+      }
+    }
+  }
 }
