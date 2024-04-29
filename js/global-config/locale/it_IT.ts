@@ -227,8 +227,8 @@ export default {
     originalSizeTipText: 'Dimensione originale',
   },
   typography: {
-    expand: 'Espandere',
-    collapse: 'ripiegare',
-    copied: 'Copia completata'
+    expandText: 'Espandere',
+    collapseText: 'ripiegare',
+    copiedText: 'Copia completata'
   }
 } as const;
