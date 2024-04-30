@@ -118,7 +118,7 @@ export default {
     weekAbbreviation: '週',
     yearAriaLabel: '年',
     monthAriaLabel: '月',
-    comfirm: '確認',
+    confirm: '確認',
     selectTime: '選擇時間',
     selectDate: '選擇日期',
     nextYear: '下一年',
@@ -227,8 +227,8 @@ export default {
     originalSizeTipText: '原始大小',
   },
   typography: {
-    expand: '展開',
-    collapse: '收起',
-    copied: '復製成功'
+    expandText: '展開',
+    collapseText: '收起',
+    copiedText: '復製成功'
   }
 } as const;

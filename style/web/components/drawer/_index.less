@@ -9,10 +9,10 @@
 
 @import "../../mixins/_reset.less";
 
-@componentName: drawer;
-
-.@{prefix}-@{componentName} {
+.@{prefix}-drawer {
   .reset;
+
+  @root: ~".@{prefix}-drawer";
 
   position: fixed;
   z-index: 1500;
@@ -85,7 +85,7 @@
     position: relative;
   }
 
-  .@{prefix}-@{componentName}__content-wrapper {
+  @{root}__content-wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -185,27 +185,27 @@
       vertical-align: unset;
     }
   }
-}
 
-.@{prefix}-@{componentName}--open {
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-
-  > .@{prefix}-@{componentName}__content-wrapper {
-    visibility: visible;
-  }
-
-  > .@{prefix}-@{componentName}__mask {
-    opacity: 1;
+  &--open {
     width: 100%;
     height: 100%;
-  }
-}
+    pointer-events: auto;
 
-// 需要在 t-drawer--open 后面，优先级才比 open 高
-.@{prefix}-@{componentName}--without-mask {
-  pointer-events: none;
+    > @{root}__content-wrapper {
+      visibility: visible;
+    }
+
+    > @{root}__mask {
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // 需要在 t-drawer--open 后面，优先级才比 open 高
+  &--without-mask {
+    pointer-events: none;
+  }
 }
 
 [tabindex="-1"]:focus {

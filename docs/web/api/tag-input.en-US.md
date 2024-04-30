@@ -37,7 +37,7 @@ Provide large, medium (default), small three different size of the label input b
 
 ### Tag Input Box for Customizable Tags
 
-- `tag` is used to define the content of a single tag- `valueDispaly` is used to completely customize the full tag content
+- `tag` is used to define the content of a single tag- `valueDisplay` is used to completely customize the full tag content
 
 {{ custom-tag }}
 

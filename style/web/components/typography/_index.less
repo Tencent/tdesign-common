@@ -2,9 +2,7 @@
 
 @import "./_var.less";
 
-@componentName: typography;
-
-.@{prefix}-@{componentName} {
+.@{prefix}-typography {
   color: @typography-text-primary-color;
   font: @font-body-medium;
   margin: @comp-margin-m 0;
@@ -63,6 +61,9 @@
     padding: 1px @comp-paddingLR-s;
     transition: background-color .2s;
     white-space: nowrap;
+    font: @typography-code-font;
+    font-family: @typography-code-family;
+    display: inline-block;
 
     &:hover {
       border-radius: @border-radius-default;
@@ -78,6 +79,10 @@
     margin: 0 @comp-margin-xs;
     background-color: @bg-color-secondarycontainer;
     padding: 1px @comp-paddingLR-s;
+    box-shadow: 0 1px 0 0 @component-border;
+    font: @typography-code-font;
+    font-family: @typography-code-family;
+    display: inline-block;
   }
 
   // 不可选样式

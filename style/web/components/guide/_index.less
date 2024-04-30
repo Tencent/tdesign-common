@@ -6,10 +6,10 @@
 
 @import "../../mixins/_reset.less";
 
-@componentName: guide;
-
-.@{prefix}-@{componentName} {
+.@{prefix}-guide {
   .reset;
+
+  @root: ~".@{prefix}-guide";
 
   &--lock {
     overflow: hidden;
@@ -86,12 +86,12 @@
       border: 1px solid @component-border;
     }
 
-    .@{prefix}-@{componentName}__title {
+    @{root}__title {
       font: @font-title-medium;
       font-weight: 700;
     }
 
-    .@{prefix}-@{componentName}__desc {
+    @{root}__desc {
       margin-top: @guide-dialog-desc-margin-top;
       font: @font-body-medium;
     }
@@ -142,7 +142,7 @@
     &--dialog {
       margin-top: @spacer-3;
 
-      .@{prefix}-@{componentName} {
+      @{root} {
         &__action {
           display: flex;
           justify-content: center;

@@ -2,13 +2,13 @@
 title: Input 输入框
 description: 用于承载用户信息录入的文本框，常用于表单、对话框等场景，对不同内容的信息录入，可拓展形成多种信息录入形式。
 isComponent: true
-usage: { title: '', description: '' }
+usage: { title: "", description: "" }
 spline: form
 ---
 
 ### 基础输入框
 
-最基础的单行输入框，按状态可分为正常、禁用、错误、带额外提示。通常在需要输入少量内容（20个字以内）的场景下使用。
+最基础的单行输入框，按状态可分为正常、禁用、错误、带额外提示。通常在需要输入少量内容（20 个字以内）的场景下使用。
 
 {{ base }}
 
@@ -74,3 +74,9 @@ spline: form
 可以使用 `format` 设置输入框在失焦和聚焦时的不同内容呈现。
 
 {{ format }}
+
+### 无边框模式的输入框
+
+可以使用 `borderless` 来开启无边框模式。
+
+{{ borderless }}
