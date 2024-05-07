@@ -33,7 +33,7 @@ spline: form
 - `allowUploadDuplicateFile` 是否允许上传相同文件名的文件。
 - `onSelectChange` 会在文件选择之后，上传请求发起之前触发。
 - `onSuccess` 会在上传成功后触发。
-- `onFail` 会在上传失败后出发。
+- `onFail` 会在上传失败后触发。
 
 {{ base }}
 
