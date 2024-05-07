@@ -38,11 +38,3 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-4.png" />
   <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 </div>
-
-
-
-### 相似组件
-
-| 组件名               | 何时使用                                                                                       |
-| :------------------- | :--------------------------------------------------------------------------------------------- |
-| [选择器](./Cascader) | 当需要在有限的空间展示大量选项供用户选择时，或一组选项由递进层级构成，需要用户逐级选择使用时。 |
