@@ -112,6 +112,19 @@
       max-width: 100%;
       box-sizing: border-box;
     }
+    &.changeModel {
+      justify-content: center;
+    }
+    .@{prefix}-chat__notice {
+      // 水平居中
+      background: @gray-color-1;
+      padding: @comp-paddingTB-xxs @comp-paddingLR-s;
+      font-size: @font-size-s;
+      color: @font-gray-4;
+      span {
+        color: @font-gray-3;
+      }
+    }
   }
   // chat布局
   &--normal {
@@ -194,7 +207,7 @@
     border-radius: @border-radius-medium;
     border: 1px solid @component-border;
     overflow: hidden;
-    
+
     & .@{prefix}-button {
       color: @text-color-primary;
       background-color: @bg-color-secondarycontainer;
