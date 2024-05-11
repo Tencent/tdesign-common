@@ -60,6 +60,11 @@
       border-radius: @border-radius-small;
     }
 
+    // label 文字不换行
+    & > .@{prefix}-input__prefix {
+      white-space: nowrap;
+    }
+
     .@{prefix}-input {
       padding: @range-input-inner-padding;
       height: 100%;
