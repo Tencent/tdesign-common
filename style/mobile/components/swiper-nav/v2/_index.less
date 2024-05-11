@@ -151,4 +151,21 @@
       }
     }
   }
+
+  &--outside {
+    bottom: 0;
+
+    .@{prefix}-swiper-nav {
+      &__dots,
+      &__dots-bar {
+        &-item {
+          background: @swiper-nav-outside-bg;
+
+          &--active {
+            background-color: @swiper-nav-outside-bg-active;
+          }
+        }
+      }
+    }
+  }
 }
