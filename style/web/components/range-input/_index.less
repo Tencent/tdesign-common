@@ -60,9 +60,9 @@
       border-radius: @border-radius-small;
     }
 
-    // label 文字不换行
+    // 避免 label 文字被容器内其他元素挤压导致过早换行
     & > .@{prefix}-input__prefix {
-      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .@{prefix}-input {
