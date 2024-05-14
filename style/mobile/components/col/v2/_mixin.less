@@ -1,0 +1,11 @@
+.col-generate(@n, @i: 1) when(@i <=@n) {
+  .@{prefix}-col--@{i} {
+    width: (@i * 100% / @n);
+  }
+
+  .@{prefix}-col--offset-@{i} {
+    margin-left: (@i * 100% / @n);
+  }
+
+  .col-generate(@n, (@i + 1));
+}
