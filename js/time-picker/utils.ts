@@ -1,4 +1,9 @@
 import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(advancedFormat);
+dayjs.extend(customParseFormat);
 
 // 判断是否输入的值是合法的timepicker的值
 export function validateInputValue(value: string, format: string) {
