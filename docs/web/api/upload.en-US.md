@@ -48,7 +48,7 @@ You can set `theme="single-input"`. Drag and drop upload is not supported in thi
 After the picture is uploaded successfully, the preview picture is displayed;After the image upload fails, the preview image is not displayed.
 
 - You can set the attribute `theme="image"`. Drag and drop upload is not supported in this style. If you need to drag and drop upload, please go to the example of drag and drop upload below the document.
-- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='/react/config?tab=api#uploadconfig'></a>.
+- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='../global-configuration-en?tab=api#uploadconfig'></a>.
 - Image preview URL. By default, the `url` field returned by the upload API is read. If the API does not return the `url` field, you can use `formatResponse` to format the returned value and add the `url` field to the returned value.
 
 {{ image }}
@@ -57,7 +57,7 @@ After the picture is uploaded successfully, the preview picture is displayed;Aft
 
 Drag and drop files to the specified area to trigger upload. Both image and file types are supported.
 
-- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='/react/config?tab=api#uploadconfig'></a>.
+- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='../global-configuration-en?tab=api#uploadconfig'></a>.
 - If dragging and uploading a single file, set `theme="file"` and `draggable=true`.
 - If dragging and uploading a single image, set `theme="image"` and `draggable=true`.
 - You can use `fileListDisplay` to customize file information to display content.
@@ -69,7 +69,7 @@ Drag and drop files to the specified area to trigger upload. Both image and file
 Bulk uploads are usually presented as a separate function, with uploaded content hosted in a table. Since batch upload takes a long time, in some scenarios, files may be selected first, and then uploaded uniformly after confirmation.
 
 - For batch file upload, please set the attributes `theme="file-flow"` and `multiple=true`.
-- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='/react/config?tab=api#uploadconfig'></a>.
+- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='../global-configuration-en?tab=api#uploadconfig'></a>.
 - When using `allowUploadDuplicateFile` to upload multiple documents, you can select files with duplicate names repeatedly.
 - Use `uploadAllFilesInOneRequest` and `batchUpload` to implement batch consolidated upload of multiple files. Multiple files can be uploaded and replaced as a whole. No additional files are allowed.
 
@@ -78,7 +78,7 @@ Bulk uploads are usually presented as a separate function, with uploaded content
 ### Upload Images in Batch
 
 - For batch image upload, please set the attributes `theme="image-flow"` and `multiple=true`.
-- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='/react/config?tab=api#uploadconfig'></a>.
+- All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='../global-configuration-en?tab=api#uploadconfig'></a>.
 
 {{ img-flow-list }}
 
