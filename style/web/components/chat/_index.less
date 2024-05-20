@@ -31,6 +31,14 @@
       flex-grow: 1;
       flex-shrink: 1;
     }
+    .clear-btn {
+      // color: @font-gray-2;
+      font-size: 12px;
+      cursor: pointer;
+      &:hover {
+        color: @text-color-primary;
+      }
+    }
   }
   // 输入框插槽
   &__footer {
@@ -112,7 +120,7 @@
       max-width: 100%;
       box-sizing: border-box;
     }
-    &.changeModel {
+    &.modelChange {
       justify-content: center;
     }
     .@{prefix}-chat__notice {
