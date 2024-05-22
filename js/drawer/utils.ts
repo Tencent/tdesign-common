@@ -1,4 +1,4 @@
-type Placement = "left" | "right" | "top" | "bottom";
+type Placement = 'left' | 'right' | 'top' | 'bottom';
 
 interface SizeDragLimit {
   max: number;
@@ -9,7 +9,7 @@ export function getSizeDraggable(
   sizeDraggable: boolean | SizeDragLimit,
   limit: { max: number; min: number }
 ) {
-  if (typeof sizeDraggable === "boolean") {
+  if (typeof sizeDraggable === 'boolean') {
     return {
       allowSizeDraggable: sizeDraggable,
       max: limit.max,
@@ -42,18 +42,18 @@ export function calcMoveSize(placement: Placement, opts: IOptions) {
   const { x, y, max, min, maxWidth, maxHeight } = opts;
   let moveSize: number | undefined;
   switch (placement) {
-    case "right":
+    case 'right':
       // |<---  x  --->|      |
       // |     maxWidth       |
       //               | size |  > min && < max
       moveSize = calcSizeRange(maxWidth - x, min, max);
       break;
-    case "left":
+    case 'left':
       // |<--  x -->|  |
       // x > min && < max
       moveSize = calcSizeRange(x, min, max);
       break;
-    case "top":
+    case 'top':
       // - - - - - - - -
       // |     y        |
       // |              |
@@ -62,7 +62,7 @@ export function calcMoveSize(placement: Placement, opts: IOptions) {
       // moveSize = Math.min(Math.max(y, min), max);
       moveSize = calcSizeRange(y, min, max);
       break;
-    case "bottom":
+    case 'bottom':
       // - - - - - - - -
       // |     y        |
       // |              |  maxHeight
@@ -73,7 +73,7 @@ export function calcMoveSize(placement: Placement, opts: IOptions) {
       break;
     default:
       // 参数缺失直接返回
-      return;
+      return moveSize;
   }
   return moveSize;
 }
