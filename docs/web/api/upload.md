@@ -33,7 +33,7 @@ spline: form
 - `allowUploadDuplicateFile` 是否允许上传相同文件名的文件。
 - `onSelectChange` 会在文件选择之后，上传请求发起之前触发。
 - `onSuccess` 会在上传成功后触发。
-- `onFail` 会在上传失败后出发。
+- `onFail` 会在上传失败后触发。
 
 {{ base }}
 
@@ -48,7 +48,7 @@ spline: form
 图片上传成功后，显示预览图片；图片上传失败后，不显示预览图片。
 
 - 设置属性 `theme="image"` 即可，这种风格不支持拖拽上传，如果需要拖拽上传请移步文档下方有拖拽上传的示例。
-- 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='../global-configuration?tab=api#uploadconfig'>查看文档</a>。
 - 图片预览地址，默认会读取上传接口返回的 `url` 字段。如果接口没有返回 `url` 字段，可以使用 `formatResponse` 格式化返回值，在返回值中增加 `url` 字段。
 
 {{ image }}
@@ -57,7 +57,7 @@ spline: form
 
 支持拖拽文件到指定区域触发上传，支持图片和文件两种类型。
 
-- 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，也支持全局配置，<a href='../global-configuration?tab=api#uploadconfig'>查看文档</a>。
 - 如果拖拽上传单个文件，设置 `theme="file"` 和 `draggable=true`。
 - 如果拖拽上传单张图片，设置 `theme="image"` 和 `draggable=true`。
 - 可以使用 `fileListDisplay` 自定义文件信息呈现内容。
@@ -69,7 +69,7 @@ spline: form
 批量上传通常作为一个单独的功能出现，上传的内容用表格来承载。由于批量上传需要的时间较长，某些场景下会出现先选择文件，确认后再统一上传的场景。
 
 - 批量文件上传，请设置属性 `theme="file-flow"` 和 `multiple=true`。
-- 上传组件中的全部文本，均可通过 `locale` 进行修改，同时也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，同时也支持全局配置，<a href='../global-configuration?tab=api#uploadconfig'>查看文档</a>。
 - 使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
 - 使用 `uploadAllFilesInOneRequest` 与 `batchUpload` 实现多文件批量合并上传，多文件整体上传，整体替换，不允许追加文件。
 
@@ -78,7 +78,7 @@ spline: form
 ### 批量上传图片
 
 - 批量图片上传，请设置属性 `theme="image-flow"` 和 `multiple=true`。
-- 上传组件中的全部文本，均可通过 `locale` 进行修改，同时也支持全局配置，<a href='/react/config?tab=api#uploadconfig'>查看文档</a>。
+- 上传组件中的全部文本，均可通过 `locale` 进行修改，同时也支持全局配置，<a href='../global-configuration?tab=api#uploadconfig'>查看文档</a>。
 
 {{ img-flow-list }}
 

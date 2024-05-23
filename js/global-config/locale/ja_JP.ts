@@ -227,8 +227,8 @@ export default {
     originalSizeTipText: 'オリジナルサイズ',
   },
   typography: {
-    expand: 'もっと拡大する',
-    collapse: '畳む',
-    copied: 'コピー成功'
+    expandText: 'もっと拡大する',
+    collapseText: '畳む',
+    copiedText: 'コピー成功'
   }
 } as const;
