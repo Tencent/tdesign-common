@@ -14,6 +14,7 @@
 
 .@{prefix}-chat {
   .reset;
+
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -23,18 +24,22 @@
   &__list {
     flex: 1;
     overflow: auto;
+
     &--reverse {
       display: flex;
       flex-direction: column-reverse;
     }
+
     .place-holder {
       flex-grow: 1;
       flex-shrink: 1;
     }
+
     .clear-btn {
       color: @text-color-secondary;
       font-size: 12px;
       cursor: pointer;
+
       &:hover {
         color: @text-color-primary;
       }
@@ -43,19 +48,23 @@
   // 输入框插槽
   &__footer {
     position: relative;
+
     &__content {
       width: 100%;
       position: relative;
       display: flex;
       margin-top: @comp-margin-xl;
-      padding-right: 0px;
+      padding-right: 0;
     }
+
     &__textarea {
       flex-grow: 1;
       position: relative;
-      border-radius:@border-radius-round;
+      border-radius: @border-radius-round;
+
       .t-textarea {
         width: 100%;
+
         .t-textarea__inner {
           background: @bg-color-secondarycontainer;
           padding: @comp-size-xxs @comp-size-xxxxxl @comp-size-xxs @comp-size-xs;
@@ -63,49 +72,58 @@
           border-radius: 32px;
           scrollbar-width: none;
         }
+
         .t-textarea__inner.t-is-focused {
           border-color: @brand-color;
           background: @bg-color-container;
         }
       }
+
       &__icon {
         position: absolute;
         bottom: @comp-paddingTB-s;
         right: @comp-paddingLR-s;
         text-align: center;
         cursor: pointer;
+
         & &__default {
           transform: rotate(-90deg);
           width: @comp-size-xxl;
           height: @comp-size-xxl;
           border-radius: @border-radius-circle;
         }
+
         & &--focus {
           background: @brand-color;
           color: @text-color-anti;
         }
+
         .t-button.t-size-s .t-icon {
           font-size: @font-size-xl;
         }
       }
     }
+
     &__stopbtn {
       flex: 0 0 auto;
       margin-left: @comp-margin-l;
-      .t-button{
+
+      .t-button {
         width: 100px;
         height: @comp-size-xxxxl;
-        border-radius:@border-radius-round;
+        border-radius: @border-radius-round;
         background: @bg-color-secondarycontainer;
         color: @text-color-primary;
         font-size: @font-size-l;
+
         .t-icon {
-          font-size:  @font-size-xl;
+          font-size: @font-size-xl;
           margin-right: @comp-margin-s;
         }
       }
     }
   }
+
   &__inner {
     display: flex;
     margin-bottom: @comp-margin-l;
@@ -120,6 +138,7 @@
       max-width: 100%;
       box-sizing: border-box;
     }
+
     &.modelChange {
       justify-content: center;
     }
@@ -129,6 +148,7 @@
       padding: @comp-paddingTB-xxs @comp-paddingLR-s;
       font-size: @font-size-s;
       color: @font-gray-4;
+
       span {
         color: @font-gray-3;
       }
@@ -150,14 +170,16 @@
       }
     }
   }
+
   &__avatar {
     flex-shrink: 0;
     cursor: pointer;
     display: flex;
     margin-right: @comp-margin-xs;
+
     &-image {
       width: @comp-size-m;
-      height:  @comp-size-m;
+      height: @comp-size-m;
       border-radius: @border-radius-circle;
     }
   }
@@ -167,11 +189,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
     .t-skeleton {
       width: 100%;
       padding: @pop-padding-xxl;
-    };
+    }
   }
+
   &__base {
     display: flex;
     flex-wrap: wrap;
@@ -181,45 +205,55 @@
     color: @text-color-placeholder;
     padding-left: @pop-padding-xxl;
   }
+
   &__name {
     padding-right: @comp-margin-s;
     cursor: pointer;
   }
-// 消息样式
+  // 消息样式
   &__text {
     padding: @pop-padding-xl @pop-padding-xxl;
     font: @font-body-large;
     word-break: break-all;
-    & &__user pre{
+
+    & &__user pre {
       color: @text-color-secondary;
       margin: 0;
     }
+
     &__assistant {
       color: @text-color-primary;
+
       ol {
         padding-inline-start: 20px;
+
         li {
           list-style: decimal;
         }
       }
+
       img {
         max-width: 100%;
         margin: @comp-margin-xs 0;
         border-radius: @border-radius-default;
       }
     }
+
     &--error {
       color: @error-color;
     }
+
     &--variant--base {
       background-color: @bg-color-secondarycontainer;
       border-radius: @border-radius-extraLarge;
     }
+
     &--variant--outline {
       border: 1px solid @border-level-2-color;
       border-radius: @border-radius-extraLarge;
     }
   }
+
   &__actions {
     margin-top: @comment-actions-margin-top;
     display: flex;
@@ -240,6 +274,7 @@
     }
   }
 }
+
 :where(code):not(:where(pre *)) {
   color: @error-color !important;
 }
