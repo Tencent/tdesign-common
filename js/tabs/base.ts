@@ -23,7 +23,7 @@ export function calculateOffset(depElement: allElementDeps, offset: number, scro
   const leftOperationsWidth = getDomWidth(leftOperations);
 
   if (scrollPosition === 'auto') {
-    if (tabOffset < offset) {
+    if (tabOffset - leftOperationsWidth < offset) {
       return tabOffset - leftOperationsWidth;
     } if (tabOffset + tabWidth > offset + wrapWidth - rightOperationsWidth) {
       return tabOffset + tabWidth - wrapWidth + rightOperationsWidth;
@@ -36,6 +36,21 @@ export function calculateOffset(depElement: allElementDeps, offset: number, scro
     return tabOffset + tabWidth - wrapWidth + rightOperationsWidth;
   }
   return offset;
+}
+
+/**
+ * 计算上一页或下一页偏移量
+ * @param elements 计算时依赖的元素
+ * @returns number
+ */
+export function calcPrevOrNextOffset(elements: allElementDeps, offset: number, action: 'next' | 'prev'): number {
+  const { navsContainer, activeTab } = elements;
+  const navsContainerWidth = getDomWidth(navsContainer);
+  const activeTabWidth = getDomWidth(activeTab);
+  if (action === 'next') {
+    return offset + navsContainerWidth - activeTabWidth;
+  }
+  return offset - navsContainerWidth + activeTabWidth;
 }
 
 /**
