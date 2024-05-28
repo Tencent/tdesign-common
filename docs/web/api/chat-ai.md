@@ -19,8 +19,8 @@ spline: data
 {{ chat-ai }}
 ### 入参设计
 
-> 这是hunyuan的大模型入参，可以看到参数非常多，组件内不关注hunyuan大模型接口的参数，由业务侧自定义模型配置选项，
-```typescript
+这是hunyuan的大模型入参，可以看到参数非常多，组件内不关注hunyuan大模型接口的参数，由业务侧自定义模型配置选项，第一个参数 messages，当前对话的上下文，里面 role 和 content 是最关键的
+```js
 /**
  * ChatRequest是一个函数类型，表示对聊天API的请求。
  * 它接受ChatRequestParams对象并返回一个Promise，该Promise在解析时返回一个Response对象。
@@ -39,8 +39,8 @@ export interface message {
 }
 
 ```
-第一个参数 messages，当前对话的上下文，里面 role 和 content 是最关键的
-> hunyuan大模型配置参数如下：
+
+### hunyuan大模型配置参数如下：
 
 ```json
 {
