@@ -237,6 +237,11 @@
       }
     }
 
+    & &__assistant &__content .hljs {
+      background-color: @code-bg-color-page;
+      border-radius: @border-radius-large;
+    }
+
     &--error {
       color: @error-color;
     }
@@ -271,8 +276,22 @@
       }
     }
   }
+  &__code-header {
+    display: flex; 
+    padding: 0 @pop-padding-xl; 
+    padding-top: @pop-padding-xl;
+    justify-content: space-between;
+  }
+  &__language-txt {
+    color: @code-font-color-base;
+  }
+  &__copy-btn {
+    color: @code-font-color-base;
+    // margin-left: auto;
+    cursor: pointer;
+  }
 }
 
 :where(code):not(:where(pre *)) {
-  color: @error-color !important;
+  color: @error-color;
 }
