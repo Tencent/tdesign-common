@@ -37,7 +37,9 @@
       color: @text-color-secondary;
       font-size: 12px;
       cursor: pointer;
-
+      .clear-btn-text {
+        margin-left: @comp-margin-xs;
+      }
       &:hover {
         color: @text-color-primary;
       }
@@ -146,6 +148,9 @@
       padding: @comp-paddingTB-xxs @comp-paddingLR-s;
       font-size: @font-size-s;
       color: @font-gray-4;
+      border-radius: @border-radius-default;
+      box-sizing: border-box;
+      height: 24px;
 
       span {
         color: @font-gray-3;
@@ -277,8 +282,8 @@
     }
   }
   &__code-header {
-    display: flex; 
-    padding: 0 @pop-padding-xl; 
+    display: flex;
+    padding: 0 @pop-padding-xl;
     padding-top: @pop-padding-xl;
     justify-content: space-between;
   }

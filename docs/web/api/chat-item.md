@@ -25,7 +25,7 @@ spline: data
 
 - 包括头像、作者、时间、聊天内容，操作按钮，支持各个模块插槽扩展。注意聊天文本必须通过t-chat-content传入content属性
 
-- 当role为assistant时一般是不显示操作按钮的，所以t-chat-item组件的action的插槽需要自己去写条件判断
+- 当role为assistant时一般是不显示操作按钮的，所以很多场景下，针对AI助手回复的自定义内容，t-chat-item组件需要根据角色role去区分
 
 {{ chat-item-slot }}
 
