@@ -34,6 +34,22 @@
 
 <hr />
 
+##### 与 drawer组合使用。这种组合通常用于创建在悬窗展示智能的、由AI驱动的虚拟助手或聊天机器人。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://tdesign.gtimg.com/site/design/guide/comment/comment-4@2x.png" />
+    <em>图示：基础评论与加载搭配</em>
+  </div>
+    <div class="item">
+    <img src="https://tdesign.gtimg.com/site/design/guide/comment/comment-5@2x.png" />
+    <em>图示：带回复的评论与加载搭配</em>
+  </div>
+
+</div>
+
+<hr />
+
 ##### 与加载 Loading 组合使用，当流式数据请求加载时，按一定数量逐步加载显示，提高用户阅读信息的效率和准确性。
 
 <div class="legend">

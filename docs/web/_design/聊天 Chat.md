@@ -22,12 +22,28 @@
 
 ### 与组件搭配使用
 
-##### 与dialog搭配使用。这种组合通常用于创建智能的、由AI驱动的虚拟助手或聊天机器人。
+##### 与dialog搭配使用。这种组合通常用于创建可拖拽的智能的、由AI驱动的虚拟助手或聊天机器人。
 
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/comment/comment-3@2x.png" />
     <em></em>
+  </div>
+
+</div>
+
+<hr />
+
+##### 与 drawer组合使用。这种组合通常用于创建在悬窗展示智能的、由AI驱动的虚拟助手或聊天机器人。
+
+<div class="legend">
+  <div class="item">
+    <img src="https://tdesign.gtimg.com/site/design/guide/comment/comment-4@2x.png" />
+    <em>图示：基础评论与加载搭配</em>
+  </div>
+    <div class="item">
+    <img src="https://tdesign.gtimg.com/site/design/guide/comment/comment-5@2x.png" />
+    <em>图示：带回复的评论与加载搭配</em>
   </div>
 
 </div>
@@ -49,3 +65,4 @@
 </div>
 
 <hr />
+

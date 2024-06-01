@@ -21,3 +21,7 @@ chat布局采用flex翻转布局flex-direction: column-reverse;，实现新消�
 
 {{ chat-drag }}
 
+### AI助手悬窗
+
+{{ chat-drawer }}
+
