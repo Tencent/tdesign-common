@@ -79,13 +79,17 @@
         }
       }
 
-      &__icon {
+      &__icon {;
         position: absolute;
         bottom: @comp-paddingTB-s;
         right: @comp-paddingLR-s;
         text-align: center;
         cursor: pointer;
-
+        height: @comp-size-xxl;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
         & &__default {
           transform: rotate(-90deg);
           width: @comp-size-xxl;
