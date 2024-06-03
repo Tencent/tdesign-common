@@ -64,18 +64,18 @@
 
       .t-textarea {
         width: 100%;
-
         .t-textarea__inner {
           background: @bg-color-secondarycontainer;
           padding: @comp-size-xxs @comp-size-xxxxxl @comp-size-xxs @comp-size-xs;
-          border-color: @component-border;
           border-radius: 32px;
           scrollbar-width: none;
         }
-
         .t-textarea__inner.t-is-focused {
           border-color: @brand-color;
           background: @bg-color-container;
+        }
+        .t-textarea__inner::placeholder {
+          color: @text-color-secondary;
         }
       }
 
@@ -133,6 +133,9 @@
     .@{prefix}-chat__content {
       flex: 1 1 auto;
       width: 100px;
+      &--base {
+        padding-top: @comp-paddingTB-xl;
+      }
     }
     .@{prefix}-chat__detail {
       max-width: 100%;
@@ -163,7 +166,7 @@
       flex-direction: row-reverse;
       .@{prefix}-chat__avatar {
         margin-right: 0;
-        margin-left: @comment-avatar-margin-right;
+        // margin-left: @comment-avatar-margin-right;
       }
       .@{prefix}-chat__content {
         align-items: flex-end;
@@ -178,12 +181,14 @@
     flex-shrink: 0;
     cursor: pointer;
     display: flex;
-    margin-right: @comp-margin-xs;
+    margin: 0 @comp-margin-xs;
+    padding-top: @comp-paddingTB-xl;
 
     &-image {
       width: @comp-size-m;
       height: @comp-size-m;
       border-radius: @border-radius-circle;
+      padding-top: @pop-padding-m;
     }
   }
 
@@ -263,23 +268,38 @@
   }
 
   &__actions {
-    margin-top: @comment-actions-margin-top;
+    margin-top: @comp-margin-xs;
     display: flex;
     list-style: none;
-    padding: @pop-padding-l;
+    padding: @pop-padding-s;
     background-color: @bg-color-secondarycontainer;
     border-radius: @border-radius-medium;
     border: 1px solid @border-level-2-color;
     overflow: hidden;
-
+    margin-left: @comp-margin-l;
     & .@{prefix}-button {
+      padding: @pop-padding-s;
+      width: @comp-size-xxxs;
+      height: @comp-size-xxxs;
+      box-sizing: content-box;
       color: @text-color-primary;
       background-color: @bg-color-secondarycontainer;
       border: 0;
+      margin-right: @comp-margin-xs;
       .@{prefix}-icon {
         font-size: @font-size-l;
       }
     }
+  }
+  &__refresh {
+    display: flex;
+    align-items: center;
+    &-line{
+      width: 1px;
+      height: @comp-size-xxxs;
+      background-color: #e7e7e7;
+      margin-right: @comp-margin-xs;
+    };
   }
   &__code-header {
     display: flex;
