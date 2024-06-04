@@ -183,7 +183,7 @@ export function getMaxOrMinValidateResult(p: {
   min: NumberType;
 }): InputNumberErrorType {
   const { largeNumber, value, max, min } = p;
-  if (isUndefined(largeNumber)) return undefined;
+  if (isUndefined(value) || isUndefined(largeNumber)) return undefined;
   if (largeNumber && isNumber(value)) {
     log.warn('InputNumber', 'largeNumber value must be a string.');
   }
