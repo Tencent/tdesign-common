@@ -95,6 +95,7 @@
           width: @comp-size-xxl;
           height: @comp-size-xxl;
           border-radius: @border-radius-circle;
+          color: @text-color-disabled;
         }
 
         & &--focus {
@@ -119,7 +120,9 @@
         background: @bg-color-secondarycontainer;
         color: @text-color-primary;
         font-size: @font-size-l;
-
+        &__text {
+          align-items: center;
+        }
         .t-icon {
           font-size: @font-size-xl;
           margin-right: @comp-margin-s;
