@@ -10,6 +10,10 @@ toc: false
 
 {{ base }}
 
+### Basic and alignment ImageViewer
+
+{{ align }}
+
 ### Operation ImageViewer
 
 {{ operation }}
