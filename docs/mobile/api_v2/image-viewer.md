@@ -10,6 +10,10 @@ toc: false
 
 {{ base }}
 
+### 基础图片预览 + 对齐方式
+
+{{ align }}
+
 ### 带操作图片预览
 
 {{ operation }}
