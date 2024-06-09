@@ -47,8 +47,8 @@ export interface message {
   "Model": "hunyuan",
   "Messages": [
     {
-      "Role": "user",
-      "Content": "hi "
+      "role": "user",
+      "content": "hi "
     }
   ],
   "Stream": true,
