@@ -31,3 +31,15 @@ toc: false
 ### 加载速度
 
 {{ speed }}
+
+### 全屏加载
+
+{{ fullscreen }}
+
+### 挂载到指定元素
+
+{{ attach }}
+
+### 函数方式调用
+
+{{ service }}

@@ -31,3 +31,15 @@ toc: false
 ### Loading Speed
 
 {{ speed }}
+
+### Full-screen Loading
+
+{{ fullscreen }}
+
+### Attached to a Specific Element
+
+{{ attach }}
+
+### Function Call
+
+{{ service }}
