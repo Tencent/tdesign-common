@@ -37,10 +37,6 @@
       color: @text-color-secondary;
       font-size: 12px;
       cursor: pointer;
-      .t-divider__inner-text{
-        display: flex;
-        align-items: center;
-      }
       .clear-btn-text {
         margin-left: @comp-margin-xs;
       }
@@ -99,7 +95,6 @@
           width: @comp-size-xxl;
           height: @comp-size-xxl;
           border-radius: @border-radius-circle;
-          color: @text-color-disabled;
         }
 
         & &--focus {
@@ -124,9 +119,7 @@
         background: @bg-color-secondarycontainer;
         color: @text-color-primary;
         font-size: @font-size-l;
-        &__text {
-          align-items: center;
-        }
+
         .t-icon {
           font-size: @font-size-xl;
           margin-right: @comp-margin-s;
@@ -153,7 +146,7 @@
       box-sizing: border-box;
     }
 
-    &.model-change {
+    &.modelChange {
       justify-content: center;
       margin-top: @comp-margin-xxl;
     }
@@ -195,12 +188,13 @@
     display: flex;
     margin: 0 @comp-margin-xs;
     padding-top: @comp-paddingTB-xl;
-
+    &__box {
+      padding-top: @pop-padding-m;
+    }
     &-image {
       width: @comp-size-m;
       height: @comp-size-m;
       border-radius: @border-radius-circle;
-      padding-top: @pop-padding-m;
     }
   }
 
@@ -301,9 +295,6 @@
       .@{prefix}-icon {
         font-size: @font-size-l;
       }
-    }
-    & .@{prefix}-chat-button--active {
-      color: @brand-color;
     }
   }
   &__refresh {
