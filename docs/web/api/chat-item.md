@@ -13,7 +13,7 @@ spline: data
 {{ bubble }}
 
 ### 模型切换
-- role角色：用户、助手、错误、模型切换，可选项：user/assistant/error/model-change
+- role角色：用户、助手、错误、模型切换，可选项：user/assistant/error/model-change/system
 
 {{ change-model-message }}
 
