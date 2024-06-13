@@ -13,7 +13,7 @@ spline: data
 {{ bubble }}
 
 ### 模型切换
-- role角色：用户、助手、错误、模型切换，可选项：user/assistant/error/model-change/system
+- `role`角色：用户、助手、错误、模型切换，可选项：`user/assistant/error/model-change/system`
 
 {{ change-model-message }}
 
@@ -21,11 +21,16 @@ spline: data
 
 {{ error-message }}
 
+### 可配置头像，昵称，时间
+
+{{ chat-avatar-name }}
+
 ### 自定义chatItem
 
-- 包括头像、作者、时间、聊天内容，操作按钮，支持各个模块插槽扩展。注意聊天文本必须通过t-chat-content传入content属性
+- 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间， 通过`content`可以调整内容(注意`markdown`数据必须通过`t-chat-content`传入`content`属性)， 通过`actions`可以调整操作按钮内容。
 
-- 当role为assistant时一般是不显示操作按钮的，所以很多场景下，针对AI助手回复的自定义内容，t-chat-item组件需要根据角色role去区分
+- 当role为`assistant`时一般是不显示操作按钮的，所以很多场景下，针对AI助手回复的自定义内容，`t-chat-item`组件可以根据角色role去区分
+
 
 {{ chat-item-slot }}
 

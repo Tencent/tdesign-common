@@ -14,19 +14,22 @@ chat最基本的组件，包括头像、作者、时间、聊天内容，输入�
 
 {{ base }}
 
-### 可配置头像，昵称，时间
+### 自定义底部
+通过`footer` 可以调整chat的底部内容。
 
-{{ chat-avatar-name }}
+{{ chat-loading }}
 
 ### 流式与非流式
 
 {{ sse }}
 
 ### AI助手可拖拽
+搭配`Dialog`非模态类对话框对话框组件
 
 {{ chat-drag }}
 
 ### AI助手悬窗
+搭配`Drawer` 抽屉组件
 
 {{ chat-drawer }}
 
