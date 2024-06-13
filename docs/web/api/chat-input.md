@@ -6,7 +6,7 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
-### 基础问答
+### 基础输入框
 
 {{ chat-input }}
 

@@ -1,6 +1,6 @@
 ---
-title: Chat
-description: 用于AI聊天或者普通聊天。
+title: ChatContent
+description: 支持markdown渲染。
 isComponent: true
 usage: { title: '', description: '' }
 spline: data
