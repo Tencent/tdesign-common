@@ -6,16 +6,12 @@ isComponent: true
 toc: false
 ---
 
-## 引入
-
-## 代码演示
-
 ### 组件类型
 
-基础
+#### 基础
 
 {{ base }}
 
-增加间距
+#### 增加间距
 
 {{ offset }}
