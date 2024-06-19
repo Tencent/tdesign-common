@@ -90,6 +90,10 @@
         .t-textarea__inner::placeholder {
           color: @text-color-secondary;
         }
+
+        .t-textarea__inner:hover {
+          box-shadow: @chat-input-hover;
+        }
       }
 
       &__icon {
@@ -332,6 +336,12 @@
     }
     & .@{prefix}-chat-button--active {
       color: @brand-color;
+    }
+    & .@{prefix}-button:hover {
+      background-color: @chat-actions-hover;
+    }
+    & .@{prefix}-space .@{prefix}-space-item {
+      height: @comp-size-xs;
     }
   }
 
