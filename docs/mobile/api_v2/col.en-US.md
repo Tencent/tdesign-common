@@ -6,16 +6,12 @@ isComponent: true
 toc: false
 ---
 
-## Introduction
-
-## Code Demonstration
-
 ### Component Types
 
-Basic
+#### Basic
 
 {{ base }}
 
-Increase Spacing
+#### Increase Spacing
 
 {{ offset }}
