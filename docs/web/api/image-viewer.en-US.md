@@ -56,9 +56,8 @@ Click on a related button in the operation bar to view the image.
 
 {{ albumIcons }}
 
+### Support native SVG
 
-### Support SVG native viewing
-
-Enable the `isSvg` configuration to insert SVG into Shadow without interference from external styles. It can support interactions such as links within SVG. Some SVG images have completely transparent backgrounds, which can be handled by displaying the box when used.
+Insert SVG into Shadow DOM to avoid interference from external styles, enabling support for interactions such as links within the SVG
 
 {{ svg }}
