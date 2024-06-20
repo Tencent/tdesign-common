@@ -55,3 +55,9 @@ A placeholder image is used to show images that fail to load, and a description 
 Click on a related button in the operation bar to view the image.
 
 {{ albumIcons }}
+
+### Support native SVG
+
+Insert SVG into Shadow DOM to avoid interference from external styles, enabling support for interactions such as links within the SVG
+
+{{ svg }}
