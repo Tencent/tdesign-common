@@ -297,13 +297,17 @@
     }
 
     &--variant--base {
-      background-color: @bg-color-secondarycontainer;
-      border-radius: @border-radius-extraLarge;
+      .@{prefix}-chat__text{
+        background-color: @bg-color-secondarycontainer;
+        border-radius: @border-radius-extraLarge;
+      }
     }
 
     &--variant--outline {
-      border: 1px solid @border-level-2-color;
-      border-radius: @border-radius-extraLarge;
+      .@{prefix}-chat__text {
+        border: 1px solid @border-level-2-color;
+        border-radius: @border-radius-extraLarge;
+      }
     }
   }
 
