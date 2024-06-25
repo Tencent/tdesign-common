@@ -7,7 +7,7 @@ spline: data
 ---
 
 ### hunyuan大模型&快速接入
-下面是一个开箱即用的hunyuan大模型流式调用示例
+下面是一个开箱即用的hunyuan大模型流式调用示例,默认支持`单轮对话`
 
 ### hunyuan Key 申请
 首先你要去申请key，[开通并获取 API-Key](https://hunyuanaide.taiji.woa.com/web/home_api?wsId=10144)
