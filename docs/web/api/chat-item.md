@@ -25,7 +25,7 @@ spline: data
 
 {{ chat-avatar-name }}
 
-### 自定义chatItem
+### 自定义头像，昵称，时间，内容，操作按钮样式
 
 - 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间， 通过`content`可以调整内容(注意`markdown`数据必须通过`t-chat-content`传入`content`属性)， 通过`actions`可以调整操作按钮内容。
 
