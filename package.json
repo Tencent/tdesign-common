@@ -38,7 +38,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.0.3",
     "@types/jest": "^27.4.1",
-    "@types/lodash": "4.14.185",
+    "@types/lodash": "4.17.6",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/experimental-utils": "^2.24.0",
     "@typescript-eslint/parser": "^4.29.0",
