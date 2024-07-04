@@ -65,6 +65,17 @@
   &__wrapper {
     overflow: hidden;
 
+    &.@{prefix}--border-less {
+      .@{collapse-panel-cls}__header {
+        border-bottom: none;
+      }
+
+      .@{collapse-panel-cls}__body {
+        background: @bg-color-container;
+        border: none;
+      }
+    }
+
     .@{collapse-panel-cls}__header {
       padding: @collapse-panel-header-padding;
       border-bottom: @collapse-border-size;
