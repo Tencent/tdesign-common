@@ -617,7 +617,7 @@
       border-top: @border;
       padding: @comp-paddingTB-l @comp-paddingLR-l;
 
-      .t-button + .t-button {
+      .@{prefix}-button + .@{prefix}-button {
         margin-left: @comp-margin-l;
       }
     }
@@ -722,7 +722,7 @@
 }
 
 .@{prefix}-table__th-row-select {
-  .t-table__th-cell-inner {
+  .@{prefix}-table__th-cell-inner {
     display: inline-flex;
     align-items: center;
   }
@@ -1135,7 +1135,7 @@
   }
 }
 
-.t-table .@{prefix}-table__sort-column {
+.@{prefix}-table .@{prefix}-table__sort-column {
   background-color: @table-sort-bg-color;
 }
 
