@@ -3,7 +3,7 @@ title: ChatContent
 description: 支持markdown渲染。
 isComponent: true
 usage: { title: '', description: '' }
-spline: data
+spline: ai
 ---
 
 ### 默认聊天格式
