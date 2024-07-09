@@ -3,7 +3,7 @@ title: ChatAI
 description: 用于AI大模型聊天。
 isComponent: true
 usage: { title: '', description: '' }
-spline: data
+spline: ai
 ---
 
 ### hunyuan大模型&快速接入
