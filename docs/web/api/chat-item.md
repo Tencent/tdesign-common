@@ -3,7 +3,7 @@ title: ChatItem
 description: ChatItem 是一个vue组件，它在聊天对话中显示单个item。它可以展示用户的头像、昵称、时间、聊天内容。AI聊天场景下提供模型切换提示，如果消息仍在发送过程中，它还可以显示一个loading效果。
 isComponent: true
 usage: { title: '', description: '' }
-spline: data
+spline: ai
 ---
 
 ### 聊天气泡框
