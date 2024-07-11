@@ -3,7 +3,7 @@ title: ChatInput
 description: 用于AI聊天输入。
 isComponent: true
 usage: { title: '', description: '' }
-spline: data
+spline: ai
 ---
 
 ### 基础输入框

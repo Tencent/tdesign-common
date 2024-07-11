@@ -3,7 +3,7 @@ title: Chat
 description: 用于AI聊天或者普通聊天。
 isComponent: true
 usage: { title: '', description: '' }
-spline: data
+spline: ai
 ---
 
 ### 基础问答
