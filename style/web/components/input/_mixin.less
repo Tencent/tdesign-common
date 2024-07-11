@@ -41,7 +41,6 @@
   &.@{prefix}-is-disabled {
     color: @input-text-color-disabled;
     background-color: @input-bg-color-disabled;
-    text-overflow: initial;
 
     &:hover {
       border-color: @input-border-color-default;
@@ -50,6 +49,7 @@
     .@{prefix}-input__inner {
       cursor: not-allowed;
       color: @input-text-color-disabled;
+      text-overflow: initial;
   
       &::placeholder {
         color: @input-text-color-disabled;
