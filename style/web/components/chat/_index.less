@@ -1,0 +1,386 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "./_doc.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-chat {
+  .reset;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  color: @comment-text-color-default;
+  // 聊天列表
+  &__list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &--reverse {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .place-holder {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    .clear-btn {
+      color: @text-color-secondary;
+      font-size: @font-size-s;
+      cursor: pointer;
+
+      .@{prefix}-divider__inner-text {
+        display: flex;
+        align-items: center;
+      }
+
+      .clear-btn-text {
+        margin-left: @comp-margin-xs;
+      }
+
+      &:hover {
+        color: @text-color-primary;
+      }
+    }
+  }
+  // 输入框插槽
+  &__footer {
+    position: relative;
+
+    &__content {
+      width: 100%;
+      position: relative;
+      display: flex;
+      padding-right: 0;
+    }
+    .@{prefix}-chat__footer__content {
+      margin-top: @comp-margin-xl;
+    }
+
+    &__textarea {
+      flex-grow: 1;
+      position: relative;
+      border-radius: @border-radius-round;
+
+      .@{prefix}-textarea {
+        width: 100%;
+
+        .@{prefix}-textarea__inner {
+          background: @bg-color-secondarycontainer;
+          padding: @comp-size-xxs @comp-size-xxxxxl @comp-size-xxs @comp-size-xs;
+          border-radius: 32px;
+          scrollbar-width: none;
+        }
+
+        .@{prefix}-textarea__inner.@{prefix}-is-focused {
+          border-color: @brand-color;
+          background: @bg-color-container;
+        }
+
+        .@{prefix}-textarea__inner::placeholder {
+          color: @text-color-secondary;
+        }
+
+        .@{prefix}-textarea__inner:hover {
+          box-shadow: @chat-input-hover;
+        }
+      }
+
+      &__icon {
+        position: absolute;
+        bottom: @comp-paddingTB-s;
+        right: @comp-paddingLR-s;
+        text-align: center;
+        cursor: pointer;
+        height: @comp-size-xxl;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & &__default {
+          transform: rotate(-90deg);
+          width: @comp-size-xxl;
+          height: @comp-size-xxl;
+          border-radius: @border-radius-circle;
+          color: @text-color-disabled;
+        }
+
+        & &--focus {
+          background: @brand-color;
+          color: @text-color-anti;
+        }
+
+        .@{prefix}-button.@{prefix}-size-s .@{prefix}-icon {
+          font-size: @font-size-xl;
+        }
+      }
+    }
+
+    &__stopbtn {
+      flex: 0 0 auto;
+      margin-left: @comp-margin-l;
+
+      .@{prefix}-button {
+        width: 100px;
+        height: @comp-size-xxxxl;
+        border-radius: @border-radius-round;
+        background: @bg-color-secondarycontainer;
+        color: @text-color-primary;
+        font-size: @font-size-l;
+
+        &__text {
+          align-items: center;
+        }
+
+        .@{prefix}-icon {
+          font-size: @font-size-xl;
+          margin-right: @comp-margin-s;
+        }
+      }
+    }
+  }
+
+  &__inner {
+    display: flex;
+    margin-bottom: @comp-margin-l;
+    .@{prefix}-chat__avatar {
+      flex: 0 0 auto;
+    }
+    .@{prefix}-chat__content {
+      flex: 1 1 auto;
+      width: 100%;
+
+      &--base {
+        padding-top: @comp-paddingTB-xl;
+      }
+    }
+    .@{prefix}-chat__detail {
+      max-width: calc(100% - @comp-size-xl);
+      box-sizing: border-box;
+    }
+
+    &.model-change {
+      justify-content: center;
+      margin-top: @comp-margin-xxl;
+    }
+
+    &.error {
+      .@{prefix}-chat__text__content {
+        color: @error-color;
+      }
+    }
+    .@{prefix}-chat__notice {
+      // 水平居中
+      background: @bg-color-secondarycontainer;
+      padding: @comp-paddingTB-xxs @comp-paddingLR-s;
+      font-size: @font-size-s;
+      color: @text-color-disabled;
+      border-radius: @border-radius-default;
+      box-sizing: border-box;
+      line-height: 20px;
+      text-align: center;
+
+      span {
+        color: @text-color-placeholder;
+      }
+    }
+  }
+  // chat布局
+  &--normal {
+    .@{prefix}-chat__inner.user {
+      flex-direction: row-reverse;
+      .@{prefix}-chat__avatar {
+        margin-right: 0;
+        // margin-left: @comment-avatar-margin-right;
+      }
+      .@{prefix}-chat__content {
+        align-items: flex-end;
+        .@{prefix}-chat__base {
+          justify-content: flex-end;
+        }
+      }
+    }
+    .@{prefix}-chat__detail {
+      max-width: ~"min(calc(100% - 40px), 800px)";
+    }
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    margin: 0 @comp-margin-xs;
+    padding-top: @comp-paddingTB-xl;
+
+    &__box {
+      padding-top: @pop-padding-m;
+    }
+
+    &-image {
+      width: @comp-size-m;
+      height: @comp-size-m;
+      border-radius: @border-radius-circle;
+    }
+  }
+
+  &__content {
+    font: @comment-content-text-size;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .@{prefix}-skeleton {
+      width: 100%;
+      padding: @pop-padding-xxl;
+    }
+  }
+
+  &__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    font: @font-title-small;
+    color: @text-color-placeholder;
+    padding-left: @pop-padding-xxl;
+  }
+
+  &__name {
+    padding-right: @comp-margin-s;
+    cursor: pointer;
+  }
+  // 消息样式
+  &__text {
+    padding: @pop-padding-xl @pop-padding-xxl;
+    font: @font-body-large;
+    word-break: break-all;
+
+    & &__user pre {
+      color: @text-color-secondary;
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    &__assistant {
+      color: @text-color-primary;
+
+      ol {
+        padding-inline-start: 20px;
+
+        li {
+          list-style: decimal;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        margin: @comp-margin-xs 0;
+        border-radius: @border-radius-default;
+      }
+    }
+
+    & &__assistant &__content .hljs {
+      background-color: @code-bg-color-page;
+      border-radius: @border-radius-large;
+    }
+
+    &--error {
+      color: @error-color;
+    }
+
+    &--variant--base {
+      .@{prefix}-chat__text {
+        background-color: @bg-color-secondarycontainer;
+        border-radius: @border-radius-extraLarge;
+      }
+    }
+
+    &--variant--outline {
+      .@{prefix}-chat__text {
+        border: 1px solid @border-level-2-color;
+        border-radius: @border-radius-extraLarge;
+      }
+    }
+  }
+
+  &__actions-margin {
+    margin-left: @comp-margin-l;
+  }
+
+  &__actions {
+    margin-top: @comp-margin-xs;
+    display: flex;
+    list-style: none;
+    padding: @chat-action-icon-padding;
+    background-color: @bg-color-secondarycontainer;
+    border-radius: @border-radius-medium;
+    border: 1px solid @border-level-2-color;
+    overflow: hidden;
+
+    & .@{prefix}-button {
+      padding: @pop-padding-s;
+      width: @comp-size-xxxs;
+      height: @comp-size-xxxs;
+      box-sizing: content-box;
+      color: @text-color-primary;
+      background-color: @bg-color-secondarycontainer;
+      border: 0;
+      margin-right: @comp-margin-xs;
+      .@{prefix}-icon {
+        font-size: @font-size-l;
+      }
+    }
+    & .@{prefix}-chat-button--active {
+      color: @brand-color;
+    }
+    & .@{prefix}-button:hover {
+      background-color: @chat-actions-hover;
+    }
+    & .@{prefix}-space .@{prefix}-space-item {
+      height: @comp-size-xs;
+    }
+  }
+
+  &__refresh {
+    display: flex;
+    align-items: center;
+
+    &-line {
+      width: 1px;
+      height: @comp-size-xxxs;
+      background-color: @chat-refresh-line;
+      margin-right: @comp-margin-xs;
+    }
+  }
+
+  &__code-header {
+    display: flex;
+    padding: 0 @pop-padding-xl;
+    padding-top: @pop-padding-xl;
+    justify-content: space-between;
+  }
+
+  &__language-txt {
+    color: @code-font-color-base;
+  }
+
+  &__copy-btn {
+    color: @code-font-color-base;
+    // margin-left: auto;
+    cursor: pointer;
+  }
+
+  :where(code):not(:where(pre *)) {
+    color: @error-color;
+  }
+}
