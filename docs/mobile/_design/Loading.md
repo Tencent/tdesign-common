@@ -46,7 +46,7 @@
   </div>
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/loading/loading-5.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/loading/loading-6.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
