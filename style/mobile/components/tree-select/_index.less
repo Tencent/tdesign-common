@@ -15,6 +15,7 @@
 
     &--right {
       flex: 1;
+      overflow: auto;
     }
 
     ::-webkit-scrollbar {
@@ -34,6 +35,12 @@
     &--active {
       font-weight: 600;
       color: @tree-item-active-color;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      color: @tree-item-disabled-color;
     }
   }
 

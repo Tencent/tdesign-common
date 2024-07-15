@@ -111,6 +111,42 @@
       animation: none;
     }
   }
+
+  &__parent--relative {
+    position: relative;
+  }
+
+  &--lock {
+    overflow: hidden;
+  }
+
+  &--full {
+    z-index: @loading-z-index;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    background-color: @loading-full-bg-color;
+  }
+
+  &--fullscreen {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: @loading-z-index;
+    background-color: @loading-full-bg-color;
+  }
 }
 
 .generate-spinner(@n, @i: 1) when (@i =< @n) {
