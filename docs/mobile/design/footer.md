@@ -40,7 +40,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/Ffooter/footer-4.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/footer/footer-4.png" />
   </div>
 </div>
 

@@ -23,7 +23,7 @@
 <div class="legend">
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh--3.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh-3.png" />
   </div>
 </div>
 
