@@ -13,6 +13,7 @@
 @import "../../mixins/_focus.less";
 
 // <name> 替换为组件名
+// 标签选择器为了兼容web-component组件
 .@{radio-cls}-group {
   .reset;
 
@@ -23,6 +24,11 @@
   border-radius: @border-radius-default;
   flex-wrap: wrap;
   .scrollbar(4px);
+
+  // web-component兼容样式
+  @{prefix}-radio-button-light-dom, @{prefix}-check-light-dom {
+    display: inline-flex;
+  }
 
   .@{radio-cls} {
     margin-right: @radio-margin-right;
@@ -51,6 +57,20 @@
     }
 
     .@{radio-button--cls} {
+      &.@{prefix}-is-checked {
+        color: @radio-button-color-outline-checked;
+      }
+
+      &.@{prefix}-is-disabled {
+        &.@{prefix}-is-checked {
+          color: @brand-color-disabled;
+          border-color: @brand-color-disabled;
+          background-color: @radio-button-background-color-outline-disabled-checked;
+        }
+      }
+    }
+
+    .@{radio-button--cls}:not(.@{prefix}-web-component) {
       &:first-child {
         border-radius: @border-radius-default 0 0 @border-radius-default;
       }
@@ -62,16 +82,24 @@
       &:only-child {
         border-radius: @border-radius-default;
       }
+    }
 
-      &.@{prefix}-is-checked {
-        color: @radio-button-color-outline-checked;
+    @{prefix}-radio-button-light-dom {
+      &:first-child  {
+        .@{radio-button--cls} {
+          border-radius: @border-radius-default 0 0 @border-radius-default;
+        }
       }
 
-      &.@{prefix}-is-disabled {
-        &.@{prefix}-is-checked {
-          color: @brand-color-disabled;
-          border-color: @brand-color-disabled;
-          background-color: @radio-button-background-color-outline-disabled-checked;
+      &:last-child {
+        .@{radio-button--cls} {
+          border-radius: 0 @border-radius-default @border-radius-default 0;
+        }
+      }
+
+      &:only-child {
+        .@{radio-button--cls} {
+          border-radius: @border-radius-default;
         }
       }
     }
@@ -212,7 +240,7 @@
     }
   }
 
-  .@{radio-button--cls} {
+  .@{radio-button--cls}, @{prefix}-radio-button-light-dom @{prefix}-check-light-dom .@{radio-button--cls} {
     cursor: pointer;
     position: relative;
     border: @radio-button-border;
@@ -224,16 +252,6 @@
     color: @radio-label-color;
     white-space: nowrap;
     box-sizing: border-box;
-
-    &:first-child {
-      border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;
-    }
-
-    &:last-child {
-      border-right: @radio-button-border;
-      border-right-color: @radio-button-border-color-default;
-      border-radius: 0 @radio-button-border-radius @radio-button-border-radius 0;
-    }
 
     &__former {
       opacity: @radio-opacity-transparent;
@@ -276,6 +294,41 @@
         &::after {
           width: 0;
         }
+      }
+    }
+  }
+
+  .@{radio-button--cls}:not(.@{prefix}-web-component) {
+    &:first-child {
+      border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;
+    }
+
+    &:last-child {
+      border-right: @radio-button-border;
+      border-right-color: @radio-button-border-color-default;
+      border-radius: 0 @radio-button-border-radius @radio-button-border-radius 0;
+    }
+  }
+
+  // web-component兼容样式
+  @{prefix}-radio-button-light-dom {
+    &:first-child {
+      .@{radio-button--cls} {
+        border-radius: @radio-button-border-radius 0 0 @radio-button-border-radius;
+      }
+    }
+
+    &:last-child {
+      .@{radio-button--cls} {
+        border-right: @radio-button-border;
+        border-right-color: @radio-button-border-color-default;
+        border-radius: 0 @radio-button-border-radius @radio-button-border-radius 0;
+      }
+    }
+
+    &:has(.@{prefix}-is-checked) {
+      + @{prefix}-radio-button-light-dom .@{radio-button--cls} {
+        border-left: 0;
       }
     }
   }
