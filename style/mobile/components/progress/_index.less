@@ -155,10 +155,9 @@
       left: 0;
       z-index: 1;
       content: "";
-      animation: progress-active-animation 2s
-        cubic-bezier(0.23, 0.99, 0.86, 0.2) infinite;
+      animation: progress-active-animation 2s cubic-bezier(.23, .99, .86, .2) infinite;
       background: @progress-inner-bg-color-active;
-      opacity: 0.2;
+      opacity: .2;
     }
   }
 }
@@ -207,12 +206,12 @@
 @keyframes progress-active-animation {
   0% {
     width: 0;
-    opacity: 0.1;
+    opacity: .1;
   }
 
   35% {
     width: 50%;
-    opacity: 0.4;
+    opacity: .4;
   }
 
   100% {
