@@ -33,7 +33,7 @@
         color: @breadcrumb-icon-color-current;
       }
     }
-
+    :not(@{prefix}-breadcrumb-item) >
     &:last-child {
       color: @breadcrumb-text-color-current;
 
@@ -87,6 +87,17 @@
       color: @breadcrumb-icon-slash-color-default;
       .v-inlineblock;
     }
+  }
+
+  @{prefix}-breadcrumb-item:last-child {
+    .t-breadcrumb__item {
+      color: @breadcrumb-text-color-current;
+  
+      .@{prefix}-breadcrumb__separator {
+        display: none;
+      }
+    }
+    
   }
 
   &__inner {
