@@ -8,10 +8,7 @@
   .reset;
 
   padding: @empty-padding;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 
   &__title {
     font-size: @empty-title-font-size;
@@ -19,7 +16,7 @@
     font-weight: @empty-title-font-weight;
     margin-top: @empty-title-margin-top;
     margin-bottom: @empty-title-margin-bottom;
-    line-height: 22px;
+    line-height: @empty-line-height;
   }
 
   &__description {
@@ -28,13 +25,11 @@
     font-weight: @empty-description-font-weight;
     margin-top: @empty-description-margin-top;
     margin-bottom: @empty-description-margin-bottom;
-    line-height: 22px;
+    line-height: @empty-line-height;
   }
 
   &__image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
   }
 
   &__action {
