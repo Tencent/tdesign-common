@@ -4,33 +4,52 @@
 
 .@{prefix}-divider {
   display: flex;
-  align-items: center;
-  border-style: solid;
-  border-width: 0;
-  color: @divider-text-color;
-  font-size: @font-size-s;
+  color: @divider-color;
   border-color: @divider-color;
-  margin: 10px 0;
+  border-style: @divider-content-line-style;
+  border-width: 0;
 
   &::before,
   &::after {
+    content: "";
     display: block;
     flex: 1;
     box-sizing: border-box;
-    height: 1px;
+    border: inherit;
     border-color: inherit;
     border-style: inherit;
-    border-width: 2px 0 0;
   }
 
-  &::before {
-    content: "";
-  }
+  &--horizontal {
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
-  &--hairline {
     &::before,
     &::after {
+      border-top-width: 1px;
       transform: scaleY(.5);
+    }
+
+    .@{prefix}-divider__content:not(:empty) {
+      margin: 0 12px;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    height: 1em;
+    margin: 0 8px;
+
+    &::before,
+    &::after {
+      border-left-width: 1px;
+      transform: scaleX(.5);
+    }
+
+    &-center {
+      align-items: center;
+      height: 100%;
     }
   }
 
@@ -38,34 +57,14 @@
     border-style: dashed;
   }
 
-  //文本位置
-  &--content-center,
-  &--content-left,
-  &--content-right {
-    &::before {
-      margin-right: 10px;
-    }
-
-    &::after {
-      content: "";
-      margin-left: 10px;
-    }
+  &__content {
+    font-size: @divider-content-font-size;
+    line-height: @divider-content-line-height;
+    color: @divider-content-color;
   }
 
-  &-vertical {
-    border-left: 1px solid @divider-color;
-    margin: 0 @spacer;
-  }
-
-  &--content-left {
-    &::before {
-      max-width: 10%;
-    }
-  }
-
-  &--content-right {
-    &::after {
-      max-width: 10%;
-    }
+  &--left::before,
+  &--right::after {
+    max-width: 30px;
   }
 }
