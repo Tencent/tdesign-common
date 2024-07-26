@@ -2,6 +2,7 @@
 title: RangeInput
 description: RangeInput is used to input range text
 isComponent: true
+usage: { title: '', description: '' }
 spline: data
 ---
 

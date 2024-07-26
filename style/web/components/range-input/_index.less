@@ -43,6 +43,22 @@
     font: @range-input-font-s;
   }
 
+  // borderless mode
+  &--borderless:not(&.@{prefix}-is-focused) {
+    border-color: transparent;
+    transition: @range-input-inner-transition;
+
+    &:hover {
+      border-color: @component-border;
+      cursor: pointer;
+    }
+
+    &.@{prefix}-is-disabled {
+      border: none;
+      background-color: @range-input-bg-color-disabled;
+    }
+  }
+
   &.@{prefix}-is-focused {
     z-index: 1;
     border-color: @range-input-border-color-default-focus;
