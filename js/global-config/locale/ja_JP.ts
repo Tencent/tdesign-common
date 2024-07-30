@@ -230,5 +230,8 @@ export default {
     expandText: 'もっと拡大する',
     collapseText: '畳む',
     copiedText: 'コピー成功'
+  },
+  rate: {
+    rateText: ['ひどい', 'がっかり', '普通', '満足', '驚き']
   }
 } as const;
