@@ -227,5 +227,8 @@ export default {
     expandText: 'توسيع',
     collapseText: 'طي',
     copiedText: 'النسخ اكتمل'
+  },
+  rate: {
+    rateText: ['فظيع', 'خيبة أمل', 'عادي', 'راض', 'مفاجأة']
   }
 } as const;

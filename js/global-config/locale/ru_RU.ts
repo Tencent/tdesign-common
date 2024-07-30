@@ -229,5 +229,8 @@ export default {
     expandText: 'раскрывать',
     collapseText: 'убрать',
     copiedText: 'Скопировано успешно'
+  },
+  rate: {
+    rateText: ['Ужасно', 'Разочарован', 'Обычный', 'Удовлетворенный', 'Удивленный']
   }
 } as const;

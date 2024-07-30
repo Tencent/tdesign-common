@@ -231,5 +231,8 @@ export default {
     expandText: 'more',
     collapseText: 'collapse',
     copiedText: 'copied'
+  },
+  rate: {
+    rateText: ['terrible', 'disappointed', 'normal', 'satisfied', 'surprised']
   }
 } as const;

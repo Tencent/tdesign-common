@@ -230,5 +230,8 @@ export default {
     expandText: '展开',
     collapseText: '收起',
     copiedText: '复制成功'
+  },
+  rate: {
+    rateText: ['极差', '失望', '一般', '满意', '惊喜']
   }
 } as const;

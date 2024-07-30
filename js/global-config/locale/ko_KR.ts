@@ -230,5 +230,8 @@ export default {
     expandText: '펼치다',
     collapseText: '접다',
     copiedText: '복사 성공'
+  },
+  rate: {
+    rateText: ['최악', '실망', '보통', '만족', '놀람']
   }
 } as const;

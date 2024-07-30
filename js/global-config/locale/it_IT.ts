@@ -230,5 +230,8 @@ export default {
     expandText: 'Espandere',
     collapseText: 'ripiegare',
     copiedText: 'Copia completata'
+  },
+  rate: {
+    rateText: ['Terribile', 'Deluso', 'Ordinario', 'Soddisfatto', 'Sorpreso']
   }
 } as const;
