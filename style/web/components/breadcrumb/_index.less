@@ -33,7 +33,7 @@
         color: @breadcrumb-icon-color-current;
       }
     }
-    :not(@{prefix}-breadcrumb-item) >
+
     &:last-child {
       color: @breadcrumb-text-color-current;
 
@@ -86,15 +86,6 @@
       line-height: 0;
       color: @breadcrumb-icon-slash-color-default;
       .v-inlineblock;
-    }
-  }
-
-  @{prefix}-breadcrumb-item:last-child {
-    .t-breadcrumb__item {
-      color: @breadcrumb-text-color-current;
-      .@{prefix}-breadcrumb__separator {
-        display: none;
-      }
     }
   }
 
@@ -214,6 +205,25 @@
 
       &:active {
         .color-change;
+      }
+    }
+  }
+
+  // web component
+  @{prefix}-breadcrumb-item-light-dom {
+    .@{prefix}-breadcrumb__item {
+      color: @breadcrumb-text-color-default;
+      .@{prefix}-breadcrumb__separator {
+        display: flex;
+      }
+    }
+
+    &:last-child {
+      .@{prefix}-breadcrumb__item {
+        color: @breadcrumb-text-color-current;
+        .@{prefix}-breadcrumb__separator {
+          display: none;
+        }
       }
     }
   }
