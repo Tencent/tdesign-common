@@ -254,7 +254,10 @@ export class TreeNode {
     if (this.checked) {
       checkedMap.set(value, true);
     }
-    if (!checkStrictly && parent?.isChecked()) {
+    // 这里不可以使用 parent.isChecked 方法
+    // 因为当前节点创建时尚未插入父节点的 children 数组，可能父节点选中态仅受到之前子节点状态的影响
+    // 这会导致父节点状态计算错误，进而引发子节点变更了选中状态
+    if (!checkStrictly && parent?.checked) {
       checkedMap.set(value, true);
     }
     this.updateChecked();
