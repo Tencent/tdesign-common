@@ -16,6 +16,7 @@
   }
 
   &__content {
+    display: inline-block;
     white-space: nowrap;
   }
 
@@ -59,6 +60,10 @@
     vertical-align: top;
     color: @notice-bar-operation-font-color;
     font-weight: 700;
+
+    &:empty {
+      display: none;
+    }
   }
 
   &__suffix-icon:not(:empty) {
