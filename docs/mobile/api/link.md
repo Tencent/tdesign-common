@@ -14,4 +14,4 @@ toc: false
 ### 02 组件状态
 
 
-{{ theme }}
+{{ status }}
