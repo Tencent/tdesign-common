@@ -1,0 +1,39 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-empty {
+  .reset;
+
+  padding: @empty-padding;
+  text-align: center;
+
+  &__title {
+    font-size: @empty-title-font-size;
+    color: @empty-title-color;
+    font-weight: @empty-title-font-weight;
+    margin-top: @empty-title-margin-top;
+    margin-bottom: @empty-title-margin-bottom;
+    line-height: @empty-line-height;
+  }
+
+  &__description {
+    font-size: @empty-description-color;
+    color: @empty-description-color;
+    font-weight: @empty-description-font-weight;
+    margin-top: @empty-description-margin-top;
+    margin-bottom: @empty-description-margin-bottom;
+    line-height: @empty-line-height;
+  }
+
+  &__image {
+
+  }
+
+  &__action {
+    margin-top: @empty-action-margin-top;
+    margin-bottom: @empty-action-margin-bottom;
+  }
+}

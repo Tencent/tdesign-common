@@ -75,4 +75,27 @@ export default {
   form: {
     requiredMark: undefined,
   },
+
+  empty: {
+    maintenance: {
+      image: undefined,
+      title: '维护中'
+    },
+    success: {
+      image: undefined,
+      title: '成功',
+    },
+    fail: {
+      image: undefined,
+      title: '失败',
+    },
+    empty: {
+      image: undefined,
+      title: '暂无数据',
+    },
+    'network-error': {
+      image: undefined,
+      title: '无结果',
+    },
+  }
 } as const;
