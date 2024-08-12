@@ -230,9 +230,16 @@ export default {
   typography: {
     expandText: 'more',
     collapseText: 'collapse',
-    copiedText: 'copied'
+    copiedText: 'copied',
   },
   rate: {
-    rateText: ['terrible', 'disappointed', 'normal', 'satisfied', 'surprised']
-  }
+    rateText: ['terrible', 'disappointed', 'normal', 'satisfied', 'surprised'],
+  },
+  empty: {
+    maintenanceText: 'Under Construction',
+    successText: 'Success',
+    failText: 'Failure',
+    emptyText: 'No Data',
+    networkErrorText: 'Network Error',
+  },
 } as const;

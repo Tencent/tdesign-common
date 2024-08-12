@@ -4,8 +4,8 @@ export default {
   classPrefix: 't',
   animation: {
     include: ['ripple', 'expand', 'fade'],
-    exclude: []
-  } as Record<'include'|'exclude', Array<AnimationType>>,
+    exclude: [],
+  } as Record<'include' | 'exclude', Array<AnimationType>>,
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,
@@ -79,23 +79,23 @@ export default {
   empty: {
     maintenance: {
       image: undefined,
-      title: '维护中'
+      title: '',
     },
     success: {
       image: undefined,
-      title: '成功',
+      title: '',
     },
     fail: {
       image: undefined,
-      title: '失败',
+      title: '',
     },
     empty: {
       image: undefined,
-      title: '暂无数据',
+      title: '',
     },
-    'network-error': {
+    networkError: {
       image: undefined,
-      title: '无结果',
+      title: '',
     },
-  }
+  },
 } as const;

@@ -93,7 +93,7 @@ export default {
       month: '월을 선택하세요',
       year: '연도를 선택하세요',
       quarter: '분기별 선택',
-      week: '요일 선택'
+      week: '요일 선택',
     },
     weekdays: ['월', '화', '수', '목', '금', '토', '일'],
     months: [
@@ -229,9 +229,16 @@ export default {
   typography: {
     expandText: '펼치다',
     collapseText: '접다',
-    copiedText: '복사 성공'
+    copiedText: '복사 성공',
   },
   rate: {
-    rateText: ['최악', '실망', '보통', '만족', '놀람']
-  }
+    rateText: ['최악', '실망', '보통', '만족', '놀람'],
+  },
+  empty: {
+    maintenanceText: '건설 중',
+    successText: '성공',
+    failText: '실패',
+    emptyText: '데이터 없음',
+    networkErrorText: '네트워크 오류',
+  },
 } as const;

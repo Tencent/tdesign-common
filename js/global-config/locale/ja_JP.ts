@@ -93,7 +93,7 @@ export default {
       month: '月を選択してください',
       year: '年度を選択してください',
       quarter: '四半期を選択してください',
-      week: '週を選択してください'
+      week: '週を選択してください',
     },
     weekdays: ['月', '火', '水', '木', '金', '土', '日'],
     months: [
@@ -229,9 +229,16 @@ export default {
   typography: {
     expandText: 'もっと拡大する',
     collapseText: '畳む',
-    copiedText: 'コピー成功'
+    copiedText: 'コピー成功',
   },
   rate: {
-    rateText: ['ひどい', 'がっかり', '普通', '満足', '驚き']
-  }
+    rateText: ['ひどい', 'がっかり', '普通', '満足', '驚き'],
+  },
+  empty: {
+    maintenanceText: '建設中',
+    successText: '成功',
+    failText: '失敗',
+    emptyText: 'データなし',
+    networkErrorText: 'ネットワークエラー',
+  },
 } as const;
