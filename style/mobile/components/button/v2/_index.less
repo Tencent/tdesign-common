@@ -325,14 +325,33 @@
   }
 
   &--dashed {
-    background-color: transparent;
+    // background-color: transparent;
 
     &::after {
       border-style: dashed;
     }
 
+    &.@{button}--default {
+      color: @button-default-dashed-color;
+      background-color: transparent;
+
+      &::after {
+        border-color: @button-default-dashed-border-color;
+      }
+
+      &.@{button}--disabled {
+        background-color: transparent;
+        color: @button-default-dashed-disabled-color;
+
+        &::after {
+          border-color: @button-default-dashed-disabled-color;
+        }
+      }
+    }
+
     &.@{button}--primary {
       color: @button-primary-dashed-color;
+      background-color: transparent;
 
       &::after {
         border-color: @button-primary-dashed-border-color;
@@ -350,6 +369,7 @@
 
     &.@{button}--danger {
       color: @button-danger-dashed-color;
+      background-color: transparent;
 
       &::after {
         border-color: @button-danger-dashed-border-color;
