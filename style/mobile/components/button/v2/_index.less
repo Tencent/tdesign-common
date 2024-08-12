@@ -326,7 +326,10 @@
 
   &--dashed {
     background-color: transparent;
-    border-style: dashed;
+
+    &::after {
+      border-style: dashed;
+    }
 
     &.@{button}--primary {
       color: @button-primary-dashed-color;
