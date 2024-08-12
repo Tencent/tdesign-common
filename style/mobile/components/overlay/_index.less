@@ -12,7 +12,6 @@
   width: 100%;
   z-index: @overlay-zindex;
   background-color: @overlay-bg-color;
-  transition-duration: @overlay-transition-duration;
 
   &-enter-from,
   &-leave-to {
@@ -23,5 +22,9 @@
   &-leave-active {
     transition-property: background-color;
     transition-timing-function: ease;
+  }
+
+  &-overflow-hidden {
+    overflow: hidden;
   }
 }
