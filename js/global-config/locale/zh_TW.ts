@@ -235,10 +235,12 @@ export default {
     rateText: ['極差', '失望', '一般', '滿意', '驚喜'],
   },
   empty: {
-    maintenanceText: '建設中',
-    successText: '成功',
-    failText: '失敗',
-    emptyText: '暫無數據',
-    networkErrorText: '網絡錯誤',
+    titleText: {
+      maintenance: '建設中',
+      success: '成功',
+      fail: '失敗',
+      empty: '暫無數據',
+      networkError: '網絡錯誤',
+    },
   },
 } as const;

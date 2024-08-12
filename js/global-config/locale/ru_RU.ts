@@ -244,10 +244,12 @@ export default {
     ],
   },
   empty: {
-    maintenanceText: 'Строительство',
-    successText: 'Успех',
-    failText: 'Провал',
-    emptyText: 'Нет данных',
-    networkErrorText: 'Ошибка сети',
+    titleText: {
+      maintenance: 'Строительство',
+      success: 'Успех',
+      fail: 'Провал',
+      empty: 'Нет данных',
+      networkError: 'Ошибка сети',
+    },
   },
 } as const;

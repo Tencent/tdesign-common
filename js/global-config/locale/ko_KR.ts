@@ -235,10 +235,12 @@ export default {
     rateText: ['최악', '실망', '보통', '만족', '놀람'],
   },
   empty: {
-    maintenanceText: '건설 중',
-    successText: '성공',
-    failText: '실패',
-    emptyText: '데이터 없음',
-    networkErrorText: '네트워크 오류',
+    titleText: {
+      maintenance: '건설 중',
+      success: '성공',
+      fail: '실패',
+      empty: '데이터 없음',
+      networkError: '네트워크 오류',
+    },
   },
 } as const;

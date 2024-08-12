@@ -232,10 +232,12 @@ export default {
     rateText: ['فظيع', 'خيبة أمل', 'عادي', 'راض', 'مفاجأة'],
   },
   empty: {
-    maintenanceText: 'تحت الإنشاء',
-    successText: 'النجاح',
-    failText: 'الفشل',
-    emptyText: 'لا توجد بيانات حتى الآن',
-    networkErrorText: 'خطأ في الشبكة',
+    titleText: {
+      maintenance: 'تحت الإنشاء',
+      success: 'النجاح',
+      fail: 'الفشل',
+      empty: 'لا توجد بيانات حتى الآن',
+      networkError: 'خطأ في الشبكة',
+    }
   },
 } as const;

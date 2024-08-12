@@ -243,10 +243,12 @@ export default {
     rateText: ['Terribile', 'Deluso', 'Ordinario', 'Soddisfatto', 'Sorpreso'],
   },
   empty: {
-    maintenanceText: 'In costruzione',
-    successText: 'Successo',
-    failText: 'Fallimento',
-    emptyText: 'Nessun dato',
-    networkErrorText: 'Errore di rete',
+    titleText: {
+      maintenance: 'In costruzione',
+      success: 'Successo',
+      fail: 'Fallimento',
+      empty: 'Nessun dato',
+      networkError: 'Errore di rete',
+    }
   },
 } as const;

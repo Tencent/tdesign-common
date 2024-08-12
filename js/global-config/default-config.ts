@@ -75,27 +75,20 @@ export default {
   form: {
     requiredMark: undefined,
   },
-
   empty: {
-    maintenance: {
-      image: undefined,
-      title: '',
+    titleText: {
+      maintenance: '',
+      success: '',
+      fail: '',
+      empty: '',
+      networkError: '',
     },
-    success: {
-      image: undefined,
-      title: '',
-    },
-    fail: {
-      image: undefined,
-      title: '',
-    },
-    empty: {
-      image: undefined,
-      title: '',
-    },
-    networkError: {
-      image: undefined,
-      title: '',
-    },
+    image: {
+      maintenance: undefined,
+      success: undefined,
+      fail: undefined,
+      empty: undefined,
+      networkError: undefined,
+    }
   },
 } as const;

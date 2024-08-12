@@ -236,10 +236,12 @@ export default {
     rateText: ['terrible', 'disappointed', 'normal', 'satisfied', 'surprised'],
   },
   empty: {
-    maintenanceText: 'Under Construction',
-    successText: 'Success',
-    failText: 'Failure',
-    emptyText: 'No Data',
-    networkErrorText: 'Network Error',
+    titleText: {
+      maintenance: 'Under Construction',
+      success: 'Success',
+      fail: 'Failure',
+      empty: 'No Data',
+      networkError: 'Network Error',
+    }
   },
 } as const;

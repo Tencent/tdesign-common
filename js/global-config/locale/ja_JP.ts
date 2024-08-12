@@ -235,10 +235,12 @@ export default {
     rateText: ['ひどい', 'がっかり', '普通', '満足', '驚き'],
   },
   empty: {
-    maintenanceText: '建設中',
-    successText: '成功',
-    failText: '失敗',
-    emptyText: 'データなし',
-    networkErrorText: 'ネットワークエラー',
+    titleText: {
+      maintenance: '建設中',
+      success: '成功',
+      fail: '失敗',
+      empty: 'データなし',
+      networkError: 'ネットワークエラー',
+    },
   },
 } as const;
