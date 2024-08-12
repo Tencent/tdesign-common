@@ -77,11 +77,11 @@ export default {
   },
   empty: {
     titleText: {
-      maintenance: '',
-      success: '',
-      fail: '',
-      empty: '',
-      networkError: '',
+      maintenance: undefined,
+      success: undefined,
+      fail: undefined,
+      empty: undefined,
+      networkError: undefined,
     },
     image: {
       maintenance: undefined,
