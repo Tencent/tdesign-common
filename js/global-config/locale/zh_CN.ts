@@ -229,9 +229,18 @@ export default {
   typography: {
     expandText: '展开',
     collapseText: '收起',
-    copiedText: '复制成功'
+    copiedText: '复制成功',
   },
   rate: {
-    rateText: ['极差', '失望', '一般', '满意', '惊喜']
-  }
+    rateText: ['极差', '失望', '一般', '满意', '惊喜'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '建设中',
+      success: '成功',
+      fail: '失败',
+      empty: '暂无数据',
+      networkError: '网络错误',
+    },
+  },
 } as const;
