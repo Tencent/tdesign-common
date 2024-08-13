@@ -384,6 +384,23 @@
         }
       }
     }
+
+    &.@{button}--light {
+      color: @button-light-dashed-color;
+
+      &::after {
+        border-color: @button-light-dashed-border-color;
+      }
+
+      &.@{button}--disabled {
+        background-color: transparent;
+        color: @button-light-dashed-disabled-color;
+
+        &::after {
+          border-color: @button-light-dashed-disabled-color;
+        }
+      }
+    }
   }
 
   .@{prefix}-loading + &__content:not(:empty),
