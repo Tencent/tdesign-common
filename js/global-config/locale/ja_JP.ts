@@ -177,6 +177,7 @@ export default {
       boolean: '${name}データ型は Boolean 型であること',
       number: '${name}デジタルであること',
     },
+    colonText: ':',
   },
   input: {
     placeholder: '入力してください',
@@ -242,5 +243,8 @@ export default {
       empty: 'データなし',
       networkError: 'ネットワークエラー',
     },
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;

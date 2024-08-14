@@ -184,6 +184,7 @@ export default {
       boolean: 'Il tipo di dati di ${name} deve essere booleano',
       number: '${name} deve essere un numero',
     },
+    colonText: ':',
   },
   input: {
     placeholder: 'Inserisci',
@@ -250,5 +251,8 @@ export default {
       empty: 'Nessun dato',
       networkError: 'Errore di rete',
     }
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;

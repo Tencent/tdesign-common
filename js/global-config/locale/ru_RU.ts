@@ -179,6 +179,7 @@ export default {
       boolean: 'Тип данных ${name} должен быть булевым',
       number: '${name} должно быть числом',
     },
+    colonText: ':',
   },
   input: {
     placeholder: 'Введите',
@@ -251,5 +252,8 @@ export default {
       empty: 'Нет данных',
       networkError: 'Ошибка сети',
     },
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;
