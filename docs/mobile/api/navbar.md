@@ -11,10 +11,22 @@ toc: false
 
 {{ base }}
 
-#### 左侧双操作导航栏
+#### 带搜索导航栏
 
-{{ left-icon }}
+{{ search }}
 
-#### 右侧双操作导航栏
+#### 带图片导航栏
 
-{{ right-icon }}
+{{ img }}
+
+#### 标题对齐
+
+{{ left-title }}
+
+#### 标题尺寸
+
+{{ size }}
+
+#### 自定义颜色
+
+{{ custom-color }}
