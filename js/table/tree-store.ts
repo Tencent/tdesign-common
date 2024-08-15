@@ -514,11 +514,11 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       let currentIndex = -1;
       for (let i = 0, len = children.length; i < len; i++) {
         if (get(children[i], keys.rowKey) === startRowValue) {
-          targetIndex = i;
+          currentIndex = i;
           count += 1;
         }
         if (get(children[i], keys.rowKey) === endRowValue) {
-          currentIndex = i;
+          targetIndex = i;
           count += 1;
         }
         if (count >= 2) break;
