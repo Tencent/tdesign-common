@@ -361,9 +361,22 @@ export function largeNumberToFixed(
   if (num2.length < decimalPlaces) {
     decimalNumber += (fillZero(decimalPlaces - num2.length));
   } else {
-    decimalNumber = Number(num2[decimalPlaces]) >= 5
+    // 用于判断是否处于 1.08 这种小数为0开始的边界情况
+    const leadZeroNum = decimalNumber.match(/^0+/)?.[0].length;
+    const needAdded = Number(num2[decimalPlaces]) >= 5;
+    decimalNumber = needAdded
       ? largePositiveNumberAdd(decimalNumber, '1')
       : decimalNumber;
+    // 如果处于边界情况，计算后有误判的可能，如008 +1 误判为 8+1，需要手动补 0
+    if (
+      leadZeroNum
+      && needAdded
+      && leadZeroNum + decimalNumber.length >= decimalPlaces
+    ) {
+      decimalNumber = `${fillZero(
+        decimalPlaces - decimalNumber.length
+      )}${decimalNumber}`;
+    }
   }
   return [num1, decimalNumber].join('.');
 }
