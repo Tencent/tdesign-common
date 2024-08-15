@@ -178,6 +178,7 @@ export default {
       boolean: '${name} is not a boolean',
       number: '${name} must be a number',
     },
+    colonText: ':',
   },
   input: {
     placeholder: 'please enter',
@@ -243,5 +244,8 @@ export default {
       empty: 'No Data',
       networkError: 'Network Error',
     }
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;

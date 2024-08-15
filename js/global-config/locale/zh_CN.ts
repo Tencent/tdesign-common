@@ -177,6 +177,7 @@ export default {
       boolean: '${name}数据类型必须是布尔类型',
       number: '${name}必须是数字',
     },
+    colonText: '：',
   },
   input: {
     placeholder: '请输入',
@@ -242,5 +243,8 @@ export default {
       empty: '暂无数据',
       networkError: '网络错误',
     },
+  },
+  descriptions: {
+    colonText: '：',
   },
 } as const;

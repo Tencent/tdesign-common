@@ -177,6 +177,7 @@ export default {
       boolean: '${name}데이터 유형은 부울이어야 합니다',
       number: '${name}숫자여야 합니다',
     },
+    colonText: ':',
   },
   input: {
     placeholder: '들어 오세요',
@@ -242,5 +243,8 @@ export default {
       empty: '데이터 없음',
       networkError: '네트워크 오류',
     },
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;
