@@ -514,17 +514,24 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       let currentIndex = -1;
       for (let i = 0, len = children.length; i < len; i++) {
         if (get(children[i], keys.rowKey) === startRowValue) {
-          targetIndex = i;
+          currentIndex = i;
           count += 1;
         }
         if (get(children[i], keys.rowKey) === endRowValue) {
-          currentIndex = i;
+          targetIndex = i;
           count += 1;
         }
         if (count >= 2) break;
       }
-      children[targetIndex] = params.target;
-      children[currentIndex] = params.current;
+      // 向后拖拽
+      if (currentIndex < targetIndex) {
+        children.splice(targetIndex + 1, 0, params.current);
+        children.splice(currentIndex, 1);
+      } else {
+        // 向前拖拽
+        children.splice(currentIndex, 1);
+        children.splice(targetIndex, 0, params.current);
+      }
     }
 
     return { dataSource, result: true };
