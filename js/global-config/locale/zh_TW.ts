@@ -177,6 +177,7 @@ export default {
       boolean: '${name}數據類型必須是布林類型',
       number: '${name}必須是數字',
     },
+    colonText: '：',
   },
   input: {
     placeholder: '請輸入',
@@ -242,5 +243,8 @@ export default {
       empty: '暫無數據',
       networkError: '網絡錯誤',
     },
+  },
+  descriptions: {
+    colonText: '：',
   },
 } as const;
