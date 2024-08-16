@@ -112,6 +112,7 @@
     }
   }
 
+  &__parent,
   &__parent--relative {
     position: relative;
   }
@@ -146,6 +147,13 @@
     height: 100%;
     z-index: @loading-z-index;
     background-color: @loading-full-bg-color;
+  }
+
+  &--center {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
   }
 }
 

@@ -6,17 +6,17 @@ isComponent: true
 toc: false
 ---
 
-### 类型
+### 组件类型
 
-#### 纯icon
+#### 纯图标
 
 {{ base }}
 
-#### icon加文字横向
+#### 图标加文字横向
 
 {{ horz }}
 
-#### icon加文字竖向
+#### 图标加文字竖向
 
 {{ vert }}
 
@@ -24,20 +24,22 @@ toc: false
 
 {{ pure-text }}
 
-#### 页面进度条加载
+### 组件尺寸
 
-{{ bar }}
-
-#### 延迟加载
-
-{{ delay }}
-
+{{ size }}
 
 ### 加载速度
 
 {{ speed }}
-### 规格
 
-{{ size }}
+### 全屏加载
 
+{{ fullscreen }}
 
+### 挂载到指定元素
+
+{{ attach }}
+
+### 函数方式调用
+
+{{ service }}
