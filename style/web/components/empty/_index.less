@@ -10,6 +10,21 @@
   padding: @empty-padding;
   text-align: center;
 
+  &__image {
+    // font-size 大小
+    &.@{prefix}-size-s {
+      font: @empty-image-size-small;
+    }
+
+    &.@{prefix}-size {
+      font: @empty-image-size-medium;
+    }
+
+    &.@{prefix}-size-l {
+      font: @empty-image-size-large;
+    }
+  }
+
   &__title {
     font: @empty-title-font;
     color: @empty-title-color;
