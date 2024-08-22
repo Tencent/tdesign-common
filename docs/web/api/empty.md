@@ -22,6 +22,10 @@ spline: layout
 
 {{ status }}
 
+### 不同尺寸的空状态
+
+{{ size }}
+
 ### 自定义内容的空状态
 
 {{ self-defined }}
