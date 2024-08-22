@@ -43,9 +43,16 @@
       top: 0;
       right: 0;
     }
+  }
 
-    &--before,
-    &--after {
+  &--ribbon {
+    display: inline-block;
+    transform: rotate(45deg);
+    border-radius: 0;
+    // padding: 0;
+
+    &::before,
+    &::after {
       content: "";
       position: absolute;
       width: 0;
@@ -54,22 +61,15 @@
       border-bottom: @badge-basic-height solid @badge-color;
     }
 
-    &--before {
-      left: calc(-1 * @badge-basic-height + .5px);
+    &::before {
+      left: calc(-1 * @badge-basic-height + 0.5px);
       border-left: @badge-basic-height solid transparent;
     }
 
-    &--after {
-      right: calc(-1 * @badge-basic-height + .5px);
+    &::after {
+      right: calc(-1 * @badge-basic-height + 0.5px);
       border-right: @badge-basic-height solid transparent;
     }
-  }
-
-  &--ribbon {
-    display: inline-block;
-    transform: rotate(45deg);
-    border-radius: 0;
-    // padding: 0;
   }
 
   &--bubble {
