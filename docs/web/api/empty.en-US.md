@@ -22,6 +22,10 @@ spline: layout
 
 {{ status }}
 
+### size
+
+{{ size }}
+
 ### self-defined
 
 {{ self-defined }}
