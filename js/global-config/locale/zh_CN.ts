@@ -177,6 +177,7 @@ export default {
       boolean: '${name}数据类型必须是布尔类型',
       number: '${name}必须是数字',
     },
+    colonText: '：',
   },
   input: {
     placeholder: '请输入',
@@ -229,6 +230,21 @@ export default {
   typography: {
     expandText: '展开',
     collapseText: '收起',
-    copiedText: '复制成功'
-  }
+    copiedText: '复制成功',
+  },
+  rate: {
+    rateText: ['极差', '失望', '一般', '满意', '惊喜'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '建设中',
+      success: '成功',
+      fail: '失败',
+      empty: '暂无数据',
+      networkError: '网络错误',
+    },
+  },
+  descriptions: {
+    colonText: '：',
+  },
 } as const;

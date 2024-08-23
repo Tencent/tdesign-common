@@ -4,8 +4,8 @@ export default {
   classPrefix: 't',
   animation: {
     include: ['ripple', 'expand', 'fade'],
-    exclude: []
-  } as Record<'include'|'exclude', Array<AnimationType>>,
+    exclude: [],
+  } as Record<'include' | 'exclude', Array<AnimationType>>,
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,
@@ -74,5 +74,21 @@ export default {
   },
   form: {
     requiredMark: undefined,
+  },
+  empty: {
+    titleText: {
+      maintenance: undefined,
+      success: undefined,
+      fail: undefined,
+      empty: undefined,
+      networkError: undefined,
+    },
+    image: {
+      maintenance: undefined,
+      success: undefined,
+      fail: undefined,
+      empty: undefined,
+      networkError: undefined,
+    }
   },
 } as const;

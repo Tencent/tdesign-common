@@ -39,6 +39,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="./components/layout">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-layout.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-layout-dark.png" />
+      <p class="name">Layout 布局</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="./components/link">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-link.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-link-dark.png" />

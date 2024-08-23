@@ -55,4 +55,16 @@ describe('largeNumberToFixed', () => {
   it('20000000000000001.0', () => {
     expect(largeNumberToFixed('20000000000000001.0', 2, true)).toBe('20000000000000001.00');
   });
+
+  it('1.087', () => {
+    expect(largeNumberToFixed('1.087', 2, true)).toBe(
+      '1.09'
+    );
+  });
+
+  it('1.0095', () => {
+    expect(largeNumberToFixed('1.0095', 3, true)).toBe(
+      '1.010'
+    );
+  });
 });

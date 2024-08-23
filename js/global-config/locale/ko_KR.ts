@@ -93,7 +93,7 @@ export default {
       month: '월을 선택하세요',
       year: '연도를 선택하세요',
       quarter: '분기별 선택',
-      week: '요일 선택'
+      week: '요일 선택',
     },
     weekdays: ['월', '화', '수', '목', '금', '토', '일'],
     months: [
@@ -177,6 +177,7 @@ export default {
       boolean: '${name}데이터 유형은 부울이어야 합니다',
       number: '${name}숫자여야 합니다',
     },
+    colonText: ':',
   },
   input: {
     placeholder: '들어 오세요',
@@ -229,6 +230,21 @@ export default {
   typography: {
     expandText: '펼치다',
     collapseText: '접다',
-    copiedText: '복사 성공'
-  }
+    copiedText: '복사 성공',
+  },
+  rate: {
+    rateText: ['최악', '실망', '보통', '만족', '놀람'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '건설 중',
+      success: '성공',
+      fail: '실패',
+      empty: '데이터 없음',
+      networkError: '네트워크 오류',
+    },
+  },
+  descriptions: {
+    colonText: ':',
+  },
 } as const;

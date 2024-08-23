@@ -6,26 +6,27 @@ isComponent: true
 toc: false
 ---
 
-### 基础骨架屏
+## 代码演示
 
-基础
+### 骨架屏类型
 
-{{ base }}
+基础骨架屏
 
-头像组合
+{{ theme }}
 
-{{ avatar-text }}
+单元格骨架屏
 
-图片组合
+{{ cell-group }}
 
-{{ pic-text }}
 
-### 动画
+宫格骨架屏
 
-渐变加载动画
+{{ grid }}
 
-{{ gradient }}
+图文组合骨架屏
 
-### 闪烁加载动画
+{{ image-group }}
 
-{{ flashed }}
+### 组件动效
+
+{{ animation }}

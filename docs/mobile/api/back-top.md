@@ -16,7 +16,7 @@ toc: false
 
 通过 `icon` 属性可以自定义按钮 icon
 
-{{ round }}
+{{ base }}
 
 ### 半圆型返回顶部
 

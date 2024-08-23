@@ -26,6 +26,6 @@ A group of check boxes that are combined according to certain attributes.
 
 ### Controlled Class Checkbox
 
-The checkbox supports v-model, controlled and uncontrolled usage.
+The checkbox supports controlled and uncontrolled usage.
 
 {{ controlled }}

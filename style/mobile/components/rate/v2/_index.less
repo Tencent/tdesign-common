@@ -114,6 +114,12 @@
     box-shadow: @shadow-1;
     background-color: @bg-color-container;
     transform: translateX(-50%);
+    z-index: 1;
+
+    &--bottom {
+      top: calc(100% + 8px);
+      bottom: auto;
+    }
 
     &-item {
       display: flex;

@@ -226,6 +226,18 @@ export default {
   typography: {
     expandText: 'توسيع',
     collapseText: 'طي',
-    copiedText: 'النسخ اكتمل'
-  }
+    copiedText: 'النسخ اكتمل',
+  },
+  rate: {
+    rateText: ['فظيع', 'خيبة أمل', 'عادي', 'راض', 'مفاجأة'],
+  },
+  empty: {
+    titleText: {
+      maintenance: 'تحت الإنشاء',
+      success: 'النجاح',
+      fail: 'الفشل',
+      empty: 'لا توجد بيانات حتى الآن',
+      networkError: 'خطأ في الشبكة',
+    }
+  },
 } as const;

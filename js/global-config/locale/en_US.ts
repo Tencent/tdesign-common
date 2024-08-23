@@ -178,6 +178,7 @@ export default {
       boolean: '${name} is not a boolean',
       number: '${name} must be a number',
     },
+    colonText: ':',
   },
   input: {
     placeholder: 'please enter',
@@ -230,6 +231,21 @@ export default {
   typography: {
     expandText: 'more',
     collapseText: 'collapse',
-    copiedText: 'copied'
-  }
+    copiedText: 'copied',
+  },
+  rate: {
+    rateText: ['terrible', 'disappointed', 'normal', 'satisfied', 'surprised'],
+  },
+  empty: {
+    titleText: {
+      maintenance: 'Under Construction',
+      success: 'Success',
+      fail: 'Failure',
+      empty: 'No Data',
+      networkError: 'Network Error',
+    }
+  },
+  descriptions: {
+    colonText: ':',
+  },
 } as const;
