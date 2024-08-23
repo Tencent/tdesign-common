@@ -13,3 +13,15 @@ toc: false
 ### Drawer With Icon
 
 {{ icon }}
+
+### Drawer With Title
+
+{{ title }}
+
+### Drawer With Footer
+
+{{ footer }}
+
+### Command line call
+
+{{ plugin }}
