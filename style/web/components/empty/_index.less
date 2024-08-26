@@ -11,18 +11,7 @@
   text-align: center;
 
   &__image {
-    // font-size 大小
-    &.@{prefix}-size-s {
-      font-size: @empty-image-size-small;
-    }
-
-    &.@{prefix}-size {
-      font-size: @empty-image-size-medium;
-    }
-
-    &.@{prefix}-size-l {
-      font-size: @empty-image-size-large;
-    }
+    font-size: @empty-image-size-medium;
   }
 
   &__title {
@@ -42,5 +31,28 @@
   &__action {
     margin-top: @empty-action-margin-top;
     margin-bottom: @empty-action-margin-bottom;
+  }
+
+  // 不同内置尺寸的相应调整
+  &.@{prefix}-size-s {
+    .@{prefix}-empty__image {
+      font-size: @empty-image-size-small;
+    }
+
+    .@{prefix}-empty__title {
+      font: @empty-title-font-small;
+      margin-top: @empty-title-margin-top-small;
+    }
+
+    .@{prefix}-empty__description {
+      font: @empty-description-font-small;
+      margin-top: @empty-description-margin-top-small;
+    }
+  }
+
+  &.@{prefix}-size-l {
+    .@{prefix}-empty__image {
+      font-size: @empty-image-size-large;
+    }
   }
 }
