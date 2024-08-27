@@ -17,7 +17,7 @@ export enum EPickerCols {
 }
 
 // RegExp
-export const TIME_FORMAT = /(a\s+|A\s+)?(h+|H+)?:?(m+)?:?(s+)?:?(S+)?(\s+a|\s+A)?/;
+export const TIME_FORMAT = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g;
 // 上下午前置
 export const PRE_MERIDIEM_FORMAT = /^(a|A)\s+?[h]{1,2}(:[m]{1,2}(:[s]{1,2})?)?$/;
 // 上下午后置
