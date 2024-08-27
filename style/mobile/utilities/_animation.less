@@ -159,3 +159,17 @@
     transform: translate(-50%, -50%) scale(.6);
   }
 }
+
+@keyframes t-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.@{prefix}-icon-loading {
+  animation: t-spin 1s linear infinite;
+}
