@@ -38,13 +38,13 @@ Provides large, medium (default), and small sizes.
 
 ### Stripe Style List
 
-When the list content is abundant, set `stripe` to make it easier for users to obtain information
+When the list content is abundant, set `stripe` to make it easier for users to obtain information.
 
 {{ stripe }}
 
 ### Asynchronous Load List
 
-When data needs to be loaded and displayed through a secondary request, you can handle the related logic through `asyncLoading` API
+When data needs to be loaded and displayed through a secondary request, you can handle the related logic through `asyncLoading` API.
 
 {{ loading }}
 
