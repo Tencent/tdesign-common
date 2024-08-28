@@ -166,6 +166,7 @@ export default {
       date: '正しく入力してください${name}',
       url: '正しく入力してください${name}',
       required: '${name}必須項目',
+      whitespace: '${name}を空にすることはできません',
       max: '${name}文字数制限 ${validate} 文字，一中二文',
       min: '${name}を下回る文字数は使用できません ${validate} 文字，一中二文',
       len: '${name}文字の長さは、必ず ${validate}',

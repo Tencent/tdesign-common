@@ -166,6 +166,7 @@ export default {
       date: '정확한 내용을 입력해주세요${name}',
       url: '정확한 내용을 입력해주세요${name}',
       required: '${name}필수의',
+      whitespace: '${name}은 비어 있을 수 없습니다',
       max: '${name}문자 길이는 초과할 수 없습니다 ${validate} 캐릭터，한자는 두 글자와 같다',
       min: '${name}문자 길이는 다음보다 작을 수 없습니다 ${validate} 캐릭터，한자는 두 글자와 같다',
       len: '${name}문자 길이는 다음과 같아야 합니다. ${validate}',

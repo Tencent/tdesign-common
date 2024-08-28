@@ -177,6 +177,7 @@ export default {
     errorMessage: {
       date: 'الرجاء إدخال ${name} الصحيح',
       url: 'الرجاء إدخال ${name} الصحيح',
+      whitespace: 'لا يمكن أن يكون ${name} فارغًا',
       required: 'مطلوب ${name}',
       max: 'يمكن أن يحتوي ${name} على ما يصل إلى ${validate} حرفًا',
       min: 'لا يمكن أن يكون ${name} أقل من ${validate} حرفًا',
