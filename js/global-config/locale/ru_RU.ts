@@ -167,6 +167,7 @@ export default {
     errorMessage: {
       date: 'Введите правильный ${name}',
       url: 'Введите правильный ${name}',
+      whitespace: '${name} не может быть пустым',
       required: '${name} обязательно для заполнения',
       max: 'Длина символов ${name} не должна превышать ${validate} символов',
       min: 'Длина символов ${name} не должна быть меньше ${validate} символов',

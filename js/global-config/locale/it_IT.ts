@@ -172,6 +172,7 @@ export default {
     errorMessage: {
       date: 'Inserisci la ${name} corretta',
       url: 'Inserisci la ${name} corretta',
+      whitespace: 'Il ${name} non può essere vuoto',
       required: '${name} obbligatorio',
       max: 'La lunghezza dei caratteri di ${name} non può superare i ${validate} caratteri',
       min: 'La lunghezza dei caratteri di ${name} non può essere inferiore a ${validate} caratteri',
