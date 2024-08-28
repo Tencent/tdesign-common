@@ -6,14 +6,15 @@ isComponent: true
 toc: false
 ---
 
-### 基础用法
+### 基础图片预览
 
 {{ base }}
 
-### 不展示关闭按钮
+### 基础图片预览 + 对齐方式
 
-{{ closeBtn }}
+{{ align }}
 
-### 监听关闭事件
+### 带操作图片预览
 
-{{ closeEvent }}
+{{ operation }}
+
