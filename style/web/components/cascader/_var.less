@@ -17,12 +17,13 @@
 // 弹出面板不同状态的高度
 @cascader-panel-height-normal: 200px;
 @cascader-panel-height-multiple: 280px;
+@cascader-icon-inner-width: 14px;
 
 // menu面板
 @cascader-menu-segment-color: @component-stroke;
-@cascader-menu-padding: 6px;
-@cascader-menu-padding-s: 4px;
-@cascader-menu-padding-l: 8px;
+@cascader-menu-padding: @pop-padding-m;
+@cascader-menu-padding-s: @pop-padding-s;
+@cascader-menu-padding-l: @pop-padding-l;
 
 @cascader-color-empty: @text-color-disabled;
 
@@ -31,15 +32,15 @@
 @cascader-item-color-hover: @bg-color-container-hover;
 @cascader-item-color-disabled: @text-color-disabled;
 @cascader-item-background-color-expanded: @brand-color-light;
-@cascader-item-height-s: 22px;
-@cascader-item-height-default: 28px;
-@cascader-item-height-l: 36px;
-@cascader-item-margin-top: 2px;
+@cascader-item-height-s: @comp-size-xs;
+@cascader-item-height-default: @comp-size-s;
+@cascader-item-height-l: @comp-size-m;
+@cascader-item-margin-top: @comp-margin-xxs;
 @cascader-item-border-radius: @border-radius-default;
-@cascader-item-padding-with-icon: 0 22px 0 8px;
-@cascader-item-padding: 0 8px;
-@cascader-item-padding-s: 0px 8px;
-@cascader-item-padding-l: 0 12px;
+@cascader-item-padding-with-icon: 0 calc(@comp-paddingLR-s + @cascader-icon-inner-width) 0 @comp-paddingLR-s;
+@cascader-item-padding: 0 @comp-paddingLR-s;
+@cascader-item-padding-s: 0px @comp-paddingLR-s;
+@cascader-item-padding-l: 0 @comp-paddingLR-m;
 
 // icon
 @cascader-icon-color: @text-color-placeholder;

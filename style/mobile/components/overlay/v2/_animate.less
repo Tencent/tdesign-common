@@ -1,0 +1,51 @@
+@import "../../../base.less";
+
+// Mobile React: CSSTransition
+
+.@{prefix}-overlay-fade-enter,
+.@{prefix}-overlay-fade-appear {
+  opacity: 0;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+}
+
+.@{prefix}-overlay-fade-exit {
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+}
+
+.@{prefix}-overlay-fade-enter.@{prefix}-overlay-fade-enter-active,
+.@{prefix}-overlay-fade-enter.@{prefix}-overlay-fade-enter-active.@{prefix}-overlay-fade-enter-to,
+.@{prefix}-overlay-fade-appear.@{prefix}-overlay-fade-appear-active,
+.@{prefix}-overlay-fade-appear.@{prefix}-overlay-fade-appear-active.@{prefix}-overlay-fade-appear-to {
+  animation-name: tOverlayFadeIn;
+  animation-play-state: running;
+}
+
+.@{prefix}-overlay-fade-exit.@{prefix}-overlay-fade-exit-active,
+.@{prefix}-overlay-fade-leave-active.@{prefix}-overlay-fade-leave-to {
+  animation-name: tOverlayFadeOut;
+  animation-play-state: running;
+}
+
+@keyframes tOverlayFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tOverlayFadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

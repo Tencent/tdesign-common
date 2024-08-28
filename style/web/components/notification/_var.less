@@ -30,32 +30,30 @@
 @notification-close-bg-color-active: @bg-color-container-active;
 
 // 尺寸
-@notification-width-default: 400px;
+@notification-width-default: 360px;
 @notification-content-max-height: 66px;
-@notification-icon-width: @icon-l;
+@notification-icon-width: calc(@font-size-l + 8px);
+@notification-icon-font-size: calc(@font-size-l + 8px);
+@notification-icon-close-font-size: @font-size-l;
 
 // 圆角
 @notification-detail-item-border-radius: @border-radius-medium;
 @notification-close-border-radius: @border-radius-medium;
 
 // 阴影
-@notification-shadow: @shadow-2;
+@notification-shadow: @shadow-2-inset;
 
 //字号
 @notification-font: @font-body-medium;
 @notification-detail-font: @font-body-medium;
 @notification-content-font: @font-body-medium;
-@notification-icon-font-size: (@font-size * 2.4);
-@notification-icon-close-font-size: @font-size-l;
 @notification-title-font: @font-title-medium;
 
 // padding
-@notification-detail-item-padding: 5px 16px;
-@notification-content-padding-right: 5px;
-@notification-padding-default: 20px @spacer-3 @spacer-3 @spacer-3;
+@notification-padding-default: @comp-paddingTB-l @comp-paddingLR-l;
 
 //margin
-@notification-detail-margin-top: 21px;
-@notification-content-margin-top: @spacer;
-@notification-icon-margin-right: @spacer;
-@notification-detail-item-margin-left: @spacer;
+@notification-detail-margin-top: @comp-margin-l;
+@notification-content-margin-top: @comp-margin-s;
+@notification-icon-margin-right: @comp-margin-s;
+@notification-detail-item-margin-left: @comp-margin-s;

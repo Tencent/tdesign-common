@@ -1,10 +1,17 @@
-# tree 组件调试备注
+# tree 组件单元测试
 
-## 单元测试
-
-tree 组件针对性测试命令
+## 调试命令
 
 ```bash
-# 执行单测
-JEST_REPORT=default npx jest --config test/script/jest.unit.conf.js --coverage ./test/unit/tree
+# 测试覆盖率仅给出摘要
+npx jest --config test/script/jest.unit.conf.js ./test/unit/tree
+
+# 输出简单测试覆盖率
+JEST_REPORT=simple npx jest --config test/script/jest.unit.conf.js ./test/unit/tree
+
+# 输出详细测试覆盖率
+JEST_REPORT=default npx jest --config test/script/jest.unit.conf.js ./test/unit/tree
+
+# 不输出测试覆盖率
+JEST_REPORT=none npx jest --config test/script/jest.unit.conf.js ./test/unit/tree
 ```

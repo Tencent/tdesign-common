@@ -26,7 +26,7 @@
 
 @tab-default-stroke: @component-stroke;
 @tab-default-bar-bg-color: @brand-color;
-@tab-default-stroke-size: 2px;
+@tab-default-stroke-size: 3px;
 
 // 卡片选项卡
 @tab-card-bg: @bg-color-secondarycontainer;
@@ -45,23 +45,24 @@
 @tab-card-stroke: @component-stroke;
 
 // 其他
-@tab-height-middle: 48px;
-@tab-height-large: 64px;
+@tab-height-middle: @comp-size-xxl;
+@tab-height-large: @comp-size-xxxxl;
+@tab-nav-item-wrapper-height: @comp-size-m;
+@tab-nav-item-wrapper-height-large: @comp-size-xxl;
 @tab-btn-width: 40px;
-@tab-nav-item-margin-left: 8px;
-@tab-nav-item-margin-right: 8px;
-@tab-nav-item-wrapper-padding: 5px 8px;
-@tab-nav-item-wrapper-padding-large: 9px 12px;
-@tab-btn-remove-btn-margin-left: 8px;
-@tab-nav-card-nav-item-padding-right: 16px;
-@tab-nav-card-nav-item-padding-left: 16px;
-@tab-nav-card-nav-item-padding-right-large: 24px;
-@tab-nav-card-nav-item-padding-left-large: 24px;
+@tab-nav-item-margin-left: @comp-margin-s;
+@tab-nav-item-margin-right: @comp-margin-s;
+@tab-nav-item-wrapper-padding: 0 @comp-paddingLR-s;
+@tab-nav-item-wrapper-padding-large: 0 @comp-paddingLR-m;
+@tab-btn-remove-btn-margin-left: @comp-margin-s;
+@tab-nav-card-nav-item-padding-right: @comp-paddingLR-l;
+@tab-nav-card-nav-item-padding-left: @comp-paddingLR-l;
+@tab-nav-card-nav-item-padding-right-large: @comp-paddingLR-xl;
+@tab-nav-card-nav-item-padding-left-large: @comp-paddingLR-xl;
 
 // 尺寸
 @tab-icon-size: @font-size-l; // icon尺寸
 @tab-nav-item-font: @font-body-large; // tab文本字体大小
-@tab-nav-item-line-height: 22px; // tab文字行高
 
 // 圆角&边框
 @tab-btn-border: 1px solid @tab-card-stroke; // 按钮边框
@@ -72,7 +73,7 @@
 @tab-btn-fade-transform-left: translateX(-50px); // 按钮过渡动画
 @tab-btn-fade-transform-right: translateX(50px); // 按钮过渡动画
 @tab-nav-warp-is-smooth-transform: transform @anim-duration-moderate
-  @anim-time-fn-easing; // smooth 过渡动画
+  @anim-time-fn-ease-out; // smooth 过渡动画
 @tab-nav-item-transition: background-color @anim-time-fn-easing
   @anim-duration-base;
 @tab-btn-remove-btn-transition: all .3s cubic-bezier(.645, .045, .355, 1); // 删除按钮动画过渡

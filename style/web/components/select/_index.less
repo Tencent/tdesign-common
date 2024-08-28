@@ -13,242 +13,8 @@
   width: 100%;
 }
 
-.@{prefix}-select-polyfill {
-  border: 1px solid @select-border-color;
-  border-radius: @select-border-radius;
-  padding: @select-padding;
-  display: inline-flex;
-}
-
-.@{prefix}-select {
-  .reset;
-
-  position: relative;
-  width: 100%;
-  vertical-align: middle;
-  line-height: (@select-height-default - 2px);
-  background: @select-bg-color;
-  transition: border-color @anim-duration-base @anim-time-fn-easing;
-  flex-wrap: wrap;
-
-  &:hover:not(.@{prefix}-is-disabled),
-  :active:not(.@{prefix}-is-disabled) {
-    cursor: pointer;
-    border-color: @select-border-color-active;
-
-    & > .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
-      color: @select-right-icon-hover;
-      opacity: 1;
-    }
-  }
-
-  &.@{prefix}-no-border {
-    line-height: @select-height-default;
-  }
-
-  .@{prefix}-select__placeholder {
-    margin-left: @select-placeholder-margin;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  &:not(.@{prefix}-is-disabled) .@{prefix}-select__placeholder {
-    color: @select-placeholder-color;
-  }
-
-  & .@{prefix}-select__single {
-    margin-left: @select-placeholder-margin;
-    display: block;
-    color: @select-input-color;
-    .text-ellipsis();
-  }
-
-  & .@{prefix}-select__right-icon {
-    transition: color @anim-duration-base @anim-time-fn-easing;
-  }
-
-  // TODO 基于select-input改造时需要移除，polyfill代码
-  & .@{prefix}-select__right-icon-polyfill {
-    position: absolute;
-    height: 100%;
-    margin: @select-icon-margin;
-    right: 0;
-    top: 0;
-    color: @select-icon-color;
-  }
-
-  .@{prefix}-select__active-icon {
-    color: @select-border-color-active;
-  }
-
-  .@{prefix}-select__right-icon.@{prefix}-is-visible {
-    transform: scaleY(-1);
-    transition: transform @anim-duration-base @anim-time-fn-easing;
-
-    /* IE */
-    filter: flipv;
-  }
-
-  & .@{prefix}-select__left-icon {
-    position: absolute;
-    height: 100%;
-    margin: @select-icon-margin;
-    left: 0;
-    top: 0;
-    color: @select-icon-color;
-    transition: color @anim-duration-base @anim-time-fn-easing;
-    display: flex;
-    align-items: center;
-  }
-
-  // input 层级调整
-  .@{prefix}-input__wrap {
-    flex: 1;
-  }
-
-  // TODO: select_input 重构后可删除
-  .@{prefix}-tag + .@{prefix}-input__wrap {
-    margin-left: @select-placeholder-margin;
-    .@{prefix}-input__inner {
-      width: 100%;
-    }
-  }
-
-  // TODO: select_input 重构后可删除
-  .@{prefix}-select__input {
-
-    .@{prefix}-input {
-      height: auto;
-      border: 0;
-      padding: 0;
-
-      &--focused {
-        box-shadow: none;
-        border-color: transparent;
-      }
-    }
-
-    &:focus,
-    :hover {
-      border: 0;
-    }
-
-    input {
-      height: @select-input-height;
-      line-height: @select-input-height;
-    }
-  }
-
-  .@{prefix}-tag,
-  + .@{prefix}-tag {
-    margin: @select-tag-margin;
-  }
-
-  .@{prefix}-tag {
-    height: @select-tag-height-default;
-    line-height: (@select-tag-height-default - 2px);
-  }
-}
-
-.@{prefix}-select.@{prefix}-is-active:not(.@{prefix}-is-disabled) {
-  border-color: @select-border-color-active;
-
-  &:not(.@{prefix}-no-border) {
-    box-shadow: @select-input-shadow; // 无边框选择器没有阴影
-  }
-
-  .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
-    color: @select-border-color-active;
-    opacity: 1;
-  }
-}
-
-.@{prefix}-select.@{prefix}-has-prefix {
-  padding-left: @select-padding-prefix;
-}
-
-.@{prefix}-select.@{prefix}-no-border {
-  border: 0;
-  width: auto;
-  transition: background-color @anim-duration-base linear;
-
-  &:hover {
-    background-color: @select-option-bg-color-hover;
-  }
-
-  &:active {
-    background-color: @select-option-bg-color-active;
-  }
-
-  > .@{prefix}-select__single {
-    margin-right: @select-no-border-margin-right;
-  }
-}
-
-.@{prefix}-select.@{prefix}-size-l {
-  font: @select-font-l;
-
-  .@{prefix}-select__input {
-    line-height: (@select-height-l - 2px);
-    height: (@select-height-l - 2px);
-
-    .@{prefix}-input__inner {
-      height: (@select-height-l - 2px);
-      line-height: (@select-height-l - 2px);
-    }
-  }
-
-  .@{prefix}-tag.@{prefix}-size-l {
-    height: @select-tag-height-l;
-    line-height: (@select-tag-height-l - 2px);
-  }
-}
-
-.@{prefix}-select.@{prefix}-size-s {
-  font: @select-font-s;
-
-  .@{prefix}-select__input {
-    line-height: (@select-height-s - 2px);
-    height: (@select-height-s - 2px);
-
-    .@{prefix}-input__inner {
-      height: (@select-height-s - 2px);
-      line-height: (@select-height-s - 2px);
-    }
-  }
-
-  .@{prefix}-tag.@{prefix}-size-s {
-    height: @select-tag-height-s;
-    line-height: (@select-tag-height-s - 2px);
-  }
-}
-
-.@{prefix}-select.@{prefix}-is-disabled {
-  cursor: not-allowed;
-  background-color: @select-bg-color-disabled;
-  color: @select-placeholder-color-disabled;
-  border-color: @select-border-color;
-
-  & > .@{prefix}-select__right-icon {
-    color: @select-icon-color-disabled;
-  }
-
-  & > .@{prefix}-select__left-icon {
-    color: @select-icon-color-disabled;
-  }
-
-  & > .@{prefix}-select__single {
-    color: @select-color-disabled;
-  }
-}
-
-.@{prefix}-select__popup-reference {
-  width: 100%;
-}
 // dropdown
 .@{prefix}-select__dropdown {
-
   .@{prefix}-popup__content {
     .scrollbar(8px, 2px);
 
@@ -256,22 +22,31 @@
     padding: 0; // 展开动画 如果有padding会直接生长 需要移动到内部
     max-height: @select-dropdown-max-height;
     overflow-y: auto;
+    overscroll-behavior: contain;
     box-shadow: @select-dropdown-shadow;
   }
 
   &-inner {
-    .@{prefix}-select__list {
+    // 嵌套无需 padding
+    .@{prefix}-select__list .@{prefix}-select__list {
+      padding: 0;
+    }
+
+    .@{prefix}-select__list,
+    .@{prefix}-tree {
       padding: @select-dropdown-padding;
     }
 
     &--size-s {
-      .@{prefix}-select__list {
+      .@{prefix}-select__list,
+      .@{prefix}-tree {
         padding: @select-dropdown-padding-s;
       }
     }
 
     &--size-l {
-      .@{prefix}-select__list {
+      .@{prefix}-select__list,
+      .@{prefix}-tree {
         padding: @select-dropdown-padding-l;
       }
     }
@@ -297,6 +72,7 @@
   text-align: center;
   color: @select-color-empty;
   line-height: @select-height-default;
+  padding: @select-empty-padding;
 }
 
 .@{prefix}-select__empty.@{prefix}-size-l {
@@ -325,7 +101,20 @@
 }
 
 .@{prefix}-select-option-group__divider + .@{prefix}-select-option-group__divider {
-  border-top: 1px @select-optiongroup-border-color solid;
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    padding: @select-option-padding-default;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    background-color: @select-optiongroup-border-color;
+    background-clip: content-box;
+  }
 }
 
 .@{prefix}-select-option-group__header {
@@ -334,7 +123,7 @@
     color: @select-option-group-header-color;
     display: block;
     height: @select-option-height-default;
-    line-height: @select-option-line-height;
+    line-height: @select-option-height-default;
     padding: @select-option-padding-default;
     box-sizing: border-box;
     .text-ellipsis();
@@ -343,32 +132,35 @@
 
 .@{prefix}-select-option-group__header.@{prefix}-size-l {
   height: @select-option-height-l;
+  line-height: @select-option-height-l;
   padding: @select-option-padding-l;
 }
 
 .@{prefix}-select-option-group__header.@{prefix}-size-s {
   height: @select-option-height-s;
+  line-height: @select-option-height-s;
   padding: @select-option-padding-s;
 }
 
 // option
 .@{prefix}-select-option {
-  display: block;
+  display: flex;
+  align-items: center;
   border-radius: @select-option-border-radius;
   height: @select-option-height-default;
-  line-height: @select-option-line-height;
+  font: @font-body-medium;
   cursor: pointer;
   padding: @select-option-padding-default;
   color: @select-option-color;
   transition: background-color @anim-duration-base @anim-time-fn-easing;
   box-sizing: border-box;
-  .text-ellipsis();
 
   span {
     position: relative;
+    .text-ellipsis();
   }
 
-  &:not(.@{prefix}-is-disabled):hover {
+  &:not(.@{prefix}-is-disabled):not(.@{prefix}-is-selected):hover {
     background-color: @select-option-bg-color-hover;
 
     .@{prefix}-checkbox__label {
@@ -409,14 +201,16 @@
   padding: @select-option-padding-l;
   font: @select-font-l;
 }
-
+.@{prefix}-select-option.@{prefix}-size-m {
+  font: @select-font-m;
+}
 .@{prefix}-select-option.@{prefix}-size-s {
   height: @select-option-height-s;
   padding: @select-option-padding-s;
   font: @select-font-s;
 }
 
-.@{prefix}-select-option.@{prefix}-is-selected {
+.@{prefix}-select-option.@{prefix}-is-selected:not(.@{prefix}-is-disabled) {
   color: @select-selected-color;
   background-color: @select-selected-bg-color;
   transition: all @anim-duration-base linear;
@@ -430,7 +224,9 @@
   }
 }
 
-.@{prefix}-select-option.@{prefix}-select-option__hover {
+/** 规范 CSS 类名为 --hover */
+.@{prefix}-select-option.@{prefix}-select-option__hover,
+.@{prefix}-select-option.@{prefix}-select-option--hover {
   &:not(.@{prefix}-is-disabled)&:not(.@{prefix}-is-selected) {
     background-color: @select-option-bg-color-hover;
     .@{prefix}-checkbox__input {
@@ -443,11 +239,10 @@
 }
 
 .@{prefix}-select-option + .@{prefix}-select-option {
-  margin-top: @select-options-margin;
+  margin-top: @select-options-margin-top;
 }
 
 .@{prefix}-select {
-
   &.@{prefix}-select-input--borderless {
     .@{prefix}-select__right-icon {
       position: relative;
@@ -462,16 +257,12 @@
       color: @select-border-color-active;
     }
   }
+}
 
-  .@{prefix}-input {
-    &:hover:not(.@{prefix}-is-disabled),
-    :active:not(.@{prefix}-is-disabled) {
-      cursor: pointer;
-      border-color: @select-border-color-active;
+.@{prefix}-is-selected.@{prefix}-select-option__hover {
+  background-color: @brand-color-light-hover;
 
-      .@{prefix}-fake-arrow {
-        color: @select-border-color-active;
-      }
-    }
+  .@{prefix}-checkbox__label {
+    color: @select-selected-color;
   }
 }

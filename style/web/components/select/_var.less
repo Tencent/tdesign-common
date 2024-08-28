@@ -24,22 +24,18 @@
 @select-right-icon-hover: @brand-color;
 
 // 尺寸
-@select-height-s: 24px;
-@select-height-default: 32px;
-@select-height-l: 40px;
-@select-option-height-s: 20px;
-@select-option-height-default: 28px;
-@select-option-height-l: 36px;
-@select-option-line-height: 20px;
+@select-height-s: @comp-size-xs;
+@select-height-default: @comp-size-m;
+@select-height-l: @comp-size-xl;
+@select-option-height-s: @comp-size-xxs;
+@select-option-height-default: @comp-size-s;
+@select-option-height-l: @comp-size-l;
 @select-dropdown-max-height: 300px;
-@select-input-height: 30px;
-@select-tag-height-default: 22px;
-@select-tag-height-l: 30px;
-@select-tag-height-s: 18px;
 
 // font
 @select-font-s: @font-body-small;
 @select-font-l: @font-body-large;
+@select-font-m: @font-body-medium;
 
 //阴影
 @select-dropdown-shadow: @shadow-2;
@@ -52,21 +48,16 @@
 //透明度
 
 // padding
-@select-option-padding-s: 0 8px;
-@select-option-padding-default: 3px 8px;
-@select-option-padding-l: 7px 12px;
-@select-padding: 0 26px 0 4px;
-@select-optiongroup-border-padding: 7px;
-@select-padding-prefix: 26px;
-@select-dropdown-padding: 6px;
-@select-dropdown-padding-l: 8px;
-@select-dropdown-padding-s: 4px;
+@select-option-padding-s: 0 @comp-paddingLR-s;
+@select-option-padding-default: 0 @comp-paddingLR-s;
+@select-option-padding-l: 0 @comp-paddingLR-m;
+@select-optiongroup-border-padding: @comp-margin-xs;
+@select-dropdown-padding: @pop-padding-m;
+@select-dropdown-padding-l: @pop-padding-l;
+@select-dropdown-padding-s: @pop-padding-s;
 @select-dropdown-popup-padding: 0;
 // margin
-@select-icon-margin: 0 8px;
-@select-tag-margin: 4px 4px 4px 0;
-@select-placeholder-margin: 4px;
-@select-optiongroup-border-margin: 7px;
-@select-dropdown-margin: 8px 0;
-@select-options-margin: 2px;
-@select-no-border-margin-right: @spacer;
+@select-optiongroup-border-margin: @comp-margin-xs;
+@select-dropdown-margin: @comp-paddingTB-s 0;
+@select-options-margin-top: @comp-paddingTB-xxs;
+@select-empty-padding: 0 @comp-paddingLR-s;

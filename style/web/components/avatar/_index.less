@@ -36,6 +36,12 @@
   &.@{prefix}-size-l {
     .avatar-size(@avatar-size-large,@avatar-font-large,@avatar-icon-large);
   }
+
+  // 保证 Image 不会超出 Avatar
+  > .@{prefix}-image__wrapper {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 .@{prefix}-avatar-group {
@@ -48,7 +54,8 @@
 
   &.@{prefix}-avatar--offset-right {
 
-    & .@{prefix}-avatar {
+    & .@{prefix}-avatar,
+    & @{prefix}-avatar-light-dom {
       &:not(:last-child) {
         .avatar-group-offset-right(@avatar-group-offset-medium);
 
@@ -66,12 +73,8 @@
   &.@{prefix}-avatar--offset-left {
     .generate-z-index(@avatar-group-init-zIndex);
 
-    .@{prefix}-popup__reference .@{prefix}-avatar {
-      z-index: 0;
-      .avatar-group-size--left();
-    }
-
-    & .@{prefix}-avatar {
+    & .@{prefix}-avatar,
+    & @{prefix}-avatar-light-dom {
       &:not(:first-child) {
         .avatar-group-size--left();
       }

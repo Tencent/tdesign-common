@@ -56,7 +56,7 @@
         .default-step-icon;
       }
 
-      & > .@{prefix}-icon {
+      & > .t-icon {
         font-size: @steps-item-t-icon-font-size-default;
       }
     }
@@ -86,7 +86,6 @@
   height: @steps-circle-height;
   text-align: center;
   border-radius: @border-radius-circle;
-  margin-top: @steps-item-default-icon-margin-top;
   font-size: @steps-default-step-icon-font-size;
 }
 
@@ -95,7 +94,7 @@
 .default-anchor-status(@anchor-status) {
   & when(@anchor-status = finish) {
     .@{prefix}-steps-item__icon {
-      .@{prefix}-icon {
+      .t-icon {
         color: @steps-item-icon-anchor-color;
       }
 
@@ -115,7 +114,7 @@
   }
   & when(@anchor-status = process) {
     .@{prefix}-steps-item__icon {
-      .@{prefix}-icon {
+      .t-icon {
         color: @steps-item-icon-anchor-color;
       }
 
@@ -138,7 +137,7 @@
   }
   & when(@anchor-status = error) {
     .@{prefix}-steps-item__icon {
-      .@{prefix}-icon {
+      .t-icon {
         color: @steps-item-icon-anchor-color-error;
       }
 
@@ -234,7 +233,7 @@
         justify-content: center;
         align-items: flex-end;
         border: 0;
-        font-size: @spacer-2;
+        font-size: @font-size-l;
         color: @steps-line-bg-color-horizontal-default;
       }
 
@@ -280,13 +279,13 @@
       .@{prefix}-steps-item:not(:last-child)::before {
         content: "^";
         border: 0;
-        height: calc(100% - @spacer-3);
+        height: calc(100% - 24px);
         position: absolute;
-        top: @spacer-3;
-        left: @spacer-m;
+        top: 24px;
+        left: 6px;
         display: flex;
         align-items: center;
-        font-size: @spacer-2;
+        font-size: @font-size-l;
         transform: rotateZ(180deg);
         color: @steps-line-bg-color-vertical-default;
       }
@@ -298,7 +297,7 @@
       & when(@isReverse = true) {
         .@{prefix}-steps-item:not(:last-child)::before {
           transform: rotateZ(0);
-          margin-top: @spacer-s;
+          margin-top: @comp-margin-xs;
         }
 
         .@{prefix}-steps-item--process:not(:last-child)::before,
@@ -372,7 +371,7 @@
         justify-content: center;
         align-items: flex-start;
         border: 0;
-        font-size: @spacer-2;
+        font-size: @font-size-l;
         transform: rotateZ(90deg);
         color: @steps-line-bg-color-horizontal-default;
       }
@@ -433,13 +432,13 @@
       .@{prefix}-steps-item:not(:last-child)::before {
         content: "^";
         border: 0;
-        height: calc(100% - @spacer-s);
+        height: calc(100% - 4px);
         position: absolute;
-        top: @spacer;
+        top: 8px;
         left: 0;
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: @font-size-base;
         color: @steps-line-bg-color-vertical-default;
       }
 

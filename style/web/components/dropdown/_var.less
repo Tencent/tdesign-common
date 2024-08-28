@@ -3,20 +3,29 @@
 @dropdown-suffix-color: @text-color-placeholder;
 @dropdown-active-color: @brand-color;
 @dropdown-active-bg-color: @brand-color-light;
-@dropdown-hover-bg-color: @bg-color-container-hover;
+@dropdown-container-hover-bg-color: @bg-color-container-hover;
+@dropdown-container-active-bg-color: @bg-color-container-active;
 @dropdown-disable-color: @text-color-disabled;
 @dropdown-text-color: @text-color-primary;
-@dropdown-scrollbar-color: @border-level-2-color;
-@dropdown-split-color: @border-level-2-color;
 @dropdown-text-font-size: @font-size-base;
 @dropdown-text-icon-size: @font-size-l;
+//theme
+@dropdown-theme-error-color: @error-color;
+@dropdown-theme-error-bg-color: @error-color-light;
+@dropdown-theme-success-color: @success-color;
+@dropdown-theme-success-bg-color: @success-color-light;
+@dropdown-theme-warning-color: @warning-color;
+@dropdown-theme-warning-bg-color: @warning-color-light;
+
 // border
-@dropdown-border: solid 1px @border-level-1-color;
+@dropdown-border: .5px solid @component-border;
+
+// height
+@dropdown-item-height: @comp-size-s;
 
 // padding
-@dropdown-item-padding: 9px @spacer;
-@dropdown-item-margin: @spacer*.5 @spacer;
-@dropdown-item-icon-margin-left: @spacer;
-@dropdown-item-ends-margin: @spacer;
-@dropdown-item-divider-margin: @spacer*.5 0;
-@dropdown-item-text-font: @font-body-medium;
+@dropdown-item-padding: calc(@comp-paddingTB-xs - 1px) @comp-paddingLR-s;
+@dropdown-item-divider-horizon-margin: @comp-margin-s;
+@dropdown-item-divider-margin: @comp-margin-xs @dropdown-item-divider-horizon-margin @comp-margin-xxs @dropdown-item-divider-horizon-margin;
+@dropdown-menu-padding: @pop-padding-m;
+@dropdown-menu-gap: 2px;

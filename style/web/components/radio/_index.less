@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_focus.less";
+
 // <name> 替换为组件名
 .@{radio-cls}-group {
   .reset;
@@ -18,9 +20,8 @@
   align-items: center;
   width: fit-content;
   max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
   border-radius: @border-radius-default;
+  flex-wrap: wrap;
   .scrollbar(4px);
 
   .@{radio-cls} {
@@ -29,9 +30,39 @@
 
   &.@{radio-cls}-group__outline {
     flex-wrap: wrap;
-    row-gap: @spacer-s;
+    row-gap: @comp-margin-xs;
+
+    &.@{prefix}-size-s {
+      .@{radio-button--cls} {
+        height: @radio-outline-height-small;
+      }
+    }
+
+    &.@{prefix}-size-m {
+      .@{radio-button--cls} {
+        height: @radio-outline-height-medium;
+      }
+    }
+
+    &.@{prefix}-size-l {
+      .@{radio-button--cls} {
+        height: @radio-outline-height-large;
+      }
+    }
 
     .@{radio-button--cls} {
+      &:first-child {
+        border-radius: @border-radius-default 0 0 @border-radius-default;
+      }
+
+      &:last-child {
+        border-radius: 0 @border-radius-default @border-radius-default 0;
+      }
+
+      &:only-child {
+        border-radius: @border-radius-default;
+      }
+
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
       }
@@ -255,6 +286,7 @@
 
   position: relative;
   cursor: pointer;
+  display: inline-block;
 
   &__former {
     .reset;
@@ -343,4 +375,8 @@
       }
     }
   }
+}
+
+.@{prefix}-radio:focus-visible {
+  .tab-focus-style-rect();
 }

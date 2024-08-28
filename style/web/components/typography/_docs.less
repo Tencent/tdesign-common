@@ -1,0 +1,27 @@
+@import "./_var.less";
+
+// TDesign 站点中有代码code元素的相关样式 为正常展示需要覆盖为typography样式
+div[name="DEMO"] *:not(pre)>.t-typography code {
+  border-radius: @border-radius-default;
+  border: 1px solid @component-border;
+  margin: 0 @comp-margin-xs;
+  background-color: @bg-color-secondarycontainer;
+  padding: 0 @comp-paddingLR-s;
+  color: @text-color-primary;
+  transition: background-color .2s;
+  font: @font-body-small;
+  font-family: @typography-code-family;
+
+  &:hover {
+    background-color: @bg-color-secondarycontainer-hover;
+  }
+}
+
+// 纵向展示 Text 组件DEMO示例中去掉 margin
+div[name="DEMO"] .vertical-demo .t-typography code {
+  margin: 0;
+}
+
+div[name="DEMO"] .vertical-demo .t-typography kbd {
+  margin: 0;
+}

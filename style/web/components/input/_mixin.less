@@ -3,7 +3,7 @@
   border-style: solid;
   border-radius: @input-border-radius;
   border-color: @input-border-color-default;
-  padding: 0 @input-padding-horizontal-default;
+  padding: @input-padding-default;
   background-color: @input-bg-color-default;
   outline: none;
   color: @input-text-color-default;
@@ -49,6 +49,7 @@
     .@{prefix}-input__inner {
       cursor: not-allowed;
       color: @input-text-color-disabled;
+      text-overflow: initial;
 
       &::placeholder {
         color: @input-text-color-disabled;
@@ -57,8 +58,12 @@
 
     & > .@{prefix}-input__prefix,
     & > .@{prefix}-input__suffix {
-      .@{prefix}-icon {
+      .t-icon {
         color: @input-text-color-disabled;
+
+        &:hover {
+          color: @input-text-color-disabled;
+        }
       }
     }
   }
@@ -88,43 +93,16 @@
 
 .input-fix-position(@position) {
   &.@{prefix}-input--@{position} {
-    & > .@{prefix}-input__@{position}-icon {
-      & when (@position = prefix) {
-        padding-right: @spacer;
-      }
-      & when (@position = suffix) {
-        padding-left: @spacer;
-      }
-    }
-
     & > .@{prefix}-input__@{position} {
       z-index: 2;
       height: 100%;
       text-align: center;
       display: flex;
       align-items: center;
-      font-size: @font-size-base;
     }
 
     & > .@{prefix}-input__@{position}-icon {
       font-size: @font-size-l;
-    }
-  }
-}
-
-.input-size(@size) {
-  & when(@size = l) {
-    &.@{prefix}-size-l {
-      & > .@{prefix}-input__inner {
-        height: @input-height-l;
-        line-height: @input-height-l;
-      }
-    }
-  }
-  & when not (@size = l) {
-    &.@{prefix}-size-@{size} {
-      width: @@width-size;
-      @width-size: "input-width-@{size}";
     }
   }
 }

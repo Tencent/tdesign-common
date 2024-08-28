@@ -4,15 +4,15 @@
 @popup-text-color: @text-color-primary;
 
 // 间距
-@popup-padding: 4px @spacer;
+@popup-padding: @comp-paddingTB-xs @comp-paddingLR-s;
 @popup-content-line-height: @text-line-height-base;
 @popup-arrow-width: 8px;
 @popup-arrow-height: 8px;
-@popup-content-arrow-spacer: @spacer-2;
-@popup-content-margin: @spacer;
+@popup-content-arrow-spacer: @comp-margin-l;
+@popup-content-margin: @comp-margin-s;
 
 // 箭头位置偏移量
-@popup-arrow-position: (@popup-arrow-width / 2);
+@popup-arrow-position: @popup-arrow-width;
 @popup-content-font-size: @font-size-base;
 
 // 阴影
@@ -23,7 +23,7 @@
 @popup-right-arrow-shadow: @shadow-inset-right, @shadow-inset-bottom;
 
 // 动画
-@popup-flow: t-popup--animation;
+@popup-flow: ~"@{prefix}-popup--animation";
 @popup-flow-duration: @anim-duration-base;
 @popup-flow-fn: @anim-time-fn-ease-in;
 @popup-flow-transition-enter: opacity @popup-flow-duration linear;

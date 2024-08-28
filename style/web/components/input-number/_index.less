@@ -25,7 +25,7 @@
 
   &:not(&--column) {
     > .@{prefix}-input-number__decrease + .@{prefix}-input__wrap {
-      margin-left: @spacer-s;
+      margin-left: @comp-margin-xs;
     }
   }
 
@@ -61,11 +61,12 @@
     width: auto;
 
     &.@{prefix}-is-controls-right {
-      min-width: 88px;
+      min-width: auto;
+      width: auto;
     }
 
-    &:not(.@{inputNumberCls}--column) .@{prefix}-input-number__increase {
-      right: -4px;
+    .@{prefix}-input__inner {
+      min-width: 42px;
     }
   }
 
@@ -90,7 +91,7 @@
       color: @input-number-button-color-hover;
       border-color: @input-number-button-color-hover;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @input-number-button-color-hover;
       }
     }
@@ -100,7 +101,7 @@
       background-color: @bg-color-container-hover;
     }
 
-    .@{prefix}-icon {
+    .t-icon {
       position: relative;
       z-index: 1;
       font-size: @input-number-font-size;
@@ -112,14 +113,14 @@
       cursor: no-drop;
       background-color: @input-number-button-bg-color-disabled;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @input-number-button-color-disabled;
       }
 
       &:hover {
         border-color: @input-number-button-border-color;
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @input-number-button-color-disabled;
         }
       }
@@ -158,7 +159,7 @@
     cursor: no-drop;
     background-color: @input-number-button-bg-color-disabled;
 
-    .@{prefix}-icon {
+    .t-icon {
       color: @text-color-secondary;
     }
   }
@@ -202,8 +203,7 @@
     .@{inputCls} {
       height: @input-number-inner-height-l;
       line-height: @input-number-inner-height-l;
-      padding-right: @input-number-right-button-width-l +
-        @input-number-padding-horizontal-default;
+      padding-right: calc(@input-number-right-button-width-l + @input-number-padding-horizontal-default);
     }
 
     .@{inputNumberCls}__decrease,
@@ -211,6 +211,11 @@
       width: @input-number-right-button-width-l;
       font-size: @input-number-right-font-size-l;
     }
+  }
+
+  .@{prefix}-input--prefix {
+    font: @font-body-large;
+    padding: 0 @comp-paddingLR-m;
   }
 }
 
@@ -237,7 +242,6 @@
     }
   }
 }
-
 .@{inputNumberCls}.@{prefix}-is-controls-right {
   width: @input-number-right-width;
   padding: 0;
@@ -254,9 +258,7 @@
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    padding-right: (
-      @input-number-right-button-width + @input-number-padding-horizontal-default
-    );
+    padding-right: calc(@input-number-right-button-width + @input-number-padding-horizontal-default);
     border-radius: @border-radius-default;
   }
 
@@ -274,14 +276,14 @@
     visibility: hidden;
     z-index: 2;
 
-    .@{prefix}-icon {
+    .t-icon {
       font-size: @input-number-right-font-size;
     }
 
     &:hover {
       background: @input-number-right-button-hover-bg-color;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @text-color-primary;
       }
     }
@@ -291,14 +293,14 @@
       cursor: no-drop;
       background-color: @input-number-button-bg-color-disabled;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @input-number-button-color-disabled;
       }
 
       &:hover {
         border-color: @input-number-button-border-color;
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @input-number-button-color-disabled;
         }
       }
@@ -315,7 +317,7 @@
   }
 
   .@{inputNumberCls}__decrease {
-    top: @input-number-button-column-height + 3px;
+    top: calc(@input-number-button-column-height + 3px);
     border-bottom-right-radius: calc(@border-radius-default - 1px);
   }
 
@@ -327,7 +329,7 @@
       height: @input-number-button-column-height-l;
     }
     .@{inputNumberCls}__decrease {
-      top: @input-number-button-column-height-l + 3px;
+      top: calc(@input-number-button-column-height-l + 3px);
     }
   }
 
@@ -339,7 +341,17 @@
       height: @input-number-button-column-height-s;
     }
     .@{inputNumberCls}__decrease {
-      top: @input-number-button-column-height-s + 3px;
+      top: calc(@input-number-button-column-height-s + 3px);
     }
+  }
+}
+
+.@{inputNumberCls}--row {
+  .@{prefix}-input__wrap {
+    width: initial;
+    margin-right: @comp-margin-xs;
+  }
+  .@{prefix}-input-number__increase {
+    right: 0;
   }
 }

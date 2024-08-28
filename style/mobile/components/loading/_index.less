@@ -4,26 +4,23 @@
 
 @import "../../mixins/_index.less";
 
-.@{prefix}-loading {
+.@{loading} {
+  display: flex;
+  align-items: center;
   position: relative;
   color: @loading-color;
-  font-size: @loading-text-size;
-  .@{prefix}-icon-loading {
-    font-size: @loading-icon-size;
-  }
+  font-size: @loading-size;
 
   &--inherit-color {
     color: inherit;
   }
 
   &--vertical {
-    display: flex;
     flex-direction: column;
-    align-items: center;
 
     .@{prefix}-loading__text {
       margin-left: 0;
-      margin-top: 6px;
+      margin-top: 8px;
     }
   }
 
@@ -31,31 +28,11 @@
     pointer-events: none;
   }
 
-  &.@{prefix}-size-s {
-    font-size: @loading-text-size-small;
-    .@{prefix}-icon-loading {
-      font-size: @loading-icon-size-small;
-    }
-  }
-
-  &.@{prefix}-size-l {
-    font-size: @loading-text-size-large;
-    .@{prefix}-icon-loading {
-      font-size: @loading-icon-size-large;
-    }
-  }
-
   &__text {
     color: @loading-text-color;
-    width: auto;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: @loading-text-line-height;
-    margin-left: @loading-text-margin-left;
-
-    &--error {
-      color: rgba(0, 0, 0, 40%);
-    }
+    line-height: 20px;
+    margin-left: 6px;
+    font-size: @loading-text-font-size;
 
     &--only {
       margin-left: 0;
@@ -63,7 +40,7 @@
   }
 
   &__gradient {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
@@ -105,48 +82,78 @@
         width: 2px;
         height: 25%;
         margin: 0 auto;
-        background-color: #0b0b0b;
+        background-color: @loading-line-bg-color;
         border-radius: 40%;
         content: " ";
       }
     }
   }
 
-  &__dots {
-    background-color: @dot-bg-color;
-    border-radius: @dot-radius;
-    color: @dot-color;
-    height: @dot-height;
-    width: @dotWidth;
-    position: relative;
-    left: @dot-left-pos;
-    box-shadow:
-      @dot-x1 0 0 0 @dot-before-color,
-      @dot-x2 0 0 0 @dot-color,
-      @dot-x3 0 0 0 @dot-after-color;
-    animation: t-dot-typing 1.5s infinite linear;
+  &__dot {
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    background-color: currentColor;
+    animation-duration: 1.8s;
+    animation-name: dotting;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+
+    &--paused {
+      animation-play-state: paused;
+    }
+
+    &s {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: none;
+    }
   }
 
-  &__bar {
-    background: @loading-color;
+  &__parent,
+  &__parent--relative {
+    position: relative;
+  }
+
+  &--lock {
+    overflow: hidden;
+  }
+
+  &--full {
+    z-index: @loading-z-index;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    background-color: @loading-full-bg-color;
+  }
+
+  &--fullscreen {
     position: fixed;
-    z-index: 1031;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
-    height: 2px;
-    transition: all 200ms ease 0s;
+    height: 100%;
+    z-index: @loading-z-index;
+    background-color: @loading-full-bg-color;
   }
 
-  &__shadow {
-    display: block;
-    position: absolute;
-    right: 0;
-    width: 100px;
-    height: 100%;
-    box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-    opacity: 1;
-    transform: rotate(3deg) translate(0, -4px);
+  &--center {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
   }
 }
 
@@ -169,32 +176,24 @@
   }
 }
 
-@keyframes t-dot-typing {
+@keyframes dotting {
   0% {
-    box-shadow:
-      @dot-x1 0 0 0 @dot-color,
-      @dot-x2 0 0 0 @dot-before-color,
-      @dot-x3 0 0 0 @dot-after-color;
+    opacity: .15;
   }
 
-  33.3333% {
-    box-shadow:
-      @dot-x1 0 0 0 @dot-before-color,
-      @dot-x2 0 0 0 @dot-color,
-      @dot-x3 0 0 0 @dot-after-color;
+  1% {
+    opacity: .8;
   }
 
-  66.6667% {
-    box-shadow:
-      @dot-x1 0 0 0 @dot-before-color,
-      @dot-x2 0 0 0 @dot-after-color,
-      @dot-x3 0 0 0 @dot-color;
+  33% {
+    opacity: .8;
+  }
+
+  34% {
+    opacity: .15;
   }
 
   100% {
-    box-shadow:
-      @dot-x1 0 0 0 @dot-color,
-      @dot-x2 0 0 0 @dot-before-color,
-      @dot-x3 0 0 0 @dot-after-color;
+    opacity: .15;
   }
 }

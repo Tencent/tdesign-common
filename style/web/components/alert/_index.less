@@ -13,6 +13,7 @@
   .reset;
 
   display: flex;
+  align-items: flex-start;
   padding: @alert-padding;
   opacity: 1;
   transition: opacity .2s;
@@ -97,12 +98,6 @@
   display: inherit;
 }
 
-.@{prefix}-alert__icon {
-  > .@{prefix}-icon {
-    font-size: @alert-icon-size;
-  }
-}
-
 .@{prefix}-alert__icon,
 .@{prefix}-alert__close {
   flex: 0 0 auto;
@@ -111,7 +106,8 @@
 
 .@{prefix}-alert__content {
   flex: 1 1 0;
-  font: @font-body-medium;
+  font-size: @alert-font-size;
+  line-height: @alert-line-height;
   overflow: hidden;
 }
 
@@ -126,7 +122,7 @@
   font-weight: bold;
 
   + .@{prefix}-alert__message {
-    margin-top: @spacer;
+    margin-top: @alert-description-margin-top;
   }
 }
 
@@ -138,7 +134,7 @@
 
 .@{prefix}-alert__operation {
   flex: 0 0 auto;
-  padding: 0 @spacer;
+  padding: @alert-operation-padding;
   color: @brand-color;
   cursor: pointer;
   transition: color @anim-duration-base;
@@ -153,17 +149,29 @@
 }
 
 .@{prefix}-alert__icon + .@{prefix}-alert__content {
-  margin-left: 10px;
+  margin-left: @alert-margin-left;
 }
 
 .@{prefix}-alert__collapse {
-  margin-top: 12px;
+  margin-top: @alert-collapse-margin-top;
   color: @brand-color;
   cursor: pointer;
 }
 
 .@{prefix}-alert__close {
-  font-size: @font-size-base;
+  display: inline-flex;
+  align-items: center;
+  margin-left: @alert-close-margin-left;
   color: @alert-close-color;
   cursor: pointer;
+  transition: color @anim-duration-base;
+
+  &:hover {
+    color: @alert-close-color-hover;
+  }
+
+  > .t-icon {
+    font-size: @alert-close-size;
+    padding: @alert-close-padding;
+  }
 }

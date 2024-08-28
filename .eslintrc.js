@@ -6,7 +6,7 @@ module.exports = {
     mocha: true,
     jest: true,
   },
-  extends: ['eslint-config-airbnb-base'],
+  extends: ['airbnb-base'],
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',
@@ -22,6 +22,7 @@ module.exports = {
     getCurrentPages: true,
     Component: true,
     getRegExp: true,
+    NodeJS: true,
   },
   settings: {
     'import/resolver': {
@@ -46,10 +47,13 @@ module.exports = {
     },
   ],
   rules: {
+    'no-continue': 0,
+    'max-len': ['error', { code: 160, tabWidth: 2 }],
     'no-unused-vars': 0,
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-named-as-default': 0,
+    'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 0,
     'no-plusplus': [
       'error',

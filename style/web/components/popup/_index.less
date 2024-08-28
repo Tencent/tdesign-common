@@ -15,7 +15,7 @@
 
   color: @popup-text-color;
   display: inline-block;
-  z-index: 5500;
+  z-index: @z-index-Popup;
 
   &__content {
     position: relative;
@@ -27,10 +27,6 @@
     line-height: @popup-content-line-height;
     box-sizing: border-box;
     word-break: break-all;
-  }
-
-  &__reference {
-    display: inline-block;
   }
 }
 

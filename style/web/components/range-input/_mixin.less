@@ -11,7 +11,7 @@
   transition: @range-input-inner-transition;
   display: inline-flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: @spacer-s;
 
   &:hover {
     border-color: @range-input-border-color-default-hover;
@@ -38,7 +38,7 @@
 
     & > .@{prefix}-range-input__prefix,
     & > .@{prefix}-range-input__suffix {
-      .@{prefix}-icon {
+      .t-icon {
         color: @range-input-text-color-disabled;
       }
     }
@@ -64,6 +64,13 @@
       color: @@fontColor;
       @fontColor: "range-input-extra-color-@{status}";
     }
+
+    & > .@{prefix}-range-input__tips {
+      color: @@fontColor;
+      font-size: @font-size-s;
+      margin-left: calc(-1 * @comp-paddingLR-xs);
+      @fontColor: "range-input-extra-color-@{status}";
+    }
   }
 }
 
@@ -86,28 +93,12 @@
 
 .range-input-fix-position(@position) {
   &.@{prefix}-range-input--@{position} {
-    & > .@{prefix}-range-input__inner {
-      & > .@{prefix}-range-input__@{position}-icon {
-        & when (@position = prefix) {
-          padding-right: @spacer;
-        }
-        & when (@position = suffix) {
-          padding-left: @spacer;
-        }
-      }
-
-      & > .@{prefix}-range-input__@{position} {
-        z-index: 2;
-        height: 100%;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        font-size: @font-size-base;
-      }
-
-      & > .@{prefix}-range-input__@{position}-icon {
-        font-size: @font-size-l;
-      }
+    .@{prefix}-range-input__@{position} {
+      height: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      font-size: @font-size-base;
     }
   }
 }

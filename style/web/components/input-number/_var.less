@@ -44,31 +44,30 @@
 @input-number-width: 144px; // 数字输入组件宽度 中
 @input-number-width-l: 168px; // 数字输入组件宽度 大
 
-@input-number-button-width-s: 24px; // 数字输入框操作按钮宽度 小
-@input-number-button-width: 32px; // 数字输入框操作按钮的宽度 中
-@input-number-button-width-l: 40px; // 数字输入框操作按钮宽度 大
+@input-number-button-width-s: @comp-size-xs; // 数字输入框操作按钮宽度 小
+@input-number-button-width: @comp-size-m; // 数字输入框操作按钮的宽度 中
+@input-number-button-width-l: @comp-size-xl; // 数字输入框操作按钮宽度 大
 
-@input-number-button-height-s: 24px; // 数字输入框操作按钮高度 小
-@input-number-button-height: 32px; // 数字输入框操作按钮的高度 中
-@input-number-button-height-l: 40px; // 数字输入框操作按钮高度 大
+@input-number-button-height-s: @comp-size-xs; // 数字输入框操作按钮高度 小
+@input-number-button-height: @comp-size-m; // 数字输入框操作按钮的高度 中
+@input-number-button-height-l:  @comp-size-xl; // 数字输入框操作按钮高度 大
 
-@input-number-inner-height-s: 24px; // 数字输入框高度 小
-@input-number-inner-height: 32px; // 数字输入框高度 中
-@input-number-inner-height-l: 40px; // 数字输入框高度 大
+@input-number-inner-height-s: @comp-size-xs; // 数字输入框高度 小
+@input-number-inner-height: @comp-size-m; // 数字输入框高度 中
+@input-number-inner-height-l:  @comp-size-xl; // 数字输入框高度 大
 
 @input-number-right-width-s: 88px; // 右侧调整数字输入组件宽度 小
 @input-number-right-width: 96px; // 右侧调整数字输入组件宽度 中
 @input-number-right-width-l: 120px; // 右侧调整数字输入组件宽度 大
 
-@input-number-right-button-width-s: 32px; // 右侧调整数字输入框操作按钮宽度 小
-@input-number-right-button-width: 32px; // 右侧调整数字输入框操作按钮宽度 中
-@input-number-right-button-width-l: 40px; // 右侧调整数字输入框操作按钮宽度 大
+@input-number-right-button-width: @comp-size-m; // 右侧调整数字输入框操作按钮宽度 中
+@input-number-right-button-width-l: @comp-size-xl; // 右侧调整数字输入框操作按钮宽度 大
 
-@input-number-button-column-height-s: 10px; //  右侧调整数字操作按钮的高度 中
-@input-number-button-column-height: 14px; //  右侧调整数字操作按钮的高度 中
-@input-number-button-column-height-l: 18px; //  右侧调整数字操作按钮的高度 大
+@input-number-button-column-height-s: calc(calc(@comp-size-xs / 2) - 2px); //  右侧调整数字操作按钮的高度 中
+@input-number-button-column-height: calc(calc(@comp-size-m / 2) - 2px); //  右侧调整数字操作按钮的高度 中
+@input-number-button-column-height-l: calc(calc(@comp-size-xl / 2) - 2px); //  右侧调整数字操作按钮的高度 大
 
-@input-number-padding-horizontal-default: @spacer;
+@input-number-padding-horizontal-default: @comp-paddingLR-s;
 
 // 字号
 @input-number-font-size: @font-size-l; // 数字输入框操作按钮字号

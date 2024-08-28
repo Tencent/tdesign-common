@@ -83,14 +83,15 @@ export default function generateBase64Url({
         text,
         fontColor = 'rgba(0, 0, 0, 0.1)',
         fontSize = 16,
+        fontFamily = undefined,
         fontWeight = 'normal',
       } = item;
       // eslint-disable-next-line no-param-reassign
       item.top = top;
       top += lineSpace;
       const markSize = Number(fontSize) * ratio;
-      // TODO 后续完善font 渲染控制 目前font-family 暂时为 undefiend
-      ctx.font = `normal normal ${fontWeight} ${markSize}px/${markHeight}px undefined`;
+      // TODO 后续完善font 渲染控制 目前font-family 暂时为 undefined
+      ctx.font = `normal normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`;
       ctx.textAlign = 'start';
       ctx.textBaseline = 'top';
       ctx.fillStyle = fontColor;

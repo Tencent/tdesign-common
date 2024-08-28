@@ -2,19 +2,17 @@
 
 // size
 @time-picker-width: 240px; // time-picker的宽度
-@time-picker-panel-width: 264px; // time-picker的panel宽度
+@time-picker-panel-width: 280px; // time-picker的panel宽度
 
-@time-picker-input-height: 24px;
-@time-picker-container-top: (@time-picker-input-height + 2px);
+@time-picker-input-height: @comp-size-xs;
+@time-picker-container-top: calc(@time-picker-input-height + 2px);
 
 @time-picker-font: @font-body-medium;
 
-@time-picker-panel-body-height: 216px;
-@time-picker-panel-item-height: 24px;
+@time-picker-panel-body-height: calc(calc(@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) * 7 + @time-picker-panel-item-margin-vertical);
+@time-picker-panel-item-height: @comp-size-xs;
 @time-picker-input-item-input-width: 28px;
 @time-picker-input-item-input-meridiem-width: 36px;
-
-@time-picker-panel-footer-height: 48px;
 
 // color
 @time-picker-background-color-common: transparent;
@@ -37,21 +35,13 @@
 @time-picker-input-border-active: 1px solid @brand-color;
 @time-picker-input-border-disabled: 1px solid @border-level-2-color;
 
-@time-picker-input-padding: 0 @spacer 0 (@spacer / 2);
-@time-picker-input-placeholder-margin-left: @spacer;
-@time-picker-input-item-input-margin: 0 2px;
-@time-picker-input-item-input-radius: @border-radius-default;
-
-@time-picker-panel-container-margin: @spacer 0;
-@time-picker-panel-body-margin: @spacer-2 0;
-@time-picker-panel-body-padding: 0 (@spacer-3 / 2);
+@time-picker-panel-section-padding: @pop-padding-xl calc(@pop-padding-xl - @time-picker-panel-item-margin-horizontal);
+@time-picker-panel-footer-padding: @pop-padding-xl;
 @time-picker-panel-item-border-radius: @border-radius-default;
-@time-picker-panel-item-margin-vertical: 6px; // 设计如此
-@time-picker-panel-item-margin-horizontal: (@spacer / 2);
+@time-picker-panel-item-margin-vertical: @size-3;
+@time-picker-panel-item-margin-horizontal: @comp-margin-xs;
 @time-picker-panel-item-margin: @time-picker-panel-item-margin-vertical
   @time-picker-panel-item-margin-horizontal;
-@time-picker-panel-section-second-body-margin-left: @spacer-3;
-@time-picker-panel-footer-padding: 0 @spacer-3;
 
 //shadow
 @time-picker-input-shadow-active: 0 0 2px 2px @brand-color-focus;

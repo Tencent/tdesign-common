@@ -22,8 +22,8 @@
   border: @tag-default-border-width solid @tag-default-border-color;
   white-space: nowrap;
 
-  .@{prefix}-icon {
-    margin-right: 4px;
+  .t-icon {
+    margin-right: @tag-icon-margin-right;
     width: @tag-icon-size;
     height: @tag-icon-size;
     flex-shrink: 0;
@@ -31,14 +31,10 @@
 
   .@{prefix}-tag__icon-close {
     margin-right: 0;
-    margin-left: 4px;
+    margin-left: @tag-close-icon-margin-right;
     font: @tag-large-font;
     cursor: pointer;
     transition: color @anim-duration-base @anim-time-fn-easing;
-  }
-
-  ::selection {
-    background: transparent;
   }
 
   &--default {
@@ -53,44 +49,39 @@
       }
     }
 
-    &.@{prefix}-tag--checked {
-      color: @tag-checked-color;
-      background-color: @tag-checked-background-color;
-
-      &:hover {
-        background-color: @tag-checked-hover-bg;
-      }
-    }
-
     &:active {
       cursor: default;
-    }
-
-    &.@{prefix}-tag--check {
-      transition: background-color @anim-duration-base @anim-time-fn-easing;
-      cursor: pointer;
-
-      &:hover:not(.@{prefix}-tag--checked):not(.@{prefix}-tag--disabled) {
-        background-color: @tag-check-hover-bg;
-      }
     }
 
     // 失效标签
     &.@{prefix}-tag--disabled {
       color: @tag-disabled-color;
       background-color: @tag-disabled-bg;
+      border-color: @component-border;
       cursor: not-allowed;
 
       &:hover {
-        color: @tag-disabled-color;
-        background-color: @tag-disabled-bg;
+        cursor: not-allowed;
       }
 
-      .@{prefix}-icon {
+      .t-icon {
         &:hover {
           cursor: pointer;
         }
       }
+    }
+
+    &.@{prefix}-tag--outline {
+      border-color: @tag-outline-default-border-color;
+    }
+
+    &.@{prefix}-tag--light {
+      background-color: @tag-default-color-light;
+    }
+
+    &.@{prefix}-tag--light-outline {
+      border-color: @tag-outline-default-border-color;
+      background-color: @tag-default-color-light;
     }
   }
 
@@ -98,46 +89,21 @@
     background-color: @tag-primary-color;
 
     &.@{prefix}-tag--outline {
-      color: @tag-primary-color;
+      border-color: @tag-outline-primary-border-color;
     }
-  }
-
-  &--success {
-    background-color: @tag-success-color;
-
-    &.@{prefix}-tag--outline {
-      color: @tag-success-color;
-    }
-  }
-
-  &--warning {
-    background-color: @tag-warning-color;
-
-    &.@{prefix}-tag--outline {
-      color: @tag-warning-color;
-    }
-  }
-
-  &--danger {
-    background-color: @tag-danger-color;
-
-    &.@{prefix}-tag--outline {
-      color: @tag-danger-color;
-    }
-  }
-
-  &--primary {
 
     &.@{prefix}-tag--light {
-      color: @tag-primary-color;
       background-color: @tag-primary-color-light;
-
-      &.@{prefix}-tag--outline {
-        color: @tag-primary-color;
-      }
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
+    &.@{prefix}-tag--light-outline {
+      border-color: @tag-outline-primary-border-color;
+      background-color: @tag-primary-color-light;
+    }
+
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+      color: @tag-primary-color;
+
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @brand-color-hover;
@@ -147,17 +113,24 @@
   }
 
   &--success {
+    background-color: @tag-success-color;
 
-    &.@{prefix}-tag--light {
-      color: @tag-success-color;
-      background-color: @tag-success-color-light;
-
-      &.@{prefix}-tag--outline {
-        color: @tag-success-color;
-      }
+    &.@{prefix}-tag--outline {
+      border-color: @tag-outline-success-border-color;
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
+    &.@{prefix}-tag--light {
+      background-color: @tag-success-color-light;
+    }
+
+    &.@{prefix}-tag--light-outline {
+      border-color: @tag-outline-success-border-color;
+      background-color: @tag-success-color-light;
+    }
+
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+      color: @tag-success-color;
+
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @success-color-hover;
@@ -167,17 +140,24 @@
   }
 
   &--warning {
+    background-color: @tag-warning-color;
 
-    &.@{prefix}-tag--light {
-      color: @tag-warning-color;
-      background-color: @tag-warning-color-light;
-
-      &.@{prefix}-tag--outline {
-        color: @tag-warning-color;
-      }
+    &.@{prefix}-tag--outline {
+      border-color: @tag-outline-warning-border-color;
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
+    &.@{prefix}-tag--light {
+      background-color: @tag-warning-color-light;
+    }
+
+    &.@{prefix}-tag--light-outline {
+      border-color: @tag-outline-warning-border-color;
+      background-color: @tag-warning-color-light;
+    }
+
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+      color: @tag-warning-color;
+
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @warning-color-hover;
@@ -187,14 +167,19 @@
   }
 
   &--danger {
+    background-color: @tag-danger-color;
+
+    &.@{prefix}-tag--outline {
+      border-color: @tag-outline-danger-border-color;
+    }
 
     &.@{prefix}-tag--light {
-      color: @tag-danger-color;
       background-color: @tag-error-color-light;
+    }
 
-      &.@{prefix}-tag--outline {
-        color: @tag-danger-color;
-      }
+    &.@{prefix}-tag--light-outline {
+      border-color: @tag-outline-danger-border-color;
+      background-color: @tag-error-color-light;
     }
 
     .@{prefix}-tag__icon-close {
@@ -205,7 +190,9 @@
       }
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline {
+    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+      color: @tag-danger-color;
+
       .@{prefix}-tag__icon-close {
         &:hover {
           color: @error-color-hover;
@@ -217,16 +204,16 @@
   &--dark&:not(.@{prefix}-tag--default) {
 
     .@{prefix}-tag__icon-close {
-      fill: @tag-close-icon-color--dark;
+      color: @tag-close-icon-color--dark;
 
       &:hover {
-        fill: @tag-close-icon-hover-color--dark;
+        color: @tag-close-icon-hover-color--dark;
       }
     }
   }
 
   &.@{prefix}-tag--outline {
-    background-color: @tag-outline-background-color;
+    background: transparent;
   }
 
   &.@{prefix}-size-s {
@@ -234,7 +221,7 @@
     height: @tag-height-small;
     font: @tag-small-font;
 
-    .@{prefix}-icon {
+    .t-icon {
       font-size: @tag-small-font;
     }
   }
@@ -244,7 +231,7 @@
     height: @tag-height-large;
     font: @tag-large-font;
 
-    .@{prefix}-icon {
+    .t-icon {
       font: @tag-large-font;
     }
   }
@@ -266,8 +253,50 @@
   }
 }
 
-a {
+.@{prefix}-tag.@{prefix}-tag--check:not(.@{prefix}-tag--disabled) {
+  transition: background-color @anim-duration-base @anim-time-fn-easing;
+  cursor: pointer;
 
+  &.@{prefix}-tag--default.@{prefix}-tag--dark:not(.@{prefix}-tag--checked) {
+    &:hover {
+      background-color: @tag-grey-hover-color;
+    }
+  }
+
+  &.@{prefix}-tag--primary.@{prefix}-tag--dark.@{prefix}-tag--checked {
+    &:hover {
+      background-color: @tag-default-hover-color;
+    }
+  }
+
+  &.@{prefix}-tag--default.@{prefix}-tag--outline:not(.@{prefix}-tag--checked) {
+    &:hover {
+      color: @tag-grey-outline-hover-color;
+    }
+  }
+}
+
+.@{prefix}-tag--check.@{prefix}-tag--disabled.@{prefix}-tag--primary {
+  &.@{prefix}-tag--dark {
+    background-color: @tag-default-disabled-color;
+    cursor: not-allowed;
+  }
+
+  &.@{prefix}-tag--outline {
+    color: @tag-disabled-color;
+    background-color: @tag-grey-outline-disabled-color;
+    border-color: @tag-disabled-color;
+    cursor: not-allowed;
+  }
+}
+
+.@{prefix}-check-tag-group {
+  .@{prefix}-tag:not(:last-child) {
+    margin-right: @check-tag-margin-left;
+  }
+}
+
+a {
   .@{prefix}-tag {
     cursor: pointer;
     transition: all @anim-duration-base linear;

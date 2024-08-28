@@ -11,9 +11,13 @@
   .breadcrumb;
 
   &__separator {
-    margin: 0 @breadcrumb-spacer-half;
+    margin: @breadcrumb-separator-margin;
     display: flex;
     align-items: center;
+
+    .t-icon {
+      color: @breadcrumb-icon-color-current;
+    }
   }
 
   &__item {
@@ -25,7 +29,7 @@
     &.@{prefix}-is-current {
       color: @breadcrumb-text-color-current;
 
-      .@{prefix}-icon {
+      .t-icon {
         color: @breadcrumb-icon-color-current;
       }
     }
@@ -38,7 +42,7 @@
       }
     }
 
-    .@{prefix}-icon {
+    .t-icon {
       font-size: @breadcrumb-icon-size;
     }
 
@@ -70,7 +74,7 @@
 
     //箭头型
     &--arrow {
-      margin: 0 @breadcrumb-spacer-half;
+      margin: @breadcrumb-separator-margin;
       line-height: 0;
       color: @breadcrumb-icon-arrow-color-default;
       .v-inlineblock;
@@ -78,7 +82,7 @@
 
     //斜杠型
     &--slash {
-      margin: 0 @breadcrumb-spacer-half;
+      margin: @breadcrumb-separator-margin;
       line-height: 0;
       color: @breadcrumb-icon-slash-color-default;
       .v-inlineblock;
@@ -90,8 +94,8 @@
     word-break: break-all;
     .v-inlineblock;
 
-    .@{prefix}-icon {
-      margin: 0 @breadcrumb-spacer-half;
+    .t-icon {
+      margin: @breadcrumb-separator-margin;
     }
   }
 
@@ -136,7 +140,7 @@
         color: @breadcrumb-text-color-hover;
       }
 
-      &.t-is-active {
+      &.@{prefix}-is-active {
         color: @breadcrumb-text-color-hover;
       }
     }
@@ -186,16 +190,16 @@
 
     .@{prefix}-breadcrumb__inner {
       max-width: @breadcrumb-inner-max-width-default;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      transition: color @anim-duration-base linear;
 
-      .@{prefix}-icon {
-        vertical-align: text-bottom;
+      &-text {
+        .t-overflow;
       }
-      .t-overflow;
 
       &:hover {
         color: @breadcrumb-text-color-hover;
-        transition: color @anim-duration-base linear;
         cursor: pointer;
       }
 

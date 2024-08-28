@@ -85,6 +85,7 @@
 @brand-color-active: var(--td-brand-color-active); // 点击态
 @brand-color-disabled: var(--td-brand-color-disabled); // 禁用态
 @brand-color-light: var(--td-brand-color-light); // 浅色的选中态
+@brand-color-light-hover: var(--td-brand-color-light-hover);
 
 // 警告色扩展
 @warning-color-hover: var(--td-warning-color-hover);
@@ -92,6 +93,7 @@
 @warning-color-active: var(--td-warning-color-active);
 @warning-color-disabled: var(--td-warning-color-disabled);
 @warning-color-light: var(--td-warning-color-light);
+@warning-color-light-hover: var(--td-warning-color-light-hover);
 
 // 失败/错误色扩展
 @error-color-hover: var(--td-error-color-hover);
@@ -99,6 +101,7 @@
 @error-color-active: var(--td-error-color-active);
 @error-color-disabled: var(--td-error-color-disabled);
 @error-color-light: var(--td-error-color-light);
+@error-color-light-hover: var(--td-error-color-light-hover);
 
 // 成功色扩展
 @success-color-hover: var(--td-success-color-hover);
@@ -106,6 +109,7 @@
 @success-color-active: var(--td-success-color-active);
 @success-color-disabled: var(--td-success-color-disabled);
 @success-color-light: var(--td-success-color-light);
+@success-color-light-hover: var(--td-success-color-light-hover);
 
 // 遮罩
 @mask-active: var(--td-mask-active); // 遮罩-弹出
@@ -141,6 +145,17 @@
 @bg-color-component-active: var(
   --td-bg-color-component-active
 ); // 色彩 - 组件 - active
+
+@bg-color-secondarycomponent: var(
+  --td-bg-color-secondarycomponent
+); // 色彩 - 次级组件
+@bg-color-secondarycomponent-hover: var(
+  --td-bg-color-secondarycomponent-hover
+); // 色彩 - 次级组件 - hover
+@bg-color-secondarycomponent-active: var(
+  --td-bg-color-secondarycomponent-active
+); // 色彩 - 次级组件 - active
+
 @bg-color-component-disabled: var(
   --td-bg-color-component-disabled
 ); // 色彩 - 组件 - disabled
@@ -188,7 +203,73 @@
 @shadow-2-inset: @shadow-2, @shadow-inset;
 @shadow-3-inset: @shadow-3, @shadow-inset;
 
-// Spacer
+@size-1: var(--td-size-1);
+@size-2: var(--td-size-2);
+@size-3: var(--td-size-3);
+@size-4: var(--td-size-4);
+@size-5: var(--td-size-5);
+@size-6: var(--td-size-6);
+@size-7: var(--td-size-7);
+@size-8: var(--td-size-8);
+@size-9: var(--td-size-9);
+@size-10: var(--td-size-10);
+@size-11: var(--td-size-11);
+@size-12: var(--td-size-12);
+@size-13: var(--td-size-13);
+@size-14: var(--td-size-14);
+@size-15: var(--td-size-15);
+@size-16: var(--td-size-16);
+
+// component 组件尺寸高度相关 token
+@comp-size-xxxs: var(--td-comp-size-xxxs);
+@comp-size-xxs: var(--td-comp-size-xxs);
+@comp-size-xs: var(--td-comp-size-xs);
+@comp-size-s: var(--td-comp-size-s);
+@comp-size-m: var(--td-comp-size-m);
+@comp-size-l: var(--td-comp-size-l);
+@comp-size-xl: var(--td-comp-size-xl);
+@comp-size-xxl: var(--td-comp-size-xxl);
+@comp-size-xxxl: var(--td-comp-size-xxxl);
+@comp-size-xxxxl: var(--td-comp-size-xxxxl);
+@comp-size-xxxxxl: var(--td-comp-size-xxxxxl);
+
+// popup 弹出层整体边距 token
+@pop-padding-s: var(--td-pop-padding-s);
+@pop-padding-m: var(--td-pop-padding-m);
+@pop-padding-l: var(--td-pop-padding-l);
+@pop-padding-xl: var(--td-pop-padding-xl);
+@pop-padding-xxl: var(--td-pop-padding-xxl);
+
+// component 组件左右边距 token
+@comp-paddingLR-xxs: var(--td-comp-paddingLR-xxs);
+@comp-paddingLR-xs: var(--td-comp-paddingLR-xs);
+@comp-paddingLR-s: var(--td-comp-paddingLR-s);
+@comp-paddingLR-m: var(--td-comp-paddingLR-m);
+@comp-paddingLR-l: var(--td-comp-paddingLR-l);
+@comp-paddingLR-xl: var(--td-comp-paddingLR-xl);
+@comp-paddingLR-xxl: var(--td-comp-paddingLR-xxl);
+
+// component 组件上下边距 token
+@comp-paddingTB-xxs: var(--td-comp-paddingTB-xxs);
+@comp-paddingTB-xs: var(--td-comp-paddingTB-xs);
+@comp-paddingTB-s: var(--td-comp-paddingTB-s);
+@comp-paddingTB-m: var(--td-comp-paddingTB-m);
+@comp-paddingTB-l: var(--td-comp-paddingTB-l);
+@comp-paddingTB-xl: var(--td-comp-paddingTB-xl);
+@comp-paddingTB-xxl: var(--td-comp-paddingTB-xxl);
+
+// component 组件间距 token
+@comp-margin-xxs: var(--td-comp-margin-xxs);
+@comp-margin-xs: var(--td-comp-margin-xs);
+@comp-margin-s: var(--td-comp-margin-s);
+@comp-margin-m: var(--td-comp-margin-m);
+@comp-margin-l: var(--td-comp-margin-l);
+@comp-margin-xl: var(--td-comp-margin-xl);
+@comp-margin-xxl: var(--td-comp-margin-xxl);
+@comp-margin-xxxl: var(--td-comp-margin-xxxl);
+@comp-margin-xxxxl: var(--td-comp-margin-xxxxl);
+
+// Spacer 【deprecated】
 @spacer: 8px;
 @spacer-s: @spacer * .5; // 间距-4
 @spacer-m: @spacer * .75; // 间距-6
@@ -204,11 +285,11 @@
 @spacer-9: @spacer * 9; // 间距-大-48
 @spacer-10: @spacer * 10; // 间距-大-80
 
-@text-line-height-s: 20px;
-@text-line-height-base: 22px;
-@text-line-height-l: 24px;
-@text-line-height-xl: 28px;
-@text-line-height-xxl: 44px;
+@text-line-height-s: var(--td-line-height-body-small);
+@text-line-height-base: var(--td-line-height-body-medium);
+@text-line-height-l: var(--td-line-height-body-large);
+@text-line-height-xl: var(--td-line-height-title-large);
+@text-line-height-xxl: var(--td-line-height-headline-large);
 
 // Font
 @font-size: 10px;
@@ -288,11 +369,15 @@
 @anim-duration-slow: .28s;
 
 // 统一管理各组件层级关系
+@z-index-back-top: 300;
 @z-index-affix: 500;
 @z-index-drawer: 1500;
 @z-index-dialog: 2500;
+@z-index-image-viewer: 3000;
 @z-index-loading: 3500;
 @z-index-message: 5000;
 @z-index-Popup: 5500;
+@z-index-Tooltip: 5600;
 @z-index-Notification: 6000;
 @z-index-dragging: 6500;
+@z-index-guide: 999999;

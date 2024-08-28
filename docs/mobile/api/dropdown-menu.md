@@ -26,10 +26,11 @@ toc: false
 
 {{ tree }}
 
-<!-- ### 禁用菜单/选项
+### 禁用菜单/选项
 
 {{ disabled }}
 
+<!--
 ### 自定义选单
 
 {{ customized-menu }}

@@ -2,7 +2,7 @@
 title: Select 选择器
 description: 用于收纳大量选项的信息录入类组件。
 isComponent: true
-usage: { title: '', description: '' }
+usage: { title: "", description: "" }
 spline: form
 ---
 
@@ -106,13 +106,19 @@ spline: form
 
 {{ label-in-value }}
 
-### 自定义下拉框宽度选择器
+### 自定义下拉框宽度的选择器
 
 自定义下拉样式的选择器，在需要自定义下拉样式时使用。
 
-下拉框宽度默认和输入框宽度同宽，如果内容宽度超出会自动变宽。可使用 `popupProps.overlayStyle` 自由控制宽度。
+下拉框宽度默认和输入框宽度同宽，如果内容宽度超出会自动变宽。可使用 `popupProps.overlayInnerStyle` 自由控制宽度。
 
 {{ popup-props }}
+
+### 通过滚动事件加载选项的选择器
+
+业务中常常有选项通过滚动触底持续加载的需求，通过`popup.onScroll`或`popup.onScrollToBottom`，可以快速实现滚动加载选项的能力。
+
+{{ scroll-bottom }}
 
 ### 开启虚拟滚动的选择器
 

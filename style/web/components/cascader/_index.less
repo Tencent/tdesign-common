@@ -61,7 +61,6 @@
     box-sizing: content-box;
     padding: @cascader-menu-padding;
     background: @bg-color-container;
-    border-radius: @border-radius-medium;
 
     &.@{prefix}-size-l {
       padding: @cascader-menu-padding-l;
@@ -72,7 +71,7 @@
     }
 
     &--segment {
-      border-right: .5px solid @cascader-menu-segment-color;
+      border-right: 1px solid @cascader-menu-segment-color;
     }
 
     &--filter {
@@ -98,20 +97,12 @@
       height: @cascader-item-height-s;
       font: @cascader-font-s;
       padding: @cascader-item-padding-s;
-
-      .@{prefix}-cascader__item-label {
-        padding: 1px 0;
-      }
     }
 
     &.@{prefix}-size-l {
       height: @cascader-item-height-l;
       font: @cascader-font-l;
       padding: @cascader-item-padding-l;
-
-      .@{prefix}-cascader__item-label {
-        padding: 6px 0;
-      }
     }
 
     &.@{prefix}-is-disabled {
@@ -121,7 +112,7 @@
     }
 
     &-icon {
-      &.@{prefix}-icon {
+      &.t-icon {
         position: absolute;
         height: 100%;
         right: 0;
@@ -142,7 +133,7 @@
       background: @cascader-item-background-color-expanded;
       color: @cascader-highlight-color;
 
-      .@{prefix}-icon-chevron-right {
+      .t-icon-chevron-right {
         color: @cascader-highlight-color;
       }
 
@@ -183,15 +174,11 @@
       }
     }
 
-    .@{prefix}-popup__reference {
-      width: 100%;
-    }
-
     &-label {
       display: block;
       position: relative;
       white-space: nowrap;
-      padding: 3px 0;
+      padding: 0;
 
       &--ellipsis {
         .text-ellipsis();
@@ -209,6 +196,7 @@
 
     &.@{prefix}-is-selected {
       color: @cascader-item-color-selected;
+      background: @cascader-item-background-color-expanded;
 
       & .@{prefix}-checkbox__label {
         color: @cascader-item-color-selected;

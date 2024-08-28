@@ -8,6 +8,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../popup/_var.less";
+
 .@{popconfirm-cls} {
   .reset;
 
@@ -16,6 +18,10 @@
 
   .@{prefix}-popup__content {
     padding: 0;
+  }
+
+  &.@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-popup__arrow {
+    bottom: calc(-@popup-arrow-width / 2);
   }
 
   &__content {
@@ -29,15 +35,16 @@
     align-items: flex-start;
     text-align: left;
 
-    > .@{prefix}-icon {
+    > .t-icon {
       display: inline-block;
-      margin: @popconfirm-icon-margin;
+      margin-right: @popconfirm-icon-margin-right;
+      padding: @popconfirm-icon-padding;
       font-size: @popconfirm-icon-size;
     }
   }
 
   &__confirm {
-    margin-left: 8px;
+    margin-left: @popconfirm-confirm-margin-right;
   }
 
   &__inner {
@@ -46,7 +53,6 @@
     max-width: @popconfirm-max-width;
     font: @font-body-medium;
     color: @text-color-primary;
-    margin-right: @popconfirm-title-margin-right;
   }
 
   &__icon--warning {

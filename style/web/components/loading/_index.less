@@ -26,6 +26,10 @@
   &.@{prefix}-size-l {
     font-size: @loading-icon-size-large;
   }
+
+  &__parent--relative {
+    position: relative !important;
+  }
 }
 
 .@{prefix}-loading__fullscreen {
@@ -69,6 +73,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: @z-index-loading;
 }
 
 .@{prefix}-loading--hidden {
@@ -96,12 +101,13 @@
   &-conic {
     width: 100%;
     height: 100%;
-    background: conic-gradient(from 90deg at 50% 50%, #fff 0deg, currentcolor 360deg);
     border-radius: @border-radius-circle;
+    /* stylelint-disable-next-line color-no-hex */
+    background: conic-gradient(from 90deg at 50% 50%, #fff 0deg, currentcolor 360deg);
     /* stylelint-disable-next-line */
     -webkit-mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
 
-    /* stylelint-disable-next-line */
+    /* stylelint-disable-next-line color-no-hex */
     mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
   }
 }

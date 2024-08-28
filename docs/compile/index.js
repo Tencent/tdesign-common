@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { spawn } from 'node:child_process';
 
 /**
  * 渲染 live demo 逻辑，提取 md 头信息生成框架需要的字符串
@@ -26,6 +27,26 @@ export function compileUsage(options) {
   };
 }
 
+/**
+ * 获取文件 git 最后更新时间
+ * @param {string} file
+ * @returns {Promise<number>}
+ */
+export function getGitTimestamp(file) {
+  return new Promise((resolve, reject) => {
+    const child = spawn('git', ['log', '-1', '--pretty="%ci"', file]);
+    let output = '';
+    child.stdout.on('data', (d) => {
+      output += String(d);
+    });
+    child.on('close', () => {
+      resolve(+new Date(output));
+    });
+    child.on('error', reject);
+  });
+}
+
 export default {
-  compileUsage
+  compileUsage,
+  getGitTimestamp
 };

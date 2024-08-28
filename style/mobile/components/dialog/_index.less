@@ -95,14 +95,14 @@
     flex: 1;
 
     &--primary {
-      color: @primary-color;
+      color: @brand-color;
     }
   }
 
   &__text {
     /* stylelint-disable-line */
     & + .@{prefix}-dialog__input {
-      margin-top: @dialog-input-margin-top * 2;
+      margin-top: calc(@dialog-input-margin-top * 2);
     }
   }
 

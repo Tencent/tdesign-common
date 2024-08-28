@@ -1,36 +1,11 @@
-//颜色
-@loading-color: @primary-color-8;
+@loading: ~"@{prefix}-loading";
 
-// 字体
-@loading-text-line-height: @text-line-height;
-@loading-text-color: @text-level-1-color;
-
-@loading-text-size: @font-size-base;
-@loading-text-size-small: @font-size-s;
-@loading-text-size-large: @font-size-l;
-
-// icon
-@loading-icon-size: 28px;
-@loading-icon-size-small: 24px;
-@loading-icon-size-large: 32px;
-
-// 间距
-@loading-text-margin-left: 5px;
-
-// dots
-@dotWidth: 8px;
-@dot-height: 8px;
-@dot-radius: calc(@dotWidth / 2);
-
-@dot-color: @primary-color-8;
-@dot-bg-color: @dot-color;
-@dot-before-color: rgba(@primary-color-8, .15);
-@dot-after-color: rgba(@primary-color-8, .15);
-
-@dot-spacing: calc(@dotWidth * 2);
-
-@dot-left-pos: -9999px;
-
-@dot-x1: calc(0px - @dot-left-pos - @dot-spacing);
-@dot-x2: -@dot-left-pos;
-@dot-x3: calc(0px - @dot-left-pos + @dot-spacing);
+@loading-color: var(--td-loading-color, @brand-color);
+@loading-size: var(--td-loading-size, 20px);
+@loading-text-color: var(--td-loading-text-color, @text-color-primary);
+@loading-text-font-size: var(--td-loading-text-font-size, 12px);
+@loading-text-line-height: var(--td-loading-text-line-height, 20px);
+@loading-dot-size: var(--td-loading-dot-size, 8px);
+@loading-line-bg-color: var(--td-loading-line-bg-color, @text-color-primary);
+@loading-z-index: var(--td-loading-z-index, 3500);
+@loading-full-bg-color: var(--td-loading-full-bg-color, rgba(255, 255, 255, 60%));

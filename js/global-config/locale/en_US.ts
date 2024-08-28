@@ -1,16 +1,18 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/en';
+
 export default {
   pagination: {
     itemsPerPage: '{size} / page',
-    jumpTo: 'jump to',
+    jumpTo: 'Jump to',
     page: '',
     total: '{total} items',
   },
   cascader: {
     empty: 'Empty Data',
-    loadingText: '',
-    placeholder: '',
+    loadingText: 'loading...',
+    placeholder: 'please select',
   },
   calendar: {
     yearSelection: '{year}',
@@ -21,20 +23,22 @@ export default {
     showWeekend: 'Show Week',
     today: 'Today',
     thisMonth: 'This Month',
-    week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Staturday,Sunday',
-    cellMonth: 'January,February,March,April,May,June,July,August,September,October,November,December',
+    week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Saturday,Sunday',
+    cellMonth:
+      'January,February,March,April,May,June,July,August,September,October,November,December',
   },
   transfer: {
     title: '{checked} / {total}',
     empty: 'Empty Data',
-    placeholder: 'enter keyworkd to search',
+    placeholder: 'enter keyword to search',
   },
   timePicker: {
+    dayjsLocale: 'en',
     now: 'Now',
     confirm: 'Confirm',
     anteMeridiem: 'AM',
     postMeridiem: 'PM',
-    placeholder: '',
+    placeholder: 'please select',
   },
   dialog: {
     confirm: 'Confirm',
@@ -63,7 +67,8 @@ export default {
     clearFilterResultButtonText: 'Clear',
     columnConfigButtonText: 'Column Config',
     columnConfigTitleText: 'Table Column Config',
-    columnConfigDescriptionText: 'Please select columns to show them in the table',
+    columnConfigDescriptionText:
+      'Please select columns to show them in the table',
     confirmText: 'Confirm',
     cancelText: 'Cancel',
     resetText: 'Reset',
@@ -73,7 +78,7 @@ export default {
   select: {
     empty: 'Empty Data',
     loadingText: 'loading...',
-    placeholder: '',
+    placeholder: 'please select',
   },
   tree: {
     empty: 'Empty Data',
@@ -81,16 +86,32 @@ export default {
   treeSelect: {
     empty: 'Empty Data',
     loadingText: 'loading...',
-    placeholder: '',
+    placeholder: 'please select',
   },
   datePicker: {
+    dayjsLocale: 'en',
     placeholder: {
       date: 'select date',
       month: 'select month',
       year: 'select year',
+      quarter: 'select quarter',
+      week: 'select week',
     },
     weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    months: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ],
     quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -120,9 +141,10 @@ export default {
       reupload: 'ReUpload',
       continueUpload: 'Continue Upload',
       delete: 'Delete',
+      uploading: 'Uploading',
     },
     dragger: {
-      dragDropText: 'Drop hear',
+      dragDropText: 'Drop here',
       draggingText: 'Drag file to this area to upload',
       clickAndDragText: 'Click "Upload" or Drag file to this area to upload',
     },
@@ -157,6 +179,7 @@ export default {
       boolean: '${name} is not a boolean',
       number: '${name} must be a number',
     },
+    colonText: ':',
   },
   input: {
     placeholder: 'please enter',
@@ -170,12 +193,60 @@ export default {
     collapseText: 'collapse',
   },
   anchor: {
-    expandText: 'copy the link successfully',
-    collapseText: 'copy link',
+    copySuccessText: 'copy the link successfully',
+    copyText: 'copy link',
   },
   colorPicker: {
     swatchColorTitle: 'System Default',
     recentColorTitle: 'Recently Used',
     clearConfirmText: 'Clear recently used colors?',
   },
-};
+  guide: {
+    finishButtonProps: {
+      content: 'Finish',
+      theme: 'primary',
+    },
+    nextButtonProps: {
+      content: 'Next Step',
+      theme: 'primary',
+    },
+    skipButtonProps: {
+      content: 'Skip',
+      theme: 'default',
+    },
+    prevButtonProps: {
+      content: 'Last Step',
+      theme: 'default',
+    },
+  },
+  image: {
+    errorText: 'unable to load',
+    loadingText: 'loading',
+  },
+  imageViewer: {
+    errorText: 'unable to load',
+    mirrorTipText: 'mirror',
+    rotateTipText: 'rotate',
+    originalSizeTipText: 'original',
+  },
+  typography: {
+    expandText: 'more',
+    collapseText: 'collapse',
+    copiedText: 'copied',
+  },
+  rate: {
+    rateText: ['terrible', 'disappointed', 'normal', 'satisfied', 'surprised'],
+  },
+  empty: {
+    titleText: {
+      maintenance: 'Under Construction',
+      success: 'Success',
+      fail: 'Failure',
+      empty: 'No Data',
+      networkError: 'Network Error',
+    }
+  },
+  descriptions: {
+    colonText: ':',
+  },
+} as const;

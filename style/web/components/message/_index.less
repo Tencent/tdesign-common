@@ -16,10 +16,6 @@
   @{msg-icon-selector} {
     color: @msg-primary-color;
     margin-right: @msg-icon-margin-right;
-  }
-
-  > .@{prefix}-icon,
-  .@{prefix}-loading {
     flex-shrink: 0;
     font-size: @msg-icon-size;
   }
@@ -46,23 +42,16 @@
   }
 
   &.@{prefix}-is-closable {
-    min-width: @msg-min-width;
 
-    .@{prefix}-message__inner {
-      margin-right: @msg-inner-margin-right;
-    }
-
-    > .@{prefix}-message__close {
+    .@{prefix}-message__close {
       display: inline-flex;
       margin-right: 0;
-      margin-left: auto;
-      right: @msg-icon-position-right;
+      margin-left: @msg-close-icon-margin-left;
       cursor: pointer;
       color: @msg-close-icon-color;
-      border-radius: @border-radius-default;
 
-      .@{prefix}-icon-close {
-        font-size: @msg-close-font-size;
+      .t-icon-close {
+        font-size: @msg-close-size;
         border-radius: @border-radius-default;
         transition: all @anim-duration-base linear;
 

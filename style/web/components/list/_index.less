@@ -10,11 +10,15 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 .@{prefix}-list {
   .reset;
+  .scrollbar();
 
   overflow: auto;
   color: @list-font-color;
+  background: @list-bg-color-default;
 
   &__inner {
     .list-style-none();
@@ -23,7 +27,6 @@
   &-item {
     font: @list-item-font;
     padding: @list-item-spacer-default;
-    background: @list-bg-color-default;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,12 +51,12 @@
 
     &__meta {
       display: flex;
-      padding: @list-meta-padding;
+      // padding: @list-meta-padding;
 
       &-avatar {
         width: @list-avatar-size;
         height: @list-avatar-size;
-        border-radius: (@list-avatar-size / 2);
+        border-radius: calc(@list-avatar-size / 2);
         overflow: hidden;
         background: @list-avatar-bg-color;
         margin-right: @list-avatar-margin-right;
@@ -91,7 +94,7 @@
           margin-right: @list-action-margin-right;
         }
 
-        .@{prefix}-icon {
+        .t-icon {
           color: @list-action-icon-color;
           font-size: @list-icon-size;
 
@@ -106,10 +109,6 @@
           color: @list-action-color;
         }
       }
-    }
-
-    &__extra {
-      margin: @list-extra-margin;
     }
   }
 
@@ -174,6 +173,7 @@
 
   .@{prefix}-loading {
     font-size: @list-load-font-size;
+    margin-right: @list-load-icon-margin;
   }
 
   .@{prefix}-loading.@{prefix}-is-load-more {

@@ -16,9 +16,9 @@
  */
 import { getIEVersion } from './helper';
 
-export default function getScrollbarWidth() {
+export function getScrollbarWidthWithCSS() {
   const defaultScrollbarWidth = 6;
-  if (!navigator) return defaultScrollbarWidth;
+  if (typeof navigator === 'undefined' || !navigator) return defaultScrollbarWidth;
   if (/(Chrome|Safari)/i.test(navigator.userAgent)) return defaultScrollbarWidth;
   const scrollDiv = document.createElement('div');
   scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
@@ -32,5 +32,15 @@ export default function getScrollbarWidth() {
   if (getIEVersion() <= 11) {
     scrollbarWidth = 12;
   }
+  return scrollbarWidth;
+}
+
+// 获取 body 下滚动条宽度
+export function getScrollbarWidth() {
+  const scrollDiv = document.createElement('div');
+  scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
+  document.body.appendChild(scrollDiv);
+  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  document.body.removeChild(scrollDiv);
   return scrollbarWidth;
 }

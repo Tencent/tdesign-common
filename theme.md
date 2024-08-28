@@ -3,58 +3,40 @@ title: 主题配置
 spline: explain
 ---
 
-### 使用 CSS 变量
+### 使用 CSS Variables 进行主题配置
 
-组件库通用的 Design Token 均使用 css variables 声明，你可以在自己的项目中声明同名变量来覆盖他们的值：
+TDesign 通用的 Design Token 均使用 CSS Variables 声明，我们推荐使用替换 CSS Variables 的方式来进行个性化的主题配置。
 
-```css
+TDesign 提供五大类 Design Token，包括`颜色`、`字体`、`圆角`、`阴影`及`尺寸`，你可以在自己的项目中声明同名 CSS Variables来覆盖他们的值，如：
+
+```CSS
 --td-brand-color: orange;
 --td-warning-color: yellow;
 --td-error-color: red;
 --td-success-color: green;
 ```
 
-完整的 token 列表见 [\_light.less](https://github.com/Tencent/tdesign-common/blob/develop/style/web/theme/_light.less)。
+完整的 Token 列表见 [TDesign Design Token](https://github.com/Tencent/tdesign-common/blob/develop/style/web/theme)。
 
 #### 使用主题生成器配置 CSS 变量
 
-因为涉及到的 token 数量很多，我们提供了更直观的基于 CSS Token 实现的`主题配置生成器`，来帮助您快速定制您需要的主题。您可以通过点击官网右下角的按钮打开我们的主题配置生成器。
+因为涉及到的 CSS 变量数量很多，**我们提供了更直观的基于 CSS 变量 实现的`主题配置生成器`，来帮助您快速定制您需要的主题。您可以通过`点击官网下方的悬浮按钮`打开我们的主题配置生成器**。
 
-通过主题配置生成器配置出您满意的 token 之后，请点击`导出主题配置`，我们会导出一份全新的 CSS 文件到您本地，您只需要将文件放置进您的项目文件目录中，并在项目中 import 该 CSS 文件，即可得到一个全新主题样式的 TDesign 。
+通过主题配置生成器配置出您满意的主题 CSS 变量 之后，请点击`下载按钮`，我们会导出一份全新的 CSS 文件到您本地，您只需要将文件放置进您的项目文件目录中，并在项目中 import 该 CSS 文件，即可得到一个全新主题样式的 TDesign 。
 
-### 使用 less 变量
+### 使用 less 变量 针对组件进行精细化定制
 
 如果你的项目也使用 less 技术栈，且对组件有更精细的定制需求，我们也抽离了大部分组件实现过程中用到的变量，以 less 变量的方式提供出来，
 
-```less
+```CSS
 // 以 Button 为例
-// 尺寸
+
 @btn-height-s: 24px;
 @btn-height-default: 32px;
 @btn-height-l: 40px;
 
-// 圆角
 @btn-border-radius: @border-radius-default;
-@btn-shape-border-radius-s: (@btn-height-s / 2);
-@btn-shape-border-radius-default: (@btn-height-default / 2);
-@btn-shape-border-radius-l: (@btn-height-l / 2);
 
-// 阴影
-
-//字号
-@btn-font-s: @font-size-s;
-@btn-font-default: @font-size-base;
-@btn-font-l: @font-size-l;
-
-// 图标大小
-@btn-icon-size-s: @font-size-base;
-@btn-icon-size-default: @font-size-l;
-@btn-icon-size-l: @font-size-xl;
-
-// padding
-@btn-padding-horizontal-s: @spacer;
-@btn-padding-horizontal-default: (@spacer * 2);
-@btn-padding-horizontal-l: (@spacer * 3);
 ```
 
 要修改这些 less 变量，需要改为从 npm ESM 产物中引入组件库：

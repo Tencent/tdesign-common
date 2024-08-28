@@ -1,9 +1,5 @@
-export const wait = (time) => new Promise((resolve) => {
-  setTimeout(resolve, time);
-});
-
-const kit = {
-  wait,
-};
-
-export default kit;
+export function delay(time) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  });
+}

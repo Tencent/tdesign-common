@@ -13,26 +13,23 @@
 
 @popconfirm-cls: ~"@{prefix}-popconfirm";
 
-@popconfirm-spacer: @spacer;
+@popconfirm-spacer: @comp-margin-s;
 
 // popconfirm
 @popconfirm-shadow1: 0 10px 10px -5px rgba(0, 0, 0, .04);
 @popconfirm-shadow2: 0 12px 26px 5px rgba(0, 0, 0, .1);
-@popconfirm-padding: @spacer-2;
+@popconfirm-padding: @comp-paddingTB-l @comp-paddingLR-l;
 @popconfirm-position: relative; // TODO: position 最后应该是absolute
 
 // TODO: 建议设置最大宽度
-@popconfirm-max-width: 300px;
-
-// popconfirm title
-@popconfirm-title-margin-right: @popconfirm-spacer;
+@popconfirm-max-width: 320px;
 
 // popconfirm buttons
-@popconfirm-buttons-margin-top: 16px;
-@popconfirm-button-margin: 8px;
+@popconfirm-buttons-margin-top: @comp-margin-l;
+@popconfirm-button-margin: @popconfirm-spacer;
 
 // 小三角
-@popconfirm-arrow-margin: @spacer-3;
+@popconfirm-arrow-margin: @comp-margin-xxl;
 @popconfirm-arrow-absolute-offset: -4px;
 @popconfirm-arrow-border-width: 4px;
 @popconfirm-arrow-size: (@popconfirm-arrow-border-width * 2);
@@ -47,9 +44,13 @@
 @popconfirm-arrow-right-shadow: -2px 2px 5px rgba(0, 0, 0, .06);
 
 // 间距
-@popconfirm-icon-margin: 1px @spacer 1px 0;
+@popconfirm-icon-margin-right: @comp-margin-s;
+@popconfirm-icon-padding: calc(calc(@text-line-height-base - @popconfirm-icon-size) / 2) 0;
+@popconfirm-confirm-margin-right: @comp-margin-s;
+
 // 尺寸
-@popconfirm-icon-size: @font-size-xl;
+@popconfirm-icon-size: calc(@font-size-base + 6px);
+
 // 圆角
 @popconfirm-border-radius: @border-radius-medium;
 

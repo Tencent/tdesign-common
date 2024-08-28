@@ -17,11 +17,11 @@
 
   &__title {
     flex: 1 1 auto;
-    color: @text-level-1-color;
+    color: @text-color-primary;
   }
 
   &__description {
-    color: @text-level-3-color;
+    color: @text-color-placeholder;
     font-size: @cell-summary-font-size;
     line-height: 22px;
     margin-top: @spacer;
@@ -31,7 +31,7 @@
     flex: 1;
     text-align: right;
     overflow: hidden;
-    color: @text-level-3-color;
+    color: @text-color-placeholder;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -45,9 +45,9 @@
 
   &__left-icon {
     flex-shrink: 0;
-    color: @text-level-1-color;
+    color: @text-color-primary;
     line-height: 24px;
-    margin-right: @spacer-2;
+    margin-right: @spacer;
     font-size: 24px;
     align-self: flex-start;
 
@@ -57,9 +57,9 @@
   }
 
   &__right-icon {
-    color: @text-level-3-color;
+    color: @text-color-placeholder;
     line-height: 24px;
-    margin-left: @spacer-2;
+    margin-left: @spacer;
     font-size: 24px;
 
     & > .@{prefix}-icon {

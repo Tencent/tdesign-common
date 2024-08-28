@@ -1,5 +1,4 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-
 @import "../../base.less";
 
 @import "./_var.less";
@@ -9,6 +8,7 @@
 @import "../../mixins/_reset.less";
 
 .@{prefix}-textarea {
+
   .reset;
 
   position: relative;
@@ -48,13 +48,19 @@
     .textarea-status(error);
   }
 
+  &__info_wrapper {
+    display: flex;
+    column-gap: @textarea-tips-gap;
+    justify-content: space-between;
+  }
+
+  &__info_wrapper_align {
+    justify-content: end;
+  }
+
   &__limit {
-    position: absolute;
-    bottom: @textarea-limit-position-bottom;
-    right: @textarea-limit-position-right;
-    font: @textarea-font;
+    font: @textarea-tips-font;
     color: @textarea-limit-color;
-    background: @textarea-bg-color-default;
   }
 
   .@{prefix}-is-disabled {

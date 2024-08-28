@@ -1,61 +1,50 @@
 @import "../../base.less";
 
+@title-font-size: 18px;
+@title-color: @text-color-primary;
+@days-item-color: @text-color-secondary;
+@dates-item-suffix-color: @text-color-placeholder;
+@calendar-disabled-color: @text-color-disabled;
+@calendar-centre-color: @brand-color-light;
+
 .@{prefix}-calendar {
+  position: relative;
   z-index: 9999;
   background: #fff;
   overflow-x: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 
   &__title {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    font-weight: 500;
-    background-color: #fff;
-    color: #303133;
-    width: 100%;
-    height: 44px;
+    font-size: @title-font-size;
+    font-weight: 600;
+    color: @title-color;
+    height: 26px;
+    padding: 16px;
   }
 
-  &__text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-
-    &--current {
-      margin: 0 8px;
-      color: #303133;
-      font-weight: 700;
-    }
-
-    &--year,
-    &--month {
-      margin: 0 8px;
-    }
-
-    &--year {
-      color: #909399;
-    }
-
-    &--month {
-      color: #606266;
-    }
+  &__close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
   }
 
   &__days {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    padding: 6px 0;
+    padding: 0 16px;
+    text-align: center;
+    line-height: 46px;
 
-    &--item {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &-item {
+      width: 44px;
+      height: 46px;
       font-size: 14px;
+      color: @days-item-color;
     }
   }
 
@@ -72,38 +61,104 @@
     min-height: 200px;
     display: flex;
     flex-direction: column;
+  }
 
-    &--item {
-      flex: 1;
-      display: flex;
-      align-items: center;
+  &__month {
+    font-size: 14px;
+    color: @title-color;
+    font-weight: 600;
+    padding: 16px 0 0;
 
-      &--text {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        border-radius: 8px;
+    &s {
+      max-height: 456px;
+      overflow-y: scroll;
+      padding: 0 16px 16px;
 
-        &--nocurrent {
-          color: #c8c9cc;
-        }
-
-        &--value {
-          padding: 6px 8px;
-        }
-
-        &--today {
-          background: #0053db;
-          color: #fff;
-          border-radius: 4px;
-        }
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
   }
 
-  &__btn {
-    padding: 0 8px;
+  &__dates {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border-radius: 8px;
+      width: 49px;
+      height: 60px;
+      line-height: 24px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+
+      &-prefix,
+      &-suffix {
+        position: absolute;
+        font-size: 10px;
+        line-height: 16px;
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
+      }
+
+      &-prefix {
+        top: 4px;
+      }
+
+      &-suffix {
+        bottom: 4px;
+        color: @dates-item-suffix-color;
+
+        &--selected,
+        &--start,
+        &--end {
+          color: #fff;
+        }
+
+        &--disabled {
+          color: @calendar-disabled-color;
+        }
+      }
+
+      &--selected,
+      &--start,
+      &--end {
+        background: #0053db;
+        color: #fff;
+        border-radius: 4px;
+      }
+
+      &--start {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &--end {
+        border-radius: 0 4px 4px 0;
+      }
+
+      &--centre {
+        border-radius: 0;
+        background-color: @calendar-centre-color;
+      }
+
+      &--disabled {
+        color: @calendar-disabled-color;
+        cursor: default;
+      }
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid #e7e7e7;
+    padding: 16px;
   }
 }

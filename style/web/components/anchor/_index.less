@@ -9,11 +9,13 @@
 .@{prefix}-anchor {
   .reset;
 
+  --td-anchor-space-base: var(--td-size-6);
+
   position: relative;
   background: @anchor-bg-color;
   width: @anchor-width-default;
   color: @anchor-text-color-default;
-  font-size: @anchor-font-size;
+  font: @anchor-font;
 
   //锚点 item 被选中
   .@{prefix}-is-active > a {
@@ -48,34 +50,29 @@
   //锚点item
   &__item {
     padding: @anchor-item-padding;
+
+    --level: 1;
+
+    padding-left: calc(var(--level) * var(--td-anchor-space-base));
     display: flex;
     flex-direction: column;
 
     &.@{prefix}-is-active {
       font-weight: 500;
     }
-
-    .@{prefix}-anchor__item {
-      padding: @anchor-sub-item-padding;
-    }
   }
 
   &__item-link {
     display: inline-block;
     position: relative;
-    line-height: @anchor-item-line-height;
-    max-height: @anchor-item-max-height;
     overflow: hidden;
     word-break: break-all;
     color: @anchor-text-color-default;
     text-decoration: none;
     text-align: justify;
-    margin-right: -4px;
-    padding-right: 10px;
   }
 
   a {
-    line-height: @anchor-item-height;
     transition: color @anim-duration-base linear;
   }
 
@@ -99,8 +96,7 @@
 
 .@{prefix}-anchor__target {
   cursor: pointer;
-  font-size: @anchor-font-size;
-  line-height: @anchor-item-height;
+  font: @anchor-font;
   color: @anchor-text-color-default;
 
   @keyframes fadeOut {
@@ -126,8 +122,8 @@
     display: inline-block;
   }
 
-  //激活锚点 滚动到指定锚点 标题后边出现定位提示
-  //target属性参考文档https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target
+  // 激活锚点 滚动到指定锚点 标题后边出现定位提示
+  //target属性参考文档 https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target
   &:target::after {
     display: inline-block;
     content: "";

@@ -15,7 +15,7 @@ export default function randomMovingStyle() {
 }%;}
     50% {left: ${align === 1 ? leftTopLimit : align === 3 ? rightLimit : 100 - p1}%; top: ${
   align === 0 ? bottomLimit : align === 2 ? leftTopLimit : 100 - p1
-}%;}
+}%; transform: translateX(-100%);}
     75% {left: ${align === 0 ? leftTopLimit : align === 2 ? rightLimit : p1}%; top: ${
   align === 1 ? leftTopLimit : align === 3 ? bottomLimit : 100 - p1
 }%;}

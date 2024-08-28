@@ -139,7 +139,7 @@
 @keyframes @fade-zoom-in {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.8);
+    transform: translate(-50%, -50%) scale(.6);
   }
 
   100% {
@@ -156,6 +156,20 @@
 
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.8);
+    transform: translate(-50%, -50%) scale(.6);
   }
+}
+
+@keyframes t-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.@{prefix}-icon-loading {
+  animation: t-spin 1s linear infinite;
 }

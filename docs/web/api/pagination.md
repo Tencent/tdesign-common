@@ -47,3 +47,8 @@ spline: navigation
 更小尺寸的迷你风格分页控件，适合内嵌在其他组件中分页导航使用。
 
 {{ simple-mini }}
+
+### PaginationMini 子组件
+最小单元分页控件，适合内嵌在其他空间较小的组件中使用。
+
+{{ pagination-mini }}

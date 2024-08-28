@@ -4,6 +4,7 @@ export default function observe(
   callback: Function,
   marginBottom: number,
 ): IntersectionObserver {
+  if (typeof window === 'undefined') return null;
   if (!window || !window.IntersectionObserver) {
     callback();
     return null;

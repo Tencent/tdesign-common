@@ -15,6 +15,28 @@
   height: @range-input-height-default;
   .range-input-base();
 
+  // borderless mode
+  &--borderless:not(.@{prefix}-is-focused) {
+    border-color: transparent;
+    transition: @range-input-inner-transition;
+
+    &:hover {
+      border-color: @component-border;
+      cursor: pointer;
+    }
+
+    &.@{prefix}-is-disabled {
+      border: none;
+      background-color: @range-input-bg-color-disabled;
+    }
+  }
+
+  &.@{prefix}-is-focused {
+    z-index: 1;
+    border-color: @range-input-border-color-default-focus;
+    box-shadow: @range-input-box-shadow-focus;
+  }
+
   // 输入框状态
   .range-input-status(success);
   .range-input-status(warning);
@@ -29,46 +51,46 @@
   &.@{prefix}-size-l {
     height: @range-input-height-l;
     font: @range-input-font-l;
-    padding-top: @spacer;
-    padding-bottom: @spacer;
+    padding-top: @comp-paddingTB-xs;
+    padding-bottom: @comp-paddingTB-xs;
 
     .@{prefix}-input {
-      padding: 0 8px;
+      padding: 0 @comp-margin-s;
     }
   }
 
   &.@{prefix}-size-s {
-    padding: 2px 4px;
+    padding: @comp-paddingTB-xxs @comp-margin-xs;
     height: @range-input-height-s;
     font: @range-input-font-s;
-  }
-
-  &.@{prefix}-is-focused {
-    z-index: 1;
-    border-color: @range-input-border-color-default-focus;
-    box-shadow: @range-input-box-shadow-focus;
   }
 
   &__inner {
     height: 100%;
     display: flex;
     align-items: center;
-    gap: @spacer;
+    gap: @range-input-inner-gap;
 
     .@{prefix}-input__wrap {
       height: 100%;
       border-radius: @border-radius-small;
     }
 
+    // 避免 label 文字被容器内其他元素挤压导致过早换行
+    & > .@{prefix}-range-input__prefix {
+      flex-shrink: 0;
+    }
+
     .@{prefix}-input {
-      padding: 0 4px;
+      padding: @range-input-inner-padding;
       height: 100%;
       border: 0;
       box-shadow: none;
       font-size: inherit;
+      border-radius: @border-radius-small;
 
       &:hover {
-        background-color: var(--td-bg-color-container-hover);
+        background-color: @bg-color-container-hover;
       }
 
       &__inner {
@@ -78,7 +100,7 @@
       }
 
       &.@{prefix}-is-focused {
-        background-color: var(--td-bg-color-component);
+        background-color: @bg-color-component;
       }
     }
   }
@@ -114,11 +136,11 @@
 
 .@{prefix}-range-input__prefix,
 .@{prefix}-range-input__suffix {
-
-  .@{prefix}-icon {
-    transition: color .2s linear;
+  > .t-icon {
+    transition: color @anim-duration-base linear;
     font-size: @range-input-inner-icon-font-size;
     color: @text-color-placeholder;
+    flex-shrink: 0;
   }
 }
 
@@ -131,13 +153,14 @@
       box-shadow: @range-input-box-shadow-focus;
 
       // 只有time-picker、date-picker特殊使用的suffix icon需要改变颜色 若后续有新增组件继续扩展这个枚举
-      .@{prefix}-icon-time,.@{prefix}-icon-calendar {
+      .t-icon-time,
+      .t-icon-calendar {
         color: @range-input-border-color-default-focus;
       }
 
       .@{prefix}-input {
         &.@{prefix}-is-focused {
-          background-color: var(--td-bg-color-component);
+          background-color: @bg-color-component;
         }
       }
     }

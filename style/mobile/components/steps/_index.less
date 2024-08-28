@@ -46,7 +46,7 @@
             width: @step-horizontal-icon-width;
             height: @step-horizontal-icon-width;
             box-sizing: border-box;
-            border: 1px solid @primary-color;
+            border: 1px solid @brand-color;
             border-radius: 50%;
             margin-top: 1px;
           }
@@ -59,7 +59,7 @@
           content: "";
           display: block;
           height: 1px;
-          background-color: @primary-color-5;
+          background-color: @brand-color-5;
           position: absolute;
           width: calc(100% - @step-horizontal-icon-width);
           left: calc(50% + @step-horizontal-icon-width / 2);
@@ -138,7 +138,7 @@
             width: @step-dot-anchor-width;
             height: @step-dot-anchor-width;
             box-sizing: border-box;
-            border: 1px solid @primary-color;
+            border: 1px solid @brand-color;
             border-radius: 50%;
             margin-top: 1px;
           }
@@ -167,23 +167,23 @@
 
   &--readonly {
     .@{prefix}-step-title {
-      color: @text-level-4-color;
+      color: @text-color-disabled;
     }
     .@{prefix}-step-description {
-      color: @text-level-4-color;
+      color: @text-color-disabled;
     }
 
     .@{prefix}-step--error,
     .@{prefix}-step--process,
     .@{prefix}-step--finish {
       .@{prefix}-step-description {
-        color: @text-level-3-color;
+        color: @text-color-placeholder;
       }
     }
 
     .@{prefix}-step--finish {
       .@{prefix}-step-title {
-        color: @text-level-1-color;
+        color: @text-color-primary;
       }
     }
   }

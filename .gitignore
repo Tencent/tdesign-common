@@ -21,6 +21,8 @@ package-lock.json
 **/package-lock.json
 yarn.lock
 **/yarn.lock
+pnpm-lock.yaml
+**/pnpm-lock.yaml
 **/node_modules
 **/dist
 dist/
@@ -37,3 +39,7 @@ temp*
 # test
 coverage
 test-report.html
+
+# lint
+.eslintcache
+.stylelintcache

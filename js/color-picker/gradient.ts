@@ -1,3 +1,5 @@
+import isString from 'lodash/isString';
+import isNull from 'lodash/isNull';
 /* eslint-disable no-param-reassign */
 /**
  * 用于反解析渐变字符串为对象
@@ -14,7 +16,7 @@ import tinyColor from 'tinycolor2';
 const combineRegExp = (regexpList: (string | RegExp)[], flags: string): RegExp => {
   let source = '';
   for (let i = 0; i < regexpList.length; i++) {
-    if (typeof regexpList[i] === 'string') {
+    if (isString(regexpList[i])) {
       source += regexpList[i];
     } else {
       source += (regexpList[i] as RegExp).source;
@@ -52,7 +54,8 @@ const generateRegExp = (): RegExpLib => {
   // Note any variables with "Capture" in name include capturing bracket set(s).
   const searchFlags = 'gi'; // ignore case for angles, "rgb" etc
   const rAngle = /(?:[+-]?\d*\.?\d+)(?:deg|grad|rad|turn)/; // Angle +ive, -ive and angle types
-  const rSideCornerCapture = /to\s+((?:(?:left|right|top|bottom)(?:\s+(?:top|bottom|left|right))?))/; // optional 2nd part
+  // optional 2nd part
+  const rSideCornerCapture = /to\s+((?:(?:left|right|top|bottom)(?:\s+(?:top|bottom|left|right))?))/;
   const rComma = /\s*,\s*/; // Allow space around comma.
   const rColorHex = /#(?:[a-f0-9]{6}|[a-f0-9]{3})/; // 3 or 6 character form
   const rDigits3 = /\(\s*(?:\d{1,3}\s*,\s*){2}\d{1,3}\s*\)/;
@@ -106,7 +109,7 @@ const parseGradient = (regExpLib: RegExpLib, input: string) => {
   regExpLib.gradientSearch.lastIndex = 0;
 
   const matchGradient = regExpLib.gradientSearch.exec(input);
-  if (matchGradient !== null) {
+  if (!isNull(matchGradient)) {
     result = {
       original: matchGradient[0],
       colorStopList: [],
@@ -133,7 +136,7 @@ const parseGradient = (regExpLib: RegExpLib, input: string) => {
 
     // Loop though all the color-stops.
     matchColorStop = regExpLib.colorStopSearch.exec(matchGradient[4]);
-    while (matchColorStop !== null) {
+    while (!isNull(matchColorStop)) {
       stopResult = {
         color: matchColorStop[1],
       };

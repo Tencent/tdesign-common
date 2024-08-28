@@ -12,10 +12,10 @@
 // 如：@button-line-height-s
 
 // color
-@alert-success-bg-color: @success-color-2;
+@alert-success-bg-color: @success-color-focus;
 @alert-info-bg-color: @brand-color-focus;
-@alert-warning-bg-color: @warning-color-2;
-@alert-error-bg-color: @error-color-2;
+@alert-warning-bg-color: @warning-color-focus;
+@alert-error-bg-color: @error-color-focus;
 @alert-title-color: @text-color-primary;
 @alert-description-color: @text-color-secondary;
 
@@ -25,19 +25,29 @@
 @alert-error-icon-color: @error-color;
 
 @alert-close-color: @text-color-secondary;
+@alert-close-color-hover: @text-color-primary;
 
-@alert-success-trigger-color: @success-color-2;
+@alert-success-trigger-color: @success-color-focus;
 @alert-info-trigger-color: @brand-color;
-@alert-warning-trigger-color: @warning-color-2;
-@alert-error-trigger-color: @error-color-2;
+@alert-warning-trigger-color: @warning-color-focus;
+@alert-error-trigger-color: @error-color-focus;
 
 @alert-success-trigger-active-color: @success-color;
 @alert-info-trigger-active-color: @brand-color;
 @alert-warning-trigger-active-color: @warning-color;
 @alert-error-trigger-active-color: @error-color;
 
-// 间距
-@alert-padding: 14px 24px;
-
 // size
-@alert-icon-size: 20px;
+@alert-font-size: @font-size-base;
+@alert-line-height: @text-line-height-base;
+@alert-icon-size: @alert-line-height;
+@alert-close-size: calc(@alert-line-height - 2px);
+
+// 间距
+@alert-padding: @comp-paddingTB-l @comp-paddingLR-xl;
+@alert-operation-padding: 0 @comp-paddingLR-s;
+@alert-margin-left: @comp-margin-s;
+@alert-close-margin-left: @comp-margin-l;
+@alert-close-padding: calc((@alert-line-height - @alert-close-size) / 2 ) 0;
+@alert-description-margin-top: @comp-margin-s;
+@alert-collapse-margin-top: @comp-margin-s;

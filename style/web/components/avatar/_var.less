@@ -3,9 +3,9 @@
 @avatar-text-color: @text-color-brand;
 
 //头像大小
-@avatar-size-small: 24px;
-@avatar-size-medium: 32px;
-@avatar-size-large: 40px;
+@avatar-size-small: @comp-size-xs;
+@avatar-size-medium: @comp-size-m;
+@avatar-size-large: @comp-size-xl;
 
 //字体
 @avatar-font-small: @font-size-base;
@@ -13,9 +13,9 @@
 @avatar-font-large: @font-size-xl;
 
 //图标
-@avatar-icon-small: @icon-default;
-@avatar-icon-medium: 20px;
-@avatar-icon-large: @icon-l;
+@avatar-icon-small: @comp-size-xxxs;
+@avatar-icon-medium: @comp-size-xxs;
+@avatar-icon-large: @comp-size-xs;
 
 //边框
 @avatar-border-radius-circle: @border-radius-circle;
@@ -23,9 +23,9 @@
 @avatar-border-color: @bg-color-container;
 
 //组合头像偏移量
-@avatar-group-offset-small: -4px;
-@avatar-group-offset-medium: -6px;
-@avatar-group-offset-large: -8px;
+@avatar-group-offset-small: calc(0px - @size-2);
+@avatar-group-offset-medium: calc(0px - @size-3);
+@avatar-group-offset-large: calc(0px - @size-4);
 
 //z-index
 @avatar-group-init-zIndex: 50;

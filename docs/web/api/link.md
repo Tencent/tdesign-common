@@ -35,7 +35,7 @@ spline: base
 
 ### 提示不同状态的链接
 
-在`default、primary、success、warming、danger`不同状态下，可提供对应的链接主题色。
+在`default、primary、success、warning、danger`不同状态下，可提供对应的链接主题色。
 
 {{ theme }}
 

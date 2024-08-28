@@ -7,7 +7,8 @@
 @import "../../mixins/_reset.less";
 
 .button-attr-color(@theme, @attr, @ghost: false) {
-  &:hover {
+  &:hover,
+  &:focus-visible {
     @{attr}: @@theme-hover;
   }
 
@@ -45,12 +46,13 @@
   text-decoration: none;
 
   .@{prefix}-button__text,
-  .@{prefix}-icon {
+  .t-icon {
     position: relative;
     z-index: 1;
+    display: inline-flex;
   }
 
-  .@{prefix}-icon {
+  .t-icon {
     font-size: @btn-icon-size-default;
   }
 
@@ -58,7 +60,7 @@
     font-size: @btn-loading-size;
   }
 
-  .@{prefix}-icon + .@{prefix}-button__text:not(:empty) {
+  .t-icon + .@{prefix}-button__text:not(:empty) {
     margin-left: @btn-icon-text-margin-left;
   }
 
@@ -300,11 +302,6 @@
     .button-size(@btn-height-l , @btn-font-l, @btn-icon-size-l, @btn-padding-horizontal-l);
   }
 
-  &.@{prefix}-size-full-width {
-    display: block;
-    width: 100%;
-  }
-
   &--shape-square {
     width: @btn-height-default;
     padding: 0;
@@ -338,7 +335,7 @@
     text-align: center;
     border-radius: @btn-shape-border-radius-default;
 
-    .@{prefix}-icon {
+    .t-icon {
       font-size: @btn-icon-size-default;
     }
 
@@ -356,6 +353,11 @@
       padding: 0;
       border-radius: @btn-shape-border-radius-l;
     }
+  }
+
+  &.@{prefix}-size-full-width {
+    display: flex;
+    width: 100%;
   }
 }
 

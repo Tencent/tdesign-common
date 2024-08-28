@@ -1,15 +1,17 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
+import 'dayjs/locale/zh-cn';
+
 export default {
   pagination: {
     itemsPerPage: '{size} 条/页',
     jumpTo: '跳至',
     page: '页',
-    total: '共 {total} 项数据',
+    total: '共 {total} 条数据',
   },
   cascader: {
     empty: '暂无数据',
-    loadingText: '',
+    loadingText: '加载中',
     placeholder: '请选择',
   },
   calendar: {
@@ -22,7 +24,7 @@ export default {
     today: '今天',
     thisMonth: '本月',
     week: '一,二,三,四,五,六,日',
-    cellMonth: '一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月',
+    cellMonth: '1 月,2 月,3 月,4 月,5 月,6 月,7 月,8 月,9 月,10 月,11 月,12 月',
   },
   transfer: {
     title: '{checked} / {total} 项',
@@ -30,6 +32,7 @@ export default {
     placeholder: '请输入关键词搜索',
   },
   timePicker: {
+    dayjsLocale: 'zh-cn',
     now: '此刻',
     confirm: '确定',
     anteMeridiem: '上午',
@@ -84,13 +87,29 @@ export default {
     placeholder: '请选择',
   },
   datePicker: {
+    dayjsLocale: 'zh-cn',
     placeholder: {
       date: '请选择日期',
       month: '请选择月份',
       year: '请选择年份',
+      quarter: '请选择季度',
+      week: '请选择周',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
-    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
+    months: [
+      '1 月',
+      '2 月',
+      '3 月',
+      '4 月',
+      '5 月',
+      '6 月',
+      '7 月',
+      '8 月',
+      '9 月',
+      '10 月',
+      '11 月',
+      '12 月',
+    ],
     quarters: ['一季度', '二季度', '三季度', '四季度'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -111,15 +130,17 @@ export default {
     now: '当前',
   },
   upload: {
-    sizeLimitMessage: '图片大小不能超过 {sizeLimit}',
+    sizeLimitMessage: '文件大小不能超过 {sizeLimit}',
     cancelUploadText: '取消上传',
     triggerUploadText: {
       fileInput: '选择文件',
       image: '点击上传图片',
       normal: '点击上传',
-      reupload: '重新上传',
-      continueUpload: '继续上传',
+      // 选择文件和上传文件是 2 个步骤，文本需明确步骤
+      reupload: '重新选择',
+      continueUpload: '继续选择',
       delete: '删除',
+      uploading: '上传中',
     },
     dragger: {
       dragDropText: '释放鼠标',
@@ -157,6 +178,7 @@ export default {
       boolean: '${name}数据类型必须是布尔类型',
       number: '${name}必须是数字',
     },
+    colonText: '：',
   },
   input: {
     placeholder: '请输入',
@@ -178,4 +200,52 @@ export default {
     recentColorTitle: '最近使用颜色',
     clearConfirmText: '确定清空最近使用的颜色吗？',
   },
-};
+  guide: {
+    finishButtonProps: {
+      content: '完成',
+      theme: 'primary',
+    },
+    nextButtonProps: {
+      content: '下一步',
+      theme: 'primary',
+    },
+    skipButtonProps: {
+      content: '跳过',
+      theme: 'default',
+    },
+    prevButtonProps: {
+      content: '上一步',
+      theme: 'default',
+    },
+  },
+  image: {
+    errorText: '图片无法显示',
+    loadingText: '图片加载中',
+  },
+  imageViewer: {
+    errorText: '图片加载失败，可尝试重新加载',
+    mirrorTipText: '镜像',
+    rotateTipText: '旋转',
+    originalSizeTipText: '原始大小',
+  },
+  typography: {
+    expandText: '展开',
+    collapseText: '收起',
+    copiedText: '复制成功',
+  },
+  rate: {
+    rateText: ['极差', '失望', '一般', '满意', '惊喜'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '建设中',
+      success: '成功',
+      fail: '失败',
+      empty: '暂无数据',
+      networkError: '网络错误',
+    },
+  },
+  descriptions: {
+    colonText: '：',
+  },
+} as const;

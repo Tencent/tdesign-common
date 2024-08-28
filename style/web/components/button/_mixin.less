@@ -24,10 +24,10 @@
 .button-size(@btn-height, @btn-font-size, @btn-icon-size, @padding-horizontal) {
   height: @btn-height;
   font: @btn-font-size;
-  padding-left: @padding-horizontal - @btn-border-width;
-  padding-right: @padding-horizontal - @btn-border-width;
+  padding-left: calc(@padding-horizontal - @btn-border-width);
+  padding-right: calc(@padding-horizontal - @btn-border-width);
 
-  .@{prefix}-icon,
+  .t-icon,
   .@{prefix}-loading {
     font-size: @btn-icon-size;
   }

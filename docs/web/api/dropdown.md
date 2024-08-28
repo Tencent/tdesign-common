@@ -2,7 +2,7 @@
 title: Dropdown 下拉菜单
 description: 用于承载过多的操作集合，通过下拉拓展的形式，收纳更多的操作。
 isComponent: true
-usage: { title: '', description: '' }
+usage: { title: "", description: "" }
 spline: navigation
 ---
 
@@ -47,3 +47,21 @@ spline: navigation
 下拉菜单支持定义最大高度。
 
 {{ long }}
+
+### 自定义主题的下拉菜单
+
+下拉菜单的菜单项都支持自定义主题，根据具体场景使用。
+
+{{ theme }}
+
+### 向左展开的下拉菜单
+
+下拉菜单支持向左侧展开。
+
+{{ left }}
+
+### 带图标的下拉菜单
+
+下拉菜单支持配置菜单项的前置图标。
+
+{{ icon }}

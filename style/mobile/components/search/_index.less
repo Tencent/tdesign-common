@@ -80,7 +80,7 @@
     transform: translateX(-100%) translateY(-50%);
     font-size: 24px;
     line-height: 1;
-    color: @text-level-3-color;
+    color: @text-color-placeholder;
   }
 
   &__label-icon-search {
@@ -95,7 +95,7 @@
     right: 12px;
     font-size: 24px;
     line-height: 1;
-    color: @text-level-3-color;
+    color: @text-color-placeholder;
   }
 
   &__cancel-button {
@@ -104,7 +104,7 @@
     color: @search-cancel-button-text-color;
     padding: @search-cancel-button-padding;
     margin-left: @search-cancel-button-margin-left;
-    margin-right: -@search-cancel-button-margin-left;
+    margin-right: calc(-@search-cancel-button-margin-left);
   }
 
   &.@{prefix}-is-focused {

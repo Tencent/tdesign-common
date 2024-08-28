@@ -37,10 +37,6 @@
     // 默认锚点
     &.@{prefix}-steps--default-anchor {
 
-      .@{prefix}-steps-item__content {
-        margin-top: @steps-item-content-margin-top;
-      }
-
       .@{prefix}-steps-item__title {
         width: fit-content;
         margin-bottom: @steps-item-title-margin-bottom;
@@ -48,13 +44,12 @@
 
       .@{prefix}-steps-item__icon {
         &__number {
-          width: steps-circle-width;
+          width: @steps-circle-width;
           height: @steps-circle-height;
-          margin-top: @steps-item-icon-number-margin-top;
         }
 
-        & > .@{prefix}-icon {
-          font-size: @steps-item-t-icon-font-size;
+        & > .t-icon {
+          font-size: @steps-item-t-icon-font-size-default;
         }
       }
 
@@ -121,7 +116,6 @@
     &.@{prefix}-steps--default-anchor {
 
       .@{prefix}-steps-item__content {
-        margin-top: @steps-item-content-margin-top-vertical;
         margin-left: @steps-item-content-margin-left-vertical;
       }
 
@@ -140,6 +134,10 @@
 
       .@{prefix}-steps-item {
         margin-bottom: 0;
+
+        .@{prefix}-steps-item__title {
+          margin-bottom: @steps-item-title-margin-bottom;
+        }
 
         &--finish {
           .dot-anchor-status(finish);

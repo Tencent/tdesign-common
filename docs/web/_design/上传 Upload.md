@@ -1,10 +1,6 @@
 # 上传 Upload
 
 上传组件允许用户传输文件或提交自己的内容。
-
-
-
-
 ### 基础上传
 
 ![基础控件](https://tdesign.gtimg.com/site/design/images/基础控件-1848714.jpg)

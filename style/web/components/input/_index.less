@@ -6,7 +6,11 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_text.less";
+
 @import "../../mixins/_reset.less";
+
+@import "../../utilities/_tips.less";
 
 .@{prefix}-input {
   .reset;
@@ -17,7 +21,22 @@
   height: @input-height-default;
   .input-base();
 
-  line-height: @input-height-default; // TODO: 需要调整目前用line height撑开的方式
+  // borderless mode
+  &--borderless:not(&--focused) {
+    border-color: transparent;
+    transition: @input-inner-transition;
+
+    &:hover {
+      border-color: @component-border;
+      background-color: @bg-color-container-hover;
+      cursor: pointer;
+    }
+
+    &.@{prefix}-is-disabled {
+      border: none;
+      background-color: @input-bg-color-disabled;
+    }
+  }
 
   &--focused {
     border-color: @input-border-color-default-focus;
@@ -41,6 +60,7 @@
     font: inherit;
     background-color: transparent;
     box-sizing: border-box;
+    .text-ellipsis();
 
     &::placeholder {
       color: @input-placeholder-color;
@@ -48,6 +68,12 @@
 
     &:placeholder-shown {
       text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    // 隐藏Edge浏览器默认的密码框样式
+    &[type="password"]::-ms-reveal {
+      display: none;
     }
 
     &[type="search"]::-webkit-search-decoration,
@@ -55,6 +81,10 @@
     &[type="search"]::-webkit-search-results-button,
     &[type="search"]::-webkit-search-results-decoration {
       appearance: none;
+    }
+
+    &.@{prefix}-input--soft-hidden {
+      width: 0;
     }
   }
   // 底部的额外消息
@@ -100,47 +130,59 @@
   &.@{prefix}-size-l {
     height: @input-height-l;
     font: @input-font-l;
-    padding-top: @spacer;
-    padding-bottom: @spacer;
+    padding: @input-padding-l;
   }
 
   &.@{prefix}-size-s {
     height: @input-height-s;
     font: @input-font-s;
-    padding-top: (@spacer / 4);
-    padding-bottom: (@spacer / 4);
   }
 
   .@{prefix}-input__prefix,
   .@{prefix}-input__suffix {
-    > .@{prefix}-icon {
+    > .t-icon {
       font-size: @input-inner-icon-font-size;
     }
   }
 
   .@{prefix}-input__prefix {
-    > .@{prefix}-icon {
+    > .t-icon {
+      font-size: @icon-default;
       color: @input-inner-prefix-icon-color;
+    }
+
+    &:not(:empty) {
+      margin-right: @comp-margin-s;
     }
   }
 
   .@{prefix}-input__suffix {
-    > .@{prefix}-icon {
+    > .t-icon {
       color: @input-inner-suffix-icon-color;
+      transition: all @anim-duration-base linear;
+
+      &:hover {
+        color: @input-inner-suffix-icon-color-hover;
+        transition: all @anim-duration-base linear;
+      }
+    }
+
+    &:not(:empty) {
+      margin-left: @comp-margin-s;
     }
   }
 
   // 输入框被聚焦
   &.@{prefix}-is-focused {
     .@{prefix}-input__prefix {
-      > .@{prefix}-icon {
+      > .t-icon {
         color: @input-border-color-default-focus;
       }
     }
     .@{prefix}-input__suffix {
       // 只有time-picker、date-picker特殊使用的suffix icon需要改变颜色 若后续有新增组件继续扩展这个枚举
-      > .@{prefix}-icon-time,
-      .@{prefix}-icon-calendar {
+      > .t-icon-time,
+      .t-icon-calendar {
         color: @input-border-color-default-focus;
       }
     }
@@ -261,7 +303,7 @@
   position: absolute;
 }
 
-.@{prefix}-input__tips--normal {
+.@{prefix}-input__tips--default {
   color: @input-text-color-tips;
 }
 
@@ -288,7 +330,8 @@
 .@{prefix}-input__input-pre {
   position: absolute;
   visibility: hidden;
-  white-space: nowrap;
+  white-space: pre;
+  display: block;
 }
 
 .@{prefix}-input--auto-width {
@@ -301,4 +344,8 @@
   font: @input-font;
   color: @input-limit-color;
   background: @input-bg-color-default;
+
+  &.@{prefix}-is-disabled {
+    background: @input-bg-color-disabled;
+  }
 }

@@ -23,12 +23,9 @@
 @msg-close-bg-color-hover: @bg-color-container-hover;
 @msg-close-bg-color-active: @bg-color-container-active;
 
-// 位置
-@msg-icon-position-right: @spacer-4;
-
 // 尺寸
-@msg-min-width: 400px;
-@msg-icon-size: @font-size-xl;
+@msg-icon-size: calc(@font-size-base + 6px);
+@msg-close-size: calc(@font-size-base + 2px);
 @msg-border-width: 1px;
 
 // 圆角
@@ -39,14 +36,13 @@
 
 //字号
 @msg-font-default: @font-body-medium;
-@msg-close-font-size: @font-size-l;
 
 // 间距
-@msg-padding-horizontal-default: @spacer-2;
-@msg-padding-vertical-default: 13px;
-@msg-icon-margin-right: @spacer;
-@msg-inner-margin-right: @spacer-3;
-@msg-list-margin-bottom: @spacer-1;
+@msg-padding-horizontal-default: @comp-paddingLR-l;
+@msg-padding-vertical-default: @comp-paddingTB-m;
+@msg-icon-margin-right: @comp-margin-s;
+@msg-close-icon-margin-left: @comp-margin-xxl;
+@msg-list-margin-bottom: @comp-margin-s;
 
 // Angular Icon 组件会多一层容器，这层容器用 [data-t-icon] 命中
-@msg-icon-selector: ~"> .@{prefix}-icon, > [data-@{prefix}-icon] > .@{prefix}-icon, .@{prefix}-loading";
+@msg-icon-selector: ~"> .t-icon, > [data-@{prefix}-icon] > .t-icon, .@{prefix}-loading";

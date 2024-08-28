@@ -1,11 +1,19 @@
+export type PlainObject = { [key: string]: any };
+
 export type OptionData = {
   label?: string;
   value?: string | number;
-} & { [key: string]: any };
+} & PlainObject;
 
-export type TreeOptionData = {
-  children?: Array<TreeOptionData>;
-} & OptionData;
+export type TreeOptionData<T = string | number> = {
+  children?: Array<TreeOptionData<T>> | boolean;
+  /** option label content */
+  label?: any;
+  /** option search text */
+  text?: string;
+  /** option value */
+  value?: T;
+} & PlainObject;
 
 export type SizeEnum = 'small' | 'medium' | 'large';
 
@@ -27,3 +35,13 @@ export enum EKeyboardDirection {
   right = 39,
   down = 40,
 }
+
+export const ARROW_DOWN_REG = /^ArrowDown$/i;
+export const ARROW_UP_REG = /^ArrowUp$/i;
+export const ESCAPE_REG = /^Escape$/i;
+export const SPACE_REG = /^Space$/i;
+export const ENTER_REG = /^Enter$/i;
+export const SHIFT_REG = /^(Shift|ShiftLeft|ShiftRight)$/i;
+export const CLEAR_REG = /^KeyC$/i;
+export const ALL_REG = /^(KeyA|KeyL)$/i;
+export const CHECKED_CODE_REG = /^(Enter|Space)$/i;

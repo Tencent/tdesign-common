@@ -15,6 +15,9 @@
 @dialog-border-color: transparent;
 @dialog-bg-color: @bg-color-container;
 @dialog-header-text-color: @text-color-primary;
+@dialog-header-bg-color-fullscreen: @bg-color-secondarycontainer;
+@dialog-close-icon-fullscreen-hover: @bg-color-secondarycontainer-hover;
+@dialog-close-icon-fullscreen-active: @bg-color-secondarycontainer-active;
 @dialog-body-text-color: @text-color-secondary;
 @dialog-close-icon-hover: @bg-color-container-hover;
 @dialog-close-icon-active: @bg-color-container-active;
@@ -27,26 +30,31 @@
 
 // 字体
 @dialog-header-font: @font-title-medium;
+@dialog-header-weight: 600;
 @dialog-body-text-font: @font-body-medium;
 
 // 尺寸
 @dialog-width: 480px;
-@dialog-header-height: 50px;
-@dialog-icon-size: 24px;
-@dialog-close-icon-size: 20px;
+@dialog-header-height-fullscreen: @comp-size-xxxl;
+@dialog-icon-size: calc(@font-size-l + 8px);
+@dialog-close-icon-size: calc(@font-size-l + 4px);
+@dialog-footer-height-fullscreen: @comp-size-xxxxl;
 
 // 间距
-@dialog-spacer: @spacer-4;
-@dialog-default-spacer: 28px @spacer-4 @spacer-4 @spacer-4;
-@dialog-primary-spacer: @dialog-spacer;
-@dialog-parimary-body-spacer: @dialog-spacer 28px @dialog-spacer 28px;
+@dialog-spacer: @comp-paddingTB-xxl @comp-paddingLR-xxl;
+@dialog-default-spacer: @comp-paddingTB-xxl @comp-paddingLR-xxl;
 @dialog-default-padding: @dialog-spacer;
-@dialog-header-icon-margin-right: @spacer;
-@dialog-body-padding: @spacer-2 0 0;
-@dialog-body-icon-padding: @spacer-2 0 @spacer-3 @spacer-4;
-@dialog-footer-button-margin-left: @spacer;
-@dialog-footer-padding: @spacer-2 0 0;
-@dialog-word-spacing: -6px;
+@dialog-header-icon-margin-right: @comp-margin-s;
+@dialog-header-icon-margin-top: @size-1;
+@dialog-header-content-margin-right: @comp-margin-s;
+@dialog-header-padding-fullscreen: 0 @comp-paddingLR-xxl;
+@dialog-closebtn-padding: @comp-paddingTB-xxs @comp-paddingLR-xxs;
+@dialog-body-padding: @comp-paddingTB-l 0;
+@dialog-body-padding-fullscreen: @comp-paddingTB-xl @comp-paddingLR-xxl;
+@dialog-body-icon-padding: @comp-paddingTB-l 0;
+@dialog-footer-button-margin-left: @comp-margin-s;
+@dialog-footer-padding: @comp-paddingTB-l 0 0;
+@dialog-footer-padding-fullscreen: 0 @comp-paddingLR-xxl @comp-paddingTB-xxl;
 
 // 边框
 @dialog-border: 1px solid @border-level-1-color;
@@ -61,6 +69,5 @@
 
 // 动画
 @dialog-anim-duration: @anim-duration-base;
-@dialog-anim-time-fn-enter: cubic-bezier(.08, .82, .17, 1);
-@dialog-anim-time-fn-exit: cubic-bezier(.6, .04, .98, .34);
-@dialog-anim-time-fn-fade: cubic-bezier(.55, 0, .55, .2);
+@dialog-anim-time-fn-enter: @anim-time-fn-easing;
+@dialog-anim-time-fn-exit: @anim-time-fn-easing;

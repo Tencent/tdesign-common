@@ -1,3 +1,5 @@
+import isString from 'lodash/isString';
+import isNumber from 'lodash/isNumber';
 import log from '../log/log';
 
 export function fillZero(length: number) {
@@ -9,7 +11,7 @@ export function fillZero(length: number) {
  */
 export function isInputNumber(num: number | string): boolean {
   if (!num) return true;
-  if (typeof num === 'number') return Number.isNaN(num);
+  if (isNumber(num)) return !Number.isNaN(num);
   const r = /^[0-9|e|E|-]+\.*[0-9|e|E|-]*$/.test(num);
   if (!r) return false;
   // only allow one [.e] and two [-]
@@ -136,14 +138,33 @@ function compareLargeDecimalNumber(num1: string, num2: string) {
 }
 
 /**
+ * 2e3 => 2000
+ * 0.2e3 => 200
+ */
+export function formatENumber(num: string): string {
+  const [num1, num2] = num.split('e');
+  if (!num2) return num;
+  const [integer, initDecimal = ''] = num.split('.');
+  const zeroCount = Number(num2);
+  const [decimal] = initDecimal.split('e');
+  if (zeroCount > decimal.length) {
+    const multipleZero = fillZero(zeroCount - decimal.length);
+    return num1.replace(/(^0+|\.)/g, '') + multipleZero;
+  }
+  const n1 = integer.replace(/^0+/, '') + decimal.slice(0, zeroCount);
+  const d2 = decimal.slice(zeroCount);
+  return d2 ? [n1, d2].join('.') : n1;
+}
+
+/**
  * 比较两个大数的大小
  */
 export function compareLargeNumber(
   num1: string,
   num2: string,
 ): 1 | -1 | 0 {
-  const [integer1, decimal1] = num1.split('.');
-  const [integer2, decimal2] = num2.split('.');
+  const [integer1, decimal1] = formatENumber(num1).split('.');
+  const [integer2, decimal2] = formatENumber(num2).split('.');
   const result = compareLargeIntegerNumber(integer1.replace('-', ''), integer2.replace('-', ''));
   const integer1IsNegative = integer1.includes('-');
   const integer2IsNegative = integer2.includes('-');
@@ -325,7 +346,7 @@ export function largeNumberToFixed(
   number: string | number, decimalPlaces: number = 0, largeNumber = true,
 ): string {
   if (!largeNumber) return Number(number).toFixed(decimalPlaces);
-  if (typeof number !== 'string') return String(number);
+  if (!isString(number)) return String(number);
   const [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {
@@ -340,27 +361,22 @@ export function largeNumberToFixed(
   if (num2.length < decimalPlaces) {
     decimalNumber += (fillZero(decimalPlaces - num2.length));
   } else {
-    decimalNumber = Number(num2[decimalPlaces]) >= 5
+    // 用于判断是否处于 1.08 这种小数为0开始的边界情况
+    const leadZeroNum = decimalNumber.match(/^0+/)?.[0].length;
+    const needAdded = Number(num2[decimalPlaces]) >= 5;
+    decimalNumber = needAdded
       ? largePositiveNumberAdd(decimalNumber, '1')
       : decimalNumber;
+    // 如果处于边界情况，计算后有误判的可能，如008 +1 误判为 8+1，需要手动补 0
+    if (
+      leadZeroNum
+      && needAdded
+      && leadZeroNum + decimalNumber.length >= decimalPlaces
+    ) {
+      decimalNumber = `${fillZero(
+        decimalPlaces - decimalNumber.length
+      )}${decimalNumber}`;
+    }
   }
   return [num1, decimalNumber].join('.');
-}
-
-/**
- * 2e3 => 2000
- * 0.2e3 => 200
- */
-export function formatENumber(num: string): string {
-  const [num1, num2] = num.split('e');
-  const [integer, initDecimal = ''] = num.split('.');
-  const zeroCount = Number(num2);
-  const [decimal] = initDecimal.split('e');
-  if (zeroCount > decimal.length) {
-    const multipleZero = fillZero(zeroCount - decimal.length);
-    return num1.replace(/(^0+|\.)/g, '') + multipleZero;
-  }
-  const n1 = integer.replace(/^0+/, '') + decimal.slice(0, zeroCount);
-  const d2 = decimal.slice(zeroCount);
-  return d2 ? [n1, d2].join('.') : n1;
 }

@@ -107,9 +107,10 @@
 
   &__status {
     display: flex;
-    margin-left: @form-status-margin-left;
-    > .@{prefix}-icon {
-      font-size: 20px;
+    margin: @form-status-margin;
+
+    > .t-icon {
+      font-size: @form-status-icon-size;
     }
 
     &-without-icon {
@@ -122,7 +123,7 @@
     }
 
     button + button {
-      margin-left: @form-status-margin-left;
+      margin-left: @form-status-button-margin;
     }
   }
 }
@@ -152,7 +153,7 @@
 
 .@{prefix}-input__extra {
   position: absolute;
-  bottom: -@form-item-help-line-height;
+  bottom: calc(0px - @form-item-help-line-height);
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -2,6 +2,7 @@
 title: RangeInput 范围输入框
 description: 用于输入范围文本。
 isComponent: true
+usage: { title: '', description: '' }
 spline: data
 ---
 

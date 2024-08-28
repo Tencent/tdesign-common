@@ -9,6 +9,7 @@
       .@{prefix}-select,
       .@{prefix}-radio-button,
       .@{prefix}-cascader,
+      .@{prefix}-range-input,
       .@{prefix}-textarea__inner {
         border-color: @@borderColor;
         @borderColor: "input-border-color-@{status}";
@@ -19,24 +20,23 @@
         }
 
         // 处理组件内icon颜色
-        .@{prefix}-icon,
+        .t-icon,
         .@{prefix}-fake-arrow {
           color: @@borderColor;
           @borderColor: "input-border-color-@{status}";
         }
       }
 
-      // TODO: 兼容目前未使用SelectInput重构的组件的样式 内部有t-input重构后可以去掉
-      .@{prefix}-cascader,
-      .@{prefix}-select {
-        .@{prefix}-input {
-          box-shadow: none;
-        }
-      }
-
       .@{prefix}-select {
         > .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
           color: @@borderColor;
+          @borderColor: "input-border-color-@{status}";
+        }
+      }
+
+      .@{prefix}-radio-button {
+        &:last-child {
+          border-right-color: @@borderColor;
           @borderColor: "input-border-color-@{status}";
         }
       }
@@ -64,7 +64,7 @@
 
 .input-status-icon(@status) {
   .@{prefix}-form__status {
-    .@{prefix}-icon {
+    .t-icon {
       color: @@iconColor;
       @iconColor: "form-color-@{status}";
     }

@@ -33,7 +33,7 @@
 
   .@{prefix}-icon + .@{prefix}-button__text:not(:empty),
   .@{prefix}-loading + .@{prefix}-button__text:not(:empty) {
-    margin-left: @spacer;
+    margin-left: calc(@spacer / 2);
   }
 
   // 主要按钮
@@ -44,22 +44,22 @@
     .button-attr-color("text-gray", color);
 
     &.@{prefix}-button--primary {
-      color: @text-anti-primary-color;
+      color: @text-color-anti;
       .button-attr-color("primary", background-color);
     }
 
     &.@{prefix}-button--success {
-      color: @text-anti-primary-color;
+      color: @text-color-anti;
       .button-attr-color("success", background-color);
     }
 
     &.@{prefix}-button--warning {
-      color: @text-anti-primary-color;
+      color: @text-color-anti;
       .button-attr-color("warning", background-color);
     }
 
     &.@{prefix}-button--danger {
-      color: @text-anti-primary-color;
+      color: @text-color-anti;
       .button-attr-color("danger", background-color);
     }
 

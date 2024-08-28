@@ -4,7 +4,7 @@ import { getIEVersion } from '../utils/helper';
 export default function circleAdapter(circleElem: HTMLElement) {
   let basicStyle = {};
 
-  if (!circleElem) {
+  if (!circleElem || typeof window === 'undefined') {
     return;
   }
 
@@ -16,10 +16,12 @@ export default function circleAdapter(circleElem: HTMLElement) {
   const isSafari = /Safari/.test(ua) && !/Chrome/.test(ua);
   // 判断是否为 iOS 下的微信和企业微信
   const isIosWechat = /(?=.*iPhone)[?=.*MicroMessenger]/.test(ua) && !/Chrome/.test(ua);
+
+  // 注意：chrome上调试mobile/ipad端时，loading出现异常，属于正常现象，不需要修改。
   if (isSafari || isIosWechat) {
     basicStyle = {
-      transformOrigin: '-1px -1px',
-      transform: `scale(${parseInt(fontSize, 10) / 14})`,
+      transformOrigin: '0px 0px',
+      transform: `scale(${parseInt(fontSize, 10) / 12})`,
     };
   }
   // 添加：判断是否为IE浏览器

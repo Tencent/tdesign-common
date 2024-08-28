@@ -59,3 +59,9 @@ spline: form
 如果只需要面板部分，可以通过使用`TimePickerPanel`来满足使用场景。
 
 {{ panel }}
+
+### 预设快捷时间选择
+
+可以通过`presets`设置。
+
+{{ presets }}

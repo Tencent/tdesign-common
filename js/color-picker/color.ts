@@ -103,6 +103,13 @@ export class Color {
     if (input === this.originColor) {
       return;
     }
+    if (this.isGradient) {
+      // 处理gradient模式下切换不同格式时的交互问题
+      const colorHsv = tinyColor(input).toHsv();
+      this.states = colorHsv;
+      this.updateCurrentGradientColor();
+      return;
+    }
     this.originColor = input;
     this.isGradient = false;
     const gradientColors = parseGradientString(input);
@@ -271,6 +278,7 @@ export class Color {
       HSV: this.hsv,
       HSVA: this.hsva,
       CSS: this.css,
+      HEX8: this.hex8,
     };
   }
 

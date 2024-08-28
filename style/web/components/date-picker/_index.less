@@ -17,7 +17,7 @@
 .@{prefix}-date-picker__header-controller-month-popup,
 .@{prefix}-date-picker__header-controller-year-popup {
   > .@{prefix}-popup__content {
-    max-height: @datepicker-panel-select-max-width;;
+    max-height: @datepicker-panel-select-max-width;
   }
 }
 
@@ -57,27 +57,26 @@
 .@{prefix}-date-range-picker__panel-content-wrapper {
   display: flex;
 }
-.@{prefix}-date-range-picker__panel-content-wrapper {
-  gap: 6px;
-}
 
 .@{prefix}-date-picker__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: @spacer-l;
+  gap: @datepicker-header-gap;
   width: 100%;
 
   &-controller {
     display: inline-flex;
-    gap: @spacer;
+    gap: @datepicker-header-controller-gap;
 
     .@{prefix}-date-picker__header-controller-month {
       width: @datepicker-month-controller-width;
+      display: flex;
     }
 
     .@{prefix}-date-picker__header-controller-year {
       width: @datepicker-year-controller-width;
+      display: flex;
     }
   }
 }
@@ -102,13 +101,20 @@
     td.@{prefix}-date-picker__cell {
       padding: 0;
       border: 0;
-      line-height: initial;
+      line-height: @text-line-height-base;
     }
 
     thead::after {
       content: "-";
       display: block;
-      line-height: @spacer-s - 1px;
+      line-height: @datepicker-thead-pseudo-line-height;
+      color: transparent;
+    }
+
+    thead::before {
+      content: "-";
+      display: block;
+      line-height: @datepicker-thead-pseudo-line-height;
       color: transparent;
     }
   }
@@ -130,12 +136,12 @@
     &::after {
       content: "";
       position: absolute;
-      left: 33px;
+      left: @datepicker-week-firstcell-margin-left;
       right: 0;
-      top: 3px;
+      top: @datepicker-cell-inner-margin;
       z-index: 10;
-      height: 24px;
-      border-radius: 3px;
+      height: @datepicker-cell-height;
+      border-radius: @border-radius-default;
       transition: @datepicker-transition;
       pointer-events: none;
     }
@@ -153,6 +159,7 @@
     // 高亮
     &--active {
       &::after {
+        opacity: 1;
         z-index: 0;
         background-color: @datepicker-cell-active-background;
       }
@@ -168,6 +175,7 @@
     // 在高亮区间
     &--range {
       &::after {
+        opacity: 1;
         z-index: 0;
         background-color: @datepicker-highlight-color;
       }
@@ -236,14 +244,14 @@
 .@{prefix}-date-range-picker__panel-time {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: @datepicker-time-panel-gap;
   padding: @datepicker-time-panel-padding;
   border-left: 1px solid @datepicker-panel-divider-color;
 
   &-viewer {
     display: flex;
-    height: 32px;
-    line-height: 22px;
+    height: @datepicker-time-header-viewer-size;
+    line-height: @text-line-height-base;
     align-items: center;
     justify-content: center;
     color: @text-color-primary;
@@ -261,10 +269,39 @@
 .@{prefix}-date-picker__panel-date {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: @spacer-l;
-  gap: @spacer-l;
-  max-width: @datepicker-panel-max-width;
+  padding: @datepicker-panel-padding;
+  gap: @datepicker-panel-gap;
+  width: @datepicker-panel-width;
+  box-sizing: border-box;
+}
+
+// year month picker highlight
+.@{prefix}-date-picker__panel-year,
+.@{prefix}-date-picker__panel-month {
+  .@{prefix}-date-picker__cell--hover-highlight +
+  .@{prefix}-date-picker__cell--hover-highlight {
+    &::before,
+    &::after {
+      opacity: 1;
+      left: @datepicker-cell-month-year-left;
+    }
+  }
+
+  .@{prefix}-date-picker__cell--hover-highlight +
+  .@{prefix}-date-picker__cell--active {
+    &::after {
+      opacity: 1;
+      left: @datepicker-cell-month-year-left;
+      z-index: 5;
+    }
+  }
+
+  .@{prefix}-date-picker__cell--highlight +
+  .@{prefix}-date-picker__cell--highlight {
+    &::before {
+      left: @datepicker-cell-month-year-left;
+    }
+  }
 }
 
 .@{prefix}-date-picker__panel-year,
@@ -272,6 +309,7 @@
 .@{prefix}-date-picker__panel-quarter {
   .@{prefix}-date-picker__header-controller-year {
     width: 130px;
+    display: flex;
   }
 
   .@{prefix}-date-picker__table {
@@ -279,7 +317,7 @@
       tbody {
         width: 100%;
         display: flex;
-        gap: @spacer-2;
+        gap: @datepicker-year-month-quarter-table-gap;
         flex-direction: column;
 
         tr {
@@ -291,7 +329,7 @@
   }
 
   .@{prefix}-date-picker__cell--disabled + .@{prefix}-date-picker__cell--disabled:before {
-    left: -@spacer-7;
+    left: @datepicker-cell-disabled-left-large;
   }
 
   .@{prefix}-date-picker__cell:nth-child(1) {
@@ -317,12 +355,14 @@
     content: "";
     position: absolute;
     top: 50%;
-    right: 0;
-    left: 0;
+    right: -5%;
+    left: -5%;
     z-index: 1;
+    opacity: 0;
+    border-radius: @border-radius-default;
     height: @datepicker-cell-height;
     transform: translateY(-50%);
-    transition: all .2s @anim-time-fn-easing;
+    transition: opacity @anim-duration-base @anim-time-fn-ease-out;
   }
 
   &:hover {
@@ -339,7 +379,7 @@
     align-items: center;
     width: @datepicker-cell-min-width;
     height: @datepicker-cell-height;
-    margin: @spacer-s - 1px;
+    margin: @datepicker-cell-inner-margin;
     border-radius: @datepicker-panel-border-radius;
     transition: @datepicker-transition;
   }
@@ -353,29 +393,20 @@
 
   &--hover-highlight {
     &::after {
+      opacity: 1;
       background-color: @datepicker-highlight-color;
-    }
-  }
-
-  &--hover-highlight + &--hover-highlight {
-    &::after {
-      left: -28px;
-    }
-  }
-
-  &--highlight + &--highlight {
-    &::before {
-      left: -28px;
     }
   }
 
   &--highlight {
     &::before {
+      opacity: 1;
       background-color: @datepicker-highlight-color;
     }
 
     &.@{prefix}-date-picker__cell--hover-highlight {
       &::after {
+        opacity: 1;
         background-color: @datepicker-hover-highlight-color;
       }
     }
@@ -403,17 +434,27 @@
 
     &-start {
       &::before {
-        left: 6px;
+        opacity: 1;
+        left: @datepicker-cell-start-end-horizontal;
         border-top-left-radius: @border-radius-default;
         border-bottom-left-radius: @border-radius-default;
+      }
+
+      &:hover::before {
+        left: -5%;
       }
     }
 
     &-end {
       &::before {
-        right: 6px;
+        opacity: 1;
+        right: @datepicker-cell-start-end-horizontal;
         border-top-right-radius: @border-radius-default;
         border-bottom-right-radius: @border-radius-default;
+      }
+
+      &:hover::before {
+        right: -5%;
       }
     }
   }
@@ -435,8 +476,10 @@
 
   &--disabled + &--disabled {
     &::before {
-      left: -@spacer-4;
+      opacity: 1;
+      left: @datepicker-cell-disabled-left;
       background-color: @datepicker-cell-disable-background-color;
+      border-radius: @border-radius-default;
     }
   }
 }

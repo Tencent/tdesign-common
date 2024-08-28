@@ -49,24 +49,23 @@
 @input-fix-position: @spacer;
 
 // 间距
-@input-padding-horizontal-default: @spacer;
-@input-margin-distance-default: @spacer;
-@input-status-position-right: -@spacer-3;
-@input-fix-padding: @spacer-4;
+@input-padding-l: @comp-paddingTB-m @comp-paddingLR-m;
+@input-padding-default: 0 @comp-paddingLR-s;
+@input-margin-distance-default: @comp-margin-xxxl;
+@input-status-position-right: -24px;
 @input-group-first-child-margin-left: -1px;
 
-@textarea-limited-padding: (@spacer * 4);
-
 // 尺寸
-@input-height-s: 24px;
-@input-height-default: 32px;
-@input-height-l: 40px;
+@input-height-s: @comp-size-xs;
+@input-height-default: @comp-size-m;
+@input-height-l: @comp-size-xl;
 @input-inner-icon-font-size: inherit;
 @input-tips-min-height: @text-line-height-s;
 
 // 图标
 @input-inner-prefix-icon-color: @text-color-placeholder;
 @input-inner-suffix-icon-color: @text-color-placeholder;
+@input-inner-suffix-icon-color-hover: @text-color-secondary;
 
 // 字号
 @input-font-l: @font-body-large;
@@ -86,7 +85,7 @@
 @input-box-shadow-focus: 0 0 0 2px @input-box-shadow-color-default-focus;
 
 // 动画
-@input-inner-transition: all @anim-time-fn-easing @anim-duration-base;
+@input-inner-transition: border @anim-time-fn-easing @anim-duration-base, box-shadow @anim-time-fn-easing @anim-duration-base, background-color @anim-time-fn-easing @anim-duration-base;
 
 // 交互
 @input-cursor-readonly: pointer;

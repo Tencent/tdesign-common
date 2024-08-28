@@ -10,6 +10,7 @@
   .@{prefix}-popup__content {
     display: inline-block;
     border: 0;
+    z-index: @z-index-Tooltip;
     margin-bottom: 1px;
     max-width: @tooltip-max-width;
     word-break: break-word;
@@ -22,7 +23,23 @@
     .@{prefix}-popup__content {
       color: @tooltip-text-color;
       background: @tooltip-bg;
-      margin: @tooltip-default-margin;
+      box-shadow: inset 0 .5px 0 @gray-color-9, inset .5px 0 0 @gray-color-9, inset 0 -.5px 0 @gray-color-9, inset -.5px 0 0 @gray-color-9;
+    }
+
+    &[data-popper-placement^="left"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset -.5px 0 0 @gray-color-9, inset 0 .5px 0 @gray-color-9;
+    }
+
+    &[data-popper-placement^="right"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset .5px 0 0 @gray-color-9, inset 0 -.5px 0 @gray-color-9;
+    }
+
+    &[data-popper-placement^="top"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset 0 -.5px 0 @gray-color-9, inset -.5px 0 0 @gray-color-9;
+    }
+
+    &[data-popper-placement^="bottom"] .@{prefix}-popup__arrow:before {
+      box-shadow: inset .5px 0 0 @gray-color-9, inset 0 .5px 0 @gray-color-9;
     }
   }
 
@@ -56,23 +73,17 @@
 
   .@{prefix}-popup__arrow {
     background: inherit;
-    width: auto;
     height: auto;
 
     &::before {
       background: inherit;
     }
   }
-}
 
-.@{prefix}-popup[data-popper-placement^="top"].@{prefix}-tooltip .@{prefix}-popup__arrow {
-  bottom: @tooltip-arrow-position;
-}
-
-.@{prefix}-popup[data-popper-placement^="left"].@{prefix}-tooltip .@{prefix}-popup__arrow {
-  right: @tooltip-arrow-position;
-}
-
-.@{prefix}-popup[data-popper-placement^="right"].@{prefix}-tooltip .@{prefix}-popup__arrow {
-  left: -@tooltip-arrow-position;
+  &--noshadow {
+    .@{prefix}-popup__content,
+    &[data-popper-placement] .@{prefix}-popup__arrow:before {
+      box-shadow: none;
+    }
+  }
 }

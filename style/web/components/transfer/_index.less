@@ -72,7 +72,6 @@
     &-body {
       position: relative;
       height: 100%;
-      padding: @transfer-list-body-padding;
       box-sizing: border-box;
     }
 
@@ -89,7 +88,8 @@
       .@{prefix}-checkbox-group {
         width: 100%;
         flex-direction: column;
-        gap: @spacer-s;
+        gap: @transfer-list-checkbox-group-gap;
+        margin: @transfer-list-checkbox-group-margin;
 
         .@{prefix}-checkbox {
           margin-right: @transfer-list-margin-horizontal;
@@ -100,9 +100,11 @@
 
           &__label {
             margin: 0;
+            flex: 1;
 
             > span {
               margin-left: @transfer-list-item-text-margin-left;
+              display: inline-block;
             }
           }
 
@@ -111,7 +113,7 @@
       }
     }
 
-    &-item {
+    & &-item {
       padding: @transfer-list-item-padding;
       display: flex;
       cursor: pointer;
@@ -123,7 +125,7 @@
         margin-top: 0;
       }
 
-      &.t-is-disabled {
+      &.@{prefix}-is-disabled {
         &:hover {
           background: @transfer-bg-color;
         }
@@ -151,7 +153,6 @@
       height: @transfer-list-pagination-height;
       vertical-align: middle;
       padding: @transfer-list-pagination-padding;
-      line-height: @transfer-list-pagination-line-height;
     }
 
     &-footer {
@@ -169,29 +170,14 @@
     margin: @transfer-operations-margin;
     vertical-align: middle;
     overflow: hidden;
-
-    button {
-      display: block;
-      padding: @transfer-operations-button-padding;
-      height: @transfer-operations-button-height;
-      line-height: @transfer-operations-button-line-height;
-      transition: none; // 不要有过渡效果 不然在整体里面很突兀 会有跳动感
-    }
-
-    button:first-child {
-      margin-bottom: @transfer-operations-button-first-margin-bottom;
-    }
+    gap: @transfer-operations-gap;
 
     .t-icon {
       font-size: @transfer-operations-icon-size;
     }
 
-    .t-icon + .t-button__text {
+    .t-icon + .@{prefix}-button__text {
       margin-left: 0;
-    }
-
-    .t-button--icon-only {
-      width: @transfer-operations-button-icon-width;
     }
   }
 
@@ -226,6 +212,11 @@
 
   .@{prefix}-transfer__list {
     height: auto;
+
+    .@{prefix}-tree {
+      padding: @transfer-list-with-tree-padding;
+      margin: @transfer-list-with-tree-margin;
+    }
   }
 }
 

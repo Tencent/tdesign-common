@@ -14,10 +14,6 @@
   overflow: hidden;
   background-color: @tab-default-bg;
 
-  .@{prefix}-icon {
-    font-size: @tab-icon-size;
-  }
-
   &__header {
     &.@{prefix}-is-left {
       float: left;
@@ -25,6 +21,10 @@
 
     &.@{prefix}-is-right {
       float: right;
+    }
+
+    .t-icon {
+      font-size: @tab-icon-size;
     }
   }
 
@@ -42,15 +42,24 @@
 
     &--left {
       left: 0;
+      z-index: 2;
     }
 
     &--right {
       right: 0;
+      z-index: 2;
 
       .@{prefix}-tabs__btn {
         &:first-child {
           box-shadow: @tab-bar-operations-btn-box-shadow;
         }
+      }
+
+      .@{prefix}-tabs__nav-action {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex: 1;
       }
     }
   }
@@ -170,6 +179,7 @@
     overflow: hidden;
     white-space: nowrap;
     transform: @tab-nav-scroll-transform;
+    z-index: 1;
   }
 
   &__nav-wrap {
@@ -191,6 +201,7 @@
     background-color: @tab-default-bar-bg-color;
     z-index: 1;
     transition: @tab-bar-transition;
+    border-radius: @border-radius-small;
 
     &.@{prefix}-is-top {
       bottom: 0;
@@ -230,11 +241,12 @@
     transition: @tab-nav-item-transition;
 
     &-wrapper {
-      display: block;
+      display: flex;
+      align-items: center;
+      height: @tab-nav-item-wrapper-height;
       padding: @tab-nav-item-wrapper-padding;
       margin-left: @tab-nav-item-margin-left;
       margin-right: @tab-nav-item-margin-right;
-      line-height: @tab-nav-item-line-height;
       border-radius: @border-radius-default;
       transition: @tab-nav-item-transition;
 
@@ -245,6 +257,7 @@
       font: @tab-nav-item-font;
 
       .@{prefix}-tabs__nav-item-wrapper {
+        height: @tab-nav-item-wrapper-height-large;
         padding: @tab-nav-item-wrapper-padding-large;
       }
     }
@@ -334,7 +347,7 @@
       }
     }
 
-    .@{prefix}-icon-close {
+    .t-icon-close {
       color: @tab-card-icon;
       transition: @tab-btn-icon-close-transition;
 
@@ -347,5 +360,11 @@
   &__content {
     overflow: hidden;
     position: relative;
+  }
+}
+
+.@{prefix}-tab-panel {
+  &.@{prefix}-is-hidden {
+    display: none;
   }
 }

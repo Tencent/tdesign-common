@@ -8,6 +8,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "./_mini.less";
+
 .@{prefix}-pagination {
   .reset;
 
@@ -98,12 +100,13 @@
 
     .pagination-number--size(
       @pagination-height-default; @pagination-font-default;
-      @pagination-padding-horizontal-default; @pagination-height-default - 2;
+      @pagination-padding-horizontal-default; calc(@pagination-height-default - 2px);
     );
 
     &:hover {
       color: @pagination-bg-color-hover;
       border-color: @pagination-bg-color-hover;
+      transition: @pagination-hover-transition;
     }
 
     &:active {
@@ -147,6 +150,7 @@
       &:hover {
         color: @pagination-text-color-btn;
         background-color: @pagination-bg-color-btn-hover;
+        transition: @pagination-hover-transition;
       }
 
       &:active {
@@ -160,7 +164,7 @@
         background: none;
       }
 
-      .@{prefix}-icon-more {
+      .t-icon-more {
         transform: rotate(90deg);
         color: @pagination-icon-color-disabled;
       }
@@ -174,15 +178,58 @@
     flex-shrink: 0;
     margin-left: @pagination-jump-margin;
     font-size: @pagination-font-default;
-    gap: @spacer-s;
+    gap: @comp-margin-s;
+    background-color: @bg-color-secondarycontainer;
+    height: @pagination-jump-height;
+    padding-left: @pagination-jump-padding-left;
+    border-radius: @border-radius-default;
+  }
+
+  .@{prefix}-input-adornment__append {
+    border: none;
+    height: @pagination-jump-inner-height;
+    color: @text-color-secondary;
+    background-color: transparent;
+
+    .@{prefix}-input-adornment__text {
+      border: none;
+    }
   }
 
   .@{prefix}-input-number {
     width: @pagination-input-width;
+
+    .@{prefix}-input {
+      height: @pagination-jump-inner-height;
+      border-radius: @border-radius-default;
+    }
+
+    .@{prefix}-input__inner {
+      text-align: center;
+    }
   }
 
   // 迷你尺寸
   &.@{prefix}-size-s {
+    font: @pagination-font-s;
+
+    .@{prefix}-pagination__jump {
+      height: @pagination-jump-height-small;
+    }
+
+    .@{prefix}-input-adornment__append {
+      height: @pagination-jump-inner-height-small;
+      font: @pagination-font-s;
+    }
+
+    .@{prefix}-input-number {
+      width: 48px;
+
+      .@{prefix}-input {
+        height: @pagination-jump-inner-height-small;
+      }
+    }
+
     .@{prefix}-pagination {
       &__total {
         font: @pagination-font-s;
@@ -199,6 +246,7 @@
         &:hover:not(&.@{prefix}-is-current) {
           color: @pagination-text-color-btn;
           background-color: @pagination-bg-color-btn-hover;
+          transition: @pagination-hover-transition;
         }
 
         &:active:not(&.@{prefix}-is-current) {
@@ -233,5 +281,13 @@
         .pagination-btn(@pagination-height-s);
       }
     }
+  }
+}
+
+/** IE 兼容 **/
+.@{prefix}-pagination-ie {
+  /** 在 IE11 以下浏览器，input autoWidth 计算无法依赖 observer，因而加上最小宽度，避免分页信息出现 0 的情况 */
+  .@{prefix}-select .@{prefix}-input__inner {
+    min-width: 54px;
   }
 }

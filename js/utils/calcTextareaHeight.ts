@@ -1,3 +1,4 @@
+import isNull from 'lodash/isNull';
 import { calculateNodeSize } from './helper';
 
 type CalculateStyleType = {
@@ -66,12 +67,12 @@ function calcTextareaHeight(
     return rowsHeight;
   };
 
-  if (minRows !== null) {
+  if (!isNull(minRows)) {
     const minHeight = calcHeight(minRows);
     height = Math.max(minHeight, height);
     result.minHeight = `${minHeight}px`;
   }
-  if (maxRows !== null) {
+  if (!isNull(maxRows)) {
     height = Math.min(calcHeight(maxRows), height);
   }
   result.height = `${height}px`;

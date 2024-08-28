@@ -44,6 +44,14 @@ Loading 组件可以作为容器包裹需要显示加载状态的内容。
 
 {{ fullscreen }}
 
+### 挂载到指定元素
+
+可通过 `attach` 挂载到指定元素。
+
+注：被挂载元素（loading的父元素）需设置：`position: relative;`
+
+{{ attach }}
+
 ### 函数方式调用
 
 {{ service }}

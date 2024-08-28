@@ -75,3 +75,25 @@ spline: form
 支持 `DatePickerPanel` 和 `DateRangePickerPanel` 单独使用场景，可以自行组装日期选择器。
 
 {{ panel }}
+
+### 不限制日期区间选择范围的选择器
+
+{{ cancel-range-limit }}
+
+## FAQ
+
+### 后端数据格式要求比较特殊，如何快捷格式化日期？
+
+`onChange` 回调事件中会返回用 `dayjs` 包装好的当前选中的日期对象，可以自行借助第三方库格式化也可以使用提供的 `dayjs` 对象进行自定义转化。
+
+```js
+<DatePicker onChange={(value, { dayjsValue }) => {
+  const data = dayjsValue.format('YYYYMMDD');
+  ...
+}}>
+
+<DateRangePicker onChange={(value, { dayjsValue }) => {
+  const data = dayjsValue.map(d => d.format('YYYYMMDD'));
+  ...
+}}>
+```

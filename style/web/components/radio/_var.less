@@ -50,11 +50,14 @@
 // 尺寸
 @radio-size: 16px;
 @radio-dot-size: (@radio-size / 2);
-@radio-margin-right: (@spacer * 3);
+@radio-margin-right: @comp-margin-xxl;
 @radio-button-border-radius: @border-radius-small;
-@radio-height-small: 20px;
-@radio-height-medium: 28px;
-@radio-height-large: 36px;
+@radio-outline-height-small: @comp-size-xs;
+@radio-outline-height-medium: @comp-size-m;
+@radio-outline-height-large: @comp-size-xl;
+@radio-height-small: calc(@comp-size-xs - (@comp-paddingTB-xxs * 2));
+@radio-height-medium: calc(@comp-size-m - (@comp-paddingTB-xxs * 2));
+@radio-height-large: calc(@comp-size-xl - (@comp-paddingTB-xxs * 2));
 @radio-button-before-width: 1px;
 
 // 字号
@@ -64,15 +67,15 @@
 @radio-button-font-large: @font-body-large;
 
 // padding
-@radio-input-label-spacer: @spacer;
-@radio-button-padding-small: 0px @spacer-s;
-@radio-button-padding-medium: @spacer-s @spacer-2;
-@radio-button-padding-large: @spacer @spacer-3;
+@radio-input-label-spacer: @comp-margin-s;
+@radio-button-padding-small: 0px @comp-paddingLR-s;
+@radio-button-padding-medium: @comp-paddingTB-xs @comp-paddingLR-l;
+@radio-button-padding-large: @comp-paddingTB-s @comp-paddingLR-xl;
 @radio-button-before-left: 0px;
 @radio-button-before-top: 50%;
 @radio-button-border: 1px solid;
 
-@radio-group-padding: 2px;
+@radio-group-padding: @comp-paddingTB-xxs @comp-paddingLR-xxs;
 @radio-group-filled-bg-block-left: 2px;
 @radio-group-filled-bg-block-top: 2px;
 

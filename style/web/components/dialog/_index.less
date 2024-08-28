@@ -19,22 +19,27 @@
   width: @dialog-width;
   background-color: @dialog-bg-color;
   position: relative;
+  border: @dialog-border;
   border-radius: @border-radius-large;
 
   // icon theme
-  .@{prefix}-icon.t-is-info {
+  .t-icon.@{prefix}-is-info,
+  t-icon-info-circle.@{prefix}-is-info {
     color: @dialog-info-icon-color;
   }
 
-  .@{prefix}-icon.t-is-success {
+  .t-icon.@{prefix}-is-success,
+  t-icon-check-circle.@{prefix}-is-success {
     color: @dialog-success-icon-color;
   }
 
-  .@{prefix}-icon.t-is-warning {
+  .t-icon.@{prefix}-is-warning,
+  t-icon-error-circle.@{prefix}-is-warning {
     color: @dialog-warning-icon-color;
   }
 
-  .@{prefix}-icon.t-is-error {
+  .t-icon.@{prefix}-is-error,
+  t-icon-error-circle.@{prefix}-is-error {
     color: @dialog-error-icon-color;
   }
 
@@ -45,68 +50,111 @@
   &__header {
     color: @dialog-header-text-color;
     font: @dialog-header-font;
+    font-weight: @dialog-header-weight;
     display: flex;
     align-items: center;
     word-break: break-word;
-    padding-right: 10px;
+    gap: @dialog-header-content-margin-right;
+    box-sizing: border-box;
 
-    .@{prefix}-icon {
+    .@{prefix}-dialog__header-content {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .t-icon:not(.t-icon-close),
+    t-icon-check-circle,
+    t-icon-info-circle,
+    t-icon-error-circle {
       font-size: @dialog-icon-size;
+      display: inline-flex;
+      align-items: center;
       margin-right: @dialog-header-icon-margin-right;
       flex-shrink: 0;
     }
   }
 
+  &__header--fullscreen {
+    background-color: @dialog-header-bg-color-fullscreen;
+    min-height: @dialog-header-height-fullscreen;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: @dialog-header-padding-fullscreen;
+
+    .@{prefix}-dialog__header-content {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   &__body {
+    .scrollbar();
+
     color: @dialog-body-text-color;
     font: @dialog-body-text-font;
     overflow: auto;
     padding: @dialog-body-padding;
     word-break: break-word;
 
-    &__icon {
+    &__icon,
+    &--icon {
       padding: @dialog-body-icon-padding;
     }
+  }
+
+  &__body--fullscreen {
+    .scrollbar();
+
+    box-sizing: border-box;
+    padding: @dialog-body-padding-fullscreen;
+    height: calc(100% - @dialog-header-height-fullscreen - @dialog-footer-height-fullscreen);
+    overflow: auto;
+  }
+
+  &__body--fullscreen--without-footer {
+    box-sizing: border-box;
+    padding: @dialog-body-padding-fullscreen;
+    height: calc(100% - @dialog-header-height-fullscreen);
+    overflow: auto;
   }
 
   &__footer {
     width: 100%;
     text-align: right;
     padding: @dialog-footer-padding;
-    // remove space between inline-block elements.
-    word-spacing: @dialog-word-spacing;
 
-    .@{prefix}-button + .@{prefix}-button {
+    // 兼容 web components
+    .@{prefix}-button + .@{prefix}-button,
+    .@{prefix}-dialog__button + .@{prefix}-dialog__button {
       margin-left: @dialog-footer-button-margin-left;
     }
+  }
+
+  &__footer--fullscreen {
+    min-height: @dialog-footer-height-fullscreen;
+    padding: @dialog-footer-padding-fullscreen;
+    box-sizing: border-box;
   }
 
   &--default {
     padding: @dialog-default-spacer;
   }
 
-  &--primary {
-    padding: @dialog-primary-spacer;
-
-    .@{prefix}-dialog__body {
-      padding: @dialog-parimary-body-spacer;
-    }
-  }
-
   &__close {
-    position: absolute;
-    top: @dialog-close-position-top;
-    right: @dialog-close-position-right;
     font-size: @dialog-close-icon-size;
     color: @dialog-close-color;
     display: flex;
     width: @dialog-close-icon-size;
     height: @dialog-close-icon-size;
     align-items: center;
-    justify-content: center;
     border-radius: @border-radius-default;
-    background: @dialog-bg-color;
     transition: all @anim-duration-base linear;
+    padding: @dialog-closebtn-padding;
 
     &:hover {
       cursor: pointer;
@@ -117,6 +165,21 @@
       background: @dialog-close-icon-active;
     }
   }
+
+  &__close--fullscreen {
+    display: flex;
+    background: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background: @dialog-close-icon-fullscreen-hover;
+    }
+
+    &:active {
+      background: @dialog-close-icon-fullscreen-active;
+    }
+  }
+
   &.@{prefix}-dialog--draggable {
     &:hover {
       cursor: move;
@@ -129,6 +192,11 @@
       }
     }
   }
+
+  &__fullscreen {
+    width: 100%;
+    border-radius: 0;
+  }
 }
 
 // t-dialog 组件本身
@@ -136,6 +204,10 @@
   // dialog内容溢出需要考虑滚动
   pointer-events: auto;
   outline: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   // modeless 点击穿透 即可以操作背景后的元素
   &.@{prefix}-dialog__ctx--modeless {
@@ -144,10 +216,6 @@
 
   &.@{prefix}-dialog__ctx--fixed {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     z-index: @z-index-dialog;
   }
 
@@ -162,7 +230,7 @@
     }
   }
 
-  &.@{prefix}-is-visable {
+  &.@{prefix}-is-visible {
     visibility: visible;
   }
 
@@ -223,6 +291,17 @@
     }
   }
 
+  .@{prefix}-dialog__position_fullscreen {
+    // 因为内容会超出 使用flex布局
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    width: 100%;
+    // 通过修改position为absolute进行拖拽定位
+    position: relative;
+    box-sizing: border-box;
+  }
+
   .@{prefix}-is-hidden {
     background: none;
   }
@@ -230,6 +309,5 @@
   .@{prefix}-dialog {
     pointer-events: auto;
     z-index: @z-index-dialog;
-    border: @dialog-border;
   }
 }

@@ -6,9 +6,26 @@ tdDocTabs: [{ tab: 'demo', name: '示例' }, { tab: 'api', name: 'API' }]
 spline: 'explain'
 ---
 
-### 全局配置
+### 国际化配置
+
+TDesign 支持国际化/多语言配置，目前支持的语言包括:
+
+语言 | 对应文件
+-- | --
+简体中文 | `zh_CN`
+繁体中文 | `zh_TW`
+英语 | `en_US`
+韩语 | `ko_KR`
+日语 | `ja_JP`
+俄语 | `ru_RU`
+意大利语 | `it_IT`
+阿拉伯语 | `ar_KW`
+
+如果你想贡献更多语言包，欢迎参考 [如何新增语言包](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) 发起 PR。
 
 {{ global }}
+
+> 注意！当你使用 esm 引入了其他组件的时候 `ConfigProvider` 也需要为对应的 esm 版本的引入，否则会出现语言包不生效的问题。
 
 ### Pagination 分页
 

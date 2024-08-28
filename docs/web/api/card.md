@@ -52,8 +52,6 @@ spline: data
 
 由顶部栏、底部栏和极简卡片组成的复杂卡片，三个区域内容可根据需要对内容进行配置。
 
-{{ footer }}
-
 {{ header-subtitle-footer-actions }}
 
 {{ header-footer-actions }}
@@ -73,3 +71,8 @@ spline: data
 #### 同时带主副标题与标题描述的卡片
 
 {{ header-all-props }}
+
+
+#### 自定义loadingProps的卡片
+
+{{ custom-loading-props }}

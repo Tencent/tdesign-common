@@ -13,7 +13,7 @@ spline: data
 因此，表格组件有三个：`BaseTable`（基础表格）、`PrimaryTable`（主表格）、`EnhancedTable`（增强型表格），三种表格都会导出。默认导出 `PrimaryTable`。
 
 - `BaseTable`（基础表格）包含一些基础功能：固定表头、固定列、冻结行、加载态、分页、多级表头、合并单元格、自定义单元格、自定义表头、自定义表尾、文本省略、对齐方式、表格事件、尺寸、行类名、边框、斑马线、悬浮态、空数据等
-- `PrimaryTable` 或 `Table`（主表格）包含一些更高级的功能：行展开/收起、过滤、排序、异步加载、拖拽排序等。`PrimaryTable` 和 `Table` 包含 `BaseTable` 的所有功能。`Table` 和 `PrimaryTable` 完全等价。
+- `PrimaryTable` 或 `Table`（主表格）包含一些更高级的功能：行选中、行展开/收起、过滤、排序、异步加载、拖拽排序等。`PrimaryTable` 和 `Table` 包含 `BaseTable` 的所有功能。`Table` 和 `PrimaryTable` 完全等价。
 - `EnhancedTable`（增强型表格）包含一些更复杂的功能：树形结构等。`EnhancedTable` 包含 `BaseTable` 和 `PrimaryTable` 的所有功能
 
 一般情况下，直接使用 `PrimaryTable` 即可满足 90% 的需求，即默认导出的表格。涉及到非常复杂的需求后，使用 `EnhancedTable`。
@@ -22,9 +22,33 @@ spline: data
 
 简单表格，使用分页切换数据。使用边框线、斑马纹等清晰呈现各数据单元格边界线，辅助信息区隔。
 
-表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。
+- 表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。
 
 {{ base }}
+
+### 行高亮表格
+
+支持鼠标点击或者键盘操作高亮表格行，支持仅高亮一行，或者高亮多行。
+键盘操作说明：表格聚焦后，上下键操作切换高亮行，ESC 清空所有高亮行，空格键切换当前停留行高亮状态，Shift 连续选中高亮行。
+
+{{ highlight }}
+
+### 可自定义样式的表格
+
+- 使用表格属性 `rowClassName` 设置行类名。
+- 使用列属性 `className` 设置列类名，或具体的某一个或某一些单元格类名。
+- 使用列属性 `attr: { style: {} }` 设置列内联样式，或具体的某一个或某一些单元格内联样式。
+
+{{ style }}
+
+### 单元格超出省略的表格
+
+支持单元格文本超出省略、单独控制标题超出省略，单独控制超出省略的浮层内容和背景色等特性，一般用于需要悬浮显示单元格详情信息的场景。
+
+- 使用 `ellipsis` 设置列文本超出省略显示，默认会同时控制表头的超出省略显示；只要 `ellipsis` 为真，无论是何种数据类型都会出现超出省略。
+- 使用 `ellipsisTitle` 单独设置表头超出省略显示，优先级高于 `ellipsis`。
+
+{{ ellipsis }}
 
 ### 固定表头/固定行的表格
 
@@ -38,11 +62,13 @@ spline: data
 
 ### 固定列的表格
 
-列的数量过多时，使用固定列方便表格数据内容呈现，支持固定左侧列和固定右侧列。可通过给列属性设置 `fixed: 'left'` 或 `fixed: right` 以达成固定列效果。
+列的数量过多时，使用固定列方便表格数据内容呈现，支持固定左侧列和固定右侧列。可通过给列属性设置 `fixed: 'left'` 或 `fixed: right` 以达成固定列效果。固定列线条宽度可以通过 CSS 控制粗细。
 
 表格宽度模式有两种：`fixed` 和 `auto`，[MDN 详细解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout)，组件默认为 `fixed`。如果希望表格列宽自适应，设置 `table-layout: auto` 即可，这种模式下固定列必须指定表格内容的总宽度 `tableContentWidth`，`tableContentWidth` 的值必须大于表格可见宽度。
 
 多级表头中的固定列，必须指定每一个固定列的 `colKey` 和 `fixed` 属性。
+
+⚠️ Windows 操作系统横向滚动操作：按下 Shift 键的同时，鼠标操作滚轮进行滚动。纵向滚动操作：直接鼠标操作滚轮进行滚动。
 
 {{ fixed-column }}
 
@@ -62,7 +88,7 @@ spline: data
 
 - 使用 `cell` 作为渲染函数，函数参数为：`{col, colIndex, row, rowIndex}`。
 
-- 对于有插槽特性的框架，支持插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `cell` 的值作为插槽名称；如果 `cell` 值为空，则默认取 `colKey` 作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 
 - 【不推荐使用】使用 `render` 渲染函数，函数参数为：`{col, colIndex, row, rowIndex, type}`，其中 `type` 的值为 `cell`。
 
@@ -74,7 +100,7 @@ spline: data
 
 - 使用 `title` 作为渲染函数，函数参数为：`title({ col, colIndex })`。
 
-- 对于有插槽特性的框架，支持插槽，使用 `title` 的值作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `title` 的值作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 
 - 【不推荐使用】使用 `render` 作为渲染函数，函数参数为：`render({ col, colIndex, row, rowIndex, type })`，其中 `type` 值为 `title`。使用排序、过滤等功能时不能使用该方法。
 
@@ -85,7 +111,7 @@ spline: data
 表格提供自定义表尾功能，可用于表尾数据统计等场景。使用 `column.foot` 定义每一列的表尾内容。
 
 - 默认输出 `column.foot` 字符串，如果 `foot` 类型为函数，则作为表尾渲染函数自定义表尾内容。
-- 对于有插槽特性的框架，支持插槽，使用 `foot` 值作为插槽名称。
+- 对于有插槽特性的框架，支持插槽，使用 `foot` 值作为插槽名称。注意插槽名称保持 kebab-case 或 camelCase 命名。
 - 如果想定义通栏表尾，请使用 `footerSummary`
 - 如果想自定义表尾合并单元格信息，请使用 `rowspanAndColspanInFooter`，类似表格内容的合并单元格方法 `rowspanAndColspan`。
 
@@ -147,6 +173,7 @@ spline: data
 - 将需要排序的列属性 `sorter` 设置为 `true`，示例：`{ colKey: 'date', title: '日期', sorter: true }`。
 - 设置表格排序属性 `sort` 的值为 `{ sortBy: 'date', descending: true }`，其中 `descending` 表示是否为降序排序，值为 `true` 表示降序，值为 `false` 表示升序。
 - 排序发生变化时，监听事件 `onSortChange`，在事件处理程序中添加业务逻辑。
+- 使用 `showSortColumnBgColor` 控制是否显示排序列背景色，用于更加显示地提醒用户具体的排序列。
 
 提供列属性 `sortType`，用于自定义支持排序方式。可选值有 `desc`/`asc`/`all`，分别表示只能降序徘、只能升序徘、降序和升序。
 
@@ -175,13 +202,29 @@ spline: data
 
 在涉及到表单选择、或批量操作场景中，可在数据行前直接单选或多选操作对象。
 
-#### 单选
+#### 示例一：单选(Radio)
+
+- `selectedRowKeys` 表示当前选中行的唯一标识数组，支持非受控属性 `defaultSelectedRowKeys`
+- `onSelectChange` 会在选中行发生变化时触发
+- 设置 `columns: [{ colKey: 'row-select', type: 'single' }]` 可以将任意列定义为行选中操作列。
 
 {{ select-single }}
 
-#### 多选
+#### 示例二：多选(Checkbox)
+
+- `selectedRowKeys` 表示当前选中行的唯一标识数组，支持非受控属性 `defaultSelectedRowKeys`
+- `onSelectChange` 会在选中行发生变化时触发
+- 设置 `columns: [{ colKey: 'row-select', type: 'multiple' }]` 可以将任意列定义为行选中操作列。
+- 分页场景下的行选中，默认允许跨分页选中，即翻页时，上一页选中结果依然保存。如果希望每一页单独控制选中，互不影响，可设置 `reserveSelectedRowOnPaginate=false`
+- 注意：如果发现点击某一行便选中了全部，说明 `rowKey` 设置不正确，或者没有设置，请确保 `rowKey` 的值为 `data` 中的字段。
 
 {{ select-multiple }}
+
+#### 示例三：没有操作列的行选中
+
+不带操作列的行选中表格，一般用于一些简要选择场景，通过点击行直接选中。可以通过 `rowSelectionType: 'single' | 'multiple'` 控制单选或多选。
+
+{{ select-without-handler }}
 
 ### 可分页的表格
 
@@ -193,7 +236,8 @@ spline: data
 
 #### 本地数据分页
 
-本地数据分页，表示组件内部会对参数 `data` 进行分页。
+当 `data.length` 长度超过 `pageSize`，单页已无法完整地显示数据，此时会自动开启本地数据分页，组件内部会对 `data` 进行分页。
+如果希望禁用组件内部分页，可以设置 `disableDataPage=true`。
 
 {{ pagination }}
 
@@ -210,13 +254,18 @@ spline: data
 - 列配置 `filter.component` 用于自定义筛选器，只要保证自定义筛选器包含 `value` 属性 和 `change` 事件，即可像内置筛选器一样正常使用。
 - 列配置 `filter.showConfirmAndReset` 用于控制是否显示“确认”“重置”按钮.
 - 列配置 `filter.resetValue` 用于设置点击“重置”按钮时的重置值，并非每个场景都会重置为 `''` 或 `[]` `null`，默认重置为 `''`。
-- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容，设置 `filterRow={() => null}` 隐藏过滤行。
+- 表格属性 `filterRow` 可完全自定义过滤结果行显示内容，设置 `filterRow=null` 隐藏过滤行。
+- 更多功能属性请查看 API 文档中的 `TableColumnFilter`
 
 {{ filter-controlled }}
 
 ### 带合并单元格的表格
 
 根据数据结构，可以将表格中的行列进行合并。
+
+- 使用表格属性 `rowspanAndColspan` 设置表格内容合并元格。
+- 使用表格属性 `rowspanAndColspanInFooter` 设置表尾合并单元格。
+- 使用列属性 `colspan` 设置表头合并。如果是多行表头，请参考下方「多级表头」示例。
 
 {{ merge-cells }}
 
@@ -263,7 +312,7 @@ spline: data
 通过拖拽表格行调整顺序，拖拽表头表头调整列顺序。
 
 - `dragSort='row'` 用于设置表格为行拖拽排序。
-- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'sort', cell: () => <MoveIcon /> }`。
+- `dragSort='row-handler'` 用于设置表格为行拖拽排序，即通过拖拽手柄调控拖拽排序。这种模式，还需同步设置手柄列，`{ colKey: 'drag', cell: () => <MoveIcon /> }`。
 - `dragSort='col'` 用于设置表格为列拖拽排序。
 - `sortOnRowDraggable` 用于行拖拽排序。已废弃，请更为使用 `dragSort='row'`，兼容支持。
 
@@ -295,14 +344,14 @@ spline: data
 
 虚拟滚动场景下，支持表格的几乎全部功能，如：固定列、固定表头、固定表尾、表头吸顶、表尾吸底等。实验场地请参看「多级表头的表格」示例。
 
-- 懒加载一般用于数据量较大的场景，设置 `scroll={ type: 'virtual' }` 即可开启懒加载模式，通过 `scroll.bufferSize` 预设加载过程中提前加载的数据数量。
+- 虚拟滚动一般用于超大数据渲染的场景，以提供更优的前端性能表现，设置 `scroll={ type: 'virtual' }` 即可开启虚拟滚动模式。
 - 为保证组件收益最大化，当数据量小于 `threshold` 时，无论虚拟滚动的配置是否存在，组件内部都不会开启虚拟滚动，`threshold` 默认为 `100`。
 
 {{ virtual-scroll }}
 
 ### 可编辑的表格
 
-可编辑的表格分为单元格编辑表格和行编辑表格两种。
+可编辑的表格分为单元格编辑表格和行编辑表格两种。详细完整的接口请查看 API 文档中的 `TableEditableCellConfig`。
 
 #### 可编辑单元格的表格
 
@@ -332,18 +381,18 @@ spline: data
 
 请使用 `EnhancedTable`，`Table/PrimaryTable/BaseTable` 等不支持树形结构。
 
-#### 树形结构显示
-
-如果数据源中存在字段 `children`，表格会自动根据 children 数据显示为树形结构，无需任何特殊配置。
+⚠️ 树形结构的表格，支持添加节点、删除节点、交换同级节点、查询节点、展开/收起节点等丰富特性。为减少每次计算的递归查询，也为以后虚表做准备，故而内部数据为平铺结构，所有数据变化均通过组件实例方法控制，具体实例方法请查看 API 文档 `EnhancedTableInstanceFunctions`。树形结构细节配置请查看 `tree: TableTreeConfig`。
 
 - `treeExpandAndFoldIcon` 用于设置树形结构折叠/展开图标，支持全局配置。
-- 如果数据中的子节点字段不是 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
-- `tree.indent` 用于设置树结点缩进距离。
+- 子节点字段默认为 `children`，可以使用 `tree.childrenKey` 定义字段别名，示例：`tree={ childrenKey: 'list' }`。
+- `tree.indent` 用于设置树结点缩进距离，叶子结点的距离可以通过类名 `t-table__tree-leaf-node` 单独设置。
 - `tree.treeNodeColumnIndex` 用于设置第几列作为树形结构操作列
 - `tree.checkStrictly` 表示树形结构的行选中（多选），父子行选中是否独立，默认独立，值为 true。
+- `tree.defaultExpandAll=true` 表示默认展开全部节点，后续可通过 `expandAll` 和 `foldAll` 控制全部展开或全部收起。使用 `toggleExpandData` 控制单个节点的展开和收起。
 - 刷新表格数据请使用组件实例方法 `resetData`。
+- 获取树形结构数据可使用组件实例方法 `getTreeNode`。
 
-更多信息查看 API 文档的 `tree` 属性。
+#### 树形结构显示
 
 {{ tree }}
 
