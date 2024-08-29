@@ -67,4 +67,23 @@ describe('largeNumberToFixed', () => {
       '1.010'
     );
   });
+
+  it('0.996', () => {
+    expect(largeNumberToFixed('0.996', 2, true)).toBe(
+      '1.00'
+    );
+  });
+  it('1.985', () => {
+    expect(largeNumberToFixed('1.985', 2, true)).toBe(
+      '1.99'
+    );
+    expect(largeNumberToFixed('1.985', 3, true)).toBe(
+      '1.985'
+    );
+  });
+  it('1.99', () => {
+    expect(largeNumberToFixed('1.99', 1, true)).toBe(
+      '2.0'
+    );
+  });
 });
