@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { EPickerCols, TIME_FORMAT } from './const';
 
 dayjs.extend(advancedFormat);
 dayjs.extend(customParseFormat);
@@ -25,4 +26,40 @@ export function closestLookup(
   return availableArr.sort(
     (a, b) => Math.abs(calcVal + 1 - a) - Math.abs(calcVal + 1 - b)
   )[0];
+}
+
+export function getPickerCols(format:string) {
+  const renderCol: EPickerCols[] = [];
+  const {
+    meridiem, hour, minute, second, milliSecond,
+  } = EPickerCols;
+  const match = format.match(TIME_FORMAT);
+  match.forEach((m) => {
+    switch (m) {
+      case 'H':
+      case 'HH':
+      case 'h':
+      case 'hh':
+        renderCol.push(hour);
+        break;
+      case 'a':
+      case 'A':
+        renderCol.push(meridiem);
+        break;
+      case 'm':
+      case 'mm':
+        renderCol.push(minute);
+        break;
+      case 's':
+      case 'ss':
+        renderCol.push(second);
+        break;
+      case 'SSS':
+        renderCol.push(milliSecond);
+        break;
+      default:
+        break;
+    }
+  });
+  return renderCol;
 }

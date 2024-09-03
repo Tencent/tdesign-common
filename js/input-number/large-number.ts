@@ -347,7 +347,8 @@ export function largeNumberToFixed(
 ): string {
   if (!largeNumber) return Number(number).toFixed(decimalPlaces);
   if (!isString(number)) return String(number);
-  const [num1, num2] = number.split('.');
+  // eslint-disable-next-line prefer-const
+  let [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {
     return decimalPlaces ? [number, (fillZero(decimalPlaces))].join('.') : number;
@@ -363,11 +364,17 @@ export function largeNumberToFixed(
   } else {
     // 用于判断是否处于 1.08 这种小数为0开始的边界情况
     const leadZeroNum = decimalNumber.match(/^0+/)?.[0].length;
+    // 用于判断是否处于 0.99/1.99 等需要往非0位进位的场景
+    const leadNineNum = decimalNumber.match(/^9+/);
+    // 决定是否需要四舍五入
     const needAdded = Number(num2[decimalPlaces]) >= 5;
+
+    // 四舍五入后的结果
     decimalNumber = needAdded
       ? largePositiveNumberAdd(decimalNumber, '1')
       : decimalNumber;
-    // 如果处于边界情况，计算后有误判的可能，如008 +1 误判为 8+1，需要手动补 0
+
+    // 边界场景1（1.08 这种小数为0开始的边界情况）：计算后有误判的可能，如008 +1 误判为 8+1，需要手动补 0
     if (
       leadZeroNum
       && needAdded
@@ -376,6 +383,11 @@ export function largeNumberToFixed(
       decimalNumber = `${fillZero(
         decimalPlaces - decimalNumber.length
       )}${decimalNumber}`;
+    }
+    // 边界场景2:（0.99 这种可能进位的边界情况）：计算后有误判的可能，如995 四舍五入后需进位
+    if (leadNineNum && decimalNumber.length > decimalPlaces) {
+      num1 = (Number(num1) + 1).toString();
+      decimalNumber = fillZero(decimalPlaces);
     }
   }
   return [num1, decimalNumber].join('.');

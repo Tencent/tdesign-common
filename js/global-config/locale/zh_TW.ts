@@ -165,6 +165,7 @@ export default {
     errorMessage: {
       date: '請輸入正確的${name}',
       url: '請輸入正確的${name}',
+      whitespace: '${name}不能為空',
       required: '${name}必填',
       max: '${name}字符長度不能超過 ${validate} 個字符，一個中文等於兩個字符',
       min: '${name}字符長度不能少於 ${validate} 個字符，一個中文等於兩個字符',
