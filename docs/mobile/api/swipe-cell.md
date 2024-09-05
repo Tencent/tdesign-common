@@ -6,43 +6,23 @@ isComponent: true
 toc: false
 ---
 
-### 左滑单操作
+### 左滑动操作
 
-{{ left-one-menu }}
+{{ left }}
 
-### 左滑双操作
+### 右滑动操作
 
-{{ left-two-menu }}
+{{ right }}
 
-### 左滑多操作
+### 左右滑操作
 
-{{ left-more-menu }}
+{{ double }}
 
-### 左滑大列表
+### 带图标的滑动操作
 
-{{ left-card }}
+{{ icon }}
 
-### 右滑单操作
-
-{{ right-menu }}
-
-### 通过 expanded 实现父子组件联动
-
-{{ bind }}
-
-### 通过直接传入内容或者使用 slot#content 来渲染
-
-{{ content }}
-
-### 是否启用滑动功能
-
-{{ disabled }}
-
-### 左右两侧都有菜单
-
-{{ btns }}
-
-### 点击事件
+### 带二次确认的操作
 
 {{ event }}
 
