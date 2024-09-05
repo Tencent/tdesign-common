@@ -393,29 +393,29 @@ export function largeNumberToFixed(
   if (!largeNumber){
     return decimalPlacesToFixedNum(Number(number), decimalPlaces);
   }
-  const decimalPlacesNum = isObject(decimalPlaces) ? decimalPlaces.places : decimalPlaces;
+  const places = isObject(decimalPlaces) ? decimalPlaces.places : decimalPlaces;
   if (!isString(number)) return String(number);
   // eslint-disable-next-line prefer-const
   let [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {
-    return decimalPlaces ? [number, (fillZero(decimalPlacesNum))].join('.') : number;
+    return decimalPlaces ? [number, (fillZero(places))].join('.') : number;
   }
   // 存在小数点，保留 0 位小数，四舍五入
   if (decimalPlaces === 0) {
     return Number(num2[0]) >= 5 ? largePositiveNumberAdd(num1, '1') : num1;
   }
   // 存在小数点，保留 > 0 位小数，四舍五入（此时，整数位不会发生任何变化，只需关注小数位数）
-  let decimalNumber = num2.slice(0, decimalPlacesNum);
-  if (num2.length < decimalPlacesNum) {
-    decimalNumber += (fillZero(decimalPlacesNum - num2.length));
+  let decimalNumber = num2.slice(0, places);
+  if (num2.length < places) {
+    decimalNumber += (fillZero(places - num2.length));
   } else {
     // 用于判断是否处于 1.08 这种小数为0开始的边界情况
     const leadZeroNum = decimalNumber.match(/^0+/)?.[0].length;
     // 用于判断是否处于 0.99/1.99 等需要往非0位进位的场景
     const leadNineNum = decimalNumber.match(/^9+/);
     // 决定是否需要四舍五入
-    const needAdded = Number(num2[decimalPlacesNum]) >= 5;
+    const needAdded = Number(num2[places]) >= 5;
 
     // 四舍五入后的结果
     decimalNumber = needAdded
@@ -426,16 +426,16 @@ export function largeNumberToFixed(
     if (
       leadZeroNum
       && needAdded
-      && leadZeroNum + decimalNumber.length >= decimalPlacesNum
+      && leadZeroNum + decimalNumber.length >= places
     ) {
       decimalNumber = `${fillZero(
-        decimalPlacesNum - decimalNumber.length
+        places - decimalNumber.length
       )}${decimalNumber}`;
     }
     // 边界场景2:（0.99 这种可能进位的边界情况）：计算后有误判的可能，如995 四舍五入后需进位
-    if (leadNineNum && decimalNumber.length > decimalPlaces) {
+    if (leadNineNum && decimalNumber.length > places) {
       num1 = (Number(num1) + 1).toString();
-      decimalNumber = fillZero(decimalPlaces);
+      decimalNumber = fillZero(places);
     }
   }
   return [num1, decimalNumber].join('.');
