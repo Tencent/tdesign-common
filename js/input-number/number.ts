@@ -11,10 +11,12 @@ import {
   largeNumberSubtract,
 } from './large-number';
 import log from '../log';
+import type { InputNumberDecimalPlaces } from './large-number';
 
 export * from './large-number';
 
 export type NumberType = number | string;
+
 
 // 小于最大值，才允许继续添加
 export function canAddNumber(
@@ -236,7 +238,7 @@ export function canSetValue(number: string, lastNumber: number) {
 export function formatUnCompleteNumber(
   number: string,
   extra: {
-    decimalPlaces?: number;
+    decimalPlaces?: InputNumberDecimalPlaces;
     largeNumber?: boolean;
     isToFixed?: boolean;
   } = {}

@@ -1,6 +1,48 @@
 import isString from 'lodash/isString';
 import isNumber from 'lodash/isNumber';
+import isObject from 'lodash/isObject';
 import log from '../log/log';
+
+export type InputNumberDecimalPlaces = number | { enableRound: boolean, decimalPlaces: number };
+
+/**
+ * 格式化小数，并且可以控制小数点后的位数和是否进行四舍五入。
+ *
+ * @param {number} num - 要格式化的数字。
+ * @param {number} fixed - 小数点后的位数。
+ * @param {boolean} rounding - 是否进行四舍五入。
+ * @returns {string} 格式化后的数字字符串。
+ *
+ * console.log(formatDecimal(1.7777, 2, true));  // 输出 "1.78"，进行四舍五入
+ * console.log(formatDecimal(1.7777, 2, false));  // 输出 "1.77"，不进行四舍五入
+ * console.log(formatDecimal(1.7, 2, false));  // 输出 "1.70"，不进行四舍五入
+ */
+function formatDecimal(num: number, fixed: number, enableRound: boolean = true) {
+  let result;
+  if (enableRound) {
+      result = num.toFixed(fixed);
+  } else {
+      const reg = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+      result = num.toString().match(reg)[0];
+  }
+  // 补足小数位数
+  let dotIndex = result.indexOf('.');
+  if (dotIndex === -1) {
+      result += '.';
+      dotIndex = result.length - 1;
+  }
+  while (result.length <= dotIndex + fixed) {
+      result += '0';
+  }
+  return result;
+}
+
+function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberDecimalPlaces) {
+  if(isObject(decimalPlaces)) {
+    return formatDecimal(num, decimalPlaces.decimalPlaces, decimalPlaces.enableRound);
+  }
+  return formatDecimal(num, decimalPlaces, true);
+}
 
 export function fillZero(length: number) {
   return new Array(length).fill(0).join('');
@@ -343,27 +385,33 @@ export function largeNumberAdd(num1: string, num2: string): string {
  * @param {Boolean} largeNumber 是否为大数
  */
 export function largeNumberToFixed(
-  number: string | number, decimalPlaces: number = 0, largeNumber = true,
+  number: string | number,
+  decimalPlaces: InputNumberDecimalPlaces = 0,
+  largeNumber = true,
 ): string {
-  if (!largeNumber) return Number(number).toFixed(decimalPlaces);
+  if(Number.isNaN(Number(number))) return ;
+  if (!largeNumber){
+    return decimalPlacesToFixedNum(Number(number), decimalPlaces);
+  }
+  const decimalPlacesNum = isObject(decimalPlaces) ? decimalPlaces.decimalPlaces : decimalPlaces;
   if (!isString(number)) return String(number);
   const [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {
-    return decimalPlaces ? [number, (fillZero(decimalPlaces))].join('.') : number;
+    return decimalPlaces ? [number, (fillZero(decimalPlacesNum))].join('.') : number;
   }
   // 存在小数点，保留 0 位小数，四舍五入
   if (decimalPlaces === 0) {
     return Number(num2[0]) >= 5 ? largePositiveNumberAdd(num1, '1') : num1;
   }
   // 存在小数点，保留 > 0 位小数，四舍五入（此时，整数位不会发生任何变化，只需关注小数位数）
-  let decimalNumber = num2.slice(0, decimalPlaces);
-  if (num2.length < decimalPlaces) {
-    decimalNumber += (fillZero(decimalPlaces - num2.length));
+  let decimalNumber = num2.slice(0, decimalPlacesNum);
+  if (num2.length < decimalPlacesNum) {
+    decimalNumber += (fillZero(decimalPlacesNum - num2.length));
   } else {
     // 用于判断是否处于 1.08 这种小数为0开始的边界情况
     const leadZeroNum = decimalNumber.match(/^0+/)?.[0].length;
-    const needAdded = Number(num2[decimalPlaces]) >= 5;
+    const needAdded = Number(num2[decimalPlacesNum]) >= 5;
     decimalNumber = needAdded
       ? largePositiveNumberAdd(decimalNumber, '1')
       : decimalNumber;
@@ -371,10 +419,10 @@ export function largeNumberToFixed(
     if (
       leadZeroNum
       && needAdded
-      && leadZeroNum + decimalNumber.length >= decimalPlaces
+      && leadZeroNum + decimalNumber.length >= decimalPlacesNum
     ) {
       decimalNumber = `${fillZero(
-        decimalPlaces - decimalNumber.length
+        decimalPlacesNum - decimalNumber.length
       )}${decimalNumber}`;
     }
   }
