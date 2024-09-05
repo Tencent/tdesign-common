@@ -35,3 +35,29 @@ The list containing operations. Used when operations need to be performed on the
 Provides large, medium (default), and small sizes.
 
 {{ size }}
+
+### Stripe Style List
+
+When the list content is abundant, set `stripe` to make it easier for users to obtain information.
+
+{{ stripe }}
+
+### Asynchronous Load List
+
+When data needs to be loaded and displayed through a secondary request, you can handle the related logic through `asyncLoading` API.
+
+{{ loading }}
+
+### List with header content and footer content
+
+{{ header-footer }}
+
+### List with scroll event
+
+{{ scroll }}
+
+### List with Virtual scrolling
+
+Supports enabling virtual scrolling, suitable for scenarios where long lists are loaded at once.
+
+{{ virtual-scroll }}
