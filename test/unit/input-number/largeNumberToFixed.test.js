@@ -77,6 +77,8 @@ describe('largeNumberToFixed', () => {
   it('{ enableRound: boolean; places: number; }', () => {
     expect(largeNumberToFixed('1', { places: 0, enableRound: false })).toBe('1');
     expect(largeNumberToFixed('1', { places: 0 })).toBe('1');
+    expect(largeNumberToFixed('1', { places: 0, enableRound: false }, false)).toBe('1');
+    expect(largeNumberToFixed('1', { places: 0 }, false)).toBe('1');
     expect(largeNumberToFixed('1.3456', { places: 1, enableRound: false })).toBe('1.3');
     expect(largeNumberToFixed('1.3456', { places: 2, enableRound: false })).toBe('1.34');
     expect(largeNumberToFixed('1.3456', { places: 1 })).toBe('1.3');

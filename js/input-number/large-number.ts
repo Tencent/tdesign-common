@@ -348,14 +348,17 @@ export function largeNumberAdd(num1: string, num2: string): string {
  * @returns {string} 格式化后的数字字符串。
  */
 export function formatDecimal(num: number, fixed: number, enableRound: boolean = true) {
-  let result;
   if (enableRound) {
-    result = num.toFixed(fixed);
-  } else {
-    const reg = new RegExp(`^-?\\d+(?:.\\d{0,${fixed || -1}})?`);
-    [result] = num.toString().match(reg) || [];
+    return num.toFixed(fixed);
   }
+  if (fixed === 0) {
+    return num.toString().split('.')[0];
+  }
+
+  const reg = new RegExp(`^-?\\d+(?:.\\d{0,${fixed || -1}})?`);
+  let [result] = num.toString().match(reg) || [];
   // 补足小数位数
+
   let dotIndex = result.indexOf('.');
   if (dotIndex === -1) {
     result += '.';
