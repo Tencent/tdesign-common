@@ -3,7 +3,7 @@ import isNumber from 'lodash/isNumber';
 import isObject from 'lodash/isObject';
 import log from '../log/log';
 
-export type InputNumberDecimalPlaces = number | { enableRound: boolean, decimalPlaces: number };
+export type InputNumberDecimalPlaces = number | { enableRound: boolean, places: number };
 
 /**
  * 格式化小数，并且可以控制小数点后的位数和是否进行四舍五入。
@@ -39,7 +39,7 @@ function formatDecimal(num: number, fixed: number, enableRound: boolean = true) 
 
 function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberDecimalPlaces) {
   if(isObject(decimalPlaces)) {
-    return formatDecimal(num, decimalPlaces.decimalPlaces, decimalPlaces.enableRound);
+    return formatDecimal(num, decimalPlaces.places, decimalPlaces.enableRound);
   }
   return formatDecimal(num, decimalPlaces, true);
 }
@@ -393,7 +393,7 @@ export function largeNumberToFixed(
   if (!largeNumber){
     return decimalPlacesToFixedNum(Number(number), decimalPlaces);
   }
-  const decimalPlacesNum = isObject(decimalPlaces) ? decimalPlaces.decimalPlaces : decimalPlaces;
+  const decimalPlacesNum = isObject(decimalPlaces) ? decimalPlaces.places : decimalPlaces;
   if (!isString(number)) return String(number);
   const [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
