@@ -20,25 +20,25 @@ export type InputNumberDecimalPlaces = number | { enableRound: boolean, places: 
 function formatDecimal(num: number, fixed: number, enableRound: boolean = true) {
   let result;
   if (enableRound) {
-      result = num.toFixed(fixed);
+    result = num.toFixed(fixed);
   } else {
-      const reg = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
-      result = num.toString().match(reg)[0];
+    const reg = new RegExp(`^-?\\d+(?:.\\d{0,${fixed || -1}})?`);
+    [result] = num.toString().match(reg) || [];
   }
   // 补足小数位数
   let dotIndex = result.indexOf('.');
   if (dotIndex === -1) {
-      result += '.';
-      dotIndex = result.length - 1;
+    result += '.';
+    dotIndex = result.length - 1;
   }
   while (result.length <= dotIndex + fixed) {
-      result += '0';
+    result += '0';
   }
   return result;
 }
 
 function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberDecimalPlaces) {
-  if(isObject(decimalPlaces)) {
+  if (isObject(decimalPlaces)) {
     return formatDecimal(num, decimalPlaces.places, decimalPlaces.enableRound);
   }
   return formatDecimal(num, decimalPlaces, true);
@@ -389,8 +389,8 @@ export function largeNumberToFixed(
   decimalPlaces: InputNumberDecimalPlaces = 0,
   largeNumber = true,
 ): string {
-  if(Number.isNaN(Number(number))) return ;
-  if (!largeNumber){
+  if (Number.isNaN(Number(number))) return '';
+  if (!largeNumber) {
     return decimalPlacesToFixedNum(Number(number), decimalPlaces);
   }
   const places = isObject(decimalPlaces) ? decimalPlaces.places : decimalPlaces;

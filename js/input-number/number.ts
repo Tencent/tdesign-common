@@ -17,7 +17,6 @@ export * from './large-number';
 
 export type NumberType = number | string;
 
-
 // 小于最大值，才允许继续添加
 export function canAddNumber(
   num: NumberType,
