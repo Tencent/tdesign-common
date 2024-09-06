@@ -343,31 +343,27 @@ export function largeNumberAdd(num1: string, num2: string): string {
  * 格式化小数，并且可以控制小数点后的位数和是否进行四舍五入。
  *
  * @param {number} num - 要格式化的数字。
- * @param {number} fixed - 小数点后的位数。
+ * @param {number} places - 小数点后的位数。
  * @param {boolean} rounding - 是否进行四舍五入。
  * @returns {string} 格式化后的数字字符串。
  */
-export function formatDecimal(num: number, fixed: number, enableRound: boolean = true) {
+export function formatDecimal(num: number, places: number, enableRound: boolean = true) {
+  // 开启四舍五入 直接用 toFixed
   if (enableRound) {
-    return num.toFixed(fixed);
-  }
-  if (fixed === 0) {
-    return num.toString().split('.')[0];
+    return num.toFixed(places);
   }
 
-  const reg = new RegExp(`^-?\\d+(?:.\\d{0,${fixed || -1}})?`);
-  let [result] = num.toString().match(reg) || [];
+  const [integer, decimal] = num.toString().split('.');
+  // 保留 0 位小数
+  if (places === 0) {
+    return integer;
+  }
   // 补足小数位数
-
-  let dotIndex = result.indexOf('.');
-  if (dotIndex === -1) {
-    result += '.';
-    dotIndex = result.length - 1;
+  let decimalNumber = decimal.slice(0, places);
+  if (decimal.length < places) {
+    decimalNumber += (fillZero(places - decimal.length));
   }
-  while (result.length <= dotIndex + fixed) {
-    result += '0';
-  }
-  return result;
+  return [integer, decimalNumber].join('.');
 }
 
 export function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberDecimalPlaces) {
