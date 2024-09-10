@@ -1,0 +1,9 @@
+.generate-z-index(@n, @i: 1) when (@i =< @n) {
+  & .@{prefix}-avatar__wrapper:nth-child(@{i}) {
+    z-index: calc(
+      var(--td-avatar-group-init-z-index, @avatar-group-init-zIndex) - @i
+    );
+  }
+
+  .generate-z-index(@n, (@i + 1));
+}
