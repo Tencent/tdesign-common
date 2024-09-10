@@ -11,6 +11,7 @@ import {
   largeNumberSubtract,
 } from './large-number';
 import log from '../log';
+import type { InputNumberDecimalPlaces } from './large-number';
 
 export * from './large-number';
 
@@ -240,7 +241,7 @@ export function canSetValue(number: string, lastNumber: number) {
 export function formatUnCompleteNumber(
   number: string,
   extra: {
-    decimalPlaces?: number;
+    decimalPlaces?: InputNumberDecimalPlaces;
     largeNumber?: boolean;
     isToFixed?: boolean;
   } = {}
