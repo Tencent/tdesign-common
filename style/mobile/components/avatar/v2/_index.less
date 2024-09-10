@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@import "./_mixin.less";
+
 .@{prefix}-avatar {
   display: flex;
   align-items: center;
@@ -99,9 +101,15 @@
 // 头像组
 .@{prefix}-avatar-group {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
 
-  &-offset-left {
+  &-offset-left,
+  &-offset-right {
+    & .@{prefix}-avatar__wrapper {
+      padding: @avatar-group-line-spacing 0;
+    }
+
     &-small {
       --td-avatar-margin-left: @avatar-group-offset-small; // ‘small’尺寸组合头像偏移间距
     }
@@ -115,18 +123,14 @@
     }
   }
 
-  &-offset-right {
-    &-small {
-      --td-avatar-margin-left: @avatar-group-offset-small;
-    }
+  &__collapse--slot,
+  &__collapse--default {
+    z-index: 0;
+    font-weight: 600;
+  }
 
-    &-medium {
-      --td-avatar-margin-left: @avatar-group-offset-medium;
-    }
-
-    &-large {
-      --td-avatar-margin-left: @avatar-group-offset-large;
-    }
+  &-offset-left {
+    .generate-z-index(@avatar-group-init-zIndex);
   }
 
   &__collapse--slot {
