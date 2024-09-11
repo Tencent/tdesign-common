@@ -47,8 +47,7 @@ jobs:
       - uses: tj-actions/changed-files@v45
         id: web-changed
         with:
-          files: |
-            style/web/**
+          path: style/web
   
   modify-mobile:
     runs-on: ubuntu-latest
@@ -61,8 +60,7 @@ jobs:
       - uses: tj-actions/changed-files@v45
         id: mobile-changed
         with:
-          files: |
-            style/mobile/**
+           path: style/mobile
 
   build-web:
     runs-on: ubuntu-latest
