@@ -43,11 +43,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 100
-      - uses: marceloprado/has-changed-path@v1
+          fetch-depth: 0
+      - uses: tj-actions/changed-files@v45
         id: web-changed
         with:
-          paths: style/web
+          files: style/web/**
   
   modify-mobile:
     runs-on: ubuntu-latest
@@ -56,11 +56,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 100
-      - uses: marceloprado/has-changed-path@v1
+          fetch-depth: 0
+      - uses: tj-actions/changed-files@v45
         id: mobile-changed
         with:
-          paths: style/mobile
+          files: style/mobile/**
 
   build-web:
     runs-on: ubuntu-latest
