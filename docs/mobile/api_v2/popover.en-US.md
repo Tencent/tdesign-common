@@ -14,6 +14,10 @@ toc: false
 
 {{ theme }}
 
+### Custom Height
+
+{{ customHeight }}
+
 ### Bubble Pop Direction
 
 {{ placement }}
