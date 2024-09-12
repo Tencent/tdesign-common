@@ -121,7 +121,7 @@ jobs:
       - name: init site deploy
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - run: |
           cp -rf style/mobile/* target-repo/src/_common/style/mobile
           cd target-repo/
