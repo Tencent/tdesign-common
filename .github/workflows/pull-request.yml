@@ -39,7 +39,7 @@ jobs:
   modify-web:
     runs-on: ubuntu-latest
     outputs:
-      web-changed: ${{ steps.web-changed.outputs.changed }}
+      web-changed: ${{ steps.web-changed.outputs.any_changed }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,7 +52,7 @@ jobs:
   modify-mobile:
     runs-on: ubuntu-latest
     outputs:
-      web-changed: ${{ steps.mobile-changed.outputs.changed }}
+      modify-changed: ${{ steps.mobile-changed.outputs.any_changed }}
     steps:
       - uses: actions/checkout@v4
         with:
