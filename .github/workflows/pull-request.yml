@@ -52,7 +52,7 @@ jobs:
   modify-mobile:
     runs-on: ubuntu-latest
     outputs:
-      modify-changed: ${{ steps.mobile-changed.outputs.any_changed }}
+      mobile-changed: ${{ steps.mobile-changed.outputs.any_changed }}
     steps:
       - uses: actions/checkout@v4
         with:
