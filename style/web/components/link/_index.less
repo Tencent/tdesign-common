@@ -16,58 +16,23 @@
     color: @@theme-active;
   }
   // hover - underline
-  &.@{prefix}-link--hover-underline {
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 0;
-      bottom: 0;
-      border-bottom: 1px solid @@theme-default;
-      // 下划线动画
-      opacity: 0;
-      transition: all @anim-duration-base linear;
-    }
-
-    &:hover::after {
-      opacity: 1;
-    }
-
-    &:active::after {
-      opacity: 1;
-      border-color: @@theme-active;
-    }
+  &.@{prefix}-link--hover-underline:hover {
+    text-decoration: underline;
+    // 应与图标和文字的间距相同
+    text-underline-offset: @comp-margin-xs;
+  }
+  &.@{prefix}-is-underline {
+    text-decoration: underline;
+    text-underline-offset: @comp-margin-xs;
   }
   // hover - color
   &.@{prefix}-link--hover-color {
     &:hover {
       color: @@theme-hover;
     }
-    // 下划线场景 hover active时 需要改动颜色
-    &.@{prefix}-is-underline:hover::after {
-      border-color: @@theme-hover;
-    }
-    &.@{prefix}-is-underline:active::after {
-      border-color: @@theme-active;
-    }
 
     &:active {
       color: @@theme-active;
-    }
-  }
-  // 下划线样式 优先级高于 t-link--hover-underline 需要放在后面 否则opacity 被覆盖 无法显示下划线
-  &.@{prefix}-is-underline {
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 0;
-      bottom: 0;
-      opacity: 1;
-      border-bottom: 1px solid @@theme-default;
-      transition: all @anim-duration-base linear;
     }
   }
   // 禁用样式 优先级最高 所以放在最后
@@ -78,9 +43,6 @@
     &:hover,
     &:active {
       color: @@theme-disabled;
-    }
-    &.@{prefix}-is-underline::after {
-      border-color: @@theme-disabled;
     }
   }
 }
