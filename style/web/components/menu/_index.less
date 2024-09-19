@@ -147,6 +147,7 @@ a.@{prefix}-menu__item {
         justify-content: center;
 
         .@{prefix}-menu__item-link {
+          margin-left: 0;
           opacity: 0;
           content: "";
           position: absolute;
@@ -369,6 +370,7 @@ a.@{prefix}-menu__item {
     .t-icon {
       width: 20px;
       height: 20px;
+      flex-shrink: 0;
     }
 
     .@{prefix}-fake-arrow {
@@ -567,6 +569,9 @@ a.@{prefix}-menu__item {
 
       &.@{prefix}-menu__item-link {
         color: unset;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
 
         &::before {
           content: "";
@@ -588,9 +593,7 @@ a.@{prefix}-menu__item {
       color: @menu-item-active-color--light;
     }
 
-    &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(
-    .@{prefix}-is-disabled
-  ) {
+    &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
       background-color: @menu-item-hover-bg--light;
     }
 
@@ -638,9 +641,7 @@ a.@{prefix}-menu__item {
         color: @menu-item-disabled-color-dark;
       }
 
-      &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(
-      .@{prefix}-is-disabled
-    ) {
+      &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-opened):not(.@{prefix}-is-disabled) {
         background-color: @menu-item-hover-bg--dark;
       }
 
@@ -683,12 +684,15 @@ a.@{prefix}-menu__item {
 
   &__popup {
     overflow: hidden;
-    position: absolute;
     background: @menu-theme-light;
     z-index: @menu-outer-zindex;
     border-radius: @border-radius-medium;
     opacity: 0;
     .list-style-none();
+
+    &.@{prefix}-popup__content {
+      position: absolute;
+    }
 
     &-wrapper {
       padding: @pop-padding-m;

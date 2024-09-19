@@ -82,6 +82,15 @@
     .@{prefix}-checkbox {
       align-items: center;
       font-size: 0;
+
+      &__input {
+        flex-shrink: 0;
+      }
+
+      &__label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     .@{prefix}-tree__icon--default {

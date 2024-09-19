@@ -12,11 +12,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/NoticeBar%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/notice-bar/notice-bar-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/NoticeBar%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/notice-bar/notice-bar-2.png" />
   </div>
 </div>
 
@@ -27,9 +27,9 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/NoticeBar%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/notice-bar/notice-bar-3.png" />
   </div>
-</div>  
+</div>
 
 <hr />
 
@@ -37,9 +37,9 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/NoticeBar%203.gif" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/notice-bar/notice-bar-4.gif" />
   </div>
-</div>  
+</div>
 
 <hr />
 
@@ -47,9 +47,9 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/NoticeBar%204.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/notice-bar/notice-bar-5.png" />
   </div>
-</div>  
+</div>
 
 <hr />
 
@@ -57,9 +57,9 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/NoticeBar%205.gif" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/notice-bar/notice-bar-6.gif" />
   </div>
-</div>  
+</div>
 
 
 ### 推荐/慎用示例
@@ -68,16 +68,16 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/NoticeBar%206.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/notice-bar/notice-bar-7.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [消息通知](./message) |当需要对用户进行较轻量的反馈或提示，可以自动消失或通过点击关闭，通常由用户触发。|
-| [轻提示](./toast) |当需要对用户进行轻量反馈或提示，且不需要用户进行操作时使用，轻提示会在一段时间后自动消失。|
+| 组件名                | 何时使用                                                                                   |
+| :-------------------- | :----------------------------------------------------------------------------------------- |
+| [消息通知](./message) | 当需要对用户进行较轻量的反馈或提示，可以自动消失或通过点击关闭，通常由用户触发。           |
+| [轻提示](./toast)     | 当需要对用户进行轻量反馈或提示，且不需要用户进行操作时使用，轻提示会在一段时间后自动消失。 |
 

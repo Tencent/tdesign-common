@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
 
-    > .t-fake-arrow {
+    > .@{prefix}-fake-arrow {
       transform: rotate(-90deg);
       transition: all @anim-duration-base @anim-time-fn-easing;
     }
@@ -52,7 +52,7 @@
       margin-left: @collapse-panel-header-icon-margin;
     }
 
-    &--active > .t-fake-arrow {
+    &--active > .@{prefix}-fake-arrow {
       transform: rotate(0);
     }
 
@@ -64,6 +64,17 @@
 
   &__wrapper {
     overflow: hidden;
+
+    &.@{prefix}--borderless {
+      .@{collapse-panel-cls}__header {
+        border-bottom: none;
+      }
+
+      .@{collapse-panel-cls}__body {
+        background: @bg-color-container;
+        border: none;
+      }
+    }
 
     .@{collapse-panel-cls}__header {
       padding: @collapse-panel-header-padding;

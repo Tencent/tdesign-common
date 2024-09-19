@@ -92,6 +92,8 @@ export default {
       date: '请选择日期',
       month: '请选择月份',
       year: '请选择年份',
+      quarter: '请选择季度',
+      week: '请选择周',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
     months: [
@@ -164,6 +166,7 @@ export default {
       date: '请输入正确的${name}',
       url: '请输入正确的${name}',
       required: '${name}必填',
+      whitespace: '${name}不能为空',
       max: '${name}字符长度不能超过 ${validate} 个字符，一个中文等于两个字符',
       min: '${name}字符长度不能少于 ${validate} 个字符，一个中文等于两个字符',
       len: '${name}字符长度必须是 ${validate}',
@@ -175,6 +178,7 @@ export default {
       boolean: '${name}数据类型必须是布尔类型',
       number: '${name}必须是数字',
     },
+    colonText: '：',
   },
   input: {
     placeholder: '请输入',
@@ -223,5 +227,25 @@ export default {
     mirrorTipText: '镜像',
     rotateTipText: '旋转',
     originalSizeTipText: '原始大小',
+  },
+  typography: {
+    expandText: '展开',
+    collapseText: '收起',
+    copiedText: '复制成功',
+  },
+  rate: {
+    rateText: ['极差', '失望', '一般', '满意', '惊喜'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '建设中',
+      success: '成功',
+      fail: '失败',
+      empty: '暂无数据',
+      networkError: '网络错误',
+    },
+  },
+  descriptions: {
+    colonText: '：',
   },
 } as const;

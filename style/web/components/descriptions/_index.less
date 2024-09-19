@@ -6,10 +6,10 @@
 
 @import "../../mixins/_reset.less";
 
-@componentName: descriptions;
-
-.@{prefix}-@{componentName} {
+.@{prefix}-descriptions {
   .reset;
+
+  @root: ~".@{prefix}-descriptions";
 
   &__header {
     color: @text-color-primary;
@@ -21,35 +21,30 @@
   &__body {
     border-collapse: collapse;
     font: @font-body-medium;
+    width: 100%;
 
-    &.@{prefix}-size-l {
-      td {
-        padding: @descriptions-padding-l;
-      }
-    }
+    .generate-padding(l, @descriptions-padding-l);
+    .generate-padding(m, @descriptions-padding-m);
+    .generate-padding(s, @descriptions-padding-s);
 
-    &.@{prefix}-size-m {
-      td {
-        padding: @descriptions-padding-m;
-      }
-    }
-
-    &.@{prefix}-size-s {
-      td {
-        padding: @descriptions-padding-s;
-      }
-    }
-
-    & .@{prefix}-@{componentName}__label {
+    & @{root}__label {
       color: @text-color-placeholder;
     }
 
+    &--fixed {
+      table-layout: fixed;
+    }
+
     &--border {
-      td {
-        border: @descriptions-td-border;
+      > tbody {
+        > tr {
+          > td {
+            border: @descriptions-td-border;
+          }
+        }
       }
 
-      .@{prefix}-@{componentName}__label {
+      @{root}__label {
         background-color: @bg-color-secondarycontainer;
 
         &:hover {

@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@import "./_mixin.less";
+
 .@{prefix}-radio {
   position: relative;
   display: inline-flex;
@@ -24,6 +26,7 @@
 
   &__icon {
     position: relative;
+    margin-top: calc((@radio-label-line-height - @radio-icon-size) / 2);
     width: @radio-icon-size;
     height: @radio-icon-size;
     font-size: @radio-icon-size;
@@ -48,24 +51,31 @@
     }
 
     &-circle {
-      width: 42px;
-      height: 42px;
-      border: 3px solid @radio-icon-color;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(.5);
+      width: @radio-icon-size;
+      height: @radio-icon-size;
       box-sizing: border-box;
 
-      &--disabled {
+      &::after {
+        content: "";
+        width: calc(200% - 3px);
+        height: calc(200% - 3px);
+        border-radius: 50%;
+        border: 3px solid @radio-icon-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.5);
+        box-sizing: border-box;
+      }
+
+      &--disabled::after {
         background: @radio-icon-disabled-bg-color;
       }
     }
 
     &-dot {
-      width: 42px;
-      height: 42px;
+      width: calc((@radio-icon-size - 3px) * 2);
+      height: calc((@radio-icon-size - 3px) * 2);
       border: 3px solid @radio-icon-checked-color;
       border-radius: 50%;
       position: absolute;
@@ -80,8 +90,8 @@
       &::after {
         content: "";
         display: block;
-        width: 24px;
-        height: 24px;
+        width: @radio-icon-size;
+        height: @radio-icon-size;
         background: @radio-icon-checked-color;
         border-radius: 50%;
       }
@@ -169,6 +179,6 @@
   }
 
   &__icon-wrap {
-    display: block;
+    display: block !important;
   }
 }

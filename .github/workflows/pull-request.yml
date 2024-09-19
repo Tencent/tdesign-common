@@ -9,7 +9,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: check_email
         run: |
           log_emails=$(git log --pretty=format:"%ae %ce" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo $log_emails && echo "邮箱校验非法" && exit 2;else echo "邮箱校验通过";fi
@@ -18,11 +18,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
-      - uses: actions/cache@v2
+          node-version: 18
+      - uses: actions/cache@v4
         env:
           cache-name: cache-nodemodules
         with:
@@ -39,50 +39,50 @@ jobs:
   modify-web:
     runs-on: ubuntu-latest
     outputs:
-      web-changed: ${{ steps.web-changed.outputs.changed }}
+      web-changed: ${{ steps.web-changed.outputs.any_changed }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 100
-      - uses: marceloprado/has-changed-path@v1
+          fetch-depth: 0
+      - uses: tj-actions/changed-files@v45
         id: web-changed
         with:
-          paths: style/web
+          path: style/web
   
   modify-mobile:
     runs-on: ubuntu-latest
     outputs:
-      web-changed: ${{ steps.mobile-changed.outputs.changed }}
+      mobile-changed: ${{ steps.mobile-changed.outputs.any_changed }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 100
-      - uses: marceloprado/has-changed-path@v1
+          fetch-depth: 0
+      - uses: tj-actions/changed-files@v45
         id: mobile-changed
         with:
-          paths: style/mobile
+           path: style/mobile
 
   build-web:
     runs-on: ubuntu-latest
     needs: modify-web
     if: needs.modify-web.outputs.web-changed == 'true'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: Tencent/tdesign-vue
           submodules: recursive
           path: target-repo
 
       - name: init site deploy
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - run: |
           cp -rf style/web/* target-repo/src/_common/style/web
           cd target-repo/src/_common/
           git diff
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         env:
           cache-name: cache-nodemodules
         with:
@@ -100,7 +100,7 @@ jobs:
           zip -r _site.zip _site
 
       - name: upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: _site
           path: target-repo/_site.zip
@@ -111,22 +111,22 @@ jobs:
     needs: modify-mobile
     if: needs.modify-mobile.outputs.mobile-changed == 'true'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: Tencent/tdesign-mobile-vue
           submodules: recursive
           path: target-repo
 
       - name: init site deploy
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - run: |
           cp -rf style/mobile/* target-repo/src/_common/style/mobile
           cd target-repo/
           git status
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         env:
           cache-name: cache-nodemodules
         with:
@@ -144,7 +144,7 @@ jobs:
           zip -r _site.zip _site
 
       - name: upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: _site
           path: target-repo/_site.zip

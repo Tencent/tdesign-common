@@ -1,6 +1,3 @@
-
-
-
 ### 何时使用
 
 当数据内容较多，需要分页展示时；
@@ -15,23 +12,21 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-2@2x.png"/>
+    <img src="https://tdesign.gtimg.com/site/design/guide/pagination/pagination-2@2x.png"/>
   </div>
 
   <div class="item"></div>
 </div>
-
 
 ##### 当空间有限时，可使用极简版或迷你版，布局在局部模块内。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-1@2x.png"/>
+    <img src="https://tdesign.gtimg.com/site/design/guide/pagination/pagination-1@2x.png"/>
   </div>
 
   <div class="item"></div>
 </div>
-
 
 ### 组件搭配使用
 
@@ -39,11 +34,8 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/pagination-3@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/pagination/pagination-3@2x.png" />
   </div>
 
   <div class="item"></div>
 </div>
-
-
-

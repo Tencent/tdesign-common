@@ -6,36 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### 中部弹出
+### 基础类型
 
-使用场景：常用于轻提示场景
+#### 基础弹出层
 
-{{ placement-center }}
+{{ base }}
 
-### 底部弹出
+### 组件示例
 
-使用场景：常用于较重要的操作反馈提示场景或不打断主任务的临时操作
+#### 带标题和操作
 
-{{ placement-bottom }}
+{{ with-title }}
 
-### 顶部弹出
+#### 带自定义关闭按钮
 
-使用场景：常用于及时反馈
-
-{{ placement-top }}
-
-### 左侧弹出
-
-使用场景：常用于页面导航场景
-
-{{ placement-left }}
-
-### 右侧弹出
-
-使用场景：常用于页面导航场景
-
-{{ placement-right }}
-
-### 自定义动画
-
-{{ custom-animation }}
+{{ custom-close }}

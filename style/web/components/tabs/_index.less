@@ -42,15 +42,24 @@
 
     &--left {
       left: 0;
+      z-index: 2;
     }
 
     &--right {
       right: 0;
+      z-index: 2;
 
       .@{prefix}-tabs__btn {
         &:first-child {
           box-shadow: @tab-bar-operations-btn-box-shadow;
         }
+      }
+
+      .@{prefix}-tabs__nav-action {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex: 1;
       }
     }
   }
@@ -170,6 +179,7 @@
     overflow: hidden;
     white-space: nowrap;
     transform: @tab-nav-scroll-transform;
+    z-index: 1;
   }
 
   &__nav-wrap {

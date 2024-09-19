@@ -11,13 +11,13 @@
 ##### 带图标的导航栏与[抽屉](./drawer)、[动作面板](./action-sheet)组合使用，用于唤起一组操作或功能。
 
 <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-1.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-1.png" />
 </div>
 
 <hr />
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%201-2.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-2.png" />
 </div>
 
 
@@ -26,7 +26,7 @@
 ##### 通常用来承载页面标题和返回操作，点击跳转回到上一个打开的页面。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-1.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-3.png" />
 </div>
 
 <hr />
@@ -35,11 +35,11 @@
 
 <div class="legend">
    <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-4.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-3.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-5.png" />
   </div>
 </div>
 
@@ -48,6 +48,6 @@
 ##### 在需要定位的场景，通常结合当前定位进行、所在城市等进行展示并提供切换的能力。
 <div class="legend">
  <div class="item">
-   <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Navbar%202-4.png" />
+   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-6.png" />
  </div>
 </div>

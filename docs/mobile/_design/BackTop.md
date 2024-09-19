@@ -12,7 +12,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/BackTop%201.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/back-top/back-top-1.png" />
   </div>
 </div>
 
@@ -24,12 +24,12 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/BackTop%202.gif" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/back-top/back-top-2.gif" />
   </div>
 </div>
 
 ### 相似组件
 
-| 组件名                      | 何时使用                                                                                     |
-| :-------------------------- | :------------------------------------------------------------------------------------------- |
-| [悬浮按钮](./fab)  | 当某个操作为全局操作，且为用户高频/业务强推的操作时可使用。                                             |
+| 组件名            | 何时使用                                                    |
+| :---------------- | :---------------------------------------------------------- |
+| [悬浮按钮](./fab) | 当某个操作为全局操作，且为用户高频/业务强推的操作时可使用。 |

@@ -1,0 +1,60 @@
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "../../mixins/_reset.less";
+
+.@{prefix}-empty {
+  .reset;
+
+  padding: @empty-padding;
+  text-align: center;
+
+  &__image {
+    font-size: @empty-image-size-medium;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    font: @empty-title-font;
+    color: @empty-title-color;
+    margin-top: @empty-title-margin-top;
+    margin-bottom: @empty-title-margin-bottom;
+  }
+
+  &__description {
+    font: @empty-description-font;
+    color: @empty-description-color;
+    margin-top: @empty-description-margin-top;
+    margin-bottom: @empty-description-margin-bottom;
+  }
+
+  &__action {
+    margin-top: @empty-action-margin-top;
+    margin-bottom: @empty-action-margin-bottom;
+  }
+
+  // 不同内置尺寸的相应调整
+  &.@{prefix}-size-s {
+    .@{prefix}-empty__image {
+      font-size: @empty-image-size-small;
+    }
+
+    .@{prefix}-empty__title {
+      font: @empty-title-font-small;
+      margin-top: @empty-title-margin-top-small;
+    }
+
+    .@{prefix}-empty__description {
+      font: @empty-description-font-small;
+      margin-top: @empty-description-margin-top-small;
+    }
+  }
+
+  &.@{prefix}-size-l {
+    .@{prefix}-empty__image {
+      font-size: @empty-image-size-large;
+    }
+  }
+}

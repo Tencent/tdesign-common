@@ -26,15 +26,29 @@
 @countdown-large-no-unit-font-size: 18px; // 'large'尺寸无单位分割文本大小
 
 // 纯数字倒计时文本颜色
-@countdown-default-text-color: var(--td-countdown-default-color, @text-color-primary);
+@countdown-default-text-color: var(
+  --td-countdown-default-color,
+  @text-color-primary
+);
 // 方形/圆形底倒计时文本颜色
 @countdown-text-color: var(--td-countdown-round-color, @text-color-anti);
 // 方形/圆形底背景颜色
 @countdown-bg-color: var(--td-countdown-bg-color, @error-color-6);
 // 带方形底倒计时圆角大小
-@countdown-square-border-radius: var(--td-countdown-square-border-radius, @radius-small);
+@countdown-square-border-radius: var(
+  --td-countdown-square-border-radius,
+  @radius-small
+);
 // 带圆形底倒计时圆角大小
-@countdown-round-border-radius: var(--td-countdown-round-border-radius, @radius-circle);
+@countdown-round-border-radius: var(
+  --td-countdown-round-border-radius,
+  @radius-circle
+);
+
+@countdown-number-font-family: TCloudNumber, -apple-system, BlinkMacSystemFont,
+  Segoe UI, Roboto, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei,
+  Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+  Segoe UI Symbol;
 
 @countdown: ~"@{prefix}-count-down";
 @item: ~"@{countdown}__item";

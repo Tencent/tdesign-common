@@ -59,14 +59,16 @@ export default {
     empty: 'Nessun dato',
     loadingText: 'Caricamento in corso, attendere',
     loadingMoreText: 'Clicca per caricare di più',
-    filterInputPlaceholder: 'Inserisci il contenuto (nessun valore predefinito)',
+    filterInputPlaceholder:
+      'Inserisci il contenuto (nessun valore predefinito)',
     sortAscendingOperationText: 'Clicca per ordinare in modo crescente',
     sortCancelOperationText: "Clicca per annullare l'ordinamento",
     sortDescendingOperationText: 'Clicca per ordinare in modo decrescente',
     clearFilterResultButtonText: 'Pulisci il filtro',
     columnConfigButtonText: 'Configurazione delle colonne',
     columnConfigTitleText: 'Configurazione delle colonne della tabella',
-    columnConfigDescriptionText: 'Seleziona le colonne dei dati da visualizzare nella tabella',
+    columnConfigDescriptionText:
+      'Seleziona le colonne dei dati da visualizzare nella tabella',
     confirmText: 'Conferma',
     cancelText: 'Annulla',
     resetText: 'Ripristina',
@@ -92,6 +94,8 @@ export default {
       date: 'Seleziona la data',
       month: 'Seleziona il mese',
       year: "Seleziona l'anno",
+      quarter: 'Seleziona il trimestre',
+      week: 'Seleziona una settimana',
     },
     weekdays: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
     months: [
@@ -108,7 +112,12 @@ export default {
       'Nov',
       'Dic',
     ],
-    quarters: ['Primo trimestre', 'Secondo trimestre', 'Terzo trimestre', 'Quarto trimestre'],
+    quarters: [
+      'Primo trimestre',
+      'Secondo trimestre',
+      'Terzo trimestre',
+      'Quarto trimestre',
+    ],
     rangeSeparator: ' - ',
     direction: 'ltr',
     format: 'DD-MM-YYYY',
@@ -163,6 +172,7 @@ export default {
     errorMessage: {
       date: 'Inserisci la ${name} corretta',
       url: 'Inserisci la ${name} corretta',
+      whitespace: 'Il ${name} non può essere vuoto',
       required: '${name} obbligatorio',
       max: 'La lunghezza dei caratteri di ${name} non può superare i ${validate} caratteri',
       min: 'La lunghezza dei caratteri di ${name} non può essere inferiore a ${validate} caratteri',
@@ -175,6 +185,7 @@ export default {
       boolean: 'Il tipo di dati di ${name} deve essere booleano',
       number: '${name} deve essere un numero',
     },
+    colonText: ':',
   },
   input: {
     placeholder: 'Inserisci',
@@ -194,7 +205,8 @@ export default {
   colorPicker: {
     swatchColorTitle: 'Colori predefiniti dal sistema',
     recentColorTitle: 'Colori usati di recente',
-    clearConfirmText: 'Sei sicuro di voler cancellare i colori usati di recente?',
+    clearConfirmText:
+      'Sei sicuro di voler cancellare i colori usati di recente?',
   },
   guide: {
     finishButtonProps: {
@@ -223,5 +235,25 @@ export default {
     mirrorTipText: 'Specchio',
     rotateTipText: 'Ruota',
     originalSizeTipText: 'Dimensione originale',
+  },
+  typography: {
+    expandText: 'Espandere',
+    collapseText: 'ripiegare',
+    copiedText: 'Copia completata',
+  },
+  rate: {
+    rateText: ['Terribile', 'Deluso', 'Ordinario', 'Soddisfatto', 'Sorpreso'],
+  },
+  empty: {
+    titleText: {
+      maintenance: 'In costruzione',
+      success: 'Successo',
+      fail: 'Fallimento',
+      empty: 'Nessun dato',
+      networkError: 'Errore di rete',
+    }
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;

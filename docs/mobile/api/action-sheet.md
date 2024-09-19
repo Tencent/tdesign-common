@@ -26,3 +26,11 @@ toc: false
 ### 宫格型-多页
 
 {{ grid-multiple }}
+
+### 组件状态
+
+{{ status }}
+
+### 组件样式
+
+{{ align }}

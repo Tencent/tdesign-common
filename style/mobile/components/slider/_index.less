@@ -6,7 +6,7 @@
 
 .@{slider} {
   position: relative;
-  height: @slider-hander-height + 6px;
+  height: @slider-handle-height + 6px;
 
   &--with-marks {
     margin-top: 24px;
@@ -16,7 +16,7 @@
     position: absolute;
     width: 100%;
     top: 50%;
-    margin-top: (-@slider-bar-height / 2);
+    margin-top: calc(-@slider-bar-height / 2);
     height: @slider-bar-height;
     background-color: @slider-bar-bg-color;
     transition: background-color .3s;
@@ -25,7 +25,7 @@
   &__track {
     position: absolute;
     top: 50%;
-    margin-top: (-@slider-bar-height / 2);
+    margin-top: calc(-@slider-bar-height / 2);
     height: @slider-bar-height;
     background-color: @slider-track-bg-color;
     transition: background-color .3s;
@@ -34,9 +34,9 @@
   &__handle {
     position: absolute;
     top: 50%;
-    width: @slider-hander-width;
-    height: @slider-hander-height;
-    margin-top: (-@slider-hander-height / 2);
+    width: @slider-handle-width;
+    height: @slider-handle-height;
+    margin-top: calc(-@slider-handle-height / 2);
     background-color: #fff;
     border: solid 2px @brand-color;
     border-radius: 50%;
@@ -52,11 +52,11 @@
 
   &__mark {
     position: absolute;
-    top: -@slider-hander-height - 4px;
+    top: -@slider-handle-height - 4px;
     left: 0;
     width: 100%;
     font-size: @slider-font-size-base;
-    height: @slider-hander-height + 4px;
+    height: @slider-handle-height + 4px;
 
     &-text {
       position: absolute;
@@ -118,7 +118,7 @@
 
     &.@{prefix}-is {
       &-mark {
-        padding-top: @slider-hander-height + 4px;
+        padding-top: @slider-handle-height + 4px;
       }
 
       &-disabled {
@@ -150,6 +150,6 @@
 
 .@{prefix}-is-mark-slider {
   .@{prefix}-cell--label {
-    padding-top: @slider-hander-height + 4px;
+    padding-top: @slider-handle-height + 4px;
   }
 }

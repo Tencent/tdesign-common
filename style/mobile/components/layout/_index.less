@@ -1,0 +1,18 @@
+@import "../../base.less";
+
+@import "./_mixin.less";
+
+.@{prefix}-row {
+  display: flex;
+  flex-flow: row;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.@{prefix}-col {
+  display: block;
+  box-sizing: border-box;
+  min-height: 1px;
+}
+
+.col-generate(24);

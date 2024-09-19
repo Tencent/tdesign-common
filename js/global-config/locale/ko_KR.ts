@@ -92,6 +92,8 @@ export default {
       date: '날짜를 선택하세요Z',
       month: '월을 선택하세요',
       year: '연도를 선택하세요',
+      quarter: '분기별 선택',
+      week: '요일 선택',
     },
     weekdays: ['월', '화', '수', '목', '금', '토', '일'],
     months: [
@@ -164,6 +166,7 @@ export default {
       date: '정확한 내용을 입력해주세요${name}',
       url: '정확한 내용을 입력해주세요${name}',
       required: '${name}필수의',
+      whitespace: '${name}은 비어 있을 수 없습니다',
       max: '${name}문자 길이는 초과할 수 없습니다 ${validate} 캐릭터，한자는 두 글자와 같다',
       min: '${name}문자 길이는 다음보다 작을 수 없습니다 ${validate} 캐릭터，한자는 두 글자와 같다',
       len: '${name}문자 길이는 다음과 같아야 합니다. ${validate}',
@@ -175,6 +178,7 @@ export default {
       boolean: '${name}데이터 유형은 부울이어야 합니다',
       number: '${name}숫자여야 합니다',
     },
+    colonText: ':',
   },
   input: {
     placeholder: '들어 오세요',
@@ -223,5 +227,25 @@ export default {
     mirrorTipText: '미러 이미지',
     rotateTipText: '회전하다',
     originalSizeTipText: '원본 크기',
+  },
+  typography: {
+    expandText: '펼치다',
+    collapseText: '접다',
+    copiedText: '복사 성공',
+  },
+  rate: {
+    rateText: ['최악', '실망', '보통', '만족', '놀람'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '건설 중',
+      success: '성공',
+      fail: '실패',
+      empty: '데이터 없음',
+      networkError: '네트워크 오류',
+    },
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;

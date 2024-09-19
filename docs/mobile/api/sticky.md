@@ -6,15 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### 基础吸顶
+## 代码演示
 
 将内容包裹在 `Sticky` 组件内
 
+### 基础吸顶
+
 {{ base }}
+
 
 ### 吸顶距离
 
-{{ offsetTop }}
+{{ offset }}
 
 ### 指定容器
 

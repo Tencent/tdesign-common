@@ -269,7 +269,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">20</em></h3>
+<h3>Data Display<em class="tag">22</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar-en">
@@ -382,7 +382,7 @@ spline: explain
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-swiper-dark.png" />
       <p class="name">Swiper</p>
     </a>
-  </div> 
+  </div>
   <div class="image-wrapper">
     <a class="item" href="./components/table-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-table.png" />
@@ -453,8 +453,8 @@ spline: explain
 
   <div class="image-wrapper">
     <a class="item" href="./components/guide-en">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-button.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-button-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-guide.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-guide-dark.png" />
       <p class="name">Guide</p>
     </a>
   </div>

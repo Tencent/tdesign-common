@@ -428,9 +428,9 @@ export function flagActive(data: any[], { ...args }: any) {
 
 // extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
 export function extractTimeFormat(dateFormat: string = '') {
-  const res = dateFormat.match(/(a\s)?h{1,2}(:m{1,2})?(:s{1,2})?(\sa)?/i);
-  if (!res) return null;
-  return res[0];
+  return dateFormat
+    .replace(/\W?Y{2,4}|\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '')
+    .trim();
 }
 
 /**
@@ -515,4 +515,13 @@ export function isEnabledDate({
     isEnabled = !dayjs(value).isAfter(compareMax, availableMode);
   }
   return isEnabled;
+}
+
+/**
+ * formatDate 方法需要date作为入参，部分场景需要将timestamp或格式化后的时间string转换为date进行使用
+ */
+export function covertToDate(value: string, valueType: string) {
+  return valueType === 'time-stamp'
+    ? new Date(value)
+    : dayjs(value, valueType).toDate();
 }

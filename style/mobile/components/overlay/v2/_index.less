@@ -2,6 +2,8 @@
 
 @import "./_var.less";
 
+@import "./_animate.less";
+
 .@{overlay} {
   position: fixed;
   top: 0;
@@ -9,9 +11,8 @@
   width: 100%;
   bottom: 0;
   background-color: @overlay-bg-color;
-  transition: opacity @overlay-transition-duration ease;
-  opacity: 1;
 
+  // Mobile Vue: Transition
   &-enter-from,
   &-leave-to {
     opacity: 0;
@@ -21,5 +22,9 @@
   &-leave-active {
     transition-property: opacity;
     transition-timing-function: ease;
+  }
+
+  &--lock {
+    overflow: hidden;
   }
 }

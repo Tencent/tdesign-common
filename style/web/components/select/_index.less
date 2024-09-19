@@ -210,7 +210,7 @@
   font: @select-font-s;
 }
 
-.@{prefix}-select-option.@{prefix}-is-selected {
+.@{prefix}-select-option.@{prefix}-is-selected:not(.@{prefix}-is-disabled) {
   color: @select-selected-color;
   background-color: @select-selected-bg-color;
   transition: all @anim-duration-base linear;

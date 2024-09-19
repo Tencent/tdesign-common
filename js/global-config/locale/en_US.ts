@@ -5,7 +5,7 @@ import 'dayjs/locale/en';
 export default {
   pagination: {
     itemsPerPage: '{size} / page',
-    jumpTo: 'jump to',
+    jumpTo: 'Jump to',
     page: '',
     total: '{total} items',
   },
@@ -23,14 +23,14 @@ export default {
     showWeekend: 'Show Week',
     today: 'Today',
     thisMonth: 'This Month',
-    week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Staturday,Sunday',
+    week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Saturday,Sunday',
     cellMonth:
       'January,February,March,April,May,June,July,August,September,October,November,December',
   },
   transfer: {
     title: '{checked} / {total}',
     empty: 'Empty Data',
-    placeholder: 'enter keyworkd to search',
+    placeholder: 'enter keyword to search',
   },
   timePicker: {
     dayjsLocale: 'en',
@@ -94,6 +94,8 @@ export default {
       date: 'select date',
       month: 'select month',
       year: 'select year',
+      quarter: 'select quarter',
+      week: 'select week',
     },
     weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     months: [
@@ -165,6 +167,7 @@ export default {
       date: '${name} is invalid',
       url: '${name} is invalid',
       required: '${name} is required',
+      whitespace: '${name} cannot be empty',
       max: '${name} must be at least ${validate} characters',
       min: '${name} cannot be longer than ${validate} characters',
       len: '${name} must be exactly ${validate} characters',
@@ -176,6 +179,7 @@ export default {
       boolean: '${name} is not a boolean',
       number: '${name} must be a number',
     },
+    colonText: ':',
   },
   input: {
     placeholder: 'please enter',
@@ -214,15 +218,35 @@ export default {
       content: 'Last Step',
       theme: 'default',
     },
-    image: {
-      errorText: 'unable to load',
-      loadingText: 'loading',
-    },
-    imageViewer: {
-      errorText: 'unable to load',
-      mirrorTipText: 'mirror',
-      rotateTipText: 'rotate',
-      originalSizeTipText: 'original',
-    },
+  },
+  image: {
+    errorText: 'unable to load',
+    loadingText: 'loading',
+  },
+  imageViewer: {
+    errorText: 'unable to load',
+    mirrorTipText: 'mirror',
+    rotateTipText: 'rotate',
+    originalSizeTipText: 'original',
+  },
+  typography: {
+    expandText: 'more',
+    collapseText: 'collapse',
+    copiedText: 'copied',
+  },
+  rate: {
+    rateText: ['terrible', 'disappointed', 'normal', 'satisfied', 'surprised'],
+  },
+  empty: {
+    titleText: {
+      maintenance: 'Under Construction',
+      success: 'Success',
+      fail: 'Failure',
+      empty: 'No Data',
+      networkError: 'Network Error',
+    }
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;

@@ -10,11 +10,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Image%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/image/image-1.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Image%201-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/image/image-2.png" />
   </div>
 </div>
 
@@ -24,11 +24,9 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Image%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/image/image-3.png" />
   </div>
 </div>
-
-
 
 ### 推荐/慎用示例
 
@@ -36,20 +34,18 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Image%203-1.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/image/image-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Image%203-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/image/image-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
-
-
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
+| 组件名                     | 何时使用                                                                           |
+| :------------------------- | :--------------------------------------------------------------------------------- |
 | [图片预览](./image-viewer) | 当需要对展示的图片进行快速查看，以及在查看时存在放大、缩小、删除等操作诉求时使用。 |

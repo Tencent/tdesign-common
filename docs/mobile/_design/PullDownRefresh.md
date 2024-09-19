@@ -11,21 +11,21 @@
 ##### 下拉刷新位于内容最上方；通常在页面最顶部或者选项卡、吸顶模块之下。
 
 <div class="legend">
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%201-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh-1.png" />
   </div>
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%201-2.png" />
-  </div> 
-  
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh-2.png" />
+  </div>
+
 </div>
 
 <div class="legend">
-  
+
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%201-3.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh-3.png" />
   </div>
 </div>
 
@@ -35,7 +35,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%202.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh-4.png" />
   </div>
 </div>
 
@@ -45,11 +45,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%203-1.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh-5.png" />
     <em></em>
   </div>
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/pulldownrefresh%203-2.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/pull-downre-fresh/pull-downre-fresh-6.png" />
     <em></em>
   </div>
 </div>
@@ -57,7 +57,6 @@
 
 ### 相似组件
 
-| 组件名 | 何时使用                             |
-| :----- | :----------------------------------- |
-| [加载](./loading) |当打开新页面或操作完成后，等待加载时使用。|
-
+| 组件名            | 何时使用                                   |
+| :---------------- | :----------------------------------------- |
+| [加载](./loading) | 当打开新页面或操作完成后，等待加载时使用。 |

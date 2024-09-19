@@ -223,6 +223,7 @@
     }
   }
 
+  &--dashed,
   &--outline {
     color: @button-default-outline-color;
     background-color: transparent;
@@ -325,41 +326,8 @@
   }
 
   &--dashed {
-    background-color: transparent;
-    border-style: dashed;
-
-    &.@{button}--primary {
-      color: @button-primary-dashed-color;
-
-      &::after {
-        border-color: @button-primary-dashed-border-color;
-      }
-
-      &.@{button}--disabled {
-        background-color: transparent;
-        color: @button-primary-dashed-disabled-color;
-
-        &::after {
-          border-color: @button-primary-dashed-disabled-color;
-        }
-      }
-    }
-
-    &.@{button}--danger {
-      color: @button-danger-dashed-color;
-
-      &::after {
-        border-color: @button-danger-dashed-border-color;
-      }
-
-      &.@{button}--disabled {
-        background-color: transparent;
-        color: @button-danger-dashed-disabled-color;
-
-        &::after {
-          border-color: @button-danger-dashed-disabled-color;
-        }
-      }
+    &::after {
+      border-style: dashed;
     }
   }
 

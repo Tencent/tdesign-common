@@ -12,7 +12,7 @@
 ##### 级联选择器与[索引](./indexes)组合使用，当每个层级选项较多时，配合索引有利于用户快速找到目标选项。
 
 <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cascader%201.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cascader/cascader-1.png" />
 </div>
 
 
@@ -21,7 +21,7 @@
 ##### 在表单中，级联选择器可放置于表单内容需要的顺序中，通常用于地址信息的选择和填写。
 <div class="legend">
  <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cascader%202.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cascader/cascader-2.png" />
  </div>
 </div>
 
@@ -32,8 +32,8 @@
 
 <div class="legend">
  <div class="item">
-  <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cascader%203-1.png" />
-  <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+  <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cascader/cascader-3.png" />
+  <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
  </div>
 </div>
 
@@ -43,13 +43,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cascader%203-2.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cascader/cascader-4.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/mobile-guide/Cascader%203-3.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cascader/cascader-5.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 

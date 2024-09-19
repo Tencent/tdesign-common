@@ -71,7 +71,6 @@
     font: @upload-list-item-font-size;
 
     &.@{prefix}-is--error {
-
       .@{prefix}-upload__list-name {
         color: @upload-list-item-error-color;
       }
@@ -150,7 +149,6 @@
       }
 
       &.@{prefix}-is--error {
-
         & .@{prefix}-icon-warning_fill {
           color: @upload-card-item-error-icon-warning-color;
           margin-bottom: @upload-card-item-error-icon-warning-margin-bottom;
@@ -478,6 +476,13 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  > .@{prefix}-image__wrapper--shape-square {
+    width: 100%;
+
+    .@{prefix}-space-item {
+      text-align: center;
+    }
+  }
 
   > img {
     max-width: 100%;

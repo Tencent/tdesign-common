@@ -92,6 +92,8 @@ export default {
       date: '日付を選択してください',
       month: '月を選択してください',
       year: '年度を選択してください',
+      quarter: '四半期を選択してください',
+      week: '週を選択してください',
     },
     weekdays: ['月', '火', '水', '木', '金', '土', '日'],
     months: [
@@ -164,6 +166,7 @@ export default {
       date: '正しく入力してください${name}',
       url: '正しく入力してください${name}',
       required: '${name}必須項目',
+      whitespace: '${name}を空にすることはできません',
       max: '${name}文字数制限 ${validate} 文字，一中二文',
       min: '${name}を下回る文字数は使用できません ${validate} 文字，一中二文',
       len: '${name}文字の長さは、必ず ${validate}',
@@ -175,6 +178,7 @@ export default {
       boolean: '${name}データ型は Boolean 型であること',
       number: '${name}デジタルであること',
     },
+    colonText: ':',
   },
   input: {
     placeholder: '入力してください',
@@ -223,5 +227,25 @@ export default {
     mirrorTipText: '鏡像',
     rotateTipText: '回転する',
     originalSizeTipText: 'オリジナルサイズ',
+  },
+  typography: {
+    expandText: 'もっと拡大する',
+    collapseText: '畳む',
+    copiedText: 'コピー成功',
+  },
+  rate: {
+    rateText: ['ひどい', 'がっかり', '普通', '満足', '驚き'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '建設中',
+      success: '成功',
+      fail: '失敗',
+      empty: 'データなし',
+      networkError: 'ネットワークエラー',
+    },
+  },
+  descriptions: {
+    colonText: ':',
   },
 } as const;

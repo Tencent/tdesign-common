@@ -1,6 +1,3 @@
-
-
-
 ### 何时使用
 
 当需要一个附加的面板来对页面内容做补充说明时；
@@ -13,7 +10,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89------------1@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/drawer/drawer-1@2x.png" />
   </div>
 
   <div class="item"></div>
@@ -25,12 +22,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89------------2@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/drawer/drawer-2@2x.png" />
   </div>
 
   <div class="item"></div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -38,20 +34,19 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89----------3@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/drawer/drawer-3@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/%E6%8A%BD%E5%B1%89----------4@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/drawer/drawer-4@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 ### 相似组件
 
-| 组件名 | 何时使用                                                                                |
-| :----- | :-------------------------------------------------------------------------------------- |
-| [抽屉](./drawer)  | 当需要一个附加的面板来对页面内容做补充说明时；当需要在当前任务流中插入临时操作任务时。  |
-| [对话框](./dialog) | 需要对用户进行阻断式提示时。                                                            |
-
+| 组件名             | 何时使用                                                                               |
+| :----------------- | :------------------------------------------------------------------------------------- |
+| [抽屉](./drawer)   | 当需要一个附加的面板来对页面内容做补充说明时；当需要在当前任务流中插入临时操作任务时。 |
+| [对话框](./dialog) | 需要对用户进行阻断式提示时。                                                           |

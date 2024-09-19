@@ -4,8 +4,8 @@ export default {
   classPrefix: 't',
   animation: {
     include: ['ripple', 'expand', 'fade'],
-    exclude: []
-  } as Record<'include'|'exclude', Array<AnimationType>>,
+    exclude: [],
+  } as Record<'include' | 'exclude', Array<AnimationType>>,
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,
@@ -45,6 +45,8 @@ export default {
     treeExpandAndFoldIcon: undefined,
     // 是否隐藏排序图标的文本提示
     hideSortTips: false,
+    // 全局表格尺寸配置
+    size: 'medium',
   },
   select: {
     // 清除按钮
@@ -72,5 +74,21 @@ export default {
   },
   form: {
     requiredMark: undefined,
+  },
+  empty: {
+    titleText: {
+      maintenance: undefined,
+      success: undefined,
+      fail: undefined,
+      empty: undefined,
+      networkError: undefined,
+    },
+    image: {
+      maintenance: undefined,
+      success: undefined,
+      fail: undefined,
+      empty: undefined,
+      networkError: undefined,
+    }
   },
 } as const;

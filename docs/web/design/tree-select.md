@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 用于选取树形结构数据，如文件结构、组织架构、地理行政区等。
@@ -10,7 +8,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/treeselect%20a.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-1@2x.png" />
   </div>
 </div>
 
@@ -20,7 +18,7 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/treeselect%20b.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-2@2x.png" />
   </div>
 </div>
 
@@ -28,9 +26,7 @@
 
 ##### 多选树选择中父子项具有联动关系，当子项部分选中时，父项为半选中状态；点击半选中状态的多选框，执行全选操作；当子项全被选中时，父项为选中状态。
 
-
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/20211221142525.png" />
-
+<img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-3@2x.png" />
 
 ### 推荐/慎用示例
 
@@ -38,13 +34,13 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/treeselect%20ba.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-4@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
   
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/treeselect%20bb.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-5@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -54,21 +50,21 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/treeselectea.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-6@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
   
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/treeselecteb.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-7@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 ### 相似组件
 
-| 组件名 | 何时使用                                                     |
-| :----- | :----------------------------------------------------------- |
-| [树选择](./treeselect)   | 用于选取树形结构数据，如文件结构、组织架构、地理行政区等。 |
-| [级联选择器](./Cascader)   | 当数据集合较大，用户需要从有清晰层级结构的数据集合中进行选择时。                     |
-| [穿梭框](./Transfer)   | 一组数据进行两种状态的分类时；总类和子类的选项筛选时。                     |
-| [树](./tree) | 用于承载有父子关系的结构化内容，提供内容层级的展示。       |
+| 组件名                   | 何时使用                                                         |
+| :----------------------- | :--------------------------------------------------------------- |
+| [树选择](./treeselect)   | 用于选取树形结构数据，如文件结构、组织架构、地理行政区等。       |
+| [级联选择器](./Cascader) | 当数据集合较大，用户需要从有清晰层级结构的数据集合中进行选择时。 |
+| [穿梭框](./Transfer)     | 一组数据进行两种状态的分类时；总类和子类的选项筛选时。           |
+| [树](./tree)             | 用于承载有父子关系的结构化内容，提供内容层级的展示。             |

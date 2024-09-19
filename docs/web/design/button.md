@@ -1,9 +1,6 @@
-
-
 ### 何时使用
 
 当操作命令需要用户点击，触发相应业务逻辑时。
-
 
 ### 与页面布局相关
 
@@ -11,24 +8,24 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-1@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-1@2x.png" />
     <em>图示：位于字段后面</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-2@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-2@2x.png" />
     <em>图示：位于内容下方</em>
   </div>
 </div>
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-3@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-3@2x.png" />
     <em>图示：位于起始点后面</em>
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-4@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-4@2x.png" />
     <em>图示：位于内容后面</em>
   </div>
 </div>
@@ -39,12 +36,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-5@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-5@2x.png" />
   </div>
 
   <div class="item"></div>
 </div>
-
 
 <hr />
 
@@ -52,35 +48,31 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-6@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-6@2x.png" />
   </div>
 
   <div class="item"></div>
 </div>
 
-
 ### 组件搭配使用
 
 ##### 不同类型按钮搭配使用，可以用来表达不同的强调级别。
 
-<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-7@2x.png" />
-
-
+<img src="https://tdesign.gtimg.com/site/design/guide/button/button-7@2x.png" />
 
 ### 推荐/慎用示例
-
 
 ##### 用户在使用主、次按钮时，需要表达主次关系，突出强调的最主要操作，其他操作使用次按钮，禁止同时使用多个主按钮。
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-8@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-8@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-9@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-9@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
@@ -90,21 +82,20 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-10@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/good.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-10@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 
   <div class="item">
-    <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/button-11@2x.png" />
-    <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/button/button-11@2x.png" />
+    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
 
 ### 相似组件
 
-
-| 组件名 | 何时使用                                                     |
-| :----- | :----------------------------------------------------------- |
-| [按钮](./button)   | 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 |
-| [菜单](./menu)   | 一系列按钮的集合，主要用于节省界面空间。                     |
-| 文字链 | 指向的是一个内部或外部的页面。点击后页面跳转至指向页。       |
+| 组件名                  | 何时使用                                                     |
+| :---------------------- | :----------------------------------------------------------- |
+| [按钮](./button)        | 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 |
+| [菜单](./menu)          | 一系列按钮的集合，主要用于节省界面空间。                     |
+| 文字链                  | 指向的是一个内部或外部的页面。点击后页面跳转至指向页。       |

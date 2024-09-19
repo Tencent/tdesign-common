@@ -39,6 +39,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="./components/layout">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-layout.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-layout-dark.png" />
+      <p class="name">Layout 布局</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="./components/link">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-link.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-link-dark.png" />
@@ -78,7 +86,7 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/side-bar">
+    <a class="item" href="./components/side-bar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-sidebar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-sidebar-dark.png" />
       <p class="name">SideBar 侧边导航栏</p>
@@ -359,6 +367,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dialog.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dialog-dark.png" />
       <p class="name">Dialog 对话框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/guide">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-guide.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-guide-dark.png" />
+      <p class="name">Guide 引导</p>
     </a>
   </div>
   <div class="image-wrapper">

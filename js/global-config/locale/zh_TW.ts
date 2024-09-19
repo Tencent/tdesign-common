@@ -92,6 +92,8 @@ export default {
       date: '請選擇日期',
       month: '請選擇月份',
       year: '請選擇年份',
+      quarter: '請選擇季度',
+      week: '請選擇周',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
     months: [
@@ -116,7 +118,7 @@ export default {
     weekAbbreviation: '週',
     yearAriaLabel: '年',
     monthAriaLabel: '月',
-    comfirm: '確認',
+    confirm: '確認',
     selectTime: '選擇時間',
     selectDate: '選擇日期',
     nextYear: '下一年',
@@ -163,6 +165,7 @@ export default {
     errorMessage: {
       date: '請輸入正確的${name}',
       url: '請輸入正確的${name}',
+      whitespace: '${name}不能為空',
       required: '${name}必填',
       max: '${name}字符長度不能超過 ${validate} 個字符，一個中文等於兩個字符',
       min: '${name}字符長度不能少於 ${validate} 個字符，一個中文等於兩個字符',
@@ -175,6 +178,7 @@ export default {
       boolean: '${name}數據類型必須是布林類型',
       number: '${name}必須是數字',
     },
+    colonText: '：',
   },
   input: {
     placeholder: '請輸入',
@@ -223,5 +227,25 @@ export default {
     mirrorTipText: '鏡像',
     rotateTipText: '旋轉',
     originalSizeTipText: '原始大小',
+  },
+  typography: {
+    expandText: '展開',
+    collapseText: '收起',
+    copiedText: '復製成功',
+  },
+  rate: {
+    rateText: ['極差', '失望', '一般', '滿意', '驚喜'],
+  },
+  empty: {
+    titleText: {
+      maintenance: '建設中',
+      success: '成功',
+      fail: '失敗',
+      empty: '暫無數據',
+      networkError: '網絡錯誤',
+    },
+  },
+  descriptions: {
+    colonText: '：',
   },
 } as const;
