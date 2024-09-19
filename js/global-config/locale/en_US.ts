@@ -167,6 +167,7 @@ export default {
       date: '${name} is invalid',
       url: '${name} is invalid',
       required: '${name} is required',
+      whitespace: '${name} cannot be empty',
       max: '${name} must be at least ${validate} characters',
       min: '${name} cannot be longer than ${validate} characters',
       len: '${name} must be exactly ${validate} characters',

@@ -1,6 +1,9 @@
 import isString from 'lodash/isString';
 import isNumber from 'lodash/isNumber';
+import isObject from 'lodash/isObject';
 import log from '../log/log';
+
+export type InputNumberDecimalPlaces = number | { enableRound: boolean, places: number };
 
 export function fillZero(length: number) {
   return new Array(length).fill(0).join('');
@@ -337,45 +340,98 @@ export function largeNumberAdd(num1: string, num2: string): string {
 }
 
 /**
+ * 格式化小数，并且可以控制小数点后的位数和是否进行四舍五入。
+ *
+ * @param {number} num - 要格式化的数字。
+ * @param {number} places - 小数点后的位数。
+ * @param {boolean} rounding - 是否进行四舍五入。
+ * @returns {string} 格式化后的数字字符串。
+ */
+export function formatDecimal(num: number, places: number, enableRound: boolean = true) {
+  // 开启四舍五入 直接用 toFixed
+  if (enableRound) {
+    return num.toFixed(places);
+  }
+
+  const [integer, decimal] = num.toString().split('.');
+  // 保留 0 位小数
+  if (places === 0) {
+    return integer;
+  }
+  // 补足小数位数
+  let decimalNumber = decimal.slice(0, places);
+  if (decimal.length < places) {
+    decimalNumber += (fillZero(places - decimal.length));
+  }
+  return [integer, decimalNumber].join('.');
+}
+
+export function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberDecimalPlaces) {
+  if (isObject(decimalPlaces)) {
+    return formatDecimal(num, decimalPlaces.places, decimalPlaces.enableRound ?? true);
+  }
+  return formatDecimal(num, decimalPlaces, true);
+}
+
+/**
  * 大数保留 N 位小数（没有精度问题）
  * @param {String} number 大数（只能使用字符串表示）
  * @param {Number} decimalPlaces 保留的小数位数
  * @param {Boolean} largeNumber 是否为大数
  */
 export function largeNumberToFixed(
-  number: string | number, decimalPlaces: number = 0, largeNumber = true,
+  number: string | number,
+  decimalPlaces: InputNumberDecimalPlaces = 0,
+  largeNumber: boolean = true,
 ): string {
-  if (!largeNumber) return Number(number).toFixed(decimalPlaces);
+  if (Number.isNaN(Number(number))) return '';
+  if (!largeNumber) {
+    return decimalPlacesToFixedNum(Number(number), decimalPlaces);
+  }
+  const places = isObject(decimalPlaces) ? decimalPlaces.places : decimalPlaces;
+  const enableRound = isObject(decimalPlaces) ? (decimalPlaces.enableRound ?? true) : true;
   if (!isString(number)) return String(number);
-  const [num1, num2] = number.split('.');
+  // eslint-disable-next-line prefer-const
+  let [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {
-    return decimalPlaces ? [number, (fillZero(decimalPlaces))].join('.') : number;
+    return (places > 0 && enableRound) ? [number, (fillZero(places))].join('.') : number;
   }
-  // 存在小数点，保留 0 位小数，四舍五入
-  if (decimalPlaces === 0) {
-    return Number(num2[0]) >= 5 ? largePositiveNumberAdd(num1, '1') : num1;
+  // 存在小数点，保留 0 位小数，灵活配置四舍五入
+  if (places === 0) {
+    return (enableRound && Number(num2[0]) >= 5) ? largePositiveNumberAdd(num1, '1') : num1;
   }
-  // 存在小数点，保留 > 0 位小数，四舍五入（此时，整数位不会发生任何变化，只需关注小数位数）
-  let decimalNumber = num2.slice(0, decimalPlaces);
-  if (num2.length < decimalPlaces) {
-    decimalNumber += (fillZero(decimalPlaces - num2.length));
-  } else {
+  // 存在小数点，保留 > 0 位小数，灵活配置四舍五入
+  let decimalNumber = num2.slice(0, places);
+  if (num2.length < places) {
+    decimalNumber += (fillZero(places - num2.length));
+  } else if (enableRound) {
     // 用于判断是否处于 1.08 这种小数为0开始的边界情况
     const leadZeroNum = decimalNumber.match(/^0+/)?.[0].length;
-    const needAdded = Number(num2[decimalPlaces]) >= 5;
+    // 用于判断是否处于 0.99/1.99 等需要往非0位进位的场景
+    const leadNineNum = decimalNumber.match(/^9+/);
+    // 决定是否需要四舍五入
+    const needAdded = Number(num2[places]) >= 5;
+
+    // 四舍五入后的结果
     decimalNumber = needAdded
       ? largePositiveNumberAdd(decimalNumber, '1')
       : decimalNumber;
-    // 如果处于边界情况，计算后有误判的可能，如008 +1 误判为 8+1，需要手动补 0
+
+    // 边界场景1（1.08 这种小数为0开始的边界情况）：计算后有误判的可能，如008 +1 误判为 8+1，需要手动补 0
     if (
       leadZeroNum
       && needAdded
-      && leadZeroNum + decimalNumber.length >= decimalPlaces
+      && leadZeroNum + decimalNumber.length >= places
     ) {
       decimalNumber = `${fillZero(
-        decimalPlaces - decimalNumber.length
+        places - decimalNumber.length
       )}${decimalNumber}`;
+    }
+    // 边界场景2:（0.99 这种可能进位的边界情况）：计算后有误判的可能，如995 四舍五入后需进位
+    if (leadNineNum && decimalNumber.length > places) {
+      num1 = (Number(num1) + 1).toString();
+      decimalNumber = fillZero(places);
     }
   }
   return [num1, decimalNumber].join('.');
