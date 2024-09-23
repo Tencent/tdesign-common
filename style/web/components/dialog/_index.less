@@ -129,8 +129,8 @@
     padding: @dialog-footer-padding;
 
     // 兼容 web components
-    .@{prefix}-button + .@{prefix}-button,
-    .@{prefix}-dialog__button + .@{prefix}-dialog__button {
+    .@{prefix}-button+.@{prefix}-button,
+    .@{prefix}-dialog__button+.@{prefix}-dialog__button {
       margin-left: @dialog-footer-button-margin-left;
     }
   }
@@ -184,6 +184,7 @@
     &:hover {
       cursor: move;
     }
+
     .@{prefix}-dialog__header,
     .@{prefix}-dialog__body,
     .@{prefix}-dialog__footer {
@@ -221,10 +222,12 @@
 
   &.@{prefix}-dialog__ctx--absolute {
     position: absolute;
+
     // 用于挂载元素 修改定位方式
     .@{prefix}-dialog__mask {
       position: absolute;
     }
+
     .@{prefix}-dialog__wrap {
       position: absolute;
     }
@@ -245,6 +248,7 @@
   &.@{prefix}-not-display {
     display: none;
   }
+
   // 遮罩层
   .@{prefix}-dialog__mask {
     position: fixed;
@@ -256,6 +260,7 @@
     background: @dialog-mask-bg-color;
     pointer-events: auto;
   }
+
   // wrap 滚动的显示层 固定为页面窗口大小
   .@{prefix}-dialog__wrap {
     position: fixed;
@@ -267,6 +272,7 @@
     overflow: auto;
     .scrollbar(8px, 2px);
   }
+
   // 定位层 用于实现居中 或者距离顶部 定位
   .@{prefix}-dialog__position {
     // 因为内容会超出 使用flex布局
@@ -279,12 +285,14 @@
     // 设置最小距离顶部底部距离
     padding: 48px 0;
     box-sizing: border-box;
+
     // 居中和距顶部布局
     &.@{prefix}-dialog--top {
       align-items: flex-start;
       // 这里top api实现 更改padding 因为子元素拖拽定位 如果使用子元素margin 拖拽时需要计算margin 比较麻烦
       padding-top: @dialog-top-position-top;
     }
+
     // 垂直居中布局
     &.@{prefix}-dialog--center {
       align-items: center;
@@ -309,5 +317,11 @@
   .@{prefix}-dialog {
     pointer-events: auto;
     z-index: @z-index-dialog;
+  }
+
+  &.@{prefix}-dialog__ctx--modeless {
+    .@{prefix}-dialog {
+      box-shadow: @shadow-3;
+    }
   }
 }
