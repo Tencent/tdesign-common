@@ -257,8 +257,8 @@ export function getDefaultFormat({
   }
   if (mode === 'week') {
     return {
-      format: format || 'YYYY-wo',
-      valueType: valueType || format || 'YYYY-wo',
+      format: format || 'gggg-wo',
+      valueType: valueType || format || 'gggg-wo',
       timeFormat: TIME_FORMAT,
     };
   }
