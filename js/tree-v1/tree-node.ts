@@ -521,7 +521,7 @@ export class TreeNode {
   private async loadChildren(): Promise<void> {
     const config = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
-      if (isFunction(config.load)) {
+      if ('load' in config && isFunction(config.load)) {
         this.loading = true;
         this.update();
         let list = [];
