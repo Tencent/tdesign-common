@@ -7,6 +7,7 @@ import localeData from 'dayjs/plugin/localeData';
 import quarterOfYear from 'dayjs/plugin/quarterOfYear';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import updateLocale from 'dayjs/plugin/updateLocale';
 import chunk from 'lodash/chunk';
 import { parseToDayjs } from './format';
 
@@ -17,6 +18,7 @@ dayjs.extend(quarterOfYear);
 dayjs.extend(advancedFormat);
 dayjs.extend(customParseFormat);
 dayjs.extend(dayJsIsBetween);
+dayjs.extend(updateLocale);
 
 /**
  * 首字母大写
@@ -219,6 +221,9 @@ export function getWeeks(
     cancelRangeSelectLimit = false,
   }: OptionsType,
 ) {
+  // 更新 dayjs 已有的语言配置以获取正确的周数
+  dayjs.updateLocale(dayjsLocale, { weekStart: firstDayOfWeek });
+
   const prependDay = getFirstDayOfMonth({ year, month });
   const appendDay = getLastDayOfMonth({ year, month });
   const maxDays = getDaysInMonth({ year, month });
