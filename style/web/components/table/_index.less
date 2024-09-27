@@ -291,13 +291,13 @@
     }
 
     &.@{prefix}-table--header-fixed {
-      > .@{prefix}-table__content > table > tbody tr:nth-of-type(even) {
+      > .@{prefix}-table__content > table > tbody tr.@{prefix}-table__row__even {
         background-color: @table-highlight-bg-color;
       }
     }
 
     &:not(.@{prefix}-table--header-fixed) {
-      > .@{prefix}-table__content > table > tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
+      > .@{prefix}-table__content > table > tbody > tr.@{prefix}-table__row__odd:not(.@{prefix}-table__expanded-row) {
         background-color: @table-highlight-bg-color;
       }
     }
@@ -305,13 +305,13 @@
     &.@{prefix}-table--hoverable {
 
       &.@{prefix}-table__header--fixed {
-        tbody tr:nth-of-type(even):hover {
+        tbody tr.@{prefix}-table__row__even:hover {
           background-color: @table-highlight-bg-color--hover;
         }
       }
 
       &:not(.@{prefix}-table__header--fixed) {
-        > .@{prefix}-table__content > table > tbody tr:nth-of-type(odd):hover {
+        > .@{prefix}-table__content > table > tbody tr.@{prefix}-table__row__odd:hover {
           background-color: @table-highlight-bg-color--hover;
         }
       }
