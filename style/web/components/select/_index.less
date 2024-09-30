@@ -93,15 +93,15 @@
 
 .@{prefix}-select__loading-tips {
   position: fixed;
-  top: var(--td-comp-margin-s);
+  top: @select-loading-tips-padding;
   left: 0;
-  bottom: var(--td-comp-margin-s);
+  bottom: @select-loading-tips-padding;
   right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--td-bg-color-container);
-  border-radius: var(--td-radius-medium);
+  background-color: @select-loading-tips-bg-color;
+  border-radius: @select-border-radius;
   min-height: @select-height-default;
   line-height: @select-height-default;
   color: @select-color-empty;
