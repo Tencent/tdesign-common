@@ -100,9 +100,6 @@ export class Color {
   }
 
   update(input: string) {
-    if (input === this.originColor) {
-      return;
-    }
     const gradientColors = parseGradientString(input);
     if (this.isGradient && !gradientColors) {
       // 处理gradient模式下切换不同格式时的交互问题，输入的不是渐变字符串才使用当前处理
