@@ -208,4 +208,23 @@
       }
     }
   }
+
+  // web component
+  @{prefix}-breadcrumb-item-light-dom {
+    .@{prefix}-breadcrumb__item {
+      color: @breadcrumb-text-color-default;
+      .@{prefix}-breadcrumb__separator {
+        display: flex;
+      }
+    }
+
+    &:last-child {
+      .@{prefix}-breadcrumb__item {
+        color: @breadcrumb-text-color-current;
+        .@{prefix}-breadcrumb__separator {
+          display: none;
+        }
+      }
+    }
+  }
 }
