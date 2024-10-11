@@ -310,4 +310,10 @@
     pointer-events: auto;
     z-index: @z-index-dialog;
   }
+
+  &.@{prefix}-dialog__ctx--modeless {
+    .@{prefix}-dialog {
+      box-shadow: @shadow-3;
+    }
+  }
 }

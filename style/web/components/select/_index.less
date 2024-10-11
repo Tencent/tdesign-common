@@ -27,6 +27,8 @@
   }
 
   &-inner {
+    min-height: @select-height-default;
+
     // 嵌套无需 padding
     .@{prefix}-select__list .@{prefix}-select__list {
       padding: 0;
@@ -38,6 +40,8 @@
     }
 
     &--size-s {
+      min-height: @select-height-s;
+
       .@{prefix}-select__list,
       .@{prefix}-tree {
         padding: @select-dropdown-padding-s;
@@ -45,6 +49,8 @@
     }
 
     &--size-l {
+      min-height: @select-height-l;
+
       .@{prefix}-select__list,
       .@{prefix}-tree {
         padding: @select-dropdown-padding-l;
@@ -81,16 +87,29 @@
 
 // loading tips
 .@{prefix}-select__loading-tips.@{prefix}-size-s {
+  min-height: @select-height-s;
   line-height: @select-height-s;
 }
 
 .@{prefix}-select__loading-tips {
-  text-align: center;
+  position: fixed;
+  top: @select-loading-tips-padding;
+  left: 0;
+  bottom: @select-loading-tips-padding;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: @select-loading-tips-bg-color;
+  border-radius: @select-border-radius;
+  min-height: @select-height-default;
   line-height: @select-height-default;
   color: @select-color-empty;
+  z-index: 1000;
 }
 
 .@{prefix}-select__loading-tips.@{prefix}-size-l {
+  min-height: @select-height-l;
   line-height: @select-height-l;
 }
 
