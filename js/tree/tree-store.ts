@@ -289,7 +289,7 @@ export class TreeStore {
     } else if (item instanceof TreeNode) {
       val = item.value;
     }
-    if (!val) {
+    if (!val && val !== 0) {
       nodes = this.nodes.slice(0);
     } else {
       const node = this.getNode(val);
