@@ -35,12 +35,14 @@ export function getScrollbarWidthWithCSS() {
   return scrollbarWidth;
 }
 
-// 获取 body 下滚动条宽度
-export function getScrollbarWidth() {
-  const scrollDiv = document.createElement('div');
-  scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
-  document.body.appendChild(scrollDiv);
-  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-  document.body.removeChild(scrollDiv);
-  return scrollbarWidth;
+/**
+ * @description: Calculate scroll bar width
+ * @param container  Container used to calculate scrollbar width
+ * @default container: document.body
+ */
+export function getScrollbarWidth(container: HTMLElement = document.body) {
+  if (container === document.body) {
+    return window.innerWidth - document.documentElement.clientWidth;
+  }
+  return container.offsetWidth - container.clientWidth;
 }
