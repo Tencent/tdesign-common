@@ -60,6 +60,46 @@
   }
 }
 
+.ghost-theme(@theme) {
+  @color: "button-ghost-@{theme}-color";
+  @hoverColor: "button-ghost-@{theme}-hover-color";
+  @borderColor: "button-ghost-@{theme}-border-color";
+
+  &.@{button}--@{theme} when (@theme = primary), (@theme = danger) {
+    color: @@color;
+
+    &::after {
+      border-color: @@borderColor;
+    }
+
+    &.@{button}--hover {
+      color: @@hoverColor;
+
+      &::after {
+        background-color: transparent;
+        border-color: @@hoverColor;
+      }
+    }
+  }
+
+  &.@{button}--@{theme} {
+
+    &.@{button}--text.@{button}--hover,
+    &.@{button}--text.@{button}--hover::after {
+      background-color: @gray-color-10;
+    }
+
+    &.@{button}--disabled {
+      background-color: transparent;
+      color: @button-ghost-disabled-color;
+
+      &::after {
+        border-color: @button-ghost-disabled-color;
+      }
+    }
+  }
+}
+
 .button-size(extra-small);
 .button-size(small);
 .button-size(medium);
@@ -162,64 +202,6 @@
 
     &.@{button}--disabled {
       color: @button-default-disabled-color;
-    }
-  }
-
-  &--ghost {
-    background-color: transparent;
-    color: @button-ghost-color;
-
-    &::after {
-      border-color: @button-ghost-border-color;
-    }
-
-    &.@{button}--hover {
-      color: @button-ghost-hover-color;
-
-      &::after {
-        background: none;
-      }
-    }
-
-    &.@{button}--primary {
-      color: @button-ghost-primary-color;
-
-      &.@{button}--hover {
-        color: @button-ghost-primary-hover-color;
-
-        &::after {
-          border-color: @button-ghost-primary-hover-color;
-        }
-      }
-
-      &::after {
-        border-color: @button-ghost-primary-border-color;
-      }
-    }
-
-    &.@{button}--danger {
-      color: @button-ghost-danger-color;
-
-      &.@{button}--hover {
-        color: @button-ghost-danger-hover-color;
-
-        &::after {
-          border-color: @button-ghost-danger-hover-color;
-        }
-      }
-
-      &::after {
-        border-color: @button-ghost-danger-border-color;
-      }
-    }
-
-    &.@{button}--disabled {
-      background-color: transparent;
-      color: @button-ghost-disabled-color;
-
-      &::after {
-        border-color: @button-ghost-disabled-color;
-      }
     }
   }
 
@@ -329,6 +311,29 @@
     &::after {
       border-style: dashed;
     }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: @button-ghost-color;
+
+    &::after {
+      border-color: @button-ghost-border-color;
+    }
+
+    &.@{button}--default.@{button}--hover {
+      color: @button-ghost-hover-color;
+
+      &::after {
+        background-color: transparent;
+        border-color: @button-ghost-hover-color;
+      }
+    }
+
+    // 不考虑 ghost + light 场景
+    .ghost-theme(primary);
+    .ghost-theme(danger);
+    .ghost-theme(default);
   }
 
   .@{prefix}-loading + &__content:not(:empty),
