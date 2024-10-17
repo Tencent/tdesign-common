@@ -18,6 +18,12 @@ spline: layout
 
 {{ vertical }}
 
+### 组合嵌套
+
+可以嵌套使用组件。
+
+{{ combination }}
+
 ### 间距大小
 
 可以通过 `size` 调整间距大小，自带三个可选值 `small`、`medium`、`large`。
