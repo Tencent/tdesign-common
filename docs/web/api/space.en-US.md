@@ -18,6 +18,12 @@ Set `direction=vertical` to adjust to vertical arrangement.
 
 {{ vertical }}
 
+### Composable space
+
+Components can be nested.
+
+{{ combination }}
+
 ### Size of space
 
 Provide three sizes: `small`, `medium` and `large`,
