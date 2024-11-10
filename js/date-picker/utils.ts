@@ -407,7 +407,7 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
     type = 'date',
     isRange = false,
     value,
-    multiple,
+    multiple = false,
   } = args;
 
   // 周选择器不更改 cell 样式
