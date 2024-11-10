@@ -388,7 +388,7 @@ export interface DateTime {
 }
 
 export function flagActive(data: any[], { ...args }: any) {
-  const { start, end, hoverStart, hoverEnd, type = 'date', isRange = false } = args;
+  const { start, end, hoverStart, hoverEnd, type = 'date', isRange = false,value,multiple } = args;
 
   // 周选择器不更改 cell 样式
   if (type === 'week') return data;
@@ -397,6 +397,13 @@ export function flagActive(data: any[], { ...args }: any) {
     return data.map((row: any[]) => row.map((item: DateTime) => {
       const _item = item;
       _item.active = start && isSame(item.value, start, type) && !_item.additional;
+
+      if(multiple){
+        _item.active = _item.active = (value as DateValue[]).some((val) =>
+          isSame(dayjs(val).toDate(), _item.value)
+        );
+      }
+      
       return _item;
     }));
   }
