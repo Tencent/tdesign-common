@@ -387,25 +387,49 @@ export interface DateTime {
   value: Date;
 }
 
-export function flagActive(data: any[], { ...args }: any) {
-  const { start, end, hoverStart, hoverEnd, type = 'date', isRange = false,value,multiple } = args;
+interface FlagActiveOptions {
+  start: Date;
+  end: Date;
+  hoverStart: Date;
+  hoverEnd: Date;
+  type: "year" | "quarter" | "month" | "week" | "date";
+  isRange: boolean;
+  value: DateValue | DateValue[];
+  multiple: boolean;
+}
+
+export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
+  const {
+    start,
+    end,
+    hoverStart,
+    hoverEnd,
+    type = "date",
+    isRange = false,
+    value,
+    multiple,
+  } = args;
 
   // 周选择器不更改 cell 样式
   if (type === 'week') return data;
 
   if (!isRange) {
-    return data.map((row: any[]) => row.map((item: DateTime) => {
-      const _item = item;
-      _item.active = start && isSame(item.value, start, type) && !_item.additional;
+    return data.map((row: any[]) =>
+      row.map((item: DateTime) => {
+        const _item = item;
 
-      if(multiple){
-        _item.active = _item.active = (value as DateValue[]).some((val) =>
-          isSame(dayjs(val).toDate(), _item.value)
-        );
-      }
-      
-      return _item;
-    }));
+        if (multiple) {
+          _item.active = _item.active = (value as DateValue[]).some((val) =>
+            isSame(dayjs(val).toDate(), _item.value)
+          );
+        } else {
+          _item.active =
+            start && isSame(item.value, start, type) && !_item.additional;
+        }
+
+        return _item;
+      })
+    );
   }
 
   return data.map((row: any[]) => row.map((item: DateTime) => {
