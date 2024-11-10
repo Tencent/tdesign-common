@@ -392,7 +392,7 @@ interface FlagActiveOptions {
   end: Date;
   hoverStart: Date;
   hoverEnd: Date;
-  type: "year" | "quarter" | "month" | "week" | "date";
+  type: any;
   isRange: boolean;
   value: DateValue | DateValue[];
   multiple: boolean;
@@ -404,7 +404,7 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
     end,
     hoverStart,
     hoverEnd,
-    type = "date",
+    type = 'date',
     isRange = false,
     value,
     multiple,
@@ -414,22 +414,17 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
   if (type === 'week') return data;
 
   if (!isRange) {
-    return data.map((row: any[]) =>
-      row.map((item: DateTime) => {
-        const _item = item;
+    return data.map((row: any[]) => row.map((item: DateTime) => {
+      const _item = item;
 
-        if (multiple) {
-          _item.active = _item.active = (value as DateValue[]).some((val) =>
-            isSame(dayjs(val).toDate(), _item.value)
-          );
-        } else {
-          _item.active =
-            start && isSame(item.value, start, type) && !_item.additional;
-        }
+      if (multiple) {
+        _item.active = (value as DateValue[]).some((val) => isSame(dayjs(val).toDate(), _item.value));
+      } else {
+        _item.active = start && isSame(item.value, start, type) && !_item.additional;
+      }
 
-        return _item;
-      })
-    );
+      return _item;
+    }));
   }
 
   return data.map((row: any[]) => row.map((item: DateTime) => {
