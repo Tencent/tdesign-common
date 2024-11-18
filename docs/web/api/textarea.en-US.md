@@ -26,6 +26,6 @@ You can bind DOM native events such as `onKeypress` `onKeydown` `onKeyup` `onFoc
 
 ### Multi-line text boxes in different statuses
 
-The status of the input box can be Normal, Disabled, Abnormal (with prompt), prompt with additional content, and prompt with status icon.
+The status of the input box can be Normal, Disabled, Abnormal (with prompt), prompt with additional content.
 
 {{ type }}
