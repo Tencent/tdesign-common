@@ -36,6 +36,12 @@ For selection of specific dates. Use only when the user needs to enter very spec
 
 {{ base }}
 
+### Date multi-select picker
+
+Selection for date multi-select.
+
+{{ multiple }}
+
 ### Date Time Selector
 
 For date and time associated selections. Used when the user needs to enter a date including a time.
