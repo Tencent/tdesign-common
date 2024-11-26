@@ -59,6 +59,9 @@ export const DEFAULT_SYSTEM_SWATCH_COLORS = [
   '#033017',
 ];
 
+// 非透明色格式化类型
+export const FORMATS = ['HEX', 'RGB', 'HSL', 'HSV', 'CMYK', 'CSS'];
+
 // saturation-panel default rect
 export const SATURATION_PANEL_DEFAULT_WIDTH = 230;
 export const SATURATION_PANEL_DEFAULT_HEIGHT = 168;
