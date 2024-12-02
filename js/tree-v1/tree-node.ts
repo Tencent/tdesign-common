@@ -15,10 +15,7 @@ import {
   TypeTreeNodeModel,
   TypeTreeNodeData,
 } from './types';
-import {
-  createNodeModel,
-  updateNodeModel,
-} from './tree-node-model';
+import { createNodeModel, updateNodeModel } from './tree-node-model';
 import log from '../log';
 
 const { hasOwnProperty } = Object.prototype;
@@ -35,7 +32,12 @@ export const setableStatus: Record<string, boolean | null> = {
 
 export const setableProps = Object.keys(setableStatus);
 
-export const syncableProps = [...setableProps, 'actived', 'expanded', 'checked'];
+export const syncableProps = [
+  ...setableProps,
+  'actived',
+  'expanded',
+  'checked',
+];
 
 export const privateKey = '__tdesign_id__';
 
@@ -109,6 +111,8 @@ export class TreeNode {
   // 节点在视图上实际的选中态
   public checked: boolean;
 
+  public isIndeterminateManual: boolean;
+
   // 节点实际是否为半选状态
   public indeterminate: boolean;
 
@@ -130,7 +134,7 @@ export class TreeNode {
   public constructor(
     tree: TreeStore,
     data?: TypeTreeNodeData,
-    parent?: TreeNode,
+    parent?: TreeNode
   ) {
     this.data = data;
     this.tree = tree;
@@ -521,7 +525,7 @@ export class TreeNode {
   private async loadChildren(): Promise<void> {
     const config = get(this, 'tree.config') || {};
     if (this.children === true && !this.loading) {
-      if ('load' in config && isFunction(config.load)) {
+      if (isFunction(config.load)) {
         this.loading = true;
         this.update();
         let list = [];
@@ -552,7 +556,11 @@ export class TreeNode {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (hasOwnProperty.call(setableStatus, key) || key === 'label' || key === 'disabled') {
+      if (
+        hasOwnProperty.call(setableStatus, key)
+        || key === 'label'
+        || key === 'disabled'
+      ) {
         this[key] = item[key];
       }
     });
@@ -737,7 +745,12 @@ export class TreeNode {
     const { tree } = this;
     const { hasFilter, config } = tree;
     const { disabled, allowFoldNodeOnFilter } = config;
-    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) {
+    if (
+      hasFilter
+      && !allowFoldNodeOnFilter
+      && this.vmIsLocked
+      && !this.vmIsRest
+    ) {
       return true;
     }
     let state = disabled;
@@ -1168,6 +1181,41 @@ export class TreeNode {
         });
       }
     }
+    this.isIndeterminateManual = false;
+
+    return tree.getChecked(map);
+  }
+
+  public setIndeterminate(indeterminate: boolean, opts?: TypeSettingOptions) {
+    const { tree } = this;
+    const config = tree.config || {};
+    const options: TypeSettingOptions = {
+      // 为 true, 为 UI 操作，状态扩散受 disabled 影响
+      // 为 false, 为值操作, 状态扩散不受 disabled 影响
+      isAction: true,
+      // 为 true, 直接操作节点状态
+      // 为 false, 返回预期状态
+      directly: false,
+      ...opts,
+    };
+    let map = tree.checkedMap;
+    if (!options.directly) {
+      map = new Map(tree.checkedMap);
+    }
+    if (!this.isCheckable()) {
+      // 当前节点非可选节点，则不可设置选中态
+      return tree.getChecked(map);
+    }
+    if (options.isAction && this.isDisabled()) {
+      // 对于 UI 动作，禁用时不可切换选中态
+      return tree.getChecked(map);
+    }
+    if (indeterminate === this.isIndeterminate()) {
+      // 值没有变更，则选中态无变化
+      return tree.getChecked(map);
+    }
+    this.indeterminate = indeterminate;
+    this.isIndeterminateManual = true;
 
     return tree.getChecked(map);
   }
@@ -1252,8 +1300,15 @@ export class TreeNode {
    * 更新节点选中态
    * @return void
    */
-  public updateChecked(): void {
-    const { tree, value } = this;
+  public updateChecked(from?: string): void {
+    const { tree, value, isIndeterminateManual } = this;
+
+    const relatedNodes = tree
+      .getRelatedNodes([this.value])
+      .map((v) => v.data.value);
+
+    if (isIndeterminateManual && from === 'refresh') return;
+
     const { checkedMap } = tree;
     this.checked = this.isChecked();
     this.indeterminate = this.isIndeterminate();

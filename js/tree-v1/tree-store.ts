@@ -272,7 +272,7 @@ export class TreeStore {
    */
   public getNodes(
     item?: TypeTargetNode,
-    options?: TypeTreeFilterOptions,
+    options?: TypeTreeFilterOptions
   ): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
@@ -355,7 +355,7 @@ export class TreeStore {
    */
   private parseNodeData(
     para: TreeNodeValue | TreeNode | TypeTreeNodeData,
-    item: TypeTreeNodeData | TreeNode,
+    item: TypeTreeNodeData | TreeNode
   ) {
     let value: TreeNodeValue = '';
     let node = null;
@@ -398,7 +398,7 @@ export class TreeStore {
    */
   public appendNodes(
     para: TypeTargetNode | TypeTreeNodeData,
-    item?: TypeTreeNodeData | TreeNode,
+    item?: TypeTreeNodeData | TreeNode
   ): void {
     const spec = this.parseNodeData(para, item);
     if (spec.data) {
@@ -476,7 +476,7 @@ export class TreeStore {
     // 所以遍历 nodeMap 确保初始化阶段 refreshState 方法也可以触发全部节点的更新
     nodeMap.forEach((node) => {
       node.update();
-      node.updateChecked();
+      node.updateChecked('refresh');
     });
   }
 
@@ -785,7 +785,7 @@ export class TreeStore {
     const relatedNodes = this.getRelatedNodes(checked);
     this.checkedMap.clear();
     relatedNodes.forEach((node) => {
-      node.updateChecked();
+      node.updateChecked('refresh');
     });
   }
 
@@ -796,7 +796,7 @@ export class TreeStore {
   public updateAll(): void {
     this.nodeMap.forEach((node) => {
       node.update();
-      node.updateChecked();
+      node.updateChecked('refresh');
     });
   }
 
@@ -834,7 +834,7 @@ export class TreeStore {
    */
   public getRelatedNodes(
     list: TreeNodeValue[],
-    options?: TypeRelatedNodesOptions,
+    options?: TypeRelatedNodesOptions
   ): TreeNode[] {
     const conf = {
       // 默认倒序排列，从底层节点开始遍历
