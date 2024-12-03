@@ -81,6 +81,9 @@ export class TreeStore {
   // 选中节点集合
   public checkedMap: TypeIdMap;
 
+  // 设置半选集合
+  public indeterminateMap: TypeIdMap;
+
   // 展开节点的集合
   public expandedMap: TypeIdMap;
 
@@ -138,6 +141,7 @@ export class TreeStore {
     this.expandedMap = new Map();
     this.checkedMap = new Map();
     this.updatedMap = new Map();
+    this.indeterminateMap = new Map();
     this.filterMap = new Map();
     this.prevFilter = null;
     // 这个计时器确保频繁的 update 事件被归纳为1次完整数据更新后的触发
@@ -577,6 +581,21 @@ export class TreeStore {
     this.setActived(list);
   }
 
+  public replaceIndeterminate(list: TreeNodeValue[]): void {
+    this.setIndeterminate(list);
+  }
+
+  public setIndeterminate(indeterminate: TreeNodeValue[]): void {
+    indeterminate.forEach((val) => {
+      this.indeterminateMap.set(val, true);
+      const node = this.getNode(val);
+      if (node) {
+        node.setIndeterminate(true);
+        node.update();
+      }
+    });
+  }
+
   /**
    * 设置激活态
    * @param {string[]} list 目标节点值数组
@@ -785,7 +804,7 @@ export class TreeStore {
     const relatedNodes = this.getRelatedNodes(checked);
     this.checkedMap.clear();
     relatedNodes.forEach((node) => {
-      node.updateChecked('refresh');
+      node.updateChecked();
     });
   }
 
