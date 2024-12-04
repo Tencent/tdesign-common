@@ -405,6 +405,11 @@
         left: @steps-dot-connector-position-left-horizontal;
         top: @steps-dot-connector-position-top-horizontal;
       }
+      &:not(.@{prefix}-steps-item--finish) {
+        &::after {
+          border-color: @text-color-placeholder;
+        }
+      }
     }
 
     .@{prefix}-steps-item--finish:not(:last-child) {
@@ -503,6 +508,14 @@
             border-right-width: @steps-line-width;
             border-right-color: @steps-line-dot-bg-color-vertical-process;
             color: @steps-line-dot-bg-color-vertical-process;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        &.@{prefix}-steps-item--default {
+          &::before {
+            border-color: @text-color-placeholder;
           }
         }
       }
