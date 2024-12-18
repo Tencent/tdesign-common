@@ -48,8 +48,6 @@ export function parseToDayjs(
         return nextWeek;
       }
     }
-    // 判断是week直接返回，否则经过YYYY-MM-D处理会导致错误
-    return dayjs(dateText);
   }
 
   // format quarter
