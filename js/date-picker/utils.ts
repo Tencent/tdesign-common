@@ -418,7 +418,7 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
       const _item = item;
 
       if (multiple) {
-        _item.active = (value as DateValue[]).some((val) => isSame(dayjs(val).toDate(), _item.value, type) && !_item.additional);
+        _item.active = (value as DateValue[])?.some?.((val) => isSame(dayjs(val).toDate(), _item.value, type) && !_item.additional);
       } else {
         _item.active = start && isSame(item.value, start, type) && !_item.additional;
       }
