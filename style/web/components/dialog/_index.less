@@ -23,23 +23,19 @@
   border-radius: @border-radius-large;
 
   // icon theme
-  .t-icon.@{prefix}-is-info,
-  t-icon-info-circle.@{prefix}-is-info {
+  .t-icon.@{prefix}-is-info {
     color: @dialog-info-icon-color;
   }
 
-  .t-icon.@{prefix}-is-success,
-  t-icon-check-circle.@{prefix}-is-success {
+  .t-icon.@{prefix}-is-success {
     color: @dialog-success-icon-color;
   }
 
-  .t-icon.@{prefix}-is-warning,
-  t-icon-error-circle.@{prefix}-is-warning {
+  .t-icon.@{prefix}-is-warning {
     color: @dialog-warning-icon-color;
   }
 
-  .t-icon.@{prefix}-is-error,
-  t-icon-error-circle.@{prefix}-is-error {
+  .t-icon.@{prefix}-is-error {
     color: @dialog-error-icon-color;
   }
 
@@ -63,10 +59,7 @@
       width: 100%;
     }
 
-    .t-icon:not(.t-icon-close),
-    t-icon-check-circle,
-    t-icon-info-circle,
-    t-icon-error-circle {
+    .t-icon:not(.t-icon-close) {
       font-size: @dialog-icon-size;
       display: inline-flex;
       align-items: center;
@@ -127,10 +120,7 @@
     width: 100%;
     text-align: right;
     padding: @dialog-footer-padding;
-
-    // 兼容 web components
-    .@{prefix}-button + .@{prefix}-button,
-    .@{prefix}-dialog__button + .@{prefix}-dialog__button {
+    .@{prefix}-button + .@{prefix}-button {
       margin-left: @dialog-footer-button-margin-left;
     }
   }

@@ -52,12 +52,14 @@
 
     .@{prefix}-icon {
       color: @search-icon-color;
+      font-size: @search-icon-font-size;
     }
   }
 
   &__clear {
     position: relative;
     margin-left: 10px;
+    font-size: @search-clear-icon-font-size;
     color: @search-clear-icon-color;
     .hotspot-expanded();
   }
@@ -70,6 +72,24 @@
 
   &__placeholder {
     color: @search-placeholder-color;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__result-item {
+    &--highLight {
+      color: @search-result-high-light-color;
+    }
+  }
+
+  &__result-list &__result-item {
+    padding-left: 0;
+
+    &::after {
+      left: 0;
+    }
   }
 
   // mobile vue
