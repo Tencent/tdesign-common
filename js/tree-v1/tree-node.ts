@@ -840,20 +840,29 @@ export class TreeNode {
    */
   public isChecked(map?: TypeIdMap): boolean {
     const { children, tree, value } = this;
-    const { checkStrictly } = tree.config;
+    const { checkStrictly, valueMode } = tree.config;
     // 节点不在当前树上，视为未选中
     if (!tree.nodeMap.get(value)) return false;
     // 节点不可选，视为未选中
     if (!this.isCheckable()) return false;
     const checkedMap = map || tree.checkedMap;
+    // 严格模式，则已经可以判定选中状态
+    if (checkStrictly) {
+      return !!checkedMap.get(value);
+    }
     let checked = false;
-    // 如果在 checkedMap 中，则直接为 true
-    if (checkedMap.get(value)) {
+    // 在 checkedMap 中，则根据 valueMode 的值进行判断
+    if (checkedMap.get(value)
+      && (
+        // 如果 valueMode 为 all、parentFirst，则视为选中
+        valueMode !== 'onlyLeaf'
+        // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
+        || this.isLeaf()
+      )
+    ) {
       return true;
     }
-    // 严格模式，则已经可以判定选中状态
-    if (checkStrictly) return checked;
-    // 允许关联状态的情况下，需要进一步判断
+    // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
     if (Array.isArray(children) && children.length > 0) {
       // 子节点全部选中，则当前节点选中
       checked = children.every((node) => {
