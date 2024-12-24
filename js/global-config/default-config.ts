@@ -6,6 +6,7 @@ export default {
     include: ['ripple', 'expand', 'fade'],
     exclude: [],
   } as Record<'include' | 'exclude', Array<AnimationType>>,
+  attach: null,
   calendar: {
     firstDayOfWeek: 1,
     fillWithZero: true,
