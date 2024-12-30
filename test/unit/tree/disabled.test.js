@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import TreeStore from '../../../js/tree/tree-store';
 
 // 禁用状态

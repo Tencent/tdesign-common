@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { validateFileType } from '../../../js/upload/utils';
 
 describe('validateFileType', () => {

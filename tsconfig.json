@@ -16,6 +16,6 @@
   },
   "include": ["js"],
   "exclude": ["node_modules"],
-  "types": ["jest"],
+  "types": ["vitest/global"],
   "compileOnSave": false
 }

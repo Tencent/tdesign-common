@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { compareNumber, compareLargeNumber, isInputNumber, formatENumber } from '../../../js/input-number/large-number';
 
 describe('compareNumber', () => {

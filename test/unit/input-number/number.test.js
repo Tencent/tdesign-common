@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { add, subtract, formatThousandths, canInputNumber, canSetValue, formatUnCompleteNumber } from '../../../js/input-number/number';
 
 describe('add', () => {
@@ -135,7 +136,7 @@ describe('canInputNumber', () => {
   });
 });
 
-describe('canSetValue', () => {
+it('canSetValue', () => {
   expect(canSetValue('2', 1)).toBe(true);
   expect(canSetValue('2', 1)).toBe(true);
   expect(canSetValue('2.0', 2)).toBe(false);

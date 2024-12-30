@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { formatDecimal, decimalPlacesToFixedNum } from '../../../js/input-number/large-number';
 
 describe('formatDecimal', () => {

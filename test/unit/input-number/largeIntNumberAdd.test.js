@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { largeIntNumberAdd } from '../../../js/input-number/large-number';
 
 describe('largeIntNumberAdd', () => {
