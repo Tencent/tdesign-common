@@ -359,11 +359,15 @@ export function formatDecimal(num: number, places: number, enableRound: boolean 
     return integer;
   }
   // 补足小数位数
-  let decimalNumber = decimal.slice(0, places);
-  if (decimal.length < places) {
-    decimalNumber += (fillZero(places - decimal.length));
+  if (decimal) {
+    let decimalNumber = decimal.slice(0, places);
+    if (decimal.length < places) {
+      decimalNumber += fillZero(places - decimal.length);
+    }
+    return [integer, decimalNumber].join('.');
   }
-  return [integer, decimalNumber].join('.');
+
+  return [integer, fillZero(places)].join('.');
 }
 
 export function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberDecimalPlaces) {
