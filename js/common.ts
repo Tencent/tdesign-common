@@ -38,6 +38,8 @@ export enum EKeyboardDirection {
 
 export const ARROW_DOWN_REG = /^ArrowDown$/i;
 export const ARROW_UP_REG = /^ArrowUp$/i;
+export const ARROW_LEFT_REG = /^ArrowLeft$/i;
+export const ARROW_RIGHT_REG = /^ArrowRight$/i;
 export const ESCAPE_REG = /^Escape$/i;
 export const SPACE_REG = /^Space$/i;
 export const ENTER_REG = /^Enter$/i;
