@@ -105,15 +105,12 @@ a.@{prefix}-menu__item {
     padding: 0 @comp-paddingLR-l;
     justify-content: center;
     transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+    gap: @comp-margin-m;
   }
 
   &__submenu {
     border-top: 1px solid @head-menu-submenu-border-color;
     padding-left: 0;
-  }
-
-  .@{prefix}-fake-arrow {
-    margin-left: @comp-margin-m;
   }
 }
 
@@ -527,10 +524,6 @@ a.@{prefix}-menu__item {
     cursor: pointer;
     text-overflow: ellipsis;
     border-radius: @border-radius-default;
-
-    > .@{prefix}-fake-arrow {
-      margin-left: @comp-margin-m;
-    }
 
     ::selection {
       background: transparent;
