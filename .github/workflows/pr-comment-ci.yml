@@ -1,0 +1,17 @@
+name: PR_COMMENT_CI
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  auto-pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue.pull_request }}
+    steps:
+      - name: Auto PR
+        uses: TDesignOteam//tdesign-pr-trigger-action@develop
+        with:
+          pr_number: ${{ github.event.issue.number }}
+          trigger: ${{ github.payload.comment.body }}
+          token: ${{ secrets.TDESIGN_BOT_TOKEN }}
