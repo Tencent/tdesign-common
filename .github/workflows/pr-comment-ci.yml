@@ -12,6 +12,4 @@ jobs:
       - name: Auto PR
         uses: TDesignOteam//tdesign-pr-trigger-action@develop
         with:
-          pr_number: ${{ github.event.issue.number }}
-          trigger: ${{ github.payload.comment.body }}
           token: ${{ secrets.TDESIGN_BOT_TOKEN }}
