@@ -41,7 +41,7 @@
 <img src="https://tdesign.gtimg.com/site/design/guide/tabs/tabs-6@2x.png" />
 <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 
-<img src="https://tdesign.gtimg.com/site/design/guide/tabs/tabs-7@2x.pn" />
+<img src="https://tdesign.gtimg.com/site/design/guide/tabs/tabs-7@2x.png" />
 <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 
 <hr />
