@@ -8,22 +8,30 @@
   border-radius: @dialog-border-radius;
   background-color: @bg-color-container;
 
+  &__wrapper {
+    --td-popup-border-radius: @dialog-border-radius;
+  }
+
   &__close-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: @spacer;
+    right: @spacer;
     font-size: @dialog-close-font-size;
     color: @dialog-close-color;
   }
 
   &__content {
-    padding: @spacer-4 @spacer-3 0;
+    padding: @spacer-3 @spacer-3 0;
     max-height: @dialog-body-max-height;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: @font-size-m;
+
+    &:empty {
+      display: none;
+    }
   }
 
   &__header {
@@ -35,7 +43,7 @@
   }
 
   &__header + &__body {
-    margin-top: 8px;
+    margin-top: @spacer;
   }
 
   &__body {
@@ -61,7 +69,7 @@
 
   &__footer {
     display: flex;
-    padding: 24px;
+    padding: @spacer-3;
 
     &--column {
       flex-flow: column-reverse;
@@ -73,7 +81,7 @@
     }
 
     &--full {
-      padding: 32px 0 0;
+      padding: @spacer-4 0 0;
     }
   }
 
@@ -85,11 +93,11 @@
     white-space: nowrap;
 
     &--horizontal + &--horizontal {
-      margin-left: 12px;
+      margin-left: @spacer-1;
     }
 
     &--vertical + &--vertical {
-      margin-bottom: 12px;
+      margin-bottom: @spacer-1;
     }
 
     &--text {
