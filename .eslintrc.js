@@ -71,5 +71,16 @@ module.exports = {
     'comma-dangle': 0,
     'no-shadow': 0,
     'object-curly-newline': 0,
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'lodash',
+            message: 'Please use lodash-es instead.'
+          }
+        ]
+      }
+    ]
   },
 };
