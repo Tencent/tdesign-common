@@ -11,6 +11,18 @@ export function omit(obj: Record<string, any>, fields: string[]) {
   return shallowCopy;
 }
 
+export function getValidAttrs<T extends Record<string, any>>(obj: T): Partial<T> {
+  const newObj: Partial<T> = {};
+
+  Object.keys(obj).forEach((key) => {
+    if (!isUndefined(obj[key]) || isNull(obj[key])) {
+      newObj[key as keyof T] = obj[key];
+    }
+  });
+
+  return newObj;
+}
+
 export function removeEmptyAttrs<T extends Record<string, any>>(obj: T): Partial<T> {
   const newObj: Partial<T> = {};
 

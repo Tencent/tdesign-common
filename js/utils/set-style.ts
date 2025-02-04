@@ -6,8 +6,11 @@ import { Styles } from '../common';
  * @param style Styles
  */
 function setStyle(el: HTMLElement, styles: Styles): void {
-  Object.entries(styles).forEach(([key, value]) => {
-    el.style.setProperty(key, String(value));
+  const keys = Object.keys(styles);
+  keys.forEach((key) => {
+    // @ts-ignore
+    // eslint-disable-next-line no-param-reassign
+    el.style[key] = styles[key];
   });
 }
 
