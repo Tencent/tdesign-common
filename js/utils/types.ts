@@ -5,7 +5,6 @@
  * @param B 字符串的分隔符，默认为 '_'
  * @example CamelCase<'a_b_c'> -> aBC
  * @example CamelCase<'a-b-c', '-'> -> aBC
- * @author zhangpaopao0609
  */
 export type CamelCase<S extends string, B extends string = '_'> = S extends Lowercase<S>
   ? S extends `${infer F}${B}${infer RF}${infer R}`
