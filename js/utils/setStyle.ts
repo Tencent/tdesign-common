@@ -12,6 +12,8 @@ function setStyle(el: HTMLElement, styles: Styles): void {
     // eslint-disable-next-line no-param-reassign
     el.style[key] = styles[key];
   });
+  // TODO: 这个怎么样
+  // Object.assign(el.style, styles);
 }
 
 export default setStyle;
