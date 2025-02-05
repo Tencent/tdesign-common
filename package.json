@@ -32,10 +32,6 @@
   "author": "TDesign UI",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-syntax-flow": "^7.12.1",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-flow": "^7.12.1",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.0.3",
     "@types/lodash-es": "^4.17.12",
