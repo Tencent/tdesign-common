@@ -1,5 +1,6 @@
 {
-  "name": "tdesign-common",
+  "name": "@tdesign/common",
+  "private": true,
   "version": "1.0.0",
   "homepage": "https://github.com/Tencent",
   "description": "TDesign UI 样式库以及组件库公共函数（js）",

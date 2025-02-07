@@ -1,0 +1,9 @@
+{
+  "name": "@tdesign/common-js",
+  "private": true,
+  "author": "tdesign",
+  "license": "MIT",
+  "exports": {
+    "./*": "./*.ts"
+  }
+}
