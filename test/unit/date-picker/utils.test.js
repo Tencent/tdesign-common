@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extractTimeFormat } from '../../../js/date-picker/utils';
+import { extractTimeFormat } from '../../../js/date-picker/format';
 
 describe('utils', () => {
   describe(' extractTimeFormat', () => {
