@@ -43,7 +43,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
+          node-version: 18
 
       - run: npm install
       - run: npm run lint
@@ -70,7 +70,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
+          node-version: 18
           cache: 'pnpm'
 
       - run: pnpm install  --frozen-lockfile
@@ -96,7 +96,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
+          node-version: 18
 
       - run: npm install
       - run: npm run lint
@@ -121,7 +121,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
+          node-version: 18
 
       - run: npm install
       - run: npm run lint
@@ -146,7 +146,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
+          node-version: 18
 
       - run: npm install
       - run: npm run lint
@@ -171,7 +171,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
+          node-version: 18
 
       - run: npm install
       - run: npm run lint
