@@ -159,7 +159,7 @@ export class TreeStore {
   public setConfig(options: TypeTreeStoreOptions) {
     const { config } = this;
     let hasChanged = false;
-    (Object.keys(options)).forEach((key: keyof TypeTreeStoreOptions) => {
+    (Object.keys(options) as (keyof TypeTreeStoreOptions)[]).forEach((key) => {
       const val = options[key];
       if (val !== config[key]) {
         hasChanged = true;
