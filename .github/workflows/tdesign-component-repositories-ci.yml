@@ -1,4 +1,4 @@
-name: TEST_COMPONENT
+name: TDesign Component Repositories CI Test
 
 on:
   workflow_run:
@@ -206,7 +206,7 @@ jobs:
             const run_url = `${context.serverUrl}//${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
             
             const comment =`
-            # TDesign Component Ecosystem CI [Open](${run_url})
+            # TDesign Component Repositories CI Test [Open](${run_url})
             | Component | Status | Job  |
             | --------- | :----: | :--: |
             ${tdesign.map(job => {
