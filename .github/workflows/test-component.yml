@@ -207,8 +207,8 @@ jobs:
             
             const comment =`
             # TDesign Component Ecosystem CI [Open](${run_url})
-            | Component | Status | Job |
-            |-----------|--------|-----|
+            | Component | Status | Job  |
+            | :-------: | :----: | :--: |
             ${tdesign.map(job => {
               const status = job.conclusion === 'success' ? '✅' : '❌';
               return `| ${job.name} | ${status} | [Open](${job.html_url}) |`
