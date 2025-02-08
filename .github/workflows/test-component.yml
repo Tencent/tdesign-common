@@ -8,7 +8,7 @@ on:
       - completed
 
 jobs:
-  pr-success:
+  pr-context:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     outputs: 
@@ -27,7 +27,7 @@ jobs:
 
   tdesign-vue:
     if: github.event.workflow_run.conclusion == 'success'
-    needs: pr-success
+    needs: pr-context
     runs-on: ubuntu-latest
     steps:
       - name: Checkout tdesign-vue
@@ -39,7 +39,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: src/_common
-          ref: refs/pull/${{ needs.pr-success.outputs.pr_id }}/head
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
 
       - uses: actions/setup-node@v4
         with:
@@ -53,7 +53,7 @@ jobs:
   tdesign-vue-next:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    needs: pr-success
+    needs: pr-context
     steps:
       - name: Checkout tdesign-vue-next
         uses: actions/checkout@v4
@@ -64,7 +64,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: packages/common
-          ref: refs/pull/${{ needs.pr-success.outputs.pr_id }}/head
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
 
       - uses: pnpm/action-setup@v4
 
@@ -81,7 +81,7 @@ jobs:
   tdesign-react:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    needs: pr-success
+    needs: pr-context
     steps:
       - name: Checkout tdesign-react
         uses: actions/checkout@v4
@@ -92,7 +92,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: src/_common
-          ref: refs/pull/${{ needs.pr-success.outputs.pr_id }}/head
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
 
       - uses: actions/setup-node@v4
         with:
@@ -106,7 +106,7 @@ jobs:
   tdesign-web-components:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    needs: pr-success
+    needs: pr-context
     steps:
       - name: Checkout tdesign-web-components
         uses: actions/checkout@v4
@@ -117,7 +117,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: src/_common
-          ref: refs/pull/${{ needs.pr-success.outputs.pr_id }}/head
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
 
       - uses: actions/setup-node@v4
         with:
@@ -131,7 +131,7 @@ jobs:
   tdesign-mobile-vue:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    needs: pr-success
+    needs: pr-context
     steps:
       - name: Checkout tdesign-mobile-vue
         uses: actions/checkout@v4
@@ -142,7 +142,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: src/_common
-          ref: refs/pull/${{ needs.pr-success.outputs.pr_id }}/head
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
 
       - uses: actions/setup-node@v4
         with:
@@ -156,7 +156,7 @@ jobs:
   tdesign-mobile-react:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    needs: pr-success
+    needs: pr-context
     steps:
       - name: Checkout tdesign-mobile-react
         uses: actions/checkout@v4
@@ -167,7 +167,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: src/_common
-          ref: refs/pull/${{ needs.pr-success.outputs.pr_id }}/head
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
 
       - uses: actions/setup-node@v4
         with:
@@ -177,4 +177,53 @@ jobs:
       - run: npm run lint
       - run: npm run test
       - run: npm run build
+      
+  pr-comment:
+    if: always()
+    needs: 
+      - tdesign-vue
+      - tdesign-vue-next
+      - tdesign-react
+      - tdesign-web-components
+      - tdesign-mobile-vue
+      - tdesign-mobile-react
+    runs-on: ubuntu-latest
+    steps:
+      - name: jobs report
+        id: report
+        uses: actions/github-script@v7
+        with:
+          script: |
+           const { data: { jobs } } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+              per_page: 100
+            })
 
+            const tdesign = jobs.filter(job => job.name.startsWith('tdesign-'))
+
+            const run_url = `${context.serverUrl}//${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            
+            const comment =`
+            # TDesign Component Ecosystem CI [Open](${run_url})
+            | Component | Status | Job |
+            |-----------|--------|-----|
+            ${tdesign.map(job => {
+              const status = job.conclusion === 'success' ? '✅' : '❌';
+              return `| ${job.name} | ${status} | [Open](${job.html_url}) |`
+              console.log(job.name, process.env[job.name]);
+            }).join("\n")}
+
+            <!-- TDesign Component CI -->
+            `
+            
+            core.setOutput('comment', comment);
+      
+      - name: comment
+        uses: actions-cool/maintain-one-comment@v3
+        with:
+           token: ${{ secrets.TDESIGN_BOT_TOKEN }}
+           number: ${{needs.pr-context.outputs.pr_id}}
+           body: ${{ steps.report.outputs.comment }}
+           body-include: '<!-- TDesign Component CI -->'
