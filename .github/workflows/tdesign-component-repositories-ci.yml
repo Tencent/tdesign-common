@@ -215,7 +215,7 @@ jobs:
               console.log(job.name, process.env[job.name]);
             }).join("\n")}
 
-            <!-- TDesign Component CI -->
+            <!-- TDesign Component Repositories CI Test -->
             `
             
             core.setOutput('comment', comment);
@@ -226,4 +226,4 @@ jobs:
            token: ${{ secrets.TDESIGN_BOT_TOKEN }}
            number: ${{needs.pr-context.outputs.pr_id}}
            body: ${{ steps.report.outputs.comment }}
-           body-include: '<!-- TDesign Component CI -->'
+           body-include: '<!-- TDesign Component Repositories CI Test -->'
