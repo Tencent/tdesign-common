@@ -257,7 +257,7 @@ jobs:
                 tdesign[match[1]][`${match[2]}_job`] = job.html_url;
               });
 
-            const runUrl = `${context.serverUrl}//${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
 
             const comment = `
               # TDesign Component Repositories CI Test [Open](${runUrl})
