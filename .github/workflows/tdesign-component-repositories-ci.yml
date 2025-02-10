@@ -30,6 +30,7 @@ jobs:
     needs: pr-context
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         script:
           - lint
@@ -59,6 +60,7 @@ jobs:
     needs: pr-context
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         script:
           - lint
@@ -91,6 +93,7 @@ jobs:
     needs: pr-context
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         script:
           - lint
@@ -120,6 +123,7 @@ jobs:
     needs: pr-context
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         script:
           - lint
@@ -149,6 +153,7 @@ jobs:
     needs: pr-context
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         script:
           - lint
@@ -178,6 +183,7 @@ jobs:
     needs: pr-context
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         script:
           - lint
