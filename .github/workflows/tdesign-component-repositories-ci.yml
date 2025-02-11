@@ -210,7 +210,8 @@ jobs:
       
   pr-comment:
     if: always()
-    needs: 
+    needs:
+      - pr-context
       - tdesign-vue
       - tdesign-vue-next
       - tdesign-react
