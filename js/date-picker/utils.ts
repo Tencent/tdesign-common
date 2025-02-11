@@ -517,7 +517,7 @@ export function isEnabledDate({
 
   // 最小时间与最大时间的边界，防止正负时区出现禁用时间不一致的情况
   const min = before ? new Date(dayjs(before).startOf('day').format()) : null;
-  const max = after ? new Date(dayjs(disableDate.after).endOf('day').format()) : null;
+  const max = after ? new Date(dayjs(after).endOf('day').format()) : null;
 
   // { before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。
   if (max && min) {
