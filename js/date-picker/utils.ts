@@ -505,19 +505,20 @@ export function isEnabledDate({
     return !isIncludes;
   }
 
-  // { from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。
+  // { from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用（包括A和B）。
   // eslint-disable-next-line
   const { from, to, before, after } = disableDate;
 
   if (from && to) {
-    const compareMin = dayjs(new Date(from));
-    const compareMax = dayjs(new Date(to));
+    const compareMin = dayjs(from).startOf('day');
+    const compareMax = dayjs(to).endOf('day');
 
     return !dayjs(value).isBetween(compareMin, compareMax, availableMode, '[]');
   }
 
-  const min = before ? new Date(before) : null;
-  const max = after ? new Date(after) : null;
+  // 最小时间与最大时间的边界，防止正负时区出现禁用时间不一致的情况
+  const min = before ? new Date(dayjs(before).startOf('day').format()) : null;
+  const max = after ? new Date(dayjs(disableDate.after).endOf('day').format()) : null;
 
   // { before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。
   if (max && min) {
