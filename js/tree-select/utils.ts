@@ -1,6 +1,6 @@
 import { TreeOptionData } from 'js/common';
 
-type TargetValue = string | number | object | Array<TargetValue>;
+type TargetValue = string | number | object;
 
 /**
  * 递归查找指定节点的所有父节点的 value
@@ -12,14 +12,19 @@ type TargetValue = string | number | object | Array<TargetValue>;
 export function findParentValues(
   options: TreeOptionData[],
   targetValue: TargetValue,
-  realChildren: string,
   realValue: string,
+  realChildren: string,
 ): (TargetValue)[] {
+  let currentTargetValue = targetValue;
+  if (currentTargetValue != null && typeof currentTargetValue === 'object') {
+    currentTargetValue = (currentTargetValue as { [key: string]: string | number })?.[realValue];
+  }
+
   function findPath(nodes: TreeOptionData[], parentPath: (TargetValue)[]): (TargetValue)[] | null {
     let result: (TargetValue)[] | null = null;
     nodes.some((node) => {
       const newPath = [...parentPath, node[realValue]];
-      if (node[realValue] === targetValue) {
+      if (node[realValue] === currentTargetValue) {
         result = parentPath;
         return true;
       }
@@ -33,5 +38,6 @@ export function findParentValues(
     });
     return result;
   }
+
   return findPath(options, []) || [];
 }
