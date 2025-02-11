@@ -512,7 +512,6 @@ export function isEnabledDate({
   if (from && to) {
     const compareMin = dayjs(from).startOf('day');
     const compareMax = dayjs(to).endOf('day');
-
     return !dayjs(value).isBetween(compareMin, compareMax, availableMode, '[]');
   }
 
