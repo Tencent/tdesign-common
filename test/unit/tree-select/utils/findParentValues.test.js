@@ -45,19 +45,19 @@ describe('tree-select:findParentValues', () => {
       const value = { value: 't1.1.1', label: 't1.1.1' };
       const parentValues = findParentValues(data, value, 'value', 'children');
       expect(parentValues).toEqual(['t1', 't1.1']);
+
+      const value2 = { value: 't2.1', label: 't2.1' };
+      const parentValues2 = findParentValues(data, value2, 'value', 'children');
+      expect(parentValues2).toEqual(['t2']);
+
+      const value3 = { value: 't2', label: 't2' };
+      const parentValues3 = findParentValues(data, value3, 'value', 'children');
+      expect(parentValues3).toEqual([]);
+
+      const value4 = { value: 't3', label: 't3' };
+      const parentValues4 = findParentValues(data, value4, 'value', 'children');
+      expect(parentValues4).toEqual([]);
     });
-
-    const value2 = { value: 't2.1', label: 't2.1' };
-    const parentValues2 = findParentValues(data, value2, 'value', 'children');
-    expect(parentValues2).toEqual(['t2']);
-
-    const value3 = { value: 't2', label: 't2' };
-    const parentValues3 = findParentValues(data, value3, 'value', 'children');
-    expect(parentValues3).toEqual([]);
-
-    const value4 = { value: 't3', label: 't3' };
-    const parentValues4 = findParentValues(data, value4, 'value', 'children');
-    expect(parentValues4).toEqual([]);
   });
 
   describe('alias', () => {
