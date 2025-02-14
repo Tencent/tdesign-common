@@ -1,4 +1,4 @@
-import { TreeOptionData } from 'js/common';
+import { TreeOptionData } from '../common';
 
 type TargetValue = string | number | object;
 

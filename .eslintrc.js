@@ -73,6 +73,15 @@ module.exports = {
     'object-curly-newline': 0,
     // 避免 `eslint` 对于 `typescript` 函数重载的误报
     'no-redeclare': 'off',
-    '@typescript-eslint/no-redeclare': 'error'
+    '@typescript-eslint/no-redeclare': 'error',
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [{
+          group: ['js/'],
+          message: 'Importing from paths starting with "js/" is not allowed. Please use "../" instead.'
+        }]
+      }
+    ]
   },
 };
