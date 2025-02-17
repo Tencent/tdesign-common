@@ -1,6 +1,6 @@
 import { isUndefined, isBoolean, omit, get } from 'lodash-es';
+import { OptionData } from 'js/common';
 import { TreeNode } from './tree-node';
-import { OptionData } from '../common';
 import {
   TreeNodeValue,
   TypeTreeNodeModel,
