@@ -263,11 +263,11 @@ export class TreeNodeModel {
       'label',
       'disabled',
     ];
-    const cleanData = omit(data, ['children', ...syncAttrs]);
+    const cleanData = omit(data, ['children', ...syncAttrs]) as Partial<TypeTreeNodeData>;
     const { keys } = node.tree.config;
     syncAttrs.forEach((attr: string) => {
-      const dataAttrValue = get(data, keys?.[attr] || attr);
-      if (!isUndefined(dataAttrValue)) cleanData[attr] = dataAttrValue;
+      const dataAttrValue = get(data, keys?.[attr as keyof typeof keys] || attr);
+      if (!isUndefined(dataAttrValue)) cleanData[attr as keyof typeof keys] = dataAttrValue;
     });
     Object.assign(node.data, cleanData);
     Object.assign(node, cleanData);

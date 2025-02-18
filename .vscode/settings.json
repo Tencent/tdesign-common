@@ -7,6 +7,7 @@
     "source.fixAll.eslint": "explicit"
   },
   "cSpell.words": [
-    "stylelint"
+    "stylelint",
+    "tdesign"
   ]
 }

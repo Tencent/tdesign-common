@@ -39,6 +39,39 @@
     color: @calendar-title-color;
   }
 
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 22px;
+    padding: 0 16px 8px;
+    box-sizing: border-box;
+    .border(bottom, @border-color);
+
+    &__title {
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    &__action {
+      display: flex;
+      font-size: 20px;
+      color: @calendar-switch-mode-icon-color;
+    }
+
+    &__icon {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    &__icon--disabled {
+      color: @calendar-switch-mode-icon-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
   &__days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -67,7 +100,7 @@
     padding: 16px 0 0;
 
     &s {
-      height: 60vh;
+      height: 356px;
       padding: 0 16px 16px;
       box-sizing: border-box;
 

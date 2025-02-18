@@ -2,7 +2,6 @@ import { isString } from 'lodash-es';
 import dayjs from 'dayjs';
 import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
-import { extractTimeFormat } from './utils';
 import log from '../log';
 
 type DateValue = string | number | Date;
@@ -11,6 +10,13 @@ dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
 
 export const TIME_FORMAT = 'HH:mm:ss';
+
+// extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
+export function extractTimeFormat(dateFormat: string = '') {
+  return dateFormat
+    .replace(/\W?Y{2,4}|\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '')
+    .trim();
+}
 
 // 统一解析日期格式字符串成 Dayjs 对象
 export function parseToDayjs(

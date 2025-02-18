@@ -108,7 +108,7 @@ export function isSame(date1: Date, date2: Date, type = 'date', dayjsLocale = 'z
     isSameMonth,
     isSameWeek,
     isSameDate,
-  };
+  } as Record<string, (date1: Date, date2: Date, dayjsLocale?: string) => boolean>;
   return func[`isSame${firstUpperCase(type)}`](date1, date2, dayjsLocale);
 }
 
@@ -451,13 +451,6 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
   }));
 }
 
-// extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
-export function extractTimeFormat(dateFormat: string = '') {
-  return dateFormat
-    .replace(/\W?Y{2,4}|\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '')
-    .trim();
-}
-
 /**
  * 返回时间对象的小时、分钟、秒、12小时制标识
  * @param {String} timeFormat 'pm 20:11:11:333'
@@ -512,19 +505,19 @@ export function isEnabledDate({
     return !isIncludes;
   }
 
-  // { from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。
+  // { from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用（包括A和B）。
   // eslint-disable-next-line
   const { from, to, before, after } = disableDate;
 
   if (from && to) {
-    const compareMin = dayjs(new Date(from));
-    const compareMax = dayjs(new Date(to));
-
+    const compareMin = dayjs(from).startOf('day');
+    const compareMax = dayjs(to).endOf('day');
     return !dayjs(value).isBetween(compareMin, compareMax, availableMode, '[]');
   }
 
-  const min = before ? new Date(before) : null;
-  const max = after ? new Date(after) : null;
+  // 最小时间与最大时间的边界，防止正负时区出现禁用时间不一致的情况
+  const min = before ? new Date(dayjs(before).startOf('day').format()) : null;
+  const max = after ? new Date(dayjs(after).endOf('day').format()) : null;
 
   // { before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。
   if (max && min) {

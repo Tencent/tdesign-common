@@ -224,7 +224,7 @@ export const parseGradientString = (input: string): GradientColors | boolean => 
   gradientColors.points = points;
   let degree = parseInt(result.angle, 10);
   if (Number.isNaN(degree)) {
-    degree = sideCornerDegreeMap[result.sideCorner] || 90;
+    degree = sideCornerDegreeMap[result.sideCorner as keyof typeof sideCornerDegreeMap] || 90;
   }
   gradientColors.degree = degree;
 

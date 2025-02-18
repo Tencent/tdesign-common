@@ -1,21 +1,32 @@
 ﻿{
   "compilerOptions": {
-    "jsx": "react",
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "module": "esnext",
+    /* Language and Environment */
     "target": "esnext",
-    "declaration": true,
     "lib": ["esnext", "dom"],
-    "importHelpers": true,
+
+    /* Modules */
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "baseUrl": "./",
-    "allowJs": true,
-    "checkJs": true,
+
+    /* Emit */
+    "declaration": true,
+    "removeComments": true,
+    "importHelpers": true,
     "downlevelIteration": true,
-    "esModuleInterop": true
+
+    /* Type Checking */
+    // TODO: 待开启
+    // "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": false,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Completeness */
+    "skipLibCheck": true
   },
   "include": ["js"],
   "exclude": ["node_modules"],
-  "types": ["vitest/global"],
-  "compileOnSave": false
+  "types": ["vitest/global"]
 }

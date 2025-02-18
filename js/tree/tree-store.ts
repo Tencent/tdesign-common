@@ -159,10 +159,12 @@ export class TreeStore {
   public setConfig(options: TypeTreeStoreOptions) {
     const { config } = this;
     let hasChanged = false;
-    Object.keys(options).forEach((key) => {
+    (Object.keys(options) as (keyof TypeTreeStoreOptions)[]).forEach((key) => {
       const val = options[key];
       if (val !== config[key]) {
         hasChanged = true;
+        // @ts-ignore
+        // TODO: https://github.com/microsoft/TypeScript/issues/32693
         config[key] = val;
       }
     });
@@ -310,6 +312,8 @@ export class TreeStore {
       if (isPlainObject(conf.props)) {
         nodes = nodes.filter((node) => {
           const result = Object.keys(conf.props).every((key) => {
+            // @ts-ignore
+            // TODO: https://github.com/microsoft/TypeScript/issues/32693
             const propEqual = node[key] === conf.props[key];
             return propEqual;
           });
@@ -890,8 +894,10 @@ export class TreeStore {
   public emit(name: string, state?: TypeTreeEventState): void {
     const { config, emitter } = this;
     const methodName = camelCase(`on-${name}`);
-    const method = config[methodName];
+    const method = config[methodName as keyof TypeTreeStoreOptions];
     if (isFunction(method)) {
+      // @ts-ignore
+      // TODO: 待移除
       method(state);
     }
     emitter.emit(name, state);

@@ -1,5 +1,6 @@
 {
-  "name": "tdesign-common",
+  "name": "@tdesign/common",
+  "private": true,
   "version": "1.0.0",
   "homepage": "https://github.com/Tencent",
   "description": "TDesign UI 样式库以及组件库公共函数（js）",
@@ -32,14 +33,11 @@
   "author": "TDesign UI",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-syntax-flow": "^7.12.1",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-flow": "^7.12.1",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.0.3",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.10.2",
+    "@types/tinycolor2": "^1.4.6",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/experimental-utils": "^2.24.0",
     "@typescript-eslint/parser": "^4.29.0",
@@ -59,7 +57,7 @@
     "postcss-less": "^5.0.0",
     "stylelint": "~14.16.1",
     "stylelint-config-standard": "^24.0.0",
-    "typescript": "^4.5.5",
+    "typescript": "^5.7.3",
     "vitest": "^2.1.8"
   },
   "browserslist": [

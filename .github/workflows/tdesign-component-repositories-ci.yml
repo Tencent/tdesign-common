@@ -1,0 +1,287 @@
+name: TDesign Component Repositories CI Test
+
+on:
+  workflow_run:
+    workflows: 
+      - MAIN_PULL_REQUEST
+    types: 
+      - completed
+
+jobs:
+  pr-context:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    outputs: 
+      pr_id: ${{ steps.pr.outputs.id }}
+    steps:
+      - name: Download pr id
+        uses: dawidd6/action-download-artifact@v8
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: pr-id
+          
+      - name: Set pr id
+        id : pr
+        run: echo "id=$(cat pr-id.txt)" >> $GITHUB_OUTPUT
+
+  tdesign-vue:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: pr-context
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          - lint
+          - test
+          - build
+    steps:
+      - name: Checkout tdesign-vue
+        uses: actions/checkout@v4
+        with:
+          repository: Tencent/tdesign-vue
+
+      - name: Checkout tdesign-common
+        uses: actions/checkout@v4
+        with:
+          path: src/_common
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm install
+      - run: npm run ${{ matrix.script }}
+
+  tdesign-vue-next:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: pr-context
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          - lint
+          - test
+          - build
+    steps:
+      - name: Checkout tdesign-vue-next
+        uses: actions/checkout@v4
+        with:
+          repository: Tencent/tdesign-vue-next
+
+      - name: Checkout tdesign-common
+        uses: actions/checkout@v4
+        with:
+          path: packages/common
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - run: pnpm install  --frozen-lockfile
+      - run: pnpm run ${{ matrix.script }}
+
+  tdesign-react:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: pr-context
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          - lint
+          - test
+          - build
+    steps:
+      - name: Checkout tdesign-react
+        uses: actions/checkout@v4
+        with:
+          repository: Tencent/tdesign-react
+
+      - name: Checkout tdesign-common
+        uses: actions/checkout@v4
+        with:
+          path: src/_common
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm install
+      - run: npm run ${{ matrix.script }}
+
+  tdesign-web-components:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: pr-context
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          - lint
+          - test
+          - build
+    steps:
+      - name: Checkout tdesign-web-components
+        uses: actions/checkout@v4
+        with:
+          repository: TDesignOteam/tdesign-web-components
+
+      - name: Checkout tdesign-common
+        uses: actions/checkout@v4
+        with:
+          path: src/_common
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm install
+      - run: npm run ${{ matrix.script }}
+
+  tdesign-mobile-vue:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: pr-context
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          - lint
+          - test
+          - build
+    steps:
+      - name: Checkout tdesign-mobile-vue
+        uses: actions/checkout@v4
+        with:
+          repository: Tencent/tdesign-mobile-vue
+
+      - name: Checkout tdesign-common
+        uses: actions/checkout@v4
+        with:
+          path: src/_common
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm install
+      - run: npm run ${{ matrix.script }}
+
+  tdesign-mobile-react:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: pr-context
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        script:
+          - lint
+          - test
+          - build
+    steps:
+      - name: Checkout tdesign-mobile-react
+        uses: actions/checkout@v4
+        with:
+          repository: Tencent/tdesign-mobile-react
+
+      - name: Checkout tdesign-common
+        uses: actions/checkout@v4
+        with:
+          path: src/_common
+          ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm install
+      - run: npm run ${{ matrix.script }}
+      
+  pr-comment:
+    if: always()
+    needs:
+      - pr-context
+      - tdesign-vue
+      - tdesign-vue-next
+      - tdesign-react
+      - tdesign-web-components
+      - tdesign-mobile-vue
+      - tdesign-mobile-react
+    runs-on: ubuntu-latest
+    steps:
+      - name: jobs report
+        id: report
+        uses: actions/github-script@v7
+        with:
+          script: |
+           const { data: { jobs } } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+              per_page: 100
+            })
+            const ciJob = {
+              lint_status: "",
+              lint_job: "",
+              test_status: "",
+              test_job: "",
+              build_status: "",
+              build_job: "",
+            };
+            const tdesign = {
+              "tdesign-vue": { ...ciJob },
+              "tdesign-vue-next": { ...ciJob },
+              "tdesign-react": { ...ciJob },
+              "tdesign-web-components": { ...ciJob },
+              "tdesign-mobile-vue": { ...ciJob },
+              "tdesign-mobile-react": { ...ciJob },
+            };
+            jobs
+              .filter((job) => job.name.startsWith("tdesign-"))
+              .map((job) => {
+                const status = job.conclusion === "success" ? "✅" : "❌";
+                // job.name 'tdesign-vue (build)'
+                const regex = /^(\S+)\s+\((\S+)\)$/;
+                const match = job.name.match(regex);
+                tdesign[match[1]][`${match[2]}_status`] = status;
+                tdesign[match[1]][`${match[2]}_job`] = job.html_url;
+              });
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            const comment = `
+              # TDesign Component Repositories CI Test [Open](${runUrl})
+              | Component | Lint | Test | Build |
+              | --------- | :--: | :--: | :----: |
+              ${Object.keys(tdesign)
+                .map((component) => {
+                  const lint_text = `[${tdesign[component].lint_status}](${tdesign[component].lint_job})`;
+                  const test_text = `[${tdesign[component].test_status}](${tdesign[component].test_job})`;
+                  const build_text = `[${tdesign[component].build_status}](${tdesign[component].build_job})`;
+                  return `| ${component} | ${lint_text} | ${test_text} | ${build_text} |`;
+                })
+                .join("\n")}
+
+              <!-- TDesign Component Repositories CI Test -->
+              `;
+            
+            core.setOutput('comment', comment);
+      
+      - name: comment
+        uses: actions-cool/maintain-one-comment@v3
+        with:
+           token: ${{ secrets.TDESIGN_BOT_TOKEN }}
+           number: ${{needs.pr-context.outputs.pr_id}}
+           body: ${{ steps.report.outputs.comment }}
+           body-include: '<!-- TDesign Component Repositories CI Test -->'

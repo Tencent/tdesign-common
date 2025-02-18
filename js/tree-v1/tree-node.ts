@@ -51,6 +51,9 @@ export class TreeNode {
   // 节点隶属的树实例
   public tree: TreeStore;
 
+  // 节点私有 id，不接受外部传入，确保唯一性
+  public [privateKey]: string;
+
   // 节点 id ，唯一标志
   public value: string;
 
@@ -212,6 +215,8 @@ export class TreeNode {
     // 仅 syncableStatus 列举的属性被同步到 treeNode 实例属性
     syncableProps.forEach((prop) => {
       if (typeof data[prop] !== 'undefined') {
+        // @ts-ignore
+        // TODO: 待移除
         this[prop] = data[prop];
       }
     });
@@ -555,6 +560,8 @@ export class TreeNode {
         || key === 'label'
         || key === 'disabled'
       ) {
+        // @ts-ignore
+        // TODO: 待移除
         this[key] = item[key];
       }
     });

@@ -212,6 +212,8 @@ export class TreeNode {
     // 仅 syncableStatus 列举的属性被同步到 treeNode 实例属性
     syncableProps.forEach((prop) => {
       if (typeof data[prop] !== 'undefined') {
+        // @ts-ignore
+        // TODO: 待移除
         this[prop] = data[prop];
       }
     });
@@ -552,6 +554,8 @@ export class TreeNode {
     keys.forEach((key) => {
       // key, disabled 字段可被 tree.config.keys 定义
       if (hasOwnProperty.call(settableStatus, key) || key === 'label') {
+        // @ts-ignore
+        // TODO: 待移除
         this[key] = item[key];
       }
       if (key === 'disabled') {
