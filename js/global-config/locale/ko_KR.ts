@@ -253,4 +253,17 @@ export default {
   descriptions: {
     colonText: ':',
   },
+  chat: {
+    placeholder: '메시지를 입력하세요...',
+    stopBtnText: '중지',
+    refreshTipText: '다시 생성',
+    copyTipText: '복사',
+    likeTipText: '좋아요',
+    dislikeTipText: '싫어요',
+    copyCodeBtnText: '코드 복사',
+    copyCodeSuccessText: '복사됨',
+    clearHistoryBtnText: '기록 지우기',
+    copyTextSuccess: '클립보드에 복사되었습니다',
+    copyTextFail: '클립보드에 복사하지 못했습니다',
+  }
 } as const;

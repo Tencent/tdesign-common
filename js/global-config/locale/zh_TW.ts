@@ -253,4 +253,17 @@ export default {
   descriptions: {
     colonText: '：',
   },
+  chat: {
+    placeholder: '請輸入訊息...',
+    stopBtnText: '中止',
+    refreshTipText: '重新生成',
+    copyTipText: '複製',
+    likeTipText: '讚',
+    dislikeTipText: '踩',
+    copyCodeBtnText: '複製程式碼',
+    copyCodeSuccessText: '已複製',
+    clearHistoryBtnText: '清空歷史記錄',
+    copyTextSuccess: '已成功複製到剪貼簿',
+    copyTextFail: '複製到剪貼簿失敗',
+  }
 } as const;

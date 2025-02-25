@@ -255,7 +255,7 @@ export default {
     colonText: ':',
   },
   chat: {
-    placeholder: 'please enter message',
+    placeholder: 'please enter message...',
     stopBtnText: 'stop',
     refreshTipText: 'regenerate',
     copyTipText: 'copy',
@@ -264,5 +264,7 @@ export default {
     copyCodeBtnText: 'copy code',
     copyCodeSuccessText: 'copy the code successfully',
     clearHistoryBtnText: 'clear history',
+    copyTextSuccess: 'copy to clipboard successfully',
+    copyTextFail: 'copy to clipboard failed',
   }
 } as const;

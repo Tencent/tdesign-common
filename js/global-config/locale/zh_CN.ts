@@ -253,4 +253,17 @@ export default {
   descriptions: {
     colonText: '：',
   },
+  chat: {
+    placeholder: '请输入消息...',
+    stopBtnText: '中止',
+    refreshTipText: '重新生成',
+    copyTipText: '复制',
+    likeTipText: '点赞',
+    dislikeTipText: '点踩',
+    copyCodeBtnText: '复制代码',
+    copyCodeSuccessText: '已复制',
+    clearHistoryBtnText: '清空历史记录',
+    copyTextSuccess: '已成功复制到剪贴板',
+    copyTextFail: '复制到剪贴板失败',
+  }
 } as const;
