@@ -336,7 +336,7 @@ export function getYears(
   const today = getToday();
 
   for (let i = startYear; i <= endYear; i++) {
-    const date = new Date(i, 1);
+    const date = new Date(i, 0);
 
     yearArr.push({
       value: date,
