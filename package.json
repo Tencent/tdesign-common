@@ -55,7 +55,7 @@
     "lint-staged": "~13.2.0",
     "min-indent": "^1.0.1",
     "postcss-less": "^5.0.0",
-    "stylelint": "~14.16.1",
+    "stylelint": "~16.15.0",
     "stylelint-config-standard": "^24.0.0",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8"
