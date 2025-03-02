@@ -402,3 +402,28 @@
     cursor: pointer;
   }
 }
+  // 思维链样式
+  .@{prefix}-chat__detail {
+    .@{prefix}-collapse-panel {
+      margin-left: var(--td-comp-margin-l);
+    .@{prefix}-collapse-panel__wrapper  {
+      background-color: @bg-color-secondarycontainer;
+      border-radius: @border-radius-extraLarge;
+      .@{prefix}-collapse-panel__content {
+        background-color: @bg-color-secondarycontainer;
+        padding-left: var(--td-pop-padding-xxl);
+        .@{prefix}-chat__text {
+          padding: 0;
+        }
+      }
+      .@{prefix}-fake-arrow {
+        transform: rotate(180deg);
+      }
+      .@{prefix}-collapse-panel__icon--active {
+        .@{prefix}-fake-arrow {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+}
