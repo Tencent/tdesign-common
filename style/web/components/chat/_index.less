@@ -172,26 +172,35 @@
     &.model-change {
       justify-content: center;
       margin-top: @comp-margin-xxl;
+      // 模型切换在chat-content中渲染居中对齐覆写样式
+      .@{prefix}-chat__content {
+        align-items: center;
+      }
+      .@{prefix}-chat__notice {
+        // 模型切换为content插槽需要覆盖样式
+        .@{prefix}-chat__text {
+          padding: 0;
+          font-size: @font-size-s;
+          color: @text-color-disabled;
+        }
+        background: @bg-color-secondarycontainer;
+        padding: @comp-paddingTB-xxs @comp-paddingLR-s;
+        font-size: @font-size-s;
+        color: @text-color-disabled;
+        border-radius: @border-radius-default;
+        box-sizing: border-box;
+        line-height: 20px;
+        text-align: center;
+
+        span {
+          color: @text-color-placeholder;
+        }
+      }
     }
 
     &.error {
       .@{prefix}-chat__text__content {
         color: @error-color;
-      }
-    }
-    .@{prefix}-chat__notice {
-      // 水平居中
-      background: @bg-color-secondarycontainer;
-      padding: @comp-paddingTB-xxs @comp-paddingLR-s;
-      font-size: @font-size-s;
-      color: @text-color-disabled;
-      border-radius: @border-radius-default;
-      box-sizing: border-box;
-      line-height: 20px;
-      text-align: center;
-
-      span {
-        color: @text-color-placeholder;
       }
     }
   }
@@ -242,6 +251,20 @@
     .@{prefix}-skeleton {
       width: 100%;
       padding: @pop-padding-xxl;
+    }
+    .@{prefix}-chat__text--model-change {
+      background: @bg-color-secondarycontainer;
+      padding: @comp-paddingTB-xxs @comp-paddingLR-s;
+      font-size: @font-size-s;
+      color: @text-color-disabled;
+      border-radius: @border-radius-default;
+      box-sizing: border-box;
+      line-height: 20px;
+      text-align: center;
+
+        span {
+          color: @text-color-placeholder;
+        }
     }
   }
 
