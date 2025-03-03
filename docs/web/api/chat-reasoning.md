@@ -12,5 +12,9 @@ spline: ai
 
 {{ reasoning }}
 
+### 自定义聊天格式
+
+{{ reasoning-custom }}
+
 
 

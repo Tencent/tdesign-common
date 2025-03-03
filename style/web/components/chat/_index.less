@@ -435,8 +435,14 @@
       .@{prefix}-collapse-panel__content {
         background-color: @bg-color-secondarycontainer;
         padding-left: var(--td-pop-padding-xxl);
+        padding-top: 0;
         .@{prefix}-chat__text {
           padding: 0;
+          .@{prefix}-chat__text--assistant {
+            color: var(--text-icon-font-gy-340-placeholder, rgba(0, 0, 0, 0.40));
+            font-weight: 400;
+            font-size: @font-size-l;
+           }
         }
       }
       .@{prefix}-fake-arrow {
