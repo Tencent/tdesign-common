@@ -246,4 +246,17 @@ export default {
       networkError: 'خطأ في الشبكة',
     }
   },
+  chat: {
+    placeholder: 'الرجاء إدخال رسالة...',
+    stopBtnText: 'إيقاف',
+    refreshTipText: 'إعادة توليد',
+    copyTipText: 'نسخ',
+    likeTipText: 'إعجاب',
+    dislikeTipText: 'عدم إعجاب',
+    copyCodeBtnText: 'نسخ الكود',
+    copyCodeSuccessText: 'تم النسخ',
+    clearHistoryBtnText: 'مسح السجل',
+    copyTextSuccess: 'تم النسخ إلى الحافظة بنجاح',
+    copyTextFail: 'فشل النسخ إلى الحافظة'
+  }
 } as const;

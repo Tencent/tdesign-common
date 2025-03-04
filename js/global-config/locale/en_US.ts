@@ -262,9 +262,9 @@ export default {
     likeTipText: 'like',
     dislikeTipText: 'dislike',
     copyCodeBtnText: 'copy code',
-    copyCodeSuccessText: 'copy the code successfully',
+    copyCodeSuccessText: 'copied',
     clearHistoryBtnText: 'clear history',
-    copyTextSuccess: 'copy to clipboard successfully',
-    copyTextFail: 'copy to clipboard failed',
+    copyTextSuccess: 'copied',
+    copyTextFail: 'copy failed',
   }
 } as const;
