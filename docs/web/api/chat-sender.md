@@ -8,12 +8,12 @@ spline: ai
 
 ### 基础输入框
 
-{{ chat-input }}
+{{ chat-sender }}
 
 ### 输入框自定义
 
 通过`suffixIcon` 可以调整输入框发送按钮。
 
-{{ chat-input-slot }}
+{{ chat-sender-slot }}
 
 
