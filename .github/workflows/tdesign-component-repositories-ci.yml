@@ -1,4 +1,4 @@
-8name: TDesign Component Repositories CI Test
+name: TDesign Component Repositories CI Test
 
 on:
   workflow_run:
