@@ -80,7 +80,14 @@ export default function xhr({
   // set send data
   const formData = new FormData();
   Object.keys(requestData).forEach((key) => {
-    formData.append(key, requestData[key]);
+    const dataValue = requestData[key];
+    if (Array.isArray(dataValue)) {
+      dataValue.forEach((value) => {
+        formData.append(key, value);
+      });
+    } else {
+      formData.append(key, dataValue);
+    }
   });
 
   xhr.open(method, action, true);
