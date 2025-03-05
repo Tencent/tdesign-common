@@ -1,4 +1,4 @@
-name: TDesign Component Repositories CI Test
+8name: TDesign Component Repositories CI Test
 
 on:
   workflow_run:
@@ -107,7 +107,7 @@ jobs:
       - name: Checkout tdesign-common
         uses: actions/checkout@v4
         with:
-          path: src/_common
+          path: packages/common
           ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
 
       - uses: actions/setup-node@v4
