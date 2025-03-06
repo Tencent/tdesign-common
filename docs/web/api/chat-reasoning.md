@@ -14,9 +14,17 @@ spline: ai
 
 ### 自定义思维链
 
-- 通过`collapsePanelProps`属性或者slot插槽可以调整折叠面板头内容，面板头的右侧区域，折叠面板内容折叠面板展开图标
+- 通过`collapsePanelProps`属性可以调整折叠面板头内容，面板头的右侧区域，折叠面板内容折叠面板展开图标
 
 {{ reasoning-custom }}
+
+### 自定义思维链
+
+- 通过`header`插槽可以调整折叠面板头内容，
+- 通过`headerRightContent`面板头的右侧区域，
+- 通过`expandIcon`折叠面板内容折叠面板展开图标
+
+{{ reasoning-custom-slot }}
 
 ### AI助手可拖拽
 

@@ -18,7 +18,7 @@ spline: ai
 ### 自定义底部
 通过`footer` 可以调整chat的底部内容。
 
-{{ chat-loading }}
+{{ chat-footer-slot }}
 
 ### 流式与非流式
 
