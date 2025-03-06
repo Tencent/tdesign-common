@@ -165,11 +165,13 @@
       &--focus {
         border-color: @brand-color;
         background-color: @bg-color-container;
+        box-shadow: @shadow-1;
       }
     }
 
     &__textarea:hover {
       border-color: @brand-color;
+      box-shadow: @shadow-1;
     }
     .@{prefix}-textarea {
       width: 100%;
@@ -180,7 +182,8 @@
         padding: 0;
         border: 0;
         scrollbar-width: none;
-        resize: none;
+        font: @font-link-large;
+        color: @font-gray-1;
       }
 
       .@{prefix}-textarea__inner.@{prefix}-is-focused {
@@ -188,7 +191,8 @@
       }
 
       .@{prefix}-textarea__inner::placeholder {
-        color: @text-color-secondary;
+        font: @font-link-large;
+        color: @font-gray-4;
       }
 
       .@{prefix}-textarea__inner:hover {
