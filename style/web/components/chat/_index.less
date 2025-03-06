@@ -497,7 +497,6 @@
 
   &__copy-btn {
     color: @code-font-color-base;
-    // margin-left: auto;
     cursor: pointer;
   }
 }
@@ -511,6 +510,7 @@
   .model-change.@{prefix}-chat__text--variant--outline & {
     border: none;
   }
+
   &-reasoning {
     .@{prefix}-chat__text--variant--outline & {
       .@{prefix}-collapse {
@@ -553,5 +553,126 @@
         }
       }
     }
+  }
+}
+
+.@{prefix}-chat-loading {
+  display: flex;
+  align-items: center;
+
+  &__indicator {
+    &--moving {
+      position: relative;
+      width: 14px;
+      height: 14px;
+
+      .@{prefix}-chat-loading__dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: @border-radius-circle;
+        background-color: @brand-color;
+
+        &--top {
+          top: -4px;
+          left: 3px;
+          animation: dot-pulsate-top .6s ease-in-out alternate infinite;
+        }
+
+        &--left {
+          bottom: -5px;
+          left: -5px;
+          animation: dot-pulsate-left .6s ease-in-out alternate infinite;
+        }
+
+        &--right {
+          bottom: -5px;
+          right: -5px;
+          animation: dot-pulsate-right .6s ease-in-out alternate infinite;
+        }
+      }
+    }
+
+    &--gradient {
+      width: 14px;
+      height: 14px;
+      background-color: transparent;
+      border-radius: @border-radius-circle;
+      border: 1.5px solid @brand-color;
+      animation: border-pulsate-color .6s ease-in-out alternate infinite, border-pulsate-width .6s ease-in-out alternate infinite;
+      box-sizing: border-box;
+    }
+  }
+
+  &__text {
+    margin-left: 8px;
+  }
+}
+
+@keyframes border-pulsate-color {
+  0% {
+    border-color: @brand-color;
+  }
+
+  50% {
+    border-color: @brand-color-8;
+  }
+
+  100% {
+    border-color: @brand-color-6;
+  }
+}
+
+@keyframes border-pulsate-width {
+  0% {
+    border-width: 1.5px;
+  }
+
+  50% {
+    border-width: 3px;
+  }
+
+  100% {
+    border-width: 4px;
+  }
+}
+
+@keyframes dot-pulsate-top {
+  0% {
+    transform: scale(1);
+    top: -4px;
+  }
+
+  100% {
+    transform: scale(1.75);
+    top: 3px;
+  }
+}
+
+@keyframes dot-pulsate-left {
+  0% {
+    transform: scale(1);
+    bottom: -4px;
+    left: -4px;
+  }
+
+  100% {
+    transform: scale(1.75);
+    bottom: 3px;
+    left: 3px;
+  }
+}
+
+@keyframes dot-pulsate-right {
+  0% {
+    transform: scale(1);
+    bottom: -4px;
+    right: -4px;
+  }
+
+  100% {
+    transform: scale(1.75);
+    bottom: 3px;
+    right: 3px;
   }
 }
