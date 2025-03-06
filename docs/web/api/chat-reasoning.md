@@ -1,6 +1,6 @@
 ---
 title: ChatReasoning
-description: 带思维链的markdown渲染。
+description: 带思维链的markdown渲染。deepseek-reasoner 是 DeepSeek 推出的推理模型。在输出最终回答之前，模型会先输出一段思维链内容，以提升最终答案的准确性。输出字段：reasoning_content：思维链内容，与 content 同级，content：最终回答内容。 详见DeepSeek官网文档。
 isComponent: true
 usage: { title: '', description: '' }
 spline: ai
@@ -8,7 +8,6 @@ spline: ai
 
 ### 基础问答
 
-带思维链的对大模型返回的markdown数据自动渲染。
 - 通过`reasoning`属性配置思维链内容
 
 {{ reasoning }}
