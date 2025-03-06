@@ -432,13 +432,6 @@
         border-radius: @border-radius-extraLarge;
       }
     }
-
-    &--variant--outline {
-      .@{prefix}-chat__text {
-        border: 1px solid @border-level-2-color;
-        border-radius: @border-radius-extraLarge;
-      }
-    }
   }
 
   &__actions-margin {
@@ -508,32 +501,55 @@
     cursor: pointer;
   }
 }
+
 // 思维链样式
 .@{prefix}-chat__detail {
-  .@{prefix}-collapse-panel {
-    margin-left: var(--td-comp-margin-l);
-    .@{prefix}-collapse-panel__wrapper {
-      background-color: @bg-color-secondarycontainer;
-      border-radius: @border-radius-extraLarge;
-      .@{prefix}-collapse-panel__content {
-        background-color: @bg-color-secondarycontainer;
-        padding-left: var(--td-pop-padding-xxl);
-        padding-top: 0;
+  .@{prefix}-chat__text--variant--outline & {
+    border: 1px solid var(--td-border-level-2-color);
+    border-radius: var(--td-radius-extraLarge);
+  }
+  .model-change.@{prefix}-chat__text--variant--outline & {
+    border: none;
+  }
+  &-reasoning {
+    .@{prefix}-chat__text--variant--outline & {
+      .@{prefix}-collapse {
+        background: none;
+      }
+    }
+    .@{prefix}-collapse-panel {
+      margin-left: var(--td-comp-margin-l);
+      .@{prefix}-chat__text--variant--outline & {
+        margin-left: 0;
+        padding: 12px 16px;
+        // 移除 t-chat__text 的边框
         .@{prefix}-chat__text {
-          padding: 0;
-          .@{prefix}-chat__text--assistant {
-            color: var(--text-icon-font-gy-340-placeholder, rgba(0, 0, 0, 40%));
-            font-weight: 400;
-            font-size: @font-size-l;
-          }
+          border: none;
         }
       }
-      .@{prefix}-fake-arrow {
-        transform: rotate(180deg);
-      }
-      .@{prefix}-collapse-panel__icon--active {
+      .@{prefix}-collapse-panel__wrapper {
+        background-color: @bg-color-secondarycontainer;
+        border-radius: @border-radius-medium;
+        .@{prefix}-collapse-panel__content {
+          background-color: @bg-color-secondarycontainer;
+          padding-left: var(--td-pop-padding-xxl);
+          padding-top: 0;
+          .@{prefix}-chat__text {
+            padding: 0;
+            .@{prefix}-chat__text--assistant {
+              color: var(--text-icon-font-gy-340-placeholder, rgba(0, 0, 0, 40%));
+              font-weight: 400;
+              font-size: @font-size-l;
+            }
+          }
+        }
         .@{prefix}-fake-arrow {
-          transform: rotate(0deg);
+          transform: rotate(180deg);
+        }
+        .@{prefix}-collapse-panel__icon--active {
+          .@{prefix}-fake-arrow {
+            transform: rotate(0deg);
+          }
         }
       }
     }

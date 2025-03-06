@@ -12,7 +12,7 @@ spline: ai
 
 ### 输入框自定义
 
-通过`suffixIcon` 可以调整输入框发送按钮。
+通过`prefix`,`suffix` 可以调整输入框左下角，右下角区域内容扩展。
 
 {{ chat-sender-slot }}
 
