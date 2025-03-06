@@ -28,7 +28,7 @@ spline: ai
 ### 自定义头像，昵称，时间，内容，操作按钮样式
 
 - 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间
-- 通过`content`可以调整内容，可支持`{{content}}`原文返回，可通过`t-chat-content`组件传入`content`属性渲染markdown，也支持别的markdown渲染组件，选择其他markdown渲染库由用户自行选择安装
+- 通过`content`可以调整内容，可支持markdown原文返回，可通过`t-chat-content`组件传入`content`属性渲染markdown，也支持别的markdown渲染组件，选择其他markdown渲染库由用户自行选择安装
 - 通过`actions`可以调整操作按钮内容。
 - 当role为`assistant`时一般是不显示操作按钮的，所以很多场景下，针对AI助手回复的自定义内容，`t-chat-item`组件可以根据角色role去区分
 
