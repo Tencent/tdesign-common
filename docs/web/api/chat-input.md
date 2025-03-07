@@ -1,8 +1,8 @@
 ---
 title: ChatInput
-description: 用于AI聊天输入。
+description: 用于 对话输入。
 isComponent: true
-usage: { title: '', description: '' }
+usage: { title: "", description: "" }
 spline: ai
 ---
 
@@ -15,5 +15,3 @@ spline: ai
 通过`suffixIcon` 可以调整输入框发送按钮。
 
 {{ chat-input-slot }}
-
-
