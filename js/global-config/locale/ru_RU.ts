@@ -274,5 +274,6 @@ export default {
     clearHistoryBtnText: 'Очистить историю',
     copyTextSuccess: 'Успешно скопировано в буфер обмена',
     copyTextFail: 'Не удалось скопировать в буфер обмена',
+    confirmClearHistory: 'Вы уверены, что хотите очистить все сообщения?',
   }
 } as const;

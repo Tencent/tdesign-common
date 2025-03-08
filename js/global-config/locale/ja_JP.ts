@@ -265,5 +265,6 @@ export default {
     clearHistoryBtnText: '履歴をクリア',
     copyTextSuccess: 'クリップボードにコピーしました',
     copyTextFail: 'クリップボードへのコピーに失敗しました',
+    confirmClearHistory: 'すべてのメッセージをクリアしてもよろしいですか？',
   }
 } as const;

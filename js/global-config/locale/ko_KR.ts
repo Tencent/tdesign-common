@@ -265,5 +265,6 @@ export default {
     clearHistoryBtnText: '기록 지우기',
     copyTextSuccess: '클립보드에 복사되었습니다',
     copyTextFail: '클립보드에 복사하지 못했습니다',
+    confirmClearHistory: '채팅 기록을 지우시겠습니까?',
   }
 } as const;

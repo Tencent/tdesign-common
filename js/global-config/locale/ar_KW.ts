@@ -257,6 +257,7 @@ export default {
     copyCodeSuccessText: 'تم النسخ',
     clearHistoryBtnText: 'مسح السجل',
     copyTextSuccess: 'تم النسخ إلى الحافظة بنجاح',
-    copyTextFail: 'فشل النسخ إلى الحافظة'
+    copyTextFail: 'فشل النسخ إلى الحافظة',
+    confirmClearHistory: 'هل أنت متأكد من مسح جميع الرسائل؟',
   }
 } as const;

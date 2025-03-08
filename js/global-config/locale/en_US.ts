@@ -266,5 +266,6 @@ export default {
     clearHistoryBtnText: 'clear history',
     copyTextSuccess: 'copied',
     copyTextFail: 'copy failed',
+    confirmClearHistory: 'Are you sure to clear all messages?',
   }
 } as const;

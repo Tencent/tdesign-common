@@ -273,5 +273,6 @@ export default {
     clearHistoryBtnText: 'Cancella cronologia',
     copyTextSuccess: 'Copiato negli appunti',
     copyTextFail: 'Copia negli appunti non riuscita',
+    confirmClearHistory: 'Sei sicuro di voler cancellare tutti i messaggi?',
   }
 } as const;

@@ -265,5 +265,6 @@ export default {
     clearHistoryBtnText: '清空歷史記錄',
     copyTextSuccess: '已成功複製到剪貼簿',
     copyTextFail: '複製到剪貼簿失敗',
+    confirmClearHistory: '確定要清空所有的消息嗎？',
   }
 } as const;
