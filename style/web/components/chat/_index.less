@@ -552,17 +552,17 @@
         font: @font-body-medium;
       }
 
-      &__icon--active {
-        .@{prefix}-fake-arrow {
-          transform: rotate(0deg);
-        }
-      }
-
       &__wrapper {
         background-color: @bg-color-secondarycontainer;
         border-radius: @border-radius-medium;
         .@{prefix}-fake-arrow {
           transform: rotate(180deg);
+        }
+      }
+
+      &__icon--active {
+        .@{prefix}-fake-arrow {
+          transform: rotate(0deg);
         }
       }
 
