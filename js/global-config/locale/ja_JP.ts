@@ -253,4 +253,17 @@ export default {
   descriptions: {
     colonText: ':',
   },
+  chat: {
+    placeholder: 'メッセージを入力してください...',
+    stopBtnText: '停止',
+    refreshTipText: '再生成',
+    copyTipText: 'コピー',
+    likeTipText: 'いいね',
+    dislikeTipText: '低評価',
+    copyCodeBtnText: 'コードをコピー',
+    copyCodeSuccessText: 'コピー済み',
+    clearHistoryBtnText: '履歴をクリア',
+    copyTextSuccess: 'クリップボードにコピーしました',
+    copyTextFail: 'クリップボードへのコピーに失敗しました',
+  }
 } as const;

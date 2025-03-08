@@ -261,4 +261,17 @@ export default {
   descriptions: {
     colonText: ':',
   },
+  chat: {
+    placeholder: 'Inserisci il messaggio...',
+    stopBtnText: 'Interrompi',
+    refreshTipText: 'Rigenera',
+    copyTipText: 'Copia',
+    likeTipText: 'Mi piace',
+    dislikeTipText: 'Non mi piace',
+    copyCodeBtnText: 'Copia codice',
+    copyCodeSuccessText: 'Copiato',
+    clearHistoryBtnText: 'Cancella cronologia',
+    copyTextSuccess: 'Copiato negli appunti',
+    copyTextFail: 'Copia negli appunti non riuscita',
+  }
 } as const;
