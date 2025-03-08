@@ -243,11 +243,17 @@
       flex: 0 0 auto;
     }
     .@{prefix}-chat__content {
+      display: flex;
+      justify-content: center;
       flex: 1 1 auto;
       width: 100%;
 
       &--base {
         padding-top: @comp-paddingTB-xl;
+      }
+
+      > .@{prefix}-chat-loading {
+        padding: 0 @comp-paddingLR-m;
       }
     }
     .@{prefix}-chat__detail {
@@ -370,7 +376,7 @@
   }
   // 消息样式
   &__text {
-    padding: @pop-padding-xl @pop-padding-xxl;
+    padding: @comp-paddingTB-m @comp-paddingLR-m;
     font: @font-body-large;
     word-break: break-all;
 
