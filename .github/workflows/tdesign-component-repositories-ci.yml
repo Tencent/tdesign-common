@@ -132,23 +132,25 @@ jobs:
         with:
           path: packages/common
           ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+      
+      - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - run: npm install
+      - run: pnpm install
 
       - if: matrix.script != 'preview'
-        run: npm run ${{ matrix.script }}
+        run: pnpm run ${{ matrix.script }}
 
       - if: matrix.script == 'preview'
-        run: npm run site:preview
+        run: pnpm run site:preview
         
       - if: matrix.script == 'preview'
         run: |
-          export DEPLOY_DOMAIN=https://preview-tdesign-vue-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
-          npx surge --project _site --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          export DEPLOY_DOMAIN=https://preview-tdesign-react-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
+          npx surge --project packages/tdesign-react/site/dist --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
 
   tdesign-web-components:
     if: github.event.workflow_run.conclusion == 'success'
