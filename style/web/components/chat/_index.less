@@ -527,6 +527,9 @@
   }
 
   &-reasoning {
+    .@{prefix}-chat__text--variant--text & {
+      padding-top: @comp-paddingTB-m;
+    }
     .@{prefix}-chat__text--variant--outline & {
       .@{prefix}-collapse {
         background: none;
@@ -545,7 +548,6 @@
           border: none;
         }
       }
-
       &__header {
         padding: @comp-paddingTB-s @comp-paddingTB-m;
         font: @font-body-medium;
