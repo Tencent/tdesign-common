@@ -564,6 +564,13 @@
         }
       }
 
+      &__icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+      }
+
       &__header {
         padding: @comp-paddingTB-s @comp-paddingTB-m;
         font: @font-body-medium;
@@ -573,13 +580,14 @@
         background-color: @bg-color-secondarycontainer;
         border-radius: @border-radius-medium;
         .@{prefix}-fake-arrow {
-          transform: rotate(180deg);
+          color: @text-color-secondary;
+          transform: rotate(180deg) scale(1.125);
         }
       }
 
       &__icon--active {
         .@{prefix}-fake-arrow {
-          transform: rotate(0deg);
+          transform: rotate(0deg) scale(1.125);
         }
       }
 
