@@ -150,6 +150,105 @@
     }
   }
 
+  // sender输入框样式
+  &-sender {
+    position: relative;
+    width: 100%;
+
+    &--mask {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+    }
+
+    &__textarea {
+      position: relative;
+      border: 1px solid @border-level-2-color;
+      border-radius: @chat-sender-radius;
+      padding: @pop-padding-xl;
+      background-color: @bg-color-secondarycontainer;
+
+      &--focus {
+        border-color: @brand-color;
+        background-color: @bg-color-container;
+        box-shadow: @chat-textarea-shadow-active;
+      }
+    }
+
+    &__textarea:hover {
+      border-color: @brand-color;
+      box-shadow: @shadow-1;
+    }
+
+    &__textarea--focus:hover {
+      box-shadow: @chat-textarea-shadow-active;
+    }
+    .@{prefix}-textarea {
+      width: 100%;
+      margin-bottom: @comp-margin-m;
+
+      .@{prefix}-textarea__inner {
+        background-color: rgba(0, 0, 0, 0%);
+        padding: 0;
+        border: 0;
+        scrollbar-width: none;
+        font: @font-body-large;
+        color: @text-color-primary;
+      }
+
+      .@{prefix}-textarea__inner.@{prefix}-is-focused {
+        border: 0;
+      }
+
+      .@{prefix}-textarea__inner::placeholder {
+        font: @font-body-large;
+        color: @text-color-disabled;
+      }
+
+      .@{prefix}-textarea__inner:hover {
+        box-shadow: none;
+      }
+
+      .@{prefix}-textarea__inner:focus {
+        box-shadow: none;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+
+      & &__default {
+        padding: 0;
+        transform: rotate(-90deg);
+        color: @text-color-anti;
+        width: @comp-size-s;
+        height: @comp-size-s;
+        border-radius: @border-radius-circle;
+        background-color: @brand-color;
+      }
+
+      & &--disabled {
+        background-color: @bg-color-secondarycomponent;
+      }
+
+      &__stopicon {
+        width: @size-4;
+        height: @size-4;
+        border: 1px solid @bg-color-container;
+        background: @bg-color-container;
+      }
+    }
+  }
+
   &__inner {
     display: flex;
     margin-bottom: @comp-margin-l;
