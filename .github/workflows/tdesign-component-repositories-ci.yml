@@ -36,6 +36,7 @@ jobs:
           - lint
           - test
           - build
+          - preview
     steps:
       - name: Checkout tdesign-vue
         uses: actions/checkout@v4
@@ -53,7 +54,17 @@ jobs:
           node-version: 18
 
       - run: npm install
-      - run: npm run ${{ matrix.script }}
+
+      - if: matrix.script != 'preview'
+        run: npm run ${{ matrix.script }}
+
+      - if: matrix.script == 'preview'
+        run: npm run site:preview
+
+      - if: matrix.script == 'preview'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-tdesign-vue-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
+          npx surge --project _site --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
 
   tdesign-vue-next:
     if: github.event.workflow_run.conclusion == 'success'
@@ -66,6 +77,7 @@ jobs:
           - lint
           - test
           - build
+          - preview
     steps:
       - name: Checkout tdesign-vue-next
         uses: actions/checkout@v4
@@ -85,7 +97,17 @@ jobs:
           node-version: 18
 
       - run: pnpm install
-      - run: pnpm run ${{ matrix.script }}
+
+      - if: matrix.script != 'preview'
+        run: pnpm run ${{ matrix.script }}
+
+      - if: matrix.script == 'preview'
+        run: pnpm run site:preview
+        
+      - if: matrix.script == 'preview'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-tdesign-vue-next-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
+          npx surge --project packages/tdesign-vue-next/site/dist --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
 
   tdesign-react:
     if: github.event.workflow_run.conclusion == 'success'
@@ -98,6 +120,7 @@ jobs:
           - lint
           - test
           - build
+          - preview
     steps:
       - name: Checkout tdesign-react
         uses: actions/checkout@v4
@@ -107,15 +130,27 @@ jobs:
       - name: Checkout tdesign-common
         uses: actions/checkout@v4
         with:
-          path: src/_common
+          path: packages/common
           ref: refs/pull/${{ needs.pr-context.outputs.pr_id }}/head
+      
+      - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - run: npm install
-      - run: npm run ${{ matrix.script }}
+      - run: pnpm install
+
+      - if: matrix.script != 'preview'
+        run: pnpm run ${{ matrix.script }}
+
+      - if: matrix.script == 'preview'
+        run: pnpm run site:preview
+        
+      - if: matrix.script == 'preview'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-tdesign-react-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
+          npx surge --project packages/tdesign-react/site/dist --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
 
   tdesign-web-components:
     if: github.event.workflow_run.conclusion == 'success'
@@ -128,6 +163,7 @@ jobs:
           - lint
           - test
           - build
+          - preview
     steps:
       - name: Checkout tdesign-web-components
         uses: actions/checkout@v4
@@ -145,7 +181,17 @@ jobs:
           node-version: 18
 
       - run: npm install
-      - run: npm run ${{ matrix.script }}
+
+      - if: matrix.script != 'preview'
+        run: npm run ${{ matrix.script }}
+
+      - if: matrix.script == 'preview'
+        run: npm run site:preview
+        
+      - if: matrix.script == 'preview'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-tdesign-web-components-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
+          npx surge --project _site --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
 
   tdesign-mobile-vue:
     if: github.event.workflow_run.conclusion == 'success'
@@ -158,6 +204,7 @@ jobs:
           - lint
           - test
           - build
+          - preview
     steps:
       - name: Checkout tdesign-mobile-vue
         uses: actions/checkout@v4
@@ -175,7 +222,17 @@ jobs:
           node-version: 18
 
       - run: npm install
-      - run: npm run ${{ matrix.script }}
+
+      - if: matrix.script != 'preview'
+        run: npm run ${{ matrix.script }}
+
+      - if: matrix.script == 'preview'
+        run: npm run site:preview
+        
+      - if: matrix.script == 'preview'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-tdesign-mobile-vue-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
+          npx surge --project _site --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
 
   tdesign-mobile-react:
     if: github.event.workflow_run.conclusion == 'success'
@@ -188,6 +245,7 @@ jobs:
           - lint
           - test
           - build
+          - preview
     steps:
       - name: Checkout tdesign-mobile-react
         uses: actions/checkout@v4
@@ -205,7 +263,17 @@ jobs:
           node-version: 18
 
       - run: npm install
-      - run: npm run ${{ matrix.script }}
+
+      - if: matrix.script != 'preview'
+        run: npm run ${{ matrix.script }}
+
+      - if: matrix.script == 'preview'
+        run: npm run site:preview
+        
+      - if: matrix.script == 'preview'
+        run: |
+          export DEPLOY_DOMAIN=https://preview-tdesign-mobile-react-pr-${{ needs.pr-context.outputs.pr_id }}-tdesign-common.surge.sh
+          npx surge --project _site --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
       
   pr-comment:
     if: always()
@@ -224,6 +292,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+           const pr_id = ${{ needs.pr-context.outputs.pr_id }};
            const { data: { jobs } } = await github.rest.actions.listJobsForWorkflowRun({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -237,6 +306,8 @@ jobs:
               test_job: "",
               build_status: "",
               build_job: "",
+              preview_status: "",
+              preview_job: "",
             };
             const tdesign = {
               "tdesign-vue": { ...ciJob },
@@ -255,20 +326,27 @@ jobs:
                 const match = job.name.match(regex);
                 tdesign[match[1]][`${match[2]}_status`] = status;
                 tdesign[match[1]][`${match[2]}_job`] = job.html_url;
+
+                if (match[2] === "preview" && job.conclusion === "success") {
+                  tdesign[match[1]][`${match[2]}_status`] = "👀";
+                  const html_url = `https://preview-${match[1]}-pr-${pr_id}-tdesign-common.surge.sh`
+                  tdesign[match[1]][`${match[2]}_job`] = html_url;
+                }
               });
 
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
 
             const comment = `
               # TDesign Component Repositories CI Test [Open](${runUrl})
-              | Component | Lint | Test | Build |
-              | --------- | :--: | :--: | :----: |
+              | Component | Lint | Test | Build | Preview |
+              | --------- | :--: | :--: | :----: | :----: |
               ${Object.keys(tdesign)
                 .map((component) => {
                   const lint_text = `[${tdesign[component].lint_status}](${tdesign[component].lint_job})`;
                   const test_text = `[${tdesign[component].test_status}](${tdesign[component].test_job})`;
                   const build_text = `[${tdesign[component].build_status}](${tdesign[component].build_job})`;
-                  return `| ${component} | ${lint_text} | ${test_text} | ${build_text} |`;
+                  const preview_text = `[${tdesign[component].preview_status}](${tdesign[component].preview_job})`;
+                  return `| ${component} | ${lint_text} | ${test_text} | ${build_text} | ${preview_text} |`;
                 })
                 .join("\n")}
 
