@@ -83,6 +83,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Tencent/tdesign-vue-next
+          submodules: recursive
 
       - name: Checkout tdesign-common
         uses: actions/checkout@v4
@@ -126,6 +127,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Tencent/tdesign-react
+          submodules: recursive
 
       - name: Checkout tdesign-common
         uses: actions/checkout@v4
