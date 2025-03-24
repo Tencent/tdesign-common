@@ -41,8 +41,8 @@
 
 .t-table-vertical-align(@pos) {
   &.@{prefix}-vertical-align-@{pos} {
-    th,
-    td {
+    th:not(.@{prefix}-table__cell-check),
+    td:not(.@{prefix}-table__cell-check) {
       vertical-align: @pos;
     }
   }
