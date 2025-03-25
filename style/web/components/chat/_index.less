@@ -24,6 +24,24 @@
     overflow-y: auto;
     overflow-x: hidden;
 
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background-color: @scrollbar-color;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 6px;
+      border: 4px solid transparent;
+      background-clip: border-box;
+      background-color: transparent;
+    }
+
     &--reverse {
       display: flex;
       flex-direction: column-reverse;
@@ -156,15 +174,6 @@
     position: relative;
     width: 100%;
 
-    &--mask {
-      position: fixed;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      opacity: 0;
-    }
-
     &__textarea {
       position: relative;
       border: 1px solid @border-level-2-color;
@@ -239,6 +248,7 @@
 
       & &--disabled {
         background-color: @bg-color-secondarycomponent;
+        color: @bg-color-container;
       }
 
       &__stopicon {
