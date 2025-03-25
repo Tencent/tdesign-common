@@ -75,6 +75,7 @@ export default {
   },
   form: {
     requiredMark: undefined,
+    requiredMarkPosition: 'left',
   },
   empty: {
     titleText: {
