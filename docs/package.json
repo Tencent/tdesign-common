@@ -1,0 +1,7 @@
+{
+  "name": "@tdesign/common-docs",
+  "private": true,
+  "author": "tdesign",
+  "license": "MIT",
+  "type": "module"
+}
