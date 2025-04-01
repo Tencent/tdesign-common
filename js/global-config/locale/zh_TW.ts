@@ -266,5 +266,7 @@ export default {
     copyTextSuccess: '已成功複製到剪貼簿',
     copyTextFail: '複製到剪貼簿失敗',
     confirmClearHistory: '確定要清空所有的消息嗎？',
+    loadingText: '思考中...',
+    loadingEndText: '已深度思考',
   }
 } as const;

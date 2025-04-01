@@ -267,5 +267,7 @@ export default {
     copyTextSuccess: 'copied',
     copyTextFail: 'copy failed',
     confirmClearHistory: 'Are you sure to clear all messages?',
+    loadingText: 'thinking...',
+    loadingEndText: 'deep thinking end',
   }
 } as const;

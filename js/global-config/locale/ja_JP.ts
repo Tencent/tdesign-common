@@ -266,5 +266,7 @@ export default {
     copyTextSuccess: 'クリップボードにコピーしました',
     copyTextFail: 'クリップボードへのコピーに失敗しました',
     confirmClearHistory: 'すべてのメッセージをクリアしてもよろしいですか？',
+    loadingText: '考え中...',
+    loadingEndText: '深く考えました',
   }
 } as const;
