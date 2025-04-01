@@ -51,7 +51,7 @@
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
-    "husky": "^8.0.1",
+    "husky": "^9.1.7",
     "lint-staged": "~13.2.0",
     "min-indent": "^1.0.1",
     "postcss-less": "^5.0.0",
