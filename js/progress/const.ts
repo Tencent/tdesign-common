@@ -21,6 +21,11 @@ export const CIRCLE_FONT_SIZE_RATIO = {
 export const STATUS_TEXT = ['success', 'error', 'warning', 'active', 'normal'];
 export const STATUS_ICON = ['success', 'error', 'warning'];
 
+export const MOBILE_CIRCLE_SIZE_PX = {
+  DEFAULT: 112,
+  MICRO: 24,
+};
+
 export default {
   PRO_THEME,
   CIRCLE_SIZE,
