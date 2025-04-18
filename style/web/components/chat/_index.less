@@ -18,6 +18,7 @@
   height: 100%;
   width: 100%;
   color: @comment-text-color-default;
+
   // 聊天列表
   &__list {
     flex: 1;
@@ -71,6 +72,7 @@
       }
     }
   }
+
   // 输入框插槽
   &__footer {
     position: relative;
@@ -81,6 +83,7 @@
       display: flex;
       padding-right: 0;
     }
+
     .@{prefix}-chat__footer__content {
       margin-top: @comp-margin-xl;
     }
@@ -196,6 +199,7 @@
     &__textarea--focus:hover {
       box-shadow: @chat-textarea-shadow-active;
     }
+
     .@{prefix}-textarea {
       width: 100%;
       margin-bottom: @comp-margin-m;
@@ -263,9 +267,11 @@
   &__inner {
     display: flex;
     margin-bottom: @comp-margin-l;
+
     .@{prefix}-chat__avatar {
       flex: 0 0 auto;
     }
+
     .@{prefix}-chat__content {
       display: flex;
       justify-content: center;
@@ -276,10 +282,11 @@
         padding-top: @comp-paddingTB-xl;
       }
 
-      > .@{prefix}-chat-loading {
+      >.@{prefix}-chat-loading {
         padding: 0 @comp-paddingLR-m;
       }
     }
+
     .@{prefix}-chat__detail {
       max-width: calc(100% - @comp-size-xl);
       box-sizing: border-box;
@@ -288,16 +295,20 @@
     &.model-change {
       justify-content: center;
       margin-top: @comp-margin-xxl;
+
       // 模型切换在chat-content中渲染居中对齐覆写样式
       .@{prefix}-chat__content {
         align-items: center;
       }
+
       .@{prefix}-chat__text {
         padding: 0;
         font-size: @font-size-s;
         color: @text-color-disabled;
       }
+
       .@{prefix}-chat__notice {
+
         // 模型切换为content插槽需要覆盖样式
         .@{prefix}-chat__text {
           padding: 0;
@@ -326,20 +337,25 @@
       }
     }
   }
+
   // chat布局
   &--normal {
     .@{prefix}-chat__inner.user {
       flex-direction: row-reverse;
+
       .@{prefix}-chat__avatar {
         margin-right: 0;
       }
+
       .@{prefix}-chat__content {
         align-items: flex-end;
+
         .@{prefix}-chat__base {
           justify-content: flex-end;
         }
       }
     }
+
     .@{prefix}-chat__detail {
       max-width: ~"min(calc(100% - 40px), 800px)";
     }
@@ -373,6 +389,7 @@
       width: 100%;
       padding: @pop-padding-xxl;
     }
+
     .@{prefix}-chat__text--model-change {
       background: @bg-color-secondarycontainer;
       padding: @comp-paddingTB-xxs @comp-paddingLR-s;
@@ -403,6 +420,7 @@
     padding-right: @comp-margin-s;
     cursor: pointer;
   }
+
   // 消息样式
   &__text {
     padding: @comp-paddingTB-m @comp-paddingLR-l;
@@ -449,8 +467,7 @@
         border-left: 2px solid @gray-color-3;
         background: @gray-color-1;
         color: @font-gray-1;
-        padding: @comp-paddingTB-m @comp-paddingTB-m @comp-paddingTB-m
-          @comp-size-xs;
+        padding: @comp-paddingTB-m @comp-paddingTB-m @comp-paddingTB-m @comp-size-xs;
         margin: @comp-margin-l 0;
       }
 
@@ -500,16 +517,20 @@
       background-color: @bg-color-secondarycontainer;
       border: 0;
       margin-right: @comp-margin-xs;
+
       .@{prefix}-icon {
         font-size: @font-size-l;
       }
     }
+
     & .@{prefix}-chat-button--active {
       color: @brand-color;
     }
+
     & .@{prefix}-button:hover {
       background-color: @bg-color-secondarycontainer-hover;
     }
+
     & .@{prefix}-space .@{prefix}-space-item {
       height: @comp-size-xs;
     }
@@ -550,6 +571,7 @@
     border: 1px solid @border-level-2-color;
     border-radius: @border-radius-extraLarge;
   }
+
   .model-change.@{prefix}-chat__text--variant--outline & {
     border: none;
   }
@@ -557,23 +579,29 @@
   &-reasoning {
     .@{prefix}-chat__text--variant--text & {
       padding-top: @comp-paddingTB-m;
-      ~ .@{prefix}-chat__text {
+
+      ~.@{prefix}-chat__text {
         padding-right: 0;
       }
     }
+
     .@{prefix}-chat__text--variant--outline & {
       .@{prefix}-collapse {
         background: none;
       }
     }
+
     .@{prefix}-collapse {
       background: none;
     }
+
     .@{prefix}-collapse-panel {
       margin-left: @comp-margin-l;
+
       .@{prefix}-chat__text--variant--outline & {
         margin-left: 0;
         padding: @comp-paddingTB-m @comp-paddingLR-l;
+
         // 移除 t-chat__text 的边框
         .@{prefix}-chat__text {
           border: none;
@@ -595,6 +623,7 @@
       &__wrapper {
         background-color: @bg-color-secondarycontainer;
         border-radius: @border-radius-medium;
+
         .@{prefix}-fake-arrow {
           color: @text-color-secondary;
           transform: rotate(180deg) scale(1.125);
@@ -610,9 +639,11 @@
       &__content {
         background-color: @bg-color-secondarycontainer;
         padding: 0 @comp-paddingTB-m @comp-paddingTB-s @comp-paddingTB-m;
+
         .@{prefix}-chat__text {
           padding: 0;
-          .@{prefix}-chat__text--assistant {
+
+          .@{prefix}-chat__text__assistant {
             color: @text-color-placeholder;
             font-weight: 400;
             font-size: @font-size-base;
