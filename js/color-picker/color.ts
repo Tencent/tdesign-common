@@ -100,12 +100,16 @@ export class Color {
   }
 
   update(input: string) {
-    if (input === this.originColor) {
-      return;
-    }
+    if (input === this.originColor) return;
     const gradientColors = parseGradientString(input);
+
     if (this.isGradient && !gradientColors) {
-      // 处理gradient模式下切换不同格式时的交互问题，输入的不是渐变字符串才使用当前处理
+      /* 这里是针对渐变模式下，修改某个位置点的色值情况
+
+       「Tip」
+        - 为了避免有时外界从渐变切换到单色模式，存在缓存问题
+          需要手动设置 `color.isGradient = false` 进行同步
+        - 特定场景下，也可以直接创建新实例 `new Color` 进行覆盖 */
       const colorHsv = tinyColor(input).toHsv();
       this.states = colorHsv;
       this.updateCurrentGradientColor();
