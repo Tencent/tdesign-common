@@ -441,8 +441,12 @@ export class Color {
     const isGradientColor1 = Color.isGradientColor(color1);
     const isGradientColor2 = Color.isGradientColor(color2);
     if (isGradientColor1 && isGradientColor2) {
-      const gradientColor1 = gradientColors2string(parseGradientString(color1) as GradientColors);
-      const gradientColor2 = gradientColors2string(parseGradientString(color2) as GradientColors);
+      const gradientStr1 = parseGradientString(color1);
+      const gradientStr2 = parseGradientString(color2);
+      if (!gradientStr1 || !gradientStr2) return false;
+
+      const gradientColor1 = gradientColors2string(gradientStr1);
+      const gradientColor2 = gradientColors2string(gradientStr2);
       return gradientColor1 === gradientColor2;
     }
     if (!isGradientColor1 && !isGradientColor2) {
