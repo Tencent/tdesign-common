@@ -18,6 +18,13 @@ export function extractTimeFormat(dateFormat: string = '') {
     .trim();
 }
 
+// 由于 dayjs.locale(dayjsLocale) 方法的 dayjsLocale 不能为 undefined，
+// 当 dayjsLocale 为空时取 dayjs 的 locale 作为默认值，
+// 以保证格式化时能正确使用本地化语言
+export function getDefaultLocale() {
+  return dayjs.locale();
+}
+
 // 统一解析日期格式字符串成 Dayjs 对象
 export function parseToDayjs(
   value: string | Date | number,
@@ -27,25 +34,30 @@ export function parseToDayjs(
 ) {
   if (value === '' || value === null) return dayjs();
 
+  let _dayjsLocale = dayjsLocale;
+  if (!_dayjsLocale) {
+    _dayjsLocale = getDefaultLocale();
+  }
+
   let dateText = value;
   // format week
   if (/[w|W]/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
+      dateText = dayjs(dateText).locale(_dayjsLocale).format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
 
-    let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
+    let firstWeek = dayjs(yearStr, 'YYYY').locale(_dayjsLocale).startOf('year');
     // 第一周ISO定义: 本年度第一个星期四所在的星期
     // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
     // 否则本周即为第一周
     if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
 
     // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
-    const weekCounts = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').isoWeeksInYear();
+    const weekCounts = dayjs(yearStr, 'YYYY').locale(_dayjsLocale).isoWeeksInYear();
     for (let i = 0; i <= weekCounts; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
@@ -59,7 +71,7 @@ export function parseToDayjs(
   // format quarter
   if (/Q/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
+      dateText = dayjs(dateText).locale(_dayjsLocale).format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
@@ -104,7 +116,12 @@ function formatRange({
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
-  let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format).locale(dayjsLocale));
+  let _dayjsLocale = dayjsLocale;
+  if (!_dayjsLocale) {
+    _dayjsLocale = getDefaultLocale();
+  }
+
+  let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format).locale(_dayjsLocale));
 
   // 保证后面的时间大于前面的时间
   if (
@@ -148,7 +165,12 @@ function formatSingle({
 }) {
   if (!newDate) return '';
 
-  const dayJsDate = parseToDayjs(newDate, format).locale(dayjsLocale);
+  let _dayjsLocale = dayjsLocale;
+  if (!_dayjsLocale) {
+    _dayjsLocale = getDefaultLocale();
+  }
+
+  const dayJsDate = parseToDayjs(newDate, format).locale(_dayjsLocale);
 
   // 格式化失败提示
   if (!dayJsDate.isValid()) {
@@ -186,7 +208,7 @@ export function formatDate(
   {
     format,
     targetFormat,
-    dayjsLocale = 'zh-cn',
+    dayjsLocale,
     autoSwap,
   }: { format: string; dayjsLocale?: string, targetFormat?: string; autoSwap?: boolean }
 ) {
