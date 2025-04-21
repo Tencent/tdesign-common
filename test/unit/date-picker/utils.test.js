@@ -1,5 +1,8 @@
+import dayjs from 'dayjs';
+import '@tdesign/components/locale/en_US';
+import '@tdesign/components/locale/zh_CN';
 import { describe, it, expect } from 'vitest';
-import { extractTimeFormat } from '../../../js/date-picker/format';
+import { extractTimeFormat, formatDate } from '../../../js/date-picker/format';
 
 describe('utils', () => {
   describe(' extractTimeFormat', () => {
@@ -16,6 +19,34 @@ describe('utils', () => {
     it('YYYY-MM-DD HH时mm分ss秒SSS毫秒', () => {
       const res = extractTimeFormat('YYYY-MM-DD HH时mm分ss秒SSS毫秒');
       expect(res).toBe('HH时mm分ss秒SSS毫秒');
+    });
+  });
+
+  describe('when dayjsLocale is undefined, locale should be consistent with dayjs locale', () => {
+    const dateDisplayFormat = 'MMM,YYYY';
+    const testDate = '2025-04-22';
+
+    it('chinese', () => {
+      dayjs.locale('zh-cn');
+
+      const res1 = formatDate('2025-04-22', {
+        format: dateDisplayFormat,
+        dayjsLocale: undefined,
+      });
+      const res2 = dayjs(testDate).format(dateDisplayFormat);
+
+      expect(res1).toBe(res2);
+    });
+
+    it('english', () => {
+      dayjs.locale('en');
+
+      const res3 = formatDate('2025-04-22', {
+        format: dateDisplayFormat,
+        dayjsLocale: undefined,
+      });
+      const res4 = dayjs(testDate).format(dateDisplayFormat);
+      expect(res3).toBe(res4);
     });
   });
 });
