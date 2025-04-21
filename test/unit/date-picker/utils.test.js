@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import '@tdesign/components/locale/en_US';
-import '@tdesign/components/locale/zh_CN';
+import 'dayjs/locale/en';
+import 'dayjs/locale/zh-cn';
 import { describe, it, expect } from 'vitest';
 import { extractTimeFormat, formatDate } from '../../../js/date-picker/format';
 
