@@ -70,8 +70,8 @@ export const genId = () => (1 + Math.random() * 4294967295).toString(16);
  * @param color
  * @returns
  */
-export const genGradientPoint = (left: number, color: string): GradientColorPoint => ({
-  id: genId(),
+export const genGradientPoint = (left: number, color: string, id?: string): GradientColorPoint => ({
+  id: id || genId(),
   left,
   color,
 });
@@ -121,11 +121,11 @@ export class Color {
     if (gradientColors) {
       this.isGradient = true;
       const object = gradientColors as GradientColors;
-      const points = object.points.map((c) => genGradientPoint(c.left, c.color));
+      const points = object.points.map((c, index) => genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id));
       this.gradientStates = {
         colors: points,
         degree: object.degree,
-        selectedId: points[0]?.id || null,
+        selectedId: this.gradientStates.selectedId || points[0]?.id || null,
       };
       this.gradientStates.css = this.linearGradient;
       colorInput = this.gradientSelectedPoint?.color;
