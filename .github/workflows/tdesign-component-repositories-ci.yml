@@ -24,6 +24,20 @@ jobs:
       - name: Set pr id
         id : pr
         run: echo "id=$(cat pr-id.txt)" >> $GITHUB_OUTPUT
+  
+  pr-comment-in-progress:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs:
+      - pr-context
+    runs-on: ubuntu-latest
+    steps:
+      - name: comment
+        uses: actions-cool/maintain-one-comment@v3
+        with:
+          token: ${{ secrets.TDESIGN_BOT_TOKEN }}
+          number: ${{needs.pr-context.outputs.pr_id}}
+          body: ⌛️ TDesign Component Repositories CI Test is in progress... [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          body-include: '<!-- TDesign Component Repositories CI Test -->'
 
   tdesign-vue:
     if: github.event.workflow_run.conclusion == 'success'
