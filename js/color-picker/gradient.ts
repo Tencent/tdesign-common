@@ -231,7 +231,8 @@ export const parseGradientString = (input: string): GradientColors | false => {
 
   let degree = parseInt(result.angle, 10);
   if (Number.isNaN(degree)) {
-    // 如果角度不存在，使用 CSS 渐变的默认逻辑（180 deg）
+    /* 如果角度不存在，使用 CSS 渐变的默认逻辑（180 deg）
+       https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_images/Using_CSS_gradients */
     degree = sideCornerDegreeMap[result.sideCorner as keyof typeof sideCornerDegreeMap] || 180;
   }
   gradientColors.degree = degree;
