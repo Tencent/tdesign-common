@@ -1,5 +1,4 @@
-import isString from 'lodash/isString';
-import isNull from 'lodash/isNull';
+import { isString, isNull } from 'lodash-es';
 /* eslint-disable no-param-reassign */
 /**
  * 用于反解析渐变字符串为对象
@@ -225,7 +224,7 @@ export const parseGradientString = (input: string): GradientColors | boolean => 
   gradientColors.points = points;
   let degree = parseInt(result.angle, 10);
   if (Number.isNaN(degree)) {
-    degree = sideCornerDegreeMap[result.sideCorner] || 90;
+    degree = sideCornerDegreeMap[result.sideCorner as keyof typeof sideCornerDegreeMap] || 90;
   }
   gradientColors.degree = degree;
 

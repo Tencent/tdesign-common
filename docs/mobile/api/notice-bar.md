@@ -1,36 +1,47 @@
 ---
 title: Noticebar 公告栏
-description: 在导航栏下方，用于给用户显示提示消息
+description: 在导航栏下方，用于给用户显示提示消息。
 spline: base
 isComponent: true
 toc: false
 ---
 
-### 基础静态公告栏
+## 代码演示
+
+### 01 组件类型
+
+纯文字的公告栏
 
 {{ base }}
 
-### 带图标静态公告栏
+带图标的公告栏
 
-{{ icon }}
+{{ iconDemo }}
 
-### 带操作公告栏
+带关闭的公告栏
+
+{{ suffixIcon }}
+
+带入口的公告栏
 
 {{ event }}
 
-### 滚动公告栏
-
-{{ scrolling }}
-
-### 自定义样式
+自定样式的公告栏
 
 {{ custom }}
 
-### 不同状态的公告栏
+自定义内容的公告栏
+
+{{ customization }}
+
+### 02 组件状态
+
 公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
 
 {{ theme }}
 
-### 多行文字消息栏
+### 03 可滚动的公告栏
 
-{{ customization }}
+可滚动公告栏有水平 (horizontal) 和垂直 (vertical)
+
+{{ scrolling }}

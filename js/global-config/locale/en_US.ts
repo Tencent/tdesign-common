@@ -254,4 +254,20 @@ export default {
   descriptions: {
     colonText: ':',
   },
+  chat: {
+    placeholder: 'please enter message...',
+    stopBtnText: 'stop',
+    refreshTipText: 'regenerate',
+    copyTipText: 'copy',
+    likeTipText: 'like',
+    dislikeTipText: 'dislike',
+    copyCodeBtnText: 'copy code',
+    copyCodeSuccessText: 'copied',
+    clearHistoryBtnText: 'clear history',
+    copyTextSuccess: 'copied',
+    copyTextFail: 'copy failed',
+    confirmClearHistory: 'Are you sure to clear all messages?',
+    loadingText: 'thinking...',
+    loadingEndText: 'deep thinking end',
+  }
 } as const;

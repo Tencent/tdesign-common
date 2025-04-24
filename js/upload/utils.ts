@@ -207,7 +207,7 @@ export function validateFileType(accept: string, fileType: string, fileName?: st
 
   const acceptList = accept.split(',').map((v) => v.trim());
   for (let i = 0, len = acceptList.length; i < len; i++) {
-    const oneRule = acceptList[i];
+    const oneRule = acceptList[i] as keyof typeof INPUT_FILE_MAP;
     if (INPUT_FILE_MAP[oneRule] && INPUT_FILE_MAP[oneRule].test(tmpFileType)) {
       return true;
     }

@@ -63,6 +63,10 @@
   background-color: @table-bg;
   position: relative;
 
+  .@{prefix}-popup:not(.@{prefix}-tooltip)[data-popper-placement^="top"] .@{prefix}-popup__arrow {
+    bottom: calc(-@popup-arrow-width / 2);
+  }
+
   &:focus-visible {
     outline: none;
   }

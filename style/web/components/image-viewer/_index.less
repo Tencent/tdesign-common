@@ -84,10 +84,10 @@
   animation: @anim-duration-base @anim-time-fn-ease-in modal-mask-show;
 
   &.@{prefix}-is-hide {
-    animation: @anim-duration-base @anim-time-fn-ease-out modal-mask-hide;
+    animation: @anim-duration-base @anim-time-fn-ease-out modal-mask-hide forwards;
 
     .@{prefix}-image-viewer__modal-pic .@{prefix}-image-viewer__modal-box {
-      animation: @anim-duration-base @anim-time-fn-ease-out modal-image-hide;
+      animation: @anim-duration-base @anim-time-fn-ease-out modal-image-hide forwards;
     }
   }
 

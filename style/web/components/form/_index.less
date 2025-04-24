@@ -58,10 +58,20 @@
       text-align: right;
     }
 
-    &--required {
+    &--required:not(.@{prefix}-form__label--required-right) {
       label::before {
         display: inline-block;
         margin-right: @form-label-margin-right-required;
+        color: @form-color-error;
+        line-height: @form-label-line-height;
+        content: "*";
+      }
+    }
+
+    &--required-right {
+      label::after {
+        display: inline-block;
+        margin-left: @form-label-margin-left-required;
         color: @form-color-error;
         line-height: @form-label-line-height;
         content: "*";

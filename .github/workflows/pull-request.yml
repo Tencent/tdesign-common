@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [develop, main]
     types: [opened, synchronize, reopened]
-    
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -14,138 +14,30 @@ jobs:
         run: |
           log_emails=$(git log --pretty=format:"%ae %ce" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo $log_emails && echo "邮箱校验非法" && exit 2;else echo "邮箱校验通过";fi
         shell: bash
-        
+
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - uses: actions/cache@v4
-        env:
-          cache-name: cache-nodemodules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - run: npm install
-      - run: npm run lint
-      - run: npm run test      
 
-  modify-web:
-    runs-on: ubuntu-latest
-    outputs:
-      web-changed: ${{ steps.web-changed.outputs.any_changed }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: tj-actions/changed-files@v45
-        id: web-changed
-        with:
-          path: style/web
-  
-  modify-mobile:
-    runs-on: ubuntu-latest
-    outputs:
-      mobile-changed: ${{ steps.mobile-changed.outputs.any_changed }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: tj-actions/changed-files@v45
-        id: mobile-changed
-        with:
-           path: style/mobile
+      - run: pnpm install
 
-  build-web:
-    runs-on: ubuntu-latest
-    needs: modify-web
-    if: needs.modify-web.outputs.web-changed == 'true'
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          repository: Tencent/tdesign-vue
-          submodules: recursive
-          path: target-repo
+      - run: pnpm run lint
 
-      - name: init site deploy
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - run: |
-          cp -rf style/web/* target-repo/src/_common/style/web
-          cd target-repo/src/_common/
-          git diff
-      - uses: actions/cache@v4
-        env:
-          cache-name: cache-nodemodules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - run: |
-          cd target-repo/
-          npm install
-          npm run site:preview
-          echo ${{ github.event.number }} > ./_site/pr-id.txt
-          zip -r _site.zip _site
+      - run: pnpm run test
 
-      - name: upload artifact
+      - name: Save pr id
+        run: echo ${{ github.event.number }} > pr-id.txt
+
+      - name: Upload pr id
         uses: actions/upload-artifact@v4
         with:
-          name: _site
-          path: target-repo/_site.zip
-          retention-days: 5
-  
-  build-mobile:
-    runs-on: ubuntu-latest
-    needs: modify-mobile
-    if: needs.modify-mobile.outputs.mobile-changed == 'true'
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          repository: Tencent/tdesign-mobile-vue
-          submodules: recursive
-          path: target-repo
-
-      - name: init site deploy
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - run: |
-          cp -rf style/mobile/* target-repo/src/_common/style/mobile
-          cd target-repo/
-          git status
-      - uses: actions/cache@v4
-        env:
-          cache-name: cache-nodemodules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - run: |
-          cd target-repo/
-          npm install
-          npm run site:preview
-          echo ${{ github.event.number }} > ./_site/pr-id.txt
-          zip -r _site.zip _site
-
-      - name: upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: _site
-          path: target-repo/_site.zip
+          name: pr-id
+          path: pr-id.txt
           retention-days: 5

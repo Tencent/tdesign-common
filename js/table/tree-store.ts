@@ -1,9 +1,7 @@
-import isUndefined from 'lodash/isUndefined';
+import { isUndefined, get, set } from 'lodash-es';
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
-import get from 'lodash/get';
-import set from 'lodash/set';
 import { isRowSelectedDisabled } from './utils';
 import { PrimaryTableCol, TableRowState, TableRowValue, TableRowData } from './types';
 import log from '../log';

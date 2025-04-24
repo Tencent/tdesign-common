@@ -34,3 +34,13 @@ spline: navigation
 使用 `options` 属性配置面包屑内容。
 
 {{ options }}
+
+### 带省略的面包屑
+
+使用 `maxItems`、`itemsAfterCollapse`、`itemsBeforeCollapse`，配置省略。
+
+{{ ellipsis }}
+
+#### 自定义省略号
+
+{{ custom-ellipsis }}

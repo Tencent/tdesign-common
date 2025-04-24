@@ -34,3 +34,13 @@ Breadcrumbs support dropdown menus. It is recommended to avoid using breadcrumbs
 Use the `options` property to configure the content of the breadcrumbs.
 
 {{ options }}
+
+### Breadcrumbs with Ellipsis
+
+Use `maxItems`, `itemsAfterCollapse`, `itemsBeforeCollapse` to configure ellipsis.
+
+{{ ellipsis }}
+
+#### Custom Ellipsis
+
+{{ custom-ellipsis }}

@@ -1,10 +1,4 @@
-import isArray from 'lodash/isArray';
-import isFunction from 'lodash/isFunction';
-import isNumber from 'lodash/isNumber';
-import isString from 'lodash/isString';
-import difference from 'lodash/difference';
-import camelCase from 'lodash/camelCase';
-import isPlainObject from 'lodash/isPlainObject';
+import { isArray, isFunction, isNumber, isString, difference, camelCase, isPlainObject } from 'lodash-es';
 import mitt from 'mitt';
 
 import { TreeNode } from './tree-node';
@@ -161,10 +155,12 @@ export class TreeStore {
   public setConfig(options: TypeTreeStoreOptions) {
     const { config } = this;
     let hasChanged = false;
-    Object.keys(options).forEach((key) => {
+    (Object.keys(options)).forEach((key: keyof TypeTreeStoreOptions) => {
       const val = options[key];
       if (val !== config[key]) {
         hasChanged = true;
+        // @ts-ignore
+        // TODO: https://github.com/microsoft/TypeScript/issues/32693
         config[key] = val;
       }
     });
@@ -312,6 +308,8 @@ export class TreeStore {
       if (isPlainObject(conf.props)) {
         nodes = nodes.filter((node) => {
           const result = Object.keys(conf.props).every((key) => {
+            // @ts-ignore
+            // TODO: https://github.com/microsoft/TypeScript/issues/32693
             const propEqual = node[key] === conf.props[key];
             return propEqual;
           });
@@ -902,8 +900,10 @@ export class TreeStore {
   public emit(name: string, state?: TypeTreeEventState): void {
     const { config, emitter } = this;
     const methodName = camelCase(`on-${name}`);
-    const method = config[methodName];
+    const method = config[methodName as keyof TypeTreeStoreOptions];
     if (isFunction(method)) {
+      // @ts-ignore
+      // TODO: 待移除
       method(state);
     }
     emitter.emit(name, state);

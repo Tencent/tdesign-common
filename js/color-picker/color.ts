@@ -473,13 +473,14 @@ const COLOR_OBJECT_OUTPUT_KEYS = [
  * @param color
  * @returns
  */
-export const getColorObject = (color: Color): ColorObject => {
+export const getColorObject = (color: Color): ColorObject | null => {
   if (!color) {
     return null;
   }
   const colorObject = Object.create(null);
-  // eslint-disable-next-line no-return-assign
-  COLOR_OBJECT_OUTPUT_KEYS.forEach((key) => (colorObject[key] = color[key]));
+  COLOR_OBJECT_OUTPUT_KEYS.forEach((key) => {
+    colorObject[key] = (color as { [key: string]: any })[key];
+  });
   if (color.isGradient) {
     colorObject.linearGradient = color.linearGradient;
   }

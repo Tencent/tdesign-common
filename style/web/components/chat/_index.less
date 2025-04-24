@@ -24,6 +24,24 @@
     overflow-y: auto;
     overflow-x: hidden;
 
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background-color: @scrollbar-color;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 6px;
+      border: 4px solid transparent;
+      background-clip: border-box;
+      background-color: transparent;
+    }
+
     &--reverse {
       display: flex;
       flex-direction: column-reverse;
@@ -82,17 +100,18 @@
           scrollbar-width: none;
         }
 
+        .@{prefix}-textarea__inner:hover {
+          box-shadow: @chat-input-hover;
+        }
+
         .@{prefix}-textarea__inner.@{prefix}-is-focused {
           border-color: @brand-color;
           background: @bg-color-container;
+          box-shadow: @chat-textarea-shadow-active;
         }
 
         .@{prefix}-textarea__inner::placeholder {
           color: @text-color-secondary;
-        }
-
-        .@{prefix}-textarea__inner:hover {
-          box-shadow: @chat-input-hover;
         }
       }
 
@@ -150,6 +169,97 @@
     }
   }
 
+  // sender输入框样式
+  &-sender {
+    position: relative;
+    width: 100%;
+
+    &__textarea {
+      position: relative;
+      border: 1px solid @border-level-2-color;
+      border-radius: @chat-sender-radius;
+      padding: @pop-padding-xl;
+      background-color: @bg-color-secondarycontainer;
+
+      &--focus {
+        border-color: @brand-color;
+        background-color: @bg-color-container;
+        box-shadow: @chat-textarea-shadow-active;
+      }
+    }
+
+    &__textarea:hover {
+      border-color: @brand-color;
+      box-shadow: @shadow-1;
+    }
+
+    &__textarea--focus:hover {
+      box-shadow: @chat-textarea-shadow-active;
+    }
+    .@{prefix}-textarea {
+      width: 100%;
+      margin-bottom: @comp-margin-m;
+
+      .@{prefix}-textarea__inner {
+        background-color: rgba(0, 0, 0, 0%);
+        padding: 0;
+        border: 0;
+        scrollbar-width: none;
+        font: @font-body-large;
+        color: @text-color-primary;
+      }
+
+      .@{prefix}-textarea__inner.@{prefix}-is-focused {
+        border: 0;
+      }
+
+      .@{prefix}-textarea__inner::placeholder {
+        font: @font-body-large;
+        color: @text-color-disabled;
+      }
+
+      .@{prefix}-textarea__inner:hover {
+        box-shadow: none;
+      }
+
+      .@{prefix}-textarea__inner:focus {
+        box-shadow: none;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+
+      & &__default {
+        padding: 0;
+        transform: rotate(-90deg);
+        color: @text-color-anti;
+        width: @comp-size-s;
+        height: @comp-size-s;
+        border-radius: @border-radius-circle;
+        background-color: @brand-color;
+      }
+
+      & &--disabled {
+        background-color: @bg-color-secondarycomponent;
+        color: @bg-color-container;
+      }
+
+      &__stopicon {
+        width: @size-4;
+        height: @size-4;
+        border: 1px solid @bg-color-container;
+        background: @bg-color-container;
+      }
+    }
+  }
+
   &__inner {
     display: flex;
     margin-bottom: @comp-margin-l;
@@ -157,11 +267,17 @@
       flex: 0 0 auto;
     }
     .@{prefix}-chat__content {
+      display: flex;
+      justify-content: center;
       flex: 1 1 auto;
       width: 100%;
 
       &--base {
         padding-top: @comp-paddingTB-xl;
+      }
+
+      > .@{prefix}-chat-loading {
+        padding: 0 @comp-paddingLR-m;
       }
     }
     .@{prefix}-chat__detail {
@@ -172,26 +288,41 @@
     &.model-change {
       justify-content: center;
       margin-top: @comp-margin-xxl;
+      // 模型切换在chat-content中渲染居中对齐覆写样式
+      .@{prefix}-chat__content {
+        align-items: center;
+      }
+      .@{prefix}-chat__text {
+        padding: 0;
+        font-size: @font-size-s;
+        color: @text-color-disabled;
+      }
+      .@{prefix}-chat__notice {
+        // 模型切换为content插槽需要覆盖样式
+        .@{prefix}-chat__text {
+          padding: 0;
+          font-size: @font-size-s;
+          color: @text-color-disabled;
+        }
+
+        background: @bg-color-secondarycontainer;
+        padding: @comp-paddingTB-xxs @comp-paddingLR-s;
+        font-size: @font-size-s;
+        color: @text-color-disabled;
+        border-radius: @border-radius-default;
+        box-sizing: border-box;
+        line-height: 20px;
+        text-align: center;
+
+        span {
+          color: @text-color-placeholder;
+        }
+      }
     }
 
     &.error {
       .@{prefix}-chat__text__content {
         color: @error-color;
-      }
-    }
-    .@{prefix}-chat__notice {
-      // 水平居中
-      background: @bg-color-secondarycontainer;
-      padding: @comp-paddingTB-xxs @comp-paddingLR-s;
-      font-size: @font-size-s;
-      color: @text-color-disabled;
-      border-radius: @border-radius-default;
-      box-sizing: border-box;
-      line-height: 20px;
-      text-align: center;
-
-      span {
-        color: @text-color-placeholder;
       }
     }
   }
@@ -201,7 +332,6 @@
       flex-direction: row-reverse;
       .@{prefix}-chat__avatar {
         margin-right: 0;
-        // margin-left: @comment-avatar-margin-right;
       }
       .@{prefix}-chat__content {
         align-items: flex-end;
@@ -243,6 +373,20 @@
       width: 100%;
       padding: @pop-padding-xxl;
     }
+    .@{prefix}-chat__text--model-change {
+      background: @bg-color-secondarycontainer;
+      padding: @comp-paddingTB-xxs @comp-paddingLR-s;
+      font-size: @font-size-s;
+      color: @text-color-disabled;
+      border-radius: @border-radius-default;
+      box-sizing: border-box;
+      line-height: 20px;
+      text-align: center;
+
+      span {
+        color: @text-color-placeholder;
+      }
+    }
   }
 
   &__base {
@@ -250,7 +394,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: baseline;
-    font: @font-title-small;
+    font: @font-body-medium;
     color: @text-color-placeholder;
     padding-left: @pop-padding-xxl;
   }
@@ -261,11 +405,11 @@
   }
   // 消息样式
   &__text {
-    padding: @pop-padding-xl @pop-padding-xxl;
+    padding: @comp-paddingTB-m @comp-paddingLR-l;
     font: @font-body-large;
     word-break: break-all;
 
-    & &__user pre {
+    & &--user pre {
       color: @text-color-secondary;
       margin: 0;
       white-space: pre-wrap;
@@ -273,13 +417,16 @@
 
     &__assistant {
       color: @text-color-primary;
+      line-height: 2;
+
+      p,
+      ul,
+      ol {
+        line-height: 1.5;
+      }
 
       ol {
         padding-inline-start: 20px;
-
-        li {
-          list-style: decimal;
-        }
       }
 
       img {
@@ -302,12 +449,14 @@
         border-left: 2px solid @gray-color-3;
         background: @gray-color-1;
         color: @font-gray-1;
-        padding: @comp-paddingTB-m @comp-paddingTB-m @comp-paddingTB-m @comp-size-xs;
+        padding: @comp-paddingTB-m @comp-paddingTB-m @comp-paddingTB-m
+          @comp-size-xs;
         margin: @comp-margin-l 0;
       }
 
       hr {
-        opacity: 0;
+        opacity: 1;
+        border: 1px solid @border-level-1-color;
       }
     }
 
@@ -323,13 +472,6 @@
     &--variant--base {
       .@{prefix}-chat__text {
         background-color: @bg-color-secondarycontainer;
-        border-radius: @border-radius-extraLarge;
-      }
-    }
-
-    &--variant--outline {
-      .@{prefix}-chat__text {
-        border: 1px solid @border-level-2-color;
         border-radius: @border-radius-extraLarge;
       }
     }
@@ -350,7 +492,7 @@
     overflow: hidden;
 
     & .@{prefix}-button {
-      padding: @pop-padding-s;
+      padding: @comp-paddingTB-xs @comp-paddingLR-xs;
       width: @comp-size-xxxs;
       height: @comp-size-xxxs;
       box-sizing: content-box;
@@ -366,7 +508,7 @@
       color: @brand-color;
     }
     & .@{prefix}-button:hover {
-      background-color: @chat-actions-hover;
+      background-color: @bg-color-secondarycontainer-hover;
     }
     & .@{prefix}-space .@{prefix}-space-item {
       height: @comp-size-xs;
@@ -398,7 +540,195 @@
 
   &__copy-btn {
     color: @code-font-color-base;
-    // margin-left: auto;
     cursor: pointer;
+  }
+}
+
+// 思维链样式
+.@{prefix}-chat__detail {
+  .@{prefix}-chat__text--variant--outline & {
+    border: 1px solid @border-level-2-color;
+    border-radius: @border-radius-extraLarge;
+  }
+  .model-change.@{prefix}-chat__text--variant--outline & {
+    border: none;
+  }
+
+  &-reasoning {
+    .@{prefix}-chat__text--variant--text & {
+      padding-top: @comp-paddingTB-m;
+      ~ .@{prefix}-chat__text {
+        padding-right: 0;
+      }
+    }
+    .@{prefix}-chat__text--variant--outline & {
+      .@{prefix}-collapse {
+        background: none;
+      }
+    }
+    .@{prefix}-collapse {
+      background: none;
+    }
+    .@{prefix}-collapse-panel {
+      margin-left: @comp-margin-l;
+      .@{prefix}-chat__text--variant--outline & {
+        margin-left: 0;
+        padding: @comp-paddingTB-m @comp-paddingLR-l;
+        // 移除 t-chat__text 的边框
+        .@{prefix}-chat__text {
+          border: none;
+        }
+      }
+
+      &__icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+      }
+
+      &__header {
+        padding: @comp-paddingTB-s @comp-paddingTB-m;
+        font: @font-body-medium;
+      }
+
+      &__wrapper {
+        background-color: @bg-color-secondarycontainer;
+        border-radius: @border-radius-medium;
+        .@{prefix}-fake-arrow {
+          color: @text-color-secondary;
+          transform: rotate(180deg) scale(1.125);
+        }
+      }
+
+      &__icon--active {
+        .@{prefix}-fake-arrow {
+          transform: rotate(0deg) scale(1.125);
+        }
+      }
+
+      &__content {
+        background-color: @bg-color-secondarycontainer;
+        padding: 0 @comp-paddingTB-m @comp-paddingTB-s @comp-paddingTB-m;
+        .@{prefix}-chat__text {
+          padding: 0;
+          .@{prefix}-chat__text--assistant {
+            color: @text-color-placeholder;
+            font-weight: 400;
+            font-size: @font-size-base;
+          }
+        }
+      }
+    }
+  }
+}
+
+.@{prefix}-chat-loading {
+  display: flex;
+  align-items: center;
+
+  &__indicator {
+    &--moving {
+      position: relative;
+      width: 14px;
+      height: 14px;
+
+      .@{prefix}-chat-loading__dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: @border-radius-circle;
+        background-color: @brand-color;
+
+        &--top {
+          top: -4px;
+          left: 3px;
+          animation: dot-moving-top .6s ease-in-out alternate infinite;
+        }
+
+        &--left {
+          bottom: -5px;
+          left: -5px;
+          animation: dot-moving-left .6s ease-in-out alternate infinite;
+        }
+
+        &--right {
+          bottom: -5px;
+          right: -5px;
+          animation: dot-moving-right .6s ease-in-out alternate infinite;
+        }
+      }
+    }
+
+    &--gradient {
+      width: 14px;
+      height: 14px;
+      background-color: transparent;
+      border-radius: @border-radius-circle;
+      border: 1.5px solid @brand-color;
+      animation: border-gradient-color .6s ease-in-out alternate infinite;
+      box-sizing: border-box;
+    }
+
+    @keyframes border-gradient-color {
+      0% {
+        border-color: @brand-color;
+        border-width: 1.5px;
+      }
+
+      50% {
+        border-color: @brand-color-8;
+        border-width: 3px;
+      }
+
+      100% {
+        border-color: @brand-color-6;
+        border-width: 4px;
+      }
+    }
+
+    @keyframes dot-moving-top {
+      0% {
+        transform: scale(1);
+        top: -4px;
+      }
+
+      100% {
+        transform: scale(1.75);
+        top: 3px;
+      }
+    }
+
+    @keyframes dot-moving-left {
+      0% {
+        transform: scale(1);
+        bottom: -4px;
+        left: -4px;
+      }
+
+      100% {
+        transform: scale(1.75);
+        bottom: 3px;
+        left: 3px;
+      }
+    }
+
+    @keyframes dot-moving-right {
+      0% {
+        transform: scale(1);
+        bottom: -4px;
+        right: -4px;
+      }
+
+      100% {
+        transform: scale(1.75);
+        bottom: 3px;
+        right: 3px;
+      }
+    }
+  }
+
+  &__text {
+    margin-left: 8px;
   }
 }

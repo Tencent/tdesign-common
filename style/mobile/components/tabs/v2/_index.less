@@ -179,6 +179,8 @@
     overflow-x: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    height: @tab-item-height;
+    position: relative;
 
     &::-webkit-scrollbar {
       display: none;
@@ -190,13 +192,7 @@
       --td-tab-border-color: transparent;
     }
 
-    &--top,
-    &--bottom {
-      height: @tab-item-height;
-      position: relative;
-    }
-
-    &--top {
+    &--split {
       .border(bottom, @tab-border-color);
     }
   }

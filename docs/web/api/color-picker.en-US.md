@@ -20,7 +20,7 @@ Trigger the display selector panel through the trigger, and transparently transf
 
 ### Color selector for different color modes
 
-Support monochrome mode, linear gradient two color mode selection, can be used in a single mode, can also switch between two modes at the same time. Use `colorMode` to configure.
+Support monochrome mode, linear gradient two color mode selection, can be used in a single mode, can also switch between two modes at the same time. Use `colorModes` to configure.
 
 {{ color-mode }}
 

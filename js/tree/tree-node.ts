@@ -1,10 +1,4 @@
-import isNull from 'lodash/isNull';
-import isFunction from 'lodash/isFunction';
-import isNumber from 'lodash/isNumber';
-import uniqueId from 'lodash/uniqueId';
-import isBoolean from 'lodash/isBoolean';
-import isNil from 'lodash/isNil';
-import get from 'lodash/get';
+import { isNull, isFunction, isNumber, uniqueId, isBoolean, isNil, get } from 'lodash-es';
 import { TreeStore } from './tree-store';
 import {
   TreeNodeValue,
@@ -218,6 +212,8 @@ export class TreeNode {
     // 仅 syncableStatus 列举的属性被同步到 treeNode 实例属性
     syncableProps.forEach((prop) => {
       if (typeof data[prop] !== 'undefined') {
+        // @ts-ignore
+        // TODO: 待移除
         this[prop] = data[prop];
       }
     });
@@ -558,6 +554,8 @@ export class TreeNode {
     keys.forEach((key) => {
       // key, disabled 字段可被 tree.config.keys 定义
       if (hasOwnProperty.call(settableStatus, key) || key === 'label') {
+        // @ts-ignore
+        // TODO: 待移除
         this[key] = item[key];
       }
       if (key === 'disabled') {

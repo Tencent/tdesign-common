@@ -1,6 +1,4 @@
-import isString from 'lodash/isString';
-import isNumber from 'lodash/isNumber';
-import isObject from 'lodash/isObject';
+import { isString, isNumber, isObject } from 'lodash-es';
 import log from '../log/log';
 
 export type InputNumberDecimalPlaces = number | { enableRound: boolean, places: number };

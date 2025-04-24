@@ -1,7 +1,5 @@
-import isUndefined from 'lodash/isUndefined';
+import { isUndefined, isString, isNumber } from 'lodash-es';
 /** 普通数相关方法 */
-import isString from 'lodash/isString';
-import isNumber from 'lodash/isNumber';
 import {
   compareNumber,
   formatENumber,

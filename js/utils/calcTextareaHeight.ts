@@ -1,4 +1,4 @@
-import isNull from 'lodash/isNull';
+import { isNull } from 'lodash-es';
 import { calculateNodeSize } from './helper';
 
 type CalculateStyleType = {

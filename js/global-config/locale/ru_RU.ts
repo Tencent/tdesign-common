@@ -262,4 +262,20 @@ export default {
   descriptions: {
     colonText: ':',
   },
+  chat: {
+    placeholder: 'Введите сообщение...',
+    stopBtnText: 'Остановить',
+    refreshTipText: 'Сгенерировать заново',
+    copyTipText: 'Копировать',
+    likeTipText: 'Нравится',
+    dislikeTipText: 'Не нравится',
+    copyCodeBtnText: 'Копировать код',
+    copyCodeSuccessText: 'Скопировано',
+    clearHistoryBtnText: 'Очистить историю',
+    copyTextSuccess: 'Успешно скопировано в буфер обмена',
+    copyTextFail: 'Не удалось скопировать в буфер обмена',
+    confirmClearHistory: 'Вы уверены, что хотите очистить все сообщения?',
+    loadingText: 'Думаю...',
+    loadingEndText: 'Глубоко обдумано',
+  }
 } as const;

@@ -16,6 +16,12 @@ Use `excessTagsDisplayType` to control the rendering method when the tag exceeds
 
 {{ excess }}
 
+### Maximum Number of Rows When Tags Exceed Limit
+
+Use `maxRows` to control the maximum number of rows when tags exceed the limit. A scrollbar will appear when the number of rows exceeds this limit. By default, there is no limit.
+
+{{ max-row }}
+
 ### Tag input box with limited number
 
 Use `max` to control the maximum number of tags.
