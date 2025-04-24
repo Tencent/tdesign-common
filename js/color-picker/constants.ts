@@ -60,7 +60,15 @@ export const DEFAULT_SYSTEM_SWATCH_COLORS = [
 ];
 
 // 非透明色格式化类型
-export const FORMATS = ['HEX', 'RGB', 'HSL', 'HSV', 'CMYK', 'CSS'];
+export const FORMATS = ['HEX', 'RGB', 'HSL', 'HSV', 'CMYK', 'CSS'] as const;
+
+// 透明色格式化类型映射
+export const ALPHA_FORMATS: Record<string, string> = {
+  HEX: 'HEX8',
+  RGB: 'RGBA',
+  HSL: 'HSLA',
+  HSV: 'HSVA',
+};
 
 // saturation-panel default rect
 export const SATURATION_PANEL_DEFAULT_WIDTH = 230;
