@@ -30,7 +30,7 @@ jobs:
         with:
           token: ${{ secrets.TDESIGN_BOT_TOKEN }}
           number: ${{steps.pr.outputs.id}}
-          body: ⌛️ TDesign Component Repositories CI Test is in progress... [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          body: ⌛️ TDesign Component Repositories Ci Test Is In Progress... [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           body-include: '<!-- TDesign Component Repositories CI Test -->'  
 
   tdesign-vue:
