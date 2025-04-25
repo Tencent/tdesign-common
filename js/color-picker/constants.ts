@@ -1,4 +1,8 @@
-/** 常量 */
+import type {
+  AlphaColorFormat,
+  BasicColorFormat,
+  ColorInputProp,
+} from './types';
 
 // 最近使用颜色最大个数
 export const TD_COLOR_USED_COLORS_MAX_SIZE = 100; // 每行10个
@@ -59,18 +63,137 @@ export const DEFAULT_SYSTEM_SWATCH_COLORS = [
   '#033017',
 ];
 
-// 非透明色格式化类型
-export const FORMATS = ['HEX', 'RGB', 'HSL', 'HSV', 'CMYK', 'CSS'] as const;
+/**
+ * 非透明色格式化类型
+ */
+export const FORMATS: BasicColorFormat[] = [
+  'HEX',
+  'RGB',
+  'HSL',
+  'HSV',
+  'CMYK',
+  'CSS',
+] as const;
 
-// 透明色格式化类型映射
-export const ALPHA_FORMATS: Record<string, string> = {
+/**
+ * 透明色格式化类型映射
+ */
+export const ALPHA_FORMAT_MAP: Partial<
+  Record<BasicColorFormat, AlphaColorFormat>
+> = {
   HEX: 'HEX8',
   RGB: 'RGBA',
   HSL: 'HSLA',
   HSV: 'HSVA',
+} as const;
+
+/**
+ * 不同格式对应的输入框
+ */
+export const COLOR_FORMAT_INPUTS: Record<BasicColorFormat, ColorInputProp[]> = {
+  RGB: [
+    {
+      key: 'r',
+      min: 0,
+      max: 255,
+      type: 'inputNumber',
+    },
+    {
+      key: 'g',
+      min: 0,
+      max: 255,
+      type: 'inputNumber',
+    },
+    {
+      key: 'b',
+      min: 0,
+      max: 255,
+      type: 'inputNumber',
+    },
+  ],
+  HSV: [
+    {
+      key: 'h',
+      min: 0,
+      max: 360,
+      type: 'inputNumber',
+    },
+    {
+      key: 's',
+      min: 0,
+      max: 100,
+      type: 'inputNumber',
+    },
+    {
+      key: 'v',
+      min: 0,
+      max: 100,
+      type: 'inputNumber',
+    },
+  ],
+  HSL: [
+    {
+      key: 'h',
+      min: 0,
+      max: 360,
+      type: 'inputNumber',
+    },
+    {
+      key: 's',
+      min: 0,
+      max: 100,
+      type: 'inputNumber',
+    },
+    {
+      key: 'l',
+      min: 0,
+      max: 100,
+      type: 'inputNumber',
+    },
+  ],
+  CMYK: [
+    {
+      key: 'c',
+      min: 0,
+      max: 255,
+      type: 'inputNumber',
+    },
+    {
+      key: 'm',
+      min: 0,
+      max: 255,
+      type: 'inputNumber',
+    },
+    {
+      key: 'y',
+      min: 0,
+      max: 255,
+      type: 'inputNumber',
+    },
+    {
+      key: 'k',
+      min: 0,
+      max: 255,
+      type: 'inputNumber',
+    },
+  ],
+  CSS: [
+    {
+      key: 'css',
+      type: 'input',
+      flex: 3,
+    },
+  ],
+  HEX: [
+    {
+      key: 'hex',
+      type: 'input',
+      flex: 3,
+    },
+  ],
 };
 
-// saturation-panel default rect
+// 色板尺寸
 export const SATURATION_PANEL_DEFAULT_WIDTH = 230;
 export const SATURATION_PANEL_DEFAULT_HEIGHT = 168;
 export const SLIDER_DEFAULT_WIDTH = 186;
