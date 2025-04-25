@@ -1,5 +1,4 @@
 import type {
-  AlphaColorFormat,
   BasicColorFormat,
   ColorInputProp,
 } from './types';
@@ -66,7 +65,7 @@ export const DEFAULT_SYSTEM_SWATCH_COLORS = [
 /**
  * 非透明色格式化类型
  */
-export const FORMATS: BasicColorFormat[] = [
+export const FORMATS = [
   'HEX',
   'RGB',
   'HSL',
@@ -78,9 +77,7 @@ export const FORMATS: BasicColorFormat[] = [
 /**
  * 透明色格式化类型映射
  */
-export const ALPHA_FORMAT_MAP: Partial<
-  Record<BasicColorFormat, AlphaColorFormat>
-> = {
+export const ALPHA_FORMAT_MAP = {
   HEX: 'HEX8',
   RGB: 'RGBA',
   HSL: 'HSLA',

@@ -1,6 +1,6 @@
 import Color from './color';
 import { ALPHA_FORMAT_MAP, COLOR_FORMAT_INPUTS, FORMATS } from './constants';
-import type { BasicColorFormat, ColorFormat } from './types';
+import type { AlphaConvertibleFormat, BasicColorFormat, ColorFormat } from './types';
 
 /**
  * 兜底处理用户传入的格式，例如：
@@ -8,7 +8,7 @@ import type { BasicColorFormat, ColorFormat } from './types';
  */
 export const initColorFormat = (format: ColorFormat, enableAlpha: boolean) => {
   if (enableAlpha && format in ALPHA_FORMAT_MAP) {
-    return ALPHA_FORMAT_MAP[format as BasicColorFormat];
+    return format in ALPHA_FORMAT_MAP ? ALPHA_FORMAT_MAP[format as AlphaConvertibleFormat] : format;
   }
   return format as BasicColorFormat;
 };
@@ -59,7 +59,11 @@ export const getColorFormatMap = (color: Color, type: 'encode' | 'decode') => {
 /**
  * 获取下拉框的格式选项
  */
-export const getColorFormatOptions = (enableAlpha: boolean) => (enableAlpha ? FORMATS.map((item) => ALPHA_FORMAT_MAP[item] || item) : FORMATS);
+export const getColorFormatOptions = (enableAlpha: boolean) => (
+  enableAlpha
+    ? FORMATS.map((item) => (item in ALPHA_FORMAT_MAP ? ALPHA_FORMAT_MAP[item as AlphaConvertibleFormat] : item))
+    : FORMATS
+);
 
 /**
  * 获取当前格式的输入框配置
@@ -75,7 +79,7 @@ export const getColorFormatInputs = (
      但在下一步会 push 一个代表透明度的输入框 */
   if (enableAlpha) {
     finalFormat = Object.keys(ALPHA_FORMAT_MAP).find(
-      (key) => ALPHA_FORMAT_MAP[key as BasicColorFormat] === format
+      (key) => key in ALPHA_FORMAT_MAP && ALPHA_FORMAT_MAP[key as AlphaConvertibleFormat] === format
     ) || format;
   } else {
     finalFormat = format;
