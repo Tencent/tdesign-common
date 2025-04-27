@@ -26,7 +26,7 @@ describe('utils', () => {
     const dateDisplayFormat = 'MMM,YYYY';
     const testDate = '2025-04-22';
 
-    it('chinese', () => {
+    it('zh-cn', () => {
       dayjs.locale('zh-cn');
 
       const res1 = formatDate('2025-04-22', {
@@ -38,7 +38,7 @@ describe('utils', () => {
       expect(res1).toBe(res2);
     });
 
-    it('english', () => {
+    it('en', () => {
       dayjs.locale('en');
 
       const res3 = formatDate('2025-04-22', {
