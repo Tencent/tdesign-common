@@ -177,11 +177,30 @@
     position: relative;
     width: 100%;
 
+    &__header {
+      border: 1px solid @component-border;
+      border-radius: @chat-sender-radius @chat-sender-radius 0 0;
+      margin-bottom: calc(0px - @comp-margin-l);
+      padding-bottom: @pop-padding-xxl;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    &__inner-header {
+      border-radius: @chat-sender-radius @chat-sender-radius @border-radius-medium @border-radius-medium;
+
+      &:empty {
+        margin-bottom: @comp-margin-s;
+      }
+    }
+
     &__textarea {
       position: relative;
       border: 1px solid @border-level-2-color;
       border-radius: @chat-sender-radius;
-      padding: @pop-padding-xl;
+      padding: @comp-paddingLR-xs;
       background-color: @bg-color-secondarycontainer;
 
       &--focus {
@@ -203,6 +222,7 @@
     .@{prefix}-textarea {
       width: 100%;
       margin-bottom: @comp-margin-m;
+      padding: 0 @comp-paddingLR-s;
 
       .@{prefix}-textarea__inner {
         background-color: rgba(0, 0, 0, 0%);
@@ -234,6 +254,7 @@
     &__footer {
       display: flex;
       justify-content: space-between;
+      padding: 0 @comp-paddingLR-s;
     }
 
     &__button {
