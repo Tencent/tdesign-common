@@ -35,25 +35,13 @@ export const getColorFormatMap = (color: Color, type: 'encode' | 'decode') => {
         hex: color.hex,
       },
       HEX8: {
-        hex: color.hex8,
+        hex8: color.hex8,
       },
     };
   }
 
-  const object2color = (format: ColorFormat) => Color.object2color(color, format);
   // decode
-  return {
-    HSV: object2color('HSV'),
-    HSVA: object2color('HSVA'),
-    HSL: object2color('HSL'),
-    HSLA: object2color('HSLA'),
-    RGB: object2color('RGB'),
-    RGBA: object2color('RGBA'),
-    CMYK: object2color('CMYK'),
-    CSS: color.css,
-    HEX: color.hex,
-    HEX8: color.hex8,
-  };
+  return color.getFormatsColorMap();
 };
 
 /**
