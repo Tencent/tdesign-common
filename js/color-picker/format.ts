@@ -35,7 +35,7 @@ export const getColorFormatMap = (color: Color, type: 'encode' | 'decode') => {
         hex: color.hex,
       },
       HEX8: {
-        hex8: color.hex8,
+        hex: color.hex8, // 为了减少转换 hex8 的 key 也对应 hex
       },
     };
   }
