@@ -261,11 +261,16 @@
       display: flex;
       justify-content: space-between;
       padding: 0 @comp-paddingLR-s;
+      padding-bottom: @comp-paddingTB-s;
     }
 
     &__button {
       display: flex;
       align-items: center;
+
+      &__actions {
+        margin-right: @comp-margin-m;
+      }
 
       & &__default {
         padding: 0;
