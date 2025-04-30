@@ -890,10 +890,10 @@ export class TreeNode {
      // 子节点全部选中(排除禁用节点)，则当前节点选中
      const enabledChildren = children.filter((node) => !node.isDisabled());
      if (enabledChildren.length > 0) {
-        checked = enabledChildren.every((node) => {
-          const childIsChecked = node.isChecked(checkedMap);
-          return childIsChecked;
-        });
+         checked = enabledChildren.every((node) => {
+           const childIsChecked = node.isChecked(checkedMap);
+           return childIsChecked;
+         });
       } else {
         // 如果所有子节点都被禁用，则视为未选中
         checked = false;
