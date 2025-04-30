@@ -890,20 +890,20 @@ export class TreeNode {
      // 子节点全部选中(排除禁用节点)，则当前节点选中
      const enabledChildren = children.filter((node) => !node.isDisabled());
      if (enabledChildren.length > 0) {
-       checked = enabledChildren.every((node) => {
-         const childIsChecked = node.isChecked(checkedMap);
-         return childIsChecked;
-       });
-     } else {
-       // 如果所有子节点都被禁用，则视为未选中
-       checked = false;
-     }
-   } else {
-     // 从父节点状态推断子节点状态
-     // 这里再调用 isChecked 会导致死循环
-     const parents = this.getParents();
-     checked = parents.some((node) => checkedMap.get(node.value));
-   }
+        checked = enabledChildren.every((node) => {
+          const childIsChecked = node.isChecked(checkedMap);
+          return childIsChecked;
+        });
+      } else {
+        // 如果所有子节点都被禁用，则视为未选中
+        checked = false;
+      }
+    } else {
+      // 从父节点状态推断子节点状态
+      // 这里再调用 isChecked 会导致死循环
+      const parents = this.getParents();
+      checked = parents.some((node) => checkedMap.get(node.value));
+    }
     return checked;
   }
 
