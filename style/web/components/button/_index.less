@@ -20,6 +20,16 @@
     @{attr}: @@theme-default;
   }
 
+  // ghost loading 强制统一色
+  &.@{prefix}-is-loading when (@ghost = true) {
+    @{attr}: @btn-color-ghost-disabled;
+    background-color: transparent;
+  }
+
+  &.@{prefix}-is-loading when (@ghost = false) {
+    @{attr}: @@theme-disabled;
+  }
+
   // ghost disabled 强制统一色
   &.@{prefix}-is-disabled when (@ghost = true) {
     @{attr}: @btn-color-ghost-disabled;
