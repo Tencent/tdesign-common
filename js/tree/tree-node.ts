@@ -863,6 +863,11 @@ export class TreeNode {
     if (!tree.nodeMap.get(value)) return false;
     // 节点不可选，视为未选中
     if (!this.isCheckable()) return false;
+    // 禁用节点保持原有选中状态
+    if (this.isDisabledState()) {
+      const checkedMap = map || tree.checkedMap;
+      return !!checkedMap.get(value);
+    }
     const checkedMap = map || tree.checkedMap;
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) {
@@ -872,7 +877,7 @@ export class TreeNode {
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
     if (checkedMap.get(value)
       && (
-        // 如果 valueMode 为 all、parentFirst，则视为选中
+      // 如果 valueMode 为 all、parentFirst，则视为选中
         valueMode !== 'onlyLeaf'
         // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
         || this.isLeaf()
@@ -881,18 +886,24 @@ export class TreeNode {
       return true;
     }
     // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
-    if (Array.isArray(children) && children.length > 0) {
-      // 子节点全部选中，则当前节点选中
-      checked = children.every((node) => {
-        const childIsChecked = node.isChecked(checkedMap);
-        return childIsChecked;
-      });
-    } else {
-      // 从父节点状态推断子节点状态
-      // 这里再调用 isChecked 会导致死循环
-      const parents = this.getParents();
-      checked = parents.some((node) => checkedMap.get(node.value));
-    }
+   if (Array.isArray(children) && children.length > 0) {
+     // 子节点全部选中(排除禁用节点)，则当前节点选中
+     const enabledChildren = children.filter((node) => !node.isDisabled());
+     if (enabledChildren.length > 0) {
+       checked = enabledChildren.every((node) => {
+         const childIsChecked = node.isChecked(checkedMap);
+         return childIsChecked;
+       });
+     } else {
+       // 如果所有子节点都被禁用，则视为未选中
+       checked = false;
+     }
+   } else {
+     // 从父节点状态推断子节点状态
+     // 这里再调用 isChecked 会导致死循环
+     const parents = this.getParents();
+     checked = parents.some((node) => checkedMap.get(node.value));
+   }
     return checked;
   }
 
@@ -1306,7 +1317,16 @@ export class TreeNode {
     map.delete(this.value);
     children.forEach((node) => {
       // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
-      if (options.isAction && node.isDisabledState()) return;
+      if (options.isAction && node.isDisabledState()) {
+       // 保持禁用节点的原有选中状态
+       const originalChecked = node.isChecked();
+        if (originalChecked) {
+          map.set(node.value, true);
+        } else {
+          map.delete(node.value);
+       }
+       return;
+     }
       if (checked) {
         map.set(node.value, true);
       } else {
