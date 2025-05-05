@@ -16,14 +16,8 @@
     @{attr}: @@theme-active;
   }
 
-  &.@{prefix}-is-loading {
-    @{attr}: @@theme-default;
-  }
-
-  // ghost loading 强制统一色
   &.@{prefix}-is-loading when (@ghost = true) {
-    @{attr}: @btn-color-ghost-disabled;
-    background-color: transparent;
+    @{attr}: @@theme-default;
   }
 
   &.@{prefix}-is-loading when (@ghost = false) {
