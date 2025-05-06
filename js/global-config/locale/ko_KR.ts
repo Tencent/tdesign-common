@@ -268,5 +268,7 @@ export default {
     confirmClearHistory: '채팅 기록을 지우시겠습니까?',
     loadingText: '생각 중...',
     loadingEndText: '깊이 생각함',
+    uploadImageText: '이미지 업로드',
+    uploadAttachmentText: '첨부 파일 업로드'
   }
 } as const;

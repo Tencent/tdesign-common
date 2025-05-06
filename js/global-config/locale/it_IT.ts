@@ -276,5 +276,7 @@ export default {
     confirmClearHistory: 'Sei sicuro di voler cancellare tutti i messaggi?',
     loadingText: 'Penso...',
     loadingEndText: 'Penso finito',
+    uploadImageText: 'caricare immagine',
+    uploadAttachmentText: 'caricare allegato',
   }
 } as const;

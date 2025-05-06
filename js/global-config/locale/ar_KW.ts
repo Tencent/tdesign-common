@@ -259,5 +259,7 @@ export default {
     copyTextSuccess: 'تم النسخ إلى الحافظة بنجاح',
     copyTextFail: 'فشل النسخ إلى الحافظة',
     confirmClearHistory: 'هل أنت متأكد من مسح جميع الرسائل؟',
+    uploadImageText: 'رفع الصورة',
+    uploadAttachmentText: 'رفع المرفق',
   }
 } as const;

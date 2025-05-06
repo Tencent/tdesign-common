@@ -277,5 +277,7 @@ export default {
     confirmClearHistory: 'Вы уверены, что хотите очистить все сообщения?',
     loadingText: 'Думаю...',
     loadingEndText: 'Глубоко обдумано',
+    uploadImageText: 'загрузить изображение',
+    uploadAttachmentText: 'загрузить вложение',
   }
 } as const;

@@ -268,5 +268,7 @@ export default {
     confirmClearHistory: '確定要清空所有的消息嗎？',
     loadingText: '思考中...',
     loadingEndText: '已深度思考',
+    uploadImageText: '上傳圖片',
+    uploadAttachmentText: '上傳附件',
   }
 } as const;

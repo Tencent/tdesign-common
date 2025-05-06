@@ -268,5 +268,7 @@ export default {
     confirmClearHistory: 'すべてのメッセージをクリアしてもよろしいですか？',
     loadingText: '考え中...',
     loadingEndText: '深く考えました',
+    uploadImageText: '画像をアップロード',
+    uploadAttachmentText: '添付ファイルをアップロード',
   }
 } as const;
