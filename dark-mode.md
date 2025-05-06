@@ -6,7 +6,7 @@ spline: design-mode
 
 ### 如何使用
 
-给 `html` 增加 `theme-mode` 属性来控制浅色/暗色展示：
+给 `html` 增加 `theme-mode` 属性来控制浅色/深色展示：
 
 ```javascript
 // 设置深色模式
