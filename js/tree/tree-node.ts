@@ -877,7 +877,7 @@ export class TreeNode {
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
     if (checkedMap.get(value)
       && (
-      // 如果 valueMode 为 all、parentFirst，则视为选中
+        // 如果 valueMode 为 all、parentFirst，则视为选中
         valueMode !== 'onlyLeaf'
         // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
         || this.isLeaf()
@@ -886,14 +886,14 @@ export class TreeNode {
       return true;
     }
     // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
-   if (Array.isArray(children) && children.length > 0) {
-     // 子节点全部选中(排除禁用节点)，则当前节点选中
-     const enabledChildren = children.filter((node) => !node.isDisabled());
-     if (enabledChildren.length > 0) {
-         checked = enabledChildren.every((node) => {
-           const childIsChecked = node.isChecked(checkedMap);
-           return childIsChecked;
-         });
+    if (Array.isArray(children) && children.length > 0) {
+      // 子节点全部选中(排除禁用节点)，则当前节点选中
+      const enabledChildren = children.filter(node => !node.isDisabled());
+      if (enabledChildren.length > 0) {
+        checked = enabledChildren.every((node) => {
+          const childIsChecked = node.isChecked(checkedMap);
+          return childIsChecked;
+        });
       } else {
         // 如果所有子节点都被禁用，则视为未选中
         checked = false;
@@ -1285,7 +1285,7 @@ export class TreeNode {
     const { children } = this;
     if (Array.isArray(children) && children.length > 0) {
       // 有子节点，则选中态由子节点选中态集合来决定
-      map.delete(this.value);
+        map.delete(this.value);
     }
 
     const { parent } = this;
@@ -1318,15 +1318,15 @@ export class TreeNode {
     children.forEach((node) => {
       // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
       if (options.isAction && node.isDisabledState()) {
-       // 保持禁用节点的原有选中状态
-       const originalChecked = node.isChecked();
+        // 保持禁用节点的原有选中状态
+        const originalChecked = node.isChecked();
         if (originalChecked) {
           map.set(node.value, true);
         } else {
           map.delete(node.value);
-       }
-       return;
-     }
+        }
+        return;
+      }
       if (checked) {
         map.set(node.value, true);
       } else {
