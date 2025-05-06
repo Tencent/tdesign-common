@@ -888,7 +888,7 @@ export class TreeNode {
     // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
     if (Array.isArray(children) && children.length > 0) {
       // 子节点全部选中(排除禁用节点)，则当前节点选中
-      const enabledChildren = children.filter(node => !node.isDisabled());
+      const enabledChildren = children.filter((node) => !node.isDisabled());
       if (enabledChildren.length > 0) {
         checked = enabledChildren.every((node) => {
           const childIsChecked = node.isChecked(checkedMap);
