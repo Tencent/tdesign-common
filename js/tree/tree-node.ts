@@ -1285,7 +1285,7 @@ export class TreeNode {
     const { children } = this;
     if (Array.isArray(children) && children.length > 0) {
       // 有子节点，则选中态由子节点选中态集合来决定
-        map.delete(this.value);
+      map.delete(this.value);
     }
 
     const { parent } = this;
