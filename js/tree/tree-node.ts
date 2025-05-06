@@ -1317,16 +1317,7 @@ export class TreeNode {
     map.delete(this.value);
     children.forEach((node) => {
       // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
-      if (options.isAction && node.isDisabledState()) {
-        // 保持禁用节点的原有选中状态
-        const originalChecked = node.isChecked();
-        if (originalChecked) {
-          map.set(node.value, true);
-        } else {
-          map.delete(node.value);
-        }
-        return;
-      }
+      if (options.isAction && node.isDisabledState()) return;
       if (checked) {
         map.set(node.value, true);
       } else {
