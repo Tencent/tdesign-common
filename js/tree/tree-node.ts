@@ -863,17 +863,16 @@ export class TreeNode {
     if (!tree.nodeMap.get(value)) return false;
     // 节点不可选，视为未选中
     if (!this.isCheckable()) return false;
-    // 禁用节点保持原有选中状态
 
     const checkedMap = map || tree.checkedMap;
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) {
       return !!checkedMap.get(value);
     }
+    // 节点为禁用状态，则保留原有节点状态
     if (this.isDisabledState()) {
       return !!checkedMap.get(value);
     }
-
     let checked = false;
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
     if (checkedMap.get(value)
