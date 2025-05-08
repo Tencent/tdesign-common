@@ -26,8 +26,8 @@ After configuring the theme CSS Variables you are satisfied with through the the
 
 You can refer to the video below for the related operations.
 
-<video id="video" controls width="100%">
-    <source src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/theme/demo-en.mp4" type="video/mp4" />
+<video controls width="100%">
+    <source src="https://tdesign.gtimg.com/site/theme/demo-en.mp4" type="video/mp4" />
 </video>
 
 ### Using less Variables for fine-grained Customization of Components

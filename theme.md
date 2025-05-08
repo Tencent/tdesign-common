@@ -26,8 +26,8 @@ TDesign 提供五大类 Design Token，包括`颜色`、`字体`、`圆角`、`�
 
 相关操作可以参考下方视频：
 
-<video id="video" controls width="100%">
-    <source src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/theme/demo-cn.mp4" type="video/mp4" />
+<video controls width="100%">
+    <source src="https://tdesign.gtimg.com/site/theme/demo-cn.mp4" type="video/mp4" />
 </video>
 
 ### 使用 less 变量 针对组件进行精细化定制
