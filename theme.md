@@ -24,6 +24,12 @@ TDesign 提供五大类 Design Token，包括`颜色`、`字体`、`圆角`、`�
 
 通过主题配置生成器配置出您满意的主题 CSS 变量 之后，请点击`下载按钮`，我们会导出一份全新的 CSS 文件到您本地，您只需要将文件放置进您的项目文件目录中，并在项目中 import 该 CSS 文件，即可得到一个全新主题样式的 TDesign 。
 
+相关操作可以参考下方视频：
+
+<video id="video" controls width="100%">
+    <source src="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/theme/demo-cn.mp4" type="video/mp4" />
+</video>
+
 ### 使用 less 变量 针对组件进行精细化定制
 
 如果你的项目也使用 less 技术栈，且对组件有更精细的定制需求，我们也抽离了大部分组件实现过程中用到的变量，以 less 变量的方式提供出来，
@@ -36,7 +42,6 @@ TDesign 提供五大类 Design Token，包括`颜色`、`字体`、`圆角`、`�
 @btn-height-l: 40px;
 
 @btn-border-radius: @border-radius-default;
-
 ```
 
 要修改这些 less 变量，需要改为从 npm ESM 产物中引入组件库：
