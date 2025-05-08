@@ -94,7 +94,11 @@
 }
 
 .@{prefix}-tag-input--drag-sort {
-  cursor: move;
+  .@{prefix}-input__prefix {
+    .@{prefix}-tag {
+      cursor: move;
+    }
+  }
 }
 
 // 标签数量超出时，换行显示
