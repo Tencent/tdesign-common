@@ -96,11 +96,13 @@
     &.@{prefix}-size-s {
       height: @cascader-item-height-s;
       font: @cascader-font-s;
+      padding: @cascader-item-padding-s;
     }
 
     &.@{prefix}-size-l {
       height: @cascader-item-height-l;
       font: @cascader-font-l;
+      padding: @cascader-item-padding-l;
     }
 
     &.@{prefix}-is-disabled {
@@ -163,7 +165,12 @@
     }
 
     &--with-icon {
-      padding: @cascader-item-padding-with-icon;
+
+      // padding: @cascader-item-padding-with-icon;
+      .@{prefix}-checkbox__label,
+      .@{prefix}-cascader__item-label {
+        margin-right: 16px;
+      }
     }
 
     &--leaf {
