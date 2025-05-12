@@ -57,7 +57,7 @@
   </div>
 
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/table/table-6.png"/>
+    <img src="https://tdesign.gtimg.com/site/design/guide/table/table-6@2x.png"/>
     <em>图示：图标操作</em>
   </div>
 </div>
