@@ -1,6 +1,6 @@
 ---
 title: SelectInput 筛选器输入框
-description: 定义：筛选器通用输入框，
+description: 结合下拉选择与文本输入功能。
 isComponent: true
 usage: { title: '', description: '' }
 spline: data

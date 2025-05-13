@@ -1,6 +1,6 @@
 ---
 title: Link
-description: 文字超链接用于跳转一个新页面，如当前项目跳转，友情链接等。
+description: Used to navigate to a new page, such as internal project links or external friendly links.
 isComponent: true
 usage: { title: "", description: "" }
 spline: base
