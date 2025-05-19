@@ -13,10 +13,8 @@
   border-radius: 4px;
   color: @image-viewer__image-text--error;
   cursor: inherit;
-  position: absolute;
 
   .@{prefix}-image-viewer__img-error-content {
-    position: absolute;
     height: 100%;
     width: 100%;
     display: flex;
@@ -119,9 +117,8 @@
   }
 
   .@{prefix}-image-viewer__modal-pic {
-    height: 0;
-    width: 0;
     position: absolute;
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
 
