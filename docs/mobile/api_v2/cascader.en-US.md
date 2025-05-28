@@ -29,3 +29,7 @@ toc: false
 #### Use Sub Title
 
 {{ with-title }}
+
+#### Choose Any One
+
+{{ check-strictly }}
