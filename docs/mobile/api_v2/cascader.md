@@ -29,3 +29,7 @@ toc: false
 #### 使用次级标题
 
 {{ with-title }}
+
+#### 选择任意一项
+
+{{ check-strictly }}
