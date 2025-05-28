@@ -8,7 +8,15 @@ spline: ai
 
 ### 基础输入框
 
-{{ chat-sender }}
+受控进行输入/发送等状态管理
+
+{{ chat-sender-base }}
+
+### 附件输入
+
+支持选择附件及展示附件列表，受控进行文件数据管理，示例中模拟了文件上传流程
+
+{{ chat-sender-attachments }}
 
 ### 输入框自定义
 
