@@ -183,6 +183,11 @@
       margin-bottom: calc(0px - @comp-margin-l);
       padding-bottom: @pop-padding-xxl;
 
+      ::part(t-attachment-list-wrap) {
+        // 附件列表区域的内边距：左右使用 @pop-padding-s 变量，上下为0
+        padding: 0 @pop-padding-s;
+      }
+
       &:empty {
         display: none;
       }
