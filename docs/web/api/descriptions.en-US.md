@@ -28,7 +28,7 @@ spline: layout
 
 ### Table Layout
 
-Sets the algorithm used to layout `table` cells, rows, and columns, exactly the same as the native table-layout css property. For more details, see [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout)。`fixed` by default.
+Sets the algorithm used to layout `table` cells, rows, and columns, exactly the same as the native table-layout css property. For more details, see [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout)。
 
 - `fixed`: In the fixed table layout algorithm, the width of each column is determined as follows:
   - A column element with explicit width sets the width for that column.

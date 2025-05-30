@@ -70,6 +70,12 @@ Block 按钮在宽度上充满其所在的父容器（无 padding 和 margin 值
 
 {{ shape }}
 
+### 加载样式
+
+不同主题的加载样式
+
+{{ loading }}
+
 ### 自定义渲染元素
 
 支持自定义渲染元素，支持 `div/a/button`

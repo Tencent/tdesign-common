@@ -47,10 +47,16 @@ export function calcPrevOrNextOffset(elements: allElementDeps, offset: number, a
   const { navsContainer, activeTab } = elements;
   const navsContainerWidth = getDomWidth(navsContainer);
   const activeTabWidth = getDomWidth(activeTab);
+  /**
+   * 计算当前 activeTab 与 navsContainer 的宽度差，
+   * 注意 activeTab 的宽度可能大于 navsContainer 的宽度，
+   * 所以需要取绝对值
+   */
+  const diffWidth = Math.abs(navsContainerWidth - activeTabWidth);
   if (action === 'next') {
-    return offset + navsContainerWidth - activeTabWidth;
+    return offset + diffWidth;
   }
-  return offset - navsContainerWidth + activeTabWidth;
+  return offset - diffWidth;
 }
 
 /**

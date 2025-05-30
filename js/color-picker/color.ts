@@ -1,8 +1,10 @@
 import tinyColor from 'tinycolor2';
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
+import { ALPHA_FORMAT_MAP } from './constants';
 import {
   parseGradientString, GradientColors, GradientColorPoint, isGradientColor
 } from './gradient';
+import type { AlphaConvertibleFormat, ColorFormat } from './types';
 
 export interface ColorObject {
   alpha: number;
@@ -70,8 +72,8 @@ export const genId = () => (1 + Math.random() * 4294967295).toString(16);
  * @param color
  * @returns
  */
-export const genGradientPoint = (left: number, color: string): GradientColorPoint => ({
-  id: genId(),
+export const genGradientPoint = (left: number, color: string, id?: string): GradientColorPoint => ({
+  id: id || genId(),
   left,
   color,
 });
@@ -100,12 +102,16 @@ export class Color {
   }
 
   update(input: string) {
-    if (input === this.originColor) {
-      return;
-    }
+    if (input === this.originColor) return;
     const gradientColors = parseGradientString(input);
+
     if (this.isGradient && !gradientColors) {
-      // 处理gradient模式下切换不同格式时的交互问题，输入的不是渐变字符串才使用当前处理
+      /* 这里是针对渐变模式下，修改某个位置点的色值情况
+
+       「Tip」
+        - 为了避免有时外界从渐变切换到单色模式，存在缓存问题
+          需要手动设置 `color.isGradient = false` 进行同步
+        - 特定场景下，也可以直接创建新实例 `new Color` 进行覆盖 */
       const colorHsv = tinyColor(input).toHsv();
       this.states = colorHsv;
       this.updateCurrentGradientColor();
@@ -117,11 +123,11 @@ export class Color {
     if (gradientColors) {
       this.isGradient = true;
       const object = gradientColors as GradientColors;
-      const points = object.points.map((c) => genGradientPoint(c.left, c.color));
+      const points = object.points.map((c, index) => genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id));
       this.gradientStates = {
         colors: points,
         degree: object.degree,
-        selectedId: points[0]?.id || null,
+        selectedId: this.gradientStates.selectedId || points[0]?.id || null,
       };
       this.gradientStates.css = this.linearGradient;
       colorInput = this.gradientSelectedPoint?.color;
@@ -280,6 +286,16 @@ export class Color {
       CSS: this.css,
       HEX8: this.hex8,
     };
+  }
+
+  getFormattedColor(format: ColorFormat, enableAlpha: boolean) {
+    if (this.isGradient) return this.linearGradient;
+    const finalFormat = (
+      enableAlpha && format in ALPHA_FORMAT_MAP
+        ? ALPHA_FORMAT_MAP[format as AlphaConvertibleFormat]
+        : format
+    ) as keyof ReturnType<Color['getFormatsColorMap']>;
+    return this.getFormatsColorMap()[finalFormat];
   }
 
   updateCurrentGradientColor() {
@@ -441,8 +457,12 @@ export class Color {
     const isGradientColor1 = Color.isGradientColor(color1);
     const isGradientColor2 = Color.isGradientColor(color2);
     if (isGradientColor1 && isGradientColor2) {
-      const gradientColor1 = gradientColors2string(parseGradientString(color1) as GradientColors);
-      const gradientColor2 = gradientColors2string(parseGradientString(color2) as GradientColors);
+      const gradientStr1 = parseGradientString(color1);
+      const gradientStr2 = parseGradientString(color2);
+      if (!gradientStr1 || !gradientStr2) return false;
+
+      const gradientColor1 = gradientColors2string(gradientStr1);
+      const gradientColor2 = gradientColors2string(gradientStr2);
       return gradientColor1 === gradientColor2;
     }
     if (!isGradientColor1 && !isGradientColor2) {

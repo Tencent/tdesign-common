@@ -28,7 +28,7 @@ spline: layout
 
 ### Table Layout
 
-用于设置底层 `table` 单元格、行和列的布局算法，与原生 table-layout css 属性完全一致。详情可参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout)。默认为 `fixed`：
+用于设置底层 `table` 单元格、行和列的布局算法，与原生 table-layout css 属性完全一致。详情可参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout)。
 
 - `fixed`: 使用固定表格布局算法。此模式下，每列的宽度按以下方式确定：
   - 使用显示设定的列宽度

@@ -70,9 +70,9 @@
     overflow-x: visible;
 
     ul {
-      list-style: none;
+      .reset();
+
       display: grid;
-      padding-left: 0;
       gap: @dropdown-menu-gap;
     }
 
@@ -94,8 +94,9 @@
   }
 
   &__item {
+    .reset();
+
     border-radius: @border-radius-default;
-    font: @font-body-medium;
     cursor: pointer;
     user-select: none;
     outline: none;

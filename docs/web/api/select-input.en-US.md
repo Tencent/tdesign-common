@@ -1,6 +1,6 @@
 ---
 title: SelectInput
-description: Definition:filter general input box,
+description: Combines selection and text input capabilities.
 isComponent: true
 usage: { title: '', description:'' }
 spline: data

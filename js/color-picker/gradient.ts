@@ -186,14 +186,14 @@ const sideCornerDegreeMap = {
   right: 90,
   bottom: 180,
   left: 270,
-  'top left': 225,
-  'left top': 225,
-  'top right': 135,
-  'right top': 135,
-  'bottom left': 315,
-  'left bottom': 315,
-  'bottom right': 45,
-  'right bottom': 45,
+  'top left': 315,
+  'left top': 315,
+  'top right': 45,
+  'right top': 45,
+  'bottom left': 225,
+  'left bottom': 225,
+  'bottom right': 135,
+  'right bottom': 135,
 };
 
 /**
@@ -201,30 +201,39 @@ const sideCornerDegreeMap = {
  * @param input
  * @returns
  */
-export const parseGradientString = (input: string): GradientColors | boolean => {
+export const parseGradientString = (input: string): GradientColors | false => {
   const match = isGradientColor(input);
-  if (!match) {
-    return false;
-  }
+  if (!match) return false;
+
   const gradientColors: GradientColors = {
     points: [],
     degree: 0,
   };
 
   const result: ParseGradientResult = parseGradient(REGEXP_LIB, match[1]);
-  if (result.original.trim() !== match[1].trim()) {
-    return false;
-  }
-  const points: GradientColorPoint[] = result.colorStopList.map(({ color, position }) => {
-    const point = Object.create(null);
-    point.color = tinyColor(color).toRgbString();
-    point.left = parseFloat(position);
-    return point;
-  });
+  if (result.original.trim() !== match[1].trim()) return false;
+
+  const points: GradientColorPoint[] = result.colorStopList.map(
+    ({ color, position }, index, array) => {
+      const point = Object.create(null);
+      point.color = tinyColor(color).toRgbString();
+
+      let left = parseFloat(position);
+      if (Number.isNaN(left)) {
+        left = (index / (array.length - 1)) * 100;
+      }
+
+      point.left = left;
+      return point;
+    }
+  );
   gradientColors.points = points;
+
   let degree = parseInt(result.angle, 10);
   if (Number.isNaN(degree)) {
-    degree = sideCornerDegreeMap[result.sideCorner as keyof typeof sideCornerDegreeMap] || 90;
+    /* 如果角度不存在，使用 CSS 渐变的默认逻辑（180 deg）
+       https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_images/Using_CSS_gradients */
+    degree = sideCornerDegreeMap[result.sideCorner as keyof typeof sideCornerDegreeMap] || 180;
   }
   gradientColors.degree = degree;
 

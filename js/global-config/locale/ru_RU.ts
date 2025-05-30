@@ -275,5 +275,9 @@ export default {
     copyTextSuccess: 'Успешно скопировано в буфер обмена',
     copyTextFail: 'Не удалось скопировать в буфер обмена',
     confirmClearHistory: 'Вы уверены, что хотите очистить все сообщения?',
+    loadingText: 'Думаю...',
+    loadingEndText: 'Глубоко обдумано',
+    uploadImageText: 'загрузить изображение',
+    uploadAttachmentText: 'загрузить вложение',
   }
 } as const;

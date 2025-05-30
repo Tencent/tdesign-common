@@ -266,5 +266,9 @@ export default {
     copyTextSuccess: '클립보드에 복사되었습니다',
     copyTextFail: '클립보드에 복사하지 못했습니다',
     confirmClearHistory: '채팅 기록을 지우시겠습니까?',
+    loadingText: '생각 중...',
+    loadingEndText: '깊이 생각함',
+    uploadImageText: '이미지 업로드',
+    uploadAttachmentText: '첨부 파일 업로드'
   }
 } as const;

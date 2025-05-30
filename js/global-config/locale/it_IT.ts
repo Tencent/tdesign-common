@@ -274,5 +274,9 @@ export default {
     copyTextSuccess: 'Copiato negli appunti',
     copyTextFail: 'Copia negli appunti non riuscita',
     confirmClearHistory: 'Sei sicuro di voler cancellare tutti i messaggi?',
+    loadingText: 'Penso...',
+    loadingEndText: 'Penso finito',
+    uploadImageText: 'caricare immagine',
+    uploadAttachmentText: 'caricare allegato',
   }
 } as const;
