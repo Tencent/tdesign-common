@@ -8,4 +8,4 @@ spline: base
 
 ### 基础使用
 
-{{ basic }}
+{{ chatbot-base }}
