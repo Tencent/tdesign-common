@@ -654,6 +654,10 @@
       &__header {
         padding: @comp-paddingTB-s @comp-paddingTB-m;
         font: @font-body-medium;
+
+        &--blank {
+          flex: none;
+        }
       }
 
       &__wrapper {
@@ -685,6 +689,21 @@
             font-size: @font-size-base;
           }
         }
+      }
+    }
+    .@{prefix}-chat__detail-reasoning-border {
+      .@{prefix}-collapse-panel__wrapper {
+        background-color: transparent;
+      }
+      .@{prefix}-collapse-panel__header {
+        background-color: none;
+      }
+      .@{prefix}-collapse-panel__content {
+        background: none;
+      }
+      .@{prefix}-chat__text__content {
+        padding-left: 12px;
+        border-left: 2px solid @gray-color-3;
       }
     }
   }
