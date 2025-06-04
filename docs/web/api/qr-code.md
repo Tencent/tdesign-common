@@ -18,12 +18,12 @@ spline: data
 ### 不同的状态
 可以通过 status 的值控制二维码的状态，提供了 active、expired、loading、scanned 四个值
 
-{{ base }}
+{{ status }}
 
 ### 自定义状态渲染器
 可以通过 statusRender 的值控制二维码不同状态的渲染逻辑。
 
-{{ base }}
+{{ customStatusRender }}
 
 
 ### 自定义渲染类型
