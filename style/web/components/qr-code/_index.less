@@ -6,8 +6,18 @@
 
 @import "./_mixin.less";
 
+@import "../../mixins/_reset.less";
+
 // <name> 替换为组件名
 .@{prefix}-qr-code {
   background-color: @bg-color-container;
-  padding: 10px;
+  padding: @comp-paddingTB-l @comp-paddingLR-l;
+  border-radius: @border-radius-medium;
+  border: 1px solid @component-border;
+
+  &.@{prefix}-borderless {
+    padding: 0;
+    border-radius: 0;
+    border-color: transparent;
+  }
 }
