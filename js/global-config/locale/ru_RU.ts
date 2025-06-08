@@ -279,5 +279,10 @@ export default {
     loadingEndText: 'Глубоко обдумано',
     uploadImageText: 'загрузить изображение',
     uploadAttachmentText: 'загрузить вложение',
+  },
+  qrcode: {
+    expiredText: 'истекший',
+    refreshText: 'обновить',
+    scannedText: 'сканированный',
   }
 } as const;

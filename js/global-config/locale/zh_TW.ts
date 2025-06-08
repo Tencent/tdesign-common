@@ -270,5 +270,10 @@ export default {
     loadingEndText: '已深度思考',
     uploadImageText: '上傳圖片',
     uploadAttachmentText: '上傳附件',
+  },
+  qrcode: {
+    expiredText: '二維碼過期',
+    refreshText: '點擊刷新',
+    scannedText: '已掃描',
   }
 } as const;

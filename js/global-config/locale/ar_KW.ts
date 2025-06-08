@@ -261,5 +261,10 @@ export default {
     confirmClearHistory: 'هل أنت متأكد من مسح جميع الرسائل؟',
     uploadImageText: 'رفع الصورة',
     uploadAttachmentText: 'رفع المرفق',
+  },
+  qrcode: {
+    expiredText: 'منتهي الصلاحية',
+    refreshText: 'ينعش',
+    scannedText: 'تم مسحها ضوئيًا',
   }
 } as const;
