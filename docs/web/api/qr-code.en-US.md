@@ -49,12 +49,12 @@ A way to download QRCode.
 {{ download }}
 
 ### Error Level
-set Error Level.
+set error Level.
 
 {{ level }}
 
 ### Advanced Usage
-With Popover.
+With Popup.
 
 {{ popover }}
 
