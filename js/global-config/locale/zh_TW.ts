@@ -270,6 +270,7 @@ export default {
     loadingEndText: '已深度思考',
     uploadImageText: '上傳圖片',
     uploadAttachmentText: '上傳附件',
+    shareTipText: '分享',
   },
   qrcode: {
     expiredText: '二維碼過期',
