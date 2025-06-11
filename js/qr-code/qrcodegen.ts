@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Copyright (c) Project Nayuki. (MIT License)
 // https://www.nayuki.io/page/qr-code-generator-library
 
@@ -9,7 +10,7 @@
 // to the given buffer. Requires 0 <= len <= 31 and 0 <= val < 2^len.
 function appendBits(val: number, len: number, bb: number[]): void {
   if (len < 0 || len > 31 || val >>> len != 0) {
-    throw new RangeError('Value out of range');
+    throw new RangeError("Value out of range");
   }
   for (
     let i = len - 1;
@@ -28,7 +29,7 @@ function getBit(x: number, i: number): boolean {
 // Throws an exception if the given condition is false.
 function assert(cond: boolean): void {
   if (!cond) {
-    throw new Error('Assertion error');
+    throw new Error("Assertion error");
   }
 }
 
@@ -59,7 +60,7 @@ export class Mode {
 
   private constructor(
     modeBits: number,
-    numBitsCharCount: [number, number, number],
+    numBitsCharCount: [number, number, number]
   ) {
     this.modeBits = modeBits;
     this.numBitsCharCount = numBitsCharCount;
@@ -131,10 +132,10 @@ export class QrSegment {
   // Returns a segment representing the given string of decimal digits encoded in numeric mode.
   public static makeNumeric(digits: string): QrSegment {
     if (!QrSegment.isNumeric(digits)) {
-      throw new RangeError('String contains non-numeric characters');
+      throw new RangeError("String contains non-numeric characters");
     }
     const bb: number[] = [];
-    for (let i = 0; i < digits.length;) {
+    for (let i = 0; i < digits.length; ) {
       // Consume up to 3 digits per iteration
       const n: number = Math.min(digits.length - i, 3);
       appendBits(parseInt(digits.substring(i, i + n), 10), n * 3 + 1, bb);
@@ -149,14 +150,15 @@ export class QrSegment {
   public static makeAlphanumeric(text: string): QrSegment {
     if (!QrSegment.isAlphanumeric(text)) {
       throw new RangeError(
-        'String contains unencodable characters in alphanumeric mode',
+        "String contains unencodable characters in alphanumeric mode"
       );
     }
     const bb: number[] = [];
     let i: number;
     for (i = 0; i + 2 <= text.length; i += 2) {
       // Process groups of 2
-      let temp: number = QrSegment.ALPHANUMERIC_CHARSET.indexOf(text.charAt(i)) * 45;
+      let temp: number =
+        QrSegment.ALPHANUMERIC_CHARSET.indexOf(text.charAt(i)) * 45;
       temp += QrSegment.ALPHANUMERIC_CHARSET.indexOf(text.charAt(i + 1));
       appendBits(temp, 11, bb);
     }
@@ -171,11 +173,13 @@ export class QrSegment {
   // The result may use various segment modes and switch modes to optimize the length of the bit stream.
   public static makeSegments(text: string): QrSegment[] {
     // Select the most efficient segment encoding automatically
-    if (text == '') {
+    if (text == "") {
       return [];
-    } if (QrSegment.isNumeric(text)) {
+    }
+    if (QrSegment.isNumeric(text)) {
       return [QrSegment.makeNumeric(text)];
-    } if (QrSegment.isAlphanumeric(text)) {
+    }
+    if (QrSegment.isAlphanumeric(text)) {
       return [QrSegment.makeAlphanumeric(text)];
     }
     return [QrSegment.makeBytes(QrSegment.toUtf8ByteArray(text))];
@@ -186,7 +190,7 @@ export class QrSegment {
   public static makeEci(assignVal: number): QrSegment {
     const bb: number[] = [];
     if (assignVal < 0) {
-      throw new RangeError('ECI assignment value out of range');
+      throw new RangeError("ECI assignment value out of range");
     } else if (assignVal < 1 << 7) {
       appendBits(assignVal, 8, bb);
     } else if (assignVal < 1 << 14) {
@@ -196,7 +200,7 @@ export class QrSegment {
       appendBits(0b110, 3, bb);
       appendBits(assignVal, 21, bb);
     } else {
-      throw new RangeError('ECI assignment value out of range');
+      throw new RangeError("ECI assignment value out of range");
     }
     return new QrSegment(Mode.ECI, 0, bb);
   }
@@ -234,7 +238,7 @@ export class QrSegment {
     this.numChars = numChars;
     this.bitData = bitData;
     if (numChars < 0) {
-      throw new RangeError('Invalid argument');
+      throw new RangeError("Invalid argument");
     }
     this.bitData = bitData.slice(); // Make defensive copy
   }
@@ -250,7 +254,7 @@ export class QrSegment {
   // the given version. The result is infinity if a segment has too many characters to fit its length field.
   public static getTotalBits(
     segs: Readonly<QrSegment[]>,
-    version: number,
+    version: number
   ): number {
     let result: number = 0;
     for (const seg of segs) {
@@ -268,7 +272,7 @@ export class QrSegment {
     const str = encodeURI(input);
     const result: number[] = [];
     for (let i = 0; i < str.length; i++) {
-      if (str.charAt(i) != '%') {
+      if (str.charAt(i) != "%") {
         result.push(str.charCodeAt(i));
       } else {
         result.push(parseInt(str.substring(i + 1, i + 3), 16));
@@ -289,7 +293,7 @@ export class QrSegment {
   // The set of all legal characters in alphanumeric mode,
   // where each character value maps to the index in the string.
   private static readonly ALPHANUMERIC_CHARSET: string =
-    '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:';
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:";
 }
 
 /*
@@ -347,18 +351,18 @@ export class QrCode {
     minVersion: number = 1,
     maxVersion: number = 40,
     mask: number = -1,
-    boostEcl: boolean = true,
+    boostEcl: boolean = true
   ): QrCode {
     if (
       !(
-        QrCode.MIN_VERSION <= minVersion
-        && minVersion <= maxVersion
-        && maxVersion <= QrCode.MAX_VERSION
-      )
-      || mask < -1
-      || mask > 7
+        QrCode.MIN_VERSION <= minVersion &&
+        minVersion <= maxVersion &&
+        maxVersion <= QrCode.MAX_VERSION
+      ) ||
+      mask < -1 ||
+      mask > 7
     ) {
-      throw new RangeError('Invalid value');
+      throw new RangeError("Invalid value");
     }
 
     // Find the minimal version number to use
@@ -373,7 +377,7 @@ export class QrCode {
       }
       if (version >= maxVersion) {
         // All versions in the range could not fit the given data
-        throw new RangeError('Data too long');
+        throw new RangeError("Data too long");
       }
     }
     let ecl: Ecc = oriEcl;
@@ -381,8 +385,8 @@ export class QrCode {
     for (const newEcl of [Ecc.MEDIUM, Ecc.QUARTILE, Ecc.HIGH]) {
       // From low to high
       if (
-        boostEcl
-        && dataUsedBits <= QrCode.getNumDataCodewords(version, newEcl) * 8
+        boostEcl &&
+        dataUsedBits <= QrCode.getNumDataCodewords(version, newEcl) * 8
       ) {
         ecl = newEcl;
       }
@@ -468,17 +472,17 @@ export class QrCode {
 
     dataCodewords: Readonly<number[]>,
 
-    oriMsk: number,
+    oriMsk: number
   ) {
     let msk = oriMsk;
     this.version = version;
     this.errorCorrectionLevel = errorCorrectionLevel;
     // Check scalar arguments
     if (version < QrCode.MIN_VERSION || version > QrCode.MAX_VERSION) {
-      throw new RangeError('Version value out of range');
+      throw new RangeError("Version value out of range");
     }
     if (msk < -1 || msk > 7) {
-      throw new RangeError('Mask value out of range');
+      throw new RangeError("Mask value out of range");
     }
     this.size = version * 4 + 17;
 
@@ -559,9 +563,9 @@ export class QrCode {
         // Don't draw on the three finder corners
         if (
           !(
-            (i == 0 && j == 0)
-            || (i == 0 && j == numAlign - 1)
-            || (i == numAlign - 1 && j == 0)
+            (i == 0 && j == 0) ||
+            (i == 0 && j == numAlign - 1) ||
+            (i == numAlign - 1 && j == 0)
           )
         ) {
           this.drawAlignmentPattern(alignPatPos[i], alignPatPos[j]);
@@ -654,7 +658,7 @@ export class QrCode {
         this.setFunctionModule(
           x + dx,
           y + dy,
-          Math.max(Math.abs(dx), Math.abs(dy)) != 1,
+          Math.max(Math.abs(dx), Math.abs(dy)) != 1
         );
       }
     }
@@ -675,7 +679,7 @@ export class QrCode {
     const ver: number = this.version;
     const ecl: Ecc = this.errorCorrectionLevel;
     if (data.length != QrCode.getNumDataCodewords(ver, ecl)) {
-      throw new RangeError('Invalid argument');
+      throw new RangeError("Invalid argument");
     }
     // Calculate parameter numbers
     const numBlocks = QrCode.NUM_ERROR_CORRECTION_BLOCKS[ecl.ordinal][ver];
@@ -690,7 +694,7 @@ export class QrCode {
     for (let i = 0, k = 0; i < numBlocks; i++) {
       const dat = data.slice(
         k,
-        k + shortBlockLen - blockEccLen + (i < numShortBlocks ? 0 : 1),
+        k + shortBlockLen - blockEccLen + (i < numShortBlocks ? 0 : 1)
       );
       k += dat.length;
       const ecc: number[] = QrCode.reedSolomonComputeRemainder(dat, rsDiv);
@@ -720,7 +724,7 @@ export class QrCode {
     if (
       data.length != Math.floor(QrCode.getNumRawDataModules(this.version) / 8)
     ) {
-      throw new RangeError('Invalid argument');
+      throw new RangeError("Invalid argument");
     }
     let i: number = 0; // Bit index numbero the data
     // Do the funny zigzag scan
@@ -754,7 +758,7 @@ export class QrCode {
   // QR Code needs exactly one (not zero, two, etc.) mask applied.
   private applyMask(mask: number): void {
     if (mask < 0 || mask > 7) {
-      throw new RangeError('Mask value out of range');
+      throw new RangeError("Mask value out of range");
     }
     for (let y = 0; y < this.size; y++) {
       for (let x = 0; x < this.size; x++) {
@@ -785,7 +789,7 @@ export class QrCode {
             invert = (((x + y) % 2) + ((x * y) % 3)) % 2 == 0;
             break;
           default:
-            throw new Error('Unreachable');
+            throw new Error("Unreachable");
         }
         if (!this.isFunction[y][x] && invert) {
           this.modules[y][x] = !this.modules[y][x];
@@ -815,16 +819,16 @@ export class QrCode {
         } else {
           this.finderPenaltyAddHistory(runX, runHistory);
           if (!runColor) {
-            result
-              += this.finderPenaltyCountPatterns(runHistory) * QrCode.PENALTY_N3;
+            result +=
+              this.finderPenaltyCountPatterns(runHistory) * QrCode.PENALTY_N3;
           }
           runColor = this.modules[y][x];
           runX = 1;
         }
       }
-      result
-        += this.finderPenaltyTerminateAndCount(runColor, runX, runHistory)
-        * QrCode.PENALTY_N3;
+      result +=
+        this.finderPenaltyTerminateAndCount(runColor, runX, runHistory) *
+        QrCode.PENALTY_N3;
     }
     // Adjacent modules in column having same color, and finder-like patterns
     for (let x = 0; x < this.size; x++) {
@@ -842,16 +846,16 @@ export class QrCode {
         } else {
           this.finderPenaltyAddHistory(runY, runHistory);
           if (!runColor) {
-            result
-              += this.finderPenaltyCountPatterns(runHistory) * QrCode.PENALTY_N3;
+            result +=
+              this.finderPenaltyCountPatterns(runHistory) * QrCode.PENALTY_N3;
           }
           runColor = this.modules[y][x];
           runY = 1;
         }
       }
-      result
-        += this.finderPenaltyTerminateAndCount(runColor, runY, runHistory)
-        * QrCode.PENALTY_N3;
+      result +=
+        this.finderPenaltyTerminateAndCount(runColor, runY, runHistory) *
+        QrCode.PENALTY_N3;
     }
 
     // 2*2 blocks of modules having same color
@@ -859,9 +863,9 @@ export class QrCode {
       for (let x = 0; x < this.size - 1; x++) {
         const color: boolean = this.modules[y][x];
         if (
-          color == this.modules[y][x + 1]
-          && color == this.modules[y + 1][x]
-          && color == this.modules[y + 1][x + 1]
+          color == this.modules[y][x + 1] &&
+          color == this.modules[y + 1][x] &&
+          color == this.modules[y + 1][x + 1]
         ) {
           result += QrCode.PENALTY_N2;
         }
@@ -892,9 +896,10 @@ export class QrCode {
       return [];
     }
     const numAlign = Math.floor(this.version / 7) + 2;
-    const step = this.version == 32
-      ? 26
-      : Math.ceil((this.version * 4 + 4) / (numAlign * 2 - 2)) * 2;
+    const step =
+      this.version == 32
+        ? 26
+        : Math.ceil((this.version * 4 + 4) / (numAlign * 2 - 2)) * 2;
     const result: number[] = [6];
     for (let pos = this.size - 7; result.length < numAlign; pos -= step) {
       result.splice(1, 0, pos);
@@ -907,7 +912,7 @@ export class QrCode {
   // The result is in the range [208, 29648]. This could be implemented as a 40-entry lookup table.
   private static getNumRawDataModules(ver: number): number {
     if (ver < QrCode.MIN_VERSION || ver > QrCode.MAX_VERSION) {
-      throw new RangeError('Version number out of range');
+      throw new RangeError("Version number out of range");
     }
     let result: number = (16 * ver + 128) * ver + 64;
     if (ver >= 2) {
@@ -926,9 +931,9 @@ export class QrCode {
   // This stateless pure function could be implemented as a (40*4)-cell lookup table.
   private static getNumDataCodewords(ver: number, ecl: Ecc): number {
     return (
-      Math.floor(QrCode.getNumRawDataModules(ver) / 8)
-      - QrCode.ECC_CODEWORDS_PER_BLOCK[ecl.ordinal][ver]
-        * QrCode.NUM_ERROR_CORRECTION_BLOCKS[ecl.ordinal][ver]
+      Math.floor(QrCode.getNumRawDataModules(ver) / 8) -
+      QrCode.ECC_CODEWORDS_PER_BLOCK[ecl.ordinal][ver] *
+        QrCode.NUM_ERROR_CORRECTION_BLOCKS[ecl.ordinal][ver]
     );
   }
 
@@ -936,7 +941,7 @@ export class QrCode {
   // implemented as a lookup table over all possible parameter values, instead of as an algorithm.
   private static reedSolomonComputeDivisor(degree: number): number[] {
     if (degree < 1 || degree > 255) {
-      throw new RangeError('Degree out of range');
+      throw new RangeError("Degree out of range");
     }
     // Polynomial coefficients are stored from highest to lowest power, excluding the leading term which is always 1.
     // For example the polynomial x^3 + 255x^2 + 8x + 93 is stored as the unumber8 array [255, 8, 93].
@@ -966,7 +971,7 @@ export class QrCode {
   // Returns the Reed-Solomon error correction codeword for the given data and divisor polynomials.
   private static reedSolomonComputeRemainder(
     data: Readonly<number[]>,
-    divisor: Readonly<number[]>,
+    divisor: Readonly<number[]>
   ) {
     const result = divisor.map<number>(() => 0);
     for (const b of data) {
@@ -984,7 +989,7 @@ export class QrCode {
   // are unsigned 8-bit numberegers. This could be implemented as a lookup table of 256*256 entries of unumber8.
   private static reedSolomonMultiply(x: number, y: number): number {
     if (x >>> 8 != 0 || y >>> 8 != 0) {
-      throw new RangeError('Byte out of range');
+      throw new RangeError("Byte out of range");
     }
     // Russian peasant multiplication
     let z: number = 0;
@@ -1001,14 +1006,15 @@ export class QrCode {
   private finderPenaltyCountPatterns(runHistory: Readonly<number[]>): number {
     const n: number = runHistory[1];
     assert(n <= this.size * 3);
-    const core: boolean = n > 0
-      && runHistory[2] == n
-      && runHistory[3] == n * 3
-      && runHistory[4] == n
-      && runHistory[5] == n;
+    const core: boolean =
+      n > 0 &&
+      runHistory[2] == n &&
+      runHistory[3] == n * 3 &&
+      runHistory[4] == n &&
+      runHistory[5] == n;
     return (
-      (core && runHistory[0] >= n * 4 && runHistory[6] >= n ? 1 : 0)
-      + (core && runHistory[6] >= n * 4 && runHistory[0] >= n ? 1 : 0)
+      (core && runHistory[0] >= n * 4 && runHistory[6] >= n ? 1 : 0) +
+      (core && runHistory[6] >= n * 4 && runHistory[0] >= n ? 1 : 0)
     );
   }
 
@@ -1016,7 +1022,7 @@ export class QrCode {
   private finderPenaltyTerminateAndCount(
     currentRunColor: boolean,
     oriCurrentRunLength: number,
-    runHistory: number[],
+    runHistory: number[]
   ): number {
     let currentRunLength = oriCurrentRunLength;
     if (currentRunColor) {
@@ -1032,7 +1038,7 @@ export class QrCode {
   // Pushes the given value to the front and drops the last value. A helper function for getPenaltyScore().
   private finderPenaltyAddHistory(
     oriCurrentRunLength: number,
-    runHistory: number[],
+    runHistory: number[]
   ) {
     let currentRunLength = oriCurrentRunLength;
     if (runHistory[0] == 0) {
