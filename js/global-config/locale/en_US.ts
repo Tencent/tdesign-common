@@ -3,11 +3,6 @@
 import "dayjs/locale/en";
 
 export default {
-  qrCode: {
-    expiredText: "QR code expired",
-    refreshText: "Refresh",
-    scannedText: "Scanned",
-  },
   autoComplete: {
     empty: "Empty Data",
   },
@@ -276,5 +271,10 @@ export default {
     loadingEndText: "deep thinking end",
     uploadImageText: "upload image",
     uploadAttachmentText: "upload attachment",
+  },
+  qrcode: {
+    expiredText: "expired",
+    refreshText: "refresh",
+    scannedText: "scanned",
   },
 } as const;

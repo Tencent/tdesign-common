@@ -86,6 +86,15 @@ jobs:
           - test
           - build
           - preview
+        include:
+          - script: lint
+            run: pnpm run lint
+          - script: test
+            run: pnpm -C packages/tdesign-vue-next/test test
+          - script: build
+            run: pnpm -C internal/builds build:vue-next
+          - script: preview 
+            run: pnpm -C packages/tdesign-vue-next/site build
     steps:
       - name: Checkout tdesign-vue-next
         uses: actions/checkout@v4
@@ -106,11 +115,7 @@ jobs:
 
       - run: pnpm install
 
-      - if: matrix.script != 'preview'
-        run: pnpm run ${{ matrix.script }}
-
-      - if: matrix.script == 'preview'
-        run: pnpm run site:preview
+      - run: ${{ matrix.run }}
         
       - if: matrix.script == 'preview'
         run: |

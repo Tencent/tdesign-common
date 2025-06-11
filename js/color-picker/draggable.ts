@@ -17,9 +17,9 @@ export interface DraggableProps {
 }
 
 interface DraggableHandles {
-  start: (this: Draggable, event: DraggableEvent) => {};
-  drag: (this: Draggable, event: DraggableEvent) => {};
-  end: (this: Draggable, event: DraggableEvent) => {};
+  start: (event: DraggableEvent) => void;
+  drag: (event: DraggableEvent) => void;
+  end: (event: DraggableEvent) => void;
 }
 
 // 配置项
