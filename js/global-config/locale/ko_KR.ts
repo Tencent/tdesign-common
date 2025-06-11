@@ -270,5 +270,10 @@ export default {
     loadingEndText: '깊이 생각함',
     uploadImageText: '이미지 업로드',
     uploadAttachmentText: '첨부 파일 업로드'
+  },
+  qrcode: {
+    expiredText: '만료됨',
+    refreshText: '새로 고치다',
+    scannedText: '스캔됨',
   }
 } as const;

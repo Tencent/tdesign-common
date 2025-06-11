@@ -270,5 +270,10 @@ export default {
     loadingEndText: '已深度思考',
     uploadImageText: '上传图片',
     uploadAttachmentText: '上传附件',
+  },
+  qrcode: {
+    expiredText: '二维码过期',
+    refreshText: '点击刷新',
+    scannedText: '已扫描',
   }
 } as const;

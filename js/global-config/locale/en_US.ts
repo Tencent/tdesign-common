@@ -271,5 +271,10 @@ export default {
     loadingEndText: 'deep thinking end',
     uploadImageText: 'upload image',
     uploadAttachmentText: 'upload attachment',
+  },
+  qrcode: {
+    expiredText: 'expired',
+    refreshText: 'refresh',
+    scannedText: 'scanned',
   }
 } as const;
