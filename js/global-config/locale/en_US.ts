@@ -4,9 +4,9 @@ import "dayjs/locale/en";
 
 export default {
   qrCode: {
-    expired: "QR code expired",
-    refresh: "Refresh",
-    scanned: "Scanned",
+    expiredText: "QR code expired",
+    refreshText: "Refresh",
+    scannedText: "Scanned",
   },
   autoComplete: {
     empty: "Empty Data",

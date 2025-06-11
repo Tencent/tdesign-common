@@ -4,9 +4,9 @@ import "dayjs/locale/zh-cn";
 
 export default {
   qrCode: {
-    expired: "二维码过期",
-    refresh: "点击刷新",
-    scanned: "已扫描",
+    expiredText: "二维码过期",
+    refreshText: "点击刷新",
+    scannedText: "已扫描",
   },
   autoComplete: {
     empty: "暂无数据",
