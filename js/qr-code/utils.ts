@@ -5,8 +5,8 @@ import type {
   Excavation,
   ImageSettings,
   Modules,
-} from './types';
-import { Ecc } from './qrcodegen';
+} from "./types";
+import { Ecc } from "./qrcodegen";
 
 // =================== ERROR_LEVEL ==========================
 export const ERROR_LEVEL_MAP: ERROR_LEVEL_MAPPED_TYPE = {
@@ -17,10 +17,10 @@ export const ERROR_LEVEL_MAP: ERROR_LEVEL_MAPPED_TYPE = {
 } as const;
 
 // =================== DEFAULT_VALUE ==========================
-export const DEFAULT_SIZE = 128;
-export const DEFAULT_LEVEL: ErrorCorrectionLevel = 'L';
-export const DEFAULT_BACKGROUND_COLOR = '#FFFFFF';
-export const DEFAULT_FRONT_COLOR = '#000000';
+export const DEFAULT_SIZE = 160;
+export const DEFAULT_LEVEL: ErrorCorrectionLevel = "M";
+export const DEFAULT_BACKGROUND_COLOR = "#FFFFFF";
+export const DEFAULT_FRONT_COLOR = "#000000";
 export const DEFAULT_NEED_MARGIN = false;
 export const DEFAULT_MINVERSION = 1;
 export const SPEC_MARGIN_SIZE = 4;
@@ -68,7 +68,7 @@ export const generatePath = (modules: Modules, margin: number = 0) => {
       }
     });
   });
-  return ops.join('');
+  return ops.join("");
 };
 
 /**
@@ -77,17 +77,18 @@ export const generatePath = (modules: Modules, margin: number = 0) => {
  * @param excavation
  * @returns
  */
-export const excavateModules = (modules: Modules, excavation: Excavation) => modules.slice().map((row, y) => {
-  if (y < excavation.y || y >= excavation.y + excavation.h) {
-    return row;
-  }
-  return row.map((cell, x) => {
-    if (x < excavation.x || x >= excavation.x + excavation.w) {
-      return cell;
+export const excavateModules = (modules: Modules, excavation: Excavation) =>
+  modules.slice().map((row, y) => {
+    if (y < excavation.y || y >= excavation.y + excavation.h) {
+      return row;
     }
-    return false;
+    return row.map((cell, x) => {
+      if (x < excavation.x || x >= excavation.x + excavation.w) {
+        return cell;
+      }
+      return false;
+    });
   });
-});
 
 /**
  * Get image settings
@@ -119,12 +120,14 @@ export const getImageSettings = (
   const scale = numCells / size;
   const w = (imageSettings.width || defaultSize) * scale;
   const h = (imageSettings.height || defaultSize) * scale;
-  const x = imageSettings.x == null
-    ? cells.length / 2 - w / 2
-    : imageSettings.x * scale;
-  const y = imageSettings.y == null
-    ? cells.length / 2 - h / 2
-    : imageSettings.y * scale;
+  const x =
+    imageSettings.x == null
+      ? cells.length / 2 - w / 2
+      : imageSettings.x * scale;
+  const y =
+    imageSettings.y == null
+      ? cells.length / 2 - h / 2
+      : imageSettings.y * scale;
   const opacity = imageSettings.opacity == null ? 1 : imageSettings.opacity;
 
   let excavation = null;
