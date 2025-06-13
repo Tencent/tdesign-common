@@ -25,6 +25,7 @@ Swiper 的是由内容区域、切换箭头、指示器组成。
     <img src="https://tdesign.gtimg.com/site/design/guide/swiper/swiper-2@2x.png" />
   </div>
 </div>
+<br />
 
 切换箭头和指示器保持 90 度关系，不应该出现在同一方向。
 
@@ -38,6 +39,7 @@ Swiper 的是由内容区域、切换箭头、指示器组成。
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
+<br />
 
 内容区域展示的数量建议控制在 3-5 个之间，并且应该清晰展示滚动的数量和当前位置。
 

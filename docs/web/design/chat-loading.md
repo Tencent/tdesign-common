@@ -11,6 +11,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/chat-loading/chat-loading-1@2x.png" />
   </div>
 </div>
+<br />
 
 不带文字的加载组件，icon 有循环动画。例如用在用户发送图片/文件后，减少用户长时间等待的焦虑。
 

@@ -22,7 +22,7 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/empty/empty-3@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/empty/empty-4@2x.png" />
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>

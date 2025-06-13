@@ -20,6 +20,7 @@
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
+<br />
 
 如果有较多内容需要传达，可以分多个步骤或页面进行展示，步骤尽量不超过 5 个。
 
@@ -33,6 +34,7 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
+<br />
 
 要为用户提供跳过的选项，跳过的按钮位置不能过于隐蔽，让用户难以找到。
 

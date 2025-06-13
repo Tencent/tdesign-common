@@ -16,6 +16,7 @@
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
+<br />
 
 为了更好的和页面内容区分，需要给内容区域加上投影，避免与底部信息混淆。
 
