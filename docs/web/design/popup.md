@@ -21,11 +21,11 @@
 
 <div class="legend">
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/popup/popup-3@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/popup/popup-4@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
   <div class="item">
-    <img src="https://tdesign.gtimg.com/site/design/guide/popup/popup-4@2x.png" />
+    <img src="https://tdesign.gtimg.com/site/design/guide/popup/popup-3@2x.png" />
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
