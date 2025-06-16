@@ -43,4 +43,20 @@
     text-align: center;
     border-radius: @border-radius-medium;
   }
+
+  // 二维码过期刷新按钮
+  .@{prefix}-expired__button {
+    display: flex;
+    color: @brand-color;
+    box-shadow: none;
+    cursor: pointer;
+    column-gap: @comp-margin-s;
+    align-items: center;
+    height: @comp-size-m;
+    transition: all @qrcode-link-motion-duration-mid @qrcode-link-motion-ease-in-out;
+
+    &:hover {
+      color: @qrcode-link-color-hover;
+    }
+  }
 }
