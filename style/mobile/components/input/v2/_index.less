@@ -5,12 +5,9 @@
 .@{prefix}-input {
   background-color: @input-bg-color;
   display: flex;
+  align-items: @input-align-items;
   flex: 1;
   padding: @input-vertical-padding;
-
-  &--center {
-    align-items: center;
-  }
 
   &--border {
     .border(bottom, @input-border-color);
@@ -23,6 +20,7 @@
 
   &--layout-vertical {
     flex-direction: column;
+    align-items: start;
   }
 
   &__wrap--prefix {
@@ -65,6 +63,7 @@
   }
 
   &__wrap {
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
