@@ -4,6 +4,15 @@
  * @param vars 取值的对象
  * @returns 替换后的字符串
  */
-export function template<T extends Record<string, string>>(str: string, vars: T): string {
-  return str.replace(/\${(.*?)}/g, (_, prop: string) => vars[prop.trim()] ?? '');
+type varsValue = string | number | string[]; // name(String)、min、max（Number），enums(string[])
+export function template<T extends Record<string, varsValue>>(
+  str: string,
+  vars: T
+): string {
+  return str.replace(/\${(.*?)}/g, (_, prop: string) => {
+    const value = vars[prop.trim()];
+    if (Array.isArray(value)) return value.join(',');
+
+    return value === 0 ? '0' : String(value || '');
+  });
 }
