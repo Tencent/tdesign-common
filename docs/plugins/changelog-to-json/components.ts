@@ -74,7 +74,7 @@ const WEB_COMP_MAP: Record<string, string[]> = {
   TagInput: [],
   Timeline: [],
   TimePicker: ['TimeRangePicker', 'TimePickerPanel'],
-  Tooltip: [],
+  Tooltip: ['TooltipLite'],
   Transfer: [],
   Tree: [],
   Typography: [
