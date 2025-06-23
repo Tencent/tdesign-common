@@ -11,6 +11,8 @@
 // <name> 替换为组件名
 .@{prefix}-qrcode {
   position: relative;
+  display: flex;
+  box-sizing: border-box;
   background-color: @bg-color-container;
   padding: @comp-paddingTB-m @comp-paddingLR-m;
   border-radius: @border-radius-medium;
@@ -76,4 +78,9 @@
       color: @qrcode-scanned-icon-color;
     }
   }
+}
+
+.@{prefix}-qrcode-svg {
+  align-items: center;
+  justify-content: center;
 }
