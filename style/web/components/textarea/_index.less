@@ -7,6 +7,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../mixins/_scrollbar.less";
+
 .@{prefix}-textarea {
 
   .reset;
@@ -28,6 +30,7 @@
     outline: none;
     transition: all @anim-time-fn-easing @anim-duration-base, height 0s;
     box-sizing: border-box;
+    .scrollbar();
 
     &:hover {
       border-color: @textarea-border-color-hover;
