@@ -17,6 +17,8 @@
   width: 100%;
 
   &__inner {
+    .scrollbar();
+
     display: flex;
     width: 100%;
     height: @textarea-height;
@@ -30,7 +32,6 @@
     outline: none;
     transition: all @anim-time-fn-easing @anim-duration-base, height 0s;
     box-sizing: border-box;
-    .scrollbar();
 
     &:hover {
       border-color: @textarea-border-color-hover;
