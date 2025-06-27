@@ -45,6 +45,7 @@ const WEB_COMP_MAP: Record<string, string[]> = {
   Affix: [],
   Anchor: ['AnchorItem'],
   Alert: [],
+  AutoComplete: [],
   Breadcrumb: ['BreadcrumbItem'],
   Card: [],
   ColorPicker: ['ColorPickerPanel'],
