@@ -154,12 +154,12 @@ describe('国际化函数 t', () => {
     });
 
     it('搜索结果场景', () => {
-      const pattern = 'no results for "{keyword}" | found {count} result for "{keyword}" | found {count} results for "{keyword}"';
-      const getSearchResultText = (count: number, keyword: string) => t(pattern, { count, keyword });
+      const pattern = 'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.';
+      const getSearchResultText = (count: number, result: string) => t(pattern, { count, result });
 
-      expect(getSearchResultText(0, 'apple')).toBe('no results for "apple"');
-      expect(getSearchResultText(1, 'apple')).toBe('found 1 result for "apple"');
-      expect(getSearchResultText(5, 'apple')).toBe('found 5 results for "apple"');
+      expect(getSearchResultText(0, 'apple')).toBe('Search "apple". Found no items.');
+      expect(getSearchResultText(1, 'apple')).toBe('Search "apple". Found 1 item.');
+      expect(getSearchResultText(5, 'apple')).toBe('Search "apple". Found 5 items.');
     });
   });
 });
