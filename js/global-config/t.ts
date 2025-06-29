@@ -13,7 +13,7 @@ function getPluralIndex(count: number): number {
 
 /**
  * @see https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/components/config-provider/hooks/useConfig.ts#L48
- * 自定义 function 可能以来特定库函数，例如 tdesign-vue-next 中使用了 vue 的 h 函数
+ * 自定义 t function 可能依赖特定库函数，例如 tdesign-vue-next 中使用了 vue 的 h 函数
  * 因此交由各个类库自行实现
  */
 
