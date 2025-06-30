@@ -24,51 +24,79 @@ function getPluralIndex(count: number): number {
  * 1. 基本变量替换：
  *    t('Hello {name}', { name: 'World' }) // => 'Hello World'
  *
- * 2. 复数处理：
- *    t('no apples | one apple | {count} apples', { count: 0 }) // => 'no apples'
- *    t('no apples | one apple | {count} apples', { count: 1 }) // => 'one apple'
- *    t('no apples | one apple | {count} apples', { count: 5 }) // => '5 apples'
+ * 2. 复数处理（传入数字）：
+ *    t('no apples | one apple | {count} apples', 0) // => 'no apples'
+ *    t('no apples | one apple | {count} apples', 1) // => 'one apple'
+ *    t('no apples | one apple | {count} apples', 5) // => '5 apples'
  *
  * 3. 复合使用：
- *    t('no items found | found {count} item | found {count} items', { count: 3 }) // => 'found 3 items'
- *
+ *    t('no items found | found {count} item | found {count} items', 3, { count: 3 }) // => 'found 3 items'
+ */
+
+// 类型重载定义
+export function t(pattern: string): string;
+export function t(pattern: string, data: Record<string, any>): string;
+export function t(pattern: string, count: number): string;
+export function t(pattern: string, count: number, data: Record<string, any>): string;
+export function t<T>(pattern: T): string;
+
+/**
  * @param pattern 文本模式，可以是字符串、函数或其他类型
- * @param args 参数列表
+ * @param args 参数列表，支持 (count: number) 或 (count: number, data: object) 或 (data: object)
  * @returns 处理后的文本
  */
-export const t = function t<T>(pattern: T, ...args: any[]) {
-  const [data] = args;
-
+export function t<T>(pattern: T, ...args: any[]): string {
   if (isString(pattern)) {
     let text = pattern as string;
+    let count: number | undefined;
+    let data: Record<string, any> = {};
+
+    // 解析参数
+    if (args.length > 0) {
+      const [firstArg, secondArg] = args;
+
+      if (typeof firstArg === 'number') {
+      // 第一个参数是数字，表示 count
+        count = firstArg;
+        if (secondArg && typeof secondArg === 'object') {
+        // 第二个参数是对象，表示额外的数据
+          data = secondArg;
+        } else {
+          data.count = count; // 若没有提供第二个参数，则将 count 添加到数据中
+        }
+      } else if (typeof firstArg === 'object' && firstArg !== null) {
+      // 第一个参数是对象，表示数据
+        data = firstArg;
+      }
+    }
 
     // 处理复数形式：支持 "no items | one item | {count} items" 格式
     if (text.includes('|')) {
       const pluralParts = text.split('|').map((part) => part.trim());
 
-      // 如果数据中包含 count 字段，则使用复数处理
-      if (data && typeof data.count === 'number') {
-        const pluralIndex = getPluralIndex(data.count);
+      if (typeof count === 'number') {
+      // 使用 count 进行复数处理
+        const pluralIndex = getPluralIndex(count);
 
         // 根据复数索引选择对应的文本
         if (pluralIndex < pluralParts.length) {
           text = pluralParts[pluralIndex];
         } else {
-          // 如果索引超出范围，使用最后一个选项
+        // 如果索引超出范围，使用最后一个选项
           text = pluralParts[pluralParts.length - 1];
         }
       } else {
-        // 如果没有 count 字段，默认使用第一个选项
+      // 如果没有 count，默认使用第一个选项
         const [firstPart] = pluralParts;
         text = firstPart;
       }
     }
 
     // 处理变量替换：{key} 格式
-    if (data) {
+    if (data && Object.keys(data).length > 0) {
       const regular = /\{\s*([\w-]+)\s*\}/g;
       text = text.replace(regular, (match, key) => {
-        if (data && Object.prototype.hasOwnProperty.call(data, key)) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
           return String(data[key]);
         }
         return match; // 如果找不到对应的键，保留原始占位符
@@ -80,4 +108,4 @@ export const t = function t<T>(pattern: T, ...args: any[]) {
 
   // 如果不是字符串或函数，返回空字符串
   return '';
-};
+}

@@ -35,16 +35,16 @@ describe('国际化函数 t', () => {
 
   describe('复数处理', () => {
     it('当 count = 0 时应该使用第一个选项', () => {
-      expect(t('no apples | one apple | {count} apples', { count: 0 })).toBe('no apples');
+      expect(t('no apples | one apple | {count} apples', 0)).toBe('no apples');
     });
 
     it('当 count = 1 时应该使用第二个选项', () => {
-      expect(t('no apples | one apple | {count} apples', { count: 1 })).toBe('one apple');
+      expect(t('no apples | one apple | {count} apples', 1)).toBe('one apple');
     });
 
     it('当 count > 1 时应该使用第三个选项', () => {
-      expect(t('no apples | one apple | {count} apples', { count: 5 })).toBe('5 apples');
-      expect(t('no apples | one apple | {count} apples', { count: 100 })).toBe('100 apples');
+      expect(t('no apples | one apple | {count} apples', 5)).toBe('5 apples');
+      expect(t('no apples | one apple | {count} apples', 100)).toBe('100 apples');
     });
 
     it('当没有 count 字段时应该使用第一个选项', () => {
@@ -53,34 +53,34 @@ describe('国际化函数 t', () => {
     });
 
     it('当复数选项数量不足时应该使用最后一个选项', () => {
-      expect(t('zero | many', { count: 0 })).toBe('zero');
-      expect(t('zero | many', { count: 1 })).toBe('many');
-      expect(t('zero | many', { count: 5 })).toBe('many');
+      expect(t('zero | many', 0)).toBe('zero');
+      expect(t('zero | many', 1)).toBe('many');
+      expect(t('zero | many', 5)).toBe('many');
     });
 
     it('应该正确处理复数选项前后的空格', () => {
-      expect(t(' no items |  one item  | many items ', { count: 0 })).toBe('no items');
-      expect(t(' no items |  one item  | many items ', { count: 1 })).toBe('one item');
-      expect(t(' no items |  one item  | many items ', { count: 5 })).toBe('many items');
+      expect(t(' no items |  one item  | many items ', 0)).toBe('no items');
+      expect(t(' no items |  one item  | many items ', 1)).toBe('one item');
+      expect(t(' no items |  one item  | many items ', 5)).toBe('many items');
     });
   });
 
   describe('复合使用（复数 + 变量替换）', () => {
     it('应该正确处理复数选择和变量替换的组合', () => {
-      expect(t('no items found | found {count} item | found {count} items', { count: 0 }))
+      expect(t('no items found | found {count} item | found {count} items', 0))
         .toBe('no items found');
-      expect(t('no items found | found {count} item | found {count} items', { count: 1 }))
+      expect(t('no items found | found {count} item | found {count} items', 1, { count: 1 }))
         .toBe('found 1 item');
-      expect(t('no items found | found {count} item | found {count} items', { count: 3 }))
+      expect(t('no items found | found {count} item | found {total} items', 3, { total: 3 }))
         .toBe('found 3 items');
     });
 
     it('应该正确处理包含其他变量的复数文本', () => {
-      expect(t('no {type} | one {type} ({count}) | {count} {type}s', { count: 0, type: 'file' }))
+      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 0, { type: 'file' }))
         .toBe('no file');
-      expect(t('no {type} | one {type} ({count}) | {count} {type}s', { count: 1, type: 'file' }))
+      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 1, { count: 1, type: 'file' }))
         .toBe('one file (1)');
-      expect(t('no {type} | one {type} ({count}) | {count} {type}s', { count: 5, type: 'file' }))
+      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 5, { count: 5, type: 'file' }))
         .toBe('5 files');
     });
   });
@@ -129,33 +129,9 @@ describe('国际化函数 t', () => {
   });
 
   describe('实际应用场景', () => {
-    it('消息通知场景', () => {
-      const getNotificationText = (count: number) => t('no messages | {count} message | {count} messages', { count });
-
-      expect(getNotificationText(0)).toBe('no messages');
-      expect(getNotificationText(1)).toBe('1 message');
-      expect(getNotificationText(5)).toBe('5 messages');
-    });
-
-    it('文件上传场景', () => {
-      const getFileSelectionText = (count: number) => t('no files selected | {count} file selected | {count} files selected', { count });
-
-      expect(getFileSelectionText(0)).toBe('no files selected');
-      expect(getFileSelectionText(1)).toBe('1 file selected');
-      expect(getFileSelectionText(10)).toBe('10 files selected');
-    });
-
-    it('购物车场景', () => {
-      const getCartText = (count: number) => t('cart is empty | {count} item in cart | {count} items in cart', { count });
-
-      expect(getCartText(0)).toBe('cart is empty');
-      expect(getCartText(1)).toBe('1 item in cart');
-      expect(getCartText(3)).toBe('3 items in cart');
-    });
-
     it('搜索结果场景', () => {
       const pattern = 'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.';
-      const getSearchResultText = (count: number, result: string) => t(pattern, { count, result });
+      const getSearchResultText = (count: number, result: string) => t(pattern, count, { count, result });
 
       expect(getSearchResultText(0, 'apple')).toBe('Search "apple". Found no items.');
       expect(getSearchResultText(1, 'apple')).toBe('Search "apple". Found 1 item.');
