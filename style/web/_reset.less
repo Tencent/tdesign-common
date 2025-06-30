@@ -196,6 +196,13 @@ input { /* 1 */
 }
 
 /**
+ * Solve the problem that the default placeholder is transparent on some HarmonyOS Phones/Pads
+ */
+ input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
