@@ -1,4 +1,4 @@
-import { isFunction, isString } from 'lodash-es';
+import { isString } from 'lodash-es';
 
 /**
  * 复数规则判断函数
@@ -75,7 +75,7 @@ export function t<T>(pattern: T, ...args: any[]): string {
       const pluralParts = text.split('|').map((part) => part.trim());
 
       if (typeof count === 'number') {
-      // 使用 count 进行复数处理
+        // 使用 count 进行复数处理
         const pluralIndex = getPluralIndex(count);
 
         // 根据复数索引选择对应的文本
@@ -86,7 +86,7 @@ export function t<T>(pattern: T, ...args: any[]): string {
           text = pluralParts[pluralParts.length - 1];
         }
       } else {
-      // 如果没有 count，默认使用第一个选项
+        // 如果没有 count，默认使用第一个选项
         const [firstPart] = pluralParts;
         text = firstPart;
       }
