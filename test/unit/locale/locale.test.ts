@@ -71,8 +71,14 @@ describe('国际化函数 t', () => {
         .toBe('no items found');
       expect(t('no items found | found {count} item | found {count} items', 1, { count: 1 }))
         .toBe('found 1 item');
-      expect(t('no items found | found {count} item | found {total} items', 3, { total: 3 }))
+      expect(t('no items found | found {count} item | found {count} items', 3, { count: 3 }))
         .toBe('found 3 items');
+    });
+
+    it('应该正确处理只传入 count 的情况', () => {
+      expect(t('no items | one item | {count} items', 0)).toBe('no items');
+      expect(t('no items | one item | {count} items', 1)).toBe('one item');
+      expect(t('no items | one item | {count} items', 5)).toBe('5 items');
     });
 
     it('应该正确处理包含其他变量的复数文本', () => {
