@@ -79,6 +79,7 @@ describe('国际化函数 t', () => {
       expect(t('no items | one item | {count} items', 0)).toBe('no items');
       expect(t('no items | one item | {count} items', 1)).toBe('one item');
       expect(t('no items | one item | {count} items', 5)).toBe('5 items');
+      expect(t('no items | one item | items', 5)).toBe('items');
     });
 
     it('应该正确处理包含其他变量的复数文本', () => {
