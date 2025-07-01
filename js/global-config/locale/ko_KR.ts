@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} /페이지',
     jumpTo: '건너뛰다',
     page: '페이지',
-    total: '흔한 {total} 아이템 데이터',
+    total: '흔한 {count} 아이템 데이터',
   },
   cascader: {
     empty: '데이터 없음',

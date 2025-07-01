@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} 項/頁',
     jumpTo: '跳至',
     page: '頁',
-    total: '共 {total} 項數據',
+    total: '共 {count} 項數據',
   },
   cascader: {
     empty: '暫無數據',

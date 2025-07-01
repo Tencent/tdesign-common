@@ -101,7 +101,7 @@ t('no data | one item | many items');
 // en_US.ts
 export default {
   pagination: {
-    total: 'no items | 1 item | {total} items',
+    total: 'no items | 1 item | {count} items',
   },
 };
 ```
