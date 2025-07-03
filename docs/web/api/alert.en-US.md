@@ -29,3 +29,9 @@ When the content of the information is more complex, you can use the relevant de
 When the information content exceeds 2 rows, you can use the collapsing method to hide part of the information.
 
 {{ collapse }}
+
+### Closable Alert
+
+When the information can be closed by user interactive, you can configure `closeBtn` to display the close button or customize the close trigger.
+
+{{ close }}

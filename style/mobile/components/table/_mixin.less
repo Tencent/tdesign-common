@@ -8,7 +8,6 @@
 .t-table-fixed-after() {
   &::after {
     position: absolute;
-    top: 0;
     bottom: 0;
     content: "";
     transition: box-shadow .3s;
@@ -24,7 +23,6 @@
 
     &::after {
       right: 0;
-      transform: translateX(100%);
     }
   }
 
@@ -34,7 +32,6 @@
 
     &::after {
       left: 0;
-      transform: translateX(-100%);
     }
   }
 }

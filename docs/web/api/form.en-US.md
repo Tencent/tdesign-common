@@ -86,7 +86,7 @@ In many cases, the type of form data is often not only a simple object, but also
 
 ### Disabled Form
 
-You can disable an entire form item using the `disabled` attribute. For custom components, you can use `formControlledComponents` to enable the Form proxy to be disabled.
+You can disable an entire form item using the `disabled` attribute. 
 
 {{ disabled }}
 

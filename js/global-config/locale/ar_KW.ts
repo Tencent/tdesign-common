@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} / الصفحة',
     jumpTo: 'القفز إلى',
     page: '',
-    total: '{total} عناصر',
+    total: '{count} عناصر',
   },
   cascader: {
     empty: 'لا تتوافر بيانات',
