@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} /ページ',
     jumpTo: 'ジャンプする',
     page: 'ページ',
-    total: '合計 {total} 項目データ',
+    total: '合計 {count} 項目データ',
   },
   cascader: {
     empty: 'データなし',

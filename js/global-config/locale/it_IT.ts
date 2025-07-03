@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} articoli/pagina',
     jumpTo: 'Vai a',
     page: 'pagina',
-    total: 'totale {total} elementi dati',
+    total: 'totale {count} elementi dati',
   },
   cascader: {
     empty: 'Nessun dato',

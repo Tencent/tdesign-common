@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} / page',
     jumpTo: 'Jump to',
     page: '',
-    total: '{total} items',
+    total: 'no items | 1 item | {count} items',
   },
   cascader: {
     empty: 'Empty Data',
@@ -76,7 +76,7 @@ export default {
     cancelText: 'Cancel',
     resetText: 'Reset',
     selectAllText: 'Select All',
-    searchResultText: 'Search "{result}". Find {count} items.',
+    searchResultText: 'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
   },
   select: {
     empty: 'Empty Data',

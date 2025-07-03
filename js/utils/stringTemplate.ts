@@ -5,5 +5,5 @@
  * @returns 替换后的字符串
  */
 export function template<T extends Record<string, string>>(str: string, vars: T): string {
-  return str.replace(/\${(.*?)}/g, (_, prop: string) => vars[prop.trim()] || '');
+  return str.replace(/\${(.*?)}/g, (_, prop: string) => vars[prop.trim()] ?? '');
 }

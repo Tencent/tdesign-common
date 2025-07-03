@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} шт./стр.',
     jumpTo: 'Перейти к',
     page: 'стр.',
-    total: 'Всего {total} элементов данных',
+    total: 'Всего {count} элементов данных',
   },
   cascader: {
     empty: 'Нет данных',
