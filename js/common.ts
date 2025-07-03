@@ -15,11 +15,11 @@ export type TreeOptionData<T = string | number> = {
   value?: T;
 } & PlainObject;
 
-export type SizeEnum = "small" | "medium" | "large";
+export type SizeEnum = 'small' | 'medium' | 'large';
 
-export type HorizontalAlignEnum = "left" | "center" | "right";
+export type HorizontalAlignEnum = 'left' | 'center' | 'right';
 
-export type VerticalAlignEnum = "top" | "middle" | "bottom";
+export type VerticalAlignEnum = 'top' | 'middle' | 'bottom';
 
 export type ClassName = { [className: string]: any } | ClassName[] | string;
 
@@ -48,4 +48,4 @@ export const CLEAR_REG = /^KeyC$/i;
 export const ALL_REG = /^(KeyA|KeyL)$/i;
 export const CHECKED_CODE_REG = /^(Enter|Space)$/i;
 
-export const THEME_MODE = "theme-mode";
+export const THEME_MODE = 'theme-mode';
