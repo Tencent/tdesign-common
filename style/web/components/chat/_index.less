@@ -223,6 +223,15 @@
         background-color: @bg-color-container;
         box-shadow: @chat-textarea-shadow-active;
       }
+
+      &__wrapper {
+        margin-bottom: @comp-margin-m;
+        padding: 0 @comp-paddingLR-s;
+        position: relative;
+        flex: 1 1 0%;
+        min-height: 0px;
+        display: flex;
+      }
     }
 
     &__textarea:hover {
@@ -235,10 +244,6 @@
     }
 
     .@{prefix}-textarea {
-      width: 100%;
-      margin-bottom: @comp-margin-m;
-      padding: 0 @comp-paddingLR-s;
-
       .@{prefix}-textarea__inner {
         background-color: rgba(0, 0, 0, 0%);
         padding: 0;

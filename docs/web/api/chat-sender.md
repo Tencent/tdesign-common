@@ -19,7 +19,6 @@ spline: ai
 {{ chat-sender-attachments }}
 
 ### 输入框自定义
-
-通过`prefix`,`suffix` 可以调整输入框左下角，右下角区域内容扩展。
+可输入区域前置部分 `input-prefix` ，输入框底部左侧区域 `footer-prefix` ，输入框底部操作区域 `suffix`
 
 {{ chat-sender-slot }}
