@@ -70,9 +70,11 @@
 .@{prefix}-message__list {
   position: fixed;
   z-index: 6000;
+  pointer-events: none;
 
   .@{prefix}-message {
     margin-bottom: @msg-list-margin-bottom;
     word-break: break-all;
+    pointer-events: auto;
   }
 }
