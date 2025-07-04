@@ -10,6 +10,20 @@
 
 @import "./mixins/_reset.less";
 
+@border: 1px solid @table-border-color;
+
+@table-fixed-column-z-index: 30;
+@table-fixed-header-z-index: 50;
+@table-fixed-footer-z-index: 50;
+@table-fixed-row-z-index: 70;
+@table-fixed-header-virtual-scroll-z-index: @table-fixed-header-z-index + 1;
+@table-fixed-footer-virtual-scroll-z-index: @table-fixed-footer-z-index + 1;
+@table-right-scrollbar-divider: @table-fixed-row-z-index + 1;
+@table-loading-z-index: @table-right-scrollbar-divider + 1;
+
+/** 吸顶表头 Affix 组件，zIndex: 1000。宽度拖拽辅助线层级需高于表头 */
+@table-resize-line-z-index: 1001;
+
 .scrollbar {
   .scrollbar();
 }
@@ -43,20 +57,11 @@
   font-size: @table-font;
   color: @table--text-color;
   background-color: @table-bg;
+  position: relative;
 
   /** loading need to be top of fixed columns */
-  &__loading--full {
+  .@{prefix}-loading--full {
     z-index: @table-loading-z-index;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    vertical-align: middle;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 60%);
   }
 
   .t-table-vertical-align(top);
@@ -112,14 +117,13 @@
   td {
     position: relative;
     padding: @table-cell-padding;
+    border-bottom: @border;
     line-height: @table-line-height;
     font-weight: normal;
     overflow-wrap: break-word;
     background-color: inherit;
     box-sizing: border-box;
     text-align: left;
-
-    .border(bottom, @table-border-color);
   }
 
   th.@{prefix}-table__th-drag {
@@ -134,8 +138,7 @@
   }
 
   td[key="row-select"] {
-    padding: @table-td-padding-vertical-top 0 @table-td-padding-vertical-bottom
-      @table-td-padding-horizontal;
+    padding: @table-td-padding-vertical-top 0 @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   }
 
   td,
@@ -199,18 +202,9 @@
 
   // 边框线表格
   &--bordered {
-    td:not(:first-child),
-    th:not(:first-child) {
-      &::before {
-        content: "";
-        position: absolute;
-        width: 1px;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        transform: scaleX(.5);
-        background-color: @table-border-color;
-      }
+    td,
+    th {
+      border-left: @border;
 
       &.@{prefix}-table__cell--fixed-left-last {
         &::before {
@@ -233,6 +227,8 @@
     }
 
     .@{prefix}-table__content {
+      border-left: @border;
+
       // 覆盖深色模式下，水平和垂直滚动条交汇处的默认白色背景
       &::-webkit-scrollbar-corner {
         background-color: transparent;
@@ -241,6 +237,7 @@
 
     // 表格边框优化，适配固定列/固定表头场景
     .@{prefix}-table__content {
+      border: @border;
       border-radius: @border-radius-default;
     }
 
@@ -280,13 +277,13 @@
     }
 
     &.@{prefix}-table--header-fixed {
-      tbody tr:nth-of-type(even) {
+      > .@{prefix}-table__content > table > tbody tr:nth-of-type(even) {
         background-color: @table-highlight-bg-color;
       }
     }
 
     &:not(.@{prefix}-table--header-fixed) {
-      tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
+      > .@{prefix}-table__content > table > tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
         background-color: @table-highlight-bg-color;
       }
     }
@@ -299,12 +296,12 @@
       }
 
       &:not(.@{prefix}-table__header--fixed) {
-        tbody tr:nth-of-type(odd):hover {
+        > .@{prefix}-table__content > table > tbody tr:nth-of-type(odd):hover {
           background-color: @table-highlight-bg-color--hover;
         }
       }
 
-      tbody {
+      > .@{prefix}-table__content > table > tbody {
         tr {
           transition: background-color @anim-duration-base linear;
 
@@ -826,7 +823,7 @@
 }
 .@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
   > tr > th {
-    background-color: @table-header-bg-color;
+    background-color: @bg-color-secondarycontainer;
   }
 }
 
@@ -1142,11 +1139,4 @@
 // 超出省略的文本，也需要跟着尺寸变化
 .@{prefix}-table__ellipsis-content.@{prefix}-size-s .@{prefix}-popup__content {
   font-size: @table-font;
-}
-
-/** Chrome 兼容问题处理 */
-.@{prefix}-table--chrome.@{prefix}-table--multiple-header {
-  .@{prefix}-table__affixed-header-elm {
-    margin-top: 1px;
-  }
 }

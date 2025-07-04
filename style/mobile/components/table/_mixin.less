@@ -8,6 +8,7 @@
 .t-table-fixed-after() {
   &::after {
     position: absolute;
+    top: 0;
     bottom: 0;
     content: "";
     transition: box-shadow .3s;
@@ -23,6 +24,7 @@
 
     &::after {
       right: 0;
+      transform: translateX(100%);
     }
   }
 
@@ -32,14 +34,15 @@
 
     &::after {
       left: 0;
+      transform: translateX(-100%);
     }
   }
 }
 
 .t-table-vertical-align(@pos) {
   &.@{prefix}-vertical-align-@{pos} {
-    th,
-    td {
+    th:not(.@{prefix}-table__cell-check),
+    td:not(.@{prefix}-table__cell-check) {
       vertical-align: @pos;
     }
   }
