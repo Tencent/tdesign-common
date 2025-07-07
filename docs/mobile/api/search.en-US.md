@@ -14,6 +14,10 @@ Basic Search
 
 {{ base }}
 
+Word limit
+
+{{max-length}}
+
 Display the cancel button after obtaining focus
 
 {{ action }}
