@@ -16,7 +16,7 @@ toc: false
 
 字数限制
 
-{{max-length}}
+{{ max-length }}
 
 获取焦点后显示取消按钮
 
