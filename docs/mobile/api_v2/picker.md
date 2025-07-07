@@ -6,18 +6,22 @@ isComponent: true
 toc: false
 ---
 
-### 基础类型
+### 组件类型
+
+#### 基础选择器
+
+单项和多项选择
 
 {{ base }}
 
-### 多级联动
+#### 地区选择器
 
-{{ cascade }}
+支持省市区切换，支持数据联动
 
-### 自定义高度
+{{ area }}
 
-{{ customHeight }}
+### 组件样式
 
-### 对象选择
+是否带标题
 
-{{ object }}
+{{ with-title }}
