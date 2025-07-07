@@ -1,11 +1,28 @@
 ---
 title: Chatbot 智能聊天
-description: 最基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。
+description: 智能对话聊天组件，适用于需要快速集成智能客服、问答系统等的AI应用
 isComponent: true
 usage: { title: '', description: '' }
 spline: base
 ---
 
 ### 基础使用
+{{ basic }}
 
-{{ chatbot-base }}
+### 组合式用法
+{{ hookComponent }}
+
+### 自定义
+{{ custom }}
+
+### 代码助手
+{{ code }}
+
+### 文案助手
+{{ docs }}
+
+### 图像生成
+{{ image }}
+
+### 任务规划
+{{ agent }}
