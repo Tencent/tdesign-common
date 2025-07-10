@@ -114,7 +114,7 @@ spline: explain
     </a>
   </div>
 </section>
-<h3>Form<em class="tag">15</em></h3>
+<h3>Form<em class="tag">17</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/calendar-en">
@@ -137,6 +137,13 @@ spline: explain
       <p class="name">CheckBox</p>
     </a>
   </div>
+  <div class="image-wrapper">
+      <a class="item" href="./components/color-picker-en">
+        <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-colorpicker.png" />
+        <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-colorpicker-dark.png" />
+        <p class="name">ColorPicker</p>
+      </a>
+    </div>
   <div class="image-wrapper">
     <a class="item" href="./components/date-time-picker-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker.png" />
@@ -214,6 +221,13 @@ spline: explain
       <p class="name">Textarea</p>
     </a>
   </div>
+  <div class="image-wrapper">
+      <a class="item" href="./components/tree-select-en">
+        <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-treeselect.png" />
+        <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-treeselect-dark.png" />
+        <p class="name">TreeSelect</p>
+      </a>
+    </div>
   <div class="image-wrapper">
     <a class="item" href="./components/upload-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-upload.png" />
@@ -363,6 +377,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="./components/dropdown-menu-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu-dark.png" />
+      <p class="name">DropdownMenu</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="./components/dialog-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dialog.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dialog-dark.png" />
@@ -374,13 +395,6 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-guide.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-guide-dark.png" />
       <p class="name">Guide</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
-    <a class="item" href="./components/dropdown-menu-en">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu-dark.png" />
-      <p class="name">DropdownMenu</p>
     </a>
   </div>
   <div class="image-wrapper">

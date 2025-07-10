@@ -114,7 +114,7 @@ spline: explain
     </a>
   </div>
 </section>
-<h3>输入<em class="tag">15</em></h3>
+<h3>输入<em class="tag">17</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/calendar">
@@ -135,6 +135,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-checkbox.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-checkbox-dark.png" />
       <p class="name">CheckBox 多选框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/color-picker">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-colorpicker.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-colorpicker-dark.png" />
+      <p class="name">ColorPicker 颜色选择器</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -212,6 +219,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-textarea.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-textarea-dark.png" />
       <p class="name">Textarea 多行文本框</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/tree-select">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-treeselect.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-treeselect-dark.png" />
+      <p class="name">TreeSelect 树形选择</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -370,17 +384,17 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="./components/guide">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-guide.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-guide-dark.png" />
-      <p class="name">Guide 引导</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
     <a class="item" href="./components/dropdown-menu">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-dropdownmenu-dark.png" />
       <p class="name">DropdownMenu 下拉菜单</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/guide">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-guide.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-guide-dark.png" />
+      <p class="name">Guide 引导</p>
     </a>
   </div>
   <div class="image-wrapper">
