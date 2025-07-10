@@ -4,7 +4,7 @@ description: Component types will continue to be added according to business pra
 spline: explain
 ---
 
-<h3>Base<em class="tag">5</em></h3>
+<h3>Base<em class="tag">6</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/button-en">
@@ -353,7 +353,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Feedback<em class="tag">12</em></h3>
+<h3>Feedback<em class="tag">13</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/action-sheet-en">
