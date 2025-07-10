@@ -1,6 +1,6 @@
 ---
 title: QRCode 
-description: test
+description: A component that can convert text into QR Code, supporting customizable colors and logo configuration
 isComponent: true
 usage: { title: '', description: '' }
 spline: data
