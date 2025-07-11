@@ -86,4 +86,9 @@ export default {
     finish: 'Finish',
     back: 'Back',
   },
+  qrcode: {
+    expiredText: 'expired',
+    refreshText: 'refresh',
+    scannedText: 'scanned',
+  },
 };

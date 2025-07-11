@@ -73,4 +73,9 @@ export default {
     finish: '完成',
     back: '返回',
   },
+  qrcode: {
+    expiredText: '二維碼過期',
+    refreshText: '點擊刷新',
+    scannedText: '已掃描',
+  },
 };

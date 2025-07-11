@@ -73,4 +73,9 @@ export default {
     finish: '완료',
     back: '뒤로',
   },
+  qrcode: {
+    expiredText: '만료됨',
+    refreshText: '새로 고치다',
+    scannedText: '스캔됨',
+  },
 };

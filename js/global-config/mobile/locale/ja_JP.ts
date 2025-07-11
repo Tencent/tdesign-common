@@ -73,4 +73,9 @@ export default {
     finish: '完了',
     back: '戻る',
   },
+  qrcode: {
+    expiredText: '期限切れ',
+    refreshText: 'リフレッシュ',
+    scannedText: 'スキャンされた',
+  },
 };
