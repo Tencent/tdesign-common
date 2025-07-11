@@ -7,13 +7,13 @@ toc: false
 ---
 
 
-### Base Footer 
+### Base Footer
 
 {{ base }}
 
 ### Link Footer
 
-{{ link }}
+{{ links }}
 
 ### Brand Footer
 
