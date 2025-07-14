@@ -1,9 +1,9 @@
-import { Platform } from './types';
+import type { Platform } from './types';
 
 /**
  * Key 对应组件文档页面的 URL
  */
-const COMMON_COMP_MAP: Record<string, string[]> = {
+export const COMMON_COMP_MAP: Record<string, string[]> = {
   Avatar: ['AvatarGroup'],
   BackTop: [],
   Badge: [],
@@ -45,7 +45,7 @@ const COMMON_COMP_MAP: Record<string, string[]> = {
   Upload: [],
 } as const;
 
-const WEB_COMP_MAP: Record<string, string[]> = {
+export const WEB_COMP_MAP: Record<string, string[]> = {
   Affix: [],
   Anchor: ['AnchorItem'],
   Alert: [],
@@ -62,7 +62,7 @@ const WEB_COMP_MAP: Record<string, string[]> = {
   InputNumber: [],
   Layout: ['Header', 'Aside', 'Content', 'Footer'],
   Menu: ['HeadMenu', 'Submenu', 'MenuItem'],
-  Message: [],
+  Message: ['MessagePlugin'],
   Notification: ['NotificationPlugin'],
   Pagination: ['PaginationMini'],
   Popconfirm: [],
@@ -83,7 +83,7 @@ const WEB_COMP_MAP: Record<string, string[]> = {
   Watermark: [],
 } as const;
 
-const MOBILE_COMP_MAP: Record<string, string[]> = {
+export const MOBILE_COMP_MAP: Record<string, string[]> = {
   ActionSheet: [],
   Cell: ['CellGroup'],
   ColorPicker: [],
