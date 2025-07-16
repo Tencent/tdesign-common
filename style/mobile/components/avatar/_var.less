@@ -1,38 +1,30 @@
-//颜色
-@avatar-bg-color: rgba(212,227,252,1);
-@avatar-text-color: @brand-color;
+@avatar-bg-color: var(--td-avatar-bg-color, @brand-color-light-active);
+@avatar-content-color: var(--td-avatar-content-color, @brand-color);
+@avatar-small-width: var(--td-avatar-small-width, 40px);
+@avatar-medium-width: var(--td-avatar-medium-width, 48px);
+@avatar-large-width: var(--td-avatar-large-width, 64px);
 
-//头像大小
-@avatar-size-small: 32px;
-@avatar-size-medium: 48px;
-@avatar-size-large: 64px;
+@avatar-text-small-font-size: var(--td-avatar-text-small-font-size, @font-size-base);
+@avatar-text-medium-font-size: var(--td-avatar-text-medium-font-size, @font-size-m);
+@avatar-text-large-font-size: var(--td-avatar-text-large-font-size, @font-size-xl);
 
-//字体
-@avatar-font-small: @font-size-s;
-@avatar-font-medium: @font-size-base;
-@avatar-font-large: @font-size-l;
+@avatar-icon-small-font-size: var(--td-avatar-icon-small-font-size, 20px);
+@avatar-icon-medium-font-size: var(--td-avatar-icon-medium-font-size, 24px);
+@avatar-icon-large-font-size: var(--td-avatar-icon-large-font-size, 32px);
 
-//图标
-@avatar-icon-small: 16px;
-@avatar-icon-medium: 24px;
-@avatar-icon-large: 32px;
+@avatar-border-width-small: var(--td-avatar-border-width-small, 1px);
+@avatar-border-width-medium: var(--td-avatar-border-width-medium, 2px);
+@avatar-border-width-large: var(--td-avatar-border-width-large, 3px);
+@avatar-border-color: var(--td-avatar-border-color, @bg-color-container);
+@avatar-circle-border-radius: var(--td-avatar-circle-border-radius, @radius-circle);
+@avatar-round-border-radius: var(--td-avatar-round-border-radius, @radius-default);
 
-//边框
-@avatar-border-radius-cicle: @radius-circle;
-@avatar-border-radius-round: 3px;
-@avatar-border-color: @bg-color-container;
-
-@avatar-border-color: @bg-color-container;
+@avatar-margin-left: var(--td-avatar-margin-left, 0);
 
 //组合头像偏移量
-@avatar-group-offset-small: -4px;
-@avatar-group-offset-medium: -6px;
-@avatar-group-offset-large: -8px;
+@avatar-group-offset-small: var(--td-avatar-group-margin-left-small, -8px);
+@avatar-group-offset-medium: var(--td-avatar-group-margin-left-medium, -8px);
+@avatar-group-offset-large: var(--td-avatar-group-margin-left-large, -8px);
+@avatar-group-line-spacing: var(--td-avatar-group-line-spacing, 2px);
 
-//边框大小
-@avatar-border-width-small: 2px;
-@avatar-border-width-medium: 3px;
-@avatar-border-width-large: 4px;
-
-//z-index
-@avatar-group-init-zIndex:50;
+@avatar-group-init-zIndex: 50;

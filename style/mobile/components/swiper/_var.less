@@ -1,6 +1,9 @@
+@import "../swiper-nav/_var.less";
+
 @swiper-border-radius: var(--td-swiper-border-radius, 8px);
-@swiper-page-btn-size: 20px;
-@swiper-page-fraction-height: 20px;
-@swiper-page-fraction-radius: 10px;
-@swiper-page-dot-size: 6px;
-@swiper-page-dot-active-width: 20px;
+@swiper-placement-outside-padding: var(
+  --td-swiper-placement-outside-padding,
+  calc(@spacer-1 + @swiper-nav-dot-size)
+);
+@swiper-item-left-padding: var(--td-swiper-item-left-padding, 6px);
+@swiper-item-right-padding: var(--td-swiper-item-right-padding, 6px);

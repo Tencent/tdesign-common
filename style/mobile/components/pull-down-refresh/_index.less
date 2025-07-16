@@ -4,38 +4,45 @@
 
 .@{prefix}-pull-down-refresh {
   overflow: hidden;
+  height: 100%;
 
   &__track {
     position: relative;
     height: 100%;
-    transition-property: transform;
+
+    &--loosing {
+      transition: transform ease .24s;
+    }
   }
 
-  &__max {
+  &__tips {
     position: absolute;
-    left: 0;
+    color: @pull-down-refresh-color;
+    font-size: @font-size-base;
+    top: 0;
     width: 100%;
-    overflow: hidden;
     transform: translateY(-100%);
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    justify-content: flex-end;
+    overflow: hidden;
   }
 
   &__loading {
     width: 100%;
-    font-size: @font-size-base;
-    color: @pull-down-refresh-text-color;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
 
-  &__loading-icon {
     .@{prefix}-loading__text {
       font-size: @font-size-base;
       color: @pull-down-refresh-text-color;
     }
+  }
+
+  &__wrap {
+    position: relative;
   }
 }
