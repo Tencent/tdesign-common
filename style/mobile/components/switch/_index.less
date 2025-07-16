@@ -137,17 +137,11 @@
     }
 
     &--large&--checked {
-      left: calc(
-        @switch-large-width - @switch-dot-large-size -
-          @switch-dot-horizontal-margin
-      );
+      left: calc(@switch-large-width - @switch-dot-large-size - @switch-dot-horizontal-margin);
     }
 
     &--small&--checked {
-      left: calc(
-        @switch-small-width - @switch-dot-small-size -
-          @switch-dot-horizontal-margin
-      );
+      left: calc(@switch-small-width - @switch-dot-small-size - @switch-dot-horizontal-margin);
     }
 
     &--plain:not(&--checked) {
