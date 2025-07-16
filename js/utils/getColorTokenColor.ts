@@ -8,4 +8,5 @@ export const getColorTokenColor = (token: string): string => {
   const styles = getComputedStyle(targetElement);
   return styles.getPropertyValue(token).trim() ?? '';
 };
+
 export default getColorTokenColor;
