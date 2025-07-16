@@ -70,6 +70,20 @@
       animation: spin infinite linear .6s;
     }
   }
+
+  &__error {
+    grid-column: 1 / -1;
+    padding: 4px 8px;
+    background-color: @error-color-1;
+    border: 1px solid @error-color;
+    border-radius: var(--td-tag-square-border-radius, 4px);
+  }
+
+  &__error-text {
+    font-size: 12px;
+    line-height: 20px;
+    color: @error-color;
+  }
 }
 
 @keyframes spin {
