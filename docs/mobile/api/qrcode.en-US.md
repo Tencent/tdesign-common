@@ -1,5 +1,5 @@
 ---
-title: QRCode 
+title: QRCode
 description: A component that can convert text into QR Code, supporting customizable colors and logo configuration
 spline: base
 isComponent: true
@@ -24,7 +24,7 @@ The status can be controlled by the value status, four values ​​of active, e
 ### custom status render
 You can control the rendering logic of the QR code in different states through the value of statusRender.
 
-{{ customStatusRender }}
+{{ status-render }}
 
 
 ### Custom Render Type
@@ -35,12 +35,12 @@ Customize the rendering results by type, provide options canvas and svg.
 ### Custom Color
 Custom Color.
 
-{{ customColor }}
+{{ color }}
 
 ### Custom Size
 Custom Size.
 
-{{ customSize }}
+{{ size }}
 
 
 ### Download QRCode

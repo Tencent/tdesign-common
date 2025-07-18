@@ -23,7 +23,7 @@ toc: false
 ### 自定义状态渲染器
 可以通过 statusRender 的值控制二维码不同状态的渲染逻辑。
 
-{{ customStatusRender }}
+{{ status-render }}
 
 
 ### 自定义渲染类型
@@ -34,12 +34,12 @@ toc: false
 ### 自定义颜色
 通过设置 color 自定义二维码颜色，通过设置 bgColor 自定义背景颜色。
 
-{{ customColor }}
+{{ color }}
 
 ### 自定义尺寸
 自定义尺寸。
 
-{{ customSize }}
+{{ size }}
 
 
 ### 下载二维码
