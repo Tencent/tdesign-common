@@ -6,18 +6,32 @@ isComponent: true
 toc: false
 ---
 
-### Base DateTimePicker
+### 01 Component Type
 
-{{ base }}
+### Year Month Date Picker
 
-### Choose Year
+{{ year-month-date }}
+
+### Month Picker
 
 {{ year-month }}
 
-### Choose Time
+### Second Picker
 
-{{ time }}
+{{ hour-minute-second }}
 
-### Customize Selection Range
+### Minute Picker
 
-{{ custom-range }}
+### Date with Second Picker
+
+{{ date-all }}
+
+### 02 Component Status
+
+#### DatetimePicker with Title
+
+{{ with-title }}
+
+#### DatetimePicker without Title
+
+{{ without-title }}

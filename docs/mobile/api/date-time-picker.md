@@ -6,18 +6,34 @@ isComponent: true
 toc: false
 ---
 
-### 基础时间选择器
+### 01 组件类型
 
-{{ base }}
+#### 年月日选择器
 
-### 选择年月
+{{ year-month-date }}
+
+#### 年月选择器
 
 {{ year-month }}
 
-### 选择时分
+### 时分秒选择器
 
-{{ time }}
+{{ hour-minute-second }}
 
-### 自定义选择范围
+### 时分选择器
 
-{{ custom-range }}
+{{ hour-minute }}
+
+#### 年月日时分秒选择器
+
+{{ date-all }}
+
+### 02 组件样式
+
+#### 带标题时间选择器
+
+{{ with-title }}
+
+#### 不带标题时间选择器
+
+{{ without-title }}
