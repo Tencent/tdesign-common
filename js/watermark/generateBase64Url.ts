@@ -11,7 +11,7 @@ export default function generateBase64Url({
   alpha,
   watermarkContent,
   lineSpace,
-  fontColor
+  fontColor = 'rgba(0,0,0,0.1)'
 }: {
   width: number,
   height: number,
@@ -23,7 +23,7 @@ export default function generateBase64Url({
   alpha:number,
   watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
   lineSpace:number,
-  fontColor:string
+  fontColor?:string
 }, onFinish: (url: string) => void): string {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
