@@ -29,7 +29,7 @@ export const COMMON_COMP_MAP: Record<string, string[]> = {
   Popup: ['PopupPlugin'],
   Progress: [],
   QRCode: [],
-  Table: [],
+  Table: ['EnhancedTable'],
   Tabs: ['TabPanel'],
   Tag: ['CheckTag', 'CheckTagGroup'],
   Textarea: [],
