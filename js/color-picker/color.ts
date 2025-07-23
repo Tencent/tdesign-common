@@ -320,9 +320,10 @@ export class Color {
     const hsva = color.toHsv();
 
     /* 在 HSV 颜色模型中，当饱和度 (saturation) 为 0 时
-       颜色处于白色区域，此时色相 (hue) 在数学上是未定义的，tinyColor 库会将其重置为 0
-       从而导致 Slider 上的点位置计算意外错误 */
-    if (hsva.s === 0 && this.states.h > 0) {
+       颜色处于纯白/黑区域，此时色相 (hue) 在数学上是未定义的，tinyColor 库会将其重置为 0
+       因此当用户拖动到该区域时，会导致 Slider 上的点位置计算意外错误 */
+    if (hsva.h !== this.states.h) {
+      // 始终与当前色相同步，避免 hsva.s === 0 时 hue 被重置
       hsva.h = this.states.h;
     }
 
