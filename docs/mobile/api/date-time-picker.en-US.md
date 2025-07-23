@@ -28,6 +28,10 @@ toc: false
 
 {{ date-all }}
 
+#### Date Week Picker
+
+{{ show-week }}
+
 ### 02 Component Status
 
 #### DatetimePicker with Title
