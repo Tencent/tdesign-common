@@ -1,21 +1,8 @@
-@dropdown-menu-primary-color: @brand-color;
-@dropdown-menu-primary-color-1: @brand-color-light;
+@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-colorm, @bg-color-container);
+@dropdown-menu-color: var(--td-dropdown-menu-colorm, @text-color-primary);
+@dropdown-menu-active-color: var(--td-dropdown-menu-active-colorm, @brand-color);
+@dropdown-menu-disabled-color: var(--td-dropdown-menu-disabled-colorm, @text-color-disabled);
+@dropdown-menu-font-size: var(--td-dropdown-menu-font-sizem, 14px);
+@dropdown-menu-icon-size: var(--td-dropdown-menu-icon-sizem, 24px);
 
-@dropdown-menu-color-block: @bg-color-container;
-
-@dropdown-menu-disabled-color: @text-color-disabled;
-
-@dropdown-menu-level-2-color: @text-color-secondary;
-
-@dropdown-menu-level-1-color: @text-color-primary;
-
-@dropdown-menu-tree-col1-color: #f5f5f5;
-
-@dropdown-menu-tree-col2-color: #f9f9f9;
-
-@dropdown-item-height: 100%;
-
-@dropdown-item-border-radius: @radius-small;
-@cell-vertical-padding: 12px;
-@cell-horizontal-padding: 16px;
-@cell-border-color: @component-stroke;
+@dropdownMenu: ~"@{prefix}-dropdown-menu";

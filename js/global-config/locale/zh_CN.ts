@@ -203,7 +203,7 @@ export default {
     recentColorTitle: '最近使用颜色',
     clearConfirmText: '确定清空最近使用的颜色吗？',
     singleColor: '单色',
-    gradientColor: '渐变'
+    gradientColor: '渐变',
   },
   guide: {
     finishButtonProps: {
@@ -277,5 +277,5 @@ export default {
     expiredText: '二维码过期',
     refreshText: '点击刷新',
     scannedText: '已扫描',
-  }
+  },
 } as const;

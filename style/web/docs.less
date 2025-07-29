@@ -6,6 +6,8 @@
 
 @import "./components/_docs.less";
 
+@import "./mixins/_scrollbar.less";
+
 @d-prefix: tdesign;
 
 /* 用于重构稿演示相关的样式 公共部分 */
@@ -28,7 +30,7 @@
 .tdesign-demo-item {
   margin: 0 40px;
 
-  > p {
+  >p {
     color: #333;
     font-size: 14px;
     line-height: 2;
@@ -49,6 +51,8 @@
 }
 
 .tdesign-demo-item__body {
+  .scrollbar();
+
   display: flex;
   flex-direction: column;
   justify-content: center;

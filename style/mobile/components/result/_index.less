@@ -7,48 +7,48 @@
   flex-direction: column;
   align-items: center;
 
-  &__title {
-    line-height: @result-title-line-height;
-    font-size: @result-title-font;
-    font-weight: 700;
-    color: @result-title-color;
-  }
-
   &__icon {
-    font-size: 80px;
+    font-size: @result-icon-font-size;
   }
 
-  &__thumb + &__title:not(:empty) {
-    margin-top: @spacer;
+  &__title {
+    line-height: @result-title-line-height; // 标题行高
+    font-size: @result-title-font-size; // 标题文字大小
+    font-weight: 700;
+    color: @result-title-color; // 标题颜色
+  }
+
+  &__thumb:not(:empty) + &__title:not(:empty) {
+    margin-top: @result-title-margin-top; // 标题内容上边距
   }
 
   &__description {
     text-align: center;
-    color: @result-description-color;
-    font-size: @result-description-font;
-    line-height: @result-description-line-height;
+    color: @result-description-color; // 描述颜色
+    font-size: @result-description-font-size; // 描述文字大小
+    line-height: @result-description-line-height; // 描述行高
   }
 
   &__title + &__description:not(:empty) {
-    margin-top: @spacer-1;
+    margin-top: @result-description-margin-top; // 描述内容上边距
   }
 
   // theme
   &--theme {
     &-default {
-      color: @result-default-color;
+      color: @result-icon-default-color; // 默认状态图标颜色
     }
 
     &-success {
-      color: @result-success-color;
+      color: @result-icon-success-color; // 成功状态图标颜色
     }
 
     &-warning {
-      color: @result-warning-color;
+      color: @result-icon-warning-color; // 警示状态图标颜色
     }
 
     &-error {
-      color: @result-error-color;
+      color: @result-icon-error-color; // 失败状态图标颜色
     }
   }
 }

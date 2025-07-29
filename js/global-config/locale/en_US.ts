@@ -204,7 +204,7 @@ export default {
     recentColorTitle: 'Recently Used',
     clearConfirmText: 'Clear recently used colors?',
     singleColor: 'Single',
-    gradientColor: 'Gradient'
+    gradientColor: 'Gradient',
   },
   guide: {
     finishButtonProps: {
@@ -249,7 +249,7 @@ export default {
       fail: 'Failure',
       empty: 'No Data',
       networkError: 'Network Error',
-    }
+    },
   },
   descriptions: {
     colonText: ':',
@@ -278,5 +278,5 @@ export default {
     expiredText: 'expired',
     refreshText: 'refresh',
     scannedText: 'scanned',
-  }
+  },
 } as const;

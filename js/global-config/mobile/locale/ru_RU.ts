@@ -85,4 +85,9 @@ export default {
     finish: 'Готово',
     back: 'Назад',
   },
+  qrcode: {
+    expiredText: 'истекший',
+    refreshText: 'обновить',
+    scannedText: 'сканированный',
+  },
 };

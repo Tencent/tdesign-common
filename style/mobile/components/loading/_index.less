@@ -1,8 +1,8 @@
 @import "../../base.less";
 
-@import "./_var.less";
-
 @import "../../mixins/_index.less";
+
+@import "./_var.less";
 
 .@{loading} {
   display: flex;
@@ -48,7 +48,11 @@
     &-conic {
       width: 100%;
       height: 100%;
-      background: conic-gradient(from 90deg at 50% 50%, #fff 0deg, currentColor 360deg);
+      background: conic-gradient(
+        from 90deg at 50% 50%,
+        #fff 0deg,
+        currentColor 360deg
+      );
       border-radius: 50%;
       /* stylelint-disable-next-line */
       mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
@@ -66,8 +70,7 @@
     height: 20px;
     max-height: 100%;
     vertical-align: middle;
-    animation: t-rotate .8s linear
-      infinite;
+    animation: t-rotate .8s linear infinite;
     animation-timing-function: steps(12);
 
     &--line {

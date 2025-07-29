@@ -1,95 +1,119 @@
-// 尺寸
-@btn-height-s: 36px;
-@btn-line-height-s: 22px;
-@btn-height-default: 40px;
-@btn-line-height-default: 22px;
-@btn-height-l: 44px;
-@btn-line-height-l: 24px;
-// @btn-height-block: 44px;
+@button-border-width: var(--td-button-border-width, 2px);
+@button-border-radius: var(--td-button-border-radius, @radius-default);
+@button-font-weight: var(--td-button-font-weight, 600);
 
-// 圆角
-@btn-border-radius: @radius-small;
-@btn-shape-border-radius-s: (@btn-height-s / 2);
-@btn-shape-border-radius-default: (@btn-height-default / 2);
-@btn-shape-border-radius-l: (@btn-height-l / 2);
+@button-extra-small-font-size: var(--td-button-extra-small-font-size, @font-size-base);
+@button-small-font-size: var(--td-button-small-font-size, @font-size-base);
+@button-medium-font-size: var(--td-button-medium-font-size, @font-size-m);
+@button-large-font-size: var(--td-button-large-font-size, @font-size-m);
 
-// 阴影
-@btn-bg-color-container: transparent;
-//字号
-@btn-font-large: @font-size-l;
-@btn-font-default: @font-size-base;
-@btn-font-small: @font-size-base;
-// 图标大小
-// @btn-icon-size: 22px;
-@btn-loading-size: calc(@font-size * 1.4);
+@button-extra-small-height: var(--td-button-extra-small-height, 28px);
+@button-small-height: var(--td-button-small-height, 32px);
+@button-medium-height: var(--td-button-medium-height, 40px);
+@button-large-height: var(--td-button-large-height, 48px);
 
-// 图标大小
-@btn-icon-size-small: 20px;
-@btn-icon-size-default: 22px;
-@btn-icon-size-large: 24px;
+// button icon
+@button-icon-spacer: var(--td-button-icon-spacer, @spacer);
+@button-icon-border-radius: var(--td-button-icon-border-radius, 4px);
 
 // padding
-@btn-padding-horizontal: 16px;
+@button-extra-small-padding-horizontal: var(--td-button-extra-small-padding-horizontal, 8px);
+@button-small-padding-horizontal: var(--td-button-small-padding-horizontal, 12px);
+@button-medium-padding-horizontal: var(--td-button-medium-padding-horizontal, 16px);
+@button-large-padding-horizontal: var(--td-button-large-padding-horizontal, 20px);
 
-@btn-border-width: 1px;
+// 图标大小
+@button-extra-small-icon-font-size: var(--td-button-extra-small-icon-font-size, 18px);
+@button-small-icon-font-size: var(--td-button-small-icon-font-size, 18px);
+@button-medium-icon-font-size: var(--td-button-medium-icon-font-size, 20px);
+@button-large-icon-font-size: var(--td-button-large-icon-font-size, 24px);
 
-// 状态色 - 主色
-@btn-color-primary: @brand-color;
-@btn-color-primary-active: @brand-color-active;
-@btn-color-primary-disabled: @brand-color-disabled;
+// default
+@button-default-color: var(--td-button-default-color, @text-color-primary);
+@button-default-bg-color: var(--td-button-default-bg-color, @bg-color-component);
+@button-default-border-color: var(--td-button-default-border-color, @bg-color-component);
+@button-default-disabled-color: var(--td-button-default-disabled-color, @text-color-disabled);
+@button-default-disabled-bg: var(--td-button-default-disabled-bg, @bg-color-component-disabled);
+@button-default-disabled-border-color: var(--td-button-default-disabled-border-color, @bg-color-component-disabled);
+// primary
+@button-primary-color: var(--td-button-primary-color, @font-white-1);
+@button-primary-border-color: var(--td-button-primary-border-color, @brand-color);
+@button-primary-bg-color: var(--td-button-primary-bg-color, @brand-color);
+@button-primary-disabled-color: var(--td-button-primary-disabled-color, @font-white-1);
+@button-primary-disabled-bg: var(--td-button-primary-disabled-bg, @brand-color-disabled);
+@button-primary-disabled-border-color: var(--td-button-primary-disabled-border-color, @brand-color-disabled);
+// light
+@button-light-color: var(--td-button-light-color, @brand-color);
+@button-light-border-color: var(--td-button-light-border-color, @brand-color-light);
+@button-light-bg-color: var(--td-button-light-bg-color, @brand-color-light);
+@button-light-disabled-color: var(--td-button-light-disabled-color, @brand-color-disabled);
+@button-light-disabled-bg: var(--td-button-light-disabled-bg, @brand-color-light);
+@button-light-disabled-border-color: var(--td-button-light-disabled-border-color, @brand-color-light);
+// danger
+@button-danger-color: var(--td-button-danger-color, @font-white-1);
+@button-danger-border-color: var(--td-button-danger-border-color, @error-color);
+@button-danger-bg-color: var(--td-button-danger-bg-color, @error-color);
+@button-danger-disabled-color: var(--td-button-danger-disabled-color, @error-color-disabled);
+@button-danger-disabled-bg: var(--td-button-danger-disabled-bg, @error-color-3);
+@button-danger-disabled-border-color: var(--td-button-danger-disabled-border-color, @error-color-3);
+// default + outline
+@button-default-outline-color: var(--td-button-default-outline-color, @text-color-primary);
+@button-default-outline-border-color: var(--td-button-default-outline-border-color, @component-border);
+@button-default-outline-disabled-color: var(--td-button-default-outline-disabled-color, @component-border);
+// primary + outline
+@button-primary-outline-color: var(--td-button-primary-outline-color, @brand-color);
+@button-primary-outline-border-color: var(--td-button-primary-outline-border-color, @button-primary-outline-color);
+@button-primary-outline-disabled-color: var(--td-button-primary-outline-disabled-color, @brand-color-disabled);
+// danger + outline
+@button-danger-outline-color: var(--td-button-danger-outline-color, @error-color);
+@button-danger-outline-border-color: var(--td-button-danger-outline-border-color, @button-danger-outline-color);
+@button-danger-outline-disabled-color: var(--td-button-danger-outline-disabled-color, @error-color-3);
+// light + outline
+@button-light-outline-color: var(--td-button-light-outline-color, @brand-color);
+@button-light-outline-border-color: var(--td-button-light-outline-border-color, @button-light-outline-color);
+@button-light-outline-bg-color: var(--td-button-light-outline-bg-color, @brand-color-light);
+@button-light-outline-disabled-color: var(--td-button-light-outline-disabled-color, @brand-color-disabled);
 
-// 状态色 - 成功
-@btn-color-success: @success-color;
-@btn-color-success-active: @success-color-active;
-@btn-color-success-disabled: @success-color-disabled;
+// primary + text
+@button-primary-text-color: var(--td-button-primary-text-color, @brand-color);
+@button-primary-text-disabled-color: var(--td-button-primary-text-disabled-color, @brand-color-disabled);
+// danger + text
+@button-danger-text-color: var(--td-button-danger-text-color, @error-color);
+@button-danger-text-disabled-color: var(--td-button-danger-text-disabled-color, @button-danger-disabled-color);
+// light + text
+@button-light-text-color: var(--td-button-light-text-color, @brand-color);
+// ghost 优先级高于 theme，固定透明背景，白色边框，白色字体
+@button-ghost-color: var(--td-button-ghost-color, #fff);
+@button-ghost-border-color: var(--td-button-ghost-border-color, @button-ghost-color);
+@button-ghost-disabled-color: var(--td-button-ghost-disabled-color, @font-white-4);
+@button-ghost-hover-color: var(--td-button-ghost-hover-color, @font-white-2);
+@button-ghost-primary-color: var(--td-button-ghost-primary-color, @brand-color);
+@button-ghost-primary-border-color: var(--td-button-ghost-primary-border-color, @brand-color);
+@button-ghost-primary-hover-color: var(--td-button-ghost-primary-hover-color, @brand-color-active);
+@button-ghost-danger-color: var(--td-button-ghost-danger-color, @error-color);
+@button-ghost-danger-border-color: var(--td-button-ghost-danger-border-color, @error-color);
+@button-ghost-danger-hover-color: var(--td-button-ghost-danger-hover-color, @error-color-active);
 
-// 状态色 - 警告
-@btn-color-warning: @warning-color;
-@btn-color-warning-active: @warning-color-active;
-@btn-color-warning-disabled: @warning-color-disabled;
+// 激活态背景和边框色
+@button-default-active-bg-color: var(--td-button-default-active-bg-color, @bg-color-component-active);
+@button-default-active-border-color: var(--td-button-default-active-border-color, @bg-color-component-active);
+@button-light-active-bg-color: var(--td-button-light-active-bg-color, @brand-color-light-active);
+@button-light-active-border-color: var(--td-button-light-active-border-color, @brand-color-light-active);
+@button-primary-active-bg-color: var(--td-button-primary-active-bg-color, @brand-color-active);
+@button-primary-active-border-color: var(--td-button-primary-active-border-color, @brand-color-active);
+@button-danger-active-bg-color: var(--td-button-danger-active-bg-color, @error-color-7);
+@button-danger-active-border-color: var(--td-button-danger-active-border-color, @error-color-7);
+@button-default-outline-active-bg-color: var(--td-button-default-outline-active-bg-color, @bg-color-container-active);
+@button-default-outline-active-border-color: var(--td-button-default-outline-active-border-color, @component-border);
+@button-primary-outline-active-bg-color: var(--td-button-primary-outline-active-bg-color, @bg-color-container-active);
+@button-primary-outline-active-border-color: var(--td-button-primary-outline-active-border-color, @brand-color-active);
+@button-danger-outline-active-bg-color: var(--td-button-danger-outline-active-bg-color, @bg-color-container-active);
+@button-danger-outline-active-border-color: var(--td-button-danger-outline-active-border-color, @error-color-7);
+@button-light-outline-active-bg-color: var(--td-button-light-outline-active-bg-color, @brand-color-light-active);
+@button-light-outline-active-border-color: var(--td-button-light-outline-active-border-color, @brand-color-active);
+@button-default-text-active-bg-color: var(--td-button-default-text-active-bg-color, @bg-color-container-active);
+@button-primary-text-active-bg-color: var(--td-button-primary-text-active-bg-color, @bg-color-container-active);
+@button-danger-text-active-bg-color: var(--td-button-danger-text-active-bg-color, @bg-color-container-active);
+@button-light-text-active-bg-color: var(--td-button-light-text-active-bg-color, @bg-color-container-active);
 
-// 状态色 - 危险
-@btn-color-danger: @error-color;
-@btn-color-danger-active: @error-color-active;
-@btn-color-danger-disabled: @error-color-disabled;
-
-// 状态色 - 白 背景
-@btn-color-white-bg: @btn-bg-color-container;
-@btn-color-white-bg-active: @bg-color-component-active;
-@btn-color-white-bg-disabled: @bg-color-component-disabled;
-
-// 状态色 - 白 ghost
-@btn-color-white-ghost: @bg-color-container;
-@btn-color-white-ghost-active: @bg-color-container-active;
-@btn-color-white-ghost-disabled: @component-border;
-
-// 状态色 - 灰 背景
-@btn-color-gray-bg: @bg-color-component;
-@btn-color-gray-bg-active: @bg-color-component-active;
-@btn-color-gray-bg-disabled: @bg-color-component-disabled;
-
-// 状态色 - 无框背景 - 既文字背景
-@btn-color-text-bg: transparent;
-@btn-color-text-bg-active: @bg-color-container-active;
-@btn-color-text-bg-disabled: transparent;
-
-// 状态色 - border 灰
-@btn-color-border-gray: @component-border;
-@btn-color-border-gray-active: @component-border;
-@btn-color-border-gray-disabled: @component-border;
-
-// 状态色 - 文字 for 描边
-@btn-color-text: @text-color-primary;
-@btn-color-text-active: @brand-color-active;
-@btn-color-text-disabled: @text-color-disabled;
-
-// 状态色 - 灰字 for base default | 灰色文字按钮
-@btn-color-text-gray: @text-color-primary;
-@btn-color-text-gray-active: @text-color-primary;
-@btn-color-text-gray-disabled: @text-color-disabled;
-
-@btn-color-none: transparent;
-@btn-color-none-active: transparent;
-@btn-color-none-disabled: transparent;
-
-@btn-text-variant-base-color: @text-color-anti;
+@button: ~"@{prefix}-button";

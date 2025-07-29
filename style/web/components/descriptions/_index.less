@@ -23,9 +23,9 @@
     font: @font-body-medium;
     width: 100%;
 
-    .generate-padding(l, @descriptions-padding-l);
-    .generate-padding(m, @descriptions-padding-m);
-    .generate-padding(s, @descriptions-padding-s);
+    .generate-padding(l, @descriptions-borderless-padding-l);
+    .generate-padding(m, @descriptions-borderless-padding-m);
+    .generate-padding(s, @descriptions-borderless-padding-s);
 
     & @{root}__label {
       color: @text-color-placeholder;
@@ -43,6 +43,10 @@
           }
         }
       }
+
+      .generate-padding(l, @descriptions-border-padding-l);
+      .generate-padding(m, @descriptions-border-padding-m);
+      .generate-padding(s, @descriptions-border-padding-s);
 
       @{root}__label {
         background-color: @bg-color-secondarycontainer;

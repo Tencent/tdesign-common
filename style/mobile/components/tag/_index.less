@@ -1,10 +1,6 @@
-// 组件允许单个组件打包，因此默认引入公共基础样式
-
 @import "../../base.less";
 
 @import "./_var.less";
-
-@themes: primary, success, warning, default, danger;
 
 .genVariant(@variant) {
   @themes: default, primary, success, warning, danger;
@@ -43,9 +39,13 @@
     align-items: center;
   }
 
+  &__icon-close {
+    color: @tag-close-icon-color;
+  }
+
   &__icon:not(:empty) + &__text:not(:empty),
   &__text:not(:empty) + &__icon-close:not(:empty) {
-    margin-left: calc(@spacer / 2);
+    margin-left: 4px;
   }
 
   &.@{prefix}-tag {
@@ -62,7 +62,7 @@
 
       .@{prefix}-tag__icon:not(:empty) + .@{prefix}-tag__text:not(:empty),
       .@{prefix}-tag__text:not(:empty) + .@{prefix}-tag__icon-close:not(:empty) {
-        margin-left: 4rpx;
+        margin-left: 2px;
       }
     }
 
@@ -150,38 +150,52 @@
       border-color: @component-border;
     }
   }
+}
 
-  &.@{prefix}-tag--checkable {
-    cursor: pointer;
-    color: @tag-default-font-color;
-    background-color: @tag-default-background-color;
-    border-color: @tag-default-border-color;
+.@{prefix}-tag--disabled.@{prefix}-tag--default {
+  cursor: not-allowed;
 
-    &.@{prefix}-tag--checked {
-      color: @color-white;
-      background-color: @tag-primary-color;
-      border-color: @tag-primary-color;
-    }
-
-    &.@{prefix}-tag--checked.@{prefix}-tag--disabled {
-      color: @color-white;
-      background-color: @brand-color-disabled;
-    }
-
-    &.@{prefix}-tag--disabled {
-      cursor: not-allowed;
-      color: @tag-disabled-color;
-      background-color: @tag-disabled-background-color;
-      border-color: @tag-disabled-border-color;
-    }
+  &.@{prefix}-tag--dark,
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    color: @tag-disabled-color;
   }
 
-  &.@{prefix}-tag--closable {
-    &.@{prefix}-tag--disabled {
-      cursor: not-allowed;
-      color: @tag-disabled-color;
-      background-color: @tag-disabled-background-color;
-      border-color: @tag-disabled-border-color;
-    }
+  &.@{prefix}-tag--dark,
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline {
+    background-color: @tag-disabled-background-color;
+  }
+
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    border-color: @tag-disabled-border-color;
+  }
+}
+
+.@{prefix}-tag--checked.@{prefix}-tag--disabled.@{prefix}-tag--primary {
+  cursor: not-allowed;
+
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    color: @tag-checked-disabled-color;
+  }
+
+  &.@{prefix}-tag--dark {
+    color: @tag-checked-dark-disabled-color;
+    background-color: @tag-checked-disabled-background-color;
+  }
+
+  &.@{prefix}-tag--light,
+  &.@{prefix}-tag--light-outline {
+    background-color: @tag-checked-light-disabled-background-color;
+  }
+
+  &.@{prefix}-tag--dark,
+  &.@{prefix}-tag--light-outline,
+  &.@{prefix}-tag--outline {
+    border-color: @tag-checked-disabled-border-color;
   }
 }

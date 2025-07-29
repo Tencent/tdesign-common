@@ -2,7 +2,10 @@ import tinyColor from 'tinycolor2';
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
 import { ALPHA_FORMAT_MAP } from './constants';
 import {
-  parseGradientString, GradientColors, GradientColorPoint, isGradientColor
+  GradientColorPoint,
+  GradientColors,
+  isGradientColor,
+  parseGradientString
 } from './gradient';
 import type { AlphaConvertibleFormat, ColorFormat } from './types';
 
@@ -44,8 +47,6 @@ const hsv2hsla = (states: ColorStates): tinyColor.ColorFormats.HSLA => tinyColor
 
 /**
  * 将渐变对象转换成字符串
- * @param object
- * @returns
  */
 export const gradientColors2string = (object: GradientColors): string => {
   const { points, degree } = object;
@@ -58,8 +59,6 @@ export const gradientColors2string = (object: GradientColors): string => {
 
 /**
  * 去除颜色的透明度
- * @param color
- * @returns
  */
 export const getColorWithoutAlpha = (color: string) => tinyColor(color).setAlpha(1).toHexString();
 
@@ -106,12 +105,7 @@ export class Color {
     const gradientColors = parseGradientString(input);
 
     if (this.isGradient && !gradientColors) {
-      /* 这里是针对渐变模式下，修改某个位置点的色值情况
-
-       「Tip」
-        - 为了避免有时外界从渐变切换到单色模式，存在缓存问题
-          需要手动设置 `color.isGradient = false` 进行同步
-        - 特定场景下，也可以直接创建新实例 `new Color` 进行覆盖 */
+      /* case 1: 渐变模式单独修改某个位置点的色值 */
       const colorHsv = tinyColor(input).toHsv();
       this.states = colorHsv;
       this.updateCurrentGradientColor();
@@ -120,6 +114,8 @@ export class Color {
     this.originColor = input;
     this.isGradient = false;
     let colorInput = input;
+
+    /* case 2: 修改整个渐变，生成一套新的颜色点 */
     if (gradientColors) {
       this.isGradient = true;
       const object = gradientColors as GradientColors;
@@ -318,6 +314,23 @@ export class Color {
   updateStates(input: string) {
     const color = tinyColor(cmykInputToColor(input));
     const hsva = color.toHsv();
+
+    /* case 1: 当颜色在黑/灰/白区域，转换后的色相 (H) 与饱和度（S）不稳定
+       为了避免跳变，强制保持原有的值 */
+    const isTooGray = hsva.s * hsva.v <= 0.04;
+    const isTooDark = hsva.v <= 0.02;
+
+    /* case 2: Hue 是 0–360° 的环形值，0° 和 360° 表示相同的颜色
+       当用户在 Slider 最右端（接近 360°）来回拖拽时，也容易出现跳变 */
+    const diff = Math.abs(hsva.h - this.states.h);
+    if (isTooGray || diff > 355) {
+      hsva.h = this.states.h;
+    }
+
+    if (isTooDark) {
+      hsva.s = this.states.s;
+    }
+
     this.states = hsva;
   }
 
@@ -378,8 +391,6 @@ export class Color {
 
   /**
    * 判断输入色是否与当前色相同
-   * @param color
-   * @returns
    */
   equals(color: string): boolean {
     return tinyColor.equals(this.rgba, color);
@@ -397,47 +408,28 @@ export class Color {
     return tinyColor(color).isValid();
   }
 
-  static hsva2color(h: number, s: number, v: number, a: number) {
-    return tinyColor({
-      h, s, v, a
-    }).toHsvString();
-  }
-
-  static hsla2color(h: number, s: number, l: number, a: number) {
-    return tinyColor({
-      h, s, l, a
-    }).toHslString();
-  }
-
-  static rgba2color(r: number, g: number, b: number, a: number) {
-    return tinyColor({
-      r, g, b, a
-    }).toHsvString();
-  }
-
-  static hex2color(hex: string, a: number) {
-    const color = tinyColor(hex);
-    color.setAlpha(a);
-    return color.toHexString();
-  }
-
   /**
    * 对象转颜色字符串
-   * @param object
-   * @param format
-   * @returns
    */
-  static object2color(object: any, format: string) {
+  static object2color(object: any, format: ColorFormat) {
     if (format === 'CMYK') {
-      const {
-        c, m, y, k
-      } = object;
+      const { c, m, y, k } = object;
       return `cmyk(${c}, ${m}, ${y}, ${k})`;
     }
-    const color = tinyColor(object, {
-      format,
-    });
-    return color.toRgbString();
+
+    if (format === 'RGB' || format === 'RGBA') {
+      return tinyColor(object).toRgbString();
+    }
+
+    if (format === 'HSL' || format === 'HSLA') {
+      return tinyColor(object).toHslString();
+    }
+
+    if (format === 'HSV' || format === 'HSVA') {
+      return tinyColor(object).toHsvString();
+    }
+
+    return tinyColor(object).toHexString();
   }
 
   /**

@@ -17,6 +17,7 @@ const INPUT_FILE_MAP = {
   'audio/*': AUDIO_REGEXP,
   'video/*': VIDEO_REGEXP,
   'image/*': IMAGE_ALL_REGEXP,
+  '.jpg': /image\/jpeg|\.jpg$/i,
   '.ico': /image\/vnd.microsoft.icon/i,
   '.doc': /application\/msword/i,
   '.docx': /application\/vnd.openxmlformats-officedocument.wordprocessingml.document/i,

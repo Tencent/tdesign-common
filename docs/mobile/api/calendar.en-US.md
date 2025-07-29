@@ -14,18 +14,30 @@ spline: data
 
 {{ multiple }}
 
-### Select Date Range
+### With Description
 
-{{ range }}
+{{ custom-text-single }}
 
-### Custom Text
+### With Double Description
 
 {{ custom-text }}
 
-### Custom Button
+### With Page Turning Function
 
-{{ custom-button }}
+{{ switch-mode }}
 
-### Custom Date Range
+### With Period Select
 
-{{ custom-range }}
+{{ range }}
+
+### Internationalization
+
+{{ local-text }}
+
+### Unselectable Date
+
+{{ disabled }}
+
+### Without Popup
+
+{{ without-popup }}
