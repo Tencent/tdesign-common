@@ -148,7 +148,7 @@ export const MOBILE_COMPONENT_MAP = {
 };
 
 export const CHAT_COMPONENT_MAP = {
-  chat: ['Chat', 'ChatItem', 'ChatInput', 'ChatContent', 'ChatContent', 'ChatAction', 'ChatLoading', 'ChatSender'],
+  chat: ['Chat', 'ChatItem', 'ChatInput', 'ChatContent', 'ChatReasoning', 'ChatAction', 'ChatLoading', 'ChatSender'],
 };
 
 export const convert2PascalCase = (name: string) => name
