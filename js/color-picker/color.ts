@@ -314,23 +314,6 @@ export class Color {
   updateStates(input: string) {
     const color = tinyColor(cmykInputToColor(input));
     const hsva = color.toHsv();
-
-    /* case 1: 当颜色在黑/灰/白区域，转换后的色相 (H) 与饱和度（S）不稳定
-       为了避免跳变，强制保持原有的值 */
-    const isTooGray = hsva.s * hsva.v <= 0.04;
-    const isTooDark = hsva.v <= 0.02;
-
-    /* case 2: Hue 是 0–360° 的环形值，0° 和 360° 表示相同的颜色
-       当用户在 Slider 最右端（接近 360°）来回拖拽时，也容易出现跳变 */
-    const diff = Math.abs(hsva.h - this.states.h);
-    if (isTooGray || diff > 355) {
-      hsva.h = this.states.h;
-    }
-
-    if (isTooDark) {
-      hsva.s = this.states.s;
-    }
-
     this.states = hsva;
   }
 
