@@ -147,6 +147,10 @@ export const MOBILE_COMPONENT_MAP = {
   upload: ['Upload'],
 };
 
+export const CHAT_COMPONENT_MAP = {
+  chat: ['Chat', 'ChatItem', 'ChatInput', 'ChatContent', 'ChatContent', 'ChatAction', 'ChatLoading', 'ChatSender'],
+};
+
 export const convert2PascalCase = (name: string) => name
   .split('-')
   .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -157,7 +161,7 @@ export const COMPONENT_MAPS = {
   mobile: MOBILE_COMPONENT_MAP,
 };
 
-export const SPECIAL_NAME_MAP = {
+export const SPECIAL_NAME_MAP: Record<string, string> = {
   qrcode: 'QRCode',
 };
 
