@@ -1,11 +1,11 @@
 /**
  * 不符合帕斯卡命名规范的组件映射
  */
-export const NON_PASCAL_CASE_NAMES = {
+export const NON_PASCAL_CASE_NAMES: Record<string, string> = {
   qrcode: 'QRCode',
-} as const;
+};
 
-export const WEB_COMPONENT_MAP = {
+export const WEB_COMPONENT_MAP: Record<string, string[]> = {
   affix: ['Affix'],
   alert: ['Alert'],
   anchor: ['Anchor', 'AnchorItem', 'AnchorTarget'],
@@ -85,7 +85,7 @@ export const WEB_COMPONENT_MAP = {
   watermark: ['Watermark'],
 };
 
-export const MOBILE_COMPONENT_MAP = {
+export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   'action-sheet': ['ActionSheet'],
   avatar: ['Avatar', 'AvatarGroup'],
   'back-top': ['BackTop'],
@@ -152,7 +152,7 @@ export const MOBILE_COMPONENT_MAP = {
   upload: ['Upload'],
 };
 
-export const CHAT_COMPONENT_MAP = {
+export const CHAT_COMPONENT_MAP: Record<string, string[]> = {
   chat: [
     'Chat',
     'ChatItem',
