@@ -1,4 +1,9 @@
-import type { Platform } from './types';
+/**
+ * 不符合帕斯卡命名规范的组件映射
+ */
+export const NON_PASCAL_CASE_NAMES = {
+  qrcode: 'QRCode',
+} as const;
 
 export const WEB_COMPONENT_MAP = {
   affix: ['Affix'],
@@ -25,7 +30,7 @@ export const WEB_COMPONENT_MAP = {
     'DateRangePickerPanel',
   ],
   descriptions: ['Descriptions', 'DescriptionsItem'],
-  dialog: ['DialogPlugin', 'Dialog'],
+  dialog: ['Dialog', 'DialogPlugin'],
   divider: ['Divider'],
   drawer: ['Drawer', 'DrawerPlugin'],
   dropdown: ['Dropdown', 'DropdownItem', 'DropdownMenu'],
@@ -39,13 +44,13 @@ export const WEB_COMPONENT_MAP = {
   input: ['Input', 'InputGroup'],
   'input-adornment': ['InputAdornment'],
   'input-number': ['InputNumber'],
-  layout: ['Aside', 'Content', 'Footer', 'Header', 'Layout'],
+  layout: ['Layout', 'Aside', 'Content', 'Footer', 'Header'],
   link: ['Link'],
   list: ['List', 'ListItem', 'ListItemMeta'],
-  loading: ['LoadingPlugin', 'Loading'],
-  menu: ['HeadMenu', 'Menu', 'MenuGroup', 'MenuItem', 'Submenu'],
-  message: ['MessagePlugin', 'Message'],
-  notification: ['NotifyPlugin', 'Notification'],
+  loading: ['Loading', 'LoadingPlugin'],
+  menu: ['Menu', 'MenuGroup', 'MenuItem', 'HeadMenu', 'Submenu'],
+  message: ['Message', 'MessagePlugin'],
+  notification: ['Notification', 'NotifyPlugin'],
   pagination: ['Pagination', 'PaginationMini'],
   popconfirm: ['Popconfirm'],
   popup: ['Popup'],
@@ -54,19 +59,19 @@ export const WEB_COMPONENT_MAP = {
   radio: ['Radio', 'RadioButton', 'RadioGroup'],
   'range-input': ['RangeInput', 'RangeInputPopup'],
   rate: ['Rate'],
-  select: ['Option', 'OptionGroup', 'Select'],
+  select: ['Select', 'Option', 'OptionGroup'],
   'select-input': ['SelectInput'],
   skeleton: ['Skeleton'],
   slider: ['Slider', 'SliderButton'],
   space: ['Space'],
   statistic: ['Statistic'],
-  steps: ['StepItem', 'Steps'],
-  'sticky-tool': ['StickyItem', 'StickyTool'],
+  steps: ['Steps', 'StepItem'],
+  'sticky-tool': ['StickyTool', 'StickyItem'],
   switch: ['Switch'],
   swiper: ['Swiper', 'SwiperItem'],
-  table: ['BaseTable', 'EnhancedTable', 'PrimaryTable', 'Table'],
-  tabs: ['TabPanel', 'Tabs'],
-  tag: ['CheckTag', 'CheckTagGroup', 'Tag'],
+  table: ['Table', 'BaseTable', 'EnhancedTable', 'PrimaryTable'],
+  tabs: ['Tabs', 'TabPanel'],
+  tag: ['Tag', 'CheckTag', 'CheckTagGroup'],
   'tag-input': ['TagInput'],
   textarea: ['Textarea'],
   'time-picker': ['TimePicker', 'TimePickerPanel', 'TimeRangePicker'],
@@ -148,30 +153,14 @@ export const MOBILE_COMPONENT_MAP = {
 };
 
 export const CHAT_COMPONENT_MAP = {
-  chat: ['Chat', 'ChatItem', 'ChatInput', 'ChatContent', 'ChatReasoning', 'ChatAction', 'ChatLoading', 'ChatSender'],
-};
-
-export const convert2PascalCase = (name: string) => name
-  .split('-')
-  .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-  .join('');
-
-export const COMPONENT_MAPS = {
-  web: WEB_COMPONENT_MAP,
-  mobile: MOBILE_COMPONENT_MAP,
-};
-
-export const SPECIAL_NAME_MAP: Record<string, string> = {
-  qrcode: 'QRCode',
-};
-
-export const mapToParentName = (name: string, platform: Platform) => {
-  const targetMap = COMPONENT_MAPS[platform];
-
-  const found = Object.entries(targetMap).find(([_, values]) => values.includes(name));
-
-  // 返回父组件名
-  if (found) return SPECIAL_NAME_MAP[found[0]] || convert2PascalCase(found[0]);
-
-  return null;
+  chat: [
+    'Chat',
+    'ChatItem',
+    'ChatInput',
+    'ChatContent',
+    'ChatReasoning',
+    'ChatAction',
+    'ChatLoading',
+    'ChatSender',
+  ],
 };
