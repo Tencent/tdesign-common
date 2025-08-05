@@ -28,6 +28,13 @@ spline: explain
       <p class="name">Link 链接</p>
     </a>
   </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/typography">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-typography.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-typography-dark.png" />
+      <p class="name">Typography 排版</p>
+    </a>
+  </div>
 </section>
 
 <h3>布局<em class="tag">4</em></h3>
@@ -354,6 +361,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-progress-dark.png" />
       <p class="name">Progress 进度条</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/qrcode">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-qrcode.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-qrcode-dark.png" />
+      <p class="name">QRCode 二维码</p>
     </a>
   </div>
   <div class="image-wrapper">

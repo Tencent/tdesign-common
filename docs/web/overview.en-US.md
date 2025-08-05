@@ -27,6 +27,13 @@ spline: explain
       <p class="name">Link</p>
     </a>
   </div>
+  <div class="image-wrapper">
+      <a class="item" href="./components/typography">
+        <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-typography.png" />
+        <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-typography-dark.png" />
+        <p class="name">Typography</p>
+      </a>
+    </div>
 </section>
 
 <h3>Layout<em class="tag">4</em></h3>
@@ -353,6 +360,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-progress-dark.png" />
       <p class="name">Progress</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/qrcode">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-qrcode.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-qrcode-dark.png" />
+      <p class="name">QRCode</p>
     </a>
   </div>
   <div class="image-wrapper">
