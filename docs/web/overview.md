@@ -4,7 +4,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">3</em></h3>
+<h3>基础<em class="tag">4</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/button">
@@ -277,7 +277,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">22</em></h3>
+<h3>数据展示<em class="tag">23</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar">
