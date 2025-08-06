@@ -3,7 +3,7 @@ title: Overview
 spline: explain
 ---
 
-<h3>Base<em class="tag">3</em></h3>
+<h3>Base<em class="tag">4</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/button-en">
@@ -276,7 +276,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">22</em></h3>
+<h3>Data Display<em class="tag">23</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar-en">
