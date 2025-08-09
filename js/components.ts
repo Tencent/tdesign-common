@@ -35,7 +35,7 @@ export const WEB_COMPONENT_MAP: Record<string, string[]> = {
   drawer: ['Drawer', 'DrawerPlugin'],
   dropdown: ['Dropdown', 'DropdownItem', 'DropdownMenu'],
   empty: ['Empty'],
-  form: ['Form', 'FormItem'],
+  form: ['Form', 'FormItem', 'FormList'],
   grid: ['Row', 'Col'],
   guide: ['Guide'],
   icon: ['Icon'],
