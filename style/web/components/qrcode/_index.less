@@ -1,0 +1,86 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import "../../base.less";
+
+@import "./_var.less";
+
+@import "./_mixin.less";
+
+@import "../../mixins/_reset.less";
+
+// <name> 替换为组件名
+.@{prefix}-qrcode {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  background-color: @bg-color-container;
+  padding: @comp-paddingTB-m @comp-paddingLR-m;
+  border-radius: @border-radius-medium;
+  border: 1px solid @component-border;
+
+  & > canvas {
+    align-self: stretch;
+    flex: auto;
+    min-width: 0;
+  }
+
+  &.@{prefix}-borderless {
+    border-color: transparent;
+  }
+
+  .@{prefix}-mask {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: @z-index-back-top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: @text-color-primary;
+    line-height: @text-line-height-base;
+    background-color: @mask-bg;
+    text-align: center;
+    border-radius: @border-radius-medium;
+  }
+
+  // 二维码过期区域
+  .@{prefix}-expired {
+    &__text {
+      color: @text-color-primary;
+      font-weight: 600;
+    }
+
+    &__button {
+      display: flex;
+      color: @brand-color;
+      box-shadow: none;
+      cursor: pointer;
+      column-gap: @comp-margin-s;
+      align-items: center;
+      height: @comp-size-m;
+      transition: all @qrcode-expired-link-motion-duration-mid @qrcode-expired-link-motion-ease-in-out;
+
+      &:hover {
+        color: @qrcode-expired-link-color-hover;
+      }
+    }
+  }
+
+  .@{prefix}-scanned {
+    display: flex;
+    column-gap: @comp-margin-s;
+    align-items: center;
+
+    &__icon {
+      color: @qrcode-scanned-icon-color;
+    }
+  }
+}
+
+.@{prefix}-qrcode-svg {
+  align-items: center;
+  justify-content: center;
+}

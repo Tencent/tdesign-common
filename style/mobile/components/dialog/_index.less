@@ -2,139 +2,126 @@
 
 @import "./_var.less";
 
-@import "../../mixins/_index.less";
-
-.@{prefix}-dialog {
-  background-color: @dialog-bg-color;
-  text-align: center;
-  border-radius: @dialog-border-radius;
+.@{dialog} {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  width: @dialog-width;
+  border-radius: @dialog-border-radius;
+  background-color: @bg-color-container;
 
-  &__header {
-    padding: @dialog-header-padding;
+  &__wrapper {
+    --td-popup-border-radius: @dialog-border-radius;
+  }
 
-    &--has-content {
-      padding-bottom: 8px;
-    }
+  &__close-btn {
+    position: absolute;
+    top: @spacer;
+    right: @spacer;
+    font-size: @dialog-close-font-size;
+    color: @dialog-close-color;
+  }
 
-    & + .@{prefix}-dialog__body {
-      margin-top: 8px;
+  &__content {
+    padding: @spacer-3 @spacer-3 0;
+    max-height: @dialog-body-max-height;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: @font-size-m;
+
+    &:empty {
+      display: none;
     }
   }
 
-  &__title {
-    font-weight: 600;
+  &__header {
+    text-align: center;
+    font-weight: bold;
     font-size: @dialog-title-font-size;
     line-height: @dialog-title-line-height;
-    color: @dialog-title-text-color;
+    color: @dialog-title-color;
+  }
+
+  &__header + &__body {
+    margin-top: @spacer;
   }
 
   &__body {
-    max-height: @dialog-body-max-height;
-    overflow: auto;
+    overflow-y: scroll;
+    text-align: center;
     -webkit-overflow-scrolling: touch;
-    padding: @dialog-body-padding;
-    font-size: @dialog-body-font-size;
-    line-height: @dialog-body-line-height;
-    color: @dialog-body-text-color;
-    word-wrap: break-word;
+    font-size: @dialog-content-font-size;
+    color: @dialog-content-color;
+    line-height: @dialog-content-line-height;
 
-    &:first-child {
-      min-height: @dialog-body-min-height;
-      padding: @dialog-body-first-child-padding;
-      margin-bottom: 0;
-      font-weight: 700;
-      color: @dialog-body-text-color;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    &-text {
+      word-wrap: break-word;
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
     }
   }
 
   &__footer {
-    position: relative;
     display: flex;
-    margin-top: @dialog-footer-margin-top;
+    padding: @spacer-3;
 
-    &::before {
-      content: " ";
-      .hairline-top(@dialog-btn-border-color);
+    &--column {
+      flex-flow: column-reverse;
+
+      .@{dialog}__button {
+        width: 100%;
+        flex: unset;
+      }
+    }
+
+    &--full {
+      padding: @spacer-4 0 0;
     }
   }
 
-  &__vertical-footer {
-    flex-direction: column;
-  }
-
-  &__vertical-btn {
-    &::before {
-      content: " ";
-      .hairline-top(@dialog-btn-border-color);
-    }
-  }
-
-  &__horizontal-btn {
-    &::before {
-      content: " ";
-      .hairline-left(@dialog-btn-border-color);
-    }
-  }
-
-  &__btn {
+  &__button {
     position: relative;
-    display: block;
-    font-size: @dialog-btn-font-size;
-    padding: @dialog-btn-padding;
-    line-height: @dialog-btn-line-height;
-    color: @dialog-btn-default-color;
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0%);
-    height: @dialog-btn-height;
     flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-    &--primary {
-      color: @brand-color;
+    &--horizontal + &--horizontal {
+      margin-left: @spacer-1;
     }
-  }
 
-  &__text {
-    /* stylelint-disable-line */
-    & + .@{prefix}-dialog__input {
-      margin-top: calc(@dialog-input-margin-top * 2);
+    &--vertical + &--vertical {
+      margin-bottom: @spacer-1;
     }
-  }
 
-  &__input {
-    width: 100%;
-    border-width: 0;
-    outline: 0;
+    &--text {
+      flex: 1;
 
-    /* stylelint-disable-next-line */
-    -webkit-appearance: none;
+      --td-button-border-radius: 0;
+      --td-button-medium-height: 56px;
 
-    /* stylelint-disable-next-line */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-color: @dialog-input-bg-color;
-    font-size: @dialog-input-font-size;
-    color: @dialog-input-color;
-    border-radius: @dialog-input-radius;
-    line-height: @dialog-input-line-height;
-    padding: @dialog-input-padding;
-    margin-top: @dialog-input-margin-top;
-    box-sizing: border-box;
+      border-radius: 0;
 
-    &::-webkit-input-placeholder { /* stylelint-disable-line */
-      color: @dialog-input-placeholder-color;
+      &::before {
+        content: " ";
+        position: absolute;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        border-top: 1px solid @border-color;
+        border-left: 1px solid @border-color;
+        transform: scale(.5);
+        transform-origin: 0 0;
+        width: 200%;
+        height: 200%;
+        border-radius: 0;
+      }
     }
-  }
-}
-
-@media screen and (min-width: 352px) {
-
-  .@{prefix}-dialog {
-    width: @dialog-width;
-    margin: 0 auto;
   }
 }

@@ -10,7 +10,8 @@ export default function generateBase64Url({
   rotate,
   alpha,
   watermarkContent,
-  lineSpace
+  lineSpace,
+  fontColor = 'rgba(0,0,0,0.1)'
 }: {
   width: number,
   height: number,
@@ -21,7 +22,8 @@ export default function generateBase64Url({
   rotate:number,
   alpha:number,
   watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
-  lineSpace:number
+  lineSpace:number,
+  fontColor?:string
 }, onFinish: (url: string) => void): string {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -81,11 +83,11 @@ export default function generateBase64Url({
     } else if (item.text) {
       const {
         text,
-        fontColor = 'rgba(0, 0, 0, 0.1)',
         fontSize = 16,
         fontFamily = undefined,
         fontWeight = 'normal',
       } = item;
+      const fillStyle = item?.fontColor || fontColor;
       // eslint-disable-next-line no-param-reassign
       item.top = top;
       top += lineSpace;
@@ -94,7 +96,7 @@ export default function generateBase64Url({
       ctx.font = `normal normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`;
       ctx.textAlign = 'start';
       ctx.textBaseline = 'top';
-      ctx.fillStyle = fontColor;
+      ctx.fillStyle = fillStyle;
       ctx.fillText(text, 0, item.top * ratio);
     }
   });

@@ -86,4 +86,9 @@ export default {
     finish: 'أنهي',
     back: 'العودة',
   },
+  qrcode: {
+    expiredText: 'منتهي الصلاحية',
+    refreshText: 'ينعش',
+    scannedText: 'تم مسحها ضوئيًا',
+  },
 };

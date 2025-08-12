@@ -1,89 +1,103 @@
-// 组件允许单个组件打包，因此默认引入公共基础样式
-
 @import "../../base.less";
 
 @import "./_var.less";
 
-@import "./_mixin.less";
-
-// <name> 替换为组件名
 .@{prefix}-badge {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  vertical-align: top;
 
-  &__inner {
-    display: inline-block;
+  &--basic {
     z-index: 100;
+    padding: 0 @badge-basic-padding;
     font-size: @badge-font-size;
     color: @badge-text-color;
     background-color: @badge-color;
-    min-width: @badge-height;
-    height: @badge-height;
-    padding: 0 4px;
     text-align: center;
-    line-height: @badge-height;
+    height: @badge-basic-height;
+    line-height: @badge-basic-height;
     font-weight: @badge-font-weight;
-  }
-
-  &--has-children {
-    transform: translate(50%, -50%);
-    position: absolute;
-    right: 0;
-    top: 0;
+    border-radius: @badge-border-radius;
   }
 
   &--dot {
-    height: @badge-dot-height;
-    min-width: @badge-dot-height;
-    border-radius: @radius-circle;
+    height: @badge-dot-size;
+    border-radius: 50%;
+    min-width: @badge-dot-size;
     padding: 0;
   }
 
-  &--small {
-    transform: translate(50%, -50%) scale(.75);
+  &--count {
+    min-width: @badge-basic-width;
+    white-space: nowrap;
+    box-sizing: border-box;
   }
 
   &--circle {
-    border-radius: @badge-circle-border-radius;
+    border-radius: calc(@badge-basic-height / 2);
   }
 
-  &--round {
-    border-radius: @badge-round-border-radius;
-  }
-
-  // 绸带外层样式，用于定位
-  &__ribbon--outer {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: inline-block;
+  &__ribbon {
+    &-outer {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 
   &--ribbon {
+    display: inline-block;
     transform: rotate(45deg);
-    padding: 0;
+    border-radius: 0;
+    // padding: 0;
 
-    &::before {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      bottom: 0;
-      left: -@badge-height;
-      border-bottom: @badge-height solid @badge-color;
-      border-left: @badge-height solid transparent;
-    }
-
+    &::before,
     &::after {
       content: "";
       position: absolute;
       width: 0;
       height: 0;
       bottom: 0;
-      right: -@badge-height;
-      border-bottom: @badge-height solid @badge-color;
-      border-right: @badge-height solid transparent;
+      border-bottom: @badge-basic-height solid @badge-color;
     }
+
+    &::before {
+      left: calc(-1 * @badge-basic-height + .5px);
+      border-left: @badge-basic-height solid transparent;
+    }
+
+    &::after {
+      right: calc(-1 * @badge-basic-height + .5px);
+      border-right: @badge-basic-height solid transparent;
+    }
+  }
+
+  &--bubble {
+    border-radius: @border-bubble-border-radius;
+  }
+
+  // size
+  &--large {
+    font-size: @badge-large-font-size;
+    height: @badge-large-height;
+    min-width: @badge-large-height;
+    line-height: @badge-large-height;
+    padding: 0 @badge-large-padding;
+  }
+
+  &--large&--circle {
+    border-radius: calc(@badge-large-height / 2);
+  }
+
+  &__content:not(:empty) + .@{prefix}-has-count {
+    transform: translate(50%, -50%);
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__content-text {
+    display: block;
+    line-height: 24px;
   }
 }

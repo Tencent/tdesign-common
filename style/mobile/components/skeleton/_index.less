@@ -7,7 +7,7 @@
 
   &__row {
     display: flex;
-    margin-bottom: @row-margin-bottom;
+    margin-bottom: @skeleton-row-spacing; // 骨架屏行间距
     align-items: center;
     justify-content: space-between;
   }
@@ -18,8 +18,7 @@
   }
 
   &__col {
-    background-color: @skeleton-background-color;
-    border-radius: @border-radius-text;
+    background-color: @skeleton-bg-color; // 骨架屏背景颜色
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,20 +32,24 @@
   &--type {
     &-text {
       width: 100%;
-      height: @text-height-default;
-      border-radius: @border-radius-text;
+      height: @skeleton-text-height; // 'text'类型骨架屏列高
+      border-radius: @skeleton-text-border-radius; // 'text'类型骨架屏列圆角
     }
 
     &-rect {
       width: 100%;
-      height: @rect-height-default;
-      border-radius: @border-radius-rect;
+      height: @skeleton-rect-height; // 'rect'类型骨架屏列高
+      border-radius: @skeleton-rect-border-radius; // rect'类型骨架屏列圆角
     }
 
     &-circle {
-      width: @circle-height-default;
-      height: @circle-height-default;
-      border-radius: @border-radius-circle;
+      width: @skeleton-circle-height; // 'circle'类型骨架屏列宽
+      height: @skeleton-circle-height; // 'circle'类型骨架屏列高
+      border-radius: var(
+        --td-skeleton-circle-border-radius,
+        @skeleton-circle-border-radius
+      ); // 'circle'类型骨架屏列圆角
+
       flex-shrink: 0;
     }
   }

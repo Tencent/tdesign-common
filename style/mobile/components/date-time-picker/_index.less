@@ -3,6 +3,10 @@
 @import "./_var.less";
 
 .@{prefix}-date-time-picker {
-  position: relative;
-  background-color: @date-time-picker--background-color;
+  &__item {
+    &--roomly {
+      width: @data-time-picker-year-width;
+      flex: 0 0 @data-time-picker-year-width;
+    }
+  }
 }

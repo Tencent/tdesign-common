@@ -4,119 +4,110 @@
 
 .@{prefix}-search {
   display: flex;
-  padding: @search-vertical-padding @search-horizontal-padding;
-  background-color: @search-background-color;
+  justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
-
-  &__form {
-    position: relative;
-    flex: auto;
-    background-color: @search-input-background-color;
-    border-radius: @search-input-border-radius;
-  }
-
-  &__box {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding-left: 36px;
-    padding-right: 32px;
-    border-radius: inherit;
-    box-sizing: border-box;
-    z-index: 1;
-  }
 
   &__label {
-    position: absolute;
+    padding: 4px;
+    color: @search-label-color;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &__input-box {
+    flex: 1;
+    box-sizing: border-box;
     display: flex;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    font-size: 0;
-    color: @search-placeholder-text-color;
-    background-color: @search-input-background-color;
+    height: @search-height;
     align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    z-index: 2;
+    border: 1px solid @search-bg-color;
+    background: @search-bg-color;
+    padding: @search-padding;
 
-    &-text {
+    &.@{prefix}-is-focused {
+      border-color: @search-bg-color;
+    }
+
+    &--round {
+      border-radius: @search-round-radius;
+    }
+
+    &--square {
+      border-radius: @search-square-radius;
+    }
+
+    .@{prefix}-input__keyword {
       display: inline-block;
-      font-size: @search-placeholder-text-size;
-      color: @search-placeholder-text-color;
-      margin-left: @search-placeholder-text-margin-left;
-      vertical-align: middle;
+      flex: 1;
+      color: @search-text-color;
+      font-size: @search-font-size;
+      padding: 0 0 0 5px;
+      border: 0;
+      outline: none;
+      resize: none;
+      background: 0;
+    }
+
+    .@{prefix}-icon {
+      color: @search-icon-color;
+      font-size: @search-icon-font-size;
     }
   }
 
-  &__input {
-    font-size: @search-text-size;
-    color: @search-text-color;
-    width: 100%;
-    height: @search-input-height;
-    background-color: @search-input-background-color;
-    padding: 0 @search-input-horizontal-padding;
-    border: 0;
+  &__clear {
+    position: relative;
+    margin-left: 10px;
+    font-size: @search-clear-icon-font-size;
+    color: @search-clear-icon-color;
+    .hotspot-expanded();
+  }
 
+  &__search-action {
+    margin-left: 15px;
+    font-size: @search-font-size;
+    color: @search-action-color;
+  }
+
+  &__placeholder {
+    color: @search-placeholder-color;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__result-item {
+    &--highLight {
+      color: @search-result-high-light-color;
+    }
+  }
+
+  &__result-list &__result-item {
+    padding-left: 0;
+
+    &::after {
+      left: 0;
+    }
+  }
+
+  // mobile vue
+  /* stylelint-disable-next-line */
+  input::-webkit-input-placeholder,
+  input::placeholder {
+    color: @search-placeholder-color;
+  }
+
+  input[type="search"] {
     /* stylelint-disable-next-line */
-    input::-webkit-input-placeholder,
-    input::placeholder {
-      color: @search-placeholder-text-color;
-    }
-
-    input::-webkit-search-decoration,
-    input::-webkit-search-cancel-button,
-    input::-webkit-search-results-button,
-    input::-webkit-search-results-decoration {
-      display: none;
-    }
+    -webkit-appearance: none;
   }
 
-  &__icon-search {
-    position: absolute;
-    top: 50%;
-    transform: translateX(-100%) translateY(-50%);
-    font-size: 24px;
-    line-height: 1;
-    color: @text-color-placeholder;
-  }
-
-  &__label-icon-search {
-    font-size: 24px;
-    line-height: 24px;
-  }
-
-  &__icon-close {
-    position: absolute;
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
-    right: 12px;
-    font-size: 24px;
-    line-height: 1;
-    color: @text-color-placeholder;
-  }
-
-  &__cancel-button {
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-results-button,
+  input::-webkit-search-results-decoration {
     display: none;
-    font-size: @search-cancel-button-text-size;
-    color: @search-cancel-button-text-color;
-    padding: @search-cancel-button-padding;
-    margin-left: @search-cancel-button-margin-left;
-    margin-right: calc(-@search-cancel-button-margin-left);
-  }
-
-  &.@{prefix}-is-focused {
-
-    .@{prefix}-search {
-      &__cancel-button {
-        display: block;
-      }
-
-      &__label {
-        display: none;
-      }
-    }
   }
 }
