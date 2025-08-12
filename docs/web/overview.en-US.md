@@ -3,7 +3,7 @@ title: Overview
 spline: explain
 ---
 
-<h3>Base<em class="tag">3</em></h3>
+<h3>Base<em class="tag">4</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/button-en">
@@ -27,6 +27,13 @@ spline: explain
       <p class="name">Link</p>
     </a>
   </div>
+  <div class="image-wrapper">
+      <a class="item" href="./components/typography">
+        <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-typography.png" />
+        <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-typography-dark.png" />
+        <p class="name">Typography</p>
+      </a>
+    </div>
 </section>
 
 <h3>Layout<em class="tag">4</em></h3>
@@ -269,7 +276,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">22</em></h3>
+<h3>Data Display<em class="tag">23</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="./components/avatar-en">
@@ -353,6 +360,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-progress-dark.png" />
       <p class="name">Progress</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/qrcode">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-qrcode.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-qrcode-dark.png" />
+      <p class="name">QRCode</p>
     </a>
   </div>
   <div class="image-wrapper">
