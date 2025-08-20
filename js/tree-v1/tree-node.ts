@@ -754,7 +754,7 @@ export class TreeNode {
     ) {
       return true;
     }
-    let state = disabled;
+    let state = disabled || false;
     if (typeof this.disabled === 'boolean') {
       state = this.disabled;
     }
