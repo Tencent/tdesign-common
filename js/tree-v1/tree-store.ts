@@ -671,15 +671,13 @@ export class TreeStore {
    */
   public setExpandedDirectly(list: TreeNodeValue[], expanded = true): void {
     list.forEach((val) => {
-      if (expanded) {
+      const node = this.getNode(val);
+      if (!node?.isLeaf() && expanded) {
         this.expandedMap.set(val, true);
       } else {
         this.expandedMap.delete(val);
       }
-      const node = this.getNode(val);
-      if (node) {
-        node.afterExpanded();
-      }
+      node?.afterExpanded();
     });
   }
 

@@ -234,6 +234,12 @@ export class TreeNode {
       this.loadChildren();
     }
 
+    if (this.isLeaf()) {
+      // initExpanded 时，子节点没有完全加载，无法依赖 isLeaf 状态判断
+      this.expanded = false;
+      tree.expandedMap.delete(this.value);
+    }
+
     // checked 状态依赖于子节点状态
     // 因此子节点插入之后需要再次更新状态
     this.updateChecked();
