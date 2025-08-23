@@ -1,141 +1,209 @@
-import { WatermarkText, WatermarkImage } from './type';
+// generateWatermark v2
 
-export default function generateWatermark({
-  width,
-  height,
-  gapX,
-  gapY,
-  offsetLeft,
-  offsetTop,
-  rotate,
-  alpha,
-  watermarkContent,
-  lineSpace,
-  fontColor = 'rgba(0,0,0,0.1)'
-}: {
-  width: number,
-  height: number,
-  gapX: number,
-  gapY: number,
-  offsetLeft: number,
-  offsetTop: number,
+import { WatermarkText, WatermarkImage, WatermarkLayout } from "./type";
+
+const ratio = window.devicePixelRatio || 1;
+
+// 元素中心为旋转点执行旋转
+const drawRotate = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
   rotate: number,
-  alpha: number,
-  watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
-  lineSpace: number,
-  fontColor?: string
-}, onFinish: (url: string) => void): void {
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+) => {
+  ctx.translate(x, y);
+  ctx.rotate((Math.PI / 180) * Number(rotate));
+  ctx.translate(-x, -y);
+};
+
+// 绘制文字
+const drawText = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  markHeight: number,
+  text: string,
+  fontWeight: string,
+  fontSize: number,
+  fontFamily: string,
+  fillStyle: string
+) => {
+  ctx.font = `normal normal ${fontWeight} ${
+    fontSize * ratio
+  }px/${markHeight}px ${fontFamily}`;
+  ctx.fillStyle = fillStyle;
+  ctx.textAlign = "start";
+  ctx.textBaseline = "top";
+
+  ctx.fillText(text, x, y);
+};
+
+export default function generateWatermark(
+  {
+    width,
+    height,
+    gapX,
+    gapY,
+    offsetLeft,
+    offsetTop,
+    rotate,
+    alpha,
+    watermarkContent,
+    lineSpace,
+    fontColor = "rgba(0,0,0,0.1)",
+    layout,
+  }: {
+    width: number;
+    height: number;
+    gapX: number;
+    gapY: number;
+    offsetLeft: number;
+    offsetTop: number;
+    rotate: number;
+    alpha: number;
+    watermarkContent:
+      | WatermarkText
+      | WatermarkImage
+      | Array<WatermarkText | WatermarkImage>;
+    lineSpace: number;
+    fontColor?: string;
+    layout?: WatermarkLayout;
+  },
+  onFinish: (url: string) => void
+): string {
+  const isHexagonal = layout === "hexagonal";
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
   if (!ctx) {
-    console.warn('当前环境不支持Canvas, 无法绘制水印');
-    onFinish('');
+    console.warn("当前环境不支持Canvas, 无法绘制水印");
+    onFinish("");
     return;
   }
-
   const ratio = window.devicePixelRatio || 1;
+
   const canvasWidth = (gapX + width) * ratio;
   const canvasHeight = (gapY + height) * ratio;
 
+  /** Alternate drawing parameters */
+  const alternateDrawX = (gapX + width) * ratio;
+  const alternateDrawY = (gapY + height) * ratio;
+
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
+
   canvas.style.width = `${gapX + width}px`;
   canvas.style.height = `${gapY + height}px`;
 
+  if (isHexagonal) {
+    canvas.style.width = `${canvasWidth * 2}px`;
+    canvas.style.height = `${canvasHeight * 2}px`;
+    canvas.width = canvasWidth * 2;
+    canvas.height = canvasHeight * 2;
+  }
+
+  ctx.translate(offsetLeft * ratio, offsetTop * ratio);
   ctx.globalAlpha = alpha;
-  ctx.fillStyle = 'transparent';
-  ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-  const contents = Array.isArray(watermarkContent) ? watermarkContent : [watermarkContent];
+  const markWidth = width * ratio;
+  const markHeight = height * ratio;
 
-  // 绘制两个水印：左上角和右下角
-  const positions = [
-    { x: offsetLeft, y: offsetTop }, // 左上角
-    { x: offsetLeft + gapX, y: offsetTop + gapY } // 右下角
-  ];
+  ctx.fillStyle = "transparent";
+  ctx.fillRect(0, 0, markWidth, markHeight);
 
-  let completedCount = 0;
-  const totalPositions = positions.length;
+  const alternateRotateX = canvasWidth;
+  const alternateRotateY = canvasHeight;
 
-  positions.forEach((position, posIndex) => {
-    ctx.save();
-    ctx.translate(position.x * ratio, position.y * ratio);
-    ctx.rotate((Math.PI / 180) * Number(rotate));
+  ctx.save();
+  drawRotate(ctx, 0, 0, rotate);
 
-    let top = 0;
-    let pendingImages = 0;
+  const contents = Array.isArray(watermarkContent)
+    ? watermarkContent
+    : [{ ...watermarkContent }];
+  let top = 0;
+  contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
+    if (item.url) {
+      const { url, isGrayscale = false } = item;
+      item.top = top;
+      top += height;
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.referrerPolicy = "no-referrer";
+      img.src = url;
+      img.onload = () => {
+        ctx.drawImage(img, 0, item.top * ratio, width * ratio, height * ratio);
+        if (isHexagonal) {
+          ctx.restore();
+          drawRotate(ctx, alternateRotateX, alternateRotateY, rotate);
+          ctx.drawImage(
+            img,
+            alternateDrawX,
+            alternateDrawY,
+            width * ratio,
+            height * ratio
+          );
+        }
 
-    contents.forEach((item: WatermarkText & WatermarkImage) => {
-      if (item.url) {
-        const { url, isGrayscale = false } = item;
-        const currentTop = top;
-        top += height;
-        pendingImages++;
-
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.referrerPolicy = 'no-referrer';
-        img.src = url;
-        img.onload = () => {
-          ctx.drawImage(img, 0, currentTop * ratio, width * ratio, height * ratio);
-          if (isGrayscale) {
-            const imgData = ctx.getImageData(0, currentTop * ratio, width * ratio, height * ratio);
-            const pixels = imgData.data;
-            for (let i = 0; i < pixels.length; i += 4) {
-              const lightness = (pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3;
-              pixels[i] = lightness;
-              pixels[i + 1] = lightness;
-              pixels[i + 2] = lightness;
-            }
-            ctx.putImageData(imgData, 0, currentTop * ratio);
+        if (isGrayscale) {
+          const imgData = ctx.getImageData(
+            0,
+            0,
+            ctx.canvas.width,
+            ctx.canvas.height
+          );
+          const pixels = imgData.data;
+          for (let i = 0; i < pixels.length; i += 4) {
+            const lightness = (pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3;
+            pixels[i] = lightness;
+            pixels[i + 1] = lightness;
+            pixels[i + 2] = lightness;
           }
-
-          pendingImages--;
-          if (pendingImages === 0) {
-            completedCount++;
-            if (completedCount === totalPositions) {
-              onFinish(canvas.toDataURL());
-            }
-          }
-        };
-        img.onerror = () => {
-          pendingImages--;
-          if (pendingImages === 0) {
-            completedCount++;
-            if (completedCount === totalPositions) {
-              onFinish(canvas.toDataURL());
-            }
-          }
-        };
-      } else if (item.text) {
-        const {
-          text,
-          fontSize = 16,
-          fontFamily = undefined,
-          fontWeight = 'normal',
-        } = item;
-        const fillStyle = item?.fontColor || fontColor;
-        const currentTop = top;
-        top += lineSpace;
-
-        const markSize = Number(fontSize) * ratio;
-        const markHeight = height * ratio;
-        ctx.font = `normal normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`;
-        ctx.textAlign = 'start';
-        ctx.textBaseline = 'top';
-        ctx.fillStyle = fillStyle;
-        ctx.fillText(text, 0, currentTop * ratio);
-      }
-    });
-
-    ctx.restore();
-
-    // 如果没有图片需要加载，直接完成
-    if (pendingImages === 0) {
-      completedCount++;
-      if (completedCount === totalPositions) {
+          ctx.putImageData(imgData, 0, 0);
+        }
         onFinish(canvas.toDataURL());
+      };
+    } else if (item.text) {
+      const {
+        text,
+        fontSize = 16,
+        fontFamily = "normal",
+        fontWeight = "normal",
+      } = item;
+      const fillStyle = item?.fontColor || fontColor;
+
+      item.top = top;
+      top += lineSpace;
+
+      drawText(
+        ctx,
+        0,
+        item.top * ratio + item.top * ((fontSize * ratio + 3) * ratio),
+        markHeight,
+        text,
+        fontWeight,
+        fontSize,
+        fontFamily,
+        fillStyle
+      );
+
+      if (isHexagonal) {
+        ctx.restore();
+        drawRotate(ctx, alternateRotateX, alternateRotateY, rotate);
+
+        drawText(
+          ctx,
+          alternateDrawX,
+          alternateDrawY,
+          markHeight,
+          text,
+          fontWeight,
+          fontSize,
+          fontFamily,
+          fillStyle
+        );
       }
     }
   });
+  
+  onFinish(canvas.toDataURL());
 }
