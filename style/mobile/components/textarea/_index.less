@@ -60,6 +60,11 @@
   &__placeholder {
     color: @textarea-placeholder-color;
     font-size: @textarea-placeholder-font-size;
+
+    // 兼容 h5
+    &::placeholder {
+      color: @textarea-placeholder-color;
+    }
   }
 
   &__indicator:not(:empty) {

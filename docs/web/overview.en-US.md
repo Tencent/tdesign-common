@@ -127,7 +127,7 @@ spline: explain
     <a class="item" href="./components/tabs-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-tabs.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-tabs-dark.png" />
-      <p class="name">Tabs 选项卡</p>
+      <p class="name">Tabs</p>
     </a>
   </div>
 </section>
@@ -158,7 +158,7 @@ spline: explain
     <a class="item" href="./components/date-picker-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-datepicker.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-datepicker-dark.png" />
-      <p class="name">DatePicker 日期选择器</p>
+      <p class="name">DatePicker</p>
     </a>
   </div>
   <div class="image-wrapper">

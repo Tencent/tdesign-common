@@ -751,7 +751,7 @@ export class TreeNode {
   public isDisabled(): boolean {
     const { tree } = this;
     const { hasFilter, config } = tree;
-    const { disabled, allowFoldNodeOnFilter } = config;
+    const { disabled, allowFoldNodeOnFilter, checkStrictly } = config;
     if (
       hasFilter
       && !allowFoldNodeOnFilter
@@ -760,9 +760,12 @@ export class TreeNode {
     ) {
       return true;
     }
-    let state = disabled;
+    let state = disabled || false;
     if (typeof this.disabled === 'boolean') {
       state = this.disabled;
+    }
+    if (!checkStrictly && this.parent?.isDisabled()) {
+      state = true;
     }
     return state;
   }
