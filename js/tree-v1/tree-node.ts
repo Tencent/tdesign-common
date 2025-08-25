@@ -237,7 +237,7 @@ export class TreeNode {
     if (this.isLeaf()) {
       // initExpanded 时，子节点没有完全加载，无法依赖 isLeaf 状态判断
       this.expanded = false;
-      tree.expandedMap.delete(this.value);
+      this.tree.expandedMap.delete(this.value);
     }
 
     // checked 状态依赖于子节点状态
@@ -323,6 +323,9 @@ export class TreeNode {
     if (list.length <= 0) {
       return;
     }
+
+    const wasLeaf = this.isLeaf();
+
     if (!Array.isArray(this.children)) {
       this.children = [];
     }
@@ -337,6 +340,13 @@ export class TreeNode {
         children.push(node);
       }
     });
+
+    // 如果之前是叶子节点，现在有了子节点，且 expandAll 为 true，则展开
+    if (wasLeaf && tree.config.expandAll && !this.isLeaf()) {
+      tree.expandedMap.set(this.value, true);
+      this.expanded = true;
+    }
+
     tree.reflow(this);
     this.updateRelated();
   }
