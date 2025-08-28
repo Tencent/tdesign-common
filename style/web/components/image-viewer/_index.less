@@ -493,3 +493,49 @@
     }
   }
 }
+
+// 默认trigger样式
+.@{prefix}-image-viewer__trigger {
+  width: @image-viewer-trigger-size;
+  height: @image-viewer-trigger-size;
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border-radius: @image-viewer-trigger-border-radius;
+  overflow: hidden;
+
+  &--hover {
+    width: @image-viewer-trigger-size;
+    height: @image-viewer-trigger-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    background-color: @image-viewer-trigger-hover-bg-color;
+    color: @image-viewer-trigger-text-color;
+    transition: @image-viewer-trigger-transition-duration;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &--img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+    position: absolute;
+  }
+
+  &--icon {
+    margin-right: 4px;
+  }
+}
