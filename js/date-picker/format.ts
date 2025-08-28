@@ -2,12 +2,15 @@ import { isString } from 'lodash-es';
 import dayjs from 'dayjs';
 import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
 import log from '../log';
 
 type DateValue = string | number | Date;
 
 dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
+dayjs.extend(customParseFormat);
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
@@ -210,7 +213,6 @@ export function calcFormatTime(time: string, timeFormat: string) {
   }
   return time;
 }
-
 // TODO 细化 value 类型
 // 格式化时间
 export function formatTime(value: any, format: string, timeFormat: string, defaultTime: string | string[]) {
@@ -220,9 +222,13 @@ export function formatTime(value: any, format: string, timeFormat: string, defau
   defaultTime = Array.isArray(defaultTime) ? defaultTime : [defaultTime, defaultTime];
   result = result.map((v, i) => {
     // string格式需要用format去解析，其他诸如Date、time-stamp格式则直接dayjs
-    if (v) return dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
+    if (v) {
+      const formattedResult = dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
+      return !dayjs(formattedResult, timeFormat).isValid() && defaultTime[i] ? defaultTime[i] : formattedResult;
+    }
     return calcFormatTime(defaultTime[i], timeFormat);
   });
+
   result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
   // value是数组就输出数组，不是数组就输出第一个即可
   return Array.isArray(value) ? result : result?.[0];
