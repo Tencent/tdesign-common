@@ -18,7 +18,7 @@ toc: false
 
 {{ title }}
 
-### 抽屉展开方向
+### 抽屉方向
 
 {{ placement }}
 
