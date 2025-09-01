@@ -18,6 +18,10 @@ toc: false
 
 {{ title }}
 
+### Drawer With Placement
+
+{{ placement }}
+
 ### Drawer With Footer
 
 {{ footer }}
