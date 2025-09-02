@@ -343,7 +343,8 @@
       box-sizing: border-box;
     }
 
-    &.model-change {
+    &.model-change,
+    &.system {
       justify-content: center;
       margin-top: @comp-margin-xxl;
 
@@ -438,21 +439,6 @@
     .@{prefix}-skeleton {
       width: 100%;
       padding: @pop-padding-xxl;
-    }
-
-    .@{prefix}-chat__text--model-change {
-      background: @bg-color-secondarycontainer;
-      padding: @comp-paddingTB-xxs @comp-paddingLR-s;
-      font-size: @font-size-s;
-      color: @text-color-disabled;
-      border-radius: @border-radius-default;
-      box-sizing: border-box;
-      line-height: 20px;
-      text-align: center;
-
-      span {
-        color: @text-color-placeholder;
-      }
     }
   }
 
@@ -623,7 +609,7 @@
     border-radius: @border-radius-extraLarge;
   }
 
-  .model-change.@{prefix}-chat__text--variant--outline & {
+  .model-change.@{prefix}-chat__text--variant--outline &, .system.@{prefix}-chat__text--variant--outline & {
     border: none;
   }
 
@@ -817,5 +803,20 @@
 
   &__text {
     margin-left: 8px;
+  }
+}
+// 兼容系统消息和模型切换消息样式
+.@{prefix}-chat__text--model-change, .@{prefix}-chat__text--system {
+  background: @bg-color-secondarycontainer;
+  padding: @comp-paddingTB-xxs @comp-paddingLR-s;
+  font-size: @font-size-s;
+  color: @text-color-disabled;
+  border-radius: @border-radius-default;
+  box-sizing: border-box;
+  line-height: 20px;
+  text-align: center;
+
+  span {
+    color: @text-color-placeholder;
   }
 }

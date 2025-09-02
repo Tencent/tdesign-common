@@ -16,7 +16,12 @@ spline: ai
 
 ### 自定义
 
-- 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间，通过`content`可以调整聊天内容，通过`actions` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
+- 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间，通过`content`可以调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
+
+{{ chat-footer-slot }}
+
+
+- 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间，通过`content`可以调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
 
 {{ chat-footer-slot }}
 
