@@ -1,4 +1,3 @@
-import { TdTimeRangePickerProps } from '@tdesign/components';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -11,7 +10,13 @@ dayjs.extend(customParseFormat);
 export function validateInputValue(
   value: string,
   format: string,
-  disableTime?: TdTimeRangePickerProps['disableTime']
+  disableTime?: (
+    h: number,
+    m: number,
+    s: number,
+    ms: number,
+    context: { partial: 'start' | 'end' },
+  ) => Partial<{ hour: Array<number>; minute: Array<number>; second: Array<number> }>
 ) {
   const currTime = dayjs(value, format);
   if (currTime.format(format) !== value) return false;
