@@ -338,7 +338,7 @@
     }
 
     .@{prefix}-chat__detail {
-      padding: @comp-paddingTB-m @comp-paddingLR-l;
+      padding: 0 @comp-paddingLR-l;
       max-width: calc(100% - @comp-size-xl);
       box-sizing: border-box;
     }
@@ -473,6 +473,7 @@
 
   // 消息样式
   &__text {
+    padding: @comp-paddingTB-m 0;
     font: @font-body-large;
     word-break: break-all;
 
@@ -646,11 +647,10 @@
     }
 
     .@{prefix}-collapse-panel {
-      margin-left: @comp-margin-l;
 
       .@{prefix}-chat__text--variant--outline & {
         margin-left: 0;
-        padding: @comp-paddingTB-m @comp-paddingLR-l;
+        padding: @comp-paddingTB-m 0;
 
         // 移除 t-chat__text 的边框
         .@{prefix}-chat__text {
