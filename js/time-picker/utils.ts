@@ -1,3 +1,4 @@
+import { TdTimeRangePickerProps } from '@tdesign/components';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -10,7 +11,7 @@ dayjs.extend(customParseFormat);
 export function validateInputValue(
   value: string,
   format: string,
-  disableTime?: (...params: any) => any
+  disableTime?: TdTimeRangePickerProps['disableTime']
 ) {
   const currTime = dayjs(value, format);
   if (currTime.format(format) !== value) return false;
@@ -25,7 +26,6 @@ export function validateInputValue(
     if (disableTimeObj.hour?.includes(currTime.hour())) return false;
     if (disableTimeObj.minute?.includes(currTime.minute())) return false;
     if (disableTimeObj.second?.includes(currTime.second())) return false;
-    if (disableTimeObj.millisecond?.includes(currTime.millisecond())) return false;
   }
 
   return true;
@@ -48,7 +48,7 @@ export function closestLookup(
   )[0];
 }
 
-export function getPickerCols(format:string) {
+export function getPickerCols(format: string) {
   const renderCol: EPickerCols[] = [];
   const {
     meridiem, hour, minute, second, milliSecond,
