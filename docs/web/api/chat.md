@@ -14,16 +14,24 @@ spline: ai
 
 {{ base }}
 
-### 自定义
+### 命名插槽
 
-- 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间，通过`content`可以调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
-
-{{ chat-footer-slot }}
-
-
-- 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间，通过`content`可以调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
+- 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间，通过`content`可以
+调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
+- 每个插槽都提供 `{ item, index }` 参数，方便获取当前消息数据和索引
 
 {{ chat-footer-slot }}
+
+### 默认插槽
+
+- 使用 `t-chat` 嵌套 `t-chat-message` 遍历聊天列表的方式，提供更灵活的消息渲染控制
+- 通过默认插槽自定义整个聊天列表的渲染逻辑
+- 支持结构化内容类型：`text`、`markdown`、`thinking` 等
+- 灵活配置聊天气泡对齐方式
+- 支持配置聊天气泡框样式：基础、线框、文字
+
+
+{{ chat-with-message }}
 
 ### 流式与非流式
 
