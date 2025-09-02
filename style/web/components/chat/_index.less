@@ -338,6 +338,7 @@
     }
 
     .@{prefix}-chat__detail {
+      padding: @comp-paddingTB-m @comp-paddingLR-l;
       max-width: calc(100% - @comp-size-xl);
       box-sizing: border-box;
     }
@@ -351,12 +352,11 @@
         align-items: center;
       }
 
-      .@{prefix}-chat__text {
+      .@{prefix}-chat__text, .@{prefix}-chat__detail {
         padding: 0;
         font-size: @font-size-s;
         color: @text-color-disabled;
       }
-
       .@{prefix}-chat__notice {
 
         // 模型切换为content插槽需要覆盖样式
@@ -473,7 +473,6 @@
 
   // 消息样式
   &__text {
-    padding: @comp-paddingTB-m @comp-paddingLR-l;
     font: @font-body-large;
     word-break: break-all;
 
@@ -538,7 +537,7 @@
     }
 
     &--variant--base {
-      .@{prefix}-chat__text {
+      .@{prefix}-chat__detail {
         background-color: @bg-color-secondarycontainer;
         border-radius: @border-radius-extraLarge;
       }
