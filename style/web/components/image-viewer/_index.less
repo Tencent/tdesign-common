@@ -502,7 +502,6 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  border-radius: @image-viewer-trigger-border-radius;
   overflow: hidden;
 
   &-hover {
@@ -527,10 +526,8 @@
   }
 
   &-img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    width: @image-viewer-trigger-size;
+    height: @image-viewer-trigger-size;
     cursor: pointer;
     position: absolute;
   }
