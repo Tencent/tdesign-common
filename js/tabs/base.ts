@@ -53,10 +53,16 @@ export function calcPrevOrNextOffset(elements: allElementDeps, offset: number, a
    * 所以需要取绝对值
    */
   const diffWidth = Math.abs(navsContainerWidth - activeTabWidth);
+  /**
+   * 偏移量的最小值设为容器 navsContainer 的宽度的一半
+   * 以避免 activeTab 和 navsContainer 宽度接近时偏移量过小，导致很难滚动，甚至无法滚动
+   */
+  const distance = Math.max(diffWidth, navsContainerWidth / 2);
+
   if (action === 'next') {
-    return offset + diffWidth;
+    return offset + distance;
   }
-  return offset - diffWidth;
+  return offset - distance;
 }
 
 /**
