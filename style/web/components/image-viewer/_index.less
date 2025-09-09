@@ -504,7 +504,14 @@
   align-items: center;
   overflow: hidden;
 
-  &-hover {
+  &:hover {
+    .@{prefix}-image-viewer__trigger--hover{
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &--hover {
     width: @image-viewer-trigger-size;
     height: @image-viewer-trigger-size;
     display: flex;
@@ -518,11 +525,6 @@
     color: @image-viewer-trigger-text-color;
     transition: @image-viewer-trigger-transition-duration;
     cursor: pointer;
-
-    &:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
   }
 
   &-img {
@@ -530,6 +532,7 @@
     height: @image-viewer-trigger-size;
     cursor: pointer;
     position: absolute;
+    z-index: 0;
   }
 
   &-icon {
