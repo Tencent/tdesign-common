@@ -1,6 +1,6 @@
 // generateWatermark-v2 支持layout生成不同样式的水印
 
-import { WatermarkText, WatermarkImage, WatermarkLayout } from "./type";
+import { WatermarkText, WatermarkImage, WatermarkLayout } from './type';
 
 const ratio = window.devicePixelRatio || 1;
 
@@ -32,8 +32,8 @@ const drawText = (
     fontSize * ratio
   }px/${markHeight}px ${fontFamily}`;
   ctx.fillStyle = fillStyle;
-  ctx.textAlign = "start";
-  ctx.textBaseline = "top";
+  ctx.textAlign = 'start';
+  ctx.textBaseline = 'top';
 
   ctx.fillText(text, x, y);
 };
@@ -50,7 +50,7 @@ export default function generateWatermark(
     alpha,
     watermarkContent,
     lineSpace,
-    fontColor = "rgba(0,0,0,0.1)",
+    fontColor = 'rgba(0,0,0,0.1)',
     layout,
   }: {
     width: number;
@@ -71,15 +71,15 @@ export default function generateWatermark(
   },
   onFinish: (url: string, backgroundSize?: { width: number }) => void
 ): string {
-  const isHexagonal = layout === "hexagonal";
+  const isHexagonal = layout === 'hexagonal';
 
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
 
   if (!ctx) {
     // eslint-disable-next-line no-console
-    console.warn("当前环境不支持Canvas, 无法绘制水印");
-    onFinish("");
+    console.warn('当前环境不支持Canvas, 无法绘制水印');
+    onFinish('');
     return;
   }
 
@@ -120,7 +120,7 @@ export default function generateWatermark(
   ctx.translate(offsetLeft * ratio, offsetTop * ratio);
   ctx.globalAlpha = alpha;
 
-  ctx.fillStyle = "transparent";
+  ctx.fillStyle = 'transparent';
   ctx.fillRect(0, 0, markWidth, markHeight);
 
   ctx.save();
@@ -139,8 +139,8 @@ export default function generateWatermark(
       item.top = top;
       top += height;
       const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.referrerPolicy = "no-referrer";
+      img.crossOrigin = 'anonymous';
+      img.referrerPolicy = 'no-referrer';
       img.src = url;
       img.onload = () => {
         ctx.drawImage(img, 0, item.top * ratio, width * ratio, height * ratio);
@@ -180,8 +180,8 @@ export default function generateWatermark(
       const {
         text,
         fontSize = 16,
-        fontFamily = "normal",
-        fontWeight = "normal",
+        fontFamily = 'normal',
+        fontWeight = 'normal',
       } = item;
       const fillStyle = item?.fontColor || fontColor;
 

@@ -18,7 +18,7 @@ export interface WatermarkText {
    * 水印文本文字粗细
    * @default normal
    */
-  fontWeight?: "normal" | "lighter" | "bold" | "bolder";
+  fontWeight?: 'normal' | 'lighter' | 'bold' | 'bolder';
   /**
    * 水印文本内容
    * @default ''
@@ -39,4 +39,4 @@ export interface WatermarkImage {
   url?: string;
 }
 
-export type WatermarkLayout = "rectangular" | "hexagonal";
+export type WatermarkLayout = 'rectangular' | 'hexagonal';
