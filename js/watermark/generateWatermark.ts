@@ -1,6 +1,6 @@
-// generateWatermark v2
+// generateWatermark-v2 支持layout生成不同样式的水印
 
-import { WatermarkText, WatermarkImage, WatermarkLayout } from "./type";
+import { WatermarkText, WatermarkImage,WatermarkLayout } from "./type";
 
 const ratio = window.devicePixelRatio || 1;
 
@@ -67,31 +67,40 @@ export default function generateWatermark(
       | Array<WatermarkText | WatermarkImage>;
     lineSpace: number;
     fontColor?: string;
-    layout?: WatermarkLayout;
+    layout: WatermarkLayout;
   },
-  onFinish: (url: string) => void
+  onFinish: (url: string, backgroundSize?: { width: number }) => void
 ): string {
   const isHexagonal = layout === "hexagonal";
 
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
+
   if (!ctx) {
     console.warn("当前环境不支持Canvas, 无法绘制水印");
     onFinish("");
     return;
   }
+
   const ratio = window.devicePixelRatio || 1;
+
+  let actualBackgroundSize = {
+    width: gapX + width,
+  };
 
   const canvasWidth = (gapX + width) * ratio;
   const canvasHeight = (gapY + height) * ratio;
 
-  /** Alternate drawing parameters */
-  const alternateDrawX = (gapX + width) * ratio;
-  const alternateDrawY = (gapY + height) * ratio;
+  const markWidth = width * ratio;
+  const markHeight = height * ratio;
+
+  const dislocationRotateX = canvasWidth;
+  const dislocationRotateY = canvasHeight;
+  const dislocationDrawX = (gapX + width) * ratio;
+  const dislocationDrawY = (gapY + height) * ratio;
 
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
-
   canvas.style.width = `${gapX + width}px`;
   canvas.style.height = `${gapY + height}px`;
 
@@ -100,19 +109,18 @@ export default function generateWatermark(
     canvas.style.height = `${canvasHeight * 2}px`;
     canvas.width = canvasWidth * 2;
     canvas.height = canvasHeight * 2;
+
+    // 两倍宽度+间距
+    actualBackgroundSize = {
+      width: gapX + (width * 2) + width / 2,
+    };
   }
 
   ctx.translate(offsetLeft * ratio, offsetTop * ratio);
   ctx.globalAlpha = alpha;
 
-  const markWidth = width * ratio;
-  const markHeight = height * ratio;
-
   ctx.fillStyle = "transparent";
   ctx.fillRect(0, 0, markWidth, markHeight);
-
-  const alternateRotateX = canvasWidth;
-  const alternateRotateY = canvasHeight;
 
   ctx.save();
   drawRotate(ctx, 0, 0, rotate);
@@ -120,7 +128,9 @@ export default function generateWatermark(
   const contents = Array.isArray(watermarkContent)
     ? watermarkContent
     : [{ ...watermarkContent }];
+
   let top = 0;
+
   contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
     if (item.url) {
       const { url, isGrayscale = false } = item;
@@ -132,13 +142,15 @@ export default function generateWatermark(
       img.src = url;
       img.onload = () => {
         ctx.drawImage(img, 0, item.top * ratio, width * ratio, height * ratio);
+
+        // 错位水印
         if (isHexagonal) {
           ctx.restore();
-          drawRotate(ctx, alternateRotateX, alternateRotateY, rotate);
+          drawRotate(ctx, dislocationRotateX, dislocationRotateY, rotate);
           ctx.drawImage(
             img,
-            alternateDrawX,
-            alternateDrawY,
+            dislocationDrawX,
+            dislocationDrawY,
             width * ratio,
             height * ratio
           );
@@ -160,7 +172,7 @@ export default function generateWatermark(
           }
           ctx.putImageData(imgData, 0, 0);
         }
-        onFinish(canvas.toDataURL());
+        onFinish(canvas.toDataURL(), actualBackgroundSize);
       };
     } else if (item.text) {
       const {
@@ -186,14 +198,15 @@ export default function generateWatermark(
         fillStyle
       );
 
+      // 错位水印
       if (isHexagonal) {
         ctx.restore();
-        drawRotate(ctx, alternateRotateX, alternateRotateY, rotate);
+        drawRotate(ctx, dislocationRotateX, dislocationRotateY, rotate);
 
         drawText(
           ctx,
-          alternateDrawX,
-          alternateDrawY,
+          dislocationDrawX,
+          dislocationDrawY,
           markHeight,
           text,
           fontWeight,
@@ -204,6 +217,6 @@ export default function generateWatermark(
       }
     }
   });
-  
-  onFinish(canvas.toDataURL());
+
+  onFinish(canvas.toDataURL(), actualBackgroundSize);
 }
