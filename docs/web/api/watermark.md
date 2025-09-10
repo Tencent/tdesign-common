@@ -26,7 +26,10 @@ spline: data
 
 {{ movingImage }}
 
-
 ### 图片灰阶水印
 
 {{ graylevel }}
+
+### 不同布局的水印
+
+{{ layout }}

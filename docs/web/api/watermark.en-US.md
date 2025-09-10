@@ -29,3 +29,7 @@ spline: data
 ### Graylevel watermark
 
 {{ graylevel }}
+
+### Different Layout watermark
+
+{{ layout }}
