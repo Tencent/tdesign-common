@@ -1,6 +1,6 @@
 // generateWatermark-v2 支持layout生成不同样式的水印
 
-import { WatermarkText, WatermarkImage,WatermarkLayout } from "./type";
+import { WatermarkText, WatermarkImage, WatermarkLayout } from "./type";
 
 const ratio = window.devicePixelRatio || 1;
 
@@ -9,7 +9,7 @@ const drawRotate = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  rotate: number,
+  rotate: number
 ) => {
   ctx.translate(x, y);
   ctx.rotate((Math.PI / 180) * Number(rotate));
@@ -112,7 +112,7 @@ export default function generateWatermark(
 
     // 两倍宽度+间距
     actualBackgroundSize = {
-      width: gapX + (width * 2) + width / 2,
+      width: gapX + width * 2 + width / 2,
     };
   }
 
