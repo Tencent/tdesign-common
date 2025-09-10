@@ -77,6 +77,7 @@ export default function generateWatermark(
   const ctx = canvas.getContext("2d");
 
   if (!ctx) {
+    // eslint-disable-next-line no-console
     console.warn("当前环境不支持Canvas, 无法绘制水印");
     onFinish("");
     return;
@@ -134,6 +135,7 @@ export default function generateWatermark(
   contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
     if (item.url) {
       const { url, isGrayscale = false } = item;
+      // eslint-disable-next-line no-param-reassign
       item.top = top;
       top += height;
       const img = new Image();
@@ -183,6 +185,7 @@ export default function generateWatermark(
       } = item;
       const fillStyle = item?.fontColor || fontColor;
 
+      // eslint-disable-next-line no-param-reassign
       item.top = top;
       top += lineSpace;
 
