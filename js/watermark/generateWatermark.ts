@@ -160,22 +160,17 @@ export default function generateWatermark(
       img.onload = () => {
         ctx.save();
         drawRotate(ctx, rotateX, rotateY, rotate);
-        ctx.drawImage(
-          img,
-          offsetX,
-          offsetY + item.top * ratio,
-          width * ratio,
-          height * ratio
-        );
-        ctx.restore();
 
+        // fix: 灰度效果只影响图片，不影响文字
         if (isGrayscale) {
-          const imgData = ctx.getImageData(
-            0,
-            0,
-            ctx.canvas.width,
-            ctx.canvas.height
-          );
+          const tempCanvas = document.createElement('canvas');
+          const tempCtx = tempCanvas.getContext('2d');
+          tempCanvas.width = width * ratio;
+          tempCanvas.height = height * ratio;
+
+          tempCtx.drawImage(img, 0, 0, width * ratio, height * ratio);
+
+          const imgData = tempCtx.getImageData(0, 0, width * ratio, height * ratio);
           const pixels = imgData.data;
           for (let i = 0; i < pixels.length; i += 4) {
             const lightness = (pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3;
@@ -183,8 +178,26 @@ export default function generateWatermark(
             pixels[i + 1] = lightness;
             pixels[i + 2] = lightness;
           }
-          ctx.putImageData(imgData, 0, 0);
+          tempCtx.putImageData(imgData, 0, 0);
+
+          ctx.drawImage(
+            tempCanvas,
+            offsetX,
+            offsetY + item.top * ratio,
+            width * ratio,
+            height * ratio
+          );
+        } else {
+          ctx.drawImage(
+            img,
+            offsetX,
+            offsetY + item.top * ratio,
+            width * ratio,
+            height * ratio
+          );
         }
+
+        ctx.restore();
 
         imageLoadCount += 1;
         if (imageLoadCount === totalImages) {
