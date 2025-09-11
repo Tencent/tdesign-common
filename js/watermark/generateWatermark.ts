@@ -123,40 +123,51 @@ export default function generateWatermark(
   ctx.fillStyle = 'transparent';
   ctx.fillRect(0, 0, markWidth, markHeight);
 
-  ctx.save();
-  drawRotate(ctx, 0, 0, rotate);
-
   const contents = Array.isArray(watermarkContent)
     ? watermarkContent
     : [{ ...watermarkContent }];
 
   let top = 0;
+  let imageLoadCount = 0;
+  let totalImages = 0;
 
+  // 预处理
   contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
+    // eslint-disable-next-line no-param-reassign
+    item.top = top;
+    if (item.url) {
+      top += height;
+      totalImages += isHexagonal ? 2 : 1; // hexagonal布局需要绘制两次
+    } else if (item.text) {
+      top += lineSpace;
+    }
+  });
+
+  // 绘制水印内容
+  const renderWatermarkItem = (
+    item: WatermarkText & WatermarkImage & { top: number },
+    offsetX: number = 0,
+    offsetY: number = 0,
+    rotateX: number = 0,
+    rotateY: number = 0
+  ) => {
     if (item.url) {
       const { url, isGrayscale = false } = item;
-      // eslint-disable-next-line no-param-reassign
-      item.top = top;
-      top += height;
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.referrerPolicy = 'no-referrer';
       img.src = url;
       img.onload = () => {
-        ctx.drawImage(img, 0, item.top * ratio, width * ratio, height * ratio);
-
-        // 错位水印
-        if (isHexagonal) {
-          ctx.restore();
-          drawRotate(ctx, dislocationRotateX, dislocationRotateY, rotate);
-          ctx.drawImage(
-            img,
-            dislocationDrawX,
-            dislocationDrawY,
-            width * ratio,
-            height * ratio
-          );
-        }
+        ctx.save();
+        drawRotate(ctx, rotateX, rotateY, rotate);
+        ctx.drawImage(
+          img,
+          offsetX,
+          offsetY + item.top * ratio,
+          width * ratio,
+          height * ratio
+        );
+        ctx.restore();
 
         if (isGrayscale) {
           const imgData = ctx.getImageData(
@@ -174,7 +185,11 @@ export default function generateWatermark(
           }
           ctx.putImageData(imgData, 0, 0);
         }
-        onFinish(canvas.toDataURL(), actualBackgroundSize);
+
+        imageLoadCount++;
+        if (imageLoadCount === totalImages) {
+          onFinish(canvas.toDataURL(), actualBackgroundSize);
+        }
       };
     } else if (item.text) {
       const {
@@ -185,14 +200,12 @@ export default function generateWatermark(
       } = item;
       const fillStyle = item?.fontColor || fontColor;
 
-      // eslint-disable-next-line no-param-reassign
-      item.top = top;
-      top += lineSpace;
-
+      ctx.save();
+      drawRotate(ctx, rotateX, rotateY, rotate);
       drawText(
         ctx,
-        0,
-        item.top * ratio + item.top * ((fontSize * ratio + 3) * ratio),
+        offsetX,
+        offsetY + item.top * ratio,
         markHeight,
         text,
         fontWeight,
@@ -200,26 +213,30 @@ export default function generateWatermark(
         fontFamily,
         fillStyle
       );
-
-      // 错位水印
-      if (isHexagonal) {
-        ctx.restore();
-        drawRotate(ctx, dislocationRotateX, dislocationRotateY, rotate);
-
-        drawText(
-          ctx,
-          dislocationDrawX,
-          dislocationDrawY,
-          markHeight,
-          text,
-          fontWeight,
-          fontSize,
-          fontFamily,
-          fillStyle
-        );
-      }
+      ctx.restore();
     }
+  };
+
+  // 矩形水印
+  contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
+    renderWatermarkItem(item, 0, 0, 0, 0);
   });
 
-  onFinish(canvas.toDataURL(), actualBackgroundSize);
+  // 六边形水印
+  if (isHexagonal) {
+    contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
+      renderWatermarkItem(
+        item,
+        dislocationDrawX,
+        dislocationDrawY,
+        dislocationRotateX,
+        dislocationRotateY
+      );
+    });
+  }
+
+  // 没有图片
+  if (totalImages === 0) {
+    onFinish(canvas.toDataURL(), actualBackgroundSize);
+  }
 }
