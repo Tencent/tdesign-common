@@ -631,6 +631,9 @@ describe('tree:append', () => {
         }]
       }, {
         value: 't2',
+        children: [{
+          value: 't2.1',
+        }]
       }]);
       await delay(0);
       tree.setExpanded(['t1', 't2']);
