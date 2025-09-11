@@ -186,7 +186,7 @@ export default function generateWatermark(
           ctx.putImageData(imgData, 0, 0);
         }
 
-        imageLoadCount++;
+        imageLoadCount += 1;
         if (imageLoadCount === totalImages) {
           onFinish(canvas.toDataURL(), actualBackgroundSize);
         }
