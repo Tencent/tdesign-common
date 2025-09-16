@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} / page',
     jumpTo: 'Jump to',
     page: '',
-    total: '{total} items',
+    total: 'no items | 1 item | {count} items',
   },
   cascader: {
     empty: 'Empty Data',
@@ -76,7 +76,7 @@ export default {
     cancelText: 'Cancel',
     resetText: 'Reset',
     selectAllText: 'Select All',
-    searchResultText: 'Search "{result}". Find {count} items.',
+    searchResultText: 'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
   },
   select: {
     empty: 'Empty Data',
@@ -204,7 +204,7 @@ export default {
     recentColorTitle: 'Recently Used',
     clearConfirmText: 'Clear recently used colors?',
     singleColor: 'Single',
-    gradientColor: 'Gradient'
+    gradientColor: 'Gradient',
   },
   guide: {
     finishButtonProps: {
@@ -249,7 +249,7 @@ export default {
       fail: 'Failure',
       empty: 'No Data',
       networkError: 'Network Error',
-    }
+    },
   },
   descriptions: {
     colonText: ':',
@@ -269,5 +269,12 @@ export default {
     confirmClearHistory: 'Are you sure to clear all messages?',
     loadingText: 'thinking...',
     loadingEndText: 'deep thinking end',
-  }
+    uploadImageText: 'upload image',
+    uploadAttachmentText: 'upload attachment',
+  },
+  qrcode: {
+    expiredText: 'expired',
+    refreshText: 'refresh',
+    scannedText: 'scanned',
+  },
 } as const;

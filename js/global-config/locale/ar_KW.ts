@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} / الصفحة',
     jumpTo: 'القفز إلى',
     page: '',
-    total: '{total} عناصر',
+    total: '{count} عناصر',
   },
   cascader: {
     empty: 'لا تتوافر بيانات',
@@ -259,5 +259,12 @@ export default {
     copyTextSuccess: 'تم النسخ إلى الحافظة بنجاح',
     copyTextFail: 'فشل النسخ إلى الحافظة',
     confirmClearHistory: 'هل أنت متأكد من مسح جميع الرسائل؟',
+    uploadImageText: 'رفع الصورة',
+    uploadAttachmentText: 'رفع المرفق',
+  },
+  qrcode: {
+    expiredText: 'منتهي الصلاحية',
+    refreshText: 'ينعش',
+    scannedText: 'تم مسحها ضوئيًا',
   }
 } as const;

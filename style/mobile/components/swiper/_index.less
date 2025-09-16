@@ -7,137 +7,39 @@
   box-sizing: border-box;
   font-weight: normal;
   border-radius: @swiper-border-radius;
+  overflow: hidden;
 
   &-item {
-    width: 100%;
-    flex-shrink: 0;
-  }
-
-  &__btn {
-    display: inline-block;
-    width: @swiper-page-btn-size;
-    height: @swiper-page-btn-size;
-    background-color: @text-color-secondary;
-    border-radius: 50%;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: @gray-color-1;
-    line-height: @swiper-page-btn-size;
-    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
 
-    & > .t-icon {
+    & > * {
+      border-radius: @swiper-border-radius;
+    }
+
+    &--image-host {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      overflow: hidden;
+      justify-content: center;
       position: relative;
-      top: -2px;
-    }
 
-    &.btn-prev {
-      left: 10px;
-    }
-
-    &.btn-next {
-      right: 10px;
-    }
-  }
-
-  // 分页
-  &__pagination {
-    display: inline-block;
-    font-size: 0;
-
-    &-fraction {
-      height: @swiper-page-fraction-height;
-      line-height: @swiper-page-fraction-height;
-      background-color: @text-color-placeholder;
-      color: @gray-color-1;
-      padding: 0 12px;
-      border-radius: @swiper-page-fraction-radius;
-      font-size: 12px;
-    }
-
-    .@{prefix}-swiper-dot {
-      display: inline-block;
-      width: @swiper-page-dot-size;
-      height: @swiper-page-dot-size;
-      border-radius: 3px;
-      background: @mask-disabled;
-      margin: 0 4px;
-
-      &--active {
-        background-color: @gray-color-1;
+      & > * {
+        border-radius: @swiper-border-radius;
       }
-    }
 
-    &-dots-bar .@{prefix}-swiper-dot--active {
-      width: @swiper-page-dot-active-width;
-    }
-
-    &-left.@{prefix}-swiper__pagination-dots,
-    &-left.@{prefix}-swiper__pagination-dots-bar,
-    &-left.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &-right.@{prefix}-swiper__pagination-dots,
-    &-right.@{prefix}-swiper__pagination-dots-bar,
-    &-right.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &-top-left.@{prefix}-swiper__pagination-dots,
-    &-top-left.@{prefix}-swiper__pagination-dots-bar,
-    &-top-left.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-    }
-
-    &-top.@{prefix}-swiper__pagination-dots,
-    &-top.@{prefix}-swiper__pagination-dots-bar,
-    &-top.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      left: 50%;
-      top: 12px;
-      transform: translateX(-50%);
-    }
-
-    &-top-right.@{prefix}-swiper__pagination-dots,
-    &-top-right.@{prefix}-swiper__pagination-dots-bar,
-    &-top-right.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-    }
-
-    &-bottom-left.@{prefix}-swiper__pagination-dots,
-    &-bottom-left.@{prefix}-swiper__pagination-dots-bar,
-    &-bottom-left.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      left: 12px;
-      bottom: 12px;
-    }
-
-    &-bottom.@{prefix}-swiper__pagination-dots,
-    &-bottom.@{prefix}-swiper__pagination-dots-bar,
-    &-bottom.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      left: 50%;
-      bottom: 12px;
-      transform: translateX(-50%);
-    }
-
-    &-bottom-right.@{prefix}-swiper__pagination-dots,
-    &-bottom-right.@{prefix}-swiper__pagination-dots-bar,
-    &-bottom-right.@{prefix}-swiper__pagination-fraction {
-      position: absolute;
-      right: 12px;
-      bottom: 12px;
+      img {
+        height: 100%;
+        width: 100%;
+        max-width: none;
+        object-fit: cover;
+      }
     }
   }
 
@@ -146,7 +48,6 @@
     height: 100%;
     width: auto;
     position: relative;
-    display: flex;
   }
 
   &__item {
@@ -155,6 +56,43 @@
     img {
       height: 100%;
       width: 100%;
+    }
+  }
+
+  &--outside {
+    padding-bottom: @swiper-placement-outside-padding;
+  }
+
+  &__container--card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &--card {
+    .@{prefix}-swiper-item {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      z-index: 0;
+
+      &--active {
+        z-index: 1;
+      }
+    }
+
+    .t-swiper-item--image-host {
+      transition: all .3s ease;
+    }
+
+    .t-swiper-item--image-host--prev {
+      right: @swiper-item-right-padding;
+    }
+
+    .t-swiper-item--image-host--next {
+      left: @swiper-item-left-padding;
     }
   }
 }

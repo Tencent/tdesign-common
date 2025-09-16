@@ -14,18 +14,31 @@ spline: data
 
 {{ multiple }}
 
-### 区间选择日期
+### 带单行描述的日历
 
-{{ range }}
+{{ custom-text-single }}
 
-### 自定义文案
+### 带双行描述的日历
 
 {{ custom-text }}
 
-### 自定义按钮
+### 带翻页功能的日历
 
-{{ custom-button }}
+{{ switch-mode }}
 
-### 自定义日期区间
+### 可选择区间日期的日历
 
-{{ custom-range }}
+{{ range }}
+
+### 国际化
+
+{{ local-text }}
+
+### 含不可选的日历
+
+{{ disabled }}
+
+### 不使用 Popup
+
+{{ without-popup }}
+

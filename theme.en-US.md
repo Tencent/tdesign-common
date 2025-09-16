@@ -24,6 +24,12 @@ Because there are many CSS variables involved, a more intuitive `theme generator
 
 After configuring the theme CSS Variables you are satisfied with through the theme generator, please click `the download button`. We will export a new CSS file to your local computer. You only need to place the file in your project directory and import the CSS file in your project to get a TDesign with a brand new theme style.
 
+You can refer to the video below for the related operations.
+
+<video controls width="100%">
+    <source src="https://tdesign.gtimg.com/site/theme/demo-en.mp4" type="video/mp4" />
+</video>
+
 ### Using less Variables for fine-grained Customization of Components
 
 If the project is implemented with the `less` technology stack and has more refined customization requirements for components, we have extracted most of the variables used in the component implementation process and provided them in the form of less variables.
@@ -36,15 +42,14 @@ If the project is implemented with the `less` technology stack and has more refi
 @btn-height-l: 40px;
 
 @btn-border-radius: @border-radius-default;
-
 ```
 
 To modify these less variables, you need to import the component library ESM bundle:
 
 ```js
-// tdesign-npm-name 替换为当前在使用的包名称
+// replace `tdesign-npm-name` with the actual package name you're using
 import TDesign from "tdesign-npm-name/esm";
-// 引入组件库全局样式资源
+// import global style of the component library
 import "tdesign-npm-name/esm/style/index.js";
 ```
 

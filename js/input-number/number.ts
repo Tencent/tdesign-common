@@ -204,7 +204,7 @@ export const specialCode = ['-', '.', 'e', 'E', '+'];
  * 1.23E+08 就表示 1.23 乘 10 的 8 次方
  * 2e3 表示 2 乘 10 的 3 次方
  */
-export function canInputNumber(number: string, largeNumber: boolean) {
+export function canInputNumber(number: string | undefined | null, largeNumber?: boolean) {
   if (['', null, undefined].includes(number)) return true;
   // 数字最前方不允许出现连续的两个 0
   if (number.slice(0, 2) === '00') return false;
@@ -216,11 +216,12 @@ export function canInputNumber(number: string, largeNumber: boolean) {
   if (number.match(/e/g)?.length > 1) return false;
   // 只能出现一个负号（-）或 一个正号（+），并且在第一个位置；但允许 3e+10 这种形式
   const tmpNumber = number.slice(1);
-  if (/(\+|-)/.test(tmpNumber) && !/e+/i.test(tmpNumber)) return false;
+  const tmpMatched = tmpNumber.match(/(\+|-)/g);
+  if (tmpMatched && (!/e(\+|-)/i.test(tmpNumber) || tmpMatched.length > 1)) return false;
   // 允许输入数字字符
   const isNumber = (largeNumber && isInputNumber(number)) || !Number.isNaN(Number(number));
   if (!isNumber && !specialCode.includes(number.slice(-1))) return false;
-  if (/e/i.test(number) && !/\de/i.test(number)) return false;
+  if (/e/i.test(number) && (!/\de/i.test(number) || /e\./.test(number))) return false;
   return true;
 }
 

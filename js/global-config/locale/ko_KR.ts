@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} /페이지',
     jumpTo: '건너뛰다',
     page: '페이지',
-    total: '흔한 {total} 아이템 데이터',
+    total: '흔한 {count} 아이템 데이터',
   },
   cascader: {
     empty: '데이터 없음',
@@ -268,5 +268,12 @@ export default {
     confirmClearHistory: '채팅 기록을 지우시겠습니까?',
     loadingText: '생각 중...',
     loadingEndText: '깊이 생각함',
+    uploadImageText: '이미지 업로드',
+    uploadAttachmentText: '첨부 파일 업로드'
+  },
+  qrcode: {
+    expiredText: '만료됨',
+    refreshText: '새로 고치다',
+    scannedText: '스캔됨',
   }
 } as const;

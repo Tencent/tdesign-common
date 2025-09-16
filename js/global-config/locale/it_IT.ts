@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} articoli/pagina',
     jumpTo: 'Vai a',
     page: 'pagina',
-    total: 'totale {total} elementi dati',
+    total: 'totale {count} elementi dati',
   },
   cascader: {
     empty: 'Nessun dato',
@@ -276,5 +276,12 @@ export default {
     confirmClearHistory: 'Sei sicuro di voler cancellare tutti i messaggi?',
     loadingText: 'Penso...',
     loadingEndText: 'Penso finito',
+    uploadImageText: 'caricare immagine',
+    uploadAttachmentText: 'caricare allegato',
+  },
+  qrcode: {
+    expiredText: 'scaduto',
+    refreshText: 'aggiornare',
+    scannedText: 'scansionato',
   }
 } as const;

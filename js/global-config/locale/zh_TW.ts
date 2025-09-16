@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} 項/頁',
     jumpTo: '跳至',
     page: '頁',
-    total: '共 {total} 項數據',
+    total: '共 {count} 項數據',
   },
   cascader: {
     empty: '暫無數據',
@@ -268,5 +268,12 @@ export default {
     confirmClearHistory: '確定要清空所有的消息嗎？',
     loadingText: '思考中...',
     loadingEndText: '已深度思考',
+    uploadImageText: '上傳圖片',
+    uploadAttachmentText: '上傳附件',
+  },
+  qrcode: {
+    expiredText: '二維碼過期',
+    refreshText: '點擊刷新',
+    scannedText: '已掃描',
   }
 } as const;

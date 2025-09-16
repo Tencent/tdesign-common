@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import 'dayjs/locale/ru';
 
 export default {
@@ -44,6 +45,25 @@ export default {
     minuteLabel: 'Минута',
     secondLabel: 'Секунда',
   },
+  form: {
+    errorMessage: {
+      date: 'Введите правильный ${name}',
+      url: 'Введите правильный ${name}',
+      whitespace: '${name} не может быть пустым',
+      required: '${name} обязательно для заполнения',
+      max: 'Длина символов ${name} не должна превышать ${validate} символов',
+      min: 'Длина символов ${name} не должна быть меньше ${validate} символов',
+      len: 'Длина символов ${name} должна быть ${validate}',
+      enum: '${name} может быть только ${validate} и т.д.',
+      idcard: 'Введите правильный ${name}',
+      telnumber: 'Введите правильный ${name}',
+      pattern: 'Введите правильный ${name}',
+      validator: '${name} не соответствует требованиям',
+      boolean: 'Тип данных ${name} должен быть булевым',
+      number: '${name} должно быть числом',
+    },
+    colonText: ':',
+  },
   picker: {
     cancel: 'Отмена',
     confirm: 'Подтвердить',
@@ -84,5 +104,10 @@ export default {
     skip: 'Пропустить',
     finish: 'Готово',
     back: 'Назад',
+  },
+  qrcode: {
+    expiredText: 'истекший',
+    refreshText: 'обновить',
+    scannedText: 'сканированный',
   },
 };

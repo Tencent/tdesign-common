@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import 'dayjs/locale/zh-cn';
-import { describe, it, expect } from 'vitest';
-import { extractTimeFormat, formatDate } from '../../../js/date-picker/format';
+import { describe, expect, it } from 'vitest';
+import { extractTimeFormat, formatDate, formatTime } from '../../../js/date-picker/format';
 
 describe('utils', () => {
   describe(' extractTimeFormat', () => {
@@ -22,6 +22,33 @@ describe('utils', () => {
     });
   });
 
+  describe('formatTime', () => {
+    it('valid date time value, return time value of datetime', () => {
+      const res = formatTime('2025-08-26 10:24:24', 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss');
+      expect(res).toBe('10:24:24');
+    });
+
+    it('valid date time value, format and defaultTime, return time value of datetime', () => {
+      const res = formatTime('2025-08-26 10:24:24', 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss', '00:00:00');
+      expect(res).toBe('10:24:24');
+    });
+
+    it('valid array type date time value and format, return time value of datetime', () => {
+      const res = formatTime(['2025-08-26 10:24:24', '2025-08-26 10:24:24'], 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss', ['00:00:00', '23:59:59']);
+      expect(res).toEqual(['10:24:24', '10:24:24']);
+    });
+
+    it('invalid date time value and defaultTime, return defaultTime', () => {
+      const res = formatTime('2025-08-26', 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss', '00:00:00');
+      expect(res).toBe('00:00:00');
+    });
+
+    it('invalid array type date time value, return time value of datetime', () => {
+      const res = formatTime(['2025-08-26', '2025-08-26'], 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss', ['00:00:00', '23:59:59']);
+      expect(res).toEqual(['00:00:00', '23:59:59']);
+    });
+  });
+
   describe('when dayjsLocale is undefined, locale should be consistent with dayjs locale', () => {
     const dateDisplayFormat = 'MMM,YYYY';
     const testDate = '2025-04-22';
@@ -29,7 +56,7 @@ describe('utils', () => {
     it('zh-cn', () => {
       dayjs.locale('zh-cn');
 
-      const res1 = formatDate('2025-04-22', {
+      const res1 = formatDate(testDate, {
         format: dateDisplayFormat,
         dayjsLocale: undefined,
       });
@@ -41,7 +68,7 @@ describe('utils', () => {
     it('en', () => {
       dayjs.locale('en');
 
-      const res3 = formatDate('2025-04-22', {
+      const res3 = formatDate(testDate, {
         format: dateDisplayFormat,
         dayjsLocale: undefined,
       });

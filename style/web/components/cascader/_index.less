@@ -61,6 +61,7 @@
     box-sizing: content-box;
     padding: @cascader-menu-padding;
     background: @bg-color-container;
+    margin: 0;
 
     &.@{prefix}-size-l {
       padding: @cascader-menu-padding-l;
@@ -165,7 +166,10 @@
     }
 
     &--with-icon {
-      padding: @cascader-item-padding-with-icon;
+      .@{prefix}-checkbox__label,
+      .@{prefix}-cascader__item-label {
+        margin-right: 16px;
+      }
     }
 
     &--leaf {

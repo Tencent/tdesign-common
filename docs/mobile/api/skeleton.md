@@ -1,6 +1,6 @@
 ---
 title: Skeleton 骨架屏
-description: 当网络较慢时，在页面真实数据加载之前，给用户展示出页面的大致结构。
+description: 用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑。
 spline: base
 isComponent: true
 toc: false

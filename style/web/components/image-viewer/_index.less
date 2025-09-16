@@ -13,10 +13,8 @@
   border-radius: 4px;
   color: @image-viewer__image-text--error;
   cursor: inherit;
-  position: absolute;
 
   .@{prefix}-image-viewer__img-error-content {
-    position: absolute;
     height: 100%;
     width: 100%;
     display: flex;
@@ -119,9 +117,8 @@
   }
 
   .@{prefix}-image-viewer__modal-pic {
-    height: 0;
-    width: 0;
     position: absolute;
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
 
@@ -387,6 +384,7 @@
     padding: @image-viewer-utils-content-padding;
 
     .@{prefix}-image-viewer__modal-icon {
+      cursor: pointer;
       margin: @image-viewer-utils-modal-icon-margin;
       width: @image-viewer-utils-modal-icon-size;
       height: @image-viewer-utils-modal-icon-size;
@@ -493,5 +491,48 @@
     &__close:hover {
       background-color: @bg-color-secondarycontainer-hover;
     }
+  }
+}
+
+// 默认trigger样式
+.@{prefix}-image-viewer__trigger {
+  width: @image-viewer-trigger-size;
+  height: @image-viewer-trigger-size;
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &-hover {
+    width: @image-viewer-trigger-size;
+    height: @image-viewer-trigger-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    background-color: @image-viewer-trigger-hover-bg-color;
+    color: @image-viewer-trigger-text-color;
+    transition: @image-viewer-trigger-transition-duration;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &-img {
+    width: @image-viewer-trigger-size;
+    height: @image-viewer-trigger-size;
+    cursor: pointer;
+    position: absolute;
+  }
+
+  &-icon {
+    margin-right: 4px;
   }
 }

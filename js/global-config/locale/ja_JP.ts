@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} /ページ',
     jumpTo: 'ジャンプする',
     page: 'ページ',
-    total: '合計 {total} 項目データ',
+    total: '合計 {count} 項目データ',
   },
   cascader: {
     empty: 'データなし',
@@ -268,5 +268,12 @@ export default {
     confirmClearHistory: 'すべてのメッセージをクリアしてもよろしいですか？',
     loadingText: '考え中...',
     loadingEndText: '深く考えました',
+    uploadImageText: '画像をアップロード',
+    uploadAttachmentText: '添付ファイルをアップロード',
+  },
+  qrcode: {
+    expiredText: '期限切れ',
+    refreshText: 'リフレッシュ',
+    scannedText: 'スキャンされた',
   }
 } as const;

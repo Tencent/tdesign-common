@@ -1,12 +1,17 @@
-@result-title-font: @font-size-l;
-@result-title-line-height: calc(@font-size * 2.8);
-@result-title-color: rgba(0, 0, 0, .9);
+@result-icon-font-size: 80px;
 
-@result-description-font: calc(@font-size * 1.4);
-@result-description-line-height: calc(@font-size * 2.2);
-@result-description-color: rgba(0, 0, 0, .6);
+@result-title-font-size: var(--td-result-title-font-size, @font-size-xl);
+@result-title-line-height: var(--td-result-title-line-height, 28px);
+@result-title-color: var(--td-result-title-color, @text-color-primary);
 
-@result-default-color: #0052d9;
-@result-success-color: #00a870;
-@result-warning-color: #ed7b2f;
-@result-error-color: #e34d59;
+@result-description-font-size: var(--td-result-description-font-size, @font-size-base);
+@result-description-line-height: var(--td-result-description-line-height, 22px);
+@result-description-color: var(--td-result-description-color, @text-color-secondary);
+
+@result-icon-default-color: var(--td-result-icon-default-color, @brand-color);
+@result-icon-success-color: var(--td-result-icon-success-color, @success-color);
+@result-icon-warning-color: var(--td-result-icon-warning-color, @warning-color);
+@result-icon-error-color: var(--td-result-icon-error-color, @error-color);
+
+@result-title-margin-top: var(--td-result-title-margin-top, @spacer-1);
+@result-description-margin-top: var(--td-result-description-margin-top, @spacer);

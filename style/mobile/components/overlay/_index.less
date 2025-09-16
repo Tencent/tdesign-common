@@ -1,30 +1,30 @@
-// 组件允许单个组件打包，因此默认引入公共基础样式
-
 @import "../../base.less";
 
 @import "./_var.less";
 
-.@{prefix}-overlay {
+@import "./_animate.less";
+
+.@{overlay} {
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
   width: 100%;
-  z-index: @overlay-zindex;
+  bottom: 0;
   background-color: @overlay-bg-color;
 
+  // Mobile Vue: Transition
   &-enter-from,
   &-leave-to {
-    background-color: transparent;
+    opacity: 0;
   }
 
   &-enter-active,
   &-leave-active {
-    transition-property: background-color;
+    transition-property: opacity;
     transition-timing-function: ease;
   }
 
-  &-overflow-hidden {
+  &--lock {
     overflow: hidden;
   }
 }

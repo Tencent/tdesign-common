@@ -10,17 +10,7 @@ toc: false
 
 ### 01 Component Type
 
-Base progress bar
-
 {{ base }}
-
-Transition style
-
-{{ transition }}
-
-Custom colors/rounded corners
-
-{{ custom }}
 
 ### 02 Component Status
 

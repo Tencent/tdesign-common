@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} шт./стр.',
     jumpTo: 'Перейти к',
     page: 'стр.',
-    total: 'Всего {total} элементов данных',
+    total: 'Всего {count} элементов данных',
   },
   cascader: {
     empty: 'Нет данных',
@@ -277,5 +277,12 @@ export default {
     confirmClearHistory: 'Вы уверены, что хотите очистить все сообщения?',
     loadingText: 'Думаю...',
     loadingEndText: 'Глубоко обдумано',
+    uploadImageText: 'загрузить изображение',
+    uploadAttachmentText: 'загрузить вложение',
+  },
+  qrcode: {
+    expiredText: 'истекший',
+    refreshText: 'обновить',
+    scannedText: 'сканированный',
   }
 } as const;

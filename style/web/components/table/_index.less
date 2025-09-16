@@ -13,6 +13,7 @@
 @import "../popup/_var.less";
 
 @border: 1px solid @table-border-color;
+@border-transparent: 1px solid transparent;
 
 @table-fixed-column-z-index: 30;
 @table-fixed-header-z-index: 50;
@@ -190,6 +191,11 @@
     td {
       padding: @table-padding-large;
     }
+  }
+
+  .@{prefix}-table__expanded-row > td,
+  .@{prefix}-table__row--full > td {
+    padding: 0;
   }
 
   // 展开/收起列
@@ -1070,11 +1076,6 @@
   transform: rotate(180deg);
 }
 
-.@{prefix}-table__expanded-row > td,
-.@{prefix}-table__row--full > td {
-  padding: 0;
-}
-
 /** @{prefix}-table__row--full 和 @{prefix}-table__row-full-element 同时存在，是为了保证 固定列时，当前行不随内容进行横向滚动 */
 .@{prefix}-table__row-full-element {
   padding: @table-cell-padding;
@@ -1159,16 +1160,22 @@
 
 .@{prefix}-table--column-resizable:not(.@{prefix}-table--bordered) {
   th {
-    border-top: 1px solid transparent;
+    border-top: @border-transparent;
   }
 
-  thead.@{prefix}-table__header:hover {
+  thead.@{prefix}-table__header {
     th:not(:last-child) {
-      border-right: @border;
+      border-right: @border-transparent;
     }
 
-    th {
-      border-top: @border;
+    &:hover {
+      th:not(:last-child) {
+        border-right: @border;
+      }
+
+      th {
+        border-top: @border;
+      }
     }
   }
 
