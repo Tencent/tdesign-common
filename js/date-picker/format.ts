@@ -1,4 +1,4 @@
-import { isString } from 'lodash-es';
+import { isNumber, isString } from 'lodash-es';
 import dayjs from 'dayjs';
 import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
@@ -31,6 +31,9 @@ export function parseToDayjs(
   if (value === '' || value === null) return dayjs();
 
   let dateText = value;
+  if (isNumber(value) && value.toString().length < 10) {
+    dateText = value.toString();
+  }
   // format week
   if (/[w|W]/g.test(format)) {
     if (!isString(dateText)) {

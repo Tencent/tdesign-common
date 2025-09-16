@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extractTimeFormat, formatTime } from '../../../js/date-picker/format';
+import { extractTimeFormat, formatTime, parseToDayjs } from '../../../js/date-picker/format';
 
 describe('utils', () => {
   describe(' extractTimeFormat', () => {
@@ -42,6 +42,30 @@ describe('utils', () => {
     it('invalid array type date time value, return time value of datetime', () => {
       const res = formatTime(['2025-08-26', '2025-08-26'], 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss', ['00:00:00', '23:59:59']);
       expect(res).toEqual(['00:00:00', '23:59:59']);
+    });
+  });
+  describe('parseToDayjs', () => {
+    it('parses year string correctly', () => {
+      const res = parseToDayjs('2025', 'YYYY');
+      expect(res.year()).toBe(2025);
+    });
+    it('parses year number correctly', () => {
+      const res = parseToDayjs(2025, 'YYYY');
+      expect(res.year()).toBe(2025);
+    });
+    it('parses year-month string correctly', () => {
+      const res = parseToDayjs('2025-09', 'YYYY-MM');
+      expect(res.year()).toBe(2025);
+    });
+    it('parses year-month string without separator correctly', () => {
+      const res = parseToDayjs('202509', 'YYYYMM');
+      expect(res.year()).toBe(2025);
+      expect(res.month()).toBe(8);
+    });
+    it('parses year-month number without separator correctly', () => {
+      const res = parseToDayjs(202509, 'YYYYMM');
+      expect(res.year()).toBe(2025);
+      expect(res.month()).toBe(8);
     });
   });
 });
