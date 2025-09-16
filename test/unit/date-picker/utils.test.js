@@ -67,5 +67,23 @@ describe('utils', () => {
       expect(res.year()).toBe(2025);
       expect(res.month()).toBe(8);
     });
+    it('parses year-month-day string correctly', () => {
+      const res = parseToDayjs('2025-09-26', 'YYYY-MM-DD');
+      expect(res.year()).toBe(2025);
+      expect(res.month()).toBe(8);
+      expect(res.date()).toBe(26);
+    });
+    it('parses year-month-day string without separator correctly', () => {
+      const res = parseToDayjs('20250926', 'YYYYMMDD');
+      expect(res.year()).toBe(2025);
+      expect(res.month()).toBe(8);
+      expect(res.date()).toBe(26);
+    });
+    it('parses year-month-day number without separator correctly', () => {
+      const res = parseToDayjs(20250926, 'YYYYMMDD');
+      expect(res.year()).toBe(2025);
+      expect(res.month()).toBe(8);
+      expect(res.date()).toBe(26);
+    });
   });
 });
