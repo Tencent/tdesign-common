@@ -21,9 +21,8 @@ export function extractTimeFormat(dateFormat: string = '') {
     .trim();
 }
 
-// 由于 dayjs.locale(dayjsLocale) 方法的 dayjsLocale 不能为 undefined，
-// 当 dayjsLocale 为空时取 dayjs 的 locale 作为默认值，
-// 以保证格式化时能正确使用本地化语言
+// `dayjs.locale()` 无参数时，返回全局 locale 的字符串
+// 配合 locale 文件夹内的 `import 'dayjs/locale/xx'` 使用
 export function getDefaultLocale() {
   return dayjs.locale();
 }
