@@ -276,7 +276,7 @@
       background-color: @tree-node-bg-active-color;
     }
 
-    &::selection {
+    &:not(:has(input)):not(:has(textarea)):not(:has([contenteditable]))::selection {
       background-color: transparent;
     }
   }
