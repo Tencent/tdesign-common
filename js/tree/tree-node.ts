@@ -191,7 +191,7 @@ export class TreeNode {
     // 设置标签
     this.label = get(data, propLabel) || '';
     // 设置是否禁用
-    this.disabled = get(data, propDisabled) || false;
+    this.disabled = get(data, propDisabled);
 
     // 设置子节点
     const children = data[propChildren];

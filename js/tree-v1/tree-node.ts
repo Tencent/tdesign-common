@@ -142,7 +142,7 @@ export class TreeNode {
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
-    const propsDisabled = keys.disabled || 'disabled';
+    const propDisabled = keys.disabled || 'disabled';
 
     // 节点自身初始化数据
     this.model = null;
@@ -193,8 +193,8 @@ export class TreeNode {
 
     // 设置标签
     this.label = get(data, propLabel) || '';
-    // 设置是否禁用
-    this.disabled = get(data, propsDisabled);
+    // 设置禁用状态
+    this.disabled = get(data, propDisabled);
 
     // 设置子节点
     const children = data[propChildren];
@@ -755,29 +755,55 @@ export class TreeNode {
   }
 
   /**
+   * 判断节点为逻辑禁用状态，不包含过滤锁定状态
+   * @return boolean 是否被禁用
+   */
+  public isDisabledState(): boolean {
+    const { tree, parent } = this;
+    const { config } = tree;
+    const { disabled, disableCheck, checkStrictly } = config;
+    let state = disabled || false;
+    if (this.disabled) {
+      // 整个树被禁用，则节点为禁用状态
+      state = true;
+    }
+    if (!checkStrictly && parent?.isDisabledState()) {
+      // 如果 checkStrictly 为 false
+      // 父节点被禁用，则子节点也为禁用状态
+      state = true;
+    }
+    if (typeof disableCheck === 'boolean') {
+      if (disableCheck) {
+        state = true;
+      }
+    } else if (typeof disableCheck === 'function') {
+      // disableCheck 视为禁用节点的过滤函数
+      if (disableCheck(this.getModel())) {
+        state = true;
+      }
+    }
+    return state;
+  }
+
+  /**
    * 判断节点是否被禁用
    * @return boolean 是否被禁用
    */
   public isDisabled(): boolean {
     const { tree } = this;
     const { hasFilter, config } = tree;
-    const { disabled, allowFoldNodeOnFilter, checkStrictly } = config;
+    const { allowFoldNodeOnFilter } = config;
     if (
       hasFilter
       && !allowFoldNodeOnFilter
       && this.vmIsLocked
       && !this.vmIsRest
     ) {
+      // 当前树存在过滤条件，允许节点过滤后被折叠，当前节点为锁定节点，并且不是筛选后剩下的节点
+      // 则该节点应当呈现禁用状态
       return true;
     }
-    let state = disabled || false;
-    if (typeof this.disabled === 'boolean') {
-      state = this.disabled;
-    }
-    if (!checkStrictly && this.parent?.isDisabled()) {
-      state = true;
-    }
-    return state;
+    return this.isDisabledState();
   }
 
   /**
@@ -1122,6 +1148,39 @@ export class TreeNode {
   }
 
   /**
+   * 是否存在未选中的未禁用子节点
+   * @return boolean 未选中的未禁用子节点存在与否
+   */
+  public hasEnableUnCheckedChild(): boolean {
+    const { children } = this;
+    if (!Array.isArray(children) || children.length <= 0) {
+      // 没有子节点
+      return false;
+    }
+    let state = false;
+    children.some((child) => {
+      // 不理会禁用节点
+      if (child.isDisabledState()) return false;
+      // 不理会选中节点
+      if (child.isChecked()) return false;
+      if (child.isIndeterminate()) {
+        // 为半选节点则进行递归检查
+        if (child.hasEnableUnCheckedChild()) {
+          state = true;
+          return true;
+        }
+        // 都尽可能选中了，则检查之后的节点
+        return false;
+      }
+      // 子节点为未选中状态，且非半选状态
+      // 则直接返回 true
+      state = true;
+      return true;
+    });
+    return state;
+  }
+
+  /**
    * 切换节点选中状态
    * - 用于受控逻辑处理
    * - 仅返回预期状态值数组，不直接操作状态
@@ -1131,16 +1190,6 @@ export class TreeNode {
     return this.setChecked(!this.isChecked());
   }
 
-  /**
-   * 设置节点选中状态
-   * - 节点 UI 操作时调用这个方法
-   * - 节点设置自身状态时调用这个方法
-   * @param {boolean} checked 节点选中状态
-   * @param {object} [opts] 操作选项
-   * @param {boolean} [opts.isAction=true] 是否为 UI 动作
-   * @param {boolean} [opts.directly=false] 是否直接操作节点状态
-   * @return string[] 当前树选中的节点值数组
-   */
   public setChecked(
     checked: boolean,
     opts?: TypeSettingOptions
@@ -1148,8 +1197,8 @@ export class TreeNode {
     const { tree } = this;
     const config = tree.config || {};
     const options: TypeSettingOptions = {
-      // 为 true, 为 UI 操作，状态扩散受 disabled 影响
-      // 为 false, 为值操作, 状态扩散不受 disabled 影响
+      // 为 true, 为 UI 操作，状态变更受 disabled 影响
+      // 为 false, 为值操作, 状态变更不受 disabled 影响
       isAction: true,
       // 为 true, 直接操作节点状态
       // 为 false, 返回预期状态
@@ -1157,7 +1206,6 @@ export class TreeNode {
       ...opts,
     };
     let map = tree.checkedMap;
-
     if (!options.directly) {
       map = new Map(tree.checkedMap);
     }
@@ -1165,13 +1213,17 @@ export class TreeNode {
       // 当前节点非可选节点，则不可设置选中态
       return tree.getChecked(map);
     }
-    if (options.isAction && this.isDisabled()) {
+    if (options.isAction && this.isDisabledState()) {
       // 对于 UI 动作，禁用时不可切换选中态
       return tree.getChecked(map);
     }
+
     if (checked === this.isChecked()) {
-      // 值没有变更，则选中态无变化
-      return tree.getChecked(map);
+      const shouldSet = this.isIndeterminate() && !this.hasEnableUnCheckedChild();
+      if (!shouldSet) {
+        // 值没有变更, 则选中态无变化
+        return tree.getChecked(map);
+      }
     }
 
     if (checked) {
@@ -1202,7 +1254,6 @@ export class TreeNode {
         });
       }
     }
-    this.isIndeterminateManual = false;
 
     return tree.getChecked(map);
   }
@@ -1285,6 +1336,9 @@ export class TreeNode {
 
     const { children } = this;
     if (!Array.isArray(children)) return;
+    if (children.length <= 0) return;
+    // 有子节点，则选中态由子节点选中态集合来决定
+    map.delete(this.value);
     children.forEach((node) => {
       // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
       if (options.isAction && node.isDisabled()) return;
