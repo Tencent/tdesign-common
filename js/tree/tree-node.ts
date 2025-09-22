@@ -1,20 +1,26 @@
-import { isNull, isFunction, isNumber, uniqueId, isBoolean, isNil, get } from 'lodash-es';
-import { TreeStore } from './tree-store';
 import {
-  TreeNodeValue,
-  TreeNodeState,
-  TypeIdMap,
-  TypeTreeItem,
-  TypeSettingOptions,
-  TypeTreeNodeModel,
-  TypeTreeNodeData,
-  TypeTreeStoreOptions,
-  TypeFnOperation,
-} from './types';
-import {
-  createNodeModel,
-} from './tree-node-model';
+  get,
+  isBoolean,
+  isFunction,
+  isNil,
+  isNull,
+  isNumber,
+  uniqueId,
+} from 'lodash-es';
 import log from '../log';
+import { createNodeModel } from './tree-node-model';
+import { TreeStore } from './tree-store';
+import type {
+  TreeNodeState,
+  TreeNodeValue,
+  TypeFnOperation,
+  TypeIdMap,
+  TypeSettingOptions,
+  TypeTreeItem,
+  TypeTreeNodeData,
+  TypeTreeNodeModel,
+  TypeTreeStoreOptions,
+} from './types';
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -30,7 +36,12 @@ export const settableStatus: Record<string, boolean | null> = {
 
 export const settableProps = Object.keys(settableStatus);
 
-export const syncableProps = [...settableProps, 'actived', 'expanded', 'checked'];
+export const syncableProps = [
+  ...settableProps,
+  'actived',
+  'expanded',
+  'checked',
+];
 
 export const privateKey = '__tdesign_id__';
 
@@ -113,6 +124,8 @@ export class TreeNode {
   // 节点是否已禁用
   public disabled: null | boolean;
 
+  public isDisabledManual: boolean;
+
   // 节点是否可拖动
   public draggable: null | boolean;
 
@@ -128,7 +141,7 @@ export class TreeNode {
   public constructor(
     tree: TreeStore,
     data?: TypeTreeNodeData,
-    parent?: TreeNode,
+    parent?: TreeNode
   ) {
     this.data = data;
     this.tree = tree;
@@ -139,7 +152,6 @@ export class TreeNode {
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
-    const propDisabled = keys.disabled || 'disabled';
 
     // 节点自身初始化数据
     this.model = null;
@@ -190,8 +202,6 @@ export class TreeNode {
 
     // 设置标签
     this.label = get(data, propLabel) || '';
-    // 设置是否禁用
-    this.disabled = get(data, propDisabled);
 
     // 设置子节点
     const children = data[propChildren];
@@ -756,29 +766,37 @@ export class TreeNode {
    * @return boolean 是否被禁用
    */
   public isDisabledState(): boolean {
+    // 优先级: Tree 配置 > checkStrictly 配置 与 节点 data > disableCheck 配置
     const { tree, parent } = this;
     const { config } = tree;
-    const { disabled, disableCheck, checkStrictly } = config;
-    let state = disabled || false;
-    if (this.disabled) {
-      // 整个树被禁用，则节点为禁用状态
-      state = true;
-    }
-    if (!checkStrictly && parent?.isDisabledState()) {
-      // 如果 checkStrictly 为 false
-      // 父节点被禁用，则子节点也为禁用状态
-      state = true;
-    }
+    const { disabled, disableCheck, checkStrictly, keys = {} } = config;
+
+    let state = this.disabled;
+    // 整个树被禁用，则节点为禁用状态
+    if (disabled) return true;
+
     if (typeof disableCheck === 'boolean') {
-      if (disableCheck) {
-        state = true;
-      }
+      state = disableCheck;
     } else if (typeof disableCheck === 'function') {
       // disableCheck 视为禁用节点的过滤函数
-      if (disableCheck(this.getModel())) {
-        state = true;
+      const stateCheck = disableCheck(this.getModel());
+      if (typeof stateCheck === 'boolean') {
+        state = stateCheck;
       }
     }
+
+    // checkStrictly 为 false 时，子节点跟随父节点的禁用状态
+    if (!checkStrictly && parent?.isDisabledState()) {
+      state = true;
+    } else if (this.isDisabledManual) {
+      // 如果是用户主动设置的，保持用户设置的值
+      state = this.disabled;
+    } else {
+      // 否则从 data 中读取
+      const propDisabled = keys.disabled || 'disabled';
+      state = get(this.data, propDisabled) ?? false;
+    }
+
     return state;
   }
 
@@ -1342,6 +1360,7 @@ export class TreeNode {
    */
   public setDisabled(disabled: boolean) {
     this.disabled = disabled;
+    this.isDisabledManual = true;
     this.update();
     this.updateChildren();
   }
@@ -1362,6 +1381,7 @@ export class TreeNode {
     this.actived = this.isActived();
     this.expanded = this.isExpanded();
     this.visible = this.isVisible();
+    this.disabled = this.isDisabled();
     this.tree.updated(this);
   }
 
