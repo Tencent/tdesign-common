@@ -19,6 +19,7 @@ function getExposedProps(node: TreeNode): TreeNodeModelProps {
     'actived',
     'expanded',
     'checked',
+    'disabled',
     'indeterminate',
     'loading',
   ]) as TreeNodeModelProps;
