@@ -62,8 +62,7 @@ export default function generateBase64Url({
   lineSpace: number,
   fontColor?: string,
   layout: WatermarkLayout,
-}, onFinish: (url: string, backgroundSize?: { width: number }) => void
-): string {
+}, onFinish: (url: string, backgroundSize?: { width: number }) => void): string {
   const isHexagonal = layout === 'hexagonal';
 
   const canvas = document.createElement('canvas');
