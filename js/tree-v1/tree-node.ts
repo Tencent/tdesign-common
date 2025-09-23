@@ -567,19 +567,12 @@ export class TreeNode {
 
   /**
    * 设置节点状态
-   * - 为节点设置独立于配置的 disabled 状态: set({ disabled: true })
-   * - 清除独立于配置的 disabled 状态: set({ disabled: null })
-   * @param {object} item 节点状态对象
-   * @return void
    */
   public set(item: TreeNodeState): void {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (
-        hasOwnProperty.call(settableStatus, key)
-        || key === 'label'
-      ) {
+      if (hasOwnProperty.call(settableStatus, key) || key === 'label') {
         // @ts-ignore
         // TODO: 待移除
         this[key] = item[key];
@@ -763,7 +756,7 @@ export class TreeNode {
 
   /**
    * 判断节点为逻辑禁用状态，不包含过滤锁定状态
-   * - 优先级：Tree 配置 > checkStrictly > 节点 data > disableCheck > 手动
+   * - 优先级：Tree 配置 > checkStrictly > 手动 > 节点 data > disableCheck
    */
   public isDisabledState(): boolean {
     const { tree, parent } = this;
@@ -772,7 +765,12 @@ export class TreeNode {
 
     if (disabled) return true;
 
-    if (!checkStrictly && parent?.isDisabledState()) return true;
+    if (!checkStrictly && parent?.isDisabled()) {
+      this.isDisabledManual = false;
+      return true;
+    }
+
+    if (this.isDisabledManual) return this.disabled;
 
     const propDisabled = keys.disabled || 'disabled';
     const state = get(this.data, propDisabled);
@@ -785,8 +783,6 @@ export class TreeNode {
         return stateCheck;
       }
     }
-
-    if (this.isDisabledManual) return this.disabled;
 
     return false;
   }
@@ -904,13 +900,12 @@ export class TreeNode {
     }
     let checked = false;
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
-    if (checkedMap.get(value)
-      && (
-        // 如果 valueMode 为 all、parentFirst，则视为选中
-        valueMode !== 'onlyLeaf'
+    if (
+      checkedMap.get(value)
+      // 如果 valueMode 为 all、parentFirst，则视为选中
+      && (valueMode !== 'onlyLeaf'
         // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
-        || this.isLeaf()
-      )
+        || this.isLeaf())
     ) {
       return true;
     }
@@ -1193,6 +1188,13 @@ export class TreeNode {
    * @return string[] 当前树选中的节点值数组
    */
   public toggleChecked(): TreeNodeValue[] {
+    if (this.isIndeterminate()) {
+      // 当前节点为半选情况下需要判断子节点是否尽可能全部选中
+      // 存在可操作的未选中的子节点，则应当尽可能选中子节点
+      // 不存在可操作的未选中的子节点，则应取消选中子节点
+      const expectState = this.hasEnableUnCheckedChild();
+      return this.setChecked(expectState);
+    }
     return this.setChecked(!this.isChecked());
   }
 
@@ -1260,6 +1262,8 @@ export class TreeNode {
         });
       }
     }
+
+    this.isIndeterminateManual = false;
 
     return tree.getChecked(map);
   }
@@ -1361,6 +1365,7 @@ export class TreeNode {
    * 设置节点禁用状态
    */
   public setDisabled(disabled: boolean) {
+    if (!this.tree.config.checkStrictly && this.parent?.isDisabled()) return;
     this.disabled = disabled;
     this.isDisabledManual = true;
     this.update();

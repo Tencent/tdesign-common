@@ -569,10 +569,6 @@ export class TreeNode {
 
   /**
    * 设置节点状态
-   * - 为节点设置独立于配置的 disabled 状态: set({ disabled: true })
-   * - 清除独立于配置的 disabled 状态: set({ disabled: null })
-   * @param {object} item 节点状态对象
-   * @return void
    */
   public set(item: TreeNodeState): void {
     const { tree } = this;
@@ -763,7 +759,7 @@ export class TreeNode {
 
   /**
    * 判断节点为逻辑禁用状态，不包含过滤锁定状态
-   * - 优先级：Tree 配置 > checkStrictly > 节点 data > disableCheck > 手动
+   * - 优先级：Tree 配置 > checkStrictly > 手动 > 节点 data > disableCheck
    */
   public isDisabledState(): boolean {
     const { tree, parent } = this;
@@ -772,7 +768,12 @@ export class TreeNode {
 
     if (disabled) return true;
 
-    if (!checkStrictly && parent?.isDisabledState()) return true;
+    if (!checkStrictly && parent?.isDisabled()) {
+      this.isDisabledManual = false;
+      return true;
+    }
+
+    if (this.isDisabledManual) return this.disabled;
 
     const propDisabled = keys.disabled || 'disabled';
     const state = get(this.data, propDisabled);
@@ -785,8 +786,6 @@ export class TreeNode {
         return stateCheck;
       }
     }
-
-    if (this.isDisabledManual) return this.disabled;
 
     return false;
   }
@@ -1351,9 +1350,9 @@ export class TreeNode {
 
   /**
    * 设置节点禁用状态
-   * @return void
    */
   public setDisabled(disabled: boolean) {
+    if (!this.tree.config.checkStrictly && this.parent?.isDisabled()) return;
     this.disabled = disabled;
     this.isDisabledManual = true;
     this.update();
