@@ -124,7 +124,7 @@ export class TreeNode {
   // 节点是否已禁用
   public disabled: boolean;
 
-  public isDisabledManual: boolean;
+  private disableManually: null | boolean;
 
   // 节点是否可拖动
   public draggable: null | boolean;
@@ -765,12 +765,9 @@ export class TreeNode {
 
     if (disabled) return true;
 
-    if (!checkStrictly && parent?.isDisabled()) {
-      this.isDisabledManual = false;
-      return true;
-    }
+    if (!checkStrictly && parent?.isDisabled()) return true;
 
-    if (this.isDisabledManual) return this.disabled;
+    if (typeof this.disableManually === 'boolean') return this.disableManually;
 
     const propDisabled = keys.disabled || 'disabled';
     const state = get(this.data, propDisabled);
@@ -1364,10 +1361,10 @@ export class TreeNode {
   /**
    * 设置节点禁用状态
    */
-  public setDisabled(disabled: boolean) {
+  public setDisabled(disabled: null | boolean) {
     if (!this.tree.config.checkStrictly && this.parent?.isDisabled()) return;
-    this.disabled = disabled;
-    this.isDisabledManual = true;
+    // 当 disabled 为 null 时，恢复为默认的禁用逻辑，而非通过设置强制指定
+    this.disableManually = disabled;
     this.update();
     this.updateChildren();
   }

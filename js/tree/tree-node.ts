@@ -124,7 +124,7 @@ export class TreeNode {
   // 节点是否已禁用
   public disabled: null | boolean;
 
-  public isDisabledManual: boolean;
+  private disableManually: null | boolean;
 
   // 节点是否可拖动
   public draggable: null | boolean;
@@ -178,6 +178,7 @@ export class TreeNode {
     // 初始化默认值为 null, 则在方法判断时，默认以 treeStore.config 为准
     // 传递或者设置属性为 boolean 类型的值，则以节点属性值为准
     // 这种处理方式主要是解决 treeStore.setConfig 方法配置全局属性导致的状态切换与保留的问题
+    this.disableManually = null;
     this.activable = null;
     this.checkable = null;
     this.expandMutex = null;
@@ -768,12 +769,9 @@ export class TreeNode {
 
     if (disabled) return true;
 
-    if (!checkStrictly && parent?.isDisabled()) {
-      this.isDisabledManual = false;
-      return true;
-    }
+    if (!checkStrictly && parent?.isDisabled()) return true;
 
-    if (this.isDisabledManual) return this.disabled;
+    if (typeof this.disableManually === 'boolean') return this.disableManually;
 
     const propDisabled = keys.disabled || 'disabled';
     const state = get(this.data, propDisabled);
@@ -1351,10 +1349,10 @@ export class TreeNode {
   /**
    * 设置节点禁用状态
    */
-  public setDisabled(disabled: boolean) {
+  public setDisabled(disabled: null | boolean) {
     if (!this.tree.config.checkStrictly && this.parent?.isDisabled()) return;
-    this.disabled = disabled;
-    this.isDisabledManual = true;
+    // 当 disabled 为 null 时，恢复为默认的禁用逻辑，而非通过设置强制指定
+    this.disableManually = disabled;
     this.update();
     this.updateChildren();
   }
