@@ -148,7 +148,7 @@ export default function generateBase64Url({
       img.referrerPolicy = 'no-referrer';
       img.src = url;
       img.onload = () => {
-        ctx.save();
+        ctx.save?.();
         drawRotate(ctx, rotateX, rotateY, rotate);
 
         // fix: 灰度效果只影响图片，不影响文字
@@ -187,7 +187,7 @@ export default function generateBase64Url({
           );
         }
 
-        ctx.restore();
+        ctx.restore?.();
 
         // 图片加载完成再返回
         imageLoadCount += 1;
@@ -204,7 +204,7 @@ export default function generateBase64Url({
       } = item;
       const fillStyle = item?.fontColor || fontColor;
 
-      ctx.save();
+      ctx.save?.();
       drawRotate(ctx, rotateX, rotateY, rotate);
       drawText(
         ctx,
@@ -217,7 +217,7 @@ export default function generateBase64Url({
         fontFamily,
         fillStyle
       );
-      ctx.restore();
+      ctx.restore?.();
     }
   };
 
