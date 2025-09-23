@@ -763,41 +763,32 @@ export class TreeNode {
 
   /**
    * 判断节点为逻辑禁用状态，不包含过滤锁定状态
-   * @return boolean 是否被禁用
+   * - 优先级：Tree 配置 > checkStrictly > 节点 data > disableCheck > 手动
    */
   public isDisabledState(): boolean {
-    // 优先级: Tree 配置 > checkStrictly 配置 与 节点 data > disableCheck 配置
     const { tree, parent } = this;
     const { config } = tree;
-    const { disabled, disableCheck, checkStrictly, keys = {} } = config;
+    const { checkStrictly, disabled, disableCheck, keys = {} } = config;
 
-    let state = this.disabled;
-    // 整个树被禁用，则节点为禁用状态
     if (disabled) return true;
 
-    if (typeof disableCheck === 'boolean') {
-      state = disableCheck;
-    } else if (typeof disableCheck === 'function') {
-      // disableCheck 视为禁用节点的过滤函数
+    if (!checkStrictly && parent?.isDisabledState()) return true;
+
+    const propDisabled = keys.disabled || 'disabled';
+    const state = get(this.data, propDisabled);
+    if (typeof state === 'boolean') return state;
+
+    if (disableCheck === true) return true;
+    if (typeof disableCheck === 'function') {
       const stateCheck = disableCheck(this.getModel());
       if (typeof stateCheck === 'boolean') {
-        state = stateCheck;
+        return stateCheck;
       }
     }
 
-    // checkStrictly 为 false 时，子节点跟随父节点的禁用状态
-    if (!checkStrictly && parent?.isDisabledState()) {
-      state = true;
-    } else if (this.isDisabledManual) {
-      // 如果是用户主动设置的，保持用户设置的值
-      state = this.disabled;
-    } else {
-      // 否则从 data 中读取
-      const propDisabled = keys.disabled || 'disabled';
-      state = get(this.data, propDisabled) ?? false;
-    }
+    if (this.isDisabledManual) return this.disabled;
 
-    return state;
+    return false;
   }
 
   /**
@@ -808,7 +799,12 @@ export class TreeNode {
     const { tree } = this;
     const { hasFilter, config } = tree;
     const { allowFoldNodeOnFilter } = config;
-    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) {
+    if (
+      hasFilter
+      && !allowFoldNodeOnFilter
+      && this.vmIsLocked
+      && !this.vmIsRest
+    ) {
       // 当前树存在过滤条件，允许节点过滤后被折叠，当前节点为锁定节点，并且不是筛选后剩下的节点
       // 则该节点应当呈现禁用状态
       return true;
@@ -908,13 +904,12 @@ export class TreeNode {
     }
     let checked = false;
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
-    if (checkedMap.get(value)
-      && (
-        // 如果 valueMode 为 all、parentFirst，则视为选中
-        valueMode !== 'onlyLeaf'
+    if (
+      checkedMap.get(value)
+      // 如果 valueMode 为 all、parentFirst，则视为选中
+      && (valueMode !== 'onlyLeaf'
         // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
-        || this.isLeaf()
-      )
+        || this.isLeaf())
     ) {
       return true;
     }
