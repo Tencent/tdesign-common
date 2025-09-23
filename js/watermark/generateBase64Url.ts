@@ -61,7 +61,7 @@ export default function generateBase64Url({
   watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
   lineSpace: number,
   fontColor?: string,
-  layout: WatermarkLayout,
+  layout?: WatermarkLayout,
 }, onFinish: (url: string, backgroundSize?: { width: number }) => void): string {
   const isHexagonal = layout === 'hexagonal';
 
