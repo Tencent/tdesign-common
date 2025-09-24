@@ -178,11 +178,11 @@ export class TreeNode {
     // 初始化默认值为 null, 则在方法判断时，默认以 treeStore.config 为准
     // 传递或者设置属性为 boolean 类型的值，则以节点属性值为准
     // 这种处理方式主要是解决 treeStore.setConfig 方法配置全局属性导致的状态切换与保留的问题
-    this.disableManually = null;
     this.activable = null;
     this.checkable = null;
     this.expandMutex = null;
     this.draggable = null;
+    this.disableManually = null;
 
     // 为节点设置唯一 id
     // tree 数据替换时，value 相同有可能导致节点状态渲染冲突

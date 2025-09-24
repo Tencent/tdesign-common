@@ -182,6 +182,7 @@ export class TreeNode {
     this.checkable = null;
     this.expandMutex = null;
     this.draggable = null;
+    this.disableManually = null;
 
     // 为节点设置唯一 id
     // tree 数据替换时，value 相同有可能导致节点状态渲染冲突
