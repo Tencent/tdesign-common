@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../_variables.less";
+
 .@{prefix}-chat {
   .reset;
 
@@ -217,6 +219,7 @@
       border-radius: @chat-sender-radius;
       padding: @comp-paddingLR-xs;
       background-color: @bg-color-container;
+      transition: border @anim-time-fn-easing @anim-duration-base, box-shadow @anim-time-fn-easing @anim-duration-base, background-color @anim-time-fn-easing @anim-duration-base;
 
       &--focus {
         border-color: @brand-color;
@@ -353,11 +356,13 @@
         align-items: center;
       }
 
-      .@{prefix}-chat__text, .@{prefix}-chat__detail {
+      .@{prefix}-chat__text,
+      .@{prefix}-chat__detail {
         padding: 0;
         font-size: @font-size-s;
         color: @text-color-disabled;
       }
+
       .@{prefix}-chat__notice {
 
         // 模型切换为content插槽需要覆盖样式
@@ -609,7 +614,8 @@
     border-radius: @border-radius-extraLarge;
   }
 
-  .model-change.@{prefix}-chat__text--variant--outline &, .system.@{prefix}-chat__text--variant--outline & {
+  .model-change.@{prefix}-chat__text--variant--outline &,
+  .system.@{prefix}-chat__text--variant--outline & {
     border: none;
   }
 
@@ -805,8 +811,10 @@
     margin-left: 8px;
   }
 }
+
 // 兼容系统消息和模型切换消息样式
-.@{prefix}-chat__text--model-change, .@{prefix}-chat__text--system {
+.@{prefix}-chat__text--model-change,
+.@{prefix}-chat__text--system {
   background: @bg-color-secondarycontainer;
   padding: @comp-paddingTB-xxs @comp-paddingLR-s;
   font-size: @font-size-s;
