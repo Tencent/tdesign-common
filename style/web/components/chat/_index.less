@@ -296,19 +296,20 @@
         height: @comp-size-s;
         border-radius: @border-radius-circle;
         background-color: @brand-color;
+        border: none;
       }
 
       & &__default:hover {
         color: var(--td-brand-color-hover);
-
-        &.t-button--variant-text:hover {
-          border-color: var(--td-brand-color-hover);
-        }
       }
 
       & &--disabled {
         background-color: @bg-color-secondarycomponent;
         color: @bg-color-container;
+
+        &.t-button--variant-text:hover {
+          color: var(--td-bg-color-container);
+        }
       }
 
       &__stopicon {
