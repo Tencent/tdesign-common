@@ -184,10 +184,10 @@
     box-sizing: border-box;
 
     &__header {
-      border: 1px solid @component-border;
-      border-radius: @chat-sender-radius @chat-sender-radius 0 0;
-      margin-bottom: calc(0px - @comp-margin-l);
-      padding-bottom: @pop-padding-xxl;
+      // border: 1px solid @component-border;
+      // border-radius: @chat-sender-radius @chat-sender-radius 0 0;
+      // margin-bottom: calc(0px - @comp-margin-l);
+      // padding-bottom: @pop-padding-xxl;
 
       ::part(t-attachment-list-wrap) {
         // 附件列表区域的内边距：左右使用 @pop-padding-s 变量，上下为0
@@ -234,12 +234,6 @@
         flex: 1 1 0;
         min-height: 0;
         display: flex;
-      }
-
-      &--attachments {
-        border-top: none;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
       }
     }
 
@@ -313,7 +307,7 @@
         background-color: @bg-color-secondarycomponent;
         color: @bg-color-container;
 
-        &.t-button--variant-text:hover {
+        &.@{prefix}-button--variant-text:hover {
           color: var(--td-bg-color-container);
         }
       }
