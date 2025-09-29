@@ -113,16 +113,18 @@ export default function generateBase64Url({
   ctx.fillStyle = 'transparent';
   ctx.fillRect(0, 0, markWidth, markHeight);
 
-  const contents = Array.isArray(watermarkContent)
-    ? watermarkContent
-    : [{ ...watermarkContent }];
+  const contents = (
+    Array.isArray(watermarkContent)
+      ? watermarkContent
+      : [{ ...watermarkContent }]
+  ) as Array<WatermarkText & WatermarkImage & { top: number }>;
 
   let top = 0;
   let imageLoadCount = 0;
   let totalImages = 0;
 
   // 预处理
-  contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
+  contents.forEach((item) => {
     // eslint-disable-next-line no-param-reassign
     item.top = top;
     if (item.url) {
@@ -222,13 +224,13 @@ export default function generateBase64Url({
   };
 
   // 矩形水印
-  contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
+  contents.forEach((item) => {
     renderWatermarkItem(item, 0, 0, 0, 0);
   });
 
   // 六边形水印
   if (isHexagonal) {
-    contents.forEach((item: WatermarkText & WatermarkImage & { top: number }) => {
+    contents.forEach((item) => {
       renderWatermarkItem(
         item,
         dislocationDrawX,
