@@ -10,6 +10,8 @@
 
 @import "../../mixins/_reset.less";
 
+@import "../../_variables.less";
+
 .@{prefix}-chat {
   .reset;
 
@@ -182,10 +184,10 @@
     box-sizing: border-box;
 
     &__header {
-      border: 1px solid @component-border;
-      border-radius: @chat-sender-radius @chat-sender-radius 0 0;
-      margin-bottom: calc(0px - @comp-margin-l);
-      padding-bottom: @pop-padding-xxl;
+      // border: 1px solid @component-border;
+      // border-radius: @chat-sender-radius @chat-sender-radius 0 0;
+      // margin-bottom: calc(0px - @comp-margin-l);
+      // padding-bottom: @pop-padding-xxl;
 
       ::part(t-attachment-list-wrap) {
         // 附件列表区域的内边距：左右使用 @pop-padding-s 变量，上下为0
@@ -206,7 +208,7 @@
     }
 
     &__upload {
-      margin-right: @comp-margin-m;
+      margin-right: @comp-margin-s;
       width: @comp-size-s;
       height: @comp-size-s;
     }
@@ -215,8 +217,9 @@
       position: relative;
       border: 1px solid @border-level-2-color;
       border-radius: @chat-sender-radius;
-      padding: @comp-paddingLR-xs;
+      padding: @comp-paddingLR-m;
       background-color: @bg-color-container;
+      transition: border @anim-time-fn-easing @anim-duration-base, box-shadow @anim-time-fn-easing @anim-duration-base, background-color @anim-time-fn-easing @anim-duration-base;
 
       &--focus {
         border-color: @brand-color;
@@ -293,11 +296,24 @@
         height: @comp-size-s;
         border-radius: @border-radius-circle;
         background-color: @brand-color;
+        border: none;
+      }
+
+      & &__default:hover {
+        color: var(--td-brand-color-hover);
+      }
+
+      & &__default > div {
+        display: none !important;
       }
 
       & &--disabled {
         background-color: @bg-color-secondarycomponent;
         color: @bg-color-container;
+
+        &.@{prefix}-button--variant-text:hover {
+          color: var(--td-bg-color-container);
+        }
       }
 
       &__stopicon {
