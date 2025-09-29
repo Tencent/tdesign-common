@@ -1,0 +1,36 @@
+---
+title: Watermark 水印
+description: 给页面的某个区域加上水印
+spline: base
+isComponent: true
+toc: false
+---
+
+### 单行文本水印
+
+{{ base }}
+
+### 图片水印
+
+{{ image }}
+
+### 多行文本水印
+
+{{ multiline }}
+
+### 运动文字水印
+
+{{ movingText }}
+
+### 运动图片水印
+
+{{ movingImage }}
+
+### 图片灰阶水印
+
+{{ graylevel }}
+
+### 不同布局的水印
+通过设置 layout 使用不同的布局。
+
+{{ layout }}
