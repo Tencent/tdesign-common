@@ -6,31 +6,40 @@ isComponent: true
 toc: false
 ---
 
-### Base watermark
+## Code Demo
+
+### Component Type
+
+#### Text Watermark
 
 {{ base }}
 
-### Image watermark
+#### Image Watermark
 
 {{ image }}
 
-### Multiline watermark
+#### Grayscale Watermark
 
-{{ multiline }}
+{{ gray }}
 
-### Watermark with moving text
+#### Multi-line Watermark
+
+{{ multiLine }}
+
+#### Multi-line Grayscale Watermark
+
+{{ multiLineGray }}
+
+#### Watermark with Moving Text
 
 {{ movingText }}
 
-### Watermark with moving image
+#### Watermark with Moving Image
 
 {{ movingImage }}
 
-### Graylevel watermark
+### Component Style
 
-{{ graylevel }}
-
-### Different Layout watermark
-set layout to use different layout.
+#### Rectangular and Hexagonal Layout
 
 {{ layout }}
