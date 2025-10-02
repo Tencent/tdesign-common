@@ -1,6 +1,6 @@
 import { WatermarkText, WatermarkImage, WatermarkLayout } from './type';
 
-const ratio = window.devicePixelRatio || 1;
+const ratio = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
 
 // 元素中心为旋转点执行旋转
 const drawRotate = (
