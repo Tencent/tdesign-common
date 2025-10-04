@@ -1,41 +1,5 @@
 import { WatermarkText, WatermarkImage, WatermarkLayout } from './type';
 
-const ratio = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
-
-// 元素中心为旋转点执行旋转
-const drawRotate = (
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  rotate: number
-) => {
-  ctx.translate(x, y);
-  ctx.rotate((Math.PI / 180) * Number(rotate));
-  ctx.translate(-x, -y);
-};
-
-// 绘制文字
-const drawText = (
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  markHeight: number,
-  text: string,
-  fontWeight: string,
-  fontSize: number,
-  fontFamily: string,
-  fillStyle: string
-) => {
-  ctx.font = `normal normal ${fontWeight} ${
-    fontSize * ratio
-  }px/${markHeight}px ${fontFamily}`;
-  ctx.fillStyle = fillStyle;
-  ctx.textAlign = 'start';
-  ctx.textBaseline = 'top';
-
-  ctx.fillText(text, x, y);
-};
-
 export default function generateBase64Url({
   width,
   height,
@@ -75,6 +39,8 @@ export default function generateBase64Url({
     return;
   }
 
+  const ratio = window.devicePixelRatio || 1;
+
   let actualBackgroundSize = {
     width: gapX + width,
   };
@@ -112,6 +78,40 @@ export default function generateBase64Url({
 
   ctx.fillStyle = 'transparent';
   ctx.fillRect(0, 0, markWidth, markHeight);
+
+  // 元素中心为旋转点执行旋转
+  const drawRotate = (
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    rotate: number
+  ) => {
+    ctx.translate(x, y);
+    ctx.rotate((Math.PI / 180) * Number(rotate));
+    ctx.translate(-x, -y);
+  };
+
+  // 绘制文字
+  const drawText = (
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    markHeight: number,
+    text: string,
+    fontWeight: string,
+    fontSize: number,
+    fontFamily: string,
+    fillStyle: string
+  ) => {
+    ctx.font = `normal normal ${fontWeight} ${
+      fontSize * ratio
+    }px/${markHeight}px ${fontFamily}`;
+    ctx.fillStyle = fillStyle;
+    ctx.textAlign = 'start';
+    ctx.textBaseline = 'top';
+
+    ctx.fillText(text, x, y);
+  };
 
   const contents = (
     Array.isArray(watermarkContent)
