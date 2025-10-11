@@ -27,6 +27,11 @@ function calcTextareaHeight(
   minRows: LimitType = 1,
   maxRows: LimitType = null,
 ): CalculateStyleType {
+  // 验证元素有效性 - 修复 Bug #6028
+  if (!targetElement || !targetElement.isConnected) {
+    return { height: 'auto' };
+  }
+
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement('textarea');
     document.body.appendChild(hiddenTextarea);

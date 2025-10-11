@@ -241,7 +241,21 @@ export function calculateNodeSize(targetElement: HTMLElement) {
     };
   }
 
-  const style = window.getComputedStyle(targetElement);
+  // 验证元素有效性 - 修复 Bug #6028
+  if (!targetElement
+      || !(targetElement instanceof Element)
+      || !targetElement.isConnected
+      || !document.contains(targetElement)) {
+    return {
+      paddingSize: 0,
+      borderSize: 0,
+      boxSizing: 'border-box',
+      sizingStyle: '',
+    };
+  }
+
+  try {
+    const style = window.getComputedStyle(targetElement);
 
   const boxSizing = style.getPropertyValue('box-sizing')
     || style.getPropertyValue('-moz-box-sizing')
@@ -261,7 +275,15 @@ export function calculateNodeSize(targetElement: HTMLElement) {
     .map((name) => `${name}:${style.getPropertyValue(name)}`)
     .join(';');
 
-  return {
-    paddingSize, borderSize, boxSizing, sizingStyle,
-  };
+    return {
+      paddingSize, borderSize, boxSizing, sizingStyle,
+    };
+  } catch (error) {
+    return {
+      paddingSize: 0,
+      borderSize: 0,
+      boxSizing: 'border-box',
+      sizingStyle: '',
+    };
+  }
 }
