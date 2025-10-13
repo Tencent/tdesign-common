@@ -32,10 +32,6 @@ spline: ai
 
 {{ chat-with-message }}
 
-### 流式与非流式
-
-{{ sse }}
-
 ### AI 助手可拖拽
 
 搭配`Dialog`非模态类对话框对话框组件
