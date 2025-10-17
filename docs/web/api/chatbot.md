@@ -26,3 +26,6 @@ spline: base
 
 ### 任务规划
 {{ agent }}
+
+### agui
+{{ agui }}
