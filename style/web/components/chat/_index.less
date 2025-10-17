@@ -642,6 +642,40 @@
     color: @code-font-color-base;
     cursor: pointer;
   }
+
+  /* 内置“回到底部”按钮样式，等效于原先 bottomBtn/to-bottom */
+  &__to-bottom {
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    bottom: 210px;
+    padding: 0;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    /* 使用设计变量替换多层阴影，避免直接 rgba */
+    box-shadow: @shadow-2;
+  }
+
+  &__to-bottom-inner {
+    width: 40px;
+    height: 40px;
+    border: 1px solid @border-level-2-color;
+    box-sizing: border-box;
+    background: @bg-color-container;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .t-icon {
+      font-size: 24px;
+    }
+  }
 }
 
 // 思维链样式
