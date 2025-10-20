@@ -192,7 +192,12 @@
 
       ::part(t-attachment-list-wrap) {
         // 附件列表区域的内边距：左右使用 @pop-padding-s 变量，上下为0
-        padding: 0 @pop-padding-s;
+        top: -4px;
+        padding: 0;
+      }
+
+      ::part(t-attachment-list) {
+        padding: 4px 0;
       }
 
       &:empty {
@@ -202,10 +207,6 @@
 
     &__inner-header {
       border-radius: @chat-sender-radius @chat-sender-radius @border-radius-medium @border-radius-medium;
-
-      &:empty {
-        margin-bottom: @comp-margin-s;
-      }
     }
 
     &__upload {
@@ -230,7 +231,6 @@
 
       &__wrapper {
         margin-bottom: @comp-margin-m;
-        padding: 0 @comp-paddingLR-s;
         position: relative;
         flex: 1 1 0;
         min-height: 0;
@@ -278,7 +278,6 @@
     &__footer {
       display: flex;
       justify-content: space-between;
-      padding: 0 @comp-paddingLR-s @comp-paddingTB-s;
     }
 
     &__button {
@@ -301,7 +300,11 @@
       }
 
       & &__default:hover {
-        color: var(--td-brand-color-hover);
+        background-color: var(--td-brand-color-hover);
+      }
+
+      & &__default:focus {
+        background-color: var(--td-brand-color-active);
       }
 
       & &__default > div {
@@ -326,7 +329,6 @@
     }
 
     &__attachment {
-      padding: @comp-paddingLR-m;
       display: block;
     }
   }
