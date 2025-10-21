@@ -1,16 +1,16 @@
-import { isNull, isFunction, isNumber, uniqueId, isBoolean, isNil, get } from 'lodash-es';
-import { TreeStore } from './tree-store';
-import {
-  TreeNodeValue,
-  TreeNodeState,
-  TypeIdMap,
-  TypeTreeItem,
-  TypeSettingOptions,
-  TypeTreeNodeModel,
-  TypeTreeNodeData,
-} from './types';
-import { createNodeModel, updateNodeModel } from './tree-node-model';
+import { get, isBoolean, isFunction, isNil, isNull, isNumber, uniqueId } from 'lodash-es';
 import log from '../log';
+import { createNodeModel, updateNodeModel } from './tree-node-model';
+import { TreeStore } from './tree-store';
+import type {
+  TreeNodeState,
+  TreeNodeValue,
+  TypeIdMap,
+  TypeSettingOptions,
+  TypeTreeItem,
+  TypeTreeNodeData,
+  TypeTreeNodeModel,
+} from './types';
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -318,7 +318,9 @@ export class TreeNode {
     if (!Array.isArray(data)) {
       list.push(data);
     } else {
-      list.push(...data);
+      for (let i = 0; i < data.length; i++) {
+        list.push(data[i]);
+      }
     }
     if (list.length <= 0) {
       return;
@@ -437,7 +439,17 @@ export class TreeNode {
       }
     });
 
-    const updateNodes = parentNode?.walk() || tree.children.map((item) => item.walk()).flat();
+    let updateNodes: TreeNode[] = [];
+    if (parentNode) {
+      updateNodes = parentNode.walk();
+    } else {
+      for (let i = 0; i < tree.children.length; i++) {
+        const childNodes = tree.children[i].walk();
+        for (let j = 0; j < childNodes.length; j++) {
+          updateNodes.push(childNodes[j]);
+        }
+      }
+    }
     updateNodes.forEach((node) => {
       node.update();
       node.updateChecked();
@@ -1388,13 +1400,17 @@ export class TreeNode {
    * @return TreeNode[] 遍历结果节点数组
    */
   public walk(): TreeNode[] {
-    const { children } = this;
-    let list: TreeNode[] = [];
-    list.push(this);
-    if (Array.isArray(children) && children.length > 0) {
-      children.forEach((node) => {
-        list = list.concat(node.walk());
-      });
+    const list: TreeNode[] = [];
+    const stack: TreeNode[] = [this];
+    // 使用栈实现深度优先遍历，避免递归调用栈溢出
+    while (stack.length > 0) {
+      const node = stack.pop();
+      list.push(node);
+      if (Array.isArray(node.children) && node.children.length > 0) {
+        for (let i = node.children.length - 1; i >= 0; i--) {
+          stack.push(node.children[i]);
+        }
+      }
     }
     return list;
   }

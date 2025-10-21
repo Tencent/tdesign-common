@@ -1,19 +1,27 @@
-import { isArray, isFunction, isNumber, isString, difference, camelCase, isPlainObject } from 'lodash-es';
+import {
+  camelCase,
+  difference,
+  isArray,
+  isFunction,
+  isNumber,
+  isPlainObject,
+  isString,
+} from 'lodash-es';
 import mitt from 'mitt';
 
 import { TreeNode } from './tree-node';
-import {
+import type {
   TreeNodeValue,
   TypeIdMap,
-  TypeTimer,
+  TypeRelatedNodesOptions,
   TypeTargetNode,
-  TypeTreeNodeData,
-  TypeTreeItem,
-  TypeTreeStoreOptions,
+  TypeTimer,
+  TypeTreeEventState,
   TypeTreeFilter,
   TypeTreeFilterOptions,
-  TypeRelatedNodesOptions,
-  TypeTreeEventState,
+  TypeTreeItem,
+  TypeTreeNodeData,
+  TypeTreeStoreOptions,
 } from './types';
 
 // 构建一个树的数据模型
@@ -462,9 +470,12 @@ export class TreeStore {
   public refreshNodes(): void {
     const { children, nodes } = this;
     nodes.length = 0;
+    // 使用迭代方式替代递归，避免栈溢出
     children.forEach((node) => {
       const list = node.walk();
-      Array.prototype.push.apply(nodes, list);
+      for (let i = 0; i < list.length; i++) {
+        nodes.push(list[i]);
+      }
     });
   }
 
@@ -865,14 +876,12 @@ export class TreeStore {
       if (node) {
         const parents = node.getParents().reverse();
         const children = node.walk();
-        let related = [];
         if (conf.withParents) {
-          related = parents.concat(children);
-        } else {
-          related = children;
+          parents.forEach((relatedNode) => {
+            map.set(relatedNode.value, relatedNode);
+          });
         }
-        // 用 map 实现节点去重
-        related.forEach((relatedNode) => {
+        children.forEach((relatedNode) => {
           map.set(relatedNode.value, relatedNode);
         });
       }
