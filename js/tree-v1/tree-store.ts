@@ -930,30 +930,31 @@ export class TreeStore {
       // 所在判断过滤条件是否存在之前，就要调用这里的清理逻辑
       // 不想在每次渲染时都做这个清空判断
       // 所以判断一下之前是否有进行过滤
-      allNodes.forEach((node: TreeNode) => {
+      for (let i = 0; i < allNodes.length; i++) {
+        const node = allNodes[i];
         // 先清空所有锁定状态
         if (node.vmIsLocked) {
           // lock 方法内部有状态计算
           // 所以要减少 lock 方法调用次数
           node.lock(false);
         }
-      });
+      }
     }
 
     const currentFilter = config.filter;
     // 当前没有过滤器
     // 则无需处理锁定节点
     if (!currentFilter || !isFunction(currentFilter)) return;
-    this.prevFilter = config.filter;
+    this.prevFilter = currentFilter;
 
+    // 数据量大时，for 比 forEach 性能更好
     // 全部节点要经过排序，才能使用这个遍历
     // 比起每个过滤节点调用 getParents 方法检查父节点状态
     // 复杂度 O(N*log(N)) => O(N)
-    allNodes.reverse().forEach((node: TreeNode) => {
-      // 数组颠倒后，等于是从每个节点的子节点开始判断
-      // 想象为从展开树的最底部向上遍历
+    for (let i = allNodes.length - 1; i >= 0; i--) {
+      const node = allNodes[i];
       const parent = node.getParent();
-      if (!parent) return;
+      if (!parent) continue;
       if (node.vmIsRest || node.vmIsLocked) {
         // 当前节点被过滤条件命中
         // 或者当前节点被锁定
@@ -964,7 +965,7 @@ export class TreeStore {
           parent.lock(true);
         }
       }
-    });
+    }
   }
 }
 

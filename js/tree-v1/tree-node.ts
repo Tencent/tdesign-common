@@ -1405,6 +1405,7 @@ export class TreeNode {
     // 使用栈实现深度优先遍历，避免递归调用栈溢出
     while (stack.length > 0) {
       const node = stack.pop();
+      if (!node) continue;
       list.push(node);
       if (Array.isArray(node.children) && node.children.length > 0) {
         for (let i = node.children.length - 1; i >= 0; i--) {
