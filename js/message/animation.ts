@@ -83,7 +83,7 @@ function fadeIn(dom: HTMLElement, placement: string) {
 
 function fadeOut(dom: HTMLElement, placement: string, onFinish: Function) {
   if (!dom) return;
-  const offsetHeight = dom?.offsetHeight || 0;
+  const offsetHeight = dom.offsetHeight || 0;
   const fadeOutKeyframes: Array<Keyframe> | null = getFadeOutKeyframes(placement, offsetHeight);
   if (!fadeOutKeyframes) {
     onFinish();
