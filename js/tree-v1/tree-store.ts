@@ -870,22 +870,25 @@ export class TreeStore {
       ...options,
     };
     const map = new Map();
-    list.forEach((value) => {
-      if (map.get(value)) return;
+    const addNodesToMap = (nodes: TreeNode[]) => {
+      for (let j = 0; j < nodes.length; j++) {
+        const relatedNode = nodes[j];
+        map.set(relatedNode.value, relatedNode);
+      }
+    };
+    for (let i = 0; i < list.length; i++) {
+      const value = list[i];
+      if (map.get(value)) continue;
       const node = this.getNode(value);
       if (node) {
         const parents = node.getParents().reverse();
         const children = node.walk();
         if (conf.withParents) {
-          parents.forEach((relatedNode) => {
-            map.set(relatedNode.value, relatedNode);
-          });
+          addNodesToMap(parents);
         }
-        children.forEach((relatedNode) => {
-          map.set(relatedNode.value, relatedNode);
-        });
+        addNodesToMap(children);
       }
-    });
+    }
     let relatedNodes = Array.from(map.values());
     if (conf.reverse) {
       relatedNodes = relatedNodes.reverse();
