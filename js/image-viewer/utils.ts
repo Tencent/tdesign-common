@@ -20,6 +20,16 @@ const directDownload = (imgSrc: string, name: string) => {
   a.remove();
 };
 
+const fileDownload = (obj: Blob | MediaSource, name: string) => {
+  const url = URL.createObjectURL(obj);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+};
+
 const canvasDownload = (imgSrc: string, name: string) => {
   const image = new Image();
   image.setAttribute('crossOrigin', 'anonymous');
@@ -40,29 +50,13 @@ const canvasDownload = (imgSrc: string, name: string) => {
 
     canvas.toBlob(
       (blob) => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.download = name;
-        a.href = url;
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
+        fileDownload(blob, name);
       },
       mimeType,
       quality
     );
   };
   image.src = imgSrc;
-};
-
-const fileDownload = (file: File, name: string) => {
-  const url = URL.createObjectURL(file);
-  const a = document.createElement('a');
-  a.download = name;
-  a.href = url;
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
 };
 
 export const downloadImage = (imgSrc: string | File) => {
