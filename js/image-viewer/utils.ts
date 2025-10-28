@@ -1,12 +1,14 @@
 import { isArray, isString } from 'lodash-es';
 import type { ImageInfo, Images } from './types';
 
+const COMPRESSED_FORMATS = ['jpg', 'jpeg', 'webp'];
+
 const isSameOrigin = (url: string) => {
   try {
     const imgUrl = new URL(url, window.location.href);
     return imgUrl.origin === window.location.origin;
   } catch {
-    return true;
+    return false;
   }
 };
 
@@ -29,17 +31,27 @@ const canvasDownload = (imgSrc: string, name: string) => {
 
     const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.download = name;
-      a.href = url;
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
-  };
 
+    const extension = name.split('.').pop()?.toLowerCase() || 'png';
+    const mimeType = `image/${extension === 'jpg' ? 'jpeg' : extension}`;
+
+    let quality = 1.0;
+    if (COMPRESSED_FORMATS.includes(extension)) quality = 0.95;
+
+    canvas.toBlob(
+      (blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.download = name;
+        a.href = url;
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      },
+      mimeType,
+      quality
+    );
+  };
   image.src = imgSrc;
 };
 
@@ -53,7 +65,7 @@ const fileDownload = (file: File, name: string) => {
   URL.revokeObjectURL(url);
 };
 
-export const downloadFile = (imgSrc: string | File) => {
+export const downloadImage = (imgSrc: string | File) => {
   const randomName = Math.random().toString(32).slice(2);
 
   if (imgSrc instanceof File) {
