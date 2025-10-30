@@ -23,6 +23,10 @@
     align-items: start;
   }
 
+  &--password {
+    letter-spacing: 6px;
+  }
+
   &__wrap--prefix {
     display: flex;
   }
@@ -40,11 +44,11 @@
 
     .@{prefix}-input--layout-horizontal & {
       min-width: 2em;
-      max-width: var(--td-input-label-width, 5em);
+      max-width: @input-label-text-max-width;
     }
 
     .@{prefix}-input--layout-vertical & {
-      width: var(--td-input-label-width, 100%);
+      width: @input-label-text-width;
       font-size: @font-size-base;
       padding-bottom: 8px;
     }
