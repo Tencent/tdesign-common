@@ -1,8 +1,6 @@
 import { isArray, isString } from 'lodash-es';
 import type { ImageInfo, Images } from './types';
 
-const COMPRESSED_FORMATS = ['jpg', 'jpeg', 'webp'];
-
 const isSameOrigin = (url: string) => {
   try {
     const imgUrl = new URL(url, window.location.href);
@@ -45,16 +43,9 @@ const canvasDownload = (imgSrc: string, name: string) => {
     const extension = name.split('.').pop()?.toLowerCase() || 'png';
     const mimeType = `image/${extension === 'jpg' ? 'jpeg' : extension}`;
 
-    let quality = 1.0;
-    if (COMPRESSED_FORMATS.includes(extension)) quality = 0.95;
-
-    canvas.toBlob(
-      (blob) => {
-        fileDownload(blob, name);
-      },
-      mimeType,
-      quality
-    );
+    canvas.toBlob((blob) => {
+      fileDownload(blob, name);
+    }, mimeType);
   };
   image.src = imgSrc;
 };
