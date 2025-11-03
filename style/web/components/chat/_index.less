@@ -285,6 +285,10 @@
       display: flex;
       align-items: center;
 
+      .@{prefix}-button .@{prefix}-icon {
+        font: var(--td-font-body-large);
+      }
+
       &__actions {
         margin-right: @comp-margin-m;
       }
@@ -300,11 +304,11 @@
         border: none;
       }
 
-      & &__default:hover {
+      & &__default:not(&--disabled):hover {
         background-color: var(--td-brand-color-hover);
       }
 
-      & &__default:focus {
+      & &__default:not(&--disabled):focus {
         background-color: var(--td-brand-color-active);
       }
 
