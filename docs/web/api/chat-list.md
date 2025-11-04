@@ -1,6 +1,6 @@
 ---
-title: Chat
-description: 用于 ChatBot 对话或者普通对话场景的组件。
+title: ChatList
+description: 用于展示对话或者普通对话场景的组件。
 isComponent: true
 usage: { title: "", description: "" }
 spline: ai
@@ -23,7 +23,7 @@ spline: ai
 
 ### 默认插槽
 
-- 使用 `t-chat` 嵌套 `t-chat-message` 遍历聊天列表的方式，提供更灵活的消息渲染控制
+- 使用 `t-chat-list` 嵌套 `t-chat-message` 遍历聊天列表的方式，提供更灵活的消息渲染控制
 - 通过默认插槽自定义整个聊天列表的渲染逻辑
 - 支持结构化内容类型：`text`、`markdown`、`thinking` 等
 - 灵活配置聊天气泡对齐方式
