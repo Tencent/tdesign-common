@@ -240,11 +240,13 @@ export function getDefaultFormat({
   format,
   valueType,
   enableTimePicker,
+  defaultTime,
 }: {
   mode?: string;
   format?: string;
   valueType?: string;
   enableTimePicker?: boolean;
+  defaultTime?: string | string[];
 }) {
   if (mode === 'year') {
     return {
@@ -275,10 +277,12 @@ export function getDefaultFormat({
     };
   }
   if (mode === 'date') {
+    const hasTime = enableTimePicker || !!defaultTime;
+
     return {
-      format: format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
-      valueType: valueType || format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
-      timeFormat: extractTimeFormat(format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
+      format: format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
+      valueType: valueType || format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
+      timeFormat: extractTimeFormat(format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
     };
   }
   log.error('DatePicker', `Invalid mode: ${mode}`);
