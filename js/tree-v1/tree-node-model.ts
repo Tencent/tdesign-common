@@ -1,13 +1,7 @@
 import { isUndefined, isBoolean, pick, omit } from 'lodash-es';
 import { TreeNode } from './tree-node';
 import { OptionData } from '../common';
-import {
-  TreeNodeValue,
-  TypeTreeNodeModel,
-  TypeTreeNodeData,
-  TypeTreeItem,
-  TreeNodeModelProps,
-} from './types';
+import { TreeNodeValue, TypeTreeNodeModel, TypeTreeNodeData, TypeTreeItem, TreeNodeModelProps } from './types';
 import log from '../log/log';
 
 // 获取节点需要暴露的属性
@@ -195,7 +189,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       }
 
       const parents = targetNode.getParents();
-      const parentValues = parents.map((pnode) => (pnode.value));
+      const parentValues = parents.map((pnode) => pnode.value);
       if (parentValues.indexOf(node.value) < 0) {
         log.warnOnce('Tree', `\`${value}\` is not a childNode of current node`);
         return;

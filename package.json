@@ -50,11 +50,14 @@
     "dayjs": "^1.11.4",
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^5.5.4",
     "husky": "^8.0.1",
     "lint-staged": "~13.2.0",
     "min-indent": "^1.0.1",
     "postcss-less": "^5.0.0",
+    "prettier": "^3.6.2",
     "stylelint": "~14.16.1",
     "stylelint-config-standard": "^24.0.0",
     "typescript": "^5.7.3",
@@ -86,8 +89,12 @@
     "**/*.{css,wxss,less}": [
       "stylelint"
     ],
-    "**/*.{js,ts}": [
+    "**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",
       "eslint --max-warnings 0 --no-ignore"
+    ],
+    "**/*.{json,md}": [
+      "prettier --write"
     ]
   }
 }

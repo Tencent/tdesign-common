@@ -21,10 +21,7 @@ export const getDiameter = (size: string | number): number => {
 };
 
 // 获取环形进度条 环的宽度
-export const getCircleStokeWidth = (
-  strokeWidth: string | number,
-  size: string | number,
-): number => {
+export const getCircleStokeWidth = (strokeWidth: string | number, size: string | number): number => {
   if (!strokeWidth) {
     if (size === 'micro') {
       return 2;

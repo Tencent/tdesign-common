@@ -10,10 +10,7 @@ export function getStopStyle(position: number, isVertical: boolean) {
 /**
  * 格式化返回slider初始值
  */
-export const formatSliderValue = (
-  val: number | number[],
-  type: 'first' | 'second'
-) => {
+export const formatSliderValue = (val: number | number[], type: 'first' | 'second') => {
   if (type === 'first') {
     if (val instanceof Array) {
       return val[0];

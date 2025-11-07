@@ -16,39 +16,38 @@ export const TIME_FORMAT = 'HH:mm:ss';
 
 // extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
 export function extractTimeFormat(dateFormat: string = '') {
-  return dateFormat
-    .replace(/\W?Y{2,4}|\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '')
-    .trim();
+  return dateFormat.replace(/\W?Y{2,4}|\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '').trim();
 }
 
 // 统一解析日期格式字符串成 Dayjs 对象
-export function parseToDayjs(
-  value: string | Date | number,
-  format: string,
-  timeOfDay?: string,
-  dayjsLocale?: string,
-) {
+export function parseToDayjs(value: string | Date | number, format: string, timeOfDay?: string, dayjsLocale?: string) {
   if (value === '' || value === null) return dayjs();
 
   let dateText = value;
   // format week
   if (/[w|W]/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
+      dateText = dayjs(dateText)
+        .locale(dayjsLocale || 'zh-cn')
+        .format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
 
-    let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
+    let firstWeek = dayjs(yearStr, 'YYYY')
+      .locale(dayjsLocale || 'zh-cn')
+      .startOf('year');
     // 第一周ISO定义: 本年度第一个星期四所在的星期
     // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
     // 否则本周即为第一周
     if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
 
     // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
-    const weekCounts = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').isoWeeksInYear();
+    const weekCounts = dayjs(yearStr, 'YYYY')
+      .locale(dayjsLocale || 'zh-cn')
+      .isoWeeksInYear();
     for (let i = 0; i <= weekCounts; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
@@ -62,7 +61,9 @@ export function parseToDayjs(
   // format quarter
   if (/Q/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
+      dateText = dayjs(dateText)
+        .locale(dayjsLocale || 'zh-cn')
+        .format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
@@ -78,13 +79,14 @@ export function parseToDayjs(
   }
 
   // 兼容数据格式不标准场景 YYYY-MM-D
-  const result = dayjs(dateText, format).isValid()
-    ? dayjs(dateText, format)
-    : dayjs(dateText);
+  const result = dayjs(dateText, format).isValid() ? dayjs(dateText, format) : dayjs(dateText);
 
   // 兼容数据异常情况
   if (!result.isValid()) {
-    log.error('DatePicker', `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
+    log.error(
+      'DatePicker',
+      `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`
+    );
     return dayjs();
   }
 
@@ -111,10 +113,10 @@ function formatRange({
 
   // 保证后面的时间大于前面的时间
   if (
-    autoSwap
-    && dayjsDateList[0]
-    && dayjsDateList[1]
-    && dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
+    autoSwap &&
+    dayjsDateList[0] &&
+    dayjsDateList[1] &&
+    dayjsDateList[0].toDate().getTime() > dayjsDateList[1].toDate().getTime()
   ) {
     // 数据兼容规则
     dayjsDateList = [dayjsDateList[1], dayjsDateList[0]];
@@ -191,7 +193,7 @@ export function formatDate(
     targetFormat,
     dayjsLocale = 'zh-cn',
     autoSwap,
-  }: { format: string; dayjsLocale?: string, targetFormat?: string; autoSwap?: boolean }
+  }: { format: string; dayjsLocale?: string; targetFormat?: string; autoSwap?: boolean }
 ) {
   let result;
 

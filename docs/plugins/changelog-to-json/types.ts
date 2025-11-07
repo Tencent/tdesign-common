@@ -2,7 +2,7 @@ import { LOG_TYPES } from '.';
 
 export type Platform = 'web' | 'mobile';
 
-export type LogType = typeof LOG_TYPES[number];
+export type LogType = (typeof LOG_TYPES)[number];
 
 type LogMetadata = {
   version: string;

@@ -6,12 +6,12 @@ module.exports = {
     mocha: true,
     jest: true,
   },
-  extends: ['airbnb-base'],
-  parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint',
-    'import',
+  extends: [
+    'airbnb-base',
+    'plugin:prettier/recommended', // 添加 Prettier 集成
   ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'import'],
   // 配置小程序内全局函数，避免报错
   globals: {
     require: true,
@@ -28,12 +28,7 @@ module.exports = {
     'import/resolver': {
       node: {},
     },
-    'import/extensions': [
-      '.js',
-      '.jsx',
-      '.ts',
-      '.tsx',
-    ],
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
   },
   overrides: [
     {
@@ -80,14 +75,16 @@ module.exports = {
         paths: [
           {
             name: 'lodash',
-            message: 'Please use lodash-es instead.'
-          }
+            message: 'Please use lodash-es instead.',
+          },
         ],
-        patterns: [{
-          group: ['js/*'],
-          message: 'Importing from paths starting with "js/" is not allowed. Please use "../" instead.'
-        }]
-      }
-    ]
+        patterns: [
+          {
+            group: ['js/*'],
+            message: 'Importing from paths starting with "js/" is not allowed. Please use "../" instead.',
+          },
+        ],
+      },
+    ],
   },
 };

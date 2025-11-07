@@ -23,12 +23,7 @@ export const WEB_COMPONENT_MAP: Record<string, string[]> = {
   'color-picker': ['ColorPicker', 'ColorPickerPanel'],
   comment: ['Comment'],
   'config-provider': ['ConfigProvider'],
-  'date-picker': [
-    'DatePicker',
-    'DatePickerPanel',
-    'DateRangePicker',
-    'DateRangePickerPanel',
-  ],
+  'date-picker': ['DatePicker', 'DatePickerPanel', 'DateRangePicker', 'DateRangePickerPanel'],
   descriptions: ['Descriptions', 'DescriptionsItem'],
   dialog: ['Dialog', 'DialogPlugin'],
   divider: ['Divider'],
@@ -153,14 +148,5 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
 };
 
 export const CHAT_COMPONENT_MAP: Record<string, string[]> = {
-  chat: [
-    'Chat',
-    'ChatItem',
-    'ChatInput',
-    'ChatContent',
-    'ChatReasoning',
-    'ChatAction',
-    'ChatLoading',
-    'ChatSender',
-  ],
+  chat: ['Chat', 'ChatItem', 'ChatInput', 'ChatContent', 'ChatReasoning', 'ChatAction', 'ChatLoading', 'ChatSender'],
 };

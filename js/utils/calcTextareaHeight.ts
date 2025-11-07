@@ -2,8 +2,8 @@ import { isNull } from 'lodash-es';
 import { calculateNodeSize } from './helper';
 
 type CalculateStyleType = {
-  height?: string,
-  minHeight?: string
+  height?: string;
+  minHeight?: string;
 };
 
 type LimitType = number | null;
@@ -25,19 +25,14 @@ let hiddenTextarea: HTMLTextAreaElement;
 function calcTextareaHeight(
   targetElement: HTMLTextAreaElement,
   minRows: LimitType = 1,
-  maxRows: LimitType = null,
+  maxRows: LimitType = null
 ): CalculateStyleType {
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement('textarea');
     document.body.appendChild(hiddenTextarea);
   }
 
-  const {
-    paddingSize,
-    borderSize,
-    boxSizing,
-    sizingStyle,
-  } = calculateNodeSize(targetElement);
+  const { paddingSize, borderSize, boxSizing, sizingStyle } = calculateNodeSize(targetElement);
 
   hiddenTextarea.setAttribute('style', `${sizingStyle};${TEXTAREA_STYLE}`);
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';

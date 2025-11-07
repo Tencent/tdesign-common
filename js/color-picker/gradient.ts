@@ -67,7 +67,7 @@ const generateRegExp = (): RegExpLib => {
   const // "red", "transparent".
     rColor = combineRegExp(
       ['(?:', rColorHex, '|', '(?:rgb|hsl)', rDigits3, '|', '(?:rgba|hsla)', rDigits4, '|', rKeyword, ')'],
-      '',
+      ''
     );
   const rColorStop = combineRegExp([rColor, '(?:\\s+', rValue, '(?:\\s+', rValue, ')?)?'], '');
   const // Single Color Stop, optional %, optional length.
@@ -79,7 +79,7 @@ const generateRegExp = (): RegExpLib => {
   const // Capture 1:"line", 2:"angle" (optional), 3:"side corner" (optional) and 4:"stop list".
     rColorStopSearch = combineRegExp(
       ['\\s*(', rColor, ')', '(?:\\s+', '(', rValue, '))?', '(?:', rComma, '\\s*)?'],
-      searchFlags,
+      searchFlags
     ); // Capture 1:"color" and 2:"position" (optional).
 
   return {
@@ -213,20 +213,18 @@ export const parseGradientString = (input: string): GradientColors | false => {
   const result: ParseGradientResult = parseGradient(REGEXP_LIB, match[1]);
   if (result.original.trim() !== match[1].trim()) return false;
 
-  const points: GradientColorPoint[] = result.colorStopList.map(
-    ({ color, position }, index, array) => {
-      const point = Object.create(null);
-      point.color = tinyColor(color).toRgbString();
+  const points: GradientColorPoint[] = result.colorStopList.map(({ color, position }, index, array) => {
+    const point = Object.create(null);
+    point.color = tinyColor(color).toRgbString();
 
-      let left = parseFloat(position);
-      if (Number.isNaN(left)) {
-        left = (index / (array.length - 1)) * 100;
-      }
-
-      point.left = left;
-      return point;
+    let left = parseFloat(position);
+    if (Number.isNaN(left)) {
+      left = (index / (array.length - 1)) * 100;
     }
-  );
+
+    point.left = left;
+    return point;
+  });
   gradientColors.points = points;
 
   let degree = parseInt(result.angle, 10);

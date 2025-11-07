@@ -67,12 +67,9 @@ describe('国际化函数 t', () => {
 
   describe('复合使用（复数 + 变量替换）', () => {
     it('应该正确处理复数选择和变量替换的组合', () => {
-      expect(t('no items found | found {count} item | found {count} items', 0))
-        .toBe('no items found');
-      expect(t('no items found | found {count} item | found {count} items', 1, { count: 1 }))
-        .toBe('found 1 item');
-      expect(t('no items found | found {count} item | found {count} items', 3, { count: 3 }))
-        .toBe('found 3 items');
+      expect(t('no items found | found {count} item | found {count} items', 0)).toBe('no items found');
+      expect(t('no items found | found {count} item | found {count} items', 1, { count: 1 })).toBe('found 1 item');
+      expect(t('no items found | found {count} item | found {count} items', 3, { count: 3 })).toBe('found 3 items');
     });
 
     it('应该正确处理只传入 count 的情况', () => {
@@ -83,12 +80,11 @@ describe('国际化函数 t', () => {
     });
 
     it('应该正确处理包含其他变量的复数文本', () => {
-      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 0, { type: 'file' }))
-        .toBe('no file');
-      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 1, { count: 1, type: 'file' }))
-        .toBe('one file (1)');
-      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 5, { count: 5, type: 'file' }))
-        .toBe('5 files');
+      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 0, { type: 'file' })).toBe('no file');
+      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 1, { count: 1, type: 'file' })).toBe(
+        'one file (1)'
+      );
+      expect(t('no {type} | one {type} ({count}) | {count} {type}s', 5, { count: 5, type: 'file' })).toBe('5 files');
     });
   });
 
@@ -137,7 +133,8 @@ describe('国际化函数 t', () => {
 
   describe('实际应用场景', () => {
     it('搜索结果场景', () => {
-      const pattern = 'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.';
+      const pattern =
+        'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.';
       const getSearchResultText = (count: number, result: string) => t(pattern, count, { count, result });
 
       expect(getSearchResultText(0, 'apple')).toBe('Search "apple". Found no items.');

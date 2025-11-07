@@ -56,16 +56,16 @@ export function t<T>(pattern: T, ...args: any[]): string {
       const [firstArg, secondArg] = args;
 
       if (typeof firstArg === 'number') {
-      // 第一个参数是数字，表示 count
+        // 第一个参数是数字，表示 count
         count = firstArg;
         if (secondArg && typeof secondArg === 'object') {
-        // 第二个参数是对象，表示额外的数据
+          // 第二个参数是对象，表示额外的数据
           data = secondArg;
         } else {
           data.count = count; // 若没有提供第二个参数，则将 count 添加到数据中
         }
       } else if (typeof firstArg === 'object' && firstArg !== null) {
-      // 第一个参数是对象，表示数据
+        // 第一个参数是对象，表示数据
         data = firstArg;
       }
     }
@@ -82,7 +82,7 @@ export function t<T>(pattern: T, ...args: any[]): string {
         if (pluralIndex < pluralParts.length) {
           text = pluralParts[pluralIndex];
         } else {
-        // 如果索引超出范围，使用最后一个选项
+          // 如果索引超出范围，使用最后一个选项
           text = pluralParts[pluralParts.length - 1];
         }
       } else {

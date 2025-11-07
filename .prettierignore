@@ -1,0 +1,21 @@
+# 依赖目录
+node_modules
+**/node_modules
+
+# 构建产物
+dist
+lib
+es
+coverage
+*.min.js
+
+# 锁文件
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# 其他
+.DS_Store
+.vscode
+.idea
+*.log

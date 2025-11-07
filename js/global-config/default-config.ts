@@ -90,6 +90,6 @@ export default {
       fail: undefined,
       empty: undefined,
       networkError: undefined,
-    }
+    },
   },
 } as const;

@@ -25,17 +25,17 @@ const CONFIG = {
   'tdesign-vue': {
     sourcePath: path.resolve(__dirname, resolveCwd('src')),
     targetPath: path.resolve(__dirname, resolveCwd('src')),
-    defaultTemplate: 'import { mount } from \'@vue/test-utils\';',
+    defaultTemplate: "import { mount } from '@vue/test-utils';",
   },
   'tdesign-vue-next': {
     sourcePath: path.resolve(__dirname, resolveCwd('examples')),
     targetPath: path.resolve(__dirname, resolveCwd('test/unit')),
-    defaultTemplate: 'import { mount } from \'@vue/test-utils\';',
+    defaultTemplate: "import { mount } from '@vue/test-utils';",
   },
   'tdesign-react': {
     sourcePath: path.resolve(__dirname, resolveCwd('src/examples')),
     targetPath: path.resolve(__dirname, resolveCwd('test/unit')),
-    defaultTemplate: 'import { mount } from \'@vue/test-utils\';',
+    defaultTemplate: "import { mount } from '@vue/test-utils';",
   },
 };
 
@@ -76,8 +76,8 @@ function outputOneComponentTestFile(component, demoFiles) {
     demos.push(`  ${name},`);
   });
   if (fixedDateComponentList.includes(component)) {
-    imports.unshift('import MockDate from \'mockdate\';\n');
-    imports.push('\nMockDate.set(\'2020-12-28\');');
+    imports.unshift("import MockDate from 'mockdate';\n");
+    imports.push("\nMockDate.set('2020-12-28');");
   }
 
   demos.push('};');

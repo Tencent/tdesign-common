@@ -48,5 +48,5 @@ export function getGitTimestamp(file) {
 
 export default {
   compileUsage,
-  getGitTimestamp
+  getGitTimestamp,
 };

@@ -41,14 +41,7 @@ export default class Tween {
 
   private keys: Record<string, number>;
 
-  constructor({
-    from,
-    to,
-    duration = 200,
-    onStart,
-    onUpdate = () => {},
-    onFinish,
-  }: TweenSettings) {
+  constructor({ from, to, duration = 200, onStart, onUpdate = () => {}, onFinish }: TweenSettings) {
     this.from = from;
     this.to = to;
     this.duration = duration;
