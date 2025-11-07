@@ -1,20 +1,26 @@
-import { isNull, isFunction, isNumber, uniqueId, isBoolean, isNil, get } from 'lodash-es';
-import { TreeStore } from './tree-store';
 import {
-  TreeNodeValue,
-  TreeNodeState,
-  TypeIdMap,
-  TypeTreeItem,
-  TypeSettingOptions,
-  TypeTreeNodeModel,
-  TypeTreeNodeData,
-  TypeTreeStoreOptions,
-  TypeFnOperation,
-} from './types';
-import {
-  createNodeModel,
-} from './tree-node-model';
+  get,
+  isBoolean,
+  isFunction,
+  isNil,
+  isNull,
+  isNumber,
+  uniqueId,
+} from 'lodash-es';
 import log from '../log';
+import { createNodeModel } from './tree-node-model';
+import { TreeStore } from './tree-store';
+import type {
+  TreeNodeState,
+  TreeNodeValue,
+  TypeFnOperation,
+  TypeIdMap,
+  TypeSettingOptions,
+  TypeTreeItem,
+  TypeTreeNodeData,
+  TypeTreeNodeModel,
+  TypeTreeStoreOptions,
+} from './types';
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -30,7 +36,12 @@ export const settableStatus: Record<string, boolean | null> = {
 
 export const settableProps = Object.keys(settableStatus);
 
-export const syncableProps = [...settableProps, 'actived', 'expanded', 'checked'];
+export const syncableProps = [
+  ...settableProps,
+  'actived',
+  'expanded',
+  'checked',
+];
 
 export const privateKey = '__tdesign_id__';
 
@@ -113,6 +124,8 @@ export class TreeNode {
   // 节点是否已禁用
   public disabled: null | boolean;
 
+  private disableManually: null | boolean;
+
   // 节点是否可拖动
   public draggable: null | boolean;
 
@@ -128,7 +141,7 @@ export class TreeNode {
   public constructor(
     tree: TreeStore,
     data?: TypeTreeNodeData,
-    parent?: TreeNode,
+    parent?: TreeNode
   ) {
     this.data = data;
     this.tree = tree;
@@ -139,7 +152,6 @@ export class TreeNode {
     const propChildren = keys.children || 'children';
     const propLabel = keys.label || 'label';
     const propValue = keys.value || 'value';
-    const propDisabled = keys.disabled || 'disabled';
 
     // 节点自身初始化数据
     this.model = null;
@@ -170,6 +182,7 @@ export class TreeNode {
     this.checkable = null;
     this.expandMutex = null;
     this.draggable = null;
+    this.disableManually = null;
 
     // 为节点设置唯一 id
     // tree 数据替换时，value 相同有可能导致节点状态渲染冲突
@@ -190,8 +203,6 @@ export class TreeNode {
 
     // 设置标签
     this.label = get(data, propLabel) || '';
-    // 设置是否禁用
-    this.disabled = get(data, propDisabled) || false;
 
     // 设置子节点
     const children = data[propChildren];
@@ -559,10 +570,6 @@ export class TreeNode {
 
   /**
    * 设置节点状态
-   * - 为节点设置独立于配置的 disabled 状态: set({ disabled: true })
-   * - 清除独立于配置的 disabled 状态: set({ disabled: null })
-   * @param {object} item 节点状态对象
-   * @return void
    */
   public set(item: TreeNodeState): void {
     const { tree } = this;
@@ -753,33 +760,32 @@ export class TreeNode {
 
   /**
    * 判断节点为逻辑禁用状态，不包含过滤锁定状态
-   * @return boolean 是否被禁用
+   * - 优先级：Tree 配置 > checkStrictly > 手动 > 节点 data > disableCheck
    */
   public isDisabledState(): boolean {
     const { tree, parent } = this;
     const { config } = tree;
-    const { disabled, disableCheck, checkStrictly } = config;
-    let state = disabled || false;
-    if (this.disabled) {
-      // 整个树被禁用，则节点为禁用状态
-      state = true;
-    }
-    if (!checkStrictly && parent?.isDisabledState()) {
-      // 如果 checkStrictly 为 false
-      // 父节点被禁用，则子节点也为禁用状态
-      state = true;
-    }
-    if (typeof disableCheck === 'boolean') {
-      if (disableCheck) {
-        state = true;
-      }
-    } else if (typeof disableCheck === 'function') {
-      // disableCheck 视为禁用节点的过滤函数
-      if (disableCheck(this.getModel())) {
-        state = true;
+    const { checkStrictly, disabled, disableCheck, keys = {} } = config;
+
+    if (disabled) return true;
+
+    if (!checkStrictly && parent?.isDisabled()) return true;
+
+    if (typeof this.disableManually === 'boolean') return this.disableManually;
+
+    const propDisabled = keys.disabled || 'disabled';
+    const state = get(this.data, propDisabled);
+    if (typeof state === 'boolean') return state;
+
+    if (disableCheck === true) return true;
+    if (typeof disableCheck === 'function') {
+      const stateCheck = disableCheck(this.getModel());
+      if (typeof stateCheck === 'boolean') {
+        return stateCheck;
       }
     }
-    return state;
+
+    return false;
   }
 
   /**
@@ -790,7 +796,12 @@ export class TreeNode {
     const { tree } = this;
     const { hasFilter, config } = tree;
     const { allowFoldNodeOnFilter } = config;
-    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) {
+    if (
+      hasFilter
+      && !allowFoldNodeOnFilter
+      && this.vmIsLocked
+      && !this.vmIsRest
+    ) {
       // 当前树存在过滤条件，允许节点过滤后被折叠，当前节点为锁定节点，并且不是筛选后剩下的节点
       // 则该节点应当呈现禁用状态
       return true;
@@ -890,13 +901,12 @@ export class TreeNode {
     }
     let checked = false;
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
-    if (checkedMap.get(value)
-      && (
-        // 如果 valueMode 为 all、parentFirst，则视为选中
-        valueMode !== 'onlyLeaf'
+    if (
+      checkedMap.get(value)
+      // 如果 valueMode 为 all、parentFirst，则视为选中
+      && (valueMode !== 'onlyLeaf'
         // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
-        || this.isLeaf()
-      )
+        || this.isLeaf())
     ) {
       return true;
     }
@@ -1338,10 +1348,11 @@ export class TreeNode {
 
   /**
    * 设置节点禁用状态
-   * @return void
    */
-  public setDisabled(disabled: boolean) {
-    this.disabled = disabled;
+  public setDisabled(disabled: null | boolean) {
+    if (!this.tree.config.checkStrictly && this.parent?.isDisabled()) return;
+    // 当 disabled 为 null 时，恢复为默认的禁用逻辑，而非通过设置强制指定
+    this.disableManually = disabled;
     this.update();
     this.updateChildren();
   }
@@ -1362,6 +1373,7 @@ export class TreeNode {
     this.actived = this.isActived();
     this.expanded = this.isExpanded();
     this.visible = this.isVisible();
+    this.disabled = this.isDisabled();
     this.tree.updated(this);
   }
 

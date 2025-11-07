@@ -34,7 +34,7 @@
 | **基础(Basic)** | **布局(Layout)** | **导航(Navigations)** | **数据类(Data)** | **沟通类（Notice）**  | **输入类(Input)**     | **其他 Others** |
 | :-------------- | :--------------- | :-------------------- | :--------------- | :-------------------- | :-------------------- | :-------------- |
 | 色彩 Color      | 布局 Layout      | 选项卡 Tabs           | 图表 Diagram     | 全局提醒 Message      | 输入框 Input          | 模态抽屉 Drawer |
-| 字体 Fonts      | 栅格 Grid        | 步骤条 Steps          | 列表 List        | 文字提示 Tootip       | 日期选择器 DatePicker | 锚点 Anchor     |
+| 字体 Fonts      | 栅格 Grid        | 步骤条 Steps          | 列表 List        | 文字提示 Tooltip       | 日期选择器 DatePicker | 锚点 Anchor     |
 | 图标 Icon       | 卡片 Card        | 面包屑 Breadcrumb     | 表格 Table       | 加载中 Loading        | 时间选择器 TimePicker | 标签 Tag        |
 | 动效 Motion     | 走马灯 Carousel  | 分页 Pagination       | 表单 Form        | 警告提示 Alert        | 单选框 Radio          |                 |
 | 按钮 Button     | 分割线 Divider   | 导航菜单 Menu         | 树 Tree          | 徽标数 Badge          | 多选框 Checkbox       |                 |
