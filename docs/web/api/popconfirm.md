@@ -25,11 +25,13 @@ spline: message
 {{ describe }}
 
 ### 自定义气泡确认框按钮
+
 通过 `confirmBtn` 和 `cancelBtn` 属性来自定义确认和取消按钮，支持传入 Button 组件属性或使用 slot 方式。
 
 {{ button }}
 
 ### 控制气泡确认框位置
+
 通过 `popupProps` 可以透传弹窗底层依赖的 Popup 组件所有已支持的属性，比如控制弹窗出现的位置。
 
 {{ inherit }}

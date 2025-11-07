@@ -6,7 +6,6 @@ isComponent: true
 toc: false
 ---
 
-
 ### Base Footer
 
 {{ base }}

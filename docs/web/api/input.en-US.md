@@ -2,7 +2,7 @@
 title: Input
 description: A text box used for user information entry, often used in forms, dialog boxes and other scenarios, for different content of information entry, can be expanded to form a variety of information entry forms.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: form
 ---
 

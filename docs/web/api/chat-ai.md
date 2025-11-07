@@ -2,7 +2,7 @@
 title: ChatAI
 description: 用于 AI 大模型聊天。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: ai
 ---
 

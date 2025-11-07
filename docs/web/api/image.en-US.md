@@ -2,7 +2,7 @@
 title: Image
 description: Image is used to display image.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

@@ -12,39 +12,39 @@
       .@{prefix}-range-input,
       .@{prefix}-textarea__inner {
         border-color: @@borderColor;
-        @borderColor: "input-border-color-@{status}";
+        @borderColor: 'input-border-color-@{status}';
 
         &--focused {
           box-shadow: 0 0 0 2px @@boxShadowColor;
-          @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+          @boxShadowColor: 'input-box-shadow-color-@{status}-focus';
         }
 
         // 处理组件内icon颜色
         .t-icon,
         .@{prefix}-fake-arrow {
           color: @@borderColor;
-          @borderColor: "input-border-color-@{status}";
+          @borderColor: 'input-border-color-@{status}';
         }
       }
 
       .@{prefix}-select {
         > .@{prefix}-select__right-icon:not(.@{prefix}-select__right-icon-clear) {
           color: @@borderColor;
-          @borderColor: "input-border-color-@{status}";
+          @borderColor: 'input-border-color-@{status}';
         }
       }
 
       .@{prefix}-radio-button {
         &:last-child {
           border-right-color: @@borderColor;
-          @borderColor: "input-border-color-@{status}";
+          @borderColor: 'input-border-color-@{status}';
         }
       }
 
       .@{prefix}-textarea__inner {
         &.@{prefix}-is-focused {
           box-shadow: 0 0 0 2px @@boxShadowColor;
-          @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+          @boxShadowColor: 'input-box-shadow-color-@{status}-focus';
         }
       }
 
@@ -52,7 +52,7 @@
       .@{prefix}-select {
         &.@{prefix}-is-active {
           box-shadow: 0 0 0 2px @@boxShadowColor;
-          @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+          @boxShadowColor: 'input-box-shadow-color-@{status}-focus';
         }
       }
 
@@ -66,7 +66,7 @@
   .@{prefix}-form__status {
     .t-icon {
       color: @@iconColor;
-      @iconColor: "form-color-@{status}";
+      @iconColor: 'form-color-@{status}';
     }
   }
 }
@@ -74,6 +74,6 @@
 .input-status-extra(@status) {
   .@{prefix}-input__extra {
     color: @@extraColor;
-    @extraColor: "form-color-@{status}";
+    @extraColor: 'form-color-@{status}';
   }
 }

@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 常见用法
 
 ##### 在可搜索内容类型较为单一的场景下，可直接在原页面激活搜索态进行搜索，并通过高亮命中字符的方式展示搜索结果，页面内容组织结构保持不变。
@@ -44,7 +43,6 @@
 <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/search/search-5.png" />
 </div>
-
 
 ### 相似组件
 

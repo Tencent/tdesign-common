@@ -6,10 +6,14 @@
   "description": "TDesign UI 样式库以及组件库公共函数（js）",
   "main": "",
   "scripts": {
-    "lint": "npm run lint:css && npm run lint:js && npm run typecheck",
+    "lint": "npm run lint:css && npm run lint:js && npm run format:check && npm run typecheck",
     "lint:css": "stylelint **/*.{css,wxss,less} --allow-empty-input --cache",
     "lint:js": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --max-warnings 0 --cache",
-    "lint:fix": "npm run lint:css -- --fix && npm run lint:js -- --fix",
+    "lint:fix": "npm run lint:css -- --fix && npm run lint:js -- --fix && npm run format",
+    "format": "prettier --write \"js/**/*.{vue,js,ts,jsx,tsx}\" \"docs/**/*.{json,md}\" --ignore-path .prettierignore",
+    "format:check": "prettier --check \"js/**/*.{vue,js,ts,jsx,tsx}\" \"docs/**/*.{json,md}\" --ignore-path .prettierignore",
+    "format:js": "prettier --write \"**/*.{vue,js,ts,jsx,tsx}\" --ignore-path .prettierignore",
+    "format:docs": "prettier --write \"**/*.{json,md}\" --ignore-path .prettierignore",
     "test": "npm run test:unit",
     "test:unit": "vitest run --coverage",
     "test:watch": "vitest",
@@ -38,9 +42,9 @@
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.10.2",
     "@types/tinycolor2": "^1.4.6",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/experimental-utils": "^2.24.0",
-    "@typescript-eslint/parser": "^4.29.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "@typescript-eslint/typescript-estree": "^8.8.0",
     "@vitest/coverage-v8": "^3.1.4",
     "commitizen": "^4.2.2",
@@ -48,11 +52,11 @@
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "dayjs": "^1.11.4",
-    "eslint": "^7.4.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^10.1.8",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-prettier": "^5.2.1",
     "husky": "^8.0.1",
     "lint-staged": "~13.2.0",
     "min-indent": "^1.0.1",
@@ -87,13 +91,13 @@
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
-      "stylelint"
+      "stylelint --fix"
     ],
-    "**/*.{js,ts,jsx,tsx}": [
+    "js/**/*.{vue,js,ts,jsx,tsx}": [
       "prettier --write",
-      "eslint --max-warnings 0 --no-ignore"
+      "eslint --fix"
     ],
-    "**/*.{json,md}": [
+    "docs/**/*.{json,md}": [
       "prettier --write"
     ]
   }

@@ -1,5 +1,5 @@
 ---
-title: Tag 
+title: Tag
 description: Tags are commonly used for marking, categorizing and selecting.
 isComponent: true
 usage: { title: '', description: '' }

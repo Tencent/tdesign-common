@@ -2,7 +2,7 @@
 title: Steps
 description: A navigation bar that prompts the user's progress and current steps to guide the user to complete tasks step by step.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: navigation
 ---
 

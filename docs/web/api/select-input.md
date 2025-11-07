@@ -57,7 +57,6 @@ spline: data
 
 {{ excess-tags-display-type }}
 
-
 ### 可折叠选中项的筛选器输入框
 
 选中项数量超过 `minCollapsedNum` 时会被折叠，可使用 `collapsedItems` 自定义折叠选项中的呈现方式。
@@ -83,7 +82,6 @@ spline: data
 ### 自动宽度的单选筛选器
 
 {{ autowidth }}
-
 
 ### 自动宽度的多选筛选器
 

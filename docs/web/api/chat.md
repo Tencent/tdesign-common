@@ -2,7 +2,7 @@
 title: Chat
 description: 用于 ChatBot 对话或者普通对话场景的组件。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: ai
 ---
 

@@ -18,7 +18,6 @@ spline: data
 
 {{ customDot }}
 
-
 ### 自定义内容
 
 {{ customContent }}
@@ -26,7 +25,6 @@ spline: data
 ### 布局方式
 
 {{ layout }}
-
 
 ### 加载状态
 

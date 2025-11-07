@@ -28,7 +28,6 @@ Display and hide information in groups, displaying only one group of information
 
 {{ accordion }}
 
-
 ### Component Style
 
 #### Card Collapse

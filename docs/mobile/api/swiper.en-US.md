@@ -22,7 +22,6 @@ fraction
 
 {{ fraction }}
 
-
 control
 
 {{ control }}

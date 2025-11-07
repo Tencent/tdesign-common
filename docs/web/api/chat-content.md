@@ -2,7 +2,7 @@
 title: ChatContent
 description: 支持 markdown 格式的渲染。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: ai
 ---
 

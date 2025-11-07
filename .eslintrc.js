@@ -50,6 +50,7 @@ module.exports = {
     'import/no-named-as-default': 0,
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 0,
+    'default-param-last': 'off',
     'no-plusplus': [
       'error',
       {
@@ -69,6 +70,7 @@ module.exports = {
     // 避免 `eslint` 对于 `typescript` 函数重载的误报
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'error',
+    'no-use-before-define': 'off',
     'no-restricted-imports': [
       'error',
       {

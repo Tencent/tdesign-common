@@ -11,7 +11,7 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-@checkbox-cls: ~"@{prefix}-checkbox";
+@checkbox-cls: ~'@{prefix}-checkbox';
 
 // 颜色
 @checkbox-border-color: @border-level-2-color;
@@ -39,9 +39,7 @@
 
 @checkbox-check-width: 5px;
 @checkbox-check-height: 9px;
-@checkbox-check-size: (
-  (@checkbox-check-width + @checkbox-check-height) / sqrt(2)
-);
+@checkbox-check-size: ((@checkbox-check-width + @checkbox-check-height) / sqrt(2));
 @checkbox-check-left: 3px;
 
 @checkbox-indeterminate-width: 16px;

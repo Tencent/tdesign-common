@@ -1,5 +1,5 @@
 ---
-title: Alert 
+title: Alert
 description: Alert bars are used to carry information that requires the user's attention.
 isComponent: true
 usage: { title: '', description: '' }

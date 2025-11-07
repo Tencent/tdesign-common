@@ -34,11 +34,11 @@
     @{attr}: @@theme-disabled;
   }
 
-  @theme-default: e("btn-color-@{theme}");
-  @theme-hover: e("btn-color-@{theme}-hover");
-  @theme-active: e("btn-color-@{theme}-active");
-  @theme-disabled: e("btn-color-@{theme}-disabled");
-  @theme-focus: e("btn-color-@{theme}-focus");
+  @theme-default: e('btn-color-@{theme}');
+  @theme-hover: e('btn-color-@{theme}-hover');
+  @theme-active: e('btn-color-@{theme}-active');
+  @theme-disabled: e('btn-color-@{theme}-disabled');
+  @theme-focus: e('btn-color-@{theme}-focus');
 
   @{attr}: @@theme-default;
 }
@@ -450,18 +450,26 @@
   --ripple-color: @btn-color-gray-bg-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(.@{prefix}-is-disabled):not(
+.@{prefix}-button--ghost
+) {
   --ripple-color: @btn-color-primary-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-success:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-success:not(.@{prefix}-is-disabled):not(
+.@{prefix}-button--ghost
+) {
   --ripple-color: @btn-color-success-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-warning:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-warning:not(.@{prefix}-is-disabled):not(
+.@{prefix}-button--ghost
+) {
   --ripple-color: @btn-color-warning-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-danger:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-danger:not(.@{prefix}-is-disabled):not(
+.@{prefix}-button--ghost
+) {
   --ripple-color: @btn-color-danger-active;
 }

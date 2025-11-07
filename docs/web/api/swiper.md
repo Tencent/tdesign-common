@@ -6,7 +6,6 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
-
 ### 基本使用
 
 轮播框组件最基本的使用

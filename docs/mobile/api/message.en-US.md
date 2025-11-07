@@ -10,9 +10,7 @@ toc: false
 
 Used for lightweight feedback or prompts without interrupting user action.
 
-
 {{ base }}
-
 
 ### Message Of Different Status
 

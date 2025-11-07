@@ -14,7 +14,6 @@ Wrap the content in the 'Sticky' component
 
 {{ base }}
 
-
 ### Sticky Distance
 
 {{ offset }}

@@ -1,10 +1,6 @@
-
-
-
 ### 何时使用
 
 当一组选项由2-3个层级构成，且每个层级有大量的选项需要用户逐级选择时使用。
-
 
 ### 推荐/慎用示例
 
@@ -16,8 +12,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
-
 
 ### 相似组件
 

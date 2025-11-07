@@ -1,6 +1,6 @@
 ---
 title: TreeSelect
-description: Suitable for selecting a tree data structure. 
+description: Suitable for selecting a tree data structure.
 spline: form
 isComponent: true
 toc: false

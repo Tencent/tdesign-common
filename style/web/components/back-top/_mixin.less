@@ -1,13 +1,13 @@
-@prefix-block: e("@{prefix}-back-top");
+@prefix-block: e('@{prefix}-back-top');
 
 .back-top-attr(@attr, @modify, @isTarget: false, @target: '') {
-  @value: if((boolean(@isTarget)), e("back-top-@{target}-@{attr}-@{modify}"), e("back-top-@{attr}-@{modify}"));
+  @value: if((boolean(@isTarget)), e('back-top-@{target}-@{attr}-@{modify}'), e('back-top-@{attr}-@{modify}'));
 
   @{attr}: @@value;
 }
 
 .back-top-bg-color(@theme, @isHover) {
-  @bg-color: if((boolean(@isHover)), e("back-top-bg-color-@{theme}-hover"), e("back-top-bg-color-@{theme}"));
+  @bg-color: if((boolean(@isHover)), e('back-top-bg-color-@{theme}-hover'), e('back-top-bg-color-@{theme}'));
 
   background-color: @@bg-color;
 }

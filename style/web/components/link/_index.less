@@ -4,11 +4,11 @@
 
 .link-attr-color(@theme) {
   // 状态 - 主题 颜色
-  @theme-default: e("link-color-@{theme}");
-  @theme-hover: e("link-color-@{theme}-hover");
-  @theme-active: e("link-color-@{theme}-active");
-  @theme-disabled: e("link-color-@{theme}-disabled");
-  @theme-focus: e("link-color-@{theme}-focus");
+  @theme-default: e('link-color-@{theme}');
+  @theme-hover: e('link-color-@{theme}-hover');
+  @theme-active: e('link-color-@{theme}-active');
+  @theme-disabled: e('link-color-@{theme}-disabled');
+  @theme-focus: e('link-color-@{theme}-focus');
 
   color: @@theme-default;
   // active 相关样式
@@ -86,8 +86,8 @@
 }
 // size 相关样式
 .link-attr-size(@size) {
-  @font-size: e("link-font-@{size}");
-  @icon-margin-size: e("link-icon-margin-@{size}");
+  @font-size: e('link-font-@{size}');
+  @icon-margin-size: e('link-icon-margin-@{size}');
 
   font: @@font-size;
 

@@ -329,7 +329,9 @@
 
   // 默认图标
   .@{prefix}-tree__icon {
-    transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
+    transition:
+      color,
+      transform @anim-duration-moderate @anim-time-fn-easing;
   }
 
   .@{prefix}-tree__icon::after {
@@ -343,7 +345,9 @@
   // 图标动画
   .@{prefix}-tree__icon--default {
     .t-icon {
-      transition: color, transform @anim-time-fn-easing @anim-duration-base;
+      transition:
+        color,
+        transform @anim-time-fn-easing @anim-duration-base;
     }
   }
 
@@ -352,8 +356,8 @@
     display: flex;
     max-height: @tree-node-item-origin-height;
     opacity: 1;
-    transition: opacity @tree-node-transition-time linear
-      @tree-node-transition-time,
+    transition:
+      opacity @tree-node-transition-time linear @tree-node-transition-time,
       max-height @tree-node-transition-time linear 0s;
   }
 
@@ -366,7 +370,8 @@
     pointer-events: none;
     user-select: none;
     animation: initial;
-    transition: opacity @tree-node-transition-time linear 0s,
+    transition:
+      opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 
@@ -411,8 +416,7 @@
   .@{prefix}-tree__item--enter-active,
   .@{prefix}-tree__item--enter-to,
   .@{prefix}-tree__item--leave,
-  .@{prefix}-tree__item--leave-active
-  .@{prefix}-tree__item--leave-to {
+  .@{prefix}-tree__item--leave-active .@{prefix}-tree__item--leave-to {
     animation: none;
     transition: none;
   }

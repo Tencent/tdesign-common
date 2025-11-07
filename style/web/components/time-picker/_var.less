@@ -9,7 +9,10 @@
 
 @time-picker-font: @font-body-medium;
 
-@time-picker-panel-body-height: calc(calc(@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) * 7 + @time-picker-panel-item-margin-vertical);
+@time-picker-panel-body-height: calc(
+  calc(@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) * 7 +
+    @time-picker-panel-item-margin-vertical
+);
 @time-picker-panel-item-height: @comp-size-xs;
 @time-picker-input-item-input-width: 28px;
 @time-picker-input-item-input-meridiem-width: 36px;
@@ -28,7 +31,7 @@
 @time-picker-panel-item-background-color-current: @brand-color-light;
 @time-picker-panel-item-background-color-active: @bg-color-container-hover;
 
-@time-picker-panel-dropdown-box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
+@time-picker-panel-dropdown-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
 
 // box-sizing
 @time-picker-input-border: 1px solid @border-level-2-color;
@@ -40,8 +43,7 @@
 @time-picker-panel-item-border-radius: @border-radius-default;
 @time-picker-panel-item-margin-vertical: @size-3;
 @time-picker-panel-item-margin-horizontal: @comp-margin-xs;
-@time-picker-panel-item-margin: @time-picker-panel-item-margin-vertical
-  @time-picker-panel-item-margin-horizontal;
+@time-picker-panel-item-margin: @time-picker-panel-item-margin-vertical @time-picker-panel-item-margin-horizontal;
 
 //shadow
 @time-picker-input-shadow-active: 0 0 2px 2px @brand-color-focus;

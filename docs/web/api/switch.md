@@ -22,7 +22,6 @@ spline: form
 
 提供 normal、loading 和 disabled 3种状态的开关。根据不同场景设置对应状态。
 
-
 {{ status }}
 
 ### 不同大小的开关

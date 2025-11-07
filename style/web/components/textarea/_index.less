@@ -10,7 +10,6 @@
 @import "../../mixins/_scrollbar.less";
 
 .@{prefix}-textarea {
-
   .reset;
 
   position: relative;
@@ -30,7 +29,9 @@
     color: @textarea-text-color;
     resize: vertical;
     outline: none;
-    transition: all @anim-time-fn-easing @anim-duration-base, height 0s;
+    transition:
+      all @anim-time-fn-easing @anim-duration-base,
+      height 0s;
     box-sizing: border-box;
 
     &:hover {

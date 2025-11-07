@@ -20,7 +20,6 @@
 }
 
 .generate-z-index(@n, @i: 1) when (@i =< @n) {
-
   & .@{prefix}-avatar:nth-child(@{i}) {
     z-index: (@avatar-group-init-zIndex - @i);
   }

@@ -2,7 +2,7 @@
 title: Space
 description: Space is used to control the spacing between components.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: layout
 ---
 

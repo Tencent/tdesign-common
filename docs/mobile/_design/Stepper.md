@@ -26,7 +26,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 点击“+”“-”按钮时，数值增减的步长相同，不建议进行不同步长的变化
@@ -42,7 +41,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 在单选的筛选场景内，建议将用户选择项替换标题显示于菜单面板内。
@@ -40,8 +39,6 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-4.png" />
   <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 </div>
-
-
 
 ### 相似组件
 

@@ -10,19 +10,18 @@ spline: explain
 
 The supported language TDesign provided:
 
-Language | File
--- | --
-Chinese (Simplified) | `zh_CN`
-Chinese (Traditional) | `zh_TW`
-English | `en_US`
-Korean | `ko_KR`
-Japanese | `ja_JP`
-Russian | `ru_RU`
-Italian | `it_IT`
-Arabic | `ar_KW`
+| Language              | File    |
+| --------------------- | ------- |
+| Chinese (Simplified)  | `zh_CN` |
+| Chinese (Traditional) | `zh_TW` |
+| English               | `en_US` |
+| Korean                | `ko_KR` |
+| Japanese              | `ja_JP` |
+| Russian               | `ru_RU` |
+| Italian               | `it_IT` |
+| Arabic                | `ar_KW` |
 
 If you want to contribute more language packs, please refer to [How to add a language pack](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) PR.
-
 
 ### Upload
 
@@ -36,7 +35,6 @@ If you want to contribute more language packs, please refer to [How to add a lan
 
 {{ other-en }}
 
-
 ### Global Component Classprefix
 
 the classprefix of TDesign component is `t`. In some situations, it is necessary to change the component prefix to meet the usage needs.
@@ -44,10 +42,10 @@ the classprefix of TDesign component is `t`. In some situations, it is necessary
 You can use the `esm` version (which guarantees that you can modify less vars), modify the `classPrefix` through global configuration, and cooperate with less-loader to modify the `@prefix` less vars to ensure the normal styling of the components.
 
 ```js
-import Vue from 'vue'
-import TDesign from 'tdesign-mobile-vue/esm'
+import Vue from 'vue';
+import TDesign from 'tdesign-mobile-vue/esm';
 
-Vue.createApp({}).use(TDesign)
+Vue.createApp({}).use(TDesign);
 ```
 
 ```html
@@ -57,6 +55,7 @@ Vue.createApp({}).use(TDesign)
 ```
 
 #### vue-cli
+
 ```js
 // vue.config.js
 {
@@ -76,6 +75,7 @@ Vue.createApp({}).use(TDesign)
 ```
 
 #### vite
+
 ```js
 // vite.config.js
 {

@@ -86,7 +86,7 @@ export function getIEVersion() {
   // 判断是否IE11浏览器
   const isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf('rv:11.0') > -1;
   if (isIE) {
-    const reIE = new RegExp('MSIE (\\d+\\.\\d+);');
+    const reIE = /MSIE (\d+\.\d+);/;
     const match = userAgent.match(reIE);
     if (!match) return -1;
     const fIEVersion = parseFloat(match[1]);

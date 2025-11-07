@@ -8,7 +8,7 @@
 
 ### 组件搭配使用
 
-##### 头像与[动作面板](./action-sheet ) 组合使用，在分享场景中利用动作面板承载用户头像，用于分享对象的选择。
+##### 头像与[动作面板](./action-sheet) 组合使用，在分享场景中利用动作面板承载用户头像，用于分享对象的选择。
 
 <div class="legend">
  <div class="item">
@@ -35,7 +35,6 @@
  </div>
 </div>
 
-
 ### 常见用法
 
 ##### 多个头像可组合展示构成头像组；当页面布局空间有限，超过可外显个数时候，可将重复性较高的头像信息做隐藏收起，需要时再让用户主动触发查看。
@@ -43,8 +42,6 @@
 <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/avatar/avatar-4.png" />
 </div>
-
-
 
 ### 推荐/慎用示例
 

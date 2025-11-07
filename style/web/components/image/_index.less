@@ -153,7 +153,9 @@
     z-index: calc(@image-gallery-cover-z-index + 1);
     opacity: 1;
     visibility: visible;
-    transition: visibility 0s, opacity @anim-duration-base linear;
+    transition:
+      visibility 0s,
+      opacity @anim-duration-base linear;
 
     &--hidden {
       visibility: hidden;

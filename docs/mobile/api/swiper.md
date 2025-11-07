@@ -22,7 +22,6 @@ toc: false
 
 {{ fraction }}
 
-
 control
 
 {{ control }}
@@ -32,4 +31,3 @@ control
 垂直模式
 
 {{ vertical }}
-

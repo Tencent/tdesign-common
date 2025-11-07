@@ -6,7 +6,6 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
-
 ### Table Classification
 
 As the functionality of tables increases, if all the functions are concentrated in one component, the code file will become more and more bloated. This is not conducive to maintenance or to the business of introducing necessary functions on demand.
@@ -18,7 +17,6 @@ Therefore, there are three table components: `BaseTable` (basic table), `Primary
 - `EnhancedTable` (enhanced table) includes some more complex functions: tree structure etc. `EnhancedTable` includes all the functions of `BaseTable` and `PrimaryTable`.
 
 In general, using `PrimaryTable`, which is the default exported table, can meet 90% of the requirements. When it comes to very complex requirements, use `EnhancedTable`.
-
 
 ### Basic Table
 
@@ -61,7 +59,6 @@ There are two table width modes: `fixed` and `auto`, [detailed explanation on MD
 To refresh the table DOM element, use the component instance method `refreshTable`.
 
 {{ fixed-header }}
-
 
 ### Table with Fixed Columns
 
@@ -156,7 +153,6 @@ Customize the columns that need to be displayed. This can be set through the `co
 - Supports passing all properties of Button component. `columnController.buttonProps` is used to control all features of column configuration button such as button color and text.
 - `columnControllerVisible` freely controls whether to display column configuration box generally used in scenarios where you want to completely customize column configuration button.
 - `onColumnControllerVisibleChange` triggered when column configuration box is shown or hidden.
-
 
 #### Example 1: Column configuration function example with configuration button
 
@@ -383,7 +379,6 @@ You can perform operations such as editing and saving entire rows of tables.
 - The instance method `validateTableData` is used for table-wide data validation, and `onValidate` is triggered when all data validation is completed.
 
 {{ editable-row }}
-
 
 ### Tree structure table
 

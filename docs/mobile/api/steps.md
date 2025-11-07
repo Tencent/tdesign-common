@@ -18,7 +18,6 @@ toc: false
 
 {{ horizontal }}
 
-
 #### 垂直步骤条
 
 支持三种类型：序号、图标、简略
@@ -32,7 +31,6 @@ toc: false
 共支持 4 种状态：未完成（default）、已完成（finish）、进行中（process）、错误（error）
 
 {{ status }}
-
 
 #### 特殊类型
 

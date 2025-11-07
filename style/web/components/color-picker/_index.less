@@ -136,9 +136,13 @@
 
 .transparentBgImage () {
   /* stylelint-disable-next-line color-no-hex */
-  background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
+  background-image:
+    linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5),
+    linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
   background-size: 6px 6px;
-  background-position: 0 0, 3px 3px;
+  background-position:
+    0 0,
+    3px 3px;
 }
 
 .@{prefix}-color-picker__slider-wrapper {
@@ -198,16 +202,7 @@
 
 .@{prefix}-color-picker__hue {
   /* stylelint-disable color-no-hex, color-named */
-  background: linear-gradient(
-    90deg,
-    red,
-    #ff0 17%,
-    #0f0 33%,
-    #0ff 50%,
-    #00f 67%,
-    #f0f 83%,
-    red
-  );
+  background: linear-gradient(90deg, red, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, red);
 }
 
 .@{prefix}-color-picker__alpha {
@@ -327,7 +322,8 @@
     &:last-child {
       flex: 1;
     }
-    .@{prefix}-size-m, .@{prefix}-input.@{prefix}-size-m {
+    .@{prefix}-size-m,
+    .@{prefix}-input.@{prefix}-size-m {
       font: @color-picker-font;
     }
     .@{prefix}-input-number .@{prefix}-input {
@@ -406,7 +402,6 @@
   position: relative;
 
   .@{prefix}-color-picker__swatches {
-
     + .@{prefix}-color-picker__swatches {
       margin-top: @color-picker-margin;
     }

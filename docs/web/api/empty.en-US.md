@@ -2,7 +2,7 @@
 title: Empty
 description: Placeholder prompt for empty status.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: layout
 ---
 

@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "../../utilities/_animation.less";
+@import '../../utilities/_animation.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-loading {
   .reset;
@@ -105,9 +105,9 @@
     /* stylelint-disable-next-line color-no-hex */
     background: conic-gradient(from 90deg at 50% 50%, #fff 0deg, currentcolor 360deg);
     /* stylelint-disable-next-line */
-    -webkit-mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
+    -webkit-mask: radial-gradient(transparent calc(50% ~'-' 0.5px), #fff 50%);
 
     /* stylelint-disable-next-line color-no-hex */
-    mask: radial-gradient(transparent calc(50% ~"-" .5px), #fff 50%);
+    mask: radial-gradient(transparent calc(50% ~'-' 0.5px), #fff 50%);
   }
 }

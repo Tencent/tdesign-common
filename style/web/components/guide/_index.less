@@ -9,7 +9,7 @@
 .@{prefix}-guide {
   .reset;
 
-  @root: ~".@{prefix}-guide";
+  @root: ~'.@{prefix}-guide';
 
   &--lock {
     overflow: hidden;
@@ -42,7 +42,9 @@
     }
 
     &--mask {
-      box-shadow: 0 0 0 0 @mask-active, @mask-active 0 0 0 5000px;
+      box-shadow:
+        0 0 0 0 @mask-active,
+        @mask-active 0 0 0 5000px;
     }
 
     &--nomask {

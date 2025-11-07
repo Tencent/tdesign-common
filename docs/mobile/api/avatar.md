@@ -24,7 +24,6 @@ toc: false
 
 {{ badge-avatar }}
 
-
 ### 组合头像
 
 纯展示
@@ -40,4 +39,3 @@ toc: false
 头像 large/medium/small 尺寸
 
 {{ size }}
-

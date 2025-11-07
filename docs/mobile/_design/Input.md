@@ -16,7 +16,6 @@
   </div>
 </div>
 
-
 ### 常见用法
 
 ##### 通常使用在表单中进行文字填写，填写状态下可在右侧显示清空输入的按钮，供用户快速清空已输入的内容。
@@ -58,13 +57,13 @@
 <hr />
 
 ##### 当需要输入较长的复杂内容时，建议使用多行文本框输入。
+
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/input/input-7.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

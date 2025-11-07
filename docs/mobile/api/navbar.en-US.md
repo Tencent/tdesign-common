@@ -7,6 +7,7 @@ toc: false
 ---
 
 ### Type
+
 #### Basic Navbar
 
 {{ base }}

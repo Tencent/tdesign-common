@@ -70,7 +70,6 @@
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
 
-
 ### 相似组件
 
 | 组件名               | 何时使用                                                                      |

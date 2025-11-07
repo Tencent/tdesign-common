@@ -6,7 +6,6 @@ isComponent: true
 toc: false
 ---
 
-
 ### Basic Switch
 
 Usage scenario: Basic switch can be used when there is no need to emphasize the switch status through copywriting

@@ -291,8 +291,7 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu-group {
       &__title {
         position: relative;
-        padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs
-          @comp-paddingLR-l;
+        padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs @comp-paddingLR-l;
         color: @menu-menu-group-title-color;
         font-size: @menu-extra-font-size;
         box-sizing: border-box;
@@ -360,7 +359,8 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius-default;
-    transition: background-color @anim-duration-slow @anim-time-fn-easing,
+    transition:
+      background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
     box-sizing: border-box;
 
@@ -758,9 +758,7 @@ a.@{prefix}-menu__item {
   transition: opacity @anim-duration-slow cubic-bezier(.55, 0, .1, 1);
 }
 
-.horizontal-collapse-transition
-.@{prefix}-submenu__title
-.@{prefix}-submenu__icon-arrow {
+.horizontal-collapse-transition .@{prefix}-submenu__title .@{prefix}-submenu__icon-arrow {
   transition: @anim-duration-base;
   opacity: 0;
 }
@@ -779,9 +777,7 @@ a.@{prefix}-menu__item {
 
 .@{prefix}-is-head-menu {
   .@{prefix}-menu__popup {
-    margin-top: calc(
-      (@menu-height-default - @head-menu-item-height) / 2
-    ) !important;
+    margin-top: calc((@menu-height-default - @head-menu-item-height) / 2) !important;
   }
 }
 

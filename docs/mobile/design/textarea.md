@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 需要进行文字输入，且需填写的字数较多时使用。
@@ -17,7 +15,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/textarea/textarea-2.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -38,6 +35,7 @@
 <hr />
 
 ##### 建议根据待输入的内容决定多行文本框的高度。
+
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/textarea/textarea-5.png" />
@@ -50,10 +48,8 @@
   </div>
 </div>
 
-
 ### 相似组件
 
 | 组件名            | 何时使用                                     |
 | :---------------- | :------------------------------------------- |
 | [输入框](./input) | 需要进行文字输入，且需填写的字数较少时使用。 |
-

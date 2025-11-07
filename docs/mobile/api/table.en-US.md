@@ -9,13 +9,17 @@ toc: false
 ## Component Type
 
 ### Base Table
+
 {{ base }}
 
 ### Horizontally Tiled Scrollable Table
+
 {{ scroll }}
 
 ### Table Style With Stripe
+
 {{ stripe }}
 
 ### Table Style With Border
+
 {{ bordered }}

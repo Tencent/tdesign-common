@@ -53,6 +53,7 @@ The Block button fills its parent container in width (no padding and margin valu
 {{ status }}
 
 ### Component Style
+
 #### Different sizes of buttons
 
 {{ size }}

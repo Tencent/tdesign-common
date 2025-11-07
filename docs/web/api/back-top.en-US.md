@@ -2,7 +2,7 @@
 title: BackTop
 description: Backtop is used to return to the top of a page.
 isComponent: true
-usage: { title: "BackTop", description: "" }
+usage: { title: 'BackTop', description: '' }
 spline: data
 ---
 

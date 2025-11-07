@@ -44,7 +44,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 若任务需要等待的时间很长，可以提供大概的时间估计，让用户更有预期。
@@ -55,7 +54,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

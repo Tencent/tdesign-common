@@ -18,7 +18,6 @@ Cell skeleton screen
 
 {{ cell-group }}
 
-
 Grid frame screen
 
 {{ grid }}

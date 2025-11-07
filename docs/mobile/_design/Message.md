@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 当需要在通知栏中展示按钮时，不建议超过1个。若需要使用更多按钮，建议使用其它交互方式。
@@ -42,7 +41,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

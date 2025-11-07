@@ -12,7 +12,7 @@ module.exports = {
   // 对象属性的引号使用: 仅在需要时添加引号
   quoteProps: 'as-needed',
   // JSX 使用单引号
-  jsxSingleQuote: false,
+  jsxSingleQuote: true,
   // 尾随逗号: es5 (对象、数组等)
   trailingComma: 'es5',
   // 对象字面量的括号之间打印空格
