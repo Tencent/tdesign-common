@@ -1,14 +1,14 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_text.less";
+@import '../../mixins/_text.less';
 
 // <name> 替换为组件名
 .@{prefix}-tree {
@@ -142,7 +142,7 @@
         display: block;
         height: @tree-node-drag-tip-height;
         border-radius: (@tree-node-drag-tip-height / 2);
-        content: "";
+        content: '';
         padding: inherit;
         background-clip: content-box;
       }
@@ -169,7 +169,7 @@
   // 用于撑开节点高度
   // 比起使用 padding , 更有利于动画展现
   &__item::before {
-    content: "";
+    content: '';
     display: block;
     width: 0;
     flex: 0 0 auto;
@@ -199,7 +199,7 @@
   }
 
   &__line::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -236,7 +236,7 @@
   // svg 动画与 icon 背景进行隔离
   // :after 仅用于增大点击范围
   &__icon::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     left: -2px;

@@ -59,7 +59,8 @@
         "checkPrefixed": true
       }
     ],
-    "string-quotes": null
+    "string-quotes": "single",
+    "indentation": 2
   },
   "overrides": [
     {

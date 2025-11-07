@@ -208,7 +208,7 @@
   & when (@direction = horizontal) {
     .@{prefix}-steps-item:not(:last-child) {
       .@{prefix}-steps-item__title:after {
-        content: "";
+        content: '';
         display: block;
         width: 9999px;
         border-left: 0;
@@ -227,7 +227,7 @@
       .@{prefix}-steps-item:not(:last-child):after {
         flex: 1;
         height: 24px;
-        content: "^";
+        content: '^';
         transform: rotateZ(90deg);
         display: inline-flex;
         justify-content: center;
@@ -277,7 +277,7 @@
     // arrow分隔符
     &.@{prefix}-steps--arrow-separator {
       .@{prefix}-steps-item:not(:last-child)::before {
-        content: "^";
+        content: '^';
         border: 0;
         height: calc(100% - 24px);
         position: absolute;
@@ -313,7 +313,7 @@
 
       & when(@isReverse = false) {
         &:not(:last-child)::before {
-          content: "";
+          content: '';
           display: block;
           height: 100%;
           border-left: 0;
@@ -335,7 +335,7 @@
       }
       & when(@isReverse = true) {
         &:not(:last-child)::before {
-          content: "";
+          content: '';
           display: block;
           height: 100%;
           border-left: 0;
@@ -366,7 +366,7 @@
     &.@{prefix}-steps--arrow-separator {
       .@{prefix}-steps-item:not(:last-child)::after {
         flex: 1;
-        content: "^";
+        content: '^';
         display: inline-flex;
         justify-content: center;
         align-items: flex-start;
@@ -394,7 +394,7 @@
 
     .@{prefix}-steps-item:not(:last-child) {
       &::after {
-        content: "";
+        content: '';
         display: block;
         width: @steps-item-connector-line-width;
         border-left: 0;
@@ -435,7 +435,7 @@
     // arrow分隔符
     &.@{prefix}-steps--arrow-separator {
       .@{prefix}-steps-item:not(:last-child)::before {
-        content: "^";
+        content: '^';
         border: 0;
         height: calc(100% - 4px);
         position: absolute;
@@ -462,7 +462,7 @@
     .@{prefix}-steps-item {
       & when(@isReverse = false) {
         &:not(:last-child)::before {
-          content: "";
+          content: '';
           display: block;
           height: 100%;
           border-bottom: 0;
@@ -486,7 +486,7 @@
         margin-bottom: 0;
 
         &:not(:last-child)::before {
-          content: "";
+          content: '';
           display: block;
           height: 100%;
           border-bottom: 0;
