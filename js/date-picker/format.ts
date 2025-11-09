@@ -27,6 +27,7 @@ export function parseToDayjs(
   format: string,
   timeOfDay?: string,
   dayjsLocale?: string,
+  defaultTime?: string | string[]
 ) {
   if (value === '' || value === null) return dayjs();
 
@@ -34,26 +35,42 @@ export function parseToDayjs(
   // format week
   if (/[w|W]/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
+      dateText = dayjs(dateText)
+        .locale(dayjsLocale || 'zh-cn')
+        .format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
 
-    let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
+    let firstWeek = dayjs(yearStr, 'YYYY')
+      .locale(dayjsLocale || 'zh-cn')
+      .startOf('year');
     // 第一周ISO定义: 本年度第一个星期四所在的星期
     // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
     // 否则本周即为第一周
-    if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
+    if (firstWeek.day() > 4 || firstWeek.day() === 0) { firstWeek = firstWeek.add(1, 'week'); }
 
     // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
-    const weekCounts = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').isoWeeksInYear();
+    const weekCounts = dayjs(yearStr, 'YYYY')
+      .locale(dayjsLocale || 'zh-cn')
+      .isoWeeksInYear();
     for (let i = 0; i <= weekCounts; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
       if (timeOfDay === 'start') nextWeek = nextWeek.subtract(5, 'day');
       if (nextWeek.format(weekFormatStr) === weekStr) {
+        // 如果传入了 defaultTime
+        if (defaultTime) {
+          const dt = Array.isArray(defaultTime) ? defaultTime[0] : defaultTime;
+          const parts = (dt || '').split(':').map((p) => Number(p));
+          // 设置时分秒
+          nextWeek = nextWeek
+            .hour(parts[0] || 0)
+            .minute(parts[1] || 0)
+            .second(parts[2] || 0);
+        }
         return nextWeek;
       }
     }
@@ -62,7 +79,9 @@ export function parseToDayjs(
   // format quarter
   if (/Q/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
+      dateText = dayjs(dateText)
+        .locale(dayjsLocale || 'zh-cn')
+        .format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
@@ -72,6 +91,15 @@ export function parseToDayjs(
     for (let i = 0; i < 4; i += 1) {
       const nextQuarter = firstQuarter.add(i, 'quarter');
       if (nextQuarter.format(quarterFormatStr) === quarterStr) {
+        // 如果传入了 defaultTime，给返回的 dayjs 对象设置默认时间
+        if (defaultTime) {
+          const dt = Array.isArray(defaultTime) ? defaultTime[0] : defaultTime;
+          const parts = (dt || '').split(':').map((p) => Number(p));
+          return nextQuarter
+            .hour(parts[0] || 0)
+            .minute(parts[1] || 0)
+            .second(parts[2] || 0);
+        }
         return nextQuarter;
       }
     }
@@ -84,8 +112,34 @@ export function parseToDayjs(
 
   // 兼容数据异常情况
   if (!result.isValid()) {
-    log.error('DatePicker', `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
+    log.error(
+      'DatePicker',
+      `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`
+    );
     return dayjs();
+  }
+
+  // 如果没有时间格式但提供了 defaultTime，则将默认时间设置到解析结果上
+  try {
+    const timeFormatFromFormat = extractTimeFormat(format || '');
+    if (
+      defaultTime
+      && (!timeFormatFromFormat || timeFormatFromFormat.trim() === '')
+    ) {
+      const dt = Array.isArray(defaultTime) ? defaultTime[0] : defaultTime;
+      if (dt) {
+        const parts = dt.split(':').map((p) => Number(p));
+        // 注意：dayjs 的 hour/minute/second 返回新的 dayjs 对象（可链式调用）
+        const withTime = result
+          .hour(parts[0] || 0)
+          .minute(parts[1] || 0)
+          .second(parts[2] || 0);
+        return withTime;
+      }
+    }
+  } catch (e) {
+    // 保守处理：若设置时间出错，仍返回原始结果并记录日志
+    log.error('DatePicker', `set defaultTime error: ${e}`);
   }
 
   return result;
@@ -98,16 +152,23 @@ function formatRange({
   dayjsLocale,
   targetFormat,
   autoSwap,
+  defaultTime,
 }: {
   newDate: any;
   format: string;
   dayjsLocale?: string;
   targetFormat?: string;
   autoSwap?: boolean;
+  defaultTime?: string | string[];
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
-  let dayjsDateList = newDate.map((d) => d && parseToDayjs(d, format).locale(dayjsLocale));
+  let dayjsDateList = newDate.map(
+    (d) => d
+      && parseToDayjs(d, format, undefined, dayjsLocale, defaultTime).locale(
+        dayjsLocale
+      )
+  );
 
   // 保证后面的时间大于前面的时间
   if (
@@ -130,9 +191,9 @@ function formatRange({
   }
 
   // valueType = 'time-stamp' 返回时间戳
-  if (targetFormat === 'time-stamp') return dayjsDateList.map((da) => da && da.toDate().getTime());
+  if (targetFormat === 'time-stamp') { return dayjsDateList.map((da) => da && da.toDate().getTime()); }
   // valueType = 'Date' 返回时间对象
-  if (targetFormat === 'Date') return dayjsDateList.map((da) => da && da.toDate());
+  if (targetFormat === 'Date') { return dayjsDateList.map((da) => da && da.toDate()); }
 
   return dayjsDateList.map((da) => da && da.format(targetFormat || format));
 }
@@ -143,15 +204,24 @@ function formatSingle({
   format,
   targetFormat,
   dayjsLocale,
+  defaultTime,
 }: {
   newDate: any;
   format: string;
   targetFormat?: string;
   dayjsLocale?: string;
+  defaultTime?: string | string[];
 }) {
   if (!newDate) return '';
 
-  const dayJsDate = parseToDayjs(newDate, format).locale(dayjsLocale);
+  // parseToDayjs signature: (value, format, timeOfDay?, dayjsLocale?, defaultTime?)
+  const dayJsDate = parseToDayjs(
+    newDate,
+    format,
+    undefined,
+    dayjsLocale,
+    defaultTime
+  ).locale(dayjsLocale);
 
   // 格式化失败提示
   if (!dayJsDate.isValid()) {
@@ -191,14 +261,34 @@ export function formatDate(
     targetFormat,
     dayjsLocale = 'zh-cn',
     autoSwap,
-  }: { format: string; dayjsLocale?: string, targetFormat?: string; autoSwap?: boolean }
+    defaultTime,
+  }: {
+    format: string;
+    dayjsLocale?: string;
+    targetFormat?: string;
+    autoSwap?: boolean;
+    defaultTime?: string | string[];
+  }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({ newDate, format, dayjsLocale, targetFormat, autoSwap });
+    result = formatRange({
+      newDate,
+      format,
+      dayjsLocale,
+      targetFormat,
+      autoSwap,
+      defaultTime,
+    });
   } else {
-    result = formatSingle({ newDate, format, dayjsLocale, targetFormat });
+    result = formatSingle({
+      newDate,
+      format,
+      dayjsLocale,
+      targetFormat,
+      defaultTime,
+    });
   }
 
   return result;
@@ -215,21 +305,35 @@ export function calcFormatTime(time: string, timeFormat: string) {
 }
 // TODO 细化 value 类型
 // 格式化时间
-export function formatTime(value: any, format: string, timeFormat: string, defaultTime: string | string[]) {
+export function formatTime(
+  value: any,
+  format: string,
+  timeFormat: string,
+  defaultTime: string | string[]
+) {
   // 无论参数是不是数组，统一转成数组处理
   let result = Array.isArray(value) ? value : [value];
   // eslint-disable-next-line no-param-reassign
-  defaultTime = Array.isArray(defaultTime) ? defaultTime : [defaultTime, defaultTime];
+  defaultTime = Array.isArray(defaultTime)
+    ? defaultTime
+    : [defaultTime, defaultTime];
   result = result.map((v, i) => {
     // string格式需要用format去解析，其他诸如Date、time-stamp格式则直接dayjs
     if (v) {
-      const formattedResult = dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
-      return !dayjs(formattedResult, timeFormat).isValid() && defaultTime[i] ? defaultTime[i] : formattedResult;
+      const formattedResult = dayjs(
+        v,
+        typeof v === 'string' ? format : undefined
+      ).format(timeFormat);
+      return !dayjs(formattedResult, timeFormat).isValid() && defaultTime[i]
+        ? defaultTime[i]
+        : formattedResult;
     }
     return calcFormatTime(defaultTime[i], timeFormat);
   });
 
-  result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
+  result = result.length
+    ? result
+    : defaultTime.map((t) => calcFormatTime(t, timeFormat));
   // value是数组就输出数组，不是数组就输出第一个即可
   return Array.isArray(value) ? result : result?.[0];
 }
@@ -281,8 +385,12 @@ export function getDefaultFormat({
 
     return {
       format: format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
-      valueType: valueType || format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
-      timeFormat: extractTimeFormat(format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
+      valueType:
+        valueType || format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
+      timeFormat:
+        extractTimeFormat(
+          format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`
+        ) || TIME_FORMAT,
     };
   }
   log.error('DatePicker', `Invalid mode: ${mode}`);
