@@ -1,4 +1,5 @@
-import { isFunction, chunk } from 'lodash-es';
+import { chunk, isFunction } from 'lodash-es';
+
 import dayjs from 'dayjs';
 import dayJsIsBetween from 'dayjs/plugin/isBetween';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
@@ -71,8 +72,10 @@ function isSameMonth(date1: Date, date2: Date): boolean {
   return isSameYear(date1, date2) && date1.getMonth() === date2.getMonth();
 }
 
-function isSameWeek(date1: Date, date2: Date, dayjsLocale = 'zh-cn'): boolean {
-  return isSameMonth(date1, date2) && dayjs(date1).locale(dayjsLocale).week() === dayjs(date2).locale(dayjsLocale).week();
+function isSameWeek(date1: Date, date2: Date): boolean {
+  return (
+    isSameMonth(date1, date2) && dayjs(date1).week() === dayjs(date2).week()
+  );
 }
 
 function isSameDate(date1: Date, date2: Date): boolean {
@@ -101,15 +104,15 @@ function compareAsc(date1: { getTime: () => any }, date2: Date): number {
  * @param {String} type 比较类型，默认比较到『日』 date|month|year
  * @returns {Boolean}
  */
-export function isSame(date1: Date, date2: Date, type = 'date', dayjsLocale = 'zh-cn'): boolean {
+export function isSame(date1: Date, date2: Date, type = 'date'): boolean {
   const func = {
     isSameYear,
     isSameQuarter,
     isSameMonth,
     isSameWeek,
     isSameDate,
-  } as Record<string, (date1: Date, date2: Date, dayjsLocale?: string) => boolean>;
-  return func[`isSame${firstUpperCase(type)}`](date1, date2, dayjsLocale);
+  } as Record<string, (date1: Date, date2: Date) => boolean>;
+  return func[`isSame${firstUpperCase(type)}`](date1, date2);
 }
 
 export function outOfRanges(d: Date, min: any, max: any) {
@@ -200,7 +203,6 @@ export interface OptionsType {
   minDate: Date;
   maxDate: Date;
   showWeekOfYear?: Boolean;
-  dayjsLocale?: string;
   monthLocal?: string[];
   quarterLocal?: string[];
   cancelRangeSelectLimit?: boolean;
@@ -214,9 +216,8 @@ export function getWeeks(
     disableDate = () => false,
     minDate,
     maxDate,
-    dayjsLocale = 'zh-cn',
     cancelRangeSelectLimit = false,
-  }: OptionsType,
+  }: OptionsType
 ) {
   const prependDay = getFirstDayOfMonth({ year, month });
   const appendDay = getLastDayOfMonth({ year, month });
@@ -230,13 +231,14 @@ export function getWeeks(
       text: i,
       active: false,
       value: currentDay,
-      disabled: (isFunction(disableDate) && disableDate(currentDay))
+      disabled:
+        (isFunction(disableDate) && disableDate(currentDay))
         || (!cancelRangeSelectLimit && outOfRanges(currentDay, minDate, maxDate)),
       now: isSame(today, currentDay),
       firstDayOfMonth: i === 1,
       lastDayOfMonth: i === maxDays,
       type: 'current-month',
-      dayjsObj: dayjs(currentDay).locale(dayjsLocale),
+      dayjsObj: dayjs(currentDay),
     });
   }
 
@@ -250,7 +252,7 @@ export function getWeeks(
         disabled: (isFunction(disableDate) && disableDate(prependDay)) || (!cancelRangeSelectLimit && outOfRanges(prependDay, minDate, maxDate)),
         additional: true, // 非当前月
         type: 'prev-month',
-        dayjsObj: dayjs(prependDay).locale(dayjsLocale),
+        dayjsObj: dayjs(prependDay),
       });
       prependDay.setDate(prependDay.getDate() - 1);
       if (prependDay.getDay() === Math.abs(firstDayOfWeek + 6) % 7) break;
@@ -267,7 +269,7 @@ export function getWeeks(
       disabled: (isFunction(disableDate) && disableDate(appendDay)) || (!cancelRangeSelectLimit && outOfRanges(appendDay, minDate, maxDate)),
       additional: true, // 非当前月
       type: 'next-month',
-      dayjsObj: dayjs(appendDay).locale(dayjsLocale),
+      dayjsObj: dayjs(appendDay),
     });
   }
 
@@ -279,8 +281,8 @@ export function getWeeks(
         ...d[0],
         active: false,
         value: d[0].value,
-        text: dayjs(d[0].value).locale(dayjsLocale).week(),
-        dayjsObj: dayjs(d[0].value).locale(dayjsLocale),
+        text: dayjs(d[0].value).week(),
+        dayjsObj: dayjs(d[0].value),
       });
     });
   }
@@ -295,9 +297,8 @@ export function getQuarters(
     minDate,
     maxDate,
     quarterLocal,
-    dayjsLocale = 'zh-cn',
     cancelRangeSelectLimit = false,
-  }: OptionsType,
+  }: OptionsType
 ) {
   const quarterArr = [];
   const today = getToday();
@@ -311,7 +312,7 @@ export function getQuarters(
       disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: quarterLocal[i - 1],
-      dayjsObj: dayjs(date).locale(dayjsLocale),
+      dayjsObj: dayjs(date),
     });
   }
 
@@ -324,9 +325,8 @@ export function getYears(
     disableDate = () => false,
     minDate,
     maxDate,
-    dayjsLocale = 'zh-cn',
     cancelRangeSelectLimit = false,
-  }: OptionsType,
+  }: OptionsType
 ) {
   const startYear = parseInt((year / 10).toString(), 10) * 10;
   const endYear = startYear + 9;
@@ -344,7 +344,7 @@ export function getYears(
       disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: `${date.getFullYear()}`,
-      dayjsObj: dayjs(date).locale(dayjsLocale),
+      dayjsObj: dayjs(date),
     });
   }
 
@@ -353,7 +353,7 @@ export function getYears(
 
 export function getMonths(year: number, params: OptionsType) {
   const {
-    disableDate = () => false, minDate, maxDate, monthLocal, dayjsLocale = 'zh-cn', cancelRangeSelectLimit = false,
+    disableDate = () => false, minDate, maxDate, monthLocal, cancelRangeSelectLimit = false,
   } = params;
   const MonthArr = [];
   const today = getToday();
@@ -367,7 +367,7 @@ export function getMonths(year: number, params: OptionsType) {
       disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: monthLocal[date.getMonth()], // `${date.getMonth() + 1} ${monthText || '月'}`,
-      dayjsObj: dayjs(date).locale(dayjsLocale),
+      dayjsObj: dayjs(date),
     });
   }
 
