@@ -1,5 +1,5 @@
 ---
-title: ChatReasoning
+title: ChatReasoning 思考过程
 description: 带思维链的markdown渲染。在某些场景下输出最终回答之前，模型会先输出一段思维链内容，以提升最终答案的准确性。
 isComponent: true
 usage: { title: '', description: '' }

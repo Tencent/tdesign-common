@@ -1,5 +1,5 @@
 ---
-title: ChatItem
+title: ChatItem 对话单元
 description: ChatItem 用于在聊天对话中显示单个 item。它可以展示用户的头像、昵称、时间、聊天内容。AI 聊天场景下提供模型切换提示，如果消息仍在发送过程中，它还可以显示一个 loading 效果。
 isComponent: true
 usage: { title: "", description: "" }

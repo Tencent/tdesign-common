@@ -1,5 +1,5 @@
 ---
-title: ChatList
+title: ChatList 对话列表
 description: 用于展示对话或者普通对话场景的组件。
 isComponent: true
 usage: { title: "", description: "" }

@@ -1,5 +1,5 @@
 ---
-title: ChatContent
+title: ChatContent 对话正文
 description: 支持 markdown 格式的渲染。
 isComponent: true
 usage: { title: "", description: "" }
