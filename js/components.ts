@@ -157,12 +157,12 @@ export const CHAT_COMPONENT_MAP: Record<string, string[]> = {
   'chat-actionbar': ['ChatActionbar', 'ChatAction'], // vue-chat: ChatAction 改名 ChatActionbar,保留  ChatAction 用于兼容
   'chat-content': ['ChatContent'],
   'chat-input': ['ChatInput'],
-  'chat-item': ['ChatItem'],
+  'chat-item': ['ChatItem'], // vue-chat: 后续版本将移除
   'chat-list': ['ChatList', 'Chat'], // vue-chat: Chat 改名 ChatList, 保留 Chat 用于兼容
   'chat-loading': ['ChatLoading'],
   'chat-markdown': ['ChatMarkdown'],
   'chat-message': ['ChatMessage'],
-  'chat-reasoning': ['ChatReasoning'],
+  'chat-reasoning': ['ChatReasoning'], // vue-chat: 后续版本将移除
   'chat-sender': ['ChatSender'],
   'chat-thinking': ['ChatThinking'],
   chatbot: ['Chatbot'],
