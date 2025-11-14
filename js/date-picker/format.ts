@@ -102,7 +102,7 @@ export function parseToDayjs(
 
   // 兼容数据异常情况
   if (!result.isValid()) {
-    log.error('DatePicker',`Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
+    log.error('DatePicker', `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
     return dayjs();
   }
 
