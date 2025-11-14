@@ -262,10 +262,7 @@ export function calcFormatTime(time: string, timeFormat: string) {
 }
 // TODO 细化 value 类型
 // 格式化时间
-export function formatTime(value: any,
-  format: string,
-  timeFormat: string,
-  defaultTime: string | string[]) {
+export function formatTime(value: any, format: string, timeFormat: string, defaultTime: string | string[]) {
   // 无论参数是不是数组，统一转成数组处理
   let result = Array.isArray(value) ? value : [value];
   // eslint-disable-next-line no-param-reassign
@@ -290,13 +287,11 @@ export function getDefaultFormat({
   format,
   valueType,
   enableTimePicker,
-  defaultTime,
 }: {
   mode?: string;
   format?: string;
   valueType?: string;
   enableTimePicker?: boolean;
-  defaultTime?: string | string[];
 }) {
   if (mode === 'year') {
     return {
