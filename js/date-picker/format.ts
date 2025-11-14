@@ -266,8 +266,7 @@ export function calcFormatTime(time: string, timeFormat: string) {
 export function formatTime(value: any,
   format: string,
   timeFormat: string,
-  defaultTime: string | string[]
-) {
+  defaultTime: string | string[]) {
   // 无论参数是不是数组，统一转成数组处理
   let result = Array.isArray(value) ? value : [value];
   // eslint-disable-next-line no-param-reassign
