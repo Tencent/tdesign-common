@@ -196,13 +196,7 @@ function formatSingle({
   if (!newDate) return '';
 
   // parseToDayjs signature: (value, format, timeOfDay?, dayjsLocale?, defaultTime?)
-  const dayJsDate = parseToDayjs(
-    newDate,
-    format,
-    undefined,
-    dayjsLocale,
-    defaultTime
-  ).locale(dayjsLocale);
+  const dayJsDate = parseToDayjs(newDate, format, undefined, dayjsLocale, defaultTime).locale(dayjsLocale);
 
   // 格式化失败提示
   if (!dayJsDate.isValid()) {
@@ -269,8 +263,7 @@ export function calcFormatTime(time: string, timeFormat: string) {
 }
 // TODO 细化 value 类型
 // 格式化时间
-export function formatTime(
-  value: any,
+export function formatTime(value: any,
   format: string,
   timeFormat: string,
   defaultTime: string | string[]
