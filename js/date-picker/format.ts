@@ -243,35 +243,16 @@ export function formatDate(
     dayjsLocale = 'zh-cn',
     autoSwap,
     defaultTime,
-  }: {
-    format: string;
-    dayjsLocale?: string;
-    targetFormat?: string;
-    autoSwap?: boolean;
-    defaultTime?: string | string[];
-  }
+  }: { format: string; dayjsLocale?: string; targetFormat?: string; autoSwap?: boolean; defaultTime?: string | string[] }
 ) {
   let result;
 
   if (Array.isArray(newDate)) {
-    result = formatRange({
-      newDate,
-      format,
-      dayjsLocale,
-      targetFormat,
-      autoSwap,
-      defaultTime,
-    });
+    result = formatRange({ newDate, format, dayjsLocale, targetFormat, autoSwap, defaultTime });
   } else {
     const singleDefaultTime = Array.isArray(defaultTime) ? '' : defaultTime;
 
-    result = formatSingle({
-      newDate,
-      format,
-      dayjsLocale,
-      targetFormat,
-      defaultTime: singleDefaultTime,
-    });
+    result = formatSingle({ newDate, format, dayjsLocale, targetFormat, defaultTime: singleDefaultTime });
   }
 
   return result;
@@ -297,26 +278,17 @@ export function formatTime(
   // 无论参数是不是数组，统一转成数组处理
   let result = Array.isArray(value) ? value : [value];
   // eslint-disable-next-line no-param-reassign
-  defaultTime = Array.isArray(defaultTime)
-    ? defaultTime
-    : [defaultTime, defaultTime];
+  defaultTime = Array.isArray(defaultTime) ? defaultTime : [defaultTime, defaultTime];
   result = result.map((v, i) => {
     // string格式需要用format去解析，其他诸如Date、time-stamp格式则直接dayjs
     if (v) {
-      const formattedResult = dayjs(
-        v,
-        typeof v === 'string' ? format : undefined
-      ).format(timeFormat);
-      return !dayjs(formattedResult, timeFormat).isValid() && defaultTime[i]
-        ? defaultTime[i]
-        : formattedResult;
+      const formattedResult = dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
+      return !dayjs(formattedResult, timeFormat).isValid() && defaultTime[i] ? defaultTime[i] : formattedResult;
     }
     return calcFormatTime(defaultTime[i], timeFormat);
   });
 
-  result = result.length
-    ? result
-    : defaultTime.map((t) => calcFormatTime(t, timeFormat));
+  result = result.length ? result : defaultTime.map((t) => calcFormatTime(t, timeFormat));
   // value是数组就输出数组，不是数组就输出第一个即可
   return Array.isArray(value) ? result : result?.[0];
 }
