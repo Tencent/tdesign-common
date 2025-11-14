@@ -149,7 +149,7 @@ function formatRange({
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
-  let dayjsDateList = newDate.map((d, i) => d && parseToDayjs(d, format, undefined, dayjsLocale, defaultTime?.[i]).locale(dayjsLocale));
+  let dayjsDateList = newDate.map((d, i) => d && parseToDayjs(d, format, undefined, undefined, defaultTime?.[i]).locale(dayjsLocale));
 
   // 保证后面的时间大于前面的时间
   if (
@@ -195,8 +195,7 @@ function formatSingle({
 }) {
   if (!newDate) return '';
 
-  // parseToDayjs signature: (value, format, timeOfDay?, dayjsLocale?, defaultTime?)
-  const dayJsDate = parseToDayjs(newDate, format, undefined, dayjsLocale, defaultTime).locale(dayjsLocale);
+  const dayJsDate = parseToDayjs(newDate, format, undefined, undefined, defaultTime).locale(dayjsLocale);
 
   // 格式化失败提示
   if (!dayJsDate.isValid()) {
@@ -328,12 +327,10 @@ export function getDefaultFormat({
     };
   }
   if (mode === 'date') {
-    const hasTime = enableTimePicker || !!defaultTime;
-
     return {
-      format: format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
-      valueType: valueType || format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
-      timeFormat: extractTimeFormat(format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
+      format: format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
+      valueType: valueType || format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`,
+      timeFormat: extractTimeFormat(format || `YYYY-MM-DD${enableTimePicker ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
     };
   }
   log.error('DatePicker', `Invalid mode: ${mode}`);
