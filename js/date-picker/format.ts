@@ -35,29 +35,21 @@ export function parseToDayjs(
   // format week
   if (/[w|W]/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText)
-        .locale(dayjsLocale || 'zh-cn')
-        .format(format) as string;
+      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
     const weekStr = dateText.split(/[-/.\s]/)[1];
     const weekFormatStr = format.split(/[-/.\s]/)[1];
 
-    let firstWeek = dayjs(yearStr, 'YYYY')
-      .locale(dayjsLocale || 'zh-cn')
-      .startOf('year');
+    let firstWeek = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').startOf('year');
     // 第一周ISO定义: 本年度第一个星期四所在的星期
     // 如果第一年第一天在星期四后, 直接跳到下一周, 下一周必定是第一周
     // 否则本周即为第一周
-    if (firstWeek.day() > 4 || firstWeek.day() === 0) {
-      firstWeek = firstWeek.add(1, 'week');
-    }
+    if (firstWeek.day() > 4 || firstWeek.day() === 0) firstWeek = firstWeek.add(1, 'week');
 
     // 一年有52或者53周, 引入IsoWeeksInYear辅助查询
-    const weekCounts = dayjs(yearStr, 'YYYY')
-      .locale(dayjsLocale || 'zh-cn')
-      .isoWeeksInYear();
+    const weekCounts = dayjs(yearStr, 'YYYY').locale(dayjsLocale || 'zh-cn').isoWeeksInYear();
     for (let i = 0; i <= weekCounts; i += 1) {
       let nextWeek = firstWeek.add(i, 'week');
       // 重置为周的第一天
@@ -80,9 +72,7 @@ export function parseToDayjs(
   // format quarter
   if (/Q/g.test(format)) {
     if (!isString(dateText)) {
-      dateText = dayjs(dateText)
-        .locale(dayjsLocale || 'zh-cn')
-        .format(format) as string;
+      dateText = dayjs(dateText).locale(dayjsLocale || 'zh-cn').format(format) as string;
     }
 
     const yearStr = dateText.split(/[-/.\s]/)[0];
@@ -112,10 +102,7 @@ export function parseToDayjs(
 
   // 兼容数据异常情况
   if (!result.isValid()) {
-    log.error(
-      'DatePicker',
-      `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`
-    );
+    log.error('DatePicker',`Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`);
     return dayjs();
   }
 
@@ -162,12 +149,7 @@ function formatRange({
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
-  let dayjsDateList = newDate.map(
-    (d, i) => d
-      && parseToDayjs(d, format, undefined, dayjsLocale, defaultTime?.[i]).locale(
-        dayjsLocale
-      )
-  );
+  let dayjsDateList = newDate.map((d, i) => d && parseToDayjs(d, format, undefined, dayjsLocale, defaultTime?.[i]).locale(dayjsLocale));
 
   // 保证后面的时间大于前面的时间
   if (
@@ -190,13 +172,9 @@ function formatRange({
   }
 
   // valueType = 'time-stamp' 返回时间戳
-  if (targetFormat === 'time-stamp') {
-    return dayjsDateList.map((da) => da && da.toDate().getTime());
-  }
+  if (targetFormat === 'time-stamp') return dayjsDateList.map((da) => da && da.toDate().getTime());
   // valueType = 'Date' 返回时间对象
-  if (targetFormat === 'Date') {
-    return dayjsDateList.map((da) => da && da.toDate());
-  }
+  if (targetFormat === 'Date') return dayjsDateList.map((da) => da && da.toDate());
 
   return dayjsDateList.map((da) => da && da.format(targetFormat || format));
 }
