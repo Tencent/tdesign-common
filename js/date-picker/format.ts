@@ -368,12 +368,8 @@ export function getDefaultFormat({
 
     return {
       format: format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
-      valueType:
-        valueType || format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
-      timeFormat:
-        extractTimeFormat(
-          format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`
-        ) || TIME_FORMAT,
+      valueType: valueType || format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`,
+      timeFormat: extractTimeFormat(format || `YYYY-MM-DD${hasTime ? ' HH:mm:ss' : ''}`) || TIME_FORMAT,
     };
   }
   log.error('DatePicker', `Invalid mode: ${mode}`);
