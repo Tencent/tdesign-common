@@ -38,3 +38,5 @@ export interface WatermarkImage {
    */
   url?: string;
 }
+
+export type WatermarkLayout = 'rectangular' | 'hexagonal';

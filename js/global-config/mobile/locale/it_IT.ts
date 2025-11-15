@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/it';
 
@@ -44,6 +45,25 @@ export default {
     hourLabel: 'Ora',
     minuteLabel: 'Minuto',
     secondLabel: 'Secondo',
+  },
+  form: {
+    errorMessage: {
+      date: 'Inserisci la ${name} corretta',
+      url: 'Inserisci la ${name} corretta',
+      whitespace: 'Il ${name} non può essere vuoto',
+      required: '${name} obbligatorio',
+      max: 'La lunghezza dei caratteri di ${name} non può superare i ${validate} caratteri',
+      min: 'La lunghezza dei caratteri di ${name} non può essere inferiore a ${validate} caratteri',
+      len: 'La lunghezza dei caratteri di ${name} deve essere ${validate}',
+      enum: '${name} può essere solo ${validate}, ecc.',
+      idcard: 'Inserisci la ${name} corretta',
+      telnumber: 'Inserisci la ${name} corretta',
+      pattern: 'Inserisci la ${name} corretta',
+      validator: '${name} non conforme ai requisiti',
+      boolean: 'Il tipo di dati di ${name} deve essere booleano',
+      number: '${name} deve essere un numero',
+    },
+    colonText: ':',
   },
   picker: {
     cancel: 'Annulla',

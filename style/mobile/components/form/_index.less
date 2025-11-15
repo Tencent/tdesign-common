@@ -79,7 +79,7 @@
     &--required:not(.@{prefix}-form__label--required-right) {
       label::before {
         display: inline-block;
-        margin-left: 2px;
+        margin-right: calc(@spacer / 2);
         color: @error-color-6;
         line-height: 20px;
         content: "*";
@@ -89,7 +89,7 @@
     &--required-right {
       label::after {
         display: inline-block;
-        margin-right: 2px;
+        margin-left: calc(@spacer / 2);
         color: @error-color-6;
         line-height: 20px;
         content: "*";

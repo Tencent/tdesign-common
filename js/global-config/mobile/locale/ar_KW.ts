@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/ar';
 
@@ -44,6 +45,24 @@ export default {
     hourLabel: 'الساعة',
     minuteLabel: 'دقيقة',
     secondLabel: 'ثانيا',
+  },
+  form: {
+    errorMessage: {
+      date: 'الرجاء إدخال ${name} الصحيح',
+      url: 'الرجاء إدخال ${name} الصحيح',
+      whitespace: 'لا يمكن أن يكون ${name} فارغًا',
+      required: 'مطلوب ${name}',
+      max: 'يمكن أن يحتوي ${name} على ما يصل إلى ${validate} حرفًا',
+      min: 'لا يمكن أن يكون ${name} أقل من ${validate} حرفًا',
+      len: 'يجب أن يتكون ${name} من أحرف ${validate} بالضبط',
+      enum: '${name} يجب أن يكون واحدًا من ${validate} ',
+      idcard: 'الرجاء إدخال ${name} الصحيح',
+      telnumber: 'الرجاء إدخال ${name} الصحيح',
+      pattern: 'الرجاء إدخال ${name} الصحيح',
+      validator: '${name} غير صالح',
+      boolean: '${name} ليس منطقيًا',
+      number: 'يجب أن يكون ${name} رقمًا',
+    },
   },
   picker: {
     cancel: 'الإلغاء',

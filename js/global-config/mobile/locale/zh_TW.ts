@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/zh-tw';
 
@@ -31,6 +32,25 @@ export default {
     hourLabel: '時',
     minuteLabel: '分',
     secondLabel: '秒',
+  },
+  form: {
+    errorMessage: {
+      date: '請輸入正確的${name}',
+      url: '請輸入正確的${name}',
+      whitespace: '${name}不能為空',
+      required: '${name}必填',
+      max: '${name}字符長度不能超過 ${validate} 個字符，一個中文等於兩個字符',
+      min: '${name}字符長度不能少於 ${validate} 個字符，一個中文等於兩個字符',
+      len: '${name}字符長度必須是 ${validate}',
+      enum: '${name}只能是${validate}等',
+      idcard: '請輸入正確的${name}',
+      telnumber: '請輸入正確的${name}',
+      pattern: '請輸入正確的${name}',
+      validator: '${name}不符合要求',
+      boolean: '${name}數據類型必須是布林類型',
+      number: '${name}必須是數字',
+    },
+    colonText: '：',
   },
   picker: {
     cancel: '取消',

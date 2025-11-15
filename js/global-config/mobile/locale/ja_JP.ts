@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/ja';
 
@@ -31,6 +32,25 @@ export default {
     hourLabel: '時',
     minuteLabel: '分',
     secondLabel: '秒',
+  },
+  form: {
+    errorMessage: {
+      date: '正しく入力してください${name}',
+      url: '正しく入力してください${name}',
+      required: '${name}必須項目',
+      whitespace: '${name}を空にすることはできません',
+      max: '${name}文字数制限 ${validate} 文字，一中二文',
+      min: '${name}を下回る文字数は使用できません ${validate} 文字，一中二文',
+      len: '${name}文字の長さは、必ず ${validate}',
+      enum: '${name}でしかありえません${validate}等',
+      idcard: '正しく入力してください${name}',
+      telnumber: '正しく入力してください${name}',
+      pattern: '正しく入力してください${name}',
+      validator: '${name}要件を満たしていない',
+      boolean: '${name}データ型は Boolean 型であること',
+      number: '${name}デジタルであること',
+    },
+    colonText: ':',
   },
   picker: {
     cancel: 'キャンセル',

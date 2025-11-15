@@ -1,6 +1,6 @@
 ---
 title: Skeleton
-description: When the network is slow, show the user the general structure of the page before the actual page data loads.
+description: A placeholder graphic combination used to display content while waiting for loading. It has a dynamic loading effect and reduces user anxiety while waiting.
 spline: base
 isComponent: true
 toc: false

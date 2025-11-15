@@ -94,7 +94,7 @@ jobs:
           - script: build
             run: pnpm -C internal/builds build:vue-next
           - script: preview 
-            run: pnpm -C packages/tdesign-vue-next/site build
+            run: pnpm -C packages/tdesign-vue-next/site preview
     steps:
       - name: Checkout tdesign-vue-next
         uses: actions/checkout@v4

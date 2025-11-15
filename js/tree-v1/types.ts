@@ -251,6 +251,8 @@ export interface TypeTreeStoreOptions {
   checkStrictly?: boolean;
   // 禁用整个树
   disabled?: boolean;
+  // 指定节点禁用条件
+  disableCheck?: boolean | TypeTreeFilter;
   // 节点是否可拖动
   draggable?: boolean,
   // 节点加载函数

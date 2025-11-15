@@ -56,5 +56,11 @@
         }
       }
     }
+
+    :not(&--fixed):not(&--border) {
+      @{root}__label {
+        padding-right: @comp-paddingLR-l;
+      }
+    }
   }
 }

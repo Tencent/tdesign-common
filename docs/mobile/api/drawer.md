@@ -1,6 +1,6 @@
 ---
 title: Drawer 抽屉
-description: 屏幕边缘滑出的浮层面板。 
+description: 屏幕边缘滑出的浮层面板。
 spline: base
 isComponent: true
 toc: false
@@ -17,6 +17,10 @@ toc: false
 ### 带标题抽屉
 
 {{ title }}
+
+### 抽屉方向
+
+{{ placement }}
 
 ### 带底部插槽抽屉
 

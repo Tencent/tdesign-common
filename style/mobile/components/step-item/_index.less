@@ -44,6 +44,10 @@
     align-items: center;
   }
 
+  &--vertical {
+    margin-bottom: 8px;
+  }
+
   &__anchor {
     display: flex;
     align-items: center;
@@ -128,8 +132,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 4px;
     }
+  }
+
+  &__title + &__description:not(:empty) {
+    margin-top: 4px;
   }
 
   &__description {

@@ -4,6 +4,7 @@
  * @returns string
  */
 export const getColorTokenColor = (token: string): string => {
+  if (typeof window === 'undefined') return '';
   const targetElement = document?.documentElement;
   const styles = getComputedStyle(targetElement);
   return styles.getPropertyValue(token).trim() ?? '';

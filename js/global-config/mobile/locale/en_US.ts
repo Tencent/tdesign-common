@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/en';
 
@@ -44,6 +45,25 @@ export default {
     hourLabel: 'Hour',
     minuteLabel: 'Minute',
     secondLabel: 'Second',
+  },
+  form: {
+    errorMessage: {
+      date: '${name} is invalid',
+      url: '${name} is invalid',
+      required: '${name} is required',
+      whitespace: '${name} cannot be empty',
+      max: '${name} cannot be longer than ${validate} characters',
+      min: '${name} must be at least ${validate} characters',
+      len: '${name} must be exactly ${validate} characters',
+      enum: '${name} must be one of ${validate}',
+      idcard: '${name} is invalid',
+      telnumber: '${name} is invalid',
+      pattern: '${name} is invalid',
+      validator: '${name} is invalid',
+      boolean: '${name} is not a boolean',
+      number: '${name} must be a number',
+    },
+    colonText: ':',
   },
   picker: {
     cancel: 'Cancel',
