@@ -81,7 +81,6 @@
       height: @cascader-step-dot-size;
       border-radius: 50%;
       border: 1px solid @cascader-active-color;
-      background: @cascader-dot-bg-color;
       box-sizing: border-box;
 
       &:not(.@{cascader}__step-dot--last)::after {
@@ -97,7 +96,7 @@
       }
 
       &--active {
-        background: @cascader-active-dot-bg-color;
+        background: @cascader-active-color;
         border-color: @cascader-active-color;
       }
     }
