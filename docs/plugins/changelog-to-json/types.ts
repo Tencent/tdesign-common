@@ -1,6 +1,6 @@
 import { LOG_TYPES } from '.';
 
-export type Platform = 'web' | 'mobile';
+export type Platform = 'web' | 'mobile'| 'chat';
 
 export type LogType = typeof LOG_TYPES[number];
 

@@ -36,7 +36,7 @@
 
   &__header {
     text-align: center;
-    font-weight: bold;
+    font-weight: @dialog-title-font-weight;
     font-size: @dialog-title-font-size;
     line-height: @dialog-title-line-height;
     color: @dialog-title-color;
@@ -114,8 +114,8 @@
         box-sizing: border-box;
         top: 0;
         left: 0;
-        border-top: 1px solid @border-color;
-        border-left: 1px solid @border-color;
+        border-top: 1px solid @component-stroke;
+        border-left: 1px solid @component-stroke;
         transform: scale(.5);
         transform-origin: 0 0;
         width: 200%;

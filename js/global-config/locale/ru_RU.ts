@@ -279,6 +279,8 @@ export default {
     loadingEndText: 'Глубоко обдумано',
     uploadImageText: 'загрузить изображение',
     uploadAttachmentText: 'загрузить вложение',
+    shareTipText: 'Поделиться',
+
   },
   qrcode: {
     expiredText: 'истекший',

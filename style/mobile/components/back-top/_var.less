@@ -6,7 +6,7 @@
 @back-top-half-round-width: 60px;
 @back-top-half-round-height: 40px;
 @back-top-fixed-right: @spacer;
-@back-top-fixed-bottom: @spacer-2;
+@back-top-fixed-bottom: calc(@spacer-2 + env(safe-area-inset-bottom));
 
 @back-top-round-color: var(--td-back-top-round-color, @font-gray-1);
 @back-top-round-bg-color: var(--td-back-top-round-bg-color, @font-white-1);

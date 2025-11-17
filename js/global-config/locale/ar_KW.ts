@@ -261,6 +261,7 @@ export default {
     confirmClearHistory: 'هل أنت متأكد من مسح جميع الرسائل؟',
     uploadImageText: 'رفع الصورة',
     uploadAttachmentText: 'رفع المرفق',
+    shareTipText: 'مشاركة'
   },
   qrcode: {
     expiredText: 'منتهي الصلاحية',
