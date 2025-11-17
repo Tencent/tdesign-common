@@ -166,5 +166,4 @@ export const CHAT_COMPONENT_MAP: Record<string, string[]> = {
   'chat-sender': ['ChatSender'],
   'chat-thinking': ['ChatThinking'],
   chatbot: ['Chatbot'],
-  'file-card': ['FileCard'],
 };
