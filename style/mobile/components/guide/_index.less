@@ -81,14 +81,12 @@
       width: var(--td-guide-dialog-width, 311px);
       .@{guide}__title {
         text-align: center;
-        font-size: @guide-dialog-title-font-size;
-        line-height: @guide-dialog-title-line-height;
+        font: @guide-dialog-title-font;
       }
       .@{guide}__desc {
         margin-top: @guide-dialog-desc-margin-top;
         text-align: center;
-        font-size: @guide-dialog-desc-font-size;
-        line-height: @guide-dialog-desc-line-height;
+        font: @guide-dialog-desc-font;
       }
     }
   }
@@ -101,18 +99,14 @@
   &__title {
     text-align: left;
     color: @text-color-primary;
-    font-size: @guide-popover-title-font-size;
-    font-weight: 600;
-    line-height: @guide-popover-title-line-height;
+    font: @guide-popover-title-font;
   }
 
   &__desc {
     margin-top: @guide-tooltip-desc-margin-top;
     text-align: left;
     color: @text-color-secondary;
-    font-size: @guide-popover-desc-font-size;
-    font-weight: 400;
-    line-height: @guide-popover-desc-line-height;
+    font: @guide-popover-desc-font;
   }
 
   &__footer {

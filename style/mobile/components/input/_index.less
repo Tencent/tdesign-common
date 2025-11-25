@@ -37,8 +37,7 @@
   }
 
   &__label:not(:empty) {
-    font-size: @font-size-m;
-    line-height: 24px;
+    font: @input-label-text-font;
     color: @input-label-text-color;
     margin-right: @spacer-2;
 
@@ -78,8 +77,7 @@
     .@{prefix}-input__content {
       display: flex;
       align-items: center;
-      line-height: 24px;
-      font-size: @font-size-m;
+      font: @font-body-large;
     }
 
     &--clearable-icon,
@@ -160,12 +158,11 @@
 
   &__placeholder {
     color: @input-placeholder-text-color;
-    font-size: @font-size-m;
+    font: @input-placeholder-text-font;
   }
 
   &__tips {
-    font-size: @font-size-s;
-    line-height: 20px;
+    font: @font-body-small;
     padding-top: 4px;
   }
 }

@@ -8,7 +8,6 @@
   position: relative;
   display: inline-flex;
   vertical-align: middle;
-  font-size: @radio-font-size;
   background: @radio-bg-color;
 
   &:focus {
@@ -128,7 +127,7 @@
     .limit-title-row();
 
     color: @radio-label-color;
-    line-height: @radio-label-line-height;
+    font: @radio-label-font;
 
     &--disabled {
       cursor: not-allowed;
@@ -140,8 +139,7 @@
     .limit-title-row();
 
     color: @radio-content-color;
-    font-size: 14px;
-    line-height: @radio-content-line-height;
+    font: @radio-content-font;
 
     &--disabled {
       cursor: not-allowed;

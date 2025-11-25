@@ -22,7 +22,6 @@
   border: 1px solid transparent;
   box-sizing: border-box;
   border-radius: @tag-square-border-radius;
-  font-size: @tag-medium-font-size;
   user-select: none;
   vertical-align: middle;
 
@@ -50,10 +49,8 @@
 
   &.@{prefix}-tag {
     &--small {
-      height: @tag-small-height;
-      line-height: @tag-small-height;
-      padding: 0 @tag-small-padding;
-      font-size: @tag-small-font-size;
+      padding: @tag-small-padding;
+      font: @tag-small-font;
 
       .@{prefix}-icon,
       .@{prefix}-icon-close {
@@ -67,10 +64,8 @@
     }
 
     &--medium {
-      height: @tag-medium-height;
-      line-height: @tag-medium-height;
-      padding: 0 @tag-medium-padding;
-      font-size: @tag-medium-font-size;
+      padding: @tag-medium-padding;
+      font: @tag-medium-font;
 
       .@{prefix}-icon,
       .@{prefix}-icon-close {
@@ -79,10 +74,8 @@
     }
 
     &--large {
-      height: @tag-large-height;
-      line-height: @tag-large-height;
-      padding: 0 @tag-large-padding;
-      font-size: @tag-large-font-size;
+      padding: @tag-large-padding;
+      font: @tag-large-font;
 
       .@{prefix}-icon,
       .@{prefix}-icon-close {
@@ -91,10 +84,8 @@
     }
 
     &--extra-large {
-      height: @tag-extra-large-height;
-      line-height: @tag-extra-large-height;
-      padding: 0 @tag-extra-large-padding;
-      font-size: @tag-extra-large-font-size;
+      padding: @tag-extra-large-padding;
+      font: @tag-extra-large-font;
 
       .@{prefix}-icon,
       .@{prefix}-icon-close {

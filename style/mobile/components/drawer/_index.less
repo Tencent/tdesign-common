@@ -14,8 +14,7 @@
   }
 
   &__title {
-    font-weight: 600;
-    font-size: @drawer-title-font-size;
+    font: @drawer-title-font;
     padding: 24px 16px 8px;
     color: @drawer-title-color;
   }
@@ -30,7 +29,7 @@
       .border(bottom, @drawer-border-color);
 
       padding: @drawer-item-padding 0 @drawer-item-padding @drawer-item-padding;
-      line-height: @drawer-item-height;
+      font: @font-body-large;
 
       &::after {
         left: @drawer-item-padding;
@@ -39,7 +38,6 @@
       &-title {
         flex: 1;
         color: @drawer-title-color;
-        font-size: 16px;
       }
 
       &-icon {

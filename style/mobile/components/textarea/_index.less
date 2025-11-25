@@ -13,10 +13,9 @@
   }
 
   &__label:not(:empty) {
-    font-size: @font-size-m;
+    font: @textarea-label-font;
     color: @textarea-label-color;
     flex-shrink: 0;
-    line-height: 24px;
     margin-right: @spacer-2;
     width: @textarea-label-width;
     overflow: hidden;
@@ -24,8 +23,7 @@
     text-overflow: ellipsis;
 
     .@{prefix}-textarea--layout-vertical & {
-      line-height: 22px;
-      font-size: @font-size-base;
+      font: @font-body-medium;
       padding-bottom: @spacer;
     }
   }
@@ -51,24 +49,22 @@
       border: 0;
       outline: none;
       resize: none;
-      font-size: @textarea-text-font-size;
+      font: @textarea-text-font;
       color: @textarea-text-color;
-      line-height: @textarea-text-line-height;
     }
   }
 
   &__placeholder {
     &::placeholder {
       color: @textarea-placeholder-color;
-      font-size: @textarea-placeholder-font-size;
+      font: @textarea-placeholder-font;
     }
   }
 
   &__indicator:not(:empty) {
     color: @textarea-indicator-text-color;
-    font-size: @textarea-indicator-text-font-size;
+    font: @textarea-indicator-text-font;
     text-align: @textarea-indicator-text-align;
-    line-height: @textarea-indicator-text-line-height;
     padding-top: @textarea-indicator-text-padding-top;
   }
 
