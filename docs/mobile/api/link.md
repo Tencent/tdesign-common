@@ -1,5 +1,5 @@
 ---
-title: Link 标签
+title: Link 链接
 description: 用于开启一个任务或跳转一个新页面。
 spline: base
 isComponent: true
