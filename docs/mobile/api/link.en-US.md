@@ -1,7 +1,6 @@
 ---
-title: Link 
-description: Links are used to start a new task or jump to a new page.
-
+title: Link
+description: Text hyperlinks are used for navigation to new pages, including current project links, friendly links, and other similar connections.
 spline: base
 isComponent: true
 toc: false

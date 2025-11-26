@@ -1,6 +1,6 @@
 ---
 title: QRCode
-description: A component that can convert text into QR Code, supporting customizable colors and logo configuration
+description: A component for generating QR codes from text with customizable colors and logo settings.
 spline: base
 isComponent: true
 toc: false
@@ -30,7 +30,7 @@ toc: false
 
 {{ status }}
 
-### 03 Component Styles
+### 03 Component Style
 
 #### Custom Color
 

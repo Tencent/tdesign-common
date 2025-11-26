@@ -8,16 +8,16 @@ toc: false
 
 ## Code Demo
 
-### Type
+### Component Type
 
-Icon empty status
+#### Icon
 
 {{ base }}
 
-Custom picture empty status
+#### Customize Image
 
 {{ imageEmpty }}
 
-Tape operation empty status
+#### with Operation
 
 {{ buttonEmpty }}

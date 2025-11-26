@@ -1,31 +1,37 @@
 ---
 title: Drawer
-description: The floating plate that slides out of the edge of the screen.
+description: "Serves as a navigator for parallel pages/contents, capable of showing more options on screen than Tabs.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### Basic Usage
+## Code Demo
+
+### 01 Component Type
+
+#### Basic Usage
 
 {{ base }}
 
-### Drawer With Icon
+#### Drawer With Icon
 
 {{ icon }}
 
-### Drawer With Title
+### 02 Component Style
+
+#### Drawer With Title
 
 {{ title }}
 
-### Drawer With Placement
+#### Drawer With Placement
 
 {{ placement }}
 
-### Drawer With Footer
+#### Drawer With Footer
 
 {{ footer }}
 
-### Command line call
+#### Command line call
 
 {{ plugin }}

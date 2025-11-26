@@ -1,6 +1,6 @@
 ---
 title: TreeSelect
-description: Suitable for selecting a tree data structure. 
+description: For step-by-step selection of hierarchical data.
 spline: form
 isComponent: true
 toc: false
@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
 
 #### Basic TreeSelect
 
@@ -18,7 +18,7 @@ toc: false
 
 {{ multiple }}
 
-### Component Status
+### 02 Component Status
 
 #### Three-level TreeSelect
 

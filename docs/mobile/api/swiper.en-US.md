@@ -10,25 +10,24 @@ toc: false
 
 ### 01 Component Type
 
-dots
+#### Dots
 
 {{ base }}
 
-dots-bar
+#### Dots-Bar
 
 {{ custom }}
 
-fraction
+#### Fraction
 
 {{ fraction }}
 
-
-control
+#### Controls
 
 {{ control }}
 
 ### 02 Component Style
 
-Vertical mode
+#### Vertical mode
 
 {{ vertical }}

@@ -6,7 +6,10 @@ isComponent: true
 toc: false
 ---
 
-### Type
+## Code Demo
+
+### 01 Component Type
+
 #### Basic Navbar
 
 {{ base }}
@@ -15,9 +18,11 @@ toc: false
 
 {{ search }}
 
-#### With Image Navbar
+#### with Image Navbar
 
 {{ img }}
+
+### 02 Component Style
 
 #### Title Alignment
 

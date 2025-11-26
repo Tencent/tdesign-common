@@ -8,25 +8,24 @@ toc: false
 
 ## Code Demo
 
-### Skeleton Type
+### 01 Component Type
 
-Foundation frame screen
+### Basic
 
 {{ theme }}
 
-Cell skeleton screen
+#### Cell skeleton screen
 
 {{ cell-group }}
 
-
-Grid frame screen
+#### Grid frame screen
 
 {{ grid }}
 
-Graphic combination skeleton screen
+#### Graphic combination skeleton screen
 
 {{ image-group }}
 
-### Component Dynamic Effect
+### 02 Component Dynamic Effect
 
 {{ animation }}

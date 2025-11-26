@@ -14,14 +14,14 @@ toc: false
 
 ### 02 Component Status
 
-Linear progress bar
+#### Line
 
 {{ line }}
 
-A progress bar is displayed in the percentage
+#### Plump
 
 {{ plump }}
 
-Circular progress bar
+#### Circle
 
 {{ circle }}

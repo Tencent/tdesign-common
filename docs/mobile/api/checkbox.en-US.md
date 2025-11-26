@@ -6,42 +6,44 @@ isComponent: true
 toc: false
 ---
 
-### Component Type
+## Code Demos
 
-Vertical checkbox
+### 01 Component Type
+
+#### Vertical checkbox
 
 {{ base }}
 
-Horizontal checkbox
+#### Horizontal checkbox
 
 {{ horizontal }}
 
-checkbox with select all
+#### checkbox with select all
 
 {{ all }}
 
-### Component Status
+### 02 Component Status
 
-checkbox status
+#### checkbox status
 
 {{ status }}
 
-### Component Style
+### 03 Component Style
 
-Check style
+#### Check style
 
 {{ type }}
 
-Check show location
+#### Check show location
 
 {{ right }}
 
-Non-full-width multiple selection style
+#### Non-full-width multiple selection style
 
 {{ card }}
 
 ### Component Specification
 
-checkbox size specifications
+#### checkbox size specifications
 
 {{ special }}

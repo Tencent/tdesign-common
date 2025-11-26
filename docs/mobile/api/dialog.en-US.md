@@ -1,6 +1,6 @@
 ---
 title: Dialog
-description: A modal view that interrupts the current action to display an important prompt or request an important action from the user
+description: Used to show important alerts or request critical actions from users, presented as a modal that interrupts the current workflow.
 spline: base
 isComponent: true
 toc: false
@@ -10,7 +10,7 @@ toc: false
 
 The default button style is' variant = text ', if any button changes' variant ', then all buttons change to this.
 
-### Component Type
+### 01 Component Type
 
 #### Feedback Class Dialog
 
@@ -36,13 +36,13 @@ Image elements can be inserted into the dialog box and the position can be custo
 
 {{ image-dialog }}
 
-### Component Status
+### 02 Component Status
 
 Text button, horizontal base button, vertical base button, multi-button, with close button
 
 {{ multi-state }}
 
-### Component Usage
+### 03 Component Usage
 
 Command line call
 

@@ -1,6 +1,6 @@
 ---
 title: Input
-description: Used for text information input.
+description: For single-line text input.
 spline: base
 isComponent: true
 toc: false
@@ -11,54 +11,54 @@ toc: false
 
 ### 01 Component Type
 
-Basic Input
+#### Basic Input
 
 {{ base }}
 
-Input with Character Limit
+#### Input with Character Limit
 
 {{ maxlength }}
 
-Input with Operation
+#### Input with Operation
 
 {{ suffix }}
 
-Input with Icon
+#### Input with Icon
 
 {{ prefix }}
 
-Specific Type Input
+#### Specific Type Input
 
 {{ special }}
 
 ### 02 Component States
 
-Input States
+#### Input States
 
 {{ status }}
 
-Information Exceeds Limit State
+#### Information Exceeds Limit State
 
 {{ label }}
 
-### 03 Component Styles
+### 03 Component Style
 
-Content Position
+#### Content Position
 
 {{ align }}
 
-Vertical Style
+#### Vertical Style
 
 {{ layout }}
 
-Non-Full Width Style
+#### Non-Full Width Style
 
 {{ banner }}
 
-External Label Style
+#### External Label Style
 
 {{ bordered }}
 
-Custom Style Text Box
+#### Custom Style Text Box
 
 {{ custom }}

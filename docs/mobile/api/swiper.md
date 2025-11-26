@@ -8,28 +8,27 @@ toc: false
 
 ## 代码演示
 
-### 01组件类型
+### 01 组件类型
 
-点状（dots)
+#### 点状（dots)
 
 {{ base }}
 
-条状（dots-bar)
+#### 条状（dots-bar)
 
 {{ custom }}
 
-分式（fraction)
+#### 分式（fraction)
 
 {{ fraction }}
 
-
-control
+#### Controls
 
 {{ control }}
 
 ### 02 组件样式
 
-垂直模式
+#### 垂直模式
 
 {{ vertical }}
 
