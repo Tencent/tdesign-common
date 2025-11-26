@@ -5,8 +5,7 @@
 .@{dropdownMenu} {
   position: relative;
   display: flex;
-  height: 48px;
-  background: @dropdown-menu-bg-color;
+  background: @dropdown-menu-background;
   .border(bottom);
 
   &__item {
@@ -14,7 +13,8 @@
     flex: 1;
     align-items: center;
     justify-content: center;
-    padding: 0 @spacer;
+    padding: @spacer-1 @spacer;
+    box-sizing: border-box;
     position: relative;
     overflow: hidden;
     color: @dropdown-menu-color;
@@ -45,6 +45,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: @dropdown-menu-font-size;
+    font: @dropdown-menu-font;
   }
 }

@@ -19,11 +19,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: @calendar-title-font-size;
-    font-weight: 600;
+    font: @calendar-title-font;
     color: @calendar-title-color;
-    height: 26px;
-    padding: 16px;
+    padding: @spacer-2;
 
     &:focus {
       outline: 0;
@@ -32,10 +30,10 @@
 
   &__close-btn {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    margin: -12px;
-    padding: 12px;
+    top: @spacer-2;
+    right: @spacer-2;
+    margin: calc(-1 * @spacer-1);
+    padding: @spacer-1;
     color: @calendar-title-color;
   }
 
@@ -93,9 +91,8 @@
   }
 
   &__month {
-    font-size: 14px;
+    font: @font-title-small;
     color: @calendar-title-color;
-    font-weight: 600;
     padding: 16px 0 0;
 
     &s {

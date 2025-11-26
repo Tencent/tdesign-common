@@ -23,7 +23,7 @@
     outline: none;
     width: @color-picker-slider-thumb-size;
     height: @color-picker-slider-thumb-size;
-    border-radius: @color-picker-border-radius-circle;
+    border-radius: @radius-circle;
     box-shadow: @color-picker-thumbs-shadow;
     color: @text-color-brand;
     box-sizing: border-box;
@@ -32,7 +32,7 @@
     &::after {
       content: "";
       position: absolute;
-      border-radius: @color-picker-border-radius-circle;
+      border-radius: @radius-circle;
       box-sizing: border-box;
       display: block;
       border: 1px solid @component-border;
@@ -86,7 +86,7 @@
     .@{color-picker}__thumb {
       width: @color-picker-saturation-thumb-size;
       height: @color-picker-saturation-thumb-size;
-      border-radius: @color-picker-border-radius-circle;
+      border-radius: @radius-circle;
       transform: translate(-50%, -50%);
     }
   }
