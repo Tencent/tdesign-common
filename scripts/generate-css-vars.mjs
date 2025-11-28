@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const [COMPONENT_NAME,  FRAMEWORK] = process.argv.slice(2);
+const [FRAMEWORK, COMPONENT_NAME] = process.argv.slice(2);
 
 const COMBINE_MAP = {
   avatar: ['avatar-group', 'avatar'],
@@ -24,18 +24,25 @@ const COMBINE_MAP = {
   qrcode: ['qrcode', 'qrcode/components/qrcode-canvas', 'qrcode/components/qrcode-status'],
 };
 
+const FRAMEWORK_BASE_PATH_MAP = {
+  'Mobile(Vue)': 'src/',
+  'Mobile(React)': 'src/',
+  'Miniprogram': 'packages/components/',
+  'Miniprogram(Chat)': 'packages/components/chat/'
+};
+
 const LESS_FILE_MAP = {
-  'Mobile(Vue)': 'src/_common/style/mobile/components/${COMPONENT_NAME}/_var.less',
-  'Mobile(React)': 'src/_common/style/mobile/components/${COMPONENT_NAME}/_var.less',
-  'Miniprogram': 'packages/components/${COMPONENT_NAME}/${COMPONENT_NAME}.less',
-  'Miniprogram(Chat)': 'packages/components/chat/${COMPONENT_NAME}/${COMPONENT_NAME}.less',
+  'Mobile(Vue)': '_common/style/mobile/components/${COMPONENT_NAME}/_var.less',
+  'Mobile(React)': '_common/style/mobile/components/${COMPONENT_NAME}/_var.less',
+  'Miniprogram': '${COMPONENT_NAME}/${COMPONENT_NAME}.less',
+  'Miniprogram(Chat)': '${COMPONENT_NAME}/${COMPONENT_NAME}.less',
 };
 
 const DOCS_FILE_MAP = {
-  'Mobile(Vue)': 'src/${COMPONENT_NAME}/${COMPONENT_NAME}',
-  'Mobile(React)': 'src/${COMPONENT_NAME}/${COMPONENT_NAME}',
-  'Miniprogram': 'packages/components/${COMPONENT_NAME}/README',
-  'Miniprogram(Chat)': 'packages/components/chat/${COMPONENT_NAME}/README',
+  'Mobile(Vue)': '${COMPONENT_NAME}/${COMPONENT_NAME}',
+  'Mobile(React)': '${COMPONENT_NAME}/${COMPONENT_NAME}',
+  'Miniprogram': '${COMPONENT_NAME}/README',
+  'Miniprogram(Chat)': '${COMPONENT_NAME}/README',
 };
 
 const resolveCwd = (...args) => {
@@ -49,11 +56,12 @@ const findFilePath = (framework, componentName) => {
     throw new Error(`⚠️ 未找到 framework "${framework}" 对应的路径配置`);
   }
 
-  const lessPath = lessPathTemplate.replace(new RegExp('\\$\\{COMPONENT_NAME\\}', 'g'), componentName);
+  const lessPath = FRAMEWORK_BASE_PATH_MAP[framework] + lessPathTemplate.replaceAll('${COMPONENT_NAME}', componentName);
   return resolveCwd(lessPath);
 };
 
-const getAllComponentName = async (dirPath) => {
+const getAllComponentName = async (framework) => {
+  const dirPath = resolveCwd(FRAMEWORK_BASE_PATH_MAP[framework]);
   const items = await fs.promises.readdir(dirPath, { withFileTypes: true });
   return items.filter((item) => item.isDirectory()).map((item) => item.name);
 };
@@ -131,7 +139,7 @@ const processAllComponents = async () => {
 
   let COMPONENT_NAMES = [];
   if (COMPONENT_NAME === 'all') {
-    COMPONENT_NAMES = await getAllComponentName(resolveCwd('src'));
+    COMPONENT_NAMES = await getAllComponentName(FRAMEWORK);
   } else {
     COMPONENT_NAMES = [COMPONENT_NAME];
   }
@@ -145,7 +153,7 @@ const processAllComponents = async () => {
         if (!docsPathTemplate) {
           throw new Error(`⚠️ 未找到 framework "${FRAMEWORK}" 对应的文档路径配置`);
         }
-        const docsPath = docsPathTemplate.replace(new RegExp('\\$\\{COMPONENT_NAME\\}', 'g'), name);
+        const docsPath = FRAMEWORK_BASE_PATH_MAP[FRAMEWORK] + docsPathTemplate.replaceAll('${COMPONENT_NAME}', name);
 
         updateDocVariables(`${docsPath}.md`, cssVariableHeadContent, variables);
         updateDocVariables(`${docsPath}.en-US.md`, cssVariableHeadContentEn, variables);
