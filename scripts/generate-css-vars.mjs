@@ -24,6 +24,12 @@ const COMBINE_MAP = {
   layout: ['row', 'col'],
   form: ['form', 'form-item'],
   qrcode: ['qrcode', 'qrcode/components/qrcode-canvas', 'qrcode/components/qrcode-status'],
+  'chat-markdown': [
+    'chat-markdown',
+    'chat-markdown/components/chat-markdown-code',
+    'chat-markdown/components/chat-markdown-node',
+    'chat-markdown/components/chat-markdown-table',
+  ],
 };
 
 // 框架基础路径映射
