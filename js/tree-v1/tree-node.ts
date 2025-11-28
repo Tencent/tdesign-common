@@ -765,8 +765,7 @@ export class TreeNode {
     const { checkStrictly, disabled, disableCheck, keys = {} } = config;
 
     if (disabled) return true;
-
-    if (!checkStrictly && parent?.isDisabled()) return true;
+    if (!checkStrictly && parent?.isDisabled() && !this.vmIsRest) return true;
 
     if (typeof this.disableManually === 'boolean') return this.disableManually;
 
