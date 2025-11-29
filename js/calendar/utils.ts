@@ -16,7 +16,7 @@ export const createDefaultCurDate = (): dayjs.Dayjs => dayjs(dayjs().format('YYY
  */
 export const handleRange = (
   range?: Array<CalendarValue>
-): { from: CalendarValue; to: CalendarValue } => {
+): { from: CalendarValue; to: CalendarValue } | null => {
   // 检查范围边界
   const parseRangeBoundary = (
     value: CalendarRange['from'] | CalendarRange['to'] | null | undefined
