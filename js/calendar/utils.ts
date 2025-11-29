@@ -14,7 +14,7 @@ export const createDefaultCurDate = (): dayjs.Dayjs => dayjs(dayjs().format('YYY
  * @param range 用于设置日历的年月份显示范围，[范围开始，范围结束]
  * @returns 处理完成的日历范围
  */
-export const rangeFromTo = (
+export const handleRange = (
   range?: Array<CalendarValue>
 ): { from: CalendarValue; to: CalendarValue } => {
   // 检查范围边界
