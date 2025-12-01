@@ -1,43 +1,45 @@
 ---
 title: Avatar 头像
-description: 用图标、图片、字符的形式展示用户或事物信息
+description: 用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。
 spline: data
 isComponent: true
 toc: false
 ---
 
-### 头像类型
+## 代码演示
 
-图片头像
+### 01 组件类型
+
+#### 图片头像
 
 {{ image-avatar }}
 
-字符头像
+#### 字符头像
 
 {{ character-avatar }}
 
-图标头像
+#### 图标头像
 
 {{ icon-avatar }}
 
-徽标头像
+#### 徽标头像
 
 {{ badge-avatar }}
 
 
-### 组合头像
+### 02 特殊类型
 
-纯展示
+#### 纯展示的头像组
 
 {{ exhibition }}
 
-带操作
+#### 带操作的头像组
 
 {{ action }}
 
-### 头像尺寸
+### 03 组件尺寸
 
-头像 large/medium/small 尺寸
+#### 组件尺寸
 
 {{ size }}
 

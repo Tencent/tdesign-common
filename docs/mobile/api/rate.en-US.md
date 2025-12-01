@@ -6,40 +6,42 @@ isComponent: true
 toc: false
 ---
 
-### Component Type
+## Code Demo
 
-Solid Rate
+### 01 Component Type
+
+#### Solid Rate
 
 {{ base }}
 
-Custom Rate
+#### Custom Rate
 
 {{ custom }}
 
-Customize the number of rate
+#### Customize the number of Rate
 
 {{ count }}
 
-Descriptive rate
+#### Descriptive Rate
 
 {{ show-text }}
 
-### Component Status
+### 02 Component Status
 
 {{ action }}
 
-### Component Style
+### 03 Component Style
 
-rate size
+#### Rate Size
 
 {{ size }}
 
-Set rate color
+#### Set Rate Color
 
 {{ color }}
 
-### Special Style
+### 04 Special Style
 
-Vertical tape description rate
+#### Vertical tape description rate
 
 {{ special }}

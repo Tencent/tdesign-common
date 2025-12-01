@@ -6,38 +6,42 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
-### Select Single Date
+## Code Demos
+
+### 01 Component Type
+
+#### Basic Calender
 
 {{ base }}
 
-### Select Multiple Date
-
 {{ multiple }}
 
-### With Description
+#### With Description
 
 {{ custom-text-single }}
 
-### With Double Description
+#### With Double Description
 
 {{ custom-text }}
 
-### With Page Turning Function
+#### With Page Turning Function
 
 {{ switch-mode }}
 
-### With Period Select
+#### With Period Select
 
 {{ range }}
 
-### Internationalization
+### 02 Component Style
+
+#### Internationalization
 
 {{ local-text }}
 
-### Unselectable Date
+#### Unselectable Date
 
 {{ disabled }}
 
-### Without Popup
+#### Without Popup
 
 {{ without-popup }}

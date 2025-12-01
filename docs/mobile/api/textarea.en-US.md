@@ -8,36 +8,36 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
 
-Basic textarea
+#### Basic
 
 {{ base }}
 
-textarea with title
+#### with Label
 
 {{ label }}
 
-Automatically raises textarea
+#### Automatically raises textarea
 
 {{ autosize }}
 
-Set the maximum number of characters
+#### Set the maximum number of characters
 
 {{ maxlength }}
 
-Set the maximum number of characters. One Chinese character means two characters
+#### Set the maximum number of characters. One Chinese character means two characters
 
 {{ maxcharacter }}
 
-### Component Status
+### 02 Component Status
 
-Disable textarea
+#### Disable
 
 {{ disabled }}
 
-### Customize Component Style
+### 03 Component Style
 
-Label external input box
+#### External Label Textarea
 
 {{ custom }}

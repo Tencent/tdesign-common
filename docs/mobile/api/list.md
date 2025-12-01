@@ -6,16 +6,19 @@ isComponent: true
 toc: false
 ---
 
-### 基础列表
+## 代码演示
 
+### 组件类型
+
+#### 基础列表
 
 {{ base }}
 
-### 下拉刷新
+#### 下拉刷新
 
 {{ pull-refresh }}
 
-### 错误提示
+#### 错误提示
 
 {{ err-tip }}
 

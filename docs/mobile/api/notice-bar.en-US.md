@@ -10,27 +10,27 @@ toc: false
 
 ### 01 Component Type
 
-A text-only bulletin board
+#### A text-only bulletin board
 
 {{ base }}
 
-Bulletin board with icon
+#### Bulletin board with icon
 
 {{ iconDemo }}
 
-Bulletin board with closed
+#### Bulletin board with closed
 
 {{ suffixIcon }}
 
-Bring the port to the bulletin board
+#### Bring the port to the bulletin board
 
 {{ event }}
 
-Custom style bulletin board
+#### Custom style bulletin board
 
 {{ custom }}
 
-A bulletin board for custom content
+#### A bulletin board for custom content
 
 {{ customization }}
 

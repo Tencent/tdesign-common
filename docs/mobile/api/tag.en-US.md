@@ -9,24 +9,26 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
+
+#### Type
 
 {{ type }}
 
-closable tag
+#### with Close Button
 
 {{ closable }}
 
-clickable tag
+#### Clickable Tag
 
 {{ checkable }}
 
-### Component Status
+### 02 Component Status
 
-display tag
+#### Display Tag
 
 {{ theme }}
 
-### Component Size
+### 03 Component Size
 
 {{ size }}

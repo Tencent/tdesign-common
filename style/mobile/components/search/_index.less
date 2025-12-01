@@ -39,11 +39,12 @@
     }
 
     .@{prefix}-input__keyword {
+      width: 100%;
       display: inline-block;
       flex: 1;
       color: @search-text-color;
-      font-size: @search-font-size;
-      padding: 0 0 0 5px;
+      font: @search-font;
+      padding-left: 5px;
       border: 0;
       outline: none;
       resize: none;
@@ -52,21 +53,21 @@
 
     .@{prefix}-icon {
       color: @search-icon-color;
-      font-size: @search-icon-font-size;
+      font-size: @search-icon-size;
     }
   }
 
   &__clear {
     position: relative;
     margin-left: 10px;
-    font-size: @search-clear-icon-font-size;
+    font-size: @search-clear-icon-size;
     color: @search-clear-icon-color;
     .hotspot-expanded();
   }
 
   &__search-action {
     margin-left: 15px;
-    font-size: @search-font-size;
+    font: @search-font;
     color: @search-action-color;
   }
 

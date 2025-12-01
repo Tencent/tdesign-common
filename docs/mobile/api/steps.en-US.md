@@ -10,22 +10,22 @@ toc: false
 
 Step bar, the direction can be horizontal and vertical, you can customize the step bar display content and whether it is writable
 
-### Component Type
+### 01 Component Type
 
-#### Horizontal Steps Bar
+#### Horizontal Steps
 
 Supports three types: serial number, icon, and abbreviated
 
 {{ horizontal }}
 
 
-#### Vertical Steps Bar
+#### Vertical Steps
 
 Supports three types: serial number, icon, and abbreviated
 
 {{ vertical }}
 
-### Component Status
+### 02 Component Status
 
 #### Tab Status
 

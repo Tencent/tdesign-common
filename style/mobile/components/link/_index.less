@@ -3,14 +3,12 @@
 @import "./_var.less";
 
 .link-size(@size) {
-  @contentFontSize: "link-content-@{size}-font-size";
-  @contentLineHeight: "link-content-@{size}-line-height";
+  @contentFont: "link-content-@{size}-font";
   @iconSize: "link-icon-@{size}-font-size";
 
   .@{link}--@{size} {
     .@{link}__content {
-      font-size: @@contentFontSize;
-      line-height: @@contentLineHeight;
+      font: @@contentFont;
     }
     .@{link}__prefix-icon,
     .@{link}__suffix-icon {

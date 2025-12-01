@@ -1,19 +1,23 @@
 ---
 title: ImageViewer
-description: Preview the image content.
+description: For thumbnail display and viewing of images.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### Basic ImageViewer
+## Code Demo
+
+### Component Type
+
+#### Basic ImageViewer
 
 {{ base }}
 
-### Basic and alignment ImageViewer
+#### Basic and alignment ImageViewer
 
 {{ align }}
 
-### Operation ImageViewer
+#### Operation ImageViewer
 
 {{ operation }}

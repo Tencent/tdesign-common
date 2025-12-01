@@ -6,30 +6,36 @@ isComponent: true
 toc: false
 ---
 
-### Portrait Radio
+## Code Demo
+
+### 01 Component Type
+
+#### Portrait Radio
 
 {{ base }}
 
-### Horizontal Radio
+#### Horizontal Radio
 
 {{ horizontal }}
 
-### Radio Status
+### 02 Component Status
 
 {{ status }}
 
-### Check Style
+### 03 Component Style
+
+#### Check Style
 
 {{ icon }}
 
-### Check The Display Location
+#### Check The Display Location
 
 {{ placement }}
 
-### Non-Field Radio
+#### Non-Field Radio
 
 {{ card }}
 
-### Special Style
+### 04 Special Style
 
 {{ custom }}

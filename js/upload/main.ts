@@ -341,12 +341,15 @@ export function formatToUploadFile(
 export function validateFile(
   params: FileChangeParams
 ): Promise<FileChangeReturn> {
-  const { files, uploadValue, max, allowUploadDuplicateFile } = params;
+  const { files, uploadValue, max, allowUploadDuplicateFile, capture = '' } = params;
   return new Promise((resolve) => {
     // 是否允许相同的文件名存在
     let tmpFiles = files.filter((file) => {
+      // capture 明确指定后，一定是调用设备的媒体设备（比如：摄像头）捕获上传文件，该类文件跳过重复文件名校验
+      if (allowUploadDuplicateFile || !!capture) return true;
+
       const sameNameFile = uploadValue.find((t) => t.name === file.name);
-      return allowUploadDuplicateFile || !sameNameFile;
+      return !sameNameFile;
     });
 
     let hasSameNameFile = false;

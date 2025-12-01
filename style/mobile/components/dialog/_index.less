@@ -16,7 +16,7 @@
     position: absolute;
     top: @spacer;
     right: @spacer;
-    font-size: @dialog-close-font-size;
+    font-size: @dialog-close-icon-size;
     color: @dialog-close-color;
   }
 
@@ -36,9 +36,7 @@
 
   &__header {
     text-align: center;
-    font-weight: @dialog-title-font-weight;
-    font-size: @dialog-title-font-size;
-    line-height: @dialog-title-line-height;
+    font: @dialog-title-font;
     color: @dialog-title-color;
   }
 
@@ -50,9 +48,8 @@
     overflow-y: scroll;
     text-align: center;
     -webkit-overflow-scrolling: touch;
-    font-size: @dialog-content-font-size;
+    font: @dialog-content-font;
     color: @dialog-content-color;
-    line-height: @dialog-content-line-height;
 
     &-text {
       word-wrap: break-word;

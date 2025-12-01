@@ -1,14 +1,16 @@
 ---
 title: Collapse
-description: Collapse is used to group and hide complex areas, and is often used to display order information.
+description: A collapsible content area.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### Component Type
+## Code Demo
 
-#### Base Collapse
+### 01 Component Type
+
+#### Basic
 
 Collapse is used to group and hide complex areas, and is often used to display order information.
 
@@ -18,18 +20,18 @@ Collapse is used to group and hide complex areas, and is often used to display o
 
 {{ placement }}
 
-#### Tape Operation Instruction
+#### with Operation Instructions
 
 {{ action }}
 
-#### Accordion Style
+#### Accordion
 
 Display and hide information in groups, displaying only one group of information at a time.
 
 {{ accordion }}
 
 
-### Component Style
+### 02 Component Style
 
 #### Card Collapse
 

@@ -8,17 +8,19 @@ toc: false
 
 ## Code Demo
 
+### Component Type
+
 Wrap the content in the 'Sticky' component
 
-### Base Sticky
+#### Basic
 
 {{ base }}
 
 
-### Sticky Distance
+#### Sticky Distance
 
 {{ offset }}
 
-### Specify Container
+#### Specify Container
 
 {{ container }}

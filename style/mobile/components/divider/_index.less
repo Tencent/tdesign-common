@@ -22,24 +22,24 @@
 
   &--horizontal {
     align-items: center;
-    margin-top: @divider-horizontal-spacer;
-    margin-bottom: @divider-horizontal-spacer;
+    margin: @divider-horizontal-margin 0;
 
     &::before,
     &::after {
-      border-top-width: 1px;
+      border-top-width: @divider-border-width;
       transform: scaleY(.5);
+      transform-origin: center;
     }
 
     .@{prefix}-divider__content:not(:empty) {
-      margin: 0 12px;
+      margin: 0 @divider-content-margin;
     }
   }
 
   &--vertical {
     flex-direction: column;
     height: 1em;
-    margin: 0 8px;
+    margin: 0 @divider-vertical-margin;
 
     &::before,
     &::after {
@@ -58,8 +58,7 @@
   }
 
   &__content {
-    font-size: @divider-content-font-size;
-    line-height: @divider-content-line-height;
+    font: @divider-content-font;
     color: @divider-content-color;
   }
 

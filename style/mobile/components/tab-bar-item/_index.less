@@ -12,10 +12,6 @@
   background-color: @tab-bar-bg-color;
   padding: 0 12px;
 
-  &--text-only {
-    font-size: 16px;
-  }
-
   &--split::before {
     .hairline-left(@color: @tab-bar-border-color);
 
@@ -42,8 +38,11 @@
     color: @tab-bar-color;
 
     &--checked {
-      color: @tab-bar-active-color;
-      font-weight: 600;
+      .@{item}__text,
+      .@{item}__icon {
+        color: @tab-bar-active-color;
+        font-weight: 600;
+      }
     }
 
     &--tag {
@@ -73,10 +72,10 @@
   &__text {
     display: flex;
     align-items: center;
+    font: @font-body-large;
 
     &--small {
-      font-size: 10px;
-      line-height: 16px;
+      font: @font-body-extraSmall;
     }
   }
 

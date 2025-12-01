@@ -35,7 +35,7 @@
   align-items: center;
 
   .@{progress}__icon {
-    font-size: @progress-line-icon-font-size;
+    font-size: @progress-line-icon-size;
   }
 }
 
@@ -47,7 +47,7 @@
   align-items: center;
 
   .@{progress}__info {
-    font-size: @progress-plump-label-font-size;
+    font: @progress-plump-label-font;
   }
 }
 
@@ -72,7 +72,7 @@
   }
 }
 
-// 环形
+// 环形 for mini
 .@{progress}__canvas--circle {
   position: relative;
   width: @progress-circle-width;
@@ -96,9 +96,7 @@
 
   .@{progress}__info {
     margin: 0;
-    font-size: @progress-circle-label-font-size;
-    font-weight: @progress-circle-label-font-weight;
-    line-height: @progress-circle-label-line-height;
+    font: @progress-circle-label-font;
     overflow: hidden;
     text-overflow: ellipsis;
     /* stylelint-disable-next-line */
@@ -108,7 +106,7 @@
   }
 
   .@{progress}__icon {
-    font-size: @progress-circle-icon-font-size;
+    font-size: @progress-circle-icon-size;
   }
 }
 
@@ -123,9 +121,7 @@
     left: 50%;
     width: 100%;
     margin: 0;
-    font-size: @progress-circle-label-font-size;
-    font-weight: 600;
-    line-height: 1;
+    font: @progress-circle-label-font;
     text-align: center;
     transform: translate(-50%, -50%);
   }
@@ -140,7 +136,7 @@
   }
 
   .@{prefix}-progress__icon {
-    font-size: @progress-circle-icon-font-size;
+    font-size: @progress-circle-icon-size;
   }
 }
 

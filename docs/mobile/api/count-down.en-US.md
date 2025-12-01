@@ -12,10 +12,14 @@ toc: false
 
 ## Code Demo
 
-### Base Countdown
+### 01 Component Type
+
+#### Basic Countdown
 
 {{ base }}
 
-### Adjust Size
+### 02 Component Size
+
+#### Adjust Size
 
 {{ size }}

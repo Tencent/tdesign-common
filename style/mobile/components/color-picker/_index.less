@@ -23,7 +23,7 @@
     outline: none;
     width: @color-picker-slider-thumb-size;
     height: @color-picker-slider-thumb-size;
-    border-radius: @color-picker-border-radius-circle;
+    border-radius: @radius-circle;
     box-shadow: @color-picker-thumbs-shadow;
     color: @text-color-brand;
     box-sizing: border-box;
@@ -32,10 +32,10 @@
     &::after {
       content: "";
       position: absolute;
-      border-radius: @color-picker-border-radius-circle;
+      border-radius: @radius-circle;
       box-sizing: border-box;
       display: block;
-      border: 1px solid #dcdcdc;
+      border: 1px solid @component-border;
     }
 
     &::before {
@@ -86,7 +86,7 @@
     .@{color-picker}__thumb {
       width: @color-picker-saturation-thumb-size;
       height: @color-picker-saturation-thumb-size;
-      border-radius: @color-picker-border-radius-circle;
+      border-radius: @radius-circle;
       transform: translate(-50%, -50%);
     }
   }
@@ -158,7 +158,7 @@
 
   &__sliders-preview {
     flex-shrink: 0;
-    margin-left: @color-picker-margin;
+    margin-left: @spacer-1;
     width: @color-picker-gradient-preview-width;
     height: @color-picker-gradient-preview-height;
     border-radius: @color-picker-gradient-preview-radius;
@@ -177,22 +177,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: rgba(0, 0, 0, 40%);
+    color: @text-color-placeholder;
     font-size: 14px;
     text-align: center;
-    line-height: 28px;
-    height: 28px;
-    margin-top: 20px;
+  }
+
+  &__format:not(:empty) + &__swatches-wrap:not(:empty) {
+    margin-top: 28px;
   }
 
   &__format-item {
-    background: @color-picker-format-background-color;
+    font: @font-body-medium;
 
     &--first {
       flex-shrink: 0;
       width: 68px;
-      border: 1px solid #dcdcdc;
-      border-radius: 6px;
+      border: 1px solid @component-border;
+      border-radius: @radius-default;
+      padding: 6rpx 0;
       margin-right: 12px;
     }
 
@@ -211,8 +213,9 @@
     flex: 1;
     width: 0;
     margin-left: -1px;
-    border: 1px solid #dcdcdc;
-    border-radius: 6px;
+    padding: 6rpx 0;
+    border: 1px solid @component-border;
+    border-radius: @radius-default;
 
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
@@ -236,25 +239,22 @@
   }
 
   &__swatches-wrap {
-    margin-top: 28px;
     position: relative;
   }
 
   &__swatches {
     + .@{color-picker}__swatches {
-      margin-top: @color-picker-margin;
+      margin-top: @spacer-1;
     }
   }
 
   &__swatches-title {
     font: @color-picker-swatches-title-font;
     padding: 0;
-    color: rgba(0, 0, 0, 90%);
+    color: @text-color-primary;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 24px;
-    line-height: 24px;
   }
 
   &__swatches-items {

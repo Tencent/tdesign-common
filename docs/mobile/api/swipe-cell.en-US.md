@@ -6,28 +6,26 @@ isComponent: true
 toc: false
 ---
 
-### Left Swipe Operation
+## Code Demo
+
+### Component Type
+
+#### Swipe Left with Single Operation
 
 {{ left }}
 
-### Right Swipe Operation
+#### Swipe Right with Single Operation
 
 {{ right }}
 
-### Left and right Swipe Operation
+#### Swipe Left And Right Operation
 
 {{ double }}
 
-### Swipe Operation with Icon
+#### Swipe Operation with Icon
 
 {{ icon }}
 
-### Operation With Double Confirmation
+#### Swipe Cell with Double Check
 
 {{ event }}
-
-### CSS Style
-
-- The content in slot needs to define its own style
-- When using the slot Insert button, the height:100% is set for the first layer wrap component of the slot, but the second layer content is not set, in order to achieve the vertical overlay effect, you need to manually set the style="height:100%"
-- If you are passing an array of buttons using the #right and #left attributes, you can quickly specify a menu background color using theme, with the theme value being the theme value of the t-button component

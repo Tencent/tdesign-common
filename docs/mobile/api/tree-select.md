@@ -1,6 +1,6 @@
 ---
-title: TreeSelect 树形选择
-description: 适用于选择树形的数据结构。
+title: TreeSelect 树形选择器
+description: 用于多层级数据的逐级选择。
 spline: form
 isComponent: true
 toc: false
@@ -8,7 +8,7 @@ toc: false
 
 ## 代码演示
 
-### 组件类型
+### 01 组件类型
 
 #### 基础树形选择
 
@@ -18,7 +18,7 @@ toc: false
 
 {{ multiple }}
 
-### 组件状态
+### 02 组件状态
 
 #### 三级树形选择
 

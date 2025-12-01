@@ -6,7 +6,9 @@ isComponent: true
 toc: false
 ---
 
-### Component Type
+## Code Demos
+
+### 01 Component Type
 
 #### Basic Buttons
 
@@ -46,13 +48,14 @@ The Block button fills its parent container in width (no padding and margin valu
 
 {{ block }}
 
-### Component State
+### 02 Component State
 
 #### Buttons for different states
 
 {{ status }}
 
-### Component Style
+### 03 Component Style
+
 #### Different sizes of buttons
 
 {{ size }}

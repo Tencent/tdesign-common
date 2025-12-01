@@ -1,17 +1,19 @@
 ---
 title: Result
-description: Feedback result
+description: For displaying various result feedbacks.
 spline: base
 isComponent: true
 toc: false
 ---
 
-### Different Result Status
+## Code Demo
 
-Indicates the result of the current task
+### Component Type
+
+#### Basic
 
 {{ theme }}
 
-### Custom Style
+### Custom
 
 {{ custom }}

@@ -8,10 +8,14 @@ toc: false
 
 ## Code Demo
 
-### Base Index
+### 01 Component Type
+
+#### Indexes Type
 
 {{ base }}
 
-### Custom Index
+### 02 Component Style
+
+#### Indexes Capsule Theme
 
 {{ custom }}

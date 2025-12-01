@@ -6,7 +6,9 @@ isComponent: true
 toc: false
 ---
 
-### 组件类型
+## 代码演示
+
+### 01 组件类型
 
 #### 基础颜色选择器
 
@@ -16,6 +18,6 @@ toc: false
 
 {{ multiple }}
 
-### 组件状态
+### 02 组件状态
 
 {{ format }}
