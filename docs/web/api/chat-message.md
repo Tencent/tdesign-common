@@ -3,7 +3,7 @@ title: ChatMessage 对话消息体
 description: 对话消息体
 isComponent: true
 usage: { title: '', description: '' }
-spline: aigc
+spline: ai
 ---
 
 ## 基础样式
