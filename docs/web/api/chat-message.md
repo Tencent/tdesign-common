@@ -1,6 +1,6 @@
 ---
 title: ChatMessage 对话消息体
-description: 对话消息体
+description: 用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。
 isComponent: true
 usage: { title: '', description: '' }
 spline: ai
@@ -25,9 +25,9 @@ spline: ai
 {{ content }}
 
 ### 消息内容自定义
-可以通过`植入插槽content插槽`的方式实现，以下是引入了`tvision`自定义渲染`图表`组件的例子：
+可以通过 `植入插槽content插槽` 的方式实现，以下是自定义渲染`图表`组件的例子：
 {{ custom }}
 
 ### 消息操作栏
-消息底部操作栏，通过`植入插槽actionbar`的方式实现，可以直接使用`ChatActionBar`组件，也可以完全自定义实现
+消息底部操作栏，通过`植入插槽 actionbar`的方式实现，可以直接使用`ChatActionBar`组件，也可以完全自定义实现
 {{ action }}

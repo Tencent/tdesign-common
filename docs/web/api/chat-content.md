@@ -1,6 +1,6 @@
 ---
 title: ChatContent 对话正文
-description: 支持 markdown 格式的渲染。
+description: 支持 Markdown 格式的渲染。
 isComponent: true
 usage: { title: "", description: "" }
 spline: ai
@@ -8,7 +8,7 @@ spline: ai
 
 ### 默认聊天格式
 
-对大模型返回的 markdown 数据自动渲染。
+对大模型返回的 Markdown 数据自动渲染。
 
 {{ markdown }}
 
