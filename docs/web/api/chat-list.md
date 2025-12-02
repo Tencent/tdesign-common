@@ -16,7 +16,7 @@ spline: ai
 ### 具名插槽
 
 - 通过`avatar`可以调整头像，通过`name`可以调整昵称，通过`datetime`可以调整日期时间，通过`content`可以
-调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
+  调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
 - 每个插槽都提供 `{ item, index }` 参数，方便获取当前消息数据和索引
 
 {{ chat-footer-slot }}
@@ -28,7 +28,6 @@ spline: ai
 - 支持结构化内容类型：`text`、`markdown`、`thinking` 等
 - 灵活配置聊天气泡对齐方式
 - 支持配置聊天气泡框样式：基础、线框、文字
-
 
 {{ chat-with-message }}
 

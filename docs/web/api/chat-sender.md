@@ -19,10 +19,10 @@ spline: ai
 {{ chat-sender-attachments }}
 
 ### 输入框自定义
+
 可输入区域前置部分 `input-prefix` ，输入框底部左侧区域 `footer-prefix` ，输入框底部操作区域 `suffix`
 
 {{ chat-sender-slot }}
-
 
 ### 综合示例
 
