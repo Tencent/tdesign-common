@@ -1,6 +1,6 @@
 ---
 title: ChatMarkdown Markdown内容
-description: 对话 Markdown 渲染器
+description: 对话 Markdown 渲染器。
 isComponent: true
 usage: { title: "", description: "" }
 spline: ai
