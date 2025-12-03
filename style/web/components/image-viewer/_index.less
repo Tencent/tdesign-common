@@ -121,6 +121,7 @@
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    pointer-events: none;
 
     .@{prefix}-image-viewer__modal-box {
       width: 100%;
@@ -129,6 +130,7 @@
       justify-content: center;
       align-items: center;
       animation: @anim-duration-base @anim-time-fn-easing modal-image-show;
+      pointer-events: auto;
 
       .@{prefix}-image-viewer__modal-image {
         display: block;
