@@ -14,6 +14,27 @@
       padding-top: 8px;
     }
 
+    &--left {
+      .@{action-sheet}__description {
+        text-align: left;
+      }
+
+      .@{prefix}-button__content {
+        width: 100%;
+      }
+
+      .@{action-sheet}__list-item {
+        &-content,
+        &-desc {
+          justify-content: start;
+        }
+
+        &-icon--suffix {
+          margin-left: auto;
+        }
+      }
+    }
+
     &:focus {
       outline: 0;
     }
@@ -43,21 +64,11 @@
   &__description {
     color: @action-sheet-description-color;
     font: @action-sheet-description-font;
-    text-align: @action-sheet-text-align;
-    padding: 12px 16px;
+    text-align: center;
+    padding: @spacer-1 @spacer-2;
     .border(bottom, @action-sheet-border-color);
 
-    &--left {
-      text-align: left;
-
-      &::after {
-        left: 16px;
-      }
-    }
-
     &--grid {
-      line-height: 34px;
-
       &::after {
         display: none;
       }
@@ -67,33 +78,48 @@
   &__list {
     &-item {
       border: none;
-      height: @action-sheet-list-item-height;
-      padding: 0 16px;
+      height: auto;
+      padding: @spacer-2;
+
       .border(bottom, @action-sheet-border-color);
       .flex-center();
 
-      &--left {
-        justify-content: start;
-        text-align: left;
-
-        &::after {
-          left: 16px;
-        }
-      }
-
       &--disabled {
         --td-button-default-disabled-bg: none;
-        --td-button-default-disabled-color: @action-sheet-list-item-disabled-color;
+        --td-button-default-disabled-color: @action-sheet-disabled-color;
+      }
+
+      &-content,
+      &-desc {
+        width: 100%;
+
+        .flex-center();
       }
 
       &-text {
-        font-size: @font-size-m;
-        font-weight: @action-sheet-text-weight;
+        font: @font-body-large;
+      }
+
+      &-desc {
+        font: @font-body-small;
+        color: @action-sheet-description-color;
+        margin-top: @spacer;
+      }
+
+      &-text,
+      &-desc {
         .ellipsis();
       }
 
       &-icon {
-        margin-right: 8px;
+        font-size: 24px;
+        display: inline-flex;
+        margin-right: @spacer;
+
+        &--suffix {
+          margin-right: 0;
+          margin-left: @spacer;
+        }
       }
     }
   }
@@ -129,10 +155,13 @@
   }
 
   &__cancel {
-    height: @action-sheet-cancel-height;
+    height: auto;
+    padding: @spacer-1 @spacer-2;
     border: none;
     border-radius: 0;
-    font-weight: @action-sheet-text-weight;
+    font: @font-body-large;
+    color: @action-sheet-cancel-color;
+
     .flex-center();
 
     &::after {
