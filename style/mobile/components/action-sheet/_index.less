@@ -83,7 +83,10 @@
       height: auto;
       padding: @spacer-2;
 
-      .border(bottom, @action-sheet-border-color);
+      &:not(:last-child) {
+        .border(bottom, @action-sheet-border-color);
+      }
+
       .flex-center();
 
       &--disabled {
