@@ -139,7 +139,7 @@ const getAllComponentName = async (framework) => {
  * @returns {string} 解析后的变量内容
  */
 const parseCssVariables = (content, parsedKeys) => {
-  const matchReg = /(?<=var)\([\s\S]*?(?=;)/g;
+  const matchReg = /(?<=var)\(([^()]*?(?:\([^()]*?\))?[^()]*)\)/g;
   const matches = content.match(matchReg);
 
   if (!matches) return '';
