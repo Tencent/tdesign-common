@@ -52,14 +52,8 @@ const FILTERED_DIR = [
 
 // LESS 文件路径模板
 const LESS_FILE_MAP = {
-  'Mobile(Vue)': [
-    '_common/style/mobile/components/{COMPONENT_NAME}/_var.less',
-    '_common/style/mobile/components/{COMPONENT_NAME}/_mixin.less',
-  ],
-  'Mobile(React)': [
-    '_common/style/mobile/components/{COMPONENT_NAME}/_var.less',
-    '_common/style/mobile/components/{COMPONENT_NAME}/_mixin.less',
-  ],
+  'Mobile(Vue)': '_common/style/mobile/components/{COMPONENT_NAME}/_var.less',
+  'Mobile(React)': '_common/style/mobile/components/{COMPONENT_NAME}/_var.less',
   Miniprogram: '{COMPONENT_NAME}/{COMPONENT_NAME}.less',
   'Miniprogram(Chat)': '{COMPONENT_NAME}/{COMPONENT_NAME}.less',
 };
@@ -113,16 +107,10 @@ const findFilePath = (framework, componentName) => {
   if (!lessPathTemplate) {
     throw new Error(`⚠️ 未找到 framework "${framework}" 对应的路径配置`);
   }
-  if (Array.isArray(lessPathTemplate)) {
-    return lessPathTemplate.map((item) => {
-        const lessPath = FRAMEWORK_BASE_PATH_MAP[framework]+ item.replace(/{COMPONENT_NAME}/g, componentName);
-        return resolveCwd(lessPath);
-    });
-  }
   const lessPath = FRAMEWORK_BASE_PATH_MAP[framework]
     + lessPathTemplate.replace(/{COMPONENT_NAME}/g, componentName);
 
-  return [resolveCwd(lessPath)];
+  return resolveCwd(lessPath);
 };
 
 /**
@@ -195,10 +183,10 @@ const generateCssVariables = async (componentName) => {
   try {
     if (COMBINE_MAP[componentName]) {
       COMBINE_MAP[componentName].forEach((item) => {
-        lessPaths.push(...findFilePath(FRAMEWORK, item));
+        lessPaths.push(findFilePath(FRAMEWORK, item));
       });
     } else {
-      lessPaths.push(...findFilePath(FRAMEWORK, componentName));
+      lessPaths.push(findFilePath(FRAMEWORK, componentName));
     }
 
     const validPaths = lessPaths.filter((filePath) => fs.existsSync(filePath));
