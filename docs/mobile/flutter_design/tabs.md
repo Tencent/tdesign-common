@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当内容/数据需要一定的分类纬度进行区分，便于用户快速作出选择并切换时可以使用。
@@ -28,7 +26,6 @@
   </div>
 </div>
 
-
 ### 常见用法
 
 ##### 较常使用于以信息瀑布流为场景的应用，使用选项卡承载类目或状态，便于用户区分和切换。
@@ -48,7 +45,6 @@
    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tabs/tabs-6.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -95,8 +91,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
-
 
 ### 相似组件
 

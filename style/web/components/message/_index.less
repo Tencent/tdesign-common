@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 // <name> 替换为组件名
 .@{prefix}-message {
@@ -21,28 +21,24 @@
   }
 
   &.@{prefix}-is-success {
-
     @{msg-icon-selector} {
       color: @msg-success-color;
     }
   }
 
   &.@{prefix}-is-warning {
-
     @{msg-icon-selector} {
       color: @msg-warning-color;
     }
   }
 
   &.@{prefix}-is-error {
-
     @{msg-icon-selector} {
       color: @msg-error-color;
     }
   }
 
   &.@{prefix}-is-closable {
-
     .@{prefix}-message__close {
       display: inline-flex;
       margin-right: 0;

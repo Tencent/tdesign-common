@@ -2,7 +2,7 @@
 title: Tree
 description: Used to carry structured content with parent-child relationships and provide a hierarchical display of content.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -121,4 +121,5 @@ The `value` field of each item in the `data` array provided to the `Tree` compon
 The `value` field of each item in the `data` array provided to the `Tree` component must be unique to avoid incorrect expansion caused by duplicate indices.
 
 ### Are `value` or unique `key` values in any level of the `Tree` structure non-repetitive?
+
 Yes, `value` or value defined by the alias `keys` in any level of the `Tree` structure are unique and non-repetitive.

@@ -31,6 +31,7 @@ spline: data
 {{ graylevel }}
 
 ### 不同布局的水印
+
 通过设置 layout 使用不同的布局。
 
 {{ layout }}

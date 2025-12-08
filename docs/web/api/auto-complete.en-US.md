@@ -2,7 +2,7 @@
 title: AutoComplete
 description: AutoComplete is used to prompt more associated words based on user input.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: form
 ---
 

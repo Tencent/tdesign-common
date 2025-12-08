@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 // 进度条基本样式
 .@{prefix}-progress {
@@ -122,9 +122,8 @@
       bottom: 0;
       left: 0;
       z-index: 1;
-      content: "";
-      animation: progress-active-animation 2s
-        cubic-bezier(.23, .99, .86, .2) infinite;
+      content: '';
+      animation: progress-active-animation 2s cubic-bezier(.23, .99, .86, .2) infinite;
       background: @progress-inner-bg-color-active;
       opacity: .2;
     }

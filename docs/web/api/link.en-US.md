@@ -2,7 +2,7 @@
 title: Link
 description: Used to navigate to a new page, such as internal project links or external friendly links.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: base
 ---
 

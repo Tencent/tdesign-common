@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-form {
   .reset;
@@ -14,7 +14,6 @@
   font: @form-font;
 
   &:not(.@{prefix}-form-inline) {
-
     .@{prefix}-form__item {
       &:last-of-type {
         margin: 0;
@@ -64,7 +63,7 @@
         margin-right: @form-label-margin-right-required;
         color: @form-color-error;
         line-height: @form-label-line-height;
-        content: "*";
+        content: '*';
       }
     }
 
@@ -74,13 +73,13 @@
         margin-left: @form-label-margin-left-required;
         color: @form-color-error;
         line-height: @form-label-line-height;
-        content: "*";
+        content: '*';
       }
     }
 
     &--colon {
       label::after {
-        content: ":";
+        content: ':';
         position: relative;
         margin: @form-label-margin-colon;
       }

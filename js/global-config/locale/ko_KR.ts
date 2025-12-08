@@ -99,20 +99,7 @@ export default {
       week: '요일 선택',
     },
     weekdays: ['월', '화', '수', '목', '금', '토', '일'],
-    months: [
-      '1 월',
-      '2 월',
-      '3 월',
-      '4 월',
-      '5 월',
-      '6 월',
-      '7 월',
-      '8 월',
-      '9 월',
-      '10 월',
-      '11 월',
-      '12 월',
-    ],
+    months: ['1 월', '2 월', '3 월', '4 월', '5 월', '6 월', '7 월', '8 월', '9 월', '10 월', '11 월', '12 월'],
     quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -147,8 +134,7 @@ export default {
     dragger: {
       dragDropText: '마우스를 놓으십시오',
       draggingText: '이 영역으로 드래그 앤 드롭',
-      clickAndDragText:
-        '위의 "파일 선택"을 클릭하거나 파일을 이 영역으로 끌어다 놓습니다',
+      clickAndDragText: '위의 "파일 선택"을 클릭하거나 파일을 이 영역으로 끌어다 놓습니다',
     },
     file: {
       fileNameText: '파일 이름',
@@ -203,7 +189,7 @@ export default {
     recentColorTitle: '최근 사용한 색상',
     clearConfirmText: '최근에 사용한 색상을 지우시겠습니까?',
     singleColor: '단색',
-    gradientColor: '그라데이션'
+    gradientColor: '그라데이션',
   },
   guide: {
     finishButtonProps: {
@@ -271,11 +257,10 @@ export default {
     uploadImageText: '이미지 업로드',
     uploadAttachmentText: '첨부 파일 업로드',
     shareTipText: '공유',
-
   },
   qrcode: {
     expiredText: '만료됨',
     refreshText: '새로 고치다',
     scannedText: '스캔됨',
-  }
+  },
 } as const;

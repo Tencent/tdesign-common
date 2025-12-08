@@ -2,7 +2,7 @@
 title: Collapse
 description: You can group more or more complex content. The grouped content area can be collapsed, expanded or hidden.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

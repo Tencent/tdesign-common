@@ -1,6 +1,6 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .@{color-picker} {
   &__panel {
@@ -30,7 +30,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       border-radius: @radius-circle;
       box-sizing: border-box;
@@ -65,7 +65,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -290,7 +290,7 @@
     border-radius: @color-picker-swatch-border-radius;
 
     &::after {
-      content: "";
+      content: '';
       width: 100%;
       height: 100%;
       position: absolute;
@@ -317,7 +317,11 @@
 }
 
 .transparentBgImage () {
-  background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
+  background-image:
+    linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5),
+    linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
   background-size: 6px 6px;
-  background-position: 0 0, 3px 3px;
+  background-position:
+    0 0,
+    3px 3px;
 }

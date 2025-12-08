@@ -1,16 +1,16 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_scrollbar.less";
+@import '../../mixins/_scrollbar.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_focus.less";
+@import '../../mixins/_focus.less';
 
 // <name> 替换为组件名
 .@{radio-cls}-group {
@@ -105,7 +105,7 @@
       }
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: @radio-button-before-left;
         top: @radio-button-before-top;
@@ -307,7 +307,7 @@
     transition: @radio-input-transition;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;

@@ -31,9 +31,9 @@
 @switch-height-default: @comp-size-xxs;
 @switch-height-s: @comp-size-xxxs;
 
-@switch-min-width-l: calc(@switch-height-l / .618);
-@switch-min-width-default: calc(@switch-height-default / .618);
-@switch-min-width-s: calc(@switch-height-s / .618);
+@switch-min-width-l: calc(@switch-height-l / 0.618);
+@switch-min-width-default: calc(@switch-height-default / 0.618);
+@switch-min-width-s: calc(@switch-height-s / 0.618);
 
 //change uncheck handle size
 @switch-width-border-base: 5px;
@@ -45,7 +45,7 @@
 
 //change check handle size
 @switch-width-border-check-base: 3px;
-@switch-width-border-check-value: .5px; //公差值
+@switch-width-border-check-value: 0.5px; //公差值
 
 @switch-width-border-check-l: @switch-width-border-check-base;
 @switch-width-border-check-default: (@switch-width-border-check-base - @switch-width-border-check-value * 1);
@@ -69,5 +69,6 @@
 // 动画
 @switch-transition: all @anim-duration-base @anim-time-fn-easing;
 @switch-handle-transition: all @anim-duration-base @anim-time-fn-easing;
-@switch-content-transition: padding @anim-duration-base @anim-time-fn-easing,
+@switch-content-transition:
+  padding @anim-duration-base @anim-time-fn-easing,
   opacity @anim-duration-base linear;

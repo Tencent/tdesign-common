@@ -60,10 +60,14 @@
 @datepicker-now-background-color: @brand-color-light;
 
 @datepicker-highlight-color: @brand-color-light;
-@datepicker-hover-highlight-color: rgba(0, 0, 0, .06); // 此处亮色暗色通用，无token
+@datepicker-hover-highlight-color: rgba(0, 0, 0, 0.06); // 此处亮色暗色通用，无token
 @datepicker-presets-min-width: @comp-size-xl;
 @datepicker-presets-text-color: @brand-color;
 @datepicker-presets-text-color-hover: @brand-color-hover;
 
 // ani
-@datepicker-transition: box-shadow @anim-duration-base @anim-time-fn-easing, background-color @anim-duration-base linear, border-color @anim-duration-base linear, color @anim-duration-base linear;
+@datepicker-transition:
+  box-shadow @anim-duration-base @anim-time-fn-easing,
+  background-color @anim-duration-base linear,
+  border-color @anim-duration-base linear,
+  color @anim-duration-base linear;

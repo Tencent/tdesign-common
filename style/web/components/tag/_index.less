@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-tag {
   .reset;
@@ -101,7 +101,9 @@
       background-color: @tag-primary-color-light;
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+    &.@{prefix}-tag--light,
+    &.@{prefix}-tag--outline,
+    &.@{prefix}-tag--light-outline {
       color: @tag-primary-color;
 
       .@{prefix}-tag__icon-close {
@@ -128,7 +130,9 @@
       background-color: @tag-success-color-light;
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+    &.@{prefix}-tag--light,
+    &.@{prefix}-tag--outline,
+    &.@{prefix}-tag--light-outline {
       color: @tag-success-color;
 
       .@{prefix}-tag__icon-close {
@@ -155,7 +159,9 @@
       background-color: @tag-warning-color-light;
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+    &.@{prefix}-tag--light,
+    &.@{prefix}-tag--outline,
+    &.@{prefix}-tag--light-outline {
       color: @tag-warning-color;
 
       .@{prefix}-tag__icon-close {
@@ -190,7 +196,9 @@
       }
     }
 
-    &.@{prefix}-tag--light, &.@{prefix}-tag--outline, &.@{prefix}-tag--light-outline {
+    &.@{prefix}-tag--light,
+    &.@{prefix}-tag--outline,
+    &.@{prefix}-tag--light-outline {
       color: @tag-danger-color;
 
       .@{prefix}-tag__icon-close {
@@ -202,7 +210,6 @@
   }
 
   &--dark&:not(.@{prefix}-tag--default) {
-
     .@{prefix}-tag__icon-close {
       color: @tag-close-icon-color--dark;
 
@@ -245,7 +252,6 @@
   }
 
   &.@{prefix}-tag--ellipsis {
-
     .@{prefix}-tag--text {
       display: inline-block;
       .text-ellipsis();

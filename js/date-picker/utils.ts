@@ -72,7 +72,9 @@ function isSameMonth(date1: Date, date2: Date): boolean {
 }
 
 function isSameWeek(date1: Date, date2: Date, dayjsLocale = 'zh-cn'): boolean {
-  return isSameMonth(date1, date2) && dayjs(date1).locale(dayjsLocale).week() === dayjs(date2).locale(dayjsLocale).week();
+  return (
+    isSameMonth(date1, date2) && dayjs(date1).locale(dayjsLocale).week() === dayjs(date2).locale(dayjsLocale).week()
+  );
 }
 
 function isSameDate(date1: Date, date2: Date): boolean {
@@ -155,19 +157,8 @@ export function getDateObj(date: Date) {
  * @param {Number} milliseconds 毫秒
  * @returns {Date} 一个新的date
  */
-export function setDateTime(
-  date: Date,
-  hours: number,
-  minutes: number,
-  seconds: number,
-  milliseconds?: number
-): Date {
-  return dayjs(date)
-    .hour(hours)
-    .minute(minutes)
-    .second(seconds)
-    .millisecond(milliseconds)
-    .toDate();
+export function setDateTime(date: Date, hours: number, minutes: number, seconds: number, milliseconds?: number): Date {
+  return dayjs(date).hour(hours).minute(minutes).second(seconds).millisecond(milliseconds).toDate();
 }
 
 /**
@@ -191,7 +182,12 @@ export function addMonth(date: Date, num: number): Date {
 }
 
 export type DateValue = string | Date | number;
-export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string }
+export interface DisableDateObj {
+  from?: string;
+  to?: string;
+  before?: string;
+  after?: string;
+}
 export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
 
 export interface OptionsType {
@@ -216,7 +212,7 @@ export function getWeeks(
     maxDate,
     dayjsLocale = 'zh-cn',
     cancelRangeSelectLimit = false,
-  }: OptionsType,
+  }: OptionsType
 ) {
   const prependDay = getFirstDayOfMonth({ year, month });
   const appendDay = getLastDayOfMonth({ year, month });
@@ -230,8 +226,9 @@ export function getWeeks(
       text: i,
       active: false,
       value: currentDay,
-      disabled: (isFunction(disableDate) && disableDate(currentDay))
-        || (!cancelRangeSelectLimit && outOfRanges(currentDay, minDate, maxDate)),
+      disabled:
+        (isFunction(disableDate) && disableDate(currentDay)) ||
+        (!cancelRangeSelectLimit && outOfRanges(currentDay, minDate, maxDate)),
       now: isSame(today, currentDay),
       firstDayOfMonth: i === 1,
       lastDayOfMonth: i === maxDays,
@@ -247,7 +244,9 @@ export function getWeeks(
         text: prependDay.getDate().toString(),
         active: false,
         value: new Date(prependDay),
-        disabled: (isFunction(disableDate) && disableDate(prependDay)) || (!cancelRangeSelectLimit && outOfRanges(prependDay, minDate, maxDate)),
+        disabled:
+          (isFunction(disableDate) && disableDate(prependDay)) ||
+          (!cancelRangeSelectLimit && outOfRanges(prependDay, minDate, maxDate)),
         additional: true, // 非当前月
         type: 'prev-month',
         dayjsObj: dayjs(prependDay).locale(dayjsLocale),
@@ -264,7 +263,9 @@ export function getWeeks(
       text: appendDay.getDate(),
       active: false,
       value: new Date(appendDay),
-      disabled: (isFunction(disableDate) && disableDate(appendDay)) || (!cancelRangeSelectLimit && outOfRanges(appendDay, minDate, maxDate)),
+      disabled:
+        (isFunction(disableDate) && disableDate(appendDay)) ||
+        (!cancelRangeSelectLimit && outOfRanges(appendDay, minDate, maxDate)),
       additional: true, // 非当前月
       type: 'next-month',
       dayjsObj: dayjs(appendDay).locale(dayjsLocale),
@@ -297,7 +298,7 @@ export function getQuarters(
     quarterLocal,
     dayjsLocale = 'zh-cn',
     cancelRangeSelectLimit = false,
-  }: OptionsType,
+  }: OptionsType
 ) {
   const quarterArr = [];
   const today = getToday();
@@ -308,7 +309,9 @@ export function getQuarters(
     quarterArr.push({
       value: date,
       now: isSame(date, today, 'quarter'),
-      disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
+      disabled:
+        (isFunction(disableDate) && disableDate(date)) ||
+        (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: quarterLocal[i - 1],
       dayjsObj: dayjs(date).locale(dayjsLocale),
@@ -320,13 +323,7 @@ export function getQuarters(
 
 export function getYears(
   year: number,
-  {
-    disableDate = () => false,
-    minDate,
-    maxDate,
-    dayjsLocale = 'zh-cn',
-    cancelRangeSelectLimit = false,
-  }: OptionsType,
+  { disableDate = () => false, minDate, maxDate, dayjsLocale = 'zh-cn', cancelRangeSelectLimit = false }: OptionsType
 ) {
   const startYear = parseInt((year / 10).toString(), 10) * 10;
   const endYear = startYear + 9;
@@ -341,7 +338,9 @@ export function getYears(
     yearArr.push({
       value: date,
       now: isSame(date, today, 'year'),
-      disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
+      disabled:
+        (isFunction(disableDate) && disableDate(date)) ||
+        (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: `${date.getFullYear()}`,
       dayjsObj: dayjs(date).locale(dayjsLocale),
@@ -353,7 +352,12 @@ export function getYears(
 
 export function getMonths(year: number, params: OptionsType) {
   const {
-    disableDate = () => false, minDate, maxDate, monthLocal, dayjsLocale = 'zh-cn', cancelRangeSelectLimit = false,
+    disableDate = () => false,
+    minDate,
+    maxDate,
+    monthLocal,
+    dayjsLocale = 'zh-cn',
+    cancelRangeSelectLimit = false,
   } = params;
   const MonthArr = [];
   const today = getToday();
@@ -364,7 +368,9 @@ export function getMonths(year: number, params: OptionsType) {
     MonthArr.push({
       value: date,
       now: isSame(date, today, 'month'),
-      disabled: (isFunction(disableDate) && disableDate(date)) || (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
+      disabled:
+        (isFunction(disableDate) && disableDate(date)) ||
+        (!cancelRangeSelectLimit && outOfRanges(date, minDate, maxDate)),
       active: false,
       text: monthLocal[date.getMonth()], // `${date.getMonth() + 1} ${monthText || '月'}`,
       dayjsObj: dayjs(date).locale(dayjsLocale),
@@ -398,57 +404,54 @@ interface FlagActiveOptions {
 }
 
 export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
-  const {
-    start,
-    end,
-    hoverStart,
-    hoverEnd,
-    type = 'date',
-    isRange = false,
-    value,
-    multiple = false,
-  } = args;
+  const { start, end, hoverStart, hoverEnd, type = 'date', isRange = false, value, multiple = false } = args;
 
   // 周选择器不更改 cell 样式
   if (type === 'week') return data;
 
   if (!isRange) {
-    return data.map((row: any[]) => row.map((item: DateTime) => {
-      const _item = item;
+    return data.map((row: any[]) =>
+      row.map((item: DateTime) => {
+        const _item = item;
 
-      if (multiple) {
-        _item.active = (value as DateValue[])?.some?.((val) => isSame(dayjs(val).toDate(), _item.value, type) && !_item.additional);
-      } else {
-        _item.active = start && isSame(item.value, start, type) && !_item.additional;
-      }
+        if (multiple) {
+          _item.active = (value as DateValue[])?.some?.(
+            (val) => isSame(dayjs(val).toDate(), _item.value, type) && !_item.additional
+          );
+        } else {
+          _item.active = start && isSame(item.value, start, type) && !_item.additional;
+        }
 
-      return _item;
-    }));
+        return _item;
+      })
+    );
   }
 
-  return data.map((row: any[]) => row.map((item: DateTime) => {
-    const _item = item;
-    const date = item.value;
+  return data.map((row: any[]) =>
+    row.map((item: DateTime) => {
+      const _item = item;
+      const date = item.value;
 
-    const isStart = start && isSame(start, date, type);
-    const isHoverStart = hoverStart && isSame(hoverStart, date, type);
-    const isEnd = end && isSame(end, date, type);
-    const isHoverEnd = hoverEnd && isSame(hoverEnd, date, type);
-    _item.active = (isStart || isEnd) && !_item.additional;
+      const isStart = start && isSame(start, date, type);
+      const isHoverStart = hoverStart && isSame(hoverStart, date, type);
+      const isEnd = end && isSame(end, date, type);
+      const isHoverEnd = hoverEnd && isSame(hoverEnd, date, type);
+      _item.active = (isStart || isEnd) && !_item.additional;
 
-    if (start && end) {
-      _item.highlight = dayjs(date).isBetween(start, end, type, '[]') && !_item.additional;
-      _item.startOfRange = isStart;
-      _item.endOfRange = isEnd;
-    }
+      if (start && end) {
+        _item.highlight = dayjs(date).isBetween(start, end, type, '[]') && !_item.additional;
+        _item.startOfRange = isStart;
+        _item.endOfRange = isEnd;
+      }
 
-    if (hoverStart && hoverEnd) {
-      _item.hoverHighlight = dayjs(date).isBetween(hoverStart, hoverEnd, type, '[]') && !_item.additional;
-      _item.hoverStartOfRange = isHoverStart;
-      _item.hoverEndOfRange = isHoverEnd;
-    }
-    return _item;
-  }));
+      if (hoverStart && hoverEnd) {
+        _item.hoverHighlight = dayjs(date).isBetween(hoverStart, hoverEnd, type, '[]') && !_item.additional;
+        _item.hoverStartOfRange = isHoverStart;
+        _item.hoverEndOfRange = isHoverEnd;
+      }
+      return _item;
+    })
+  );
 }
 
 /**
@@ -501,7 +504,7 @@ export function isEnabledDate({
   if (Array.isArray(disableDate)) {
     const formattedDisabledDate = disableDate.map((item: string) => parseToDayjs(item, format));
     // eslint-disable-next-line
-    const isIncludes = formattedDisabledDate.some(item => item.isSame(dayjs(value)));
+    const isIncludes = formattedDisabledDate.some((item) => item.isSame(dayjs(value)));
     return !isIncludes;
   }
 
@@ -539,7 +542,5 @@ export function isEnabledDate({
  * formatDate 方法需要date作为入参，部分场景需要将timestamp或格式化后的时间string转换为date进行使用
  */
 export function covertToDate(value: string, valueType: string) {
-  return valueType === 'time-stamp'
-    ? new Date(value)
-    : dayjs(value, valueType).toDate();
+  return valueType === 'time-stamp' ? new Date(value) : dayjs(value, valueType).toDate();
 }

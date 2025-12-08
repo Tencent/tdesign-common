@@ -31,4 +31,3 @@ toc: false
 #### 垂直模式
 
 {{ vertical }}
-

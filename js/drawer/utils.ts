@@ -5,10 +5,7 @@ interface SizeDragLimit {
   min: number;
 }
 
-export function getSizeDraggable(
-  sizeDraggable: boolean | SizeDragLimit,
-  limit: { max: number; min: number }
-) {
+export function getSizeDraggable(sizeDraggable: boolean | SizeDragLimit, limit: { max: number; min: number }) {
   if (typeof sizeDraggable === 'boolean') {
     return {
       allowSizeDraggable: sizeDraggable,

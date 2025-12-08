@@ -6,7 +6,6 @@ isComponent: true
 toc: false
 ---
 
-
 ### 01 Component Type
 
 {{ base }}

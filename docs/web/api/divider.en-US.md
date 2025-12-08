@@ -1,5 +1,5 @@
 ---
-title: Divider 
+title: Divider
 description: The divider is a linear lightweight component that serves to separate, organize, and refine. It is used to logically organize element content and page structure.
 isComponent: true
 usage: { title: '', description: '' }
@@ -27,4 +27,3 @@ Vertical dividers are commonly used for inline separation.
 The text divider is a divider with embedded text and is used when an explanation of the separated content is needed.
 
 {{ text }}
-

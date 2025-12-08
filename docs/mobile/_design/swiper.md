@@ -22,13 +22,13 @@
 
 <hr />
 
- ##### 在图文详情页场景，用于当图片数量大于1时的折叠展示。
+##### 在图文详情页场景，用于当图片数量大于1时的折叠展示。
+
 <div class="legend">
  <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swiper/swiper-3.png" />
  </div>
 </div>
-
 
 ### 推荐/慎用示例
 

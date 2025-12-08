@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { add, subtract, formatThousandths, canInputNumber, canSetValue, formatUnCompleteNumber } from '../../../js/input-number/number';
+import {
+  add,
+  subtract,
+  formatThousandths,
+  canInputNumber,
+  canSetValue,
+  formatUnCompleteNumber,
+} from '../../../js/input-number/number';
 
 describe('add', () => {
   it('0.1 + 0.2', () => {

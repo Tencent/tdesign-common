@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当前流程的结束或新流程的开启需要用户点击触发时使用。
@@ -38,10 +36,10 @@
   </div>
 </div>
 
-
 ### 常见用法
 
 ##### 当在填写场景，按钮通常作为当前流程的结束操作，在表单过长时通常需要吸顶或吸底处理。
+
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/button/button-5.png" />
@@ -52,7 +50,6 @@
     <em></em>
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -69,8 +66,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
-
 
 ### 相似组件
 

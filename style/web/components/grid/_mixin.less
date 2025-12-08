@@ -1,7 +1,6 @@
-@import "../../mixins/_index.less";
+@import '../../mixins/_index.less';
 
 .gen-grid-columns(@index, @class) when (@index > 0) {
-
   .@{prefix}-col@{class}-@{index} {
     display: block;
     flex: 0 0 percentage((@index / @grid-columns));
@@ -27,7 +26,6 @@
 }
 
 .gen-grid-columns(@index, @class) when (@index = 0) {
-
   .@{prefix}-col@{class}-@{index} {
     display: none;
   }

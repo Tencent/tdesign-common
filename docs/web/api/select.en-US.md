@@ -2,7 +2,7 @@
 title: Select
 description: An information entry class component for accommodating a large number of options.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: form
 ---
 

@@ -2,10 +2,6 @@
 
 出现在图标或文字右上角的圆形徽标数字。
 
-
-
-
-
 ### 红点样式徽标
 
 仅为圆点样式的徽标，有图标时位于图标右上角，无图标时位于文字标题后侧。当弱提示，不显示数量，需要用户去手动点击查看进行消除。
@@ -16,7 +12,6 @@ demo
 
 含数字的圆形徽标。当需要较强提醒，让用户知道和用户相关提示信息数量时，用来引导用户处理。
 
-
 demo
 
 ### 自定样式徽标
@@ -26,19 +21,18 @@ demo
 demo
 
 ### 不同尺寸的徽标
+
 demo
 
 ### 不同形状的徽标
+
 demo
 
 ### 偏移徽标
+
 demo
 
-
-
-
 ## 组件设计指南
-
 
 ### 何时使用
 
@@ -50,9 +44,8 @@ demo
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/badge-1.png" />
 
-
-
 ### 组件常见用法
+
 ##### 当用户只需要关注是否有消息，而无需关注消息数量时，可使用红点型徽标。
 
 <div class="legend">
@@ -68,11 +61,10 @@ demo
 
 ##### 当提示的信息需要精确显示数量时，应使用带数字的徽标。
 
-
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/badge-4.png" />
 
-
 ### 推荐/慎用示例
+
 ##### 使用带数字的徽标时，需根据场景和信息类型定义最长数量，避免数值过多。
 
 <div class="legend">
@@ -86,4 +78,3 @@ demo
     <img class="tag" src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/doc/bad.png" />
   </div>
 </div>
-

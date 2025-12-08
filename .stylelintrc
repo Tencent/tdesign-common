@@ -1,14 +1,20 @@
 {
   "defaultSeverity": "error",
-  "extends": ["stylelint-config-standard"],
+  "extends": [
+    "stylelint-config-standard"
+  ],
   "rules": {
     "no-duplicate-selectors": null,
-    "number-leading-zero": "never",
+    "number-leading-zero": null,
     "block-no-empty": null,
     "selector-class-pattern": null,
     "declaration-block-no-redundant-longhand-properties": [
       true,
-      { "ignoreShorthands": ["/flex/"] }
+      {
+        "ignoreShorthands": [
+          "/flex/"
+        ]
+      }
     ],
     "custom-property-pattern": null,
     "keyframes-name-pattern": null,
@@ -16,27 +22,61 @@
     "font-family-no-missing-generic-family-keyword": [
       true,
       {
-        "ignoreFontFamilies": ["PingFangSC-Regular", "PingFangSC-Medium", "t"]
+        "ignoreFontFamilies": [
+          "PingFangSC-Regular",
+          "PingFangSC-Medium",
+          "t",
+          "Arial Regular"
+        ]
       }
     ],
-    "unit-no-unknown": [true, { "ignoreUnits": ["rpx"] }],
+    "unit-no-unknown": [
+      true,
+      {
+        "ignoreUnits": [
+          "rpx"
+        ]
+      }
+    ],
     "function-url-quotes": null,
     "max-line-length": null,
-    "at-rule-empty-line-before": ["always", { "ignore": ["after-comment"] }],
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "ignore": [
+          "after-comment"
+        ]
+      }
+    ],
     "declaration-colon-newline-after": null,
     "no-descending-specificity": null,
     "selector-type-no-unknown": null,
     "color-function-notation": "legacy",
     "value-keyword-case": null,
-    "property-no-unknown": [true, { "checkPrefixed": true }]
+    "property-no-unknown": [
+      true,
+      {
+        "checkPrefixed": true
+      }
+    ],
+    "string-quotes": "single",
+    "indentation": 2
   },
   "overrides": [
-    { "files": ["**/*.less"], "customSyntax": "postcss-less" },
     {
-      "files": ["style/web/components/**/*.less"],
-      "ignoreFiles": ["**/_docs.less"],
+      "files": [
+        "**/*.less"
+      ],
+      "customSyntax": "postcss-less"
+    },
+    {
+      "files": [
+        "style/web/components/**/*.less"
+      ],
+      "ignoreFiles": [
+        "**/_docs.less"
+      ],
       "rules": {
-        "color-no-hex": true,
         "color-named": "never"
       }
     }

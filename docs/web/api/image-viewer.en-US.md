@@ -2,7 +2,7 @@
 title: ImageViewer
 description: ImageViewer is used to display images and partially operate on images
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: base
 ---
 

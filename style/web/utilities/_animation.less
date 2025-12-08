@@ -1,4 +1,4 @@
-@import "../_variables.less";
+@import '../_variables.less';
 
 @keyframes t-fade-in {
   from {
@@ -36,7 +36,6 @@
 
 // 定义一个从A到B到动画
 .anim-g-attr-change(@name, @attr, @from, @to, ) {
-
   @{keyf} {
     .anim-g-attr-change-from(e(@attr), e(@from));
   }
@@ -47,8 +46,8 @@
   // 以下代码主要为了添加闭合标签
   @{anim} {
   }
-  @keyf: ~"@keyframes @{name}  { from";
-  @anim: ~" }  ";
+  @keyf: ~'@keyframes @{name}  { from';
+  @anim: ~' }  ';
 }
 
 .anim-g-attr-change-from (@name, @value) {

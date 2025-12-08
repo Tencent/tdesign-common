@@ -20,7 +20,6 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-2.png" />
 </div>
 
-
 ### 常见用法
 
 ##### 通常用来承载页面标题和返回操作，点击跳转回到上一个打开的页面。
@@ -46,6 +45,7 @@
 <hr />
 
 ##### 在需要定位的场景，通常结合当前定位进行、所在城市等进行展示并提供切换的能力。
+
 <div class="legend">
  <div class="item">
    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/navbar/navbar-6.png" />

@@ -1,11 +1,10 @@
 ---
-title: Layout 
+title: Layout
 description: Used to organize the framework structure of web pages.
 isComponent: true
 usage: { title: '', description: '' }
 spline: layout
 ---
-
 
 ### Basic usage
 

@@ -1,6 +1,6 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .@{action-sheet} {
   &__content {
@@ -10,12 +10,41 @@
     background-color: @bg-color-container;
     overflow: hidden;
 
-    &--grid {
-      padding-top: 8px;
-    }
-
     &:focus {
       outline: 0;
+    }
+  }
+
+  &--grid {
+    &.@{action-sheet}--no-description {
+      padding-top: @spacer;
+    }
+
+    .@{action-sheet}__description {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &--left {
+    .@{action-sheet}__description {
+      text-align: left;
+    }
+
+    .@{prefix}-button__content {
+      width: 100%;
+    }
+
+    .@{action-sheet}__list-item {
+      &-content,
+      &-desc {
+        justify-content: start;
+      }
+
+      &-icon--suffix {
+        margin-left: auto;
+      }
     }
   }
 
@@ -43,57 +72,59 @@
   &__description {
     color: @action-sheet-description-color;
     font: @action-sheet-description-font;
-    text-align: @action-sheet-text-align;
-    padding: 12px 16px;
+    text-align: center;
+    padding: @spacer-1 @spacer-2;
     .border(bottom, @action-sheet-border-color);
-
-    &--left {
-      text-align: left;
-
-      &::after {
-        left: 16px;
-      }
-    }
-
-    &--grid {
-      line-height: 34px;
-
-      &::after {
-        display: none;
-      }
-    }
   }
 
   &__list {
     &-item {
       border: none;
-      height: @action-sheet-list-item-height;
-      padding: 0 16px;
-      .border(bottom, @action-sheet-border-color);
-      .flex-center();
+      height: auto;
+      padding: @spacer-2;
 
-      &--left {
-        justify-content: start;
-        text-align: left;
-
-        &::after {
-          left: 16px;
-        }
+      &:not(:last-child) {
+        .border(bottom, @action-sheet-border-color);
       }
+
+      .flex-center();
 
       &--disabled {
         --td-button-default-disabled-bg: none;
-        --td-button-default-disabled-color: @action-sheet-list-item-disabled-color;
+        --td-button-default-disabled-color: @action-sheet-disabled-color;
+      }
+
+      &-content,
+      &-desc {
+        width: 100%;
+
+        .flex-center();
       }
 
       &-text {
-        font-size: @font-size-m;
-        font-weight: @action-sheet-text-weight;
+        font: @font-body-large;
+      }
+
+      &-desc {
+        font: @font-body-small;
+        color: @action-sheet-description-color;
+        margin-top: @spacer;
+      }
+
+      &-text,
+      &-desc {
         .ellipsis();
       }
 
       &-icon {
-        margin-right: 8px;
+        font-size: 24px;
+        display: inline-flex;
+        margin-right: @spacer;
+
+        &--suffix {
+          margin-right: 0;
+          margin-left: @spacer;
+        }
       }
     }
   }
@@ -129,10 +160,13 @@
   }
 
   &__cancel {
-    height: @action-sheet-cancel-height;
+    height: auto;
+    padding: @spacer-1 @spacer-2;
     border: none;
     border-radius: 0;
-    font-weight: @action-sheet-text-weight;
+    font: @font-body-large;
+    color: @action-sheet-cancel-color;
+
     .flex-center();
 
     &::after {

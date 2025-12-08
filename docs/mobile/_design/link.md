@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 在同一段文本中如使用多个链接，需要利用纯文本字符等将其区隔开。
@@ -36,8 +35,6 @@
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
  </div>
 </div>
-
-
 
 ### 相似组件
 

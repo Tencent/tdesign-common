@@ -37,14 +37,13 @@ spline: message
 {{ modal }}
 
 ### 弹出位置
+
 可以通过 `placement` 和 `top` 属性来自定义控制对话框位置。
 
 {{ position }}
-
 
 ### 挂载元素
 
 指定对话框元素挂载 DOM。
 
 {{ attach }}
-

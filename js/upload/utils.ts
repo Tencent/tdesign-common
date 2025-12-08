@@ -100,11 +100,7 @@ export function getCurrentDate(needTime = false) {
  * @param rightCount 右边长度
  * @returns 缩略后的文件名
  */
-export function abridgeName(
-  inputName: string,
-  leftCount = 5,
-  rightCount = 7
-): string {
+export function abridgeName(inputName: string, leftCount = 5, rightCount = 7): string {
   const name = inputName;
   let leftLength = 0;
   let rightLength = 0;
@@ -120,10 +116,7 @@ export function abridgeName(
       isCn ? (rightLength += 1) : (rightLength += 2);
     }
   }
-  return name.replace(
-    new RegExp(`^(.{${leftLength}})(.+)(.{${rightLength}})$`),
-    '$1…$3'
-  );
+  return name.replace(new RegExp(`^(.{${leftLength}})(.+)(.{${rightLength}})$`), '$1…$3');
 }
 
 export function getFileSizeText(number: number) {
@@ -144,11 +137,7 @@ export function getFileSizeText(number: number) {
  * @param size 文件大小，单位：B
  * @param unit 计算机计量单位
  */
-export function isOverSizeLimit(
-  fileSize: number,
-  sizeLimit: number,
-  unit: SizeUnit
-) {
+export function isOverSizeLimit(fileSize: number, sizeLimit: number, unit: SizeUnit) {
   const units = ['B', 'KB', 'MB', 'GB'];
   const KBIndex = 1;
   let index = units.indexOf(unit);
@@ -161,11 +150,7 @@ export function isOverSizeLimit(
 }
 
 // vue2临时使用的 sizeLimit 计算
-export function isOverSizeLimit1(
-  fileSize: number,
-  sizeLimit: number,
-  unit: SizeUnit
-) {
+export function isOverSizeLimit1(fileSize: number, sizeLimit: number, unit: SizeUnit) {
   // 以 KB 为单位进行比较
   const units = ['B', 'KB', 'MB', 'GB'];
   // 各个单位和 KB 的关系
@@ -174,9 +159,7 @@ export function isOverSizeLimit1(
   let index = units.indexOf(unit);
   if (index === -1) {
     // eslint-disable-next-line no-console
-    console.warn(
-      `TDesign Upload Warn: \`sizeLimit.unit\` can only be one of ${units.join()}`
-    );
+    console.warn(`TDesign Upload Warn: \`sizeLimit.unit\` can only be one of ${units.join()}`);
     index = KBIndex;
   }
   const num = SIZE_MAP[unit];

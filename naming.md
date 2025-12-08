@@ -9,7 +9,7 @@
 | 用途                                                                 | 中文                       | 英文                                       |
 | :------------------------------------------------------------------- | :------------------------- | :----------------------------------------- |
 | 服务于互联网产品设计中具有内在关联性的、组织有序的设计资产和辅助工具 | 设计体系                   | Design System                              |
-| 设计体系品牌名称                                                 | 暂无                       | TDesign                                    |
+| 设计体系品牌名称                                                     | 暂无                       | TDesign                                    |
 | 提供给设计师和前端工程师可复用的界面组成要素，功能流程与交互行为等   | 资产                       | Design Assets                              |
 | 提供给设计师使用的规范文档                                           | 设计指南                   | Design Guideline                           |
 | 设计资产包含的 UIkit，页面模版等设计师使用的部分                     | 设计资源                   | Component Library                          |
@@ -34,7 +34,7 @@
 | **基础(Basic)** | **布局(Layout)** | **导航(Navigations)** | **数据类(Data)** | **沟通类（Notice）**  | **输入类(Input)**     | **其他 Others** |
 | :-------------- | :--------------- | :-------------------- | :--------------- | :-------------------- | :-------------------- | :-------------- |
 | 色彩 Color      | 布局 Layout      | 选项卡 Tabs           | 图表 Diagram     | 全局提醒 Message      | 输入框 Input          | 模态抽屉 Drawer |
-| 字体 Fonts      | 栅格 Grid        | 步骤条 Steps          | 列表 List        | 文字提示 Tooltip       | 日期选择器 DatePicker | 锚点 Anchor     |
+| 字体 Fonts      | 栅格 Grid        | 步骤条 Steps          | 列表 List        | 文字提示 Tooltip      | 日期选择器 DatePicker | 锚点 Anchor     |
 | 图标 Icon       | 卡片 Card        | 面包屑 Breadcrumb     | 表格 Table       | 加载中 Loading        | 时间选择器 TimePicker | 标签 Tag        |
 | 动效 Motion     | 走马灯 Carousel  | 分页 Pagination       | 表单 Form        | 警告提示 Alert        | 单选框 Radio          |                 |
 | 按钮 Button     | 分割线 Divider   | 导航菜单 Menu         | 树 Tree          | 徽标数 Badge          | 多选框 Checkbox       |                 |

@@ -1,5 +1,3 @@
-
-
 ### 常见用法
 
 ##### 常用作内容详情入口或功能入口的平铺陈列。
@@ -45,8 +43,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
-
 
 ### 相似组件
 

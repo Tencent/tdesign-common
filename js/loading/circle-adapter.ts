@@ -8,7 +8,9 @@ export default function circleAdapter(circleElem: HTMLElement) {
     return;
   }
 
-  const { color, fontSize } = window?.getComputedStyle?.(circleElem);
+  const computedStyle = window.getComputedStyle?.(circleElem);
+  const color = computedStyle?.color || '';
+  const fontSize = computedStyle?.fontSize || '12px'; // 默认字体大小
 
   // to fix the browser compat of foreignObject in Safari,
   // https://bugs.webkit.org/show_bug.cgi?id=23113

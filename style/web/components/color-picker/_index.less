@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-color-picker__panel {
   padding: 0;
@@ -90,7 +90,7 @@
   box-sizing: border-box;
 
   &::before {
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     background: currentcolor;
@@ -108,7 +108,7 @@
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -136,9 +136,13 @@
 
 .transparentBgImage () {
   /* stylelint-disable-next-line color-no-hex */
-  background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
+  background-image:
+    linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5),
+    linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
   background-size: 6px 6px;
-  background-position: 0 0, 3px 3px;
+  background-position:
+    0 0,
+    3px 3px;
 }
 
 .@{prefix}-color-picker__slider-wrapper {
@@ -198,16 +202,7 @@
 
 .@{prefix}-color-picker__hue {
   /* stylelint-disable color-no-hex, color-named */
-  background: linear-gradient(
-    90deg,
-    red,
-    #ff0 17%,
-    #0f0 33%,
-    #0ff 50%,
-    #00f 67%,
-    #f0f 83%,
-    red
-  );
+  background: linear-gradient(90deg, red, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, red);
 }
 
 .@{prefix}-color-picker__alpha {
@@ -303,7 +298,7 @@
         overflow: hidden;
 
         &::before {
-          content: "";
+          content: '';
           width: 100%;
           height: 100%;
           display: block;
@@ -327,7 +322,8 @@
     &:last-child {
       flex: 1;
     }
-    .@{prefix}-size-m, .@{prefix}-input.@{prefix}-size-m {
+    .@{prefix}-size-m,
+    .@{prefix}-input.@{prefix}-size-m {
       font: @color-picker-font;
     }
     .@{prefix}-input-number .@{prefix}-input {
@@ -406,7 +402,6 @@
   position: relative;
 
   .@{prefix}-color-picker__swatches {
-
     + .@{prefix}-color-picker__swatches {
       margin-top: @color-picker-margin;
     }

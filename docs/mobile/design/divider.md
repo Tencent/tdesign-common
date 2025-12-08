@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 为了区分内容与内容之间的分组、层级关系时可使用。
@@ -34,7 +32,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/divider/divider-3.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 

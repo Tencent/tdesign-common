@@ -23,7 +23,7 @@
 @color-picker-slider-wrapper-radius: calc(@color-picker-slider-height / 2);
 @color-picker-slider-wrapper-padding: 0 calc(@color-picker-saturation-thumb-size / 2);
 @color-picker-slider-thumb-size: calc(@comp-size-xxxs + @size-1);
-@color-picker-slider-thumb-transform-x: calc(@color-picker-slider-thumb-size * -.5);
+@color-picker-slider-thumb-transform-x: calc(@color-picker-slider-thumb-size * -0.5);
 @color-picker-slider-thumb-padding: 2px;
 @color-picker-input-format-margin-left: @comp-margin-s;
 @color-picker-select-format-margin-right: @comp-margin-xs;
@@ -46,14 +46,12 @@
 @color-picker-swatch-item-padding: calc(@color-picker-panel-padding - 8px); //make sure swatchItem scale
 @color-picker-swatch-item-left-negative-padding: calc(0px - @color-picker-swatch-item-padding);
 // columnGap = (panelWidth - (panelPadding * 2) + (swatchColor * columnsItem)) / 9
-@color-picker-swatch-row-gap: calc(calc(@color-picker-panel-width - calc(calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-height * @color-picker-swatch-columns))) / 9);
-@color-picker-swatch-column-gap: calc(calc(@color-picker-panel-width - calc(calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-width * @color-picker-swatch-columns))) / 9);
+@color-picker-swatch-row-gap: calc((@color-picker-panel-width - (calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-height * @color-picker-swatch-columns))) / 9);
+@color-picker-swatch-column-gap: calc((@color-picker-panel-width - (calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-width * @color-picker-swatch-columns))) / 9);
 @color-picker-swatch-wrap-margin-left: (@color-picker-swatch-padding + @color-picker-swatch-border-size) * -1;
 // 右边往外伸出一点，让滚动条居外侧
-@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left -
-  10px;
-@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0
-  @color-picker-swatch-wrap-margin-left;
+@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left - 10px;
+@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0 @color-picker-swatch-wrap-margin-left;
 @color-picker-swatch-max-rows: 4; // 最大显示行数
 
 // shadow
@@ -62,8 +60,9 @@
 @colot-picker-swatch-item-color-inset-shadow: @shadow-inset;
 
 // 最大高度 = 行数 * (itemHeight + itemMarginTop)m;
-@color-picker-swatch-rows-max-height: calc(@color-picker-swatch-max-rows *
-calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
+@color-picker-swatch-rows-max-height: calc(
+  @color-picker-swatch-max-rows * calc(@color-picker-swatch-height + @color-picker-swatch-row-gap)
+);
 
 // trigger-input
 @color-picker-trigger-input-padding: 0 @comp-paddingLR-s 0 @comp-paddingLR-xs;

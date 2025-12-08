@@ -1,14 +1,14 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_layout.less";
+@import '../../mixins/_layout.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-time-picker,
 .@{prefix}-time-range-picker {
@@ -83,7 +83,7 @@
       > div {
         flex: 1;
         transform: translateY(
-          calc(0px - (calc(@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) /2))
+          calc(0px - (calc(@time-picker-panel-item-height + @time-picker-panel-item-margin-vertical) / 2))
         );
         height: @time-picker-panel-item-height;
         background-color: @time-picker-panel-item-background-color-current;
@@ -109,7 +109,7 @@
       &::before {
         display: block;
         height: 50%;
-        content: "";
+        content: '';
       }
 
       &::before {

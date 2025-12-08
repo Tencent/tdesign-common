@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 带有详情信息的选项，建议就近展开相关内容，不建议在触发一个弹窗。
@@ -38,7 +37,6 @@
 <hr />
 
 ##### 在选项较多的场景下执行多选时，建议展示用户已选数量。
-
 
 <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/check-box/check-box-5.png" />

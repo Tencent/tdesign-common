@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 带有详情信息的选项，建议就近展开相关内容，不太建议用单选框触发一个弹窗。
@@ -50,7 +49,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

@@ -14,8 +14,8 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/action-sheet/action-sheet-1.png" />
   </div>
 
-
 ### 常见用法
+
 ##### 当用户完成一个事件可以通过若干种方式达成，可以用动态面板来承载这若干种方式的操作。
 
   <div class="item">
@@ -29,8 +29,6 @@
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/action-sheet/action-sheet-3.png" />
   </div>
-
-
 
 ### 推荐/慎用示例
 
@@ -62,8 +60,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
-
 
 ### 相似组件
 

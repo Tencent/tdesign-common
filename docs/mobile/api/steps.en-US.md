@@ -18,7 +18,6 @@ Supports three types: serial number, icon, and abbreviated
 
 {{ horizontal }}
 
-
 #### Vertical Steps
 
 Supports three types: serial number, icon, and abbreviated
@@ -32,7 +31,6 @@ Supports three types: serial number, icon, and abbreviated
 Four status are supported: default, finish, process and error.
 
 {{ status }}
-
 
 #### Special Types
 

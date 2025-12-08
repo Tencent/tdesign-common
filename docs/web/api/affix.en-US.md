@@ -1,5 +1,5 @@
 ---
-title: Affix 
+title: Affix
 description: Within the specified range, fixes the element unchanged
 isComponent: true
 usage: { title: '', description: '' }

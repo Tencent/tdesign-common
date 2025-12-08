@@ -1,6 +1,6 @@
 export type UploadProgressType = 'real' | 'mock';
 
-export type SizeUnit = 'B' | 'KB' | 'MB' | 'GB'
+export type SizeUnit = 'B' | 'KB' | 'MB' | 'GB';
 export interface UploadFile {
   /**
    * 上一次变更的时间
@@ -54,14 +54,14 @@ export interface RequestMethodResponse {
   /**
    * response.XMLHttpRequest is going to be deprecated
    */
-  response: { url?: string; [key: string]: any }
+  response: { url?: string; [key: string]: any };
 }
 
 export interface ProgressContext {
   e?: ProgressEvent;
   file?: UploadFile;
   percent: number;
-  type: UploadProgressType
+  type: UploadProgressType;
 }
 
 export interface HTMLInputEvent extends Event {
@@ -97,7 +97,7 @@ export interface UploadRemoveOptions {
   e: MouseEvent;
   file?: UploadFile;
   files?: UploadFile[];
-  index: number
+  index: number;
 }
 
 export interface FlowRemoveContext {
@@ -130,7 +130,10 @@ export interface TdUploadFile extends UploadFile {
   xhr?: XMLHttpRequest;
 }
 
-export interface FormatResponseContext { file: UploadFile; currentFiles?: UploadFile[] }
+export interface FormatResponseContext {
+  file: UploadFile;
+  currentFiles?: UploadFile[];
+}
 
 export interface SizeLimitObj {
   size: number;
@@ -144,7 +147,7 @@ export interface FileChangeParams {
   /** 已经上传的文件列表 */
   uploadValue: UploadFile[];
   /** 是否允许重复上传相同文件名的文件 */
-  allowUploadDuplicateFile?: boolean
+  allowUploadDuplicateFile?: boolean;
   /** 调用摄像头捕获文件 */
   capture?: string;
   /** 文件上传的数量不超过 max */
@@ -174,7 +177,7 @@ export interface FileChangeReturn {
     extra?: {
       [key: string]: any;
     };
-  }
+  };
 }
 
 export interface OnResponseErrorContext {
@@ -184,7 +187,10 @@ export interface OnResponseErrorContext {
   files: UploadFile[];
 }
 
-export type ResponseType = { error?: string; url?: string; status?: 'fail' | 'success'; files?: UploadFile[] } & Record<string, any>
+export type ResponseType = { error?: string; url?: string; status?: 'fail' | 'success'; files?: UploadFile[] } & Record<
+  string,
+  any
+>;
 
 export interface HandleUploadParams {
   /** 已经上传过的文件 */
@@ -207,7 +213,7 @@ export interface HandleUploadParams {
   // 模拟进度间隔时间
   mockProgressDuration?: number;
   multiple?: boolean;
-  headers?: {[key: string]: string};
+  headers?: { [key: string]: string };
   withCredentials?: boolean;
   /** HTTP 请求类型。可选项：POST/GET/PUT/OPTIONS/PATCH/post/get/put/options/patch */
   method?: 'POST' | 'GET' | 'PUT' | 'OPTIONS' | 'PATCH' | 'post' | 'get' | 'put' | 'options' | 'patch';
@@ -215,16 +221,16 @@ export interface HandleUploadParams {
   formatResponse?: (response: any, context: FormatResponseContext) => ResponseType;
   /** 自定义上传方法 */
   requestMethod?: (files: UploadFile | UploadFile[]) => Promise<RequestMethodResponse>;
-  setXhrObject?: (context: { files: UploadFile[], xhrReq: XMLHttpRequest }) => void;
+  setXhrObject?: (context: { files: UploadFile[]; xhrReq: XMLHttpRequest }) => void;
   onResponseError?: (context: OnResponseErrorContext) => void;
   onResponseProgress?: (context: InnerProgressContext) => void;
   onResponseSuccess?: (context: SuccessContext) => void;
 }
 
 export type handleSuccessParams = SuccessContext & {
-  formatResponse?: HandleUploadParams['formatResponse']
+  formatResponse?: HandleUploadParams['formatResponse'];
   // uploadInOneRequest?: boolean;
-}
+};
 
 /** 语言配置，上传功能触发文案 */
 export interface UploadTriggerUploadText {

@@ -2,7 +2,7 @@
 title: Rate
 description: Rate is used to record information with large amounts of options.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: form
 ---
 

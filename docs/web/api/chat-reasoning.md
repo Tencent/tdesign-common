@@ -26,15 +26,14 @@ spline: ai
 
 {{ reasoning-custom-slot }}
 
-### AI助手可拖拽
+### AI 助手可拖拽
 
 - 搭配`Dialog`非模态类对话框对话框组件
 
 {{ reasoning-drag }}
 
-### AI助手悬窗
+### AI 助手悬窗
 
 搭配`Drawer` 抽屉组件
 
 {{ reasoning-drawer }}
-

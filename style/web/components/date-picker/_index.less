@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-date-picker,
 .@{prefix}-date-range-picker {
@@ -106,14 +106,14 @@
     }
 
     thead::after {
-      content: "-";
+      content: '-';
       display: block;
       line-height: @datepicker-thead-pseudo-line-height;
       color: transparent;
     }
 
     thead::before {
-      content: "-";
+      content: '-';
       display: block;
       line-height: @datepicker-thead-pseudo-line-height;
       color: transparent;
@@ -135,7 +135,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: @datepicker-week-firstcell-margin-left;
       right: 0;
@@ -279,8 +279,7 @@
 // year month picker highlight
 .@{prefix}-date-picker__panel-year,
 .@{prefix}-date-picker__panel-month {
-  .@{prefix}-date-picker__cell--hover-highlight +
-  .@{prefix}-date-picker__cell--hover-highlight {
+  .@{prefix}-date-picker__cell--hover-highlight + .@{prefix}-date-picker__cell--hover-highlight {
     &::before,
     &::after {
       opacity: 1;
@@ -288,8 +287,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--hover-highlight +
-  .@{prefix}-date-picker__cell--active {
+  .@{prefix}-date-picker__cell--hover-highlight + .@{prefix}-date-picker__cell--active {
     &::after {
       opacity: 1;
       left: @datepicker-cell-month-year-left;
@@ -297,8 +295,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--highlight +
-  .@{prefix}-date-picker__cell--highlight {
+  .@{prefix}-date-picker__cell--highlight + .@{prefix}-date-picker__cell--highlight {
     &::before {
       left: @datepicker-cell-month-year-left;
     }
@@ -353,7 +350,7 @@
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     right: -5%;

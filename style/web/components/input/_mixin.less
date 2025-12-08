@@ -72,21 +72,21 @@
 .input-status(@status) {
   &.@{prefix}-is-@{status} {
     border-color: @@borderColor;
-    @borderColor: "input-border-color-@{status}";
+    @borderColor: 'input-border-color-@{status}';
 
     &:focus {
       box-shadow: 0 0 0 2px @@boxShadowColor;
-      @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+      @boxShadowColor: 'input-box-shadow-color-@{status}-focus';
     }
 
     &.@{prefix}-input--focused {
       box-shadow: 0 0 0 2px @@boxShadowColor;
-      @boxShadowColor: "input-box-shadow-color-@{status}-focus";
+      @boxShadowColor: 'input-box-shadow-color-@{status}-focus';
     }
 
     & > .@{prefix}-input__extra {
       color: @@fontColor;
-      @fontColor: "input-extra-color-@{status}";
+      @fontColor: 'input-extra-color-@{status}';
     }
   }
 }

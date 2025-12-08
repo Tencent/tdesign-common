@@ -11,9 +11,9 @@
 }
 
 .swiper-arrow(@direction, @size: medium) {
-  @arrowWidth: "swiper-arrow-width-@{size}";
-  @arrowHeight: "swiper-arrow-height-@{size}";
-  @arrowPosition: "swiper-arrow-left-@{size}";
+  @arrowWidth: 'swiper-arrow-width-@{size}';
+  @arrowHeight: 'swiper-arrow-height-@{size}';
+  @arrowPosition: 'swiper-arrow-left-@{size}';
   & when(@size = medium) {
     .@{prefix}-swiper__arrow-@{direction} {
       .position-center(y);
@@ -97,8 +97,8 @@
 }
 
 .swiper-navigation-fraction(@size: medium) {
-  @fractionLineHeight: "swiper-navigation-line-height-fraction-@{size}";
-  @fractionFontSize: "swiper-navigation-font-size-fraction-@{size}";
+  @fractionLineHeight: 'swiper-navigation-line-height-fraction-@{size}';
+  @fractionFontSize: 'swiper-navigation-font-size-fraction-@{size}';
   .position-center(x);
 
   top: auto;
@@ -122,10 +122,10 @@
   & when(@position = inside) {
     & when(@type = bars), (@type = dots-bar) {
       .@{prefix}-swiper__navigation-item {
-        @itemWidth: "swiper-navigation-item-width-bars-@{size}";
-        @itemHeight: "swiper-navigation-item-height-bars-@{size}";
-        @itemWidthActive: "swiper-navigation-item-width-bars-@{size}-active";
-        @itemMargin: "swiper-navigation-item-margin-@{size}";
+        @itemWidth: 'swiper-navigation-item-width-bars-@{size}';
+        @itemHeight: 'swiper-navigation-item-height-bars-@{size}';
+        @itemWidthActive: 'swiper-navigation-item-width-bars-@{size}-active';
+        @itemMargin: 'swiper-navigation-item-margin-@{size}';
 
         cursor: pointer;
         & when(@type = dots-bar) {
@@ -192,10 +192,10 @@
     }
     & when(@type = dots) {
       .@{prefix}-swiper__navigation-item {
-        @itemWidth: "swiper-navigation-item-dot-size";
-        @itemHeight: "swiper-navigation-item-dot-size";
-        @itemWidthActive: "swiper-navigation-item-width-bars-@{size}-active";
-        @itemMargin: "swiper-navigation-item-margin-@{size}";
+        @itemWidth: 'swiper-navigation-item-dot-size';
+        @itemHeight: 'swiper-navigation-item-dot-size';
+        @itemWidthActive: 'swiper-navigation-item-width-bars-@{size}-active';
+        @itemMargin: 'swiper-navigation-item-margin-@{size}';
 
         cursor: pointer;
 

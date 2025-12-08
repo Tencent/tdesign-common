@@ -11,7 +11,7 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-@import "../../_variables.less";
+@import '../../_variables.less';
 
 // 颜色
 @input-border-color-default: @border-level-2-color;
@@ -85,7 +85,10 @@
 @input-box-shadow-focus: 0 0 0 2px @input-box-shadow-color-default-focus;
 
 // 动画
-@input-inner-transition: border @anim-time-fn-easing @anim-duration-base, box-shadow @anim-time-fn-easing @anim-duration-base, background-color @anim-time-fn-easing @anim-duration-base;
+@input-inner-transition:
+  border @anim-time-fn-easing @anim-duration-base,
+  box-shadow @anim-time-fn-easing @anim-duration-base,
+  background-color @anim-time-fn-easing @anim-duration-base;
 
 // 交互
 @input-cursor-readonly: pointer;

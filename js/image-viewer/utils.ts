@@ -64,8 +64,7 @@ export const downloadFile = (imgSrc: string | File) => {
   // fix: https://github.com/Tencent/tdesign-vue-next/issues/2936
   // 当链接携带了参数时，需处理掉参数再取图片名称，否则扩展名会与参数链接导致原扩展名失效
   // 例如：img.png?sign=xxx 不处理参数会被转成 img.png_sign=xxx
-  const name = imgSrc?.split?.('?')?.[0]?.split?.('#')?.[0]?.split?.('/').pop()
-    || randomName;
+  const name = imgSrc?.split?.('?')?.[0]?.split?.('#')?.[0]?.split?.('/').pop() || randomName;
 
   if (isSameOrigin(imgSrc)) {
     directDownload(imgSrc, name);
@@ -74,7 +73,8 @@ export const downloadFile = (imgSrc: string | File) => {
   }
 };
 
-const isImageInfo = (image: string | File | ImageInfo): image is ImageInfo => !!image && !isString(image) && !(image instanceof File);
+const isImageInfo = (image: string | File | ImageInfo): image is ImageInfo =>
+  !!image && !isString(image) && !(image instanceof File);
 
 export const formatImages = (images: Images): ImageInfo[] => {
   if (!isArray(images)) return [];

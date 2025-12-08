@@ -1,32 +1,35 @@
 import { WatermarkText, WatermarkImage, WatermarkLayout } from './type';
 
-export default function generateBase64Url({
-  width,
-  height,
-  gapX,
-  gapY,
-  offsetLeft,
-  offsetTop,
-  rotate,
-  alpha,
-  watermarkContent,
-  lineSpace,
-  fontColor = 'rgba(0,0,0,0.1)',
-  layout,
-}: {
-  width: number,
-  height: number,
-  gapX: number,
-  gapY: number,
-  offsetLeft: number,
-  offsetTop: number,
-  rotate: number,
-  alpha: number,
-  watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>,
-  lineSpace: number,
-  fontColor?: string,
-  layout?: WatermarkLayout,
-}, onFinish: (url: string, backgroundSize?: { width: number }) => void): string {
+export default function generateBase64Url(
+  {
+    width,
+    height,
+    gapX,
+    gapY,
+    offsetLeft,
+    offsetTop,
+    rotate,
+    alpha,
+    watermarkContent,
+    lineSpace,
+    fontColor = 'rgba(0,0,0,0.1)',
+    layout,
+  }: {
+    width: number;
+    height: number;
+    gapX: number;
+    gapY: number;
+    offsetLeft: number;
+    offsetTop: number;
+    rotate: number;
+    alpha: number;
+    watermarkContent: WatermarkText | WatermarkImage | Array<WatermarkText | WatermarkImage>;
+    lineSpace: number;
+    fontColor?: string;
+    layout?: WatermarkLayout;
+  },
+  onFinish: (url: string, backgroundSize?: { width: number }) => void
+): string {
   const isHexagonal = layout === 'hexagonal';
 
   const canvas = document.createElement('canvas');
@@ -80,12 +83,7 @@ export default function generateBase64Url({
   ctx.fillRect(0, 0, markWidth, markHeight);
 
   // 元素中心为旋转点执行旋转
-  const drawRotate = (
-    ctx: CanvasRenderingContext2D,
-    x: number,
-    y: number,
-    rotate: number
-  ) => {
+  const drawRotate = (ctx: CanvasRenderingContext2D, x: number, y: number, rotate: number) => {
     ctx.translate(x, y);
     ctx.rotate((Math.PI / 180) * Number(rotate));
     ctx.translate(-x, -y);
@@ -103,9 +101,7 @@ export default function generateBase64Url({
     fontFamily: string,
     fillStyle: string
   ) => {
-    ctx.font = `normal normal ${fontWeight} ${
-      fontSize * ratio
-    }px/${markHeight}px ${fontFamily}`;
+    ctx.font = `normal normal ${fontWeight} ${fontSize * ratio}px/${markHeight}px ${fontFamily}`;
     ctx.fillStyle = fillStyle;
     ctx.textAlign = 'start';
     ctx.textBaseline = 'top';
@@ -113,11 +109,9 @@ export default function generateBase64Url({
     ctx.fillText(text, x, y);
   };
 
-  const contents = (
-    Array.isArray(watermarkContent)
-      ? watermarkContent
-      : [{ ...watermarkContent }]
-  ) as Array<WatermarkText & WatermarkImage & { top: number }>;
+  const contents = (Array.isArray(watermarkContent) ? watermarkContent : [{ ...watermarkContent }]) as Array<
+    WatermarkText & WatermarkImage & { top: number }
+  >;
 
   let top = 0;
   let imageLoadCount = 0;
@@ -172,21 +166,9 @@ export default function generateBase64Url({
           }
           tempCtx.putImageData(imgData, 0, 0);
 
-          ctx.drawImage(
-            tempCanvas,
-            offsetX,
-            offsetY + item.top * ratio,
-            width * ratio,
-            height * ratio
-          );
+          ctx.drawImage(tempCanvas, offsetX, offsetY + item.top * ratio, width * ratio, height * ratio);
         } else {
-          ctx.drawImage(
-            img,
-            offsetX,
-            offsetY + item.top * ratio,
-            width * ratio,
-            height * ratio
-          );
+          ctx.drawImage(img, offsetX, offsetY + item.top * ratio, width * ratio, height * ratio);
         }
 
         ctx.restore?.();
@@ -198,27 +180,12 @@ export default function generateBase64Url({
         }
       };
     } else if (item.text) {
-      const {
-        text,
-        fontSize = 16,
-        fontFamily = 'normal',
-        fontWeight = 'normal',
-      } = item;
+      const { text, fontSize = 16, fontFamily = 'normal', fontWeight = 'normal' } = item;
       const fillStyle = item?.fontColor || fontColor;
 
       ctx.save?.();
       drawRotate(ctx, rotateX, rotateY, rotate);
-      drawText(
-        ctx,
-        offsetX,
-        offsetY + item.top * ratio,
-        markHeight,
-        text,
-        fontWeight,
-        fontSize,
-        fontFamily,
-        fillStyle
-      );
+      drawText(ctx, offsetX, offsetY + item.top * ratio, markHeight, text, fontWeight, fontSize, fontFamily, fillStyle);
       ctx.restore?.();
     }
   };
@@ -231,13 +198,7 @@ export default function generateBase64Url({
   // 六边形水印
   if (isHexagonal) {
     contents.forEach((item) => {
-      renderWatermarkItem(
-        item,
-        dislocationDrawX,
-        dislocationDrawY,
-        dislocationRotateX,
-        dislocationRotateY
-      );
+      renderWatermarkItem(item, dislocationDrawX, dislocationDrawY, dislocationRotateX, dislocationRotateY);
     });
   }
 

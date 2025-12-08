@@ -48,9 +48,9 @@ To modify these less variables, you need to import the component library ESM bun
 
 ```js
 // replace `tdesign-npm-name` with the actual package name you're using
-import TDesign from "tdesign-npm-name/esm";
+import TDesign from 'tdesign-npm-name/esm';
 // import global style of the component library
-import "tdesign-npm-name/esm/style/index.js";
+import 'tdesign-npm-name/esm/style/index.js';
 ```
 
 Refer to [the documentation](https://github.com/Tencent/tdesign-common/blob/develop/develop-install.en-US.md) for the differences between bundles.

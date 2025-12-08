@@ -13,12 +13,16 @@ describe('tree:disabled', () => {
         checkable: true,
         disabled: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1']);
       expect(tree.getChecked().length).toBe(1);
@@ -34,12 +38,16 @@ describe('tree:disabled', () => {
       checkable: true,
       disabled: true,
     });
-    tree.append([{
-      value: 't1',
-      children: [{
-        value: 't1.1',
-      }],
-    }]);
+    tree.append([
+      {
+        value: 't1',
+        children: [
+          {
+            value: 't1.1',
+          },
+        ],
+      },
+    ]);
 
     const t1 = tree.getNode('t1');
     const t1d1 = tree.getNode('t1.1');
@@ -58,23 +66,32 @@ describe('tree:disabled', () => {
         checkable: true,
         disabled: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          checked: true,
-        }, {
-          value: 't1.2',
-          checked: true,
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }, {
-          value: 't2.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              checked: true,
+            },
+            {
+              value: 't1.2',
+              checked: true,
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+            {
+              value: 't2.2',
+            },
+          ],
+        },
+      ]);
 
       expect(tree.getNode('t1').checked).toBe(true);
       expect(tree.getNode('t2').checked).toBe(false);
@@ -95,23 +112,32 @@ describe('tree:disabled', () => {
         checkable: true,
         disabled: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          checked: true,
-        }, {
-          value: 't1.2',
-          checked: true,
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }, {
-          value: 't2.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              checked: true,
+            },
+            {
+              value: 't1.2',
+              checked: true,
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+            {
+              value: 't2.2',
+            },
+          ],
+        },
+      ]);
 
       const checked = tree.getChecked();
       expect(checked.length).toBe(2);
@@ -127,15 +153,20 @@ describe('tree:disabled', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-          disabled: true,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+              disabled: true,
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -150,15 +181,20 @@ describe('tree:disabled', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        disabled: true,
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          disabled: true,
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -174,15 +210,20 @@ describe('tree:disabled', () => {
         checkable: true,
         checkStrictly: true,
       });
-      tree.append([{
-        value: 't1',
-        disabled: true,
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          disabled: true,
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -200,12 +241,16 @@ describe('tree:disabled', () => {
         checkable: true,
         disabled: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -221,16 +266,21 @@ describe('tree:disabled', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          disabled: true,
-        }, {
-          value: 't1.2',
-          disabled: true,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              disabled: true,
+            },
+            {
+              value: 't1.2',
+              disabled: true,
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -248,15 +298,20 @@ describe('tree:disabled', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          disabled: true,
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              disabled: true,
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -275,17 +330,23 @@ describe('tree:disabled', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          disabled: true,
-        }, {
-          value: 't1.2',
-        }, {
-          value: 't1.3',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              disabled: true,
+            },
+            {
+              value: 't1.2',
+            },
+            {
+              value: 't1.3',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -327,16 +388,22 @@ describe('tree:disabled', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }, {
-          value: 't1.3',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+            {
+              value: 't1.3',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -385,18 +452,25 @@ describe('tree:disabled', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }, {
-          value: 't1.3',
-        }, {
-          value: 't1.4',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+            {
+              value: 't1.3',
+            },
+            {
+              value: 't1.4',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');

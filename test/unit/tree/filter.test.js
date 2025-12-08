@@ -7,24 +7,33 @@ describe('tree:filter', () => {
   describe('treeStore:filter', () => {
     it('filter 命中节点要呈现，默认路径节点必须呈现', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }, {
-          value: 't2.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+            {
+              value: 't2.2',
+            },
+          ],
+        },
+      ]);
       tree.setConfig({
         filter: (node) => {
-          const rs = (node.value.indexOf('.1') >= 0);
+          const rs = node.value.indexOf('.1') >= 0;
           return rs;
         },
       });
@@ -53,17 +62,22 @@ describe('tree:filter', () => {
 
     it('filter 命中节点的路径节点，默认无法折叠', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       tree.setConfig({
         filter(node) {
-          return (node.value === 't1.1');
+          return node.value === 't1.1';
         },
       });
       await delay(0);
@@ -90,17 +104,22 @@ describe('tree:filter', () => {
 
     it('filter 条件清空后，还原原始折叠状态', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       tree.setConfig({
         filter(node) {
-          return (node.value === 't1.1');
+          return node.value === 't1.1';
         },
       });
       await delay(0);
@@ -127,23 +146,32 @@ describe('tree:filter', () => {
 
     it('filter 过滤节点，路径节点全部展开', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-            children: [{
-              value: 't1.1.1.1',
-            }],
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                  children: [
+                    {
+                      value: 't1.1.1.1',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       tree.setConfig({
         filter(node) {
-          return (node.value === 't1.1.1.1');
+          return node.value === 't1.1.1.1';
         },
       });
       await delay(0);
@@ -171,23 +199,32 @@ describe('tree:filter', () => {
       const tree = new TreeStore({
         allowFoldNodeOnFilter: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-            children: [{
-              value: 't1.1.1.1',
-            }],
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                  children: [
+                    {
+                      value: 't1.1.1.1',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       tree.setConfig({
         filter(node) {
-          return (node.value === 't1.1.1.1');
+          return node.value === 't1.1.1.1';
         },
       });
       await delay(0);

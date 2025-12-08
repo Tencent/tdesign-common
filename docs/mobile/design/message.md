@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当需要对用户进行较轻量的反馈或提示，可以自动消失或通过点击关闭，通常由用户触发。
@@ -17,7 +15,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/message/message-2.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -40,7 +37,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 
