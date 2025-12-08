@@ -87,14 +87,14 @@
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
-      "stylelint --fix"
+      "stylelint"
     ],
     "js/**/*.{vue,js,ts,jsx,tsx}": [
-      "prettier --write",
-      "eslint --fix"
+      "prettier --check",
+      "eslint"
     ],
     "docs/**/*.{json,md}": [
-      "prettier --write"
+      "prettier --check"
     ]
   }
 }
