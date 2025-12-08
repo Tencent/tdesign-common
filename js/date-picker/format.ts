@@ -149,7 +149,16 @@ function formatRange({
 }) {
   if (!newDate || !Array.isArray(newDate)) return [];
 
-  let dayjsDateList = newDate.map((d, i) => d && parseToDayjs(d, format, undefined, undefined, defaultTime?.[i]).locale(dayjsLocale));
+  //  这里可能先选择结束日期，再选择开始日期
+  const sortedDates = newDate.sort((a, b) => {
+    if (dayjs(a).isBefore(dayjs(b))) return -1;
+    if (dayjs(a).isAfter(dayjs(b))) return 1;
+    return 0;
+  });
+
+  let dayjsDateList = sortedDates.map(
+    (d, i) => d && parseToDayjs(d, format, undefined, undefined, defaultTime?.[i]).locale(dayjsLocale)
+  );
 
   // 保证后面的时间大于前面的时间
   if (
