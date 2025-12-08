@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
 
 #### Text Watermark
 
@@ -38,7 +38,7 @@ toc: false
 
 {{ movingImage }}
 
-### Component Style
+### 02 Component Style
 
 #### Rectangular and Hexagonal Layout
 

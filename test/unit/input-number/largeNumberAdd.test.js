@@ -22,31 +22,31 @@ describe('largeNumberAdd', () => {
   });
 
   it('5.0383412673418000000 + 0.1', () => {
-    expect(largeNumberAdd('5.0383412673418000000', '0.1')).toBe(String((5.0383412673418000000 + 0.1)));
+    expect(largeNumberAdd('5.0383412673418000000', '0.1')).toBe(String(5.0383412673418 + 0.1));
   });
 
   it('0.0 + 0.0', () => {
-    expect(largeNumberAdd('0.0', '0.0')).toBe(String((0.0 + 0.0)));
+    expect(largeNumberAdd('0.0', '0.0')).toBe(String(0.0 + 0.0));
   });
 
   it('0.22 + 0.88', () => {
-    expect(largeNumberAdd('0.22', '0.88')).toBe(String((0.22 + 0.88)));
+    expect(largeNumberAdd('0.22', '0.88')).toBe(String(0.22 + 0.88));
   });
 
   it('0.2222222288888888 + 0.88', () => {
-    expect(largeNumberAdd('0.2222222288888888', '0.88')).toBe(String((0.2222222288888888 + 0.88)));
+    expect(largeNumberAdd('0.2222222288888888', '0.88')).toBe(String(0.2222222288888888 + 0.88));
   });
 
   it('0.12 + 0.1', () => {
-    expect(largeNumberAdd('0.12', '0.1')).toBe(String((0.12 + 0.1)));
+    expect(largeNumberAdd('0.12', '0.1')).toBe(String(0.12 + 0.1));
   });
 
   it('0.99 + 0.1', () => {
-    expect(largeNumberAdd('0.99', '0.1')).toBe(String((0.99 + 0.1)));
+    expect(largeNumberAdd('0.99', '0.1')).toBe(String(0.99 + 0.1));
   });
 
   it('1234.1234 + 543.12312212313', () => {
-    expect(largeNumberAdd('1234.1234', '543.12312212313')).toBe(String((1234.1234 + 543.12312212313)));
+    expect(largeNumberAdd('1234.1234', '543.12312212313')).toBe(String(1234.1234 + 543.12312212313));
   });
 
   it('0 + 0', () => {

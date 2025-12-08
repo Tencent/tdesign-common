@@ -1,6 +1,6 @@
 ---
 title: Stepper
-description: The user can adjust the value by adjusting the + button, the - button, and the number input box. The maximum and minimum values can be set
+description: Used for increasing or decreasing quantities.
 spline: base
 isComponent: true
 toc: false
@@ -8,28 +8,28 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
 
-Basic stepper
+#### Basic
 
 {{ base }}
 
-### Component Status
+### 02 Component Status
 
-Max-min status
+#### Max-min status
 
 {{ min-max }}
 
-Disabled status
+#### Disabled status
 
 {{ status }}
 
-### Component Style
+### 03 Component Style
 
-Stepper style
+#### Stepper style
 
 {{ theme }}
 
-Stepper size
+#### Stepper size
 
 {{ size }}

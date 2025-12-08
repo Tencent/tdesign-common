@@ -6,13 +6,19 @@ isComponent: true
 toc: false
 ---
 
-### Basic Message
+## Code Demo
+
+### 01 Component Type
+
+#### Basic Message
 
 Used for lightweight feedback or prompts without interrupting user action.
 
 {{ base }}
 
-### Message Of Different Status
+### 02 Component Status
+
+#### Message Of Different Status
 
 Message types are info, warning, success, error, and call the feedback class dialog box with the API 'Message.info' method
 

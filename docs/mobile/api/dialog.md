@@ -1,6 +1,6 @@
 ---
 title: Dialog 对话框
-description: 一种打断当前操作的模态视图，用于显示重要提示或请求用户进行重要操作
+description: 用于显示重要提示或请求用户进行重要操作，一种打断当前操作的模态视图。
 spline: base
 isComponent: true
 toc: false
@@ -10,7 +10,7 @@ toc: false
 
 按钮的样式，默认使用 `variant = text`，如果任意按钮改变了 `variant`，那么全部按钮都改变成这个。
 
-### 组件类型
+### 01 组件类型
 
 #### 反馈类对话框
 
@@ -36,13 +36,13 @@ toc: false
 
 {{ image-dialog }}
 
-### 组件状态
+### 02 组件状态
 
 文字按钮、水平基础按钮、垂直基础按钮、多按钮、附带关闭按钮
 
 {{ multi-state }}
 
-### 组件用法
+### 03 组件用法
 
 命令行调用
 

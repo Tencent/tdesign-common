@@ -6,22 +6,26 @@ isComponent: true
 toc: false
 ---
 
-### Base
+## Code Demo
+
+### 01 Component Type
+
+#### Basis Guide
 
 {{ base }}
 
-### Without Mask
+#### Without Mask
 
 {{ no-mask }}
 
-### Pop-up Style
+#### Pop-up Style
 
 {{ dialog }}
 
-### Mixed Style
+#### Mixed Style
 
 {{ popover-dialog }}
 
-### Custom
+#### Custom
 
 {{ custom-popover }}

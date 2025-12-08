@@ -6,14 +6,16 @@ isComponent: true
 toc: false
 ---
 
-### Badge Type
+## Code Demos
+
+### 01 Component Types
 
 {{ base }}
 
-### Badge Style
+### 02 Component Style
 
 {{ theme }}
 
-### Badge Size
+### 03 Component Size
 
 {{ size }}

@@ -6,7 +6,6 @@
   display: inline-flex;
   vertical-align: middle;
   position: relative;
-  font-size: @checkbox-font-size;
   background: @checkbox-bg-color;
 
   &:focus {
@@ -63,6 +62,7 @@
     height: @checkbox-icon-size;
     color: @checkbox-icon-color;
     font-size: @checkbox-icon-size;
+    margin-top: calc((@checkbox-title-line-height - @checkbox-icon-size) / 2);
 
     &:empty {
       display: none;
@@ -154,7 +154,9 @@
 
   &__title {
     color: @checkbox-title-color;
+    font: @checkbox-title-font;
     line-height: @checkbox-title-line-height;
+
     .limit-title-row();
 
     &--disabled {
@@ -166,8 +168,7 @@
     color: @checkbox-description-color;
     .limit-title-row();
 
-    font-size: 14px;
-    line-height: @checkbox-description-line-height;
+    font: @checkbox-description-font;
 
     &--disabled {
       color: @checkbox-description-disabled-color;
@@ -192,8 +193,9 @@
     }
   }
 
+  // theme = tag 启用
   &--tag {
-    font-size: 14px;
+    font: @font-body-medium;
     padding-top: 8px;
     padding-bottom: 8px;
     text-align: center;

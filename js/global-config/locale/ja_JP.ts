@@ -256,6 +256,7 @@ export default {
     loadingEndText: '深く考えました',
     uploadImageText: '画像をアップロード',
     uploadAttachmentText: '添付ファイルをアップロード',
+    shareTipText: '共有',
   },
   qrcode: {
     expiredText: '期限切れ',

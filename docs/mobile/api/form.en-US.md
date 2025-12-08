@@ -6,9 +6,11 @@ isComponent: true
 toc: false
 ---
 
+## Code Demo
+
 ### 01 Component Type
 
-Base form
+#### Basic form
 
 {{ horizontal }}
 

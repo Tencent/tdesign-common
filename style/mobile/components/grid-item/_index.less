@@ -72,18 +72,22 @@
   &__title {
     width: inherit;
     color: @grid-item-text-color;
-    font-size: @grid-item-text-font-size;
-    line-height: @grid-item-text-line-height;
 
-    &--small,
+    &--small {
+      font: @grid-item-text-small-font;
+    }
+
     &--middle {
-      font-size: 12px;
+      font: @grid-item-text-middle-font;
+    }
+
+    &--large {
+      font: @grid-item-text-font;
     }
   }
 
   &__description {
     color: @grid-item-description-color;
-    font-size: @grid-item-description-font-size;
-    line-height: @grid-item-description-line-height;
+    font: @grid-item-description-font;
   }
 }

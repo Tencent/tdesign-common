@@ -1,41 +1,43 @@
 ---
 title: Avatar
-description: Displays user or thing information in the form of icons, pictures, and characters
+description: Used to display user avatar information, supporting both display and interactive operations such as clicking to access personal details.
 spline: data
 isComponent: true
 toc: false
 ---
 
-### Avatar types
+## Code Demos
 
-picture avatars
+### 01 Component Types
+
+#### Image Avatar
 
 {{ image-avatar }}
 
-character avatars
+#### Character Avatar
 
 {{ character-avatar }}
 
-icon avatars
+#### Icon Avatar
 
 {{ icon-avatar }}
 
-badge avatars
+#### Avatar with Badge
 
 {{ badge-avatar }}
 
-### Combine avatar
+### 02 Special Types
 
-For display
+#### Display-only Avatar Group
 
 {{ exhibition }}
 
-Width operation
+#### Avatar Group with Actions
 
 {{ action }}
 
-### Avatars size
+### 03 Component Sizes
 
-Support size: `large`/ `medium`/ `small`
+#### Avatar Sizes
 
 {{ size }}

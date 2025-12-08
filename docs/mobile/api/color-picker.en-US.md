@@ -6,16 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### Component Type
+## Code Demo
 
-#### Base ColorPicker
+### 01 Component Type
+
+#### Basic ColorPicker
 
 {{ base }}
 
-#### Swatches ColorPicker
+#### Multiple ColorPicker
 
 {{ multiple }}
 
-### Component Status
+### 02 Component Status
 
 {{ format }}

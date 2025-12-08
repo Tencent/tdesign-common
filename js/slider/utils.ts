@@ -49,3 +49,5 @@ export const formatLabel = (label: object | string, val: number) => {
   }
   return label;
 };
+
+export const formatPrecision = (value: number, precision: number) => Number(parseFloat(`${value}`).toFixed(precision));

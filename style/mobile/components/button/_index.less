@@ -6,14 +6,13 @@
   @fontSize: 'button-@{size}-font-size';
   @padding: 'button-@{size}-padding-horizontal';
   @height: 'button-@{size}-height';
-  @iconSize: 'button-@{size}-icon-font-size';
+  @iconSize: 'button-@{size}-icon-size';
 
   .@{button}--size-@{size} {
     font-size: @@fontSize;
     padding-left: @@padding;
     padding-right: @@padding;
     height: @@height;
-    line-height: @@height;
 
     & .@{button}__icon {
       font-size: @@iconSize;

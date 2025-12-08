@@ -1,13 +1,11 @@
 @progress-line-stroke-width: 6px; // line 进度条线宽
 @progress-stroke-plump-width: 20px; // plump 进度条线宽
 @progress-stroke-circle-width: 6px; // circle 进度条线宽
-@progress-line-icon-font-size: calc(@font-size-base + 2px);
-@progress-circle-icon-font-size: 48px;
-@progress-plump-label-font-size: @font-size-s;
+@progress-line-icon-size: calc(@font-size-base + 2px);
+@progress-circle-icon-size: var(--td-progress-circle-icon-size, 48px);
+@progress-plump-label-font: @font-body-small;
 @progress-circle-width: 112px;
-@progress-circle-label-font-size: 20px;
-@progress-circle-label-line-height: 28px;
-@progress-circle-label-font-weight: 700;
+@progress-circle-label-font: var(--td-progress-circle-label-font, @font-title-extraLarge);
 @progress-info-spacer: @spacer; // 间距
 @progress-inner-transition: all @anim-duration-base @anim-time-fn-easing;
 

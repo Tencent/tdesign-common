@@ -213,6 +213,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
 
       Object.assign(node.data, _data);
       Object.assign(node, _data);
+      node.update();
     },
   };
 

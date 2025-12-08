@@ -23,9 +23,11 @@ describe('tree:init', () => {
       const tree = new TreeStore();
       const node = new TreeNode(tree, {
         value: '1',
-        children: [{
-          value: '1.1',
-        }],
+        children: [
+          {
+            value: '1.1',
+          },
+        ],
       });
       expect(typeof node).toBe('object');
       expect(node.value).toBe('1');
@@ -39,12 +41,16 @@ describe('tree:init', () => {
       const tree = new TreeStore({
         draggable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
       expect(tree.getNode('t1.1').isDraggable()).toBe(true);
     });
 
@@ -52,13 +58,17 @@ describe('tree:init', () => {
       const tree = new TreeStore({
         draggable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          draggable: false,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              draggable: false,
+            },
+          ],
+        },
+      ]);
       expect(tree.getNode('t1').isDraggable()).toBe(true);
       expect(tree.getNode('t1.1').isDraggable()).toBe(false);
     });
@@ -73,14 +83,18 @@ describe('tree:init', () => {
           children: 'list',
         },
       });
-      tree.append([{
-        name: 't1root',
-        key: 't1',
-        list: [{
-          name: 't1d1',
-          key: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          name: 't1root',
+          key: 't1',
+          list: [
+            {
+              name: 't1d1',
+              key: 't1.1',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       expect(tree.getNode('t1').label).toBe('t1root');
@@ -94,12 +108,16 @@ describe('tree:init', () => {
       const tree = new TreeStore({
         draggable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
       tree.getNode('t1.1').set({
         draggable: false,
       });

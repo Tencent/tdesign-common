@@ -4,13 +4,13 @@
 
 .@{prefix}-tabs {
   position: relative;
-  font-size: @tab-font-size;
-  background: @tab-nav-bg-color;
+  font: @tab-font;
+  background: @tab-nav-background;
 
   &__wrapper {
     display: flex;
     //overflow: hidden;
-    background: @tab-nav-bg-color;
+    background: @tab-nav-background;
 
     &--card {
       background: @bg-color-secondarycontainer;
@@ -225,9 +225,9 @@
 }
 
 &.@{prefix}-size-m {
-  font-size: @tab-font-medium;
+  font: @tab-font;
 }
 
 &.@{prefix}-size-l {
-  font-size: @tab-font-large;
+  font: @font-body-large;
 }

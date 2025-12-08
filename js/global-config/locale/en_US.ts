@@ -257,6 +257,7 @@ export default {
     loadingEndText: 'deep thinking end',
     uploadImageText: 'upload image',
     uploadAttachmentText: 'upload attachment',
+    shareTipText: 'share',
   },
   qrcode: {
     expiredText: 'expired',

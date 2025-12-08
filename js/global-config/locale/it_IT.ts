@@ -256,6 +256,7 @@ export default {
     loadingEndText: 'Penso finito',
     uploadImageText: 'caricare immagine',
     uploadAttachmentText: 'caricare allegato',
+    shareTipText: 'Condividi',
   },
   qrcode: {
     expiredText: 'scaduto',

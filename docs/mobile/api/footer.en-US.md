@@ -6,14 +6,18 @@ isComponent: true
 toc: false
 ---
 
-### Base Footer
+## Code Demo
+
+### Component Type
+
+#### Basic Footer
 
 {{ base }}
 
-### Link Footer
+#### With Link
 
 {{ links }}
 
-### Brand Footer
+#### With Logo
 
 {{ logo }}

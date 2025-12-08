@@ -1,4 +1,9 @@
-import { MOBILE_COMPONENT_MAP, NON_PASCAL_CASE_NAMES, WEB_COMPONENT_MAP } from '../../../js/components';
+import {
+  CHAT_COMPONENT_MAP,
+  MOBILE_COMPONENT_MAP,
+  NON_PASCAL_CASE_NAMES,
+  WEB_COMPONENT_MAP,
+} from '../../../js/components';
 import type { Platform } from './types';
 
 export const convert2PascalCase = (name: string) =>
@@ -10,6 +15,7 @@ export const convert2PascalCase = (name: string) =>
 export const COMPONENT_MAPS = {
   web: WEB_COMPONENT_MAP,
   mobile: MOBILE_COMPONENT_MAP,
+  chat: CHAT_COMPONENT_MAP,
 };
 
 export const mapToParentName = (name: string, platform: Platform) => {

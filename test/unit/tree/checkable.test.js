@@ -9,12 +9,16 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: false,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1']);
       expect(tree.getChecked().length).toBe(0);
@@ -28,14 +32,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
       const checked = tree.getChecked();
@@ -48,14 +57,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       tree.setChecked(['t1.1']);
@@ -70,14 +84,19 @@ describe('tree:checkable', () => {
         checkable: true,
         valueMode: 'parentFirst',
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
 
@@ -91,24 +110,35 @@ describe('tree:checkable', () => {
         checkable: true,
         valueMode: 'parentFirst',
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }, {
-            value: 't1.1.2',
-          }]
-        }, {
-          value: 't1.2',
-          children: [{
-            value: 't1.2.1',
-          }, {
-            value: 't1.2.2',
-          }]
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+                {
+                  value: 't1.1.2',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+              children: [
+                {
+                  value: 't1.2.1',
+                },
+                {
+                  value: 't1.2.2',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1']);
 
@@ -165,14 +195,19 @@ describe('tree:checkable', () => {
         checkable: true,
         valueMode: 'all',
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
 
@@ -188,24 +223,35 @@ describe('tree:checkable', () => {
         checkable: true,
         valueMode: 'all',
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }, {
-            value: 't1.1.2',
-          }]
-        }, {
-          value: 't1.2',
-          children: [{
-            value: 't1.2.1',
-          }, {
-            value: 't1.2.2',
-          }]
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+                {
+                  value: 't1.1.2',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+              children: [
+                {
+                  value: 't1.2.1',
+                },
+                {
+                  value: 't1.2.2',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1']);
 
@@ -266,14 +312,19 @@ describe('tree:checkable', () => {
         checkStrictly: true,
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
 
@@ -307,14 +358,19 @@ describe('tree:checkable', () => {
         checkable: true,
         valueMode: 'parentFirst',
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1', 't1.1']);
 
@@ -349,14 +405,19 @@ describe('tree:checkable', () => {
         checkable: true,
         valueMode: 'all',
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1', 't1.1']);
 
@@ -391,24 +452,35 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }, {
-            value: 't1.1.2',
-          }],
-        }, {
-          value: 't1.2',
-          children: [{
-            value: 't1.2.1',
-          }, {
-            value: 't1.2.2',
-          }],
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+                {
+                  value: 't1.1.2',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+              children: [
+                {
+                  value: 't1.2.1',
+                },
+                {
+                  value: 't1.2.2',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       // getCheckedNodes 方法获取节点时，需要节点先回流排序
       // 节点回流排序是延时操作
@@ -427,24 +499,35 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }, {
-            value: 't1.1.2',
-          }],
-        }, {
-          value: 't1.2',
-          children: [{
-            value: 't1.2.1',
-          }, {
-            value: 't1.2.2',
-          }],
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+                {
+                  value: 't1.1.2',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+              children: [
+                {
+                  value: 't1.2.1',
+                },
+                {
+                  value: 't1.2.2',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1', 't1.2.1']);
 
@@ -459,24 +542,35 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }, {
-            value: 't1.1.2',
-          }],
-        }, {
-          value: 't1.2',
-          children: [{
-            value: 't1.2.1',
-          }, {
-            value: 't1.2.2',
-          }],
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+                {
+                  value: 't1.1.2',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+              children: [
+                {
+                  value: 't1.2.1',
+                },
+                {
+                  value: 't1.2.2',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1', 't1.2.1']);
 
@@ -490,12 +584,16 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
 
@@ -513,12 +611,16 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setActived(['t1']);
       tree.setChecked(['t1']);
@@ -540,24 +642,35 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }, {
-            value: 't1.1.2',
-          }],
-        }, {
-          value: 't1.2',
-          children: [{
-            value: 't1.2.1',
-          }, {
-            value: 't1.2.2',
-          }],
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+                {
+                  value: 't1.1.2',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+              children: [
+                {
+                  value: 't1.2.1',
+                },
+                {
+                  value: 't1.2.2',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.2.1']);
       tree.setChecked(['t1.1']);
@@ -574,24 +687,35 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }, {
-            value: 't1.1.2',
-          }],
-        }, {
-          value: 't1.2',
-          children: [{
-            value: 't1.2.1',
-          }, {
-            value: 't1.2.2',
-          }],
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+                {
+                  value: 't1.1.2',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+              children: [
+                {
+                  value: 't1.2.1',
+                },
+                {
+                  value: 't1.2.2',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1', 't1.2.1']);
       let checked = tree.getChecked();
@@ -612,14 +736,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
       let checked = tree.getChecked();
@@ -636,12 +765,16 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
       expect(tree.getNode('t1').checked).toBe(false);
       expect(tree.getNode('t1.1').checked).toBe(false);
 
@@ -657,14 +790,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
 
@@ -677,12 +815,12 @@ describe('tree:checkable', () => {
       expect(t1d2.checked).toBe(true);
 
       tree.appendNodes('t1', {
-        value: 't1.3'
+        value: 't1.3',
       });
       expect(tree.getNode('t1.3').checked).toBe(true);
 
       tree.appendNodes('t1.1', {
-        value: 't1.1.1'
+        value: 't1.1.1',
       });
       expect(tree.getNode('t1.1.1').checked).toBe(true);
 
@@ -697,12 +835,12 @@ describe('tree:checkable', () => {
       expect(tree.getNode('t1.4').checked).toBe(true);
 
       tree.appendNodes({
-        value: 't2'
+        value: 't2',
       });
       expect(tree.getNode('t2').checked).toBe(false);
 
       tree.appendNodes('t2', {
-        value: 't2.1'
+        value: 't2.1',
       });
       expect(tree.getNode('t2.1').checked).toBe(false);
     });
@@ -711,15 +849,20 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        checked: true,
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          checked: true,
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
       const t1d2 = tree.getNode('t1.2');
@@ -734,14 +877,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1']);
 
@@ -771,14 +919,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1']);
 
@@ -808,14 +961,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -846,14 +1004,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -884,14 +1047,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -925,21 +1093,31 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-            children: [{
-              value: 't1.1.1.1',
-              children: [{
-                value: 't1.1.1.1.1',
-              }]
-            }]
-          }]
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                  children: [
+                    {
+                      value: 't1.1.1.1',
+                      children: [
+                        {
+                          value: 't1.1.1.1.1',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ]);
 
       tree.setChecked(['t1.1.1']);
 
@@ -965,14 +1143,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -998,14 +1181,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -1036,14 +1224,19 @@ describe('tree:checkable', () => {
         checkable: true,
         checkStrictly: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -1068,17 +1261,24 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -1101,17 +1301,24 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -1137,15 +1344,20 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          checkable: false,
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              checkable: false,
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -1176,14 +1388,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -1212,14 +1429,19 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -1256,13 +1478,17 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          checked: true,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              checked: true,
+            },
+          ],
+        },
+      ]);
 
       expect(tree.getChecked().length).toBe(1);
       expect(tree.getChecked()[0]).toBe('t1.1');
@@ -1274,15 +1500,20 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        checked: true,
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          checked: true,
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       expect(tree.getChecked().length).toBe(2);
       expect(tree.getChecked()[0]).toBe('t1.1');
@@ -1296,15 +1527,20 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          checked: true,
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              checked: true,
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       expect(tree.getChecked().length).toBe(1);
       expect(tree.getChecked()[0]).toBe('t1.1');
@@ -1318,15 +1554,20 @@ describe('tree:checkable', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-          checked: true,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+              checked: true,
+            },
+          ],
+        },
+      ]);
 
       expect(tree.getChecked().length).toBe(1);
       expect(tree.getChecked()[0]).toBe('t1.2');

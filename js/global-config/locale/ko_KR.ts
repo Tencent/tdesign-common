@@ -256,6 +256,7 @@ export default {
     loadingEndText: '깊이 생각함',
     uploadImageText: '이미지 업로드',
     uploadAttachmentText: '첨부 파일 업로드',
+    shareTipText: '공유',
   },
   qrcode: {
     expiredText: '만료됨',

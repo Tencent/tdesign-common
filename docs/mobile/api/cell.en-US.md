@@ -6,17 +6,19 @@ isComponent: true
 toc: false
 ---
 
-### Component type
+## Code Demos
 
-#### Single
+### 01 Component type
+
+#### Single Row
 
 {{ single }}
 
-#### Multiple
+#### Multiple Row
 
 {{ multiple }}
 
-### Style
+### 02 Component style
 
 #### Card
 

@@ -1,22 +1,24 @@
 ---
 title: Cascader
-description: Cascader is used for multi-level data selection, mainly in a tree structure, which can display more data.
+description: Used for level-by-level selection of multi-level data.
 spline: base
 isComponent: true
 toc: false
 ---
 
-## Examples
+## Code Demos
 
-### Basic
+### 01 Component Types
+
+#### Basic
 
 {{ base }}
 
-### Tab Style
+#### Tab Style
 
 {{ theme-tab }}
 
-### Advanced
+### 02 Advanced
 
 #### Default value
 

@@ -10,26 +10,26 @@ toc: false
 
 ### 01 Component Type
 
-Basic Search
+#### Basic
 
 {{ base }}
 
-Word limit
+#### Word limit
 
 {{ max-length }}
 
-Display the cancel button after obtaining focus
+#### Display the cancel button after obtaining focus
 
 {{ action }}
 
 ### 02 Component Style
 
-The shape of Search
+#### The shape of Search
 
 {{ shape }}
 
 ### 03 Component State
 
-Default state alignment methods
+#### Default state alignment methods
 
 {{ other }}

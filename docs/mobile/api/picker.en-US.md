@@ -6,14 +6,22 @@ isComponent: true
 toc: false
 ---
 
-### Base Type
+## Code Demo
+
+### 01 Component Type
+
+#### Basic Picker
+
+单项和多项选择
 
 {{ base }}
 
-### Multi-Level Linkage
+#### 地区选择器
 
-{{ cascade }}
+{{ area }}
 
-### Object Selection
+### 02 组件样式
 
-{{ object }}
+#### with Title
+
+{{ with-title }}

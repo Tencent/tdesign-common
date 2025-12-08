@@ -6,7 +6,9 @@ isComponent: true
 toc: false
 ---
 
-### Component Types
+## Code Demo
+
+### 01 Component Types
 
 #### Pure Icon
 
@@ -24,22 +26,24 @@ toc: false
 
 {{ pure-text }}
 
-### Component Size
+### 02 Component Size
 
 {{ size }}
 
-### Loading Speed
+### 03 Loading Speed
 
 {{ speed }}
 
-### Full-screen Loading
+### 04 Advanced
+
+#### Full-screen Loading
 
 {{ fullscreen }}
 
-### Attached to a Specific Element
+#### Attached to a Specific Element
 
 {{ attach }}
 
-### Function Call
+#### Function Call
 
 {{ service }}

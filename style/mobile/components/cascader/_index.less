@@ -14,18 +14,16 @@
   --td-tab-track-color: @cascader-active-color;
 
   &__close-btn {
-    right: 16px;
-    top: 12px;
+    right: @spacer-2;
+    top: @spacer-2;
     position: absolute;
   }
 
   &__title {
     position: relative;
-    font-weight: 700;
+    font: @cascader-title-font;
     text-align: center;
-    line-height: 48px;
-    height: 48px;
-    font-size: @cascader-title-font-size;
+    padding: @cascader-title-padding;
   }
 
   &__content {
@@ -47,8 +45,7 @@
     &-title {
       margin-top: 20px;
       color: @cascader-options-title-color;
-      font-size: 14px;
-      line-height: 22px;
+      font: @font-body-medium;
       padding-left: 16px;
     }
 
@@ -103,7 +100,7 @@
 
     &-label {
       padding-left: 16px;
-      font-size: 16px;
+      font: @font-body-medium;
 
       &--active {
         color: @cascader-active-color;

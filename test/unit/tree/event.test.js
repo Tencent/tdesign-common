@@ -16,12 +16,14 @@ describe('tree:event', () => {
           },
           onLoad(info) {
             resolve(info);
-          }
+          },
         });
-        tree.append([{
-          value: 't1',
-          children: true,
-        }]);
+        tree.append([
+          {
+            value: 't1',
+            children: true,
+          },
+        ]);
       });
 
       const info = await pm;
@@ -40,10 +42,12 @@ describe('tree:event', () => {
       });
       const pm = new Promise((resolve) => {
         tree.emitter.on('load', resolve);
-        tree.append([{
-          value: 't1',
-          children: true,
-        }]);
+        tree.append([
+          {
+            value: 't1',
+            children: true,
+          },
+        ]);
       });
 
       const info = await pm;
@@ -61,14 +65,18 @@ describe('tree:event', () => {
           onReflow() {
             reflowCount += 1;
             resolve();
-          }
+          },
         });
-        tree.append([{
-          value: 't1',
-        }]);
-        tree.append([{
-          value: 't2',
-        }]);
+        tree.append([
+          {
+            value: 't1',
+          },
+        ]);
+        tree.append([
+          {
+            value: 't2',
+          },
+        ]);
       });
 
       await pm;
@@ -85,9 +93,11 @@ describe('tree:event', () => {
           reflowCount += 1;
           resolve();
         });
-        tree.append([{
-          value: 't1',
-        }]);
+        tree.append([
+          {
+            value: 't1',
+          },
+        ]);
         tree.insertAfter('t1', {
           value: 't2',
         });
@@ -113,13 +123,16 @@ describe('tree:event', () => {
           onUpdate(info) {
             updateCount += 1;
             resolve(info);
-          }
+          },
         });
-        tree.append([{
-          value: 't1',
-        }, {
-          value: 't2',
-        }]);
+        tree.append([
+          {
+            value: 't1',
+          },
+          {
+            value: 't2',
+          },
+        ]);
         tree.getNode('t2').setActived(true, {
           directly: true,
         });
@@ -137,13 +150,17 @@ describe('tree:event', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-      }, {
-        value: 't2',
-      }, {
-        value: 't3',
-      }]);
+      tree.append([
+        {
+          value: 't1',
+        },
+        {
+          value: 't2',
+        },
+        {
+          value: 't3',
+        },
+      ]);
       await delay(0);
       const pm = new Promise((resolve) => {
         tree.emitter.on('update', (info) => {

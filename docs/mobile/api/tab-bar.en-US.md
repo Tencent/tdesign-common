@@ -6,36 +6,36 @@ isComponent: true
 toc: false
 ---
 
-### Component Type
+### 01 Component Type
 
-Plain text TabBar
+#### Text TabBar
 
 {{ text }}
 
-Icon plus text TabBar
+#### Icon&Text TabBar
 
 {{ base }}
 
-Pure icon TabBar
+#### Icon TabBar
 
 {{ pure-icon }}
 
-Double level plain text TabBar
+#### Double layer TabBar
 
 {{ text-spread }}
 
-### Component Style
+### 02 Component Style
 
-Weakly select TabBar
+#### Weakly select TabBar
 
 {{ badge-props }}
 
-Suspension capsule TabBar
+#### Suspension capsule TabBar
 
 {{ round }}
 
-### Custom
+### 02 Custom
 
-Custom style
+#### Custom style
 
 {{ custom }}

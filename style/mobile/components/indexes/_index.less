@@ -12,8 +12,7 @@
     right: @indexes-sidebar-right;
     width: @indexes-sidebar-item-size;
     color: @indexes-sidebar-color;
-    font-size: @indexes-sidebar-font-size;
-    line-height: @indexes-sidebar-line-height;
+    font: @indexes-sidebar-font;
     display: flex;
     flex-flow: column nowrap;
     top: 50%;
@@ -36,15 +35,21 @@
     }
 
     &-tips {
-      width: @indexes-sidebar-tips-size;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: @indexes-sidebar-tips-size;
+      max-width: 198rpx;
+      padding: 0 32rpx;
+      box-sizing: border-box;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       height: @indexes-sidebar-tips-size;
-      line-height: @indexes-sidebar-tips-size;
-      text-align: center;
-      font-size: @indexes-sidebar-tips-font-size;
-      font-weight: 700;
+      font: @indexes-sidebar-tips-font;
       color: @indexes-sidebar-tips-color;
       background-color: @indexes-sidebar-tips-bg-color;
-      border-radius: 50%;
+      border-radius: @indexes-sidebar-tips-size;
       position: absolute;
       top: 50%;
       bottom: 0;

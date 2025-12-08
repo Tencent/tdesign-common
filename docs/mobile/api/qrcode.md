@@ -1,6 +1,6 @@
 ---
 title: QRCode 二维码
-description: 二维码能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。
+description: 能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。
 spline: base
 isComponent: true
 toc: false

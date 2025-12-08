@@ -10,9 +10,9 @@ add `theme-mode` attribution for `html` to control the display of `light/dark` m
 
 ```javascript
 // dark mode
-document.documentElement.setAttribute("theme-mode", "dark");
+document.documentElement.setAttribute('theme-mode', 'dark');
 // light mode
-document.documentElement.removeAttribute("theme-mode");
+document.documentElement.removeAttribute('theme-mode');
 ```
 
 ### Implementation Solution

@@ -8,18 +8,26 @@ toc: false
 
 ## Code Demo
 
-### Basic Demo
+### 01 Component Type
+
+#### Basic
 
 {{ base }}
 
-### Component Status
+### 02 Component Status
+
+#### Built-in Theme
 
 {{ theme }}
 
-### Show Cover
+### 03 Show Cover
+
+#### Pop-up can show cover, disable swipe and click
 
 {{ cover }}
 
-### Manually Close
+### 03 Manual Close
+
+#### Close toast manually
 
 {{ close }}
