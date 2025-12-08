@@ -1,16 +1,16 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_layout.less";
+@import '../../mixins/_layout.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_focus.less";
+@import '../../mixins/_focus.less';
 
 // <name> 替换为组件名
 .@{checkbox-cls}-group {
@@ -51,7 +51,7 @@
     flex-shrink: 0;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       opacity: 0;
       box-sizing: border-box;
@@ -66,7 +66,6 @@
   }
 
   &:hover {
-
     .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-hover;
       transition: border-color @anim-duration-base linear;
@@ -74,7 +73,6 @@
   }
 
   &.@{prefix}-is-checked {
-
     .@{checkbox-cls}__input {
       border-color: @checkbox-border-color-checked;
       background-color: @checkbox-input-color-checked;
@@ -97,7 +95,6 @@
   }
 
   &.@{prefix}-is-indeterminate {
-
     .@{checkbox-cls}__input {
       border-color: @checkbox-input-color-indeterminate;
       background-color: @checkbox-input-color-indeterminate;
@@ -129,14 +126,12 @@
     }
 
     &:hover {
-
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
       }
     }
 
     &.@{prefix}-is-checked {
-
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
 
@@ -147,7 +142,6 @@
     }
 
     &.@{prefix}-is-indeterminate {
-
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
 

@@ -1,13 +1,6 @@
 const DISTANCE = '32px';
 
-export const THEME_LIST: string[] = [
-  'info',
-  'success',
-  'warning',
-  'error',
-  'question',
-  'loading',
-];
+export const THEME_LIST: string[] = ['info', 'success', 'warning', 'error', 'question', 'loading'];
 
 export const PLACEMENT_OFFSET = {
   center: {

@@ -5,7 +5,7 @@ const getPosition = (
   contentEle: HTMLElement,
   placement: Partial<Placement>,
   clientX?: Number,
-  clientY?: Number,
+  clientY?: Number
 ): { left: number; top: number } => {
   const targetRect = targetEle.getBoundingClientRect() as DOMRect;
   const contentRect = contentEle.getBoundingClientRect() as DOMRect;
@@ -29,9 +29,7 @@ const getPosition = (
         break;
       case 'mouse':
         position.left += Number(clientX);
-        position.top += typeof clientY !== 'undefined'
-          ? Number(clientY) + 16
-          : targetRect.top + targetRect.height + 8;
+        position.top += typeof clientY !== 'undefined' ? Number(clientY) + 16 : targetRect.top + targetRect.height + 8;
         break;
       // 后续有需要可以再扩展
     }

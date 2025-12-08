@@ -165,9 +165,7 @@ function formatJson2CompMap(logJson: VersionLog[]) {
         }
 
         // 查找当前组件的版本记录
-        let versionEntry = compMap[component].find(
-          (v) => v.version === version
-        );
+        let versionEntry = compMap[component].find((v) => v.version === version);
 
         if (!versionEntry) {
           versionEntry = {

@@ -26,7 +26,6 @@ toc: false
 
 {{ badge-avatar }}
 
-
 ### 02 特殊类型
 
 #### 纯展示的头像组
@@ -42,4 +41,3 @@ toc: false
 #### 组件尺寸
 
 {{ size }}
-

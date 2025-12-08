@@ -2,7 +2,7 @@
 title: Comment
 description: Comment is used for feedback, evaluation, discussion, etc. on page content, such as evaluations of articles and discussions on topics.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

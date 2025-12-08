@@ -2,7 +2,7 @@
 title: Empty
 description: 用于空状态时的占位提示。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: layout
 ---
 

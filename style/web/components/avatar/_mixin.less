@@ -1,4 +1,4 @@
-@import "./_var.less";
+@import './_var.less';
 
 .avatar-size(@size, @font-size,@avatar-icon-size) {
   width: @size;
@@ -20,7 +20,6 @@
 }
 
 .generate-z-index(@n, @i: 1) when (@i =< @n) {
-
   & .@{prefix}-avatar:nth-child(@{i}) {
     z-index: (@avatar-group-init-zIndex - @i);
   }

@@ -1,12 +1,12 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .button-size(@size) {
-  @fontSize: "button-@{size}-font-size";
-  @padding: "button-@{size}-padding-horizontal";
-  @height: "button-@{size}-height";
-  @iconSize: "button-@{size}-icon-size";
+  @fontSize: 'button-@{size}-font-size';
+  @padding: 'button-@{size}-padding-horizontal';
+  @height: 'button-@{size}-height';
+  @iconSize: 'button-@{size}-icon-size';
 
   .@{button}--size-@{size} {
     font-size: @@fontSize;
@@ -21,14 +21,14 @@
 }
 
 .button-theme(@theme) {
-  @color: "button-@{theme}-color";
-  @bgColor: "button-@{theme}-bg-color";
-  @borderColor: "button-@{theme}-border-color";
-  @disabledColor: "button-@{theme}-disabled-color";
-  @disabledBorderColor: "button-@{theme}-disabled-border-color";
-  @disabledBgColor: "button-@{theme}-disabled-bg";
-  @activeBgColor: "button-@{theme}-active-bg-color";
-  @activeBorderColor: "button-@{theme}-active-border-color";
+  @color: 'button-@{theme}-color';
+  @bgColor: 'button-@{theme}-bg-color';
+  @borderColor: 'button-@{theme}-border-color';
+  @disabledColor: 'button-@{theme}-disabled-color';
+  @disabledBorderColor: 'button-@{theme}-disabled-border-color';
+  @disabledBgColor: 'button-@{theme}-disabled-bg';
+  @activeBgColor: 'button-@{theme}-active-bg-color';
+  @activeBorderColor: 'button-@{theme}-active-border-color';
 
   .@{button}--@{theme} {
     color: @@color;
@@ -60,9 +60,9 @@
 }
 
 .ghost-theme(@theme) {
-  @color: "button-ghost-@{theme}-color";
-  @hoverColor: "button-ghost-@{theme}-hover-color";
-  @borderColor: "button-ghost-@{theme}-border-color";
+  @color: 'button-ghost-@{theme}-color';
+  @hoverColor: 'button-ghost-@{theme}-hover-color';
+  @borderColor: 'button-ghost-@{theme}-border-color';
 
   &.@{button}--@{theme} when (@theme = primary), (@theme = danger) {
     color: @@color;
@@ -117,11 +117,14 @@
   text-align: center;
   border: none;
   background-image: none;
-  transition: all .3s;
+  transition: all 0.3s;
   border-radius: @button-border-radius;
   outline: none;
   /* stylelint-disable-next-line */
-  font-family: PingFang SC, Microsoft YaHei, Arial Regular;
+  font-family:
+    PingFang SC,
+    Microsoft YaHei,
+    Arial Regular;
   font-weight: @button-font-weight;
   vertical-align: top;
 
@@ -135,14 +138,14 @@
   -webkit-appearance: none;
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     left: 0;
     top: 0;
     width: 200%;
     height: 200%;
-    transform: scale(.5);
+    transform: scale(0.5);
     transform-origin: 0 0;
     border-radius: calc(@button-border-radius * 2);
     border-style: solid;

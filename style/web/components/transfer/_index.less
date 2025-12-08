@@ -1,8 +1,8 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-transfer {
   .reset;
@@ -201,7 +201,6 @@
 
 // 只有search时候的高度
 .@{prefix}-transfer__search {
-
   .@{prefix}-transfer__list {
     height: @transfer-with-search-height;
   }
@@ -209,7 +208,6 @@
 
 // 与Tree组件结合使用时的高度
 .@{prefix}-transfer--with-tree {
-
   .@{prefix}-transfer__list {
     height: auto;
 
@@ -222,7 +220,6 @@
 
 // 只有翻页时候的高度
 .@{prefix}-transfer__pagination {
-
   .@{prefix}-transfer__list {
     height: @transfer-with-pagination-height;
     padding-bottom: @transfer-with-pagination-padding-bottom;
@@ -231,7 +228,6 @@
 
 // 只有footer时候的高度
 .@{prefix}-transfer__footer {
-
   .@{prefix}-transfer__list {
     height: @transfer-with-footer-height;
     padding-bottom: @transfer-with-footer-padding-bottom;
@@ -240,7 +236,6 @@
 
 // 同时有翻页和footer时候的高度
 .@{prefix}-transfer__pagination.@{prefix}-transfer__footer {
-
   .@{prefix}-transfer__list {
     height: @transfer-with-footer-both-height;
     padding-bottom: @transfer-with-pagination-footer-padding-bottom;
@@ -249,7 +244,6 @@
 
 // 同时有search和footer时候的高度
 .@{prefix}-transfer__search.@{prefix}-transfer__footer {
-
   .@{prefix}-transfer__list {
     height: @transfer-with-footer-both-height;
     padding-bottom: @transfer-with-search-footer-padding-bottom;
@@ -258,7 +252,6 @@
 
 // 同时有search和pagination时候的高度
 .@{prefix}-transfer__search.@{prefix}-transfer__pagination {
-
   .@{prefix}-transfer__list {
     height: @transfer-with-both-height;
     padding-bottom: @transfer-with-search-pagination-padding-bottom;
@@ -267,7 +260,6 @@
 
 // 同时有search和pagination和footer
 .@{prefix}-transfer__search.@{prefix}-transfer__footer.@{prefix}-transfer__pagination {
-
   .@{prefix}-transfer__list {
     height: @transfer-with-all-height;
     padding-bottom: @transfer-with-all-padding-bottom;
@@ -275,7 +267,6 @@
 }
 
 .@{prefix}-transfer__wrapper {
-
   .@{prefix}-transfer__list {
     height: @transfer-wrap-height;
     width: @transfer-wrap-width;

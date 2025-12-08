@@ -1,15 +1,15 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .color-generate() {
   @status: default, process, finish, error;
   each(@status, {
-    @bgVar: ~"step-item-@{value}-circle-bg";
-    @colorVar: ~"step-item-@{value}-circle-color";
-    @titleColorVar: ~"step-item-@{value}-title-color";
-    @iconColorVar: ~"step-item-@{value}-icon-color";
-    @dotBorderColorVar: ~"step-item-@{value}-dot-border-color";
+    @bgVar: ~'step-item-@{value}-circle-bg';
+    @colorVar: ~'step-item-@{value}-circle-color';
+    @titleColorVar: ~'step-item-@{value}-title-color';
+    @iconColorVar: ~'step-item-@{value}-icon-color';
+    @dotBorderColorVar: ~'step-item-@{value}-dot-border-color';
 
     &__circle--@{value} {
       color: @@colorVar;
@@ -155,7 +155,7 @@
 
   &__line {
     background-color: @step-item-line-color;
-    content: "";
+    content: '';
     display: block;
     position: absolute;
 

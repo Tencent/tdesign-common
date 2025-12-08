@@ -1,17 +1,17 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../utilities/_animation.less";
+@import '../../utilities/_animation.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@inputCls: ~"@{prefix}-input";
-@inputNumberCls: ~"@{prefix}-input-number";
+@inputCls: ~'@{prefix}-input';
+@inputNumberCls: ~'@{prefix}-input-number';
 
 .@{inputNumberCls} {
   .reset;
@@ -34,7 +34,7 @@
     appearance: none;
   }
 
-  input[type="number"] {
+  input[type='number'] {
     appearance: textfield;
   }
 

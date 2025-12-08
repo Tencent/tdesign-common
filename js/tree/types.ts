@@ -118,9 +118,7 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
   disabled: boolean;
 }
 
-export interface TreeNodeModel<
-  T extends TreeOptionData = TreeOptionData
-> extends TreeNodeModelProps {
+export interface TreeNodeModel<T extends TreeOptionData = TreeOptionData> extends TreeNodeModelProps {
   /**
    * 追加子节点数据
    */
@@ -220,7 +218,7 @@ export interface TypeTreeNodeData extends TreeNodeState {
 
 export type TypeTreeItem = TypeTreeNodeData | TreeNode;
 
-export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>
+export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>;
 
 export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
 
@@ -262,7 +260,7 @@ export interface TypeTreeStoreOptions {
   // 指定节点禁用条件
   disableCheck?: boolean | TypeTreeFilter;
   // 节点是否可拖动
-  draggable?: boolean,
+  draggable?: boolean;
   // 节点加载函数
   load?: Function;
   // 是否延迟加载

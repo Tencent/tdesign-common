@@ -1,6 +1,6 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .@{prefix}-switch {
   display: flex;
@@ -120,9 +120,7 @@
     }
 
     &--checked {
-      left: calc(
-        @switch-width - @switch-dot-size - @switch-dot-horizontal-margin
-      );
+      left: calc(@switch-width - @switch-dot-size - @switch-dot-horizontal-margin);
     }
 
     &--large&--checked {

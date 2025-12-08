@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 目标模块/视图需要从应用的任何地方直接进行访问时使用。
@@ -67,7 +65,6 @@
    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tab-bar/tab-bar-8.png" />
    <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
-
 
 ### 相似组件
 

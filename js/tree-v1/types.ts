@@ -114,9 +114,7 @@ export interface TreeNodeModelProps<DataOption extends TreeOptionData = TreeOpti
   loading: boolean;
 }
 
-export interface TreeNodeModel<
-  T extends TreeOptionData = TreeOptionData
-> extends TreeNodeModelProps {
+export interface TreeNodeModel<T extends TreeOptionData = TreeOptionData> extends TreeNodeModelProps {
   /**
    * 追加子节点数据
    */
@@ -177,9 +175,9 @@ export interface TreeNodeModel<
    * 移除当前节点或当前节点的子节点，值为空则移除当前节点，值存在则移除当前节点的子节点
    */
   remove: (value?: TreeNodeValue) => void;
-   /**
-    * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
-    */
+  /**
+   * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
+   */
   setData: (data: T) => void;
 }
 
@@ -216,7 +214,7 @@ export interface TypeTreeNodeData extends TreeNodeState {
 
 export type TypeTreeItem = TypeTreeNodeData | TreeNode;
 
-export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>
+export type TypeTreeNodeModel = TreeNodeModel<TypeTreeNodeData>;
 
 export type TypeTreeFilter = (node: TreeNodeModel<TypeTreeNodeData>) => boolean;
 
@@ -254,7 +252,7 @@ export interface TypeTreeStoreOptions {
   // 指定节点禁用条件
   disableCheck?: boolean | TypeTreeFilter;
   // 节点是否可拖动
-  draggable?: boolean,
+  draggable?: boolean;
   // 节点加载函数
   load?: Function;
   // 是否延迟加载

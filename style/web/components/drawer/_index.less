@@ -1,18 +1,18 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "./_animate.less";
+@import './_animate.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-drawer {
   .reset;
 
-  @root: ~".@{prefix}-drawer";
+  @root: ~'.@{prefix}-drawer';
 
   position: fixed;
   z-index: 1500;
@@ -80,7 +80,8 @@
     box-shadow: @dialog-box-shadow;
     overflow: hidden;
     pointer-events: auto;
-    transition: transform @drawer-slow-duration @drawer-default-timing-function,
+    transition:
+      transform @drawer-slow-duration @drawer-default-timing-function,
       visibility @drawer-slow-duration @drawer-default-timing-function;
     position: relative;
   }
@@ -208,6 +209,6 @@
   }
 }
 
-[tabindex="-1"]:focus {
+[tabindex='-1']:focus {
   outline: none !important; /* stylelint-disable-line */
 }

@@ -1,16 +1,16 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_text.less";
+@import '../../mixins/_text.less';
 
-@import "../../mixins/_scrollbar.less";
+@import '../../mixins/_scrollbar.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../popup/_var.less";
+@import '../popup/_var.less';
 
 @border: 1px solid @table-border-color;
 @border-transparent: 1px solid transparent;
@@ -64,7 +64,7 @@
   background-color: @table-bg;
   position: relative;
 
-  .@{prefix}-popup:not(.@{prefix}-tooltip)[data-popper-placement^="top"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup:not(.@{prefix}-tooltip)[data-popper-placement^='top'] .@{prefix}-popup__arrow {
     bottom: calc(-@popup-arrow-width / 2);
   }
 
@@ -154,7 +154,7 @@
     color: @table-head-text-color;
   }
 
-  td[key="row-select"] {
+  td[key='row-select'] {
     padding: @table-td-padding-vertical-top 0 @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   }
 
@@ -278,7 +278,6 @@
 
     // 固定表头表格底部边框线显示优化
     &.@{prefix}-table__header--fixed {
-
       .@{prefix}-table__content {
         border-bottom: @border;
       }
@@ -292,7 +291,6 @@
 
   // 斑马线表格
   &--striped {
-
     &:not(.@{prefix}-table--bordered) {
       th,
       td {
@@ -313,7 +311,6 @@
     }
 
     &.@{prefix}-table--hoverable {
-
       &.@{prefix}-table__header--fixed {
         tbody tr:nth-of-type(even):hover {
           background-color: @table-highlight-bg-color--hover;
@@ -412,9 +409,7 @@
 
   // 列固定表格
   &__cell--fixed {
-
     &.@{prefix}-table__header--fixed {
-
       .@{prefix}-table__header {
         overflow: hidden;
         width: 100%;
@@ -422,7 +417,7 @@
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
           &:last-child::after {
-            content: "";
+            content: '';
             position: absolute;
             right: -6px;
             width: 6px;
@@ -729,7 +724,7 @@
   justify-content: center;
 
   .@{prefix}-table__sort-icon {
-    position: relative;;
+    position: relative;
   }
   .@{prefix}-table-sort-asc {
     top: @table-double-sort-icon-space;
@@ -810,7 +805,7 @@
   }
 }
 
-.@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key="row-select"] {
+.@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key='row-select'] {
   padding-left: @comp-margin-s;
 }
 
@@ -950,7 +945,6 @@
 }
 
 .@{prefix}-table--column-fixed {
-
   .t-table-cell-fixed-before-after();
   .@{prefix}-table__cell--fixed-left,
   .@{prefix}-table__cell--fixed-right {

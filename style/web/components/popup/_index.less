@@ -1,14 +1,14 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_layout.less";
+@import '../../mixins/_layout.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-popup {
   .reset;
@@ -38,7 +38,7 @@
 
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     width: @popup-arrow-width;
     height: @popup-arrow-height;
     transform: rotate(45deg);
@@ -81,6 +81,6 @@
   transition: @popup-flow-transition-leave;
 }
 
-.expand-animation(top, expand, ~"[data-popper-placement^=top]");
-.expand-animation(bottom, expand, ~"[data-popper-placement^=bottom]");
+.expand-animation(top, expand, ~'[data-popper-placement^=top]');
+.expand-animation(bottom, expand, ~'[data-popper-placement^=bottom]');
 // .expand-animation(right, expand-right);

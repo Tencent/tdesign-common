@@ -30,7 +30,6 @@
   </div>
 </div>
 
-
 ### 常见用法
 
 ##### 当用户只需要关注是否有消息，而无需关注消息数量时，可使用红点型徽标；当提示的信息需要精确显示数量时，应使用带数字的徽标。
@@ -44,7 +43,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/badge/badge-5.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -61,7 +59,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

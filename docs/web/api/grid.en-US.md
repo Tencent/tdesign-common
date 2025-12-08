@@ -1,5 +1,5 @@
 ---
-title: Grid  
+title: Grid
 description: The grid is a regular grid array that guides and regulates the layout and information distribution of web pages, improving the consistency of the layout within the interface and saving costs.
 isComponent: true
 usage: { title: '', description: '' }

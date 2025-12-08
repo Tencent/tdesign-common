@@ -2,7 +2,7 @@
 title: ChatSender 对话输入
 description: 用于 AI 聊天的输入框，可以扩展模型、多模态等能力。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: ai
 ---
 

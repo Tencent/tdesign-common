@@ -4,7 +4,7 @@ import { BaseTableCol } from './types';
 export function filterDataByIds(
   data: Array<object> = [],
   ids: Array<string | number> = [],
-  byId = 'id',
+  byId = 'id'
 ): Array<object> {
   return data.filter((d: Record<string, any> = {}) => ids.includes(d[byId]));
 }
@@ -33,7 +33,7 @@ export const getScrollDirection = (scrollLeft: number, scrollTop: number): SCROL
 export function isRowSelectedDisabled(
   selectColumn: { [key: string]: any },
   row: Record<string, any>,
-  rowIndex: number,
+  rowIndex: number
 ): boolean {
   if (!selectColumn) return false;
   let disabled = isFunction(selectColumn.disabled) ? selectColumn.disabled({ row, rowIndex }) : selectColumn.disabled;

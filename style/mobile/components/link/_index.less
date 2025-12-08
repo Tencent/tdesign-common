@@ -1,10 +1,10 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .link-size(@size) {
-  @contentFont: "link-content-@{size}-font";
-  @iconSize: "link-icon-@{size}-font-size";
+  @contentFont: 'link-content-@{size}-font';
+  @iconSize: 'link-icon-@{size}-font-size';
 
   .@{link}--@{size} {
     .@{link}__content {
@@ -18,9 +18,9 @@
 }
 
 .link-theme(@theme) {
-  @color: "link-@{theme}-color";
-  @activeColor: "link-@{theme}-active-color";
-  @disabledColor: "link-@{theme}-disabled-color";
+  @color: 'link-@{theme}-color';
+  @activeColor: 'link-@{theme}-active-color';
+  @disabledColor: 'link-@{theme}-disabled-color';
 
   .@{link}--@{theme} {
     color: @@color;
@@ -63,7 +63,7 @@
   text-decoration: none;
 
   &--underline::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;

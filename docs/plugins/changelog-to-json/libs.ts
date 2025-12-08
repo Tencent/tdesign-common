@@ -1,10 +1,16 @@
-import { CHAT_COMPONENT_MAP, MOBILE_COMPONENT_MAP, NON_PASCAL_CASE_NAMES, WEB_COMPONENT_MAP } from '../../../js/components';
+import {
+  CHAT_COMPONENT_MAP,
+  MOBILE_COMPONENT_MAP,
+  NON_PASCAL_CASE_NAMES,
+  WEB_COMPONENT_MAP,
+} from '../../../js/components';
 import type { Platform } from './types';
 
-export const convert2PascalCase = (name: string) => name
-  .split('-')
-  .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-  .join('');
+export const convert2PascalCase = (name: string) =>
+  name
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
 
 export const COMPONENT_MAPS = {
   web: WEB_COMPONENT_MAP,

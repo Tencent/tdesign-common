@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当打开新页面或操作完成后，等待加载时使用。
@@ -17,7 +15,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/loading/loading-2.png" />
   </div>
 </div>
-
 
 ### 组件搭配使用
 
@@ -48,7 +45,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

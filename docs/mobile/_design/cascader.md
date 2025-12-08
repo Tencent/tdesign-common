@@ -6,7 +6,6 @@
 
 当一组选项由递进层级构成，且每个层级有大量的选项需要用户逐级选择时使用。
 
-
 ### 组件搭配使用
 
 ##### 级联选择器与[索引](./indexes)组合使用，当每个层级选项较多时，配合索引有利于用户快速找到目标选项。
@@ -15,16 +14,15 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cascader/cascader-1.png" />
 </div>
 
-
 ### 常见用法
 
 ##### 在表单中，级联选择器可放置于表单内容需要的顺序中，通常用于地址信息的选择和填写。
+
 <div class="legend">
  <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/cascader/cascader-2.png" />
  </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -52,7 +50,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

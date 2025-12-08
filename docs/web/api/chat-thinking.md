@@ -2,7 +2,7 @@
 title: ChatThinking 思考过程
 description: 用于展示思考过程的组件。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: ai
 ---
 

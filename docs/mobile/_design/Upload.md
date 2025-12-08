@@ -22,8 +22,6 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/upload/upload-2.png" />
 </div>
 
-
-
 ### 推荐/慎用示例
 
 ##### 若上传的文件有尺寸、格式、数量限制，推荐在文案中进行明确标识。

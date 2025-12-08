@@ -11,7 +11,7 @@
 // 如：@button-line-bg-color-hover
 // 如：@button-line-height-s
 
-@import "../../_variables.less";
+@import '../../_variables.less';
 
 // 颜色
 // Menu 浅色模式下跟随全局变化，需要使用语义化 token；深色模式独立存在，使用底层颜色 token
@@ -93,13 +93,18 @@
 @menu-extra-font-size: @font-body-small;
 
 // box-shadow
-@menu-head-shadow: 0 8px 10px -5px rgba(0, 0, 0, .08),
-  0 16px 24px 2px rgba(0, 0, 0, .04), 0 6px 30px 5px rgba(0, 0, 0, .05);
+@menu-head-shadow:
+  0 8px 10px -5px rgba(0, 0, 0, 0.08),
+  0 16px 24px 2px rgba(0, 0, 0, 0.04),
+  0 6px 30px 5px rgba(0, 0, 0, 0.05);
 @menu-head-submenu-shadow: inset 0 -1px 0 0 #eee;
-@menu-default-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1),
-  0 8px 10px 1px rgba(0, 0, 0, .06), 0 3px 14px 6px rgba(0, 0, 0, .05);
+@menu-default-shadow:
+  0 5px 5px -3px rgba(0, 0, 0, 0.1),
+  0 8px 10px 1px rgba(0, 0, 0, 0.06),
+  0 3px 14px 6px rgba(0, 0, 0, 0.05);
 
 // transition
 @fade-linear-transition: opacity 200ms linear;
-@md-fade-transition: transform 300ms cubic-bezier(.23, 1, .32, 1),
-  opacity 300ms cubic-bezier(.23, 1, .32, 1);
+@md-fade-transition:
+  transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
+  opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);

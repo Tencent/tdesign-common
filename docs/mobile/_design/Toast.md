@@ -16,7 +16,6 @@
   </div>
 </div>
 
-
 ### 组件搭配使用
 
 ##### 轻提示经常和加载搭配使用，在页面内进行某项操作后，用作加载反馈。
@@ -26,7 +25,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/toast/toast-2.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -43,7 +41,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

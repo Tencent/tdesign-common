@@ -1,12 +1,4 @@
-import {
-  get,
-  isBoolean,
-  isFunction,
-  isNil,
-  isNull,
-  isNumber,
-  uniqueId,
-} from 'lodash-es';
+import { get, isBoolean, isFunction, isNil, isNull, isNumber, uniqueId } from 'lodash-es';
 import log from '../log';
 import { createNodeModel, updateNodeModel } from './tree-node-model';
 import { TreeStore } from './tree-store';
@@ -34,12 +26,7 @@ export const settableStatus: Record<string, boolean | null> = {
 
 export const settableProps = Object.keys(settableStatus);
 
-export const syncableProps = [
-  ...settableProps,
-  'actived',
-  'expanded',
-  'checked',
-];
+export const syncableProps = [...settableProps, 'actived', 'expanded', 'checked'];
 
 export const privateKey = '__tdesign_id__';
 
@@ -138,11 +125,7 @@ export class TreeNode {
   // 节点是否正在加载数据
   public loading: boolean;
 
-  public constructor(
-    tree: TreeStore,
-    data?: TypeTreeNodeData,
-    parent?: TreeNode
-  ) {
+  public constructor(tree: TreeStore, data?: TypeTreeNodeData, parent?: TreeNode) {
     this.data = data;
     this.tree = tree;
 
@@ -191,9 +174,7 @@ export class TreeNode {
 
     // 设置 value
     // 没有 value 的时候，value 默认使用自动生成的 唯一 id
-    this.value = isNil(get(data, propValue))
-      ? this[privateKey]
-      : get(data, propValue);
+    this.value = isNil(get(data, propValue)) ? this[privateKey] : get(data, propValue);
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
       log.warn('Tree', `Dulplicate value: ${this.value}`);
@@ -792,12 +773,7 @@ export class TreeNode {
     const { tree } = this;
     const { hasFilter, config } = tree;
     const { allowFoldNodeOnFilter } = config;
-    if (
-      hasFilter
-      && !allowFoldNodeOnFilter
-      && this.vmIsLocked
-      && !this.vmIsRest
-    ) {
+    if (hasFilter && !allowFoldNodeOnFilter && this.vmIsLocked && !this.vmIsRest) {
       // 当前树存在过滤条件，允许节点过滤后被折叠，当前节点为锁定节点，并且不是筛选后剩下的节点
       // 则该节点应当呈现禁用状态
       return true;
@@ -898,11 +874,11 @@ export class TreeNode {
     let checked = false;
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
     if (
-      checkedMap.get(value)
+      checkedMap.get(value) &&
       // 如果 valueMode 为 all、parentFirst，则视为选中
-      && (valueMode !== 'onlyLeaf'
+      (valueMode !== 'onlyLeaf' ||
         // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
-        || this.isLeaf())
+        this.isLeaf())
     ) {
       return true;
     }
@@ -1033,10 +1009,7 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树展开的节点值数组
    */
-  public setExpanded(
-    expanded: boolean,
-    opts?: TypeSettingOptions
-  ): TreeNodeValue[] {
+  public setExpanded(expanded: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const { config } = tree;
     const options = {
@@ -1112,10 +1085,7 @@ export class TreeNode {
    * @param {boolean} [opts.directly=false] 是否直接操作节点状态
    * @return string[] 当前树激活的节点值数组
    */
-  public setActived(
-    actived: boolean,
-    opts?: TypeSettingOptions
-  ): TreeNodeValue[] {
+  public setActived(actived: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const options = {
       directly: false,
@@ -1195,10 +1165,7 @@ export class TreeNode {
     return this.setChecked(!this.isChecked());
   }
 
-  public setChecked(
-    checked: boolean,
-    opts?: TypeSettingOptions
-  ): TreeNodeValue[] {
+  public setChecked(checked: boolean, opts?: TypeSettingOptions): TreeNodeValue[] {
     const { tree } = this;
     const config = tree.config || {};
     const options: TypeSettingOptions = {
@@ -1300,11 +1267,7 @@ export class TreeNode {
   }
 
   // 选中态向上游扩散
-  private spreadParentChecked(
-    checked: boolean,
-    map?: TypeIdMap,
-    opts?: TypeSettingOptions
-  ) {
+  private spreadParentChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,
@@ -1325,11 +1288,7 @@ export class TreeNode {
   }
 
   // 选中态向下游扩散
-  private spreadChildrenChecked(
-    checked: boolean,
-    map?: TypeIdMap,
-    opts?: TypeSettingOptions
-  ) {
+  private spreadChildrenChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,

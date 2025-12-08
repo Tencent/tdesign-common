@@ -97,13 +97,13 @@ export default function xhr({
   });
 
   xhr.onerror = (event: ProgressEvent) => {
-    onError({ event, file, files: innerFiles, XMLHttpRequest: xhr, });
+    onError({ event, file, files: innerFiles, XMLHttpRequest: xhr });
     clearInterval(timer1);
     clearTimeout(timer2);
   };
 
   xhr.ontimeout = (event) => {
-    onError({ event, file, files: innerFiles, XMLHttpRequest: xhr, });
+    onError({ event, file, files: innerFiles, XMLHttpRequest: xhr });
   };
 
   if (xhr.upload) {

@@ -6,7 +6,6 @@ isComponent: true
 toc: false
 ---
 
-
 #### Basic Switch
 
 {{ base }}

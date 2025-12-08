@@ -30,7 +30,6 @@ Display and hide information in groups, displaying only one group of information
 
 {{ accordion }}
 
-
 ### 02 Component Style
 
 #### Card Collapse

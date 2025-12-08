@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当内容较多时，需要通过筛选快速定位某一类内容时使用。
@@ -17,7 +15,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-2.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -38,8 +35,6 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/dropdown-menu/dropdown-menu-4.png" />
   <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
 </div>
-
-
 
 ### 相似组件
 

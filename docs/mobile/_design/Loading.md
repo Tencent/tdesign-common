@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 组件搭配使用
 
 ##### 在信息流页面中，可结合下拉刷新使用，对未展示出来的最新内容进行加载。
@@ -50,7 +49,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

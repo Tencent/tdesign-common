@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当内容项数量较多，需要用户根据品类快速选择到目标内容项时使用。
@@ -13,7 +11,6 @@
    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/side-bar/side-bar-1.png" />
  </div>
 </div>
-
 
 ### 正确/慎用示例
 
@@ -34,13 +31,13 @@
 <hr />
 
 ##### 不建议仅用图标、emoji作为品类选项，避免表意不清晰。
+
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/side-bar/side-bar-4.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

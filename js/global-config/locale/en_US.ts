@@ -27,8 +27,7 @@ export default {
     today: 'Today',
     thisMonth: 'This Month',
     week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Saturday,Sunday',
-    cellMonth:
-      'January,February,March,April,May,June,July,August,September,October,November,December',
+    cellMonth: 'January,February,March,April,May,June,July,August,September,October,November,December',
   },
   transfer: {
     title: '{checked} / {total}',
@@ -70,13 +69,13 @@ export default {
     clearFilterResultButtonText: 'Clear',
     columnConfigButtonText: 'Column Config',
     columnConfigTitleText: 'Table Column Config',
-    columnConfigDescriptionText:
-      'Please select columns to show them in the table',
+    columnConfigDescriptionText: 'Please select columns to show them in the table',
     confirmText: 'Confirm',
     cancelText: 'Cancel',
     resetText: 'Reset',
     selectAllText: 'Select All',
-    searchResultText: 'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
+    searchResultText:
+      'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
   },
   select: {
     empty: 'Empty Data',
@@ -101,20 +100,7 @@ export default {
       week: 'select week',
     },
     weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    months: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ],
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -272,7 +258,6 @@ export default {
     uploadImageText: 'upload image',
     uploadAttachmentText: 'upload attachment',
     shareTipText: 'share',
-
   },
   qrcode: {
     expiredText: 'expired',

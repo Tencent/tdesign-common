@@ -99,20 +99,7 @@ export default {
       week: '請選擇周',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
-    months: [
-      '1月',
-      '2月',
-      '3月',
-      '4月',
-      '5月',
-      '6月',
-      '7月',
-      '8月',
-      '9月',
-      '10月',
-      '11月',
-      '12月',
-    ],
+    months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     quarters: ['一季度', '二季度', '三季度', '四季度'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -203,7 +190,7 @@ export default {
     recentColorTitle: '最近使用的顔色',
     clearConfirmText: '確定清空最近使用的顔色嗎？',
     singleColor: '單色',
-    gradientColor: '漸變'
+    gradientColor: '漸變',
   },
   guide: {
     finishButtonProps: {
@@ -276,5 +263,5 @@ export default {
     expiredText: '二維碼過期',
     refreshText: '點擊刷新',
     scannedText: '已掃描',
-  }
+  },
 } as const;

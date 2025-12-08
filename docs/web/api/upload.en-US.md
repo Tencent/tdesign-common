@@ -10,17 +10,17 @@ spline: form
 
 The file upload function lookup table has 9 styles in total. Only the attribute combinations listed in the table below are supported. You can find the corresponding API combination according to your actual needs.
 
- | Images/Documents|Batch|Drag and Drop Upload| API |Sample Code Location|
- | -- | -- | -- | -- | -- |
- | Documentation|single file|Drag and drop uploads are not allowed| theme=single-input, multiple=false |Input box single file upload|
- | Documentation|single file|Drag and drop uploads are not allowed| theme=file, multiple=false |Basic File Upload|
- | Documentation|batch file|Drag and drop uploads are not allowed| theme=file, multiple=true |Basic File Upload|
- | Documentation|single file|Allow drag and drop uploads| theme=file, draggable=true |Single file/image drag and drop upload|
- | Documentation|batch file|Allow drag and drop uploads| theme=file-flow, multiple=true, draggable=true |Batch Upload Files|
- | Picture|single picture|Drag and drop uploads are not allowed| theme=image, multiple=false |Upload basic image|
- | Picture|single picture|Allow drag and drop uploads| theme=image, draggable=true |Single file/image drag and drop upload|
- | Picture|Batch Images|Drag and drop uploads are not allowed| theme=image, multiple=true |Upload basic image|
- | Picture|Batch Images|Allow drag and drop uploads| theme=image-flow, multiple=true, draggable=true |Batch upload pictures|
+| Images/Documents | Batch          | Drag and Drop Upload                  | API                                             | Sample Code Location                   |
+| ---------------- | -------------- | ------------------------------------- | ----------------------------------------------- | -------------------------------------- |
+| Documentation    | single file    | Drag and drop uploads are not allowed | theme=single-input, multiple=false              | Input box single file upload           |
+| Documentation    | single file    | Drag and drop uploads are not allowed | theme=file, multiple=false                      | Basic File Upload                      |
+| Documentation    | batch file     | Drag and drop uploads are not allowed | theme=file, multiple=true                       | Basic File Upload                      |
+| Documentation    | single file    | Allow drag and drop uploads           | theme=file, draggable=true                      | Single file/image drag and drop upload |
+| Documentation    | batch file     | Allow drag and drop uploads           | theme=file-flow, multiple=true, draggable=true  | Batch Upload Files                     |
+| Picture          | single picture | Drag and drop uploads are not allowed | theme=image, multiple=false                     | Upload basic image                     |
+| Picture          | single picture | Allow drag and drop uploads           | theme=image, draggable=true                     | Single file/image drag and drop upload |
+| Picture          | Batch Images   | Drag and drop uploads are not allowed | theme=image, multiple=true                      | Upload basic image                     |
+| Picture          | Batch Images   | Allow drag and drop uploads           | theme=image-flow, multiple=true, draggable=true | Batch upload pictures                  |
 
 ### Upload Basic File
 

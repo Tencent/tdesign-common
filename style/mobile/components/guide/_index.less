@@ -1,8 +1,8 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@guide: ~"@{prefix}-guide";
+@guide: ~'@{prefix}-guide';
 
 .@{guide} {
   &--absolute {
@@ -28,7 +28,9 @@
     border-radius: @guide-highlight-border-radius;
 
     &--mask {
-      box-shadow: 0 0 0 0 @mask-active, @mask-active 0 0 0 5000px;
+      box-shadow:
+        0 0 0 0 @mask-active,
+        @mask-active 0 0 0 5000px;
     }
 
     &--dialog {
@@ -53,7 +55,7 @@
         border-radius: @guide-popover-border-radius;
       }
     }
-    .@{prefix}-popover[data-popper-placement^="bottom"] .@{prefix}-popover__content {
+    .@{prefix}-popover[data-popper-placement^='bottom'] .@{prefix}-popover__content {
       margin-top: @guide-popover-margin-top;
     }
 

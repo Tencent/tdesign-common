@@ -1,12 +1,7 @@
 import tinyColor from 'tinycolor2';
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
 import { ALPHA_FORMAT_MAP } from './constants';
-import {
-  GradientColorPoint,
-  GradientColors,
-  isGradientColor,
-  parseGradientString
-} from './gradient';
+import { GradientColorPoint, GradientColors, isGradientColor, parseGradientString } from './gradient';
 import type { AlphaConvertibleFormat, ColorFormat } from './types';
 
 export interface ColorObject {
@@ -119,7 +114,9 @@ export class Color {
     if (gradientColors) {
       this.isGradient = true;
       const object = gradientColors as GradientColors;
-      const points = object.points.map((c, index) => genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id));
+      const points = object.points.map((c, index) =>
+        genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id)
+      );
       this.gradientStates = {
         colors: points,
         degree: object.degree,
@@ -174,9 +171,7 @@ export class Color {
   }
 
   get rgba() {
-    const {
-      r, g, b, a
-    } = hsv2rgba(this.states);
+    const { r, g, b, a } = hsv2rgba(this.states);
     return `rgba(${mathRound(r)}, ${mathRound(g)}, ${mathRound(b)}, ${a})`;
   }
 
@@ -186,9 +181,7 @@ export class Color {
   }
 
   get hsva() {
-    const {
-      h, s, v, a
-    } = this.getHsva();
+    const { h, s, v, a } = this.getHsva();
     return `hsva(${h}, ${s}%, ${v}%, ${a})`;
   }
 
@@ -198,9 +191,7 @@ export class Color {
   }
 
   get hsla() {
-    const {
-      h, s, l, a
-    } = this.getHsla();
+    const { h, s, l, a } = this.getHsla();
     return `hsla(${h}, ${s}%, ${l}%, ${a})`;
   }
 
@@ -213,9 +204,7 @@ export class Color {
   }
 
   get cmyk() {
-    const {
-      c, m, y, k
-    } = this.getCmyk();
+    const { c, m, y, k } = this.getCmyk();
     return `cmyk(${c}, ${m}, ${y}, ${k})`;
   }
 
@@ -287,9 +276,7 @@ export class Color {
   getFormattedColor(format: ColorFormat, enableAlpha: boolean) {
     if (this.isGradient) return this.linearGradient;
     const finalFormat = (
-      enableAlpha && format in ALPHA_FORMAT_MAP
-        ? ALPHA_FORMAT_MAP[format as AlphaConvertibleFormat]
-        : format
+      enableAlpha && format in ALPHA_FORMAT_MAP ? ALPHA_FORMAT_MAP[format as AlphaConvertibleFormat] : format
     ) as keyof ReturnType<Color['getFormatsColorMap']>;
     return this.getFormatsColorMap()[finalFormat];
   }
@@ -318,9 +305,7 @@ export class Color {
   }
 
   getRgba() {
-    const {
-      r, g, b, a
-    } = hsv2rgba(this.states);
+    const { r, g, b, a } = hsv2rgba(this.states);
     return {
       r: mathRound(r),
       g: mathRound(g),
@@ -341,9 +326,7 @@ export class Color {
   }
 
   getHsva(): tinyColor.ColorFormats.HSVA {
-    let {
-      h, s, v, a
-    } = hsv2hsva(this.states);
+    let { h, s, v, a } = hsv2hsva(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
     v = mathRound(v * 100);
@@ -357,9 +340,7 @@ export class Color {
   }
 
   getHsla(): tinyColor.ColorFormats.HSLA {
-    let {
-      h, s, l, a
-    } = hsv2hsla(this.states);
+    let { h, s, l, a } = hsv2hsla(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
     l = mathRound(l * 100);

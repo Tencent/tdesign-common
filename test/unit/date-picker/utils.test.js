@@ -30,7 +30,10 @@ describe('utils', () => {
     });
 
     it('valid array type date time value and format, return time value of datetime', () => {
-      const res = formatTime(['2025-08-26 10:24:24', '2025-08-26 10:24:24'], 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss', ['00:00:00', '23:59:59']);
+      const res = formatTime(['2025-08-26 10:24:24', '2025-08-26 10:24:24'], 'YYYY-MM-DD HH:mm:ss', 'HH:mm:ss', [
+        '00:00:00',
+        '23:59:59',
+      ]);
       expect(res).toEqual(['10:24:24', '10:24:24']);
     });
 

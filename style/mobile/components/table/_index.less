@@ -1,14 +1,14 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "./mixins/_text.less";
+@import './mixins/_text.less';
 
-@import "./mixins/_scrollbar.less";
+@import './mixins/_scrollbar.less';
 
-@import "./mixins/_reset.less";
+@import './mixins/_reset.less';
 
 @border: 1px solid @table-border-color;
 
@@ -137,7 +137,7 @@
     color: @table-head-text-color;
   }
 
-  td[key="row-select"] {
+  td[key='row-select'] {
     padding: @table-td-padding-vertical-top 0 @table-td-padding-vertical-bottom @table-td-padding-horizontal;
   }
 
@@ -400,7 +400,7 @@
         .@{prefix}-table__cell--fixed-left,
         .@{prefix}-table__cell--fixed-right {
           &:last-child::after {
-            content: "";
+            content: '';
             position: absolute;
             right: -6px;
             width: 6px;
@@ -730,7 +730,7 @@
   }
 }
 
-.@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key="row-select"] {
+.@{prefix}-table-expandable-icon-cell + .@{prefix}-table__cell--selectable[key='row-select'] {
   padding-left: @comp-margin-s;
 }
 

@@ -15,6 +15,7 @@ spline: navigation
 {{ compact }}
 
 ### 组件形状
+
 提供圆形和方形两种不同形状。
 
 {{ shape }}

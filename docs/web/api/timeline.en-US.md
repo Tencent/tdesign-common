@@ -2,7 +2,7 @@
 title: Timeline
 description: Timeline is used to display timeline.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

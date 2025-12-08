@@ -18,10 +18,7 @@ function walkSync(currentDirPath, callback) {
   const arr = [];
   fs.readdirSync(currentDirPath).forEach((name) => {
     const filePath = path.join(currentDirPath, name);
-    if (
-      fs.statSync(filePath).isDirectory()
-      && fs.readdirSync(filePath).some((n) => n === 'index.html')
-    ) {
+    if (fs.statSync(filePath).isDirectory() && fs.readdirSync(filePath).some((n) => n === 'index.html')) {
       arr.push(name);
     }
   });
@@ -30,8 +27,5 @@ function walkSync(currentDirPath, callback) {
 
 walkSync(path.join('style', device, 'components'), (res) => {
   const html = fs.readFileSync('.github/build/index.html').toString();
-  fs.writeFileSync(
-    path.join('style', device, 'index.html'),
-    html.replace('{{ componentsList }}', JSON.stringify(res))
-  );
+  fs.writeFileSync(path.join('style', device, 'index.html'), html.replace('{{ componentsList }}', JSON.stringify(res)));
 });

@@ -1,10 +1,10 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
 .@{prefix}-image-viewer__img-error {
   height: 440px;
@@ -132,8 +132,8 @@
 
       .@{prefix}-image-viewer__modal-image {
         display: block;
-        max-width: ~"min(90vw, 1000px)";
-        max-height: ~"min(90vh, 800px)";
+        max-width: ~'min(90vw, 1000px)';
+        max-height: ~'min(90vh, 800px)';
         transition: all @anim-duration-base @anim-time-fn-easing;
         transform: rotate(0deg);
         object-fit: contain;
@@ -241,7 +241,7 @@
 
       &::before,
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         height: 100%;
         z-index: 1;
@@ -290,7 +290,8 @@
       height: 100%;
     }
 
-    &:hover, &.@{prefix}-is-active {
+    &:hover,
+    &.@{prefix}-is-active {
       border-color: @brand-color;
     }
   }
@@ -320,7 +321,9 @@
       right: 40px;
     }
 
-    &.@{prefix}-image-viewer__modal-close-bt , &.@{prefix}-image-viewer__modal-prev-bt, &.@{prefix}-image-viewer__modal-next-bt {
+    &.@{prefix}-image-viewer__modal-close-bt,
+    &.@{prefix}-image-viewer__modal-prev-bt,
+    &.@{prefix}-image-viewer__modal-next-bt {
       position: fixed;
       z-index: 10;
       color: @text-color-anti;
@@ -418,8 +421,8 @@
 }
 
 .@{prefix}-image-viewer-mini__content {
-  max-width: ~"min(90vw, 1000px)";
-  max-height: ~"min(90vh, 800px)";
+  max-width: ~'min(90vw, 1000px)';
+  max-height: ~'min(90vh, 800px)';
 
   .@{prefix}-image-viewer__modal-pic {
 
@@ -442,8 +445,8 @@
 
       .@{prefix}-image-viewer__modal-image {
         display: block;
-        max-width: ~"min(80vw, 800px)";
-        max-height: ~"min(80vh, 600px)";
+        max-width: ~'min(80vw, 800px)';
+        max-height: ~'min(80vh, 600px)';
         transition: all @anim-duration-base ease;
         transform: rotate(0deg);
         object-fit: contain;

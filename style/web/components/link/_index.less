@@ -1,14 +1,14 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .link-attr-color(@theme) {
   // 状态 - 主题 颜色
-  @theme-default: e("link-color-@{theme}");
-  @theme-hover: e("link-color-@{theme}-hover");
-  @theme-active: e("link-color-@{theme}-active");
-  @theme-disabled: e("link-color-@{theme}-disabled");
-  @theme-focus: e("link-color-@{theme}-focus");
+  @theme-default: e('link-color-@{theme}');
+  @theme-hover: e('link-color-@{theme}-hover');
+  @theme-active: e('link-color-@{theme}-active');
+  @theme-disabled: e('link-color-@{theme}-disabled');
+  @theme-focus: e('link-color-@{theme}-focus');
 
   color: @@theme-default;
   // active 相关样式
@@ -18,7 +18,7 @@
   // hover - underline
   &.@{prefix}-link--hover-underline {
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       right: 0;
@@ -59,7 +59,7 @@
   // 下划线样式 优先级高于 t-link--hover-underline 需要放在后面 否则opacity 被覆盖 无法显示下划线
   &.@{prefix}-is-underline {
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       right: 0;
@@ -86,8 +86,8 @@
 }
 // size 相关样式
 .link-attr-size(@size) {
-  @font-size: e("link-font-@{size}");
-  @icon-margin-size: e("link-icon-margin-@{size}");
+  @font-size: e('link-font-@{size}');
+  @icon-margin-size: e('link-icon-margin-@{size}');
 
   font: @@font-size;
 
@@ -112,31 +112,31 @@
   transition: all @anim-duration-base linear;
 
   // size 相关样式
-  .link-attr-size("default");
+  .link-attr-size('default');
   &.@{prefix}-size-s {
-    .link-attr-size("s");
+    .link-attr-size('s');
   }
   &.@{prefix}-size-l {
-    .link-attr-size("l");
+    .link-attr-size('l');
   }
 
   &--theme-default {
-    .link-attr-color("default");
+    .link-attr-color('default');
   }
 
   &--theme-primary {
-    .link-attr-color("primary");
+    .link-attr-color('primary');
   }
 
   &--theme-success {
-    .link-attr-color("success");
+    .link-attr-color('success');
   }
 
   &--theme-danger {
-    .link-attr-color("danger");
+    .link-attr-color('danger');
   }
 
   &--theme-warning {
-    .link-attr-color("warning");
+    .link-attr-color('warning');
   }
 }
