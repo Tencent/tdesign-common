@@ -45,8 +45,8 @@ spline: form
 {{ input-number }}
 
 #### 垂直数字输入框
-{{  input-number-vertical }}
 
+{{  input-number-vertical }}
 
 ### 自定义
 

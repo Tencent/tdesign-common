@@ -25,7 +25,8 @@ export function calculateOffset(depElement: allElementDeps, offset: number, scro
   if (scrollPosition === 'auto') {
     if (tabOffset - leftOperationsWidth < offset) {
       return tabOffset - leftOperationsWidth;
-    } if (tabOffset + tabWidth > offset + wrapWidth - rightOperationsWidth) {
+    }
+    if (tabOffset + tabWidth > offset + wrapWidth - rightOperationsWidth) {
       return tabOffset + tabWidth - wrapWidth + rightOperationsWidth;
     }
   } else if (scrollPosition === 'start') {

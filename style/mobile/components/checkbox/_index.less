@@ -1,6 +1,6 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .@{checkbox} {
   display: inline-flex;
@@ -89,7 +89,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(.5);
+      transform: translate(-50%, -50%) scale(0.5);
       box-sizing: border-box;
 
       &--disabled {
@@ -105,7 +105,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(.5);
+      transform: translate(-50%, -50%) scale(0.5);
       box-sizing: border-box;
 
       &--disabled {
@@ -116,7 +116,7 @@
     &-line {
       &::before,
       &::after {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
         width: 2.5px;
@@ -186,7 +186,7 @@
     right: 0;
     height: 1px;
     background: @checkbox-border-color;
-    transform: scaleY(.5);
+    transform: scaleY(0.5);
 
     &--right {
       left: 16px;

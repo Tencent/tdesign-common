@@ -2,7 +2,7 @@
 title: Watermark
 description: Watermark is used to add watermark on a page.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 
@@ -31,6 +31,7 @@ spline: data
 {{ graylevel }}
 
 ### Different Layout watermark
+
 set layout to use different layout.
 
 {{ layout }}

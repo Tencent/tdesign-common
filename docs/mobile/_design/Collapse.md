@@ -32,8 +32,6 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/collapse/collapse-3.png" />
 </div>
 
-
-
 ### 推荐/慎用示例
 
 ##### 当信息层级较多时，不建议嵌套折叠面板，层级过多时建议审视信息结构或使用其它交互方式展示。
@@ -55,8 +53,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
-
 
 ### 相似组件
 

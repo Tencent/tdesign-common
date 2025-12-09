@@ -1,16 +1,16 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "./_doc.less";
+@import './_doc.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../_variables.less";
+@import '../../_variables.less';
 
 .@{prefix}-chat {
   .reset;
@@ -350,7 +350,7 @@
         padding-top: @comp-paddingTB-xl;
       }
 
-      >.@{prefix}-chat-loading {
+      > .@{prefix}-chat-loading {
         padding: 0 @comp-paddingLR-m;
       }
     }
@@ -379,7 +379,6 @@
       }
 
       .@{prefix}-chat__notice {
-
         // 模型切换为content插槽需要覆盖样式
         .@{prefix}-chat__text {
           padding: 0;
@@ -428,7 +427,7 @@
     }
 
     .@{prefix}-chat__detail {
-      max-width: ~"min(calc(100% - 40px), 800px)";
+      max-width: ~'min(calc(100% - 40px), 800px)';
     }
   }
 
@@ -696,7 +695,7 @@
     .@{prefix}-chat__text--variant--text & {
       padding-top: @comp-paddingTB-m;
 
-      ~.@{prefix}-chat__text {
+      ~ .@{prefix}-chat__text {
         padding-right: 0;
       }
     }

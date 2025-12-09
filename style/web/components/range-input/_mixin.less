@@ -48,28 +48,28 @@
 .range-input-status(@status) {
   &.@{prefix}-is-@{status} {
     border-color: @@borderColor;
-    @borderColor: "range-input-border-color-@{status}";
+    @borderColor: 'range-input-border-color-@{status}';
 
     &:focus {
       box-shadow: 0 0 0 2px @@boxShadowColor;
-      @boxShadowColor: "range-input-box-shadow-color-@{status}-focus";
+      @boxShadowColor: 'range-input-box-shadow-color-@{status}-focus';
     }
 
     &.@{prefix}-range-input--focused {
       box-shadow: 0 0 0 2px @@boxShadowColor;
-      @boxShadowColor: "range-input-box-shadow-color-@{status}-focus";
+      @boxShadowColor: 'range-input-box-shadow-color-@{status}-focus';
     }
 
     & > .@{prefix}-range-input__extra {
       color: @@fontColor;
-      @fontColor: "range-input-extra-color-@{status}";
+      @fontColor: 'range-input-extra-color-@{status}';
     }
 
     & > .@{prefix}-range-input__tips {
       color: @@fontColor;
       font-size: @font-size-s;
       margin-left: calc(-1 * @comp-paddingLR-xs);
-      @fontColor: "range-input-extra-color-@{status}";
+      @fontColor: 'range-input-extra-color-@{status}';
     }
   }
 }
@@ -86,7 +86,7 @@
   & when not (@size = l) {
     &.@{prefix}-size-@{size} {
       width: @@width-size;
-      @width-size: "range-input-width-@{size}";
+      @width-size: 'range-input-width-@{size}';
     }
   }
 }

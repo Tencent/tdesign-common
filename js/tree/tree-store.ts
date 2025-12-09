@@ -274,10 +274,7 @@ export class TreeStore {
    * @param {object} [options.props] 节点属性对象，作为过滤条件
    * @return TreeNode[] 符合条件的节点数组
    */
-  public getNodes(
-    item?: TypeTargetNode,
-    options?: TypeTreeFilterOptions,
-  ): TreeNode[] {
+  public getNodes(item?: TypeTargetNode, options?: TypeTreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
     if (isString(item) || isNumber(item)) {
@@ -355,10 +352,7 @@ export class TreeStore {
    * - {TreeNode} spec.node 目标树节点
    * - {object} spec.data 节点构造数据
    */
-  private parseNodeData(
-    para: TreeNodeValue | TreeNode | TypeTreeNodeData,
-    item: TypeTreeNodeData | TreeNode,
-  ) {
+  private parseNodeData(para: TreeNodeValue | TreeNode | TypeTreeNodeData, item: TypeTreeNodeData | TreeNode) {
     let value: TreeNodeValue = '';
     let node = null;
     let data = null;
@@ -398,10 +392,7 @@ export class TreeStore {
    * @param {object | TreeNode} [item] 节点构造数据, 或者节点构造数据数组，或者树节点
    * @return void
    */
-  public appendNodes(
-    para: TypeTargetNode | TypeTreeNodeData,
-    item?: TypeTreeNodeData | TreeNode,
-  ): void {
+  public appendNodes(para: TypeTargetNode | TypeTreeNodeData, item?: TypeTreeNodeData | TreeNode): void {
     const spec = this.parseNodeData(para, item);
     if (spec.data) {
       if (!spec.node) {
@@ -841,10 +832,7 @@ export class TreeStore {
    * @param {boolean} [options.withParents=true] 包含所有父节点
    * @return TreeNode[] 关联节点数组
    */
-  public getRelatedNodes(
-    list: TreeNodeValue[],
-    options?: TypeRelatedNodesOptions,
-  ): TreeNode[] {
+  public getRelatedNodes(list: TreeNodeValue[], options?: TypeRelatedNodesOptions): TreeNode[] {
     const conf = {
       // 默认倒序排列，从底层节点开始遍历
       reverse: false,

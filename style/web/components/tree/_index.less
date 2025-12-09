@@ -1,14 +1,14 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_text.less";
+@import '../../mixins/_text.less';
 
 // <name> 替换为组件名
 .@{prefix}-tree {
@@ -142,7 +142,7 @@
         display: block;
         height: @tree-node-drag-tip-height;
         border-radius: (@tree-node-drag-tip-height / 2);
-        content: "";
+        content: '';
         padding: inherit;
         background-clip: content-box;
       }
@@ -169,7 +169,7 @@
   // 用于撑开节点高度
   // 比起使用 padding , 更有利于动画展现
   &__item::before {
-    content: "";
+    content: '';
     display: block;
     width: 0;
     flex: 0 0 auto;
@@ -199,7 +199,7 @@
   }
 
   &__line::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -236,7 +236,7 @@
   // svg 动画与 icon 背景进行隔离
   // :after 仅用于增大点击范围
   &__icon::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     left: -2px;
@@ -329,7 +329,9 @@
 
   // 默认图标
   .@{prefix}-tree__icon {
-    transition: color, transform @anim-duration-moderate @anim-time-fn-easing;
+    transition:
+      color,
+      transform @anim-duration-moderate @anim-time-fn-easing;
   }
 
   .@{prefix}-tree__icon::after {
@@ -343,7 +345,9 @@
   // 图标动画
   .@{prefix}-tree__icon--default {
     .t-icon {
-      transition: color, transform @anim-time-fn-easing @anim-duration-base;
+      transition:
+        color,
+        transform @anim-time-fn-easing @anim-duration-base;
     }
   }
 
@@ -352,8 +356,8 @@
     display: flex;
     max-height: @tree-node-item-origin-height;
     opacity: 1;
-    transition: opacity @tree-node-transition-time linear
-      @tree-node-transition-time,
+    transition:
+      opacity @tree-node-transition-time linear @tree-node-transition-time,
       max-height @tree-node-transition-time linear 0s;
   }
 
@@ -366,7 +370,8 @@
     pointer-events: none;
     user-select: none;
     animation: initial;
-    transition: opacity @tree-node-transition-time linear 0s,
+    transition:
+      opacity @tree-node-transition-time linear 0s,
       max-height @tree-node-transition-time linear @tree-node-transition-time;
   }
 
@@ -411,8 +416,7 @@
   .@{prefix}-tree__item--enter-active,
   .@{prefix}-tree__item--enter-to,
   .@{prefix}-tree__item--leave,
-  .@{prefix}-tree__item--leave-active
-  .@{prefix}-tree__item--leave-to {
+  .@{prefix}-tree__item--leave-active .@{prefix}-tree__item--leave-to {
     animation: none;
     transition: none;
   }

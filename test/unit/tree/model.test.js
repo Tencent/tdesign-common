@@ -7,14 +7,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:value', () => {
     it('value 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1d1 = tree.getNode('t1.1');
       expect(t1d1.getModel().value).toBe(t1d1.value);
@@ -24,15 +29,20 @@ describe('tree:model', () => {
   describe('treeNodeModel:label', () => {
     it('label 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          label: 't1d1',
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              label: 't1d1',
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1d1 = tree.getNode('t1.1');
       expect(t1d1.getModel().label).toBe('t1d1');
@@ -47,15 +57,20 @@ describe('tree:model', () => {
   describe('treeNodeModel:data', () => {
     it('data 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          info: 't1d1',
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              info: 't1d1',
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1d1 = tree.getNode('t1.1');
       expect(t1d1.getModel().data.info).toBe('t1d1');
@@ -67,14 +82,19 @@ describe('tree:model', () => {
       const tree = new TreeStore({
         activable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1d1 = tree.getNode('t1.1');
       t1d1.setActived(true, {
@@ -88,14 +108,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:expanded', () => {
     it('expanded 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       tree.setExpanded(['t1']);
@@ -109,14 +134,19 @@ describe('tree:model', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -135,14 +165,19 @@ describe('tree:model', () => {
       const tree = new TreeStore({
         checkable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -163,15 +198,19 @@ describe('tree:model', () => {
         lazy: true,
         async load() {
           await delay(0);
-          return [{
-            value: 't1.1',
-          }];
+          return [
+            {
+              value: 't1.1',
+            },
+          ];
         },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
       await delay(0);
 
       let nodes = tree.getNodes();
@@ -197,14 +236,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:getLevel()', () => {
     it('getLevel 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -218,14 +262,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:getIndex()', () => {
     it('getIndex 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -239,14 +288,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:isFirst()', () => {
     it('isFirst 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -260,14 +314,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:isLast()', () => {
     it('isLast 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -281,14 +340,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:isLeaf()', () => {
     it('isLeaf 取值与 node 保持一致', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
@@ -302,11 +366,14 @@ describe('tree:model', () => {
   describe('treeNodeModel:insertBefore()', () => {
     it('insertBefore 方法插入节点到前面', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1'
-      }, {
-        value: 't2'
-      }]);
+      tree.append([
+        {
+          value: 't1',
+        },
+        {
+          value: 't2',
+        },
+      ]);
       tree.getNode('t2').getModel().insertBefore({
         value: 't3',
       });
@@ -326,11 +393,14 @@ describe('tree:model', () => {
   describe('treeNodeModel:insertAfter()', () => {
     it('insertAfter 方法插入节点到后面', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1'
-      }, {
-        value: 't2'
-      }]);
+      tree.append([
+        {
+          value: 't1',
+        },
+        {
+          value: 't2',
+        },
+      ]);
       tree.getNode('t2').getModel().insertAfter({
         value: 't3',
       });
@@ -350,16 +420,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:appendData()', () => {
     it('appendData 方法添加节点数据到另一个节点 children', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1'
-      }, {
-        value: 't2'
-      }]);
+      tree.append([
+        {
+          value: 't1',
+        },
+        {
+          value: 't2',
+        },
+      ]);
       tree.getNode('t1').getModel().appendData({
-        value: 't1.1'
+        value: 't1.1',
       });
       tree.getNode('t2').getModel().appendData({
-        value: 't2.1'
+        value: 't2.1',
       });
       await delay(0);
       const nodes = tree.getNodes();
@@ -372,14 +445,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:getPath()', () => {
     it('getPath 方法获取路径节点 model', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1d1 = tree.getNode('t1.1');
       const nodes = t1d1.getModel().getPath();
@@ -393,14 +471,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:getParent()', () => {
     it('getParent 方法获取父节点 model', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1d1 = tree.getNode('t1.1');
       const parent = t1d1.getModel().getParent();
@@ -412,14 +495,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:getParents()', () => {
     it('getParents 方法获取所有父节点 model', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1d1 = tree.getNode('t1.1');
       const parents = t1d1.getModel().getParents();
@@ -432,14 +520,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:getRoot()', () => {
     it('getParents 方法获取所有根节点 model', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1d1 = tree.getNode('t1.1');
       const root = t1d1.getModel().getRoot();
@@ -451,14 +544,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:getSiblings()', () => {
     it('getSiblings 方法获取兄弟节点 model', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1d1 = tree.getNode('t1.1');
       const nodes = t1d1.getModel().getSiblings();
@@ -472,17 +570,24 @@ describe('tree:model', () => {
   describe('treeNodeModel:getChildren()', () => {
     it('getChildren 方法获取子节点 model', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       const nodes = t1.getModel().getChildren();
@@ -494,15 +599,20 @@ describe('tree:model', () => {
 
     it('getChildren 方法发现没有子节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       expect(tree.getNode('t1.1').getModel().getChildren()).toBe(false);
       expect(tree.getNode('t1.2').getModel().getChildren()).toBe(false);
@@ -510,32 +620,44 @@ describe('tree:model', () => {
 
     it('getChildren 方法发现子节点为 true', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-          children: true,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+              children: true,
+            },
+          ],
+        },
+      ]);
       await delay(0);
       expect(tree.getNode('t1.2').getModel().getChildren()).toBe(true);
     });
 
     it('getChildren 深度遍历获取子节点 model', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       const nodes = t1.getModel().getChildren(true);
@@ -550,17 +672,24 @@ describe('tree:model', () => {
   describe('treeNodeModel:remove()', () => {
     it('remove 方法移除根节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       t1.getModel().remove();
@@ -571,19 +700,27 @@ describe('tree:model', () => {
 
     it('remove 方法移除目标节点下的指定节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }, {
-        value: 't2',
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+        {
+          value: 't2',
+        },
+      ]);
       await delay(0);
       const t1 = tree.getNode('t1');
       t1.getModel().remove('t1.1.1');
@@ -600,14 +737,19 @@ describe('tree:model', () => {
   describe('treeNodeModel:setData()', () => {
     it('setData 方法用于设置节点数据', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t1d1 = tree.getNode('t1.1');
       t1d1.getModel().setData({

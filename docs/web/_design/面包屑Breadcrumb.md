@@ -1,32 +1,32 @@
 # 面包屑Breadcrumb
+
 显示当前页面在系统层级结构的位置，并能返回之前任意层级的页面。
 
-
-
-
-
 ### 基础面包屑
+
 适用于广泛的基础用法，系统拥有超过两级以上的层级结构，用于切换向上任意层级的内容。
 
 ![基础面包屑](https://tdesign.gtimg.com/site/design/images/基础面包屑-1818754.jpg)
 
 ### 带图标的面包屑
+
 可自定义每项内容，统一图标加文字，图标放在文字前面。
 
 ![带图标的面包屑](https://tdesign.gtimg.com/site/design/images/带图标的面包屑-1818866.jpg)
 
 ### 自定义分隔符的面包屑
+
 通过 separator 的属性来自定义分隔符，建议用图标而非文本符号。
 
 ![自定义分隔符的面包屑](https://tdesign.gtimg.com/site/design/images/自定义分隔符的面包屑-1818826.jpg)
 
 ### 带下拉的面包屑
+
 面包屑支持下拉菜单，带下拉的面包屑分隔符建议避免使用 “ > ”。
 
 ![带下拉的面包屑](https://tdesign.gtimg.com/site/design/images/带下拉的面包屑-1818849.jpg)
 
 ## 组件设计指南
-
 
 ### 何时使用
 
@@ -48,7 +48,6 @@
   <div class="item">
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 

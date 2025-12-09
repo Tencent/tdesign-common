@@ -17,22 +17,14 @@ export function formatInputValue(value: string, format: string) {
 }
 
 // 计算最接近的时间点
-export function closestLookup(
-  availableArr: Array<any>,
-  calcVal: number,
-  step: number
-) {
+export function closestLookup(availableArr: Array<any>, calcVal: number, step: number) {
   if (step <= 1) return calcVal;
-  return availableArr.sort(
-    (a, b) => Math.abs(calcVal + 1 - a) - Math.abs(calcVal + 1 - b)
-  )[0];
+  return availableArr.sort((a, b) => Math.abs(calcVal + 1 - a) - Math.abs(calcVal + 1 - b))[0];
 }
 
-export function getPickerCols(format:string) {
+export function getPickerCols(format: string) {
   const renderCol: EPickerCols[] = [];
-  const {
-    meridiem, hour, minute, second, milliSecond,
-  } = EPickerCols;
+  const { meridiem, hour, minute, second, milliSecond } = EPickerCols;
   const match = format.match(TIME_FORMAT);
   match.forEach((m) => {
     switch (m) {

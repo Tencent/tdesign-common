@@ -32,5 +32,4 @@ spline: data
 
 ### 不同模式的折叠面板
 
-
 {{ other }}

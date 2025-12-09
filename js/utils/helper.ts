@@ -60,9 +60,7 @@ export function getBackgroundColor(color: string | string[] | LinearGradient): s
     }
     return `linear-gradient( ${color.join(',')} )`;
   }
-  const {
-    from, to, direction = 'to right', ...rest
-  } = color;
+  const { from, to, direction = 'to right', ...rest } = color;
   let keys = Object.keys(rest);
   if (keys.length) {
     keys = keys.sort((a, b) => {
@@ -88,7 +86,7 @@ export function getIEVersion() {
   // 判断是否IE11浏览器
   const isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf('rv:11.0') > -1;
   if (isIE) {
-    const reIE = new RegExp('MSIE (\\d+\\.\\d+);');
+    const reIE = /MSIE (\d+\.\d+);/;
     const match = userAgent.match(reIE);
     if (!match) return -1;
     const fIEVersion = parseFloat(match[1]);
@@ -131,7 +129,7 @@ export function getFlexGapPolyFill() {
  * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
  */
 export function getCharacterLength(str: string): number;
-export function getCharacterLength(str: string, maxCharacter?: number): { length: number; characters: string }
+export function getCharacterLength(str: string, maxCharacter?: number): { length: number; characters: string };
 export function getCharacterLength(str: string, maxCharacter?: number) {
   const hasMaxCharacter = isNumber(maxCharacter);
   if (!str || str.length === 0) {
@@ -188,11 +186,7 @@ export function getUnicodeLength(str?: string): number {
  * @param oldStr
  * @returns {string}
  */
-export function limitUnicodeMaxLength(
-  str?: string,
-  maxLength?: number,
-  oldStr?: string
-): string {
+export function limitUnicodeMaxLength(str?: string, maxLength?: number, oldStr?: string): string {
   // 旧字符满足字数要求则返回
   if ([...(oldStr ?? '')].slice().length === maxLength) return oldStr || '';
   return [...(str ?? '')].slice(0, maxLength).join('');
@@ -243,25 +237,23 @@ export function calculateNodeSize(targetElement: HTMLElement) {
 
   const style = window.getComputedStyle(targetElement);
 
-  const boxSizing = style.getPropertyValue('box-sizing')
-    || style.getPropertyValue('-moz-box-sizing')
-    || style.getPropertyValue('-webkit-box-sizing');
+  const boxSizing =
+    style.getPropertyValue('box-sizing') ||
+    style.getPropertyValue('-moz-box-sizing') ||
+    style.getPropertyValue('-webkit-box-sizing');
 
-  const paddingSize = (
-    parseFloat(style.getPropertyValue('padding-bottom'))
-    + parseFloat(style.getPropertyValue('padding-top'))
-  );
+  const paddingSize =
+    parseFloat(style.getPropertyValue('padding-bottom')) + parseFloat(style.getPropertyValue('padding-top'));
 
-  const borderSize = (
-    parseFloat(style.getPropertyValue('border-bottom-width'))
-    + parseFloat(style.getPropertyValue('border-top-width'))
-  );
+  const borderSize =
+    parseFloat(style.getPropertyValue('border-bottom-width')) + parseFloat(style.getPropertyValue('border-top-width'));
 
-  const sizingStyle = DOM_STYLE_PROPS
-    .map((name) => `${name}:${style.getPropertyValue(name)}`)
-    .join(';');
+  const sizingStyle = DOM_STYLE_PROPS.map((name) => `${name}:${style.getPropertyValue(name)}`).join(';');
 
   return {
-    paddingSize, borderSize, boxSizing, sizingStyle,
+    paddingSize,
+    borderSize,
+    boxSizing,
+    sizingStyle,
   };
 }

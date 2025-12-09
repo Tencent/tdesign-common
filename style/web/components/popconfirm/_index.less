@@ -1,14 +1,14 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../popup/_var.less";
+@import '../popup/_var.less';
 
 .@{popconfirm-cls} {
   .reset;
@@ -20,7 +20,7 @@
     padding: 0;
   }
 
-  &.@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-popup__arrow {
+  &.@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-popup__arrow {
     bottom: calc(-@popup-arrow-width / 2);
   }
 

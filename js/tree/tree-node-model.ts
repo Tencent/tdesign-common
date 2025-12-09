@@ -1,12 +1,7 @@
 import { isUndefined, isBoolean, omit, get } from 'lodash-es';
 import { TreeNode } from './tree-node';
 import { OptionData } from '../common';
-import {
-  TreeNodeValue,
-  TypeTreeNodeModel,
-  TypeTreeNodeData,
-  TypeTreeItem,
-} from './types';
+import { TreeNodeValue, TypeTreeNodeModel, TypeTreeNodeData, TypeTreeItem } from './types';
 import log from '../log/log';
 
 export const nodeKey = '__tdesign_tree-node__';
@@ -240,7 +235,7 @@ export class TreeNodeModel {
     }
 
     const parents = targetNode.getParents();
-    const parentValues = parents.map((pnode) => (pnode.value));
+    const parentValues = parents.map((pnode) => pnode.value);
     if (parentValues.indexOf(node.value) < 0) {
       log.warnOnce('Tree', `\`${value}\` is not a childNode of current node`);
       return;
@@ -258,11 +253,7 @@ export class TreeNodeModel {
     // syncAttrs 列举的属性，key 名称可被 tree.config.keys 定义
     // 因此同步状态时需要读取被定义的 key 名称
     // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
-    const syncAttrs = [
-      'value',
-      'label',
-      'disabled',
-    ];
+    const syncAttrs = ['value', 'label', 'disabled'];
     const cleanData = omit(data, ['children', ...syncAttrs]) as Partial<TypeTreeNodeData>;
     const { keys } = node.tree.config;
     syncAttrs.forEach((attr: string) => {

@@ -3,25 +3,34 @@ import { findParentValues } from '../../../../js/tree-select/utils';
 
 describe('tree-select:findParentValues', () => {
   describe('base', () => {
-    const data = [{
-      value: 't1',
-      label: 't1',
-      children: [{
-        value: 't1.1',
-        label: 't1.1',
-        children: [{
-          value: 't1.1.1',
-          label: 't1.1.1',
-        }],
-      }],
-    }, {
-      value: 't2',
-      label: 't2',
-      children: [{
-        value: 't2.1',
-        label: 't2.1',
-      }],
-    }];
+    const data = [
+      {
+        value: 't1',
+        label: 't1',
+        children: [
+          {
+            value: 't1.1',
+            label: 't1.1',
+            children: [
+              {
+                value: 't1.1.1',
+                label: 't1.1.1',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        value: 't2',
+        label: 't2',
+        children: [
+          {
+            value: 't2.1',
+            label: 't2.1',
+          },
+        ],
+      },
+    ];
 
     it('string', () => {
       const value = 't1.1.1';
@@ -61,25 +70,34 @@ describe('tree-select:findParentValues', () => {
   });
 
   describe('alias', () => {
-    const aliasData = [{
-      key: 't1',
-      name: 't1',
-      group: [{
-        key: 't1.1',
-        name: 't1.1',
-        group: [{
-          key: 't1.1.1',
-          name: 't1.1.1',
-        }],
-      }],
-    }, {
-      key: 't2',
-      name: 't2',
-      group: [{
-        key: 't2.1',
-        name: 't2.1',
-      }],
-    }];
+    const aliasData = [
+      {
+        key: 't1',
+        name: 't1',
+        group: [
+          {
+            key: 't1.1',
+            name: 't1.1',
+            group: [
+              {
+                key: 't1.1.1',
+                name: 't1.1.1',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        key: 't2',
+        name: 't2',
+        group: [
+          {
+            key: 't2.1',
+            name: 't2.1',
+          },
+        ],
+      },
+    ];
 
     it('string', () => {
       const value = 't1.1.1';

@@ -47,37 +47,32 @@ export const getColorFormatMap = (color: Color, type: 'encode' | 'decode') => {
 /**
  * 获取下拉框的格式选项
  */
-export const getColorFormatOptions = (enableAlpha: boolean) => (
+export const getColorFormatOptions = (enableAlpha: boolean) =>
   enableAlpha
     ? FORMATS.map((item) => (item in ALPHA_FORMAT_MAP ? ALPHA_FORMAT_MAP[item as AlphaConvertibleFormat] : item))
-    : FORMATS
-);
+    : FORMATS;
 
 /**
  * 获取当前格式的输入框配置
  */
-export const getColorFormatInputs = (
-  format: ColorFormat = 'RGB',
-  enableAlpha: boolean
-) => {
+export const getColorFormatInputs = (format: ColorFormat = 'RGB', enableAlpha: boolean) => {
   let finalFormat;
 
   /* 为了减少 `ALPHA_FORMAT_MAP` 中的重复代码
      `RGBA/HEX8/HSLA/HSVA` 会被转换为 `RGB/HEX/HSL/HSV` 后再匹配
      但在下一步会 push 一个代表透明度的输入框 */
   if (enableAlpha) {
-    finalFormat = Object.keys(ALPHA_FORMAT_MAP).find(
-      (key) => key in ALPHA_FORMAT_MAP && ALPHA_FORMAT_MAP[key as AlphaConvertibleFormat] === format
-    ) || format;
+    finalFormat =
+      Object.keys(ALPHA_FORMAT_MAP).find(
+        (key) => key in ALPHA_FORMAT_MAP && ALPHA_FORMAT_MAP[key as AlphaConvertibleFormat] === format
+      ) || format;
   } else {
     finalFormat = format;
   }
 
   if (!COLOR_FORMAT_INPUTS[finalFormat as BasicColorFormat]) return [];
 
-  const configs = [
-    ...(COLOR_FORMAT_INPUTS[finalFormat as BasicColorFormat]),
-  ];
+  const configs = [...COLOR_FORMAT_INPUTS[finalFormat as BasicColorFormat]];
 
   // CMYK 格式不支持透明度
   if (enableAlpha && format !== 'CMYK') {

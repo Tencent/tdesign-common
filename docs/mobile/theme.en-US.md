@@ -30,7 +30,6 @@ Because there are many CSS variables involved, a more intuitive `theme generator
 
 After configuring the theme CSS Variables you are satisfied with through the theme generator, please click `the download button`. We will export a new CSS file to your local computer. You only need to place the file in your project directory and import the CSS file in your project to get a TDesign with a brand new theme style.
 
-
 You can refer to the video below for the related operations.
 
 <video controls width="100%">
@@ -54,9 +53,9 @@ To modify these less variables, you need to import the component library ESM bun
 
 ```js
 // replace `tdesign-npm-name` with the actual package name you're using
-import TDesign from "tdesign-npm-name/esm";
+import TDesign from 'tdesign-npm-name/esm';
 // import global style of the component library
-import "tdesign-npm-name/esm/style/index.js";
+import 'tdesign-npm-name/esm/style/index.js';
 ```
 
 Refer to [the documentation](https://github.com/Tencent/tdesign-common/blob/develop/develop-install.en-US.md) for the differences between bundles.

@@ -72,7 +72,6 @@ spline: data
 
 {{ header-all-props }}
 
-
 #### 自定义loadingProps的卡片
 
 {{ custom-loading-props }}

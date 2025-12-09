@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-image__wrapper {
   position: relative;
@@ -104,7 +104,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       border-radius: @image-gallery-shadow-radius;
@@ -153,7 +153,9 @@
     z-index: calc(@image-gallery-cover-z-index + 1);
     opacity: 1;
     visibility: visible;
-    transition: visibility 0s, opacity @anim-duration-base linear;
+    transition:
+      visibility 0s,
+      opacity @anim-duration-base linear;
 
     &--hidden {
       visibility: hidden;

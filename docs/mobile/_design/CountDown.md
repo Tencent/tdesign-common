@@ -26,7 +26,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 不建议在同一个页面滥用倒计时，若需要反复使用，建议用较为轻量的样式.
@@ -42,7 +41,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

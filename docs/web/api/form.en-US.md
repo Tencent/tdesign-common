@@ -2,7 +2,7 @@
 title: Form
 description: Used to collect, verify and submit data, generally composed of input box, radio box, check box, selector and other controls.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: form
 ---
 
@@ -86,7 +86,7 @@ In many cases, the type of form data is often not only a simple object, but also
 
 ### Disabled Form
 
-You can disable an entire form item using the `disabled` attribute. 
+You can disable an entire form item using the `disabled` attribute.
 
 {{ disabled }}
 

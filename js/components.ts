@@ -23,12 +23,7 @@ export const WEB_COMPONENT_MAP: Record<string, string[]> = {
   'color-picker': ['ColorPicker', 'ColorPickerPanel'],
   comment: ['Comment'],
   'config-provider': ['ConfigProvider'],
-  'date-picker': [
-    'DatePicker',
-    'DatePickerPanel',
-    'DateRangePicker',
-    'DateRangePickerPanel',
-  ],
+  'date-picker': ['DatePicker', 'DatePickerPanel', 'DateRangePicker', 'DateRangePickerPanel'],
   descriptions: ['Descriptions', 'DescriptionsItem'],
   dialog: ['Dialog', 'DialogPlugin'],
   divider: ['Divider'],

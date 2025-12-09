@@ -1,5 +1,5 @@
 ---
-title: Radio 
+title: Radio
 description: A single checkbox represents the selection of only one option from a set of mutually exclusive options.
 isComponent: true
 usage: { title: '', description: '' }

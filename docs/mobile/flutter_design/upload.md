@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当需要进行图片上传时使用。
@@ -19,8 +17,6 @@
 <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/upload/upload-2.png" />
 </div>
-
-
 
 ### 推荐/慎用示例
 

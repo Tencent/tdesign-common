@@ -9,17 +9,24 @@ describe('tree:activable', () => {
       const tree = new TreeStore({
         activable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.getNode('t1.1').setActived(true, {
         directly: true,
@@ -42,17 +49,24 @@ describe('tree:activable', () => {
       const tree = new TreeStore({
         activable: false,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.getNode('t1.1').setActived(true, {
         directly: true,
@@ -68,17 +82,24 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.getNode('t1.1').setActived(true, {
         directly: true,
@@ -97,17 +118,24 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setActived(['t1.1', 't2.1']);
       const actived = tree.getActived();
@@ -123,17 +151,24 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       tree.setActived(['t1', 't1.1', 't2', 't2.1']);
@@ -146,17 +181,24 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setActived(['t1', 't1.1', 't2', 't2.1']);
       const activedNodes = tree.getActivedNodes('t1');
@@ -172,17 +214,24 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setActived(['t1', 't1.1']);
       expect(tree.getNode('t1').actived).toBe(true);
@@ -201,17 +250,24 @@ describe('tree:activable', () => {
   describe('treeStore:setActived()', () => {
     it('setActived 设置激活节点，未受到 activable 属性影响', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setActived(['t1', 't1.1']);
       expect(tree.getNode('t1').actived).toBe(true);
@@ -229,17 +285,24 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setActived(['t1', 't1.1']);
       expect(tree.getNode('t1').actived).toBe(true);
@@ -255,17 +318,24 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.setActived(['t1', 't1.1']);
       expect(tree.getNode('t1').actived).toBe(true);
@@ -287,18 +357,25 @@ describe('tree:activable', () => {
         activable: true,
         activeMultiple: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          activable: false,
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              activable: false,
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.getNode('t1').setActived(true, {
         directly: true,
@@ -314,13 +391,17 @@ describe('tree:activable', () => {
       const tree = new TreeStore({
         activable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          actived: true,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              actived: true,
+            },
+          ],
+        },
+      ]);
       expect(tree.getNode('t1.1').isActived()).toBe(true);
     });
   });
@@ -330,17 +411,24 @@ describe('tree:activable', () => {
       const tree = new TreeStore({
         activable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       const actived = tree.getNode('t1').setActived(true);
       expect(actived.length).toBe(1);
@@ -351,17 +439,24 @@ describe('tree:activable', () => {
       const tree = new TreeStore({
         activable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       let actived = tree.getNode('t1').setActived(true, {
         directly: true,
@@ -380,17 +475,24 @@ describe('tree:activable', () => {
       const tree = new TreeStore({
         activable: true,
       });
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+          ],
+        },
+      ]);
 
       tree.getNode('t1').setActived(true, {
         directly: true,

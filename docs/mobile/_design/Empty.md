@@ -23,6 +23,7 @@
 ### 组件搭配使用
 
 ##### 空状态与[步骤条](./steps)组合使用，通过步骤展示提示用户如何新建/添加。
+
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/empty/empty-3.png" />

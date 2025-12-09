@@ -2,7 +2,7 @@
 title: StickyTool
 description: StickyTool is  used to display information and operations on the side of a page on a permanent basis.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: navigation
 ---
 

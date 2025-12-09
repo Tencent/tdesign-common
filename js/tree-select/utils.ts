@@ -13,16 +13,16 @@ export function findParentValues(
   options: TreeOptionData[],
   targetValue: TargetValue,
   realValue: string,
-  realChildren: string,
-): (TargetValue)[] {
+  realChildren: string
+): TargetValue[] {
   let currentTargetValue = targetValue;
   if (currentTargetValue != null && typeof currentTargetValue === 'object') {
     currentTargetValue = (currentTargetValue as { [key: string]: string | number })?.[realValue];
   }
   if (currentTargetValue == null) return [];
 
-  function findPath(nodes: TreeOptionData[], parentPath: (TargetValue)[]): (TargetValue)[] | null {
-    let result: (TargetValue)[] | null = null;
+  function findPath(nodes: TreeOptionData[], parentPath: TargetValue[]): TargetValue[] | null {
+    let result: TargetValue[] | null = null;
     nodes.some((node) => {
       const newPath = [...parentPath, node[realValue]];
       if (node[realValue] === currentTargetValue) {

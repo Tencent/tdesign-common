@@ -1,12 +1,12 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "../../utilities/_animation.less";
+@import '../../utilities/_animation.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_scrollbar.less";
+@import '../../mixins/_scrollbar.less';
 
 .@{prefix}-tag-input {
   .reset;
@@ -45,7 +45,6 @@
 
   /** 设计稿：未填充标签场景，边距和已填充不同 */
   &.@{prefix}-is-empty {
-
     .@{prefix}-input__inner {
       margin-left: @comp-margin-xs;
     }
@@ -72,7 +71,6 @@
   }
 
   &.@{prefix}-input--auto-width {
-
     .@{prefix}-input.@{prefix}-input--focused {
       padding-right: @tag-input-clear-icon-padding-m;
     }
@@ -103,7 +101,6 @@
 
 // 标签数量超出时，换行显示
 .@{prefix}-tag-input--break-line:not(.@{prefix}-is-empty) {
-
   .@{prefix}-input {
     display: block;
 

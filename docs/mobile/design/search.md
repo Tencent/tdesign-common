@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当需要从海量信息中准确提取准确的内容时使用。
@@ -17,7 +15,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/search/search-2.png" />
   </div>
 </div>
-
 
 ### 常见用法
 
@@ -42,7 +39,6 @@
 <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/search/search-5.png" />
 </div>
-
 
 ### 相似组件
 

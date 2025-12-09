@@ -1,5 +1,5 @@
 ---
-title: Card 
+title: Card
 description: A basic card container that can hold text, lists, images, and paragraphs, often used in background overview pages.
 isComponent: true
 usage: { title: '', description: '' }

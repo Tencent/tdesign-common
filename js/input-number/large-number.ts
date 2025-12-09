@@ -1,7 +1,7 @@
 import { isString, isNumber, isObject } from 'lodash-es';
 import log from '../log/log';
 
-export type InputNumberDecimalPlaces = number | { enableRound: boolean, places: number };
+export type InputNumberDecimalPlaces = number | { enableRound: boolean; places: number };
 
 export function fillZero(length: number) {
   return new Array(length).fill(0).join('');
@@ -100,15 +100,11 @@ export function largePositiveNumberAdd(num1: string, num2: string): string {
   const decimalLength = decimalNumberSum.length;
   // 如果小数相加进位
   if (decimalLength > newDecimalNumber1.length && decimalLength > newDecimalNumber2.length) {
-    return [
-      removeInvalidZero(largeIntNumberAdd(integerSum, '1')),
-      removeInvalidZero(decimalNumberSum.slice(1), true),
-    ].filter((v: string) => v).join('.');
+    return [removeInvalidZero(largeIntNumberAdd(integerSum, '1')), removeInvalidZero(decimalNumberSum.slice(1), true)]
+      .filter((v: string) => v)
+      .join('.');
   }
-  return [
-    removeInvalidZero(integerSum),
-    removeInvalidZero(decimalNumberSum, true)
-  ].filter((v: string) => v).join('.');
+  return [removeInvalidZero(integerSum), removeInvalidZero(decimalNumberSum, true)].filter((v: string) => v).join('.');
 }
 
 /**
@@ -160,10 +156,7 @@ export function formatENumber(num: string): string {
 /**
  * 比较两个大数的大小
  */
-export function compareLargeNumber(
-  num1: string,
-  num2: string,
-): 1 | -1 | 0 {
+export function compareLargeNumber(num1: string, num2: string): 1 | -1 | 0 {
   const [integer1, decimal1] = formatENumber(num1).split('.');
   const [integer2, decimal2] = formatENumber(num2).split('.');
   const result = compareLargeIntegerNumber(integer1.replace('-', ''), integer2.replace('-', ''));
@@ -182,7 +175,7 @@ export function compareLargeNumber(
 }
 
 // 确认是否为无限大/小
-export function isInfinity(num: number| string) {
+export function isInfinity(num: number | string) {
   return [-Infinity, Infinity].includes(Number(num));
 }
 
@@ -194,11 +187,7 @@ export function isSafeNumber(num: string | number) {
 /**
  * 比较两个数的大小
  */
-export function compareNumber(
-  num1: string | number,
-  num2: string | number,
-  largeNumber?: boolean,
-) {
+export function compareNumber(num1: string | number, num2: string | number, largeNumber?: boolean) {
   const isSafeNumberCompare = isSafeNumber(num1) && isSafeNumber(num2) && !largeNumber;
   const isInfinityCompare = isInfinity(num1) || isInfinity(num2);
   if (isSafeNumberCompare || isInfinityCompare) {
@@ -217,7 +206,9 @@ export function compareNumber(
  * @param decimal 是否为小数位相减
  */
 export function largeIntegerNumberSubtract(
-  num1: string, num2: string, p?: { decimal?: boolean, stayZero?: boolean }
+  num1: string,
+  num2: string,
+  p?: { decimal?: boolean; stayZero?: boolean }
 ): string {
   if (num1 === num2) return '0';
   const { decimal, stayZero } = p || {};
@@ -384,7 +375,7 @@ export function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberD
 export function largeNumberToFixed(
   number: string | number,
   decimalPlaces: InputNumberDecimalPlaces = 0,
-  largeNumber: boolean = true,
+  largeNumber: boolean = true
 ): string {
   if (Number.isNaN(Number(number))) return '';
   if (!largeNumber) {
@@ -397,16 +388,16 @@ export function largeNumberToFixed(
   let [num1, num2] = number.split('.');
   // 如果不存在小数点，则补足位数
   if (!num2) {
-    return (places > 0 && enableRound) ? [number, (fillZero(places))].join('.') : number;
+    return places > 0 && enableRound ? [number, fillZero(places)].join('.') : number;
   }
   // 存在小数点，保留 0 位小数，灵活配置四舍五入
   if (places === 0) {
-    return (enableRound && Number(num2[0]) >= 5) ? largePositiveNumberAdd(num1, '1') : num1;
+    return enableRound && Number(num2[0]) >= 5 ? largePositiveNumberAdd(num1, '1') : num1;
   }
   // 存在小数点，保留 > 0 位小数，灵活配置四舍五入
   let decimalNumber = num2.slice(0, places);
   if (num2.length < places) {
-    decimalNumber += (fillZero(places - num2.length));
+    decimalNumber += fillZero(places - num2.length);
   } else if (enableRound) {
     // 用于判断是否处于 1.08 这种小数为0开始的边界情况
     const leadZeroNum = decimalNumber.match(/^0+/)?.[0].length;
@@ -416,19 +407,11 @@ export function largeNumberToFixed(
     const needAdded = Number(num2[places]) >= 5;
 
     // 四舍五入后的结果
-    decimalNumber = needAdded
-      ? largePositiveNumberAdd(decimalNumber, '1')
-      : decimalNumber;
+    decimalNumber = needAdded ? largePositiveNumberAdd(decimalNumber, '1') : decimalNumber;
 
     // 边界场景1（1.08 这种小数为0开始的边界情况）：计算后有误判的可能，如008 +1 误判为 8+1，需要手动补 0
-    if (
-      leadZeroNum
-      && needAdded
-      && leadZeroNum + decimalNumber.length >= places
-    ) {
-      decimalNumber = `${fillZero(
-        places - decimalNumber.length
-      )}${decimalNumber}`;
+    if (leadZeroNum && needAdded && leadZeroNum + decimalNumber.length >= places) {
+      decimalNumber = `${fillZero(places - decimalNumber.length)}${decimalNumber}`;
     }
     // 边界场景2:（0.99 这种可能进位的边界情况）：计算后有误判的可能，如995 四舍五入后需进位
     if (leadNineNum && decimalNumber.length > places) {

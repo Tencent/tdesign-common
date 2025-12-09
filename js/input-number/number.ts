@@ -16,11 +16,7 @@ export * from './large-number';
 export type NumberType = number | string;
 
 // 小于最大值，才允许继续添加
-export function canAddNumber(
-  num: NumberType,
-  max: NumberType,
-  largeNumber = false
-): boolean {
+export function canAddNumber(num: NumberType, max: NumberType, largeNumber = false): boolean {
   if (!num && num !== 0) return true;
   if (largeNumber && isString(num)) {
     return compareNumber(num, max, largeNumber) < 0;
@@ -29,11 +25,7 @@ export function canAddNumber(
 }
 
 // 大于最小值，才允许继续减少
-export function canReduceNumber(
-  num: NumberType,
-  min: NumberType,
-  largeNumber = false
-): boolean {
+export function canReduceNumber(num: NumberType, min: NumberType, largeNumber = false): boolean {
   if (!num && num !== 0) return true;
   if (largeNumber && isString(num)) {
     return compareNumber(num, min, largeNumber) > 0;
@@ -167,10 +159,7 @@ export function getStepValue(p: {
   return largeNumber ? newVal : Number(newVal);
 }
 
-export type InputNumberErrorType =
-  | 'exceed-maximum'
-  | 'below-minimum'
-  | undefined;
+export type InputNumberErrorType = 'exceed-maximum' | 'below-minimum' | undefined;
 
 /**
  * 最大值和最小值校验

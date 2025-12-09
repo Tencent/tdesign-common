@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当用户需要快捷地进行数值/程度选择时使用。
@@ -13,7 +11,6 @@
    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-1.png" />
   </div>
 </div>
-
 
 ### 常见用法
 
@@ -34,7 +31,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-3.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 

@@ -2,7 +2,7 @@ export default function observe(
   element: HTMLElement,
   root: HTMLElement,
   callback: Function,
-  marginBottom: number,
+  marginBottom: number
 ): IntersectionObserver {
   if (typeof window === 'undefined') return null;
   if (!window || !window.IntersectionObserver) {
@@ -22,7 +22,7 @@ export default function observe(
       {
         rootMargin: `0px 0px ${marginBottom}px 0px`,
         root,
-      },
+      }
     );
     io.observe(element);
   } catch (e) {
