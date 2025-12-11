@@ -218,6 +218,7 @@ export default {
     mirrorTipText: '미러 이미지',
     rotateTipText: '회전하다',
     originalSizeTipText: '원본 크기',
+    previewText: '미리보기',
   },
   typography: {
     expandText: '펼치다',

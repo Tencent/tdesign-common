@@ -218,6 +218,7 @@ export default {
     mirrorTipText: '鏡像',
     rotateTipText: '回転する',
     originalSizeTipText: 'オリジナルサイズ',
+    previewText: 'プレビュー',
   },
   typography: {
     expandText: 'もっと拡大する',
