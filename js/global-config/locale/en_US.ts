@@ -219,6 +219,7 @@ export default {
     mirrorTipText: 'mirror',
     rotateTipText: 'rotate',
     originalSizeTipText: 'original',
+    previewText: 'preview',
   },
   typography: {
     expandText: 'more',

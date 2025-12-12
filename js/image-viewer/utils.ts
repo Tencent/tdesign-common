@@ -6,7 +6,7 @@ const isSameOrigin = (url: string) => {
     const imgUrl = new URL(url, window.location.href);
     return imgUrl.origin === window.location.origin;
   } catch {
-    return true;
+    return false;
   }
 };
 
@@ -16,6 +16,16 @@ const directDownload = (imgSrc: string, name: string) => {
   a.href = imgSrc;
   a.click();
   a.remove();
+};
+
+const fileDownload = (obj: Blob | MediaSource, name: string) => {
+  const url = URL.createObjectURL(obj);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 };
 
 const canvasDownload = (imgSrc: string, name: string) => {
@@ -29,31 +39,18 @@ const canvasDownload = (imgSrc: string, name: string) => {
 
     const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.download = name;
-      a.href = url;
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
-  };
 
+    const extension = name.split('.').pop()?.toLowerCase() || 'png';
+    const mimeType = `image/${extension === 'jpg' ? 'jpeg' : extension}`;
+
+    canvas.toBlob((blob) => {
+      fileDownload(blob, name);
+    }, mimeType);
+  };
   image.src = imgSrc;
 };
 
-const fileDownload = (file: File, name: string) => {
-  const url = URL.createObjectURL(file);
-  const a = document.createElement('a');
-  a.download = name;
-  a.href = url;
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-};
-
-export const downloadFile = (imgSrc: string | File) => {
+export const downloadImage = (imgSrc: string | File) => {
   const randomName = Math.random().toString(32).slice(2);
 
   if (imgSrc instanceof File) {
