@@ -202,7 +202,11 @@ const generateCssVariables = async (componentName) => {
       validPaths.map((filePath) => fs.promises.readFile(filePath, 'utf8'))
     );
 
-    const cssVariableContent = parseCssVariables(fileContents.join(), parsedKeys);
+    let cssVariableContent = '';
+
+    fileContents.forEach((content) => {
+      cssVariableContent += parseCssVariables(content, parsedKeys);
+    });
 
     return cssVariableContent;
   } catch (error) {
