@@ -231,6 +231,7 @@ export default {
     mirrorTipText: 'Зеркало',
     rotateTipText: 'Поворот',
     originalSizeTipText: 'Оригинальный размер',
+    previewText: 'Предпросмотр',
   },
   typography: {
     expandText: 'раскрывать',

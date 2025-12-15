@@ -217,6 +217,7 @@ export default {
     mirrorTipText: 'مرآة',
     rotateTipText: 'استدارة',
     originalSizeTipText: 'أصلي',
+    previewText: 'معاينة',
   },
   typography: {
     expandText: 'توسيع',
