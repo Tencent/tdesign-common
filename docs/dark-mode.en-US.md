@@ -19,9 +19,9 @@ document.documentElement.removeAttribute('theme-mode');
 
 ```javascript
 // dark mode
-document.documentElement.classList.add("dark");
+document.documentElement.classList.add('dark');
 // light mode
-document.documentElement.classList.remove("dark");
+document.documentElement.classList.remove('dark');
 ```
 
 ### Implementation Solution
