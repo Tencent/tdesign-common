@@ -257,3 +257,34 @@ export function calculateNodeSize(targetElement: HTMLElement) {
     sizingStyle,
   };
 }
+
+/**
+ * 检测当前浏览器，获得浏览器名称和版本
+ * @returns {name: string, version: number}
+ */
+export function detectBrowser() {
+  if (typeof navigator === 'undefined' || !navigator) return { name: 'unknown', version: 0 };
+  const ua = navigator.userAgent;
+
+  // 正则表达式
+  const BROWSER_REGEXES = [
+    { name: 'edge', regex: /Edg\/([0-9.]+)/i },
+    { name: 'opera', regex: /OPR\/([0-9.]+)/i },
+    { name: 'chrome', regex: /Chrome\/([0-9.]+)/i },
+    { name: 'safari', regex: /AppleWebKit.+Version\/([0-9.]+) Safari\/(?!.*(Chrome|Chromium|Edg|OPR))/i },
+    { name: 'firefox', regex: /Firefox\/([0-9.]+)/i },
+  ];
+
+  for (let i = 0; i < BROWSER_REGEXES.length; i++) {
+    const { name, regex } = BROWSER_REGEXES[i];
+    const match = ua.match(regex);
+    if (match?.[1]) {
+      return {
+        name,
+        version: Number(match[1]?.split('.')[0] || 0)
+      };
+    }
+  }
+
+  return { name: 'unknown', version: 0 };
+}
