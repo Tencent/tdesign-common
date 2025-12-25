@@ -193,6 +193,29 @@ export function limitUnicodeMaxLength(str?: string, maxLength?: number, oldStr?:
 }
 
 /**
+ * 是否样式单位
+ * @param value 样式值
+ * @returns 是否样式单位
+ */
+export const hasStyleUnit = (value: string): boolean => {
+  return /px|rpx|em|rem|%|vh|vw/.test(value);
+};
+
+/**
+ * 样式单位格式化
+ * @param value 样式值
+ * @param unit 单位，默认为'px'
+ * @returns 格式化后的样式值
+ */
+export function formatStyleUnit(value: string | number, unit = 'px'): string {
+  if (isString(value)) {
+    return hasStyleUnit(value) ? value : `${value}${unit}`;
+  }
+
+  return `${value}${unit}`;
+}
+
+/**
  * 兼容样式中支持number/string类型的传值 得出最后的结果。
  * @param param number或string类型的可用于样式上的值
  * @returns 可使用的样式值。
