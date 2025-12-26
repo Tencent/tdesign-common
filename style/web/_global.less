@@ -20,13 +20,14 @@
 // 统一的可旋转箭头
 .@{prefix}-fake-arrow {
   path {
-    transition: d @anim-duration-base;
+    transition: transform @anim-duration-base;
     stroke: currentcolor;
+    transform-origin: center;
   }
 
   &--active {
     path {
-      d: path('M3.75 10.2002L7.99274 5.7998L12.2361 10.0425');
+      transform: rotate(180deg);
     }
   }
 }
