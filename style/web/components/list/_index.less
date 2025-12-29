@@ -113,7 +113,7 @@
   }
 
   &--split {
-    .@{prefix}-list-item::after {
+    .@{prefix}-list-item:not(:last-child)::after {
       background: @list-item-split-color;
     }
   }
