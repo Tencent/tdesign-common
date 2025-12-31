@@ -77,7 +77,7 @@
       }
 
       &-description {
-        margin-right: @list-meta-description-margin-right;
+        margin: @list-meta-description-margin;
         color: @list-meta-description-color;
       }
     }
@@ -113,7 +113,7 @@
   }
 
   &--split {
-    .@{prefix}-list-item::after {
+    .@{prefix}-list-item:not(:last-child)::after {
       background: @list-item-split-color;
     }
   }
