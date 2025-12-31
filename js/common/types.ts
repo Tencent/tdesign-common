@@ -1,3 +1,18 @@
+/**
+ * 类型函数
+ * 将字符类型转换成 CamelCase 类型
+ * @param S 字符串
+ * @param B 字符串的分隔符，默认为 '_'
+ * @example CamelCase<'a_b_c'> -> aBC
+ * @example CamelCase<'a-b-c', '-'> -> aBC
+ */
+export type CamelCase<S extends string, B extends string = '_'> =
+  S extends Lowercase<S>
+    ? S extends `${infer F}${B}${infer RF}${infer R}`
+      ? `${F}${Uppercase<RF>}${CamelCase<R, B>}`
+      : S
+    : CamelCase<Lowercase<S>, B>;
+
 export type PlainObject = { [key: string]: any };
 
 export type OptionData = {
@@ -28,24 +43,3 @@ export type CSSSelector = string;
 export interface Styles {
   [css: string]: string | number;
 }
-
-export enum EKeyboardDirection {
-  left = 37,
-  up = 38,
-  right = 39,
-  down = 40,
-}
-
-export const ARROW_DOWN_REG = /^ArrowDown$/i;
-export const ARROW_UP_REG = /^ArrowUp$/i;
-export const ARROW_LEFT_REG = /^ArrowLeft$/i;
-export const ARROW_RIGHT_REG = /^ArrowRight$/i;
-export const ESCAPE_REG = /^Escape$/i;
-export const SPACE_REG = /^Space$/i;
-export const ENTER_REG = /^Enter$/i;
-export const SHIFT_REG = /^(Shift|ShiftLeft|ShiftRight)$/i;
-export const CLEAR_REG = /^KeyC$/i;
-export const ALL_REG = /^(KeyA|KeyL)$/i;
-export const CHECKED_CODE_REG = /^(Enter|Space)$/i;
-
-export const THEME_MODE = 'theme-mode';

@@ -9,12 +9,7 @@ export interface EasingFunction {
 }
 
 /**
- * @export
- * @param {number} current 当前时间
- * @param {number} start 开始值
- * @param {number} end 结束值
- * @param {number} duration 持续时间
- * @returns
+ * 线性缓动
  */
 export const linear: EasingFunction = (current, start, end, duration) => {
   const change = end - start;
@@ -23,12 +18,7 @@ export const linear: EasingFunction = (current, start, end, duration) => {
 };
 
 /**
- * @export
- * @param {number} current 当前时间
- * @param {number} start 开始值
- * @param {number} end 结束值
- * @param {number} duration 持续时间
- * @returns
+ * 三次缓入缓出
  */
 export const easeInOutCubic: EasingFunction = (current, start, end, duration) => {
   const change = (end - start) / 2;
@@ -37,6 +27,5 @@ export const easeInOutCubic: EasingFunction = (current, start, end, duration) =>
     return change * time * time * time + start;
   }
   time -= 2;
-  // eslint-disable-next-line no-return-assign
   return change * (time * time * time + 2) + start;
 };

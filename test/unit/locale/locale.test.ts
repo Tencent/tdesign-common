@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { t } from '../../../js/global-config/t';
+import { t } from '../../../js/global-config';
 
 describe('国际化函数 t', () => {
   describe('基本变量替换', () => {

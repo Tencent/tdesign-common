@@ -1,5 +1,4 @@
-import setStyle from '../utils/setStyle';
-import { getIEVersion } from '../utils/helper';
+import { setStyle, getIEVersion } from '../common';
 
 export default function circleAdapter(circleElem: HTMLElement) {
   let basicStyle = {};

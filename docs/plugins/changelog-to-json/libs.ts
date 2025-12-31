@@ -3,7 +3,7 @@ import {
   MOBILE_COMPONENT_MAP,
   NON_PASCAL_CASE_NAMES,
   WEB_COMPONENT_MAP,
-} from '../../../js/components';
+} from '../../../js/common/components';
 import type { Platform } from './types';
 
 export const convert2PascalCase = (name: string) =>
