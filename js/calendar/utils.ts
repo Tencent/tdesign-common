@@ -14,13 +14,9 @@ export const createDefaultCurDate = (): dayjs.Dayjs => dayjs(dayjs().format('YYY
  * @param range 用于设置日历的年月份显示范围，[范围开始，范围结束]
  * @returns 处理完成的日历范围
  */
-export const handleRange = (
-  range?: Array<CalendarValue>
-): { from: CalendarValue; to: CalendarValue } | null => {
+export const handleRange = (range?: Array<CalendarValue>): { from: CalendarValue; to: CalendarValue } | null => {
   // 检查范围边界
-  const parseRangeBoundary = (
-    value: CalendarRange['from'] | CalendarRange['to'] | null | undefined
-  ) => {
+  const parseRangeBoundary = (value: CalendarRange['from'] | CalendarRange['to'] | null | undefined) => {
     if (value === undefined || value === null) {
       return null;
     }
@@ -46,9 +42,7 @@ export const handleRange = (
   }
 
   // 未指定边界上/下限时使用默认值
-  const fallback = (
-    edge: 'from' | 'to'
-  ): { parsed: dayjs.Dayjs; original: string } => {
+  const fallback = (edge: 'from' | 'to'): { parsed: dayjs.Dayjs; original: string } => {
     let fallbackParsed = dayjs(MIN_YEAR);
     if (edge === 'to') {
       fallbackParsed = createDefaultCurDate();
