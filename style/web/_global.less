@@ -20,15 +20,29 @@
 // 统一的可旋转箭头
 .@{prefix}-fake-arrow {
   path {
-    transition: transform @anim-duration-base;
+    transition: d @anim-duration-base;
     stroke: currentcolor;
-    transform-origin: center;
   }
 
   &--active {
     path {
-      transform: scaleY(-1);
+      d: path('M3.75 10.2002L7.99274 5.7998L12.2361 10.0425');
     }
+  }
+}
+
+// Safari 兼容方案: 使用 transform 而非 d 动画
+// Safari 不支持对 path 的 d 属性进行动画
+.@{prefix}-fake-arrow.@{prefix}-fake-arrow--transform {
+   path {
+    transition: transform @anim-duration-base;
+    transform-origin: center;
+    stroke: currentcolor;
+   }
+  &.@{prefix}-fake-arrow--active {
+     path {
+      transform: scaleY(-1);
+     }
   }
 }
 
