@@ -51,7 +51,7 @@ export function getUniqueRowValue(row: TableRowData, colKey: string, rowIndex: n
  * @remove 移除行数据，及其子节点
  * @appendTo 追加子节点到末尾
  */
-class TableTreeStore<T extends TableRowData = TableRowData> {
+export class TableTreeStore<T extends TableRowData = TableRowData> {
   /** 树形结构 Map 存储 */
   treeDataMap: TableTreeDataMap = new Map();
 
@@ -728,8 +728,6 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     return true;
   }
 }
-
-export default TableTreeStore;
 
 /**
  * 更新展开的子节点数量

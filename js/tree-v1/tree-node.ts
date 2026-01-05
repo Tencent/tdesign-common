@@ -1448,5 +1448,3 @@ export class TreeNode {
     return model;
   }
 }
-
-export default TreeNode;

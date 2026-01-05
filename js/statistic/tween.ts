@@ -18,7 +18,7 @@ export interface TweenSettings {
 
 const quartOut = (t: number) => 1 - Math.abs((t - 1) ** 4);
 
-export default class Tween {
+export class Tween {
   private from: Record<string, number>;
 
   private to: Record<string, number>;

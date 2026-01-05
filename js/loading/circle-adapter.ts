@@ -1,6 +1,6 @@
 import { setStyle, getIEVersion } from '../common';
 
-export default function circleAdapter(circleElem: HTMLElement) {
+export function circleAdapter(circleElem: HTMLElement) {
   let basicStyle = {};
 
   if (!circleElem || typeof window === 'undefined') {
@@ -10,7 +10,6 @@ export default function circleAdapter(circleElem: HTMLElement) {
   const computedStyle = window.getComputedStyle?.(circleElem);
   const color = computedStyle?.color || '';
   const fontSize = computedStyle?.fontSize || '12px'; // 默认字体大小
-
   // to fix the browser compat of foreignObject in Safari,
   // https://bugs.webkit.org/show_bug.cgi?id=23113
   const ua = window?.navigator?.userAgent;

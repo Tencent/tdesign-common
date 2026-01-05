@@ -1,1 +1,1 @@
-export { default as circleAdapter } from './circle-adapter';
+export * from './circle-adapter';

@@ -946,5 +946,3 @@ export class TreeStore {
     });
   }
 }
-
-export default TreeStore;
