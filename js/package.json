@@ -3,6 +3,6 @@
   "author": "tdesign",
   "license": "MIT",
   "exports": {
-    "./*": "./*"
+    "./*": "./*/index.ts"
   }
 }

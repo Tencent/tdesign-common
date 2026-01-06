@@ -8,7 +8,7 @@ import {
   largeNumberAdd,
   largeNumberSubtract,
 } from './large-number';
-import log from '../log';
+import { log } from '../log';
 import type { InputNumberDecimalPlaces } from './large-number';
 
 export * from './large-number';

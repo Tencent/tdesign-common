@@ -8,3 +8,4 @@ export * from './object';
 export * from './array';
 export * from './style';
 export * from './layout';
+export * from './helper';

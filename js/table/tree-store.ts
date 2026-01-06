@@ -4,7 +4,7 @@ import { isUndefined, get, set } from 'lodash-es';
 /* eslint-disable no-use-before-define */
 import { isRowSelectedDisabled } from './utils';
 import { PrimaryTableCol, TableRowState, TableRowValue, TableRowData } from './types';
-import log from '../log';
+import { log } from '../log';
 
 export type TableTreeDataMap = Map<string | number, TableRowState>;
 

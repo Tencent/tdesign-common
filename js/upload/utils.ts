@@ -1,5 +1,5 @@
 import { SizeUnit } from './types';
-import log from '../log/log';
+import { log } from '../log';
 
 export const IMAGE_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp)/i;
 export const IMAGE_ALL_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp|.dwg|.dxf|.svf|.tif|.tiff|.arw)/i;

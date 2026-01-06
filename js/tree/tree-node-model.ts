@@ -2,7 +2,7 @@ import { isUndefined, isBoolean, omit, get } from 'lodash-es';
 import { TreeNode } from './tree-node';
 import { OptionData } from '../common';
 import { TreeNodeValue, TypeTreeNodeModel, TypeTreeNodeData, TypeTreeItem } from './types';
-import log from '../log/log';
+import { log } from '../log';
 
 export const nodeKey = '__tdesign_tree-node__';
 

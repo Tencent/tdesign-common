@@ -4,7 +4,7 @@ import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-import log from '../log';
+import { log } from '../log';
 
 type DateValue = string | number | Date;
 

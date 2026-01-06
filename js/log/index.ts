@@ -1,3 +1,1 @@
-import log from './log';
-
-export default log;
+export * from './log';

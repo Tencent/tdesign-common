@@ -1,6 +1,6 @@
 import { isFunction } from 'lodash-es';
 /* eslint-disable no-param-reassign */
-import log from '../log/log';
+import { log } from '../log';
 import { UploadFile, XhrOptions } from './types';
 import { getCurrentDate } from './utils';
 
