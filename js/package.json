@@ -1,32 +1,8 @@
 {
   "name": "@tdesign/utils",
-  "private": true,
   "author": "tdesign",
   "license": "MIT",
   "exports": {
-    "./common": "./common/index.ts",
-    "./components": "./common/components.ts",
-    "./tree": "./tree/index.ts",
-    "./tree-v1": "./tree-v1/index.ts",
-    "./color-picker": "./color-picker/index.ts",
-    "./upload": "./upload/index.ts",
-    "./input-number": "./input-number/index.ts",
-    "./date-picker": "./date-picker/index.ts",
-    "./time-picker": "./time-picker/index.ts",
-    "./qrcode": "./qrcode/index.ts",
-    "./watermark": "./watermark/index.ts",
-    "./statistic": "./statistic/index.ts",
-    "./table": "./table/index.ts",
-    "./log": "./log/index.ts",
-    "./message": "./message/index.ts",
-    "./loading": "./loading/index.ts",
-    "./progress": "./progress/index.ts",
-    "./slider": "./slider/index.ts",
-    "./tabs": "./tabs/index.ts",
-    "./drawer": "./drawer/index.ts",
-    "./avatar": "./avatar/index.ts",
-    "./image-viewer": "./image-viewer/index.ts",
-    "./tree-select": "./tree-select/index.ts",
-    "./global-config": "./global-config/index.ts"
+    "./*": "./*"
   }
 }
