@@ -125,3 +125,8 @@
   + .@{prefix}-card__body {
   }
 }
+
+.@{prefix}-loading__parent .@{prefix}-card ~ .@{prefix}-loading__overlay {
+  border-top-left-radius: calc(@card-border-radius - 1px);
+  border-top-right-radius: calc(@card-border-radius - 1px);
+}
