@@ -113,4 +113,12 @@ describe('largeNumberSubtract', () => {
   it('0.222222222 - 0.3', () => {
     expect(largeNumberSubtract('0.222222222', '0.3')).toBe(String(-0.077777778));
   });
+
+  it('-0.222222222 - (-0.3)', () => {
+    expect(largeNumberSubtract('-0.222222222', '-0.3')).toBe(String(0.077777778));
+  });
+
+  it('-0.222222222 - (-0.000000001)', () => {
+    expect(largeNumberSubtract('-0.222222222', '-0.000000001')).toBe(String(-0.222222221));
+  });
 });
