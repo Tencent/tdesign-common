@@ -80,6 +80,21 @@
   }
 }
 
+.@{prefix}-size-s {
+  &.@{prefix}-progress--thin {
+    .@{prefix}-progress__bar {
+      height: @progress-line-stroke-width-small;
+    }
+    .@{prefix}-progress__info {
+      font-size: @progress-line-font-size-small;
+    }
+  }
+
+  &.@{prefix}-progress--plump {
+    height: @progress-stroke-plump-width-small;
+  }
+}
+
 //环形
 .@{prefix}-progress--circle {
   position: relative;
