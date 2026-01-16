@@ -39,6 +39,9 @@ const INPUT_FILE_MAP = {
   '.oga': /audio\/ogg/i,
   '.ogv': /video\/ogg/i,
   '.ogx': /application\/ogg/i,
+  '.ai': /application\/postscript/i,
+  '.eps': /application\/postscript/i,
+  '.ps': /application\/postscript/i,
 };
 
 /**

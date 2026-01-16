@@ -257,3 +257,10 @@ export function calculateNodeSize(targetElement: HTMLElement) {
     sizingStyle,
   };
 }
+
+export function isSafari(): boolean {
+  if (typeof window === 'undefined') return false;
+
+  const ua = window?.navigator?.userAgent;
+  return /Safari/.test(ua) && !/Chrome/.test(ua);
+}
