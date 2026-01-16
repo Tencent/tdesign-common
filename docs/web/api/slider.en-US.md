@@ -44,7 +44,7 @@ The digital input box is provided in the component, which can be used together t
 
 {{ input-number }}
 
-#### Vertical number input box 
+#### Vertical number input box
 
 {{ input-number-vertical }}
 
