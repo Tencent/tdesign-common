@@ -59,7 +59,6 @@ ChatEngine 是一个底层对话引擎，提供灵活的 Hook API 用于深度�
 {{ custom-content }}
 
 - **自定义内容渲染**：如果需要自定义消息内容的渲染方式，可以按照以下步骤实现：
-
   - 1. 扩展类型：通过 TypeScript 声明自定义内容类型
   - 2. 解析数据：在 `onMessage` 中返回自定义类型的数据结构
   - 3. 监听变化：通过 `onMessageChange` 监听消息变化并同步到本地状态
@@ -129,7 +128,7 @@ const GlobalProgressBar: React.FC = () => {
   const { stateMap, currentStateKey } = useAgentState();
 
   /* 后端通过 STATE_SNAPSHOT 和 STATE_DELTA 事件推送状态数据，模拟数据如下：
-  // 
+  //
   // STATE_SNAPSHOT（初始快照）：
   // data: {"type":"STATE_SNAPSHOT","snapshot":{"task_xxx":{"progress":0,"message":"准备开始规划...","items":[]}}}
   //
@@ -186,13 +185,11 @@ const GlobalProgressBar: React.FC = () => {
 **示例要点：**
 
 1. **三种典型工具调用模式**
-
    - 天气查询：展示基础的 `TOOL_CALL_*` 事件处理
    - 规划步骤：展示 `STATE_*` 事件订阅 + `agentState` 自动注入
    - 用户偏好：展示 Human-in-the-Loop 交互式工具
 
 2. **工具组件内状态使用**
-
    - 工具组件通过 `agentState` 参数自动获取状态，无需额外 Hook
    - 配置 `subscribeKey` 告诉 Renderer 订阅哪个状态 key
 
