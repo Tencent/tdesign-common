@@ -83,28 +83,12 @@ a.@{prefix}-menu__item {
     }
   }
 
-  .@{prefix}-submenu {
-    > .@{prefix}-menu__item {
-      overflow: unset;
-
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: -20px;
-        left: 0;
-        right: 0;
-        height: 20px;
-      }
-    }
-  }
-
   .@{prefix}-menu__item {
     height: @head-menu-item-height;
     line-height: @head-menu-item-height;
     padding: 0 @comp-paddingLR-m;
     justify-content: center;
-    transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+    transition: all @anim-duration-slow cubic-bezier(0.645, 0.045, 0.355, 1);
     gap: @comp-margin-s;
 
     .t-icon {
@@ -127,7 +111,7 @@ a.@{prefix}-menu__item {
   width: @default-menu-width;
   display: inline-block;
   background: @menu-theme-light;
-  transition: width @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+  transition: width @anim-duration-slow cubic-bezier(0.645, 0.045, 0.355, 1);
   white-space: nowrap;
 
   .@{prefix}-menu__item {
@@ -364,8 +348,7 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius-default;
-    transition:
-      background-color @anim-duration-slow @anim-time-fn-easing,
+    transition: background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
     box-sizing: border-box;
 
@@ -511,8 +494,14 @@ a.@{prefix}-menu__item {
       bottom: 0;
     }
 
-    &--top::before {
+    &--placement-bottom::before {
       top: -20px;
+      left: 0;
+      right: 0;
+      height: 20px;
+    }
+    &--placement-top::before {
+      bottom: -20px;
       left: 0;
       right: 0;
       height: 20px;
@@ -644,7 +633,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__popup {
       background: @menu-theme-dark;
-      border: solid .5px @menu-border-color--dark;
+      border: solid 0.5px @menu-border-color--dark;
 
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
@@ -756,7 +745,7 @@ a.@{prefix}-menu__item {
 
 // opacity-transition
 .@{prefix}-opacity-transition {
-  transition: opacity @anim-duration-slow cubic-bezier(.55, 0, .1, 1);
+  transition: opacity @anim-duration-slow cubic-bezier(0.55, 0, 0.1, 1);
 }
 
 .horizontal-collapse-transition .@{prefix}-submenu__title .@{prefix}-submenu__icon-arrow {
@@ -766,7 +755,7 @@ a.@{prefix}-menu__item {
 
 .@{prefix}-menu__popup {
   top: 0;
-  left: @pop-padding-m;
+  left: calc(0px - @pop-padding-m);
 
   .@{prefix}-menu__item,
   .@{prefix}-submenu {
