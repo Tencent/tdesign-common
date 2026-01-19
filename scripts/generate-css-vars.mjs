@@ -43,7 +43,14 @@ const FRAMEWORK_BASE_PATH_MAP = {
 };
 
 // 需要过滤的目录名称
-const FILTERED_DIR = ['mixins', 'node_modules', 'common', 'hooks', 'locale', 'shared'];
+const FILTERED_DIR = [
+  'mixins',
+  'node_modules',
+  'common',
+  'hooks',
+  'locale',
+  'shared'
+];
 
 // LESS 文件路径模板
 const LESS_FILE_MAP = {
@@ -106,7 +113,8 @@ const findFilePath = (framework, componentName) => {
   if (!lessPathTemplate) {
     throw new Error(`⚠️ 未找到 framework "${framework}" 对应的路径配置`);
   }
-  const lessPath = FRAMEWORK_BASE_PATH_MAP[framework] + lessPathTemplate.replace(/{COMPONENT_NAME}/g, componentName);
+  const lessPath = FRAMEWORK_BASE_PATH_MAP[framework]
+    + lessPathTemplate.replace(/{COMPONENT_NAME}/g, componentName);
 
   return resolveCwd(lessPath);
 };
@@ -123,7 +131,11 @@ const getAllComponentName = async (framework) => {
     return items
       .filter((item) => item.isDirectory())
       .map((item) => item.name)
-      .filter((name) => !name.startsWith('.') && !name.startsWith('_') && !FILTERED_DIR.includes(name));
+      .filter((name) => (
+        !name.startsWith('.')
+        && !name.startsWith('_')
+        && !FILTERED_DIR.includes(name)
+      ));
   } catch (error) {
     throw new Error(`❌ 无法读取目录 ${dirPath}: ${error.message}`);
   }
@@ -192,7 +204,9 @@ const generateCssVariables = async (componentName) => {
     }
 
     // 并行读取所有有效文件
-    const fileContents = await Promise.all(validPaths.map((filePath) => fs.promises.readFile(filePath, 'utf8')));
+    const fileContents = await Promise.all(
+      validPaths.map((filePath) => fs.promises.readFile(filePath, 'utf8'))
+    );
 
     let cssVariableContent = '';
 
@@ -229,7 +243,10 @@ const updateDocVariables = (filePath, headContent, variables) => {
 
     if (content.includes('### CSS Variables')) {
       // 替换现有部分
-      newContent = content.replace(/(^|\n+)### CSS Variables[\s\S]*?(?=###|$)/, cssVariablesSection);
+      newContent = content.replace(
+        /(^|\n+)### CSS Variables[\s\S]*?(?=###|$)/,
+        cssVariablesSection
+      );
     } else {
       // 追加到文件末尾
       const trimmedContent = content.trimEnd();
@@ -249,7 +266,11 @@ const updateDocVariables = (filePath, headContent, variables) => {
  * @param {string} cssVariableHeadContent - 中文头部内容
  * @param {string} cssVariableHeadContentEn - 英文头部内容
  */
-const processComponent = async (componentName, cssVariableHeadContent, cssVariableHeadContentEn) => {
+const processComponent = async (
+  componentName,
+  cssVariableHeadContent,
+  cssVariableHeadContentEn
+) => {
   try {
     const variables = await generateCssVariables(componentName);
 
@@ -259,8 +280,8 @@ const processComponent = async (componentName, cssVariableHeadContent, cssVariab
         throw new Error(`⚠️ 未找到 framework "${FRAMEWORK}" 对应的文档路径配置`);
       }
 
-      const docsPath =
-        FRAMEWORK_BASE_PATH_MAP[FRAMEWORK] + docsPathTemplate.replace(/{COMPONENT_NAME}/g, componentName);
+      const docsPath = FRAMEWORK_BASE_PATH_MAP[FRAMEWORK]
+        + docsPathTemplate.replace(/{COMPONENT_NAME}/g, componentName);
 
       updateDocVariables(`${docsPath}.md`, cssVariableHeadContent, variables);
       updateDocVariables(`${docsPath}.en-US.md`, cssVariableHeadContentEn, variables);
@@ -281,14 +302,12 @@ const processComponent = async (componentName, cssVariableHeadContent, cssVariab
  * 批量处理所有组件
  */
 const processAllComponents = async () => {
-  const cssVariableHeadContent =
-    '\n### CSS Variables\n\n' +
-    '组件提供了下列 CSS 变量，可用于自定义样式。\n' +
-    '名称 | 默认值 | 描述 \n-- | -- | --\n';
-  const cssVariableHeadContentEn =
-    '\n### CSS Variables\n\n' +
-    'The component provides the following CSS variables, which can be used to customize styles.\n' +
-    'Name | Default Value | Description \n-- | -- | --\n';
+  const cssVariableHeadContent = '\n### CSS Variables\n\n'
+    + '组件提供了下列 CSS 变量，可用于自定义样式。\n'
+    + '名称 | 默认值 | 描述 \n-- | -- | --\n';
+  const cssVariableHeadContentEn = '\n### CSS Variables\n\n'
+    + 'The component provides the following CSS variables, which can be used to customize styles.\n'
+    + 'Name | Default Value | Description \n-- | -- | --\n';
 
   let componentNames = [];
 
@@ -321,6 +340,9 @@ const main = async () => {
 // 执行主程序
 main().catch((error) => {
   // eslint-disable-next-line no-console
-  console.error(COMPONENT_NAME === 'all' ? '❌ 批量处理失败:' : `❌ ${COMPONENT_NAME} 处理失败`, error);
+  console.error(
+    COMPONENT_NAME === 'all' ? '❌ 批量处理失败:' : `❌ ${COMPONENT_NAME} 处理失败`,
+    error
+  );
   process.exit(1);
 });
