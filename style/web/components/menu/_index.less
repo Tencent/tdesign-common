@@ -684,10 +684,6 @@ a.@{prefix}-menu__item {
     opacity: 0;
     .list-style-none();
 
-    &.@{prefix}-popup__content {
-      position: absolute;
-    }
-
     &-wrapper {
       padding: @pop-padding-m;
       height: 100%;
@@ -770,7 +766,7 @@ a.@{prefix}-menu__item {
 
 .@{prefix}-menu__popup {
   top: 0;
-  left: calc(100% - @pop-padding-m);
+  left: @pop-padding-m;
 
   .@{prefix}-menu__item,
   .@{prefix}-submenu {
