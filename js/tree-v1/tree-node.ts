@@ -1,5 +1,5 @@
 import { get, isBoolean, isFunction, isNil, isNull, isNumber, uniqueId } from 'lodash-es';
-import log from '../log';
+import { log } from '../log';
 import { createNodeModel, updateNodeModel } from './tree-node-model';
 import { TreeStore } from './tree-store';
 import type {
@@ -1448,5 +1448,3 @@ export class TreeNode {
     return model;
   }
 }
-
-export default TreeNode;

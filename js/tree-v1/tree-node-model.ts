@@ -2,7 +2,7 @@ import { isUndefined, isBoolean, pick, omit } from 'lodash-es';
 import { TreeNode } from './tree-node';
 import { OptionData } from '../common';
 import { TreeNodeValue, TypeTreeNodeModel, TypeTreeNodeData, TypeTreeItem, TreeNodeModelProps } from './types';
-import log from '../log/log';
+import { log } from '../log';
 
 // 获取节点需要暴露的属性
 function getExposedProps(node: TreeNode): TreeNodeModelProps {

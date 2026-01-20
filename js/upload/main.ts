@@ -2,7 +2,7 @@ import { isFunction, isNumber } from 'lodash-es';
 /* eslint-disable no-param-reassign */
 import { getCurrentDate, isOverSizeLimit } from './utils';
 import xhr from './xhr';
-import log from '../log/log';
+import { log } from '../log';
 import {
   UploadFile,
   SizeLimitObj,

@@ -1,9 +1,8 @@
 {
-  "name": "@tdesign/common-js",
-  "private": true,
+  "name": "@tdesign/utils",
   "author": "tdesign",
   "license": "MIT",
   "exports": {
-    "./*": "./*.ts"
+    "./*": "./*/index.ts"
   }
 }

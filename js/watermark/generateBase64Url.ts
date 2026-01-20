@@ -1,6 +1,6 @@
 import { WatermarkText, WatermarkImage, WatermarkLayout } from './type';
 
-export default function generateBase64Url(
+export function generateBase64Url(
   {
     width,
     height,

@@ -1,12 +1,15 @@
 type Placement = 'top' | 'bottom' | 'left' | 'right' | 'mouse';
 
-const getPosition = (
+/**
+ * 获取元素定位位置
+ */
+export function getPosition(
   targetEle: HTMLElement,
   contentEle: HTMLElement,
   placement: Partial<Placement>,
   clientX?: Number,
   clientY?: Number
-): { left: number; top: number } => {
+): { left: number; top: number } {
   const targetRect = targetEle.getBoundingClientRect() as DOMRect;
   const contentRect = contentEle.getBoundingClientRect() as DOMRect;
 
@@ -17,7 +20,6 @@ const getPosition = (
 
   if (targetRect && contentRect) {
     const dWidth = targetRect.width - contentRect.width;
-    // eslint-disable-next-line default-case
     switch (placement) {
       case 'top':
         position.left += targetRect.left + dWidth / 2;
@@ -31,7 +33,8 @@ const getPosition = (
         position.left += Number(clientX);
         position.top += typeof clientY !== 'undefined' ? Number(clientY) + 16 : targetRect.top + targetRect.height + 8;
         break;
-      // 后续有需要可以再扩展
+      default:
+        break;
     }
 
     if (placement === 'mouse') {
@@ -42,12 +45,10 @@ const getPosition = (
         bottom: document.documentElement.scrollTop + document.documentElement.clientHeight,
       };
 
-      // 底部溢出时，定位到元素上方
       if (position.top > edges.bottom - contentRect.height) {
         position.top = document.documentElement.scrollTop + targetRect.top - contentRect.height - 8;
       }
 
-      // 右侧溢出时，确保元素能完全展示
       if (position.left > edges.right - contentRect.width) {
         position.left = edges.right - contentRect.width;
       }
@@ -55,6 +56,25 @@ const getPosition = (
   }
 
   return position;
-};
+}
 
-export default getPosition;
+/**
+ * 根据宽度计算响应式尺寸
+ */
+export function calcSize(width: number): string {
+  let size = 'xs';
+  if (width < 768) {
+    size = 'xs';
+  } else if (width >= 768 && width < 992) {
+    size = 'sm';
+  } else if (width >= 992 && width < 1200) {
+    size = 'md';
+  } else if (width >= 1200 && width < 1400) {
+    size = 'lg';
+  } else if (width >= 1400 && width < 1880) {
+    size = 'xl';
+  } else {
+    size = 'xxl';
+  }
+  return size;
+}

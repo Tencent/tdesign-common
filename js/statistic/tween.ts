@@ -4,7 +4,7 @@
  * TDesign vue 2 need to ensure compatibility with users who are using IE and Vue2,
  * it is necessary to use setInterval instead of requestAnimationFrame when the browser version is less than 9
  */
-import { getIEVersion } from '../utils/helper';
+import { getIEVersion } from '../common';
 
 export interface TweenSettings {
   from: Record<string, number>;
@@ -18,7 +18,7 @@ export interface TweenSettings {
 
 const quartOut = (t: number) => 1 - Math.abs((t - 1) ** 4);
 
-export default class Tween {
+export class Tween {
   private from: Record<string, number>;
 
   private to: Record<string, number>;

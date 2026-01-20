@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-export default function randomMovingStyle() {
+export function randomMovingStyle() {
   const align = Math.floor(Math.random() * 4);
   const p1 = Math.floor(Math.random() * 70) + 30;
   const leftTopLimit = 0;

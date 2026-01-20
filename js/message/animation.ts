@@ -70,7 +70,7 @@ function getFadeOutKeyframes(placement: string, offsetHeight: Number): Array<Key
   ];
 }
 
-function fadeIn(dom: HTMLElement, placement: string) {
+export function fadeIn(dom: HTMLElement, placement: string) {
   if (!dom) return;
   const offsetWidth = dom?.offsetWidth || 0;
   const offsetHeight = dom?.offsetHeight || 0;
@@ -81,7 +81,7 @@ function fadeIn(dom: HTMLElement, placement: string) {
   dom.animate?.(fadeInKeyframes, ANIMATION_OPTION);
 }
 
-function fadeOut(dom: HTMLElement, placement: string, onFinish: Function) {
+export function fadeOut(dom: HTMLElement, placement: string, onFinish: Function) {
   if (!dom) return;
   const offsetHeight = dom.offsetHeight || 0;
   const fadeOutKeyframes: Array<Keyframe> | null = getFadeOutKeyframes(placement, offsetHeight);
@@ -104,5 +104,3 @@ function fadeOut(dom: HTMLElement, placement: string, onFinish: Function) {
     onFinish();
   }
 }
-
-export { fadeIn, fadeOut };

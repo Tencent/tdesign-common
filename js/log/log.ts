@@ -3,7 +3,7 @@ import { Log } from './types';
 
 const logSet = new Set();
 
-const log: Log = {
+export const log: Log = {
   warn(componentName, message): void {
     console.warn(`TDesign ${componentName} Warn: ${message}`);
   },
@@ -26,5 +26,3 @@ const log: Log = {
     console.info(`TDesign ${componentName} Info: ${message}`);
   },
 };
-
-export default log;
