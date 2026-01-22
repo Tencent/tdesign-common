@@ -87,7 +87,7 @@
     cursor: pointer;
     transition: all @anim-time-fn-easing @anim-duration-base;
 
-    &:hover {
+    &:hover:not(.@{prefix}-is-disabled) {
       color: @input-number-button-color-hover;
       border-color: @input-number-button-color-hover;
 
@@ -96,7 +96,7 @@
       }
     }
 
-    &:active {
+    &:active:not(.@{prefix}-is-disabled) {
       color: @input-number-button-color-hover;
       background-color: @bg-color-container-hover;
     }
@@ -160,7 +160,7 @@
     background-color: @input-number-button-bg-color-disabled;
 
     .t-icon {
-      color: @text-color-secondary;
+      color: @input-number-button-color-disabled;
     }
   }
 }
@@ -280,7 +280,7 @@
       font-size: @input-number-right-font-size;
     }
 
-    &:hover {
+    &:hover:not(.@{prefix}-is-disabled) {
       background: @input-number-right-button-hover-bg-color;
 
       .t-icon {
