@@ -81,7 +81,7 @@ export const WEB_COMPONENT_MAP: Record<string, string[]> = {
 };
 
 export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
-  'action-sheet': ['ActionSheet'],
+  'action-sheet': ['ActionSheet', 'ActionSheetPlugin'],
   avatar: ['Avatar', 'AvatarGroup'],
   'back-top': ['BackTop'],
   badge: ['Badge'],
@@ -97,7 +97,7 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   'date-time-picker': ['DateTimePicker'],
   dialog: ['Dialog', 'DialogPlugin'],
   divider: ['Divider'],
-  drawer: ['Drawer'],
+  drawer: ['Drawer', 'DrawerPlugin'],
   'dropdown-menu': ['DropdownMenu', 'DropdownItem'],
   empty: ['Empty'],
   fab: ['Fab'],
@@ -142,7 +142,7 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   tabs: ['Tabs', 'TabPanel'],
   tag: ['Tag', 'CheckTag'],
   textarea: ['Textarea'],
-  toast: ['Toast'],
+  toast: ['Toast', 'ToastPlugin'],
   'tree-select': ['TreeSelect'],
   upload: ['Upload'],
 };
