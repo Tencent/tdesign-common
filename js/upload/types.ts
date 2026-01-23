@@ -149,7 +149,7 @@ export interface FileChangeParams {
   /** 是否允许重复上传相同文件名的文件 */
   allowUploadDuplicateFile?: boolean;
   /** 调用摄像头捕获文件 */
-  capture?: string;
+  capture?: string | boolean;
   /** 文件上传的数量不超过 max */
   max?: number;
   /** 图片文件大小限制 */
