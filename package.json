@@ -54,7 +54,7 @@
     "dayjs": "^1.11.4",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^8.0.1",
