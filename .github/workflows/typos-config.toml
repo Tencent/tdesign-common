@@ -8,4 +8,5 @@ default.extend-ignore-re   = [
 [default.extend-words]
 actived = "actived"
 colum = "colum"
+consts = "consts"
 loosing = "loosing"
