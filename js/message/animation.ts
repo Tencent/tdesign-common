@@ -1,4 +1,4 @@
-import { PLACEMENT_LIST } from './consts';
+import { PLACEMENT_LIST } from './constants';
 
 type CompositeOperationOrAuto = 'accumulate' | 'add' | 'auto' | 'replace';
 
