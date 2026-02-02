@@ -1,2 +1,2 @@
 export * from './animation';
-export * from './consts';
+export * from './constants';

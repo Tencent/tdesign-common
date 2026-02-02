@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 import type { CalendarRange, CalendarValue } from './types';
-import { MIN_YEAR } from './consts';
+import { MIN_YEAR } from './constants';
 
 /**
  * 根据当前时间创建一个默认日期
