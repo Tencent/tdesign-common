@@ -66,6 +66,14 @@ The date that does not support user selection can be disabled from clicking.
 
 {{ disable-date }}
 
+### Custom Date Selectable Range
+
+Define the optional range of dates through the `range` attribute. Dates outside the range cannot be selected.
+
+- Using `range` will limit the range of year and month selections at the top, so `range` should be used together with the `panelActiveDate` property to define the default selected year and month.
+
+{{ range }}
+
 ### Selector for specifying the start of the week
 
 You can specify the day of the week from which a week starts through the `firstDayOfWeek` attribute. This is only valid when a date is selected (`mode = date`). The default value is 1, that is, it starts from Monday. You can set it to start from Sunday as follows.
