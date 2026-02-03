@@ -70,7 +70,7 @@ The date that does not support user selection can be disabled from clicking.
 
 Define the optional range of dates through the `range` attribute. Dates outside the range cannot be selected.
 
-- Using `range` will limit the range of year and month selections at the top, so `range` should be used together with the `panelActiveDate` property to define the default selected year and month.
+`range` determines the selectable range, and by default, the left boundary is used as the displayed year and month. However, if you have specific display requirements, you can use it in conjunction with the `panelActiveDate` to determine the currently displayed year and month by default.
 
 {{ range }}
 
