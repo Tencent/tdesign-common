@@ -192,8 +192,8 @@
     }
     & when(@type = dots) {
       .@{prefix}-swiper__navigation-item {
-        @itemWidth: 'swiper-navigation-item-dot-size';
-        @itemHeight: 'swiper-navigation-item-dot-size';
+        @itemWidth: 'swiper-navigation-item-dot-size--@{size}';
+        @itemHeight: 'swiper-navigation-item-dot-size--@{size}';
         @itemWidthActive: 'swiper-navigation-item-width-bars-@{size}-active';
         @itemMargin: 'swiper-navigation-item-margin-@{size}';
 
@@ -255,24 +255,22 @@
   }
 
   & when(@position = outside) {
-    & when(@type = bars) {
-      .@{prefix}-swiper__navigation-item {
-        span {
-          background-color: @swiper-navigation-item-bg-outside;
+    .@{prefix}-swiper__navigation-item {
+      span {
+        background-color: @swiper-navigation-item-bg-outside;
 
-          &:hover {
-            background-color: @swiper-navigation-item-outside-bg-hover;
-          }
-
-          &:active {
-            background-color: @swiper-navigation-item-outside-bg-active;
-          }
+        &:hover {
+          background-color: @swiper-navigation-item-outside-bg-hover;
         }
-      }
-      .@{prefix}-is-active {
-        span {
+
+        &:active {
           background-color: @swiper-navigation-item-outside-bg-active;
         }
+      }
+    }
+    .@{prefix}-is-active {
+      span {
+        background-color: @swiper-navigation-item-outside-bg-active;
       }
     }
   }
