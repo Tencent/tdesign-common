@@ -237,8 +237,7 @@ export class TreeNode {
     if (this.isLeaf()) {
       // initExpanded 时，子节点没有完全加载，无法依赖 isLeaf 状态判断
       this.expanded = false;
-      const expandedKey = config.allowDuplicateValue ? this.getNodeMapKey() : this.value;
-      this.tree.expandedMap.delete(expandedKey);
+      this.tree.expandedMap.delete(this.getNodeMapKey());
     }
 
     // checked 状态依赖于子节点状态
@@ -258,10 +257,10 @@ export class TreeNode {
    * @return void
    */
   private initChecked(): void {
-    const { tree, value, parent } = this;
+    const { tree, parent } = this;
     const { checkedMap, config } = tree;
-    const { checkStrictly, allowDuplicateValue } = config;
-    const checkedKey = allowDuplicateValue ? this.getNodeMapKey() : value;
+    const { checkStrictly } = config;
+    const checkedKey = this.getNodeMapKey();
     if (this.checked) {
       checkedMap.set(checkedKey, true);
     }
@@ -282,7 +281,7 @@ export class TreeNode {
     const { tree } = this;
     let { expanded } = this;
     const { config } = tree;
-    const expandedKey = config.allowDuplicateValue ? this.getNodeMapKey() : this.value;
+    const expandedKey = this.getNodeMapKey();
     if (isNumber(config.expandLevel) && this.getLevel() < config.expandLevel) {
       tree.expandedMap.set(expandedKey, true);
       expanded = true;
@@ -304,10 +303,8 @@ export class TreeNode {
    */
   private initActived(): void {
     const { tree, actived } = this;
-    const { allowDuplicateValue } = tree.config;
     if (actived && this.isActivable()) {
-      const activedKey = allowDuplicateValue ? this.getNodeMapKey() : this.value;
-      tree.activedMap.set(activedKey, true);
+      tree.activedMap.set(this.getNodeMapKey(), true);
     }
   }
 
@@ -348,8 +345,7 @@ export class TreeNode {
 
     // 如果之前是叶子节点，现在有了子节点，且 expandAll 为 true，则展开
     if (wasLeaf && tree.config.expandAll && !this.isLeaf()) {
-      const expandedKey = tree.config.allowDuplicateValue ? this.getNodeMapKey() : this.value;
-      tree.expandedMap.set(expandedKey, true);
+      tree.expandedMap.set(this.getNodeMapKey(), true);
       this.expanded = true;
     }
 
@@ -440,8 +436,7 @@ export class TreeNode {
       tree.nodeMap.set(nodeKey, node);
       tree.privateMap.set(node[privateKey], node);
       if (node.expanded) {
-        const expandedKey = tree.config.allowDuplicateValue ? nodeKey : node.value;
-        tree.expandedMap.set(expandedKey, true);
+        tree.expandedMap.set(nodeKey, true);
       }
     });
 
@@ -534,10 +529,9 @@ export class TreeNode {
   private clean(): void {
     const { tree, value } = this;
     const nodeKey = this.getNodeMapKey();
-    const stateKey = tree.config.allowDuplicateValue ? nodeKey : value;
-    tree.activedMap.delete(stateKey);
-    tree.checkedMap.delete(stateKey);
-    tree.expandedMap.delete(stateKey);
+    tree.activedMap.delete(nodeKey);
+    tree.checkedMap.delete(nodeKey);
+    tree.expandedMap.delete(nodeKey);
     tree.nodeMap.delete(nodeKey);
     tree.filterMap.delete(value);
     tree.privateMap.delete(this[privateKey]);
@@ -872,12 +866,10 @@ export class TreeNode {
    * @return boolean 是否被激活
    */
   public isActived(map?: Map<string, boolean>): boolean {
-    const { tree, value } = this;
-    const { allowDuplicateValue } = tree.config;
+    const { tree } = this;
     const activedMap = map || tree.activedMap;
     const nodeKey = this.getNodeMapKey();
-    const activedKey = allowDuplicateValue ? nodeKey : value;
-    return !!(tree.nodeMap.get(nodeKey) && activedMap.get(activedKey));
+    return !!(tree.nodeMap.get(nodeKey) && activedMap.get(nodeKey));
   }
 
   /**
@@ -886,14 +878,13 @@ export class TreeNode {
    * @return boolean 是否已展开
    */
   public isExpanded(map?: Map<string, boolean>): boolean {
-    const { tree, value, vmIsLocked } = this;
+    const { tree, vmIsLocked } = this;
     const { hasFilter, config } = tree;
-    const { allowFoldNodeOnFilter, allowDuplicateValue } = config;
+    const { allowFoldNodeOnFilter } = config;
     if (hasFilter && !allowFoldNodeOnFilter && vmIsLocked) return true;
     const expandedMap = map || tree.expandedMap;
     const nodeKey = this.getNodeMapKey();
-    const expandedKey = allowDuplicateValue ? nodeKey : value;
-    return !!(tree.nodeMap.get(nodeKey) && expandedMap.get(expandedKey));
+    return !!(tree.nodeMap.get(nodeKey) && expandedMap.get(nodeKey));
   }
 
   /**
@@ -902,23 +893,22 @@ export class TreeNode {
    * @return boolean 是否被选中
    */
   public isChecked(map?: TypeIdMap): boolean {
-    const { children, tree, value } = this;
-    const { checkStrictly, valueMode, allowDuplicateValue } = tree.config;
+    const { children, tree } = this;
+    const { checkStrictly, valueMode } = tree.config;
     const nodeKey = this.getNodeMapKey();
     // 节点不在当前树上，视为未选中
     if (!tree.nodeMap.get(nodeKey)) return false;
     // 节点不可选，视为未选中
     if (!this.isCheckable()) return false;
     const checkedMap = map || tree.checkedMap;
-    const checkedKey = allowDuplicateValue ? nodeKey : value;
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) {
-      return !!checkedMap.get(checkedKey);
+      return !!checkedMap.get(nodeKey);
     }
     let checked = false;
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
     if (
-      checkedMap.get(checkedKey) &&
+      checkedMap.get(nodeKey) &&
       // 如果 valueMode 为 all、parentFirst，则视为选中
       (valueMode !== 'onlyLeaf' ||
         // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
@@ -937,10 +927,7 @@ export class TreeNode {
       // 从父节点状态推断子节点状态
       // 这里再调用 isChecked 会导致死循环
       const parents = this.getParents();
-      checked = parents.some((node) => {
-        const parentKey = allowDuplicateValue ? node.getNodeMapKey() : node.value;
-        return checkedMap.get(parentKey);
-      });
+      checked = parents.some((node) => checkedMap.get(node.getNodeMapKey()));
     }
     return checked;
   }
@@ -1094,22 +1081,19 @@ export class TreeNode {
           // 折叠列表中，先移除同级节点
           const siblings = node.getSiblings();
           siblings.forEach((snode) => {
-            const snodeKey = config?.allowDuplicateValue ? snode.getNodeMapKey() : snode.value;
-            map.delete(snodeKey);
+            map.delete(snode.getNodeMapKey());
             // 同级节点相关状态更新
             snode.update();
             snode.updateChildren();
           });
         }
         // 最后设置自己的折叠状态
-        const nodeKey = config?.allowDuplicateValue ? node.getNodeMapKey() : node.value;
-        map.set(nodeKey, true);
+        map.set(node.getNodeMapKey(), true);
         node.update();
         node.updateChildren();
       });
     } else {
-      const thisKey = config?.allowDuplicateValue ? this.getNodeMapKey() : this.value;
-      map.delete(thisKey);
+      map.delete(this.getNodeMapKey());
     }
 
     if (options.directly) {
@@ -1147,8 +1131,7 @@ export class TreeNode {
     if (!options.directly) {
       map = new Map(tree.activedMap);
     }
-    const { allowDuplicateValue } = config;
-    const activedKey = allowDuplicateValue ? this.getNodeMapKey() : this.value;
+    const activedKey = this.getNodeMapKey();
     if (this.isActivable()) {
       if (actived) {
         const prevKeys = Array.from(map.keys());
@@ -1156,7 +1139,7 @@ export class TreeNode {
           map.clear();
         }
         prevKeys.forEach((key) => {
-          const node = allowDuplicateValue ? tree.nodeMap.get(key as string) : tree.getNode(key);
+          const node = tree.nodeMap.get(key as string);
           node?.update();
         });
         map.set(activedKey, true);
@@ -1251,7 +1234,7 @@ export class TreeNode {
       }
     }
 
-    const checkedKey = config.allowDuplicateValue ? this.getNodeMapKey() : this.value;
+    const checkedKey = this.getNodeMapKey();
     if (checked) {
       map.set(checkedKey, true);
     } else {
@@ -1272,8 +1255,7 @@ export class TreeNode {
       // 状态更新务必放到扩散动作之后
       // 过早的状态更新会导致后续计算出错
       if (options.directly) {
-        const nodeKey = config.allowDuplicateValue ? this.getNodeMapKey() : this.value;
-        const relatedNodes = tree.getRelatedNodes([nodeKey], {
+        const relatedNodes = tree.getRelatedNodes([checkedKey], {
           reverse: true,
         });
         relatedNodes.forEach((node) => {
@@ -1323,7 +1305,6 @@ export class TreeNode {
   // 选中态向上游扩散
   private spreadParentChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
     const { tree } = this;
-    const { allowDuplicateValue } = tree.config;
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,
@@ -1335,8 +1316,7 @@ export class TreeNode {
     const { children } = this;
     if (Array.isArray(children) && children.length > 0) {
       // 有子节点，则选中态由子节点选中态集合来决定
-      const checkedKey = allowDuplicateValue ? this.getNodeMapKey() : this.value;
-      map.delete(checkedKey);
+      map.delete(this.getNodeMapKey());
     }
 
     const { parent } = this;
@@ -1346,7 +1326,6 @@ export class TreeNode {
 
   // 选中态向下游扩散
   private spreadChildrenChecked(checked: boolean, map?: TypeIdMap, opts?: TypeSettingOptions) {
-    const { allowDuplicateValue } = this.tree.config;
     const options: TypeSettingOptions = {
       isAction: true,
       directly: false,
@@ -1362,16 +1341,14 @@ export class TreeNode {
     if (!Array.isArray(children)) return;
     if (children.length <= 0) return;
     // 有子节点，则选中态由子节点选中态集合来决定
-    const thisCheckedKey = allowDuplicateValue ? this.getNodeMapKey() : this.value;
-    map.delete(thisCheckedKey);
+    map.delete(this.getNodeMapKey());
     children.forEach((node) => {
       // 对于 UI 动作，向下扩散时，禁用状态会阻止状态切换
       if (options.isAction && node.isDisabled()) return;
-      const nodeCheckedKey = allowDuplicateValue ? node.getNodeMapKey() : node.value;
       if (checked) {
-        map.set(nodeCheckedKey, true);
+        map.set(node.getNodeMapKey(), true);
       } else {
-        map.delete(nodeCheckedKey);
+        map.delete(node.getNodeMapKey());
       }
       node.spreadChildrenChecked(checked, map, options);
     });
@@ -1413,17 +1390,16 @@ export class TreeNode {
    * @return void
    */
   public updateChecked(from?: string): void {
-    const { tree, value, isIndeterminateManual } = this;
+    const { tree, isIndeterminateManual } = this;
     if (isIndeterminateManual && ['refresh'].includes(from)) {
       return;
     }
 
-    const { checkedMap, config } = tree;
+    const { checkedMap } = tree;
     this.checked = this.isChecked();
     this.indeterminate = this.isIndeterminate();
     if (this.checked) {
-      const checkedKey = config.allowDuplicateValue ? this.getNodeMapKey() : value;
-      checkedMap.set(checkedKey, true);
+      checkedMap.set(this.getNodeMapKey(), true);
     }
     tree.updated(this);
   }

@@ -598,15 +598,14 @@ export class TreeStore {
    * @return void
    */
   public setActived(actived: TreeNodeValue[]): void {
-    const { activeMultiple, allowDuplicateValue } = this.config;
+    const { activeMultiple } = this.config;
     const list = actived.slice(0);
     if (!activeMultiple) {
       list.length = 1;
     }
     list.forEach((val) => {
       this.activedMap.set(val, true);
-      // 当 allowDuplicateValue 为 true 时，val 是路径 key，从 nodeMap 获取节点
-      const node = allowDuplicateValue ? this.nodeMap.get(val as string) : this.getNode(val);
+      const node = this.nodeMap.get(val);
       if (node) {
         node.update();
       }
@@ -669,9 +668,8 @@ export class TreeStore {
    * @return void
    */
   public setExpandedDirectly(list: TreeNodeValue[], expanded = true): void {
-    const { allowDuplicateValue } = this.config;
     list.forEach((val) => {
-      const node = allowDuplicateValue ? this.nodeMap.get(val as string) : this.getNode(val);
+      const node = this.nodeMap.get(val);
       if (!node?.isLeaf() && expanded) {
         this.expandedMap.set(val, true);
       } else {
@@ -713,14 +711,13 @@ export class TreeStore {
    */
   public getChecked(map?: TypeIdMap): TreeNodeValue[] {
     const { nodeMap, config } = this;
-    const { valueMode, checkStrictly, allowDuplicateValue } = config;
+    const { valueMode, checkStrictly } = config;
     const list: TreeNodeValue[] = [];
     const checkedMap = map || this.checkedMap;
     nodeMap.forEach((node) => {
       // 判断未选中，直接忽略
       if (!node.isChecked(checkedMap)) return;
-      // 当 allowDuplicateValue 为 true 时，返回路径 key
-      const nodeKey = allowDuplicateValue ? node.getNodeMapKey() : node.value;
+      const nodeKey = node.getNodeMapKey();
       if (valueMode === 'parentFirst' && !checkStrictly) {
         // valueMode 为 parentFirst
         // 仅取值父节点
@@ -769,20 +766,18 @@ export class TreeStore {
    * @return void
    */
   public setChecked(list: TreeNodeValue[]): void {
-    const { checkStrictly, checkable, allowDuplicateValue } = this.config;
+    const { checkStrictly, checkable } = this.config;
     if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
-      const node = allowDuplicateValue ? this.nodeMap.get(val as string) : this.getNode(val);
+      const node = this.nodeMap.get(val);
       if (!node) return;
-      const checkedKey = allowDuplicateValue ? node.getNodeMapKey() : val;
       if (checkStrictly) {
-        this.checkedMap.set(checkedKey, true);
+        this.checkedMap.set(node.getNodeMapKey(), true);
         node.updateChecked();
       } else {
         const childrenNodes = node.walk();
         childrenNodes.forEach((childNode) => {
-          const childCheckedKey = allowDuplicateValue ? childNode.getNodeMapKey() : childNode.value;
-          this.checkedMap.set(childCheckedKey, true);
+          this.checkedMap.set(childNode.getNodeMapKey(), true);
         });
       }
     });
@@ -852,7 +847,6 @@ export class TreeStore {
    * @return TreeNode[] 关联节点数组
    */
   public getRelatedNodes(list: TreeNodeValue[], options?: TypeRelatedNodesOptions): TreeNode[] {
-    const { allowDuplicateValue } = this.config;
     const conf = {
       // 默认倒序排列，从底层节点开始遍历
       reverse: false,
@@ -863,7 +857,7 @@ export class TreeStore {
     const map = new Map();
     list.forEach((value) => {
       if (map.get(value)) return;
-      const node = allowDuplicateValue ? this.nodeMap.get(value as string) : this.getNode(value);
+      const node = this.nodeMap.get(value);
       if (node) {
         const parents = node.getParents().reverse();
         const children = node.walk();
@@ -875,8 +869,7 @@ export class TreeStore {
         }
         // 用 map 实现节点去重
         related.forEach((relatedNode) => {
-          const relatedKey = allowDuplicateValue ? relatedNode.getNodeMapKey() : relatedNode.value;
-          map.set(relatedKey, relatedNode);
+          map.set(relatedNode.getNodeMapKey(), relatedNode);
         });
       }
     });
