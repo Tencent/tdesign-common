@@ -255,22 +255,24 @@
   }
 
   & when(@position = outside) {
-    .@{prefix}-swiper__navigation-item {
-      span {
-        background-color: @swiper-navigation-item-bg-outside;
+    & when(@type = bars), (@type = dots-bar), (@type = dots) {
+      .@{prefix}-swiper__navigation-item {
+        span {
+          background-color: @swiper-navigation-item-bg-outside;
 
-        &:hover {
-          background-color: @swiper-navigation-item-outside-bg-hover;
-        }
+          &:hover {
+            background-color: @swiper-navigation-item-outside-bg-hover;
+          }
 
-        &:active {
-          background-color: @swiper-navigation-item-outside-bg-active;
+          &:active {
+            background-color: @swiper-navigation-item-outside-bg-active;
+          }
         }
       }
-    }
-    .@{prefix}-is-active {
-      span {
-        background-color: @swiper-navigation-item-outside-bg-active;
+      .@{prefix}-is-active {
+        span {
+          background-color: @swiper-navigation-item-outside-bg-active;
+        }
       }
     }
   }
