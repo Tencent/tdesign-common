@@ -1,19 +1,21 @@
-import { isArray, isFunction, isNumber, isString, difference, camelCase, isPlainObject } from 'lodash-es';
+import { camelCase, difference, isArray, isFunction, isNumber, isPlainObject, isString } from 'lodash-es';
 import mitt from 'mitt';
 
 import { TreeNode } from './tree-node';
-import {
+import { pathToKey } from './tree-node-model';
+
+import type {
   TreeNodeValue,
   TypeIdMap,
-  TypeTimer,
+  TypeRelatedNodesOptions,
   TypeTargetNode,
-  TypeTreeNodeData,
-  TypeTreeItem,
-  TypeTreeStoreOptions,
+  TypeTimer,
+  TypeTreeEventState,
   TypeTreeFilter,
   TypeTreeFilterOptions,
-  TypeRelatedNodesOptions,
-  TypeTreeEventState,
+  TypeTreeItem,
+  TypeTreeNodeData,
+  TypeTreeStoreOptions,
 } from './types';
 
 // 构建一个树的数据模型
@@ -184,15 +186,20 @@ export class TreeStore {
 
   /**
    * 获取指定节点对象
-   * @param {string|number|TreeNode} item 获取节点对象的条件，可以是节点 value，也可以是节点本身
+   * @param {string|number|TreeNode|Array} item 获取节点对象的条件，可以是节点 value，也可以是节点本身，也可以是路径数组
    * @return TreeNode 节点对象，如果判断树中没有符合条件的节点，返回 null
    */
-  public getNode(item: TypeTargetNode): TreeNode {
+  public getNode(item: TypeTargetNode | TreeNodeValue[]): TreeNode {
     let node = null;
-    if (isString(item) || isNumber(item)) {
+    const { allowDuplicateValue } = this.config;
+    if (isArray(item) && allowDuplicateValue) {
+      const pathKey = pathToKey(item);
+      node = this.nodeMap.get(pathKey);
+    } else if (isString(item) || isNumber(item)) {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
-      node = this.nodeMap.get(item.value);
+      const nodeKey = item.getNodeMapKey();
+      node = this.nodeMap.get(nodeKey);
     }
     if (!node) node = null;
     return node;
@@ -591,14 +598,15 @@ export class TreeStore {
    * @return void
    */
   public setActived(actived: TreeNodeValue[]): void {
-    const { activeMultiple } = this.config;
+    const { activeMultiple, allowDuplicateValue } = this.config;
     const list = actived.slice(0);
     if (!activeMultiple) {
       list.length = 1;
     }
     list.forEach((val) => {
       this.activedMap.set(val, true);
-      const node = this.getNode(val);
+      // 当 allowDuplicateValue 为 true 时，val 是路径 key，从 nodeMap 获取节点
+      const node = allowDuplicateValue ? this.nodeMap.get(val as string) : this.getNode(val);
       if (node) {
         node.update();
       }
@@ -661,8 +669,9 @@ export class TreeStore {
    * @return void
    */
   public setExpandedDirectly(list: TreeNodeValue[], expanded = true): void {
+    const { allowDuplicateValue } = this.config;
     list.forEach((val) => {
-      const node = this.getNode(val);
+      const node = allowDuplicateValue ? this.nodeMap.get(val as string) : this.getNode(val);
       if (!node?.isLeaf() && expanded) {
         this.expandedMap.set(val, true);
       } else {
@@ -704,28 +713,30 @@ export class TreeStore {
    */
   public getChecked(map?: TypeIdMap): TreeNodeValue[] {
     const { nodeMap, config } = this;
-    const { valueMode, checkStrictly } = config;
+    const { valueMode, checkStrictly, allowDuplicateValue } = config;
     const list: TreeNodeValue[] = [];
     const checkedMap = map || this.checkedMap;
     nodeMap.forEach((node) => {
       // 判断未选中，直接忽略
       if (!node.isChecked(checkedMap)) return;
+      // 当 allowDuplicateValue 为 true 时，返回路径 key
+      const nodeKey = allowDuplicateValue ? node.getNodeMapKey() : node.value;
       if (valueMode === 'parentFirst' && !checkStrictly) {
         // valueMode 为 parentFirst
         // 仅取值父节点
         if (!node.parent || !node.parent.isChecked(checkedMap)) {
-          list.push(node.value);
+          list.push(nodeKey);
         }
       } else if (valueMode === 'onlyLeaf' && !checkStrictly) {
         // valueMode 为 onlyLeaf
         // 仅取值叶子节点
         if (node.isLeaf()) {
-          list.push(node.value);
+          list.push(nodeKey);
         }
       } else {
         // valueMode 为 all
         // 取值所有选中节点
-        list.push(node.value);
+        list.push(nodeKey);
       }
     });
     return list;
@@ -758,18 +769,20 @@ export class TreeStore {
    * @return void
    */
   public setChecked(list: TreeNodeValue[]): void {
-    const { checkStrictly, checkable } = this.config;
+    const { checkStrictly, checkable, allowDuplicateValue } = this.config;
     if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
-      const node = this.getNode(val);
+      const node = allowDuplicateValue ? this.nodeMap.get(val as string) : this.getNode(val);
       if (!node) return;
+      const checkedKey = allowDuplicateValue ? node.getNodeMapKey() : val;
       if (checkStrictly) {
-        this.checkedMap.set(val, true);
+        this.checkedMap.set(checkedKey, true);
         node.updateChecked();
       } else {
         const childrenNodes = node.walk();
         childrenNodes.forEach((childNode) => {
-          this.checkedMap.set(childNode.value, true);
+          const childCheckedKey = allowDuplicateValue ? childNode.getNodeMapKey() : childNode.value;
+          this.checkedMap.set(childCheckedKey, true);
         });
       }
     });
@@ -839,6 +852,7 @@ export class TreeStore {
    * @return TreeNode[] 关联节点数组
    */
   public getRelatedNodes(list: TreeNodeValue[], options?: TypeRelatedNodesOptions): TreeNode[] {
+    const { allowDuplicateValue } = this.config;
     const conf = {
       // 默认倒序排列，从底层节点开始遍历
       reverse: false,
@@ -849,7 +863,7 @@ export class TreeStore {
     const map = new Map();
     list.forEach((value) => {
       if (map.get(value)) return;
-      const node = this.getNode(value);
+      const node = allowDuplicateValue ? this.nodeMap.get(value as string) : this.getNode(value);
       if (node) {
         const parents = node.getParents().reverse();
         const children = node.walk();
@@ -861,7 +875,8 @@ export class TreeStore {
         }
         // 用 map 实现节点去重
         related.forEach((relatedNode) => {
-          map.set(relatedNode.value, relatedNode);
+          const relatedKey = allowDuplicateValue ? relatedNode.getNodeMapKey() : relatedNode.value;
+          map.set(relatedKey, relatedNode);
         });
       }
     });
