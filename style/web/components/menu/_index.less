@@ -83,29 +83,18 @@ a.@{prefix}-menu__item {
     }
   }
 
-  .@{prefix}-submenu {
-    > .@{prefix}-menu__item {
-      overflow: unset;
-
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: -20px;
-        left: 0;
-        right: 0;
-        height: 20px;
-      }
-    }
-  }
-
   .@{prefix}-menu__item {
     height: @head-menu-item-height;
     line-height: @head-menu-item-height;
-    padding: 0 @comp-paddingLR-l;
+    padding: 0 @comp-paddingLR-m;
     justify-content: center;
-    transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
-    gap: @comp-margin-m;
+    transition: all @anim-duration-slow cubic-bezier(0.645, 0.045, 0.355, 1);
+    gap: @comp-margin-s;
+
+    .t-icon {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &__submenu {
@@ -122,7 +111,7 @@ a.@{prefix}-menu__item {
   width: @default-menu-width;
   display: inline-block;
   background: @menu-theme-light;
-  transition: width @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+  transition: width @anim-duration-slow cubic-bezier(0.645, 0.045, 0.355, 1);
   white-space: nowrap;
 
   .@{prefix}-menu__item {
@@ -359,8 +348,7 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius-default;
-    transition:
-      background-color @anim-duration-slow @anim-time-fn-easing,
+    transition: background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
     box-sizing: border-box;
 
@@ -507,6 +495,13 @@ a.@{prefix}-menu__item {
     }
 
     &--top::before {
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      height: 20px;
+    }
+
+    &--bottom::before {
       top: -20px;
       left: 0;
       right: 0;
@@ -547,13 +542,6 @@ a.@{prefix}-menu__item {
         width: @horizontal-spacer;
         top: 0;
         bottom: 0;
-      }
-
-      &--bottom::before {
-        bottom: -20px;
-        left: 0;
-        right: 0;
-        height: 20px;
       }
     }
 
@@ -639,7 +627,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__popup {
       background: @menu-theme-dark;
-      border: solid .5px @menu-border-color--dark;
+      border: solid 0.5px @menu-border-color--dark;
 
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
@@ -678,10 +666,6 @@ a.@{prefix}-menu__item {
     border-radius: @border-radius-medium;
     opacity: 0;
     .list-style-none();
-
-    &.@{prefix}-popup__content {
-      position: absolute;
-    }
 
     &-wrapper {
       padding: @pop-padding-m;
@@ -755,7 +739,7 @@ a.@{prefix}-menu__item {
 
 // opacity-transition
 .@{prefix}-opacity-transition {
-  transition: opacity @anim-duration-slow cubic-bezier(.55, 0, .1, 1);
+  transition: opacity @anim-duration-slow cubic-bezier(0.55, 0, 0.1, 1);
 }
 
 .horizontal-collapse-transition .@{prefix}-submenu__title .@{prefix}-submenu__icon-arrow {
@@ -765,7 +749,7 @@ a.@{prefix}-menu__item {
 
 .@{prefix}-menu__popup {
   top: 0;
-  left: calc(100% - @pop-padding-m);
+  left: calc(0px - @pop-padding-m);
 
   .@{prefix}-menu__item,
   .@{prefix}-submenu {

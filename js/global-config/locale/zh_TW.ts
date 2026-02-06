@@ -219,6 +219,7 @@ export default {
     mirrorTipText: '鏡像',
     rotateTipText: '旋轉',
     originalSizeTipText: '原始大小',
+    previewText: '預覽',
   },
   typography: {
     expandText: '展開',

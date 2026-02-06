@@ -3,13 +3,14 @@
 @import './_var.less';
 
 .@{prefix}-navbar {
+  position: relative;
+
   &--fixed {
     .@{prefix}-navbar__content {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 5001;
     }
   }
 
@@ -40,7 +41,6 @@
 
   &__content {
     position: relative;
-    z-index: 1;
     height: @navbar-height;
     padding-top: @navbar-padding-top;
     color: @navbar-color;

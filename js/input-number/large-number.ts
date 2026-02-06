@@ -208,12 +208,12 @@ export function compareNumber(num1: string | number, num2: string | number, larg
 export function largeIntegerNumberSubtract(
   num1: string,
   num2: string,
-  p?: { decimal?: boolean; stayZero?: boolean }
+  p?: { decimal?: boolean; stayZero?: boolean; filledZero?: boolean }
 ): string {
   if (num1 === num2) return '0';
-  const { decimal, stayZero } = p || {};
-  const number1 = removeInvalidZero(num1);
-  const number2 = removeInvalidZero(num2);
+  const { decimal, stayZero, filledZero } = p || {};
+  const number1 = filledZero ? num1 : removeInvalidZero(num1, decimal);
+  const number2 = filledZero ? num2 : removeInvalidZero(num2, decimal);
   const isFirstLarger = compareLargeIntegerNumber(number1, number2) > 0;
   const maxNumber = isFirstLarger ? number1 : number2;
   const minNumber = isFirstLarger ? number2 : number1;
@@ -239,7 +239,7 @@ export function largeIntegerNumberSubtract(
   if (!stayZero) {
     finalNumber = finalNumber.replace(/^0+/, '');
   }
-  return removeInvalidZero(isFirstLarger ? finalNumber : `-${finalNumber}`);
+  return removeInvalidZero(isFirstLarger ? finalNumber : `-${finalNumber}`, decimal);
 }
 
 /**
@@ -264,15 +264,20 @@ export function largePositiveNumberSubtract(num1: string, num2: string): string 
   // 小数点相减
   let decimalNumber = '';
   let addOneNumber = decimalNumber1;
+  const isNumber1Short = decimalNumber1.length < decimalNumber2.length;
   // 第一个数字的小数位数比第二个少，需补足 0
-  if (decimalNumber1.length < decimalNumber2.length) {
+  if (isNumber1Short) {
     addOneNumber = `${decimalNumber1}${fillZero(decimalNumber2.length - decimalNumber1.length)}`;
   }
-  // 第一个小数位更小，是否需要借位
+  // 第一个小数位是否更大，不需要借位
   if (compareLargeDecimalNumber(addOneNumber, decimalNumber2) >= 0) {
-    decimalNumber = largeIntegerNumberSubtract(addOneNumber, decimalNumber2, { decimal: true });
+    decimalNumber = largeIntegerNumberSubtract(addOneNumber, decimalNumber2, {
+      decimal: true,
+      stayZero: true,
+      filledZero: true,
+    });
   } else {
-    if (decimalNumber1.length < decimalNumber2.length || decimalNumber1 === '0') {
+    if (isNumber1Short || decimalNumber1 === '0') {
       decimalNumber = largeIntegerNumberSubtract(`1${addOneNumber}`, decimalNumber2, { stayZero: true });
       decimalNumber = fillZero(decimalNumber2.length - decimalNumber.length) + decimalNumber;
     } else {

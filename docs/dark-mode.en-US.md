@@ -6,13 +6,22 @@ spline: design-mode
 
 ### Usage
 
-add `theme-mode` attribution for `html` to control the display of `light/dark` mode：
+**Method 1: add `theme-mode` attribution for `html` to control the display of `dark/light` mode:**
 
 ```javascript
 // dark mode
 document.documentElement.setAttribute('theme-mode', 'dark');
 // light mode
 document.documentElement.removeAttribute('theme-mode');
+```
+
+**Method 2: add a `dark` class to `html` to control the display of `dark/light` mode:**
+
+```javascript
+// dark mode
+document.documentElement.classList.add('dark');
+// light mode
+document.documentElement.classList.remove('dark');
 ```
 
 ### Implementation Solution

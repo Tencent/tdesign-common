@@ -37,7 +37,9 @@ const FRAMEWORK_BASE_PATH_MAP = {
   'Mobile(Vue)': 'src/',
   'Mobile(React)': 'src/',
   Miniprogram: 'packages/components/',
-  'Miniprogram(Chat)': 'packages/components/chat/'
+  'Miniprogram(Chat)': 'packages/components/chat/',
+  Uniapp: 'packages/uniapp-components/',
+  'Uniapp(Chat)': 'packages/uniapp-components/chat/',
 };
 
 // 需要过滤的目录名称
@@ -45,6 +47,9 @@ const FILTERED_DIR = [
   'mixins',
   'node_modules',
   'common',
+  'hooks',
+  'locale',
+  'shared'
 ];
 
 // LESS 文件路径模板
@@ -53,6 +58,8 @@ const LESS_FILE_MAP = {
   'Mobile(React)': '_common/style/mobile/components/{COMPONENT_NAME}/_var.less',
   Miniprogram: '{COMPONENT_NAME}/{COMPONENT_NAME}.less',
   'Miniprogram(Chat)': '{COMPONENT_NAME}/{COMPONENT_NAME}.less',
+  Uniapp: '{COMPONENT_NAME}/{COMPONENT_NAME}.less',
+  'Uniapp(Chat)': '{COMPONENT_NAME}/{COMPONENT_NAME}.less',
 };
 
 // 文档文件路径模板
@@ -61,6 +68,8 @@ const DOCS_FILE_MAP = {
   'Mobile(React)': '{COMPONENT_NAME}/{COMPONENT_NAME}',
   Miniprogram: '{COMPONENT_NAME}/README',
   'Miniprogram(Chat)': '{COMPONENT_NAME}/README',
+  Uniapp: '{COMPONENT_NAME}/README',
+  'Uniapp(Chat)': '{COMPONENT_NAME}/README',
 };
 
 /**
@@ -104,9 +113,9 @@ const findFilePath = (framework, componentName) => {
   if (!lessPathTemplate) {
     throw new Error(`⚠️ 未找到 framework "${framework}" 对应的路径配置`);
   }
-
   const lessPath = FRAMEWORK_BASE_PATH_MAP[framework]
     + lessPathTemplate.replace(/{COMPONENT_NAME}/g, componentName);
+
   return resolveCwd(lessPath);
 };
 
@@ -139,7 +148,7 @@ const getAllComponentName = async (framework) => {
  * @returns {string} 解析后的变量内容
  */
 const parseCssVariables = (content, parsedKeys) => {
-  const matchReg = /(?<=var)\([\s\S]*?(?=;)/g;
+  const matchReg = /(?<=var)\(([^()]*?(?:\([^()]*?\))?[^()]*)\)/g;
   const matches = content.match(matchReg);
 
   if (!matches) return '';

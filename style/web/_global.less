@@ -31,6 +31,20 @@
   }
 }
 
+// Safari 兼容方案: 使用 transform 而非 d 动画
+// Safari 不支持对 path 的 d 属性进行动画
+.@{prefix}-fake-arrow.@{prefix}-fake-arrow--transform {
+  path {
+    transition: transform @anim-duration-base;
+    transform-origin: center;
+  }
+  &.@{prefix}-fake-arrow--active {
+    path {
+      transform: scaleY(-1);
+    }
+  }
+}
+
 .@{prefix}-slide-down-enter-active,
 .@{prefix}-slide-down-leave-active {
   transition:

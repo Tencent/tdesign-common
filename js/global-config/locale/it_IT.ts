@@ -218,6 +218,7 @@ export default {
     mirrorTipText: 'Specchio',
     rotateTipText: 'Ruota',
     originalSizeTipText: 'Dimensione originale',
+    previewText: 'Anteprima',
   },
   typography: {
     expandText: 'Espandere',
