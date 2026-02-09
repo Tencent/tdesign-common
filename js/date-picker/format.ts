@@ -38,9 +38,37 @@ export function parseToDayjs(
         .format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.\s]/)[0];
-    const weekStr = dateText.split(/[-/.\s]/)[1];
-    const weekFormatStr = format.split(/[-/.\s]/)[1];
+    // 根据格式字符串中的分隔符来分割日期文本
+    const separator = format.match(/[-/.\s]/)?.[0] || '';
+    let yearStr;
+    let weekStr;
+    let weekFormatStr;
+
+    if (separator) {
+      // 有分隔符的情况
+      const parts = dateText.split(separator);
+      const formatParts = format.split(separator);
+      [yearStr, weekStr] = parts;
+      [, weekFormatStr] = formatParts;
+    } else {
+      // 无分隔符的情况，根据格式长度提取
+      const [yearMatch] = format.match(/Y{4}|y{4}/) || [];
+      const [weekMatch] = format.match(/w{1,2}|W{1,2}/) || [];
+      if (yearMatch && weekMatch) {
+        const yearPos = format.indexOf(yearMatch);
+        const weekPos = format.indexOf(weekMatch);
+        const yearLen = yearMatch.length;
+        const weekLen = weekMatch.length;
+        yearStr = dateText.substring(yearPos, yearPos + yearLen);
+        weekStr = dateText.substring(weekPos, weekPos + weekLen);
+        weekFormatStr = weekMatch;
+      } else {
+        // 默认：前4位为年份，剩余部分为周
+        yearStr = dateText.substring(0, 4);
+        weekStr = dateText.substring(4);
+        weekFormatStr = 'w';
+      }
+    }
 
     let firstWeek = dayjs(yearStr, 'YYYY')
       .locale(dayjsLocale || 'zh-cn')
@@ -81,9 +109,39 @@ export function parseToDayjs(
         .format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.\s]/)[0];
-    const quarterStr = dateText.split(/[-/.\s]/)[1];
-    const quarterFormatStr = format.split(/[-/.\s]/)[1];
+    // 根据格式字符串中的分隔符来分割日期文本
+    const separator = format.match(/[-/.\s]/)?.[0] || '';
+    let yearStr;
+    let quarterStr;
+    let quarterFormatStr;
+
+    if (separator) {
+      // 有分隔符的情况
+      const [, quarterStr_] = dateText.split(separator);
+      const [, quarterFormatStr_] = format.split(separator);
+      const [yearStr_] = dateText.split(separator);
+      yearStr = yearStr_;
+      quarterStr = quarterStr_;
+      quarterFormatStr = quarterFormatStr_;
+    } else {
+      // 无分隔符的情况，根据格式长度提取
+      const [yearMatch] = format.match(/Y{4}|y{4}/) || [];
+      const [quarterMatch] = format.match(/Q{1,2}/) || [];
+      if (yearMatch && quarterMatch) {
+        const yearPos = format.indexOf(yearMatch);
+        const quarterPos = format.indexOf(quarterMatch);
+        const yearLen = yearMatch.length;
+        const quarterLen = quarterMatch.length;
+        yearStr = dateText.substring(yearPos, yearPos + yearLen);
+        quarterStr = dateText.substring(quarterPos, quarterPos + quarterLen);
+        quarterFormatStr = quarterMatch;
+      } else {
+        // 默认：前4位为年份，剩余部分为季度
+        yearStr = dateText.substring(0, 4);
+        quarterStr = dateText.substring(4);
+        quarterFormatStr = 'Q';
+      }
+    }
     const firstQuarter = dayjs(yearStr, 'YYYY').startOf('year');
     for (let i = 0; i < 4; i += 1) {
       const nextQuarter = firstQuarter.add(i, 'quarter');
