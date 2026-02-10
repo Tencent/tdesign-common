@@ -3,6 +3,8 @@ import dayjs from 'dayjs';
 import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
 
 import log from '../log';
 
@@ -11,6 +13,8 @@ type DateValue = string | number | Date;
 dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
 dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(weekOfYear);
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
