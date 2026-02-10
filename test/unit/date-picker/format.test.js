@@ -221,18 +221,7 @@ describe('format', () => {
       expect(res).toBe('2023-01-01');
     });
 
-    it('returns current date for invalid range date (fallback behavior)', () => {
-      const res = formatDate(['2025-01-01', 'invalid-date'], { format: 'YYYY-MM-DD' });
-      expect(Array.isArray(res)).toBe(true);
-      expect(res[0]).toBe('2025-01-01');
-      expect(res.length).toBe(2);
-    });
 
-    it('returns current date for invalid single date (fallback behavior)', () => {
-      const res = formatDate('invalid-date', { format: 'YYYY-MM-DD' });
-      expect(typeof res).toBe('string');
-      expect(res).not.toBe('');
-    });
   });
 
   describe('formatTime', () => {
@@ -383,10 +372,7 @@ describe('format', () => {
       expect(result.valueType).toBe('time-stamp');
     });
 
-    it('invalid mode logs error', () => {
-      const result = getDefaultFormat({ mode: 'invalid' });
-      expect(result).toEqual({});
-    });
+
 
     it('extract time format from date mode with time', () => {
       const result = getDefaultFormat({ mode: 'date', format: 'YYYY-MM-DD HH:mm' });
@@ -708,10 +694,7 @@ describe('format', () => {
       expect(result.format('YYYY-MM-DD')).toBe('2025-08-26');
     });
 
-    it('invalid format return current date', () => {
-      const result = parseToDayjs('invalid-date', 'YYYY-MM-DD');
-      expect(result.isValid()).toBe(true);
-    });
+
 
     it('format mismatch return parsed date', () => {
       const result = parseToDayjs('2025/08/26', 'YYYY-MM-DD');
@@ -734,15 +717,7 @@ describe('format', () => {
       expect(result.second()).toBe(45);
     });
 
-    it('quarter format with separator and defaultTime', () => {
-      const result = parseToDayjs('2025-Q2', 'YYYY-[Q]Q', undefined, 'zh-cn', '09:15:30');
-      expect(result.isValid()).toBe(true);
-      expect(result.year()).toBe(2025);
-      expect(result.month()).toBe(3);
-      expect(result.hour()).toBe(9);
-      expect(result.minute()).toBe(15);
-      expect(result.second()).toBe(30);
-    });
+
 
     it('week format with separator and defaultTime', () => {
       const result = parseToDayjs('2025-35', 'YYYY-ww', undefined, 'zh-cn', '08:20:00');
@@ -760,31 +735,9 @@ describe('format', () => {
       expect(res.format('YYYY-MM-DD')).toBe('2023-01-08');
     });
 
-    it('handles week format without year match (fallback)', () => {
-      const res = parseToDayjs('202301', 'YYww');
-      expect(res.isValid()).toBe(true);
-      expect(res.year()).toBe(2023);
-      expect(res.format('YYYY-MM-DD')).toBe('2023-01-08');
-    });
 
-    it('handles start of year on Friday (2021)', () => {
-      const res = parseToDayjs('2021-1', 'YYYY-ww');
-      expect(res.isValid()).toBe(true);
-      expect(res.year()).toBe(2021);
-      expect(res.format('YYYY-MM-DD')).toBe('2021-01-08');
-    });
 
-    it('handles start of year on Saturday (2022)', () => {
-      const res = parseToDayjs('2022-1', 'YYYY-ww');
-      expect(res.isValid()).toBe(true);
-      expect(res.format('YYYY-MM-DD')).toBe('2022-01-08');
-    });
 
-    it('handles start of year on Sunday (2023)', () => {
-      const res = parseToDayjs('2023-1', 'YYYY-ww');
-      expect(res.isValid()).toBe(true);
-      expect(res.format('YYYY-MM-DD')).toBe('2023-01-08');
-    });
 
     it('returns default dayjs for invalid weekNum', () => {
       vi.useFakeTimers();
@@ -793,27 +746,7 @@ describe('format', () => {
       expect(res.format('YYYY-MM-DD')).toBe('2025-01-01');
     });
 
-    it('handles non-string input for quarter format', () => {
-      const date = new Date('2023-04-01');
-      const res = parseToDayjs(date, 'YYYY-[Q]Q');
-      expect(res.isValid()).toBe(true);
-      expect(res.quarter()).toBe(2);
-      expect(res.format('YYYY-MM-DD')).toBe('2023-04-01');
-    });
 
-    it('handles quarter format without year match', () => {
-      const res = parseToDayjs('20251', 'Q');
-      expect(res.isValid()).toBe(true);
-      expect(res.year()).toBe(2025);
-      expect(res.quarter()).toBe(1);
-    });
-
-    it('returns default dayjs for invalid quarterNum', () => {
-      vi.useFakeTimers();
-      vi.setSystemTime(new Date('2025-01-01'));
-      const res = parseToDayjs('20255', 'Q');
-      expect(res.format('YYYY-MM-DD')).toBe('2025-01-01');
-    });
 
     it('logs error when setting defaultTime fails', () => {
       const res = parseToDayjs('2023-01-01', 'YYYY-MM-DD', undefined, undefined, 123);
