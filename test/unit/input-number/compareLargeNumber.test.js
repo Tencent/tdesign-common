@@ -1,5 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
-import { compareNumber, compareLargeNumber, isInputNumber, formatENumber, removeInvalidZero } from '../../../js/input-number/large-number';
+import {
+  compareNumber,
+  compareLargeNumber,
+  isInputNumber,
+  formatENumber,
+  removeInvalidZero,
+} from '../../../js/input-number/large-number';
 
 describe('compareNumber', () => {
   it('number 2, string 2', () => {

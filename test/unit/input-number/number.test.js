@@ -339,11 +339,19 @@ describe('putInRangeNumber', () => {
   });
 
   it('大数字超过 max 应该返回 max', () => {
-    expect(putInRangeNumber('99999999999999999999', { max: '9999999999999999999', min: '0', largeNumber: true })).toBe('9999999999999999999');
+    expect(putInRangeNumber('99999999999999999999', { max: '9999999999999999999', min: '0', largeNumber: true })).toBe(
+      '9999999999999999999'
+    );
   });
 
   it('大数字低于 min 应该返回 min', () => {
-    expect(putInRangeNumber('9999999999999999999', { max: '99999999999999999999', min: '10000000000000000000', largeNumber: true })).toBe('10000000000000000000');
+    expect(
+      putInRangeNumber('9999999999999999999', {
+        max: '99999999999999999999',
+        min: '10000000000000000000',
+        largeNumber: true,
+      })
+    ).toBe('10000000000000000000');
   });
 
   it('Infinity max 应该正常工作', () => {
@@ -355,7 +363,9 @@ describe('putInRangeNumber', () => {
   });
 
   it('大数字在范围内应该返回原值', () => {
-    expect(putInRangeNumber('5000000000000000000', { max: '9999999999999999999', min: '0', largeNumber: true })).toBe('5000000000000000000');
+    expect(putInRangeNumber('5000000000000000000', { max: '9999999999999999999', min: '0', largeNumber: true })).toBe(
+      '5000000000000000000'
+    );
   });
 });
 
@@ -378,11 +388,29 @@ describe('getStepValue', () => {
   });
 
   it('大数字加法', () => {
-    expect(getStepValue({ op: 'add', step: '1', max: '99999999999999999999', min: '0', lastValue: '9999999999999999999', largeNumber: true })).toBe('10000000000000000000');
+    expect(
+      getStepValue({
+        op: 'add',
+        step: '1',
+        max: '99999999999999999999',
+        min: '0',
+        lastValue: '9999999999999999999',
+        largeNumber: true,
+      })
+    ).toBe('10000000000000000000');
   });
 
   it('大数字减法', () => {
-    expect(getStepValue({ op: 'reduce', step: '1', max: '99999999999999999999', min: '0', lastValue: '10000000000000000000', largeNumber: true })).toBe('9999999999999999999');
+    expect(
+      getStepValue({
+        op: 'reduce',
+        step: '1',
+        max: '99999999999999999999',
+        min: '0',
+        lastValue: '10000000000000000000',
+        largeNumber: true,
+      })
+    ).toBe('9999999999999999999');
   });
 
   it('字符串 step 应该转换为数字', () => {
@@ -422,15 +450,36 @@ describe('getMaxOrMinValidateResult', () => {
   });
 
   it('大数字超过 max 应该返回 exceed-maximum', () => {
-    expect(getMaxOrMinValidateResult({ largeNumber: true, value: '99999999999999999999', max: '9999999999999999999', min: '0' })).toBe('exceed-maximum');
+    expect(
+      getMaxOrMinValidateResult({
+        largeNumber: true,
+        value: '99999999999999999999',
+        max: '9999999999999999999',
+        min: '0',
+      })
+    ).toBe('exceed-maximum');
   });
 
   it('大数字低于 min 应该返回 below-minimum', () => {
-    expect(getMaxOrMinValidateResult({ largeNumber: true, value: '9999999999999999999', max: '99999999999999999999', min: '10000000000000000000' })).toBe('below-minimum');
+    expect(
+      getMaxOrMinValidateResult({
+        largeNumber: true,
+        value: '9999999999999999999',
+        max: '99999999999999999999',
+        min: '10000000000000000000',
+      })
+    ).toBe('below-minimum');
   });
 
   it('大数字在范围内应该返回 undefined', () => {
-    expect(getMaxOrMinValidateResult({ largeNumber: true, value: '5000000000000000000', max: '9999999999999999999', min: '0' })).toBeUndefined();
+    expect(
+      getMaxOrMinValidateResult({
+        largeNumber: true,
+        value: '5000000000000000000',
+        max: '9999999999999999999',
+        min: '0',
+      })
+    ).toBeUndefined();
   });
 
   it('largeNumber 为 true 但 value 为 number 应该记录警告', () => {
