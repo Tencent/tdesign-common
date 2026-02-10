@@ -739,5 +739,25 @@ describe('format', () => {
       expect(res.isValid()).toBe(true);
       expect(res.year()).toBe(2023);
     });
+
+    it('parses YYYYwo correctly', () => {
+      // Use 'en' locale to match '1st' format
+      const result = parseToDayjs('20251st', 'YYYYwo', undefined, 'en');
+      expect(result.isValid()).toBe(true);
+      expect(result.year()).toBe(2025);
+    });
+
+    it('parses wwYYYY correctly', () => {
+      const result = parseToDayjs('352025', 'wwYYYY');
+      expect(result.isValid()).toBe(true);
+      expect(result.year()).toBe(2025);
+    });
+
+    it('parses QYYYY correctly', () => {
+      const result = parseToDayjs('32025', 'QYYYY');
+      expect(result.isValid()).toBe(true);
+      expect(result.year()).toBe(2025);
+      expect(result.month()).toBe(6); // Q3 starts in July (index 6)
+    });
   });
 });

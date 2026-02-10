@@ -5,6 +5,7 @@ import isLeapYear from 'dayjs/plugin/isLeapYear';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
+import quarterOfYear from 'dayjs/plugin/quarterOfYear';
 
 import log from '../log';
 
@@ -15,6 +16,7 @@ dayjs.extend(isLeapYear);
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
 dayjs.extend(weekOfYear);
+dayjs.extend(quarterOfYear);
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
@@ -48,9 +50,26 @@ export function parseToDayjs(
         .format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.\s]/)[0];
-    const weekStr = dateText.split(/[-/.\s]/)[1];
-    const weekFormatStr = format.split(/[-/.\s]/)[1];
+    let yearStr = dateText.split(/[-/.\s]/)[0];
+    let weekStr = dateText.split(/[-/.\s]/)[1];
+    let weekFormatStr = format.split(/[-/.\s]/)[1];
+
+    if (weekStr === undefined) {
+      const yearIndex = format.search(/Y{2,4}/);
+      const weekIndex = format.search(/w{1,2}|W{1,2}/);
+      if (yearIndex !== -1 && weekIndex !== -1) {
+        const yearLen = format.match(/Y{2,4}/)[0].length;
+        if (yearIndex < weekIndex) {
+          yearStr = dateText.substring(0, yearLen);
+          weekStr = dateText.substring(yearLen);
+          weekFormatStr = format.substring(yearLen);
+        } else {
+          weekStr = dateText.substring(0, dateText.length - yearLen);
+          yearStr = dateText.substring(dateText.length - yearLen);
+          weekFormatStr = format.substring(0, format.length - yearLen);
+        }
+      }
+    }
 
     let firstWeek = dayjs(yearStr, 'YYYY')
       .locale(dayjsLocale || 'zh-cn')
@@ -92,9 +111,26 @@ export function parseToDayjs(
         .format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.\s]/)[0];
-    const quarterStr = dateText.split(/[-/.\s]/)[1];
-    const quarterFormatStr = format.split(/[-/.\s]/)[1];
+    let yearStr = dateText.split(/[-/.\s]/)[0];
+    let quarterStr = dateText.split(/[-/.\s]/)[1];
+    let quarterFormatStr = format.split(/[-/.\s]/)[1];
+
+    if (quarterStr === undefined) {
+      const yearIndex = format.search(/Y{2,4}/);
+      const quarterIndex = format.search(/Q/);
+      if (yearIndex !== -1 && quarterIndex !== -1) {
+        const yearLen = format.match(/Y{2,4}/)[0].length;
+        if (yearIndex < quarterIndex) {
+          yearStr = dateText.substring(0, yearLen);
+          quarterStr = dateText.substring(yearLen);
+          quarterFormatStr = format.substring(yearLen);
+        } else {
+          quarterStr = dateText.substring(0, dateText.length - yearLen);
+          yearStr = dateText.substring(dateText.length - yearLen);
+          quarterFormatStr = format.substring(0, format.length - yearLen);
+        }
+      }
+    }
     const firstQuarter = dayjs(yearStr, 'YYYY').startOf('year');
     for (let i = 0; i < 4; i += 1) {
       const nextQuarter = firstQuarter.add(i, 'quarter');
