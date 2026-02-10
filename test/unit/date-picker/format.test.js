@@ -220,8 +220,6 @@ describe('format', () => {
       });
       expect(res).toBe('2023-01-01');
     });
-
-
   });
 
   describe('formatTime', () => {
@@ -371,8 +369,6 @@ describe('format', () => {
       expect(result.format).toBe('YYYY/MM/DD');
       expect(result.valueType).toBe('time-stamp');
     });
-
-
 
     it('extract time format from date mode with time', () => {
       const result = getDefaultFormat({ mode: 'date', format: 'YYYY-MM-DD HH:mm' });
@@ -694,8 +690,6 @@ describe('format', () => {
       expect(result.format('YYYY-MM-DD')).toBe('2025-08-26');
     });
 
-
-
     it('format mismatch return parsed date', () => {
       const result = parseToDayjs('2025/08/26', 'YYYY-MM-DD');
       expect(result.isValid()).toBe(true);
@@ -717,8 +711,6 @@ describe('format', () => {
       expect(result.second()).toBe(45);
     });
 
-
-
     it('week format with separator and defaultTime', () => {
       const result = parseToDayjs('2025-35', 'YYYY-ww', undefined, 'zh-cn', '08:20:00');
       expect(result.isValid()).toBe(true);
@@ -735,18 +727,12 @@ describe('format', () => {
       expect(res.format('YYYY-MM-DD')).toBe('2023-01-08');
     });
 
-
-
-
-
     it('returns default dayjs for invalid weekNum', () => {
       vi.useFakeTimers();
       vi.setSystemTime(new Date('2025-01-01'));
       const res = parseToDayjs('2025-54', 'YYYY-ww');
       expect(res.format('YYYY-MM-DD')).toBe('2025-01-01');
     });
-
-
 
     it('logs error when setting defaultTime fails', () => {
       const res = parseToDayjs('2023-01-01', 'YYYY-MM-DD', undefined, undefined, 123);
