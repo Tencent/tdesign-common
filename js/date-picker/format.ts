@@ -81,6 +81,7 @@ export function parseToDayjs(
         return nextWeek;
       }
     }
+    if (weekStr && weekFormatStr) return dayjs();
   }
 
   // format quarter
