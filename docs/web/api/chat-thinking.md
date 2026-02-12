@@ -20,4 +20,6 @@ spline: ai
 
 支持通过`animation`来设置思考内容加载过程的动画效果
 
+支持通过`content`插槽来自定义思考内容
+
 {{ think-style }}
