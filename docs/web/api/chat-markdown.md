@@ -22,6 +22,19 @@ spline: ai
 
 {{ plugin }}
 
+## Mermaid加载渲染
+`cherry-markdown` 支持Mermaid语法渲染，但是需要自行通过`<script>`引入Mermaid库，并放置在项目主脚本文件之前。
+
+```javascript
+
+// 确保此脚本标签位于'主脚本'之前加载
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+<script src="/dist/main.min.js"></script>
+
+```
+
+{{ mermaid }}
 ### 自定义事件响应
 
 {{ event }}
@@ -31,3 +44,9 @@ spline: ai
 以下展示了如何基于`cherry createSyntaxHook`机制来实现自定义脚注，语法格式：**[ref:1|标题|摘要|链接]**, 更多更丰富的自定义语法功能和示例，可以参考[cherry-markdown 自定义语法](https://github.com/Tencent/cherry-markdown/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%AD%E6%B3%95)
 
 {{ footnote }}
+
+## 自定义代码块
+
+以下展示了如何基于`cherry markdown`语法配置来实现自定义代码块。更多代码块相关配置，可参考[cherry-markdown 扩展代码块语法](https://github.com/Tencent/cherry-markdown/wiki/%E6%89%A9%E5%B1%95%E4%BB%A3%E7%A0%81%E5%9D%97%E8%AF%AD%E6%B3%95)
+
+{{ customCodeBlock }}
