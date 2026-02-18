@@ -3,9 +3,11 @@ import { Styles } from '../common';
 /**
  * 用于为节点增加styles
  * @param el HTMLElement
- * @param style Styles
+ * @param styles Styles
  */
 function setStyle(el: HTMLElement, styles: Styles): void {
+  if (!el) return;
+
   const keys = Object.keys(styles);
   keys.forEach((key) => {
     // @ts-ignore
