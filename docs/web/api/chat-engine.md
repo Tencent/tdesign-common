@@ -17,7 +17,6 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 
 > 💡 **示例说明**：所有示例都基于 Mock SSE 服务，可以打开浏览器开发者工具（F12），切换到 Network（网络）标签，查看接口的请求和响应数据，了解数据格式。
 
-
 ## 快速开始
 
 最简单的示例，使用 `useChat` Hook 创建对话引擎，组合 `ChatList`、`ChatMessage`、`ChatSender` 组件构建对话界面。
@@ -34,6 +33,7 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 ### 数据处理
 
 `chatServiceConfig` 是 ChatEngine 的核心配置，控制着与后端的通信和数据处理，是连接前端组件和后端服务的桥梁。作用包括
+
 - **请求配置** (endpoint、onRequest设置请求头、请求参数)
 - **数据转换** (onMessage：将后端数据转换为组件所需格式)
 - **生命周期回调** (onStart、onComplete、onError、onAbort)。
@@ -50,7 +50,6 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 通过 `chatEngine` 调用[各种方法](#chatengine-实例方法)控制组件行为（消息设置、发送管理等）。
 {{ instance-methods }}
 
-
 ### 自定义渲染
 
 使用**动态插槽机制**实现自定义渲染，包括自定义`内容渲染`、自定义`操作栏`、自定义`输入区域`。
@@ -65,7 +64,6 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 
 - **自定义输入区域**：如果需要自定义ChatSender输入区，可用插槽详见[ChatSender插槽](/react-chat/components/chat-sender?tab=api#插槽)
 
-
 {{ custom-content }}
 
 ### 综合示例
@@ -74,13 +72,11 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 
 {{ comprehensive }}
 
-
 ## Headless 事件总线
 
 ChatEngine 内置了事件总线（EventBus），支持在无 UI 场景下进行事件分发，适用于日志监控、跨组件通信、外部系统集成等场景。[支持的事件类型](/react-chat/components/chat-engine?tab=api#支持的事件类型)
 
 {{ headless-eventbus }}
-
 
 ## AG-UI 协议
 
@@ -91,7 +87,6 @@ ChatEngine 内置了事件总线（EventBus），支持在无 UI 场景下进行
 开启 AG-UI 协议支持（`protocol: 'agui'`），组件会自动解析标准事件类型（如 `TEXT_MESSAGE_*`、`THINKING_*`、`TOOL_CALL_*`、`ACTIVITY_*`、`STATE_*` 等）。使用`AGUIAdapter.convertHistoryMessages`方法即可实现符合[`AGUIHistoryMessage`](https://github.com/TDesignOteam/tdesign-web-components/blob/develop/src/chat-engine/adapters/agui/types.ts)数据结构的历史消息回填。
 
 {{ agui-basic }}
-
 
 ### 工具调用
 
@@ -112,7 +107,6 @@ ChatEngine 围绕工具调用提供了几个核心 Hook，它们各司其职，�
 2. 在消息渲染时使用 `ToolCallRenderer` 组件渲染工具调用
 3. `ToolCallRenderer` 自动查找配置、解析参数、管理状态、渲染 UI
 
-
 #### 基础示例
 
 一个模拟图片生成助手的Agent，展示工具调用和状态订阅的核心用法：
@@ -124,7 +118,6 @@ ChatEngine 围绕工具调用提供了几个核心 Hook，它们各司其职，�
 - **推荐问题**：通过返回`toolcallName: 'suggestion'`，可以无缝对接内置的推荐问题组件
 
 {{ agui-toolcall }}
-
 
 ### 工具状态订阅
 
@@ -178,22 +171,22 @@ const GlobalProgressBar: React.FC = () => {
 
 完整示例请参考下方 [综合示例](#综合示例) 演示。
 
-
 ### Activity 事件
 
 AG-UI 协议支持通过 `ACTIVITY_*` 事件展示动态内容组件（如实时图表、进度条等）。Activity 专注于**纯展示场景**，通过 `ACTIVITY_SNAPSHOT` 初始化数据，`ACTIVITY_DELTA` 增量更新。
+
 - **`useAgentActivity`**：注册 Activity 配置（类型、UI 组件）
 - **`ActivityRenderer`**：根据 `activityType` 自动匹配并渲染组件
 - **事件流程**：`ACTIVITY_SNAPSHOT` → `ACTIVITY_DELTA` → `ACTIVITY_DELTA`...
 
 {{ agui-activity }}
 
-
 ### 综合示例
 
 模拟一个完整的**旅游规划 Agent 场景**，演示了如何使用 AG-UI 协议构建复杂的**多步骤任务规划**应用。先收集用户偏好（Human-in-the-Loop），然后根据用户提交的偏好依次执行：查询天气、展示规划步骤的工具调用，同时展示实时数据（如股票图表、进度条等 Activity），最后总结生成最终计划
 
 **核心特性：**
+
 - **完整事件体系**：展示 AG-UI 协议的所有事件类型，包括 `TEXT_MESSAGE_*`、`THINKING_*`、`TOOL_CALL_*`、`ACTIVITY_*`、`STATE_*` 等
 - **多步骤流程**：支持分步骤执行复杂任务（如旅游规划）
 - **状态流式传输**：实时更新应用状态，支持状态快照和增量更新
