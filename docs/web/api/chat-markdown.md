@@ -23,6 +23,7 @@ spline: ai
 {{ plugin }}
 
 ## Mermaid 加载渲染
+
 `cherry-markdown` 支持Mermaid语法渲染，但是需要自行通过`<script>`引入Mermaid库，并放置在项目主脚本文件之前。
 
 ```javascript
