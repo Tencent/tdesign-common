@@ -1,4 +1,4 @@
-import { isFunction, chunk } from 'lodash-es';
+import { isFunction, chunk, isArray } from 'lodash-es';
 import dayjs from 'dayjs';
 import dayJsIsBetween from 'dayjs/plugin/isBetween';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
@@ -543,4 +543,118 @@ export function isEnabledDate({
  */
 export function covertToDate(value: string, valueType: string) {
   return valueType === 'time-stamp' ? new Date(value) : dayjs(value, valueType).toDate();
+}
+
+type PickerDateRange = DateValue[] | ((date: DateValue) => boolean);
+
+// 解析range数组为边界日期并纠正顺序
+export function getRangeBounds(range: PickerDateRange): { min: Date | null; max: Date | null } {
+  if (!isArray(range)) return { min: null, max: null };
+  const [rawMin, rawMax] = range;
+  const min = rawMin == null ? null : new Date(rawMin);
+  const max = rawMax == null ? null : new Date(rawMax);
+  if (min == null || max == null) return { min, max };
+  if (min > max) return { min: max, max: min };
+  return { min, max };
+}
+
+// 根据range判断某年某月是否存在可选日期
+export function monthHasAnyAllowed(range: PickerDateRange, year: number, month: number): boolean {
+  if (isArray(range)) {
+    const { min, max } = getRangeBounds(range);
+    if (min && year === min.getFullYear() && month < min.getMonth()) return false;
+    if (max && year === max.getFullYear() && month > max.getMonth()) return false;
+    if (min && year < min.getFullYear()) return false;
+    if (max && year > max.getFullYear()) return false;
+    return true;
+  }
+  if (isFunction(range)) {
+    const allow = range as (d: Date) => boolean;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    for (let d = 1; d <= daysInMonth; d++) {
+      if (allow(new Date(year, month, d))) return true;
+    }
+    return false;
+  }
+  return true;
+}
+
+// 根据range判断某年是否存在可选日期
+export function yearHasAnyAllowed(range: PickerDateRange, year: number): boolean {
+  if (isArray(range)) {
+    const { min, max } = getRangeBounds(range);
+    if (min && year < min.getFullYear()) return false;
+    if (max && year > max.getFullYear()) return false;
+    return true;
+  }
+  if (isFunction(range)) {
+    for (let m = 0; m < 12; m++) {
+      if (monthHasAnyAllowed(range, year, m)) return true;
+    }
+    return false;
+  }
+  return true;
+}
+
+// 判断某年代（以结束年份表示）是否存在可选日期
+export function decadeHasAnyAllowed(range: PickerDateRange, decadeEndYear: number): boolean {
+  const start = decadeEndYear - 9;
+  for (let y = start; y <= decadeEndYear; y++) {
+    if (yearHasAnyAllowed(range, y)) return true;
+  }
+  return false;
+}
+
+// 计算分页（上一页/下一页）按钮禁用状态
+export function computePaginationDisabled(
+  range: PickerDateRange,
+  mode: 'date' | 'week' | 'month' | 'quarter' | 'year',
+  year: number,
+  month: number | undefined
+): { prev: boolean; next: boolean } {
+  const monthCountMap: Record<string, number> = { date: 1, week: 1, month: 12, quarter: 12, year: 120 };
+  const monthCount = monthCountMap[mode] || 0;
+  const current = new Date(year, month || 0);
+  const prev = new Date(current.getFullYear(), current.getMonth() - monthCount);
+  const next = new Date(current.getFullYear(), current.getMonth() + monthCount);
+
+  const { min, max } = getRangeBounds(range);
+
+  const cmpYearMonth = (a: Date, b: Date): number => {
+    if (a.getFullYear() !== b.getFullYear()) return a.getFullYear() - b.getFullYear();
+    return a.getMonth() - b.getMonth();
+  };
+
+  let prevDisabled = false;
+  let nextDisabled = false;
+
+  if (isArray(range)) {
+    if (min) {
+      if (mode === 'date' || mode === 'week') prevDisabled = cmpYearMonth(prev, min) < 0;
+      else prevDisabled = prev.getFullYear() < min.getFullYear();
+    }
+    if (max) {
+      if (mode === 'date' || mode === 'week') nextDisabled = cmpYearMonth(next, max) > 0;
+      else nextDisabled = next.getFullYear() > max.getFullYear();
+    }
+    if (mode === 'year') {
+      if (min) prevDisabled = prev.getFullYear() < min.getFullYear();
+      if (max) nextDisabled = next.getFullYear() > max.getFullYear();
+    }
+  } else if (isFunction(range)) {
+    if (mode === 'date' || mode === 'week') {
+      prevDisabled = !monthHasAnyAllowed(range, prev.getFullYear(), prev.getMonth());
+      nextDisabled = !monthHasAnyAllowed(range, next.getFullYear(), next.getMonth());
+    } else if (mode === 'month' || mode === 'quarter') {
+      prevDisabled = !yearHasAnyAllowed(range, prev.getFullYear());
+      nextDisabled = !yearHasAnyAllowed(range, next.getFullYear());
+    } else if (mode === 'year') {
+      const prevDecadeEnd = prev.getFullYear() - (prev.getFullYear() % 10) + 9;
+      const nextDecadeEnd = next.getFullYear() - (next.getFullYear() % 10) + 9;
+      prevDisabled = !decadeHasAnyAllowed(range, prevDecadeEnd);
+      nextDisabled = !decadeHasAnyAllowed(range, nextDecadeEnd);
+    }
+  }
+
+  return { prev: prevDisabled, next: nextDisabled };
 }
