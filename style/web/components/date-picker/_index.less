@@ -52,6 +52,21 @@
   }
 }
 
+// 切换模式，需要保存日期面板和时间面板高度、宽度一致，避免切换时面板尺寸变化
+.@{prefix}-date-range-picker__panel--switch-mode {
+  .@{prefix}-time-picker__panel {
+    width: @datepicker-panel-width;
+
+    &-section-body {
+      padding: @datepicker-time-panel-switch-mode-padding;
+    }
+
+    &-body {
+      height: @datepicker-time-panel-switch-mode-height;
+    }
+  }
+}
+
 .@{prefix}-date-picker__panel-content,
 .@{prefix}-date-range-picker__panel-content,
 .@{prefix}-date-range-picker__panel-content-wrapper {
@@ -164,9 +179,11 @@
         z-index: 0;
         background-color: @datepicker-cell-active-background;
       }
+
       .@{prefix}-date-picker__cell:first-child .@{prefix}-date-picker__cell-inner {
         color: @brand-color;
       }
+
       .@{prefix}-date-picker__cell .@{prefix}-date-picker__cell-inner {
         background: transparent;
         color: @datepicker-cell-active-color;
@@ -279,7 +296,7 @@
 // year month picker highlight
 .@{prefix}-date-picker__panel-year,
 .@{prefix}-date-picker__panel-month {
-  .@{prefix}-date-picker__cell--hover-highlight + .@{prefix}-date-picker__cell--hover-highlight {
+  .@{prefix}-date-picker__cell--hover-highlight+.@{prefix}-date-picker__cell--hover-highlight {
     &::before,
     &::after {
       opacity: 1;
@@ -287,7 +304,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--hover-highlight + .@{prefix}-date-picker__cell--active {
+  .@{prefix}-date-picker__cell--hover-highlight+.@{prefix}-date-picker__cell--active {
     &::after {
       opacity: 1;
       left: @datepicker-cell-month-year-left;
@@ -295,7 +312,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--highlight + .@{prefix}-date-picker__cell--highlight {
+  .@{prefix}-date-picker__cell--highlight+.@{prefix}-date-picker__cell--highlight {
     &::before {
       left: @datepicker-cell-month-year-left;
     }
@@ -326,7 +343,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--disabled + .@{prefix}-date-picker__cell--disabled:before {
+  .@{prefix}-date-picker__cell--disabled+.@{prefix}-date-picker__cell--disabled:before {
     left: @datepicker-cell-disabled-left-large;
   }
 
