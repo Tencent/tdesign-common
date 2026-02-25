@@ -9,3 +9,4 @@ default.extend-ignore-re   = [
 actived = "actived"
 colum = "colum"
 loosing = "loosing"
+Normale = "Normale"
