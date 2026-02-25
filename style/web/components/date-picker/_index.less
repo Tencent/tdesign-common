@@ -296,7 +296,7 @@
 // year month picker highlight
 .@{prefix}-date-picker__panel-year,
 .@{prefix}-date-picker__panel-month {
-  .@{prefix}-date-picker__cell--hover-highlight+.@{prefix}-date-picker__cell--hover-highlight {
+  .@{prefix}-date-picker__cell--hover-highlight + .@{prefix}-date-picker__cell--hover-highlight {
     &::before,
     &::after {
       opacity: 1;
@@ -304,7 +304,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--hover-highlight+.@{prefix}-date-picker__cell--active {
+  .@{prefix}-date-picker__cell--hover-highlight + .@{prefix}-date-picker__cell--active {
     &::after {
       opacity: 1;
       left: @datepicker-cell-month-year-left;
@@ -312,7 +312,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--highlight+.@{prefix}-date-picker__cell--highlight {
+  .@{prefix}-date-picker__cell--highlight + .@{prefix}-date-picker__cell--highlight {
     &::before {
       left: @datepicker-cell-month-year-left;
     }
@@ -343,7 +343,7 @@
     }
   }
 
-  .@{prefix}-date-picker__cell--disabled+.@{prefix}-date-picker__cell--disabled:before {
+  .@{prefix}-date-picker__cell--disabled + .@{prefix}-date-picker__cell--disabled:before {
     left: @datepicker-cell-disabled-left-large;
   }
 
