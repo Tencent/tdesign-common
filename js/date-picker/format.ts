@@ -370,7 +370,7 @@ export function initYearMonthTime({
     defaultYearMonthTime.year[1] += 1;
   } else if (
     (mode === 'date' || mode === 'week') &&
-    (!enableTimePicker || (isObject(enableTimePicker) && enableTimePicker.mode === 'switch'))
+    (!enableTimePicker || (isObject(enableTimePicker) && enableTimePicker?.mode === 'switch'))
   ) {
     // 切换至下一年
     if (defaultYearMonthTime.month[0] === 11) {
