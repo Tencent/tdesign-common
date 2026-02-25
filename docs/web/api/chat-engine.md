@@ -41,9 +41,9 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 根据后端服务协议的不同，又有两种配置方式：
 
 - **自定义协议**：当后端使用自定义数据格式时，往往不能按照前端组件的要求来输出，这时需要通过 `onMessage` 进行数据转换。
-- **AG-UI 协议**：当后端服务符合 [AG-UI 协议](/react-chat/agui) 时，只需设置 `protocol: 'agui'`，无需编写 `onMessage` 进行数据转换，大大简化了接入流程。详见下方 [AG-UI 协议](#ag-ui-协议) 章节。
+- **AG-UI 协议**：当后端服务符合 [AG-UI 协议] 时，只需设置 `protocol: 'agui'`，无需编写 `onMessage` 进行数据转换，大大简化了接入流程。详见下方 [AG-UI 协议] 章节。
 
-这部分的配置用法与Chatbot中一致，示例可以参考 [Chatbot 数据处理](/react-chat/components/chatbot#数据处理) 章节。
+这部分的配置用法与Chatbot中一致，示例可以参考 [Chatbot 数据处理] 章节。
 
 ### 实例方法
 
@@ -61,9 +61,9 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
   - 3. 监听变化：通过 `onMessageChange` 监听消息变化并同步到本地状态
   - 4. 植入插槽：循环 `messages` 数组，使用 `slot = ${content.type}-${index}` 属性来渲染自定义组件
 
-- **自定义操作栏**：如果组件库内置的 [`ChatActionbar`](/react-chat/components/chat-actionbar) 不能满足需求，可以通过 `slot='actionbar'` 属性来渲染自定义组件。
+- **自定义操作栏**：如果组件库内置的 [`ChatActionbar`]不能满足需求，可以通过 `slot='actionbar'` 属性来渲染自定义组件。
 
-- **自定义输入区域**：如果需要自定义ChatSender输入区，可用插槽详见[ChatSender插槽](/react-chat/components/chat-sender?tab=api#插槽)
+- **自定义输入区域**：如果需要自定义ChatSender输入区，可用插槽详见[ChatSender插槽]
 
 
 {{ custom-content }}
@@ -77,8 +77,7 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 
 ## Headless 事件总线
 
-ChatEngine 内置了事件总线（EventBus），支持在无 UI 场景下进行事件分发，适用于日志监控、跨组件通信、外部系统集成等场景。[支持的事件类型](/react-chat/components/chat-engine?tab=api#支持的事件类型)
-
+ChatEngine 内置了事件总线（EventBus），支持在无 UI 场景下进行事件分发，适用于日志监控、跨组件通信、外部系统集成等场景。[支持的事件类型]
 {{ headless-eventbus }}
 
 
@@ -103,7 +102,7 @@ AG-UI 协议支持通过 `TOOL_CALL_*` 事件让 AI Agent 调用前端工具组�
 
 ChatEngine 围绕工具调用提供了几个核心 Hook，它们各司其职，协同工作：
 
-- **`useAgentToolcall` Hook**：注册工具配置（元数据、参数、UI 组件），相比传统的自定义渲染方式，提供了高度内聚的配置、统一的 API 接口、完整的类型安全和更好的可移植性。详见下方[常见问题](/react-chat/components/chat-engine?tab=demo#常见问题)
+- **`useAgentToolcall` Hook**：注册工具配置（元数据、参数、UI 组件），相比传统的自定义渲染方式，提供了高度内聚的配置、统一的 API 接口、完整的类型安全和更好的可移植性。详见API下方[常见问题]
 - **`ToolCallRenderer` 组件**：工具调用的统一渲染器，负责根据工具名称查找对应的配置，解析参数，管理状态并渲染注册的 UI 组件。使用时只需传入 `toolCall` 对象即可自动完成渲染
 
 #### 使用流程
