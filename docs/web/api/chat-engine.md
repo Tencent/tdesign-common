@@ -7,7 +7,7 @@ spline: navigation
 
 ## 阅读指引
 
-ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook API 用于深度定制。支持自定义 UI 结构、消息处理和 AG-UI 协议，适合构建复杂智能体应用，如工具调用、多步骤任务规划、状态流式传输等场景，相比 Chatbot 组件提供了更高的灵活性，适合需要**深度定制 UI 结构和消息处理流程**的场景。Chatbot组件本身也是基于 ChatEngine 构建的 (ChatEngine + Preset UI)。
+ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook API 用于深度定制。支持自定义 UI 结构、消息处理和 AG-UI 协议，适合构建复杂智能体应用，如工具调用、多步骤任务规划、状态流式传输等场景，相比 Chatbot 组件提供了更高的灵活性，适合需要**深度定制 UI 结构和消息处理流程**的场景。Chatbot 组件本身也是基于 ChatEngine 构建的 (ChatEngine + Preset UI)。
 
 建议按以下路径循序渐进阅读:
 
@@ -34,7 +34,7 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 
 `chatServiceConfig` 是 ChatEngine 的核心配置，控制着与后端的通信和数据处理，是连接前端组件和后端服务的桥梁。作用包括
 
-- **请求配置** (endpoint、onRequest设置请求头、请求参数)
+- **请求配置** (endpoint、onRequest 设置请求头、请求参数)
 - **数据转换** (onMessage：将后端数据转换为组件所需格式)
 - **生命周期回调** (onStart、onComplete、onError、onAbort)。
 
@@ -43,7 +43,7 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 - **自定义协议**：当后端使用自定义数据格式时，往往不能按照前端组件的要求来输出，这时需要通过 `onMessage` 进行数据转换。
 - **AG-UI 协议**：当后端服务符合 [AG-UI 协议] 时，只需设置 `protocol: 'agui'`，无需编写 `onMessage` 进行数据转换，大大简化了接入流程。详见下方 [AG-UI 协议] 章节。
 
-这部分的配置用法与Chatbot中一致，示例可以参考 [Chatbot 数据处理] 章节。
+这部分的配置用法与 Chatbot 中一致，示例可以参考 [Chatbot 数据处理] 章节。
 
 ### 实例方法
 
@@ -97,7 +97,7 @@ AG-UI 协议支持通过 `TOOL_CALL_*` 事件让 AI Agent 调用前端工具组�
 
 ChatEngine 围绕工具调用提供了几个核心 Hook，它们各司其职，协同工作：
 
-- **`useAgentToolcall` Hook**：注册工具配置（元数据、参数、UI 组件），相比传统的自定义渲染方式，提供了高度内聚的配置、统一的 API 接口、完整的类型安全和更好的可移植性。详见API下方[常见问题]
+- **`useAgentToolcall` Hook**：注册工具配置（元数据、参数、UI 组件），相比传统的自定义渲染方式，提供了高度内聚的配置、统一的 API 接口、完整的类型安全和更好的可移植性。详见 API 下方[常见问题]
 - **`ToolCallRenderer` 组件**：工具调用的统一渲染器，负责根据工具名称查找对应的配置，解析参数，管理状态并渲染注册的 UI 组件。使用时只需传入 `toolCall` 对象即可自动完成渲染
 
 #### 使用流程
@@ -108,7 +108,7 @@ ChatEngine 围绕工具调用提供了几个核心 Hook，它们各司其职，�
 
 #### 基础示例
 
-一个模拟图片生成助手的Agent，展示工具调用和状态订阅的核心用法：
+一个模拟图片生成助手的 Agent，展示工具调用和状态订阅的核心用法：
 
 - **工具注册**：使用 `useAgentToolcall` 注册 `generate_image` 工具
 - **状态订阅**：使用注入的 `agentState` 参数来订阅图片生成进度（preparing → generating → completed/failed）
@@ -120,9 +120,9 @@ ChatEngine 围绕工具调用提供了几个核心 Hook，它们各司其职，�
 
 ### 工具状态订阅
 
-在 AG-UI 协议中，除了工具组件内部需要展示状态，有时我们还需要在**对话组件外部的 UI**（如页面顶部的进度条、侧边栏的任务列表等）中订阅和展示工具执行状态。Agent服务是通在工具调用过程中增加`STATE_SNAPSHOT` 和 `STATE_DELTA` 事件来实现状态变更、快照的流式传输。
+在 AG-UI 协议中，除了工具组件内部需要展示状态，有时我们还需要在**对话组件外部的 UI**（如页面顶部的进度条、侧边栏的任务列表等）中订阅和展示工具执行状态。Agent 服务是通在工具调用过程中增加`STATE_SNAPSHOT` 和 `STATE_DELTA` 事件来实现状态变更、快照的流式传输。
 
-为了方便旁路UI组件订阅状态，可以使用 `useAgentState` 来获取状态数据，实时渲染任务执行进度和状态信息。比如要在页面顶部显示当前任务的执行进度，不在对话流中展示， 可以这样实现。
+为了方便旁路 UI 组件订阅状态，可以使用 `useAgentState` 来获取状态数据，实时渲染任务执行进度和状态信息。比如要在页面顶部显示当前任务的执行进度，不在对话流中展示， 可以这样实现。
 
 ```javascript
 // 外部进度面板组件
