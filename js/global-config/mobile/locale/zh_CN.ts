@@ -22,10 +22,12 @@ export default {
     confirm: '确定',
   },
   dateTimePicker: {
+    dayjsLocale: 'zh-cn',
     title: '选择时间',
     cancel: '取消',
     confirm: '确定',
     format: 'YYYY-MM-DD',
+    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     yearLabel: '年',
     monthLabel: '月',
     dateLabel: '日',
@@ -60,6 +62,7 @@ export default {
     loadingTexts: ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'],
   },
   rate: {
+    texts: ['极差', '失望', '一般', '满意', '惊喜'],
     valueText: '{value} 分',
     noValueText: '未评分',
   },
@@ -85,6 +88,7 @@ export default {
       waitingText: '待上传',
       failText: '上传失败',
       successText: '上传成功',
+      reloadText: '重新上传',
     },
   },
   guide: {
@@ -97,5 +101,33 @@ export default {
     expiredText: '二维码过期',
     refreshText: '点击刷新',
     scannedText: '已扫描',
+  },
+  attachments: {
+    status: {
+      pending: '上传中...',
+      fail: '上传失败',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '刷新',
+      copy: '复制',
+      good: '点赞',
+      bad: '点踩',
+      share: '分享',
+      quote: '引用',
+    },
+  },
+  chatSender: {
+    placeholder: '请输入消息...',
+    sendText: '发送',
+    stopText: '停止',
+  },
+  chatThinking: {
+    status: {
+      pending: '正在思考中...',
+      complete: '已完成思考',
+      stop: '已停止思考',
+    },
   },
 };

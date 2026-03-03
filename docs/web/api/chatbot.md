@@ -33,13 +33,13 @@ Chatbot 作为高度封装且功能完备的一体化智能对话组件，专为
 
 ### 角色消息配置
 
-使用 `messageProps` 配置不同角色的消息展示效果，这些配置会透传给内部的 [ChatMessage](/react-chat/components/chat-message) 组件。包括**消息样式**（气泡样式、位置、头像、昵称）、**操作回调**（复制、点赞、点踩、重试）、**内容展示**行为（思考过程、搜索结果、Markdown 等）。支持静态配置对象和动态配置函数两种方式。篇幅有限更多配置项和示例请参考 [ChatMessage 文档](/react-chat/components/chat-message)。
+使用 `messageProps` 配置不同角色的消息展示效果，这些配置会透传给内部的 [ChatMessage] 组件。包括**消息样式**（气泡样式、位置、头像、昵称）、**操作回调**（复制、点赞、点踩、重试）、**内容展示**行为（思考过程、搜索结果、Markdown 等）。支持静态配置对象和动态配置函数两种方式。篇幅有限更多配置项和示例请参考 [ChatMessage 文档]。
 
 {{ role-message-config }}
 
 ### 输入配置
 
-使用 `senderProps` 配置输入框的各种行为，这些配置会透传给内部的 [ChatSender](/react-chat/components/chat-sender) 组件。包括基础配置（占位符、自动高度）、附件上传配置（文件类型、附件展示）、输入事件回调等。更多配置项和高级用法请参考 [ChatSender 文档](/react-chat/components/chat-sender)。
+使用 `senderProps` 配置输入框的各种行为，这些配置会透传给内部的 [ChatSender] 组件。包括基础配置（占位符、自动高度）、附件上传配置（文件类型、附件展示）、输入事件回调等。更多配置项和高级用法请参考 [ChatSender 文档]。
 
 {{ sender-config }}
 
@@ -53,13 +53,13 @@ Chatbot 作为高度封装且功能完备的一体化智能对话组件，专为
 
 {{ service-config }}
 
-**AG-UI 协议**：当后端服务符合 [AG-UI 协议](/react-chat/agui) 时，只需设置 `protocol: 'agui'`，无需编写 `onMessage` 进行数据转换，大大简化了接入流程。这里只给出了一个简单的文本对话示例，更多复杂的 AG-UI 场景可以参考 [ChatEngine 集成方式](/react-chat/components/chat-engine)。
+**AG-UI 协议**：当后端服务符合 [AG-UI 协议] 时，只需设置 `protocol: 'agui'`，无需编写 `onMessage` 进行数据转换，大大简化了接入流程。这里只给出了一个简单的文本对话示例，更多复杂的 AG-UI 场景可以参考 [ChatEngine 集成方式]。
 
 {{ agui }}
 
 ### 实例方法
 
-通过 ref 获取组件实例，调用[各种方法](/react-chat/components/chatbot?tab=api#chatbot-实例方法和属性)控制组件行为（消息设置、发送管理、列表滚动等）。
+通过 ref 获取组件实例，调用[各种方法]控制组件行为（消息设置、发送管理、列表滚动等）。
 
 {{ instance-methods }}
 
@@ -73,9 +73,9 @@ Chatbot 作为高度封装且功能完备的一体化智能对话组件，专为
   - 3. 监听变化：通过 `onMessageChange` 监听消息变化并同步到本地状态
   - 4. 植入插槽：循环 `messages` 数组，使用 `slot = ${msg.id}-${content.type}-${index}` 属性来渲染自定义组件
 
-- **自定义操作栏**：如果组件库内置的 [`ChatActionbar`](/react-chat/components/chat-actionbar) 不能满足需求，可以通过 `slot = ${msg.id}-actionbar` 属性来渲染自定义组件。
+- **自定义操作栏**：如果组件库内置的 [`ChatActionbar`] 不能满足需求，可以通过 `slot = ${msg.id}-actionbar` 属性来渲染自定义组件。
 
-- **自定义输入区域**：如果需要自定义 ChatSender 输入区，可以通过 `slot = sender-${slotName}` 属性，可用插槽 slotName 详见[ChatSender 插槽](/react-chat/components/chat-sender?tab=api#插槽)
+- **自定义输入区域**：如果需要自定义 ChatSender 输入区，可以通过 `slot = sender-${slotName}` 属性，可用插槽 slotName 详见[ChatSender 插槽]
 
 {{ custom }}
 

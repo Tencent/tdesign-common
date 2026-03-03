@@ -192,8 +192,8 @@
     }
     & when(@type = dots) {
       .@{prefix}-swiper__navigation-item {
-        @itemWidth: 'swiper-navigation-item-dot-size';
-        @itemHeight: 'swiper-navigation-item-dot-size';
+        @itemWidth: 'swiper-navigation-item-dot-size--@{size}';
+        @itemHeight: 'swiper-navigation-item-dot-size--@{size}';
         @itemWidthActive: 'swiper-navigation-item-width-bars-@{size}-active';
         @itemMargin: 'swiper-navigation-item-margin-@{size}';
 
@@ -255,7 +255,7 @@
   }
 
   & when(@position = outside) {
-    & when(@type = bars) {
+    & when(@type = bars), (@type = dots-bar), (@type = dots) {
       .@{prefix}-swiper__navigation-item {
         span {
           background-color: @swiper-navigation-item-bg-outside;

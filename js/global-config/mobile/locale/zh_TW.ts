@@ -22,10 +22,12 @@ export default {
     confirm: '確定',
   },
   dateTimePicker: {
+    dayjsLocale: 'zh-tw',
     title: '選擇時間',
     cancel: '取消',
     confirm: '確定',
     format: 'YYYY-MM-DD',
+    months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     yearLabel: '年',
     monthLabel: '月',
     dateLabel: '日',
@@ -60,6 +62,7 @@ export default {
     loadingTexts: ['下拉刷新', '鬆手刷新', '正在刷新', '刷新完成'],
   },
   rate: {
+    texts: ['極差', '失望', '一般', '滿意', '驚喜'],
     valueText: '{value} 分',
     noValueText: '未評分',
   },
@@ -97,5 +100,33 @@ export default {
     expiredText: '二維碼過期',
     refreshText: '點擊刷新',
     scannedText: '已掃描',
+  },
+  attachments: {
+    status: {
+      pending: '上傳中...',
+      fail: '上傳失敗',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '刷新',
+      copy: '複製',
+      good: '點讚',
+      bad: '點踩',
+      share: '分享',
+      quote: '引用',
+    },
+  },
+  chatSender: {
+    placeholder: '請輸入消息...',
+    sendText: '發送',
+    stopText: '停止',
+  },
+  chatThinking: {
+    status: {
+      pending: '正在思考中...',
+      complete: '已完成思考',
+      stop: '已停止思考',
+    },
   },
 };

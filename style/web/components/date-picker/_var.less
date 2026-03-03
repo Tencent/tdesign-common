@@ -19,6 +19,8 @@
 @datepicker-panel-divider-color: @component-stroke;
 @datepicker-time-panel-width: 216px;
 @datepicker-time-panel-padding: @pop-padding-xl calc(@pop-padding-xl - @comp-margin-xs);
+@datepicker-time-panel-switch-mode-height: 248px;
+@datepicker-time-panel-switch-mode-padding: calc(@pop-padding-xxl - 1px) @pop-padding-xl;
 @datepicker-panel-padding: @pop-padding-xl;
 @datepicker-header-gap: @comp-margin-m;
 @datepicker-header-controller-gap: @comp-margin-s;
@@ -66,8 +68,7 @@
 @datepicker-presets-text-color-hover: @brand-color-hover;
 
 // ani
-@datepicker-transition:
-  box-shadow @anim-duration-base @anim-time-fn-easing,
+@datepicker-transition: box-shadow @anim-duration-base @anim-time-fn-easing,
   background-color @anim-duration-base linear,
   border-color @anim-duration-base linear,
   color @anim-duration-base linear;

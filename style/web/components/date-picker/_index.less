@@ -52,6 +52,21 @@
   }
 }
 
+// 切换模式，需要保持日期面板和时间面板高度、宽度一致，避免切换时面板尺寸变化
+.@{prefix}-date-range-picker__panel--switch-mode {
+  .@{prefix}-time-picker__panel {
+    width: @datepicker-panel-width;
+
+    &-section-body {
+      padding: @datepicker-time-panel-switch-mode-padding;
+    }
+
+    &-body {
+      height: @datepicker-time-panel-switch-mode-height;
+    }
+  }
+}
+
 .@{prefix}-date-picker__panel-content,
 .@{prefix}-date-range-picker__panel-content,
 .@{prefix}-date-range-picker__panel-content-wrapper {
@@ -164,9 +179,11 @@
         z-index: 0;
         background-color: @datepicker-cell-active-background;
       }
+
       .@{prefix}-date-picker__cell:first-child .@{prefix}-date-picker__cell-inner {
         color: @brand-color;
       }
+
       .@{prefix}-date-picker__cell .@{prefix}-date-picker__cell-inner {
         background: transparent;
         color: @datepicker-cell-active-color;

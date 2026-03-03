@@ -35,16 +35,18 @@ export default {
     confirm: 'Confirm',
   },
   dateTimePicker: {
+    dayjsLocale: 'en',
     title: 'Select Date',
     cancel: 'Cancel',
     confirm: 'Confirm',
     format: 'YYYY-MM-DD',
-    yearLabel: 'Year',
-    monthLabel: 'Month',
-    dateLabel: 'Date',
-    hourLabel: 'Hour',
-    minuteLabel: 'Minute',
-    secondLabel: 'Second',
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    yearLabel: '',
+    monthLabel: '',
+    dateLabel: '',
+    hourLabel: '',
+    minuteLabel: '',
+    secondLabel: '',
   },
   form: {
     errorMessage: {
@@ -73,6 +75,7 @@ export default {
     loadingTexts: ['Pull to refresh', 'Loose to refresh', 'Refreshing ', 'Refresh completed'],
   },
   rate: {
+    texts: ['Poor', 'Fair', 'Average', 'Good', 'Excellent'],
     valueText: '{value} score',
     noValueText: 'No score',
   },
@@ -98,6 +101,7 @@ export default {
       waitingText: 'Waiting',
       failText: 'Failed',
       successText: 'Success',
+      reloadText: 'Reload',
     },
   },
   guide: {
@@ -110,5 +114,33 @@ export default {
     expiredText: 'expired',
     refreshText: 'refresh',
     scannedText: 'scanned',
+  },
+  attachments: {
+    status: {
+      pending: 'uploading...',
+      fail: 'upload failed',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: 'refresh',
+      copy: 'copy',
+      good: 'good',
+      bad: 'bad',
+      share: 'share',
+      quote: 'quote',
+    },
+  },
+  chatSender: {
+    placeholder: 'please enter message...',
+    sendText: 'send',
+    stopText: 'stop',
+  },
+  chatThinking: {
+    status: {
+      pending: 'thinking...',
+      complete: 'thinking process completed',
+      stop: 'thinking has stopped',
+    },
   },
 };

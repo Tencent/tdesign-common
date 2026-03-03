@@ -34,10 +34,25 @@ export default {
     confirm: 'Подтвердить',
   },
   dateTimePicker: {
+    dayjsLocale: 'ru',
     title: 'Выберите время',
     cancel: 'Отмена',
     confirm: 'Подтвердить',
     format: 'DD.MM.YYYY',
+    months: [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь',
+    ],
     yearLabel: 'Год',
     monthLabel: 'Месяц',
     dateLabel: 'День',
@@ -72,6 +87,7 @@ export default {
     loadingTexts: ['Потяните вниз для обновления', 'Отпустите для обновления', 'Обновление...', 'Обновление завершено'],
   },
   rate: {
+    texts: ['Плохо', 'Обидно', 'Нормально', 'Хорошо', 'Отлично'],
     valueText: '{value} баллов',
     noValueText: 'Без оценки',
   },
@@ -109,5 +125,33 @@ export default {
     expiredText: 'истекший',
     refreshText: 'обновить',
     scannedText: 'сканированный',
+  },
+  attachments: {
+    status: {
+      pending: 'Загрузка...',
+      fail: 'Ошибка загрузки',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: 'Обновить',
+      copy: 'Копировать',
+      good: 'Нравится',
+      bad: 'Не нравится',
+      share: 'Поделиться',
+      quote: 'Цитировать',
+    },
+  },
+  chatSender: {
+    placeholder: 'Введите сообщение...',
+    sendText: 'Отправить',
+    stopText: 'Остановить',
+  },
+  chatThinking: {
+    status: {
+      pending: 'Думаю...',
+      complete: 'Завершил размышления',
+      stop: 'Размышления остановлены',
+    },
   },
 };

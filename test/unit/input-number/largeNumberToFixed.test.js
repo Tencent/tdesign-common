@@ -85,4 +85,26 @@ describe('largeNumberToFixed', () => {
     expect(largeNumberToFixed('1.3456', { places: 1 })).toBe('1.3');
     expect(largeNumberToFixed('1.3456', { places: 2 })).toBe('1.35');
   });
+
+  it('number 为 NaN 应该返回空字符串', () => {
+    expect(largeNumberToFixed(NaN)).toBe('');
+    expect(largeNumberToFixed('NaN')).toBe('');
+  });
+
+  it('largeNumber 为 false 且 number 为数字类型应该返回正确结果', () => {
+    expect(largeNumberToFixed(12.345, 2, false)).toBe('12.35');
+    expect(largeNumberToFixed(12.345, { places: 2 }, false)).toBe('12.35');
+  });
+
+  it('largeNumber 为 true 且 number 非字符串应该返回字符串', () => {
+    expect(largeNumberToFixed(123, 2, true)).toBe('123');
+  });
+
+  it('enableRound 为 false 且 places 为对象格式时应该截断', () => {
+    expect(largeNumberToFixed('12.996', { enableRound: false, places: 2 }, true)).toBe('12.99');
+  });
+
+  it('places 为 0 且不需要进位时应该直接取整数部分', () => {
+    expect(largeNumberToFixed('12.345', { enableRound: false, places: 0 }, true)).toBe('12');
+  });
 });

@@ -35,10 +35,25 @@ export default {
     confirm: 'أكد',
   },
   dateTimePicker: {
+    dayjsLocale: 'ar',
     title: 'انتقِ التاريخ',
     cancel: 'الإلغاء',
     confirm: 'أكد',
     format: 'DD-MM-YYYY',
+    months: [
+      'يناير',
+      'فبراير',
+      'مارس',
+      'أبريل',
+      'مايو',
+      'يونيو',
+      'يوليو',
+      'أغسطس',
+      'سبتمبر',
+      'أكتوبر',
+      'نوفمبر',
+      'ديسمبر',
+    ],
     yearLabel: 'سنة',
     monthLabel: 'الشهر',
     dateLabel: 'التاريخ',
@@ -72,6 +87,7 @@ export default {
     loadingTexts: ['اسحب للتحديث', 'مرتخية للتجديد', 'منعش', 'اكتمل التحديث'],
   },
   rate: {
+    texts: ['سيء', 'مخيب', 'عادي', 'جيد', 'ممتاز'],
     valueText: '{القيمة} نتيجة',
     noValueText: 'لا توجد نقاط',
   },
@@ -109,5 +125,33 @@ export default {
     expiredText: 'منتهي الصلاحية',
     refreshText: 'ينعش',
     scannedText: 'تم مسحها ضوئيًا',
+  },
+  attachments: {
+    status: {
+      pending: 'جارٍ التحميل...',
+      fail: 'فشل التحميل',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: 'تحديث',
+      copy: 'نسخ',
+      good: 'إعجاب',
+      bad: 'عدم إعجاب',
+      share: 'مشاركة',
+      quote: 'اقتباس',
+    },
+  },
+  chatSender: {
+    placeholder: 'الرجاء إدخال الرسالة...',
+    sendText: 'إرسال',
+    stopText: 'إيقاف',
+  },
+  chatThinking: {
+    status: {
+      pending: 'جاري التفكير...',
+      complete: 'تم الانتهاء من التفكير',
+      stop: 'تم إيقاف التفكير',
+    },
   },
 };

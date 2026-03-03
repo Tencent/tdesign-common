@@ -1,4 +1,4 @@
-import { isString } from 'lodash-es';
+import { isString, isObject } from 'lodash-es';
 import dayjs from 'dayjs';
 import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
@@ -7,6 +7,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import log from '../log';
 
 type DateValue = string | number | Date;
+type EnableTimePickerType = boolean | { mode?: 'switch' | 'parallel' };
 
 dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
@@ -303,7 +304,7 @@ export function getDefaultFormat({
   mode?: string;
   format?: string;
   valueType?: string;
-  enableTimePicker?: boolean;
+  enableTimePicker?: EnableTimePickerType;
 }) {
   if (mode === 'year') {
     return {
@@ -356,7 +357,7 @@ export function initYearMonthTime({
   mode: string;
   format: string;
   timeFormat?: string;
-  enableTimePicker?: boolean;
+  enableTimePicker?: EnableTimePickerType;
 }) {
   const defaultYearMonthTime = {
     year: [dayjs().year(), dayjs().year()],
@@ -367,7 +368,10 @@ export function initYearMonthTime({
     defaultYearMonthTime.year[1] += 10;
   } else if (mode === 'month' || mode === 'quarter') {
     defaultYearMonthTime.year[1] += 1;
-  } else if ((mode === 'date' || mode === 'week') && !enableTimePicker) {
+  } else if (
+    (mode === 'date' || mode === 'week') &&
+    (!enableTimePicker || (isObject(enableTimePicker) && enableTimePicker?.mode === 'switch'))
+  ) {
     // 切换至下一年
     if (defaultYearMonthTime.month[0] === 11) {
       defaultYearMonthTime.year[1] += 1;

@@ -35,10 +35,12 @@ export default {
     confirm: 'Conferma',
   },
   dateTimePicker: {
+    dayjsLocale: 'it',
     title: 'Seleziona Data',
     cancel: 'Annulla',
     confirm: 'Conferma',
     format: 'DD-MM-YYYY',
+    months: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
     yearLabel: 'Anno',
     monthLabel: 'Mese',
     dateLabel: 'Data',
@@ -73,6 +75,7 @@ export default {
     loadingTexts: ['Tirare per aggiornare', 'Libera da aggiornare', 'Rinfrescante', 'Aggiornamento completato'],
   },
   rate: {
+    texts: ['Pessimo', 'Scarso', 'Normale', 'Buono', 'Eccellente'],
     valueText: '{valore} punteggio',
     noValueText: 'Nessun punteggio',
   },
@@ -110,5 +113,33 @@ export default {
     expiredText: 'scaduto',
     refreshText: 'aggiornare',
     scannedText: 'scansionato',
+  },
+  attachments: {
+    status: {
+      pending: 'Caricamento...',
+      fail: 'Caricamento non riuscito',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: 'Aggiorna',
+      copy: 'Copia',
+      good: 'Mi piace',
+      bad: 'Non mi piace',
+      share: 'Condividi',
+      quote: 'Cita',
+    },
+  },
+  chatSender: {
+    placeholder: 'Inserisci il messaggio...',
+    sendText: 'Invia',
+    stopText: 'Ferma',
+  },
+  chatThinking: {
+    status: {
+      pending: 'Pensando...',
+      complete: 'Pensiero completato',
+      stop: 'Pensiero interrotto',
+    },
   },
 };

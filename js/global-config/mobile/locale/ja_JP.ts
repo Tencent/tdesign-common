@@ -22,10 +22,12 @@ export default {
     confirm: '確認',
   },
   dateTimePicker: {
+    dayjsLocale: 'ja',
     title: '日付を選択',
     cancel: 'キャンセル',
     confirm: '確認',
     format: 'YYYY-MM-DD',
+    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     yearLabel: '年',
     monthLabel: '月',
     dateLabel: '日',
@@ -60,6 +62,7 @@ export default {
     loadingTexts: ['更新に引っ張ってください', '緩めて更新中', '更新中…', '更新が完了しました'],
   },
   rate: {
+    texts: ['悪い', '不満', '普通', '良い', '最高'],
     valueText: '{value} 点',
     noValueText: 'スコアなし',
   },
@@ -97,5 +100,33 @@ export default {
     expiredText: '期限切れ',
     refreshText: 'リフレッシュ',
     scannedText: 'スキャンされた',
+  },
+  attachments: {
+    status: {
+      pending: 'アップロード中...',
+      fail: 'アップロード失敗',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '更新',
+      copy: 'コピー',
+      good: 'いいね',
+      bad: '低評価',
+      share: '共有',
+      quote: '引用',
+    },
+  },
+  chatSender: {
+    placeholder: 'メッセージを入力してください...',
+    sendText: '送信',
+    stopText: '停止',
+  },
+  chatThinking: {
+    status: {
+      pending: '思考中...',
+      complete: '思考完了',
+      stop: '思考を停止',
+    },
   },
 };

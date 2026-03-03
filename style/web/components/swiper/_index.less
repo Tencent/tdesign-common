@@ -178,6 +178,14 @@
     .swiper-navigation-item(bars, outside, horizontal);
   }
 
+  .@{prefix}-swiper__navigation-dots {
+    .swiper-navigation-item(dots, outside, horizontal);
+  }
+
+  .@{prefix}-swiper__navigation-dots-bar {
+    .swiper-navigation-item(dots-bar, outside, horizontal);
+  }
+
   &.@{prefix}-swiper--vertical {
     .@{prefix}-swiper__navigation {
       bottom: auto;
@@ -220,6 +228,12 @@
   .@{prefix}-swiper__navigation-bars {
     .swiper-navigation-item(bars, inside, horizontal,large);
   }
+  .@{prefix}-swiper__navigation-dots-bar {
+    .swiper-navigation-item(dots-bar, inside, horizontal,large);
+  }
+  .@{prefix}-swiper__navigation-dots {
+    .swiper-navigation-item(dots, inside, horizontal,large);
+  }
   .@{prefix}-swiper__navigation--fraction {
     .swiper-navigation-fraction(large);
   }
@@ -230,10 +244,22 @@
     .@{prefix}-swiper__navigation-bars {
       .swiper-navigation-item(bars, outside, horizontal,large);
     }
+    .@{prefix}-swiper__navigation-dots-bar {
+      .swiper-navigation-item(dots-bar, outside, horizontal,large);
+    }
+    .@{prefix}-swiper__navigation-dots {
+      .swiper-navigation-item(dots, outside, horizontal,large);
+    }
   }
   &.@{prefix}-swiper--vertical {
     .@{prefix}-swiper__navigation-bars {
       .swiper-navigation-item(bars, inside, vertical,large);
+    }
+    .@{prefix}-swiper__navigation-dots-bar {
+      .swiper-navigation-item(dots-bar, inside, vertical,large);
+    }
+    .@{prefix}-swiper__navigation-dots {
+      .swiper-navigation-item(dots, inside, vertical,large);
     }
     &.@{prefix}-swiper--outside {
       .@{prefix}-swiper__navigation {
@@ -241,6 +267,12 @@
       }
       .@{prefix}-swiper__navigation-bars {
         .swiper-navigation-item(bars, outside, vertical,large);
+      }
+      .@{prefix}-swiper__navigation-dots-bar {
+        .swiper-navigation-item(dots-bar, outside, vertical,large);
+      }
+      .@{prefix}-swiper__navigation-dots {
+        .swiper-navigation-item(dots, outside, vertical,large);
       }
     }
   }
@@ -262,6 +294,12 @@
   .@{prefix}-swiper__navigation-bars {
     .swiper-navigation-item(bars, inside, horizontal,small);
   }
+  .@{prefix}-swiper__navigation-dots-bar {
+    .swiper-navigation-item(dots-bar, inside, horizontal,small);
+  }
+  .@{prefix}-swiper__navigation-dots {
+    .swiper-navigation-item(dots, inside, horizontal,small);
+  }
   .@{prefix}-swiper__navigation--fraction {
     .swiper-navigation-fraction(small);
   }
@@ -272,10 +310,22 @@
     .@{prefix}-swiper__navigation-bars {
       .swiper-navigation-item(bars, outside, horizontal,small);
     }
+    .@{prefix}-swiper__navigation-dots-bar {
+      .swiper-navigation-item(dots-bar, outside, horizontal,small);
+    }
+    .@{prefix}-swiper__navigation-dots {
+      .swiper-navigation-item(dots, outside, horizontal,small);
+    }
   }
   &.@{prefix}-swiper--vertical {
     .@{prefix}-swiper__navigation-bars {
       .swiper-navigation-item(bars, inside, vertical,small);
+    }
+    .@{prefix}-swiper__navigation-dots-bar {
+      .swiper-navigation-item(dots-bar, inside, vertical,small);
+    }
+    .@{prefix}-swiper__navigation-dots {
+      .swiper-navigation-item(dots, inside, vertical,small);
     }
     &.@{prefix}-swiper--outside {
       .@{prefix}-swiper__navigation {
@@ -283,6 +333,12 @@
       }
       .@{prefix}-swiper__navigation-bars {
         .swiper-navigation-item(bars, outside, vertical,small);
+      }
+      .@{prefix}-swiper__navigation-dots-bar {
+        .swiper-navigation-item(dots-bar, outside, vertical,small);
+      }
+      .@{prefix}-swiper__navigation-dots {
+        .swiper-navigation-item(dots, outside, vertical,small);
       }
     }
   }

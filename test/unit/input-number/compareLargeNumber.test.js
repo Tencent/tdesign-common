@@ -1,5 +1,11 @@
-import { describe, it, expect } from 'vitest';
-import { compareNumber, compareLargeNumber, isInputNumber, formatENumber } from '../../../js/input-number/large-number';
+import { describe, it, expect, vi } from 'vitest';
+import {
+  compareNumber,
+  compareLargeNumber,
+  isInputNumber,
+  formatENumber,
+  removeInvalidZero,
+} from '../../../js/input-number/large-number';
 
 describe('compareNumber', () => {
   it('number 2, string 2', () => {
@@ -145,5 +151,43 @@ describe('formatENumber', () => {
 
   it('0.8975527383412673418', () => {
     expect(formatENumber('0.8975527383412673418')).toBe('0.8975527383412673418');
+  });
+});
+
+describe('removeInvalidZero', () => {
+  it('应该返回 0', () => {
+    expect(removeInvalidZero('0')).toBe('0');
+  });
+
+  it('应该去除前导零', () => {
+    expect(removeInvalidZero('001')).toBe('1');
+    expect(removeInvalidZero('00012')).toBe('12');
+    expect(removeInvalidZero('000100')).toBe('100');
+  });
+
+  it('decimal=true 时应该去除末尾零', () => {
+    expect(removeInvalidZero('100', true)).toBe('1');
+    expect(removeInvalidZero('1200', true)).toBe('12');
+    expect(removeInvalidZero('123000', true)).toBe('123');
+  });
+
+  it('decimal=false 时应该去除前导零', () => {
+    expect(removeInvalidZero('100', false)).toBe('100');
+    expect(removeInvalidZero('1200', false)).toBe('1200');
+  });
+
+  it('num 为 0 且 decimal 为 true 时应该返回空字符串', () => {
+    expect(removeInvalidZero('0', true)).toBe('');
+  });
+
+  it('空字符串应该返回空字符串', () => {
+    expect(removeInvalidZero('', true)).toBe('');
+  });
+
+  it('包含小数点时应该记录错误并返回原值', () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    expect(removeInvalidZero('12.34')).toBe('12.34');
+    expect(removeInvalidZero('0.123', true)).toBe('0.123');
+    spy.mockRestore();
   });
 });

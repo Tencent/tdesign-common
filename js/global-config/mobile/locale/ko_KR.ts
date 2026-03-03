@@ -22,10 +22,12 @@ export default {
     confirm: '확인',
   },
   dateTimePicker: {
+    dayjsLocale: 'ko',
     title: '날짜 선택',
     cancel: '취소',
     confirm: '확인',
     format: 'YYYY-MM-DD',
+    months: ['1 월', '2 월', '3 월', '4 월', '5 월', '6 월', '7 월', '8 월', '9 월', '10 월', '11 월', '12 월'],
     yearLabel: '년',
     monthLabel: '월',
     dateLabel: '일',
@@ -60,6 +62,7 @@ export default {
     loadingTexts: ['새로고침을 당겨주세요', '느슨하게 하여 새로 고침', '새로고침 중...', '새로고침 완료'],
   },
   rate: {
+    texts: ['나쁨', '실망', '보통', '만족', '최고'],
     valueText: '{value}점',
     noValueText: '점수 없음',
   },
@@ -97,5 +100,33 @@ export default {
     expiredText: '만료됨',
     refreshText: '새로 고치다',
     scannedText: '스캔됨',
+  },
+  attachments: {
+    status: {
+      pending: '업로드 중...',
+      fail: '업로드 실패',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '새로고침',
+      copy: '복사',
+      good: '좋아요',
+      bad: '싫어요',
+      share: '공유',
+      quote: '인용',
+    },
+  },
+  chatSender: {
+    placeholder: '메시지를 입력하세요...',
+    sendText: '보내기',
+    stopText: '중지',
+  },
+  chatThinking: {
+    status: {
+      pending: '생각 중...',
+      complete: '생각 완료',
+      stop: '생각 중지',
+    },
   },
 };
