@@ -1,7 +1,7 @@
 ---
 title: ActionSheet
 description: A modal that pops up from the bottom, providing action buttons related to the current scenario, and also supports information input and description.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

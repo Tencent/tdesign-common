@@ -1,7 +1,7 @@
 ---
 title: Upload
 description: Image upload function for reading albums or pulling up to take pictures.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

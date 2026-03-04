@@ -1,7 +1,7 @@
 ---
 title: Dialog
 description: Used to show important alerts or request critical actions from users, presented as a modal that interrupts the current workflow.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

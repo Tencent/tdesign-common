@@ -1,7 +1,7 @@
 ---
 title: Tag
 description: Used to indicate the category, attributes, or status of the subject.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

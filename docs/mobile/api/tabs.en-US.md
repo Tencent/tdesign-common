@@ -1,7 +1,7 @@
 ---
 title: Tabs
 description: Used to change the display after content classification.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---

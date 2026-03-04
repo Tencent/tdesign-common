@@ -1,7 +1,7 @@
 ---
 title: DateTimePicker 时间选择器
 description: 用于选择一个时间点或者一个时间段。
-spline: data
+spline: form
 isComponent: true
 toc: false
 ---

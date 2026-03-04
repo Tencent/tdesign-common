@@ -1,7 +1,7 @@
 ---
 title: Upload 上传
 description: 用于相册读取或拉起拍照的图片上传功能。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Overlay 遮罩层
 description: 通过遮罩层，可以强调部分内容。
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

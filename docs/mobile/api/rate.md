@@ -1,7 +1,7 @@
 ---
 title: Rate 评分
 description: 用于对某行为/事物进行打分。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

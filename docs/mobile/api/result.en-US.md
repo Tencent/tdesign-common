@@ -1,7 +1,7 @@
 ---
 title: Result
 description: For displaying various result feedbacks.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Grid
 description: Used for functional entrance layout, cut pages or specific areas into large blocks such as several other blocks, forming several functional entrances.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: TabBar
 description: Used to quickly switch between different functional modules, located at the bottom of the page.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---

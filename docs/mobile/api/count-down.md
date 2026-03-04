@@ -1,7 +1,7 @@
 ---
 title: CountDown 倒计时
 description: 用于实时展示倒计时数值。
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

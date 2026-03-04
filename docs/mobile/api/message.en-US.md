@@ -1,7 +1,7 @@
 ---
 title: Message
 description: Used for lightweight feedback or prompts without interrupting user action.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---
