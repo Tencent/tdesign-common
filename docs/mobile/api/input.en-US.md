@@ -1,7 +1,7 @@
 ---
 title: Input
 description: For single-line text input.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

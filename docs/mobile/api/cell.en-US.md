@@ -1,7 +1,7 @@
 ---
 title: Cell
 description: Information display for each category row.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

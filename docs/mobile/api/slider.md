@@ -1,7 +1,7 @@
 ---
 title: Slider 滑动选择器
 description: 用于选择横轴上的数值、区间、档位。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

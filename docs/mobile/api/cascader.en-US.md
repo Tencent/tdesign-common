@@ -1,7 +1,7 @@
 ---
 title: Cascader
 description: Used for level-by-level selection of multi-level data.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

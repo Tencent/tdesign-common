@@ -1,7 +1,7 @@
 ---
 title: Picker 选择器
 description: 用于一组预设数据中的选择。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

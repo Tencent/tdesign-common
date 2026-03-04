@@ -1,7 +1,7 @@
 ---
 title: Picker
 description: Used to select from a set of default data.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

@@ -2,8 +2,7 @@
 title: Calendar
 description: Container for displaying data or dates in a calendar format.
 isComponent: true
-usage: { title: '', description: '' }
-spline: data
+spline: form
 ---
 
 ## Code Demos

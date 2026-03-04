@@ -1,7 +1,7 @@
 ---
 title: Checkbox
 description: Performs multiple selections in a preset set of options and renders the selection results.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

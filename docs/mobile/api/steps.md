@@ -1,7 +1,7 @@
 ---
 title: Steps 步骤条
 description: 用于任务步骤展示或任务进度展示。
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---

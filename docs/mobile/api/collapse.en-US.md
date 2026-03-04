@@ -1,7 +1,7 @@
 ---
 title: Collapse
 description: A collapsible content area.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Radio
 description: Used to perform a single selection in a preset set of options and render the result of the selection.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

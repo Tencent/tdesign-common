@@ -1,7 +1,7 @@
 ---
 title: ColorPicker
 description: ColorPicker is used to color selection, supports multiple formats。
-spline: data
+spline: form
 isComponent: true
 toc: false
 ---

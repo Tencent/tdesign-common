@@ -1,7 +1,7 @@
 ---
 title: CountDown
 description: Used to display the countdown value in real time.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

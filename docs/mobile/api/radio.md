@@ -1,7 +1,7 @@
 ---
 title: Radio 单选框
 description: 用于在预设的一组选项中执行单项选择，并呈现选择结果。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

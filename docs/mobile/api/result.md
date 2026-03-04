@@ -1,7 +1,7 @@
 ---
 title: Result 结果
 description: 用于反馈不同结果的展示。
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

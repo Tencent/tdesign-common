@@ -1,7 +1,7 @@
 ---
 title: Sticky 吸顶容器
 description: 用于常驻页面顶部的信息、操作展示。
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

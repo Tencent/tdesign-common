@@ -1,7 +1,7 @@
 ---
 title: DropdownMenu
 description: The menu displays several juxtaposed option categories that are used to filter the content of the entire page, consisting of a menu panel and menu options.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

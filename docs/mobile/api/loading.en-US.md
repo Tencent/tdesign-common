@@ -1,7 +1,7 @@
 ---
 title: Loading
 description: Used to indicate the loading status of a page or operation, providing user feedback while reducing the anxiety of waiting, composed of one or a set of feedback animations.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

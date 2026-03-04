@@ -1,7 +1,7 @@
 ---
 title: Badge
 description: The Badge is used to notify the user of a state change in the area or the number of pending tasks.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

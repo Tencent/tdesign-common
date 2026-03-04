@@ -1,7 +1,7 @@
 ---
 title: Watermark
 description: Watermark is used to add watermark on a page.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

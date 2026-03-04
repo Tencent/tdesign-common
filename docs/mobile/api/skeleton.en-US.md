@@ -1,7 +1,7 @@
 ---
 title: Skeleton
 description: A placeholder graphic combination used to display content while waiting for loading. It has a dynamic loading effect and reduces user anxiety while waiting.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

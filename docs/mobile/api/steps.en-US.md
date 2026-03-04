@@ -1,7 +1,7 @@
 ---
 title: Steps
 description: Displays task steps or task progress.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---

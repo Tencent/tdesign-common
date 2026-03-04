@@ -1,7 +1,7 @@
 ---
 title: Drawer
 description: Serves as a navigator for parallel pages/contents, capable of showing more options on screen than Tabs.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---
