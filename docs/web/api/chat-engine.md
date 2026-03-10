@@ -2,7 +2,7 @@
 title: ChatEngine 对话引擎
 description: 智能体对话底层逻辑引擎，提供灵活的 Hook API 用于深度定制。
 isComponent: true
-spline: navigation
+spline: ai
 ---
 
 ## 阅读指引
