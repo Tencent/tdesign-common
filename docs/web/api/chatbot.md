@@ -2,7 +2,7 @@
 title: Chatbot 智能对话
 description: 高度封装且功能完备的一体化智能对话组件，专为快速集成标准AI应用而设计。
 isComponent: true
-spline: navigation
+spline: ai
 ---
 
 ## 阅读指引
