@@ -25,3 +25,11 @@ toc: false
 ### with Border
 
 {{ bordered }}
+
+#### Custom Row Style
+
+{{ custom-row-style }}
+
+#### Merged Cells
+
+{{ rowspan-colspan }}
