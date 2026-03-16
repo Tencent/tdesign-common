@@ -6,25 +6,21 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  check:
+  check-email:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: check_email
-        run: |
-          log_emails=$(git log --pretty=format:"%ae %ce" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo $log_emails && echo "邮箱校验非法" && exit 2;else echo "邮箱校验通过";fi
-        shell: bash
+      - uses: TDesignOteam/workflows/actions/check-email@main
 
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
         with:
           version: 9
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version-file: .node-version
 
       - run: pnpm install
 
@@ -36,7 +32,7 @@ jobs:
         run: echo ${{ github.event.number }} > pr-id.txt
 
       - name: Upload pr id
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pr-id
           path: pr-id.txt
