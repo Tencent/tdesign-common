@@ -461,9 +461,9 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
  */
 export function extractTimeObj(timeFormat: string = '') {
   const matchedMeridiem = timeFormat.match(/[ap]m/i) || [''];
-  const timeReg = /\d{1,2}(:\d{1,2})?(:\d{1,2})?(:\d{1,3})?/;
+  const timeReg = /\d{1,2}(:\d{1,2})?(:\d{1,2})?([.:]\d{1,3})?/;
   const matchedTimeStr = timeFormat.match(timeReg) || ['0:0:0:0'];
-  const [hours = 0, minutes = 0, seconds = 0, milliseconds = 0] = matchedTimeStr[0].split(':');
+  const [hours = 0, minutes = 0, seconds = 0, milliseconds = 0] = matchedTimeStr[0].split(/[:.]/);
 
   return {
     hours: +hours,
