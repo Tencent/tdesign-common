@@ -141,9 +141,7 @@ describe('slider/utils', () => {
     it('应该警告当label字符串不包含${value}', () => {
       const consoleWarnSpy = vi.spyOn(console, 'warn');
       formatLabel('Invalid Label', 50);
-      expect(consoleWarnSpy).toHaveBeenCalledWith(
-        "fail to parse label prop, please pass string such as '${value}'"
-      );
+      expect(consoleWarnSpy).toHaveBeenCalledWith("fail to parse label prop, please pass string such as '${value}'");
     });
   });
 
