@@ -1,6 +1,6 @@
 ---
 title: ChatContent 对话正文
-description: ChatContent 用于在聊天对话中渲染不同类型的聊天内容。它支持纯文本和Markdown格式的内容渲染，能够根据内容类型自动选择合适的渲染方式。
+description: 用于在聊天对话中渲染不同类型的聊天内容。它支持纯文本和 Markdown 格式的内容渲染，能够根据内容类型自动选择合适的渲染方式。
 isComponent: true
 usage: { title: '', description: '' }
 spline: ai
