@@ -24,7 +24,7 @@ export const formatSliderValue = (val: number | number[], type: 'first' | 'secon
 };
 
 /**
- * 格式化label参数
+ * 格式化 label 参数
  */
 export const formatLabel = (label: object | string, val: number) => {
   if (Boolean(label) === false) {
@@ -33,7 +33,7 @@ export const formatLabel = (label: object | string, val: number) => {
   if (isString(label)) {
     let text = String(val);
     try {
-      const rule = /\${value}%/g;
+      const rule = /\${value}/g;
       const enableToReplace = rule.test(label);
       if (enableToReplace) {
         text = label.replace(/\${value}/g, String(val));
@@ -43,7 +43,7 @@ export const formatLabel = (label: object | string, val: number) => {
       }
     } catch (e) {
       // eslint-disable-next-line
-      console.warn(`fail to parse label prop, please pass string such as '\${value}%'`);
+      console.warn(`fail to parse label prop, please pass string such as '\${value}'`);
     }
     return text;
   }
