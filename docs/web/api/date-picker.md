@@ -86,6 +86,12 @@ spline: form
 
 {{ custom-icon }}
 
+### 自定义单元格的选择器
+
+支持通过 `cell` 自定义任意日期单元的渲染内容
+
+{{ custom-cell }}
+
 ### 日期选择面板单独使用
 
 支持 `DatePickerPanel` 和 `DateRangePickerPanel` 单独使用场景，可以自行组装日期选择器。
