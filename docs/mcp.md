@@ -49,7 +49,7 @@ TDesign MCP 目前内置了四个 tools，分别是 `get-component-docs`、`get-
 
 ### 解决 API 使用问题
 
-通过 TDesign MCP 提供更准确的上下文，可以辅助模型更快定位到使用 TDesign 的问题
+通过 TDesign MCP 提供更准确的上下文，可以辅助模型更快定位到使用 TDesign 的问题。
 
 <video controls width="100%">
     <source src="https://tdesign.gtimg.com/site/mcp/mcp-fix.mp4" type="video/mp4" />
