@@ -4,7 +4,7 @@ description: TDesign 提供的长期维护的 MCP 工具， 用于在 AI 辅助�
 spline: ai
 ---
 
-TDesign 提供长期维护的 [MCP](https://github.com/modelcontextprotocol) 工具，通过简单的配置即可生效， 用于在 AI 辅助编程的场景中更高效、更准确地使用 TDesign 的各种开发资源。
+TDesign 提供长期维护的 [MCP](https://github.com/modelcontextprotocol) 工具，通过简单的配置即可生效，用于在 AI 辅助编程的场景中更高效、更准确地使用 TDesign 的各种开发资源。
 
 ## 如何安装 TDesign MCP
 
@@ -37,7 +37,7 @@ TDesign 提供长期维护的 [MCP](https://github.com/modelcontextprotocol) 工
 
 ## 如何使用 TDesign MCP
 
-TDesign MCP 目前内置了四个 tools，分别是 `get-component-docs`、`get-component-list`、`get-component-changelog` 和 `get-component-dom`，用于辅助解决使用 TDesign 过程中的各种实际需求，包括但不限于辅助代码生成、 解决 API 使用问题、 升级组件库版本和 辅助代码迁移等场景。
+TDesign MCP 目前内置了四个 tools，分别是 `get-component-docs`、`get-component-list`、`get-component-changelog` 和 `get-component-dom`，用于辅助解决使用 TDesign 过程中的各种实际需求，包括但不限于辅助代码生成、解决 API 使用问题、升级组件库版本和辅助代码迁移等场景。
 
 ### 辅助代码生成
 
