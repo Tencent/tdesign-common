@@ -4,7 +4,7 @@ description: A long-term maintained MCP tool provided by TDesign for more effici
 spline: ai
 ---
 
-TDesign provides a long-term maintained [MCP](https://github.com/modelcontextprotocol) tool that can be activated with simple configuration, enabling more efficient and accurate use of TDesign development resources in AI-assisted programming scenarios.
+TDesign provides a long-term maintained [MCP](https://cnb.cool/tencent/tdesign/tdesign-mcp-server) tool that can be activated with simple configuration, enabling more efficient and accurate use of TDesign development resources in AI-assisted programming scenarios.
 
 ## How to Install TDesign MCP
 
