@@ -22,6 +22,19 @@ TDesign 提供长期维护的 [MCP](https://github.com/modelcontextprotocol) 工
 }
 ```
 
+如果您在腾讯内网，也可以通过 http 方式使用 TDesign MCP
+
+```javascript
+{
+  "mcpServers": {
+    // 或 servers（根据不同的 MCP 客户端决定）
+    "tdesign-mcp-server-http": {
+      "url": "http://mcp.tdesign.woa.com/mcp"
+    }
+  }
+}
+```
+
 ## 如何使用 TDesign MCP
 
 TDesign MCP 目前内置了四个 tools，分别是 `get-component-docs`、`get-component-list`、`get-component-changelog` 和 `get-component-dom`，用于辅助解决使用 TDesign 过程中的各种实际需求，包括但不限于辅助代码生成、 解决 API 使用问题、 升级组件库版本和 辅助代码迁移等场景。
