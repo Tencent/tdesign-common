@@ -4,7 +4,7 @@ description: TDesign 提供的长期维护的 MCP 工具， 用于在 AI 辅助�
 spline: ai
 ---
 
-TDesign 提供长期维护的 [MCP](https://github.com/modelcontextprotocol) 工具，通过简单的配置即可生效， 用于在 AI 辅助编程的场景中更高效、更准确地使用 TDesign 的各种开发资源。什么是
+TDesign 提供长期维护的 [MCP](https://github.com/modelcontextprotocol) 工具，通过简单的配置即可生效， 用于在 AI 辅助编程的场景中更高效、更准确地使用 TDesign 的各种开发资源。
 
 ## 如何安装 TDesign MCP
 
