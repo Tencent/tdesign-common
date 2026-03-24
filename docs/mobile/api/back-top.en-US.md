@@ -1,7 +1,7 @@
 ---
 title: BackTop
 description: Helps users quickly return to the top when scrolling down a lengthy page.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---

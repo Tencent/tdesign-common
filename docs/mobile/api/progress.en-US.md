@@ -1,7 +1,7 @@
 ---
 title: Progress
 description: Displays the current progress of the task.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

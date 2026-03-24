@@ -1,7 +1,7 @@
 ---
 title: Cascader 级联选择器
 description: 用于多层级数据的逐级选择。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

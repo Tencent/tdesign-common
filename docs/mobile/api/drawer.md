@@ -1,7 +1,7 @@
 ---
 title: Drawer 抽屉
 description: 用作一组平行关系页面/内容的切换器，相较于 Tab，同屏可展示更多的选项数量。
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---

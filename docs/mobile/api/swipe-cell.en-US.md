@@ -1,7 +1,7 @@
 ---
 title: SwipeCell
 description: Used to carry more actions in the list, by sliding left and right to show, the width of the button fixed height varies according to the height of the list.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

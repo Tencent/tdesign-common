@@ -1,7 +1,7 @@
 ---
 title: Grid 宫格
 description: 用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

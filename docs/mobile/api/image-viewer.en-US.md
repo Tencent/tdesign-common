@@ -1,7 +1,7 @@
 ---
 title: ImageViewer
 description: For thumbnail display and viewing of images.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

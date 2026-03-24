@@ -1,7 +1,7 @@
 ---
 title: PullDownRefresh
 description: Used to quickly refresh the page information. The refresh can be the whole page or part of the page.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

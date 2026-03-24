@@ -1,7 +1,7 @@
 ---
 title: Popover
 description: Bubble box for text prompt.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

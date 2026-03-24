@@ -25,3 +25,11 @@ toc: false
 #### 带边框表格样式
 
 {{ bordered }}
+
+#### 可自定义样式的表格
+
+{{ custom-row-style }}
+
+#### 带合并单元格的表格
+
+{{ rowspan-colspan }}

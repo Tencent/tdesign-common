@@ -1,7 +1,7 @@
 ---
 title: Stepper 步进器
 description: 用于数量的增减。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Rate
 description: Used to rate an action/thing.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Slider
 description: Used to select the value, range, and gear on the horizontal axis.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

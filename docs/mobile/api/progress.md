@@ -1,7 +1,7 @@
 ---
 title: Progress 进度条
 description: 用于展示任务当前的进度。
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

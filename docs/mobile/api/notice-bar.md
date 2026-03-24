@@ -1,7 +1,7 @@
 ---
 title: Noticebar 公告栏
 description: 在导航栏下方，用于给用户显示提示消息。
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

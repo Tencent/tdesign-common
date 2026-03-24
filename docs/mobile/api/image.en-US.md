@@ -1,7 +1,7 @@
 ---
 title: Image
 description: Used for display effects, primarily including center cropping, stretching, tiling, and other positioning methods.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---

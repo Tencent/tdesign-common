@@ -1,7 +1,7 @@
 ---
 title: DateTimePicker
 description: Indicates a time point or time range.
-spline: data
+spline: form
 isComponent: true
 toc: false
 ---

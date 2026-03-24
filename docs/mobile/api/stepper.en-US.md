@@ -1,7 +1,7 @@
 ---
 title: Stepper
 description: Used for increasing or decreasing quantities.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

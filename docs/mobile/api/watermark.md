@@ -1,7 +1,7 @@
 ---
 title: Watermark 水印
-description: 给页面的某个区域加上水印
-spline: base
+description: 给页面的某个区域加上水印。
+spline: data
 isComponent: true
 toc: false
 ---

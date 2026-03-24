@@ -1,7 +1,7 @@
 ---
 title: Message 消息通知
 description: 用于轻量级反馈或提示，不会打断用户操作。
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---

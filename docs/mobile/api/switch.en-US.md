@@ -1,7 +1,7 @@
 ---
 title: Switch
 description: Switch is used to control the opening or closing of a function
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

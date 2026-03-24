@@ -1,7 +1,7 @@
 ---
 title: Input 输入框
 description: 用于单行文本信息输入。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

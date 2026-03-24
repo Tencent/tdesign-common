@@ -1,7 +1,7 @@
 ---
 title: Search 搜索框
 description: 用于用户输入搜索信息，并进行页面内容搜索。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

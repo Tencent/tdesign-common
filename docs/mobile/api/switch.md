@@ -1,7 +1,7 @@
 ---
 title: Switch 开关
 description: 用于控制某个功能的开启和关闭。
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---

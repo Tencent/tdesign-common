@@ -1,7 +1,7 @@
 ---
 title: Tabs 选项卡
 description: 用于内容分类后的展示切换。
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---

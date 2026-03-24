@@ -1,7 +1,7 @@
 ---
 title: QRCode
 description: A component for generating QR codes from text with customizable colors and logo settings.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
