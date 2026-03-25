@@ -32,6 +32,10 @@ toc: false
 
 {{ with-title }}
 
+#### 异步加载
+
+{{ lazy }}
+
 #### 选择任意一项
 
 {{ check-strictly }}

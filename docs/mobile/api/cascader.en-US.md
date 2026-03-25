@@ -32,6 +32,10 @@ toc: false
 
 {{ with-title }}
 
+#### Dynamic Loading
+
+{{ lazy }}
+
 #### Choose Any One
 
 {{ check-strictly }}
