@@ -166,6 +166,7 @@ export default {
       validator: '${name}비준수',
       boolean: '${name}데이터 유형은 부울이어야 합니다',
       number: '${name}숫자여야 합니다',
+      email: '정확한 내용을 입력해주세요${name}',
     },
     colonText: ':',
   },
