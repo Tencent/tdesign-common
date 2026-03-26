@@ -91,14 +91,14 @@
   },
   "lint-staged": {
     "**/*.{css,wxss,less}": [
-      "stylelint"
+      "stylelint --fix --allow-empty-input"
     ],
-    "js/**/*.{vue,js,ts,jsx,tsx}": [
-      "prettier --check",
-      "eslint"
+    "**/*.{vue,js,ts,jsx,tsx,mjs}": [
+      "prettier --write",
+      "eslint --fix"
     ],
-    "docs/**/*.{json,md}": [
-      "prettier --check"
+    "**/*.{json,md}": [
+      "prettier --write"
     ]
   }
 }
