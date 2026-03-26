@@ -167,6 +167,7 @@ export default {
       validator: '${name} is invalid',
       boolean: '${name} is not a boolean',
       number: '${name} must be a number',
+      email: '${name} is invalid',
     },
     colonText: ':',
   },

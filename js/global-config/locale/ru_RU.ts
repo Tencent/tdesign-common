@@ -179,6 +179,7 @@ export default {
       validator: '${name} не соответствует требованиям',
       boolean: 'Тип данных ${name} должен быть булевым',
       number: '${name} должно быть числом',
+      email: 'Введите правильный ${name}',
     },
     colonText: ':',
   },
