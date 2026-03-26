@@ -86,6 +86,12 @@ Prefix and suffix icons can be customized through `prefixIcon` and `suffixIcon`.
 
 {{ custom-icon }}
 
+### Custom Cell Selector
+
+Each date cell can be customized through `cell`
+
+{{ custom-cell }}
+
 ### Date Selection Panel Used Alone
 
 You can use `DatePickerPanel` and `DateRangePickerPanel` separately. You can assemble your own date picker.
