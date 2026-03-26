@@ -133,13 +133,15 @@
 .@{prefix}-tag-input.@{prefix}-input--auto-width:hover {
   .@{prefix}-input {
     padding-right: calc(
-      @tag-input-clear-icon-padding-m + @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-width', 0px)
+      @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px) +
+        var(~'--@{prefix}-tag-input-suffix-width', 0px)
     );
   }
   .@{prefix}-size-l {
     .@{prefix}-input {
       padding-right: calc(
-        @tag-input-clear-icon-padding-l + @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-width', 0px)
+        @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px) +
+          var(~'--@{prefix}-tag-input-suffix-width', 0px)
       );
     }
   }
