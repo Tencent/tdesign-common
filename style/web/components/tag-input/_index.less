@@ -119,6 +119,10 @@
       bottom: 0;
       right: calc(@comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px));
     }
+
+    &.@{prefix}-size-l .@{prefix}-input__suffix:not(.@{prefix}-input__suffix-icon) {
+      right: calc(@comp-paddingLR-m + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px));
+    }
   }
 
   .@{prefix}-tag-input__prefix {
@@ -138,16 +142,8 @@
   .@{prefix}-input {
     padding-right: calc(
       @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px) +
-        var(~'--@{prefix}-tag-input-suffix-width', 0px)
+      var(~'--@{prefix}-tag-input-suffix-width', 0px)
     );
-  }
-  .@{prefix}-size-l {
-    .@{prefix}-input {
-      padding-right: calc(
-        @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px) +
-          var(~'--@{prefix}-tag-input-suffix-width', 0px)
-      );
-    }
   }
 }
 
