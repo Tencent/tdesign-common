@@ -132,6 +132,11 @@
       animation: @anim-duration-base @anim-time-fn-easing modal-image-show;
       pointer-events: auto;
 
+      // CSS 类名驱动 transition 动画
+      &--transitioning {
+        transition: transform @anim-duration-base ease-out;
+      }
+
       .@{prefix}-image-viewer__modal-image {
         display: block;
         max-width: ~'min(90vw, 1000px)';
