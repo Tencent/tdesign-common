@@ -1,7 +1,7 @@
 import { positiveAdd, positiveSubtract } from '../input-number/number';
 import type { ZoomOptions, ZoomResult, TranslateOffset } from './types';
 
-// ==================== 视口检测 ====================
+export type { ZoomOptions, ZoomResult, TranslateOffset };
 
 /**
  * 检测图片是否超出视口（容器）边界
@@ -19,15 +19,11 @@ export const isImageExceedsViewport = (container: HTMLElement, modalBox: HTMLEle
   );
 };
 
-// ==================== 镜像 ====================
-
 /** 镜像默认值（未镜像） */
 export const MIRROR_DEFAULT = 1;
 
 /** 切换镜像状态：1 → -1，-1 → 1 */
 export const toggleMirror = (current: number): number => (current > 0 ? -1 : 1);
-
-// ==================== 旋转 ====================
 
 /** 每次旋转的角度（逆时针 90°） */
 export const ROTATE_DEG = -90;
@@ -50,8 +46,6 @@ export function calcResetRotation(currentDeg: number): number {
   // 找最短方向旋转回 0°
   return Math.abs(degreeToRotate) > 180 ? (degreeToRotate + 360) % 360 : degreeToRotate;
 }
-
-// ==================== 缩放 ====================
 
 /** 将缩放值限制在 [min, max] 范围内 */
 export function clampScale(value: number, min: number, max: number): number {
