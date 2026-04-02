@@ -28,3 +28,23 @@ export interface ZoomResult {
   /** 缩放后的新位移 */
   newTranslate?: TranslateOffset;
 }
+
+/** 图片缩放配置 */
+export interface ImageScale {
+  /** 缩放的最大比例 */
+  max: number;
+  /** 缩放的最小比例 */
+  min: number;
+  /** 缩放的步长速度 */
+  step: number;
+  /** 默认的缩放比例 */
+  defaultScale: number;
+}
+
+/** ImageScale 的默认值，所有使用处应引用此常量，避免多处声明不一致 */
+export const DEFAULT_IMAGE_SCALE: ImageScale = {
+  max: 2,
+  min: 0.5,
+  step: 0.2,
+  defaultScale: 1,
+};

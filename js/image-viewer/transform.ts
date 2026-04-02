@@ -1,7 +1,9 @@
-import { positiveAdd, positiveSubtract } from '../input-number/number';
-import type { ZoomOptions, ZoomResult, TranslateOffset } from './types';
+import { positiveAdd, positiveSubtract } from '../utils/math';
+import type { ZoomOptions, ZoomResult, TranslateOffset, ImageScale } from './types';
+import { DEFAULT_IMAGE_SCALE } from './types';
 
-export type { ZoomOptions, ZoomResult, TranslateOffset };
+export type { ZoomOptions, ZoomResult, TranslateOffset, ImageScale };
+export { DEFAULT_IMAGE_SCALE };
 
 /**
  * 检测图片是否超出视口（容器）边界
