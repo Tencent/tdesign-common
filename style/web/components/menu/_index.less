@@ -35,6 +35,8 @@ a.@{prefix}-menu__item {
   position: relative;
   width: 100%;
   background-color: @menu-theme-light;
+  overflow: hidden;
+  white-space: nowrap;
 
   &__inner {
     display: flex;
@@ -60,8 +62,6 @@ a.@{prefix}-menu__item {
     flex: 1;
     display: flex;
     align-items: center;
-    overflow: hidden;
-    white-space: nowrap;
   }
 
   .@{prefix}-menu__operations {
