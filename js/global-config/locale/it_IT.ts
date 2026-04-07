@@ -166,6 +166,7 @@ export default {
       validator: '${name} non conforme ai requisiti',
       boolean: 'Il tipo di dati di ${name} deve essere booleano',
       number: '${name} deve essere un numero',
+      email: 'Inserisci la ${name} corretta',
     },
     colonText: ':',
   },

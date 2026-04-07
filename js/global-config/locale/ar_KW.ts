@@ -181,6 +181,7 @@ export default {
       validator: '${name} غير صالح',
       boolean: '${name} ليس منطقيًا',
       number: 'يجب أن يكون ${name} رقمًا',
+      email: 'الرجاء إدخال ${name} الصحيح',
     },
   },
 
