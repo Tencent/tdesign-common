@@ -70,6 +70,6 @@ spline: navigation
 
 {{ closable-side }}
 
-#### 自动收起超出宽度的菜单项
+### 自动收起超出宽度的菜单项
 
 {{ head-menu-ellipsis }}
