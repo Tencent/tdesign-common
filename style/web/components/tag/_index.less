@@ -24,8 +24,7 @@
 
   .t-icon {
     margin-right: @tag-icon-margin-right;
-    width: @tag-icon-size;
-    height: @tag-icon-size;
+    font-size: @font-size-base;
     flex-shrink: 0;
   }
 
@@ -227,10 +226,6 @@
     padding: @tag-small-padding;
     height: @tag-height-small;
     font: @tag-small-font;
-
-    .t-icon {
-      font-size: @tag-small-font;
-    }
   }
 
   &.@{prefix}-size-l {
@@ -239,9 +234,7 @@
     font: @tag-large-font;
 
     .t-icon {
-      font: @tag-large-font;
-      width: calc(@font-size-base + 2px);
-      height: calc(@font-size-base + 2px);
+      font-size: calc(@font-size-base + 2px);
     }
   }
 
