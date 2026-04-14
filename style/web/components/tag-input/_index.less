@@ -141,8 +141,16 @@
 .@{prefix}-tag-input.@{prefix}-input--auto-width:hover {
   .@{prefix}-input {
     padding-right: calc(
-      var(~'--@{prefix}-tag-input-suffix-width', 0px) + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px)
+      @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-width', 0px) +
+      var(~'--@{prefix}-tag-input-suffix-icon-width', 0px)
     );
+
+    &.@{prefix}-size-l {
+      padding-right: calc(
+        @comp-paddingLR-m + var(~'--@{prefix}-tag-input-suffix-width', 0px) +
+        var(~'--@{prefix}-tag-input-suffix-icon-width', 0px)
+      );
+    }
   }
 }
 

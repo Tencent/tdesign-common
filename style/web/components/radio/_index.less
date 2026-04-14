@@ -76,7 +76,10 @@
       }
     }
   }
-
+  &.@{radio-cls}-group--vertical {
+    flex-direction: column;
+    row-gap: @comp-margin-xs;
+  }
   &.@{radio-cls}-group--filled {
     border-color: @radio-button-group-background-color-filled;
     padding: @radio-group-padding;
