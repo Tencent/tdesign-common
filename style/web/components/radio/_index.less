@@ -103,12 +103,11 @@
       row-gap: 0;
       .@{radio-button--cls} {
         width: 100%;
-        border: @radio-button-border;
+        border-bottom: 0;
         &.@{prefix}-is-checked {
 
           + .@{radio-button--cls} {
-            border-left: @radio-button-border;
-            border-top: 0;
+            border-bottom: 0;
           }
         }
 
