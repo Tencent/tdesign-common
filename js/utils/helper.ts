@@ -1,4 +1,4 @@
-import { isString, isNull, isUndefined, isNumber, isArray } from 'lodash-es';
+import { isArray, isNull, isNumber, isString, isUndefined } from 'lodash-es';
 
 export function omit(obj: Record<string, any>, fields: string[]) {
   const shallowCopy = {
@@ -286,4 +286,10 @@ export function isSafari(): boolean {
 
   const ua = window?.navigator?.userAgent;
   return /Safari/.test(ua) && !/Chrome/.test(ua);
+}
+
+export function isChromium(): boolean {
+  if (typeof window === 'undefined') return false;
+  const brands = (window?.navigator?.userAgent as any).userAgentData?.brands || [];
+  return brands.some((b: any) => /Chromium/i.test(b.brand));
 }
