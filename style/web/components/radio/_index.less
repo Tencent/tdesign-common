@@ -100,12 +100,15 @@
     }
 
     &.@{radio-cls}-group__outline {
+      row-gap: 0;
       .@{radio-button--cls} {
         width: 100%;
         border: @radio-button-border;
         &.@{prefix}-is-checked {
+
           + .@{radio-button--cls} {
             border-left: @radio-button-border;
+            border-top: 0;
           }
         }
 
