@@ -98,6 +98,26 @@
         }
       }
     }
+
+    &.@{radio-cls}-group__outline {
+      .@{radio-button--cls} {
+        width: 100%;
+        border: @radio-button-border;
+        &.@{prefix}-is-checked {
+          + .@{radio-button--cls} {
+            border-left: @radio-button-border;
+          }
+        }
+
+        &:first-child {
+          border-radius: @radio-button-border-radius  @radio-button-border-radius 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 @radio-button-border-radius @radio-button-border-radius;
+        }
+      }
+    }
   }
   &.@{radio-cls}-group--filled {
     border-color: @radio-button-group-background-color-filled;
