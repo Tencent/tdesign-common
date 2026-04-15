@@ -78,7 +78,48 @@
   }
   &.@{radio-cls}-group--vertical {
     flex-direction: column;
+    align-items: flex-start;
     row-gap: @comp-margin-xs;
+
+    .@{radio-cls} {
+      margin-right: 0;
+    }
+
+    &.@{radio-cls}-group--filled {
+      .@{radio-button--cls} {
+        width: 100%;
+
+        &::before {
+          opacity: @radio-opacity-transparent;
+        }
+
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+
+    &.@{radio-cls}-group__outline {
+      row-gap: 0;
+      .@{radio-button--cls} {
+        width: 100%;
+        border-bottom: 0;
+        &.@{prefix}-is-checked {
+
+          + .@{radio-button--cls} {
+            border-bottom: 0;
+          }
+        }
+
+        &:first-child {
+          border-radius: @radio-button-border-radius  @radio-button-border-radius 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 @radio-button-border-radius @radio-button-border-radius;
+        }
+      }
+    }
   }
   &.@{radio-cls}-group--filled {
     border-color: @radio-button-group-background-color-filled;
