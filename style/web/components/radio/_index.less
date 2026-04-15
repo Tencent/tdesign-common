@@ -85,13 +85,15 @@
       margin-right: 0;
     }
 
-    .@{radio-button--cls} {
-      &::before {
-        opacity: @radio-opacity-transparent;
-      }
+    &.@{radio-cls}-group--filled {
+      .@{radio-button--cls} {
+        &::before {
+          opacity: @radio-opacity-transparent;
+        }
 
-      &:last-child {
-        border: 0;
+        &:last-child {
+          border: 0;
+        }
       }
     }
   }
