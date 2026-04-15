@@ -84,6 +84,16 @@
     .@{radio-cls} {
       margin-right: 0;
     }
+
+    .@{radio-button--cls} {
+      &::before {
+        opacity: @radio-opacity-transparent;
+      }
+
+      &:last-child {
+        border: 0;
+      }
+    }
   }
   &.@{radio-cls}-group--filled {
     border-color: @radio-button-group-background-color-filled;
