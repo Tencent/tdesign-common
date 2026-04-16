@@ -1,19 +1,27 @@
-import { isArray, isFunction, isNumber, isString, difference, camelCase, isPlainObject } from 'lodash-es';
+import {
+  camelCase,
+  difference,
+  isArray,
+  isFunction,
+  isNumber,
+  isPlainObject,
+  isString,
+} from 'lodash-es';
 import mitt from 'mitt';
 
 import { TreeNode } from './tree-node';
-import {
+import type {
   TreeNodeValue,
   TypeIdMap,
-  TypeTimer,
+  TypeRelatedNodesOptions,
   TypeTargetNode,
-  TypeTreeNodeData,
-  TypeTreeItem,
-  TypeTreeStoreOptions,
+  TypeTimer,
+  TypeTreeEventState,
   TypeTreeFilter,
   TypeTreeFilterOptions,
-  TypeRelatedNodesOptions,
-  TypeTreeEventState,
+  TypeTreeItem,
+  TypeTreeNodeData,
+  TypeTreeStoreOptions,
 } from './types';
 
 // 构建一个树的数据模型
@@ -453,9 +461,12 @@ export class TreeStore {
   public refreshNodes(): void {
     const { children, nodes } = this;
     nodes.length = 0;
+    // 使用迭代方式替代递归，避免栈溢出
     children.forEach((node) => {
       const list = node.walk();
-      Array.prototype.push.apply(nodes, list);
+      for (let i = 0; i < list.length; i++) {
+        nodes.push(list[i]);
+      }
     });
   }
 
@@ -847,24 +858,25 @@ export class TreeStore {
       ...options,
     };
     const map = new Map();
-    list.forEach((value) => {
-      if (map.get(value)) return;
+    const addNodesToMap = (nodes: TreeNode[]) => {
+      for (let j = 0; j < nodes.length; j++) {
+        const relatedNode = nodes[j];
+        map.set(relatedNode.value, relatedNode);
+      }
+    };
+    for (let i = 0; i < list.length; i++) {
+      const value = list[i];
+      if (map.get(value)) continue;
       const node = this.getNode(value);
       if (node) {
         const parents = node.getParents().reverse();
         const children = node.walk();
-        let related = [];
         if (conf.withParents) {
-          related = parents.concat(children);
-        } else {
-          related = children;
+          addNodesToMap(parents);
         }
-        // 用 map 实现节点去重
-        related.forEach((relatedNode) => {
-          map.set(relatedNode.value, relatedNode);
-        });
+        addNodesToMap(children);
       }
-    });
+    }
     let relatedNodes = Array.from(map.values());
     if (conf.reverse) {
       relatedNodes = relatedNodes.reverse();
@@ -909,30 +921,31 @@ export class TreeStore {
       // 所在判断过滤条件是否存在之前，就要调用这里的清理逻辑
       // 不想在每次渲染时都做这个清空判断
       // 所以判断一下之前是否有进行过滤
-      allNodes.forEach((node: TreeNode) => {
+      for (let i = 0; i < allNodes.length; i++) {
+        const node = allNodes[i];
         // 先清空所有锁定状态
         if (node.vmIsLocked) {
           // lock 方法内部有状态计算
           // 所以要减少 lock 方法调用次数
           node.lock(false);
         }
-      });
+      }
     }
 
     const currentFilter = config.filter;
     // 当前没有过滤器
     // 则无需处理锁定节点
     if (!currentFilter || !isFunction(currentFilter)) return;
-    this.prevFilter = config.filter;
+    this.prevFilter = currentFilter;
 
+    // 数据量大时，for 比 forEach 性能更好
     // 全部节点要经过排序，才能使用这个遍历
     // 比起每个过滤节点调用 getParents 方法检查父节点状态
     // 复杂度 O(N*log(N)) => O(N)
-    allNodes.reverse().forEach((node: TreeNode) => {
-      // 数组颠倒后，等于是从每个节点的子节点开始判断
-      // 想象为从展开树的最底部向上遍历
+    for (let i = allNodes.length - 1; i >= 0; i--) {
+      const node = allNodes[i];
       const parent = node.getParent();
-      if (!parent) return;
+      if (!parent) continue;
       if (node.vmIsRest || node.vmIsLocked) {
         // 当前节点被过滤条件命中
         // 或者当前节点被锁定
@@ -943,7 +956,7 @@ export class TreeStore {
           parent.lock(true);
         }
       }
-    });
+    }
   }
 }
 
