@@ -56,6 +56,8 @@
       }
 
       &:last-child {
+        border-right: @radio-button-border;
+        border-right-color: @radio-button-border-color-default;
         border-radius: 0 @border-radius-default @border-radius-default 0;
       }
 
@@ -65,6 +67,8 @@
 
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
+        border-color: @radio-button-border-color-checked;
+        border-right-color: @radio-button-border-color-checked;
       }
 
       &.@{prefix}-is-disabled {
@@ -285,8 +289,6 @@
     }
 
     &:last-child {
-      border-right: @radio-button-border;
-      border-right-color: @radio-button-border-color-default;
       border-radius: 0 @radio-button-border-radius @radio-button-border-radius 0;
     }
 
