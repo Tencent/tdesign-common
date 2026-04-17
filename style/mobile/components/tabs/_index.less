@@ -156,6 +156,10 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+
+    &--split {
+      .border(bottom, @tab-border-color);
+    }
   }
 
   &__track {
@@ -191,10 +195,6 @@
       background: @bg-color-secondarycontainer;
 
       --td-tab-border-color: transparent;
-    }
-
-    &--split {
-      .border(bottom, @tab-border-color);
     }
   }
 

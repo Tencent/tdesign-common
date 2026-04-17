@@ -167,6 +167,7 @@ export default {
       validator: '${name}不符合要求',
       boolean: '${name}數據類型必須是布林類型',
       number: '${name}必須是數字',
+      email: '請輸入正確的${name}',
     },
     colonText: '：',
   },

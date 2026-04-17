@@ -166,6 +166,7 @@ export default {
       validator: '${name}要件を満たしていない',
       boolean: '${name}データ型は Boolean 型であること',
       number: '${name}デジタルであること',
+      email: '正しく入力してください${name}',
     },
     colonText: ':',
   },

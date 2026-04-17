@@ -69,3 +69,7 @@ spline: navigation
 在侧边导航上提供收起按钮，点击后可以将侧边栏最小化，常见于带有图标的侧边导航。
 
 {{ closable-side }}
+
+### 自动收起超出宽度的菜单项
+
+{{ head-menu-ellipsis }}

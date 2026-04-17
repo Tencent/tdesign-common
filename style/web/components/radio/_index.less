@@ -77,6 +77,61 @@
     }
   }
 
+  &.@{radio-cls}-group--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: @comp-margin-xs;
+
+    .@{radio-cls} {
+      margin-right: 0;
+    }
+
+    &.@{radio-cls}-group--filled {
+      .@{radio-button--cls} {
+        width: 100%;
+
+        &::before {
+          opacity: @radio-opacity-transparent;
+        }
+
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+
+    &.@{radio-cls}-group__outline {
+      row-gap: 0;
+
+      .@{radio-button--cls} {
+        width: 100%;
+        border-right: @radio-button-border;
+        border-right-color: @radio-button-border-color-default;
+        margin-top: -1px;
+
+        &:first-child {
+          margin-top: 0;
+          border-radius: @radio-button-border-radius @radio-button-border-radius 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 @radio-button-border-radius @radio-button-border-radius;
+        }
+
+        &.@{prefix}-is-checked {
+          border-color: @radio-button-border-color-checked;
+          border-right-color: @radio-button-border-color-checked;
+          z-index: 1;
+
+          +.@{radio-button--cls} {
+            border-left: @radio-button-border;
+            border-left-color: @radio-button-border-color-default;
+          }
+        }
+      }
+    }
+  }
+
   &.@{radio-cls}-group--filled {
     border-color: @radio-button-group-background-color-filled;
     padding: @radio-group-padding;
@@ -147,7 +202,7 @@
           color: @radio-button-color-default-filled-disabled-checked;
         }
 
-        &.@{prefix}-is-checked ~ .@{radio-cls}-group__bg-block {
+        &.@{prefix}-is-checked~.@{radio-cls}-group__bg-block {
           background-color: @radio-button-background-color-default-filled-disabled-checked;
         }
       }
@@ -169,7 +224,7 @@
           color: @radio-button-color-primary-filled-checked;
         }
 
-        &.@{prefix}-is-checked ~ .@{radio-cls}-group__bg-block {
+        &.@{prefix}-is-checked~.@{radio-cls}-group__bg-block {
           background-color: @radio-button-background-color-primary-filled-disabled-checked;
         }
       }
@@ -251,7 +306,7 @@
       border-color: @radio-button-border-color-checked;
       transition: border-color @anim-duration-base @anim-time-fn-ease-out;
 
-      + .@{radio-button--cls} {
+      +.@{radio-button--cls} {
         border-left: 0;
       }
     }

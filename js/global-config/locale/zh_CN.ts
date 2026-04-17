@@ -167,6 +167,7 @@ export default {
       validator: '${name}不符合要求',
       boolean: '${name}数据类型必须是布尔类型',
       number: '${name}必须是数字',
+      email: '请输入正确的${name}',
     },
     colonText: '：',
   },

@@ -113,6 +113,16 @@
       position: absolute;
       bottom: 0;
     }
+
+    .@{prefix}-input__suffix:not(.@{prefix}-input__suffix-icon) {
+      position: absolute;
+      bottom: 0;
+      right: calc(@comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px));
+    }
+
+    &.@{prefix}-size-l .@{prefix}-input__suffix:not(.@{prefix}-input__suffix-icon) {
+      right: calc(@comp-paddingLR-m + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px));
+    }
   }
 
   .@{prefix}-tag-input__prefix {
@@ -126,16 +136,20 @@
   margin-right: @comp-margin-s;
 }
 
-/** 换行模式避免标签和右侧图标重合，需保留图标宽度 22px 和左侧距离标签间距 8px */
+/** 换行模式避免标签和右侧图标重合 */
 .@{prefix}-tag-input--break-line.@{prefix}-tag-input--with-tag:not(.@{prefix}-input--auto-width),
 .@{prefix}-tag-input.@{prefix}-input--auto-width:hover {
   .@{prefix}-input {
-    padding-right: @tag-input-clear-icon-padding-m;
-  }
+    padding-right: calc(
+      @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-width', 0px) +
+      var(~'--@{prefix}-tag-input-suffix-icon-width', 0px)
+    );
 
-  .@{prefix}-size-l {
-    .@{prefix}-input {
-      padding-right: @tag-input-clear-icon-padding-l;
+    &.@{prefix}-size-l {
+      padding-right: calc(
+        @comp-paddingLR-m + var(~'--@{prefix}-tag-input-suffix-width', 0px) +
+        var(~'--@{prefix}-tag-input-suffix-icon-width', 0px)
+      );
     }
   }
 }
