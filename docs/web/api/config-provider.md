@@ -47,6 +47,8 @@ TDesign 支持国际化/多语言配置，目前支持的语言包括:
 
 {{ dialog }}
 
+> 注意！当使用函数式调用，需要覆盖 `Plugin` 时，需要配置 `isContextEffectPlugin` (全局配置是否影响函数式调用方法使用的组件)。
+
 ### Popconfirm 气泡对话框
 
 {{ popconfirm }}
@@ -58,3 +60,9 @@ TDesign 支持国际化/多语言配置，目前支持的语言包括:
 ### 其他组件
 
 {{ others }}
+
+### FAQ
+
+#### 关于多语言配置,Plugin的函数式调用
+
+使用函数式调用，需要覆盖 `Plugin` 时，需要配置 `isContextEffectPlugin` (全局配置是否影响函数式调用方法使用的组件)。

@@ -47,6 +47,8 @@ If you want to contribute more language packs, please refer to [How to add a lan
 
 {{ dialog }}
 
+> Note! When using functional calls and needing to override `Plugin`, you need to configure `isContextEffectPlugin` (a global configuration to determine whether it affects the components used by the functional call method).
+
 ### Popconfirm
 
 {{ popconfirm }}
@@ -58,3 +60,9 @@ If you want to contribute more language packs, please refer to [How to add a lan
 ### others
 
 {{ others }}
+
+### FAQ
+
+#### Regarding multi-language configuration, plugin functional calls
+
+When using functional calls, if you need to override `Plugin`, you need to configure `isContextEffectPlugin` (a global configuration to determine whether it affects the components used by the functional call method).
