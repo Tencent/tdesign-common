@@ -49,6 +49,7 @@
     padding: calc(@spacer-1 / 4) @spacer-1;
     text-align: center;
     cursor: pointer;
+    font: @segmented-item-label-font;
     color: @segmented-item-color;
 
     &-inner {
@@ -64,12 +65,12 @@
       align-items: center;
     }
 
-    &-icon,
-    &-label {
-      font: @segmented-item-label-font;
+    &-icon {
+      font-size: @font-size-m;
     }
 
     &--active {
+      font-weight: 600;
       color: @segmented-item-active-color;
     }
 
