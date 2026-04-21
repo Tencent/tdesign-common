@@ -15,7 +15,7 @@ jobs:
       pr_id: ${{ steps.pr.outputs.id }}
     steps:
       - name: Download pr id
-        uses: dawidd6/action-download-artifact@v8
+        uses: dawidd6/action-download-artifact@v20
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
