@@ -1,4 +1,4 @@
-import { positiveAdd, positiveSubtract } from '../utils/math';
+import { positiveAdd, positiveSubtract } from '../input-number/number';
 import type { ZoomOptions, ZoomResult, TranslateOffset, ImageScale } from './types';
 
 export type { ZoomOptions, ZoomResult, TranslateOffset, ImageScale };
