@@ -1,9 +1,15 @@
 import { positiveAdd, positiveSubtract } from '../utils/math';
 import type { ZoomOptions, ZoomResult, TranslateOffset, ImageScale } from './types';
-import { DEFAULT_IMAGE_SCALE } from './types';
 
 export type { ZoomOptions, ZoomResult, TranslateOffset, ImageScale };
-export { DEFAULT_IMAGE_SCALE };
+
+/** ImageScale 的默认值，所有使用处应引用此常量，避免多处声明不一致 */
+export const DEFAULT_IMAGE_SCALE: ImageScale = {
+  max: 2,
+  min: 0.5,
+  step: 0.2,
+  defaultScale: 1,
+};
 
 /**
  * 检测图片是否超出视口（容器）边界
