@@ -1,5 +1,5 @@
-import { TreeNode } from './tree-node';
 import { TreeOptionData } from '../common';
+import { TreeNode } from './tree-node';
 
 // ------ 自动规范类型 start -------
 
@@ -270,4 +270,6 @@ export interface TypeTreeStoreOptions {
   onUpdate?: Function;
   // 是否允许在过滤时折叠节点
   allowFoldNodeOnFilter?: Boolean;
+  // 是否允许不同层级有重复的 value 值
+  allowDuplicateValue?: boolean;
 }
