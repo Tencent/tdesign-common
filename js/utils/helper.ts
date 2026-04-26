@@ -283,13 +283,12 @@ export function calculateNodeSize(targetElement: HTMLElement) {
 
 export function isSafari(): boolean {
   if (typeof window === 'undefined') return false;
-
   const ua = window?.navigator?.userAgent;
   return /Safari/.test(ua) && !/Chrome/.test(ua);
 }
 
-export function isChromium(): boolean {
+export function isFirefox(): boolean {
   if (typeof window === 'undefined') return false;
-  const brands = (window?.navigator?.userAgent as any).userAgentData?.brands || [];
-  return brands.some((b: any) => /Chromium/i.test(b.brand));
+  const ua = window?.navigator?.userAgent;
+  return /Firefox/.test(ua);
 }
