@@ -1,8 +1,9 @@
 import { SizeUnit } from './types';
 import log from '../log/log';
 
-export const IMAGE_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp)/i;
-export const IMAGE_ALL_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.svg|.gif|.bmp|.dwg|.dxf|.svf|.tif|.tiff|.arw)/i;
+export const IMAGE_REGEXP = /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.heic|.heif|.svg|.gif|.bmp)/i;
+export const IMAGE_ALL_REGEXP =
+  /(.png|.jpg|.jpeg|.jpe|.webp|.avif|.heic|.heif|.svg|.gif|.bmp|.dwg|.dxf|.svf|.tif|.tiff|.arw)/i;
 export const FILE_PDF_REGEXP = /(.pdf)/i;
 export const FILE_EXCEL_REGEXP = /(.xlsx|.xls|.csv|.xlc|.xlm|.xlt|.xlw)/i;
 export const FILE_WORD_REGEXP = /(.dox|docx|.document|.wps|.wdb|.msword)/i;
@@ -18,6 +19,8 @@ const INPUT_FILE_MAP = {
   'video/*': VIDEO_REGEXP,
   'image/*': IMAGE_ALL_REGEXP,
   '.jpg': /image\/jpeg|\.jpg$/i,
+  '.heic': /image\/heic|image\/heic-sequence|\.heic$/i,
+  '.heif': /image\/heif|image\/heif-sequence|\.heif$/i,
   '.ico': /image\/vnd.microsoft.icon/i,
   '.doc': /application\/msword/i,
   '.docx': /application\/vnd.openxmlformats-officedocument.wordprocessingml.document/i,
