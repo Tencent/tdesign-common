@@ -115,6 +115,10 @@
       border-radius: @border-radius-default;
       transition: background-color @anim-duration-base @anim-time-fn-easing;
 
+      &:first-child {
+        margin-top: 0;
+      }
+
       &.@{prefix}-is-disabled {
         &:hover {
           background: @transfer-bg-color;
