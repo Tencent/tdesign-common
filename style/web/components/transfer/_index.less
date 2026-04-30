@@ -92,11 +92,11 @@
         margin: @transfer-list-checkbox-group-margin;
 
         .@{prefix}-checkbox {
-          margin-right: @transfer-list-margin-horizontal;
+          // margin: @transfer-list-item-margin;
 
-          & + .@{prefix}-checkbox {
-            margin-left: @transfer-list-margin-horizontal;
-          }
+          // & + .@{prefix}-checkbox {
+          //   margin-left: @transfer-list-margin-horizontal;
+          // }
 
           &__label {
             margin: 0;
@@ -121,9 +121,9 @@
       border-radius: @border-radius-default;
       transition: background-color @anim-duration-base @anim-time-fn-easing;
 
-      &:first-child {
-        margin-top: 0;
-      }
+      // &:first-child {
+      //   margin-top: 0;
+      // }
 
       &.@{prefix}-is-disabled {
         &:hover {
