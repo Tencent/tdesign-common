@@ -95,8 +95,7 @@ a.@{prefix}-menu__item {
     gap: @comp-margin-s;
 
     .t-icon {
-      width: 16px;
-      height: 16px;
+      font-size: @font-size-l;
     }
   }
 
@@ -711,6 +710,11 @@ a.@{prefix}-menu__item {
       color: @menu-popup-item-color;
       height: @comp-size-s;
       line-height: @comp-size-s;
+      gap: @comp-margin-s;
+
+      .t-icon {
+        font-size: @font-size-l;
+      }
 
       + .@{prefix}-menu__item {
         margin-left: 0;
