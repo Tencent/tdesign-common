@@ -304,10 +304,10 @@ const processComponent = async (
 const processAllComponents = async () => {
   const cssVariableHeadContent = '\n### CSS Variables\n\n'
     + '组件提供了下列 CSS 变量，可用于自定义样式。\n'
-    + '名称 | 默认值 | 描述 \n-- | -- | --\n';
+    + '名称 | 默认值 | 描述\n-- | -- | --\n';
   const cssVariableHeadContentEn = '\n### CSS Variables\n\n'
     + 'The component provides the following CSS variables, which can be used to customize styles.\n'
-    + 'Name | Default Value | Description \n-- | -- | --\n';
+    + 'Name | Default Value | Description\n-- | -- | --\n';
 
   let componentNames = [];
 
