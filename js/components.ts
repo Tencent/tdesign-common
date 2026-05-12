@@ -128,6 +128,7 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   rate: ['Rate'],
   result: ['Result'],
   search: ['Search'],
+  segmented: ['Segmented'],
   'side-bar': ['SideBar', 'SideBarItem'],
   skeleton: ['Skeleton'],
   slider: ['Slider'],
