@@ -139,6 +139,9 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: Tencent/tdesign-react
+          submodules: recursive
+
+      - run: rm -rf packages/common
 
       - name: Checkout tdesign-common
         uses: actions/checkout@v6
