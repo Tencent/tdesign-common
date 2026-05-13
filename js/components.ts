@@ -145,6 +145,7 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   textarea: ['Textarea'],
   toast: ['Toast', 'ToastPlugin'],
   'tree-select': ['TreeSelect'],
+  typography: ['Typography', 'Text', 'Title', 'Paragraph'],
   upload: ['Upload'],
 };
 
