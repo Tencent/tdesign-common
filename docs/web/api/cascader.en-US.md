@@ -104,3 +104,9 @@ The selector contents can be customized according to requirements. It is used in
 Cascading panel used alone for combination with other triggers
 
 {{ panel }}
+
+### Column Slots
+
+Customize the header and footer of each column via `columnHeader` / `columnFooter` slots.
+
+{{ column-slot }}

@@ -116,3 +116,9 @@ spline: form
 单独使用级联面板，用于与其他触发器结合
 
 {{ panel }}
+
+### 列插槽
+
+通过 `columnHeader` / `columnFooter` 插槽自定义每一列的头部和底部内容。
+
+{{ column-slot }}
