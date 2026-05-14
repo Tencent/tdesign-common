@@ -1,5 +1,7 @@
 const DISTANCE = '32px';
 
+export const DEFAULT_Z_INDEX = 6000;
+
 export const THEME_LIST: string[] = ['info', 'success', 'warning', 'error', 'question', 'loading'];
 
 export const PLACEMENT_OFFSET = {
