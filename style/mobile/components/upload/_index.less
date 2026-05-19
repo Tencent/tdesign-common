@@ -251,6 +251,7 @@
     pointer-events: none;
 
     // 文字
+    .@{prefix}-upload__item--add .@{prefix}-upload__add-icon,
     .@{prefix}-upload__file-name,
     .@{prefix}-upload__list-item-name,
     .@{prefix}-upload__list-item-size {
@@ -287,12 +288,15 @@
       display: none;
     }
 
-    // grid 布局：添加按钮图标，无 progress-mask 的图片降低透明度
-    // list 布局：缩略图降低透明度
-    .@{prefix}-upload__item--add .@{prefix}-upload__add-icon,
-    .@{prefix}-upload__item:not(.@{prefix}-upload__item--add):not(.@{prefix}-upload__item--file):not(:has(.@{prefix}-upload__progress-mask)),
-    .@{prefix}-upload__list-item-thumbnail {
-      opacity: 0.4;
+    // grid 布局：无 progress-mask 的图片加 disabled-mask 遮罩
+    // list 布局：缩略图加 disabled-mask 遮罩
+    .@{prefix}-upload__disabled-mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: @upload-disabled-mask;
     }
 
     .@{prefix}-upload__list-item-loading {
