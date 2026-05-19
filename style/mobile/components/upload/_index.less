@@ -245,6 +245,64 @@
       color: @text-color-primary;
     }
   }
+
+  // 禁用态
+  &--disabled {
+    pointer-events: none;
+
+    // 文字
+    .@{prefix}-upload__file-name,
+    .@{prefix}-upload__list-item-name,
+    .@{prefix}-upload__list-item-size {
+      color: @text-color-disabled;
+    }
+
+    // 文件类型图标
+    .@{prefix}-upload__file-type {
+      &--pdf,
+      &--media {
+        color: @error-color-disabled;
+      }
+
+      &--excel {
+        color: @success-color-disabled;
+      }
+
+      &--word {
+        color: @brand-color-disabled;
+      }
+
+      &--ppt {
+        color: @warning-color-disabled;
+      }
+
+      &--other {
+        color: @text-color-disabled;
+      }
+    }
+
+    // 隐藏删除/操作按钮
+    .@{prefix}-upload__delete-btn,
+    .@{prefix}-upload__list-item-action {
+      display: none;
+    }
+
+    // grid 布局：添加按钮图标，无 progress-mask 的图片降低透明度
+    // list 布局：缩略图降低透明度
+    .@{prefix}-upload__item--add .@{prefix}-upload__add-icon,
+    .@{prefix}-upload__item:not(.@{prefix}-upload__item--add):not(.@{prefix}-upload__item--file):not(:has(.@{prefix}-upload__progress-mask)),
+    .@{prefix}-upload__list-item-thumbnail {
+      opacity: 0.4;
+    }
+
+    .@{prefix}-upload__list-item-loading {
+      color: @brand-color-disabled;
+    }
+
+    .@{prefix}-upload__list-item-error-icon {
+      color: @error-color-disabled;
+    }
+  }
 }
 
 @keyframes spin {
