@@ -128,6 +128,7 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   rate: ['Rate'],
   result: ['Result'],
   search: ['Search'],
+  segmented: ['Segmented'],
   'side-bar': ['SideBar', 'SideBarItem'],
   skeleton: ['Skeleton'],
   slider: ['Slider'],
@@ -144,6 +145,7 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   textarea: ['Textarea'],
   toast: ['Toast', 'ToastPlugin'],
   'tree-select': ['TreeSelect'],
+  typography: ['Typography', 'Text', 'Title', 'Paragraph'],
   upload: ['Upload'],
 };
 

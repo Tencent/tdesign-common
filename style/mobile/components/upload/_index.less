@@ -24,6 +24,41 @@
     &-drag {
       transition: transform 0.3s ease;
     }
+
+    &--file {
+      background: @upload-background;
+    }
+  }
+
+  &__file-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 4px;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  &__file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__file-name {
+    width: 100%;
+    font: @font-body-medium;
+    color: @text-color-primary;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__add-icon {
@@ -71,7 +106,209 @@
     }
 
     &-loading {
-      animation: spin infinite linear .6s;
+      font-size: 24px;
+      animation: spin infinite linear 0.6s;
+    }
+
+    &-fail-icon {
+      font-size: 24px;
+    }
+  }
+
+  // ========== list 布局 ==========
+  &--list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 16px;
+  }
+
+  &__list-trigger {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+
+  &__list-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 12px;
+    padding: 8px 12px;
+    background: @upload-background;
+    border-radius: @upload-radius;
+    box-sizing: border-box;
+
+    &-loading {
+      flex-shrink: 0;
+      font-size: 24px;
+      color: @brand-color;
+      animation: spin infinite linear 0.6s;
+    }
+
+    &-error-icon {
+      flex-shrink: 0;
+      font-size: 24px;
+      color: @error-color;
+    }
+
+    &-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    &-thumbnail {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: @radius-small;
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    &-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-name {
+      font: @font-body-medium;
+      color: @text-color-primary;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-size {
+      font: @font-body-small;
+      color: @text-color-placeholder;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-action {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      column-gap: 4px;
+    }
+
+    &-delete {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: @text-color-placeholder;
+      cursor: pointer;
+    }
+
+    &--progress &-name,
+    &--progress &-size {
+      color: @text-color-placeholder;
+    }
+
+    &--fail &-name {
+      color: @error-color;
+    }
+  }
+
+  &__file-type {
+    font-size: 24px;
+
+    &--pdf,
+    &--media {
+      color: @error-color;
+    }
+
+    &--excel {
+      color: @success-color;
+    }
+
+    &--word {
+      color: @brand-color;
+    }
+
+    &--ppt {
+      color: @warning-color;
+    }
+
+    &--other {
+      color: @text-color-primary;
+    }
+  }
+
+  // 禁用态
+  &--disabled {
+    pointer-events: none;
+
+    // 文字
+    .@{prefix}-upload__item--add .@{prefix}-upload__add-icon,
+    .@{prefix}-upload__file-name,
+    .@{prefix}-upload__list-item-name,
+    .@{prefix}-upload__list-item-size {
+      color: @text-color-disabled;
+    }
+
+    // 文件类型图标
+    .@{prefix}-upload__file-type {
+      &--pdf,
+      &--media {
+        color: @error-color-disabled;
+      }
+
+      &--excel {
+        color: @success-color-disabled;
+      }
+
+      &--word {
+        color: @brand-color-disabled;
+      }
+
+      &--ppt {
+        color: @warning-color-disabled;
+      }
+
+      &--other {
+        color: @text-color-disabled;
+      }
+    }
+
+    // 隐藏删除/操作按钮
+    .@{prefix}-upload__delete-btn,
+    .@{prefix}-upload__list-item-action {
+      display: none;
+    }
+
+    // grid 布局：无 progress-mask 的图片加 disabled-mask 遮罩
+    // list 布局：缩略图加 disabled-mask 遮罩
+    .@{prefix}-upload__disabled-mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: @upload-disabled-mask;
+    }
+
+    .@{prefix}-upload__list-item-loading {
+      color: @brand-color-disabled;
+    }
+
+    .@{prefix}-upload__list-item-error-icon {
+      color: @error-color-disabled;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { isString, isNull, isUndefined, isNumber, isArray } from 'lodash-es';
+import { isArray, isNull, isNumber, isString, isUndefined } from 'lodash-es';
 
 export function omit(obj: Record<string, any>, fields: string[]) {
   const shallowCopy = {
@@ -283,7 +283,12 @@ export function calculateNodeSize(targetElement: HTMLElement) {
 
 export function isSafari(): boolean {
   if (typeof window === 'undefined') return false;
-
   const ua = window?.navigator?.userAgent;
   return /Safari/.test(ua) && !/Chrome/.test(ua);
+}
+
+export function isFirefox(): boolean {
+  if (typeof window === 'undefined') return false;
+  const ua = window?.navigator?.userAgent;
+  return /Firefox/.test(ua);
 }

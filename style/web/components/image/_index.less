@@ -167,9 +167,12 @@
   &__error {
     .center();
 
-    font-size: 0.3em;
-    line-height: 1.5;
+    font: @font-body-medium;
     z-index: calc(@image-placeholder-z-index + 1);
+
+    .t-icon {
+      font-size: 32px;
+    }
   }
 
   &__loading {
