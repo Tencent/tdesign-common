@@ -21,13 +21,32 @@
       color: @upload-add-color;
     }
 
-    &-drag {
-      transition: transform 0.3s ease;
-    }
-
     &--file {
       background: @upload-background;
     }
+  }
+
+  &--dragging {
+    .@{prefix}-upload-drag-move {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__item,
+  &__image,
+  &__file-content,
+  &__list-item {
+    -webkit-touch-callout: none;
+    user-select: none;
+    user-select: none;
+  }
+
+  &__drag-clone {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    border-radius: @upload-radius;
+    overflow: hidden;
   }
 
   &__file-content {
