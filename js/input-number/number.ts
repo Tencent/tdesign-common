@@ -217,8 +217,11 @@ export function canInputNumber(number: string | undefined | null, largeNumber?: 
 /**
  * 是否允许设置组件新值，触发 onChange 事件
  */
-export function canSetValue(number: string, lastNumber: number) {
-  return parseFloat(number) !== lastNumber && !Number.isNaN(Number(number));
+export function canSetValue(number: string, lastNumber?: NumberType | null) {
+  if (Number.isNaN(Number(number))) return false;
+  if (lastNumber === '' || lastNumber === null || isUndefined(lastNumber)) return number !== '';
+  if (number === '') return true;
+  return parseFloat(number) !== Number(lastNumber);
 }
 
 /**

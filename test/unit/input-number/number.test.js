@@ -213,6 +213,11 @@ it('canSetValue', () => {
   expect(canSetValue('2.00', 2)).toBe(false);
   expect(canSetValue('2.3e', 2.3)).toBe(false);
   expect(canSetValue('2.3e10', 2.3)).toBe(true);
+  expect(canSetValue('0', '')).toBe(true);
+  expect(canSetValue('0', null)).toBe(true);
+  expect(canSetValue('0', undefined)).toBe(true);
+  expect(canSetValue('', '')).toBe(false);
+  expect(canSetValue('', 0)).toBe(true);
 });
 
 describe('formatUnCompleteNumber', () => {
