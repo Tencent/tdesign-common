@@ -1,4 +1,5 @@
-# force copy from tencent/tdesign
+# WARNING: actions-cool/issues-helper存在使用安全风险，未进行合理替换前需要移除禁止其相关运行。
+
 # 当在 issue 的 comment 回复类似 `Duplicate of #111` 这样的话，issue 将被自动打上 重复提交标签 并且 cloese
 name: Issue Mark Duplicate
 

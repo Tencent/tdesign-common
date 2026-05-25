@@ -1,3 +1,5 @@
+# WARNING: actions-cool/issues-helper存在使用安全风险，未进行合理替换前需要移除禁止其相关运行。
+
 name: issue on label
 on:
   issues:
