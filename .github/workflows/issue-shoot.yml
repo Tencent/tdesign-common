@@ -3,7 +3,7 @@ name: issue-shoot
 
 on:
   issues:
-    types: ['labeled']
+    types: [labeled]
 
 jobs:
   call-issue-shoot:
