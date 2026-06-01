@@ -67,6 +67,17 @@
     z-index: @table-loading-z-index;
   }
 
+  .@{prefix}-table-loading--bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 46px;
+  }
+
   .t-table-vertical-align(top);
   .t-table-vertical-align(middle);
   .t-table-vertical-align(bottom);
