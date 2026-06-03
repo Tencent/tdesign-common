@@ -3,13 +3,13 @@
 @import './_var.less';
 
 .button-size(@size) {
-  @fontSize: 'button-@{size}-font-size';
+  @font: 'button-@{size}-font';
   @padding: 'button-@{size}-padding-horizontal';
   @height: 'button-@{size}-height';
   @iconSize: 'button-@{size}-icon-size';
 
   .@{button}--size-@{size} {
-    font-size: @@fontSize;
+    font: @@font;
     padding-left: @@padding;
     padding-right: @@padding;
     height: @@height;
@@ -120,8 +120,6 @@
   transition: all 0.3s;
   border-radius: @button-border-radius;
   outline: none;
-  font-family: @button-font-family;
-  font-weight: @button-font-weight;
   vertical-align: top;
 
   .cursor-pointer();
