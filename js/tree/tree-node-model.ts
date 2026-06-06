@@ -58,6 +58,11 @@ export class TreeNodeModel {
     return node.isDisabled();
   }
 
+  public get level() {
+    const node = this[nodeKey];
+    return node.getLevel();
+  }
+
   /**
    * 获取节点所处层级
    * @return number 节点层级序号

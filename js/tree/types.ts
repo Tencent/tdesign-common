@@ -183,6 +183,10 @@ export interface TreeNodeModel<T extends TreeOptionData = TreeOptionData> extend
    * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
    */
   setData: (data: T) => void;
+  /**
+   * 当前节点层级
+   */
+  level: number;
 }
 
 // ------ 自动规范类型 end -------
