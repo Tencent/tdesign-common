@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: [develop]
     types: [opened, synchronize, reopened]
+    paths:
+      - 'docs/**'
+      - 'js/**'
+      - 'style/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -121,7 +125,7 @@ jobs:
           - script: build
             run: pnpm run build
           - script: preview
-            run: pnpm -C packages/tdesign-react/site preview  
+            run: pnpm -C packages/tdesign-react/site preview
 
     steps:
       - name: Checkout tdesign-react
@@ -319,10 +323,10 @@ jobs:
                 })
                 .join("\n")}
             `;
-            
+
             core.setOutput('report', report);
             require('fs').writeFileSync('report.txt', report);
-      
+
       - run: echo ${{ github.event.number }} > pr-id.txt
 
       - uses: actions/upload-artifact@v4
