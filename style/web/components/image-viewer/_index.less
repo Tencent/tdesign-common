@@ -144,6 +144,11 @@
         transition: all @anim-duration-base @anim-time-fn-easing;
         transform: rotate(0deg);
         object-fit: contain;
+        cursor: grab;
+
+        &:active {
+          cursor: grabbing;
+        }
       }
     }
   }
@@ -457,6 +462,11 @@
         transition: all @anim-duration-base ease;
         transform: rotate(0deg);
         object-fit: contain;
+        cursor: grab;
+
+        &:active {
+          cursor: grabbing;
+        }
       }
     }
   }
