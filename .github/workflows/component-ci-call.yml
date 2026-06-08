@@ -2,7 +2,7 @@ name: component-ci-call
 
 permissions:
   contents: read
-  pull_request: write
+  pull-requests: write
 
 on:
   workflow_run:
