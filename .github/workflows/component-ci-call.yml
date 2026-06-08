@@ -1,5 +1,9 @@
 name: component-ci-call
 
+permissions:
+  contents: read
+  pull_request: write
+
 on:
   workflow_run:
     workflows:
@@ -33,12 +37,16 @@ jobs:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
           name: report
-    
 
       - name: Set pr info
         id: pr
-        run: | 
-          echo "id=$(cat pr-id.txt)" >> $GITHUB_OUTPUT
+        run: |
+          PR_ID=$(cat pr-id.txt)
+          if [[ ! "$PR_ID" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid PR ID: $PR_ID"
+            exit 1
+          fi
+          echo "id=$PR_ID" >> $GITHUB_OUTPUT
           echo "report=$(cat report.txt)" >> $GITHUB_OUTPUT
 
       - name: site-domain
@@ -49,7 +57,7 @@ jobs:
           echo "tdesign_vue_next_domain=https://preview-tdesign-vue-next-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
           echo "tdesign_mobile_vue_domain=https://preview-tdesign-mobile-vue-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
           echo "tdesign_mobile_react_domain=https://preview-tdesign-mobile-react-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
-    
+
   tdesign-vue:
     if: github.event.workflow_run.conclusion == 'success'
     needs: call-context
@@ -61,9 +69,11 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: tdesign-vue-site
 
-      - run: |
-          export DEPLOY_DOMAIN=${{ needs.call-context.outputs.tdesign_vue_domain }}
-          npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_vue_domain }}
 
   tdesign-react:
     if: github.event.workflow_run.conclusion == 'success'
@@ -76,9 +86,11 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: tdesign-react-site
 
-      - run: |
-          export DEPLOY_DOMAIN=${{ needs.call-context.outputs.tdesign_react_domain }}
-          npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_react_domain }}
 
   tdesign-vue-next:
     if: github.event.workflow_run.conclusion == 'success'
@@ -91,10 +103,12 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: tdesign-vue-next-site
 
-      - run: |
-          export DEPLOY_DOMAIN=${{ needs.call-context.outputs.tdesign_vue_next_domain }}
-          npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
-  
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_vue_next_domain }}
+
   tdesign-mobile-vue:
     if: github.event.workflow_run.conclusion == 'success'
     needs: call-context
@@ -106,9 +120,11 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: tdesign-mobile-vue-site
 
-      - run: |
-          export DEPLOY_DOMAIN=${{ needs.call-context.outputs.tdesign_mobile_vue_domain }}
-          npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_mobile_vue_domain }}
 
   tdesign-mobile-react:
     if: github.event.workflow_run.conclusion == 'success'
@@ -121,9 +137,11 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: tdesign-mobile-react-site
 
-      - run: |
-          export DEPLOY_DOMAIN=${{ needs.call-context.outputs.tdesign_mobile_react_domain }}
-          npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_mobile_react_domain }}
 
   report-comment:
     if: always()
@@ -139,7 +157,7 @@ jobs:
       - name: comment
         uses: TDesignOteam/workflows/actions/maintain-one-comment@main
         with:
-          token: ${{ secrets.TDESIGN_BOT_TOKEN }}
-          number: ${{needs.call-context.outputs.pr_id}}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          number: '${{ needs.call-context.outputs.pr_id }}'
           body: ${{ needs.call-context.outputs.report }}
           body-include: '<!-- AUTO_REPORT_HOOK -->'
