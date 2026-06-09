@@ -47,7 +47,11 @@ jobs:
             exit 1
           fi
           echo "id=$PR_ID" >> $GITHUB_OUTPUT
-          echo "report=$(cat report.txt)" >> $GITHUB_OUTPUT
+          {
+            echo 'report<<EOF'
+            cat report.txt
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
 
       - name: site-domain
         id: site-domain
