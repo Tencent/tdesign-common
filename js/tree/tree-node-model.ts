@@ -59,8 +59,7 @@ export class TreeNodeModel {
   }
 
   public get level() {
-    const node = this[nodeKey];
-    return node.getLevel();
+    return this.getLevel();
   }
 
   /**
