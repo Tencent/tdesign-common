@@ -1,0 +1,163 @@
+name: component-ci-call
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  workflow_run:
+    workflows:
+      - component-ci
+    types:
+      - completed
+
+jobs:
+  call-context:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    outputs:
+      pr_id: ${{ steps.pr.outputs.id }}
+      report: ${{ steps.pr.outputs.report }}
+      tdesign_vue_domain: ${{ steps.site-domain.outputs.tdesign_vue_domain }}
+      tdesign_react_domain: ${{ steps.site-domain.outputs.tdesign_react_domain }}
+      tdesign_vue_next_domain: ${{ steps.site-domain.outputs.tdesign_vue_next_domain }}
+      tdesign_mobile_vue_domain: ${{ steps.site-domain.outputs.tdesign_mobile_vue_domain }}
+      tdesign_mobile_react_domain: ${{ steps.site-domain.outputs.tdesign_mobile_react_domain }}
+    steps:
+      - name: Download pr id
+        uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: pr-id
+
+      - name: Download pr report
+        uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: report
+
+      - name: Set pr info
+        id: pr
+        run: |
+          PR_ID=$(cat pr-id.txt)
+          if [[ ! "$PR_ID" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid PR ID: $PR_ID"
+            exit 1
+          fi
+          echo "id=$PR_ID" >> $GITHUB_OUTPUT
+          echo "report=$(cat report.txt)" >> $GITHUB_OUTPUT
+
+      - name: site-domain
+        id: site-domain
+        run: |
+          echo "tdesign_vue_domain=https://preview-tdesign-vue-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
+          echo "tdesign_react_domain=https://preview-tdesign-react-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
+          echo "tdesign_vue_next_domain=https://preview-tdesign-vue-next-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
+          echo "tdesign_mobile_vue_domain=https://preview-tdesign-mobile-vue-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
+          echo "tdesign_mobile_react_domain=https://preview-tdesign-mobile-react-pr-${{ steps.pr.outputs.id }}-tdesign-common.surge.sh" >> $GITHUB_OUTPUT
+
+  tdesign-vue:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: call-context
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: tdesign-vue-site
+
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_vue_domain }}
+
+  tdesign-react:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: call-context
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: tdesign-react-site
+
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_react_domain }}
+
+  tdesign-vue-next:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: call-context
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: tdesign-vue-next-site
+
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_vue_next_domain }}
+
+  tdesign-mobile-vue:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: call-context
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: tdesign-mobile-vue-site
+
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_mobile_vue_domain }}
+
+  tdesign-mobile-react:
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: call-context
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: tdesign-mobile-react-site
+
+      - uses: TDesignOteam/workflows/actions/setup-surge@main
+        with:
+          token: ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project: ./
+          domain: ${{ needs.call-context.outputs.tdesign_mobile_react_domain }}
+
+  report-comment:
+    if: always()
+    needs:
+      - call-context
+      - tdesign-vue
+      - tdesign-react
+      - tdesign-mobile-vue
+      - tdesign-mobile-react
+      - tdesign-vue-next
+    runs-on: ubuntu-latest
+    steps:
+      - name: comment
+        uses: TDesignOteam/workflows/actions/maintain-one-comment@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          number: '${{ needs.call-context.outputs.pr_id }}'
+          body: ${{ needs.call-context.outputs.report }}
+          body-include: '<!-- AUTO_REPORT_HOOK -->'
