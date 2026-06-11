@@ -27,13 +27,3 @@ jobs:
       - run: pnpm run lint
 
       - run: pnpm run test
-
-      - name: Save pr id
-        run: echo ${{ github.event.number }} > pr-id.txt
-
-      - name: Upload pr id
-        uses: actions/upload-artifact@v7
-        with:
-          name: pr-id
-          path: pr-id.txt
-          retention-days: 5
