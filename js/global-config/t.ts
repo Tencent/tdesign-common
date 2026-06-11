@@ -74,9 +74,18 @@ export function t<T>(pattern: T, ...args: any[]): string {
     if (text.includes('|')) {
       const pluralParts = text.split('|').map((part) => part.trim());
 
+      // 优先使用显式传入的 count（数字参数），其次从 data.count 取值
+      // 兼容 t(pattern, { count: 5 }) 这种对象传参方式
+      let effectiveCount: number | undefined;
       if (typeof count === 'number') {
+        effectiveCount = count;
+      } else if (typeof data?.count === 'number') {
+        effectiveCount = data.count;
+      }
+
+      if (typeof effectiveCount === 'number') {
         // 使用 count 进行复数处理
-        const pluralIndex = getPluralIndex(count);
+        const pluralIndex = getPluralIndex(effectiveCount);
 
         // 根据复数索引选择对应的文本
         if (pluralIndex < pluralParts.length) {
