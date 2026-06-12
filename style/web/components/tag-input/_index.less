@@ -176,3 +176,35 @@
     overflow-y: scroll;
   }
 }
+
+.@{prefix}-select-input--multiple {
+  .@{prefix}-input__prefix > .@{prefix}-tag {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .@{prefix}-input__prefix > .@{prefix}-tag > span {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.@{prefix}-select-input--multiple {
+  .@{prefix}-tag-input--break-line:not(.@{prefix}-is-empty) {
+    .@{prefix}-input {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      &.@{prefix}-input--prefix > .@{prefix}-input__prefix {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: left;
+        min-width: 0;
+      }
+    }
+  }
+}
