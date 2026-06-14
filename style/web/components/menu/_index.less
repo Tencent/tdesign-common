@@ -769,6 +769,11 @@ a.@{prefix}-menu__item {
 .@{prefix}-is-head-menu {
   .@{prefix}-menu__popup {
     margin-top: calc((@menu-height-default - @head-menu-item-height) / 2) !important;
+
+    &-overflow {
+      overflow: hidden auto;
+      max-height: 300px;
+    }
   }
 }
 
