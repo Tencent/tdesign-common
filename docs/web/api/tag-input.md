@@ -44,7 +44,8 @@ spline: data
 ### 可自定义标签的标签输入框
 
 - `tag` 用于定义单个标签的内容
-- `valueDisplay` 用于完全自定义全量标签内容
+- `valueDisplay` 用于定义全部标签内部内容
+- `tagDisplay` 用于定义全部标签整个节点
 
 {{ custom-tag }}
 
