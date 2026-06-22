@@ -61,6 +61,10 @@ export class TreeNodeModel {
     return node.isDisabled();
   }
 
+  public get level() {
+    return this.getLevel();
+  }
+
   /**
    * 获取节点所处层级
    * @return number 节点层级序号
