@@ -116,6 +116,14 @@ export default {
     collapseText: 'ripiegare',
     copiedText: 'Copia completata',
   },
+  captcha: {
+    titleText: 'Security Verification',
+    slideTipText: 'Slide to complete the puzzle',
+    successText: 'Verified',
+    failText: 'Verification failed, try again',
+    refreshTipText: 'Refresh',
+    closeTipText: 'Close',
+  },
   qrcode: {
     expiredText: 'scaduto',
     refreshText: 'aggiornare',

@@ -260,6 +260,14 @@ export default {
     uploadAttachmentText: 'caricare allegato',
     shareTipText: 'Condividi',
   },
+  captcha: {
+    titleText: 'Security Verification',
+    slideTipText: 'Slide to complete the puzzle',
+    successText: 'Verified',
+    failText: 'Verification failed, try again',
+    refreshTipText: 'Refresh',
+    closeTipText: 'Close',
+  },
   qrcode: {
     expiredText: 'scaduto',
     refreshText: 'aggiornare',

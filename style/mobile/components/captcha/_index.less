@@ -1,0 +1,238 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import '../../base.less';
+
+@import './_var.less';
+
+@import './_mixin.less';
+
+.@{prefix}-captcha {
+  position: relative;
+  box-sizing: border-box;
+  width: @captcha-width;
+  max-width: @captcha-max-width;
+  margin: 0 auto;
+  padding: @captcha-padding;
+  font: @font-body-medium;
+  background: @captcha-bg-color;
+  border: 1px solid @captcha-border-color;
+  border-radius: @captcha-border-radius;
+  box-shadow: @captcha-shadow;
+  user-select: none;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    margin-bottom: @captcha-title-margin-bottom;
+  }
+
+  &__title {
+    color: @captcha-title-color;
+    font: @captcha-title-font;
+    text-align: center;
+  }
+
+  &__image {
+    position: relative;
+    height: var(--td-captcha-image-height, @captcha-image-height);
+    overflow: hidden;
+    background-color: @captcha-image-bg-color;
+    background-image: var(--td-captcha-image-url, @captcha-image-background);
+    background-position: var(--td-captcha-image-position, center);
+    background-repeat: no-repeat;
+    background-size: var(--td-captcha-image-size, cover);
+    border-radius: @captcha-image-border-radius;
+    isolation: isolate;
+  }
+
+  &__image > img,
+  &__image > canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__cutout,
+  &__puzzle-shadow,
+  &__piece {
+    position: absolute;
+    box-sizing: border-box;
+  }
+
+  &__cutout,
+  &__puzzle-shadow {
+    top: var(--td-captcha-target-top, var(--td-captcha-piece-top, 64px));
+    left: var(--td-captcha-target-left, var(--td-captcha-piece-left, 56px));
+    width: var(--td-captcha-target-width, var(--td-captcha-piece-width, @captcha-piece-size));
+    height: var(--td-captcha-target-height, var(--td-captcha-piece-height, @captcha-piece-size));
+    background: @captcha-image-mask-color;
+    border: 1px solid @captcha-image-mask-border-color;
+    border-radius: var(--td-captcha-target-radius, @captcha-piece-border-radius);
+    box-shadow: inset 0 0 0 1px @captcha-image-mask-color;
+  }
+
+  &__piece {
+    z-index: 1;
+    top: var(--td-captcha-piece-top, 64px);
+    left: var(--td-captcha-piece-left, 0);
+    overflow: visible;
+    width: var(--td-captcha-piece-width, @captcha-piece-size);
+    height: var(--td-captcha-piece-height, @captcha-piece-size);
+    background-color: transparent;
+    background-image: var(--td-captcha-piece-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: var(--td-captcha-piece-radius, @captcha-piece-border-radius);
+    box-shadow: @captcha-piece-shadow;
+    touch-action: none;
+    transform: translateX(var(--td-captcha-piece-offset, 0));
+    transition: transform 0.2s linear;
+  }
+
+  &__piece > img,
+  &__piece > canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: contain;
+  }
+
+  &__piece--strip {
+    top: 0;
+    height: var(--td-captcha-piece-height, var(--td-captcha-image-height, @captcha-image-height));
+    box-shadow: none;
+  }
+
+  &__slider {
+    margin-top: @captcha-slider-margin-top;
+  }
+
+  &__track {
+    position: relative;
+    box-sizing: border-box;
+    height: @captcha-slider-height;
+    overflow: hidden;
+    background: @captcha-slider-bg-color;
+    border: 0;
+    border-radius: @captcha-slider-border-radius;
+    box-shadow: inset 0 0 0 1px @captcha-slider-border-color;
+    touch-action: none;
+    transition:
+      box-shadow 0.2s linear,
+      background-color 0.2s linear;
+  }
+
+  &__progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--td-captcha-progress, 0%);
+    height: 100%;
+    background: @captcha-slider-progress-bg-color;
+    transition: width 0.2s linear;
+  }
+
+  &__tip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: @captcha-slider-text-color;
+    font: @captcha-slider-text-font;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: color 0.2s linear;
+  }
+
+  &__handle {
+    position: absolute;
+    top: 0;
+    left: var(--td-captcha-handle-left, 0);
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: @captcha-handle-size;
+    height: @captcha-handle-size;
+    color: @captcha-handle-color;
+    background: @captcha-handle-bg-color;
+    border: 1px solid @captcha-handle-border-color;
+    border-radius: @captcha-handle-border-radius;
+    box-shadow: @captcha-handle-shadow;
+    touch-action: none;
+    cursor: pointer;
+    outline: none;
+    transform: translateX(var(--td-captcha-handle-offset, 0));
+    transition:
+      background-color 0.2s linear,
+      transform 0.2s linear;
+
+    &:active {
+      color: @text-color-anti;
+      background: @captcha-handle-bg-color-active;
+      border-color: @captcha-handle-bg-color-active;
+    }
+  }
+
+  &__handle-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: @spacer-2;
+    margin-top: @captcha-footer-margin-top;
+  }
+
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: @captcha-action-size;
+    height: @captcha-action-size;
+    padding: 0;
+    color: @captcha-action-color;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: color 0.2s linear;
+
+    &:active {
+      color: @captcha-action-color-active;
+    }
+  }
+
+  &--success {
+    .captcha-status(@captcha-success-color, @captcha-success-bg-color);
+  }
+
+  &--fail,
+  &--error {
+    .captcha-status(@captcha-error-color, @captcha-error-bg-color);
+  }
+
+  &--loading,
+  &--disabled {
+    .@{prefix}-captcha__track,
+    .@{prefix}-captcha__handle {
+      cursor: not-allowed;
+    }
+  }
+
+  &--disabled {
+    .@{prefix}-captcha__track,
+    .@{prefix}-captcha__handle {
+      color: @captcha-disabled-color;
+      background: @captcha-disabled-bg-color;
+      box-shadow: none;
+    }
+  }
+}
