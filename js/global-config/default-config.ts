@@ -19,6 +19,7 @@ export default {
   dialog: {
     closeOnEscKeydown: true,
     closeOnOverlayClick: true,
+    placement: 'top',
     confirmBtnTheme: {
       default: 'primary',
       info: 'primary',
@@ -26,6 +27,13 @@ export default {
       danger: 'primary',
       success: 'primary',
     },
+  },
+  loading: {
+    size: 'medium',
+    delay: 0,
+    showOverlay: true,
+    inheritColor: false,
+    preventScrollThrough: true,
   },
   message: {},
   popconfirm: {
