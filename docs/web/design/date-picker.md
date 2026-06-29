@@ -59,7 +59,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/date-picker/date-picker-7@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/date-picker/date-picker-8@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
@@ -75,7 +75,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/date-picker/date-picker-9@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/date-picker/date-picker-10@2x.png" /> 
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
@@ -91,7 +91,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/date-picker/date-picker-11@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/date-picker/date-picker-12@2x.png" /> 
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />

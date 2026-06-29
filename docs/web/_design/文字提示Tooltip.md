@@ -36,7 +36,7 @@ demo
   <div class="item">
     <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/tooltip-2.png"/>
   </div>
-  
+
   <div class="item">
   </div>
 </div>
