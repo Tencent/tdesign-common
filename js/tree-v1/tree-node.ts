@@ -537,6 +537,47 @@ export class TreeNode {
     tree.privateMap.delete(this[privateKey]);
   }
 
+  public refreshValue(value: TreeNodeValue): void {
+    const oldValue = this.value;
+    if (oldValue === value) return;
+
+    const nodes = this.walk();
+    const { tree } = this;
+    const oldKeyState = nodes.map((node) => {
+      const nodeKey = node.getNodeMapKey();
+      return {
+        node,
+        nodeKey,
+        checked: tree.checkedMap.get(nodeKey),
+        expanded: tree.expandedMap.get(nodeKey),
+        actived: tree.activedMap.get(nodeKey),
+      };
+    });
+    const filtered = tree.filterMap.get(oldValue);
+
+    oldKeyState.forEach(({ nodeKey }) => {
+      tree.nodeMap.delete(nodeKey);
+      tree.checkedMap.delete(nodeKey);
+      tree.expandedMap.delete(nodeKey);
+      tree.activedMap.delete(nodeKey);
+    });
+    tree.filterMap.delete(oldValue);
+
+    this.value = value as string;
+
+    oldKeyState.forEach(({ node, checked, expanded, actived }) => {
+      const nodeKey = node.getNodeMapKey();
+      if (tree.nodeMap.get(nodeKey)) {
+        log.warn('Tree', `Duplicated value: ${node.value}`);
+      }
+      tree.nodeMap.set(nodeKey, node);
+      if (checked) tree.checkedMap.set(nodeKey, true);
+      if (expanded) tree.expandedMap.set(nodeKey, true);
+      if (actived) tree.activedMap.set(nodeKey, true);
+    });
+    if (filtered) tree.filterMap.set(this.value, true);
+  }
+
   /**
    * 异步加载子节点
    * @return Promise<void>
@@ -571,7 +612,10 @@ export class TreeNode {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (hasOwnProperty.call(settableStatus, key) || key === 'label') {
+      if (key === 'value') {
+        this.refreshValue(item[key] as TreeNodeValue);
+      }
+      if (hasOwnProperty.call(settableStatus, key) || key === 'label' || key === 'value') {
         // @ts-ignore
         // TODO: 待移除
         this[key] = item[key];

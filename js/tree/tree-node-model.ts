@@ -264,6 +264,9 @@ export class TreeNodeModel {
       const dataAttrValue = get(data, keys?.[attr as keyof typeof keys] || attr);
       if (!isUndefined(dataAttrValue)) cleanData[attr as keyof typeof keys] = dataAttrValue;
     });
+    if (!isUndefined(cleanData.value)) {
+      node.refreshValue(cleanData.value as TreeNodeValue);
+    }
     Object.assign(node.data, cleanData);
     Object.assign(node, cleanData);
     node.update();

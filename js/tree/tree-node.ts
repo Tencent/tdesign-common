@@ -522,6 +522,34 @@ export class TreeNode {
     tree.privateMap.delete(this[privateKey]);
   }
 
+  public refreshValue(value: TreeNodeValue): void {
+    const oldValue = this.value;
+    if (oldValue === value) return;
+
+    const { tree } = this;
+    const checked = tree.checkedMap.get(oldValue);
+    const expanded = tree.expandedMap.get(oldValue);
+    const actived = tree.activedMap.get(oldValue);
+    const filtered = tree.filterMap.get(oldValue);
+
+    tree.nodeMap.delete(oldValue);
+    tree.checkedMap.delete(oldValue);
+    tree.expandedMap.delete(oldValue);
+    tree.activedMap.delete(oldValue);
+    tree.filterMap.delete(oldValue);
+
+    this.value = value as string;
+
+    if (tree.nodeMap.get(this.value)) {
+      log.warn('Tree', `Dulplicate value: ${this.value}`);
+    }
+    tree.nodeMap.set(this.value, this);
+    if (checked) tree.checkedMap.set(this.value, true);
+    if (expanded) tree.expandedMap.set(this.value, true);
+    if (actived) tree.activedMap.set(this.value, true);
+    if (filtered) tree.filterMap.set(this.value, true);
+  }
+
   /**
    * 异步加载子节点
    * @return Promise<void>
@@ -556,8 +584,11 @@ export class TreeNode {
     const { tree } = this;
     const keys = Object.keys(item);
     keys.forEach((key) => {
+      if (key === 'value') {
+        this.refreshValue(item[key] as TreeNodeValue);
+      }
       // key, disabled 字段可被 tree.config.keys 定义
-      if (hasOwnProperty.call(settableStatus, key) || key === 'label') {
+      if (hasOwnProperty.call(settableStatus, key) || key === 'label' || key === 'value') {
         // @ts-ignore
         // TODO: 待移除
         this[key] = item[key];
