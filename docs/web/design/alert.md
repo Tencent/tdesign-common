@@ -45,7 +45,7 @@
 
 <img src="https://tdesign.gtimg.com/site/design/guide/alert/alert-6@2x.png" />
 <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
- 
+
 <img src="https://tdesign.gtimg.com/site/design/guide/alert/alert-7@2x.png" />
 <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 

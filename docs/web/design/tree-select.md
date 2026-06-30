@@ -37,7 +37,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-4@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-5@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
@@ -53,7 +53,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-6@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/tree-select/tree-select-7@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
