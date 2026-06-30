@@ -74,6 +74,10 @@ export default {
   },
   table: {
     empty: 'データがありません',
+    confirmText: '確認事項',
+    resetText: 'リセット',
+    searchResultText: '検索“{result}”，探す {count} 記事結果',
+    clearFilterResultButtonText: 'クリアフィルター',
     pullUpLoadingText: '読み込み中',
   },
   list: {

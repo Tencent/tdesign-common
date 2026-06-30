@@ -74,6 +74,10 @@ export default {
   },
   table: {
     empty: '暂无数据',
+    confirmText: '确认',
+    resetText: '重置',
+    searchResultText: '搜索“{result}”，找到 {count} 条结果',
+    clearFilterResultButtonText: '清空筛选',
     pullUpLoadingText: '加载中...',
   },
   list: {

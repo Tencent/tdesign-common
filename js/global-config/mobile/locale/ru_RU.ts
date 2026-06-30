@@ -99,6 +99,10 @@ export default {
   },
   table: {
     empty: 'Нет данных',
+    confirmText: 'Подтвердить',
+    resetText: 'Сбросить',
+    searchResultText: 'Поиск «{result}», найдено {count} результатов',
+    clearFilterResultButtonText: 'Очистить фильтр',
     pullUpLoadingText: 'Загрузка',
   },
   list: {
