@@ -71,6 +71,7 @@ export default {
     resetText: 'إعادة ضبط',
     selectAllText: 'اختر الكل',
     searchResultText: "تم العثور على بحث '{result}' و{count} من العناصر.",
+    pullUpLoadingText: 'جاري التحميل',
   },
 
   select: {

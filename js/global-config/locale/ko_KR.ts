@@ -75,6 +75,7 @@ export default {
     resetText: '초기화',
     selectAllText: '모두 선택',
     searchResultText: '검색“{result}”，일어나 {count} 결과',
+    pullUpLoadingText: '로딩 중입니다',
   },
   select: {
     empty: '데이터 없음',

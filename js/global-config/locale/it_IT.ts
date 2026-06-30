@@ -75,6 +75,7 @@ export default {
     resetText: 'Ripristina',
     selectAllText: 'Seleziona tutto',
     searchResultText: 'Ricerca "{result}", trovati {count} risultati',
+    pullUpLoadingText: 'In carica',
   },
   select: {
     empty: 'Nessun dato',
