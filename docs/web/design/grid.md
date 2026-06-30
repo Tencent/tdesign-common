@@ -11,7 +11,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/grid/grid-1@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/grid/grid-2@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
@@ -27,7 +27,7 @@
     <img src="https://tdesign.gtimg.com/site/design/guide/grid/grid-3@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
-  
+
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/grid/grid-4@2x.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
