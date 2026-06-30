@@ -99,6 +99,7 @@ export default {
   },
   table: {
     empty: 'Нет данных',
+    pullUpLoadingText: 'Загрузка',
   },
   list: {
     loading: 'Загрузка...',

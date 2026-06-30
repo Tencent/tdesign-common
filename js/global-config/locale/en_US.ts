@@ -76,7 +76,6 @@ export default {
     selectAllText: 'Select All',
     searchResultText:
       'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
-    pullUpLoadingText: 'loading...',
   },
   select: {
     empty: 'Empty Data',

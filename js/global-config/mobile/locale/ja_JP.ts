@@ -74,6 +74,7 @@ export default {
   },
   table: {
     empty: 'データがありません',
+    pullUpLoadingText: '読み込み中',
   },
   list: {
     loading: '読み込み中…',

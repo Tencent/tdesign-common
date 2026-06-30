@@ -74,6 +74,7 @@ export default {
   },
   table: {
     empty: '暂无数据',
+    pullUpLoadingText: '加载中...',
   },
   list: {
     loading: '加载中...',

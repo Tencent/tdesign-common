@@ -75,7 +75,6 @@ export default {
     resetText: 'Сбросить',
     selectAllText: 'Выбрать все',
     searchResultText: 'Поиск «{result}», найдено {count} результатов',
-    pullUpLoadingText: 'Загрузка',
   },
   select: {
     empty: 'Нет данных',

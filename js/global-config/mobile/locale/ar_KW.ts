@@ -99,6 +99,7 @@ export default {
   },
   table: {
     empty: 'البيانات الفارغة',
+    pullUpLoadingText: 'جاري التحميل',
   },
   list: {
     loading: 'التحميل...',

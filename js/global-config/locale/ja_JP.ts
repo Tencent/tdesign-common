@@ -75,7 +75,6 @@ export default {
     resetText: 'リセット',
     selectAllText: 'すべて選択',
     searchResultText: '検索“{result}”，探す {count} 記事結果',
-    pullUpLoadingText: '読み込み中',
   },
   select: {
     empty: 'データなし',

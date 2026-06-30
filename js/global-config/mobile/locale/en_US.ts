@@ -87,6 +87,7 @@ export default {
   },
   table: {
     empty: 'Empty Data',
+    pullUpLoadingText: 'Loading...',
   },
   list: {
     loading: 'Loading...',

@@ -75,7 +75,6 @@ export default {
     resetText: '重置',
     selectAllText: '全選',
     searchResultText: '搜尋"{result}"，找到{count}項結果',
-    pullUpLoadingText: '加載中...',
   },
   select: {
     empty: '暫無數據',

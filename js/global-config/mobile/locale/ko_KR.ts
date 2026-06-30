@@ -74,6 +74,7 @@ export default {
   },
   table: {
     empty: '빈 데이터',
+    pullUpLoadingText: '로딩 중입니다',
   },
   list: {
     loading: '로딩 중...',

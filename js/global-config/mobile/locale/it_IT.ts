@@ -87,6 +87,7 @@ export default {
   },
   table: {
     empty: 'Dati Vuoti',
+    pullUpLoadingText: 'In carica',
   },
   list: {
     loading: 'Caricamento...',
