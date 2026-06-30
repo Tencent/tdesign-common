@@ -41,7 +41,7 @@ export default {
     title: 'انتقِ التاريخ',
     cancel: 'الإلغاء',
     confirm: 'أكد',
-    format: 'DD-MM-YYYY',
+    format: 'DD-MM-YYYY HH:mm:ss',
     months: [
       'يناير',
       'فبراير',
