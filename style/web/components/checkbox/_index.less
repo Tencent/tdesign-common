@@ -19,6 +19,156 @@
   display: inline-flex;
   flex-wrap: wrap;
   gap: @checkbox-group-gap;
+
+  // button 风格：外边框
+  &.@{checkbox-cls}-group__outline {
+    flex-wrap: wrap;
+    row-gap: @checkbox-group-outline-gap;
+    column-gap: @checkbox-group-outline-gap;
+
+    &.@{prefix}-size-s .@{checkbox-button--cls} {
+      height: @checkbox-button-outline-height-small;
+    }
+
+    &.@{prefix}-size-m .@{checkbox-button--cls} {
+      height: @checkbox-button-outline-height-medium;
+    }
+
+    &.@{prefix}-size-l .@{checkbox-button--cls} {
+      height: @checkbox-button-outline-height-large;
+    }
+
+    .@{checkbox-button--cls} {
+      border-radius: @checkbox-button-border-radius;
+
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-outline-checked;
+        border-color: @checkbox-button-border-color-checked;
+        background-color: @checkbox-button-background-color-outline-checked;
+      }
+
+      &.@{prefix}-is-disabled.@{prefix}-is-checked {
+        color: @brand-color-disabled;
+        border-color: @brand-color-disabled;
+        background-color: @checkbox-button-background-color-outline-disabled-checked;
+      }
+    }
+  }
+
+  // button 风格：默认色填充
+  &.@{checkbox-cls}-group--filled {
+    padding: @checkbox-group-filled-padding;
+    border-radius: @border-radius-default;
+    background-color: @checkbox-button-group-background-color-filled;
+    gap: 0;
+    column-gap: 2px;
+    row-gap: 2px;
+
+    .@{checkbox-button--cls} {
+      color: @checkbox-button-color-filled;
+      border: 0;
+      background-color: transparent;
+      border-radius: @checkbox-button-border-radius;
+
+      &:hover {
+        color: @checkbox-button-color-filled-hover;
+      }
+
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-default-filled-checked;
+        background-color: @checkbox-button-background-color-default-filled-checked;
+      }
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+
+        &.@{prefix}-is-checked {
+          color: @checkbox-button-color-default-filled-disabled-checked;
+          background-color: @checkbox-button-background-color-default-filled-disabled-checked;
+        }
+      }
+    }
+  }
+
+  // button 风格：主色填充
+  &.@{checkbox-cls}-group--primary-filled {
+    .@{checkbox-button--cls} {
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-primary-filled-checked;
+        background-color: @checkbox-button-background-color-primary-filled-checked;
+      }
+
+      &.@{prefix}-is-disabled.@{prefix}-is-checked {
+        color: @checkbox-button-color-primary-filled-checked;
+        background-color: @checkbox-button-background-color-primary-filled-disabled-checked;
+      }
+    }
+  }
+
+  // 纵向排列
+  &.@{checkbox-cls}-group--vertical {
+    flex-direction: column;
+    align-items: stretch;
+
+    .@{checkbox-button--cls} {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  // 尺寸
+  &.@{prefix}-size-s .@{checkbox-button--cls} {
+    height: @checkbox-button-height-small;
+    padding: @checkbox-button-padding-small;
+    font: @checkbox-button-font-small;
+  }
+
+  &.@{prefix}-size-m .@{checkbox-button--cls} {
+    height: @checkbox-button-height-medium;
+    padding: @checkbox-button-padding-medium;
+    font: @checkbox-button-font-medium;
+  }
+
+  &.@{prefix}-size-l .@{checkbox-button--cls} {
+    height: @checkbox-button-height-large;
+    padding: @checkbox-button-padding-large;
+    font: @checkbox-button-font-large;
+  }
+
+  // 单个按钮
+  .@{checkbox-button--cls} {
+    cursor: pointer;
+    position: relative;
+    border: @checkbox-button-border;
+    border-color: @checkbox-button-border-color-default;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: @checkbox-button-transition;
+    color: @checkbox-label-color;
+    white-space: nowrap;
+    box-sizing: border-box;
+
+    &__former {
+      .input-visually-hidden();
+    }
+
+    &:hover {
+      color: @checkbox-button-color-outline-checked;
+      border-color: @checkbox-button-border-color-checked;
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
+      color: @checkbox-button-color-disabled;
+      background-color: @checkbox-button-background-color-disabled;
+
+      &:hover {
+        color: @checkbox-button-color-disabled;
+        border-color: @checkbox-button-border-color-default;
+      }
+    }
+  }
 }
 
 .@{checkbox-cls} {
