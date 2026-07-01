@@ -67,6 +67,27 @@
     color: @textarea-limit-color;
   }
 
+  &__clear {
+    position: absolute;
+    top: @comp-paddingLR-s;
+    right: @comp-paddingLR-s;
+    z-index: 1;
+    cursor: pointer;
+    color: @textarea-limit-color;
+    opacity: 0;
+    visibility: hidden;
+    transition: @anim-duration-base linear;
+
+    &:hover {
+      color: @text-color-secondary;
+    }
+  }
+
+  &.@{prefix}-textarea--clearable:hover &__clear {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .@{prefix}-is-disabled {
     color: @textarea-color-text-disabled;
     background-color: @textarea-bg-color-disabled;
