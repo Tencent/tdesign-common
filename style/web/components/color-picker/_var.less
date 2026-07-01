@@ -71,7 +71,8 @@
 @color-picker-trigger-input-color-inner-size-l: calc(@comp-size-s - 2px);
 
 // trigger-without-text: 仅显示色块的触发器（showText=false 时使用），不渲染输入框
-// 尺寸与 Input 各尺寸高度保持一致，便于在表单中与输入框对齐
+// 尺寸与 Input 各尺寸高度保持一致：Input 的 @input-height-{default,s,l} 即 @comp-size-{m,xs,l}，
+// 此处直接引用底层全局尺寸 token，保证色块触发器与 Input 在表单中等高对齐
 @color-picker-trigger-swatch-size: @comp-size-m;
 @color-picker-trigger-swatch-size-s: @comp-size-xs;
 @color-picker-trigger-swatch-size-l: @comp-size-xl;

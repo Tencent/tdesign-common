@@ -586,8 +586,8 @@
       box-shadow: 0 0 0 2px @brand-color-focus;
     }
 
-    // 无边框模式
-    &--borderless:not(.@{prefix}-is-focused) {
+    // 无边框模式：排除聚焦态（含 .t-is-focused 类与原生 :focus），保证键盘聚焦可见
+    &--borderless:not(.@{prefix}-is-focused):not(:focus) {
       border-color: transparent;
 
       &:hover {
@@ -612,6 +612,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      // 与 .color-inner 同圆角并裁剪，避免带透明度色值时圆角缝隙露出方角棋盘底纹
+      border-radius: @color-picker-trigger-swatch-inner-radius;
+      overflow: hidden;
       .transparentBgImage();
 
       .color-inner {
