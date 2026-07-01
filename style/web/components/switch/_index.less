@@ -271,3 +271,157 @@
     }
   }
 }
+
+// Round appearance: rectangular track with rounded corners
+.@{prefix}-switch.@{prefix}-switch--round {
+  border-radius: @switch-round-track-border-radius;
+
+  .@{prefix}-switch__handle {
+    border-radius: @switch-round-handle-border-radius;
+
+    &::before {
+      border-radius: @switch-round-handle-border-radius;
+    }
+  }
+}
+
+// Line appearance: thin track line with a full-height circle handle
+.@{prefix}-switch--line {
+  background-color: transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: @switch-line-track-height;
+    background-color: @switch-unchecked-bg-color;
+    border-radius: @border-radius-round;
+    transition: @switch-transition;
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-hover;
+    }
+  }
+
+  &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
+    .@{prefix}-switch__handle::before {
+      left: 0;
+      right: 0;
+    }
+
+    &.@{prefix}-is-checked {
+      .@{prefix}-switch__handle::before {
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .@{prefix}-switch__handle {
+    top: 0;
+    left: 0;
+    width: @switch-height-default;
+    height: @switch-height-default;
+  }
+
+  &.@{prefix}-is-checked {
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-checked-bg-color-hover;
+      }
+    }
+
+    &::before {
+      background-color: @switch-checked-bg-color;
+    }
+
+    .@{prefix}-switch__handle {
+      top: 0;
+      left: 100%;
+      transform: translate(-100%, 0);
+      width: @switch-height-default;
+      height: @switch-height-default;
+    }
+  }
+
+  &.@{prefix}-is-loading {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-loading;
+    }
+
+    &.@{prefix}-is-checked::before {
+      background-color: @switch-checked-bg-color-loading;
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-disabled;
+    }
+
+    &.@{prefix}-is-checked::before {
+      background-color: @switch-checked-bg-color-disabled;
+    }
+  }
+}
+
+.@{prefix}-switch--line.@{prefix}-size-l {
+  &::before {
+    height: @switch-line-track-height;
+  }
+
+  .@{prefix}-switch__handle {
+    top: 0;
+    left: 0;
+    width: @switch-height-l;
+    height: @switch-height-l;
+  }
+
+  &.@{prefix}-is-checked {
+    .@{prefix}-switch__handle {
+      top: 0;
+      left: 100%;
+      transform: translate(-100%, 0);
+      width: @switch-height-l;
+      height: @switch-height-l;
+    }
+  }
+}
+
+.@{prefix}-switch--line.@{prefix}-size-s {
+  &::before {
+    height: @switch-line-track-height-s;
+  }
+
+  .@{prefix}-switch__handle {
+    top: 0;
+    left: 0;
+    width: @switch-height-s;
+    height: @switch-height-s;
+  }
+
+  &.@{prefix}-is-checked {
+    .@{prefix}-switch__handle {
+      top: 0;
+      left: 100%;
+      transform: translate(-100%, 0);
+      width: @switch-height-s;
+      height: @switch-height-s;
+    }
+  }
+}
