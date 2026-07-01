@@ -62,7 +62,7 @@
     "min-indent": "^1.0.1",
     "postcss-less": "^5.0.0",
     "prettier": "^3.6.2",
-    "stylelint": "~14.16.1",
+    "stylelint": "~17.14.0",
     "stylelint-config-standard": "^24.0.0",
     "typescript": "^5.7.3",
     "vitest": "^3.1.4"
