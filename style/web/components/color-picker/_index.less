@@ -549,6 +549,80 @@
       }
     }
   }
+
+  // 仅显示色块的触发器：不渲染输入框，只展示色块本身
+  // 配合 ColorPicker 的 showText=false 使用
+  &--without-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: @color-picker-trigger-swatch-size;
+    height: @color-picker-trigger-swatch-size;
+    padding: @color-picker-trigger-swatch-padding;
+    border: 1px solid @border-level-2-color;
+    border-radius: @border-radius-default;
+    background-color: @bg-color-specialcomponent;
+    cursor: pointer;
+    transition: @color-picker-trigger-swatch-transition;
+
+    &.@{prefix}-size-s {
+      width: @color-picker-trigger-swatch-size-s;
+      height: @color-picker-trigger-swatch-size-s;
+    }
+
+    &.@{prefix}-size-l {
+      width: @color-picker-trigger-swatch-size-l;
+      height: @color-picker-trigger-swatch-size-l;
+    }
+
+    &:hover {
+      border-color: @brand-color;
+    }
+
+    &:focus,
+    &.@{prefix}-is-focused {
+      border-color: @brand-color;
+      box-shadow: 0 0 0 2px @brand-color-focus;
+    }
+
+    // 无边框模式
+    &--borderless:not(.@{prefix}-is-focused) {
+      border-color: transparent;
+
+      &:hover {
+        border-color: @component-border;
+        background-color: @bg-color-container-hover;
+      }
+    }
+
+    &.@{prefix}-is-disabled {
+      background-color: @bg-color-component-disabled;
+      cursor: not-allowed;
+
+      .color-inner {
+        opacity: 0.8;
+      }
+    }
+
+    &__color {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .transparentBgImage();
+
+      .color-inner {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: @color-picker-trigger-swatch-inner-radius;
+        display: block;
+      }
+    }
+  }
 }
 
 .@{prefix}-color-picker__gradient-slider {

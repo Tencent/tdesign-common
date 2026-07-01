@@ -69,3 +69,15 @@
 @color-picker-trigger-input-color-inner-size: calc(@comp-size-xs - 2px);
 @color-picker-trigger-input-color-inner-size-s: calc(@comp-size-xxs - 2px);
 @color-picker-trigger-input-color-inner-size-l: calc(@comp-size-s - 2px);
+
+// trigger-without-text: 仅显示色块的触发器（showText=false 时使用），不渲染输入框
+// 尺寸与 Input 各尺寸高度保持一致，便于在表单中与输入框对齐
+@color-picker-trigger-swatch-size: @comp-size-m;
+@color-picker-trigger-swatch-size-s: @comp-size-xs;
+@color-picker-trigger-swatch-size-l: @comp-size-xl;
+@color-picker-trigger-swatch-padding: @comp-paddingLR-xs;
+@color-picker-trigger-swatch-inner-radius: calc(@border-radius-default - 1px);
+@color-picker-trigger-swatch-transition:
+  border @anim-time-fn-easing @anim-duration-base,
+  box-shadow @anim-time-fn-easing @anim-duration-base,
+  background-color @anim-time-fn-easing @anim-duration-base;

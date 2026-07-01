@@ -18,6 +18,12 @@ Trigger the display selector panel through the trigger, and transparently transf
 
 {{ trigger }}
 
+### Color Picker without Text Input
+
+Set `showText=false` to hide the color value text input in the trigger, keeping only the color swatch itself. Suitable for compact scenarios where displaying the color value is unnecessary. The swatch trigger inherits the visual language of Input (border, hover, focus, borderless, disabled, etc.).
+
+{{ trigger-without-text }}
+
 ### Color selector for different color modes
 
 Support monochrome mode, linear gradient two color mode selection, can be used in a single mode, can also switch between two modes at the same time. Use `colorModes` to configure.
