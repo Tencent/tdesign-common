@@ -90,6 +90,7 @@ export default {
       waitingText: '待機中',
       failText: '失敗しました',
       successText: '成功しました',
+      reloadText: '再試行',
     },
   },
   guide: {
