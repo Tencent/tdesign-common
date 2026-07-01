@@ -51,6 +51,33 @@
       pointer-events: none;
     }
   }
+
+  // 吸色按钮：复用 __icon 视觉语言，单独成类以便在各框架实现中放置
+  &__eyedropper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: @color-picker-eyedropper-size;
+    height: @color-picker-eyedropper-size;
+    font-size: @color-picker-icon-font-size;
+    color: @text-color-secondary;
+    background: transparent;
+    border-radius: @color-picker-eyedropper-radius;
+    cursor: pointer;
+    transition: color @anim-duration-base linear, background-color @anim-duration-base linear;
+
+    &:hover {
+      color: @text-color-primary;
+      background: @bg-color-container-hover;
+    }
+
+    &.@{prefix}-is-disabled {
+      color: @text-color-disabled;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
 }
 
 .@{prefix}-color-picker__head {

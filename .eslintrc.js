@@ -23,6 +23,7 @@ module.exports = {
     Component: true,
     getRegExp: true,
     NodeJS: true,
+    globalThis: true,
   },
   settings: {
     'import/resolver': {

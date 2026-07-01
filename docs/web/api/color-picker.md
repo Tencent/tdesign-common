@@ -42,6 +42,12 @@ spline: form
 
 {{ recent-color }}
 
+### 支持吸色的颜色选择器
+
+设置 `enableEyedropper=true` 后，面板头部展示吸色按钮。点击按钮调用浏览器原生 EyeDropper 能力，可在屏幕任意位置吸取颜色。仅在支持 EyeDropper API 的浏览器（Chrome 95+、Edge 95+）中渲染该按钮，不支持的环境下按钮不会显示。吸取到的颜色通过 `onChange` / `v-model` 正常回填，与手动选色行为一致。
+
+{{ eyedropper }}
+
 ### 禁用状态的颜色选择器
 
 {{ status-disabled }}
