@@ -28,7 +28,7 @@ export default {
     title: '选择时间',
     cancel: '取消',
     confirm: '确定',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     yearLabel: '年',
     monthLabel: '月',

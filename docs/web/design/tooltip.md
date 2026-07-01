@@ -10,7 +10,7 @@
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/guide/tooltip/tooltip-1@2x.png"/>
   </div>
-  
+
   <div class="item">
   </div>
 </div>

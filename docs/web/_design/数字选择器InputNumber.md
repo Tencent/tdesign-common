@@ -13,7 +13,7 @@
 已输入的值居左展示，用户可直接在输入框内修改数值，还可以使用输入框右侧的箭头按钮增大或减小数值。
 
 <img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/site/design/image2020-8-19_15-31-6.png"/>
-  
+
 ### 小数输入框
 
 可以通过 decimal-places 来设置小数保留精度，通过 step 来设置步进。

@@ -41,7 +41,7 @@ export default {
     title: 'Select Date',
     cancel: 'Cancel',
     confirm: 'Confirm',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     yearLabel: '',
     monthLabel: '',
