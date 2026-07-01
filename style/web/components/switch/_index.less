@@ -271,3 +271,95 @@
     }
   }
 }
+
+// shape: square - 圆角矩形外观
+.@{prefix}-switch--shape-square {
+  border-radius: @switch-shape-square-border-radius;
+
+  &.@{prefix}-size-l,
+  &.@{prefix}-size-s {
+    border-radius: @switch-shape-square-border-radius;
+  }
+
+  .@{prefix}-switch__handle {
+    border-radius: @switch-shape-square-border-radius;
+
+    &::before {
+      border-radius: @switch-shape-square-border-radius;
+    }
+  }
+}
+
+// shape: line - 线性外观（细轨道 + 圆形 handle 浮于轨道之上）
+.@{prefix}-switch--shape-line {
+  background-color: transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: @switch-line-track-height-default;
+    border-radius: @border-radius-round;
+    background-color: @switch-unchecked-bg-color;
+    transform: translateY(-50%);
+    transition: @switch-transition;
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-hover;
+    }
+  }
+
+  &.@{prefix}-size-l::before {
+    height: @switch-line-track-height-l;
+  }
+
+  &.@{prefix}-size-s::before {
+    height: @switch-line-track-height-s;
+  }
+
+  &.@{prefix}-is-checked {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-checked-bg-color;
+    }
+
+    &:hover {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-checked-bg-color-hover;
+      }
+    }
+  }
+
+  &.@{prefix}-is-loading {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-loading;
+    }
+
+    &.@{prefix}-is-checked::before {
+      background-color: @switch-checked-bg-color-loading;
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-disabled;
+    }
+
+    &.@{prefix}-is-checked::before {
+      background-color: @switch-checked-bg-color-disabled;
+    }
+  }
+}
