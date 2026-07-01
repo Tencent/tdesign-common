@@ -521,6 +521,20 @@
       padding: @color-picker-trigger-input-padding;
     }
 
+    &--no-input {
+      .@{prefix}-input--auto-width {
+        min-width: @comp-size-xl;
+      }
+
+      .@{prefix}-input__prefix {
+        margin-right: 0;
+      }
+
+      .@{prefix}-input__inner {
+        display: none;
+      }
+    }
+
     &__color {
       width: 100%;
       height: 100%;
