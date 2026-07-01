@@ -46,8 +46,6 @@ The most recently used color can be configured through `recentColors`. A value o
 
 Set `enableEyedropper=true` to display an eyedropper button in the panel header. Clicking the button invokes the browser-native EyeDropper API to pick a color from anywhere on the screen. The button is only rendered in browsers that support the EyeDropper API (Chrome 95+, Edge 95+); in unsupported environments the button is omitted. The picked color flows back through `onChange` / `v-model`, behaving the same as manual color selection.
 
-{{ eyedropper }}
-
 ### Disabling Color Selector
 
 {{ status-disabled }}

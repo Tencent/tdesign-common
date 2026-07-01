@@ -2,7 +2,9 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { isEyedropperSupported, openEyedropper } from '../../../js/color-picker/eyedropper';
 import type { EyeDropper } from '../../../js/color-picker/eyedropper';
 
-// 构造一个可被 `new` 调用、且返回带 open 方法实例的 EyeDropper 桩
+// 构造一个可被 `new` 调用、且返回带 open 方法实例的 EyeDropper 桩。
+// 用 function 而非 class：构造器显式 return 一个对象时会覆盖默认 this，
+// 既能返回 mock 实例，也避开 class-methods-use-this / max-classes-per-file 等规则。
 const stubEyeDropper = (open: EyeDropper['open']) => {
   function MockEyeDropper() {
     return { open };
@@ -36,6 +38,12 @@ describe('eyedropper', () => {
     it('不支持时应抛出错误', async () => {
       // 测试环境默认不支持
       await expect(openEyedropper()).rejects.toThrow();
+    });
+
+    it('EyeDropper 为非函数值时按"不支持"抛错，与 isEyedropperSupported 一致', async () => {
+      vi.stubGlobal('EyeDropper', { open: () => {} });
+      expect(isEyedropperSupported()).toBe(false);
+      await expect(openEyedropper()).rejects.toThrow('当前浏览器不支持吸色能力（EyeDropper API）');
     });
 
     it('支持时应返回吸取到的 sRGBHex', async () => {

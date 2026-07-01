@@ -5,6 +5,7 @@ module.exports = {
     node: true,
     mocha: true,
     jest: true,
+    es2020: true,
   },
   extends: [
     'airbnb-base',
@@ -23,7 +24,6 @@ module.exports = {
     Component: true,
     getRegExp: true,
     NodeJS: true,
-    globalThis: true,
   },
   settings: {
     'import/resolver': {
