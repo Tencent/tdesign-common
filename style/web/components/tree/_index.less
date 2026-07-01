@@ -133,30 +133,31 @@
         background-color: @tree-node-bg-hover-color;
         background-clip: content-box;
       }
+    }
 
-      &::after {
-        position: absolute;
-        top: -(@tree-node-drag-tip-height / 2);
-        right: 0;
-        left: 0;
-        display: block;
-        height: @tree-node-drag-tip-height;
-        border-radius: (@tree-node-drag-tip-height / 2);
-        content: '';
-        padding: inherit;
-        background-clip: content-box;
-      }
+    &::after {
+      position: absolute;
+      top: -(@tree-node-drag-tip-height / 2);
+      right: 0;
+      left: 0;
+      display: block;
+      height: 0;
+      border-radius: (@tree-node-drag-tip-height / 2);
+      content: '';
+      padding: inherit;
+      background-clip: content-box;
     }
 
     &--tip {
-      &-top::after {
+      &-top::after,
+      &-bottom::after {
+        height: @tree-node-drag-tip-height;
         background-color: @tree-node-drag-tip-bg;
       }
 
       &-bottom::after {
         top: unset;
         bottom: -(@tree-node-drag-tip-height / 2);
-        background-color: @tree-node-drag-tip-bg;
       }
 
       &-highlight {
