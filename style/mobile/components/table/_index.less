@@ -114,10 +114,6 @@
 
   .t-icon {
     font-size: @table-icon-size;
-
-    &.t-icon-check-circle-filled {
-      font-size: var(--td-radio-icon-size, 24px);
-    }
   }
 
   // table 标签基础样式
@@ -1151,6 +1147,32 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      box-sizing: border-box;
+    }
+
+    .@{prefix}-radio__icon--left,
+    .@{prefix}-radio__icon-circle,
+    .@{prefix}-checkbox__icon--left {
+      font-size: @table-icon-size;
+      width: @table-icon-size;
+      height: @table-icon-size;
+    }
+
+    .@{prefix}-checkbox__icon--left {
+      margin-right: 0;
+    }
+
+    .@{prefix}-checkbox__content {
+      display: none;
+    }
+
+    .@{prefix}-checkbox__icon {
+      position: static;
+    }
+
+    .@{prefix}-checkbox__icon-rectangle {
+      width: calc(@table-icon-size * 2);
+      height: calc(@table-icon-size * 2);
     }
   }
 }
