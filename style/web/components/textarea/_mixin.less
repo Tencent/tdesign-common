@@ -9,3 +9,40 @@
     }
   }
 }
+
+.textarea-clearable() {
+  .@{prefix}-textarea__inner {
+    padding-right: @textarea-clear-padding-right;
+  }
+
+  .@{prefix}-textarea__clear {
+    position: absolute;
+    right: @textarea-clear-position-right;
+    top: @textarea-clear-position-top;
+    transform: translateY(-50%);
+    width: @textarea-clear-size;
+    height: @textarea-clear-size;
+    cursor: pointer;
+    font-size: @textarea-clear-size;
+    color: @textarea-clear-color;
+    opacity: 0;
+    visibility: hidden;
+    transition: @textarea-clear-transition;
+    z-index: 1;
+
+    &:hover {
+      color: @textarea-clear-color-hover;
+    }
+  }
+
+  .@{prefix}-textarea__clear--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.@{prefix}-is-disabled .@{prefix}-textarea__clear,
+  &.@{prefix}-is-readonly .@{prefix}-textarea__clear {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
