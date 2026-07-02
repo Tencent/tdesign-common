@@ -40,7 +40,7 @@ export default {
     title: 'Выберите время',
     cancel: 'Отмена',
     confirm: 'Подтвердить',
-    format: 'DD.MM.YYYY',
+    format: 'DD.MM.YYYY HH:mm:ss',
     months: [
       'Январь',
       'Февраль',
@@ -115,6 +115,7 @@ export default {
       waitingText: 'Ожидание загрузки',
       failText: 'Ошибка загрузки',
       successText: 'Загрузка завершена',
+      reloadText: 'Загрузить повторно',
     },
   },
   guide: {

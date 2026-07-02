@@ -117,7 +117,7 @@ export default {
     preMonth: '先月',
     preDecade: '過去10年間',
     nextDecade: '次の10年',
-    now: '電流',
+    now: '現在',
   },
   upload: {
     sizeLimitMessage: '画像サイズは最大で {sizeLimit}',

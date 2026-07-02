@@ -41,7 +41,7 @@ export default {
     title: 'Seleziona Data',
     cancel: 'Annulla',
     confirm: 'Conferma',
-    format: 'DD-MM-YYYY',
+    format: 'DD-MM-YYYY HH:mm:ss',
     months: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
     yearLabel: 'Anno',
     monthLabel: 'Mese',
@@ -103,6 +103,7 @@ export default {
       waitingText: 'Attesa',
       failText: 'Fallito',
       successText: 'Successo',
+      reloadText: 'Ricarica',
     },
   },
   guide: {

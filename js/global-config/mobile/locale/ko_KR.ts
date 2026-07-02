@@ -28,7 +28,7 @@ export default {
     title: '날짜 선택',
     cancel: '취소',
     confirm: '확인',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['1 월', '2 월', '3 월', '4 월', '5 월', '6 월', '7 월', '8 월', '9 월', '10 월', '11 월', '12 월'],
     yearLabel: '년',
     monthLabel: '월',
@@ -90,6 +90,7 @@ export default {
       waitingText: '대기 중',
       failText: '실패했습니다',
       successText: '성공했습니다',
+      reloadText: '다시 업로드',
     },
   },
   guide: {

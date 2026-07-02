@@ -28,7 +28,7 @@ export default {
     title: '日付を選択',
     cancel: 'キャンセル',
     confirm: '確認',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     yearLabel: '年',
     monthLabel: '月',
@@ -90,6 +90,7 @@ export default {
       waitingText: '待機中',
       failText: '失敗しました',
       successText: '成功しました',
+      reloadText: '再アップロード',
     },
   },
   guide: {

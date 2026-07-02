@@ -28,7 +28,7 @@ export default {
     title: '選擇時間',
     cancel: '取消',
     confirm: '確定',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     yearLabel: '年',
     monthLabel: '月',
@@ -90,6 +90,7 @@ export default {
       waitingText: '待上傳',
       failText: '上傳失敗',
       successText: '上傳成功',
+      reloadText: '重新上傳',
     },
   },
   guide: {
