@@ -52,3 +52,12 @@
 @textarea-box-shadow-color-error-focus: @error-color-focus;
 
 @textarea-border-radius: @border-radius-default;
+
+// 清空按钮
+@textarea-clear-icon-color: @text-color-placeholder;
+@textarea-clear-icon-color-hover: @text-color-secondary;
+@textarea-clear-icon-font-size: @font-size-l;
+// 与第一行文本垂直居中对齐：首行中心位于 @comp-size-m / 2 处
+@textarea-clear-icon-top: calc((@comp-size-m - @textarea-clear-icon-font-size) / 2);
+@textarea-clear-icon-right: @comp-paddingLR-s;
+@textarea-clear-icon-transition: all @anim-time-fn-easing @anim-duration-base;

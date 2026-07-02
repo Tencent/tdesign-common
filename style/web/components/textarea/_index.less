@@ -88,6 +88,31 @@
   .@{prefix}-hide-scrollbar {
     .hideScrollbar();
   }
+
+  // 可清空内容：清空按钮固定在右上角，避开右下角的 native resize 拖拽手柄
+  &--clearable {
+    .@{prefix}-textarea__clear {
+      position: absolute;
+      top: @textarea-clear-icon-top;
+      right: @textarea-clear-icon-right;
+      color: @textarea-clear-icon-color;
+      font-size: @textarea-clear-icon-font-size;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: @textarea-clear-icon-transition;
+    }
+
+    &:hover .@{prefix}-textarea__clear {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .@{prefix}-textarea__clear:hover {
+      color: @textarea-clear-icon-color-hover;
+    }
+  }
 }
 
 .@{prefix}-textarea__tips {

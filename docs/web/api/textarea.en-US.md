@@ -18,6 +18,12 @@ Limits the maximum number of characters entered and displays the number of chara
 
 {{ maxlength }}
 
+### Clearable Content
+
+A multiline text box with a clearing operation, which can quickly clear the entered content.
+
+{{ clearable }}
+
 ### Binding DOM Events
 
 You can bind DOM native events such as `onKeypress` `onKeydown` `onKeyup` `onFocus` `onBlur`.

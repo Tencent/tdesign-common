@@ -18,6 +18,12 @@ spline: form
 
 {{ maxlength }}
 
+### 可清空内容
+
+带清空操作的多行文本框，可快捷清空已输入的内容。
+
+{{ clearable }}
+
 ### 绑定 DOM 事件
 
 可绑定 `onKeypress` `onKeydown` `onKeyup` `onFocus` `onBlur` 等 DOM 原生事件。
