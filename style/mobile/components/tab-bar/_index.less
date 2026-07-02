@@ -2,6 +2,23 @@
 
 @import './_var.less';
 
+// 内联 hair-line-top mixin（解决 Vite Less 插件 import 链解析问题）
+.hair-line-base() {
+  position: absolute;
+  box-sizing: border-box;
+  content: ' ';
+  pointer-events: none;
+}
+
+.hair-line-top(@color: @border-color) {
+  right: 0;
+  left: 0;
+  top: 0;
+  border-top: 1px solid @color;
+  transform: scaleY(.5);
+  .hair-line-base();
+}
+
 .@{tab-bar-cls} {
   display: flex;
   flex-wrap: nowrap;
@@ -12,7 +29,7 @@
 
   &--normal&--bordered::before {
     z-index: 1;
-    .hairline-top(@color: @tab-bar-border-color);
+    .hair-line-top(@color: @tab-bar-border-color);
   }
 
   &--fixed {
@@ -27,6 +44,9 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 
+  // ============================
+  // 悬浮胶囊（原有样式，保持不动）
+  // ============================
   &--round {
     margin-left: 16px;
     margin-right: 16px;
@@ -34,9 +54,371 @@
     box-shadow: @tab-bar-round-shadow;
   }
 
-  &--fixed&--round&--safe {
-    bottom: constant(safe-area-inset-bottom);
-    bottom: env(safe-area-inset-bottom);
+  // ============================
+  // 液态玻璃悬浮胶囊（v1.12 独立胶囊架构）
+  // 架构：托盘容器 + N 个独立玻璃胶囊
+  // 使用方式：shape="round" + class="t-tab-bar--liquid-glass"
+  // ============================
+  &--round&--liquid-glass {
+    // ===== 托盘容器层：轻量毛玻璃背景 =====
+    border-radius: @tab-bar-liquid-tray-radius;
+    backdrop-filter: blur(@tab-bar-liquid-tray-blur) saturate(@tab-bar-liquid-tray-saturate);
+    backdrop-filter: blur(@tab-bar-liquid-tray-blur) saturate(@tab-bar-liquid-tray-saturate);
+    background: @tab-bar-liquid-tray-bg;
+    box-shadow:
+      inset 0 0.5px 0 rgba(255, 255, 255, 4%),
+      inset 0 -0.5px 0 rgba(255, 255, 255, 1.5%);
+
+    // 托盘内边距，让胶囊之间有间距
+    // v1.12: padding 0 10px, 通过 flex align-items:center 垂直居中
+    gap: 10px;
+    padding: 0 10px;
+    height: 74px;
+    overflow: visible;
+    position: relative;
+
+    // ========== 子项：独立玻璃胶囊（核心架构） ==========
+    .@{tab-bar-item-cls} {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: @tab-bar-liquid-capsule-width !important;
+      height: @tab-bar-liquid-capsule-height !important;
+      min-height: @tab-bar-liquid-capsule-height !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: relative;
+      cursor: pointer;
+      border-radius: @tab-bar-liquid-capsule-radius !important;
+      flex-shrink: 0;
+
+      // C1+C2: 体积阴影 — 外悬浮 + 内凸面（v1.12 精确参数）
+      box-shadow:
+        0 0 1px rgba(0, 0, 0, 5%),
+        0 2px 4px rgba(0, 0, 0, 6%),
+        0 8px 20px rgba(0, 0, 0, 5%),
+        0 16px 40px rgba(0, 0, 0, 3%),
+        inset 0 1px 1.5px rgba(255, 255, 255, 20%),
+        inset 0 -1px 1px rgba(0, 0, 0, 10%);
+
+      // C3: 基底模糊 + 半透填充（v1.12 精确参数）
+      backdrop-filter: blur(@tab-bar-liquid-blur) saturate(@tab-bar-liquid-saturate);
+      backdrop-filter: blur(@tab-bar-liquid-blur) saturate(@tab-bar-liquid-saturate);
+      background: @tab-bar-liquid-capsule-bg;
+      overflow: hidden;
+      user-select: none;
+      user-select: none;
+      transition: none;
+      transform: translateZ(0);
+      will-change: transform, backdrop-filter;
+
+      // ---- 内层 __content 承载所有内容层 + 伪元素（Rim Light、底部反光）----
+      // 选中态由 t-tab-bar-item__content--checked 驱动（而非外层 --active）
+      .@{tab-bar-item-cls}__content {
+        background: transparent !important;
+        border-radius: @tab-bar-liquid-capsule-radius !important;
+        position: relative;
+        z-index: 1;
+
+        &--checked,
+        &--tag,
+        &--tag&--checked {
+          background: transparent !important;
+        }
+
+        // ---- C4: 顶部 Rim Light（未选中态：较暗，opacity 0.5）----
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: @tab-bar-liquid-rim-height;
+          border-radius: @tab-bar-liquid-capsule-radius @tab-bar-liquid-capsule-radius 0 0;
+          box-shadow:
+            0 1px 0 rgba(255, 255, 255, 30%),
+            inset 0 1px 0 rgba(255, 255, 255, 10%);
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0%) 0%,
+            rgba(255, 255, 255, 12%) 8%,
+            rgba(255, 255, 255, 25%) 25%,
+            rgba(220, 235, 255, 35%) 45%,
+            rgba(255, 255, 255, 25%) 60%,
+            rgba(255, 255, 255, 12%) 80%,
+            rgba(255, 255, 255, 0%) 100%
+          );
+          pointer-events: none;
+          z-index: 9;
+          opacity: @tab-bar-liquid-rim-opacity;
+          transition: opacity 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+        }
+
+        // ---- C5: 底部边缘反光 ----
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 12%;
+          right: 12%;
+          height: 0.8px;
+          border-radius: 0 0 @tab-bar-liquid-capsule-radius @tab-bar-liquid-capsule-radius;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0%) 0%,
+            @tab-bar-liquid-bottom-reflect 50%,
+            rgba(255, 255, 255, 0%) 100%
+          );
+          pointer-events: none;
+          z-index: 9;
+        }
+
+        // ---- 图标和文字（默认未选中态）----
+        .@{tab-bar-item-cls}__icon {
+          color: rgba(255, 255, 255, 42%) !important;
+          transition: color 0.35s, filter 0.35s;
+          position: relative;
+          z-index: 10;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+        }
+        .@{tab-bar-item-cls}__text,
+        .@{tab-bar-item-cls}__text--small {
+          font-size: 9px !important;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 38%) !important;
+          position: relative;
+          z-index: 10;
+          transition: color 0.35s;
+          letter-spacing: 0.3px;
+        }
+        .@{tab-bar-item-cls}__icon-menu {
+          color: rgba(255, 255, 255, 42%) !important;
+          position: relative;
+          z-index: 10;
+        }
+
+        // ==================== 选中态（__content--checked，对标 v1.12 active） ====================
+        &--checked {
+          // ★ 核心：Rim Light 变亮（opacity 0.5 → 1）
+          &::before {
+            opacity: @tab-bar-liquid-rim-opacity-active !important;
+            box-shadow:
+              0 1px 0 rgba(255, 255, 255, 60%),
+              inset 0 1px 0 rgba(255, 255, 255, 35%) !important;
+            background: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0%) 0%,
+              rgba(255, 255, 255, 35%) 8%,
+              rgba(220, 235, 255, 85%) 25%,
+              rgba(200, 220, 255, 95%) 45%,
+              rgba(220, 235, 255, 85%) 60%,
+              rgba(255, 255, 255, 35%) 80%,
+              rgba(255, 255, 255, 0%) 100%
+            ) !important;
+          }
+
+          // ★ 图标纯白 + 柔光发光
+          .@{tab-bar-item-cls}__icon {
+            color: #fff !important;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 20%)) !important;
+          }
+          // ★ 文字纯白 + 加粗
+          .@{tab-bar-item-cls}__text,
+          .@{tab-bar-item-cls}__text--small {
+            color: #fff !important;
+            font-weight: 600 !important;
+          }
+          .@{tab-bar-item-cls}__icon-menu {
+            color: #fff !important;
+          }
+        }
+      }
+
+      // ---- C6: 色散折射层（JS 注入到 __content 内）----
+      .cap-dispersion {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: @tab-bar-liquid-dispersion-height;
+        border-radius: @tab-bar-liquid-capsule-radius @tab-bar-liquid-capsule-radius 0 0;
+        background: conic-gradient(
+          from 180deg at 50% 0%,
+          rgba(255, 0, 0, 6%) 0deg,
+          rgba(255, 165, 0, 5%) 60deg,
+          rgba(255, 255, 0, 4%) 120deg,
+          rgba(0, 128, 0, 4%) 180deg,
+          rgba(0, 0, 255, 5%) 240deg,
+          rgba(75, 0, 130, 5%) 300deg,
+          rgba(238, 130, 238, 6%) 360deg
+        );
+        pointer-events: none;
+        z-index: 7;
+        mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 80%) 0%,
+          rgba(0, 0, 0, 20%) 30%,
+          transparent 60%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 80%) 0%,
+          rgba(0, 0, 0, 20%) 30%,
+          transparent 60%
+        );
+        opacity: @tab-bar-liquid-dispersion-opacity;
+        transition: opacity 0.4s;
+      }
+
+      // ---- Canvas 实时渲染层（JS 注入到 __content 内）----
+      .cap-glass-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: @tab-bar-liquid-capsule-radius;
+        pointer-events: none;
+        z-index: 8;
+        opacity: 0.9;
+      }
+
+      // ---- 底部选中指示器（JS 注入到 __content 内，v1.12 active-indicator）----
+      .active-indicator {
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 16px;
+        height: 2.5px;
+        border-radius: 2px;
+        background: linear-gradient(
+          90deg,
+          rgba(200, 220, 255, 15%),
+          rgba(255, 255, 255, 45%),
+          rgba(200, 220, 255, 15%)
+        );
+        pointer-events: none;
+        z-index: 11;
+        opacity: 0;
+        transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        filter: blur(0.3px);
+      }
+
+      // 选中态：色散增强 + 底部指示器亮起（通过 __content--checked 驱动）
+      .@{tab-bar-item-cls}__content--checked .cap-dispersion {
+        opacity: @tab-bar-liquid-dispersion-opacity-active;
+      }
+      .@{tab-bar-item-cls}__content--checked .active-indicator {
+        opacity: 1;
+        width: 20px;
+        box-shadow: 0 0 8px rgba(200, 220, 255, 10%);
+      }
+    }
+  }
+
+  // 可访问性：prefers-reduced-motion
+  @media (prefers-reduced-motion: reduce) {
+    &--round&--liquid-glass {
+      .cap-glass-canvas { display: none; }
+      .cap-dispersion { opacity: 0.3; }
+    }
+  }
+
+  // 暗黑模式适配（仅液态玻璃模式）
+  [data-theme='dark'] &--round&--liquid-glass {
+    background: @tab-bar-liquid-tray-bg;
+  }
+
+  // 浅色模式适配
+  @media (prefers-color-scheme: light) {
+    &--round&--liquid-glass {
+      background: rgba(0, 0, 0, 3%);
+
+      .@{tab-bar-item-cls} {
+        background: rgba(180, 180, 200, 20%) !important;
+        box-shadow:
+          0 0 1px rgba(0, 0, 0, 2%),
+          0 2px 4px rgba(0, 0, 0, 3%),
+          0 8px 20px rgba(0, 0, 0, 2%),
+          0 16px 40px rgba(0, 0, 0, 1.5%),
+          inset 0 1px 1.5px rgba(255, 255, 255, 45%),
+          inset 0 -1px 1px rgba(0, 0, 0, 4%) !important;
+
+        // 浅色模式：__content 内的伪元素和内容颜色适配
+        .@{tab-bar-item-cls}__content {
+          .@{tab-bar-item-cls}__icon { color: rgba(0, 0, 0, 32%) !important; }
+          .@{tab-bar-item-cls}__text,
+          .@{tab-bar-item-cls}__text--small { color: rgba(0, 0, 0, 32%) !important; }
+          .@{tab-bar-item-cls}__icon-menu { color: rgba(0, 0, 0, 32%) !important; }
+
+          // Rim Light 浅色模式（暗色调）
+          &::before {
+            background: linear-gradient(
+              90deg,
+              rgba(0, 0, 0, 0%) 0%,
+              rgba(0, 0, 0, 5%) 25%,
+              rgba(0, 0, 0, 9%) 45%,
+              rgba(0, 0, 0, 5%) 65%,
+              rgba(0, 0, 0, 0%) 100%
+            ) !important;
+            box-shadow:
+              0 1px 0 rgba(0, 0, 0, 9%),
+              inset 0 1px 0 rgba(255, 255, 255, 30%);
+          }
+
+          // 底部反光浅色模式
+          &::after {
+            background: linear-gradient(
+              90deg,
+              rgba(0, 0, 0, 0%) 0%,
+              rgba(0, 0, 0, 4%) 30%,
+              rgba(0, 0, 0, 6%) 50%,
+              rgba(0, 0, 0, 4%) 70%,
+              rgba(0, 0, 0, 0%) 100%
+            ) !important;
+          }
+
+          // ⭐ 选中态（浅色模式）
+          &--checked {
+            .@{tab-bar-item-cls}__icon {
+              color: #000 !important;
+              filter: drop-shadow(0 0 6px rgba(0, 0, 0, 6%));
+            }
+            .@{tab-bar-item-cls}__text,
+            .@{tab-bar-item-cls}__text--small { color: #000 !important; }
+            .@{tab-bar-item-cls}__icon-menu { color: #000 !important; }
+
+            &::before {
+              background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0%) 0%,
+                rgba(0, 0, 0, 7%) 25%,
+                rgba(0, 0, 0, 12%) 45%,
+                rgba(0, 0, 0, 7%) 65%,
+                rgba(0, 0, 0, 0%) 100%
+              ) !important;
+            }
+          }
+        }
+
+        // 浅色模式：底部指示器
+        .active-indicator {
+          background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 3%),
+            rgba(0, 0, 0, 12%),
+            rgba(0, 0, 0, 3%)
+          );
+        }
+        .@{tab-bar-item-cls}__content--checked .active-indicator {
+          box-shadow: 0 0 8px rgba(0, 0, 0, 3%);
+        }
+      }
+    }
   }
 
   &--fixed&--round&--safe {

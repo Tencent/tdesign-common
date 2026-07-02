@@ -1,5 +1,58 @@
 @tab-bar-cls: ~'@{prefix}-tab-bar';
+@tab-bar-item-cls: ~'@{prefix}-tab-bar-item';
 
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
+
+// ============================================================================
+// Liquid Glass (液态玻璃) - iOS 26 风格设计令牌
+// 架构参考：v1.12 HTML 预览 — 独立胶囊模型
+// ============================================================================
+
+// --- 托盘容器层（TabBar 本体） ---
+@tab-bar-liquid-tray-blur: 16px;
+@tab-bar-liquid-tray-saturate: 150%;
+@tab-bar-liquid-tray-bg: rgba(255, 255, 255, 0.04);
+@tab-bar-liquid-tray-radius: 42px;
+
+// --- 独立胶囊层（每个 tab-bar-item）---
+// C3: 基底模糊 + 半透填充
+@tab-bar-liquid-blur: 24px;
+@tab-bar-liquid-saturate: 200%;
+@tab-bar-liquid-capsule-bg: rgba(130, 130, 150, 0.25);
+@tab-bar-liquid-capsule-bg-active: rgba(140, 140, 170, 0.30);
+
+// 胶囊尺寸
+@tab-bar-liquid-capsule-width: 66px;
+@tab-bar-liquid-capsule-height: 58px;
+@tab-bar-liquid-capsule-radius: 22px;
+
+// C1+C2: 体积塑造阴影（外悬浮 + 内凸面）
+@tab-bar-liquid-capsule-shadow:
+  0 0 1px rgba(0, 0, 0, 0.05),
+  0 2px 4px rgba(0, 0, 0, 0.06),
+  0 8px 20px rgba(0, 0, 0, 0.05),
+  0 16px 40px rgba(0, 0, 0, 0.03),
+  inset 0 1px 1.5px rgba(255, 255, 255, 0.20),
+  inset 0 -1px 1px rgba(0, 0, 0, 0.10);
+
+@tab-bar-liquid-capsule-shadow-active:
+  0 4px 8px rgba(0, 0, 0, 0.03),
+  0 12px 28px rgba(0, 0, 0, 0.025),
+  0 20px 48px rgba(100, 120, 200, 0.03),
+  inset 0 1px 1.5px rgba(255, 255, 255, 0.50),
+  inset 0 -1px 1px rgba(0, 0, 0, 0.03);
+
+// C4: Rim Light（顶部边缘高光）
+@tab-bar-liquid-rim-height: 1.2px;
+@tab-bar-liquid-rim-opacity: 0.5;          // 未选中态：较暗
+@tab-bar-liquid-rim-opacity-active: 1;     // 选中态：明亮
+
+// C5: 底部反光
+@tab-bar-liquid-bottom-reflect: rgba(255, 255, 255, 0.12);
+
+// C6: 色散折射层
+@tab-bar-liquid-dispersion-height: 60%;
+@tab-bar-liquid-dispersion-opacity: 0.55;
+@tab-bar-liquid-dispersion-opacity-active: 0.8;
