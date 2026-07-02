@@ -272,21 +272,41 @@
   }
 }
 
-// Round appearance: rectangular track with rounded corners
-.@{prefix}-switch.@{prefix}-switch--round {
-  border-radius: @switch-round-track-border-radius;
+// 矩形风格
+.@{prefix}-switch.@{prefix}-switch--rectangle {
+  border-radius: @switch-rectangle-track-border-radius;
 
   .@{prefix}-switch__handle {
-    border-radius: @switch-round-handle-border-radius;
+    border-radius: @switch-rectangle-handle-border-radius;
 
     &::before {
-      border-radius: @switch-round-handle-border-radius;
+      border-radius: @switch-rectangle-handle-border-radius;
     }
   }
 }
 
-// Line appearance: thin track line with a full-height circle handle
-.@{prefix}-switch--line {
+.@{prefix}-switch--rectangle.@{prefix}-size-l {
+  .@{prefix}-switch__handle {
+    border-radius: @switch-rectangle-handle-border-radius-l;
+
+    &::before {
+      border-radius: @switch-rectangle-handle-border-radius-l;
+    }
+  }
+}
+
+.@{prefix}-switch--rectangle.@{prefix}-size-s {
+  .@{prefix}-switch__handle {
+    border-radius: @switch-rectangle-handle-border-radius-s;
+
+    &::before {
+      border-radius: @switch-rectangle-handle-border-radius-s;
+    }
+  }
+}
+
+// 线形风格
+.@{prefix}-switch.@{prefix}-switch--line {
   background-color: transparent;
 
   &::before {
@@ -310,25 +330,10 @@
     }
   }
 
-  &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
-    .@{prefix}-switch__handle::before {
-      left: 0;
-      right: 0;
-    }
-
-    &.@{prefix}-is-checked {
-      .@{prefix}-switch__handle::before {
-        right: 0;
-        left: 0;
-      }
-    }
-  }
-
   .@{prefix}-switch__handle {
-    top: 0;
     left: 0;
-    width: @switch-height-default;
-    height: @switch-height-default;
+    width: calc(@switch-height-default - 2 * @switch-width-border-default);
+    height: calc(@switch-height-default - 2 * @switch-width-border-default);
   }
 
   &.@{prefix}-is-checked {
@@ -347,11 +352,11 @@
     }
 
     .@{prefix}-switch__handle {
-      top: 0;
+      top: @switch-width-border-check-default;
       left: 100%;
       transform: translate(-100%, 0);
-      width: @switch-height-default;
-      height: @switch-height-default;
+      width: calc(@switch-height-default - 2 * @switch-width-border-check-default);
+      height: calc(@switch-height-default - 2 * @switch-width-border-check-default);
     }
   }
 
@@ -380,48 +385,48 @@
   }
 }
 
-.@{prefix}-switch--line.@{prefix}-size-l {
+.@{prefix}-switch.@{prefix}-switch--line.@{prefix}-size-l {
   &::before {
-    height: @switch-line-track-height;
+    height: @switch-line-track-height-l;
   }
 
   .@{prefix}-switch__handle {
-    top: 0;
+    top: @switch-width-border-l;
     left: 0;
-    width: @switch-height-l;
-    height: @switch-height-l;
+    width: calc(@switch-height-l - 2 * @switch-width-border-l);
+    height: calc(@switch-height-l - 2 * @switch-width-border-l);
   }
 
   &.@{prefix}-is-checked {
     .@{prefix}-switch__handle {
-      top: 0;
+      top: @switch-width-border-check-l;
       left: 100%;
       transform: translate(-100%, 0);
-      width: @switch-height-l;
-      height: @switch-height-l;
+      width: calc(@switch-height-l - 2 * @switch-width-border-check-l);
+      height: calc(@switch-height-l - 2 * @switch-width-border-check-l);
     }
   }
 }
 
-.@{prefix}-switch--line.@{prefix}-size-s {
+.@{prefix}-switch.@{prefix}-switch--line.@{prefix}-size-s {
   &::before {
     height: @switch-line-track-height-s;
   }
 
   .@{prefix}-switch__handle {
-    top: 0;
+    top: @switch-width-border-s;
     left: 0;
-    width: @switch-height-s;
-    height: @switch-height-s;
+    width: calc(@switch-height-s - 2 * @switch-width-border-s);
+    height: calc(@switch-height-s - 2 * @switch-width-border-s);
   }
 
   &.@{prefix}-is-checked {
     .@{prefix}-switch__handle {
-      top: 0;
+      top: @switch-width-border-check-s;
       left: 100%;
       transform: translate(-100%, 0);
-      width: @switch-height-s;
-      height: @switch-height-s;
+      width: calc(@switch-height-s - 2 * @switch-width-border-check-s);
+      height: calc(@switch-height-s - 2 * @switch-width-border-check-s);
     }
   }
 }
