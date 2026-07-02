@@ -87,9 +87,10 @@
 // 颜色 - filled primary（填充-主色，选中项为主色底）
 @checkbox-button-color-primary-filled-checked: @text-color-anti;
 @checkbox-button-bg-color-primary-filled-checked: @brand-color;
-// 半选态用 brand-hover，比选中态略浅以作区分，反色字仍可读（与 TDesign 主按钮 hover 一致）
+// 半选态比选中态略浅以作区分；直接取 brand-color-6 而非复用 brand-hover 语义，
+// 避免主题仅调整 hover 反馈时连锁影响半选展示
 @checkbox-button-color-primary-filled-indeterminate: @text-color-anti;
-@checkbox-button-bg-color-primary-filled-indeterminate: @brand-color-hover;
+@checkbox-button-bg-color-primary-filled-indeterminate: @brand-color-6;
 
 // 颜色 - disabled
 @checkbox-button-color-disabled: @text-color-disabled;

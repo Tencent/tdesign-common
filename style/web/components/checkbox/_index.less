@@ -20,6 +20,19 @@
   flex-wrap: wrap;
   gap: @checkbox-group-gap;
 
+  // ---------------------------------------------------------------------------
+  // 按钮风格（button variant）class 命名契约
+  // 与 radio-button 完全对齐，消费方（tdesign-vue-next / tdesign-react）按此拼接：
+  //   group 修饰符（落在 .t-checkbox-group 上）：
+  //     .t-checkbox-group__outline         描边形态（双下划线，沿用 radio-group__outline）
+  //     .t-checkbox-group--filled          填充-默认形态
+  //     .t-checkbox-group--primary-filled  填充-主色形态
+  //     .t-checkbox-group--vertical        纵向排列（可与上述任意形态组合）
+  //   按钮元素：.t-checkbox-button（含 .t-is-checked / .t-is-indeterminate / .t-is-disabled）
+  // 注：__outline 与 --filled/--primary-filled/--vertical 前缀不一致是沿用 radio-button 的
+  // 既有约定，并非本 PR 新引入；如需统一请与 radio-button 一并调整。
+  // ---------------------------------------------------------------------------
+
   // 按钮风格 - outline（描边按钮，选中项为主色描边+浅色底）
   &.@{checkbox-cls}-group__outline {
     flex-wrap: wrap;
@@ -122,15 +135,30 @@
         }
 
         &.@{prefix}-is-checked,
-        &.@{prefix}-is-indeterminate {
-          border-color: @checkbox-button-border-color-checked;
-          border-right-color: @checkbox-button-border-color-checked;
+        &.@{prefix}-is-indeterminate,
+        &.@{prefix}-is-disabled.@{prefix}-is-checked,
+        &.@{prefix}-is-disabled.@{prefix}-is-indeterminate {
+          // 纵向排列下选中/半选抬高层级，并补回紧邻后续按钮的左侧描边
+          // （横向 outline 的 + 兄弟规则会移除左侧描边，纵向需要保留以维持外框）
           z-index: 1;
 
           +.@{checkbox-button--cls} {
             border-left: @checkbox-button-border;
             border-left-color: @checkbox-button-border-color-default;
           }
+        }
+
+        // 描边色按各状态自身 token 取值；:not(.is-disabled) 避免覆盖 disabled-checked
+        // 的描边色（其由横向 outline 的 disabled 规则提供）。此处需提升特异性以盖过
+        // 纵向 base 的 border-right-color: default（二者同为 4 类，源序在后者）。
+        &.@{prefix}-is-checked:not(.@{prefix}-is-disabled) {
+          border-color: @checkbox-button-border-color-checked;
+          border-right-color: @checkbox-button-border-color-checked;
+        }
+
+        &.@{prefix}-is-indeterminate:not(.@{prefix}-is-disabled) {
+          border-color: @checkbox-button-border-color-indeterminate;
+          border-right-color: @checkbox-button-border-color-indeterminate;
         }
       }
     }
@@ -143,6 +171,8 @@
           opacity: @checkbox-button-opacity-transparent;
         }
 
+        // filled 形态按钮本身无描边（border: 0），末项直接清零即可；
+        // 与上方 outline 分支用 border-radius 收圆角的处理不同，因为 outline 需保留描边并计算圆角与合并线。
         &:last-child {
           border: 0;
         }
