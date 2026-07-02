@@ -1,4 +1,4 @@
-import { get, isBoolean, isFunction, isNil, isNull, isNumber, uniqueId } from 'lodash-es';
+import { get, isBoolean, isFunction, isNil, isNull, isNumber, isUndefined, uniqueId } from 'lodash-es';
 import log from '../log';
 import { createNodeModel, pathToKey, updateNodeModel } from './tree-node-model';
 import { TreeStore } from './tree-store';
@@ -584,6 +584,16 @@ export class TreeNode {
   }
 
   /**
+   * value 变更后，刷新当前节点及关联节点状态
+   * @return void
+   */
+  public refreshAfterValueChange(): void {
+    this.update();
+    this.updateChildren();
+    this.updateParents();
+  }
+
+  /**
    * 异步加载子节点
    * @return Promise<void>
    */
@@ -616,9 +626,14 @@ export class TreeNode {
   public set(item: TreeNodeState): void {
     const { tree } = this;
     const keys = Object.keys(item);
+    let valueChanged = false;
     keys.forEach((key) => {
-      if (key === 'value') {
+      if (key === 'value' && isUndefined(item[key])) {
+        return;
+      }
+      if (key === 'value' && !isUndefined(item[key])) {
         this.refreshValue(item[key] as TreeNodeValue);
+        valueChanged = true;
       }
       if (hasOwnProperty.call(settableStatus, key) || key === 'label' || key === 'value') {
         // @ts-ignore
@@ -629,6 +644,10 @@ export class TreeNode {
         this.setDisabled(item[key]);
       }
     });
+    if (valueChanged) {
+      this.refreshAfterValueChange();
+      return;
+    }
     tree.updated(this);
   }
 

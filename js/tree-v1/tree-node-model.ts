@@ -215,12 +215,17 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       const { keys } = node.tree.config;
       const dataValue = data[keys?.value || 'value'];
       const dataLabel = data[keys?.label || 'label'];
-      if (!isUndefined(dataValue)) node.refreshValue(dataValue as TreeNodeValue);
+      const valueChanged = !isUndefined(dataValue);
+      if (valueChanged) node.refreshValue(dataValue as TreeNodeValue);
       if (!isUndefined(dataValue)) _data.value = dataValue;
       if (!isUndefined(dataLabel)) _data.label = dataLabel;
 
       Object.assign(node.data, _data);
       Object.assign(node, _data);
+      if (valueChanged) {
+        node.refreshAfterValueChange();
+        return;
+      }
       node.update();
     },
   };
