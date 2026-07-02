@@ -537,6 +537,11 @@ export class TreeNode {
     tree.privateMap.delete(this[privateKey]);
   }
 
+  /**
+   * 刷新节点 value 并同步树中缓存的节点状态
+   * @param {TreeNodeValue} value 节点新值
+   * @return void
+   */
   public refreshValue(value: TreeNodeValue): void {
     const oldValue = this.value;
     if (oldValue === value) return;

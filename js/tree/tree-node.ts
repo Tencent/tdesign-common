@@ -177,7 +177,7 @@ export class TreeNode {
     this.value = isNil(get(data, propValue)) ? this[privateKey] : get(data, propValue);
     const { nodeMap, privateMap } = tree;
     if (nodeMap.get(this.value)) {
-      log.warn('Tree', `Dulplicate value: ${this.value}`);
+      log.warn('Tree', `Duplicated value: ${this.value}`);
     }
     nodeMap.set(this.value, this);
     privateMap.set(this[privateKey], this);
@@ -522,6 +522,11 @@ export class TreeNode {
     tree.privateMap.delete(this[privateKey]);
   }
 
+  /**
+   * 刷新节点 value 并同步树中缓存的节点状态
+   * @param {TreeNodeValue} value 节点新值
+   * @return void
+   */
   public refreshValue(value: TreeNodeValue): void {
     const oldValue = this.value;
     if (oldValue === value) return;
@@ -541,7 +546,7 @@ export class TreeNode {
     this.value = value as string;
 
     if (tree.nodeMap.get(this.value)) {
-      log.warn('Tree', `Dulplicate value: ${this.value}`);
+      log.warn('Tree', `Duplicated value: ${this.value}`);
     }
     tree.nodeMap.set(this.value, this);
     if (checked) tree.checkedMap.set(this.value, true);
