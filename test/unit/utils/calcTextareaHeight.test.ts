@@ -31,7 +31,9 @@ describe('calcTextareaHeight', () => {
     document.body.appendChild(secondTextarea);
 
     let isReentered = false;
-    vi.spyOn(HTMLTextAreaElement.prototype, 'scrollHeight', 'get').mockImplementation(function mockScrollHeight() {
+    vi.spyOn(HTMLTextAreaElement.prototype, 'scrollHeight', 'get').mockImplementation(function mockScrollHeight(
+      this: HTMLTextAreaElement
+    ) {
       if (!isReentered && !this.isConnected) return 0;
       if (!isReentered && this !== firstTextarea && this !== secondTextarea) {
         isReentered = true;
