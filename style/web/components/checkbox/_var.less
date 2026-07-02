@@ -56,3 +56,78 @@
 @checkbox-group-gap: @spacer-2;
 // 单个复选框margin
 @checkbox-margin: inherit;
+
+// 按钮风格（button variant）
+// 复选框组的按钮风格，参考 radio-button，复用同一套语义变量
+@checkbox-button--cls: ~'@{prefix}-checkbox-button';
+
+// 颜色 - outline（描边按钮）
+@checkbox-button-border-color-default: @border-level-2-color;
+@checkbox-button-border-color-hover: @brand-color-hover;
+@checkbox-button-border-color-checked: @brand-color;
+@checkbox-button-border-color-indeterminate: @brand-color;
+@checkbox-button-color-outline-default: @text-color-primary;
+@checkbox-button-color-outline-hover: @brand-color-hover;
+@checkbox-button-color-outline-checked: @brand-color;
+@checkbox-button-color-outline-indeterminate: @brand-color;
+@checkbox-button-bg-color-outline: @bg-color-container;
+@checkbox-button-bg-color-outline-hover: @bg-color-container-hover;
+@checkbox-button-bg-color-outline-checked: @brand-color-light;
+@checkbox-button-bg-color-outline-indeterminate: @brand-color-light;
+
+// 颜色 - filled default（填充-默认，浅色容器底）
+@checkbox-button-group-bg-color-filled: @bg-color-component;
+@checkbox-button-color-filled: @text-color-secondary;
+@checkbox-button-color-filled-hover: @text-color-primary;
+@checkbox-button-color-filled-checked: @text-color-primary;
+@checkbox-button-bg-color-filled-checked: @bg-color-container-select;
+@checkbox-button-color-filled-indeterminate: @text-color-primary;
+@checkbox-button-bg-color-filled-indeterminate: @bg-color-container-hover;
+
+// 颜色 - filled primary（填充-主色，选中项为主色底）
+@checkbox-button-color-primary-filled-checked: @text-color-anti;
+@checkbox-button-bg-color-primary-filled-checked: @brand-color;
+// 半选态用 brand-hover，比选中态略浅以作区分，反色字仍可读（与 TDesign 主按钮 hover 一致）
+@checkbox-button-color-primary-filled-indeterminate: @text-color-anti;
+@checkbox-button-bg-color-primary-filled-indeterminate: @brand-color-hover;
+
+// 颜色 - disabled
+@checkbox-button-color-disabled: @text-color-disabled;
+@checkbox-button-bg-color-disabled: @bg-color-component-disabled;
+@checkbox-button-border-color-disabled: @border-level-2-color;
+@checkbox-button-border-color-disabled-checked: @brand-color-disabled;
+@checkbox-button-color-disabled-checked: @text-color-disabled;
+@checkbox-button-bg-color-outline-disabled-checked: @bg-color-specialcomponent;
+@checkbox-button-bg-color-filled-disabled-checked: @bg-color-component-disabled;
+@checkbox-button-bg-color-primary-filled-disabled-checked: @brand-color-disabled;
+
+// 尺寸
+@checkbox-button-border-radius: @border-radius-small;
+@checkbox-button-outline-height-small: @comp-size-xs;
+@checkbox-button-outline-height-medium: @comp-size-m;
+@checkbox-button-outline-height-large: @comp-size-xl;
+@checkbox-button-height-small: calc(@comp-size-xs - (@comp-paddingTB-xxs * 2));
+@checkbox-button-height-medium: calc(@comp-size-m - (@comp-paddingTB-xxs * 2));
+@checkbox-button-height-large: calc(@comp-size-xl - (@comp-paddingTB-xxs * 2));
+@checkbox-button-before-width: 1px;
+
+// 字号
+@checkbox-button-font-small: @font-body-small;
+@checkbox-button-font-medium: @font-body-medium;
+@checkbox-button-font-large: @font-body-large;
+
+// padding
+@checkbox-button-padding-small: 0px @comp-paddingLR-s;
+@checkbox-button-padding-medium: @comp-paddingTB-xs @comp-paddingLR-l;
+@checkbox-button-padding-large: @comp-paddingTB-s @comp-paddingLR-xl;
+@checkbox-button-before-left: 0px;
+@checkbox-button-before-top: 50%;
+@checkbox-button-border: 1px solid;
+@checkbox-button-group-padding: @comp-paddingTB-xxs @comp-paddingLR-xxs;
+
+// 动画&过渡
+@checkbox-button-before-transition: translateY(-50%);
+@checkbox-button-transition: color @anim-duration-base @anim-time-fn-ease-out;
+
+// 透明度
+@checkbox-button-opacity-transparent: 0;

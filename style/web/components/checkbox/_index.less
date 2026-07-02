@@ -19,6 +19,326 @@
   display: inline-flex;
   flex-wrap: wrap;
   gap: @checkbox-group-gap;
+
+  // 按钮风格 - outline（描边按钮，选中项为主色描边+浅色底）
+  &.@{checkbox-cls}-group__outline {
+    flex-wrap: wrap;
+    row-gap: @comp-margin-xs;
+    gap: 0;
+
+    &.@{prefix}-size-s {
+      .@{checkbox-button--cls} {
+        height: @checkbox-button-outline-height-small;
+      }
+    }
+
+    &.@{prefix}-size-m {
+      .@{checkbox-button--cls} {
+        height: @checkbox-button-outline-height-medium;
+      }
+    }
+
+    &.@{prefix}-size-l {
+      .@{checkbox-button--cls} {
+        height: @checkbox-button-outline-height-large;
+      }
+    }
+
+    .@{checkbox-button--cls} {
+      &:first-child {
+        border-radius: @checkbox-button-border-radius 0 0 @checkbox-button-border-radius;
+      }
+
+      &:last-child {
+        border-right: @checkbox-button-border;
+        border-right-color: @checkbox-button-border-color-default;
+        border-radius: 0 @checkbox-button-border-radius @checkbox-button-border-radius 0;
+      }
+
+      &:only-child {
+        border-radius: @checkbox-button-border-radius;
+      }
+
+      // 选中 / 半选态补回右侧描边，并隐藏紧邻后续按钮的左侧描边，避免双线
+      &.@{prefix}-is-checked,
+      &.@{prefix}-is-indeterminate,
+      &.@{prefix}-is-disabled.@{prefix}-is-checked,
+      &.@{prefix}-is-disabled.@{prefix}-is-indeterminate {
+        border-right: @checkbox-button-border;
+
+        + .@{checkbox-button--cls} {
+          border-left: 0;
+        }
+      }
+
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-outline-checked;
+        border-color: @checkbox-button-border-color-checked;
+        border-right-color: @checkbox-button-border-color-checked;
+        background-color: @checkbox-button-bg-color-outline-checked;
+      }
+
+      &.@{prefix}-is-indeterminate {
+        color: @checkbox-button-color-outline-indeterminate;
+        border-color: @checkbox-button-border-color-indeterminate;
+        border-right-color: @checkbox-button-border-color-indeterminate;
+        background-color: @checkbox-button-bg-color-outline-indeterminate;
+      }
+
+      &.@{prefix}-is-disabled {
+        &.@{prefix}-is-checked,
+        &.@{prefix}-is-indeterminate {
+          color: @checkbox-button-color-disabled-checked;
+          border-color: @checkbox-button-border-color-disabled-checked;
+          border-right-color: @checkbox-button-border-color-disabled-checked;
+          background-color: @checkbox-button-bg-color-outline-disabled-checked;
+        }
+      }
+    }
+  }
+
+  // 按钮风格 - vertical（纵向排列）
+  &.@{checkbox-cls}-group--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: @comp-margin-xs;
+
+    &.@{checkbox-cls}-group__outline {
+      row-gap: 0;
+
+      .@{checkbox-button--cls} {
+        width: 100%;
+        border-right: @checkbox-button-border;
+        border-right-color: @checkbox-button-border-color-default;
+        margin-top: -1px;
+
+        &:first-child {
+          margin-top: 0;
+          border-radius: @checkbox-button-border-radius @checkbox-button-border-radius 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 @checkbox-button-border-radius @checkbox-button-border-radius;
+        }
+
+        &.@{prefix}-is-checked,
+        &.@{prefix}-is-indeterminate {
+          border-color: @checkbox-button-border-color-checked;
+          border-right-color: @checkbox-button-border-color-checked;
+          z-index: 1;
+
+          +.@{checkbox-button--cls} {
+            border-left: @checkbox-button-border;
+            border-left-color: @checkbox-button-border-color-default;
+          }
+        }
+      }
+    }
+
+    &.@{checkbox-cls}-group--filled {
+      .@{checkbox-button--cls} {
+        width: 100%;
+
+        &::before {
+          opacity: @checkbox-button-opacity-transparent;
+        }
+
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  // 按钮风格 - filled default（填充-浅色容器底，选中项为凸起的浅色块）
+  // 与 radio 的滑动色块不同，复选框支持多选，因此选中态背景直接落在每个按钮上
+  &.@{checkbox-cls}-group--filled {
+    padding: @checkbox-button-group-padding;
+    border-radius: @border-radius-default;
+    background-color: @checkbox-button-group-bg-color-filled;
+    position: relative;
+
+    .@{checkbox-button--cls} {
+      color: @checkbox-button-color-filled;
+      border: 0;
+      background-color: transparent;
+      border-radius: @checkbox-button-border-radius;
+
+      &:hover {
+        color: @checkbox-button-color-filled-hover;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: @checkbox-button-before-left;
+        top: @checkbox-button-before-top;
+        transform: @checkbox-button-before-transition;
+        width: @checkbox-button-before-width;
+        height: calc(100% - 16px);
+        background-color: @component-border;
+        transition: opacity @anim-duration-base @anim-time-fn-ease-out;
+      }
+
+      &:first-child {
+        &::before {
+          opacity: @checkbox-button-opacity-transparent;
+        }
+      }
+
+      &.@{prefix}-is-checked {
+        position: relative;
+        color: @checkbox-button-color-filled-checked;
+        background-color: @checkbox-button-bg-color-filled-checked;
+        z-index: 1;
+        transition: color @anim-duration-base linear;
+
+        &::before {
+          opacity: @checkbox-button-opacity-transparent;
+        }
+
+        & + .@{checkbox-button--cls} {
+          &::before {
+            opacity: @checkbox-button-opacity-transparent;
+          }
+        }
+      }
+
+      &.@{prefix}-is-indeterminate {
+        position: relative;
+        color: @checkbox-button-color-filled-indeterminate;
+        background-color: @checkbox-button-bg-color-filled-indeterminate;
+        z-index: 1;
+
+        &::before {
+          opacity: @checkbox-button-opacity-transparent;
+        }
+
+        & + .@{checkbox-button--cls} {
+          &::before {
+            opacity: @checkbox-button-opacity-transparent;
+          }
+        }
+      }
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+
+        &.@{prefix}-is-checked,
+        &.@{prefix}-is-indeterminate {
+          color: @checkbox-button-color-disabled-checked;
+          background-color: @checkbox-button-bg-color-filled-disabled-checked;
+        }
+      }
+    }
+  }
+
+  // 按钮风格 - filled primary（填充-主色，选中项为主色底反色字）
+  &.@{checkbox-cls}-group--primary-filled {
+    .@{checkbox-button--cls} {
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-primary-filled-checked;
+        background-color: @checkbox-button-bg-color-primary-filled-checked;
+      }
+
+      &.@{prefix}-is-indeterminate {
+        color: @checkbox-button-color-primary-filled-indeterminate;
+        background-color: @checkbox-button-bg-color-primary-filled-indeterminate;
+      }
+
+      &.@{prefix}-is-disabled {
+        &.@{prefix}-is-checked,
+        &.@{prefix}-is-indeterminate {
+          color: @checkbox-button-color-disabled-checked;
+          background-color: @checkbox-button-bg-color-primary-filled-disabled-checked;
+        }
+      }
+    }
+  }
+
+  // 按钮风格 - 尺寸
+  &.@{prefix}-size-s {
+    .@{checkbox-button--cls} {
+      height: @checkbox-button-height-small;
+      padding: @checkbox-button-padding-small;
+      font: @checkbox-button-font-small;
+
+      &::before {
+        height: calc(100% - 16px);
+      }
+    }
+  }
+
+  &.@{prefix}-size-m {
+    .@{checkbox-button--cls} {
+      height: @checkbox-button-height-medium;
+      padding: @checkbox-button-padding-medium;
+      font: @checkbox-button-font-medium;
+
+      &::before {
+        height: calc(100% - 20px);
+      }
+    }
+  }
+
+  &.@{prefix}-size-l {
+    .@{checkbox-button--cls} {
+      height: @checkbox-button-height-large;
+      padding: @checkbox-button-padding-large;
+      font: @checkbox-button-font-large;
+
+      &::before {
+        height: calc(100% - 24px);
+      }
+    }
+  }
+
+  // 按钮风格 - 单个按钮基础样式
+  .@{checkbox-button--cls} {
+    .reset;
+
+    cursor: pointer;
+    position: relative;
+    border: @checkbox-button-border;
+    border-color: @checkbox-button-border-color-default;
+    border-right: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: @checkbox-button-transition;
+    color: @checkbox-button-color-outline-default;
+    white-space: nowrap;
+    box-sizing: border-box;
+
+    &__former {
+      .input-visually-hidden();
+    }
+
+    &__label {
+      display: inline-block;
+      vertical-align: middle;
+      font: inherit;
+    }
+
+    &:hover {
+      color: @checkbox-button-color-outline-hover;
+      border-color: @checkbox-button-border-color-hover;
+      background-color: @checkbox-button-bg-color-outline-hover;
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
+      color: @checkbox-button-color-disabled;
+      background-color: @checkbox-button-bg-color-disabled;
+      border-color: @checkbox-button-border-color-disabled;
+
+      &:hover {
+        border-color: @checkbox-button-border-color-disabled;
+        color: @checkbox-button-color-disabled;
+        background-color: @checkbox-button-bg-color-disabled;
+      }
+    }
+  }
 }
 
 .@{checkbox-cls} {

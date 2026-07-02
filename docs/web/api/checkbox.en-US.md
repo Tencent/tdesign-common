@@ -24,6 +24,24 @@ A group of check boxes that are combined according to certain attributes.
 
 {{ group }}
 
+### Button-style Checkbox Groups
+
+The checkbox group supports a button style, where options are arranged as tag-like buttons horizontally or vertically. Selected items are highlighted with a filled background, while unselected items use a light outline. Suitable for scenarios with many options that require strong feedback, such as permission assignment or feature toggles.
+
+{{ button }}
+
+### Button-style Checkbox Groups in Different Sizes
+
+Button-style checkbox groups are available in large, medium (default), and small sizes.
+
+{{ button-size }}
+
+### Button-style Checkbox Groups in Different Variants
+
+Button-style checkbox groups support three variants: outline, filled (default), and primary-filled, and can be laid out vertically.
+
+{{ button-variant }}
+
 ### Controlled Class Checkbox
 
 The checkbox supports controlled and uncontrolled usage.
