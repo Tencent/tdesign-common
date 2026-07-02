@@ -316,13 +316,17 @@
     right: auto;
     width: @switch-line-handle-size-default;
     height: @switch-line-handle-size-default;
-    transform: translateY(-50%);
+    transform: translate(0, -50%);
     box-shadow: @shadow-1;
     z-index: 1;
 
     .t-icon {
       font-size: @switch-line-handle-size-default;
     }
+  }
+
+  .@{prefix}-switch__content {
+    display: none;
   }
 
   &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
@@ -346,11 +350,11 @@
 
     .@{prefix}-switch__handle {
       top: 50%;
-      left: calc(100% - @switch-line-handle-size-checked-default);
+      left: 100%;
       right: auto;
       width: @switch-line-handle-size-checked-default;
       height: @switch-line-handle-size-checked-default;
-      transform: translateY(-50%);
+      transform: translate(-100%, -50%);
 
       .t-icon {
         font-size: @switch-line-handle-size-checked-default;
@@ -407,7 +411,7 @@
     right: auto;
     width: @switch-line-handle-size-l;
     height: @switch-line-handle-size-l;
-    transform: translateY(-50%);
+    transform: translate(0, -50%);
 
     .t-icon {
       font-size: @switch-line-handle-size-l;
@@ -416,11 +420,11 @@
 
   &.@{prefix}-is-checked .@{prefix}-switch__handle {
     top: 50%;
-    left: calc(100% - @switch-line-handle-size-checked-l);
+    left: 100%;
     right: auto;
     width: @switch-line-handle-size-checked-l;
     height: @switch-line-handle-size-checked-l;
-    transform: translateY(-50%);
+    transform: translate(-100%, -50%);
 
     .t-icon {
       font-size: @switch-line-handle-size-checked-l;
@@ -440,7 +444,7 @@
     right: auto;
     width: @switch-line-handle-size-s;
     height: @switch-line-handle-size-s;
-    transform: translateY(-50%);
+    transform: translate(0, -50%);
 
     .t-icon {
       font-size: @switch-line-handle-size-s;
@@ -449,11 +453,11 @@
 
   &.@{prefix}-is-checked .@{prefix}-switch__handle {
     top: 50%;
-    left: calc(100% - @switch-line-handle-size-checked-s);
+    left: 100%;
     right: auto;
     width: @switch-line-handle-size-checked-s;
     height: @switch-line-handle-size-checked-s;
-    transform: translateY(-50%);
+    transform: translate(-100%, -50%);
 
     .t-icon {
       font-size: @switch-line-handle-size-checked-s;

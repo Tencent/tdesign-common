@@ -32,6 +32,6 @@ Large, medium (default) and small switches are provided.
 
 ### Switches of Different Shapes
 
-Three shapes are provided: circle, round and line. `label` is not rendered when shape is `line`.
+Three shapes are provided: circle, round and line. Switch content is not rendered when shape is `line`.
 
 {{ shape }}
