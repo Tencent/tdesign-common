@@ -88,6 +88,44 @@
   .@{prefix}-hide-scrollbar {
     .hideScrollbar();
   }
+
+  &--clearable {
+    .@{prefix}-textarea__inner {
+      padding-right: 32px;
+    }
+  }
+
+  &__clear {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: @textarea-clear-color;
+    cursor: pointer;
+    border-radius: @border-radius-circle;
+    background-color: transparent;
+    transition: all @anim-duration-base @anim-time-fn-easing;
+
+    &:hover {
+      color: @textarea-clear-color-hover;
+      background-color: @textarea-clear-bg-color-hover;
+    }
+
+    &:active {
+      transform: scale(0.88);
+      background-color: @textarea-clear-bg-color-active;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 }
 
 .@{prefix}-textarea__tips {
