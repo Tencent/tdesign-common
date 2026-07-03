@@ -23,3 +23,7 @@ toc: false
 #### Switch Size
 
 {{ size }}
+
+#### Switch Shape
+
+{{ shape }}

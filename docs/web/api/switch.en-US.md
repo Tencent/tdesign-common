@@ -29,3 +29,9 @@ Switches for normal, loading and disabled are provided. Set the corresponding st
 Large, medium (default) and small switches are provided.
 
 {{ size }}
+
+### Switches of Different Shapes
+
+Three shapes are provided: circle, round and line.
+
+{{ shape }}

@@ -38,6 +38,54 @@
     border-radius: @switch-small-radius;
   }
 
+  &--round {
+    border-radius: @switch-round-radius;
+
+    .@{prefix}-switch__dot {
+      border-radius: @switch-round-dot-radius;
+    }
+  }
+
+  &--line {
+    background-color: transparent;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: @switch-line-track-height;
+      border-radius: @switch-radius;
+      background-color: @switch-unchecked-color;
+      transform: translateY(-50%);
+      transition: all .3s ease;
+    }
+
+    &.@{prefix}-switch--checked::before {
+      background-color: @switch-checked-color;
+    }
+
+    &.@{prefix}-switch--disabled::before {
+      background-color: @switch-unchecked-disabled-color;
+    }
+
+    &.@{prefix}-switch--checked.@{prefix}-switch--disabled::before {
+      background-color: @switch-checked-disabled-color;
+    }
+
+    &.@{prefix}-switch--checked,
+    &.@{prefix}-switch--disabled,
+    &.@{prefix}-switch--checked.@{prefix}-switch--disabled {
+      background-color: transparent;
+    }
+
+    .@{prefix}-switch__label,
+    .@{prefix}-switch__dot {
+      z-index: 1;
+    }
+  }
+
   &__label {
     position: absolute;
     top: 0;
