@@ -39,8 +39,29 @@
     bottom: env(safe-area-inset-bottom);
   }
 
-  &--fixed&--round&--safe {
-    bottom: constant(safe-area-inset-bottom);
-    bottom: env(safe-area-inset-bottom);
+  // 液态玻璃 (Liquid Glass)：与 --round 叠加即为悬浮液态玻璃胶囊
+  // 通过 backdrop-filter 模糊并饱和化胶囊后方内容，配合镜面高光与折射描边形成玻璃质感
+  &--glass {
+    background-color: @tab-bar-glass-bg;
+    backdrop-filter: @tab-bar-glass-backdrop;
+    /* stylelint-disable-next-line */
+    -webkit-backdrop-filter: @tab-bar-glass-backdrop;
+    border: @tab-bar-glass-border;
+    box-shadow: @tab-bar-glass-shadow;
+
+    // 镜面高光：顶部受光、向下渐隐的折射，液态玻璃的视觉签名
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: @tab-bar-glass-highlight;
+    }
+
+    // 子项背景透明，露出胶囊后方经模糊的内容
+    .@{prefix}-tab-bar-item {
+      background-color: transparent;
+    }
   }
 }

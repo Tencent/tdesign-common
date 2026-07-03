@@ -34,6 +34,12 @@ toc: false
 
 {{ round }}
 
+#### Liquid glass capsule TabBar
+
+Inspired by iOS 26 Liquid Glass: layers a `--glass` material onto the capsule shape, blurring and saturating the content behind via `backdrop-filter`, with a specular highlight and refractive rim for a translucent glass feel. Use it for bottom navigation that needs a strong floating, premium feel.
+
+{{ round-glass }}
+
 ### 02 Custom
 
 #### Custom style

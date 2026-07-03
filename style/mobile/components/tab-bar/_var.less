@@ -3,3 +3,27 @@
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
+
+// 液态玻璃 (Liquid Glass) — iOS 26 风格的悬浮胶囊材质
+// 依赖 backdrop-filter，对胶囊后方内容做模糊 + 饱和度增强，呈现通透的玻璃质感
+@tab-bar-glass-bg: var(--td-tab-bar-glass-bg, rgba(255, 255, 255, 0.55));
+@tab-bar-glass-backdrop: var(--td-tab-bar-glass-backdrop, blur(20px) saturate(180%));
+@tab-bar-glass-border: var(--td-tab-bar-glass-border, 1px solid rgba(255, 255, 255, 0.5));
+@tab-bar-glass-shadow: var(
+  --td-tab-bar-glass-shadow,
+  inset 0 1px 1px rgba(255, 255, 255, 0.95),
+  inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+  0 8px 32px rgba(0, 0, 0, 0.14),
+  0 2px 8px rgba(0, 0, 0, 0.08)
+);
+
+// 镜面高光 — 液态玻璃的标志性折射：顶部受光、向下渐隐
+@tab-bar-glass-highlight: var(
+  --td-tab-bar-glass-highlight,
+  linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.2) 35%,
+    rgba(255, 255, 255, 0) 65%
+  )
+);
