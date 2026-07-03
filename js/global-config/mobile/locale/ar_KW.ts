@@ -115,6 +115,7 @@ export default {
       waitingText: 'الانتظار',
       failText: 'فشل',
       successText: 'النجاح',
+      reloadText: 'إعادة الرفع',
     },
   },
   guide: {

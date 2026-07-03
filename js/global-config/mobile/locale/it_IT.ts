@@ -103,6 +103,7 @@ export default {
       waitingText: 'Attesa',
       failText: 'Fallito',
       successText: 'Successo',
+      reloadText: 'Ricarica',
     },
   },
   guide: {

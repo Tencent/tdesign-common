@@ -24,6 +24,12 @@ toc: false
 
 {{ status }}
 
-### 03 Style Customization
+### 03 Component Layout
+
+#### Grid/List Layout
+
+{{ theme }}
+
+### 04 Style Customization
 
 {{ custom }}
