@@ -1,65 +1,41 @@
 /**
- * eyedropper 不支持edge 和 谷歌之外的浏览器，这里使用ployfill填充
- * 使用 modern-screenshot 替代 html2canvas，渲染更准确
+ * eyedropper polyfill — 基于 html2canvas 截图方案
+ * 代码参考 https://github.com/iam-medvedev/eyedropper-polyfill
+ *
+ * 已知限制：html2canvas 无法渲染部分现代 CSS（背景图/渐变），
+ * 这些区域在截图中显示白色，是技术固有限制。
  */
-import { domToCanvas } from 'modern-screenshot';
+import html2canvas from 'html2canvas-pro';
 import type { EyeDropper, ColorSelectionOptions, ColorSelectionResult } from './types';
 
-type Point = {
-  x: number;
-  y: number;
-};
+type Point = { x: number; y: number };
 
-/** Global `isOpen` state */
-const isOpenState = {
-  value: false,
-};
+const isOpenState = { value: false };
+const prefix = '[EyeDropper]';
 
-const prefix = `[EyeDropper]`;
-
-/**
- * Errors text
- */
 export const errors = {
   canvasError: `${prefix} Error getting canvas`,
   color: `${prefix} Cannot get color`,
 };
 
-/**
- * Returns px value
- */
-export function px<T extends number>(value: T): `${T}px` {
-  if (typeof value !== 'number' || Number.isNaN(value)) {
-    throw new Error();
-  }
+export function px(value: number): string {
   return `${value}px`;
 }
 
-/**
- * 浏览器是否支持eyedropper
- * @returns boolean
- */
 export function isEyeDropperSupported(): boolean {
   return 'EyeDropper' in window;
 }
 
-/**
- * 将polyfill注入
- */
 export function attachPolyfill() {
   if (!Reflect.defineProperty(window, 'EyeDropper', { value: EyeDropperPolyfill })) {
     throw Error("Error attaching `EyeDropper` polyfill: couldn't attach `EyeDropper` to `window`");
   }
 }
 
-/**
- * EyeDropper API polyfill
- * https://wicg.github.io/eyedropper-api/#dom-colorselectionoptions
- */
 export class EyeDropperPolyfill implements EyeDropper {
   private colorSelectionResult?: ColorSelectionResult;
 
-  private previousDocumentCursor?: CSSStyleDeclaration['cursor'];
+  private previousDocumentCursor?: string;
 
   private canvas?: HTMLCanvasElement;
 
@@ -69,10 +45,7 @@ export class EyeDropperPolyfill implements EyeDropper {
 
   private lastPoint?: Point;
 
-  private magnification = {
-    size: 80, // 缩小放大镜尺寸
-    scale: 8, // 降低缩放倍数
-  };
+  private magnification = { size: 4, scale: 12 };
 
   constructor() {
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -80,53 +53,27 @@ export class EyeDropperPolyfill implements EyeDropper {
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
-  /**
-   * Opens the polyfilled eyedropper
-   *
-   * §3.3 EyeDropper interface ► `open()`
-   */
   public async open(options: ColorSelectionOptions = {}): Promise<ColorSelectionResult> {
-    // §3.3 EyeDropper interface ► `open()` ► p.2
-    // Prevent opening if already open
     if (isOpenState.value) {
       return Promise.reject(new DOMException('Invalid state', 'InvalidStateError'));
     }
-
-    // §3.3 EyeDropper interface ► `open()` ► p.3
-    // Create a promise to handle the color selection
-    const result = new Promise<ColorSelectionResult>((resolve, reject) => {
-      // §3.3 EyeDropper interface ► `open()` ► p.4
-      // Handle possible signal abortion
+    return new Promise<ColorSelectionResult>((resolve, reject) => {
       if (options.signal) {
         if (options.signal.aborted) {
           this.stop();
-
           reject(options.signal.reason || new DOMException('Aborted', 'AbortError'));
-          return; // eslint-disable-line no-promise-executor-return
+          return;
         }
-
-        const abortListener = () => {
+        options.signal.addEventListener('abort', () => {
           this.stop();
-          if (options.signal) {
-            reject(options.signal.reason || new DOMException('Aborted', 'AbortError'));
-          }
-        };
-
-        options.signal.addEventListener('abort', abortListener);
+          reject(options.signal.reason || new DOMException('Aborted', 'AbortError'));
+        });
       }
-
-      // §3.3 EyeDropper interface ► `open()` ► p.5
-      // Store the resolve function and start the eyedropper
       this.resolve = resolve;
       this.start();
     });
-
-    return result;
   }
 
-  /**
-   * Starting eyedropper mode
-   */
   private async start() {
     isOpenState.value = true;
     document.body.style.overflow = 'hidden';
@@ -136,9 +83,6 @@ export class EyeDropperPolyfill implements EyeDropper {
     this.bindEvents();
   }
 
-  /**
-   * Stopping eyedropper mode
-   */
   private stop() {
     isOpenState.value = false;
     document.body.style.overflow = '';
@@ -148,152 +92,96 @@ export class EyeDropperPolyfill implements EyeDropper {
     this.lastPoint = undefined;
   }
 
-  /**
-   * Creates fake screenshot of page and assign it to the body
-   */
   private async createScreenshot() {
-    // 使用 modern-screenshot 进行截图
-    this.canvas = await domToCanvas(document.body, {
-      scale: window.devicePixelRatio,
-      width: document.body.scrollWidth,
-      height: document.body.scrollHeight,
+    // 截取整个页面（包括滚动区域）
+    this.canvas = await html2canvas(document.body, {
+      allowTaint: true,
+      useCORS: true,
+      width: document.body.clientWidth,
+      height: document.body.clientHeight,
     });
-
+    this.canvasCtx = this.canvas.getContext('2d', { willReadFrequently: true });
     this.addCanvasStyle(this.canvas);
-    this.canvasCtx = this.canvas.getContext('2d', {
-      willReadFrequently: true,
-    });
     document.body.appendChild(this.canvas);
   }
 
-  /**
-   * Removes screenshot from page
-   */
   private removeScreenshot() {
-    if (!this.canvas) {
-      throw new Error(errors.canvasError);
+    if (this.canvas) {
+      document.body.removeChild(this.canvas);
+      this.canvas = undefined;
+      this.canvasCtx = undefined;
     }
-
-    document.body.removeChild(this.canvas);
-    this.canvas = undefined;
-    this.canvasCtx = undefined;
   }
 
-  /**
-   * Sets waiting cursor
-   */
   private setWaitingCursor() {
     this.previousDocumentCursor = document.documentElement.style.cursor;
     document.documentElement.style.cursor = 'wait';
   }
 
-  /**
-   * Removes waiting cursor
-   */
   private revertWaitingCursor() {
-    if (this.previousDocumentCursor) {
-      document.documentElement.style.cursor = this.previousDocumentCursor;
-    } else {
-      document.documentElement.style.cursor = '';
-    }
-
+    document.documentElement.style.cursor = this.previousDocumentCursor || '';
     this.previousDocumentCursor = undefined;
   }
 
-  /**
-   * Binds events
-   */
   private bindEvents() {
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('click', this.onClick);
     window.addEventListener('keydown', this.onKeyDown);
   }
 
-  /**
-   * Unbinds `mousemove` events
-   */
   private unbindEvents() {
     window.removeEventListener('mousemove', this.onMouseMove);
     window.removeEventListener('click', this.onClick);
     window.removeEventListener('keydown', this.onKeyDown);
   }
 
-  /**
-   * `keydown` handler - ESC to cancel
-   */
   private onKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       event.preventDefault();
+      event.stopPropagation();
       this.stop();
     }
   }
 
-  /**
-   * `click` handler
-   */
-  private onClick() {
-    if (!this.lastPoint) {
-      throw new Error(errors.color);
-    }
-
+  private onClick(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (!this.lastPoint) throw new Error(errors.color);
     this.detectColor(this.lastPoint);
-    const newValue = this.colorSelectionResult;
+    const result = this.colorSelectionResult;
     this.stop();
-
-    if (newValue && this.resolve) {
-      this.resolve(newValue);
-    }
+    if (result && this.resolve) this.resolve(result);
   }
 
-  /**
-   * `mousemove` handler
-   */
   private onMouseMove(event: MouseEvent) {
-    if (!this.canvas || !this.canvasCtx) {
-      throw new Error(errors.canvasError);
-    }
-
+    if (!this.canvas) return;
     const dpr = window.devicePixelRatio;
+    // Canvas 截取了整个页面（包括滚动区域），所以坐标需要加上页面滚动偏移
     this.lastPoint = {
       x: (event.clientX + window.scrollX) * dpr,
       y: (event.clientY + window.scrollY) * dpr,
     };
-
-    // Move magnifier with improved styling
-    const position = [px(this.lastPoint.x / dpr), px(this.lastPoint.y / dpr)].join(' ');
+    const pos = `${this.lastPoint.x / dpr}px ${this.lastPoint.y / dpr}px`;
     Object.assign(this.canvas.style, {
-      opacity: 1,
-      transformOrigin: position,
-      clipPath: `circle(${px(this.magnification.size / 2)} at ${position})`,
+      opacity: '1',
+      transformOrigin: pos,
+      clipPath: `circle(${px(this.magnification.size)} at ${pos})`,
     });
   }
 
-  /**
-   * Detects color from canvas data
-   */
   private detectColor(point: Point) {
-    if (!this.canvasCtx) {
-      throw new Error(errors.canvasError);
-    }
-
-    const pixelData = this.canvasCtx.getImageData(point.x, point.y, 1, 1).data;
-
-    const red = pixelData[0];
-    const green = pixelData[1];
-    const blue = pixelData[2];
-
+    if (!this.canvasCtx) throw new Error(errors.canvasError);
+    const [r, g, b] = this.canvasCtx.getImageData(point.x, point.y, 1, 1).data;
     // eslint-disable-next-line no-bitwise
-    const hex = ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
-
-    this.colorSelectionResult = {
-      sRGBHex: `#${hex}`,
-    };
+    const hex = `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+    this.colorSelectionResult = { sRGBHex: hex };
   }
 
   /**
-   * Canvas styles creator - 优化放大镜样式
+   * Canvas styles creator
    */
   private addCanvasStyle(canvas: HTMLCanvasElement) {
+    // eslint-disable-next-line class-methods-use-this
     Object.assign(canvas.style, {
       position: 'fixed',
       top: '0px',
@@ -303,9 +191,6 @@ export class EyeDropperPolyfill implements EyeDropper {
       opacity: '0',
       transform: `scale(${this.magnification.scale})`,
       imageRendering: 'pixelated',
-      border: '2px solid rgba(255, 255, 255, 0.8)',
-      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
-      borderRadius: '50%',
     });
   }
 }
