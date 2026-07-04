@@ -115,6 +115,7 @@ export default {
       waitingText: 'Ожидание загрузки',
       failText: 'Ошибка загрузки',
       successText: 'Загрузка завершена',
+      reloadText: 'Загрузить повторно',
     },
   },
   guide: {

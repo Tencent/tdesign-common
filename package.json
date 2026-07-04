@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "homepage": "https://github.com/Tencent",
   "description": "TDesign UI 样式库以及组件库公共函数（js）",
+  "packageManager": "pnpm@10.27.0",
   "main": "",
   "scripts": {
     "lint": "npm run lint:css && npm run lint:js && npm run lint:eslint && npm run typecheck",
@@ -58,6 +59,7 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^8.0.1",
+    "jsdom": "^29.1.1",
     "lint-staged": "~13.2.0",
     "min-indent": "^1.0.1",
     "postcss-less": "^5.0.0",
