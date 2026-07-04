@@ -5,14 +5,8 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { openEyeDropper, createEyeDropperManager } from '../../../js/color-picker/eyedropper';
-import {
-  isEyeDropperSupported,
-  attachPolyfill,
-  EyeDropperPolyfill,
-  px,
-  errors,
-} from '../../../js/utils/eyedropperPolyfill';
+import { openEyeDropper, createEyeDropperManager, isEyeDropperSupported } from '../../../js/color-picker/eyedropper';
+import { attachPolyfill, EyeDropperPolyfill, px, errors } from '../../../js/utils/eyedropperPolyfill';
 
 // ========== Mock EyeDropper API ==========
 const mockOpen = vi.fn();

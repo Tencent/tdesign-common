@@ -7,6 +7,8 @@
 
 import { EyeDropperPolyfill, isEyeDropperSupported } from '../utils/eyedropperPolyfill';
 
+export { isEyeDropperSupported };
+
 /**
  * EyeDropper 回调函数类型
  */
@@ -40,13 +42,6 @@ export interface EyeDropperOptions {
  */
 export const openEyeDropper = async (options: EyeDropperOptions = {}): Promise<string | null> => {
   const { onSuccess, onCancel, onError } = options;
-
-  // 检查是否支持 EyeDropper API
-  if (!isEyeDropperSupported()) {
-    const error = new Error('当前浏览器不支持 EyeDropper API。请使用 Chrome 95+、Edge 95+ 或更高版本浏览器。');
-    onError?.(error);
-    throw error;
-  }
 
   try {
     // 创建 EyeDropper 实例
