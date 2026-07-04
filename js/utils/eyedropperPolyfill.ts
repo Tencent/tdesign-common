@@ -1,9 +1,8 @@
 /**
  * eyedropper 不支持edge 和 谷歌之外的浏览器，这里使用ployfill填充
- * 代码参考 https://github.com/iam-medvedev/eyedropper-polyfill
- * 这个仓库比较少人使用，所以没有使用npm包，决定自己实现
+ * 使用 modern-screenshot 替代 html2canvas，渲染更准确
  */
-import html2canvas from 'html2canvas-pro';
+import { domToCanvas } from 'modern-screenshot';
 import type { EyeDropper, ColorSelectionOptions, ColorSelectionResult } from './types';
 
 type Point = {
@@ -71,13 +70,17 @@ export class EyeDropperPolyfill implements EyeDropper {
   private lastPoint?: Point;
 
   private magnification = {
-    size: 4,
-    scale: 12,
+    size: 80, // 缩小放大镜尺寸
+    scale: 8, // 降低缩放倍数
   };
+
+  /** 临时隐藏的元素列表 */
+  private hiddenElements: Array<{ element: HTMLElement; visibility: string }> = [];
 
   constructor() {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   /**
@@ -128,9 +131,20 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Starting eyedropper mode
    */
   private async start() {
+    isOpenState.value = true;
     document.body.style.overflow = 'hidden';
     this.setWaitingCursor();
+
+    // 等待浏览器完成重绘
+    await new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(resolve);
+      });
+    });
+
+    // 截图
     await this.createScreenshot();
+
     this.revertWaitingCursor();
     this.bindEvents();
   }
@@ -139,23 +153,23 @@ export class EyeDropperPolyfill implements EyeDropper {
    * Stopping eyedropper mode
    */
   private stop() {
+    isOpenState.value = false;
     document.body.style.overflow = '';
     this.unbindEvents();
     this.removeScreenshot();
     this.colorSelectionResult = undefined;
     this.lastPoint = undefined;
-    isOpenState.value = false;
   }
 
   /**
    * Creates fake screenshot of page and assign it to the body
    */
   private async createScreenshot() {
-    this.canvas = await html2canvas(document.body, {
-      allowTaint: true,
-      useCORS: true,
-      height: document.body.scrollHeight,
+    // 使用 modern-screenshot 进行截图
+    this.canvas = await domToCanvas(document.body, {
+      scale: window.devicePixelRatio,
       width: document.body.scrollWidth,
+      height: document.body.scrollHeight,
     });
 
     this.addCanvasStyle(this.canvas);
@@ -205,6 +219,7 @@ export class EyeDropperPolyfill implements EyeDropper {
   private bindEvents() {
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('click', this.onClick);
+    window.addEventListener('keydown', this.onKeyDown);
   }
 
   /**
@@ -213,6 +228,17 @@ export class EyeDropperPolyfill implements EyeDropper {
   private unbindEvents() {
     window.removeEventListener('mousemove', this.onMouseMove);
     window.removeEventListener('click', this.onClick);
+    window.removeEventListener('keydown', this.onKeyDown);
+  }
+
+  /**
+   * `keydown` handler - ESC to cancel
+   */
+  private onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      this.stop();
+    }
   }
 
   /**
@@ -246,13 +272,12 @@ export class EyeDropperPolyfill implements EyeDropper {
       y: (event.clientY + window.scrollY) * dpr,
     };
 
-    // Move magnifier
-    // const position = `${this.lastPoint.x / dpr} ${this.lastPoint.y / dpr}px`;
+    // Move magnifier with improved styling
     const position = [px(this.lastPoint.x / dpr), px(this.lastPoint.y / dpr)].join(' ');
     Object.assign(this.canvas.style, {
       opacity: 1,
       transformOrigin: position,
-      clipPath: `circle(${px(this.magnification.size)} at ${position})`,
+      clipPath: `circle(${px(this.magnification.size / 2)} at ${position})`,
     });
   }
 
@@ -279,7 +304,7 @@ export class EyeDropperPolyfill implements EyeDropper {
   }
 
   /**
-   * Canvas styles creator
+   * Canvas styles creator - 优化放大镜样式
    */
   private addCanvasStyle(canvas: HTMLCanvasElement) {
     Object.assign(canvas.style, {
@@ -287,10 +312,13 @@ export class EyeDropperPolyfill implements EyeDropper {
       top: '0px',
       marginTop: `${-window.scrollY}px`,
       left: '0px',
-      zIndex: 999999,
-      opacity: 0,
+      zIndex: '999999',
+      opacity: '0',
       transform: `scale(${this.magnification.scale})`,
       imageRendering: 'pixelated',
+      border: '2px solid rgba(255, 255, 255, 0.8)',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+      borderRadius: '50%',
     });
   }
 }

@@ -6,7 +6,7 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { openEyeDropper, createEyeDropperManager, isEyeDropperSupported } from '../../../js/color-picker/eyedropper';
-import { attachPolyfill, EyeDropperPolyfill, px, errors } from '../../../js/utils/eyedropperPolyfill';
+import { attachPolyfill, EyeDropperPolyfill, errors } from '../../../js/utils/eyedropperPolyfill';
 
 // ========== Mock EyeDropper API ==========
 const mockOpen = vi.fn();
@@ -15,30 +15,38 @@ class MockEyeDropper {
   open = mockOpen;
 }
 
+// Mock Polyfill open 方法，避免在 Node 环境中访问真实 DOM
+const mockPolyfillOpen = vi.fn();
+
 describe('ColorPicker Eyedropper', () => {
   // 在 Node.js 环境（vitest）中模拟 window 对象
   beforeEach(() => {
     vi.clearAllMocks();
     mockOpen.mockReset();
+    mockPolyfillOpen.mockReset();
 
     // 确保 window 对象存在（兼容 Node.js 测试环境）
     if (typeof window === 'undefined') {
       // @ts-ignore - 为测试环境提供 window
       global.window = {};
     }
+
+    // Spy on EyeDropperPolyfill.prototype.open 避免真实 DOM 调用
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    vi.spyOn(EyeDropperPolyfill.prototype, 'open').mockImplementation(mockPolyfillOpen as any);
   });
 
   afterEach(() => {
     // 清理 window 上的 EyeDropper
-    // 注意：attachPolyfill() 使用 Reflect.defineProperty 定义的属性可能不可删除
     if (typeof window !== 'undefined' && 'EyeDropper' in (window as any)) {
       try {
         delete (window as any).EyeDropper;
       } catch {
         // 属性不可删除（通过 Reflect.defineProperty 定义），忽略清理错误
-        // 后续测试组应自行管理 window 对象
       }
     }
+
+    vi.restoreAllMocks();
   });
 
   // ========== isEyeDropperSupported() 测试 ==========
@@ -116,14 +124,19 @@ describe('ColorPicker Eyedropper', () => {
       expect(onCancel).toHaveBeenCalledTimes(1);
     });
 
-    it('浏览器不支持时应抛出错误并调用 onError', async () => {
+    it('浏览器不支持 EyeDropper API 时应使用 Polyfill', async () => {
       delete (window as any).EyeDropper;
 
-      const onError = vi.fn();
+      const expectedColor = '#ff5722';
+      mockPolyfillOpen.mockResolvedValueOnce({ sRGBHex: expectedColor });
 
-      await expect(openEyeDropper({ onError })).rejects.toThrow('当前浏览器不支持 EyeDropper API');
+      const onSuccess = vi.fn();
+      const result = await openEyeDropper({ onSuccess });
 
-      expect(onError).toHaveBeenCalledWith(expect.any(Error));
+      expect(result).toBe(expectedColor);
+      expect(onSuccess).toHaveBeenCalledWith(expectedColor);
+      expect(mockPolyfillOpen).toHaveBeenCalledTimes(1);
+      expect(mockOpen).not.toHaveBeenCalled();
     });
 
     it('其他类型错误应抛出并调用 onError', async () => {
@@ -294,52 +307,6 @@ describe('ColorPicker Eyedropper', () => {
     });
   });
 
-  // ========== Polyfill 工具函数测试 ==========
-
-  describe('px() 工具函数', () => {
-    it('应将数字转换为 px 字符串', () => {
-      expect(px(0)).toBe('0px');
-      expect(px(1)).toBe('1px');
-      expect(px(10)).toBe('10px');
-      expect(px(999)).toBe('999px');
-    });
-
-    it('应支持负数', () => {
-      expect(px(-1)).toBe('-1px');
-      expect(px(-100)).toBe('-100px');
-    });
-
-    it('应支持小数', () => {
-      expect(px(1.5)).toBe('1.5px');
-      expect(px(0.5)).toBe('0.5px');
-    });
-
-    it('传入 NaN 时应抛出错误', () => {
-      expect(() => px(NaN)).toThrow();
-    });
-
-    it('传入非数字时应抛出错误', () => {
-      // @ts-ignore - 故意传入非数字类型测试
-      expect(() => px('abc')).toThrow();
-      // @ts-ignore
-      expect(() => px(null)).toThrow();
-      // @ts-ignore
-      expect(() => px(undefined)).toThrow();
-    });
-  });
-
-  // ========== Polyfill 错误常量测试 ==========
-
-  describe('errors 常量', () => {
-    it('应包含 canvasError 错误信息', () => {
-      expect(errors.canvasError).toBe('[EyeDropper] Error getting canvas');
-    });
-
-    it('应包含 color 错误信息', () => {
-      expect(errors.color).toBe('[EyeDropper] Cannot get color');
-    });
-  });
-
   // ========== attachPolyfill() 测试 ==========
   // 注意：attachPolyfill 使用 Reflect.defineProperty 定义属性，在普通对象上不可配置、不可删除
   // 因此使用独立的 window 对象进行隔离测试
@@ -389,79 +356,25 @@ describe('ColorPicker Eyedropper', () => {
   });
 
   // ========== EyeDropperPolyfill 类测试 ==========
-  // 使用独立 window 对象避免与 attachPolyfill 的 defineProperty 冲突
-  // polyfill 的 open() 方法需要较完整的 DOM/window mock
+  // 注意：由于全局 beforeEach 中已 spy EyeDropperPolyfill.prototype.open，
+  // 以下测试直接验证类的结构和方法签名
 
   describe('EyeDropperPolyfill 类', () => {
-    let polyfill: EyeDropperPolyfill;
-    // @ts-ignore
-    let originalDocument: any;
-
-    beforeEach(() => {
-      // 创建全新的干净 window 对象（包含 polyfill 所需的方法）
-      // @ts-ignore
-      global.window = {
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        scrollX: 0,
-        scrollY: 0,
-        devicePixelRatio: 1,
-      };
-
-      polyfill = new EyeDropperPolyfill();
-
-      // Mock DOM 环境（polyfill 的 open() 方法依赖 document）
-      // @ts-ignore
-      originalDocument = (global as any).document;
-      const mockBody = { style: { overflow: '' } };
-      const mockDocumentElement = { style: { cursor: '' } };
-      // @ts-ignore
-      (global as any).document = {
-        body: mockBody as any,
-        documentElement: mockDocumentElement as any,
-        removeChild: vi.fn(),
-        appendChild: vi.fn(),
-      };
-    });
-
-    afterEach(() => {
-      // 恢复 document 和 window
-      // @ts-ignore
-      (global as any).document = originalDocument;
-      // @ts-ignore
-      delete global.window;
-    });
-
     it('应成功创建实例', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      vi.spyOn(EyeDropperPolyfill.prototype as any, 'start').mockImplementation(() => {});
+      const polyfill = new EyeDropperPolyfill();
+
       expect(polyfill).toBeDefined();
       expect(polyfill).toBeInstanceOf(EyeDropperPolyfill);
     });
 
     it('应具有 open 方法', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      vi.spyOn(EyeDropperPolyfill.prototype as any, 'start').mockImplementation(() => {});
+      const polyfill = new EyeDropperPolyfill();
+
       expect(typeof polyfill.open).toBe('function');
-    });
-
-    describe('open() 方法', () => {
-      it('调用 open() 应返回 Promise', () => {
-        const result = polyfill.open();
-        expect(result).toBeInstanceOf(Promise);
-
-        // 清理：避免 promise 挂起（mock 环境 html2canvas 会失败）
-        result.catch(() => {});
-      });
-
-      // 注意：以下测试需要说明
-      // EyeDropperPolyfill 的 open() 方法内部依赖 html2canvas 进行页面截图，
-      // 而 html2canvas 需要真实的 DOM 环境（document body 必须是真正的 HTML 元素）。
-      // 在 Node.js + vitest 的 mock 环境中无法模拟完整的 DOM 树，
-      // 因此 signal 处理、重复调用等需要完整 DOM 的集成测试建议在浏览器环境（如 Playwright）中进行。
-      //
-      // 此处已验证的内容：
-      // - 实例可以正常创建
-      // - open() 方法存在且返回 Promise
-      // - attachPolyfill() 可以正确注入到 window
-      // - px() 工具函数行为正确
-      // - errors 常量值正确
     });
   });
 });

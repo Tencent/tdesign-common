@@ -87,9 +87,9 @@
     }
   },
   "dependencies": {
-    "html2canvas-pro": "^2.2.1",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.0",
+    "modern-screenshot": "^4.7.0",
     "tinycolor2": "^1.4.2"
   },
   "lint-staged": {
