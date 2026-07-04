@@ -585,3 +585,95 @@
     box-shadow: @shadow-1, @shadow-inset-top, @shadow-inset-right, @shadow-inset-bottom, @shadow-inset-left;
   }
 }
+
+// ========== Eyedropper (吸色器) 样式 ==========
+.@{prefix}-color-picker__eyedropper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: @color-picker-eyedropper-size;
+  height: @color-picker-eyedropper-size;
+  border-radius: @color-picker-eyedropper-border-radius;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  transition: all @anim-duration-base @anim-time-fn-easing;
+  color: @text-color-secondary;
+
+  &:hover {
+    background: @bg-color-container-hover;
+    color: @text-color-primary;
+  }
+
+  &:active {
+    background: @bg-color-container-active;
+  }
+
+  // 禁用状态
+  &--disabled {
+    color: @text-color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &:hover {
+      background: transparent;
+      color: @text-color-disabled;
+    }
+  }
+
+  // 图标样式
+  &-icon {
+    width: calc(@color-picker-eyedropper-size - 8px);
+    height: calc(@color-picker-eyedropper-size - 8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+  }
+
+  // 吸色中状态（脉冲动画）
+  &--active {
+    animation: t-color-picker-eyedropper-pulse 1.5s ease-in-out infinite;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: @border-radius-circle;
+      border: 2px solid @text-color-brand;
+      animation: t-color-picker-eyedropper-ring 1.5s ease-in-out infinite;
+    }
+  }
+}
+
+// 脉冲动画
+@keyframes t-color-picker-eyedropper-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+// 圆环扩散动画
+@keyframes t-color-picker-eyedropper-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
