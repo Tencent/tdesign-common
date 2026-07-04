@@ -90,6 +90,7 @@ export default {
       waitingText: '대기 중',
       failText: '실패했습니다',
       successText: '성공했습니다',
+      reloadText: '다시 업로드',
     },
   },
   guide: {

@@ -90,6 +90,7 @@ export default {
       waitingText: '待上傳',
       failText: '上傳失敗',
       successText: '上傳成功',
+      reloadText: '重新上傳',
     },
   },
   guide: {

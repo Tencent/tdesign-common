@@ -38,12 +38,12 @@ jobs:
 
     steps:
       - name: Checkout tdesign-vue
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: Tencent/tdesign-vue
 
       - name: Checkout tdesign-common
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: src/_common
 
@@ -83,12 +83,12 @@ jobs:
             run: pnpm -C packages/tdesign-vue-next/site preview
     steps:
       - name: Checkout tdesign-vue-next
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: Tencent/tdesign-vue-next
 
       - name: Checkout tdesign-common
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: packages/common
 
@@ -131,7 +131,7 @@ jobs:
 
     steps:
       - name: Checkout tdesign-react
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: Tencent/tdesign-react
           submodules: recursive
@@ -139,7 +139,7 @@ jobs:
       - run: rm -rf packages/common
 
       - name: Checkout tdesign-common
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: packages/common
 
@@ -181,12 +181,12 @@ jobs:
             run: npm run site:preview
     steps:
       - name: Checkout tdesign-mobile-vue
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: Tencent/tdesign-mobile-vue
 
       - name: Checkout tdesign-common
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: src/_common
 
@@ -227,12 +227,12 @@ jobs:
 
     steps:
       - name: Checkout tdesign-mobile-react
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: Tencent/tdesign-mobile-react
 
       - name: Checkout tdesign-common
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: src/_common
 
@@ -330,7 +330,7 @@ jobs:
 
       - run: echo ${{ github.event.number }} > pr-id.txt
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pr-id
           path: pr-id.txt
