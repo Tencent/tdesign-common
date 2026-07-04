@@ -271,3 +271,145 @@
     }
   }
 }
+
+.@{prefix}-switch.@{prefix}-switch--round {
+  border-radius: @switch-round-border-radius;
+
+  .@{prefix}-switch__handle,
+  .@{prefix}-switch__handle::before {
+    border-radius: @switch-round-handle-border-radius;
+  }
+}
+
+.@{prefix}-switch.@{prefix}-switch--line {
+  background-color: transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: @switch-line-track-offset-default;
+    right: @switch-line-track-offset-default;
+    top: 50%;
+    height: @switch-line-track-height-default;
+    border-radius: @border-radius-round;
+    background-color: @switch-unchecked-bg-color;
+    transform: translateY(-50%);
+    transition: @switch-transition;
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-hover;
+    }
+  }
+
+  .@{prefix}-switch__handle {
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    width: calc(@switch-height-default - 2 * @switch-width-border-check-default);
+    height: calc(@switch-height-default - 2 * @switch-width-border-check-default);
+    transform: translateY(-50%);
+  }
+
+  .@{prefix}-switch__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.@{prefix}-is-checked {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-checked-bg-color;
+    }
+
+    &:hover {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-checked-bg-color-hover;
+      }
+    }
+
+    .@{prefix}-switch__handle {
+      left: 100%;
+      top: 50%;
+      transform: translate(-100%, -50%);
+    }
+  }
+
+  &.@{prefix}-is-loading {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-loading;
+    }
+
+    &.@{prefix}-is-checked {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-checked-bg-color-loading;
+      }
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-disabled;
+    }
+
+    &.@{prefix}-is-checked {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-checked-bg-color-disabled;
+      }
+    }
+  }
+}
+
+.@{prefix}-switch.@{prefix}-size-l.@{prefix}-switch--line {
+  &::before {
+    height: @switch-line-track-height-l;
+    left: @switch-line-track-offset-l;
+    right: @switch-line-track-offset-l;
+  }
+
+  .@{prefix}-switch__handle {
+    left: 0;
+    width: calc(@switch-height-l - 2 * @switch-width-border-check-l);
+    height: calc(@switch-height-l - 2 * @switch-width-border-check-l);
+  }
+
+  &.@{prefix}-is-checked {
+    .@{prefix}-switch__handle {
+      left: 100%;
+    }
+  }
+}
+
+.@{prefix}-switch.@{prefix}-size-s.@{prefix}-switch--line {
+  &::before {
+    height: @switch-line-track-height-s;
+    left: @switch-line-track-offset-s;
+    right: @switch-line-track-offset-s;
+  }
+
+  .@{prefix}-switch__handle {
+    left: 0;
+    width: calc(@switch-height-s - 2 * @switch-width-border-check-s);
+    height: calc(@switch-height-s - 2 * @switch-width-border-check-s);
+  }
+
+  &.@{prefix}-is-checked {
+    .@{prefix}-switch__handle {
+      left: 100%;
+    }
+  }
+}

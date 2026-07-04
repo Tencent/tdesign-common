@@ -29,3 +29,9 @@ Switches for normal, loading and disabled are provided. Set the corresponding st
 Large, medium (default) and small switches are provided.
 
 {{ size }}
+
+### Switches of Different Shapes
+
+Circle, round and line shapes are provided. Circle is the default shape. Round is suitable for scenarios that emphasize geometric boundaries, and line is suitable for scenarios that weaken background fills.
+
+{{ shape }}
