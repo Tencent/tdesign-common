@@ -74,9 +74,6 @@ export class EyeDropperPolyfill implements EyeDropper {
     scale: 8, // 降低缩放倍数
   };
 
-  /** 临时隐藏的元素列表 */
-  private hiddenElements: Array<{ element: HTMLElement; visibility: string }> = [];
-
   constructor() {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -134,17 +131,7 @@ export class EyeDropperPolyfill implements EyeDropper {
     isOpenState.value = true;
     document.body.style.overflow = 'hidden';
     this.setWaitingCursor();
-
-    // 等待浏览器完成重绘
-    await new Promise((resolve) => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(resolve);
-      });
-    });
-
-    // 截图
     await this.createScreenshot();
-
     this.revertWaitingCursor();
     this.bindEvents();
   }
