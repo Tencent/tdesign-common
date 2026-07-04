@@ -5,6 +5,8 @@
  * 参考: https://developer.mozilla.org/zh-CN/docs/Web/API/EyeDropper
  */
 
+import { EyeDropperPolyfill, isEyeDropperSupported } from '../utils/eyedropperPolyfill';
+
 /**
  * EyeDropper 回调函数类型
  */
@@ -21,22 +23,6 @@ export interface EyeDropperOptions {
   /** 发生错误回调 */
   onError?: (error: Error) => void;
 }
-
-/**
- * 检测浏览器是否支持 EyeDropper API
- *
- * @returns {boolean} 是否支持
- *
- * @example
- * ```ts
- * if (isEyeDropperSupported()) {
- *   // 可以使用吸色功能
- * }
- * ```
- */
-export const isEyeDropperSupported = (): boolean => {
-  return typeof window !== 'undefined' && 'EyeDropper' in window;
-};
 
 /**
  * 执行吸色操作
@@ -64,7 +50,7 @@ export const openEyeDropper = async (options: EyeDropperOptions = {}): Promise<s
 
   try {
     // 创建 EyeDropper 实例
-    const eyeDropper = new (window as any).EyeDropper();
+    const eyeDropper = !isEyeDropperSupported() ? new EyeDropperPolyfill() : new (window as any).EyeDropper();
 
     // 打开取色器并等待结果
     const result: { sRGBHex: string } = await eyeDropper.open();
@@ -77,6 +63,7 @@ export const openEyeDropper = async (options: EyeDropperOptions = {}): Promise<s
         onSuccess?.(colorString);
       } catch (callbackError) {
         // 回调函数的异常不应该影响取色结果
+        // eslint-disable-next-line no-console
         console.warn('[Eyedropper] onSuccess 回调执行出错:', callbackError);
       }
       return colorString;
@@ -148,16 +135,5 @@ export const createEyeDropperManager = (options: EyeDropperOptions = {}) => {
     },
   };
 };
-
-/**
- * EyeDropper API 类型声明
- */
-declare global {
-  interface Window {
-    EyeDropper: new () => {
-      open: () => Promise<{ sRGBHex: string }>;
-    };
-  }
-}
 
 export default openEyeDropper;
