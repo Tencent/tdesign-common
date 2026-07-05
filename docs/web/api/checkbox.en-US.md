@@ -24,6 +24,18 @@ A group of check boxes that are combined according to certain attributes.
 
 {{ group }}
 
+### Button Checkbox Group
+
+Button-style checkbox groups highlight selected items with a background color. They are suitable for permission settings, feature switches, and other scenarios where users need to quickly identify multiple selected results.
+
+{{ button }}
+
+### Button Checkbox Group Sizes
+
+Provides three button checkbox group sizes: large, medium (default), and small.
+
+{{ size }}
+
 ### Controlled Class Checkbox
 
 The checkbox supports controlled and uncontrolled usage.

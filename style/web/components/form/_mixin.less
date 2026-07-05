@@ -8,6 +8,7 @@
       .@{prefix}-input,
       .@{prefix}-select,
       .@{prefix}-radio-button,
+      .@{prefix}-checkbox-button,
       .@{prefix}-cascader,
       .@{prefix}-range-input,
       .@{prefix}-textarea__inner {
@@ -35,6 +36,13 @@
       }
 
       .@{prefix}-radio-button {
+        &:last-child {
+          border-right-color: @@borderColor;
+          @borderColor: 'input-border-color-@{status}';
+        }
+      }
+
+      .@{prefix}-checkbox-button {
         &:last-child {
           border-right-color: @@borderColor;
           @borderColor: 'input-border-color-@{status}';
