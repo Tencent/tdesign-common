@@ -29,3 +29,9 @@ You can bind DOM native events such as `onKeypress` `onKeydown` `onKeyup` `onFoc
 The status of the multi-line text boxes can be Normal, Disabled, Abnormal (with prompt), prompt with additional content.
 
 {{ type }}
+
+### Clearable Multiline Text Box
+
+A multi-line text box with a clear action to quickly clear the entered content.
+
+{{ clearable }}

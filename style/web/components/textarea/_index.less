@@ -67,6 +67,29 @@
     color: @textarea-limit-color;
   }
 
+  // 可清空状态下，为清空图标预留空间，避免文字与图标重叠
+  &--clearable {
+    .@{prefix}-textarea__inner {
+      padding-right: calc(@comp-paddingLR-s + @comp-size-xs);
+    }
+  }
+
+  // 清空图标：Textarea 的 Vue 实现通过 JS（isHover + v-if）控制显隐，
+  // 因此这里只需要处理图标本身的定位、颜色与交互态，无需像 Input 一样通过 opacity/visibility 控制显隐
+  &__clear {
+    position: absolute;
+    top: @textarea-clear-icon-position-top;
+    right: @textarea-clear-icon-position-right;
+    color: @textarea-clear-icon-color;
+    cursor: pointer;
+    line-height: 1;
+    transition: color @anim-time-fn-easing @anim-duration-base;
+
+    &:hover {
+      color: @textarea-clear-icon-color-hover;
+    }
+  }
+
   .@{prefix}-is-disabled {
     color: @textarea-color-text-disabled;
     background-color: @textarea-bg-color-disabled;
