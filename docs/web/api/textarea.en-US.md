@@ -12,6 +12,12 @@ Used for multiline text entry.
 
 {{ base }}
 
+### Clearable Multiline Text Box
+
+Textarea with a clear operation can quickly clear the entered content.
+
+{{ clearable }}
+
 ### Limit the maximum number of characters
 
 Limits the maximum number of characters entered and displays the number of characters.

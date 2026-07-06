@@ -52,6 +52,29 @@
     .textarea-status(error);
   }
 
+  &--clearable &__inner {
+    padding-right: @textarea-clearable-padding-right;
+  }
+
+  &__clear {
+    position: absolute;
+    top: @textarea-clear-icon-top;
+    right: @textarea-clear-icon-right;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: @textarea-clear-icon-color;
+    font-size: @textarea-clear-icon-size;
+    line-height: 1;
+    cursor: pointer;
+    transition: color @anim-duration-base linear;
+
+    &:hover {
+      color: @textarea-clear-icon-color-hover;
+    }
+  }
+
   &__info_wrapper {
     display: flex;
     column-gap: @textarea-tips-gap;

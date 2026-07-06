@@ -17,6 +17,8 @@
 @textarea-placeholder-color: @text-color-placeholder;
 @textarea-text-color: @text-color-primary;
 @textarea-limit-color: @text-color-placeholder;
+@textarea-clear-icon-color: @text-color-placeholder;
+@textarea-clear-icon-color-hover: @text-color-secondary;
 @textarea-bg-color-default: @bg-color-specialcomponent;
 @textarea-bg-color-disabled: @bg-color-component-disabled;
 @textarea-color-text-disabled: @text-color-disabled;
@@ -33,6 +35,7 @@
 // 尺寸
 @textarea-height: @comp-size-xxxl;
 @textarea-tips-min-height: @comp-size-xs;
+@textarea-clear-icon-size: @font-size-l;
 
 // 字体
 @textarea-font: @font-body-medium;
@@ -40,7 +43,12 @@
 
 // 间距
 @textarea-padding: calc(calc(@comp-size-m - @text-line-height-base) / 2) @comp-paddingLR-s;
+@textarea-clearable-padding-right: @comp-paddingLR-xxl;
 @textarea-tips-gap: @comp-margin-s;
+
+// 位置
+@textarea-clear-icon-top: calc(calc(@comp-size-m - @textarea-clear-icon-size) / 2);
+@textarea-clear-icon-right: @comp-paddingLR-s;
 
 // 边框
 @textarea-border-color: @border-level-2-color;
