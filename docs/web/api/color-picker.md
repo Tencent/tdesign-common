@@ -49,3 +49,9 @@ spline: form
 ### 只读状态的颜色选择器
 
 {{ status-readonly }}
+
+### 支持吸色的颜色选择器
+
+设置 `eyeDropper=true` 即可开启吸色功能，面板顶部会出现吸色按钮。点击后使用浏览器原生 EyeDropper API 从屏幕任意位置取色。当浏览器不支持时按钮自动禁用。
+
+{{ eye-dropper }}
