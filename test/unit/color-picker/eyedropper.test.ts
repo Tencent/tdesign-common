@@ -6,8 +6,8 @@ afterEach(() => {
 });
 
 class MockEyeDropper {
-  constructor(private hex: string) {}
-  open() {
+  constructor(private hex: string = '#aabbcc') {}
+  open(_opts?: { signal?: AbortSignal }) {
     return Promise.resolve({ sRGBHex: this.hex });
   }
 }
@@ -25,41 +25,56 @@ class FailingEyeDropper {
 }
 
 describe('isEyeDropperSupported', () => {
-  it('returns false in SSR (no window)', () => {
-    // default Node test env has no window
+  it('returns false when EyeDropper is absent from globalThis', () => {
+    // default Node test env has no EyeDropper
     expect(isEyeDropperSupported()).toBe(false);
   });
 
-  it('returns false when window exists but EyeDropper is absent', () => {
-    vi.stubGlobal('window', {});
+  it('returns false when the EyeDropper global is not a function', () => {
+    vi.stubGlobal('EyeDropper', 'not-a-constructor');
     expect(isEyeDropperSupported()).toBe(false);
   });
 
-  it('returns true when EyeDropper is present on window', () => {
-    vi.stubGlobal('window', { EyeDropper: class {} });
+  it('returns true when EyeDropper is a constructor on globalThis', () => {
+    vi.stubGlobal('EyeDropper', class {});
     expect(isEyeDropperSupported()).toBe(true);
   });
 });
 
 describe('openEyeDropper', () => {
-  it('returns null when EyeDropper is not supported', async () => {
-    // no window stub → SSR-like environment
+  it('returns null when EyeDropper is not available', async () => {
     expect(await openEyeDropper()).toBeNull();
   });
 
-  it('returns the selected hex color on success', async () => {
-    vi.stubGlobal('window', { EyeDropper: class { open() { return Promise.resolve({ sRGBHex: '#ff6600' }); } } });
-    const result = await openEyeDropper();
-    expect(result).toBe('#ff6600');
+  it('returns the picked hex color on success', async () => {
+    vi.stubGlobal('EyeDropper', class extends MockEyeDropper {
+      constructor() { super('#ff6600'); }
+    });
+    expect(await openEyeDropper()).toBe('#ff6600');
+  });
+
+  it('forwards an AbortSignal to open()', async () => {
+    const openSpy = vi.fn().mockResolvedValue({ sRGBHex: '#112233' });
+    vi.stubGlobal('EyeDropper', class { open = openSpy; });
+    const controller = new AbortController();
+    await openEyeDropper(controller.signal);
+    expect(openSpy).toHaveBeenCalledWith({ signal: controller.signal });
+  });
+
+  it('calls open() without options when no signal provided', async () => {
+    const openSpy = vi.fn().mockResolvedValue({ sRGBHex: '#112233' });
+    vi.stubGlobal('EyeDropper', class { open = openSpy; });
+    await openEyeDropper();
+    expect(openSpy).toHaveBeenCalledWith(undefined);
   });
 
   it('returns null when user cancels (AbortError)', async () => {
-    vi.stubGlobal('window', { EyeDropper: AbortingEyeDropper });
+    vi.stubGlobal('EyeDropper', AbortingEyeDropper);
     expect(await openEyeDropper()).toBeNull();
   });
 
   it('returns null on any unexpected error from open()', async () => {
-    vi.stubGlobal('window', { EyeDropper: FailingEyeDropper });
+    vi.stubGlobal('EyeDropper', FailingEyeDropper);
     expect(await openEyeDropper()).toBeNull();
   });
 });
