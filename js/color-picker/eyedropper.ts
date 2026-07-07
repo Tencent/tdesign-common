@@ -1,23 +1,35 @@
-declare class EyeDropper {
-  open(options?: { signal?: AbortSignal }): Promise<{ sRGBHex: string }>;
+export interface EyeDropperResult {
+  sRGBHex: string;
 }
 
-declare global {
-  interface Window {
-    EyeDropper?: typeof EyeDropper;
-  }
+export interface EyeDropperOpenOptions {
+  signal?: AbortSignal;
 }
 
-export const isEyeDropperSupported = (): boolean => typeof window !== 'undefined' && 'EyeDropper' in window;
+interface EyeDropperInstance {
+  open(options?: EyeDropperOpenOptions): Promise<EyeDropperResult>;
+}
 
-export const openEyeDropper = async (): Promise<string | null> => {
-  if (!isEyeDropperSupported()) return null;
+interface EyeDropperConstructor {
+  new(): EyeDropperInstance;
+}
+
+function getEyeDropperCtor(): EyeDropperConstructor | undefined {
+  if (typeof globalThis === 'undefined') return undefined;
+  const { EyeDropper } = globalThis as unknown as { EyeDropper?: unknown };
+  return typeof EyeDropper === 'function' ? (EyeDropper as EyeDropperConstructor) : undefined;
+}
+
+export const isEyeDropperSupported = (): boolean => getEyeDropperCtor() !== undefined;
+
+export const openEyeDropper = async (signal?: AbortSignal): Promise<string | null> => {
+  const Ctor = getEyeDropperCtor();
+  if (!Ctor) return null;
   try {
-    const eyeDropper = new window.EyeDropper!();
-    const result = await eyeDropper.open();
+    const result = await new Ctor().open(signal ? { signal } : undefined);
     return result.sRGBHex;
   } catch {
-    // user cancel (AbortError) or unsupported - both safe to swallow
+    // user cancel (AbortError) or concurrent session - both safe to swallow
     return null;
   }
 };
