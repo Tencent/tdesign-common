@@ -49,3 +49,9 @@ The most recently used color can be configured through `recentColors`. A value o
 ### Read-only Color Selector
 
 {{ status-readonly }}
+
+### Color Picker with Screen Color Sampling
+
+With `eyeDropper` enabled, an eyedropper button in the panel header invokes the browser's native EyeDropper API to pick a color from anywhere on the screen. This relies on browser support (Chrome / Edge 95+); the button is disabled in unsupported environments.
+
+{{ eye-dropper }}

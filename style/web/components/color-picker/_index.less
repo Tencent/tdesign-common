@@ -51,6 +51,17 @@
       pointer-events: none;
     }
   }
+
+  // 吸色按钮：视觉规则复用 &__icon（组件侧同时挂载两个类），此处仅补充原生 button 元素的复位与固定尺寸
+  &__eyedropper {
+    width: @color-picker-swatch-icon-size;
+    height: @color-picker-swatch-icon-size;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    flex: none;
+  }
 }
 
 .@{prefix}-color-picker__head {

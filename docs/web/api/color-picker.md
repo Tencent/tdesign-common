@@ -49,3 +49,9 @@ spline: form
 ### 只读状态的颜色选择器
 
 {{ status-readonly }}
+
+### 吸管取色的颜色选择器
+
+开启 `eyeDropper` 后，可通过面板顶部的吸管按钮调起浏览器原生 EyeDropper API，直接拾取屏幕上任意位置的颜色。该能力依赖浏览器支持（Chrome / Edge 95+），不支持的环境中按钮呈禁用态。
+
+{{ eye-dropper }}
