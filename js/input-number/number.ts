@@ -43,7 +43,7 @@ export function putInRangeNumber(
     min?: NumberType;
     lastValue?: NumberType;
     largeNumber?: boolean;
-  }
+  },
 ) {
   if (val === '') return undefined;
   const { max, min, lastValue, largeNumber } = params;
@@ -235,7 +235,7 @@ export function formatUnCompleteNumber(
     decimalPlaces?: InputNumberDecimalPlaces;
     largeNumber?: boolean;
     isToFixed?: boolean;
-  } = {}
+  } = {},
 ): number | string {
   if (['', null, undefined].includes(number) || !/\d+/.test(number)) return undefined;
   const { decimalPlaces, largeNumber, isToFixed } = extra;

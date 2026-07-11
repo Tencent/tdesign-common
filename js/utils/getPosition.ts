@@ -5,7 +5,7 @@ const getPosition = (
   contentEle: HTMLElement,
   placement: Partial<Placement>,
   clientX?: Number,
-  clientY?: Number
+  clientY?: Number,
 ): { left: number; top: number } => {
   const targetRect = targetEle.getBoundingClientRect() as DOMRect;
   const contentRect = contentEle.getBoundingClientRect() as DOMRect;
