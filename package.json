@@ -43,7 +43,7 @@
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.10.2",
     "@types/tinycolor2": "^1.4.6",
-    "@rss1102/eslint-config-tdesign": "^0.0.1",
+    "@rss1102/eslint-config-tdesign": "^0.0.2",
     "@rss1102/prettier-config-tdesign": "^0.0.1",
     "@vitest/coverage-v8": "^3.1.4",
     "commitizen": "^4.2.2",
