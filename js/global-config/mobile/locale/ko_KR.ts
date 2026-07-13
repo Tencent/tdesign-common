@@ -125,6 +125,26 @@ export default {
       quote: '인용',
     },
   },
+  chatRecord: {
+    holdToTalk: '길게 눌러 말하기',
+    requestAuth: '마이크 권한을 허용해 주세요',
+    releaseToCancel: '놓으면 취소',
+    releaseToSend: '놓으면 전송, 위로 밀면 취소',
+    cancelText: '취소',
+    sendText: '전송',
+    busyTip: '인식 중입니다. 잠시만 기다려 주세요…',
+    recognizeFailTip: '음성 인식에 실패했습니다. 다시 시도해 주세요',
+    missingPluginTip: '음성 인식 플러그인 WechatSI가 없습니다',
+    authSettingFail: '녹음 권한 설정을 가져오지 못했습니다',
+    openSettingFail: '설정을 열지 못했습니다',
+    systemMicTitle: '마이크를 사용할 수 없습니다',
+    systemMicContent:
+      '휴대폰 시스템에서 "WeChat"의 마이크 권한이 꺼져 있는 것으로 감지되었습니다.\n\n' +
+      '시스템 설정에서 활성화해 주세요:\n' +
+      '- iOS: 설정 > WeChat > 마이크\n' +
+      '- Android: 설정 > 앱 관리 > WeChat > 권한 > 마이크\n\n' +
+      '활성화한 후 미니 프로그램으로 돌아가 다시 시도해 주세요.',
+  },
   chatSender: {
     placeholder: '메시지를 입력하세요...',
     sendText: '보내기',
