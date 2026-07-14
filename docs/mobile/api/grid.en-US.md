@@ -1,35 +1,41 @@
 ---
 title: Grid
 description: Used for functional entrance layout, cut pages or specific areas into large blocks such as several other blocks, forming several functional entrances.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
 
-### Basic Grid
+## Code Demo
+
+### 01 Component Type
+
+#### Basic Grid
 
 {{ base }}
 
-### Description
+#### with Description
 
 {{ desc }}
 
-### Bordered
+#### with Bordered
 
 {{ bordered }}
 
-### Badge
+#### with Badge
 
 {{ badge }}
 
-### Scrollable
+#### Scrollable
 
 {{ scroll }}
 
-### Icon
+### 02 Component Style
+
+#### with Icon
 
 {{ icon }}
 
-### Card
+#### Card
 
 {{ card }}

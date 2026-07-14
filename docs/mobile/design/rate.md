@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当需要对某行为/事物进行简单的星级评定时使用。
@@ -43,6 +41,7 @@
 <hr />
 
 ##### 在同一个评论场景中，评分机制应保持一致，不建议将半星、整星的评分机制混用。
+
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/rate/rate-5.png" />

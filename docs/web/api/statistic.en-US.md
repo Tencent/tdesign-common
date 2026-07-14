@@ -2,7 +2,7 @@
 title: Statistic
 description: Highlight and display a set of numeric or descriptive statistical data.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

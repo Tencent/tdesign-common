@@ -36,7 +36,7 @@ When the data is empty, the display will show that there is no data available. Y
 
 {{ empty }}
 
-### Draggable Target List  
+### Draggable Target List
 
 Support sorting the target list by drag and drop.
 

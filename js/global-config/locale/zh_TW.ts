@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} 項/頁',
     jumpTo: '跳至',
     page: '頁',
-    total: '共 {total} 項數據',
+    total: '共 {count} 項數據',
   },
   cascader: {
     empty: '暫無數據',
@@ -99,20 +99,7 @@ export default {
       week: '請選擇周',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
-    months: [
-      '1月',
-      '2月',
-      '3月',
-      '4月',
-      '5月',
-      '6月',
-      '7月',
-      '8月',
-      '9月',
-      '10月',
-      '11月',
-      '12月',
-    ],
+    months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     quarters: ['一季度', '二季度', '三季度', '四季度'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -180,6 +167,7 @@ export default {
       validator: '${name}不符合要求',
       boolean: '${name}數據類型必須是布林類型',
       number: '${name}必須是數字',
+      email: '請輸入正確的${name}',
     },
     colonText: '：',
   },
@@ -203,7 +191,7 @@ export default {
     recentColorTitle: '最近使用的顔色',
     clearConfirmText: '確定清空最近使用的顔色嗎？',
     singleColor: '單色',
-    gradientColor: '漸變'
+    gradientColor: '漸變',
   },
   guide: {
     finishButtonProps: {
@@ -232,6 +220,7 @@ export default {
     mirrorTipText: '鏡像',
     rotateTipText: '旋轉',
     originalSizeTipText: '原始大小',
+    previewText: '預覽',
   },
   typography: {
     expandText: '展開',
@@ -270,10 +259,11 @@ export default {
     loadingEndText: '已深度思考',
     uploadImageText: '上傳圖片',
     uploadAttachmentText: '上傳附件',
+    shareTipText: '分享',
   },
   qrcode: {
     expiredText: '二維碼過期',
     refreshText: '點擊刷新',
     scannedText: '已掃描',
-  }
+  },
 } as const;

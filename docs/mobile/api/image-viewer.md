@@ -1,20 +1,23 @@
 ---
 title: ImageViewer 图片预览
-description: 预览图片内容。
-spline: base
+description: 用于图片内容的缩略展示与查看。
+spline: data
 isComponent: true
 toc: false
 ---
 
-### 基础图片预览
+## 代码演示
+
+### 组件类型
+
+#### 基础图片预览
 
 {{ base }}
 
-### 基础图片预览 + 对齐方式
+#### 基础图片预览 + 对齐方式
 
 {{ align }}
 
-### 带操作图片预览
+#### 带操作图片预览
 
 {{ operation }}
-

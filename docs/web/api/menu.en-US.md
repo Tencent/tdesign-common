@@ -68,3 +68,7 @@ Custom functions can be added on the original navigation. Suitable for complex l
 A collapse button is provided on the side navigation, which can minimize the sidebar when clicked. Commonly used in side navigation with icons.
 
 {{ closable-side }}
+
+### Auto-collapse overflow menu items
+
+{{ head-menu-ellipsis }}

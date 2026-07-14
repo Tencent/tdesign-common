@@ -1,6 +1,6 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 // 进度条基本样式
 .@{progress} {
@@ -35,7 +35,7 @@
   align-items: center;
 
   .@{progress}__icon {
-    font-size: @progress-line-icon-font-size;
+    font-size: @progress-line-icon-size;
   }
 }
 
@@ -47,7 +47,7 @@
   align-items: center;
 
   .@{progress}__info {
-    font-size: @progress-plump-label-font-size;
+    font: @progress-plump-label-font;
   }
 }
 
@@ -72,7 +72,7 @@
   }
 }
 
-// 环形
+// 环形 for mini
 .@{progress}__canvas--circle {
   position: relative;
   width: @progress-circle-width;
@@ -96,9 +96,7 @@
 
   .@{progress}__info {
     margin: 0;
-    font-size: @progress-circle-label-font-size;
-    font-weight: @progress-circle-label-font-weight;
-    line-height: @progress-circle-label-line-height;
+    font: @progress-circle-label-font;
     overflow: hidden;
     text-overflow: ellipsis;
     /* stylelint-disable-next-line */
@@ -108,7 +106,7 @@
   }
 
   .@{progress}__icon {
-    font-size: @progress-circle-icon-font-size;
+    font-size: @progress-circle-icon-size;
   }
 }
 
@@ -123,9 +121,7 @@
     left: 50%;
     width: 100%;
     margin: 0;
-    font-size: @progress-circle-label-font-size;
-    font-weight: 600;
-    line-height: 1;
+    font: @progress-circle-label-font;
     text-align: center;
     transform: translate(-50%, -50%);
   }
@@ -140,7 +136,7 @@
   }
 
   .@{prefix}-progress__icon {
-    font-size: @progress-circle-icon-font-size;
+    font-size: @progress-circle-icon-size;
   }
 }
 
@@ -154,10 +150,10 @@
       bottom: 0;
       left: 0;
       z-index: 1;
-      content: "";
-      animation: progress-active-animation 2s cubic-bezier(.23, .99, .86, .2) infinite;
+      content: '';
+      animation: progress-active-animation 2s cubic-bezier(0.23, 0.99, 0.86, 0.2) infinite;
       background: @progress-inner-bg-color-active;
-      opacity: .2;
+      opacity: 0.2;
     }
   }
 }
@@ -206,12 +202,12 @@
 @keyframes progress-active-animation {
   0% {
     width: 0;
-    opacity: .1;
+    opacity: 0.1;
   }
 
   35% {
     width: 50%;
-    opacity: .4;
+    opacity: 0.4;
   }
 
   100% {

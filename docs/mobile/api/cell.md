@@ -1,12 +1,14 @@
 ---
 title: Cell 单元格
 description: 用于各个类别行的信息展示。
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+## 代码演示
+
+### 01 组件类型
 
 #### 单行单元格
 
@@ -16,7 +18,7 @@ toc: false
 
 {{ multiple }}
 
-### 样式
+### 02 组件样式
 
 #### 卡片单元格
 

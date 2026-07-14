@@ -8,3 +8,6 @@ default.extend-ignore-re   = [
 [default.extend-words]
 actived = "actived"
 colum = "colum"
+loosing = "loosing"
+Normale = "Normale"
+Impossibile = "Impossibile"

@@ -1,37 +1,49 @@
 .content-placement-top {
-  .@{prefix}-popover[data-popper-placement^="top"] {
+  .@{prefix}-popover[data-popper-placement^='top'] {
     .@{prefix}-popover__content {
       margin-bottom: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-bottom: @popover-content-arrow-margin;
     }
   }
 }
 
 .content-placement-bottom {
-  .@{prefix}-popover[data-popper-placement^="bottom"] {
+  .@{prefix}-popover[data-popper-placement^='bottom'] {
     .@{prefix}-popover__content {
       margin-top: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-top: @popover-content-arrow-margin;
     }
   }
 }
 
 .content-placement-left {
-  .@{prefix}-popover[data-popper-placement^="left"] {
+  .@{prefix}-popover[data-popper-placement^='left'] {
     .@{prefix}-popover__content {
       margin-right: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-right: @popover-content-arrow-margin;
     }
   }
 }
 
 .content-placement-right {
-  .@{prefix}-popover[data-popper-placement^="right"] {
+  .@{prefix}-popover[data-popper-placement^='right'] {
     .@{prefix}-popover__content {
       margin-left: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-left: @popover-content-arrow-margin;
     }
   }
 }
 
 .arrow-placement-top() {
-  .@{prefix}-popover[data-popper-placement^="top"] {
+  .@{prefix}-popover[data-popper-placement^='top'] {
     .@{prefix}-popover__arrow {
       bottom: 0;
       border-top-color: currentColor;
@@ -40,7 +52,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="top"] {
+  .@{prefix}-popover[data-popper-placement='top'] {
     transform-origin: 50% 100%;
 
     .@{prefix}-popover__arrow {
@@ -49,7 +61,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="top-start"] {
+  .@{prefix}-popover[data-popper-placement='top-start'] {
     transform-origin: 0 100%;
 
     .@{prefix}-popover__arrow {
@@ -57,7 +69,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="top-end"] {
+  .@{prefix}-popover[data-popper-placement='top-end'] {
     transform-origin: 100% 100%;
 
     .@{prefix}-popover__arrow {
@@ -67,7 +79,7 @@
 }
 
 .arrow-placement-left() {
-  .@{prefix}-popover[data-popper-placement^="left"] {
+  .@{prefix}-popover[data-popper-placement^='left'] {
     .@{prefix}-popover__arrow {
       right: 0;
       border-right-width: 0;
@@ -76,7 +88,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="left"] {
+  .@{prefix}-popover[data-popper-placement='left'] {
     transform-origin: 100% 50%;
 
     .@{prefix}-popover__arrow {
@@ -85,7 +97,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="left-start"] {
+  .@{prefix}-popover[data-popper-placement='left-start'] {
     transform-origin: 100% 0;
 
     .@{prefix}-popover__arrow {
@@ -93,7 +105,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="left-end"] {
+  .@{prefix}-popover[data-popper-placement='left-end'] {
     transform-origin: 100% 100%;
 
     .@{prefix}-popover__arrow {
@@ -103,7 +115,7 @@
 }
 
 .arrow-placement-bottom() {
-  .@{prefix}-popover[data-popper-placement^="bottom"] {
+  .@{prefix}-popover[data-popper-placement^='bottom'] {
     .@{prefix}-popover__arrow {
       top: 0;
       border-top-width: 0;
@@ -112,7 +124,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="bottom"] {
+  .@{prefix}-popover[data-popper-placement='bottom'] {
     transform-origin: 50% 0;
 
     .@{prefix}-popover__arrow {
@@ -121,7 +133,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="bottom-start"] {
+  .@{prefix}-popover[data-popper-placement='bottom-start'] {
     transform-origin: 0 0;
 
     .@{prefix}-popover__arrow {
@@ -129,7 +141,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="bottom-end"] {
+  .@{prefix}-popover[data-popper-placement='bottom-end'] {
     transform-origin: 100% 0;
 
     .@{prefix}-popover__arrow {
@@ -139,7 +151,7 @@
 }
 
 .arrow-placement-right() {
-  .@{prefix}-popover[data-popper-placement^="right"] {
+  .@{prefix}-popover[data-popper-placement^='right'] {
     .@{prefix}-popover__arrow {
       left: 0;
       border-right-color: currentColor;
@@ -148,7 +160,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="right"] {
+  .@{prefix}-popover[data-popper-placement='right'] {
     transform-origin: 0 50%;
 
     .@{prefix}-popover__arrow {
@@ -157,7 +169,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="right-start"] {
+  .@{prefix}-popover[data-popper-placement='right-start'] {
     transform-origin: 0 0;
 
     .@{prefix}-popover__arrow {
@@ -165,7 +177,7 @@
     }
   }
 
-  .@{prefix}-popover[data-popper-placement="right-end"] {
+  .@{prefix}-popover[data-popper-placement='right-end'] {
     transform-origin: 0 100%;
 
     .@{prefix}-popover__arrow {
@@ -175,8 +187,8 @@
 }
 
 .popover-theme(@theme) {
-  @color: "popover-@{theme}-color";
-  @bgColor: "popover-@{theme}-bg-color";
+  @color: 'popover-@{theme}-color';
+  @bgColor: 'popover-@{theme}-bg-color';
 
   .@{prefix}-popover--@{theme} {
     color: @@color;

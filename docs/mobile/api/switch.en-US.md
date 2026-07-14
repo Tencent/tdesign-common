@@ -1,28 +1,25 @@
 ---
 title: Switch
 description: Switch is used to control the opening or closing of a function
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---
 
-
-### Basic Switch
-
-Usage scenario: Basic switch can be used when there is no need to emphasize the switch status through copywriting
+#### Basic Switch
 
 {{ base }}
 
-### Switch With Description
-
-Usage scenario: When you need to explain and prompt the result through description, you can use the switch with description
+#### Switch With Description
 
 {{ label }}
 
-### Switch Status
+### 02 Component Status
 
 {{ status }}
 
-### Switch Size
+### 03 Component Style
+
+#### Switch Size
 
 {{ size }}

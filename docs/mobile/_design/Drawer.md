@@ -30,7 +30,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/drawer/drawer-3.png" />
  </div>
 
-
 ### 推荐/慎用示例
 
 ##### 若抽屉内的菜单项较多，且菜单项之间的关联性存在差异时，建议对菜单项进行分组。

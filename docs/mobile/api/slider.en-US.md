@@ -1,7 +1,7 @@
 ---
 title: Slider
 description: Used to select the value, range, and gear on the horizontal axis.
-spline: base
+spline: form
 isComponent: true
 toc: false
 ---
@@ -10,30 +10,30 @@ toc: false
 
 ### Component Type
 
-Single cursor slider
+#### Single Handle
 
 {{ base }}
 
-Double cursor slider
+#### Double Handle
 
 {{ range }}
 
-Slide selector with numerical value
+#### with numerical value
 
 {{ label }}
 
-Slide selector with scale
+#### with Scale
 
 {{ step }}
 
-### Component Status
+### 02 Component Status
 
-The slider is disabled
+#### Disabled
 
 {{ disabled }}
 
-#### Special Style
+### 03 Special Style
 
-Capsule type slider
+#### Capsule Style Slider
 
 {{ capsule }}

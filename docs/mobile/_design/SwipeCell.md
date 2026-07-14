@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 ### 常见用法
 
 ##### 通常使用在对话列表、收藏列表、购物车等场景中，承载删除、收藏等辅助操作。
@@ -43,7 +42,6 @@
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-5.png" />
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 左右滑动操作通常承载低频的辅助功能，不建议承载高频或过于复杂的功能。
@@ -56,6 +54,7 @@
 <hr />
 
 ##### 按钮的顺序、颜色使用需要符合用户预期。
+
 <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-7.png" />
   <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
@@ -64,11 +63,11 @@
 <hr />
 
 ##### 左滑的操作数不建议超过4个，右滑不建议超过1个，操作过多时应改用其它交互方式。
+
 <div class="item">
   <img src="https://tdesign.gtimg.com/site/design/mobile-guide/swipe-cell/swipe-cell-8.png" />
   <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
-
 
 ### 相似组件
 

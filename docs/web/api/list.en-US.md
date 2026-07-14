@@ -2,7 +2,7 @@
 title: List
 description: The lists use a continuous column to display multiple rows of elements. They are commonly used to display batches of modules with the same composition and content. They can carry a variety of information content, from pure text to complex combinations of graphics and text.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

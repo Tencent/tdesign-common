@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import 'dayjs/locale/ru';
 
 export default {
@@ -27,22 +28,58 @@ export default {
   cascader: {
     title: 'Название',
     placeholder: 'Выберите опцию',
+    filterPlaceholder: 'Поиск',
+    empty: 'Совпадений не найдено',
   },
   dropdownMenu: {
     reset: 'Сброс',
     confirm: 'Подтвердить',
   },
   dateTimePicker: {
+    dayjsLocale: 'ru',
     title: 'Выберите время',
     cancel: 'Отмена',
     confirm: 'Подтвердить',
-    format: 'DD.MM.YYYY',
+    format: 'DD.MM.YYYY HH:mm:ss',
+    months: [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь',
+    ],
     yearLabel: 'Год',
     monthLabel: 'Месяц',
     dateLabel: 'День',
     hourLabel: 'Час',
     minuteLabel: 'Минута',
     secondLabel: 'Секунда',
+  },
+  form: {
+    errorMessage: {
+      date: 'Введите правильный ${name}',
+      url: 'Введите правильный ${name}',
+      whitespace: '${name} не может быть пустым',
+      required: '${name} обязательно для заполнения',
+      max: 'Длина символов ${name} не должна превышать ${validate} символов',
+      min: 'Длина символов ${name} не должна быть меньше ${validate} символов',
+      len: 'Длина символов ${name} должна быть ${validate}',
+      enum: '${name} может быть только ${validate} и т.д.',
+      idcard: 'Введите правильный ${name}',
+      telnumber: 'Введите правильный ${name}',
+      pattern: 'Введите правильный ${name}',
+      validator: '${name} не соответствует требованиям',
+      boolean: 'Тип данных ${name} должен быть булевым',
+      number: '${name} должно быть числом',
+    },
+    colonText: ':',
   },
   picker: {
     cancel: 'Отмена',
@@ -52,6 +89,7 @@ export default {
     loadingTexts: ['Потяните вниз для обновления', 'Отпустите для обновления', 'Обновление...', 'Обновление завершено'],
   },
   rate: {
+    texts: ['Плохо', 'Обидно', 'Нормально', 'Хорошо', 'Отлично'],
     valueText: '{value} баллов',
     noValueText: 'Без оценки',
   },
@@ -77,6 +115,7 @@ export default {
       waitingText: 'Ожидание загрузки',
       failText: 'Ошибка загрузки',
       successText: 'Загрузка завершена',
+      reloadText: 'Загрузить повторно',
     },
   },
   guide: {
@@ -84,5 +123,64 @@ export default {
     skip: 'Пропустить',
     finish: 'Готово',
     back: 'Назад',
+  },
+  typography: {
+    expandText: 'Развернуть',
+    collapseText: 'Свернуть',
+    copiedText: 'Скопировано',
+  },
+  qrcode: {
+    expiredText: 'истекший',
+    refreshText: 'обновить',
+    scannedText: 'сканированный',
+  },
+  attachments: {
+    status: {
+      pending: 'Загрузка...',
+      fail: 'Ошибка загрузки',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: 'Обновить',
+      copy: 'Копировать',
+      good: 'Нравится',
+      bad: 'Не нравится',
+      share: 'Поделиться',
+      quote: 'Цитировать',
+    },
+  },
+  chatRecord: {
+    holdToTalk: 'Нажмите и удерживайте, чтобы говорить',
+    requestAuth: 'Пожалуйста, предоставьте разрешение на использование микрофона',
+    releaseToCancel: 'Отпустите для отмены',
+    releaseToSend: 'Отпустите для отправки, проведите вверх для отмены',
+    cancelText: 'Отмена',
+    sendText: 'Отправить',
+    busyTip: 'Распознавание, пожалуйста, подождите…',
+    recognizeFailTip: 'Не удалось распознать запись, попробуйте снова',
+    missingPluginTip: 'Отсутствует плагин распознавания речи WechatSI',
+    authSettingFail: 'Не удалось получить настройки разрешения на запись',
+    openSettingFail: 'Не удалось открыть настройки',
+    systemMicTitle: 'Невозможно использовать микрофон',
+    systemMicContent:
+      'Обнаружено, что в системе телефона отключено разрешение ' +
+      'на использование микрофона для "WeChat".\n\n' +
+      'Пожалуйста, включите его в настройках системы:\n' +
+      '- iOS: Настройки > WeChat > Микрофон\n' +
+      '- Android: Настройки > Управление приложениями > WeChat > Разрешения > Микрофон\n\n' +
+      'После включения вернитесь в мини-программу и повторите попытку.',
+  },
+  chatSender: {
+    placeholder: 'Введите сообщение...',
+    sendText: 'Отправить',
+    stopText: 'Остановить',
+  },
+  chatThinking: {
+    status: {
+      pending: 'Думаю...',
+      complete: 'Завершил размышления',
+      stop: 'Размышления остановлены',
+    },
   },
 };

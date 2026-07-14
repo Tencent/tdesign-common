@@ -1,12 +1,12 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-card {
   .reset;
@@ -36,7 +36,8 @@
   display: flow-root;
   width: 100%;
   max-height: 100%;
-  border-radius: @border-radius-default @border-radius-default 0 0;
+  border-top-left-radius: calc(@card-border-radius - 1px);
+  border-top-right-radius: calc(@card-border-radius - 1px);
 }
 
 .@{prefix}-card__body {
@@ -123,4 +124,8 @@
 
   + .@{prefix}-card__body {
   }
+}
+
+.@{prefix}-loading__parent .@{prefix}-card ~ .@{prefix}-loading__overlay {
+  border-radius: @card-border-radius;
 }

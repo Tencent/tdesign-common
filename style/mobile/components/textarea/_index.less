@@ -1,63 +1,96 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "../../mixins/_index.less";
-
-&.@{prefix}-textarea {
-  position: relative;
+.@{prefix}-textarea {
+  display: flex;
+  box-sizing: border-box;
+  padding: @textarea-padding;
   background-color: @textarea-background-color;
 
-  &__name:not(:empty) {
-    position: relative;
-    padding: @textarea-vertical-padding @textarea-horizontal-padding;
-    font-size: @textarea-font-size;
-    color: @textarea-text-color;
+  &--layout-vertical {
+    flex-direction: column;
+  }
+
+  &__label:not(:empty) {
+    font: @textarea-label-font;
+    color: @textarea-label-color;
+    flex-shrink: 0;
+    margin-right: @spacer-2;
+    width: @textarea-label-width;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    &::after {
-      .hairline-bottom();
-
-      left: @textarea-horizontal-padding;
+    .@{prefix}-textarea--layout-vertical & {
+      font: @font-body-medium;
+      padding-bottom: @spacer;
     }
   }
 
   &__wrapper {
-    padding: @textarea-vertical-padding @textarea-horizontal-padding;
-    font-size: @textarea-font-size;
-    color: @textarea-text-color;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1 1 auto;
+    overflow: hidden;
 
-    textarea {
-      display: block;
+    &-inner {
+      flex: 1 1 auto;
       box-sizing: border-box;
-      width: 100%;
-      min-height: @textarea-height;
+      width: inherit;
+      min-width: 0;
+      height: 100%;
+      min-height: 20px;
+      margin: 0;
+      padding: 0;
       text-align: left;
-      border: 0;
       background-color: transparent;
-      color: inherit;
-      resize: none;
+      border: 0;
       outline: none;
-      font-size: @textarea-font-size;
-      line-height: @textarea-line-height;
-    }
-
-    textarea::placeholder {
-      color: @textarea-placeholder-text-color;
+      resize: none;
+      font: @textarea-text-font;
+      color: @textarea-text-color;
     }
   }
 
-  &-is-disabled {
+  &__placeholder {
+    &::placeholder {
+      color: @textarea-placeholder-color;
+      font: @textarea-placeholder-font;
+    }
+  }
+
+  &__indicator:not(:empty) {
+    color: @textarea-indicator-text-color;
+    font: @textarea-indicator-text-font;
+    text-align: @textarea-indicator-text-align;
+    padding-top: @textarea-indicator-text-padding-top;
+  }
+
+  &--border {
+    border-radius: @textarea-border-radius;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: @textarea-border-width solid @textarea-border-color;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+  }
+
+  &--disabled {
     color: @textarea-disabled-text-color;
+    cursor: not-allowed;
   }
 
-  &__count:not(:empty) {
-    margin-top: 8px;
-    text-align: right;
-    color: @textarea-counter-color;
-    font-size: @textarea-counter-font-size;
-    line-height: @textarea-counter-line-height;
+  &--readonly {
+    cursor: pointer;
   }
 }

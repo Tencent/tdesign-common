@@ -1,39 +1,43 @@
 ---
 title: Tabs
 description: Used to change the display after content classification.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---
 
-### Split Tabs
+## Code Demo
+
+### 01 Component Type
+
+#### Distribute Tabs
 
 {{ evenly }}
 
-### Isometric Tabs
+#### Isometric Tabs
 
 {{ isometric }}
 
-### Tabs With Icon
+#### Tabs with Icon
 
 {{ icon }}
 
-### With Badge Tabs
+#### Tabs with Badge
 
 {{ badge }}
 
-### With Content Area Tabs
+#### Tabs with Content
 
 {{ content }}
 
-### Tabs status
+### 02 Component Status
 
 {{ status }}
 
-### TAB size
+#### Tabs Size
 
 {{ size }}
 
-### TAB style
+#### Tabs Theme
 
 {{ theme }}

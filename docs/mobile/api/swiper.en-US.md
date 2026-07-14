@@ -1,7 +1,7 @@
 ---
 title: Swiper
 description: Used to rotate a group of pictures or content, you can also slide to switch, the rotation effect time can be set.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
@@ -10,25 +10,24 @@ toc: false
 
 ### 01 Component Type
 
-dots
+#### Dots
 
 {{ base }}
 
-dots-bar
+#### Dots-Bar
 
 {{ custom }}
 
-fraction
+#### Fraction
 
 {{ fraction }}
 
-
-control
+#### Controls
 
 {{ control }}
 
 ### 02 Component Style
 
-Vertical mode
+#### Vertical mode
 
 {{ vertical }}

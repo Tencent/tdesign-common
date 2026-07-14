@@ -16,11 +16,7 @@ export * from './large-number';
 export type NumberType = number | string;
 
 // 小于最大值，才允许继续添加
-export function canAddNumber(
-  num: NumberType,
-  max: NumberType,
-  largeNumber = false
-): boolean {
+export function canAddNumber(num: NumberType, max: NumberType, largeNumber = false): boolean {
   if (!num && num !== 0) return true;
   if (largeNumber && isString(num)) {
     return compareNumber(num, max, largeNumber) < 0;
@@ -29,11 +25,7 @@ export function canAddNumber(
 }
 
 // 大于最小值，才允许继续减少
-export function canReduceNumber(
-  num: NumberType,
-  min: NumberType,
-  largeNumber = false
-): boolean {
+export function canReduceNumber(num: NumberType, min: NumberType, largeNumber = false): boolean {
   if (!num && num !== 0) return true;
   if (largeNumber && isString(num)) {
     return compareNumber(num, min, largeNumber) > 0;
@@ -167,10 +159,7 @@ export function getStepValue(p: {
   return largeNumber ? newVal : Number(newVal);
 }
 
-export type InputNumberErrorType =
-  | 'exceed-maximum'
-  | 'below-minimum'
-  | undefined;
+export type InputNumberErrorType = 'exceed-maximum' | 'below-minimum' | undefined;
 
 /**
  * 最大值和最小值校验
@@ -228,8 +217,11 @@ export function canInputNumber(number: string | undefined | null, largeNumber?: 
 /**
  * 是否允许设置组件新值，触发 onChange 事件
  */
-export function canSetValue(number: string, lastNumber: number) {
-  return parseFloat(number) !== lastNumber && !Number.isNaN(Number(number));
+export function canSetValue(number: string, lastNumber?: NumberType | null) {
+  if (Number.isNaN(Number(number))) return false;
+  if (lastNumber === '' || lastNumber === null || isUndefined(lastNumber)) return number !== '';
+  if (number === '') return true;
+  return parseFloat(number) !== Number(lastNumber);
 }
 
 /**

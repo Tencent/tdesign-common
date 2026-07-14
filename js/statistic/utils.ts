@@ -9,7 +9,7 @@ export const COLOR_MAP = {
   green: 'var(--td-success-color)',
 };
 
-export function getFormatValue(value:number | undefined | string, decimalPlaces:number, separator:string) {
+export function getFormatValue(value: number | undefined | string, decimalPlaces: number, separator: string) {
   const options = {
     minimumFractionDigits: decimalPlaces ?? 0,
     maximumFractionDigits: decimalPlaces ?? 20,

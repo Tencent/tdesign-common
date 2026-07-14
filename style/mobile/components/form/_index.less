@@ -1,6 +1,6 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .@{prefix}-form {
   background-color: @bg-color-container;
@@ -21,7 +21,7 @@
     &-help,
     &-extra {
       display: flex;
-      font-size: 12px;
+      font-size: @font-size-s;
       margin: 0;
       width: 100%;
       height: auto;
@@ -59,6 +59,7 @@
     float: left;
     padding-right: 16px;
     vertical-align: middle;
+    font-size: @form-label-font-size;
     line-height: 24px;
     color: @text-color-primary;
     box-sizing: border-box;
@@ -76,19 +77,29 @@
       text-align: right;
     }
 
-    &--required {
+    &--required:not(.@{prefix}-form__label--required-right) {
       label::before {
         display: inline-block;
-        margin-right: 2px;
+        margin-right: calc(@spacer / 2);
         color: @error-color-6;
         line-height: 20px;
-        content: "*";
+        content: '*';
+      }
+    }
+
+    &--required-right {
+      label::after {
+        display: inline-block;
+        margin-left: calc(@spacer / 2);
+        color: @error-color-6;
+        line-height: 20px;
+        content: '*';
       }
     }
 
     &--colon {
       label::after {
-        content: ":";
+        content: ':';
         position: relative;
         margin: 0 2px;
       }

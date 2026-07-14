@@ -1,32 +1,16 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
 .@{prefix}-fab {
-  position: absolute;
-  width: auto;
-  min-width: @fab-min-width;
-  height: @fab-height;
-  line-height: normal;
-  padding: 0 @fab-horizontal-padding;
-  box-sizing: border-box;
-  border-radius: 24px;
+  position: fixed;
 
-  .@{prefix}-button__text {
-    display: flex;
-    align-items: center;
+  &__button {
+    box-shadow: @fab-shadow;
   }
 
-  &::after {
-    border-radius: inherit;
-  }
-
-  .@{prefix}-icon + &__text:not(:empty) {
-    margin-left: @fab-text-margin-left;
-  }
-
-  &--icon-only {
-    padding: 0;
-    border-radius: @radius-circle;
+  // 吸附动画
+  &--animation {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 }

@@ -1,32 +1,33 @@
 ---
 title: Tag
 description: Used to indicate the category, attributes, or status of the subject.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
 
-
 ## Code Demo
 
-### Component Type
+### 01 Component Type
+
+#### Type
 
 {{ type }}
 
-closable tag
+#### with Close Button
 
 {{ closable }}
 
-clickable tag
+#### Clickable Tag
 
 {{ checkable }}
 
-### Component Status
+### 02 Component Status
 
-display tag
+#### Display Tag
 
 {{ theme }}
 
-### Component Size
+### 03 Component Size
 
 {{ size }}

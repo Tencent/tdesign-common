@@ -1,16 +1,16 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_scrollbar.less";
+@import '../../mixins/_scrollbar.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_focus.less";
+@import '../../mixins/_focus.less';
 
 // <name> 替换为组件名
 .@{radio-cls}-group {
@@ -56,6 +56,8 @@
       }
 
       &:last-child {
+        border-right: @radio-button-border;
+        border-right-color: @radio-button-border-color-default;
         border-radius: 0 @border-radius-default @border-radius-default 0;
       }
 
@@ -65,6 +67,8 @@
 
       &.@{prefix}-is-checked {
         color: @radio-button-color-outline-checked;
+        border-color: @radio-button-border-color-checked;
+        border-right-color: @radio-button-border-color-checked;
       }
 
       &.@{prefix}-is-disabled {
@@ -72,6 +76,61 @@
           color: @brand-color-disabled;
           border-color: @brand-color-disabled;
           background-color: @radio-button-background-color-outline-disabled-checked;
+        }
+      }
+    }
+  }
+
+  &.@{radio-cls}-group--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: @comp-margin-xs;
+
+    .@{radio-cls} {
+      margin-right: 0;
+    }
+
+    &.@{radio-cls}-group--filled {
+      .@{radio-button--cls} {
+        width: 100%;
+
+        &::before {
+          opacity: @radio-opacity-transparent;
+        }
+
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+
+    &.@{radio-cls}-group__outline {
+      row-gap: 0;
+
+      .@{radio-button--cls} {
+        width: 100%;
+        border-right: @radio-button-border;
+        border-right-color: @radio-button-border-color-default;
+        margin-top: -1px;
+
+        &:first-child {
+          margin-top: 0;
+          border-radius: @radio-button-border-radius @radio-button-border-radius 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 @radio-button-border-radius @radio-button-border-radius;
+        }
+
+        &.@{prefix}-is-checked {
+          border-color: @radio-button-border-color-checked;
+          border-right-color: @radio-button-border-color-checked;
+          z-index: 1;
+
+          +.@{radio-button--cls} {
+            border-left: @radio-button-border;
+            border-left-color: @radio-button-border-color-default;
+          }
         }
       }
     }
@@ -105,7 +164,7 @@
       }
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: @radio-button-before-left;
         top: @radio-button-before-top;
@@ -147,7 +206,7 @@
           color: @radio-button-color-default-filled-disabled-checked;
         }
 
-        &.@{prefix}-is-checked ~ .@{radio-cls}-group__bg-block {
+        &.@{prefix}-is-checked~.@{radio-cls}-group__bg-block {
           background-color: @radio-button-background-color-default-filled-disabled-checked;
         }
       }
@@ -169,7 +228,7 @@
           color: @radio-button-color-primary-filled-checked;
         }
 
-        &.@{prefix}-is-checked ~ .@{radio-cls}-group__bg-block {
+        &.@{prefix}-is-checked~.@{radio-cls}-group__bg-block {
           background-color: @radio-button-background-color-primary-filled-disabled-checked;
         }
       }
@@ -230,8 +289,6 @@
     }
 
     &:last-child {
-      border-right: @radio-button-border;
-      border-right-color: @radio-button-border-color-default;
       border-radius: 0 @radio-button-border-radius @radio-button-border-radius 0;
     }
 
@@ -251,7 +308,7 @@
       border-color: @radio-button-border-color-checked;
       transition: border-color @anim-duration-base @anim-time-fn-ease-out;
 
-      + .@{radio-button--cls} {
+      +.@{radio-button--cls} {
         border-left: 0;
       }
     }
@@ -307,7 +364,7 @@
     transition: @radio-input-transition;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;

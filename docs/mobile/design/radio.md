@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当用户需要从一组数据选择一个选项时使用。
@@ -17,7 +15,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/radio/radio-2.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -48,7 +45,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/good.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/en';
 
@@ -28,22 +29,45 @@ export default {
   cascader: {
     title: 'Title',
     placeholder: 'Select options',
+    filterPlaceholder: 'Search',
+    empty: 'No matching options',
   },
   dropdownMenu: {
     reset: 'Reset',
     confirm: 'Confirm',
   },
   dateTimePicker: {
+    dayjsLocale: 'en',
     title: 'Select Date',
     cancel: 'Cancel',
     confirm: 'Confirm',
-    format: 'YYYY-MM-DD',
-    yearLabel: 'Year',
-    monthLabel: 'Month',
-    dateLabel: 'Date',
-    hourLabel: 'Hour',
-    minuteLabel: 'Minute',
-    secondLabel: 'Second',
+    format: 'YYYY-MM-DD HH:mm:ss',
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    yearLabel: '',
+    monthLabel: '',
+    dateLabel: '',
+    hourLabel: '',
+    minuteLabel: '',
+    secondLabel: '',
+  },
+  form: {
+    errorMessage: {
+      date: '${name} is invalid',
+      url: '${name} is invalid',
+      required: '${name} is required',
+      whitespace: '${name} cannot be empty',
+      max: '${name} cannot be longer than ${validate} characters',
+      min: '${name} must be at least ${validate} characters',
+      len: '${name} must be exactly ${validate} characters',
+      enum: '${name} must be one of ${validate}',
+      idcard: '${name} is invalid',
+      telnumber: '${name} is invalid',
+      pattern: '${name} is invalid',
+      validator: '${name} is invalid',
+      boolean: '${name} is not a boolean',
+      number: '${name} must be a number',
+    },
+    colonText: ':',
   },
   picker: {
     cancel: 'Cancel',
@@ -53,6 +77,7 @@ export default {
     loadingTexts: ['Pull to refresh', 'Loose to refresh', 'Refreshing ', 'Refresh completed'],
   },
   rate: {
+    texts: ['Poor', 'Fair', 'Average', 'Good', 'Excellent'],
     valueText: '{value} score',
     noValueText: 'No score',
   },
@@ -78,6 +103,7 @@ export default {
       waitingText: 'Waiting',
       failText: 'Failed',
       successText: 'Success',
+      reloadText: 'Reload',
     },
   },
   guide: {
@@ -85,5 +111,63 @@ export default {
     skip: 'Skip',
     finish: 'Finish',
     back: 'Back',
+  },
+  typography: {
+    expandText: 'more',
+    collapseText: 'collapse',
+    copiedText: 'copied',
+  },
+  qrcode: {
+    expiredText: 'expired',
+    refreshText: 'refresh',
+    scannedText: 'scanned',
+  },
+  attachments: {
+    status: {
+      pending: 'uploading...',
+      fail: 'upload failed',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: 'refresh',
+      copy: 'copy',
+      good: 'good',
+      bad: 'bad',
+      share: 'share',
+      quote: 'quote',
+    },
+  },
+  chatRecord: {
+    holdToTalk: 'Hold to talk',
+    requestAuth: 'Please authorize microphone permission',
+    releaseToCancel: 'Release to cancel',
+    releaseToSend: 'Release to send, swipe up to cancel',
+    cancelText: 'Cancel',
+    sendText: 'Send',
+    busyTip: 'Recognizing, please wait...',
+    recognizeFailTip: 'Voice recognition failed, please try again',
+    missingPluginTip: 'Missing voice recognition plugin WechatSI',
+    authSettingFail: 'Failed to get recording permission settings',
+    openSettingFail: 'Failed to open settings',
+    systemMicTitle: 'Cannot use microphone',
+    systemMicContent:
+      'Detected that the phone system has disabled the microphone permission for "WeChat".\n\n' +
+      'Please enable it in system settings:\n' +
+      '- iOS: Settings > WeChat > Microphone\n' +
+      '- Android: Settings > App Management > WeChat > Permissions > Microphone\n\n' +
+      'After enabling, return to the Mini Program and try again.',
+  },
+  chatSender: {
+    placeholder: 'please enter message...',
+    sendText: 'send',
+    stopText: 'stop',
+  },
+  chatThinking: {
+    status: {
+      pending: 'thinking...',
+      complete: 'thinking process completed',
+      stop: 'thinking has stopped',
+    },
   },
 };

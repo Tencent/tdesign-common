@@ -1,17 +1,31 @@
-@grid-item-padding-bottom: 12px;
+@item: ~'@{prefix}-grid-item';
 
-@grid-item-padding-top: 12px;
+@grid-item-icon-size: 24px;
 
-@grid-item-bg-color: #ffffff;
-
-@grid-item-title-color:rgba(0, 0, 0, .9);
-
-@grid-item-title-font-size:12px;
-
-@grid-item-description-font-size:12px;
-
-@grid-item-description-color: rgba(0, 0, 0, .4);
-
-@grid-item-hover-bg-color: #f2f3f5;
-
-@grid-item-border-color: @component-stroke;
+@grid-item-vertical-padding: var(--td-grid-item-vertical-padding, 16px 0 12px);
+@grid-item-horizontal-padding: var(--td-grid-item-horizontal-padding, 16px 0);
+@grid-item-bg-color: var(--td-grid-item-bg-color, @bg-color-container);
+@grid-item-image-bg-color: var(--td-grid-item-image-bg-color,
+@bg-color-secondarycontainer);
+@grid-item-image-border-radius: var(--td-grid-item-image-border-radius,
+@radius-default);
+@grid-item-image-width: var(--td-grid-item-image-width, 48px);
+@grid-item-image-small-width: var(--td-grid-item-image-small-width, 32px);
+@grid-item-image-middle-width: var(--td-grid-item-image-middle-width, 40px);
+@grid-item-text-font: var(--td-grid-item-text-font, @font-body-medium);
+@grid-item-text-small-font: var(--td-grid-item-text-small-font, @font-body-extraSmall);
+@grid-item-text-middle-font: var(--td-grid-item-text-middle-font, @font-body-small);
+@grid-item-text-color: var(--td-grid-item-text-color, @text-color-primary);
+@grid-item-text-padding-top: var(--td-grid-item-text-padding-top, 8px);
+@grid-item-description-font: var(--td-grid-item-description-font, @font-body-small);
+@grid-item-description-color: var(--td-grid-item-description-color,
+@text-color-placeholder);
+@grid-item-description-padding-top: var(--td-grid-item-description-padding-top,
+4px);
+@grid-item-hover-bg-color: var(--td-grid-item-hover-bg-color,
+@bg-color-secondarycontainer);
+@grid-item-horizontal-text-padding-left: var(--td-grid-item-horizontal-text-padding-left,
+12px);
+@grid-item-horizontal-text-description-top: var(--td-grid-item-horizontal-text-description-top,
+2px);
+@grid-item-border-color: var(--td-grid-item-border-color, @component-stroke);

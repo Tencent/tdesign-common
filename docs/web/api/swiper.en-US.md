@@ -6,7 +6,6 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
-
 ### Basic Usage
 
 The most basic usage of the Swiper component

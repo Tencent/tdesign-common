@@ -1,5 +1,5 @@
 ---
-title: Tabs 
+title: Tabs
 description: It is used to carry components of different pages or categories in the same level, facilitating users to quickly switch between pages in the same page frame.
 isComponent: true
 usage: { title: '', description: '' }

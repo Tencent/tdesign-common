@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/ja';
 
@@ -15,22 +16,45 @@ export default {
   cascader: {
     title: 'タイトル',
     placeholder: 'オプションを選択',
+    filterPlaceholder: '検索',
+    empty: '該当する項目はありません',
   },
   dropdownMenu: {
     reset: 'リセット',
     confirm: '確認',
   },
   dateTimePicker: {
+    dayjsLocale: 'ja',
     title: '日付を選択',
     cancel: 'キャンセル',
     confirm: '確認',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
+    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     yearLabel: '年',
     monthLabel: '月',
     dateLabel: '日',
     hourLabel: '時',
     minuteLabel: '分',
     secondLabel: '秒',
+  },
+  form: {
+    errorMessage: {
+      date: '正しく入力してください${name}',
+      url: '正しく入力してください${name}',
+      required: '${name}必須項目',
+      whitespace: '${name}を空にすることはできません',
+      max: '${name}文字数制限 ${validate} 文字，一中二文',
+      min: '${name}を下回る文字数は使用できません ${validate} 文字，一中二文',
+      len: '${name}文字の長さは、必ず ${validate}',
+      enum: '${name}でしかありえません${validate}等',
+      idcard: '正しく入力してください${name}',
+      telnumber: '正しく入力してください${name}',
+      pattern: '正しく入力してください${name}',
+      validator: '${name}要件を満たしていない',
+      boolean: '${name}データ型は Boolean 型であること',
+      number: '${name}デジタルであること',
+    },
+    colonText: ':',
   },
   picker: {
     cancel: 'キャンセル',
@@ -40,6 +64,7 @@ export default {
     loadingTexts: ['更新に引っ張ってください', '緩めて更新中', '更新中…', '更新が完了しました'],
   },
   rate: {
+    texts: ['悪い', '不満', '普通', '良い', '最高'],
     valueText: '{value} 点',
     noValueText: 'スコアなし',
   },
@@ -65,6 +90,7 @@ export default {
       waitingText: '待機中',
       failText: '失敗しました',
       successText: '成功しました',
+      reloadText: '再アップロード',
     },
   },
   guide: {
@@ -72,5 +98,63 @@ export default {
     skip: 'スキップ',
     finish: '完了',
     back: '戻る',
+  },
+  typography: {
+    expandText: 'もっと拡大する',
+    collapseText: '畳む',
+    copiedText: 'コピー成功',
+  },
+  qrcode: {
+    expiredText: '期限切れ',
+    refreshText: 'リフレッシュ',
+    scannedText: 'スキャンされた',
+  },
+  attachments: {
+    status: {
+      pending: 'アップロード中...',
+      fail: 'アップロード失敗',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '更新',
+      copy: 'コピー',
+      good: 'いいね',
+      bad: '低評価',
+      share: '共有',
+      quote: '引用',
+    },
+  },
+  chatRecord: {
+    holdToTalk: '押しながら話す',
+    requestAuth: 'マイクの権限を許可してください',
+    releaseToCancel: '離してキャンセル',
+    releaseToSend: '離して送信、上にスワイプでキャンセル',
+    cancelText: 'キャンセル',
+    sendText: '送信',
+    busyTip: '認識中です。しばらくお待ちください…',
+    recognizeFailTip: '録音の認識に失敗しました。もう一度お試しください',
+    missingPluginTip: '音声認識プラグイン WechatSI がありません',
+    authSettingFail: '録音権限の設定の取得に失敗しました',
+    openSettingFail: '設定を開けませんでした',
+    systemMicTitle: 'マイクを使用できません',
+    systemMicContent:
+      '携帯電話のシステムで「WeChat」のマイク権限がオフになっていることが検出されました。\n\n' +
+      'システム設定で有効にしてください：\n' +
+      '- iOS：設定 > WeChat > マイク\n' +
+      '- Android：設定 > アプリ管理 > WeChat > 権限 > マイク\n\n' +
+      '有効にした後、ミニプログラムに戻って再度お試しください。',
+  },
+  chatSender: {
+    placeholder: 'メッセージを入力してください...',
+    sendText: '送信',
+    stopText: '停止',
+  },
+  chatThinking: {
+    status: {
+      pending: '思考中...',
+      complete: '思考完了',
+      stop: '思考を停止',
+    },
   },
 };

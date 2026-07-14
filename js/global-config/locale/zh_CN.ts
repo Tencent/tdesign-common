@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} 条/页',
     jumpTo: '跳至',
     page: '页',
-    total: '共 {total} 条数据',
+    total: '共 {count} 条数据',
   },
   cascader: {
     empty: '暂无数据',
@@ -99,20 +99,7 @@ export default {
       week: '请选择周',
     },
     weekdays: ['一', '二', '三', '四', '五', '六', '日'],
-    months: [
-      '1 月',
-      '2 月',
-      '3 月',
-      '4 月',
-      '5 月',
-      '6 月',
-      '7 月',
-      '8 月',
-      '9 月',
-      '10 月',
-      '11 月',
-      '12 月',
-    ],
+    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     quarters: ['一季度', '二季度', '三季度', '四季度'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -180,6 +167,7 @@ export default {
       validator: '${name}不符合要求',
       boolean: '${name}数据类型必须是布尔类型',
       number: '${name}必须是数字',
+      email: '请输入正确的${name}',
     },
     colonText: '：',
   },
@@ -203,7 +191,7 @@ export default {
     recentColorTitle: '最近使用颜色',
     clearConfirmText: '确定清空最近使用的颜色吗？',
     singleColor: '单色',
-    gradientColor: '渐变'
+    gradientColor: '渐变',
   },
   guide: {
     finishButtonProps: {
@@ -232,6 +220,7 @@ export default {
     mirrorTipText: '镜像',
     rotateTipText: '旋转',
     originalSizeTipText: '原始大小',
+    previewText: '预览',
   },
   typography: {
     expandText: '展开',
@@ -270,10 +259,11 @@ export default {
     loadingEndText: '已深度思考',
     uploadImageText: '上传图片',
     uploadAttachmentText: '上传附件',
+    shareTipText: '分享',
   },
   qrcode: {
     expiredText: '二维码过期',
     refreshText: '点击刷新',
     scannedText: '已扫描',
-  }
+  },
 } as const;

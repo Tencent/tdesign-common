@@ -10,16 +10,16 @@ spline: explain
 
 The supported language TDesign provided:
 
-Language | File
--- | --
-Chinese (Simplified) | `zh_CN`
-Chinese (Traditional) | `zh_TW`
-English | `en_US`
-Korean | `ko_KR`
-Japanese | `ja_JP`
-Russian | `ru_RU`
-Italian | `it_IT`
-Arabic | `ar_KW`
+| Language              | File    |
+| --------------------- | ------- |
+| Chinese (Simplified)  | `zh_CN` |
+| Chinese (Traditional) | `zh_TW` |
+| English               | `en_US` |
+| Korean                | `ko_KR` |
+| Japanese              | `ja_JP` |
+| Russian               | `ru_RU` |
+| Italian               | `it_IT` |
+| Arabic                | `ar_KW` |
 
 If you want to contribute more language packs, please refer to [How to add a language pack](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) PR.
 
@@ -27,31 +27,31 @@ If you want to contribute more language packs, please refer to [How to add a lan
 
 > Attention! When you use esm to import other components, make sure to import ConfigProvider with the corresponding esm version as well. Otherwise, there may be an issue with the language pack not taking effect.
 
-### Pagination 
+### Pagination
 
 {{ pagination }}
 
-### Input 
+### Input
 
 {{ input }}
 
-### DatePicker 
+### DatePicker
 
 {{ date-picker }}
 
-### Calendar 
+### Calendar
 
 {{ calendar }}
 
-### Dialog 
+### Dialog
 
 {{ dialog }}
 
-### Popconfirm 
+### Popconfirm
 
 {{ popconfirm }}
 
-### Table 
+### Table
 
 {{ table }}
 

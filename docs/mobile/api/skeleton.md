@@ -1,32 +1,31 @@
 ---
 title: Skeleton 骨架屏
-description: 当网络较慢时，在页面真实数据加载之前，给用户展示出页面的大致结构。
-spline: base
+description: 用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑。
+spline: data
 isComponent: true
 toc: false
 ---
 
 ## 代码演示
 
-### 骨架屏类型
+### 01 组件类型
 
-基础骨架屏
+#### 基础骨架屏
 
 {{ theme }}
 
-单元格骨架屏
+#### 单元格骨架屏
 
 {{ cell-group }}
 
-
-宫格骨架屏
+#### 宫格骨架屏
 
 {{ grid }}
 
-图文组合骨架屏
+#### 图文组合骨架屏
 
 {{ image-group }}
 
-### 组件动效
+### 02 组件动效
 
 {{ animation }}

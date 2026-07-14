@@ -1,24 +1,25 @@
 ---
 title: Sticky
 description: Displays information and operations that reside at the top of the page.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
 
 ## Code Demo
 
+### Component Type
+
 Wrap the content in the 'Sticky' component
 
-### Base Sticky
+#### Basic
 
 {{ base }}
 
-
-### Sticky Distance
+#### Sticky Distance
 
 {{ offset }}
 
-### Specify Container
+#### Specify Container
 
 {{ container }}

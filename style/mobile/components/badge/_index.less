@@ -1,89 +1,181 @@
-// 组件允许单个组件打包，因此默认引入公共基础样式
+@import '../../base.less';
 
-@import "../../base.less";
+@import './_var.less';
 
-@import "./_var.less";
-
-@import "./_mixin.less";
-
-// <name> 替换为组件名
 .@{prefix}-badge {
   position: relative;
   display: inline-flex;
-  align-items: center;
+  align-items: start;
 
-  &__inner {
-    display: inline-block;
+  &--basic {
     z-index: 100;
-    font-size: @badge-font-size;
+    padding: 0 @badge-basic-padding;
+    font: @badge-font;
     color: @badge-text-color;
     background-color: @badge-color;
-    min-width: @badge-height;
-    height: @badge-height;
-    padding: 0 4px;
     text-align: center;
-    line-height: @badge-height;
-    font-weight: @badge-font-weight;
-  }
-
-  &--has-children {
-    transform: translate(50%, -50%);
-    position: absolute;
-    right: 0;
-    top: 0;
+    height: @badge-basic-height;
+    border-radius: @badge-border-radius;
   }
 
   &--dot {
-    height: @badge-dot-height;
-    min-width: @badge-dot-height;
-    border-radius: @radius-circle;
+    height: @badge-dot-size;
+    border-radius: 50%;
+    min-width: @badge-dot-size;
     padding: 0;
   }
 
-  &--small {
-    transform: translate(50%, -50%) scale(.75);
+  &--count {
+    min-width: @badge-basic-width;
+    white-space: nowrap;
+    box-sizing: border-box;
   }
 
   &--circle {
-    border-radius: @badge-circle-border-radius;
+    border-radius: calc(@badge-basic-height / 2);
   }
 
-  &--round {
-    border-radius: @badge-round-border-radius;
+  &__ribbon,
+  &__ribbon-right,
+  &__triangle-right,
+  &__ribbon-left,
+  &__triangle-left {
+    &-outer {
+      position: absolute;
+      top: 0;
+    }
   }
 
-  // 绸带外层样式，用于定位
-  &__ribbon--outer {
+  &__ribbon,
+  &__ribbon-right,
+  &__triangle-right {
+    &-outer {
+      right: 0;
+    }
+  }
+
+  &__ribbon-left,
+  &__triangle-left {
+    &-outer {
+      left: 0;
+    }
+  }
+
+  &--bubble {
+    border-radius: @border-bubble-border-radius;
+  }
+
+  &--ribbon,
+  &--ribbon-right,
+  &--ribbon-left,
+  &--triangle-left,
+  &--triangle-right {
+    width: calc(@badge-basic-height * 2);
+    height: calc(@badge-basic-height * 2);
+    border-radius: 0;
+    padding: 0;
     position: absolute;
     top: 0;
-    right: 0;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 
-  &--ribbon {
-    transform: rotate(45deg);
-    padding: 0;
+  &--ribbon,
+  &--ribbon-right {
+    background: linear-gradient(45deg, transparent 50%, @badge-color 50%, @badge-color 85%, transparent 85%);
+  }
 
-    &::before {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      bottom: 0;
-      left: -@badge-height;
-      border-bottom: @badge-height solid @badge-color;
-      border-left: @badge-height solid transparent;
+  &--triangle-right {
+    background: linear-gradient(45deg, transparent 50%, @badge-color 50%);
+  }
+
+  &--ribbon,
+  &--ribbon-right,
+  &--triangle-right {
+    right: 0;
+
+    .@{prefix}-badge__count {
+      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 16px) / 2 + .5px));
     }
+  }
 
-    &::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      bottom: 0;
-      right: -@badge-height;
-      border-bottom: @badge-height solid @badge-color;
-      border-right: @badge-height solid transparent;
+  &--ribbon-left {
+    background: linear-gradient(-45deg, transparent 50%, @badge-color 50%, @badge-color 85%, transparent 85%);
+  }
+
+  &--triangle-left {
+    background: linear-gradient(-45deg, transparent 50%, @badge-color 50%);
+  }
+
+  &--ribbon-left,
+  &--triangle-left {
+    left: 0;
+
+    .@{prefix}-badge__count {
+      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 16px) / 2 + .5px));
+    }
+  }
+
+  // size
+  &--large {
+    font: @badge-large-font;
+    height: @badge-large-height;
+    min-width: @badge-large-height;
+    padding: 0 @badge-large-padding;
+  }
+
+  &--large&--circle {
+    border-radius: calc(@badge-large-height / 2);
+  }
+
+  &--large&--ribbon,
+  &--large&--ribbon-right,
+  &--large&--ribbon-left,
+  &--large&--triangle-right,
+  &--large&--triangle-left {
+    width: calc(@badge-large-height * 2);
+    height: calc(@badge-large-height * 2);
+    padding: 0;
+  }
+
+  &--large&--ribbon,
+  &--large&--ribbon-right,
+  &--large&--triangle-right {
+
+    .@{prefix}-badge__count {
+      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 20px) / 2 + 1.5px));
+    }
+  }
+
+  &--large&--ribbon-left,
+  &--large&--triangle-left {
+
+    .@{prefix}-badge__count {
+      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 20px) / 2 + 1.5px));
+    }
+  }
+
+  &__content:not(:empty) + &--bubble.@{prefix}-has-count,
+  &__content:not(:empty) + &--circle.@{prefix}-has-count,
+  &__content:not(:empty) + &--square.@{prefix}-has-count {
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+
+  &__content-text {
+    display: block;
+    font: @font-body-large;
+    color: @badge-content-text-color;
+  }
+
+  &__count {
+    &:empty {
+      display: none;
     }
   }
 }

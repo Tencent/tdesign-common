@@ -2,30 +2,45 @@
 title: Calendar 日历
 description: 按照日历形式展示数据或日期的容器。
 isComponent: true
-usage: { title: '', description: '' }
-spline: data
+spline: form
 ---
 
-### 单个选择日期
+## 代码演示
+
+### 01 组件类型
+
+#### 基础日历
 
 {{ base }}
 
-### 多个选择日期
-
 {{ multiple }}
 
-### 区间选择日期
+#### 带单行描述的日历
 
-{{ range }}
+{{ custom-text-single }}
 
-### 自定义文案
+#### 带双行描述的日历
 
 {{ custom-text }}
 
-### 自定义按钮
+#### 带翻页功能的日历
 
-{{ custom-button }}
+{{ switch-mode }}
 
-### 自定义日期区间
+#### 可选择区间日期的日历
 
-{{ custom-range }}
+{{ range }}
+
+### 02 组件样式
+
+#### 国际化
+
+{{ local-text }}
+
+### 含不可选的日历
+
+{{ disabled }}
+
+### 不使用 Popup
+
+{{ without-popup }}

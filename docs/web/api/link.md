@@ -26,10 +26,9 @@ spline: base
 
 {{ icon }}
 
-
 ### 链接悬浮态样式的链接
 
-悬浮状态包含 2 种状态：文本颜色变化 和 添加下划线。由 `hover` 控制，可选值：`color | underline` 
+悬浮状态包含 2 种状态：文本颜色变化 和 添加下划线。由 `hover` 控制，可选值：`color | underline`
 
 {{ hover }}
 
@@ -50,4 +49,3 @@ spline: base
 提供大、中（默认）、小三种尺寸。
 
 {{ size }}
-

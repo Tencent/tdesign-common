@@ -1,22 +1,24 @@
 ---
 title: Cell
 description: Information display for each category row.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
 
-### Component type
+## Code Demos
 
-#### Single
+### 01 Component type
+
+#### Single Row
 
 {{ single }}
 
-#### Multiple
+#### Multiple Row
 
 {{ multiple }}
 
-### Style
+### 02 Component style
 
 #### Card
 

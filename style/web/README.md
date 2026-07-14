@@ -60,7 +60,6 @@ web
 - `components` 下创建组件文件夹
 - 如果有示例样式，添加到 `/docs/<name>.css`，并在 `docs.css` 里引入
 
-
 ### 相关资料
 
 [web 端设计稿](https://www.figma.com/file/UghlEiQXZogyPvx1XDMMyx/TDesign-for-web?node-id=25%3A2)

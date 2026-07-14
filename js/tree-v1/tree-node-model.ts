@@ -1,14 +1,15 @@
-import { isUndefined, isBoolean, pick, omit } from 'lodash-es';
-import { TreeNode } from './tree-node';
-import { OptionData } from '../common';
-import {
-  TreeNodeValue,
-  TypeTreeNodeModel,
-  TypeTreeNodeData,
-  TypeTreeItem,
-  TreeNodeModelProps,
-} from './types';
+import { isBoolean, isUndefined, omit, pick } from 'lodash-es';
 import log from '../log/log';
+import { TreeNode } from './tree-node';
+
+import type { OptionData } from '../common';
+import type { TreeNodeModelProps, TreeNodeValue, TypeTreeItem, TypeTreeNodeData, TypeTreeNodeModel } from './types';
+
+export const PATH_SEPARATOR = '/';
+
+export function pathToKey(path: TreeNodeValue[]) {
+  return path.join(PATH_SEPARATOR);
+}
 
 // 获取节点需要暴露的属性
 function getExposedProps(node: TreeNode): TreeNodeModelProps {
@@ -19,6 +20,7 @@ function getExposedProps(node: TreeNode): TreeNodeModelProps {
     'actived',
     'expanded',
     'checked',
+    'disabled',
     'indeterminate',
     'loading',
   ]) as TreeNodeModelProps;
@@ -194,7 +196,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
       }
 
       const parents = targetNode.getParents();
-      const parentValues = parents.map((pnode) => (pnode.value));
+      const parentValues = parents.map((pnode) => pnode.value);
       if (parentValues.indexOf(node.value) < 0) {
         log.warnOnce('Tree', `\`${value}\` is not a childNode of current node`);
         return;
@@ -218,6 +220,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
 
       Object.assign(node.data, _data);
       Object.assign(node, _data);
+      node.update();
     },
   };
 

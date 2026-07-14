@@ -15,5 +15,3 @@ spline: message
 ### 加载中信息提示
 
 {{ loading }}
-
-

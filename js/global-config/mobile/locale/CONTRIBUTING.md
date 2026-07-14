@@ -10,15 +10,15 @@ Follow these two steps:
 
 Language packs are uniformly named in English. The naming follows the locale regional setting specification and is divided into two parts: language code and region code. The format is `language__country_region`. For example, `en` represents the language code, `US` represents the area code, and the final complete language package name is `en_US`, which represents "English spoken in the United States". Other common locale examples:
 
-| Area Description | Corresponding Code |
-|---|---|
-| English | en |
-| English - United States | en-US |
-| Simplified Chinese | zh-CN |
-| Traditional Chinese in Taiwan | zh-TW |
-| Singapore Simplified Chinese | zh-SG |
-| General Arabic | ar-001 |
-| Kuwaiti Arabic | ar-KW |
+| Area Description              | Corresponding Code |
+| ----------------------------- | ------------------ |
+| English                       | en                 |
+| English - United States       | en-US              |
+| Simplified Chinese            | zh-CN              |
+| Traditional Chinese in Taiwan | zh-TW              |
+| Singapore Simplified Chinese  | zh-SG              |
+| General Arabic                | ar-001             |
+| Kuwaiti Arabic                | ar-KW              |
 
 Complete language pack naming reference: https://zh.wikipedia.org/wiki/%E5%8C%BA%E5%9F%9F%E8%AE%BE%E7%BD%AE
 

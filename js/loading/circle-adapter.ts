@@ -8,7 +8,9 @@ export default function circleAdapter(circleElem: HTMLElement) {
     return;
   }
 
-  const { color, fontSize } = window?.getComputedStyle?.(circleElem);
+  const computedStyle = window.getComputedStyle?.(circleElem);
+  const color = computedStyle?.color || '';
+  const fontSize = computedStyle?.fontSize || '12px'; // 默认字体大小
 
   // to fix the browser compat of foreignObject in Safari,
   // https://bugs.webkit.org/show_bug.cgi?id=23113
@@ -16,9 +18,11 @@ export default function circleAdapter(circleElem: HTMLElement) {
   const isSafari = /Safari/.test(ua) && !/Chrome/.test(ua);
   // 判断是否为 iOS 下的微信和企业微信
   const isIosWechat = /(?=.*iPhone)[?=.*MicroMessenger]/.test(ua) && !/Chrome/.test(ua);
+  // 判断是否为 iPadOS 下的微信和企业微信
+  const isIpadWechat = /(?=.*iPad)[?=.*MicroMessenger]/.test(ua) && !/Chrome/.test(ua);
 
   // 注意：chrome上调试mobile/ipad端时，loading出现异常，属于正常现象，不需要修改。
-  if (isSafari || isIosWechat) {
+  if (isSafari || isIosWechat || isIpadWechat) {
     basicStyle = {
       transformOrigin: '0px 0px',
       transform: `scale(${parseInt(fontSize, 10) / 12})`,

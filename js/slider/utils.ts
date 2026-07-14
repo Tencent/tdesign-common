@@ -10,10 +10,7 @@ export function getStopStyle(position: number, isVertical: boolean) {
 /**
  * 格式化返回slider初始值
  */
-export const formatSliderValue = (
-  val: number | number[],
-  type: 'first' | 'second'
-) => {
+export const formatSliderValue = (val: number | number[], type: 'first' | 'second') => {
   if (type === 'first') {
     if (val instanceof Array) {
       return val[0];
@@ -27,7 +24,7 @@ export const formatSliderValue = (
 };
 
 /**
- * 格式化label参数
+ * 格式化 label 参数
  */
 export const formatLabel = (label: object | string, val: number) => {
   if (Boolean(label) === false) {
@@ -36,7 +33,7 @@ export const formatLabel = (label: object | string, val: number) => {
   if (isString(label)) {
     let text = String(val);
     try {
-      const rule = /\${value}%/g;
+      const rule = /\${value}/g;
       const enableToReplace = rule.test(label);
       if (enableToReplace) {
         text = label.replace(/\${value}/g, String(val));
@@ -46,9 +43,11 @@ export const formatLabel = (label: object | string, val: number) => {
       }
     } catch (e) {
       // eslint-disable-next-line
-      console.warn(`fail to parse label prop, please pass string such as '\${value}%'`);
+      console.warn(`fail to parse label prop, please pass string such as '\${value}'`);
     }
     return text;
   }
   return label;
 };
+
+export const formatPrecision = (value: number, precision: number) => Number(parseFloat(`${value}`).toFixed(precision));

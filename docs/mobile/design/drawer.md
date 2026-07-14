@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 需要收折展示一组数量较多的菜单时使用
@@ -27,7 +25,6 @@
  <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/drawer/drawer-3.png" />
  </div>
-
 
 ### 推荐/慎用示例
 

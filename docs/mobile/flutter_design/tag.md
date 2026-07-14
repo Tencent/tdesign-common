@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当需要展示内容本身的属性、状态、类别、营销情况时作为纯展示使用；或者当大量的内容数据需要根据类型进行选择筛选时使用。
@@ -56,7 +54,6 @@
   </div>
 </div>
 
-
 ### 推荐/慎用示例
 
 ##### 标签颜色和字体颜色在明度、色相上要避免难以区分，保证标签的可读性。
@@ -76,8 +73,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/tag/tag-9.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
 </div>
-
-
 
 ### 相似组件
 

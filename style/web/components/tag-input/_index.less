@@ -1,12 +1,12 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "../../utilities/_animation.less";
+@import '../../utilities/_animation.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_scrollbar.less";
+@import '../../mixins/_scrollbar.less';
 
 .@{prefix}-tag-input {
   .reset;
@@ -45,7 +45,6 @@
 
   /** 设计稿：未填充标签场景，边距和已填充不同 */
   &.@{prefix}-is-empty {
-
     .@{prefix}-input__inner {
       margin-left: @comp-margin-xs;
     }
@@ -72,7 +71,6 @@
   }
 
   &.@{prefix}-input--auto-width {
-
     .@{prefix}-input.@{prefix}-input--focused {
       padding-right: @tag-input-clear-icon-padding-m;
     }
@@ -103,7 +101,6 @@
 
 // 标签数量超出时，换行显示
 .@{prefix}-tag-input--break-line:not(.@{prefix}-is-empty) {
-
   .@{prefix}-input {
     display: block;
 
@@ -112,9 +109,23 @@
       text-align: left;
     }
 
+    .@{prefix}-input__inner {
+      vertical-align: middle;
+    }
+
     .@{prefix}-input__suffix-icon {
       position: absolute;
       bottom: 0;
+    }
+
+    .@{prefix}-input__suffix:not(.@{prefix}-input__suffix-icon) {
+      position: absolute;
+      bottom: 0;
+      right: calc(@comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px));
+    }
+
+    &.@{prefix}-size-l .@{prefix}-input__suffix:not(.@{prefix}-input__suffix-icon) {
+      right: calc(@comp-paddingLR-m + var(~'--@{prefix}-tag-input-suffix-icon-width', 0px));
     }
   }
 
@@ -129,16 +140,20 @@
   margin-right: @comp-margin-s;
 }
 
-/** 换行模式避免标签和右侧图标重合，需保留图标宽度 22px 和左侧距离标签间距 8px */
+/** 换行模式避免标签和右侧图标重合 */
 .@{prefix}-tag-input--break-line.@{prefix}-tag-input--with-tag:not(.@{prefix}-input--auto-width),
 .@{prefix}-tag-input.@{prefix}-input--auto-width:hover {
   .@{prefix}-input {
-    padding-right: @tag-input-clear-icon-padding-m;
-  }
+    padding-right: calc(
+      @comp-paddingLR-s + var(~'--@{prefix}-tag-input-suffix-width', 0px) +
+      var(~'--@{prefix}-tag-input-suffix-icon-width', 0px)
+    );
 
-  .@{prefix}-size-l {
-    .@{prefix}-input {
-      padding-right: @tag-input-clear-icon-padding-l;
+    &.@{prefix}-size-l {
+      padding-right: calc(
+        @comp-paddingLR-m + var(~'--@{prefix}-tag-input-suffix-width', 0px) +
+        var(~'--@{prefix}-tag-input-suffix-icon-width', 0px)
+      );
     }
   }
 }

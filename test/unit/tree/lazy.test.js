@@ -22,15 +22,19 @@ describe('tree:lazy', () => {
         lazy: true,
         async load() {
           await delay(0);
-          return [{
-            value: 't1.1',
-          }];
+          return [
+            {
+              value: 't1.1',
+            },
+          ];
         },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
       await delay(0);
 
       let nodes = tree.getNodes();
@@ -49,15 +53,19 @@ describe('tree:lazy', () => {
         lazy: true,
         async load() {
           await delay(0);
-          return [{
-            value: 't1.1',
-          }];
+          return [
+            {
+              value: 't1.1',
+            },
+          ];
         },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
       tree.getNode('t1').setChecked('t1', {
         directly: true,
       });
@@ -84,15 +92,19 @@ describe('tree:lazy', () => {
         lazy: true,
         async load() {
           await delay(0);
-          return [{
-            value: 't1.1'
-          }];
-        }
+          return [
+            {
+              value: 't1.1',
+            },
+          ];
+        },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       t1.setChecked('t1', {
@@ -111,17 +123,22 @@ describe('tree:lazy', () => {
         lazy: true,
         async load() {
           await delay(0);
-          return [{
-            value: 't1.1'
-          }, {
-            value: 't1.2'
-          }];
-        }
+          return [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ];
+        },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
       const t1 = tree.getNode('t1');
 
       await lazyLoad(tree, 't1');
@@ -150,17 +167,22 @@ describe('tree:lazy', () => {
         lazy: true,
         async load() {
           await delay(0);
-          return [{
-            value: 't1.1'
-          }, {
-            value: 't1.2'
-          }];
-        }
+          return [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ];
+        },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
       const t1 = tree.getNode('t1');
       t1.setChecked(true, {
         directly: true,
@@ -188,25 +210,32 @@ describe('tree:lazy', () => {
         async load(node) {
           await delay(0);
           if (node.value === 't1') {
-            return [{
-              value: 't1.1',
-              children: true,
-            }];
+            return [
+              {
+                value: 't1.1',
+                children: true,
+              },
+            ];
           }
           if (node.value === 't1.1') {
-            return [{
-              value: 't1.1.1',
-            }, {
-              value: 't1.1.2'
-            }];
+            return [
+              {
+                value: 't1.1.1',
+              },
+              {
+                value: 't1.1.2',
+              },
+            ];
           }
           return [];
-        }
+        },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
 
       // 展开 t1
       await lazyLoad(tree, 't1');
@@ -241,17 +270,22 @@ describe('tree:lazy', () => {
         lazy: true,
         async load() {
           await delay(0);
-          return [{
-            value: 't1.1'
-          }, {
-            value: 't1.2'
-          }];
-        }
+          return [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ];
+        },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
 
       const t1 = tree.getNode('t1');
       t1.setChecked(true, {
@@ -280,25 +314,32 @@ describe('tree:lazy', () => {
         async load(node) {
           await delay(0);
           if (node.value === 't1') {
-            return [{
-              value: 't1.1',
-              children: true,
-            }];
+            return [
+              {
+                value: 't1.1',
+                children: true,
+              },
+            ];
           }
           if (node.value === 't1.1') {
-            return [{
-              value: 't1.1.1',
-            }, {
-              value: 't1.1.2'
-            }];
+            return [
+              {
+                value: 't1.1.1',
+              },
+              {
+                value: 't1.1.2',
+              },
+            ];
           }
           return [];
-        }
+        },
       });
-      tree.append([{
-        value: 't1',
-        children: true,
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: true,
+        },
+      ]);
 
       // 展开 t1
       await lazyLoad(tree, 't1');

@@ -1,5 +1,5 @@
 .content-placement-top {
-  .@{prefix}-popup[data-popper-placement^="top"] {
+  .@{prefix}-popup[data-popper-placement^='top'] {
     .@{prefix}-popup__content {
       margin-bottom: @popup-content-margin;
 
@@ -11,7 +11,7 @@
 }
 
 .content-placement-bottom {
-  .@{prefix}-popup[data-popper-placement^="bottom"] {
+  .@{prefix}-popup[data-popper-placement^='bottom'] {
     .@{prefix}-popup__content {
       margin-top: @popup-content-margin;
 
@@ -23,7 +23,7 @@
 }
 
 .content-placement-left {
-  .@{prefix}-popup[data-popper-placement^="left"] {
+  .@{prefix}-popup[data-popper-placement^='left'] {
     .@{prefix}-popup__content {
       margin-right: @popup-content-margin;
 
@@ -39,7 +39,7 @@
 }
 
 .content-placement-right {
-  .@{prefix}-popup[data-popper-placement^="right"] {
+  .@{prefix}-popup[data-popper-placement^='right'] {
     .@{prefix}-popup__content {
       margin-left: @popup-content-margin;
 
@@ -55,29 +55,29 @@
 }
 
 .arrow-placement-top() {
-  .@{prefix}-popup[data-popper-placement^="top"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement^='top'] .@{prefix}-popup__arrow {
     &::before {
       border-top-left-radius: 100%;
       box-shadow: @popup-top-arrow-shadow;
     }
   }
 
-  .@{prefix}-popup[data-popper-placement="top-start"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='top-start'] .@{prefix}-popup__arrow {
     left: @popup-arrow-width;
   }
 
-  .@{prefix}-popup[data-popper-placement="top"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='top'] .@{prefix}-popup__arrow {
     left: 50%;
     margin-left: calc(-@popup-arrow-width / 2);
   }
 
-  .@{prefix}-popup[data-popper-placement="top-end"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='top-end'] .@{prefix}-popup__arrow {
     left: calc(100% - @popup-arrow-width * 2);
   }
 }
 
 .arrow-placement-bottom() {
-  .@{prefix}-popup[data-popper-placement^="bottom"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement^='bottom'] .@{prefix}-popup__arrow {
     top: calc(-@popup-arrow-width / 2);
 
     &::before {
@@ -86,22 +86,22 @@
     }
   }
 
-  .@{prefix}-popup[data-popper-placement="bottom-start"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='bottom-start'] .@{prefix}-popup__arrow {
     left: @popup-arrow-width;
   }
 
-  .@{prefix}-popup[data-popper-placement="bottom"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='bottom'] .@{prefix}-popup__arrow {
     left: 50%;
     margin-left: calc(-@popup-arrow-width / 2);
   }
 
-  .@{prefix}-popup[data-popper-placement="bottom-end"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='bottom-end'] .@{prefix}-popup__arrow {
     left: calc(100% - @popup-arrow-width * 2);
   }
 }
 
 .arrow-placement-left() {
-  .@{prefix}-popup[data-popper-placement^="left"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-popup__arrow {
     right: calc(-@popup-arrow-width / 2);
 
     &::before {
@@ -109,22 +109,22 @@
     }
   }
 
-  .@{prefix}-popup[data-popper-placement="left-start"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='left-start'] .@{prefix}-popup__arrow {
     top: @popup-arrow-width;
   }
 
-  .@{prefix}-popup[data-popper-placement="left"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='left'] .@{prefix}-popup__arrow {
     top: 50%;
     margin-top: calc(-@popup-arrow-width / 2);
   }
 
-  .@{prefix}-popup[data-popper-placement="left-end"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='left-end'] .@{prefix}-popup__arrow {
     top: calc(100% - @popup-arrow-width * 2);
   }
 }
 
 .arrow-placement-right() {
-  .@{prefix}-popup[data-popper-placement^="right"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-popup__arrow {
     left: calc(-@popup-arrow-width / 2);
 
     &::before {
@@ -132,23 +132,23 @@
     }
   }
 
-  .@{prefix}-popup[data-popper-placement="right-start"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='right-start'] .@{prefix}-popup__arrow {
     top: @popup-arrow-width;
   }
 
-  .@{prefix}-popup[data-popper-placement="right"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='right'] .@{prefix}-popup__arrow {
     top: 50%;
     margin-top: calc(-@popup-arrow-width / 2);
   }
 
-  .@{prefix}-popup[data-popper-placement="right-end"] .@{prefix}-popup__arrow {
+  .@{prefix}-popup[data-popper-placement='right-end'] .@{prefix}-popup__arrow {
     top: calc(100% - @popup-arrow-width * 2);
   }
 }
 
 // @placement: bottom | top | right
 .expand-animation(@placement, @prefix-cls, @dom-attrs: ~'') {
-  @keyframe-name: "t-popup-animation-expand";
+  @keyframe-name: 't-popup-animation-expand';
   @clip-path-endpoint-tl: -20% 0;
   @clip-path-endpoint-tr: 120% 0;
   @clip-path-endpoint-br: 120% 120%;
@@ -179,17 +179,19 @@
   );
 
   .@{popup-flow}-@{prefix-cls}-enter-active@{dom-attrs} {
-    animation: ~"@{keyframe-name}-in-@{placement}" @popup-flow-duration @anim-time-fn-easing,
+    animation:
+      ~'@{keyframe-name}-in-@{placement}' @popup-flow-duration @anim-time-fn-easing,
       t-fade-in @popup-flow-duration linear;
   }
   .@{popup-flow}-@{prefix-cls}-leave-active@{dom-attrs} {
-    animation: ~"@{keyframe-name}-out-@{placement}" @popup-flow-duration @anim-time-fn-easing,
+    animation:
+      ~'@{keyframe-name}-out-@{placement}' @popup-flow-duration @anim-time-fn-easing,
       t-fade-out @popup-flow-duration @anim-time-fn-ease-out;
   }
 
   .keyframe(@start-path) {
-    @keyframe-in-name: ~"@{keyframe-name}-in-@{placement}";
-    @keyframe-out-name: ~"@{keyframe-name}-out-@{placement}";
+    @keyframe-in-name: ~'@{keyframe-name}-in-@{placement}';
+    @keyframe-out-name: ~'@{keyframe-name}-out-@{placement}';
 
     @keyframes @keyframe-in-name {
       0% {

@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/ko';
 
@@ -15,22 +16,45 @@ export default {
   cascader: {
     title: '제목',
     placeholder: '옵션 선택',
+    filterPlaceholder: '검색',
+    empty: '일치하는 항목이 없습니다',
   },
   dropdownMenu: {
     reset: '초기화',
     confirm: '확인',
   },
   dateTimePicker: {
+    dayjsLocale: 'ko',
     title: '날짜 선택',
     cancel: '취소',
     confirm: '확인',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
+    months: ['1 월', '2 월', '3 월', '4 월', '5 월', '6 월', '7 월', '8 월', '9 월', '10 월', '11 월', '12 월'],
     yearLabel: '년',
     monthLabel: '월',
     dateLabel: '일',
     hourLabel: '시',
     minuteLabel: '분',
     secondLabel: '초',
+  },
+  form: {
+    errorMessage: {
+      date: '정확한 내용을 입력해주세요${name}',
+      url: '정확한 내용을 입력해주세요${name}',
+      required: '${name}필수의',
+      whitespace: '${name}은 비어 있을 수 없습니다',
+      max: '${name}문자 길이는 초과할 수 없습니다 ${validate} 캐릭터，한자는 두 글자와 같다',
+      min: '${name}문자 길이는 다음보다 작을 수 없습니다 ${validate} 캐릭터，한자는 두 글자와 같다',
+      len: '${name}문자 길이는 다음과 같아야 합니다. ${validate}',
+      enum: '${name}만 될 수 있습니다${validate}그리고 더',
+      idcard: '정확한 내용을 입력해주세요${name}',
+      telnumber: '정확한 내용을 입력해주세요${name}',
+      pattern: '정확한 내용을 입력해주세요${name}',
+      validator: '${name}비준수',
+      boolean: '${name}데이터 유형은 부울이어야 합니다',
+      number: '${name}숫자여야 합니다',
+    },
+    colonText: ':',
   },
   picker: {
     cancel: '취소',
@@ -40,6 +64,7 @@ export default {
     loadingTexts: ['새로고침을 당겨주세요', '느슨하게 하여 새로 고침', '새로고침 중...', '새로고침 완료'],
   },
   rate: {
+    texts: ['나쁨', '실망', '보통', '만족', '최고'],
     valueText: '{value}점',
     noValueText: '점수 없음',
   },
@@ -65,6 +90,7 @@ export default {
       waitingText: '대기 중',
       failText: '실패했습니다',
       successText: '성공했습니다',
+      reloadText: '다시 업로드',
     },
   },
   guide: {
@@ -72,5 +98,63 @@ export default {
     skip: '건너뛰기',
     finish: '완료',
     back: '뒤로',
+  },
+  typography: {
+    expandText: '더보기',
+    collapseText: '접기',
+    copiedText: '복사 성공',
+  },
+  qrcode: {
+    expiredText: '만료됨',
+    refreshText: '새로 고치다',
+    scannedText: '스캔됨',
+  },
+  attachments: {
+    status: {
+      pending: '업로드 중...',
+      fail: '업로드 실패',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '새로고침',
+      copy: '복사',
+      good: '좋아요',
+      bad: '싫어요',
+      share: '공유',
+      quote: '인용',
+    },
+  },
+  chatRecord: {
+    holdToTalk: '길게 눌러 말하기',
+    requestAuth: '마이크 권한을 허용해 주세요',
+    releaseToCancel: '놓으면 취소',
+    releaseToSend: '놓으면 전송, 위로 밀면 취소',
+    cancelText: '취소',
+    sendText: '전송',
+    busyTip: '인식 중입니다. 잠시만 기다려 주세요…',
+    recognizeFailTip: '음성 인식에 실패했습니다. 다시 시도해 주세요',
+    missingPluginTip: '음성 인식 플러그인 WechatSI가 없습니다',
+    authSettingFail: '녹음 권한 설정을 가져오지 못했습니다',
+    openSettingFail: '설정을 열지 못했습니다',
+    systemMicTitle: '마이크를 사용할 수 없습니다',
+    systemMicContent:
+      '휴대폰 시스템에서 "WeChat"의 마이크 권한이 꺼져 있는 것으로 감지되었습니다.\n\n' +
+      '시스템 설정에서 활성화해 주세요:\n' +
+      '- iOS: 설정 > WeChat > 마이크\n' +
+      '- Android: 설정 > 앱 관리 > WeChat > 권한 > 마이크\n\n' +
+      '활성화한 후 미니 프로그램으로 돌아가 다시 시도해 주세요.',
+  },
+  chatSender: {
+    placeholder: '메시지를 입력하세요...',
+    sendText: '보내기',
+    stopText: '중지',
+  },
+  chatThinking: {
+    status: {
+      pending: '생각 중...',
+      complete: '생각 완료',
+      stop: '생각 중지',
+    },
   },
 };

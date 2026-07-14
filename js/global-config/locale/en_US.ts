@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} / page',
     jumpTo: 'Jump to',
     page: '',
-    total: '{total} items',
+    total: 'no items | 1 item | {count} items',
   },
   cascader: {
     empty: 'Empty Data',
@@ -27,8 +27,7 @@ export default {
     today: 'Today',
     thisMonth: 'This Month',
     week: 'Monday,Tuesday,Wedsday,Thuresday,Friday,Saturday,Sunday',
-    cellMonth:
-      'January,February,March,April,May,June,July,August,September,October,November,December',
+    cellMonth: 'January,February,March,April,May,June,July,August,September,October,November,December',
   },
   transfer: {
     title: '{checked} / {total}',
@@ -70,13 +69,13 @@ export default {
     clearFilterResultButtonText: 'Clear',
     columnConfigButtonText: 'Column Config',
     columnConfigTitleText: 'Table Column Config',
-    columnConfigDescriptionText:
-      'Please select columns to show them in the table',
+    columnConfigDescriptionText: 'Please select columns to show them in the table',
     confirmText: 'Confirm',
     cancelText: 'Cancel',
     resetText: 'Reset',
     selectAllText: 'Select All',
-    searchResultText: 'Search "{result}". Find {count} items.',
+    searchResultText:
+      'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
   },
   select: {
     empty: 'Empty Data',
@@ -101,20 +100,7 @@ export default {
       week: 'select week',
     },
     weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    months: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ],
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -171,8 +157,8 @@ export default {
       url: '${name} is invalid',
       required: '${name} is required',
       whitespace: '${name} cannot be empty',
-      max: '${name} must be at least ${validate} characters',
-      min: '${name} cannot be longer than ${validate} characters',
+      max: '${name} cannot be longer than ${validate} characters',
+      min: '${name} must be at least ${validate} characters',
       len: '${name} must be exactly ${validate} characters',
       enum: '${name} must be one of ${validate}',
       idcard: '${name} is invalid',
@@ -181,6 +167,7 @@ export default {
       validator: '${name} is invalid',
       boolean: '${name} is not a boolean',
       number: '${name} must be a number',
+      email: '${name} is invalid',
     },
     colonText: ':',
   },
@@ -204,7 +191,7 @@ export default {
     recentColorTitle: 'Recently Used',
     clearConfirmText: 'Clear recently used colors?',
     singleColor: 'Single',
-    gradientColor: 'Gradient'
+    gradientColor: 'Gradient',
   },
   guide: {
     finishButtonProps: {
@@ -233,6 +220,7 @@ export default {
     mirrorTipText: 'mirror',
     rotateTipText: 'rotate',
     originalSizeTipText: 'original',
+    previewText: 'preview',
   },
   typography: {
     expandText: 'more',
@@ -249,7 +237,7 @@ export default {
       fail: 'Failure',
       empty: 'No Data',
       networkError: 'Network Error',
-    }
+    },
   },
   descriptions: {
     colonText: ':',
@@ -271,10 +259,11 @@ export default {
     loadingEndText: 'deep thinking end',
     uploadImageText: 'upload image',
     uploadAttachmentText: 'upload attachment',
+    shareTipText: 'share',
   },
   qrcode: {
     expiredText: 'expired',
     refreshText: 'refresh',
     scannedText: 'scanned',
-  }
+  },
 } as const;

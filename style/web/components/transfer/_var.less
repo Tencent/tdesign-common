@@ -24,11 +24,15 @@
 @transfer-operations-margin: auto @comp-margin-s;
 @transfer-operations-gap: @comp-margin-l;
 // 有翻页时候transfer的下内边距
-@transfer-with-pagination-padding-bottom: calc(@transfer-list-pagination-height + @transfer-list-pagination-padding * 2);
+@transfer-with-pagination-padding-bottom: calc(
+  @transfer-list-pagination-height + @transfer-list-pagination-padding * 2
+);
 // 有footer时候transfer的下内边距
 @transfer-with-footer-padding-bottom: 48px;
 // 有翻页和footer时候transfer的下内边距
-@transfer-with-pagination-footer-padding-bottom: calc(@transfer-with-pagination-padding-bottom + @transfer-with-footer-padding-bottom);
+@transfer-with-pagination-footer-padding-bottom: calc(
+  @transfer-with-pagination-padding-bottom + @transfer-with-footer-padding-bottom
+);
 // search&footer
 @transfer-with-search-footer-padding-bottom: 48px;
 // pagination&search
@@ -55,12 +59,8 @@
 @transfer-wrap-height: 320px;
 @transfer-wrap-width: 206px;
 @transfer-list-header-height: @comp-size-xxl;
-@transfer-list-header-width: calc(
-  @transfer-common-width - @transfer-list-margin-horizontal * 2
-);
-@transfer-list-search-wrapper-width: calc(
-  @transfer-common-width - @transfer-list-margin-horizontal * 2
-);
+@transfer-list-header-width: calc(@transfer-common-width - @transfer-list-margin-horizontal * 2);
+@transfer-list-search-wrapper-width: calc(@transfer-common-width - @transfer-list-margin-horizontal * 2);
 @transfer-list-pagination-height: @comp-size-xs;
 @transfer-operations-button-height: @comp-size-xs;
 @transfer-operations-icon-size: @comp-size-xxxs;

@@ -1,10 +1,12 @@
 ---
 title: Popover 弹出气泡
 description: 用于文字提示的气泡框。
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---
+
+## 代码演示
 
 ### 01 组件类型
 
@@ -14,6 +16,6 @@ toc: false
 
 {{ theme }}
 
-### 气泡弹出方向
+#### 气泡弹出方向
 
 {{ placement }}

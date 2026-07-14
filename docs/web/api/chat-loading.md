@@ -1,8 +1,8 @@
 ---
-title: ChatLoading
-description: 适用于 Chat 对话场景下的加载组件。
+title: ChatLoading 对话加载
+description: 用于对话场景中的加载状态组件。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: ai
 ---
 

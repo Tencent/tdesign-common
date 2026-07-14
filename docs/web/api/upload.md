@@ -10,17 +10,17 @@ spline: form
 
 文件上传功能速查表，共 9 种风格，仅支持下方表格中列出的属性组合，可根据实际需求查找对应的 API 组合。
 
-| 图片/文件 | 是否批量 | 拖拽上传 | API | 示例代码位置 |
-| -- | -- | -- | -- | -- |
-| 文件 | 单文件 | 不允许拖拽上传 | theme=single-input, multiple=false | 输入框单文件上传 |
-| 文件 | 单文件 | 不允许拖拽上传 | theme=file, multiple=false | 基础文件上传 |
-| 文件 | 批量文件 | 不允许拖拽上传 | theme=file, multiple=true | 基础文件上传 |
-| 文件 | 单文件 | 允许拖拽上传 | theme=file, draggable=true | 单文件/图片拖拽上传 |
-| 文件 | 批量文件 | 允许拖拽上传 | theme=file-flow, multiple=true, draggable=true | 批量上传文件 |
-| 图片 | 单图片 | 不允许拖拽上传 | theme=image, multiple=false | 基础图片上传 |
-| 图片 | 单图片 | 允许拖拽上传 | theme=image, draggable=true | 单文件/图片拖拽上传 |
-| 图片 | 批量图片 | 不允许拖拽上传 | theme=image, multiple=true | 基础图片上传 |
-| 图片 | 批量图片 | 允许拖拽上传 | theme=image-flow, multiple=true, draggable=true | 批量上传图片 |
+| 图片/文件 | 是否批量 | 拖拽上传       | API                                             | 示例代码位置        |
+| --------- | -------- | -------------- | ----------------------------------------------- | ------------------- |
+| 文件      | 单文件   | 不允许拖拽上传 | theme=single-input, multiple=false              | 输入框单文件上传    |
+| 文件      | 单文件   | 不允许拖拽上传 | theme=file, multiple=false                      | 基础文件上传        |
+| 文件      | 批量文件 | 不允许拖拽上传 | theme=file, multiple=true                       | 基础文件上传        |
+| 文件      | 单文件   | 允许拖拽上传   | theme=file, draggable=true                      | 单文件/图片拖拽上传 |
+| 文件      | 批量文件 | 允许拖拽上传   | theme=file-flow, multiple=true, draggable=true  | 批量上传文件        |
+| 图片      | 单图片   | 不允许拖拽上传 | theme=image, multiple=false                     | 基础图片上传        |
+| 图片      | 单图片   | 允许拖拽上传   | theme=image, draggable=true                     | 单文件/图片拖拽上传 |
+| 图片      | 批量图片 | 不允许拖拽上传 | theme=image, multiple=true                      | 基础图片上传        |
+| 图片      | 批量图片 | 允许拖拽上传   | theme=image-flow, multiple=true, draggable=true | 批量上传图片        |
 
 ### 基础文件上传
 

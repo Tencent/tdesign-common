@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/zh-tw';
 
@@ -15,22 +16,45 @@ export default {
   cascader: {
     title: '標題',
     placeholder: '選擇選項',
+    filterPlaceholder: '搜尋',
+    empty: '暫無匹配項',
   },
   dropdownMenu: {
     reset: '重置',
     confirm: '確定',
   },
   dateTimePicker: {
+    dayjsLocale: 'zh-tw',
     title: '選擇時間',
     cancel: '取消',
     confirm: '確定',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
+    months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
     yearLabel: '年',
     monthLabel: '月',
     dateLabel: '日',
     hourLabel: '時',
     minuteLabel: '分',
     secondLabel: '秒',
+  },
+  form: {
+    errorMessage: {
+      date: '請輸入正確的${name}',
+      url: '請輸入正確的${name}',
+      whitespace: '${name}不能為空',
+      required: '${name}必填',
+      max: '${name}字符長度不能超過 ${validate} 個字符，一個中文等於兩個字符',
+      min: '${name}字符長度不能少於 ${validate} 個字符，一個中文等於兩個字符',
+      len: '${name}字符長度必須是 ${validate}',
+      enum: '${name}只能是${validate}等',
+      idcard: '請輸入正確的${name}',
+      telnumber: '請輸入正確的${name}',
+      pattern: '請輸入正確的${name}',
+      validator: '${name}不符合要求',
+      boolean: '${name}數據類型必須是布林類型',
+      number: '${name}必須是數字',
+    },
+    colonText: '：',
   },
   picker: {
     cancel: '取消',
@@ -40,6 +64,7 @@ export default {
     loadingTexts: ['下拉刷新', '鬆手刷新', '正在刷新', '刷新完成'],
   },
   rate: {
+    texts: ['極差', '失望', '一般', '滿意', '驚喜'],
     valueText: '{value} 分',
     noValueText: '未評分',
   },
@@ -65,6 +90,7 @@ export default {
       waitingText: '待上傳',
       failText: '上傳失敗',
       successText: '上傳成功',
+      reloadText: '重新上傳',
     },
   },
   guide: {
@@ -72,5 +98,63 @@ export default {
     skip: '跳過',
     finish: '完成',
     back: '返回',
+  },
+  typography: {
+    expandText: '展開',
+    collapseText: '收起',
+    copiedText: '複製成功',
+  },
+  qrcode: {
+    expiredText: '二維碼過期',
+    refreshText: '點擊刷新',
+    scannedText: '已掃描',
+  },
+  attachments: {
+    status: {
+      pending: '上傳中...',
+      fail: '上傳失敗',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '刷新',
+      copy: '複製',
+      good: '點讚',
+      bad: '點踩',
+      share: '分享',
+      quote: '引用',
+    },
+  },
+  chatRecord: {
+    holdToTalk: '按住說話',
+    requestAuth: '請授權麥克風權限',
+    releaseToCancel: '鬆開取消',
+    releaseToSend: '鬆開發送，上滑取消',
+    cancelText: '取消',
+    sendText: '發送',
+    busyTip: '識別中，請稍候…',
+    recognizeFailTip: '錄音識別失敗，請重試',
+    missingPluginTip: '缺少語音識別外掛 WechatSI',
+    authSettingFail: '獲取錄音權限設置失敗',
+    openSettingFail: '打開設置失敗',
+    systemMicTitle: '無法使用麥克風',
+    systemMicContent:
+      '檢測到手機系統已關閉「微信」的麥克風權限。\n\n' +
+      '請到系統設置中開啟：\n' +
+      '- iOS：設置 > 微信 > 麥克風\n' +
+      '- Android：設置 > 應用管理 > 微信 > 權限 > 麥克風\n\n' +
+      '開啟後返回小程序再試。',
+  },
+  chatSender: {
+    placeholder: '請輸入消息...',
+    sendText: '發送',
+    stopText: '停止',
+  },
+  chatThinking: {
+    status: {
+      pending: '正在思考中...',
+      complete: '已完成思考',
+      stop: '已停止思考',
+    },
   },
 };

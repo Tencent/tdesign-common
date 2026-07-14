@@ -7,14 +7,19 @@ describe('tree:getNode', () => {
   describe('treeStore:getNode()', () => {
     it('getNode 方法通过 value 获取节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       expect(tree.getNode('t1.1').value).toBe('t1.1');
     });
@@ -22,22 +27,32 @@ describe('tree:getNode', () => {
     it('getNode 方法识别节点是否在当前树中', async () => {
       const tree1 = new TreeStore();
       const tree2 = new TreeStore();
-      tree1.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
-      tree2.append([{
-        value: 'x1',
-        children: [{
-          value: 'x1.1',
-        }, {
-          value: 'x1.2',
-        }],
-      }]);
+      tree1.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
+      tree2.append([
+        {
+          value: 'x1',
+          children: [
+            {
+              value: 'x1.1',
+            },
+            {
+              value: 'x1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
       const t2x1d1 = tree2.getNode('x1.1');
       expect(t2x1d1.tree).toBe(tree2);
@@ -48,21 +63,30 @@ describe('tree:getNode', () => {
   describe('treeStore:getNodes()', () => {
     it('getNodes 方法指定节点范围获取节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }, {
-          value: 't2.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+            {
+              value: 't2.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const nodes = tree.getNodes(tree.getNode('t1'));
@@ -74,21 +98,30 @@ describe('tree:getNode', () => {
 
     it('getNodes 方法按条件过滤节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }, {
-          value: 't2.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+            {
+              value: 't2.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const nodes = tree.getNodes('t1', {
@@ -103,21 +136,30 @@ describe('tree:getNode', () => {
 
     it('getNodes 方法按级别过滤节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }, {
-          value: 't2.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+            {
+              value: 't2.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const nodes = tree.getNodes('t1', {
@@ -129,23 +171,32 @@ describe('tree:getNode', () => {
 
     it('getNodes 方法按属性过滤节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          checkable: true,
-        }, {
-          value: 't1.2',
-        }],
-      }, {
-        value: 't2',
-        children: [{
-          value: 't2.1',
-        }, {
-          value: 't2.2',
-          checkable: true,
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              checkable: true,
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+        {
+          value: 't2',
+          children: [
+            {
+              value: 't2.1',
+            },
+            {
+              value: 't2.2',
+              checkable: true,
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const nodes = tree.getNodes('t2', {
@@ -161,14 +212,19 @@ describe('tree:getNode', () => {
   describe('treeStore:getChildren()', () => {
     it('getChildren 方法取根节点列表', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const children = tree.getChildren();
@@ -180,14 +236,19 @@ describe('tree:getNode', () => {
   describe('treeStore:getIndex()', () => {
     it('getIndex 方法取节点在总列表中序号', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       // 取节点在总列表中的序号
@@ -199,14 +260,19 @@ describe('tree:getNode', () => {
   describe('treeStore:getParent()', () => {
     it('getParent 方法取节点的父节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       // 取节点在总列表中的序号
@@ -218,17 +284,24 @@ describe('tree:getNode', () => {
   describe('treeStore:getParents()', () => {
     it('getParents 方法取节点的所有父级节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       // 取节点在总列表中的序号
@@ -242,14 +315,19 @@ describe('tree:getNode', () => {
   describe('treeStore:getNodeIndex()', () => {
     it('getNodeIndex 方法取节点在兄弟节点中的序号', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-        }, {
-          value: 't1.2',
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+            {
+              value: 't1.2',
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const index = tree.getNodeIndex(tree.getNode('t1.1'));
@@ -260,15 +338,21 @@ describe('tree:getNode', () => {
   describe('treeNode:getRoot()', () => {
     it('getRoot 方法取节点的根节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const root = tree.getNode('t1.1.1').getRoot();
@@ -279,15 +363,21 @@ describe('tree:getNode', () => {
   describe('treeNode:getPath()', () => {
     it('getPath 方法获取路径节点', async () => {
       const tree = new TreeStore();
-      tree.append([{
-        value: 't1',
-        children: [{
-          value: 't1.1',
-          children: [{
-            value: 't1.1.1',
-          }],
-        }],
-      }]);
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+              children: [
+                {
+                  value: 't1.1.1',
+                },
+              ],
+            },
+          ],
+        },
+      ]);
       await delay(0);
 
       const pathNodes = tree.getNode('t1.1.1').getPath();

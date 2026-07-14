@@ -9,12 +9,12 @@
 ### 与页面布局相关
 
 ##### 位于页面或模块的顶部，统领下方内容的切换，通常设置吸顶，方便用户快速切换。
+
 <div class="legend">
  <div class="item">
    <img src="https://tdesign.gtimg.com/site/design/mobile-guide/steps/steps-1.png" />
  </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -60,13 +60,13 @@
 <hr />
 
 ##### 尽量避免嵌套步骤条。
+
 <div class="legend">
   <div class="item">
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/steps/steps-7.png" />
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

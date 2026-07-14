@@ -1,10 +1,12 @@
 ---
 title: Popover
 description: Bubble box for text prompt.
-spline: base
+spline: message
 isComponent: true
 toc: false
 ---
+
+## Code Demo
 
 ### 01 Component Type
 
@@ -14,6 +16,6 @@ toc: false
 
 {{ theme }}
 
-### Bubble Pop Direction
+#### Bubble Pop Direction
 
 {{ placement }}

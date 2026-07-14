@@ -2,7 +2,7 @@
 title: Statistic 统计数值
 description: 突出展示某个或某组数字、带描述的统计类数据。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

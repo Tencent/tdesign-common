@@ -1,19 +1,41 @@
 ---
 title: Cascader 级联选择器
-description: 用于多层级数据选择，主要为树形结构，可展示更多的数据。
-spline: base
+description: 用于多层级数据的逐级选择。
+spline: form
 isComponent: true
 toc: false
 ---
 
-### 基础
+## 代码演示
 
-#### 基本用法
+### 01 组件类型
+
+#### 基础用法
 
 {{ base }}
 
-### 状态
+#### 选项卡风格
 
-#### 禁用可选项
+{{ theme-tab }}
 
-{{ status }}
+### 02 进阶
+
+#### 带初始值
+
+{{ with-value }}
+
+#### 自定义 keys
+
+{{ keys }}
+
+#### 使用次级标题
+
+{{ with-title }}
+
+#### 异步加载
+
+{{ lazy }}
+
+#### 选择任意一项
+
+{{ check-strictly }}

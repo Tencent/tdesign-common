@@ -1,20 +1,23 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
+
+@import '../../mixins/_scrollbar.less';
 
 .@{prefix}-textarea {
-
   .reset;
 
   position: relative;
   width: 100%;
 
   &__inner {
+    .scrollbar();
+
     display: flex;
     width: 100%;
     height: @textarea-height;
@@ -26,7 +29,9 @@
     color: @textarea-text-color;
     resize: vertical;
     outline: none;
-    transition: all @anim-time-fn-easing @anim-duration-base, height 0s;
+    transition:
+      all @anim-time-fn-easing @anim-duration-base,
+      height 0s;
     box-sizing: border-box;
 
     &:hover {
@@ -79,6 +84,10 @@
   .@{prefix}-resize-none {
     resize: none;
   }
+
+  .@{prefix}-hide-scrollbar {
+    .hideScrollbar();
+  }
 }
 
 .@{prefix}-textarea__tips {
@@ -88,7 +97,7 @@
   display: inline-block;
 }
 
-.@{prefix}-textarea__tips--normal {
+.@{prefix}-textarea__tips--default {
   color: @textarea-text-color-tips;
 }
 

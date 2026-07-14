@@ -22,7 +22,6 @@ spline: form
 
 {{ login }}
 
-
 ### 不同对齐方式的表单
 
 根据具体目标和制约因素，选择最佳的标签对齐方式，默认对齐方式为右对齐。
@@ -88,7 +87,7 @@ spline: form
 
 ### 禁用态的表单
 
-可以使用 `disabled` 属性禁用整个表单项。对于自定义组件，可以使用 `formControlledComponents` 设置为允许 Form 代理禁用状态。
+可以使用 `disabled` 属性禁用整个表单项。
 
 {{ disabled }}
 

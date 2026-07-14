@@ -1,10 +1,10 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-range-input {
   .reset;
@@ -101,6 +101,10 @@
 
       &.@{prefix}-is-focused {
         background-color: @bg-color-component;
+      }
+
+      &.@{prefix}-is-disabled:hover {
+        background-color: @bg-color-component-disabled;
       }
     }
   }

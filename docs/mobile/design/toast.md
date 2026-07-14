@@ -1,5 +1,3 @@
-
-
 ### 何时使用
 
 当需要对用户进行轻量反馈或提示，且不需要用户进行操作时使用，轻提示会在一段时间后自动消失。
@@ -14,7 +12,6 @@
   </div>
 </div>
 
-
 ### 组件搭配使用
 
 ##### 轻提示经常和加载搭配使用，在页面内进行某项操作后，用作加载反馈。
@@ -24,7 +21,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/toast/toast-2.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 
@@ -41,7 +37,6 @@
     <img class="tag" src="https://tdesign.gtimg.com/site/doc/bad.png" />
   </div>
 </div>
-
 
 ### 相似组件
 

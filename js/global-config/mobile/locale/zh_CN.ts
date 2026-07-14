@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
 import 'dayjs/locale/zh-cn';
 
@@ -15,22 +16,45 @@ export default {
   cascader: {
     title: '标题',
     placeholder: '选择选项',
+    filterPlaceholder: '搜索',
+    empty: '暂无匹配项',
   },
   dropdownMenu: {
     reset: '重置',
     confirm: '确定',
   },
   dateTimePicker: {
+    dayjsLocale: 'zh-cn',
     title: '选择时间',
     cancel: '取消',
     confirm: '确定',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
+    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     yearLabel: '年',
     monthLabel: '月',
     dateLabel: '日',
     hourLabel: '时',
     minuteLabel: '分',
     secondLabel: '秒',
+  },
+  form: {
+    errorMessage: {
+      date: '请输入正确的${name}',
+      url: '请输入正确的${name}',
+      required: '${name}必填',
+      whitespace: '${name}不能为空',
+      max: '${name}字符长度不能超过 ${validate} 个字符，一个中文等于两个字符',
+      min: '${name}字符长度不能少于 ${validate} 个字符，一个中文等于两个字符',
+      len: '${name}字符长度必须是 ${validate}',
+      enum: '${name}只能是${validate}等',
+      idcard: '请输入正确的${name}',
+      telnumber: '请输入正确的${name}',
+      pattern: '请输入正确的${name}',
+      validator: '${name}不符合要求',
+      boolean: '${name}数据类型必须是布尔类型',
+      number: '${name}必须是数字',
+    },
+    colonText: '：',
   },
   picker: {
     cancel: '取消',
@@ -40,6 +64,7 @@ export default {
     loadingTexts: ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'],
   },
   rate: {
+    texts: ['极差', '失望', '一般', '满意', '惊喜'],
     valueText: '{value} 分',
     noValueText: '未评分',
   },
@@ -65,6 +90,7 @@ export default {
       waitingText: '待上传',
       failText: '上传失败',
       successText: '上传成功',
+      reloadText: '重新上传',
     },
   },
   guide: {
@@ -72,5 +98,63 @@ export default {
     skip: '跳过',
     finish: '完成',
     back: '返回',
+  },
+  typography: {
+    expandText: '展开',
+    collapseText: '收起',
+    copiedText: '复制成功',
+  },
+  qrcode: {
+    expiredText: '二维码过期',
+    refreshText: '点击刷新',
+    scannedText: '已扫描',
+  },
+  attachments: {
+    status: {
+      pending: '上传中...',
+      fail: '上传失败',
+    },
+  },
+  chatActionbar: {
+    actionBar: {
+      replay: '刷新',
+      copy: '复制',
+      good: '点赞',
+      bad: '点踩',
+      share: '分享',
+      quote: '引用',
+    },
+  },
+  chatRecord: {
+    holdToTalk: '按住说话',
+    requestAuth: '请授权麦克风权限',
+    releaseToCancel: '松开取消',
+    releaseToSend: '松开发送，上滑取消',
+    cancelText: '取消',
+    sendText: '发送',
+    busyTip: '识别中，请稍候…',
+    recognizeFailTip: '录音识别失败，请重试',
+    missingPluginTip: '缺少语音识别插件 WechatSI',
+    authSettingFail: '获取录音权限设置失败',
+    openSettingFail: '打开设置失败',
+    systemMicTitle: '无法使用麦克风',
+    systemMicContent:
+      '检测到手机系统已关闭"微信"的麦克风权限。\n\n' +
+      '请到系统设置中开启：\n' +
+      '- iOS：设置 > 微信 > 麦克风\n' +
+      '- Android：设置 > 应用管理 > 微信 > 权限 > 麦克风\n\n' +
+      '开启后返回小程序再试。',
+  },
+  chatSender: {
+    placeholder: '请输入消息...',
+    sendText: '发送',
+    stopText: '停止',
+  },
+  chatThinking: {
+    status: {
+      pending: '正在思考中...',
+      complete: '已完成思考',
+      stop: '已停止思考',
+    },
   },
 };

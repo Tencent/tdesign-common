@@ -1,15 +1,15 @@
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
 .@{prefix}-descriptions {
   .reset;
 
-  @root: ~".@{prefix}-descriptions";
+  @root: ~'.@{prefix}-descriptions';
 
   &__header {
     color: @text-color-primary;
@@ -23,9 +23,9 @@
     font: @font-body-medium;
     width: 100%;
 
-    .generate-padding(l, @descriptions-padding-l);
-    .generate-padding(m, @descriptions-padding-m);
-    .generate-padding(s, @descriptions-padding-s);
+    .generate-padding(l, @descriptions-borderless-padding-l);
+    .generate-padding(m, @descriptions-borderless-padding-m);
+    .generate-padding(s, @descriptions-borderless-padding-s);
 
     & @{root}__label {
       color: @text-color-placeholder;
@@ -44,12 +44,22 @@
         }
       }
 
+      .generate-padding(l, @descriptions-border-padding-l);
+      .generate-padding(m, @descriptions-border-padding-m);
+      .generate-padding(s, @descriptions-border-padding-s);
+
       @{root}__label {
         background-color: @bg-color-secondarycontainer;
 
         &:hover {
           background-color: @bg-color-container-hover;
         }
+      }
+    }
+
+    :not(&--fixed):not(&--border) {
+      @{root}__label {
+        padding-right: @comp-paddingLR-l;
       }
     }
   }

@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} articoli/pagina',
     jumpTo: 'Vai a',
     page: 'pagina',
-    total: 'totale {total} elementi dati',
+    total: 'totale {count} elementi dati',
   },
   cascader: {
     empty: 'Nessun dato',
@@ -62,16 +62,14 @@ export default {
     empty: 'Nessun dato',
     loadingText: 'Caricamento in corso, attendere',
     loadingMoreText: 'Clicca per caricare di più',
-    filterInputPlaceholder:
-      'Inserisci il contenuto (nessun valore predefinito)',
+    filterInputPlaceholder: 'Inserisci il contenuto (nessun valore predefinito)',
     sortAscendingOperationText: 'Clicca per ordinare in modo crescente',
     sortCancelOperationText: "Clicca per annullare l'ordinamento",
     sortDescendingOperationText: 'Clicca per ordinare in modo decrescente',
     clearFilterResultButtonText: 'Pulisci il filtro',
     columnConfigButtonText: 'Configurazione delle colonne',
     columnConfigTitleText: 'Configurazione delle colonne della tabella',
-    columnConfigDescriptionText:
-      'Seleziona le colonne dei dati da visualizzare nella tabella',
+    columnConfigDescriptionText: 'Seleziona le colonne dei dati da visualizzare nella tabella',
     confirmText: 'Conferma',
     cancelText: 'Annulla',
     resetText: 'Ripristina',
@@ -101,26 +99,8 @@ export default {
       week: 'Seleziona una settimana',
     },
     weekdays: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
-    months: [
-      'Gen',
-      'Feb',
-      'Mar',
-      'Apr',
-      'Mag',
-      'Giu',
-      'Lug',
-      'Ago',
-      'Set',
-      'Ott',
-      'Nov',
-      'Dic',
-    ],
-    quarters: [
-      'Primo trimestre',
-      'Secondo trimestre',
-      'Terzo trimestre',
-      'Quarto trimestre',
-    ],
+    months: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+    quarters: ['Primo trimestre', 'Secondo trimestre', 'Terzo trimestre', 'Quarto trimestre'],
     rangeSeparator: ' - ',
     direction: 'ltr',
     format: 'DD-MM-YYYY',
@@ -154,8 +134,7 @@ export default {
     dragger: {
       dragDropText: 'Rilascia il mouse',
       draggingText: 'Trascina in questa area',
-      clickAndDragText:
-        'Clicca su "Seleziona file" sopra o trascina i file in questa area',
+      clickAndDragText: 'Clicca su "Seleziona file" sopra o trascina i file in questa area',
     },
     file: {
       fileNameText: 'Nome del file',
@@ -187,6 +166,7 @@ export default {
       validator: '${name} non conforme ai requisiti',
       boolean: 'Il tipo di dati di ${name} deve essere booleano',
       number: '${name} deve essere un numero',
+      email: 'Inserisci la ${name} corretta',
     },
     colonText: ':',
   },
@@ -208,10 +188,9 @@ export default {
   colorPicker: {
     swatchColorTitle: 'Colori predefiniti dal sistema',
     recentColorTitle: 'Colori usati di recente',
-    clearConfirmText:
-      'Sei sicuro di voler cancellare i colori usati di recente?',
+    clearConfirmText: 'Sei sicuro di voler cancellare i colori usati di recente?',
     singleColor: 'Singolo',
-    gradientColor: 'Gradiente'
+    gradientColor: 'Gradiente',
   },
   guide: {
     finishButtonProps: {
@@ -240,6 +219,7 @@ export default {
     mirrorTipText: 'Specchio',
     rotateTipText: 'Ruota',
     originalSizeTipText: 'Dimensione originale',
+    previewText: 'Anteprima',
   },
   typography: {
     expandText: 'Espandere',
@@ -256,7 +236,7 @@ export default {
       fail: 'Fallimento',
       empty: 'Nessun dato',
       networkError: 'Errore di rete',
-    }
+    },
   },
   descriptions: {
     colonText: ':',
@@ -278,10 +258,11 @@ export default {
     loadingEndText: 'Penso finito',
     uploadImageText: 'caricare immagine',
     uploadAttachmentText: 'caricare allegato',
+    shareTipText: 'Condividi',
   },
   qrcode: {
     expiredText: 'scaduto',
     refreshText: 'aggiornare',
     scannedText: 'scansionato',
-  }
+  },
 } as const;

@@ -1,16 +1,16 @@
 // 组件允许单个组件打包，因此默认引入公共基础样式
 
-@import "../../base.less";
+@import '../../base.less';
 
-@import "./_var.less";
+@import './_var.less';
 
-@import "./_mixin.less";
+@import './_mixin.less';
 
-@import "../../mixins/_layout.less";
+@import '../../mixins/_layout.less';
 
-@import "../../mixins/_reset.less";
+@import '../../mixins/_reset.less';
 
-@import "../../mixins/_scrollbar.less";
+@import '../../mixins/_scrollbar.less';
 
 a.@{prefix}-menu__item {
   text-decoration: none;
@@ -35,6 +35,8 @@ a.@{prefix}-menu__item {
   position: relative;
   width: 100%;
   background-color: @menu-theme-light;
+  overflow: hidden;
+  white-space: nowrap;
 
   &__inner {
     display: flex;
@@ -72,6 +74,7 @@ a.@{prefix}-menu__item {
       text-align: right;
       margin-right: @comp-margin-s;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     &-icon {
@@ -83,29 +86,17 @@ a.@{prefix}-menu__item {
     }
   }
 
-  .@{prefix}-submenu {
-    > .@{prefix}-menu__item {
-      overflow: unset;
-
-      &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: -20px;
-        left: 0;
-        right: 0;
-        height: 20px;
-      }
-    }
-  }
-
   .@{prefix}-menu__item {
     height: @head-menu-item-height;
     line-height: @head-menu-item-height;
-    padding: 0 @comp-paddingLR-l;
+    padding: 0 @comp-paddingLR-m;
     justify-content: center;
-    transition: all @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
-    gap: @comp-margin-m;
+    transition: all @anim-duration-slow cubic-bezier(0.645, 0.045, 0.355, 1);
+    gap: @comp-margin-s;
+
+    .t-icon {
+      font-size: @font-size-l;
+    }
   }
 
   &__submenu {
@@ -122,7 +113,7 @@ a.@{prefix}-menu__item {
   width: @default-menu-width;
   display: inline-block;
   background: @menu-theme-light;
-  transition: width @anim-duration-slow cubic-bezier(.645, .045, .355, 1);
+  transition: width @anim-duration-slow cubic-bezier(0.645, 0.045, 0.355, 1);
   white-space: nowrap;
 
   .@{prefix}-menu__item {
@@ -146,7 +137,7 @@ a.@{prefix}-menu__item {
         .@{prefix}-menu__item-link {
           margin-left: 0;
           opacity: 0;
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           bottom: 0;
@@ -173,10 +164,10 @@ a.@{prefix}-menu__item {
       }
 
       &.@{prefix}-menu__item--plain::after {
-        content: "";
+        content: '';
       }
 
-      span {
+      > .@{prefix}-menu__content {
         display: none;
       }
 
@@ -194,7 +185,7 @@ a.@{prefix}-menu__item {
         min-width: initial;
 
         &::after {
-          content: "";
+          content: '';
           display: block;
           position: absolute;
           right: -20px;
@@ -222,7 +213,7 @@ a.@{prefix}-menu__item {
       font-size: 0;
 
       &::after {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
         top: 50%;
@@ -291,8 +282,7 @@ a.@{prefix}-menu__item {
     .@{prefix}-menu-group {
       &__title {
         position: relative;
-        padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs
-          @comp-paddingLR-l;
+        padding: @comp-paddingTB-l @comp-paddingLR-l @comp-paddingTB-xs @comp-paddingLR-l;
         color: @menu-menu-group-title-color;
         font-size: @menu-extra-font-size;
         box-sizing: border-box;
@@ -491,7 +481,7 @@ a.@{prefix}-menu__item {
 
   &__spacer {
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       z-index: 1;
@@ -507,6 +497,13 @@ a.@{prefix}-menu__item {
     }
 
     &--top::before {
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      height: 20px;
+    }
+
+    &--bottom::before {
       top: -20px;
       left: 0;
       right: 0;
@@ -534,7 +531,7 @@ a.@{prefix}-menu__item {
       overflow: unset;
 
       &::before {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
         z-index: 1;
@@ -547,13 +544,6 @@ a.@{prefix}-menu__item {
         width: @horizontal-spacer;
         top: 0;
         bottom: 0;
-      }
-
-      &--bottom::before {
-        bottom: -20px;
-        left: 0;
-        right: 0;
-        height: 20px;
       }
     }
 
@@ -568,7 +558,7 @@ a.@{prefix}-menu__item {
         white-space: nowrap;
 
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           bottom: 0;
@@ -639,7 +629,7 @@ a.@{prefix}-menu__item {
 
     .@{prefix}-menu__popup {
       background: @menu-theme-dark;
-      border: solid .5px @menu-border-color--dark;
+      border: solid 0.5px @menu-border-color--dark;
 
       .@{prefix}-menu__item {
         color: @menu-item-color--dark;
@@ -678,10 +668,6 @@ a.@{prefix}-menu__item {
     border-radius: @border-radius-medium;
     opacity: 0;
     .list-style-none();
-
-    &.@{prefix}-popup__content {
-      position: absolute;
-    }
 
     &-wrapper {
       padding: @pop-padding-m;
@@ -724,6 +710,11 @@ a.@{prefix}-menu__item {
       color: @menu-popup-item-color;
       height: @comp-size-s;
       line-height: @comp-size-s;
+      gap: @comp-margin-s;
+
+      .t-icon {
+        font-size: @font-size-l;
+      }
 
       + .@{prefix}-menu__item {
         margin-left: 0;
@@ -755,12 +746,10 @@ a.@{prefix}-menu__item {
 
 // opacity-transition
 .@{prefix}-opacity-transition {
-  transition: opacity @anim-duration-slow cubic-bezier(.55, 0, .1, 1);
+  transition: opacity @anim-duration-slow cubic-bezier(0.55, 0, 0.1, 1);
 }
 
-.horizontal-collapse-transition
-.@{prefix}-submenu__title
-.@{prefix}-submenu__icon-arrow {
+.horizontal-collapse-transition .@{prefix}-submenu__title .@{prefix}-submenu__icon-arrow {
   transition: @anim-duration-base;
   opacity: 0;
 }
@@ -786,9 +775,12 @@ a.@{prefix}-menu__item {
 
 .@{prefix}-is-head-menu {
   .@{prefix}-menu__popup {
-    margin-top: calc(
-      (@menu-height-default - @head-menu-item-height) / 2
-    ) !important;
+    margin-top: calc((@menu-height-default - @head-menu-item-height) / 2) !important;
+
+    &-overflow {
+      overflow: hidden auto;
+      max-height: 300px;
+    }
   }
 }
 

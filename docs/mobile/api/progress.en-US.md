@@ -1,7 +1,7 @@
 ---
 title: Progress
 description: Displays the current progress of the task.
-spline: base
+spline: data
 isComponent: true
 toc: false
 ---
@@ -10,28 +10,18 @@ toc: false
 
 ### 01 Component Type
 
-Base progress bar
-
 {{ base }}
-
-Transition style
-
-{{ transition }}
-
-Custom colors/rounded corners
-
-{{ custom }}
 
 ### 02 Component Status
 
-Linear progress bar
+#### Line
 
 {{ line }}
 
-A progress bar is displayed in the percentage
+#### Plump
 
 {{ plump }}
 
-Circular progress bar
+#### Circle
 
 {{ circle }}

@@ -1,12 +1,14 @@
 ---
 title: ColorPicker 颜色选择器
 description: 用于颜色选择，支持多种格式。
-spline: data
+spline: form
 isComponent: true
 toc: false
 ---
 
-### 组件类型
+## 代码演示
+
+### 01 组件类型
 
 #### 基础颜色选择器
 
@@ -16,6 +18,6 @@ toc: false
 
 {{ multiple }}
 
-### 组件状态
+### 02 组件状态
 
 {{ format }}

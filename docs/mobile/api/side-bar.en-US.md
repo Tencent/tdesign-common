@@ -1,6 +1,6 @@
 ---
 title: SideBar
-description: Used to change the display after content classification.
+description: Used for content switching or navigation anchors, positioned on the left side of the page.
 spline: navigation
 isComponent: true
 toc: false
@@ -8,18 +8,20 @@ toc: false
 
 ## Code Demo
 
-### Anchor Point Usage
+### 01 Component Type
+
+#### Anchor Point Usage
 
 {{ base }}
 
-### Page Cutting Usage
+#### Page Cutting Usage
 
 {{ switch }}
 
-### SideBar With Icon
+#### SideBar With Icon
 
 {{ with-icon }}
 
-### Custom Style
+### 02 Component Style
 
 {{ custom }}

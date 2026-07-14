@@ -1,8 +1,8 @@
 ---
-title: ChatInput
+title: ChatInput 对话输入
 description: 用于 对话输入。
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: ai
 ---
 

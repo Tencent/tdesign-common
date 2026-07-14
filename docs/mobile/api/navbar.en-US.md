@@ -1,12 +1,15 @@
 ---
 title: Navbar
 description: Used to switch between different pages or jump, located above the content area, below the system status bar.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---
 
-### Type
+## Code Demo
+
+### 01 Component Type
+
 #### Basic Navbar
 
 {{ base }}
@@ -15,9 +18,11 @@ toc: false
 
 {{ search }}
 
-#### With Image Navbar
+#### with Image Navbar
 
 {{ img }}
+
+### 02 Component Style
 
 #### Title Alignment
 

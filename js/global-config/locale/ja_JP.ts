@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} /ページ',
     jumpTo: 'ジャンプする',
     page: 'ページ',
-    total: '合計 {total} 項目データ',
+    total: '合計 {count} 項目データ',
   },
   cascader: {
     empty: 'データなし',
@@ -99,20 +99,7 @@ export default {
       week: '週を選択してください',
     },
     weekdays: ['月', '火', '水', '木', '金', '土', '日'],
-    months: [
-      '1 月',
-      '2 月',
-      '3 月',
-      '4 月',
-      '5 月',
-      '6 月',
-      '7 月',
-      '8 月',
-      '9 月',
-      '10 月',
-      '11 月',
-      '12 月',
-    ],
+    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
     rangeSeparator: ' - ',
     direction: 'ltr',
@@ -130,7 +117,7 @@ export default {
     preMonth: '先月',
     preDecade: '過去10年間',
     nextDecade: '次の10年',
-    now: '電流',
+    now: '現在',
   },
   upload: {
     sizeLimitMessage: '画像サイズは最大で {sizeLimit}',
@@ -147,8 +134,7 @@ export default {
     dragger: {
       dragDropText: 'マウスを離す',
       draggingText: 'この領域にドラッグ＆ドロップする',
-      clickAndDragText:
-        '上の「ファイルを選択」をクリックするか、このエリアにファイルをドラッグ＆ドロップしてください',
+      clickAndDragText: '上の「ファイルを選択」をクリックするか、このエリアにファイルをドラッグ＆ドロップしてください',
     },
     file: {
       fileNameText: 'ファイル名',
@@ -180,6 +166,7 @@ export default {
       validator: '${name}要件を満たしていない',
       boolean: '${name}データ型は Boolean 型であること',
       number: '${name}デジタルであること',
+      email: '正しく入力してください${name}',
     },
     colonText: ':',
   },
@@ -203,7 +190,7 @@ export default {
     recentColorTitle: '最近使用した色',
     clearConfirmText: '最近使用した色をクリアにするのは確実ですか？',
     singleColor: '単色',
-    gradientColor: 'グラデ'
+    gradientColor: 'グラデ',
   },
   guide: {
     finishButtonProps: {
@@ -232,6 +219,7 @@ export default {
     mirrorTipText: '鏡像',
     rotateTipText: '回転する',
     originalSizeTipText: 'オリジナルサイズ',
+    previewText: 'プレビュー',
   },
   typography: {
     expandText: 'もっと拡大する',
@@ -270,10 +258,11 @@ export default {
     loadingEndText: '深く考えました',
     uploadImageText: '画像をアップロード',
     uploadAttachmentText: '添付ファイルをアップロード',
+    shareTipText: '共有',
   },
   qrcode: {
     expiredText: '期限切れ',
     refreshText: 'リフレッシュ',
     scannedText: 'スキャンされた',
-  }
+  },
 } as const;

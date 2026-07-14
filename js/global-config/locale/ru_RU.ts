@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} шт./стр.',
     jumpTo: 'Перейти к',
     page: 'стр.',
-    total: 'Всего {total} элементов данных',
+    total: 'Всего {count} элементов данных',
   },
   cascader: {
     empty: 'Нет данных',
@@ -27,8 +27,7 @@ export default {
     today: 'Сегодня',
     thisMonth: 'Этот месяц',
     week: 'Пн,Вт,Ср,Чт,Пт,Сб,Вс',
-    cellMonth:
-      '1 мес.,2 мес.,3 мес.,4 мес.,5 мес.,6 мес.,7 мес.,8 мес.,9 мес.,10 мес.,11 мес.,12 мес.',
+    cellMonth: '1 мес.,2 мес.,3 мес.,4 мес.,5 мес.,6 мес.,7 мес.,8 мес.,9 мес.,10 мес.,11 мес.,12 мес.',
   },
   transfer: {
     title: '{checked} / {total} шт.',
@@ -70,8 +69,7 @@ export default {
     clearFilterResultButtonText: 'Очистить фильтр',
     columnConfigButtonText: 'Настройка столбцов',
     columnConfigTitleText: 'Настройка столбцов таблицы',
-    columnConfigDescriptionText:
-      'Пожалуйста, выберите столбцы данных, которые нужно отобразить в таблице',
+    columnConfigDescriptionText: 'Пожалуйста, выберите столбцы данных, которые нужно отобразить в таблице',
     confirmText: 'Подтвердить',
     cancelText: 'Отмена',
     resetText: 'Сбросить',
@@ -149,8 +147,7 @@ export default {
     dragger: {
       dragDropText: 'Отпустите мышь',
       draggingText: 'Перетащите в эту область',
-      clickAndDragText:
-        'Нажмите на кнопку «Выбрать файл» выше или перетащите файл в эту область',
+      clickAndDragText: 'Нажмите на кнопку «Выбрать файл» выше или перетащите файл в эту область',
     },
     file: {
       fileNameText: 'Имя файла',
@@ -182,6 +179,7 @@ export default {
       validator: '${name} не соответствует требованиям',
       boolean: 'Тип данных ${name} должен быть булевым',
       number: '${name} должно быть числом',
+      email: 'Введите правильный ${name}',
     },
     colonText: ':',
   },
@@ -203,10 +201,9 @@ export default {
   colorPicker: {
     swatchColorTitle: 'Системные предустановленные цвета',
     recentColorTitle: 'Недавно использованные цвета',
-    clearConfirmText:
-      'Вы уверены, что хотите очистить недавно использованные цвета?',
+    clearConfirmText: 'Вы уверены, что хотите очистить недавно использованные цвета?',
     singleColor: 'Сплошной',
-    gradientColor: 'Градиент'
+    gradientColor: 'Градиент',
   },
   guide: {
     finishButtonProps: {
@@ -235,6 +232,7 @@ export default {
     mirrorTipText: 'Зеркало',
     rotateTipText: 'Поворот',
     originalSizeTipText: 'Оригинальный размер',
+    previewText: 'Предпросмотр',
   },
   typography: {
     expandText: 'раскрывать',
@@ -242,13 +240,7 @@ export default {
     copiedText: 'Скопировано успешно',
   },
   rate: {
-    rateText: [
-      'Ужасно',
-      'Разочарован',
-      'Обычный',
-      'Удовлетворенный',
-      'Удивленный',
-    ],
+    rateText: ['Ужасно', 'Разочарован', 'Обычный', 'Удовлетворенный', 'Удивленный'],
   },
   empty: {
     titleText: {
@@ -279,10 +271,11 @@ export default {
     loadingEndText: 'Глубоко обдумано',
     uploadImageText: 'загрузить изображение',
     uploadAttachmentText: 'загрузить вложение',
+    shareTipText: 'Поделиться',
   },
   qrcode: {
     expiredText: 'истекший',
     refreshText: 'обновить',
     scannedText: 'сканированный',
-  }
+  },
 } as const;

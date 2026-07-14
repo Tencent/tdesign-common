@@ -1,9 +1,7 @@
 import tinyColor from 'tinycolor2';
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
 import { ALPHA_FORMAT_MAP } from './constants';
-import {
-  parseGradientString, GradientColors, GradientColorPoint, isGradientColor
-} from './gradient';
+import { GradientColorPoint, GradientColors, isGradientColor, parseGradientString } from './gradient';
 import type { AlphaConvertibleFormat, ColorFormat } from './types';
 
 export interface ColorObject {
@@ -44,8 +42,6 @@ const hsv2hsla = (states: ColorStates): tinyColor.ColorFormats.HSLA => tinyColor
 
 /**
  * 将渐变对象转换成字符串
- * @param object
- * @returns
  */
 export const gradientColors2string = (object: GradientColors): string => {
   const { points, degree } = object;
@@ -58,8 +54,6 @@ export const gradientColors2string = (object: GradientColors): string => {
 
 /**
  * 去除颜色的透明度
- * @param color
- * @returns
  */
 export const getColorWithoutAlpha = (color: string) => tinyColor(color).setAlpha(1).toHexString();
 
@@ -106,12 +100,7 @@ export class Color {
     const gradientColors = parseGradientString(input);
 
     if (this.isGradient && !gradientColors) {
-      /* 这里是针对渐变模式下，修改某个位置点的色值情况
-
-       「Tip」
-        - 为了避免有时外界从渐变切换到单色模式，存在缓存问题
-          需要手动设置 `color.isGradient = false` 进行同步
-        - 特定场景下，也可以直接创建新实例 `new Color` 进行覆盖 */
+      /* case 1: 渐变模式单独修改某个位置点的色值 */
       const colorHsv = tinyColor(input).toHsv();
       this.states = colorHsv;
       this.updateCurrentGradientColor();
@@ -120,10 +109,14 @@ export class Color {
     this.originColor = input;
     this.isGradient = false;
     let colorInput = input;
+
+    /* case 2: 修改整个渐变，生成一套新的颜色点 */
     if (gradientColors) {
       this.isGradient = true;
       const object = gradientColors as GradientColors;
-      const points = object.points.map((c, index) => genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id));
+      const points = object.points.map((c, index) =>
+        genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id)
+      );
       this.gradientStates = {
         colors: points,
         degree: object.degree,
@@ -178,9 +171,7 @@ export class Color {
   }
 
   get rgba() {
-    const {
-      r, g, b, a
-    } = hsv2rgba(this.states);
+    const { r, g, b, a } = hsv2rgba(this.states);
     return `rgba(${mathRound(r)}, ${mathRound(g)}, ${mathRound(b)}, ${a})`;
   }
 
@@ -190,9 +181,7 @@ export class Color {
   }
 
   get hsva() {
-    const {
-      h, s, v, a
-    } = this.getHsva();
+    const { h, s, v, a } = this.getHsva();
     return `hsva(${h}, ${s}%, ${v}%, ${a})`;
   }
 
@@ -202,9 +191,7 @@ export class Color {
   }
 
   get hsla() {
-    const {
-      h, s, l, a
-    } = this.getHsla();
+    const { h, s, l, a } = this.getHsla();
     return `hsla(${h}, ${s}%, ${l}%, ${a})`;
   }
 
@@ -217,9 +204,7 @@ export class Color {
   }
 
   get cmyk() {
-    const {
-      c, m, y, k
-    } = this.getCmyk();
+    const { c, m, y, k } = this.getCmyk();
     return `cmyk(${c}, ${m}, ${y}, ${k})`;
   }
 
@@ -291,9 +276,7 @@ export class Color {
   getFormattedColor(format: ColorFormat, enableAlpha: boolean) {
     if (this.isGradient) return this.linearGradient;
     const finalFormat = (
-      enableAlpha && format in ALPHA_FORMAT_MAP
-        ? ALPHA_FORMAT_MAP[format as AlphaConvertibleFormat]
-        : format
+      enableAlpha && format in ALPHA_FORMAT_MAP ? ALPHA_FORMAT_MAP[format as AlphaConvertibleFormat] : format
     ) as keyof ReturnType<Color['getFormatsColorMap']>;
     return this.getFormatsColorMap()[finalFormat];
   }
@@ -322,9 +305,7 @@ export class Color {
   }
 
   getRgba() {
-    const {
-      r, g, b, a
-    } = hsv2rgba(this.states);
+    const { r, g, b, a } = hsv2rgba(this.states);
     return {
       r: mathRound(r),
       g: mathRound(g),
@@ -345,9 +326,7 @@ export class Color {
   }
 
   getHsva(): tinyColor.ColorFormats.HSVA {
-    let {
-      h, s, v, a
-    } = hsv2hsva(this.states);
+    let { h, s, v, a } = hsv2hsva(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
     v = mathRound(v * 100);
@@ -361,9 +340,7 @@ export class Color {
   }
 
   getHsla(): tinyColor.ColorFormats.HSLA {
-    let {
-      h, s, l, a
-    } = hsv2hsla(this.states);
+    let { h, s, l, a } = hsv2hsla(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
     l = mathRound(l * 100);
@@ -378,8 +355,6 @@ export class Color {
 
   /**
    * 判断输入色是否与当前色相同
-   * @param color
-   * @returns
    */
   equals(color: string): boolean {
     return tinyColor.equals(this.rgba, color);
@@ -397,47 +372,28 @@ export class Color {
     return tinyColor(color).isValid();
   }
 
-  static hsva2color(h: number, s: number, v: number, a: number) {
-    return tinyColor({
-      h, s, v, a
-    }).toHsvString();
-  }
-
-  static hsla2color(h: number, s: number, l: number, a: number) {
-    return tinyColor({
-      h, s, l, a
-    }).toHslString();
-  }
-
-  static rgba2color(r: number, g: number, b: number, a: number) {
-    return tinyColor({
-      r, g, b, a
-    }).toHsvString();
-  }
-
-  static hex2color(hex: string, a: number) {
-    const color = tinyColor(hex);
-    color.setAlpha(a);
-    return color.toHexString();
-  }
-
   /**
    * 对象转颜色字符串
-   * @param object
-   * @param format
-   * @returns
    */
-  static object2color(object: any, format: string) {
+  static object2color(object: any, format: ColorFormat) {
     if (format === 'CMYK') {
-      const {
-        c, m, y, k
-      } = object;
+      const { c, m, y, k } = object;
       return `cmyk(${c}, ${m}, ${y}, ${k})`;
     }
-    const color = tinyColor(object, {
-      format,
-    });
-    return color.toRgbString();
+
+    if (format === 'RGB' || format === 'RGBA') {
+      return tinyColor(object).toRgbString();
+    }
+
+    if (format === 'HSL' || format === 'HSLA') {
+      return tinyColor(object).toHslString();
+    }
+
+    if (format === 'HSV' || format === 'HSVA') {
+      return tinyColor(object).toHsvString();
+    }
+
+    return tinyColor(object).toHexString();
   }
 
   /**

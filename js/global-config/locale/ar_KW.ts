@@ -10,7 +10,7 @@ export default {
     itemsPerPage: '{size} / الصفحة',
     jumpTo: 'القفز إلى',
     page: '',
-    total: '{total} عناصر',
+    total: '{count} عناصر',
   },
   cascader: {
     empty: 'لا تتوافر بيانات',
@@ -27,8 +27,7 @@ export default {
     today: 'اليوم',
     thisMonth: 'هذا الشهر',
     week: 'الاثنين الثلاثاء الاربعاء الخميس الجمعة السبت الاحد',
-    cellMonth:
-      'يناير ، فبراير ، مارس ، أبريل ، مايو ، يونيو ، يوليو ، أغسطس ، سبتمبر ، أكتوبر ، نوفمبر ، ديسمبر',
+    cellMonth: 'يناير ، فبراير ، مارس ، أبريل ، مايو ، يونيو ، يوليو ، أغسطس ، سبتمبر ، أكتوبر ، نوفمبر ، ديسمبر',
   },
   transfer: {
     title: '{checked} / {total}',
@@ -59,16 +58,14 @@ export default {
     empty: 'لا تتوافر بيانات',
     loadingText: 'جار التحميل…',
     loadingMoreText: 'انقر لتحميل المزيد',
-    filterInputPlaceholder:
-      'الرجاء إدخال المحتوى (لا توجد قيمة افتراضية متاحة)',
+    filterInputPlaceholder: 'الرجاء إدخال المحتوى (لا توجد قيمة افتراضية متاحة)',
     sortAscendingOperationText: 'انقر للفرز تصاعديًا',
     sortCancelOperationText: 'انقر لإلغاء الفرز',
     sortDescendingOperationText: 'انقر للفرز تنازليًا',
     clearFilterResultButtonText: 'صافي',
     columnConfigButtonText: 'تكوين العمود',
     columnConfigTitleText: 'تكوين عمود الجدول',
-    columnConfigDescriptionText:
-      'الرجاء تحديد أعمدة البيانات المراد عرضها في الجدول',
+    columnConfigDescriptionText: 'الرجاء تحديد أعمدة البيانات المراد عرضها في الجدول',
     confirmText: 'نعم',
     cancelText: 'يلغي',
     resetText: 'إعادة ضبط',
@@ -99,15 +96,7 @@ export default {
       quarter: 'الرجاء تحديد الربع',
       week: 'الرجاء تحديد اسبوع',
     },
-    weekdays: [
-      'الإثنين',
-      'الثلاثاء',
-      'الأربعاء',
-      'الخميس',
-      'الجمعة',
-      'السبت',
-      'الأحد',
-    ],
+    weekdays: ['الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت', 'الأحد'],
     months: [
       'يناير',
       'فبراير',
@@ -192,6 +181,7 @@ export default {
       validator: '${name} غير صالح',
       boolean: '${name} ليس منطقيًا',
       number: 'يجب أن يكون ${name} رقمًا',
+      email: 'الرجاء إدخال ${name} الصحيح',
     },
   },
 
@@ -217,7 +207,7 @@ export default {
     recentColorTitle: 'مستخدم حديثا',
     clearConfirmText: 'هل تريد مسح الألوان المستخدمة مؤخرًا؟',
     singleColor: 'موحد',
-    gradientColor: 'متدرج'
+    gradientColor: 'متدرج',
   },
   image: {
     errorText: 'غير قادر على التحميل',
@@ -228,6 +218,7 @@ export default {
     mirrorTipText: 'مرآة',
     rotateTipText: 'استدارة',
     originalSizeTipText: 'أصلي',
+    previewText: 'معاينة',
   },
   typography: {
     expandText: 'توسيع',
@@ -244,7 +235,7 @@ export default {
       fail: 'الفشل',
       empty: 'لا توجد بيانات حتى الآن',
       networkError: 'خطأ في الشبكة',
-    }
+    },
   },
   chat: {
     placeholder: 'الرجاء إدخال رسالة...',
@@ -261,10 +252,11 @@ export default {
     confirmClearHistory: 'هل أنت متأكد من مسح جميع الرسائل؟',
     uploadImageText: 'رفع الصورة',
     uploadAttachmentText: 'رفع المرفق',
+    shareTipText: 'مشاركة',
   },
   qrcode: {
     expiredText: 'منتهي الصلاحية',
     refreshText: 'ينعش',
     scannedText: 'تم مسحها ضوئيًا',
-  }
+  },
 } as const;

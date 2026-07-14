@@ -1,11 +1,15 @@
 ---
 title: Overlay
-description: Through the overlay, you can highlight some content
-spline: base
+description: Use overlays to highlight specific content.
+spline: message
 isComponent: true
 toc: false
 ---
 
-### Base Type
+## Code Demo
+
+### Component Type
+
+#### Basic
 
 {{ base }}

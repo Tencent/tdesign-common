@@ -1,5 +1,5 @@
 ---
-title: Avatar 
+title: Avatar
 description: Displays user or thing information in the form of icons, pictures, and characters
 isComponent: true
 usage: { title: '', description: '' }

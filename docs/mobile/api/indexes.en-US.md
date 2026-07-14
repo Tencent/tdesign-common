@@ -1,17 +1,21 @@
 ---
 title: Indexes
 description: Used for quick search of information in the page. You can quickly find the required content based on the page number in the directory.
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---
 
 ## Code Demo
 
-### Base Index
+### 01 Component Type
+
+#### Indexes Type
 
 {{ base }}
 
-### Custom Index
+### 02 Component Style
+
+#### Indexes Capsule Theme
 
 {{ custom }}

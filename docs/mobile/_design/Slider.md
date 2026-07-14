@@ -16,7 +16,6 @@
   </div>
 </div>
 
-
 ### 常见用法
 
 ##### 用于可量化的数值选择，需要精确到具体某个数值/区间。
@@ -36,7 +35,6 @@
     <img src="https://tdesign.gtimg.com/site/design/mobile-guide/slider/slider-3.png" />
   </div>
 </div>
-
 
 ### 推荐/慎用示例
 

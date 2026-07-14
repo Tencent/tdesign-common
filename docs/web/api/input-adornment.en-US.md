@@ -2,7 +2,7 @@
 title: InputAdornment
 description: InputAdornment is used to decorate form components.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: form
 ---
 

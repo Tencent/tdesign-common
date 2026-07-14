@@ -2,30 +2,45 @@
 title: Calendar
 description: Container for displaying data or dates in a calendar format.
 isComponent: true
-usage: { title: '', description: '' }
-spline: data
+spline: form
 ---
 
-### Select Single Date
+## Code Demos
+
+### 01 Component Type
+
+#### Basic Calender
 
 {{ base }}
 
-### Select Multiple Date
-
 {{ multiple }}
 
-### Select Date Range
+#### With Description
 
-{{ range }}
+{{ custom-text-single }}
 
-### Custom Text
+#### With Double Description
 
 {{ custom-text }}
 
-### Custom Button
+#### With Page Turning Function
 
-{{ custom-button }}
+{{ switch-mode }}
 
-### Custom Date Range
+#### With Period Select
 
-{{ custom-range }}
+{{ range }}
+
+### 02 Component Style
+
+#### Internationalization
+
+{{ local-text }}
+
+#### Unselectable Date
+
+{{ disabled }}
+
+#### Without Popup
+
+{{ without-popup }}

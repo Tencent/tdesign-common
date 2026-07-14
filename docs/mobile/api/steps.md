@@ -1,7 +1,7 @@
 ---
 title: Steps 步骤条
 description: 用于任务步骤展示或任务进度展示。
-spline: base
+spline: navigation
 isComponent: true
 toc: false
 ---
@@ -10,7 +10,7 @@ toc: false
 
 步骤条，方向可以横向和纵向，可以自定义步骤条显示内容以及是否可写
 
-### 组件类型
+### 01 组件类型
 
 #### 水平步骤条
 
@@ -18,21 +18,19 @@ toc: false
 
 {{ horizontal }}
 
-
 #### 垂直步骤条
 
 支持三种类型：序号、图标、简略
 
 {{ vertical }}
 
-### 组件状态
+### 02 组件状态
 
 #### 选项卡状态
 
 共支持 4 种状态：未完成（default）、已完成（finish）、进行中（process）、错误（error）
 
 {{ status }}
-
 
 #### 特殊类型
 

@@ -1,32 +1,31 @@
 ---
 title: Skeleton
-description: When the network is slow, show the user the general structure of the page before the actual page data loads.
-spline: base
+description: A placeholder graphic combination used to display content while waiting for loading. It has a dynamic loading effect and reduces user anxiety while waiting.
+spline: data
 isComponent: true
 toc: false
 ---
 
 ## Code Demo
 
-### Skeleton Type
+### 01 Component Type
 
-Foundation frame screen
+### Basic
 
 {{ theme }}
 
-Cell skeleton screen
+#### Cell skeleton screen
 
 {{ cell-group }}
 
-
-Grid frame screen
+#### Grid frame screen
 
 {{ grid }}
 
-Graphic combination skeleton screen
+#### Graphic combination skeleton screen
 
 {{ image-group }}
 
-### Component Dynamic Effect
+### 02 Component Dynamic Effect
 
 {{ animation }}

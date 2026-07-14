@@ -1,7 +1,4 @@
-import type {
-  BasicColorFormat,
-  ColorInputProp,
-} from './types';
+import type { BasicColorFormat, ColorInputProp } from './types';
 
 // 最近使用颜色最大个数
 export const TD_COLOR_USED_COLORS_MAX_SIZE = 100; // 每行10个
@@ -65,14 +62,7 @@ export const DEFAULT_SYSTEM_SWATCH_COLORS = [
 /**
  * 非透明色格式化类型
  */
-export const FORMATS = [
-  'HEX',
-  'RGB',
-  'HSL',
-  'HSV',
-  'CMYK',
-  'CSS',
-] as const;
+export const FORMATS = ['HEX', 'RGB', 'HSL', 'HSV', 'CMYK', 'CSS'] as const;
 
 /**
  * 透明色格式化类型映射

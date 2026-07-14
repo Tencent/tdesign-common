@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 import { promises } from 'fs';
-import { mapToParentName } from './components';
+import { mapToParentName } from './libs';
 import type { ComponentLog, ComponentLogMap, LogItem, Logs, LogType, Platform, VersionLog } from './types';
 
 export const LOG_TYPES = ['🚨 Breaking Changes', '🚀 Features', '🐞 Bug Fixes'] as const;
@@ -165,9 +165,7 @@ function formatJson2CompMap(logJson: VersionLog[]) {
         }
 
         // 查找当前组件的版本记录
-        let versionEntry = compMap[component].find(
-          (v) => v.version === version
-        );
+        let versionEntry = compMap[component].find((v) => v.version === version);
 
         if (!versionEntry) {
           versionEntry = {

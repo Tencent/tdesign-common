@@ -2,7 +2,7 @@
 title: Tooltip
 description: A bubble box for text prompts.
 isComponent: true
-usage: { title: "", description: "" }
+usage: { title: '', description: '' }
 spline: data
 ---
 

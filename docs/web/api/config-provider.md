@@ -10,16 +10,16 @@ spline: explain
 
 TDesign 支持国际化/多语言配置，目前支持的语言包括:
 
-语言 | 对应文件
--- | --
-简体中文 | `zh_CN`
-繁体中文 | `zh_TW`
-英语 | `en_US`
-韩语 | `ko_KR`
-日语 | `ja_JP`
-俄语 | `ru_RU`
-意大利语 | `it_IT`
-阿拉伯语 | `ar_KW`
+| 语言     | 对应文件 |
+| -------- | -------- |
+| 简体中文 | `zh_CN`  |
+| 繁体中文 | `zh_TW`  |
+| 英语     | `en_US`  |
+| 韩语     | `ko_KR`  |
+| 日语     | `ja_JP`  |
+| 俄语     | `ru_RU`  |
+| 意大利语 | `it_IT`  |
+| 阿拉伯语 | `ar_KW`  |
 
 如果你想贡献更多语言包，欢迎参考 [如何新增语言包](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) 发起 PR。
 
