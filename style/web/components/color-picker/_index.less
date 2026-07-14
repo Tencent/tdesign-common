@@ -521,6 +521,22 @@
       padding: @color-picker-trigger-input-padding;
     }
 
+    &.@{prefix}-color-picker__trigger--no-input {
+      > .@{prefix}-input {
+        min-width: @color-picker-trigger-no-input-width;
+        width: fit-content;
+      }
+
+      .@{prefix}-input {
+        justify-content: center;
+        padding: @color-picker-trigger-no-input-padding;
+      }
+
+      .@{prefix}-input__prefix:not(:empty) {
+        margin-right: 0;
+      }
+    }
+
     &__color {
       width: 100%;
       height: 100%;

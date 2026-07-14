@@ -18,6 +18,12 @@ Trigger the display selector panel through the trigger, and transparently transf
 
 {{ trigger }}
 
+### Color Picker without Input Text
+
+Only the color swatch is displayed, and the color value text in the input box is hidden.
+
+{{ trigger-no-input }}
+
 ### Color selector for different color modes
 
 Support monochrome mode, linear gradient two color mode selection, can be used in a single mode, can also switch between two modes at the same time. Use `colorModes` to configure.
