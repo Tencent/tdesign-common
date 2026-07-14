@@ -756,7 +756,6 @@ a.@{prefix}-menu__item {
 
 .@{prefix}-menu__popup {
   top: 0;
-  left: calc(0px - @pop-padding-m);
 
   .@{prefix}-menu__item,
   .@{prefix}-submenu {
@@ -764,6 +763,14 @@ a.@{prefix}-menu__item {
       margin-top: @comp-margin-xxs;
     }
   }
+}
+
+.@{prefix}-popup[data-popper-placement^='left'] .@{prefix}-menu__popup {
+  left: @pop-padding-m;
+}
+
+.@{prefix}-popup[data-popper-placement^='right'] .@{prefix}-menu__popup {
+  left: calc(0px - @pop-padding-m);
 }
 
 .@{prefix}-is-head-menu {
