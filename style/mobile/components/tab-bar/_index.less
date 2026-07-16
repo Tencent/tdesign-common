@@ -43,4 +43,105 @@
     bottom: constant(safe-area-inset-bottom);
     bottom: env(safe-area-inset-bottom);
   }
+
+  // 液态玻璃（Liquid Glass）样式 - 灵感源自 iOS 26
+  &--liquid-glass {
+    background-color: transparent;
+    box-shadow: none;
+
+    // SVG 滤镜，用于液态玻璃位移效果
+    .@{tab-bar-cls}__liquid-glass-svg {
+      display: none;
+    }
+
+    // 外层 - SVG 位移映射滤镜层
+    .@{tab-bar-cls}__liquid-glass-outer {
+      backdrop-filter: url(#@{tab-bar-cls}-liquid-glass-filter);
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      pointer-events: none;
+
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect x="0" y="0" width="100%" height="100%" rx="0" ry="0" fill="white"/></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect x="5" y="5" width="calc(100% - 10px)" height="calc(100% - 10px)" rx="21" ry="21" fill="white"/></svg>');
+      mask-composite: exclude;
+    }
+
+    // 覆盖层 - 背景模糊效果
+    .@{tab-bar-cls}__liquid-glass-cover {
+      backdrop-filter: blur(@tab-bar-liquid-glass-blur);
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: inherit;
+      background: @tab-bar-liquid-glass-bg;
+      pointer-events: none;
+    }
+
+    // 锐利边框层 - 边缘定义
+    .@{tab-bar-cls}__liquid-glass-sharp {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      box-shadow: @tab-bar-liquid-glass-sharp-border;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    // 反射层 - 内部光泽
+    .@{tab-bar-cls}__liquid-glass-reflect {
+      position: absolute;
+      inset: 1px;
+      z-index: 1;
+      box-shadow: @tab-bar-liquid-glass-reflect;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    // 确保标签项在液态玻璃层之上显示
+    > .@{tab-bar-cls}-item {
+      position: relative;
+      z-index: 3;
+      background-color: transparent !important;
+      margin: 8px 0;
+
+      // 内容区域背景透明，让液态玻璃效果穿透
+      .@{tab-bar-cls}-item__content {
+        background-color: transparent !important;
+
+        // 点击反馈 - 半透明白色光晕
+        &:active {
+          background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+      }
+
+      // 选中项 - 向屏幕方向突出悬浮效果（放大凸起）
+      .@{tab-bar-cls}-item__content--checked {
+        transform: scale(1.08);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.12);
+
+        .@{tab-bar-cls}-item__text,
+        .@{tab-bar-cls}-item__icon {
+          color: var(--td-tab-bar-active-color, @brand-color);
+        }
+      }
+
+      // 未选中项文字和图标颜色适配液态玻璃
+      .@{tab-bar-cls}-item__text,
+      .@{tab-bar-cls}-item__icon {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+
+  // 液态玻璃与圆角胶囊结合时
+  &--liquid-glass&--round {
+    .@{tab-bar-cls}__liquid-glass-outer,
+    .@{tab-bar-cls}__liquid-glass-cover,
+    .@{tab-bar-cls}__liquid-glass-sharp,
+    .@{tab-bar-cls}__liquid-glass-reflect {
+      border-radius: 999px;
+    }
+  }
 }
