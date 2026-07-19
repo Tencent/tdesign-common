@@ -2,6 +2,59 @@
 
 @import './_var.less';
 
+// 可复用的液态玻璃材质：中心通透 + 边缘透镜 + 镜面流光 + 色散描边。
+// 抽成 mixin，方便 fab / dialog / popup 等其它悬浮组件直接复用，避免重复实现。
+.tab-bar-liquid-glass() {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: @tab-bar-glass-bg-color;
+  box-shadow: @tab-bar-glass-shadow, @tab-bar-glass-inner-highlight, @tab-bar-glass-chromatic;
+  // 中心层：轻磨砂，保留背景通透感（区别于整体重磨砂）；-webkit- 前缀交给 autoprefixer 生成
+  backdrop-filter: saturate(@tab-bar-glass-saturate) blur(@tab-bar-glass-blur);
+
+  // 边缘透镜层（meniscus）：仅在四周一圈内做强折射，模拟水珠/玻璃边界的光线弯折。
+  // backdrop-filter 的 url() 折射为渐进增强，不支持时退化为更强的边缘模糊，观感依旧成立。
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    padding: @tab-bar-glass-edge-width;
+    pointer-events: none;
+    // 默认仅强模糊（安全，不依赖任何外部 SVG 滤镜）；opt-in 折射见 --td-tab-bar-glass-edge-filter
+    backdrop-filter: var(--td-tab-bar-glass-edge-filter, blur(@tab-bar-glass-edge-blur));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  // 镜面高光描边 + 流光扫过：一道光带沿玻璃边缘缓慢掠过，制造“液态”光泽。
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: @tab-bar-glass-hairline;
+    pointer-events: none;
+    background:
+      linear-gradient(120deg, transparent 30%, @tab-bar-glass-highlight-color 50%, transparent 70%),
+      linear-gradient(135deg, @tab-bar-glass-highlight-color, transparent 40%, transparent 62%, rgba(255, 255, 255, 28%));
+    background-size: 300% 100%, 100% 100%;
+    background-repeat: no-repeat;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: t-tab-bar-glass-sweep @tab-bar-glass-sweep-duration linear infinite;
+  }
+}
+
+// 仅驱动第一层光带位移（transform/opacity 之外的廉价重绘，且仅描边一圈，开销可控）
+@keyframes t-tab-bar-glass-sweep {
+  from { background-position: 200% 0, 0 0; }
+  to { background-position: -100% 0, 0 0; }
+}
+
 .@{tab-bar-cls} {
   display: flex;
   flex-wrap: nowrap;
@@ -34,13 +87,43 @@
     box-shadow: @tab-bar-round-shadow;
   }
 
-  &--fixed&--round&--safe {
-    bottom: constant(safe-area-inset-bottom);
-    bottom: env(safe-area-inset-bottom);
+  &--round-glass {
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 999px;
+
+    .tab-bar-liquid-glass();
+  }
+
+  // 折射层：仅当 App 传入 --td-tab-bar-glass-image 时可见，用 filter: url() 位移折射"背后画面"。
+  // 相比 backdrop-filter: url()（Chrome 不支持），本层用常规 filter，Chrome/Safari 均可渲染，是逼近 iOS 折射的可落地路径。
+  &__glass {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image: @tab-bar-glass-image;
+    background-size: @tab-bar-glass-image-size;
+    background-position: @tab-bar-glass-image-pos;
+    background-repeat: no-repeat;
+    filter: @tab-bar-glass-refract;
   }
 
   &--fixed&--round&--safe {
     bottom: constant(safe-area-inset-bottom);
     bottom: env(safe-area-inset-bottom);
+  }
+
+  &--fixed&--round-glass&--safe {
+    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom);
+  }
+}
+
+// 尊重系统“减少动态效果”：关闭流光，仅保留静态高光描边
+@media (prefers-reduced-motion: reduce) {
+  .@{tab-bar-cls}--round-glass::after {
+    animation: none;
   }
 }

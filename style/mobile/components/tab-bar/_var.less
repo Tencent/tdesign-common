@@ -3,3 +3,25 @@
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
+
+// —— 液态玻璃 Liquid Glass（对标 iOS 26）——
+// 设计要点：中心通透 + 边缘透镜折射 + 镜面流光 + 色散描边，而非整体磨砂。
+@tab-bar-glass-bg-color: var(--td-tab-bar-glass-bg-color, rgba(255, 255, 255, 0.2));
+@tab-bar-glass-blur: var(--td-tab-bar-glass-blur, 12px);           // 中心：磨砂，保留通透
+@tab-bar-glass-edge-blur: var(--td-tab-bar-glass-edge-blur, 20px); // 边缘：强折射（透镜）
+// 边缘 backdrop-filter：默认仅模糊（安全）；App 可将 --td-tab-bar-glass-edge-filter 设为 `blur(..) url(#滤镜)` 开启折射
+@tab-bar-glass-saturate: var(--td-tab-bar-glass-saturate, 180%);
+@tab-bar-glass-edge-width: var(--td-tab-bar-glass-edge-width, 6px); // 透镜边宽
+@tab-bar-glass-hairline: var(--td-tab-bar-glass-hairline, 2px);     // 高光描边宽
+@tab-bar-glass-highlight-color: var(--td-tab-bar-glass-highlight-color, rgba(255, 255, 255, 0.9));
+@tab-bar-glass-shadow: var(--td-tab-bar-glass-shadow, 0 8px 32px rgba(0, 0, 0, 0.18));
+// 内高光：顶部亮线 + 顶部柔和光泽带(gloss) + 底部反光，营造玻璃光感
+@tab-bar-glass-inner-highlight: var(--td-tab-bar-glass-inner-highlight, inset 0 1.5px 1px rgba(255, 255, 255, 0.9), inset 0 12px 16px -10px rgba(255, 255, 255, 0.5), inset 0 -1.5px 1px rgba(255, 255, 255, 0.25));
+@tab-bar-glass-chromatic: var(--td-tab-bar-glass-chromatic, inset 1px 0 0 rgba(255, 0, 96, 0.12), inset -1px 0 0 rgba(0, 176, 255, 0.12)); // 色散描边
+@tab-bar-glass-sweep-duration: var(--td-tab-bar-glass-sweep-duration, 6s);
+
+// 折射层 __glass：由 App 传入"玻璃背后的画面"，用 SVG 位移贴图做真折射（opt-in）
+@tab-bar-glass-image: var(--td-tab-bar-glass-image, none);              // 背后画面（渐变/图片），默认 none
+@tab-bar-glass-image-size: var(--td-tab-bar-glass-image-size, cover);   // 与页面背景对齐用
+@tab-bar-glass-image-pos: var(--td-tab-bar-glass-image-pos, center);
+@tab-bar-glass-refract: var(--td-tab-bar-glass-refract, none);          // 位移折射滤镜，如 blur(1.5px) url(#..)

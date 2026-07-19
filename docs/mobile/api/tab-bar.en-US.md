@@ -34,6 +34,10 @@ toc: false
 
 {{ round }}
 
+#### Liquid Glass Capsule TabBar
+
+{{ round-glass }}
+
 ### 02 Custom
 
 #### Custom style

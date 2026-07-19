@@ -27,6 +27,28 @@
     border-radius: 99px;
   }
 
+  // 液态玻璃形态：单项背景透明，让容器的通透/透镜透出；并加入按压回弹与自适应选中胶囊
+  &--round-glass {
+    border-radius: 99px;
+    background-color: transparent;
+    z-index: 1;
+
+    .@{item}__content {
+      // 弹簧回弹：进入使用 overshoot 曲线，仅动画 transform，60fps 友好
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    &:active .@{item}__content {
+      transform: scale(0.92);
+    }
+
+    // 玻璃上的选中胶囊：改用半透明白 + 轻磨砂，随背景自适应，避免品牌色实心块破坏玻璃质感
+    .@{item}__content--tag.@{item}__content--checked {
+      background-color: rgba(255, 255, 255, 28%);
+      backdrop-filter: blur(2px);
+    }
+  }
+
   &__content {
     width: 100%;
     height: 100%;
@@ -136,5 +158,11 @@
         padding-top: 12px;
       }
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .@{item}--round-glass .@{item}__content {
+    transition: none;
   }
 }
