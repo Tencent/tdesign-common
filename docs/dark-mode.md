@@ -24,6 +24,26 @@ document.documentElement.classList.add('dark');
 document.documentElement.classList.remove('dark');
 ```
 
+**方式3：Vue项目中切换深色/浅色模式**
+```vue
+const setDarkTheme = (isDark) => {
+  if (isDark) {
+    document.documentElement.setAttribute('theme-mode', 'dark')
+  } else {
+    document.documentElement.removeAttribute('theme-mode')
+  }
+}
+
+
+**方式4：给 React 项目切换深色/浅色展示**
+```javascript
+const setDarkTheme = (isDark) => {
+  const rootDom = document.documentElement
+  if (isDark) rootDom.setAttribute('theme-mode', 'dark')
+  else rootDom.removeAttribute('theme-mode')
+}
+
+
 ### 实现原理
 
 组件库使用 [css variables（自定义属性）](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 来实现所有颜色相关的 Design Token，目前所有现代浏览器基本上都已经支持这一特性，我们默认实现了浅色和深色两套色板值，供页面主题切换时应用。
