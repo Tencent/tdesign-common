@@ -51,6 +51,22 @@
       pointer-events: none;
     }
   }
+
+  &__eyedropper {
+    width: @color-picker-swatch-icon-size;
+    height: @color-picker-swatch-icon-size;
+    padding: 0;
+    border: none;
+    outline: none;
+
+    &:hover {
+      color: @text-color-primary;
+    }
+
+    &.@{prefix}-is-disabled {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .@{prefix}-color-picker__head {
@@ -215,6 +231,13 @@
   display: flex;
   align-items: center;
   margin: @color-picker-margin 0;
+}
+
+.@{prefix}-color-picker__sliders-eyedropper {
+  flex-shrink: 0;
+  width: @comp-size-xs;
+  height: @comp-size-xs;
+  margin-right: @comp-margin-s;
 }
 
 .@{prefix}-color-picker__sliders {
@@ -577,6 +600,31 @@
   .@{prefix}-color-picker__swatches--item:hover {
     padding: @color-picker-swatch-padding;
   }
+}
+
+.@{prefix}-color-picker__eyedropper-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.@{prefix}-color-picker__eyedropper-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.@{prefix}-color-picker__eyedropper-preview {
+  position: fixed;
+  width: @comp-size-m;
+  height: @comp-size-m;
+  border: 2px solid @text-color-anti;
+  border-radius: @border-radius-circle;
+  box-shadow: @shadow-1;
+  transform: translate(@comp-margin-s, @comp-margin-s);
+  pointer-events: none;
 }
 
 // 覆盖select-option 默认样式，使其更紧凑点
