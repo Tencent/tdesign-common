@@ -27,6 +27,11 @@
     border-radius: 99px;
   }
 
+  .@{tab-bar-cls}--glass & {
+    background-color: transparent;
+    z-index: 1;
+  }
+
   &__content {
     width: 100%;
     height: 100%;
@@ -53,9 +58,54 @@
       background-color: @tab-bar-active-bg;
     }
 
-    // &--active {
-    //   background-color: @tab-bar-hover-bg-color;
-    // }
+    .@{tab-bar-cls}--glass &--tag {
+      background-color: transparent;
+    }
+
+    .@{tab-bar-cls}--glass &--tag&--checked {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 40%), rgba(255, 255, 255, 8%)),
+        var(--td-tab-bar-liquid-glass-item-active-bg, rgba(255, 255, 255, 6%));
+      border: 1px solid var(--td-tab-bar-liquid-glass-item-active-border-color, rgba(255, 255, 255, 58%));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 82%),
+        0 4px 10px rgba(15, 23, 42, 4%);
+      backdrop-filter: blur(1.5px) saturate(112%);
+      backdrop-filter: blur(1.5px) saturate(112%);
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 28% 18%, rgba(255, 255, 255, 72%), transparent 22%),
+          linear-gradient(180deg, rgba(255, 255, 255, 34%), transparent 38%);
+        opacity: 0.94;
+      }
+    }
+
+    .@{tab-bar-cls}--glass &--tag {
+      .@{item}__text,
+      .@{item}__icon {
+        color: rgba(0, 0, 0, 90%);
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .@{tab-bar-cls}--glass &--tag&--checked {
+      .@{item}__text,
+      .@{item}__icon {
+        color: @tab-bar-active-color;
+        position: relative;
+        z-index: 1;
+      }
+    }
   }
 
   &__icon {
@@ -63,11 +113,6 @@
       vertical-align: top;
     }
   }
-
-  //.@{prefix}-badge--count {
-  //// 缩放0.83是因为设计稿字体10px，而chrome最小12px
-  //  transform: translate(50%, -10%) scale(0.83) !important; // stylelint-disable-line
-  //}
 
   &__text {
     display: flex;

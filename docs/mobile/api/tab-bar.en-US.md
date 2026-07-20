@@ -1,6 +1,6 @@
 ---
 title: TabBar
-description: Used to quickly switch between different functional modules, located at the bottom of the page.
+description: Used to quickly switch between different functional modules at the bottom of the page.
 spline: navigation
 isComponent: true
 toc: false
@@ -12,7 +12,7 @@ toc: false
 
 {{ text }}
 
-#### Icon&Text TabBar
+#### Icon & Text TabBar
 
 {{ base }}
 
@@ -20,22 +20,26 @@ toc: false
 
 {{ pure-icon }}
 
-#### Double layer TabBar
+#### Double-layer TabBar
 
 {{ text-spread }}
 
 ### 02 Component Style
 
-#### Weakly select TabBar
+#### Weak Selected TabBar
 
 {{ badge-props }}
 
-#### Suspension capsule TabBar
+#### Floating Capsule TabBar
 
 {{ round }}
 
-### 02 Custom
+#### Floating Liquid Glass TabBar
 
-#### Custom style
+{{ round-glass }}
+
+### 03 Custom
+
+#### Custom Style
 
 {{ custom }}

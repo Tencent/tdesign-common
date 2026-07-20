@@ -34,6 +34,46 @@
     box-shadow: @tab-bar-round-shadow;
   }
 
+  &--glass&--round {
+    overflow: hidden;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 62%);
+    isolation: isolate;
+    box-shadow:
+      0 10px 24px rgba(15, 23, 42, 6%),
+      inset 0 1px 0 rgba(255, 255, 255, 82%),
+      inset 0 -1px 0 rgba(255, 255, 255, 6%);
+    backdrop-filter: blur(2px) saturate(110%);
+    backdrop-filter: blur(2px) saturate(110%);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 96%), transparent 26%),
+        linear-gradient(180deg, rgba(255, 255, 255, 74%), transparent 34%);
+      mix-blend-mode: screen;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      z-index: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 78%), transparent 18%),
+        radial-gradient(circle at 84% 24%, rgba(255, 255, 255, 46%), transparent 16%),
+        linear-gradient(180deg, rgba(255, 255, 255, 30%), transparent 30%);
+      opacity: 0.92;
+      filter: blur(0.5px);
+    }
+  }
+
   &--fixed&--round&--safe {
     bottom: constant(safe-area-inset-bottom);
     bottom: env(safe-area-inset-bottom);
