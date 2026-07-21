@@ -29,3 +29,9 @@ spline: form
 提供 大、中（默认）、小 3种开关。
 
 {{ size }}
+
+### 不同形状的开关
+
+提供 circle、round 和 line 3 种形状。circle 为默认胶囊形态，round 为圆角矩形形态，line 为线性形态且不展示开关描述。
+
+{{ shape }}

@@ -29,3 +29,9 @@ Switches for normal, loading and disabled are provided. Set the corresponding st
 Large, medium (default) and small switches are provided.
 
 {{ size }}
+
+### Switches of Different Shapes
+
+Circle, round and line shapes are provided. Circle is the default pill shape, round uses a rounded rectangle, and line does not render switch content.
+
+{{ shape }}
