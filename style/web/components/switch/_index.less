@@ -271,3 +271,90 @@
     }
   }
 }
+
+.@{prefix}-switch--rectangle {
+  border-radius: @switch-rectangle-track-border-radius;
+
+  .@{prefix}-switch__handle,
+  .@{prefix}-switch__handle::before {
+    border-radius: @switch-rectangle-handle-border-radius;
+  }
+}
+
+.@{prefix}-switch--line {
+  background-color: transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: @switch-line-track-height;
+    border-radius: @border-radius-round;
+    background-color: @switch-line-track-bg-color;
+    transform: translateY(-50%);
+    transition: @switch-transition;
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-line-track-bg-color-hover;
+    }
+  }
+
+  .@{prefix}-switch__handle,
+  .@{prefix}-switch__content {
+    z-index: 1;
+  }
+
+  &.@{prefix}-is-checked {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-line-track-bg-color-checked;
+    }
+
+    &:hover {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-line-track-bg-color-checked-hover;
+      }
+    }
+  }
+
+  &.@{prefix}-is-loading {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-line-track-bg-color-loading;
+    }
+
+    &.@{prefix}-is-checked {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-line-track-bg-color-checked-loading;
+      }
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-line-track-bg-color-disabled;
+    }
+
+    &.@{prefix}-is-checked {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-line-track-bg-color-checked-disabled;
+      }
+    }
+  }
+}
