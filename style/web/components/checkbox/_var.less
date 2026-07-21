@@ -12,6 +12,7 @@
 // 如：@button-line-height-s
 
 @checkbox-cls: ~'@{prefix}-checkbox';
+@checkbox-button-cls: ~'@{prefix}-checkbox-button';
 
 // 颜色
 @checkbox-border-color: @border-level-2-color;
@@ -32,10 +33,43 @@
 
 @checkbox-label-color: @text-color-primary;
 
+// button checkbox
+@checkbox-button-border-color-default: @border-level-2-color;
+@checkbox-button-border-color-hover: @brand-color-hover;
+@checkbox-button-border-color-checked: @brand-color;
+@checkbox-button-color-outline: @text-color-primary;
+@checkbox-button-color-outline-hover: @brand-color-hover;
+@checkbox-button-color-outline-checked: @brand-color;
+@checkbox-button-bg-color-outline: @bg-color-specialcomponent;
+@checkbox-button-bg-color-outline-hover: @bg-color-container-hover;
+@checkbox-button-bg-color-outline-checked: @brand-color-light;
+
+@checkbox-button-group-bg-color-filled: @bg-color-component;
+@checkbox-button-color-filled: @text-color-secondary;
+@checkbox-button-color-filled-hover: @text-color-primary;
+@checkbox-button-color-filled-checked: @text-color-primary;
+@checkbox-button-bg-color-filled-checked: @bg-color-container-select;
+@checkbox-button-color-primary-filled-checked: @text-color-anti;
+@checkbox-button-bg-color-primary-filled-checked: @brand-color;
+
+@checkbox-button-color-disabled: @text-color-disabled;
+@checkbox-button-color-disabled-checked: @text-color-disabled;
+@checkbox-button-bg-color-disabled: @bg-color-component-disabled;
+@checkbox-button-bg-color-outline-disabled-checked: @bg-color-specialcomponent;
+@checkbox-button-bg-color-filled-disabled-checked: @bg-color-component-disabled;
+@checkbox-button-bg-color-primary-filled-disabled-checked: @brand-color-disabled;
+
 // 尺寸
 @checkbox-size: 16px;
 @checkbox-border-radius: @border-radius-default;
 @checkbox-margin-right: @comp-margin-s;
+@checkbox-button-border-radius: @border-radius-small;
+@checkbox-button-outline-height-small: @comp-size-xs;
+@checkbox-button-outline-height-medium: @comp-size-m;
+@checkbox-button-outline-height-large: @comp-size-xl;
+@checkbox-button-height-small: calc(@comp-size-xs - (@comp-paddingTB-xxs * 2));
+@checkbox-button-height-medium: calc(@comp-size-m - (@comp-paddingTB-xxs * 2));
+@checkbox-button-height-large: calc(@comp-size-xl - (@comp-paddingTB-xxs * 2));
 
 @checkbox-check-width: 5px;
 @checkbox-check-height: 9px;
@@ -48,11 +82,26 @@
 
 // 字号
 @checkbox-font: @font-body-medium;
+@checkbox-button-font-small: @font-body-small;
+@checkbox-button-font-medium: @font-body-medium;
+@checkbox-button-font-large: @font-body-large;
 
 // padding
 @checkbox-input-label-spacer: @spacer;
+@checkbox-button-padding-small: 0 @comp-paddingLR-s;
+@checkbox-button-padding-medium: @comp-paddingTB-xs @comp-paddingLR-l;
+@checkbox-button-padding-large: @comp-paddingTB-s @comp-paddingLR-xl;
+@checkbox-button-border: 1px solid;
 
 // 组合复选框margin
 @checkbox-group-gap: @spacer-2;
+@checkbox-button-outline-gap: @comp-margin-s;
+@checkbox-button-group-gap: @comp-margin-xxs;
+@checkbox-button-group-padding: @comp-paddingTB-xxs @comp-paddingLR-xxs;
 // 单个复选框margin
 @checkbox-margin: inherit;
+
+@checkbox-button-transition:
+  color @anim-duration-base @anim-time-fn-ease-out,
+  border-color @anim-duration-base @anim-time-fn-ease-out,
+  background-color @anim-duration-base @anim-time-fn-ease-out;
