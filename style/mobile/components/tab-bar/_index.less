@@ -39,8 +39,75 @@
     bottom: env(safe-area-inset-bottom);
   }
 
-  &--fixed&--round&--safe {
-    bottom: constant(safe-area-inset-bottom);
-    bottom: env(safe-area-inset-bottom);
+  // ─── Liquid Glass（液态玻璃）— 纯 CSS，无 SVG 滤镜依赖 ──────
+  // 兼容性：Chrome/Safari/Firefox/Edge（backdrop-filter 已全平台支持）
+  // 差异化：12px 强模糊（对标 iOS26）vs PR #2635 的 SVG位移映射 2px
+  &--liquid-glass {
+    background: @tab-bar-liquid-glass-bg;
+    backdrop-filter: blur(@tab-bar-liquid-glass-blur) saturate(@tab-bar-liquid-glass-saturate);
+    -webkit-backdrop-filter: blur(@tab-bar-liquid-glass-blur) saturate(@tab-bar-liquid-glass-saturate);
+    border: 1px solid @tab-bar-liquid-glass-border;
+    box-shadow: @tab-bar-liquid-glass-shadow, @tab-bar-liquid-glass-highlight;
+    transition: background @tab-bar-liquid-glass-transition,
+                backdrop-filter @tab-bar-liquid-glass-transition,
+                box-shadow @tab-bar-liquid-glass-transition;
+
+    // 顶部玻璃反光高光（模拟折射光带）
+    &::before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 8px;
+      right: 8px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, .5) 30%,
+        rgba(255, 255, 255, .6) 50%,
+        rgba(255, 255, 255, .5) 70%,
+        transparent 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    // 暗色模式：自动跟随系统
+    @media (prefers-color-scheme: dark) {
+      background: @tab-bar-liquid-glass-dark-bg;
+      border-color: @tab-bar-liquid-glass-dark-border;
+      box-shadow: @tab-bar-liquid-glass-shadow, inset 0 1px 1px rgba(255, 255, 255, .08);
+
+      &::before {
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, .12) 30%,
+          rgba(255, 255, 255, .15) 50%,
+          rgba(255, 255, 255, .12) 70%,
+          transparent 100%
+        );
+      }
+    }
+
+    // 当作为悬浮胶囊时的增强效果（搭配 round 时叠加更多细节）
+    &.@{tab-bar-cls}--round {
+      // 悬浮胶囊特有的底部微光
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 12px;
+        right: 12px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, .15) 50%,
+          transparent 100%
+        );
+        pointer-events: none;
+      }
+    }
   }
 }

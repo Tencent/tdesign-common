@@ -1,4 +1,6 @@
 @item: ~'@{prefix}-tab-bar-item';
+// 跨组件引用：tab-bar 的类名，用于 Liquid Glass 模式样式联动
+@tab-bar-cls: ~'@{prefix}-tab-bar';
 
 @tab-bar-height: var(--td-tab-bar-height, 40px);
 @tab-bar-color: var(--td-tab-bar-color, @text-color-primary);
@@ -9,3 +11,8 @@
 @tab-bar-active-bg: var(--td-tab-bar-active-bg, @brand-color-light);
 @tab-bar-spread-shadow: var(--td-tab-bar-spread-shadow, @shadow-3);
 @tab-bar-spread-border-color: var(--td-tab-bar-spread-border-color, @border-color);
+
+// ─── Liquid Glass 跨组件变量 ─────────────────────────────────
+// 这些变量在 tab-bar/_var.less 中定义，此处为 tab-bar-item 的本地镜像
+@tab-bar-liquid-glass-active-scale: var(--td-tab-bar-liquid-glass-active-scale, 1.06);
+@tab-bar-liquid-glass-transition: var(--td-tab-bar-liquid-glass-transition, 0.3s cubic-bezier(0.4, 0, 0.2, 1));
