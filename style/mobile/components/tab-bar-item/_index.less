@@ -17,6 +17,11 @@
     background-color: transparent;
     margin: 4px 0;
     transition: transform @tab-bar-liquid-glass-transition;
+
+    // 点击反馈：半透明光晕
+    .@{item}__content:active {
+      background-color: @tab-bar-liquid-glass-active-feedback;
+    }
   }
 
   &--split::before {
