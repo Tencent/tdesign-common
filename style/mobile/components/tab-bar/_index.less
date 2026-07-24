@@ -34,6 +34,111 @@
     box-shadow: @tab-bar-round-shadow;
   }
 
+  &--glass {
+    isolation: isolate;
+    background-color: transparent;
+  }
+
+  &--glass&--round {
+    min-height: 64px;
+    margin: 0 12px 8px;
+    padding: 4px;
+    border-radius: 32px;
+    box-shadow: none;
+  }
+
+  &--glass > &__glass-base,
+  &--glass > &__glass-refraction,
+  &--glass > &__glass-sheen {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  &--glass > &__glass-base {
+    background-color: @tab-bar-glass-bg-color;
+    border: 1px solid @tab-bar-glass-border-color;
+    box-shadow: @tab-bar-glass-shadow;
+  }
+
+  &--glass > &__glass-refraction {
+    backdrop-filter: blur(12px) saturate(140%);
+  }
+
+  &--glass > &__glass-sheen {
+    box-shadow: inset 0 1px rgba(255, 255, 255, 65%), inset 1px 0 rgba(255, 255, 255, 30%);
+  }
+
+  &--glass > .@{prefix}-tab-bar-item {
+    z-index: 1;
+    background-color: transparent;
+  }
+
+  &--glass&--round > .@{prefix}-tab-bar-item {
+    height: 56px;
+    margin: 0;
+    padding: 0 2px;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__content {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    gap: 1px;
+    border-radius: 28px;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__content--checked {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__selected-glass-refraction,
+  &--glass&--round .@{prefix}-tab-bar-item__selected-glass-base,
+  &--glass&--round .@{prefix}-tab-bar-item__selected-glass-sheen {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__selected-glass-refraction {
+    backdrop-filter: blur(10px) saturate(145%);
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__selected-glass-base {
+    background-color: rgba(255, 255, 255, 24%);
+    border: 1px solid rgba(255, 255, 255, 62%);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 8%);
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__selected-glass-sheen {
+    box-shadow: inset 0 1px rgba(255, 255, 255, 78%), inset 1px 0 rgba(255, 255, 255, 34%);
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__content--checked > .@{prefix}-tab-bar-item__icon,
+  &--glass&--round .@{prefix}-tab-bar-item__content--checked > .@{prefix}-tab-bar-item__text {
+    position: relative;
+    z-index: 1;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__icon {
+    font-size: 23px;
+    line-height: 24px;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__text {
+    font: @font-body-extraSmall;
+    line-height: 14px;
+  }
+
   &--fixed&--round&--safe {
     bottom: constant(safe-area-inset-bottom);
     bottom: env(safe-area-inset-bottom);
@@ -42,5 +147,15 @@
   &--fixed&--round&--safe {
     bottom: constant(safe-area-inset-bottom);
     bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@supports (backdrop-filter: url('#tab-bar-glass-filter')) {
+  .@{tab-bar-cls}--glass > .@{tab-bar-cls}__glass-refraction {
+    backdrop-filter: var(--td-tab-bar-glass-filter, blur(12px) saturate(140%));
+  }
+
+  .@{tab-bar-cls}--glass .@{prefix}-tab-bar-item__selected-glass-refraction {
+    backdrop-filter: var(--td-tab-bar-glass-filter, blur(10px) saturate(145%));
   }
 }
