@@ -57,9 +57,17 @@
       }
     }
 
-    :not(&--fixed):not(&--border) {
-      @{root}__label {
-        padding-right: @comp-paddingLR-l;
+    :not(&&--fited):not(&&-borded) {
+      @{root}_label {
+        // 1. 保留适当的右侧间距
+        padding-right: @comp-paddingLR-1;
+
+        &:not(.t-descriptions__label--colon)::after {
+          content: ':';
+          margin-left: 2px;
+          margin-right: 6px;  // 冒号和内容之间的间距
+          color: inherit;
+        }
       }
     }
   }
