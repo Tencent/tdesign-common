@@ -40,7 +40,7 @@ Set `effect="glass"` to enable the Liquid Glass material. It does not change `sh
 
 Pair it with `shape="round"` for an inset floating capsule, compact icon-and-label layout, and a concentric selected state. `shape="normal"` retains the full-width rectangular layout.
 
-Use `--td-tab-bar-glass-bg-color`, `--td-tab-bar-glass-border-color`, and `--td-tab-bar-glass-shadow` to customize the stable material styles. Refraction strength and texture parameters remain internal in the initial API.
+Use `--td-tab-bar-glass-bg-color`, `--td-tab-bar-glass-border-color`, and `--td-tab-bar-glass-shadow` to customize the stable material styles. The selected capsule on a round TabBar is controlled by `--td-tab-bar-selected-bg-color` and `--td-tab-bar-selected-bg-opacity`; the latter uses a percentage. Refraction strength and texture parameters remain internal in the initial API.
 
 ### 02 Custom
 
