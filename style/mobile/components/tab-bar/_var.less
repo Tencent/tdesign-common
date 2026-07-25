@@ -3,3 +3,117 @@
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
+
+// ================================================================
+// iOS 26 Liquid Glass · Mobile Variables
+// ================================================================
+
+// ---------- Container ----------
+@tab-bar-liquid-glass-radius: var(--td-tab-bar-liquid-glass-radius, 34px);
+@tab-bar-liquid-glass-blur: var(--td-tab-bar-liquid-glass-blur, 1px);
+
+// 极轻磨砂背景 — 几乎透明，让背景透出来
+@tab-bar-liquid-glass-bg: var(
+  --td-tab-bar-liquid-glass-bg,
+  rgba(255, 255, 255, 0.06)
+);
+
+// 玻璃边框 — 各边独立透明度
+@tab-bar-liquid-glass-border: var(
+  --td-tab-bar-liquid-glass-border,
+  rgba(255, 255, 255, 0.25)
+);
+@tab-bar-liquid-glass-border-top: var(
+  --td-tab-bar-liquid-glass-border-top,
+  rgba(255, 255, 255, 0.45)
+);
+@tab-bar-liquid-glass-border-left: var(
+  --td-tab-bar-liquid-glass-border-left,
+  rgba(255, 255, 255, 0.20)
+);
+@tab-bar-liquid-glass-border-right: var(
+  --td-tab-bar-liquid-glass-border-right,
+  rgba(255, 255, 255, 0.06)
+);
+@tab-bar-liquid-glass-border-bottom: var(
+  --td-tab-bar-liquid-glass-border-bottom,
+  rgba(255, 255, 255, 0.02)
+);
+
+// 多层次阴影 — 悬浮感 + 玻璃厚度
+@tab-bar-liquid-glass-shadow: var(
+  --td-tab-bar-liquid-glass-shadow,
+  0 8px 32px rgba(0, 0, 0, 0.18),
+  0 4px 16px rgba(0, 0, 0, 0.06)
+);
+@tab-bar-liquid-glass-inset-shadow: var(
+  --td-tab-bar-liquid-glass-inset-shadow,
+  inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+  inset 0 -1px 0 rgba(255, 255, 255, 0.06)
+);
+@tab-bar-liquid-glass-side-shadow: var(
+  --td-tab-bar-liquid-glass-side-shadow,
+  2px 0 30px rgba(255, 255, 255, 0.03),
+  -2px 0 30px rgba(255, 255, 255, 0.03)
+);
+
+// ---------- Environment Mapping Layer (::before) ----------
+// 条纹映射 + 色散折射 + 底部环境光
+@tab-bar-liquid-glass-env-stripes: var(
+  --td-tab-bar-liquid-glass-env-stripes,
+  linear-gradient(175deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 8%,
+    rgba(255, 255, 255, 0.06) 16%,
+    transparent 24%,
+    rgba(255, 255, 255, 0.03) 32%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 48%,
+    transparent 56%,
+    rgba(255, 255, 255, 0.04) 64%,
+    transparent 72%,
+    rgba(255, 255, 255, 0.07) 80%,
+    transparent 90%,
+    rgba(255, 255, 255, 0.03) 100%
+  )
+);
+@tab-bar-liquid-glass-env-dispersion: var(
+  --td-tab-bar-liquid-glass-env-dispersion,
+  radial-gradient(ellipse at 18% 12%, rgba(255, 160, 150, 0.10) 0%, transparent 30%),
+  radial-gradient(ellipse at 78% 88%, rgba(150, 180, 255, 0.12) 0%, transparent 35%),
+  radial-gradient(ellipse at 45% 50%, rgba(200, 160, 255, 0.05) 0%, transparent 40%)
+);
+@tab-bar-liquid-glass-env-bottom: var(
+  --td-tab-bar-liquid-glass-env-bottom,
+  radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.06) 0%, transparent 30%)
+);
+
+// ---------- Transparency Layer (::after) ----------
+// 内部折射 + 边缘透光 + 斜向透光条纹
+@tab-bar-liquid-glass-inner-refraction: var(
+  --td-tab-bar-liquid-glass-inner-refraction,
+  radial-gradient(ellipse at 30% 20%,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(200, 220, 255, 0.04) 30%,
+    transparent 55%
+  )
+);
+@tab-bar-liquid-glass-edge-light: var(
+  --td-tab-bar-liquid-glass-edge-light,
+  radial-gradient(ellipse at 95% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 25%),
+  radial-gradient(ellipse at 5% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 20%),
+  radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.05) 0%, transparent 30%)
+);
+@tab-bar-liquid-glass-inner-stripes: var(
+  --td-tab-bar-liquid-glass-inner-stripes,
+  linear-gradient(145deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 20%,
+    transparent 30%,
+    rgba(255, 255, 255, 0.04) 45%,
+    transparent 55%,
+    rgba(255, 255, 255, 0.02) 70%,
+    transparent 85%,
+    rgba(255, 255, 255, 0.03) 100%
+  )
+);
