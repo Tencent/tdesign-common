@@ -43,7 +43,11 @@
   // 兼容性：Chrome/Safari/Firefox/Edge（backdrop-filter 已全平台支持）
   // 差异化：12px 强模糊（对标 iOS26）vs PR #2635 的 SVG位移映射 2px
   &--liquid-glass {
-    background: @tab-bar-liquid-glass-bg;
+    // 多层背景叠加：色散（红/蓝边缘折射）+ 半透明底色
+    background:
+      radial-gradient(ellipse at 15% 50%, @tab-bar-liquid-glass-dispersion-warm 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 50%, @tab-bar-liquid-glass-dispersion-cool 0%, transparent 60%),
+      @tab-bar-liquid-glass-bg;
     backdrop-filter: blur(@tab-bar-liquid-glass-blur) saturate(@tab-bar-liquid-glass-saturate);
     -webkit-backdrop-filter: blur(@tab-bar-liquid-glass-blur) saturate(@tab-bar-liquid-glass-saturate);
     border: 1px solid @tab-bar-liquid-glass-border;
@@ -87,6 +91,16 @@
           rgba(255, 255, 255, .12) 70%,
           transparent 100%
         );
+      }
+    }
+
+    // 无障碍：尊重用户「减少动效」偏好
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+
+      &::before,
+      &::after {
+        display: none;
       }
     }
 
