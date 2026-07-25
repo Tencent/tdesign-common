@@ -28,9 +28,10 @@
   }
 
   &--round {
-    margin-left: 16px;
-    margin-right: 16px;
-    border-radius: 999px;
+    min-height: 64px;
+    margin: 0 12px 8px;
+    padding: 4px;
+    border-radius: 32px;
     box-shadow: @tab-bar-round-shadow;
   }
 
@@ -40,10 +41,6 @@
   }
 
   &--glass&--round {
-    min-height: 64px;
-    margin: 0 12px 8px;
-    padding: 4px;
-    border-radius: 32px;
     box-shadow: none;
   }
 
@@ -66,7 +63,7 @@
   }
 
   &--glass > &__glass-refraction {
-    backdrop-filter: blur(12px) saturate(140%);
+    backdrop-filter: blur(@tab-bar-glass-fallback-blur) saturate(140%);
   }
 
   &--glass > &__glass-sheen {
@@ -99,12 +96,12 @@
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 38%);
   }
 
-  &--glass&--round .@{prefix}-tab-bar-item__icon {
+  &--round .@{prefix}-tab-bar-item__icon {
     font-size: 23px;
     line-height: 24px;
   }
 
-  &--glass&--round .@{prefix}-tab-bar-item__text {
+  &--round .@{prefix}-tab-bar-item__text {
     font: @font-body-extraSmall;
     line-height: 14px;
   }
@@ -122,6 +119,9 @@
 
 @supports (backdrop-filter: url('#tab-bar-glass-filter')) {
   .@{tab-bar-cls}--glass > .@{tab-bar-cls}__glass-refraction {
-    backdrop-filter: var(--td-tab-bar-glass-filter, blur(12px) saturate(140%));
+    backdrop-filter: var(
+      --td-tab-bar-glass-filter,
+      blur(@tab-bar-glass-fallback-blur) saturate(140%)
+    );
   }
 }
