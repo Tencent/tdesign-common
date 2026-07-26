@@ -56,9 +56,54 @@
     pointer-events: none;
   }
 
+  &--glass&--round > &__selection-track {
+    position: absolute;
+    z-index: 1;
+    inset: 4px;
+    overflow: hidden;
+    border-radius: 28px;
+    pointer-events: none;
+  }
+
+  &--glass&--round &__selection-indicator {
+    position: relative;
+    display: block;
+    height: 100%;
+    transition:
+      transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      width 180ms ease-out;
+    will-change: transform;
+
+    &::before {
+      position: absolute;
+      inset: 0 2px;
+      border-radius: 28px;
+      background-color: color-mix(in srgb, @tab-bar-selected-bg-color @tab-bar-selected-bg-opacity, transparent);
+      content: '';
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0 2px;
+      padding: 1px;
+      border-radius: 28px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 64%) 0%,
+        rgba(255, 255, 255, 38%) 28%,
+        rgba(255, 255, 255, 12%) 50%,
+        transparent 68%
+      );
+      mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      mask-composite: exclude;
+    }
+  }
+
   &--glass > &__glass-base {
     background-color: @tab-bar-glass-bg-color;
-    border: 1px solid @tab-bar-glass-border-color;
     box-shadow: @tab-bar-glass-shadow;
   }
 
@@ -67,11 +112,28 @@
   }
 
   &--glass > &__glass-sheen {
-    box-shadow: inset 0 1px rgba(255, 255, 255, 65%), inset 1px 0 rgba(255, 255, 255, 30%);
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 2px;
+      border-radius: inherit;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 92%) 0%,
+        rgba(255, 255, 255, 72%) 24%,
+        rgba(255, 255, 255, 26%) 48%,
+        transparent 68%
+      );
+      mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      mask-composite: exclude;
+    }
   }
 
   &--glass > .@{prefix}-tab-bar-item {
-    z-index: 1;
+    z-index: 2;
     background-color: transparent;
   }
 
@@ -96,6 +158,11 @@
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 38%);
   }
 
+  &--glass&--round .@{prefix}-tab-bar-item__content--checked {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
   &--round .@{prefix}-tab-bar-item__icon {
     font-size: 23px;
     line-height: 24px;
@@ -117,11 +184,14 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{tab-bar-cls}__selection-indicator {
+    transition: none;
+  }
+}
+
 @supports (backdrop-filter: url('#tab-bar-glass-filter')) {
   .@{tab-bar-cls}--glass > .@{tab-bar-cls}__glass-refraction {
-    backdrop-filter: var(
-      --td-tab-bar-glass-filter,
-      blur(@tab-bar-glass-fallback-blur) saturate(140%)
-    );
+    backdrop-filter: var(--td-tab-bar-glass-filter, blur(@tab-bar-glass-fallback-blur) saturate(140%));
   }
 }

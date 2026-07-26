@@ -38,11 +38,11 @@ toc: false
 
 #### 液态玻璃材质
 
-通过 `effect="glass"` 启用液态玻璃材质。该效果不会改变 `shape`、固定定位、安全区或占位行为；不支持增强效果时自动保留可读的半透明背景、边框和阴影。
+通过 `effect="glass"` 启用液态玻璃材质。该效果不会改变 `shape`、固定定位、安全区或占位行为；不支持增强效果时自动保留可读的半透明背景、内侧高光和阴影。
 
 建议与 `shape="round"` 组合使用，以获得屏幕内缩的悬浮胶囊、紧凑的图标文字排布和同心选中态；`shape="normal"` 继续保留全宽矩形布局。
 
-可通过 `--td-tab-bar-glass-bg-color`、`--td-tab-bar-glass-border-color` 和 `--td-tab-bar-glass-shadow` 调整稳定的材质样式；`--td-tab-bar-glass-fallback-blur` 控制 SVG 增强不可用时的高斯模糊半径。圆角 TabBar 的选中态胶囊由 `--td-tab-bar-selected-bg-color` 和 `--td-tab-bar-selected-bg-opacity` 控制，后者使用百分比。折射强度与纹理参数属于内部实现，不作为首版 API 提供。
+可通过 `--td-tab-bar-glass-bg-color` 和 `--td-tab-bar-glass-shadow` 调整稳定的材质样式；`--td-tab-bar-glass-fallback-blur` 控制 SVG 增强不可用时的高斯模糊半径。Glass 不使用独立边框，材质轮廓由顶部内侧高光表达，高光沿左右上角弧线向下逐渐衰减。圆角 TabBar 的选中态胶囊使用相同方向的顶部内侧高光，其颜色由 `--td-tab-bar-selected-bg-color` 和 `--td-tab-bar-selected-bg-opacity` 控制，后者使用百分比。折射强度与纹理参数属于内部实现，不作为首版 API 提供。
 
 ### 03 自定义
 
