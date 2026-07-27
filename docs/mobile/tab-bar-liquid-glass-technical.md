@@ -312,17 +312,18 @@ Demo 与测试可通过私有 `tabBarGlassDevContextKey` 注入调参值、重�
 
 ### 9.3 材质外观和 fallback 参数
 
-| 参数或 Token                          | 当前默认值                      | 归属          | 说明                         |
-| ------------------------------------- | ------------------------------- | ------------- | ---------------------------- |
-| `--td-tab-bar-glass-bg-color`         | Light `rgba(255,255,255,50%)`   | Material Base | Glass 底色和透明度           |
-| `--td-tab-bar-glass-bg-color`         | Dark `rgba(0,0,0,46%)`          | Material Base | 暗色 Glass 纯黑底色          |
-| `--td-tab-bar-glass-shadow`           | 主题相关双层阴影                | Elevation     | 悬浮深度                     |
-| `--td-tab-bar-glass-fallback-blur`    | `8px`                           | CSS fallback  | 基础模糊；Demo 范围 `0–12px` |
-| `--td-tab-bar-glass-sheen-opacity`    | Light `1` / Dark `0.42`         | Surface Sheen | 材质高光轮廓强度             |
-| `--td-tab-bar-selected-bg-color`      | 品牌色                          | Selection     | 选中胶囊颜色                 |
-| `--td-tab-bar-selected-bg-opacity`    | `16%`                           | Selection     | 选中胶囊透明度               |
-| `--td-tab-bar-selected-sheen-opacity` | Light `0.62` / Dark `0.42`      | Selection     | 选中胶囊高光轮廓强度         |
-| `--td-tab-bar-selected-border-color`  | Light 组件边框 / Dark `#383838` | Selection     | normal round 选中描边        |
+| 参数或 Token                          | 当前默认值                      | 归属          | 说明                  |
+| ------------------------------------- | ------------------------------- | ------------- | --------------------- |
+| `--td-tab-bar-glass-bg-color`         | Light `rgba(255,255,255,50%)`   | Material Base | Glass 底色和透明度    |
+| `--td-tab-bar-glass-bg-color`         | Dark `rgba(0,0,0,46%)`          | Material Base | 暗色 Glass 纯黑底色   |
+| `--td-tab-bar-glass-shadow`           | 主题相关双层阴影                | Elevation     | 悬浮深度              |
+| `--td-tab-bar-glass-fallback-blur`    | `8px`                           | CSS fallback  | 分层背景模糊基准      |
+| `--td-tab-bar-glass-sheen-opacity`    | Light `1` / Dark `0.42`         | Surface Sheen | 材质高光轮廓强度      |
+| `saturate(132% / 114% / 124%)`        | 固定值                          | CSS fallback  | 中心 / 中环 / 外环    |
+| `--td-tab-bar-selected-bg-color`      | 品牌色                          | Selection     | 选中胶囊颜色          |
+| `--td-tab-bar-selected-bg-opacity`    | `16%`                           | Selection     | 选中胶囊透明度        |
+| `--td-tab-bar-selected-sheen-opacity` | Light `0.62` / Dark `0.42`      | Selection     | 选中胶囊高光轮廓强度  |
+| `--td-tab-bar-selected-border-color`  | Light 组件边框 / Dark `#383838` | Selection     | normal round 选中描边 |
 
 Surface Sheen 的 2px 宽度、渐变方向和 Alpha 节点当前为固定 Less，不是 Token。
 
@@ -354,15 +355,13 @@ Surface Sheen 的 2px 宽度、渐变方向和 Alpha 节点当前为固定 Less�
 
 ### 10.2 支持普通 backdrop-filter 时
 
-Refraction 层使用三个由 `--td-tab-bar-glass-fallback-blur` 派生的 `backdrop-filter`，只作为视觉近似：
+Refraction 层使用三个由 `--td-tab-bar-glass-fallback-blur` 派生的 `backdrop-filter`：
 
-| 区域            | blur 倍率 | 默认 `8px` 时 | 作用                                   |
-| --------------- | --------- | ------------- | -------------------------------------- |
-| 中心元素自身    | `× 0.2`   | `1.6px`       | 保留中心背景细节，避免整块玻璃糊成一团 |
-| `::after` 中环  | `× 0.5`   | `4px`         | 提供由上向下衰减的内侧扩散光           |
-| `::before` 外环 | `× 0.9`   | `7.2px`       | 上沿高光、侧边过渡、下沿暗部定义轮廓   |
-
-中环和外环通过固定尺寸的 `mask-image` 软边框限定范围。Chromium SVG 增强成功时，运行时关闭这两个伪元素，并以 SVG filter 替换中心层，避免重复模糊。
+| 区域            | blur 倍率 | 默认 `8px` 时 | saturate                         |
+| --------------- | --------- | ------------- | -------------------------------- |
+| 中心元素自身    | `x 0.2`   | `1.6px`       | `132%`                           |
+| `::after` 中环  | `x 0.5`   | `4px`         | `114%`，由上向下衰减的内侧扩散光 |
+| `::before` 外环 | `x 0.9`   | `7.2px`       | `124%`，上亮下暗的方向性轮廓     |
 
 ### 10.3 完全不支持 backdrop-filter 时
 
@@ -521,13 +520,10 @@ SVG 增强启用前必须同时满足：
 用途：
 
 - 单独观察 Refraction。
-- 使用真实 TabBar 观察 CSS fallback 的中心、中环和外环模糊。
 - 单独观察 Specular overlay。
 - 查看原始 Specular map。
 - 单独观察 Surface Sheen。
 - 与 Final Glass 使用相同背景和参数对照。
-
-Fallback 检查实例通过私有 `shouldEnhance` 钩子禁用 SVG 增强，仍复用 Common 的正式 TabBar Less，不在 Demo 中复制 fallback 样式。`--td-tab-bar-glass-fallback-blur` 可在 `0–12px` 范围内以 `0.1px` 步进调整，诊断指标同步显示中心 `×0.2`、中环 `×0.5`、外环 `×0.9` 的实际模糊半径和固定遮罩宽度。
 
 诊断背景应支持 grid、text、image，并共享拖拽和缩放状态。
 
