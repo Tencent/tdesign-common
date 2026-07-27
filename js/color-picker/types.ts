@@ -31,3 +31,44 @@ export interface ColorInputProp {
   flex?: number;
   format?: Function;
 }
+
+declare global {
+  interface Window {
+    /**
+     * 浏览器原生取色器（EyeDropper API）
+     *
+     * Chromium 95+ 支持，
+     * Safari、Firefox 目前暂未完全支持。
+     */
+    EyeDropper?: new () => {
+      /**
+       * 打开系统取色器
+       *
+       * @param options 打开配置
+       * @returns 用户选中的颜色结果
+       */
+      open(options?: EyeDropperOpenOptions): Promise<EyeDropperOpenResult>;
+    };
+  }
+}
+
+/**
+ * EyeDropper 返回结果
+ */
+export interface EyeDropperOpenResult {
+  /**
+   * 选中的颜色（sRGB Hex 格式）
+   * 例如：#409EFF
+   */
+  sRGBHex: string;
+}
+
+/**
+ * EyeDropper 打开配置
+ */
+export interface EyeDropperOpenOptions {
+  /**
+   * 用于主动取消取色操作
+   */
+  signal?: AbortSignal;
+}

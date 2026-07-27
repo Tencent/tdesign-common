@@ -5,3 +5,4 @@ export * from './draggable';
 export * from './format';
 export * from './gradient';
 export * from './types';
+export * from './eyedropper';
