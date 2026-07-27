@@ -4,7 +4,7 @@
 
 本文面向 `tdesign-api`、`tdesign-common` 和 `tdesign-mobile-vue` 的维护者，说明 TabBar `effect="glass"` 的当前技术设计、视觉分层、Chromium 增强管线、CSS fallback、参数边界、生命周期、性能约束、测试要求和维护注意事项。
 
-本文描述的是当前本地功能分支的实现快照，不代表功能已经达到正式 PR 或发布状态。合入前仍需完成来源审计、跨仓同步、当前 HEAD 全量验证和远程 CI。
+本文描述的是当前本地功能分支的实现快照，不代表功能已经达到正式 PR 或发布状态。合入前仍需完成跨仓同步、当前 HEAD 全量验证和远程 CI。
 
 本文不将调参 Demo 中的内部参数视为公共 API，也不承诺与 Apple Liquid Glass 的未公开内部模型或参数完全一致。
 
@@ -110,7 +110,7 @@ Refraction 层通过 `backdrop-filter` 处理 TabBar 后方的真实页面内容
 CSS fallback：
 
 ```text
-真实背景 → blur(12px) → saturate(140%)
+真实背景 → 分层 blur（基准 8px）
 ```
 
 Chromium 增强：
@@ -202,7 +202,9 @@ Shadow 不是单独的覆盖层，而是 Material Base 的外部投影。
 - 宽度按 TabBarItem 数量计算。
 - 使用 `translate3d()` 在选项之间移动。
 - 使用半透明品牌色背景和独立边缘高光。
-- 在 `prefers-reduced-motion: reduce` 下关闭过渡。
+- Pointer 按下时先预览目标项的选中前景并移动胶囊；图标文字放大至 `1.12`，胶囊横向和纵向均放大至 `1.16`，以 `240ms` 完成按压或回弹；长按期间保持，点击提交、离开或取消时回弹。
+- 按压反馈不改变点击区域、选中提交时机或 `onChange` 语义。
+- 在 `prefers-reduced-motion: reduce` 下关闭移动与缩放过渡，并取消按压缩放。
 
 ### 6.8 Content
 
@@ -294,12 +296,12 @@ Canvas 只负责编码，纹理算法应保持为可直接测试的纯数据逻�
 | 参数                 | 当前默认值 |          Demo 范围 | 主要归属                      | 作用                       |
 | -------------------- | ---------: | -----------------: | ----------------------------- | -------------------------- |
 | `surface`            | `squircle` | `squircle` / `lip` | Refraction                    | 选择折射截面轮廓           |
-| `thicknessRatio`     |      `0.7` |              `0–2` | Refraction                    | 控制等效厚度和折射曲线幅度 |
-| `bezelRatio`         |     `0.85` |            `0.1–1` | Refraction + Dynamic Specular | 控制边缘效果覆盖宽度       |
-| `refractiveIndex`    |      `1.5` |            `1–2.5` | Refraction                    | 控制折射率差               |
-| `displacementGain`   |        `1` |              `0–2` | Refraction                    | 缩放最终位移强度           |
-| `blur`               |    `0.4px` |            `0–4px` | Refraction                    | 位移前背景模糊             |
-| `specularOpacity`    |      `0.5` |              `0–1` | Dynamic Specular              | 控制白色高光 Alpha         |
+| `thicknessRatio`     |        `1` |              `0–2` | Refraction                    | 控制等效厚度和折射曲线幅度 |
+| `bezelRatio`         |      `0.9` |            `0.1–1` | Refraction + Dynamic Specular | 控制边缘效果覆盖宽度       |
+| `refractiveIndex`    |        `2` |            `1–2.5` | Refraction                    | 控制折射率差               |
+| `displacementGain`   |      `1.5` |              `0–2` | Refraction                    | 缩放最终位移强度           |
+| `blur`               |    `0.6px` |            `0–4px` | Refraction                    | 位移前背景模糊             |
+| `specularOpacity`    |     `0.75` |              `0–1` | Dynamic Specular              | 控制白色高光 Alpha         |
 | `specularSaturation` |        `2` |              `1–6` | Dynamic Specular              | 控制高光区域背景饱和度     |
 | `lightAngle`         |   `270deg` |         `0–360deg` | Dynamic Specular              | 控制受光方向               |
 | `textureDpr`         |   设备 DPR |         Demo `1–2` | Rendering Quality             | 控制纹理采样质量           |
@@ -308,15 +310,17 @@ Canvas 只负责编码，纹理算法应保持为可直接测试的纯数据逻�
 
 ### 9.3 材质外观和 fallback 参数
 
-| 参数或 Token                       | 当前默认值                    | 归属          | 说明               |
-| ---------------------------------- | ----------------------------- | ------------- | ------------------ |
-| `--td-tab-bar-glass-bg-color`      | Light `rgba(255,255,255,42%)` | Material Base | Glass 底色和透明度 |
-| `--td-tab-bar-glass-bg-color`      | Dark `rgba(36,36,36,46%)`     | Material Base | 暗色 Glass 底色    |
-| `--td-tab-bar-glass-shadow`        | 主题相关双层阴影              | Elevation     | 悬浮深度           |
-| `--td-tab-bar-glass-fallback-blur` | `12px`                        | CSS fallback  | 普通背景模糊       |
-| `saturate(140%)`                   | 固定值                        | CSS fallback  | 当前未提供 Token   |
-| `--td-tab-bar-selected-bg-color`   | 品牌色                        | Selection     | 选中胶囊颜色       |
-| `--td-tab-bar-selected-bg-opacity` | `16%`                         | Selection     | 选中胶囊透明度     |
+| 参数或 Token                          | 当前默认值                      | 归属          | 说明                         |
+| ------------------------------------- | ------------------------------- | ------------- | ---------------------------- |
+| `--td-tab-bar-glass-bg-color`         | Light `rgba(255,255,255,50%)`   | Material Base | Glass 底色和透明度           |
+| `--td-tab-bar-glass-bg-color`         | Dark `rgba(0,0,0,46%)`          | Material Base | 暗色 Glass 纯黑底色          |
+| `--td-tab-bar-glass-shadow`           | 主题相关双层阴影                | Elevation     | 悬浮深度                     |
+| `--td-tab-bar-glass-fallback-blur`    | `8px`                           | CSS fallback  | 基础模糊；Demo 范围 `0–12px` |
+| `--td-tab-bar-glass-sheen-opacity`    | Light `1` / Dark `0.42`         | Surface Sheen | 材质高光轮廓强度             |
+| `--td-tab-bar-selected-bg-color`      | 品牌色                          | Selection     | 选中胶囊颜色                 |
+| `--td-tab-bar-selected-bg-opacity`    | `16%`                           | Selection     | 选中胶囊透明度               |
+| `--td-tab-bar-selected-sheen-opacity` | Light `0.62` / Dark `0.42`      | Selection     | 选中胶囊高光轮廓强度         |
+| `--td-tab-bar-selected-border-color`  | Light 组件边框 / Dark `#383838` | Selection     | normal round 选中描边        |
 
 Surface Sheen 的 2px 宽度、渐变方向和 Alpha 节点当前为固定 Less，不是 Token。
 
@@ -348,11 +352,15 @@ Surface Sheen 的 2px 宽度、渐变方向和 Alpha 节点当前为固定 Less�
 
 ### 10.2 支持普通 backdrop-filter 时
 
-Refraction 层使用：
+Refraction 层使用三个由 `--td-tab-bar-glass-fallback-blur` 派生的 `backdrop-filter`，只作为视觉近似：
 
-```css
-backdrop-filter: blur(var(--td-tab-bar-glass-fallback-blur)) saturate(140%);
-```
+| 区域            | blur 倍率 | 默认 `8px` 时 | 作用                                   |
+| --------------- | --------- | ------------- | -------------------------------------- |
+| 中心元素自身    | `× 0.2`   | `1.6px`       | 保留中心背景细节，避免整块玻璃糊成一团 |
+| `::after` 中环  | `× 0.5`   | `4px`         | 提供由上向下衰减的内侧扩散光           |
+| `::before` 外环 | `× 0.9`   | `7.2px`       | 上沿高光、侧边过渡、下沿暗部定义轮廓   |
+
+中环和外环通过固定尺寸的 `mask-image` 软边框限定范围。Chromium SVG 增强成功时，运行时关闭这两个伪元素，并以 SVG filter 替换中心层，避免重复模糊。
 
 ### 10.3 完全不支持 backdrop-filter 时
 
@@ -472,11 +480,13 @@ SVG 增强启用前必须同时满足：
 ## 15. 主题、无障碍和交互
 
 - Light 和 Dark 必须有独立 Material Base 与 Shadow 默认值。
+- Dark Surface Sheen 与选中胶囊高光描边的 opacity 均为 `0.42`；Light 分别为 `1` 与 `0.62`。暗色选中图标与文字使用 `--td-brand-color-10`。
+- normal round 选中态描边使用 `--td-tab-bar-selected-border-color`；Dark 为 `--td-gray-color-11`，不得恢复为固定白色 Alpha。
 - Glass 层必须 `aria-hidden="true"`。
 - Glass 层必须 `pointer-events: none`。
 - `<svg>` 只作为滤镜定义，必须隐藏且不可聚焦。
 - TabBarItem 点击、选中和 `onChange` 不得改变。
-- Selection 动画应遵守 `prefers-reduced-motion`。
+- Selection 移动与按压缩放动画应遵守 `prefers-reduced-motion`。
 - fallback 在缺少 blur 时仍需满足文字和图标对比度。
 - 高光不得降低选中和未选中状态的辨识度。
 
@@ -509,10 +519,13 @@ SVG 增强启用前必须同时满足：
 用途：
 
 - 单独观察 Refraction。
+- 使用真实 TabBar 观察 CSS fallback 的中心、中环和外环模糊。
 - 单独观察 Specular overlay。
 - 查看原始 Specular map。
 - 单独观察 Surface Sheen。
 - 与 Final Glass 使用相同背景和参数对照。
+
+Fallback 检查实例通过私有 `shouldEnhance` 钩子禁用 SVG 增强，仍复用 Common 的正式 TabBar Less，不在 Demo 中复制 fallback 样式。`--td-tab-bar-glass-fallback-blur` 可在 `0–12px` 范围内以 `0.1px` 步进调整，诊断指标同步显示中心 `×0.2`、中环 `×0.5`、外环 `×0.9` 的实际模糊半径和固定遮罩宽度。
 
 诊断背景应支持 grid、text、image，并共享拖拽和缩放状态。
 
@@ -592,7 +605,7 @@ npm run build
 git diff --check
 ```
 
-测试通过只能证明当前本地实现满足对应检查，不代表来源合规、跨仓同步、远程 CI 或 PR 审核已经完成。
+测试通过只能证明当前本地实现满足对应检查，不代表跨仓同步、远程 CI 或 PR 审核已经完成。
 
 ## 18. 故障排查
 
@@ -617,7 +630,7 @@ git diff --check
 - `CSS.supports()` 只能证明语法接受，不能证明滤镜视觉正确。
 - Surface Sheen 是固定方向，与 `lightAngle` 不同步。
 - Surface Sheen 依赖 CSS mask 和 `mask-composite: exclude`；不支持该组合时必须验证渐变不会覆盖整个内容区域。
-- fallback 的 `saturate(140%)` 当前是硬编码值。
+- fallback 三层的 `saturate(132% / 114% / 124%)` 当前是硬编码值。
 - 当前没有独立完整外轮廓 border Token，外缘主要依赖 Surface Sheen 和 Shadow。
 - Dynamic Specular 与 Refraction 在同一个 SVG 输出中，不能通过 z-index 单独排序。
 - Selection Indicator 只存在于 Glass round 模式。
@@ -625,36 +638,7 @@ git diff --check
 - 调参 Demo 的参数范围不是公共兼容性契约。
 - 当前本地 PASS 记录不能替代当前 HEAD、跨仓和远程 CI 的重新验证。
 
-## 20. 来源与合规边界
-
-正式 PR 前必须完成模块级来源审计。
-
-当前光学核心包括：
-
-- 曲面函数。
-- 折射 profile。
-- displacement/specular 纹理算法。
-- SVG filter graph。
-- 参数和默认值。
-
-这些内容不得仅通过改名、调整常量或重排代码就声明为独立实现。如果相关实现与无明确许可证的外部项目结构高度相似，应执行以下二选一：
-
-1. 根据行为规格独立重写光学核心，并保留独立设计记录和验收证据。
-2. 获得明确的书面授权并确认许可证覆盖范围。
-
-组件基础设施可以独立保留，包括：
-
-- 公共 API 接线。
-- SSR/hydration 结构。
-- 唯一 ID。
-- ResizeObserver 和 rAF 生命周期。
-- CSS fallback。
-- 主题 Token。
-- Selection、布局和交互测试。
-
-在来源问题解决前，不得把当前实现描述为已完成 clean-room、可正式发布或 PR-ready。
-
-## 21. 维护规则
+## 20. 维护规则
 
 - 默认 `effect="normal"` 必须零运行时开销、零 Glass DOM。
 - 不得把内部光学参数加入公开 API，除非有明确产品需求和跨框架设计。
@@ -666,9 +650,8 @@ git diff --check
 - 新增视觉层必须 `aria-hidden`、pointer-transparent，并脱离 flex 尺寸计算。
 - 新增动画必须支持 `prefers-reduced-motion`。
 - 新增性能逻辑不得引入持续 rAF、全局监听或无上限纹理。
-- 不得提交研究原型、竞争实现源码或无明确来源的资源。
 
-## 22. 合入前检查清单
+## 21. 合入前检查清单
 
 - [ ] `effect` API 在 API/common/mobile 三仓一致。
 - [ ] `normal` DOM、快照、样式和交互无回归。
@@ -680,10 +663,9 @@ git diff --check
 - [ ] Surface Sheen、Dynamic Specular 和 Refraction 可独立诊断。
 - [ ] 当前 HEAD 执行 lint、typecheck、test、snapshot 和 build。
 - [ ] `tdesign-common` 多框架 CI 扇出全部通过。
-- [ ] 来源审计完成，或已获得明确授权。
 - [ ] 三个 PR 互相链接，并说明提交顺序和依赖关系。
 
-## 23. 关键文件索引
+## 22. 关键文件索引
 
 ### tdesign-common
 

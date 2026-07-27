@@ -31,7 +31,7 @@
     min-height: 64px;
     margin: 0 12px 8px;
     padding: 4px;
-    border-radius: 32px;
+    border-radius: 999px;
     box-shadow: @tab-bar-round-shadow;
   }
 
@@ -60,8 +60,8 @@
     position: absolute;
     z-index: 1;
     inset: 4px;
-    overflow: hidden;
-    border-radius: 28px;
+    overflow: visible;
+    border-radius: 999px;
     pointer-events: none;
   }
 
@@ -77,8 +77,9 @@
     &::before {
       position: absolute;
       inset: 0 2px;
-      border-radius: 28px;
+      border-radius: 999px;
       background-color: color-mix(in srgb, @tab-bar-selected-bg-color @tab-bar-selected-bg-opacity, transparent);
+      transition: transform @tab-bar-press-duration @tab-bar-press-easing;
       content: '';
     }
 
@@ -87,7 +88,8 @@
       position: absolute;
       inset: 0 2px;
       padding: 1px;
-      border-radius: 28px;
+      border-radius: 999px;
+      opacity: @tab-bar-selected-sheen-opacity;
       background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 64%) 0%,
@@ -99,6 +101,12 @@
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
       mask-composite: exclude;
+      transition: transform @tab-bar-press-duration @tab-bar-press-easing;
+    }
+
+    &--pressed::before,
+    &--pressed::after {
+      transform: scale(@tab-bar-press-capsule-scale);
     }
   }
 
@@ -107,8 +115,55 @@
     box-shadow: @tab-bar-glass-shadow;
   }
 
+  // 无 SVG 增强时的分层梯度：中心弱、边缘强，模拟玻璃厚度。
+  // 增强激活时由运行时将 --td-tab-bar-glass-fallback-layers 置 0 关闭，避免糊住真实折射。
   &--glass > &__glass-refraction {
-    backdrop-filter: blur(@tab-bar-glass-fallback-blur) saturate(140%);
+    backdrop-filter: blur(@tab-bar-glass-fallback-blur-center) saturate(132%);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: @tab-bar-glass-fallback-layers;
+      pointer-events: none;
+    }
+
+    // 中环：柔光由上向下衰减，建立环境光方向。
+    &::after {
+      backdrop-filter: blur(@tab-bar-glass-fallback-blur-mid) saturate(114%);
+      box-shadow:
+        inset 0 10px 16px -12px rgba(255, 255, 255, 60%),
+        inset 0 0 12px rgba(255, 255, 255, 10%),
+        inset 0 -8px 12px -10px rgba(0, 0, 0, 14%);
+      mask-image:
+        linear-gradient(to right, #000 0, transparent 28px, transparent calc(100% - 28px), #000 100%),
+        linear-gradient(to bottom, #000 0, transparent 22px, transparent calc(100% - 22px), #000 100%);
+    }
+
+    // 外环 + bezel 光照：上沿明亮、侧边过渡、下沿压暗。
+    &::before {
+      backdrop-filter: blur(@tab-bar-glass-fallback-blur-edge) saturate(124%) brightness(105%);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 22%) 0%,
+        rgba(255, 255, 255, 8%) 32%,
+        transparent 62%,
+        rgba(0, 0, 0, 8%) 100%
+      );
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 32%),
+        inset 0 1px 1.5px rgba(255, 255, 255, 86%),
+        inset 0 5px 8px -4px rgba(255, 255, 255, 76%),
+        inset 4px 0 6px -5px rgba(255, 255, 255, 28%),
+        inset -4px 0 6px -5px rgba(255, 255, 255, 28%),
+        inset 0 -2px 4px -3px rgba(255, 255, 255, 8%),
+        inset 0 -1px 3px rgba(0, 0, 0, 18%);
+      mask-image:
+        linear-gradient(to right, #000 0, transparent 13px, transparent calc(100% - 13px), #000 100%),
+        linear-gradient(to bottom, #000 0, transparent 10px, transparent calc(100% - 10px), #000 100%);
+    }
   }
 
   &--glass > &__glass-sheen {
@@ -118,12 +173,13 @@
       inset: 0;
       padding: 2px;
       border-radius: inherit;
+      opacity: @tab-bar-glass-sheen-opacity;
       background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 92%) 0%,
-        rgba(255, 255, 255, 72%) 24%,
-        rgba(255, 255, 255, 26%) 48%,
-        transparent 68%
+        rgba(255, 255, 255, 66%) 0%,
+        rgba(255, 255, 255, 44%) 30%,
+        rgba(255, 255, 255, 16%) 58%,
+        transparent 82%
       );
       mask:
         linear-gradient(#000 0 0) content-box,
@@ -150,12 +206,22 @@
 
   &--round .@{prefix}-tab-bar-item__content {
     gap: 1px;
-    border-radius: 28px;
+    border-radius: 999px;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__icon,
+  &--glass&--round .@{prefix}-tab-bar-item__text {
+    transition: transform @tab-bar-press-duration @tab-bar-press-easing;
+  }
+
+  &--glass&--round .@{prefix}-tab-bar-item__content--pressed .@{prefix}-tab-bar-item__icon,
+  &--glass&--round .@{prefix}-tab-bar-item__content--pressed .@{prefix}-tab-bar-item__text {
+    transform: scale(@tab-bar-press-scale);
   }
 
   &--round .@{prefix}-tab-bar-item__content--checked {
     background-color: color-mix(in srgb, @tab-bar-selected-bg-color @tab-bar-selected-bg-opacity, transparent);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 38%);
+    box-shadow: inset 0 0 0 1px @tab-bar-selected-border-color;
   }
 
   &--glass&--round .@{prefix}-tab-bar-item__content--checked {
@@ -185,13 +251,24 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{tab-bar-cls}__selection-indicator {
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{tab-bar-cls}__selection-indicator,
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{prefix}-tab-bar-item__icon,
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{prefix}-tab-bar-item__text,
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{tab-bar-cls}__selection-indicator::before,
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{tab-bar-cls}__selection-indicator::after {
     transition: none;
+  }
+
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{prefix}-tab-bar-item__content--pressed .@{prefix}-tab-bar-item__icon,
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{prefix}-tab-bar-item__content--pressed .@{prefix}-tab-bar-item__text,
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{tab-bar-cls}__selection-indicator--pressed::before,
+  .@{tab-bar-cls}--glass.@{tab-bar-cls}--round .@{tab-bar-cls}__selection-indicator--pressed::after {
+    transform: none;
   }
 }
 
 @supports (backdrop-filter: url('#tab-bar-glass-filter')) {
   .@{tab-bar-cls}--glass > .@{tab-bar-cls}__glass-refraction {
-    backdrop-filter: var(--td-tab-bar-glass-filter, blur(@tab-bar-glass-fallback-blur) saturate(140%));
+    backdrop-filter: var(--td-tab-bar-glass-filter, blur(@tab-bar-glass-fallback-blur-center) saturate(132%));
   }
 }

@@ -1,22 +1,29 @@
 // 部分特殊处理的组件级 token
 :root,
 :root[theme-mode='light'] {
-  --td-tab-bar-glass-bg-color: rgba(255, 255, 255, 42%);
+  --td-tab-bar-glass-bg-color: rgba(255, 255, 255, 50%);
   --td-tab-bar-glass-shadow: 0 8px 30px rgba(0, 0, 0, 12%), 0 2px 8px rgba(0, 0, 0, 8%);
-  --td-tab-bar-glass-fallback-blur: 12px;
+  --td-tab-bar-glass-fallback-blur: 8px;
+  --td-tab-bar-glass-sheen-opacity: 1;
   --td-tab-bar-selected-bg-color: var(--td-brand-color);
   --td-tab-bar-selected-bg-opacity: 16%;
+  --td-tab-bar-selected-sheen-opacity: 0.62;
+  --td-tab-bar-selected-border-color: var(--td-component-border);
   --td-switch-dot-disabled-color: var(--td-font-white-1);
   --td-switch-loading-color: var(--td-brand-color);
 }
 
 :root.dark,
 :root[theme-mode='dark'] {
-  --td-tab-bar-glass-bg-color: rgba(36, 36, 36, 46%);
+  --td-tab-bar-glass-bg-color: rgba(0, 0, 0, 46%);
   --td-tab-bar-glass-shadow: 0 8px 30px rgba(0, 0, 0, 28%), 0 2px 8px rgba(0, 0, 0, 20%);
-  --td-tab-bar-glass-fallback-blur: 12px;
+  --td-tab-bar-glass-fallback-blur: 8px;
+  --td-tab-bar-glass-sheen-opacity: 0.42;
+  --td-tab-bar-active-color: var(--td-brand-color-10);
   --td-tab-bar-selected-bg-color: var(--td-brand-color);
   --td-tab-bar-selected-bg-opacity: 16%;
+  --td-tab-bar-selected-sheen-opacity: 0.42;
+  --td-tab-bar-selected-border-color: var(--td-gray-color-11);
   --td-button-primary-disabled-color: var(--td-font-white-4);
   --td-skeleton-animation-gradient: rgba(255, 255, 255, 6%);
   --td-slider-dot-bg-color: var(--td-gray-color-4);
