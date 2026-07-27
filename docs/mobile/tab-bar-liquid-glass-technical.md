@@ -308,7 +308,7 @@ Canvas 只负责编码，纹理算法应保持为可直接测试的纯数据逻�
 
 内部默认值是实现细节，不属于兼容性承诺。维护者可以通过验证结果调整默认值，但不得在未更新像素测试、性能数据和视觉证据时静默改变。
 
-Demo 与测试可通过私有 `tabBarGlassDevContextKey` 注入调参值、重建统计和强制 fallback。该通道不属于组件 Props 或公共导出，生产构建会忽略注入值并固定使用上述默认参数；不得依赖它实现业务定制。
+Demo 与测试可通过私有 `tabBarGlassDevContextKey` 注入调参值、重建统计和强制 fallback。该通道不属于组件 Props 或公共导出，正式生产构建会忽略注入值并固定使用上述默认参数；不得依赖它实现业务定制。完整调参 Playground 仅在 fork 专用分支通过独立构建标志启用该通道，不进入上游 PR 或发布产物。
 
 ### 9.3 材质外观和 fallback 参数
 
@@ -491,17 +491,25 @@ SVG 增强启用前必须同时满足：
 - fallback 在缺少 blur 时仍需满足文字和图标对比度。
 - 高光不得降低选中和未选中状态的辨识度。
 
-## 16. Demo 与诊断
+## 16. 正式示例与 fork Playground
 
-### 16.1 综合 Demo
+### 16.1 上游正式示例
 
-路由：
+`tdesign-mobile-vue` 的 `src/tab-bar/demos/glass.vue` 只使用公开的 `effect="glass"`、`shape="round"` 等组件属性，并嵌入常规 TabBar 组件页：
 
 ```text
-#/tab-bar/liquid-glass
+#/tab-bar
 ```
 
-用途：
+该示例用于说明公开用法，不包含内部光学参数、性能统计或诊断开关。
+
+### 16.2 fork-only 综合 Playground
+
+完整调参页面保留在 fork 的 `playground/tab-bar-liquid-glass` 分支，不进入上游 PR：
+
+```text
+/mobile.html#/tab-bar/liquid-glass
+```
 
 - Normal、CSS fallback、Final Glass 并排比较。
 - Grid、text、image 背景。
@@ -509,12 +517,12 @@ SVG 增强启用前必须同时满足：
 - Light/Dark、尺寸、safe area、fixed 和多实例验证。
 - 内部参数调校和性能指标。
 
-### 16.2 分层检查 Demo
+### 16.3 fork-only 分层检查 Playground
 
-路由：
+同一 Playground 分支提供：
 
 ```text
-#/tab-bar/liquid-glass-inspector
+/mobile.html#/tab-bar/liquid-glass-inspector
 ```
 
 用途：
@@ -525,7 +533,7 @@ SVG 增强启用前必须同时满足：
 - 单独观察 Surface Sheen。
 - 与 Final Glass 使用相同背景和参数对照。
 
-诊断背景应支持 grid、text、image，并共享拖拽和缩放状态。
+诊断背景应支持 grid、text、image，并共享拖拽和缩放状态。部署必须记录对应 commit SHA，确保 PR 评审看到的页面与被审代码一致。
 
 ## 17. 测试要求
 
@@ -603,7 +611,6 @@ SVG 增强启用前必须同时满足：
 ```bash
 npx vitest run src/tab-bar/__test__/liquid-glass-map.test.ts
 npx vitest run src/tab-bar/__test__/liquid-glass.test.tsx
-npx vitest run src/tab-bar/__test__/liquid-glass-inspector.test.tsx
 npx vitest run src/tab-bar/__test__/index.test.jsx
 npm run measure:tab-bar-glass
 npm run test:demo
@@ -613,6 +620,8 @@ npx vue-tsc --noEmit --skipLibCheck
 npm run build
 git diff --check
 ```
+
+fork Playground 分支另执行 `npx vitest run src/tab-bar/__test__/liquid-glass-inspector.test.tsx` 与 `npm run site:playground`。
 
 测试通过只能证明当前本地实现满足对应检查，不代表跨仓同步、远程 CI 或 PR 审核已经完成。
 
@@ -694,14 +703,14 @@ src/tab-bar/props.ts
 src/tab-bar/tab-bar.tsx
 src/tab-bar/liquid-glass-map.ts
 src/tab-bar/useTabBarGlassFilter.ts
-src/tab-bar/demos/liquid-glass.vue
-src/tab-bar/demos/liquid-glass-inspector.vue
+src/tab-bar/demos/glass.vue
 src/tab-bar/__test__/liquid-glass-map.test.ts
 src/tab-bar/__test__/liquid-glass-displacement.test.ts
 src/tab-bar/__test__/liquid-glass.test.tsx
-src/tab-bar/__test__/liquid-glass-inspector.test.tsx
 src/tab-bar/__test__/index.test.jsx
 ```
+
+fork 的 `playground/tab-bar-liquid-glass` 分支另行保留 `liquid-glass.vue`、`liquid-glass-inspector.vue`、Inspector 测试、专用路由与静态部署工作流；这些文件不是上游交付面。
 
 ### tdesign-api
 
