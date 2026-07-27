@@ -308,6 +308,8 @@ Canvas 只负责编码，纹理算法应保持为可直接测试的纯数据逻�
 
 内部默认值是实现细节，不属于兼容性承诺。维护者可以通过验证结果调整默认值，但不得在未更新像素测试、性能数据和视觉证据时静默改变。
 
+Demo 与测试可通过私有 `tabBarGlassDevContextKey` 注入调参值、重建统计和强制 fallback。该通道不属于组件 Props 或公共导出，生产构建会忽略注入值并固定使用上述默认参数；不得依赖它实现业务定制。
+
 ### 9.3 材质外观和 fallback 参数
 
 | 参数或 Token                          | 当前默认值                      | 归属          | 说明                         |
@@ -590,13 +592,24 @@ Fallback 检查实例通过私有 `shouldEnhance` 钩子禁用 SVG 增强，仍�
 - 静止时无持续 CPU 活动。
 - 控制台无 error、hydration warning 或资源异常。
 
-### 17.5 建议执行命令
+### 17.5 位移量化
+
+`npm run measure:tab-bar-glass` 使用与 SVG `feDisplacementMap` 相同的通道换算方式，针对 320、390、430、620px 和 DPR 1/2 量化：
+
+- 最大边缘位移必须处于 6–12 CSS px。
+- 中性中心漂移不得超过 1 CSS px。
+- 将 displacement scale 关闭后的 A/B 差值必须至少为 6 CSS px。
+
+该脚本是纹理与滤镜输入的确定性门禁；浏览器截图仍负责确认真实背景的可观察折射与裁切情况。
+
+### 17.6 建议执行命令
 
 ```bash
 npx vitest run src/tab-bar/__test__/liquid-glass-map.test.ts
 npx vitest run src/tab-bar/__test__/liquid-glass.test.tsx
 npx vitest run src/tab-bar/__test__/liquid-glass-inspector.test.tsx
 npx vitest run src/tab-bar/__test__/index.test.jsx
+npm run measure:tab-bar-glass
 npm run test:demo
 npm run test:snap
 npm run lint
@@ -688,6 +701,7 @@ src/tab-bar/useTabBarGlassFilter.ts
 src/tab-bar/demos/liquid-glass.vue
 src/tab-bar/demos/liquid-glass-inspector.vue
 src/tab-bar/__test__/liquid-glass-map.test.ts
+src/tab-bar/__test__/liquid-glass-displacement.test.ts
 src/tab-bar/__test__/liquid-glass.test.tsx
 src/tab-bar/__test__/liquid-glass-inspector.test.tsx
 src/tab-bar/__test__/index.test.jsx
