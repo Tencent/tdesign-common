@@ -26,6 +26,29 @@
     }
   }
 
+  &--dragging {
+    .@{prefix}-upload-drag-move {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__item,
+  &__image,
+  &__file-content,
+  &__list-item {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  &__drag-clone {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    border-radius: @upload-radius;
+    overflow: hidden;
+    background: @upload-background;
+  }
+
   &__file-content {
     position: absolute;
     left: 0;
@@ -103,7 +126,7 @@
 
     &-loading {
       font-size: 24px;
-      animation: spin infinite linear .6s;
+      animation: spin infinite linear 0.6s;
     }
 
     &-fail-icon {
@@ -146,7 +169,7 @@
       flex-shrink: 0;
       font-size: 24px;
       color: @brand-color;
-      animation: spin infinite linear .6s;
+      animation: spin infinite linear 0.6s;
     }
 
     &-error-icon {

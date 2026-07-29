@@ -20,58 +20,55 @@ const TEXTAREA_STYLE = `
   right:0 !important
 `;
 
-let hiddenTextarea: HTMLTextAreaElement;
-
 function calcTextareaHeight(
   targetElement: HTMLTextAreaElement,
   minRows: LimitType = 1,
   maxRows: LimitType = null
 ): CalculateStyleType {
-  if (!hiddenTextarea) {
-    hiddenTextarea = document.createElement('textarea');
-    document.body.appendChild(hiddenTextarea);
-  }
+  const hiddenTextarea = document.createElement('textarea');
+  document.body.appendChild(hiddenTextarea);
 
-  const { paddingSize, borderSize, boxSizing, sizingStyle } = calculateNodeSize(targetElement);
+  try {
+    const { paddingSize, borderSize, boxSizing, sizingStyle } = calculateNodeSize(targetElement);
 
-  hiddenTextarea.setAttribute('style', `${sizingStyle};${TEXTAREA_STYLE}`);
-  hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
+    hiddenTextarea.setAttribute('style', `${sizingStyle};${TEXTAREA_STYLE}`);
+    hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
 
-  let height = hiddenTextarea.scrollHeight;
-  const result: CalculateStyleType = {};
-  const isBorderbox = boxSizing === 'border-box';
-  const isContentbox = boxSizing === 'content-box';
+    let height = hiddenTextarea.scrollHeight;
+    const result: CalculateStyleType = {};
+    const isBorderbox = boxSizing === 'border-box';
+    const isContentbox = boxSizing === 'content-box';
 
-  if (isBorderbox) {
-    height += borderSize;
-  } else if (isContentbox) {
-    height -= paddingSize;
-  }
-
-  hiddenTextarea.value = '';
-  const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
-  hiddenTextarea?.parentNode?.removeChild(hiddenTextarea);
-  // @ts-ignore
-  hiddenTextarea = null;
-
-  const calcHeight = (rows: number) => {
-    let rowsHeight = singleRowHeight * rows;
     if (isBorderbox) {
-      rowsHeight = rowsHeight + paddingSize + borderSize;
+      height += borderSize;
+    } else if (isContentbox) {
+      height -= paddingSize;
     }
-    return rowsHeight;
-  };
 
-  if (!isNull(minRows)) {
-    const minHeight = calcHeight(minRows);
-    height = Math.max(minHeight, height);
-    result.minHeight = `${minHeight}px`;
+    hiddenTextarea.value = '';
+    const singleRowHeight = hiddenTextarea.scrollHeight - paddingSize;
+
+    const calcHeight = (rows: number) => {
+      let rowsHeight = singleRowHeight * rows;
+      if (isBorderbox) {
+        rowsHeight = rowsHeight + paddingSize + borderSize;
+      }
+      return rowsHeight;
+    };
+
+    if (!isNull(minRows)) {
+      const minHeight = calcHeight(minRows);
+      height = Math.max(minHeight, height);
+      result.minHeight = `${minHeight}px`;
+    }
+    if (!isNull(maxRows)) {
+      height = Math.min(calcHeight(maxRows), height);
+    }
+    result.height = `${height}px`;
+    return result;
+  } finally {
+    hiddenTextarea.parentNode?.removeChild(hiddenTextarea);
   }
-  if (!isNull(maxRows)) {
-    height = Math.min(calcHeight(maxRows), height);
-  }
-  result.height = `${height}px`;
-  return result;
 }
 
 export default calcTextareaHeight;

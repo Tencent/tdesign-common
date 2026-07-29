@@ -166,7 +166,7 @@
   display: flex;
   align-items: center;
   border-radius: @select-option-border-radius;
-  height: @select-option-height-default;
+  min-height: @select-option-height-default;
   font: @font-body-medium;
   cursor: pointer;
   padding: @select-option-padding-default;
@@ -217,7 +217,7 @@
 }
 
 .@{prefix}-select-option.@{prefix}-size-l {
-  height: @select-option-height-l;
+  min-height: @select-option-height-l;
   padding: @select-option-padding-l;
   font: @select-font-l;
 }
@@ -225,7 +225,7 @@
   font: @select-font-m;
 }
 .@{prefix}-select-option.@{prefix}-size-s {
-  height: @select-option-height-s;
+  min-height: @select-option-height-s;
   padding: @select-option-padding-s;
   font: @select-font-s;
 }
