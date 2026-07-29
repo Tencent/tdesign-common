@@ -50,15 +50,15 @@
   &__left,
   &__right {
     position: absolute;
-    top: 0;
     bottom: 0;
+    height: @navbar-height;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
   }
 
   &__left {
     left: 0;
-    display: flex;
-    align-items: center;
     margin-left: @spacer-1;
 
     &-arrow {
@@ -111,12 +111,8 @@
   }
 
   &__right {
-    position: absolute;
     right: 0;
-    box-sizing: border-box;
     // width: @navbar-right;
-    display: flex;
-    align-items: center;
     margin-right: @spacer-1;
   }
 }
