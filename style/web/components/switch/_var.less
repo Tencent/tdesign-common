@@ -72,3 +72,28 @@
 @switch-content-transition:
   padding @anim-duration-base @anim-time-fn-easing,
   opacity @anim-duration-base linear;
+
+// shape 变量
+// round
+@switch-round-track-border-radius: @border-radius-default;
+@switch-round-handle-border-radius: @border-radius-small;
+
+// line
+@switch-line-width-l: 39px;
+@switch-line-width-default: 32px;
+@switch-line-width-s: 26px;
+@switch-line-track-inset: 2px;
+@switch-line-track-height: 6px;
+@switch-line-track-border-radius: @border-radius-round;
+@switch-line-handle-size-l: calc(@switch-height-l - 2 * @switch-width-border-l);
+@switch-line-handle-size-default: calc(@switch-height-default - 2 * @switch-width-border-default);
+@switch-line-handle-size-s: calc(@switch-height-s - 2 * @switch-width-border-s);
+@switch-line-handle-size-checked-l: calc(@switch-height-l - 2 * @switch-width-border-check-l);
+@switch-line-handle-size-checked-default: calc(@switch-height-default - 2 * @switch-width-border-check-default);
+@switch-line-handle-size-checked-s: calc(@switch-height-s - 2 * @switch-width-border-check-s);
+
+// line 选中态轨道半透明品牌色
+@switch-line-track-bg-color-checked: fade(@brand-color, 38%);
+@switch-line-track-bg-color-checked-hover: fade(@brand-color, 50%);
+@switch-line-handle-border: 1px solid @component-stroke;
+@switch-line-handle-shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.16);

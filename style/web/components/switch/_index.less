@@ -30,6 +30,11 @@
     background-color: @switch-unchecked-bg-color-hover;
   }
 
+  &:focus-visible {
+    outline: 2px solid @brand-color;
+    outline-offset: 3px;
+  }
+
   &__handle {
     position: absolute;
     display: flex;
@@ -269,5 +274,240 @@
     .@{prefix}-switch__content {
       padding: 0 @switch-content-margin-left-s 0 @switch-content-margin-right-s;
     }
+  }
+}
+
+// shape: round
+.@{prefix}-switch.@{prefix}-switch--shape-round {
+  border-radius: @switch-round-track-border-radius;
+
+  .@{prefix}-switch__handle,
+  .@{prefix}-switch__handle::before {
+    border-radius: @switch-round-handle-border-radius;
+  }
+}
+
+// shape: line
+.@{prefix}-switch.@{prefix}-switch--shape-line {
+  width: @switch-line-width-default;
+  min-width: @switch-line-width-default;
+  height: @switch-height-default;
+  line-height: @switch-height-default;
+  background-color: transparent;
+  overflow: visible;
+
+  --td-switch-line-track-color: @switch-unchecked-bg-color;
+  --td-switch-line-track-color-hover: @switch-unchecked-bg-color-hover;
+  --td-switch-line-track-color-checked: @switch-line-track-bg-color-checked;
+  --td-switch-line-track-color-checked-hover: @switch-line-track-bg-color-checked-hover;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  // 线性轨道
+  &::before {
+    content: '';
+    position: absolute;
+    left: @switch-line-track-inset;
+    right: @switch-line-track-inset;
+    top: 50%;
+    height: @switch-line-track-height;
+    transform: translateY(-50%);
+    border-radius: @switch-line-track-border-radius;
+    background-color: var(--td-switch-line-track-color);
+    transition: @switch-transition;
+  }
+
+  &:hover::before {
+    background-color: var(--td-switch-line-track-color-hover);
+  }
+
+  .@{prefix}-switch__handle {
+    top: 50%;
+    left: 0;
+    right: auto;
+    width: @switch-line-handle-size-default;
+    height: @switch-line-handle-size-default;
+    transform: translate(0, -50%);
+    box-shadow: @shadow-1;
+    border: @switch-line-handle-border;
+    box-sizing: border-box;
+    z-index: 1;
+    transition:
+      transform @anim-duration-base @anim-time-fn-easing,
+      box-shadow @anim-duration-base ease,
+      width @anim-duration-base @anim-time-fn-easing,
+      height @anim-duration-base @anim-time-fn-easing,
+      left @anim-duration-base @anim-time-fn-easing,
+      top @anim-duration-base @anim-time-fn-easing;
+
+    .t-icon {
+      font-size: @switch-line-handle-size-default;
+    }
+  }
+
+  &:hover .@{prefix}-switch__handle {
+    box-shadow: @switch-line-handle-shadow-hover;
+  }
+
+  .@{prefix}-switch__content {
+    display: none;
+  }
+
+  &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
+    .@{prefix}-switch__handle::before,
+    &.@{prefix}-is-checked .@{prefix}-switch__handle::before {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &.@{prefix}-is-checked {
+    background-color: transparent;
+
+    &::before {
+      background-color: var(--td-switch-line-track-color-checked);
+    }
+
+    &:hover::before {
+      background-color: var(--td-switch-line-track-color-checked-hover);
+    }
+
+    .@{prefix}-switch__handle {
+      top: 50%;
+      left: 100%;
+      right: auto;
+      width: @switch-line-handle-size-checked-default;
+      height: @switch-line-handle-size-checked-default;
+      transform: translate(-100%, -50%);
+
+      .t-icon {
+        font-size: @switch-line-handle-size-checked-default;
+      }
+    }
+  }
+
+  &.@{prefix}-is-loading {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-loading;
+    }
+
+    &.@{prefix}-is-checked::before {
+      background-color: @switch-checked-bg-color-loading;
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background-color: transparent;
+
+    .@{prefix}-switch__handle {
+      box-shadow: none;
+    }
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-disabled;
+    }
+
+    &.@{prefix}-is-checked {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-checked-bg-color-disabled;
+      }
+
+      .@{prefix}-switch__handle {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+// line: large
+.@{prefix}-switch.@{prefix}-size-l.@{prefix}-switch--shape-line {
+  width: @switch-line-width-l;
+  min-width: @switch-line-width-l;
+  height: @switch-height-l;
+  line-height: @switch-height-l;
+
+  .@{prefix}-switch__handle {
+    top: 50%;
+    left: 0;
+    right: auto;
+    width: @switch-line-handle-size-l;
+    height: @switch-line-handle-size-l;
+    transform: translate(0, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-l;
+    }
+  }
+
+  &.@{prefix}-is-checked .@{prefix}-switch__handle {
+    top: 50%;
+    left: 100%;
+    right: auto;
+    width: @switch-line-handle-size-checked-l;
+    height: @switch-line-handle-size-checked-l;
+    transform: translate(-100%, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-checked-l;
+    }
+  }
+}
+
+// line: small
+.@{prefix}-switch.@{prefix}-size-s.@{prefix}-switch--shape-line {
+  width: @switch-line-width-s;
+  min-width: @switch-line-width-s;
+  height: @switch-height-s;
+  line-height: @switch-height-s;
+
+  .@{prefix}-switch__handle {
+    top: 50%;
+    left: 0;
+    right: auto;
+    width: @switch-line-handle-size-s;
+    height: @switch-line-handle-size-s;
+    transform: translate(0, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-s;
+    }
+  }
+
+  &.@{prefix}-is-checked .@{prefix}-switch__handle {
+    top: 50%;
+    left: 100%;
+    right: auto;
+    width: @switch-line-handle-size-checked-s;
+    height: @switch-line-handle-size-checked-s;
+    transform: translate(-100%, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-checked-s;
+    }
+  }
+}
+
+// 暗色模式：color-mix 支持时跟随 --td-brand-color，否则保留编译期缺省色
+@supports (color: color-mix(in srgb, #000, #fff)) {
+  .@{prefix}-switch.@{prefix}-switch--shape-line {
+    --td-switch-line-track-color: var(--td-bg-color-secondarycomponent, @switch-unchecked-bg-color);
+    --td-switch-line-track-color-hover: var(--td-bg-color-secondarycomponent-hover, @switch-unchecked-bg-color-hover);
+    --td-switch-line-track-color-checked: color-mix(in srgb, var(--td-brand-color, @brand-color) 38%, transparent);
+    --td-switch-line-track-color-checked-hover: color-mix(in srgb, var(--td-brand-color, @brand-color) 50%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .@{prefix}-switch,
+  .@{prefix}-switch__handle,
+  .@{prefix}-switch__content,
+  .@{prefix}-switch--shape-line::before {
+    transition: none !important;
   }
 }
