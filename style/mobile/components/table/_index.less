@@ -589,7 +589,7 @@
   // 排序图标临时效果，此处状态修改请慎重，需要背景色明确提醒用户点击区域（不建议将整个表头作为点击区域，还有过滤等其他图标）
   .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
-  &:hover {
+  &:active {
     color: @table-icon-active-color;
     border-radius: @border-radius-circle;
     transition: @anim-duration-base linear;
@@ -599,7 +599,7 @@
 .@{prefix}-table__filter-icon {
   .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
-  &:hover {
+  &:active {
     color: @table-icon-active-color;
     transition: @anim-duration-base linear;
   }
