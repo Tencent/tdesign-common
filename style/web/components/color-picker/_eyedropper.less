@@ -1,0 +1,143 @@
+// ============================================
+// EyeDropper (吸色) Button — Web
+//
+// Add this section to _index.less after the .@{prefix}-color-picker rule block.
+//
+// Requires @import './_var-eyedropper.less' (or append the variables to _var.less)
+//
+// Usage in component:
+//   <button class="t-color-picker__eyedropper"
+//           :disabled="!isEyeDropperSupported"
+//           @click="onEyeDropperClick"
+//           :title="eyedropperTitle">
+//     <svg>...</svg>
+//   </button>
+// ============================================
+
+// EyeDropper button — placed in the panel header next to the close button
+.@{prefix}-color-picker__eyedropper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: @color-picker-eyedropper-btn-size;
+  height: @color-picker-eyedropper-btn-size;
+  border: 0;
+  border-radius: @color-picker-eyedropper-btn-radius;
+  background: transparent;
+  color: @color-picker-eyedropper-icon-color;
+  font-size: @color-picker-eyedropper-icon-size;
+  cursor: pointer;
+  transition: all @anim-duration-base @anim-time-fn-easing;
+  flex-shrink: 0;
+  padding: 0;
+  outline: none;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+
+  // EyeDropper SVG icon
+  svg {
+    width: @color-picker-eyedropper-icon-size;
+    height: @color-picker-eyedropper-icon-size;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
+
+  // Hover state
+  &:hover:not(.@{prefix}-is-disabled) {
+    background: @color-picker-eyedropper-btn-bg-hover;
+    color: @color-picker-eyedropper-icon-color-hover;
+  }
+
+  // Active / pressed state
+  &:active:not(.@{prefix}-is-disabled) {
+    background: @color-picker-eyedropper-btn-bg-active;
+    color: @color-picker-eyedropper-icon-color-active;
+    transform: scale(0.92);
+  }
+
+  // Focus visible (keyboard)
+  &:focus-visible {
+    outline: 2px solid @brand-color;
+    outline-offset: 1px;
+  }
+
+  // Disabled state (EyeDropper not supported or unavailable)
+  &.@{prefix}-is-disabled {
+    color: @text-color-disabled;
+    cursor: not-allowed;
+    pointer-events: auto; // allow tooltip / hover message
+
+    // Show not-supported indicator via a subtle strike-through line
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 15%;
+      width: 70%;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.5;
+      transform: rotate(-45deg);
+    }
+  }
+
+  // Position inline with the close button in the panel header
+  .@{prefix}-color-picker__head & {
+    margin-left: auto;
+    margin-right: @comp-margin-s;
+  }
+}
+
+// Ripple / pulse animation when eye dropper is active (color picked)
+@keyframes t-color-picker-eyedropper-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--td-brand-color-rgb, 0, 82, 217), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(var(--td-brand-color-rgb, 0, 82, 217), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--td-brand-color-rgb, 0, 82, 217), 0);
+  }
+}
+
+.@{prefix}-color-picker__eyedropper--picked {
+  animation: t-color-picker-eyedropper-pulse 0.6s ease-out;
+}
+
+// ============================================
+// EyeDropper tooltip / unsupported message
+// ============================================
+
+.@{prefix}-color-picker__eyedropper-tooltip {
+  max-width: 200px;
+  font: @font-body-small;
+  text-align: center;
+  white-space: normal;
+}
+
+// ============================================
+// Head layout adjustment for eye dropper
+// ============================================
+
+// When the eye dropper button is present in the header, ensure proper layout
+.@{prefix}-color-picker__head--with-eyedropper {
+  .@{prefix}-color-picker__eyedropper {
+    order: 1;
+  }
+
+  .@{prefix}-color-picker__close {
+    order: 2;
+    margin-left: 0;
+  }
+
+  // Title takes remaining space
+  &::before {
+    content: '';
+    flex: 1;
+  }
+}

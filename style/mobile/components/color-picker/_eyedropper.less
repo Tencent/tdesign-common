@@ -1,0 +1,103 @@
+// ============================================
+// EyeDropper (吸色) Button — Mobile
+//
+// Add this section to _index.less after the .@{color-picker} rule block.
+//
+// The mobile eye dropper button is positioned in the format bar area
+// alongside the color format display, making it easily accessible
+// with one-handed use (thumb-reachable zone at the bottom).
+// ============================================
+
+// EyeDropper activation button — placed in format bar
+.@{color-picker}__eyedropper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: @color-picker-eyedropper-mobile-size;
+  height: @color-picker-eyedropper-mobile-size;
+  border: 1px solid @component-border;
+  border-radius: @radius-default;
+  background: @bg-color-container;
+  color: @color-picker-eyedropper-icon-color;
+  cursor: pointer;
+  transition: all @anim-duration-base @anim-time-fn-easing;
+  flex-shrink: 0;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+
+  // EyeDropper icon
+  svg {
+    width: @color-picker-eyedropper-mobile-icon-size;
+    height: @color-picker-eyedropper-mobile-icon-size;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
+
+  // Tap feedback (mobile primary interaction)
+  &:active:not(.@{prefix}-is-disabled) {
+    background: @bg-color-container-active;
+    transform: scale(0.9);
+  }
+
+  // Disabled (EyeDropper not supported)
+  &.@{prefix}-is-disabled {
+    color: @text-color-disabled;
+    cursor: not-allowed;
+    border-color: transparent;
+    background: @bg-color-component-disabled;
+
+    // Strike-through indicating unavailable
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 20%;
+      width: 60%;
+      height: 1px;
+      background: @text-color-disabled;
+      opacity: 0.6;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// ============================================
+// Mobile — format bar with eye dropper
+// ============================================
+
+.@{color-picker}__format--with-eyedropper {
+  display: flex;
+  align-items: center;
+  gap: @spacer-1;
+
+  .@{color-picker}__format-item--first {
+    margin-right: 0;
+  }
+
+  .@{color-picker}__eyedropper {
+    margin-left: auto;
+  }
+}
+
+// Pulse feedback when color is picked
+@keyframes t-color-picker-eyedropper-mobile-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 82, 217, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 82, 217, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 82, 217, 0);
+  }
+}
+
+.@{color-picker}__eyedropper--picked {
+  animation: t-color-picker-eyedropper-mobile-pulse 0.5s ease-out;
+}
