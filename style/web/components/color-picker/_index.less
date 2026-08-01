@@ -281,8 +281,12 @@
       font: @color-picker-font;
     }
     .@{prefix}-input-number {
-      width: 100%;
       padding: 0;
+      &.@{prefix}-size-s,
+      &.@{prefix}-size-m,
+      &.@{prefix}-size-l {
+        width: 100%;
+      }
     }
   }
 
