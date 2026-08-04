@@ -192,6 +192,7 @@ export default {
     clearConfirmText: '確定清空最近使用的顔色嗎？',
     singleColor: '單色',
     gradientColor: '漸變',
+    eyeDropper: '吸色',
   },
   guide: {
     finishButtonProps: {

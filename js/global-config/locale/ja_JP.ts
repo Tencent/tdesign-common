@@ -191,6 +191,7 @@ export default {
     clearConfirmText: '最近使用した色をクリアにするのは確実ですか？',
     singleColor: '単色',
     gradientColor: 'グラデ',
+    eyeDropper: 'スポイト',
   },
   guide: {
     finishButtonProps: {

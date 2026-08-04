@@ -191,6 +191,7 @@ export default {
     clearConfirmText: '최근에 사용한 색상을 지우시겠습니까?',
     singleColor: '단색',
     gradientColor: '그라데이션',
+    eyeDropper: '스포이트',
   },
   guide: {
     finishButtonProps: {

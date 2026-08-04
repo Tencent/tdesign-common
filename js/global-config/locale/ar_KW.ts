@@ -208,6 +208,7 @@ export default {
     clearConfirmText: 'هل تريد مسح الألوان المستخدمة مؤخرًا؟',
     singleColor: 'موحد',
     gradientColor: 'متدرج',
+    eyeDropper: 'قطارة',
   },
   image: {
     errorText: 'غير قادر على التحميل',

@@ -204,6 +204,7 @@ export default {
     clearConfirmText: 'Вы уверены, что хотите очистить недавно использованные цвета?',
     singleColor: 'Сплошной',
     gradientColor: 'Градиент',
+    eyeDropper: 'Пипетка',
   },
   guide: {
     finishButtonProps: {

@@ -192,6 +192,7 @@ export default {
     clearConfirmText: 'Clear recently used colors?',
     singleColor: 'Single',
     gradientColor: 'Gradient',
+    eyeDropper: 'Eyedropper',
   },
   guide: {
     finishButtonProps: {

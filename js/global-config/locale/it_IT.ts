@@ -191,6 +191,7 @@ export default {
     clearConfirmText: 'Sei sicuro di voler cancellare i colori usati di recente?',
     singleColor: 'Singolo',
     gradientColor: 'Gradiente',
+    eyeDropper: 'Contagocce',
   },
   guide: {
     finishButtonProps: {
