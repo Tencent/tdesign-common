@@ -76,6 +76,11 @@ export default {
   },
   table: {
     empty: 'データがありません',
+    confirmText: '確認事項',
+    resetText: 'リセット',
+    searchResultText: '検索“{result}”，探す {count} 記事結果',
+    clearFilterResultButtonText: 'クリアフィルター',
+    pullUpLoadingText: '読み込み中',
   },
   list: {
     loading: '読み込み中…',
@@ -124,6 +129,26 @@ export default {
       share: '共有',
       quote: '引用',
     },
+  },
+  chatRecord: {
+    holdToTalk: '押しながら話す',
+    requestAuth: 'マイクの権限を許可してください',
+    releaseToCancel: '離してキャンセル',
+    releaseToSend: '離して送信、上にスワイプでキャンセル',
+    cancelText: 'キャンセル',
+    sendText: '送信',
+    busyTip: '認識中です。しばらくお待ちください…',
+    recognizeFailTip: '録音の認識に失敗しました。もう一度お試しください',
+    missingPluginTip: '音声認識プラグイン WechatSI がありません',
+    authSettingFail: '録音権限の設定の取得に失敗しました',
+    openSettingFail: '設定を開けませんでした',
+    systemMicTitle: 'マイクを使用できません',
+    systemMicContent:
+      '携帯電話のシステムで「WeChat」のマイク権限がオフになっていることが検出されました。\n\n' +
+      'システム設定で有効にしてください：\n' +
+      '- iOS：設定 > WeChat > マイク\n' +
+      '- Android：設定 > アプリ管理 > WeChat > 権限 > マイク\n\n' +
+      '有効にした後、ミニプログラムに戻って再度お試しください。',
   },
   chatSender: {
     placeholder: 'メッセージを入力してください...',
