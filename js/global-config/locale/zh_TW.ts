@@ -261,6 +261,14 @@ export default {
     uploadAttachmentText: '上傳附件',
     shareTipText: '分享',
   },
+  captcha: {
+    titleText: '安全驗證',
+    slideTipText: '拖動滑塊完成拼圖',
+    successText: '驗證通過',
+    failText: '驗證失敗，請重試',
+    refreshTipText: '重新整理',
+    closeTipText: '關閉',
+  },
   qrcode: {
     expiredText: '二維碼過期',
     refreshText: '點擊刷新',

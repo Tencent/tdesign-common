@@ -109,6 +109,14 @@ export default {
     collapseText: '접기',
     copiedText: '복사 성공',
   },
+  captcha: {
+    titleText: '보안 인증',
+    slideTipText: '슬라이드하여 퍼즐을 완성하세요',
+    successText: '인증 완료',
+    failText: '인증에 실패했습니다. 다시 시도하세요',
+    refreshTipText: '새로고침',
+    closeTipText: '닫기',
+  },
   qrcode: {
     expiredText: '만료됨',
     refreshText: '새로 고치다',

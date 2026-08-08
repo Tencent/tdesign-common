@@ -135,6 +135,14 @@ export default {
     collapseText: 'طي',
     copiedText: 'النسخ اكتمل',
   },
+  captcha: {
+    titleText: 'Security Verification',
+    slideTipText: 'Slide to complete the puzzle',
+    successText: 'Verified',
+    failText: 'Verification failed, try again',
+    refreshTipText: 'Refresh',
+    closeTipText: 'Close',
+  },
   qrcode: {
     expiredText: 'منتهي الصلاحية',
     refreshText: 'ينعش',

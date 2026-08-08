@@ -1,0 +1,20 @@
+.captcha-status(@color, @background) {
+  .@{prefix}-captcha__track {
+    background-color: @background;
+    box-shadow: inset 0 0 0 1px @color;
+  }
+
+  .@{prefix}-captcha__progress,
+  .@{prefix}-captcha__handle {
+    background-color: @color;
+  }
+
+  .@{prefix}-captcha__handle {
+    color: @text-color-anti;
+    border-color: @color;
+  }
+
+  .@{prefix}-captcha__tip {
+    color: @color;
+  }
+}

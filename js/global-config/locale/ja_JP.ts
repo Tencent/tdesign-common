@@ -260,6 +260,14 @@ export default {
     uploadAttachmentText: '添付ファイルをアップロード',
     shareTipText: '共有',
   },
+  captcha: {
+    titleText: 'セキュリティ認証',
+    slideTipText: 'スライドしてパズルを完成させる',
+    successText: '認証成功',
+    failText: '認証に失敗しました。もう一度お試しください',
+    refreshTipText: '更新',
+    closeTipText: '閉じる',
+  },
   qrcode: {
     expiredText: '期限切れ',
     refreshText: 'リフレッシュ',
