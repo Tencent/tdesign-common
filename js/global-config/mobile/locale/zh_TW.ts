@@ -76,6 +76,11 @@ export default {
   },
   table: {
     empty: '暫無數據',
+    confirmText: '確認',
+    resetText: '重置',
+    searchResultText: '搜尋"{result}"，找到{count}項結果',
+    clearFilterResultButtonText: '清空篩選',
+    loadingText: '加載中...',
   },
   list: {
     loading: '加載中...',
@@ -102,7 +107,7 @@ export default {
   typography: {
     expandText: '展開',
     collapseText: '收起',
-    copiedText: '復製成功',
+    copiedText: '複製成功',
   },
   qrcode: {
     expiredText: '二維碼過期',
@@ -124,6 +129,26 @@ export default {
       share: '分享',
       quote: '引用',
     },
+  },
+  chatRecord: {
+    holdToTalk: '按住說話',
+    requestAuth: '請授權麥克風權限',
+    releaseToCancel: '鬆開取消',
+    releaseToSend: '鬆開發送，上滑取消',
+    cancelText: '取消',
+    sendText: '發送',
+    busyTip: '識別中，請稍候…',
+    recognizeFailTip: '錄音識別失敗，請重試',
+    missingPluginTip: '缺少語音識別外掛 WechatSI',
+    authSettingFail: '獲取錄音權限設置失敗',
+    openSettingFail: '打開設置失敗',
+    systemMicTitle: '無法使用麥克風',
+    systemMicContent:
+      '檢測到手機系統已關閉「微信」的麥克風權限。\n\n' +
+      '請到系統設置中開啟：\n' +
+      '- iOS：設置 > 微信 > 麥克風\n' +
+      '- Android：設置 > 應用管理 > 微信 > 權限 > 麥克風\n\n' +
+      '開啟後返回小程序再試。',
   },
   chatSender: {
     placeholder: '請輸入消息...',

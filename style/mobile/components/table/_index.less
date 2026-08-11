@@ -10,6 +10,8 @@
 
 @import './mixins/_reset.less';
 
+@import './_pagination.less';
+
 @border: 1px solid @table-border-color;
 
 @table-fixed-column-z-index: 30;
@@ -60,8 +62,20 @@
   position: relative;
 
   /** loading need to be top of fixed columns */
+
   .@{prefix}-loading--full {
     z-index: @table-loading-z-index;
+  }
+
+  .@{prefix}-table-loading--bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 46px;
   }
 
   .t-table-vertical-align(top);
@@ -575,7 +589,7 @@
   // 排序图标临时效果，此处状态修改请慎重，需要背景色明确提醒用户点击区域（不建议将整个表头作为点击区域，还有过滤等其他图标）
   .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
-  &:hover {
+  &:active {
     color: @table-icon-active-color;
     border-radius: @border-radius-circle;
     transition: @anim-duration-base linear;
@@ -585,7 +599,7 @@
 .@{prefix}-table__filter-icon {
   .@{prefix}-is-focus,
   &.@{prefix}-is-focus,
-  &:hover {
+  &:active {
     color: @table-icon-active-color;
     transition: @anim-duration-base linear;
   }
@@ -600,6 +614,7 @@
     .@{prefix}-table__filter-pop-content-inner {
       padding: @comp-paddingTB-l @comp-paddingLR-l;
     }
+
     .@{prefix}-radio-group {
       display: block;
       height: auto;
@@ -608,6 +623,7 @@
     .@{prefix}-checkbox-group {
       display: block;
     }
+
     .@{prefix}-checkbox,
     .@{prefix}-radio {
       display: block;
@@ -651,9 +667,11 @@
   .@{prefix}-table__sort-icon {
     position: relative;
   }
+
   .@{prefix}-table-sort-asc {
     top: @table-double-sort-icon-space;
   }
+
   .@{prefix}-table-sort-desc {
     bottom: @table-double-sort-icon-space;
   }
@@ -673,6 +691,7 @@
   .@{prefix}-table__filter-icon-wrap {
     justify-content: flex-end;
   }
+
   // 是否显示表格边框 和 对齐方式都决定着 排序图标 和 筛选图标的排列位置
   .@{prefix}-table__cell--sortable.@{prefix}-table__cell--filterable {
     .@{prefix}-table__filter-icon-wrap {
@@ -739,6 +758,7 @@
   justify-content: flex-end;
   padding: @comp-paddingTB-l @comp-paddingLR-l;
   border-top: @border;
+
   > .@{prefix}-button + .@{prefix}-button {
     margin-left: @comp-margin-s;
   }
@@ -754,6 +774,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   > .@{prefix}-button {
     margin-left: @comp-margin-s;
   }
@@ -826,6 +847,7 @@
     }
   }
 }
+
 .@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
   > tr > th {
     background-color: @bg-color-secondarycontainer;
@@ -871,6 +893,7 @@
 
 .@{prefix}-table--column-fixed {
   .t-table-cell-fixed-before-after();
+
   .@{prefix}-table__cell--fixed-left,
   .@{prefix}-table__cell--fixed-right {
     position: sticky;
@@ -879,6 +902,7 @@
   .@{prefix}-table__cell--fixed-left {
     z-index: @table-fixed-column-z-index;
   }
+
   // 层级加 1 ，是为了多级表头中，固定左侧列和右侧列同时出现，且交叉显示的情况
   .@{prefix}-table__cell--fixed-right {
     z-index: @table-fixed-column-z-index + 1;
@@ -1088,6 +1112,7 @@
   }
 
   /** 表格左边有冻结列滚动时，去掉hover表头时多出的一个像素，避免出现表头的冻结列跟表内容的冻结列没有对齐的问题 */
+
   &.@{prefix}-table__content--scrollable-to-left.@{prefix}-table__content--scrollable-to-right,
   &.@{prefix}-table__content--scrollable-to-left {
     thead.@{prefix}-table__header:hover {
@@ -1122,6 +1147,33 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      box-sizing: border-box;
+    }
+
+    .@{prefix}-radio__icon--left,
+    .@{prefix}-radio__icon-circle,
+    .@{prefix}-checkbox__icon--left {
+      font-size: @table-icon-size;
+      width: @table-icon-size;
+      height: @table-icon-size;
+      flex: none;
+    }
+
+    .@{prefix}-checkbox__icon--left {
+      margin-right: 0;
+    }
+
+    .@{prefix}-checkbox__content {
+      display: none;
+    }
+
+    .@{prefix}-checkbox__icon {
+      position: static;
+    }
+
+    .@{prefix}-checkbox__icon-rectangle {
+      width: calc(@table-icon-size * 2);
+      height: calc(@table-icon-size * 2);
     }
   }
 }
