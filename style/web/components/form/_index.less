@@ -14,10 +14,9 @@
   font: @form-font;
 
   &:not(.@{prefix}-form-inline) {
-    > .@{prefix}-form__item {
-      &:last-of-type {
-        margin: 0;
-      }
+    > .@{prefix}-form__item:last-of-type,
+    .@{prefix}-form__item--last {
+      margin: 0;
     }
   }
 
