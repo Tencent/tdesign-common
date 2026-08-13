@@ -315,7 +315,9 @@
         &:not(:last-child)::before {
           content: '';
           display: block;
-          height: 100%;
+          bottom: calc(
+            @steps-item-icon-number-line-top - @steps-circle-height - @steps-item-margin-bottom-vertical
+          );
           border-left: 0;
           border-top: 0;
           border-right-width: @steps-item-icon-number-line-width;
@@ -337,7 +339,9 @@
         &:not(:last-child)::before {
           content: '';
           display: block;
-          height: 100%;
+          bottom: calc(
+            @steps-item-icon-number-line-top - @steps-circle-height - @steps-item-margin-bottom-vertical
+          );
           border-left: 0;
           border-bottom: 0;
           border-right-width: @steps-item-icon-number-line-width;
@@ -464,7 +468,7 @@
         &:not(:last-child)::before {
           content: '';
           display: block;
-          height: 100%;
+          bottom: @steps-dot-connector-position-bottom-vertical;
           border-bottom: 0;
           border-left: 0;
           border-right-width: @steps-item-icon-number-line-height;
@@ -479,6 +483,7 @@
             color: @steps-line-dot-bg-color-vertical-finish;
             border-right-color: @steps-line-dot-bg-color-vertical-finish;
             border-right-width: @steps-line-width;
+            left: @steps-dot-connector-position-left-vertical-active;
           }
         }
       }
@@ -488,13 +493,13 @@
         &:not(:last-child)::before {
           content: '';
           display: block;
-          height: 100%;
+          bottom: @steps-dot-connector-position-bottom-vertical;
           border-bottom: 0;
           border-left: 0;
           border-right-width: @steps-item-icon-number-line-height;
           border-right-color: @steps-line-dot-bg-color-vertical-default;
           position: absolute;
-          left: @steps-dot-connector-position-left-vertical-reverse;
+          left: @steps-dot-connector-position-left-vertical;
           top: @steps-dot-connector-position-top-vertical;
         }
 
@@ -508,6 +513,7 @@
             border-right-width: @steps-line-width;
             border-right-color: @steps-line-dot-bg-color-vertical-process;
             color: @steps-line-dot-bg-color-vertical-process;
+            left: @steps-dot-connector-position-left-vertical-active;
           }
         }
       }
