@@ -25,27 +25,29 @@
 @steps-item-content-margin-left-vertical: 0px;
 @steps-item-padding-bottom-vertical: @comp-margin-xxl;
 @steps-item-margin-bottom-vertical: 5px;
-@steps-item-icon-number-line-height: 1px;
-@steps-item-icon-number-line-width: 1px;
+@steps-item-icon-number-line-height: 2px;
+@steps-item-icon-number-line-width: 2px;
 @steps-item-icon-number-line-top: 35px;
+@steps-item-connector-gap-vertical: @steps-item-icon-number-line-top - @steps-circle-height;
 @steps-item-connector-line-width: calc(100% - 16px);
 @steps-title-line-height: 24px;
 @steps-description-line-height: 22px;
 @steps-dot-item-icon-height: 8px;
 @steps-dot-item-icon-width: 8px;
-@steps-item-icon-number-line-left: 11px;
+@steps-item-icon-number-line-left: calc((@steps-circle-width - @steps-item-icon-number-line-width) / 2);
 @steps-dot-anchor-position-top: 8px;
 @steps-dot-content-width: 140px;
-@steps-dot-connector-position-top-horizontal: 2.5px;
+@steps-dot-connector-position-top-horizontal: calc((@steps-dot-item-icon-height - @steps-item-icon-number-line-height) / 2);
 @steps-dot-connector-position-left-horizontal: calc(@steps-dot-content-width / 2 + @spacer);
-@steps-dot-connector-position-top-vertical: 17px;
-@steps-dot-connector-position-left-vertical: 3.5px;
-@steps-dot-connector-position-left-vertical-reverse: 3.5px;
+@steps-dot-connector-gap-vertical: @spacer - @steps-dot-item-icon-width * 0.5;
+@steps-dot-connector-position-top-vertical: @steps-dot-anchor-position-top + @steps-dot-item-icon-height + @steps-dot-connector-gap-vertical;
+@steps-dot-connector-position-bottom-vertical: @steps-dot-connector-gap-vertical - @steps-dot-anchor-position-top;
 
 // 描边宽度
 @step-stroke-width: 1px;
 @steps-line-width: 2px;
 @steps-line-height: 2px;
+@steps-dot-connector-position-left-vertical: calc((@steps-dot-item-icon-width - @steps-item-icon-number-line-width) / 2);
 //字体字重
 @steps-title-font-weight: normal; //add
 
