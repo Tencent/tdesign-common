@@ -26,7 +26,7 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["js"],
+  "include": ["js", "test/types"],
   "exclude": ["node_modules"],
   "types": ["vitest/global"]
 }

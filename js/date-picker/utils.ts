@@ -183,10 +183,10 @@ export function addMonth(date: Date, num: number): Date {
 
 export type DateValue = string | Date | number;
 export interface DisableDateObj {
-  from?: string;
-  to?: string;
-  before?: string;
-  after?: string;
+  from?: DateValue;
+  to?: DateValue;
+  before?: DateValue;
+  after?: DateValue;
 }
 export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
 
@@ -502,7 +502,7 @@ export function isEnabledDate({
 
   // 禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。
   if (Array.isArray(disableDate)) {
-    const formattedDisabledDate = disableDate.map((item: string) => parseToDayjs(item, format));
+    const formattedDisabledDate = disableDate.map((item: DateValue) => parseToDayjs(item, format));
     // eslint-disable-next-line
     const isIncludes = formattedDisabledDate.some((item) => item.isSame(dayjs(value)));
     return !isIncludes;
