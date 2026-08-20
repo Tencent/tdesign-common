@@ -91,16 +91,7 @@ export function handleSuccess(params: handleSuccessParams) {
   });
   const res = response;
   files[0].url = res.url || files[0].url;
-  return {
-    response: res,
-    e: event,
-    event,
-    file: files[0],
-    fileList: files,
-    currentFiles: files,
-    files,
-    XMLHttpRequest,
-  };
+  return { response: res, event, files, XMLHttpRequest };
 }
 
 export type UploadRequestReturn = {
@@ -199,8 +190,6 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
         const result = {
           response,
           file: resultFiles[0],
-          fileList: resultFiles,
-          currentFiles: resultFiles,
           files: resultFiles,
         };
         if (res.status === 'success') {

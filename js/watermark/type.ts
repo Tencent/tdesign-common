@@ -11,9 +11,9 @@ export interface WatermarkText {
   fontSize?: number;
   /**
    * 水印文本文字样式
-   * @default ''
+   * @default undefined
    */
-  fontFamily?: string;
+  fontFamily?: string | undefined;
   /**
    * 水印文本文字粗细
    * @default normal

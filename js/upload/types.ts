@@ -48,22 +48,20 @@ export interface UploadFile {
   url?: string;
 }
 
-export interface RequestMethodResponse<T extends UploadFile = UploadFile> {
+export interface RequestMethodResponse {
   status: 'success' | 'fail';
   error?: string;
   /**
    * response.XMLHttpRequest is going to be deprecated
    */
-  response: { url?: string; files?: T[]; [key: string]: any };
+  response: { url?: string; [key: string]: any };
 }
 
-export interface ProgressContext<T extends UploadFile = UploadFile> {
+export interface ProgressContext {
   e?: ProgressEvent;
-  file?: T;
-  currentFiles?: T[];
+  file?: UploadFile;
   percent: number;
   type: UploadProgressType;
-  XMLHttpRequest?: XMLHttpRequest;
 }
 
 export interface HTMLInputEvent extends Event {
@@ -87,22 +85,12 @@ export interface ErrorContext {
   XMLHttpRequest?: XMLHttpRequest;
 }
 
-export interface SuccessContext<T extends UploadFile = UploadFile> {
-  /** 上传进度事件。 */
-  e?: ProgressEvent;
-  /** @deprecated 请使用 `e`。 */
+export interface SuccessContext {
   event?: ProgressEvent;
-  file?: T;
-  /** 当前文件列表。 */
-  currentFiles?: T[];
-  /** 受控文件列表。 */
-  fileList?: T[];
-  /** @deprecated 请使用 `currentFiles`。 */
-  files?: T[];
-  /** 多请求上传时的逐项结果。 */
-  results?: SuccessContext<T>[];
+  file?: UploadFile;
+  files?: UploadFile[];
   XMLHttpRequest?: XMLHttpRequest;
-  response?: RequestMethodResponse<T>['response'];
+  response?: RequestMethodResponse['response'];
 }
 
 export interface UploadRemoveOptions {
@@ -255,8 +243,7 @@ export interface UploadTriggerUploadText {
   uploading?: string;
 }
 
-export interface UploadRemoveContext<T extends UploadFile = UploadFile, E = MouseEvent> {
+export interface UploadRemoveContext {
   index?: number;
-  file?: T;
-  e?: E;
+  file?: UploadFile;
 }
