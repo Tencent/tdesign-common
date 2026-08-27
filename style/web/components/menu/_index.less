@@ -12,16 +12,6 @@
 
 @import '../../mixins/_scrollbar.less';
 
-.generate-submenu-item-padding(@level: 0) when (@level < 4) {
-  .@{prefix}-menu__item {
-    padding-left: @menu-submenu-item-padding-left + @menu-submenu-item-padding-increment * @level;
-  }
-
-  .@{prefix}-menu__sub {
-    .generate-submenu-item-padding(@level + 1);
-  }
-}
-
 a.@{prefix}-menu__item {
   text-decoration: none;
   color: unset;
@@ -340,7 +330,6 @@ a.@{prefix}-menu__item {
   .@{prefix}-menu__sub {
     padding: 0;
     overflow: hidden;
-    .generate-submenu-item-padding();
   }
 
   .@{prefix}-slide-down-enter-active {
@@ -386,6 +375,10 @@ a.@{prefix}-menu__item {
     &:hover:not(.@{prefix}-is-active):not(.@{prefix}-is-disabled) {
       background: @menu-light-active-bg;
     }
+  }
+
+  .@{prefix}-menu__sub {
+    .generate-submenu-item-padding();
   }
 
   &.@{prefix}-menu--dark {
