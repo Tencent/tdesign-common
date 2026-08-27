@@ -332,7 +332,25 @@ a.@{prefix}-menu__item {
     overflow: hidden;
 
     .@{prefix}-menu__item {
-      padding-left: var(--padding-left, 32px);
+      padding-left: @menu-submenu-item-padding-left;
+    }
+
+    .@{prefix}-menu__sub {
+      .@{prefix}-menu__item {
+        padding-left: @menu-submenu-item-padding-left + @menu-submenu-item-padding-increment;
+      }
+
+      .@{prefix}-menu__sub {
+        .@{prefix}-menu__item {
+          padding-left: @menu-submenu-item-padding-left + @menu-submenu-item-padding-increment * 2;
+        }
+
+        .@{prefix}-menu__sub {
+          .@{prefix}-menu__item {
+            padding-left: @menu-submenu-item-padding-left + @menu-submenu-item-padding-increment * 3;
+          }
+        }
+      }
     }
   }
 
@@ -350,7 +368,8 @@ a.@{prefix}-menu__item {
     border-bottom: 0;
     text-align: left;
     border-radius: @border-radius-default;
-    transition: background-color @anim-duration-slow @anim-time-fn-easing,
+    transition:
+      background-color @anim-duration-slow @anim-time-fn-easing,
       padding @anim-duration-slow @anim-time-fn-easing;
     box-sizing: border-box;
 
