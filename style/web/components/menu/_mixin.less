@@ -1,0 +1,11 @@
+@import './_var.less';
+
+.generate-submenu-item-padding(@level: 0) when (@level < 4) {
+  .@{prefix}-menu__item {
+    padding-left: @menu-submenu-item-padding-left + @menu-submenu-item-padding-increment * @level;
+  }
+
+  .@{prefix}-menu__sub {
+    .generate-submenu-item-padding(@level + 1);
+  }
+}
