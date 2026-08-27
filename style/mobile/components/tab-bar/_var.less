@@ -3,3 +3,35 @@
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
+
+// ─── Liquid Glass (液态玻璃) — 对标 iOS 26 ──────────────
+// 纯 CSS 方案：backdrop-filter + pseudo-elements，无 SVG 滤镜依赖
+// 兼容所有现代浏览器 (Chrome/Safari/Firefox/Edge)
+
+// 液态玻璃背景色（亮色模式）
+@tab-bar-liquid-glass-bg: var(--td-tab-bar-liquid-glass-bg, rgba(255, 255, 255, 0.15));
+// 液态玻璃背景色（暗色模式）
+@tab-bar-liquid-glass-dark-bg: var(--td-tab-bar-liquid-glass-dark-bg, rgba(28, 28, 30, 0.72));
+// 背景模糊强度（iOS 26 风格需要较强模糊）
+@tab-bar-liquid-glass-blur: var(--td-tab-bar-liquid-glass-blur, 12px);
+// 色彩饱和度增强
+@tab-bar-liquid-glass-saturate: var(--td-tab-bar-liquid-glass-saturate, 180%);
+// 玻璃边缘边框颜色
+@tab-bar-liquid-glass-border: var(--td-tab-bar-liquid-glass-border, rgba(255, 255, 255, 0.25));
+// 玻璃边缘暗色边框
+@tab-bar-liquid-glass-dark-border: var(--td-tab-bar-liquid-glass-dark-border, rgba(255, 255, 255, 0.08));
+// 外部投影
+@tab-bar-liquid-glass-shadow: var(--td-tab-bar-liquid-glass-shadow, 0 8px 32px rgba(0, 0, 0, 0.12));
+// 顶部高光（模拟玻璃表面反光）
+@tab-bar-liquid-glass-highlight: var(--td-tab-bar-liquid-glass-highlight, inset 0 1px 1px rgba(255, 255, 255, 0.4));
+// 选中项放大比例
+@tab-bar-liquid-glass-active-scale: var(--td-tab-bar-liquid-glass-active-scale, 1.06);
+// 选中项投影
+@tab-bar-liquid-glass-active-shadow: var(--td-tab-bar-liquid-glass-active-shadow, 0 4px 16px rgba(0, 0, 0, 0.18));
+// 动效过渡时长
+@tab-bar-liquid-glass-transition: var(--td-tab-bar-liquid-glass-transition, 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+// 点击反馈光晕
+@tab-bar-liquid-glass-active-feedback: var(--td-tab-bar-liquid-glass-active-feedback, rgba(255, 255, 255, .12));
+// 色散（Chromatic Aberration）— 液态玻璃边缘彩虹折射，两项分别控制暖/冷端
+@tab-bar-liquid-glass-dispersion-warm: var(--td-tab-bar-liquid-glass-dispersion-warm, rgba(255, 100, 100, .04));
+@tab-bar-liquid-glass-dispersion-cool: var(--td-tab-bar-liquid-glass-dispersion-cool, rgba(90, 130, 255, .04));
