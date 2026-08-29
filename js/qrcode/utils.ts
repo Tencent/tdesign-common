@@ -96,7 +96,7 @@ export const getImageSettings = (
   cells: Modules,
   size: number,
   margin: number,
-  imageSettings?: ImageSettings
+  imageSettings?: ImageSettings,
 ): null | {
   x: number;
   y: number;

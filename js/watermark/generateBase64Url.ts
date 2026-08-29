@@ -28,7 +28,7 @@ export default function generateBase64Url(
     fontColor?: string;
     layout?: WatermarkLayout;
   },
-  onFinish: (url: string, backgroundSize?: { width: number }) => void
+  onFinish: (url: string, backgroundSize?: { width: number }) => void,
 ): string {
   const isHexagonal = layout === 'hexagonal';
 
@@ -99,7 +99,7 @@ export default function generateBase64Url(
     fontWeight: string,
     fontSize: number,
     fontFamily: string,
-    fillStyle: string
+    fillStyle: string,
   ) => {
     ctx.font = `normal normal ${fontWeight} ${fontSize * ratio}px/${markHeight}px ${fontFamily}`;
     ctx.fillStyle = fillStyle;
@@ -135,7 +135,7 @@ export default function generateBase64Url(
     offsetX: number = 0,
     offsetY: number = 0,
     rotateX: number = 0,
-    rotateY: number = 0
+    rotateY: number = 0,
   ) => {
     if (item.url) {
       const { url, isGrayscale = false } = item;

@@ -13,7 +13,7 @@ export function findParentValues(
   options: TreeOptionData[],
   targetValue: TargetValue,
   realValue: string,
-  realChildren: string
+  realChildren: string,
 ): TargetValue[] {
   let currentTargetValue = targetValue;
   if (currentTargetValue != null && typeof currentTargetValue === 'object') {

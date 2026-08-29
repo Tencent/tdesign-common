@@ -64,7 +64,7 @@ export const getColorFormatInputs = (format: ColorFormat = 'RGB', enableAlpha: b
   if (enableAlpha) {
     finalFormat =
       Object.keys(ALPHA_FORMAT_MAP).find(
-        (key) => key in ALPHA_FORMAT_MAP && ALPHA_FORMAT_MAP[key as AlphaConvertibleFormat] === format
+        (key) => key in ALPHA_FORMAT_MAP && ALPHA_FORMAT_MAP[key as AlphaConvertibleFormat] === format,
       ) || format;
   } else {
     finalFormat = format;

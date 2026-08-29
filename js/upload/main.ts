@@ -115,14 +115,14 @@ export function handleRequestMethodResponse(res: RequestMethodResponse) {
   if (!['success', 'fail'].includes(res.status)) {
     log.error(
       'Upload',
-      "`requestMethodResponse.status` must be `success` or `fail`, examples `{ status: 'success', response: { url: '' } }`"
+      "`requestMethodResponse.status` must be `success` or `fail`, examples `{ status: 'success', response: { url: '' } }`",
     );
     return false;
   }
   if (res.status === 'success' && (!res.response || (!res.response.url && !res.response.files))) {
     log.warn(
       'Upload',
-      '`requestMethodResponse.response.url` or `requestMethodResponse.response.files` is required if `status` is `success`'
+      '`requestMethodResponse.response.url` or `requestMethodResponse.response.files` is required if `status` is `success`',
     );
   }
   return true;
@@ -166,7 +166,7 @@ export function uploadOneRequest(params: HandleUploadParams): Promise<UploadRequ
           // 一个请求上传并返回多个文件
           resultFiles = response.files.map((file: UploadFile) => {
             const fileInfo = toUploadFiles.find(
-              (toFile) => (file.name && toFile.name === file.name) || (file.raw && toFile.raw === file.raw)
+              (toFile) => (file.name && toFile.name === file.name) || (file.raw && toFile.raw === file.raw),
             );
             return {
               ...fileInfo,
@@ -256,7 +256,7 @@ function updateUploadedFiles(uploadFiles: UploadFile[], resultFiles: UploadFile[
   for (let i = 0, len = resultFiles.length; i < len; i++) {
     const file = resultFiles[i];
     const index = uploadFiles.findIndex(
-      (item) => (item.raw && item.raw === file.raw) || (item.name && item.name === file.name)
+      (item) => (item.raw && item.raw === file.raw) || (item.name && item.name === file.name),
     );
     const tmpFile = index >= 0 ? { ...uploadFiles[index], ...file } : file;
     newFiles.push(tmpFile);
@@ -316,7 +316,7 @@ export function formatToUploadFile(
   files: File[],
   format: FileChangeParams['format'],
   status: UploadFile['status'] = undefined,
-  percent = 0
+  percent = 0,
 ) {
   return files.map((fileRaw: File) => {
     let file: UploadFile = fileRaw;
@@ -395,9 +395,9 @@ export function validateFile(params: FileChangeParams): Promise<FileChangeReturn
                 resolve({ file, validateResult: { type: 'CUSTOM_BEFORE_UPLOAD' } });
               }
               resolve({ file });
-            }
+            },
           );
-        })
+        }),
     );
     Promise.all([allFileValidatePromise].concat(promiseList)).then((results) => {
       const [allFilesResult, ...others] = results;
@@ -423,7 +423,7 @@ export function validateFile(params: FileChangeParams): Promise<FileChangeReturn
 
 export function getFilesAndErrors(
   fileValidateList: FileChangeReturn[],
-  getError: (p: { [key: string]: any }) => string
+  getError: (p: { [key: string]: any }) => string,
 ) {
   const sizeLimitErrors: FileChangeReturn[] = [];
   const beforeUploadErrorFiles: UploadFile[] = [];
