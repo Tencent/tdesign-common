@@ -158,7 +158,12 @@ export function getDateObj(date: Date) {
  * @returns {Date} 一个新的date
  */
 export function setDateTime(date: Date, hours: number, minutes: number, seconds: number, milliseconds?: number): Date {
-  return dayjs(date).hour(hours).minute(minutes).second(seconds).millisecond(milliseconds).toDate();
+  return dayjs(date)
+    .hour(hours)
+    .minute(minutes)
+    .second(seconds)
+    .millisecond(milliseconds || 0)
+    .toDate();
 }
 
 /**
