@@ -1,4 +1,6 @@
-import { isFunction, isNumber, get } from 'lodash-es';
+import isFunction from 'lodash-es/isFunction';
+import isNumber from 'lodash-es/isNumber';
+import get from 'lodash-es/get';
 import { BaseTableCol } from './types';
 
 export function filterDataByIds(

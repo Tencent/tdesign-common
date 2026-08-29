@@ -1,4 +1,4 @@
-import { isFunction } from 'lodash-es';
+import isFunction from 'lodash-es/isFunction';
 /* eslint-disable no-param-reassign */
 import log from '../log/log';
 import { UploadFile, XhrOptions } from './types';
