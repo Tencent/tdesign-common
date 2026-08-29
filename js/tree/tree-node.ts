@@ -869,9 +869,14 @@ export class TreeNode {
     if (!tree.nodeMap.get(value)) return false;
     // 节点不可选，视为未选中
     if (!this.isCheckable()) return false;
+
     const checkedMap = map || tree.checkedMap;
     // 严格模式，则已经可以判定选中状态
     if (checkStrictly) {
+      return !!checkedMap.get(value);
+    }
+    // 节点为禁用状态，则保留原有节点状态
+    if (this.isDisabledState()) {
       return !!checkedMap.get(value);
     }
     let checked = false;
@@ -887,11 +892,17 @@ export class TreeNode {
     }
     // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
     if (Array.isArray(children) && children.length > 0) {
-      // 子节点全部选中，则当前节点选中
-      checked = children.every((node) => {
-        const childIsChecked = node.isChecked(checkedMap);
-        return childIsChecked;
-      });
+      // 子节点全部选中(排除禁用节点)，则当前节点选中
+      const enabledChildren = children.filter((node) => !node.isDisabled());
+      if (enabledChildren.length > 0) {
+        checked = enabledChildren.every((node) => {
+          const childIsChecked = node.isChecked(checkedMap);
+          return childIsChecked;
+        });
+      } else {
+        // 如果所有子节点都被禁用，则视为未选中
+        checked = false;
+      }
     } else {
       // 从父节点状态推断子节点状态
       // 这里再调用 isChecked 会导致死循环
