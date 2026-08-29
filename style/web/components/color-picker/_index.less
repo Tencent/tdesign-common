@@ -553,6 +553,32 @@
       }
     }
   }
+
+  // 无文字输入框形态：仅展示颜色色块，隐藏色值文字，不影响其他交互
+  &--input-less {
+    .@{prefix}-input,
+    .@{prefix}-input--auto-width {
+      min-width: @color-picker-trigger-input-less-min-width;
+      padding: @color-picker-trigger-input-less-padding;
+    }
+
+    .@{prefix}-input.@{prefix}-size-s {
+      min-width: @color-picker-trigger-input-less-min-width-s;
+    }
+
+    .@{prefix}-input.@{prefix}-size-l {
+      min-width: @color-picker-trigger-input-less-min-width-l;
+    }
+
+    // 提高特异性以覆盖 input 组件的 `.t-input .t-input__prefix:not(:empty)` 规则
+    .@{prefix}-input .@{prefix}-input__prefix:not(:empty) {
+      margin-right: 0;
+    }
+
+    .@{prefix}-input__inner {
+      display: none;
+    }
+  }
 }
 
 .@{prefix}-color-picker__gradient-slider {
