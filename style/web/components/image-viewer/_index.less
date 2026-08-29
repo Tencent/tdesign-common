@@ -144,6 +144,11 @@
         transition: all @anim-duration-base @anim-time-fn-easing;
         transform: rotate(0deg);
         object-fit: contain;
+        cursor: grab;
+
+        &:active {
+          cursor: grabbing;
+        }
       }
     }
   }
@@ -283,6 +288,7 @@
     width: @image-viewer-header-box-width;
     height: @image-viewer-header-box-height;
     position: relative;
+    cursor: pointer;
     transition: @anim-duration-base;
     overflow: hidden;
     border-radius: @border-radius-default;
@@ -457,6 +463,11 @@
         transition: all @anim-duration-base ease;
         transform: rotate(0deg);
         object-fit: contain;
+        cursor: grab;
+
+        &:active {
+          cursor: grabbing;
+        }
       }
     }
   }
