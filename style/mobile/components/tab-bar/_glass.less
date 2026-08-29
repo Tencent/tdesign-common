@@ -1,0 +1,301 @@
+// ============================================
+// TDesign Mobile Tab-Bar
+// Liquid Glass floating capsule variant (iOS 26 style)
+//
+// Usage:
+//   <div class="t-tab-bar t-tab-bar--glass t-tab-bar--fixed">
+//     <div class="t-tab-bar-item t-is-active">…</div>
+//   </div>
+// ============================================
+
+// ============================================
+// 1. Glass capsule container
+// ============================================
+
+.@{tab-bar-cls}--glass {
+  position: fixed;
+  left: 50%;
+  bottom: max(@tab-bar-glass-inset-bottom, env(safe-area-inset-bottom, 0px) + 8px);
+  transform: translateX(-50%);
+  width: auto;
+  min-width: @tab-bar-glass-min-width;
+  max-width: calc(100% - @tab-bar-glass-inset-horizontal * 2);
+  height: @tab-bar-glass-height;
+  padding: @tab-bar-glass-padding;
+  border-radius: calc(@tab-bar-glass-height / 2);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: @tab-bar-glass-item-gap;
+  box-sizing: border-box;
+  z-index: 1000;
+  will-change: transform, opacity;
+
+  // Glass material
+  background: @tab-bar-glass-bg;
+  backdrop-filter:
+    blur(@tab-bar-glass-blur)
+    saturate(@tab-bar-glass-saturation)
+    brightness(@tab-bar-glass-brightness)
+    contrast(@tab-bar-glass-contrast);
+  -webkit-backdrop-filter:
+    blur(@tab-bar-glass-blur)
+    saturate(@tab-bar-glass-saturation)
+    brightness(@tab-bar-glass-brightness)
+    contrast(@tab-bar-glass-contrast);
+
+  // Edge
+  border: @tab-bar-glass-border-width solid @tab-bar-glass-border-color;
+
+  // Depth
+  box-shadow: @tab-bar-glass-shadow;
+
+  // Transitions
+  transition:
+    transform @tab-bar-glass-transition-duration @tab-bar-glass-transition-easing,
+    opacity @tab-bar-glass-transition-duration @tab-bar-glass-transition-easing,
+    bottom @tab-bar-glass-transition-duration @tab-bar-glass-transition-easing;
+
+  // Refraction highlight (glass curvature)
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: @tab-bar-glass-padding;
+    right: @tab-bar-glass-padding;
+    height: 50%;
+    background: @tab-bar-glass-refraction;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Bottom edge glow (light trapping)
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 15%,
+      rgba(255, 255, 255, 0.4) 85%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Touch deformation feedback
+  &:active {
+    transform: translateX(-50%) scale(0.97);
+    transition: transform 0.12s ease;
+  }
+
+  // --- Minimized state (scroll down) ---
+  &--minimized {
+    transform: translateX(-50%) scale(@tab-bar-glass-minimized-scale);
+    opacity: @tab-bar-glass-minimized-opacity;
+    bottom: max(@tab-bar-glass-minimized-bottom, env(safe-area-inset-bottom, 0px));
+
+    .@{tab-bar-cls}-item__text {
+      opacity: 0;
+      max-width: 0;
+      overflow: hidden;
+      transition: opacity 0.25s ease, max-width 0.25s ease;
+    }
+  }
+
+  // --- Hidden state (keyboard / modal) ---
+  &--hidden {
+    transform: translateX(-50%) translateY(calc(100% + 40px));
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease;
+  }
+
+  // --- backdrop-filter fallback ---
+  @supports not (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    background: @tab-bar-glass-fallback-bg;
+  }
+}
+
+// ============================================
+// 2. Dark mode — class-driven
+// ============================================
+
+.@{prefix}-theme-dark .@{tab-bar-cls}--glass,
+[data-theme="dark"] .@{tab-bar-cls}--glass {
+  background: @tab-bar-glass-bg-dark;
+  border-color: @tab-bar-glass-border-color-dark;
+  box-shadow: @tab-bar-glass-shadow-dark;
+
+  &::before {
+    background: @tab-bar-glass-refraction-dark;
+  }
+
+  &::after {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.08) 15%,
+      rgba(255, 255, 255, 0.08) 85%,
+      transparent 100%
+    );
+  }
+
+  @supports not (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    background: @tab-bar-glass-fallback-bg-dark;
+  }
+}
+
+// ============================================
+// 3. Dark mode — system preference (auto)
+// ============================================
+
+@media (prefers-color-scheme: dark) {
+  .@{tab-bar-cls}--glass:not(.@{tab-bar-cls}--force-light) {
+    background: @tab-bar-glass-bg-dark;
+    border-color: @tab-bar-glass-border-color-dark;
+    box-shadow: @tab-bar-glass-shadow-dark;
+
+    &::before {
+      background: @tab-bar-glass-refraction-dark;
+    }
+
+    &::after {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 15%,
+        rgba(255, 255, 255, 0.08) 85%,
+        transparent 100%
+      );
+    }
+
+    @supports not (
+      (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+    ) {
+      background: @tab-bar-glass-fallback-bg-dark;
+    }
+  }
+}
+
+// ============================================
+// 4. Glass tab items
+// ============================================
+
+.@{tab-bar-cls}--glass .@{tab-bar-cls}-item {
+  height: @tab-bar-glass-item-height;
+  flex: 0 0 auto;
+  min-width: @tab-bar-glass-item-height;
+  padding: @tab-bar-glass-item-padding;
+  border-radius: @tab-bar-glass-item-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  color: @tab-bar-color;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background @tab-bar-glass-active-transition,
+    color @tab-bar-glass-active-transition,
+    box-shadow @tab-bar-glass-active-transition;
+
+  // Remove hairline divider (glass items don't need borders)
+  &::before {
+    display: none;
+  }
+
+  // Hover (non-touch)
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  // --- Active: sliding pill indicator ---
+  &.@{prefix}-is-active {
+    background: @tab-bar-glass-active-bg;
+    box-shadow: @tab-bar-glass-active-shadow;
+
+    .@{tab-bar-cls}-item__text,
+    .@{tab-bar-cls}-item__icon {
+      color: @brand-color;
+    }
+  }
+}
+
+// ============================================
+// 5. Dark mode — tab items
+// ============================================
+
+.@{prefix}-theme-dark .@{tab-bar-cls}--glass .@{tab-bar-cls}-item,
+[data-theme="dark"] .@{tab-bar-cls}--glass .@{tab-bar-cls}-item {
+  &.@{prefix}-is-active {
+    background: @tab-bar-glass-active-bg-dark;
+    box-shadow: @tab-bar-glass-active-shadow-dark;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .@{tab-bar-cls}--glass:not(.@{tab-bar-cls}--force-light) .@{tab-bar-cls}-item {
+    &.@{prefix}-is-active {
+      background: @tab-bar-glass-active-bg-dark;
+      box-shadow: @tab-bar-glass-active-shadow-dark;
+    }
+  }
+}
+
+// ============================================
+// 6. Glass tab item content
+// ============================================
+
+.@{tab-bar-cls}--glass .@{tab-bar-cls}-item__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  .@{tab-bar-cls}-item__icon {
+    font-size: @tab-bar-glass-icon-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .@{tab-bar-cls}-item__text {
+    font-size: @tab-bar-glass-text-size;
+    line-height: 1.2;
+    white-space: nowrap;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  // Icon-only mode
+  &.@{tab-bar-cls}-item--icon-only {
+    .@{tab-bar-cls}-item__text {
+      display: none;
+    }
+  }
+
+  // Label-only mode
+  &.@{tab-bar-cls}-item--onlytext {
+    .@{tab-bar-cls}-item__text {
+      font-size: 16px;
+    }
+  }
+}
