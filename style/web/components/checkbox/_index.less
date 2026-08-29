@@ -19,6 +19,268 @@
   display: inline-flex;
   flex-wrap: wrap;
   gap: @checkbox-group-gap;
+
+  // ==================== 按钮风格（variant） ====================
+  // 与 RadioGroup 的按钮风格保持一致的修饰类命名：__outline / --filled / --primary-filled / --vertical
+  // 多选语义与单选不同：不使用 radio 那种单一滑块（bg-block）联动一个选中项，
+  // 而是每个 t-is-checked 的按钮独立着色，允许多个按钮同时高亮。
+
+  &.@{checkbox-cls}-group__outline,
+  &.@{checkbox-cls}-group--filled {
+    gap: 0;
+    row-gap: @comp-margin-xs;
+  }
+
+  &.@{checkbox-cls}-group__outline {
+    &.@{prefix}-size-s {
+      .@{checkbox-button--cls} {
+        height: @checkbox-outline-height-small;
+      }
+    }
+
+    &.@{prefix}-size-m {
+      .@{checkbox-button--cls} {
+        height: @checkbox-outline-height-medium;
+      }
+    }
+
+    &.@{prefix}-size-l {
+      .@{checkbox-button--cls} {
+        height: @checkbox-outline-height-large;
+      }
+    }
+
+    .@{checkbox-button--cls} {
+      // 描边"连成一条"效果专属：默认不画右边框，靠下一个按钮的左边框充当分隔线；
+      // 仅 __outline 需要这个技巧，不能放进公共基础块，否则会漏到 filled/primary-filled。
+      border-right: 0;
+
+      &:first-child {
+        border-radius: @checkbox-button-border-radius 0 0 @checkbox-button-border-radius;
+      }
+
+      &:last-child {
+        border-right: @checkbox-button-border;
+        border-right-color: @checkbox-button-border-color-default;
+        border-radius: 0 @checkbox-button-border-radius @checkbox-button-border-radius 0;
+      }
+
+      &:only-child {
+        border-radius: @checkbox-button-border-radius;
+      }
+
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-outline-checked;
+        border-color: @checkbox-button-border-color-checked;
+        border-right: @checkbox-button-border;
+        border-right-color: @checkbox-button-border-color-checked;
+        // 选中态右边框恢复后，与下一个按钮的左边框重合在同一条坐标线上，
+        // z-index 确保这条线优先按选中态颜色渲染，避免子像素取整导致边界颜色闪烁/不稳定。
+        z-index: 1;
+
+        +.@{checkbox-button--cls} {
+          border-left: 0;
+        }
+      }
+
+      &.@{prefix}-is-disabled {
+        &.@{prefix}-is-checked {
+          color: @brand-color-disabled;
+          border-color: @brand-color-disabled;
+          background-color: @checkbox-button-background-color-outline-disabled-checked;
+        }
+      }
+    }
+  }
+
+  &.@{checkbox-cls}-group--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: @comp-margin-xs;
+
+    &.@{checkbox-cls}-group--filled {
+      .@{checkbox-button--cls} {
+        width: 100%;
+      }
+    }
+
+    &.@{checkbox-cls}-group__outline {
+      row-gap: 0;
+
+      .@{checkbox-button--cls} {
+        width: 100%;
+        border-right: @checkbox-button-border;
+        border-right-color: @checkbox-button-border-color-default;
+        // -1px 硬编码对应 @checkbox-button-border（1px solid）的边框宽度，
+        // 用于让相邻按钮的边框重叠成一条线；若以后改了 @checkbox-button-border 的宽度，这里要同步改。
+        margin-top: -1px;
+
+        &:first-child {
+          margin-top: 0;
+          border-radius: @checkbox-button-border-radius @checkbox-button-border-radius 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 @checkbox-button-border-radius @checkbox-button-border-radius;
+        }
+
+        &.@{prefix}-is-checked {
+          border-color: @checkbox-button-border-color-checked;
+          border-right-color: @checkbox-button-border-color-checked;
+          // 注意：纵向堆叠时相邻按钮挨着的是上/下边框，不是左/右边框，
+          // 之前这里错误地照搬了横向 outline 的 border-left 兄弟选择器逻辑，
+          // 导致选中一个按钮会连带改写下一个按钮完全不相关的左边框颜色，已删除。
+        }
+      }
+    }
+  }
+
+  // 未选中 = 浅色描边，选中 = 深色填充（issue 原文的核心视觉逻辑）。
+  // 因此这里不再给 group 套一层灰底"轨道"容器，每个按钮自己承载描边/填充状态。
+  &.@{checkbox-cls}-group--filled {
+    .@{checkbox-button--cls} {
+      color: @checkbox-button-color-filled;
+      border: @checkbox-button-border;
+      border-color: @checkbox-button-border-color-default;
+      background-color: transparent;
+      border-radius: @checkbox-button-border-radius;
+
+      &:hover {
+        color: @checkbox-button-color-filled-hover;
+        border-color: @checkbox-button-border-color-checked;
+      }
+
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-default-filled-checked;
+        background-color: @checkbox-button-background-color-default-filled-checked;
+        border-color: transparent;
+        transition: background-color @anim-duration-base @anim-time-fn-ease-out;
+      }
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+        border-color: @checkbox-button-border-color-default;
+
+        &.@{prefix}-is-checked {
+          color: @checkbox-button-color-default-filled-disabled-checked;
+          background-color: @checkbox-button-background-color-default-filled-disabled-checked;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+
+  &.@{checkbox-cls}-group--primary-filled {
+    .@{checkbox-button--cls} {
+      &.@{prefix}-is-checked {
+        color: @checkbox-button-color-primary-filled-checked;
+        background-color: @checkbox-button-background-color-primary-filled-checked;
+        border-color: transparent;
+      }
+
+      &.@{prefix}-is-disabled {
+        &.@{prefix}-is-checked {
+          color: @checkbox-button-color-primary-filled-checked;
+          background-color: @checkbox-button-background-color-primary-filled-disabled-checked;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+
+  &.@{prefix}-size-s {
+    .@{checkbox-button--cls} {
+      height: @checkbox-button-height-small;
+      padding: @checkbox-button-padding-small;
+      font: @checkbox-button-font-small;
+    }
+  }
+
+  &.@{prefix}-size-m {
+    .@{checkbox-button--cls} {
+      height: @checkbox-button-height-medium;
+      padding: @checkbox-button-padding-medium;
+      font: @checkbox-button-font-medium;
+    }
+  }
+
+  &.@{prefix}-size-l {
+    .@{checkbox-button--cls} {
+      height: @checkbox-button-height-large;
+      padding: @checkbox-button-padding-large;
+      font: @checkbox-button-font-large;
+    }
+  }
+}
+
+// 按钮风格的单个选项。复用 Checkbox 的 DOM 结构（__former/__input/__label），
+// 仅切换 class 前缀，因此这里隐藏原本的方框图标（__input），只保留文本 + 背景/边框变化，
+// 视觉上与 RadioButton 保持一致（issue 描述："选中后背景颜色改变即选中的 item"）。
+.@{checkbox-button--cls} {
+  cursor: pointer;
+  position: relative;
+  border: @checkbox-button-border;
+  border-color: @checkbox-button-border-color-default;
+  display: inline-flex;
+  align-items: center;
+  transition: @checkbox-button-transition;
+  color: @checkbox-label-color;
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  // 圆角统一由各 variant 的修饰类自己控制：
+  // __outline 需要"连成一条"的首尾单侧圆角（见上方 __outline 区块）；
+  // --filled / --primary-filled 每个按钮都是独立圆角的色块（见上方 --filled 区块）。
+  // 这里不设默认圆角，避免与两种形态互相覆盖打架。
+
+  &__former {
+    .input-visually-hidden();
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    margin-left: 0;
+  }
+
+  &:hover {
+    color: @checkbox-button-color-outline-checked;
+  }
+
+  // 注意：这里只设通用的选中态描边色，"连成一条"相关的 border-right/border-left
+  // 兄弟选择器技巧属于 __outline 专属，已经挪到上面 __outline 区块里，不要再放回这里，
+  // 否则会以相同优先级覆盖 --filled/--primary-filled 的边框（之前踩过的坑）。
+  &.@{prefix}-is-checked {
+    border-color: @checkbox-button-border-color-checked;
+    transition: border-color @anim-duration-base @anim-time-fn-ease-out;
+  }
+
+  &.@{prefix}-is-indeterminate {
+    color: @checkbox-button-color-outline-checked;
+    border-color: @checkbox-button-border-color-checked;
+  }
+
+  &.@{prefix}-is-disabled {
+    cursor: not-allowed;
+    color: @checkbox-button-color-disabled;
+    background-color: @checkbox-button-background-color-disabled;
+
+    &:hover {
+      border-color: @checkbox-button-border-color-default;
+      color: @checkbox-button-color-disabled;
+    }
+
+    &.@{prefix}-is-checked {
+      color: @checkbox-button-color-disabled-checked;
+    }
+
+    &.@{prefix}-is-indeterminate {
+      color: @checkbox-button-color-disabled-checked;
+      border-color: @checkbox-button-border-color-default;
+    }
+  }
 }
 
 .@{checkbox-cls} {
