@@ -46,6 +46,12 @@ spline: data
 
 {{ customSize }}
 
+### 自定义二维码风格
+
+通过设置 pixelStyle 自定义二维码风格，提供 `square`、`mini-square`、`rounded`、`dot` 四种风格，并支持调整点的大小。
+
+{{ pixelStyle }}
+
 ### 下载二维码
 
 下载二维码的简单实现。
