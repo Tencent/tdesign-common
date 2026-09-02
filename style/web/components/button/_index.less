@@ -16,9 +16,9 @@
     @{attr}: @@theme-active;
   }
 
-  // ghost disabled 保留主题色（使用主题色 disabled 变体），背景保持透明
+  // ghost disabled 强制统一色
   &.@{prefix}-is-disabled when (@ghost =true) {
-    @{attr}: @@theme-disabled;
+    @{attr}: @btn-color-ghost-disabled;
     background-color: transparent;
   }
 
