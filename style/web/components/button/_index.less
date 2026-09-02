@@ -12,25 +12,28 @@
     @{attr}: @@theme-hover;
   }
 
-  &:active when (@ghost = true) {
+  &:active when (@ghost =true) {
     @{attr}: @@theme-active;
   }
 
-  &.@{prefix}-is-loading when (@ghost = true) {
-    @{attr}: @@theme-default;
-  }
-
-  &.@{prefix}-is-loading when (@ghost = false) {
+  // ghost disabled 保留主题色（使用主题色 disabled 变体），背景保持透明
+  &.@{prefix}-is-disabled when (@ghost =true) {
     @{attr}: @@theme-disabled;
-  }
-
-  // ghost disabled 强制统一色
-  &.@{prefix}-is-disabled when (@ghost = true) {
-    @{attr}: @btn-color-ghost-disabled;
     background-color: transparent;
   }
 
-  &.@{prefix}-is-disabled when (@ghost = false) {
+  &.@{prefix}-is-disabled when (@ghost =false) {
+    @{attr}: @@theme-disabled;
+  }
+
+  // loading 时 react 端组件会同时挂载 t-is-loading 与 t-is-disabled 两个类，
+  // 二者选择器权重相同，按声明顺序后者生效，故本段必须置于 is-disabled 之后，
+  // 否则幽灵按钮 loading 时主题色会被 disabled 色覆盖
+  &.@{prefix}-is-loading when (@ghost =true) {
+    @{attr}: @@theme-default;
+  }
+
+  &.@{prefix}-is-loading when (@ghost =false) {
     @{attr}: @@theme-disabled;
   }
 
@@ -64,11 +67,11 @@
     font-size: @btn-loading-size;
   }
 
-  svg + .@{prefix}-button__text:not(:empty) {
+  svg+.@{prefix}-button__text:not(:empty) {
     margin-left: @btn-icon-text-margin-left;
   }
 
-  .@{prefix}-loading + .@{prefix}-button__text:not(:empty) {
+  .@{prefix}-loading+.@{prefix}-button__text:not(:empty) {
     margin-left: @btn-icon-text-margin-left;
   }
 
@@ -275,6 +278,7 @@
         .button-attr-color('danger', border-color, true);
       }
     }
+
     &.@{prefix}-is-loading:not(&.@{prefix}-button--ghost) {
       color: @btn-color-text;
 
@@ -450,26 +454,18 @@
   --ripple-color: @btn-color-gray-bg-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(.@{prefix}-is-disabled):not(
-.@{prefix}-button--ghost
-) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-primary:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-primary-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-success:not(.@{prefix}-is-disabled):not(
-.@{prefix}-button--ghost
-) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-success:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-success-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-warning:not(.@{prefix}-is-disabled):not(
-.@{prefix}-button--ghost
-) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-warning:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-warning-active;
 }
 
-.@{prefix}-button--variant-base.@{prefix}-button--theme-danger:not(.@{prefix}-is-disabled):not(
-.@{prefix}-button--ghost
-) {
+.@{prefix}-button--variant-base.@{prefix}-button--theme-danger:not(.@{prefix}-is-disabled):not(.@{prefix}-button--ghost) {
   --ripple-color: @btn-color-danger-active;
 }
