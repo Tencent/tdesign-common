@@ -145,6 +145,11 @@
     3px 3px;
 }
 
+.@{prefix}-color-picker--bg-alpha {
+  background: @text-color-anti;
+  .transparentBgImage();
+}
+
 .@{prefix}-color-picker__slider-wrapper {
   border-radius: @color-picker-slider-wrapper-radius;
   padding: @color-picker-slider-wrapper-padding;
@@ -558,11 +563,6 @@
 .@{prefix}-color-picker__gradient-slider {
   padding: @color-picker-slider-wrapper-padding;
   border-radius: @color-picker-slider-wrapper-radius;
-
-  .@{prefix}-color-picker--bg-alpha {
-    background: @text-color-anti;
-    .transparentBgImage();
-  }
 }
 
 .@{prefix}-color-picker__panel.@{prefix}-is-disabled {
