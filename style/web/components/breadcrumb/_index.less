@@ -192,6 +192,12 @@
       align-items: center;
       transition: color @anim-duration-base linear;
 
+      // Icons keep their intrinsic size when the text truncates; without
+      // this, a long label would flex-shrink the icon into a sliver.
+      .t-icon {
+        flex-shrink: 0;
+      }
+
       &-text {
         .t-overflow;
       }
