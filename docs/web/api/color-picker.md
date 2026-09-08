@@ -12,6 +12,12 @@ spline: form
 
 {{ panel }}
 
+### 支持吸色的颜色选择器
+
+设置 `eyeDropper=true` 即可开启吸色功能，颜色条前会出现吸色按钮。默认使用浏览器原生 EyeDropper API 从屏幕任意位置取色；也可以配置 fallback 模式，在不支持原生 API 时通过页面截图和 canvas 读取像素实现页面内取色。fallback 模式受跨域图片、视频、iframe 和复杂渲染影响，能力边界与原生 API 不同。
+
+{{ eye-dropper }}
+
 ### 带触发元素的颜色选择器
 
 通过触发器触发显示选择器面板，透传全部属性到面板选择器组件。

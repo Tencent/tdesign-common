@@ -23,6 +23,17 @@
     font: @font-body-medium;
     width: 100%;
 
+    > tbody {
+      > tr {
+        > td {
+          vertical-align: top;
+          box-sizing: border-box;
+          overflow-wrap: break-word;
+          word-break: break-word;
+        }
+      }
+    }
+
     .generate-padding(l, @descriptions-borderless-padding-l);
     .generate-padding(m, @descriptions-borderless-padding-m);
     .generate-padding(s, @descriptions-borderless-padding-s);
@@ -57,9 +68,12 @@
       }
     }
 
-    :not(&--fixed):not(&--border) {
+    &:not(&--fixed):not(&--border) {
       @{root}__label {
-        padding-right: @comp-paddingLR-l;
+        width: 1px;
+        color: @descriptions-borderless-label-color;
+        padding-right: @descriptions-borderless-label-gap;
+        white-space: nowrap;
       }
     }
   }
