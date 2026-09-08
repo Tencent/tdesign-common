@@ -62,7 +62,7 @@ ChatEngine 是一个底层对话引擎（Headless Core），提供灵活的 Hook
 
 - **自定义操作栏**：如果组件库内置的 [`ChatActionbar`]不能满足需求，可以通过 `slot='actionbar'` 属性来渲染自定义组件。
 
-- **自定义输入区域**：如果需要自定义ChatSender输入区，可用插槽详见[ChatSender插槽]
+- **自定义输入区域**：如果需要自定义 ChatSender 输入区，可用插槽详见[ChatSender 插槽]
 
 {{ custom-content }}
 
@@ -155,7 +155,9 @@ const GlobalProgressBar: React.FC = () => {
 
   return (
     <div>
-      <div>进度：{completedCount}/{items.length}</div>
+      <div>
+        进度：{completedCount}/{items.length}
+      </div>
       {items.map((item: any, index: number) => (
         <div key={index}>
           {item.label} - {item.status}
@@ -195,3 +197,35 @@ AG-UI 协议支持通过 `ACTIVITY_*` 事件展示动态内容组件（如实时
 - **外部状态订阅**：演示如何在对话组件外部订阅和展示工具执行状态
 
 {{ agui-comprehensive }}
+
+## 生成式 UI
+
+ChatEngine 采用 Catalog（约束层）与 Registry（渲染层）的双层架构提供生成式 UI：
+
+- **Catalog**：通过 Zod Schema 描述 AI 可以使用的组件和 Action，`generateCatalogPrompt` 将其转换为系统提示词。
+- **Registry**：将 Schema 中的组件名称映射为实际 Vue 组件，支持 `createCustomRegistry` 扩展业务组件。
+- **流式更新**：通过 AG-UI `ACTIVITY_SNAPSHOT` 和 `ACTIVITY_DELTA` 传输完整 Schema 或 JSON Patch。
+- **安全执行**：只有预先注册的组件与 Action handler 可以被执行。
+
+### 自定义 Catalog 与 Registry
+
+示例展示如何定义组件约束、生成系统提示词、注册 Vue 业务组件，并通过
+`createJsonRenderActivityConfig` 渲染 AG-UI Activity。
+
+{{ agui-json-render-full-custom }}
+
+### 旁路 UI 渲染
+
+通过 `chatEngine.eventBus` 监听 `ChatEngineEventType.AGUI_ACTIVITY`，可以将生成式 UI 渲染到聊天列表外的
+侧边栏、弹窗或独立面板。
+
+{{ agui-json-render-external-panel }}
+
+### A2UI 协议渲染
+
+ChatEngine 支持 [A2UI v0.9.1](https://a2ui.org/specification/v0.9.1-a2ui/) 的四种消息：
+`createSurface`、`updateComponents`、`updateDataModel` 和 `deleteSurface`。
+`createA2UIJsonRenderActivityConfig` 会增量维护 Surface，将 A2UI 邻接表转换为 json-render Schema，
+并提供双向数据绑定、动态 Action 参数解析、多 Surface 与唯一 Ownership 管理。
+
+{{ agui-a2ui-form }}
