@@ -157,7 +157,7 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     componentDirs.map(async (dir) => {
       const componentDir = path.join(componentsRoot, dir);
       try {
-        const stat = await promises.stat(componentDir).catch(() => null);
+        const stat = await promises.stat(componentDir).catch((): null => null);
         if (!stat || !stat.isDirectory()) return null;
 
         const hasReadme = await promises
