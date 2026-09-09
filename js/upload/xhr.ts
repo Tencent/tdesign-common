@@ -108,22 +108,23 @@ export default function xhr({
 
   if (xhr.upload) {
     xhr.upload.onprogress = (event: ProgressEvent) => {
-      let realPercent = 0;
-      if (event.total > 0) {
-        realPercent = Math.round((event.loaded / event.total) * 100);
-      }
-      percent = Math.max(realPercent, percent);
-      if (percent !== realPercent && innerFiles[0]?.percent !== percent) {
-        const progressFiles = innerFiles.map((item) => ({ ...item, percent }));
-        onProgress({
-          event,
-          percent,
-          file: file || progressFiles[0],
-          files: progressFiles,
-          type: 'real',
-          XMLHttpRequest: xhr,
-        });
-      }
+      const realPercent = event.total > 0 ? Math.round((event.loaded / event.total) * 100) : 0;
+
+      if (realPercent <= percent) return;
+      percent = realPercent;
+      // 同步真实进度到文件对象，确保进度展示和回调数据一致
+      innerFiles.forEach((item) => {
+        item.percent = percent;
+      });
+      const progressFiles = innerFiles.map((item) => ({ ...item, percent }));
+      onProgress({
+        event,
+        percent,
+        file: file || progressFiles[0],
+        files: progressFiles,
+        type: 'real',
+        XMLHttpRequest: xhr,
+      });
     };
   }
 
