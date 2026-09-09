@@ -1,3 +1,5 @@
+import type { FrontmatterResult } from './types';
+
 /**
  * 拆分 title：'Button 按钮' -> { title: 'Button', subtitle: '按钮' }
  */
@@ -6,6 +8,25 @@ export function splitTitle(title: string): { title: string; subtitle: string } {
   const match = trimmed.match(/^(.+?)\s+(.+)$/);
   if (match) return { title: match[1].trim(), subtitle: match[2].trim() };
   return { title: trimmed, subtitle: '' };
+}
+
+/**
+ * 解析 Markdown 的 frontmatter（--- 包裹的简单 key: value 格式）。
+ * 替代 gray-matter，避免引入额外依赖。
+ */
+export function parseFrontmatter(raw: string): FrontmatterResult {
+  const data: Record<string, string> = {};
+  const match = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
+  if (!match) return { data, content: raw };
+  const fm = match[1];
+  fm.split('\n').forEach((line) => {
+    const kv = line.match(/^([a-zA-Z0-9_-]+)\s*:\s*(.*?)\s*$/);
+    if (kv) {
+      const [key, value] = kv.slice(1);
+      data[key] = value;
+    }
+  });
+  return { data, content: raw.slice(match[0].length) };
 }
 
 /**
@@ -52,10 +73,8 @@ export function removeSiteBlocks(body: string): string {
       }
 
       if (removed) {
-        // 已删除整块：从原开标签位置重新扫描（后续内容已前移）
         openRe.lastIndex = match.index;
       } else {
-        // 非目标或未闭合：必须跳过当前开标签，否则 lastIndex 重置回 match.index 会重复匹配同一位置导致死循环
         openRe.lastIndex = match.index + match[0].length;
       }
       match = openRe.exec(result);
@@ -78,7 +97,6 @@ export function convertPreviewLink(body: string): string {
  * 将站点专用的 Tips blockquote（小程序调试提示）转换为 Markdown 引用块。
  */
 export function convertTipsBlock(body: string): string {
-  // 匹配 <blockquote ...> ... <p>Tips: ...</p> ... </blockquote>，提取 <p> 内文本
   return body.replace(/<blockquote\b[^>]*>\s*<p>([\s\S]*?)<\/p>\s*<\/blockquote>/g, (_m, text: string) =>
     text
       .split(/<br\s*\/?>|\n/)
@@ -91,20 +109,12 @@ export function convertTipsBlock(body: string): string {
 
 /**
  * 将站点顶部的说明块（版本上线提示 / 渲染框架支持情况）转换为 Markdown 引用块。
- *
- * README 源码结构为外层容器 div 嵌套若干内层说明 div：
- *   <div style="background: #ecf2fe; ...">
- *     <div ...>该组件于 0.9.0 版本上线，请留意版本</div>
- *     <div ...>渲染框架支持情况：Skyline、WebView</div>
- *   </div>
- * 故先匹配外层容器，再逐行提取内层 div 文本。
  */
 export function convertHeaderNoticeBlocks(body: string): string {
   const openRe = /<div\s+style="background:\s*#(?:ecf2fe|d9e1ff)[^"]*"[^>]*>/g;
   let result = body;
   let match = openRe.exec(result);
   while (match) {
-    // 从开标签起，按深度计数找到配对的闭标签，正确处理嵌套 div
     let depth = 0;
     const tokenRe = /<\/?div(?:\s[^>]*)?>/g;
     tokenRe.lastIndex = match.index;
@@ -135,7 +145,6 @@ export function convertHeaderNoticeBlocks(body: string): string {
       .filter(Boolean)
       .map((line) => `> ${line}`)
       .join('\n');
-    // 整块替换为 Markdown 引用（保留前后空行结构）
     result = result.slice(0, match.index) + converted + result.slice(end);
     openRe.lastIndex = match.index;
     match = openRe.exec(result);
@@ -147,9 +156,7 @@ export function convertHeaderNoticeBlocks(body: string): string {
  * 清理站点专用 HTML：转换为 Markdown 语义后，移除剩余站点专用 HTML 块。
  */
 export function cleanSiteHtml(body: string): string {
-  // 先做转换：预览链接 / Tips 提示块 / 渲染框架支持情况 -> Markdown
   const converted = convertHeaderNoticeBlocks(convertTipsBlock(convertPreviewLink(body)));
-  // 再移除剩余站点专用 HTML 块（如「该组件于 xx 版本」等），保留代码示例中的真实内容。
   return removeSiteBlocks(converted).replace(
     /<a href="https:\/\/developers\.weixin\.qq\.com\/s\/[^"]*"[^>]*>[^<]*<\/a>/g,
     ''
