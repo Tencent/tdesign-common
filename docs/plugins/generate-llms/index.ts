@@ -162,6 +162,8 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
 
   const llmsDir = path.join(outputDir, 'llms');
 
+  console.log('\x1b[36m%s\x1b[0m', `>[generate-llms] 开始生成 LLM 文档（${platform}）...`);
+
   // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中但有 README 的组件目录
   const allDirs = await promises.readdir(componentsRoot);
   const mapKeys = Object.keys(componentMap);

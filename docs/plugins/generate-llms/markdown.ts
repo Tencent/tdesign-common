@@ -29,6 +29,7 @@ export function removeSiteBlocks(body: string): string {
         (tag === 'blockquote' && /background-color:\s*#/.test(openTag)) ||
         /渲染框架支持情况|该组件于|Tips:|预览效果/.test(openTag);
 
+      let removed = false;
       if (isTarget) {
         let depth = 0;
         const tokenRe = new RegExp(`</?${tag}(?:\\s[^>]*)?>`, 'g');
@@ -40,6 +41,7 @@ export function removeSiteBlocks(body: string): string {
             if (depth === 0) {
               const end = token.index + token[0].length;
               result = result.slice(0, match.index) + result.slice(end);
+              removed = true;
               break;
             }
           } else {
@@ -48,7 +50,14 @@ export function removeSiteBlocks(body: string): string {
           token = tokenRe.exec(result);
         }
       }
-      openRe.lastIndex = match.index;
+
+      if (removed) {
+        // 已删除整块：从原开标签位置重新扫描（后续内容已前移）
+        openRe.lastIndex = match.index;
+      } else {
+        // 非目标或未闭合：必须跳过当前开标签，否则 lastIndex 重置回 match.index 会重复匹配同一位置导致死循环
+        openRe.lastIndex = match.index + match[0].length;
+      }
       match = openRe.exec(result);
     }
   });
