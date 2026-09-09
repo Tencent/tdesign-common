@@ -4,7 +4,8 @@
 
 ## 数据源
 
-- 组件目录下的 `README.md`（frontmatter 含 title/description/spline，正文含引入方式、代码演示、API 表格）
+- 组件目录下的组件文档（frontmatter 含 title/description/spline，正文含引入方式、代码演示、API 表格）：
+  小程序仓库为 `README.md`，其余仓库为 `<slug>.md`（如 `button.md`，通过 `docFilename: '{slug}.md'` 配置）
 - `{{ demo }}` 占位符替换为 `_example/` 目录下的真实源码块
 - 站点专用 HTML（二维码、预览链接、提示块）会被转换为 Markdown 语义或移除
 
@@ -15,12 +16,20 @@
 ```ts
 import generateLlmsDocs from '<相对路径>/common-docs/plugins/generate-llms';
 
+// 小程序仓库（默认读 README.md）
 await generateLlmsDocs({
   componentsRoot: '<组件根目录绝对路径>',
   outputDir: '<产物输出目录绝对路径>',
-  platform: '<站点平台>',
   siteTitle: 'TDesign MiniProgram',
   siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+});
+
+// 其余仓库（组件文档为 <slug>.md，如 button.md）
+await generateLlmsDocs({
+  componentsRoot: '<组件根目录绝对路径>',
+  outputDir: '<产物输出目录绝对路径>',
+  platform: 'web',
+  docFilename: '{slug}.md',
 });
 ```
 
@@ -28,9 +37,10 @@ await generateLlmsDocs({
 
 ## 配置项
 
-- `componentsRoot`：组件根目录（绝对路径），目录下含各组件 `README.md` 与 `_example/`
+- `componentsRoot`：组件根目录（绝对路径），目录下含各组件文档与 `_example/`
 - `outputDir`：产物输出目录（绝对路径），生成 `<outputDir>/llms/<slug>.md` 与 `<outputDir>/llms.txt`
 - `platform`：站点平台（`web` / `mobile` / `chat`，默认 `mobile`），决定内置组件清单映射，无需外部传入
+- `docFilename`：组件文档文件名，支持 `{slug}` 占位符，默认 `README.md`（小程序仓库）；其余仓库传 `'{slug}.md'`
 - `componentMap`：自定义组件清单映射（slug -> 导出组件名列表），优先级高于 `platform`
 - `siteTitle` / `siteDescription`：`llms.txt` 索引标题与描述
 - `readDemoCode`：demo 源码解析器，默认读取 `_example/<name>/index.{wxml,js,wxss,json}`；

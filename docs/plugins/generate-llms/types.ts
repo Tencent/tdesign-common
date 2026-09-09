@@ -24,10 +24,12 @@ export interface ComponentDoc {
 
 /** 生成配置项 */
 export interface GenerateLlmsOptions {
-  /** 组件根目录（绝对路径），目录下含各组件 README.md 与 _example/ */
+  /** 组件根目录（绝对路径），目录下含各组件文档与 _example/ */
   componentsRoot: string;
   /** 产物输出目录（绝对路径），生成 <outputDir>/llms/<slug>.md 与 <outputDir>/llms.txt */
   outputDir: string;
+  /** 组件文档文件名，支持 `{slug}` 占位符：小程序仓库默认 `README.md`，其余仓库传 `'{slug}.md'` */
+  docFilename?: string;
   /** 站点平台，用于内置组件清单映射（web / mobile / chat），默认 `mobile` */
   platform?: Platform;
   /** 自定义组件清单映射，优先级高于 `platform` */

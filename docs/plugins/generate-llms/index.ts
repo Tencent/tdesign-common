@@ -58,15 +58,15 @@ function readMiniProgramDemoCode(componentDir: string, demoName: string): string
 }
 
 /**
- * 将 README 解析为组件文档。
+ * 将组件 Markdown 文档解析为组件文档。
  */
 async function parseComponentReadme(
   componentDir: string,
+  docPath: string,
   componentMap: ComponentMap,
   readDemoCode: (componentDir: string, demoName: string) => string
 ): Promise<ComponentDoc | null> {
-  const readmePath = path.join(componentDir, 'README.md');
-  const raw = await promises.readFile(readmePath, 'utf-8');
+  const raw = await promises.readFile(docPath, 'utf-8');
   const { data, content } = parseFrontmatter(raw);
   const { title: rawTitle, description, spline } = data;
 
@@ -140,7 +140,8 @@ function logGeneratedFiles(entries: { relPath: string; content: string }[]): voi
  * 纯 JS 方法：为每个组件生成面向 LLM 的 Markdown 文档。
  *
  * 与 vite 解耦 —— 仅依赖文件系统与 gray-matter，不引入任何构建工具类型。
- * 数据源为组件目录下的 README.md（frontmatter + 正文），
+ * 数据源为组件目录下的组件文档（小程序仓库为 README.md，其余仓库为 <slug>.md，
+ * 通过 `docFilename` 配置，支持 `{slug}` 占位符），
  * `{{ demo }}` 占位符替换为 `_example/` 目录下的真实源码块。
  * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（组件索引）。
  *
@@ -155,6 +156,8 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     platform = 'mobile',
     // 组件清单映射：默认按 platform 取内置映射（WEB/MOBILE/CHAT_COMPONENT_MAP），也可显式传入自定义清单覆盖
     componentMap = getComponentMap(platform),
+    // 组件文档文件名：小程序仓库为 README.md，其余仓库（如 button.md）传 '{slug}.md'
+    docFilename = 'README.md',
     siteTitle = 'TDesign MiniProgram',
     siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
     readDemoCode = readMiniProgramDemoCode,
@@ -164,7 +167,7 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
 
   console.log('\x1b[36m%s\x1b[0m', `>[generate-llms] 开始生成 LLM 文档（${platform}）...`);
 
-  // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中但有 README 的组件目录
+  // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中但有组件文档的目录
   const allDirs = await promises.readdir(componentsRoot);
   const mapKeys = Object.keys(componentMap);
   const componentDirs = [...mapKeys, ...allDirs.filter((dir) => !mapKeys.includes(dir))];
@@ -173,17 +176,18 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
   const parsedDocs = await Promise.all(
     componentDirs.map(async (dir) => {
       const componentDir = path.join(componentsRoot, dir);
+      const docPath = path.join(componentDir, docFilename.replace('{slug}', dir));
       try {
         const stat = await promises.stat(componentDir).catch((): null => null);
         if (!stat || !stat.isDirectory()) return null;
 
-        const hasReadme = await promises
-          .access(path.join(componentDir, 'README.md'))
+        const hasDoc = await promises
+          .access(docPath)
           .then(() => true)
           .catch(() => false);
-        if (!hasReadme) return null;
+        if (!hasDoc) return null;
 
-        return await parseComponentReadme(componentDir, componentMap, readDemoCode);
+        return await parseComponentReadme(componentDir, docPath, componentMap, readDemoCode);
       } catch (err) {
         // 单个组件解析失败仅告警，不中断整体生成
         console.warn(`[generate-llms] 解析组件 ${dir} 失败，已跳过：`, err);
