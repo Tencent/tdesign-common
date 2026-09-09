@@ -70,11 +70,118 @@ await generateLlmsDocs({
 ## 通用解析工具（common 导出，供各组件库复用）
 
 - `parseFrontmatter(raw)`：解析 Markdown frontmatter，返回 `{ data, content }`
-- `splitTitle(title)`：拆分 `'Button 按钮' -> { title, subtitle }`
+- `splitTitle(title)`：拆分 `'Button 按钮' -> { title, subtitle }`；纯中文标题整体作为 title 不误拆
 - `cleanSiteHtml(body)`：清理小程序站点专用 HTML
+- `stripSiteBlocks(body)`：通用站点装饰块移除器（移除设计图块 `<div class="legend">` 等），供各仓库兜底使用
 - `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown
 - `renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms.txt 索引
 - `getComponentMap(platform)` / `SPLINE_ORDER` / `SPLINE_LABELS`：内置组件清单与 spline 分组配置
+
+## 各仓库适配指南
+
+以下基于各仓库**实际文档结构**给出接入方式（参考小程序已落地 PR：tdesign-miniprogram `pulls/38`）。
+各组件库在自己仓库的站点 `vite` 插件里构造 `parseComponentDoc`，并可复用 common 导出的通用工具。
+
+### 小程序 miniprogram（已落地）
+
+- 文档：`packages/components/<slug>/README.md`（frontmatter 含 title/description/spline）
+- demo：`_example/<demoName>/index.{wxml,js,wxss,json}` 四段代码块
+- 清理：默认 `cleanSiteHtml`（微信站点清理）
+
+```ts
+import { createComponentDocParser } from '<common>/docs/plugins/generate-llms';
+import { readFile } from 'fs/promises';
+
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (dir) => readFile(`${dir}/README.md`, 'utf-8').catch(() => null),
+  readDemoCode: (dir, name) => readWxmlDemo(dir, name), // 读 index.{wxml,js,wxss,json}
+});
+```
+
+### uniapp（移动端 Vue3）
+
+- 文档：`docs/mobile/api/<slug>.md`，回退组件目录 `README.md`
+- demo：`_example/<demoName>/index.vue`，输出 SFC 代码块
+- 清理：传空 `transformers`（无微信专用链接）
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (dir, slug) => {
+    const p = `${docsRoot}/../mobile/api/${slug}.md`;
+    return readFile(p, 'utf-8').catch(async () => readFile(`${dir}/README.md`, 'utf-8').catch(() => null));
+  },
+  readDemoCode: (dir, name) => readVueDemo(dir, name),
+  transformers: [],
+});
+```
+
+### vue-next（PC Web Vue3）
+
+- 文档：`packages/common/docs/web/api/<slug>.md`（frontmatter 含 title/description/spline/isComponent/usage）
+- demo：`_example/<demoName>/index.vue`，输出 SFC
+- 清理：传空 `transformers`
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (_dir, slug) => readFile(`${docsRoot}/web/api/${slug}.md`, 'utf-8').catch(() => null),
+  readDemoCode: (dir, name) => readVueDemo(dir, name),
+  transformers: [],
+});
+```
+
+### react（PC Web React）
+
+- 文档：`packages/common/docs/web/api/<slug>.md`（与 vue-next 共源）
+- demo：`_example/<demoName>`（.tsx/ts），输出 JSX 代码块
+- 清理：传空 `transformers`；注意清理文档中 Vue 专属引用
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (_dir, slug) => readFile(`${docsRoot}/web/api/${slug}.md`, 'utf-8').catch(() => null),
+  readDemoCode: (dir, name) => readJsxDemo(dir, name),
+  transformers: [],
+  componentMap: REACT_COMPONENT_MAP,
+});
+```
+
+### mobile-vue（移动端 Vue3）
+
+- 文档：`packages/common/docs/mobile/api/<slug>.md`
+- demo：`_example/<demoName>/index.vue`，输出 SFC
+- 清理：传空 `transformers`
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (_dir, slug) => readFile(`${docsRoot}/mobile/api/${slug}.md`, 'utf-8').catch(() => null),
+  readDemoCode: (dir, name) => readVueDemo(dir, name),
+  transformers: [],
+});
+```
+
+### flutter（移动端 Flutter）
+
+与其它仓库差异最大：文档在 `docs/mobile/flutter_design/<slug>.md`，为**设计说明**，
+**无 frontmatter、无 demo 占位符、含 `<div class="legend">` 设计图块、有内部相对链接**。
+
+- 建议为 flutter 提供独立 `docs/mobile/flutter_api/<slug>.md` 承载组件 API 文档；
+  或在 `readComponentDoc` 包装补全 frontmatter（无则用 slug 兜底 `title`/`spline`）
+- `parseTitle`：flutter 若为纯中文标题，注入不拆分的解析器
+- `titleKey` / `splineKey`：无 frontmatter 时兜底
+- 清理：传 `[]`，保留 `stripSiteBlocks` 移除设计图块
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (_dir, slug) => {
+    const raw = await readFile(`${docsRoot}/flutter_design/${slug}.md`, 'utf-8').catch(() => null);
+    if (!raw) return null;
+    // 无 frontmatter 时兜底补全
+    return ensureFrontmatter(raw, slug);
+  },
+  readDemoCode: () => '', // flutter 无 demo 占位符
+  transformers: [],
+  parseTitle: (t) => ({ title: t, subtitle: '' }), // 纯中文
+});
+```
 
 ## 产物
 

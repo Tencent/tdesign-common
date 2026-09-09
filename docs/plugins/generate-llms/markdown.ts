@@ -1,12 +1,18 @@
 import type { FrontmatterResult } from './types';
 
 /**
- * 拆分 title：'Button 按钮' -> { title: 'Button', subtitle: '按钮' }
+ * 拆分 title：'Button 按钮' -> { title: 'Button', subtitle: '按钮' }。
+ * 仅当能拆成「英文/拉丁开头 + 空格 + 中文副标题」时才拆分（兼容 'Button 按钮' 等），
+ * 纯中文标题（如 '气泡提示'）或不含中文副标题的场景整体作为 title，避免误拆。
  */
 export function splitTitle(title: string): { title: string; subtitle: string } {
   const trimmed = (title || '').trim();
-  const match = trimmed.match(/^(.+?)\s+(.+)$/);
-  if (match) return { title: match[1].trim(), subtitle: match[2].trim() };
+  if (!trimmed) return { title: '', subtitle: '' };
+  // 需前段以英文字母开头、后段包含中文，才视为「英文 中文」组合
+  const match = trimmed.match(/^([A-Za-z][A-Za-z0-9\s-]*?)\s+([^\s].*)$/);
+  if (match && /[\u4e00-\u9fa5]/.test(match[2])) {
+    return { title: match[1].trim(), subtitle: match[2].trim() };
+  }
   return { title: trimmed, subtitle: '' };
 }
 
@@ -162,3 +168,40 @@ export function cleanSiteHtml(body: string): string {
     ''
   );
 }
+
+/**
+ * 通用站点装饰块移除器：移除设计图块（`<div class="legend">`，可能含嵌套 div）、
+ * 站点专用说明块等平台无关的 HTML 装饰，保留真实内容。
+ * 可作为各仓库（web/mobile/flutter）的兜底 transformer。
+ */
+export const stripSiteBlocks: (body: string) => string = (body) => {
+  let result = body;
+  // 移除设计图块：<div class="legend">...</div>（flutter 设计文档常见，内部含嵌套 .item/.img）
+  const legendRe = /<div\s+class="legend"[^>]*>/g;
+  let lmatch = legendRe.exec(result);
+  while (lmatch) {
+    let depth = 0;
+    const tokenRe = /<\/?div(?:\s[^>]*)?>/g;
+    tokenRe.lastIndex = lmatch.index;
+    let token = tokenRe.exec(result);
+    let end = -1;
+    while (token) {
+      if (token[0].startsWith('</div')) {
+        depth -= 1;
+        if (depth === 0) {
+          end = token.index + token[0].length;
+          break;
+        }
+      } else {
+        depth += 1;
+      }
+      token = tokenRe.exec(result);
+    }
+    if (end === -1) break;
+    result = result.slice(0, lmatch.index) + result.slice(end);
+    legendRe.lastIndex = lmatch.index;
+    lmatch = legendRe.exec(result);
+  }
+  // 再移除站点专用说明块（渲染框架支持情况 / 版本提示 / Tips / 预览链接等）
+  return removeSiteBlocks(result);
+};

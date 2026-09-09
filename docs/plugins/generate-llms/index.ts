@@ -28,7 +28,7 @@ export type {
 } from './types';
 
 // 重新导出通用解析与渲染工具，供各组件库复用
-export { parseFrontmatter, splitTitle, cleanSiteHtml } from './markdown';
+export { parseFrontmatter, splitTitle, cleanSiteHtml, stripSiteBlocks } from './markdown';
 export { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 
 /** 判断 demo 目录是否存在（同步）。 */
