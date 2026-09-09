@@ -82,7 +82,6 @@ await generateLlmsDocs({
 
 ## 各仓库适配指南
 
-以下基于各仓库**实际文档结构**给出接入方式（参考小程序已落地 PR：tdesign-miniprogram `pulls/38`）。
 各组件库在自己仓库的站点 `vite` 插件里构造 `parseComponentDoc`，并可复用 common 导出的通用工具。
 
 ### 小程序 miniprogram（已落地）
@@ -126,16 +125,13 @@ await generateLlmsDocs({
 
 ### uniapp（移动端 Vue3）
 
-- 文档：`docs/mobile/api/<slug>.md`，回退组件目录 `README.md`
+- 文档：组件目录 `README.md`（与小程序一致，读本仓组件目录）
 - demo：`_example/<demoName>/index.vue`，输出 SFC 代码块
 - 清理：传空 `transformers`（无微信专用链接）
 
 ```ts
 const parseComponentDoc = createComponentDocParser({
-  readComponentDoc: async (dir, slug) => {
-    const p = `${docsRoot}/../mobile/api/${slug}.md`;
-    return readFile(p, 'utf-8').catch(async () => readFile(`${dir}/README.md`, 'utf-8').catch(() => null));
-  },
+  readComponentDoc: async (dir) => readFile(`${dir}/README.md`, 'utf-8').catch(() => null),
   readDemoCode: (dir, name) => readVueDemo(dir, name),
   transformers: [],
 });
@@ -145,16 +141,13 @@ const parseComponentDoc = createComponentDocParser({
 
 uniapp-chat 是 uniapp 中的聊天组件站点，使用 `chat` 平台的组件清单（`CHAT_COMPONENT_MAP`）。
 
-- 文档：`docs/mobile/api/<slug>.md`，回退组件目录 `README.md`
+- 文档：组件目录 `README.md`（与小程序一致，读本仓组件目录）
 - demo：`_example/<demoName>/index.vue`，输出 SFC
 - 清理：传空 `transformers`
 
 ```ts
 const parseComponentDoc = createComponentDocParser({
-  readComponentDoc: async (dir, slug) => {
-    const p = `${docsRoot}/../mobile/api/${slug}.md`;
-    return readFile(p, 'utf-8').catch(async () => readFile(`${dir}/README.md`, 'utf-8').catch(() => null));
-  },
+  readComponentDoc: async (dir) => readFile(`${dir}/README.md`, 'utf-8').catch(() => null),
   readDemoCode: (dir, name) => readVueDemo(dir, name),
   transformers: [],
 });
