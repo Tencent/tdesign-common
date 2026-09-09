@@ -18,7 +18,7 @@ import generateLlmsDocs from '<相对路径>/common-docs/plugins/generate-llms';
 await generateLlmsDocs({
   componentsRoot: '<组件根目录绝对路径>',
   outputDir: '<产物输出目录绝对路径>',
-  componentMap: MOBILE_COMPONENT_MAP,
+  platform: '<站点平台>',
   siteTitle: 'TDesign MiniProgram',
   siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
 });
@@ -30,7 +30,8 @@ await generateLlmsDocs({
 
 - `componentsRoot`：组件根目录（绝对路径），目录下含各组件 `README.md` 与 `_example/`
 - `outputDir`：产物输出目录（绝对路径），生成 `<outputDir>/llms/<slug>.md` 与 `<outputDir>/llms.txt`
-- `componentMap`：组件清单映射（slug -> 导出组件名列表），决定文档生成范围与 `component` 字段
+- `platform`：站点平台（`web` / `mobile` / `chat`，默认 `mobile`），决定内置组件清单映射，无需外部传入
+- `componentMap`：自定义组件清单映射（slug -> 导出组件名列表），优先级高于 `platform`
 - `siteTitle` / `siteDescription`：`llms.txt` 索引标题与描述
 - `readDemoCode`：demo 源码解析器，默认读取 `_example/<name>/index.{wxml,js,wxss,json}`；
   Vue 站点可自定义读取 `index.vue` 输出 SFC 代码块

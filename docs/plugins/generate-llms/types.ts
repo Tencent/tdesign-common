@@ -1,6 +1,9 @@
 /** 组件清单映射：slug -> 导出组件名列表 */
 export type ComponentMap = Record<string, string[]>;
 
+/** 站点平台，决定内置的组件清单映射 */
+export type Platform = 'web' | 'mobile' | 'chat';
+
 /** 解析后的组件文档 */
 export interface ComponentDoc {
   /** 文件名，如 button */
@@ -25,7 +28,9 @@ export interface GenerateLlmsOptions {
   componentsRoot: string;
   /** 产物输出目录（绝对路径），生成 <outputDir>/llms/<slug>.md 与 <outputDir>/llms.txt */
   outputDir: string;
-  /** 组件清单映射，如 MOBILE_COMPONENT_MAP / CHAT_COMPONENT_MAP */
+  /** 站点平台，用于内置组件清单映射（web / mobile / chat），默认 `mobile` */
+  platform?: Platform;
+  /** 自定义组件清单映射，优先级高于 `platform` */
   componentMap?: ComponentMap;
   /** llms.txt 索引标题 */
   siteTitle?: string;

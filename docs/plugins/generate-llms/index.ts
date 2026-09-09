@@ -4,9 +4,10 @@ import { promises, readFileSync, statSync } from 'fs';
 import path from 'path';
 
 import { cleanSiteHtml, splitTitle } from './markdown';
+import { getComponentMap } from './libs';
 import type { ComponentDoc, ComponentMap, GenerateLlmsOptions } from './types';
 
-export type { ComponentDoc, ComponentMap, GenerateLlmsOptions } from './types';
+export type { ComponentDoc, ComponentMap, GenerateLlmsOptions, Platform } from './types';
 export { cleanSiteHtml, splitTitle } from './markdown';
 
 /**
@@ -132,14 +133,17 @@ function renderLlmsTxt(docs: ComponentDoc[], siteTitle: string, siteDescription:
  * `{{ demo }}` 占位符替换为 `_example/` 目录下的真实源码块。
  * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（组件索引）。
  *
- * @param options 生成配置。需要显式传入 `componentsRoot` 与 `outputDir`。
+ * @param options 生成配置。需要显式传入 `componentsRoot` 与 `outputDir`；
+ *   组件清单默认按 `platform`（默认 `mobile`）取内置映射，无需外部传入。
  * @returns 生成的组件文档列表。
  */
 export default async function generateLlmsDocs(options: GenerateLlmsOptions): Promise<ComponentDoc[]> {
   const {
     componentsRoot,
     outputDir,
-    componentMap = {},
+    platform = 'mobile',
+    // 组件清单映射：默认按 platform 取内置映射（WEB/MOBILE/CHAT_COMPONENT_MAP），也可显式传入自定义清单覆盖
+    componentMap = getComponentMap(platform),
     siteTitle = 'TDesign MiniProgram',
     siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
     readDemoCode = readMiniProgramDemoCode,
