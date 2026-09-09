@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { promises, readFileSync, statSync } from 'fs';
+import { promises, statSync } from 'fs';
 import path from 'path';
 
 import { cleanSiteHtml, splitTitle } from './markdown';
@@ -32,10 +32,10 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
 /** 返回第一个存在的文件路径（保持传入顺序），都不存在时返回 null。 */
 async function accessFirst(paths: string[]): Promise<string | null> {
   const results = await Promise.all(
-    paths.map((p): Promise<string | null> =>
+    paths.map((p) =>
       promises.access(p).then(
-        (): string => p,
-        (): null => null
+        () => p,
+        () => null
       )
     )
   );
@@ -49,25 +49,6 @@ function isDirectorySync(p: string): boolean {
   } catch {
     return false;
   }
-}
-
-/** 默认 demo 源码解析器：读取 _example/<demoName> 下的四段代码块（wxml/js/wxss/json）。 */
-function readMiniProgramDemoCode(componentDir: string, demoName: string): string {
-  const demoDir = path.join(componentDir, '_example', demoName);
-  const fileOrder = ['index.wxml', 'index.js', 'index.wxss', 'index.json'];
-  const sections: string[] = [];
-  fileOrder.forEach((file) => {
-    try {
-      const content = readFileSync(path.join(demoDir, file), 'utf-8');
-      // 忽略内容为空的文件（如部分示例的 index.wxss），避免生成空代码块
-      if (!content.trim()) return;
-      const lang = file.replace('index.', '');
-      sections.push(`\`\`\`${lang}`, content, '```');
-    } catch {
-      // 忽略不存在的文件
-    }
-  });
-  return sections.join('\n');
 }
 
 /**
@@ -156,10 +137,10 @@ function logGeneratedFiles(entries: { relPath: string; content: string }[]): voi
  * 数据源为组件文档：小程序仓库全部在组件目录下的 README.md；其余仓库优先读
  * common 子仓扁平目录 `docsRoot`（如 packages/common/docs/web/api/<slug>.md），
  * 其次读组件目录下的 <slug>.md（通过 `docFilename: '{slug}.md'` 配置）。
- * `{{ demo }}` 占位符替换为 `componentsRoot/<slug>/_example/` 下的真实源码块。
+ * `{{ demo }}` 占位符替换为 `componentsRoot/<slug>/_example/` 下的真实源码块（解析器由调用方传入）。
  * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（组件索引）。
  *
- * @param options 生成配置。需要显式传入 `componentsRoot` 与 `outputDir`；
+ * @param options 生成配置。需要显式传入 `componentsRoot`、`outputDir` 与 `readDemoCode`（demo 源码解析器）；
  *   组件清单默认按 `platform`（默认 `mobile`）取内置映射，无需外部传入。
  * @returns 生成的组件文档列表。
  */
@@ -176,7 +157,8 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     docFilename = 'README.md',
     siteTitle = 'TDesign MiniProgram',
     siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
-    readDemoCode = readMiniProgramDemoCode,
+    // demo 源码解析器：由各组件库按自身示例组织方式传入（小程序读 index.{wxml,js,wxss,json}，uniapp 读 index.vue）
+    readDemoCode,
   } = options;
 
   const llmsDir = path.join(outputDir, 'llms');

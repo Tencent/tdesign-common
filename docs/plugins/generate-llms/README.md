@@ -8,7 +8,7 @@
   - 小程序仓库：全部在组件目录下的 `README.md`（默认）
   - 其余仓库：优先读 common 子仓扁平目录 `docsRoot` 下的 `<slug>.md`（如 `packages/common/docs/web/api/affix.md`），
     其次读组件目录下的 `<slug>.md`（如 `packages/components/affix/affix.md`，通过 `docFilename: '{slug}.md'` 配置）
-- `{{ demo }}` 占位符替换为 `componentsRoot/<slug>/_example/` 目录下的真实源码块
+- `{{ demo }}` 占位符替换为 `componentsRoot/<slug>/_example/` 目录下的真实源码块（解析器由各组件库通过 `readDemoCode` 传入）
 - 站点专用 HTML（二维码、预览链接、提示块）会被转换为 Markdown 语义或移除
 
 ## 使用
@@ -18,10 +18,11 @@
 ```ts
 import generateLlmsDocs from '<相对路径>/common-docs/plugins/generate-llms';
 
-// 小程序仓库（默认读 README.md）
+// 小程序仓库（默认读 README.md，demo 为 _example/<name>/index.{wxml,js,wxss,json} 四段代码块）
 await generateLlmsDocs({
   componentsRoot: '<组件根目录绝对路径>',
   outputDir: '<产物输出目录绝对路径>',
+  readDemoCode,
   siteTitle: 'TDesign MiniProgram',
   siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
 });
@@ -33,6 +34,7 @@ await generateLlmsDocs({
   outputDir: '<产物输出目录绝对路径>',
   platform: 'web',
   docFilename: '{slug}.md',
+  readDemoCode,
 });
 ```
 
@@ -48,8 +50,8 @@ await generateLlmsDocs({
 - `docFilename`：组件文档文件名，支持 `{slug}` 占位符，默认 `README.md`（小程序仓库）；其余仓库传 `'{slug}.md'`
 - `componentMap`：自定义组件清单映射（slug -> 导出组件名列表），优先级高于 `platform`
 - `siteTitle` / `siteDescription`：`llms.txt` 索引标题与描述
-- `readDemoCode`：demo 源码解析器，默认读取 `_example/<name>/index.{wxml,js,wxss,json}`；
-  Vue 站点可自定义读取 `index.vue` 输出 SFC 代码块
+- `readDemoCode`（必传，由各组件库传入）：demo 源码解析器，读取 `_example/<demoName>/` 返回代码块文本；
+  小程序组件库读取 `index.{wxml,js,wxss,json}` 四段代码块，uniapp 组件库读取 `index.vue` 输出 SFC 代码块
 
 ## 产物
 

@@ -43,6 +43,6 @@ export interface GenerateLlmsOptions {
   siteTitle?: string;
   /** llms.txt 索引描述 */
   siteDescription?: string;
-  /** demo 源码文件解析器：读取 _example/<demoName> 目录，返回代码块文本 */
-  readDemoCode?: (componentDir: string, demoName: string) => string;
+  /** demo 源码文件解析器（必传，由各组件库传入）：读取 _example/<demoName> 目录，返回代码块文本 */
+  readDemoCode: (componentDir: string, demoName: string) => string;
 }
