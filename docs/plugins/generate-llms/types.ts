@@ -4,6 +4,9 @@ export type ComponentMap = Record<string, string[]>;
 /** 站点平台，决定内置的组件清单映射 */
 export type Platform = 'web' | 'mobile' | 'chat';
 
+/** 组件文档读取器：返回文档原文（含 frontmatter），无文档时返回 null */
+export type ReadComponentDoc = (componentDir: string, slug: string) => Promise<string | null>;
+
 /** 解析后的组件文档 */
 export interface ComponentDoc {
   /** 文件名，如 button */
@@ -24,21 +27,18 @@ export interface ComponentDoc {
 
 /** 生成配置项 */
 export interface GenerateLlmsOptions {
-  /** 组件根目录（绝对路径），目录下含各组件目录（README.md 或 <slug>.md）与 _example/ */
+  /** 组件根目录（绝对路径），目录下含各组件目录与 _example/ */
   componentsRoot: string;
-  /**
-   * 扁平文档目录（绝对路径，common 子仓，如 packages/common/docs/web/api）：
-   * 非小程序仓库的组件文档统一读自该目录下的 <slug>.md（如 affix.md），优先级高于组件目录内文档
-   */
-  docsRoot?: string;
+  /** 组件文档读取器（必传，由各组件库传入）：返回文档原文（含 frontmatter），无文档时返回 null */
+  readComponentDoc: ReadComponentDoc;
   /** 产物输出目录（绝对路径），生成 <outputDir>/llms/<slug>.md 与 <outputDir>/llms.txt */
   outputDir: string;
-  /** 组件文档文件名，支持 `{slug}` 占位符：小程序仓库默认 `README.md`，其余仓库传 `'{slug}.md'` */
-  docFilename?: string;
   /** 站点平台，用于内置组件清单映射（web / mobile / chat），默认 `mobile` */
   platform?: Platform;
   /** 自定义组件清单映射，优先级高于 `platform` */
   componentMap?: ComponentMap;
+  /** spline 分类标签映射（如 `{ base: '基础' }`），未覆盖的分类回退为内置标签或 spline 原值 */
+  splineLabels?: Record<string, string>;
   /** llms.txt 索引标题 */
   siteTitle?: string;
   /** llms.txt 索引描述 */

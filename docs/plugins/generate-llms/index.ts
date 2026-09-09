@@ -4,10 +4,10 @@ import { promises, statSync } from 'fs';
 import path from 'path';
 
 import { cleanSiteHtml, splitTitle } from './markdown';
-import { getComponentMap } from './libs';
+import { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 import type { ComponentDoc, ComponentMap, GenerateLlmsOptions } from './types';
 
-export type { ComponentDoc, ComponentMap, GenerateLlmsOptions, Platform } from './types';
+export type { ComponentDoc, ComponentMap, GenerateLlmsOptions, Platform, ReadComponentDoc } from './types';
 export { cleanSiteHtml, splitTitle } from './markdown';
 
 /**
@@ -29,19 +29,6 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
   return { data, content: raw.slice(match[0].length) };
 }
 
-/** 返回第一个存在的文件路径（保持传入顺序），都不存在时返回 null。 */
-async function accessFirst(paths: string[]): Promise<string | null> {
-  const results = await Promise.all(
-    paths.map((p) =>
-      promises.access(p).then(
-        () => p,
-        () => null
-      )
-    )
-  );
-  return results.find((result) => result !== null) ?? null;
-}
-
 /** 判断 demo 目录是否存在（同步）。 */
 function isDirectorySync(p: string): boolean {
   try {
@@ -54,13 +41,12 @@ function isDirectorySync(p: string): boolean {
 /**
  * 将组件 Markdown 文档解析为组件文档。
  */
-async function parseComponentReadme(
+function parseComponentReadme(
   componentDir: string,
-  docPath: string,
+  raw: string,
   componentMap: ComponentMap,
   readDemoCode: (componentDir: string, demoName: string) => string
-): Promise<ComponentDoc | null> {
-  const raw = await promises.readFile(docPath, 'utf-8');
+): ComponentDoc | null {
   const { data, content } = parseFrontmatter(raw);
   const { title: rawTitle, description, spline } = data;
 
@@ -107,16 +93,49 @@ function renderComponentMarkdown(doc: ComponentDoc): string {
   return `${fm}${doc.body.trim()}\n`;
 }
 
+function renderIndexLine(doc: ComponentDoc): string {
+  const titleText = doc.subtitle ? `${doc.title} ${doc.subtitle}` : doc.title;
+  return `- [${titleText}](./llms/${doc.slug}.md)：${doc.description}`;
+}
+
 /**
- * 渲染 llms.txt 索引。
+ * 渲染 llms.txt 索引：按 spline 分类分组，缺失 spline 的组件归入「其他」分组（排在末尾）。
  */
-function renderLlmsTxt(docs: ComponentDoc[], siteTitle: string, siteDescription: string): string {
-  const lines = [`# ${siteTitle}`, '', `> ${siteDescription}`, ''];
+function renderLlmsTxt(
+  docs: ComponentDoc[],
+  siteTitle: string,
+  siteDescription: string,
+  splineLabels: Record<string, string>
+): string {
+  const groups = new Map<string, ComponentDoc[]>();
   docs.forEach((doc) => {
-    const titleText = doc.subtitle ? `${doc.title} ${doc.subtitle}` : doc.title;
-    lines.push(`- [${titleText}](./llms/${doc.slug}.md)：${doc.description}`);
+    const list = groups.get(doc.spline);
+    if (list) list.push(doc);
+    else groups.set(doc.spline, [doc]);
   });
-  return `${lines.join('\n')}\n`;
+
+  const knownSplines = SPLINE_ORDER.filter((spline) => groups.has(spline));
+  const extraSplines = [...groups.keys()]
+    .filter((spline) => spline && !SPLINE_ORDER.includes(spline))
+    .sort((a, b) => a.localeCompare(b));
+  const labelOf = (spline: string) => splineLabels[spline] || SPLINE_LABELS[spline] || spline;
+
+  const lines = [`# ${siteTitle}`, '', `> ${siteDescription}`, ''];
+
+  [...knownSplines, ...extraSplines].forEach((spline) => {
+    lines.push(`## ${labelOf(spline)}`, '');
+    (groups.get(spline) ?? []).forEach((doc) => lines.push(renderIndexLine(doc)));
+    lines.push('');
+  });
+
+  const ungrouped = groups.get('');
+  if (ungrouped) {
+    lines.push(`## ${labelOf('other')}`, '');
+    ungrouped.forEach((doc) => lines.push(renderIndexLine(doc)));
+    lines.push('');
+  }
+
+  return `${lines.join('\n').trimEnd()}\n`;
 }
 
 /**
@@ -133,14 +152,13 @@ function logGeneratedFiles(entries: { relPath: string; content: string }[]): voi
 /**
  * 纯 JS 方法：为每个组件生成面向 LLM 的 Markdown 文档。
  *
- * 与 vite 解耦 —— 仅依赖文件系统与 gray-matter，不引入任何构建工具类型。
- * 数据源为组件文档：小程序仓库全部在组件目录下的 README.md；其余仓库优先读
- * common 子仓扁平目录 `docsRoot`（如 packages/common/docs/web/api/<slug>.md），
- * 其次读组件目录下的 <slug>.md（通过 `docFilename: '{slug}.md'` 配置）。
+ * 与 vite 解耦 —— 仅依赖文件系统，不引入任何构建工具类型。
+ * 组件文档由 `readComponentDoc` 读取（由各组件库传入：小程序读组件目录 README.md，
+ * 其余仓库可优先读 common 子仓扁平目录 `<slug>.md` 再回退组件目录内文档）。
  * `{{ demo }}` 占位符替换为 `componentsRoot/<slug>/_example/` 下的真实源码块（解析器由调用方传入）。
- * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（组件索引）。
+ * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（按 spline 分组的组件索引）。
  *
- * @param options 生成配置。需要显式传入 `componentsRoot`、`outputDir` 与 `readDemoCode`（demo 源码解析器）；
+ * @param options 生成配置。需要显式传入 `componentsRoot`、`outputDir`、`readComponentDoc` 与 `readDemoCode`；
  *   组件清单默认按 `platform`（默认 `mobile`）取内置映射，无需外部传入。
  * @returns 生成的组件文档列表。
  */
@@ -151,12 +169,12 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     platform = 'mobile',
     // 组件清单映射：默认按 platform 取内置映射（WEB/MOBILE/CHAT_COMPONENT_MAP），也可显式传入自定义清单覆盖
     componentMap = getComponentMap(platform),
-    // 扁平文档目录（common 子仓，如 packages/common/docs/web/api），文档为 <slug>.md
-    docsRoot,
-    // 组件文档文件名：小程序仓库为 README.md，其余仓库（如 button.md）传 '{slug}.md'
-    docFilename = 'README.md',
+    // spline 分类标签映射：默认取内置映射，可通过自定义配置覆盖或扩展
+    splineLabels = {},
     siteTitle = 'TDesign MiniProgram',
     siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+    // 组件文档读取器：由各组件库传入（小程序读组件目录 README.md，其余仓库可优先读 common 子仓扁平目录）
+    readComponentDoc,
     // demo 源码解析器：由各组件库按自身示例组织方式传入（小程序读 index.{wxml,js,wxss,json}，uniapp 读 index.vue）
     readDemoCode,
   } = options;
@@ -174,17 +192,11 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
   const parsedDocs = await Promise.all(
     componentDirs.map(async (dir) => {
       const componentDir = path.join(componentsRoot, dir);
-      // 组件文档查找顺序：common 子仓扁平目录 <docsRoot>/<slug>.md ->
-      // 组件目录 <docFilename>（如 README.md / {slug}.md）-> 组件目录 <slug>.md
-      const docPath = await accessFirst([
-        ...(docsRoot ? [path.join(docsRoot, `${dir}.md`)] : []),
-        path.join(componentDir, docFilename.replace('{slug}', dir)),
-        path.join(componentDir, `${dir}.md`),
-      ]);
       try {
-        if (!docPath) return null;
+        const raw = await readComponentDoc(componentDir, dir);
+        if (!raw) return null;
 
-        return await parseComponentReadme(componentDir, docPath, componentMap, readDemoCode);
+        return parseComponentReadme(componentDir, raw, componentMap, readDemoCode);
       } catch (err) {
         // 单个组件解析失败仅告警，不中断整体生成
         console.warn(`[generate-llms] 解析组件 ${dir} 失败，已跳过：`, err);
@@ -208,7 +220,7 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
   const indexEntry = {
     relPath: 'llms.txt',
     absPath: path.join(outputDir, 'llms.txt'),
-    content: renderLlmsTxt(docs, siteTitle, siteDescription),
+    content: renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels),
   };
 
   await Promise.all([...docEntries, indexEntry].map((entry) => promises.writeFile(entry.absPath, entry.content)));
