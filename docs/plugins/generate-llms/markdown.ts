@@ -205,3 +205,35 @@ export const stripSiteBlocks: (body: string) => string = (body) => {
   // 再移除站点专用说明块（渲染框架支持情况 / 版本提示 / Tips / 预览链接等）
   return removeSiteBlocks(result);
 };
+
+/**
+ * 将站点专用的 `<td-code-block>` 代码块转换为标准 Markdown 代码块。
+ * 匹配 flutter 文档中 `panel="Dart"` 的代码块结构：
+ *   <td-code-block panel="Dart"><pre slot="Dart" lang="javascript">...</pre></td-code-block>
+ * 提取代码内容并输出为 ```dart 代码块。
+ *
+ * 这是平台无关的通用 transformer，供各仓库按需注入。
+ */
+export function convertTdCodeBlock(body: string): string {
+  // 匹配 <td-code-block panel="...">...</td-code-block>，提取内部 <pre> 内容
+  return body.replace(
+    /<td-code-block\b[^>]*>([\s\S]*?)<\/td-code-block>/g,
+    (_match, inner: string) => {
+      // 提取 <pre> 内的代码内容（可能有 <pre slot="Dart" lang="javascript"> 属性）
+      const preMatch = inner.match(/<pre\b[^>]*>([\s\S]*?)<\/pre>/);
+      if (preMatch) {
+        const code = preMatch[1].replace(/^\n+/, '').replace(/\s+$/, '');
+        return '```dart\n' + code + '\n```';
+      }
+      return inner;
+    }
+  );
+}
+
+/**
+ * 移除站点专用 coverages-badge 徽章块。
+ * 匹配 flutter 文档开头常见的 <span class="coverages-badge">...</span> 装饰块。
+ */
+export function stripCoverageBadges(body: string): string {
+  return body.replace(/<span\s+class="coverages-badge"[^>]*>[\s\S]*?<\/span>/g, '');
+}

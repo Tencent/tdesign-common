@@ -62,7 +62,8 @@ await generateLlmsDocs({
 - `readComponentDoc`（必传）：组件文档读取器，返回文档原文（含 frontmatter），无文档时返回 null
 - `readDemoCode`（必传）：demo 源码解析器，替换 `{{ demo }}` 占位符
 - `isDemoSlot`：判断 demo 占位符，默认匹配组件目录下的 `_example/<demoName>` 目录
-- `transformers`：正文清理变压器（按序执行），默认使用内置 `cleanSiteHtml`（小程序站点清理）；其余仓库传空数组或自定义
+- `transformers`：正文清理变压器（按序执行），默认使用内置 `cleanSiteHtml`（小程序站点清理）；其余仓库传空数组或自定义。
+  签名：`(body, ctx?: { slug; componentDir }) => string`，`ctx` 提供当前组件上下文，便于变压器按组件差异化处理。
 - `titleKey` / `descriptionKey` / `splineKey`：frontmatter 字段名，默认 `title` / `description` / `spline`
 - `componentMap`：组件清单映射，用于推导组件的导出组件名
 - `parseTitle`：标题解析函数，默认 `splitTitle`
@@ -73,6 +74,8 @@ await generateLlmsDocs({
 - `splitTitle(title)`：拆分 `'Button 按钮' -> { title, subtitle }`；纯中文标题整体作为 title 不误拆
 - `cleanSiteHtml(body)`：清理小程序站点专用 HTML
 - `stripSiteBlocks(body)`：通用站点装饰块移除器（移除设计图块 `<div class="legend">` 等），供各仓库兜底使用
+- `convertTdCodeBlock(body)`：把 `<td-code-block>` + `<pre>` 转成 ` ```dart ` 代码块（flutter 等文档内嵌代码块场景）
+- `stripCoverageBadges(body)`：移除 `<span class="coverages-badge">` 装饰徽章块
 - `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown
 - `renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms.txt 索引
 - `getComponentMap(platform)` / `SPLINE_ORDER` / `SPLINE_LABELS`：内置组件清单与 spline 分组配置
@@ -160,26 +163,29 @@ const parseComponentDoc = createComponentDocParser({
 
 ### flutter（移动端 Flutter）
 
-与其它仓库差异最大：文档在 `docs/mobile/flutter_design/<slug>.md`，为**设计说明**，
-**无 frontmatter、无 demo 占位符、含 `<div class="legend">` 设计图块、有内部相对链接**。
+文档在 `tdesign-site/docs/components/<slug>/README.md`，**有 frontmatter**（`title`/`description`/`spline`/`isComponent`），
+标题为「英文 中文」格式（如 `Avatar 头像`），现有 `splitTitle` 可直接处理。
 
-- 建议为 flutter 提供独立 `docs/mobile/flutter_api/<slug>.md` 承载组件 API 文档；
-  或在 `readComponentDoc` 包装补全 frontmatter（无则用 slug 兜底 `title`/`spline`）
-- `parseTitle`：flutter 若为纯中文标题，注入不拆分的解析器
-- `titleKey` / `splineKey`：无 frontmatter 时兜底
-- 清理：传 `[]`，保留 `stripSiteBlocks` 移除设计图块
+与其它仓库差异：**无 `{{ demo }}` 占位符**，demo 代码直接内嵌在文档里，用 `<td-code-block panel="Dart">`
+包装；开头有 `<span class="coverages-badge">` 装饰徽章需要清理。
+
+- 基于实际源码，flutter 需注入两个通用 transformer：
+  - `convertTdCodeBlock`：把 `<td-code-block>+<pre>` 转成 ` ```dart ``` ` 代码块
+  - `stripCoverageBadges`：移除 `coverages-badge` 徽章块
+- `readDemoCode` 传空（无 demo 占位符替换需求）
 
 ```ts
 const parseComponentDoc = createComponentDocParser({
   readComponentDoc: async (_dir, slug) => {
-    const raw = await readFile(`${docsRoot}/flutter_design/${slug}.md`, 'utf-8').catch(() => null);
-    if (!raw) return null;
-    // 无 frontmatter 时兜底补全
-    return ensureFrontmatter(raw, slug);
+    const raw = await readFile(`${docsRoot}/components/${slug}/README.md`, 'utf-8').catch(() => null);
+    return raw;
   },
   readDemoCode: () => '', // flutter 无 demo 占位符
-  transformers: [],
-  parseTitle: (t) => ({ title: t, subtitle: '' }), // 纯中文
+  transformers: [
+    convertTdCodeBlock,   // 将 <td-code-block> 转为 ```dart 代码块
+    stripCoverageBadges,  // 移除 coverages-badge 徽章
+  ],
+  componentMap: FLUTTER_COMPONENT_MAP,
 });
 ```
 

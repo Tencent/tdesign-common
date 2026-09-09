@@ -41,7 +41,7 @@ export type ReadDemoCode = (componentDir: string, demoName: string) => string;
 export type IsDemoSlot = (componentDir: string, demoName: string) => boolean;
 
 /** 正文清理变压器：按序执行，输入/输出均为正文 Markdown/HTML 字符串 */
-export type BodyTransformer = (body: string) => string;
+export type BodyTransformer = (body: string, ctx?: { slug: string; componentDir: string }) => string;
 
 /** frontmatter 解析结果（含提取的数据与剥离 frontmatter 后的正文） */
 export interface FrontmatterResult {

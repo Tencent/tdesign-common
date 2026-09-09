@@ -28,7 +28,7 @@ export type {
 } from './types';
 
 // 重新导出通用解析与渲染工具，供各组件库复用
-export { parseFrontmatter, splitTitle, cleanSiteHtml, stripSiteBlocks } from './markdown';
+export { parseFrontmatter, splitTitle, cleanSiteHtml, stripSiteBlocks, convertTdCodeBlock, stripCoverageBadges } from './markdown';
 export { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 
 /** 判断 demo 目录是否存在（同步）。 */
@@ -100,7 +100,7 @@ export function createComponentDocParser(options: ComponentDocParserOptions): Pa
     const demoResolved = replaceDemoSlots(content, componentDir, readDemoCode, isDemoSlot);
     // 正文清理：默认使用小程序站点清理，可通过 transformers 覆盖
     const body = (transformers?.length ? transformers : [cleanSiteHtml]).reduce(
-      (block, transform) => transform(block),
+      (block, transform) => transform(block, { slug, componentDir }),
       demoResolved
     );
 
