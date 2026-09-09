@@ -126,6 +126,17 @@ function renderLlmsTxt(docs: ComponentDoc[], siteTitle: string, siteDescription:
 }
 
 /**
+ * 以构建日志样式打印产物清单：文件名对齐 + 体积（kB）。
+ */
+function logGeneratedFiles(entries: { relPath: string; content: string }[]): void {
+  const width = Math.max(...entries.map((entry) => entry.relPath.length));
+  entries.forEach((entry) => {
+    const size = `${(Buffer.byteLength(entry.content, 'utf-8') / 1000).toFixed(2)} kB`;
+    console.log(`${entry.relPath.padEnd(width + 2)}${size.padStart(10)}`);
+  });
+}
+
+/**
  * 纯 JS 方法：为每个组件生成面向 LLM 的 Markdown 文档。
  *
  * 与 vite 解耦 —— 仅依赖文件系统与 gray-matter，不引入任何构建工具类型。
@@ -186,10 +197,21 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
 
   await promises.mkdir(llmsDir, { recursive: true });
 
-  await Promise.all(
-    docs.map((doc) => promises.writeFile(path.join(llmsDir, `${doc.slug}.md`), renderComponentMarkdown(doc)))
-  );
-  await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs, siteTitle, siteDescription));
+  const docEntries = docs.map((doc) => ({
+    relPath: `llms/${doc.slug}.md`,
+    absPath: path.join(llmsDir, `${doc.slug}.md`),
+    content: renderComponentMarkdown(doc),
+  }));
+  const indexEntry = {
+    relPath: 'llms.txt',
+    absPath: path.join(outputDir, 'llms.txt'),
+    content: renderLlmsTxt(docs, siteTitle, siteDescription),
+  };
+
+  await Promise.all([...docEntries, indexEntry].map((entry) => promises.writeFile(entry.absPath, entry.content)));
+
+  logGeneratedFiles([...docEntries, indexEntry]);
+  console.log('\x1b[32m%s\x1b[0m', `✓ [generate-llms] 共生成 ${docEntries.length} 个组件文档 + 1 份 llms.txt 索引`);
 
   return docs;
 }
