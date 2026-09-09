@@ -114,6 +114,34 @@ export function convertTipsBlock(body: string): string {
 }
 
 /**
+ * 提取字符串中的全部顶层 `<div ...>...</div>` 块内容（含嵌套），
+ * 按 tag 计数正确处理嵌套 div，避免非贪婪匹配截断嵌套内容。
+ */
+function extractChildDivBlocks(html: string): string[] {
+  const blocks: string[] = [];
+  const tokenRe = /<\/?div(?:\s[^>]*)?>/g;
+  let depth = 0;
+  let start = -1;
+  let token = tokenRe.exec(html);
+  while (token) {
+    if (token[0].startsWith('</div')) {
+      depth -= 1;
+      if (depth === 0 && start !== -1) {
+        blocks.push(html.slice(start, token.index));
+        start = -1;
+      }
+    } else {
+      if (depth === 0) {
+        start = token.index + token[0].length;
+      }
+      depth += 1;
+    }
+    token = tokenRe.exec(html);
+  }
+  return blocks;
+}
+
+/**
  * 将站点顶部的说明块（版本上线提示 / 渲染框架支持情况）转换为 Markdown 引用块。
  */
 export function convertHeaderNoticeBlocks(body: string): string {
@@ -141,9 +169,9 @@ export function convertHeaderNoticeBlocks(body: string): string {
     if (end === -1) break;
 
     const inner = result.slice(match.index + match[0].length, end);
-    const converted = [...inner.matchAll(/<div\b[^>]*>([\s\S]*?)<\/div>/g)]
-      .map((m) =>
-        m[1]
+    const converted = extractChildDivBlocks(inner)
+      .map((block) =>
+        block
           .replace(/<[^>]+>/g, '')
           .replace(/\s+/g, ' ')
           .trim()
@@ -216,18 +244,15 @@ export const stripSiteBlocks: (body: string) => string = (body) => {
  */
 export function convertTdCodeBlock(body: string): string {
   // 匹配 <td-code-block panel="...">...</td-code-block>，提取内部 <pre> 内容
-  return body.replace(
-    /<td-code-block\b[^>]*>([\s\S]*?)<\/td-code-block>/g,
-    (_match, inner: string) => {
-      // 提取 <pre> 内的代码内容（可能有 <pre slot="Dart" lang="javascript"> 属性）
-      const preMatch = inner.match(/<pre\b[^>]*>([\s\S]*?)<\/pre>/);
-      if (preMatch) {
-        const code = preMatch[1].replace(/^\n+/, '').replace(/\s+$/, '');
-        return '```dart\n' + code + '\n```';
-      }
-      return inner;
+  return body.replace(/<td-code-block\b[^>]*>([\s\S]*?)<\/td-code-block>/g, (_match, inner: string) => {
+    // 提取 <pre> 内的代码内容（可能有 <pre slot="Dart" lang="javascript"> 属性）
+    const preMatch = inner.match(/<pre\b[^>]*>([\s\S]*?)<\/pre>/);
+    if (preMatch) {
+      const code = preMatch[1].replace(/^\n+/, '').replace(/\s+$/, '');
+      return `\`\`\`dart\n${code}\n\`\`\``;
     }
-  );
+    return inner;
+  });
 }
 
 /**

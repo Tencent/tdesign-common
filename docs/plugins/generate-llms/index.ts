@@ -28,7 +28,14 @@ export type {
 } from './types';
 
 // 重新导出通用解析与渲染工具，供各组件库复用
-export { parseFrontmatter, splitTitle, cleanSiteHtml, stripSiteBlocks, convertTdCodeBlock, stripCoverageBadges } from './markdown';
+export {
+  parseFrontmatter,
+  splitTitle,
+  cleanSiteHtml,
+  stripSiteBlocks,
+  convertTdCodeBlock,
+  stripCoverageBadges,
+} from './markdown';
 export { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 
 /** 判断 demo 目录是否存在（同步）。 */
@@ -99,7 +106,7 @@ export function createComponentDocParser(options: ComponentDocParserOptions): Pa
     // demo 占位符替换
     const demoResolved = replaceDemoSlots(content, componentDir, readDemoCode, isDemoSlot);
     // 正文清理：默认使用小程序站点清理，可通过 transformers 覆盖
-    const body = (transformers?.length ? transformers : [cleanSiteHtml]).reduce(
+    const body = (transformers ?? [cleanSiteHtml]).reduce(
       (block, transform) => transform(block, { slug, componentDir }),
       demoResolved
     );
@@ -117,16 +124,28 @@ export function createComponentDocParser(options: ComponentDocParserOptions): Pa
 }
 
 /**
+ * YAML 标量转义：若值含冒号 / 井号 / 引号 / 换行等特殊字符，则用双引号包裹并转义，
+ * 避免破坏 frontmatter 结构。
+ */
+function yamlScalar(value: string): string {
+  const v = value ?? '';
+  if (/["'#:\n\r[\]{}]/.test(v)) {
+    return `"${v.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r')}"`;
+  }
+  return v;
+}
+
+/**
  * 渲染单篇组件文档的 Markdown。
  */
 export function renderComponentMarkdown(doc: ComponentDoc): string {
   const fm = [
     '---',
-    `title: ${doc.title}`,
-    `subtitle: ${doc.subtitle}`,
-    `description: ${doc.description}`,
-    `spline: ${doc.spline}`,
-    `component: ${doc.component}`,
+    `title: ${yamlScalar(doc.title)}`,
+    `subtitle: ${yamlScalar(doc.subtitle)}`,
+    `description: ${yamlScalar(doc.description)}`,
+    `spline: ${yamlScalar(doc.spline)}`,
+    `component: ${yamlScalar(doc.component)}`,
     '---',
     '',
   ].join('\n');
@@ -219,10 +238,16 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
 
   console.log('\x1b[36m%s\x1b[0m', `>[generate-llms] 开始生成 LLM 文档（${platform}）...`);
 
-  // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中但有组件文档的目录
-  const allDirs = await promises.readdir(componentsRoot);
+  // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中、且确实为目录（过滤文件与非目录项）的组件目录
+  const allEntries = await promises.readdir(componentsRoot, { withFileTypes: true });
   const mapKeys = Object.keys(componentMap);
-  const componentDirs = [...mapKeys, ...allDirs.filter((dir) => !mapKeys.includes(dir))];
+  const componentDirs = [
+    ...mapKeys,
+    ...allEntries
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .filter((dir) => !mapKeys.includes(dir)),
+  ];
   const docs: ComponentDoc[] = [];
 
   const parsedDocs = await Promise.all(
