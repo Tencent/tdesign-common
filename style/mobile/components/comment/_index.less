@@ -1,0 +1,77 @@
+@import '../../base.less';
+
+@import './_var.less';
+
+.@{comment} {
+  box-sizing: border-box;
+  padding: 0;
+
+  &__inner {
+    display: flex;
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    margin-right: @comment-avatar-margin-right;
+    cursor: pointer;
+
+    &-image {
+      width: @comment-avatar-size;
+      height: @comment-avatar-size;
+      border-radius: @comment-avatar-radius;
+    }
+  }
+
+  &__content {
+    flex: auto;
+  }
+
+  &__author {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin-bottom: @comment-name-margin-bottom;
+  }
+
+  &__name {
+    display: inline-flex;
+    align-items: center;
+    font: @comment-name-text-size;
+    color: @comment-name-color;
+    cursor: pointer;
+  }
+
+  &__detail {
+    word-break: break-all;
+    font: @comment-content-text-size;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: baseline;
+    flex: 1;
+  }
+
+  &__date {
+    font: @comment-time-text-size;
+    color: @comment-time-color;
+    margin-right: @comment-time-margin-right;
+  }
+
+  &__reply {
+    margin-top: @comment-reply-margin-top;
+    margin-left: @comment-reply-margin-left;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
