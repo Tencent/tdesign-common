@@ -32,10 +32,10 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
 /** 返回第一个存在的文件路径（保持传入顺序），都不存在时返回 null。 */
 async function accessFirst(paths: string[]): Promise<string | null> {
   const results = await Promise.all(
-    paths.map((p) =>
+    paths.map((p): Promise<string | null> =>
       promises.access(p).then(
-        () => p,
-        () => null
+        (): string => p,
+        (): null => null
       )
     )
   );
