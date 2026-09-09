@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import TreeStore from '../../../js/tree/tree-store';
+import TreeStoreV1 from '../../../js/tree-v1/tree-store';
 import { delay } from './kit';
 
 // 节点延迟加载
@@ -759,6 +760,233 @@ describe('tree:model', () => {
       expect(t1d1.label).toBe('t1d1');
       expect(t1d1.info).toBe('t1d1-info');
       expect(t1d1.data.info).toBe('t1d1-info');
+    });
+
+    it('setData 更新 value 后同步 nodeMap', async () => {
+      const tree = new TreeStore();
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const node = tree.getNode('t1.1');
+      node.getModel().setData({
+        value: 't1.1-new',
+      });
+      await delay(0);
+
+      expect(tree.getNode('t1.1')).toBe(null);
+      expect(tree.getNode('t1.1-new')).toBe(node);
+    });
+
+    it('setData 更新 value 后同步 filter 状态', async () => {
+      const tree = new TreeStore({
+        filter: (node) => String(node.value).endsWith('-new'),
+      });
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const node = tree.getNode('t1.1');
+      expect(node.vmIsRest).toBe(false);
+
+      node.getModel().setData({
+        value: 't1.1-new',
+      });
+      await delay(0);
+
+      expect(node.vmIsRest).toBe(true);
+      expect(node.visible).toBe(true);
+    });
+
+    it('tree-v1 setData 更新父节点 value 后同步子树索引', async () => {
+      const tree = new TreeStoreV1({
+        allowDuplicateValue: true,
+      });
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const node = tree.getNode(['t1', 't1.1']);
+      tree.getNode(['t1']).getModel().setData({
+        value: 't1-new',
+      });
+      await delay(0);
+
+      expect(tree.getNode(['t1'])).toBe(null);
+      expect(tree.getNode(['t1', 't1.1'])).toBe(null);
+      expect(tree.getNode(['t1-new'])).toBeTruthy();
+      expect(tree.getNode(['t1-new', 't1.1'])).toBe(node);
+    });
+
+    it('tree-v1 setData 更新父节点 value 后同步子节点路径状态', async () => {
+      const tree = new TreeStoreV1({
+        allowDuplicateValue: true,
+        filter: (node) =>
+          node
+            .getPath()
+            .map((item) => item.value)
+            .join('/') === 't1-new/t1.1',
+      });
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const childNode = tree.getNode(['t1', 't1.1']);
+      expect(childNode.vmIsRest).toBe(false);
+
+      tree.getNode(['t1']).getModel().setData({
+        value: 't1-new',
+      });
+      await delay(0);
+
+      expect(childNode.vmIsRest).toBe(true);
+      expect(childNode.visible).toBe(true);
+    });
+  });
+
+  describe('treeNode:set()', () => {
+    it('set 更新 value 后同步 nodeMap', async () => {
+      const tree = new TreeStore();
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const node = tree.getNode('t1.1');
+      node.set({
+        value: 't1.1-new',
+      });
+      await delay(0);
+
+      expect(tree.getNode('t1.1')).toBe(null);
+      expect(tree.getNode('t1.1-new')).toBe(node);
+    });
+
+    it('set 更新 value 后同步 filter 状态', async () => {
+      const tree = new TreeStore({
+        filter: (node) => String(node.value).endsWith('-new'),
+      });
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const node = tree.getNode('t1.1');
+      expect(node.vmIsRest).toBe(false);
+
+      node.set({
+        value: 't1.1-new',
+      });
+      await delay(0);
+
+      expect(node.vmIsRest).toBe(true);
+      expect(node.visible).toBe(true);
+    });
+
+    it('tree-v1 set 更新父节点 value 后同步子节点路径状态', async () => {
+      const tree = new TreeStoreV1({
+        allowDuplicateValue: true,
+        filter: (node) =>
+          node
+            .getPath()
+            .map((item) => item.value)
+            .join('/') === 't1-new/t1.1',
+      });
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const rootNode = tree.getNode(['t1']);
+      const childNode = tree.getNode(['t1', 't1.1']);
+      expect(childNode.vmIsRest).toBe(false);
+
+      rootNode.set({
+        value: 't1-new',
+      });
+      await delay(0);
+
+      expect(tree.getNode(['t1'])).toBe(null);
+      expect(tree.getNode(['t1-new'])).toBe(rootNode);
+      expect(childNode.vmIsRest).toBe(true);
+      expect(childNode.visible).toBe(true);
+    });
+
+    it('set 更新 value 为 undefined 时保持原索引', async () => {
+      const tree = new TreeStore();
+      tree.append([
+        {
+          value: 't1',
+          children: [
+            {
+              value: 't1.1',
+            },
+          ],
+        },
+      ]);
+      await delay(0);
+
+      const node = tree.getNode('t1.1');
+      node.set({
+        value: undefined,
+      });
+      await delay(0);
+
+      expect(tree.getNode('t1.1')).toBe(node);
+      expect(tree.getNode(undefined)).toBe(null);
     });
   });
 });

@@ -1,7 +1,7 @@
 import { camelCase, difference, isArray, isFunction, isNumber, isPlainObject, isString } from 'lodash-es';
 import mitt from 'mitt';
 
-import { TreeNode } from './tree-node';
+import { TreeNode, privateKey } from './tree-node';
 import { pathToKey } from './tree-node-model';
 
 import type {
@@ -501,8 +501,8 @@ export class TreeStore {
    * @return void
    */
   public updated(node?: TreeNode): void {
-    if (node?.value) {
-      this.updatedMap.set(node.value, true);
+    if (node) {
+      this.updatedMap.set(node[privateKey], true);
     }
     if (this.updateTimer) return;
     this.updateTimer = setTimeout(() => {
@@ -523,7 +523,7 @@ export class TreeStore {
       const updatedList = Array.from(this.updatedMap.keys());
       if (updatedList.length > 0) {
         // 统计需要更新状态的节点，派发更新事件
-        const updatedNodes = updatedList.map((value) => this.getNode(value));
+        const updatedNodes = updatedList.map((id) => this.privateMap.get(id as string));
         this.emit('update', {
           nodes: updatedNodes,
           map: this.updatedMap,
