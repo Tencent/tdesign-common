@@ -166,7 +166,7 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
           .catch(() => false);
         if (!hasReadme) return null;
 
-        return parseComponentReadme(componentDir, componentMap, readDemoCode);
+        return await parseComponentReadme(componentDir, componentMap, readDemoCode);
       } catch (err) {
         // 单个组件解析失败仅告警，不中断整体生成
         console.warn(`[generate-llms] 解析组件 ${dir} 失败，已跳过：`, err);
