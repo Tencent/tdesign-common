@@ -4,9 +4,11 @@
 
 ## 数据源
 
-- 组件目录下的组件文档（frontmatter 含 title/description/spline，正文含引入方式、代码演示、API 表格）：
-  小程序仓库为 `README.md`，其余仓库为 `<slug>.md`（如 `button.md`，通过 `docFilename: '{slug}.md'` 配置）
-- `{{ demo }}` 占位符替换为 `_example/` 目录下的真实源码块
+- 组件文档（frontmatter 含 title/description/spline，正文含引入方式、代码演示、API 表格）：
+  - 小程序仓库：全部在组件目录下的 `README.md`（默认）
+  - 其余仓库：优先读 common 子仓扁平目录 `docsRoot` 下的 `<slug>.md`（如 `packages/common/docs/web/api/affix.md`），
+    其次读组件目录下的 `<slug>.md`（如 `packages/components/affix/affix.md`，通过 `docFilename: '{slug}.md'` 配置）
+- `{{ demo }}` 占位符替换为 `componentsRoot/<slug>/_example/` 目录下的真实源码块
 - 站点专用 HTML（二维码、预览链接、提示块）会被转换为 Markdown 语义或移除
 
 ## 使用
@@ -24,9 +26,10 @@ await generateLlmsDocs({
   siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
 });
 
-// 其余仓库（组件文档为 <slug>.md，如 button.md）
+// 其余仓库（文档读 common 子仓扁平目录，如 packages/common/docs/web/api/affix.md）
 await generateLlmsDocs({
-  componentsRoot: '<组件根目录绝对路径>',
+  componentsRoot: '<组件根目录绝对路径，用于读取 _example/ 演示源码>',
+  docsRoot: '<仓库根目录>/packages/common/docs/web/api',
   outputDir: '<产物输出目录绝对路径>',
   platform: 'web',
   docFilename: '{slug}.md',
@@ -37,7 +40,9 @@ await generateLlmsDocs({
 
 ## 配置项
 
-- `componentsRoot`：组件根目录（绝对路径），目录下含各组件文档与 `_example/`
+- `componentsRoot`：组件根目录（绝对路径），目录下含各组件目录与 `_example/`，用于解析 demo 源码与组件目录内文档
+- `docsRoot`：扁平文档目录（绝对路径，common 子仓，如 `packages/common/docs/web/api`），
+  非小程序仓库传该配置，优先读取其下的 `<slug>.md`
 - `outputDir`：产物输出目录（绝对路径），生成 `<outputDir>/llms/<slug>.md` 与 `<outputDir>/llms.txt`
 - `platform`：站点平台（`web` / `mobile` / `chat`，默认 `mobile`），决定内置组件清单映射，无需外部传入
 - `docFilename`：组件文档文件名，支持 `{slug}` 占位符，默认 `README.md`（小程序仓库）；其余仓库传 `'{slug}.md'`

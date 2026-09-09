@@ -29,6 +29,19 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
   return { data, content: raw.slice(match[0].length) };
 }
 
+/** 返回第一个存在的文件路径（保持传入顺序），都不存在时返回 null。 */
+async function accessFirst(paths: string[]): Promise<string | null> {
+  const results = await Promise.all(
+    paths.map((p) =>
+      promises.access(p).then(
+        () => p,
+        () => null
+      )
+    )
+  );
+  return results.find((result) => result !== null) ?? null;
+}
+
 /** 判断 demo 目录是否存在（同步）。 */
 function isDirectorySync(p: string): boolean {
   try {
@@ -140,9 +153,10 @@ function logGeneratedFiles(entries: { relPath: string; content: string }[]): voi
  * 纯 JS 方法：为每个组件生成面向 LLM 的 Markdown 文档。
  *
  * 与 vite 解耦 —— 仅依赖文件系统与 gray-matter，不引入任何构建工具类型。
- * 数据源为组件目录下的组件文档（小程序仓库为 README.md，其余仓库为 <slug>.md，
- * 通过 `docFilename` 配置，支持 `{slug}` 占位符），
- * `{{ demo }}` 占位符替换为 `_example/` 目录下的真实源码块。
+ * 数据源为组件文档：小程序仓库全部在组件目录下的 README.md；其余仓库优先读
+ * common 子仓扁平目录 `docsRoot`（如 packages/common/docs/web/api/<slug>.md），
+ * 其次读组件目录下的 <slug>.md（通过 `docFilename: '{slug}.md'` 配置）。
+ * `{{ demo }}` 占位符替换为 `componentsRoot/<slug>/_example/` 下的真实源码块。
  * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（组件索引）。
  *
  * @param options 生成配置。需要显式传入 `componentsRoot` 与 `outputDir`；
@@ -156,6 +170,8 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     platform = 'mobile',
     // 组件清单映射：默认按 platform 取内置映射（WEB/MOBILE/CHAT_COMPONENT_MAP），也可显式传入自定义清单覆盖
     componentMap = getComponentMap(platform),
+    // 扁平文档目录（common 子仓，如 packages/common/docs/web/api），文档为 <slug>.md
+    docsRoot,
     // 组件文档文件名：小程序仓库为 README.md，其余仓库（如 button.md）传 '{slug}.md'
     docFilename = 'README.md',
     siteTitle = 'TDesign MiniProgram',
@@ -176,16 +192,15 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
   const parsedDocs = await Promise.all(
     componentDirs.map(async (dir) => {
       const componentDir = path.join(componentsRoot, dir);
-      const docPath = path.join(componentDir, docFilename.replace('{slug}', dir));
+      // 组件文档查找顺序：common 子仓扁平目录 <docsRoot>/<slug>.md ->
+      // 组件目录 <docFilename>（如 README.md / {slug}.md）-> 组件目录 <slug>.md
+      const docPath = await accessFirst([
+        ...(docsRoot ? [path.join(docsRoot, `${dir}.md`)] : []),
+        path.join(componentDir, docFilename.replace('{slug}', dir)),
+        path.join(componentDir, `${dir}.md`),
+      ]);
       try {
-        const stat = await promises.stat(componentDir).catch((): null => null);
-        if (!stat || !stat.isDirectory()) return null;
-
-        const hasDoc = await promises
-          .access(docPath)
-          .then(() => true)
-          .catch(() => false);
-        if (!hasDoc) return null;
+        if (!docPath) return null;
 
         return await parseComponentReadme(componentDir, docPath, componentMap, readDemoCode);
       } catch (err) {
