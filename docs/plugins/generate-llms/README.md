@@ -41,7 +41,7 @@ await generateLlmsDocs({
 });
 ```
 
-各站点（miniprogram / miniprogram-chat / uniapp / uniapp-chat / vue-next / react / mobile-vue / flutter）
+各站点（miniprogram / miniprogram-chat / uniapp / uniapp-chat / vue-next / vue-chat / react / mobile-vue / flutter）
 用 vite 插件薄封装该方法，在 `closeBundle` 钩子里调用，站点构建时自动落盘。
 
 ## 配置项
@@ -101,6 +101,29 @@ const parseComponentDoc = createComponentDocParser({
 });
 ```
 
+### 小程序 miniprogram-chat（聊天类，已落地）
+
+miniprogram-chat 是 miniprogram 仓库中的聊天组件站点，使用 `chat` 平台的组件清单（`CHAT_COMPONENT_MAP`）。
+
+- 文档：`packages/components/<slug>/README.md`（chat 组件，spline 多为 `ai`）
+- demo：`_example/<demoName>/index.{wxml,js,wxss,json}`
+- 清理：默认 `cleanSiteHtml`（微信站点清理）
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (dir) => readFile(`${dir}/README.md`, 'utf-8').catch(() => null),
+  readDemoCode: (dir, name) => readWxmlDemo(dir, name),
+});
+
+await generateLlmsDocs({
+  componentsRoot,
+  outputDir,
+  platform: 'chat', // chat 平台
+  parseComponentDoc,
+  siteTitle: 'TDesign MiniProgram Chat',
+});
+```
+
 ### uniapp（移动端 Vue3）
 
 - 文档：`docs/mobile/api/<slug>.md`，回退组件目录 `README.md`
@@ -118,6 +141,33 @@ const parseComponentDoc = createComponentDocParser({
 });
 ```
 
+### uniapp-chat（移动端 Vue3 聊天类）
+
+uniapp-chat 是 uniapp 中的聊天组件站点，使用 `chat` 平台的组件清单（`CHAT_COMPONENT_MAP`）。
+
+- 文档：`docs/mobile/api/<slug>.md`，回退组件目录 `README.md`
+- demo：`_example/<demoName>/index.vue`，输出 SFC
+- 清理：传空 `transformers`
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (dir, slug) => {
+    const p = `${docsRoot}/../mobile/api/${slug}.md`;
+    return readFile(p, 'utf-8').catch(async () => readFile(`${dir}/README.md`, 'utf-8').catch(() => null));
+  },
+  readDemoCode: (dir, name) => readVueDemo(dir, name),
+  transformers: [],
+});
+
+await generateLlmsDocs({
+  componentsRoot,
+  outputDir,
+  platform: 'chat', // chat 平台
+  parseComponentDoc,
+  siteTitle: 'TDesign Uniapp Chat',
+});
+```
+
 ### vue-next（PC Web Vue3）
 
 - 文档：`packages/common/docs/web/api/<slug>.md`（frontmatter 含 title/description/spline/isComponent/usage）
@@ -129,6 +179,32 @@ const parseComponentDoc = createComponentDocParser({
   readComponentDoc: async (_dir, slug) => readFile(`${docsRoot}/web/api/${slug}.md`, 'utf-8').catch(() => null),
   readDemoCode: (dir, name) => readVueDemo(dir, name),
   transformers: [],
+});
+```
+
+### vue-chat（PC Web 聊天，Vue3，位于 vue-next 仓库）
+
+vue-chat 是 vue-next 仓库中的聊天组件站点，使用 `chat` 平台的组件清单（`CHAT_COMPONENT_MAP`）。
+
+- 文档：与 vue-next 同源 `packages/common/docs/web/api/<slug>.md`（frontmatter 含 title/description/spline=ai/isComponent/usage）
+- demo：`_example/<demoName>/index.vue`，输出 SFC
+- 清理：传空 `transformers`；标题均为「英文 中文」（如 `ChatActionbar 对话操作栏`），现有 `splitTitle` 可直接处理
+- spline：聊天组件通常归入 `ai` 分类，现有 `SPLINE_LABELS['ai'] = 'AI'` 已覆盖
+
+```ts
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (_dir, slug) => readFile(`${docsRoot}/web/api/${slug}.md`, 'utf-8').catch(() => null),
+  readDemoCode: (dir, name) => readVueDemo(dir, name),
+  transformers: [],
+});
+
+await generateLlmsDocs({
+  componentsRoot,
+  outputDir,
+  platform: 'chat', // vue-chat 用 chat 平台，默认取 CHAT_COMPONENT_MAP
+  parseComponentDoc,
+  siteTitle: 'TDesign Vue Chat',
+  siteDescription: 'TDesign 聊天组件库的 LLM 友好文档索引。',
 });
 ```
 
