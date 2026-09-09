@@ -174,7 +174,7 @@ const parseComponentDoc = createComponentDocParser({
   - `stripCoverageBadges`：移除 `coverages-badge` 徽章块
 - `readDemoCode` 传空（无 demo 占位符替换需求）
 
-```ts
+````ts
 const parseComponentDoc = createComponentDocParser({
   readComponentDoc: async (_dir, slug) => {
     const raw = await readFile(`${docsRoot}/components/${slug}/README.md`, 'utf-8').catch(() => null);
@@ -182,12 +182,12 @@ const parseComponentDoc = createComponentDocParser({
   },
   readDemoCode: () => '', // flutter 无 demo 占位符
   transformers: [
-    convertTdCodeBlock,   // 将 <td-code-block> 转为 ```dart 代码块
-    stripCoverageBadges,  // 移除 coverages-badge 徽章
+    convertTdCodeBlock, // 将 <td-code-block> 转为 ```dart 代码块
+    stripCoverageBadges, // 移除 coverages-badge 徽章
   ],
   componentMap: FLUTTER_COMPONENT_MAP,
 });
-```
+````
 
 ## 产物
 
