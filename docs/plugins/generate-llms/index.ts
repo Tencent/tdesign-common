@@ -152,9 +152,19 @@ export function renderComponentMarkdown(doc: ComponentDoc): string {
   return `${fm}${doc.body.trim()}\n`;
 }
 
-function renderIndexLine(doc: ComponentDoc): string {
+/**
+ * 拼接组件文档链接：配置了 `siteBaseUrl` 时输出绝对链接（便于 LLM 在任意位置直接抓取），
+ * 否则输出相对链接 `./llms/<slug>.md`（与 llms.txt 同目录）。
+ */
+export function resolveDocUrl(slug: string, siteBaseUrl?: string): string {
+  const rel = `llms/${slug}.md`;
+  if (!siteBaseUrl) return `./${rel}`;
+  return `${siteBaseUrl.replace(/\/+$/, '')}/${rel}`;
+}
+
+function renderIndexLine(doc: ComponentDoc, siteBaseUrl?: string): string {
   const titleText = doc.subtitle ? `${doc.title} ${doc.subtitle}` : doc.title;
-  return `- [${titleText}](./llms/${doc.slug}.md)：${doc.description}`;
+  return `- [${titleText}](${resolveDocUrl(doc.slug, siteBaseUrl)})：${doc.description}`;
 }
 
 /**
@@ -165,7 +175,8 @@ export function renderLlmsTxt(
   siteTitle: string,
   siteDescription: string,
   splineLabels: Record<string, string>,
-  splineOrder: string[] = SPLINE_ORDER
+  splineOrder: string[] = SPLINE_ORDER,
+  siteBaseUrl?: string
 ): string {
   const groups = new Map<string, ComponentDoc[]>();
   docs.forEach((doc) => {
@@ -184,14 +195,14 @@ export function renderLlmsTxt(
 
   [...knownSplines, ...extraSplines].forEach((spline) => {
     lines.push(`## ${labelOf(spline)}`, '');
-    (groups.get(spline) ?? []).forEach((doc) => lines.push(renderIndexLine(doc)));
+    (groups.get(spline) ?? []).forEach((doc) => lines.push(renderIndexLine(doc, siteBaseUrl)));
     lines.push('');
   });
 
   const ungrouped = groups.get('');
   if (ungrouped) {
     lines.push(`## ${labelOf('other')}`, '');
-    ungrouped.forEach((doc) => lines.push(renderIndexLine(doc)));
+    ungrouped.forEach((doc) => lines.push(renderIndexLine(doc, siteBaseUrl)));
     lines.push('');
   }
 
@@ -275,6 +286,7 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     splineLabels = {},
     siteTitle = 'TDesign MiniProgram',
     siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+    siteBaseUrl,
     parseComponentDoc,
   } = options;
 
@@ -322,7 +334,7 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
   const indexEntry = {
     relPath: 'llms.txt',
     absPath: path.join(outputDir, 'llms.txt'),
-    content: renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels),
+    content: renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels, SPLINE_ORDER, siteBaseUrl),
   };
   const fullIndexEntry = {
     relPath: 'llms-full.txt',

@@ -93,4 +93,10 @@ export interface GenerateLlmsOptions {
   siteTitle?: string;
   /** llms.txt 索引描述 */
   siteDescription?: string;
+  /**
+   * 站点产物部署基址（如 `https://static.tdesign.tencent.com/miniprogram`）。
+   * 传入后 llms.txt 中的组件文档链接输出为绝对 URL（`<siteBaseUrl>/llms/<slug>.md`），
+   * 便于 LLM 在任意位置直接抓取；不传则保持相对链接 `./llms/<slug>.md`。
+   */
+  siteBaseUrl?: string;
 }

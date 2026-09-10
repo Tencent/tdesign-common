@@ -38,6 +38,9 @@ await generateLlmsDocs({
   parseComponentDoc,
   siteTitle: 'TDesign MiniProgram',
   siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+  // 生产部署基址：llms.txt 中的组件链接输出为该基址下的绝对 URL
+  // 如 https://static.tdesign.tencent.com/miniprogram/llms/button.md
+  siteBaseUrl: 'https://static.tdesign.tencent.com/miniprogram',
 });
 ```
 
@@ -56,6 +59,8 @@ await generateLlmsDocs({
 - `componentMap`：自定义组件清单映射（slug -> 导出组件名列表），优先级高于 `platform`
 - `splineLabels`：spline 分类标签映射（如 `{ base: '基础' }`），未覆盖的分类回退为内置标签或 spline 原值
 - `siteTitle` / `siteDescription`：`llms.txt` 与 `llms-full.txt` 索引标题与描述
+- `siteBaseUrl`：站点产物部署基址（如 `https://static.tdesign.tencent.com/miniprogram`）。传入后 `llms.txt` 中组件链接输出绝对
+  URL（`<siteBaseUrl>/llms/<slug>.md`），LLM 可直接抓取；不传则用相对链接 `./llms/<slug>.md`
 
 `createComponentDocParser`（通用解析管道，供各组件库构建自身的 `parseComponentDoc`）：
 
@@ -77,6 +82,7 @@ await generateLlmsDocs({
 - `convertTdCodeBlock(body)`：把 `<td-code-block>` + `<pre>` 转成 ` ```dart ` 代码块（flutter 等文档内嵌代码块场景）
 - `stripCoverageBadges(body)`：移除 `<span class="coverages-badge">` 装饰徽章块
 - `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown
+- `resolveDocUrl(slug, siteBaseUrl?)`：拼接组件文档链接（有基址输出绝对 URL，否则相对链接）
 - `renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms.txt 索引
 - `renderLlmsFullTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms-full.txt（聚合全部组件文档全文）
 - `getComponentMap(platform)` / `SPLINE_ORDER` / `SPLINE_LABELS`：内置组件清单与 spline 分组配置
@@ -262,7 +268,7 @@ const parseComponentDoc = createComponentDocParser({
 ## 产物
 
 - `<outputDir>/llms/<slug>.md`：每个组件一份文档（frontmatter + 正文）
-- `<outputDir>/llms.txt`：组件索引（标题、描述、相对链接），按 spline 分类分组展示（基础/布局/导航/表单/数据展示/反馈/AI），
+- `<outputDir>/llms.txt`：组件索引（标题、描述、链接），按 spline 分类分组展示（基础/布局/导航/表单/数据展示/反馈/AI），
   缺失 spline 的组件归入「其他」分组（排在末尾）
 - `<outputDir>/llms-full.txt`：聚合全部组件文档全文的完整版文件（含各组件完整 Markdown 与前导标题），
   遵循 llms.txt 规范，供 LLM / RAG 一次性加载全部文档内容使用
