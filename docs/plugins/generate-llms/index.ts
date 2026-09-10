@@ -3,7 +3,7 @@
 import { promises, statSync } from 'fs';
 import path from 'path';
 
-import { parseFrontmatter, splitTitle, cleanSiteHtml } from './markdown';
+import { parseFrontmatter, splitTitle, cleanSiteHtml, demoteHeadings } from './markdown';
 import { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 import type {
   ComponentDoc,
@@ -35,6 +35,7 @@ export {
   stripSiteBlocks,
   convertTdCodeBlock,
   stripCoverageBadges,
+  demoteHeadings,
 } from './markdown';
 export { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 
@@ -149,7 +150,25 @@ export function renderComponentMarkdown(doc: ComponentDoc): string {
     '---',
     '',
   ].join('\n');
-  return `${fm}${doc.body.trim()}\n`;
+  return `${fm}\n${doc.body.trim()}\n`;
+}
+
+/**
+ * 渲染 llms-full.txt 中单个组件的文档片段：
+ * 以「## 组件名 中文副标题」标题开头，附 frontmatter 描述引用，随后为正文（标题整体降一级）。
+ *
+ * 与单篇 `llms/<slug>.md` 不同，聚合文件内不输出 frontmatter ——
+ * 多篇文档拼接后 YAML 原文会成为正文噪音（`---` 被渲染为分隔线，或与上一行组合成 setext 标题）。
+ * 层级约定：分组 `#`、组件 `##`、组件内标题 `###` 起，避免分组与组件标题层级倒挂。
+ */
+export function renderComponentSection(doc: ComponentDoc): string {
+  const heading = doc.subtitle ? `${doc.title} ${doc.subtitle}` : doc.title;
+  const lines = [`## ${heading}`];
+  if (doc.description) {
+    lines.push('', `> ${doc.description}`);
+  }
+  lines.push('', demoteHeadings(doc.body.trim()));
+  return lines.join('\n');
 }
 
 /**
@@ -214,8 +233,8 @@ export function renderLlmsTxt(
  * 渲染 llms-full.txt：聚合全部组件文档正文的完整版文件。
  *
  * 遵循 llms.txt 规范 —— `llms-full.txt` 供 LLM 一次性加载全部文档内容：
- * 头部为站点标题与描述，随后按 spline 聚合、逐组件拼接 `renderComponentMarkdown`
- * 渲染的完整文档（含 frontmatter），便于 RAG / 长上下文直接消费。
+ * 头部为站点标题与描述，随后按 spline 聚合、逐组件拼接 `renderComponentSection`
+ * 渲染的文档片段。层级约定：分组 `#`、组件 `##`、组件内标题 `###` 起。
  */
 export function renderLlmsFullTxt(
   docs: ComponentDoc[],
@@ -241,13 +260,13 @@ export function renderLlmsFullTxt(
   const sections: string[] = [`# ${siteTitle}`, `> ${siteDescription}`];
   const orderedSplines = [...knownSplines, ...extraSplines];
   orderedSplines.forEach((spline) => {
-    sections.push(`## ${labelOf(spline)}`);
-    (groups.get(spline) ?? []).forEach((doc) => sections.push(renderComponentMarkdown(doc).trim()));
+    sections.push(`# ${labelOf(spline)}`);
+    (groups.get(spline) ?? []).forEach((doc) => sections.push(renderComponentSection(doc)));
   });
   const ungrouped = groups.get('');
   if (ungrouped) {
-    sections.push(`## ${labelOf('other')}`);
-    ungrouped.forEach((doc) => sections.push(renderComponentMarkdown(doc).trim()));
+    sections.push(`# ${labelOf('other')}`);
+    ungrouped.forEach((doc) => sections.push(renderComponentSection(doc)));
   }
 
   return `${sections.join('\n\n')}\n`;

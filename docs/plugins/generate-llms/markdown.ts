@@ -256,6 +256,27 @@ export function convertTdCodeBlock(body: string): string {
 }
 
 /**
+ * 将正文中的 ATX 标题统一降一级（`##` -> `###`），跳过代码围栏内的行。
+ * 用于 llms-full.txt 聚合场景：组件标题占 `##`，正文标题需要整体下移一级。
+ */
+export function demoteHeadings(body: string): string {
+  let inFence = false;
+  return body
+    .split('\n')
+    .map((line) => {
+      if (/^\s*(```|~~~)/.test(line)) {
+        inFence = !inFence;
+        return line;
+      }
+      if (!inFence && /^#{1,5}\s/.test(line)) {
+        return `#${line}`;
+      }
+      return line;
+    })
+    .join('\n');
+}
+
+/**
  * 移除站点专用 coverages-badge 徽章块。
  * 匹配 flutter 文档开头常见的 <span class="coverages-badge">...</span> 装饰块。
  */

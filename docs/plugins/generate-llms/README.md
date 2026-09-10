@@ -81,10 +81,12 @@ await generateLlmsDocs({
 - `stripSiteBlocks(body)`：通用站点装饰块移除器（移除设计图块 `<div class="legend">` 等），供各仓库兜底使用
 - `convertTdCodeBlock(body)`：把 `<td-code-block>` + `<pre>` 转成 ` ```dart ` 代码块（flutter 等文档内嵌代码块场景）
 - `stripCoverageBadges(body)`：移除 `<span class="coverages-badge">` 装饰徽章块
-- `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown
+- `demoteHeadings(body)`：将正文中的 ATX 标题统一降一级（跳过代码围栏），用于聚合文件层级调整
+- `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown（frontmatter + 正文，用于 `llms/<slug>.md`）
+- `renderComponentSection(doc)`：渲染 llms-full.txt 中的组件片段（`## 标题` + 描述引用 + 正文降一级，不含 frontmatter）
 - `resolveDocUrl(slug, siteBaseUrl?)`：拼接组件文档链接（有基址输出绝对 URL，否则相对链接）
 - `renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms.txt 索引
-- `renderLlmsFullTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms-full.txt（聚合全部组件文档全文）
+- `renderLlmsFullTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms-full.txt（聚合全部组件文档全文，层级为分组 `#` / 组件 `##` / 组件内标题 `###` 起）
 - `getComponentMap(platform)` / `SPLINE_ORDER` / `SPLINE_LABELS`：内置组件清单与 spline 分组配置
 
 ## 各仓库适配指南
@@ -270,5 +272,5 @@ const parseComponentDoc = createComponentDocParser({
 - `<outputDir>/llms/<slug>.md`：每个组件一份文档（frontmatter + 正文）
 - `<outputDir>/llms.txt`：组件索引（标题、描述、链接），按 spline 分类分组展示（基础/布局/导航/表单/数据展示/反馈/AI），
   缺失 spline 的组件归入「其他」分组（排在末尾）
-- `<outputDir>/llms-full.txt`：聚合全部组件文档全文的完整版文件（含各组件完整 Markdown 与前导标题），
-  遵循 llms.txt 规范，供 LLM / RAG 一次性加载全部文档内容使用
+- `<outputDir>/llms-full.txt`：聚合全部组件文档全文的完整版文件（层级为分组 `#` / 组件 `##` / 组件内标题 `###` 起，
+  不含 frontmatter —— 聚合场景下 YAML 原文会成为正文噪音），遵循 llms.txt 规范，供 LLM / RAG 一次性加载全部文档内容使用
