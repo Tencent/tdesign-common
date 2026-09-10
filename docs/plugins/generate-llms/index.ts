@@ -199,6 +199,49 @@ export function renderLlmsTxt(
 }
 
 /**
+ * 渲染 llms-full.txt：聚合全部组件文档正文的完整版文件。
+ *
+ * 遵循 llms.txt 规范 —— `llms-full.txt` 供 LLM 一次性加载全部文档内容：
+ * 头部为站点标题与描述，随后按 spline 聚合、逐组件拼接 `renderComponentMarkdown`
+ * 渲染的完整文档（含 frontmatter），便于 RAG / 长上下文直接消费。
+ */
+export function renderLlmsFullTxt(
+  docs: ComponentDoc[],
+  siteTitle: string,
+  siteDescription: string,
+  splineLabels: Record<string, string>,
+  splineOrder: string[] = SPLINE_ORDER
+): string {
+  // 按 spline 分组有序渲染，缺失 spline 归入「其他」分组（排在末尾），与 llms.txt 保持一致
+  const groups = new Map<string, ComponentDoc[]>();
+  docs.forEach((doc) => {
+    const list = groups.get(doc.spline);
+    if (list) list.push(doc);
+    else groups.set(doc.spline, [doc]);
+  });
+
+  const knownSplines = splineOrder.filter((spline) => groups.has(spline));
+  const extraSplines = [...groups.keys()]
+    .filter((spline) => spline && !splineOrder.includes(spline))
+    .sort((a, b) => a.localeCompare(b));
+  const labelOf = (spline: string) => splineLabels[spline] || SPLINE_LABELS[spline] || spline;
+
+  const sections: string[] = [`# ${siteTitle}`, `> ${siteDescription}`];
+  const orderedSplines = [...knownSplines, ...extraSplines];
+  orderedSplines.forEach((spline) => {
+    sections.push(`## ${labelOf(spline)}`);
+    (groups.get(spline) ?? []).forEach((doc) => sections.push(renderComponentMarkdown(doc).trim()));
+  });
+  const ungrouped = groups.get('');
+  if (ungrouped) {
+    sections.push(`## ${labelOf('other')}`);
+    ungrouped.forEach((doc) => sections.push(renderComponentMarkdown(doc).trim()));
+  }
+
+  return `${sections.join('\n\n')}\n`;
+}
+
+/**
  * 以构建日志样式打印产物清单：文件名对齐 + 体积（kB）。
  */
 function logGeneratedFiles(entries: { relPath: string; content: string }[]): void {
@@ -216,7 +259,8 @@ function logGeneratedFiles(entries: { relPath: string; content: string }[]): voi
  * 通用解析方法（frontmatter/demo/splitTitle/cleanSiteHtml 及渲染）均在 common 内，
  * 各组件库只需通过 `parseComponentDoc` 注入自身的解析器（读取文档、处理站点差异、解析 demo），
  * 返回统一的 ComponentDoc，由 common 编排落盘。
- * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（按 spline 分组的组件索引）。
+ * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（按 spline 分组的组件索引）
+ *       + `<outputDir>/llms-full.txt`（聚合全部组件文档全文的完整版，供 LLM 一次性加载）。
  *
  * @param options 生成配置。需要显式传入 `componentsRoot`、`outputDir`、`parseComponentDoc`；
  *   组件清单默认按 `platform`（默认 `mobile`）取内置映射，用于补充不在 Map 中但有文档的组件目录。
@@ -280,11 +324,20 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     absPath: path.join(outputDir, 'llms.txt'),
     content: renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels),
   };
+  const fullIndexEntry = {
+    relPath: 'llms-full.txt',
+    absPath: path.join(outputDir, 'llms-full.txt'),
+    content: renderLlmsFullTxt(docs, siteTitle, siteDescription, splineLabels),
+  };
 
-  await Promise.all([...docEntries, indexEntry].map((entry) => promises.writeFile(entry.absPath, entry.content)));
+  const outputEntries = [...docEntries, indexEntry, fullIndexEntry];
+  await Promise.all(outputEntries.map((entry) => promises.writeFile(entry.absPath, entry.content)));
 
-  logGeneratedFiles([...docEntries, indexEntry]);
-  console.log('\x1b[32m%s\x1b[0m', `✓ [generate-llms] 共生成 ${docEntries.length} 个组件文档 + 1 份 llms.txt 索引`);
+  logGeneratedFiles(outputEntries);
+  console.log(
+    '\x1b[32m%s\x1b[0m',
+    `✓ [generate-llms] 共生成 ${docEntries.length} 个组件文档 + llms.txt + llms-full.txt`
+  );
 
   return docs;
 }

@@ -81,7 +81,7 @@ export interface GenerateLlmsOptions {
   componentsRoot: string;
   /** 组件文档解析器（必传，由各组件库传入）：负责读取并解析单个组件文档，返回标准 ComponentDoc */
   parseComponentDoc: ParseComponentDoc;
-  /** 产物输出目录（绝对路径），生成 <outputDir>/llms/<slug>.md 与 <outputDir>/llms.txt */
+  /** 产物输出目录（绝对路径），生成 <outputDir>/llms/<slug>.md、<outputDir>/llms.txt 与 <outputDir>/llms-full.txt */
   outputDir: string;
   /** 站点平台，用于内置组件清单映射（web / mobile / chat），默认 `mobile` */
   platform?: Platform;
