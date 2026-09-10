@@ -60,7 +60,7 @@ await generateLlmsDocs({
 - `splineLabels`：spline 分类标签映射（如 `{ base: '基础' }`），未覆盖的分类回退为内置标签或 spline 原值
 - `siteTitle` / `siteDescription`：`llms.txt` 与 `llms-full.txt` 索引标题与描述
 - `siteBaseUrl`：站点产物部署基址（如 `https://static.tdesign.tencent.com/miniprogram`）。传入后 `llms.txt` 中组件链接输出绝对
-  URL（`<siteBaseUrl>/llms/<slug>.md`），LLM 可直接抓取；不传则用相对链接 `./llms/<slug>.md`
+  URL（`<siteBaseUrl>/llms/<slug>.md`），LLM 可直接抓取；不传或传入 `/` 则用相对链接 `./llms/<slug>.md`
 
 `createComponentDocParser`（通用解析管道，供各组件库构建自身的 `parseComponentDoc`）：
 

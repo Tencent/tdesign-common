@@ -158,8 +158,9 @@ export function renderComponentMarkdown(doc: ComponentDoc): string {
  */
 export function resolveDocUrl(slug: string, siteBaseUrl?: string): string {
   const rel = `llms/${slug}.md`;
-  if (!siteBaseUrl) return `./${rel}`;
-  return `${siteBaseUrl.replace(/\/+$/, '')}/${rel}`;
+  const base = siteBaseUrl?.replace(/\/+$/, '');
+  if (!base) return `./${rel}`;
+  return `${base}/${rel}`;
 }
 
 function renderIndexLine(doc: ComponentDoc, siteBaseUrl?: string): string {
