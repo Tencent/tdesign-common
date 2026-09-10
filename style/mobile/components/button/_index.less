@@ -42,6 +42,7 @@
     &.@{button}--hover {
       z-index: 0;
 
+      &,
       &::after {
         background-color: @@activeBgColor;
         border-color: @@activeBorderColor;
@@ -74,6 +75,7 @@
     &.@{button}--hover {
       color: @@hoverColor;
 
+      &,
       &::after {
         background-color: transparent;
         border-color: @@hoverColor;
@@ -154,6 +156,7 @@
       border: 0;
     }
 
+    &.@{button}--hover,
     &.@{button}--hover::after {
       background-color: @button-default-text-active-bg-color;
     }
@@ -162,6 +165,7 @@
       color: @button-primary-text-color;
       background: none;
 
+      &.@{button}--hover,
       &.@{button}--hover::after {
         background-color: @button-primary-text-active-bg-color;
       }
@@ -176,6 +180,7 @@
       color: @button-danger-text-color;
       background: none;
 
+      &.@{button}--hover,
       &.@{button}--hover::after {
         background-color: @button-danger-text-active-bg-color;
       }
@@ -190,6 +195,7 @@
       color: @button-light-text-color;
       background: none;
 
+      &.@{button}--hover,
       &.@{button}--hover::after {
         background-color: @button-light-text-active-bg-color;
       }
@@ -209,6 +215,7 @@
       border-color: @button-default-outline-border-color;
     }
 
+    &.@{button}--hover,
     &.@{button}--hover::after {
       background-color: @button-default-outline-active-bg-color;
       border-color: @button-default-outline-active-border-color;
@@ -319,6 +326,7 @@
     &.@{button}--default.@{button}--hover {
       color: @button-ghost-hover-color;
 
+      &,
       &::after {
         background-color: transparent;
         border-color: @button-ghost-hover-color;
