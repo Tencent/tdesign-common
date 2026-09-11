@@ -12,7 +12,7 @@ spline: ai
 
 支持通过`collapsed`来控制面板是否折叠，示例中展示了当内容输出结束时自动收起的效果
 
-{{ think-base }}
+{{ base }}
 
 ## 样式设置
 
@@ -22,4 +22,4 @@ spline: ai
 
 支持通过`content`插槽来自定义思考内容
 
-{{ think-style }}
+{{ style }}

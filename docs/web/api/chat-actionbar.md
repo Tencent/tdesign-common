@@ -9,4 +9,4 @@ spline: ai
 ### 聊天操作按钮
 
 可以通过`actionBar`配置操作按钮选项和顺序
-{{ chat-action }}
+{{ action }}

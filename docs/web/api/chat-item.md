@@ -33,4 +33,4 @@ spline: ai
 - 通过`actions`可以调整操作按钮内容
 - 当 role 为`assistant`时一般是不显示操作按钮的，所以很多场景下，针对 AI 助手回复的自定义内容，`t-chat-item`组件可以根据角色 role 去区分
 
-{{ chat-item-slot }}
+{{ slot }}
