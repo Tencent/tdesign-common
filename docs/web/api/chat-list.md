@@ -19,7 +19,7 @@ spline: ai
   调整聊天内容，通过`actionbar` 可以调整操作按钮，通过`footer` 可以调整 chat 的底部内容。
 - 每个插槽都提供 `{ item, index }` 参数，方便获取当前消息数据和索引
 
-{{ chat-footer-slot }}
+{{ footer-slot }}
 
 ### 默认插槽
 
@@ -29,16 +29,16 @@ spline: ai
 - 灵活配置聊天气泡对齐方式
 - 支持配置聊天气泡框样式：基础、线框、文字
 
-{{ chat-with-message }}
+{{ with-message }}
 
 ### AI 助手可拖拽
 
 搭配`Dialog`非模态类对话框对话框组件
 
-{{ chat-drag }}
+{{ drag }}
 
 ### AI 助手悬窗
 
 搭配`Drawer` 抽屉组件
 
-{{ chat-drawer }}
+{{ drawer }}

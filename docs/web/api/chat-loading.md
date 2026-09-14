@@ -8,8 +8,8 @@ spline: ai
 
 ### 加载组件
 
-{{ chat-loading }}
+{{ loading }}
 
 ### 带文案描述的加载组件
 
-{{ chat-loading-text }}
+{{ loading-text }}
