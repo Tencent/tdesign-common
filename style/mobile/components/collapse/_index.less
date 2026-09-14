@@ -19,10 +19,16 @@
 // collapse panel
 
 .@{prefix}-collapse-panel {
-  .border(bottom, @collapse-border-color);
-
   background-color: @collapse-panel-bg-color;
   overflow: hidden;
+
+  &--expanded&--bottom {
+    .border(bottom, @collapse-border-color);
+  }
+
+  &--expanded&--top {
+    .border(top, @collapse-border-color);
+  }
 
   &--top {
     display: flex;
@@ -42,14 +48,7 @@
     }
 
     &::after {
-      display: none;
       left: 16px;
-    }
-
-    &--expanded {
-      &::after {
-        display: block;
-      }
     }
 
     .@{cell}__title {
