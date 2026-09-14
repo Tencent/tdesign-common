@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Badge in the style of a red dot.
 
 It is displayed as a circle and is located in the upper right corner of an icon or after a text title when there is no icon. In scenarios with weak prompts, the number is not displayed and the user needs to manually click to view and clear it.

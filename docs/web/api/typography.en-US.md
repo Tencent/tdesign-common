@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: base
 ---
 
+## Code Demos
+
 ### Base
 
 {{ base }}

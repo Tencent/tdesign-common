@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Basic skeleton screen
 
 The simplest skeleton screen effect.

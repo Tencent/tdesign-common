@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
+## Code Demos
+
 ### Confirm the Class dialog
 
 A dialog with a cancellation and main action that guides the user to make a second confirmation. Commonly used in feedback or fault-tolerant scenarios.

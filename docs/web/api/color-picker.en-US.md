@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
+## Code Demos
+
 ### Panel Color Selector
 
 There is no trigger and the color picker panel is displayed directly.

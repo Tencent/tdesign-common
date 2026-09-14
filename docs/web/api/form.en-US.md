@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
+## Code Demos
+
 ### Typical Form
 
 A typical form component contains a variety of form items, such as input boxes, selectors, radio boxes, multicheck boxes, switches, text input, and so on.
