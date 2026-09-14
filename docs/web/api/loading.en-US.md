@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
+## Code Demos
+
 ### Icon Loading
 
 Only the icon is displayed during loading. Suitable for loading scenarios where modules are waiting to refresh after opening the page or completing an operation.

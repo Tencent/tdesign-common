@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Base watermark
 
 {{ base }}

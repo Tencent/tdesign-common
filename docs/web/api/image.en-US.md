@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Base Image
 
 Provide five different fill mode: `fill`、`contain`、`cover`、`none`、and `scale-down`.

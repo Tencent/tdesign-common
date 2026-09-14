@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
+## Code Demos
+
 ### Basic Switch
 
 Without description, the most basic switch.

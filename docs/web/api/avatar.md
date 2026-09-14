@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## 代码演示
+
 ### 头像类型
 
 头像提供了 3 种不同类型的头像：图标头像、图片头像、字符头像

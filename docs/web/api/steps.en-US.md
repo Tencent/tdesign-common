@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: navigation
 ---
 
+## Code Demos
+
 ### Horizontal step bar
 
 A step bar that guides users to use in a horizontal direction.

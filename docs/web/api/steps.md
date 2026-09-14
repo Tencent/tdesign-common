@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: navigation
 ---
 
+## 代码演示
+
 ### 水平步骤条
 
 以水平方向引导用户使用的步骤条。

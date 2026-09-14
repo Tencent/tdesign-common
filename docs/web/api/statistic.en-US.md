@@ -8,6 +8,8 @@ spline: data
 
 Statistic is used to highlight and display a set of numeric or descriptive statistical data. If you need to maintain the consistent font style of numbers with the site's design, we recommend downloading the TCloudNumber font from the "Number Font" section of <a href="https://tdesign.tencent.com/design/fonts">fonts</a>, and importing the TCloudNumberVF.ttf font resource into your project for use.
 
+## Code Demos
+
 ### Basic
 
 Use when you need to highlight a set of numeric or descriptive statistical data.

@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: navigation
 ---
 
+## Code Demos
+
 ### Base paging
 
 #### Small number of pages

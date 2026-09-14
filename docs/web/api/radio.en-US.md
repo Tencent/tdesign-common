@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
+## Code Demos
+
 ### Basic menu
 
 The simplest form of checkbox, often used to select data options in a form.

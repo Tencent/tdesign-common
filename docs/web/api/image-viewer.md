@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: base
 ---
 
+## 代码演示
+
 ### 基础图片查看器
 
 包含查看图片最基础功能的查看器

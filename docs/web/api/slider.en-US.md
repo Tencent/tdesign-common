@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
+## Code Demos
+
 ### Basic Slider
 
 A basic slider consisting of a cursor and a sliding axis. There are two types of sliders, single cursor and double cursor. Layout directions can be divided into horizontal sliders and vertical sliders.

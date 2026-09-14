@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: ai
 ---
 
+## 代码演示
+
 ### 聊天操作按钮
 
 可以通过`actionBar`配置操作按钮选项和顺序

@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Table Classification
 
 As the functionality of tables increases, if all the functions are concentrated in one component, the code file will become more and more bloated. This is not conducive to maintenance or to the business of introducing necessary functions on demand.

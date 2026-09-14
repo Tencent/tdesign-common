@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
+## 代码演示
+
 ### 基础的消息通知
 
 基础消息通知，可手动关闭也可自动退出。
