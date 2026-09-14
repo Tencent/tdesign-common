@@ -34,7 +34,13 @@ toc: false
 
 {{ round }}
 
-### 02 Custom
+#### Liquid Glass material
+
+{{ glass }}
+
+Set `effect="glass"` to enable the Liquid Glass material, preferably with `shape="round"`. When enhancement is unavailable, the component retains a readable and interactive translucent fallback.
+
+### 03 Custom
 
 #### Custom style
 
