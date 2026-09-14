@@ -8,12 +8,12 @@ spline: ai
 
 ### 基础使用
 
-{{ attachments-base }}
+{{ base }}
 
 ### 滚动scrollX
 
-{{ attachments-scrollX }}
+{{ scroll-x }}
 
 ### 滚动scrollY
 
-{{ attachments-scrollY }}
+{{ scroll-y }}

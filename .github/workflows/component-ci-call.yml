@@ -25,14 +25,14 @@ jobs:
       tdesign_mobile_react_domain: ${{ steps.site-domain.outputs.tdesign_mobile_react_domain }}
     steps:
       - name: Download pr id
-        uses: dawidd6/action-download-artifact@v21
+        uses: dawidd6/action-download-artifact@v24
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
           name: pr-id
 
       - name: Download pr report
-        uses: dawidd6/action-download-artifact@v21
+        uses: dawidd6/action-download-artifact@v24
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
@@ -67,7 +67,7 @@ jobs:
     needs: call-context
     runs-on: ubuntu-latest
     steps:
-      - uses: dawidd6/action-download-artifact@v21
+      - uses: dawidd6/action-download-artifact@v24
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
@@ -84,7 +84,7 @@ jobs:
     needs: call-context
     runs-on: ubuntu-latest
     steps:
-      - uses: dawidd6/action-download-artifact@v21
+      - uses: dawidd6/action-download-artifact@v24
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
@@ -101,7 +101,7 @@ jobs:
     needs: call-context
     runs-on: ubuntu-latest
     steps:
-      - uses: dawidd6/action-download-artifact@v21
+      - uses: dawidd6/action-download-artifact@v24
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
@@ -118,7 +118,7 @@ jobs:
     needs: call-context
     runs-on: ubuntu-latest
     steps:
-      - uses: dawidd6/action-download-artifact@v21
+      - uses: dawidd6/action-download-artifact@v24
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
@@ -135,7 +135,7 @@ jobs:
     needs: call-context
     runs-on: ubuntu-latest
     steps:
-      - uses: dawidd6/action-download-artifact@v21
+      - uses: dawidd6/action-download-artifact@v24
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
