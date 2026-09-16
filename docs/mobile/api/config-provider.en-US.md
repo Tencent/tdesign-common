@@ -3,7 +3,7 @@ title: Global property configuration
 description: The global attribute configuration contains the text language configuration of each component and other common configurations to reduce duplicate common configurations.
 isComponent: true
 toc: false
-spline: explain
+spline: other
 ---
 
 ### Internationalization
