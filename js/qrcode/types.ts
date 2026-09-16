@@ -9,6 +9,31 @@ export type ERROR_LEVEL_MAPPED_TYPE = {
   [index in ErrorCorrectionLevel]: Ecc;
 };
 
+/**
+ * Shape of each data module. Function modules (finder / alignment / timing /
+ * format / version) are always the traditional solid square and ignore this.
+ * - `square`      : original merged-solid-block look (default)
+ * - `mini-square` : smaller solid squares (denser matrix)
+ * - `rounded`     : rounded squares
+ * - `dot`         : circles
+ */
+export type QrCodeModuleShape = 'square' | 'mini-square' | 'rounded' | 'dot';
+
+/**
+ * Options for styling the QR code. Omitting `shape` keeps the legacy
+ * merged-solid-block rendering (fully backward compatible).
+ */
+export type QrCodeStyleOptions = {
+  /** Shape of data modules. Defaults to `'square'`. */
+  shape?: QrCodeModuleShape;
+  /**
+   * Side length / diameter of one data module as a percentage of one cell
+   * (0~100). Overrides the per-shape default. Only affects `mini-square` and
+   * `dot`; `rounded` derives its geometry from the cell.
+   */
+  scale?: number;
+};
+
 export type ImageSettings = {
   /**
    * The URI of the embedded image.
