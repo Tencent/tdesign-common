@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Linear progress bar
 
 A component that represents progress in a linear form. It can optionally be supplemented with text or icons to display progress and status. Often used in situations where the amount of information is relatively rich.

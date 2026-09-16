@@ -6,6 +6,8 @@ tdDocTabs: [{ tab: 'demo', name: '示例' }, { tab: 'api', name: 'API' }]
 spline: other
 ---
 
+## Code Demos
+
 ### Internationalization
 
 The supported language TDesign provided:

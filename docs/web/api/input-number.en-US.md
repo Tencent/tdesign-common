@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: form
 ---
 
+## Code Demos
+
 ### Number input box for bilateral adjustment
 
 The entered value is displayed in the center, and the user can modify the value directly in the input box, and can also increase or decrease the value by using the arrow buttons on the left and right of the input box.

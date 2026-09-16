@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
+## Code Demos
+
 ### General Global Prompt
 
 Use concise text to describe the action feedback. General global prompts include: general information, success information, warning information, error information, help information, and loading.

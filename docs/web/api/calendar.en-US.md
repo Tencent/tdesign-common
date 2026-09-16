@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Event calendar panel
 
 A date display container that can display events within dates. It is commonly used when there is enough space and when it is necessary to carry or display event information.

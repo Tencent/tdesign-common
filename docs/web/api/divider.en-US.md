@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: layout
 ---
 
+## Code Demos
+
 ### Basic divider
 
 The basic divider is an independent line without text, divided into horizontal and vertical dividers.

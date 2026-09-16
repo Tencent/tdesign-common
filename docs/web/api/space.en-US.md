@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: layout
 ---
 
+## Code Demos
+
 ### Base space
 
 The default arrangement is horizontal, controlling the horizontal spacing between adjacent components.

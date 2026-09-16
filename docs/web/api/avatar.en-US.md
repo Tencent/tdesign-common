@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Avatar types
 
 Avatars provide 3 different types of avatars: icon avatars, picture avatars, and character avatars

@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: layout
 ---
 
+## Code Demos
+
 ### Base guide
 
 {{ base }}

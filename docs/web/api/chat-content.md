@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: ai
 ---
 
+## 代码演示
+
 ### 默认聊天格式
 
 对大模型返回的 Markdown 数据自动渲染。

@@ -6,6 +6,8 @@ tdDocTabs: [{ tab: 'demo', name: '示例' }, { tab: 'api', name: 'API' }]
 spline: other
 ---
 
+## 代码演示
+
 ### 国际化配置
 
 TDesign 支持国际化/多语言配置，目前支持的语言包括:

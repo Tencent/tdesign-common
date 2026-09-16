@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: data
 ---
 
+## Code Demos
+
 ### Basic collapsible panel
 
 Basic collapsible panel, with customizable panel content.

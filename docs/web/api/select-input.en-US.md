@@ -6,6 +6,8 @@ usage: { title: '', description:'' }
 spline: data
 ---
 
+## Code Demos
+
 ### Filter Input Box
 
 Unified filter logic includes: input box, drop-down box, borderless mode, etc. You can use the filter input box to customize complex filters.

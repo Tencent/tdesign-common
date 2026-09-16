@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: ai
 ---
 
+## 代码演示
+
 ### 基础问答
 
 - 通过`reasoning`属性配置思维链内容

@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
+## Code Demos
+
 ### Basic Alert
 
 The most basic warning bar using concise text prompts, with hints for 4 cases: Normal , Success, Alert, Failure.

@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: message
 ---
 
+## Code Demos
+
 ### Basic Message Notification
 
 Basic message notification, which can be manually closed or automatically exited.

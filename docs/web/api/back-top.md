@@ -6,6 +6,8 @@ usage: { title: 'BackTop 返回顶部', description: '用于返回页面顶部' 
 spline: data
 ---
 
+## 代码演示
+
 ### 基础的回到顶部
 
 默认距离页面右侧24px，距离页面底部80px，滚动动画时长200ms
