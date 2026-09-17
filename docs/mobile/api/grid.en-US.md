@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Basic Grid
 
 {{ base }}
 
-#### with Description
+#### Grid with Description
 
 {{ desc }}
 
@@ -32,9 +32,13 @@ toc: false
 
 ### 02 Component Style
 
-#### with Icon
+#### Grid with Icon
 
 {{ icon }}
+
+#### Full-width Grid
+
+{{ multiple }}
 
 #### Card
 

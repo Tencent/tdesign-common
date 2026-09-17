@@ -7,9 +7,9 @@ spline: form
 
 ## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
-#### Basic Calender
+#### Basic Calendar
 
 {{ base }}
 

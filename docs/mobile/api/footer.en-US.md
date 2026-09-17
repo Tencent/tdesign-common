@@ -6,9 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
-### Component Type
+## Code Demos
 
 #### Basic Footer
 

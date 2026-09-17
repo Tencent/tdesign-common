@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Basic
 
@@ -26,7 +26,7 @@ toc: false
 
 {{ cover }}
 
-### 03 Manual Close
+### 04 Manual Close
 
 #### Close toast manually
 

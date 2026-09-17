@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### Component Type
+### 01 Component Types
 
 #### Basic
 
@@ -20,6 +20,6 @@ toc: false
 
 ### 02 Component Status
 
-#### Disabled State
+#### Controller State
 
 {{ disabled }}

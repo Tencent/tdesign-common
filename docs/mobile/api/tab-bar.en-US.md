@@ -6,7 +6,9 @@ isComponent: true
 toc: false
 ---
 
-### 01 Component Type
+## Code Demos
+
+### 01 Component Types
 
 #### Text TabBar
 
@@ -34,7 +36,7 @@ toc: false
 
 {{ round }}
 
-### 02 Custom
+### 03 Custom
 
 #### Custom style
 

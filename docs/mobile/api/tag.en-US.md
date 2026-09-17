@@ -6,25 +6,17 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
-
-#### Type
+### 01 Component Types
 
 {{ type }}
 
-#### with Close Button
-
 {{ closable }}
-
-#### Clickable Tag
 
 {{ checkable }}
 
 ### 02 Component Status
-
-#### Display Tag
 
 {{ theme }}
 

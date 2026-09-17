@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Vertical checkbox
 
@@ -42,8 +42,8 @@ toc: false
 
 {{ card }}
 
-### Component Specification
+### 04 Special Style
 
-#### checkbox size specifications
+#### Vertical Card Checkbox
 
 {{ special }}

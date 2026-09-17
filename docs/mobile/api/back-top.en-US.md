@@ -8,9 +8,9 @@ toc: false
 
 ## Code Demos
 
-### Component Types
+### Component Type
 
-#### Round of BackTop
+#### Round BackTop
 
 The basic usage is a circle with a white background, which is fixed in bottom-right of the page, and clicking scroll to the top of the page.
 
@@ -22,6 +22,6 @@ use `icon` Attributes can customize button icon.
 
 {{ base }}
 
-#### Half-round of BackTop
+#### Half-round BackTop
 
 {{ half-round }}

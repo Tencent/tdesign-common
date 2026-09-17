@@ -6,18 +6,22 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### Component Type
+### 01 Component Types
 
-#### Basic ImageViewer
+#### Image Viewer Type
 
 {{ base }}
 
-#### Basic and alignment ImageViewer
+### 02 Component Type
+
+#### Image Viewer Type with Vertical Alignment
 
 {{ align }}
 
-#### Operation ImageViewer
+### 03 Component Type
+
+#### ImageViewer with Operations
 
 {{ operation }}

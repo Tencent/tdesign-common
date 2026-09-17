@@ -10,26 +10,24 @@ toc: false
 
 ### 01 Component Types
 
-### List ActionSheet
+#### List Type
 
 {{ list }}
 
-### Gird ActionSheet
+#### Grid ActionSheet
 
 {{ grid }}
-
-### Gird ActionSheet - Multiple Pages
 
 {{ grid-multiple }}
 
 ### 02 Component Status
 
-#### List ActionSheet Status
+#### List Option Status
 
 {{ status }}
 
 ### 03 Component Style
 
-#### List ActionSheet Alignment
+#### List Alignment
 
 {{ align }}
