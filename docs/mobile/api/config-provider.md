@@ -8,7 +8,7 @@ spline: other
 
 ## 代码演示
 
-### 01 国际化配置
+### 国际化配置
 
 TDesign 支持国际化/多语言配置，目前支持的语言包括:
 
@@ -25,22 +25,24 @@ TDesign 支持国际化/多语言配置，目前支持的语言包括:
 
 如果你想贡献更多语言包，欢迎参考 [如何新增语言包](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) 发起 PR。
 
-### 02 Upload 表格
+### 01 配置示例
+
+#### Upload
 
 {{ upload-en }}
 
-### 03 Table 表格
+#### Table
 
 {{ table-en }}
 
-### 04 其他组件
+#### 其他组件
 
 {{ other-en }}
 
-### 05 全局组件前缀
+### 02 全局组件前缀
 
 TDesign 的组件前缀统一为`t`，在一些业务场景中，有需要改变组件前缀来满足业务的使用场景。
-可以使用`esm`版本（保证您可以修改less vars)，通过全局配置修改`classPrefix`，并配合 less-loader 修改`@prefix`这个 less vars 来保证组件样式的正常。
+可以使用`esm`版本（保证您可以修改less vars），通过全局配置修改`classPrefix`，并配合 less-loader 修改`@prefix`这个 less vars 来保证组件样式的正常。
 
 ```js
 import Vue from 'vue';

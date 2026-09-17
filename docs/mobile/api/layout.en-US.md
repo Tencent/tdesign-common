@@ -6,14 +6,14 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Types
+### 01 Component Type
 
-#### Basic
+#### Basic Usage
 
 {{ base }}
 
-#### Increase Spacing
+#### Add Spacing Between Col Elements
 
 {{ offset }}

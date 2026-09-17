@@ -6,9 +6,11 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
+
+#### Basic Link
 
 {{ base }}
 
@@ -26,11 +28,13 @@ toc: false
 
 ### 02 Component Status
 
-{{ status }}
-
 #### Different Themes
 
 {{ theme }}
+
+#### Disabled Status
+
+{{ status }}
 
 ### 03 Component Style
 

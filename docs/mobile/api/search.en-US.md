@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Basic
 
@@ -27,8 +27,6 @@ toc: false
 #### The shape of Search
 
 {{ shape }}
-
-### 03 Component State
 
 #### Default state alignment methods
 

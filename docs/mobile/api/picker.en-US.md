@@ -6,25 +6,20 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Basic Picker
 
-单项和多项选择
+Single and multiple selection
 
 {{ base }}
-
-#### Area Picker
 
 {{ area }}
 
 ### 02 Component Style
 
-#### with Title
-
 {{ with-title }}
-#### Custom Picker Height
 
 {{ custom-height }}

@@ -6,16 +6,13 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Basic usage
 
 {{ base }}
-#### QRCode Type
-
-{{ type }}
 
 #### With Icon
 
@@ -32,21 +29,13 @@ toc: false
 ### 02 Component Status
 
 {{ status }}
-#### Custom Status Render
-
-{{ status-render }}
 
 ### 03 Component Style
 
-#### Custom Color
+#### QRCode Color
 
 {{ color }}
 
-#### Custom Size
+#### QRCode Size
 
 {{ size }}
-### 04 Advanced
-
-#### Download QRCode
-
-{{ download }}

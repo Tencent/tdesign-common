@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Basic
 
@@ -22,25 +22,26 @@ toc: false
 
 {{ autosize }}
 
-#### Set the maximum number of characters
+#### Set Character Limit
 
 {{ maxlength }}
-
-#### Set the maximum number of characters. One Chinese character means two characters
 
 {{ maxcharacter }}
 
 ### 02 Component Status
 
-#### Disable
+#### Disabled State
 
 {{ disabled }}
 
 ### 03 Component Style
 
+#### Vertical Style
+
+{{ card }}
+
+### 04 Special Style
+
 #### External Label Textarea
 
 {{ custom }}
-#### Card Style
-
-{{ card }}

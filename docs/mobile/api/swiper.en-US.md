@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Dots
 
@@ -25,19 +25,21 @@ toc: false
 #### Controls
 
 {{ control }}
-#### Navigation Outside
 
-{{ outside }}
+#### Current
+
+{{ current }}
 
 ### 02 Component Style
 
 #### Vertical mode
 
 {{ vertical }}
+
+#### Outside mode
+
+{{ outside }}
+
 #### Card Mode
 
 {{ card }}
-
-#### Specify Current Swiper Item
-
-{{ current }}

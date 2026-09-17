@@ -36,12 +36,12 @@ toc: false
 
 ### 02 组件状态
 
-公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
+#### 公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
 
 {{ theme }}
 
 ### 03 可滚动的公告栏
 
-可滚动公告栏有水平 (horizontal) 和垂直 (vertical)
+#### 可滚动公告栏有水平（horizontal）和垂直（vertical）
 
 {{ scrolling }}
