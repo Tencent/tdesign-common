@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demos
 
-### 01 Type
+### Type
 
 #### Base List
 
