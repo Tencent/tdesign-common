@@ -38,6 +38,6 @@ toc: false
 
 ### 04 Advanced
 
-#### Delay Display
+#### Delay Loading
 
 {{ delay }}
