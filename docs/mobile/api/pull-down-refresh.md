@@ -12,10 +12,3 @@ toc: false
 
 {{ base }}
 
-#### 刷新超时
-
-{{ timeout }}
-
-#### 自定义提示文案
-
-{{ loading-texts }}

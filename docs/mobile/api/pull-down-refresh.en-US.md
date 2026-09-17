@@ -11,11 +11,3 @@ toc: false
 Since page scrolling cannot be monitored within the component, the page needs to get the component instance and pass the page scrolling event to the component.
 
 {{ base }}
-
-#### Refresh Timeout
-
-{{ timeout }}
-
-#### Custom Loading Texts
-
-{{ loading-texts }}
