@@ -36,8 +36,6 @@ toc: false
 
 ### 03 Component Style
 
-#### Vertical Style
-
 {{ card }}
 
 ### 04 Special Style
