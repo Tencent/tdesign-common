@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: ai
 ---
 
+> 待废弃,请使用新组件 ChatMessage
+
 ### 聊天气泡框
 
 聊天气泡框样式，基础、线框、文字，默认为文字

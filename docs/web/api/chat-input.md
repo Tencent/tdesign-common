@@ -6,6 +6,8 @@ usage: { title: '', description: '' }
 spline: ai
 ---
 
+> 待废弃,请使用新组件 ChatSender
+
 ### 基础输入框
 
 {{ base }}
