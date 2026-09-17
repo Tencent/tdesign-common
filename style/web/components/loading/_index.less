@@ -87,9 +87,24 @@
 .@{prefix}-loading__text {
   width: auto;
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: unset;
   font: @loading-text-size;
-  margin-left: @loading-text-margin-left;
+  margin-left: @loading-text-margin-left-m;
+}
+
+.@{prefix}-size-s .@{prefix}-loading__text {
+  font: @loading-text-size-s;
+  margin-left: @loading-text-margin-left-s;
+}
+
+.@{prefix}-size-m .@{prefix}-loading__text {
+  font: @loading-text-size-m;
+  margin-left: @loading-text-margin-left-m;
+}
+
+.@{prefix}-size-l .@{prefix}-loading__text {
+  font: @loading-text-size-l;
+  margin-left: @loading-text-margin-left-l;
 }
 
 .@{prefix}-loading__gradient {
