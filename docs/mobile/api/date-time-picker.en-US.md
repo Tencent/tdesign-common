@@ -34,6 +34,10 @@ toc: false
 
 {{ show-week }}
 
+#### Time Picker with Interval
+
+{{ steps }}
+
 ### 02 Component Status
 
 #### DatetimePicker with Title

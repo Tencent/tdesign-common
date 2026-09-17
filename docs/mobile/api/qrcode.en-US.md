@@ -13,6 +13,9 @@ toc: false
 #### Basic usage
 
 {{ base }}
+#### QRCode Type
+
+{{ type }}
 
 #### With Icon
 
@@ -29,6 +32,9 @@ toc: false
 ### 02 Component Status
 
 {{ status }}
+#### Custom Status Render
+
+{{ status-render }}
 
 ### 03 Component Style
 
@@ -39,3 +45,8 @@ toc: false
 #### Custom Size
 
 {{ size }}
+### 04 Advanced
+
+#### Download QRCode
+
+{{ download }}

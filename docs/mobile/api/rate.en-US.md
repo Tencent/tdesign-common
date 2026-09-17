@@ -39,6 +39,9 @@ toc: false
 #### Set Rate Color
 
 {{ color }}
+#### Description Placement
+
+{{ placement }}
 
 ### 04 Special Style
 

@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
+## Code Demo
 
-### Component Types
+### 01 Component Types
 
 #### Round of BackTop
 

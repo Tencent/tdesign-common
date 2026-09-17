@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
 
 #### Basic Footer
 

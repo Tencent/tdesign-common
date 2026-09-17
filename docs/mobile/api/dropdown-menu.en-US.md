@@ -35,3 +35,6 @@ The multiple selection dropdownMenu can have the following styles depending on t
 #### Slot Style
 
 {{ customized }}
+#### Menu Direction
+
+{{ direction }}

@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
+## Code Demo
 
 ### 01 Component Type
 
@@ -42,7 +42,7 @@ toc: false
 
 {{ card }}
 
-### Component Specification
+### 04 Component Specification
 
 #### checkbox size specifications
 

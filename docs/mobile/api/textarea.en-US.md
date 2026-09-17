@@ -41,3 +41,6 @@ toc: false
 #### External Label Textarea
 
 {{ custom }}
+#### Card Style
+
+{{ card }}

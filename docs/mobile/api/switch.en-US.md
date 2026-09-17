@@ -14,12 +14,17 @@ toc: false
 
 {{ label }}
 
-### 02 Component Status
+## Code Demo
+
+### 01 Component Status
 
 {{ status }}
 
-### 03 Component Style
+### 02 Component Style
 
 #### Switch Size
 
 {{ size }}
+#### Custom Color
+
+{{ color }}

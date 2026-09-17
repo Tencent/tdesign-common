@@ -25,6 +25,9 @@ toc: false
 #### with Badge
 
 {{ badge }}
+#### Multiple Rows
+
+{{ multiple }}
 
 #### Scrollable
 

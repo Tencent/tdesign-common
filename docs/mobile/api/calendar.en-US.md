@@ -5,7 +5,7 @@ isComponent: true
 spline: form
 ---
 
-## Code Demos
+## Code Demo
 
 ### 01 Component Type
 

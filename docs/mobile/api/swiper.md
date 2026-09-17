@@ -25,9 +25,19 @@ toc: false
 #### Controls
 
 {{ control }}
+#### 指示器外置
+
+{{ outside }}
 
 ### 02 组件样式
 
 #### 垂直模式
 
 {{ vertical }}
+#### 卡片式
+
+{{ card }}
+
+#### 指定当前轮播项
+
+{{ current }}

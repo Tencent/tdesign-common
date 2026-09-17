@@ -26,7 +26,7 @@ toc: false
 
 {{ cover }}
 
-### 03 Manual Close
+### 04 Manual Close
 
 #### Close toast manually
 
