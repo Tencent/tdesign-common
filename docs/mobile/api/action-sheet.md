@@ -18,8 +18,6 @@ toc: false
 
 {{ grid }}
 
-#### 宫格型动作面板-多页
-
 {{ grid-multiple }}
 
 ### 02 组件状态

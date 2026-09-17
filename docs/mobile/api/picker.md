@@ -16,15 +16,10 @@ toc: false
 
 {{ base }}
 
-#### 地区选择器
-
 {{ area }}
 
 ### 02 组件样式
 
-#### 是否带标题
-
 {{ with-title }}
-#### 自定义选择器高度
 
 {{ custom-height }}

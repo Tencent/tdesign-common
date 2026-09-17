@@ -6,9 +6,9 @@ toc: false
 spline: other
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Internationalization
+### Internationalization
 
 The supported language TDesign provided:
 
@@ -25,19 +25,21 @@ The supported language TDesign provided:
 
 If you want to contribute more language packs, please refer to [How to add a language pack](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) PR.
 
-### 02 Upload
+### 01 Config Example
+
+#### Upload
 
 {{ upload-en }}
 
-### 03 Table
+#### Table
 
 {{ table-en }}
 
-### 04 others
+#### Others
 
 {{ other-en }}
 
-### 05 Global Component Classprefix
+### 02 Global Component Classprefix
 
 the classprefix of TDesign component is `t`. In some situations, it is necessary to change the component prefix to meet the usage needs.
 

@@ -26,6 +26,10 @@ toc: false
 
 {{ show-text }}
 
+#### 评分弹框位置
+
+{{ placement }}
+
 ### 02 组件状态
 
 {{ action }}
@@ -39,9 +43,6 @@ toc: false
 #### 设置评分颜色
 
 {{ color }}
-#### 描述位置
-
-{{ placement }}
 
 ### 04 特殊样式
 

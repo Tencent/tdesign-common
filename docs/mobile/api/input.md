@@ -58,6 +58,6 @@ toc: false
 
 {{ bordered }}
 
-#### 自定义样式文本框
+#### 自定义样式输入框
 
 {{ custom }}

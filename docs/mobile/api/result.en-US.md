@@ -6,14 +6,14 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### Component Type
 
-#### Basic
+#### Basic Result
 
 {{ theme }}
 
-### 02 Custom
+#### Custom Result
 
 {{ custom }}

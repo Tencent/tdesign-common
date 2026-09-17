@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Solid Rate
 
@@ -26,6 +26,10 @@ toc: false
 
 {{ show-text }}
 
+#### Rate Popup Placement
+
+{{ placement }}
+
 ### 02 Component Status
 
 {{ action }}
@@ -39,9 +43,6 @@ toc: false
 #### Set Rate Color
 
 {{ color }}
-#### Description Placement
-
-{{ placement }}
 
 ### 04 Special Style
 

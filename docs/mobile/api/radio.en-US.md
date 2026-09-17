@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Portrait Radio
 
@@ -19,6 +19,8 @@ toc: false
 {{ horizontal }}
 
 ### 02 Component Status
+
+#### Disabled State
 
 {{ status }}
 
@@ -32,10 +34,12 @@ toc: false
 
 {{ placement }}
 
-#### Non-Field Radio
+#### Non-full-width Radio
 
 {{ card }}
 
 ### 04 Special Style
+
+#### Radio Size
 
 {{ custom }}

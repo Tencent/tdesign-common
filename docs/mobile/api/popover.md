@@ -16,6 +16,4 @@ toc: false
 
 {{ theme }}
 
-#### 气泡弹出方向
-
 {{ placement }}

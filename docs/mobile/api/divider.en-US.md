@@ -6,18 +6,14 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
-
-#### Basic Divider
+### 01 Component Types
 
 The divider is mainly composed of a straight line and text. Pass in divider text or other custom content through slot, and control whether the separator is vertical or horizontal through layout.
 
 {{ base }}
 
-### 02 Component Style
-
-#### Dashed Style
+### 02 Component State
 
 {{ theme }}

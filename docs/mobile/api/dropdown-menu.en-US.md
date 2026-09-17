@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Radio DropdownMenu
 
@@ -16,7 +16,7 @@ This parameter is used to select scenarios where an option is required
 
 {{ single }}
 
-#### Multi-Select DropdownMenu
+#### Split DropdownMenu
 
 This parameter is used when multiple options can be selected
 The label does not change the name after selection, and the title displays a maximum of 4 characters beyond "..." handle
@@ -24,9 +24,13 @@ The multiple selection dropdownMenu can have the following styles depending on t
 
 {{ multiple }}
 
+#### Expand Upward
+
+{{ direction }}
+
 ### 02 Component Status
 
-#### Disable Menu/Options
+#### Disabled
 
 {{ disabled }}
 
@@ -35,6 +39,3 @@ The multiple selection dropdownMenu can have the following styles depending on t
 #### Slot Style
 
 {{ customized }}
-#### Menu Direction
-
-{{ direction }}

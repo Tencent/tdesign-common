@@ -6,6 +6,10 @@ isComponent: true
 toc: false
 ---
 
+## Code Demos
+
+### 01 Component Types
+
 #### Basic Switch
 
 {{ base }}
@@ -14,17 +18,18 @@ toc: false
 
 {{ label }}
 
-## Code Demo
+#### Custom Color Switch
 
-### 01 Component Status
+{{ color }}
+
+### 02 Component Status
+
+#### Loading Status
 
 {{ status }}
 
-### 02 Component Style
+### 03 Component Style
 
 #### Switch Size
 
 {{ size }}
-#### Custom Color
-
-{{ color }}

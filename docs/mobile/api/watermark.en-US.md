@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Type
+### 01 Component Types
 
 #### Text Watermark
 
@@ -39,7 +39,5 @@ toc: false
 {{ moving-image }}
 
 ### 02 Component Style
-
-#### Rectangular and Hexagonal Layout
 
 {{ layout }}
