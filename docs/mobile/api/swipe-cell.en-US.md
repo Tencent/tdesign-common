@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
 
 #### Swipe Left with Single Operation
 

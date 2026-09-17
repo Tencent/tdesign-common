@@ -6,21 +6,23 @@ usage: { title: '', description: '' }
 spline: ai
 ---
 
-### 基础用法
+## 代码演示
+
+### 01 基础用法
 
 支持多种加载动效类型，包括 gradient、moving、dots
 
 {{ base }}
 
-### 思考中
+### 02 思考中
 
 {{ pending }}
 
-### 思考完成
+### 03 思考完成
 
 {{ complete }}
 
-### 布局方式
+### 04 布局方式
 
 支持通过`layout`来设置思考过程的布局方式
 

@@ -8,7 +8,7 @@ toc: false
 
 ## 代码演示
 
-### 组件类型
+### 01 组件类型
 
 #### 图标空状态
 
@@ -16,8 +16,8 @@ toc: false
 
 #### 自定义图片空状态
 
-{{ imageEmpty }}
+{{ image-empty }}
 
 #### 带操作空状态
 
-{{ buttonEmpty }}
+{{ button-empty }}

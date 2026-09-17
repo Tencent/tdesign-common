@@ -6,10 +6,12 @@ usage: { title: '', description: '' }
 spline: ai
 ---
 
-### 基础类型
+## 代码演示
+
+### 01 基础类型
 
 {{ base }}
 
-### 手动初始化状态
+### 02 手动初始化状态
 
 {{ comment }}

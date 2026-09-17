@@ -23,3 +23,8 @@ toc: false
 消息通知类型为普通（info）、警示（warning）、成功（success）、错误（error），用 API `Message.info` 方法调用反馈类对话框
 
 {{ theme }}
+### 03 进阶
+
+#### 关闭所有通知
+
+{{ close-all }}

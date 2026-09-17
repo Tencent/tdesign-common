@@ -35,3 +35,6 @@ toc: false
 #### 插槽样式
 
 {{ customized }}
+#### 菜单展开方向
+
+{{ direction }}

@@ -6,19 +6,19 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
+## Code Demo
 
 ### 01 Component Types
 
-### List ActionSheet
+#### List ActionSheet
 
 {{ list }}
 
-### Gird ActionSheet
+#### Gird ActionSheet
 
 {{ grid }}
 
-### Gird ActionSheet - Multiple Pages
+#### Gird ActionSheet - Multiple Pages
 
 {{ grid-multiple }}
 

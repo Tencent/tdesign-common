@@ -16,11 +16,11 @@ toc: false
 
 #### Bulletin board with icon
 
-{{ iconDemo }}
+{{ icon-demo }}
 
 #### Bulletin board with closed
 
-{{ suffixIcon }}
+{{ suffix-icon }}
 
 #### Bring the port to the bulletin board
 

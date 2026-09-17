@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
+## Code Demo
 
 ### 01 Component Types
 

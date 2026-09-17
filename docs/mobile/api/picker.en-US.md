@@ -16,12 +16,15 @@ toc: false
 
 {{ base }}
 
-#### 地区选择器
+#### Area Picker
 
 {{ area }}
 
-### 02 组件样式
+### 02 Component Style
 
 #### with Title
 
 {{ with-title }}
+#### Custom Picker Height
+
+{{ custom-height }}

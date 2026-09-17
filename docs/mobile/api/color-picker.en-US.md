@@ -21,3 +21,8 @@ toc: false
 ### 02 Component Status
 
 {{ format }}
+### 03 Advanced
+
+#### ColorPicker in Popup
+
+{{ use-popup }}

@@ -23,3 +23,8 @@ Used for lightweight feedback or prompts without interrupting user action.
 Message types are info, warning, success, error, and call the feedback class dialog box with the API 'Message.info' method
 
 {{ theme }}
+### 03 Advanced
+
+#### Close All Messages
+
+{{ close-all }}

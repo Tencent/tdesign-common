@@ -47,3 +47,6 @@ toc: false
 #### 函数方式调用
 
 {{ service }}
+#### 延迟显示
+
+{{ delay }}

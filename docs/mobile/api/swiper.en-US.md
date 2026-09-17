@@ -25,9 +25,19 @@ toc: false
 #### Controls
 
 {{ control }}
+#### Navigation Outside
+
+{{ outside }}
 
 ### 02 Component Style
 
 #### Vertical mode
 
 {{ vertical }}
+#### Card Mode
+
+{{ card }}
+
+#### Specify Current Swiper Item
+
+{{ current }}

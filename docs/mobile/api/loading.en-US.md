@@ -47,3 +47,6 @@ toc: false
 #### Function Call
 
 {{ service }}
+#### Delay Display
+
+{{ delay }}

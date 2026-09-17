@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demo
 
-### Component Type
+### 01 Component Type
 
 #### Single Handle
 
@@ -37,3 +37,6 @@ toc: false
 #### Capsule Style Slider
 
 {{ capsule }}
+#### Vertical Mode
+
+{{ vertical }}
