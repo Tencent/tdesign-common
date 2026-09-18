@@ -267,6 +267,38 @@ const parseComponentDoc = createComponentDocParser({
 });
 ````
 
+## 站点路由（正式可访问性）
+
+正式环境分域部署：主域名（如 `https://tdesign.tencent.com/vue-next/`）只部署 HTML 入口文件，
+llms 产物（`llms.txt` / `llms-full.txt` / `llms/<slug>.md`）随静态资源部署在 vite `base` 指向的静态域名
+（如 `https://static.tdesign.tencent.com/vue-next/llms.txt`）。主域名路径未部署产物，会被 SPA 兜底（返回 index.html）。
+
+因此各站点需在路由表中注册跳转路由：主域名命中 llms 路径时，整体跳转到 `<BASE_URL>` 下的真实静态文件，
+保证浏览器访问主域名 URL（如 `https://tdesign.tencent.com/vue-next/llms.txt`）直接可达。
+
+common 提供**浏览器安全的路由工厂** `createLlmsRedirectRoutes`（位于 `generate-llms/route.ts`，无 Node 依赖，
+勿从 `generate-llms/index.ts` 导入——入口含 fs 构建期依赖）：
+
+```ts
+import { createLlmsRedirectRoutes } from '@tdesign/common-docs/plugins/generate-llms/route';
+
+const routes = [
+  // 放在路由表靠前位置（静态路径天然优先于动态 catch-all）
+  ...createLlmsRedirectRoutes({ prefix: '/vue-next' }),
+  // ...其余站点路由
+];
+```
+
+- `prefix`：站点路径前缀（如 `/vue-next`、`/vue-next-chat`）
+- `baseUrl`：可选，产物部署基址，默认取 `import.meta.env.BASE_URL`（生产即静态域名，本地为 `/`）
+- 覆盖路径：`<prefix>/llms.txt`、`<prefix>/llms-full.txt`、`<prefix>/llms/<slug>.md`，
+  以及「页面路径 + .md」兼容跳转 `<prefix>/components/<slug>.md` -> `llms/<slug>.md`（LLM 常按组件页 URL
+  追加 `.md` 猜测文档地址；静态路由 `components/<slug>` 优先级更高，正常组件页不受影响）
+
+注意：SPA 跳转仅对浏览器（及执行 JS 的客户端）生效；不执行 JS 的纯 HTTP 抓取方（多数 LLM 爬虫）
+应使用静态域名 URL（即 `siteBaseUrl` 生成到 `llms.txt` 索引中的绝对链接）。若要求主域名对纯 HTTP 客户端也返回
+`text/plain`，需部署侧将产物同步上传至主域名，不属于本插件能力范围。
+
 ## 产物
 
 - `<outputDir>/llms/<slug>.md`：每个组件一份文档（frontmatter + 正文）
