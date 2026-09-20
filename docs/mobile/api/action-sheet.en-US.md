@@ -10,7 +10,7 @@ toc: false
 
 ### 01 Component Type
 
-#### List Type
+#### List ActionSheet
 
 {{ list }}
 
