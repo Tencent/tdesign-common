@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demos
 
-### 01 Component Types
+### 01 Component Type
 
 The divider is mainly composed of a straight line and text. Pass in divider text or other custom content through slot, and control whether the separator is vertical or horizontal through layout.
 

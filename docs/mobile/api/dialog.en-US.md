@@ -10,7 +10,7 @@ toc: false
 
 The default button style is' variant = text ', if any button changes' variant ', then all buttons change to this.
 
-### 01 Component Types
+### 01 Component Type
 
 #### Feedback Class Dialog
 

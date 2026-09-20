@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demos
 
-### 01 Component Types
+### 01 Component Type
 
 Provide 5 fill types: fill, contain, cover, none, scale-down.
 
