@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demos
 
-### 01 Basic
+### 01 Component Type
 
 #### Basic Usage
 
