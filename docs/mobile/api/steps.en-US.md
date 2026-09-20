@@ -10,7 +10,7 @@ toc: false
 
 Step bar, the direction can be horizontal and vertical, you can customize the step bar display content and whether it is writable
 
-### 01 Component Types
+### 01 Component Type
 
 Supports three types: serial number, icon, and abbreviated
 

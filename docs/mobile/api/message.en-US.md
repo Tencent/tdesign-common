@@ -8,7 +8,7 @@ toc: false
 
 ## Code Demos
 
-### 01 Component Types
+### 01 Component Type
 
 #### Message Content Is Text or With Action Buttons
 
