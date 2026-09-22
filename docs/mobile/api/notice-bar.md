@@ -16,11 +16,11 @@ toc: false
 
 #### 带图标的公告栏
 
-{{ iconDemo }}
+{{ icon-demo }}
 
 #### 带关闭的公告栏
 
-{{ suffixIcon }}
+{{ suffix-icon }}
 
 #### 带入口的公告栏
 
