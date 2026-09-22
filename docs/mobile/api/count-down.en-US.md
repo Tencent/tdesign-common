@@ -12,6 +12,8 @@ toc: false
 
 ### 01 Component Type
 
+#### Basic Countdown
+
 {{ base }}
 
 ### 02 Component Size
