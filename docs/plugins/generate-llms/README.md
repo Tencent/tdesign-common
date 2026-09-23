@@ -39,7 +39,7 @@ await generateLlmsDocs({
   siteTitle: 'TDesign MiniProgram',
   siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
   // 生产部署基址：llms.txt 中的组件链接输出为该基址下的绝对 URL
-  // 如 https://static.tdesign.tencent.com/miniprogram/llms/button.md
+  // 如 https://static.tdesign.tencent.com/miniprogram/components/button.md
   siteBaseUrl: 'https://static.tdesign.tencent.com/miniprogram',
 });
 ```
@@ -54,13 +54,13 @@ await generateLlmsDocs({
 - `componentsRoot`：组件根目录（绝对路径），目录下含各组件目录与 `_example/`，用于解析 demo 源码与组件目录内文档
 - `parseComponentDoc`（必传，由各组件库传入）：组件文档解析器 `(componentDir, slug) => Promise<ComponentDoc | null>`，
   负责读取并解析单个组件文档，返回标准 `ComponentDoc`；文档查找顺序、frontmatter 字段、站点清理、demo 解析等差异由各组件库自行处理
-- `outputDir`：产物输出目录（绝对路径），生成 `<outputDir>/llms/<slug>.md`、`<outputDir>/llms.txt` 与 `<outputDir>/llms-full.txt`
+- `outputDir`：产物输出目录（绝对路径），生成 `<outputDir>/components/<slug>.md`、`<outputDir>/llms.txt` 与 `<outputDir>/llms-full.txt`
 - `platform`：站点平台（`web` / `mobile` / `chat`，默认 `mobile`），决定内置组件清单映射，用于补充不在 Map 中但有文档的组件目录
 - `componentMap`：自定义组件清单映射（slug -> 导出组件名列表），优先级高于 `platform`
 - `splineLabels`：spline 分类标签映射（如 `{ base: '基础' }`），未覆盖的分类回退为内置标签或 spline 原值
 - `siteTitle` / `siteDescription`：`llms.txt` 与 `llms-full.txt` 索引标题与描述
 - `siteBaseUrl`：站点产物部署基址（如 `https://static.tdesign.tencent.com/miniprogram`）。传入后 `llms.txt` 中组件链接输出绝对
-  URL（`<siteBaseUrl>/llms/<slug>.md`），LLM 可直接抓取；不传或传入 `/` 则用相对链接 `./llms/<slug>.md`
+  URL（`<siteBaseUrl>/components/<slug>.md`），LLM 可直接抓取；不传或传入 `/` 则用相对链接 `./components/<slug>.md`
 
 `createComponentDocParser`（通用解析管道，供各组件库构建自身的 `parseComponentDoc`）：
 
@@ -82,7 +82,7 @@ await generateLlmsDocs({
 - `convertTdCodeBlock(body)`：把 `<td-code-block>` + `<pre>` 转成 ` ```dart ` 代码块（flutter 等文档内嵌代码块场景）
 - `stripCoverageBadges(body)`：移除 `<span class="coverages-badge">` 装饰徽章块
 - `demoteHeadings(body)`：将正文中的 ATX 标题统一降一级（跳过代码围栏），用于聚合文件层级调整
-- `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown（frontmatter + 正文，用于 `llms/<slug>.md`）
+- `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown（frontmatter + 正文，用于 `components/<slug>.md`）
 - `renderComponentSection(doc)`：渲染 llms-full.txt 中的组件片段（`## 标题` + 描述引用 + 正文降一级，不含 frontmatter）
 - `resolveDocUrl(slug, siteBaseUrl?)`：拼接组件文档链接（有基址输出绝对 URL，否则相对链接）
 - `renderLlmsTxt(docs, siteTitle, siteDescription, splineLabels, splineOrder?)`：渲染 llms.txt 索引
@@ -269,7 +269,7 @@ const parseComponentDoc = createComponentDocParser({
 
 ## 产物
 
-- `<outputDir>/llms/<slug>.md`：每个组件一份文档（frontmatter + 正文）
+- `<outputDir>/components/<slug>.md`：每个组件一份文档（frontmatter + 正文）
 - `<outputDir>/llms.txt`：组件索引（标题、描述、链接），按 spline 分类分组展示（基础/布局/导航/表单/数据展示/反馈/AI），
   缺失 spline 的组件归入「其他」分组（排在末尾）
 - `<outputDir>/llms-full.txt`：聚合全部组件文档全文的完整版文件（层级为分组 `#` / 组件 `##` / 组件内标题 `###` 起，

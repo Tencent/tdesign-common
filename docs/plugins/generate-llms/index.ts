@@ -157,7 +157,7 @@ export function renderComponentMarkdown(doc: ComponentDoc): string {
  * 渲染 llms-full.txt 中单个组件的文档片段：
  * 以「## 组件名 中文副标题」标题开头，附 frontmatter 描述引用，随后为正文（标题整体降一级）。
  *
- * 与单篇 `llms/<slug>.md` 不同，聚合文件内不输出 frontmatter ——
+ * 与单篇 `components/<slug>.md` 不同，聚合文件内不输出 frontmatter ——
  * 多篇文档拼接后 YAML 原文会成为正文噪音（`---` 被渲染为分隔线，或与上一行组合成 setext 标题）。
  * 层级约定：分组 `#`、组件 `##`、组件内标题 `###` 起，避免分组与组件标题层级倒挂。
  */
@@ -173,10 +173,10 @@ export function renderComponentSection(doc: ComponentDoc): string {
 
 /**
  * 拼接组件文档链接：配置了 `siteBaseUrl` 时输出绝对链接（便于 LLM 在任意位置直接抓取），
- * 否则输出相对链接 `./llms/<slug>.md`（与 llms.txt 同目录）。
+ * 否则输出相对链接 `./components/<slug>.md`（相对 llms.txt 所在目录）。
  */
 export function resolveDocUrl(slug: string, siteBaseUrl?: string): string {
-  const rel = `llms/${slug}.md`;
+  const rel = `components/${slug}.md`;
   const base = siteBaseUrl?.replace(/\/+$/, '');
   if (!base) return `./${rel}`;
   return `${base}/${rel}`;
@@ -290,7 +290,7 @@ function logGeneratedFiles(entries: { relPath: string; content: string }[]): voi
  * 通用解析方法（frontmatter/demo/splitTitle/cleanSiteHtml 及渲染）均在 common 内，
  * 各组件库只需通过 `parseComponentDoc` 注入自身的解析器（读取文档、处理站点差异、解析 demo），
  * 返回统一的 ComponentDoc，由 common 编排落盘。
- * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（按 spline 分组的组件索引）
+ * 产物：`<outputDir>/components/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（按 spline 分组的组件索引）
  *       + `<outputDir>/llms-full.txt`（聚合全部组件文档全文的完整版，供 LLM 一次性加载）。
  *
  * @param options 生成配置。需要显式传入 `componentsRoot`、`outputDir`、`parseComponentDoc`；
@@ -310,7 +310,7 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     parseComponentDoc,
   } = options;
 
-  const llmsDir = path.join(outputDir, 'llms');
+  const componentsDocDir = path.join(outputDir, 'components');
 
   console.log('\x1b[36m%s\x1b[0m', `>[generate-llms] 开始生成 LLM 文档（${platform}）...`);
 
@@ -344,11 +344,11 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
 
   docs.sort((a, b) => a.slug.localeCompare(b.slug));
 
-  await promises.mkdir(llmsDir, { recursive: true });
+  await promises.mkdir(componentsDocDir, { recursive: true });
 
   const docEntries = docs.map((doc) => ({
-    relPath: `llms/${doc.slug}.md`,
-    absPath: path.join(llmsDir, `${doc.slug}.md`),
+    relPath: `components/${doc.slug}.md`,
+    absPath: path.join(componentsDocDir, `${doc.slug}.md`),
     content: renderComponentMarkdown(doc),
   }));
   const indexEntry = {
