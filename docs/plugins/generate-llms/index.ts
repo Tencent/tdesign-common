@@ -308,32 +308,38 @@ export default async function generateLlmsDocs(options: GenerateLlmsOptions): Pr
     siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
     siteBaseUrl,
     parseComponentDoc,
+    docHostMap,
   } = options;
 
   const componentsDocDir = path.join(outputDir, 'components');
 
   console.log('\x1b[36m%s\x1b[0m', `>[generate-llms] 开始生成 LLM 文档（${platform}）...`);
 
-  // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中、且确实为目录（过滤文件与非目录项）的组件目录
+  // 组件清单以 componentMap 的 key 为准（含挂靠组件 docHostMap 的 key），
+  // 再补充不在两者中、且确实为目录（过滤文件与非目录项）的组件目录
   const allEntries = await promises.readdir(componentsRoot, { withFileTypes: true });
-  const mapKeys = Object.keys(componentMap);
+  // 挂靠目录反查表（目录名 -> 规范 slug）：无独立目录的组件（如 layout 文档挂靠在 col 目录）
+  const hostToSlug = new Map(Object.entries(docHostMap ?? {}).map(([slug, host]) => [host, slug]));
+  const mapKeys = [...new Set([...Object.keys(componentMap), ...Object.keys(docHostMap ?? {})])];
+  // 挂靠目录不作为独立组件解析，避免同一文档按目录名重复生成一份
   const componentDirs = [
     ...mapKeys,
     ...allEntries
       .filter((entry) => entry.isDirectory())
       .map((entry) => entry.name)
-      .filter((dir) => !mapKeys.includes(dir)),
+      .filter((dir) => !mapKeys.includes(dir) && !hostToSlug.has(dir)),
   ];
   const docs: ComponentDoc[] = [];
 
   const parsedDocs = await Promise.all(
-    componentDirs.map(async (dir) => {
-      const componentDir = path.join(componentsRoot, dir);
+    componentDirs.map(async (slug) => {
+      // 挂靠组件（如 layout 文档实际位于 col 目录）：从挂靠目录解析文档与 demo
+      const componentDir = path.join(componentsRoot, docHostMap?.[slug] ?? slug);
       try {
-        return await parseComponentDoc(componentDir, dir);
+        return await parseComponentDoc(componentDir, slug);
       } catch (err) {
         // 单个组件解析失败仅告警，不中断整体生成
-        console.warn(`[generate-llms] 解析组件 ${dir} 失败，已跳过：`, err);
+        console.warn(`[generate-llms] 解析组件 ${slug} 失败，已跳过：`, err);
         return null;
       }
     })

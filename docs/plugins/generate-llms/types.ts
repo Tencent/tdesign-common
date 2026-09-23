@@ -87,6 +87,12 @@ export interface GenerateLlmsOptions {
   platform?: Platform;
   /** 自定义组件清单映射，优先级高于 `platform`；用于补充不在 Map 中但有文档的组件目录 */
   componentMap?: ComponentMap;
+  /**
+   * 挂靠组件映射（规范 slug -> 实际承载文档的目录名）。
+   * 部分仓库存在无独立目录的组件（如小程序 `layout` 文档挂靠在 `col` 目录、`typography` 挂靠在 `paragraph`），
+   * 传入后按规范 slug 生成 `components/<slug>.md`（demo 占位符也从挂靠目录解析），挂靠目录本身不再重复生成。
+   */
+  docHostMap?: Record<string, string>;
   /** spline 分类标签映射（如 `{ base: '基础' }`），未覆盖的分类回退为内置标签或 spline 原值 */
   splineLabels?: Record<string, string>;
   /** llms.txt 索引标题 */
