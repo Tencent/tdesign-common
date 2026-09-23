@@ -29,13 +29,11 @@
         color: @rate-disabled-selected-color;
 
         &-half {
-          background: linear-gradient(
-            to right,
-            @rate-disabled-selected-color 0%,
-            @rate-disabled-selected-color 50%,
-            @rate-disabled-unselected-color 51%,
-            @rate-disabled-unselected-color 100%
-          );
+          background: linear-gradient(to right,
+              @rate-disabled-selected-color 0%,
+              @rate-disabled-selected-color 50%,
+              @rate-disabled-unselected-color 51%,
+              @rate-disabled-unselected-color 100%);
         }
       }
 
@@ -76,13 +74,11 @@
 
       &-half {
         color: transparent;
-        background: linear-gradient(
-          to right,
-          @rate-selected-color 0%,
-          @rate-selected-color 50%,
-          @rate-unselected-color 51%,
-          @rate-unselected-color 100%
-        );
+        background: linear-gradient(to right,
+            @rate-selected-color 0%,
+            @rate-selected-color 50%,
+            @rate-unselected-color 51%,
+            @rate-unselected-color 100%);
         background-clip: text;
       }
     }
@@ -134,6 +130,7 @@
     }
 
     &-text {
+      color: @text-color-primary;
       text-align: center;
       font: @font-body-medium;
     }
