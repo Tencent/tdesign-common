@@ -149,12 +149,21 @@ await generateLlmsDocs({
 - 文档：组件目录 `README.md`（与小程序一致，读本仓组件目录）
 - demo：`_example/<demoName>/index.vue`，输出 SFC 代码块
 - 清理：传空 `transformers`（无微信专用链接）
+- 挂靠：与小程序一致，`layout` / `typography` 文档挂靠在 `col` / `paragraph` 目录
 
 ```ts
 const parseComponentDoc = createComponentDocParser({
   readComponentDoc: async (dir) => readFile(`${dir}/README.md`, 'utf-8').catch(() => null),
   readDemoCode: (dir, name) => readVueDemo(dir, name),
   transformers: [],
+});
+
+await generateLlmsDocs({
+  componentsRoot,
+  outputDir,
+  platform: 'mobile',
+  parseComponentDoc,
+  docHostMap: { layout: 'col', typography: 'paragraph' },
 });
 ```
 
