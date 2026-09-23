@@ -4,7 +4,6 @@
 
 .@{comment} {
   box-sizing: border-box;
-  padding: 0;
 
   &__inner {
     display: flex;
@@ -20,19 +19,8 @@
   }
 
   &__author {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: baseline;
-    margin-bottom: @comment-name-margin-bottom;
-  }
-
-  &__name {
-    display: inline-flex;
-    align-items: center;
-    font: @comment-name-text-size;
     color: @comment-name-color;
-    cursor: pointer;
+    margin-bottom: @comment-name-margin-bottom;
   }
 
   &__detail {
@@ -43,6 +31,7 @@
   &__bottom {
     display: flex;
     align-items: center;
+    margin-top: @comment-bottom-margin-top;
   }
 
   &__meta {
@@ -90,6 +79,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
+    flex: 1;
 
     &-block {
       display: flex;
