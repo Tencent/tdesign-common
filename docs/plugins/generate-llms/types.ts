@@ -81,7 +81,7 @@ export interface GenerateLlmsOptions {
   componentsRoot: string;
   /** 组件文档解析器（必传，由各组件库传入）：负责读取并解析单个组件文档，返回标准 ComponentDoc */
   parseComponentDoc: ParseComponentDoc;
-  /** 产物输出目录（绝对路径），生成 <outputDir>/llms/<slug>.md、<outputDir>/llms.txt 与 <outputDir>/llms-full.txt */
+  /** 产物输出目录（绝对路径），生成 <outputDir>/components/<slug>.md、<outputDir>/llms.txt 与 <outputDir>/llms-full.txt */
   outputDir: string;
   /** 站点平台，用于内置组件清单映射（web / mobile / chat），默认 `mobile` */
   platform?: Platform;
@@ -95,8 +95,8 @@ export interface GenerateLlmsOptions {
   siteDescription?: string;
   /**
    * 站点产物部署基址（如 `https://static.tdesign.tencent.com/miniprogram`）。
-   * 传入后 llms.txt 中的组件文档链接输出为绝对 URL（`<siteBaseUrl>/llms/<slug>.md`），
-   * 便于 LLM 在任意位置直接抓取；不传则保持相对链接 `./llms/<slug>.md`。
+   * 传入后 llms.txt 中的组件文档链接输出为绝对 URL（`<siteBaseUrl>/components/<slug>.md`），
+   * 便于 LLM 在任意位置直接抓取；不传则保持相对链接 `./components/<slug>.md`。
    */
   siteBaseUrl?: string;
 }
