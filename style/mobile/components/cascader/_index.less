@@ -28,7 +28,6 @@
 
   &__content {
     width: 100%;
-    flex: 1;
     display: flex;
     flex-direction: column;
   }
@@ -111,6 +110,46 @@
     &-arrow {
       color: @cascader-step-arrow-color;
       margin-left: auto;
+    }
+  }
+
+  &__filter {
+    padding: @cascader-filter-padding;
+    box-sizing: border-box;
+
+    &-result {
+      height: @cascader-options-height;
+      width: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    &-result-item {
+      padding: @cascader-filter-item-padding;
+      color: @cascader-filter-item-color;
+      font: @font-body-medium;
+      box-sizing: border-box;
+      .border(bottom, @cascader-border-color);
+
+      &--hover {
+        background-color: @cascader-filter-item-hover-bg;
+      }
+
+      &--disabled {
+        color: @cascader-filter-item-disabled-color;
+      }
+    }
+
+    &-highlight {
+      color: @cascader-filter-highlight-color;
+      font-weight: 600;
+    }
+
+    &-empty {
+      padding: @cascader-filter-empty-padding;
+      text-align: center;
+      color: @cascader-filter-empty-color;
+      font: @font-body-medium;
     }
   }
 }
