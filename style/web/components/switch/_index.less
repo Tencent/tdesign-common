@@ -271,3 +271,196 @@
     }
   }
 }
+
+.@{prefix}-switch.@{prefix}-switch--shape-round {
+  border-radius: @switch-round-track-border-radius;
+
+  .@{prefix}-switch__handle,
+  .@{prefix}-switch__handle::before {
+    border-radius: @switch-round-handle-border-radius;
+  }
+}
+
+.@{prefix}-switch.@{prefix}-switch--shape-line {
+  width: @switch-line-width-default;
+  min-width: @switch-line-width-default;
+  height: @switch-height-default;
+  line-height: @switch-height-default;
+  background-color: transparent;
+  overflow: visible;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: @switch-line-track-inset;
+    right: @switch-line-track-inset;
+    top: 50%;
+    height: @switch-line-track-height;
+    transform: translateY(-50%);
+    border-radius: @switch-line-track-border-radius;
+    background-color: @switch-unchecked-bg-color;
+    transition: @switch-transition;
+  }
+
+  &:hover::before {
+    background-color: @switch-unchecked-bg-color-hover;
+  }
+
+  .@{prefix}-switch__handle {
+    top: 50%;
+    left: 0;
+    right: auto;
+    width: @switch-line-handle-size-default;
+    height: @switch-line-handle-size-default;
+    transform: translate(0, -50%);
+    box-shadow: @shadow-1;
+    z-index: 1;
+
+    .t-icon {
+      font-size: @switch-line-handle-size-default;
+    }
+  }
+
+  .@{prefix}-switch__content {
+    display: none;
+  }
+
+  &:active:not(.@{prefix}-is-disabled):not(.@{prefix}-is-loading) {
+    .@{prefix}-switch__handle::before,
+    &.@{prefix}-is-checked .@{prefix}-switch__handle::before {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &.@{prefix}-is-checked {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-checked-bg-color;
+    }
+
+    &:hover::before {
+      background-color: @switch-checked-bg-color-hover;
+    }
+
+    .@{prefix}-switch__handle {
+      top: 50%;
+      left: 100%;
+      right: auto;
+      width: @switch-line-handle-size-checked-default;
+      height: @switch-line-handle-size-checked-default;
+      transform: translate(-100%, -50%);
+
+      .t-icon {
+        font-size: @switch-line-handle-size-checked-default;
+      }
+    }
+  }
+
+  &.@{prefix}-is-loading {
+    background-color: transparent;
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-loading;
+    }
+
+    &.@{prefix}-is-checked::before {
+      background-color: @switch-checked-bg-color-loading;
+    }
+  }
+
+  &.@{prefix}-is-disabled {
+    background-color: transparent;
+
+    .@{prefix}-switch__handle {
+      box-shadow: @shadow-1;
+    }
+
+    &::before {
+      background-color: @switch-unchecked-bg-color-disabled;
+    }
+
+    &.@{prefix}-is-checked {
+      background-color: transparent;
+
+      &::before {
+        background-color: @switch-checked-bg-color-disabled;
+      }
+
+      .@{prefix}-switch__handle {
+        box-shadow: @shadow-1;
+      }
+    }
+  }
+}
+
+.@{prefix}-switch.@{prefix}-size-l.@{prefix}-switch--shape-line {
+  width: @switch-line-width-l;
+  min-width: @switch-line-width-l;
+  height: @switch-height-l;
+  line-height: @switch-height-l;
+
+  .@{prefix}-switch__handle {
+    top: 50%;
+    left: 0;
+    right: auto;
+    width: @switch-line-handle-size-l;
+    height: @switch-line-handle-size-l;
+    transform: translate(0, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-l;
+    }
+  }
+
+  &.@{prefix}-is-checked .@{prefix}-switch__handle {
+    top: 50%;
+    left: 100%;
+    right: auto;
+    width: @switch-line-handle-size-checked-l;
+    height: @switch-line-handle-size-checked-l;
+    transform: translate(-100%, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-checked-l;
+    }
+  }
+}
+
+.@{prefix}-switch.@{prefix}-size-s.@{prefix}-switch--shape-line {
+  width: @switch-line-width-s;
+  min-width: @switch-line-width-s;
+  height: @switch-height-s;
+  line-height: @switch-height-s;
+
+  .@{prefix}-switch__handle {
+    top: 50%;
+    left: 0;
+    right: auto;
+    width: @switch-line-handle-size-s;
+    height: @switch-line-handle-size-s;
+    transform: translate(0, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-s;
+    }
+  }
+
+  &.@{prefix}-is-checked .@{prefix}-switch__handle {
+    top: 50%;
+    left: 100%;
+    right: auto;
+    width: @switch-line-handle-size-checked-s;
+    height: @switch-line-handle-size-checked-s;
+    transform: translate(-100%, -50%);
+
+    .t-icon {
+      font-size: @switch-line-handle-size-checked-s;
+    }
+  }
+}
