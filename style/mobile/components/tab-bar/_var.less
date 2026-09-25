@@ -3,3 +3,81 @@
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
+
+// ============================================
+// Liquid Glass (iOS 26 style) variables
+// ============================================
+
+// Glass capsule dimensions
+@tab-bar-glass-height: var(--td-tab-bar-glass-height, 56px);
+@tab-bar-glass-inset-horizontal: var(--td-tab-bar-glass-inset-horizontal, 21px);
+@tab-bar-glass-inset-bottom: var(--td-tab-bar-glass-inset-bottom, 21px);
+@tab-bar-glass-min-width: var(--td-tab-bar-glass-min-width, 200px);
+@tab-bar-glass-padding: var(--td-tab-bar-glass-padding, 4px);
+@tab-bar-glass-item-gap: var(--td-tab-bar-glass-item-gap, 2px);
+
+// Glass material — backdrop-filter
+@tab-bar-glass-blur: var(--td-tab-bar-glass-blur, 20px);
+@tab-bar-glass-saturation: var(--td-tab-bar-glass-saturation, 180%);
+@tab-bar-glass-brightness: var(--td-tab-bar-glass-brightness, 1.05);
+@tab-bar-glass-contrast: var(--td-tab-bar-glass-contrast, 0.95);
+
+// Glass background
+@tab-bar-glass-bg: var(--td-tab-bar-glass-bg, rgba(255, 255, 255, 0.72));
+@tab-bar-glass-bg-dark: var(--td-tab-bar-glass-bg-dark, rgba(28, 28, 30, 0.78));
+@tab-bar-glass-fallback-bg: var(--td-tab-bar-glass-fallback-bg, rgba(255, 255, 255, 0.92));
+@tab-bar-glass-fallback-bg-dark: var(--td-tab-bar-glass-fallback-bg-dark, rgba(28, 28, 30, 0.94));
+
+// Glass border
+@tab-bar-glass-border-width: var(--td-tab-bar-glass-border-width, 0.5px);
+@tab-bar-glass-border-color: var(--td-tab-bar-glass-border-color, rgba(255, 255, 255, 0.6));
+@tab-bar-glass-border-color-dark: var(--td-tab-bar-glass-border-color-dark, rgba(255, 255, 255, 0.12));
+
+// Glass shadows
+@tab-bar-glass-shadow: var(--td-tab-bar-glass-shadow,
+  0 4px 24px rgba(0, 0, 0, 0.08),
+  0 1px 4px rgba(0, 0, 0, 0.04),
+  inset 0 1px 0 rgba(255, 255, 255, 0.5)
+);
+@tab-bar-glass-shadow-dark: var(--td-tab-bar-glass-shadow-dark,
+  0 4px 24px rgba(0, 0, 0, 0.3),
+  0 1px 4px rgba(0, 0, 0, 0.15),
+  inset 0 1px 0 rgba(255, 255, 255, 0.1)
+);
+
+// Glass refraction overlay
+@tab-bar-glass-refraction: var(--td-tab-bar-glass-refraction, linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.3) 0%,
+  rgba(255, 255, 255, 0.05) 40%,
+  rgba(255, 255, 255, 0) 100%
+));
+@tab-bar-glass-refraction-dark: var(--td-tab-bar-glass-refraction-dark, linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.1) 0%,
+  rgba(255, 255, 255, 0.02) 40%,
+  rgba(255, 255, 255, 0) 100%
+));
+
+// Active tab indicator
+@tab-bar-glass-active-bg: var(--td-tab-bar-glass-active-bg, rgba(255, 255, 255, 0.2));
+@tab-bar-glass-active-bg-dark: var(--td-tab-bar-glass-active-bg-dark, rgba(255, 255, 255, 0.15));
+@tab-bar-glass-active-shadow: var(--td-tab-bar-glass-active-shadow, inset 0 1px 0 rgba(255, 255, 255, 0.3));
+@tab-bar-glass-active-shadow-dark: var(--td-tab-bar-glass-active-shadow-dark, inset 0 1px 0 rgba(255, 255, 255, 0.1));
+
+// Glass tab item
+@tab-bar-glass-item-height: var(--td-tab-bar-glass-item-height, 48px);
+@tab-bar-glass-item-padding: var(--td-tab-bar-glass-item-padding, 8px 16px);
+@tab-bar-glass-item-radius: var(--td-tab-bar-glass-item-radius, 24px);
+@tab-bar-glass-icon-size: var(--td-tab-bar-glass-icon-size, 22px);
+@tab-bar-glass-text-size: var(--td-tab-bar-glass-text-size, 11px);
+
+// Scroll minimize
+@tab-bar-glass-minimized-scale: var(--td-tab-bar-glass-minimized-scale, 0.92);
+@tab-bar-glass-minimized-opacity: var(--td-tab-bar-glass-minimized-opacity, 0.85);
+@tab-bar-glass-minimized-bottom: var(--td-tab-bar-glass-minimized-bottom, 8px);
+
+// Transitions
+@tab-bar-glass-transition-duration: var(--td-tab-bar-glass-transition-duration, 0.35s);
+@tab-bar-glass-transition-easing: var(--td-tab-bar-glass-transition-easing, cubic-bezier(0.25, 0.1, 0.25, 1));
+@tab-bar-glass-active-transition: var(--td-tab-bar-glass-active-transition, 0.3s cubic-bezier(0.34, 1.56, 0.64, 1));
