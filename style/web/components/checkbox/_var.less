@@ -56,3 +56,52 @@
 @checkbox-group-gap: @spacer-2;
 // 单个复选框margin
 @checkbox-margin: inherit;
+
+// ==================== 按钮风格（variant） ====================
+// 命名与 @radio-button-* 对齐，保持两个组件视觉/token 语义一致
+
+@checkbox-button--cls: ~'@{prefix}-checkbox-button';
+
+// 颜色
+@checkbox-button-border-color-default: @border-level-2-color;
+@checkbox-button-border-color-checked: @brand-color;
+@checkbox-button-color-outline-checked: @brand-color;
+@checkbox-button-background-color-disabled: @bg-color-component-disabled;
+@checkbox-button-color-disabled: @text-color-disabled;
+@checkbox-button-background-color-outline-disabled-checked: @bg-color-specialcomponent;
+@checkbox-button-color-disabled-checked: @text-color-disabled;
+
+@checkbox-button-color-filled: @text-color-secondary;
+@checkbox-button-color-filled-hover: @text-color-primary;
+@checkbox-button-color-default-filled-checked: @text-color-primary;
+@checkbox-button-color-primary-filled-checked: @text-color-anti;
+@checkbox-button-color-default-filled-disabled-checked: @text-color-disabled;
+@checkbox-button-background-color-default-filled-checked: @bg-color-container-select;
+@checkbox-button-background-color-primary-filled-checked: @brand-color;
+@checkbox-button-background-color-default-filled-disabled-checked: @bg-color-component-disabled;
+@checkbox-button-background-color-primary-filled-disabled-checked: @brand-color-disabled;
+
+// 尺寸
+@checkbox-button-border-radius: @border-radius-small;
+@checkbox-button-height-small: calc(@comp-size-xs - (@comp-paddingTB-xxs * 2));
+@checkbox-button-height-medium: calc(@comp-size-m - (@comp-paddingTB-xxs * 2));
+@checkbox-button-height-large: calc(@comp-size-xl - (@comp-paddingTB-xxs * 2));
+@checkbox-button-border: 1px solid;
+// outline 形态有真实边框会占用盒子空间，沿用 @radio-outline-height-* 的做法，
+// 用不减去 padding 的整档尺寸做补偿，避免比 filled/primary-filled 视觉上矮一截
+@checkbox-outline-height-small: @comp-size-xs;
+@checkbox-outline-height-medium: @comp-size-m;
+@checkbox-outline-height-large: @comp-size-xl;
+
+// 字号
+@checkbox-button-font-small: @font-body-small;
+@checkbox-button-font-medium: @font-body-medium;
+@checkbox-button-font-large: @font-body-large;
+
+// padding
+@checkbox-button-padding-small: 0px @comp-paddingLR-s;
+@checkbox-button-padding-medium: @comp-paddingTB-xs @comp-paddingLR-l;
+@checkbox-button-padding-large: @comp-paddingTB-s @comp-paddingLR-xl;
+
+// 动画
+@checkbox-button-transition: color @anim-duration-base @anim-time-fn-ease-out;
