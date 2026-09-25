@@ -6,11 +6,11 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
-#### Basic Usage
+#### Basic Drawer
 
 {{ base }}
 
@@ -28,10 +28,12 @@ toc: false
 
 {{ placement }}
 
-#### Drawer With Footer
+#### Drawer With Footer Slot
 
 {{ footer }}
 
-#### Command line call
+### 03 Usage
+
+#### Command Line
 
 {{ plugin }}

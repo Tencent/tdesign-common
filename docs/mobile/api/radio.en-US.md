@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -20,6 +20,8 @@ toc: false
 
 ### 02 Component Status
 
+#### Disabled State
+
 {{ status }}
 
 ### 03 Component Style
@@ -32,10 +34,12 @@ toc: false
 
 {{ placement }}
 
-#### Non-Field Radio
+#### Non-full-width Radio
 
 {{ card }}
 
 ### 04 Special Style
+
+#### Radio Size
 
 {{ custom }}

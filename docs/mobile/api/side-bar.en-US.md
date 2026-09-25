@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -23,5 +23,7 @@ toc: false
 {{ with-icon }}
 
 ### 02 Component Style
+
+#### SideBar Navigation Style
 
 {{ custom }}

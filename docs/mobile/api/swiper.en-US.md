@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -26,8 +26,20 @@ toc: false
 
 {{ control }}
 
+#### Current
+
+{{ current }}
+
 ### 02 Component Style
 
 #### Vertical mode
 
 {{ vertical }}
+
+#### Outside mode
+
+{{ outside }}
+
+#### Card Mode
+
+{{ card }}

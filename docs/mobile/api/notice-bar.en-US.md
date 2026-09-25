@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -16,11 +16,11 @@ toc: false
 
 #### Bulletin board with icon
 
-{{ iconDemo }}
+{{ icon-demo }}
 
 #### Bulletin board with closed
 
-{{ suffixIcon }}
+{{ suffix-icon }}
 
 #### Bring the port to the bulletin board
 
@@ -36,12 +36,12 @@ toc: false
 
 ### 02 Component Status
 
-The types of bulletin boards include info, warning, success, and error.
+#### The types of bulletin boards include info, warning, success, and error.
 
 {{ theme }}
 
 ### 03 Scrolling Bulletin Board
 
-Scrolling bulletin boards available in horizontal and vertical
+#### Scrolling bulletin boards available in horizontal and vertical
 
 {{ scrolling }}

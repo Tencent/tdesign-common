@@ -10,7 +10,7 @@ toc: false
 
 ### 01 组件类型
 
-#### 文字水印
+#### 文本水印
 
 {{ base }}
 
@@ -24,22 +24,20 @@ toc: false
 
 #### 多行图文水印
 
-{{ multiLine }}
+{{ multi-line }}
 
 #### 多行图文灰阶水印
 
-{{ multiLineGray }}
+{{ multi-line-gray }}
 
 #### 运动文字水印
 
-{{ movingText }}
+{{ moving-text }}
 
 #### 运动图片水印
 
-{{ movingImage }}
+{{ moving-image }}
 
 ### 02 组件样式
-
-#### 矩形和六边形布局
 
 {{ layout }}

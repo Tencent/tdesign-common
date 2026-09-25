@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -32,10 +32,10 @@ toc: false
 
 ### 03 Component Style
 
-#### Custom Color
+#### QRCode Color
 
 {{ color }}
 
-#### Custom Size
+#### QRCode Size
 
 {{ size }}

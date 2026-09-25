@@ -18,6 +18,12 @@ toc: false
 
 {{ multiple }}
 
+#### 弹窗形式的颜色选择器
+
+{{ use-popup }}
+
 ### 02 组件状态
+
+#### 组件模式选择
 
 {{ format }}

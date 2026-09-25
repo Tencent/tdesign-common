@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -16,11 +16,9 @@ toc: false
 
 ### 02 Component Example
 
-#### With Title And Action
+#### Example
 
 {{ with-title }}
-
-#### Custom Close Button
 
 {{ custom-close }}
 

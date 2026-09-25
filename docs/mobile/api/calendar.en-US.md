@@ -9,7 +9,7 @@ spline: form
 
 ### 01 Component Type
 
-#### Basic Calender
+#### Basic Calendar
 
 {{ base }}
 

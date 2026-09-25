@@ -26,6 +26,10 @@ toc: false
 
 {{ show-text }}
 
+#### 评分弹框位置
+
+{{ placement }}
+
 ### 02 组件状态
 
 {{ action }}

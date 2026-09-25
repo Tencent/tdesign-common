@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -24,22 +24,20 @@ toc: false
 
 #### Multi-line Watermark
 
-{{ multiLine }}
+{{ multi-line }}
 
 #### Multi-line Grayscale Watermark
 
-{{ multiLineGray }}
+{{ multi-line-gray }}
 
 #### Watermark with Moving Text
 
-{{ movingText }}
+{{ moving-text }}
 
 #### Watermark with Moving Image
 
-{{ movingImage }}
+{{ moving-image }}
 
 ### 02 Component Style
-
-#### Rectangular and Hexagonal Layout
 
 {{ layout }}

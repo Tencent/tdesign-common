@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 The default button style is' variant = text ', if any button changes' variant ', then all buttons change to this.
 
@@ -36,7 +36,7 @@ Image elements can be inserted into the dialog box and the position can be custo
 
 {{ image-dialog }}
 
-### 02 Component Status
+### 02 Component Type
 
 Text button, horizontal base button, vertical base button, multi-button, with close button
 
@@ -44,6 +44,6 @@ Text button, horizontal base button, vertical base button, multi-button, with cl
 
 ### 03 Component Usage
 
-Command line call
+#### Command Call
 
 {{ plugin }}

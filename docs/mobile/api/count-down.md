@@ -19,6 +19,6 @@ toc: false
 
 ### 02 组件尺寸
 
-#### 调整尺寸
+#### 倒计时 large/medium/small 尺寸
 
 {{ size }}

@@ -6,9 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### 01 Component Types
+### 01 Component Type
 
 #### Pure Icon
 
@@ -32,18 +32,12 @@ toc: false
 
 ### 03 Loading Speed
 
+#### Loading Speed Adjustment
+
 {{ speed }}
 
 ### 04 Advanced
 
-#### Full-screen Loading
+#### Delay Loading
 
-{{ fullscreen }}
-
-#### Attached to a Specific Element
-
-{{ attach }}
-
-#### Function Call
-
-{{ service }}
+{{ delay }}

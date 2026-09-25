@@ -6,9 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
-### Component Type
+## Code Demos
 
 #### Icon
 
@@ -16,8 +14,8 @@ toc: false
 
 #### Customize Image
 
-{{ imageEmpty }}
+{{ image-empty }}
 
 #### with Operation
 
-{{ buttonEmpty }}
+{{ button-empty }}

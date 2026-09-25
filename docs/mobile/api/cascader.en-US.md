@@ -8,9 +8,9 @@ toc: false
 
 ## Code Demos
 
-### 01 Component Types
+### 01 Component Type
 
-#### Basic
+#### Basic Usage
 
 {{ base }}
 

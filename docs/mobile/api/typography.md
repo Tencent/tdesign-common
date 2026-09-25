@@ -5,22 +5,26 @@ isComponent: true
 spline: base
 ---
 
-### 基础文本
+## 代码演示
+
+### 组件类型
+
+#### 基础文本
 
 {{ base }}
 
-### 组合用法
+#### 组合用法
 
 {{ combination }}
 
-### 主题样式
+#### 主题样式
 
 {{ theme }}
 
-### 可复制
+#### 可复制
 
 {{ copyable }}
 
-### 文本省略
+#### 文本省略
 
 {{ ellipsis }}

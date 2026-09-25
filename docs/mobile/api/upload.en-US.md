@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 ### 01 Component Type
 
@@ -31,5 +31,7 @@ toc: false
 {{ theme }}
 
 ### 04 Style Customization
+
+#### Single File Upload
 
 {{ custom }}

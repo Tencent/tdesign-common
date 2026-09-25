@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
 Since page scrolling cannot be monitored within the component, the page needs to get the component instance and pass the page scrolling event to the component.
 

@@ -6,10 +6,10 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+## Code Demos
 
-### Component Type
+### Component Types
 
-#### Basic
+#### Basic Overlay
 
 {{ base }}
