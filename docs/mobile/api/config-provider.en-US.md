@@ -20,6 +20,9 @@ The supported language TDesign provided:
 | Russian               | `ru_RU` |
 | Italian               | `it_IT` |
 | Arabic                | `ar_KW` |
+| German                | `de_DE` |
+| Vietnamese            | `vi_VN` |
+| Portuguese (Brazil)   | `pt_BR` |
 
 If you want to contribute more language packs, please refer to [How to add a language pack](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) PR.
 
