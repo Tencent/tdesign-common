@@ -341,7 +341,7 @@ export class QrCode {
     minVersion: number = 1,
     maxVersion: number = 40,
     mask: number = -1,
-    boostEcl: boolean = true
+    boostEcl: boolean = true,
   ): QrCode {
     if (
       !(QrCode.MIN_VERSION <= minVersion && minVersion <= maxVersion && maxVersion <= QrCode.MAX_VERSION) ||
@@ -451,7 +451,7 @@ export class QrCode {
 
     dataCodewords: Readonly<number[]>,
 
-    oriMsk: number
+    oriMsk: number,
   ) {
     let msk = oriMsk;
     this.version = version;
@@ -967,7 +967,7 @@ export class QrCode {
   private finderPenaltyTerminateAndCount(
     currentRunColor: boolean,
     oriCurrentRunLength: number,
-    runHistory: number[]
+    runHistory: number[],
   ): number {
     let currentRunLength = oriCurrentRunLength;
     if (currentRunColor) {

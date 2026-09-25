@@ -67,7 +67,7 @@ const generateRegExp = (): RegExpLib => {
   const // "red", "transparent".
     rColor = combineRegExp(
       ['(?:', rColorHex, '|', '(?:rgb|hsl)', rDigits3, '|', '(?:rgba|hsla)', rDigits4, '|', rKeyword, ')'],
-      ''
+      '',
     );
   const rColorStop = combineRegExp([rColor, '(?:\\s+', rValue, '(?:\\s+', rValue, ')?)?'], '');
   const // Single Color Stop, optional %, optional length.
@@ -79,7 +79,7 @@ const generateRegExp = (): RegExpLib => {
   const // Capture 1:"line", 2:"angle" (optional), 3:"side corner" (optional) and 4:"stop list".
     rColorStopSearch = combineRegExp(
       ['\\s*(', rColor, ')', '(?:\\s+', '(', rValue, '))?', '(?:', rComma, '\\s*)?'],
-      searchFlags
+      searchFlags,
     ); // Capture 1:"color" and 2:"position" (optional).
 
   return {
