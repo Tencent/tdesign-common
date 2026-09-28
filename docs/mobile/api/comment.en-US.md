@@ -26,4 +26,4 @@ toc: false
 
 #### Expand + Collapse
 
-{{ reply }}
+{{ collapse }}

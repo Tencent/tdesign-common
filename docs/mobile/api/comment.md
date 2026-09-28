@@ -26,4 +26,4 @@ toc: false
 
 #### 展开+收起
 
-{{ reply }}
+{{ collapse }}
