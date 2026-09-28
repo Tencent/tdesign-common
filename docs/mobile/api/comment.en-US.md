@@ -10,7 +10,7 @@ toc: false
 
 ### 01 Component Type
 
-#### Basic comments
+#### Text comments
 
 {{ base }}
 
@@ -18,12 +18,12 @@ toc: false
 
 {{ image }}
 
-#### Reply to comments
+#### Text and image comments
+
+{{ mixed }}
+
+### 02 Component Style
+
+#### Expand + Collapse
 
 {{ reply }}
-
-### 02 Component Status
-
-#### Comment action: Long-press
-
-{{ long-press }}

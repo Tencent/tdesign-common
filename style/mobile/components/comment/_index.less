@@ -11,7 +11,7 @@
 
   &__avatar {
     flex-shrink: 0;
-    margin-right: @comment-avatar-margin-right;
+    margin-right: @spacer;
   }
 
   &__content {
@@ -19,19 +19,20 @@
   }
 
   &__author {
-    color: @comment-name-color;
-    margin-bottom: @comment-name-margin-bottom;
+    color: @comment-author-color;
+    margin-bottom: 2px;
   }
 
   &__detail {
     word-break: break-all;
-    font: @comment-content-text-size;
+    font: @comment-content-font;
   }
 
   &__bottom {
     display: flex;
     align-items: center;
-    margin-top: @comment-bottom-margin-top;
+    margin-top: 4px;
+    padding: 2px 0;
   }
 
   &__meta {
@@ -41,14 +42,14 @@
   }
 
   &__date {
-    font: @comment-time-text-size;
-    color: @comment-time-color;
-    margin-right: @comment-time-margin-right;
+    font: @comment-datetime-font;
+    color: @comment-datetime-color;
+    margin-right: @spacer-2;
   }
 
   &__reply {
-    margin-top: @comment-reply-margin-top;
-    margin-left: @comment-reply-margin-left;
+    margin-top: @spacer;
+    margin-left: 56px;
   }
 
   &__folds {
@@ -61,16 +62,16 @@
       width: 18px;
       height: .5px;
       background: @comment-folds-divider-background;
-      margin-right: @comment-folds-divider-margin-right;
+      margin-right: @spacer;
     }
 
     &-item {
       display: flex;
       align-items: center;
       color: @comment-folds-item-color;
-      font-size: @comment-folds-item-font-size;
-      line-height: @comment-folds-item-line-height;
-      margin-right: @comment-folds-item-margin-right;
+      font-size: @font-size-s;
+      line-height: @text-line-height-s;
+      margin-right: @spacer-3;
     }
   }
 
