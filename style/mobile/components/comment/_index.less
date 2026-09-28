@@ -54,6 +54,16 @@
   &__reply {
     margin-top: @spacer;
     margin-left: 56px;
+
+    &-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows ease 240ms;
+    }
+
+    &-inner {
+      overflow: hidden;
+    }
   }
 
   &__folds {
