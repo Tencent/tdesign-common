@@ -5,12 +5,12 @@
 .@{comment} {
   box-sizing: border-box;
 
-  &:active {
-    background-color: @bg-color-secondarycontainer;
-  }
-
   &__inner {
     display: flex;
+
+    &:active {
+      background-color: @bg-color-secondarycontainer;
+    }
   }
 
   &__avatar {
