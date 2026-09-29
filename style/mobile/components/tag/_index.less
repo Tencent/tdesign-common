@@ -97,6 +97,10 @@
   &.@{prefix}-tag {
     &--square {
       border-radius: @tag-square-border-radius;
+
+      &.@{prefix}-tag--extra-large {
+        border-radius: calc(@tag-square-border-radius * 2);
+      }
     }
 
     &--round {
