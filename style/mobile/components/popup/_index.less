@@ -4,9 +4,15 @@
 
 @import './_var.less';
 
+@import '../overlay/_var.less';
+
+.@{popup},
+.@{overlay}.@{popup}-zIndex {
+  z-index: @z-index-popup;
+}
+
 .@{popup} {
   position: fixed;
-  z-index: 11500;
   max-height: 100vh;
   background-color: @popup-bg-color;
   box-sizing: border-box;
