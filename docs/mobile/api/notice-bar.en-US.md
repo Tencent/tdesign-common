@@ -1,5 +1,5 @@
 ---
-title: Noticebar
+title: NoticeBar
 description: Displays a prompt message to the user at the bottom of the navigation bar.
 spline: message
 isComponent: true
@@ -16,11 +16,11 @@ toc: false
 
 #### Bulletin board with icon
 
-{{ iconDemo }}
+{{ icon-demo }}
 
 #### Bulletin board with closed
 
-{{ suffixIcon }}
+{{ suffix-icon }}
 
 #### Bring the port to the bulletin board
 

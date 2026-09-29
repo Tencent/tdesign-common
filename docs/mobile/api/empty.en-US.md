@@ -16,8 +16,8 @@ toc: false
 
 #### Customize Image
 
-{{ imageEmpty }}
+{{ image-empty }}
 
 #### with Operation
 
-{{ buttonEmpty }}
+{{ button-empty }}

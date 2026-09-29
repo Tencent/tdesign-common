@@ -1,5 +1,5 @@
 ---
-title: Noticebar 公告栏
+title: NoticeBar 公告栏
 description: 在导航栏下方，用于给用户显示提示消息。
 spline: message
 isComponent: true
@@ -16,11 +16,11 @@ toc: false
 
 #### 带图标的公告栏
 
-{{ iconDemo }}
+{{ icon-demo }}
 
 #### 带关闭的公告栏
 
-{{ suffixIcon }}
+{{ suffix-icon }}
 
 #### 带入口的公告栏
 

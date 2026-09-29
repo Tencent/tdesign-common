@@ -16,8 +16,8 @@ toc: false
 
 #### 自定义图片空状态
 
-{{ imageEmpty }}
+{{ image-empty }}
 
 #### 带操作空状态
 
-{{ buttonEmpty }}
+{{ button-empty }}
