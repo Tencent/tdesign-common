@@ -57,9 +57,11 @@
       }
     }
 
-    :not(&--fixed):not(&--border) {
-      @{root}__label {
-        padding-right: @comp-paddingLR-l;
+    &:not(&--fixed):not(&--border) {
+      > tbody > tr > @{root}__label {
+        width: 1px;
+        white-space: nowrap;
+        padding-right: @comp-margin-xs;
       }
     }
   }
