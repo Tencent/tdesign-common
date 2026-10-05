@@ -111,6 +111,19 @@
         background: linear-gradient(to right, transparent, currentcolor);
       }
     }
+
+    &--gradient-type {
+      margin: 0 0 12px;
+    }
+  }
+
+  &__gradient-thumbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
   }
 
   &__slider-padding {
@@ -133,6 +146,19 @@
     .@{color-picker}__thumb {
       transform: translate(@color-picker-slider-thumb-transform-x, -50%);
       top: 50%;
+    }
+
+    /* 渐变点以自身中心对齐所在位置 */
+    .@{color-picker}__thumb--gradient {
+      transform: translate(-50%, -50%);
+    }
+
+    .@{color-picker}__thumb--active {
+      z-index: 2;
+
+      &::before {
+        border: 2px solid @text-color-brand;
+      }
     }
 
     .@{color-picker}__rail {
