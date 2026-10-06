@@ -3,3 +3,21 @@
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
+@tab-bar-glass-bg-color: var(--td-tab-bar-glass-bg-color, rgba(255, 255, 255, 50%));
+@tab-bar-glass-shadow: var(--td-tab-bar-glass-shadow, @shadow-3);
+@tab-bar-glass-fallback-blur: var(--td-tab-bar-glass-fallback-blur, 8px);
+@tab-bar-glass-sheen-opacity: var(--td-tab-bar-glass-sheen-opacity, 1);
+@tab-bar-selected-bg-color: var(--td-tab-bar-selected-bg-color, @brand-color);
+@tab-bar-selected-bg-opacity: var(--td-tab-bar-selected-bg-opacity, 16%);
+@tab-bar-selected-sheen-opacity: var(--td-tab-bar-selected-sheen-opacity, 0.62);
+@tab-bar-selected-border-color: var(--td-tab-bar-selected-border-color, @component-border);
+@tab-bar-press-scale: 1.12;
+@tab-bar-press-capsule-scale: 1.16;
+@tab-bar-press-duration: 240ms;
+@tab-bar-press-easing: cubic-bezier(0.22, 1, 0.36, 1);
+
+// 分层 fallback 的内部派生值，不作为公共 API 暴露
+@tab-bar-glass-fallback-blur-center: calc(@tab-bar-glass-fallback-blur * 0.2);
+@tab-bar-glass-fallback-blur-mid: calc(@tab-bar-glass-fallback-blur * 0.5);
+@tab-bar-glass-fallback-blur-edge: calc(@tab-bar-glass-fallback-blur * 0.9);
+@tab-bar-glass-fallback-layers: var(--td-tab-bar-glass-fallback-layers, 1);
