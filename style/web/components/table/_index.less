@@ -474,6 +474,11 @@
   .@{prefix}-table__cell--title {
     display: flex;
     align-items: center;
+
+    .@{prefix}-table__ellipsis {
+      flex: 1;
+      min-width: 0;
+    }
   }
 
   &__column-controller {
@@ -739,7 +744,7 @@
   align-items: center;
   pointer-events: all;
   height: @table-icon-size;
-  width: @table-icon-size;
+  flex-shrink: 0;
   margin-left: @table-filter-icon-margin-left;
 }
 
@@ -763,7 +768,11 @@
     .@{prefix}-table__cell--sortable,
     .@{prefix}-table__cell--filterable {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
+    }
+
+    .@{prefix}-table__cell--title {
+      max-width: 100%;
     }
   }
 }
