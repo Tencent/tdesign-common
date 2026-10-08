@@ -20,6 +20,8 @@
 
   &__body {
     border-collapse: collapse;
+    border-spacing: 0;
+    color: @descriptions-content-color;
     font: @font-body-medium;
     width: 100%;
 
@@ -27,12 +29,45 @@
     .generate-padding(m, @descriptions-borderless-padding-m);
     .generate-padding(s, @descriptions-borderless-padding-s);
 
+    & @{root}__label,
+    & @{root}__content {
+      box-sizing: border-box;
+      line-height: @descriptions-item-line-height;
+      vertical-align: top;
+    }
+
     & @{root}__label {
-      color: @text-color-placeholder;
+      color: @descriptions-label-color;
+    }
+
+    & @{root}__content {
+      color: @descriptions-content-color;
+      word-break: break-word;
     }
 
     &--fixed {
       table-layout: fixed;
+    }
+
+    &:not(&--border) {
+      @{root}__label {
+        min-width: @descriptions-borderless-label-min-width;
+        padding-right: @descriptions-borderless-label-padding-right;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      @{root}__content {
+        padding-right: @descriptions-borderless-content-padding-right;
+      }
+
+      > tbody {
+        > tr {
+          > td:last-child {
+            padding-right: 0;
+          }
+        }
+      }
     }
 
     &--border {
@@ -54,12 +89,6 @@
         &:hover {
           background-color: @bg-color-container-hover;
         }
-      }
-    }
-
-    :not(&--fixed):not(&--border) {
-      @{root}__label {
-        padding-right: @comp-paddingLR-l;
       }
     }
   }
