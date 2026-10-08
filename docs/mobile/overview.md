@@ -268,17 +268,17 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="./components/comment">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-comment.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-comment-dark.png" />
-      <p class="name">Comment 评论</p>
-    </a>
-  </div>
-  <div class="image-wrapper">
     <a class="item" href="./components/count-down">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-countdown.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-countdown-dark.png" />
       <p class="name">CountDown 倒计时</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="./components/comment">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-comment.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-comment-dark.png" />
+      <p class="name">Comment 评论</p>
     </a>
   </div>
   <div class="image-wrapper">
