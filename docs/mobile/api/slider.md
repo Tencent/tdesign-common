@@ -37,3 +37,7 @@ toc: false
 #### 胶囊型滑块
 
 {{ capsule }}
+
+#### 垂直滑块
+
+{{ vertical }}
