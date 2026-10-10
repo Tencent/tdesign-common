@@ -37,3 +37,7 @@ toc: false
 #### Capsule Style Slider
 
 {{ capsule }}
+
+#### Vertical Slider
+
+{{ vertical }}
