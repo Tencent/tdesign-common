@@ -1,6 +1,6 @@
 @comment: ~'@{prefix}-comment';
 
-@comment-content-padding: @spacer-1 @spacer-2 4px @spacer-2;
+@comment-inner-padding: @spacer-1 @spacer-2 calc(@spacer / 2) @spacer-2;
 @comment-content-font: @font-body-large;
 
 @comment-author-color: @text-color-placeholder;
@@ -8,5 +8,7 @@
 
 @comment-datetime-color: @text-color-disabled;
 @comment-datetime-font: @font-body-small;
+
+@comment-reply-body-margin-left: calc(@spacer + @spacer-4);
 @comment-folds-divider-background: @component-stroke;
 @comment-folds-item-color: @text-color-secondary;
