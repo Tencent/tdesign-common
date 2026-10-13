@@ -70,6 +70,8 @@ await generateLlmsDocs({
 - `readComponentDoc`（必传）：组件文档读取器，返回文档原文（含 frontmatter），无文档时返回 null
 - `readDemoCode`（必传）：demo 源码解析器，替换 `{{ demo }}` 占位符
 - `isDemoSlot`：判断 demo 占位符，默认匹配组件目录下的 `_example/<demoName>` 目录
+- `demoSectionHeading`：演示区二级分组标题（如 `## 示例代码`）。传入后，在 demo 替换后自动注入，
+  保证与 `## API` 层级对称；文档已自带二级分节（如 chat 组件）时自动跳过。
 - `transformers`：正文清理变压器（按序执行），默认使用内置 `cleanSiteHtml`（小程序站点清理）；其余仓库传空数组或自定义。
   签名：`(body, ctx?: { slug; componentDir }) => string`，`ctx` 提供当前组件上下文，便于变压器按组件差异化处理。
 - `titleKey` / `descriptionKey` / `splineKey`：frontmatter 字段名，默认 `title` / `description` / `spline`
@@ -85,6 +87,8 @@ await generateLlmsDocs({
 - `convertTdCodeBlock(body)`：把 `<td-code-block>` + `<pre>` 转成 ` ```dart ` 代码块（flutter 等文档内嵌代码块场景）
 - `stripCoverageBadges(body)`：移除 `<span class="coverages-badge">` 装饰徽章块
 - `demoteHeadings(body)`：将正文中的 ATX 标题统一降一级（跳过代码围栏），用于聚合文件层级调整
+- `ensureDemoSectionHeading(doc, heading?)`：确保演示区拥有二级分组标题（默认 `## 示例代码`），
+  已自带二级分节时跳过；通常经 `demoSectionHeading` 选项自动调用，也可单独复用
 - `renderComponentMarkdown(doc)`：渲染单篇组件文档 Markdown（frontmatter + 正文，用于 `components/<slug>.md`）
 - `renderComponentSection(doc)`：渲染 llms-full.txt 中的组件片段（`## 标题` + 描述引用 + 正文降一级，不含 frontmatter）
 - `resolveDocUrl(slug, siteBaseUrl?)`：拼接组件文档链接（有基址输出绝对 URL，否则相对链接）
