@@ -18,7 +18,7 @@ toc: false
 
 {{ block }}
 
-### 02 Component Status
+### 02 Component Style
 
 #### Controller State
 

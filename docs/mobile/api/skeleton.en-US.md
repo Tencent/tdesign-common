@@ -8,7 +8,9 @@ toc: false
 
 ## Code Demos
 
-### 01 Type
+### 01 Component Type
+
+#### Basic
 
 {{ theme }}
 

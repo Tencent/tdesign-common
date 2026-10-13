@@ -36,7 +36,7 @@ Image elements can be inserted into the dialog box and the position can be custo
 
 {{ image-dialog }}
 
-### 02 Component Type
+### 02 Component Style
 
 Text button, horizontal base button, vertical base button, multi-button, with close button
 

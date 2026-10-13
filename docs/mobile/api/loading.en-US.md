@@ -38,6 +38,18 @@ toc: false
 
 ### 04 Advanced
 
+#### Full-screen Loading
+
+{{ fullscreen }}
+
+#### Attached to a Specific Element
+
+{{ attach }}
+
+#### Function Call
+
+{{ service }}
+
 #### Delay Loading
 
 {{ delay }}

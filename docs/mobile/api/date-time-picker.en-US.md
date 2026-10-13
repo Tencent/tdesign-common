@@ -34,7 +34,7 @@ toc: false
 
 {{ show-week }}
 
-#### Time Picker with Interval
+#### Time Picker with Step Interval
 
 {{ steps }}
 
