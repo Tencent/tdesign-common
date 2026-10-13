@@ -1,12 +1,20 @@
 @comment: ~'@{prefix}-comment';
 
-@comment-content-padding: @spacer-1 @spacer-2 4px @spacer-2;
+@comment-inner-horizontal-padding: @spacer-2;
+@comment-inner-padding: @spacer-1 @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
 @comment-content-font: @font-body-large;
+@comment-content-color: @text-color-primary;
 
 @comment-author-color: @text-color-placeholder;
+@comment-author-margin-bottom: calc(@spacer / 4);
 @comment-name-text-size: @font-body-small;
 
 @comment-datetime-color: @text-color-disabled;
 @comment-datetime-font: @font-body-small;
+
+@comment-bottom-margin-top: calc(@spacer / 2);
+
+@comment-reply-body-margin-left: calc(@spacer + @spacer-4);
+@comment-reply-inner-padding: @spacer @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
 @comment-folds-divider-background: @component-stroke;
 @comment-folds-item-color: @text-color-secondary;

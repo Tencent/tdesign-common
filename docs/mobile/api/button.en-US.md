@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
-
 ### 01 Component Type
 
 #### Basic Buttons
@@ -42,7 +40,7 @@ The ghost button reverses the color of the button's content and makes the backgr
 
 {{ group }}
 
-#### Banner Button
+#### Block Button
 
 The Block button fills its parent container in width (no padding and margin values). This button is commonly used in mobile and some form scenarios.
 
@@ -50,20 +48,20 @@ The Block button fills its parent container in width (no padding and margin valu
 
 ### 02 Component State
 
-#### Buttons for different states
+#### Disabled Buttons
 
 {{ status }}
 
 ### 03 Component Style
 
-#### Different sizes of buttons
+#### Button Size
 
 {{ size }}
 
-#### Different shaped buttons
+#### Button Shape
 
 {{ shape }}
 
-#### Different color theme buttons
+#### Button Theme
 
 {{ theme }}

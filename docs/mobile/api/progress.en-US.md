@@ -6,15 +6,15 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
+
+#### Linear Progress
 
 {{ base }}
 
 ### 02 Component Status
 
-#### Line
+#### Linear Progress
 
 {{ line }}
 

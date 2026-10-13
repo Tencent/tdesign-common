@@ -6,11 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
-### Basic
+#### Basic
 
 {{ theme }}
 

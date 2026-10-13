@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
 {{ type }}
@@ -15,7 +13,5 @@ toc: false
 ### 02 Component Style
 
 {{ theme }}
-
-#### Bubble Pop Direction
 
 {{ placement }}

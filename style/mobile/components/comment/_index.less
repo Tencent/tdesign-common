@@ -7,6 +7,7 @@
 
   &__inner {
     display: flex;
+    padding: @comment-inner-padding;
 
     &:active {
       background-color: @bg-color-secondarycontainer;
@@ -24,19 +25,19 @@
 
   &__author {
     color: @comment-author-color;
-    margin-bottom: 2px;
+    margin-bottom: @comment-author-margin-bottom;
   }
 
   &__content {
     word-break: break-all;
     font: @comment-content-font;
+    color: @comment-content-color;
   }
 
   &__bottom {
     display: flex;
     align-items: center;
-    margin-top: 4px;
-    padding: 2px 0;
+    margin-top: @comment-bottom-margin-top;
   }
 
   &__meta {
@@ -52,18 +53,21 @@
   }
 
   &__reply {
-    margin-top: @spacer;
-    margin-left: 56px;
-
     &-body {
+      margin-left: @comment-reply-body-margin-left;
       overflow: hidden;
       transition: height ease 240ms;
+
+      .@{comment}__inner {
+        padding: @comment-reply-inner-padding;
+      }
     }
   }
 
   &__folds {
     display: flex;
     align-items: center;
+    margin-left: calc(@comment-reply-body-margin-left + @comment-inner-horizontal-padding);
 
     &::before {
       display: block;
