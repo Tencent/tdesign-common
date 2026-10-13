@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
 #### Anchor Point Usage
@@ -23,5 +21,7 @@ toc: false
 {{ with-icon }}
 
 ### 02 Component Style
+
+#### SideBar Navigation Style
 
 {{ custom }}

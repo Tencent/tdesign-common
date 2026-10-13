@@ -6,8 +6,6 @@ spline: data
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
 #### Text comments

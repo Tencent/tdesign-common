@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 基础开关
@@ -18,7 +16,13 @@ toc: false
 
 {{ label }}
 
+#### 自定义颜色开关
+
+{{ color }}
+
 ### 02 组件状态
+
+#### 加载状态
 
 {{ status }}
 

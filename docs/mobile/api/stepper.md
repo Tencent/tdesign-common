@@ -6,9 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
-### 01 组件类型
+### 01 类型
 
 #### 基础步进器
 

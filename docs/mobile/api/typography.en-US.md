@@ -5,22 +5,24 @@ isComponent: true
 spline: base
 ---
 
-### Base
+### Component Type
+
+#### Base Text
 
 {{ base }}
 
-### Combination
+#### Combination
 
 {{ combination }}
 
-### Theme
+#### Theme
 
 {{ theme }}
 
-### Copyable
+#### Copyable
 
 {{ copyable }}
 
-### Ellipsis
+#### Ellipsis
 
 {{ ellipsis }}

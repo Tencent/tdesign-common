@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
 #### Single File Upload
@@ -31,5 +29,7 @@ toc: false
 {{ theme }}
 
 ### 04 Style Customization
+
+#### Single File Upload
 
 {{ custom }}

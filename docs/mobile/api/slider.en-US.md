@@ -6,23 +6,21 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+### 01 Component Type
 
-### Component Type
-
-#### Single Handle
+#### Single Handle Slider
 
 {{ base }}
 
-#### Double Handle
+#### Double Handle Slider
 
 {{ range }}
 
-#### with numerical value
+#### Single Handle Slider with Value
 
 {{ label }}
 
-#### with Scale
+#### Single Handle Slider with Scale
 
 {{ step }}
 
@@ -37,3 +35,7 @@ toc: false
 #### Capsule Style Slider
 
 {{ capsule }}
+
+### 04 Vertical
+
+{{ vertical }}

@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 基础输入框
@@ -58,6 +56,6 @@ toc: false
 
 {{ bordered }}
 
-#### 自定义样式文本框
+#### 自定义样式输入框
 
 {{ custom }}

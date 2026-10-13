@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 纯文字的公告栏
@@ -36,12 +34,12 @@ toc: false
 
 ### 02 组件状态
 
-公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
+#### 公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
 
 {{ theme }}
 
 ### 03 可滚动的公告栏
 
-可滚动公告栏有水平 (horizontal) 和垂直 (vertical)
+#### 可滚动公告栏有水平（horizontal）和垂直（vertical）
 
 {{ scrolling }}
