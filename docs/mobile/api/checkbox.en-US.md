@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
-
 ### 01 Component Type
 
 #### Vertical checkbox
@@ -42,8 +40,8 @@ toc: false
 
 {{ card }}
 
-### Component Specification
+### 04 Special Style
 
-#### checkbox size specifications
+#### Vertical Card Checkbox
 
 {{ special }}

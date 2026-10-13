@@ -5,8 +5,6 @@ isComponent: true
 spline: form
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 基础日历
@@ -37,10 +35,10 @@ spline: form
 
 {{ local-text }}
 
-### 含不可选的日历
+#### 含不可选的日历
 
 {{ disabled }}
 
-### 不使用 Popup
+#### 不使用 Popup
 
 {{ without-popup }}

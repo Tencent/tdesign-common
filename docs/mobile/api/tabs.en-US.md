@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
 #### Distribute Tabs
@@ -32,7 +30,11 @@ toc: false
 
 ### 02 Component Status
 
+#### Tabs Status
+
 {{ status }}
+
+### 03 Component Style
 
 #### Tabs Size
 

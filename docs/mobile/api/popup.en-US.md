@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
 #### Basic Popup
@@ -16,11 +14,9 @@ toc: false
 
 ### 02 Component Example
 
-#### With Title And Action
+#### Example
 
 {{ with-title }}
-
-#### Custom Close Button
 
 {{ custom-close }}
 

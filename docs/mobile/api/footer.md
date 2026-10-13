@@ -6,10 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
-### 组件类型
-
 #### 基础页脚
 
 {{ base }}

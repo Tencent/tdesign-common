@@ -6,16 +6,14 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
-#### Indexes Type
+#### Basic Index Type
 
 {{ base }}
 
 ### 02 Component Style
 
-#### Indexes Capsule Theme
+#### Other Index Type
 
 {{ custom }}

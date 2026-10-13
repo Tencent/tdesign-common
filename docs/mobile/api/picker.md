@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 基础选择器
@@ -16,12 +14,10 @@ toc: false
 
 {{ base }}
 
-#### 地区选择器
-
 {{ area }}
 
 ### 02 组件样式
 
-#### 是否带标题
-
 {{ with-title }}
+
+{{ custom-height }}

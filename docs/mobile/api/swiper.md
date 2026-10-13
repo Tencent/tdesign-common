@@ -6,28 +6,38 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
-#### 点状（dots)
+#### 点状（dots）
 
 {{ base }}
 
-#### 条状（dots-bar)
+#### 条状（dots-bar）
 
 {{ custom }}
 
-#### 分式（fraction)
+#### 分式（fraction）
 
 {{ fraction }}
 
-#### Controls
+#### 切换按钮（controls）
 
 {{ control }}
+
+#### 手动跳转（current）
+
+{{ current }}
 
 ### 02 组件样式
 
 #### 垂直模式
 
 {{ vertical }}
+
+#### outside模式
+
+{{ outside }}
+
+#### 卡片式
+
+{{ card }}

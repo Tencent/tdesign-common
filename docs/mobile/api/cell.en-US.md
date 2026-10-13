@@ -6,9 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
-
-### 01 Component type
+### 01 Component Type
 
 #### Single Row
 

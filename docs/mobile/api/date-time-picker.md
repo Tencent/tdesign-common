@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 年月日选择器
@@ -34,12 +32,14 @@ toc: false
 
 {{ show-week }}
 
+#### 间隔时间选择器
+
+{{ steps }}
+
 ### 02 组件样式
 
-#### 带标题时间选择器
+#### 是否带标题
 
 {{ with-title }}
-
-#### 不带标题时间选择器
 
 {{ without-title }}

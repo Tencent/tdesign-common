@@ -6,9 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
-### Component Type
+### 01 Component Type
 
 #### Basic
 
@@ -18,8 +16,8 @@ toc: false
 
 {{ block }}
 
-### 02 Component Status
+### 02 Component Style
 
-#### Disabled State
+#### Controller State
 
 {{ disabled }}
