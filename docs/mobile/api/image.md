@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 提供 fill、contain、cover、none、scale-down 5 种填充类型。

@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
-
 Step bar, the direction can be horizontal and vertical, you can customize the step bar display content and whether it is writable
 
 ### 01 Component Type

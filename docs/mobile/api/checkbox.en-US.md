@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
-
 ### 01 Component Type
 
 #### Vertical checkbox

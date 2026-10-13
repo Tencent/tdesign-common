@@ -5,8 +5,6 @@ isComponent: true
 spline: form
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 基础日历

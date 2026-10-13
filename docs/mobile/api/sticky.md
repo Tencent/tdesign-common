@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
+### 01 组件类型
 
 将内容包裹在 `Sticky` 组件内
 

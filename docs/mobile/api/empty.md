@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 #### 图标空状态
 
 {{ base }}

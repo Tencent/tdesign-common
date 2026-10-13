@@ -5,8 +5,6 @@ isComponent: true
 spline: base
 ---
 
-## 代码演示
-
 ### 组件类型
 
 #### 基础文本

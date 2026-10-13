@@ -6,10 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
-按钮的样式，默认使用 `variant = text`，如果任意按钮改变了 `variant`，那么全部按钮都改变成这个。
-
 ### 01 组件类型
 
 #### 反馈类对话框

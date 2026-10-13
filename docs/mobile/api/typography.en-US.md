@@ -5,8 +5,6 @@ isComponent: true
 spline: base
 ---
 
-## Code Demos
-
 ### Component Type
 
 #### Base Text

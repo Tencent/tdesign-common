@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
-
 ### 01 Component Type
 
 #### Message Content Is Text or With Action Buttons

@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
-
 ### Component Type
 
 #### Basic Result

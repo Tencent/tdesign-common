@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demos
+### 01 Component Type
 
 Wrap the content in the 'Sticky' component
 
