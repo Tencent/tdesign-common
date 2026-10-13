@@ -11,6 +11,11 @@
     padding: @form-item-vertical-padding @form-item-horizontal-padding;
     position: relative;
 
+    &-arrow {
+      flex: 0 0 auto;
+      color: @form-item-arrow-color;
+    }
+
     &:not(:last-child)::after {
       .hairline-bottom(@form-item-border-color);
 
