@@ -36,6 +36,6 @@ toc: false
 
 {{ capsule }}
 
-### 04 垂直状态
+#### 垂直滑块
 
 {{ vertical }}

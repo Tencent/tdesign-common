@@ -36,6 +36,6 @@ toc: false
 
 {{ capsule }}
 
-### 04 Vertical
+#### Vertical Slider
 
 {{ vertical }}
