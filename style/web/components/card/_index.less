@@ -53,6 +53,16 @@
   padding: @card-body-padding;
 }
 
+.@{prefix}-card .@{prefix}-loading__parent {
+  // 卡片内容外包一层 Loading 的 .t-loading__parent，它才是卡片的 flex item：
+  // 需要由它填充并收缩卡片剩余高度，再由 __body(flex:1; min-height:0) 接力，
+  // 内部 height:100% 的滚动子组件（如 Menu / Tree）才能获得确定高度
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
 .@{prefix}-card__header {
   display: flex;
   justify-content: space-between;
