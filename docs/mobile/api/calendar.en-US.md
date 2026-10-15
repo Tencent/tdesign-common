@@ -5,11 +5,9 @@ isComponent: true
 spline: form
 ---
 
-## Code Demos
-
 ### 01 Component Type
 
-#### Basic Calender
+#### Basic Calendar
 
 {{ base }}
 

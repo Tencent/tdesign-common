@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
 ### 01 Component Type
 
 #### Year Month Date Picker
@@ -34,12 +32,14 @@ toc: false
 
 {{ show-week }}
 
-### 02 Component Status
+#### Time Picker with Step Interval
 
-#### DatetimePicker with Title
+{{ steps }}
+
+### 02 Component Style
+
+#### With Title or Not
 
 {{ with-title }}
-
-#### DatetimePicker without Title
 
 {{ without-title }}

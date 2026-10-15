@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 基础弹出层
@@ -16,11 +14,9 @@ toc: false
 
 ### 02 组件示例
 
-#### 带标题和操作
+#### 应用示例
 
 {{ with-title }}
-
-#### 带自定义关闭按钮
 
 {{ custom-close }}
 

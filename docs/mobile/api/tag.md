@@ -6,25 +6,15 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
-
-#### 标签类型
 
 {{ type }}
 
-#### 可关闭的标签
-
 {{ closable }}
-
-#### 可点击的标签
 
 {{ checkable }}
 
 ### 02 组件状态
-
-#### 展示型标签
 
 {{ theme }}
 

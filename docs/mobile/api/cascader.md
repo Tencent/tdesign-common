@@ -6,11 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
-#### 基础用法
+#### 基本用法
 
 {{ base }}
 

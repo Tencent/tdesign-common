@@ -6,9 +6,7 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
-
-### Component Type
+### 01 Component Types
 
 #### Swipe Left with Single Operation
 

@@ -54,17 +54,20 @@
 
   &__reply {
     &-body {
-      margin-top: @spacer;
       margin-left: @comment-reply-body-margin-left;
       overflow: hidden;
       transition: height ease 240ms;
+
+      .@{comment}__inner {
+        padding: @comment-reply-inner-padding;
+      }
     }
   }
 
   &__folds {
     display: flex;
     align-items: center;
-    margin-left: @comment-reply-body-margin-left;
+    margin-left: calc(@comment-reply-body-margin-left + @comment-inner-horizontal-padding);
 
     &::before {
       display: block;

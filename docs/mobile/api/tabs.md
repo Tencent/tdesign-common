@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 均分选项卡
@@ -31,6 +29,8 @@ toc: false
 {{ content }}
 
 ### 02 组件状态
+
+#### 选项卡状态
 
 {{ status }}
 

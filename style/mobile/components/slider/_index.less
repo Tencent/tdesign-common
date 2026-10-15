@@ -41,8 +41,7 @@
     }
 
     &--capsule&--single {
-      border-top-left-radius: calc(@slider-capsule-line-height / 2);
-      border-bottom-left-radius: calc(@slider-capsule-line-height / 2);
+      border-radius: calc(@slider-capsule-line-height / 2) 0 0 calc(@slider-capsule-line-height / 2);
     }
   }
 
@@ -232,7 +231,11 @@
     border-radius: calc(@slider-bar-width / 2);
 
     &--capsule {
-      border-radius: calc(@slider-capsule-line-height / 2);
+      border-radius: calc(@slider-bar-width / 2);
+
+      &.@{slider}__line--single {
+        border-radius: calc(@slider-capsule-line-height / 2) calc(@slider-capsule-line-height / 2) 0 0;
+      }
     }
   }
 

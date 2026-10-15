@@ -1,6 +1,7 @@
 @comment: ~'@{prefix}-comment';
 
-@comment-inner-padding: @spacer-1 @spacer-2 calc(@spacer / 2) @spacer-2;
+@comment-inner-horizontal-padding: @spacer-2;
+@comment-inner-padding: @spacer-1 @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
 @comment-content-font: @font-body-large;
 @comment-content-color: @text-color-primary;
 
@@ -14,5 +15,6 @@
 @comment-bottom-margin-top: calc(@spacer / 2);
 
 @comment-reply-body-margin-left: calc(@spacer + @spacer-4);
+@comment-reply-inner-padding: @spacer @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
 @comment-folds-divider-background: @component-stroke;
 @comment-folds-item-color: @text-color-secondary;
