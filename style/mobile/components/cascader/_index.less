@@ -7,7 +7,7 @@
   flex-direction: column;
   background-color: @cascader-bg-color;
   color: @cascader-title-color;
-  border-radius: 12px 12px 0 0;
+  border-radius: @radius-extraLarge @radius-extraLarge 0 0;
 
   --td-radio-icon-checked-color: @cascader-active-color;
   --td-tab-item-active-color: @cascader-active-color;
@@ -46,14 +46,14 @@
       margin-top: 20px;
       color: @cascader-options-title-color;
       font: @font-body-medium;
-      padding-left: 16px;
+      padding-left: @spacer-2;
     }
 
     &-content {
       flex: 1;
       height: 100%;
       overflow: auto;
-      padding-left: 16px;
+      padding-left: @spacer-2;
     }
 
     &-container {
@@ -78,7 +78,7 @@
       position: relative;
       width: @cascader-step-dot-size;
       height: @cascader-step-dot-size;
-      border-radius: 50%;
+      border-radius: @radius-circle;
       border: 1px solid @cascader-active-color;
       box-sizing: border-box;
 
@@ -101,7 +101,7 @@
     }
 
     &-label {
-      padding-left: 16px;
+      padding-left: @spacer-2;
       font: @font-body-medium;
 
       &--active {
