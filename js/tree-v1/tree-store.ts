@@ -720,8 +720,8 @@ export class TreeStore {
       const nodeKey = node.getNodeMapKey();
       if (valueMode === 'parentFirst' && !checkStrictly) {
         // valueMode 为 parentFirst
-        // 仅取值父节点
-        if (!node.parent || !node.parent.isChecked(checkedMap)) {
+        // 仅取值父节点，独立选中的禁用节点保留自身值
+        if (node.isDisabled() || !node.parent || !node.parent.isChecked(checkedMap)) {
           list.push(nodeKey);
         }
       } else if (valueMode === 'onlyLeaf' && !checkStrictly) {
@@ -777,6 +777,8 @@ export class TreeStore {
       } else {
         const childrenNodes = node.walk();
         childrenNodes.forEach((childNode) => {
+          // 显式传入的节点可选中，禁用后代不随父节点联动
+          if (childNode !== node && childNode.isDisabled()) return;
           this.checkedMap.set(childNode.getNodeMapKey(), true);
         });
       }

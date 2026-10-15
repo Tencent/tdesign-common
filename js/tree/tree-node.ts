@@ -887,16 +887,14 @@ export class TreeNode {
     }
     // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
     if (Array.isArray(children) && children.length > 0) {
-      // 子节点全部选中，则当前节点选中
-      checked = children.every((node) => {
-        const childIsChecked = node.isChecked(checkedMap);
-        return childIsChecked;
-      });
+      // 禁用子节点不参与全选判断，且没有可用子节点时不自动选中
+      const enabledChildren = children.filter((node) => !node.isDisabled());
+      checked = enabledChildren.length > 0 && enabledChildren.every((node) => node.isChecked(checkedMap));
     } else {
       // 从父节点状态推断子节点状态
       // 这里再调用 isChecked 会导致死循环
       const parents = this.getParents();
-      checked = parents.some((node) => checkedMap.get(node.value));
+      checked = !this.isDisabled() && parents.some((node) => checkedMap.get(node.value));
     }
     return checked;
   }
@@ -919,6 +917,8 @@ export class TreeNode {
 
     let childChecked: null | boolean = null;
     const indeterminate = children.some((node: TreeNode) => {
+      // 禁用子节点不参与半选判断
+      if (node.isDisabled()) return false;
       if (node.isIndeterminate()) {
         // 子节点有任意一个半选，则其为半选状态
         return true;
@@ -1311,8 +1311,13 @@ export class TreeNode {
     if (!this.tree.config.checkStrictly && this.parent?.isDisabled()) return;
     // 当 disabled 为 null 时，恢复为默认的禁用逻辑，而非通过设置强制指定
     this.disableManually = disabled;
+    if (!this.tree.config.checkStrictly) {
+      // 父节点全选状态需要按新的可用子节点集合重新计算
+      this.getParents().forEach((node) => this.tree.checkedMap.delete(node.value));
+    }
     this.update();
     this.updateChildren();
+    this.updateParents();
   }
 
   /* ------ 节点状态更新 ------ */
