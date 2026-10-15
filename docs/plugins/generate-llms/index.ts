@@ -85,7 +85,7 @@ export function createComponentDocParser(options: ComponentDocParserOptions): Pa
     readComponentDoc,
     readDemoCode,
     isDemoSlot = defaultIsDemoSlot,
-    demoSectionHeading,
+    demoSectionHeading = '## 示例代码',
     transformers,
     titleKey = 'title',
     descriptionKey = 'description',
