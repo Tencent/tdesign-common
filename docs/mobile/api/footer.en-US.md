@@ -6,6 +6,8 @@ isComponent: true
 toc: false
 ---
 
+### Component Type
+
 #### Basic Footer
 
 {{ base }}
