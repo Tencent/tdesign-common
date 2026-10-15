@@ -6,6 +6,8 @@ isComponent: true
 toc: false
 ---
 
+### 组件类型
+
 #### 图标空状态
 
 {{ base }}
