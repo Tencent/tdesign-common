@@ -21,6 +21,9 @@
   // 使内部 height:100% 的滚动子组件（如 Menu / Tree）正常约束高度并出现滚动条
   display: flex;
   flex-direction: column;
+  // 当卡片被放进有确定高度的外层（如 flex/grid 容器、定高父级）时自动撑满，
+  // 否则其内部 height:100% 的滚动子组件会因父级无确定高度而坍塌、内容溢出
+  height: 100%;
 }
 
 .@{prefix}-card--bordered {
