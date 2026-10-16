@@ -28,7 +28,10 @@
     .generate-padding(s, @descriptions-borderless-padding-s);
 
     & @{root}__label {
-      color: @text-color-placeholder;
+      color: @descriptions-item-label-color;
+      min-width: @descriptions-item-label-min-width;
+      vertical-align: top;
+      white-space: nowrap;
     }
 
     &--fixed {
@@ -59,7 +62,7 @@
 
     :not(&--fixed):not(&--border) {
       @{root}__label {
-        padding-right: @comp-paddingLR-l;
+        padding-right: @descriptions-item-label-gap;
       }
     }
   }
