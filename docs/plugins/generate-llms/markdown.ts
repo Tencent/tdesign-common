@@ -283,3 +283,19 @@ export function demoteHeadings(body: string): string {
 export function stripCoverageBadges(body: string): string {
   return body.replace(/<span\s+class="coverages-badge"[^>]*>[\s\S]*?<\/span>/g, '');
 }
+
+/**
+ * 确保演示区拥有二级分组标题（如 `## 示例代码`），与后续 `## API` 层级对称。
+ * 在第一个结构行（标题 / `{{ demo }}` 占位符 / 代码围栏）前插入 heading；
+ * 首个结构行已是二级标题（文档自带分节，如 chat 组件）或无结构行时跳过。
+ */
+export function ensureDemoSectionHeading(doc: string, heading: string = '## 示例代码'): string {
+  const lines = doc.split('\n');
+  const index = lines.findIndex(
+    (line) => /^#{1,6}\s/.test(line) || /^\s*\{\{\s*[a-zA-Z0-9-]+\s*\}\}\s*$/.test(line) || /^\s*(```|~~~)/.test(line)
+  );
+  if (index === -1) return doc;
+  if (/^##\s/.test(lines[index])) return doc;
+  const insert = index > 0 && lines[index - 1].trim() ? ['', heading, ''] : [heading, ''];
+  return [...lines.slice(0, index), ...insert, ...lines.slice(index)].join('\n');
+}
