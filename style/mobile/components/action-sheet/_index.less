@@ -3,12 +3,17 @@
 @import './_var.less';
 
 .@{action-sheet} {
+  display: flex;
+  flex-direction: column;
+
   &__content {
     color: @action-sheet-color;
     border-top-left-radius: @action-sheet-border-radius;
     border-top-right-radius: @action-sheet-border-radius;
     background-color: @bg-color-container;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
     &:focus {
       outline: 0;
@@ -81,6 +86,8 @@
     --td-button-default-disabled-bg: none;
     --td-button-default-disabled-color: @action-sheet-disabled-color;
     --td-button-border-radius: 0;
+
+    overflow: auto;
 
     &-item {
       border: none;
