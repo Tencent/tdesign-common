@@ -1,4 +1,4 @@
-import { get, isBoolean, isFunction, isNil, isNull, isNumber, uniqueId } from 'lodash-es';
+import { get, isBoolean, isFunction, isNil, isNull, isNumber, isUndefined, uniqueId } from 'lodash-es';
 import log from '../log';
 import { createNodeModel, pathToKey, updateNodeModel } from './tree-node-model';
 import { TreeStore } from './tree-store';
@@ -538,6 +538,62 @@ export class TreeNode {
   }
 
   /**
+   * 刷新节点 value 并同步树中缓存的节点状态
+   * @param {TreeNodeValue} value 节点新值
+   * @return void
+   */
+  public refreshValue(value: TreeNodeValue): void {
+    const oldValue = this.value;
+    if (oldValue === value) return;
+
+    const nodes = this.walk();
+    const { tree } = this;
+    const oldKeyState = nodes.map((node) => {
+      const nodeKey = node.getNodeMapKey();
+      return {
+        node,
+        nodeKey,
+        checked: tree.checkedMap.get(nodeKey),
+        expanded: tree.expandedMap.get(nodeKey),
+        actived: tree.activedMap.get(nodeKey),
+      };
+    });
+    const filtered = tree.filterMap.get(oldValue);
+
+    oldKeyState.forEach(({ nodeKey }) => {
+      tree.nodeMap.delete(nodeKey);
+      tree.checkedMap.delete(nodeKey);
+      tree.expandedMap.delete(nodeKey);
+      tree.activedMap.delete(nodeKey);
+    });
+    tree.filterMap.delete(oldValue);
+
+    this.value = value as string;
+
+    oldKeyState.forEach(({ node, checked, expanded, actived }) => {
+      const nodeKey = node.getNodeMapKey();
+      if (tree.nodeMap.get(nodeKey)) {
+        log.warn('Tree', `Duplicated value: ${node.value}`);
+      }
+      tree.nodeMap.set(nodeKey, node);
+      if (checked) tree.checkedMap.set(nodeKey, true);
+      if (expanded) tree.expandedMap.set(nodeKey, true);
+      if (actived) tree.activedMap.set(nodeKey, true);
+    });
+    if (filtered) tree.filterMap.set(this.value, true);
+  }
+
+  /**
+   * value 变更后，刷新当前节点及关联节点状态
+   * @return void
+   */
+  public refreshAfterValueChange(): void {
+    this.update();
+    this.updateChildren();
+    this.updateParents();
+  }
+
+  /**
    * 异步加载子节点
    * @return Promise<void>
    */
@@ -570,8 +626,16 @@ export class TreeNode {
   public set(item: TreeNodeState): void {
     const { tree } = this;
     const keys = Object.keys(item);
+    let valueChanged = false;
     keys.forEach((key) => {
-      if (hasOwnProperty.call(settableStatus, key) || key === 'label') {
+      if (key === 'value' && isUndefined(item[key])) {
+        return;
+      }
+      if (key === 'value' && !isUndefined(item[key])) {
+        this.refreshValue(item[key] as TreeNodeValue);
+        valueChanged = true;
+      }
+      if (hasOwnProperty.call(settableStatus, key) || key === 'label' || key === 'value') {
         // @ts-ignore
         // TODO: 待移除
         this[key] = item[key];
@@ -580,6 +644,10 @@ export class TreeNode {
         this.setDisabled(item[key]);
       }
     });
+    if (valueChanged) {
+      this.refreshAfterValueChange();
+      return;
+    }
     tree.updated(this);
   }
 
