@@ -39,7 +39,8 @@
 @textarea-tips-font: @font-body-small;
 
 // 间距
-@textarea-padding: calc(calc(@comp-size-m - @text-line-height-base) / 2) @comp-paddingLR-s;
+@textarea-padding-top: calc(calc(@comp-size-m - @text-line-height-base) / 2);
+@textarea-padding: @textarea-padding-top @comp-paddingLR-s;
 @textarea-tips-gap: @comp-margin-s;
 
 // 边框
@@ -52,3 +53,15 @@
 @textarea-box-shadow-color-error-focus: @error-color-focus;
 
 @textarea-border-radius: @border-radius-default;
+
+// 清除按钮
+@textarea-clear-color: @text-color-placeholder;
+@textarea-clear-color-hover: @text-color-secondary;
+@textarea-clear-size: @font-size-l;
+@textarea-clear-position-right: @comp-paddingLR-s;
+@textarea-clear-position-top: calc(@textarea-padding-top + calc(@text-line-height-base / 2));
+@textarea-clear-padding-right: calc(@comp-paddingLR-s + @textarea-clear-size + @comp-margin-s);
+@textarea-clear-transition:
+  opacity @anim-duration-base linear,
+  visibility @anim-duration-base linear,
+  color @anim-duration-base linear;
