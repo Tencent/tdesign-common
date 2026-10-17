@@ -1,4 +1,5 @@
-import { isFunction, isNumber } from 'lodash-es';
+import isFunction from 'lodash-es/isFunction';
+import isNumber from 'lodash-es/isNumber';
 /* eslint-disable no-param-reassign */
 import { getCurrentDate, isOverSizeLimit } from './utils';
 import xhr from './xhr';

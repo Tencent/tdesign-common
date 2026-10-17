@@ -1,4 +1,5 @@
-import { isString, isNull } from 'lodash-es';
+import isString from 'lodash-es/isString';
+import isNull from 'lodash-es/isNull';
 /* eslint-disable no-param-reassign */
 /**
  * 用于反解析渐变字符串为对象

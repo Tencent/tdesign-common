@@ -1,4 +1,4 @@
-import { isString } from 'lodash-es';
+import isString from 'lodash-es/isString';
 
 /**
  * 计算刻度区间值停止坐标

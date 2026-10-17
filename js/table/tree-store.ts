@@ -1,4 +1,6 @@
-import { isUndefined, get, set } from 'lodash-es';
+import isUndefined from 'lodash-es/isUndefined';
+import get from 'lodash-es/get';
+import set from 'lodash-es/set';
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */

@@ -1,4 +1,5 @@
-import { isString, toUpper } from 'lodash-es';
+import isString from 'lodash-es/isString';
+import toUpper from 'lodash-es/toUpper';
 import { MOBILE_CIRCLE_SIZE_PX } from './const';
 
 /**

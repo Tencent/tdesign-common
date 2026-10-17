@@ -1,4 +1,6 @@
-import { isUndefined, isString, isNumber } from 'lodash-es';
+import isUndefined from 'lodash-es/isUndefined';
+import isString from 'lodash-es/isString';
+import isNumber from 'lodash-es/isNumber';
 /** 普通数相关方法 */
 import {
   compareNumber,

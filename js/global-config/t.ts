@@ -1,4 +1,4 @@
-import { isString } from 'lodash-es';
+import isString from 'lodash-es/isString';
 
 /**
  * 复数规则判断函数
