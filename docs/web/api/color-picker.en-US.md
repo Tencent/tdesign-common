@@ -18,6 +18,12 @@ Trigger the display selector panel through the trigger, and transparently transf
 
 {{ trigger }}
 
+### Input-less Color Picker
+
+Set `isInput=false` to display only the color block in the trigger and hide the color value input, for scenarios where the color is selected only through the panel.
+
+{{ input-less }}
+
 ### Color selector for different color modes
 
 Support monochrome mode, linear gradient two color mode selection, can be used in a single mode, can also switch between two modes at the same time. Use `colorModes` to configure.
