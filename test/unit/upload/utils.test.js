@@ -34,7 +34,7 @@ describe('validateFileType', () => {
     expect(validateFileType('.docx,.doc,.zip', 'application/doc')).toBeTruthy();
     expect(validateFileType('.docx,.doc,.zip', 'application/msword')).toBeTruthy();
     expect(
-      validateFileType('.docx,.doc,.zip', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+      validateFileType('.docx,.doc,.zip', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
     ).toBeTruthy();
     expect(validateFileType('.docx,.doc,.zip', 'application/docx')).toBeTruthy();
     expect(validateFileType('.docx,.doc,.zip', 'application/jpg')).toBeFalsy();

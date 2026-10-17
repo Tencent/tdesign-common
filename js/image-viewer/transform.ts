@@ -84,7 +84,7 @@ export function calcZoomOutScale(oldScale: number, step: number, min: number, ma
 export function calculateTranslateOffset(
   oldScale: number,
   newScale: number,
-  options?: ZoomOptions
+  options?: ZoomOptions,
 ): TranslateOffset | undefined {
   if (options?.mouseOffsetX == null || options?.mouseOffsetY == null) {
     return undefined;
@@ -109,7 +109,7 @@ export function zoomIn(
   step: number,
   min: number,
   max: number,
-  options?: ZoomOptions
+  options?: ZoomOptions,
 ): { newScale: number; zoomResult: ZoomResult } {
   const newScale = calcZoomInScale(oldScale, step, min, max);
   return {
@@ -127,7 +127,7 @@ export function zoomOut(
   step: number,
   min: number,
   max: number,
-  options?: ZoomOptions
+  options?: ZoomOptions,
 ): { newScale: number; zoomResult: ZoomResult } {
   const newScale = calcZoomOutScale(oldScale, step, min, max);
   return {

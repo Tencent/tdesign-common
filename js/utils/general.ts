@@ -6,7 +6,7 @@ export const hasOwn = <T extends object>(val: T, key: string | symbol | number):
   hasOwnProperty.call(val, key);
 export const getPropertyValFromObj = <T extends object>(
   val: T,
-  key: string | symbol | number
+  key: string | symbol | number,
 ): T[keyof T] | undefined => (hasOwn(val, key) ? val[key] : undefined);
 
 const objectToString: typeof Object.prototype.toString = Object.prototype.toString;

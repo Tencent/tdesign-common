@@ -212,7 +212,7 @@ export function getWeeks(
     maxDate,
     dayjsLocale = 'zh-cn',
     cancelRangeSelectLimit = false,
-  }: OptionsType
+  }: OptionsType,
 ) {
   const prependDay = getFirstDayOfMonth({ year, month });
   const appendDay = getLastDayOfMonth({ year, month });
@@ -298,7 +298,7 @@ export function getQuarters(
     quarterLocal,
     dayjsLocale = 'zh-cn',
     cancelRangeSelectLimit = false,
-  }: OptionsType
+  }: OptionsType,
 ) {
   const quarterArr = [];
   const today = getToday();
@@ -323,7 +323,7 @@ export function getQuarters(
 
 export function getYears(
   year: number,
-  { disableDate = () => false, minDate, maxDate, dayjsLocale = 'zh-cn', cancelRangeSelectLimit = false }: OptionsType
+  { disableDate = () => false, minDate, maxDate, dayjsLocale = 'zh-cn', cancelRangeSelectLimit = false }: OptionsType,
 ) {
   const startYear = parseInt((year / 10).toString(), 10) * 10;
   const endYear = startYear + 9;
@@ -416,14 +416,14 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
 
         if (multiple) {
           _item.active = (value as DateValue[])?.some?.(
-            (val) => isSame(dayjs(val).toDate(), _item.value, type) && !_item.additional
+            (val) => isSame(dayjs(val).toDate(), _item.value, type) && !_item.additional,
           );
         } else {
           _item.active = start && isSame(item.value, start, type) && !_item.additional;
         }
 
         return _item;
-      })
+      }),
     );
   }
 
@@ -450,7 +450,7 @@ export function flagActive(data: any[], { ...args }: FlagActiveOptions) {
         _item.hoverEndOfRange = isHoverEnd;
       }
       return _item;
-    })
+    }),
   );
 }
 
@@ -610,7 +610,7 @@ export function computePaginationDisabled(
   range: PickerDateRange,
   mode: 'date' | 'week' | 'month' | 'quarter' | 'year',
   year: number,
-  month: number | undefined
+  month: number | undefined,
 ): { prev: boolean; next: boolean } {
   const monthCountMap: Record<string, number> = { date: 1, week: 1, month: 12, quarter: 12, year: 120 };
   const monthCount = monthCountMap[mode] || 0;
