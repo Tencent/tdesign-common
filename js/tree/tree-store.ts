@@ -1,4 +1,4 @@
-import { isArray, isFunction, isNumber, isString, difference, camelCase, isPlainObject } from 'lodash-es';
+import { isArray, isFunction, isNumber, difference, camelCase, isPlainObject } from 'lodash-es';
 import mitt from 'mitt';
 
 import { TreeNode, privateKey } from './tree-node';
@@ -20,6 +20,12 @@ function nextTick(fn: () => void): Promise<void> {
   const pm = Promise.resolve();
   pm.then(fn);
   return pm;
+}
+
+// 判断是否为合法的节点值类型：string / number / bigint
+// 注意 bigint 不能与 number 混用 === / !== 比较，但可以安全地作为 Map 的键
+function isTreeNodeValue(item: unknown): item is TreeNodeValue {
+  return typeof item === 'string' || typeof item === 'number' || typeof item === 'bigint';
 }
 
 // 构建一个树的数据模型
@@ -193,7 +199,7 @@ export class TreeStore {
    */
   public getNode(item: TypeTargetNode): TreeNode {
     let node = null;
-    if (isString(item) || isNumber(item)) {
+    if (isTreeNodeValue(item)) {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
@@ -277,12 +283,13 @@ export class TreeStore {
   public getNodes(item?: TypeTargetNode, options?: TypeTreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
-    if (isString(item) || isNumber(item)) {
+    if (isTreeNodeValue(item)) {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
     }
-    if (!val && val !== 0) {
+    // 0 与 0n 均为有效节点值，不能视作「空值」从而返回全部节点
+    if (!val && val !== 0 && val !== 0n) {
       nodes = this.nodes.slice(0);
     } else {
       const node = this.getNode(val);
@@ -357,7 +364,7 @@ export class TreeStore {
     let node = null;
     let data = null;
 
-    if (isString(para) || isNumber(para)) {
+    if (isTreeNodeValue(para)) {
       value = para;
       node = this.getNode(value);
       data = item;
