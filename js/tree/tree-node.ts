@@ -207,7 +207,7 @@ export class TreeNode {
         }
       }
     } else if (nodeMap.get(nodeKey)) {
-      log.warn('Tree', `Dulplicate value: ${this.value}`);
+      log.warn('Tree', `Duplicated value: ${this.value}`);
     }
     nodeMap.set(nodeKey, this);
     privateMap.set(this[privateKey], this);

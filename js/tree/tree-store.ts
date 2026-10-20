@@ -189,8 +189,19 @@ export class TreeStore {
   }
 
   /**
+   * 归一化节点查找 key
+   * - allowDuplicateValue 开启时，map 中的 key 为路径字符串，数字 value 需转换为字符串
+   * - 关闭时 key 为原始 value，无需转换
+   * @param {string|number} val 节点 value 或路径 key
+   * @return TreeNodeValue 归一化后的 map key
+   */
+  private normalizeMapKey(val: TreeNodeValue): TreeNodeValue {
+    return this.config.allowDuplicateValue && isNumber(val) ? String(val) : val;
+  }
+
+  /**
    * 获取指定节点对象
-   * @param {string|number|TreeNode|Array} item 获取节点对象的条件，可以是节点 value，也可以是节点本身，也可以是路径数组
+   * @param {string|number|TreeNode|TreeNodeValue[]} item 获取节点对象的条件，可以是节点 value，也可以是节点本身，也可以是路径数组
    * @return TreeNode 节点对象，如果判断树中没有符合条件的节点，返回 null
    */
   public getNode(item: TypeTargetNode | TreeNodeValue[]): TreeNode {
@@ -200,7 +211,7 @@ export class TreeStore {
       const pathKey = pathToKey(item);
       node = this.nodeMap.get(pathKey);
     } else if (isString(item) || isNumber(item)) {
-      node = this.nodeMap.get(item);
+      node = this.nodeMap.get(this.normalizeMapKey(item));
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.getNodeMapKey());
     }
@@ -576,8 +587,9 @@ export class TreeStore {
       list.length = 1;
     }
     list.forEach((val) => {
-      this.activedMap.set(val, true);
-      const node = this.nodeMap.get(val);
+      const key = this.normalizeMapKey(val);
+      this.activedMap.set(key, true);
+      const node = this.nodeMap.get(key);
       if (node) {
         node.update();
       }
@@ -613,9 +625,10 @@ export class TreeStore {
    * @return void
    */
   public replaceExpanded(list: TreeNodeValue[]): void {
+    const nextList = list.map((val) => this.normalizeMapKey(val));
     const expanded = this.getExpanded();
-    const added = difference(list, expanded);
-    const removed = difference(expanded, list);
+    const added = difference(nextList, expanded);
+    const removed = difference(expanded, nextList);
     this.setExpandedDirectly(removed, false);
     this.updateExpanded(removed);
     this.setExpanded(added);
@@ -641,11 +654,12 @@ export class TreeStore {
    */
   public setExpandedDirectly(list: TreeNodeValue[], expanded = true): void {
     list.forEach((val) => {
-      const node = this.nodeMap.get(val);
+      const key = this.normalizeMapKey(val);
+      const node = this.nodeMap.get(key);
       if (!node?.isLeaf() && expanded) {
-        this.expandedMap.set(val, true);
+        this.expandedMap.set(key, true);
       } else {
-        this.expandedMap.delete(val);
+        this.expandedMap.delete(key);
       }
       node?.afterExpanded();
     });
@@ -741,7 +755,7 @@ export class TreeStore {
     const { checkStrictly, checkable } = this.config;
     if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
-      const node = this.nodeMap.get(val);
+      const node = this.nodeMap.get(this.normalizeMapKey(val));
       if (!node) return;
       if (checkStrictly) {
         this.checkedMap.set(node.getNodeMapKey(), true);
@@ -851,8 +865,9 @@ export class TreeStore {
     };
     const map = new Map();
     list.forEach((value) => {
-      if (map.get(value)) return;
-      const node = this.nodeMap.get(value);
+      const key = this.normalizeMapKey(value);
+      if (map.get(key)) return;
+      const node = this.nodeMap.get(key);
       if (node) {
         const parents = node.getParents().reverse();
         const children = node.walk();

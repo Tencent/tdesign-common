@@ -181,6 +181,40 @@ describe('tree:allowDuplicateValue', () => {
     expect(tree.getNode([1, 2])).not.toBe(tree.getNode([1, 2, 2]));
   });
 
+  it('开启后，数值 value 支持直接查找与状态设置', async () => {
+    const tree = new TreeStore({
+      allowDuplicateValue: true,
+      activable: true,
+      checkable: true,
+      valueMode: 'onlyLeaf',
+    });
+    tree.append([{ value: 1, children: [{ value: 2, children: [{ value: 2 }] }] }] as any);
+    await delay(0);
+
+    // 数值 value 归一化为字符串路径 key 后可被查找
+    expect(tree.getNode(1).value).toBe(1);
+    expect(tree.getNode([1, 2]).value).toBe(2);
+
+    // 激活态与展开态支持数值 value 设置
+    tree.setActived([1]);
+    await delay(0);
+    expect(tree.getNode(1).isActived()).toBe(true);
+
+    tree.setExpanded([1]);
+    await delay(0);
+    expect(tree.getNode(1).isExpanded()).toBe(true);
+
+    // 选中态支持数值 value 设置，取值仍为路径 key
+    tree.setChecked([1]);
+    await delay(0);
+    expect(tree.getChecked()).toEqual(['1/2/2']);
+
+    // replaceExpanded 中数值 value 与字符串路径 key 视为同一节点
+    tree.replaceExpanded([1]);
+    await delay(0);
+    expect(tree.getNode(1).isExpanded()).toBe(true);
+  });
+
   it('开启后，移动节点子树时路径 key 正确迁移', async () => {
     const tree = new TreeStore({ allowDuplicateValue: true });
     tree.append([
