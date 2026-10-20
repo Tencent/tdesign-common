@@ -6,6 +6,12 @@ import log from '../log/log';
 
 export const nodeKey = '__tdesign_tree-node__';
 
+export const PATH_SEPARATOR = '/';
+
+export function pathToKey(path: TreeNodeValue[]) {
+  return path.join(PATH_SEPARATOR);
+}
+
 export class TreeNodeModel {
   private [nodeKey]: TreeNode;
 
