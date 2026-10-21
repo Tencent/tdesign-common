@@ -178,7 +178,7 @@ export interface TreeNodeModel<T extends TreeOptionData = TreeOptionData> extend
   /**
    * 移除当前节点或当前节点的子节点，值为空则移除当前节点，值存在则移除当前节点的子节点
    */
-  remove: (value?: TreeNodeValue) => void;
+  remove: (value?: TreeNodeValue | TreeNodeValue[]) => void;
   /**
    * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
    */
