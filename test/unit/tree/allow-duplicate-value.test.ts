@@ -264,4 +264,45 @@ describe('tree:allowDuplicateValue', () => {
     expect(tree.getNode(['r', 'y', 'x']).vmIsRest).toBe(true);
     expect(tree.getNode(['r', 'y']).vmIsLocked).toBe(true);
   });
+
+  it('开启后，setConfig 切换配置会重建路径 key', async () => {
+    const tree = new TreeStore({ checkable: true });
+    tree.append([{ value: '1', children: [{ value: '2' }] }, { value: '2' }]);
+    await delay(0);
+
+    tree.getNode('2').setChecked(true, { directly: true });
+    tree.setConfig({ allowDuplicateValue: true });
+    await delay(0);
+
+    expect(tree.getNode(['1', '2'])).not.toBe(null);
+    expect(tree.getNode(['2'])).not.toBe(null);
+    expect(tree.getNode(['2']).isChecked()).toBe(true);
+
+    tree.setConfig({ allowDuplicateValue: false });
+    await delay(0);
+    expect(tree.getNode('2')).not.toBe(null);
+  });
+
+  it('开启后，getNodes 使用 TreeNode 实例定位重复 value 子树', async () => {
+    const tree = new TreeStore({ allowDuplicateValue: true });
+    tree.append(duplicateData());
+    await delay(0);
+
+    const node123 = tree.getNode(['1', '2', '3']);
+    expect(tree.getNodes(node123)).toEqual([node123]);
+    expect(tree.getCheckedNodes(node123)).toEqual([]);
+  });
+
+  it('开启后，节点模型支持按路径删除重复 value 节点', async () => {
+    const tree = new TreeStore({ allowDuplicateValue: true });
+    tree.append(duplicateData());
+    await delay(0);
+
+    const root1 = tree.getNode(['1']);
+    root1.getModel().remove(['1', '2', '3']);
+    await delay(0);
+
+    expect(tree.getNode(['1', '2', '3'])).toBe(null);
+    expect(tree.getNode(['1', '3'])).not.toBe(null);
+  });
 });

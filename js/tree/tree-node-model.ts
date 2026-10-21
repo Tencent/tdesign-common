@@ -227,12 +227,12 @@ export class TreeNodeModel {
    * 移除节点
    * - 提供 value 参数，移除本节点子节点中的节点
    * - 不提供 value 参数，移除自己
-   * @param {string} value 目标节点值
+   * @param {string|number|Array} value 目标节点值或路径
    * @return void
    */
-  public remove(value?: TreeNodeValue) {
+  public remove(value?: TreeNodeValue | TreeNodeValue[]) {
     const node = this[nodeKey];
-    if (!value) {
+    if (typeof value === 'undefined') {
       node.remove();
       return;
     }
@@ -245,8 +245,7 @@ export class TreeNodeModel {
     }
 
     const parents = targetNode.getParents();
-    const parentValues = parents.map((pnode) => pnode.value);
-    if (parentValues.indexOf(node.value) < 0) {
+    if (!parents.includes(node)) {
       log.warnOnce('Tree', `\`${value}\` is not a childNode of current node`);
       return;
     }

@@ -160,6 +160,20 @@ export class TreeStore {
    */
   public setConfig(options: TypeTreeStoreOptions) {
     const { config } = this;
+    const shouldRekey =
+      typeof options.allowDuplicateValue === 'boolean' && options.allowDuplicateValue !== config.allowDuplicateValue;
+    const nodes: TreeNode[] = [];
+    let activedNodes: TreeNode[] = [];
+    let checkedNodes: TreeNode[] = [];
+    let expandedNodes: TreeNode[] = [];
+    if (shouldRekey) {
+      this.children.forEach((rootNode) => {
+        nodes.push(...rootNode.walk());
+      });
+      activedNodes = nodes.filter((node) => this.activedMap.get(node.getNodeMapKey()));
+      checkedNodes = nodes.filter((node) => this.checkedMap.get(node.getNodeMapKey()));
+      expandedNodes = nodes.filter((node) => this.expandedMap.get(node.getNodeMapKey()));
+    }
     let hasChanged = false;
     (Object.keys(options) as (keyof TypeTreeStoreOptions)[]).forEach((key) => {
       const val = options[key];
@@ -171,6 +185,18 @@ export class TreeStore {
       }
     });
     this.hasFilter = isFunction(config.filter);
+    if (shouldRekey) {
+      this.nodeMap.clear();
+      this.activedMap.clear();
+      this.checkedMap.clear();
+      this.expandedMap.clear();
+      nodes.forEach((node) => {
+        this.nodeMap.set(node.getNodeMapKey(), node);
+      });
+      activedNodes.forEach((node) => this.activedMap.set(node.getNodeMapKey(), true));
+      checkedNodes.forEach((node) => this.checkedMap.set(node.getNodeMapKey(), true));
+      expandedNodes.forEach((node) => this.expandedMap.set(node.getNodeMapKey(), true));
+    }
     if (hasChanged) {
       // 在 td-tree 的 render 方法中调用 setConfig
       // 这样减少了 watch 属性
@@ -293,19 +319,16 @@ export class TreeStore {
    */
   public getNodes(item?: TypeTargetNode, options?: TypeTreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
-    let val: TreeNodeValue = '';
+    let node: TreeNode = null;
     if (isString(item) || isNumber(item)) {
-      val = item;
+      node = this.getNode(item);
     } else if (item instanceof TreeNode) {
-      val = item.value;
+      node = item;
     }
-    if (!val && val !== 0) {
+    if (typeof item === 'undefined') {
       nodes = this.nodes.slice(0);
-    } else {
-      const node = this.getNode(val);
-      if (node) {
-        nodes = node.walk();
-      }
+    } else if (node) {
+      nodes = node.walk();
     }
 
     if (options) {
