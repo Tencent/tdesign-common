@@ -2,6 +2,7 @@ import { isArray, isFunction, isNumber, isString, difference, camelCase, isPlain
 import mitt from 'mitt';
 
 import { TreeNode, privateKey } from './tree-node';
+import { pathToKey } from './tree-node-model';
 import {
   TreeNodeValue,
   TypeIdMap,
@@ -56,6 +57,7 @@ function nextTick(fn: () => void): Promise<void> {
  * @param {function} [options.onReflow=null] 节点触发回流后的回调
  * @param {function} [options.onUpdate=null] 节点触发更新后的后调
  * @param {boolean} [options.allowFoldNodeOnFilter=false] 过滤时，是否允许折叠节点
+ * @param {boolean} [options.allowDuplicateValue=false] 是否允许不同层级存在相同的 value 值
  */
 export class TreeStore {
   // 根节点集合
@@ -158,6 +160,20 @@ export class TreeStore {
    */
   public setConfig(options: TypeTreeStoreOptions) {
     const { config } = this;
+    const shouldRekey =
+      typeof options.allowDuplicateValue === 'boolean' && options.allowDuplicateValue !== config.allowDuplicateValue;
+    const nodes: TreeNode[] = [];
+    let activedNodes: TreeNode[] = [];
+    let checkedNodes: TreeNode[] = [];
+    let expandedNodes: TreeNode[] = [];
+    if (shouldRekey) {
+      this.children.forEach((rootNode) => {
+        nodes.push(...rootNode.walk());
+      });
+      activedNodes = nodes.filter((node) => this.activedMap.get(node.getNodeMapKey()));
+      checkedNodes = nodes.filter((node) => this.checkedMap.get(node.getNodeMapKey()));
+      expandedNodes = nodes.filter((node) => this.expandedMap.get(node.getNodeMapKey()));
+    }
     let hasChanged = false;
     (Object.keys(options) as (keyof TypeTreeStoreOptions)[]).forEach((key) => {
       const val = options[key];
@@ -169,6 +185,18 @@ export class TreeStore {
       }
     });
     this.hasFilter = isFunction(config.filter);
+    if (shouldRekey) {
+      this.nodeMap.clear();
+      this.activedMap.clear();
+      this.checkedMap.clear();
+      this.expandedMap.clear();
+      nodes.forEach((node) => {
+        this.nodeMap.set(node.getNodeMapKey(), node);
+      });
+      activedNodes.forEach((node) => this.activedMap.set(node.getNodeMapKey(), true));
+      checkedNodes.forEach((node) => this.checkedMap.set(node.getNodeMapKey(), true));
+      expandedNodes.forEach((node) => this.expandedMap.set(node.getNodeMapKey(), true));
+    }
     if (hasChanged) {
       // 在 td-tree 的 render 方法中调用 setConfig
       // 这样减少了 watch 属性
@@ -187,16 +215,31 @@ export class TreeStore {
   }
 
   /**
+   * 归一化节点查找 key
+   * - allowDuplicateValue 开启时，map 中的 key 为路径字符串，数字 value 需转换为字符串
+   * - 关闭时 key 为原始 value，无需转换
+   * @param {string|number} val 节点 value 或路径 key
+   * @return TreeNodeValue 归一化后的 map key
+   */
+  private normalizeMapKey(val: TreeNodeValue): TreeNodeValue {
+    return this.config.allowDuplicateValue && isNumber(val) ? String(val) : val;
+  }
+
+  /**
    * 获取指定节点对象
-   * @param {string|number|TreeNode} item 获取节点对象的条件，可以是节点 value，也可以是节点本身
+   * @param {string|number|TreeNode|TreeNodeValue[]} item 获取节点对象的条件，可以是节点 value，也可以是节点本身，也可以是路径数组
    * @return TreeNode 节点对象，如果判断树中没有符合条件的节点，返回 null
    */
-  public getNode(item: TypeTargetNode): TreeNode {
+  public getNode(item: TypeTargetNode | TreeNodeValue[]): TreeNode {
     let node = null;
-    if (isString(item) || isNumber(item)) {
-      node = this.nodeMap.get(item);
+    const { allowDuplicateValue } = this.config;
+    if (isArray(item) && allowDuplicateValue) {
+      const pathKey = pathToKey(item);
+      node = this.nodeMap.get(pathKey);
+    } else if (isString(item) || isNumber(item)) {
+      node = this.nodeMap.get(this.normalizeMapKey(item));
     } else if (item instanceof TreeNode) {
-      node = this.nodeMap.get(item.value);
+      node = this.nodeMap.get(item.getNodeMapKey());
     }
     if (!node) node = null;
     return node;
@@ -276,19 +319,16 @@ export class TreeStore {
    */
   public getNodes(item?: TypeTargetNode, options?: TypeTreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
-    let val: TreeNodeValue = '';
+    let node: TreeNode = null;
     if (isString(item) || isNumber(item)) {
-      val = item;
+      node = this.getNode(item);
     } else if (item instanceof TreeNode) {
-      val = item.value;
+      node = item;
     }
-    if (!val && val !== 0) {
+    if (typeof item === 'undefined') {
       nodes = this.nodes.slice(0);
-    } else {
-      const node = this.getNode(val);
-      if (node) {
-        nodes = node.walk();
-      }
+    } else if (node) {
+      nodes = node.walk();
     }
 
     if (options) {
@@ -570,8 +610,9 @@ export class TreeStore {
       list.length = 1;
     }
     list.forEach((val) => {
-      this.activedMap.set(val, true);
-      const node = this.getNode(val);
+      const key = this.normalizeMapKey(val);
+      this.activedMap.set(key, true);
+      const node = this.nodeMap.get(key);
       if (node) {
         node.update();
       }
@@ -607,9 +648,10 @@ export class TreeStore {
    * @return void
    */
   public replaceExpanded(list: TreeNodeValue[]): void {
+    const nextList = list.map((val) => this.normalizeMapKey(val));
     const expanded = this.getExpanded();
-    const added = difference(list, expanded);
-    const removed = difference(expanded, list);
+    const added = difference(nextList, expanded);
+    const removed = difference(expanded, nextList);
     this.setExpandedDirectly(removed, false);
     this.updateExpanded(removed);
     this.setExpanded(added);
@@ -635,11 +677,12 @@ export class TreeStore {
    */
   public setExpandedDirectly(list: TreeNodeValue[], expanded = true): void {
     list.forEach((val) => {
-      const node = this.getNode(val);
+      const key = this.normalizeMapKey(val);
+      const node = this.nodeMap.get(key);
       if (!node?.isLeaf() && expanded) {
-        this.expandedMap.set(val, true);
+        this.expandedMap.set(key, true);
       } else {
-        this.expandedMap.delete(val);
+        this.expandedMap.delete(key);
       }
       node?.afterExpanded();
     });
@@ -683,22 +726,23 @@ export class TreeStore {
     nodeMap.forEach((node) => {
       // 判断未选中，直接忽略
       if (!node.isChecked(checkedMap)) return;
+      const nodeKey = node.getNodeMapKey();
       if (valueMode === 'parentFirst' && !checkStrictly) {
         // valueMode 为 parentFirst
         // 仅取值父节点，独立选中的禁用节点保留自身值
         if (node.isDisabled() || !node.parent || !node.parent.isChecked(checkedMap)) {
-          list.push(node.value);
+          list.push(nodeKey);
         }
       } else if (valueMode === 'onlyLeaf' && !checkStrictly) {
         // valueMode 为 onlyLeaf
         // 仅取值叶子节点
         if (node.isLeaf()) {
-          list.push(node.value);
+          list.push(nodeKey);
         }
       } else {
         // valueMode 为 all
         // 取值所有选中节点
-        list.push(node.value);
+        list.push(nodeKey);
       }
     });
     return list;
@@ -734,17 +778,17 @@ export class TreeStore {
     const { checkStrictly, checkable } = this.config;
     if (!checkable) return;
     list.forEach((val: TreeNodeValue) => {
-      const node = this.getNode(val);
+      const node = this.nodeMap.get(this.normalizeMapKey(val));
       if (!node) return;
       if (checkStrictly) {
-        this.checkedMap.set(val, true);
+        this.checkedMap.set(node.getNodeMapKey(), true);
         node.updateChecked();
       } else {
         const childrenNodes = node.walk();
         childrenNodes.forEach((childNode) => {
           // 显式传入的节点可选中，禁用后代不随父节点联动
           if (childNode !== node && childNode.isDisabled()) return;
-          this.checkedMap.set(childNode.value, true);
+          this.checkedMap.set(childNode.getNodeMapKey(), true);
         });
       }
     });
@@ -844,8 +888,9 @@ export class TreeStore {
     };
     const map = new Map();
     list.forEach((value) => {
-      if (map.get(value)) return;
-      const node = this.getNode(value);
+      const key = this.normalizeMapKey(value);
+      if (map.get(key)) return;
+      const node = this.nodeMap.get(key);
       if (node) {
         const parents = node.getParents().reverse();
         const children = node.walk();
@@ -857,7 +902,7 @@ export class TreeStore {
         }
         // 用 map 实现节点去重
         related.forEach((relatedNode) => {
-          map.set(relatedNode.value, relatedNode);
+          map.set(relatedNode.getNodeMapKey(), relatedNode);
         });
       }
     });

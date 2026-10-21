@@ -178,7 +178,7 @@ export interface TreeNodeModel<T extends TreeOptionData = TreeOptionData> extend
   /**
    * 移除当前节点或当前节点的子节点，值为空则移除当前节点，值存在则移除当前节点的子节点
    */
-  remove: (value?: TreeNodeValue) => void;
+  remove: (value?: TreeNodeValue | TreeNodeValue[]) => void;
   /**
    * 设置当前节点数据，数据变化可自动刷新页面，泛型 `T` 表示树节点 TS 类型
    */
@@ -278,4 +278,6 @@ export interface TypeTreeStoreOptions {
   onUpdate?: Function;
   // 是否允许在过滤时折叠节点
   allowFoldNodeOnFilter?: Boolean;
+  // 是否允许不同层级有重复的 value 值
+  allowDuplicateValue?: boolean;
 }
