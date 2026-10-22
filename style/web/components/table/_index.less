@@ -298,14 +298,33 @@
       }
     }
 
-    // 无论是否固定表头，斑马纹均从首个数据行（奇数行）开始，避免出现滚动条出现/消失时条纹错位
-    > .@{prefix}-table__content > table > tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
-      background-color: @table-highlight-bg-color;
+    // 固定表头/表头吸顶场景，表头背景色与斑马纹颜色相同（--td-bg-color-secondarycontainer），
+    // 为避免表头与第一条斑马纹混色，条纹从第 2 行（偶数行）开始
+    &.@{prefix}-table--header-fixed,
+    &.@{prefix}-table--affixed-header {
+      > .@{prefix}-table__content > table > tbody tr:nth-of-type(even) {
+        background-color: @table-highlight-bg-color;
+      }
+    }
+
+    &:not(.@{prefix}-table--header-fixed):not(.@{prefix}-table--affixed-header) {
+      > .@{prefix}-table__content > table > tbody > tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row) {
+        background-color: @table-highlight-bg-color;
+      }
     }
 
     &.@{prefix}-table--hoverable {
-      > .@{prefix}-table__content > table > tbody tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row):hover {
-        background-color: @table-highlight-bg-color--hover;
+      &.@{prefix}-table--header-fixed,
+      &.@{prefix}-table--affixed-header {
+        > .@{prefix}-table__content > table > tbody tr:nth-of-type(even):hover {
+          background-color: @table-highlight-bg-color--hover;
+        }
+      }
+
+      &:not(.@{prefix}-table--header-fixed):not(.@{prefix}-table--affixed-header) {
+        > .@{prefix}-table__content > table > tbody tr:nth-of-type(odd):not(.@{prefix}-table__expanded-row):hover {
+          background-color: @table-highlight-bg-color--hover;
+        }
       }
 
       > .@{prefix}-table__content > table > tbody {
@@ -886,10 +905,11 @@
     }
   }
 }
-// 固定表头背景色与普通表头保持一致（@table-bg），设置背景色是为了滚动时遮挡表体内容
-.@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple) {
+// 固定表头（sticky）与吸顶表头（Affix）均需背景色遮挡滚动的表体内容，颜色与斑马纹一致
+.@{prefix}-table__header--fixed:not(.@{prefix}-table__header--multiple),
+.@{prefix}-table--affixed-header .@{prefix}-table__header:not(.@{prefix}-table__header--multiple) {
   > tr > th {
-    background-color: @table-bg;
+    background-color: @bg-color-secondarycontainer;
   }
 }
 
