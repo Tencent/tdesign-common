@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### 01 Type
+### 01 Component Type
 
 #### Basic
 

@@ -22,6 +22,11 @@ function nextTick(fn: () => void): Promise<void> {
   return pm;
 }
 
+// 保留原有字符串、数字判断，补充 bigint 支持
+function isTreeNodeValue(item: unknown): item is TreeNodeValue {
+  return isString(item) || isNumber(item) || typeof item === 'bigint';
+}
+
 // 构建一个树的数据模型
 // 基本设计思想：写入时更新，减少读取消耗，以减少未来实现虚拟滚动所需的计算量
 // 任何一次数据写入，会触发相应节点的状态更新
@@ -204,7 +209,7 @@ export class TreeStore {
    */
   public getNode(item: TypeTargetNode): TreeNode {
     let node = null;
-    if (isString(item) || isNumber(item)) {
+    if (isTreeNodeValue(item)) {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
       node = this.nodeMap.get(item.value);
@@ -288,12 +293,13 @@ export class TreeStore {
   public getNodes(item?: TypeTargetNode, options?: TypeTreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
-    if (isString(item) || isNumber(item)) {
+    if (isTreeNodeValue(item)) {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
     }
-    if (!val && val !== 0) {
+    // 0 与 0n 均为有效节点值，不能视作「空值」从而返回全部节点
+    if (!val && val !== 0 && val !== 0n) {
       nodes = this.nodes.slice(0);
     } else {
       const node = this.getNode(val);
@@ -368,7 +374,7 @@ export class TreeStore {
     let node = null;
     let data = null;
 
-    if (isString(para) || isNumber(para)) {
+    if (isTreeNodeValue(para)) {
       value = para;
       node = this.getNode(value);
       data = item;

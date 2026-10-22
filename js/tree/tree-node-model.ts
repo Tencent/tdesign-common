@@ -226,7 +226,7 @@ export class TreeNodeModel {
    */
   public remove(value?: TreeNodeValue) {
     const node = this[nodeKey];
-    if (!value) {
+    if (isUndefined(value)) {
       node.remove();
       return;
     }

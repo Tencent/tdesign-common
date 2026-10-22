@@ -7,7 +7,7 @@
   flex-direction: column;
   background-color: @cascader-bg-color;
   color: @cascader-title-color;
-  border-radius: 12px 12px 0 0;
+  border-radius: @radius-extraLarge @radius-extraLarge 0 0;
 
   --td-radio-icon-checked-color: @cascader-active-color;
   --td-tab-item-active-color: @cascader-active-color;
@@ -28,14 +28,14 @@
 
   &__content {
     width: 100%;
-    flex: 1;
+    height: @cascader-content-height;
     display: flex;
     flex-direction: column;
   }
 
   &__options {
     width: 100vw;
-    height: @cascader-options-height;
+    min-height: 0;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
@@ -46,18 +46,20 @@
       margin-top: 20px;
       color: @cascader-options-title-color;
       font: @font-body-medium;
-      padding-left: 16px;
+      padding-left: @spacer-2;
     }
 
     &-content {
       flex: 1;
       height: 100%;
       overflow: auto;
-      padding-left: 16px;
+      padding-left: @spacer-2;
     }
 
     &-container {
+      flex: 1;
       display: flex;
+      min-height: 0;
       transition: all ease .3s;
     }
   }
@@ -76,7 +78,7 @@
       position: relative;
       width: @cascader-step-dot-size;
       height: @cascader-step-dot-size;
-      border-radius: 50%;
+      border-radius: @radius-circle;
       border: 1px solid @cascader-active-color;
       box-sizing: border-box;
 
@@ -99,7 +101,7 @@
     }
 
     &-label {
-      padding-left: 16px;
+      padding-left: @spacer-2;
       font: @font-body-medium;
 
       &--active {
@@ -111,6 +113,46 @@
     &-arrow {
       color: @cascader-step-arrow-color;
       margin-left: auto;
+    }
+  }
+
+  &__filter {
+    padding: @cascader-filter-padding;
+    box-sizing: border-box;
+
+    &-result {
+      flex: 1;
+      width: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    &-result-item {
+      padding: @cascader-filter-item-padding;
+      color: @cascader-filter-item-color;
+      font: @font-body-medium;
+      box-sizing: border-box;
+      .border(bottom, @cascader-border-color);
+
+      &--hover {
+        background-color: @cascader-filter-item-hover-bg;
+      }
+
+      &--disabled {
+        color: @cascader-filter-item-disabled-color;
+      }
+    }
+
+    &-highlight {
+      color: @cascader-filter-highlight-color;
+      font-weight: 600;
+    }
+
+    &-empty {
+      padding: @cascader-filter-empty-padding;
+      text-align: center;
+      color: @cascader-filter-empty-color;
+      font: @font-body-medium;
     }
   }
 }

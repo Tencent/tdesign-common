@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### 01 类型
+### 01 组件类型
 
 #### 基础步进器
 
