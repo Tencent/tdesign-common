@@ -3,9 +3,9 @@ import TreeStore from '../../../js/tree/tree-store';
 
 // 禁用状态
 // 原则:
-// 1. 值操作与禁用与否无关, treeStore 上的选中操作，不受禁用影响
+// 1. 显式值操作可选中禁用节点，父节点值不自动选中禁用后代
 // 2. treeNode 上的 setChecked 方法，受禁用影响
-// 3. 选中态向下传播时，受节点禁用状态影响，向上传播不影响
+// 3. 禁用子节点不参与父节点全选和半选判断；没有可用子节点时不自动全选
 describe('tree:disabled', () => {
   describe('值操作', () => {
     it('整个树为禁用状态，值操作可以选中节点', async () => {
@@ -28,7 +28,7 @@ describe('tree:disabled', () => {
       expect(tree.getChecked().length).toBe(1);
       const t1 = tree.getNode('t1');
       const t1d1 = tree.getNode('t1.1');
-      expect(t1.checked).toBe(true);
+      expect(t1.checked).toBe(false);
       expect(t1d1.checked).toBe(true);
     });
   });
@@ -56,7 +56,7 @@ describe('tree:disabled', () => {
       isAction: false,
       directly: true,
     });
-    expect(t1.checked).toBe(true);
+    expect(t1.checked).toBe(false);
     expect(t1d1.checked).toBe(true);
   });
 
@@ -93,12 +93,12 @@ describe('tree:disabled', () => {
         },
       ]);
 
-      expect(tree.getNode('t1').checked).toBe(true);
+      expect(tree.getNode('t1').checked).toBe(false);
       expect(tree.getNode('t2').checked).toBe(false);
 
       tree.replaceChecked(['t2.1', 't2.2']);
       expect(tree.getNode('t1').checked).toBe(false);
-      expect(tree.getNode('t2').checked).toBe(true);
+      expect(tree.getNode('t2').checked).toBe(false);
       const checked = tree.getChecked();
       expect(checked.length).toBe(2);
       expect(checked[0]).toBe('t2.1');
@@ -143,8 +143,8 @@ describe('tree:disabled', () => {
       expect(checked.length).toBe(2);
       expect(checked[0]).toBe('t1.1');
       expect(checked[1]).toBe('t1.2');
-      expect(tree.getNode('t1').isChecked()).toBe(true);
-      expect(tree.getNode('t1').checked).toBe(true);
+      expect(tree.getNode('t1').isChecked()).toBe(false);
+      expect(tree.getNode('t1').checked).toBe(false);
     });
   });
 
@@ -294,7 +294,7 @@ describe('tree:disabled', () => {
       expect(t1d2.checked).toBe(false);
     });
 
-    it('UI check 向下扩散被 disabled 阻塞产生半选', async () => {
+    it('UI check 跳过禁用子节点，可用子节点全选后父节点全选', async () => {
       const tree = new TreeStore({
         checkable: true,
       });
@@ -320,13 +320,13 @@ describe('tree:disabled', () => {
       tree.getNode('t1').setChecked(true, {
         directly: true,
       });
-      expect(t1.checked).toBe(false);
-      expect(t1.indeterminate).toBe(true);
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
       expect(t1d1.checked).toBe(false);
       expect(t1d2.checked).toBe(true);
     });
 
-    it('子节点未选中且被禁用, UI check 节点产生了半选后, 父节点可在半选与未选中之间切换', async () => {
+    it('禁用子节点未选中时，父节点可从半选切换到全选再取消', async () => {
       const tree = new TreeStore({
         checkable: true,
       });
@@ -368,8 +368,8 @@ describe('tree:disabled', () => {
       t1.toggleChecked({
         directly: true,
       });
-      expect(t1.checked).toBe(false);
-      expect(t1.indeterminate).toBe(true);
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
       expect(t1d1.checked).toBe(false);
       expect(t1d2.checked).toBe(true);
       expect(t1d3.checked).toBe(true);
@@ -384,7 +384,7 @@ describe('tree:disabled', () => {
       expect(t1d3.checked).toBe(false);
     });
 
-    it('子节点被选中且被禁用, UI check 节点产生了半选后, 父节点可在半选与选中之间切换', async () => {
+    it('已选禁用子节点不参与父节点的全选和半选判断', async () => {
       const tree = new TreeStore({
         checkable: true,
       });
@@ -418,7 +418,7 @@ describe('tree:disabled', () => {
       expect(t1d1.isDisabled()).toBe(true);
       expect(t1d1.checked).toBe(true);
       expect(t1.checked).toBe(false);
-      expect(t1.indeterminate).toBe(true);
+      expect(t1.indeterminate).toBe(false);
 
       t1d2.setChecked(true, {
         directly: true,
@@ -442,13 +442,13 @@ describe('tree:disabled', () => {
         directly: true,
       });
       expect(t1.checked).toBe(false);
-      expect(t1.indeterminate).toBe(true);
+      expect(t1.indeterminate).toBe(false);
       expect(t1d1.checked).toBe(true);
       expect(t1d2.checked).toBe(false);
       expect(t1d3.checked).toBe(false);
     });
 
-    it('被禁用子节点选中态不一致，父节点操作时，子节点选中态也可以得到变更', async () => {
+    it('禁用子节点状态不一致时，父节点仅切换可用子节点', async () => {
       const tree = new TreeStore({
         checkable: true,
       });
@@ -485,7 +485,7 @@ describe('tree:disabled', () => {
       t1d2.setDisabled(true);
       expect(t1.isDisabled()).toBe(false);
       expect(t1.checked).toBe(false);
-      expect(t1.indeterminate).toBe(true);
+      expect(t1.indeterminate).toBe(false);
       expect(t1d1.isDisabled()).toBe(true);
       expect(t1d1.checked).toBe(true);
       expect(t1d2.isDisabled()).toBe(true);
@@ -504,8 +504,8 @@ describe('tree:disabled', () => {
       t1.toggleChecked({
         directly: true,
       });
-      expect(t1.checked).toBe(false);
-      expect(t1.indeterminate).toBe(true);
+      expect(t1.checked).toBe(true);
+      expect(t1.indeterminate).toBe(false);
       expect(t1d1.checked).toBe(true);
       expect(t1d2.checked).toBe(false);
       expect(t1d3.checked).toBe(true);
@@ -515,7 +515,7 @@ describe('tree:disabled', () => {
         directly: true,
       });
       expect(t1.checked).toBe(false);
-      expect(t1.indeterminate).toBe(true);
+      expect(t1.indeterminate).toBe(false);
       expect(t1d1.checked).toBe(true);
       expect(t1d2.checked).toBe(false);
       expect(t1d3.checked).toBe(false);

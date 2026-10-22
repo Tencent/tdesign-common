@@ -6,11 +6,9 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
-#### 文字水印
+#### 文本水印
 
 {{ base }}
 
@@ -39,7 +37,5 @@ toc: false
 {{ moving-image }}
 
 ### 02 组件样式
-
-#### 矩形和六边形布局
 
 {{ layout }}

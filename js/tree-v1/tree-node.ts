@@ -918,16 +918,14 @@ export class TreeNode {
     }
     // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
     if (Array.isArray(children) && children.length > 0) {
-      // 子节点全部选中，则当前节点选中
-      checked = children.every((node) => {
-        const childIsChecked = node.isChecked(checkedMap);
-        return childIsChecked;
-      });
+      // 禁用子节点不参与全选判断，且没有可用子节点时不自动选中
+      const enabledChildren = children.filter((node) => !node.isDisabled());
+      checked = enabledChildren.length > 0 && enabledChildren.every((node) => node.isChecked(checkedMap));
     } else {
       // 从父节点状态推断子节点状态
       // 这里再调用 isChecked 会导致死循环
       const parents = this.getParents();
-      checked = parents.some((node) => checkedMap.get(node.getNodeMapKey()));
+      checked = !this.isDisabled() && parents.some((node) => checkedMap.get(node.getNodeMapKey()));
     }
     return checked;
   }
@@ -951,6 +949,8 @@ export class TreeNode {
 
     let childChecked: null | boolean = null;
     const indeterminate = children.some((node: TreeNode) => {
+      // 禁用子节点不参与半选判断
+      if (node.isDisabled()) return false;
       if (node.isIndeterminate()) {
         // 子节点有任意一个半选，则其为半选状态
         return true;

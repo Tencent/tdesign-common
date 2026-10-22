@@ -6,23 +6,21 @@ isComponent: true
 toc: false
 ---
 
-## Code Demo
+### Component Types
 
-## Component Type
-
-### Basic
+#### Basic
 
 {{ base }}
 
-### Table with Horizontal Scroll
+#### Table with Horizontal Scroll
 
 {{ scroll }}
 
-### with Stripe
+#### with Stripe
 
 {{ stripe }}
 
-### with Border
+#### with Border
 
 {{ bordered }}
 

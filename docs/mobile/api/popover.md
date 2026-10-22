@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 {{ type }}
@@ -15,7 +13,5 @@ toc: false
 ### 02 组件样式
 
 {{ theme }}
-
-#### 气泡弹出方向
 
 {{ placement }}

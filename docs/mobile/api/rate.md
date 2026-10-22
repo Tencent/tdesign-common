@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 实心评分
@@ -25,6 +23,10 @@ toc: false
 #### 带描述评分
 
 {{ show-text }}
+
+#### 评分弹框位置
+
+{{ placement }}
 
 ### 02 组件状态
 

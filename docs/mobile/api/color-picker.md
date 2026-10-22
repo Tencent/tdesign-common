@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 基础颜色选择器
@@ -18,6 +16,12 @@ toc: false
 
 {{ multiple }}
 
+#### 弹窗形式的颜色选择器
+
+{{ use-popup }}
+
 ### 02 组件状态
+
+#### 组件模式选择
 
 {{ format }}

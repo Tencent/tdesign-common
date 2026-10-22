@@ -6,8 +6,6 @@ isComponent: true
 toc: false
 ---
 
-## 代码演示
-
 ### 01 组件类型
 
 #### 列表型动作面板
@@ -17,8 +15,6 @@ toc: false
 #### 宫格型动作面板
 
 {{ grid }}
-
-#### 宫格型动作面板-多页
 
 {{ grid-multiple }}
 
