@@ -22,8 +22,7 @@ function nextTick(fn: () => void): Promise<void> {
   return pm;
 }
 
-// 判断是否为合法的节点值类型：string / number / bigint
-// bigint 与 number 的严格比较不会进行类型转换，作为 Map 的键时也会区分类型
+// 保留原有字符串、数字判断，补充 bigint 支持
 function isTreeNodeValue(item: unknown): item is TreeNodeValue {
   return isString(item) || isNumber(item) || typeof item === 'bigint';
 }
