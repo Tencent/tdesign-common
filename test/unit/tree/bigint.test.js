@@ -66,6 +66,32 @@ describe('Tree bigint node operations', () => {
   });
 
   // Issue: https://github.com/Tencent/tdesign-vue-next/issues/6798
+  it.each([Object(0), Object('boxed')])('preserves boxed string/number lookup for %s', (value) => {
+    const store = new TreeStore({});
+    store.append([{ value }, { value: 'sibling' }]);
+    store.refreshNodes();
+    expect(store.getNode(value)?.value).toBe(value);
+    expect(store.getNode(value.valueOf())).toBeNull();
+  });
+
+  it.each([Object(0), Object('boxed')])('limits boxed string/number subtree lookup for %s', (value) => {
+    const store = new TreeStore({});
+    store.append([{ value, children: [{ value: 'child' }] }, { value: 'sibling' }]);
+    store.refreshNodes();
+    expect(store.getNodes(value).map((node) => node.value)).toEqual([value, 'child']);
+  });
+
+  it.each([Object(0), Object('boxed')])('appends to a boxed string/number target for %s', (value) => {
+    const store = new TreeStore({});
+    store.append([{ value }, { value: 'sibling' }]);
+    store.refreshNodes();
+    store.appendNodes(value, { value: 'child' });
+    store.refreshNodes();
+    expect(store.getNode('child')?.getParent()?.value).toBe(value);
+    expect(store.getNode('sibling')).toBeTruthy();
+  });
+
+  // Issue: https://github.com/Tencent/tdesign-vue-next/issues/6798
   it('keeps string, number and bigint identities distinct without losing large integer precision', () => {
     const values = [1, '1', 1n, 9007199254740992n, 9007199254740993n];
     const store = new TreeStore({ activable: true });

@@ -1,4 +1,4 @@
-import { isArray, isFunction, isNumber, difference, camelCase, isPlainObject } from 'lodash-es';
+import { isArray, isFunction, isNumber, isString, difference, camelCase, isPlainObject } from 'lodash-es';
 import mitt from 'mitt';
 
 import { TreeNode, privateKey } from './tree-node';
@@ -25,7 +25,7 @@ function nextTick(fn: () => void): Promise<void> {
 // 判断是否为合法的节点值类型：string / number / bigint
 // bigint 与 number 的严格比较不会进行类型转换，作为 Map 的键时也会区分类型
 function isTreeNodeValue(item: unknown): item is TreeNodeValue {
-  return typeof item === 'string' || typeof item === 'number' || typeof item === 'bigint';
+  return isString(item) || isNumber(item) || typeof item === 'bigint';
 }
 
 // 构建一个树的数据模型
