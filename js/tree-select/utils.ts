@@ -1,6 +1,6 @@
 import { TreeOptionData } from '../common';
 
-type TargetValue = string | number | object;
+type TargetValue = string | number | bigint | object;
 
 /**
  * 递归查找指定节点的所有父节点的 value
