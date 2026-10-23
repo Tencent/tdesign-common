@@ -864,7 +864,7 @@ export class TreeNode {
    */
   public isChecked(map?: TypeIdMap): boolean {
     const { children, tree, value } = this;
-    const { checkStrictly, valueMode } = tree.config;
+    const { checkStrictly, valueMode, checkAllAffectedBy } = tree.config;
     // 节点不在当前树上，视为未选中
     if (!tree.nodeMap.get(value)) return false;
     // 节点不可选，视为未选中
@@ -875,21 +875,16 @@ export class TreeNode {
       return !!checkedMap.get(value);
     }
     let checked = false;
-    // 在 checkedMap 中，则根据 valueMode 的值进行判断
-    if (
-      checkedMap.get(value) &&
-      // 如果 valueMode 为 all、parentFirst，则视为选中
-      (valueMode !== 'onlyLeaf' ||
-        // 如果 valueMode 为 onlyLeaf 并且当前节点是叶子节点，则视为选中
-        this.isLeaf())
-    ) {
+    // all 策略下，已加载的可用父节点必须依据子节点计算，不能直接复用父节点缓存。
+    const deriveFromChildren = checkAllAffectedBy === 'all' && Array.isArray(children) && !this.isDisabled();
+    if (checkedMap.get(value) && (this.isLeaf() || (valueMode !== 'onlyLeaf' && !deriveFromChildren))) {
       return true;
     }
-    // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
+    // 父节点根据参与判断的子节点计算选中态。
     if (Array.isArray(children) && children.length > 0) {
-      // 禁用子节点不参与全选判断，且没有可用子节点时不自动选中
-      const enabledChildren = children.filter((node) => !node.isDisabled());
-      checked = enabledChildren.length > 0 && enabledChildren.every((node) => node.isChecked(checkedMap));
+      // 没有参与判断的子节点时，不自动推导出全选。
+      const checkChildren = checkAllAffectedBy === 'all' ? children : children.filter((node) => !node.isDisabled());
+      checked = checkChildren.length > 0 && checkChildren.every((node) => node.isChecked(checkedMap));
     } else {
       // 从父节点状态推断子节点状态
       // 这里再调用 isChecked 会导致死循环
@@ -905,7 +900,7 @@ export class TreeNode {
    */
   public isIndeterminate(): boolean {
     const { children, tree, value } = this;
-    const { checkStrictly } = tree.config;
+    const { checkStrictly, checkAllAffectedBy } = tree.config;
     // 节点不在当前树上，视为未选中
     if (!tree.nodeMap.get(value)) return false;
     // 节点不可选，视为未选中
@@ -917,8 +912,8 @@ export class TreeNode {
 
     let childChecked: null | boolean = null;
     const indeterminate = children.some((node: TreeNode) => {
-      // 禁用子节点不参与半选判断
-      if (node.isDisabled()) return false;
+      // 半选状态与全选状态使用相同的判定范围。
+      if (checkAllAffectedBy !== 'all' && node.isDisabled()) return false;
       if (node.isIndeterminate()) {
         // 子节点有任意一个半选，则其为半选状态
         return true;

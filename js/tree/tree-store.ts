@@ -50,6 +50,7 @@ function isTreeNodeValue(item: unknown): item is TreeNodeValue {
  * @param {boolean} [options.activeMultiple=false] 激活节点是否使用多选模式
  * @param {boolean} [options.checkable=false] 节点是否可选中
  * @param {boolean} [options.checkStrictly=false] 节点选中是否使用严格模式
+ * @param {string} [options.checkAllAffectedBy="onlyEnabled"] 参与父节点全选、半选状态判定的子节点范围
  * @param {boolean} [options.disabled=false] 节点是否禁用
  * @param {boolean|function} [options.disableCheck=false] 节点被禁用的条件
  * @param {boolean} [options.draggable=false] 节点是否可拖动
@@ -120,6 +121,7 @@ export class TreeStore {
       activeMultiple: false,
       checkable: false,
       checkStrictly: false,
+      checkAllAffectedBy: 'onlyEnabled',
       disabled: false,
       disableCheck: false,
       draggable: false,
@@ -163,6 +165,8 @@ export class TreeStore {
    */
   public setConfig(options: TypeTreeStoreOptions) {
     const { config } = this;
+    const checkAllAffectedByChanged =
+      options.checkAllAffectedBy !== undefined && options.checkAllAffectedBy !== config.checkAllAffectedBy;
     let hasChanged = false;
     (Object.keys(options) as (keyof TypeTreeStoreOptions)[]).forEach((key) => {
       const val = options[key];
@@ -175,6 +179,13 @@ export class TreeStore {
     });
     this.hasFilter = isFunction(config.filter);
     if (hasChanged) {
+      if (checkAllAffectedByChanged && !config.checkStrictly) {
+        // 父节点选中态可能是旧策略的缓存，保留叶子节点值后重新计算。
+        this.nodeMap.forEach((node) => {
+          if (!node.isLeaf() && !node.isDisabled()) this.checkedMap.delete(node.value);
+        });
+        this.nodeMap.forEach((node) => node.updateChecked());
+      }
       // 在 td-tree 的 render 方法中调用 setConfig
       // 这样减少了 watch 属性
       // 仅在属性变更后刷新状态
