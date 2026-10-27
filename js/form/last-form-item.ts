@@ -7,18 +7,19 @@ const IGNORE_TAGS = new Set(['SCRIPT', 'STYLE', 'LINK', 'META', 'NOSCRIPT']);
 // 具备独立交互或媒体语义的元素，视为后续有效内容
 const MEANINGFUL_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'IMG', 'SVG', 'VIDEO', 'CANVAS', 'IFRAME']);
 
-/**
- * 末位表单项控制器的初始化与更新参数。
- */
 export interface LastFormItemOptions {
-  // 组件类名前缀，缺省为 t
+  /**
+   * 组件类名前缀，缺省为 t。
+   */
   classPrefix?: string;
-  // 为 true 时跳过计算
+  /**
+   * 是否跳过末位项计算。
+   */
   disabled?: boolean;
 }
 
 /**
- * 判断元素当前是否处于隐藏状态。
+ * 判断元素是否处于隐藏状态。
  */
 function isHidden(el: HTMLElement) {
   if (el.hidden || el.style.display === 'none') return true;
@@ -26,7 +27,7 @@ function isHidden(el: HTMLElement) {
 }
 
 /**
- * 判断元素是否具备可测量的布局尺寸。
+ * 判断元素是否具有可测量的布局尺寸。
  */
 function isLayoutMeasurable(el: HTMLElement) {
   const rect = el.getBoundingClientRect();
@@ -34,7 +35,7 @@ function isLayoutMeasurable(el: HTMLElement) {
 }
 
 /**
- * 判断表单项是否嵌套在另一表单项内部。
+ * 判断表单项是否嵌套在同一表单的其他表单项中。
  */
 function isNestedFormItem(item: HTMLElement, formElement: HTMLElement, formItemSelector: string) {
   const parentFormItem = item.parentElement?.closest<HTMLElement>(formItemSelector);
@@ -45,31 +46,46 @@ function isNestedFormItem(item: HTMLElement, formElement: HTMLElement, formItemS
  * 判断文档位置掩码是否包含指定标记。
  */
 function hasDocumentPosition(position: number, flag: number) {
-  return Math.floor(position / flag) % 2 === 1;
+  // compareDocumentPosition 返回位掩码
+  // eslint-disable-next-line no-bitwise
+  return (position & flag) !== 0;
 }
 
 /**
- * 按文档顺序排列表单项。
+ * 按文档顺序排列元素。
  */
 function sortByDocumentOrder(items: HTMLElement[]) {
-  return items.sort((a, b) =>
-    hasDocumentPosition(a.compareDocumentPosition(b), Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1
-  );
+  return items.sort((a, b) => {
+    if (a === b) return 0;
+
+    const position = a.compareDocumentPosition(b);
+
+    // 正常情况下，传入的节点都在同一表单内；断开连接时不强行指定顺序。
+    if (hasDocumentPosition(position, Node.DOCUMENT_POSITION_DISCONNECTED)) return 0;
+    if (hasDocumentPosition(position, Node.DOCUMENT_POSITION_FOLLOWING)) return -1;
+    if (hasDocumentPosition(position, Node.DOCUMENT_POSITION_PRECEDING)) return 1;
+
+    return 0;
+  });
 }
 
 /**
  * 判断节点是否构成表单项之后的有效内容。
  */
-function isMeaningfulNode(node: Node, registeredItems: Set<HTMLElement>, formItemClassName: string): boolean {
+function isMeaningfulNode(node: Node, registeredItems: Set<HTMLElement>, formItemClassName: string) {
   if (node.nodeType === Node.COMMENT_NODE) return false;
   if (node.nodeType === Node.TEXT_NODE) return Boolean(node.textContent?.trim());
   if (node.nodeType !== Node.ELEMENT_NODE) return false;
 
   const el = node as HTMLElement;
+
   if (IGNORE_TAGS.has(el.tagName) || isHidden(el)) return false;
 
   // 卸载过程中节点可能尚未移出 DOM，仅已注册项计入后续内容
-  if (el.classList.contains(formItemClassName)) return registeredItems.has(el);
+  if (el.classList.contains(formItemClassName)) {
+    return registeredItems.has(el);
+  }
+
   if (MEANINGFUL_TAGS.has(el.tagName)) return true;
 
   if (Array.from(el.childNodes).some((child) => isMeaningfulNode(child, registeredItems, formItemClassName))) {
@@ -81,7 +97,7 @@ function isMeaningfulNode(node: Node, registeredItems: Set<HTMLElement>, formIte
 }
 
 /**
- * 判断指定边界内表单项之后是否仍存在有效内容。
+ * 判断指定边界内的表单项之后是否存在有效内容。
  */
 function hasMeaningfulContentAfter(
   boundary: HTMLElement,
@@ -90,22 +106,26 @@ function hasMeaningfulContentAfter(
   formItemClassName: string
 ) {
   let node: Node | null = item;
+
   while (node && node !== boundary) {
     let sibling = node.nextSibling;
+
     while (sibling) {
       if (isMeaningfulNode(sibling, registeredItems, formItemClassName)) return true;
       sibling = sibling.nextSibling;
     }
+
     // 当前层无后续兄弟后，继续检查祖先节点的后续兄弟
     node = node.parentNode;
   }
+
   return false;
 }
 
 /**
- * 返回与文档序最后一项处于同一行的表单项。
+ * 获取与文档末项处于同一视觉行的表单项。
  */
-function getLastRowItems(items: HTMLElement[]) {
+function getLastRowItems(items: HTMLElement[]): HTMLElement[] {
   if (!items.length) return [];
   const last = items[items.length - 1];
   // 无法取得有效布局尺寸时，仅保留文档序最后一项
@@ -117,18 +137,18 @@ function getLastRowItems(items: HTMLElement[]) {
 }
 
 /**
- * 判断元素是否为带有底部内边距的内容容器。
+ * 判断元素是否为具有底部内边距的内容容器。
  */
-function isContentBox(el: HTMLElement) {
+function isContentBox(el: HTMLElement): boolean {
   if (typeof getComputedStyle !== 'function') return false;
-  // 底部内边距大于 0 时，末项再保留 margin-bottom 会与容器内边距叠加
+  // 底部内边距大于 0 时，避免末项保留 margin-bottom 与容器内边距叠加
   return parseFloat(getComputedStyle(el).paddingBottom || '0') > 0;
 }
 
 /**
- * 返回表单项与表单之间最近的内容容器。
+ * 获取表单项与表单根节点之间最近的内容容器。
  */
-function getNearestContentBox(item: HTMLElement, formElement: HTMLElement) {
+function getNearestContentBox(item: HTMLElement, formElement: HTMLElement): HTMLElement | null {
   let node = item.parentElement;
   while (node && node !== formElement) {
     if (isContentBox(node)) return node;
@@ -138,7 +158,7 @@ function getNearestContentBox(item: HTMLElement, formElement: HTMLElement) {
 }
 
 /**
- * 收集各内容容器内应当标记为末位的表单项。
+ * 获取各内容容器中需要清除底部间距的末位表单项。
  */
 function getContentBoxLastItems(
   formElement: HTMLElement,
@@ -148,36 +168,43 @@ function getContentBoxLastItems(
 ) {
   // 按最近内容容器归组，避免普通布局包裹被误判为独立末位分组
   const grouped = new Map<HTMLElement, HTMLElement[]>();
+
   formItems.forEach((item) => {
     const box = getNearestContentBox(item, formElement);
     if (!box) return;
+
     const siblings = grouped.get(box);
-    if (siblings) siblings.push(item);
-    else grouped.set(box, [item]);
+    if (siblings) {
+      siblings.push(item);
+    } else {
+      grouped.set(box, [item]);
+    }
   });
 
   const lastItems: HTMLElement[] = [];
+
   grouped.forEach((items, box) => {
     const last = items[items.length - 1];
-    // 容器内末项之后仍有操作按钮等内容时，不清除该组底部间距
-    if (hasMeaningfulContentAfter(box, last, registeredItems, formItemClassName)) return;
-    getLastRowItems(items).forEach((item) => lastItems.push(item));
+
+    // 容器内末项之后仍有操作按钮等内容时，不清除该组底部间距。
+    if (hasMeaningfulContentAfter(box, last, registeredItems, formItemClassName)) {
+      return;
+    }
+
+    lastItems.push(...getLastRowItems(items));
   });
+
   return lastItems;
 }
 
 /**
- * 返回当前表单中应当应用末位样式的表单项。
+ * 计算表单中需要清除底部间距的末位表单项。
  */
-function resolveLastFormItems(
-  formElement: HTMLElement,
-  registeredItems: Iterable<HTMLElement>,
-  formItemClassName: string
-) {
+function resolveLastFormItems(formElement: HTMLElement, registeredItems: Set<HTMLElement>, formItemClassName: string) {
   const formItemSelector = `.${formItemClassName}`;
-  const registeredSet = registeredItems instanceof Set ? registeredItems : new Set(registeredItems);
+
   const formItems = sortByDocumentOrder(
-    [...registeredSet].filter((item) => {
+    [...registeredItems].filter((item) => {
       if (!formElement.contains(item) || isHidden(item)) return false;
       // 嵌套表单项由外层项参与布局判定
       return !isNestedFormItem(item, formElement, formItemSelector);
@@ -186,17 +213,20 @@ function resolveLastFormItems(
 
   if (!formItems.length) return [];
 
-  const lastItems = new Set(getContentBoxLastItems(formElement, formItems, registeredSet, formItemClassName));
+  const lastItems = new Set(getContentBoxLastItems(formElement, formItems, registeredItems, formItemClassName));
+
   const lastFormItem = formItems[formItems.length - 1];
-  // 表单末项之后无有效内容时，标记整表最后一行
-  if (!hasMeaningfulContentAfter(formElement, lastFormItem, registeredSet, formItemClassName)) {
+
+  // 表单末项之后无有效内容时，标记整表最后一行。
+  if (!hasMeaningfulContentAfter(formElement, lastFormItem, registeredItems, formItemClassName)) {
     getLastRowItems(formItems).forEach((item) => lastItems.add(item));
   }
+
   return [...lastItems];
 }
 
 /**
- * 维护表单末位项的注册、观测与样式类同步。
+ * 维护表单末位项状态并同步对应样式类。
  */
 export class LastFormItemController {
   private classPrefix: string;
@@ -207,7 +237,7 @@ export class LastFormItemController {
   private formElement: HTMLElement | null = null;
 
   // 已注册的表单项节点
-  private items = new Set<HTMLElement>();
+  private readonly items = new Set<HTMLElement>();
 
   // 当前带有末位类的节点
   private lastItems = new Set<HTMLElement>();
@@ -216,135 +246,176 @@ export class LastFormItemController {
 
   private resizeObserver: ResizeObserver | null = null;
 
-  /**
-   * 创建末位表单项控制器。
-   */
   constructor(options: LastFormItemOptions = {}) {
     this.classPrefix = options.classPrefix || 't';
     this.disabled = Boolean(options.disabled);
   }
 
   /**
-   * 返回末位样式类名。
+   * 获取末位表单项的样式类名。
    */
-  private get lastClassName() {
+  private get lastClassName(): string {
     return `${this.classPrefix}-form__item--last`;
   }
 
   /**
-   * 返回表单项根节点类名。
+   * 获取表单项的基础样式类名。
    */
-  private get formItemClassName() {
+  private get formItemClassName(): string {
     return `${this.classPrefix}-form__item`;
   }
 
   /**
-   * 按最新配置刷新状态。
+   * 更新控制器配置并同步末位项状态。
    */
-  update(options: LastFormItemOptions) {
+  update(options: LastFormItemOptions): void {
     const nextPrefix = options.classPrefix || this.classPrefix;
+
     if (nextPrefix !== this.classPrefix) {
       this.clearLastClass();
       this.classPrefix = nextPrefix;
     }
-    if (options.disabled !== undefined) this.disabled = options.disabled;
+
+    if (options.disabled !== undefined) {
+      this.disabled = options.disabled;
+    }
+
     this.refresh();
   }
 
   /**
-   * 将控制器绑定到指定表单根节点。
+   * 绑定表单根节点并同步末位项状态。
    */
-  bind(formElement: HTMLElement | null) {
+  bind(formElement: HTMLElement | null): void {
     if (this.formElement === formElement) {
-      // 同一节点重复绑定时仅重新计算，避免断开已有观测
       this.refresh();
       return;
     }
+
     this.unbind();
     this.formElement = formElement;
+
     if (!formElement) return;
+
     this.connectObservers();
     this.refresh();
   }
 
   /**
-   * 注册表单项节点，并返回对应的注销函数。
+   * 注册参与末位判定的表单项，并返回注销函数。
    */
-  register(node: HTMLElement) {
+  register(node: HTMLElement): () => void {
     this.items.add(node);
+    this.resizeObserver?.observe(node);
     this.refresh();
 
+    let registered = true;
+
     return () => {
+      if (!registered) return;
+      registered = false;
+
+      this.resizeObserver?.unobserve(node);
       this.items.delete(node);
       node.classList.remove(this.lastClassName);
-      this.lastItems.delete(node);
       this.refresh();
     };
   }
 
   /**
-   * 按当前注册项重新计算并同步末位样式类。
+   * 根据当前 DOM 结构与布局重新计算并同步末位项状态。
    */
-  refresh() {
+  refresh(): void {
     const nextLastItems = new Set<HTMLElement>();
+
     if (!this.disabled && this.formElement) {
-      resolveLastFormItems(this.formElement, this.items, this.formItemClassName).forEach((item) => {
-        nextLastItems.add(item);
-      });
+      resolveLastFormItems(this.formElement, this.items, this.formItemClassName).forEach((item) =>
+        nextLastItems.add(item)
+      );
     }
 
     this.lastItems.forEach((item) => {
-      if (!nextLastItems.has(item)) item.classList.remove(this.lastClassName);
+      if (!nextLastItems.has(item)) {
+        item.classList.remove(this.lastClassName);
+      }
     });
+
     nextLastItems.forEach((item) => {
       item.classList.add(this.lastClassName);
     });
+
     this.lastItems = nextLastItems;
+    // 当前同步过程产生的 class 变更已经纳入本次计算，无需再次触发完整计算
+    this.mutationObserver?.takeRecords();
   }
 
   /**
-   * 解除与当前表单根节点的绑定，并断开观测。
+   * 解除根节点绑定并停止相关观察任务。
    */
-  unbind() {
+  unbind(): void {
     this.disconnectObservers();
     this.formElement = null;
   }
 
   /**
-   * 销毁控制器并清除全部注册状态。
+   * 销毁控制器并清理其维护的全部状态。
    */
-  destroy() {
+  destroy(): void {
     this.unbind();
     this.clearLastClass();
+
     this.items.clear();
   }
 
   /**
-   * 移除已标记节点上的末位样式类。
+   * 移除当前末位项的样式类并清空相关记录。
    */
-  private clearLastClass() {
-    this.lastItems.forEach((item) => item.classList.remove(this.lastClassName));
+  private clearLastClass(): void {
+    this.lastItems.forEach((item) => {
+      item.classList.remove(this.lastClassName);
+    });
+
     this.lastItems.clear();
   }
 
   /**
-   * 监听表单结构与尺寸变化以触发重新计算。
+   * 建立表单结构与布局尺寸的变化观察器。
    */
-  private connectObservers() {
-    if (!this.formElement) return;
+  private connectObservers(): void {
+    const { formElement } = this;
+    if (!formElement) return;
 
-    this.mutationObserver = new MutationObserver(() => this.refresh());
-    this.mutationObserver.observe(this.formElement, { childList: true, subtree: true });
+    if (typeof MutationObserver !== 'undefined') {
+      this.mutationObserver = new MutationObserver(() => {
+        this.refresh();
+      });
 
-    if (typeof ResizeObserver === 'undefined') return;
-    this.resizeObserver = new ResizeObserver(() => this.refresh());
-    this.resizeObserver.observe(this.formElement);
+      this.mutationObserver.observe(formElement, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class', 'style', 'hidden'],
+      });
+    }
+
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.refresh();
+      });
+
+      this.resizeObserver.observe(formElement);
+      this.items.forEach((item) => {
+        if (formElement.contains(item)) {
+          this.resizeObserver?.observe(item);
+        }
+      });
+    }
   }
 
   /**
-   * 断开结构观测与尺寸观测。
+   * 断开当前根节点的全部变化观察器。
    */
-  private disconnectObservers() {
+  private disconnectObservers(): void {
     this.mutationObserver?.disconnect();
     this.resizeObserver?.disconnect();
     this.mutationObserver = null;
