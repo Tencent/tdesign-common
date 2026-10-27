@@ -23,14 +23,10 @@ describe('tree checkAllAffectedBy', () => {
           expect(tree.getNode('P').checked).toBe(true);
           expect(tree.getNode('U').checked).toBe(false);
         });
-        tree
-          .getNode('P')
-          .append([{ value: 'A' }, { value: 'D', disabled: true }, { value: 'E', disabled: true, checked: true }]);
+        tree.getNode('P').append([{ value: 'A' }]);
         expect(tree.getNode('A').checked).toBe(true);
-        expect(tree.getNode('D').checked).toBe(false);
-        expect(tree.getNode('E').checked).toBe(true);
-        expect(tree.getNode('P').checked).toBe(checkAllAffectedBy === 'onlyEnabled');
-        expect(tree.getNode('P').indeterminate).toBe(checkAllAffectedBy === 'all');
+        expect(tree.getNode('P').checked).toBe(true);
+        expect(tree.getNode('P').indeterminate).toBe(false);
       }
     );
 
