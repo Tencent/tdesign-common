@@ -7,14 +7,21 @@
 
   .@{prefix}-form__item {
     display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     padding: @form-item-vertical-padding @form-item-horizontal-padding;
     position: relative;
 
+    &-main {
+      display: flex;
+      align-items: @form-item-arrow-align;
+      width: 100%;
+    }
+
     &-arrow {
       flex: 0 0 auto;
       color: @form-item-arrow-color;
-      font-size: 24px;
+      font-size: @form-item-arrow-size;
     }
 
     &:not(:last-child)::after {
@@ -55,18 +62,19 @@
       display: flex;
       flex-direction: column;
     }
-  }
 
-  &--top {
-    align-items: center;
+    &:has(.@{prefix}-form__item-arrow) {
+      .@{prefix}-form__item-tips {
+        padding-right: @form-item-arrow-size;
+      }
+    }
   }
 
   &__label {
     float: left;
     padding-right: 16px;
     vertical-align: middle;
-    font-size: @form-label-font-size;
-    line-height: 24px;
+    font: @form-label-font;
     color: @text-color-primary;
     box-sizing: border-box;
     word-break: break-all;
