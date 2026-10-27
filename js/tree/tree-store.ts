@@ -180,9 +180,11 @@ export class TreeStore {
     this.hasFilter = isFunction(config.filter);
     if (hasChanged) {
       if (checkAllAffectedByChanged && !config.checkStrictly) {
-        // 父节点选中态可能是旧策略的缓存，保留叶子节点值后重新计算。
+        // 仅清理已加载父节点的派生选中态，保留叶子和未加载节点的选中值。
         this.nodeMap.forEach((node) => {
-          if (!node.isLeaf() && !node.isDisabled()) this.checkedMap.delete(node.value);
+          if (Array.isArray(node.children) && node.children.length > 0 && !node.isDisabled()) {
+            this.checkedMap.delete(node.value);
+          }
         });
         this.nodeMap.forEach((node) => node.updateChecked());
       }

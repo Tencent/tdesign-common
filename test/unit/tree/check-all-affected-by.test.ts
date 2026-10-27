@@ -7,6 +7,33 @@ const data = [{ value: 'P', children: [{ value: 'A' }, { value: 'B' }, { value: 
 
 describe('tree checkAllAffectedBy', () => {
   scopes.forEach((checkAllAffectedBy) => {
+    it.each(['all', 'parentFirst'] as const)(
+      `${checkAllAffectedBy} preserves an unloaded parent selection across scope changes in %s mode`,
+      (valueMode) => {
+        const tree = new TreeStore({ checkable: true, valueMode, checkAllAffectedBy });
+        tree.append([
+          { value: 'P', children: true },
+          { value: 'U', children: true },
+        ]);
+        tree.setChecked(['P']);
+        const otherScope = checkAllAffectedBy === 'all' ? 'onlyEnabled' : 'all';
+        ([otherScope, checkAllAffectedBy] as const).forEach((scope) => {
+          tree.setConfig({ checkAllAffectedBy: scope });
+          expect(tree.getChecked()).toEqual(['P']);
+          expect(tree.getNode('P').checked).toBe(true);
+          expect(tree.getNode('U').checked).toBe(false);
+        });
+        tree
+          .getNode('P')
+          .append([{ value: 'A' }, { value: 'D', disabled: true }, { value: 'E', disabled: true, checked: true }]);
+        expect(tree.getNode('A').checked).toBe(true);
+        expect(tree.getNode('D').checked).toBe(false);
+        expect(tree.getNode('E').checked).toBe(true);
+        expect(tree.getNode('P').checked).toBe(checkAllAffectedBy === 'onlyEnabled');
+        expect(tree.getNode('P').indeterminate).toBe(checkAllAffectedBy === 'all');
+      }
+    );
+
     it.each(modes)(`${checkAllAffectedBy} computes the parent from child states in %s mode`, (valueMode) => {
       const tree = new TreeStore({ checkable: true, valueMode, checkAllAffectedBy });
       tree.append(data);
@@ -61,4 +88,31 @@ describe('tree checkAllAffectedBy', () => {
     tree.setChecked(['A', 'B']);
     expect(tree.getNode('P').checked).toBe(true);
   });
+
+  it.each(['all', 'parentFirst'] as const)(
+    'recalculates loaded ancestors while preserving their selected unloaded child in %s mode',
+    (valueMode) => {
+      const tree = new TreeStore({ checkable: true, valueMode, checkAllAffectedBy: 'onlyEnabled' });
+      tree.append([
+        {
+          value: 'G',
+          children: [
+            { value: 'P', children: true },
+            { value: 'D', disabled: true },
+          ],
+        },
+      ]);
+      tree.setChecked(['P']);
+      expect(tree.getNode('G').checked).toBe(true);
+      tree.setConfig({ checkAllAffectedBy: 'all' });
+      expect(tree.getChecked()).toEqual(['P']);
+      expect(tree.getNode('P').checked).toBe(true);
+      expect(tree.getNode('G').checked).toBe(false);
+      expect(tree.getNode('G').indeterminate).toBe(true);
+      tree.setConfig({ checkAllAffectedBy: 'onlyEnabled' });
+      expect(tree.getNode('P').checked).toBe(true);
+      expect(tree.getNode('G').checked).toBe(true);
+      expect(tree.getNode('G').indeterminate).toBe(false);
+    }
+  );
 });
