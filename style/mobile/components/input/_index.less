@@ -24,7 +24,9 @@
   }
 
   &--password {
-    letter-spacing: 6px;
+    &:not(:placeholder-shown) {
+      letter-spacing: 6px;
+    }
 
     &::placeholder {
       letter-spacing: normal;
@@ -174,7 +176,7 @@
 .input-status(@status) {
   @tipsColor: 'input-@{status}-tips-color';
 
-  .@{prefix}-input--@{status} + .@{prefix}-input__tips {
+  .@{prefix}-input--@{status}+.@{prefix}-input__tips {
     color: @@tipsColor;
   }
 }
