@@ -22,6 +22,7 @@
       flex: 0 0 auto;
       color: @form-item-arrow-color;
       font-size: @form-item-arrow-size;
+      padding-left: calc(@spacer / 2);
     }
 
     &:not(:last-child)::after {
@@ -39,7 +40,7 @@
       width: 100%;
       height: auto;
       min-height: 20px;
-      margin-top: 4px;
+      margin-top: calc(@spacer / 2);
     }
 
     &-help {
@@ -64,7 +65,7 @@
     }
 
     &:has(.@{prefix}-form__item-arrow) {
-      .@{prefix}-form__item-tips {
+      .@{prefix}-form__item-tips:has(.@{prefix}-form__controls--right) {
         padding-right: @form-item-arrow-size;
       }
     }
@@ -72,7 +73,7 @@
 
   &__label {
     float: left;
-    padding-right: 16px;
+    padding-right: @spacer-2;
     vertical-align: middle;
     font: @form-label-font;
     color: @text-color-primary;
@@ -80,7 +81,7 @@
     word-break: break-all;
 
     &--top {
-      padding-bottom: 8px;
+      padding-bottom: @spacer;
     }
 
     &--left {
