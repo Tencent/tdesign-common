@@ -175,8 +175,9 @@ const generateCssVariables = async (componentName) => {
   const parsedKeys = new Set();
 
   try {
-    if (COMBINE_MAP[componentName]) {
-      COMBINE_MAP[componentName].forEach((item) => {
+    const combineKey = componentName.toLowerCase();
+    if (COMBINE_MAP[combineKey]) {
+      COMBINE_MAP[combineKey].forEach((item) => {
         lessPaths.push(findFilePath(FRAMEWORK, item));
       });
     } else {
