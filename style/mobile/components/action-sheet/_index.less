@@ -3,20 +3,39 @@
 @import './_var.less';
 
 .@{action-sheet} {
-  display: flex;
-  flex-direction: column;
-
   &__content {
     color: @action-sheet-color;
     border-top-left-radius: @action-sheet-border-radius;
     border-top-right-radius: @action-sheet-border-radius;
     background-color: @bg-color-container;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 
     &:focus {
       outline: 0;
+    }
+  }
+
+  &.@{action-sheet}--list {
+    display: flex;
+    flex-direction: column;
+    max-height: @action-sheet-max-height;
+    overflow: hidden;
+
+    .@{action-sheet}__content {
+      display: flex;
+      flex-direction: column;
+      flex: auto;
+      min-height: 0;
+    }
+
+    .@{action-sheet}__description,
+    .@{action-sheet}__footer {
+      flex-shrink: 0;
+    }
+
+    .@{action-sheet}__list {
+      flex: auto;
+      min-height: 0;
     }
   }
 
@@ -87,7 +106,7 @@
     --td-button-default-disabled-color: @action-sheet-disabled-color;
     --td-button-border-radius: 0;
 
-    overflow: auto;
+    overflow-y: auto;
 
     &-item {
       border: none;
