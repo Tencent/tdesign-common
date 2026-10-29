@@ -3,7 +3,7 @@ import { TreeNode } from './tree-node';
 
 // ------ 自动规范类型 start -------
 
-export type TreeNodeValue = string | number;
+export type TreeNodeValue = string | number | bigint;
 
 export interface KeysType {
   value?: string;

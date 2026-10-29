@@ -51,7 +51,7 @@ export class TreeNode {
   public [privateKey]: string;
 
   // 节点 id ，唯一标志
-  public value: string;
+  public value: TreeNodeValue;
 
   // 节点文本
   public label: string;
@@ -687,7 +687,7 @@ export class TreeNode {
    * - 当 `allowDuplicateValue` 为 true 时，使用路径作为 key
    * - 否则使用节点的 value 作为 key
    */
-  public getNodeMapKey(): string {
+  public getNodeMapKey(): TreeNodeValue {
     const { allowDuplicateValue } = this.tree.config;
     if (allowDuplicateValue) {
       return pathToKey(this.getPath().map((node) => node.value));

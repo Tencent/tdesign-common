@@ -183,7 +183,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
      * @return void
      */
     remove(value?: TreeNodeValue) {
-      if (!value) {
+      if (!value && value !== 0 && typeof value !== 'bigint') {
         node.remove();
         return;
       }

@@ -195,7 +195,7 @@ export class TreeStore {
     if (isArray(item) && allowDuplicateValue) {
       const pathKey = pathToKey(item);
       node = this.nodeMap.get(pathKey);
-    } else if (isString(item) || isNumber(item)) {
+    } else if (isString(item) || isNumber(item) || typeof item === 'bigint') {
       node = this.nodeMap.get(item);
     } else if (item instanceof TreeNode) {
       const nodeKey = item.getNodeMapKey();
@@ -280,12 +280,12 @@ export class TreeStore {
   public getNodes(item?: TypeTargetNode, options?: TypeTreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
     let val: TreeNodeValue = '';
-    if (isString(item) || isNumber(item)) {
+    if (isString(item) || isNumber(item) || typeof item === 'bigint') {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
     }
-    if (!val) {
+    if (!val && val !== 0 && typeof val !== 'bigint') {
       nodes = this.nodes.slice(0);
     } else {
       const node = this.getNode(val);
@@ -364,7 +364,7 @@ export class TreeStore {
     let node = null;
     let data = null;
 
-    if (isString(para) || isNumber(para)) {
+    if (isString(para) || isNumber(para) || typeof para === 'bigint') {
       value = para;
       node = this.getNode(value);
       data = item;
@@ -501,7 +501,7 @@ export class TreeStore {
    * @return void
    */
   public updated(node?: TreeNode): void {
-    if (node?.value) {
+    if (node && (node.value || node.value === 0 || typeof node.value === 'bigint')) {
       this.updatedMap.set(node.value, true);
     }
     if (this.updateTimer) return;
