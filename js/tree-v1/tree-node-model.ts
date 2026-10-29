@@ -2,13 +2,13 @@ import { isBoolean, isUndefined, omit, pick } from 'lodash-es';
 import log from '../log/log';
 import { TreeNode } from './tree-node';
 
-import type { OptionData } from '../common';
 import type { TreeNodeModelProps, TreeNodeValue, TypeTreeItem, TypeTreeNodeData, TypeTreeNodeModel } from './types';
 
 export const PATH_SEPARATOR = '/';
 
+// 带上类型前缀，避免 1、'1'、1n 在 allowDuplicateValue 下覆盖同一个节点
 export function pathToKey(path: TreeNodeValue[]) {
-  return path.join(PATH_SEPARATOR);
+  return path.map((value) => `${typeof value}:${value}`).join(PATH_SEPARATOR);
 }
 
 // 获取节点需要暴露的属性
@@ -183,7 +183,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
      * @return void
      */
     remove(value?: TreeNodeValue) {
-      if (!value && value !== 0 && typeof value !== 'bigint') {
+      if (isUndefined(value)) {
         node.remove();
         return;
       }
@@ -209,7 +209,7 @@ export function createNodeModel(node: TreeNode): TypeTreeNodeModel {
      * @param {object} data 节点数据
      * @return void
      */
-    setData(data: OptionData) {
+    setData(data: TypeTreeNodeData) {
       // 详细细节可见 https://github.com/Tencent/tdesign-common/issues/655
       const _data = omit(data, ['children', 'value', 'label']);
       const { keys } = node.tree.config;

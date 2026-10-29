@@ -279,13 +279,14 @@ export class TreeStore {
    */
   public getNodes(item?: TypeTargetNode, options?: TypeTreeFilterOptions): TreeNode[] {
     let nodes: TreeNode[] = [];
-    let val: TreeNodeValue = '';
+    let val: TreeNodeValue | undefined;
     if (isString(item) || isNumber(item) || typeof item === 'bigint') {
       val = item;
     } else if (item instanceof TreeNode) {
       val = item.value;
     }
-    if (!val && val !== 0 && typeof val !== 'bigint') {
+    // ''、0、0n 都是有效节点值，只有未传入目标时才返回全部节点
+    if (val === undefined) {
       nodes = this.nodes.slice(0);
     } else {
       const node = this.getNode(val);
@@ -501,7 +502,7 @@ export class TreeStore {
    * @return void
    */
   public updated(node?: TreeNode): void {
-    if (node && (node.value || node.value === 0 || typeof node.value === 'bigint')) {
+    if (node) {
       this.updatedMap.set(node.value, true);
     }
     if (this.updateTimer) return;
