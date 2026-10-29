@@ -3,7 +3,7 @@
 import { promises, statSync } from 'fs';
 import path from 'path';
 
-import { parseFrontmatter, splitTitle, cleanSiteHtml, demoteHeadings } from './markdown';
+import { parseFrontmatter, splitTitle, cleanSiteHtml, demoteHeadings, ensureDemoSectionHeading } from './markdown';
 import { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 import type {
   ComponentDoc,
@@ -36,6 +36,7 @@ export {
   convertTdCodeBlock,
   stripCoverageBadges,
   demoteHeadings,
+  ensureDemoSectionHeading,
 } from './markdown';
 export { SPLINE_LABELS, SPLINE_ORDER, getComponentMap } from './libs';
 
@@ -84,6 +85,7 @@ export function createComponentDocParser(options: ComponentDocParserOptions): Pa
     readComponentDoc,
     readDemoCode,
     isDemoSlot = defaultIsDemoSlot,
+    demoSectionHeading = '## 示例代码',
     transformers,
     titleKey = 'title',
     descriptionKey = 'description',
@@ -106,10 +108,14 @@ export function createComponentDocParser(options: ComponentDocParserOptions): Pa
 
     // demo 占位符替换
     const demoResolved = replaceDemoSlots(content, componentDir, readDemoCode, isDemoSlot);
+    // 演示区二级分组标题注入：文档已自带二级分节时自动跳过
+    const withDemoHeading = demoSectionHeading
+      ? ensureDemoSectionHeading(demoResolved, demoSectionHeading)
+      : demoResolved;
     // 正文清理：默认使用小程序站点清理，可通过 transformers 覆盖
     const body = (transformers ?? [cleanSiteHtml]).reduce(
       (block, transform) => transform(block, { slug, componentDir }),
-      demoResolved
+      withDemoHeading
     );
 
     return {
