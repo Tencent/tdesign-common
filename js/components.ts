@@ -92,6 +92,7 @@ export const MOBILE_COMPONENT_MAP: Record<string, string[]> = {
   checkbox: ['Checkbox', 'CheckboxGroup'],
   collapse: ['Collapse', 'CollapsePanel'],
   'color-picker': ['ColorPicker'],
+  comment: ['Comment'],
   'config-provider': ['ConfigProvider'],
   'count-down': ['CountDown'],
   'date-time-picker': ['DateTimePicker'],

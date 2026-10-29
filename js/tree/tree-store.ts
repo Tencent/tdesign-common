@@ -299,7 +299,7 @@ export class TreeStore {
       val = item.value;
     }
     // 0 与 0n 均为有效节点值，不能视作「空值」从而返回全部节点
-    if (!val && val !== 0 && val !== 0n) {
+    if (!val && val !== 0 && typeof val !== 'bigint') {
       nodes = this.nodes.slice(0);
     } else {
       const node = this.getNode(val);
