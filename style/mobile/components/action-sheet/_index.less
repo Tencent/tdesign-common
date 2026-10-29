@@ -15,6 +15,30 @@
     }
   }
 
+  &.@{action-sheet}--list {
+    display: flex;
+    flex-direction: column;
+    max-height: @action-sheet-max-height;
+    overflow: hidden;
+
+    .@{action-sheet}__content {
+      display: flex;
+      flex-direction: column;
+      flex: auto;
+      min-height: 0;
+    }
+
+    .@{action-sheet}__description,
+    .@{action-sheet}__footer {
+      flex-shrink: 0;
+    }
+
+    .@{action-sheet}__list {
+      flex: auto;
+      min-height: 0;
+    }
+  }
+
   &--grid {
     &.@{action-sheet}--no-description {
       padding-top: @spacer;
@@ -81,6 +105,8 @@
     --td-button-default-disabled-bg: none;
     --td-button-default-disabled-color: @action-sheet-disabled-color;
     --td-button-border-radius: 0;
+
+    overflow-y: auto;
 
     &-item {
       border: none;
