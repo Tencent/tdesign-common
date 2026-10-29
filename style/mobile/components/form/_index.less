@@ -7,14 +7,22 @@
 
   .@{prefix}-form__item {
     display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     padding: @form-item-vertical-padding @form-item-horizontal-padding;
     position: relative;
 
+    &-main {
+      display: flex;
+      align-items: @form-item-arrow-align;
+      width: 100%;
+    }
+
     &-arrow {
       flex: 0 0 auto;
       color: @form-item-arrow-color;
-      font-size: 24px;
+      font-size: @form-item-arrow-size;
+      padding-left: calc(@spacer / 2);
     }
 
     &:not(:last-child)::after {
@@ -32,7 +40,7 @@
       width: 100%;
       height: auto;
       min-height: 20px;
-      margin-top: 4px;
+      margin-top: calc(@spacer / 2);
     }
 
     &-help {
@@ -55,24 +63,25 @@
       display: flex;
       flex-direction: column;
     }
-  }
 
-  &--top {
-    align-items: center;
+    &:has(.@{prefix}-form__item-arrow) {
+      .@{prefix}-form__item-tips:has(.@{prefix}-form__controls--right) {
+        padding-right: calc(@form-item-arrow-size + @spacer / 2);
+      }
+    }
   }
 
   &__label {
     float: left;
-    padding-right: 16px;
+    padding-right: @spacer-2;
     vertical-align: middle;
-    font-size: @form-label-font-size;
-    line-height: 24px;
+    font: @form-label-font;
     color: @text-color-primary;
     box-sizing: border-box;
     word-break: break-all;
 
     &--top {
-      padding-bottom: 8px;
+      padding-bottom: @spacer;
     }
 
     &--left {

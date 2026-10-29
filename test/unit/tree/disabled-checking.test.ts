@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import TreeStore from '../../../js/tree/tree-store';
 
 describe('tree disabled children checking', () => {
@@ -8,6 +8,31 @@ describe('tree disabled children checking', () => {
       children: [{ value: 'enabled' }, { value: 'disabled', disabled: true }],
     },
   ];
+
+  it.each(['all', 'parentFirst'] as const)(
+    'keeps disabled children unchanged when loading a checked parent in %s mode',
+    async (valueMode) => {
+      const tree = new TreeStore({
+        checkable: true,
+        valueMode,
+        lazy: true,
+        load: async () => [
+          { value: 'enabled' },
+          { value: 'disabled', disabled: true },
+          { value: 'explicit', disabled: true, checked: true },
+        ],
+      });
+      tree.append([{ value: 'parent', children: true }]);
+      tree.setChecked(['parent']);
+      expect(tree.getNode('parent').checked).toBe(true);
+      tree.setExpanded(['parent']);
+      await vi.waitFor(() => expect(tree.getNode('disabled')).toBeTruthy());
+      expect(tree.getNode('enabled').checked).toBe(true);
+      expect(tree.getNode('disabled').checked).toBe(false);
+      expect(tree.getNode('explicit').checked).toBe(true);
+      expect(tree.getNode('parent').checked).toBe(true);
+    }
+  );
 
   it.each(['onlyLeaf', 'all', 'parentFirst'] as const)(
     'ignores disabled children when deriving parent state in %s mode',
