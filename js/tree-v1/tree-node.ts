@@ -905,7 +905,10 @@ export class TreeNode {
     if (checkStrictly) {
       return !!checkedMap.get(nodeKey);
     }
-    let checked = false;
+    if (Array.isArray(children) && children.length > 0) {
+      const checkChildren = this.getCheckChildren();
+      return checkChildren.length > 0 && checkChildren.every((node) => node.isChecked(checkedMap));
+    }
     // 在 checkedMap 中，则根据 valueMode 的值进行判断
     if (
       checkedMap.get(nodeKey) &&
@@ -916,18 +919,16 @@ export class TreeNode {
     ) {
       return true;
     }
-    // 如果 valueMode 为 onlyLeaf 并且当前节点是父节点，则进一步判断
-    if (Array.isArray(children) && children.length > 0) {
-      // 禁用子节点不参与全选判断，且没有可用子节点时不自动选中
-      const enabledChildren = children.filter((node) => !node.isDisabled());
-      checked = enabledChildren.length > 0 && enabledChildren.every((node) => node.isChecked(checkedMap));
-    } else {
-      // 从父节点状态推断子节点状态
-      // 这里再调用 isChecked 会导致死循环
-      const parents = this.getParents();
-      checked = !this.isDisabled() && parents.some((node) => checkedMap.get(node.getNodeMapKey()));
-    }
-    return checked;
+    // 从父节点状态推断子节点状态，禁用节点保留自身选中值。
+    const parents = this.getParents();
+    return !this.isDisabled() && parents.some((node) => checkedMap.get(node.getNodeMapKey()));
+  }
+
+  private getCheckChildren(): TreeNode[] {
+    const children = Array.isArray(this.children) ? this.children : [];
+    return this.tree.config.checkAllAffectedBy === 'onlyEnabled'
+      ? children.filter((node) => !node.isDisabled())
+      : children;
   }
 
   /**
@@ -948,9 +949,7 @@ export class TreeNode {
     if (!Array.isArray(children)) return false;
 
     let childChecked: null | boolean = null;
-    const indeterminate = children.some((node: TreeNode) => {
-      // 禁用子节点不参与半选判断
-      if (node.isDisabled()) return false;
+    const indeterminate = this.getCheckChildren().some((node: TreeNode) => {
       if (node.isIndeterminate()) {
         // 子节点有任意一个半选，则其为半选状态
         return true;
