@@ -26,7 +26,7 @@ export function parseToDayjs(
   format: string,
   timeOfDay?: string,
   dayjsLocale?: string,
-  defaultTime?: string
+  defaultTime?: string,
 ) {
   if (value === '' || value === null) return dayjs();
 
@@ -109,7 +109,7 @@ export function parseToDayjs(
   if (!result.isValid()) {
     log.error(
       'DatePicker',
-      `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`
+      `Check whether the format、value format is valid.\n value: '${value}', format: '${format}'`,
     );
     return dayjs();
   }
@@ -155,7 +155,7 @@ function formatRange({
   if (!newDate || !Array.isArray(newDate)) return [];
 
   let dayjsDateList = newDate.map(
-    (d, i) => d && parseToDayjs(d, format, undefined, undefined, defaultTime?.[i]).locale(dayjsLocale)
+    (d, i) => d && parseToDayjs(d, format, undefined, undefined, defaultTime?.[i]).locale(dayjsLocale),
   );
 
   // 保证后面的时间大于前面的时间
@@ -173,7 +173,7 @@ function formatRange({
   if (dayjsDateList.some((r) => r && !r.isValid())) {
     log.error(
       'DatePicker',
-      `Check whether the value、format、valueType format is valid.\nformat: '${format}' value: '${newDate}' valueType: '${targetFormat}'`
+      `Check whether the value、format、valueType format is valid.\nformat: '${format}' value: '${newDate}' valueType: '${targetFormat}'`,
     );
     return [];
   }
@@ -208,7 +208,7 @@ function formatSingle({
   if (!dayJsDate.isValid()) {
     log.error(
       'DatePicker',
-      `Check whether the format、value format is valid.\nformat: '${format}' value: '${newDate}'`
+      `Check whether the format、value format is valid.\nformat: '${format}' value: '${newDate}'`,
     );
     return '';
   }
@@ -249,7 +249,7 @@ export function formatDate(
     targetFormat?: string;
     autoSwap?: boolean;
     defaultTime?: string | string[];
-  }
+  },
 ) {
   let result;
 

@@ -208,7 +208,7 @@ export function compareNumber(num1: string | number, num2: string | number, larg
 export function largeIntegerNumberSubtract(
   num1: string,
   num2: string,
-  p?: { decimal?: boolean; stayZero?: boolean; filledZero?: boolean }
+  p?: { decimal?: boolean; stayZero?: boolean; filledZero?: boolean },
 ): string {
   if (num1 === num2) return '0';
   const { decimal, stayZero, filledZero } = p || {};
@@ -380,7 +380,7 @@ export function decimalPlacesToFixedNum(num: number, decimalPlaces: InputNumberD
 export function largeNumberToFixed(
   number: string | number,
   decimalPlaces: InputNumberDecimalPlaces = 0,
-  largeNumber: boolean = true
+  largeNumber: boolean = true,
 ): string {
   if (Number.isNaN(Number(number))) return '';
   if (!largeNumber) {

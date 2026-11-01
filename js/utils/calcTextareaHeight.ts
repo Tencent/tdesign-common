@@ -23,7 +23,7 @@ const TEXTAREA_STYLE = `
 function calcTextareaHeight(
   targetElement: HTMLTextAreaElement,
   minRows: LimitType = 1,
-  maxRows: LimitType = null
+  maxRows: LimitType = null,
 ): CalculateStyleType {
   const hiddenTextarea = document.createElement('textarea');
   document.body.appendChild(hiddenTextarea);
