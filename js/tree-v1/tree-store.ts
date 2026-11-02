@@ -113,6 +113,7 @@ export class TreeStore {
       activeMultiple: false,
       checkable: false,
       checkStrictly: false,
+      checkAllAffectedBy: 'onlyEnabled',
       disabled: false,
       draggable: false,
       load: null,
