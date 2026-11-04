@@ -61,6 +61,8 @@ export interface ComponentDocParserOptions {
   readDemoCode: ReadDemoCode;
   /** 判断 demo 占位符，默认匹配组件目录下的 _example/<demoName> */
   isDemoSlot?: IsDemoSlot;
+  /** 演示区二级分组标题，默认 `## 示例代码`；设为空字符串可关闭；文档已自带二级分节时跳过 */
+  demoSectionHeading?: string;
   /** 正文清理变压器（按序执行），默认使用内置 cleanSiteHtml（小程序站点清理） */
   transformers?: BodyTransformer[];
   /** frontmatter 标题字段，默认 'title' */
