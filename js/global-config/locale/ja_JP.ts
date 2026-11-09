@@ -173,6 +173,9 @@ export default {
   input: {
     placeholder: '入力してください',
   },
+  textarea: {
+    clearText: 'クリア',
+  },
   list: {
     loadingText: 'ロード中です、お待ちください',
     loadingMoreText: 'クリックでさらに読み込み',

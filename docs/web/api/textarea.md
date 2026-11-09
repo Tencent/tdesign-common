@@ -12,6 +12,12 @@ spline: form
 
 {{ base }}
 
+### 可清空
+
+支持展示清空按钮。`clearable` 为 `true` 时等价于 `{ position: 'top', type: 'icon' }`。`position` 控制按钮在顶部、中部或底部，`type` 支持图标和文字。
+
+{{ clearable }}
+
 ### 限制最大字符数
 
 限制输入的最大字符数并展示字符数。

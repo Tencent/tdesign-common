@@ -186,6 +186,7 @@ export default {
   },
 
   input: { placeholder: 'الرجاء إدخال' },
+  textarea: { clearText: 'مسح' },
 
   list: {
     loadingText: 'جار التحميل…',
