@@ -51,8 +51,12 @@ export default {
     cancel: 'يلغي',
   },
   popconfirm: {
-    confirm: { content: 'نعم' },
-    cancel: { content: 'يلغي' },
+    confirm: {
+      content: 'نعم',
+    },
+    cancel: {
+      content: 'يلغي',
+    },
   },
   table: {
     empty: 'لا تتوافر بيانات',
@@ -72,21 +76,19 @@ export default {
     selectAllText: 'اختر الكل',
     searchResultText: "تم العثور على بحث '{result}' و{count} من العناصر.",
   },
-
   select: {
     empty: 'لا تتوافر بيانات',
     loadingText: 'جار التحميل…',
     placeholder: 'الرجاء التحديد',
   },
-
-  tree: { empty: 'لا تتوافر بيانات' },
-
+  tree: {
+    empty: 'لا تتوافر بيانات',
+  },
   treeSelect: {
     empty: 'لا تتوافر بيانات',
     loadingText: 'جار التحميل…',
     placeholder: 'الرجاء التحديد',
   },
-
   datePicker: {
     dayjsLocale: 'ar',
     placeholder: {
@@ -130,7 +132,6 @@ export default {
     nextDecade: 'العقد القادم',
     now: 'الآن',
   },
-
   upload: {
     sizeLimitMessage: 'لا يمكن أن يتجاوز حجم الملف {sizeLimit}',
     cancelUploadText: 'يلغي',
@@ -143,13 +144,11 @@ export default {
       delete: 'حذف',
       uploading: 'تحميل',
     },
-
     dragger: {
       dragDropText: 'أسقطها هنا',
       draggingText: 'اسحب الملف هنا',
       clickAndDragText: 'اختر ملفًا أو اسحبه هنا.',
     },
-
     file: {
       fileNameText: 'اسم الملف',
       fileSizeText: 'حجم',
@@ -164,7 +163,6 @@ export default {
       successText: 'تم التحميل بنجاح.',
     },
   },
-
   form: {
     errorMessage: {
       date: 'الرجاء إدخال ${name} الصحيح',
@@ -184,25 +182,24 @@ export default {
       email: 'الرجاء إدخال ${name} الصحيح',
     },
   },
-
-  input: { placeholder: 'الرجاء إدخال' },
-  textarea: { clearText: 'مسح' },
-
+  input: {
+    placeholder: 'الرجاء إدخال',
+  },
+  textarea: {
+    clearText: 'مسح',
+  },
   list: {
     loadingText: 'جار التحميل…',
     loadingMoreText: 'انقر لتحميل المزيد',
   },
-
   alert: {
     expandText: 'تزسيع',
     collapseText: 'انهيار',
   },
-
   anchor: {
     copySuccessText: 'تم نسخ الرابط',
     copyText: 'انسخ الرابط',
   },
-
   colorPicker: {
     swatchColorTitle: 'الألوان الافتراضية',
     recentColorTitle: 'مستخدم حديثا',
