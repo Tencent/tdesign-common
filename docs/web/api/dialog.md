@@ -47,3 +47,9 @@ spline: message
 指定对话框元素挂载 DOM。
 
 {{ attach }}
+
+### 焦点管理
+
+通过 `focusable` 配置对话框打开后的默认焦点、焦点循环以及关闭后的焦点归还。
+
+{{ focusable }}
