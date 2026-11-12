@@ -10,6 +10,36 @@ toc: false
 
 #### Basic form
 
-{{ horizontal }}
+{{ base }}
 
-{{ vertical }}
+### 02 Component Status
+
+#### Tips
+
+{{ help }}
+
+#### Validation rules
+
+{{ rules }}
+
+### 03 Component Style
+
+#### Label alignment
+
+{{ label-align }}
+
+#### Colon
+
+{{ colon }}
+
+#### Required mark position
+
+{{ required-mark }}
+
+#### Label width
+
+{{ label-width }}
+
+#### Content alignment
+
+{{ content-align }}
