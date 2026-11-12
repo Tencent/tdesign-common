@@ -10,6 +10,36 @@ toc: false
 
 #### 基础表单
 
-{{ horizontal }}
+{{ base }}
 
-{{ vertical }}
+### 02 组件状态
+
+#### 提示
+
+{{ help }}
+
+#### 校验规则
+
+{{ rules }}
+
+### 03 组件样式
+
+#### 标签对齐样式
+
+{{ label-align }}
+
+#### 标签带冒号
+
+{{ colon }}
+
+#### 标签必填位置
+
+{{ required-mark }}
+
+#### 标签宽度
+
+{{ label-width }}
+
+#### 标签内容对齐样式
+
+{{ content-align }}
