@@ -13,20 +13,17 @@
   .reset;
 
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
 
-  &--clear {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+  > .@{prefix}-textarea__inner,
+  > .@{prefix}-textarea__clear {
+    grid-area: 1 / 1;
+  }
 
-    > .@{prefix}-textarea__inner,
-    > .@{prefix}-textarea__clear {
-      grid-area: 1 / 1;
-    }
-
-    > .@{prefix}-textarea__info_wrapper {
-      grid-area: 2 / 1;
-    }
+  > .@{prefix}-textarea__info_wrapper {
+    grid-area: 2 / 1;
   }
 
   &__clear {
@@ -83,14 +80,6 @@
     }
   }
 
-  &--clear &__inner {
-    padding-right: calc(@comp-paddingLR-s * 2 + @comp-size-xs);
-  }
-
-  &--clear-text &__inner {
-    padding-right: calc(@comp-paddingLR-s * 3 + 2em);
-  }
-
   &__inner {
     .scrollbar();
 
@@ -126,6 +115,10 @@
     .textarea-status(success);
     .textarea-status(warning);
     .textarea-status(error);
+
+    &--clear {
+      padding-right: calc(@comp-paddingLR-s * 2 + @comp-size-xs);
+    }
   }
 
   &__info_wrapper {
