@@ -174,6 +174,9 @@ export default {
   input: {
     placeholder: 'please enter',
   },
+  textarea: {
+    clearText: 'Clear',
+  },
   list: {
     loadingText: 'loading...',
     loadingMoreText: 'loading more',

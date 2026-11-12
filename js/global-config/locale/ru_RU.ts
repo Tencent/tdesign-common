@@ -186,6 +186,9 @@ export default {
   input: {
     placeholder: 'Введите',
   },
+  textarea: {
+    clearText: 'Очистить',
+  },
   list: {
     loadingText: 'Загрузка, пожалуйста, подождите',
     loadingMoreText: 'Нажмите, чтобы загрузить больше',
