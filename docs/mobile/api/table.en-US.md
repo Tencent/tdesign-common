@@ -6,7 +6,7 @@ isComponent: true
 toc: false
 ---
 
-### Component Types
+### 01 Component Type
 
 #### Basic
 
@@ -15,6 +15,14 @@ toc: false
 #### Table with Horizontal Scroll
 
 {{ scroll }}
+
+### 02 Component Status
+
+#### Table with Ellipsis Cells
+
+{{ ellipsis }}
+
+### 03 Component Style
 
 #### with Stripe
 
