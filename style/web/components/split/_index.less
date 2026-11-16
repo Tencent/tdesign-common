@@ -1,0 +1,109 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import '../../base.less';
+
+@import './_var.less';
+
+@import '../../mixins/_reset.less';
+
+.@{prefix}-split {
+  .reset;
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &__panel {
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  &__bar {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    background-color: @split-bar-bg-color;
+  }
+
+  &--horizontal > &__bar {
+    height: 100%;
+  }
+
+  &--vertical > &__bar {
+    width: 100%;
+  }
+
+  &__bar-inner {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    user-select: none;
+    touch-action: none;
+  }
+
+  &--horizontal > &__bar > &__bar-inner {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    cursor: col-resize;
+    transform: translateX(-50%);
+  }
+
+  &--vertical > &__bar > &__bar-inner {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    cursor: row-resize;
+    transform: translateY(-50%);
+  }
+
+  &__bar--disabled > &__bar-inner {
+    cursor: default;
+  }
+
+  &__dragger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: @split-dragger-color;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  &__dragger-default {
+    display: grid;
+    grid-template-columns: repeat(2, @split-dragger-dot-size);
+    gap: @split-dragger-dot-gap;
+
+    &::before,
+    &::after {
+      width: @split-dragger-dot-size;
+      height: @split-dragger-dot-size;
+      border-radius: 50%;
+      background-color: currentColor;
+      box-shadow: 0 (@split-dragger-dot-size + @split-dragger-dot-gap) currentColor,
+        0 (-@split-dragger-dot-size - @split-dragger-dot-gap) currentColor;
+      content: '';
+    }
+  }
+
+  &--vertical &__dragger-default {
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, @split-dragger-dot-size);
+
+    &::before,
+    &::after {
+      box-shadow: (@split-dragger-dot-size + @split-dragger-dot-gap) 0 currentColor,
+        (-@split-dragger-dot-size - @split-dragger-dot-gap) 0 currentColor;
+    }
+  }
+}

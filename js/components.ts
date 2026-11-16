@@ -58,6 +58,7 @@ export const WEB_COMPONENT_MAP: Record<string, string[]> = {
   'select-input': ['SelectInput'],
   skeleton: ['Skeleton'],
   slider: ['Slider', 'SliderButton'],
+  split: ['Split', 'SplitPanel'],
   space: ['Space'],
   statistic: ['Statistic'],
   steps: ['Steps', 'StepItem'],
