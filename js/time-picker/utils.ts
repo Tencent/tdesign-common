@@ -7,8 +7,38 @@ dayjs.extend(advancedFormat);
 dayjs.extend(customParseFormat);
 
 // 判断是否输入的值是合法的timepicker的值
-export function validateInputValue(value: string, format: string) {
-  return dayjs(value, format).format(format) === value;
+export function validateInputValue(
+  value: string,
+  format: string,
+  disableTime?: (
+    h: number,
+    m: number,
+    s: number,
+    ms: number,
+    context: { partial: 'start' | 'end' },
+  ) => Partial<{
+    hour: Array<number>;
+    minute: Array<number>;
+    second: Array<number>;
+    millisecond: Array<number> }>
+) {
+  const currTime = dayjs(value, format);
+  if (currTime.format(format) !== value) return false;
+  if (disableTime) {
+    const params: [number, number, number, number] = [
+      currTime.hour(),
+      currTime.minute(),
+      currTime.second(),
+      currTime.millisecond(),
+    ];
+    const disableTimeObj = disableTime(...params, { partial: 'start' });
+    if (disableTimeObj.hour?.includes(currTime.hour())) return false;
+    if (disableTimeObj.minute?.includes(currTime.minute())) return false;
+    if (disableTimeObj.second?.includes(currTime.second())) return false;
+    if (disableTimeObj.millisecond?.includes(currTime.millisecond())) return false;
+  }
+
+  return true;
 }
 
 // 转换输入值为标准格式的timepicker的值
