@@ -1,4 +1,7 @@
-import { isBoolean, isUndefined, omit, pick } from 'lodash-es';
+import isBoolean from 'lodash-es/isBoolean';
+import isUndefined from 'lodash-es/isUndefined';
+import omit from 'lodash-es/omit';
+import pick from 'lodash-es/pick';
 import log from '../log/log';
 import { TreeNode } from './tree-node';
 

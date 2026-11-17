@@ -1,4 +1,5 @@
-import { isFunction, isObject } from 'lodash-es';
+import isFunction from 'lodash-es/isFunction';
+import isObject from 'lodash-es/isObject';
 
 const { hasOwnProperty } = Object.prototype;
 

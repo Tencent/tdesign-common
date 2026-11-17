@@ -1,4 +1,6 @@
-import { isFunction, chunk, isArray } from 'lodash-es';
+import isFunction from 'lodash-es/isFunction';
+import chunk from 'lodash-es/chunk';
+import isArray from 'lodash-es/isArray';
 import dayjs from 'dayjs';
 import dayJsIsBetween from 'dayjs/plugin/isBetween';
 import weekOfYear from 'dayjs/plugin/weekOfYear';

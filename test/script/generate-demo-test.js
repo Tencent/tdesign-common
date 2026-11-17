@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { camelCase } = require('lodash-es');
-const { upperFirst } = require('lodash-es');
+const camelCase = require('lodash-es/camelCase').default;
+const upperFirst = require('lodash-es/upperFirst').default;
 
 function resolveCwd(...args) {
   args.unshift(process.cwd());
