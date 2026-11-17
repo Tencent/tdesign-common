@@ -25,6 +25,13 @@ function setDomStyleAfterAnimation(dom: HTMLElement, styleAfterAnimation: Keyfra
   }
 }
 
+/**
+ * 获取消息入场动画关键帧
+ * @param placement 消息弹出位置
+ * @param offsetWidth 元素宽度
+ * @param offsetHeight 元素高度
+ * @returns 动画帧数组，不支持位置返回 null
+ */
 function getFadeInKeyframes(placement: string, offsetWidth: Number, offsetHeight: Number): Array<Keyframe> | null {
   if (!PLACEMENT_LIST.includes(placement)) return null;
   if (['top-left', 'left', 'bottom-left'].includes(placement)) {
@@ -54,6 +61,12 @@ function getFadeInKeyframes(placement: string, offsetWidth: Number, offsetHeight
   return null;
 }
 
+/**
+ * 获取消息退场动画关键帧
+ * @param placement 消息弹出位置
+ * @param offsetHeight 元素高度
+ * @returns 动画帧数组，不支持位置返回 null
+ */
 function getFadeOutKeyframes(placement: string, offsetHeight: Number): Array<Keyframe> | null {
   if (!PLACEMENT_LIST.includes(placement)) return null;
   if (['bottom-left', 'bottom', 'bottom-right'].includes(placement)) {
@@ -70,6 +83,11 @@ function getFadeOutKeyframes(placement: string, offsetHeight: Number): Array<Key
   ];
 }
 
+/**
+ * 执行消息入场淡入动画
+ * @param dom 消息DOM元素
+ * @param placement 消息弹出位置
+ */
 function fadeIn(dom: HTMLElement, placement: string) {
   if (!dom) return;
   const offsetWidth = dom?.offsetWidth || 0;
@@ -81,6 +99,12 @@ function fadeIn(dom: HTMLElement, placement: string) {
   dom.animate?.(fadeInKeyframes, ANIMATION_OPTION);
 }
 
+/**
+ * 执行消息退场淡出动画
+ * @param dom 消息DOM元素
+ * @param placement 消息弹出位置
+ * @param onFinish 动画结束回调函数
+ */
 function fadeOut(dom: HTMLElement, placement: string, onFinish: Function) {
   if (!dom) return;
   const offsetHeight = dom.offsetHeight || 0;
