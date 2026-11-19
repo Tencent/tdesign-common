@@ -33,6 +33,26 @@
     padding: 0 @spacer-2;
   }
 
+  // full-swipe 滑动到底
+  // 其余项锁定自然宽度(flex:0 0 auto)，目标项(带 pin 类)用 flex:1
+  // 自动占满面板剩余空间，文案贴内侧随手势移动。
+  &__action-sliding {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    white-space: nowrap;
+    transform: translate3d(0, 0, 0);
+
+    &.@{prefix}-swipe-cell__action-sliding--pin-start {
+      flex: 1 1 0%;
+      justify-content: flex-start;
+    }
+
+    &.@{prefix}-swipe-cell__action-sliding--pin-end {
+      flex: 1 1 0%;
+      justify-content: flex-end;
+    }
+  }
+
   &__icon {
     font-size: @font-size-xl;
   }
