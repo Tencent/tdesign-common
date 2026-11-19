@@ -62,12 +62,11 @@
 
   &__icon {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: @checkbox-icon-size;
     height: @checkbox-icon-size;
-    color: @checkbox-icon-color;
-    font-size: @checkbox-icon-size;
-    margin-top: calc((@checkbox-title-line-height - @checkbox-icon-size) / 2);
 
     &:empty {
       display: none;
@@ -83,72 +82,58 @@
     }
 
     &--left {
-      margin-right: 8px;
+      margin-right: @spacer;
+    }
+
+    &-circle,
+    &-rectangle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: @checkbox-icon-size;
+      height: @checkbox-icon-size;
+      color: @checkbox-icon-color;
+      font-size: calc(@checkbox-icon-size - 8px);
+      border: @checkbox-border-width solid @checkbox-border-color;
+      box-sizing: border-box;
+
+      &--checked {
+        background: @checkbox-icon-checked-color;
+        border-color: @checkbox-icon-checked-color;
+      }
+
+      &--disabled {
+        background: @checkbox-icon-disabled-bg-color;
+      }
+
+      &--checked&--disabled {
+        background: @checkbox-icon-disabled-color;
+        border-color: @checkbox-icon-disabled-color;
+      }
     }
 
     &-circle {
-      width: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
-      height: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
-      border: @checkbox-border-width solid @checkbox-icon-color;
+      width: calc(@checkbox-icon-size - 2px);
+      height: calc(@checkbox-icon-size - 2px);
       border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.5);
-      box-sizing: border-box;
-
-      &--disabled {
-        background: @checkbox-icon-disabled-bg-color;
-      }
     }
 
     &-rectangle {
-      width: calc((@checkbox-icon-size - @checkbox-border-width * 2) * 2);
-      height: calc((@checkbox-icon-size - @checkbox-border-width * 2) * 2);
-      border: @checkbox-border-width solid @checkbox-icon-color;
-      border-radius: 2px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.5);
-      box-sizing: border-box;
-
-      &--disabled {
-        background: @checkbox-icon-disabled-bg-color;
-      }
+      width: calc(@checkbox-icon-size - 4px);
+      height: calc(@checkbox-icon-size - 4px);
     }
 
     &-line {
-      &::before,
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 2.5px;
-        border-radius: 1px;
-        background: @checkbox-icon-checked-color;
-        transform-origin: top center;
-      }
-
-      &::before {
-        height: 8px;
-        left: 4px;
-        top: 11px;
-        transform: rotate(-45deg);
-      }
-
-      &::after {
-        height: 13px;
-        right: 4px;
-        top: 7px;
-        transform: rotate(45deg);
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: @checkbox-icon-size;
+      height: @checkbox-icon-size;
+      color: @checkbox-icon-checked-color;
+      font-size: @checkbox-icon-size;
 
       &--disabled {
-        &::before,
-        &::after {
-          background: @checkbox-icon-disabled-color;
-        }
+        color: @checkbox-icon-disabled-color;
       }
     }
   }
@@ -181,31 +166,31 @@
   }
 
   &__title + &__description:not(:empty) {
-    margin-top: 4px;
+    margin-top: calc(@spacer / 2);
   }
 
   &__border {
     position: absolute;
     bottom: 0;
-    left: 48px;
+    left: @spacer-5;
     right: 0;
     height: 1px;
     background: @checkbox-border-color;
     transform: scaleY(0.5);
 
     &--right {
-      left: 16px;
+      left: @spacer-2;
     }
   }
 
   // theme = tag 启用
   &--tag {
     font: @font-body-medium;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: @spacer;
+    padding-bottom: @spacer;
     text-align: center;
     background-color: @checkbox-tag-bg-color;
-    border-radius: 6px;
+    border-radius: @radius-default;
 
     &.@{checkbox}--checked {
       color: @checkbox-tag-active-color;
