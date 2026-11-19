@@ -71,7 +71,7 @@ spline: form
 - 批量文件上传，请设置属性 `theme="file-flow"` 和 `multiple=true`。
 - 上传组件中的全部文本，均可通过 `locale` 进行修改，同时也支持全局配置，<a href='../global-configuration?tab=api#uploadconfig'>查看文档</a>。
 - 使用 `allowUploadDuplicateFile` 实现多文上传时可重复选择重名文件。
-- 使用 `uploadAllFilesInOneRequest` 将多个文件合并到同一个请求中上传；使用 `isBatchUpload` 将多个文件作为一个整体进行替换和删除，不允许追加文件。两者可配合使用。
+- 使用 `uploadAllFilesInOneRequest` 将多个文件合并到同一个请求中上传；可与 `isBatchUpload` 配合使用，实现文件的整体上传、替换和删除。启用 `isBatchUpload` 后，新选择的文件会整体替换原文件，不会追加。
 
 {{ file-flow-list }}
 
