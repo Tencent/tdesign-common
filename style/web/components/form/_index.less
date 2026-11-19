@@ -14,9 +14,12 @@
   font: @form-font;
 
   &:not(.@{prefix}-form-inline) {
-    > .@{prefix}-form__item:last-of-type,
+    > .@{prefix}-form__item:last-child,
     .@{prefix}-form__item--last {
-      margin: 0;
+      // 除了含有校验文案的项，其它末项去掉底边距
+      &:not(.@{prefix}-form__item-with-help):not(.@{prefix}-form__item-with-extra) {
+        margin: 0;
+      }
     }
   }
 
