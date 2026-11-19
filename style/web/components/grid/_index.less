@@ -60,7 +60,11 @@
 
 .gen-grid();
 
-.gen-grid(-xs);
+// xs 对应文档里的「<768px 响应式栅格（手机）」，必须包在 max-width 里。
+// 之前是全局生效，导致只设 xs 的列在 >=768px 时仍然按 xs 的宽度渲染。
+@media (max-width: @screen-xs-max) {
+  .gen-grid(-xs);
+}
 
 @media (min-width: @screen-sm-min) {
   .gen-grid(-sm);
