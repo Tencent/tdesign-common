@@ -47,3 +47,9 @@ The control dialog position can be customized by the `placement` and `top` prope
 Specifies that the dialog element mounts the DOM.
 
 {{ attach }}
+
+### Focus management
+
+Use `focusable` to configure the initial focus, focus trapping, and focus restoration after closing. Both component and plugin calls support this option.
+
+{{ focusable }}
