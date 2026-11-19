@@ -71,7 +71,7 @@ Bulk uploads are usually presented as a separate function, with uploaded content
 - For batch file upload, please set the attributes `theme="file-flow"` and `multiple=true`.
 - All texts in the upload component can be modified via `locale`. Global configuration and document viewing are also supported<a href='../global-configuration-en?tab=api#uploadconfig'></a>.
 - When using `allowUploadDuplicateFile` to upload multiple documents, you can select files with duplicate names repeatedly.
-- Use `uploadAllFilesInOneRequest` to upload multiple files in a single request. Combine it with `isBatchUpload` to upload, replace, and delete the files as a group. When `isBatchUpload` is enabled, newly selected files replace the existing files as a group instead of being appended.
+- Use `uploadAllFilesInOneRequest` to upload multiple files in a single request. You can combine it with `isBatchUpload` to replace and delete files as a group; newly selected files replace the existing files instead of being appended.
 
 {{ file-flow-list }}
 
