@@ -40,21 +40,22 @@
 
   &__input {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: @checkbox-size;
     height: @checkbox-size;
     vertical-align: middle;
     border: 1px solid @checkbox-border-color;
     border-radius: @checkbox-border-radius;
     background-color: @checkbox-input-color;
+    color: @checkbox-check-color;
     box-sizing: border-box;
     flex-shrink: 0;
 
-    &::after {
-      content: '';
-      position: absolute;
+    .@{prefix}-icon {
       opacity: 0;
-      box-sizing: border-box;
+      font: @checkbox-icon-font;
     }
   }
 
@@ -78,18 +79,8 @@
       background-color: @checkbox-input-color-checked;
       transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
-      &::after {
+      .@{prefix}-icon {
         opacity: 1;
-        top: ((@checkbox-size) / 2 - 2px);
-        left: @checkbox-check-left;
-        width: @checkbox-check-width;
-        height: @checkbox-check-height;
-        border: 2px solid @checkbox-check-color;
-        border-radius: 0 0 1px;
-        border-top: 0;
-        border-left: 0;
-        transform: rotate(45deg) scale(1) translate(-50%, -50%);
-        background: transparent;
       }
     }
   }
@@ -100,16 +91,8 @@
       background-color: @checkbox-input-color-indeterminate;
       transition: background-color @anim-duration-base @anim-time-fn-ease-in;
 
-      &::after {
+      .@{prefix}-icon {
         opacity: 1;
-        width: @checkbox-indeterminate-width;
-        height: @checkbox-indeterminate-height;
-        left: -1px;
-        right: 0;
-        top: ((@checkbox-size - 2 - @checkbox-indeterminate-height) * .5);
-        border: unset;
-        transform: scale(.5);
-        background-color: @checkbox-indeterminate-color;
       }
     }
   }
@@ -134,20 +117,14 @@
     &.@{prefix}-is-checked {
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
-
-        &::after {
-          border-color: @checkbox-check-icon-disabled-color;
-        }
+        color: @checkbox-check-icon-disabled-color;
       }
     }
 
     &.@{prefix}-is-indeterminate {
       .@{checkbox-cls}__input {
         border-color: @checkbox-border-color;
-
-        &::after {
-          background-color: @checkbox-indeterminate-color-disabled;
-        }
+        color: @checkbox-indeterminate-color-disabled;
       }
     }
   }

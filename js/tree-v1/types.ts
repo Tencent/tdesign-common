@@ -3,7 +3,7 @@ import { TreeNode } from './tree-node';
 
 // ------ 自动规范类型 start -------
 
-export type TreeNodeValue = string | number;
+export type TreeNodeValue = string | number | bigint;
 
 export interface KeysType {
   value?: string;
@@ -247,6 +247,8 @@ export interface TypeTreeStoreOptions {
   checkable?: boolean;
   // 复选框不联动更新
   checkStrictly?: boolean;
+  // 参与父节点全选、半选状态判定的子节点范围
+  checkAllAffectedBy?: 'all' | 'onlyEnabled';
   // 禁用整个树
   disabled?: boolean;
   // 指定节点禁用条件

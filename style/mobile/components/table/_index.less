@@ -793,6 +793,108 @@
   width: 100%;
 }
 
+// 超出省略内容预览弹窗
+.@{prefix}-table__popup {
+  &--bottom,
+  &--top {
+    width: 100%;
+  }
+
+  &--center {
+    width: @table-popup-center-width;
+  }
+
+  &--left,
+  &--right {
+    width: 65%;
+    height: 100%;
+  }
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    &--bottom,
+    &--top {
+      min-height: @table-popup-bottom-min-height;
+      max-height: @table-popup-bottom-max-height;
+      padding: @spacer-2;
+    }
+
+    &--center {
+      max-height: @table-popup-center-max-height;
+      padding: @spacer-4 @spacer-3;
+    }
+
+    &--left,
+    &--right {
+      height: 100%;
+      padding: @spacer-2;
+    }
+  }
+
+  &-title {
+    flex-shrink: 0;
+    overflow: hidden;
+    color: @table-popup-title-color;
+    font: @table-popup-title-font;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .@{prefix}-popup__close {
+    padding: @spacer-2;
+    color: @text-color-placeholder;
+  }
+
+  &--center .@{prefix}-popup__close {
+    padding: @spacer;
+  }
+
+  &-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-top: @spacer-2;
+
+    // 关闭按钮存在时，顶部预留关闭按钮高度，避免内容被遮挡
+    &--with-close {
+      padding-top: calc(24px + @spacer-2);
+    }
+
+    &--center&--with-close {
+      padding-top: @spacer-2;
+    }
+  }
+
+  &-content-inner {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    word-break: break-all;
+    color: @text-color-secondary;
+  }
+
+  &-title:not(:empty) + .@{prefix}-table__popup-content {
+    padding-top: @spacer-2;
+  }
+
+  &-title:empty + .@{prefix}-table__popup-content--center:not(.@{prefix}-table__popup-content--with-close) {
+    padding-top: 0;
+  }
+}
+
 .@{prefix}-table__content {
   overflow: auto;
 }
@@ -1172,8 +1274,8 @@
     }
 
     .@{prefix}-checkbox__icon-rectangle {
-      width: calc(@table-icon-size * 2);
-      height: calc(@table-icon-size * 2);
+      width: @table-icon-size;
+      height: @table-icon-size;
     }
   }
 }
