@@ -2,139 +2,235 @@
 
 @import './_var.less';
 
-.@{item} {
-  flex: 1;
-  height: @tab-bar-height;
-  box-sizing: border-box;
+// ================================================================
+// iOS 26 Liquid Glass · Mobile TabBar Item
+// ================================================================
+.@{item}--liquid-glass {
+  max-width: 60px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: @tab-bar-item-liquid-glass-padding;
+  background: transparent;
+  border: none;
+  cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
   position: relative;
-  margin: 8px 0;
-  background-color: @tab-bar-bg-color;
-  padding: 0 12px;
+  z-index: 1;
+  color: rgba(180, 180, 190, 0.75);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition:
+    color 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+  min-width: 44px;
 
-  &--split::before {
-    .hairline-left(@color: @tab-bar-border-color);
-
-    top: 8px;
-    bottom: 8px;
-  }
-
-  &--crowded {
-    padding: 0 8px;
-  }
-
-  &--round {
-    border-radius: 99px;
-  }
-
+  // 移除默认背景和边框
   &__content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    color: @tab-bar-color;
-
-    &--checked {
-      .@{item}__text,
-      .@{item}__icon {
-        color: @tab-bar-active-color;
-        font-weight: 600;
-      }
-    }
-
-    &--tag {
-      border-radius: 99px;
-    }
-
-    &--tag&--checked {
-      background-color: @tab-bar-active-bg;
-    }
-
-    // &--active {
-    //   background-color: @tab-bar-hover-bg-color;
-    // }
+    background: transparent;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    gap: 1px;
+    padding: 6px 4px;
+    border-radius: 18px;
+    transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
   }
 
+  // 图标
   &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.02));
+    pointer-events: none;
+    opacity: 0.95;
+    transform: translateZ(2px);
+
     .@{prefix}-icon {
+      font-size: @tab-bar-item-liquid-glass-icon-size;
+      line-height: 1.2;
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
       vertical-align: top;
     }
   }
 
-  //.@{prefix}-badge--count {
-  //// 缩放0.83是因为设计稿字体10px，而chrome最小12px
-  //  transform: translate(50%, -10%) scale(0.83) !important; // stylelint-disable-line
-  //}
-
+  // 文字标签
   &__text {
+    font-size: @tab-bar-item-liquid-glass-label-size;
+    opacity: var(--td-tab-bar-item-liquid-glass-label-opacity, 0.95);
+    letter-spacing: 0.3px;
+    font-weight: 400;
+    pointer-events: none;
+    color: white;
+    transform: translateZ(1px);
+    transition: all 0.35s ease;
     display: flex;
     align-items: center;
-    font: @font-body-large;
+    justify-content: center;
+  }
 
-    &--small {
-      font: @font-body-extraSmall;
+  // ================================================================
+  // Active State
+  // ================================================================
+  &--active {
+    color: #ffffff;
+    transform: translateY(-4px) scale(1.05) translateZ(8px);
+
+    .@{item}__content {
+      background: @tab-bar-item-liquid-glass-active-bg;
+      backdrop-filter: blur(1px) saturate(1.2);
+      -webkit-backdrop-filter: blur(1px) saturate(1.2);
+      border: 1.2px solid @tab-bar-item-liquid-glass-active-border;
+      border-top-color: @tab-bar-item-liquid-glass-active-border-top;
+      border-left-color: @tab-bar-item-liquid-glass-active-border-left;
+      border-right-color: @tab-bar-item-liquid-glass-active-border-right;
+      border-bottom-color: @tab-bar-item-liquid-glass-active-border-bottom;
+      border-radius: 20px;
+      box-shadow: @tab-bar-item-liquid-glass-active-glow;
+    }
+
+    .@{item}__icon {
+      transform: translateY(-3px) scale(1.12) translateZ(10px);
+      opacity: 1;
+
+      .@{prefix}-icon {
+        filter: @tab-bar-item-liquid-glass-active-icon-filter;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .@{item}__text {
+      opacity: 0.95;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.06);
+      transform: translateZ(6px);
+      font-weight: 500;
     }
   }
 
-  &__icon-menu {
-    margin-right: 4px;
+  // ================================================================
+  // Pressed State
+  // ================================================================
+  &.pressed {
+    transform: translateY(2px) scale(0.94) translateZ(-2px);
+
+    .@{item}__content {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.01),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.04),
+        0 1px 4px rgba(0, 0, 0, 0.04);
+      border-color: rgba(255, 255, 255, 0.01);
+      transition: all 0.06s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .@{item}__icon {
+      transform: translateY(1px) scale(0.90) translateZ(-1px);
+      transition-duration: 0.06s;
+    }
+
+    .@{item}__text {
+      transition-duration: 0.06s;
+    }
   }
 
-  &__spread {
-    position: absolute;
-    top: 0;
-    left: 7%;
-    width: 86%;
-    background-color: @tab-bar-bg-color;
-    transform: translate3d(0, calc(-100% - 16px), 0);
-    z-index: 1;
-    border-radius: 6px;
+  // ================================================================
+  // Hover State (Desktop)
+  // ================================================================
+  &:hover:not(&--active) {
     color: @tab-bar-color;
-    box-shadow: @tab-bar-spread-shadow;
+    .@{item}__content {
+      background: rgba(255, 255, 255, 0.02);
+      transform: translateY(-1px) translateZ(2px);
+    }
+  }
+}
 
-    &::before {
-      display: block;
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border: 8px solid transparent;
-      border-top: 8px solid @tab-bar-bg-color;
-      transform: translate3d(-50%, 16px, 0);
+// ================================================================
+// Post Button Special Style (Center Elevated)
+// ================================================================
+.@{item}--liquid-glass.post-btn {
+
+  .@{item}__icon .@{prefix}-icon {
+    font-size: 30px;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.06));
+    opacity: 0.85;
+    transform: translateZ(4px);
+  }
+
+  &--active {
+    transform: translateY(-4px) scale(1.06) translateZ(8px);
+
+    .@{item}__content {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(1px) saturate(1.2);
+      -webkit-backdrop-filter: blur(1px) saturate(1.2);
+      border: 1.2px solid rgba(167, 139, 250, 0.30);
+      border-top-color: rgba(167, 139, 250, 0.55);
+      border-left-color: rgba(167, 139, 250, 0.40);
+      border-right-color: rgba(167, 139, 250, 0.10);
+      border-bottom-color: rgba(167, 139, 250, 0.02);
+      border-radius: 20px;
+      box-shadow:
+        0 0 40px rgba(167, 139, 250, 0.10),
+        0 0 80px rgba(167, 139, 250, 0.04),
+        inset 0 2.5px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1.5px 0 rgba(167, 139, 250, 0.02),
+        0 6px 24px rgba(0, 0, 0, 0.10),
+        0 12px 48px rgba(0, 0, 0, 0.04),
+        2px 4px 20px rgba(0, 0, 0, 0.03),
+        -2px 4px 20px rgba(0, 0, 0, 0.02);
     }
 
-    &-item {
-      width: 100%;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      position: relative;
-      flex-direction: column;
-
-      &--active,
-      &:active {
-        background-color: @tab-bar-hover-bg-color;
-      }
-
-      &-split {
-        box-sizing: border-box;
-        content: ' ';
-        pointer-events: none;
-        background-color: @tab-bar-spread-border-color;
-        width: 80%;
-        height: 1px;
-        transform: translateY(.5);
-      }
-
-      &-text {
-        padding-top: 12px;
-      }
+    .@{item}__icon .@{prefix}-icon {
+      filter: drop-shadow(0 4px 28px rgba(167, 139, 250, 0.12));
     }
+  }
+
+  &.pressed .@{item}__icon .@{prefix}-icon {
+    transform: translateY(1px) scale(0.88) translateZ(-1px);
+  }
+}
+
+// ================================================================
+// Responsive Adaptation (Mobile)
+// ================================================================
+@media (max-width: 480px) {
+  .@{item}--liquid-glass {
+    padding: 4px 8px;
+    min-width: 36px;
+    font-size: 8px;
+
+    .@{item}__icon .@{prefix}-icon {
+      font-size: 18px;
+    }
+
+    .@{item}__text {
+      font-size: 8px;
+    }
+  }
+}
+
+// ================================================================
+// Reduced Motion Preference
+// ================================================================
+@media (prefers-reduced-motion: reduce) {
+  .@{item}--liquid-glass.pressed {
+    transform: scale(0.97) !important;
   }
 }

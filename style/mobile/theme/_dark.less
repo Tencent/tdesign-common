@@ -156,4 +156,35 @@
   --td-scrollbar-color: rgba(255, 255, 255, 10%);
   // 滚动条轨道颜色，不能是带透明度，否则纵向滚动时，横向滚动条会穿透
   --td-scroll-track-color: #333;
+
+  // ================================================================
+  // iOS Liquid Glass 
+  // ================================================================
+
+  // 极轻磨砂背景 — 深色下更透明
+  --td-tab-bar-liquid-glass-bg: rgba(255, 255, 255, 0.05);
+
+  // 玻璃边框 — 深色下更暗
+  --td-tab-bar-liquid-glass-border: rgba(255, 255, 255, 0.15);
+  --td-tab-bar-liquid-glass-border-top: rgba(255, 255, 255, 0.30);
+  --td-tab-bar-liquid-glass-border-left: rgba(255, 255, 255, 0.12);
+  --td-tab-bar-liquid-glass-border-right: rgba(255, 255, 255, 0.04);
+  --td-tab-bar-liquid-glass-border-bottom: rgba(255, 255, 255, 0.01);
+
+  // 激活胶囊背景
+  --td-tab-bar-item-liquid-glass-active-bg: rgba(255, 255, 255, 0.06);
+  --td-tab-bar-item-liquid-glass-active-border: rgba(255, 255, 255, 0.25);
+  --td-tab-bar-item-liquid-glass-active-border-top: rgba(255, 255, 255, 0.50);
+  --td-tab-bar-item-liquid-glass-active-border-left: rgba(255, 255, 255, 0.30);
+  --td-tab-bar-item-liquid-glass-active-border-right: rgba(255, 255, 255, 0.08);
+  --td-tab-bar-item-liquid-glass-active-border-bottom: rgba(255, 255, 255, 0.01);
+
+  // 激活光晕
+  --td-tab-bar-item-liquid-glass-active-glow:
+    0 0 40px rgba(100, 160, 255, 0.15),
+    0 0 80px rgba(80, 140, 255, 0.06),
+    inset 0 2.5px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1.5px 0 rgba(255, 255, 255, 0.03),
+    0 6px 24px rgba(0, 0, 0, 0.25),
+    0 12px 48px rgba(0, 0, 0, 0.15);
 }

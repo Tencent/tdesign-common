@@ -9,3 +9,86 @@
 @tab-bar-active-bg: var(--td-tab-bar-active-bg, @brand-color-light);
 @tab-bar-spread-shadow: var(--td-tab-bar-spread-shadow, @shadow-3);
 @tab-bar-spread-border-color: var(--td-tab-bar-spread-border-color, @border-color);
+
+// ================================================================
+// iOS 26 Liquid Glass · Mobile Item Variables
+// ================================================================
+
+// ---------- Item Layout ----------
+@tab-bar-item-liquid-glass-height: var(--td-tab-bar-item-liquid-glass-height, 56px);
+@tab-bar-item-liquid-glass-radius: var(--td-tab-bar-item-liquid-glass-radius, 60px);
+@tab-bar-item-liquid-glass-padding: var(--td-tab-bar-item-liquid-glass-padding, 0.5rem 0.2rem);
+
+// ---------- Inactive State ----------
+@tab-bar-item-liquid-glass-color: var(
+  --td-tab-bar-item-liquid-glass-color,
+  rgba(255, 255, 255, 0.30)
+);
+@tab-bar-item-liquid-glass-icon-filter: var(
+  --td-tab-bar-item-liquid-glass-icon-filter,
+  none
+);
+
+// ---------- Active State ----------
+@tab-bar-item-liquid-glass-active-color: var(
+  --td-tab-bar-item-liquid-glass-active-color,
+  #ffffff
+);
+@tab-bar-item-liquid-glass-active-icon-filter: var(
+  --td-tab-bar-item-liquid-glass-active-icon-filter,
+  drop-shadow(0 4px 24px rgba(140, 200, 255, 0.10))
+);
+
+// ---------- Active Capsule Background ----------
+@tab-bar-item-liquid-glass-active-bg: var(
+  --td-tab-bar-item-liquid-glass-active-bg,
+  rgba(255, 255, 255, 0.08)
+);
+@tab-bar-item-liquid-glass-active-border: var(
+  --td-tab-bar-item-liquid-glass-active-border,
+  rgba(255, 255, 255, 0.35)
+);
+@tab-bar-item-liquid-glass-active-border-top: var(
+  --td-tab-bar-item-liquid-glass-active-border-top,
+  rgba(255, 255, 255, 0.70)
+);
+@tab-bar-item-liquid-glass-active-border-left: var(
+  --td-tab-bar-item-liquid-glass-active-border-left,
+  rgba(255, 255, 255, 0.45)
+);
+@tab-bar-item-liquid-glass-active-border-right: var(
+  --td-tab-bar-item-liquid-glass-active-border-right,
+  rgba(255, 255, 255, 0.10)
+);
+@tab-bar-item-liquid-glass-active-border-bottom: var(
+  --td-tab-bar-item-liquid-glass-active-border-bottom,
+  rgba(255, 255, 255, 0.02)
+);
+
+// ---------- Active Glow Effect ----------
+@tab-bar-item-liquid-glass-active-glow: var(
+  --td-tab-bar-item-liquid-glass-active-glow,
+  0 0 40px rgba(160, 200, 255, 0.12),
+  0 0 80px rgba(120, 180, 255, 0.04),
+  inset 0 2.5px 0 rgba(255, 255, 255, 0.50),
+  inset 0 -1.5px 0 rgba(255, 255, 255, 0.04),
+  0 6px 24px rgba(0, 0, 0, 0.10),
+  0 12px 48px rgba(0, 0, 0, 0.04),
+  2px 4px 20px rgba(0, 0, 0, 0.03),
+  -2px 4px 20px rgba(0, 0, 0, 0.02)
+);
+
+// ---------- Inactive Capsule ----------
+@tab-bar-item-liquid-glass-inactive-bg: var(
+  --td-tab-bar-item-liquid-glass-inactive-bg,
+  transparent
+);
+@tab-bar-item-liquid-glass-inactive-border: var(
+  --td-tab-bar-item-liquid-glass-inactive-border,
+  transparent
+);
+
+// ---------- Icon / Text Size ----------
+@tab-bar-item-liquid-glass-icon-size: var(--td-tab-bar-item-liquid-glass-icon-size, 22px);
+@tab-bar-item-liquid-glass-label-size: var(--td-tab-bar-item-liquid-glass-label-size, 9px);
+@tab-bar-item-liquid-glass-label-opacity: var(--td-tab-bar-item-liquid-glass-label-opacity, 0.95);

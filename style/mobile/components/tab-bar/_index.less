@@ -1,11 +1,14 @@
 @import '../../base.less';
 
 @import './_var.less';
+@import '../tab-bar-item/_var.less';
+@import '../tab-bar-item/_index.less';
 
 .@{tab-bar-cls} {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
   position: relative;
   background-color: @tab-bar-bg-color;
   box-sizing: border-box;
@@ -39,8 +42,166 @@
     bottom: env(safe-area-inset-bottom);
   }
 
-  &--fixed&--round&--safe {
-    bottom: constant(safe-area-inset-bottom);
-    bottom: env(safe-area-inset-bottom);
+  // ================================================================
+  // iOS 26 Liquid Glass · Mobile Implementation
+  // ================================================================
+  &--liquid-glass {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 8px 12px;
+    border-radius: @tab-bar-liquid-glass-radius;
+    position: relative;
+
+    // 极轻磨砂
+    backdrop-filter: blur(@tab-bar-liquid-glass-blur) saturate(1.4);
+    -webkit-backdrop-filter: blur(@tab-bar-liquid-glass-blur) saturate(1.4);
+    background: @tab-bar-liquid-glass-bg;
+
+    // 玻璃边框 — 各边独立透明度
+    border: 0.5px solid @tab-bar-liquid-glass-border;
+    border-top-color: @tab-bar-liquid-glass-border-top;
+    border-left-color: @tab-bar-liquid-glass-border-left;
+    border-right-color: @tab-bar-liquid-glass-border-right;
+    border-bottom-color: @tab-bar-liquid-glass-border-bottom;
+
+    // 多层次阴影
+    box-shadow: @tab-bar-liquid-glass-shadow;
+    overflow: visible;
+    transform: perspective(1200px) rotateX(2deg) rotateY(-1.5deg);
+    transform-style: preserve-3d;
+
+    // ================================================================
+    // Environment Mapping Layer
+    // ================================================================
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: calc(@tab-bar-liquid-glass-radius + 3px);
+      pointer-events: none;
+      z-index: 0;
+      background:
+        @tab-bar-liquid-glass-env-stripes,
+        @tab-bar-liquid-glass-env-dispersion,
+        @tab-bar-liquid-glass-env-bottom;
+      mix-blend-mode: overlay;
+      transform: translateZ(1px);
+    }
+
+    // ================================================================
+    // Transparency Layer
+    // ================================================================
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: calc(@tab-bar-liquid-glass-radius + 6px);
+      pointer-events: none;
+      z-index: 0;
+      background:
+        @tab-bar-liquid-glass-inner-refraction,
+        @tab-bar-liquid-glass-edge-light,
+        @tab-bar-liquid-glass-inner-stripes;
+      mix-blend-mode: soft-light;
+      transform: translateZ(0.5px);
+    }
+  }
+
+  &--fixed&--liquid-glass {
+    bottom: 16px;
+  }
+
+  &--fixed&--liquid-glass&--safe {
+    bottom: calc(16px + constant(safe-area-inset-bottom));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+// ================================================================
+// Fallback: Normal / Round styles (保留原有)
+// ================================================================
+
+.@{item} {
+  flex: 1;
+  height: @tab-bar-height;
+  box-sizing: border-box;
+  user-select: none;
+  position: relative;
+  margin: 4px 0;
+  padding: 5px 12px;
+
+  &--split::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background-color: @tab-bar-border-color;
+    transform: scaleX(0.5);
+  }
+
+  &--round {
+    border-radius: @tab-bar-round-item-radius;
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: @tab-bar-color;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    border-left: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow:
+      inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &--checked {
+      .@{item}__text,
+      .@{item}__icon {
+        color: @tab-bar-active-color;
+        font-weight: 600;
+      }
+    }
+
+    &--tag {
+      border-radius: @tab-bar-round-item-radius;
+    }
+
+    &--tag&--checked {
+      background-color: @tab-bar-active-bg;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+
+    .@{prefix}-icon {
+      vertical-align: top;
+    }
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    font: @font-body-large;
+  }
+
+  &.@{prefix}-is-disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
   }
 }
