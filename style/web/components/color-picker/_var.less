@@ -69,3 +69,15 @@
 @color-picker-trigger-input-color-inner-size: calc(@comp-size-xs - 2px);
 @color-picker-trigger-input-color-inner-size-s: calc(@comp-size-xxs - 2px);
 @color-picker-trigger-input-color-inner-size-l: calc(@comp-size-s - 2px);
+
+// trigger input-less（无文字输入框形态）：色块居中，左右对称 padding
+@color-picker-trigger-input-less-padding: 0 @comp-paddingLR-xs;
+@color-picker-trigger-input-less-min-width: calc(
+  @color-picker-trigger-input-color-inner-size + @comp-paddingLR-xs * 2 + 2px
+);
+@color-picker-trigger-input-less-min-width-s: calc(
+  @color-picker-trigger-input-color-inner-size-s + @comp-paddingLR-xs * 2 + 2px
+);
+@color-picker-trigger-input-less-min-width-l: calc(
+  @color-picker-trigger-input-color-inner-size-l + @comp-paddingLR-xs * 2 + 2px
+);
