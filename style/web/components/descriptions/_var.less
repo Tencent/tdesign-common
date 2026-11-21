@@ -8,8 +8,17 @@
 
 // 无边框间距
 @descriptions-borderless-padding-l: @comp-paddingTB-l 0;
-@descriptions-borderless-padding-m: @comp-paddingTB-m 0;
-@descriptions-borderless-padding-s: @comp-paddingTB-s 0;
+@descriptions-borderless-padding-m: @comp-paddingTB-l 0;
+@descriptions-borderless-padding-s: @comp-paddingTB-m 0;
+
+// label 与 content 之间的间距（无边框模式）
+@descriptions-item-label-gap: @comp-paddingLR-l;
+
+// label 最小宽度：保证多列同一行的 label 结束边视觉对齐
+@descriptions-item-label-min-width: 96px;
+
+// label 颜色：从 placeholder 上调一档，视觉可识别为字段名
+@descriptions-item-label-color: @text-color-secondary;
 
 // border
 @descriptions-td-border: 1px solid @component-border;
