@@ -115,7 +115,7 @@ export class Color {
       this.isGradient = true;
       const object = gradientColors as GradientColors;
       const points = object.points.map((c, index) =>
-        genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id)
+        genGradientPoint(c.left, c.color, this.gradientStates.colors[index]?.id),
       );
       this.gradientStates = {
         colors: points,

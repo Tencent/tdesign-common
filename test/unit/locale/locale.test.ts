@@ -82,7 +82,7 @@ describe('国际化函数 t', () => {
     it('应该正确处理包含其他变量的复数文本', () => {
       expect(t('no {type} | one {type} ({count}) | {count} {type}s', 0, { type: 'file' })).toBe('no file');
       expect(t('no {type} | one {type} ({count}) | {count} {type}s', 1, { count: 1, type: 'file' })).toBe(
-        'one file (1)'
+        'one file (1)',
       );
       expect(t('no {type} | one {type} ({count}) | {count} {type}s', 5, { count: 5, type: 'file' })).toBe('5 files');
     });

@@ -73,7 +73,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
       this.treeDataMap,
       dataSource,
       columns.find((col) => col.colKey === 'row-select'),
-      keys
+      keys,
     );
   }
 
@@ -442,7 +442,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     const distance = type === 'after' ? 1 : 0;
     if (state.parent) {
       const childrenIndex = state.parent.row[keys.childrenKey].findIndex(
-        (t: TableRowData) => rowValue === get(t, keys.rowKey)
+        (t: TableRowData) => rowValue === get(t, keys.rowKey),
       );
       state.parent.row[keys.childrenKey].splice(childrenIndex + distance, 0, newData);
       updateRowExpandLength(this.treeDataMap, state.parent.row, 1, 'insert', keys);
@@ -466,7 +466,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
   swapData(
     dataSource: T[],
     params: SwapParams<T>,
-    keys: KeysType
+    keys: KeysType,
   ): { dataSource: T[]; result: boolean; code?: number; reason?: string } {
     const startIndex = params.currentIndex;
     const endIndex = params.targetIndex;
@@ -659,7 +659,7 @@ class TableTreeStore<T extends TableRowData = TableRowData> {
     column: PrimaryTableCol,
     keys: KeysType,
     level = 0,
-    parent: TableRowState = null
+    parent: TableRowState = null,
   ) {
     for (let i = 0, len = dataSource.length; i < len; i++) {
       const item = dataSource[i];
@@ -742,7 +742,7 @@ export function updateRowExpandLength(
   row: TableRowData,
   distance: number,
   type: 'expand' | 'fold' | 'delete' | 'insert',
-  keys: KeysType
+  keys: KeysType,
 ) {
   let tmp = row;
   while (tmp) {
@@ -779,7 +779,7 @@ export function updateChildrenRowState<T>(
   treeDataMap: TableTreeDataMap,
   rowState: TableRowState,
   expanded: boolean,
-  keys: KeysType
+  keys: KeysType,
 ) {
   const { row, rowIndex } = rowState;
   const childrenNodes = get(row, keys.childrenKey);
@@ -807,7 +807,7 @@ export function updateChildrenRowState<T>(
             expanded: false,
           } as any,
           expanded,
-          keys
+          keys,
         );
       }
     }
@@ -818,7 +818,7 @@ export function updateRowData<T extends TableRowData = TableRowData>(
   data: T[],
   key: string | number,
   newData: T,
-  keys: KeysType
+  keys: KeysType,
 ) {
   for (let i = 0, len = data.length; i < len; i++) {
     const item = data[i];
@@ -843,7 +843,7 @@ export function updateRowIndex<T>(
     maxRowIndex?: number;
     type?: 'add' | 'remove';
     count?: number;
-  }
+  },
 ) {
   const start = extra.minRowIndex || 0;
   const end = extra.maxRowIndex || dataSource.length;
@@ -859,7 +859,7 @@ export function updateRowIndex<T>(
 
 export function diffExpandedTreeNode(
   newExpandedNode: (number | string)[] = [],
-  oldExpandedNode: (number | string)[] = []
+  oldExpandedNode: (number | string)[] = [],
 ) {
   const removedList: (number | string)[] = [];
   const addedList: (number | string)[] = [];
