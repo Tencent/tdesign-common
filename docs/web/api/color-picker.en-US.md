@@ -12,6 +12,12 @@ There is no trigger and the color picker panel is displayed directly.
 
 {{ panel }}
 
+### Color Picker with EyeDropper Support
+
+Set `eyeDropper=true` to enable color sampling. The button is rendered before the color sliders. By default, it uses the browser native EyeDropper API to pick a color from anywhere on the screen. A fallback mode can also be configured to capture the current page and read pixels from canvas when the native API is unavailable. The fallback mode is limited to the current page and can be affected by cross-origin images, videos, iframes, and complex rendering.
+
+{{ eye-dropper }}
+
 ### Color Picker with Trigger Element
 
 Trigger the display selector panel through the trigger, and transparently transfer all attributes to the panel selector component.
