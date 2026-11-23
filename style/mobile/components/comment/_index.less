@@ -9,7 +9,7 @@
     display: flex;
     padding: @comment-inner-padding;
 
-    &:active {
+    &--long-press {
       background-color: @bg-color-secondarycontainer;
     }
   }
@@ -49,7 +49,7 @@
   &__date {
     font: @comment-datetime-font;
     color: @comment-datetime-color;
-    margin-right: @spacer-2;
+    margin-right: @spacer;
   }
 
   &__reply {
@@ -67,7 +67,7 @@
   &__folds {
     display: flex;
     align-items: center;
-    margin-left: calc(@comment-reply-body-margin-left + @comment-inner-horizontal-padding);
+    padding: @spacer @spacer-2 0 calc(@comment-reply-body-margin-left + @comment-inner-horizontal-padding);
 
     &::before {
       display: block;
@@ -84,7 +84,10 @@
       color: @comment-folds-item-color;
       font-size: @font-size-s;
       line-height: @text-line-height-s;
-      margin-right: @spacer-3;
+
+      &:not(:last-child) {
+        margin-right: @spacer-3;
+      }
     }
   }
 
@@ -98,6 +101,7 @@
     &-block {
       display: flex;
       align-items: center;
+      gap: @comment-actions-gap;
     }
   }
 }
