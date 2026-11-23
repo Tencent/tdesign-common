@@ -31,7 +31,3 @@ toc: false
 Top and bottom popups remain full width by default. Use the optional `maxWidth` prop to limit their width and center them horizontally on tablets, foldable devices, or landscape screens. A value of `600px` is recommended; popups remain full width on narrower screens.
 
 `maxWidth` accepts a number in pixels or a CSS length string. Omitting it preserves the existing layout; `none` removes the width limit. This prop only applies to top and bottom popups. Left, right, and center popups are unaffected.
-
-#### Custom Maximum Width
-
-{{ max-width }}
