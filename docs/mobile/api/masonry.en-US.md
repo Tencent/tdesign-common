@@ -1,7 +1,7 @@
 ---
 title: Masonry
 description: Suitable for scenarios involving the display of content such as images, products, or social media posts.
-spline: masonry
+spline: data
 isComponent: true
 toc: false
 ---

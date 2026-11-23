@@ -1,7 +1,7 @@
 ---
 title: Masonry 瀑布流
 description: 适用于图片、商品、社交媒体等展示内容的场景。
-spline: masonry
+spline: data
 isComponent: true
 toc: false
 ---
