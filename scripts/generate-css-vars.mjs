@@ -2,7 +2,20 @@ import fs from 'fs';
 import path from 'path';
 
 // 获取命令行参数
-const [FRAMEWORK, COMPONENT_NAME] = process.argv.slice(2);
+const [FRAMEWORK, RAW_COMPONENT_NAME] = process.argv.slice(2);
+
+/**
+ * 将组件名统一转为 kebab-case，兼容 camelCase / PascalCase / kebab-case
+ * @param {string} name - 组件名
+ * @returns {string} kebab-case 组件名
+ */
+const toKebabCase = (name) =>
+  name
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+    .toLowerCase();
+
+const COMPONENT_NAME = RAW_COMPONENT_NAME && toKebabCase(RAW_COMPONENT_NAME);
 
 // 组合组件映射
 const COMBINE_MAP = {
@@ -123,7 +136,8 @@ const getAllComponentName = async (framework) => {
     return items
       .filter((item) => item.isDirectory())
       .map((item) => item.name)
-      .filter((name) => !name.startsWith('.') && !name.startsWith('_') && !FILTERED_DIR.includes(name));
+      .filter((name) => !name.startsWith('.') && !name.startsWith('_') && !FILTERED_DIR.includes(name))
+      .map((name) => toKebabCase(name));
   } catch (error) {
     throw new Error(`❌ 无法读取目录 ${dirPath}: ${error.message}`);
   }
@@ -175,9 +189,8 @@ const generateCssVariables = async (componentName) => {
   const parsedKeys = new Set();
 
   try {
-    const combineKey = componentName.toLowerCase();
-    if (COMBINE_MAP[combineKey]) {
-      COMBINE_MAP[combineKey].forEach((item) => {
+    if (COMBINE_MAP[componentName]) {
+      COMBINE_MAP[componentName].forEach((item) => {
         lessPaths.push(findFilePath(FRAMEWORK, item));
       });
     } else {
