@@ -83,8 +83,12 @@
       align-items: center;
       font-size: 0;
 
-      &__input {
+      .@{prefix}-checkbox__input {
         flex-shrink: 0;
+
+        .@{prefix}-icon {
+          color: inherit;
+        }
       }
 
       &__label {
