@@ -173,6 +173,9 @@ export default {
   input: {
     placeholder: 'Inserisci',
   },
+  textarea: {
+    clearText: 'Cancella',
+  },
   list: {
     loadingText: 'Caricamento in corso, attendere prego',
     loadingMoreText: 'Clicca per caricare di più',

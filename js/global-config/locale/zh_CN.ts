@@ -174,6 +174,9 @@ export default {
   input: {
     placeholder: '请输入',
   },
+  textarea: {
+    clearText: '清空',
+  },
   list: {
     loadingText: '正在加载中，请稍等',
     loadingMoreText: '点击加载更多',

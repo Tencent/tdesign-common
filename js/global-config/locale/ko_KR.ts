@@ -173,6 +173,9 @@ export default {
   input: {
     placeholder: '들어 오세요',
   },
+  textarea: {
+    clearText: '지우기',
+  },
   list: {
     loadingText: '로딩 중 기다려주세요',
     loadingMoreText: '더 로드하려면 클릭하세요',
