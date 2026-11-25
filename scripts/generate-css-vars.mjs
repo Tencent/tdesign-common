@@ -35,6 +35,7 @@ const COMBINE_MAP = {
   'tab-bar': ['tab-bar', 'tab-bar-item'],
   grid: ['grid', 'grid-item'],
   layout: ['row', 'col'],
+  message: ['message', 'message-item'],
   form: ['form', 'form-item'],
   qrcode: ['qrcode', 'qrcode/components/qrcode-canvas', 'qrcode/components/qrcode-status'],
   'chat-markdown': [
