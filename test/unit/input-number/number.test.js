@@ -345,7 +345,7 @@ describe('putInRangeNumber', () => {
 
   it('大数字超过 max 应该返回 max', () => {
     expect(putInRangeNumber('99999999999999999999', { max: '9999999999999999999', min: '0', largeNumber: true })).toBe(
-      '9999999999999999999'
+      '9999999999999999999',
     );
   });
 
@@ -355,7 +355,7 @@ describe('putInRangeNumber', () => {
         max: '99999999999999999999',
         min: '10000000000000000000',
         largeNumber: true,
-      })
+      }),
     ).toBe('10000000000000000000');
   });
 
@@ -369,7 +369,7 @@ describe('putInRangeNumber', () => {
 
   it('大数字在范围内应该返回原值', () => {
     expect(putInRangeNumber('5000000000000000000', { max: '9999999999999999999', min: '0', largeNumber: true })).toBe(
-      '5000000000000000000'
+      '5000000000000000000',
     );
   });
 });
@@ -401,7 +401,7 @@ describe('getStepValue', () => {
         min: '0',
         lastValue: '9999999999999999999',
         largeNumber: true,
-      })
+      }),
     ).toBe('10000000000000000000');
   });
 
@@ -414,7 +414,7 @@ describe('getStepValue', () => {
         min: '0',
         lastValue: '10000000000000000000',
         largeNumber: true,
-      })
+      }),
     ).toBe('9999999999999999999');
   });
 
@@ -461,7 +461,7 @@ describe('getMaxOrMinValidateResult', () => {
         value: '99999999999999999999',
         max: '9999999999999999999',
         min: '0',
-      })
+      }),
     ).toBe('exceed-maximum');
   });
 
@@ -472,7 +472,7 @@ describe('getMaxOrMinValidateResult', () => {
         value: '9999999999999999999',
         max: '99999999999999999999',
         min: '10000000000000000000',
-      })
+      }),
     ).toBe('below-minimum');
   });
 
@@ -483,7 +483,7 @@ describe('getMaxOrMinValidateResult', () => {
         value: '5000000000000000000',
         max: '9999999999999999999',
         min: '0',
-      })
+      }),
     ).toBeUndefined();
   });
 
