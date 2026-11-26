@@ -3,6 +3,9 @@ import dayjs from 'dayjs';
 import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
+import quarterOfYear from 'dayjs/plugin/quarterOfYear';
 
 import log from '../log';
 
@@ -12,12 +15,21 @@ type EnableTimePickerType = boolean | { mode?: 'switch' | 'parallel' };
 dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
 dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(weekOfYear);
+dayjs.extend(quarterOfYear);
 
 export const TIME_FORMAT = 'HH:mm:ss';
 
 // extract time format from a completed date format 'YYYY-MM-DD HH:mm' -> 'HH:mm'
 export function extractTimeFormat(dateFormat: string = '') {
-  return dateFormat.replace(/\W?Y{2,4}|\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '').trim();
+  return (
+    dateFormat
+      // 匹配：可选的非单词字符 + 日期占位符 + 可选的年月日中文单位
+      .replace(/\W?(Y{2,4}|y{2,4}|M{1,4}|D{1,2}|d{1,4}|Do|Q{1,2}|w{1,2}|W{1,2}|E{1,4})[年月日]?/g, '')
+      .replace(/^[^\w]+/, '') // 移除开头的非单词字符
+      .trim()
+  );
 }
 
 // 统一解析日期格式字符串成 Dayjs 对象
@@ -39,9 +51,26 @@ export function parseToDayjs(
         .format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.\s]/)[0];
-    const weekStr = dateText.split(/[-/.\s]/)[1];
-    const weekFormatStr = format.split(/[-/.\s]/)[1];
+    let yearStr = dateText.split(/[-/.\s]/)[0];
+    let weekStr = dateText.split(/[-/.\s]/)[1];
+    let weekFormatStr = format.split(/[-/.\s]/)[1];
+
+    if (weekStr === undefined) {
+      const yearIndex = format.search(/Y{2,4}/);
+      const weekIndex = format.search(/w{1,2}|W{1,2}/);
+      if (yearIndex !== -1 && weekIndex !== -1) {
+        const yearLen = format.match(/Y{2,4}/)[0].length;
+        if (yearIndex < weekIndex) {
+          yearStr = dateText.substring(0, yearLen);
+          weekStr = dateText.substring(yearLen);
+          weekFormatStr = format.substring(yearLen);
+        } else {
+          weekStr = dateText.substring(0, dateText.length - yearLen);
+          yearStr = dateText.substring(dateText.length - yearLen);
+          weekFormatStr = format.substring(0, format.length - yearLen);
+        }
+      }
+    }
 
     let firstWeek = dayjs(yearStr, 'YYYY')
       .locale(dayjsLocale || 'zh-cn')
@@ -72,6 +101,7 @@ export function parseToDayjs(
         return nextWeek;
       }
     }
+    if (weekStr && weekFormatStr) return dayjs();
   }
 
   // format quarter
@@ -82,9 +112,26 @@ export function parseToDayjs(
         .format(format) as string;
     }
 
-    const yearStr = dateText.split(/[-/.\s]/)[0];
-    const quarterStr = dateText.split(/[-/.\s]/)[1];
-    const quarterFormatStr = format.split(/[-/.\s]/)[1];
+    let yearStr = dateText.split(/[-/.\s]/)[0];
+    let quarterStr = dateText.split(/[-/.\s]/)[1];
+    let quarterFormatStr = format.split(/[-/.\s]/)[1];
+
+    if (quarterStr === undefined) {
+      const yearIndex = format.search(/Y{2,4}/);
+      const quarterIndex = format.search(/Q/);
+      if (yearIndex !== -1 && quarterIndex !== -1) {
+        const yearLen = format.match(/Y{2,4}/)[0].length;
+        if (yearIndex < quarterIndex) {
+          yearStr = dateText.substring(0, yearLen);
+          quarterStr = dateText.substring(yearLen);
+          quarterFormatStr = format.substring(yearLen);
+        } else {
+          quarterStr = dateText.substring(0, dateText.length - yearLen);
+          yearStr = dateText.substring(dateText.length - yearLen);
+          quarterFormatStr = format.substring(0, format.length - yearLen);
+        }
+      }
+    }
     const firstQuarter = dayjs(yearStr, 'YYYY').startOf('year');
     for (let i = 0; i < 4; i += 1) {
       const nextQuarter = firstQuarter.add(i, 'quarter');
@@ -118,15 +165,13 @@ export function parseToDayjs(
   try {
     const timeFormatFromFormat = extractTimeFormat(format || '');
     if (defaultTime && (!timeFormatFromFormat || timeFormatFromFormat.trim() === '')) {
-      if (defaultTime) {
-        const parts = defaultTime.split(':').map((p) => Number(p));
-        // 注意：dayjs 的 hour/minute/second 返回新的 dayjs 对象（可链式调用）
-        const withTime = result
-          .hour(parts[0] || 0)
-          .minute(parts[1] || 0)
-          .second(parts[2] || 0);
-        return withTime;
-      }
+      const parts = defaultTime.split(':').map((p) => Number(p));
+      // 注意：dayjs 的 hour/minute/second 返回新的 dayjs 对象（可链式调用）
+      const withTime = result
+        .hour(parts[0] || 0)
+        .minute(parts[1] || 0)
+        .second(parts[2] || 0);
+      return withTime;
     }
   } catch (e) {
     // 保守处理：若设置时间出错，仍返回原始结果并记录日志
