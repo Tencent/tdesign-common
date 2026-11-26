@@ -1,4 +1,10 @@
-import { get, isBoolean, isFunction, isNil, isNull, isNumber, uniqueId } from 'lodash-es';
+import get from 'lodash-es/get';
+import isBoolean from 'lodash-es/isBoolean';
+import isFunction from 'lodash-es/isFunction';
+import isNil from 'lodash-es/isNil';
+import isNull from 'lodash-es/isNull';
+import isNumber from 'lodash-es/isNumber';
+import uniqueId from 'lodash-es/uniqueId';
 import log from '../log';
 import { createNodeModel } from './tree-node-model';
 import { TreeStore } from './tree-store';

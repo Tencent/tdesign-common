@@ -1,4 +1,5 @@
-import { isArray, isString } from 'lodash-es';
+import isArray from 'lodash-es/isArray';
+import isString from 'lodash-es/isString';
 import type { ImageInfo, Images } from './types';
 
 const isSameOrigin = (url: string) => {
