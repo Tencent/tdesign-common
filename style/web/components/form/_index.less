@@ -14,9 +14,15 @@
   font: @form-font;
 
   &:not(.@{prefix}-form-inline) {
-    > .@{prefix}-form__item:last-of-type,
+    // 自身是 last-child，且到 form 之间的每一层祖先也都是 last-child
+    .@{prefix}-form__item:last-child:not(.@{prefix}-form *:not(:last-child) *),
     .@{prefix}-form__item--last {
-      margin: 0;
+      // 有帮助文案、校验文案或校验规则的末项保留边距
+      &:not(.@{prefix}-form__item-with-help):not(.@{prefix}-form__item-with-extra):not(
+      .@{prefix}-form__item-with-rules
+    ) {
+        margin: 0;
+      }
     }
   }
 
