@@ -1,0 +1,109 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+
+@import '../../base.less';
+
+@import './_var.less';
+
+@import '../../mixins/_scrollbar.less';
+
+.@{scrollbar-cls} {
+  position: relative;
+  height: 100%;
+
+  &__wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    .hideScrollbar();
+  }
+
+  &__bar {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity @anim-duration-base @anim-time-fn-easing,
+      width @anim-duration-base @anim-time-fn-easing,
+      height @anim-duration-base @anim-time-fn-easing;
+
+    &--vertical {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: @scrollbar-bar-size;
+    }
+
+    &--horizontal {
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: @scrollbar-bar-size;
+    }
+  }
+
+  &__thumb {
+    position: absolute;
+    background-color: @scrollbar-thumb-color;
+    border-radius: @scrollbar-thumb-radius;
+    cursor: pointer;
+    transition: background-color @anim-duration-base @anim-time-fn-easing;
+
+    &--vertical {
+      top: 0;
+      inset-inline: 0;
+      width: @scrollbar-thumb-size;
+      margin: 0 auto;
+    }
+
+    &--horizontal {
+      left: 0;
+      inset-block: 0;
+      height: @scrollbar-thumb-size;
+      margin: auto 0;
+    }
+  }
+
+  &__bar:hover > &__thumb {
+    background-color: @scrollbar-thumb-color-hover;
+  }
+
+  &--bars-visible > &__bar {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &--auto-expand {
+    .@{scrollbar-cls}__bar--vertical:hover {
+      width: @scrollbar-bar-size-expand;
+    }
+
+    .@{scrollbar-cls}__bar--horizontal:hover {
+      height: @scrollbar-bar-size-expand;
+    }
+  }
+
+  &--dragging&--auto-expand {
+    .@{scrollbar-cls}__bar--vertical {
+      width: @scrollbar-bar-size-expand;
+    }
+
+    .@{scrollbar-cls}__bar--horizontal {
+      height: @scrollbar-bar-size-expand;
+    }
+  }
+
+  &--dragging {
+    user-select: none;
+
+    .@{scrollbar-cls}__thumb {
+      background-color: @scrollbar-thumb-color-hover;
+      cursor: grabbing;
+    }
+  }
+
+  &--disabled &__wrap {
+    overflow: hidden;
+  }
+}
