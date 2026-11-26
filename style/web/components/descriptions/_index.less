@@ -59,7 +59,11 @@
 
     :not(&--fixed):not(&--border) {
       @{root}__label {
-        padding-right: @comp-paddingLR-l;
+        &::after {
+          content: ':';
+          display: inline-block;
+          margin-left: @comp-margin-s;
+        }
       }
     }
   }
