@@ -57,14 +57,14 @@
       display: flex;
       align-items: flex-start;
       width: 100%;
-    }
 
-    .t-icon:not(.t-icon-close) {
-      font-size: @dialog-icon-size;
-      display: inline-flex;
-      align-items: center;
-      margin-right: @dialog-header-icon-margin-right;
-      flex-shrink: 0;
+      >.t-icon {
+        font-size: @dialog-icon-size;
+        display: inline-flex;
+        align-items: center;
+        margin-right: @dialog-header-icon-margin-right;
+        flex-shrink: 0;
+      }
     }
   }
 
