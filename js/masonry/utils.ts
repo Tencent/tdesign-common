@@ -1,4 +1,4 @@
-type BreakpointValue = number | Record<number, number>;
+export type BreakpointValue = number | Record<number, number>;
 
 /**
  * 从断点配置中解析出匹配当前容器宽度的值。
@@ -6,7 +6,7 @@ type BreakpointValue = number | Record<number, number>;
  * @param value 固定数值或断点配置对象
  * @param fallback 兜底值
  */
-function resolveBreakpointValue(width: number, value: BreakpointValue | undefined, fallback: number): number {
+export function resolveBreakpointValue(width: number, value: BreakpointValue | undefined, fallback: number): number {
   if (value === undefined || value === null) {
     return fallback;
   }
