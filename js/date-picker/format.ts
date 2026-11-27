@@ -280,10 +280,16 @@ export function formatTime(value: any, format: string, timeFormat: string, defau
   let result = Array.isArray(value) ? value : [value];
   // eslint-disable-next-line no-param-reassign
   defaultTime = Array.isArray(defaultTime) ? defaultTime : [defaultTime, defaultTime];
+  // format 里没有时间部分时，解析出来的时间恒为 00:00:00，
+  // 此时应该用 defaultTime 而不是解析结果（issue #3761）
+  const formatHasTime = /[Hhms]/.test(format);
   result = result.map((v, i) => {
     // string格式需要用format去解析，其他诸如Date、time-stamp格式则直接dayjs
     if (v) {
       const formattedResult = dayjs(v, typeof v === 'string' ? format : undefined).format(timeFormat);
+      if (!formatHasTime && defaultTime[i]) {
+        return calcFormatTime(defaultTime[i], timeFormat);
+      }
       return !dayjs(formattedResult, timeFormat).isValid() && defaultTime[i] ? defaultTime[i] : formattedResult;
     }
     return calcFormatTime(defaultTime[i], timeFormat);
