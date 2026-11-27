@@ -883,7 +883,11 @@ export class TreeNode {
     // 父节点根据参与判断的子节点计算选中态。
     if (Array.isArray(children) && children.length > 0) {
       // 没有参与判断的子节点时，不自动推导出全选。
-      const checkChildren = checkAllAffectedBy === 'all' ? children : children.filter((node) => !node.isDisabled());
+      // 被过滤掉的子节点不在界面上，不应参与父节点状态计算（issue #3078）
+      const checkChildren = children.filter((node) => {
+        if (tree.hasFilter && !tree.filterMap.get(node.value)) return false;
+        return checkAllAffectedBy === 'all' || !node.isDisabled();
+      });
       checked = checkChildren.length > 0 && checkChildren.every((node) => node.isChecked(checkedMap));
     } else {
       // 从父节点状态推断子节点状态
@@ -912,6 +916,8 @@ export class TreeNode {
 
     let childChecked: null | boolean = null;
     const indeterminate = children.some((node: TreeNode) => {
+      // 被过滤掉的子节点不在界面上，不应参与半选判定（issue #3078）
+      if (tree.hasFilter && !tree.filterMap.get(node.value)) return false;
       // 半选状态与全选状态使用相同的判定范围。
       if (checkAllAffectedBy !== 'all' && node.isDisabled()) return false;
       if (node.isIndeterminate()) {
