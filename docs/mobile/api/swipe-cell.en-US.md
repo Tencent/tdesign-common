@@ -27,3 +27,7 @@ toc: false
 #### Swipe Cell with Double Check
 
 {{ event }}
+
+#### Swipe to End Auto Execute Operation
+
+{{ full-swipe }}
